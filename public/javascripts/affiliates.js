@@ -132,4 +132,13 @@ jQuery(document).ready(function() {
   });
   setupDragAndDropOnManagedLinks('header');
   setupDragAndDropOnManagedLinks('footer');
+
+  jQuery(".sidebar-form .sidebar-items table").each(function() {
+    jQuery(this).tableDnD({ onDragClass: 'ondrag' });
+    jQuery(".sidebar-form").submit(function() {
+      jQuery(".sidebar-form .position").each(function(index) {
+        jQuery(this).val(index);
+      });
+    });
+  });
 });

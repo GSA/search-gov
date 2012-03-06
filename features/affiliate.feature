@@ -138,10 +138,10 @@ Feature: Affiliate clients
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Content Sources"
     When I fill in the following:
-      | Enter the domain or url | agency.gov                                                                    |
-      | Sitemap URL             | http://www.dol.gov/TMP/Decisions.xml                                          |
-      | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml  |
-      | RSS Feed Name           | Recalls Feed                                                                  |
+      | Enter the domain or url | agency.gov                                                                   |
+      | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/485.xml                       |
+      | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
+      | RSS Feed Name           | Recalls Feed                                                                 |
     And I press "Next"
     Then I should see "Step 3. Get the code" in the site wizards header
     And I should see the code for English language sites
@@ -185,9 +185,19 @@ Feature: Affiliate clients
       | Site Name       | Domain         |
       | agency.gov      | agency.gov     |
 
+    When I follow "Sidebar"
+    Then the "Default search label" field should contain "Everything"
+    And the "Image search label" field should contain "Images"
+    And the "Is image search enabled" checkbox should be checked
+    And the "RSS feed 0" field should contain "Recalls Feed"
+    And the "Is RSS feed 0 navigable" checkbox should not be checked
+    And the "Show by time period module" checkbox should be checked
+
     When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see "My awesome agency" in the SERP header
+    And I should see "Images" in the left column
+    And I should not see "Recalls Feed" in the left column
 
   Scenario: Adding a new Spanish affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
@@ -2106,12 +2116,12 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains         |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
-    And the following RSS feeds exist:
-    | affiliate | url                                             | name    |
-    | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
-    And the following News Items exist:
-    | link                                      | title                              | guid  | description         | feed_name |
-    | http://www.whitehouse.gov/our-government  |  Our Government \| The White House | 12345 | white house cabinet | WH Blog   |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | affiliate | url                                             | name    |
+      | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
+    And feed "WH Blog" has the following news items:
+      | link                                     | title                             | guid  | description         |
+      | http://www.whitehouse.gov/our-government | Our Government \| The White House | 12345 | white house cabinet |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Site information"
@@ -2214,3 +2224,125 @@ Feature: Affiliate clients
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         |
     When I go to aff.gov's oneserp search page
     Then I should see the page with affiliate stylesheet "one_serp"
+
+  Scenario: Visiting left nav
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | results_source |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | bing+odie      |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    Then I should see the browser page titled "Sidebar"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Sidebar
+    And I should see "Sidebar" in the page header
+    And I should see "USASearch/Bing" in the page content
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I follow "Bing web results" in the page content
+    Then I should see "Domains to Search" in the page header
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I follow "RSS feeds" in the page content
+    Then I should see "RSS" in the page header
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I follow "RSS" in the page content
+    Then I should see "Press"
+    And I should see "http://www.whitehouse.gov/feed/press"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I follow "Add new collection" in the page content
+    Then I should see "Add a new Collection" in the page header
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I follow "Add new RSS feed" in the page content
+    Then I should see "Add a new RSS Feed" in the page header
+
+  Scenario: Editing left nav
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | false        |
+    When I go to aff.gov's search page
+    Then I should see "Everything" in the left column
+    And I should see "Images" in the left column
+    And I should see "Press" in the left column
+    And I should see "Photo Gallery" in the left column
+    And I should not see "Hide Me" in the left column
+    When I follow "Press" in the left column
+    Then I should see "All Time" in the left column
+
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    Then the "Default search label" field should contain "Everything"
+    And the "Image search label" field should contain "Images"
+    And the "Is image search enabled" checkbox should be checked
+    And the "RSS feed 0" field should contain "Press"
+    And the "Is RSS feed 0 navigable" checkbox should be checked
+    And the "RSS feed 1" field should contain "Photo Gallery"
+    And the "Is RSS feed 1 navigable" checkbox should be checked
+    And the "RSS feed 2" field should contain "Hide Me"
+    And the "Is RSS feed 2 navigable" checkbox should not be checked
+    And the "Show by time period module" checkbox should be checked
+
+    When I fill in the following:
+      | Default search label | Web       |
+      | Image search label   | Pictures  |
+      | RSS feed 0           | News      |
+      | RSS feed 1           | Galleries |
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
+    When I go to aff.gov's search page
+    Then I should see "Web" in the left column
+    And I should see "Pictures" in the left column
+    And I should see "News" in the left column
+    And I should see "Galleries" in the left column
+    When I follow "News" in the left column
+    Then I should see "All Time" in the left column
+
+    And I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I uncheck "Is image search enabled"
+    And I uncheck "Is RSS feed 1 navigable"
+    And I check "Is RSS feed 2 navigable"
+    And I uncheck "Show by time period module"
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
+    When I go to aff.gov's search page
+    Then I should see "Web" in the left column
+    And I should see "News" in the left column
+    And I should not see "Galleries" in the left column
+    And I should see "Hide Me" in the left column
+
+    When I follow "News" in the left column
+    Then I should not see "All Time" in the left column
+
+  Scenario: Setting RSS feed name to blank when Editing sidebar
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I fill in the following:
+      | RSS feed 0 |  |
+    And I press "Save"
+    Then I should see "Rss feeds name can't be blank"

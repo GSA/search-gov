@@ -76,7 +76,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         :edit_action => :edit_header_footer },
     :update_social_media => {
       :title => "Social Media - ",
-      :edit_action => :edit_social_media }
+      :edit_action => :edit_social_media },
+    :update_sidebar => {
+        :edit_action => :edit_sidebar }
   }
 
   def index
@@ -297,6 +299,13 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def new_managed_header_link_fields
+  end
+
+  def edit_sidebar
+  end
+
+  def update_sidebar
+    update
   end
 
   protected

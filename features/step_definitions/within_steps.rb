@@ -34,7 +34,8 @@
   'in the medline govbox' => '.medline',
   'in the agency govbox' => '.agency',
   'in the SERP header' => '#header',
-  'in the SERP footer' => '#footer'
+  'in the SERP footer' => '#footer',
+  'in the page content' => '.content'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

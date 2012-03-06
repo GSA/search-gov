@@ -1,8 +1,10 @@
 class RssFeed < ActiveRecord::Base
+  default_scope order('position ASC, ID ASC')
   validates_presence_of :url, :name, :affiliate_id
   validate :is_valid_rss_feed?, :on => :create
   belongs_to :affiliate
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
+  scope :navigable_only, where(:is_navigable => true)
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
   ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }

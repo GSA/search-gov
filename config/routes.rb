@@ -27,6 +27,8 @@ UsasearchRails3::Application.routes.draw do
       get :content_sources
       put :create_content_sources
       get :get_the_code
+      get :edit_sidebar
+      put :update_sidebar
     end
     collection do
       get :home

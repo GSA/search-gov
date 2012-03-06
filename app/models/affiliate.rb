@@ -46,7 +46,7 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_header_image
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
@@ -151,6 +151,8 @@ class Affiliate < ActiveRecord::Base
   NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
                                    :show_content_box_shadow => '1' }
   RESULTS_SOURCES = %w(bing odie bing+odie)
+  RESULTS_SOURCE_DISPLAY_NAMES = { :bing => 'Bing', :odie => 'USASearch', :"bing+odie" => 'USASearch/Bing' }
+
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
       header footer header_footer_css affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
 
@@ -276,14 +278,6 @@ class Affiliate < ActiveRecord::Base
 
   def sync_staged_attributes
     self.cancel_staged_changes unless self.has_staged_content?
-  end
-
-  def active_rss_feeds
-    rss_feeds.where(:is_active => true)
-  end
-
-  def has_active_rss_feeds?
-    active_rss_feeds.present?
   end
 
   def active_document_collections
@@ -445,6 +439,10 @@ class Affiliate < ActiveRecord::Base
     indexed_documents.select(:id).find_in_batches(:batch_size => batch_size) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id)
     end
+  end
+
+  def display_results_source
+    RESULTS_SOURCE_DISPLAY_NAMES[results_source.to_sym]
   end
 
   private
@@ -669,5 +667,10 @@ class Affiliate < ActiveRecord::Base
     if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
       staged_header_image.clear
     end
+  end
+
+  def set_search_labels
+    self.default_search_label = I18n.translate(:everything, :locale => locale) if default_search_label.blank?
+    self.image_search_label = I18n.translate(:images, :locale => locale) if image_search_label.blank?
   end
 end

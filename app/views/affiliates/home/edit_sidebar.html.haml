@@ -1,0 +1,11 @@
+= content_for :title, "Sidebar - "
+.site-specific
+  = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Sidebar'] )
+  %h1 Sidebar
+  .site-info
+    = form_for @affiliate, :url => { :action => :update_sidebar }, :html => { :class=>"generic-form sidebar-form" } do |f|
+      = f.error_messages(:header_message => nil, :class => "error")
+      = render :partial => "sidebar_form", :object => f
+      = f.submit "Save", :id => "save"
+      = link_to "Cancel", affiliate_path(@affiliate)
+

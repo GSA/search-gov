@@ -6,14 +6,14 @@
 = javascript_tag "var original_query = \"#{@search.query}\";"
 %ul.rss-feeds
   %li
-    = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), t(:everything), params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|
+    = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), @affiliate.default_search_label, params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|
       = content_tag :span, everything
   - if @affiliate.is_image_search_enabled?
     %li
-      = link_to_if(@search.instance_of?(ImageSearch) == false, t(:images), image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
+      = link_to_if(@search.instance_of?(ImageSearch) == false, @affiliate.image_search_label, image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
         = content_tag :span, images
-  - @affiliate.active_rss_feeds.each do |feed|
-    %li{ :class => (feed == @affiliate.active_rss_feeds.last ? 'last' : nil) }
+  - @affiliate.rss_feeds.navigable_only.each do |feed|
+    %li{ :class => (feed == @affiliate.rss_feeds.navigable_only.last ? 'last' : nil) }
       = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id)), :class => 'updatable') do |channel_name|
         = content_tag :span, channel_name
 
@@ -22,7 +22,7 @@
       = link_to_unless((document_collection && document_collection.id == coll.id), coll.name, docs_search_path(search_params.merge(:dc => coll.id).remove(:channel, :tbs)), :class => 'updatable') do |collection_name|
         = content_tag :span, collection_name
 
-- if @search.instance_of?(NewsSearch)
+- if @search.instance_of?(NewsSearch) and @affiliate.is_time_filter_enabled?
   %ul.time-filters
     %li
       = link_to_if(params[:tbs], t(:all_time), rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|

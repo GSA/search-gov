@@ -2,11 +2,8 @@
 .basic-information
   %ul
     %li
-      = form.label :url, "URL*"
-      = form.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }
-    %li
       = form.label :name, "Name*"
       = form.text_field :name, { :class => 'text', :maxlength => 255, :size => nil }
     %li
-      = form.label :is_active, "Is Active?"
-      = form.check_box :is_active
+      = form.label :url, "URL*"
+      = form.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }

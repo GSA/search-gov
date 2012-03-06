@@ -17,14 +17,14 @@ Feature: Affiliate Search
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_active |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true      |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true      |
-      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true      |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false     |
+      | name          | url                                                                  | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                                    | is_active |
-      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true      |
+      | name           | url                                                                    | is_navigable |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |
@@ -34,13 +34,16 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
     And feed "Videos" has the following news items:
-      | link                                       | title      | guid  | published_ago | description                  |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | Fifth item | uuid5 | day           | Video news item for the feed |
-      | http://www.youtube.com/watch?v=R2RWscJM97U | Sixth item | uuid6 | day           | Video news item for the feed |
+      | link                                       | title             | guid       | published_ago | description                         |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | First video news item for the feed  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | Second video news item for the feed |
+    And feed "Hide Me" has the following news items:
+      | link                                    | title             | guid        | published_ago | description                    |
+      | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Spanish Videos" has the following news items:
-      | link                                       | title        | guid  | published_ago | description                           |
-      | http://www.youtube.com/watch?v=EqExXXahb0s | Seventh item | uuid7 | day           | Gobierno video news item for the feed |
-      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Eight item   | uuid8 | day           | Gobierno video news item for the feed |
+      | link                                       | title                     | guid    | published_ago | description                           |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esuuid1 | day           | Gobierno video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esuuid2 | day           | Gobierno video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
       | phrase           |
       | Some Unique item |
@@ -64,12 +67,13 @@ Feature: Affiliate Search
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see 2 youtube thumbnails
-    And I should see youtube thumbnail for "Sixth item"
+    And I should see youtube thumbnail for "First video item"
     And I should see yesterday's date in the English search results
 
     When I follow "Last year"
     And I follow "Everything"
     Then I should see the browser page titled "item - bar site Search Results"
+    And I should not see "First hidden item"
 
     When I follow "Press"
     And I follow "Last week"
@@ -114,7 +118,7 @@ Feature: Affiliate Search
     When I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     And I should see 2 youtube thumbnails
-    And I should see youtube thumbnail for "Seventh item"
+    And I should see youtube thumbnail for "First Spanish video item"
     And I should see yesterday's date in the Spanish search results
 
   Scenario: No results when searching with active RSS feeds
@@ -122,9 +126,9 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_active |
-      | Press         | http://www.whitehouse.gov/feed/press               | true      |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
@@ -153,9 +157,9 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_active |
-      | Press         | http://www.whitehouse.gov/feed/press               | true      |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
@@ -190,8 +194,8 @@ Feature: Affiliate Search
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains                |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
+      | display_name | name    | contact_email | contact_name | domains                | locale |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     |
     When I am on bar.gov's Spanish search page
     And I fill in "query" with "president"
     And I press "Buscar"

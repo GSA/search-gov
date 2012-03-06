@@ -3,5 +3,5 @@
 .add-rss-feed
   = form_for([@affiliate, @rss_feed], :html => { :multipart => true }) do |f|
     = render :partial => 'form', :locals => { :form => f }
-    = f.submit "Add"
+    = f.submit "Add", :class => 'submit'
     = link_to 'Cancel', affiliate_rss_feeds_path(@affiliate), :class => 'cancel'

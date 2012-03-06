@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305164845) do
+ActiveRecord::Schema.define(:version => 20120306184550) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(:version => 20120305164845) do
     t.datetime "staged_header_image_updated_at"
     t.boolean  "staged_uses_one_serp"
     t.integer  "fetch_concurrency",                                       :default => 1,                   :null => false
+    t.string   "default_search_label",              :limit => 20,                                          :null => false
+    t.string   "image_search_label",                :limit => 20,                                          :null => false
+    t.boolean  "is_time_filter_enabled",                                  :default => true
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -560,9 +563,10 @@ ActiveRecord::Schema.define(:version => 20120305164845) do
     t.string   "name",                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_active",         :default => false
+    t.boolean  "is_navigable",      :default => false
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
+    t.integer  "position"
   end
 
   add_index "rss_feeds", ["affiliate_id"], :name => "index_rss_feeds_on_affiliate_id"

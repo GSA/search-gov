@@ -1177,7 +1177,7 @@ table.generic-table
     .header-image-file-field-wrapper
       clear: both
       margin-top: 10px
-    .header-links, .footer-links
+    .header-links, .footer-links, .sidebar-items
       @include clearfix
       table
         border: 1px solid #BDBDBD
@@ -1187,8 +1187,29 @@ table.generic-table
         width: 40%
       col.url
         width: 55%
+      col.actions, col.source
+        width: 135px
+      thead
+        th
+          background: #444
+        span
+          color: white
+          float: left
+          font-weight: bold
+      a.add-link
+        @include border-radius
+        background: url(/images/backgrounds/bg_red_gradient.gif) repeat-x 0 0
+        color: white
+        float: right
+        font:
+          size: 12px
+          weight: bold
+        padding: 2px 8px
+        text-decoration: none
+        &.last
+          margin-right: 5px
       th
-        background-color: lightgray
+        background-color: #d3d3d3
         border: 1px solid #A9A9A9
         font-weight: bold
         padding: 5px
@@ -1200,19 +1221,34 @@ table.generic-table
       .row-item
         &.ondrag
           background-color: #627BB3
-        td.title
+        td.title, td.name.draggable
           background: url(/images/vertical_arrow.png) no-repeat 3px 4px
-          padding-left: 15px
+          padding-left: 18px
         input
           font-size: 11px
           line-height: 16px
           margin: 0 auto
-          &.title
-            width: 95%
-          &.url
-            width: 97%
+        td.name input
+          width: 97%
+        td.title input
+          width: 95%
+        td.url input
+          width: 97%
+    .checkbox-label
+      color: #5D5D5D
+      font-weight: normal
     #add_another_link
       float: right
+    .by-source, .by-time-period
+      margin-bottom: 20px
+      h2
+        +inline-block
+      .sidebar-subsection
+        +clearfix
+        margin-bottom: 10px
+    img.side-note
+      float: right
+      margin-left: 10px
   .get-the-code
     ul
       margin: 0 8px 8px
@@ -1414,6 +1450,8 @@ h3.api-item
   table
     border: 1px solid #BDBDBD
     table-layout: fixed
+  col.name
+    width: 140px
   col.publish-date
     text-align: center
     width: 120px

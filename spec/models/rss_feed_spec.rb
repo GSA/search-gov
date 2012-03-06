@@ -20,6 +20,10 @@ describe RssFeed do
     RssFeed.create!(@valid_attributes)
   end
 
+  it "should set is_navigable to false by default" do
+    RssFeed.create!(@valid_attributes).is_navigable.should be_false
+  end
+
   context "when creating" do
     context "when the RSS feed is a valid feed" do
       before do
@@ -209,5 +213,21 @@ describe RssFeed do
     context "when url does not start with http://gdata.youtube.com/feeds/" do
       specify { RssFeed.new(:url => 'http://www.rss.noaa.gov/noaarss.xml').should_not be_is_video }
     end
+  end
+
+  describe ".navigable_only" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:navigable_only) { affiliate.rss_feeds.navigable_only }
+
+    before do
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 1', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 3)
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 2', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 2)
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 3', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 1)
+      affiliate.rss_feeds.create!(:name => 'not navigable rss feed', :url => 'http://searchblog.usa.gov/rss', :is_navigable => false, :position => 0)
+    end
+
+    specify { navigable_only.count.should == 3 }
+    specify { navigable_only.collect(&:is_navigable).uniq.should == [true] }
+    specify { navigable_only.collect(&:position).should == [1, 2, 3] }
   end
 end

@@ -24,39 +24,13 @@ Feature: Affiliate Search
     And I should see at least 8 search results
     And I should not see "Last hour"
 
-  Scenario: Enabling/disabling affiliate image search
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Look and feel"
-    Then the "Show Image Search?" checkbox should be checked
-    And I uncheck "Show Image Search?"
-    And I press "Update"
-
-    When I am on bar.gov's search page
-    And I fill in "query" with "camels"
-    And I press "Search"
-    Then I should not see "Images"
-
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Look and feel"
-    And I check "Show Image Search?"
-    And I press "Update"
-
-    When I am on bar.gov's search page
-    And I fill in "query" with "camels"
-    And I press "Search"
-    Then I should see "Images"
-
   Scenario: Affiliate Image search with RSS feeds
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_active |
-      | Press         | http://www.whitehouse.gov/feed/press               | true      |
+      | name  | url                                  | is_navigable |
+      | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |

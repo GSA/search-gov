@@ -10,12 +10,12 @@ class NewsSearch < Search
     @query = (@query || '').squish
     @query.downcase! if @query.ends_with? " OR"
     @since = since_when(options[:tbs])
-    @rss_feed = @affiliate.rss_feeds.find_by_id_and_is_active(options[:channel].to_i, true) if options[:channel].present?
+    @rss_feed = @affiliate.rss_feeds.find_by_id(options[:channel].to_i) if options[:channel].present?
     @related_search, @hits, @total = [], [], 0
   end
 
   def search
-    rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.active_rss_feeds
+    rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.rss_feeds.navigable_only
     excluded_urls = @affiliate.nil? ? [] : @affiliate.excluded_urls.collect{|url| url.url}
     NewsItem.search_for(@query, rss_feeds, @since, @page, excluded_urls)
   end

@@ -1,7 +1,8 @@
 Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
-    RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_active => hash["is_active"], :affiliate => affiliate)
+    is_navigable = hash["is_navigable"].blank? ? true : hash["is_navigable"]
+    RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_navigable => is_navigable, :affiliate => affiliate)
   end
   NewsItem.destroy_all
 end
@@ -9,8 +10,9 @@ end
 Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
   table.hashes.each do |hash|
+    published_at = hash["published_ago"].blank? ? 1.day.ago : 1.send(hash["published_ago"]).ago
     NewsItem.create!(:link => hash["link"], :title => hash["title"], :description => hash["description"],
-                     :guid => hash["guid"], :published_at => 1.send(hash["published_ago"]).ago, :rss_feed => rss_feed)
+                     :guid => hash["guid"], :published_at => published_at, :rss_feed => rss_feed)
   end
   Sunspot.commit
 end

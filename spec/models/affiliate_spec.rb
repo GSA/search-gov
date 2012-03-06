@@ -154,6 +154,18 @@ describe Affiliate do
         @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))
         @duplicate_affiliate.save.should be_false
       end
+
+      it "should populate search labels for English site" do
+        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
+        affiliate.default_search_label.should == 'Everything'
+        affiliate.image_search_label.should == 'Images'
+      end
+
+      it "should populate search labels for Spanish site" do
+        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
+        affiliate.default_search_label.should == 'Todo'
+        affiliate.image_search_label.should == 'Imágenes'
+      end
     end
   end
 
@@ -372,6 +384,24 @@ describe Affiliate do
           affiliate.update_attributes!(@update_params)
         end
       end
+    end
+
+    it "should populate search labels for English site" do
+      english_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
+      english_affiliate.default_search_label = ''
+      english_affiliate.image_search_label = ''
+      english_affiliate.save!
+      english_affiliate.default_search_label.should == 'Everything'
+      english_affiliate.image_search_label.should == 'Images'
+    end
+
+    it "should populate search labels for Spanish site" do
+      spanish_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
+      spanish_affiliate.default_search_label = ''
+      spanish_affiliate.image_search_label = ''
+      spanish_affiliate.save!
+      spanish_affiliate.default_search_label.should == 'Todo'
+      spanish_affiliate.image_search_label.should == 'Imágenes'
     end
   end
 
@@ -1267,12 +1297,12 @@ describe Affiliate do
         @affiliate.check_domains_for_live_code.should == ''
       end
     end
-    
+
     context "when a timeout error occurs" do
       before do
         Kernel.stub!(:open).and_raise Timeout::Error
       end
-      
+
       it "should return an empty result" do
         @affiliate.check_domains_for_live_code.should == ''
       end
