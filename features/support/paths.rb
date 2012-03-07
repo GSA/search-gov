@@ -116,10 +116,6 @@ module NavigationHelpers
       recalls_search_path
     when /the forms home page/
       forms_path
-    when /the top forms admin page$/
-      admin_top_forms_path
-    when /the top forms admin page for column "([^\"]*)"/
-      admin_top_forms_path(:column_number => $1)
     when /the trending searches page/
       trending_searches_widget_path
     when /^(.*)'s trending searches page$/
