@@ -15,11 +15,9 @@
   %a{:name => "content"}
   - if @search.results.present?
     = results_summary(start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search.query)
+    - news_item_partial = (@search.rss_feed and @search.rss_feed.is_video?) ? 'shared/video_news_item' : 'shared/news_item'
     - @search.hits.each_with_index do |hit, index|
-      - unless @search.rss_feed.is_video?
-        = render 'shared/news_item', :hit => hit, :index => index
-      - else
-        = render 'shared/video_news_item', :hit => hit, :index => index
+      = render news_item_partial, :hit => hit, :index => index
     = render "/shared/related_topics_wrapper"
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

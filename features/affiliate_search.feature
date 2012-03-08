@@ -67,6 +67,10 @@ Feature: Affiliate Search
     And I should see youtube thumbnail for "Sixth item"
     And I should see yesterday's date in the English search results
 
+    When I follow "Last year"
+    And I follow "Everything"
+    Then I should see the browser page titled "item - bar site Search Results"
+
     When I follow "Press"
     And I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
