@@ -1267,6 +1267,16 @@ describe Affiliate do
         @affiliate.check_domains_for_live_code.should == ''
       end
     end
+    
+    context "when a timeout error occurs" do
+      before do
+        Kernel.stub!(:open).and_raise Timeout::Error
+      end
+      
+      it "should return an empty result" do
+        @affiliate.check_domains_for_live_code.should == ''
+      end
+    end
   end
 
   describe "#refresh_indexed_documents" do
