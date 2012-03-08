@@ -430,11 +430,12 @@ class Affiliate < ActiveRecord::Base
     domains << (JSON.parse(self.live_fields_json)["managed_header_text"] rescue nil) if self.live_fields_json
     domains.compact.each do |domain|
       domain_url = (domain =~ /^http:\/\/.*|^https:\/\/.*/).nil? ? "http://#{domain}" : domain
-      URI.parse(domain_url) rescue next
       begin
+        URI.parse(domain_url)
         doc = Nokogiri::HTML(Kernel.open(domain_url)) rescue nil
         live_domains_list << domain if doc and doc.xpath("//form[@action='http://search.usa.gov/search']").any?
       rescue Exception => e
+        next
       end
     end
     live_domains_list.join(';')
