@@ -1,18 +1,20 @@
 require 'spec/spec_helper'
 
 describe HomeController do
+  fixtures :affiliates
 
   describe "#index" do
-    let(:affiliate) { mock_model(Affiliate) }
-
+    before do
+      @affiliate = affiliates(:usagov_affiliate)
+    end
+    
     context "when no locale is specified" do
       before do
-        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
         get :index
       end
 
       it { should assign_to(:search).with_kind_of(WebSearch) }
-      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:affiliate).with(@affiliate) }
       it { should respond_with(:success) }
 
       specify { I18n.locale.should == I18n.default_locale }
@@ -25,7 +27,6 @@ describe HomeController do
     context "when locale is specified" do
       context "locale=en" do
         it "should set locale to :en" do
-          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
           get :index, :locale=> "en"
           I18n.locale.should == :en
         end
@@ -33,7 +34,6 @@ describe HomeController do
 
       context "locale=es" do
         it "should set locale to :es" do
-          Affiliate.should_receive(:find_by_name).with('gobiernousa').and_return(affiliate)
           get :index, :locale=> "es"
           I18n.locale.should == :es
         end
@@ -41,7 +41,6 @@ describe HomeController do
 
       context "that is invalid" do
         before do
-          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
           get :index, :locale=> "hp:webinspect..file*test"
         end
         it "should set locale to :en" do
@@ -51,7 +50,6 @@ describe HomeController do
 
       context "that is malicious" do
         before do
-          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
           get :index, :locale=> "\0"
         end
         it "should set locale to :en" do
@@ -61,7 +59,6 @@ describe HomeController do
 
       context "that is erroneous" do
         before do
-          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
           get :index, :locale=> "fr"
         end
         it "should set locale to :en" do
@@ -72,7 +69,6 @@ describe HomeController do
 
     context "when format is xml" do
       before do
-        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
         get :index, :locale=> "en", :format => 'xml'
       end
 

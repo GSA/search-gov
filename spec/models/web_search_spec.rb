@@ -4,16 +4,17 @@ describe WebSearch do
   fixtures :affiliates, :misspellings, :site_domains
 
   before do
-    @affiliate = affiliates(:basic_affiliate)
-    @valid_options = {:query => 'government', :page => 3}
-    @uriresult = URI::parse("http://localhost:3000/")
+    @affiliate = affiliates(:usagov_affiliate)
+    @valid_options = { :query => 'government', :page => 3, :affiliate => @affiliate }
+    @bing_search = BingSearch.new(Search::USER_AGENT)
+    BingSearch.stub!(:new).and_return @bing_search
   end
 
   describe "#run" do
     it "should instrument the call to Bing with the proper action.service namespace and query param hash" do
       BoostedContent.stub!(:search_for).and_return nil
-      Faq.stub!(:search_for).and_return nil
       SaytSuggestion.stub!(:search_for).and_return nil
+      IndexedDocument.stub!(:search_for).and_return nil
       ActiveSupport::Notifications.should_receive(:instrument).
         with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
       WebSearch.new(@valid_options).run
@@ -102,7 +103,6 @@ describe WebSearch do
       it "should return false when searching" do
         @search.run.should be_false
       end
-
     end
 
     context "when Akamai DNS sends us to an unreachable IP address for api.bing.net" do
@@ -182,7 +182,7 @@ describe WebSearch do
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting parameter to Bing as an option" do
         search = WebSearch.new(@valid_options.merge(:enable_highlighting => true))
-        URI.should_receive(:parse).with(/EnableHighlighting/).and_return(@uriresult)
+        @bing_search.should_receive(:query).with(anything(), anything(), anything(), anything(), true, anything()).and_return ""
         search.run
       end
     end
@@ -190,7 +190,7 @@ describe WebSearch do
     context "when enable highlighting is set to false" do
       it "should not pass enable highlighting parameter to Bing as an option" do
         search = WebSearch.new(@valid_options.merge(:enable_highlighting => false))
-        URI.should_receive(:parse).with(/Options=&/).and_return(@uriresult)
+        @bing_search.should_receive(:query).with(anything(), anything(), anything(), anything(), false, anything()).and_return ""
         search.run
       end
     end
@@ -202,7 +202,7 @@ describe WebSearch do
 
       it "should pass a language filter to Bing" do
         search = WebSearch.new(@valid_options)
-        URI.should_receive(:parse).with(/%20language%3Aes/).and_return(@uriresult)
+        @bing_search.should_receive(:query).with(/language:es/, anything(), anything(), anything(), anything(), anything()).and_return ""
         search.run
       end
 
@@ -212,12 +212,6 @@ describe WebSearch do
     end
 
     context "when affiliate is not nil" do
-      it "should not search for FAQs" do
-        search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
-        Faq.should_not_receive(:search_for)
-        search.run
-      end
-
       context "when affiliate has domains specified and user does not specify site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
@@ -227,7 +221,7 @@ describe WebSearch do
           search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
-          URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Abar\.com%20OR%20site%3Afoo\.com\)$/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(government\) \(site:bar\.com OR site:foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
           search.run
         end
 
@@ -242,7 +236,7 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            URI.should_receive(:parse).with(/a10071.gov\)$/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/a10071.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -256,7 +250,7 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Abar.com%20OR%20site%3Afoo.com\)$/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:PatentClass OR site:bar.com OR site:foo.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -303,7 +297,7 @@ describe WebSearch do
           search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
-          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(government site:blat\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
           search.run
         end
 
@@ -316,7 +310,7 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return @uriresult
+            @bing_search.should_receive(:query).with(/\(government site:blat\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -326,7 +320,7 @@ describe WebSearch do
         before do
           @affiliate = affiliates(:basic_affiliate)
           @affiliate.add_site_domains("foo.com" => nil)
-          URI.should_receive(:parse).with(/#{Regexp.escape("(government%20site%3Awww.foo.com)")}/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(government site:www.foo.com\)/, anything(), anything(), anything(), anything(), anything()).and_return ""
           @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'www.foo.com'))
           @search.stub!(:handle_bing_response)
           @search.stub!(:log_serp_impressions)
@@ -361,7 +355,7 @@ describe WebSearch do
           search = WebSearch.new(@valid_options.merge(:affiliate => Affiliate.new))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""          
           search.run
         end
 
@@ -370,33 +364,9 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => Affiliate.new(:scope_ids => 'PatentClass')))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:PatentClass\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
-        end
-      end
-    end
-
-    context "when affiliate is nil" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(:affiliate => nil))
-      end
-
-      it "should use just query string and ScopeID/gov/mil combo" do
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
-        @search.run
-      end
-
-      it "should search for FAQs" do
-        Faq.should_receive(:search_for).with('government', I18n.default_locale.to_s)
-        @search.run
-      end
-
-      context "when a scope id is specified" do
-        it "should ignore the scope id" do
-          @search = WebSearch.new(@valid_options.merge(:affiliate => nil, :scope_id => 'PatentClass'))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
-          @search.run
         end
       end
     end
@@ -404,7 +374,7 @@ describe WebSearch do
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
         search = WebSearch.new(@valid_options.merge(:page => 7))
-        URI.should_receive(:parse).with(/web\.offset=60/).and_return(@uriresult)
+        @bing_search.should_receive(:query).with(anything(), anything(), 60, anything(), anything(), anything())
         search.run
       end
     end
@@ -413,14 +383,14 @@ describe WebSearch do
       context "when query is limited to search only in titles" do
         it "should construct a query string with the intitle: limits on the query parameter" do
           search = WebSearch.new(@valid_options.merge(:query_limit => "intitle:"))
-          URI.should_receive(:parse).with(/query=\(intitle%3Agovernment\)/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(intitle:government\)/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when more than one query term is specified" do
           it "should construct a query string with intitle: limits before each query term" do
             search = WebSearch.new(@valid_options.merge(:query => 'barack obama', :query_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/query=\(intitle%3Abarack%20intitle%3Aobama\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(intitle:barack intitle:obama\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -428,7 +398,7 @@ describe WebSearch do
         context "when query limit is blank" do
           it "should not use the query limit in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -437,14 +407,14 @@ describe WebSearch do
       context "when a phrase query is specified" do
         it "should construct a query string that includes the phrase in quotes" do
           search = WebSearch.new(@valid_options.merge(:query_quote => 'barack obama'))
-          URI.should_receive(:parse).with(/%22barack%20obama%22/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\"barack obama\"/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when the phrase query limit is set to intitle:" do
           it "should construct a query string with the intitle: limit on the phrase query" do
             search = WebSearch.new(@valid_options.merge(:query_quote => 'barack obama', :query_quote_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/%20intitle%3A%22barack%20obama%22/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/ intitle:\"barack obama\"/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -452,7 +422,7 @@ describe WebSearch do
         context "and it is blank" do
           it "should not include a phrase query in the url" do
             search = WebSearch.new(@valid_options.merge(:query_quote => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -460,7 +430,7 @@ describe WebSearch do
         context "when the phrase query is blank and the phrase query limit is blank" do
           it "should not include anything relating to phrase query in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_quote => '', :query_quote_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -469,14 +439,14 @@ describe WebSearch do
       context "when OR terms are specified" do
         it "should construct a query string that includes the OR terms OR'ed together" do
           search = WebSearch.new(@valid_options.merge(:query_or => 'barack obama'))
-          URI.should_receive(:parse).with(/barack%20OR%20obama/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/barack OR obama/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when the OR query limit is set to intitle:" do
           it "should construct a query string that includes the OR terms with intitle prefix" do
             search = WebSearch.new(@valid_options.merge(:query_or => 'barack obama', :query_or_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/intitle%3Abarack%20OR%20intitle%3Aobama/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/intitle:barack OR intitle:obama/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -484,7 +454,7 @@ describe WebSearch do
         context "when the OR query is blank" do
           it "should not include an OR query parameter in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_or => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -492,7 +462,7 @@ describe WebSearch do
         context "when the OR query is blank and the OR query limit is blank" do
           it "should not include anything relating to OR query in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_or => '', :query_or_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -501,14 +471,14 @@ describe WebSearch do
       context "when negative query terms are specified" do
         it "should construct a query string that includes the negative query terms prefixed with '-'" do
           search = WebSearch.new(@valid_options.merge(:query_not => 'barack obama'))
-          URI.should_receive(:parse).with(/-barack%20-obama/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/-barack -obama/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when the negative query limit is set to intitle:" do
           it "should construct a query string that includes the negative terms with intitle prefix" do
             search = WebSearch.new(@valid_options.merge(:query_not => 'barack obama', :query_not_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/-intitle%3Abarack%20-intitle%3Aobama/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/-intitle:barack -intitle:obama/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -516,7 +486,7 @@ describe WebSearch do
         context "when the negative query is blank" do
           it "should not include a negative query parameter in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_not => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -524,7 +494,7 @@ describe WebSearch do
         context "when the negative query is blank and the negative query limit are blank" do
           it "should not include anything relating to negative query in the query string" do
             search = WebSearch.new(@valid_options.merge(:query_not => '', :query_not_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -533,14 +503,14 @@ describe WebSearch do
       context "when a filetype is specified" do
         it "should construct a query string that includes a filetype" do
           search = WebSearch.new(@valid_options.merge(:file_type => 'pdf'))
-          URI.should_receive(:parse).with(/filetype%3Apdf/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/filetype:pdf/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when the filetype specified is 'All'" do
           it "should construct a query string that does not have a filetype parameter" do
             search = WebSearch.new(@valid_options.merge(:file_type => 'All'))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -548,7 +518,7 @@ describe WebSearch do
         context "when a blank filetype is passed in" do
           it "should not put filetype parameters in the query string" do
             search = WebSearch.new(@valid_options.merge(:file_type => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -556,15 +526,16 @@ describe WebSearch do
 
       context "when one or more site limits are specified" do
         it "should construct a query string with site limits for each of the sites" do
+          @affiliate.add_site_domains({"whitehouse.gov" => nil, "omb.gov" => nil})
           search = WebSearch.new(@valid_options.merge(:site_limits => 'whitehouse.gov omb.gov'))
-          URI.should_receive(:parse).with(/site%3Awhitehouse.gov%20OR%20site%3Aomb.gov/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/site:whitehouse.gov OR site:omb.gov/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when a blank site limit is passed" do
           it "should not include site limit in the query string" do
             search = WebSearch.new(@valid_options.merge(:site_limits => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -573,38 +544,14 @@ describe WebSearch do
       context "when one or more site exclusions is specified" do
         it "should construct a query string with site exlcusions for each of the sites" do
           search = WebSearch.new(@valid_options.merge(:site_excludes => "whitehouse.gov omb.gov"))
-          URI.should_receive(:parse).with(/-site%3Awhitehouse.gov%20-site%3Aomb.gov/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/-site:whitehouse.gov -site:omb.gov/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
         context "when a blank site exclude is passed" do
           it "should not include site exclude in the query string" do
             search = WebSearch.new(@valid_options.merge(:site_excludes => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
-            search.run
-          end
-        end
-      end
-
-      context "when a fedstates parameter is specified" do
-        it "should set the scope if with the fedstates parameter" do
-          search = WebSearch.new(@valid_options.merge(:fedstates => 'MD'))
-          URI.should_receive(:parse).with(/\(scopeid%3AusagovMD\)/).and_return(@uriresult)
-          search.run
-        end
-
-        context "when the fedstates parameter specified is 'all'" do
-          it "should use the 'usagovall' scopeid with .gov and .mil sites included" do
-            search = WebSearch.new(@valid_options.merge(:fedstates => 'all'))
-            URI.should_receive(:parse).with(/\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
-            search.run
-          end
-        end
-
-        context "when fedstates parameter is blank" do
-          it "should use the 'usagovall' scope id with .gov and .mil sites included" do
-            search = WebSearch.new(@valid_options.merge(:fedstates => ''))
-            URI.should_receive(:parse).with(/\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)/, anything(), anything, anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -613,20 +560,20 @@ describe WebSearch do
       context "when a results per page number is specified" do
         it "should construct a query string with the appropriate per page variable set" do
           search = WebSearch.new(@valid_options.merge(:per_page => 20))
-          URI.should_receive(:parse).with(/web\.count=20/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(anything(), anything(), anything, 20, anything(), anything()).and_return ""
           search.run
         end
 
         it "should not set a per page value above 50" do
           search = WebSearch.new(@valid_options.merge(:per_page => 100))
-          URI.should_receive(:parse).with(/web\.count=50/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(anything(), anything(), anything, 50, anything(), anything()).and_return ""
           search.run
         end
 
         context "when the per_page variable passed is blank" do
           it "should set the per-page parameter to the default value, defined by the DEFAULT_PER_PAGE variable" do
             search = WebSearch.new(@valid_options)
-            URI.should_receive(:parse).with(/web\.count=10/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(anything(), anything(), anything, 10, anything(), anything()).and_return ""
             search.run
           end
         end
@@ -640,6 +587,7 @@ describe WebSearch do
 
       context "when multiple or all of the advanced query parameters are specified" do
         it "should construct a query string that incorporates all of them with the proper spacing" do
+          @affiliate.add_site_domains({"whitehouse.gov" => nil, "omb.gov" => nil})
           search = WebSearch.new(@valid_options.merge(:query_limit => 'intitle:',
                                                       :query_quote => 'barack obama',
                                                       :query_quote_limit => '',
@@ -650,7 +598,7 @@ describe WebSearch do
                                                       :file_type => 'pdf',
                                                       :site_limits => 'whitehouse.gov omb.gov',
                                                       :site_excludes => 'nasa.gov noaa.gov'))
-          URI.should_receive(:parse).with(/query=\(intitle%3Agovernment%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle%3Aclunkers%20filetype%3Apdf%20site%3Awhitehouse.gov%20OR%20site%3Aomb.gov%20-site%3Anasa.gov%20-site%3Anoaa.gov\)/).and_return(@uriresult)
+          @bing_search.should_receive(:query).with(/\(intitle:government \"barack obama\" cars OR stimulus -intitle:clunkers filetype:pdf site:whitehouse.gov OR site:omb.gov -site:nasa.gov -site:noaa.gov\)/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
       end
@@ -659,7 +607,7 @@ describe WebSearch do
         context "when a valid filter parameter is present" do
           it "should set the Adult parameter in the query sent to Bing" do
             search = WebSearch.new(@valid_options.merge(:filter => 'off'))
-            URI.should_receive(:parse).with(/Adult=off/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(anything(), anything(), anything, anything(), anything(), "off").and_return ""
             search.run
           end
         end
@@ -667,7 +615,7 @@ describe WebSearch do
         context "when the filter parameter is blank" do
           it "should set the Adult parameter to the default value" do
             search = WebSearch.new(@valid_options.merge(:filter => ''))
-            URI.should_receive(:parse).with(/Adult=#{BingSearch::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(anything(), anything(), anything, anything(), anything(), BingSearch::DEFAULT_FILTER_SETTING).and_return ""
             search.run
           end
         end
@@ -675,7 +623,7 @@ describe WebSearch do
         context "when the filter parameter is not in the list of valid filter values" do
           it "should set the Adult parameter to the default value" do
             search = WebSearch.new(@valid_options.merge(:filter => 'invalid'))
-            URI.should_receive(:parse).with(/Adult=#{BingSearch::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(anything(), anything(), anything, anything(), anything(), BingSearch::DEFAULT_FILTER_SETTING).and_return ""
             search.run
           end
         end
@@ -683,7 +631,7 @@ describe WebSearch do
         context "when a filter parameter is not set" do
           it "should set the Adult parameter to the default value ('moderate')" do
             search = WebSearch.new(@valid_options)
-            URI.should_receive(:parse).with(/Adult=moderate/i).and_return(@uriresult)
+            @bing_search.should_receive(:query).with(anything(), anything(), anything, anything(), anything(), "moderate").and_return ""
             search.run
           end
         end
@@ -694,7 +642,7 @@ describe WebSearch do
       it "should pass a url-escaped query string to Bing" do
         query = "Pros & Cons Physician Assisted Suicide"
         search = WebSearch.new(@valid_options.merge(:query => query))
-        URI.should_receive(:parse).with(/Pros%20%26%20Cons%20Physician%20Assisted%20Suicide/).and_return(@uriresult)
+        @bing_search.should_receive(:query).with(/Pros & Cons Physician Assisted Suicide/, anything(), anything, anything(), anything(), anything()).and_return ""
         search.run
       end
     end
@@ -816,7 +764,7 @@ describe WebSearch do
 
     context "when the Bing spelling suggestion is identical to the original query except for Bing highight characters" do
       before do
-        @search = WebSearch.new(:query => 'ct-w4')
+        @search = WebSearch.new(:query => 'ct-w4', :affiliate => @affiliate)
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
@@ -830,7 +778,7 @@ describe WebSearch do
 
     context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
       before do
-        @search = WebSearch.new(:query => 'bio-tech')
+        @search = WebSearch.new(:query => 'bio-tech', :affiliate => @affiliate)
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
@@ -839,32 +787,6 @@ describe WebSearch do
 
       it "should not have a spelling suggestion" do
         @search.spelling_suggestion.should be_nil
-      end
-    end
-
-    context "recent recalls" do
-      before :each do
-        @options_with_recall = {:query => "foo bar recall"}
-      end
-
-      it "should send the query to recall" do
-        search = WebSearch.new(@options_with_recall)
-        results = [1, 2, 3]
-        Recall.should_receive(:recent).with('foo bar recall').and_return(results)
-        search.run
-        search.recalls.should == results
-      end
-
-      it "should not run on pages other than the first page" do
-        search = WebSearch.new(@options_with_recall.merge(:page => 2))
-        Recall.should_not_receive(:recent)
-        search.run
-      end
-
-      it "should not run on affiliate pages" do
-        search = WebSearch.new(@options_with_recall.merge(:affiliate => @affiliate))
-        Recall.should_not_receive(:recent)
-        search.run
       end
     end
 
@@ -906,7 +828,7 @@ describe WebSearch do
         end
 
         it "should use Bing's info to set the pagination" do
-          search = WebSearch.new(:query => 'government', :page => 97)
+          search = WebSearch.new(:query => 'government', :affiliate => @affiliate, :page => 97)
           search.run.should be_true
           search.startrecord.should == 621
           search.endrecord.should == 622
@@ -921,17 +843,18 @@ describe WebSearch do
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.myagency.gov/', :locale => 'en')
         AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
+        @affiliate.stub!(:is_agency_govbox_enabled?).and_return true
       end
 
       it "should retrieve the associated agency record" do
-        search = WebSearch.new(:query => 'irs')
+        search = WebSearch.new(:query => 'irs', :affiliate => @affiliate)
         search.run
         search.agency.should == @agency
       end
 
       context "when the query matches but the case is different" do
         it "should match the agency anyway" do
-          search = WebSearch.new(:query => 'IRS')
+          search = WebSearch.new(:query => 'IRS', :affiliate => @affiliate)
           search.run
           search.agency.should == @agency
         end
@@ -939,7 +862,7 @@ describe WebSearch do
 
       context "when there are leading or trailing spaces, but the query basically matches" do
         it "should match the proper agency anyway" do
-          search = WebSearch.new(:query => '     irs   ')
+          search = WebSearch.new(:query => '     irs   ', :affiliate => @affiliate)
           search.run
           search.agency.should == @agency
         end
@@ -951,11 +874,12 @@ describe WebSearch do
       before do
         @ulcerative_colitis_med_topic = med_topics(:ulcerative_colitis)
         @ulcerative_colitis_es_med_topic = med_topics(:ulcerative_colitis_es)
+        @affiliate.stub!(:is_medline_govbox_enabled?).and_return true
       end
 
       context "when the search matches a MedTopic record" do
         before do
-          @search = WebSearch.new(:query => 'ulcerative colitis')
+          @search = WebSearch.new(:query => 'ulcerative colitis', :affiliate => @affiliate)
           @search.run
         end
 
@@ -967,7 +891,7 @@ describe WebSearch do
       context "when the locale is not the default" do
         before do
           I18n.locale = :es
-          @search = WebSearch.new(:query => 'Colitis ulcerativa')
+          @search = WebSearch.new(:query => 'Colitis ulcerativa', :affiliate => @affiliate)
           @search.run
         end
 
@@ -982,7 +906,7 @@ describe WebSearch do
 
       context "when the page is not the first page" do
         before do
-          @search = WebSearch.new(:query => 'ulcerative colitis', :page => 3)
+          @search = WebSearch.new(:query => 'ulcerative colitis', :affiliate => @affiliate, :page => 3)
           @search.run
         end
 
@@ -993,7 +917,7 @@ describe WebSearch do
 
       context "when the query does not match a med topic" do
         before do
-          @search = WebSearch.new(:query => 'government')
+          @search = WebSearch.new(:query => 'government', :affiliate => @affiliate)
           @search.run
         end
 
@@ -1004,19 +928,19 @@ describe WebSearch do
 
       context "when an affiliate search matches a med topic" do
         before do
-          @search = WebSearch.new(:query => 'ulcerative colitis', :affiliate => affiliates(:basic_affiliate))
+          @search = WebSearch.new(:query => 'ulcerative colitis', :affiliate => @affiliate)
           @search.run
         end
 
         it "should not set a med topic" do
-          @search.med_topic.should be_nil
+          @search.med_topic.should_not be_nil
         end
       end
     end
 
     context "featured collection" do
       context "searching for non affiliate results" do
-        let(:search) { WebSearch.new(:query => 'cyclone') }
+        let(:search) { WebSearch.new(:query => 'cyclone', :affiliate => @affiliate) }
         let(:featured_collections) { mock('featured collections') }
 
         before do
@@ -1306,7 +1230,7 @@ describe WebSearch do
   describe "#hits(response)" do
     context "when Bing reports a total > 0 but gives no results whatsoever" do
       before do
-        @search = WebSearch.new
+        @search = WebSearch.new(:affiliate => @affiliate)
         @response = mock("response")
         web = mock("web")
         @response.stub!(:web).and_return(web)
@@ -1327,7 +1251,7 @@ describe WebSearch do
                                          :locale => 'en', :status => 'active', :publish_start_on => Date.current)
       BoostedContent.reindex
       Sunspot.commit
-      @search = WebSearch.new(:query => 'obama')
+      @search = WebSearch.new(:query => 'obama', :affiliate => affiliate)
       @search.run
       allow_message_expectations_on_nil
     end
@@ -1374,7 +1298,7 @@ describe WebSearch do
   describe "caching in #perform(query_string, offset, enable_highlighting)" do
     before do
       @redis = WebSearch.send(:class_variable_get, :@@redis)
-      @search = WebSearch.new(:query => "foo", :per_page => 40, :filter => "strict")
+      @search = WebSearch.new(:query => "foo", :affiliate => affiliates(:basic_affiliate), :per_page => 40, :filter => "strict")
       @cache_key = "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true:strict"
     end
 
@@ -1389,7 +1313,7 @@ describe WebSearch do
 
     it "should use the Spell+Image source for image searches" do
       @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true:moderate")
-      image_search = ImageSearch.new(:query => "foo", :per_page => 25, :page => 4)
+      image_search = ImageSearch.new(:query => "foo", :affiliate => affiliates(:basic_affiliate), :per_page => 25, :page => 4)
       image_search.send(:perform_bing_search)
     end
 
@@ -1465,7 +1389,7 @@ describe WebSearch do
   end
 
   describe "#to_xml" do
-    let(:search) { WebSearch.new(:query => 'solar') }
+    let(:search) { WebSearch.new(:query => 'solar', :affiliate => affiliates(:basic_affiliate)) }
     let(:error_in_xml) { "<search><error>error_message</error></search>" }
 
     context "when error message exists" do
@@ -1493,7 +1417,7 @@ describe WebSearch do
   describe "#are_results_by_bing?" do
     context "when doing a normal search with normal results" do
       it "should return true" do
-        search = WebSearch.new(:query => 'white house')
+        search = WebSearch.new(:query => 'white house', :affiliate => affiliates(:basic_affiliate))
         search.run
         search.are_results_by_bing?.should be_true
       end

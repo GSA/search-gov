@@ -1,17 +1,20 @@
 require 'spec/spec_helper'
 
 describe ImagesController do
+  fixtures :affiliates
+  
   describe "#index" do
-    let(:affiliate) { mock_model(Affiliate) }
+    before do
+      @affiliate = affiliates(:usagov_affiliate)
+    end
 
     context "when no locale is specified" do
       before do
-        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
         get :index
       end
 
       it { should assign_to(:search).with_kind_of(ImageSearch) }
-      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:affiliate).with(@affiliate) }
       it { should respond_with(:success) }
 
       specify { I18n.locale.should == :en }
@@ -20,23 +23,21 @@ describe ImagesController do
     context "when locale is specified" do
       context "locale=en" do
         before do
-          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
           get :index, :locale=> "en"
         end
 
         it { should assign_to(:search).with_kind_of(ImageSearch) }
-        it { should assign_to(:affiliate).with(affiliate) }
+        it { should assign_to(:affiliate).with(@affiliate) }
         specify { I18n.locale.should == :en }
       end
 
       context "locale=es" do
         before do
-          Affiliate.should_receive(:find_by_name).with('gobiernousa').and_return(affiliate)
           get :index, :locale=> "es"
         end
 
         it { should assign_to(:search).with_kind_of(ImageSearch) }
-        it { should assign_to(:affiliate).with(affiliate) }
+        it { should assign_to(:affiliate).with(affiliates(:gobiernousa_affiliate)) }
         specify { I18n.locale.should == :es }
       end
     end

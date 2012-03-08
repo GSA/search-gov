@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   has_mobile_fu
 
   def index
-    @search = WebSearch.new
     @title = "Home - "
     @affiliate = I18n.locale == :es ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
+    @search = WebSearch.new(:affiliate => @affiliate)
     respond_to do |format|
       format.any(:html, :mobile)
     end

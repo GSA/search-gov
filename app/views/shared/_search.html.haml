@@ -17,7 +17,6 @@
     = hidden_field_tag :sort, params[:sort] if params[:sort].present?
   - else
     = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
-    = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
   = submit_tag((forms_search? ? t(:forms_search) : (recalls_search? ? t(:recalls_search) : t(:search))), :id => "search_button")
   - if web_search?

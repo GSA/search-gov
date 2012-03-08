@@ -21,10 +21,10 @@ describe ImageSearchesController do
         it { should assign_to(:search).with(image_search) }
         it { should assign_to :affiliate }
         it { should assign_to(:page_title).with("Current weather - NPS Site Search Results") }
-        it { should render_template 'image_searches/affiliate_index' }
+        it { should render_template 'image_searches/index' }
 
         it "should render the template" do
-          response.should render_template 'image_searches/affiliate_index'
+          response.should render_template 'image_searches/index'
           response.should render_template 'layouts/affiliate'
         end
       end
@@ -104,7 +104,6 @@ describe ImageSearchesController do
       it "assigns @page_title" do
         assigns[:page_title].should_not be_blank
       end
-
     end
   end
 end

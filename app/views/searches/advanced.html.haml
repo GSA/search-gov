@@ -1,12 +1,11 @@
 #advanced-header
-  = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale) unless @affiliate
 - target = params[:embedded] ? nil : '_parent'
 = form_tag(search_path, :method => :get, :id => 'advanced-firstgov', :class => 'advanced', :name=> 'advanced-firstgov', :target => target) do
   = hidden_field_tag 'input-form', 'advanced'
-  - locale = @affiliate ? @affiliate.locale.to_sym : I18n.locale
-  = hidden_field_tag 'locale', locale unless (locale == I18n.default_locale)
-  = hidden_field_tag 'affiliate', @affiliate.name if @affiliate
-  = hidden_field_tag 'scope_id', @scope_id if @affiliate && @scope_id
+  - locale = @affiliate.locale.to_sym
+  = hidden_field_tag 'locale', locale
+  = hidden_field_tag 'affiliate', @affiliate.name
+  = hidden_field_tag 'scope_id', @scope_id if @scope_id
   = hidden_field_tag 'embedded', params[:embedded] if params[:embedded]
   #advanced-form-intro
     %h1= t :advanced_search_instruction
@@ -47,27 +46,6 @@
           = label_tag 'filetype-lbl', (t :advanced_search_file_type_label)
       .input
         = select_tag 'filetype', options_for_select([ [(t :advanced_search_file_type_all_format_label), nil], ['Adobe PDF', 'pdf'], ['Microsoft Excel', 'xls'], ['Microsoft PowerPoint', 'ppt'], ['Microsoft Word', 'doc'], [(t :advanced_search_file_type_txt_format_label), 'txt'] ], params['filetype'].blank? ? 'All' : params['filetype']), :id => 'filetype-lbl'
-    - unless @affiliate
-      .element
-        .label
-          %span.label
-            = label_tag 'sitelimit-lbl', (t :advanced_search_site_limits_label)
-        .input
-          = text_field_tag 'sitelimit', params['sitelimit'], :size => 50, :id => 'sitelimit-lbl'
-          %div= (t :advanced_search_site_limits_example)
-      .element
-        .label
-          %span.label
-            = label_tag 'siteexclude-lbl', (t :advanced_search_site_excludes_label)
-        .input
-          = text_field_tag 'siteexclude', params['siteexclude'], :size => 50, :id => 'siteexclude-lbl'
-          %div= (t :advanced_search_site_excludes_example)
-      .element
-        .label
-          %span.label
-            = label_tag 'fedstates-lbl', (t :advanced_search_fedstates_label)
-        .input
-          = select_tag 'fedstates', options_for_select( scope_ids_as_options, params['fedstates'].blank? ? nil : params['fedstates'] ), :id => 'fedstates-lbl'
     .element
       .label
         %span.label

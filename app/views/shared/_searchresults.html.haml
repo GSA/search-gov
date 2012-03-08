@@ -4,23 +4,18 @@
 - if search.results.present?
   = display_search_all_affiliate_sites_suggestion(search, @affiliate)
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-  - if search.fedstates && search.fedstates != 'all'
-    = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
 - if search.first_page?
   - if search.has_boosted_contents? or search.has_featured_collections?
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
-  - elsif search.recalls && search.recalls.total > 0
-    = render "shared/recall_gov_box", :search => search
   - elsif search.med_topic.present?
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
 - if search.results.present?
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
       = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
-    = render "/shared/related_faqs" if index == 2 and search.first_page?
     = render "/shared/news_govbox", :search => @search if index == 2 and search.first_page?
-    - if @affiliate and @affiliate.uses_bing_odie_results? and index == 4 and search.first_page?
+    - if @affiliate.uses_bing_odie_results? and index == 4 and search.first_page?
       = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo
@@ -29,5 +24,4 @@
 - elsif search.error_message
   %p.noresults #{search.error_message}
 - else
-  = render "/shared/no_results", :query => @search.query unless @affiliate
-  = no_results_for search.query if @affiliate
+  = no_results_for search.query

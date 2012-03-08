@@ -1,7 +1,5 @@
-#sidebar
-  = link_to(image_tag("USAsearch_medium_#{I18n.locale}_images.gif" , :alt => "USASearch Images Home"), images_path(:locale => I18n.locale))
-  #images_vertical_navigation
-    = render "shared/vertical_navigation"
-#results.images
-  = render "/shared/search", :path => image_search_path
-  = render "/shared/searchresults", :search => @search
+#left_column
+  = render "shared/affiliate_vertical_navigation"
+#results
+  = render "/shared/search", :path => image_search_path(:affiliate => @affiliate)
+  = render :partial => "/shared/searchresults", :locals => { :search => @search }

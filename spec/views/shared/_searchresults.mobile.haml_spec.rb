@@ -15,13 +15,8 @@ describe "shared/_searchresults.mobile.haml" do
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 1
     @search.stub!(:boosted_contents)
-    @search.stub!(:faqs)
-    @search.stub!(:gov_forms)
     @search.stub!(:scope_id)
-    @search.stub!(:fedstates)
-    @search.stub!(:recalls)
     @search.stub!(:agency)
-    @search.stub!(:extra_image_results)
     @search.stub!(:med_topic)
     @search.stub!(:first_page?).and_return true
     @deep_link = mock("DeepLink")

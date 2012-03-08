@@ -2,6 +2,10 @@ require 'spec/spec_helper'
 
 describe SearchesController do
   fixtures :affiliates, :affiliate_templates
+  
+  before do
+    @affiliate = affiliates(:usagov_affiliate)
+  end
 
   describe "#auto_complete_for_search_query" do
     it "should use query param to find terms starting with that param" do
@@ -81,7 +85,7 @@ describe SearchesController do
       end
 
       it "should render the template" do
-        response.should render_template 'affiliate_index'
+        response.should render_template 'index'
         response.should render_template 'layouts/affiliate'
       end
 
@@ -153,7 +157,7 @@ describe SearchesController do
     it { should assign_to :page_title }
 
     it "should render the template" do
-      response.should render_template 'affiliate_index'
+      response.should render_template 'index'
       response.should render_template 'layouts/affiliate'
     end
 
@@ -171,11 +175,6 @@ describe SearchesController do
 
     it "should set the query in Javascript" do
       response.body.should match(/var original_query = \"weather\"/)
-    end
-
-    it "should not search for FAQs" do
-      @search.faqs.should be_nil
-      response.body.should_not contain(/related_faqs/)
     end
 
     context "when the affiliate locale is set to Spanish" do
@@ -218,7 +217,7 @@ describe SearchesController do
 
     it { should respond_with(:success) }
     it { should render_template 'layouts/affiliate' }
-    it { should render_template 'searches/affiliate_index' }
+    it { should render_template 'searches/index' }
   end
 
   context "when handling a valid affiliate search request with oneserp=1" do
@@ -278,7 +277,7 @@ describe SearchesController do
     end
 
     it "should render the template" do
-      response.should render_template 'affiliate_index'
+      response.should render_template 'index'
       response.should render_template 'layouts/affiliate'
     end
   end
@@ -294,7 +293,7 @@ describe SearchesController do
     end
 
     it "should render the template" do
-      response.should render_template 'affiliate_index'
+      response.should render_template 'index'
       response.should render_template 'layouts/affiliate'
     end
   end
@@ -405,79 +404,6 @@ describe SearchesController do
       end
 
       it { should assign_to(:page_title).with_kind_of(String) }
-    end
-  end
-
-  describe "#forms" do
-    render_views
-
-    context "when the source parameter is not specified" do
-      before do
-        get :forms, :query => "taxes", :page => 2
-        @search = assigns[:search]
-        @page_title = assigns[:page_title]
-      end
-
-      it "should render the template" do
-        response.should render_template 'index'
-        response.should render_template 'layouts/application'
-      end
-
-      it "should show the forms logo" do
-        response.should have_selector("img[src^='/images/USAsearch_medium_en_forms.gif']")
-      end
-
-      it "should assign the query with a forms prefix as the page title" do
-        @page_title.should == "taxes"
-      end
-
-      it "should show a custom title for the results page" do
-        response.body.should contain("taxes - Search.USA.gov Forms")
-      end
-
-      it "should set the query in the Search model" do
-        @search.query.should == "taxes"
-      end
-
-      it "should set the page" do
-        @search.page.should == 2
-      end
-
-      it "should load results for a keyword query" do
-        @search.should_not be_nil
-        @search.results.should_not be_nil
-      end
-
-      it "should use the FormSearch model to do the search" do
-        form_search_results = FormSearch.new(:query => 'taxes')
-        FormSearch.should_receive(:new).with(:per_page => 10, :query => "taxes", :enable_highlighting => true, :page => 2).and_return form_search_results
-        get :forms, :query => "taxes", :page => 2
-      end
-
-      it "should render the search box with the form search path" do
-        response.body.should have_selector("form[id='search_form']", :method => 'get', :action => '/search/forms?locale=en&m=false')
-      end
-
-      it "should not show any related search results" do
-        @search.related_search.should be_empty
-      end
-
-      it "should have a Forms header at the top of the results, and link to Government Web and Images" do
-        response.body.should have_selector("a", :href => "/search?m=false&query=taxes", :content => "Web")
-        response.body.should have_selector("a", :href => '/search/images?m=false&query=taxes', :content => "Images")
-        response.body.should have_selector("span", :content => "Forms")
-      end
-
-      it "should not have related Gov Forms" do
-        response.body.should_not have_selector("ul[id=related_gov_forms]")
-      end
-    end
-
-    context "when the query is blank" do
-      it "should redirect to the forms landing page" do
-        get :forms
-        response.should redirect_to forms_path
-      end
     end
   end
 

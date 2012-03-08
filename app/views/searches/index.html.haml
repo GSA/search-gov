@@ -1,9 +1,7 @@
-#results-wrap
-  #sidebar
-    = search_results_logo
-    %div{ :id => web_search? ? "web_vertical_navigation" : "forms_vertical_navigation" }
-      = render "shared/vertical_navigation"
-  #results{ :class => controller.action_name }
-    = render "/shared/search", :path => @form_path
-    = render "/shared/searchresults", :search => @search
-
+#left_column
+  - if @affiliate.has_active_rss_feeds? or @affiliate.is_image_search_enabled? or @affiliate.has_active_document_collections?
+    = render "shared/affiliate_vertical_navigation"
+  &nbsp;
+#results
+  = render "shared/search", :path => search_path
+  = render :partial => "shared/searchresults", :locals => { :search => @search }

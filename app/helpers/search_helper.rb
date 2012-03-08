@@ -69,17 +69,13 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def display_bing_result_links (result, search, affiliate, position, vertical, show_cache_link = true)
+  def display_bing_result_links (result, search, affiliate, position, vertical)
     html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
-    unless result['cacheUrl'].blank? or !show_cache_link
-      html << " - "
-      html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
-    end
     raw html
   end
 
   def display_search_within_this_site_link(result, search, affiliate)
-    return '' if affiliate.nil? or I18n.locale == :es or search.matching_site_limit.present? or !affiliate.has_multiple_domains?
+    return '' if affiliate.locale == "es" or !affiliate.has_multiple_domains? or (search.matching_site_limits.present? and search.matching_site_limits.any?)
     site_limit = URI.parse(result['unescapedUrl']).host rescue nil
     html = ''
     site_limit.blank? ? '' : html << ' - ' << link_to('Search this site',
@@ -138,7 +134,7 @@ module SearchHelper
     end
     content_tag(:table, raw(rows), :class=>"deep-links")
   end
-
+  
   def display_bing_result_extname_prefix(bing_result)
     display_result_extname_prefix(bing_result['unescapedUrl'])
   end
@@ -548,12 +544,6 @@ module SearchHelper
     link_to top_search.query, top_search_url_for(top_search, url_options), html_options.merge(:target => '_top')
   end
 
-  def results_restriction_message_for(fedstates, search_path)
-    heading = t :search_results_restriction_message_front, :scope_setting => fedstates
-    link = link_to((t :search_results_restriction_message_link), search_path)
-    raw(heading + ' ' + link)
-  end
-
   def related_topics_header(affiliate, query)
     if affiliate
       related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
@@ -598,8 +588,8 @@ module SearchHelper
   end
 
   def display_search_all_affiliate_sites_suggestion(search, affiliate)
-    return unless affiliate and search.matching_site_limit.present?
-    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limit}. "
+    return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
+    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(" ")}. "
     html << "Do you want to see results for "
     html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
     html << "?"

@@ -9,10 +9,7 @@ class WebSearch < Search
               :related_search,
               :spelling_suggestion,
               :boosted_contents,
-              :faqs,
-              :recalls,
               :filter_setting,
-              :fedstates,
               :enable_highlighting,
               :agency,
               :med_topic,
@@ -21,8 +18,8 @@ class WebSearch < Search
               :featured_collections,
               :indexed_documents,
               :indexed_results,
-              :matching_site_limit
-
+              :matching_site_limits
+              
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
       corrected_query = Misspelling.correct(sanitized_query)
@@ -41,8 +38,6 @@ class WebSearch < Search
   def initialize(options = {})
     super(options)
     @offset = (@page - 1) * @per_page
-    @fedstates = options[:fedstates] || nil
-
     @bing_search = BingSearch.new(USER_AGENT)
     @filter_setting = BingSearch::VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : BingSearch::DEFAULT_FILTER_SETTING
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
@@ -106,23 +101,13 @@ class WebSearch < Search
     if options[:query].present?
       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
-
-    if options[:query_quote].present?
-      query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
-    end
-
-    if options[:query_or].present?
-      query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ')
-    end
-
-    if options[:query_not].present?
-      query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
-    end
+    query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"") if options[:query_quote].present?
+    query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ') if options[:query_or].present?
+    query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ') if options[:query_not].present?
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
-    if options[:affiliate]
-      query += " #{options[:site_limits].split.collect { |site| 'site:' + site if options[:affiliate].includes_domain?(site) }.join(' OR ')}" unless options[:site_limits].blank?
-    else
-      query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
+    unless options[:site_limits].blank?
+      @matching_site_limits = options[:site_limits].split.collect{|site| site if options[:affiliate].includes_domain?(site) }.compact
+      query += " #{self.matching_site_limits.collect{|site| "site:#{site}" }.join(' OR ')}"
     end
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
@@ -138,11 +123,7 @@ class WebSearch < Search
 
   def search
     begin
-      if @affiliate and @affiliate.uses_odie_results?
-        perform_odie_search
-      else
-        parse_bing_response(perform_bing_search)
-      end
+      @affiliate.uses_odie_results? ? perform_odie_search : parse_bing_response(perform_bing_search)
     rescue BingSearch::BingSearchError => error
       Rails.logger.warn "Error getting search results from Bing server: #{error}"
       false
@@ -175,11 +156,7 @@ class WebSearch < Search
   end
 
   def handle_response(response)
-    if @affiliate and @affiliate.uses_odie_results?
-      handle_odie_response(response)
-    else
-      handle_bing_response(response)
-    end
+    @affiliate.uses_odie_results? ? handle_odie_response(response) : handle_bing_response(response)
   end
 
   def handle_odie_response(response)
@@ -194,9 +171,7 @@ class WebSearch < Search
   def handle_bing_response(response)
     @total = hits(response)
     if @total.zero?
-      if @affiliate and self.class == WebSearch
-        handle_odie_response(perform_odie_search)
-      end
+      handle_odie_response(perform_odie_search) if self.class == WebSearch
     else
       @startrecord = bing_offset(response) + 1
       @results = paginate(process_results(response))
@@ -272,21 +247,19 @@ class WebSearch < Search
 
   def populate_additional_results(response)
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
-    @faqs = Faq.search_for(query, I18n.locale.to_s) unless affiliate
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
-      documents = (affiliate and @indexed_results.nil?) ? IndexedDocument.search_for(query, affiliate, nil) : nil
+      documents = @indexed_results.nil? ? IndexedDocument.search_for(query, affiliate, nil) : nil
       if documents
         @indexed_documents = documents.hits(:verify => true)
         remove_bing_matches_from_indexed_documents
       end
-      if affiliate.nil? or (affiliate and affiliate.is_agency_govbox_enabled?)
+      if affiliate.is_agency_govbox_enabled?
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
       end
-      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.govbox_enabled, nil, 1) if affiliate
-      @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.nil? or (affiliate and affiliate.is_medline_govbox_enabled?)
-      @recalls = Recall.recent(query) unless affiliate
+      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.govbox_enabled, nil, 1)
+      @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
     end
   end
 
@@ -297,20 +270,16 @@ class WebSearch < Search
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "NEWS" unless self.news_items.nil? or self.news_items.total.zero?
     modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
-    modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
-    modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
     vertical =
       case self.class.to_s
         when "ImageSearch"
           :image
-        when "FormSearch"
-          :form
         when "WebSearch"
           :web
       end
-    QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)
+    QueryImpression.log(vertical, affiliate.name, self.query, modules)
   end
 
   def english_locale?
@@ -331,15 +300,7 @@ class WebSearch < Search
   end
 
   def scope
-    if affiliate
-      generate_affiliate_scope
-    else
-      if self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
-        "(scopeid:usagov#{self.fedstates})"
-      else
-        generate_default_scope
-      end
-    end
+    generate_affiliate_scope
   end
 
   def generate_default_scope
@@ -375,7 +336,7 @@ class WebSearch < Search
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
     return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
-    @affiliate ? @affiliate.excluded_urls.any? { |excluded_url| url.match(excluded_url.url) } : false
+    @affiliate.excluded_urls.any? { |excluded_url| url.match(excluded_url.url) }
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)

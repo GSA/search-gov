@@ -3,6 +3,9 @@ require 'ostruct'
 
 describe SearchHelper do
   fixtures :affiliates
+  before do
+    @affiliate = affiliates(:usagov_affiliate)
+  end
 
   describe "#display_bing_result_links" do
     it "should shorten really long URLs" do
@@ -10,77 +13,57 @@ describe SearchHelper do
       result['unescapedUrl'] = "actual content is..."
       result['cacheUrl'] = "...not important here"
       helper.should_receive(:shorten_url).once
-      helper.display_bing_result_links(result, WebSearch.new, Affiliate.new, 1, :web)
+      helper.display_bing_result_links(result, WebSearch.new(:affiliate => @affiliate), @affiliate, 1, :web)
     end
 
     context "when affiliate exists" do
       let(:result) { { 'unescapedUrl' => 'http://some.url' } }
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:search) { WebSearch.new }
+      let(:search) { WebSearch.new(:affiliate => @affiliate) }
 
       it "should not display search within this site link" do
-        helper.should_not_receive(:display_search_within_this_site_link).with(result, search, affiliate).and_return('search_within_this_site_link')
-        helper.display_bing_result_links(result, search, affiliate, 1, :web)
+        helper.should_not_receive(:display_search_within_this_site_link).with(result, search, @affiliate).and_return('search_within_this_site_link')
+        helper.display_bing_result_links(result, search, @affiliate, 1, :web)
       end
     end
   end
 
   describe "#display_search_within_this_site_link" do
-    context "when affiliate is nil" do
-      let(:result) { { 'unescapedUrl' => 'http://WWW.NPS.GOV/blog/1' } }
-      let(:search) { mock('search', { :query => 'item' }) }
-      let(:affiliate) { nil }
+    let(:result) { { 'unescapedUrl' => 'http://WWW1.NPS.GOV/blog/1' } }
+    let(:affiliate) { mock('affiliate', :name => 'nps', :locale => 'en', :has_multiple_domains? => false) }
+    let(:search) { mock('search', { :query => 'item', :affiliate => affiliate }) }
+    let(:params_hash) { { :affiliate => affiliate.name,
+                          :locale => I18n.locale,
+                          :query => search.query,
+                          :sitelimit => 'WWW1.NPS.GOV' } }
+    let(:search_path_with_params) { "/search?#{params_hash.to_param}" }
 
+    context "when site_limits present" do
       specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
     end
 
-    context "when affiliate is not nil" do
-      let(:result) { { 'unescapedUrl' => 'http://WWW1.NPS.GOV/blog/1' } }
-      let(:affiliate) { mock('affiliate', :name => 'nps') }
-      let(:search) { mock('search', { :query => 'item' }) }
-      let(:params_hash) { { :affiliate => affiliate.name,
-                            :locale => I18n.locale,
-                            :query => search.query,
-                            :sitelimit => 'WWW1.NPS.GOV' } }
-      let(:search_path_with_params) { "/search?#{params_hash.to_param}" }
+    context "when affiliate does not have multiple domains" do
+      specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+    end
 
-      context "when site_limits present" do
-        before do
-          search.should_receive(:matching_site_limit).and_return('WWW1.NPS.GOV')
-        end
-
-        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+    context "when matching affiliate domain is blank, affiliate has multiple domains" do
+      before do
+        search.should_receive(:matching_site_limits).and_return([])
+        affiliate.should_receive(:has_multiple_domains?).and_return(true)
+        helper.should_receive(:search_path).with(params_hash).and_return(search_path_with_params)
       end
 
-      context "when affiliate does not have multiple domains" do
-        before do
-          search.should_receive(:matching_site_limit).and_return(nil)
-          affiliate.should_receive(:has_multiple_domains?).and_return(false)
-        end
+      it "should generate a search this site link" do
+        content = helper.display_search_within_this_site_link(result, search, affiliate)
+        content.should have_selector("a[href='#{search_path_with_params}']", :content => 'Search this site')
+      end
+    end
 
-        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+    context "when locale is :es" do
+      before do
+        affiliate.stub!(:locale).and_return "es"
       end
 
-      context "when matching affiliate domain is blank, affiliate has multiple domains" do
-        before do
-          search.should_receive(:matching_site_limit).and_return(nil)
-          affiliate.should_receive(:has_multiple_domains?).and_return(true)
-          helper.should_receive(:search_path).with(params_hash).and_return(search_path_with_params)
-        end
-
-        it "should generate a search this site link" do
-          content = helper.display_search_within_this_site_link(result, search, affiliate)
-          content.should have_selector("a[href='#{search_path_with_params}']", :content => 'Search this site')
-        end
-      end
-
-      context "when locale is :es" do
-        before do
-          I18n.stub(:locale).with(no_args).and_return(:es)
-        end
-
-        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
-      end
+      specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
     end
   end
 
@@ -365,54 +348,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_deep_links_for(result, search, affiliate, vertical)" do
-    before do
-      deep_links=[]
-      8.times { |idx| deep_links << OpenStruct.new(:title=>"title #{idx}", :url => "url #{idx}") }
-      @result = {"title"=>"my title", "deepLinks"=>deep_links, "cacheUrl"=>"cached", "content"=>"Some content", "unescapedUrl"=>"http://www.gsa.gov/someurl"}
-      @search = mock("Search", :query => "q", :spelling_suggestion => "x", :queried_at_seconds => Time.now.to_i)
-      @affiliate = affiliates(:power_affiliate)
-    end
-
-    context "when there are no deep links" do
-      before do
-        @result['deepLinks']=nil
-      end
-      it "should return nil" do
-        helper.display_deep_links_for(@result, @search, @affiliate, :web).should be_nil
-      end
-    end
-
-    context "when there are deep links" do
-      it "should render deep links in two columns" do
-        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
-        html.should match("<tr><td><a href=\"url 0\".*>title 0</a></td><td><a href=\"url 1\".*>title 1</a></td></tr><tr><td><a href=\"url 2\".*>title 2</a></td><td><a href=\"url 3\".*>title 3</a></td></tr><tr><td><a href=\"url 4\".*>title 4</a></td><td><a href=\"url 5\".*>title 5</a></td></tr><tr><td><a href=\"url 6\".*>title 6</a></td><td><a href=\"url 7\".*>title 7</a></td></tr>")
-      end
-    end
-
-    context "when there are more than 8 deep links" do
-      before do
-        @result['deepLinks'] << OpenStruct.new(:title=>"ninth title", :url => "ninth url")
-      end
-
-      it "should show a maximum of 8 deep links" do
-        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
-        html.should_not match(/ninth/)
-      end
-    end
-
-    context "when there are an odd number of deep links" do
-      before do
-        @result['deepLinks']= @result['deepLinks'].slice(0..-2)
-      end
-
-      it "should have an empty last spot" do
-        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
-        html.should match("title 6</a></td><td></td></tr></table>")
-      end
-    end
-  end
-
   describe "#agency_url_matches_by_locale" do
     before do
       @agency = Agency.create(:name => 'My Agency', :domain => 'myagency.gov')
@@ -674,30 +609,23 @@ describe SearchHelper do
   end
 
   describe "#display_search_all_affiliate_sites_suggestion" do
-
-    context "when affiliate is nil" do
-      specify { helper.display_search_all_affiliate_sites_suggestion(WebSearch.new, nil).should be_blank }
-    end
-
-    context "when affiliate is present and matching_site_limit is blank" do
-      let(:matching_site_limit) { mock('matching_site_limit') }
+    context "when affiliate is present and matching_site_limits is blank" do
       let(:search) { mock('search') }
       let(:affiliate) { mock('affiliate', :name => 'nps') }
 
       before do
-        search.should_receive(:matching_site_limit).and_return(matching_site_limit)
-        matching_site_limit.should_receive(:present?).and_return(false)
+        search.should_receive(:matching_site_limits).and_return(nil)
       end
 
       specify { helper.display_search_all_affiliate_sites_suggestion(search, affiliate).should be_blank }
     end
 
-    context "when affiliate is present and matching_site_limit is present" do
+    context "when affiliate is present and matching_site_limits is present" do
       let(:search) { mock('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
       let(:affiliate) { mock('affiliate', :name => 'nps') }
 
       it "should display a link to 'Yosemite from all sites'" do
-        search.should_receive(:matching_site_limit).twice.and_return('WWW1.NPS.GOV')
+        search.should_receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
         helper.should_receive(:search_path).with(hash_not_including(:sitelimit)).and_return('search_path_with_params')
         content =  helper.display_search_all_affiliate_sites_suggestion(search, affiliate)
         content.should match /#{Regexp.escape("We're including results for 'Yosemite' from only WWW1.NPS.GOV.")}/

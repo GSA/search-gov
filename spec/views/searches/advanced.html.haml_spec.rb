@@ -1,10 +1,28 @@
 require 'spec/spec_helper'
-describe "searches/advanced.html.haml" do
 
-  context "visiting the English language (default) page" do
+describe "searches/advanced.html.haml" do
+  fixtures :affiliates
+  
+  context "visiting the advanced search page for an English language affiliate" do
+    before do
+      assign(:affiliate, affiliates(:usagov_affiliate))
+    end
+
     it "should display text via the I18n in English" do
       render
       rendered.should contain(/Use the options on this page to create a very specific search./)
+    end
+    
+    it "should include a hidden input tag with the affiliate" do
+      render
+      rendered.should have_selector("input[type='hidden'][name='affiliate'][value='usagov']")
+    end
+
+    it "should include a hidden input tag with the scope id if a scope id is passed" do
+      assign(:affiliate, affiliates(:power_affiliate))
+      assign(:scope_id, 'SomeScope')
+      render
+      rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
     end
 
     describe "adult filter options" do
@@ -31,6 +49,7 @@ describe "searches/advanced.html.haml" do
   context "visiting the Spanish version of the page" do
     before do
       I18n.locale = :es
+      assign(:affiliate, affiliates(:gobiernousa_affiliate))
     end
 
     it "should display text in Spanish" do
@@ -38,7 +57,7 @@ describe "searches/advanced.html.haml" do
       rendered.should contain(/Use las siguientes opciones para hacer una búsqueda específica\./)
     end
 
-    it "should display a hidden input field with the locale" do
+    it "should display a hidden input field with the affiliate's locale" do
       render
       rendered.should have_selector("input[type='hidden'][name='locale'][value='es']")
     end
@@ -50,23 +69,6 @@ describe "searches/advanced.html.haml" do
 
     after do
       I18n.locale = I18n.default_locale
-    end
-  end
-
-  context "when visiting an affiliate advanced search page" do
-    fixtures :affiliates
-
-    it "should include a hidden input tag with the affiliate" do
-      assign(:affiliate, affiliates(:power_affiliate))
-      render
-      rendered.should have_selector("input[type='hidden'][name='affiliate'][value='#{affiliates(:power_affiliate).name}']")
-    end
-
-    it "should include a hidden input tag with the scope id if a scope id is passed" do
-      assign(:affiliate, affiliates(:power_affiliate))
-      assign(:scope_id, 'SomeScope')
-      render
-      rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
     end
   end
 end

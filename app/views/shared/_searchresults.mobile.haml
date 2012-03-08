@@ -1,16 +1,8 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
 - if (search.first_page? and search.boosted_contents and search.boosted_contents.total > 0)
   = render 'shared/boosted_content', :search => search
-- elsif (search.faqs and search.faqs.total > 0)
-  = render 'shared/related_faqs', :search => search
 - if search.results.present?
   %hr.topresults
-  - if (search && search.recalls && search.recalls.total > 0)
-    .group{:id => "recalls"}
-      %h1 Recent Recalls
-      - search.recalls.hits.each_with_index do |hit, index|
-        .row{:id => "recall#{index+1}"}
-          .links= (link_to "#{highlight_like_solr(hit.instance.summary, hit.highlights)}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}".html_safe, hit.instance.recall_url)
   .group
     - search.results.each_with_index do |search_result, index|
       .row{:id => "searchresult#{index+1}"}

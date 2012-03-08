@@ -1,8 +1,13 @@
 require 'spec/spec_helper'
 describe "searches/index.html.haml" do
+  fixtures :affiliates
   before do
+    @affiliate = affiliates(:usagov_affiliate)
+    assign(:affiliate, @affiliate)
+    
     @search = stub("WebSearch")
     @search.stub!(:query).and_return "test"
+    @search.stub!(:affiliate).and_return @affiliate
     @search.stub!(:page).and_return 1
     @search.stub!(:spelling_suggestion).and_return nil
     @search.stub!(:related_search).and_return []
@@ -18,18 +23,14 @@ describe "searches/index.html.haml" do
     @search.stub!(:error_message).and_return "Ignore me"
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
-    @search.stub!(:fedstates).and_return nil
     @search.stub!(:agency).and_return nil
     @search.stub!(:med_topic).and_return nil
     @search.stub!(:has_featured_collections?).and_return false
     @search.stub!(:are_results_by_bing?).and_return true
     @search.stub!(:first_page?).and_return true
+    @search.stub!(:matching_site_limits).and_return []
+    @search.stub!(:indexed_documents).and_return nil
     assign(:search, @search)
-  end
-
-  it "should link to the medium sized search logo" do
-    render
-    rendered.should have_selector("img[src^='/images/USAsearch_medium_en.gif']")
   end
 
   context "when spelling suggestion is available" do
@@ -57,7 +58,6 @@ describe "searches/index.html.haml" do
       @search.stub!(:error_message).and_return "Enter some search terms"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
-      @search.stub!(:fedstates).and_return nil
     end
 
     it "should show header search form" do
@@ -90,17 +90,11 @@ describe "searches/index.html.haml" do
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
-      @search.stub!(:fedstates).and_return nil
     end
 
     it "should not display a hidden filter parameter" do
       render
       rendered.should_not have_selector("input[type='hidden'][name='filter']")
-    end
-
-    it "should not display a hidden fedstates parameter" do
-      render
-      rendered.should_not have_selector("input[type='hidden'][name='fedstates']")
     end
 
     context "when a filter parameter is specified" do
@@ -112,39 +106,6 @@ describe "searches/index.html.haml" do
       it "should include a hidden input field in the search form with the filter parameter" do
         render
         rendered.should have_selector("input[type='hidden'][name='filter'][value='#{@filter_setting}']")
-      end
-    end
-
-    context "when a fedstates filter is set from the advanced form" do
-      before do
-        @search.stub!(:fedstates).and_return 'MD'
-      end
-
-      it "should include a hidden input field in the search with the fedstates value set to the scope id" do
-        render
-        rendered.should have_selector("input[type='hidden'][name='fedstates'][value='MD']")
-      end
-
-      it "should inform the user that the search was restricted" do
-        5.times { @search_results << @search_result }
-        render
-        rendered.should contain(/This search was restricted/)
-      end
-
-      it "should link to a unrestricted version of the search" do
-        render
-        rendered.should_not have_selector("a[href~='fedstates=MD']")
-      end
-
-      context "when the scope id is set to 'all'" do
-        before do
-          @search.stub!(:fedstates).and_return 'all'
-        end
-
-        it "should not show a restriction message" do
-          render
-          rendered.should_not contain(/This search was restricted/)
-        end
       end
     end
 
@@ -427,7 +388,7 @@ describe "searches/index.html.haml" do
         it "should include the related topics in the result, with links to search results pages" do
           render
           rendered.should contain(/Related MedlinePlus Topics/)
-          rendered.should have_selector "a", :href => "/search?locale=en&query=Crohn%27s+Disease", :content => 'Crohn\'s Disease'
+          rendered.should have_selector "a", :href => "/search?affiliate=usagov&locale=en&query=Crohn%27s+Disease", :content => 'Crohn\'s Disease'
         end
       end
 

@@ -1,7 +1,13 @@
 require 'spec/spec_helper'
 describe "shared/_searchresults.html.haml" do
+  fixtures :affiliates
+  
   before do
+    @affiliate = affiliates(:usagov_affiliate)
+    assign(:affiliate, @affiliate)
+    
     @search = stub("WebSearch")
+    @search.stub!(:affiliate).and_return @affiliate
     @search.stub!(:related_search).and_return []
     @search.stub!(:has_related_searches?).and_return false
     @search.stub!(:queried_at_seconds).and_return(1271978870)
@@ -14,22 +20,18 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 1
     @search.stub!(:has_boosted_contents?)
-    @search.stub!(:faqs)
-    @search.stub!(:news_items)
-    @search.stub!(:gov_forms)
     @search.stub!(:scope_id)
-    @search.stub!(:fedstates)
-    @search.stub!(:recalls)
     @search.stub!(:agency)
     @search.stub!(:med_topic)
     @search.stub!(:has_featured_collections?)
     @search.stub!(:indexed_documents)
+    @search.stub!(:matching_site_limits).and_return []
     @search.stub!(:are_results_by_bing?).and_return true
     @search.stub!(:first_page?).and_return true
+
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
-
     @search_result = {'title' => "some title",
                       'unescapedUrl'=> "http://www.foo.com/url",
                       'content'=> "This is a sample result",
@@ -59,40 +61,18 @@ describe "shared/_searchresults.html.haml" do
       rendered.should have_selector('table', :class => 'deep-links', :count => 1)
     end
 
-    it "should contain cache links" do
-      render
-      rendered.should contain('Cache')
-    end
-
     it "should show the Bing logo" do
       render
       rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
       rendered.should_not have_selector("a img[src^='/images/binglogo_en.gif']")
     end
 
-    context "when search is for an affiliate" do
+    context "when featured collections are present" do
       before do
-        @affiliate = Affiliate.create!(
-          :display_name => "My Awesome Site",
-          :website => "http://www.someaffiliate.gov",
-          :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-          :footer => "<center>gasp</center>",
-          :name => "someaffiliate"
-        )
-        @affiliate.affiliate_template = AffiliateTemplate.create!(:name => "basic_black", :stylesheet => "basic_black")
-        @search.stub!(:affiliate).and_return @affiliate
-
         stub_template "shared/_featured_collections.html.haml" => "featured collections"
         @search.stub!(:has_boosted_contents?).and_return(false)
         @search.stub!(:has_featured_collections?).and_return(true)
         @search.stub!(:matching_site_limit).and_return("someaffiliate.gov")
-
-        view.stub!(:search).and_return @search
-      end
-
-      it "should not show any deep links" do
-        render
-        rendered.should_not contain('Cache')
       end
 
       it "should show featured collection" do
@@ -135,7 +115,7 @@ describe "shared/_searchresults.html.haml" do
         render
         rendered.should_not have_selector('table', :class => 'deep_links')
       end
-
+      
       context "when boosted contents are present" do
         before do
           @search.should_not_receive(:has_boosted_contents?)
@@ -157,17 +137,6 @@ describe "shared/_searchresults.html.haml" do
           rendered.should_not contain('featured collections')
         end
       end
-
-      context "when a recalls record is present" do
-        before do
-          @search.stub!(:recalls).and_return [mock(Recall)]
-        end
-
-        it "should not show a recalls govbox" do
-          render
-          rendered.should_not have_selector('govbox')
-        end
-      end
     end
 
     context "when a boosted Content is returned as a hit, but that boosted Content is not in the database" do
@@ -186,21 +155,6 @@ describe "shared/_searchresults.html.haml" do
         render
         rendered.should have_selector('div#boosted', :content => "")
         rendered.should_not have_selector('div#boosted .searchresult')
-      end
-    end
-
-    context "when a recall is found" do
-      before do
-        recall = Recall.create!(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Recall details')
-        Recall.reindex
-        @search.stub!(:recalls).and_return(Recall.search_for("details"))
-        view.stub!(:search).and_return @search
-      end
-
-      it "should render a govbox with recall links" do
-        render
-        rendered.should have_selector('.recalls-govbox .details a', :content => "details")
       end
     end
   end

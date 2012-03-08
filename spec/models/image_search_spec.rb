@@ -3,13 +3,17 @@ require 'spec/spec_helper'
 describe ImageSearch do
   fixtures :affiliates
   
+  before do
+    @affiliate = affiliates(:usagov_affiliate)
+  end
+  
   describe "#run" do
     before do
-      @search = ImageSearch.new({:query => 'shuttle'})
+      @search = ImageSearch.new(:query => 'shuttle', :affiliate => @affiliate)
     end
 
     it "should log info about the query" do
-      QueryImpression.should_receive(:log).with(:image, Affiliate::USAGOV_AFFILIATE_NAME, 'shuttle', ["IMAG"])
+      QueryImpression.should_receive(:log).with(:image, @affiliate.name, 'shuttle', ["IMAG"])
       @search.run
     end
     
@@ -36,7 +40,7 @@ describe ImageSearch do
   end
 
   subject do
-    search = ImageSearch.new(:query => "White House")
+    search = ImageSearch.new(:query => "White House", :affiliate => @affiliate)
     body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
     search.stub!(:perform_bing_search).and_return(body)
     search.run
@@ -76,8 +80,8 @@ describe ImageSearch do
     context "when doing an affiliate Image Search" do
       context "when the affiliate specified has no results for the given query" do
         before do
-          @affiliate = affiliates(:non_existant_affiliate)
-          @search = ImageSearch.new(:query => 'obama', :affiliate => @affiliate)
+          affiliate = affiliates(:non_existant_affiliate)
+          @search = ImageSearch.new(:query => 'obama', :affiliate => affiliate)
         end
         
         it "should not attempt to backfill the results from locally-indexed documents" do
