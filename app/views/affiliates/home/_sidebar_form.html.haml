@@ -19,7 +19,7 @@
         %tr
           %th{ :colspan => 3 }
             = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
-            = link_to "Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last'
+            = link_to("Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last')unless @affiliate.results_source == 'bing'
       %tbody
         %tr.column-header.nodrag
           %th Display name

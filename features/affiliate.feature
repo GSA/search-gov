@@ -2228,7 +2228,8 @@ Feature: Affiliate clients
   Scenario: Visiting left nav
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | results_source |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | bing+odie      |
+      | aff site       | aff.gov          | aff@bar.gov   | John Bar     | bing+odie      |
+      | bing only site | bingonly.aff.gov | aff@bar.gov   | John Bar     | bing           |
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -2265,6 +2266,10 @@ Feature: Affiliate clients
     And I follow "Sidebar"
     And I follow "Add new RSS feed" in the page content
     Then I should see "Add a new RSS Feed" in the page header
+
+    When I go to the "bing only site" affiliate page
+    And I follow "Sidebar"
+    Then I should not see "Add new collection"
 
   Scenario: Editing left nav
     Given the following Affiliates exist:
