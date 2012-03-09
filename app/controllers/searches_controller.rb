@@ -128,7 +128,9 @@ class SearchesController < ApplicationController
       @affiliate.managed_header_links = @affiliate.staged_managed_header_links
       @affiliate.managed_footer_links = @affiliate.staged_managed_footer_links
     end
+
     I18n.locale = 'es' if @affiliate && @affiliate.locale == 'es'
+    @affiliate.use_strictui if @affiliate && params[:strictui]
   end
 
   def set_web_search_options

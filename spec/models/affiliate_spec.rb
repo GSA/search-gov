@@ -522,12 +522,114 @@ describe Affiliate do
       affiliate.errors.count.should == 1
       affiliate.errors[:base].last.should match(/Footer link URL can't be blank/)
     end
+
+    context "is_updating_staged_header_footer is set to true" do
+      context "site uses staged one serp and staged custom header footer" do
+        let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                            :uses_one_serp => true,
+                                            :staged_uses_one_serp => true,
+                                            :uses_managed_header_footer => false,
+                                            :staged_uses_managed_header_footer => false) }
+        it "should not allow script, style or link elements in staged header or staged footer" do
+          header_error_message = %q(HTML to customize the top of your search results page can't contain script, style or link elements)
+          footer_error_message = %q(HTML to customize the bottom of your search results page can't contain script, style or link elements)
+          affiliate.is_updating_staged_header_footer = true
+
+          html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+          HTML
+          affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_false
+          affiliate.errors[:base].join.should match(/#{header_error_message}/)
+          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+          html_with_style = <<-HTML
+            <style>#my_header { color:red }</style>
+            <h1>html with style</h1>
+          HTML
+          affiliate.update_attributes(:staged_header => html_with_style , :staged_footer => html_with_style).should be_false
+          affiliate.errors[:base].join.should match(/#{header_error_message}/)
+          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+           html_with_link = <<-HTML
+            <link href="http://cdn.agency.gov/link.css" />
+            <h1>html with link</h1>
+          HTML
+          affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link).should be_false
+          affiliate.errors[:base].join.should match(/#{header_error_message}/)
+          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+        end
+
+        it "should not allow malformed HTML in staged header or staged footer" do
+          header_error_message = %q(HTML to customize the top of your search results page can't be malformed)
+          footer_error_message = %q(HTML to customize the bottom of your search results page can't be malformed)
+          affiliate.is_updating_staged_header_footer = true
+
+          malformed_html_fragments = <<-HTML
+            <link href="http://cdn.agency.gov/link.css"></script>
+            <h1>html with link</h1>
+          HTML
+          affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be_false
+          affiliate.errors[:base].join.should match(/#{header_error_message}/)
+          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+        end
+      end
+
+      context "site uses staged one serp and staged managed header footer" do
+        let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                            :uses_one_serp => true,
+                                            :staged_uses_one_serp => true,
+                                            :uses_managed_header_footer => true,
+                                            :staged_uses_managed_header_footer => true) }
+
+        it "should not validate staged header or staged footer" do
+          html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+          HTML
+          affiliate.is_updating_staged_header_footer = true
+          affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
+        end
+      end
+
+      context "site does not use staged one serp" do
+        let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                            :uses_one_serp => false,
+                                            :staged_uses_one_serp => false) }
+
+        it "should not validate staged header or staged footer" do
+          html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+          HTML
+          affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
+        end
+      end
+    end
+
+    context "is_updating_staged_header_footer is set to false" do
+      let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                          :uses_one_serp => true,
+                                          :staged_uses_one_serp => true,
+                                          :uses_managed_header_footer => false,
+                                          :staged_uses_managed_header_footer => false) }
+      it "should allow script, style or link elements in staged header or staged footer" do
+        affiliate.is_updating_staged_header_footer = false
+
+        html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
+      end
+    end
   end
 
   describe "#update_attributes_for_staging" do
-    it "should set has_staged_content to true and update attributes" do
+    it "should set has_staged_content to true and receive update_attributes" do
       affiliate = Affiliate.create!(@valid_create_attributes)
       attributes = mock('attributes')
+      attributes.should_receive(:has_key?).with(:staged_uses_managed_header_footer).and_return(false)
       attributes.should_receive(:[]).with(:staged_header_image).and_return(nil)
       attributes.should_receive(:[]).with(:mark_staged_header_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]=).with(:has_staged_content, true)
@@ -633,10 +735,27 @@ describe Affiliate do
         affiliate.update_attributes_for_staging(attributes).should be_true
       end
     end
+
+    context "when attributes contain staged_uses_managed_header_footer" do
+      it "should set is_updating_staged_header_footer to true" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.should_receive(:is_updating_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_staging(:staged_header => 'staged header', :staged_footer => 'staged footer', :staged_uses_managed_header_footer => false)
+      end
+    end
+
+    context "when attributes does not contain staged_uses_managed_header_footer" do
+      it "should set is_updating_staged_header_footer to false" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.should_not_receive(:is_updating_staged_header_footer=)
+        affiliate.update_attributes_for_staging(:staged_theme => 'elegant')
+      end
+    end
   end
 
   describe "#update_attributes_for_live" do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:header => 'old header', :footer => 'old footer')) }
+
     context "when successfully update_attributes" do
       before do
         affiliate.should_receive(:update_attributes).and_return(true)
@@ -673,6 +792,20 @@ describe Affiliate do
       end
 
       specify { affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_false }
+    end
+
+    context "when attributes contain staged_uses_managed_header_footer" do
+      it "should set is_updating_staged_header_footer to true" do
+        affiliate.should_receive(:is_updating_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer', :staged_uses_managed_header_footer => false)
+      end
+    end
+
+    context "when attributes does not contain staged_uses_managed_header_footer" do
+      it "should set is_updating_staged_header_footer to false" do
+        affiliate.should_not_receive(:is_updating_staged_header_footer=)
+        affiliate.update_attributes_for_live(:staged_theme => 'elegant')
+      end
     end
   end
 
@@ -1323,6 +1456,34 @@ describe Affiliate do
       Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @first.id, @second.id)
       Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @third.id, @third.id)
       @affiliate.refresh_indexed_documents
+    end
+  end
+
+  describe "#sanitized_header" do
+    it "should remove all banned HTML elements" do
+      tainted_header = <<-HTML
+        <script src="http://cdn.agency.gov/script.js"></script>
+        <link href="http://cdn.agency.gov/link.css"></link>
+        <style>#my_header { color:red }</style>
+        <h1 id="my_header">header</h1>
+      HTML
+
+      affiliate = Affiliate.create!(@valid_attributes.merge(:header => tainted_header))
+      affiliate.sanitized_header.strip.should == %q(<h1 id="my_header">header</h1>)
+    end
+  end
+
+  describe "#sanitized_footer" do
+    it "should remove all banned HTML elements" do
+      tainted_footer = <<-HTML
+        <script src="http://cdn.agency.gov/script.js"></script>
+        <link href="http://cdn.agency.gov/link.css"></link>
+        <style>#my_footer { color:red }</style>
+        <h1 id="my_footer">footer</h1>
+      HTML
+
+      affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer))
+      affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
     end
   end
 end

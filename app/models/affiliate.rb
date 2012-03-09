@@ -42,7 +42,7 @@ class Affiliate < ActiveRecord::Base
   has_many :document_collections, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
@@ -54,8 +54,8 @@ class Affiliate < ActiveRecord::Base
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json
-  attr_accessor :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes
+  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_updating_staged_header_footer
+  attr_accessor :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_updating_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -65,6 +65,7 @@ class Affiliate < ActiveRecord::Base
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
+  BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(script style link)
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Site name",
@@ -225,6 +226,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_staging(attributes)
+    self.is_updating_staged_header_footer = true if attributes.has_key?(:staged_uses_managed_header_footer)
     if staged_header_image_updated_at == header_image_updated_at and
         attributes[:staged_header_image].present? || attributes[:mark_staged_header_image_for_deletion] == '1'
       self.staged_header_image_file_name = nil
@@ -237,6 +239,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_live(attributes)
+    self.is_updating_staged_header_footer = true if attributes.has_key?(:staged_uses_managed_header_footer)
     transaction do
       if self.update_attributes(attributes)
         self.previous_header = header
@@ -426,6 +429,20 @@ class Affiliate < ActiveRecord::Base
     RESULTS_SOURCE_DISPLAY_NAMES[results_source.to_sym]
   end
 
+  def sanitized_header
+    sanitize_html header
+  end
+
+  def sanitized_footer
+    sanitize_html footer
+  end
+
+  def use_strictui
+    self.header = sanitized_header
+    self.footer = sanitized_footer
+    self.external_css_url = nil
+  end
+
   private
 
   def batch_size
@@ -610,6 +627,54 @@ class Affiliate < ActiveRecord::Base
     sass_values = Sass::CSS.new(css).render
     Sass::Engine.new(sass_values).render
     sass_values.split("\n").collect { |sass_value| "  #{sass_value}" }.join("\n")
+  end
+
+  def validate_staged_header_footer
+    return unless is_updating_staged_header_footer and staged_uses_one_serp? and !staged_uses_managed_header_footer?
+    validate_header_results = validate_html staged_header
+    if validate_header_results[:has_malformed_html]
+      errors.add(:base, "HTML to customize the top of your search results page can't be malformed: #{validate_header_results[:error_message]}")
+    end
+
+    if validate_header_results[:has_banned_elements]
+      errors.add(:base, "HTML to customize the top of your search results page can't contain script, style or link elements.")
+    end
+
+    validate_footer_results = validate_html staged_footer
+    if validate_footer_results[:has_malformed_html]
+      errors.add(:base, "HTML to customize the bottom of your search results page can't be malformed: #{validate_footer_results[:error_message]}")
+    end
+
+    if validate_footer_results[:has_banned_elements]
+      errors.add(:base, "HTML to customize the bottom of your search results page can't contain script, style or link elements.")
+    end
+  end
+
+  def validate_html(html)
+    validate_html_results = {}
+    has_banned_elements = false
+    unless html.blank?
+      html_doc = Nokogiri::HTML html
+      unless html_doc.errors.empty?
+        validate_html_results[:has_malformed_html] = true
+        validate_html_results[:error_message] = html_doc.errors.join('. ') + '.' unless html_doc.errors.blank?
+      end
+      BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
+        has_banned_elements = true and break unless html_doc.css(element).blank?
+      end
+    end
+    validate_html_results[:has_banned_elements] = has_banned_elements
+    validate_html_results
+  end
+
+  def sanitize_html(html)
+    unless html.blank?
+      doc = Nokogiri::HTML::DocumentFragment.parse html
+      BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
+        doc.css("#{element}").each(&:remove)
+      end
+      doc.to_html
+    end
   end
 
   def existing_site_domain_hash
