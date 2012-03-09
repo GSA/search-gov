@@ -502,3 +502,15 @@ Feature: Affiliate Search
     Then I should see the browser page titled "OR US97 central - agency site Search Results"
     And I should see some Bing search results
 
+  Scenario: When a searcher clicks on a collection on sidebar and the query is blank
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following document collections:
+      | name   | prefixes               | is_navigable |
+      | Topics | http://aff.gov/topics/ | true         |
+    When I go to aff.gov's search page
+    And I follow "Topics" in the left column
+    Then I should see the browser page titled
+    Then I should see "Sorry, no results found"
+

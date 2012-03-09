@@ -40,14 +40,13 @@ class SearchesController < ApplicationController
   end
 
   def docs
-    unless @search_options[:query].blank?
-      @search = OdieSearch.new(@search_options)
-      @search.run
-      @form_path = docs_search_path
-      @page_title = @search_options[:query]
-      @search_vertical = :docs
-      render :action => :docs, :layout => "affiliate"
-    end
+    @search = OdieSearch.new(@search_options)
+    @search.run
+    @form_path = docs_search_path
+    @page_title = @search.query
+    @search_vertical = :docs
+    handle_affiliate_search
+    render :action => :docs, :layout => "affiliate"
   end
 
   def news

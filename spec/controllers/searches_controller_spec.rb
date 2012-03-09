@@ -79,7 +79,7 @@ describe SearchesController do
       it "should assign the USA.gov affiliate as the default affiliate" do
         assigns[:affiliate].should == affiliates(:usagov_affiliate)
       end
-    
+
       it "should render the template" do
         response.should render_template 'affiliate_index'
         response.should render_template 'layouts/affiliate'
@@ -106,12 +106,12 @@ describe SearchesController do
         @search.results.should_not be_nil
       end
     end
-    
+
     context "when searching in Spanish" do
       before do
         get :index, :query => "social security", :page => 4, :locale => 'es'
       end
-      
+
       it "should assign the GobiernoUSA affiliate" do
         assigns[:affiliate].should == affiliates(:gobiernousa_affiliate)
       end
@@ -168,7 +168,7 @@ describe SearchesController do
     it "should render the footer in the response" do
       response.body.should match(/#{@affiliate.footer}/)
     end
-    
+
     it "should set the query in Javascript" do
       response.body.should match(/var original_query = \"weather\"/)
     end
@@ -292,7 +292,7 @@ describe SearchesController do
     it "should assign the USA.gov affiliate" do
       assigns[:affiliate].should == affiliates(:usagov_affiliate)
     end
-    
+
     it "should render the template" do
       response.should render_template 'affiliate_index'
       response.should render_template 'layouts/affiliate'
@@ -549,6 +549,19 @@ describe SearchesController do
         assigns[:search].results.should be_empty
       end
     end
+
+    context "when query is blank" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        affiliate.should_receive(:build_search_results_page_title).and_return('docs title')
+        get :docs, :affiliate => affiliate.name, :dc => '100'
+      end
+
+      it { should assign_to(:search).with_kind_of(OdieSearch) }
+      it { should assign_to(:page_title).with('docs title') }
+    end
   end
 
   describe "#news" do
@@ -578,11 +591,11 @@ describe SearchesController do
       before do
         get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       end
-      
+
       it "should assign the USA.gov affiliate" do
         assigns[:affiliate].should == affiliates(:usagov_affiliate)
       end
-    
+
       it "should render the news template" do
         response.should render_template 'news'
         response.should render_template 'layouts/affiliate'
