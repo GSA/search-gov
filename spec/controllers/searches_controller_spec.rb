@@ -501,7 +501,7 @@ describe SearchesController do
 
     it "should assign various variables" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
-      assigns[:page_title].should == "pdf"
+      assigns[:page_title].should =~ /pdf/
       assigns[:search_vertical].should == :docs
       assigns[:form_path].should == docs_search_path
       assigns[:search].should_not be_nil

@@ -511,6 +511,5 @@ Feature: Affiliate Search
       | Topics | http://aff.gov/topics/ | true         |
     When I go to aff.gov's search page
     And I follow "Topics" in the left column
-    Then I should see the browser page titled
     Then I should see "Sorry, no results found"
 
