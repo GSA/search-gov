@@ -1,6 +1,8 @@
 class DocumentCollection < ActiveRecord::Base
+  default_scope order('position ASC, document_collections.id ASC')
   belongs_to :affiliate
   has_many :url_prefixes, :dependent => :destroy
+  scope :navigable_only, where(:is_navigable => true).joins(:url_prefixes).select("distinct document_collections.*")
   validates_presence_of :name, :affiliate_id
   validates_uniqueness_of :name, :scope => :affiliate_id
 

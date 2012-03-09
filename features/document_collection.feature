@@ -76,6 +76,12 @@ Feature: Document Collections
     And I press "Update"
     Then I should see "Name can't be blank"
 
+    When I follow "Sidebar"
+    Then the "Is document collection 0 navigable" checkbox should not be checked
+    When I check "Is document collection 0 navigable"
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
     When I am on noaa.gov's search page
     And I fill in "query" with "hurricane"
     And I press "Search"

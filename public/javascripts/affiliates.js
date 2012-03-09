@@ -134,7 +134,18 @@ jQuery(document).ready(function() {
   setupDragAndDropOnManagedLinks('footer');
 
   jQuery(".sidebar-form .sidebar-items table").each(function() {
-    jQuery(this).tableDnD({ onDragClass: 'ondrag' });
+    jQuery(this).tableDnD({
+      onDragClass: 'ondrag',
+      onDragStart: function(table, row) {
+        if (jQuery(row).hasClass('rss-feed')) {
+          jQuery('.sidebar-items .collection').addClass('nodrag nodrop');
+          jQuery('.sidebar-items .rss-feed').removeClass('nodrag nodrop');
+        } else {
+          jQuery('.sidebar-items .rss-feed').addClass('nodrag nodrop');
+          jQuery('.sidebar-items .collection').removeClass('nodrag nodrop');
+        }
+      }
+      });
     jQuery(".sidebar-form").submit(function() {
       jQuery(".sidebar-form .position").each(function(index) {
         jQuery(this).val(index);

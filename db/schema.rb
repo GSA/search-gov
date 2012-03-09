@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306184550) do
+ActiveRecord::Schema.define(:version => 20120309023945) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -224,10 +224,12 @@ ActiveRecord::Schema.define(:version => 20120306184550) do
   add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
 
   create_table "document_collections", :force => true do |t|
-    t.integer  "affiliate_id", :null => false
-    t.string   "name",         :null => false
+    t.integer  "affiliate_id",                    :null => false
+    t.string   "name",                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
+    t.boolean  "is_navigable", :default => false
   end
 
   add_index "document_collections", ["affiliate_id", "name"], :name => "index_document_collections_on_affiliate_id_and_name", :unique => true

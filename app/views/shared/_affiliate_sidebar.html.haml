@@ -25,7 +25,7 @@
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
-            - unless @affiliate.results_source=='bing'
+            - unless @affiliate.uses_bing_results?
               %li
                 = link_to "Collections", affiliate_document_collections_path(@affiliate)
                 = image_tag 'new.png', :class => 'new'

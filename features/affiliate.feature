@@ -2225,7 +2225,7 @@ Feature: Affiliate clients
     When I go to aff.gov's oneserp search page
     Then I should see the page with affiliate stylesheet "one_serp"
 
-  Scenario: Visiting left nav
+  Scenario: Visiting sidebar
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | results_source |
       | aff site       | aff.gov          | aff@bar.gov   | John Bar     | bing+odie      |
@@ -2233,6 +2233,9 @@ Feature: Affiliate clients
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
+    And affiliate "aff.gov" has the following document collections:
+      | name | prefixes             | is_navigable |
+      | FAQs | http://aff.gov/faqs/ | true         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
@@ -2259,6 +2262,12 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
+    And I follow "Collection" in the page content
+    Then I should see "FAQs"
+    And I should see "http://aff.gov/faqs/"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
     And I follow "Add new collection" in the page content
     Then I should see "Add a new Collection" in the page header
 
@@ -2271,20 +2280,22 @@ Feature: Affiliate clients
     And I follow "Sidebar"
     Then I should not see "Add new collection"
 
-  Scenario: Editing left nav
+  Scenario: Editing sidebar
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | false        |
+      | name          | url                                                | position | is_navigable |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false        |
+      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true         |
+    And affiliate "aff.gov" has the following document collections:
+      | name   | prefixes               | position | is_navigable |
+      | Topics | http://aff.gov/topics/ | 2        | true         |
+      | FAQs   | http://aff.gov/faqs/   | 0        | true         |
+      | Help   | http://aff.gov/help/   | 1        | false        |
     When I go to aff.gov's search page
-    Then I should see "Everything" in the left column
-    And I should see "Images" in the left column
-    And I should see "Press" in the left column
-    And I should see "Photo Gallery" in the left column
+    Then I should see "Everything Images Press Photo Gallery FAQs Topics" in the left column
     And I should not see "Hide Me" in the left column
     When I follow "Press" in the left column
     Then I should see "All Time" in the left column
@@ -2301,40 +2312,45 @@ Feature: Affiliate clients
     And the "Is RSS feed 1 navigable" checkbox should be checked
     And the "RSS feed 2" field should contain "Hide Me"
     And the "Is RSS feed 2 navigable" checkbox should not be checked
+    And the "Document collection 0" field should contain "FAQs"
+    And the "Is document collection 0 navigable" checkbox should be checked
+    And the "Document collection 1" field should contain "Help"
+    And the "Is document collection 1 navigable" checkbox should not be checked
+    And the "Document collection 2" field should contain "Topics"
+    And the "Is document collection 2 navigable" checkbox should be checked
     And the "Show by time period module" checkbox should be checked
 
     When I fill in the following:
-      | Default search label | Web       |
-      | Image search label   | Pictures  |
-      | RSS feed 0           | News      |
-      | RSS feed 1           | Galleries |
+      | Default search label  | Web       |
+      | Image search label    | Pictures  |
+      | RSS feed 0            | News      |
+      | RSS feed 1            | Galleries |
+      | Document collection 0 | Q&A       |
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
-    Then I should see "Web" in the left column
-    And I should see "Pictures" in the left column
-    And I should see "News" in the left column
-    And I should see "Galleries" in the left column
+    Then I should see "Web Pictures News Galleries Q&A Topics" in the left column
     When I follow "News" in the left column
     Then I should see "All Time" in the left column
 
-    And I go to the "aff site" affiliate page
+    When I go to the "aff site" affiliate page
     And I follow "Sidebar"
     And I uncheck "Is image search enabled"
     And I uncheck "Is RSS feed 1 navigable"
     And I check "Is RSS feed 2 navigable"
+    And I uncheck "Is document collection 0 navigable"
+    And I check "Is document collection 1 navigable"
     And I uncheck "Show by time period module"
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
-    Then I should see "Web" in the left column
-    And I should see "News" in the left column
+    Then I should see "Web News Hide Me Help Topics" in the left column
     And I should not see "Galleries" in the left column
-    And I should see "Hide Me" in the left column
+    And I should not see "Q&A" in the left column
 
-    When I follow "News" in the left column
+    When I follow "Hide Me" in the left column
     Then I should not see "All Time" in the left column
 
   Scenario: Setting RSS feed name to blank when Editing sidebar
@@ -2344,10 +2360,15 @@ Feature: Affiliate clients
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
+    And affiliate "aff.gov" has the following document collections:
+      | name | prefixes             | is_navigable |
+      | FAQs | http://aff.gov/faqs/ | true         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
     And I fill in the following:
-      | RSS feed 0 |  |
+      | RSS feed 0            |  |
+      | Document collection 0 |  |
     And I press "Save"
     Then I should see "Rss feeds name can't be blank"
+    And I should see "Document collections name can't be blank"

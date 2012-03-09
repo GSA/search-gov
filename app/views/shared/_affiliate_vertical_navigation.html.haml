@@ -17,8 +17,8 @@
       = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id)), :class => 'updatable') do |channel_name|
         = content_tag :span, channel_name
 
-  - @affiliate.active_document_collections.each do |coll|
-    %li{ :class => (coll == @affiliate.active_document_collections.last ? 'last' : nil) }
+  - @affiliate.document_collections.navigable_only.each do |coll|
+    %li{ :class => (coll == @affiliate.document_collections.navigable_only.last ? 'last' : nil) }
       = link_to_unless((document_collection && document_collection.id == coll.id), coll.name, docs_search_path(search_params.merge(:dc => coll.id).remove(:channel, :tbs)), :class => 'updatable') do |collection_name|
         = content_tag :span, collection_name
 

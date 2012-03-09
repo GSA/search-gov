@@ -5,7 +5,7 @@ class Affiliates::DocumentCollectionsController < Affiliates::AffiliatesControll
 
   def index
     @title = 'Collection -'
-    @document_collections = @affiliate.document_collections.order("updated_at DESC")
+    @document_collections = @affiliate.document_collections
   end
 
   def new

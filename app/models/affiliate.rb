@@ -60,6 +60,7 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
+  accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -280,18 +281,6 @@ class Affiliate < ActiveRecord::Base
     self.cancel_staged_changes unless self.has_staged_content?
   end
 
-  def active_document_collections
-    document_collections.joins(:url_prefixes).select("distinct document_collections.*")
-  end
-
-  def has_active_document_collections?
-    active_document_collections.present?
-  end
-
-  def is_image_search_enabled?
-    self.is_image_search_enabled
-  end
-
   def has_changed_header_or_footer
     self.header != self.previous_header or self.footer != self.previous_footer
   end
@@ -360,14 +349,6 @@ class Affiliate < ActiveRecord::Base
       end
     end
     added_or_updated_site_domains
-  end
-
-  def is_agency_govbox_enabled?
-    is_agency_govbox_enabled
-  end
-
-  def is_medline_govbox_enabled?
-    is_medline_govbox_enabled
   end
 
   def uses_odie_results?

@@ -217,7 +217,7 @@ describe RssFeed do
 
   describe ".navigable_only" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:navigable_only) { affiliate.rss_feeds.navigable_only }
+    let(:navigable_only) { Affiliate.find(affiliate.id).rss_feeds.navigable_only }
 
     before do
       affiliate.rss_feeds.create!(:name => 'navigable rss feed 1', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 3)
