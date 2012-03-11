@@ -10,21 +10,14 @@ describe NewsSearch do
   end
 
   describe "#initialize(options)" do
-    let(:search) { NewsSearch.new(:query => '   element   OR', :tbs => "h", :affiliate => affiliate) }
+    let(:search) { NewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate) }
 
     before do
       search.class.name.should == 'NewsSearch'
     end
 
-    context "when the tbs param is set" do
-      it "should set the time-based search parameter within an hour of the tbs target" do
-        (1.hour.ago - search.since).should < 3600
-      end
-
-      it "should set the minute and second to 0 to aid Solr in caching by the hour" do
-        search.since.min.should be_zero
-        search.since.sec.should be_zero
-      end
+    it "should set the time-based search parameter" do
+      (search.since - 1.week.ago).should be_within(0.5).of(0)
     end
 
     context "when the tbs param isn't set" do
