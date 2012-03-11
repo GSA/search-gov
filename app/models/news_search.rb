@@ -36,7 +36,7 @@ class NewsSearch < Search
 
   def since_when(tbs)
     if tbs && (extent = NewsItem::TIME_BASED_SEARCH_OPTIONS[tbs])
-      1.send(extent).ago
+      1.send(extent).ago.change(:min=>0)
     end
   end
 
