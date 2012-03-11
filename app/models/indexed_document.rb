@@ -74,9 +74,32 @@ class IndexedDocument < ActiveRecord::Base
         update_content_hash
       end
     rescue Exception => e
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil) rescue destroy
+      handle_fetch_exception(e)
     ensure
       File.delete(file) rescue nil
+    end
+  end
+
+  def handle_fetch_exception(e)
+    begin
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil)
+    rescue Exception
+      begin
+        destroy
+      rescue Exception
+        Rails.logger.warn 'IndexedDocument: Could not destroy record'
+      end
+    end
+  end
+
+  def update_content_hash
+    begin
+      self.content_hash = build_content_hash
+      save!
+    rescue Mysql2::Error
+      destroy
+    rescue ActiveRecord::RecordInvalid
+      raise IndexedDocumentError.new(errors.full_messages.to_s)
     end
   end
 
@@ -136,17 +159,6 @@ class IndexedDocument < ActiveRecord::Base
     pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) { |io| io.read }
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
     update_attributes!(:title => generate_pdf_title(pdf_file_path, pdf_text), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
-  end
-
-  def update_content_hash
-    begin
-      self.content_hash = build_content_hash
-      save!
-    rescue Mysql2::Error
-      destroy
-    rescue ActiveRecord::RecordInvalid
-      raise IndexedDocumentError.new(errors.full_messages.to_s)
-    end
   end
 
   def build_content_hash

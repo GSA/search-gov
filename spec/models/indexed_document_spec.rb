@@ -32,25 +32,25 @@ describe IndexedDocument do
 
   context "when associated affiliate has a site domain list" do
     before do
-      SiteDomain.create!(:affiliate=>affiliates(:basic_affiliate), :domain => "whitelist.gov")
+      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov")
     end
 
     context "when URL of indexed document doen't match anything in affiliate's site domain list" do
       it "should find the record invalid" do
-        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.blacklisted.gov/foo?cache_url=http://www.whitelist.gov/someurl")).valid?.should be_false
+        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.blacklisted.gov/foo?cache_url=http://www.whitelist.gov/someurl")).valid?.should be_false
       end
     end
 
     context "when URL of indexed document matches something in affiliate's site domain list" do
       it "should find the record valid given all other attributes are valid" do
-        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.WHITELIST.gov/someurl")).valid?.should be_true
+        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.WHITELIST.gov/someurl")).valid?.should be_true
       end
     end
   end
 
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.foo.gov/#{'waytoolong'*200}/some.pdf"
-    idoc = IndexedDocument.new(@valid_attributes.merge(:url=> too_long))
+    idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))
     idoc.should_not be_valid
     idoc.errors[:url].first.should =~ /too long/
   end
@@ -85,28 +85,28 @@ describe IndexedDocument do
     context "when URL doesn't have a protocol" do
       let(:url) { "www.foo.gov/sdfsdf" }
       it "should prepend it with http://" do
-        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/sdfsdf"
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.foo.gov/sdfsdf"
       end
     end
 
     context "when an URL contains an anchor tag" do
       let(:url) { "http://www.foo.gov/sdfsdf#anchorme" }
       it "should remove it" do
-        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/sdfsdf"
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.foo.gov/sdfsdf"
       end
     end
 
     context "when URL is mixed case" do
       let(:url) { "HTTP://Www.foo.GOV/UsaGovLovesToCapitalize?x=1#anchorme" }
       it "should downcase the scheme and host only" do
-        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/UsaGovLovesToCapitalize?x=1"
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.foo.gov/UsaGovLovesToCapitalize?x=1"
       end
     end
 
     context "when URL is missing trailing slash for a scheme+host URL" do
       let(:url) { "http://www.foo.gov" }
       it "should append a /" do
-        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/"
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.foo.gov/"
       end
     end
   end
@@ -139,7 +139,7 @@ describe IndexedDocument do
   it "should validate unique content hash across URLs for a given affiliate" do
     attrs = @valid_attributes.merge(:content_hash => '92ebcfafee3260a041f9624525a45328')
     IndexedDocument.create!(attrs)
-    duplicate = IndexedDocument.new(attrs.merge(:url=>"http://www.otherone.gov/"))
+    duplicate = IndexedDocument.new(attrs.merge(:url => "http://www.otherone.gov/"))
     duplicate.should_not be_valid
     duplicate.errors[:content_hash].first.should =~ /Identical content/
     duplicate = IndexedDocument.new(attrs.merge(:affiliate_id => affiliates(:power_affiliate).id))
@@ -181,7 +181,7 @@ describe IndexedDocument do
         IndexedDocument.destroy_all
         @indexed_document = IndexedDocument.create!(@valid_attributes)
         @indexed_document.update_attributes!(:title => 'bogus title', :description => 'description', :last_crawl_status => IndexedDocument::OK_STATUS, :content_hash => '92ebcfafee3260a041f9624525a45328')
-        IndexedDocument.create!(@valid_attributes.merge(:url=>"http://something.gov/second.html"))
+        IndexedDocument.create!(@valid_attributes.merge(:url => "http://something.gov/second.html"))
       end
 
       it "should delete the associated orphaned IndexedDomain, too" do
@@ -213,7 +213,7 @@ describe IndexedDocument do
     context "when the affiliate is specified" do
       it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"IndexedDocument", :term => "foo")))
+          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model => "IndexedDocument", :term => "foo")))
         IndexedDocument.search_for('foo', @affiliate, nil)
       end
     end
@@ -284,8 +284,8 @@ describe IndexedDocument do
       before do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
-        @coll = @affiliate.document_collections.create!(:name=>"test")
-        @coll.url_prefixes.create!(:prefix=>"http://www.export.gov/")
+        @coll = @affiliate.document_collections.create!(:name => "test")
+        @coll.url_prefixes.create!(:prefix => "http://www.export.gov/")
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 1', :description => 'This is a HTML document.', :url => 'http://www.export.gov/html.html', :affiliate_id => @affiliate.id)
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 2', :description => 'This is another HTML document.', :url => 'http://www.ignoreme.gov/html.html', :affiliate_id => @affiliate.id)
         Sunspot.commit
@@ -341,7 +341,7 @@ describe IndexedDocument do
     context "when the URL isn't a match for existing site domain entries for the affiliate" do
       before do
         indexed_document.affiliate.site_domains.destroy_all
-        indexed_document.affiliate.site_domains.create!(:domain=>"somethingelse.gov")
+        indexed_document.affiliate.site_domains.create!(:domain => "somethingelse.gov")
       end
 
       it "should delete the entry and stop processing" do
@@ -388,12 +388,24 @@ describe IndexedDocument do
     context "when there is a problem updating the attributes after catching an exception during indexing" do
       before do
         indexed_document.stub!(:open).and_raise Exception.new("some problem during indexing")
-        indexed_document.stub!(:update_attributes!).and_raise StandardError
+        indexed_document.stub!(:update_attributes!).and_raise Timeout::Error
       end
 
       it "should handle the exception and delete the record" do
         indexed_document.fetch
         IndexedDocument.find_by_id(indexed_document.id).should be_nil
+      end
+
+      context "when there is a problem destroying the record" do
+        before do
+          indexed_document.stub!(:destroy).and_raise Exception.new("Some other problem")
+        end
+
+        it "should fail gracefully" do
+          Rails.logger.should_receive(:warn)
+          indexed_document.fetch
+        end
+
       end
     end
 
@@ -448,7 +460,7 @@ describe IndexedDocument do
     context "when the content hash is a duplicate" do
       before do
         @dupe = indexed_document.clone
-        @dupe.update_attributes!(:title=>"new title", :content_hash => "temp", :url => "http://www.gov.gov/newurl")
+        @dupe.update_attributes!(:title => "new title", :content_hash => "temp", :url => "http://www.gov.gov/newurl")
         @dupe.stub!(:build_content_hash).and_return(indexed_document.content_hash)
       end
 
@@ -497,7 +509,7 @@ describe IndexedDocument do
       end
 
       context "when the URL path extension actually indicates a PDF document" do
-        let(:bogus_pdf_document) { IndexedDocument.create!(@min_valid_attributes.merge(:url=>"http://www.gov.gov/some/lostdocument.PDF")) }
+        let(:bogus_pdf_document) { IndexedDocument.create!(@min_valid_attributes.merge(:url => "http://www.gov.gov/some/lostdocument.PDF")) }
 
         it "should raise an IndexedDocumentError error indicating that we don't index PDF documents that are just redirects to HTML pages" do
           lambda { bogus_pdf_document.index_document(@file, 'text/html') }.should raise_error(IndexedDocument::IndexedDocumentError, "PDF resource redirects to HTML page")
@@ -584,7 +596,7 @@ describe IndexedDocument do
     before do
       @aff = affiliates(:basic_affiliate)
       @aff.site_domains.destroy_all
-      @aff.site_domains.create(:domain=>"agency.gov")
+      @aff.site_domains.create(:domain => "agency.gov")
       @indexed_document = IndexedDocument.new(:affiliate => @aff, :url => "http://www.agency.gov/index.html")
     end
 
@@ -839,7 +851,7 @@ describe IndexedDocument do
       IndexedDocument.destroy_all
       IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
       IndexedDocument.create!(:url => 'http://another.mil', :affiliate => affiliates(:basic_affiliate))
-      Affiliate.stub!(:find).and_return(affiliates(:power_affiliate),affiliates(:basic_affiliate))
+      Affiliate.stub!(:find).and_return(affiliates(:power_affiliate), affiliates(:basic_affiliate))
     end
 
     it "should call refresh_indexed_documents on each affiliate that has indexed docs" do
