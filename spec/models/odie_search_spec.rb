@@ -11,15 +11,6 @@ describe OdieSearch do
   end
 
   describe "#initialize(options)" do
-    before do
-      @odie_search = OdieSearch.new(:query => '   element   OR', :affiliate => affiliate)
-      puts @odie_search.class.name
-    end
-
-    it "should downcase a query ending in OR and strip extra whitespace" do
-      @odie_search.query.should == "element or"
-    end
-
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
         OdieSearch.new(:affiliate => affiliate).query.should be_blank

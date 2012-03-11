@@ -8,7 +8,6 @@ class NewsSearch < Search
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
-    @query.downcase! if @query.ends_with? " OR"
     @since = since_when(options[:tbs])
     @rss_feed = @affiliate.rss_feeds.find_by_id(options[:channel].to_i) if options[:channel].present?
     @related_search, @hits, @total = [], [], 0

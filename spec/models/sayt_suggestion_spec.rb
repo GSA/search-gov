@@ -440,10 +440,9 @@ describe SaytSuggestion do
         SaytSuggestion.search_for("health", @affiliate.id).total.should == 2
       end
 
-      it "should return only suggestions that match a phrase if the user's query contains a valid term and a stopword" do
-        suggestions = SaytSuggestion.search_for("health it", @affiliate.id)
-        suggestions.total.should == 1
-        suggestions.results.first.phrase.should == "health it for america"
+      it "should return all matching suggestions if the user's query contains both valid terms and a stopword" do
+        suggestions = SaytSuggestion.search_for("health for america", @affiliate.id)
+        suggestions.total.should == 2
       end
     end
   end

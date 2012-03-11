@@ -5,7 +5,6 @@ class OdieSearch < Search
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
-    @query.downcase! if @query.ends_with? " OR"
     @document_collection = @affiliate.document_collections.navigable_only.find(options[:dc]) rescue nil
     @hits, @total = [], 0
   end

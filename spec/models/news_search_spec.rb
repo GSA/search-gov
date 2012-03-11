@@ -20,14 +20,6 @@ describe NewsSearch do
       (search.since - 1.week.ago).should be_within(0.5).of(0)
     end
 
-    it "should downcase a query ending in OR" do
-      search.query.should == "element or"
-    end
-
-    it "should strip extra whitespace" do
-      search.query.should == "element or"
-    end
-
     context "when the tbs param isn't set" do
       it "should set 'since' to nil" do
         NewsSearch.new(:query => 'element', :affiliate => affiliate).since.should be_nil

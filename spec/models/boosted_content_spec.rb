@@ -427,7 +427,6 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         @boosted_content = BoostedContent.create!(@valid_attributes)
         Sunspot.commit
         BoostedContent.reindex
-        pp @boosted_content
       end
 
       it "should find a boosted content by keyword" do
@@ -455,37 +454,37 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     context "when the Boosted Content is in English" do
       before do
-        @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'sports', :description => 'speak', :keywords => 'dance'))
+        BoostedContent.create!(@valid_attributes.merge(:title => 'sports', :description => 'speak', :keywords => 'dance'))
         Sunspot.commit
         BoostedContent.reindex
       end
 
-      it "should find by title, description and keywords, and highlight terms in the title and description" do
-        title_search = BoostedContent.search_for('sports', @affiliate)
+      it "should find by title, description and keywords (ignoring stopwords), and highlight terms in the title and description" do
+        title_search = BoostedContent.search_for('the sports', @affiliate)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title).should_not be_nil
-        description_search = BoostedContent.search_for('speak', @affiliate)
+        description_search = BoostedContent.search_for('the speak', @affiliate)
         description_search.total.should == 1
         description_search.hits.first.highlight(:description).should_not be_nil
-        BoostedContent.search_for('dance', @affiliate).total.should == 1
+        BoostedContent.search_for('the dance', @affiliate).total.should == 1
       end
     end
 
     context "when the Boosted Content is in Spanish" do
       before do
-        @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar', :locale => 'es'))
+        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar Cambio de hora', :description => 'hablar Cambio de hora', :keywords => 'caminar Cambio de hora', :locale => 'es'))
         Sunspot.commit
         BoostedContent.reindex
       end
 
-      it "should find stemmed equivalents for the title, description and keywords, and highlight terms in the title and description" do
-        title_search = BoostedContent.search_for('jugando', @affiliate, "es")
+      it "should find stemmed equivalents for the title, description and keywords (ignoring stopwords), and highlight terms in the title and description" do
+        title_search = BoostedContent.search_for('jugando de hora', @affiliate, "es")
         title_search.total.should == 1
         title_search.hits.first.highlight(:title_text).should_not be_nil
-        description_search = BoostedContent.search_for('hablando', @affiliate, "es")
+        description_search = BoostedContent.search_for('hablando de hora solamente', @affiliate, "es")
         description_search.total.should == 1
         description_search.hits.first.highlight(:description_text).should_not be_nil
-        BoostedContent.search_for('caminando', @affiliate, "es").total.should == 1
+        BoostedContent.search_for('caminando de hora', @affiliate, "es").total.should == 1
       end
     end
 
