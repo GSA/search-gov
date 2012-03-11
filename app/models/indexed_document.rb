@@ -24,7 +24,7 @@ class IndexedDocument < ActiveRecord::Base
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
-  DOWNLOAD_TIMEOUT_SECS = 15
+  DOWNLOAD_TIMEOUT_SECS = 60
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"

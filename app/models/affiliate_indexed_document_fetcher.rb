@@ -3,8 +3,11 @@ class AffiliateIndexedDocumentFetcher
   @queue = :primary
 
   def self.perform(affiliate_id, start_id, end_id)
-    Affiliate.find(affiliate_id).indexed_documents.find_each(:batch_size => 100, :conditions => ["id between ? and ?", start_id, end_id]) do |indexed_document|
-      indexed_document.fetch
+    affiliate = Affiliate.find(affiliate_id)
+    %w(== <>).each do |subset|
+      affiliate.indexed_documents.find_each(:batch_size => 100, :conditions => ["last_crawl_status #{subset} 'OK' and id between ? and ?", start_id, end_id]) do |indexed_document|
+        indexed_document.fetch
+      end
     end
   end
 end
