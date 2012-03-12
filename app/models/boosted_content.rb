@@ -75,7 +75,7 @@ class BoostedContent < ActiveRecord::Base
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate_name, :locale => locale}) do
         search do
           fulltext sanitized_query do
-            highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+            highlight :title, :description, :title_es, :description_es, :frag_list_builder => 'single'
           end
           with(:affiliate_name, affiliate_name)
           with(:locale, locale)

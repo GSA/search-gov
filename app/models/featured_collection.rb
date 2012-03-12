@@ -97,7 +97,7 @@ class FeaturedCollection < ActiveRecord::Base
               with :publish_end_on, nil
             end
             keywords sanitized_query do
-              highlight :title, :link_titles, :fragment_size => 0
+              highlight :title, :link_titles, :frag_list_builder => 'single'
             end
             paginate :page => 1, :per_page => 1
           end

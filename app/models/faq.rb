@@ -10,12 +10,12 @@ class Faq < ActiveRecord::Base
 
   class << self
     include QueryPreprocessor
-    
+
     def search_for(query, locale = I18n.default_locale.to_s, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :locale => locale}) do
         search do
           fulltext preprocess(query) do
-            highlight :question, {:fragment_size => 255, :max_snippets => 1, :merge_continuous_fragments => true}
+            highlight :question, :frag_list_builder => 'single'
           end
           with(:locale).equal_to(locale)
           paginate :page => 1, :per_page => per_page

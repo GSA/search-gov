@@ -28,7 +28,8 @@ class NewsItem < ActiveRecord::Base
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
           fulltext preprocess(sanitized_query) do
-            highlight :title, :description, :fragment_size => 255, :merge_continuous_fragments => true
+            highlight :title, :frag_list_builder => 'single'
+            highlight :description, :fragment_size => 255
           end
           with(:rss_feed_id, rss_feeds.collect(&:id))
           with(:published_at).greater_than(since) if since

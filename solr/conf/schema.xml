@@ -147,13 +147,13 @@
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="_local*" stored="false" type="tdouble" multiValued="false" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
-    <dynamicField name="*_text" stored="false" type="text" multiValued="true" indexed="true"/>
+    <dynamicField name="*_text" stored="false" type="text" multiValued="true" indexed="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
-    <dynamicField name="*_texts" stored="true" type="text" multiValued="true" indexed="true"/>
-      <!-- *** This dynamicField is used by Sunspot! *** -->
-    <dynamicField name="*_text_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="*_texts" stored="true" type="text" multiValued="true" indexed="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
-    <dynamicField name="*_texts_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
+    <dynamicField name="*_text_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_texts_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_b" stored="false" type="boolean" multiValued="false" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->

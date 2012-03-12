@@ -1084,6 +1084,7 @@
         <str name="hl.simple.post"><![CDATA[</strong>]]></str>
       </lst>
     </formatter>
+    <fragListBuilder name="single" class="solr.highlight.SingleFragListBuilder"/>
   </highlighting>
   <!-- An example dedup update processor that creates the "id" field on the fly
        based on the hash code of some other fields.  This example has overwriteDupes

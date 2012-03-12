@@ -31,7 +31,7 @@ class SaytSuggestion < ActiveRecord::Base
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
           fulltext sanitized_query do
-            highlight :phrase
+            highlight :phrase, :frag_list_builder => 'single'
           end
           with(:affiliate_id, affiliate_id)
           with(:deleted_at, nil)

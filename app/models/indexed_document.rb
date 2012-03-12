@@ -174,7 +174,8 @@ class IndexedDocument < ActiveRecord::Base
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
         search do
           fulltext sanitized_query do
-            highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+            highlight :title, :title_es, :frag_list_builder => 'single'
+            highlight :description, :description_es, :fragment_size => 255
           end
           with(:affiliate_id, affiliate.id)
           any_of do

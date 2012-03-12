@@ -284,7 +284,7 @@ describe WebSearch do
         end
 
         it "should override affiliate domains in query to Bing" do
-          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
           URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return(@uriresult)
@@ -297,7 +297,7 @@ describe WebSearch do
           end
 
           it "should use the query along with the scope id" do
-            search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
+            search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
             URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return @uriresult
@@ -1162,7 +1162,7 @@ describe WebSearch do
     context "when the affiliate has no Bing results, but has indexed documents" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
-        @non_affiliate.site_domains.create(:domain=>"nonsense.com")
+        @non_affiliate.site_domains.create(:domain => "nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
         1.upto(15) do |index|
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1236,7 +1236,9 @@ describe WebSearch do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
         @affiliate.stub!(:uses_odie_results?).and_return true
-        @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA',
+                                             :description => 'Here is a more representative document description on why we LOVE AMERICA so that we get a better sense of what the fast vector highlighter will do with the text, which happens to be longer than the 255 characters we have set as the fragment size. For a really small field, it is better to use the single fragment builder versus the default builder, which for some reason wants to chop off the front of the fragment up to the point of the first snippet.',
+                                             :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
         Sunspot.commit
         IndexedDocument.reindex
         @search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
@@ -1247,7 +1249,7 @@ describe WebSearch do
       it "should not use Bing results, but instead use ODIE results" do
         @search.total.should == 1
         @search.results.first['title'].should == 'I LOVE AMERICA'
-        @search.results.first['content'].should == 'WE LOVE AMERICA'
+        @search.results.first['content'].should == 'we LOVE AMERICA so that we get a better sense of what the fast vector highlighter will do with the text, which happens to be longer than the 255 characters we have set as the fragment size. For a really small field, it is better to use the single fragment builder'
         @search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
       end
     end
@@ -1445,8 +1447,8 @@ describe WebSearch do
 
     context "when search results exist for a term/affiliate pair" do
       before do
-        @search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
-                                            {'title'=>'Second title', 'content' => 'Second content'}])
+        @search.stub!(:results).and_return([{'title' => 'First title', 'content' => 'First content'},
+                                            {'title' => 'Second title', 'content' => 'Second content'}])
       end
 
       it "should return true" do

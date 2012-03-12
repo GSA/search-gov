@@ -120,7 +120,7 @@ class Recall < ActiveRecord::Base
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query}.merge(options)) do
         search do
           fulltext preprocess(query) do
-            highlight :fragment_size => 0
+            highlight :frag_list_builder => 'single'
           end
 
           # date range fields
