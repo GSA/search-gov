@@ -1,6 +1,0 @@
-%h1 #{@page_title}
-.add-boosted-content
-  = form_for([:admin, @boosted_content], :html => { :multipart => true }) do |f|
-    = render :partial => 'shared/boosted_contents/form', :locals => { :form => f }
-    = f.submit "Add"
-    = link_to 'Cancel', admin_boosted_contents_path, :class => 'cancel'

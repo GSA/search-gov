@@ -1,7 +1,0 @@
-%h1 #{@page_title}
-.add-featured-collection
-  = form_for([:admin, @featured_collection], :html => { :multipart => true }) do |f|
-    = render :partial => 'shared/featured_collections/form', :locals => { :form => f }
-    = f.submit "Add"
-    = link_to 'Cancel', admin_featured_collections_path, :class => 'cancel'
-

@@ -132,7 +132,6 @@ describe ApiController do
         affiliate.boosted_contents.create!(:title => "title",
                                            :url => "http://example.com",
                                            :description => "description",
-                                           :locale => 'en',
                                            :status => 'active',
                                            :publish_start_on => Date.yesterday)
         BoostedContent.reindex

@@ -246,9 +246,9 @@ class WebSearch < Search
   end
 
   def populate_additional_results(response)
-    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    @boosted_contents = BoostedContent.search_for(query, affiliate)
     if first_page?
-      @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
+      @featured_collections = FeaturedCollection.search_for(query, affiliate)
       documents = @indexed_results.nil? ? IndexedDocument.search_for(query, affiliate, nil) : nil
       if documents
         @indexed_documents = documents.hits(:verify => true)

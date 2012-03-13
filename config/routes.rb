@@ -116,12 +116,6 @@ UsasearchRails3::Application.routes.draw do
     resources :sayt_suggestions do as_routes end
     resources :misspellings do as_routes end
     resource :sayt_suggestions_upload, :only => [:create, :new]
-    resources :boosted_contents do
-      collection do
-        get :bulk_new
-        post :bulk
-      end
-    end
     resources :affiliate_boosted_contents do as_routes end
     resources :faqs do as_routes end
     resources :collections do as_routes end
@@ -149,7 +143,6 @@ UsasearchRails3::Application.routes.draw do
     resources :report_recipients do as_routes end
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
-    resources :featured_collections
     resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
     resources :sitemaps do as_routes end

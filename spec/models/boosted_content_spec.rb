@@ -2,9 +2,10 @@ require 'spec/spec_helper'
 
 describe BoostedContent do
   fixtures :affiliates
-  before(:each) do
+  before do
+    @affiliate = affiliates(:usagov_affiliate)
     @valid_attributes = {
-      :affiliate => affiliates(:power_affiliate),
+      :affiliate => @affiliate,
       :url => "http://www.someaffiliate.gov/foobar",
       :title => "The foobar page",
       :description => "All about foobar, boosted to the top",
@@ -19,13 +20,7 @@ describe BoostedContent do
     it { should validate_presence_of :url }
     it { should validate_presence_of :title }
     it { should validate_presence_of :description }
-    it { should validate_presence_of :locale }
-    SUPPORTED_LOCALES.each do |locale|
-      it { should allow_value(locale).for(:locale) }
-    end
-    %w(tz ps).each do |locale|
-      it { should_not allow_value(locale).for(:locale) }
-    end
+    it { should validate_presence_of :affiliate }
     it { should validate_presence_of :publish_start_on }
 
     BoostedContent::STATUSES.each do |status|
@@ -42,14 +37,6 @@ describe BoostedContent do
 
     it "should create a new instance given valid attributes" do
       BoostedContent.create!(@valid_attributes)
-    end
-
-    it "should default the locale to the locale of the affiliate" do
-      BoostedContent.create!(@valid_attributes.merge(:affiliate => affiliates(:spanish_affiliate))).locale.should == "es"
-    end
-
-    it "should fail to create a new record if no locale is specified if there is no affiliate" do
-      BoostedContent.create(@valid_attributes.reject{|k,v| k == :affiliate}).errors.should_not be_empty
     end
 
     it "should validate unique url" do
@@ -130,9 +117,8 @@ describe BoostedContent do
   end
 
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
-    fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
+      affiliate = Affiliate.create!(:display_name => "Test Affiliate", :name => 'test_affiliate')
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
@@ -143,16 +129,15 @@ describe BoostedContent do
   end
 
   context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
-    fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
-      BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
-      affiliate.delete
+      @disappearing_affiliate = Affiliate.create!(:display_name => "Test Affiliate", :name => 'test_affiliate')
+      BoostedContent.create!(@valid_attributes.merge(:affiliate => @disappearing_affiliate))
+      @disappearing_affiliate.delete
       BoostedContent.reindex
     end
 
     it "should not find the orphaned boosted Content while searching for Search.USA.gov boosted Contents" do
-      BoostedContent.search_for("foobar").total.should == 0
+      BoostedContent.search_for("foobar", @disappearing_affiliate).total.should == 0
     end
   end
 
@@ -227,8 +212,6 @@ describe BoostedContent do
   end
 
   context ".process_boosted_content_xml_upload_for" do
-    fixtures :affiliates
-
     let(:site_xml) {
       <<-XML
         <xml>
@@ -271,8 +254,7 @@ describe BoostedContent do
     end
 
     it "should update existing boosted Contents if the url match" do
-      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-
+      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
       Sunspot.commit
 
@@ -285,8 +267,7 @@ describe BoostedContent do
     end
 
     it "should merge with preexisting boosted Contents" do
-      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-
+      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :publish_start_on => Date.current, :status => 'active')
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
       Sunspot.commit
 
@@ -299,7 +280,7 @@ describe BoostedContent do
     end
 
     it "should not update existing boosted Contents if one of the import failed" do
-      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)      
       BoostedContent.reindex
       Sunspot.commit
 
@@ -308,7 +289,7 @@ describe BoostedContent do
           and_return(BoostedContent.new(:title => 'This is a listing about Texas',
                                         :url => 'http://some.url',
                                         :description => 'This is the description of the listing',
-                                        :locale => 'en', :status => 'active', :publish_start_on => Date.current))
+                                        :status => 'active', :publish_start_on => Date.current))
 
       BoostedContent.should_receive(:find_or_initialize_by_url).
           with(hash_including(:url => 'http://some.other.url')).
@@ -326,7 +307,6 @@ describe BoostedContent do
   end
 
   context ".process_boosted_content_csv_upload_for" do
-    fixtures :affiliates
     let(:csv_file) {
       <<-CSV
 This is a listing about Texas,http://some.url,This is the description of the listing
@@ -358,19 +338,9 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       results[:updated].should == 0
     end
 
-    it "should set the locale to the locale of the affiliate if specified" do
-      BoostedContent.process_boosted_content_csv_upload_for(affiliates(:spanish_affiliate), StringIO.new(csv_file))
-      affiliates(:spanish_affiliate).boosted_contents.map(&:locale).should == ['es', 'es']
-    end
-
-    it "should set the locale to English if no affiliate is specified" do
-      BoostedContent.process_boosted_content_csv_upload_for(nil, StringIO.new(csv_file))
-      BoostedContent.find_all_by_affiliate_id(nil).map(&:locale).should == ['en', 'en']
-    end
-
     it "should update existing boosted Contents if the url match" do
-      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-
+      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
+ 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
       basic_affiliate.reload
@@ -382,8 +352,8 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     end
 
     it "should merge with preexisting boosted Contents" do
-      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-
+      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :status => 'active', :publish_start_on => Date.current)
+ 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
       basic_affiliate.reload
@@ -395,14 +365,13 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     end
 
     it "should not update existing boosted Contents if one of the import failed" do
-      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-
+      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
       BoostedContent.should_receive(:find_or_initialize_by_url).
           with(hash_including(:url => 'http://some.url')).
           and_return(BoostedContent.new(:title => 'This is a listing about Texas',
                                         :url => 'http://some.url',
                                         :description => 'This is the description of the listing',
-                                        :locale => 'en', :status => 'active', :publish_start_on => Date.current))
+                                        :status => 'active', :publish_start_on => Date.current))
 
       BoostedContent.should_receive(:find_or_initialize_by_url).
           with(hash_including(:url => 'http://some.other.url')).
@@ -418,15 +387,12 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
   end
 
   describe "#search_for" do
-    before do
-      @affiliate = affiliates(:power_affiliate)
-    end
-
     context "when the term is not mentioned in the description" do
       before do
         @boosted_content = BoostedContent.create!(@valid_attributes)
         Sunspot.commit
         BoostedContent.reindex
+        pp @boosted_content
       end
 
       it "should find a boosted content by keyword" do
@@ -439,16 +405,8 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     context "when the affiliate is specified" do
       it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"BoostedContent", :term => "foo", :locale=>"en")))
+          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"BoostedContent", :term => "foo")))
         BoostedContent.search_for('foo', @affiliate)
-      end
-    end
-
-    context "when the affiliate is not specified" do
-      it "should instrument the call to Solr with the proper action.service namespace, default affiliate, and query param hash" do
-        ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :model=>"BoostedContent", :term => "foo", :locale => "en")))
-        BoostedContent.search_for('foo')
       end
     end
 
@@ -472,25 +430,26 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     context "when the Boosted Content is in Spanish" do
       before do
-        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar Cambio de hora', :description => 'hablar Cambio de hora', :keywords => 'caminar Cambio de hora', :locale => 'es'))
+        @spanish_affiliate = affiliates(:gobiernousa_affiliate)
+        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar Cambio de hora', :description => 'hablar Cambio de hora', :keywords => 'caminar Cambio de hora', :affiliate => @spanish_affiliate))
         Sunspot.commit
         BoostedContent.reindex
       end
 
       it "should find stemmed equivalents for the title, description and keywords (ignoring stopwords), and highlight terms in the title and description" do
-        title_search = BoostedContent.search_for('jugando de hora', @affiliate, "es")
+        title_search = BoostedContent.search_for('jugando de hora', @spanish_affiliate)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title_text).should_not be_nil
-        description_search = BoostedContent.search_for('hablando de hora solamente', @affiliate, "es")
+        description_search = BoostedContent.search_for('hablando de hora solamente', @spanish_affiliate)
         description_search.total.should == 1
         description_search.hits.first.highlight(:description_text).should_not be_nil
-        BoostedContent.search_for('caminando de hora', @affiliate, "es").total.should == 1
+        BoostedContent.search_for('caminando de hora', @spanish_affiliate).total.should == 1
       end
     end
 
     context "when query contains special characters" do
       before do
-        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar', :locale => 'en'))
+        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar'))
         Sunspot.commit
         BoostedContent.reindex
       end

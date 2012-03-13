@@ -1,6 +1,11 @@
 require 'spec/spec_helper'
 
 describe FeaturedCollectionLink do
+  fixtures :affiliates
+  before do
+    @affiliate = affiliates(:usagov_affiliate)
+  end
+  
   it { should validate_presence_of :title }
   it { should validate_presence_of :url }
   it { should belong_to :featured_collection }
@@ -12,10 +17,10 @@ describe FeaturedCollectionLink do
       prefixes.each_with_index do |prefix, index|
         specify do
           featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
-                                                       :locale => 'en',
                                                        :status => 'active',
                                                        :layout => 'one column',
-                                                       :publish_start_on => '07/01/2011')
+                                                       :publish_start_on => '07/01/2011',
+                                                       :affiliate => @affiliate)
           featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',
                                                               :url => "#{prefix}#{url}",
                                                               :position => index)
@@ -31,10 +36,10 @@ describe FeaturedCollectionLink do
       prefixes.each_with_index do |prefix, index|
         specify do
           featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
-                                                       :locale => 'en',
                                                        :status => 'active',
                                                        :layout => 'one column',
-                                                       :publish_start_on => '07/01/2011')
+                                                       :publish_start_on => '07/01/2011',
+                                                       :affiliate => @affiliate)
           featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',
                                                               :url => "#{prefix}#{url}",
                                                               :position => index)

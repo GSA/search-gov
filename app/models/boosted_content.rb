@@ -9,7 +9,8 @@ class BoostedContent < ActiveRecord::Base
 
   belongs_to :affiliate
 
-  validates_presence_of :title, :url, :description, :locale, :publish_start_on
+  validates :affiliate, :presence => true
+  validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
@@ -21,33 +22,26 @@ class BoostedContent < ActiveRecord::Base
 
   searchable :auto_index => false do
     text :title, :stored => true, :boost => 10.0 do |boosted_content|
-      boosted_content.title if boosted_content.locale == "en"
+      boosted_content.title if (boosted_content.affiliate and boosted_content.affiliate.locale == "en")
     end
     text :description, :stored => true, :boost => 4.0 do |boosted_content|
-      boosted_content.description if boosted_content.locale == "en"
+      boosted_content.description if (boosted_content.affiliate and boosted_content.affiliate.locale == "en")
     end
     text :keywords do |boosted_content|
-      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or boosted_content.locale != "en"
+      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or (boosted_content.affiliate and boosted_content.affiliate.locale != "en")
     end
     text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |boosted_content|
-      boosted_content.title if boosted_content.locale == "es"
+      boosted_content.title if (boosted_content.affiliate and boosted_content.affiliate.locale == "es")
     end
     text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |boosted_content|
-      boosted_content.description if boosted_content.locale == "es"
+      boosted_content.description if (boosted_content.affiliate and boosted_content.affiliate.locale == "es")
     end
     text :keywords_es, :as => "keywords_text_es" do |boosted_content|
-      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or boosted_content.locale != "es"
+      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or (boosted_content.affiliate and boosted_content.affiliate.locale != "es")
     end
     string :affiliate_name do |boosted_content|
-      if boosted_content.affiliate_id.nil?
-        Affiliate::USAGOV_AFFILIATE_NAME
-      elsif Affiliate.find_by_id(boosted_content.affiliate_id)
-        boosted_content.affiliate.name
-      else
-        nil
-      end
+        boosted_content.affiliate.name if boosted_content.affiliate
     end
-    string :locale
     string :status
     time :publish_start_on, :trie => true
     time :publish_end_on, :trie => true
@@ -68,17 +62,16 @@ class BoostedContent < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
+    def search_for(query, affiliate, page = 1, per_page = 3)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
       affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate_name, :locale => locale}) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate_name}) do
         search do
           fulltext sanitized_query do
             highlight :title, :description, :title_es, :description_es, :frag_list_builder => 'single'
           end
           with(:affiliate_name, affiliate_name)
-          with(:locale, locale)
           with(:status, 'active')
           with(:publish_start_on).less_than(Time.current)
           any_of do
@@ -129,8 +122,7 @@ class BoostedContent < ActiveRecord::Base
             :url => entry.elements["url"].first.to_s,
             :title => entry.elements["title"].first.to_s,
             :description => entry.elements["description"].first.to_s,
-            :affiliate => affiliate,
-            :locale => affiliate.nil? ? 'en' : affiliate.locale
+            :affiliate_id => affiliate.id
           }
           boosted_contents << import_boosted_content(results, info)
         end
@@ -154,8 +146,7 @@ class BoostedContent < ActiveRecord::Base
               :title => row[0],
               :url => row[1],
               :description => row[2],
-              :affiliate => affiliate,
-              :locale => affiliate.nil? ? 'en' : affiliate.locale
+              :affiliate_id => affiliate.id          
           }
           boosted_contents << import_boosted_content(results, info)
         end
@@ -174,6 +165,7 @@ class BoostedContent < ActiveRecord::Base
     boosted_content_attributes = attributes.merge({ :status => 'active',
                                                     :publish_start_on => Date.current })
     boosted_content = find_or_initialize_by_url(boosted_content_attributes)
+    boosted_content.affiliate_id = attributes[:affiliate_id]
     if boosted_content.new_record?
       boosted_content.save!
       results[:created] += 1
@@ -187,7 +179,7 @@ class BoostedContent < ActiveRecord::Base
   private
 
   def set_locale
-    self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
+    self.locale = self.affiliate ? self.affiliate.locale : I18n.default_locale.to_s
   end
 
   def publish_start_and_end_dates

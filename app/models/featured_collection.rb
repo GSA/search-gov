@@ -10,6 +10,7 @@ class FeaturedCollection < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
 
+  validates :affiliate, :presence => true
   validates_presence_of :title, :publish_start_on
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
@@ -75,11 +76,11 @@ class FeaturedCollection < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, affiliate, locale)
+    def search_for(query, affiliate)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
       affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate_name, :locale => locale }) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate_name }) do
         begin
           search do
             if affiliate.nil?
@@ -87,7 +88,6 @@ class FeaturedCollection < ActiveRecord::Base
             else
               with :affiliate_id, affiliate.id
             end
-            with :locale, locale
             with :status, "active"
             any_of do
               with(:publish_start_on).less_than(Time.current)
