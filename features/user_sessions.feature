@@ -1,10 +1,5 @@
 Feature: User sessions
 
-  Scenario: Visiting the login page
-    Given I am on the program welcome page
-    When I follow "Sign In"
-    Then I should see "Log In"
-
   Scenario: Already logged-in user visits login page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the login page

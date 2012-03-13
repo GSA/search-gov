@@ -11,7 +11,7 @@ Feature: Affiliate site domain
     When I go to the affiliate admin page with "agency.gov" selected
     And I follow "Domains"
     Then I should see the browser page titled "Domains"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see "Domains to Search" in the page header
     And I should see "Site agency site has no domain entry"
 
@@ -38,20 +38,20 @@ Feature: Affiliate site domain
     And I follow "Domains"
     And I follow "Add new domain"
     Then I should see the browser page titled "Add a new domain"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Add a new domain
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Add a new domain
     And I should see "Add a new domain" in the page header
     When I fill in the following:
       | Domain    | whitehouse.gov  |
       | Site name | The White House |
     And I press "Add"
     Then I should see "Domain was successfully added."
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see the following table rows:
       | Site Name       | Domain         |
       | The White House | whitehouse.gov |
     When I follow "Edit"
     Then I should see the browser page titled "Edit domain"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Edit domain
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Edit domain
 
     When I fill in the following:
       | Domain |  |
@@ -67,14 +67,14 @@ Feature: Affiliate site domain
     And I press "Save"
     Then I should see "Domain was successfully updated."
 
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see the following table rows:
       | Site Name     | Domain  |
       | US Government | usa.gov |
     And I should not see "www.usa.gov"
     When I press "Delete"
     Then I should see "Domain was successfully deleted."
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see "Site agency site has no domain entry"
 
   Scenario: Bulk uploading site domains without exisiting site domains
@@ -86,12 +86,12 @@ Feature: Affiliate site domain
     And I follow "Domains"
     And I follow "Bulk upload"
     Then I should see the browser page titled "Bulk upload domains"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Bulk upload domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Bulk upload domains
     And I should see "Bulk upload domains" in the page header
     When I attach the file "features/support/site_domains.csv" to "site_domains"
     And I press "Upload"
     Then I should see the browser page titled "Domains"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see "Domains to Search" in the page header
     And I should see "Successfully uploaded 4 domains."
     And I should see the following table rows:
@@ -117,12 +117,12 @@ Feature: Affiliate site domain
     And I follow "Domains"
     And I follow "Bulk upload"
     Then I should see the browser page titled "Bulk upload domains"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Bulk upload domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Bulk upload domains
     And I should see "Bulk upload domains" in the page header
     When I attach the file "features/support/site_domains_without_subdomain.csv" to "site_domains"
     And I press "Upload"
     Then I should see the browser page titled "Domains"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > agency site > Domains
+    And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see "Domains to Search" in the page header
     And I should see "Successfully uploaded 2 domains."
     And I should see the following table rows:

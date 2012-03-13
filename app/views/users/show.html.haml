@@ -1,3 +1,4 @@
+= content_for :title, "My Account - "
 = breadcrumbs("My Account")
 %h1
   My Account
@@ -31,7 +32,7 @@
         &= @user.email
     - if @user.is_affiliate_or_higher
       %tr
-        %td{:class=>"label"} 
+        %td{:class=>"label"}
           Phone:
         %td
           &= @user.phone
@@ -51,12 +52,12 @@
         %td
           &= @user.city
       %tr
-        %td{:class=>"label"} 
+        %td{:class=>"label"}
           State:
         %td
           &= @user.state
       %tr
-        %td{:class=>"label"} 
+        %td{:class=>"label"}
           Zip:
         %td
           &= @user.zip

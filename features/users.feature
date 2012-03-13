@@ -17,6 +17,10 @@ Feature: Users
     And I should see "State"
     And I should see "Zip"
 
+  Scenario: Visiting the login page
+    Given I am on the login page
+    Then I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the registration form
+
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the login page
     Then I should see "Sign In to Use Our Services"
@@ -34,7 +38,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
-    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
     When I follow "Sign Out"
     Then I should be on the login page
     And "lorem.ipsum@agency.gov" should receive an email
@@ -81,7 +85,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
-    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
     And I should see "Contact information"
     And the "Name*" field should contain "Lorem Ipsum"
     And the "Email*" field should contain "lorem.ipsum@corporate.com"
@@ -123,12 +127,12 @@ Feature: Users
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
     And I should see "Contact information"
     And the "Name*" field should contain "Lorem Ipsum"
     And the "Email*" field should contain "lorem.ipsum@corporate.com"
     When I press "Submit"
-    Then I should see "Affiliate Center" within ".main"
+    Then I should see the browser page titled "Admin Center"
     And I should see "Organization name can't be blank"
     And I should see "Phone can't be blank"
     And I should see "Address can't be blank"
@@ -145,9 +149,11 @@ Feature: Users
     And I choose "I am not affiliated with a government agency"
     And I check "I have read and accept the"
     And I press "Register for a new account"
-    Then I should be on the user account page
+    Then I should see the browser page titled "My Account"
+    And I should see the following breadcrumbs: USASearch > My Account
+    And I should see "My Account" in the page header
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should not see "Affiliate Center" link in the main navigation bar
+    And I should not see a link to "Admin Center" in the main navigation bar
     And I should not see "Add New Affiliate"
 
   Scenario: Registering as a new affiliate user with a .mil email address
@@ -161,9 +167,11 @@ Feature: Users
     And I choose "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
-    Then I should be on the affiliate admin page
+    Then I should see the browser page titled "Admin Center"
+    And I should see the following breadcrumbs: USASearch > Admin Center
+    And I should see "Admin Center" in the page header
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
-    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the login page
@@ -181,11 +189,6 @@ Feature: Users
     And I press "Register for a new account"
     Then I should see "An option for government affiliation must be selected"
     And I should see "Terms of service must be accepted"
-
-  Scenario: Clicking on the Terms of Service page
-    Given I am on the login page
-    When I follow "Terms of Service"
-    Then I should be on the terms of service page
 
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

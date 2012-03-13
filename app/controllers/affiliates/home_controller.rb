@@ -1,69 +1,9 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
-  before_filter :require_affiliate, :except => [:index, :how_it_works, :demo, :home, :urls_and_sitemaps]
-  before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
-  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
+  before_filter :require_affiliate, :except => [:index, :home, :urls_and_sitemaps]
+  before_filter :require_approved_user, :except => [:index, :home, :update_contact_information, :update_content_types]
+  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
-
-  AFFILIATE_ADS = [
-    {:display_name => "BROWARD.org",
-     :url => "http://www.broward.org",
-     :thumbnail => "thumb_broward.png"},
-    {:display_name => "COMMERCE.gov",
-     :url => "http://www.commerce.gov",
-     :thumbnail => "thumb_commerce.jpg"},
-    {:display_name => "DOI.gov",
-     :url => "http://www.doi.gov",
-     :thumbnail => "thumb_doi.png"},
-    {:display_name => "export.gov",
-     :url => "http://export.gov",
-     :thumbnail => "thumb_export.jpg"},
-    {:display_name => "gobiernoUSA.gov",
-     :url => "http://gobiernousa.gov",
-     :thumbnail => "thumb_gobiernousa.jpg"},
-    {:display_name => "HUD.GOV",
-     :url => "http://hud.gov",
-     :thumbnail => "thumb_hud.jpg"},
-    {:display_name => "IMLS.gov",
-     :url => "http://imls.gov",
-     :thumbnail => "thumb_imls.png"},
-    {:display_name => "Louisiana.gov",
-     :url => "http://louisiana.gov",
-     :thumbnail => "thumb_louisiana.jpg"},
-    {:display_name => "Navajo County",
-     :url => "http://www.navajocountyaz.gov",
-     :thumbnail => "thumb_navajo.png"},
-    {:display_name => "National Park Service",
-     :url => "http://www.nps.gov",
-     :thumbnail => "thumb_nps.png"},
-    {:display_name => "National Weather Service",
-     :url => "http://www.nws.gov",
-     :thumbnail => "thumb_nws.png"},
-    {:display_name => "City of Reno, Nevada",
-     :url => "http://reno.gov",
-     :thumbnail => "thumb_reno.png"},
-    {:display_name => "RI.gov",
-     :url => "http://www.ri.gov",
-     :thumbnail => "thumb_ri.jpg"},
-    {:display_name => "Seguro Social",
-     :url => "http://www.ssa.gov/espanol/",
-     :thumbnail => "thumb_segurosocial.jpg"},
-    {:display_name => "www.nan.usace.army.mil",
-     :url => "http://www.nan.usace.army.mil",
-     :thumbnail => "thumb_usace.png"},
-    {:display_name => "USA.gov",
-     :url => "http://www.usa.gov",
-     :thumbnail => "thumb_usagov.jpg"},
-    {:display_name => "uscis.gov",
-     :url => "http://www.uscis.gov",
-     :thumbnail => "thumb_uscis.jpg"},
-    {:display_name => "The White House",
-     :url => "http://www.whitehouse.gov",
-     :thumbnail => "thumb_whitehouse.jpg"},
-    {:display_name => "WSDOT.wa.gov",
-     :url => "http://wsdot.wa.gov",
-     :thumbnail => "thumb_wsdot.png"},
-  ]
 
   UPDATE_ACTION_HASH = {
     :update_site_information => {
@@ -82,7 +22,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   }
 
   def index
-    @title = "USASearch Affiliate Program - "
+    redirect_to(home_affiliates_path)
   end
 
   def edit_site_information
@@ -95,19 +35,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def edit_header_footer
     setup_affiliate_for_editing
-  end
-
-  def how_it_works
-    @title = "How the Affiliate Program Works - "
-  end
-
-  def demo
-    @title = "See the Affiliate Program in Action - "
-    if params.include?(:all)
-      @affiliate_ads = AFFILIATE_ADS
-    else
-      @affiliate_ads = AFFILIATE_ADS.shuffle.slice(0,3)
-    end
   end
 
   def new
@@ -255,7 +182,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def home
-    @title = "Affiliate Center - "
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end

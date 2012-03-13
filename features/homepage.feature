@@ -25,10 +25,14 @@ Feature: Homepage
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
-    And I should see "USASearch Program"
-    And I should see "Affiliate Program"
-    And I should see "APIs and Web Services"
-    And I should see "Search.USA.gov" in the homepage tagline
+    And I should see a link to "Home" with url for "http://searchblog.usa.gov" in the homepage about section
+    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the homepage about section
+    And I should see a link to "Features" with url for "http://searchblog.usa.gov/features" in the homepage about section
+    And I should see a link to "Success Stories" with url for "http://searchblog.usa.gov/customers" in the homepage about section
+    And I should see a link to "HelpDesk" with url for "http://searchblog.usa.gov/help-desk" in the homepage about section
+
+    When I follow "Sign Up" in the homepage about section
+    Then I should see "Sign In to Use Our Services"
 
   Scenario: A typical popular search from the home page
     Given the following Affiliates exist:
@@ -112,26 +116,6 @@ Feature: Homepage
     And I follow "Advanced Search"
     Then I should see the browser page titled "Advanced Search"
     And I should see "Use the options on this page to create a very specific search."
-
-  Scenario: Visiting ABOUT USASearch links
-    Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
-    When I am on the homepage
-    And I follow "USASearch Program" in the homepage about section
-    Then I should be on the program welcome page
-
-    When I am on the homepage
-    And I follow "Affiliate Program" in the homepage about section
-    Then I should be on the affiliates page
-
-    When I am on the homepage
-    And I follow "APIs and Web Services" in the homepage about section
-    Then I should be on the api page
-
-    When I am on the homepage
-    And I follow "Search.USA.gov" in the homepage about section
-    Then I should be on the searchusagov page
 
   Scenario: Visiting other verticals from the homepage
     Given the following Affiliates exist:

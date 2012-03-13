@@ -4,14 +4,14 @@ describe AffiliateHelper do
   fixtures :affiliate_templates
 
   describe "#affiliate_center_breadcrumbs" do
-    it "should generate links that contain USASearch > Affiliate Program > Affiliate Center > a title" do
-      helper.should_receive(:breadcrumbs).with([link_to("Affiliate Program", affiliates_path), link_to("Affiliate Center",home_affiliates_path), "a title"])
-      content = helper.affiliate_center_breadcrumbs("a title")
+    it "should generate links that contain USASearch > Admin Center > a title" do
+      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",home_affiliates_path), "a title"])
+      helper.affiliate_center_breadcrumbs("a title")
     end
 
-    it "should generate links that contain USASearch > Affiliate Program > Affiliate Center > a link > a title" do
-      helper.should_receive(:breadcrumbs).with([link_to("Affiliate Program", affiliates_path), link_to("Affiliate Center",home_affiliates_path),link_to("a link", "http://blah"), "a title"])
-      content = helper.affiliate_center_breadcrumbs([link_to("a link", "http://blah"), "a title"])
+    it "should generate links that contain USASearch > Admin Center > a link > a title" do
+      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",home_affiliates_path),link_to("a link", "http://blah"), "a title"])
+      helper.affiliate_center_breadcrumbs([link_to("a link", "http://blah"), "a title"])
     end
   end
 

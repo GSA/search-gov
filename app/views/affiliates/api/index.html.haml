@@ -1,9 +1,10 @@
-= breadcrumbs([link_to("APIs & Web Services", api_docs_path), "Search API"])
+= content_for :title, "Search API - "
+= affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Search API'] )
 %p
   %a{ :name => "content" }
 = render "/shared/api_key"
 %h1
-  Search Data API
+  Search API
 %p
   USASearch's Search Data API returns search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
 %p
@@ -228,9 +229,9 @@
           &lt;!-- ... --&gt;
         &lt;/results&gt;
       &lt;/search&gt;
-.api
+.api.tos
   %h3 Terms of Service
   %p
     By using a USASearch API, you agree to our
-    = link_to 'Terms of Service', recalls_tos_docs_path
+    = link_to 'Terms of Service', 'http://searchblog.usa.gov/tos'
     \.

@@ -11,7 +11,7 @@ Feature: Affiliate RSS
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "RSS"
     Then I should see the browser page titled "RSS"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > RSS
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > RSS
     And I should see "RSS" in the page header
     And I should see a link to "RSS 2.0 specification" with url for "http://www.rssboard.org/rss-specification"
     And I should see a link to "Atom syndication format" with url for "http://www.atomenabled.org/developers/syndication/"

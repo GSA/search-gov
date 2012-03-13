@@ -1,34 +1,33 @@
 .excluded_urls
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Emergency Delete"])
-  .column-1
-    %h1 Emergency Delete
-    %p
-    .add-excluded-url
-      = form_for([@affiliate, @excluded_url], :html => { :multipart => true }) do |f|
-        = render :partial => 'form', :locals => { :form => f }
-        = f.submit "Add"
-    .excluded-url-list{:style => 'margin-top: 10px;'}
-      %table
-        %colgroup
-          %col{ :class => 'url' }
-          %col{ :class => 'actions' }
-        %thead
+  %h1 Emergency Delete
+  %p
+  .add-excluded-url
+    = form_for([@affiliate, @excluded_url], :html => { :multipart => true }) do |f|
+      = render :partial => 'form', :locals => { :form => f }
+      = f.submit "Add"
+  .excluded-url-list{:style => 'margin-top: 10px;'}
+    %table
+      %colgroup
+        %col{ :class => 'url' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 2 }
+            - unless @excluded_urls.blank?
+              %span= page_entries_info @excluded_urls, :html => false
+      %tbody
+        %tr.column-header
+          %th Url
+          %th Actions
+        - unless @excluded_urls.blank?
+          - @excluded_urls.each do |excluded_url|
+            %tr.row-item
+              %td
+                = excluded_url.url.truncate(35, :omission => '...' )
+              %td.actions
+                = button_to("Delete", [@affiliate, excluded_url], :method => :delete, :confirm => "Are you sure you want to delete this Emergency Delete URL?")
+        - else
           %tr
-            %th{ :colspan => 2 }
-              - unless @excluded_urls.blank?
-                %span= page_entries_info @excluded_urls, :html => false
-        %tbody
-          %tr.column-header
-            %th Url
-            %th Actions
-          - unless @excluded_urls.blank?
-            - @excluded_urls.each do |excluded_url|
-              %tr.row-item
-                %td
-                  = excluded_url.url.truncate(35, :omission => '...' )
-                %td.actions
-                  = button_to("Delete", [@affiliate, excluded_url], :method => :delete, :confirm => "Are you sure you want to delete this Emergency Delete URL?")
-          - else
-            %tr
-              %td.empty{ :colspan => 2 } Site #{@affiliate.display_name} has no Emergency Delete Urls
-      = will_paginate @excluded_urls
+            %td.empty{ :colspan => 2 } Site #{@affiliate.display_name} has no Emergency Delete Urls
+    = will_paginate @excluded_urls

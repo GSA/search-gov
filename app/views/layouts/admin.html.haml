@@ -1,7 +1,7 @@
 !!!strict
 %html{html_attrs('en-us')}
   %head
-    %title USASearch Admin
+    %title Super Admin
     = favicon_link_tag
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'compiled/main.css', :media => 'screen, projection'
@@ -30,11 +30,11 @@
         .container
           .span-24.main
             - if @page_title.nil? and active_scaffold_config.nil?
-              = breadcrumbs([link_to('Search.USA.gov', searchusagov_path), "Admin Center"])
+              = breadcrumbs(["Super Admin"])
             - elsif @parent_page_title.present? and @page_title.present?
-              = breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Admin Center", admin_home_page_path), link_to(@parent_page_title, { :action => :index }), @page_title])
+              = breadcrumbs([link_to("Super Admin", admin_home_page_path), link_to(@parent_page_title, { :action => :index }), @page_title])
             - else
-              = breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Admin Center", admin_home_page_path), @page_title || active_scaffold_config.label])
+              = breadcrumbs([link_to("Super Admin", admin_home_page_path), @page_title || active_scaffold_config.label])
             .span-10.prepend-7.append-7= show_flash_messages
             .clear
             = yield

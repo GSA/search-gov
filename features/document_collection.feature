@@ -14,7 +14,7 @@ Feature: Document Collections
     And affiliate "noaa.gov" has a result source of "bing+odie"
     When I go to the affiliate admin page with "noaa.gov" selected
     And I follow "Collections"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Noaa Site > Collections
+    Then I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Collections
     And I should see "Collections" in the page header
     And I should see "Site Noaa Site has no Collections"
 
@@ -24,7 +24,7 @@ Feature: Document Collections
     When I go to the affiliate admin page with "noaa.gov" selected
     And I follow "Collections"
     And I follow "Add new collection"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Noaa Site > Add a new Collection
+    Then I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Add a new Collection
     And I should see "Add a new Collection" in the page header
     When I follow "Cancel"
     Then I should see "Collections" in the page header
@@ -43,13 +43,13 @@ Feature: Document Collections
       | URL Prefix 1          | www.zzz.gov                      |
     And I press "Add"
     Then I should see "Collection successfully added"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Noaa Site > Collection
+    And I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Collection
     And I should see "Collections" in the page header
     And I should see "My Collection"
     And I should see "http://www.gov.gov/"
     And I should see "http://www.zzz.gov/"
     When I follow "Edit"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Noaa Site > Edit Collections entry
+    Then I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Edit Collections entry
     And I should see "Edit Collections entry" in the page header
     And the "Name*" field should contain "My Collection"
     And the "URL Prefix 0" field should contain "http://www.gov.gov/"

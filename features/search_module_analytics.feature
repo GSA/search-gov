@@ -39,7 +39,7 @@ Feature: Search Module Analytics
     | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
     When I am on the analytics homepage
     And I follow "Search Module Stats"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Search Module Stats
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Search Module Stats
     And I should see "Search Module Stats"
     And I should see "Impressions and Clicks by Module"
     And I should see the following table rows:
@@ -74,5 +74,5 @@ Feature: Search Module Analytics
     And no search module data exists
     When I am on the analytics homepage
     And I follow "Search Module Stats"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Search Module Stats
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Search Module Stats
     And I should see "No data matched your filters"

@@ -25,7 +25,7 @@ Feature: Groups and Trends
       | abcdef 13      | 1115   |
     When I am on the analytics homepage
     And I follow "Groups & Trends"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Groups & Trends
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Groups & Trends
     And I should see "Data for September 11, 2011"
     And in "dqgs1" I should see "Hcreform1"
     And in "dqgs1" I should see "1110"

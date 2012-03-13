@@ -7,33 +7,9 @@ describe Affiliates::HomeController do
   end
 
   describe "do GET on #index" do
-    it "should not require affiliate login" do
+    it "should redirect to affiliate home" do
       get :index
-      response.should be_success
-    end
-  end
-
-  describe "do GET on #how_it_works" do
-    it "should have a title" do
-      get :how_it_works
-      response.should be_success
-    end
-  end
-
-  describe "do GET on #demo" do
-    it "should have a title" do
-      get :demo
-      response.should be_success
-    end
-
-    it "assigns @affiliate_ads that contains 3 items" do
-      get :demo
-      assigns[:affiliate_ads].size.should == 3
-    end
-
-    it "assigns @affiliate_ads that contains more than 3 items if all parameter is defined" do
-      get :demo, :all => ""
-      assigns[:affiliate_ads].size.should > 3
+      response.should redirect_to(home_affiliates_path)
     end
   end
 

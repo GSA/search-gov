@@ -94,10 +94,12 @@ module ApplicationHelper
 
   def about_usasearch_links
     links = ''
-    links << link_to("USASearch Program", program_path, :class => 'first')
-    links << link_to("Affiliate Program", affiliates_path)
-    links << link_to("APIs and Web Services", api_docs_path)
-    links << link_to("Search.USA.gov", searchusagov_path, :class => 'last')
+    links << link_to('Home', 'http://searchblog.usa.gov', :class => 'first')
+    links << link_to('About Us', 'http://searchblog.usa.gov/about-us')
+    links << link_to('Features', 'http://searchblog.usa.gov/features')
+    links << link_to('Success Stories', 'http://searchblog.usa.gov/customers')
+    links << link_to('HelpDesk', 'http://searchblog.usa.gov/help-desk')
+    links << link_to('Sign Up', login_path, :class => 'last')
     raw links
   end
 
@@ -118,20 +120,34 @@ module ApplicationHelper
   end
 
   def basic_header_navigation_for(cur_user)
-    elements = []
+    links = []
     if cur_user
-      elements << "#{cur_user.email}"
-      elements << link_to("My Account", account_path)
-      elements << link_to("Sign Out", url_for_logout, :method => :delete)
+      links << content_tag(:li, "#{cur_user.email}", :class => 'first')
+      links << content_tag(:li, link_to("My Account", account_path))
+      links << content_tag(:li, link_to("Sign Out", url_for_logout, :method => :delete))
     else
-      elements << link_to("Sign In", url_for_login)
+      links << content_tag(:li, link_to("Sign In", url_for_login), :class => 'first')
     end
+    raw content_tag(:ul, raw(links.join("\n")))
+  end
 
-    results = elements.collect do |element|
-      content_tag(:li, raw(element))
+  def render_user_navigation(current_user)
+    links = []
+    if current_user
+      links << link_to('Super Admin', admin_home_page_path) if current_user_is?(:affiliate_admin)
+      links << link_to('Analytics Center', analytics_home_page_path) if current_user_is?(:analyst)
+      links << link_to('Admin Center', home_affiliates_path) if current_user_is?(:affiliate)
+      first_added = false
+      list_items = links.collect do |link|
+        unless first_added
+          first_added = true
+          content_tag(:li, link.html_safe, :class => 'first')
+        else
+          content_tag(:li, link.html_safe)
+        end
+      end
+      content_tag(:ul, list_items.join("\n").html_safe).html_safe
     end
-    results << content_tag(:li, mail_to("***REMOVED***", "Help Desk", :subject => "USASearch HelpDesk Request"), :class => 'last')
-    raw content_tag(:ul, raw(results.join))
   end
 
   def other_locale_str
@@ -204,7 +220,7 @@ module ApplicationHelper
   end
 
   def breadcrumbs(breadcrumbs)
-    trail = link_to('USASearch', program_path)
+    trail = link_to('USASearch', 'http://searchblog.usa.gov')
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
     content_tag(:div, trail, :class => 'breadcrumbs')
   end

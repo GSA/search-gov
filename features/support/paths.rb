@@ -96,10 +96,6 @@ module NavigationHelpers
       main_superfresh_feed_path
     when /admin sayt suggestions upload/
       new_admin_sayt_suggestions_upload_path
-    when /the developers home page/
-      developers_path
-    when /the developers signup page/
-      developers_path
     when /the affiliate admin page with "([^\"]*)" selected$/
       home_affiliates_path(:said => Affiliate.find_by_name($1).id)
     when /the affiliate admin page/
@@ -118,16 +114,6 @@ module NavigationHelpers
       recalls_path
     when /the recalls search page/
       recalls_search_path
-    when /the program welcome page/
-      program_path(:locale => nil, :m => nil)
-    when /the api page/
-      api_docs_path(:locale => nil, :m => nil)
-    when /the recalls api page/
-      recalls_api_docs_path(:locale => nil, :m => nil)
-    when /the terms of service page/
-      recalls_tos_docs_path(:locale => nil, :m => nil)
-    when /the searchusagov page/
-      searchusagov_path(:locale => nil, :m => nil)
     when /the forms home page/
       forms_path
     when /the top forms admin page$/

@@ -2,6 +2,29 @@
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "URLs & Sitemaps"])
   %h1= "URLs & Sitemaps for USASearch Index"
 
+  .column-2
+    .side-note-image= image_tag "side_notes/urls.png"
+    .side-note
+      %strong Did you know?
+      %br
+      We notify Bing&trade; about the URLs you add.
+      They will appear in the results on your website immediately (PDF and HTML).
+      They will appear in Bing.com within 24 hours (HTML only).
+    .side-note
+      %strong
+        Not sure what the URLs are for your new or modified pages?
+      Email us at
+      %a{:href=>"mailto:USASearch@gsa.gov"}
+        USASearch@gsa.gov
+      and we can help you identify specific URLs that have recently changed on your site.
+    .side-note
+      %strong
+        Please note
+      that you still need to register with Bing™ webmaster tools to have your site, and sitemap, indexed by Bing&trade;.
+      %br
+      %a{:href=>"http://www.bing.com/toolbox/webmasters/", :target=>"_blank"}
+        Register for Bing webmaster tools.
+
   .column-1
     %p
       USASearch offers a number of ways for you to tell us about URLs for the web pages that you want to include in the USASearch index.
@@ -64,26 +87,3 @@
               = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
               %span Previously Crawled URLs (#{@crawled_urls.total_entries})
         = render :partial => 'affiliates/on_demand_urls/crawled_urls', :locals => { :shorten_url_length => 20 }
-
-  .column-2
-    .side-note-image= image_tag "side_notes/urls.png"
-    .side-note
-      %strong Did you know?
-      %br
-      We notify Bing&trade; about the URLs you add.
-      They will appear in the results on your website immediately (PDF and HTML).
-      They will appear in Bing.com within 24 hours (HTML only).
-    .side-note
-      %strong
-        Not sure what the URLs are for your new or modified pages?
-      Email us at
-      %a{:href=>"mailto:USASearch@gsa.gov"}
-        USASearch@gsa.gov
-      and we can help you identify specific URLs that have recently changed on your site.
-    .side-note
-      %strong
-        Please note
-      that you still need to register with Bing™ webmaster tools to have your site, and sitemap, indexed by Bing&trade;.
-      %br
-      %a{:href=>"http://www.bing.com/toolbox/webmasters/", :target=>"_blank"}
-        Register for Bing webmaster tools.

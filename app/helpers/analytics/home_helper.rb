@@ -76,7 +76,7 @@ module Analytics::HomeHelper
   end
 
   def analytics_center_breadcrumbs(page_title = nil)
-    page_title.blank? ? breadcrumbs([link_to('Search.USA.gov', searchusagov_path), "Analytics Center"]) : breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Analytics Center", analytics_home_page_path), page_title])
+    page_title.blank? ? breadcrumbs(["Analytics Center"]) : breadcrumbs([link_to("Analytics Center", analytics_home_page_path), page_title])
   end
 
   def display_select_for_window_on_query_groups(window, num_results, day)

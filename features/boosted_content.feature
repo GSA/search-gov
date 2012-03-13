@@ -11,7 +11,7 @@ Feature: Search.USA.gov Best Bets: Text
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "Best Bets: Text"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text
     And I should see "Search.USA.gov Best Bets: Text" in the page header
     And I should see "Displaying all 2 Best Bets: Text entries"
     And I should see 2 Boosted Content Entries
@@ -43,7 +43,7 @@ Feature: Search.USA.gov Best Bets: Text
     When I go to the boosted contents admin page
     Then I should see "Search.USA.gov has no Best Bets: Text"
     When I follow "Add new text"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text > Add a new Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text > Add a new Best Bets: Text
     And I should see "Add a new Best Bets: Text" in the page header
     And the "Publish start date" field should contain today's date
     And I fill in "Title" with "Test"
@@ -54,7 +54,7 @@ Feature: Search.USA.gov Best Bets: Text
     And I select "Active" from "Status*"
     And I press "Add"
     Then I should see "Best Bets: Text entry successfully added"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text > Best Bets: Text entry
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text > Best Bets: Text entry
     And I should see "Best Bets: Text entry" in the page header
     And I should see "Test"
     And I should see "http://www.test.gov"
@@ -114,7 +114,7 @@ Feature: Search.USA.gov Best Bets: Text
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the boosted contents admin page
     And I follow "Edit"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text > Edit Best Bets: Text entry
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text > Edit Best Bets: Text entry
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keywords" with "bananas, apples, oranges"
@@ -189,7 +189,7 @@ Feature: Search.USA.gov Best Bets: Text
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the boosted contents admin page
     And I follow "Bulk upload"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text > Bulk Upload Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text > Bulk Upload Best Bets: Text
     And I should see "Bulk Upload Best Bets: Text" in the page header
     And I attach the file "features/support/boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"

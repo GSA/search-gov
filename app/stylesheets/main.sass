@@ -28,6 +28,7 @@ div.span-8.last table.querycounts
 
 body
   :font-size 95%
+  min-width: 980px
 
 .loud
   :font-weight bold
@@ -67,10 +68,6 @@ td.total
 
 hr
   :margin-bottom 1em
-
-.zheader
-  :text-align right
-  :margin-top 0.5em
 
 div.headertitle
   :margin-bottom 0.25em
@@ -120,37 +117,6 @@ form.bordered
 
 .sublabel
   :font-weight normal
-
-.contentcard
-  :border 1px solid #ccc
-  :-moz-border-radius-topleft 10px
-  :-moz-border-radius-topright 10px
-  :-webkit-border-top-left-radius 10px
-  :-webkit-border-top-right-radius 10px
-  :margin-top 1.5em
-  h2
-    :padding 0 .5em
-    :border-bottom 1px solid #ccc
-    :background-color #eee
-    :font-size 100%
-    :overflow hidden
-    :margin-bottom 0
-    :-moz-border-radius-topleft 10px
-    :-moz-border-radius-topright 10px
-    :-webkit-border-top-left-radius 10px
-    :-webkit-border-top-right-radius 10px
-  p
-    :padding 0 1em
-  dl
-    :margin-bottom 0
-    :padding 0 1em
-    :background-color gainsboro
-  table
-    :margin 0.5em 0 0.5em 0
-    tr td form.button-to
-      :display inline
-      div
-        :display inline
 
 .success
   :margin 0
@@ -237,12 +203,6 @@ pre
 /* begin rcr redesign classes */
 .main
   :overflow auto
-
-.affiliate-nav
-  :min-height 100px
-  :width 220px
-  :margin 0 30px 0 0
-  :float left
 
 .custom_look_and_feel
   :clear both
@@ -368,9 +328,6 @@ tr.odd td
     background: none
     border: 0
 
-table.nav-links
-  a
-    :padding-left 15px
 .left
   :float left
 
@@ -388,53 +345,8 @@ table.nav-links
   a
     :color #fff $important
 
-.secondary-navbar
-  :clear both
-  :height 29px
-  :background url("/images/backgrounds/bg_red_gradient.png")
-  :background-repeat repeat-x
-  :margin 0 0 10px 0
-  :min-width 980px
-  :width 100%
-  :text-align right
-  .sec-nav-left
-    :float left
-    :color #fff
-    :padding 3px 0px 0 10px
-  .sec-nav-right
-    :float right
-    :color #fff
-    :padding 3px 10px 0 0px
-  a
-    :color #fff
-
-.affiliate-dropdown
-  :margin 3px 0 0 0
-  :font-size 1em
-  :height auto
-  :width 200px
-
-
 #flash_message
   :margin-bottom 10px
-
-.admin-footer
-  :text-align center
-  :font-size .8em
-  :border-top 1px solid #bdbdbd
-  :padding 10px 0 0 0
-  :margin 40px 0 0 0
-  .footer-link
-    :font-weight bold
-    :font-size 1.2em
-
-.affiliate-marketing-left
-  :float left
-  :width 300px
-  :margin 10px 0
-
-.affiliate-marketing-right
-  :margin-left 320px
 
 .pad10
   :padding 10px
@@ -448,68 +360,6 @@ table.nav-links
   :padding 0
 .center-inner
   :margin 0 auto
-
-
-/* dropdown menu begin */
-.nav
-  :margin 0
-  :padding 0
-  :list-style none
-  li
-    :float left
-    :display block
-    :position relative
-    :z-index 500
-    :margin 0 1px
-    :background transparent
-
-    /*parent menu*/
-    a
-      :display block
-      :height 23px
-      :text-decoration none
-      :color #fff
-      :text-align center
-      :margin -3px 0 0 0
-      :padding 3px 8px
-      :width 150px
-      &:hover
-        :text-decoration underline
-    .selected
-      :background #fff
-      :color #222
-      :margin 0
-      :padding 0px 8px 3px 8px
-
-    /*submenu*/
-    ul
-      :position absolute
-      :left 0
-      :display none
-      :margin 0px 0 0 -1px
-      :padding 0
-      :list-style none
-      li
-        :float left
-        :border-top 1px solid #fff
-        :background #777
-      a
-        :display block
-        :height 15px
-        :color #fff
-        :margin 0
-        :padding 5px 8px 10px 8px
-        :text-align left
-        &:hover
-          :text-decoration underline
-          :background #555
-      .sub-selected
-        :color #222
-        :margin 0
-
-*html .nav ul
-  :margin 0 0 0 -2px
-/*dropdown menu end*/
 
 #embed_code_english, #embed_code_spanish
   textarea

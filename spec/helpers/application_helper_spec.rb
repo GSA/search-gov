@@ -249,7 +249,6 @@ describe ApplicationHelper do
       it "should contain Sign In and Help Desk links" do
         content = helper.basic_header_navigation_for(nil)
         content.should have_selector("a", :content => "Sign In")
-        content.should have_selector("a", :content => "Help Desk")
         content.should_not have_selector("a", :content => "My Account")
         content.should_not have_selector("a", :content => "Sign Out")
       end
@@ -270,7 +269,6 @@ describe ApplicationHelper do
       content.should contain("user@fixtures.org")
       content.should have_selector("a", :content => "My Account")
       content.should have_selector("a", :content => "Sign Out")
-      content.should have_selector("a", :content => "Help Desk")
     end
   end
 

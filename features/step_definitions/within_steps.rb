@@ -1,14 +1,15 @@
 {
+  'in the logo' => '#top_logo',
   'in the header' => '.header',
   'in the affiliate program dropdown menu' => '.affiliate-li',
   'in the api dropdown menu' => '.api-li',
-  'in the main navigation bar' => '.wrap-navglobal',
+  'in the main navigation bar' => '#main_nav',
   'in the site navigation bar' => '.affiliate-sidebar',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the page header' => 'h1',
   'in the mobile page header' => 'h1.page-title',
   'in the connect section' => '.connect',
-  'in the footer' => '.outer-footer',
+  'in the footer' => '.footer',
   'in the query search results table header' => '.query_search_results_table_header',
   'in the callout boxes' => '.col-2',
   'in the side note boxes' => '.column-2',
@@ -35,7 +36,10 @@
   'in the agency govbox' => '.agency',
   'in the SERP header' => '#header',
   'in the SERP footer' => '#footer',
-  'in the page content' => '.content'
+  'in the page content' => '.content',
+  'in the API key box' => '.content-box',
+  'in the API TOS section' => '.api.tos',
+  'in the registration form' => 'form#new_user'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

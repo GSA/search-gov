@@ -16,7 +16,7 @@ Feature: Timeline for query
     And I follow "Query logs"
     And I follow "social pollution"
     Then I should see "Query Timeline" within "title"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Timeline
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Timeline
     And I should see "Interest over time for 'social pollution'"
     When I fill in "Add a comparison term" with "jobs"
     And I press "Compare"

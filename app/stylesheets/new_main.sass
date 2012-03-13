@@ -7,11 +7,11 @@ a
   :text-decoration underline
 
 .newui-wrapper
+  +clearfix
   clear: both
   line-height: 1
   font-family: Arial, Helvetica, sans-serif
   font-size: 16px
-  min-width: 980px
   width: 100%
   div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
     margin: 0
@@ -53,62 +53,6 @@ a
     border-collapse: collapse
     border-spacing: 0
 
-  .header
-    width: 100%
-    float: left
-    background: url(/images/bg-header.jpg) repeat-x 0 0
-    height: 170px
-    position: relative
-    z-index: 999
-
-  #wrapLogo
-    height: 116px
-    padding-top: 5px
-    height: 110px
-    padding-top: 10px
-    float: left
-    width: 283px
-    padding-left: 5px
-    img
-      behavior: url(/javascripts/iepngfix.htc)
-
-  .topLogo, .bottomLogo
-    float: left
-    width: 283px
-    padding-left: 5px
-  .topLogo
-    height: 59px
-
-  .nav-top
-    float: right
-    height: 40px
-    margin-top: 2px
-    .nav-left
-      height: 40px
-      background: url(/images/bg-nav-top-left.png) no-repeat left 0
-      behavior: url(/javascripts/iepngfix.htc)
-      width: 46px
-      float: left
-    ul
-      padding: 10px 41px 0 0
-      background: url(/images/bg-nav-top-right.png) no-repeat right 0
-      behavior: url(/javascripts/iepngfix.htc)
-      float: left
-      height: 38px
-    li
-      border-right: 1px solid white
-      font-size: 18px
-      color: #fff
-      float: left
-      margin-right: 5px
-      padding-right: 5px
-      &.last
-        border-right: none
-        margin-right: 0
-      a
-        font-size: 18px
-        color: #fff
-        text-decoration: none
 
   /*** containers for login page ***/
   .outer-container
@@ -118,8 +62,6 @@ a
   .inner-container
     float: left
     padding: 15px 0
-    background: url(/images/bg-header-bottom.png) no-repeat 0 0
-    behavior: url(/javascripts/iepngfix.htc)
     width: 912px
 
   .wraptitleBox
@@ -304,8 +246,6 @@ a
     float: left
     position: inherit
 
-
-
   .registerboxMid
     .btn-register
       margin: 0 20px 15px 30px
@@ -317,51 +257,6 @@ a
       margin-top: 8px
       &:hover
         text-decoration: none
-
-  .outer-footer
-    width: 100%
-    float: left
-    background: url(/images/bg-footer.jpg) repeat-x 0 0
-    height: 121px
-
-  .footer
-    width: 912px
-    margin: 0 auto
-
-  .inner-footer
-    float: left
-    width: 912px
-
-  .nav-footer
-    float: left
-    margin: 14px 0 30px 260px
-    display: inline
-    li
-      float: left
-      margin-right: 30px
-      a
-        font-size: 13px
-        color: #fff
-        text-decoration: none
-        line-height: 18px
-
-  .inner-footer
-    p
-      float: left
-      width: 100%
-      text-align: center
-      margin-bottom: 4px
-      color: #767676
-      font-size: 13px
-      line-height: 18px
-      clear: both
-    a
-      color: #767676
-      font-size: 13px
-      text-decoration: none
-    p.siteName
-      a
-        font-size: 15px
 
   .columnLft, .columnRt
     form
@@ -382,183 +277,75 @@ a
         line-height: 1.5
         margin: 0
 
-  .wrap-nav-content
+.header
+  +clearfix
+  margin-bottom: 5px
+  width: 100%
+
+#top_logo
+  float: left
+  a
+    margin: 5px 0 0 10px
+
+#top_nav
+  color: #fff
+  float: right
+  font:
+    size: 18px
+    weight: bold
+  padding-right: 10px
+  ul
+    +border-bottom-radius
+    background-color: #12396A
+    +background-image(linear-gradient(#5787c7, #12396A))
+    margin: 0
+    padding: 3px 10px 8px
+  li
+    border-left: 1px solid white
+    color: #fff
+    display: inline
+    padding: 0 10px
+    &.first
+      border-left: none
+    a, a:visited
+      color: #fff
+      text-decoration: none
+    a:hover
+      color: #FF5A00
+#main_nav
+  +clearfix
+  float: left
+  font:
+    size: 16px
+    weight: bold
+  border-top: 1px solid #CACACA
+  border-bottom: 1px solid #CACACA
+  line-height: 16px
+  padding: 10px 0
+  width: 100%
+  ul
+    margin: 0
+    padding: 0
+  li
+    +inline-block
+    border-left: 1px solid #12396A
+    padding: 0 8px 0 10px
+    &.first
+      border-left: 0
+  a, a:visited
+    text-decoration: none
+  a:hover
+    color: #FF5A00
+  .main-menu
     float: left
-    a span
-      height: 37px
-      width: 19px
-      float: none
-      left: -19px
-      top: 0
-      position: absolute
-    span
-      height: 37px
-      width: 19px
-      float: left
-
-  .nav-global .wrap-nav-content-hover div
-    float: left
-    a
-      background: url(/images/bg-search.jpg) no-repeat right 0
-
-  .wrap-nav-content
-    a
-      float: left
-    .api a, .search-gov a
-      padding: 10px 20px
-    .affliate a
-      padding: 10px 20px
-      width: 130px
-      height: 17px
-
-  .nav-global .wrap-nav-content-hover
-    &.api a
-      background: url(/images/tab-top-1.jpg) no-repeat 0 0
-      height: 17px
-    .search-gov a
-      background: url(/images/bg-search.jpg) no-repeat 0 0
-      width: 130px
-      height: 17px
-
-  .wrap-navglobal
-    margin-top: 8px
-    float: left
-    width: 100%
-    clear: left
-    ul
-      float: left
-      position: relative
-      width: 100%
-      li
-        display: inline
-        float: left
-        margin-right: 15px
-        position: relative
-        .wrap-nav-content span.nav-left
-          width: 19px
-          height: 37px
-    ul.nav-global
-      width: auto
-    .wrap-nav-content-hover
-      span.nav-left
-        background: url(/images/tab-left.jpg) no-repeat 0 0
-      a
-        background: url(/images/tab-right.jpg) no-repeat right 0
-    ul li
-      a
-        display: block
-        color: #fff
-        text-decoration: none
-        font-size: 16px
-        font-weight: bold
-        line-height: 18px
-        padding: 10px 26px 10px 0
-      &.hover .wrap-nav-content a
-        color: #21548B
-
-  .wrap-navglobal
-    ul li .submenu
-      position: absolute
-      left: 16px !important
-      top: 37px !important
-      visibility: hidden
-      width: 189px
-      z-index: 999
-      padding: 0 0 11px
-    ul li
-      &.search-li .submenu, &.affiliate-li .submenu
-        left: 22px !important
-      &.api-li .submenu
-        left: 52px !important
-    ul li ul li.top-bg
-      background: url(/images/bg-drop-top.png) no-repeat 0 0
-      behavior: url(/javascripts/iepngfix.htc)
-    .submenu
-      p
-        display: list-item
-        float: left
-        width: 169px
-        padding: 0 10px
-        z-index: 9999
-        margin: 0
-      span
-        text-align: left
-        width: 189px
-        background: url(/images/bg-drop-mid.png) repeat-y 0 0
-        behavior: url(/javascripts/iepngfix.htc)
-        padding: 0
-        float: left
-        &.prev-last p
-          padding-bottom: 0
-        &.top
-          background: url(/images/bg-drop-top.png) no-repeat 0 0
-          border: 0
-          height: 12px
-          overflow: hidden
-          p
-            padding: 0
-        &.last
-          background: url(/images/bg-drop-bot.png) no-repeat 1px 0
-          height: 13px
-    ul li ul li.last div
-      background: url(/images/bg-drop-bot.png) no-repeat 0 0
-      padding: 0
-      width: 189px
-      height: 13px
-      behavior: url(/javascripts/iepngfix.htc)
-    .submenu
-      p a
-        font-size: 15px
-        font-weight: normal
-        width: 159px
-        /*width of sub menus */
-        padding: 10px 5px
-        margin: 0
-        border-top-width: 0
-        border-bottom: 1px dotted #ccc
-        color: #3D3D3D
-      .prev-last p a
-        padding-bottom: 0
-      .last
-        p a, a
-          padding: 0
-      p a:hover
-        color: #21548B
-        border-bottom: 1px dotted #fff
-      .prev-last p a, .prev-last p a:hover
-        border: none
-    ul li ul li
-      &.prev-last a
-        border: 0 !important
-      &.last a
-        border: 0
-        padding-bottom: 2px
-        &:hover
-          border: 0
-      a:hover
-        border-bottom: 1px solid #fff
-
-  .wrap-navglobal .user-nav
+  .user-menu
     float: right
-    ul
-      width: auto
-      li
-        margin-right: 10px
-        a
-          padding: 0
-          width: 150px
-          img
-            margin-top: 2px
-            behavior: url(/javascripts/iepngfix.htc)
-
-  * html .wrap-navglobal
-    height: 1%
+    padding-right: 2px
 
 .breadcrumbs
   clear: both
   font-size: 0.9em
   font-family: Arial, Helvetica, sans-serif
-  border-bottom: 1px solid #bdbdbd
   margin-bottom: 12px
   padding-bottom: 8px
   a
@@ -567,21 +354,51 @@ a
     margin-right: 5px
     padding-right: 16px
 
-* html .wrap-navglobal ul li a
-  /*IE6 hack to get sub menu links to behave correctly*/
-  display: inline-block
+.footer
+  clear: both
+  color: white
+  height: 121px
+  margin: 0
+  padding: 10px 0 0
+  width: 100%
+  font:
+    size: 14px
+  text-align: center
+  a, a:visited
+    color: #AAA
+    text-decoration: none
+  a:hover
+    color: #FF5A00
+  .footer-links
+    background: url(/images/bg-footer.jpg) repeat-x 0 0
+    height: 33px
+    padding-top: 8px
+    ul
+      margin: 0
+      padding: 0
+    li
+      +inline-block
+      border-left: 1px solid #999
+      list-style: none
+      padding: 0 8px 0 10px
+      &.first
+        border-left: 0
+  .footer-taglines
+    background-color: black
+    padding: 10px 0
+    p
+      margin: 0
+      padding: 0
+    img
+      behavior: url(/javascripts/iepngfix.htc)
 
 .outer-container
-  min-width: 1000px
   width: 97%
   margin: 0 auto
 
 .inner-container
-  float: left
-  padding: 10px 0
-  background: url(/images/bg-header-bottom.png) no-repeat 0 0
+  padding: 0 0 10px 0
   width: 100%
-  behavior: url(/javascripts/iepngfix.htc)
 
 .add-new-site
   float: left
@@ -589,170 +406,11 @@ a
 
 /*** content ***/
 .content
-  margin: 0 0 0 250px
-  padding: 10px 0 0 5px
+  border 1px solid red
+  margin: 0 0 0 200px
+  padding: 10px 0 0 10px
   .container
     min-width: 790px
-  .col-1
-    float: left
-    width: 65%
-    margin-right: 13px
-    ol, ul
-      list-style: none outside none
-    ol.numbered
-      list-style: decimal outside
-      color: #4e4d4d
-    h1.title
-      color: #1C3F94
-      font-size: 24px
-      font-weight: bold
-      float: left
-      margin: 0
-      padding-bottom: 0.5em
-      width: 100%
-      vertical-align: baseline
-    p
-      color: #4e4d4d
-      line-height: 20px
-      font-size: 14px
-      margin: 0 0 8px 0
-      float: left
-      width: 100%
-    strong
-      color: #333333
-      font-size: 14px
-      font-weight: bold
-      float: left
-    .fullwidth
-      width: 100%
-    p.wrap-links
-      margin-bottom: 15px
-      a
-        float: left
-        padding-right: 5px
-        margin-right: 5px
-        float: left
-        font-size: 14px
-        background: url(/images/bg-sep-blue.png) no-repeat right 3px
-        &.last
-          background: none
-    h3
-      float: left
-      width: 100%
-      font-size: 24px
-      font-weight: normal
-      color: #333
-      margin-bottom: 10px
-      padding: 0
-    .wrap-content
-      float: left
-      margin-bottom: 10px
-      width: 100%
-    ul
-      float: left
-      margin: 0 0 10px 0
-      width: 90%
-      &.bulk-upload-instructions
-        list-style: disc inside
-        li
-          margin: 0
-      &.sample-file-format
-        margin-left: 1em
-        padding: 0
-    li
-      width: 100%
-      clear: both
-      &.last
-        margin-bottom: 0
-      span
-        color: #333333
-        font-size: 14px
-        float: left
-        line-height: 18px
-        margin: 0
-    span
-      font-size: 12px
-      color: #333
-      margin-bottom: 10px
-      float: left
-    form
-      .btn-upload
-        background: url(/images/btn-upload.png) no-repeat 0 0
-        width: 80px
-        height: 30px
-        margin-left: 5px
-        border: 0
-        &:hover
-          background-position: 0 -32px
-      .submit
-        font-size: 0
-        line-height: 0
-        text-indent: -999em
-        cursor: pointer
-      .file
-        float: left
-        clear: both
-      .txt
-        background: url(/images/txt-box.png) no-repeat 0 0
-        width: 214px
-        height: 25px
-        padding: 3px 5px
-        border: 0
-        float: left
-        margin: 0 5px 0 0
-    .note
-      font-size: 12px
-      color: #888888
-      float: left
-      margin-top: 5px
-      clear: both
-
-    .wrap-table
-      float: left
-      width: 100%
-      margin-bottom: 10px
-    table
-      border-collapse: collapse
-      border: 1px solid #A9A9A9
-      table-layout: fixed
-      width: 100%
-      margin: 0
-      th
-        font-size: 14px
-        font-weight: bold
-        color: #fff
-        background: #444 url(/images/table-mid-bg.png) repeat-x 0 0
-        height: 30px
-        text-align: left
-        margin: 7px 5px 4px
-      thead
-        th
-          &.secondary-header
-            background: #E5E5E5 none
-            border: 1px solid #A9A9A9
-            color: #3D3D3D
-      td
-        padding: 7px 5px 4px
-        text-align: left
-        font-size: 14px
-        color: #333
-  .col-2
-    float: left
-    width: 33%
-    .side-note-image
-      margin-bottom: 25px
-    .side-note
-      width: 90%
-      float: left
-      background: #FFFED7
-      border: 1px solid #DDD
-      padding: 5px 5px
-      margin-bottom: 25px
-      color: #4a4a4a
-      font-size: 14px
-      line-height: 16px
-      a
-        word-wrap: break-word
 
   /*** Add Bing page customization ***/
   .superfresh
@@ -798,92 +456,42 @@ a
   &:hover
     background-position: 0 -32px
 
-/*** sidebar ***/
 .affiliate-sidebar
+  +border-radius
+  background-color: #F3F4F3
   float: left
-  width: 250px
-  behavior: url(/javascripts/iepngfix.htc)
-  min-height: 730px
-  height: auto !important
-  height: 730px
-  padding-top: 10px
-  .side-top
-    background: url(/images/menu-top-blank.png) no-repeat 0 0
-    behavior: url(/javascripts/iepngfix.htc)
-    width: 241px
-    height: 38px
-    float: left
-    text-align: left
-    a, span
-      position: relative
-      left: 20px
-      top: 15px
-    h3
-      color: #1C3F94
-      font-size: 21px
-      font-weight: bold
-      font-family: Arial, Helvetica, sans-serif
-  .side-mid
-    background: #f3f4f3
-    width: 219px
-    padding: 5px 10px
-    float: left
-    margin: 0
-    border-left: 1px solid #ebeaea
-    border-right: 1px solid #ebeaea
-    overflow: hidden
-    select
-      font-size: 1em
-      height: auto
-      width: 220px
-      margin: 5px 0 15px 0
-      float: left
-  .side-block
-    float: left
+  font-size: 1em
+  margin: 10px 0 0 0
+  padding: 15px 10px
+  width: 180px
+  h3
+    color: #1C3F94
+    font-size: 1.05em
+    &.header
+      font:
+        size: 1.1em
+        weight: bold
+  select
     width: 100%
+  ul
+    margin: 0
+    padding: 0 0 0 10px
+  li
+    list-style: none
+    a, a:visited
+      color: #3E3E3E
+      font-size: 0.9em
+      text-decoration: none
+    a:hover
+      color: #21548B
+  .side-block
+    margin: 10px 0 0 0
     h3
-      background: url(/images/menu-blue.png) no-repeat 0 0
-      behavior: url(/javascripts/iepngfix.htc)
-      height: 30px
-      float: left
-      margin-bottom: 5px
-      width: 100%
-      span
-        color: #FFFFFF
-        float: left
-        font-size: 16px
-        font-weight: normal
-        padding: 7px 10px
-        text-decoration: none
-    ul
-      float: left
-      margin: 0
-      padding: 0 10px 10px
-      list-style: none outside none
-    li
-      margin-bottom: 3px
-      float: left
-      width: 100%
-      clear: both
-      &.last
-        margin-bottom: 0
-      a
-        text-decoration: none
-        color: #3e3e3e
-        font-size: 14px
-        &.new
-          padding-top: 3px
-        &:hover
-          color: #21548B
-      img.new
-        behavior: url(/javascripts/iepngfix.htc)
-  .side-bottom
-    background: url(/images/menu-bottom.png) no-repeat 0 0
-    behavior: url(/javascripts/iepngfix.htc)
-    width: 241px
-    height: 43px
-    float: left
-    clear: both
+      background-color: #12396A
+      +background-image(linear-gradient(#5787c7, #12396A))
+      +border-radius
+      color: white
+      padding: 8px
 
 /*** generic elements ***/
 h2.sub-title
@@ -1368,53 +976,13 @@ h3.api-item
   .xml
     white-space: pre
 
-.header .connect
-  :clear right
-  :float right
-  :height 40px
-  :margin 25px 0 0
-  :width auto
-  a
-    :background none
-    :color #25496B
-    :float left
-    :font
-      :size 0
-      :weight bold
-    :display inline
-    :height 30px
-    :line-height 0
-    :margin 0
-    :padding-left 8px
-    :text-decoration none
-    :text-indent -999em
-    :width 30px
-    &.twitter
-      :background url(/images/connect/twitter_off.png) no-repeat 0 0
-      &:hover
-        :background url(/images/connect/twitter_on.png) no-repeat 0 0
-    &.mobile
-      :background url(/images/connect/mobile_off.png) no-repeat 0 0
-      &:hover
-        :background url(/images/connect/mobile_on.png) no-repeat 0 0
-    &.blog
-      :background url(/images/connect/blog_off.png) no-repeat 0 0
-      &:hover
-        :background url(/images/connect/blog_on.png) no-repeat 0 0
-    &.share
-      :background url(/images/connect/share_off.png) no-repeat 0 0
-      &:hover
-        :background url(/images/connect/share_on.png) no-repeat 0 0
-
 .boosted-contents, .boosted-sites
   @include clearfix
 
 .column-1
-  float: left
-  margin-right: 10px
-  width: 68%
+  margin: 0 250px 0 0
 .column-2
-  float: left
+  float: right
   width: 240px
   .side-note-image
     margin-bottom: 25px
@@ -1446,7 +1014,6 @@ h3.api-item
     width: 440px
 
 .featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
-  clear: both
   table
     border: 1px solid #BDBDBD
     table-layout: fixed

@@ -17,7 +17,7 @@ Feature: Featured Collections
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "Search.USA.gov Featured Collections"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections
     And I should see "Search.USA.gov Featured Collections" in the page header
     And I should see "Displaying 1 featured collection"
     And I should see "Add new featured collection"
@@ -40,7 +40,7 @@ Feature: Featured Collections
     When I go to the admin featured collections page
     Then I should see "Search.USA.gov has no Featured Collection"
     When I follow "Add new featured collection"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Add a new Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Add a new Featured Collection
     And I should see "Add a new Featured Collection" in the page header
     When I follow "Cancel"
     Then I should see "Search.USA.gov Featured Collections" in the page header
@@ -64,7 +64,7 @@ Feature: Featured Collections
     And I select "One column" from "Layout*"
     And I press "Add"
     Then I should see "Featured Collection successfully created"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Featured Collection
     And I should see "Featured Collection" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
@@ -80,7 +80,7 @@ Feature: Featured Collections
     And I should see "http://www.noaa.gov/hurricane.html"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Edit Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Edit Featured Collection
     And I should see "Edit Featured Collection" in the page header
     And the "Title*" field should contain "2010 Atlantic Hurricane Season"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
@@ -104,7 +104,7 @@ Feature: Featured Collections
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Edit Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Edit Featured Collection
     And I should see "Edit Featured Collection" in the page header
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
     And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
@@ -149,7 +149,7 @@ Feature: Featured Collections
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin featured collections page
     And I follow "Edit"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Edit Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Edit Featured Collection
     And I should see "Edit Featured Collection" in the page header
     And the "Title*" field should contain "Worldwide Tropical Cyclone Names"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
@@ -174,7 +174,7 @@ Feature: Featured Collections
     And I select "Two column" from "Layout*"
     And I press "Update"
     Then I should see "Featured Collection successfully updated."
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Featured Collection
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Featured Collection
     And I should see "Featured Collection" in the page header
     And I should see "Two column"
     And I should see "typhoon"
@@ -206,7 +206,7 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Update"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Featured Collection
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections > Featured Collection
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
@@ -280,7 +280,7 @@ Feature: Featured Collections
     When I go to the admin featured collections page
     And I press "Delete"
     Then I should see "Featured Collection successfully deleted"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections
     And I should see "Featured Collections" in the page header
 
   Scenario: Deleting Featured Collection from the individual featured collection page
@@ -292,7 +292,7 @@ Feature: Featured Collections
     And I follow "Lorem ipsum dolor sit amet"
     And I press "Delete"
     Then I should see "Featured Collection successfully deleted"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Featured Collections
     And I should see "Featured Collections" in the page header
 
   Scenario: Deleting a link from a featured collection

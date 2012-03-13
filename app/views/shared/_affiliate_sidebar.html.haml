@@ -1,24 +1,19 @@
 .affiliate-sidebar
   - if current_user.affiliates.empty?
-    .side-top
-      = link_to "Add New Site", new_affiliate_path
+    = link_to "Add New Site", new_affiliate_path
   - else
-    .side-top
-      %h3
-        %span Selected Site
+    %h3.header Selected Site
     .side-mid
       = select("affiliate", "id", current_user.affiliates.ordered.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'})
       - if @affiliate && @affiliate.id.present?
         .side-block
-          %h3
-            %span Basic Settings
+          %h3 Basic Settings
           %ul
             %li= link_to "Site information", edit_site_information_affiliate_path(@affiliate)
             %li= link_to "Get code", embed_code_affiliate_path(@affiliate)
-            %li.last= link_to "Preview", preview_affiliate_path(@affiliate)
+            %li= link_to "Preview", preview_affiliate_path(@affiliate)
         .side-block
-          %h3
-            %span Content Sources
+          %h3 Content Sources
           %ul
             %li= link_to "Domains", affiliate_site_domains_path(@affiliate)
             %li= link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
@@ -29,31 +24,27 @@
               %li
                 = link_to "Collections", affiliate_document_collections_path(@affiliate)
                 = image_tag 'new.png', :class => 'new'
-            %li.last= link_to "Social Media", edit_social_media_affiliate_path(@affiliate)
+            %li= link_to "Social Media", edit_social_media_affiliate_path(@affiliate)
         .side-block
-          %h3
-            %span User Interface
+          %h3 User Interface
           %ul
             %li= link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
             %li= link_to "Header and footer", edit_header_footer_affiliate_path(@affiliate)
-            %li.last= link_to "Sidebar", edit_sidebar_affiliate_path(@affiliate)
+            %li= link_to "Sidebar", edit_sidebar_affiliate_path(@affiliate)
         .side-block
-          %h3
-            %span Editorial Features
+          %h3 Editorial Features
           %ul
             %li= link_to "Best bets", best_bets_affiliate_path(@affiliate)
             %li= link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
             %li= link_to "Related topics", affiliate_related_topics_path(@affiliate)
-            %li.last= link_to "Top Searches", affiliate_top_searches_path(@affiliate)
+            %li= link_to "Top Searches", affiliate_top_searches_path(@affiliate)
         .side-block
-          %h3
-            %span Site Analytics
+          %h3 Site Analytics
           %ul
             %li= link_to "Query logs", affiliate_analytics_path(@affiliate)
-            %li.last= link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)
+            %li= link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)
         .side-block
-          %h3
-            %span Account Settings
+          %h3 Account Settings
           %ul
             %li= link_to "Add new site", new_affiliate_path
             %li= link_to "Search API", affiliate_api_index_path(@affiliate)
@@ -61,5 +52,4 @@
               = link_to "Hosted Sitemaps", hosted_sitemaps_affiliate_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
             %li= link_to "My account", account_path
-            %li.last= link_to "Manage users", affiliate_users_path(@affiliate)
-  .side-bottom &nbsp;
+            %li= link_to "Manage users", affiliate_users_path(@affiliate)

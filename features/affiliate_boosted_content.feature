@@ -16,7 +16,7 @@ Feature: Boosted Content
     And I follow "Best bets"
     And I follow "Text"
     Then I should see the browser page titled "Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
     And I should see "Best Bets: Text" in the page header
     And I should see "Displaying all 2 Best Bets: Text entries"
     And I should see 2 Boosted Content Entries
@@ -56,7 +56,7 @@ Feature: Boosted Content
     Then I should see "aff site has no Best Bets: Text"
     When I follow "Add new text"
     Then I should see the browser page titled "Add a new Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Text
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Add a new Best Bets: Text
     And I should see "Add a new Best Bets: Text" in the page header
     And the "Publish start date" field should contain today's date
     And I fill in "Title" with "Test"
@@ -67,7 +67,7 @@ Feature: Boosted Content
     And I press "Add"
     Then I should see "Best Bets: Text entry successfully added"
     And I should see the browser page titled "Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
     And I should see "Best Bets: Text" in the page header
     And I should see "Test"
     And I should see "http://www.test.gov"
@@ -140,7 +140,7 @@ Feature: Boosted Content
     And I follow "Text"
     And I follow "Edit"
     Then I should be on the edit affiliate boosted content page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Edit Best Bets: Text Entry
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Edit Best Bets: Text Entry
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keywords" with "bananas, apples, oranges"
@@ -350,7 +350,7 @@ Feature: Boosted Content
     And I follow "Text"
     And I follow "Bulk upload"
     Then I should see the browser page titled "Bulk Upload Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Best Bets: Text
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff <i>site</i> > Bulk Upload Best Bets: Text
     And I should see "Bulk Upload Best Bets: Text" in the page header
     And I attach the file "features/support/boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"

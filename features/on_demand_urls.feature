@@ -21,7 +21,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
 
     When I follow "View all" in the previously crawled URL list
     Then I should see the browser page titled "Previously Crawled URLs"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Previously Crawled URLs
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Previously Crawled URLs
     And I should see "Previously Crawled URLs" in the page header
     And I should see "aff.gov/crawled/40"
     When I follow "Next"
@@ -47,11 +47,11 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I follow "URLs & Sitemaps"
     And I follow "Add new URL"
     Then I should see the browser page titled "Add a new URL"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Add a new URL
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Add a new URL
     And I should see "Add a new URL" in the page header
     When I fill in "URL" with "http://new.url.gov/page.html"
     And I press "Add"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Uncrawled URLs
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Uncrawled URLs
     And I should see "Successfully added http://new.url.gov/page.html."
 
     When the url "http://new.url.gov/page.html" has been crawled
@@ -76,12 +76,12 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I follow "URLs & Sitemaps"
     When I press "Delete" in the uncrawled URL list
     Then I should see "Removed http://removeme2.mil"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs & Sitemaps
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs & Sitemaps
     When I follow "View all"
     And I should see "removeme.mil"
     When I press "Delete"
     Then I should see "Removed http://removeme.mil"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Uncrawled URLs
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Uncrawled URLs
     And I should see "Site aff site has no uncrawled URLs"
 
   Scenario: Submitting a bad URL for on-demand indexing
@@ -106,7 +106,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I follow "URLs & Sitemaps"
     And I follow "Bulk upload"
     Then I should see the browser page titled "Bulk Upload URLs"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Bulk Upload URLs
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Bulk Upload URLs
     And I should see "Bulk Upload URLs" in the page header
 
     When I attach the file "features/support/superfresh_urls.txt" to "indexed_documents"

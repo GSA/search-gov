@@ -1,6 +1,7 @@
+= content_for :title, "Admin Center - "
 .affiliate
-  = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Affiliate Center"])
-  %h1 Affiliate Center
+  = breadcrumbs(['Admin Center'])
+  %h1 Admin Center
   - if @current_user.is_affiliate?
     -if @current_user.is_pending_contact_information?
       = render :partial => 'edit_contact_information_for_new_user'

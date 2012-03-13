@@ -41,7 +41,7 @@ Feature: Monthly Reports
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the analytics homepage
     And I follow "Monthly Reports"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Monthly Reports
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Monthly Reports
 
     When I select "June 2011" as the report date
     And I press "Get Usage Stats"

@@ -26,18 +26,17 @@ describe Affiliates::TopSearchesController do
             TopSearch.create!(:query => 'top search', :position => index, :affiliate => @affiliate)
           end
         end
-        
+
         it "should assign page title" do
           get :index, :affiliate_id => @affiliate.id
           assigns[:top_searches].should == @affiliate.top_searches
           assigns[:active_top_searches].should == @affiliate.active_top_searches
-          assigns[:title].should == "Top Searches - "
         end
       end
-      
+
       context "when rendering the index page" do
         render_views
-        
+
         it "should show the page and form fields even if there are no top searches for the affiliate" do
           @affiliate.top_searches.destroy_all
           get :index, :affiliate_id => @affiliate.id
@@ -60,16 +59,15 @@ describe Affiliates::TopSearchesController do
 
       it "should assign page title on create" do
         post :create, :affiliate_id => @affiliate.id
-        assigns[:title].should == "Top Searches - "
       end
-      
+
       it "should update the top searches label if provided" do
         @affiliate.top_searches_label.should_not == 'New Label'
         post :create, :affiliate_id => @affiliate.id, :top_searches_label => 'New Label'
         @affiliate.reload
         @affiliate.top_searches_label.should == 'New Label'
       end
-      
+
       it "should set the label to 'Search Trends' if none is provided" do
         @affiliate.update_attributes(:top_searches_label => 'Something else')
         post :create, :affiliate_id => @affiliate.id

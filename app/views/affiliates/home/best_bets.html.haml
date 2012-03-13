@@ -1,5 +1,8 @@
 .best-bets
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Best Bets"])
+  .column-2
+    .side-note-image= image_tag "side_notes/best_bets.png"
+
   .column-1
     %h1 Best Bets
     %p
@@ -15,9 +18,6 @@
       %li
         = link_to "Graphics", affiliate_featured_collections_path(@affiliate)
         Have one or two-column layouts and the ability to add an image
-  .column-2
-    .side-note-image= image_tag "side_notes/best_bets.png"
-
 .boosted-contents.boosted-content-list
   %table
     %colgroup

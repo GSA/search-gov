@@ -20,12 +20,12 @@ Feature: Analytics Homepage
       | gobbledegook 1  | 103    | 2009-09-11 |
       | gobbledegook 3  | 104    | 2009-09-11 |
     When I am on the analytics homepage
-    Then I should see "Analytics Center" link in the main navigation bar
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center
+    Then I should see a link to "Analytics Center" in the main navigation bar
+    And I should see the following breadcrumbs: USASearch > Analytics Center
     When I follow "Analytics Center" in the main navigation bar
     Then I should be on the analytics homepage
     When I follow "Queries"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Queries
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Queries
     And I should see "No Results Queries"
     And I should see the following table rows:
     | Query           | Frequency |
@@ -53,7 +53,7 @@ Feature: Analytics Homepage
     | gobbledegook 3  | 104       |
     | gobbledegook 2  | 102       |
     When I follow "query 3"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Query Timeline
+    Then I should see the following breadcrumbs: USASearch > Analytics Center > Query Timeline
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

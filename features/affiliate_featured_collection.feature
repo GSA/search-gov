@@ -20,7 +20,7 @@ Feature: Featured Collections
     And I follow "Best bets"
     And I follow "Graphics"
     Then I should see the browser page titled "Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
     And I should see "Displaying 1 Best Bets: Graphics entry"
     And I should see "Add new graphics"
@@ -46,7 +46,7 @@ Feature: Featured Collections
     Then I should see "Site site has no Best Bets: Graphics entry"
     When I follow "Add new graphics"
     Then I should see the browser page titled "Add a new Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Add a new Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Add a new Best Bets: Graphics
     And I should see "Add a new Best Bets: Graphics" in the page header
     When I follow "Cancel"
     Then I should see "Best Bets: Graphics" in the page header
@@ -70,7 +70,7 @@ Feature: Featured Collections
     And I press "Add"
     Then I should see "Best Bets: Graphics entry successfully added"
     And I should see the browser page titled "Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
@@ -86,7 +86,7 @@ Feature: Featured Collections
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
     And I should see the browser page titled "Edit Best Bets: Graphics entry"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Edit Best Bets: Graphics
     And I should see "Edit Best Bets: Graphics" in the page header
     And the "Title*" field should contain "2010 Atlantic Hurricane Season"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
@@ -169,7 +169,7 @@ Feature: Featured Collections
     When I go to the site.gov's featured collections page
     And I follow "Edit"
     And I should see the browser page titled "Edit Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Edit Best Bets: Graphics
     And I should see "Edit Best Bets: Graphics" in the page header
     And the "Title*" field should contain "Worldwide Tropical Cyclone Names"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
@@ -177,7 +177,7 @@ Feature: Featured Collections
     And the "Layout*" field should contain "one column"
 
     When I follow "Cancel"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
 
     When I follow "Edit"
     And I fill in the following:
@@ -194,7 +194,7 @@ Feature: Featured Collections
     And I press "Update"
     Then I should see "Best Bets: Graphics entry successfully updated."
     And I should see the browser page titled "Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
     And I should see "Two column"
     And I should see "typhoon"
@@ -233,7 +233,7 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Update"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
@@ -342,7 +342,7 @@ Feature: Featured Collections
     And I press "Delete"
     Then I should see "Best Bets: Graphics entry successfully deleted"
     And I should see the browser page titled "Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
 
   Scenario: Deleting Featured Collection from the individual featured collection page
@@ -358,7 +358,7 @@ Feature: Featured Collections
     And I press "Delete"
     Then I should see "Best Bets: Graphics entry successfully deleted"
     And I should see the browser page titled "Best Bets: Graphics"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
 
   Scenario: Affiliate search user sees featured collection with an image

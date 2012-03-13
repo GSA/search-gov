@@ -18,7 +18,7 @@ Feature: Affiliate analytics
     When I go to the affiliate admin page with "aff.gov" selected
     Then I should see "Site Analytics"
     When I follow "Query logs"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Analytics
     And I should see "Query Logs for aff site"
     And I should not see "aff.gov"
     And I should see "Most Popular Queries"
@@ -54,7 +54,7 @@ Feature: Affiliate analytics
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Search
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Search
     And I should see "Matches for 'pollution'"
     And I should not see "Matches for 'old pollution'"
     And I should not see "Matches for 'pollutant'"
@@ -75,7 +75,7 @@ Feature: Affiliate analytics
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly reports"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Monthly Reports
     And I should see "Monthly Reports for aff site"
     And I should see "Monthly Usage Stats"
     And I should not see "aff.gov"

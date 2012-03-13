@@ -2,12 +2,11 @@ Feature:  Administration
   Scenario: Visiting the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
-    Then I should see "Affiliate Program" in the main navigation bar
-    And I should see "APIs & Web Services" in the main navigation bar
-    And I should see "Search.USA.gov" in the main navigation bar
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center
-    And I should see "Search.USA.gov Admin Center"
-    And I should see "Users" within ".main"
+    Then I should see the browser page titled "Super Admin"
+    And I should see the following breadcrumbs: USASearch > Super Admin
+    And I should see "Super Admin" in the page header
+    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
+    And I should see "Users"
     And I should see "Affiliates"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
@@ -24,29 +23,11 @@ Feature:  Administration
     And I should see "My Account"
     And I should see "Sign Out"
 
-    When I follow "Admin Center" in the main navigation bar
+    When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
 
     When I follow "Sign Out"
     Then I should be on the login page
-
-  Scenario: Clicking on program logo in the admin home page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    When I follow "USASearch Program" in the header
-    Then I should be on the program welcome page
-
-  Scenario: Clicking on USASearch breadcrumb link in the admin home page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    And I follow "USASearch" in the breadcrumbs
-    Then I should be on the program welcome page
-
-  Scenario: Clicking on Affiliate Admin breadcrumb link in the admin home page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    And I follow "Search.USA.gov" in the breadcrumbs
-    Then I should be on the searchusagov page
 
   Scenario: Visiting the admin home page as Marilyn
     Given I am logged in with email "marilyn@fixtures.org" and password "admin"
@@ -64,7 +45,7 @@ Feature:  Administration
       | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
     And I follow "Affiliates" within ".main"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliates
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliates
     And I should see "Site name"
     And I should see "Site Handle (visible to searchers in the URL)"
     And I should see "agency site"
@@ -79,14 +60,14 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Users" within ".main"
     Then I should be on the users admin page
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Users
+    And I should see the following breadcrumbs: USASearch > Super Admin > Users
 
   Scenario: Visiting the SAYT Filters admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "SAYT Filters" within ".main"
     Then I should be on the sayt filters admin page
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > SaytFilters
+    And I should see the following breadcrumbs: USASearch > Super Admin > SaytFilters
 
   Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
             3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line
@@ -97,7 +78,7 @@ Feature:  Administration
       | hurricane          |
     When I go to the admin home page
     And I follow "SAYT Suggestions Bulk Upload"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > SAYT Suggestions Bulk Upload
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SAYT Suggestions Bulk Upload
     And I should see "Create a new text file following the same format as the sample below (one entry per line)"
 
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
@@ -110,7 +91,7 @@ Feature:  Administration
     And I follow "SAYT Suggestions Bulk Upload"
     And I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > SAYT Suggestions Bulk Upload
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SAYT Suggestions Bulk Upload
     And I should see "Your file could not be processed."
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
@@ -128,13 +109,13 @@ Feature:  Administration
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
     When I go to the admin home page
     And I follow "Search.USA.gov Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text
+    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text
     And I should see "Our Emergency Page"
     And I should not see "Bar Emergency Page"
 
     When I go to the admin home page
     And I follow "Affiliate Boosted Content"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliate Boosted Content
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
 
@@ -149,7 +130,7 @@ Feature:  Administration
     | 5         |               |
     When I go to the admin home page
     And I follow "Top Searches"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Top Searches
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Top Searches
     And I should see "Top Searches" within ".main"
     And I should see "Term #1:"
     And I should see "Term #2:"

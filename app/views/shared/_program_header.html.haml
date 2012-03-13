@@ -1,7 +1,6 @@
-.newui-wrapper
-  .header
-    = render "/shared/logos"
-    = render "/shared/header_nav"
-    .connect= connect_links
-    = render "/shared/program_nav"
-  .clear
+.header
+  #top_logo
+    = link_to(image_tag('logo.gif', :alt => 'USASearch'), 'http://searchblog.usa.gov')
+  #top_nav
+    = basic_header_navigation_for current_user
+  = render "/shared/program_nav"

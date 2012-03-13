@@ -183,19 +183,12 @@ UsasearchRails3::Application.routes.draw do
   match '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
   get '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
-  resources :pages
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
   get '/usasearch_hosted_sitemap/:id.xml' => 'hosted_sitemap#show', :as => :hosted_sitemap
   get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
   get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
-  get '/program' => 'pages#show', :as => :program, :id => 'program'
-  get '/searchusagov' => 'pages#show', :as => :searchusagov, :id => 'search'
-  get '/contactus' => 'pages#show', :as => :contactus, :id => 'contactus'
   get '/api/search' => 'api#search', :as => :api_search
-  get '/api' => 'pages#show', :as => :api_docs, :id => 'api'
-  get '/api/recalls' => 'pages#show', :as => :recalls_api_docs, :id => 'recalls'
-  get '/api/tos' => 'pages#show', :as => :recalls_tos_docs, :id => 'tos'
   get '/login' => 'user_sessions#new', :as => :login
   get "/sayt" => "sayt#index"
   get "/clicked" => "clicked#index"

@@ -5,78 +5,66 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program
-    And I should see "Hosted Search Services"
-    Then I should see "Affiliate Program"
-    And I should see "APIs & Web Services"
-    And I should see "Search.USA.gov"
-    And I should not see "USA Search Program"
-    And I should not see "Admin Center"
-    And I should not see "Analytics Center"
-    And I should not see "Affiliate Center"
-    And I should not see "Developer"
-
-    When I follow "Register Now"
     Then I should see "Sign In to Use Our Services"
 
-  Scenario: Visiting the affiliate welcome page as affiliate admin
+  Scenario: Visiting the admin center page as super admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the affiliate welcome page
-    Then I should see "Admin Center" link in the main navigation bar
-    And I should not see "Analytics Center" link in the main navigation bar
-    And I should not see "Affiliate Center" link in the main navigation bar
-    And I should see the following breadcrumbs: USASearch > Affiliate Program
+    When I go to the affiliate admin page
+    And I should see an image link to "USASearch" with url for "http://searchblog.usa.gov" in the logo
+    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
+    And I should see a link to "Super Admin" in the main navigation bar
+    And I should not see a link to "Analytics Center" in the main navigation bar
+    And I should not see a link to "Admin Center" in the main navigation bar
 
-  Scenario: Visiting the affiliate welcome page as affiliate
+  Scenario: Visiting the admin center page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the affiliate welcome page
-    Then I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
-    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
-    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
-    And I should see "Affiliate Center" link in the main navigation bar
-    And I should not see "Admin Center" link in the main navigation bar
-    And I should not see "Analytics Center" link in the main navigation bar
-    And I should see the following breadcrumbs: USASearch > Affiliate Program
+    When I go to the affiliate admin page
+    Then I should see a link to "Home" with url for "http://searchblog.usa.gov" in the main navigation bar
+    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the main navigation bar
+    And I should see a link to "Features" with url for "http://searchblog.usa.gov/features" in the main navigation bar
+    And I should see a link to "Success Stories" with url for "http://searchblog.usa.gov/customers" in the main navigation bar
+    And I should see a link to "HelpDesk" with url for "http://searchblog.usa.gov/help-desk" in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
+    And I should not see a link to "Super Admin" in the main navigation bar
+    And I should not see a link to "Analytics Center" in the main navigation bar
+    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
+    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the footer
+    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the footer
+    And I should see a link to "USASearch@gsa.gov" with url for "mailto:***REMOVED***" in the footer
+    And I should see a link to "Office of Citizen Services & Innovative Technologies" with url for "http://www.gsa.gov/portal/category/25729" in the footer
 
   Scenario: Visiting the Affiliate API Pages as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the recalls api page
-    Then I should see the API key
-    And I should see the TOS link
-    And I should see "By using a USASearch API, you agree to our"
-    When I follow "Search API"
-    Then I should see the API key
-    And I should see the TOS link
-    And I should see "By using a USASearch API, you agree to our"
-    When I follow "Terms of Service"
-    Then I should see the API key
-    And I should not see the TOS link
-    And I should not see "By using a USASearch API, you agree to our"
+    When I go to the affiliate admin page with "usagov" selected
+    And I follow "Search API"
+    Then I should see the browser page titled "Search API"
+    And I should see the following breadcrumbs: USASearch > Admin Center > USA.gov > Search API
+    And I should see "Search API" in the page header
+    And I should see the API key
+    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the API key box
+    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the API TOS section
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "Affiliate Center" within "title"
-    And I should see "Affiliate Center" within ".main"
-    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
-    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should not see a link to "Mobile" in the connect section
-    And I should not see a link to "Share" in the connect section
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
+    Then I should see the browser page titled "Admin Center"
+    And I should see the following breadcrumbs: USASearch > Admin Center
+    And I should see "Admin Center" in the page header
     And I should see "Site List"
     And I should see "add new site"
 
-    When I follow "Affiliate Center" in the main navigation bar
-    Then I should be on the affiliate admin page
+    When I follow "Admin Center" in the main navigation bar
+    Then I should see the browser page titled "Admin Center"
 
   Scenario: Visiting the affiliate admin page as affiliate without existing sites
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "Affiliate Center" within "title"
-    And I should see "Affiliate Center" within ".main"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
-    And I should see "Add New Site"
+    Then I should see the browser page titled "Admin Center"
+    And I should see the following breadcrumbs: USASearch > Admin Center
+    And I should see "Admin Center" in the page header
+    And I should see "You currently have no sites."
+    When I follow "Add New Site"
+    Then I should see the browser page titled "Add a New Site"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
@@ -89,7 +77,7 @@ Feature: Affiliate clients
     Then I should see "foo site"
     And I should see "bar site"
     And I should not see "other site"
-    When I follow "Affiliate Center"
+    When I follow "Admin Center"
     Then I should see "foo site" for site named "foo site"
     Then I should see "View Current" for site named "foo site"
     Then I should see "View Staged" for site named "foo site"
@@ -124,9 +112,9 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
-    Then I should see "Add a New Site" within "title"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
-    And I should see "Add a New Site" within ".main"
+    Then I should see the browser page titled "Add a New Site"
+    And I should see the following breadcrumbs: USASearch > Admin Center > Add New Site
+    And I should see "Add a New Site" in the page header
     And I should see "Step 1. Basic Settings" in the site wizards header
     And I should see "Basic Settings"
     When I fill in the following:
@@ -134,7 +122,9 @@ Feature: Affiliate clients
       | Site Handle (visible to searchers in the URL) | agencygov         |
     And I choose "Gettysburg"
     And I press "Next"
-    Then I should see "Add a New Site" within "title"
+    Then I should see the browser page titled "Add a New Site"
+    And I should see the following breadcrumbs: USASearch > Admin Center > Add New Site
+    And I should see "Add a New Site" in the page header
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Content Sources"
     When I fill in the following:
@@ -143,7 +133,10 @@ Feature: Affiliate clients
       | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
       | RSS Feed Name           | Recalls Feed                                                                 |
     And I press "Next"
-    Then I should see "Step 3. Get the code" in the site wizards header
+    Then I should see the browser page titled "Add a New Site"
+    And I should see the following breadcrumbs: USASearch > Admin Center > Add New Site
+    And I should see "Add a New Site" in the page header
+    And I should see "Step 3. Get the code" in the site wizards header
     And I should see the code for English language sites
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
@@ -268,7 +261,7 @@ Feature: Affiliate clients
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see a link to "Admin Center" in the main navigation bar
     And I should see "Contact information"
     When I follow "Add New Site"
     Then I should be on the affiliate admin page
@@ -298,7 +291,7 @@ Feature: Affiliate clients
     Then I should be on the affiliate admin page
     And I should see "Site deleted"
 
-  Scenario: Visiting the site specific Affiliate Center
+  Scenario: Visiting the site specific Admin Center
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
@@ -316,13 +309,13 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Site information"
     Then I should see "Site Information" within "title"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Site Information
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Site Information
     And I should see "Site Information" within ".main"
     And the "Site name" field should contain "aff site"
     And the "Site Handle (visible to searchers in the URL)" field should contain "aff.gov"
     And I should see "Cancel"
     When I follow "Cancel"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
 
   Scenario: Editing site information and saving it
     Given the following Affiliates exist:
@@ -335,7 +328,7 @@ Feature: Affiliate clients
     And I fill in the following:
       | Site name | new aff site |
     And I press "Save"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > new aff site
     And I should see "Site was successfully updated."
     And I should see "Site: new aff site"
 
@@ -363,7 +356,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then I should see the browser page titled "Look and Feel of the Search Results Page"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" in the page header
     And the "Continue using legacy template" radio button should be checked
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
@@ -387,7 +380,7 @@ Feature: Affiliate clients
     When I choose "Start using One SERP theme"
     And I choose "Virgin Islands"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I follow "View Current"
@@ -417,7 +410,7 @@ Feature: Affiliate clients
     And I check "Show content box shadow"
     And I choose "Virgin Islands"
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "View Current"
@@ -460,7 +453,7 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Look and feel"
     Then I should see the browser page titled "Look and Feel of the Search Results Page"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" in the page header
     And I should not see "Start using One SERP theme"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
@@ -500,7 +493,7 @@ Feature: Affiliate clients
     And I check "Show content border"
     And I check "Show content box shadow"
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "Look and feel"
@@ -523,7 +516,7 @@ Feature: Affiliate clients
 
     When I follow "Header and footer"
     Then I should see the browser page titled "Header and Footer of the Search Results Page"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Header and Footer of the Search Results Page
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Header and Footer of the Search Results Page
     And I should see "Header and Footer of the Search Results Page" in the page header
     Then the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".current \{ color: blue; \}"
@@ -535,7 +528,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | New header                       |
       | Enter HTML to customize the bottom of your search results page.        | New footer                       |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "Header and footer"
@@ -628,7 +621,7 @@ Feature: Affiliate clients
     And I follow "Look and feel"
     And I choose "Virgin Islands"
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "Look and feel"
     Then the "Virgin Islands" theme should be selected
@@ -646,7 +639,7 @@ Feature: Affiliate clients
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
     And I choose "Basic Gray"
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "View Current"
@@ -717,7 +710,7 @@ Feature: Affiliate clients
     And I check "Show content border"
     And I check "Show content box shadow"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
 
@@ -757,7 +750,7 @@ Feature: Affiliate clients
     Then the "Grand Canyon" theme should be selected
     When I choose "Virgin Islands"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     When I follow "Look and feel"
     Then the "Virgin Islands" theme should be selected
@@ -775,7 +768,7 @@ Feature: Affiliate clients
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
     And I choose "Basic Gray"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
 
@@ -799,7 +792,7 @@ Feature: Affiliate clients
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
     And I choose "Basic Gray"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
 
@@ -848,7 +841,7 @@ Feature: Affiliate clients
     And the "Default" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
     When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
@@ -868,7 +861,7 @@ Feature: Affiliate clients
     And the "Basic Gray" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
     When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
@@ -900,7 +893,7 @@ Feature: Affiliate clients
       | Description text color         |  |
       | URL link color                 |  |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "Look and feel"
@@ -933,7 +926,7 @@ Feature: Affiliate clients
       | Footer Link Title 1 | Contact Us                   |
       | Footer Link URL 1   | contact.agency.gov           |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -965,7 +958,7 @@ Feature: Affiliate clients
       | Header text | updated header with image |
     And I attach the file "features/support/small.jpg" to "Header image"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -981,7 +974,7 @@ Feature: Affiliate clients
       | Header text | |
     And I attach the file "features/support/searchlogo.gif" to "Header image"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -995,7 +988,7 @@ Feature: Affiliate clients
     And I follow "Header and footer"
     And I check "Mark header image for deletion"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1095,7 +1088,7 @@ Feature: Affiliate clients
       | Footer Link Title 1 | Policies                           |
       | Footer Link URL 1   | policies.agency.gov                |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1183,7 +1176,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | <h1>New header</h1>       |
       | Enter HTML to customize the bottom of your search results page.        | <h1>New footer</h1>       |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1211,7 +1204,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | <h1>New header</h1>       |
       | Enter HTML to customize the bottom of your search results page.        | <h1>New footer</h1>       |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1246,7 +1239,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | New header                       |
       | Enter HTML to customize the bottom of your search results page.        | New footer                       |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     When "aff@bar.gov" opens the email
     And I should see "The header and/or footer for aff site have been updated" in the email body
@@ -1336,7 +1329,7 @@ Feature: Affiliate clients
       | Header text     | updated header without image |
       | Header home URL | www.agency.gov               |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1364,7 +1357,7 @@ Feature: Affiliate clients
       | Header text     | updated header without image |
       | Header home URL | www.agency.gov               |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
@@ -1444,7 +1437,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | New header                       |
       | Enter HTML to customize the bottom of your search results page.        | New footer                       |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to aff.gov's search page
@@ -1479,14 +1472,14 @@ Feature: Affiliate clients
     When I go to aff4.gov's search page
     Then I should not see the SERP header
 
-  Scenario: Cancelling staged changes from the Affiliate Center page
+  Scenario: Cancelling staged changes from the Admin Center page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Cancel Changes"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > bar site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > bar site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -1498,7 +1491,7 @@ Feature: Affiliate clients
     And I should see "Live header"
     And I should see "Live footer"
 
-  Scenario: Cancelling staged changes from the site specific Affiliate Center page
+  Scenario: Cancelling staged changes from the site specific Admin Center page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains  | header     | footer     | favicon_url                       | external_css_url                 | uses_one_serp |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | false         |
@@ -1519,7 +1512,7 @@ Feature: Affiliate clients
 
     When I go to the "bar site" affiliate page
     And I press "Cancel Changes"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > bar site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > bar site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -1538,7 +1531,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I press "Cancel Staged Changes"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -1565,7 +1558,7 @@ Feature: Affiliate clients
     And I follow "Preview"
     Then I should see "Preview" within "title"
     And affiliate SAYT suggestions for "aff.gov" should be enabled
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Preview
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Preview
     And I should see "Preview" within "h1"
     And I should see "Search on Live Site" button
     And I should not see "Preview Search on Staged Site" button
@@ -1590,7 +1583,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged content is now visible"
     And I follow "Preview"
     And I fill in the following within "#live_site_search_form":
@@ -1760,7 +1753,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
     And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
     And I should see the code for English language sites
     And I should see "Code for content discovery and indexing"
@@ -1773,7 +1766,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
     And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
     And I should see the code for Spanish language sites
     And I should see "Code for content discovery and indexing"
@@ -1787,7 +1780,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff site"
     Then I should see "Site: aff site" within "title"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Site: aff site" within ".main"
     And I should see "Delete Site" button
     And I should see "Site information" in the site navigation bar
@@ -1806,7 +1799,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead search"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Type-ahead Search
     And I should see "Type-ahead Search" in the page header
     And I should see "Preferences"
     And the "is_sayt_enabled" checkbox should be checked
@@ -1910,7 +1903,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Related topics"
     Then I should be on the affiliate related topics page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Related Topics
     And I should not see "aff.gov"
     When I follow "Preview Button"
     Then I should be on the preview affiliate page for "aff.gov"
@@ -1952,7 +1945,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage users"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Manage Users
     And I should see "Manage Users"
     And I should see "John Bar (aff@bar.gov)"
     And I should see "My Account"
@@ -1999,6 +1992,7 @@ Feature: Affiliate clients
     And the "Name*" field should contain "New User"
     And the "Email*" field should contain "newuser@usa.gov"
     And the "I have read and accept the" checkbox should not be checked
+    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos"
     When I fill in the following:
       | Password                      | huge_secret                 |
       | Password confirmation         | huge_secret                 |
@@ -2131,34 +2125,34 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets
 
     When I follow "Text"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
 
     When I follow "Best bets"
     And I follow "Graphics"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Graphics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Graphics
 
     When I follow "Best bets"
     And I follow "View all" in the affiliate boosted contents section
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
 
     When I follow "Best bets"
     And I follow "Add new text" in the affiliate boosted contents section
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Add a new Best Bets: Text
 
     When I follow "Best bets"
     And I follow "Bulk upload" in the affiliate boosted contents section
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Bulk Upload Best Bets: Text
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Bulk Upload Best Bets: Text
 
     When I follow "Best bets"
     And I follow "View all" in the featured collections section
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Graphics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Graphics
 
     When I follow "Best bets"
     And I follow "Add new graphics" in the featured collections section
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Graphics
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Add a new Best Bets: Graphics
 
   Scenario: Excluding a URL from affiliate SERPs
     Given the following Affiliates exist:
@@ -2222,7 +2216,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
     Then I should see the browser page titled "Social Media"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Social Media
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media
     And I should see "Social Media" in the page header
     And the "Facebook handle" field should contain "FBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
@@ -2251,7 +2245,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "URLs & Sitemaps"
     Then I should see the browser page titled "URLs & Sitemaps"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs & Sitemaps
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs & Sitemaps
     And I should see "URLs & Sitemaps for USASearch Index" in the page header
     And I should see a link to "sitemaps.org/protocol.html" with url for "http://www.sitemaps.org/protocol.html"
     And I should see "Sitemaps (0)"
@@ -2288,7 +2282,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
     Then I should see the browser page titled "Sidebar"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Sidebar
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Sidebar
     And I should see "Sidebar" in the page header
     And I should see "USASearch/Bing" in the page content
 

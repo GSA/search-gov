@@ -1,5 +1,7 @@
+= content_for :title, "Top Searches - "
+= affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Top Searches'] ) if @affiliate
 - form_path = @affiliate ? affiliate_top_searches_path(@affiliate) : admin_top_searches_path
-- widget_url = @affiliate ? trending_searches_widget_url(:aid => @affiliate.id) : trending_searches_widget_url 
+- widget_url = @affiliate ? trending_searches_widget_url(:aid => @affiliate.id) : trending_searches_widget_url
 %h2
   Top Searches
 %p
@@ -7,7 +9,7 @@
   %br
   First, copy and paste the widget code where you'd like it to appear on your site (e.g., your home page, search results page, or all pages).
   %br
-  Then, select a label for the widget and update the terms listed by entering terms and URLs. Note that, if you leave the 'URL' field blank, it links to a corresponding search results page on your site. To override this default, simply fill in the 'URL' field with the desired URL. 
+  Then, select a label for the widget and update the terms listed by entering terms and URLs. Note that, if you leave the 'URL' field blank, it links to a corresponding search results page on your site. To override this default, simply fill in the 'URL' field with the desired URL.
 = form_tag form_path, :method => :post do
   - if @affiliate
     = label_tag 'top_searches_label', 'Label'
@@ -25,7 +27,7 @@
         %td
           Term ##{index + 1}:
         %td
-          = label_tag "query#{index + 1}", nil, :style => "display: none;" 
+          = label_tag "query#{index + 1}", nil, :style => "display: none;"
           = text_field_tag "query#{index + 1}", @top_searches[index] ? @top_searches[index].query : ""
         %td
           = label_tag "url#{index + 1}", nil, :style => "display: none;"
