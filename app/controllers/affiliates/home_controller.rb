@@ -239,6 +239,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def push_content_for
     @affiliate.push_staged_changes
+    Emailer.affiliate_header_footer_change(@affiliate).deliver if @affiliate.has_changed_header_or_footer
     flash[:success] = "Staged content is now visible"
     redirect_to affiliate_path(@affiliate)
   end

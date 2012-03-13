@@ -322,6 +322,6 @@ end
 
 Then /^I should not see tainted SERP (header|footer)$/ do |section|
   Affiliate::BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
-    page.should_not have_selector("##{section} element")
+    page.should_not have_selector("##{section} #{element}")
   end
 end

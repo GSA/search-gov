@@ -269,6 +269,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def push_staged_changes
+    self.previous_header = header
+    self.previous_footer = footer
     set_attributes_from_staged_to_live
     self.has_staged_content = false
     save!
@@ -659,9 +661,8 @@ class Affiliate < ActiveRecord::Base
         validate_html_results[:has_malformed_html] = true
         validate_html_results[:error_message] = html_doc.errors.join('. ') + '.' unless html_doc.errors.blank?
       end
-      BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
-        has_banned_elements = true and break unless html_doc.css(element).blank?
-      end
+      has_banned_elements = true unless html_doc.css(BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')).blank?
+
     end
     validate_html_results[:has_banned_elements] = has_banned_elements
     validate_html_results
@@ -670,9 +671,7 @@ class Affiliate < ActiveRecord::Base
   def sanitize_html(html)
     unless html.blank?
       doc = Nokogiri::HTML::DocumentFragment.parse html
-      BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
-        doc.css("#{element}").each(&:remove)
-      end
+      doc.css("#{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')}").each(&:remove)
       doc.to_html
     end
   end

@@ -10,8 +10,8 @@ namespace :usasearch do
             request_url, total_time, view_time, db_time = request_log_entry_array.join(' ').
               scan(/^[^"]*"([^"]*)" .* Completed 200 OK in (\d*)ms [^\d]*(\d*)\.\d[^\d]*(\d*)\.\d/).first
             if (request_url)
-              hash = {}
-              %w{request_url total_time view_time db_time}.collect { |key| hash[key] = eval key }
+              hash = ActiveSupport::OrderedHash.new
+              %w{total_time db_time view_time request_url}.collect { |key| hash[key] = eval key }
               puts hash.to_json
             end
           end

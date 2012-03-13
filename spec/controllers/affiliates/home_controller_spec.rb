@@ -852,24 +852,40 @@ describe Affiliates::HomeController do
       end
     end
 
-    context "when logged in as an affiliate manager" do
+    context "when logged in as an affiliate manager and successfully push changes with header or footer changes" do
       before do
         user = users(:affiliate_manager)
         UserSession.create(user)
+        User.should_receive(:find_by_id).and_return(user)
+        user.stub_chain(:affiliates, :find).and_return(@affiliate)
+        @affiliate.should_receive(:push_staged_changes)
+        @affiliate.should_receive(:has_changed_header_or_footer).and_return(true)
+        emailer = mock('emailer')
+        Emailer.should_receive(:affiliate_header_footer_change).with(@affiliate).and_return(emailer)
+        emailer.should_receive(:deliver)
+
         post :push_content_for, :id => @affiliate.id
       end
 
-      it "should assign @affiliate" do
-        assigns[:affiliate].should == @affiliate
+      it { should assign_to(:affiliate).with(@affiliate) }
+      it { should redirect_to(affiliate_path(@affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager and successfully push changes without header or footer changes" do
+      before do
+        user = users(:affiliate_manager)
+        UserSession.create(user)
+        User.should_receive(:find_by_id).and_return(user)
+        user.stub_chain(:affiliates, :find).and_return(@affiliate)
+        @affiliate.should_receive(:push_staged_changes)
+        @affiliate.should_receive(:has_changed_header_or_footer).and_return(false)
+        Emailer.should_not_receive(:affiliate_header_footer_change)
+
+        post :push_content_for, :id => @affiliate.id
       end
 
-      it "should update @affiliate attributes for current" do
-        assigns[:affiliate].has_staged_content.should == false
-      end
-
-      it "should redirect to affiliate specific page" do
-        response.should redirect_to affiliate_path(@affiliate)
-      end
+      it { should assign_to(:affiliate).with(@affiliate) }
+      it { should redirect_to(affiliate_path(@affiliate)) }
     end
   end
 

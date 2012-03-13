@@ -1385,6 +1385,33 @@ Feature: Affiliate clients
     And the "Header text" field should contain "updated header without image"
     And the "Header home URL" field should contain "http://www.agency.gov"
 
+  Scenario: Editing custom header/footer and push the changes to live
+     Given the following Affiliates exist:
+       | display_name | name    | contact_email | contact_name | header     | footer     | uses_managed_header_footer |
+       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Old header | Old footer | false                      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Enter HTML to customize the top of your search results page.    | New header |
+      | Enter HTML to customize the bottom of your search results page. | New footer |
+    And I press "Save for Preview"
+    Then I should see "Staged changes to your site successfully"
+    When I press "Push Changes"
+    Then I should see "Staged content is now visible"
+    And "aff@bar.gov" should receive an email
+    When I open the email
+    Then I should see "The header and/or footer for aff site have been updated" in the email body
+    And I should see "Old header" in the email body
+    And I should see "Old footer" in the email body
+    And I should see "New header" in the email body
+    And I should see "New footer" in the email body
+
+    When I go to aff.gov's search page
+    Then I should see "New header"
+    And I should see "New footer"
+
   Scenario: Visiting the header and footer page for affiliate without external_css_url
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           |
