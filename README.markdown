@@ -115,14 +115,6 @@ or
 
 You should be able to type in 'taxes' and get search results.
 
-Now populate your Faqs and Forms tables with files you can download from Github here:
-<https://github.com/loren/usasearch/downloads>
-
-    rake usasearch:gov_form:load[form_file_name]
-    rake usasearch:faq:load[faq_file_name]
-
-Now re-run your search for taxes and you should see more content.
-
 If you are interested in helath related data, you can also load MedLinePlus data
 from the XML retrieved from the MedLine website (see doc/medline for more details).
 

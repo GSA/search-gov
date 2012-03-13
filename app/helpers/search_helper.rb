@@ -553,11 +553,6 @@ module SearchHelper
     "#{I18n.t :related_topics_prefix} #{h query} #{related_topics_suffix}".html_safe
   end
 
-  def related_faqs_header(query)
-    related_faqs_suffix = content_tag :span, "#{I18n.t:related_faqs_header_suffix}", :class => 'by-usa-gov'
-    "#{h(I18n.t :related_faqs_header_prefix)} #{h query} #{related_faqs_suffix}".html_safe
-  end
-
   def render_no_results_banner
     banner = NO_RESULTS_BANNERS.shuffle.first
     content_tag(:div, :class => "no-results-banner") do

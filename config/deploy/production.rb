@@ -18,5 +18,4 @@ task :production_yaml_files, :except => { :no_release => true } do
   run "cp #{shared_path}/system/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/system/sunspot.yml #{release_path}/config/sunspot.yml"
   run "cp #{shared_path}/system/redis.yml #{release_path}/config/redis.yml"
-  run "cp #{shared_path}/system/faq.yml #{release_path}/config/faq.yml"
 end

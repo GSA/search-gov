@@ -18,7 +18,6 @@ describe "searches/index.html.haml" do
     @search.stub!(:extra_image_results)
     @search.stub!(:results).and_return []
     @search.stub!(:has_boosted_contents?).and_return false
-    @search.stub!(:faqs).and_return nil
     @search.stub!(:gov_forms).and_return nil
     @search.stub!(:error_message).and_return "Ignore me"
     @search.stub!(:filter_setting).and_return nil
