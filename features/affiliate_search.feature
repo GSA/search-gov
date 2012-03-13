@@ -27,16 +27,16 @@ Feature: Affiliate Search
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | Next news item for the feed  |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     And feed "Videos" has the following news items:
       | link                                       | title             | guid       | published_ago | description                         |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | First video news item for the feed  |
-      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | Second video news item for the feed |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed |
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
@@ -78,10 +78,10 @@ Feature: Affiliate Search
     When I follow "Press"
     And I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see "First news item for the feed"
-    And I should see "Next news item for the feed"
-    And I should not see "More news items for the feed"
-    And I should not see "Last news item for the feed"
+    And I should see "item First news item for the feed"
+    And I should see "item Next news item for the feed"
+    And I should not see "item More news items for the feed"
+    And I should not see "item Last news item for the feed"
     And I should see "Related Searches" in the search results section
     And I should see "Search" button
 
@@ -95,8 +95,8 @@ Feature: Affiliate Search
     Then I should see "no results found for 'item'"
 
     When I follow "All Time"
-    Then I should see "More news items for the feed"
-    And I should see "Last news item for the feed"
+    Then I should see "item More news items for the feed"
+    And I should see "item Last news item for the feed"
 
     When I follow "Everything"
     Then I should see "Advanced Search"
@@ -131,8 +131,8 @@ Feature: Affiliate Search
       | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
@@ -146,7 +146,7 @@ Feature: Affiliate Search
     When I fill in "query" with "item"
     And I press "Search"
     And I follow "Photo Gallery"
-    Then I should see "More news items for the feed"
+    Then I should see "item More news items for the feed"
     When I follow "Last day"
     Then I should see "Sorry, no results found for 'item' in the last day. Remove all filters or try entering fewer or broader query terms."
     When I follow "Remove all filters"
