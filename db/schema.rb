@@ -177,15 +177,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
 
   add_index "daily_left_nav_stats", ["affiliate_id", "day"], :name => "index_daily_left_nav_stats_on_affiliate_id_and_day"
 
-  create_table "daily_popular_query_groups", :force => true do |t|
-    t.date    "day"
-    t.integer "time_frame"
-    t.string  "query_group_name"
-    t.integer "times"
-  end
-
-  add_index "daily_popular_query_groups", ["day"], :name => "index_daily_popular_query_groups_on_day"
-
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
     t.string  "affiliate", :null => false
@@ -335,21 +326,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
     t.datetime "updated_at"
   end
 
-  create_table "grouped_queries", :force => true do |t|
-    t.string   "query",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "grouped_queries", ["query"], :name => "index_grouped_queries_on_query", :unique => true
-
-  create_table "grouped_queries_query_groups", :id => false, :force => true do |t|
-    t.integer "query_group_id",   :null => false
-    t.integer "grouped_query_id", :null => false
-  end
-
-  add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
-
   create_table "help_links", :force => true do |t|
     t.string   "action_name"
     t.string   "help_page_url"
@@ -491,28 +467,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
 
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
 
-  create_table "monthly_popular_queries", :force => true do |t|
-    t.integer  "year"
-    t.integer  "month"
-    t.string   "query"
-    t.integer  "times"
-    t.boolean  "is_grouped", :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "monthly_popular_queries", ["year", "month", "is_grouped"], :name => "index_monthly_popular_queries_on_year_and_month_and_is_grouped"
-
-  create_table "moving_queries", :force => true do |t|
-    t.date    "day",                    :null => false
-    t.integer "times",                  :null => false
-    t.string  "query",   :limit => 100, :null => false
-    t.float   "mean",                   :null => false
-    t.float   "std_dev",                :null => false
-  end
-
-  add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
-
   create_table "news_items", :force => true do |t|
     t.integer  "rss_feed_id",  :null => false
     t.string   "link",         :null => false
@@ -535,14 +489,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
   end
 
   add_index "popular_urls", ["affiliate_id"], :name => "index_popular_urls_on_affiliate_id"
-
-  create_table "query_groups", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "query_groups", ["name"], :name => "index_query_groups_on_name", :unique => true
 
   create_table "recall_details", :force => true do |t|
     t.integer  "recall_id"
@@ -710,7 +656,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
     t.datetime "updated_at"
     t.string   "contact_name"
     t.boolean  "is_affiliate",                           :default => true,                         :null => false
-    t.boolean  "is_analyst",                             :default => false,                        :null => false
     t.string   "phone"
     t.string   "organization_name"
     t.string   "address"
@@ -718,7 +663,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.boolean  "is_analyst_admin",                       :default => false,                        :null => false
     t.string   "api_key",                  :limit => 32
     t.string   "approval_status",                                                                  :null => false
     t.string   "email_verification_token"

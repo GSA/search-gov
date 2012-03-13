@@ -160,16 +160,11 @@ describe "Report generation rake tasks" do
           File.should_receive(:delete).with(@zip_filename).and_return true
           @rake[@task_name].invoke
           Zip::ZipFile.open(@zip_filename) do |zip_file|
-            zip_file.get_entry('top_monthly_query_groups_en.txt')
-            zip_file.get_entry('top_monthly_query_groups_es.txt')
-            zip_file.get_entry('top_monthly_query_groups_affiliates.txt')
             zip_file.get_entry('top_monthly_queries_en.txt')
             zip_file.get_entry('top_monthly_queries_es.txt')
             zip_file.get_entry('top_monthly_queries_affiliates.txt')
             zip_file.get_entry('top_affiliates.txt')
             zip_file.get_entry('affiliate_queries_by_month.txt')
-            zip_file.get_entry('usa_click_totals_en.txt')
-            zip_file.get_entry('usa_click_totals_es.txt')
             zip_file.get_entry('affiliate_click_totals.txt')
             zip_file.get_entry('affiliate_report.txt')
             zip_file.get_entry('total_queries_by_profile.txt')

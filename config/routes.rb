@@ -147,31 +147,12 @@ UsasearchRails3::Application.routes.draw do
     resources :sitemaps do as_routes end
     resources :help_links do as_routes end
   end
-
+  match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
+  
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin' => 'admin/home#index', :as => :admin_home_page
-  namespace :analytics do
-    resources :query_groups do
-      as_routes
-      collection do
-        post :bulk_add
-      end
-      member do
-        get :bulk_edit
-        post :bulk_edit
-      end
-    end
-    resources :grouped_queries
-  end
 
-  match '/analytics' => 'analytics/home#index', :as => :analytics_home_page
-  match '/analytics/queries' => 'analytics/home#queries', :as => :analytics_queries
-  match '/analytics/search_modules' => 'analytics/search_modules#index', :as => :analytics_search_modules
-  match '/analytics/query_search' => 'analytics/query_searches#index', :as => :analytics_query_search
-  match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
-  match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
-  match '/analytics/groups_trends' => 'analytics/groups_trends#index', :as => :analytics_groups_trends
   get '/' => 'home#index', :as => :home_page
   match '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'

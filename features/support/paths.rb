@@ -36,14 +36,6 @@ module NavigationHelpers
       image_search_path(:affiliate => $1)
     when /^the news search page$/
       news_search_path
-    when /the analytics groups and trends page/
-      analytics_groups_trends_path
-    when /the analytics query search results page/
-      analytics_query_search_path
-    when /the FAQ page/
-      analytics_faq_path
-    when /the analytics homepage/
-      analytics_home_page_path
     when /the timeline page for "([^\"]*)"$/
       query_timeline_path($1)
     when /the affiliate admin home page/
@@ -78,8 +70,6 @@ module NavigationHelpers
       contact_form_path(:locale => 'es')
     when /the query groups admin page/
       analytics_query_groups_path
-    when /the bulk edit query groups page for "([^\"]*)"/
-      bulk_edit_analytics_query_group_path(QueryGroup.find_by_name($1))
     when /the boosted contents admin page/
       admin_boosted_contents_path
     when /the affiliate boosted contents admin page/

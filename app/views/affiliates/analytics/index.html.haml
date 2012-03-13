@@ -3,14 +3,14 @@
 %h1&= "Query Logs for #{@affiliate.display_name}"
 = render_help_link(@help_link)
 .span-24
-  = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
+  = render :partial => "search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
 .span-24
-  = render :partial => "analytics/shared/date_range_select", :locals => { :path => affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => "Show most popular queries from"}
+  = render :partial => "date_range_select", :locals => { :path => affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => "Show most popular queries from"}
 .clear
 
 %br
 
-= render :partial => "analytics/shared/popular_queries_table", :locals => { :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :query_counts => @popular_terms, :num_results => @num_results_dqs}
+= render :partial => "popular_queries_table", :locals => { :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :query_counts => @popular_terms, :num_results => @num_results_dqs}
 
 #daily_top_queries.span-24
   = affiliate_analytics_daily_report_link(@affiliate.name, @end_date)

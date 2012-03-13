@@ -134,15 +134,14 @@ development database with a month's worth of data for 100 query terms:
 
     rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
 
-Give your user account priveleges to access analytics (and admin while you are at it). Here's how with rails console:
+Give your user account admin privileges while you are at it. Here's how with rails console:
 
     user = User.last
-    user.update_attribute(:is_analyst, true)
     user.update_attribute(:is_affiliate_admin, true)
 
 Check it out here:
 
-<http://127.0.0.1:3000/analytics>
+<http://127.0.0.1:3000/admin>
 
 ## Admin
 Your user account should have admin priveleges set. Now go here and poke around.

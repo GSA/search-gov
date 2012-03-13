@@ -1,6 +1,6 @@
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Query Search'])
 
 .span-24
-  = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
+  = render :partial => "search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
 .span-16
-  = render :partial => "analytics/shared/searchresults", :locals => { :search => @search_results, :affiliate => @affiliate }
+  = render :partial => "searchresults", :locals => { :search => @search_results, :affiliate => @affiliate }

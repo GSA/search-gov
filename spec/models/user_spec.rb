@@ -174,7 +174,6 @@ describe User do
     it { should allow_mass_assignment_of(:email) }
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
-    it { should_not allow_mass_assignment_of(:is_analyst) }
     it { should_not allow_mass_assignment_of(:strict_mode) }
     it { should_not allow_mass_assignment_of(:approval_status) }
     it { should_not allow_mass_assignment_of(:requires_manual_approval) }
@@ -193,10 +192,9 @@ describe User do
   end
 
   describe "#is_developer?" do
-    it "should return true when is_affiliate? and is_affiliate_admin? and is_analyst? are false" do
+    it "should return true when is_affiliate? and is_affiliate_admin? are false" do
       users(:affiliate_admin).is_developer?.should be_false
       users(:affiliate_manager).is_developer?.should be_false
-      users(:analyst).is_developer?.should be_false
       users(:developer).is_developer?.should be_true
     end
   end

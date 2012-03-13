@@ -91,26 +91,6 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |hash| QueryCount.new(hash.first, hash.last) }
     end
 
-    def most_popular_groups_for_year_month(year, month, num_results = RESULTS_SIZE)
-      start_date = Date.civil(year, month, 1)
-      end_date = Date.civil(year, month, -1)
-      results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
-                               "where day between ? AND ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
-                               "group by q.name order by cnt desc limit ?", start_date, end_date, num_results]
-      return INSUFFICIENT_DATA if results.empty?
-      results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
-    end
-
-    def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
-      return INSUFFICIENT_DATA if end_date.nil?
-      start_date = end_date - days_back.days + 1.day
-      results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
-                               "where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
-                               "group by q.name order by cnt desc limit ?", start_date, end_date, affiliate_name, locale, num_results]
-      return INSUFFICIENT_DATA if results.empty?
-      results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
-    end
-
     def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
       maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end
@@ -125,11 +105,6 @@ class DailyQueryStat < ActiveRecord::Base
       else
         Date.yesterday..Date.yesterday
       end
-    end
-
-    def collect_query_group_named(name, start_date)
-      queries = QueryGroup.find_by_name(name).grouped_queries.collect { |gq| gq.query }
-      generic_collection(["day >= ? AND query IN (?)", start_date, queries])
     end
 
     def collect_query(query, start_date)

@@ -101,49 +101,11 @@ affiliate_without_contact_info:
   approval_status: approved
   welcome_email_sent: true
 
-analyst:
-  email: analyst@fixtures.org
-  crypted_password: $2a$10$a9rDgZ9ceVYzVVZjiQunpuQjqyokRETQm7N6tK1Fp1pBt4FiHxq7O
-  password_salt: GdQLXjUho6xxo8S43n7C
-  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
-  is_analyst: true
-  is_analyst_admin: false
-  contact_name: Some Read-Only Analyst
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
-  organization_name: Agency
-  approval_status: approved
-  welcome_email_sent: true
-
-analyst_admin:
-  email: analyst_admin@fixtures.org
-  crypted_password: $2a$10$a9rDgZ9ceVYzVVZjiQunpuQjqyokRETQm7N6tK1Fp1pBt4FiHxq7O
-  password_salt: GdQLXjUho6xxo8S43n7C
-  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
-  is_analyst: false
-  is_analyst_admin: true
-  contact_name: Some Analyst Who Can Change Settings
-  phone: 301-123-4568
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
-  organization_name: Admin Agency
-  approval_status: approved
-  welcome_email_sent: true
-
 marilyn:
   email: marilyn@fixtures.org
   crypted_password: $2a$10$a9rDgZ9ceVYzVVZjiQunpuQjqyokRETQm7N6tK1Fp1pBt4FiHxq7O
   password_salt: GdQLXjUho6xxo8S43n7C
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
-  is_analyst: true
-  is_analyst_admin: true
   is_affiliate_admin: true
   contact_name: Analyst With Full Privileges
   phone: 301-123-4568
@@ -163,7 +125,6 @@ developer:
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   is_affiliate_admin: false
   is_affiliate: false
-  is_analyst: false
   contact_name: A New Developer
   phone: 301-123-4567
   address: 123 Penn Ave

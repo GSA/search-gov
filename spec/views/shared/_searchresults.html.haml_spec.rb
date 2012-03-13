@@ -28,6 +28,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:matching_site_limits).and_return []
     @search.stub!(:are_results_by_bing?).and_return true
     @search.stub!(:first_page?).and_return true
+    @search.stub!(:news_items)
 
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'

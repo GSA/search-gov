@@ -198,14 +198,6 @@ describe ApplicationHelper do
       end
     end
 
-    context "when the current user is an analyst_admin" do
-      it "should detect that" do
-        user = stub('User', :is_analyst_admin? => true)
-        helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:analyst_admin).should be_true
-      end
-    end
-
     context "when the current user is an affiliate" do
       it "should detect that" do
         user = stub('User', :is_affiliate? => true)
@@ -216,11 +208,10 @@ describe ApplicationHelper do
 
     context "when the current user has no role" do
       it "should detect that" do
-        user = stub('User', :is_affiliate_admin? => false, :is_analyst_admin? => false, :is_affiliate? => false)
+        user = stub('User', :is_affiliate_admin? => false, :is_affiliate? => false)
         helper.stub(:current_user).and_return(user)
         helper.current_user_is?(:affiliate).should be_false
         helper.current_user_is?(:affiliate_admin).should be_false
-        helper.current_user_is?(:analyst_admin).should be_false
       end
     end
 
@@ -229,7 +220,6 @@ describe ApplicationHelper do
         helper.stub(:current_user).and_return(nil)
         helper.current_user_is?(:affiliate).should be_false
         helper.current_user_is?(:affiliate_admin).should be_false
-        helper.current_user_is?(:analyst_admin).should be_false
       end
     end
 

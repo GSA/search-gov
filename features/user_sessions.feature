@@ -24,14 +24,6 @@ Feature: User sessions
     And I press "Login"
     Then I should be on the affiliate admin page
 
-  Scenario: Analyst should be on the analytics homepage upon successful login
-    Given I am on the login page
-    And I fill in the following in the login form:
-      | Email                         | analyst@fixtures.org              |
-      | Password                      | admin                             |
-    And I press "Login"
-    Then I should be on the analytics homepage
-
   Scenario: Affiliate manager should be on the affiliate home page upon successful login
     Given I am on the login page
     And I fill in the following in the login form:

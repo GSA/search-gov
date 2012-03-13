@@ -531,7 +531,6 @@ Feature: Featured Collections
     And the following featured collections exist for the affiliate "site.gov":
       | title                                           | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
       | Nombres de ciclones tropicales en todo el mundo | http://www.nhc.noaa.gov/aboutnames.shtml | es     | active | cyclones.jpg    | ciclones       | NOAA              | http://www.noaa.gov   |
-      | Cyclones (ciclones in Spanish)                  | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | cyclones.jpg    | cyclones       | NOAA              | http://www.noaa.gov   |
     When I go to site.gov's Spanish search page
     And I fill in "query" with "ciclones"
     And I press "Buscar"

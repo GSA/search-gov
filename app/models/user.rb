@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
   validate :validate_government_affiliation, :on => :create
-  attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
+  attr_protected :is_affiliate, :is_affiliate_admin
   attr_protected :approval_status, :requires_manual_approval, :welcome_email_sent
   has_and_belongs_to_many :affiliates
   before_validation :generate_api_key
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def is_affiliate_or_higher
-    is_affiliate || is_affiliate_admin || is_analyst
+    is_affiliate || is_affiliate_admin
   end
 
   def is_developer?

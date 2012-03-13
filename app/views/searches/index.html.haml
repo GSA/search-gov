@@ -1,5 +1,5 @@
 #left_column
-  - if @affiliate.rss_feeds.navigable_only.present? or @affiliate.is_image_search_enabled? or @affiliate.has_active_document_collections?
+  - if @affiliate.rss_feeds.navigable_only.present? or @affiliate.is_image_search_enabled? or @affiliate.document_collections.navigable_only.present?
     = render "shared/affiliate_vertical_navigation"
   &nbsp;
 #results

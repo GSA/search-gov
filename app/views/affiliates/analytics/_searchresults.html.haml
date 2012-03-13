@@ -1,0 +1,16 @@
+%div= flash[:notice] if flash[:notice]
+- if (@search_results.size > 0)
+  %p= "Matches for '#{@search_query_term}'"
+  %table
+    %tr
+      %th Query term
+      %th{:style=>"text-align: right;"} Frequency
+    - @search_results.each_pair do |query, count|
+      %tr
+        %td
+          = affiliate_query_chart_link(query, @affiliate)
+        %td{:style=>"text-align: right;"}= count
+- elsif (@search_query_term.blank?)
+  %p.noresults= "Please enter search term(s)"
+- else
+  %p.noresults= "Sorry, no results found for '#{@search_query_term}'."

@@ -135,7 +135,6 @@ module ApplicationHelper
     links = []
     if current_user
       links << link_to('Super Admin', admin_home_page_path) if current_user_is?(:affiliate_admin)
-      links << link_to('Analytics Center', analytics_home_page_path) if current_user_is?(:analyst)
       links << link_to('Admin Center', home_affiliates_path) if current_user_is?(:affiliate)
       first_added = false
       list_items = links.collect do |link|

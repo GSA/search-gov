@@ -10,7 +10,6 @@ Feature:  Administration
     And I should see "Affiliates"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
-    And I should see "Search.USA.gov Best Bets: Text"
     And I should see "Affiliate Boosted"
     And I should see "Top Searches"
     And I should see "Superfresh Urls"
@@ -26,12 +25,6 @@ Feature:  Administration
 
     When I follow "Sign Out"
     Then I should be on the login page
-
-  Scenario: Visiting the admin home page as Marilyn
-    Given I am logged in with email "marilyn@fixtures.org" and password "admin"
-    When I go to the admin home page
-    Then I should see "Users"
-    And I should see "Query Grouping"
 
   Scenario: Visiting the affiliate admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -94,23 +87,12 @@ Feature:  Administration
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Boosted Content entries exist:
-    | title               | url                     | description                               |
-    | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-    | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-    | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
     | display_name     | name             | contact_email         | contact_name        |
     | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
     | title               | url                     | description                               |
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
-    When I go to the admin home page
-    And I follow "Search.USA.gov Best Bets: Text"
-    And I should see the following breadcrumbs: USASearch > Super Admin > Search.USA.gov Best Bets: Text
-    And I should see "Our Emergency Page"
-    And I should not see "Bar Emergency Page"
-
     When I go to the admin home page
     And I follow "Affiliate Boosted Content"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content

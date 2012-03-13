@@ -10,9 +10,7 @@ class UserSessionsController < SslController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      if @user_session.user.is_analyst?
-        redirect_back_or_default analytics_home_page_path
-      elsif @user_session.user.is_developer?
+      if @user_session.user.is_developer?
         redirect_back_or_default account_path
       else
         redirect_back_or_default home_affiliates_path

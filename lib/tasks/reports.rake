@@ -76,15 +76,6 @@ namespace :usasearch do
 
       zip_filename = "/tmp/monthly_report_#{start_date.strftime('%Y-%m')}.zip"
 
-      # top monthly query groups
-      top_monthy_query_groups_sql = "select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b where day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id group by q.name order by cnt desc limit 50"
-      top_monthly_query_groups_en = DailyQueryStat.find_by_sql [top_monthy_query_groups_sql, start_date, end_date, "en"]
-      top_monthly_query_groups_es = DailyQueryStat.find_by_sql [top_monthy_query_groups_sql, start_date, end_date, "es"]
-      top_monthly_query_groups_affiliates = DailyQueryStat.find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b where day between ? AND ? AND affiliate != 'usasearch.gov' and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id group by q.name order by cnt desc limit 50", start_date, end_date]
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_en.txt", "Name,Count", top_monthly_query_groups_en.collect { |result| "#{result.name},#{result.cnt}" })
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_es.txt", "Name,Count", top_monthly_query_groups_es.collect { |result| "#{result.name},#{result.cnt}" })
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_affiliates.txt", "Name,Count", top_monthly_query_groups_affiliates.collect { |result| "#{result.name},#{result.cnt}" })
-
       # top monthly queries
       top_monthly_queries_sql = "SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?) GROUP BY query ORDER BY cnt desc LIMIT 50"
       top_monthly_queries_en = DailyQueryStat.find_by_sql [top_monthly_queries_sql, start_date, end_date, "en"]
@@ -109,11 +100,6 @@ namespace :usasearch do
       daterange = start_date.beginning_of_month..start_date.end_of_month
       headers = "Module, Impressions, Clicks, Click-Thru Rate"
       columns = 'module_tag, display_name, SUM(clicks) AS clicks, SUM(impressions) AS impressions, ROUND(100*SUM(clicks)/SUM(impressions),2) AS clickthru_ratio'
-      %w{en es}.each do |locale|
-        totals = DailySearchModuleStat.select(columns).where(:day => daterange, :affiliate_name => Affiliate::USAGOV_AFFILIATE_NAME, :locale => locale).group(:module_tag).order("clicks DESC").joins(:search_module)
-        output_to_zipfile(zip_filename, "usa_click_totals_#{locale}.txt", headers,
-                          totals.collect { |result| "#{result.display_name},#{result.impressions},#{result.clicks},#{result.clickthru_ratio}%" })
-      end
       totals = DailySearchModuleStat.select(columns).where(:day => daterange).where("affiliate_name != '#{Affiliate::USAGOV_AFFILIATE_NAME}'").group(:module_tag).order("clicks DESC").joins(:search_module)
       output_to_zipfile(zip_filename, "affiliate_click_totals.txt", headers,
                         totals.collect { |result| "#{result.display_name},#{result.impressions},#{result.clicks},#{result.clickthru_ratio}%" })

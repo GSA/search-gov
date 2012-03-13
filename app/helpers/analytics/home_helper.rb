@@ -34,7 +34,7 @@ module Analytics::HomeHelper
   end
 
   def analytics_path_prefix(affiliate)
-    affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics/queries"
+    "/affiliates/#{affiliate.id}/analytics"
   end
 
   def monthly_report_filename(prefix, report_date)
@@ -73,10 +73,6 @@ module Analytics::HomeHelper
   def affiliate_analytics_monthly_report_link(affiliate_name, report_date)
     filename = monthly_report_filename(affiliate_name.downcase, report_date)
     "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
-  end
-
-  def analytics_center_breadcrumbs(page_title = nil)
-    page_title.blank? ? breadcrumbs(["Analytics Center"]) : breadcrumbs([link_to("Analytics Center", analytics_home_page_path), page_title])
   end
 
   def display_select_for_window_on_query_groups(window, num_results, day)
