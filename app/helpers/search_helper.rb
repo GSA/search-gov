@@ -708,7 +708,7 @@ module SearchHelper
   end
 
   def search_results_by_logo(results_by_bing)
-    link_to((results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'bing-logo') : image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'bing-logo')), 'http://searchblog.usa.gov/')
+    results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'results-by-logo') : link_to(image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'results-by-logo'), 'http://searchblog.usa.gov')
   end
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)

@@ -68,6 +68,7 @@ describe "shared/_searchresults.html.haml" do
     it "should show the Bing logo" do
       render
       rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
+      rendered.should_not have_selector("a img[src^='/images/binglogo_en.gif']")
     end
 
     context "when search is for an affiliate" do
@@ -107,10 +108,9 @@ describe "shared/_searchresults.html.haml" do
         view.stub!(:search).and_return @search
       end
 
-      it "should show the USASearch results by logo" do
+      it "should show the English USASearch results by logo" do
         render
-        rendered.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
-        rendered.should have_selector("a", :href => 'http://searchblog.usa.gov/')
+        rendered.should have_selector("a[href='http://searchblog.usa.gov'] img[src^='/images/results_by_usasearch_en.png']")
       end
 
       context "when the locale is Spanish" do
@@ -118,10 +118,9 @@ describe "shared/_searchresults.html.haml" do
           I18n.stub!(:locale).and_return :es
         end
 
-        it "should not show a results-by logo" do
+        it "should show the Spanish USASearch results by logo" do
           render
-          rendered.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
-          rendered.should have_selector("a", :href => 'http://searchblog.usa.gov/')
+          rendered.should have_selector("a[href='http://searchblog.usa.gov'] img[src^='/images/results_by_usasearch_es.png']")
         end
       end
     end
