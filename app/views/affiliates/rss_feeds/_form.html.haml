@@ -7,3 +7,6 @@
     %li
       = form.label :url, "URL*"
       = form.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :shown_in_govbox, "Show in Govbox"
+      = form.check_box :shown_in_govbox

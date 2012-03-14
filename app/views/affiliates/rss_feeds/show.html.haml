@@ -19,11 +19,14 @@
         %td.name Name
         %td= @rss_feed.name
       %tr
+        %td.name Show in Govbox
+        %td= @rss_feed.shown_in_govbox ? "yes" : "no"
+      %tr
         %td.name Last Crawled At
-        %td= @rss_feed.last_crawled_at
+        %td= @rss_feed.last_crawled_at || "Pending"
       %tr
         %td.name Last Crawl Status
-        %td= @rss_feed.last_crawl_status
+        %td= @rss_feed.last_crawl_status || "Pending"
 
   .add-link-wrapper
     = link_to "Add another RSS Feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
