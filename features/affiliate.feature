@@ -2048,7 +2048,7 @@ Feature: Affiliate clients
     Then I should see "Email can't be blank"
     And I should see "Contact name can't be blank"
 
-  Scenario: A nonsense affiliate search
+  Scenario: A nonsense English affiliate search
     Given the following Affiliates exist:
       | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |
       | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
@@ -2056,6 +2056,15 @@ Feature: Affiliate clients
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
     And I press "Search"
     Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+
+  Scenario: A nonsense Spanish affiliate search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | locale |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
+    When I go to aff.gov's search page
+    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I press "Buscar"
+    Then I should see "No hemos encontrado ningún resultado que contenga 'kjdfgkljdhfgkldjshfglkjdsfhg'. Intente usar otras palabras clave o sinónimos."
 
   Scenario: Embedded affiliate search
     Given the following Affiliates exist:
