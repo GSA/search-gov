@@ -8,6 +8,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:related_search).and_return []
     @search.stub!(:has_related_searches?).and_return false
     @search.stub!(:queried_at_seconds).and_return(1271978870)
+    @search.stub!(:news_items)
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)
     @search.stub!(:results).and_return []

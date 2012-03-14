@@ -26,7 +26,7 @@ describe NewsItem do
     NewsItem.create!(@valid_attributes)
   end
 
-  describe "#search_for(query, rss_feeds, since)" do
+  describe "#search_for(query, rss_feeds, since = nil, page = 1)" do
     before do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
@@ -48,6 +48,29 @@ describe NewsItem do
       search.results.first.should == @blog_item
     end
 
+    context "when there are no RSS feeds passed in" do
+      before do
+        @affiliate = @blog.affiliate
+        @affiliate.rss_feeds.each {|f| f.update_attribute(:shown_in_govbox, false)}
+      end
+
+      it "should return nil" do
+        NewsItem.search_for("policy", @affiliate.rss_feeds.govbox_enabled).should be_nil
+      end
+    end
+
+    context "when the affiliate has excluded URLs defined" do
+      before do
+        @blog.affiliate.excluded_urls.create!(:url => "http://www.wh.gov/ns1")
+      end
+
+      it "should exclude those from the results" do
+        search = NewsItem.search_for("policy", [@blog, @gallery])
+        search.total.should == 1
+        search.results.first.should == @gallery_item
+      end
+    end
+
     it "should sort by descreasing published_at" do
       search = NewsItem.search_for("policy", [@blog, @gallery])
       search.total.should == 2
@@ -56,7 +79,7 @@ describe NewsItem do
 
     it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
       ActiveSupport::Notifications.should_receive(:instrument).
-        with("solr_search.usasearch", hash_including(:query => hash_including(:rss_feeds => @blog.name, :model=>"NewsItem", :term => "policy")))
+        with("solr_search.usasearch", hash_including(:query => hash_including(:rss_feeds => @blog.name, :model => "NewsItem", :term => "policy")))
       NewsItem.search_for("policy", [@blog])
     end
 
@@ -71,7 +94,7 @@ describe NewsItem do
 
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model=>"NewsItem", :term => "policy")))
+          with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
         NewsItem.search_for("policy", [@blog, @gallery], since)
       end
     end

@@ -17,14 +17,14 @@ Feature: Affiliate Search
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true         |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         |
-      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        |
+      | name          | url                                                                  | is_navigable | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         | true            |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        | false           |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                                    | is_navigable |
-      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         |
+      | name           | url                                                                    | is_navigable | shown_in_govbox |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
@@ -48,6 +48,29 @@ Feature: Affiliate Search
       | phrase           |
       | Some Unique item |
       | el paso term     |
+    When I am on bar.gov's search page
+    And I fill in "query" with "first item"
+    And I press "Search"
+    Then I should see "News results for 'first item' from bar site"
+    And I should see "First video item"
+    And I should see "First item"
+    And I should not see "First hidden item"
+
+    When I follow "News results for 'first item' from bar site"
+    Then I should be on the news search page
+    And I should have the following query string:
+      |affiliate|bar.gov   |
+      |query    |first item|
+      |tbs      |y         |
+      |locale   |en        |
+      |m        |false     |
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "first item"
+    And I press "Buscar"
+    Then I should see "Noticias sobre 'first item' de Spanish bar site"
+    And I should see "First Spanish video item"
+
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"

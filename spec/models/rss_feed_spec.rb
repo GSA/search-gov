@@ -20,11 +20,15 @@ describe RssFeed do
     RssFeed.create!(@valid_attributes)
   end
 
-  it "should set is_navigable to false by default" do
-    RssFeed.create!(@valid_attributes).is_navigable.should be_false
-  end
-
   context "when creating" do
+    it "should set is_navigable to false by default" do
+      RssFeed.create!(@valid_attributes).is_navigable.should be_false
+    end
+
+    it "should set shown_in_govbox to false by default" do
+      RssFeed.create!(@valid_attributes).shown_in_govbox.should be_false
+    end
+
     context "when the RSS feed is a valid feed" do
       before do
         rss = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
@@ -229,5 +233,20 @@ describe RssFeed do
     specify { navigable_only.count.should == 3 }
     specify { navigable_only.collect(&:is_navigable).uniq.should == [true] }
     specify { navigable_only.collect(&:position).should == [1, 2, 3] }
+  end
+
+  describe ".govbox_enabled" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:govbox_enabled) { Affiliate.find(affiliate.id).rss_feeds.govbox_enabled }
+
+    before do
+      affiliate.rss_feeds.create!(:name => 'govbox rss feed 1', :url => 'http://searchblog.usa.gov/rss', :shown_in_govbox => true)
+      affiliate.rss_feeds.create!(:name => 'not govbox rss feed', :url => 'http://searchblog.usa.gov/rss', :shown_in_govbox => false)
+    end
+
+    it "should scope the collection to the govbox enabled RssFeeds" do
+      govbox_enabled.count.should == 1
+      govbox_enabled.first.name.should == 'govbox rss feed 1'
+    end
   end
 end

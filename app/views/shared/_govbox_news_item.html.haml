@@ -1,0 +1,5 @@
+.newsitem.searchresult.clearfix{:id => "newsitem#{index+1}"}
+  = link_with_click_tracking(truncate_html_prose_on_words(highlight_hit(hit, :title), 90).html_safe, hit.instance.link, @affiliate, @search.query, index, 'NEWS', @search_vertical)
+  %h4
+    %span.feed_name= hit.instance.rss_feed.name
+    = time_ago_in_words(hit.instance.published_at)

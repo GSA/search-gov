@@ -2,7 +2,8 @@ Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, t
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
     is_navigable = hash["is_navigable"].blank? ? true : hash["is_navigable"]
-    RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_navigable => is_navigable, :affiliate => affiliate, :position => hash["position"])
+    shown_in_govbox = hash["shown_in_govbox"].blank? ? true : hash["shown_in_govbox"]
+    RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_navigable => is_navigable, :shown_in_govbox => shown_in_govbox, :affiliate => affiliate, :position => hash["position"])
   end
   NewsItem.destroy_all
 end

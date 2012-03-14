@@ -17,6 +17,7 @@ class WebSearch < Search
               :enable_highlighting,
               :agency,
               :med_topic,
+              :news_items,
               :formatted_query,
               :featured_collections,
               :indexed_documents,
@@ -289,6 +290,7 @@ class WebSearch < Search
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
       end
+      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.govbox_enabled, nil, 1) if affiliate
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.nil? or (affiliate and affiliate.is_medline_govbox_enabled?)
       @recalls = Recall.recent(query) unless affiliate
     end
@@ -303,6 +305,7 @@ class WebSearch < Search
     modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
+    modules << "NEWS" unless self.news_items.nil? or self.news_items.total.zero?
     modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "RECALL" unless self.recalls.nil?

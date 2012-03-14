@@ -20,9 +20,10 @@ class NewsItem < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, rss_feeds, since = nil, page = 1, excluded_urls = [])
+    def search_for(query, rss_feeds, since = nil, page = 1)
       sanitized_query = preprocess(query)
-      return nil if sanitized_query.blank?
+      return nil if sanitized_query.blank? or rss_feeds.blank?
+      excluded_urls = rss_feeds.first.affiliate.excluded_urls.collect { |url| url.url }
       instrument_hash = {:model=> self.name, :term => sanitized_query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
       instrument_hash.merge!(:since => since) if since
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do

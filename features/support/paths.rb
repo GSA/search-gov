@@ -34,6 +34,8 @@ module NavigationHelpers
         search_path(:affiliate => $1, :oneserp => "1", :strictui => "1")
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
+    when /^the news search page$/
+      news_search_path
     when /the analytics groups and trends page/
       analytics_groups_trends_path
     when /the analytics query search results page/
@@ -47,7 +49,7 @@ module NavigationHelpers
     when /the affiliate admin home page/
       admin_affiliates_path
     when /^the (.*)'s admin edit affiliate page$/
-        edit_admin_affiliate_path(Affiliate.find_by_name($1))
+      edit_admin_affiliate_path(Affiliate.find_by_name($1))
     when /the admin home page/
       admin_home_page_path
     when /admin site pages page/

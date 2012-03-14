@@ -15,6 +15,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:page).and_return 1
     @search.stub!(:has_boosted_contents?)
     @search.stub!(:faqs)
+    @search.stub!(:news_items)
     @search.stub!(:gov_forms)
     @search.stub!(:scope_id)
     @search.stub!(:fedstates)

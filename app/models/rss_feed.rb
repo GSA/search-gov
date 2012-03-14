@@ -5,6 +5,7 @@ class RssFeed < ActiveRecord::Base
   belongs_to :affiliate
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
   scope :navigable_only, where(:is_navigable => true)
+  scope :govbox_enabled, where(:shown_in_govbox => true)
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
   ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }

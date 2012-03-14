@@ -5,7 +5,7 @@ describe NewsSearch do
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  before do
+  before(:all) do
     NewsItem.reindex
   end
 
@@ -107,7 +107,7 @@ describe NewsSearch do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, [])
+        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1)
         search.run.should be_true
       end
     end
@@ -115,7 +115,7 @@ describe NewsSearch do
     context "when no RSS feed is specified" do
       it "should search for news items from all active feeds for the affiliate" do
         search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, an_instance_of(ActiveSupport::TimeWithZone), 1, [])
+        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, an_instance_of(ActiveSupport::TimeWithZone), 1)
         search.run
       end
     end
