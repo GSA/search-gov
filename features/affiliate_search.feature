@@ -65,6 +65,11 @@ Feature: Affiliate Search
       |locale   |en        |
       |m        |false     |
 
+    When I am on bar.gov's search page
+    And I fill in "query" with "loren"
+    And I press "Search"
+    Then I should not see "News results for 'loren' from bar site"
+
     When I am on es.bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Buscar"

@@ -1,4 +1,4 @@
-- unless search.news_items.blank?
+- if search.news_items and search.news_items.total > 0
   #indexed_documents
     .indexed-documents-wrapper-top
     .indexed-documents-wrapper-middle
