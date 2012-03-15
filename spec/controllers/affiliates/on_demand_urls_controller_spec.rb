@@ -86,13 +86,23 @@ describe Affiliates::OnDemandUrlsController do
 
         affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
         indexed_document.should_receive(:save).and_return(true)
-
-        post :create, :affiliate_id => affiliate.id, :indexed_document => { :url => 'http://www.agency.gov/document1.html' }
       end
 
-      it { should assign_to(:indexed_document).with(indexed_document) }
-      it { should set_the_flash }
-      it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+      context "Rails request/response stuff" do
+        before do
+          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
+        end
+
+        it { should assign_to(:indexed_document).with(indexed_document) }
+        it { should set_the_flash }
+        it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+      end
+
+      it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
+        ResqueSpec.reset!
+        Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
+        post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/another.html'}
+      end
     end
 
     context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to create a URL" do
@@ -109,7 +119,7 @@ describe Affiliates::OnDemandUrlsController do
         affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
         indexed_document.should_receive(:save).and_return(false)
 
-        post :create, :affiliate_id => affiliate.id, :indexed_document => { :url => 'http://www.agency.gov/document1.html' }
+        post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
       end
 
       it { should assign_to(:indexed_document).with(indexed_document) }

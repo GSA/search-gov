@@ -1,8 +1,9 @@
 namespace :usasearch do
   namespace :indexed_document do
-    desc "Freshens and reindexes all Affiliate indexed documents"
-    task :refresh_all => :environment do
-      IndexedDocument.refresh_all
+    desc "Fetches and indexes Affiliate indexed documents. Accepts 'all', 'not_ok', 'ok', and 'unfetched'."
+    task :refresh, :extent, :needs => :environment do |t, args|
+      args.with_defaults(:extent => "all")
+      IndexedDocument.refresh(args.extent)
     end
 
     desc "Loads tab-delimited file of affiliate ID / URL pairs as new IndexedDocuments"

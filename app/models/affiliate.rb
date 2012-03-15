@@ -409,21 +409,21 @@ class Affiliate < ActiveRecord::Base
     domains = self.site_domains.collect{|site_domain| site_domain.domain }
     domains << (JSON.parse(self.live_fields_json)["managed_header_text"] rescue nil) if self.live_fields_json
     domains.compact.each do |domain|
-      domain_url = (domain =~ /^http:\/\/.*|^https:\/\/.*/).nil? ? "http://#{domain}" : domain
+      domain_url = domain =~ %r{^https?://}i ? domain : "http://#{domain}"
       begin
-        URI.parse(domain_url)
-        doc = Nokogiri::HTML(Kernel.open(domain_url)) rescue nil
+        doc = Nokogiri::HTML(Kernel.open(URI.parse(domain_url))) rescue nil
         live_domains_list << domain if doc and doc.xpath("//form[@action='http://search.usa.gov/search']").any?
       rescue Exception => e
+        Rails.logger.warn("Trouble checking domain for live code: #{e}")
         next
       end
     end
     live_domains_list.join(';')
   end
 
-  def refresh_indexed_documents
+  def refresh_indexed_documents(extent)
     indexed_documents.select(:id).find_in_batches(:batch_size => batch_size) do |batch|
-      Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id)
+      Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, extent)
     end
   end
 

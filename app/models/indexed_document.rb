@@ -207,14 +207,19 @@ class IndexedDocument < ActiveRecord::Base
       counter = 0
       if file.tempfile.lines.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
-        counter > 0 ? {:success => true, :count => counter} : {:success => false, :error_message => 'No URLs uploaded; please check your file and try again.'}
+        if counter > 0
+          affiliate.refresh_indexed_documents('unfetched')
+          {:success => true, :count => counter}
+        else
+          {:success => false, :error_message => 'No URLs uploaded; please check your file and try again.'}
+        end
       else
         {:success => false, :error_message => "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."}
       end
     end
 
-    def refresh_all
-      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents }
+    def refresh(extent)
+      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) }
     end
 
     def bulk_load_urls(file_path)
@@ -222,6 +227,7 @@ class IndexedDocument < ActiveRecord::Base
         affiliate_id, url = line.chomp.split("\t")
         create(:url => url, :affiliate_id => affiliate_id)
       end
+      refresh('unfetched')
     end
 
   end

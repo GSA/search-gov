@@ -111,12 +111,6 @@ describe IndexedDocument do
     end
   end
 
-  it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
-    ResqueSpec.reset!
-    Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
-    IndexedDocument.create!(@min_valid_attributes)
-  end
-
   it "should create a SuperfreshUrl entry for the affiliate" do
     SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id]).should be_nil
     IndexedDocument.create!(@min_valid_attributes)
@@ -798,6 +792,10 @@ describe IndexedDocument do
         result[:success].should be_false
         result[:error_message].should == 'No URLs uploaded; please check your file and try again.'
       end
+
+      it "should not trigger a refresh on all the unfetched URLs for that affiliate" do
+        @affiliate.should_not_receive(:refresh_indexed_documents)
+      end
     end
 
     context "when a file is passed in with 100 or fewer URLs" do
@@ -844,9 +842,26 @@ describe IndexedDocument do
         result[:count].should == 101
       end
     end
+
+    context "when a file has at least one URL processed" do
+      before do
+        tempfile = Tempfile.new('urls.txt')
+        %w(http://search.usa.gov/ http://usa.gov/ http://data.gov/).each do |url|
+          tempfile.write(url + "\n")
+        end
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
+      end
+
+      it "should trigger a refresh on all the unfetched URLs for that affiliate" do
+        @affiliate.should_receive(:refresh_indexed_documents).with('unfetched')
+        IndexedDocument.process_file(@file, @affiliate)
+      end
+    end
   end
 
-  describe "#refresh_all" do
+  describe "#refresh(extent)" do
     before do
       IndexedDocument.destroy_all
       IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
@@ -854,10 +869,10 @@ describe IndexedDocument do
       Affiliate.stub!(:find).and_return(affiliates(:power_affiliate), affiliates(:basic_affiliate))
     end
 
-    it "should call refresh_indexed_documents on each affiliate that has indexed docs" do
-      affiliates(:power_affiliate).should_receive(:refresh_indexed_documents)
-      affiliates(:basic_affiliate).should_receive(:refresh_indexed_documents)
-      IndexedDocument.refresh_all
+    it "should call refresh_indexed_documents(extent) on each affiliate that has indexed docs" do
+      affiliates(:power_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
+      affiliates(:basic_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
+      IndexedDocument.refresh('unfetched')
     end
   end
 
@@ -875,6 +890,11 @@ describe IndexedDocument do
       IndexedDocument.bulk_load_urls(@file.path)
       IndexedDocument.count.should == 1
       IndexedDocument.find_by_url_and_affiliate_id("http://www.usa.gov/", @aff.id).should_not be_nil
+    end
+
+    it "should enqueue fetching and indexing content for these unfetched URLs" do
+      IndexedDocument.should_receive(:refresh).with('unfetched')
+      IndexedDocument.bulk_load_urls(@file.path)
     end
 
   end
