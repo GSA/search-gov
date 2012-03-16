@@ -20,12 +20,14 @@ class IndexedDocument < ActiveRecord::Base
   validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   validate :site_domain_matches
 
+  OK_STATUS = "OK"
+  scope :ok, where(:last_crawl_status => OK_STATUS)
+
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   DOWNLOAD_TIMEOUT_SECS = 60
-  OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"

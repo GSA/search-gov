@@ -7,7 +7,7 @@ class Affiliates::AffiliatesController < SslController
     return false if require_user == false
     unless current_user.is_affiliate?
       redirect_to home_page_url
-      return false
+      false
     end
   end
 
@@ -15,7 +15,7 @@ class Affiliates::AffiliatesController < SslController
     return false if require_user == false
     unless current_user.is_affiliate? || current_user.is_affiliate_admin?
       redirect_to home_page_url
-      return false
+      false
     end
   end
 
@@ -29,7 +29,7 @@ class Affiliates::AffiliatesController < SslController
         flash[:notice] = "Your contact information is not complete."
       end
       redirect_to home_affiliates_path
-      return false
+      false
     end
   end
 
@@ -40,7 +40,7 @@ class Affiliates::AffiliatesController < SslController
     elsif current_user.is_affiliate?
       @affiliate = current_user.affiliates.find(affiliate_id) rescue redirect_to(home_page_url) and return false
     end
-    return true
+    true
   end
 
   def default_url_options(options={})

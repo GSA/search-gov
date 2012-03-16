@@ -23,6 +23,7 @@ describe HostedSitemapController, "#show" do
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/foo.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/bar.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/blat.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
+      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/dupe.html", :last_crawl_status=>"dupe", :title => "foo dupe", :description => "bar dupe")
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://www.honeybadger.gov/ignoreme.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
     end
 
@@ -32,7 +33,7 @@ describe HostedSitemapController, "#show" do
       end
 
       context "when a valid page parameter is specified" do
-        it "should return an individual sitemap file for that page of indexed document URLs" do
+        it "should return an individual sitemap file for that page of OK indexed document URLs" do
           get :show, :id => @indexed_domain.id.to_s, :page => "1"
           doc = Hpricot.XML(response.body.to_s)
           (doc/:urlset/:url).size.should == 2
@@ -62,8 +63,8 @@ describe HostedSitemapController, "#show" do
       end
     end
 
-    context "when there aren't too many indexed documents in the domain" do
-      it "should return a valid sitemap with all urls for that domain" do
+    context "when the indexed documents for the domain can fit in a single sitemap file" do
+      it "should return a valid sitemap with all OK urls for that domain" do
         get :show, :id => @indexed_domain.id.to_s
         doc = Hpricot.XML(response.body.to_s)
         (doc/:urlset/:url).size.should == 3
