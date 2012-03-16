@@ -39,7 +39,8 @@
   'in the page content' => '.content',
   'in the API key box' => '.content-box',
   'in the API TOS section' => '.api.tos',
-  'in the registration form' => 'form#new_user'
+  'in the registration form' => 'form#new_user',
+  'in the rss feed govbox' => '#indexed_documents'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

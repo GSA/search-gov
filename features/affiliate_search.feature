@@ -346,9 +346,9 @@ Feature: Affiliate Search
     And I should not see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
 
     When I go to the affiliate admin page with "ssa.gov" selected
-    And I follow "Look and feel"
-    And I uncheck "Show Agency Govbox?"
-    And I press "Update"
+    And I follow "Results modules"
+    And I uncheck "Is agency govbox enabled"
+    And I press "Save"
 
     When I am on ssa.gov's search page
     And I fill in "query" with "ssa"
@@ -408,9 +408,9 @@ Feature: Affiliate Search
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "english-nih" selected
-    And I follow "Look and feel"
-    And I uncheck "Show Medline Govbox?"
-    And I press "Update"
+    And I follow "Results modules"
+    And I uncheck "Is medline govbox enabled"
+    And I press "Save"
 
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
@@ -439,9 +439,9 @@ Feature: Affiliate Search
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "spanish-nih" selected
-    And I follow "Look and feel"
-    And I uncheck "Show Medline Govbox?"
-    And I press "Update"
+    And I follow "Results modules"
+    And I uncheck "Is medline govbox enabled"
+    And I press "Save"
 
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"

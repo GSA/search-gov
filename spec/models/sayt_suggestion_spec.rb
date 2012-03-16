@@ -450,7 +450,6 @@ describe SaytSuggestion do
   describe "#related_search" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @affiliate.update_attribute(:related_topics_setting, "affiliate_enabled")
       SaytSuggestion.delete_all
       SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
       SaytSuggestion.reindex
@@ -461,9 +460,9 @@ describe SaytSuggestion do
       SaytSuggestion.related_search("suggest", @affiliate).should == ["<strong>suggest</strong> me"]
     end
 
-    context "when affiliate has all related topic options diabled" do
+    context "when affiliate has related searches diabled" do
       before do
-        @affiliate.update_attribute(:related_topics_setting, "disabled")
+        @affiliate.update_attributes!(:is_related_searches_enabled => false)
       end
 
       it "should return an empty array" do

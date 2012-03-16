@@ -647,7 +647,6 @@ table.generic-table
 .site-specific
   float: left
   overflow: hidden
-  width: 710px
   p
     margin: 0 0 8px
     font-size: 14px
@@ -677,6 +676,7 @@ table.generic-table
       clear: both
       float: left
     .button-wrapper
+      clear: both
       float: left
       margin: 10px 0 0
     h2
@@ -785,7 +785,7 @@ table.generic-table
     .header-image-file-field-wrapper
       clear: both
       margin-top: 10px
-    .header-links, .footer-links, .sidebar-items
+    .header-links, .footer-links, .sidebar-items, .govbox-items, .related-modules-items
       @include clearfix
       table
         border: 1px solid #BDBDBD
@@ -842,6 +842,10 @@ table.generic-table
           width: 95%
         td.url input
           width: 97%
+    .govbox-items td.name, .related-modules-items td.name
+      text-align: left
+    .related-modules
+      margin-top: 15px
     .checkbox-label
       color: #5D5D5D
       font-weight: normal
@@ -857,6 +861,17 @@ table.generic-table
     img.side-note
       float: right
       margin-left: 10px
+    #save
+      +border-radius
+      background-color: #12396A
+      +background-image(linear-gradient(#19539D, #12396A))
+      border: 0
+      color: white
+      font:
+        size: 1.15em
+        weight: bold
+      margin-right: 10px
+      padding: 5px 20px 7px
   .get-the-code
     ul
       margin: 0 8px 8px
@@ -1017,6 +1032,7 @@ h3.api-item
   table
     border: 1px solid #BDBDBD
     table-layout: fixed
+    width: 98%
   col.name
     width: 140px
   col.publish-date

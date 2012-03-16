@@ -85,7 +85,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
       :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
-      :results_source => hash["results_source"] || "bing"
+      :results_source => hash["results_source"] || "bing",
+      :is_related_searches_enabled => hash["is_related_searches_enabled"] || true
     )
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
@@ -159,23 +160,8 @@ Then /^the "([^\"]*)" button should be checked$/ do |field|
   page.should have_selector "input[type='radio'][checked='checked'][id='#{field}']"
 end
 
-Then /^the affiliate "([^\"]*)" should be set to use global related topics$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.related_topics_setting.should == 'global_enabled'
-end
-
 Then /I should see the API key/ do
   page.should have_selector(".content-box", :text => "Your API Key:")
-end
-
-Then /^the affiliate "([^\"]*)" should be set to use affiliate related topics$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.related_topics_setting.should == 'affiliate_enabled'
-end
-
-Then /^the affiliate "([^\"]*)" related topics should be disabled$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.related_topics_setting.should == 'disabled'
 end
 
 Then /^the "([^\"]*)" template should be selected$/ do |template_name|

@@ -44,12 +44,9 @@ class SaytSuggestion < ActiveRecord::Base
 
     def related_search(query, affiliate)
       solr = nil
-      if affiliate and not affiliate.is_global_related_topics_enabled?
-        if affiliate.is_related_topics_disabled?
-          return []
-        elsif affiliate.is_affiliate_related_topics_enabled?
-          solr = search_for(query, affiliate.id)
-        end
+      return [] if affiliate and !affiliate.is_related_searches_enabled?
+      if affiliate and affiliate.is_related_searches_enabled?
+        solr = search_for(query, affiliate.id)
       else
         solr = search_for(query)
       end

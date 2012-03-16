@@ -186,6 +186,17 @@ Feature: Affiliate clients
     And the "Is RSS feed 0 navigable" checkbox should not be checked
     And the "Show by time period module" checkbox should be checked
 
+    When I follow "Results modules"
+    Then the "Is agency govbox enabled" checkbox should not be checked
+    And the "Is medline govbox enabled" checkbox should not be checked
+    And I should see the following table rows:
+      | Name         | Source    |
+      | Agency       | USASearch |
+      | Medline      | USASearch |
+      | Recalls Feed | RSS       |
+    And the "Show RSS feed 0 in govbox" checkbox should not be checked
+    And the "Is related searches enabled" checkbox should be checked
+
     When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see "My awesome agency" in the SERP header
@@ -1591,7 +1602,7 @@ Feature: Affiliate clients
     And I press "Search on Live Site"
     Then I should see "Staged - aff site : White House" within "title"
 
-  Scenario: Related Topics on English SERPs for given affiliate search
+  Scenario: Related searches on English SERPs for given affiliate search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
@@ -1606,7 +1617,7 @@ Feature: Affiliate clients
     And I should see "some unique obama term"
     And I should not see "aff.gov"
 
-  Scenario: Related Topics on Spanish SERPs for given affiliate search
+  Scenario: Related searches on Spanish SERPs for given affiliate search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
@@ -1895,49 +1906,6 @@ Feature: Affiliate clients
     Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Your file could not be processed."
 
-  Scenario: Viewing Related Topics for an affiliate
-    Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Related topics"
-    Then I should be on the affiliate related topics page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Related Topics
-    And I should not see "aff.gov"
-    When I follow "Preview Button"
-    Then I should be on the preview affiliate page for "aff.gov"
-
-  Scenario: Setting Related Topics Preferences for an affiliate
-    Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Related topics"
-    Then I should be on the affiliate related topics page for "aff.gov"
-    And I should see "Preferences"
-    And the "related_topics_setting_affiliate_enabled" button should be checked
-
-    When I choose "related_topics_setting_global_enabled"
-    And I press "Set Preferences"
-    Then I should be on the affiliate related topics page for "aff.gov"
-    And the "related_topics_setting_global_enabled" button should be checked
-    And the affiliate "aff.gov" should be set to use global related topics
-
-    When I choose "related_topics_setting_affiliate_enabled"
-    And I press "Set Preferences"
-    Then I should be on the affiliate related topics page for "aff.gov"
-    And I should see "Preferences updated"
-    And the "related_topics_setting_affiliate_enabled" button should be checked
-    And the affiliate "aff.gov" should be set to use affiliate related topics
-
-    When I choose "related_topics_setting_disabled"
-    And I press "Set Preferences"
-    Then I should be on the affiliate related topics page for "aff.gov"
-    And the "related_topics_setting_disabled" button should be checked
-    And the affiliate "aff.gov" related topics should be disabled
-
   Scenario: Viewing Manage Users for an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email           | contact_name        |
@@ -2159,8 +2127,8 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | domains         |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
     And affiliate "aff.gov" has the following RSS feeds:
-      | affiliate | url                                             | name    |
-      | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
+      | affiliate | url                                             | name    | is_navigable |
+      | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog | true         |
     And feed "WH Blog" has the following news items:
       | link                                     | title                             | guid  | description         |
       | http://www.whitehouse.gov/our-government | Our Government \| The White House | 12345 | white house cabinet |
@@ -2424,7 +2392,7 @@ Feature: Affiliate clients
     And I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
-    
+
   Scenario: Viewing an affiliate admin center page with a help links
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -2436,3 +2404,99 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Site information"
     Then I should see "Help?"
+
+  Scenario: Visiting the results modules
+    Given the following Affiliates exist:
+      | display_name   | name             | contact_email | contact_name |
+      | aff site       | aff.gov          | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | position | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Results modules"
+    Then I should see the browser page titled "Results Modules"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Results Modules
+    And I should see "Results Modules" in the page header
+    When I follow "Add new RSS feed" in the page content
+    Then I should see "Add a new RSS Feed" in the page header
+
+    When I follow "Results modules"
+    And I follow "Press" in the page content
+    Then I should see "http://www.whitehouse.gov/feed/press"
+
+    When I follow "Results modules"
+    And I follow "RSS" in the page content
+    Then I should see "http://www.whitehouse.gov/feed/press"
+
+  Scenario: Editing the results modules
+    Given the following Affiliates exist:
+      | display_name   | name             | contact_email | contact_name |
+      | aff site       | aff.gov          | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | position | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true            |
+      | Not in GovBox | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false           |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
+    And feed "Photo Gallery" has the following news items:
+      | link                             | title      | guid  | published_ago | description                      |
+      | http://www.whitehouse.gov/news/3 | Third item | uuid3 | day           | item Next news item for the feed |
+    And feed "Not in Govbox" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/3 | Fourth item | uuid4 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
+    And the following SAYT Suggestions exist for aff.gov:
+      | phrase           |
+      | some unique item |
+    When I go to aff.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    Then I should see "News results for 'item' from aff site"
+    And I should see "First item" in the rss feed govbox
+    And I should see "Second item" in the rss feed govbox
+    And I should see "Third item" in the rss feed govbox
+    And I should not see "Fourth item" in the rss feed govbox
+    And I should not see "Fifth item" in the rss feed govbox
+    Then I should see "Related Searches for item by aff site" in the search results section
+    And I should see "some unique item"
+
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I follow "Results modules"
+    And I should see the following table rows:
+      | Name          | Source    |
+      | Agency        | USASearch |
+      | Medline       | USASearch |
+      | Press         | RSS       |
+      | Photo Gallery | RSS       |
+      | Not in GovBox | RSS       |
+    And the "Is agency govbox enabled" checkbox should not be checked
+    And the "Is medline govbox enabled" checkbox should not be checked
+    And the "Show RSS feed 0 in govbox" checkbox should be checked
+    And the "Show RSS feed 1 in govbox" checkbox should be checked
+    And the "Show RSS feed 2 in govbox" checkbox should not be checked
+    And I should see the following table rows:
+      | Name             |
+      | Related searches |
+    And the "Is related searches enabled" checkbox should be checked
+    And I uncheck "Show RSS feed 0 in govbox"
+    And I check "Show RSS feed 2 in govbox"
+    And I uncheck "Is related searches enabled"
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
+    When I go to aff.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    Then I should see "News results for 'item' from aff site"
+    And I should not see "First item" in the rss feed govbox
+    And I should not see "Second item" in the rss feed govbox
+    And I should see "Third item" in the rss feed govbox
+    And I should see "Fourth item" in the rss feed govbox
+    And I should see "Fifth item" in the rss feed govbox
+    Then I should not see "Related Searches for item by aff site" in the search results section
+    And I should not see "some unique item"

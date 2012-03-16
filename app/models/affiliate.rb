@@ -63,7 +63,6 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
-  VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(script style link)
 
@@ -207,18 +206,6 @@ class Affiliate < ActiveRecord::Base
 
   def includes_domain?(domain)
     domains_as_array.detect{ |affiliate_domain| domain =~ /#{Regexp.escape(affiliate_domain)}/i }.nil? ? false : true
-  end
-
-  def is_affiliate_related_topics_enabled?
-    (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
-  end
-
-  def is_global_related_topics_enabled?
-    self.related_topics_setting == 'global_enabled'
-  end
-
-  def is_related_topics_disabled?
-    self.related_topics_setting == 'disabled'
   end
 
   def template

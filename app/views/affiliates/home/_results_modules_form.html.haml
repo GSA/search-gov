@@ -1,0 +1,65 @@
+.govbox
+  %h2 GovBox
+  .column-2
+    .side-note-image= image_tag 'side_notes/results_modules_1.png'
+  .column-1
+    %p Allow searchers to see inline, contextually relevant results for selected content sources based on keyword matches with their queries.
+    .govbox-items
+      %table
+        %colgroup
+          %col{ :class => 'name' }
+          %col{ :class => 'source' }
+          %col{ :class => 'actions' }
+        %thead
+          %tr
+            %th{ :colspan => 3 }
+              = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
+        %tbody
+          %tr.column-header
+            %th Name
+            %th Source
+            %th Show as GovBox
+          %tr.row-item
+            %td.name Agency
+            %td.source USASearch
+            %td.actions
+              = results_modules_form.check_box :is_agency_govbox_enabled
+              = results_modules_form.label :is_agency_govbox_enabled, nil, :class => 'hide'
+          %tr.row-item
+            %td.name Medline
+            %td.source USASearch
+            %td.actions
+              = results_modules_form.check_box :is_medline_govbox_enabled
+              = results_modules_form.label :is_medline_govbox_enabled, nil, :class => 'hide'
+          - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
+            = results_modules_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
+              %tr.row-item
+                %td.name= link_to rss_feed.name, affiliate_rss_feed_path(@affiliate, rss_feed)
+                %td.source= link_to 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
+                %td.actions
+                  = rss_feed_form.check_box :shown_in_govbox
+                  = rss_feed_form.label :shown_in_govbox, "Show RSS feed #{index} in govbox", :class => 'hide'
+
+.related-modules
+  %h2 Related Modules
+  .column-2
+    .side-note-image= image_tag 'side_notes/results_modules_2.png'
+  .column-1
+    %p
+      USASearch algorithmically generates several modules based on your site information and searchers' behavior.
+      To increase their engagement on your site, allow searchers to view related information.
+    .related-modules-items
+      %table
+        %colgroup
+          %col{ :class => 'name' }
+          %col{ :class => 'actions' }
+        %tbody
+          %tr.column-header
+            %th Name
+            %th Show module
+          %tr.row-item
+            %td.name Related searches
+            %td.actions
+              = results_modules_form.check_box :is_related_searches_enabled
+              = results_modules_form.label :is_related_searches_enabled, nil, :class => 'hide'
+

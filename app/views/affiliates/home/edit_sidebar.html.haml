@@ -7,6 +7,7 @@
     = form_for @affiliate, :url => { :action => :update_sidebar }, :html => { :class=>"generic-form sidebar-form" } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       = render :partial => "sidebar_form", :object => f
-      = f.submit "Save", :id => "save"
-      = link_to "Cancel", affiliate_path(@affiliate)
+      .button-wrapper
+        = f.submit "Save", :id => "save"
+        = link_to "Cancel", affiliate_path(@affiliate)
 

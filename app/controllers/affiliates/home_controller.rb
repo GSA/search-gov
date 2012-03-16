@@ -1,7 +1,7 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
   before_filter :require_affiliate, :except => [:index, :home, :urls_and_sitemaps]
-  before_filter :require_approved_user, :except => [:index, :home, :update_contact_information, :update_content_types]
+  before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
   before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
 
@@ -18,7 +18,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       :title => "Social Media - ",
       :edit_action => :edit_social_media },
     :update_sidebar => {
-        :edit_action => :edit_sidebar }
+        :edit_action => :edit_sidebar },
+    :update_results_modules => {
+        :edit_action => :edit_results_modules }
   }
 
   def index
@@ -194,13 +196,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @boosted_contents = @affiliate.boosted_contents.recent
   end
 
-  def update_content_types
-    @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false,
-                                 :is_agency_govbox_enabled => params["agency_govbox"] == "1" ? true : false,
-                                 :is_medline_govbox_enabled => params["medline_govbox"] == "1" ? true : false)
-    redirect_to edit_look_and_feel_affiliate_path(@affiliate)
-  end
-
   def edit_social_media
     @title = "Social Media - "
   end
@@ -232,6 +227,13 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_sidebar
+    update
+  end
+
+  def edit_results_modules
+  end
+
+  def update_results_modules
     update
   end
 

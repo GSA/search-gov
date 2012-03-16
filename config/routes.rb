@@ -18,8 +18,6 @@ UsasearchRails3::Application.routes.draw do
       get :preview
       post :cancel_staged_changes_for
       get :best_bets
-      get :content_types
-      post :update_content_types
       get :edit_social_media
       put :update_social_media
       get :urls_and_sitemaps
@@ -29,6 +27,8 @@ UsasearchRails3::Application.routes.draw do
       get :get_the_code
       get :edit_sidebar
       put :update_sidebar
+      get :edit_results_modules
+      put :update_results_modules
     end
     collection do
       get :home
