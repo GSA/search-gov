@@ -28,13 +28,28 @@ describe ImageSearchesController do
           response.should render_template 'layouts/affiliate'
         end
       end
-      
+
       context "for a staged search" do
         before do
           get :index, :affiliate => "agency100", :query => "weather", :staged => "true"
         end
-        
+
         it { should assign_to(:page_title).with("Staged weather - NPS Site Search Results") }
+      end
+
+      context "via the JSON API" do
+        let(:search_results_json) { 'search results json' }
+        before do
+          image_search.should_receive(:to_json).and_return(search_results_json)
+          get :index, :affiliate => "agency100", :query => "weather", :format => :json
+        end
+
+        it { should respond_with_content_type :json }
+        it { should respond_with :success }
+
+        it "should render the results in json" do
+          response.body.should == search_results_json
+        end
       end
     end
 

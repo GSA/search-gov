@@ -11,7 +11,10 @@ class ImageSearchesController < ApplicationController
     handle_affiliate_search
     @search_vertical = :image
     if @search_options[:affiliate]
-      render :action => "affiliate_index", :layout => "affiliate"
+      respond_to do |format|
+        format.html { render :action => "affiliate_index", :layout => "affiliate" }
+        format.json { render :json => @search }
+      end
     else
       respond_to do |format|
         format.html
