@@ -12,6 +12,14 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @popular_terms = DailyQueryStat.most_popular_terms(@start_date, @end_date, @num_results_dqs, @affiliate.name)
   end
 
+  def left_nav_usage
+    @title = "Page Views - "
+    @available_dates = DailyLeftNavStat.available_dates_range(@affiliate)
+    @end_date = request["end_date"].blank? ? DailyLeftNavStat.most_recent_populated_date(@affiliate) : request["end_date"].to_date
+    @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
+    @json = DailyLeftNavStat.collect_to_json(@affiliate, @start_date, @end_date)
+  end
+
   def monthly_reports
     @title = "Monthly Reports - "
     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.current

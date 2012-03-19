@@ -24,6 +24,7 @@ class Affiliate < ActiveRecord::Base
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
+  has_many :daily_left_nav_stats, :dependent => :destroy
   has_attached_file :header_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,

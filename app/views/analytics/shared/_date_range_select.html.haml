@@ -1,7 +1,7 @@
 .analytics
   = form_tag(path, :method => :get) do
     - validity = "date <= (new Date(#{date_in_javascript_format(available_dates.last)})).stripTime() && date >= (new Date(#{date_in_javascript_format(available_dates.first)})).stripTime()"
-    = label_tag :analytics_search_start_date, "Show most popular queries from"
+    = label_tag :analytics_search_start_date, show_tag
     = calendar_date_select_tag("start_date", @start_date, :buttons => false, :valid_date_check => validity)
     = label_tag :analytics_search_end_date, "to"
     = calendar_date_select_tag("end_date", @end_date, :buttons => false, :valid_date_check => validity)

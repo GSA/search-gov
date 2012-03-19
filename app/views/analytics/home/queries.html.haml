@@ -6,7 +6,7 @@
   = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
 
 .span-12
-  = render :partial => "analytics/shared/date_range_select", :locals => { :path => analytics_queries_path, :affiliate => nil, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates}
+  = render :partial => "analytics/shared/date_range_select", :locals => { :path => analytics_queries_path, :affiliate => nil, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => 'Show most popular queries from'}
 
 - if @no_results_queries.present?
   .span-8.header-box.left.clear

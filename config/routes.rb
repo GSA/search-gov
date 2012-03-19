@@ -69,6 +69,7 @@ UsasearchRails3::Application.routes.draw do
       collection do
         get :monthly_reports
         get :query_search
+        get :left_nav_usage
       end
     end
     resources :related_topics, :controller => "affiliates/related_topics" do

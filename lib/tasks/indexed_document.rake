@@ -14,6 +14,5 @@ namespace :usasearch do
         IndexedDocument.bulk_load_urls(args.data_file)
       end
     end
-
  end
 end

@@ -167,6 +167,16 @@ ActiveRecord::Schema.define(:version => 20120320151217) do
 
   add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
 
+  create_table "daily_left_nav_stats", :force => true do |t|
+    t.integer "affiliate_id",                :null => false
+    t.date    "day",                         :null => false
+    t.string  "search_type",                 :null => false
+    t.string  "params"
+    t.integer "total",        :default => 0, :null => false
+  end
+
+  add_index "daily_left_nav_stats", ["affiliate_id", "day"], :name => "index_daily_left_nav_stats_on_affiliate_id_and_day"
+
   create_table "daily_popular_query_groups", :force => true do |t|
     t.date    "day"
     t.integer "time_frame"

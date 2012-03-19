@@ -54,7 +54,7 @@ Feature: Affiliate analytics
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
-    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Search
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Search
     And I should see "Matches for 'pollution'"
     And I should not see "Matches for 'old pollution'"
     And I should not see "Matches for 'pollutant'"
@@ -121,3 +121,37 @@ Feature: Affiliate analytics
     And I select "December 2019" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
+
+  Scenario: Viewing the Affiliate's Page Views page
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email | contact_name |
+      | aff site     | aff.gov  | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name          | url                                                | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+    And affiliate "aff.gov" has the following document collections:
+      | name | prefixes             | is_navigable |
+      | FAQs | http://aff.gov/faqs/ | true         |
+    And affiliate "aff.gov" has the following DailyLeftNavStats:
+      | search_type    | total | params | days_back |
+      | /search        | 100   |        | 1         |
+      | /search        | 100   |        | 2         |
+      | /search        | 1000  |        | 30        |
+      | /search/images | 10    |        | 3         |
+      | /search/news   | 11    | NULL:y | 3         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Page views"
+    And I fill in "start_date" with a date representing "29" days ago
+    And I fill in "end_date" with a date representing "1" day ago
+    And I press "Submit"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Page Views
+    And I should see "Page Views for aff site"
+    And I should see "Web: 200"
+    And I should see "Images: 10"
+    And I should see "Last Year: 11"
+
+    When I fill in "start_date" with a date representing "59" days ago
+    And I fill in "end_date" with a date representing "59" day ago
+    And I press "Submit"
+    Then I should see "No data is available for this date range"
