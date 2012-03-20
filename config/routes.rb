@@ -32,8 +32,6 @@ UsasearchRails3::Application.routes.draw do
     end
     collection do
       get :home
-      get :how_it_works
-      get :demo
       put :update_contact_information
       get :new_site_domain_fields
       get :new_sitemap_fields
