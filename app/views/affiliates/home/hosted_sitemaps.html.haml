@@ -1,6 +1,7 @@
 #urls_and_sitemaps
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Hosted Sitemaps"])
   %h1= "Hosted Sitemaps for USASearch Index"
+  = render_help_link(@help_link)
   %p
     USASearch can host a sitemap for each of the domains where we have fetched and indexed content.
     It is meant to be used by affiliates who have the discovery script running on their sites.

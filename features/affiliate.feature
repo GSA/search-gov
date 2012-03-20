@@ -2424,3 +2424,15 @@ Feature: Affiliate clients
     And I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
+    
+  Scenario: Viewing an affiliate admin center page with a help links
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following Help Links exist:
+      | action_name           | help_page_url               |
+      | edit_site_information | http://searchblog.usa.gov/  |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    Then I should see "Help?"

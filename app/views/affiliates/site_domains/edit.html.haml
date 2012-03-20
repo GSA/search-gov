@@ -2,6 +2,7 @@
   Edit domain -
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit domain"])
 %h1 Edit domain
+= render_help_link(@help_link)
 .edit-entry
   = form_for([@affiliate, @site_domain]) do |f|
     = render :partial => 'form', :locals => { :form => f }

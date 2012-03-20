@@ -1,6 +1,7 @@
 .show-rss-feed
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "RSS Feed"])
   %h1 RSS Feed
+  = render_help_link(@help_link)  
   %table
     %colgroup
       %col{ :class => 'name' }

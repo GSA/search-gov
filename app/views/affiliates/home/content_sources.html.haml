@@ -1,6 +1,7 @@
 .site-specific
   = affiliate_center_breadcrumbs('Add New Site')
   %h1 Add a New Site
+  = render_help_link(@help_link)  
   %div.steps_header
     = site_wizard_header(@current_step)
   = render :partial => @current_step.to_s

@@ -5,6 +5,7 @@
   .span-16
     %h1
       Related Topics
+      = render_help_link(@help_link)
     %p
       Related Topics display up to five searches related to your customers' original search in the left sidebar of your search results page.
     = form_tag preferences_affiliate_related_topics_path(@affiliate), :class=> "bordered" do

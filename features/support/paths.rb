@@ -148,6 +148,8 @@ module NavigationHelpers
       affiliate_page_not_found_path(:name => $1, :staged => 1)
     when /the (.*)'s staged Spanish 404 page$/
       affiliate_page_not_found_path(:name => $1, :locale => 'es', :staged => 1)
+    when /the USASearch blog$/
+      "http://searchblog.usa.gov/"
     else
       begin
         page_name =~ /the (.*) page/

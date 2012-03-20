@@ -10,6 +10,10 @@ module AffiliateHelper
     step_contents = ["Step 1. Basic Settings", "Step 2. Set up site", "Step 3. Get the code"]
     image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}", :style => 'width: 680px;')
   end
+  
+  def render_help_link(help_link)
+    link_to("Help?", help_link.help_page_url, :target => "_blank") if help_link
+  end
 
   def render_choose_site_templates(affiliate)
     templates = AffiliateTemplate.all.sort_by(&:name).collect do |template|

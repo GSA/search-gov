@@ -1,6 +1,7 @@
 #urls_and_sitemaps
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "URLs & Sitemaps"])
   %h1= "URLs & Sitemaps for USASearch Index"
+  = render_help_link(@help_link)
 
   .column-2
     .side-note-image= image_tag "side_notes/urls.png"

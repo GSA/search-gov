@@ -1,6 +1,7 @@
 .show-document-collection
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Collections"])
   %h1 Collections
+  = render_help_link(@help_link)  
   %table
     %colgroup
       %col{ :class => 'name' }

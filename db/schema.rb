@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314001622) do
+ActiveRecord::Schema.define(:version => 20120320151217) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -338,6 +338,15 @@ ActiveRecord::Schema.define(:version => 20120314001622) do
   end
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
+
+  create_table "help_links", :force => true do |t|
+    t.string   "action_name"
+    t.string   "help_page_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "help_links", ["action_name"], :name => "index_help_links_on_action_name"
 
   create_table "indexed_documents", :force => true do |t|
     t.text     "title"

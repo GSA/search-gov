@@ -1,6 +1,8 @@
 class Affiliates::AffiliatesController < SslController
+  before_filter :setup_help_link
+  
   layout "account"
-
+  
   protected
 
   def require_affiliate
@@ -41,6 +43,10 @@ class Affiliates::AffiliatesController < SslController
       @affiliate = current_user.affiliates.find(affiliate_id) rescue redirect_to(home_page_url) and return false
     end
     true
+  end
+  
+  def setup_help_link
+    @help_link = HelpLink.find_by_action_name(params[:action])
   end
 
   def default_url_options(options={})

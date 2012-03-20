@@ -1,6 +1,7 @@
 .excluded_urls
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Emergency Delete"])
   %h1 Emergency Delete
+  = render_help_link(@help_link)  
   %p
   .add-excluded-url
     = form_for([@affiliate, @excluded_url], :html => { :multipart => true }) do |f|

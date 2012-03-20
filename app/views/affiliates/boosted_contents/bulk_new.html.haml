@@ -1,4 +1,5 @@
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload Best Bets: Text"])
 %h1 Bulk Upload Best Bets: Text
+= render_help_link(@help_link)
 = render :partial => 'shared/boosted_contents/bulk_new', :locals => { :path_to_form => bulk_affiliate_boosted_contents_path(@affiliate) }
 

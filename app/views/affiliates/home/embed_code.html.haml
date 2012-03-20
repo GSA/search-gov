@@ -1,6 +1,7 @@
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Get Code'] )
 
 %h1 Get Code
+= render_help_link(@help_link)
 
 %p The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear.
 = find_and_preserve do

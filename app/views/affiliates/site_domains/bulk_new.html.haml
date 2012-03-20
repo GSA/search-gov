@@ -2,6 +2,7 @@
   Bulk upload domains -
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk upload domains"])
 %h1 Bulk upload domains
+= render_help_link(@help_link)
 = form_tag upload_affiliate_site_domains_path(@affiliate), :multipart => true, :class=> "bordered" do
   %p
     Save the file in .csv format on your computer. Do not use Microsoft Word files.

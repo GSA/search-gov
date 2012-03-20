@@ -1,6 +1,7 @@
 .site-specific
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Social Media"])
   %h1 Social Media
+  = render_help_link(@help_link)
   .site-info
     = form_for @affiliate, :html => {:class=>"generic-form"} do |f|
       = f.error_messages(:header_message => nil, :class => "error")
