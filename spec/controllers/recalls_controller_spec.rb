@@ -98,7 +98,7 @@ describe RecallsController do
         end
 
         it "should log the module impression" do
-          QueryImpression.should_receive(:log).with(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query_string, ["RECALL"])
+          QueryImpression.should_receive(:log).with(:recall, 'usagov', @query_string, ["RECALL"])
           get :search, :query => @query_string
         end
       end
@@ -109,7 +109,7 @@ describe RecallsController do
         end
 
         it "should log a no-results module impression" do
-          QueryImpression.should_receive(:log).with(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query_string, [])
+          QueryImpression.should_receive(:log).with(:recall, 'usagov', @query_string, [])
           get :search, :query => @query_string
         end
       end

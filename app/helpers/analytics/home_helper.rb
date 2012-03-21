@@ -9,28 +9,12 @@ module Analytics::HomeHelper
     html
   end
 
-  def query_chart_link(query, is_grouped = false)
-    base_query_chart_link(query, make_query_timeline_path(query, is_grouped))
-  end
-
   def affiliate_query_chart_link(query, affiliate)
     base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
   end
 
   def date_in_javascript_format(day)
     [day.year, (day.month.to_i - 1), day.day].join(',')
-  end
-
-  def display_most_recent_date_available(day, date_range)
-    return "Query data currently unavailable" if day.nil?
-    current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
-    html = "Data for #{current_day}"
-    first = date_in_javascript_format(date_range.first)
-    last = date_in_javascript_format(date_range.last)
-    html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
-                                    :onchange => "location = '#{analytics_groups_trends_path}/?day='+$F(this);",
-                                    :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
-    raw html
   end
 
   def analytics_path_prefix(affiliate)
@@ -45,24 +29,6 @@ module Analytics::HomeHelper
     "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
   end
 
-  def analytics_daily_report_link(report_date)
-    if report_date
-      english_filename = daily_report_filename(I18n.default_locale.to_s, report_date)
-      spanish_filename = daily_report_filename(other_locale_str, report_date)
-      english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
-      spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
-      raw "Download CSV of top queries for #{ report_date.to_s } (#{ link_to('English', s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to('Spanish', s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
-    end
-  end
-
-  def analytics_monthly_report_link(report_date)
-    english_filename = monthly_report_filename(I18n.default_locale.to_s, report_date)
-    spanish_filename = monthly_report_filename(other_locale_str, report_date)
-    english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
-    spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
-    raw "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to("English", s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to("Spanish", s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
-  end
-
   def affiliate_analytics_daily_report_link(affiliate_name, report_date)
     if report_date
       filename = daily_report_filename(affiliate_name.downcase, report_date)
@@ -75,16 +41,8 @@ module Analytics::HomeHelper
     "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
   end
 
-  def display_select_for_window_on_query_groups(window, num_results, day)
-    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{analytics_groups_trends_path}/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
-  end
-
   def display_select_for_date_range_window(window, num_results, start_day, end_day, affiliate = nil)
     display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{analytics_path_prefix(affiliate)}/?start_date=#{start_day}&end_date=#{end_day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
-  end
-
-  def display_select_for_monthly_reports_window(window, num_results, report_date)
-    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{monthly_reports_path}/?date[month]=#{report_date.month}&date[year]=#{report_date.year}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
   private
@@ -92,10 +50,6 @@ module Analytics::HomeHelper
   def display_select_for_window(tag_name, num_results, options_hash)
     options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
     select_tag(tag_name, options_for_select(options, num_results), options_hash)
-  end
-
-  def make_query_timeline_path(query, is_grouped)
-    is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)
   end
 
   def s3_link(filename)

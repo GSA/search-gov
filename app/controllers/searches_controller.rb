@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
-  ssl_allowed :auto_complete_for_search_query, :index, :news, :docs, :advanced
+  ssl_allowed :index, :news, :docs, :advanced
 
   def index
     @search = WebSearch.new(@search_options)
@@ -46,18 +46,6 @@ class SearchesController < ApplicationController
     @search_vertical = :news
     request.format = :html
     respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
-  end
-
-  def auto_complete_for_search_query
-    query = params["mode"] == "jquery" ? params["q"] : params["query"]
-    sanitized_query = query.nil? ? "" : query.squish.gsub('\\', '')
-    render :inline => "" and return if sanitized_query.empty?
-    @auto_complete_options = WebSearch.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
-    if params["mode"] == "jquery"
-      render :json => "#{params['callback']}(#{@auto_complete_options.map { |option| option.phrase }.to_json})"
-    else
-      render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
-    end
   end
 
   def advanced

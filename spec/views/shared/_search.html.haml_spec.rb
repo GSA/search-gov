@@ -11,11 +11,6 @@ describe "shared/_search.html.haml" do
   end
 
   context "when page is displayed" do
-    it "should display a link to the advanced search page" do
-      render
-      rendered.should contain(/Advanced Search/)
-    end
-
     context "for an affiliate site" do
       before do
         @affiliate = stub('Affiliate')

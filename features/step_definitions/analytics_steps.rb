@@ -2,17 +2,13 @@ Given /^there are no daily query stats$/ do
   DailyQueryStat.delete_all
 end
 
-Given /^there are no zero result query stats$/ do
-  DailyQueryNoresultsStat.delete_all
-end
-
 Given /^the following DailyQueryStats exist:$/ do |table|
   DailyQueryStat.delete_all
   table.hashes.each do |hash|
     DailyQueryStat.create!(:day => hash["days_back"].nil? ? Date.yesterday : Date.current.advance(:days => -(hash["days_back"].to_i)),
                            :query => hash["query"],
                            :times => hash["times"],
-                           :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"],
+                           :affiliate => hash["affiliate"],
                            :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
   Sunspot.commit

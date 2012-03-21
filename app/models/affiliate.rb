@@ -63,7 +63,9 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
 
-  USAGOV_AFFILIATE_NAME = 'usasearch.gov'
+  USAGOV_AFFILIATE_NAME = 'usagov'
+  GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
+  
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(script style link)
 

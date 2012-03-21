@@ -5,9 +5,7 @@ module ApplicationHelper
   end
 
   def build_page_title(page_title)
-    if forms_search?
-      site_title = (t :forms_site_title)
-    elsif image_search?
+    if image_search?
       site_title = (t :images_site_title)
     elsif recalls_search?
       site_title = (t :recalls_site_title)
@@ -167,7 +165,7 @@ module ApplicationHelper
 
   def highlight_hit(hit, field_name)
     sym = field_name.to_sym
-    if (hit.instance.is_a?(BoostedContent) and hit.instance.locale == 'es') or (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es')
+    if (hit.instance.is_a?(BoostedContent) and hit.instance.affiliate.locale == 'es') or (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es')
       sym = "#{field_name}_text".to_sym
     end
     return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
@@ -287,7 +285,7 @@ module ApplicationHelper
   end
 
   def display_mobile_or_add_this_link?
-    return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)
+    return true if %w{ home images recalls searches image_searches pages }.include?(controller.controller_path)
     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
   end
 

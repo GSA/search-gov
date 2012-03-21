@@ -7,8 +7,7 @@ describe DailyQueryNoresultsStat do
       :day => Date.current,
       :query => "nothing found",
       :times => 11,
-      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME,
-      :locale => I18n.default_locale.to_s
+      :affiliate => 'usagov'
     }
   end
 
@@ -17,8 +16,7 @@ describe DailyQueryNoresultsStat do
     it { should validate_presence_of :query }
     it { should validate_presence_of :times }
     it { should validate_presence_of :affiliate }
-    it { should validate_presence_of :locale }
-    it { should validate_uniqueness_of(:query).scoped_to([:day, :affiliate, :locale]) }
+    it { should validate_uniqueness_of(:query).scoped_to([:day, :affiliate]) }
 
     it "should create a new instance given valid attributes" do
       DailyQueryNoresultsStat.create!(@valid_attributes)

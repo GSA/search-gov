@@ -1192,25 +1192,25 @@ describe WebSearch do
     before do
       phrase = "aaaazy"
       popularity = 10
-      16.times { SaytSuggestion.create!(:phrase => phrase.succ!, :popularity => (popularity = popularity.succ)) }
+      16.times { SaytSuggestion.create!(:affiliate => @affiliate, :phrase => phrase.succ!, :popularity => (popularity = popularity.succ)) }
     end
 
     it "should default to returning 15 suggestions" do
-      WebSearch.suggestions(nil, "aaa").size.should == 15
+      WebSearch.suggestions(@affiliate.id, "aaa").size.should == 15
     end
 
     it "should accept an override for number of suggestions to return" do
-      WebSearch.suggestions(nil, "aaa", 6).size.should == 6
+      WebSearch.suggestions(@affiliate.id, "aaa", 6).size.should == 6
     end
 
     it "should run the words in the query phrase against the misspellings list" do
-      SaytSuggestion.create!(:phrase => "obama president")
-      WebSearch.suggestions(nil, "ubama pres").first.phrase.should == "obama president"
+      SaytSuggestion.create!(:affiliate => @affiliate, :phrase => "obama president")
+      WebSearch.suggestions(@affiliate.id, "ubama pres").first.phrase.should == "obama president"
     end
 
     context "when no suggestions exist for the query" do
       it "should return an empty array" do
-        WebSearch.suggestions(nil, "nothing to see here").should == []
+        WebSearch.suggestions(@affiliate.id, "nothing to see here").should == []
       end
     end
 

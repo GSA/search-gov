@@ -9,7 +9,7 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @available_dates = DailyQueryStat.available_dates_range(@affiliate.name)
     @end_date = request["end_date"].blank? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["end_date"].to_date
     @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
-    @popular_terms = DailyQueryStat.most_popular_terms(@start_date, @end_date, @num_results_dqs, @affiliate.name)
+    @popular_terms = DailyQueryStat.most_popular_terms(@affiliate.name, @start_date, @end_date, @num_results_dqs)
   end
 
   def left_nav_usage
@@ -33,6 +33,6 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @search_query_term = params["query"]
     @start_date = Date.parse(params["analytics_search_start_date"]) rescue 1.month.ago.to_date
     @end_date = Date.parse(params["analytics_search_end_date"]) rescue Date.yesterday
-    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date, @affiliate.name)
+    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @affiliate.name, @start_date, @end_date)
   end
 end

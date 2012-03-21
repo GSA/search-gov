@@ -1,5 +1,6 @@
 class RecallsController < ApplicationController
   before_filter :validate_api_key
+  before_filter :setup_affiliate
   before_filter :setup_params
   before_filter :verify_params
   before_filter :convert_date_range_to_start_and_end_dates
@@ -68,6 +69,10 @@ class RecallsController < ApplicationController
     render :text => 'Invalid API Key', :status => 401 if request.format == 'json' and params[:api_key].present? and User.find_by_api_key(params[:api_key]).nil?
   end
 
+  def setup_affiliate
+    @affiliate = Affiliate.find_by_name('usagov')
+  end
+  
   def setup_params
     @valid_params = params.reject { |k,| !VALID_OPTIONS.include? k.to_s }
   end
@@ -105,6 +110,6 @@ class RecallsController < ApplicationController
   def log_serp_impressions
     modules = []
     modules << "RECALL" unless @search.nil? or @search.total.zero?
-    QueryImpression.log(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query, modules)
+    QueryImpression.log(:recall, "usagov", @query, modules)
   end
 end

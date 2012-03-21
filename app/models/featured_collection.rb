@@ -79,15 +79,10 @@ class FeaturedCollection < ActiveRecord::Base
     def search_for(query, affiliate)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
-      affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate_name }) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate.name }) do
         begin
           search do
-            if affiliate.nil?
-              with :affiliate_id, nil
-            else
-              with :affiliate_id, affiliate.id
-            end
+            with :affiliate_id, affiliate.id
             with :status, "active"
             any_of do
               with(:publish_start_on).less_than(Time.current)

@@ -100,7 +100,7 @@ namespace :usasearch do
       daterange = start_date.beginning_of_month..start_date.end_of_month
       headers = "Module, Impressions, Clicks, Click-Thru Rate"
       columns = 'module_tag, display_name, SUM(clicks) AS clicks, SUM(impressions) AS impressions, ROUND(100*SUM(clicks)/SUM(impressions),2) AS clickthru_ratio'
-      totals = DailySearchModuleStat.select(columns).where(:day => daterange).where("affiliate_name != '#{Affiliate::USAGOV_AFFILIATE_NAME}'").group(:module_tag).order("clicks DESC").joins(:search_module)
+      totals = DailySearchModuleStat.select(columns).where(:day => daterange).where("affiliate_name != 'usasearch.gov'").group(:module_tag).order("clicks DESC").joins(:search_module)
       output_to_zipfile(zip_filename, "affiliate_click_totals.txt", headers,
                         totals.collect { |result| "#{result.display_name},#{result.impressions},#{result.clicks},#{result.clickthru_ratio}%" })
 

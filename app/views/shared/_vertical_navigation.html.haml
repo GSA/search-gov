@@ -6,6 +6,3 @@
 - if english_locale?
   = link_to_unless recalls_search?, t(:recalls), recalls_search_path(search_params) do |recalls|
     = content_tag :span, t(:recalls)
-  = link_to_unless forms_search?, t(:forms), forms_search_path(search_params) do |forms|
-    = content_tag :span, t(:forms)
-

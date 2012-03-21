@@ -2,9 +2,10 @@ require 'spec/spec_helper'
 
 describe SaytSuggestion do
   fixtures :sayt_suggestions, :misspellings, :affiliates
-  before(:each) do
+  before do
+    @affiliate = affiliates(:power_affiliate)
     @valid_attributes = {
-      :affiliate_id => affiliates(:power_affiliate).id,
+      :affiliate_id => @affiliate.id,
       :phrase => "some valid suggestion",
       :popularity => 100
     }
@@ -12,6 +13,7 @@ describe SaytSuggestion do
 
   describe "Creating new instance" do
     it { should belong_to :affiliate }
+    it { should validate_presence_of :affiliate }
     it { should validate_presence_of :phrase }
     it { should validate_uniqueness_of(:phrase).scoped_to(:affiliate_id) }
     it { should ensure_length_of(:phrase).is_at_least(3).is_at_most(80) }
@@ -27,24 +29,19 @@ describe SaytSuggestion do
     end
 
     it "should downcase the phrase before entering into DB" do
-      SaytSuggestion.create!(:phrase => "ALL CAPS")
+      SaytSuggestion.create!(:phrase => "ALL CAPS", :affiliate => @affiliate)
       SaytSuggestion.find_by_phrase("all caps").phrase.should == "all caps"
     end
 
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
-      sf = SaytSuggestion.create!(:phrase => phrase)
+      sf = SaytSuggestion.create!(:phrase => phrase, :affiliate => @affiliate)
       sf.phrase.should == phrase.strip
     end
 
     it "should squish multiple whitespaces between words in the phrase before entering into DB" do
-      SaytSuggestion.create!(:phrase => "two  spaces")
+      SaytSuggestion.create!(:phrase => "two  spaces", :affiliate => @affiliate)
       SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
-    end
-
-    it "should correct misspellings before entering in DB if skip spellcheck is not set" do
-      SaytSuggestion.create!(:phrase => "barack ubama")
-      SaytSuggestion.find_by_phrase("barack obama").should_not be_nil
     end
 
     it "should not correct misspellings before entering in DB if the suggestion belongs to an affiliate" do
@@ -53,23 +50,18 @@ describe SaytSuggestion do
     end
 
     it "should default popularity to 1 if not specified" do
-      SaytSuggestion.create!(:phrase => "popular")
+      SaytSuggestion.create!(:phrase => "popular", :affiliate => @affiliate)
       SaytSuggestion.find_by_phrase("popular").popularity.should == 1
     end
 
-    it "should default affiliate to null if not specified" do
-      SaytSuggestion.create!(:phrase => "popular")
-      SaytSuggestion.find_by_phrase("popular").affiliate_id.should be_nil
-    end
-
     it "should default protected status to false" do
-      suggestion = SaytSuggestion.create!(:phrase => "unprotected")
+      suggestion = SaytSuggestion.create!(:phrase => "unprotected", :affiliate => @affiliate)
       suggestion.is_protected.should be_false
     end
 
     it "should not create a new suggestion if one exists, but is marked as deleted" do
-      SaytSuggestion.create!(:phrase => "deleted", :deleted_at => Time.now)
-      SaytSuggestion.create(:phrase => 'deleted').id.should be_nil
+      SaytSuggestion.create!(:phrase => "deleted", :affiliate => @affiliate, :deleted_at => Time.now)
+      SaytSuggestion.create(:phrase => 'deleted', :affiliate => @affiliate).id.should be_nil
     end
   end
 
@@ -84,9 +76,9 @@ describe SaytSuggestion do
     before do
       SaytSuggestion.delete_all
       one = SaytSuggestion.create!(:phrase => "yosemite", :affiliate_id => affiliates(:basic_affiliate).id)
-      two = SaytSuggestion.create!(:phrase => "prune me")
+      two = SaytSuggestion.create!(:phrase => "prune me", :affiliate_id => affiliates(:basic_affiliate).id)
       WebSearch.should_receive(:results_present_for?).with(one.phrase, affiliates(:basic_affiliate)).and_return true
-      WebSearch.should_receive(:results_present_for?).with(two.phrase, nil).and_return false
+      WebSearch.should_receive(:results_present_for?).with(two.phrase, affiliates(:basic_affiliate)).and_return false
     end
 
     it "should delete suggestions that yield no search results" do
@@ -98,7 +90,6 @@ describe SaytSuggestion do
 
   describe "#populate_for(day, limit = nil)" do
     it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
-      SaytSuggestion.should_receive(:populate_for_affiliate_on).with(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current, nil)
       Affiliate.all.each do |aff|
         SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, nil)
       end
@@ -141,33 +132,33 @@ describe SaytSuggestion do
 
     context "when DailyQueryStats exist for multiple days for an affiliate" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => @affiliate.name)
         WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should create unprotected suggestions" do
-        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1").is_protected.should be_false
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1").is_protected.should be_false
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
-        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1").should_not be_nil
-        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term2").should_not be_nil
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1").should_not be_nil
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term2").should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
       end
 
       context "when suggestions exist that have been marked as deleted" do
         before do
-          @suggestion = SaytSuggestion.create!(:phrase => 'today term1', :affiliate => nil, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
+          @suggestion = SaytSuggestion.create!(:phrase => 'today term1', :affiliate => @affiliate, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
           @suggestion.should_not be_nil
         end
 
         it "should not create a new suggestion, and leave the old suggestion alone" do
-          SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
-          suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1")
+          SaytSuggestion.perform(@affiliate.name, nil, Date.current)
+          suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1")
           suggestion.should_not be_nil
           suggestion.should == @suggestion
           suggestion.deleted_at.should_not be_nil
@@ -188,19 +179,6 @@ describe SaytSuggestion do
         SaytSuggestion.perform(affiliates(:basic_affiliate).name, affiliates(:basic_affiliate).id, Date.current)
         SaytSuggestion.find_by_phrase(@one.query).should be_nil
         SaytSuggestion.find_by_phrase(@two.query).should_not be_nil
-      end
-    end
-
-    context "when DailyQueryStats exist for multiple locales for an affiliate" do
-      before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
-        WebSearch.stub!(:results_present_for?).and_return true
-      end
-
-      it "should combine data from all locales to populate SaytSuggestions" do
-        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.yesterday)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "el paso").popularity.should == 6
       end
     end
 
@@ -271,19 +249,6 @@ describe SaytSuggestion do
       @affiliate = affiliates(:power_affiliate)
     end
 
-    context "when affiliate_id is nil" do
-      before do
-        SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "child default", :popularity => 100)
-        @array = SaytSuggestion.like(nil, "child", 10)
-      end
-
-      it "should return records for affiliate_id is null" do
-        @array.size.should == 1
-        @array.first.phrase.should == "child default"
-      end
-    end
-
     context "when affiliate_id is specified and is_sayt_enabled is true" do
       before do
         Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(@affiliate.id, false).and_return(nil)
@@ -293,7 +258,7 @@ describe SaytSuggestion do
         SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "child default", :popularity => 100)
+        SaytSuggestion.create!(:phrase => "child default", :popularity => 100, :affiliate_id => affiliates(:basic_affiliate).id)
         @array = SaytSuggestion.like(@affiliate.id, "child", 10)
         @array.size.should == 3
       end
@@ -356,7 +321,7 @@ describe SaytSuggestion do
         SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "child default", :popularity => 100)
+        SaytSuggestion.create!(:phrase => "child default", :popularity => 100, :affiliate_id => @affiliate.id)
         SaytSuggestion.like(@affiliate.id, "child", 10).should be_blank
       end
     end
@@ -378,18 +343,11 @@ describe SaytSuggestion do
       end
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file, @affiliate)
     end
-
-    it "should create SAYT suggestions without an affiliate if none is provided" do
-      @phrases.each do |phrase|
-        SaytSuggestion.should_receive(:create).with(:phrase => phrase, :affiliate => nil, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY).and_return @dummy_suggestion
-      end
-      SaytSuggestion.process_sayt_suggestion_txt_upload(@file)
-    end
   end
 
   describe "#to_label" do
     it "should return the phrase" do
-      SaytSuggestion.new(:phrase => 'dummy suggestion').to_label.should == 'dummy suggestion'
+      SaytSuggestion.new(:phrase => 'dummy suggestion', :affiliate => @affiliate).to_label.should == 'dummy suggestion'
     end
   end
 
@@ -402,7 +360,7 @@ describe SaytSuggestion do
       before do
         SaytSuggestion.destroy_all
         SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
-        SaytSuggestion.create!(:affiliate_id => nil, :phrase => "also suggest this", :popularity => 31)
+        SaytSuggestion.create!(:affiliate_id => affiliates(:power_affiliate).id, :phrase => "also suggest this", :popularity => 31)
         SaytSuggestion.reindex
         Sunspot.commit
       end

@@ -4,7 +4,7 @@ class SaytSuggestion < ActiveRecord::Base
   @queue = :primary
 
   before_validation :squish_whitespace_and_downcase
-  before_validation :spellcheck, :unless => :affiliate
+  validates :affiliate, :presence => true
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
@@ -24,7 +24,7 @@ class SaytSuggestion < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query_str, affiliate_id = nil)
+    def search_for(query_str, affiliate_id)
       sanitized_query = preprocess(query_str.downcase)
       return nil if sanitized_query.blank?
       instrument_hash = {:model=> self.name, :term => sanitized_query, :affiliate_id => affiliate_id}
@@ -44,26 +44,21 @@ class SaytSuggestion < ActiveRecord::Base
 
     def related_search(query, affiliate)
       solr = nil
-      return [] if affiliate and !affiliate.is_related_searches_enabled?
-      if affiliate and affiliate.is_related_searches_enabled?
-        solr = search_for(query, affiliate.id)
-      else
-        solr = search_for(query)
-      end
-      solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
+      return [] unless affiliate.is_related_searches_enabled?
+      solr = search_for(query, affiliate.id)
+    	solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
     end
 
     def like(affiliate_id, query, num_suggestions)
-      return [] if affiliate_id.present? and Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)
-      equals_is = affiliate_id.nil? ? 'is' : '='
-      clause = "phrase LIKE ? AND affiliate_id #{equals_is} ? AND ISNULL(deleted_at)"
+      return [] if Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)
+      clause = "phrase LIKE ? AND affiliate_id=? AND ISNULL(deleted_at)"
       where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select(:phrase)
     end
 
     def prune_dead_ends
       all.each do |ss|
         unless WebSearch.results_present_for?(ss.phrase, ss.affiliate)
-          Rails.logger.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
+          Rails.logger.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue "usasearch.gov"}"
           ss.destroy
         end
       end
@@ -71,7 +66,6 @@ class SaytSuggestion < ActiveRecord::Base
 
     def populate_for(day, limit = nil)
       name_id_list = Affiliate.all.collect { |aff| {:name => aff.name, :id => aff.id} }
-      name_id_list << {:name => Affiliate::USAGOV_AFFILIATE_NAME, :id => nil}
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 
@@ -98,7 +92,7 @@ class SaytSuggestion < ActiveRecord::Base
       end unless filtered_daily_query_stats.empty?
     end
 
-    def process_sayt_suggestion_txt_upload(txtfile, affiliate = nil)
+    def process_sayt_suggestion_txt_upload(txtfile, affiliate)
       valid_content_types = %w(application/octet-stream text/plain txt)
       if valid_content_types.include? txtfile.content_type
         created, ignored = 0, 0

@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
     t.string  "affiliate", :null => false
-    t.string  "locale",    :null => false
     t.string  "query",     :null => false
     t.integer "times",     :null => false
   end

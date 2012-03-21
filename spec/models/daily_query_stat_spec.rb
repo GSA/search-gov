@@ -7,8 +7,7 @@ describe DailyQueryStat do
       :day => "20090830",
       :query => "government",
       :times => 314,
-      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME,
-      :locale => I18n.default_locale.to_s
+      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME    
     }
   end
 
@@ -17,16 +16,10 @@ describe DailyQueryStat do
     it { should validate_presence_of :query }
     it { should validate_presence_of :times }
     it { should validate_presence_of :affiliate }
-    it { should validate_presence_of :locale }
-    it { should validate_uniqueness_of(:query).scoped_to([:day, :affiliate, :locale]) }
+    it { should validate_uniqueness_of(:query).scoped_to([:day, :affiliate]) }
 
     it "should create a new instance given valid attributes" do
       DailyQueryStat.create!(@valid_attributes)
-    end
-
-    it "should create a new instance with the default affiliate if none is specified" do
-      @valid_attributes.delete(:affiliate)
-      DailyQueryStat.create(@valid_attributes).affiliate.should == Affiliate::USAGOV_AFFILIATE_NAME
     end
 
     it "should create a new instance with the default locale if none is specified" do
@@ -53,47 +46,6 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#reversed_backfilled_series_since_2009_for" do
-    context "when no target date is passed in" do
-      before do
-        DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 10, :query => "outlier", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => "affiliate.gov")
-        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 2, :query => "outlier", :affiliate => 'affiliate.gov')
-        @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
-      end
-
-      it "should return an array of query counts in reverse day order for a given query" do
-        @ary[1].should == 12
-      end
-
-      it "should return an array of query counts for every day since Jan 1 2009 thru yesterday, filling in zeros where there is no data for a given day" do
-        @ary[0].should == 0
-        num_days = 1 + (Date.yesterday - Date.new(2009, 1, 1)).to_i
-        @ary.size.should == num_days
-        all_but_two = num_days - 2
-        target = Array.new(all_but_two).fill(0)
-        @ary[2, all_but_two].should == target
-      end
-    end
-
-    context "when a target date is passed in" do
-      before do
-        DailyQueryStat.delete_all
-        @day = Date.new(2009, 7, 21).to_date
-        DailyQueryStat.create!(:day => @day, :times => 1, :query => "outlier", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier", @day)
-      end
-
-      it "should return an array of query counts for every day since Jan 1 2009 thru the target date" do
-        @ary[0].should == 1
-        num_days = 1 + (@day - Date.new(2009, 1, 1)).to_i
-        @ary.size.should == num_days
-      end
-    end
-  end
-
   describe '#most_popular_terms' do
     context "when the table is populated" do
       before do
@@ -105,19 +57,19 @@ describe DailyQueryStat do
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
-      let(:recent_date) { DailyQueryStat.most_recent_populated_date }
+      let(:recent_date) { DailyQueryStat.most_recent_populated_date(Affiliate::USAGOV_AFFILIATE_NAME) }
 
       it "should calculate popularity sums based on the start/end date, ignoring terms with a frequency of less than 4" do
-        yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 1)
+        yday = DailyQueryStat.most_popular_terms(Affiliate::USAGOV_AFFILIATE_NAME, recent_date, recent_date, 1)
         yday.first.query.should == "recent day most popular"
         yday.first.times.should == 4
-        twodaysago = DailyQueryStat.most_popular_terms(recent_date-1.day, recent_date, 2)
+        twodaysago = DailyQueryStat.most_popular_terms(Affiliate::USAGOV_AFFILIATE_NAME, recent_date-1.day, recent_date, 2)
         twodaysago.first.query.should == "older most popular"
         twodaysago.first.times.should == 10
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.most_popular_terms(recent_date, recent_date, 1).size.should == 1
+        DailyQueryStat.most_popular_terms(Affiliate::USAGOV_AFFILIATE_NAME, recent_date, recent_date, 1).size.should == 1
       end
 
       context "when data exists for more than the default affiliate" do
@@ -129,10 +81,10 @@ describe DailyQueryStat do
         end
 
         it "should use the affiliate parameter if set to scope the results" do
-          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 10, "other_affiliate")
+          yday = DailyQueryStat.most_popular_terms("other_affiliate", recent_date, recent_date, 10)
           yday.first.query.should == "recent day most popular"
           yday.first.times.should == 5
-          twodaysago = DailyQueryStat.most_popular_terms(recent_date-2.days, recent_date, 10, "other_affiliate")
+          twodaysago = DailyQueryStat.most_popular_terms("other_affiliate", recent_date-2.days, recent_date, 10)
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 12
         end
@@ -144,59 +96,26 @@ describe DailyQueryStat do
         end
 
         it "should return those results for affiliates" do
-          mrd=DailyQueryStat.most_recent_populated_date("tiny_affiliate")
-          most_popular_terms = DailyQueryStat.most_popular_terms(mrd, mrd, 10, "tiny_affiliate")
+          mrd = DailyQueryStat.most_recent_populated_date("tiny_affiliate")
+          most_popular_terms = DailyQueryStat.most_popular_terms("tiny_affiliate", mrd, mrd, 10)
           most_popular_terms.class.should == Array
           most_popular_terms.size.should == 1
-        end
-      end
-
-      context "when data exists for more than one locale" do
-        before do
-          DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 20, :affiliate => "usasearch.gov", :locale => 'es')
-          DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 6, :affiliate => "usasearch.gov", :locale => 'es')
-          DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 4, :affiliate => "usasearch.gov", :locale => 'es')
-          DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 10, :affiliate => "usasearch.gov", :locale => 'es')
-        end
-
-        it "should use the default locale when not specified" do
-          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date)
-          yday.first.query.should == "recent day most popular"
-          yday.first.times.should == 4
-          twodaysago = DailyQueryStat.most_popular_terms(recent_date - 2.days, recent_date)
-          twodaysago.first.query.should == "older most popular"
-          twodaysago.first.times.should == 10
-        end
-
-        it "should use the locale parameter if set to scope the results" do
-          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
-          yday.first.query.should == "recent day most popular"
-          yday.first.times.should == 10
-          twodaysago = DailyQueryStat.most_popular_terms(recent_date - 2.days, recent_date, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
-          twodaysago.first.query.should == "older most popular"
-          twodaysago.first.times.should == 24
         end
       end
     end
 
     context "when the table has no data for the time period specified" do
       it "should return an error string that no queries matched" do
-        DailyQueryStat.most_popular_terms(Date.tomorrow, Date.tomorrow).should == "Not enough historic data to compute most popular"
+        DailyQueryStat.most_popular_terms(Affiliate::USAGOV_AFFILIATE_NAME, Date.tomorrow, Date.tomorrow).should == "Not enough historic data to compute most popular"
       end
     end
   end
 
   describe "#most_recent_populated_date" do
-    it "should return the most recent date entered into the table for the default affiliate and locale" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ?', Affiliate::USAGOV_AFFILIATE_NAME])
-      DailyQueryStat.most_recent_populated_date
-    end
-
     it "should return the most recent date for an affiliate if an affiliate is passed in" do
       DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ?', 'nps.gov'])
       DailyQueryStat.most_recent_populated_date('nps.gov')
     end
-
   end
 
   describe "#collect_query" do
@@ -225,7 +144,7 @@ describe DailyQueryStat do
     before do
       ResqueSpec.reset!
       DailyQueryStat.delete_all
-      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
     end
 
@@ -239,7 +158,7 @@ describe DailyQueryStat do
   describe "#perform(day_string, affiliate_name)" do
     before do
       DailyQueryStat.delete_all
-      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       @sample = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
     end
 
@@ -253,11 +172,11 @@ describe DailyQueryStat do
   describe "#bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)" do
     before do
       DailyQueryStat.delete_all
-      @first = DailyQueryStat.create!(:day => "20110828", :query => "government", :times => 314)
-      DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314)
+      @first = DailyQueryStat.create!(:day => "20110828", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       @other = DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
-      DailyQueryStat.create!(:day => "20110829", :query => "government loan", :times => 314)
-      @last = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110829", :query => "government loan", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      @last = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       DailyQueryStat.reindex
       Sunspot.commit
     end
@@ -265,10 +184,8 @@ describe DailyQueryStat do
     it "should remove records from index for specified day and affiliate" do
       DailyQueryStat.bulk_remove_solr_records_for_day_and_affiliate(Date.parse("20110829"), Affiliate::USAGOV_AFFILIATE_NAME)
       Sunspot.commit
-      DailyQueryStat.search_for("government", Date.parse("20110828")).should == [@first.id, @last.id]
-      DailyQueryStat.search_for("government", Date.parse("20110828"), Date.parse("20110901"), affiliates(:power_affiliate).name).should == [@other.id]
+      DailyQueryStat.search_for("government", Affiliate::USAGOV_AFFILIATE_NAME, Date.parse("20110828")).should == [@first.id, @last.id]
+      DailyQueryStat.search_for("government", affiliates(:power_affiliate).name, Date.parse("20110828"), Date.parse("20110901")).should == [@other.id]
     end
-
   end
-
 end

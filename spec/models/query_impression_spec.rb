@@ -8,7 +8,7 @@ describe QueryImpression do
       Rails.logger.should_receive(:info) do |str|
         str.should match(/^\[Query Impression\] \{.*\}$/)
         str.should include('"modules":"BWEB|BSPEL"')
-        str.should include('"affiliate":"usasearch.gov"')
+        str.should include('"affiliate":"usagov"')
         str.should include('"query":"my query"')
         str.should include('"vertical":"recall"')
         str.should include('"locale":"en"')

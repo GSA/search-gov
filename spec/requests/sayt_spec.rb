@@ -1,24 +1,26 @@
 require 'spec/spec_helper'
 
 describe SaytController do
+  fixtures :affiliates
   before do
-    @suggestion = SaytSuggestion.create(:phrase=>"Lorem ipsum dolor sit amet")
-    SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
+    @affiliate = affiliates(:usagov_affiliate)
+    @suggestion = SaytSuggestion.create!(:phrase => "Lorem ipsum dolor sit amet", :affiliate => @affiliate)
+    SaytSuggestion.create!(:phrase => "Lorem sic transit gloria", :affiliate => @affiliate)
   end
 
-  it "should return JSONP containing terms that begin with the 'q' param string" do
+  it "should return empty JSONP if no aid is present" do
     get '/sayt', :q => 'lorem', :callback => 'jsonp1276290049647'
-    response.body.should == 'jsonp1276290049647(["lorem ipsum dolor sit amet","lorem sic transit gloria"])'
+    response.body.should == 'jsonp1276290049647([])'
   end
 
   it "should return empty JSONP if nothing matches the 'q' param string" do
-    get '/sayt', :q=>"who moved my cheese", :callback => 'jsonp1276290049647'
+    get '/sayt', :q=>"who moved my cheese", :callback => 'jsonp1276290049647', :aid => @affiliate.id
     response.body.should == 'jsonp1276290049647([])'
   end
 
   it "should not completely melt down when strange characters are present" do
-    lambda { get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647' }.should_not raise_error
-    lambda { get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647' }.should_not raise_error
+    lambda { get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647', :aid => @affiliate.id }.should_not raise_error
+    lambda { get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647', :aid => @affiliate.id }.should_not raise_error
   end
 
   it "should return empty result if no params present" do
@@ -27,7 +29,7 @@ describe SaytController do
   end
 
   it "should return empty result if query term is all whitespace" do
-    get '/sayt', :q=>"  ", :callback => 'jsonp1276290049647'
+    get '/sayt', :q=>"  ", :callback => 'jsonp1276290049647', :aid => @affiliate.id
     response.body.should == ''
   end
 

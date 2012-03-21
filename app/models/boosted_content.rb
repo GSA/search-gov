@@ -65,13 +65,12 @@ class BoostedContent < ActiveRecord::Base
     def search_for(query, affiliate, page = 1, per_page = 3)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
-      affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate_name}) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate.name}) do
         search do
           fulltext sanitized_query do
             highlight :title, :description, :title_es, :description_es, :frag_list_builder => 'single'
           end
-          with(:affiliate_name, affiliate_name)
+          with(:affiliate_name, affiliate.name)
           with(:status, 'active')
           with(:publish_start_on).less_than(Time.current)
           any_of do

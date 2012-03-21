@@ -7,64 +7,6 @@ describe SearchesController do
     @affiliate = affiliates(:usagov_affiliate)
   end
 
-  describe "#auto_complete_for_search_query" do
-    it "should use query param to find terms starting with that param" do
-      SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
-      get :auto_complete_for_search_query, :query=>"lorem"
-      response.body.should contain(/lorem/i)
-    end
-
-    it "should not completely melt down when strange characters are present" do
-      lambda { get :auto_complete_for_search_query, :query=>"foo\\" }.should_not raise_error
-      lambda { get :auto_complete_for_search_query, :query=>"foo's" }.should_not raise_error
-    end
-
-    it "should return empty result if no search param present" do
-      get :auto_complete_for_search_query
-      response.body.should be_blank
-    end
-
-    it "should return empty result if query is just blank spaces" do
-      get :auto_complete_for_search_query, :query=>" "
-      response.body.should be_blank
-    end
-
-    context "when searching in mobile mode" do
-      before do
-        iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-        @regular_user_agent = request.env["HTTP_USER_AGENT"]
-        request.env["HTTP_USER_AGENT"] = iphone_user_agent
-      end
-
-      it "should return 6 suggestions" do
-        WebSearch.should_receive(:suggestions).with(nil, "lorem", 6)
-        get :auto_complete_for_search_query, :query=>"lorem"
-      end
-    end
-
-    context "when searching in nonmobile mode" do
-      it "should return 15 suggestions" do
-        WebSearch.should_receive(:suggestions).with(nil, "lorem", 15)
-        get :auto_complete_for_search_query, :query=>"lorem"
-      end
-    end
-
-    context "when searching from some other site on the internet" do
-      it "should accept the 'q' parameter to work with jQuery's autocomplete syntax when style is set to 'jquery'" do
-        SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
-        get :auto_complete_for_search_query, :q =>"lorem", :mode => 'jquery'
-        response.body.should contain(/lorem/i)
-      end
-
-      it "should return a carriagereturn separated list in jquery mode" do
-        SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
-        SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
-        get :auto_complete_for_search_query, :q => "lorem", :mode => 'jquery', :callback => 'jsonp'
-        response.body.should == 'jsonp(["lorem ipsum dolor sit amet","lorem sic transit gloria"])'
-      end
-    end
-  end
-
   context "when showing index" do
     it "should have a route with a locale" do
       search_path.should =~ /search\?locale=en/

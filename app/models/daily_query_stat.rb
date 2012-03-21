@@ -1,8 +1,8 @@
 class DailyQueryStat < ActiveRecord::Base
   extend Resque::Plugins::Priority
   @queue = :primary
-  validates_presence_of :day, :query, :times, :affiliate, :locale
-  validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
+  validates_presence_of :day, :query, :times, :affiliate
+  validates_uniqueness_of :query, :scope => [:day, :affiliate]
   before_save :squish_query
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
@@ -10,7 +10,6 @@ class DailyQueryStat < ActiveRecord::Base
   searchable do
     text :query
     string :affiliate
-    string :locale
     time :day
   end
 
@@ -35,19 +34,18 @@ class DailyQueryStat < ActiveRecord::Base
       end
     end
 
-    def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s, per_page = 3000)
+    def search_for(query, affiliate_name, start_date = 1.year.ago, end_date = Date.current, per_page = 3000)
       solr_search_ids do
         with :affiliate, affiliate_name
-        with :locale, locale
         with(:day).between(start_date..end_date)
         keywords query
         paginate :page => 1, :per_page => per_page
       end rescue nil
     end
 
-    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def query_counts_for_terms_like(query, affiliate_name, start_date = 1.year.ago, end_date = Date.current)
       unless query.blank?
-        solr_search_result_ids = search_for(query, start_date, end_date, affiliate_name, locale, 50000)
+        solr_search_result_ids = search_for(query, affiliate_name, start_date, end_date, 50000)
         return sum(:times,
                    :group => :query,
                    :conditions => "id in (#{solr_search_result_ids.join(',')})",
@@ -56,21 +54,12 @@ class DailyQueryStat < ActiveRecord::Base
       []
     end
 
-    def reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)
-      timeline = Timeline.new(query, nil, nil, Date.new(2009, 1, 1))
-      ary = []
-      timeline.dates.each_with_index do |day, idx|
-        ary << timeline.series[idx].y if day <= up_to_day
-      end
-      ary.reverse
-    end
-
-    def most_popular_terms(start_date, end_date, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def most_popular_terms(affiliate_name, start_date, end_date, num_results = RESULTS_SIZE)
       return INSUFFICIENT_DATA if end_date.nil? or start_date.nil?
       results = sum(:times,
                     :group => :query,
-                    :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
-                    :having => "sum_times > #{ affiliate_name == Affiliate::USAGOV_AFFILIATE_NAME ? "3" : "0"}",
+                    :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate_name],
+                    :having => "sum_times > 0",
                     :joins => 'FORCE INDEX (ad)',
                     :order => "sum_times desc",
                     :limit => num_results)
@@ -91,15 +80,15 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |hash| QueryCount.new(hash.first, hash.last) }
     end
 
-    def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+    def most_recent_populated_date(affiliate_name)
       maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end
 
-    def least_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+    def least_recent_populated_date(affiliate_name)
       minimum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end
 
-    def available_dates_range(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+    def available_dates_range(affiliate_name)
       if (lrpd = least_recent_populated_date(affiliate_name))
         lrpd..most_recent_populated_date(affiliate_name)
       else

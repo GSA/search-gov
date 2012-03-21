@@ -52,18 +52,16 @@ describe DailyUsageStat do
   end
 
   context "When compiling data for a given month" do
+    fixtures :affiliates
     before do
       @year = 2010
       @month = 03
+      @affiliate = affiliates(:usagov_affiliate)
     end
 
     it "should sum up all the DailyUsageStat values for the given month" do
-      DailyUsageStat::PROFILE_NAMES.each do |profile_name|
-        DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, profile_name, Affiliate::USAGOV_AFFILIATE_NAME).exactly(1).times
-        DailyUsageStat.should_receive(:total_monthly_page_views).with(@year, @month, profile_name, Affiliate::USAGOV_AFFILIATE_NAME).exactly(1).times
-        DailyUsageStat.should_receive(:total_monthly_unique_visitors).with(@year, @month, profile_name, Affiliate::USAGOV_AFFILIATE_NAME).exactly(1).times
-      end
-      DailyUsageStat.monthly_totals(@year, @month)
+      DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, "Affiliates", @affiliate.name).exactly(1).times
+      DailyUsageStat.monthly_totals(@year, @month, @affiliate.name)
     end
   end
 
