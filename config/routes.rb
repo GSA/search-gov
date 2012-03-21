@@ -38,6 +38,8 @@ UsasearchRails3::Application.routes.draw do
       get :new_rss_feed_fields
       get :new_managed_header_link_fields
       get :new_managed_footer_link_fields
+      get '/demo' => redirect('http://searchblog.usa.gov', :status => 302)
+      get '/how_it_works' => redirect('http://searchblog.usa.gov', :status => 302)
     end
     resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
     resources :boosted_contents, :controller => "affiliates/boosted_contents" do
@@ -192,6 +194,7 @@ UsasearchRails3::Application.routes.draw do
   get "/sayt" => "sayt#index"
   get "/clicked" => "clicked#index"
   get "/embedded_search" => "embedded_searches#index"
+  get '/program' => redirect('http://searchblog.usa.gov', :status => 302)
   get "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
   get "/404" => "errors#page_not_found", :as => 'page_not_found'
   get "*path" => "errors#page_not_found"
