@@ -2205,6 +2205,26 @@ Feature: Affiliate clients
     When I follow "Cancel"
     Then I should see the browser page titled "Site: aff site"
 
+  Scenario: Editing youtube handle
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | youtube_handle |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | USAgov         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    When I follow "RSS"
+    Then I should see "Videos"
+    When I follow "Social Media"
+    And I fill in "YouTube handle" with "     USGovernment    "
+    And I press "Save"
+    And I follow "RSS"
+    Then I should not see "Delete" button
+    When I follow "Edit"
+    Then the "Name*" field should contain "Videos"
+    And the "URL*" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"
+    And the "URL*" field should be disabled
+    When I follow "Social Media" in the page content
+    Then I should see the browser page titled "Social Media"
+
   Scenario: Visiting the URLs & Sitemaps page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |

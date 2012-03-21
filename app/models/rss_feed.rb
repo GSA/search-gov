@@ -6,6 +6,9 @@ class RssFeed < ActiveRecord::Base
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
   scope :navigable_only, where(:is_navigable => true)
   scope :govbox_enabled, where(:shown_in_govbox => true)
+  scope :managed, where(:is_managed => true)
+  scope :videos, where(:is_video => true)
+  before_save :set_is_video_flag
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
   ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
@@ -41,10 +44,6 @@ class RssFeed < ActiveRecord::Base
     all.each(&:freshen)
   end
 
-  def is_video?
-    @is_video ||= (url =~ /^http:\/\/gdata\.youtube.com\/feeds\/.+$/i)
-  end
-
   private
 
   def is_valid_rss_feed?
@@ -62,5 +61,9 @@ class RssFeed < ActiveRecord::Base
 
   def detect_feed_type(document)
     document.root.name == "feed" ? :atom : :rss
+  end
+
+  def set_is_video_flag
+    self.is_video = true if url =~ /^http:\/\/gdata\.youtube.com\/feeds\/.+$/i
   end
 end

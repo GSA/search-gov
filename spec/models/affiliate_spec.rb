@@ -404,6 +404,18 @@ describe Affiliate do
       spanish_affiliate.default_search_label.should == 'Todo'
       spanish_affiliate.image_search_label.should == 'Imágenes'
     end
+
+    it "should strip social media columns" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate.update_attributes!(:facebook_handle => '     http://www.facebook.com/WhiteHouse   ',
+                                   :flickr_url => '   http://www.flickr.com/photos/whitehouse   ',
+                                   :twitter_handle => '     whitehouse   ',
+                                   :youtube_handle => '     whitehouse   ')
+      affiliate.facebook_handle.should == 'http://www.facebook.com/WhiteHouse'
+      affiliate.flickr_url.should == 'http://www.flickr.com/photos/whitehouse'
+      affiliate.twitter_handle.should == 'whitehouse'
+      affiliate.youtube_handle.should == 'whitehouse'
+    end
   end
 
   describe "validations" do

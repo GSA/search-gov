@@ -47,7 +47,7 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields, :set_search_labels
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields, :set_search_labels, :strip_social_media_columns
   before_update :clear_existing_staged_header_image
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
@@ -705,5 +705,12 @@ class Affiliate < ActiveRecord::Base
   def set_search_labels
     self.default_search_label = I18n.translate(:everything, :locale => locale) if default_search_label.blank?
     self.image_search_label = I18n.translate(:images, :locale => locale) if image_search_label.blank?
+  end
+
+  def strip_social_media_columns
+    self.facebook_handle = facebook_handle.strip unless facebook_handle.nil?
+    self.flickr_url = flickr_url.strip unless flickr_url.nil?
+    self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
+    self.youtube_handle = youtube_handle.strip unless youtube_handle.nil?
   end
 end

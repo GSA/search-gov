@@ -30,12 +30,10 @@ Feature: Affiliate RSS
     And I fill in the following:
       | Name* | Press                                |
       | URL*  | http://www.whitehouse.gov/feed/press |
-    And I check "Show in Govbox"
     And I press "Add"
     Then I should see "RSS feed successfully created."
     And I should see the following table rows:
     | URL               | http://www.whitehouse.gov/feed/press |
     | Name              | Press                                |
-    | Show in Govbox    | yes                                  |
     | Last Crawled At   | Pending                              |
     | Last Crawl Status | Pending                              |

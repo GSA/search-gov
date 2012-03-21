@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320151217) do
+ActiveRecord::Schema.define(:version => 20120321220026) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -590,6 +590,8 @@ ActiveRecord::Schema.define(:version => 20120320151217) do
     t.string   "last_crawl_status"
     t.integer  "position"
     t.boolean  "shown_in_govbox",   :default => false, :null => false
+    t.boolean  "is_managed",        :default => false, :null => false
+    t.boolean  "is_video",          :default => false, :null => false
   end
 
   add_index "rss_feeds", ["affiliate_id"], :name => "index_rss_feeds_on_affiliate_id"

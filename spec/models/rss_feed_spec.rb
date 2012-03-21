@@ -210,12 +210,14 @@ describe RssFeed do
   end
 
   describe "#is_video?" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+
     context "when url starts with http://gdata.youtube.com/feeds/base/videos?alt=rss&author=" do
-      specify { RssFeed.new(:url => 'http://GDATA.youtube.com/feeds/base/videos?AUTHOR=noaa').should be_is_video }
+      specify { affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://GDATA.youtube.com/feeds/base/videos?AUTHOR=noaa').should be_is_video }
     end
 
     context "when url does not start with http://gdata.youtube.com/feeds/" do
-      specify { RssFeed.new(:url => 'http://www.rss.noaa.gov/noaarss.xml').should_not be_is_video }
+      specify { affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://www.rss.noaa.gov/noaarss.xml').should_not be_is_video }
     end
   end
 
@@ -248,5 +250,31 @@ describe RssFeed do
       govbox_enabled.count.should == 1
       govbox_enabled.first.name.should == 'govbox rss feed 1'
     end
+  end
+
+  describe ".managed" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:managed) { Affiliate.find(affiliate.id).rss_feeds.managed }
+
+    before do
+      affiliate.rss_feeds.create!(:name => 'not managed', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'managed', :url => 'http://searchblog.usa.gov/rss', :is_managed => true)
+    end
+
+    specify { managed.count.should == 1 }
+    specify { managed.first.name.should == 'managed' }
+  end
+
+  describe ".videos" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:videos) { Affiliate.find(affiliate.id).rss_feeds.videos }
+
+    before do
+      affiliate.rss_feeds.create!(:name => 'Not vidoes', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
+    end
+
+    specify { videos.count.should == 1 }
+    specify { videos.first.name.should == 'Videos' }
   end
 end
