@@ -281,8 +281,18 @@ class IndexedDocument < ActiveRecord::Base
   def site_domain_matches
     uri = self_url rescue nil
     return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
-    host_path = (uri.host + uri.path).downcase
-    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| host_path.include?(sd.domain) }
+    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? do |sd|
+      if sd.domain.starts_with('.')
+        uri.host =~ /#{sd.domain}$/i
+      else
+        site_domain_url_fragment = sd.domain
+        site_domain_url_fragment.strip!
+        site_domain_url_fragment = "http://#{site_domain_url_fragment}" unless site_domain_url_fragment =~ %r{^https?://}i
+        site_domain_url_fragment = "#{site_domain_url_fragment}/" unless site_domain_url_fragment.ends_with?("/")
+        site_domain_uri = URI.parse(site_domain_url_fragment)
+        uri.host =~ /#{site_domain_uri.host}/i and uri.path =~ /#{site_domain_uri.path}/i
+      end
+    end
   end
 
   def url_is_parseable

@@ -32,18 +32,21 @@ describe IndexedDocument do
 
   context "when associated affiliate has a site domain list" do
     before do
-      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov")
+      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov/someurl")
+      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => ".mil")
     end
 
     context "when URL of indexed document doen't match anything in affiliate's site domain list" do
       it "should find the record invalid" do
-        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.blacklisted.gov/foo?cache_url=http://www.whitelist.gov/someurl")).valid?.should be_false
+        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.blacklisted.gov/foo/http://www.whitelist.gov/someurl/page.pdf")).should_not be_valid
       end
     end
 
     context "when URL of indexed document matches something in affiliate's site domain list" do
       it "should find the record valid given all other attributes are valid" do
-        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.WHITELIST.gov/someurl")).valid?.should be_true
+        %w{http://www.WHITELIST.gov/someurl/page.pdf http://www.army.mil/someurl/page.pdf}.each do |url|
+          IndexedDocument.new(@valid_attributes.merge(:url => url)).should be_valid
+        end
       end
     end
   end
