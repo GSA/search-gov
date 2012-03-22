@@ -49,18 +49,18 @@ GIT
       escape (~> 0.0.4)
 
 GIT
-  remote: git://github.com/alindeman/no_peeping_toms.git
-  revision: 83dbd4cb993ae8e78a38a0f5cad784ca58bb0dcd
-  specs:
-    no_peeping_toms (2.1.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
   remote: git://github.com/paneq/calendar_date_select.git
   revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
     calendar_date_select (1.16.2)
+
+GIT
+  remote: https://github.com/patmaddox/no-peeping-toms.git
+  revision: b39544b58bba7c9258d60ddc7dead0ccb6c1aa83
+  specs:
+    no_peeping_toms (2.1.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -188,7 +188,7 @@ GEM
       activerecord
       activesupport
     parallel (0.5.5)
-    pdf-toolkit (0.49)
+    pdf-toolkit (0.5.0)
       activesupport (> 0.0.0)
     polyglot (0.3.2)
     pr_geohash (1.0.0)
@@ -328,7 +328,7 @@ DEPENDENCIES
   nokogiri (>= 1.4.4)
   paperclip-cloudfiles
   parallel
-  pdf-toolkit
+  pdf-toolkit (~> 0.5.0)
   progress_bar
   rails (= 3.0.10)
   rake (~> 0.8.7)

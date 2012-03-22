@@ -112,7 +112,8 @@
      default) does not.
      -->
     <mergeScheduler class="org.apache.lucene.index.ConcurrentMergeScheduler">
-      <int name="maxThreadCount">4</int>
+      <int name="maxMergeCount">6</int>
+      <int name="maxThreadCount">6</int>
     </mergeScheduler>
     <!--
       This option specifies which Lucene LockFactory implementation to use.

@@ -45,7 +45,7 @@ gem 'SystemTimer'
 gem 'high_voltage'
 gem 'backports'
 gem 'mechanize'
-gem 'pdf-toolkit'
+gem 'pdf-toolkit', "~> 0.5.0"
 gem 'googlecharts'
 
 # Bundle gems for the local environment. Make sure to
@@ -58,7 +58,6 @@ group :development, :test, :cucumber do
   gem 'rspec-rails'
   gem 'remarkable_activerecord'
   gem 'email_spec'
-  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'capybara'
@@ -67,11 +66,12 @@ group :development, :test, :cucumber do
   gem 'rcov'
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
-  gem 'no_peeping_toms', :git => 'git://github.com/alindeman/no_peeping_toms.git'
+  gem 'no_peeping_toms', :git => 'https://github.com/patmaddox/no-peeping-toms.git'
   gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "aee6f72fdc3fc92a93c86c8470a24c757fd9058e"
   gem 'progress_bar'
 end
 
 group :test do
+  gem 'cucumber-rails'
   gem 'resque_spec'
 end
