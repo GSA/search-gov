@@ -66,7 +66,7 @@ group :development, :test, :cucumber do
   gem 'rcov'
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
-  gem 'no_peeping_toms', :git => 'https://github.com/patmaddox/no-peeping-toms.git'
+  gem 'no_peeping_toms', :git => 'http://github.com/patmaddox/no-peeping-toms.git'
   gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "aee6f72fdc3fc92a93c86c8470a24c757fd9058e"
   gem 'progress_bar'
 end
