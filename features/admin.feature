@@ -9,7 +9,6 @@ Feature:  Administration
     And I should see "Users"
     And I should see "Affiliates"
     And I should see "SAYT Filters"
-    And I should see "SAYT Suggestions Bulk Upload"
     And I should see "Affiliate Boosted"
     And I should see "Top Searches"
     And I should see "Superfresh Urls"
@@ -59,31 +58,6 @@ Feature:  Administration
     And I follow "SAYT Filters" within ".main"
     Then I should be on the sayt filters admin page
     And I should see the following breadcrumbs: USASearch > Super Admin > SaytFilters
-
-  Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
-            3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following SAYT Suggestions exist:
-      | phrase             |
-      | tsunami            |
-      | hurricane          |
-    When I go to the admin home page
-    And I follow "SAYT Suggestions Bulk Upload"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SAYT Suggestions Bulk Upload
-    And I should see "Create a new text file following the same format as the sample below (one entry per line)"
-
-    When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
-    And I press "Upload"
-    Then I should see "3 SAYT suggestions uploaded successfully. 2 SAYT suggestions ignored."
-
-  Scenario: Uploading an invalid SAYT suggestions text file as a logged in admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    And I follow "SAYT Suggestions Bulk Upload"
-    And I attach the file "features/support/cant_read_this.doc" to "txtfile"
-    And I press "Upload"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SAYT Suggestions Bulk Upload
-    And I should see "Your file could not be processed."
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

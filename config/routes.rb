@@ -115,7 +115,6 @@ UsasearchRails3::Application.routes.draw do
     resources :sayt_filters do as_routes end
     resources :sayt_suggestions do as_routes end
     resources :misspellings do as_routes end
-    resource :sayt_suggestions_upload, :only => [:create, :new]
     resources :affiliate_boosted_contents do as_routes end
     resources :collections do as_routes end
     resources :url_prefixes do as_routes end
