@@ -46,7 +46,8 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     @search_vertical = :docs
     handle_affiliate_search
-    render :action => :docs, :layout => "affiliate"
+    request.format = :html
+    respond_to { |format| format.html { render :action => :docs, :layout => "affiliate" } }
   end
 
   def news
@@ -57,7 +58,8 @@ class SearchesController < ApplicationController
     @page_title = params[:query]
     handle_affiliate_search
     @search_vertical = :news
-    render :action => :news, :layout => "affiliate"
+    request.format = :html
+    respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
   end
 
   def auto_complete_for_search_query

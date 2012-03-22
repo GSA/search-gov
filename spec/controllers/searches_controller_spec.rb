@@ -499,6 +499,11 @@ describe SearchesController do
       response.should render_template 'layouts/affiliate'
     end
 
+    context "when the mobile parameter is set to true" do
+      before { get :docs, :query => "pdf", :affiliate => @affiliate.name, :m => 'true' }
+      it { should respond_with :success }
+    end
+
     it "should assign various variables" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       assigns[:page_title].should =~ /pdf/
@@ -611,6 +616,11 @@ describe SearchesController do
         response.should render_template 'layouts/affiliate'
       end
 
+      context "when the mobile parameter is set to true" do
+        before {  get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :m => 'true' }
+        it { should respond_with :success }
+      end
+
       it "should output a page that summarizes the results" do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.body.should contain("Results 1-1 of about 1 for 'element'")
@@ -631,5 +641,4 @@ describe SearchesController do
       end
     end
   end
-
 end
