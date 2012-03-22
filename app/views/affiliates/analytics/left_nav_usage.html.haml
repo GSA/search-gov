@@ -2,7 +2,7 @@
 
 %h1&= "Page Views for #{@affiliate.display_name}"
 .span-24
-  = render :partial => "analytics/shared/date_range_select", :locals => { :path => left_nav_usage_affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => "Show page views from"}
+  = render :partial => "date_range_select", :locals => { :path => left_nav_usage_affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => "Show page views from"}
 .clear
 
 %br
