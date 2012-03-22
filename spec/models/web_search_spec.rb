@@ -36,7 +36,23 @@ describe WebSearch do
 
     context "when response body is nil from Bing" do
       before do
-        JSON.should_receive(:parse).once.and_return nil
+        JSON.should_receive(:parse).once.and_return(nil)
+        @search = WebSearch.new(@valid_options)
+      end
+
+      it "should still return true when searching" do
+        @search.run.should be_true
+      end
+
+      it "should populate additional results" do
+        @search.should_receive(:populate_additional_results).and_return true
+        @search.run
+      end
+    end
+
+    context "when response body from Bing is an empty collection" do
+      before do
+        JSON.should_receive(:parse).once.and_return({})
         @search = WebSearch.new(@valid_options)
       end
 

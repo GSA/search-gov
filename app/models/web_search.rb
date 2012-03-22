@@ -174,7 +174,7 @@ class WebSearch < Search
   def parse_bing_response(response_body)
     begin
       json = JSON.parse(response_body)
-      json.nil? ? nil : ResponseData.new(json['SearchResponse'])
+      json.nil? || json['SearchResponse'].blank? ? nil : ResponseData.new(json['SearchResponse'])
     rescue JSON::ParserError => error
       raise BingSearch::BingSearchError.new(error.to_s)
     end
