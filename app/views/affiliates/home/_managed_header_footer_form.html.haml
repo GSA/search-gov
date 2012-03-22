@@ -58,11 +58,3 @@
           - managed_header_footer_form.object.staged_managed_footer_links.each_with_index do |link, index|
             = render :partial => 'managed_footer_link_fields', :locals => { :link => link, :index => index }
       = link_to 'Add footer link', new_managed_footer_link_fields_affiliates_path, :remote => true, :id => 'add_footer_link'
-  %li
-    = link_to "+ Managed header tips", "#managed_header_tips_content", :id => "managed_header_tips", :class => "sliding_trigger"
-    %div#managed_header_tips_content.sliding_content
-      %p
-        Add a link to your header text or header image by setting the header home URL.
-      %p
-        Set the header background color to blank if you do not wish to use background color on your header.
-

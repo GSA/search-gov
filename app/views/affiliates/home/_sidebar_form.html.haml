@@ -1,17 +1,8 @@
 .by-source
   %h2 By format/topic
-  .sidebar-subsection
+  .column-2
     = image_tag('/images/side_notes/sidebar_1.png', :class => 'side-note')
-    %p
-      Allow searchers to limit results to view images only, based on #{link_to 'Bing web results', affiliate_site_domains_path(@affiliate)}.
-    %p
-      Allow searchers to limit results to each of your #{link_to 'RSS feeds', affiliate_rss_feeds_path(@affiliate)} or to view results by format or topic(e.g., Blog, FAQs, Photos, Press Releases, Videos, etc).
-    %p
-      Rearrange the order that RSS feeds or Collections appear in the sidebar by dragging the #{image_tag('/images/vertical_arrow.png', :alt => 'blue arrow', :height => 18)} icon.
-      %br/
-      This is limited to within RSS feeds or within your Collections and not between RSS feeds and Collections.
-
-  .sidebar-items
+  .column-1
     %table
       %colgroup
         %col{ :class => 'name' }

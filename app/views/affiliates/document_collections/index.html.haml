@@ -5,12 +5,6 @@
   .column-1
     %h1 Collections
     = render_help_link(@help_link)  
-    %p
-      Collections allow you to create named groups for your indexed pages across subdomains or subfolders. For instance,
-      you might have helpful content on publications.agency.gov/docs, answers.agency.gov, and www.agency.gov. You could create a collection
-      called "FAQs" that contains http://publications.agency.gov/docs and http://answers.agency.gov. A link to "FAQs" then appears
-      in your search results page sidebar, and when searchers click on it, their search results are restricted to just those locations (i.e.,
-      the user won't see anything from www.agency.gov).
     .document-collection-list
       %table
         %colgroup

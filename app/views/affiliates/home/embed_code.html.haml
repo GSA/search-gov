@@ -3,16 +3,17 @@
 %h1 Get Code
 = render_help_link(@help_link)
 
-%p The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear.
+%p Head Snippet
 = find_and_preserve do
   #embed_code_english.span-24
-    = render :partial => 'embed_code_text_area', :locals => { :locale => @affiliate.locale }
+    = render :partial => 'head_embed_code_text_area', :locals => { :locale => @affiliate.locale }
 
-%h2 Code for content discovery and indexing
+%p Form Snippet
+  #embed_code_english.span-24
+    = render :partial => 'form_embed_code_text_area', :locals => { :locale => @affiliate.locale }
+
+%h2 USASearch Tag Snippet
 %p
-  Place this snippet of Javascript just before the closing
-  ='</body>'
-  tag on all your sites' pages to make it easier for USASearch and commercial search engines to discover and index your content.
 = find_and_preserve do
   #embed_stats_code.span-24
     = render :partial => 'embed_stats_code_text_area'

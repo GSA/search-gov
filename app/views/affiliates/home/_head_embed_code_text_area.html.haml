@@ -6,12 +6,3 @@
         #{javascript_include_tag_with_full_path 'jquery/jquery.min.js', 'jquery/jquery.bgiframe.min.js', 'jquery/jquery.autocomplete.min.js', 'sayt.js'}
         #{stylesheet_link_tag_with_full_path 'compiled/sayt.css'}
       </head>
-      <body>
-        #{form_tag search_url(:protocol => 'http'), :method => :get, :id => 'search_form' }
-          #{hidden_field_tag :affiliate, @affiliate.name}
-          #{label_tag :query, "Enter Search Term(s):"}
-          #{text_field_tag :query, nil, :autocomplete => 'off', :class => 'usagov-search-autocomplete'}
-          #{submit_tag 'Search'}
-        </form>
-      </body>
-    </html>

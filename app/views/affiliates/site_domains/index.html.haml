@@ -1,7 +1,7 @@
 = content_for :title do
   Domains -
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Domains"])
-%h1 Domains to Search
+%h1 Domains
 = render_help_link(@help_link)
 .entry-list
   %table
@@ -18,7 +18,7 @@
             %span= page_entries_info @site_domains, :entry_name => 'Domain', :html => false
     %tbody
       %tr.column-header
-        %th Site Name
+        %th Label
         %th Domain
         %th Actions
       - unless @site_domains.blank?

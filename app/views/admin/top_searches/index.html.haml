@@ -4,12 +4,6 @@
 - widget_url = @affiliate ? trending_searches_widget_url(:aid => @affiliate.id) : trending_searches_widget_url
 %h2
   Top Searches
-%p
-  Many websites list top or trending search terms (see, for example, #{ link_to 'USA.gov', 'http://www.usa.gov' }, #{ link_to 'Google Trends', 'http://www.google.com/trends' }, and #{ link_to 'Twitter', 'http://www.twitter.com/search' }). Use this Top Searches widget to list top or trending terms on your website.
-  %br
-  First, copy and paste the widget code where you'd like it to appear on your site (e.g., your home page, search results page, or all pages).
-  %br
-  Then, select a label for the widget and update the terms listed by entering terms and URLs. Note that, if you leave the 'URL' field blank, it links to a corresponding search results page on your site. To override this default, simply fill in the 'URL' field with the desired URL.
 = form_tag form_path, :method => :post do
   - if @affiliate
     = label_tag 'top_searches_label', 'Label'
