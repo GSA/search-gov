@@ -16,7 +16,8 @@ class AffiliateObserver < ActiveRecord::Observer
 
       if managed_video_rss_feed.blank?
         affiliate.rss_feeds.create!(:name => 'Videos', :is_managed => true, :url => youtube_url)
-      else
+      elsif managed_video_rss_feed.url != youtube_url
+        managed_video_rss_feed.news_items.destroy_all
         managed_video_rss_feed.update_attributes!(:url => youtube_url)
       end
     end
@@ -27,6 +28,7 @@ class AffiliateObserver < ActiveRecord::Observer
     url_params = ActiveSupport::OrderedHash.new
     url_params[:alt] = 'rss'
     url_params[:author] = "#{youtube_handle}"
+    url_params[:orderby] = 'published'
     "http://gdata.youtube.com/feeds/base/videos?#{url_params.to_param}".downcase
   end
 end
