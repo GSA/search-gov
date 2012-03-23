@@ -67,19 +67,6 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |hash| QueryCount.new(hash.first, hash.last) }
     end
 
-    def most_popular_terms_for_year_month(year, month, num_results = RESULTS_SIZE)
-      start_date = Date.civil(year, month, 1)
-      end_date = Date.civil(year, month, -1)
-      results = sum(:times,
-                    :group => :query,
-                    :conditions => ['day between ? AND ?', start_date, end_date],
-                    :joins => 'FORCE INDEX (da)',
-                    :order => "sum_times desc",
-                    :limit => num_results)
-      return INSUFFICIENT_DATA if results.empty?
-      results.collect { |hash| QueryCount.new(hash.first, hash.last) }
-    end
-
     def most_recent_populated_date(affiliate_name)
       maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end

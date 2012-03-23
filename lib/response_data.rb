@@ -1,7 +1,4 @@
 class ResponseData < Hash
-  def has?(attr_name)
-    has_key?(camelize(attr_name))
-  end
 
   private
   def initialize(data={})

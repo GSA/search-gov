@@ -345,10 +345,6 @@ module SearchHelper
     content_tag(:p, no_results_message.html_safe, :class => "noresults")
   end
 
-  def search_results_logo
-    link_to image_tag("USAsearch_medium_#{I18n.locale}.gif", :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-  end
-
   def search_meta_tags
     content = ''
     if english_locale? or spanish_locale?
