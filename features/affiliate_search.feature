@@ -24,6 +24,7 @@ Feature: Affiliate Search
       | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        | false           |
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name           | url                                                                    | is_navigable | shown_in_govbox |
+      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
@@ -40,10 +41,14 @@ Feature: Affiliate Search
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
+    And feed "Noticias" has the following news items:
+      | link                              | title               | guid    | published_ago | description                                |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           | Gobierno item First news item for the feed |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           | Gobierno item Next news item for the feed  |
     And feed "Spanish Videos" has the following news items:
-      | link                                       | title                     | guid    | published_ago | description                           |
-      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esuuid1 | day           | Gobierno video news item for the feed |
-      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esuuid2 | day           | Gobierno video news item for the feed |
+      | link                                       | title                     | guid     | published_ago | description                           |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
       | phrase           |
       | Some Unique item |
@@ -51,12 +56,15 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Search"
-    Then I should see "News results for 'first item' from bar site"
-    And I should see "First video item"
-    And I should see "First item"
+    Then I should see "News for 'first item' by bar site"
+    And I should see "First item" in the rss feed govbox
+    And I should not see "First video item" in the rss feed govbox
+    And I should see "Videos of 'first item' by bar site"
+    And I should see "First video item" in the video rss feed govbox
+    And I should not see "First item" in the video rss feed govbox
     And I should not see "First hidden item"
 
-    When I follow "News results for 'first item' from bar site"
+    When I follow "News for 'first item'"
     Then I should be on the news search page
     And I should have the following query string:
       |affiliate|bar.gov   |
@@ -64,17 +72,33 @@ Feature: Affiliate Search
       |tbs      |y         |
       |locale   |en        |
       |m        |false     |
+    Then I should see "First item"
+    And I should see "First video item"
+
+    When I am on bar.gov's search page
+    And I fill in "query" with "first item"
+    And I press "Search"
+    And I follow "Videos of 'first item'"
+    Then I should see "Videos" in the left column
+    And I should not see a link to "Videos"
+    Then I should see "First video item"
+    And I should not see "First item"
+    When I follow "All Time" in the left column
+    Then I should see "Videos" in the left column
+    And I should not see a link to "Videos"
+    And I should see "First video item"
+    And I should not see "First item"
 
     When I am on bar.gov's search page
     And I fill in "query" with "loren"
     And I press "Search"
-    Then I should not see "News results for 'loren' from bar site"
+    Then I should not see "News for 'loren' from bar site"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Buscar"
-    Then I should see "Noticias sobre 'first item' de Spanish bar site"
-    And I should see "First Spanish video item"
+    Then I should see "Videos de 'first item' de Spanish bar site"
+    And I should see "First Spanish video item" in the video rss feed govbox
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
@@ -142,8 +166,24 @@ Feature: Affiliate Search
     And I should not see "Search this site"
     And I should not see "Cualquier fecha"
     And I should not see "All Time"
+    And I should see "Noticias sobre de 'gobierno' de Spanish bar site"
+    And I should see "Videos de 'gobierno' de Spanish bar site"
 
-    When I follow "Spanish Videos"
+    When I follow "Noticias sobre de 'gobierno'"
+    Then I should see "Spanish item"
+    And I should see "Spanish video item"
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "gobierno"
+    And I press "Buscar"
+    And I follow "Videos de 'gobierno'"
+    Then I should see "Spanish video item"
+    And I should not see "Spanish item"
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "gobierno"
+    And I press "Buscar"
+    And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     And I should see 2 youtube thumbnails
     And I should see youtube thumbnail for "First Spanish video item"

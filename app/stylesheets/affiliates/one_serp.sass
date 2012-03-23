@@ -221,9 +221,8 @@ body
       font-size: 0.7em
 
   #indexed_documents
+    margin-bottom: 1em
     .indexeddocresult h2
-      background: url('/images/backgrounds/star_large.png') left 1px no-repeat
-      padding-left: 20px
       font-size: 1.1em
       font-weight: normal
       margin: 0
@@ -239,10 +238,7 @@ body
       text-decoration: none
 
   .searchresult h4
-    color: #595959
     margin: 3px 0
-    .feed_name
-      color: #007f00
   .results-by-logo
     float: right
 
@@ -250,24 +246,24 @@ body
     color: white
     display: none
 
-  .related-searches-wrapper-top, .indexed-documents-wrapper-top
+  .related-searches-wrapper-top, .indexed-documents-wrapper-top, .govbox-wrapper-top
     :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
     :behavior url(/javascripts/iepngfix.htc)
     :height 8px
     :line-height 8px
     :margin-top 0.75em
 
-  .related-searches-wrapper-bottom, .indexed-documents-wrapper-bottom
+  .related-searches-wrapper-bottom, .indexed-documents-wrapper-bottom, .govbox-wrapper-bottom
     :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
     :behavior url(/javascripts/iepngfix.htc)
     :height 8px
 
-  .related-searches-wrapper-middle, .indexed-documents-wrapper-middle
+  .related-searches-wrapper-middle, .indexed-documents-wrapper-middle, .govbox-wrapper-middle
     +clearfix
     :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
     :behavior url(/javascripts/iepngfix.htc)
     margin: 0
-    padding: 0.8em $results-padding-size 0.8em 0
+    padding: 0.8em $results-padding-size 0 0
     h3.alt
       font-size: 1.15em
       margin-top: 0
@@ -441,6 +437,17 @@ body
   .message, .what-to-do-wrapper
     :width 765px
 
+.newsitem
+  +clearfix
+  h4
+    font-size: 1em
+  .thumbnail
+    float: left
+    padding-top: 3px
+    margin-right: 10px
+  .mixed
+    margin-left: 130px
+
 .newsitem.video
   +clearfix
   +inline-block
@@ -450,3 +457,22 @@ body
   width: 120px
   h4
     font-size: 1.25em
+
+#video_news_items_govbox
+  margin-bottom: 1em
+  .newsitem.video
+    +clearfix
+    +inline-block
+    font-size: 0.8em
+    height: auto
+    margin-top: 0.8em
+    margin-right: 10px
+    width: 120px
+    h4
+      font-size: 1.25em
+      margin-bottom: 0
+
+#news_items_govbox
+  margin-bottom: 1em
+  .newsitem
+    margin-top: 0.8em

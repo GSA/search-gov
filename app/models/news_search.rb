@@ -9,7 +9,7 @@ class NewsSearch < Search
     super(options)
     @query = (@query || '').squish
     @since = since_when(options[:tbs])
-    @rss_feed = @affiliate.rss_feeds.find_by_id(options[:channel].to_i) if options[:channel].present?
+    assign_rss_feed(options)
     @related_search, @hits, @total = [], [], 0
   end
 
@@ -31,7 +31,10 @@ class NewsSearch < Search
     @related_search && @related_search.size > 0
   end
 
-  private
+  protected
+  def assign_rss_feed(options)
+    @rss_feed = @affiliate.rss_feeds.find_by_id(options[:channel].to_i) if options[:channel].present?
+  end
 
   def since_when(tbs)
     if tbs && (extent = NewsItem::TIME_BASED_SEARCH_OPTIONS[tbs])

@@ -1,11 +1,11 @@
 require 'spec/spec_helper'
 describe "shared/_searchresults.html.haml" do
   fixtures :affiliates
-  
+
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
-    
+
     @search = stub("WebSearch")
     @search.stub!(:affiliate).and_return @affiliate
     @search.stub!(:related_search).and_return []
@@ -29,6 +29,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:are_results_by_bing?).and_return true
     @search.stub!(:first_page?).and_return true
     @search.stub!(:news_items)
+    @search.stub!(:video_news_items)
 
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
@@ -116,7 +117,7 @@ describe "shared/_searchresults.html.haml" do
         render
         rendered.should_not have_selector('table', :class => 'deep_links')
       end
-      
+
       context "when boosted contents are present" do
         before do
           @search.should_not_receive(:has_boosted_contents?)

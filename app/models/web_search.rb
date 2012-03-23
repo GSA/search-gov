@@ -14,12 +14,13 @@ class WebSearch < Search
               :agency,
               :med_topic,
               :news_items,
+              :video_news_items,
               :formatted_query,
               :featured_collections,
               :indexed_documents,
               :indexed_results,
               :matching_site_limits
-              
+
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
       corrected_query = Misspelling.correct(sanitized_query)
@@ -258,7 +259,8 @@ class WebSearch < Search
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
       end
-      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.govbox_enabled, nil, 1)
+      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.non_videos.govbox_enabled, nil, 1)
+      @video_news_items = NewsItem.search_for(query, affiliate.rss_feeds.videos.govbox_enabled, nil, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
     end
   end

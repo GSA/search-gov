@@ -270,11 +270,24 @@ describe RssFeed do
     let(:videos) { Affiliate.find(affiliate.id).rss_feeds.videos }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'Not vidoes', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://searchblog.usa.gov/rss')
       affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
     end
 
     specify { videos.count.should == 1 }
     specify { videos.first.name.should == 'Videos' }
+  end
+
+  describe ".non_videos" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:non_videos) { Affiliate.find(affiliate.id).rss_feeds.non_videos }
+
+    before do
+      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
+    end
+
+    specify { non_videos.count.should == 1 }
+    specify { non_videos.first.name.should == 'Not videos' }
   end
 end

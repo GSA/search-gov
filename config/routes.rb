@@ -107,6 +107,7 @@ UsasearchRails3::Application.routes.draw do
   get '/search/forms' => 'searches#forms', :as => :forms_search
   get '/search/docs' => 'searches#docs', :as => :docs_search
   get '/search/news' => 'searches#news', :as => :news_search
+  get '/search/news/videos' => 'searches#video_news', :as => :video_news_search
   resources :image_searches
   namespace :admin do
     resources :affiliates do as_routes end
@@ -147,7 +148,7 @@ UsasearchRails3::Application.routes.draw do
     resources :help_links do as_routes end
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
-  
+
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin' => 'admin/home#index', :as => :admin_home_page
 

@@ -31,3 +31,13 @@
       %li{ :class => (extent == :year ? 'last' : nil) }
         = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), news_search_path(search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
           = content_tag :span, last_time
+
+- if @search.instance_of?(VideoNewsSearch) and @affiliate.is_time_filter_enabled?
+  %ul.time-filters
+    %li
+      = link_to_if(params[:tbs], t(:all_time), rss_feed ? video_news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
+        = content_tag :span, everything
+    - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
+      %li{ :class => (extent == :year ? 'last' : nil) }
+        = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), video_news_search_path(search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
+          = content_tag :span, last_time

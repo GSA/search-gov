@@ -8,6 +8,7 @@ class RssFeed < ActiveRecord::Base
   scope :govbox_enabled, where(:shown_in_govbox => true)
   scope :managed, where(:is_managed => true)
   scope :videos, where(:is_video => true)
+  scope :non_videos, where(:is_video => false)
   before_save :set_is_video_flag
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
   ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }

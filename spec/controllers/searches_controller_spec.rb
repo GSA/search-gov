@@ -513,4 +513,25 @@ describe SearchesController do
       end
     end
   end
+
+  describe "#video_news" do
+    fixtures :affiliates, :rss_feeds, :news_items
+
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:video_news_search) { mock('video news search') }
+
+    before do
+      NewsItem.reindex
+      VideoNewsSearch.should_receive(:new).and_return(video_news_search)
+      video_news_search.should_receive(:run)
+      get :video_news, :query => "element", :affiliate => affiliate.name, :tbs => "w"
+    end
+
+    it { should assign_to(:search).with(video_news_search) }
+    it { should assign_to(:page_title).with("Current element - #{affiliate.display_name} Search Results") }
+    it { should assign_to(:search_vertical).with(:news) }
+    it { should assign_to(:form_path).with(video_news_search_path) }
+    it { should render_template(:news) }
+    it { should render_template("layouts/affiliate") }
+  end
 end

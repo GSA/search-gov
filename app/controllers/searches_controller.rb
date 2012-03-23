@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   layout 'affiliate'
-  
+
   skip_before_filter :verify_authenticity_token
   before_filter :handle_old_advanced_form, :only => [:index]
   before_filter :grab_format
@@ -41,6 +41,17 @@ class SearchesController < ApplicationController
     @search = NewsSearch.new(params.merge(:affiliate => @affiliate))
     @search.run
     @form_path = news_search_path
+    @page_title = params[:query]
+    handle_affiliate_search
+    @search_vertical = :news
+    request.format = :html
+    respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
+  end
+
+  def video_news
+    @search = VideoNewsSearch.new(params.merge(:affiliate => @affiliate))
+    @search.run
+    @form_path = video_news_search_path
     @page_title = params[:query]
     handle_affiliate_search
     @search_vertical = :news

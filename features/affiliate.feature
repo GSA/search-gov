@@ -2096,7 +2096,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets
-    
+
     When I follow "Best bets"
     And I follow "View all" in the affiliate boosted contents section
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
@@ -2459,7 +2459,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    Then I should see "News results for 'item' from aff site"
+    Then I should see "News for 'item' by aff site"
     And I should see "First item" in the rss feed govbox
     And I should see "Second item" in the rss feed govbox
     And I should see "Third item" in the rss feed govbox
@@ -2496,7 +2496,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    Then I should see "News results for 'item' from aff site"
+    Then I should see "News for 'item' by aff site"
     And I should not see "First item" in the rss feed govbox
     And I should not see "Second item" in the rss feed govbox
     And I should see "Third item" in the rss feed govbox

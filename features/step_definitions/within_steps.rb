@@ -40,7 +40,8 @@
   'in the API key box' => '.content-box',
   'in the API TOS section' => '.api.tos',
   'in the registration form' => 'form#new_user',
-  'in the rss feed govbox' => '#indexed_documents'
+  'in the rss feed govbox' => '#news_items_govbox',
+  'in the video rss feed govbox' => '#video_news_items_govbox'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

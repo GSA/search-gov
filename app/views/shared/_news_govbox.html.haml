@@ -1,9 +1,12 @@
 - if search.news_items and search.news_items.total > 0
-  #indexed_documents
-    .indexed-documents-wrapper-top
-    .indexed-documents-wrapper-middle
-      .related_indexeddocs
-        %h3.alt= link_to_unless(search.affiliate.rss_feeds.navigable_only.empty?, I18n.t(:news_results, :query => search.query, :affiliate => search.affiliate.display_name), news_search_path(:query => search.query, :affiliate => search.affiliate.name, :tbs => 'y'))
-        - search.news_items.hits(:verify => true).first(3).each_with_index do |hit, index|
-          = render 'shared/govbox_news_item', :hit => hit, :index => index
-    .indexed-documents-wrapper-bottom
+  #news_items_govbox
+    .govbox-wrapper-top
+    .govbox-wrapper-middle
+      %h3.alt
+        = link_to_unless(search.affiliate.rss_feeds.non_videos.navigable_only.empty?, I18n.t(:news_results, :query => search.query, :affiliate => search.affiliate.display_name), news_search_path(:query => search.query, :affiliate => search.affiliate.name, :tbs => 'y'))
+        %span.recommended-by
+          = t :by
+          = @affiliate.display_name
+      - search.news_items.hits(:verify => true).first(3).each_with_index do |hit, index|
+        = render 'shared/govbox_news_item', :hit => hit, :index => index
+    .govbox-wrapper-bottom

@@ -4,7 +4,7 @@ describe "searches/index.html.haml" do
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
-    
+
     @search = stub("WebSearch")
     @search.stub!(:query).and_return "test"
     @search.stub!(:affiliate).and_return @affiliate
@@ -14,6 +14,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:has_related_searches?).and_return false
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     @search.stub!(:news_items)
+    @search.stub!(:video_news_items)
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)
     @search.stub!(:results).and_return []

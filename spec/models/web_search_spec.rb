@@ -355,7 +355,7 @@ describe WebSearch do
           search = WebSearch.new(@valid_options.merge(:affiliate => Affiliate.new))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
-          @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""          
+          @bing_search.should_receive(:query).with(/\(government\) \(scopeid:usagovall OR site:gov OR site:mil\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
           search.run
         end
 
@@ -1016,6 +1016,25 @@ describe WebSearch do
         search = WebSearch.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
         search.run
         search.indexed_documents.should be_nil
+      end
+
+      context "when an affiliate has RSS Feeds" do
+        it "should retrieve non videos and videos rss feeds" do
+          non_videos_rss_feeds = mock('non videos rss feeds')
+          @affiliate.stub_chain(:rss_feeds, :non_videos, :govbox_enabled).and_return(non_videos_rss_feeds)
+          non_video_results = mock('non video results', :total => 3)
+          NewsItem.should_receive(:search_for).with('item', non_videos_rss_feeds, nil, 1).and_return(non_video_results)
+
+          videos_rss_feeds = mock('videos rss feeds')
+          @affiliate.stub_chain(:rss_feeds, :videos, :govbox_enabled).and_return(videos_rss_feeds)
+          video_results = mock('video results', :total => 3)
+          NewsItem.should_receive(:search_for).with('item', videos_rss_feeds, nil, 1).and_return(video_results)
+
+          search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
+          search.run
+          search.news_items.should == non_video_results
+          search.video_news_items.should == video_results
+        end
       end
     end
 
