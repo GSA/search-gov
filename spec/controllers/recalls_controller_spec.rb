@@ -25,7 +25,7 @@ describe RecallsController do
         response.should have_selector("meta[name=keywords]")
       end
     end
-    
+
     context "when the format is set to 'rss'" do
       render_views
       before do
@@ -34,19 +34,19 @@ describe RecallsController do
         Sunspot.commit
         get :index, :format => :rss
       end
-    
+
       it "should render the latest recalls as an rss feed" do
         response.content_type.should == 'application/rss+xml'
       end
-      
+
       it "should output a date that matches the actual date in the database" do
         response.body.should =~ /Tue\, 29 Nov 2011 05\:00\:00 \+0000/
       end
-    end   
-    
+    end
+
     it "should fetch recent recalls" do
       search = ["latest recall", "second latest recall"]
-      Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)
+      Recall.should_receive(:search_for).with('', {:sort => 'date'}).and_return(search)
       get :index
       assigns[:latest_recalls].should == search
     end
@@ -58,12 +58,16 @@ describe RecallsController do
       before do
         Recall.destroy_all
         Recall.reindex
-        get :search, :query => 'strollers'
+        get :search, :query => '<script>strollers</script>'
       end
 
       it "should render the template" do
         response.should render_template 'recalls/search'
         response.should render_template 'layouts/application'
+      end
+
+      it "should sanitize the query term" do
+        assigns[:query].should == "strollers"
       end
 
       it "should assign the query with a forms prefix as the page title" do

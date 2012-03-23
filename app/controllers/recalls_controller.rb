@@ -13,7 +13,7 @@ class RecallsController < ApplicationController
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
 
   def index
-    @latest_recalls = Recall.search_for("", {:sort => "date"})
+    @latest_recalls = Recall.search_for('', {:sort => 'date'})
     @search_vertical = :recall
     respond_to do |format|
       format.html
@@ -22,10 +22,10 @@ class RecallsController < ApplicationController
   end
 
   def search
+    @query = Sanitize.clean(params[:query]) || ''
     respond_to do |format|
       format.html {
         @search_vertical = :recall
-        @query = params[:query] || ""
 
         redirect_to recalls_path and return if @query.blank?
 
@@ -50,12 +50,11 @@ class RecallsController < ApplicationController
     if @error_message
       render :json => { :error => @error_message }
     else
-      query = params[:query]
       page = params[:page]
-      cache_key = [@valid_params.to_s, query, page].join(':')
+      cache_key = [@valid_params.to_s, @query, page].join(':')
       success_total_results_json = @@redis.get(cache_key) rescue nil
       if success_total_results_json.nil?
-        search = Recall.search_for(query, @valid_params, page) || Struct.new(:total, :results).new(0, [])
+        search = Recall.search_for(@query, @valid_params, page) || Struct.new(:total, :results).new(0, [])
         success_total_results_json = {:success => {:total => search.total, :results => search.results}}.to_json
         @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil
       end
@@ -72,7 +71,7 @@ class RecallsController < ApplicationController
   def setup_affiliate
     @affiliate = Affiliate.find_by_name('usagov')
   end
-  
+
   def setup_params
     @valid_params = params.reject { |k,| !VALID_OPTIONS.include? k.to_s }
   end
@@ -101,7 +100,7 @@ class RecallsController < ApplicationController
         @valid_params[:start_date], @valid_params[:end_date] = Date.current - 90.days, Date.current
       elsif params[:date_range] == "current_year"
         @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.current.year}-01-01"), Date.current
-      elsif params[:date_range] = "last_year"
+      elsif params[:date_range] == "last_year"
         @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.current.year - 1}-01-01"), Date.parse("#{Date.current.year - 1}-12-31")
       end
     end

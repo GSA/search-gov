@@ -2,7 +2,7 @@ require 'spec/spec_helper'
 
 describe SearchesController do
   fixtures :affiliates, :affiliate_templates
-  
+
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end
@@ -90,13 +90,17 @@ describe SearchesController do
     render_views
     before do
       @affiliate = affiliates(:power_affiliate)
-      get :index, :affiliate => @affiliate.name, :query => "weather"
+      get :index, :affiliate => @affiliate.name, :query => "<script>weather</script>"
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
 
     it { should assign_to :affiliate }
     it { should assign_to :page_title }
+
+    it "should sanitize the query term" do
+      @search.query.should == "weather"
+    end
 
     it "should render the template" do
       response.should render_template 'index'
@@ -115,8 +119,8 @@ describe SearchesController do
       response.body.should match(/#{@affiliate.footer}/)
     end
 
-    it "should set the query in Javascript" do
-      response.body.should match(/var original_query = \"weather\"/)
+    it "should set the sanitized query in Javascript" do
+      response.body.should match(/var original_query = "weather"/)
     end
 
     context "when the affiliate locale is set to Spanish" do

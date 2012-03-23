@@ -58,12 +58,16 @@ describe ImageSearchesController do
 
       context "when searching normally" do
         before do
-          get :index, :query => 'weather', :format => "json"
+          get :index, :query => '<script>weather</script>', :format => "json"
           @search = assigns[:search]
         end
 
         it "should set the format to json" do
           response.content_type.should == "application/json"
+        end
+
+        it "should sanitize the query term" do
+          @search.query.should == "weather"
         end
 
         it "should serialize the results into JSON" do

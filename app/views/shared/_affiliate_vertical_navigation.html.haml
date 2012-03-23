@@ -10,7 +10,7 @@
       = content_tag :span, everything
   - if @affiliate.is_image_search_enabled?
     %li
-      = link_to_if(@search.instance_of?(ImageSearch) == false, @affiliate.image_search_label, image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
+      = link_to_unless(@search.instance_of?(ImageSearch), @affiliate.image_search_label, image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
         = content_tag :span, images
   - @affiliate.rss_feeds.navigable_only.each do |feed|
     %li{ :class => (feed == @affiliate.rss_feeds.navigable_only.last ? 'last' : nil) }

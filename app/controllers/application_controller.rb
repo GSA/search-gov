@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       store_location
       redirect_to login_url
-      return false
+      false
     end
   end
 
@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
     if current_user
       store_location
       redirect_to account_url
-      return false
+      false
     end
   end
 
@@ -94,13 +94,13 @@ class ApplicationController < ActionController::Base
   def search_options_from_params(params)
     {
         :page => [(params[:page] || "1").to_i, 1].max,
-        :query => params["query"],
+        :query => Sanitize.clean(params["query"]),
         :query_limit => params["query-limit"],
-        :query_quote => params["query-quote"],
+        :query_quote => Sanitize.clean(params["query-quote"]),
         :query_quote_limit => params["query-quote-limit"],
-        :query_or => params["query-or"],
+        :query_or => Sanitize.clean(params["query-or"]),
         :query_or_limit => params["query-or-limit"],
-        :query_not => params["query-not"],
+        :query_not => Sanitize.clean(params["query-not"]),
         :query_not_limit => params["query-not-limit"],
         :file_type => params["filetype"],
         :site_limits => params["sitelimit"],
