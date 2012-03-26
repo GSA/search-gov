@@ -22,7 +22,6 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
                            :publish_end_on => publish_end_on)
   end
   Sunspot.index(sites) # because BoostedContent has auto indexing turned off for saves/creates
-  puts BoostedContent.search_for("description", affiliate).inspect
 end
 
 When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do |button, pos|

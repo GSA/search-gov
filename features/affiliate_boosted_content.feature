@@ -287,6 +287,28 @@ Feature: Boosted Content
     And I fill in "query" with "unrelated"
     And I submit the search form
     Then I should see "Our Emergency Page" within "#boosted"
+    
+  Scenario: Site visitor sees highlighted terms
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | locale  |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | en      |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | es      |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title                           | url                    | description                          | 
+      | Emergency Information           | http://www.aff.gov/911 | Updated information on the emergency |
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
+      | title                             | url                    | description                        |
+      | la página de prueba de Emergencia | http://www.bar.gov/911 | Some terms                         |
+    When I go to aff.gov's search page
+    And I fill in "query" with "information"
+    And I press "Search"
+    Then show me the page
+    Then I should see "Information" in bold font
+    
+    When I go to bar.gov's search page
+    And I fill in "query" with "pagina"
+    And I press "Buscar"
+    Then I should see "página" in bold font
 
   Scenario: Spanish site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
