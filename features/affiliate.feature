@@ -146,10 +146,10 @@ Feature: Affiliate clients
     Then the "Gettysburg" theme should be selected
     And the "Page background color" field should contain "#F7F7F7"
     And the "Content background color" field should contain "#FFFFFF"
-    And the "Show content border" checkbox should not be checked
+    And the "Add top padding" checkbox should not be checked
     And the "Content border color" field should contain "#CACACA"
     And the "Content border color" field should be disabled
-    And the "Show content box shadow" checkbox should be checked
+    And the "Add drop shadow" checkbox should be checked
     And the "Content box shadow color" field should contain "#555555"
     And the "Content box shadow color" field should be disabled
     And the "Search button text color" field should contain "#FFFFFF"
@@ -175,8 +175,8 @@ Feature: Affiliate clients
 
     When I follow "Domains"
     Then I should see the following table rows:
-      | Site Name       | Domain         |
-      | agency.gov      | agency.gov     |
+      | Label       | Domain         |
+      | agency.gov  | agency.gov     |
 
     When I follow "Sidebar"
     Then the "Default search label" field should contain "Everything"
@@ -366,9 +366,9 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then I should see the browser page titled "Look and Feel of the Search Results Page"
+    Then I should see the browser page titled "Look and Feel"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
-    And I should see "Look and Feel of the Search Results Page" in the page header
+    And I should see "Look and Feel" in the page header
     And the "Continue using legacy template" radio button should be checked
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
@@ -384,8 +384,8 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Arial, sans-serif"
-    And the "Show content border" checkbox should not be checked
-    And the "Show content box shadow" checkbox should not be checked
+    And the "Add top padding" checkbox should not be checked
+    And the "Add drop shadow" checkbox should not be checked
     And the "Liberty Bell" theme should be selected
 
     When I choose "Start using One SERP theme"
@@ -417,8 +417,8 @@ Feature: Affiliate clients
     And I follow "Look and feel"
     And I choose "Start using One SERP theme"
     And I select "Times, serif" from "Font family"
-    And I check "Show content border"
-    And I check "Show content box shadow"
+    And I check "Add top padding"
+    And I check "Add drop shadow"
     And I choose "Virgin Islands"
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
@@ -463,9 +463,9 @@ Feature: Affiliate clients
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
-    Then I should see the browser page titled "Look and Feel of the Search Results Page"
+    Then I should see the browser page titled "Look and Feel"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
-    And I should see "Look and Feel of the Search Results Page" in the page header
+    And I should see "Look and Feel" in the page header
     And I should not see "Start using One SERP theme"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
@@ -475,9 +475,9 @@ Feature: Affiliate clients
     And the "Custom" theme should be visible
     And the "Page background color" field should contain "#FFFFFF"
     And the "Content background color" field should contain "#F2F2F2"
-    And the "Show content border" checkbox should not be checked
+    And the "Add top padding" checkbox should not be checked
     And the "Content border color" field should contain "#CACACA"
-    And the "Show content box shadow" checkbox should not be checked
+    And the "Add drop shadow" checkbox should not be checked
     And the "Content box shadow color" field should contain "#555555"
     And the "Search button text color" field should contain "#111111"
     And the "Search button background color" field should contain "#0000EE"
@@ -501,8 +501,8 @@ Feature: Affiliate clients
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
     And I select "Helvetica, sans-serif" from "Font family"
-    And I check "Show content border"
-    And I check "Show content box shadow"
+    And I check "Add top padding"
+    And I check "Add drop shadow"
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
@@ -513,9 +513,9 @@ Feature: Affiliate clients
     Then the "Font family" field should contain "Helvetica, sans-serif"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
-    And the "Show content border" checkbox should be checked
+    And the "Add top padding" checkbox should be checked
     And the "Content border color" field should contain "#D8D8D8"
-    And the "Show content box shadow" checkbox should be checked
+    And the "Add drop shadow" checkbox should be checked
     And the "Content box shadow color" field should contain "#777777"
     And the "Search button text color" field should contain "#222222"
     And the "Search button background color" field should contain "#00DD00"
@@ -528,7 +528,7 @@ Feature: Affiliate clients
     When I follow "Header and footer"
     Then I should see the browser page titled "Header and Footer of the Search Results Page"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Header and Footer of the Search Results Page
-    And I should see "Header and Footer of the Search Results Page" in the page header
+    And I should see "Header and Footer" in the page header
     Then the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".current \{ color: blue; \}"
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
@@ -589,9 +589,9 @@ Feature: Affiliate clients
     Then the "Font family" field should contain "Helvetica, sans-serif"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
-    And the "Show content border" checkbox should be checked
+    And the "Add top padding" checkbox should be checked
     And the "Content border color" field should contain "#D8D8D8"
-    And the "Show content box shadow" checkbox should be checked
+    And the "Add drop shadow" checkbox should be checked
     And the "Content box shadow color" field should contain "#777777"
     And the "Search button text color" field should contain "#222222"
     And the "Search button background color" field should contain "#00DD00"
@@ -718,8 +718,8 @@ Feature: Affiliate clients
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
     And I select "Helvetica, sans-serif" from "Font family"
-    And I check "Show content border"
-    And I check "Show content box shadow"
+    And I check "Add top padding"
+    And I check "Add drop shadow"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -738,9 +738,9 @@ Feature: Affiliate clients
     Then the "Font family" field should contain "Helvetica, sans-serif"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
-    And the "Show content border" checkbox should be checked
+    And the "Add top padding" checkbox should be checked
     And the "Content border color" field should contain "#D8D8D8"
-    And the "Show content box shadow" checkbox should be checked
+    And the "Add drop shadow" checkbox should be checked
     And the "Content box shadow color" field should contain "#777777"
     And the "Search button text color" field should contain "#222222"
     And the "Search button background color" field should contain "#00DD00"
@@ -1027,7 +1027,7 @@ Feature: Affiliate clients
       | Footer Link URL 1       | contact.agency.gov |
     And I attach the file "features/support/very_large.jpg" to "Header image"
     And I press "Make Live"
-    Then I should see "Header and Footer of the Search Results Page" in the page header
+    Then I should see "Header and Footer" in the page header
     And I should see "Header background color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Header text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Header image file size must be under 512 KB"
@@ -1287,7 +1287,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | New header <style>h1{color:blue}</style> |
       | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                      |
     And I press "Save for Preview"
-    Then I should see "Header and Footer of the Search Results Page" in the page header
+    Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
     And I should see "HTML to customize the top of your search results page can't contain script, style or link elements."
     And I should see "HTML to customize the bottom of your search results page can't be malformed"
@@ -1314,7 +1314,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search results page.           | New header <style>h1{color:blue}</style> |
       | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                      |
     And I press "Make Live"
-    Then I should see "Header and Footer of the Search Results Page" in the page header
+    Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
     And I should see "HTML to customize the top of your search results page can't contain script, style or link elements."
     And I should see "HTML to customize the bottom of your search results page can't be malformed"
@@ -1765,9 +1765,10 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
-    And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
+    And I should see "Head Snippet"
+    And I should see "Form Snippet"
     And I should see the code for English language sites
-    And I should see "Code for content discovery and indexing"
+    And I should see "USASearch Tag Snippet"
     And I should see the stats code
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
@@ -1778,9 +1779,10 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
-    And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
+    And I should see "Head Snippet"
+    And I should see "Form Snippet"
     And I should see the code for Spanish language sites
-    And I should see "Code for content discovery and indexing"
+    And I should see "USASearch Tag Snippet"
     And I should see the stats code
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
@@ -2094,14 +2096,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets
-
-    When I follow "Text"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
-
-    When I follow "Best bets"
-    And I follow "Graphics"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Graphics
-
+    
     When I follow "Best bets"
     And I follow "View all" in the affiliate boosted contents section
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
@@ -2234,8 +2229,7 @@ Feature: Affiliate clients
     And I follow "URLs & Sitemaps"
     Then I should see the browser page titled "URLs & Sitemaps"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs & Sitemaps
-    And I should see "URLs & Sitemaps for USASearch Index" in the page header
-    And I should see a link to "sitemaps.org/protocol.html" with url for "http://www.sitemaps.org/protocol.html"
+    And I should see "URLs" in the page header
     And I should see "Sitemaps (0)"
     And I should see "Site aff site has no sitemaps"
     And I should see "Uncrawled URLs (0)"
@@ -2273,16 +2267,6 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Sidebar
     And I should see "Sidebar" in the page header
     And I should see "USASearch/Bing" in the page content
-
-    When I go to the "aff site" affiliate page
-    And I follow "Sidebar"
-    And I follow "Bing web results" in the page content
-    Then I should see "Domains to Search" in the page header
-
-    When I go to the "aff site" affiliate page
-    And I follow "Sidebar"
-    And I follow "RSS feeds" in the page content
-    Then I should see "RSS" in the page header
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"

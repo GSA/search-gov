@@ -12,7 +12,7 @@ Feature: Affiliate site domain
     And I follow "Domains"
     Then I should see the browser page titled "Domains"
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
-    And I should see "Domains to Search" in the page header
+    And I should see "Domains" in the page header
     And I should see "Site agency site has no domain entry"
 
     When the following site domains exist for the affiliate agency.gov:
@@ -22,7 +22,7 @@ Feature: Affiliate site domain
     And I go to the affiliate admin page with "agency.gov" selected
     And I follow "Domains"
     Then I should see the following table rows:
-      | Site Name       | Domain         |
+      | Label           | Domain         |
       | usa.gov         | usa.gov        |
       | The White House | whitehouse.gov |
 
@@ -47,7 +47,7 @@ Feature: Affiliate site domain
     Then I should see "Domain was successfully added."
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see the following table rows:
-      | Site Name       | Domain         |
+      | Label           | Domain         |
       | The White House | whitehouse.gov |
     When I follow "Edit"
     Then I should see the browser page titled "Edit domain"
@@ -69,7 +69,7 @@ Feature: Affiliate site domain
 
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see the following table rows:
-      | Site Name     | Domain  |
+      | Label         | Domain  |
       | US Government | usa.gov |
     And I should not see "www.usa.gov"
     When I press "Delete"
@@ -92,10 +92,10 @@ Feature: Affiliate site domain
     And I press "Upload"
     Then I should see the browser page titled "Domains"
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
-    And I should see "Domains to Search" in the page header
+    And I should see "Domains" in the page header
     And I should see "Successfully uploaded 4 domains."
     And I should see the following table rows:
-      | Site Name        | Domain         |
+      | Label            | Domain         |
       | The White House  | whitehouse.gov |
       | 3rd USA.gov site | www3.usa.gov   |
       | 2nd USA.gov site | www2.usa.gov   |
@@ -123,10 +123,10 @@ Feature: Affiliate site domain
     And I press "Upload"
     Then I should see the browser page titled "Domains"
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
-    And I should see "Domains to Search" in the page header
+    And I should see "Domains" in the page header
     And I should see "Successfully uploaded 2 domains."
     And I should see the following table rows:
-      | Site Name      | Domain         |
+      | Label          | Domain         |
       | whitehouse.gov | whitehouse.gov |
       | usa.gov        | usa.gov        |
       | GSA            | www.gsa.gov    |

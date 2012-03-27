@@ -14,7 +14,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see the browser page titled "Best Bets: Text"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Best Bets: Text
     And I should see "Best Bets: Text" in the page header
@@ -52,7 +52,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "aff site has no Best Bets: Text"
     When I follow "Add new text"
     Then I should see the browser page titled "Add a new Best Bets: Text"
@@ -89,7 +89,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Add new text"
     And I fill in "Title" with "Test"
     And I fill in "URL" with "www.test.gov"
@@ -109,7 +109,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Add new text"
     And I fill in the following:
       | Publish start date | 07/01/2012                              |
@@ -137,7 +137,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Edit"
     Then I should be on the edit affiliate boosted content page for "aff.gov"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Edit Best Bets: Text Entry
@@ -169,7 +169,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Edit"
     Then the "URL" field should contain "http://a.url.gov"
     When I fill in "URL" with "b.url.gov"
@@ -187,7 +187,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Edit"
     And I fill in "Title" with ""
     And I fill in "URL" with ""
@@ -213,7 +213,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "Displaying all 3 Best Bets: Text entries"
     And I should see "a title"
     And I should see "another title"
@@ -236,7 +236,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "a title"
     And I should see "another title"
     And I should see "one more title"
@@ -302,7 +302,6 @@ Feature: Boosted Content
     When I go to aff.gov's search page
     And I fill in "query" with "information"
     And I press "Search"
-    Then show me the page
     Then I should see "Information" in bold font
     
     When I go to bar.gov's search page
@@ -369,7 +368,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Bulk upload"
     Then I should see the browser page titled "Bulk Upload Best Bets: Text"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff <i>site</i> > Bulk Upload Best Bets: Text
@@ -381,7 +380,7 @@ Feature: Boosted Content
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
 
@@ -389,7 +388,7 @@ Feature: Boosted Content
     And I attach the file "features/support/new_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
@@ -405,7 +404,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Bulk upload"
     And I attach the file "features/support/missing_title_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
@@ -423,7 +422,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Bulk upload"
     And I attach the file "features/support/boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
@@ -432,7 +431,7 @@ Feature: Boosted Content
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
 
@@ -440,7 +439,7 @@ Feature: Boosted Content
     And I attach the file "features/support/new_boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
@@ -456,7 +455,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Bulk upload"
     And I attach the file "features/support/missing_title_boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
@@ -479,7 +478,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Best bets"
-    And I follow "Text"
+    And I follow "View all" in the affiliate boosted contents section
     And I follow "Bulk upload"
     And I attach the file "features/support/cant_read_this.doc" to "bulk_upload_file"
     And I press "Upload"

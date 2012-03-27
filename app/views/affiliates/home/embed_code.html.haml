@@ -9,6 +9,7 @@
     = render :partial => 'head_embed_code_text_area', :locals => { :locale => @affiliate.locale }
 
 %p Form Snippet
+= find_and_preserve do
   #embed_code_english.span-24
     = render :partial => 'form_embed_code_text_area', :locals => { :locale => @affiliate.locale }
 

@@ -18,7 +18,7 @@ Feature: Featured Collections
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the affiliate admin page with "site.gov" selected
     And I follow "Best bets"
-    And I follow "Graphics"
+    And I follow "View all" in the featured collections section
     Then I should see the browser page titled "Best Bets: Graphics"
     And I should see the following breadcrumbs: USASearch > Admin Center > site > Best Bets: Graphics
     And I should see "Best Bets: Graphics" in the page header
