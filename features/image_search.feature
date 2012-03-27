@@ -16,7 +16,7 @@ Feature: Image search
     And I should see "Connect with USASearch" in the connect section
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
-    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://usasearch.howto.gov" in the connect section
     And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
     When I fill in "query" with "White House"

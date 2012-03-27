@@ -1,6 +1,6 @@
 .header
   #top_logo
-    = link_to(image_tag('logo.gif', :alt => 'USASearch'), 'http://searchblog.usa.gov')
+    = link_to(image_tag('logo.gif', :alt => 'USASearch'), BLOG_URL)
   #top_nav
     = basic_header_navigation_for current_user
   = render "/shared/program_nav"

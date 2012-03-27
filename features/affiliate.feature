@@ -10,8 +10,8 @@ Feature: Affiliate clients
   Scenario: Visiting the admin center page as super admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I should see an image link to "USASearch" with url for "http://searchblog.usa.gov" in the logo
-    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
+    And I should see an image link to "USASearch" with url for "http://usasearch.howto.gov" in the logo
+    And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
     And I should see a link to "Super Admin" in the main navigation bar
     And I should not see a link to "Analytics Center" in the main navigation bar
     And I should not see a link to "Admin Center" in the main navigation bar
@@ -19,17 +19,18 @@ Feature: Affiliate clients
   Scenario: Visiting the admin center page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see a link to "Home" with url for "http://searchblog.usa.gov" in the main navigation bar
-    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the main navigation bar
-    And I should see a link to "Features" with url for "http://searchblog.usa.gov/features" in the main navigation bar
-    And I should see a link to "Success Stories" with url for "http://searchblog.usa.gov/customers" in the main navigation bar
-    And I should see a link to "HelpDesk" with url for "http://searchblog.usa.gov/help-desk" in the main navigation bar
+    Then I should see a link to "Home" with url for "http://usasearch.howto.gov" in the main navigation bar
+    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the main navigation bar
+    And I should see a link to "Features" with url for "http://usasearch.howto.gov/features" in the main navigation bar
+    And I should see a link to "Success Stories" with url for "http://usasearch.howto.gov/customers" in the main navigation bar
+    And I should see a link to "HelpDesk" with url for "http://usasearch.howto.gov/help-desk" in the main navigation bar
     And I should see a link to "Admin Center" in the main navigation bar
     And I should not see a link to "Super Admin" in the main navigation bar
     And I should not see a link to "Analytics Center" in the main navigation bar
-    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
-    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the footer
-    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the footer
+    And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
+    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the footer
+    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the footer
+    And I should see a link to "Follow Us on Twitter" with url for "http://www.twitter.com/usasearch" in the footer
     And I should see a link to "USASearch@gsa.gov" with url for "mailto:***REMOVED***" in the footer
     And I should see a link to "Office of Citizen Services & Innovative Technologies" with url for "http://www.gsa.gov/portal/category/25729" in the footer
 
@@ -41,8 +42,8 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Admin Center > USA.gov > Search API
     And I should see "Search API" in the page header
     And I should see the API key
-    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the API key box
-    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the API TOS section
+    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the API key box
+    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the API TOS section
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
@@ -1962,7 +1963,7 @@ Feature: Affiliate clients
     And the "Name*" field should contain "New User"
     And the "Email*" field should contain "newuser@usa.gov"
     And the "I have read and accept the" checkbox should not be checked
-    And I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos"
+    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the page content
     When I fill in the following:
       | Password                      | huge_secret                 |
       | Password confirmation         | huge_secret                 |
@@ -2403,7 +2404,7 @@ Feature: Affiliate clients
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following Help Links exist:
       | action_name           | help_page_url               |
-      | edit_site_information | http://searchblog.usa.gov/  |
+      | edit_site_information | http://usasearch.howto.gov/ |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Site information"

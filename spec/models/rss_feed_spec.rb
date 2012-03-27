@@ -226,10 +226,10 @@ describe RssFeed do
     let(:navigable_only) { Affiliate.find(affiliate.id).rss_feeds.navigable_only }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 1', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 3)
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 2', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 2)
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 3', :url => 'http://searchblog.usa.gov/rss', :is_navigable => true, :position => 1)
-      affiliate.rss_feeds.create!(:name => 'not navigable rss feed', :url => 'http://searchblog.usa.gov/rss', :is_navigable => false, :position => 0)
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 1', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 3)
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 2', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 2)
+      affiliate.rss_feeds.create!(:name => 'navigable rss feed 3', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 1)
+      affiliate.rss_feeds.create!(:name => 'not navigable rss feed', :url => 'http://usasearch.howto.gov/rss', :is_navigable => false, :position => 0)
     end
 
     specify { navigable_only.count.should == 3 }
@@ -242,8 +242,8 @@ describe RssFeed do
     let(:govbox_enabled) { Affiliate.find(affiliate.id).rss_feeds.govbox_enabled }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'govbox rss feed 1', :url => 'http://searchblog.usa.gov/rss', :shown_in_govbox => true)
-      affiliate.rss_feeds.create!(:name => 'not govbox rss feed', :url => 'http://searchblog.usa.gov/rss', :shown_in_govbox => false)
+      affiliate.rss_feeds.create!(:name => 'govbox rss feed 1', :url => 'http://usasearch.howto.gov/rss', :shown_in_govbox => true)
+      affiliate.rss_feeds.create!(:name => 'not govbox rss feed', :url => 'http://usasearch.howto.gov/rss', :shown_in_govbox => false)
     end
 
     it "should scope the collection to the govbox enabled RssFeeds" do
@@ -257,8 +257,8 @@ describe RssFeed do
     let(:managed) { Affiliate.find(affiliate.id).rss_feeds.managed }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'not managed', :url => 'http://searchblog.usa.gov/rss')
-      affiliate.rss_feeds.create!(:name => 'managed', :url => 'http://searchblog.usa.gov/rss', :is_managed => true)
+      affiliate.rss_feeds.create!(:name => 'not managed', :url => 'http://usasearch.howto.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'managed', :url => 'http://usasearch.howto.gov/rss', :is_managed => true)
     end
 
     specify { managed.count.should == 1 }
@@ -270,7 +270,7 @@ describe RssFeed do
     let(:videos) { Affiliate.find(affiliate.id).rss_feeds.videos }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://usasearch.howto.gov/rss')
       affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
     end
 
@@ -283,7 +283,7 @@ describe RssFeed do
     let(:non_videos) { Affiliate.find(affiliate.id).rss_feeds.non_videos }
 
     before do
-      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://searchblog.usa.gov/rss')
+      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://usasearch.howto.gov/rss')
       affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
     end
 

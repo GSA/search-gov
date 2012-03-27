@@ -5,7 +5,7 @@ Feature:  Administration
     Then I should see the browser page titled "Super Admin"
     And I should see the following breadcrumbs: USASearch > Super Admin
     And I should see "Super Admin" in the page header
-    And I should see a link to "USASearch" with url for "http://searchblog.usa.gov" in the breadcrumbs
+    And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
     And I should see "Users"
     And I should see "Affiliates"
     And I should see "SAYT Filters"

@@ -20,16 +20,16 @@ Feature: Homepage
     And I should see "Connect with USASearch" in the connect section
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
-    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://usasearch.howto.gov" in the connect section
     And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
-    And I should see a link to "Home" with url for "http://searchblog.usa.gov" in the homepage about section
-    And I should see a link to "About Us" with url for "http://searchblog.usa.gov/about-us" in the homepage about section
-    And I should see a link to "Features" with url for "http://searchblog.usa.gov/features" in the homepage about section
-    And I should see a link to "Success Stories" with url for "http://searchblog.usa.gov/customers" in the homepage about section
-    And I should see a link to "HelpDesk" with url for "http://searchblog.usa.gov/help-desk" in the homepage about section
+    And I should see a link to "Home" with url for "http://usasearch.howto.gov" in the homepage about section
+    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the homepage about section
+    And I should see a link to "Features" with url for "http://usasearch.howto.gov/features" in the homepage about section
+    And I should see a link to "Success Stories" with url for "http://usasearch.howto.gov/customers" in the homepage about section
+    And I should see a link to "HelpDesk" with url for "http://usasearch.howto.gov/help-desk" in the homepage about section
 
     When I follow "Sign Up" in the homepage about section
     Then I should see "Sign In to Use Our Services"

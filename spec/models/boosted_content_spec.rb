@@ -66,7 +66,7 @@ describe BoostedContent do
     end
 
     it "should save URL with http:// prefix when it does not start with http(s)://" do
-      url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
         boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
@@ -75,7 +75,7 @@ describe BoostedContent do
     end
 
     it "should save URL as is when it starts with http(s)://" do
-      url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
         boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
@@ -280,7 +280,7 @@ describe BoostedContent do
     end
 
     it "should not update existing boosted Contents if one of the import failed" do
-      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)      
+      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
       BoostedContent.reindex
       Sunspot.commit
 
@@ -340,7 +340,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     it "should update existing boosted Contents if the url match" do
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
- 
+
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
       basic_affiliate.reload
@@ -353,7 +353,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     it "should merge with preexisting boosted Contents" do
       basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :status => 'active', :publish_start_on => Date.current)
- 
+
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
       basic_affiliate.reload
@@ -392,7 +392,6 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         @boosted_content = BoostedContent.create!(@valid_attributes)
         Sunspot.commit
         BoostedContent.reindex
-        pp @boosted_content
       end
 
       it "should find a boosted content by keyword" do

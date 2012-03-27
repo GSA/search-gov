@@ -404,14 +404,14 @@ describe SearchesController do
     it "should have a 'Results by USASearch' logo" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
-      response.should have_selector("a", :href => 'http://searchblog.usa.gov')
+      response.should have_selector("a", :href => 'http://usasearch.howto.gov')
     end
 
     context "when locale is spanish" do
       it "should have a 'Results by USASearch' logo" do
         get :docs, :query => "pdf", :affiliate => @affiliate.name, :locale => 'es'
         response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
-        response.should have_selector("a", :href => 'http://searchblog.usa.gov')
+        response.should have_selector("a", :href => 'http://usasearch.howto.gov')
       end
     end
 
@@ -501,14 +501,14 @@ describe SearchesController do
       it "should have a 'Results by USASearch' logo" do
         get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
-        response.should have_selector("a", :href => 'http://searchblog.usa.gov')
+        response.should have_selector("a", :href => 'http://usasearch.howto.gov')
       end
 
       context "when the locale is spanish" do
         it "should show a spanish results-by logo" do
           get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w", :locale => 'es'
           response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
-          response.should have_selector("a", :href => 'http://searchblog.usa.gov')
+          response.should have_selector("a", :href => 'http://usasearch.howto.gov')
         end
       end
     end

@@ -5,7 +5,7 @@
 = render "/shared/api_key"
 %h1
   Search API
-= render_help_link(@help_link)  
+= render_help_link(@help_link)
 %p
   USASearch's Search Data API returns search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
 %p
@@ -234,5 +234,5 @@
   %h3 Terms of Service
   %p
     By using a USASearch API, you agree to our
-    = link_to 'Terms of Service', 'http://searchblog.usa.gov/tos'
+    = link_to 'Terms of Service', TOS_URL
     \.

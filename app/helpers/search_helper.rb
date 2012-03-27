@@ -134,7 +134,7 @@ module SearchHelper
     end
     content_tag(:table, raw(rows), :class=>"deep-links")
   end
-  
+
   def display_bing_result_extname_prefix(bing_result)
     display_result_extname_prefix(bing_result['unescapedUrl'])
   end
@@ -540,7 +540,7 @@ module SearchHelper
   end
 
   def search_results_by_logo(results_by_bing)
-    results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'results-by-logo') : link_to(image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'results-by-logo'), 'http://searchblog.usa.gov')
+    results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'results-by-logo') : link_to(image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'results-by-logo'), BLOG_URL)
   end
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)

@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 shared_examples "a redirect to searchblog" do
   before { get "#{path}" }
   subject { response }
-  it { should redirect_to('http://searchblog.usa.gov') }
+  it { should redirect_to('http://usasearch.howto.gov') }
   its(:status) { should == Rack::Utils.status_code(:found) }
 end
 

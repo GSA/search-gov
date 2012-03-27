@@ -92,11 +92,11 @@ module ApplicationHelper
 
   def about_usasearch_links
     links = ''
-    links << link_to('Home', 'http://searchblog.usa.gov', :class => 'first')
-    links << link_to('About Us', 'http://searchblog.usa.gov/about-us')
-    links << link_to('Features', 'http://searchblog.usa.gov/features')
-    links << link_to('Success Stories', 'http://searchblog.usa.gov/customers')
-    links << link_to('HelpDesk', 'http://searchblog.usa.gov/help-desk')
+    links << link_to('Home', BLOG_URL, :class => 'first')
+    links << link_to('About Us', "#{BLOG_URL}/about-us")
+    links << link_to('Features', "#{BLOG_URL}/features")
+    links << link_to('Success Stories', "#{BLOG_URL}/customers")
+    links << link_to('HelpDesk', "#{BLOG_URL}/help-desk")
     links << link_to('Sign Up', login_path, :class => 'last')
     raw links
   end
@@ -217,7 +217,7 @@ module ApplicationHelper
   end
 
   def breadcrumbs(breadcrumbs)
-    trail = link_to('USASearch', 'http://searchblog.usa.gov')
+    trail = link_to('USASearch', BLOG_URL)
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
     content_tag(:div, trail, :class => 'breadcrumbs')
   end
@@ -254,7 +254,7 @@ module ApplicationHelper
     tags = []
     tags << link_to('Twitter', "http://twitter.com/usasearch", :class => 'twitter', :title => 'Twitter')
     tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile') if display_mobile_or_add_this_link?
-    tags << link_to('Our Blog', "http://searchblog.usa.gov", :class => 'blog', :title => 'Our Blog')
+    tags << link_to('Our Blog', BLOG_URL, :class => 'blog', :title => 'Our Blog')
     tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share') if display_mobile_or_add_this_link?
     tags.join("\n").html_safe
   end

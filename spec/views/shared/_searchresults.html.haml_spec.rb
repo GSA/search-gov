@@ -91,7 +91,7 @@ describe "shared/_searchresults.html.haml" do
 
       it "should show the English USASearch results by logo" do
         render
-        rendered.should have_selector("a[href='http://searchblog.usa.gov'] img[src^='/images/results_by_usasearch_en.png']")
+        rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/images/results_by_usasearch_en.png']")
       end
 
       context "when the locale is Spanish" do
@@ -101,7 +101,7 @@ describe "shared/_searchresults.html.haml" do
 
         it "should show the Spanish USASearch results by logo" do
           render
-          rendered.should have_selector("a[href='http://searchblog.usa.gov'] img[src^='/images/results_by_usasearch_es.png']")
+          rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/images/results_by_usasearch_es.png']")
         end
       end
     end

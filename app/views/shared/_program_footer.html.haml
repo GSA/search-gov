@@ -1,8 +1,9 @@
 .footer
   .footer-links
     %ul
-      %li.first= link_to 'About Us', 'http://searchblog.usa.gov/about-us'
-      %li= link_to 'Terms of Service', 'http://searchblog.usa.gov/tos'
+      %li.first= link_to 'About Us', "#{BLOG_URL}/about-us"
+      %li= link_to 'Terms of Service', TOS_URL
+      %li= link_to 'Follow Us on Twitter', 'http://www.twitter.com/usasearch'
       %li= link_to 'USASearch@gsa.gov', 'mailto:***REMOVED***'
   .footer-taglines
     %p An Official Website of the US Government
@@ -11,3 +12,5 @@
       = link_to 'Office of Citizen Services & Innovative Technologies', 'http://www.gsa.gov/portal/category/25729'
     %p
       = link_to image_tag('usagov_footer_logo.png', :alt => 'USA.gov logo'), 'http://www.usa.gov'
+      = link_to image_tag('howtogov_footer_logo.png', :alt => 'HowTo.gov logo'), 'http://www.howto.gov'
+

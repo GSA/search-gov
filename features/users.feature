@@ -19,7 +19,7 @@ Feature: Users
 
   Scenario: Visiting the login page
     Given I am on the login page
-    Then I should see a link to "Terms of Service" with url for "http://searchblog.usa.gov/tos" in the registration form
+    Then I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the registration form
 
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the login page
@@ -251,8 +251,8 @@ Feature: Users
     When I follow "+ add an additional contact"
     Then I should be on the user account page
     And I should see "You have multiple sites associated with your account. To add an additional contact, follow these steps"
-    When I follow "Affiliate Center"
-    Then I should be on the the affiliate admin page
+    When I follow "Admin Center" in the page content
+    Then I should see the browser page titled "Admin Center"
 
   Scenario: User does not see "+ add additional contact when no affiliates are associated with the account"
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

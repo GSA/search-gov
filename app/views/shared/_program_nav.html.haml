@@ -1,10 +1,10 @@
 #main_nav
   .main-menu
     %ul
-      %li.first= link_to 'Home', 'http://searchblog.usa.gov'
-      %li= link_to 'About Us', 'http://searchblog.usa.gov/about-us'
-      %li= link_to 'Features', 'http://searchblog.usa.gov/features'
-      %li= link_to 'Success Stories', 'http://searchblog.usa.gov/customers'
-      %li= link_to 'HelpDesk', 'http://searchblog.usa.gov/help-desk'
+      %li.first= link_to 'Home', BLOG_URL
+      %li= link_to 'About Us', "#{BLOG_URL}/about-us"
+      %li= link_to 'Features', "#{BLOG_URL}/features"
+      %li= link_to 'Success Stories', "#{BLOG_URL}/customers"
+      %li= link_to 'HelpDesk', "#{BLOG_URL}/help-desk"
   .user-menu
     = render_user_navigation(current_user)

@@ -25,6 +25,6 @@
       %li.tos
         = f.check_box :terms_of_service, {:class => 'checkbox'}
         = f.label :terms_of_service, "I have read and accept the &nbsp;".html_safe, :class => 'tos-label'
-        = link_to 'Terms of Service', 'http://searchblog.usa.gov/tos', :target => 'blank'
+        = link_to 'Terms of Service', TOS_URL, :target => 'blank'
     = f.submit "Complete registration for a new account", :class => 'btn-register form-submit-button'
 
