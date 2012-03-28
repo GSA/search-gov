@@ -1,3 +1,9 @@
+.left-nav-label
+  %h2 Label
+  .sidebar-items
+    = sidebar_form.label :left_nav_label, "Sidebar Label", :class => 'hide'
+    = sidebar_form.text_field :left_nav_label, :maxlength => 20
+
 .by-source
   %h2 By format/topic
   .sidebar-items

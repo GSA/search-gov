@@ -10,6 +10,18 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I press "Search"
     Then I should see "Please enter search term(s)"
+    
+  Scenario: Setting a Left-nav Label
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"  
+    When I go to the affiliate admin page with "bar.gov" selected
+    And I follow "Sidebar"
+    And I fill in "Sidebar Label" with "MY AWESOME LABEL"
+    And I press "Save"
+    When I go to bar.gov's search page
+    Then I should see "MY AWESOME LABEL"
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:

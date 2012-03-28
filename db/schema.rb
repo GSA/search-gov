@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120328155859) do
     t.string   "image_search_label",                :limit => 20,                                      :null => false
     t.boolean  "is_time_filter_enabled",                                  :default => true
     t.boolean  "is_related_searches_enabled",                             :default => true
+    t.string   "left_nav_label",                    :limit => 20
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
