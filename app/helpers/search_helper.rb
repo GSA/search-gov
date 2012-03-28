@@ -46,7 +46,7 @@ module SearchHelper
 
   def tracked_click_thumbnail_link(result, onmousedown_attr)
     link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow"}
+    link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow"
   end
 
   def thumbnail_image_tag(result, max_width=nil, max_height=nil)
