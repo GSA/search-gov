@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe ImageSearchesController do
   fixtures :affiliates
   describe "#index" do
-    context "when searching as an affiliate" do
+    context "when searching as an affiliate and the query is present" do
       let(:image_search) { mock(ImageSearch, :query => 'weather') }
 
       before do
@@ -51,6 +51,21 @@ describe ImageSearchesController do
           response.body.should == search_results_json
         end
       end
+    end
+
+    context "when searching as an affiliate and the query is blank" do
+      let(:affiliate) { mock_model(Affiliate) }
+      let(:image_search) { mock(ImageSearch, :query => nil) }
+
+      before do
+        Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
+        affiliate.should_receive(:build_search_results_page_title)
+        ImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => nil)).and_return(image_search)
+        image_search.should_receive(:run)
+        get :index, :affiliate => "agency100"
+      end
+
+      it { should respond_with :success }
     end
 
     context "when searching via the API" do
