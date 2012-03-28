@@ -453,21 +453,21 @@ describe SearchHelper do
 
     it "should generate onmousedown with affiliate name" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
     end
 
     it "should generate onmousedown with blank affiliate name if affiliate is nil" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, "", "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, "", "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.display_bing_image_result_links(@result, @search, nil, @index, :image)
     end
 
     it "should contain tracked links" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr).and_return("thumbnail_image_link_content")
       helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
@@ -481,37 +481,15 @@ describe SearchHelper do
     it "should use spelling suggestion as the query if one exists" do
       @search = mock('search', {:query => 'satalate', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
       helper.should_receive(:onmousedown_attribute_for_image_click).
-          with("satellite", @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+          with("satellite", @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
           and_return(@onmousedown_attr)
       helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
     end
   end
 
-  describe "#display_thumbnail_image_link" do
-    before do
-      @result = { 'Url' => 'http://aHost.gov/aPath',
-                  'title' => 'aTitle',
-                  'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 280, 'Height' => 180 },
-                  'MediaUrl' => 'aMediaUrl' }
-      @query = "NASA's"
-      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i})
-      @index = 100
-      @onmousedown_attr = 'onmousedown attribute'
-    end
-
-    it "should contain tracked thumbnail image link" do
-      helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, nil, "IMAG", @search.queried_at_seconds, :image).
-            and_return(@onmousedown_attr)
-      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, 140, 90).and_return("thumbnail_image_link_content")
-      content = helper.display_thumbnail_image_link(@result, @search, @index, :image, 140, 90)
-      content.should contain("thumbnail_image_link_content")
-    end
-  end
-
   describe "#tracked_click_thumbnail_image_link" do
     before do
-      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
+      @result = { 'MediaUrl' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
       @onmousedown_attr = "onmousedown_attribute"
     end
 
@@ -532,7 +510,7 @@ describe SearchHelper do
 
     it "should be a link to the result thumbnail url" do
       content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
-      content.should have_selector("a[href='aMediaUrl'][onmousedown='#{@onmousedown_attr}']")
+      content.should have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']")
     end
   end
 

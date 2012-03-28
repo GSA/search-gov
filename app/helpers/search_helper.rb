@@ -31,19 +31,14 @@ module SearchHelper
   def display_bing_image_result_links(result, search, affiliate, index, vertical)
     affiliate_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
-    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds, vertical)
+    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["Url"], index, affiliate_name, "IMAG", search.queried_at_seconds, vertical)
     html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
     raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
 
-  def display_thumbnail_image_link(result, search, index, vertical, max_width = nil, max_height = nil)
-    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, nil, "IMAG", search.queried_at_seconds, vertical)
-    tracked_click_thumbnail_image_link(result, onmousedown_attribute, max_width, max_height)
-  end
-
   def tracked_click_thumbnail_image_link(result, onmousedown_attr, max_width = nil, max_height = nil)
     raw link_to thumbnail_image_tag(result, max_width, max_height),
-            result["Url"],
+            result["MediaUrl"],
             :onmousedown => onmousedown_attr,
             :alt => result["title"],
             :rel => "no-follow"
@@ -51,7 +46,7 @@ module SearchHelper
 
   def tracked_click_thumbnail_link(result, onmousedown_attr)
     link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    link_to link, result["MediaUrl"], :onmousedown => onmousedown_attr, :rel => "no-follow"
+    link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow"}
   end
 
   def thumbnail_image_tag(result, max_width=nil, max_height=nil)
