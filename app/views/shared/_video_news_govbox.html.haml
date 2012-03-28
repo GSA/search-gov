@@ -3,7 +3,7 @@
     .govbox-wrapper-top
     .govbox-wrapper-middle
       %h3.alt
-        = link_to_unless(search.affiliate.rss_feeds.videos.navigable_only.empty?, I18n.t(:video_news_results, :query => search.query, :affiliate => search.affiliate.display_name), video_news_search_path(:query => search.query, :affiliate => search.affiliate.name, :tbs => 'y'))
+        = link_to_unless(search.affiliate.rss_feeds.videos.navigable_only.empty?, I18n.t(:video_news_results, :query => search.query, :affiliate => search.affiliate.display_name), video_news_search_path(:query => search.query, :affiliate => search.affiliate.name))
         %span.recommended-by
           = t :by
           = @affiliate.display_name

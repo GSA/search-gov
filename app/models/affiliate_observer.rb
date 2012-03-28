@@ -18,7 +18,7 @@ class AffiliateObserver < ActiveRecord::Observer
         affiliate.rss_feeds.create!(:name => 'Videos', :is_managed => true, :url => youtube_url)
       elsif managed_video_rss_feed.url != youtube_url
         managed_video_rss_feed.news_items.destroy_all
-        managed_video_rss_feed.update_attributes!(:url => youtube_url)
+        managed_video_rss_feed.update_attributes!(:url => youtube_url, :last_crawled_at => nil, :last_crawl_status => nil)
       end
     end
   end

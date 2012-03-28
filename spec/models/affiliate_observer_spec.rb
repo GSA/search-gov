@@ -46,7 +46,10 @@ describe AffiliateObserver do
           news_items = mock('news items')
           managed_video_rss_feed.should_receive(:news_items).and_return(news_items)
           news_items.should_receive(:destroy_all)
-          managed_video_rss_feed.should_receive(:update_attributes!)
+          managed_video_rss_feed.should_receive(:update_attributes!).with(
+              hash_including(:url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=usagov&orderby=published',
+                             :last_crawled_at => nil,
+                             :last_crawl_status => nil))
 
           affiliate.stub_chain(:rss_feeds, :managed, :videos, :first) { managed_video_rss_feed }
           affiliate.update_attributes!(:youtube_handle => 'USAgov')

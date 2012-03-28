@@ -69,21 +69,25 @@ Feature: Affiliate Search
     And I should have the following query string:
       |affiliate|bar.gov   |
       |query    |first item|
-      |tbs      |y         |
       |locale   |en        |
       |m        |false     |
-    Then I should see "First item"
+    And I should see "First item"
     And I should see "First video item"
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Search"
     And I follow "Videos of 'first item'"
-    Then I should see "Videos" in the left column
+    Then I should have the following query string:
+      |affiliate|bar.gov   |
+      |query    |first item|
+      |locale   |en        |
+      |m        |false     |
+    And I should see "Videos" in the left column
     And I should not see a link to "Videos"
     Then I should see "First video item"
     And I should not see "First item"
-    When I follow "All Time" in the left column
+    When I follow "Last year" in the left column
     Then I should see "Videos" in the left column
     And I should not see a link to "Videos"
     And I should see "First video item"
