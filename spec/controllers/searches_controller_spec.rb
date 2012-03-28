@@ -479,6 +479,11 @@ describe SearchesController do
       end
     end
 
+    context "when the query is blank and total is > 0" do
+      before { get :news, :query => "", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w" }
+      it { should assign_to(:page_title).with('Current White House Blog - NPS Site Search Results') }
+    end
+
     describe "rendering the view" do
       render_views
 
@@ -515,23 +520,36 @@ describe SearchesController do
   end
 
   describe "#video_news" do
-    fixtures :affiliates, :rss_feeds, :news_items
-
+    fixtures :affiliates
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:video_news_search) { mock('video news search') }
 
-    before do
-      NewsItem.reindex
-      VideoNewsSearch.should_receive(:new).and_return(video_news_search)
-      video_news_search.should_receive(:run)
-      get :video_news, :query => "element", :affiliate => affiliate.name, :tbs => "w"
+    context "when the query is not blank" do
+      before do
+        VideoNewsSearch.should_receive(:new).and_return(video_news_search)
+        video_news_search.should_receive(:run)
+        get :video_news, :query => "element", :affiliate => affiliate.name, :tbs => "w"
+      end
+
+      it { should assign_to(:search).with(video_news_search) }
+      it { should assign_to(:page_title).with("Current element - #{affiliate.display_name} Search Results") }
+      it { should assign_to(:search_vertical).with(:news) }
+      it { should assign_to(:form_path).with(video_news_search_path) }
+      it { should render_template(:news) }
+      it { should render_template("layouts/affiliate") }
     end
 
-    it { should assign_to(:search).with(video_news_search) }
-    it { should assign_to(:page_title).with("Current element - #{affiliate.display_name} Search Results") }
-    it { should assign_to(:search_vertical).with(:news) }
-    it { should assign_to(:form_path).with(video_news_search_path) }
-    it { should render_template(:news) }
-    it { should render_template("layouts/affiliate") }
+    context "when the query is blank and total is > 0" do
+      before do
+        VideoNewsSearch.should_receive(:new).and_return(video_news_search)
+        video_news_search.should_receive(:run)
+        rss_feed = mock('rss feed', :name => 'Videos')
+        video_news_search.should_receive(:rss_feed).at_least(:once).and_return(rss_feed)
+        video_news_search.should_receive(:total).and_return(1)
+        get :video_news, :query => "", :affiliate => affiliate.name, :channel => '100', :tbs => "w"
+      end
+
+      it { should assign_to(:page_title).with('Current Videos - NPS Site Search Results') }
+    end
   end
 end

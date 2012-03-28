@@ -41,7 +41,7 @@ class Search
   # This does your search.  It should
   def run
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
-    @error_message = (I18n.translate :empty_query) and return false if @query.blank?
+    @error_message = (I18n.translate :empty_query) and return false unless @query.present? or allow_blank_query?
 
     response = search
     handle_response(response)
@@ -80,8 +80,12 @@ class Search
     return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)
   end
-  
+
   def paginate(items)
     WillPaginate::Collection.create(@page, @per_page, [@per_page * 100, @total].min) { |pager| pager.replace(items) }
+  end
+
+  def allow_blank_query?
+    false
   end
 end

@@ -41,7 +41,7 @@ class SearchesController < ApplicationController
     @search = NewsSearch.new(params.merge(:affiliate => @affiliate))
     @search.run
     @form_path = news_search_path
-    @page_title = params[:query]
+    handle_news_search
     handle_affiliate_search
     @search_vertical = :news
     request.format = :html
@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
     @search = VideoNewsSearch.new(params.merge(:affiliate => @affiliate))
     @search.run
     @form_path = video_news_search_path
-    @page_title = params[:query]
+    handle_news_search
     handle_affiliate_search
     @search_vertical = :news
     request.format = :html
@@ -136,5 +136,13 @@ class SearchesController < ApplicationController
 
   def is_advanced_search?
     params[:action] == "advanced"
+  end
+
+  def handle_news_search
+    if params[:query].present?
+      @page_title = params[:query]
+    elsif @search.rss_feed and @search.total > 0
+      @page_title = @search.rss_feed.name
+    end
   end
 end

@@ -48,4 +48,8 @@ class NewsSearch < Search
     modules << "SREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end
+
+  def allow_blank_query?
+    true
+  end
 end

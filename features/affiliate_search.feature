@@ -35,7 +35,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     And feed "Videos" has the following news items:
-      | link                                       | title             | guid       | published_ago | description                         |
+      | link                                       | title             | guid       | published_ago | description                              |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed |
     And feed "Hide Me" has the following news items:
@@ -580,4 +580,68 @@ Feature: Affiliate Search
     When I go to aff.gov's search page
     And I follow "Topics" in the left column
     Then I should see "Sorry, no results found"
+
+  Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | contact_name | locale |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name   | url                                                                  | is_navigable | shown_in_govbox |
+      | Press  | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
+    And feed "Videos" has the following news items:
+      | link                                       | title            | guid       | published_ago | description                             |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
+    When I am on bar.gov's search page
+    And I follow "Press" in the left column
+    Then I should see the browser page titled "Press - bar site Search Results"
+    And I should see "Results 1-2 of about 2"
+    And I should not see "Results 1-2 of about 2 for"
+    And I should see 2 news results
+    And I should see "First item"
+    And I should see "Second item"
+
+    When I am on bar.gov's search page
+    And I fill in "query" with "first item"
+    And I press "Search"
+    And I follow "Videos of 'first item'"
+    And I fill in "query" with ""
+    And I press "Search"
+    Then I should see the browser page titled "Videos - bar site Search Results"
+
+  Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | contact_name | locale |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+    And affiliate "es.bar.gov" has the following RSS feeds:
+      | name           | url                                                                  | is_navigable | shown_in_govbox |
+      | Press          | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title               | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | First Spanish item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second Spanish item | uuid2 | day           | item Next news item for the feed  |
+    And feed "Spanish Videos" has the following news items:
+      | link                                       | title            | guid       | published_ago | description                             |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
+    When I am on es.bar.gov's search page
+    And I follow "Press" in the left column
+    Then I should see the browser page titled "Press - Spanish bar site Search Results"
+    And I should see "Resultados 1-2 de aproximadamente 2"
+    And I should not see "Results 1-2 of aproximadamente 2 de"
+    And I should see 2 news results
+    And I should see "First Spanish item"
+    And I should see "Second Spanish item"
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "first item"
+    And I press "Buscar"
+    And I follow "Videos de 'first item'"
+    And I fill in "query" with ""
+    And I press "Buscar"
+    Then I should see the browser page titled "Spanish Videos - Spanish bar site Search Results"
 

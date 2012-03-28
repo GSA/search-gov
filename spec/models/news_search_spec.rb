@@ -88,18 +88,18 @@ describe NewsSearch do
         @search = NewsSearch.new(:query => "   ", :affiliate => affiliate)
       end
 
-      it "should return false when searching" do
-        @search.run.should be_false
+      it "should return true when searching" do
+        @search.run.should be_true
       end
 
-      it "should have 0 results" do
+      it "should have more than 0 results" do
         @search.run
-        @search.results.size.should == 0
+        @search.results.size.should > 0
       end
 
-      it "should set error message" do
+      it "should not set error message" do
         @search.run
-        @search.error_message.should_not be_nil
+        @search.error_message.should be_nil
       end
     end
 

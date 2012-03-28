@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe NewsItem do
-  fixtures :rss_feeds, :news_items
+  fixtures :affiliates, :rss_feeds, :news_items
   before do
     @valid_attributes = {
       :link => 'http://www.whitehouse.gov/latest_story.html',
@@ -99,13 +99,19 @@ describe NewsItem do
       end
     end
 
-    context "when query contains special characters" do
+    context "when query contains only special characters" do
       ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-        specify { NewsItem.search_for(query, [@blog, @gallery]).should be_nil }
+        specify { NewsItem.search_for(query, [@blog, @gallery]).total.should == 2 }
       end
 
       %w(+++science --science -+science).each do |query|
         specify { NewsItem.search_for(query, [@blog, @gallery]).total.should == 1 }
+      end
+    end
+
+    context "when query is blank" do
+      it "should return with all items" do
+        NewsItem.search_for('', [@blog, @gallery]).total.should == 2
       end
     end
   end

@@ -283,7 +283,11 @@ module SearchHelper
   end
 
   def make_summary_p(a, b, total, query)
-    content_tag(:p, t(:results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query))
+    if query.blank? and total > 0
+      content_tag(:p, t(:results_summary_with_blank_query, :from => a, :to => b, :total => number_with_delimiter(total)))
+    else
+      content_tag(:p, t(:results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query))
+    end
   end
 
   def agency_url_matches_by_locale(result_url, agency, locale)

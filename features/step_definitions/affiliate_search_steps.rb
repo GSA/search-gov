@@ -72,3 +72,9 @@ Then /^I should see (.+)'s date in the (English|Spanish) search results$/ do |du
   date_string = locale == 'Spanish' ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")
   page.should have_content(date_string)
 end
+
+Then /^I should see (\d+) news results$/ do |count|
+  page.should have_selector(".newsitem", :count => count)
+end
+
+
