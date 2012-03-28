@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120321220026) do
+ActiveRecord::Schema.define(:version => 20120328155859) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -21,19 +21,18 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
   end
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                                                                     :null => false
+    t.string   "name",                                                                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_staged_content",                                      :default => false,               :null => false
+    t.boolean  "has_staged_content",                                      :default => false,           :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
     t.boolean  "is_sayt_enabled",                                         :default => true
-    t.string   "related_topics_setting",            :limit => 30,         :default => "affiliate_enabled"
     t.integer  "staged_affiliate_template_id"
-    t.string   "display_name",                                                                             :null => false
-    t.string   "search_results_page_title",                                                                :null => false
-    t.string   "staged_search_results_page_title",                                                         :null => false
-    t.boolean  "exclude_webtrends",                                       :default => false,               :null => false
+    t.string   "display_name",                                                                         :null => false
+    t.string   "search_results_page_title",                                                            :null => false
+    t.string   "staged_search_results_page_title",                                                     :null => false
+    t.boolean  "exclude_webtrends",                                       :default => false,           :null => false
     t.boolean  "is_popular_links_enabled",                                :default => true
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
@@ -50,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
     t.string   "top_searches_label",                                      :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
-    t.string   "locale",                                                  :default => "en",                :null => false
+    t.string   "locale",                                                  :default => "en",            :null => false
     t.text     "scope_ids"
     t.boolean  "is_agency_govbox_enabled",                                :default => false
     t.boolean  "is_medline_govbox_enabled",                               :default => false
@@ -70,9 +69,9 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
     t.integer  "staged_header_image_file_size"
     t.datetime "staged_header_image_updated_at"
     t.boolean  "staged_uses_one_serp"
-    t.integer  "fetch_concurrency",                                       :default => 1,                   :null => false
-    t.string   "default_search_label",              :limit => 20,                                          :null => false
-    t.string   "image_search_label",                :limit => 20,                                          :null => false
+    t.integer  "fetch_concurrency",                                       :default => 1,               :null => false
+    t.string   "default_search_label",              :limit => 20,                                      :null => false
+    t.string   "image_search_label",                :limit => 20,                                      :null => false
     t.boolean  "is_time_filter_enabled",                                  :default => true
     t.boolean  "is_related_searches_enabled",                             :default => true
   end
@@ -350,7 +349,7 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|
