@@ -129,7 +129,7 @@ Feature: Affiliate clients
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Content Sources"
     When I fill in the following:
-      | Enter the domain or url | agency.gov                                                                   |
+      | Enter the domain or URL | agency.gov                                                                   |
       | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/485.xml                       |
       | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
       | RSS Feed Name           | Recalls Feed                                                                 |
@@ -253,12 +253,12 @@ Feature: Affiliate clients
       | Site name (Required)                          | My awesome agency |
       | Site Handle (visible to searchers in the URL) | agencygov         |
     And I press "Next"
-    And I fill in "Enter the domain or url" with "notavaliddomain"
+    And I fill in "Enter the domain or URL" with "notavaliddomain"
     And I press "Next"
     Then I should see "Domain is invalid"
 
     When I fill in the following:
-      | Enter the domain or url | www1.mydomain.gov |
+      | Enter the domain or URL | www1.mydomain.gov |
     And I press "Next"
     And I should see "Get the code"
 

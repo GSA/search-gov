@@ -5,11 +5,9 @@
   %ul{:style => 'list-style-type: none;'}
     %li
       = f.label :display_name, "Site name (Required)"
-      %br
       = f.text_field :display_name, :class => 'txt'
     %li
       = f.label :name, "Site Handle (visible to searchers in the URL)"
-      %br
       = f.text_field :name, :class => 'txt'
     %li
       = f.label :locale, "Site Language"

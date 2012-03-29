@@ -8,9 +8,9 @@ module AffiliateHelper
   def site_wizard_header(current_step)
     steps = {:basic_settings => 0, :content_sources => 1, :get_the_code => 2}
     step_contents = ["Step 1. Basic Settings", "Step 2. Set up site", "Step 3. Get the code"]
-    image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}", :style => 'width: 680px;')
+    image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}")
   end
-  
+
   def render_help_link(help_link)
     link_to("Help?", help_link.help_page_url, :target => "_blank") if help_link
   end

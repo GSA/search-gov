@@ -1,7 +1,9 @@
 @import "blueprint"
 @import "compass/css3/border-radius"
 @import "compass/css3/inline-block"
+@import "compass/typography/text/replacement"
 @import "compass/utilities/general/clearfix"
+
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
   :text-decoration underline
@@ -652,10 +654,15 @@ table.generic-table
   h2.sub-title
     margin-top: 10px
   .next-button
-    background: url(/images/btn_next.png) no-repeat 0 0
-    behavior: url(/javascripts/iepngfix.htc)
-    height: 40px
-    width: 100px
+    +border-radius
+    background-color: #12396A
+    +background-image(linear-gradient(#19539D, #12396A))
+    border: 0
+    color: white
+    font:
+      size: 1.15em
+      weight: bold
+    padding: 5px 20px 7px
   .steps_header
     margin: 0
     img
@@ -869,6 +876,8 @@ table.generic-table
   .get-the-code
     ul
       margin: 0 8px 8px
+    li
+      margin-bottom: 10px
 
 .search-form-wrapper
   clear: both
@@ -1464,24 +1473,56 @@ h3.api-item
   p
     margin-bottom: 0.5em
 
-.site-domains .sitemaps .rss-feeds
-  float: left
-  .domain
-    clear: both
-    float: left
-    margin-bottom: 10px
-  .url
-    clear: both
-    float: left
-    margin-bottom: 10px
-
-.add-domain-wrapper .add-sitemap-wrapper .add-rss-feed-wrapper
-  clear: both
-  float: right
-  padding-right: 10px
-
-#new_affiliate #add_domain #add-sitemap #add-rss-feed
-  float: right
-
 #urls_and_sitemaps
   +clearfix
+
+.site-domains .domain, .sitemaps .url
+  input.txt
+    width: 580px
+
+.new_affiliate
+  ul
+    padding-left: 0
+  input.txt
+    display: block
+    margin-top: 0
+
+#add_sitemap, #add_domain
+  +hide-text
+  +inline-block
+  margin-left: 5px
+.add-icon
+  +border-radius(9px)
+  background: #12396A url(/images/icons-white.png) no-repeat left center
+  height: 18px
+  width: 18px
+
+* html .add-icon
+  background: #12396A url(/images/icons-white.png) no-repeat left top
+
+.edit_affiliate .rss-feeds
+  col.name
+    width: 30%
+  col.url
+    width: 70%
+  th.url
+    #add_rss_feed
+      +hide-text
+      +inline-block
+      float: right
+  table
+    border: 1px solid #A9A9A9
+    table-layout: fixed
+    width: 98%
+  th
+    background-color: #d3d3d3
+    border: 1px solid #A9A9A9
+    padding: 5px
+  td
+    border: 1px solid #A9A9A9
+    padding: 5px 7px 5px 5px
+    input
+      margin: 0 auto
+      padding-left: 0
+      padding-right: 0
+      width: 100%

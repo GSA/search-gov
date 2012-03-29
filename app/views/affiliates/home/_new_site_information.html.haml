@@ -1,7 +1,7 @@
 .site-info
   %h2.sub-title
     Site information
-  = form_for @affiliate, :html => {:class=>"generic-form"} do |f|
+  = form_for @affiliate do |f|
     = f.error_messages(:header_message => nil, :class => "error")
     = render :partial => "site_information_form", :object => f
     = f.submit "Next", :class => 'form-submit-button next-button'
