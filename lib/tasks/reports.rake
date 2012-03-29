@@ -113,6 +113,16 @@ namespace :usasearch do
       monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)
       output = "#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}"
       output_to_zipfile(zip_filename, "total_queries_by_profile.txt", "Month,English,Spanish,Affilitates,Total", output)
+      
+      # total queries for English site, Spanish site, usagov affiliate, gobiernousa affiliate and all other affilaites
+      totals = []
+      english_total = DailyQueryStat.find_by_sql(["SELECT sum(times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?)", start_date, end_date, "en"])
+      spanish_total = DailyQueryStat.find_by_sql(["SELECT sum(times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?)", start_date, end_date, "es"])
+      usagov_total = DailyQueryStat.find_by_sql(["SELECT sum(times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = ?)", start_date, end_date, "usagov"])
+      gobiernousa_total = DailyQueryStat.find_by_sql(["SELECT sum(times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = ?)", start_date, end_date, "gobiernousa"])
+      all_other_affiliates = DailyQueryStat.find_by_sql(["SELECT sum(times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND NOT affiliate IN ('usasearch.gov', 'usagov', 'gobiernousa'))", start_date, end_date])
+      output = "#{english_total.first.cnt},#{spanish_total.first.cnt},#{usagov_total.first.cnt},#{gobiernousa_total.first.cnt},#{all_other_affiliates.first.cnt}"
+      output_to_zipfile(zip_filename, "total_queries_report.txt", "English,Spanish,usagov,gobiernousa,affiliates", output)
 
       Emailer.monthly_report(zip_filename).deliver
 
