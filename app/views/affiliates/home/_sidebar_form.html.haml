@@ -1,69 +1,70 @@
-.left-nav-label
-  %h2 Label
-  .sidebar-items
+.column-2
+  .side-note-image= image_tag('/images/side_notes/sidebar_1.png')
+.column-1
+  .left-nav-label
+    %h2 Label
     = sidebar_form.label :left_nav_label, "Sidebar Label", :class => 'hide'
     = sidebar_form.text_field :left_nav_label, :maxlength => 20
-
-.by-source
-  %h2 By format/topic
-  .sidebar-items
-    = image_tag('/images/side_notes/sidebar_1.png', :class => 'side-note')
-    %table{:style => 'width: 75%;'}
-      %colgroup
-        %col{ :class => 'name' }
-        %col{ :class => 'source' }
-        %col{ :class => 'actions' }
-      %thead
-        %tr.nodrag.nodrop
-          %th{ :colspan => 3 }
-            = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
-            = link_to("Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last')unless @affiliate.uses_bing_results?
-      %tbody
-        %tr.column-header.nodrag.nodrop
-          %th Display name
-          %th Source
-          %th Show in sidebar
-        %tr.row-item.nodrag.nodrop
-          %td.name
-            = sidebar_form.label :default_search_label, nil, :class => 'hide'
-            = sidebar_form.text_field :default_search_label, :maxlength => 20
-          %td.source= @affiliate.display_results_source
-          %td.actions
-        %tr.row-item.nodrag.nodrop
-          %td.name
-            = sidebar_form.label :image_search_label, nil, :class => 'hide'
-            = sidebar_form.text_field :image_search_label, :maxlength => 20
-          %td.source Bing
-          %td.actions
-            = sidebar_form.label :is_image_search_enabled, nil, :class => 'hide'
-            = sidebar_form.check_box :is_image_search_enabled
-        - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
-          = sidebar_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
-            %tr.row-item.rss-feed
-              %td.name.draggable
-                = rss_feed_form.hidden_field :position, { :value => index, :class => 'position' }
-                = rss_feed_form.label :name, "RSS feed #{index}", :class => 'hide'
-                = rss_feed_form.text_field :name
-              %td.source= link_to 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
-              %td.actions
-                = rss_feed_form.label :is_navigable, "Is RSS feed #{index} navigable", :class => 'hide'
-                = rss_feed_form.check_box :is_navigable
-        - @affiliate.document_collections.each_with_index do |collection, index|
-          = sidebar_form.fields_for :document_collections, collection do |collection_form|
-            %tr.row-item.collection
-              %td.name.draggable
-                = collection_form.hidden_field :position, { :value => index, :class => 'position' }
-                = collection_form.label :name, "Document collection #{index}", :class => 'hide'
-                = collection_form.text_field :name
-              %td.source= link_to 'Collection', affiliate_document_collection_path(@affiliate, collection)
-              %td.actions
-                = collection_form.label :is_navigable, "Is document collection #{index} navigable", :class => 'hide'
-                = collection_form.check_box :is_navigable
+  .by-source
+    %h2 By format/topic
+    .sidebar-items
+      %table
+        %colgroup
+          %col{ :class => 'name' }
+          %col{ :class => 'source' }
+          %col{ :class => 'actions' }
+        %thead
+          %tr.nodrag.nodrop
+            %th{ :colspan => 3 }
+              = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
+              = link_to("Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last')unless @affiliate.uses_bing_results?
+        %tbody
+          %tr.column-header.nodrag.nodrop
+            %th Display name
+            %th Source
+            %th Show in sidebar
+          %tr.row-item.nodrag.nodrop
+            %td.name
+              = sidebar_form.label :default_search_label, nil, :class => 'hide'
+              = sidebar_form.text_field :default_search_label, :maxlength => 20
+            %td.source= @affiliate.display_results_source
+            %td.actions
+          %tr.row-item.nodrag.nodrop
+            %td.name
+              = sidebar_form.label :image_search_label, nil, :class => 'hide'
+              = sidebar_form.text_field :image_search_label, :maxlength => 20
+            %td.source Bing
+            %td.actions
+              = sidebar_form.label :is_image_search_enabled, nil, :class => 'hide'
+              = sidebar_form.check_box :is_image_search_enabled
+          - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
+            = sidebar_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
+              %tr.row-item.rss-feed
+                %td.name.draggable
+                  = rss_feed_form.hidden_field :position, { :value => index, :class => 'position' }
+                  = rss_feed_form.label :name, "RSS feed #{index}", :class => 'hide'
+                  = rss_feed_form.text_field :name
+                %td.source= link_to 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
+                %td.actions
+                  = rss_feed_form.label :is_navigable, "Is RSS feed #{index} navigable", :class => 'hide'
+                  = rss_feed_form.check_box :is_navigable
+          - @affiliate.document_collections.each_with_index do |collection, index|
+            = sidebar_form.fields_for :document_collections, collection do |collection_form|
+              %tr.row-item.collection
+                %td.name.draggable
+                  = collection_form.hidden_field :position, { :value => index, :class => 'position' }
+                  = collection_form.label :name, "Document collection #{index}", :class => 'hide'
+                  = collection_form.text_field :name
+                %td.source= link_to 'Collection', affiliate_document_collection_path(@affiliate, collection)
+                %td.actions
+                  = collection_form.label :is_navigable, "Is document collection #{index} navigable", :class => 'hide'
+                  = collection_form.check_box :is_navigable
 
 .by-time-period
   %h2 By time period
-  .sidebar-subsection
-    = image_tag('/images/side_notes/sidebar_2.png', :class => 'side-note')
+  .column-2
+    .side-note-image= image_tag('/images/side_notes/sidebar_2.png')
+  .column-1
     %p By default, searchers may narow results for all #{link_to 'RSS feeds', affiliate_rss_feeds_path(@affiliate)} by time period.
     = sidebar_form.check_box :is_time_filter_enabled
     = sidebar_form.label :is_time_filter_enabled, 'Show by time period module', :class => 'checkbox-label'

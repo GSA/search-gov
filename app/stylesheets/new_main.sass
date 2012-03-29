@@ -444,6 +444,7 @@ a
 
 * html
   .outer-container
+    margin: 0
     width: 1080px
   .content .container
     width: 790px
@@ -851,13 +852,9 @@ table.generic-table
       font-weight: normal
     #add_another_link
       float: right
-    .by-source, .by-time-period
-      margin-bottom: 20px
-      h2
-        +inline-block
-      .sidebar-subsection
-        +clearfix
-        margin-bottom: 10px
+    .left-nav-label, .by-source, .by-time-period
+      +clearfix
+      margin-bottom: 10px
     img.side-note
       float: right
       margin-left: 10px
@@ -1103,7 +1100,7 @@ h3.api-item
         :background url(/images/backgrounds/bg_blue_gradient.gif) repeat-x 0 0
         :color white
 
-.boosted-content-list
+.boosted-contents .boosted-content-list
   clear: both
 
 .crawled-url-list, .uncrawled-url-list

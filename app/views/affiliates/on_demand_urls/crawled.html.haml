@@ -1,7 +1,7 @@
 .crawled-urls
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs and Sitemaps', urls_and_sitemaps_affiliate_path(@affiliate)), "Previously Crawled URLs"])
   %h1 Previously Crawled URLs
-  = render_help_link(@help_link)  
+  = render_help_link(@help_link)
   .crawled-url-list
     %table
       %colgroup
@@ -15,5 +15,5 @@
             = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
             - unless @crawled_urls.blank?
               %span= page_entries_info @crawled_urls, :entry_name => 'Previously crawled URL', :html => false
-      = render :partial => 'crawled_urls', :locals => { :shorten_url_length => 30 }
+      = render :partial => 'crawled_urls', :locals => { :shorten_url_length => 40 }
     = will_paginate @crawled_urls

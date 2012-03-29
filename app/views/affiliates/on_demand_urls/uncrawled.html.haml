@@ -1,7 +1,7 @@
 .uncrawled-urls
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs and Sitemaps', urls_and_sitemaps_affiliate_path(@affiliate)), "Uncrawled URLs"])
   %h1 Uncrawled URLs
-  = render_help_link(@help_link)  
+  = render_help_link(@help_link)
   .uncrawled-url-list
     %table
       %colgroup
@@ -14,5 +14,5 @@
               %span= page_entries_info @uncrawled_urls, :entry_name => 'Uncrawled URL', :html => false
             = link_to "Bulk upload", bulk_new_affiliate_on_demand_urls_path(@affiliate), :class => 'add-link'
             = link_to "Add new URL", new_affiliate_on_demand_url_path(@affiliate), :class => 'add-link last'
-      = render :partial => 'uncrawled_urls', :locals => { :shorten_url_length => 30 }
+      = render :partial => 'uncrawled_urls', :locals => { :shorten_url_length => 40 }
     = will_paginate @uncrawled_urls

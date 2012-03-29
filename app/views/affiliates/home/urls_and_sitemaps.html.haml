@@ -3,56 +3,55 @@
   %h1 URLs
   = render_help_link(@help_link)
 
-  .column-1
-    %p
-      USASearch offers a number of ways for you to tell us about URLs for the web pages that you want to include in the USASearch index.
+  %p
+    USASearch offers a number of ways for you to tell us about URLs for the web pages that you want to include in the USASearch index.
 
-    %h2 1. USASearch Tag
-    %p
-      = find_and_preserve do
-        #embed_stats_code.span-24
-          = render :partial => 'embed_stats_code_text_area'
+  %h2 1. USASearch Tag
+  %p
+    = find_and_preserve do
+      #embed_stats_code.span-24
+        = render :partial => 'embed_stats_code_text_area'
 
-    %h2 2. Sitemap
-    .sitemap-list
-      %table
-        %colgroup
-          %col{ :class => 'url' }
-          %col{ :class => 'actions' }
-        %thead
-          %tr
-            %th{ :colspan => 2 }
-              = link_to("View all", affiliate_sitemaps_path(@affiliate), :class => 'header-link') unless @sitemaps.empty?
-              = link_to "Add new Sitemap", new_affiliate_sitemap_path(@affiliate), :class => 'add-link last'
-              %span Sitemaps (#{@sitemaps.total_entries})
-        = render :partial => 'affiliates/sitemaps/list'
+  %h2 2. Sitemap
+  .sitemap-list
+    %table
+      %colgroup
+        %col{ :class => 'url' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 2 }
+            = link_to("View all", affiliate_sitemaps_path(@affiliate), :class => 'header-link') unless @sitemaps.empty?
+            = link_to "Add new Sitemap", new_affiliate_sitemap_path(@affiliate), :class => 'add-link last'
+            %span Sitemaps (#{@sitemaps.total_entries})
+      = render :partial => 'affiliates/sitemaps/list'
 
-    %h2 3. Specific URLs
-    .uncrawled-url-list
-      %table
-        %colgroup
-          %col{ :class => 'url' }
-          %col{ :class => 'actions' }
-        %thead
-          %tr
-            %th{:colspan => 2}
-              = link_to "Bulk upload", bulk_new_affiliate_on_demand_urls_path(@affiliate), :class => 'add-link'
-              = link_to "Add new URL", new_affiliate_on_demand_url_path(@affiliate), :class => 'add-link last'
-              = link_to("View all", uncrawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link last') unless @uncrawled_urls.empty?
-              %span Uncrawled URLs (#{@uncrawled_urls.total_entries})
-            = render :partial => 'affiliates/on_demand_urls/uncrawled_urls', :locals => { :shorten_url_length => 20 }
+  %h2 3. Specific URLs
+  .uncrawled-url-list
+    %table
+      %colgroup
+        %col{ :class => 'url' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{:colspan => 2}
+            = link_to "Bulk upload", bulk_new_affiliate_on_demand_urls_path(@affiliate), :class => 'add-link'
+            = link_to "Add new URL", new_affiliate_on_demand_url_path(@affiliate), :class => 'add-link last'
+            = link_to("View all", uncrawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link last') unless @uncrawled_urls.empty?
+            %span Uncrawled URLs (#{@uncrawled_urls.total_entries})
+          = render :partial => 'affiliates/on_demand_urls/uncrawled_urls', :locals => { :shorten_url_length => 40 }
 
-    .crawled-url-list
-      %table
-        %colgroup
-          %col{ :class => 'url' }
-          %col{ :class => 'last-crawled-at' }
-          %col{ :class => 'last-crawl-status' }
-          %col{ :class => 'actions' }
-        %thead
-          %tr
-            %th{:colspan => 4}
-              = link_to("View all", crawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link') unless @crawled_urls.empty?
-              = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
-              %span Previously Crawled URLs (#{@crawled_urls.total_entries})
-        = render :partial => 'affiliates/on_demand_urls/crawled_urls', :locals => { :shorten_url_length => 20 }
+  .crawled-url-list
+    %table
+      %colgroup
+        %col{ :class => 'url' }
+        %col{ :class => 'last-crawled-at' }
+        %col{ :class => 'last-crawl-status' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{:colspan => 4}
+            = link_to("View all", crawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link') unless @crawled_urls.empty?
+            = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
+            %span Previously Crawled URLs (#{@crawled_urls.total_entries})
+      = render :partial => 'affiliates/on_demand_urls/crawled_urls', :locals => { :shorten_url_length => 40 }
