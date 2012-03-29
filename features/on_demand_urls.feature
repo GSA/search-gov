@@ -8,15 +8,15 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following IndexedDocuments exist:
-      | title                | description                     | url                       | affiliate | last_crawled_at | last_crawl_status |
-      | Space Suit Evolution | description text for space suit | http://aff.gov/space-suit | aff.gov   | 11/02/2011      | OK                |
-      | Rocket Evolution     | description text for rocket     | http://aff.gov/rocket     | aff.gov   | 11/01/2011      | 404 Not Found     |
+      | title                | description                     | url                                             | affiliate | last_crawled_at | last_crawl_status |
+      | Space Suit Evolution | description text for space suit | http://aff.gov/extremelysuperlongurl/space-suit | aff.gov   | 11/02/2011      | OK                |
+      | Rocket Evolution     | description text for rocket     | http://aff.gov/extremelysuperlongurl/rocket     | aff.gov   | 11/01/2011      | 404 Not Found     |
     And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
-    Then I should see "aff.gov/.../36"
-    And I should not see "aff.gov/.../35"
+    Then I should see "aff.gov/crawled/36"
+    And I should not see "aff.gov/crawled/35"
     And I should not see "aff.gov/space-suit"
 
     When I follow "View all" in the previously crawled URL list
@@ -28,8 +28,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see "aff.gov/crawled/10"
     And I should see the following table rows:
       | URL                | Last Crawled | Status |
-      | aff.gov/space-suit | 11/02/2011   | OK     |
-      | aff.gov/rocket     | 11/01/2011   | Error  |
+      | aff.gov/.../space-suit | 11/02/2011   | OK     |
+      | aff.gov/.../rocket     | 11/01/2011   | Error  |
 
     When there are 40 uncrawled IndexedDocuments for "aff.gov"
     And I go to the "aff site" affiliate page
