@@ -1,6 +1,7 @@
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
+  include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
 
@@ -47,7 +48,7 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields, :set_search_labels, :strip_social_media_columns
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels, :strip_social_media_columns
   before_update :clear_existing_staged_header_image
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
@@ -65,7 +66,7 @@ class Affiliate < ActiveRecord::Base
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
-  
+
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(script style link)
 
@@ -714,5 +715,12 @@ class Affiliate < ActiveRecord::Base
     self.flickr_url = flickr_url.strip unless flickr_url.nil?
     self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
     self.youtube_handle = youtube_handle.strip unless youtube_handle.nil?
+  end
+
+  def sanitize_staged_header_footer
+    if staged_uses_one_serp?
+      self.staged_header = strip_comments(staged_header) unless staged_header.blank?
+      self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
+    end
   end
 end

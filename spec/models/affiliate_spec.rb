@@ -416,6 +416,84 @@ describe Affiliate do
       affiliate.twitter_handle.should == 'whitehouse'
       affiliate.youtube_handle.should == 'whitehouse'
     end
+
+    context "on oneserp site" do
+      it "should remove comments from staged_header and staged_footer fields" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        html_with_comments = <<-HTML
+        <div class="level1">
+          <!--[if IE]>
+          <script src="http://cdn.agency.gov/script.js"></script>
+          According to the conditional comment this is IE<br />
+          <![endif]-->
+          <span>level1</span>
+          <div class="level2">
+            <span>level2</span>
+            <!--[if IE]>
+            <script src="http://cdn.agency.gov/script.js"></script>
+            According to the conditional comment this is IE<br />
+            <![endif]-->
+            <div class="level3">
+              <!--[if IE]>
+              <script src="http://cdn.agency.gov/script.js"></script>
+              According to the conditional comment this is IE<br />
+              <![endif]-->
+              <span>level3</span>
+            </div>
+          </div>
+        </div>
+        HTML
+
+        html_without_comments = <<-HTML
+        <div class="level1">
+          <span>level1</span>
+          <div class="level2">
+            <span>level2</span>
+            <div class="level3">
+              <span>level3</span>
+            </div>
+          </div>
+        </div>
+        HTML
+        affiliate.update_attributes!(:staged_header => html_with_comments, :staged_footer => html_with_comments)
+        Affiliate.find(affiliate.id).staged_header.squish.should == html_without_comments.squish
+        Affiliate.find(affiliate.id).staged_footer.squish.should == html_without_comments.squish
+      end
+    end
+
+    context "on legacy_template site" do
+      it "should not remove comments from staged_header and staged_footer fields" do
+        affiliate = Affiliate.new(@valid_create_attributes)
+        affiliate.uses_one_serp = false
+        affiliate.save!
+        html_with_comments = <<-HTML
+        <div class="level1">
+          <!--[if IE]>
+          <script src="http://cdn.agency.gov/script.js"></script>
+          According to the conditional comment this is IE<br />
+          <![endif]-->
+          <span>level1</span>
+          <div class="level2">
+            <span>level2</span>
+            <!--[if IE]>
+            <script src="http://cdn.agency.gov/script.js"></script>
+            According to the conditional comment this is IE<br />
+            <![endif]-->
+            <div class="level3">
+              <!--[if IE]>
+              <script src="http://cdn.agency.gov/script.js"></script>
+              According to the conditional comment this is IE<br />
+              <![endif]-->
+              <span>level3</span>
+            </div>
+          </div>
+        </div>
+        HTML
+        affiliate.update_attributes!(:staged_header => html_with_comments, :staged_footer => html_with_comments)
+        Affiliate.find(affiliate.id).staged_header.should == html_with_comments
+        Affiliate.find(affiliate.id).staged_footer.should == html_with_comments
+      end
+    end
   end
 
   describe "validations" do

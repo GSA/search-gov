@@ -1246,10 +1246,10 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Header and footer"
     And I fill in the following:
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }        |
-      | Enter HTML to customize the top of your search results page.           | New header                       |
-      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css                      |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }                             |
+      | Enter HTML to customize the top of your search results page.           | New header <!--[if IE]>Hey I am using IE <![endif]--> |
+      | Enter HTML to customize the bottom of your search results page.        | New footer <!--[if IE]>Hey I am using IE <![endif]--> |
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -1265,6 +1265,8 @@ Feature: Affiliate clients
     And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".staged \{ color: green; \}"
     And the "Enter HTML to customize the top of your search results page." field should contain "New header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "New footer"
+    And the "Enter HTML to customize the top of your search results page." field should not contain "Hey I am using IE"
+    And the "Enter HTML to customize the bottom of your search results page." field should not contain "Hey I am using IE"
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
@@ -2409,7 +2411,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Site information"
     Then I should see "help-icon.png" image
-    
+
     When I follow "RSS"
     Then I should not see "help-icon.png" image
 
