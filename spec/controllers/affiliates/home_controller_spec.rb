@@ -1433,4 +1433,112 @@ describe Affiliates::HomeController do
       it { should render_template("affiliates/home/edit_results_modules") }
     end
   end
+
+  describe "do GET on #edit_external_tracking" do
+    context "when not logged in" do
+      before do
+        get :edit_external_tracking, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :edit_external_tracking, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :edit_external_tracking, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        get :edit_external_tracking, :id => affiliate.id
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should respond_with(:success) }
+    end
+  end
+
+  describe "do PUT on #update_external_tracking" do
+    context "when not logged in" do
+      before do
+        put :update_external_tracking, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        put :update_external_tracking, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        put :update_external_tracking, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the affiliate manager and successfully updated the site" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_not_receive(:update_attributes_for_live)
+        affiliate.should_not_receive(:update_attributes_for_staging)
+        affiliate.should_receive(:update_attributes).with(hash_including(:ga_web_property_id => 'WEB_PROPERTY_ID')).and_return(true)
+
+        put :update_external_tracking, :id => affiliate.id, :affiliate => { :ga_web_property_id => 'WEB_PROPERTY_ID' }, :commit => 'Save'
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash.to(/Site was successfully updated/) }
+      it { should redirect_to(affiliate_path(affiliate)) }
+    end
+
+    context "when logged in as the affiliate manager and failed to update the site" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_not_receive(:update_attributes_for_live)
+        affiliate.should_not_receive(:update_attributes_for_staging)
+        affiliate.should_receive(:update_attributes).with(hash_including(:ga_web_property_id => 'WEB_PROPERTY_ID')).and_return(false)
+
+        put :update_external_tracking, :id => affiliate.id, :affiliate => { :ga_web_property_id => 'WEB_PROPERTY_ID' }, :commit => 'Save'
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should render_template("affiliates/home/edit_external_tracking") }
+    end
+  end
 end

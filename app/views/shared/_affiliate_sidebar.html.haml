@@ -52,5 +52,6 @@
             %li
               = link_to "Hosted Sitemaps", hosted_sitemaps_affiliate_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
+            %li= link_to "3rd Party Tracking", edit_external_tracking_affiliate_path(@affiliate)
             %li= link_to "My account", account_path
             %li= link_to "Manage users", affiliate_users_path(@affiliate)

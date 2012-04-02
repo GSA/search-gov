@@ -86,7 +86,11 @@ Given /^the following Affiliates exist:$/ do |table|
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
       :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
       :results_source => hash["results_source"] || "bing",
-      :is_related_searches_enabled => hash["is_related_searches_enabled"] || true
+      :is_related_searches_enabled => hash["is_related_searches_enabled"] || true,
+      :wt_javascript_url => hash['wt_javascript_url'],
+      :wt_dcsimg_hash => hash['wt_dcsimg_hash'],
+      :wt_dcssip => hash['wt_dcssip'],
+      :ga_web_property_id => hash['ga_web_property_id']
     )
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!

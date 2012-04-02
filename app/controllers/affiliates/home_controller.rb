@@ -20,7 +20,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     :update_sidebar => {
         :edit_action => :edit_sidebar },
     :update_results_modules => {
-        :edit_action => :edit_results_modules }
+        :edit_action => :edit_results_modules },
+    :update_external_tracking => {
+      :edit_action => :edit_external_tracking }
   }
 
   def index
@@ -234,6 +236,13 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_results_modules
+    update
+  end
+
+  def edit_external_tracking
+  end
+
+  def update_external_tracking
     update
   end
 

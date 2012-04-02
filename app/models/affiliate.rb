@@ -44,11 +44,11 @@ class Affiliate < ActiveRecord::Base
   has_many :document_collections, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links, :validate_web_trends_properties
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels, :strip_social_media_columns
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_header_image
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
@@ -436,6 +436,10 @@ class Affiliate < ActiveRecord::Base
     self.external_css_url = nil
   end
 
+  def has_custom_webtrends_properties?
+    wt_javascript_url.present? and wt_dcsimg_hash.present? and wt_dcssip.present?
+  end
+
   private
 
   def batch_size
@@ -471,12 +475,13 @@ class Affiliate < ActiveRecord::Base
   end
 
   def ensure_http_prefix
-    self.favicon_url = "http://#{self.favicon_url}" unless self.favicon_url.blank? or self.favicon_url =~ %r{^http(s?)://}i
-    self.staged_favicon_url = "http://#{self.staged_favicon_url}" unless self.staged_favicon_url.blank? or self.staged_favicon_url =~ %r{^http(s?)://}i
-    self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
-    self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
+    self.favicon_url = "http://#{favicon_url}" unless favicon_url.blank? or favicon_url =~ %r{^http(s?)://}i
+    self.staged_favicon_url = "http://#{staged_favicon_url}" unless staged_favicon_url.blank? or staged_favicon_url =~ %r{^http(s?)://}i
+    self.external_css_url = "http://#{external_css_url}" unless external_css_url.blank? or external_css_url =~ %r{^http(s?)://}i
+    self.staged_external_css_url = "http://#{staged_external_css_url}" unless staged_external_css_url.blank? or staged_external_css_url =~ %r{^http(s?)://}i
     self.managed_header_home_url = "http://#{managed_header_home_url}" unless managed_header_home_url.blank? or managed_header_home_url =~ %r{^http(s?)://}i
     self.staged_managed_header_home_url = "http://#{staged_managed_header_home_url}" unless staged_managed_header_home_url.blank? or staged_managed_header_home_url =~ %r{^http(s?)://}i
+    self.wt_javascript_url = "http://#{wt_javascript_url}" unless wt_javascript_url.blank? or wt_javascript_url =~ %r{^http(s?)://}i
   end
 
   def validate_css_property_hash
@@ -710,17 +715,27 @@ class Affiliate < ActiveRecord::Base
     self.image_search_label = I18n.translate(:images, :locale => locale) if image_search_label.blank?
   end
 
-  def strip_social_media_columns
+  def strip_text_columns
     self.facebook_handle = facebook_handle.strip unless facebook_handle.nil?
     self.flickr_url = flickr_url.strip unless flickr_url.nil?
     self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
     self.youtube_handle = youtube_handle.strip unless youtube_handle.nil?
+    self.wt_javascript_url = wt_javascript_url.strip unless wt_javascript_url.nil?
+    self.wt_dcsimg_hash = wt_dcsimg_hash.strip unless wt_dcsimg_hash.nil?
+    self.wt_dcssip = wt_dcssip.strip unless wt_dcssip.nil?
+    self.ga_web_property_id = ga_web_property_id.strip unless ga_web_property_id.nil?
   end
 
   def sanitize_staged_header_footer
     if staged_uses_one_serp?
       self.staged_header = strip_comments(staged_header) unless staged_header.blank?
       self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
+    end
+  end
+
+  def validate_web_trends_properties
+    if (wt_javascript_url.present? or wt_dcsimg_hash.present? or wt_dcssip.present?) and !has_custom_webtrends_properties?
+      errors.add(:base, 'JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends.')
     end
   end
 end

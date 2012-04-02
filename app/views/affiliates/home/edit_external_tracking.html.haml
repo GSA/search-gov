@@ -1,0 +1,27 @@
+= content_for :title, "3rd Party Tracking - "
+.site-specific
+  = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), '3rd Party Tracking'] )
+  %h1 3rd Party Tracking
+  = render_help_link(@help_link)
+  .site-info
+    = form_for @affiliate, :url => { :action => :update_external_tracking }, :html => { :class=>"generic-form external-tracking-form" } do |f|
+      = f.error_messages(:header_message => nil, :class => "error")
+      %h2 WebTrends
+      %ul
+        %li
+          = f.label :wt_javascript_url, "JavaScript URL"
+          = f.text_field :wt_javascript_url, :class => 'txt'
+        %li
+          = f.label :wt_dcsimg_hash, "DCSIMG Hash"
+          = f.text_field :wt_dcsimg_hash, :limit => 50, :class => 'txt'
+        %li
+          = f.label :wt_dcssip, "DCSSIP"
+          = f.text_field :wt_dcssip, :limit => 50, :class => 'txt'
+      %h2 Google Analytics
+      %ul
+        %li
+          = f.label :ga_web_property_id, "Web Property ID (UA-XXXXX-X)"
+          = f.text_field :ga_web_property_id, :limit => 20, :class => 'txt'
+      .button-wrapper
+        = f.submit "Save", :id => "save"
+        = link_to "Cancel", affiliate_path(@affiliate)

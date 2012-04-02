@@ -75,6 +75,10 @@ ActiveRecord::Schema.define(:version => 20120403191301) do
     t.boolean  "is_time_filter_enabled",                                  :default => true
     t.boolean  "is_related_searches_enabled",                             :default => true
     t.string   "left_nav_label",                    :limit => 20
+    t.string   "wt_javascript_url"
+    t.string   "wt_dcsimg_hash",                    :limit => 50
+    t.string   "wt_dcssip",                         :limit => 50
+    t.string   "ga_web_property_id",                :limit => 20
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

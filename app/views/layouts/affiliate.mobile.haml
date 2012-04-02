@@ -28,4 +28,6 @@
       #contentWrapper
         %h1.page-title #{@affiliate.display_name} #{t(:mobile)}
         = yield
-    = render "/shared/webtrends_affiliates.html.haml" unless @affiliate.exclude_webtrends?
+    = render "/shared/webtrends_affiliates" unless @affiliate.exclude_webtrends?
+    = render "/shared/affiliate_custom_webtrends" if @affiliate.has_custom_webtrends_properties?
+    = render "/shared/affiliate_custom_google_analytics" if @affiliate.ga_web_property_id.present?
