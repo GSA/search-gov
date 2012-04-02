@@ -2408,7 +2408,10 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Site information"
-    Then I should see "Help?"
+    Then I should see "help-icon.png" image
+    
+    When I follow "RSS"
+    Then I should not see "help-icon.png" image
 
   Scenario: Visiting the results modules
     Given the following Affiliates exist:

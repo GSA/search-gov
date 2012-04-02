@@ -294,6 +294,10 @@ Then /^I should see "([^"]*)" image$/ do |image_file_name|
   page.should have_selector("img[src*='#{image_file_name}']")
 end
 
+Then /^I should not see "([^"]*)" image$/ do |image_file_name|
+  page.should_not have_selector("img[src*='#{image_file_name}']")
+end
+
 Then /^I should not see the SERP header$/ do
   page.should_not have_selector('#header')
 end

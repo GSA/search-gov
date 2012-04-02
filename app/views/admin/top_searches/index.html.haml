@@ -4,6 +4,7 @@
 - widget_url = @affiliate ? trending_searches_widget_url(:aid => @affiliate.id) : trending_searches_widget_url
 %h2
   Top Searches
+= render_help_link(@help_link)
 = form_tag form_path, :method => :post do
   - if @affiliate
     = label_tag 'top_searches_label', 'Label'
