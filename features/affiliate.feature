@@ -1285,23 +1285,23 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Header and footer"
     And I fill in the following:
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css         |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }           |
-      | Enter HTML to customize the top of your search results page.           | New header <style>h1{color:blue}</style> |
-      | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                      |
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css                                  |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }                                    |
+      | Enter HTML to customize the top of your search results page.           | <html><body>New header <style>h1{color:blue}</style></body><html> |
+      | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                                               |
     And I press "Save for Preview"
     Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
-    And I should see "HTML to customize the top of your search results page can't contain script, style or link elements."
-    And I should see "HTML to customize the bottom of your search results page can't be malformed"
+    And I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the bottom of your search results page is invalid"
     When I fill in the following:
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                  |
-      | Enter HTML to customize the top of your search results page.           | <div>New header</a>                       |
-      | Enter HTML to customize the bottom of your search results page.        | <style>h1{color:green}</style> New footer |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                                            |
+      | Enter HTML to customize the top of your search results page.           | <div>New header</a>                                                 |
+      | Enter HTML to customize the bottom of your search results page.        | <html><body><style>h1{color:green}</style> New footer</body></html> |
     And I press "Save for Preview"
     Then I should see "Colors must have either three or six digits"
-    And I should see "HTML to customize the top of your search results page can't be malformed"
-    And I should see "HTML to customize the bottom of your search results page can't contain script, style or link elements."
+    And I should see "HTML to customize the top of your search results page is invalid"
+    And I should see "HTML to customize the bottom of your search results page can't contain script, style, link elements."
 
   Scenario: Editing custom header/footer with problem and make it live
     Given the following Affiliates exist:
@@ -1312,23 +1312,23 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Header and footer"
     And I fill in the following:
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css         |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }           |
-      | Enter HTML to customize the top of your search results page.           | New header <style>h1{color:blue}</style> |
-      | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                      |
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css                                   |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }                                     |
+      | Enter HTML to customize the top of your search results page.           | <html><body>New header <style>h1{color:blue}</style></body></html> |
+      | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                                                |
     And I press "Make Live"
     Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
-    And I should see "HTML to customize the top of your search results page can't contain script, style or link elements."
-    And I should see "HTML to customize the bottom of your search results page can't be malformed"
+    And I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the bottom of your search results page is invalid"
     When I fill in the following:
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                  |
-      | Enter HTML to customize the top of your search results page.           | <div>New header</a>                       |
-      | Enter HTML to customize the bottom of your search results page.        | <style>h1{color:green}</style> New footer |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                                            |
+      | Enter HTML to customize the top of your search results page.           | <div>New header</a>                                                 |
+      | Enter HTML to customize the bottom of your search results page.        | <html><body><style>h1{color:green}</style> New footer</body></html> |
     And I press "Make Live"
     Then I should see "Colors must have either three or six digits"
-    And I should see "HTML to customize the top of your search results page can't be malformed"
-    And I should see "HTML to customize the bottom of your search results page can't contain script, style or link elements."
+    And I should see "HTML to customize the top of your search results page is invalid"
+    And I should see "HTML to customize the bottom of your search results page can't contain script, style, link elements."
 
   Scenario: Updating header/footer option from custom to managed and make it live
     Given the following Affiliates exist:

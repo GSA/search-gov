@@ -622,8 +622,8 @@ describe Affiliate do
                                             :uses_managed_header_footer => false,
                                             :staged_uses_managed_header_footer => false) }
         it "should not allow script, style or link elements in staged header or staged footer" do
-          header_error_message = %q(HTML to customize the top of your search results page can't contain script, style or link elements)
-          footer_error_message = %q(HTML to customize the bottom of your search results page can't contain script, style or link elements)
+          header_error_message = %q(HTML to customize the top of your search results page can't contain script, style, link elements)
+          footer_error_message = %q(HTML to customize the bottom of your search results page can't contain script, style, link elements)
           affiliate.is_updating_staged_header_footer = true
 
           html_with_script = <<-HTML
@@ -652,9 +652,16 @@ describe Affiliate do
         end
 
         it "should not allow malformed HTML in staged header or staged footer" do
-          header_error_message = %q(HTML to customize the top of your search results page can't be malformed)
-          footer_error_message = %q(HTML to customize the bottom of your search results page can't be malformed)
+          header_error_message = %q(HTML to customize the top of your search results page is invalid)
+          footer_error_message = %q(HTML to customize the bottom of your search results page is invalid)
           affiliate.is_updating_staged_header_footer = true
+
+          html_with_body = <<-HTML
+            <html><body><h1>html with script</h1></body></html>
+          HTML
+          affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body).should be_false
+          affiliate.errors[:base].join.should match(/#{header_error_message}/)
+          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
 
           malformed_html_fragments = <<-HTML
             <link href="http://cdn.agency.gov/link.css"></script>

@@ -626,20 +626,20 @@ class Affiliate < ActiveRecord::Base
     return unless is_updating_staged_header_footer and staged_uses_one_serp? and !staged_uses_managed_header_footer?
     validate_header_results = validate_html staged_header
     if validate_header_results[:has_malformed_html]
-      errors.add(:base, "HTML to customize the top of your search results page can't be malformed: #{validate_header_results[:error_message]}")
+      errors.add(:base, "HTML to customize the top of your search results page is invalid: #{validate_header_results[:error_message]}")
     end
 
     if validate_header_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the top of your search results page can't contain script, style or link elements.")
+      errors.add(:base, "HTML to customize the top of your search results page can't contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
     end
 
     validate_footer_results = validate_html staged_footer
     if validate_footer_results[:has_malformed_html]
-      errors.add(:base, "HTML to customize the bottom of your search results page can't be malformed: #{validate_footer_results[:error_message]}")
+      errors.add(:base, "HTML to customize the bottom of your search results page is invalid: #{validate_footer_results[:error_message]}")
     end
 
     if validate_footer_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the bottom of your search results page can't contain script, style or link elements.")
+      errors.add(:base, "HTML to customize the bottom of your search results page can't contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
     end
   end
 
@@ -647,7 +647,7 @@ class Affiliate < ActiveRecord::Base
     validate_html_results = {}
     has_banned_elements = false
     unless html.blank?
-      html_doc = Nokogiri::HTML html
+      html_doc = Nokogiri::HTML::DocumentFragment.parse html
       unless html_doc.errors.empty?
         validate_html_results[:has_malformed_html] = true
         validate_html_results[:error_message] = html_doc.errors.join('. ') + '.' unless html_doc.errors.blank?
