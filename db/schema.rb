@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328155859) do
+ActiveRecord::Schema.define(:version => 20120403191301) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -350,7 +350,7 @@ ActiveRecord::Schema.define(:version => 20120328155859) do
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|
@@ -476,6 +476,7 @@ ActiveRecord::Schema.define(:version => 20120328155859) do
     t.datetime "created_at"
   end
 
+  add_index "news_items", ["link"], :name => "index_news_items_on_link"
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
 
   create_table "popular_urls", :force => true do |t|

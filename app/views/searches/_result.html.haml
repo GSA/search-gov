@@ -5,5 +5,7 @@
     %h2
       = display_bing_result_extname_prefix(result)
       = display_bing_result_title(result, search, affiliate, index, @search_vertical)
+    - if result["publishedAt"]
+      %h4= time_ago_in_words(result["publishedAt"])
     %h3= display_result_description(result, search.query, affiliate)
     %h3.result-url= display_bing_result_links(result, search, affiliate, index, @search_vertical)    

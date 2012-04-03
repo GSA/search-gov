@@ -204,7 +204,8 @@ class WebSearch < Search
           'unescapedUrl' => result.url,
           'content' => content,
           'cacheUrl' => (result.CacheUrl rescue nil),
-          'deepLinks' => result["DeepLinks"]
+          'deepLinks' => result["DeepLinks"],
+          'publishedAt' => lookup_published_at_by_url(result.url)
         }
       else
         nil
@@ -339,6 +340,11 @@ class WebSearch < Search
     parsed_url = URI::parse(url) rescue nil
     return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
     @affiliate.excluded_urls.any? { |excluded_url| url == excluded_url.url }
+  end
+  
+  def lookup_published_at_by_url(url)
+    news_item = NewsItem.find_by_link(url)
+    news_item.nil? ? nil : news_item.published_at
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)

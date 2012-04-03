@@ -205,6 +205,21 @@ Feature: Affiliate Search
     And I should see youtube thumbnail for "First Spanish video item"
     And I should see yesterday's date in the Spanish search results
 
+  Scenario: Searching a domain with Bing results that match a specific news item
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | usa.gov |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name          | url                                                                  | is_navigable | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                  |
+      | http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&USERTYPE=1&LANGUAGE=en&COUNTRY=US&ARTICLE_ID=11351       | First item  | uuid1 | day           | item First news item for the feed |
+    When I am on bar.gov's search page
+    And I fill in "query" with "president"
+    And I press "Search"
+    Then I should see "1 day ago"
+
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
