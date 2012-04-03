@@ -6,7 +6,4 @@
       = display_bing_result_extname_prefix(result)
       = display_bing_result_title(result, search, affiliate, index, @search_vertical)
     %h3= display_result_description(result, search.query, affiliate)
-    %h3.result-url= display_bing_result_links(result, search, affiliate, index, @search_vertical)
-    - if index == 0 && search.first_page?
-      = display_deep_links_for(result, search, affiliate, @search_vertical)
-    
+    %h3.result-url= display_bing_result_links(result, search, affiliate, index, @search_vertical)    

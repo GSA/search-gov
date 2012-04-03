@@ -60,7 +60,7 @@ describe "shared/_searchresults.html.haml" do
 
     it "should show deep links on the first page only" do
       render
-      rendered.should have_selector('table', :class => 'deep-links', :count => 1)
+      rendered.should_not have_selector('table', :class => 'deep-links')
     end
 
     it "should show the Bing logo" do
@@ -115,7 +115,7 @@ describe "shared/_searchresults.html.haml" do
 
       it "should not show any deep links" do
         render
-        rendered.should_not have_selector('table', :class => 'deep_links')
+        rendered.should_not have_selector('table', :class => 'deep-links')
       end
 
       context "when boosted contents are present" do
