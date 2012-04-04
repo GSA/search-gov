@@ -2,6 +2,7 @@
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Results Modules'] )
 .site-specific
   %h1 Results Modules
+  = render_help_link(@help_link)
   .site-info
     = form_for @affiliate, :url => { :action => :update_results_modules }, :html => { :class=>"generic-form results-modules-form" } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
