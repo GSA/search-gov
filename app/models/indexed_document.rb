@@ -194,7 +194,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def uncrawled_urls(affiliate, page = 1, per_page = 30)
-      paginate(:conditions => ['affiliate_id = ? AND ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'id DESC', :per_page => per_page)
+      paginate(:conditions => ['affiliate_id = ? AND last_crawled_at IS NULL', affiliate.id], :page => page, :per_page => per_page)
     end
 
     def crawled_urls(affiliate, page = 1, per_page = 30)

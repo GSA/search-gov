@@ -35,8 +35,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I go to the "aff site" affiliate page
     And I follow "URLs & Sitemaps"
     And I follow "View all" in the uncrawled URL list
-    Then I should see "aff.gov/uncrawled/36"
-    And I should not see "aff.gov/uncrawled/10"
+    Then I should see "aff.gov/uncrawled/20"
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
@@ -69,8 +68,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following IndexedDocuments exist:
       | url                   | affiliate |
-      | http://removeme.mil   | aff.gov   |
       | http://removeme2.mil   | aff.gov  |
+      | http://removeme.mil   | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
