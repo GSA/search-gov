@@ -4,12 +4,12 @@
     .side-note-image= image_tag "side_notes/collections.png"
   .column-1
     %h1 Collections
-    = render_help_link(@help_link)  
+    = render_help_link(@help_link)
     .document-collection-list
       %table
         %colgroup
-          %col{ :class => 'name' }
-          %col{ :class => 'actions' }
+          %col
+          %col.actions
         %thead
           %tr
             %th{ :colspan => 2 }
