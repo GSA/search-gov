@@ -45,8 +45,8 @@ describe Affiliate do
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
-    it { should have_attached_file :header_image }
-    it { should have_attached_file :staged_header_image }
+    it { should validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
+    it { should validate_attachment_content_type(:staged_page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:staged_header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
@@ -362,7 +362,33 @@ describe Affiliate do
                                                        {:position => 2, :title => 'Contact Us', :url => 'http://contact.agency.gov'}]
     end
 
-    context "when there is an existing image" do
+    context "when there is an existing staged page background image" do
+      let(:staged_page_background_image) { mock('staged page background image') }
+
+      before do
+        affiliate.should_receive(:staged_page_background_image?).and_return(true)
+        affiliate.should_receive(:staged_page_background_image).at_least(:once).and_return(staged_page_background_image)
+      end
+
+      context "when marking an existing staged page background image for deletion" do
+        it "should clear existing staged page background image" do
+          staged_page_background_image.should_receive(:dirty?).and_return(false)
+          staged_page_background_image.should_receive(:clear)
+          affiliate.update_attributes!(:mark_staged_page_background_image_for_deletion => '1')
+        end
+      end
+
+      context "when uploading a new staged page background image" do
+        it "should not clear the existing staged page background image" do
+          staged_page_background_image.should_receive(:dirty?).and_return(true)
+          staged_page_background_image.should_not_receive(:clear)
+          affiliate.update_attributes!(@update_params)
+        end
+      end
+    end
+
+
+    context "when there is an existing staged header image" do
       let(:staged_header_image) { mock('staged header image') }
 
       before do
@@ -378,8 +404,8 @@ describe Affiliate do
         end
       end
 
-      context "when uploading a new image" do
-        it "should not clear the existing image" do
+      context "when uploading a new staged header image" do
+        it "should not clear the existing staged header image" do
           staged_header_image.should_receive(:dirty?).and_return(true)
           staged_header_image.should_not_receive(:clear)
           affiliate.update_attributes!(@update_params)
@@ -736,12 +762,112 @@ describe Affiliate do
       affiliate = Affiliate.create!(@valid_create_attributes)
       attributes = mock('attributes')
       attributes.should_receive(:has_key?).with(:staged_uses_managed_header_footer).and_return(false)
+      attributes.should_receive(:[]).with(:staged_page_background_image).and_return(nil)
+      attributes.should_receive(:[]).with(:mark_staged_page_background_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]).with(:staged_header_image).and_return(nil)
       attributes.should_receive(:[]).with(:mark_staged_header_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]=).with(:has_staged_content, true)
       return_value = mock('return value')
       affiliate.should_receive(:update_attributes).with(attributes).and_return(return_value)
       affiliate.update_attributes_for_staging(attributes).should == return_value
+    end
+
+    context "when existing staged_page_background_image and page_background_image are the same" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_page_background_image) { mock('staged page backgroun image') }
+
+      before do
+        yesterday = Date.current.yesterday
+        affiliate.staged_page_background_image_file_name = 'live_bg.gif'
+        affiliate.staged_page_background_image_content_type = 'image/gif'
+        affiliate.staged_page_background_image_file_size = 800
+        affiliate.staged_page_background_image_updated_at = yesterday
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = yesterday
+        affiliate.save!
+      end
+
+      context "and update attributes contain new staged_page_background_image" do
+        it "should destroy existing staged_page_background_image" do
+          affiliate.should_receive(:staged_page_background_image_file_name=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_content_type=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_file_size=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_updated_at=).with(nil)
+          attributes = {:staged_page_background_image => mock('new staged page background image')}
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain blank staged_page_background_image" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_page_background_image_file_name=)
+          affiliate.should_not_receive(:staged_page_background_image_content_type=)
+          affiliate.should_not_receive(:staged_page_background_image_file_size=)
+          affiliate.should_not_receive(:staged_page_background_image_updated_at=)
+          attributes = {:staged_page_background_image => ''}
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_page_background_image_for_deletion == '1'" do
+        it "should set staged_header attributes to nil" do
+          affiliate.should_receive(:staged_page_background_image_file_name=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_content_type=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_file_size=).with(nil)
+          affiliate.should_receive(:staged_page_background_image_updated_at=).with(nil)
+          attributes = {:mark_staged_page_background_image_for_deletion => '1'}
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_page_background_image_for_deletion == '0'" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_page_background_image_file_name=)
+          affiliate.should_not_receive(:staged_page_background_image_content_type=)
+          affiliate.should_not_receive(:staged_page_background_image_file_size=)
+          affiliate.should_not_receive(:staged_page_background_image_updated_at=)
+          attributes = {:mark_staged_page_background_image_for_deletion => '0'}
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+    end
+
+    context "when update_attributes contain new staged_page_background_image and existing staged_page_background_image and page_background_image are different" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_page_background_image) { mock('staged page background image') }
+
+      before do
+        affiliate.staged_page_background_image_file_name = 'staged_bg.jpg'
+        affiliate.staged_page_background_image_content_type = 'image/jpeg'
+        affiliate.staged_page_background_image_file_size = 700
+        affiliate.staged_page_background_image_updated_at = Time.current
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = Time.current.yesterday
+        affiliate.save!
+      end
+
+      it "should not set staged_page_background_image attributes to nil" do
+        affiliate.should_not_receive(:staged_page_background_image_file_name=)
+        affiliate.should_not_receive(:staged_page_background_image_content_type=)
+        affiliate.should_not_receive(:staged_page_background_image_file_size=)
+        affiliate.should_not_receive(:staged_page_background_image_updated_at=)
+        attributes = {:staged_page_background_image => mock('new staged page background image')}
+        affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+        affiliate.update_attributes_for_staging(attributes).should be_true
+      end
     end
 
     context "when existing staged_header_image and header_image are the same" do
@@ -928,6 +1054,104 @@ describe Affiliate do
       affiliate.set_attributes_from_staged_to_live
     end
 
+    context "when staged_page_background_image and page_background_image are different" do
+      let(:page_background_image) { mock('bg image') }
+
+      before do
+        affiliate.staged_page_background_image_file_name = 'staged_bg.gif'
+        affiliate.staged_page_background_image_content_type = 'image/gif'
+        affiliate.staged_page_background_image_file_size = 700
+        affiliate.staged_page_background_image_updated_at = Date.current
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy page_background_image and set values from staged_page_background_image columns to page_background_image columns" do
+        affiliate.should_receive(:page_background_image).and_return(page_background_image)
+        page_background_image.should_receive(:destroy)
+        affiliate.should_receive(:page_background_image_file_name=).with(affiliate.staged_page_background_image_file_name).ordered
+        affiliate.should_receive(:page_background_image_content_type=).with(affiliate.staged_page_background_image_content_type)
+        affiliate.should_receive(:page_background_image_file_size=).with(affiliate.staged_page_background_image_file_size)
+        affiliate.should_receive(:page_background_image_updated_at=).with(affiliate.staged_page_background_image_updated_at)
+        affiliate.set_attributes_from_staged_to_live
+      end
+    end
+
+    context "when staged_page_background_image and page_background_image are the same" do
+      before do
+        page_background_image_updated_at = Date.current
+        affiliate.staged_page_background_image_file_name = 'live_bg.gif'
+        affiliate.staged_page_background_image_content_type = 'image/gif'
+        affiliate.staged_page_background_image_file_size = 800
+        affiliate.staged_page_background_image_updated_at = page_background_image_updated_at
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = page_background_image_updated_at
+        affiliate.save!
+      end
+
+      it "should set values from staged_page_background_image columns to page_background_image columns" do
+        affiliate.should_not_receive(:page_background_image_file_name=)
+        affiliate.should_not_receive(:page_background_image_content_type=)
+        affiliate.should_not_receive(:page_background_image_file_size=)
+        affiliate.should_not_receive(:page_background_image_updated_at=)
+        affiliate.set_attributes_from_staged_to_live
+      end
+    end
+
+    context "when staged_page_background_image exists and page_background_image does not exist" do
+      before do
+        affiliate.staged_page_background_image_file_name = 'staged_bg.gif'
+        affiliate.staged_page_background_image_content_type = 'image/gif'
+        affiliate.staged_page_background_image_file_size = 700
+        affiliate.staged_page_background_image_updated_at = Date.current
+        affiliate.page_background_image_file_name = nil
+        affiliate.page_background_image_content_type = nil
+        affiliate.page_background_image_file_size = nil
+        affiliate.page_background_image_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should set values from staged_page_background_image columns to page_background_image columns" do
+        affiliate.should_not_receive(:page_background_image)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.page_background_image_file_name.should == 'staged_bg.gif'
+        affiliate.page_background_image_content_type.should == 'image/gif'
+        affiliate.page_background_image_file_size.should == 700
+        affiliate.page_background_image_updated_at.should == affiliate.staged_page_background_image_updated_at
+      end
+    end
+
+    context "when staged_page_background_image does not exist and page_background_image exists" do
+      let(:page_background_image) { mock('bg image') }
+
+      before do
+        affiliate.staged_page_background_image_file_name = nil
+        affiliate.staged_page_background_image_content_type = nil
+        affiliate.staged_page_background_image_file_size = nil
+        affiliate.staged_page_background_image_updated_at = nil
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = Date.current
+        affiliate.save!
+      end
+
+      it "should set values from staged_page_background_image columns to page_background_image columns" do
+        affiliate.should_receive(:page_background_image).and_return(page_background_image)
+        page_background_image.should_receive(:destroy)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.page_background_image_file_name.should be_nil
+        affiliate.page_background_image_content_type.should be_nil
+        affiliate.page_background_image_file_size.should be_nil
+        affiliate.page_background_image_updated_at.should be_nil
+      end
+    end
+
     context "when staged_header_image and header_image are different" do
       let(:header_image) { mock('header image') }
 
@@ -1038,6 +1262,81 @@ describe Affiliate do
         affiliate.should_receive("staged_#{attribute}=".to_sym).with(live_value)
       end
       affiliate.set_attributes_from_live_to_staged
+    end
+
+    context "when existing staged_page_background_image and page_background_image are different" do
+      let(:staged_page_background_image) { mock('staged page background image') }
+
+      before do
+        affiliate.staged_page_background_image_file_name = 'staged_bg.jpg'
+        affiliate.staged_page_background_image_content_type = 'image/jpeg'
+        affiliate.staged_page_background_image_file_size = 700
+        affiliate.staged_page_background_image_updated_at = Date.current
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_page_background_image" do
+        affiliate.should_receive(:staged_page_background_image).and_return(staged_page_background_image)
+        staged_page_background_image.should_receive(:destroy)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_page_background_image_file_name.should == 'live_bg.gif'
+        affiliate.staged_page_background_image_content_type.should == 'image/gif'
+        affiliate.staged_page_background_image_file_size.should == 800
+        affiliate.staged_page_background_image_updated_at.should == affiliate.page_background_image_updated_at
+      end
+    end
+
+    context "when staged_page_background_image does not exist and page_background_image exists" do
+      before do
+        affiliate.staged_page_background_image_file_name = nil
+        affiliate.staged_page_background_image_content_type = nil
+        affiliate.staged_page_background_image_file_size = nil
+        affiliate.staged_page_background_image_updated_at = nil
+        affiliate.page_background_image_file_name = 'live_bg.gif'
+        affiliate.page_background_image_content_type = 'image/gif'
+        affiliate.page_background_image_file_size = 800
+        affiliate.page_background_image_updated_at = Date.current
+        affiliate.save!
+      end
+
+      it "should set values from page_background_image columns to staged_page_background_image columns" do
+        affiliate.should_not_receive(:staged_page_background_image)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_page_background_image_file_name.should == 'live_bg.gif'
+        affiliate.staged_page_background_image_content_type.should == 'image/gif'
+        affiliate.staged_page_background_image_file_size.should == 800
+        affiliate.staged_page_background_image_updated_at.should == affiliate.page_background_image_updated_at
+      end
+    end
+
+    context "when staged_page_background_image exists and page_background_image does not exist" do
+      let(:staged_page_background_image) { mock('staged page background image') }
+
+      before do
+        affiliate.staged_page_background_image_file_name = 'staged_bg.jpg'
+        affiliate.staged_page_background_image_content_type = 'image/jpeg'
+        affiliate.staged_page_background_image_file_size = 700
+        affiliate.staged_page_background_image_updated_at = Date.current
+        affiliate.page_background_image_file_name = nil
+        affiliate.page_background_image_content_type = nil
+        affiliate.page_background_image_file_size = nil
+        affiliate.page_background_image_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_page_background_image" do
+        affiliate.should_receive(:staged_page_background_image).and_return(staged_page_background_image)
+        staged_page_background_image.should_receive(:destroy)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_page_background_image_file_name.should be_nil
+        affiliate.staged_page_background_image_content_type.should be_nil
+        affiliate.staged_page_background_image_file_size.should be_nil
+        affiliate.staged_page_background_image_updated_at.should be_nil
+      end
     end
 
     context "when existing staged_header_image and header_image are different" do

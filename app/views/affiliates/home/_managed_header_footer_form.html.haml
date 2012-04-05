@@ -18,7 +18,7 @@
       .header-image
         - if managed_header_footer_form.object.staged_header_image.present?
           = image_tag(managed_header_footer_form.object.staged_header_image.url(:large))
-          = managed_header_footer_form.check_box :mark_staged_header_image_for_deletion, { :class => 'checkbox mark-header-image-for-deletion' }
+          = managed_header_footer_form.check_box :mark_staged_header_image_for_deletion, { :class => 'checkbox mark-image-for-deletion' }
           = managed_header_footer_form.label :mark_staged_header_image_for_deletion, 'Mark header image for deletion'
       .header-image-file-field-wrapper
         = managed_header_footer_form.file_field :staged_header_image, { :class => 'file' }

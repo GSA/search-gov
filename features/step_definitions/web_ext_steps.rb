@@ -94,3 +94,7 @@ end
 Then /^the page body should contain "([^"]*)"$/ do |content|
   page.body.should match("#{Regexp.escape content}")
 end
+
+Then /^the page body should not contain "([^"]*)"$/ do |content|
+  page.body.should_not match("#{Regexp.escape content}")
+end

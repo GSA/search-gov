@@ -108,4 +108,15 @@ describe AffiliateHelper do
       specify { helper.render_managed_header(affiliate).should_not have_select(:img) }
     end
   end
+
+  describe "#render_affiliate_body_style" do
+    context "when CloudFiles raise NoSuchContainer" do
+      let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
+      it "should return only background-color" do
+        helper.should_receive(:render_affiliate_css_property_value).and_return('#DDDDDD')
+        affiliate.should_receive(:page_background_image).and_raise(CloudFiles::Exception::NoSuchContainer)
+        helper.render_affiliate_body_style(affiliate).should == 'background-color: #DDDDDD'
+      end
+    end
+  end
 end

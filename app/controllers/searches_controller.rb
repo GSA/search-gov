@@ -106,6 +106,10 @@ class SearchesController < ApplicationController
       @affiliate.header_image_updated_at = @affiliate.staged_header_image_updated_at
       @affiliate.managed_header_links = @affiliate.staged_managed_header_links
       @affiliate.managed_footer_links = @affiliate.staged_managed_footer_links
+      @affiliate.page_background_image_file_name = @affiliate.staged_page_background_image_file_name
+      @affiliate.page_background_image_content_type = @affiliate.staged_page_background_image_content_type
+      @affiliate.page_background_image_file_size = @affiliate.staged_page_background_image_file_size
+      @affiliate.page_background_image_updated_at = @affiliate.staged_page_background_image_updated_at
     end
 
     I18n.locale = 'es' if @affiliate.locale == 'es'

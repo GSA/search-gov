@@ -104,7 +104,7 @@ module AffiliateHelper
 
     background_color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_background_color)
     alignment = affiliate.managed_header_text.blank? ? 'center' : 'left';
-    header_style = "margin: 0 auto; padding: 10px; min-width:940px; text-align: #{alignment};"
+    header_style = "text-align: #{alignment};"
     header_style << " background-color: #{background_color};" unless background_color.blank?
     content.blank? ? content : content_tag(:div, content.html_safe, :id => 'managed_header', :style => "#{header_style}").html_safe
   end
@@ -146,6 +146,18 @@ module AffiliateHelper
       classes << "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}"
     end
     classes
+  end
+
+  def render_affiliate_body_style(affiliate)
+    style = ''
+    background_color =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
+    background_image = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?
+    if background_image.present?
+      style << "background: #{background_color} url(#{background_image}) no-repeat center top"
+    else
+      style << "background-color: #{background_color}"
+    end
+    style
   end
 
   def render_staged_color_text_field_tag(affiliate, field_name_symbol)

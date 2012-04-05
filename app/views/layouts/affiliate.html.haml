@@ -32,7 +32,7 @@
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
 
     %title= @page_title
-  %body{ :class => render_affiliate_body_class(@affiliate) }
+  %body{ :class => render_affiliate_body_class(@affiliate), :style => render_affiliate_body_style(@affiliate) }
     #container
       = render_affiliate_header(@affiliate, @search_options)
       #search.clearfix

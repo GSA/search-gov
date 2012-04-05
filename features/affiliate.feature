@@ -690,9 +690,11 @@ Feature: Affiliate clients
       | Search results page title |                       |
       | Title link color          | invalid color         |
       | Visited title link color  | invalid visited color |
+    And I attach the file "features/support/very_large.jpg" to "Page background image"
     And I press "Save for Preview"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+    And I should see "Page background image file size must be under 512 KB"
     And I should see "Title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
@@ -718,6 +720,7 @@ Feature: Affiliate clients
       | Visited title link color                                               | #0000f0                           |
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
+    And I attach the file "features/support/bg.png" to "Page background image"
     And I select "Helvetica, sans-serif" from "Font family"
     And I check "Add top padding"
     And I check "Add drop shadow"
@@ -730,6 +733,7 @@ Feature: Affiliate clients
     Then I should see "aff site : gov"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with internal CSS "bg.png"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
@@ -750,6 +754,35 @@ Feature: Affiliate clients
     And the "Visited title link color" field should contain "#0000f0"
     And the "Description text color" field should contain "#DDDDDD"
     And the "URL link color" field should contain "#007000"
+    And I should see "bg.png" image
+
+  Scenario: Deleting page background image and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I attach the file "features/support/bg.png" to "Page background image"
+    And I fill in "Page background color" with "#FEDCBA"
+    And I press "Make Live"
+    Then I should see "Updated changes to your live site successfully"
+
+    When I follow "View Current"
+    Then the page body should contain "background: #FEDCBA url"
+    And the page body should contain "bg.png"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I check "Mark page background image for deletion"
+    And I press "Make Live"
+    Then I should see "Updated changes to your live site successfully"
+
+    When I follow "View Current"
+    Then the page body should contain "background-color: #FEDCBA"
+    And the page body should not contain "background: #FEDCBA url"
+    And the page body should not contain "bg.png"
 
   Scenario: Updating theme and make it live
     Given the following Affiliates exist:
@@ -831,9 +864,11 @@ Feature: Affiliate clients
       | Visited title link color       | invalid visited color |
       | Description text color         | invalid color         |
       | URL link color                 | invalid color         |
+    And I attach the file "features/support/very_large.jpg" to "Page background image"
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+    And I should see "Page background image file size must be under 512 KB"
     And I should see "Search button text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Search button background color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Left tab text color should consist of a # character followed by 3 or 6 hexadecimal digits"

@@ -26,6 +26,20 @@ class Affiliate < ActiveRecord::Base
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
   has_many :daily_left_nav_stats, :dependent => :destroy
+  has_attached_file :page_background_image,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
+                    :ssl => true
+  has_attached_file :staged_page_background_image,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
+                    :ssl => true
   has_attached_file :header_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -45,11 +59,14 @@ class Affiliate < ActiveRecord::Base
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links, :validate_web_trends_properties
+  validates_attachment_content_type :page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_content_type :staged_page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_size :staged_page_background_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
-  before_update :clear_existing_staged_header_image
+  before_update :clear_existing_staged_attachments
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
@@ -57,7 +74,7 @@ class Affiliate < ActiveRecord::Base
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_updating_staged_header_footer
-  attr_accessor :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_updating_staged_header_footer
+  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_updating_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -218,12 +235,13 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_staging(attributes)
     self.is_updating_staged_header_footer = true if attributes.has_key?(:staged_uses_managed_header_footer)
+    if staged_page_background_image_updated_at == page_background_image_updated_at and
+        attributes[:staged_page_background_image].present? || attributes[:mark_staged_page_background_image_for_deletion] == '1'
+      set_attachment_attributes_to_nil(:staged_page_background_image)
+    end
     if staged_header_image_updated_at == header_image_updated_at and
         attributes[:staged_header_image].present? || attributes[:mark_staged_header_image_for_deletion] == '1'
-      self.staged_header_image_file_name = nil
-      self.staged_header_image_content_type = nil
-      self.staged_header_image_file_size = nil
-      self.staged_header_image_updated_at = nil
+      set_attachment_attributes_to_nil(:staged_header_image)
     end
     attributes[:has_staged_content] = true
     self.update_attributes(attributes)
@@ -372,12 +390,14 @@ class Affiliate < ActiveRecord::Base
       self.send("staged_#{field}=", self.send("#{field}"))
     end
 
+    if staged_page_background_image_updated_at != page_background_image_updated_at
+      staged_page_background_image.destroy if staged_page_background_image_updated_at?
+      copy_attachment_attributes(:page_background_image, :staged_page_background_image)
+    end
+
     if staged_header_image_updated_at != header_image_updated_at
       staged_header_image.destroy if staged_header_image_updated_at?
-      self.staged_header_image_file_name = header_image_file_name
-      self.staged_header_image_content_type = header_image_content_type
-      self.staged_header_image_file_size = header_image_file_size
-      self.staged_header_image_updated_at = header_image_updated_at
+      copy_attachment_attributes(:header_image, :staged_header_image)
     end
   end
 
@@ -386,12 +406,14 @@ class Affiliate < ActiveRecord::Base
       self.send("#{field}=", self.send("staged_#{field}"))
     end
 
+    if staged_page_background_image_updated_at != page_background_image_updated_at
+      page_background_image.destroy if page_background_image_updated_at?
+      copy_attachment_attributes(:staged_page_background_image, :page_background_image)
+    end
+
     if staged_header_image_updated_at != header_image_updated_at
       header_image.destroy if header_image_updated_at?
-      self.header_image_file_name = staged_header_image_file_name
-      self.header_image_content_type = staged_header_image_content_type
-      self.header_image_file_size = staged_header_image_file_size
-      self.header_image_updated_at = staged_header_image_updated_at
+      copy_attachment_attributes(:staged_header_image, :header_image)
     end
   end
 
@@ -681,6 +703,9 @@ class Affiliate < ActiveRecord::Base
       error_value = self.errors.delete(:"site_domains.domain")
       self.errors.add(:domain, error_value)
     end
+    if errors.include?(:staged_page_background_image_file_size)
+      errors.add(:page_background_image_file_size, errors.delete(:staged_page_background_image_file_size))
+    end
     if errors.include?(:staged_header_image_file_size)
       errors.add(:header_image_file_size, errors.delete(:staged_header_image_file_size))
     end
@@ -704,7 +729,10 @@ class Affiliate < ActiveRecord::Base
     self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
 
-  def clear_existing_staged_header_image
+  def clear_existing_staged_attachments
+    if staged_page_background_image? and !staged_page_background_image.dirty? and mark_staged_page_background_image_for_deletion == '1'
+      staged_page_background_image.clear
+    end
     if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
       staged_header_image.clear
     end
@@ -737,5 +765,24 @@ class Affiliate < ActiveRecord::Base
     if (wt_javascript_url.present? or wt_dcsimg_hash.present? or wt_dcssip.present?) and !has_custom_webtrends_properties?
       errors.add(:base, 'JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends.')
     end
+  end
+
+  def set_attachment_attributes_to_nil(attachment)
+    self.send("#{attachment.to_s}_file_name=", nil)
+    self.send("#{attachment.to_s}_content_type=", nil)
+    self.send("#{attachment.to_s}_file_size=", nil)
+    self.send("#{attachment.to_s}_updated_at=", nil)
+  end
+
+  def copy_attachment_attributes(from, to)
+    self.send("#{to.to_s}_file_name=", self.send("#{from}_file_name"))
+    self.send("#{to.to_s}_content_type=", self.send("#{from}_content_type"))
+    self.send("#{to.to_s}_file_size=", self.send("#{from}_file_size"))
+    self.send("#{to.to_s}_updated_at=", self.send("#{from}_updated_at"))
+
+    #self.header_image_file_name = staged_header_image_file_name
+    #self.header_image_content_type = staged_header_image_content_type
+    #self.header_image_file_size = staged_header_image_file_size
+    #self.header_image_updated_at = staged_header_image_updated_at
   end
 end

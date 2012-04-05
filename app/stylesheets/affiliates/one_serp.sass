@@ -15,22 +15,15 @@ body
 #container
   +inline-block
   text-align: left
+  margin: 0 auto
 
-.with-content-box-shadow
+.with-content-border
+  padding: 20px 0
   #container
-    min-width: 960px
-    margin: 0 auto
-
-.with-content-border, .with-content-border.with-content-box-shadow
-  #container
-    min-width: 960px
-    margin: 20px auto
-    #default-header
-      +border-top-right-radius(8px)
-      +border-top-left-radius(8px)
-
-.with-content-border #container
-  +border-radius(8px)
+    +border-radius(8px)
+    +clearfix
+  .managed-header-footer-links-wrapper
+    border-bottom: 0
 
 #header
   margin-bottom: 10px
