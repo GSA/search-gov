@@ -4,7 +4,7 @@
   'in the affiliate program dropdown menu' => '.affiliate-li',
   'in the api dropdown menu' => '.api-li',
   'in the main navigation bar' => '#main_nav',
-  'in the site navigation bar' => '.affiliate-sidebar',
+  'in the site navigation bar' => '.affiliate-left-nav',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the page header' => 'h1',
   'in the mobile page header' => 'h1.page-title',
