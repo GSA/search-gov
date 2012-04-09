@@ -140,7 +140,9 @@ class IndexedDocument < ActiveRecord::Base
     end.map do |relative_pdf_url|
       merge_url_unless_recursion_with(relative_pdf_url)
     end.uniq.compact.first(max_pdfs).each do |pdf_url|
-      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
+      if (idoc = IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf'))
+        idoc.fetch
+      end
     end
   end
 

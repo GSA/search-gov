@@ -609,6 +609,13 @@ describe IndexedDocument do
         @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").doctype.should == 'pdf'
       end
 
+      it "should fetch and index the PDF content for those URLs" do
+        idoc = mock("IndexedDocument")
+        IndexedDocument.stub!(:create).and_return(idoc,nil)
+        idoc.should_receive(:fetch)
+        @indexed_document.discover_nested_pdfs(@doc)
+      end
+
       context "when the HTML document contains more than the threshold number of PDFs" do
         it "should only discover up to the specified maximum number of them" do
           @indexed_document.discover_nested_pdfs(@doc, 1)
