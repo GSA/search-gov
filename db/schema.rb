@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410004439) do
+ActiveRecord::Schema.define(:version => 20120410014453) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(:version => 20120410004439) do
     t.string   "wt_dcsimg_hash",                            :limit => 50
     t.string   "wt_dcssip",                                 :limit => 50
     t.string   "ga_web_property_id",                        :limit => 20
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20120410004439) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -179,6 +179,17 @@ ActiveRecord::Schema.define(:version => 20120410004439) do
   end
 
   add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
+
+  create_table "connections", :force => true do |t|
+    t.integer  "affiliate_id",                                          :null => false
+    t.integer  "connected_affiliate_id",                                :null => false
+    t.string   "label",                  :limit => 50,                  :null => false
+    t.integer  "position",                             :default => 100, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "connections", ["affiliate_id"], :name => "index_connections_on_affiliate_id"
 
   create_table "daily_left_nav_stats", :force => true do |t|
     t.integer "affiliate_id",                :null => false

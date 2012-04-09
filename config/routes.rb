@@ -31,6 +31,7 @@ UsasearchRails3::Application.routes.draw do
       put :update_results_modules
       get :edit_external_tracking
       put :update_external_tracking
+      get :new_connection_fields
     end
     collection do
       get :home

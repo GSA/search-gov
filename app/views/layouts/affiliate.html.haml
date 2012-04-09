@@ -36,6 +36,10 @@
     #container
       = render_affiliate_header(@affiliate, @search_options)
       #search.clearfix
+        - unless @affiliate.connections.blank?
+          .connections-wrapper
+            .connections
+              = render_connected_affiliate_links @affiliate, @search ? @search.query : ''
         -unless error_page?
           %h1 Search
         = yield

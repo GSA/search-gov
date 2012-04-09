@@ -26,6 +26,7 @@ class Affiliate < ActiveRecord::Base
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
   has_many :daily_left_nav_stats, :dependent => :destroy
+  has_many :connections, :order => 'connections.position ASC'
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -80,6 +81,7 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
+  accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a['connected_affiliate_id'].blank? and a['label'].blank? }
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -699,16 +701,15 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_error_keys
-    if self.errors.include?(:"site_domains.domain")
-      error_value = self.errors.delete(:"site_domains.domain")
-      self.errors.add(:domain, error_value)
-    end
-    if errors.include?(:staged_page_background_image_file_size)
-      errors.add(:page_background_image_file_size, errors.delete(:staged_page_background_image_file_size))
-    end
-    if errors.include?(:staged_header_image_file_size)
-      errors.add(:header_image_file_size, errors.delete(:staged_header_image_file_size))
-    end
+    swap_error_key(:"site_domains.domain", :domain)
+    swap_error_key(:"connections.connected_affiliate_id", :connected_site)
+    swap_error_key(:"connections.label", :connected_site_label)
+    swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
+    swap_error_key(:staged_header_image_file_size, :header_image_file_size)
+  end
+
+  def swap_error_key(from, to)
+    errors.add(to, errors.delete(from)) if errors.include?(from)
   end
 
   def previous_fields

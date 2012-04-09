@@ -2477,8 +2477,9 @@ Feature: Affiliate clients
 
   Scenario: Editing the results modules
     Given the following Affiliates exist:
-      | display_name   | name             | contact_email | contact_name |
-      | aff site       | aff.gov          | aff@bar.gov   | John Bar     |
+      | display_name | name       | contact_email | contact_name | locale |
+      | aff site     | aff.gov    | aff@bar.gov   | John Bar     | en     |
+      | Spanish site | es.aff.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | position | shown_in_govbox |
       | Press         | http://www.whitehouse.gov/feed/press               | 0        | true            |
@@ -2525,20 +2526,19 @@ Feature: Affiliate clients
     And the "Show RSS feed 0 in govbox" checkbox should be checked
     And the "Show RSS feed 1 in govbox" checkbox should be checked
     And the "Show RSS feed 2 in govbox" checkbox should not be checked
-    And I should see the following table rows:
-      | Name             |
-      | Related searches |
     And the "Is related searches enabled" checkbox should be checked
     And I uncheck "Show RSS feed 0 in govbox"
     And I check "Show RSS feed 2 in govbox"
     And I uncheck "Is related searches enabled"
+    And I fill in "Connection label 0" with "Search in Spanish"
+    And I select "Spanish site" from "Site 0"
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    Then I should see "News for 'item' by aff site"
+    And I should see "News for 'item' by aff site"
     And I should not see "First item" in the rss feed govbox
     And I should not see "Second item" in the rss feed govbox
     And I should see "Third item" in the rss feed govbox
@@ -2546,6 +2546,25 @@ Feature: Affiliate clients
     And I should see "Fifth item" in the rss feed govbox
     Then I should not see "Related Searches for item by aff site" in the search results section
     And I should not see "some unique item"
+    When I follow "Search in Spanish"
+    Then I should see the browser page titled "item - Spanish site Search Results"
+
+  Scenario: Validation in the Results modules
+    Given the following Affiliates exist:
+      | display_name | name            | contact_email | contact_name | locale |
+      | English site | en.aff.gov      | aff@bar.gov   | John Bar     | en     |
+      | Spanish site | es.aff.gov      | aff@bar.gov   | John Bar     | es     |
+      | Another site | another.aff.gov | aff@bar.gov   | John Bar     | en     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "English site" affiliate page
+    And I follow "Results modules"
+    And I fill in "Connection label 0" with "Search in Spanish"
+    And I press "Save"
+    Then I should see "Connected site can't be blank"
+    When I select "Spanish site" from "Site 0"
+    And I fill in "Connection label 0" with ""
+    And I press "Save"
+    Then I should see "Connected site label can't be blank"
 
   Scenario: Editing 3rd Party Tracking
     Given the following Affiliates exist:

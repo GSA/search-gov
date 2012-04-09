@@ -1354,8 +1354,8 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
-      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
 
       before do
         UserSession.create(current_user)
@@ -1363,6 +1363,12 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+
+      it "should not include current affiliate in @available_affiliates" do
+        assigns[:available_affiliates].count.should > 0
+        assigns[:available_affiliates].should_not include([affiliate.display_name, affiliate.id])
+      end
+
       it { should respond_with(:success) }
     end
   end
@@ -1417,11 +1423,13 @@ describe Affiliates::HomeController do
     context "when logged in as the affiliate manager and failed to update the site" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
+      let(:available_affiliates) { mock('available affiliates') }
 
       before do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        current_user.stub_chain(:affiliates, :where, :collect).and_return(available_affiliates)
         affiliate.should_not_receive(:update_attributes_for_live)
         affiliate.should_not_receive(:update_attributes_for_staging)
         affiliate.should_receive(:update_attributes).with(hash_including(:default_search_label => 'Web')).and_return(false)
@@ -1430,6 +1438,7 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:available_affiliates).with(available_affiliates) }
       it { should render_template("affiliates/home/edit_results_modules") }
     end
   end
@@ -1539,6 +1548,27 @@ describe Affiliates::HomeController do
 
       it { should assign_to(:affiliate).with(affiliate) }
       it { should render_template("affiliates/home/edit_external_tracking") }
+    end
+  end
+
+  describe "do GET on #new_connection_fields" do
+    context "when logged in as the affiliate manager" do
+      let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        UserSession.create(current_user)
+        get :new_connection_fields, :id => affiliate.id, :format => :js
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+
+      it "should not include current affiliate in @available_affiliates" do
+        assigns[:available_affiliates].count.should > 0
+        assigns[:available_affiliates].should_not include([affiliate.display_name, affiliate.id])
+      end
+
+      it { should respond_with(:success) }
     end
   end
 end

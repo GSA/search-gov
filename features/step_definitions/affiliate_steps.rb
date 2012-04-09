@@ -311,3 +311,11 @@ Then /^I should not see tainted SERP (header|footer)$/ do |section|
     page.should_not have_selector("##{section} #{element}")
   end
 end
+
+Given /^the following Connections exist for the affiliate "([^"]*)":$/ do |affiliate_name, table|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  table.hashes.each do |hash|
+    connected_affiliate = Affiliate.find_by_name(hash[:connected_affiliate])
+    affiliate.connections.create!(:connected_affiliate => connected_affiliate, :display_name => hash[:display_name])
+  end
+end

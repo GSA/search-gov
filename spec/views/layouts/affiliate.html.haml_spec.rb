@@ -18,6 +18,7 @@ describe "layouts/affiliate" do
                            :managed_header_css_properties => nil,
                            :show_content_border? => true,
                            :show_content_box_shadow? => true,
+                           :connections => [],
                            :locale => 'en',
                            :has_custom_webtrends_properties? => false,
                            :ga_web_property_id => nil)
@@ -52,6 +53,7 @@ describe "layouts/affiliate" do
                              :managed_header_css_properties => nil,
                              :show_content_border? => true,
                              :show_content_box_shadow? => true,
+                             :connections => [],
                              :locale => 'en',
                              :has_custom_webtrends_properties? => false,
                              :ga_web_property_id => nil)
@@ -81,6 +83,7 @@ describe "layouts/affiliate" do
                              :managed_header_css_properties => nil,
                              :show_content_border? => true,
                              :show_content_box_shadow? => true,
+                             :connections => [],
                              :locale => 'en',
                              :has_custom_webtrends_properties? => true,
                              :wt_javascript_url => 'http://search.usa.gov/javascripts/webtrends_english.js',

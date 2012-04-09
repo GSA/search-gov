@@ -57,6 +57,17 @@ function setupDragAndDropOnManagedLinks(option) {
   }
 }
 
+function setupConnections() {
+  jQuery('.connections table').each(function() {
+    jQuery(this).tableDnD({ onDragClass: 'ondrag' });
+  });
+  jQuery(".remove-connection").click(function(event) {
+    event.preventDefault();
+    jQuery(this).siblings('input.destroy-connection').val('1');
+    jQuery(this).parents('tr.row-item.connection').hide();
+  });
+}
+
 jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
@@ -152,4 +163,12 @@ jQuery(document).ready(function() {
       });
     });
   });
+
+  jQuery(".results-modules-form").submit(function() {
+    jQuery(".connections .position").each(function(index) {
+      jQuery(this).val(index);
+    });
+  });
+
+  setupConnections();
 });

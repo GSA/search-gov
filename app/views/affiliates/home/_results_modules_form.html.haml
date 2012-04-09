@@ -67,3 +67,26 @@
             %td.actions
               = results_modules_form.check_box :show_deep_links
               = results_modules_form.label :show_deep_links, nil, :class => 'hide'
+
+- unless @available_affiliates.blank?
+  .connections
+    %h2 Connected Sites
+    .column-1
+      .connections-items
+        %table
+          %colgroup
+            %col.affiliate
+            %col.name
+            %col.remove
+          %thead
+            %tr
+              %th{ :colspan => 3 }
+                = link_to('+', new_connection_fields_affiliate_path(@affiliate), :remote => true, :id => 'add_connection', :class => 'add-icon')
+          %tbody
+            %tr.column-header
+              %th Site
+              %th Label
+              %th
+            - @affiliate.connections.each_with_index do |connection, index|
+              = results_modules_form.fields_for :connections, connection do |connection_form|
+                = render :partial => 'connection_fields', :locals => { :f => connection_form, :index => index, :available_affiliates => @available_affiliates }

@@ -789,7 +789,7 @@ table.generic-table
         width: auto
     .page-background-image-file-field-wrapper, .header-image-file-field-wrapper
       margin-top: 10px
-    .header-links, .footer-links, .sidebar-items, .govbox-items, .related-modules-items
+    .header-links, .footer-links, .sidebar-items, .govbox-items, .related-modules-items, .connections-items
       @include clearfix
       table
         border: 1px solid #BDBDBD
@@ -801,6 +801,8 @@ table.generic-table
         width: 55%
       col.actions, col.source
         width: 135px
+      col.remove
+        width: 30px
       thead
         th
           background: #444
@@ -833,7 +835,7 @@ table.generic-table
       .row-item
         &.ondrag
           background-color: #627BB3
-        td.title, td.name.draggable
+        td.title, td.draggable
           background: url(/images/vertical_arrow.png) no-repeat 3px 4px
           padding-left: 18px
         input
@@ -845,6 +847,8 @@ table.generic-table
         td.title input
           width: 95%
         td.url input
+          width: 97%
+        td.affiliate select
           width: 97%
     .govbox-items td.name, .related-modules-items td.name
       text-align: left
@@ -1489,12 +1493,23 @@ h3.api-item
   margin-left: 5px
 .add-icon
   +border-radius(9px)
-  background: #12396A url(/images/icons-white.png) no-repeat left center
+  +hide-text
+  +inline-block
+  background: #5787c7 url(/images/icons-white.png) no-repeat left center
   height: 18px
   width: 18px
-
 * html .add-icon
-  background: #12396A url(/images/icons-white.png) no-repeat left top
+  background: #5787c7 url(/images/icons-white.png) no-repeat left top
+
+.remove-icon
+  +border-radius(9px)
+  +hide-text
+  +inline-block
+  background: #AA404A url(/images/icons-white.png) no-repeat -36px center
+  height: 18px
+  width: 18px
+* html .remove-icon
+  background: #AA404A url(/images/icons-white.png) no-repeat -36px top
 
 .edit_affiliate .rss-feeds
   col.name
@@ -1503,8 +1518,6 @@ h3.api-item
     width: 70%
   th.url
     #add_rss_feed
-      +hide-text
-      +inline-block
       float: right
   table
     border: 1px solid #A9A9A9
@@ -1522,3 +1535,7 @@ h3.api-item
       padding-left: 0
       padding-right: 0
       width: 100%
+
+#add_connection
+  float: right
+

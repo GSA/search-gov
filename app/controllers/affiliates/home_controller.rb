@@ -4,6 +4,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
   before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
+  before_filter :setup_for_results_modules_actions, :only => [:edit_results_modules, :new_connection_fields]
 
   UPDATE_ACTION_HASH = {
     :update_site_information => {
@@ -24,6 +25,8 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     :update_external_tracking => {
       :edit_action => :edit_external_tracking }
   }
+
+  RESULTS_MODULES_ACTIONS = %w(edit_results_modules update_results_modules new_connection_fields)
 
   def index
     redirect_to(home_affiliates_path)
@@ -103,6 +106,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       if @affiliate.update_attributes(params[:affiliate])
         redirect_to @affiliate, :flash => { :success => 'Site was successfully updated.' }
       else
+        setup_affiliate_for_editing
         set_title_and_render_with_action
       end
     elsif params[:commit] == "Make Live"
@@ -246,6 +250,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     update
   end
 
+  def new_connection_fields
+  end
+
   protected
 
   def sync_affiliate_staged_attributes
@@ -258,9 +265,15 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def setup_affiliate_for_editing
+    setup_for_results_modules_actions if RESULTS_MODULES_ACTIONS.include?(params[:action])
     @affiliate.staged_managed_header_links = [] if @affiliate.staged_managed_header_links.nil?
     @affiliate.staged_managed_header_links = [{ "0" => {} }, { "1" => {} }] if @affiliate.staged_managed_header_links.blank?
     @affiliate.staged_managed_footer_links = [] if @affiliate.staged_managed_footer_links.nil?
     @affiliate.staged_managed_footer_links = [{ "0" => {} }, { "1" => {} }] if @affiliate.staged_managed_footer_links.blank?
+  end
+
+  def setup_for_results_modules_actions
+    @available_affiliates = current_user.affiliates.where("id <> ?", @affiliate.id).collect { |a| [a.display_name, a.id] }
+    @affiliate.connections.build if @affiliate.connections.blank?
   end
 end
