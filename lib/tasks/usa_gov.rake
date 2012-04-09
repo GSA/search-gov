@@ -12,8 +12,9 @@ namespace :usasearch do
   desc "Scan Bing results on gov/mil sites for objectionable content and notify recipient when found"
   task :detect_objectionable_content, :email, :needs => :environment do |t, args|
     args.with_defaults(:email => "amy.farrajfeijoo@gsa.gov")
+    usagov_affiliate = Affiliate.find_by_name Affiliate::USAGOV_AFFILIATE_NAME
     results = SaytFilter.find_all_by_always_filtered(true).find_all do |sf|
-      WebSearch.results_present_for?(sf.phrase, nil, true, "off")
+      WebSearch.results_present_for?(sf.phrase, usagov_affiliate, true, "off")
     end
     Emailer.deliver_objectionable_content_alert(args.email, results.collect(&:phrase)) if results.present?
   end

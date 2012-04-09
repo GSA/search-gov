@@ -50,7 +50,8 @@ describe "USA.gov rake tasks" do
     context "when always filtered search terms do not generate search results on adult-enabled SERPs" do
       before do
         SaytFilter.create!(:phrase => "bad_term", :always_filtered => true)
-        WebSearch.stub!(:results_present_for?).and_return false
+        usagov_affiliate = Affiliate.find_by_name Affiliate::USAGOV_AFFILIATE_NAME
+        WebSearch.should_receive(:results_present_for?).with("bad_term", usagov_affiliate, true, "off").and_return false
       end
 
       it "should not send an alert email" do
