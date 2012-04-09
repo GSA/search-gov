@@ -197,6 +197,7 @@ Feature: Affiliate clients
       | Recalls Feed | RSS       |
     And the "Show RSS feed 0 in govbox" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
+    And the "Show deep links" checkbox should be checked
 
     When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"

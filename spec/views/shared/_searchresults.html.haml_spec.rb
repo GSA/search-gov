@@ -35,9 +35,9 @@ describe "shared/_searchresults.html.haml" do
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
     @search_result = {'title' => "some title",
-                      'unescapedUrl'=> "http://www.foo.com/url",
-                      'content'=> "This is a sample result",
-                      'cacheUrl'=> "http://www.cached.com/url",
+                      'unescapedUrl' => "http://www.foo.com/url",
+                      'content' => "This is a sample result",
+                      'cacheUrl' => "http://www.cached.com/url",
                       'deepLinks' => [@deep_link]
     }
     @search_results = []
@@ -58,9 +58,22 @@ describe "shared/_searchresults.html.haml" do
       rendered.should contain("Results 1-10 of about 20 for 'tax forms'")
     end
 
-    it "should show deep links on the first page only" do
-      render
-      rendered.should_not have_selector('table', :class => 'deep-links')
+    context "when on the first page for an affiliate with deep-links turned on" do
+      it "should show deep links" do
+        render
+        rendered.should have_selector('table', :class => 'deep-links', :count => 1)
+      end
+    end
+
+    context "when on the first page for an affiliate with deep-links turned off" do
+      before do
+        @affiliate.show_deep_links = false
+      end
+
+      it "should not show deep links" do
+        render
+        rendered.should_not have_selector('table', :class => 'deep-links')
+      end
     end
 
     it "should show the Bing logo" do

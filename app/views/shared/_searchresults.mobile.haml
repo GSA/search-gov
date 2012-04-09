@@ -13,6 +13,8 @@
           .content
             = display_result_description(search_result)
           .links= shorten_url(search_result['unescapedUrl'])
+          - if index.zero? and search.first_page? and @affiliate.show_deep_links
+            = display_deep_links_for(search_result, search, @affiliate, @search_vertical)
       - unless index == search.results.length - 1 then
         %hr
   .group
