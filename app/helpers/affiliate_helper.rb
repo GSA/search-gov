@@ -149,6 +149,7 @@ module AffiliateHelper
   end
 
   def render_affiliate_body_style(affiliate)
+    return unless affiliate.uses_one_serp?
     style = ''
     background_color =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
     background_image = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?

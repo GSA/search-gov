@@ -110,8 +110,16 @@ describe AffiliateHelper do
   end
 
   describe "#render_affiliate_body_style" do
+    context "when the site uses_one_serp is set to false" do
+      let(:affiliate) { mock_model(Affiliate) }
+      it "should return blank" do
+        affiliate.should_receive(:uses_one_serp?).and_return(false)
+        helper.render_affiliate_body_style(affiliate).should be_blank
+      end
+    end
+
     context "when CloudFiles raise NoSuchContainer" do
-      let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
+      let(:affiliate) { mock_model(Affiliate, :uses_one_serp? => true, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
       it "should return only background-color" do
         helper.should_receive(:render_affiliate_css_property_value).and_return('#DDDDDD')
         affiliate.should_receive(:page_background_image).and_raise(CloudFiles::Exception::NoSuchContainer)
