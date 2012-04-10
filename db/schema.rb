@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120409221213) do
+ActiveRecord::Schema.define(:version => 20120410004439) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -529,6 +529,15 @@ ActiveRecord::Schema.define(:version => 20120409221213) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "robots", :force => true do |t|
+    t.string   "domain",     :null => false
+    t.text     "prefixes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "robots", ["domain"], :name => "index_robots_on_domain"
 
   create_table "rss_feeds", :force => true do |t|
     t.integer  "affiliate_id",                         :null => false

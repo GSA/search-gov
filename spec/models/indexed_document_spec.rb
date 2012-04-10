@@ -51,6 +51,26 @@ describe IndexedDocument do
     end
   end
 
+  context "when robots.txt info exists for the domain" do
+    before do
+      Robot.create!(:domain => 'something.gov', :prefixes => '/test/,/test2/')
+    end
+
+    context "when there is a match" do
+      it "should mark the record invalid" do
+        idoc = IndexedDocument.new(@valid_attributes.merge(:url => 'http://something.gov/test/no.pdf'))
+        idoc.should_not be_valid
+        idoc.errors.full_messages.first.should == IndexedDocument::ROBOTS_TXT_COMPLIANCE
+      end
+    end
+
+    context "when there is no match" do
+      it "should not mark the record invalid" do
+        IndexedDocument.new(@valid_attributes.merge(:url => 'http://something.gov/ok/test/no.pdf')).should be_valid
+      end
+    end
+  end
+
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.foo.gov/#{'waytoolong'*200}/some.pdf"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))
@@ -320,7 +340,7 @@ describe IndexedDocument do
       specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).should_not be_nil }
     end
 
-    context "when .search raise an exception" do
+    context "when .search raises an exception" do
       it "should return nil" do
         IndexedDocument.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
         IndexedDocument.search_for('tropicales', @affiliate, nil).should be_nil
@@ -611,7 +631,7 @@ describe IndexedDocument do
 
       it "should fetch and index the PDF content for those URLs" do
         idoc = mock("IndexedDocument")
-        IndexedDocument.stub!(:create).and_return(idoc,nil)
+        IndexedDocument.stub!(:create).and_return(idoc, nil)
         idoc.should_receive(:fetch)
         @indexed_document.discover_nested_pdfs(@doc)
       end

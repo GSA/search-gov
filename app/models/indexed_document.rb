@@ -19,6 +19,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "'%{value}' is not a supported file type"
   validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   validate :site_domain_matches
+  validate :robots_txt_compliance
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -31,6 +32,7 @@ class IndexedDocument < ActiveRecord::Base
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
+  ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -297,6 +299,16 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
+  def robots_txt_compliance
+    if self_url
+      if (robot = Robot.find_by_domain(self_url.host))
+        if robot.disallows?(self_url.request_uri)
+          errors.add(:base, ROBOTS_TXT_COMPLIANCE)
+        end
+      end
+    end
+  end
+
   def url_is_parseable
     URI.parse(self.url) rescue errors.add(:base, UNPARSEABLE_URL_STATUS)
   end
@@ -317,4 +329,5 @@ class IndexedDocument < ActiveRecord::Base
         e.message
     end
   end
+
 end
