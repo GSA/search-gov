@@ -217,12 +217,15 @@ module AffiliateHelper
 
   def render_connected_affiliate_links(affiliate, query)
     return if affiliate.connections.blank?
-    links = []
-    affiliate.connections.each do |connection|
-      links << link_to(connection.label,
-                       search_path(:affiliate => connection.connected_affiliate.name, :query => query),
-                       :class => 'updatable')
+
+    content = []
+    affiliate.connections.each_with_index do |connection, index|
+      first = index == 0 ? ' first' : ''
+      content << content_tag(:li,
+                             link_to(connection.label,
+                                     search_path(:affiliate => connection.connected_affiliate.name, :query => query),
+                                     :class => "updatable#{first}").html_safe)
     end
-    links.join("\n").html_safe
+    content_tag(:ul, content.join("\n").html_safe)
   end
 end

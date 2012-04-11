@@ -702,8 +702,8 @@ class Affiliate < ActiveRecord::Base
 
   def update_error_keys
     swap_error_key(:"site_domains.domain", :domain)
-    swap_error_key(:"connections.connected_affiliate_id", :connected_site)
-    swap_error_key(:"connections.label", :connected_site_label)
+    swap_error_key(:"connections.connected_affiliate_id", :related_site)
+    swap_error_key(:"connections.label", :related_site_label)
     swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
     swap_error_key(:staged_header_image_file_size, :header_image_file_size)
   end

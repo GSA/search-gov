@@ -70,8 +70,12 @@
 
 - unless @available_affiliates.blank?
   .connections
-    %h2 Connected Sites
+    %h2 Related Sites
+    .column-2
+      .side-note-image= image_tag 'side_notes/connections.png'
     .column-1
+      %p
+        Allow searchers to search your other related sites, for example a site with a different locale.
       .connections-items
         %table
           %colgroup

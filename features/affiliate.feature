@@ -2560,11 +2560,11 @@ Feature: Affiliate clients
     And I follow "Results modules"
     And I fill in "Connection label 0" with "Search in Spanish"
     And I press "Save"
-    Then I should see "Connected site can't be blank"
+    Then I should see "Related site can't be blank"
     When I select "Spanish site" from "Site 0"
     And I fill in "Connection label 0" with ""
     And I press "Save"
-    Then I should see "Connected site label can't be blank"
+    Then I should see "Related site label can't be blank"
 
   Scenario: Editing 3rd Party Tracking
     Given the following Affiliates exist:
