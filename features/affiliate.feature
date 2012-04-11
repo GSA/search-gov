@@ -589,6 +589,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Page background image repeat" field should contain "no-repeat"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
     And the "Add top padding" checkbox should be checked
@@ -722,6 +723,7 @@ Feature: Affiliate clients
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
     And I attach the file "features/support/bg.png" to "Page background image"
+    And I select "repeat-y" from "Page background image repeat"
     And I select "Helvetica, sans-serif" from "Font family"
     And I check "Add top padding"
     And I check "Add drop shadow"
@@ -735,6 +737,7 @@ Feature: Affiliate clients
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with internal CSS "bg.png"
+    And the page body should match "background:\ \#EEEEEE\ url\(.+\) repeat\-y"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
@@ -742,6 +745,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Page background image repeat" field should contain "repeat-y"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
     And the "Add top padding" checkbox should be checked

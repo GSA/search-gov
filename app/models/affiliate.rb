@@ -97,6 +97,7 @@ class Affiliate < ActiveRecord::Base
 
   FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif',
                    'Georgia, serif', 'Times, serif']
+  BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = { :display_name => 'Liberty Bell',
@@ -164,7 +165,8 @@ class Affiliate < ActiveRecord::Base
   DEFAULT_CSS_PROPERTIES = {
       :font_family => FONT_FAMILIES[0],
       :show_content_border => '0',
-      :show_content_box_shadow => '0' }.merge(THEMES[:default])
+      :show_content_box_shadow => '0',
+      :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
 
   DEFAULT_MANAGED_HEADER_CSS_PROPERTIES = {
       :header_background_color => THEMES[:default][:search_button_background_color],
@@ -780,10 +782,5 @@ class Affiliate < ActiveRecord::Base
     self.send("#{to.to_s}_content_type=", self.send("#{from}_content_type"))
     self.send("#{to.to_s}_file_size=", self.send("#{from}_file_size"))
     self.send("#{to.to_s}_updated_at=", self.send("#{from}_updated_at"))
-
-    #self.header_image_file_name = staged_header_image_file_name
-    #self.header_image_content_type = staged_header_image_content_type
-    #self.header_image_file_size = staged_header_image_file_size
-    #self.header_image_updated_at = staged_header_image_updated_at
   end
 end

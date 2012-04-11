@@ -91,10 +91,11 @@ Then /^the "([^"]*)" radio button should not be checked$/ do |label|
   field_labeled(label)['checked'].should_not be_true
 end
 
-Then /^the page body should contain "([^"]*)"$/ do |content|
-  page.body.should match("#{Regexp.escape content}")
+Then /^the page body should (contain|match) "([^"]*)"$/ do |matcher, content|
+  page.body.should include(content) if matcher == 'contain'
+  page.body.should match(/#{content}/) if matcher == 'match'
 end
 
 Then /^the page body should not contain "([^"]*)"$/ do |content|
-  page.body.should_not match("#{Regexp.escape content}")
+  page.body.should_not include("#{content}")
 end

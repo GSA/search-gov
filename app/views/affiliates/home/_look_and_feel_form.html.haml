@@ -52,6 +52,10 @@
       %span GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
   %li.css-overrides
     %div
+      = label_tag 'affiliate[staged_css_property_hash][page_background_image_repeat]', 'Page background image repeat'
+      = select_tag 'affiliate[staged_css_property_hash][page_background_image_repeat]', options_for_select(Affiliate::BACKGROUND_REPEAT_VALUES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :page_background_image_repeat))
+  %li.css-overrides
+    %div
       = label_tag 'affiliate[staged_css_property_hash][page_background_color]', 'Page background color'
       = render_staged_color_text_field_tag @affiliate, :page_background_color
     %div

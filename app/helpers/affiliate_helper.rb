@@ -152,9 +152,10 @@ module AffiliateHelper
     return unless affiliate.uses_one_serp?
     style = ''
     background_color =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
-    background_image = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?
-    if background_image.present?
-      style << "background: #{background_color} url(#{background_image}) no-repeat center top"
+    background_image_url = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?
+    if background_image_url.present?
+      background_repeat =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_image_repeat)
+      style << "background: #{background_color} url(#{background_image_url}) #{background_repeat} center top"
     else
       style << "background-color: #{background_color}"
     end
