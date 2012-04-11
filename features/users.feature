@@ -26,14 +26,13 @@ Feature: Users
     Then I should see "Sign In to Use Our Services"
     And I should see "Register for a New Account"
     And the "I am a government employee or contractor" checkbox should not be checked
-    And the "I am not affiliated with a government agency" checkbox should not be checked
     And the "I have read and accept the" checkbox should not be checked
     When I fill in the following in the new user form:
     | Email                         | lorem.ipsum@agency.gov      |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
@@ -65,7 +64,7 @@ Feature: Users
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
@@ -80,7 +79,7 @@ Feature: Users
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
@@ -123,7 +122,7 @@ Feature: Users
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
@@ -139,23 +138,6 @@ Feature: Users
     And I should see "City can't be blank"
     And I should see "Zip can't be blank"
 
-  Scenario: Registering as a new user who is not affiliated with a government agency
-    Given I am on the login page
-    When I fill in the following in the new user form:
-    | Email                         | lorem.imsum@notagency.com   |
-    | Name                          | Lorem Ipsum                 |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
-    And I choose "I am not affiliated with a government agency"
-    And I check "I have read and accept the"
-    And I press "Register for a new account"
-    Then I should see the browser page titled "My Account"
-    And I should see the following breadcrumbs: USASearch > My Account
-    And I should see "My Account" in the page header
-    And I should see "Thank you for registering for USA.gov Search Services"
-    And I should not see a link to "Admin Center" in the main navigation bar
-    And I should not see "Add New Affiliate"
-
   Scenario: Registering as a new affiliate user with a .mil email address
     Given I am on the login page
     And I fill in the following in the new user form:
@@ -164,7 +146,7 @@ Feature: Users
     | Government organization       | The Agency                  |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should see the browser page titled "Admin Center"
@@ -179,7 +161,7 @@ Feature: Users
     Then I should be on the account page
     And I should see "can't be blank"
 
-  Scenario: Registering without selecting government affiliation or accepting the Terms of Service
+  Scenario: Registering without asserting government affiliation or accepting the Terms of Service
     Given I am on the login page
     When I fill in the following in the new user form:
     | Email                         | lorem.imsum@notagency.com   |
@@ -187,7 +169,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I press "Register for a new account"
-    Then I should see "An option for government affiliation must be selected"
+    Then I should see "Affiliation with government is required to register for an account"
     And I should see "Terms of service must be accepted"
 
   Scenario: Visiting edit my account profile page as an affiliate user

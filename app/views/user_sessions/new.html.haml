@@ -29,19 +29,18 @@
         = f.error_messages(:header_message => nil, :class => "error")
         %ul
           = render :partial => "/users/new_form", :object => f
-        %h3
-          Select one:
         .wrapBox
-          = f.radio_button :government_affiliation, "1", :class => 'radio'
-          = f.label :government_affiliation_1, "I am a government employee or contractor."
-        .wrapBox
-          = f.radio_button :government_affiliation, "0", :class => 'radio'
-          = f.label :government_affiliation_0, "I am not affiliated with a government agency."
+          = f.check_box :affiliation_with_government, {:class => 'checkbox'}
+          = f.label :affiliation_with_government, "I am a government employee or contractor."
         .wrapBox
           = f.check_box :terms_of_service, {:class => 'checkbox'}
           = f.label :terms_of_service, "I have read and accept the&nbsp".html_safe, :class => 'tos-label'
           = link_to 'Terms of Service', TOS_URL, :target => 'blank'
           \.
         = f.submit "Register for a new account", :class => 'btn-register submit'
+        .wrapBox
+          = f.label :recall_signup, "Note: Recall API users may&nbsp".html_safe, :class => 'tos-label'
+          = link_to 'sign up here', 'http://www.usa.gov/About/developer-resources/recalls.shtml', :target => 'blank'
+          \.
     .registerboxBot
       &nbsp;

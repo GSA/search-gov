@@ -8,7 +8,7 @@ end
 
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
-    User.create(:contact_name => hash[:contact_name], :email => hash[:email], :government_affiliation => true, :password => 'password', :password_confirmation => 'password')
+    User.create!(:contact_name => hash[:contact_name], :email => hash[:email], :government_affiliation => 1, :password => 'password', :password_confirmation => 'password')
   end
 end
 

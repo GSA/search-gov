@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :zip, :if => :strict_mode
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
-  validate :validate_government_affiliation, :on => :create
+  validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"
   attr_protected :is_affiliate, :is_affiliate_admin
   attr_protected :approval_status, :requires_manual_approval, :welcome_email_sent
   has_and_belongs_to_many :affiliates
@@ -185,14 +185,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def validate_government_affiliation
-    if self.government_affiliation.blank?
-      errors.add(:base, "An option for government affiliation must be selected")
-    end
-  end
-
   def set_initial_approval_status
-    set_approval_status_to_approved if self.approval_status.blank? and !signed_up_to_be_an_affiliate?
     (has_government_affiliated_email? ? set_approval_status_to_pending_email_verification : set_approval_status_to_pending_contact_information) if self.approval_status.blank?
     set_approval_status_to_pending_email_verification if invited
   end

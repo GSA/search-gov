@@ -134,13 +134,6 @@ describe User do
       end
     end
 
-    it "should set approval status to approved if the user is a developer" do
-      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        developer_user = User.create!(@valid_developer_attributes.merge(:email => email))
-        developer_user.is_approved?.should be_true
-      end
-    end
-
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))

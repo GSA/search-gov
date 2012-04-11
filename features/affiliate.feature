@@ -270,7 +270,7 @@ Feature: Affiliate clients
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
-    And I choose "I am a government employee or contractor"
+    And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
@@ -580,7 +580,7 @@ Feature: Affiliate clients
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should not see the page with external affiliate stylesheet "ht tp://cdn.agency.gov/custom.css"
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"

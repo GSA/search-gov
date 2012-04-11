@@ -58,15 +58,3 @@
   %tr
     %td{:colspan => 2}
       * Required
-  - if @user.new_record?
-    %tr
-      %td{:colspan => 2}
-        %span.loud
-          Select one:
-    %tr
-      %td{:colspan => 2}
-        = form.radio_button :government_affiliation, "1"
-        = form.label :government_affiliation_1, "I am a government employee or contractor.", :class => "text"
-        %br
-        = form.radio_button :government_affiliation, "0"
-        = form.label :government_affiliation_0, "I am not affiliated with a government agency.", :class => "text"
