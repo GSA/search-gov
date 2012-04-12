@@ -23,6 +23,7 @@ class IndexedDocument < ActiveRecord::Base
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
+  scope :crawled, where('last_crawled_at IS NOT NULL')
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250

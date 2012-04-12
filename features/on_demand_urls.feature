@@ -162,6 +162,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | http://aff.gov/1.html | No. 1   | Number 1          | aff.gov   | 2012-01-19      | OK                |
       | http://aff.gov/2.html | No. 2   | Number 2          | aff.gov   | 2012-01-19      | OK                |
       | http://aff.gov/3.html | No. 3   | Number 3          | aff.gov   |                 |                   |
+    And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
@@ -169,6 +170,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see "url,title,description,doctype,last_crawled_at,last_crawl_status"
     And I should see "http://aff.gov/1.html,No. 1,Number 1,html,2012-01-19 00:00:00 UTC,OK"
     And I should see "http://aff.gov/2.html,No. 2,Number 2,html,2012-01-19 00:00:00 UTC,OK"
+    And I should see "http://aff.gov/crawled/1,crawled document 1,crawled document description 1,"
+    And I should see "http://aff.gov/crawled/40,crawled document 40,crawled document description 40,"
     And I should not see "http://aff.gov/3.html"
 
     When I go to the affiliate admin page with "aff.gov" selected
@@ -178,4 +181,6 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see "url,title,description,doctype,last_crawled_at,last_crawl_status"
     And I should see "http://aff.gov/1.html,No. 1,Number 1,html,2012-01-19 00:00:00 UTC,OK"
     And I should see "http://aff.gov/2.html,No. 2,Number 2,html,2012-01-19 00:00:00 UTC,OK"
+    And I should see "http://aff.gov/crawled/1,crawled document 1,crawled document description 1,"
+    And I should see "http://aff.gov/crawled/40,crawled document 40,crawled document description 40,"
     And I should not see "http://aff.gov/3.html"

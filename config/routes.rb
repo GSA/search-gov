@@ -58,6 +58,7 @@ UsasearchRails3::Application.routes.draw do
         get :crawled
         get :uncrawled
         get :bulk_new
+        get :export_crawled, :constraints => { :format => 'csv' }
       end
     end
     resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do

@@ -52,6 +52,6 @@
         %tr
           %th{:colspan => 4}
             = link_to("View all", crawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link') unless @crawled_urls.empty?
-            = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
+            = link_to("Export to CSV", export_crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
             %span Previously Crawled URLs (#{@crawled_urls.total_entries})
       = render :partial => 'affiliates/on_demand_urls/crawled_urls', :locals => { :shorten_url_length => 40 }
