@@ -6,13 +6,10 @@ class Sitemap < ActiveRecord::Base
   belongs_to :affiliate
 
   def fetch
-    file = open(url)
-    parse(file)
+    parse(open(url))
+    update_attribute(:last_crawled_at, Time.now)
   rescue Exception => e
-    Rails.logger.error "Trouble fetching #{url} to index: #{e}"
-  ensure
-    update_attributes!(:last_crawled_at => Time.now)
-    File.delete(file) unless file.nil?
+    Rails.logger.warn "Trouble fetching #{url} to index: #{e}"
   end
 
   def parse(file)

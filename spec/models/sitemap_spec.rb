@@ -61,13 +61,8 @@ describe Sitemap do
         @sitemap.stub!(:open).and_raise Exception.new("404 Document Not Found")
       end
 
-      it "should update the url with last crawled date and error message" do
-        @sitemap.fetch
-        @sitemap.last_crawled_at.should_not be_nil
-      end
-
-      it "should not attempt to clean up the nil file descriptor" do
-        File.should_not_receive(:delete)
+      it "should log the error" do
+        Rails.logger.should_receive(:warn)
         @sitemap.fetch
       end
     end
@@ -78,15 +73,16 @@ describe Sitemap do
         @sitemap.stub!(:open).and_return @sitemap_io
       end
 
+      it "should update the url with last crawled date and error message" do
+        @sitemap.fetch
+        @sitemap.last_crawled_at.should_not be_nil
+      end
+
       it "should call parse" do
         @sitemap.should_receive(:parse).with(@sitemap_io)
         @sitemap.fetch
       end
 
-      it "should delete the downloaded temporary HTML file" do
-        File.should_receive(:delete).with(@sitemap_io)
-        @sitemap.fetch
-      end
     end
   end
 
@@ -155,7 +151,7 @@ describe Sitemap do
     end
 
     it "should enqueue fetching of all sitemaps" do
-      Sitemap.all.each{|sitemap| Resque.should_receive(:enqueue_with_priority).with(:low, SitemapFetcher, sitemap.id)}
+      Sitemap.all.each { |sitemap| Resque.should_receive(:enqueue_with_priority).with(:low, SitemapFetcher, sitemap.id) }
       Sitemap.refresh
     end
   end
