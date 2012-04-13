@@ -24,8 +24,6 @@ module NavigationHelpers
       search_path(:affiliate => $1)
     when /^(.*)'s mobile search page$/
       search_path(:affiliate => $1, :m => 'true')
-    when /^(.*)'s Spanish search page$/
-      search_path(:affiliate => $1, :locale => 'es')
     when /^(.*)'s embedded search page$/
       search_path(:affiliate => $1, :embedded => "1")
     when /^(.*)'s oneserp search page$/
@@ -126,12 +124,8 @@ module NavigationHelpers
       '/aninvalidurl?locale=es'
     when /the (.*)'s 404 page$/
       affiliate_page_not_found_path(:name => $1)
-    when /the (.*)'s Spanish 404 page$/
-      affiliate_page_not_found_path(:name => $1, :locale => 'es')
     when /the (.*)'s staged 404 page$/
       affiliate_page_not_found_path(:name => $1, :staged => 1)
-    when /the (.*)'s staged Spanish 404 page$/
-      affiliate_page_not_found_path(:name => $1, :locale => 'es', :staged => 1)
     else
       begin
         page_name =~ /the (.*) page/

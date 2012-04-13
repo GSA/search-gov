@@ -25,8 +25,9 @@ class ImageSearchesController < ApplicationController
   end
 
   def set_search_options
-    @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
-    @affiliate = (I18n.locale == :en ? Affiliate.find_by_name("usagov") : Affiliate.find_by_name('gobiernousa')) if @affiliate.nil?
+    @affiliate = Affiliate.find_by_name(params[:affiliate]) unless params[:affiliate].blank?
+    set_affiliate_based_on_locale_param
+    set_locale_based_on_affiliate_locale
     @search_options = {
       :page => [(params[:page] || "1").to_i, 1].max,
       :query => Sanitize.clean(params["query"]),

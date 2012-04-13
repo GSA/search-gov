@@ -30,8 +30,8 @@ Feature: Image search
 
   Scenario: Visiting Spanish image search homepage
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda |
+      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
     When I am on the Spanish homepage
     And I follow "Imágenes" in the search navigation
     Then I should see the browser page titled "Buscador.USA.gov Imágenes"

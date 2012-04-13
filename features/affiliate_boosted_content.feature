@@ -287,14 +287,14 @@ Feature: Boosted Content
     And I fill in "query" with "unrelated"
     And I submit the search form
     Then I should see "Our Emergency Page" within "#boosted"
-    
+
   Scenario: Site visitor sees highlighted terms
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale  |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | en      |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | es      |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
-      | title                           | url                    | description                          | 
+      | title                           | url                    | description                          |
       | Emergency Information           | http://www.aff.gov/911 | Updated information on the emergency |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title                             | url                    | description                        |
@@ -303,7 +303,7 @@ Feature: Boosted Content
     And I fill in "query" with "information"
     And I press "Search"
     Then I should see "Information" in bold font
-    
+
     When I go to bar.gov's search page
     And I fill in "query" with "pagina"
     And I press "Buscar"
@@ -311,9 +311,9 @@ Feature: Boosted Content
 
   Scenario: Spanish site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | contact_name | locale |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | es     |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
       | title                                  | url                    | description                          | keywords         | locale |
       | Nuestra página de Emergencia           | http://www.aff.gov/911 | Updated information on the emergency | unrelated, terms | es     |
@@ -323,7 +323,7 @@ Feature: Boosted Content
       | title                             | url                    | description                        | keywords | locale |
       | la página de prueba de Emergencia | http://www.bar.gov/911 | This should not show up in results |          | es     |
       | Pelosi falta de ortografía        | http://www.bar.gov/pel | Synonyms file test works           |          | es     |
-    When I go to aff.gov's Spanish search page
+    When I go to aff.gov's search page
     And I fill in "query" with "emergencia"
     And I press "Buscar"
     Then I should see "Recomendación de aff site"
@@ -332,12 +332,12 @@ Feature: Boosted Content
     And I should not see "Our Tourism Page" within "#boosted"
     And I should not see "la página de prueba de Emergencia" within "#boosted"
 
-    When I go to bar.gov's Spanish search page
+    When I go to bar.gov's search page
     And I fill in "query" with "Peloci"
     And I press "Buscar"
     Then I should see "Synonyms file test works" within "#boosted"
 
-    When I go to aff.gov's Spanish search page
+    When I go to aff.gov's search page
     And I fill in "query" with "unrelated"
     And I press "Buscar"
     Then I should see "Nuestra página de Emergencia" within "#boosted"

@@ -2,8 +2,6 @@
 - target = params[:embedded] ? nil : '_parent'
 = form_tag(search_path, :method => :get, :id => 'advanced-firstgov', :class => 'advanced', :name=> 'advanced-firstgov', :target => target) do
   = hidden_field_tag 'input-form', 'advanced'
-  - locale = @affiliate.locale.to_sym
-  = hidden_field_tag 'locale', locale
   = hidden_field_tag 'affiliate', @affiliate.name
   = hidden_field_tag 'scope_id', @scope_id if @scope_id
   = hidden_field_tag 'embedded', params[:embedded] if params[:embedded]

@@ -1,7 +1,6 @@
 = form_tag(search_path(:m => "true"), :method => :get, :id=>"search_form", :autocomplete => "off") do
-  = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
-  = hidden_field_tag :affiliate, 'usagov' if english_locale?
+  = hidden_field_tag :affiliate, @affiliate.name
   .dvSearchBox
     = text_field :search, :query, { :maxlength => 255, :name => "query", :autocomplete => "off", :class => "mobileSearchTextBox usagov-search-autocomplete" }
     .dvSearchClose

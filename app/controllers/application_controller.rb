@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include SslRequirement
   skip_before_filter :ensure_proper_protocol unless Rails.env.production?
-  before_filter :set_locale
+  before_filter :set_default_locale
   before_filter :set_local_ip
   before_filter :show_searchbox
   helper :all
@@ -11,6 +11,17 @@ class ApplicationController < ActionController::Base
   VALID_FORMATS = %w{html rss json xml mobile}
 
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
+
+  protected
+  def set_affiliate_based_on_locale_param
+    unless @affiliate
+      @affiliate = params[:locale] == 'es' ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
+    end
+  end
+
+  def set_locale_based_on_affiliate_locale
+    I18n.locale = @affiliate.locale == 'es' ? :es : :en
+  end
 
   private
 
@@ -22,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = determine_locale_from_url(params[:locale]) || I18n.default_locale
+  end
+
+  def set_default_locale
+    I18n.locale = :en
   end
 
   def set_local_ip
@@ -42,10 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-    {
-      :locale => I18n.locale,
-      :m => "false"
-    }
+    { :m => "false" }
   end
 
   def current_user_session

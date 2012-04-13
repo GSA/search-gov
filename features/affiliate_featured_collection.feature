@@ -524,14 +524,14 @@ Feature: Featured Collections
     Then I should see a featured collection link title with "Animals" highlighted
     And I should see a featured collection link title with "Plants" highlighted
 
-  Scenario: Affiliate Spanish search user sees featured collection
+  Scenario: Affiliate search user sees featured collection
     Given the following Affiliates exist:
-      | display_name | name     | contact_email              | contact_name |
-      | Spanish site | site.gov | affiliate_manager@site.gov | John Bar     |
+      | display_name | name     | contact_email              | contact_name | locale |
+      | Spanish site | site.gov | affiliate_manager@site.gov | John Bar     | es     |
     And the following featured collections exist for the affiliate "site.gov":
       | title                                           | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
       | Nombres de ciclones tropicales en todo el mundo | http://www.nhc.noaa.gov/aboutnames.shtml | es     | active | cyclones.jpg    | ciclones       | NOAA              | http://www.noaa.gov   |
-    When I go to site.gov's Spanish search page
+    When I go to site.gov's search page
     And I fill in "query" with "ciclones"
     And I press "Buscar"
     Then I should see a link to "Nombres de ciclones tropicales en todo el mundo" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section

@@ -49,6 +49,8 @@ Feature: Mobile Search
     And I should see "USA.gov Mobile"
     And I should see "Social Security"
     And I should see 3 search results
+    When I follow "Next"
+    Then I should see "USA.gov Mobile"
 
   Scenario: A search on the home page from a tablet
     Given I am using a tablet device
@@ -64,6 +66,8 @@ Feature: Mobile Search
     And I submit the search form
     Then I should be on the search page
     And I should see "educación"
+    When I follow "Siguiente"
+    Then I should see "Gobierno.USA.gov Móvil"
 
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page

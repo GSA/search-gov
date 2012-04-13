@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   has_mobile_fu
+  before_filter :set_affiliate_based_on_locale_param, :only => [:index]
+  before_filter :set_locale_based_on_affiliate_locale, :only => [:index]
+  before_filter :set_locale, :only => [:contact_form]
 
   def index
     @title = "Home - "
-    @affiliate = I18n.locale == :es ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
     @search = WebSearch.new(:affiliate => @affiliate)
     respond_to do |format|
       format.any(:html, :mobile)

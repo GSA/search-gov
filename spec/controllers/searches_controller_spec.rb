@@ -7,12 +7,6 @@ describe SearchesController do
     @affiliate = affiliates(:usagov_affiliate)
   end
 
-  context "when showing index" do
-    it "should have a route with a locale" do
-      search_path.should =~ /search\?locale=en/
-    end
-  end
-
   context "when showing a new search" do
     render_views
     context "when searching in English" do
@@ -122,16 +116,16 @@ describe SearchesController do
     it "should set the sanitized query in Javascript" do
       response.body.should match(/var original_query = "weather"/)
     end
+  end
 
-    context "when the affiliate locale is set to Spanish" do
-      before do
-        @affiliate.update_attribute(:locale, 'es')
-        get :index, :affiliate => @affiliate.name, :query => 'weather', :locale => 'en'
-      end
+  context "when the affiliate locale is set to Spanish" do
+    before do
+      affiliate = affiliates(:gobiernousa_affiliate)
+      get :index, :affiliate => affiliate.name, :query => 'weather', :locale => 'en'
+    end
 
-      it "should override/ignore the HTTP locale param and set locale to Spanish" do
-        I18n.locale.to_s.should == 'es'
-      end
+    it "should override/ignore the HTTP locale param and set locale to Spanish" do
+      I18n.locale.to_s.should == 'es'
     end
   end
 
@@ -408,8 +402,13 @@ describe SearchesController do
     end
 
     context "when locale is spanish" do
+      before do
+        @affiliate.locale = 'es'
+        @affiliate.save!
+      end
+
       it "should have a 'Results by USASearch' logo" do
-        get :docs, :query => "pdf", :affiliate => @affiliate.name, :locale => 'es'
+        get :docs, :query => "pdf", :affiliate => @affiliate.name
         response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
         response.should have_selector("a", :href => 'http://usasearch.howto.gov')
       end
@@ -511,7 +510,7 @@ describe SearchesController do
 
       context "when the locale is spanish" do
         it "should show a spanish results-by logo" do
-          get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w", :locale => 'es'
+          get :news, :query => 'element', :affiliate => affiliates(:gobiernousa_affiliate).name, :channel => rss_feeds(:es_white_house_blog).id, :tbs => "w"
           response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
           response.should have_selector("a", :href => 'http://usasearch.howto.gov')
         end

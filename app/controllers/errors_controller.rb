@@ -7,15 +7,17 @@ class ErrorsController < ApplicationController
     @page_title << " - #{@affiliate.display_name}" if @affiliate
     respond_to do |format|
       format.html do
-        render :layout => 'application', :status => 404 unless @affiliate
-        render :layout => 'affiliate', :status => 404 if @affiliate
+        render :layout => 'affiliate', :status => 404
       end
       format.mobile { render :file => File.join(Rails.root, "public", "simple_404.html"), :status => 404 }
     end
   end
 
+  private
   def setup_affiliate
     @affiliate = Affiliate.find_by_name(params[:name]) unless params[:name].blank?
+    set_affiliate_based_on_locale_param
+    set_locale_based_on_affiliate_locale
     if @affiliate && params[:staged]
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer

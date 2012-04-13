@@ -80,8 +80,9 @@ class SearchesController < ApplicationController
   end
 
   def set_affiliate_options
-    @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
-    @affiliate = (I18n.locale == :en ? Affiliate.find_by_name("usagov") : Affiliate.find_by_name('gobiernousa')) if @affiliate.nil?
+    @affiliate = Affiliate.find_by_name(params[:affiliate]) unless params[:affiliate].blank?
+    set_affiliate_based_on_locale_param
+    set_locale_based_on_affiliate_locale
     if @affiliate and params[:oneserp]
       @affiliate.uses_one_serp = true
       @affiliate.css_property_hash[:show_content_box_shadow] = '1'
@@ -112,7 +113,6 @@ class SearchesController < ApplicationController
       @affiliate.page_background_image_updated_at = @affiliate.staged_page_background_image_updated_at
     end
 
-    I18n.locale = 'es' if @affiliate.locale == 'es'
     @affiliate.use_strictui if params[:strictui]
   end
 

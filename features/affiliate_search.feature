@@ -81,7 +81,6 @@ Feature: Affiliate Search
     And I should have the following query string:
       |affiliate|bar.gov   |
       |query    |first item|
-      |locale   |en        |
       |m        |false     |
     And I should see "First item"
     And I should see "First video item"
@@ -93,7 +92,6 @@ Feature: Affiliate Search
     Then I should have the following query string:
       |affiliate|bar.gov   |
       |query    |first item|
-      |locale   |en        |
       |m        |false     |
     And I should see "Videos" in the left column
     And I should not see a link to "Videos"
@@ -257,10 +255,10 @@ Feature: Affiliate Search
     When I follow "Remove all filters"
     Then I should see "Results 1-"
 
-  Scenario: No results when searching with active RSS feeds in Spanish
+  Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | contact_name | locale |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -269,7 +267,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
-    When I am on bar.gov's Spanish search page
+    When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Buscar"
     Then I should see "Resultados 1-10"
@@ -301,7 +299,7 @@ Feature: Affiliate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                | locale |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     |
-    When I am on bar.gov's Spanish search page
+    When I am on bar.gov's search page
     And I fill in "query" with "president"
     And I press "Buscar"
     Then I should see "Resultados 1-10"

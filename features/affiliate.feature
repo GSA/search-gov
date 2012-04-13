@@ -1720,20 +1720,21 @@ Feature: Affiliate clients
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the browser page titled "Advanced Search - noindex site"
 
-  Scenario: Visiting an affiliate Spanish advanced search page
+  Scenario: Visiting a Spanish affiliate advanced search page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
-      | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
-    When I go to noindex.gov's Spanish search page
+      | display_name | name        | contact_email | contact_name | locale |
+      | noindex site | noindex.gov | aff@aff.gov   | Two Bar      | es     |
+    When I go to noindex.gov's search page
     And I follow "Búsqueda avanzada"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the browser page titled "Búsqueda avanzada - noindex site"
 
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains | header           | footer           | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      |
-    When I go to aff.gov's search page
+      | display_name     | name       | contact_email | contact_name | domains | header           | footer           | uses_managed_header_footer | locale |
+      | English aff site | en.aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      | en     |
+      | Spanish aff site | es.aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      | es     |
+    When I go to en.aff.gov's search page
     And I follow "Advanced Search"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Header"
@@ -1745,7 +1746,7 @@ Feature: Affiliate clients
     Then I should see "Results 1-10"
     And I should see "emergency"
 
-    When I go to aff.gov's Spanish search page
+    When I go to es.aff.gov's search page
     And I follow "Búsqueda avanzada"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Header"
@@ -1757,35 +1758,35 @@ Feature: Affiliate clients
     Then I should see "Resultados 1-10"
     And I should see "emergency"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I fill in "query-or" with "barack obama"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "barack OR obama"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I fill in "query-quote" with "barack obama"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "barack obama"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I fill in "query-not" with "barack"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "-barack"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I select "Adobe PDF" from "filetype"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "filetype:pdf"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I fill in "query" with "barack obama"
     And I select "20" from "per-page"
     And I press "Search"
@@ -1793,7 +1794,7 @@ Feature: Affiliate clients
     And I should see "Affiliate Footer"
     And I should see "Results 1-20"
 
-    When I am on the affiliate advanced search page for "aff.gov"
+    When I am on the affiliate advanced search page for "en.aff.gov"
     And I choose "Off"
     And I press "Search"
     Then I should see "Affiliate Header"

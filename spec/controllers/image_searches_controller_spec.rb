@@ -54,7 +54,7 @@ describe ImageSearchesController do
     end
 
     context "when searching as an affiliate and the query is blank" do
-      let(:affiliate) { mock_model(Affiliate) }
+      let(:affiliate) { mock_model(Affiliate, :locale => 'en') }
       let(:image_search) { mock(ImageSearch, :query => nil) }
 
       before do
