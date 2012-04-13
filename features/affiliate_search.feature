@@ -10,12 +10,12 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I press "Search"
     Then I should see "Please enter search term(s)"
-    
+
   Scenario: Setting a Left-nav Label
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"  
+    And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "bar.gov" selected
     And I follow "Sidebar"
     And I fill in "Sidebar Label" with "MY AWESOME LABEL"
@@ -110,6 +110,12 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see "News for 'loren' from bar site"
 
+    When there are 30 video news items for "Videos"
+    And I am on bar.gov's search page
+    And I follow "Videos"
+    Then I should see "Results 1-20"
+    And I should see 20 video news results
+
     When I am on es.bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Buscar"
@@ -134,7 +140,7 @@ Feature: Affiliate Search
 
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see 2 youtube thumbnails
+    And I should see 20 youtube thumbnails
     And I should see youtube thumbnail for "First video item"
     And I should see yesterday's date in the English search results
 

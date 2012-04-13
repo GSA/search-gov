@@ -107,7 +107,20 @@ describe NewsSearch do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1)
+        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, 10)
+        search.run.should be_true
+      end
+    end
+
+    context "when a valid video RSS feed is specified" do
+      before do
+        affiliate.rss_feeds.create!(:name => 'Video', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse')
+      end
+
+      it "should set per_page to 20" do
+        feed = affiliate.rss_feeds.videos.first
+        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, 20)
+        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
         search.run.should be_true
       end
     end
@@ -115,7 +128,7 @@ describe NewsSearch do
     context "when no RSS feed is specified" do
       it "should search for news items from all active feeds for the affiliate" do
         search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, an_instance_of(ActiveSupport::TimeWithZone), 1)
+        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, an_instance_of(ActiveSupport::TimeWithZone), 1, 10)
         search.run
       end
     end

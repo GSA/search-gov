@@ -20,7 +20,7 @@ class NewsItem < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, rss_feeds, since = nil, page = 1)
+    def search_for(query, rss_feeds, since = nil, page = 1, per_page = 10)
       sanitized_query = preprocess(query)
       return nil if rss_feeds.blank?
       excluded_urls = rss_feeds.first.affiliate.excluded_urls.collect { |url| url.url }
@@ -36,7 +36,7 @@ class NewsItem < ActiveRecord::Base
           with(:published_at).greater_than(since) if since
           without(:link).any_of excluded_urls unless excluded_urls.empty?
           order_by :published_at, :desc
-          paginate :page => page, :per_page => 10
+          paginate :page => page, :per_page => per_page
         end rescue nil
       end
     end

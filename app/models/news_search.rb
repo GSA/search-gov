@@ -1,4 +1,6 @@
 class NewsSearch < Search
+  DEFAULT_PER_PAGE = 10
+  DEFAULT_VIDEO_PER_PAGE = 20
   attr_reader :rss_feed,
               :related_search,
               :hits,
@@ -15,7 +17,8 @@ class NewsSearch < Search
 
   def search
     rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.rss_feeds.navigable_only
-    NewsItem.search_for(@query, rss_feeds, @since, @page)
+    per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
+    NewsItem.search_for(@query, rss_feeds, @since, @page, per_page)
   end
 
   def handle_response(response)

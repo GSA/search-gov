@@ -18,6 +18,20 @@ Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   Sunspot.commit
 end
 
+Given /^there are (\d+) video news items for "([^"]*)"$/ do |count, feed_name|
+  rss_feed = RssFeed.find_by_name feed_name
+  now = Time.current.to_i
+  published_at = 1.week.ago
+  count.to_i.times do |index|
+    rss_feed.news_items.create!(:link => "http://aff.gov/#{now}?v=i",
+                                :title => "news item #{index} title for #{feed_name}",
+                                :description => "news item #{index} description for #{feed_name}",
+                                :guid => "#{now}-#{index}",
+                                :published_at => published_at)
+  end
+  Sunspot.commit
+end
+
 Then /^I should not see "([^\"]*)" in bold font$/ do |text|
   page.should_not have_selector("strong", :text => text)
 end
@@ -77,4 +91,6 @@ Then /^I should see (\d+) news results$/ do |count|
   page.should have_selector(".newsitem", :count => count)
 end
 
-
+Then /^I should see (\d+) video news results$/ do |count|
+  page.should have_selector(".newsitem.video", :count => count)
+end
