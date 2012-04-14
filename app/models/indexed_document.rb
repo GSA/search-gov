@@ -277,7 +277,7 @@ class IndexedDocument < ActiveRecord::Base
     if self_url
       scheme = self_url.scheme.downcase
       host = self_url.host.downcase
-      request = self_url.request_uri
+      request = self_url.request_uri.gsub(/\/+/,'/')
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end

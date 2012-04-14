@@ -132,6 +132,13 @@ describe IndexedDocument do
         IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.foo.gov/"
       end
     end
+
+    context "when URL contains duplicate leading slashes in request" do
+      let(:url) { "http://www.usa.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
+      it "should collapse the slashes" do
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.usa.gov/hey/I/am/usagov/and/love/extra/slashes.shtml"
+      end
+    end
   end
 
   it "should create a SuperfreshUrl entry for the affiliate" do
