@@ -88,7 +88,11 @@ UsasearchRails3::Application.routes.draw do
     end
     resources :api, :controller => "affiliates/api"
     resources :featured_collections, :controller => "affiliates/featured_collections"
-    resources :rss_feeds, :controller => "affiliates/rss_feeds"
+    resources :rss_feeds, :controller => "affiliates/rss_feeds" do
+      collection do
+        get :new_url_fields
+      end
+    end
     resources :document_collections, :controller => "affiliates/document_collections"
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]

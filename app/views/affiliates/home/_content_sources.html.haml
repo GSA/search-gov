@@ -23,24 +23,19 @@
         = sitemap_form.text_field :url, :class => 'txt'
         = link_to('+', new_sitemap_fields_affiliates_path, :remote => true, :id => 'add_sitemap', :class => 'add-icon')
   .rss-feeds
-    %h2.sub-title
-      RSS Feeds
-    = f.fields_for :rss_feeds, @affiliate.rss_feeds.build do |rss_feed_form|
-      %table
-        %colgroup
-          %col{ :class => 'name' }
-          %col{ :class => 'url' }
-        %tbody
-          %tr
-            %th Feed Name
-            %th.url
-              = link_to('+', new_rss_feed_fields_affiliates_path, :remote => true, :id => 'add_rss_feed', :class => 'add-icon')
-              Feed URL
-          %tr
-            %td
-              = rss_feed_form.label :name, 'RSS Feed Name', :class => 'hide'
-              = rss_feed_form.text_field :name
-            %td
-              = rss_feed_form.label :url, 'RSS Feed URL', :class => 'hide'
-              = rss_feed_form.text_field :url
+    %h2.sub-title RSS Feeds
+    %table
+      %colgroup
+        %col{ :class => 'name' }
+        %col{ :class => 'url' }
+      %tbody
+        %tr
+          %th Feed Name
+          %th.url
+            = link_to('+', new_rss_feed_fields_affiliates_path, :remote => true, :id => 'add_rss_feed', :class => 'add-icon')
+            Feed URL
+        - @affiliate.rss_feeds.build
+        - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
+          = f.fields_for :rss_feeds, rss_feed do |rss_feed_form|
+            = render 'rss_feed_fields', :f => rss_feed_form, :index => index
   = f.submit "Next", :class => 'form-submit-button next-button'

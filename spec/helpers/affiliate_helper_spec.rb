@@ -75,9 +75,9 @@ describe AffiliateHelper do
 
       subject { helper.render_last_crawl_status(indexed_document) }
 
-      it { should have_selector "a", :href => '#', :class => 'crawled-url-dialog-link', :content => 'Error', :dialog_id => 'crawled-url-error-message-12345' }
+      it { should have_selector "a", :href => '#', :class => 'dialog-link', :content => 'Error', :dialog_id => 'crawled_url_error_12345' }
       it { should have_selector "span", :class => 'ui-icon ui-icon-newwin' }
-      it { should have_selector "div", :class => 'crawled-url-error-message', :id => 'crawled-url-error-message-12345' }
+      it { should have_selector "div", :class => 'url-error-message hide', :id => 'crawled_url_error_12345' }
     end
   end
 

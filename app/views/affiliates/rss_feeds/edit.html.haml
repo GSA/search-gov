@@ -2,7 +2,7 @@
 %h1 Edit RSS Feed
 = render_help_link(@help_link)
 .edit-rss-feed
-  = form_for([@affiliate, @rss_feed], :html => { :multipart => true }) do |f|
-    = render :partial => 'form', :locals => { :form => f }
+  = form_for [@affiliate, @rss_feed], :html => { :class => 'rss-form' } do |f|
+    = render f
     = f.submit "Update"
     = link_to 'Cancel', [@affiliate, @rss_feed], :class => 'cancel'

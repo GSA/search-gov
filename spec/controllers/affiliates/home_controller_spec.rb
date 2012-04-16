@@ -201,18 +201,19 @@ describe Affiliates::HomeController do
 
       context "for a valid request" do
         before do
-          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => {
-            :site_domains_attributes => {
-              "0".to_sym => {:domain => 'aff.gov'},
-              "1".to_sym => {:domain => 'aff2.gov'}
-            },
-            :sitemaps_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}
-            },
-            :rss_feeds_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/feed.xml', :name => 'Feed 1'}
-            }
-          }
+          put :create_content_sources, :id => @user.affiliates.first.id,
+              :affiliate => {
+                  :site_domains_attributes => {
+                      "0".to_sym => { :domain => 'aff.gov' },
+                      "1".to_sym => { :domain => 'aff2.gov' }
+                  },
+                  :sitemaps_attributes => {
+                      "0".to_sym => { :url => 'http://aff.gov/sitemap.xml' }
+                  },
+                  :rss_feeds_attributes => {
+                      "0".to_sym => { :name => 'Feed 1', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff.gov/feed.xml' } } }
+                  }
+              }
         end
 
         it "should assign the affiliate" do
@@ -240,7 +241,7 @@ describe Affiliates::HomeController do
           @affiliate.rss_feeds.should_not be_empty
           @affiliate.rss_feeds.size.should == 1
           @affiliate.rss_feeds.first.errors.should be_empty
-          @affiliate.rss_feeds.first.url.should == "http://aff.gov/feed.xml"
+          @affiliate.rss_feeds.first.rss_feed_urls.first.url.should == "http://aff.gov/feed.xml"
           @affiliate.rss_feeds.first.name.should == "Feed 1"
         end
       end
@@ -248,18 +249,18 @@ describe Affiliates::HomeController do
       context "for an invalid request" do
         before do
           put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => {
-            :site_domains_attributes => {
-              "0".to_sym => {:domain => 'aff.gov'},
-              "1".to_sym => {:domain => 'aff2.gov'}
-            },
-            :sitemaps_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'},
-              "1".to_sym => {:url => 'http://aff2.gov/sitemap.xml'}
-            },
-            :rss_feeds_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/feed.xml' },
-              "1".to_sym => {:url => 'http://aff2.gov/feed.xml', :name => 'Feed 2'}
-            }
+              :site_domains_attributes => {
+                  "0".to_sym => { :domain => 'aff.gov' },
+                  "1".to_sym => { :domain => 'aff2.gov' }
+              },
+              :sitemaps_attributes => {
+                  "0".to_sym => { :url => 'http://aff.gov/sitemap.xml' },
+                  "1".to_sym => { :url => 'http://aff2.gov/sitemap.xml' }
+              },
+              :rss_feeds_attributes => {
+                  "0".to_sym => { :name => '', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff.gov/feed.xml' } } },
+                  "1".to_sym => { :name => 'Feed 2', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff2.gov/feed.xml' } } }
+              }
           }
         end
 

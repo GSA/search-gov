@@ -1,5 +1,6 @@
 item1:
   rss_feed: :white_house_blog
+  rss_feed_url: :white_house_blog_url
   link: http://some.agency.gov/news/1
   title: News element 1
   description: News element 1 has a description
@@ -7,6 +8,7 @@ item1:
   published_at: <%= 5.day.ago.to_s(:db) %>
 item2:
   rss_feed: :es_white_house_blog
+  rss_feed_url: :es_white_house_blog_url
   link: http://es.some.agency.gov/news/1
   title: Spanish news element 1
   description: Spanish news element 1 has a description

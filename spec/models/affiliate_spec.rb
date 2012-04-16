@@ -387,7 +387,6 @@ describe Affiliate do
       end
     end
 
-
     context "when there is an existing staged header image" do
       let(:staged_header_image) { mock('staged header image') }
 
@@ -527,6 +526,28 @@ describe Affiliate do
         Affiliate.find(affiliate.id).staged_header.should == html_with_comments
         Affiliate.find(affiliate.id).staged_footer.should == html_with_comments
       end
+    end
+
+    it "should ignore rss_feeds_attributes with blank name or blank rss_feed_urls_attributes" do
+      rss_feeds_attributes = { '0' => { :name => '', :rss_feed_urls_attributes => { '0' => { :url => '' } } },
+                               '1' => { :name => 'Blog', :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } } } }
+      affiliate = Affiliate.create!(:display_name => 'site with blank RSS Feed')
+      affiliate.update_attributes(:rss_feeds_attributes => rss_feeds_attributes).should be_true
+      affiliate.rss_feeds.count.should == 1
+      affiliate.rss_feeds.first.name.should == 'Blog'
+      affiliate.rss_feeds.first.rss_feed_urls.first.url.should == 'http://usasearch.howto.gov/rss'
+    end
+  end
+
+  describe "on destroy" do
+    let(:affiliate) { Affiliate.create!(:display_name => 'connecting affiliate') }
+    let(:connected_affiliate) { Affiliate.create!(:display_name => 'connected affiliate') }
+
+    it "should destroy connection" do
+      affiliate.connections.create!(:connected_affiliate => connected_affiliate, :label => 'search connected affiliate')
+      Affiliate.find(affiliate.id).connections.count.should == 1
+      connected_affiliate.destroy
+      Affiliate.find(affiliate.id).connections.count.should == 0
     end
   end
 

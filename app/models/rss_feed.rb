@@ -1,44 +1,22 @@
 class RssFeed < ActiveRecord::Base
-  default_scope order('position ASC, ID ASC')
-  validates_presence_of :url, :name, :affiliate_id
-  validate :is_valid_rss_feed?, :on => :create
+  include ActiveRecordExtension
+  validates_presence_of :name, :affiliate_id
+  validate :rss_feed_urls_cannot_be_blank
+  after_validation :update_error_keys
+  before_save :set_is_video_flag
   belongs_to :affiliate
-  has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
+  has_many :rss_feed_urls, :order => 'url ASC', :dependent => :destroy
+  has_many :news_items, :order => "published_at DESC"
   scope :navigable_only, where(:is_navigable => true)
   scope :govbox_enabled, where(:shown_in_govbox => true)
   scope :managed, where(:is_managed => true)
   scope :videos, where(:is_video => true)
   scope :non_videos, where(:is_video => false)
-  before_save :set_is_video_flag
-  RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
-  ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
-  FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
+  attr_protected :is_managed, :is_video
+  accepts_nested_attributes_for :rss_feed_urls, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? and a[:url].blank? }
 
   def freshen(ignore_older_items = true)
-    self.update_attributes(:last_crawled_at => Time.now)
-    begin
-      most_recently = news_items.present? ? news_items.first.published_at : nil
-      rss_document = Nokogiri::XML(open(url))
-      feed_type = detect_feed_type(rss_document)
-      if feed_type.nil?
-        self.update_attributes(:last_crawl_status => "Unkown feed type.")
-      else
-        rss_document.xpath("//#{FEED_ELEMENTS[feed_type]["item"]}").each do |item|
-          published_at = DateTime.parse(item.xpath(FEED_ELEMENTS[feed_type]["pubDate"]).inner_text)
-          break if most_recently and published_at < most_recently and ignore_older_items
-          link = item.xpath(FEED_ELEMENTS[feed_type]["link"]).inner_text
-          title = item.xpath(FEED_ELEMENTS[feed_type]["title"]).inner_text
-          guid = item.xpath(FEED_ELEMENTS[feed_type]["guid"]).inner_text
-          raw_description = item.xpath(FEED_ELEMENTS[feed_type]["description"]).inner_text
-          description = Nokogiri::HTML(raw_description).inner_text.gsub(/[\t\n\r]/, ' ').squish
-          NewsItem.create!(:rss_feed => self, :link => link, :title => title, :description => description, :published_at => published_at, :guid => guid) unless news_items.exists?(:guid => guid)
-        end
-        self.update_attributes(:last_crawl_status => "OK")
-      end
-    rescue Exception => e
-      self.update_attributes(:last_crawl_status => e.message)
-      Rails.logger.warn(e)
-    end
+    rss_feed_urls.each { |u| u.freshen(ignore_older_items) }
   end
 
   def self.refresh_all
@@ -46,25 +24,16 @@ class RssFeed < ActiveRecord::Base
   end
 
   private
-
-  def is_valid_rss_feed?
-    unless url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
-      errors.add(:url, "The URL entered is not a valid URL.")
-    else
-      begin
-        rss_doc = Nokogiri::XML(Kernel.open(url))
-        errors.add(:url, "The RSS feed URL specified does not appear to be a valid RSS feed.") unless %{rss feed}.include?(rss_doc.root.name)
-      rescue Exception => e
-        errors.add(:url, "The RSS feed URL specified does not appear to be a valid RSS feed.  Additional information: " + e.message)
-      end
-    end
+  def rss_feed_urls_cannot_be_blank
+    errors.add(:base, "RSS feed must have 1 or more URLs.") if rss_feed_urls.blank? or rss_feed_urls.all?(&:marked_for_destruction?)
   end
 
-  def detect_feed_type(document)
-    document.root.name == "feed" ? :atom : :rss
+  def update_error_keys
+    swap_error_key(:"rss_feed_urls.url", :rss_feed_url)
   end
 
   def set_is_video_flag
-    self.is_video = true if url =~ /^http:\/\/gdata\.youtube.com\/feeds\/.+$/i
+    self.is_video = rss_feed_urls.present? && rss_feed_urls.all?(&:is_video?)
+    true
   end
 end

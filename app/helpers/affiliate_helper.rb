@@ -27,17 +27,29 @@ module AffiliateHelper
     templates.join
   end
 
+  def render_rss_feed_url_last_crawl_status(rss_feed_url)
+    return rss_feed_url.last_crawl_status if RssFeedUrl::STATUSES.include?(rss_feed_url.last_crawl_status)
+
+    dialog_id = "rss_feed_url_error_#{rss_feed_url.id}"
+    render_last_crawl_status_dialog(dialog_id, rss_feed_url.url, rss_feed_url.last_crawl_status).html_safe
+  end
+
+
   def render_last_crawl_status(indexed_document)
     return indexed_document.last_crawl_status if indexed_document.last_crawl_status == IndexedDocument::OK_STATUS or indexed_document.last_crawl_status.blank?
 
+    dialog_id = "crawled_url_error_#{indexed_document.id}"
+    render_last_crawl_status_dialog(dialog_id, indexed_document.url, indexed_document.last_crawl_status).html_safe
+  end
+
+  def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)
     content = ''
-    dialog_id = "crawled-url-error-message-#{indexed_document.id}"
-    content << link_to('Error', '#', :class => 'crawled-url-dialog-link', :dialog_id => dialog_id)
-    content << link_to(content_tag(:span, nil, :class => 'ui-icon ui-icon-newwin'), '#', :class => 'crawled-url-dialog-link', :dialog_id => dialog_id)
-    error_message_text = h(indexed_document.url)
+    content << link_to('Error', '#', :class => 'dialog-link', :dialog_id => dialog_id)
+    content << link_to(content_tag(:span, nil, :class => 'ui-icon ui-icon-newwin'), '#', :class => 'dialog-link', :dialog_id => dialog_id)
+    error_message_text = h(url)
     error_message_text << tag(:br)
-    error_message_text << h(indexed_document.last_crawl_status)
-    content << content_tag(:div, error_message_text.html_safe, :class => 'crawled-url-error-message', :id => dialog_id)
+    error_message_text << h(last_crawl_status)
+    content << content_tag(:div, error_message_text.html_safe, :class => 'url-error-message hide', :id => dialog_id)
     content.html_safe
   end
 

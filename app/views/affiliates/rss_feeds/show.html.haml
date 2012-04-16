@@ -1,7 +1,7 @@
-.show-rss-feed
+.show-rss-feed.rss-url-list
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "RSS Feed"])
   %h1 RSS Feed
-  = render_help_link(@help_link)  
+  = render_help_link(@help_link)
   %table
     %colgroup
       %col{ :class => 'name' }
@@ -10,24 +10,33 @@
       %tr
         %th{ :colspan => 2 }
           .actions
+            = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
             = link_to("Edit", edit_affiliate_rss_feed_path(@affiliate, @rss_feed), { :class => 'edit-link' })
             = button_to("Delete", [@affiliate, @rss_feed], :method => :delete, :confirm => "Are you sure you want to delete this RSS Feed?")
     %tbody
       %tr
-        %td.name URL
-        %td= @rss_feed.url
-      %tr
         %td.name Name
         %td= @rss_feed.name
       %tr
-        %td.name Show in Govbox
-        %td= @rss_feed.shown_in_govbox ? "yes" : "no"
+        %td.name Show as GovBox
+        %td= @rss_feed.shown_in_govbox? ? 'Yes' : 'No'
       %tr
-        %td.name Last Crawled At
-        %td= @rss_feed.last_crawled_at || "Pending"
-      %tr
-        %td.name Last Crawl Status
-        %td= @rss_feed.last_crawl_status || "Pending"
+        %td.name Show in sidebar
+        %td= @rss_feed.is_navigable? ? 'Yes' : 'No'
 
-  .add-link-wrapper
-    = link_to "Add another RSS Feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
+  %table
+    %colgroup
+      %col.url
+      %col.last-crawled-at
+      %col.last-crawl-status
+    %tbody
+      %tr.column-header
+        %th URL
+        %th Last Crawled
+        %th Status
+
+      - @rss_feed.rss_feed_urls.each do |url|
+        %tr{:class => cycle('even', 'odd')}
+          %td= link_to strip_url_protocol(url.url), url.url, :title => url.url
+          %td= url.last_crawled_at.nil? ? 'Pending' : render_date(url.last_crawled_at)
+          %td= render_rss_feed_url_last_crawl_status url

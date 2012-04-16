@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419000954) do
+ActiveRecord::Schema.define(:version => 20120419033137) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -486,17 +486,19 @@ ActiveRecord::Schema.define(:version => 20120419000954) do
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
 
   create_table "news_items", :force => true do |t|
-    t.integer  "rss_feed_id",  :null => false
-    t.string   "link",         :null => false
-    t.string   "title",        :null => false
-    t.string   "guid",         :null => false
-    t.text     "description",  :null => false
-    t.datetime "published_at", :null => false
+    t.integer  "rss_feed_id",     :null => false
+    t.string   "link",            :null => false
+    t.string   "title",           :null => false
+    t.string   "guid",            :null => false
+    t.text     "description",     :null => false
+    t.datetime "published_at",    :null => false
     t.datetime "created_at"
+    t.integer  "rss_feed_url_id", :null => false
   end
 
   add_index "news_items", ["link"], :name => "index_news_items_on_link"
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
+  add_index "news_items", ["rss_feed_url_id"], :name => "index_news_items_on_rss_feed_url_id"
 
   create_table "popular_urls", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -545,9 +547,20 @@ ActiveRecord::Schema.define(:version => 20120419000954) do
 
   add_index "robots", ["domain"], :name => "index_robots_on_domain"
 
+  create_table "rss_feed_urls", :force => true do |t|
+    t.integer  "rss_feed_id",                              :null => false
+    t.string   "url",                                      :null => false
+    t.datetime "last_crawled_at"
+    t.string   "last_crawl_status", :default => "Pending", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rss_feed_urls", ["rss_feed_id"], :name => "index_rss_feed_urls_on_rss_feed_id"
+
   create_table "rss_feeds", :force => true do |t|
     t.integer  "affiliate_id",                         :null => false
-    t.string   "url",                                  :null => false
+    t.string   "url"
     t.string   "name",                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

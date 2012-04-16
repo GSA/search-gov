@@ -1,6 +1,7 @@
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
+  include ActiveRecordExtension
   include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
@@ -19,14 +20,15 @@ class Affiliate < ActiveRecord::Base
   has_many :popular_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
-  has_many :rss_feeds, :dependent => :destroy
+  has_many :rss_feeds, :order => 'position ASC, ID ASC', :dependent => :destroy
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
   has_many :daily_left_nav_stats, :dependent => :destroy
-  has_many :connections, :order => 'connections.position ASC'
+  has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
+  has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -79,7 +81,7 @@ class Affiliate < ActiveRecord::Base
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
-  accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
+  accepts_nested_attributes_for :rss_feeds, :reject_if => proc { |a| a[:name].blank? and a[:rss_feed_urls_attributes].present? && a[:rss_feed_urls_attributes]['0'][:url].blank? }
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a['connected_affiliate_id'].blank? and a['label'].blank? }
 
@@ -501,13 +503,10 @@ class Affiliate < ActiveRecord::Base
   end
 
   def ensure_http_prefix
-    self.favicon_url = "http://#{favicon_url}" unless favicon_url.blank? or favicon_url =~ %r{^http(s?)://}i
-    self.staged_favicon_url = "http://#{staged_favicon_url}" unless staged_favicon_url.blank? or staged_favicon_url =~ %r{^http(s?)://}i
-    self.external_css_url = "http://#{external_css_url}" unless external_css_url.blank? or external_css_url =~ %r{^http(s?)://}i
-    self.staged_external_css_url = "http://#{staged_external_css_url}" unless staged_external_css_url.blank? or staged_external_css_url =~ %r{^http(s?)://}i
-    self.managed_header_home_url = "http://#{managed_header_home_url}" unless managed_header_home_url.blank? or managed_header_home_url =~ %r{^http(s?)://}i
-    self.staged_managed_header_home_url = "http://#{staged_managed_header_home_url}" unless staged_managed_header_home_url.blank? or staged_managed_header_home_url =~ %r{^http(s?)://}i
-    self.wt_javascript_url = "http://#{wt_javascript_url}" unless wt_javascript_url.blank? or wt_javascript_url =~ %r{^http(s?)://}i
+    set_http_prefix :favicon_url, :staged_favicon_url,
+                    :external_css_url, :staged_external_css_url,
+                    :managed_header_home_url, :staged_managed_header_home_url,
+                    :wt_javascript_url
   end
 
   def validate_css_property_hash
@@ -703,15 +702,12 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_error_keys
+    swap_error_key(:"rss_feeds.base", :base)
     swap_error_key(:"site_domains.domain", :domain)
     swap_error_key(:"connections.connected_affiliate_id", :related_site)
     swap_error_key(:"connections.label", :related_site_label)
     swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
     swap_error_key(:staged_header_image_file_size, :header_image_file_size)
-  end
-
-  def swap_error_key(from, to)
-    errors.add(to, errors.delete(from)) if errors.include?(from)
   end
 
   def previous_fields

@@ -159,8 +159,7 @@ describe Affiliates::RssFeedsController do
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
-      it { should set_the_flash }
-      it { should redirect_to(new_affiliate_rss_feed_path(affiliate)) }
+      it { should render_template(:new) }
     end
   end
 
@@ -321,8 +320,7 @@ describe Affiliates::RssFeedsController do
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
-      it { should set_the_flash }
-      it { should redirect_to(edit_affiliate_rss_feed_path(affiliate, rss_feed)) }
+      it { should render_template(:edit) }
     end
   end
 

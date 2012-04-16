@@ -68,6 +68,14 @@ function setupConnections() {
   });
 }
 
+function setupRssForm() {
+  jQuery(".rss-form .remove-url").click(function(event) {
+    event.preventDefault();
+    jQuery(this).siblings('input.destroy-url').attr('checked', 'checked');
+    jQuery(this).parents('tr.row-item.url').hide();
+  });
+}
+
 jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
@@ -171,4 +179,5 @@ jQuery(document).ready(function() {
   });
 
   setupConnections();
+  setupRssForm();
 });

@@ -1,33 +1,47 @@
 Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
-    is_navigable = hash["is_navigable"]
-    shown_in_govbox = hash["shown_in_govbox"].blank? ? true : hash["shown_in_govbox"]
-    RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_navigable => is_navigable, :shown_in_govbox => shown_in_govbox, :affiliate => affiliate, :position => hash["position"])
+    is_navigable = hash[:is_navigable]
+    shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
+    rss_feed = affiliate.rss_feeds.new(:name => hash[:name],
+                                       :is_navigable => is_navigable,
+                                       :shown_in_govbox => shown_in_govbox,
+                                       :position => hash[:position])
+    rss_feed.rss_feed_urls.build(:url => hash[:url],
+                                 :last_crawled_at => hash[:last_crawled_at],
+                                 :last_crawl_status => hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS)
+    rss_feed.save!
   end
   NewsItem.destroy_all
 end
 
 Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
+  rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
     published_at = hash["published_ago"].blank? ? 1.day.ago : 1.send(hash["published_ago"]).ago
-    NewsItem.create!(:link => hash["link"], :title => hash["title"], :description => hash["description"],
-                     :guid => hash["guid"], :published_at => published_at, :rss_feed => rss_feed)
+    rss_feed_url.news_items.create!(:rss_feed => rss_feed,
+                                    :link => hash["link"],
+                                    :title => hash["title"],
+                                    :description => hash["description"],
+                                    :guid => hash["guid"],
+                                    :published_at => published_at)
   end
   Sunspot.commit
 end
 
 Given /^there are (\d+) video news items for "([^"]*)"$/ do |count, feed_name|
   rss_feed = RssFeed.find_by_name feed_name
+  rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
   published_at = 1.week.ago
   count.to_i.times do |index|
-    rss_feed.news_items.create!(:link => "http://aff.gov/#{now}?v=i",
-                                :title => "news item #{index} title for #{feed_name}",
-                                :description => "news item #{index} description for #{feed_name}",
-                                :guid => "#{now}-#{index}",
-                                :published_at => published_at)
+    rss_feed_url.news_items.create!(:rss_feed => rss_feed,
+                                    :link => "http://aff.gov/#{now}?v=i",
+                                    :title => "news item #{index} title for #{feed_name}",
+                                    :description => "news item #{index} description for #{feed_name}",
+                                    :guid => "#{now}-#{index}",
+                                    :published_at => published_at)
   end
   Sunspot.commit
 end

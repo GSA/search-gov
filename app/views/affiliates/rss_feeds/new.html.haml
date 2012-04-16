@@ -2,7 +2,7 @@
 %h1 Add a new RSS Feed
 = render_help_link(@help_link)
 .add-rss-feed
-  = form_for([@affiliate, @rss_feed], :html => { :multipart => true }) do |f|
-    = render :partial => 'form', :locals => { :form => f }
-    = f.submit "Add", :class => 'submit'
+  = form_for [@affiliate, @rss_feed], :html => { :class => 'rss-form' } do |f|
+    = render f
+    = f.submit "Add"
     = link_to 'Cancel', affiliate_rss_feeds_path(@affiliate), :class => 'cancel'

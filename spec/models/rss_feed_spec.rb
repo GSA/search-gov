@@ -1,26 +1,57 @@
 require 'spec/spec_helper'
 
 describe RssFeed do
-  fixtures :affiliates, :rss_feeds
+  fixtures :affiliates, :rss_feeds, :rss_feed_urls
   before do
     @valid_attributes = {
-      :url => 'http://www.whitehouse.gov/feed/blog/white-house',
-      :name => "Blog",
-      :affiliate_id => affiliates(:basic_affiliate).id
+      :affiliate_id => affiliates(:basic_affiliate).id,
+      :name => 'Blog',
+      :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } }
+    }
+
+    @attributes_with_some_blank_urls = {
+        :affiliate_id => affiliates(:basic_affiliate).id,
+        :name => 'Blog',
+        :rss_feed_urls_attributes => { '0' => { :url => ' ' },
+                                       '1' => { :url => 'http://usasearch.howto.gov/rss' } }
+    }
+
+    @attributes_with_all_blank_urls = {
+        :affiliate_id => affiliates(:basic_affiliate).id,
+        :name => 'Blog',
+        :rss_feed_urls_attributes => { '0' => { :url => ' ' },
+                                       '1' => { :url => ' ' } }
     }
   end
 
-  it { should validate_presence_of :url }
   it { should validate_presence_of :name }
   it { should validate_presence_of :affiliate_id }
   it { should belong_to :affiliate }
-  it { should have_many(:news_items).dependent(:destroy) }
+  it { should have_many(:rss_feed_urls).dependent(:destroy) }
+  it { should have_many(:news_items) }
+  it { should_not allow_mass_assignment_of(:is_managed) }
+  it { should_not allow_mass_assignment_of(:is_video) }
 
-  it "should create a new instance given valid attributes" do
-    RssFeed.create!(@valid_attributes)
-  end
 
-  context "when creating" do
+  context "on create" do
+    it "should create a new instance given valid attributes" do
+      RssFeed.create!(@valid_attributes)
+    end
+
+    it "should not allow RssFeed without RssFeedUrl attributes" do
+      RssFeed.new(@valid_attributes.except(:rss_feed_urls_attributes)).save.should be_false
+    end
+
+    it "should not allow RssFeed with blank RssFeedUrl attributes" do
+      RssFeed.new(@attributes_with_all_blank_urls).save.should be_false
+    end
+
+    it "should ignore blank RssFeedUrl attributes" do
+      rss_feed = RssFeed.create!(@attributes_with_some_blank_urls)
+      rss_feed.rss_feed_urls.count.should == 1
+      rss_feed.rss_feed_urls.first.url.should == 'http://usasearch.howto.gov/rss'
+    end
+
     it "should set is_navigable to false by default" do
       RssFeed.create!(@valid_attributes).is_navigable.should be_false
     end
@@ -28,6 +59,7 @@ describe RssFeed do
     it "should set shown_in_govbox to false by default" do
       RssFeed.create!(@valid_attributes).shown_in_govbox.should be_false
     end
+
 
     context "when the RSS feed is a valid feed" do
       before do
@@ -68,6 +100,16 @@ describe RssFeed do
     end
   end
 
+  context "on save" do
+    it "should not save when all RssFeedUrl are marked for destruction" do
+      blog = rss_feeds(:white_house_blog)
+      rss_feed_url = blog.rss_feed_urls.first
+      blog.update_attributes(:rss_feed_urls_attributes => { '0' => { :id => rss_feed_url.id,
+                                                                     :url => rss_feed_url.url,
+                                                                     :_destroy => '1'} }).should be_false
+    end
+  end
+
   describe "#refresh_all" do
     before do
       @blog = rss_feeds(:white_house_blog)
@@ -83,211 +125,146 @@ describe RssFeed do
   end
 
   describe "#freshen" do
-    context "when the feed is in the RSS 2.0 format" do
-      before do
-        @feed = rss_feeds(:white_house_blog)
-        doc = Nokogiri::XML(open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml'))
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
-      end
+    let(:blog_feed_url) { mock_model(RssFeedUrl) }
+    let(:news_feed_url) { mock_model(RssFeedUrl) }
+    let(:rss_feed) { rss_feeds(:white_house_blog) }
 
-      context "when there are no news items associated with the source" do
-        before do
-          @feed.news_items.delete_all
-        end
-
-        it "should populate news items from the RSS feed source with HTML stripped from the description" do
-          @feed.freshen
-          @feed.reload
-          @feed.last_crawl_status.should == "OK"
-          @feed.news_items.count.should == 3
-          newest = @feed.news_items.first
-          newest.guid.should == "80731 at http://www.whitehouse.gov"
-          newest.link.should == "http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution"
-          newest.published_at.should == DateTime.parse("26 Sep 2011 21:33:05 +0000")
-          newest.description[0, 40].should == "Dr. Biden and David Letterman refer to a"
-          newest.title.should == "Famine in the Horn of Africa: Be a Part of the Solution"
-        end
-      end
-
-      context "when some news items are newer and some are older than the most recent published_at time for the feed" do
-        before do
-          NewsItem.delete_all
-          NewsItem.create!(:link => 'http://www.whitehouse.gov/latest_story.html',
-                           :title => "Big story here",
-                           :description => "Corps volunteers have promoted blah blah blah.",
-                           :published_at => DateTime.parse("26 Sep 2011 18:31:23 +0000"),
-                           :guid => 'unique',
-                           :rss_feed_id => @feed.id
-          )
-        end
-
-        context "when ignore_older_items set to true (default)" do
-          it "should populate news items with only the new ones from the RSS feed source based on the pubDate" do
-            @feed.freshen
-            @feed.news_items.count.should == 3
-          end
-        end
-
-        context "when ignore_older_items set to false" do
-          it "should populate news items with both the new and old ones from the RSS feed source based on the pubDate" do
-            @feed.freshen(false)
-            @feed.news_items.count.should == 4
-          end
-        end
-      end
-
-      context "when there are duplicate news items" do
-        before do
-          NewsItem.delete_all
-          NewsItem.create!(:link => 'http://www.whitehouse.gov/latest_story.html',
-                           :title => "Big story here",
-                           :description => "Corps volunteers have promoted blah blah blah.",
-                           :published_at => DateTime.parse("26 Sep 2011 18:31:21 +0000"),
-                           :guid => '80653 at http://www.whitehouse.gov',
-                           :rss_feed_id => @feed.id
-          )
-        end
-
-        it "should ignore them" do
-          NewsItem.should_receive(:create!).twice
-          @feed.freshen
-        end
-      end
-
-      context "when an exception is raised somewhere along the way" do
-        before do
-          DateTime.stub!(:parse).and_raise Exception.new("Error Message!")
-        end
-
-        it "should log it and move on" do
-          Rails.logger.should_receive(:warn).once.with(an_instance_of(Exception))
-          @feed.freshen
-          @feed.last_crawl_status.should == "Error Message!"
-        end
-      end
-    end
-
-    context "when the feed is in the Atom format" do
-      before do
-        @feed = rss_feeds(:atom_feed)
-        doc = Nokogiri::XML(open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml'))
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
-      end
-
-      context "when there are no news items associated with the source" do
-        before do
-          @feed.news_items.delete_all
-        end
-
-        it "should populate news items from the RSS feed source with HTML stripped from the description" do
-          @feed.freshen
-          @feed.reload
-          @feed.news_items.count.should == 25
-          newest = @feed.news_items.first
-          newest.guid.should == "http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642"
-          newest.link.should == "http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642"
-          newest.published_at.should == DateTime.parse("2009-11-30T12:00:00-05:00")
-          newest.description[0, 40].should == "Assessing Consistency and Fairness in Se"
-          newest.title.should == "Assessing Consistency and Fairness in Sentencing in Michigan, Minnesota, and Virginia, 2001-2002, 2004"
-        end
-      end
-    end
-
-    context "when the RSS feed format can not be determined" do
-      before do
-        @feed = rss_feeds(:atom_feed)
-        @feed.news_items.destroy_all
-        @feed.stub!(:detect_feed_type).and_return nil
-      end
-
-      it "should not change the number of news items, and update the crawl status" do
-        @feed.freshen
-        @feed.reload
-        @feed.news_items.count.should == 0
-        @feed.last_crawl_status.should == "Unkown feed type."
-      end
+    it "should freshen all RssFeedUrl" do
+      rss_feed.should_receive(:rss_feed_urls).and_return([blog_feed_url, news_feed_url])
+      blog_feed_url.should_receive(:freshen)
+      news_feed_url.should_receive(:freshen)
+      rss_feed.freshen
     end
   end
 
   describe "#is_video?" do
     let(:affiliate) { affiliates(:power_affiliate) }
 
-    context "when url starts with http://gdata.youtube.com/feeds/base/videos?alt=rss&author=" do
-      specify { affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://GDATA.youtube.com/feeds/base/videos?AUTHOR=noaa').should be_is_video }
+    context "when each RssFeedUrl is video" do
+      let(:rss_feed) do
+        affiliate.rss_feeds.create!(:name => 'Videos',
+                                    :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=USGovernment' },
+                                                                   '1' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } })
+      end
+
+      specify { rss_feed.should be_is_video }
     end
 
-    context "when url does not start with http://gdata.youtube.com/feeds/" do
-      specify { affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://www.rss.noaa.gov/noaarss.xml').should_not be_is_video }
+    context "when at least one RssFeedUrl is not video" do
+      let(:rss_feed) do
+        affiliate.rss_feeds.create!(:name => 'Not only videos',
+                                    :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=USGovernment' },
+                                                                   '1' => { :url => 'http://usasearch.howto.gov/rss' } })
+      end
+
+      specify { rss_feed.should_not be_is_video }
     end
   end
 
   describe ".navigable_only" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:navigable_only) { Affiliate.find(affiliate.id).rss_feeds.navigable_only }
+    let(:rss_feed_urls_attributes) { { '0' => { :url => 'http://usasearch.howto.gov/rss' } } }
 
-    before do
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 1', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 3)
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 2', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 2)
-      affiliate.rss_feeds.create!(:name => 'navigable rss feed 3', :url => 'http://usasearch.howto.gov/rss', :is_navigable => true, :position => 1)
-      affiliate.rss_feeds.create!(:name => 'not navigable rss feed', :url => 'http://usasearch.howto.gov/rss', :is_navigable => false, :position => 0)
+    let!(:navigable_feeds) do
+      navigable_feeds = []
+      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 1',
+                                                     :is_navigable => true,
+                                                     :position => 10,
+                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
+      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 2',
+                                                     :is_navigable => true,
+                                                     :position => 5,
+                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
+      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 3',
+                                                     :is_navigable => true,
+                                                     :position => 1,
+                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
+      navigable_feeds
     end
 
-    specify { navigable_only.count.should == 3 }
-    specify { navigable_only.collect(&:is_navigable).uniq.should == [true] }
-    specify { navigable_only.collect(&:position).should == [1, 2, 3] }
+    it "includes rss feeds with is_navigable flag" do
+      affiliate.rss_feeds.navigable_only.should include(*navigable_feeds)
+    end
+
+    it "sorts rss feeds with is_navigable flag by position" do
+      affiliate.rss_feeds.navigable_only.collect(&:position).should == [1,5,10]
+    end
+
+    it "excludes rss feeds with is_navigable flag" do
+      not_navigable_feed = affiliate.rss_feeds.create!(:name => 'not navigable rss feed',
+                                                       :is_navigable => false,
+                                                       :position => 0,
+                                                       :rss_feed_urls_attributes => rss_feed_urls_attributes)
+      affiliate.rss_feeds.navigable_only.should_not include(not_navigable_feed)
+    end
   end
 
   describe ".govbox_enabled" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:govbox_enabled) { Affiliate.find(affiliate.id).rss_feeds.govbox_enabled }
 
-    before do
-      affiliate.rss_feeds.create!(:name => 'govbox rss feed 1', :url => 'http://usasearch.howto.gov/rss', :shown_in_govbox => true)
-      affiliate.rss_feeds.create!(:name => 'not govbox rss feed', :url => 'http://usasearch.howto.gov/rss', :shown_in_govbox => false)
+    it "includes rss feeds with shown_in_govbox flag" do
+      govbox_enabled = affiliate.rss_feeds.create!(:name => 'govbox rss feed 1',
+                                                   :shown_in_govbox => true,
+                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      affiliate.rss_feeds.govbox_enabled.should include(govbox_enabled)
     end
 
-    it "should scope the collection to the govbox enabled RssFeeds" do
-      govbox_enabled.count.should == 1
-      govbox_enabled.first.name.should == 'govbox rss feed 1'
+    it "excludes rss feeds without shown_in_govbox flag" do
+      not_govbox_enabled = affiliate.rss_feeds.create!(:name => 'not govbox rss feed',
+                                                       :shown_in_govbox => false,
+                                                       :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      affiliate.rss_feeds.govbox_enabled.should_not include(not_govbox_enabled)
     end
   end
 
   describe ".managed" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:managed) { Affiliate.find(affiliate.id).rss_feeds.managed }
 
-    before do
-      affiliate.rss_feeds.create!(:name => 'not managed', :url => 'http://usasearch.howto.gov/rss')
-      affiliate.rss_feeds.create!(:name => 'managed', :url => 'http://usasearch.howto.gov/rss', :is_managed => true)
+    it "includes rss feeds with is_managed flag" do
+      managed_feed = affiliate.rss_feeds.build(:name => 'Managed',
+                                               :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      managed_feed.is_managed = true
+      managed_feed.save!
+      managed_feed
+      affiliate.rss_feeds.managed.should include(managed_feed)
     end
 
-    specify { managed.count.should == 1 }
-    specify { managed.first.name.should == 'managed' }
+    it "excludes rss feeds without is_managed flag" do
+      not_managed_feed = affiliate.rss_feeds.create!(:name => 'Not managed',
+                                                     :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      affiliate.rss_feeds.managed.should_not include(not_managed_feed)
+    end
   end
 
   describe ".videos" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:videos) { Affiliate.find(affiliate.id).rss_feeds.videos }
 
-    before do
-      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://usasearch.howto.gov/rss')
-      affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
+    it "includes rss feeds with is_video flag" do
+      video_feed = affiliate.rss_feeds.create!(:name => 'Videos',
+                                               :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment' } })
+      affiliate.rss_feeds.videos.should include(video_feed)
     end
 
-    specify { videos.count.should == 1 }
-    specify { videos.first.name.should == 'Videos' }
+    it "excludes rss feeds without is_video flag" do
+      not_video_feed = affiliate.rss_feeds.create!(:name => 'Not videos',
+                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      affiliate.rss_feeds.videos.should_not include(not_video_feed)
+    end
   end
 
   describe ".non_videos" do
     let(:affiliate) { affiliates(:power_affiliate) }
-    let(:non_videos) { Affiliate.find(affiliate.id).rss_feeds.non_videos }
 
-    before do
-      affiliate.rss_feeds.create!(:name => 'Not videos', :url => 'http://usasearch.howto.gov/rss')
-      affiliate.rss_feeds.create!(:name => 'Videos', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')
+    it "includes rss feeds without is_video flag" do
+      not_video_feed = affiliate.rss_feeds.create!(:name => 'Not videos',
+                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
+      affiliate.rss_feeds.non_videos.should include(not_video_feed)
     end
 
-    specify { non_videos.count.should == 1 }
-    specify { non_videos.first.name.should == 'Not videos' }
+    it "excludes rss feeds with is_video flag" do
+      video_feed = affiliate.rss_feeds.create!(:name => 'Videos',
+                                  :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment' } })
+      affiliate.rss_feeds.non_videos.should_not include(video_feed)
+    end
   end
 end

@@ -85,7 +85,7 @@ jQuery(document).ready(function() {
 
   var currentErrorMessageDialogId = null;
 
-  jQuery('.crawled-url-error-message').each(function() {
+  jQuery('.url-error-message').each(function() {
     jQuery(this).dialog({
       autoOpen: false,
       dialogClass: 'url-error-message-dialog',
@@ -99,7 +99,7 @@ jQuery(document).ready(function() {
     jQuery(currentErrorMessageDialogId).dialog('close');
   });
 
-  jQuery('.crawled-url-dialog-link').each(function() {
+  jQuery('.dialog-link').each(function() {
     jQuery(this).click(function() {
       var dialogId = jQuery(this).attr('dialog_id');
       currentErrorMessageDialogId = '#' + dialogId;

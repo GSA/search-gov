@@ -1022,7 +1022,7 @@ h3.api-item
       margin: 0.5em 0 0
       padding: 0 0 0 1em
 
-.featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
+.featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .rss-url-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
   table
     border: 1px solid #BDBDBD
     table-layout: fixed
@@ -1100,7 +1100,11 @@ h3.api-item
 .boosted-contents .boosted-content-list
   clear: both
 
-.crawled-url-list, .uncrawled-url-list
+.url-section
+  border-top: 1px solid #DDDDDD
+  padding: 10px 0
+
+.crawled-url-list, .uncrawled-url-list, .rss-url-list
   tr.column-header
     background-color: #D3D3D3
   thead th
@@ -1113,16 +1117,35 @@ h3.api-item
     font:
       size: 14px
       weight: normal
+    &.url
+      font-weight: bold
   td a
     float: left
+  td.url
+    padding: 4px
+    input
+      margin: 0
+      padding: 5px
+      width: 98%
+  td.remove
+    padding: 5px
+    text-align: right
+    a
+      float: none
   a.header-link
     float: right
   col.last-crawled-at
     width: 100px
   col.last-crawl-status
     width: 70px
-  .crawled-url-error-message
-    display: none
+  col.remove
+    width: 30px
+
+.rss-feed-list td.url
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
 
 .content .superfresh .status
   table
@@ -1251,6 +1274,7 @@ h3.api-item
         width: 300px
     td
       :padding 0
+  .keywords, .url-prefixes, .rss-form
     .tips
       margin-left: 0px
 
@@ -1321,6 +1345,8 @@ h3.api-item
       a.edit-link
         color: white
         font-weight: bold
+        margin-right: 10px
+      a.add-link
         margin-right: 10px
   td
     border: 1px solid #A9A9A9

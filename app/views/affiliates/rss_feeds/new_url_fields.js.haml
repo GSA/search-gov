@@ -1,0 +1,6 @@
+- now = Time.now.to_i
+= fields_for "rss_feed[rss_feed_urls_attributes][#{now}]" do |f|
+  :plain
+    jQuery('.url-section table').append("#{escape_javascript(render('url_fields', :f => f, :is_managed => false, :index => now))}");
+    setupRssForm();
+

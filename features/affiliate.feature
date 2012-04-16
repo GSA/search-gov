@@ -131,8 +131,8 @@ Feature: Affiliate clients
     When I fill in the following:
       | Enter the domain or URL | agency.gov                                                                   |
       | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/485.xml                       |
-      | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
-      | RSS Feed Name           | Recalls Feed                                                                 |
+      | RSS Feed Name 0         | Recalls Feed                                                                 |
+      | RSS Feed URL 0          | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
     And I press "Next"
     Then I should see the browser page titled "Add a New Site"
     And I should see the following breadcrumbs: USASearch > Admin Center > Add New Site
@@ -204,6 +204,19 @@ Feature: Affiliate clients
     And I should see "My awesome agency" in the SERP header
     And I should see "Images" in the left column
     And I should not see "Recalls Feed" in the left column
+
+  Scenario: Adding a new affiliate without populating content sources
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Site"
+    And I fill in the following:
+      | Site name (Required)                          | My awesome agency |
+      | Site Handle (visible to searchers in the URL) | agencygov         |
+    And I press "Next"
+    Then I should see "Content Sources"
+    When I press "Next"
+    Then I should see the browser page titled "Add a New Site"
+    And I should see "Step 3. Get the code" in the site wizards header
 
   Scenario: Adding a new Spanish affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
@@ -2256,11 +2269,22 @@ Feature: Affiliate clients
     And I fill in "YouTube handle" with "     USGovernment    "
     And I press "Save"
     And I follow "RSS"
-    Then I should not see "Delete" button
+    Then I should see the following table rows:
+      | Name   | URLs                                    |
+      | Videos | gdata.youtube.com/.../videos?alt=rss... |
+    And I should not see "Delete" button
+    When I follow "Videos"
+    Then I should see the following table rows:
+      | Name            | Videos |
+      | Show as GovBox  | No     |
+      | Show in sidebar | No     |
+    And I should see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usgovernment"
+    And I should see "Pending"
     When I follow "Edit"
     Then the "Name*" field should contain "Videos"
-    And the "URL*" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"
-    And the "URL*" field should be disabled
+    And the "RSS feed URL 0" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"
+    And the "RSS feed URL 0" field should be disabled
+    And I should not see "Mark RSS feed URL 0 for deletion"
     When I follow "Social Media" in the page content
     Then I should see the browser page titled "Social Media"
 
@@ -2316,7 +2340,7 @@ Feature: Affiliate clients
     And I follow "Sidebar"
     And I follow "RSS" in the page content
     Then I should see "Press"
-    And I should see "http://www.whitehouse.gov/feed/press"
+    And I should see "www.whitehouse.gov/feed/press"
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
@@ -2474,11 +2498,11 @@ Feature: Affiliate clients
 
     When I follow "Results modules"
     And I follow "Press" in the page content
-    Then I should see "http://www.whitehouse.gov/feed/press"
+    Then I should see "www.whitehouse.gov/feed/press"
 
     When I follow "Results modules"
     And I follow "RSS" in the page content
-    Then I should see "http://www.whitehouse.gov/feed/press"
+    Then I should see "www.whitehouse.gov/feed/press"
 
   Scenario: Editing the results modules
     Given the following Affiliates exist:

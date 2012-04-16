@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe NewsItem do
-  fixtures :affiliates, :rss_feeds, :news_items
+  fixtures :affiliates, :rss_feeds, :rss_feed_urls, :news_items
   before do
     @valid_attributes = {
       :link => 'http://www.whitehouse.gov/latest_story.html',
@@ -9,7 +9,8 @@ describe NewsItem do
       :description => "Corps volunteers have promoted blah blah blah.",
       :published_at => DateTime.parse("2011-09-26 21:33:05"),
       :guid => '80798 at www.whitehouse.gov',
-      :rss_feed_id => rss_feeds(:white_house_blog).id
+      :rss_feed_id => rss_feeds(:white_house_blog).id,
+      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id
     }
   end
 
@@ -20,6 +21,7 @@ describe NewsItem do
   it { should validate_presence_of :guid }
   it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id) }
   it { should validate_presence_of :rss_feed_id }
+  it { should validate_presence_of :rss_feed_url_id }
   it { should belong_to :rss_feed }
 
   it "should create a new instance given valid attributes" do
@@ -31,11 +33,11 @@ describe NewsItem do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
       @gallery = rss_feeds(:white_house_press_gallery)
-      @blog_item = NewsItem.create!(:rss_feed_id => @blog.id, :guid => "unique to feed", :published_at => 3.days.ago,
+      @blog_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id, :rss_feed_id => @blog.id, :guid => "unique to feed", :published_at => 3.days.ago,
                                     :link => "http://www.wh.gov/ns1",
                                     :title => "Obama adopts policies similar to other policies",
                                     :description => "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>")
-      @gallery_item = NewsItem.create!(:rss_feed_id => @gallery.id, :guid => "unique to feed", :published_at => 1.day.ago,
+      @gallery_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_press_gallery_url).id, :rss_feed_id => @gallery.id, :guid => "unique to feed", :published_at => 1.day.ago,
                                        :link => "http://www.wh.gov/ns2", :title => "Obama adopts some more things",
                                        :description => "<p>that is the policy.</p>")
       NewsItem.reindex
