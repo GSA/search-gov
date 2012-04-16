@@ -2,7 +2,7 @@ require 'spec/spec_helper'
 
 describe "searches/advanced.html.haml" do
   fixtures :affiliates
-  
+
   context "visiting the advanced search page for an English language affiliate" do
     before do
       assign(:affiliate, affiliates(:usagov_affiliate))
@@ -12,7 +12,7 @@ describe "searches/advanced.html.haml" do
       render
       rendered.should contain(/Use the options on this page to create a very specific search./)
     end
-    
+
     it "should include a hidden input tag with the affiliate" do
       render
       rendered.should have_selector("input[type='hidden'][name='affiliate'][value='usagov']")
@@ -55,11 +55,6 @@ describe "searches/advanced.html.haml" do
     it "should display text in Spanish" do
       render
       rendered.should contain(/Use las siguientes opciones para hacer una búsqueda específica\./)
-    end
-
-    it "should display a hidden input field with the affiliate's locale" do
-      render
-      rendered.should have_selector("input[type='hidden'][name='locale'][value='es']")
     end
 
     it "should show options for adult searches, defaulting to moderate" do
