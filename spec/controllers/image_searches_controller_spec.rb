@@ -4,23 +4,24 @@ describe ImageSearchesController do
   fixtures :affiliates
   describe "#index" do
     context "when searching as an affiliate and the query is present" do
-      let(:image_search) { mock(ImageSearch, :query => 'weather') }
+      let(:query) { '<script>thunder & lightning</script>' }
+      let(:image_search) { mock(ImageSearch, :query => 'thunder & lightning') }
 
       before do
         @affiliate = affiliates(:basic_affiliate)
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(@affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(:affiliate => @affiliate, :query => 'weather')).and_return(image_search)
+        ImageSearch.should_receive(:new).with(hash_including(:affiliate => @affiliate, :query => 'thunder & lightning')).and_return(image_search)
         image_search.should_receive(:run)
       end
 
       context "for a live search" do
         before do
-          get :index, :affiliate => "agency100", :query => "weather"
+          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>'
         end
 
         it { should assign_to(:search).with(image_search) }
         it { should assign_to :affiliate }
-        it { should assign_to(:page_title).with("Current weather - NPS Site Search Results") }
+        it { should assign_to(:page_title).with("Current thunder & lightning - NPS Site Search Results") }
         it { should render_template 'image_searches/index' }
 
         it "should render the template" do
@@ -31,17 +32,17 @@ describe ImageSearchesController do
 
       context "for a staged search" do
         before do
-          get :index, :affiliate => "agency100", :query => "weather", :staged => "true"
+          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>', :staged => "true"
         end
 
-        it { should assign_to(:page_title).with("Staged weather - NPS Site Search Results") }
+        it { should assign_to(:page_title).with("Staged thunder & lightning - NPS Site Search Results") }
       end
 
       context "via the JSON API" do
         let(:search_results_json) { 'search results json' }
         before do
           image_search.should_receive(:to_json).and_return(search_results_json)
-          get :index, :affiliate => "agency100", :query => "weather", :format => :json
+          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>', :format => :json
         end
 
         it { should respond_with_content_type :json }

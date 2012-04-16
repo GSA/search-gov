@@ -22,7 +22,7 @@ class RecallsController < ApplicationController
   end
 
   def search
-    @query = Sanitize.clean(params[:query]) || ''
+    @query = sanitize_query(params[:query]) || ''
     respond_to do |format|
       format.html {
         @search_vertical = :recall

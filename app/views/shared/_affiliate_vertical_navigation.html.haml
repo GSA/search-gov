@@ -3,7 +3,7 @@
 - search_params = {:query => params[:query], :affiliate => @affiliate.name}
 - search_params.merge!(:channel => rss_feed.id) if rss_feed
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
-= javascript_tag "var original_query = \"#{h @search.query}\";"
+= javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
 = left_nav_label(@affiliate.left_nav_label)
 %ul.rss-feeds
   %li

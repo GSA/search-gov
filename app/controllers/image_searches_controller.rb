@@ -21,7 +21,7 @@ class ImageSearchesController < ApplicationController
   private
 
   def handle_affiliate_search
-    @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])
+    @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(@page_title) : @affiliate.build_search_results_page_title(@page_title)
   end
 
   def set_search_options
@@ -30,7 +30,7 @@ class ImageSearchesController < ApplicationController
     set_locale_based_on_affiliate_locale
     @search_options = {
       :page => [(params[:page] || "1").to_i, 1].max,
-      :query => Sanitize.clean(params["query"]),
+      :query => sanitize_query(params["query"]),
       :affiliate => @affiliate,
       :per_page => 30
     }

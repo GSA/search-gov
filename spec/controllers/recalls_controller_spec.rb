@@ -58,7 +58,7 @@ describe RecallsController do
       before do
         Recall.destroy_all
         Recall.reindex
-        get :search, :query => '<script>strollers</script>'
+        get :search, :query => '<script>food & formula</script>'
       end
 
       it "should render the template" do
@@ -67,15 +67,15 @@ describe RecallsController do
       end
 
       it "should sanitize the query term" do
-        assigns[:query].should == "strollers"
+        assigns[:query].should == "food & formula"
       end
 
-      it "should assign the query with a forms prefix as the page title" do
-        assigns[:page_title].should == "strollers"
+      it "should assign the query as the page title" do
+        assigns[:page_title].should == "food & formula"
       end
 
       it "should show a custom title for the results page" do
-        response.body.should contain("strollers - Search.USA.gov Recalls")
+        response.body.should contain("food & formula - Search.USA.gov Recalls")
       end
     end
 

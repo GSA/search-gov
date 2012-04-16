@@ -84,7 +84,7 @@ describe SearchesController do
     render_views
     before do
       @affiliate = affiliates(:power_affiliate)
-      get :index, :affiliate => @affiliate.name, :query => "<script>weather</script>"
+      get :index, :affiliate => @affiliate.name, :query => "<script>thunder & lightning</script>"
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
@@ -93,7 +93,7 @@ describe SearchesController do
     it { should assign_to :page_title }
 
     it "should sanitize the query term" do
-      @search.query.should == "weather"
+      @search.query.should == "thunder & lightning"
     end
 
     it "should render the template" do
@@ -102,7 +102,7 @@ describe SearchesController do
     end
 
     it "should set an affiliate page title" do
-      @page_title.should == "Current weather - Noaa Site Search Results"
+      @page_title.should == "Current thunder & lightning - Noaa Site Search Results"
     end
 
     it "should render the header in the response" do
@@ -114,7 +114,7 @@ describe SearchesController do
     end
 
     it "should set the sanitized query in Javascript" do
-      response.body.should match(/var original_query = "weather"/)
+      response.body.should include(%q{var original_query = "thunder & lightning"})
     end
   end
 
