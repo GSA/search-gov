@@ -62,6 +62,12 @@ describe Recall do
         FoodRecall.all.size.should == 2
       end
 
+      it "should skip recalls that do not have valid food recalls" do
+        Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
+        Recall.count.should == 2
+        FoodRecall.count.should == 2
+      end
+
     end
 
     context "when the url returns an invalid response" do

@@ -198,12 +198,10 @@ class Recall < ActiveRecord::Base
       require 'rss/2.0'
       begin
         RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
+          food_recall = FoodRecall.new(:url=>item.link, :summary => item.title, :description => item.description, :food_type => food_type)
           find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
                                           :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                          :food_recall => FoodRecall.new(:url=>item.link,
-                                                                         :summary=> item.title,
-                                                                         :description => item.description,
-                                                                         :food_type => food_type))
+                                          :food_recall => food_recall) if food_recall.valid?
         end
       rescue Exception => e
         Rails.logger.error(e.message)
