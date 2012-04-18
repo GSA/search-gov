@@ -1755,7 +1755,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Busque información del Gobierno"
-    Then I should see "Resultados 1-10"
+    Then I should see "Resultados 1-"
     And I should see "emergency"
 
     When I am on the affiliate advanced search page for "en.aff.gov"
