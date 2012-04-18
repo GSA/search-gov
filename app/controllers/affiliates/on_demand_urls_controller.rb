@@ -32,7 +32,7 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
 
   def upload
     file = params[:indexed_documents]
-    result = IndexedDocument.process_file(file, @affiliate)
+    result = IndexedDocument.process_file(file, @affiliate, current_user.is_affiliate_admin? ? 0 : IndexedDocument::MAX_URLS_PER_FILE_UPLOAD)
     if result[:success]
       redirect_to uncrawled_affiliate_on_demand_urls_path(@affiliate), :flash => { :success => "Successfully uploaded #{result[:count]} urls." }
     else

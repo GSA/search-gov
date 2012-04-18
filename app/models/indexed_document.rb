@@ -212,7 +212,7 @@ class IndexedDocument < ActiveRecord::Base
       end
 
       counter = 0
-      if file.tempfile.lines.count <= max_urls and file.tempfile.open
+      if (max_urls == 0 or file.tempfile.lines.count <= max_urls) and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
         if counter > 0
           affiliate.refresh_indexed_documents('unfetched')

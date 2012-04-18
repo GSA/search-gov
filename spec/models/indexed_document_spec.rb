@@ -867,14 +867,20 @@ describe IndexedDocument do
         @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
       end
 
-      it "should return with success = false and error message if max URLs is set below the number of URLs in the file" do
+      it "should return with success == false and error message if max URLs is set below the number of URLs in the file" do
         result = IndexedDocument.process_file(@file, @affiliate)
         result[:success].should be_false
         result[:error_message].should == 'Too many URLs in your file.  Please limit your file to 100 URLs.'
       end
 
-      it "should return with success = true if max URLs is set above the number of URLs in the file" do
+      it "should return with success == true if max URLs is set above the number of URLs in the file" do
         result = IndexedDocument.process_file(@file, @affiliate, 1000)
+        result[:success].should be_true
+        result[:count].should == 101
+      end
+      
+      it "should return with success == true if '0' is passed as the number of maximum urls" do
+        result = IndexedDocument.process_file(@file, @affiliate, 0)
         result[:success].should be_true
         result[:count].should == 101
       end

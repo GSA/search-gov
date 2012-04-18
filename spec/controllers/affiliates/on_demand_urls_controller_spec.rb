@@ -224,27 +224,42 @@ describe Affiliates::OnDemandUrlsController do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:url_file) { mock("url_file") }
 
-    context "when logged in as an affiliate manager who owns the affiliate and successfully bulk upload URLs" do
+    context "when logged in as an affiliate manager" do
       before do
         UserSession.create(users(:affiliate_manager))
-        IndexedDocument.should_receive(:process_file).with(url_file, affiliate).and_return({:success => true, :count => 5})
-        post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
+      end
+      
+      context "when the affiliate owns the affiliate and successfully bulk upload URLs" do
+        before do
+          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 100).and_return({:success => true, :count => 5})
+          post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
+        end
+
+        it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+        it { should set_the_flash.to(/Successfully uploaded 5 urls./) }
       end
 
-      it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
-      it { should set_the_flash.to(/Successfully uploaded 5 urls./) }
+      context "when the affiliate owns the affiliate and failed to bulk upload boosted contents" do
+        before do
+          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 100).and_return({:success => false, :error_message => 'error'})
+          post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
+        end
+
+        it { should assign_to(:title) }
+        it { should set_the_flash.to(/error/) }
+        it { should render_template(:bulk_new) }
+      end
     end
-
-    context "when logged in as an affiliate manager who owns the affiliate and failed to bulk upload boosted contents" do
+    
+    context "when logged in as an admin" do
       before do
-        UserSession.create(users(:affiliate_manager))
-        IndexedDocument.should_receive(:process_file).with(url_file, affiliate).and_return({:success => false, :error_message => 'error'})
+        UserSession.create(users(:affiliate_admin))
+      end
+      
+      it "should not limit the number of urls" do
+        IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 0).and_return({:success => true, :count => 5})
         post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
       end
-
-      it { should assign_to(:title) }
-      it { should set_the_flash.to(/error/) }
-      it { should render_template(:bulk_new) }
     end
   end
 
