@@ -1743,7 +1743,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Search"
-    Then I should see "Results 1-10"
+    Then I should see "Results 1-"
     And I should see "emergency"
 
     When I go to es.aff.gov's search page
