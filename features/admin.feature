@@ -160,3 +160,27 @@ Feature:  Administration
     Then the "Uses one serp" checkbox should be checked
     And the "Theme" field should contain "elegant"
     And the "Staged theme" field should contain "default"
+    
+  Scenario: Viewing monthly reports for affiliates
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+      | display_name  | name        | contact_email | contact_name |
+      | agency site   | agency.gov  | one@foo.gov   | One Foo      |
+      | agency site 2 | agency2.gov | two@foo.gov   | Two Foo      |
+    And the following DailyUsageStats exist for each day in "2012-03"
+     | profile    | total_queries | total_page_views | total_unique_visitors  | affiliate   |
+     | Affiliates | 100           | 100              | 100                    | agency.gov  |
+     | Affiliates | 200           | 200              | 200                    | agency2.gov |
+    When I go to the admin home page
+    And I follow "Monthly Reports"
+    Then I should not see "Total Queries:"
+    And I should not see "Total Clicks:"
+    
+    When I select "agency.gov" from "Affiliate"
+    And I select "March 2012" as the report date
+    And I press "Submit"
+    Then I should see "Total Queries: 3,100"
+    
+    When I select "agency2.gov" from "Affiliate"
+    And I press "Submit"
+    Then I should see "Total Queries: 6,200"
