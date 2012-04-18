@@ -69,12 +69,13 @@ describe OdieSearch do
 
   describe "#cache_key" do
     before do
-      @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
-      @search.run
+      @dc = affiliate.document_collections.create!(:name => "whatevs", :is_navigable => true)
+      @dc.url_prefixes.create!(:prefix => "http://www.usa.gov/docs/")
     end
 
-    it "should output a key based on the parameters" do
-      @search.cache_key.should == "element:nps.gov:1"
+    it "should output a key based on the query, affiliate id, doc collection, and page parameters" do
+      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :dc => @dc.id).cache_key.should == "element:#{affiliate.id}:4:#{@dc.id}"
+      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key.should == "element:#{affiliate.id}:4:"
     end
   end
 
@@ -84,11 +85,22 @@ describe OdieSearch do
       @search.run
     end
 
-    it "should generate a JSON representation of total, start and end records and search results" do
+    it "should always generate a JSON representation of total, start and end records, and search results" do
       json = @search.to_json
       json.should =~ /total/
       json.should =~ /startrecord/
       json.should =~ /endrecord/
+      json.should_not =~ /related_search/
+    end
+
+    context "when related searches are present" do
+      before do
+        @search.instance_variable_set(:@related_search, ["<strong>foo</strong>", "<strong>foo</strong> is here <strong>again</strong>"])
+      end
+
+      it "should remove <strong> HTML formatting" do
+        @search.as_json[:related_searches].should == ["foo", "foo is here again"]
+      end
     end
 
     context "when an error occurs" do

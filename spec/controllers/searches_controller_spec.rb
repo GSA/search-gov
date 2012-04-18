@@ -460,7 +460,11 @@ describe SearchesController do
     it "should find news items that match the query for the affiliate" do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       assigns[:search].total.should == 1
-      assigns[:search].results.first.should == news_items(:item1)
+      assigns[:search].hits.first.instance.should == news_items(:item1)
+      assigns[:search].results.first['title'].should =~ /News \xEE\x80\x80element\xEE\x80\x81 1/
+      assigns[:search].results.first['link'].should == "http://some.agency.gov/news/1"
+      assigns[:search].results.first['publishedAt'].should be_present
+      assigns[:search].results.first['content'].should =~ /News \xEE\x80\x80element\xEE\x80\x81 1 has a description/
     end
 
     context "when the affiliate does not exist" do

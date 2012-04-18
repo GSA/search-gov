@@ -13,47 +13,28 @@ class OdieSearch < Search
     IndexedDocument.search_for(@query, @affiliate, @document_collection, @page, 10)
   end
 
-  def handle_response(response)
-    if response
-      @total = response.total
-      @startrecord = ((@page - 1) * 10) + 1
-      @results = paginate(process_results(response))
-      @hits = response.hits(:verify => true)
-      @endrecord = @startrecord + @results.size - 1
-    end
-  end
-
   def cache_key
-    [@query, @affiliate.name, @page].join(':')
-  end
-
-
-  def as_json(options = {})
-    if @error_message
-      {:error => @error_message}
-    else
-      {:total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results}
-    end
-  end
-
-  def to_xml(options = {:indent => 0, :root => :search})
-    if @error_message
-      {:error => @error_message}.to_xml(options)
-    else
-      {:total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results}.to_xml(options)
-    end
+    [@query, @affiliate.id, @page, @document_collection.try(:id)].join(':')
   end
 
   protected
 
-  def process_results(results)
-    processed = results.hits(:verify => true).collect do |hit|
+  def handle_response(response)
+    if response
+      @total = response.total
+      @results = paginate(process_results(response))
+      @hits = response.hits(:verify => true)
+      @startrecord = ((@page - 1) * 10) + 1
+      @endrecord = @startrecord + @results.size - 1
+    end
+  end
+
+  def process_results(response)
+    processed = response.hits(:verify => true).collect do |hit|
       {
         'title' => highlight_solr_hit_like_bing(hit, :title),
         'unescapedUrl' => hit.instance.url,
-        'content' => highlight_solr_hit_like_bing(hit, :description),
-        'cacheUrl' => nil,
-        'deepLinks' => nil
+        'content' => highlight_solr_hit_like_bing(hit, :description)
       }
     end
     processed.compact

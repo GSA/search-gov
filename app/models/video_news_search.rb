@@ -10,7 +10,8 @@ class VideoNewsSearch < NewsSearch
   end
 
   protected
-  def assign_rss_feed(options)
-    @rss_feed = @affiliate.rss_feeds.videos.find_by_id(options[:channel].to_i) if options[:channel].present?
+
+  def assign_rss_feed(channel_id)
+    @rss_feed = @affiliate.rss_feeds.videos.find_by_id(channel_id.to_i) if channel_id.present?
   end
 end

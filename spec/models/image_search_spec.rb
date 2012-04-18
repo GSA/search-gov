@@ -2,11 +2,11 @@ require 'spec/spec_helper'
 
 describe ImageSearch do
   fixtures :affiliates
-  
+
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end
-  
+
   describe "#run" do
     before do
       @search = ImageSearch.new(:query => 'shuttle', :affiliate => @affiliate)
@@ -16,7 +16,7 @@ describe ImageSearch do
       QueryImpression.should_receive(:log).with(:image, @affiliate.name, 'shuttle', ["IMAG"])
       @search.run
     end
-    
+
     it "should perform a bing search" do
       @search.should_not_receive(:perform_odie_search)
       @search.run
@@ -26,17 +26,17 @@ describe ImageSearch do
       @search.should_not_receive(:handle_odie_response)
       @search.run
     end
-    
+
     context "when a Bing error occurs" do
       before do
         @search.stub!(:perform_bing_search).and_raise BingSearch::BingSearchError.new
       end
-      
+
       it "should log the error" do
         Rails.logger.should_receive(:warn)
         @search.run
       end
-    end 
+    end
   end
 
   subject do
@@ -76,14 +76,14 @@ describe ImageSearch do
       @result["Thumbnail"]["Height"].should == 160
       @result["Thumbnail"]["ContentType"].should == "image/jpeg"
     end
-    
+
     context "when doing an affiliate Image Search" do
       context "when the affiliate specified has no results for the given query" do
         before do
           affiliate = affiliates(:non_existant_affiliate)
           @search = ImageSearch.new(:query => 'obama', :affiliate => affiliate)
         end
-        
+
         it "should not attempt to backfill the results from locally-indexed documents" do
           IndexedDocument.should_not_receive(:search_for)
           @search.run
@@ -92,30 +92,4 @@ describe ImageSearch do
     end
   end
 
-  describe "#as_json" do
-    context "when converting search response to json" do
-      before do
-        @search = subject
-        allow_message_expectations_on_nil
-      end
-
-      it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
-        json = @search.to_json
-        json.should =~ /total/
-        json.should =~ /startrecord/
-        json.should =~ /endrecord/
-      end
-
-      context "when an error occurs" do
-        before do
-          @search.instance_variable_set :@error_message, "Some error"
-        end
-
-        it "should output an error if an error is detected" do
-          json = @search.to_json
-          json.should =~ /"error":"Some error"/
-        end
-      end
-    end
-  end
 end

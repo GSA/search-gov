@@ -5,7 +5,7 @@ describe WebSearch do
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
-    @valid_options = { :query => 'government', :page => 3, :affiliate => @affiliate }
+    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
     @bing_search = BingSearch.new(Search::USER_AGENT)
     BingSearch.stub!(:new).and_return @bing_search
   end
@@ -1264,54 +1264,57 @@ describe WebSearch do
   end
 
   describe "#as_json" do
-    before do
-      affiliate = affiliates(:basic_affiliate)
-      affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description", :locale => 'en',
-                                         :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-      BoostedContent.reindex
-      Sunspot.commit
-      @search = WebSearch.new(:query => 'obama', :affiliate => affiliate)
-      @search.run
-      allow_message_expectations_on_nil
-    end
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:search) { WebSearch.new(:query => 'obama', :affiliate => affiliate) }
 
-    it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
-      json = @search.to_json
+    it "should generate a JSON representation of total, start and end records, and search results" do
+      search.run
+      json = search.to_json
       json.should =~ /total/
       json.should =~ /startrecord/
       json.should =~ /endrecord/
+      json.should_not =~ /boosted_results/
+      json.should_not =~ /spelling_suggestion/
     end
 
     context "when an error occurs" do
       before do
-        @search.instance_variable_set(:@error_message, "Some error")
+        search.run
+        search.instance_variable_set(:@error_message, "Some error")
       end
 
       it "should output an error if an error is detected" do
-        json = @search.to_json
+        json = search.to_json
         json.should =~ /"error":"Some error"/
       end
     end
 
-    context "when boosted content is present" do
+    context "when boosted contents are present" do
       before do
-        @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1, 2, 3]))
+        affiliate.boosted_contents.create!(:title => "boosted obama content", :url => "http://example.com", :description => "description", :locale => 'en',
+                                           :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+        BoostedContent.reindex
+        Sunspot.commit
+        search.run
       end
 
-      it "should output as boosted results" do
-        @search.as_json[:boosted_results].should == [1, 2, 3]
+      it "should output boosted results" do
+        json = search.to_json
+        json.should =~ /boosted obama content/
       end
     end
 
-    context "when related searches are present" do
+    context "when Bing spelling suggestion is present" do
       before do
-        @search.instance_variable_set(:@related_search, ["<strong>foo</strong>", "<strong>foo</strong> is here <strong>again</strong>"])
+        search.instance_variable_set(:@spelling_suggestion, "spell it this way")
       end
 
-      it "should remove <strong> HTML formatting" do
-        @search.as_json[:related].should == ["foo", "foo is here again"]
+      it "should output spelling suggestion" do
+        json = search.to_json
+        json.should =~ /spell it this way/
       end
     end
+
   end
 
   describe "caching in #perform(query_string, offset, enable_highlighting)" do
@@ -1408,28 +1411,25 @@ describe WebSearch do
   end
 
   describe "#to_xml" do
-    let(:search) { WebSearch.new(:query => 'solar', :affiliate => affiliates(:basic_affiliate)) }
-    let(:error_in_xml) { "<search><error>error_message</error></search>" }
-
     context "when error message exists" do
-      before do
+      let(:search) { WebSearch.new(:query => 'solar'*1000, :affiliate => affiliates(:basic_affiliate)) }
+
+      it "should be included in the search result" do
         search.run
-        search.stub!(:error_message).and_return('error_message')
+        search.to_xml.should =~ /<search><error>That is too long a word. Try using a shorter word.<\/error><\/search>/
       end
 
-      specify { search.to_xml.should =~ /#{error_in_xml}/ }
     end
 
-    context "when error message does not exist" do
-      let(:keys) { %w(total startrecord endrecord spelling_suggestions related_searches results boosted_results).sort }
-      before do
-        search.stub!(:total).and_return(100)
-        search.stub!(:startrecord).and_return(1)
-        search.stub!(:endrecord).and_return(10)
-        search.stub!(:results).and_return('results_in_xml')
+    context "when there are search results" do
+      let(:search) { WebSearch.new(:query => 'solar', :affiliate => affiliates(:basic_affiliate)) }
+      it "should call to_xml on the result_hash" do
+        hash = {}
+        search.should_receive(:result_hash).and_return hash
+        hash.should_receive(:to_xml).with({:indent => 0, :root => :search})
+        search.to_xml
       end
 
-      specify { Hash.from_xml(search.to_xml)['search'].keys.sort.should == keys }
     end
   end
 
@@ -1475,7 +1475,6 @@ describe WebSearch do
       end
 
       it "should highlight in Bing-style any matches" do
-        puts @search.results.inspect
         @search.results.first['title'].should =~ /\xEE\x80\x80/
         @search.results.first['title'].should =~ /\xEE\x80\x81/
         @search.results.first['content'].should =~ /\xEE\x80\x80/

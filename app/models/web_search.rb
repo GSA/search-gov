@@ -6,7 +6,6 @@ class WebSearch < Search
   attr_reader :offset,
               :sources,
               :images,
-              :related_search,
               :spelling_suggestion,
               :boosted_contents,
               :filter_setting,
@@ -44,47 +43,14 @@ class WebSearch < Search
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
     @sources = "Spell+Web"
     @formatted_query = generate_formatted_query
-    @related_search = []
   end
 
   def cache_key
     [@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting].join(':')
   end
 
-  def as_json(options = {})
-    if @error_message
-      {:error => @error_message}
-    else
-      {:total => @total,
-       :startrecord => @startrecord,
-       :endrecord => @endrecord,
-       :spelling_suggestions => @spelling_suggestion,
-       :related => remove_strong(@related_search),
-       :results => @results,
-       :boosted_results => @boosted_contents.try(:results)}
-    end
-  end
-
-  def to_xml(options = {:indent => 0, :root => :search})
-    if error_message
-      {:error => error_message}.to_xml(options)
-    else
-      {:total => @total,
-       :startrecord => @startrecord,
-       :endrecord => @endrecord,
-       :spelling_suggestions => @spelling_suggestion,
-       :related_searches => remove_strong(@related_search),
-       :results => @results,
-       :boosted_results => @boosted_contents.try(:results)}.to_xml(options)
-    end
-  end
-
-  def has_related_searches?
-    @related_search && @related_search.size > 0
-  end
-
   def has_boosted_contents?
-    self.boosted_contents and self.boosted_contents.total > 0
+    self.boosted_contents and self.boosted_contents.results.size > 0
   end
 
   def has_featured_collections?
@@ -96,6 +62,15 @@ class WebSearch < Search
   end
 
   protected
+
+  def result_hash
+    hash = super
+    unless @error_message
+      hash.merge!(:spelling_suggestion => @spelling_suggestion) if @spelling_suggestion
+      hash.merge!(:boosted_results => @boosted_contents.results) if has_boosted_contents?
+    end
+    hash
+  end
 
   def build_query(options)
     query = ''
@@ -163,8 +138,8 @@ class WebSearch < Search
   def handle_odie_response(response)
     unless response.nil? and response.total > 0
       @total = response.total
-      @startrecord = response.startrecord
       @results = response.results
+      @startrecord = response.startrecord
       @endrecord = response.endrecord
     end
   end
@@ -179,7 +154,6 @@ class WebSearch < Search
       @endrecord = startrecord + results.size - 1
       @spelling_suggestion = spelling_results(response)
     end
-    @related_search = related_search_results
   end
 
   def hits(response)
@@ -241,10 +215,6 @@ class WebSearch < Search
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
     cleaned_query = strip_extra_chars_from(@query)
     cleaned_suggestion_without_bing_highlights == cleaned_query ? nil : cleaned_suggestion_without_bing_highlights
-  end
-
-  def related_search_results
-    SaytSuggestion.related_search(@query, @affiliate)
   end
 
   def populate_additional_results(response)
@@ -341,7 +311,7 @@ class WebSearch < Search
     return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
     @affiliate.excluded_urls.any? { |excluded_url| url == excluded_url.url }
   end
-  
+
   def lookup_published_at_by_url(url)
     news_item = NewsItem.find_by_link(url)
     news_item.nil? ? nil : news_item.published_at
@@ -368,7 +338,4 @@ class WebSearch < Search
     end
   end
 
-  def remove_strong(string_array)
-    string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
-  end
 end

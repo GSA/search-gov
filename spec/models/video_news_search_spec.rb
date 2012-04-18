@@ -10,10 +10,8 @@ describe VideoNewsSearch do
   end
 
   describe "#initialize(options)" do
-    let(:search) { VideoNewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate) }
-
-    before do
-      search.class.name.should == 'VideoNewsSearch'
+    it "should set the class name to 'VideoNewsSearch'" do
+      VideoNewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate).class.name.should == 'VideoNewsSearch'
     end
   end
 
@@ -22,6 +20,7 @@ describe VideoNewsSearch do
       it "should only search for news items from that feed" do
         rss_feed = mock_model(RssFeed)
         affiliate.stub_chain(:rss_feeds, :videos, :find_by_id).and_return(rss_feed)
+        rss_feed.stub!(:is_video?).and_return true
         search = VideoNewsSearch.new(:query => 'element', :channel => '100', :affiliate => affiliate)
         NewsItem.should_receive(:search_for).with('element', [rss_feed], nil, 1)
         search.run.should be_true

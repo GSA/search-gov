@@ -21,6 +21,7 @@ class Search
               :startrecord,
               :endrecord,
               :results,
+              :related_search,
               :queried_at_seconds
 
   def initialize(options = {})
@@ -29,7 +30,7 @@ class Search
     @affiliate = options[:affiliate]
     @page = (options[:page] || 1)
     @per_page = [(options[:per_page] || DEFAULT_PER_PAGE), MAX_PER_PAGE].min
-    @results = []
+    @related_search, @results = [], []
     @queried_at_seconds = Time.now.to_i
   end
 
@@ -54,6 +55,28 @@ class Search
     page == 1
   end
 
+  def has_related_searches?
+    @related_search && @related_search.size > 0
+  end
+
+  def as_json(options = {})
+    result_hash
+  end
+
+  def to_xml(options = {:indent => 0, :root => :search})
+    result_hash.to_xml(options)
+  end
+
+  def result_hash
+    if @error_message
+      {:error => @error_message}
+    else
+      hash = {:total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results}
+      hash.merge!(:related_searches => remove_strong(@related_search)) if has_related_searches?
+      hash
+    end
+  end
+
   protected
 
   # This does the search.  You get back a response object, which is handled in the handle_response method below.
@@ -66,6 +89,7 @@ class Search
 
   # If you need to query anything else, do that here
   def populate_additional_results(response)
+    @related_search = SaytSuggestion.related_search(@query, @affiliate)
   end
 
   def log_serp_impressions
@@ -88,4 +112,9 @@ class Search
   def allow_blank_query?
     false
   end
+
+  def remove_strong(string_array)
+    string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
+  end
+
 end

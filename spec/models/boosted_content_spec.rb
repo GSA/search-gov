@@ -141,7 +141,7 @@ describe BoostedContent do
     end
   end
 
-  context ".process_boosted_content_bulk_upload_for" do
+  describe ".process_boosted_content_bulk_upload_for" do
     context "when uploading xml file" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:xml_file) { mock('xml_file', { :original_filename => "boosted_content.xml" }) }
@@ -211,7 +211,7 @@ describe BoostedContent do
     end
   end
 
-  context ".process_boosted_content_xml_upload_for" do
+  describe ".process_boosted_content_xml_upload_for" do
     let(:site_xml) {
       <<-XML
         <xml>
@@ -245,7 +245,7 @@ describe BoostedContent do
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
-      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
+      basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
       BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
       results[:success].should be_true
@@ -273,7 +273,7 @@ describe BoostedContent do
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 3
-      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
+      basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url http://a.different.url}
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
@@ -306,7 +306,7 @@ describe BoostedContent do
     end
   end
 
-  context ".process_boosted_content_csv_upload_for" do
+  describe ".process_boosted_content_csv_upload_for" do
     let(:csv_file) {
       <<-CSV
 This is a listing about Texas,http://some.url,This is the description of the listing
@@ -330,7 +330,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
-      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
+      basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
       BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
       results[:success].should be_true
@@ -358,7 +358,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 3
-      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
+      basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url http://a.different.url}
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0

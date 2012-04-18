@@ -7,28 +7,28 @@
   Search API
 = render_help_link(@help_link)
 %p
-  USASearch's Search Data API returns search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
+  USASearch's Search Data API returns web, images, document, news, and video news search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
 %p
   The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
 .api
-  %h3
+  %h2
     Base URL:
   %p
     http://search.usa.gov/api/search
-  %h3
+  %h2
     Format:
   %p
     JSON or XML
-  %h3
+  %h2
     Type:
   %p
     HTTP GET
-  %h3
+  %h2
     Authentication:
   %p
     None required.
-  %h3
+  %h2
     Parameters:
   %ul
     %li
@@ -38,14 +38,17 @@
       %span api_key:
       your API key. This parameter is required.
     %li
+      %span index:
+      One of web, images, odie, news, or videonews. The default is 'web'. Bing provides the search results for web and image searches, while USASearch maintains the indexes for the news, video news, and document results.
+    %li
       %span format:
-      json or xml. This parameter is required.
+      json or xml. The default is JSON.
     %li
       %span query:
-      keywords.  Query terms for the search.
+      keywords.  Query terms for the search. This parameter must be URL encoded (e.g., "white+house" or "white%20house")
     %li
       %span page:
-      Pagination of search results. Ten results are displayed on each search results page and defaults to page 1.
+      Pagination of search results. Ten results are displayed on each search results page. This defaults to page 1.
     %li
       %span hl:
       Query highlighting on search results. Possible values are "true" or "false". Default is "true".
@@ -53,17 +56,19 @@
       When query highlighting is set to "true", matching text in search results title and content are wrapped with unicode characters "U+E000" and "U+E001".
       %br
       Examples: \ue000water\ue001 for JSON format and &amp;#57344;water&amp;#57345; for HTML format.
-  %h3
+  %h2
     Examples
+  %br
+  %h3 Web Search (Bing Results)
   %ul
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'web')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'web')
 
   %h3
     Response Fields
@@ -71,58 +76,58 @@
     Note that not all response fields appear in all queries.
   %ul
     %li
-      %span success:
+      %span total:
+      Total number of results for  the query.
+    %li
+      %span startrecord:
+      The index of the first search result with regard to all possible search results
+    %li
+      %span endrecord:
+      The index of the last search result with regard to all possible search results
+    %li
+      %span related_searches:
+      An array of search query terms that are related to the query terms specified
+    %li
+      %span spelling_suggestion:
+      A "did you mean" search suggestion for a potentially mistyped query term
+    %li
+      %span boosted_results:
+      Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
       %ul
         %li
-          %span total:
-          Total number of results for  the query.
+          %span title:
+          The title of the boosted content
         %li
-          %span startrecord:
-          The index of the first search result with regard to all possible search results
+          %span url:
+          The url for the boosted content
         %li
-          %span endrecord:
-          The index of the last search result with regard to all possible search results
+          %span description:
+          The description for the boosted content
+    %li
+      %span results:
+      Array of results for the query. Each array item contains the following data.
+      %ul
         %li
-          %span related:
-          An array of search query terms that are related to the query terms specified
+          %span title:
+          The title of the result
         %li
-          %span boosted_results:
-          Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
+          %span cacheUrl:
+          A cached page for the result
+        %li
+          %span unescapedUrl:
+          The direct url to the result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+        %li
+          %span deepLinks:
           %ul
             %li
-              %span title:
-              The title of the boosted content
+              %span Title:
+              Title of the deep-linked page
             %li
-              %span url:
-              The url for the boosted content
-            %li
-              %span description:
-              The description for the boosted content
-        %li
-          %span results:
-          Array of results for the query. Each array item contains the following data.
-          %ul
-            %li
-              %span title:
-              The title of the result
-            %li
-              %span cacheUrl:
-              A cached page for the result
-            %li
-              %span unescapedUrl:
-              The direct url to the result page
-            %li
-              %span content:
-              A snippet of content from the result page highlighting the query terms
-            %li
-              %span deepLinks:
-              %ul
-                %li
-                  %span Title:
-                  Title of the deep-linked page
-                %li
-                  %span Url:
-                  Url to the deep-linked page
+              %span Url:
+              Url to the deep-linked page
 
   %p
     %h3
@@ -130,7 +135,7 @@
   %pre
     :preserve
       {
-        "related":[],
+        "related_searches":["water rights","drinking water"],
         "boosted_results":[
           {
             "url": "http://www.boosted_water.com",
@@ -190,7 +195,7 @@
         &lt;startrecord type=&quot;integer&quot;&gt;21&lt;/startrecord&gt;
         &lt;endrecord type=&quot;integer&quot;&gt;30&lt;/endrecord&gt;
         &lt;spelling-suggestions nil=&quot;true&quot;&gt;&lt;/spelling-suggestions&gt;
-        &lt;related-searches type=&quot;array&quot;&gt;&lt;related-search&gt;space&lt;/related-search&gt;&lt;/related-searches&gt;
+        &lt;related type=&quot;array&quot;&gt;&lt;related&gt;space&lt;/related&gt;&lt;/related&gt;
         &lt;total type=&quot;integer&quot;&gt;1390000000&lt;/total&gt;
         &lt;boosted-results type=&quot;array&quot;&gt;
           &lt;boosted-result&gt;
@@ -230,8 +235,186 @@
           &lt;!-- ... --&gt;
         &lt;/results&gt;
       &lt;/search&gt;
+
+  %br
+  %h3 Odie Search (On-Demand Indexed Document Results)
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'odie')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'odie')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span results:
+      Array of results for the query. Each array item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span unescapedUrl:
+          The direct url to the result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+
+  %br
+  %h3 News Search (RSS Feeds)
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'news')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'news')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span results:
+      Array of news results for the query. Each item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span unescapedUrl:
+          The direct url to the result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+        %li
+          %span publishedAt:
+          The date the news story was published
+
+  %br
+  %h3 Video News Search (Video RSS Feeds)
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'videonews')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'videonews')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span results:
+      Array of video news results for the query. Each item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span unescapedUrl:
+          The direct url to the video result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+        %li
+          %span publishedAt:
+          The date the video news story was published
+
+  %br
+  %h3 Image Search
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'images')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'images')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span related_searches
+    %li
+      %span spelling_suggestion
+    %li
+      %span results:
+      Array of image results for the query. Each item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span MediaUrl:
+          The direct url to the image result
+        %li
+          %span FileSize:
+          Size in bytes of the image
+        %li
+          %span Width:
+          The width of the image in pixels
+        %li
+          %span Height:
+          The height of the image in pixels
+        %li
+          %span ContentType:
+          The content type of the image
+        %li
+          %span Thumbnail:
+          %ul
+            %li
+              %span FileSize:
+              Size in bytes of the thumbnail image
+            %li
+              %span Width:
+              The width of the thumbnail image in pixels
+            %li
+              %span Height:
+              The height of the thumbnail image in pixels
+            %li
+              %span Url:
+              The direct url to the thumbnail image
+            %li
+              %span ContentType:
+              The content type of the thumbnail image
+
 .api.tos
-  %h3 Terms of Service
+  %h2 Terms of Service
   %p
     By using a USASearch API, you agree to our
     = link_to 'Terms of Service', TOS_URL

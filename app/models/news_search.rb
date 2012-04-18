@@ -2,41 +2,55 @@ class NewsSearch < Search
   DEFAULT_PER_PAGE = 10
   DEFAULT_VIDEO_PER_PAGE = 20
   attr_reader :rss_feed,
-              :related_search,
               :hits,
-              :since,
-              :spelling_suggestion
+              :since
 
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
-    @since = since_when(options[:tbs])
-    assign_rss_feed(options)
-    @related_search, @hits, @total = [], [], 0
+    @channel = options[:channel]
+    @tbs = options[:tbs]
+    @since = since_when(@tbs)
+    assign_rss_feed(options[:channel])
+    @hits, @total = [] , 0
+    @rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.rss_feeds.navigable_only
+    @per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
   end
 
   def search
-    rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.rss_feeds.navigable_only
-    per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
-    NewsItem.search_for(@query, rss_feeds, @since, @page, per_page)
+    NewsItem.search_for(@query, @rss_feeds, @since, @page, @per_page)
   end
 
-  def handle_response(response)
-    if response
-      @results = response.results
-      @hits = response.hits
-      @total = response.total
-      @related_search = SaytSuggestion.related_search(@query, @affiliate)
-    end
-  end
-
-  def has_related_searches?
-    @related_search && @related_search.size > 0
+  def cache_key
+    [@affiliate.id, @query, @channel, @tbs, @page, @per_page].join(':')
   end
 
   protected
-  def assign_rss_feed(options)
-    @rss_feed = @affiliate.rss_feeds.find_by_id(options[:channel].to_i) if options[:channel].present?
+
+  def handle_response(response)
+    if response
+      @total = response.total
+      @results = paginate(process_results(response))
+      @hits = response.hits
+      @startrecord = ((@page - 1) * 10) + 1
+      @endrecord = @startrecord + @results.size - 1
+    end
+  end
+
+  def assign_rss_feed(channel_id)
+    @rss_feed = @affiliate.rss_feeds.find_by_id(channel_id.to_i) if channel_id.present?
+  end
+
+  def process_results(response)
+    processed = response.hits(:verify => true).collect do |hit|
+      {
+        'title' => highlight_solr_hit_like_bing(hit, :title),
+        'link' => hit.instance.link,
+        'publishedAt' => hit.instance.published_at,
+        'content' => highlight_solr_hit_like_bing(hit, :description)
+      }
+    end
+    processed.compact
   end
 
   def since_when(tbs)

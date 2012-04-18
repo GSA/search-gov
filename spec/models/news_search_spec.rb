@@ -113,12 +113,9 @@ describe NewsSearch do
     end
 
     context "when a valid video RSS feed is specified" do
-      before do
-        affiliate.rss_feeds.create!(:name => 'Video', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse')
-      end
+      let(:feed) { affiliate.rss_feeds.create!(:name => 'Video', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse') }
 
       it "should set per_page to 20" do
-        feed = affiliate.rss_feeds.videos.first
         NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, 20)
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
         search.run.should be_true
@@ -133,4 +130,15 @@ describe NewsSearch do
       end
     end
   end
+
+  describe "#cache_key" do
+    let(:feed) { affiliate.rss_feeds.create!(:name => 'Video', :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse') }
+
+    it "should output a key based on the affiliate id, query, channel, tbs, page, and per_page parameters" do
+      NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate, :channel => feed.id, :page => 2).cache_key.should == "#{affiliate.id}:element:#{feed.id}:w:2:20"
+      NewsSearch.new(:query => 'element', :affiliate => affiliate, :channel => feed.id).cache_key.should == "#{affiliate.id}:element:#{feed.id}::1:20"
+      NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate).cache_key.should == "#{affiliate.id}:element::w:1:10"
+    end
+  end
+
 end

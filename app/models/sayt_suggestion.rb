@@ -43,7 +43,6 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def related_search(query, affiliate)
-      solr = nil
       return [] unless affiliate.is_related_searches_enabled?
       solr = search_for(query, affiliate.id)
     	solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
