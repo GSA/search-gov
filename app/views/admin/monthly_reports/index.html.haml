@@ -4,7 +4,7 @@
       %ul
         %li
           = label_tag :monthly_report_affiliate_pick, "Affiliate"
-          = select nil, :affiliate_pick, @affiliate_picklist, {:include_blank => 'All affiliates', :selected=> @affiliate_pick}, {:id=>"Affiliate"}
+          = select nil, :affiliate_pick, @affiliate_picklist, {:include_blank => true, :selected=> @affiliate_pick}, {:id=>"Affiliate"}
         %li
           = label_tag :monthly_report_date, "Report Date"
           = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @most_recent_date.year }
