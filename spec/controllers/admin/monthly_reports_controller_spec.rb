@@ -5,7 +5,7 @@ describe Admin::MonthlyReportsController do
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end
-  
+
   describe "#index" do
 
     context "when logged in as a user without admin priveleges" do
@@ -13,13 +13,13 @@ describe Admin::MonthlyReportsController do
         activate_authlogic
         UserSession.create(users(:affiliate_manager))
       end
-      
+
       it "should redirect to the home page" do
         get :index
         response.should redirect_to home_page_url
       end
     end
-    
+
     context "when logged in as an admin" do
       before do
         activate_authlogic
@@ -30,7 +30,7 @@ describe Admin::MonthlyReportsController do
         get :index
         assigns[:page_title].should_not be_blank
       end
-      
+
       describe "affiliate" do
         context "when no affiliate is specified by user" do
           it "should show data from all affiliates" do
@@ -70,7 +70,7 @@ describe Admin::MonthlyReportsController do
             assigns[:report_date].should == Date.yesterday
           end
         end
-        
+
         context "when user selects a month and year" do
           it "should set the date to the first of the month for the specified year/month" do
             get :index, :date => {:month => 1, :year => 2010}
@@ -78,7 +78,7 @@ describe Admin::MonthlyReportsController do
           end
         end
       end
-      
+
       describe "most recent date" do
         context "by default" do
           it "should default to nil" do
@@ -86,7 +86,7 @@ describe Admin::MonthlyReportsController do
             assigns[:most_recent_data].should be_nil
           end
         end
-        
+
         context "when an affiliate is specified" do
           context "when the affiliate has no usage stats" do
             it "should return the current date" do
@@ -94,13 +94,13 @@ describe Admin::MonthlyReportsController do
               assigns[:most_recent_date].should == Date.current
             end
           end
-          
+
           context "when the affiliate has usage stats" do
             before do
-              DailyUsageStat.create!(:affiliate => @affiliate.name, :profile => 'Affiliates', :day => Date.yesterday, :total_queries => 100)
-              DailyUsageStat.create!(:affiliate => @affiliate.name, :profile => 'Affiliates', :day => Date.yesterday.yesterday, :total_queries => 100)
+              DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :total_queries => 100)
+              DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday.yesterday, :total_queries => 100)
             end
-            
+
             it "should return the date of the most recent usage stat" do
               get :index, :affiliate_pick => @affiliate.name
               assigns[:most_recent_date].should == Date.yesterday
@@ -108,11 +108,11 @@ describe Admin::MonthlyReportsController do
           end
         end
       end
-      
+
       describe "monthly_totals" do
         before do
-          DailyUsageStat.create!(:affiliate => @affiliate.name, :profile => 'Affiliates', :day => Date.yesterday, :total_queries => 100)
-          DailyUsageStat.create!(:affiliate => @affiliate.name, :profile => 'Affiliates', :day => Date.yesterday.yesterday, :total_queries => 100)
+          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :total_queries => 100)
+          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday.yesterday, :total_queries => 100)
         end
 
         context "when no affiliate is present" do
@@ -121,7 +121,7 @@ describe Admin::MonthlyReportsController do
             assigns[:monthy_totals].should be_nil
           end
         end
-      
+
         context "when an affiliate is present" do
           it "should return the affiliate's monthly total" do
             get :index, :affiliate_pick => @affiliate.name
@@ -129,20 +129,20 @@ describe Admin::MonthlyReportsController do
           end
         end
       end
-    
+
       describe "total clicks" do
         before do
           DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
           DailySearchModuleStat.create!(:day => Date.yesterday.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
         end
-        
+
         context "when no affiliate is present" do
           it "should be nil" do
             get :index
             assigns[:total_clicks].should be_nil
           end
         end
-      
+
         context "when an affiliate is specified" do
           it "should return the affiliate's total clicks" do
             get :index, :affiliate_pick => @affiliate.name

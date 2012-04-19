@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410014453) do
+ActiveRecord::Schema.define(:version => 20120419000954) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20120410014453) do
     t.string   "wt_dcsimg_hash",                            :limit => 50
     t.string   "wt_dcssip",                                 :limit => 50
     t.string   "ga_web_property_id",                        :limit => 20
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -87,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20120410014453) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -235,18 +235,13 @@ ActiveRecord::Schema.define(:version => 20120410014453) do
   add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|
-    t.date     "day"
-    t.string   "profile"
-    t.integer  "total_queries"
-    t.integer  "total_page_views"
-    t.integer  "total_unique_visitors"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "affiliate",             :limit => 32, :default => "usasearch.gov"
+    t.date    "day"
+    t.integer "total_queries"
+    t.string  "affiliate",     :limit => 32, :default => "usasearch.gov"
   end
 
-  add_index "daily_usage_stats", ["affiliate", "profile", "day"], :name => "apd", :unique => true
-  add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
+  add_index "daily_usage_stats", ["affiliate", "day"], :name => "index_daily_usage_stats_on_affiliate_and_day", :unique => true
+  add_index "daily_usage_stats", ["day", "affiliate"], :name => "index_daily_usage_stats_on_day_and_affiliate", :unique => true
 
   create_table "document_collections", :force => true do |t|
     t.integer  "affiliate_id",                    :null => false

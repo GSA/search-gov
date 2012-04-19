@@ -4,6 +4,6 @@ class AddIndexToLinkOnNewsItems < ActiveRecord::Migration
   end
 
   def self.down
-    remove index :news_items, :link
+    remove_index :news_items, :link
   end
 end
