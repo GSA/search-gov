@@ -173,8 +173,8 @@ Feature:  Administration
      | 200           | agency2.gov |
     When I go to the admin home page
     And I follow "Monthly Reports"
-    Then I should not see "Total Queries:"
-    And I should not see "Total Clicks:"
+    Then I should not see "Total Queries: 300"
+    And I should not see "Total Clicks: 300"
 
     When I select "agency.gov" from "Affiliate"
     And I select "March 2012" as the report date

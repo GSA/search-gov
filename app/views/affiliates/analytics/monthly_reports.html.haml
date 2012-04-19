@@ -16,7 +16,7 @@
     .usage_stats{ :id => "#{@affiliate.name.downcase}_usage_stats" }
       %ul
         %li
-          Total Queries: #{number_with_delimiter @monthly_totals[@affiliate.name][:total_queries]}
+          Total Queries: #{number_with_delimiter @monthly_totals}
         %li
           Total Click Throughs: #{number_with_delimiter @total_clicks}
     %p

@@ -7,11 +7,7 @@ class DailyUsageStat < ActiveRecord::Base
   end
 
   def self.monthly_totals(year, month, affiliate_name = nil)
-    result = {}
-    profile_totals = {}
-    profile_totals[:total_queries] = total_monthly_queries(year, month, affiliate_name)
-    result[affiliate_name] = profile_totals
-    result
+    total_monthly_queries(year, month, affiliate_name)
   end
 
   def self.total_monthly_queries(year, month, affiliate)
@@ -20,7 +16,10 @@ class DailyUsageStat < ActiveRecord::Base
 
   def self.sum_usage_stat_by_month(field, year, month, affiliate)
     report_date = Date.civil(year, month)
-    DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?) AND affiliate = ?", report_date.beginning_of_month, report_date.end_of_month, affiliate ])
+    if affiliate
+      DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?) AND affiliate = ?", report_date.beginning_of_month, report_date.end_of_month, affiliate ])
+    else
+      DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?)", report_date.beginning_of_month, report_date.end_of_month ])
+    end
   end
-
 end

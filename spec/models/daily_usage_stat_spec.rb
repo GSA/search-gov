@@ -30,5 +30,12 @@ describe DailyUsageStat do
       DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, @affiliate.name).exactly(1).times
       DailyUsageStat.monthly_totals(@year, @month, @affiliate.name)
     end
+    
+    context "when no affiliate is passed" do 
+      it "should sum up all the DailyUsageStat values for the given month for all affiliates" do
+        DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, nil).exactly(1).times
+        DailyUsageStat.monthly_totals(@year, @month)
+      end
+    end
   end
 end

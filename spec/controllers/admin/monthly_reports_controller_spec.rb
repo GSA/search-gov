@@ -113,19 +113,20 @@ describe Admin::MonthlyReportsController do
         before do
           DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :total_queries => 100)
           DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday.yesterday, :total_queries => 100)
+          DailyUsageStat.create!(:affiliate => "someaffiliate", :day => Date.yesterday, :total_queries => 100)
         end
 
         context "when no affiliate is present" do
-          it "should be nil" do
+          it "should return an aggregate of all affiliates for that date range" do
             get :index
-            assigns[:monthy_totals].should be_nil
+            assigns[:monthly_totals].should == 300
           end
         end
 
         context "when an affiliate is present" do
           it "should return the affiliate's monthly total" do
             get :index, :affiliate_pick => @affiliate.name
-            assigns[:monthly_totals].should == {"usagov"=>{"total_queries"=>200}}
+            assigns[:monthly_totals].should == 200
           end
         end
       end
@@ -134,12 +135,13 @@ describe Admin::MonthlyReportsController do
         before do
           DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
           DailySearchModuleStat.create!(:day => Date.yesterday.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
+          DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => "someaffiliate", :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)          
         end
 
         context "when no affiliate is present" do
-          it "should be nil" do
+          it "should return a total of all the affiliates for that date range" do
             get :index
-            assigns[:total_clicks].should be_nil
+            assigns[:total_clicks].should == 300
           end
         end
 
