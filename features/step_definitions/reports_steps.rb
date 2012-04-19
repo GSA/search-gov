@@ -3,7 +3,7 @@ Given /^the following DailyUsageStats exists for each day in yesterday's month$/
   yday = Date.yesterday
   table.hashes.each do |hash|
     yday.day.times do |index|
-      DailyUsageStat.create!(:day => yday - index, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create!(:day => yday - index, :total_queries => hash["total_queries"], :affiliate => hash["affiliate"])
     end
   end
 end
@@ -13,7 +13,7 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
   month_date = Date.parse(month + "-01")
   table.hashes.each do |hash|
     (Date.new(Time.now.year, 12, 31).to_date<<(12-month_date.month)).day.times do |index|
-      DailyUsageStat.create!(:day => month_date + index.days, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create!(:day => month_date + index.days, :total_queries => hash["total_queries"], :affiliate => hash["affiliate"])
     end
   end
 end

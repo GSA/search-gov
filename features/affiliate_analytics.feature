@@ -66,8 +66,8 @@ Feature: Affiliate analytics
       | aff site     | aff.gov  | aff@bar.gov   | John Bar     |
       | aff2 site    | aff2.gov | aff@bar.gov   | John Bar     |
     And the following DailyUsageStats exists for each day in yesterday's month
-      | profile    | total_queries | affiliate |
-      | Affiliates | 1000          | aff.gov   |
+      | total_queries | affiliate |
+      | 1000          | aff.gov   |
     And the following DailySearchModuleStats exist for each day in yesterday's month
       | affiliate | total_clicks |
       | aff.gov   | 10           |
@@ -89,8 +89,8 @@ Feature: Affiliate analytics
       | aff site     | aff.gov  | aff@bar.gov   | John Bar     |
       | aff2 site    | aff2.gov | aff@bar.gov   | John Bar     |
     And the following DailyUsageStats exist for each day in "2010-02"
-      | profile    | total_queries | affiliate |
-      | Affiliates | 1000          | aff.gov   |
+      | total_queries | affiliate |
+      | 1000          | aff.gov   |
     And the following DailySearchModuleStats exist for each day in "2010-02"
       | affiliate | total_clicks |
       | aff.gov   | 10           |
@@ -109,8 +109,8 @@ Feature: Affiliate analytics
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following DailyUsageStats exist for each day in "2021-02"
-      | profile    | total_queries | affiliate |
-      | Affiliates | 1000          | aff.gov   |
+      | total_queries | affiliate |
+      | 1000          | aff.gov   |
     And the following DailySearchModuleStats exist for each day in "2021-02"
       | affiliate | total_clicks |
       | aff.gov   | 10           |
