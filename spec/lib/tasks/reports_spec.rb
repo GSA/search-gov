@@ -77,7 +77,16 @@ describe "Report generation rake tasks" do
           @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
         end
       end
-
+      
+      context "when the period is set to weekly" do
+        it "should set the report filenames using YYMMDD" do
+          yymmdd = Date.yesterday.strftime('%Y%m%d')
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
+          @rake[@task_name].invoke(@input_file_name, "weekly", "1000")
+        end
+      end
+      
       context "when period is set to daily" do
         it "should set the report filenames using YYMMDD" do
           yymmdd = Date.yesterday.strftime('%Y%m%d')
@@ -102,6 +111,15 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
             @rake[@task_name].invoke(@input_file_name, "monthly", "1000", '2011-02-02')
+          end
+        end
+        
+        context "for a weekly report" do
+          it "should set the report filename to the date specified" do
+            yymmdd = Date.parse('2011-02-01').strftime('%Y%m%d')
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
+            @rake[@task_name].invoke(@input_file_name, "weekly", "1000", '2011-02-01')
           end
         end
 

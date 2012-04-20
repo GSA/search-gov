@@ -25,6 +25,10 @@ module Analytics::HomeHelper
     "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m')}.csv"
   end
 
+  def weekly_report_filename(prefix, report_date)
+    "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}_weekly.csv"
+  end
+  
   def daily_report_filename(prefix, report_date)
     "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
   end
@@ -33,6 +37,17 @@ module Analytics::HomeHelper
     if report_date
       filename = daily_report_filename(affiliate_name.downcase, report_date)
       "Download top queries for #{ report_date.to_s } (#{ link_to 'csv', s3_link(filename) })".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
+    end
+  end
+  
+  def affiliate_analytics_weekly_report_links(affiliate_name, report_date)
+    starts_of_weeks = [report_date.beginning_of_month.wday == 0 ? report_date.beginning_of_month : report_date.beginning_of_month + (7 - report_date.beginning_of_month.wday).days]
+    while starts_of_weeks.last + 7.days < report_date
+      starts_of_weeks << starts_of_weeks.last + 7.days
+    end
+    starts_of_weeks.collect do |start_of_week|
+      filename = weekly_report_filename(affiliate_name.downcase, start_of_week)
+      "Download top queries for the week of #{start_of_week.to_s} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
     end
   end
 

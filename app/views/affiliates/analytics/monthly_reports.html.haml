@@ -21,3 +21,6 @@
           Total Click Throughs: #{number_with_delimiter @total_clicks}
     %p
       = affiliate_analytics_monthly_report_link(@affiliate.name, @report_date)
+    - affiliate_analytics_weekly_report_links(@affiliate.name, @report_date).each do |weekly_report_link|
+      %p
+        = weekly_report_link

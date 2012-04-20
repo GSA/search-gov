@@ -217,7 +217,7 @@ describe Affiliates::AnalyticsController do
           render_views
           before do
             AWS::S3::Base.stub!(:establish_connection!).and_return true
-            @report_date = Date.yesterday
+            @report_date = Date.parse("4/20/2012")
           end
 
           it "should display the affiliate name" do
@@ -230,25 +230,48 @@ describe Affiliates::AnalyticsController do
             get :monthly_reports, :affiliate_id => @user.affiliates.first.id
           end
 
-          context "when displaying the monthly reports" do
+          context "when displaying the reports" do
             before do
               @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{@report_date.strftime('%Y%m')}.csv"
+              @weekly_filenames = [
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120401_weekly.csv",
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120408_weekly.csv",
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120415_weekly.csv"
+                ]
             end
 
             it "should link to the report on Amazon using S3/SSL if the report exists on S3" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return true
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).once.and_return true
+              @weekly_filenames.each do |filename|
+                AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).once.and_return true
+              end
               AWS::S3::S3Object.should_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+              @weekly_filenames.each do |filename|
+                AWS::S3::S3Object.should_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+              end
               get :monthly_reports, :affiliate_id => @user.affiliates.first.id
               response.body.should contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
+              response.body.should contain(/Download top queries for the week of 2012-04-01/)
+              response.body.should contain(/Download top queries for the week of 2012-04-08/)
+              response.body.should contain(/Download top queries for the week of 2012-04-15/)
             end
 
             it "should not link to the report on Amazon if the file does not exist on S3" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return false
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).once.and_return false
+              @weekly_filenames.each do |filename|
+                AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).once.and_return false
+              end
               AWS::S3::S3Object.should_not_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true)
+              @weekly_filenames.each do |filename|
+                AWS::S3::S3Object.should_not_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true)
+              end
               get :monthly_reports, :affiliate_id => @user.affiliates.first.id
               response.body.should_not contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
+              response.body.should_not contain(/Download top queries for the week of 2012-04-01/)
+              response.body.should_not contain(/Download top queries for the week of 2012-04-08/)
+              response.body.should_not contain(/Download top queries for the week of 2012-04-15/)
             end
-          end
+          end          
         end
       end
     end
