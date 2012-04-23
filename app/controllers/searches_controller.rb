@@ -7,18 +7,19 @@ class SearchesController < ApplicationController
   before_filter :set_affiliate_options
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
+  before_filter :set_news_search_options, :only => [:news, :videonews]
   has_mobile_fu
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
-  ssl_allowed :index, :news, :docs, :advanced
+  ssl_allowed :index, :news, :docs, :advanced, :videonews
 
   def index
     @search = WebSearch.new(@search_options)
     @search.run
     @form_path = search_path
     @page_title = @search.query
-    handle_affiliate_search
+    set_affiliate_search_page_title
     @search_vertical = :web
     respond_to do |format|
       format.any(:html, :mobile) {}
@@ -32,28 +33,28 @@ class SearchesController < ApplicationController
     @form_path = docs_search_path
     @page_title = @search.query
     @search_vertical = :docs
-    handle_affiliate_search
+    set_affiliate_search_page_title
     request.format = :html
     respond_to { |format| format.html { render :action => :docs, :layout => "affiliate" } }
   end
 
   def news
-    @search = NewsSearch.new(params.merge(:affiliate => @affiliate))
+    @search = NewsSearch.new(@search_options)
     @search.run
     @form_path = news_search_path
-    handle_news_search
-    handle_affiliate_search
+    set_news_search_page_title
+    set_affiliate_search_page_title
     @search_vertical = :news
     request.format = :html
     respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
   end
 
   def video_news
-    @search = VideoNewsSearch.new(params.merge(:affiliate => @affiliate))
+    @search = VideoNewsSearch.new(@search_options)
     @search.run
     @form_path = video_news_search_path
-    handle_news_search
-    handle_affiliate_search
+    set_news_search_page_title
+    set_affiliate_search_page_title
     @search_vertical = :news
     request.format = :html
     respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
@@ -67,8 +68,16 @@ class SearchesController < ApplicationController
 
   private
 
-  def handle_affiliate_search
+  def set_affiliate_search_page_title
     @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(@page_title) : @affiliate.build_search_results_page_title(@page_title)
+  end
+
+  def set_news_search_page_title
+    if params[:query].present?
+      @page_title = params[:query]
+    elsif @search.rss_feed and @search.total > 0
+      @page_title = @search.rss_feed.name
+    end
   end
 
   def handle_old_advanced_form
@@ -133,6 +142,15 @@ class SearchesController < ApplicationController
     }
   end
 
+  def set_news_search_options
+    @search_options = {
+      :affiliate => @affiliate,
+      :page => [(params[:page] || "1").to_i, 1].max,
+      :query => params["query"],
+      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i
+    }
+  end
+
   def adjust_mobile_mode
     request.format = :html if is_advanced_search?
     request.format = :json if @original_format == 'application/json'
@@ -142,11 +160,4 @@ class SearchesController < ApplicationController
     params[:action] == "advanced"
   end
 
-  def handle_news_search
-    if params[:query].present?
-      @page_title = params[:query]
-    elsif @search.rss_feed and @search.total > 0
-      @page_title = @search.rss_feed.name
-    end
-  end
 end

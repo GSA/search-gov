@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-    { :m => "false" }
+    {:m => "false"}
   end
 
   def current_user_session
@@ -103,24 +103,25 @@ class ApplicationController < ActionController::Base
     @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
   end
 
+
   def search_options_from_params(params)
     {
-        :page => [(params[:page] || "1").to_i, 1].max,
-        :query => sanitize_query(params["query"]),
-        :query_limit => params["query-limit"],
-        :query_quote => sanitize_query(params["query-quote"]),
-        :query_quote_limit => params["query-quote-limit"],
-        :query_or => sanitize_query(params["query-or"]),
-        :query_or_limit => params["query-or-limit"],
-        :query_not => sanitize_query(params["query-not"]),
-        :query_not_limit => params["query-not-limit"],
-        :file_type => params["filetype"],
-        :site_limits => params["sitelimit"],
-        :site_excludes => params["siteexclude"],
-        :filter => params["filter"],
-        :per_page => [params["per-page"].to_i, Search::DEFAULT_PER_PAGE].max,
-        :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
-        :embedded => params["embedded"].present?
+      :page => [(params[:page] || "1").to_i, 1].max,
+      :query => sanitize_query(params["query"]),
+      :query_limit => params["query-limit"],
+      :query_quote => sanitize_query(params["query-quote"]),
+      :query_quote_limit => params["query-quote-limit"],
+      :query_or => sanitize_query(params["query-or"]),
+      :query_or_limit => params["query-or-limit"],
+      :query_not => sanitize_query(params["query-not"]),
+      :query_not_limit => params["query-not-limit"],
+      :file_type => params["filetype"],
+      :site_limits => params["sitelimit"],
+      :site_excludes => params["siteexclude"],
+      :filter => params["filter"],
+      :per_page => [params["per-page"].to_i, Search::DEFAULT_PER_PAGE].max,
+      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
+      :embedded => params["embedded"].present?
     }
   end
 
