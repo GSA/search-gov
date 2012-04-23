@@ -236,7 +236,8 @@ describe Affiliates::AnalyticsController do
               @weekly_filenames = [
                 "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120401_weekly.csv",
                 "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120408_weekly.csv",
-                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120415_weekly.csv"
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120415_weekly.csv",
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120422_weekly.csv"
                 ]
             end
 
@@ -254,6 +255,7 @@ describe Affiliates::AnalyticsController do
               response.body.should contain(/Download top queries for the week of 2012-04-01/)
               response.body.should contain(/Download top queries for the week of 2012-04-08/)
               response.body.should contain(/Download top queries for the week of 2012-04-15/)
+              response.body.should contain(/Download top queries for the week of 2012-04-22/)
             end
 
             it "should not link to the report on Amazon if the file does not exist on S3" do
@@ -270,6 +272,7 @@ describe Affiliates::AnalyticsController do
               response.body.should_not contain(/Download top queries for the week of 2012-04-01/)
               response.body.should_not contain(/Download top queries for the week of 2012-04-08/)
               response.body.should_not contain(/Download top queries for the week of 2012-04-15/)
+              response.body.should_not contain(/Download top queries for the week of 2012-04-22/)
             end
           end          
         end
