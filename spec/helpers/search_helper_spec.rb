@@ -613,26 +613,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_affiliate_favicon" do
-    let(:affiliate) { mock('affiliate', :name => 'nps') }
-
-    context "when favicon_url is not blank" do
-      before do
-        affiliate.should_receive(:favicon_url).and_return("http://cdn.agency.gov/favicon.ico")
-      end
-
-      specify { helper.display_affiliate_favicon(affiliate).should == 'http://cdn.agency.gov/favicon.ico' }
-    end
-
-    context "when favicon_url is blank" do
-      before do
-        affiliate.should_receive(:favicon_url).and_return(nil)
-      end
-
-      specify { helper.display_affiliate_favicon(affiliate).should == '/favicon.ico' }
-    end
-  end
-
   describe "#featured_collection_link_with_click_tracking" do
     let(:url) { mock('url') }
     context "when the url is blank" do

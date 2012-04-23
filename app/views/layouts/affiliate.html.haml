@@ -2,7 +2,7 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym }
   %head
-    = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon.ico' : @affiliate.favicon_url
+    = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
     = render_robots_meta_tag
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = stylesheet_link_tag 'compiled/advanced.css'
