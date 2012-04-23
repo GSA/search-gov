@@ -167,8 +167,40 @@ describe ApiController do
         end
         affiliate.sayt_suggestions.create!(:phrase => "related to irrigation")
         NewsItem.reindex
+        SaytSuggestion.reindex
         Sunspot.commit
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2'
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10'
+      end
+
+      describe "response body" do
+        subject { JSON.parse(response.body) }
+        its(['total']) { should == 11 }
+        its(['startrecord']) { should == 11 }
+        its(['endrecord']) { should == 11 }
+        its(['results']) { should_not be_empty }
+        its(['related_searches']) { should_not be_empty }
+      end
+    end
+
+    context "when it's an odie search" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_key) { users(:affiliate_manager).api_key }
+
+      before do
+        11.times do |x|
+          affiliate.indexed_documents.create!(
+            :title => "PDF Title about irrigation part #{x}",
+            :description => "This is a PDF document about irrigation part #{x}.",
+            :url => "http://something.gov/pdf#{x}.pdf",
+            :last_crawl_status => IndexedDocument::OK_STATUS,
+            :body => "this is the doc body part #{x}")
+        end
+        affiliate.sayt_suggestions.create!(:phrase => "irrigate is a word")
+        IndexedDocument.reindex
+        SaytSuggestion.reindex
+        Sunspot.commit
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'odie', :page => '2', :per_page => '10'
+        puts response.body
       end
 
       describe "response body" do
