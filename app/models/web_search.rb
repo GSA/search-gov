@@ -216,7 +216,7 @@ class WebSearch < Search
     cleaned_suggestion_without_bing_highlights == cleaned_query ? nil : cleaned_suggestion_without_bing_highlights
   end
 
-  def populate_additional_results(response)
+  def populate_additional_results
     super
     @boosted_contents = BoostedContent.search_for(query, affiliate)
     if first_page?

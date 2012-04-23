@@ -72,9 +72,9 @@ class BoostedContent < ActiveRecord::Base
           end
           with(:affiliate_name, affiliate.name)
           with(:status, 'active')
-          with(:publish_start_on).less_than(Time.current)
+          with(:publish_start_on).less_than(Date.current)
           any_of do
-            with(:publish_end_on).greater_than(Time.current)
+            with(:publish_end_on).greater_than(Date.current)
             with :publish_end_on, nil
           end
           paginate :page => page, :per_page => per_page
@@ -145,7 +145,7 @@ class BoostedContent < ActiveRecord::Base
               :title => row[0],
               :url => row[1],
               :description => row[2],
-              :affiliate_id => affiliate.id          
+              :affiliate_id => affiliate.id
           }
           boosted_contents << import_boosted_content(results, info)
         end

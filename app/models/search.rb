@@ -47,7 +47,7 @@ class Search
 
     response = search
     handle_response(response)
-    populate_additional_results(response)
+    populate_additional_results
     log_serp_impressions
     response.nil? or response ? true : response
   end
@@ -89,7 +89,7 @@ class Search
   end
 
   # If you need to query anything else, do that here
-  def populate_additional_results(response)
+  def populate_additional_results
     @related_search = SaytSuggestion.related_search(@query, @affiliate)
   end
 
