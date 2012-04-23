@@ -6,7 +6,6 @@ class WebSearch < Search
   attr_reader :offset,
               :sources,
               :images,
-              :spelling_suggestion,
               :boosted_contents,
               :filter_setting,
               :enable_highlighting,
@@ -218,6 +217,7 @@ class WebSearch < Search
   end
 
   def populate_additional_results(response)
+    super
     @boosted_contents = BoostedContent.search_for(query, affiliate)
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate)

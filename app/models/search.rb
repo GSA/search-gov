@@ -22,6 +22,7 @@ class Search
               :endrecord,
               :results,
               :related_search,
+              :spelling_suggestion,
               :queried_at_seconds
 
   def initialize(options = {})
@@ -30,7 +31,7 @@ class Search
     @affiliate = options[:affiliate]
     @page = (options[:page] || 1)
     @per_page = [(options[:per_page] || DEFAULT_PER_PAGE), MAX_PER_PAGE].min
-    @related_search, @results = [], []
+    @related_search, @results, @spelling_suggestion = [], [], nil
     @queried_at_seconds = Time.now.to_i
   end
 

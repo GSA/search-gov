@@ -546,7 +546,7 @@ module SearchHelper
     video_id = CGI.parse(URI.parse(news_item.link).query)['v']
     link_with_click_tracking(image_tag("http://i.ytimg.com/vi/#{video_id}/2.jpg", :alt => 'thumbnail').html_safe, news_item.link, affiliate, search.query, index, 'NEWS', search_vertical)
   end
-  
+
   def left_nav_label(label_text)
     label_text.blank? ? "" : content_tag(:h3, label_text, :id => 'left-nav-label')
   end
