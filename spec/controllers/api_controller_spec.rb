@@ -169,7 +169,7 @@ describe ApiController do
         NewsItem.reindex
         SaytSuggestion.reindex
         Sunspot.commit
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10'
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10', :channel => feed.id.to_s, :tbs => 'm'
       end
 
       describe "response body" do
@@ -187,6 +187,9 @@ describe ApiController do
       let(:api_key) { users(:affiliate_manager).api_key }
 
       before do
+        dc = affiliate.document_collections.build(:name => "My Coll")
+        dc.url_prefixes.build(:prefix => "http://something.gov/")
+        dc.save!
         11.times do |x|
           affiliate.indexed_documents.create!(
             :title => "PDF Title about irrigation part #{x}",
@@ -199,7 +202,7 @@ describe ApiController do
         IndexedDocument.reindex
         SaytSuggestion.reindex
         Sunspot.commit
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'odie', :page => '2', :per_page => '10'
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'odie', :page => '2', :per_page => '10', :dc => dc.id.to_s
         puts response.body
       end
 
