@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
   before_filter :set_affiliate_options
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
-  before_filter :set_news_search_options, :only => [:news, :videonews]
+  before_filter :set_news_search_options, :only => [:news, :video_news]
   has_mobile_fu
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15

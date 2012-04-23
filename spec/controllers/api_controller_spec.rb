@@ -50,7 +50,7 @@ describe ApiController do
       describe "response body" do
         subject { JSON.parse(response.body) }
         its(['total']) { should be > 0 }
-        its(['startrecord']) { should == 1}
+        its(['startrecord']) { should == 1 }
         its(['endrecord']) { should == 10 }
         its(['results']) { should_not be_empty }
       end
@@ -71,7 +71,7 @@ describe ApiController do
         subject { Hash.from_xml(response.body)["search"] }
 
         its(['total']) { should be > 0 }
-        its(['startrecord']) { should == 1}
+        its(['startrecord']) { should == 1 }
         its(['endrecord']) { should == 10 }
         its(['results']) { should_not be_empty }
       end
@@ -91,28 +91,28 @@ describe ApiController do
       end
 
       it "should set the affiliate" do
-        get :search,  @auth_params
+        get :search, @auth_params
         assigns[:search_options][:affiliate].should == affiliates(:basic_affiliate)
       end
 
       it "should set the query" do
-        get :search,  @auth_params.merge(:query => "fish")
+        get :search, @auth_params.merge(:query => "fish")
         assigns[:search_options][:query].should == "fish"
       end
 
       describe "paging" do
         it "should set the page" do
-          get :search,  @auth_params.merge(:page => 3)
+          get :search, @auth_params.merge(:page => 3)
           assigns[:search_options][:page].to_i.should == 3
         end
 
         it "should default the page to 1" do
-          get :search,  @auth_params
+          get :search, @auth_params
           assigns[:search_options][:page].to_i.should == 1
         end
 
         it "should set results_per_page from per-page" do
-          get :search,  @auth_params.merge("per-page" => 15)
+          get :search, @auth_params.merge("per-page" => 15)
           assigns[:search_options][:per_page].to_i.should == 15
         end
       end
@@ -142,10 +142,42 @@ describe ApiController do
     describe "jsonp support" do
       it "should wrap response with predefined callback if callback is not blank" do
         affiliate = affiliates(:basic_affiliate)
-        search_results = {:spelling_suggestions=> "house"}.to_json
+        search_results = {:spelling_suggestions => "house"}.to_json
         ApiSearch.should_receive(:search).and_return(search_results)
         get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "haus", :callback => 'processData', :format => 'json'
         response.body.should == %{processData({"spelling_suggestions":"house"})}
+      end
+    end
+
+    context "when it's a news search" do
+      fixtures :rss_feeds, :rss_feed_urls, :news_items
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:feed) { rss_feeds(:white_house_blog) }
+      let(:api_key) { users(:affiliate_manager).api_key }
+
+      before do
+        11.times do |x|
+          feed.news_items.create!(
+            :link => "http://some.agency.gov/news/1/#{x}",
+            :title => "Irrigation News part #{x}",
+            :description => "News element part #{x} has a description",
+            :published_at => Time.now,
+            :guid => "GUID is #{x}",
+            :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
+        end
+        affiliate.sayt_suggestions.create!(:phrase => "related to irrigation")
+        NewsItem.reindex
+        Sunspot.commit
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2'
+      end
+
+      describe "response body" do
+        subject { JSON.parse(response.body) }
+        its(['total']) { should == 11 }
+        its(['startrecord']) { should == 11 }
+        its(['endrecord']) { should == 11 }
+        its(['results']) { should_not be_empty }
+        its(['related_searches']) { should_not be_empty }
       end
     end
 
