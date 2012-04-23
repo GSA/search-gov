@@ -33,6 +33,6 @@ class ImageSearch < WebSearch
     process_image_results(response)
   end
 
-  def populate_additional_results(response)
+  def populate_additional_results
   end
 end
