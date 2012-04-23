@@ -147,7 +147,9 @@ class SearchesController < ApplicationController
       :affiliate => @affiliate,
       :page => [(params[:page] || "1").to_i, 1].max,
       :query => params["query"],
-      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i
+      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
+      :channel => params["channel"],
+      :tbs => params["tbs"]
     }
   end
 

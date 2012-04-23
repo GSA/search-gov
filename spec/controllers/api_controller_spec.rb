@@ -36,14 +36,6 @@ describe ApiController do
       it { should respond_with :forbidden }
     end
 
-    context "when the affiliate does not match the api_key affiliate" do
-      before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
-      end
-
-      it { should respond_with :forbidden }
-    end
-
     describe "with format=json" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_key) { users(:affiliate_manager).api_key }
