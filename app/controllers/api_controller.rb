@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   before_filter :verify_api_key_and_load_affiliate
 
   def search
-    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate, :format => params[:format], :index => params[:index])
+    @search_options = search_options_from_params(@affiliate, params).merge(:format => params[:format], :index => params[:index])
     @search = ApiSearch.search(@search_options)
     respond_to do |format|
       format.xml { render :xml => @search }

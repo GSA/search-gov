@@ -126,31 +126,16 @@ class SearchesController < ApplicationController
   end
 
   def set_web_search_options
-    params.delete("tbs")
-    params.delete("channel")
-    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
+    %w{tbs channel}.each {|param| params.delete(param)}
+    @search_options = search_options_from_params(@affiliate, params)
   end
 
   def set_docs_search_options
-    @search_options = {
-      :affiliate => @affiliate,
-      :dc => params["dc"],
-      :page => [(params[:page] || "1").to_i, 1].max,
-      :query => params["query"],
-      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
-      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
-    }
+    @search_options = search_options_from_params(@affiliate, params)
   end
 
   def set_news_search_options
-    @search_options = {
-      :affiliate => @affiliate,
-      :page => [(params[:page] || "1").to_i, 1].max,
-      :query => params["query"],
-      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
-      :channel => params["channel"],
-      :tbs => params["tbs"]
-    }
+    @search_options = search_options_from_params(@affiliate, params)
   end
 
   def adjust_mobile_mode

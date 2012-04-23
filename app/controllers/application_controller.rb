@@ -104,8 +104,9 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def search_options_from_params(params)
+  def search_options_from_params(affiliate, params)
     {
+      :affiliate => affiliate,
       :page => [(params[:page] || "1").to_i, 1].max,
       :query => sanitize_query(params["query"]),
       :query_limit => params["query-limit"],
@@ -121,6 +122,9 @@ class ApplicationController < ActionController::Base
       :filter => params["filter"],
       :per_page => [params["per-page"].to_i, Search::DEFAULT_PER_PAGE].max,
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
+      :dc => params["dc"],
+      :channel => params["channel"],
+      :tbs => params["tbs"],
       :embedded => params["embedded"].present?
     }
   end
