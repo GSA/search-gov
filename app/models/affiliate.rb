@@ -79,8 +79,8 @@ class Affiliate < ActiveRecord::Base
 
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_updating_staged_header_footer
-  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_updating_staged_header_footer
+  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
+  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
   serialize :youtube_handles, Array
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
@@ -244,7 +244,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_staging(attributes)
-    self.is_updating_staged_header_footer = true if attributes.has_key?(:staged_uses_managed_header_footer)
+    set_is_validate_staged_header_footer attributes
     if staged_page_background_image_updated_at == page_background_image_updated_at and
         attributes[:staged_page_background_image].present? || attributes[:mark_staged_page_background_image_for_deletion] == '1'
       set_attachment_attributes_to_nil(:staged_page_background_image)
@@ -258,7 +258,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_live(attributes)
-    self.is_updating_staged_header_footer = true if attributes.has_key?(:staged_uses_managed_header_footer)
+    set_is_validate_staged_header_footer attributes
     transaction do
       if self.update_attributes(attributes)
         self.previous_header = header
@@ -657,7 +657,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def validate_staged_header_footer
-    return unless is_updating_staged_header_footer and staged_uses_one_serp? and !staged_uses_managed_header_footer?
+    return unless is_validate_staged_header_footer
     validate_header_results = validate_html staged_header
     if validate_header_results[:has_malformed_html]
       errors.add(:base, "HTML to customize the top of your search results page is invalid: #{validate_header_results[:error_message]}")
@@ -791,6 +791,12 @@ class Affiliate < ActiveRecord::Base
   def youtube_handles_length_in_yaml
     unless youtube_handles.blank?
       errors.add(:youtube_handles, 'is too long') if youtube_handles.to_yaml.length > 250
+    end
+  end
+
+  def set_is_validate_staged_header_footer(attributes)
+    if attributes[:staged_uses_managed_header_footer] == '0' or attributes[:staged_uses_one_serp] == '1'
+      self.is_validate_staged_header_footer = true
     end
   end
 end

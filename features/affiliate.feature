@@ -470,6 +470,17 @@ Feature: Affiliate clients
     And I should see the page with content box shadow
     And I should see a link to "updated header text without image" with url for "http://www.agency.gov"
 
+  Scenario: Updating the look and feel from legacy to one serp and header contains style element
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | header                                  | footer     | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | <style>h1{color:blue}</style>Old header | Old footer | false         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I choose "Start using One SERP theme"
+    And I press "Make Live"
+    Then I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+
   Scenario: Editing user interface and saving it for preview on a site with one serp
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |

@@ -682,7 +682,7 @@ describe Affiliate do
       affiliate.save!
     end
 
-    context "is_updating_staged_header_footer is set to true" do
+    context "is_validate_staged_header_footer is set to true" do
       context "site uses staged one serp and staged custom header footer" do
         let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
                                             :uses_one_serp => true,
@@ -692,7 +692,7 @@ describe Affiliate do
         it "should not allow script, style or link elements in staged header or staged footer" do
           header_error_message = %q(HTML to customize the top of your search results page can't contain script, style, link elements)
           footer_error_message = %q(HTML to customize the bottom of your search results page can't contain script, style, link elements)
-          affiliate.is_updating_staged_header_footer = true
+          affiliate.is_validate_staged_header_footer = true
 
           html_with_script = <<-HTML
             <script src="http://cdn.agency.gov/script.js"></script>
@@ -722,7 +722,7 @@ describe Affiliate do
         it "should not allow malformed HTML in staged header or staged footer" do
           header_error_message = %q(HTML to customize the top of your search results page is invalid)
           footer_error_message = %q(HTML to customize the bottom of your search results page is invalid)
-          affiliate.is_updating_staged_header_footer = true
+          affiliate.is_validate_staged_header_footer = true
 
           html_with_body = <<-HTML
             <html><body><h1>html with script</h1></body></html>
@@ -748,12 +748,11 @@ describe Affiliate do
                                             :uses_managed_header_footer => true,
                                             :staged_uses_managed_header_footer => true) }
 
-        it "should not validate staged header or staged footer" do
+        it "should not validate staged header or staged footer on update_attributes" do
           html_with_script = <<-HTML
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
           HTML
-          affiliate.is_updating_staged_header_footer = true
           affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
         end
       end
@@ -763,7 +762,7 @@ describe Affiliate do
                                             :uses_one_serp => false,
                                             :staged_uses_one_serp => false) }
 
-        it "should not validate staged header or staged footer" do
+        it "should not validate staged header or staged footer on update_attributes" do
           html_with_script = <<-HTML
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
@@ -773,14 +772,14 @@ describe Affiliate do
       end
     end
 
-    context "is_updating_staged_header_footer is set to false" do
+    context "is_validate_staged_header_footer is set to false" do
       let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
                                           :uses_one_serp => true,
                                           :staged_uses_one_serp => true,
                                           :uses_managed_header_footer => false,
                                           :staged_uses_managed_header_footer => false) }
       it "should allow script, style or link elements in staged header or staged footer" do
-        affiliate.is_updating_staged_header_footer = false
+        affiliate.is_validate_staged_header_footer = false
 
         html_with_script = <<-HTML
             <script src="http://cdn.agency.gov/script.js"></script>
@@ -795,7 +794,7 @@ describe Affiliate do
     it "should set has_staged_content to true and receive update_attributes" do
       affiliate = Affiliate.create!(@valid_create_attributes)
       attributes = mock('attributes')
-      attributes.should_receive(:has_key?).with(:staged_uses_managed_header_footer).and_return(false)
+      attributes.should_receive(:[]).with(:staged_uses_managed_header_footer).and_return('0')
       attributes.should_receive(:[]).with(:staged_page_background_image).and_return(nil)
       attributes.should_receive(:[]).with(:mark_staged_page_background_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]).with(:staged_header_image).and_return(nil)
@@ -1002,19 +1001,40 @@ describe Affiliate do
       end
     end
 
-    context "when attributes contain staged_uses_managed_header_footer" do
-      it "should set is_updating_staged_header_footer to true" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.should_receive(:is_updating_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_staging(:staged_header => 'staged header', :staged_footer => 'staged footer', :staged_uses_managed_header_footer => false)
+    context "when attributes contain staged_uses_managed_header_footer='0'" do
+      it "should set is_validate_staged_header_footer to true" do
+        affiliate = Affiliate.create!(:display_name => 'oneserp affiliate')
+        affiliate.should_receive(:is_validate_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '0',
+                                                :staged_header => 'staged header',
+                                                :staged_footer => 'staged footer')
       end
     end
 
-    context "when attributes does not contain staged_uses_managed_header_footer" do
-      it "should set is_updating_staged_header_footer to false" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.should_not_receive(:is_updating_staged_header_footer=)
-        affiliate.update_attributes_for_staging(:staged_theme => 'elegant')
+    context "when attributes does not contain staged_uses_managed_header_footer='0'" do
+      it "should set is_validate_staged_header_footer to false" do
+        affiliate = Affiliate.create!(:display_name => 'oneserp affiliate')
+        affiliate.should_not_receive(:is_validate_staged_header_footer=)
+        affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '1',
+                                                :staged_managed_header_home_url => 'http://usasearch.howto.gov')
+      end
+    end
+
+    context "when attributes contain staged_uses_one_serp='1'" do
+      it "should set is_validate_staged_header_footer to true" do
+        affiliate = Affiliate.create!(:display_name => 'legacy affiliate', :uses_one_serp => false)
+        affiliate.should_receive(:is_validate_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_staging(:staged_uses_one_serp => '1',
+                                                :staged_favicon_url => 'cdn.agency.gov/staged_favicon.ico')
+      end
+    end
+
+    context "when attributes contain staged_uses_one_serp='0'" do
+      it "should set is_validate_staged_header_footer to false" do
+        affiliate = Affiliate.create!(:display_name => 'legacy affiliate', :uses_one_serp => false)
+        affiliate.should_not_receive(:is_validate_staged_header_footer=)
+        affiliate.update_attributes_for_staging(:staged_uses_one_serp => '0',
+                                                :staged_favicon_url => 'cdn.agency.gov/staged_favicon.ico')
       end
     end
   end
@@ -1060,17 +1080,36 @@ describe Affiliate do
       specify { affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_false }
     end
 
-    context "when attributes contain staged_uses_managed_header_footer" do
-      it "should set is_updating_staged_header_footer to true" do
-        affiliate.should_receive(:is_updating_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer', :staged_uses_managed_header_footer => false)
+    context "when attributes contain staged_uses_managed_header_footer='0'" do
+      it "should set is_validate_staged_header_footer to true" do
+        affiliate.should_receive(:is_validate_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '0',
+                                             :staged_header => 'staged header',
+                                             :staged_footer => 'staged footer')
       end
     end
 
-    context "when attributes does not contain staged_uses_managed_header_footer" do
-      it "should set is_updating_staged_header_footer to false" do
-        affiliate.should_not_receive(:is_updating_staged_header_footer=)
-        affiliate.update_attributes_for_live(:staged_theme => 'elegant')
+    context "when attributes does not contain staged_uses_managed_header_footer='0'" do
+      it "should set is_validate_staged_header_footer to false" do
+        affiliate.should_not_receive(:is_validate_staged_header_footer=)
+        affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '1',
+                                             :staged_managed_header_home_url => 'http://usasearch.howto.gov')
+      end
+    end
+
+    context "when attributes contain staged_uses_one_serp='1'" do
+      it "should set is_validate_staged_header_footer to true" do
+        affiliate.should_receive(:is_validate_staged_header_footer=).with(true)
+        affiliate.update_attributes_for_live(:staged_uses_one_serp => '1',
+                                             :staged_favicon_url => 'cdn.agency.gov/staged_favicon.ico')
+      end
+    end
+
+    context "when attributes contain staged_uses_one_serp='0'" do
+      it "should set is_validate_staged_header_footer to false" do
+        affiliate.should_not_receive(:is_validate_staged_header_footer=)
+        affiliate.update_attributes_for_live(:staged_uses_one_serp => '0',
+                                             :staged_favicon_url => 'cdn.agency.gov/staged_favicon.ico')
       end
     end
   end
