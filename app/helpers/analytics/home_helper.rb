@@ -45,10 +45,11 @@ module Analytics::HomeHelper
     while (starts_of_weeks.last + 7.days) <= report_date
       starts_of_weeks << starts_of_weeks.last + 7.days
     end
-    starts_of_weeks.collect do |start_of_week|
+    report_links = starts_of_weeks.collect do |start_of_week|
       filename = weekly_report_filename(affiliate_name.downcase, start_of_week)
       "Download top queries for the week of #{start_of_week.to_s} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
-    end.compact
+    end
+    report_links.compact
   end
 
   def affiliate_analytics_monthly_report_link(affiliate_name, report_date)
