@@ -63,7 +63,7 @@ module AffiliateHelper
   end
 
   def stylesheet_link_tag_with_full_path(*sources)
-    sources_with_full_path = sources.collect { |source| "#{URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}")}" }
+    sources_with_full_path = sources.collect { |source| URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}").to_s }
     stylesheet_link_tag sources_with_full_path
   end
 
