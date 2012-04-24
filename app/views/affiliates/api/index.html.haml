@@ -19,7 +19,7 @@
   %h2
     Format:
   %p
-    JSON or XML
+    JSON or XML.
   %h2
     Type:
   %p
@@ -56,6 +56,9 @@
       When query highlighting is set to "true", matching text in search results title and content are wrapped with unicode characters "U+E000" and "U+E001".
       %br
       Examples: \ue000water\ue001 for JSON format and &amp;#57344;water&amp;#57345; for HTML format.
+    %li
+      %span callback:
+      For JSONP requests (index must be 'json'), this specifies the name of the callback function (e.g., 'parseResponse').
   %h2
     Examples
   %br
