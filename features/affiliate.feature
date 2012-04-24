@@ -2230,8 +2230,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the social media page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | facebook_handle | flickr_url                           | twitter_handle | youtube_handle |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency        | http://www.flickr.com/groups/usagov/ | TwitterAgency  | YouTubeAgency  |
+      | display_name | name    | contact_email | contact_name | facebook_handle | flickr_url                           | twitter_handle | youtube_handles |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency        | http://www.flickr.com/groups/usagov/ | TwitterAgency  | YouTubeAgency   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
@@ -2241,32 +2241,33 @@ Feature: Affiliate clients
     And the "Facebook handle" field should contain "FBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
     And the "Twitter handle" field should contain "TwitterAgency"
-    And the "YouTube handle" field should contain "YouTubeAgency"
+    And the "YouTube handle 0" field should contain "YouTubeAgency"
     When I fill in the following:
-      | Facebook handle | UpdatedFBAgency                             |
-      | Flickr URL      | http://www.flickr.com/groups/updatedusagov/ |
-      | Twitter handle  | UpdatedTwitterAgency                        |
-      | YouTube handle  | UpdatedYouTubeAgency                        |
+      | Facebook handle  | UpdatedFBAgency                             |
+      | Flickr URL       | http://www.flickr.com/groups/updatedusagov/ |
+      | Twitter handle   | UpdatedTwitterAgency                        |
+      | YouTube handle 0 | UpdatedYouTubeAgency                        |
     And I press "Save"
     Then I should see "Site was successfully updated."
     When I follow "Social Media"
     Then the "Facebook handle" field should contain "UpdatedFBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/updatedusagov/"
     And the "Twitter handle" field should contain "UpdatedTwitterAgency"
-    And the "YouTube handle" field should contain "UpdatedYouTubeAgency"
+    And the "YouTube handle 0" field should contain "UpdatedYouTubeAgency"
     When I follow "Cancel"
     Then I should see the browser page titled "Site: aff site"
 
   Scenario: Editing youtube handle
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | youtube_handle |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | USAgov         |
+      | display_name | name    | contact_email | contact_name | youtube_handles   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | USAgov,whitehouse |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     When I follow "RSS"
     Then I should see "Videos"
     When I follow "Social Media"
-    And I fill in "YouTube handle" with "     USGovernment    "
+    And I fill in "YouTube handle 0" with "     USGovernment    "
+    And I fill in "YouTube handle 1" with ""
     And I press "Save"
     And I follow "RSS"
     Then I should see the following table rows:
@@ -2280,11 +2281,14 @@ Feature: Affiliate clients
       | Show in sidebar | No     |
     And I should see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usgovernment"
     And I should see "Pending"
+    And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usagov"
+    And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse"
     When I follow "Edit"
     Then the "Name*" field should contain "Videos"
     And the "RSS feed URL 0" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"
     And the "RSS feed URL 0" field should be disabled
     And I should not see "Mark RSS feed URL 0 for deletion"
+    And I should not see "RSS feed URL 1"
     When I follow "Social Media" in the page content
     Then I should see the browser page titled "Social Media"
 

@@ -41,6 +41,7 @@ UsasearchRails3::Application.routes.draw do
       get :new_rss_feed_fields
       get :new_managed_header_link_fields
       get :new_managed_footer_link_fields
+      get :new_youtube_handle_fields
       get '/demo' => redirect(BLOG_URL, :status => 302)
       get '/how_it_works' => redirect(BLOG_URL, :status => 302)
     end

@@ -6,11 +6,6 @@ class Affiliate < ActiveRecord::Base
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
 
-  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
-  validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :within=> (2..33)
-  validates_format_of :name, :with=> /^[a-z0-9._-]+$/
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
@@ -29,6 +24,7 @@ class Affiliate < ActiveRecord::Base
   has_many :daily_left_nav_stats, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
+  has_many :document_collections, :dependent => :destroy
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -58,26 +54,34 @@ class Affiliate < ActiveRecord::Base
                     :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
 
-  has_many :document_collections, :dependent => :destroy
+  before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
+  before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  before_validation :reject_blank_youtube_handles
+  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
+  validates_uniqueness_of :name, :case_sensitive => false
+  validates_length_of :name, :within=> (2..33)
+  validates_format_of :name, :with=> /^[a-z0-9._-]+$/
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_associated :popular_urls
-  after_destroy :remove_boosted_contents_from_index
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links, :validate_web_trends_properties
   validates_attachment_content_type :page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_page_background_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
+  validate :validate_web_trends_properties, :youtube_handles_length_in_yaml
+  after_validation :update_error_keys
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
-  before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
-  before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
-  after_validation :update_error_keys
   after_create :normalize_site_domains
+  after_destroy :remove_boosted_contents_from_index
+
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_updating_staged_header_footer
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_updating_staged_header_footer
+  serialize :youtube_handles, Array
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -746,7 +750,6 @@ class Affiliate < ActiveRecord::Base
     self.facebook_handle = facebook_handle.strip unless facebook_handle.nil?
     self.flickr_url = flickr_url.strip unless flickr_url.nil?
     self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
-    self.youtube_handle = youtube_handle.strip unless youtube_handle.nil?
     self.wt_javascript_url = wt_javascript_url.strip unless wt_javascript_url.nil?
     self.wt_dcsimg_hash = wt_dcsimg_hash.strip unless wt_dcsimg_hash.nil?
     self.wt_dcssip = wt_dcssip.strip unless wt_dcssip.nil?
@@ -778,5 +781,16 @@ class Affiliate < ActiveRecord::Base
     self.send("#{to.to_s}_content_type=", self.send("#{from}_content_type"))
     self.send("#{to.to_s}_file_size=", self.send("#{from}_file_size"))
     self.send("#{to.to_s}_updated_at=", self.send("#{from}_updated_at"))
+  end
+
+  def reject_blank_youtube_handles
+    self.youtube_handles = youtube_handles.reject(&:blank?).collect(&:strip).uniq.sort unless youtube_handles.blank?
+    self.youtube_handles = nil if youtube_handles.blank?
+  end
+
+  def youtube_handles_length_in_yaml
+    unless youtube_handles.blank?
+      errors.add(:youtube_handles, 'is too long') if youtube_handles.to_yaml.length > 250
+    end
   end
 end

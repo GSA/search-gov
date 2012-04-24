@@ -72,7 +72,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :facebook_handle => hash["facebook_handle"],
       :flickr_url => hash["flickr_url"],
       :twitter_handle => hash["twitter_handle"],
-      :youtube_handle => hash["youtube_handle"],
+      :youtube_handles => hash["youtube_handles"].present? ? hash['youtube_handles'].split(',') : nil,
       :theme => theme,
       :staged_theme => staged_theme,
       :css_property_hash => css_properties,

@@ -3,4 +3,4 @@
   :plain
     jQuery('.url-section table').append("#{escape_javascript(render('url_fields', :f => f, :is_managed => false, :index => now))}");
     setupRssForm();
-
+    jQuery('td.url input').last().focus();

@@ -435,7 +435,7 @@ describe Affiliate do
       affiliate.update_attributes!(:facebook_handle => '     http://www.facebook.com/WhiteHouse   ',
                                    :flickr_url => '   http://www.flickr.com/photos/whitehouse   ',
                                    :twitter_handle => '     whitehouse   ',
-                                   :youtube_handle => '     whitehouse   ',
+                                   :youtube_handles => ['     whitehouse   ', '  USGovernment ', ' whitehouse '],
                                    :wt_javascript_url => '  http://search.usa.gov/javascripts/webtrends_english.js  ',
                                    :wt_dcsimg_hash => ' MY_DCSIMG_HASH ',
                                    :wt_dcssip => ' MY_DCSSIP ',
@@ -443,7 +443,7 @@ describe Affiliate do
       affiliate.facebook_handle.should == 'http://www.facebook.com/WhiteHouse'
       affiliate.flickr_url.should == 'http://www.flickr.com/photos/whitehouse'
       affiliate.twitter_handle.should == 'whitehouse'
-      affiliate.youtube_handle.should == 'whitehouse'
+      affiliate.youtube_handles.should == %w(USGovernment whitehouse)
       affiliate.wt_javascript_url.should == 'http://search.usa.gov/javascripts/webtrends_english.js'
       affiliate.wt_dcsimg_hash.should == 'MY_DCSIMG_HASH'
       affiliate.wt_dcssip.should == 'MY_DCSSIP'
@@ -667,6 +667,19 @@ describe Affiliate do
       affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].last.should match(/Footer link URL can't be blank/)
+    end
+
+    it "should validate the length of youtube_handles in YAML" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate.youtube_handles = %w(extremesuperlong1234 extremesuperlong2345 extremesuperlong3456 extremesuperlong4567
+                                     extremesuperlong5678 extremesuperlong6789 extremesuperlong7890 extremesuperlong8901
+                                     extremesuperlong90ab extremesuperlong0abc extremesuperlongabcd extremesuperlongbcde)
+      affiliate.save.should be_false
+      affiliate.errors[:youtube_handles].should include('is too long')
+
+      affiliate.youtube_handles = []
+      20.times { affiliate.youtube_handles << 'extremesuperlong1234' }
+      affiliate.save!
     end
 
     context "is_updating_staged_header_footer is set to true" do

@@ -1553,6 +1553,7 @@ describe Affiliates::HomeController do
   end
 
   describe "do GET on #new_connection_fields" do
+    render_views
     context "when logged in as the affiliate manager" do
       let(:current_user) { users(:affiliate_manager) }
       let(:affiliate) { affiliates(:basic_affiliate) }
@@ -1567,6 +1568,20 @@ describe Affiliates::HomeController do
       it "should not include current affiliate in @available_affiliates" do
         assigns[:available_affiliates].count.should > 0
         assigns[:available_affiliates].should_not include([affiliate.display_name, affiliate.id])
+      end
+
+      it { should respond_with(:success) }
+    end
+  end
+
+  describe "do GET on #new_youtube_handle_fields" do
+    render_views
+    context "when logged in as the affiliate manager" do
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        get :new_youtube_handle_fields, :format => :js
       end
 
       it { should respond_with(:success) }

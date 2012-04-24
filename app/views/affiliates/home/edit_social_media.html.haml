@@ -3,21 +3,29 @@
   %h1 Social Media
   = render_help_link(@help_link)
   .site-info
-    = form_for @affiliate, :html => {:class=>"generic-form"} do |f|
+    = form_for @affiliate, :url => {:action => :update_social_media}, :html => { :class => 'generic-form social-media-form' } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       %ul
         %li
           = f.label :facebook_handle, "Facebook handle"
-          = f.text_field :facebook_handle, :class => 'txt'
+          = f.text_field :facebook_handle, :class => 'wide-text'
         %li
           = f.label :flickr_url, "Flickr URL"
-          = f.text_field :flickr_url, :class => 'txt'
+          = f.text_field :flickr_url, :class => 'wide-text'
         %li
           = f.label :twitter_handle, "Twitter handle"
-          = f.text_field :twitter_handle, :class => 'txt'
-        %li
-          = f.label :youtube_handle, "YouTube handle"
-          = f.text_field :youtube_handle, :class => 'txt'
+          = f.text_field :twitter_handle, :class => 'wide-text'
+        %li.youtube
+          = label_tag 'youtube_handles', "YouTube handles"
+          - @affiliate.youtube_handles = [] if @affiliate.youtube_handles.nil?
+          - @affiliate.youtube_handles << ''
+          %table.youtube
+            %colgroup
+              %col.handle
+            %tbody
+              - @affiliate.youtube_handles.each_with_index do |youtube_handle, index|
+                = render 'youtube_handle_fields', :youtube_handle => youtube_handle, :index => index
+          = link_to('+', new_youtube_handle_fields_affiliates_path, :remote => true, :class => 'add-icon add-youtube-handle', :title => 'Add another YouTube handle')
         %li
           = f.submit "Save", :id => "save"
           = link_to "Cancel", affiliate_path(@affiliate)

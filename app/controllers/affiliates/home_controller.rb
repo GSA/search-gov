@@ -2,7 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
   before_filter :require_affiliate, :except => [:index, :home, :urls_and_sitemaps]
   before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
-  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
+  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields, :new_youtube_handle_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
   before_filter :setup_for_results_modules_actions, :only => [:edit_results_modules, :new_connection_fields]
 
@@ -251,6 +251,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def new_connection_fields
+  end
+
+  def new_youtube_handle_fields
   end
 
   protected
