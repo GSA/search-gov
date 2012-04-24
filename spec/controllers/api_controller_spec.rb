@@ -178,7 +178,7 @@ describe ApiController do
         its(['startrecord']) { should == 11 }
         its(['endrecord']) { should == 11 }
         its(['results']) { should_not be_empty }
-        its(['related_searches']) { should_not be_empty }
+        its(['related']) { should_not be_empty }
       end
     end
 
@@ -212,7 +212,7 @@ describe ApiController do
         its(['startrecord']) { should == 11 }
         its(['endrecord']) { should == 11 }
         its(['results']) { should_not be_empty }
-        its(['related_searches']) { should_not be_empty }
+        its(['related']) { should_not be_empty }
       end
     end
 
