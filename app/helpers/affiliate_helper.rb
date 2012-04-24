@@ -59,7 +59,7 @@ module AffiliateHelper
   end
 
   def javascript_full_path(source)
-    "#{URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}")}"
+    URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}")
   end
 
   def stylesheet_link_tag_with_full_path(*sources)
