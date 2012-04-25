@@ -73,7 +73,7 @@ class Search
       {:error => @error_message}
     else
       hash = {:total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results}
-      hash.merge!(:related_searches => remove_strong(@related_search)) if has_related_searches?
+      hash.merge!(:related => remove_strong(@related_search))
       hash
     end
   end
