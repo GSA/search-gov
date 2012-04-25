@@ -16,12 +16,15 @@ class Robot < ActiveRecord::Base
   end
 
   def build_prefixes(robots_txt)
-    prefixes_array = []
+    prefixes_array, current_user_agent = [], '*'
     robots_txt.each do |line|
-      next unless line =~ /^Disallow: *\//
-      prefix = line.split(":").last.strip
-      prefix = "#{prefix}/" unless prefix.blank? or prefix.ends_with?("/")
-      prefixes_array << prefix
+      if line =~ /^User-agent: */
+        current_user_agent = line.split(":").last.strip
+      elsif line =~ /^Disallow: *\// and current_user_agent == '*'
+        prefix = line.split(":").last.strip
+        prefix = "#{prefix}/" unless prefix.blank? or prefix.ends_with?("/")
+        prefixes_array << prefix
+      end
     end
     self.prefixes = prefixes_array.uniq.compact.join(',')
   end
