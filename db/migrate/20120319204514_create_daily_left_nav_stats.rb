@@ -11,6 +11,6 @@ class CreateDailyLeftNavStats < ActiveRecord::Migration
   end
 
   def self.down
-    drop__table :daily_left_nav_stats
+    drop_table :daily_left_nav_stats
   end
 end

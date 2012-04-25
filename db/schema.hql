@@ -448,6 +448,6 @@ select q.ds ds, q.affiliate affiliate,q.host host, b.* from queries q
 lateral view parse_url_tuple(concat("http://search.gov",request), 'PATH', 'QUERY:dc', 'QUERY:channel', 'QUERY:tbs') b as path, dc,channel,tbs ;
 
 CREATE VIEW normalized_pageloads
-AS SELECT affiliate_id, concat(lower(parse_url(url, 'PROTOCOL')),'://',lower(parse_url(url, 'HOST')),regexp_replace(parse_url(url, 'PATH'),'\;.*','')) normal_url, ds
+AS SELECT affiliate_id, concat(lower(parse_url(url, 'PROTOCOL')),'://',lower(parse_url(url, 'HOST')),regexp_replace(parse_url(url, 'PATH'),'\;.*','')) normal_url, url, ds
 FROM pageloads
 WHERE url like 'http://%';
