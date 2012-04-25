@@ -134,6 +134,7 @@ GEM
       capybara (>= 1.0.0)
       cucumber (~> 1.0.0)
       nokogiri (>= 1.4.6)
+    daemons (1.1.8)
     database_cleaner (0.6.7)
     diff-lcs (1.1.2)
     email_spec (1.2.1)
@@ -142,6 +143,9 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     escape (0.0.4)
+    eventmachine (0.12.10)
+    faraday (0.8.0)
+      multipart-post (~> 1.1)
     fastercsv (1.5.4)
     fattr (2.2.0)
     ffi (1.0.9)
@@ -153,6 +157,7 @@ GEM
     high_voltage (1.0.0)
     highline (1.6.2)
     hpricot (0.8.4)
+    http_parser.rb (0.5.3)
     i18n (0.5.0)
     json (1.6.1)
     json_pure (1.5.3)
@@ -171,6 +176,7 @@ GEM
       webrobots (~> 0.0, >= 0.0.9)
     mime-types (1.16)
     multi_json (1.0.4)
+    multipart-post (1.1.5)
     mysql2 (0.2.11)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.8)
@@ -269,6 +275,7 @@ GEM
       json_pure
       rubyzip
     shoulda (2.11.3)
+    simple_oauth (0.1.7)
     sinatra (1.2.8)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
@@ -279,6 +286,19 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    tweetstream (1.1.4)
+      daemons (~> 1.1)
+      multi_json (>= 1.0)
+      twitter-stream (= 0.1.14)
+    twitter (2.2.0)
+      activesupport (>= 2.3.9, < 4)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.1)
+    twitter-stream (0.1.14)
+      eventmachine (>= 0.12.8)
+      http_parser.rb (~> 0.5.1)
+      simple_oauth (~> 0.1.4)
     tzinfo (0.3.29)
     vegas (0.1.11)
       rack (>= 1.0.0)
@@ -350,6 +370,8 @@ DEPENDENCIES
   shoulda
   sunspot_rails!
   sunspot_solr!
+  tweetstream
+  twitter
   webrat
   webster
   will_paginate (~> 3.0.pre2)

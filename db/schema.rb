@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501001709) do
+ActiveRecord::Schema.define(:version => 20120501183130) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -92,6 +92,11 @@ ActiveRecord::Schema.define(:version => 20120501001709) do
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
+
+  create_table "affiliates_twitter_profiles", :id => false, :force => true do |t|
+    t.integer "affiliate_id",       :null => false
+    t.integer "twitter_profile_id", :null => false
+  end
 
   create_table "affiliates_users", :id => false, :force => true do |t|
     t.integer "affiliate_id"
@@ -672,6 +677,26 @@ ActiveRecord::Schema.define(:version => 20120501001709) do
 
   add_index "top_searches", ["affiliate_id"], :name => "index_top_searches_on_affiliate_id"
   add_index "top_searches", ["position", "affiliate_id"], :name => "index_top_searches_on_position_and_affiliate_id", :unique => true
+
+  create_table "tweets", :force => true do |t|
+    t.integer  "tweet_id",           :limit => 8
+    t.string   "tweet_text"
+    t.integer  "twitter_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "published_at"
+  end
+
+  add_index "tweets", ["twitter_profile_id"], :name => "index_tweets_on_twitter_profile_id"
+
+  create_table "twitter_profiles", :force => true do |t|
+    t.integer  "twitter_id"
+    t.string   "screen_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "twitter_profiles", ["twitter_id"], :name => "index_twitter_profiles_on_twitter_id"
 
   create_table "url_prefixes", :force => true do |t|
     t.integer  "document_collection_id", :null => false

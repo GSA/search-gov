@@ -11,3 +11,10 @@ AWS_SECRET_ACCESS_KEY = "***REMOVED***"
 AWS_BUCKET_NAME = "***REMOVED***"
 
 CalendarDateSelect.format = :american
+
+Twitter.configure do |config|
+  config.consumer_key = "***REMOVED***"
+  config.consumer_secret = "***REMOVED***"
+  config.oauth_token = "***REMOVED***"
+  config.oauth_token_secret = "***REMOVED***"
+end

@@ -25,6 +25,7 @@ class Affiliate < ActiveRecord::Base
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :dependent => :destroy
+  has_and_belongs_to_many :twitter_profiles
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -76,6 +77,7 @@ class Affiliate < ActiveRecord::Base
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
+  after_save :associate_with_twitter_profiles
 
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
@@ -805,6 +807,14 @@ class Affiliate < ActiveRecord::Base
   def set_is_validate_staged_header_footer(attributes)
     if attributes[:staged_uses_managed_header_footer] == '0' or attributes[:staged_uses_one_serp] == '1'
       self.is_validate_staged_header_footer = true
+    end
+  end
+  
+  def associate_with_twitter_profiles
+    if changed_attributes.has_key?("twitter_handle") and self.twitter_handle.present?
+      twitter_user = Twitter.user(self.twitter_handle)
+      twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name)
+      self.twitter_profiles << twitter_profile
     end
   end
 end

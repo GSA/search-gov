@@ -41,6 +41,7 @@ describe Affiliate do
     it { should have_many(:daily_left_nav_stats).dependent(:destroy) }
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
+    it { should have_and_belong_to_many :twitter_profiles }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
@@ -1941,6 +1942,22 @@ describe Affiliate do
 
       affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer))
       affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
+    end
+  end
+  
+  context "when updating the twitter_handle field" do
+    before do
+      @twitter_user = mock(Object)
+      @twitter_user.stub!(:id).and_return 123
+      @twitter_user.stub!(:screen_name).and_return "NewHandle"
+      @affiliate = affiliates(:basic_affiliate)
+    end
+
+    it "should associate the affiliate with either an existing or new TwitterProfile if the twitter_handle field is updated" do
+      TwitterProfile.find_by_screen_name("NewHandle").should be_nil
+      Twitter.should_receive(:user).with("NewHandle").and_return(@twitter_user)
+      @affiliate.update_attributes(:twitter_handle => 'NewHandle')
+      TwitterProfile.find_by_screen_name("NewHandle").should_not be_nil
     end
   end
 end

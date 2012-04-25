@@ -48,6 +48,8 @@ gem 'mechanize'
 gem 'pdf-toolkit', "~> 0.5.0"
 gem 'googlecharts'
 gem 'sanitize'
+gem 'tweetstream'
+gem 'twitter'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
