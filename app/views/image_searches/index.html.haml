@@ -1,5 +1,10 @@
+- if @affiliate.uses_one_serp?
+  #search_box
+    = render '/shared/search', :path => image_search_path(:affiliate => @affiliate)
+    .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
+    .summary-wrapper= render 'shared/results_summary', :affiliate => @affiliate, :search => @search, :search_options => @search_options, :search_vertical => @search_vertical
 #left_column
   = render "shared/affiliate_vertical_navigation"
-#results
-  = render "/shared/search", :path => image_search_path(:affiliate => @affiliate)
+#results.images
+  = render '/shared/search', :path => image_search_path(:affiliate => @affiliate) unless @affiliate.uses_one_serp?
   = render :partial => "/shared/searchresults", :locals => { :search => @search }

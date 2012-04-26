@@ -1,0 +1,11 @@
+= bing_spelling_suggestion_for(search, affiliate, search_vertical)
+- if search.results.present?
+  = display_search_all_affiliate_sites_suggestion(search, affiliate)
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  - if affiliate.uses_one_serp? and web_search?
+    .advancedsearch
+      &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+      = advanced_search_link(search_options, affiliate)
+- elsif affiliate.uses_one_serp?
+  = render 'shared/blank_search_results', :search => search
+

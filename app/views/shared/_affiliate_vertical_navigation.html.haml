@@ -4,7 +4,7 @@
 - search_params.merge!(:channel => rss_feed.id) if rss_feed
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
 = javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
-= left_nav_label(@affiliate.left_nav_label)
+= left_nav_label(@affiliate.left_nav_label) unless @affiliate.uses_one_serp?
 %ul.rss-feeds
   %li
     = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), @affiliate.default_search_label, params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|

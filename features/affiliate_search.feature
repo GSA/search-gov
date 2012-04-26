@@ -614,7 +614,7 @@ Feature: Affiliate Search
       | Topics | http://aff.gov/topics/ | true         |
     When I go to aff.gov's search page
     And I follow "Topics" in the left column
-    Then I should see "Sorry, no results found"
+    Then I should see "Please enter search term(s)"
 
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following Affiliates exist:

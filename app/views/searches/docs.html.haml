@@ -1,22 +1,23 @@
+- if @affiliate.uses_one_serp?
+  #search_box
+    = render 'docs_search_form'
+    .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
+    .summary-wrapper
+      - if @search.results.present?
+        = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query]
+      - else
+        = render 'shared/blank_search_results', :search => @search
 #left_column
   = render "shared/affiliate_vertical_navigation"
 #results
-  = form_tag(@form_path, :method => :get, :id => "search_form") do
-    = label_tag :search_query, nil, :class => 'hide'
-    = hidden_field_tag :sc, 0
-    = text_field_tag 'search', @search_options[:query], { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
-    = hidden_field_tag :m, params[:m]
-    = hidden_field_tag :dc, params[:dc] if params[:dc]
-    = hidden_field_tag :affiliate, @affiliate.name
-    = submit_tag(t(:search), :id => "search_button")
+  = render 'docs_search_form' unless @affiliate.uses_one_serp?
   %a{:name => "content"}
   - if @search.results.present?
-    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query]
+    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query] unless @affiliate.uses_one_serp?
     - @search.hits.each_with_index do |hit, index|
       = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => true
-    = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-    = search_results_by_logo(false)
-  - elsif @error_message
-    %p.noresults #{@search.error_message}
-  - else
-    = no_results_for @search_options[:query]
+    .pagination-and-logo
+      = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+      = search_results_by_logo(false)
+  - elsif !@affiliate.uses_one_serp?
+    = render 'shared/blank_search_results', :search => @search

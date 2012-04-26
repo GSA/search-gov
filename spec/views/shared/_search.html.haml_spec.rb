@@ -13,9 +13,7 @@ describe "shared/_search.html.haml" do
   context "when page is displayed" do
     context "for an affiliate site" do
       before do
-        @affiliate = stub('Affiliate')
-        @affiliate.stub!(:name).and_return 'aff.gov'
-        @affiliate.stub!(:is_sayt_enabled).and_return false
+        @affiliate = stub('Affiliate', :name => 'aff.gov', :uses_one_serp? => false, :is_sayt_enabled => false)
         assign(:affiliate, @affiliate)
       end
 

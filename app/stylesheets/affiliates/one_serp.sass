@@ -2,6 +2,7 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/inline-block"
 @import "compass/typography/text/replacement"
+$results-padding-top-size: 8px
 $results-padding-size: 15px
 $red: #990000
 $green: #008000
@@ -81,12 +82,75 @@ body
     padding: 0
   .hide
     display: none
+  #search_box
+    +clearfix
+    border-bottom: 1px solid #CACACA
+    padding: 0 10px 10px 0
+  .left-nav-label-wrapper
+    float: left
+    padding: 0 0 0 10px
+    width: 150px
+    h3
+      margin: 0
+  #left_nav_label
+    font-size: 1.5em
+    line-height: 1
+  .summary-wrapper
+    float: left
+  #summary
+    +inline-block
+    padding-left: $results-padding-size
+    p
+      +inline-block
+      margin: 0
+  .advancedsearch
+    +inline-block
+  .did-you-mean, .search-all-sites-suggestion
+    margin: 0 0 10px 0
+    padding-left: $results-padding-size
+  .noresults
+    margin: 0
+    padding-left: $results-padding-size
+
+#search_form
+  +clearfix
+  +inline-block
+  padding: 0 0 0 160px
+  margin: 0 0 15px 0
+  width: 660px
+  #search_query
+    +border-radius
+    float: left
+    background-color: #FFF
+    border: 1px solid #CACACA
+    font:
+      size: 13px
+      weight: normal
+    height: 20px
+    outline: 0
+    padding: 4px 0 4px $results-padding-size - 1
+    width: 545px
+
+  #search_button
+    +border-radius
+    float: right
+    font:
+      size: 13px
+      weight: bold
+    margin: 0
+    padding: 0
+    text-transform: uppercase
+    width: 90px
+    height: 30px
 
 #results
   float: left
   overflow: hidden
   display: inline
+  padding-top: 8px
   width: 660px
+  &.images, &.videos
+    padding-top: 18px
 
   span.image_result
     width: 200px
@@ -105,8 +169,6 @@ body
     a
       display: block
       font-size: 0.8em
-  .did-you-mean, .search-all-sites-suggestion
-    padding-left: $results-padding-size
 
   .pagination-and-logo
     border-top: 1px solid #CACACA
@@ -133,15 +195,12 @@ body
       &:hover
         +border-radius(3px)
 
-#summary
-  padding-left: $results-padding-size
-
 #left_column
   float: left
   width: 130px
   overflow: hidden
   display: inline
-  padding: 47px 20px 0 10px
+  padding: 18px 20px 0 10px
   #popular_urls
     h3
       font-size: 1.1em
@@ -154,10 +213,6 @@ body
         margin: 0 0 7px
         a
           font-weight: normal
-  h3#left-nav-label
-    margin: 0
-    padding: 0 0 10px 0
-    font-size: 1.3em
   ul.rss-feeds, ul.time-filters
     font-size: 1.1em
     margin: 0
@@ -169,40 +224,6 @@ body
         font-weight: normal
       span
         font-weight: bold
-
-#search_form
-  +clearfix
-  margin: 0
-  height: 60px
-  #search_query
-    +border-radius
-    float: left
-    background-color: #FFF
-    border: 1px solid #CACACA
-    font:
-      size: 13px
-      weight: normal
-    height: 20px
-    outline: 0
-    padding: 4px 0 4px $results-padding-size - 1
-    width: 545px
-
-  #search_button
-    +border-radius
-    float: right
-    font:
-      size: 13px
-      weight: bold
-    margin: 0
-    padding: 0
-    text-transform: uppercase
-    width: 90px
-    height: 30px
-  .advancedsearch
-    display: inline
-    padding: 0 0 0 5px
-    float: right
-    margin-top: 5px
 
 #results
   .searchresult
@@ -220,13 +241,14 @@ body
 
   #indexed_documents
     margin-bottom: 1em
+    #indexeddocresult1
+      padding-top: 0
     .indexeddocresult h2
       font-size: 1.1em
       font-weight: normal
       margin: 0
       span.uext_type
         font-size: 0.7em
-
 
   .searchresult  h3
     font-size: 1.1em
@@ -299,9 +321,9 @@ body
     +border-radius
     border: 1px #ddd solid
     margin:
-      top: 1em
+      top: 0
       bottom: 1em
-    padding: $results-padding-size $results-padding-size 0 $results-padding-size
+    padding: $results-padding-top-size $results-padding-size 0
     background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
     h3.alt
       font-size: 1.15em
@@ -322,9 +344,9 @@ body
     +clearfix
     border: 1px solid #DDD
     margin:
-      top: 1em
+      top: 0
       bottom: 1em
-    padding: 1em $results-padding-size
+    padding: $results-padding-top-size $results-padding-size
     background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
     h2
       margin: 0 0 0.5em
@@ -391,6 +413,7 @@ body
         clear: left
         margin-right: 5px
 
+
 @import "govbox"
 
 #search .page-not-found
@@ -429,8 +452,7 @@ body
       :padding 0 0 0 3px
   #search_form
     :margin 10px auto 0
-    .advancedsearch
-      :display none
+    padding: 0
 .es #search .page-not-found
   .message, .what-to-do-wrapper
     :width 765px
@@ -474,28 +496,39 @@ body
   margin-bottom: 1em
   .newsitem
     margin-top: 0.8em
+  #newsitem1
+    padding-top: 0
 
-.noresults
-  padding-left: $results-padding-size
+#searchresult1
+  &.first
+    padding-top: $results-padding-top-size + 1
+  &.blended
+    padding-top: 0
+#indexeddocresult1
+  padding-top: $results-padding-top-size + 1
+#newsitem1
+  padding-top: $results-padding-top-size + 1
+  &.video
+    padding-top: 0
 
-.connections-wrapper
-  +clearfix
-  margin-bottom: 20px
-  padding-right: 10px
-.connections
-  float: right
-  font-size: 1.1em
-  ul
-    margin: 0
-    padding: 0
-  li
-    display: inline
-    list-style: none
-  a
-    border-left:
-      style: solid
-      width: 1px
-    padding: 0 6px 0 8px
-    &.first
-      border-left-width: 0
-
+#search
+  .connections-wrapper
+    +clearfix
+    margin-bottom: 15px
+    padding-right: 10px
+  .connections
+    float: right
+    font-size: 1.1em
+    ul
+      margin: 0
+      padding: 0
+    li
+      display: inline
+      list-style: none
+    a
+      border-left:
+        style: solid
+        width: 1px
+      padding: 0 6px 0 8px
+      &.first
+        border-left-width: 0

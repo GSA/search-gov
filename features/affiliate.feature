@@ -1740,6 +1740,8 @@ Feature: Affiliate clients
       | display_name     | name             | contact_email            | contact_name        | has_staged_content |
       | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
     When I go to noindex.gov's search page
+    And I fill in "query" with "gov"
+    And I press "Search"
     And I follow "Advanced Search"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the browser page titled "Advanced Search - noindex site"
@@ -1749,6 +1751,8 @@ Feature: Affiliate clients
       | display_name | name        | contact_email | contact_name | locale |
       | noindex site | noindex.gov | aff@aff.gov   | Two Bar      | es     |
     When I go to noindex.gov's search page
+    And I fill in "query" with "gov"
+    And I press "Buscar"
     And I follow "Búsqueda avanzada"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the browser page titled "Búsqueda avanzada - noindex site"
@@ -1759,6 +1763,8 @@ Feature: Affiliate clients
       | English aff site | en.aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      | en     |
       | Spanish aff site | es.aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      | es     |
     When I go to en.aff.gov's search page
+    And I fill in "query" with "gov"
+    And I press "Search"
     And I follow "Advanced Search"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Header"
@@ -1771,6 +1777,8 @@ Feature: Affiliate clients
     And I should see "emergency"
 
     When I go to es.aff.gov's search page
+    And I fill in "query" with "gov"
+    And I press "Buscar"
     And I follow "Búsqueda avanzada"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Header"
@@ -2115,6 +2123,8 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | header           | footer           |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
     When I go to aff.gov's embedded search page
+    And I fill in "query" with "gov"
+    And I press "Search"
     And I follow "Advanced Search"
     And I press "Search"
     Then I should not see "Affiliate Header"

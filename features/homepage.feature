@@ -113,6 +113,8 @@ Feature: Homepage
       | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
       | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
     When I am on the homepage
+    And I fill in "query" with "gov"
+    And I press "Search"
     And I follow "Advanced Search"
     Then I should see the browser page titled "Advanced Search"
     And I should see "Use the options on this page to create a very specific search."
