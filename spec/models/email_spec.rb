@@ -43,25 +43,6 @@ describe Emailer do
     end
   end
 
-  describe "#monthly_report" do
-    before do
-      @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown")).deliver
-    end
-
-    it "should be sent to the monthly report recipients" do
-      @email.should deliver_to(ReportRecipient.all.collect(&:email))
-    end
-
-    it "should have a subject with the file name in it" do
-      @email.should have_subject("[USASearch] Report data attached: README.markdown")
-    end
-
-    it "should have an attachment" do
-      @email.attachments.should_not be_nil
-      @email.attachments.should_not be_empty
-    end
-  end
-
   describe "#new_user_email_verification" do
     before do
       @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')

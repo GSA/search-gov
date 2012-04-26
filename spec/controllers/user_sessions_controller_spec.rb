@@ -13,21 +13,6 @@ describe UserSessionsController do
   end
 
   describe "do POST on create" do
-=begin
-    it "should create a new user session" do
-      user_session = stub_model(UserSession, :email => users("affiliate_admin").email, :password => "admin")
-      UserSession.should_receive(:new).and_return(user_session)
-      post :create, :user_session => {:email => users("affiliate_admin").email, :password => "admin"}
-    end
-
-    it "should save the user session" do
-      user_session = mock_model(UserSession)
-      UserSession.should_receive(:new).and_return(user_session)
-      user_session.should_receive(:save)
-      post :create, :user_session => {:email => users("affiliate_admin").email, :password => "admin"}
-    end
-=end
-
     context "when the user session fails to save" do
       it "should assign @user" do
         user = mock_model(User)
@@ -55,7 +40,7 @@ describe UserSessionsController do
    describe "do POST on create for developer" do
     it "should redirect to affiliate home page" do
       post :create, :user_session => {:email => users("developer").email, :password => "admin"}
-      response.should redirect_to(account_url)
+      response.should redirect_to(developer_redirect_url)
     end
   end
 end

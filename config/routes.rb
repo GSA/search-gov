@@ -174,6 +174,7 @@ UsasearchRails3::Application.routes.draw do
   get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
   get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
   get '/api/search' => 'api#search', :as => :api_search
+  get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/login' => 'user_sessions#new', :as => :login
   get "/sayt" => "sayt#index"
   get "/clicked" => "clicked#index"

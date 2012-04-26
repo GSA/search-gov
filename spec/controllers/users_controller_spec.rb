@@ -3,16 +3,16 @@ require 'spec/spec_helper'
 describe UsersController do
   fixtures :users
 
-  context "when logged in" do
+  context "when logged in as an affiliate" do
     before do
       activate_authlogic
-      @user = users('non_affiliate_admin')
+      @user = users('affiliate_manager')
       UserSession.create(:email=> @user.email, :password => "admin")
     end
 
-    describe "do GET on show" do      
+    describe "do GET on show" do
       it "should assign the user" do
-        get :show, :id => @user.id 
+        get :show, :id => @user.id
         assigns[:user].should be_instance_of(User)
       end
     end
@@ -49,15 +49,38 @@ describe UsersController do
       end
 
       it "should not allow a user to promote themselves to affiliate admin privileges" do
-        users("non_affiliate_admin").is_affiliate_admin.should be_false
+        users("affiliate_manager").is_affiliate_admin.should be_false
         post :update, :id => @user.id, :user => {:email => "changed@foo.com", :is_affiliate_admin => true}
         User.find_by_email("changed@foo.com").is_affiliate_admin.should be_false
       end
+    end
+  end
 
-      it "should not allow a user to promote themselves to affiliate" do
-        users("non_affiliate_admin").is_affiliate.should be_false
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :is_affiliate => true}
-        User.find_by_email("changed@foo.com").is_affiliate.should be_false
+  context "when logged in as a developer" do
+    before do
+      activate_authlogic
+      @user = users('non_affiliate_admin')
+      UserSession.create(:email=> @user.email, :password => "admin")
+    end
+
+    describe "do GET on show" do
+      it "should redirect the developer to the USA.gov developer page" do
+        get :show, :id => @user.id
+        response.should redirect_to(developer_redirect_url)
+      end
+    end
+
+    describe "do GET on edit" do
+      it "should redirect the developer to the USA.gov developer page" do
+        get :edit, :id => @user.id
+        response.should redirect_to(developer_redirect_url)
+      end
+    end
+
+    describe "do POST on update" do
+      it "should redirect the developer to the USA.gov developer page" do
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "UTC"}
+        response.should redirect_to(developer_redirect_url)
       end
     end
   end

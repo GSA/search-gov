@@ -1,6 +1,6 @@
 Feature: Users
 
-  Scenario: Logged-in user visits account page
+  Scenario: Logged-in non-developer user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
     Then I should see the following breadcrumbs: USASearch > My Account
@@ -192,25 +192,10 @@ Feature: Users
     And I should not see "I am a government employee or contractor"
     And I should not see "I am not affiliated with a government agency"
 
-   Scenario: Visiting edit my account profile page as a developer user
+   Scenario: Logging in as a developer user
     Given I am logged in with email "developer@fixtures.org" and password "admin"
     When I go to the user account page
-    And I follow "edit your profile"
-    Then I should see the following breadcrumbs: USASearch > My Account > Edit My Account
-    And I should see "Edit My Account"
-    And I should see "Name"
-    And I should see "Government organization"
-    And I should see "Email"
-    And I should not see "Phone"
-    And I should not see "Organization address"
-    And I should not see "Address 2"
-    And I should not see "City"
-    And I should not see "State"
-    And I should not see "Zip"
-    And I should see "Change password"
-    And I should see "Password confirmation"
-    And I should not see "I am a government employee or contractor"
-    And I should not see "I am not affiliated with a government agency"
+    Then I should see "Our Recalls API Has Moved"
 
   Scenario: Adding additional contacts to an affiliate from an account with a single affiliate
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

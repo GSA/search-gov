@@ -357,7 +357,7 @@ class Affiliate < ActiveRecord::Base
   def normalize_site_domains(site_domain_hash = existing_site_domain_hash)
     added_or_updated_site_domains = []
     domain_list = site_domain_hash.keys.sort { |a, b| a.length == b.length ? (a <=> b) : (a.length <=> b.length) }
-    while (domain_list.length > 0)
+    while domain_list.length > 0
       site_domain = site_domain_hash[domain_list.first]
 
       added_or_updated_site_domains << site_domain if site_domain.new_record? and site_domain.save

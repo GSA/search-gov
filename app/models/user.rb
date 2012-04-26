@@ -107,9 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
-    default_attributes = {
-        :government_affiliation => "1"
-    }
+    default_attributes = {:government_affiliation => "1"}
     new_user = User.new(attributes.merge(default_attributes))
     new_user.randomize_password
     new_user.inviter = inviter
@@ -119,9 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def affiliate_names
-    names = []
-    names = affiliates.collect { |affiliate| affiliate.name } unless affiliates.empty?
-    names.join(',')
+    affiliates.collect(&:name).join(',')
   end
 
   private
