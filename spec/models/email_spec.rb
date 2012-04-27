@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
-  fixtures :affiliates, :report_recipients
+  fixtures :affiliates, :report_recipients, :users
 
   describe "#objectionable_content_alert" do
     before(:all) do
@@ -68,6 +68,7 @@ describe Emailer do
         @user = mock(User,
                      :email => 'not.gov.user@agency.com',
                      :contact_name => 'Contractor Joe',
+                     :affiliates => [],
                      :organization_name => 'Agency',
                      :requires_manual_approval? => true)
         @email = Emailer.new_user_to_admin @user
@@ -91,6 +92,7 @@ describe Emailer do
         @user = mock(User,
                      :email => 'not.com.user@agency.gov',
                      :contact_name => 'Gov Employee Joe',
+                     :affiliates => [],
                      :organization_name => 'Gov Agency',
                      :requires_manual_approval? => false)
         @email = Emailer.new_user_to_admin @user
@@ -106,6 +108,38 @@ describe Emailer do
 
       it "should not have 'This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.' text" do
         @email.should_not have_body_text /This user signed up as an affiliate/
+      end
+    end
+
+    context "user got invited by another customer" do
+      before do
+        @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
+        @user.affiliates << affiliates(:gobiernousa_affiliate)
+        @user.affiliates << affiliates(:power_affiliate)
+        @user.save!
+        @user.reload
+        @user.inviter = users(:affiliate_manager)
+        @email = Emailer.new_user_to_admin @user
+      end
+
+      it "should have info about who invited whom to which affiliate" do
+        @email.should have_body_text /This user was added to affiliate 'Noaa Site' by Affiliate Manager\. This user will be automatically approved after they verify their email\./
+      end
+    end
+
+    context "user didn't get invited by another customer (and thus has no affiliates either)" do
+      before do
+        @user = mock(User,
+                     :email => 'not.com.user@agency.gov',
+                     :contact_name => 'Gov Employee Joe',
+                     :organization_name => 'Gov Agency',
+                     :affiliates => [],
+                     :requires_manual_approval? => false)
+        @email = Emailer.new_user_to_admin @user
+      end
+
+      it "should not have invitation info" do
+        @email.should_not have_body_text /This user was added to affiliate/
       end
     end
   end

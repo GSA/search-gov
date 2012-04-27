@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
   validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"
-  attr_protected :is_affiliate, :is_affiliate_admin
-  attr_protected :approval_status, :requires_manual_approval, :welcome_email_sent
   has_and_belongs_to_many :affiliates
   before_validation :generate_api_key
   before_validation :set_initial_approval_status, :on => :create
@@ -25,14 +23,8 @@ class User < ActiveRecord::Base
   after_create :welcome_user
   after_update :deliver_email_verification_after_contact_information_complete
   after_update :deliver_welcome_email
-  attr_accessor :government_affiliation
-  attr_accessor :strict_mode, :invited
-  attr_accessor :skip_welcome_email
-  attr_accessor :terms_of_service
-  attr_accessor :inviter
-  attr_accessor :require_password
-  attr_protected :strict_mode, :invited, :require_password
-  attr_protected :inviter
+  attr_accessor :government_affiliation, :strict_mode, :invited, :skip_welcome_email, :terms_of_service, :inviter, :require_password
+  attr_protected :strict_mode, :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
