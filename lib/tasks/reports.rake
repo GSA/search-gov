@@ -16,6 +16,7 @@ namespace :usasearch do
         Rails.logger.error "usage: rake usasearch:reports:generate_top_queries_from_file[file_name,monthly|weekly|daily,1000]"
       else
         day = args.date.nil? ? Date.yesterday : Date.parse(args.date)
+        report_date = args.period == 'weekly' ? day.beginning_of_week-1.day : day
         establish_aws_connection
         format = args.period == "monthly" ? '%Y%m' : '%Y%m%d'
         max_entries_per_group = args.max_entries_per_group.to_i
@@ -23,7 +24,7 @@ namespace :usasearch do
         File.open(args.file_name).each do |line|
           affiliate_name, query, total = line.chomp.split(/\001/)
           if last_group.nil? || last_group != affiliate_name
-            AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
+            AWS::S3::S3Object.store(generate_report_filename(last_group, report_date, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
             output = "Query,Raw Count,IP-Deduped Count\n"
             cnt = 0;
           end
@@ -46,7 +47,7 @@ namespace :usasearch do
           end
           last_group = affiliate_name
         end
-        AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
+        AWS::S3::S3Object.store(generate_report_filename(last_group, report_date, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
       end
     end
   end
