@@ -543,6 +543,6 @@ module SearchHelper
   end
 
   def left_nav_label(label_text)
-    label_text.blank? ? "" : content_tag(:h3, label_text, :id => 'left_nav_label')
+    label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
 end
