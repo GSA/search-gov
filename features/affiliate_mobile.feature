@@ -16,7 +16,7 @@ Feature: Mobile Search for Affiliate
       | Our Emergency Page | http://www.agency.gov/911 | Updated information on the emergency |
       | FAQ Emergency Page | http://www.agency.gov/faq | More information on the emergency    |
       | Our Tourism Page   | http://www.agency.gov/tou | Tourism information                  |
-    And I am on agency.gov's mobile search page
+    And I am on agency.gov's search page
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the page with affiliate stylesheet "one_serp_mobile.css"
     And I should not see the page with affiliate stylesheet "default_mobile.css"
@@ -30,6 +30,7 @@ Feature: Mobile Search for Affiliate
     And I should see the browser page titled "agency site Mobile"
     And I should see "Our Emergency Page" in the mobile boosted contents section
     When I follow "Next"
+    Then I should see the browser page titled "agency site Mobile"
     Then I should not see "Our Emergency Page"
 
     When I go to nosayt.agency.gov's mobile search page
@@ -54,3 +55,81 @@ Feature: Mobile Search for Affiliate
     When I follow "Classic"
     Then I should see the browser page titled "social security - agency site Search Results"
 
+  Scenario: A search on RSS feeds
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email  | contact_name |
+      | agency site  | agency.gov | aff@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following RSS feeds:
+      | name  | url                                  | is_navigable | shown_in_govbox |
+      | Blog  | http://www.whitehouse.gov/feed/blog  | true         | true            |
+      | Press | http://www.whitehouse.gov/feed/press | true         | true            |
+    And feed "Blog" has the following news items:
+      | link                             | title            | guid  | published_ago | description                        |
+      | http://www.whitehouse.gov/blog/1 | First blog item  | uuid1 | day           | item 1 blog news item for the feed |
+      | http://www.whitehouse.gov/blog/2 | Second blog item | uuid2 | day           | item 2 blog news item for the feed |
+    And there are 20 news items for "Blog"
+    And feed "Press" has the following news items:
+      | link                              | title             | guid  | published_ago | description                         |
+      | http://www.whitehouse.gov/press/1 | First press item  | uuid1 | day           | item 1 press news item for the feed |
+      | http://www.whitehouse.gov/press/2 | Second press item | uuid2 | day           | item 2 press news item for the feed |
+    When I am on agency.gov's news search page
+    Then I should see "agency site Mobile"
+    And I should see "First blog item"
+    And I should see "Second blog item"
+    And I should see "First press item"
+    And I should see "Second press item"
+    When I follow "Next"
+    Then I should see "agency site Mobile"
+    And I should see "news item 7 title for Blog"
+
+    When I am on agency.gov's "Blog" news search page
+    Then I should see "agency site Mobile"
+    And I should see "First blog item"
+    And I should see "Second blog item"
+    And I should not see "First press item"
+    And I should not see "Second press item"
+    When I follow "Next"
+    Then I should see "agency site Mobile"
+    And I should see "news item 9 title for Blog"
+    When I fill in "query" with "missing"
+    And I submit the search form
+    Then I should see "Sorry, no results found for 'missing'."
+
+  Scenario: A search on document collections
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email   | contact_name |
+      | agency site  | aff.gov | contact@aff.gov | John Bar     |
+    And the following IndexedDocuments exist:
+      | title                | description                                | url                                          | affiliate | last_crawled_at | last_crawl_status |
+      | Space Suit Evolution | This is another document on space suit     | http://www.aff.gov/topics/space-suit.html    | aff.gov   | 11/02/2011      | OK                |
+      | Space First moonwalk | This is another document on space moonwalk | http://www.aff.gov/topics/space-moonwalk.pdf | aff.gov   | 11/02/2011      | OK                |
+    And there are 20 crawled IndexedDocuments for "aff.gov"
+    And affiliate "aff.gov" has the following document collections:
+      | name   | prefixes                   | is_navigable |
+      | Topics | http://www.aff.gov/topics/ | true         |
+    When I am on aff.gov's docs search page
+    Then I should see "agency site Mobile"
+    And I should see "Please enter search term(s)"
+    When I fill in "query" with "space"
+    And I submit the search form
+    Then I should see "agency site Mobile"
+    And I should see "Space Suit Evolution"
+    And I should see "document on space suit"
+    And I should see "[PDF] Space First moonwalk"
+    And I should see "document on space moonwalk"
+    When I fill in "query" with "document"
+    And I submit the search form
+    Then I should see "crawled document"
+    When I follow "Next"
+    Then I should see "agency site Mobile"
+    And I should see "crawled document"
+
+    When I am on aff.gov's "Topics" docs search page
+    Then I should see "agency site Mobile"
+    When I fill in "query" with "document"
+    And I submit the search form
+    Then I should see "agency site Mobile"
+    And I should see "crawled document"
+    When I follow "Next"
+    Then I should see "agency site Mobile"
+    And I should see "crawled document"

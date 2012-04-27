@@ -30,18 +30,19 @@ Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   Sunspot.commit
 end
 
-Given /^there are (\d+) video news items for "([^"]*)"$/ do |count, feed_name|
+Given /^there are (\d+)( video)? news items for "([^"]*)"$/ do |count, is_video, feed_name|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
   published_at = 1.week.ago
   count.to_i.times do |index|
+    link_param = is_video ? { :v => "#{index}" } : {}
     rss_feed_url.news_items.create!(:rss_feed => rss_feed,
-                                    :link => "http://aff.gov/#{now}?v=i",
-                                    :title => "news item #{index} title for #{feed_name}",
-                                    :description => "news item #{index} description for #{feed_name}",
-                                    :guid => "#{now}-#{index}",
-                                    :published_at => published_at)
+                                    :link => "http://aff.gov/#{now}?#{link_param.to_query}",
+                                    :title => "news item #{index + 1} title for #{feed_name}",
+                                    :description => "news item #{index + 1} description for #{feed_name}",
+                                    :guid => "#{now}-#{index + 1}",
+                                    :published_at => published_at - index)
   end
   Sunspot.commit
 end

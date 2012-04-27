@@ -34,8 +34,7 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     @search_vertical = :docs
     set_affiliate_search_page_title
-    request.format = :html
-    respond_to { |format| format.html { render :action => :docs, :layout => "affiliate" } }
+    respond_to { |format| format.any(:html, :mobile) {} }
   end
 
   def news
@@ -45,8 +44,7 @@ class SearchesController < ApplicationController
     set_news_search_page_title
     set_affiliate_search_page_title
     @search_vertical = :news
-    request.format = :html
-    respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
+    respond_to { |format| format.any(:html, :mobile) {} }
   end
 
   def video_news

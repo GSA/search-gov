@@ -1,8 +1,5 @@
 .group.clear
   .row.center
     = image_tag("binglogo_#{I18n.locale}.gif")
-.mobileFooter.pad5
-  = t(:view_site_in)
-  = link_to_mobile_mode(t(:classic), "override")
-  |
-  = t(:mobile)
+
+= render :partial => 'footer'

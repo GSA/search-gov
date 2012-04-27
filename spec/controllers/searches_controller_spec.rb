@@ -365,8 +365,17 @@ describe SearchesController do
       response.should render_template 'layouts/affiliate'
     end
 
-    context "when the mobile parameter is set to true" do
-      before { get :docs, :query => "pdf", :affiliate => @affiliate.name, :m => 'true' }
+    context "when the request is from a mobile device" do
+      before do
+        iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+        request.env["HTTP_USER_AGENT"] = iphone_user_agent
+        get :docs, :query => "pdf", :affiliate => @affiliate.name
+      end
+
+      it "should set format to mobile" do
+        request.format.to_sym.should == :mobile
+      end
+
       it { should respond_with :success }
     end
 
@@ -496,8 +505,17 @@ describe SearchesController do
         response.should render_template 'layouts/affiliate'
       end
 
-      context "when the mobile parameter is set to true" do
-        before {  get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :m => 'true' }
+      context "when the request is from a mobile device" do
+        before do
+          iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+          request.env["HTTP_USER_AGENT"] = iphone_user_agent
+          get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id
+        end
+
+        it "should set format to mobile" do
+          request.format.to_sym.should == :mobile
+        end
+
         it { should respond_with :success }
       end
 

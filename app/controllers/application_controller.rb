@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-    {:m => "false"}
+    request.format && request.format.to_sym == :mobile ? { :m => 'true' } : { :m => 'false' }
   end
 
   def current_user_session
