@@ -10,7 +10,7 @@ namespace :usasearch do
       "analytics/reports/#{prefix}/#{prefix}_top_queries_#{day.strftime(date_format)}#{period == "weekly" ? "_#{period}" : ""}.csv"
     end
 
-    desc "Generate Top Queries reports (daily or monthly) on S3 from CTRL-A delimited input file containing group(e.g., affiliate or locale), query, total"
+    desc "Generate Top Queries reports (daily or monthly) on S3 from CTRL-A delimited input file containing affiliate, query, total"
     task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :date, :needs => :environment do |t, args|
       if args.file_name.nil? or args.period.nil? or args.max_entries_per_group.nil?
         Rails.logger.error "usage: rake usasearch:reports:generate_top_queries_from_file[file_name,monthly|weekly|daily,1000]"
@@ -21,8 +21,8 @@ namespace :usasearch do
         max_entries_per_group = args.max_entries_per_group.to_i
         last_group, cnt, output = nil, 0, nil
         File.open(args.file_name).each do |line|
-          group, query, total = line.chomp.split(/\001/)
-          if last_group.nil? || last_group != group
+          affiliate_name, query, total = line.chomp.split(/\001/)
+          if last_group.nil? || last_group != affiliate_name
             AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
             output = "Query,Raw Count,IP-Deduped Count\n"
             cnt = 0;
@@ -35,11 +35,16 @@ namespace :usasearch do
             else
               query_start_date = day
             end
-            daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => ['affiliate=? AND query=? AND day BETWEEN ? AND ?', group, query, query_start_date, day])
+            conditions = ['query=? AND day BETWEEN ? AND ?', query, query_start_date, day]
+            if affiliate_name != '_all_'
+              conditions.first << ' AND affiliate=?'
+              conditions << affiliate_name
+            end
+            daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => conditions)
             output << "#{query},#{total},#{daily_query_stats_total}\n"
             cnt += 1
           end
-          last_group = group
+          last_group = affiliate_name
         end
         AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
       end

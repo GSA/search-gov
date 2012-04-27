@@ -19,7 +19,5 @@
         Total Queries: #{number_with_delimiter @monthly_totals }
       %li
         Total Click Throughs: #{number_with_delimiter @total_clicks }
-  - if @affiliate
-    %p
-      = affiliate_analytics_monthly_report_link(@affiliate.name, @report_date)
-
+  %p
+    = affiliate_analytics_monthly_report_link(@affiliate_report_name, @report_date)

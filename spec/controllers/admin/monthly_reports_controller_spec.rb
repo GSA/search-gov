@@ -54,12 +54,28 @@ describe Admin::MonthlyReportsController do
         end
       end
 
+      describe "affiliate_report_name" do
+        context "when no affiliate is specified by user" do
+          it "should show data from all affiliates" do
+            get :index
+            assigns[:affiliate_report_name].should == '_all_'
+          end
+        end
+
+        context "when user selects a affiliate" do
+          it "should use that affiliate for the affiliate being shown in the pick list" do
+            get :index, :affiliate_pick => "noaa.gov"
+            assigns[:affiliate_report_name].should == "noaa.gov"
+          end
+        end
+      end
+
       describe "affiliate picklist" do
         it "should contain arrays of all affiliates ordered by name, with the fake usasearch.gov affiliate at the top" do
           get :index
           assigns[:affiliate_picklist].size.should == Affiliate.count
-          assigns[:affiliate_picklist].first.should == ["affiliate.gov","affiliate.gov"]
-          assigns[:affiliate_picklist].last.should == ["usagov","usagov"]
+          assigns[:affiliate_picklist].first.should == %w{affiliate.gov affiliate.gov}
+          assigns[:affiliate_picklist].last.should == %w{usagov usagov}
         end
       end
 
@@ -135,7 +151,7 @@ describe Admin::MonthlyReportsController do
         before do
           DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
           DailySearchModuleStat.create!(:day => Date.yesterday.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
-          DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => "someaffiliate", :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)          
+          DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => "someaffiliate", :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
         end
 
         context "when no affiliate is present" do
