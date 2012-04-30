@@ -237,7 +237,8 @@ describe Affiliates::AnalyticsController do
                 "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120401_weekly.csv",
                 "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120408_weekly.csv",
                 "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120415_weekly.csv",
-                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120422_weekly.csv"
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120422_weekly.csv",
+                "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_20120429_weekly.csv"
                 ]
             end
 
