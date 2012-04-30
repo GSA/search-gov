@@ -171,7 +171,6 @@ body
       font-size: 0.8em
 
   .pagination-and-logo
-    border-top: 1px solid #CACACA
     clear: both
     height: 35px
     margin: 1.5em 0 0
@@ -197,10 +196,10 @@ body
 
 #left_column
   float: left
-  width: 130px
+  width: 140px
   overflow: hidden
   display: inline
-  padding: 18px 20px 0 10px
+  padding: 18px 20px 0 0
   #popular_urls
     h3
       font-size: 1.1em
@@ -219,11 +218,34 @@ body
     padding: 0 0 20px 0
     list-style: none
     li
-      margin: 0 0 7px
-      a
-        font-weight: normal
-      span
-        font-weight: bold
+      margin: 0
+      width: 140px
+      &:hover
+        background-color: #F0F0F0
+        +border-top-right-radius
+        +border-bottom-right-radius
+    a, div
+      width: 118px
+    a
+      display: block
+      font-weight: normal
+      padding: 5px 4px 5px 18px
+    div
+      border-width: 4px 0 4px 4px
+      border-style: solid
+      border-top-color: transparent
+      border-bottom-color: transparent
+      font-weight: bold
+      padding: 1px 4px 1px 14px
+      cursor: pointer
+* html #left_column
+  ul.rss-feeds, ul.time-filters
+    li
+      div
+        border-width: 0 0 0 4px
+        padding: 5px 4px 5px 14px
+      a:hover
+        background-color: #F0F0F0
 
 #results
   .searchresult
