@@ -203,7 +203,6 @@ describe ApiController do
         SaytSuggestion.reindex
         Sunspot.commit
         get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'odie', :page => '2', :per_page => '10', :dc => dc.id.to_s
-        puts response.body
       end
 
       describe "response body" do
