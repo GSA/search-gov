@@ -155,11 +155,13 @@ Feature:  Administration
     And I go to the agency.gov's admin edit affiliate page
     And I check "Uses one serp"
     And I select "Gettysburg" from "Theme"
+    And I fill in "YouTube handles" with "usgovernment,whitehouse"
     And I press "Update"
     And I go to the agency.gov's admin edit affiliate page
     Then the "Uses one serp" checkbox should be checked
     And the "Theme" field should contain "elegant"
     And the "Staged theme" field should contain "default"
+    And the "YouTube handles" field should contain "usgovernment,whitehouse"
 
   Scenario: Viewing monthly reports for affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

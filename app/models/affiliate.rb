@@ -472,6 +472,14 @@ class Affiliate < ActiveRecord::Base
     wt_javascript_url.present? and wt_dcsimg_hash.present? and wt_dcssip.present?
   end
 
+  def youtube_handles_as_text
+    youtube_handles.blank? ? nil : youtube_handles.join(',')
+  end
+
+  def youtube_handles_as_text=(youtube_handles_text)
+    self.youtube_handles = youtube_handles_text.blank? ? nil : youtube_handles_text.split(',')
+  end
+
   private
 
   def batch_size
