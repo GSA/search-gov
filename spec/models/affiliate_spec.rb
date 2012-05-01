@@ -35,6 +35,8 @@ describe Affiliate do
     it { should have_many :sayt_suggestions }
     it { should have_many(:popular_urls).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
+    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
+    it { should have_many(:features) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:indexed_domains).dependent(:destroy) }
@@ -1861,45 +1863,6 @@ describe Affiliate do
     end
   end
 
-  describe "#check_domains_for_live_code" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @affiliate.site_domains.destroy_all
-      @affiliate.site_domains << SiteDomain.new(:domain => '.gov')
-      @affiliate.site_domains << SiteDomain.new(:domain => 'hasthecode.usa.gov')
-      @affiliate.site_domains << SiteDomain.new(:domain => 'alsohasthecode.usa.gov')
-      @affiliate.site_domains << SiteDomain.new(:domain => 'doesnothavethecode.usa.gov')
-      @affiliate.live_fields_json = "{\"managed_header_text\":\"hasthecodetoo.usa.gov\"}"
-      page_with_code = File.read(Rails.root.to_s + '/spec/fixtures/html/page_with_search_code.html')
-      page_without_code = File.read(Rails.root.to_s + '/spec/fixtures/html/page_without_search_code.html')
-      Kernel.stub!(:open).and_return(page_with_code, page_with_code, page_without_code, page_with_code)
-    end
-
-    it "should output a list of domains separated by semi-colons of all domains that have our search code, ignoring any TLDs" do
-      @affiliate.check_domains_for_live_code.should == 'hasthecode.usa.gov;alsohasthecode.usa.gov;hasthecodetoo.usa.gov'
-    end
-
-    context "when some kind of error occurs fetching a page" do
-      before do
-        Kernel.stub!(:open).and_raise OpenURI::HTTPError.new("400 Bad Request", nil)
-      end
-
-      it "should return an empty result" do
-        @affiliate.check_domains_for_live_code.should == ''
-      end
-    end
-
-    context "when a timeout error occurs" do
-      before do
-        Kernel.stub!(:open).and_raise Timeout::Error
-      end
-
-      it "should return an empty result" do
-        @affiliate.check_domains_for_live_code.should == ''
-      end
-    end
-  end
-
   describe "#refresh_indexed_documents(extents)" do
     before do
       @affiliate = affiliates(:basic_affiliate)
@@ -1944,7 +1907,24 @@ describe Affiliate do
       affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
     end
   end
-  
+
+  describe "#unused_features" do
+    fixtures :features
+    before do
+      @affiliate = affiliates(:power_affiliate)
+      @affiliate.features.delete_all
+    end
+
+    it "should return the collection of unused features for the affiliate" do
+      ufs = @affiliate.unused_features
+      ufs.size.should == 2
+      @affiliate.features << features(:sayt)
+      ufs = @affiliate.unused_features
+      ufs.size.should == 1
+      ufs.first.should == features(:disco)
+    end
+  end
+
   context "when updating the twitter_handle field" do
     before do
       @twitter_user = mock(Object)
@@ -1959,12 +1939,12 @@ describe Affiliate do
       @affiliate.update_attributes(:twitter_handle => 'NewHandle')
       TwitterProfile.find_by_screen_name("NewHandle").should_not be_nil
     end
-    
+
     context "when Twitter raises an error" do
       before do
         Twitter.should_receive(:user).and_raise "Some Error"
       end
-      
+
       it "should complete the save without an error" do
         @affiliate.update_attributes(:twitter_handle => 'NewHandle')
         TwitterProfile.find_by_screen_name("NewHandle").should be_nil

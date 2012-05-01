@@ -7,6 +7,7 @@ class Affiliate < ActiveRecord::Base
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
 
   has_and_belongs_to_many :users
+  has_many :features, :through => :affiliate_feature_addition
   belongs_to :affiliate_template
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
   has_many :boosted_contents, :dependent => :destroy
@@ -22,6 +23,7 @@ class Affiliate < ActiveRecord::Base
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
   has_many :daily_left_nav_stats, :dependent => :destroy
+  has_many :affiliate_feature_addition, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :dependent => :destroy
@@ -429,23 +431,6 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def check_domains_for_live_code
-    live_domains_list = []
-    domains = self.site_domains.collect{|site_domain| site_domain.domain }
-    domains << (JSON.parse(self.live_fields_json)["managed_header_text"] rescue nil) if self.live_fields_json
-    domains.compact.each do |domain|
-      domain_url = domain =~ %r{^https?://}i ? domain : "http://#{domain}"
-      begin
-        doc = Nokogiri::HTML(Kernel.open(URI.parse(domain_url))) rescue nil
-        live_domains_list << domain if doc and doc.xpath("//form[@action='http://search.usa.gov/search']").any?
-      rescue Exception => e
-        Rails.logger.warn("Trouble checking domain for live code: #{e}")
-        next
-      end
-    end
-    live_domains_list.join(';')
-  end
-
   def refresh_indexed_documents(extent)
     indexed_documents.select(:id).find_in_batches(:batch_size => batch_size) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, extent)
@@ -480,6 +465,10 @@ class Affiliate < ActiveRecord::Base
 
   def youtube_handles_as_text=(youtube_handles_text)
     self.youtube_handles = youtube_handles_text.blank? ? nil : youtube_handles_text.split(',')
+  end
+
+  def unused_features
+    features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
   end
 
   private
@@ -809,7 +798,7 @@ class Affiliate < ActiveRecord::Base
       self.is_validate_staged_header_footer = true
     end
   end
-  
+
   def associate_with_twitter_profiles
     if changed_attributes.has_key?("twitter_handle") and self.twitter_handle.present?
       twitter_user = Twitter.user(self.twitter_handle) rescue nil

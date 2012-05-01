@@ -32,7 +32,7 @@ class SitePage < ActiveRecord::Base
     queue.push start_page_en, start_page_es
     transaction do
       delete_all
-      while (queue.any?)
+      while queue.any?
         page = queue.pop
         url = base_url + page
         Rails.logger.debug "Working on #{url}"
@@ -161,8 +161,7 @@ class SitePage < ActiveRecord::Base
   def self.get_cookies(url, host)
     http = Net::HTTP.new(host, 80)
     response = http.post(url,{})
-    cookies = ""
-    cookies = response['set-cookie']
+    response['set-cookie']
   end
 
   def self.extract_page(url, headers, answer_site)

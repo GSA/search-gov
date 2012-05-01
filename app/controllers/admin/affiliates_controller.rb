@@ -4,7 +4,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.actions.exclude :delete
     config.columns = [:display_name, :name, :site_domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
-    virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer, :youtube_handles_as_text]
+    virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer, :youtube_handles_as_text, :features]
     config.columns << virtual_columns
     config.columns[:header_footer_css].form_ui = :textarea
     config.columns[:staged_header_footer_css].form_ui = :textarea
@@ -22,7 +22,8 @@ class Admin::AffiliatesController < Admin::AdminController
                              :header, :staged_header, :footer, :staged_footer,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
-                             :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source, :sitemaps]
+                             :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source,
+                             :sitemaps, :affiliate_feature_addition]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :affiliate_template, :locale]
     config.columns[:staged_search_results_page_title].label = "Staged search results page title"
@@ -32,6 +33,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:affiliate_template].form_ui= :select
     config.columns[:staged_affiliate_template].form_ui= :select
     config.columns[:theme].form_ui = :select
+    config.columns[:features].associated_limit = nil
     config.columns[:staged_theme].form_ui = :select
     theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }

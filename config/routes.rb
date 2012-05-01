@@ -155,6 +155,8 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
     resources :sitemaps do as_routes end
+    resources :features do as_routes end
+    resources :affiliate_feature_additions do as_routes end
     resources :help_links do as_routes end
     resources :search_module_stats, :only => :index
     resources :monthly_reports, :only => :index

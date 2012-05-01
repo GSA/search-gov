@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501183130) do
+ActiveRecord::Schema.define(:version => 20120502160128) do
+
+  create_table "affiliate_feature_additions", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.integer  "feature_id",   :null => false
+    t.datetime "created_at",   :null => false
+  end
+
+  add_index "affiliate_feature_additions", ["affiliate_id", "feature_id"], :name => "index_affiliate_feature_additions_on_affiliate_id_and_feature_id", :unique => true
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -331,6 +339,15 @@ ActiveRecord::Schema.define(:version => 20120501183130) do
   end
 
   add_index "featured_collections", ["affiliate_id"], :name => "index_featured_collections_on_affiliate_id"
+
+  create_table "features", :force => true do |t|
+    t.string   "internal_name", :null => false
+    t.string   "display_name",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "features", ["internal_name"], :name => "index_features_on_internal_name"
 
   create_table "food_recalls", :force => true do |t|
     t.integer  "recall_id"
