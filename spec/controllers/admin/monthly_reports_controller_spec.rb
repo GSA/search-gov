@@ -127,21 +127,22 @@ describe Admin::MonthlyReportsController do
 
       describe "monthly_totals" do
         before do
-          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :total_queries => 100)
-          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday.yesterday, :total_queries => 100)
-          DailyUsageStat.create!(:affiliate => "someaffiliate", :day => Date.yesterday, :total_queries => 100)
+          date = Date.parse('4/13/2012')
+          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => date, :total_queries => 100)
+          DailyUsageStat.create!(:affiliate => @affiliate.name, :day => date.yesterday, :total_queries => 100)
+          DailyUsageStat.create!(:affiliate => "someaffiliate", :day => date.yesterday, :total_queries => 100)
         end
 
         context "when no affiliate is present" do
           it "should return an aggregate of all affiliates for that date range" do
-            get :index
+            get :index, :date => {:year => "2012", :month => "4"}
             assigns[:monthly_totals].should == 300
           end
         end
 
         context "when an affiliate is present" do
           it "should return the affiliate's monthly total" do
-            get :index, :affiliate_pick => @affiliate.name
+            get :index, :affiliate_pick => @affiliate.name, :date => {:year => "2012", :month => "4"}
             assigns[:monthly_totals].should == 200
           end
         end
@@ -149,21 +150,22 @@ describe Admin::MonthlyReportsController do
 
       describe "total clicks" do
         before do
-          DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
-          DailySearchModuleStat.create!(:day => Date.yesterday.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
-          DailySearchModuleStat.create!(:day => Date.yesterday, :locale => 'en', :affiliate_name => "someaffiliate", :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
+          date = Date.parse('4/13/2012')
+          DailySearchModuleStat.create!(:day => date, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
+          DailySearchModuleStat.create!(:day => date.yesterday, :locale => 'en', :affiliate_name => @affiliate.name, :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
+          DailySearchModuleStat.create!(:day => date, :locale => 'en', :affiliate_name => "someaffiliate", :vertical => 'TEST', :module_tag => 'TEST', :clicks => 100, :impressions => 100)
         end
 
         context "when no affiliate is present" do
           it "should return a total of all the affiliates for that date range" do
-            get :index
+            get :index, :date => {:year => "2012", :month => "4"}
             assigns[:total_clicks].should == 300
           end
         end
 
         context "when an affiliate is specified" do
           it "should return the affiliate's total clicks" do
-            get :index, :affiliate_pick => @affiliate.name
+            get :index, :affiliate_pick => @affiliate.name, :date => {:year => "2012", :month => "4"}
             assigns[:total_clicks].should == 200
           end
         end
