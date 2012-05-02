@@ -69,7 +69,7 @@ describe "Twitter rake tasks" do
         end
         
         it "should delete a status if a delete message is received" do
-          Tweet.create!(:twitter_profile_id => TwitterProfile.first.id, :tweet_id => 1234, :tweet_text => 'DELETE ME.')
+          Tweet.create!(:twitter_profile_id => TwitterProfile.first.id, :tweet_id => 1234, :tweet_text => 'DELETE ME.', :published_at => Time.now)
           @stream.stub!(:each_item).and_yield('{ "delete": { "status": { "id": 1234, "user_id": 3 } } }')
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
