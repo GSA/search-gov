@@ -251,7 +251,7 @@ describe Affiliates::AnalyticsController do
               @weekly_filenames.each do |filename|
                 AWS::S3::S3Object.should_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
               end
-              get :monthly_reports, :affiliate_id => @user.affiliates.first.id
+              get :monthly_reports, :affiliate_id => @user.affiliates.first.id, :date => {:year => "2012", :month => "4"}
               response.body.should contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
               response.body.should contain(/Download top queries for the week of 2012-04-01/)
               response.body.should contain(/Download top queries for the week of 2012-04-08/)
@@ -268,7 +268,7 @@ describe Affiliates::AnalyticsController do
               @weekly_filenames.each do |filename|
                 AWS::S3::S3Object.should_not_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true)
               end
-              get :monthly_reports, :affiliate_id => @user.affiliates.first.id
+              get :monthly_reports, :affiliate_id => @user.affiliates.first.id, :date => {:year => "2012", :month => "4"}
               response.body.should_not contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
               response.body.should_not contain(/Download top queries for the week of 2012-04-01/)
               response.body.should_not contain(/Download top queries for the week of 2012-04-08/)
