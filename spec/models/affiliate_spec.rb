@@ -1959,5 +1959,17 @@ describe Affiliate do
       @affiliate.update_attributes(:twitter_handle => 'NewHandle')
       TwitterProfile.find_by_screen_name("NewHandle").should_not be_nil
     end
+    
+    context "when Twitter raises an error" do
+      before do
+        Twitter.should_receive(:user).and_raise "Some Error"
+      end
+      
+      it "should complete the save without an error" do
+        @affiliate.update_attributes(:twitter_handle => 'NewHandle')
+        TwitterProfile.find_by_screen_name("NewHandle").should be_nil
+        @affiliate.twitter_handle.should == 'NewHandle'
+      end
+    end
   end
 end

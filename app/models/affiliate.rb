@@ -812,9 +812,11 @@ class Affiliate < ActiveRecord::Base
   
   def associate_with_twitter_profiles
     if changed_attributes.has_key?("twitter_handle") and self.twitter_handle.present?
-      twitter_user = Twitter.user(self.twitter_handle)
-      twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name)
-      self.twitter_profiles << twitter_profile
+      twitter_user = Twitter.user(self.twitter_handle) rescue nil
+      if twitter_user
+        twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name)
+        self.twitter_profiles << twitter_profile
+      end
     end
   end
 end
