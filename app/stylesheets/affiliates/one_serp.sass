@@ -32,12 +32,15 @@ body
 #managed_header
   +clearfix
   font-family: Georgia, serif
+  min-width: 960px
+  text-align: center
   img
     border: 0
 
 .managed-header-footer-links-wrapper
   border-top: 1px solid #CACACA
   border-bottom: 1px solid #CACACA
+  min-width: 960px
   text-align: center
 
 .managed ul.managed-header-footer-links
@@ -70,26 +73,26 @@ body
 #search
   +clearfix
   font-size: 0.75em
-  margin: auto
   text-align: left
   width: 960px
   img
     border: 0
   h1
     +hide-text
-    line-height: 0
+    height: 0
     margin: 0
     padding: 0
+    width: 0
   .hide
     display: none
   #search_box
     +clearfix
     border-bottom: 1px solid #CACACA
-    padding: 0 10px 10px 0
+    padding: 0 0 10px 0
   .left-nav-label-wrapper
     float: left
-    padding: 0 0 0 10px
-    width: 150px
+    padding: 0 0 0 18px
+    width: 142px
     h3
       margin: 0
   #left_nav_label
@@ -107,6 +110,7 @@ body
     +inline-block
   .did-you-mean, .search-all-sites-suggestion
     margin: 0 0 10px 0
+    font-size: 1em
     padding-left: $results-padding-size
   .noresults
     margin: 0
@@ -114,10 +118,8 @@ body
 
 #search_form
   +clearfix
-  +inline-block
   padding: 0 0 0 160px
   margin: 0 0 15px 0
-  width: 660px
   #search_query
     +border-radius
     float: left
@@ -127,13 +129,14 @@ body
       size: 13px
       weight: normal
     height: 20px
+    margin-right: 8px
     outline: 0
     padding: 4px 0 4px $results-padding-size - 1
     width: 545px
 
   #search_button
     +border-radius
-    float: right
+    float: left
     font:
       size: 13px
       weight: bold
@@ -199,7 +202,7 @@ body
   width: 140px
   overflow: hidden
   display: inline
-  padding: 18px 20px 0 0
+  padding: 3px 20px 0 0
   #popular_urls
     h3
       font-size: 1.1em
@@ -215,7 +218,7 @@ body
   ul.rss-feeds, ul.time-filters
     font-size: 1.1em
     margin: 0
-    padding: 0 0 20px 0
+    padding: 15px 0
     list-style: none
     li
       margin: 0
@@ -230,6 +233,7 @@ body
       display: block
       font-weight: normal
       padding: 5px 4px 5px 18px
+      text-decoration: none
     div
       border-width: 4px 0 4px 4px
       border-style: solid
@@ -238,6 +242,9 @@ body
       font-weight: bold
       padding: 1px 4px 1px 14px
       cursor: pointer
+
+  ul.time-filters
+    border-top: 1px solid #CACACA
 * html #left_column
   ul.rss-feeds, ul.time-filters
     li
@@ -552,5 +559,6 @@ body
         style: solid
         width: 1px
       padding: 0 6px 0 8px
+      text-decoration: none
       &.first
         border-left-width: 0
