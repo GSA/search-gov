@@ -4,7 +4,7 @@ class RssFeedUrl < ActiveRecord::Base
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
-  ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
+  ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:updated", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
 
   belongs_to :rss_feed
