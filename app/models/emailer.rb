@@ -23,6 +23,12 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def feature_admonishment(user, affiliates_with_unused_features)
+    setup_email(user.email)
+    @subject += "Getting started with USASearch features"
+    @affiliates_with_unused_features = affiliates_with_unused_features
+  end
+
   def new_user_email_verification(user)
     setup_email(user.email)
     @subject += 'Email Verification'

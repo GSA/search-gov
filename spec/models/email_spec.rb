@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
-  fixtures :affiliates, :report_recipients, :users
+  fixtures :affiliates, :report_recipients, :users, :features
 
   describe "#objectionable_content_alert" do
     before(:all) do
@@ -43,16 +43,36 @@ describe Emailer do
     end
   end
 
-  describe "#new_feature_adoption_to_admin" do
-    fixtures :features
+  describe "#feature_admonishment(user, affiliates_with_unused_features)" do
+    let(:user) { users(:another_affiliate_manager) }
+    before do
+      AffiliateFeatureAddition.delete_all
+      user.affiliates.first.features << Feature.first
+      @email = Emailer.feature_admonishment(user, user.affiliates).deliver
+    end
 
+    it "should be sent to the user's email" do
+      @email.should deliver_to(user.email)
+    end
+
+    it "should have 'Getting started with USASearch features' as the subject" do
+      @email.should have_subject(/Getting started with USASearch features/)
+    end
+
+    it "should contain lists of unadopted features for each affiliate that has any" do
+      @email.should have_body_text(/I noticed you registered for a new USASearch account a few days ago so I wanted to follow up to see if you have any questions/)
+      @email.should have_body_text(/laksjdflkjasldkjfalskdjf.gov:\nSAYT/)
+      @email.should have_body_text(/another.gov:\nDiscovery Tag\nSAYT/)
+    end
+  end
+
+  describe "#new_feature_adoption_to_admin" do
     before do
       AffiliateFeatureAddition.delete_all
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:disco))
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:sayt))
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:sayt))
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:disco), :created_at => 2.days.ago)
-      @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')
       @email = Emailer.new_feature_adoption_to_admin.deliver
     end
 

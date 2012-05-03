@@ -18,5 +18,15 @@ namespace :usasearch do
     task :email_admin_about_new_feature_usage => :environment do
       Emailer.new_feature_adoption_to_admin.deliver rescue nil
     end
+
+    desc "Email newish users about features they haven't yet implemented"
+    task :user_feature_reminder, :created_days_back, :needs => :environment do |t, args|
+      args.with_defaults(:created_days_back => 3)
+      target_day = args.created_days_back.to_i.days.ago
+      User.where(["created_at between ? and ?", target_day.beginning_of_day, target_day.end_of_day]).each do |user|
+        affiliates_with_unused_features = user.affiliates.select { |affiliate| affiliate.unused_features.any? }
+        Emailer.feature_admonishment(user, affiliates_with_unused_features).deliver if affiliates_with_unused_features.any?
+      end
+    end
   end
 end

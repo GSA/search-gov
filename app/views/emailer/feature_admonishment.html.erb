@@ -1,0 +1,23 @@
+I noticed you registered for a new USASearch account a few days ago so I wanted to follow up to see if you have any questions. Also, if you haven't already, be sure to check out our How To Manual.
+
+http://usasearch.howto.gov/tagged/how-to
+
+I also wanted to point out some features that I see you haven't set up in the Admin Center.
+
+<% @affiliates_with_unused_features.each do |affiliate| %>
+<%= affiliate.name %>:
+<% affiliate.unused_features.each do |feature| %>
+<%= feature.display_name %>
+<% end -%>
+
+<% end -%>
+
+Our team looks forward to working with you to help improve searchers' experience on your website.
+
+Regards,
+Ammie
+
+USASearch Program
+General Services Administration
+202-505-5315 | USASearch@gsa.gov
+http://usasearch.howto.gov
