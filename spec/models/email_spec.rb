@@ -43,6 +43,35 @@ describe Emailer do
     end
   end
 
+  describe "#new_feature_adoption_to_admin" do
+    fixtures :features
+
+    before do
+      AffiliateFeatureAddition.delete_all
+      AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:disco))
+      AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:sayt))
+      AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:sayt))
+      AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:disco), :created_at => 2.days.ago)
+      @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')
+      @email = Emailer.new_feature_adoption_to_admin.deliver
+    end
+
+    it "should be sent to the admin email" do
+      @email.should deliver_to('usagov@searchsi.com')
+    end
+
+    it "should have 'Features adopted by customers yesterday' in the subject" do
+      @email.should have_subject(/Features adopted by customers yesterday/)
+    end
+
+    it "should contain lists of newly adopted features for each affiliate that has any" do
+      @email.should have_body_text("Yesterday, these customers turned on some features:")
+      @email.should have_body_text("NPS Site (nps.gov):\nDiscovery Tag\nSAYT")
+      @email.should have_body_text("Noaa Site (noaa.gov):\nSAYT")
+    end
+
+  end
+
   describe "#new_user_email_verification" do
     before do
       @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')

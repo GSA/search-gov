@@ -13,5 +13,10 @@ namespace :usasearch do
         end
       end
     end
+
+    desc "Email admin about new feature usage from yesterday"
+    task :email_admin_about_new_feature_usage => :environment do
+      Emailer.new_feature_adoption_to_admin.deliver rescue nil
+    end
   end
 end

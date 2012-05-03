@@ -53,5 +53,34 @@ describe "Features-related rake tasks" do
         end
       end
     end
+
+    describe "usasearch:features:email_admin_about_new_feature_usage" do
+      before do
+        @task_name = "usasearch:features:email_admin_about_new_feature_usage"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when there is info to email" do
+        it "should call the Emailer's new feature additions method" do
+          emailer = mock(Emailer)
+          Emailer.should_receive(:new_feature_adoption_to_admin).and_return emailer
+          emailer.should_receive(:deliver)
+          @rake[@task_name].invoke
+        end
+      end
+
+      context "when there is no info to email" do
+        before do
+          AffiliateFeatureAddition.delete_all
+        end
+
+        it "should handle the nil email" do
+          @rake[@task_name].invoke
+        end
+      end
+    end
   end
 end

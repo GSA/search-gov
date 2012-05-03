@@ -1,0 +1,10 @@
+Yesterday, these customers turned on some features:
+
+<% @affiliate_feature_additions_grouping.each do |afa_group| %>
+<%= afa_group[1].first.affiliate.display_name %> (<%= afa_group[1].first.affiliate.name %>):
+<% afa_group[1].each do |afa| %>
+<%= afa.feature.display_name %>
+<% end -%>
+
+<% end -%>
+

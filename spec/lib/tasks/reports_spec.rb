@@ -6,8 +6,6 @@ describe "Report generation rake tasks" do
     Rake.application = @rake
     Rake.application.rake_require "lib/tasks/reports"
     Rake::Task.define_task(:environment)
-    @emailer = mock(Emailer)
-    @emailer.stub!(:deliver).and_return true
   end
 
   describe "usasearch:reports" do

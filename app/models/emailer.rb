@@ -14,6 +14,15 @@ class Emailer < ActionMailer::Base
     @user = user
   end
 
+  def new_feature_adoption_to_admin
+    affiliate_feature_additions_grouping = AffiliateFeatureAddition.where(["created_at >= ?", Date.yesterday.beginning_of_day]).group_by(&:affiliate_id)
+    if affiliate_feature_additions_grouping.any?
+      setup_email("usagov@searchsi.com")
+      @subject += "Features adopted by customers yesterday"
+      @affiliate_feature_additions_grouping = affiliate_feature_additions_grouping
+    end
+  end
+
   def new_user_email_verification(user)
     setup_email(user.email)
     @subject += 'Email Verification'
@@ -34,9 +43,9 @@ class Emailer < ActionMailer::Base
 
   def mobile_feedback(email, message)
     @recipients = I18n.t(:mobile_feedback_contact_recipients)
-    @from       = email
-    @subject    = I18n.t(:mobile_feedback_subject)
-    @sent_on    = Time.now
+    @from = email
+    @subject = I18n.t(:mobile_feedback_subject)
+    @sent_on = Time.now
     @headers['Content-Type'] = "text/plain; charset=iso-8859-1; format=flowed"
     charset "iso-8859-1"
     @message = message
@@ -89,9 +98,9 @@ class Emailer < ActionMailer::Base
 
   def setup_email(recipients)
     @recipients = recipients
-    @from       = APP_EMAIL_ADDRESS
-    @subject    = "[USASearch] "
-    @sent_on    = Time.now
+    @from = APP_EMAIL_ADDRESS
+    @subject = "[USASearch] "
+    @sent_on = Time.now
     @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
   end
 end
