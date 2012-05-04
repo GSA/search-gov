@@ -1,6 +1,6 @@
 require 'spec/spec_helper'
 describe "searches/index.html.haml" do
-  fixtures :affiliates
+  fixtures :affiliates, :image_search_labels, :navigations
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)

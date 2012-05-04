@@ -16,7 +16,7 @@ class Affiliate < ActiveRecord::Base
   has_many :popular_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
-  has_many :rss_feeds, :order => 'position ASC, ID ASC', :dependent => :destroy
+  has_many :rss_feeds, :order => 'rss_feeds.name ASC, rss_feeds.id ASC', :dependent => :destroy
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
@@ -26,8 +26,11 @@ class Affiliate < ActiveRecord::Base
   has_many :affiliate_feature_addition, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
-  has_many :document_collections, :dependent => :destroy
+  has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_and_belongs_to_many :twitter_profiles
+  has_one :image_search_label, :dependent => :destroy
+  has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
+
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -89,6 +92,7 @@ class Affiliate < ActiveRecord::Base
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
+  accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds, :reject_if => proc { |a| a[:name].blank? and a[:rss_feed_urls_attributes].present? && a[:rss_feed_urls_attributes]['0'][:url].blank? }
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a['connected_affiliate_id'].blank? and a['label'].blank? }
@@ -742,7 +746,6 @@ class Affiliate < ActiveRecord::Base
 
   def set_search_labels
     self.default_search_label = I18n.translate(:everything, :locale => locale) if default_search_label.blank?
-    self.image_search_label = I18n.translate(:images, :locale => locale) if image_search_label.blank?
   end
 
   def strip_text_columns

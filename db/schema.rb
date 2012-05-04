@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502160128) do
+ActiveRecord::Schema.define(:version => 20120504055901) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20120502160128) do
     t.boolean  "staged_uses_one_serp"
     t.integer  "fetch_concurrency",                                               :default => 1,               :null => false
     t.string   "default_search_label",                      :limit => 20,                                      :null => false
-    t.string   "image_search_label",                        :limit => 20,                                      :null => false
+    t.string   "old_image_search_label",                    :limit => 20
     t.boolean  "is_time_filter_enabled",                                          :default => true
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
@@ -381,6 +381,15 @@ ActiveRecord::Schema.define(:version => 20120502160128) do
 
   add_index "help_links", ["action_name"], :name => "index_help_links_on_action_name"
 
+  create_table "image_search_labels", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "name",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "image_search_labels", ["affiliate_id"], :name => "index_image_search_labels_on_affiliate_id", :unique => true
+
   create_table "indexed_documents", :force => true do |t|
     t.text     "title"
     t.text     "description"
@@ -512,6 +521,18 @@ ActiveRecord::Schema.define(:version => 20120502160128) do
   end
 
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
+
+  create_table "navigations", :force => true do |t|
+    t.integer  "affiliate_id",                      :null => false
+    t.integer  "navigable_id",                      :null => false
+    t.string   "navigable_type",                    :null => false
+    t.integer  "position",       :default => 100,   :null => false
+    t.boolean  "is_active",      :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "navigations", ["affiliate_id"], :name => "index_navigations_on_affiliate_id"
 
   create_table "news_items", :force => true do |t|
     t.integer  "rss_feed_id",     :null => false

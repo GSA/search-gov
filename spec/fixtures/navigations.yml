@@ -1,0 +1,89 @@
+usagov_affiliate_image_navigation:
+  affiliate: :usagov_affiliate
+  navigable: usagov_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+
+gobiernousa_affiliate_image_navigation:
+  affiliate: :gobiernousa_affiliate
+  navigable: gobiernousa_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+es_white_house_blog_navigation:
+  affiliate: :gobiernousa_affiliate
+  navigable: es_white_house_blog(RssFeed)
+  is_active: true
+  position: 0
+
+power_affiliate_image_navigation:
+  affiliate: power_affiliate
+  navigable: power_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+
+basic_affiliate_image_navigation:
+  affiliate: :basic_affiliate
+  navigable: basic_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+white_house_blog_navigation:
+  affiliate: :basic_affiliate
+  navigable: white_house_blog(RssFeed)
+  is_active: true
+  position: 1
+white_house_press_gallery_navigation:
+  affiliate: :basic_affiliate
+  navigable: white_house_press_gallery(RssFeed)
+  is_active: true
+  position: 2
+basic_navigation:
+  affiliate: :basic_affiliate
+  navigable: basic(RssFeed)
+  is_active: true
+  position: 3
+atom_feed_navigation:
+  affiliate: :basic_affiliate
+  navigable: atom_feed(RssFeed)
+  is_active: true
+  position: 4
+not_navigable_navigation:
+  affiliate: :basic_affiliate
+  navigable: not_navigable(RssFeed)
+  is_active: false
+  position: 5
+sample_navigation:
+  affiliate: :basic_affiliate
+  navigable: sample(DocumentCollection)
+  is_active: true
+  position: 10
+
+another_affiliate_image_navigation:
+  affiliate: :another_affiliate
+  navigable: another_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+another_affiliate_rss_navigation:
+  affiliate: :another_affiliate
+  navigable: another(RssFeed)
+  is_active: true
+  position: 3
+
+admin_affiliate_image_navigation:
+  affiliate: :admin_affiliate
+  navigable: admin_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+
+non_existant_affiliate_image_navigation:
+  affiliate: :non_existant_affiliate
+  navigable: non_existant_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+
+spanish_affiliate_image_navigation:
+  affiliate: :spanish_affiliate
+  navigable: spanish_affiliate_image_search_label(ImageSearchLabel)
+  is_active: true
+  position: 0
+
+

@@ -7,13 +7,15 @@ class RssFeed < ActiveRecord::Base
   belongs_to :affiliate
   has_many :rss_feed_urls, :order => 'url ASC', :dependent => :destroy
   has_many :news_items, :order => "published_at DESC"
-  scope :navigable_only, where(:is_navigable => true)
+  has_one :navigation, :as => :navigable, :dependent => :destroy
+  scope :navigable_only, joins(:navigation).where(:navigations => { :is_active => true } )
   scope :govbox_enabled, where(:shown_in_govbox => true)
   scope :managed, where(:is_managed => true)
   scope :videos, where(:is_video => true)
   scope :non_videos, where(:is_video => false)
   attr_protected :is_managed, :is_video
   accepts_nested_attributes_for :rss_feed_urls, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? and a[:url].blank? }
+  accepts_nested_attributes_for :navigation
 
   def freshen(ignore_older_items = true)
     rss_feed_urls.each { |u| u.freshen(ignore_older_items) }

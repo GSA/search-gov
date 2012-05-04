@@ -159,16 +159,14 @@ describe Affiliate do
         @duplicate_affiliate.save.should be_false
       end
 
-      it "should populate search labels for English site" do
+      it "should populate default search label for English site" do
         affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
         affiliate.default_search_label.should == 'Everything'
-        affiliate.image_search_label.should == 'Images'
       end
 
-      it "should populate search labels for Spanish site" do
+      it "should populate default search labels for Spanish site" do
         affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
         affiliate.default_search_label.should == 'Todo'
-        affiliate.image_search_label.should == 'Imágenes'
       end
     end
   end
@@ -418,19 +416,15 @@ describe Affiliate do
     it "should populate search labels for English site" do
       english_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
       english_affiliate.default_search_label = ''
-      english_affiliate.image_search_label = ''
       english_affiliate.save!
       english_affiliate.default_search_label.should == 'Everything'
-      english_affiliate.image_search_label.should == 'Images'
     end
 
     it "should populate search labels for Spanish site" do
       spanish_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
       spanish_affiliate.default_search_label = ''
-      spanish_affiliate.image_search_label = ''
       spanish_affiliate.save!
       spanish_affiliate.default_search_label.should == 'Todo'
-      spanish_affiliate.image_search_label.should == 'Imágenes'
     end
 
     it "should strip text columns" do
@@ -532,6 +526,9 @@ describe Affiliate do
     end
 
     it "should ignore rss_feeds_attributes with blank name or blank rss_feed_urls_attributes" do
+      rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+      Kernel.should_receive(:open).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
+
       rss_feeds_attributes = { '0' => { :name => '', :rss_feed_urls_attributes => { '0' => { :url => '' } } },
                                '1' => { :name => 'Blog', :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } } } }
       affiliate = Affiliate.create!(:display_name => 'site with blank RSS Feed')

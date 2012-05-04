@@ -2,6 +2,9 @@ class AffiliateObserver < ActiveRecord::Observer
   observe :affiliate
 
   def after_create(affiliate)
+    image_search_label = affiliate.build_image_search_label
+    image_search_label.save!
+
     unless affiliate.youtube_handles.blank?
       youtube_handles = generate_youtube_urls affiliate.youtube_handles
       create_video_rss_feed(affiliate, youtube_handles)

@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe Affiliates::RssFeedsController do
-  fixtures :affiliates, :users, :rss_feeds
+  fixtures :affiliates, :users, :rss_feeds, :rss_feed_urls, :navigations
   before do
     activate_authlogic
   end

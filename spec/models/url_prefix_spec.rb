@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe UrlPrefix do
-  fixtures :document_collections, :url_prefixes
+  fixtures :document_collections, :url_prefixes, :navigations
 
   before do
     @valid_attributes = {

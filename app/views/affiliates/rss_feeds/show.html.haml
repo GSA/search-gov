@@ -22,7 +22,7 @@
         %td= @rss_feed.shown_in_govbox? ? 'Yes' : 'No'
       %tr
         %td.name Show in sidebar
-        %td= @rss_feed.is_navigable? ? 'Yes' : 'No'
+        %td= @rss_feed.navigation.is_active? ? 'Yes' : 'No'
 
   %table
     %colgroup

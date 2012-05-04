@@ -77,8 +77,8 @@ Feature: Document Collections
     Then I should see "Name can't be blank"
 
     When I follow "Sidebar"
-    Then the "Is document collection 0 navigable" checkbox should not be checked
-    When I check "Is document collection 0 navigable"
+    Then the "Is Document Collection 1 navigable" checkbox should not be checked
+    When I check "Is Document Collection 1 navigable"
     And I press "Save"
     Then I should see "Site was successfully updated."
 

@@ -4,8 +4,7 @@
     .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
     .summary-wrapper= render 'shared/results_summary', :affiliate => @affiliate, :search => @search, :search_options => @search_options, :search_vertical => @search_vertical
 #left_column
-  - if @affiliate.rss_feeds.navigable_only.present? or @affiliate.is_image_search_enabled? or @affiliate.document_collections.navigable_only.present?
-    = render "shared/affiliate_vertical_navigation"
+  = render 'shared/affiliate_vertical_navigation'
   &nbsp;
 #results
   = render "shared/search", :path => search_path unless @affiliate.uses_one_serp?

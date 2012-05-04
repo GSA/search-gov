@@ -1,16 +1,15 @@
 Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
-    is_navigable = hash[:is_navigable]
     shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
     rss_feed = affiliate.rss_feeds.new(:name => hash[:name],
-                                       :is_navigable => is_navigable,
-                                       :shown_in_govbox => shown_in_govbox,
-                                       :position => hash[:position])
+                                       :shown_in_govbox => shown_in_govbox )
     rss_feed.rss_feed_urls.build(:url => hash[:url],
                                  :last_crawled_at => hash[:last_crawled_at],
                                  :last_crawl_status => hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS)
     rss_feed.save!
+    rss_feed.navigation.update_attributes!(:is_active => hash[:is_navigable] || false,
+                                           :position => hash[:position] || 100)
   end
   NewsItem.destroy_all
 end

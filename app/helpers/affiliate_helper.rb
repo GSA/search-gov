@@ -241,4 +241,16 @@ module AffiliateHelper
     end
     content_tag(:ul, content.join("\n").html_safe)
   end
+
+  def link_to_navigable(navigable)
+    case navigable.class.name
+    when 'DocumentCollection' then link_to('Collection', [navigable.affiliate, navigable])
+    when 'RssFeed' then link_to('RSS', [navigable.affiliate, navigable])
+    when 'ImageSearchLabel' then 'Bing'
+    end
+  end
+
+  def render_navigable_field_name_for(navigation)
+    navigation.navigable.instance_of?(ImageSearchLabel) ? navigation.navigable_type.underscore : navigation.navigable_type.underscore.pluralize
+  end
 end

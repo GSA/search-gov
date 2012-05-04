@@ -1,5 +1,5 @@
 .column-2
-  .side-note-image= image_tag('/images/side_notes/sidebar_1.png')
+  .side-note-image= image_tag('side_notes/sidebar_1.png')
 .column-1
   .left-nav-label
     %h2 Label
@@ -29,41 +29,23 @@
               = sidebar_form.text_field :default_search_label, :maxlength => 20
             %td.source= @affiliate.display_results_source
             %td.actions
-          %tr.row-item.nodrag.nodrop
-            %td.name
-              = sidebar_form.label :image_search_label, nil, :class => 'hide'
-              = sidebar_form.text_field :image_search_label, :maxlength => 20
-            %td.source Bing
-            %td.actions
-              = sidebar_form.label :is_image_search_enabled, nil, :class => 'hide'
-              = sidebar_form.check_box :is_image_search_enabled
-          - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
-            = sidebar_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
-              %tr.row-item.rss-feed
-                %td.name.draggable
-                  = rss_feed_form.hidden_field :position, { :value => index, :class => 'position' }
-                  = rss_feed_form.label :name, "RSS feed #{index}", :class => 'hide'
-                  = rss_feed_form.text_field :name
-                %td.source= link_to 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
-                %td.actions
-                  = rss_feed_form.label :is_navigable, "Is RSS feed #{index} navigable", :class => 'hide'
-                  = rss_feed_form.check_box :is_navigable
-          - @affiliate.document_collections.each_with_index do |collection, index|
-            = sidebar_form.fields_for :document_collections, collection do |collection_form|
-              %tr.row-item.collection
-                %td.name.draggable
-                  = collection_form.hidden_field :position, { :value => index, :class => 'position' }
-                  = collection_form.label :name, "Document collection #{index}", :class => 'hide'
-                  = collection_form.text_field :name
-                %td.source= link_to 'Collection', affiliate_document_collection_path(@affiliate, collection)
-                %td.actions
-                  = collection_form.label :is_navigable, "Is document collection #{index} navigable", :class => 'hide'
-                  = collection_form.check_box :is_navigable
+          - @affiliate.navigations.each_with_index do |navigation, index|
+            = sidebar_form.fields_for :"#{render_navigable_field_name_for navigation}", navigation.navigable do |navigable_form|
+              = navigable_form.fields_for :navigation do |navigation_form|
+                %tr.row-item
+                  %td.name.draggable
+                    = navigation_form.hidden_field :position, { :value => index, :class => 'position' }
+                    = navigable_form.label :name, "#{navigation.navigable_type.titleize} #{index}", :class => 'hide'
+                    = navigable_form.text_field :name
+                  %td.source= link_to_navigable(navigation.navigable)
+                  %td.actions
+                    = navigation_form.label :is_active, "Is #{navigation.navigable_type.titleize} #{index} navigable", :class => 'hide'
+                    = navigation_form.check_box :is_active
 
 .by-time-period
   %h2 By time period
   .column-2
-    .side-note-image= image_tag('/images/side_notes/sidebar_2.png')
+    .side-note-image= image_tag('side_notes/sidebar_2.png')
   .column-1
     %p By default, searchers may narow results for all #{link_to 'RSS feeds', affiliate_rss_feeds_path(@affiliate)} by time period.
     = sidebar_form.check_box :is_time_filter_enabled

@@ -181,10 +181,10 @@ Feature: Affiliate clients
 
     When I follow "Sidebar"
     Then the "Default search label" field should contain "Everything"
-    And the "Image search label" field should contain "Images"
-    And the "Is image search enabled" checkbox should be checked
-    And the "RSS feed 0" field should contain "Recalls Feed"
-    And the "Is RSS feed 0 navigable" checkbox should not be checked
+    And the "Image Search Label 0" field should contain "Images"
+    And the "Is Image Search Label 0 navigable" checkbox should be checked
+    And the "Rss Feed 1" field should contain "Recalls Feed"
+    And the "Is Rss Feed 1 navigable" checkbox should not be checked
     And the "Show by time period module" checkbox should be checked
 
     When I follow "Results modules"
@@ -2348,8 +2348,8 @@ Feature: Affiliate clients
       | aff site       | aff.gov          | aff@bar.gov   | John Bar     | bing+odie      |
       | bing only site | bingonly.aff.gov | aff@bar.gov   | John Bar     | bing           |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+      | name  | url                                  | shown_in_govbox | is_navigable |
+      | Press | http://www.whitehouse.gov/feed/press | true            | true         |
     And affiliate "aff.gov" has the following document collections:
       | name | prefixes             | is_navigable |
       | FAQs | http://aff.gov/faqs/ | true         |
@@ -2364,7 +2364,10 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
     And I follow "RSS" in the page content
-    Then I should see "Press"
+    Then I should see the following table rows:
+      | Name            | Press |
+      | Show as GovBox  | Yes   |
+      | Show in sidebar | Yes   |
     And I should see "www.whitehouse.gov/feed/press"
 
     When I go to the "aff site" affiliate page
@@ -2393,16 +2396,16 @@ Feature: Affiliate clients
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | position | is_navigable |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false        |
-      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true         |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true         |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | 5        | false        |
+      | Press         | http://www.whitehouse.gov/feed/press               | 1        | true         |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 3        | true         |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | position | is_navigable |
-      | Topics | http://aff.gov/topics/ | 2        | true         |
-      | FAQs   | http://aff.gov/faqs/   | 0        | true         |
-      | Help   | http://aff.gov/help/   | 1        | false        |
+      | Topics | http://aff.gov/topics/ | 4        | true         |
+      | FAQs   | http://aff.gov/faqs/   | 2        | true         |
+      | Help   | http://aff.gov/help/   | 6        | false        |
     When I go to aff.gov's search page
-    Then I should see "Everything Images Press Photo Gallery FAQs Topics" in the left column
+    Then I should see "Everything Images Press FAQs Photo Gallery Topics" in the left column
     And I should not see "Hide Me" in the left column
     When I follow "Press" in the left column
     Then I should see "All Time" in the left column
@@ -2411,71 +2414,71 @@ Feature: Affiliate clients
     And I go to the "aff site" affiliate page
     And I follow "Sidebar"
     Then the "Default search label" field should contain "Everything"
-    And the "Image search label" field should contain "Images"
-    And the "Is image search enabled" checkbox should be checked
-    And the "RSS feed 0" field should contain "Press"
-    And the "Is RSS feed 0 navigable" checkbox should be checked
-    And the "RSS feed 1" field should contain "Photo Gallery"
-    And the "Is RSS feed 1 navigable" checkbox should be checked
-    And the "RSS feed 2" field should contain "Hide Me"
-    And the "Is RSS feed 2 navigable" checkbox should not be checked
-    And the "Document collection 0" field should contain "FAQs"
-    And the "Is document collection 0 navigable" checkbox should be checked
-    And the "Document collection 1" field should contain "Help"
-    And the "Is document collection 1 navigable" checkbox should not be checked
-    And the "Document collection 2" field should contain "Topics"
-    And the "Is document collection 2 navigable" checkbox should be checked
+    And the "Image Search Label 0" field should contain "Images"
+    And the "Is Image Search Label 0 navigable" checkbox should be checked
+    And the "Rss Feed 1" field should contain "Press"
+    And the "Is Rss Feed 1 navigable" checkbox should be checked
+    And the "Rss Feed 3" field should contain "Photo Gallery"
+    And the "Is Rss Feed 3 navigable" checkbox should be checked
+    And the "Rss Feed 5" field should contain "Hide Me"
+    And the "Is Rss Feed 5 navigable" checkbox should not be checked
+    And the "Document Collection 2" field should contain "FAQs"
+    And the "Is Document Collection 2 navigable" checkbox should be checked
+    And the "Document Collection 4" field should contain "Topics"
+    And the "Is Document Collection 4 navigable" checkbox should be checked
+    And the "Document Collection 6" field should contain "Help"
+    And the "Is Document Collection 6 navigable" checkbox should not be checked
     And the "Show by time period module" checkbox should be checked
 
     When I fill in the following:
       | Default search label  | Web       |
-      | Image search label    | Pictures  |
-      | RSS feed 0            | News      |
-      | RSS feed 1            | Galleries |
-      | Document collection 0 | Q&A       |
+      | Image Search Label 0  | Pictures  |
+      | Rss Feed 1            | News      |
+      | Document Collection 2 | Q&A       |
+      | Rss Feed 3            | Galleries |
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
-    Then I should see "Web Pictures News Galleries Q&A Topics" in the left column
+    Then I should see "Web Pictures News Q&A Galleries Topics" in the left column
     When I follow "News" in the left column
     Then I should see "All Time" in the left column
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
-    And I uncheck "Is image search enabled"
-    And I uncheck "Is RSS feed 1 navigable"
-    And I check "Is RSS feed 2 navigable"
-    And I uncheck "Is document collection 0 navigable"
-    And I check "Is document collection 1 navigable"
+    And I uncheck "Is Image Search Label 0 navigable"
+    And I uncheck "Is Document Collection 2 navigable"
+    And I uncheck "Is Rss Feed 3 navigable"
+    And I check "Is Rss Feed 5 navigable"
+    And I check "Is Document Collection 6 navigable"
     And I uncheck "Show by time period module"
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
-    Then I should see "Web News Hide Me Help Topics" in the left column
+    Then I should see "Web News Topics Hide Me Help" in the left column
     And I should not see "Galleries" in the left column
     And I should not see "Q&A" in the left column
 
     When I follow "Hide Me" in the left column
     Then I should not see "All Time" in the left column
 
-  Scenario: Setting RSS feed name to blank when Editing sidebar
+  Scenario: Setting RSS feed name to blank when editing sidebar
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         |
+      | name  | url                                  | is_navigable | position |
+      | Press | http://www.whitehouse.gov/feed/press | true         | 0        |
     And affiliate "aff.gov" has the following document collections:
-      | name | prefixes             | is_navigable |
-      | FAQs | http://aff.gov/faqs/ | true         |
+      | name | prefixes             | is_navigable | position |
+      | FAQs | http://aff.gov/faqs/ | true         | 1        |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
     And I fill in the following:
-      | RSS feed 0            |  |
-      | Document collection 0 |  |
+      | Rss Feed 1            |  |
+      | Document Collection 2 |  |
     And I press "Save"
     Then I should see "Rss feeds name can't be blank"
     And I should see "Document collections name can't be blank"
@@ -2535,18 +2538,18 @@ Feature: Affiliate clients
       | aff site     | aff.gov    | aff@bar.gov   | John Bar     | en     |
       | Spanish site | es.aff.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name          | url                                                | position | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true            |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true            |
-      | Not in GovBox | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false           |
-    And feed "Press" has the following news items:
+      | name           | url                                                | position | shown_in_govbox |
+      | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |
+      | BPhoto Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true            |
+      | ZNot in GovBox | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false           |
+    And feed "APress" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
       | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
-    And feed "Photo Gallery" has the following news items:
+    And feed "BPhoto Gallery" has the following news items:
       | link                             | title      | guid  | published_ago | description                      |
       | http://www.whitehouse.gov/news/3 | Third item | uuid3 | day           | item Next news item for the feed |
-    And feed "Not in Govbox" has the following news items:
+    And feed "ZNot in Govbox" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Fourth item | uuid4 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
@@ -2569,12 +2572,12 @@ Feature: Affiliate clients
     And I go to the "aff site" affiliate page
     And I follow "Results modules"
     And I should see the following table rows:
-      | Name          | Source    |
-      | Agency        | USASearch |
-      | Medline       | USASearch |
-      | Press         | RSS       |
-      | Photo Gallery | RSS       |
-      | Not in GovBox | RSS       |
+      | Name           | Source    |
+      | Agency         | USASearch |
+      | Medline        | USASearch |
+      | APress         | RSS       |
+      | BPhoto Gallery | RSS       |
+      | ZNot in GovBox | RSS       |
     And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
     And the "Show RSS feed 0 in govbox" checkbox should be checked

@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe RssFeed do
-  fixtures :affiliates, :rss_feeds, :rss_feed_urls
+  fixtures :affiliates, :rss_feeds, :rss_feed_urls, :navigations
   before do
     @valid_attributes = {
       :affiliate_id => affiliates(:basic_affiliate).id,
@@ -34,8 +34,21 @@ describe RssFeed do
 
 
   context "on create" do
+    before do
+      rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+      Kernel.stub(:open).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
+    end
+
     it "should create a new instance given valid attributes" do
       RssFeed.create!(@valid_attributes)
+    end
+
+    it "should create navigation" do
+      rss_feed = RssFeed.create!(@valid_attributes)
+      rss_feed.navigation.should == Navigation.find(rss_feed.navigation.id)
+      rss_feed.navigation.affiliate_id.should == rss_feed.affiliate_id
+      rss_feed.navigation.position.should == 100
+      rss_feed.navigation.should_not be_is_active
     end
 
     it "should not allow RssFeed without RssFeedUrl attributes" do
@@ -52,14 +65,9 @@ describe RssFeed do
       rss_feed.rss_feed_urls.first.url.should == 'http://usasearch.howto.gov/rss'
     end
 
-    it "should set is_navigable to false by default" do
-      RssFeed.create!(@valid_attributes).is_navigable.should be_false
-    end
-
     it "should set shown_in_govbox to false by default" do
       RssFeed.create!(@valid_attributes).shown_in_govbox.should be_false
     end
-
 
     context "when the RSS feed is a valid feed" do
       before do
@@ -147,6 +155,11 @@ describe RssFeed do
                                                                    '1' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } })
       end
 
+      before do
+        video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        Kernel.stub(:open) { video_content.rewind; video_content }
+      end
+
       specify { rss_feed.should be_is_video }
     end
 
@@ -157,114 +170,15 @@ describe RssFeed do
                                                                    '1' => { :url => 'http://usasearch.howto.gov/rss' } })
       end
 
+      before do
+        video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        Kernel.stub(:open).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&author=USGovernment').and_return(video_content)
+
+        non_video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        Kernel.stub(:open).with('http://usasearch.howto.gov/rss').and_return(non_video_content)
+      end
+
       specify { rss_feed.should_not be_is_video }
-    end
-  end
-
-  describe ".navigable_only" do
-    let(:affiliate) { affiliates(:power_affiliate) }
-    let(:rss_feed_urls_attributes) { { '0' => { :url => 'http://usasearch.howto.gov/rss' } } }
-
-    let!(:navigable_feeds) do
-      navigable_feeds = []
-      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 1',
-                                                     :is_navigable => true,
-                                                     :position => 10,
-                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
-      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 2',
-                                                     :is_navigable => true,
-                                                     :position => 5,
-                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
-      navigable_feeds << affiliate.rss_feeds.create!(:name => 'navigable rss feed 3',
-                                                     :is_navigable => true,
-                                                     :position => 1,
-                                                     :rss_feed_urls_attributes => rss_feed_urls_attributes)
-      navigable_feeds
-    end
-
-    it "includes rss feeds with is_navigable flag" do
-      affiliate.rss_feeds.navigable_only.should include(*navigable_feeds)
-    end
-
-    it "sorts rss feeds with is_navigable flag by position" do
-      affiliate.rss_feeds.navigable_only.collect(&:position).should == [1,5,10]
-    end
-
-    it "excludes rss feeds with is_navigable flag" do
-      not_navigable_feed = affiliate.rss_feeds.create!(:name => 'not navigable rss feed',
-                                                       :is_navigable => false,
-                                                       :position => 0,
-                                                       :rss_feed_urls_attributes => rss_feed_urls_attributes)
-      affiliate.rss_feeds.navigable_only.should_not include(not_navigable_feed)
-    end
-  end
-
-  describe ".govbox_enabled" do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    it "includes rss feeds with shown_in_govbox flag" do
-      govbox_enabled = affiliate.rss_feeds.create!(:name => 'govbox rss feed 1',
-                                                   :shown_in_govbox => true,
-                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      affiliate.rss_feeds.govbox_enabled.should include(govbox_enabled)
-    end
-
-    it "excludes rss feeds without shown_in_govbox flag" do
-      not_govbox_enabled = affiliate.rss_feeds.create!(:name => 'not govbox rss feed',
-                                                       :shown_in_govbox => false,
-                                                       :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      affiliate.rss_feeds.govbox_enabled.should_not include(not_govbox_enabled)
-    end
-  end
-
-  describe ".managed" do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    it "includes rss feeds with is_managed flag" do
-      managed_feed = affiliate.rss_feeds.build(:name => 'Managed',
-                                               :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      managed_feed.is_managed = true
-      managed_feed.save!
-      managed_feed
-      affiliate.rss_feeds.managed.should include(managed_feed)
-    end
-
-    it "excludes rss feeds without is_managed flag" do
-      not_managed_feed = affiliate.rss_feeds.create!(:name => 'Not managed',
-                                                     :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      affiliate.rss_feeds.managed.should_not include(not_managed_feed)
-    end
-  end
-
-  describe ".videos" do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    it "includes rss feeds with is_video flag" do
-      video_feed = affiliate.rss_feeds.create!(:name => 'Videos',
-                                               :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment' } })
-      affiliate.rss_feeds.videos.should include(video_feed)
-    end
-
-    it "excludes rss feeds without is_video flag" do
-      not_video_feed = affiliate.rss_feeds.create!(:name => 'Not videos',
-                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      affiliate.rss_feeds.videos.should_not include(not_video_feed)
-    end
-  end
-
-  describe ".non_videos" do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    it "includes rss feeds without is_video flag" do
-      not_video_feed = affiliate.rss_feeds.create!(:name => 'Not videos',
-                                                   :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } })
-      affiliate.rss_feeds.non_videos.should include(not_video_feed)
-    end
-
-    it "excludes rss feeds with is_video flag" do
-      video_feed = affiliate.rss_feeds.create!(:name => 'Videos',
-                                  :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment' } })
-      affiliate.rss_feeds.non_videos.should_not include(video_feed)
     end
   end
 end

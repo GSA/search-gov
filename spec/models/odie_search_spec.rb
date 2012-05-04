@@ -69,8 +69,9 @@ describe OdieSearch do
 
   describe "#cache_key" do
     before do
-      @dc = affiliate.document_collections.create!(:name => "whatevs", :is_navigable => true)
+      @dc = affiliate.document_collections.create!(:name => "whatevs")
       @dc.url_prefixes.create!(:prefix => "http://www.usa.gov/docs/")
+      @dc.navigation.update_attributes!(:is_active => true)
     end
 
     it "should output a key based on the query, affiliate id, doc collection, and page parameters" do
