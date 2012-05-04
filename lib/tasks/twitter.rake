@@ -32,7 +32,7 @@ namespace :usasearch do
         unless profile_ids.empty?
           twitter_client.follow(profile_ids) do |status, client|
             logger.info "[TWITTER] New tweet received: @#{status.user.screen_name}: #{status.text}"
-            tweet = Tweet.create(:tweet_id => status.id, :tweet_text => status.text, :published_at => status.created_at, :twitter_profile_id => status.user.id)
+            tweet = Tweet.create(:tweet_id => status.id, :tweet_text => status.text, :published_at => status.created_at, :twitter_profile_id => status.user.id) if profile_ids.include?(status.user.id)
           end
         end
       end unless run_once
