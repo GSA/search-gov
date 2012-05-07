@@ -49,8 +49,10 @@ RSpec.configure do |config|
 
   REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
   REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
-
+  
   config.before(:suite) do
+    Dir.mkdir("#{Rails.root}/tmp/cache") unless File.directory?("#{Rails.root}/tmp/cache")
+    Dir.mkdir("#{Rails.root}/tmp/pids") unless File.directory?("#{Rails.root}/tmp/pids")
     redis_options = {
       "daemonize" => 'yes',
       "pidfile" => REDIS_PID,

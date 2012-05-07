@@ -26,7 +26,7 @@ namespace :usasearch do
         logger.info "[TWITTER] Time has elapsed, shutting down connection."
         twitter_client.stop
       end
-      begin
+      loop do
         profile_ids = TwitterProfile.select(:twitter_id).collect(&:twitter_id)
         logger.info "[TWITTER] Connecting to Twitter to follow #{profile_ids.size} Twitter profiles."
         unless profile_ids.empty?
@@ -35,7 +35,8 @@ namespace :usasearch do
             tweet = Tweet.create(:tweet_id => status.id, :tweet_text => status.text, :published_at => status.created_at, :twitter_profile_id => status.user.id) if profile_ids.include?(status.user.id)
           end
         end
-      end unless run_once
+        break if run_once
+      end
     end
   end
 end
