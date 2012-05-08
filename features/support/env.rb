@@ -43,3 +43,30 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+Dir.mkdir("#{Rails.root}/tmp/cache") unless File.directory?("#{Rails.root}/tmp/cache")
+Dir.mkdir("#{Rails.root}/tmp/pids") unless File.directory?("#{Rails.root}/tmp/pids")
+REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
+REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
+redis_options = {
+  "daemonize" => 'yes',
+  "pidfile" => REDIS_PID,
+  "port" => 6380,
+  "timeout" => 300,
+  "save 900" => 1,
+  "save 300" => 1,
+  "save 60" => 10000,
+  "dbfilename" => "dump.rdb",
+  "dir" => REDIS_CACHE_PATH,
+  "loglevel" => "debug",
+  "logfile" => "stdout",
+  "databases" => 16
+}.map { |k, v| "#{k} #{v}" }.join("\n")
+`echo '#{redis_options}' | redis-server -`
+
+at_exit do
+  %x{
+    cat #{REDIS_PID} | xargs kill -9
+    rm -f #{REDIS_CACHE_PATH}dump.rdb
+  }
+end
+
