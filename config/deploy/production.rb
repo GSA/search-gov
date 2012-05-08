@@ -5,13 +5,20 @@ role :app, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110
 role :web, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10", "192.168.100.161", "192.168.110.11"
 role :db,  "192.168.100.161", :primary => true
 role :resque_workers,  "192.168.100.164", "192.168.100.165", "192.168.100.166"
+role :cron, "192.168.100.164"
 
 before "deploy:symlink", "production_yaml_files"
 before "deploy:cleanup", "restart_resque_workers"
+before "deploy:cleanup", "restart_twitter_stream"
 
 task :restart_resque_workers, :roles => :resque_workers do
   run "sudo /home/jwynne/scripts/stop_resque_workers"
   run "sudo /home/jwynne/scripts/start_resque_workers"
+end
+
+task :restart_twitter_stream, :roles => :cron do
+  run "sudo /home/jwynne/scripts/stop_twitter_stream"
+  run "sudo /home/jwynne/scripts/start_twitter_stream"
 end
 
 task :production_yaml_files, :except => { :no_release => true } do
