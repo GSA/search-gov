@@ -28,13 +28,14 @@ describe "rails3_log rake tasks" do
 
       context "when passed a log file parameter" do
         it "should process the log file by emitting one JSON entry per Rails3 event" do
-          line1 = '{"total_time":"4258","db_time":"504","view_time":"964","request_url":"/search?utf8=%E2%9C%93&sc=0&query=gov"}'
-          line2 = '{"total_time":"301","db_time":"55","view_time":"200","request_url":"/?locale=en&m=false"}'
-          line3 = ''
+          line1 = '{"total_time":"4258","request_url":"/search?utf8=%E2%9C%93&sc=0&query=gov","db_time":"504","view_time":"964","solr_time":"99"}'
+          line2 = '{"total_time":"474","request_url":"/?locale=en&m=false","db_time":"42","view_time":"360","solr_time":"7"}'
+          line3 = '{"total_time":"32","request_url":"/sayt?q=passpor&callback=jsonp1307071011660&featureClass=P&style=full&maxRows=12&name_startsWith=passpor"}'
+          line4 = ''
           require 'stringio'
           $stdout = StringIO.new
           @rake[@task_name].invoke("spec/fixtures/txt/rails3_log.txt")
-          $stdout.string.should == [line1, line2, line3].join("\n")
+          $stdout.string.should == [line1, line2, line3, line4].join("\n")
         end
       end
     end

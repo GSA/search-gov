@@ -345,6 +345,7 @@ select ds,
 get_json_object(a.json,'$.total_time') total_time,
 get_json_object(a.json,'$.db_time') db_time,
 get_json_object(a.json,'$.view_time') view_time,
+get_json_object(a.json,'$.solr_time') solr_time,
 get_json_object(a.json,'$.request_url') request_url
 from app_metrics a;
 
