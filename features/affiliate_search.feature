@@ -386,7 +386,7 @@ Feature: Affiliate Search
       | SSA  | en     | http://www.ssa.gov/         |
       | SSA  | es     | http://www.ssa.gov/espanol/ |
     When I am on gobiernousa's search page
-    And I fill in "query" with "ssa"
+    And I fill in "query" with "ssa.gov"
     And I press "Buscar"
     Then I should see the agency govbox
     When I fill in "query" with "beneficios" in the agency govbox
@@ -449,7 +449,7 @@ Feature: Affiliate Search
       | SSA  | es     | 20   | Solicite beneficios de jubilación     | http://www.ssa.gov/espanol/plan/sobreelplan.htm    |
       | SSA  | es     | 10   | Solicite beneficios de incapacidad    | http://www.ssa.gov/espanol/soliciteporincapacidad/ |
     When I am on gobiernousa's search page
-    And I fill in "query" with "ssa"
+    And I fill in "query" with "ssa.gov"
     And I press "Buscar"
     Then I should see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
     And I should see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list

@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe SearchesController do
-  fixtures :affiliates, :affiliate_templates, :image_search_labels, :navigations
+  fixtures :affiliates, :affiliate_templates, :image_search_labels, :document_collections, :rss_feeds, :navigations
 
   before do
     @affiliate = affiliates(:usagov_affiliate)

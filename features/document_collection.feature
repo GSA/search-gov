@@ -19,9 +19,11 @@ Feature: Document Collections
     And I should see "Site Noaa Site has no Collections"
 
   Scenario: Administering a Featured Collection
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    And affiliate "noaa.gov" has a result source of "bing+odie"
-    When I go to the affiliate admin page with "noaa.gov" selected
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name | results_source |
+      | Noaa Site    | site.gov | affiliate_manager@site.gov | John Bar     | bing+odie      |
+    And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
+    When I go to the affiliate admin page with "site.gov" selected
     And I follow "Collections"
     And I follow "Add new collection"
     Then I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Add a new Collection
@@ -82,12 +84,12 @@ Feature: Document Collections
     And I press "Save"
     Then I should see "Site was successfully updated."
 
-    When I am on noaa.gov's search page
+    When I am on site.gov's search page
     And I fill in "query" with "hurricane"
     And I press "Search"
     Then I should see "My Edited Collection" in the left column
 
-    When I go to the affiliate admin page with "noaa.gov" selected
+    When I go to the affiliate admin page with "site.gov" selected
     And I follow "Collections"
     And I press "Delete"
     Then I should see "Collections entry successfully deleted."

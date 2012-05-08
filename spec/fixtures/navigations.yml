@@ -1,89 +1,95 @@
-usagov_affiliate_image_navigation:
+one:
   affiliate: :usagov_affiliate
-  navigable: usagov_affiliate_image_search_label(ImageSearchLabel)
+  navigable: usagov_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
 
-gobiernousa_affiliate_image_navigation:
+two:
   affiliate: :gobiernousa_affiliate
-  navigable: gobiernousa_affiliate_image_search_label(ImageSearchLabel)
+  navigable: gobiernousa_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-es_white_house_blog_navigation:
+
+three:
   affiliate: :gobiernousa_affiliate
   navigable: es_white_house_blog(RssFeed)
   is_active: true
   position: 0
 
-power_affiliate_image_navigation:
-  affiliate: power_affiliate
-  navigable: power_affiliate_image_search_label(ImageSearchLabel)
+four:
+  affiliate: :power_affiliate
+  navigable: power_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
 
-basic_affiliate_image_navigation:
+five:
   affiliate: :basic_affiliate
-  navigable: basic_affiliate_image_search_label(ImageSearchLabel)
+  navigable: basic_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-white_house_blog_navigation:
+
+six:
   affiliate: :basic_affiliate
   navigable: white_house_blog(RssFeed)
   is_active: true
   position: 1
-white_house_press_gallery_navigation:
+
+seven:
   affiliate: :basic_affiliate
   navigable: white_house_press_gallery(RssFeed)
   is_active: true
   position: 2
-basic_navigation:
+
+eight:
   affiliate: :basic_affiliate
   navigable: basic(RssFeed)
   is_active: true
   position: 3
-atom_feed_navigation:
+
+nine:
   affiliate: :basic_affiliate
   navigable: atom_feed(RssFeed)
   is_active: true
   position: 4
-not_navigable_navigation:
+
+ten:
   affiliate: :basic_affiliate
   navigable: not_navigable(RssFeed)
   is_active: false
   position: 5
-sample_navigation:
+
+eleven:
   affiliate: :basic_affiliate
   navigable: sample(DocumentCollection)
   is_active: true
   position: 10
 
-another_affiliate_image_navigation:
+twelve:
   affiliate: :another_affiliate
-  navigable: another_affiliate_image_search_label(ImageSearchLabel)
+  navigable: another_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-another_affiliate_rss_navigation:
+
+thirteen:
   affiliate: :another_affiliate
   navigable: another(RssFeed)
   is_active: true
   position: 3
 
-admin_affiliate_image_navigation:
+fourteen:
   affiliate: :admin_affiliate
-  navigable: admin_affiliate_image_search_label(ImageSearchLabel)
+  navigable: admin_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
 
-non_existant_affiliate_image_navigation:
+fifteen:
   affiliate: :non_existant_affiliate
-  navigable: non_existant_affiliate_image_search_label(ImageSearchLabel)
+  navigable: non_existant_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
 
-spanish_affiliate_image_navigation:
+sixteen:
   affiliate: :spanish_affiliate
-  navigable: spanish_affiliate_image_search_label(ImageSearchLabel)
+  navigable: spanish_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-
-
