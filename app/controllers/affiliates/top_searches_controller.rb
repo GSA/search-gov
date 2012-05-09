@@ -5,7 +5,7 @@ class Affiliates::TopSearchesController < Affiliates::AffiliatesController
   def index
     @top_searches = @affiliate.top_searches
     @active_top_searches = @affiliate.active_top_searches
-    render 'admin/top_searches/index'
+    render 'affiliates/top_searches/index'
   end
 
   def create

@@ -130,7 +130,6 @@ UsasearchRails3::Application.routes.draw do
     resources :url_prefixes do as_routes end
     resources :catalog_prefixes do as_routes end
     resources :gov_forms do as_routes end
-    resources :top_searches, :only => [:index, :create, :new]
     resources :top_forms, :only => [:index, :create, :update, :destroy]
     resources :superfresh_urls do as_routes end
     resources :superfresh_urls_bulk_upload, :only => :index do
