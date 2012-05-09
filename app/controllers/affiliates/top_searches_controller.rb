@@ -12,7 +12,7 @@ class Affiliates::TopSearchesController < Affiliates::AffiliatesController
     @affiliate.update_attributes(:top_searches_label => params[:top_searches_label].blank? ? 'Search Trends' : params[:top_searches_label])
     @top_searches = []
     1.upto(5) do |index|
-      top_search = @affiliate.top_searches.find_or_initialize_by_position(index, :affiliate => @affiliate)
+      top_search = @affiliate.top_searches.find_or_initialize_by_position(index)
       top_search.query = params["query#{index}"]
       top_search.url = params["url#{index}"].present? ? params["url#{index}"] : nil
       top_search.save
