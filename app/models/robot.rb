@@ -42,4 +42,9 @@ class Robot < ActiveRecord::Base
     IndexedDomain.select("distinct domain").each { |result| find_or_initialize_by_domain(result[:domain]).save_or_delete }
   end
 
+  def self.update_for(domain)
+    find_or_initialize_by_domain(domain).save_or_delete
+    find_by_domain(domain)
+  end
+
 end

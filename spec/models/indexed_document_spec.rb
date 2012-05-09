@@ -90,7 +90,7 @@ describe IndexedDocument do
   describe "handling file extensions for URLs" do
     it "should not allow unsupported extensions" do
       base_url = "http://www.nps.gov/honey-badger."
-      %w{json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf}.each do |ext|
+      %w{css csv doc docx gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml}.each do |ext|
         IndexedDocument.new(@valid_attributes.merge(:url => base_url + ext)).should_not be_valid
       end
     end
@@ -878,7 +878,7 @@ describe IndexedDocument do
         result[:success].should be_true
         result[:count].should == 101
       end
-      
+
       it "should return with success == true if '0' is passed as the number of maximum urls" do
         result = IndexedDocument.process_file(@file, @affiliate, 0)
         result[:success].should be_true

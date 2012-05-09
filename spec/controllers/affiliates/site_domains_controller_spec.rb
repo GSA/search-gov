@@ -77,7 +77,7 @@ describe Affiliates::SiteDomainsController do
   end
 
   describe "#create" do
-    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully create a sitemap" do
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully create a site domain" do
       let(:current_user) { users(:affiliate_manager) }
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:site_domain) { mock_model(SiteDomain) }
@@ -90,7 +90,7 @@ describe Affiliates::SiteDomainsController do
 
         affiliate.stub_chain(:site_domains, :build).and_return(site_domain)
         site_domain.should_receive(:save).and_return(true)
-
+        affiliate.should_receive(:normalize_site_domains)
         post :create, :affiliate_id => affiliate.id, :site_domain => { :domain => 'usa.gov' }
       end
 
@@ -100,7 +100,7 @@ describe Affiliates::SiteDomainsController do
       it { should redirect_to(affiliate_site_domains_path(affiliate)) }
     end
 
-    context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to create a sitemap" do
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to create a site domain" do
       let(:current_user) { users(:affiliate_manager) }
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:site_domain) { mock_model(SiteDomain) }

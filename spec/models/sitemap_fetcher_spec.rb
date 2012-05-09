@@ -14,7 +14,6 @@ describe SitemapFetcher, "#perform(sitemap_id)" do
 
   context "when it can't locate the Sitemap for a given id" do
     it "should ignore the entry" do
-      @sitemap.should_not_receive(:fetch)
       SitemapFetcher.perform(-1)
     end
   end

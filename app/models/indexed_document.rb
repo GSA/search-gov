@@ -16,7 +16,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
-  validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "'%{value}' is not a supported file type"
+  validates_exclusion_of :url_extension, :in => %w(css csv doc docx gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml), :message => "'%{value}' is not a supported file type"
   validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   validate :site_domain_matches
   validate :robots_txt_compliance
@@ -302,7 +302,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def robots_txt_compliance
     if self_url
-      if (robot = Robot.find_by_domain(self_url.host))
+      if robot = Robot.find_by_domain(self_url.host)
         if robot.disallows?(self_url.request_uri)
           errors.add(:base, ROBOTS_TXT_COMPLIANCE)
         end

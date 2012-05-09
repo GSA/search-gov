@@ -146,4 +146,16 @@ describe Robot do
       Robot.populate_from_indexed_domains
     end
   end
+
+  describe "self#update_for(domain)" do
+    let(:some_domain) { "foo.gov" }
+
+    it "should return the most up-to-date Robot possible for the domain" do
+      Robot.should_receive(:find_or_initialize_by_domain).with(some_domain).and_return(robot)
+      robot.should_receive(:save_or_delete)
+      Robot.should_receive(:find_by_domain).with(some_domain).and_return(robot)
+      Robot.update_for(some_domain).should == robot
+    end
+  end
+
 end

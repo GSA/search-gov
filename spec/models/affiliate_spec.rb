@@ -1734,7 +1734,6 @@ describe Affiliate do
         site_domains.should == added_site_domains
         site_domains[0].domain.should == "foo.gov"
         site_domains[1].domain.should == "blat.gov/somedir"
-        site_domains[2].domain.should == "bar.gov/somepage.html"
       end
     end
 
@@ -1774,7 +1773,7 @@ describe Affiliate do
         site_domains.should == added_site_domains
         site_domains.count.should == 2
         site_domains[0].domain.should == 'foo.gov'
-        site_domains[1].domain.should == 'bar.gov/somedir/'
+        site_domains[1].domain.should == 'bar.gov/somedir'
       end
     end
 
