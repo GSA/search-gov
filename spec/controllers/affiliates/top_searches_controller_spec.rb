@@ -40,7 +40,7 @@ describe Affiliates::TopSearchesController do
         it "should show the page and form fields even if there are no top searches for the affiliate" do
           @affiliate.top_searches.destroy_all
           get :index, :affiliate_id => @affiliate.id
-          response.should render_template('admin/top_searches/index')
+          response.should render_template('affiliates/top_searches/index')
           response.body.should have_selector("input[id='query5']")
         end
       end
