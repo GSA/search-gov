@@ -31,6 +31,7 @@ class RssFeedUrl < ActiveRecord::Base
           link = item.xpath(FEED_ELEMENTS[feed_type]["link"]).inner_text
           title = item.xpath(FEED_ELEMENTS[feed_type]["title"]).inner_text
           guid = item.xpath(FEED_ELEMENTS[feed_type]["guid"]).inner_text
+          guid = link if guid.blank?
           raw_description = item.xpath(FEED_ELEMENTS[feed_type]["description"]).inner_text
           description = Nokogiri::HTML(raw_description).inner_text.squish
 

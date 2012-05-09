@@ -108,6 +108,9 @@ describe RssFeedUrl do
           newest.published_at.should == DateTime.parse('26 Sep 2011 21:33:05 +0000')
           newest.description[0, 40].should == 'Dr. Biden and David Letterman refer to a'
           newest.title.should == 'Famine in the Horn of Africa: Be a Part of the Solution'
+
+          oldest = rss_feed_url.news_items.last
+          oldest.guid.should == 'http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0'
         end
       end
 
@@ -155,7 +158,7 @@ describe RssFeedUrl do
               :title => 'Big story here',
               :description => 'Corps volunteers have promoted blah blah blah.',
               :published_at => DateTime.parse('26 Sep 2011 18:31:21 +0000'),
-              :guid => '80653 at http://www.whitehouse.gov')
+              :guid => '80671 at http://www.whitehouse.gov')
         end
 
         it "should ignore them" do
