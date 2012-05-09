@@ -58,6 +58,11 @@ ten:
   is_active: false
   position: 5
 
+managed_video:
+  affiliate: :basic_affiliate
+  navigable: managed_video(RssFeed)
+  position: 6
+
 eleven:
   affiliate: :basic_affiliate
   navigable: sample(DocumentCollection)
@@ -93,3 +98,4 @@ sixteen:
   navigable: spanish_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
+

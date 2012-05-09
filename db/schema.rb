@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510153651) do
+ActiveRecord::Schema.define(:version => 20120511191648) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -550,6 +550,7 @@ ActiveRecord::Schema.define(:version => 20120510153651) do
     t.datetime "published_at",    :null => false
     t.datetime "created_at"
     t.integer  "rss_feed_url_id", :null => false
+    t.datetime "updated_at"
   end
 
   add_index "news_items", ["link"], :name => "index_news_items_on_link"

@@ -85,8 +85,6 @@ describe RssFeedUrl do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
         Kernel.should_receive(:open).with('http://some.agency.gov/feed').and_return rss_feed_content
-        doc = Nokogiri::XML(rss_feed_content)
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
       end
 
       context "when there are no news items associated with the source" do
@@ -118,6 +116,7 @@ describe RssFeedUrl do
         let(:rss_feed_url) { rss_feed_urls(:basic) }
 
         before do
+          rss_feed_url.update_attributes(:last_crawl_status => RssFeedUrl::OK_STATUS)
           NewsItem.destroy_all
           rss_feed_url.news_items.create!(
               :rss_feed => rss_feed_url.rss_feed,
@@ -183,6 +182,110 @@ describe RssFeedUrl do
       end
     end
 
+    context 'when the feed is non playlist video' do
+      context 'when the last crawl status is Pending' do
+        let(:rss_feed_url) { rss_feed_urls(:youtube_video) }
+
+        before do
+          rss_feed_url.news_items.create!(:rss_feed => rss_feed_url.rss_feed,
+                                          :link => 'http://gdata.youtube.com/feeds/base/videos/MOCK1',
+                                          :title => 'mock title',
+                                          :description => 'mock description',
+                                          :published_at => DateTime.parse('Sat, 12 May 2011 16:24:46 +0000'),
+                                          :guid => 'http://gdata.youtube.com/feeds/base/videos/MOCK1')
+          video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+          next_video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
+          Kernel.should_receive(:open).twice.and_return(video_content, next_video_content)
+        end
+
+        it 'should iterate through all videos' do
+          rss_feed_url.freshen
+          rss_feed_url.news_items(true).count.should == 29
+          newest = rss_feed_url.news_items.first
+          newest.guid.should == 'http://gdata.youtube.com/feeds/base/videos/WR595t0HBGE'
+          newest.title.should == 'President Obama Honors the Nations TOP COPS'
+          newest.description[0, 40].should == 'President Obama Honors the Nations TOP C'
+          newest.link.should == 'http://www.youtube.com/watch?v=WR595t0HBGE&feature=youtube_gdata'
+          newest.published_at.should == DateTime.parse('Sat, 12 May 2012 16:24:46 +0000')
+        end
+      end
+
+      context 'when the last crawl status is not pending' do
+        let(:rss_feed_url) { rss_feed_urls(:youtube_video) }
+
+        before do
+          video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+          Kernel.should_receive(:open).and_return(video_content)
+
+          rss_feed_url.news_items.create!(:rss_feed => rss_feed_url.rss_feed,
+                                          :link => 'http://gdata.youtube.com/feeds/base/videos/MOCK1',
+                                          :title => 'mock title',
+                                          :description => 'mock description',
+                                          :published_at => DateTime.current,
+                                          :guid => 'http://gdata.youtube.com/feeds/base/videos/MOCK1')
+          rss_feed_url.update_attributes!(:last_crawl_status => RssFeedUrl::OK_STATUS)
+        end
+
+        it 'should iterate through all videos' do
+          rss_feed_url.freshen
+          rss_feed_url.news_items(true).count.should == 1
+        end
+      end
+    end
+
+    context 'when the feed is managed video playlist' do
+      let(:rss_feed_url) { rss_feed_urls(:playlist_video) }
+
+      context "when there are existing news items that are not in the current playlists" do
+        before do
+          rss_feed_url.news_items.create!(:rss_feed => rss_feed_url.rss_feed,
+                                          :link => 'http://gdata.youtube.com/feeds/base/videos/MOCK1',
+                                          :title => 'mock title',
+                                          :description => 'mock description',
+                                          :published_at => DateTime.current,
+                                          :guid => 'http://gdata.youtube.com/feeds/base/videos/MOCK1',
+                                          :updated_at => Time.current.yesterday)
+
+          rss_feed_url.news_items.create!(:rss_feed => rss_feed_url.rss_feed,
+                                          :link => 'http://gdata.youtube.com/feeds/base/videos/MOCK2',
+                                          :title => 'mock title',
+                                          :description => 'mock description',
+                                          :published_at => DateTime.current,
+                                          :guid => 'http://gdata.youtube.com/feeds/base/videos/MOCK2',
+                                          :updated_at => Time.current.yesterday)
+
+          rss_feed_url.news_items.create!(:rss_feed => rss_feed_url.rss_feed,
+                                          :link => 'http://www.youtube.com/watch?v=FxwcJx0-21E&feature=youtube_gdata',
+                                          :title => 'already exist',
+                                          :description => 'already exist description',
+                                          :published_at => DateTime.parse('2012-01-24T17:31:04.000Z'),
+                                          :guid => 'tag:youtube.com,2008:playlist:2A8E588CD55F0FAF:PL9aiTdkQHdAGGrzu_jRXeJy4LBJWSWvrZ',
+                                          :updated_at => Time.current.yesterday)
+          rss_feed_url.update_attributes!(:last_crawl_status => RssFeedUrl::OK_STATUS)
+
+          playlist_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
+          Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/api/playlists/2A8E588CD55F0FAF?alt=rss&start-index=1&max-results=50&v=2').and_return(playlist_content)
+
+          next_playlist_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_playlist_videos.xml')
+          Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/api/playlists/2A8E588CD55F0FAF?alt=rss&start-index=51&max-results=50&v=2').and_return(next_playlist_content)
+        end
+
+        it 'should delete the obsolete news items' do
+          rss_feed_url.freshen
+          rss_feed_url.news_items(true).count.should == 88
+          rss_feed_url.news_items.find_by_guid('tag:youtube.com,2008:playlist:2A8E588CD55F0FAF:PL9aiTdkQHdAG_mC82ulkmKvpwR7Ls-fzZ').should be_present
+          rss_feed_url.news_items.find_by_title('mock title').should be_nil
+
+          newest = rss_feed_url.news_items.first
+          newest.guid.should == 'tag:youtube.com,2008:playlist:2A8E588CD55F0FAF:PL9aiTdkQHdAG_mC82ulkmKvpwR7Ls-fzZ'
+          newest.title.should == 'Female Engagement Teams: The Changing Face of the US Marines'
+          newest.description[0, 40].should == %q(Meet the brave women who are on the grou)
+          newest.link.should == 'http://www.youtube.com/watch?v=dN0w8uPnX3s&feature=youtube_gdata'
+          newest.published_at.should == DateTime.parse('2012-05-08T22:21:25.000Z')
+        end
+      end
+    end
+
     context "when the feed is in the Atom format" do
       let(:rss_feed_url) { rss_feed_urls(:atom_feed) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
@@ -190,8 +293,6 @@ describe RssFeedUrl do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
         Kernel.should_receive(:open).with(url).and_return rss_feed_content
-        doc = Nokogiri::XML(rss_feed_content)
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
       end
 
       context "when there are no news items associated with the source" do
@@ -221,9 +322,6 @@ describe RssFeedUrl do
         rss_feed_url.news_items.destroy_all
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
         Kernel.should_receive(:open).with(url).and_return rss_feed_content
-        doc = Nokogiri::XML(rss_feed_content)
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
-
         rss_feed_url.should_receive(:detect_feed_type).and_return(nil)
       end
 

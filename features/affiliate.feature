@@ -2304,6 +2304,7 @@ Feature: Affiliate clients
     And I should see "Pending"
     And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usagov"
     And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse"
+    And I should not see "Delete" button
     When I follow "Edit"
     Then the "Name*" field should contain "Videos"
     And the "RSS feed URL 0" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"

@@ -18,11 +18,44 @@ class RssFeed < ActiveRecord::Base
   accepts_nested_attributes_for :navigation
 
   def freshen(ignore_older_items = true)
-    rss_feed_urls.each { |u| u.freshen(ignore_older_items) }
+    synchronize_youtube_playlists if is_managed?
+    rss_feed_urls(true).reject(&:is_playlist?).each { |u| u.freshen(ignore_older_items) }
+    rss_feed_urls.select(&:is_playlist?).sort_by { |url| url.url }.each { |u| u.freshen(ignore_older_items) }
   end
 
-  def self.refresh_all
-    all.each(&:freshen)
+  def synchronize_youtube_playlists
+    target_urls = query_youtube_playlist_urls
+
+    transaction do
+      rss_feed_urls.select(&:is_playlist?).each do |existing_rss_feed_url|
+        if target_urls.include?(existing_rss_feed_url.url)
+          target_urls.delete(existing_rss_feed_url.url)
+        else
+          existing_rss_feed_url.destroy
+        end
+      end
+      target_urls.each { |url| rss_feed_urls.create(:url => url) }
+    end
+  end
+
+  def query_youtube_playlist_urls
+    youtube_playlist_urls = []
+    affiliate.youtube_handles.each do |youtube_handle|
+      begin
+        query_playlists_url = "http://gdata.youtube.com/feeds/api/users/#{youtube_handle}/playlists?start-index=1&max-results=50&v=2"
+        playlists_document = Nokogiri::XML(Kernel.open(query_playlists_url))
+        playlist_total = playlists_document.xpath("/xmlns:feed/openSearch:totalResults").inner_text.to_f
+        youtube_playlist_urls << extract_playlist_urls(playlists_document, (playlist_total / 50).ceil - 1)
+      rescue Exception => e
+        Rails.logger.warn "Error RssFeed#query_youtube_playlist_urls: #{e.to_s}"
+        youtube_playlist_urls = rss_feed_urls(true).select(&:is_playlist?).collect(&:url)
+      end
+    end
+    youtube_playlist_urls.flatten.sort
+  end
+
+  def self.refresh_all(freshen_managed_feeds = false)
+    all(:conditions => { :is_managed => freshen_managed_feeds }).each(&:freshen)
   end
 
   private
@@ -37,5 +70,20 @@ class RssFeed < ActiveRecord::Base
   def set_is_video_flag
     self.is_video = rss_feed_urls.present? && rss_feed_urls.all?(&:is_video?)
     true
+  end
+
+  def extract_playlist_urls(playlists_document, extract_counter)
+    youtube_playlist_urls = []
+    playlists_document.xpath('/xmlns:feed/xmlns:entry/yt:playlistId').each do |playlist_link|
+      playlist_id = playlist_link.inner_text
+      playlist_url = "http://gdata.youtube.com/feeds/api/playlists/#{playlist_id}?alt=rss&start-index=1&max-results=50&v=2"
+      youtube_playlist_urls << playlist_url
+    end
+    if extract_counter > 0
+      next_query_playlists_url = playlists_document.xpath("/xmlns:feed/xmlns:link[@rel='next'][@type='application/atom+xml'][@href]/@href").first.to_s.strip
+      next_playlists_document = Nokogiri::XML(Kernel.open(next_query_playlists_url.to_s.strip))
+      youtube_playlist_urls << extract_playlist_urls(next_playlists_document, extract_counter - 1)
+    end
+    youtube_playlist_urls
   end
 end

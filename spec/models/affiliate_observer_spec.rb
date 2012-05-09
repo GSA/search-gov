@@ -43,11 +43,18 @@ describe AffiliateObserver do
         end
 
         it "should keep RssFeedUrl that does not change" do
-          wh_rss_feed_url = RssFeedUrl.find_by_url('http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published')
+          wh_rss_feed_url = affiliate.rss_feeds.first.rss_feed_urls.find_by_url('http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published')
           affiliate.update_attributes!(:youtube_handles => %w(whitehouse USGovernment))
           affiliate.rss_feeds.first.rss_feed_urls.should include(wh_rss_feed_url)
           video_feed_urls.should == ['http://gdata.youtube.com/feeds/base/videos?alt=rss&author=usgovernment&orderby=published',
                                      'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published']
+        end
+
+        it "should not delete playlist rss feed urls" do
+          managed_video_feeds.first.rss_feed_urls.create!(:url => 'http://gdata.youtube.com/feeds/api/playlists/FAKEID1?start-index=1&max-results=50')
+          managed_video_feeds.first.rss_feed_urls.create!(:url => 'http://gdata.youtube.com/feeds/api/playlists/FAKEID2?start-index=1&max-results=50')
+          affiliate.update_attributes!(:youtube_handles => %w(whitehouse USGovernment))
+          managed_video_feeds.first.rss_feed_urls(true).where(['url LIKE ?', 'http://gdata.youtube.com/feeds/api/playlists/FAKEID%']).count.should == 2
         end
       end
 

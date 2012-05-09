@@ -7,6 +7,12 @@ white_house_press_gallery_url:
 basic:
   rss_feed: :basic
   url: http://some.agency.gov/feed
+youtube_video:
+  rss_feed: :managed_video
+  url: http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published
+playlist_video:
+  rss_feed: :managed_video
+  url: http://gdata.youtube.com/feeds/api/playlists/2A8E588CD55F0FAF?alt=rss&start-index=1&max-results=50&v=2
 another:
   rss_feed: :another
   url: http://another.agency.gov/feed

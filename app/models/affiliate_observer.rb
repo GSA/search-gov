@@ -21,7 +21,7 @@ class AffiliateObserver < ActiveRecord::Observer
       if rss_feed.blank?
         create_video_rss_feed(affiliate, target_urls)
       else
-        rss_feed.rss_feed_urls.each do |existing_rss_feed_url|
+        rss_feed.rss_feed_urls.reject(&:is_playlist?).each do |existing_rss_feed_url|
           if target_urls.include?(existing_rss_feed_url.url)
             target_urls.delete(existing_rss_feed_url.url)
           else
