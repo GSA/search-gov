@@ -1,0 +1,16 @@
+.span-12
+  .content-box.analytics
+    = form_tag(admin_affiliate_reports_path, :method => :get) do
+      %ul
+        %li
+          = label_tag :affiliate_report_date, "Report Date"
+          = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @report_date.year }
+        %li
+          = submit_tag "Submit"
+
+.span-24
+  %h3= "Total Queries by Affiliate for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
+  .usage_stats
+    %ul
+      - @affiliate_total_queries.each do |affiliate, total_queries|
+        %li= "#{affiliate}: #{total_queries}"

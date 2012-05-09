@@ -160,6 +160,7 @@ UsasearchRails3::Application.routes.draw do
     resources :help_links do as_routes end
     resources :search_module_stats, :only => :index
     resources :monthly_reports, :only => :index
+    resources :affiliate_reports, :only => :index
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
