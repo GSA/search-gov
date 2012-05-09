@@ -1,5 +1,3 @@
-Started GET "/sayt?q=passpor&callback=jsonp1307071011660&featureClass=P&style=full&maxRows=12&name_startsWith=passpor" for 98.160.236.36 at Fri Jun 03 03:17:38 +0000 2011
-
 Started GET "/search?utf8=%E2%9C%93&sc=0&query=gov" for 127.0.0.1 at Thu Jun 02 17:18:17 -0700 2011
   Processing by SearchesController#index as HTML
   Parameters: {"utf8"=>"✓", "sc"=>"0", "query"=>"gov"}
@@ -22,7 +20,7 @@ Rendered searches/_result.html.haml (8.1ms)
 Rendered shared/_searchresults.html.haml (425.8ms)
 Rendered shared/_webtrends_english.html.erb (0.4ms)
 Rendered searches/index.html.haml within layouts/application (911.4ms)
-Completed 200 OK in 4258ms (Views: 964.0ms | ActiveRecord: 504.9ms)
+Completed 200 OK in 4258ms (Views: 964.0ms | ActiveRecord: 504.9ms | Solr: 99.8ms)
 
 Started GET "/images/sidebar/images/leftbar_012.gif" for 74.236.151.26 at Fri Jun 03 03:17:14 +0000 2011
 
@@ -64,15 +62,37 @@ ActionController::RoutingError (No route matches "/images/sidebar/images/leftbar
   passenger (3.0.7) helper-scripts/passenger-spawn-server:99
 
 
-Started GET "/?locale=en&m=false" for 127.0.0.1 at Thu Jun 02 18:10:45 -0700 2011
-  Processing by HomeController#index as HTML
-  Parameters: {"m"=>"false", "locale"=>"en"}
-  PopularImageQuery Load (0.2ms)  SELECT `popular_image_queries`.* FROM `popular_image_queries` WHERE `popular_image_queries`.`query` = '' LIMIT 1
-  TopSearch Load (54.7ms)  SELECT `top_searches`.* FROM `top_searches` WHERE (query IS NOT NULL) ORDER BY position ASC LIMIT 5
-Rendered shared/_search.html.haml (7.7ms)
-Rendered shared/_trending_searches.html.haml (13.8ms)
-Rendered shared/_webtrends_english.html.erb (0.3ms)
-Rendered home/index.html.haml within layouts/application (180.6ms)
-Completed 200 OK in 301ms (Views: 200.0ms | ActiveRecord: 55.3ms)
+Started GET "/?locale=en&m=false" for 207.66.40.104 at Tue May 08 22:15:16 +0000 2012
+  Processing by SearchesController#index as HTML
+  Parameters: {"sitelimit"=>"", "siteexclude"=>"", "query-or"=>"", "x"=>"0", "query-or-limit"=>"", "query-limit"=>"", "m"=>"false", "filetype"=>"All", "y"=>"0", "vAproject"=>"firstgov-web", "vAsources"=>"firstgov-search-select", "query-not-limit"=>"", "language"=>"All+languages", "filter"=>"nooc", "query-quote"=>"", "query-not"=>"", "page"=>"2", "query-quote-limit"=>"", "render.list-show"=>"100", "input-form"=>"advanced-firstgov", "fedstates"=>"all", "query"=>"state"}
+  Solr Query (5.9ms)  {"affiliate_id":1176,"model":"SaytSuggestion","term":"state"}
+  Solr Query (5.9ms)  {"model":"BoostedContent","affiliate":"usagov","term":"state"}
+[Query Impression] {"locale":"en","vertical":"web","affiliate":"usagov","time":"2012-05-08 22:15:16","modules":"BWEB|SREL|BOOS","query":"state"}
+Rendered shared/_search.html.haml (2.5ms)
+Rendered shared/_results_summary.html.haml (1.3ms)
+Rendered shared/_affiliate_vertical_navigation.html.haml (6.2ms)
+Rendered searches/_result.html.haml (1.1ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.6ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered searches/_result.html.haml (0.8ms)
+Rendered shared/_related_topics.html.haml (3.0ms)
+Rendered shared/_related_topics_wrapper.html.haml (3.2ms)
+Rendered shared/_searchresults.html.haml (21.7ms)
+Rendered searches/_affiliate_nested_css.html.haml (290.9ms)
+Rendered searches/_affiliate_css_overrides.html.haml (26.3ms)
+Rendered shared/_webtrends_affiliates.erb (0.1ms)
+Rendered searches/index.html.haml within layouts/affiliate (362.8ms)
+Completed 200 OK in 474ms (Views: 360.9ms | ActiveRecord: 42.2ms | Solr: 7.8ms)
 
 Started GET "/sayt?q=passpor&callback=jsonp1307071011660&featureClass=P&style=full&maxRows=12&name_startsWith=passpor" for 98.160.236.36 at Fri Jun 03 03:17:38 +0000 2011
+  SQL (1.5ms)  describe `affiliates_users`
+  SQL (1.3ms)  describe `affiliates_twitter_profiles`
+  Processing by SaytController#index as JS
+  Parameters: {"m"=>"false", "callback"=>"jQuery17102049060151912272_1336508588876", "q"=>"passpor", "aid"=>"1949907269", "_"=>"1336508595102"}
+Completed 200 OK in 32ms

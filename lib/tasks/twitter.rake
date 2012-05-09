@@ -1,6 +1,6 @@
 namespace :usasearch do
   namespace :twitter do
-    
+
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
     task :stream, :run_once, :needs => :environment do |t, args|
       run_once = args.run_once == "true" ? true : false
@@ -32,7 +32,7 @@ namespace :usasearch do
         unless profile_ids.empty?
           twitter_client.follow(profile_ids) do |status, client|
             logger.info "[TWITTER] New tweet received: @#{status.user.screen_name}: #{status.text}"
-            tweet = Tweet.create(:tweet_id => status.id, :tweet_text => status.text, :published_at => status.created_at, :twitter_profile_id => status.user.id) if profile_ids.include?(status.user.id)
+            Tweet.create(:tweet_id => status.id, :tweet_text => status.text, :published_at => status.created_at, :twitter_profile_id => status.user.id) if profile_ids.include?(status.user.id)
           end
         end
         break if run_once

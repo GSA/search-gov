@@ -8,7 +8,7 @@ describe TopSearch do
     }
     TopSearch.create!(@valid_attributes)
   end
-  
+
   it { should belong_to :affiliate }
   it { should validate_presence_of :position }
   it { should validate_uniqueness_of(:position).scoped_to(:affiliate_id) }
@@ -22,10 +22,4 @@ describe TopSearch do
     end
   end
 
-  describe "#find_active_entries" do
-    it "should retrieve 5 entries with query that is not null, sorted by position in ascending order that do not have an affiliate id" do
-      TopSearch.should_receive(:all).with(:conditions => "query IS NOT NULL AND affiliate_id IS NULL", :order => "position ASC", :limit => 5)
-      TopSearch.find_active_entries
-    end
-  end
 end

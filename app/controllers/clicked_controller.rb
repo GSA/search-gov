@@ -1,4 +1,7 @@
 class ClickedController < ActionController::Metal
+  include ActionController::Rendering
+  include ActionController::Instrumentation
+
   def index
     unless params['u'].blank?
       url = CGI.unescape(params['u']).gsub(' ', '+')
