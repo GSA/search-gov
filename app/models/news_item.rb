@@ -1,6 +1,7 @@
 class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :description, :link, :published_at, :guid, :rss_feed_id, :rss_feed_url_id
   validates_uniqueness_of :guid, :scope => :rss_feed_id
+  validates_uniqueness_of :link, :scope => :rss_feed_id
   belongs_to :rss_feed
   belongs_to :rss_feed_url
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new

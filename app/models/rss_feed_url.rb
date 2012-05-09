@@ -35,7 +35,7 @@ class RssFeedUrl < ActiveRecord::Base
           raw_description = item.xpath(FEED_ELEMENTS[feed_type]["description"]).inner_text
           description = Nokogiri::HTML(raw_description).inner_text.squish
 
-          unless rss_feed.news_items.exists?(:guid => guid)
+          unless rss_feed.news_items.exists?(['guid = ? OR link = ?', guid, link])
             news_items.create!(:rss_feed => rss_feed,
                                :link => link,
                                :title => title,
