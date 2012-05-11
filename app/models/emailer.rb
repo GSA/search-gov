@@ -106,12 +106,8 @@ class Emailer < ActionMailer::Base
     @user = user
     @affiliate = affiliate
     @current_user = current_user
-    if @email_template_body.blank?
-      return false
-    else
-      mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-        format.text { render :text => ERB.new(@email_template_body).result(binding) }
-      end
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
