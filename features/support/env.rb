@@ -63,6 +63,8 @@ redis_options = {
 }.map { |k, v| "#{k} #{v}" }.join("\n")
 `echo '#{redis_options}' | redis-server -`
 
+EmailTemplate.load_default_templates
+
 at_exit do
   %x{
     cat #{REDIS_PID} | xargs kill -9

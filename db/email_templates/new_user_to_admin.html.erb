@@ -3,9 +3,9 @@
 Email: <%= @user.email %>
 Organization name: <%= @user.organization_name %>
 
-<% if @user.requires_manual_approval? -%>
+<% if @user.requires_manual_approval? %>
   This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.
-<% elsif @user.affiliates.any? -%>
+<% elsif @user.affiliates.any? %>
   This user was added to affiliate '<%= @user.affiliates.last.display_name %>' by <%= @user.inviter.contact_name %>. This user will be automatically approved after they verify their email.
-<% end -%>
+<% end %>
 

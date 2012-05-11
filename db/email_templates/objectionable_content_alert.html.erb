@@ -1,0 +1,9 @@
+These searches turned up some results that you might not expect to be there:
+
+<UL>
+<% @search_terms.each do |term| %>
+  <LI>
+    <%= ActionController::Base.helpers.link_to term, search_url(:query => term, :filter => "off", :input_form => "advanced") %>
+  </LI>
+<% end %>
+</UL>

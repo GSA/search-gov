@@ -68,6 +68,8 @@ RSpec.configure do |config|
       "databases" => 16
     }.map { |k, v| "#{k} #{v}" }.join("\n")
     `echo '#{redis_options}' | redis-server -`
+  
+    EmailTemplate.load_default_templates
   end
 
   config.before(:each) do

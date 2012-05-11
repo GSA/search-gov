@@ -61,8 +61,8 @@ describe Emailer do
 
     it "should contain lists of unadopted features for each affiliate that has any" do
       @email.should have_body_text(/I noticed you registered for a new USASearch account a few days ago so I wanted to follow up to see if you have any questions/)
-      @email.should have_body_text(/another.gov:\nSAYT/)
-      @email.should have_body_text(/laksjdflkjasldkjfalskdjf.gov:\nDiscovery Tag\nSAYT/)
+      @email.should have_body_text(/another.gov:\n\nSAYT/)
+      @email.should have_body_text(/laksjdflkjasldkjfalskdjf.gov:\n\nDiscovery Tag\n\nSAYT/)
     end
   end
 
@@ -89,7 +89,6 @@ describe Emailer do
       @email.should have_body_text("NPS Site (nps.gov):\nDiscovery Tag\nSAYT")
       @email.should have_body_text("Noaa Site (noaa.gov):\nSAYT")
     end
-
   end
 
   describe "#new_user_email_verification" do
@@ -132,7 +131,7 @@ describe Emailer do
       end
 
       it "should have 'This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.' text" do
-        @email.should have_body_text /This user signed up as an affiliate, but the user doesn't have a \.gov or \.mil email address\. Please verify and approve this user\./
+        @email.should have_body_text(/This user signed up as an affiliate, but the user doesn't have a \.gov or \.mil email address\. Please verify and approve this user\./)
       end
     end
 
@@ -211,6 +210,28 @@ describe Emailer do
 
     it "should have complete registration link" do
       @email.should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/)
+    end
+  end
+  
+  context "when a template is missing" do
+    before do
+      @user = mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token')
+      @current_user = mock(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane')
+      @affiliate = affiliates(:basic_affiliate)
+      EmailTemplate.destroy_all
+      @email = Emailer.welcome_to_new_user_added_by_affiliate(@affiliate, @user, @current_user)
+    end
+    
+    it "should send an email to the developers" do
+      @email.should deliver_to(Emailer::DEVELOPERS_EMAIL)
+    end
+    
+    it "should tell the developers to create a template for that method" do
+      @email.should have_body_text(/Someone tried to send an email via the welcome_to_new_user_added_by_affiliate method, but we don\'t have a template for that method.  Please create one.  Thanks!/)
+    end
+    
+    after do
+      EmailTemplate.load_default_templates
     end
   end
 end

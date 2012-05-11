@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509170050) do
+ActiveRecord::Schema.define(:version => 20120510153651) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20120509170050) do
     t.string   "wt_dcsimg_hash",                            :limit => 50
     t.string   "wt_dcssip",                                 :limit => 50
     t.string   "ga_web_property_id",                        :limit => 20
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -95,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120509170050) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "youtube_handles"
   end
 
@@ -272,6 +272,13 @@ ActiveRecord::Schema.define(:version => 20120509170050) do
   end
 
   add_index "document_collections", ["affiliate_id", "name"], :name => "index_document_collections_on_affiliate_id_and_name", :unique => true
+
+  create_table "email_templates", :force => true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "excluded_domains", :force => true do |t|
     t.string   "domain"
