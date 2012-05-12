@@ -384,11 +384,12 @@ Feature: Affiliate Search
     And the following Agency Urls exist:
       | name | locale | url                         |
       | SSA  | en     | http://www.ssa.gov/         |
-      | SSA  | es     | http://www.ssa.gov/espanol/ |
+      | SSA  | es     | http://www.ssa.gov/espanol/calculador/ |
     When I am on gobiernousa's search page
     And I fill in "query" with "ssa.gov"
     And I press "Buscar"
-    Then I should see the agency govbox
+    Then I should see "Sitio oficial"
+    And I should see the agency govbox
     When I fill in "query" with "beneficios" in the agency govbox
     And I press "Buscar" in the agency govbox
     Then I should see the browser page titled "beneficios site:ssa.gov - GobiernoUSA.gov resultados de la búsqueda"
@@ -441,7 +442,7 @@ Feature: Affiliate Search
     And the following Agency Urls exist:
       | name | locale | url                         |
       | SSA  | en     | http://www.ssa.gov/         |
-      | SSA  | es     | http://www.ssa.gov/espanol/ |
+      | SSA  | es     | http://www.ssa.gov/espanol/calculador/ |
     And the following Agency Popular Urls exist:
       | name | locale | rank | title                                 | url                                                |
       | SSA  | en     | 20   | Get or replace a Social Security card | http://www.ssa.gov/ssnumber/                       |

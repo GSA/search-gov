@@ -5,22 +5,22 @@ class Agency < ActiveRecord::Base
   has_many :agency_urls, :dependent => :destroy
   has_many :agency_popular_urls, :dependent => :destroy, :order => 'source ASC, rank DESC'
   after_save :generate_agency_queries
-  
+
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
   SOCIAL_MEDIA_SERVICES = %w{Facebook Twitter YouTube Flickr}
-  
+
   def twitter_profile_link
     self.twitter_username.present? ? "http://twitter.com/#{self.twitter_username}" : nil
   end
-  
+
   def facebook_profile_link
     self.facebook_username.present? ? "http://facebook.com/#{self.facebook_username}" : nil
   end
-  
+
   def youtube_profile_link
     self.youtube_username.present? ? "http://youtube.com/#{self.youtube_username}" : nil
   end
-  
+
   def flickr_profile_link
     self.flickr_url.present? ? self.flickr_url : nil
   end
@@ -28,13 +28,13 @@ class Agency < ActiveRecord::Base
   def displayable_popular_urls(locale = I18n.locale)
     @cached_displayable_popular_urls ||= compute_displayable_popular_urls(locale)
   end
-  
+
   def has_phone_number?
     self.phone.present? or self.toll_free_phone.present? or self.tty_phone.present?
   end
-  
+
   private
-  
+
   def generate_agency_queries
     self.agency_queries.destroy_all
     self.agency_queries << AgencyQuery.new(:phrase => self.domain)
@@ -54,6 +54,5 @@ class Agency < ActiveRecord::Base
 
   def compute_displayable_popular_urls(locale)
     locale.blank? ? self.agency_popular_urls : self.agency_popular_urls.with_locale(locale)
-    #self.agency_popular_urls
   end
 end
