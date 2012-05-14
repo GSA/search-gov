@@ -31,12 +31,14 @@ describe SiteDomain do
       before do
         affiliate.site_domains.destroy_all
         affiliate.site_domains.create!(:domain => 'usa.gov')
+        affiliate.site_domains.create!(:domain => '.mil')
       end
 
       it "should not be valid" do
         affiliate.site_domains.build(:domain => 'usa.gov/subdir').should_not be_valid
         affiliate.site_domains.build(:domain => 'www.usa.gov').should_not be_valid
         affiliate.site_domains.build(:domain => 'usa.gov').should_not be_valid
+        affiliate.site_domains.build(:domain => 'dod.mil').should_not be_valid
       end
     end
   end

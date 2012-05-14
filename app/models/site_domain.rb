@@ -94,7 +94,8 @@ class SiteDomain < ActiveRecord::Base
 
   def domain_coverage
     existing = self.affiliate.site_domains.detect do |existing_site_domain|
-      self.domain != existing_site_domain.domain and (self.domain.start_with?(existing_site_domain.domain) or self.domain.include?(".#{existing_site_domain.domain}"))
+      period_prefix = existing_site_domain.domain.starts_with?('.') ? '' : '.'
+      self.id != existing_site_domain.id and (self.domain.start_with?(existing_site_domain.domain) or self.domain.include?(period_prefix + existing_site_domain.domain))
     end
     errors.add(:base, "'#{self.domain}' is already covered by your existing site domain '#{existing.domain}'") if existing
   end

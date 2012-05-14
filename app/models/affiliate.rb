@@ -371,7 +371,8 @@ class Affiliate < ActiveRecord::Base
       added_or_updated_site_domains << site_domain if site_domain.new_record? and site_domain.save
 
       domain_list = domain_list.drop(1).delete_if do |domain|
-        if  domain.start_with?(domain_list.first) or domain.include?(".#{domain_list.first}")
+        period_prefix = domain_list.first.starts_with?('.') ? '' : '.'
+        if  domain.start_with?(domain_list.first) or domain.include?(period_prefix + domain_list.first)
           site_domain = site_domain_hash[domain]
           site_domain.destroy unless site_domain.new_record?
           true
