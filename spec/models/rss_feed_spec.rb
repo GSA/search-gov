@@ -123,7 +123,8 @@ describe RssFeed do
       it "should freshen non managed rss_feeds" do
         blog = rss_feeds(:white_house_blog)
         gallery = rss_feeds(:white_house_press_gallery)
-        RssFeed.should_receive(:all).with(:conditions => { :is_managed => false}).and_return([blog, gallery])
+        RssFeed.should_receive(:all).with(:conditions => { :is_managed => false},
+                                          :order => 'affiliate_id ASC, id ASC').and_return([blog, gallery])
         blog.should_receive(:freshen)
         gallery.should_receive(:freshen)
         RssFeed.refresh_all
@@ -133,7 +134,8 @@ describe RssFeed do
     context "when ignore_managed_feeds is false" do
       it "should freshen managed rss_feeds" do
         managed = mock_model(RssFeed)
-        RssFeed.should_receive(:all).with(:conditions => { :is_managed => true}).and_return([managed])
+        RssFeed.should_receive(:all).with(:conditions => { :is_managed => true},
+                                          :order => 'affiliate_id ASC, id ASC').and_return([managed])
         managed.should_receive(:freshen)
         RssFeed.refresh_all(true)
       end

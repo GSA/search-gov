@@ -55,7 +55,7 @@ class RssFeed < ActiveRecord::Base
   end
 
   def self.refresh_all(freshen_managed_feeds = false)
-    all(:conditions => { :is_managed => freshen_managed_feeds }).each(&:freshen)
+    all(:conditions => { :is_managed => freshen_managed_feeds }, :order => 'affiliate_id ASC, id ASC').each(&:freshen)
   end
 
   private
