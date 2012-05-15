@@ -95,7 +95,7 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds, :reject_if => proc { |a| a[:name].blank? and a[:rss_feed_urls_attributes].present? && a[:rss_feed_urls_attributes]['0'][:url].blank? }
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
-  accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a['connected_affiliate_id'].blank? and a['label'].blank? }
+  accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -708,7 +708,7 @@ class Affiliate < ActiveRecord::Base
   def update_error_keys
     swap_error_key(:"rss_feeds.base", :base)
     swap_error_key(:"site_domains.domain", :domain)
-    swap_error_key(:"connections.connected_affiliate_id", :related_site)
+    swap_error_key(:"connections.connected_affiliate_id", :related_site_handle)
     swap_error_key(:"connections.label", :related_site_label)
     swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
     swap_error_key(:staged_header_image_file_size, :header_image_file_size)

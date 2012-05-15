@@ -1,5 +1,5 @@
 - now = Time.now.to_i
 = fields_for "affiliate[connections_attributes][#{now}]", Connection.new do |f|
   :plain
-    jQuery('.connections-items table').append("#{escape_javascript(render('connection_fields', :f => f, :index => now, :available_affiliates => @available_affiliates))}");
+    jQuery('.connections-items table').append("#{escape_javascript(render('connection_fields', :f => f, :index => now))}");
     setupConnections();

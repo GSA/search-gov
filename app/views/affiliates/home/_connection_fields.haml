@@ -1,7 +1,7 @@
 %tr.row-item.connection
-  %td.affiliate.draggable
-    = f.label :connected_affiliate_id, "Site #{index}", :class => 'hide'
-    = f.select :connected_affiliate_id, available_affiliates, :include_blank => 'Select a site'
+  %td.name.draggable
+    = f.label :affiliate_name, "Connection site handle #{index}", :class => 'hide'
+    = f.text_field :affiliate_name
     = f.text_field :position, { :class => 'position hide' }
   %td.name
     = f.label :label, "Connection label #{index}", :class => 'hide'

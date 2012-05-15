@@ -277,7 +277,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def setup_for_results_modules_actions
-    @available_affiliates = current_user.affiliates.where("id <> ?", @affiliate.id).collect { |a| [a.display_name, a.id] }
     @affiliate.connections.build if @affiliate.connections.blank?
   end
 end

@@ -2588,10 +2588,13 @@ Feature: Affiliate clients
     And I uncheck "Show RSS feed 0 in govbox"
     And I check "Show RSS feed 2 in govbox"
     And I uncheck "Is related searches enabled"
+    And I fill in "Connection site handle 0" with "es.aff.gov"
     And I fill in "Connection label 0" with "Search in Spanish"
-    And I select "Spanish site" from "Site 0"
     And I press "Save"
     Then I should see "Site was successfully updated."
+    When I follow "Results modules"
+    Then the "Connection site handle 0" field should contain "es.aff.gov"
+    And the "Connection label 0" field should contain "Search in Spanish"
 
     When I go to aff.gov's search page
     And I fill in "query" with "item"
@@ -2618,11 +2621,17 @@ Feature: Affiliate clients
     And I follow "Results modules"
     And I fill in "Connection label 0" with "Search in Spanish"
     And I press "Save"
-    Then I should see "Related site can't be blank"
-    When I select "Spanish site" from "Site 0"
+    Then I should see "Related site handle can't be blank"
+    When I fill in "Connection site handle 0" with "Spanish site"
     And I fill in "Connection label 0" with ""
     And I press "Save"
     Then I should see "Related site label can't be blank"
+    When I fill in "Connection site handle 0" with "en.aff.gov"
+    And I press "Save"
+    Then I should see "Related site handle can't be the same as the current site handle"
+    When I fill in "Connection site handle 0" with "<b>someinvalidname</b>"
+    And I press "Save"
+    Then I should see "Related site handle <b>someinvalidname</b> is invalid"
 
   Scenario: Editing 3rd Party Tracking
     Given the following Affiliates exist:
