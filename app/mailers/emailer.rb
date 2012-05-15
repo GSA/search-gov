@@ -7,7 +7,7 @@ class Emailer < ActionMailer::Base
     @subject += "Password Reset Instructions"
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token)
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -16,7 +16,7 @@ class Emailer < ActionMailer::Base
     @subject += "New user signed up for USA Search Services"
     @user = user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -27,7 +27,7 @@ class Emailer < ActionMailer::Base
       @subject += "Features adopted by customers yesterday"
       @affiliate_feature_additions_grouping = affiliate_feature_additions_grouping
       mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-        format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+        format.text { render :text => ERB.new(@email_template_body).result(binding) }
       end
     end
   end
@@ -37,7 +37,7 @@ class Emailer < ActionMailer::Base
     @subject += "Getting started with USASearch features"
     @affiliates_with_unused_features = affiliates_with_unused_features
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -46,7 +46,7 @@ class Emailer < ActionMailer::Base
     @subject += 'Email Verification'
     @user = user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -55,7 +55,7 @@ class Emailer < ActionMailer::Base
     @subject += "Welcome to the USASearch Affiliate Program"
     @user = user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -64,7 +64,7 @@ class Emailer < ActionMailer::Base
     @subject += "Welcome to the USASearch Program: APIs and Web Services"
     @user = user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -75,7 +75,7 @@ class Emailer < ActionMailer::Base
     charset "iso-8859-1"
     @message = message
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end    
   end
 
@@ -85,7 +85,7 @@ class Emailer < ActionMailer::Base
     @affiliate = affiliate
     @user = user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -96,7 +96,7 @@ class Emailer < ActionMailer::Base
     @user = user
     @current_user = current_user
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -116,7 +116,7 @@ class Emailer < ActionMailer::Base
     @subject += "Sauce Labs Report"
     @sauce_labs_link = sauce_labs_link
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -126,7 +126,7 @@ class Emailer < ActionMailer::Base
     @subject += "Objectionable Content Alert"
     @search_terms = terms
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -136,10 +136,43 @@ class Emailer < ActionMailer::Base
     @subject += "The header and footer for #{affiliate.display_name} have been changed"
     @affiliate = affiliate
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) } if @email_template_body
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
-
+  
+  def affiliate_monthly_report(user, report_date)
+    setup_email(user.email, __method__)
+    @subject += "Monthly Search Analytics Report for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year}"
+    @report_date = report_date
+    last_month = @report_date - 1.month
+    last_year = @report_date - 1.year
+    @affiliate_stats = {}
+    user.affiliates.each do |affiliate|
+      stats = {}
+      stats[:affiliate] = affiliate
+      stats[:total_queries] = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, affiliate.name)
+      stats[:total_clicks] = DailySearchModuleStat.where({:day => @report_date.beginning_of_month..@report_date.end_of_month, :affiliate_name => affiliate.name}).sum(:clicks)
+      stats[:last_month_total_queries] = DailyUsageStat.monthly_totals(last_month.year, last_month.month, affiliate.name)
+      stats[:last_year_total_queries] = DailySearchModuleStat.where({:day => last_year.beginning_of_month..last_year.end_of_month, :affiliate_name => affiliate.name}).sum(:clicks)
+      stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
+      stats[:last_year_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_year_total_queries])
+      stats[:popular_queries] = DailyQueryStat.most_popular_terms(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month, 10)
+      @affiliate_stats[affiliate.name] = stats
+    end
+    @total_stats = {:total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0}
+    @affiliate_stats.each do |affiliate_name, affiliate_stats|
+      @total_stats[:total_queries] += affiliate_stats[:total_queries]
+      @total_stats[:total_clicks] += affiliate_stats[:total_clicks]
+      @total_stats[:last_month_total_queries] += affiliate_stats[:last_month_total_queries]
+      @total_stats[:last_year_total_queries] += affiliate_stats[:last_year_total_queries]
+    end
+    @total_stats[:last_month_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_month_total_queries])
+    @total_stats[:last_year_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_year_total_queries])
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+  
   private
 
   def setup_email(recipients, method_name)
@@ -155,5 +188,10 @@ class Emailer < ActionMailer::Base
       @recipients = DEVELOPERS_EMAIL
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
+  end
+  
+  def calculate_percent_change(current_value, previous_value)
+    percent_change = previous_value != 0 ? (current_value.to_f - previous_value.to_f) / previous_value.to_f : 0
+    (previous_value < current_value ? -1 : 1) * percent_change * 100
   end
 end

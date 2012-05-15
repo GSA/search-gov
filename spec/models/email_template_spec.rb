@@ -19,7 +19,17 @@ describe EmailTemplate do
   describe "#load_default_templates" do
     it "should load all the templates when no parameter is passed in" do
       EmailTemplate.load_default_templates
-      EmailTemplate.count.should == 14
+      EmailTemplate.count.should == 15
+    end
+    
+    context "when specifying a specific set of templates" do
+      it "should only reload those templates, and leave the rest alone" do
+        EmailTemplate.count.should == 15
+        before_time = Time.now
+        sleep(1)
+        EmailTemplate.load_default_templates(["affiliate_monthly_report", "mobile_feedback"])
+        EmailTemplate.all(:conditions => ['created_at > ?', before_time]).size.should == 2
+      end
     end    
   end
 end

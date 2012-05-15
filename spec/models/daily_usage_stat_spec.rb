@@ -24,17 +24,20 @@ describe DailyUsageStat do
       @year = 2010
       @month = 03
       @affiliate = affiliates(:usagov_affiliate)
+      DailyUsageStat.create(:day => Date.parse('2010-03-01'), :affiliate => @affiliate.name, :total_queries => 100)
+      DailyUsageStat.create(:day => Date.parse('2010-03-02'), :affiliate => @affiliate.name, :total_queries => 100)
+      DailyUsageStat.create(:day => Date.parse('2010-03-02'), :affiliate => "other_affiliate", :total_queries => 100)
     end
 
     it "should sum up all the DailyUsageStat values for the given month" do
-      DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, @affiliate.name).exactly(1).times
-      DailyUsageStat.monthly_totals(@year, @month, @affiliate.name)
+      result = DailyUsageStat.monthly_totals(@year, @month, @affiliate.name)
+      result.should == 200
     end
     
     context "when no affiliate is passed" do 
       it "should sum up all the DailyUsageStat values for the given month for all affiliates" do
-        DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, nil).exactly(1).times
-        DailyUsageStat.monthly_totals(@year, @month)
+        result = DailyUsageStat.monthly_totals(@year, @month)
+        result.should == 300
       end
     end
   end

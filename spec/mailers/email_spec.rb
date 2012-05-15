@@ -213,6 +213,44 @@ describe Emailer do
     end
   end
   
+  context "#affiliate_monthly_report" do
+    fixtures :users, :affiliates
+    before do
+      @user = users(:affiliate_manager)
+      @affiliate = affiliates(:basic_affiliate)
+      @report_date = Date.parse('2012-04-13')
+      DailyUsageStat.destroy_all
+      DailySearchModuleStat.destroy_all
+      [@report_date, @report_date - 1.month, @report_date - 1.year].each_with_index do |report_date, index|
+        DailyUsageStat.create!(:day => report_date, :affiliate => @affiliate.name, :total_queries => 100 * ((index + 1) * (index % 2 == 0 ? 1 : -1)))
+        DailySearchModuleStat.create!(:day => report_date, :affiliate_name => @affiliate.name, :clicks => 100 * ((index + 1) * (index % 2 == 0 ? 1 : -1)), :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
+      end
+      DailyQueryStat.destroy_all
+      ['query1', 'query2', 'query3'].each_with_index do |query, index|
+        DailyQueryStat.create!(:day => @report_date, :query => query, :affiliate => @affiliate.name, :times => 100)
+      end
+      @email = Emailer.affiliate_monthly_report(@user, @report_date)
+    end
+    
+    it "should be sent to the email address of the user specified" do
+      @email.should deliver_to(@user.email)
+    end
+    
+    it "should have a subject which includes the month/year specified" do
+      @email.should have_subject(/April 2012/)
+    end
+    
+    it "should calculate the proper totals for the data in the database" do
+      @email.should have_body_text(/100    150.00%    -66.67%   100/)
+      @email.should have_body_text(/0    0.00%    0.00%   0/)
+      @email.should have_body_text(/Most Popular Queries for April 2012/)
+      @email.should have_body_text(/NPEspanol Site\n  \n  Not enough historic data to compute most popular/)
+      @email.should have_body_text(/query1: 100/)
+      @email.should have_body_text(/query2: 100/)
+      @email.should have_body_text(/query3: 100/)
+    end
+  end
+  
   context "when a template is missing" do
     before do
       @user = mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token')
