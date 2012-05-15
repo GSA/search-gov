@@ -108,3 +108,18 @@ end
 Then /^I should see (\d+) video news results$/ do |count|
   page.should have_selector(".newsitem.video", :count => count)
 end
+
+Given /^the following Twitter Profiles exist:$/ do |table|
+  table.hashes.each do |hash|
+    twitter_profile = TwitterProfile.create!(:screen_name => hash[:screen_name], :twitter_id => hash[:twitter_id])
+    affiliate = Affiliate.find_by_name(hash[:affiliate])
+    affiliate.twitter_profiles << twitter_profile
+  end
+end
+
+Given /^the following Tweets exist:$/ do |table|
+  table.hashes.each do |hash|
+    Tweet.create!(:tweet_text => hash[:tweet_text], :tweet_id => hash[:tweet_id], :published_at => Time.parse(hash[:published_at]), :twitter_profile_id => hash[:twitter_profile_id])
+  end
+  Tweet.reindex
+end

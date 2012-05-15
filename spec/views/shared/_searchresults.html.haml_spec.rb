@@ -23,6 +23,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:scope_id)
     @search.stub!(:agency)
     @search.stub!(:med_topic)
+    @search.stub!(:tweets)
     @search.stub!(:has_featured_collections?)
     @search.stub!(:indexed_documents)
     @search.stub!(:matching_site_limits).and_return []

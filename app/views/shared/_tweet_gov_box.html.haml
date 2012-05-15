@@ -1,0 +1,8 @@
+- tweet = search.tweets.hits.first
+.twitter-govbox.govbox{:style => 'margin-bottom: 12px;'}
+  %h3.alt{:style => 'margin-bottom: 4px; font-size: 1.15em'}
+    Recent tweet for #{search.query} (#{ link_to "@#{tweet.instance.twitter_profile.screen_name}", tweet.instance.twitter_profile.link_to_profile })
+  %p
+    = highlight_hit(tweet, :tweet_text).html_safe
+  %p{:style => 'text-align: right;'}
+    = link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet

@@ -17,7 +17,8 @@ class WebSearch < Search
               :featured_collections,
               :indexed_documents,
               :indexed_results,
-              :matching_site_limits
+              :matching_site_limits,
+              :tweets
 
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
@@ -233,6 +234,7 @@ class WebSearch < Search
       @news_items = NewsItem.search_for(query, affiliate.rss_feeds.non_videos.govbox_enabled, nil, 1)
       @video_news_items = NewsItem.search_for(query, affiliate.rss_feeds.videos.govbox_enabled, nil, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
+      @tweets = Tweet.search_for(query, affiliate.twitter_profiles.collect(&:twitter_id)) unless affiliate.twitter_profiles.collect(&:twitter_id).empty?
     end
   end
 
@@ -245,6 +247,7 @@ class WebSearch < Search
     modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
+    modules << "TWEET" unless self.tweets.nil? or self.tweets.total.zero?
     vertical =
       case self.class.to_s
         when "ImageSearch"

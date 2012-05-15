@@ -982,6 +982,37 @@ describe WebSearch do
         end
       end
     end
+    
+    context "tweets" do
+      before do
+        @tweet = Tweet.create!(:tweet_text => "I love america.", :published_at => Time.now, :twitter_profile_id => 123, :tweet_id => 123)
+        Tweet.reindex
+        twitter_profile = TwitterProfile.create!(:screen_name => 'test', :twitter_id => 123)
+        @affiliate.twitter_profiles << twitter_profile
+      end
+      
+      it "should find the most recent relevant tweet" do
+        search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
+        search.run
+        search.tweets.should_not be_nil
+        search.tweets.results.should_not be_empty
+        search.tweets.results.first.should == @tweet
+      end
+      
+      it "should not find tweets if not on the first page" do
+        search = WebSearch.new(:query => 'america', :affiliate => @affiliate, :page => 3)
+        search.run
+        search.tweets.should be_nil
+      end
+      
+      it "should not find any tweets if the affiliate has not Twitter Profiles" do
+        @affiliate.twitter_profiles.delete_all
+        Tweet.should_not_receive(:search_for)
+        search = WebSearch.new(:query => 'america', :affiliate => @affiliate, :page => 3)
+        search.run
+        search.tweets.should be_nil
+      end
+    end
 
     context "on normal search runs" do
       before do

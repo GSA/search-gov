@@ -18,4 +18,14 @@ describe TwitterProfile do
   end
   it { should have_many :tweets }
   it { should have_and_belong_to_many :affiliates }
+  
+  describe "#link_to_profile" do
+    before do
+      @profile = TwitterProfile.create!(@valid_attributes)
+    end
+    
+    it "should output a properly formatted link to the tweet" do
+      @profile.link_to_profile.should == "http://twitter.com/#!/USASearch"
+    end
+  end
 end

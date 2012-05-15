@@ -633,4 +633,20 @@ Feature: Affiliate Search
     And I fill in "query" with ""
     And I press "Buscar"
     Then I should see the browser page titled "Spanish Videos - Spanish bar site Search Results"
-
+    
+  Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | contact_name | locale |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
+    And the following Twitter Profiles exist:
+      | screen_name   | twitter_id  | affiliate |
+      | USASearch     | 123         | bar.gov   |
+    And the following Tweets exist:
+      | tweet_text          | tweet_id    | published_at        | twitter_profile_id  |
+      | AMERICA is great!   | 123456      | 2012-05-01 00:00:00 | 123                 |
+    When I am on bar.gov's search page
+    And I fill in "query" with "america"
+    And I press "Search"
+    Then I should see "Recent tweet for america (@USASearch)"
+    And I should see "AMERICA is great!"
+    And I should see "AMERICA" in bold font
