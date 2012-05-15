@@ -26,6 +26,7 @@ describe "Report generation rake tasks" do
         DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 5, :day => Date.yesterday, :locale => 'en')
         DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query2', :times => 7, :day => Date.yesterday, :locale => 'en')
         DailyQueryStat.create!(:affiliate => 'affiliate2', :query => 'query2', :times => 9, :day => Date.yesterday, :locale => 'en')
+        DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 500, :day => Date.current, :locale => 'en')
         @affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count","query1,11,5","query2,10,7",""].join("\n")
         @affiliate2_csv_output = ["Query,Raw Count,IP-Deduped Count","query2,22,9",""].join("\n")
         @all_csv_output = ["Query,Raw Count,IP-Deduped Count","query2,32,16","query1,11,5",""].join("\n")
@@ -127,6 +128,13 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}_weekly.csv", anything(), anything())
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymmdd}_weekly.csv", anything(), anything())
             @rake[@task_name].invoke(@input_file_name, "weekly", "1000", '2011-02-02')
+          end
+
+          context "when processing data for the current Sunday-based week" do
+            it "should not include partial data accumulated for today" do
+              AWS::S3::S3Object.should_receive(:store).with(anything(), @affiliate1_csv_output, AWS_BUCKET_NAME)
+              @rake[@task_name].invoke(@input_file_name, "weekly", "1000")
+            end
           end
         end
 

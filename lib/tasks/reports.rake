@@ -16,7 +16,7 @@ namespace :usasearch do
         query_end_date = input_day
       elsif period == "weekly"
         query_start_date = input_day
-        query_end_date = input_day + 6.days
+        query_end_date = [input_day + 6.days, Date.yesterday].min
       else
         query_start_date = query_end_date = input_day
       end
