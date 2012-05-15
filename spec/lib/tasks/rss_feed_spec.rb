@@ -17,10 +17,25 @@ describe "Affiliate RSS feed rake tasks" do
       @rake[@task_name].prerequisites.should include("environment")
     end
 
-    it "should refresh all affiliate RSS feeds" do
-      RssFeed.should_receive(:refresh_all).once
-      @rake[@task_name].invoke
+    context "without freshen_managed_feeds parameter" do
+      it "should refresh non managed affiliate RSS feeds" do
+        RssFeed.should_receive(:refresh_all).with(false)
+        @rake[@task_name].invoke
+      end
+    end
+
+    context "with freshen_managed_feeds=true parameter" do
+      it "should refresh managed affiliate RSS feeds" do
+        RssFeed.should_receive(:refresh_all).with(true)
+        @rake[@task_name].invoke('true')
+      end
+    end
+
+    context "with freshen_managed_feeds != true parameter" do
+      it "should refresh managed affiliate RSS feeds" do
+        RssFeed.should_receive(:refresh_all).with(false)
+        @rake[@task_name].invoke('false')
+      end
     end
   end
-
 end
