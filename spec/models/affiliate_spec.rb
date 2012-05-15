@@ -64,7 +64,9 @@ describe Affiliate do
     end
 
     it "should downcase the name if it's uppercase" do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(:name => 'AffiliateSite'))
+      affiliate = Affiliate.new(@valid_create_attributes)
+      affiliate.name = 'AffiliateSite'
+      affiliate.save!
       affiliate.name.should == "affiliatesite"
     end
 
@@ -155,9 +157,12 @@ describe Affiliate do
       end
 
       it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
-        Affiliate.create!(@valid_attributes)
-        @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))
-        @duplicate_affiliate.save.should be_false
+        affiliate = Affiliate.new(@valid_attributes)
+        affiliate.name = @valid_attributes[:name]
+        affiliate.save!
+        duplicate_affiliate = Affiliate.new(@valid_attributes)
+        duplicate_affiliate.name = @valid_attributes[:name].upcase
+        duplicate_affiliate.save.should be_false
       end
 
       it "should populate default search label for English site" do
