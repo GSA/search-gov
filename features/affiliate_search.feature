@@ -373,28 +373,6 @@ Feature: Affiliate Search
     Then I should see the browser page titled "benefits site:ssa.gov - USA.gov Search Results"
     And the "query" field should contain "benefits site:ssa.gov"
 
-#  Scenario: Searching within an agency on Spanish SERP
-#    Given the following Affiliates exist:
-#      | display_name    | name        | contact_email | contact_name | domains | search_results_page_title                      | is_agency_govbox_enabled | locale |
-#      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | .gov    | {Query} - {SiteName} Search Results            | true                     | en     |
-#      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | .gov    | {Query} - {SiteName} resultados de la búsqueda | true                     | es     |
-#    And the following Agency entries exist:
-#      | name | domain  |
-#      | SSA  | ssa.gov |
-#    And the following Agency Urls exist:
-#      | name | locale | url                         |
-#      | SSA  | en     | http://www.ssa.gov/         |
-#      | SSA  | es     | http://www.ssa.gov/espanol/calculador/ |
-#    When I am on gobiernousa's search page
-#    And I fill in "query" with "ssa.gov"
-#    And I press "Buscar"
-#    Then I should see "Sitio oficial"
-#    And I should see the agency govbox
-#    When I fill in "query" with "beneficios" in the agency govbox
-#    And I press "Buscar" in the agency govbox
-#    Then I should see the browser page titled "beneficios site:ssa.gov - GobiernoUSA.gov resultados de la búsqueda"
-#    And the "query" field should contain "beneficios site:ssa.gov"
-
   Scenario: Searchers see agency popular pages in English
     Given the following Affiliates exist:
       | display_name | name       | contact_email  | contact_name | domains | is_agency_govbox_enabled  |
@@ -431,31 +409,6 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
-
-#  Scenario: Searchers see agency popular pages in Spanish
-#    Given the following Affiliates exist:
-#      | display_name    | name        | contact_email | contact_name | locale | is_agency_govbox_enabled |
-#      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | es     | true                     |
-#    And the following Agency entries exist:
-#      | name | domain  |
-#      | SSA  | ssa.gov |
-#    And the following Agency Urls exist:
-#      | name | locale | url                         |
-#      | SSA  | en     | http://www.ssa.gov/         |
-#      | SSA  | es     | http://www.ssa.gov/espanol/calculador/ |
-#    And the following Agency Popular Urls exist:
-#      | name | locale | rank | title                                 | url                                                |
-#      | SSA  | en     | 20   | Get or replace a Social Security card | http://www.ssa.gov/ssnumber/                       |
-#      | SSA  | en     | 10   | Apply online for retirement benefits  | http://www.ssa.gov/planners/about.htm              |
-#      | SSA  | es     | 20   | Solicite beneficios de jubilación     | http://www.ssa.gov/espanol/plan/sobreelplan.htm    |
-#      | SSA  | es     | 10   | Solicite beneficios de incapacidad    | http://www.ssa.gov/espanol/soliciteporincapacidad/ |
-#    When I am on gobiernousa's search page
-#    And I fill in "query" with "ssa.gov"
-#    And I press "Buscar"
-#    Then I should see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
-#    And I should see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
-#    And I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
-#    And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
 
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
