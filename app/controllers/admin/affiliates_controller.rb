@@ -12,7 +12,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:staged_header].form_ui = :textarea
     config.columns[:footer].form_ui = :textarea
     config.columns[:staged_footer].form_ui = :textarea
-    config.update.columns = [:display_name, :search_results_page_title, :staged_search_results_page_title,
+    config.update.columns = [:display_name, :name, :search_results_page_title, :staged_search_results_page_title,
                              :facebook_handle, :flickr_url, :twitter_handle, :youtube_handles_as_text,
                              :uses_one_serp, :theme, :staged_theme,
                              :uses_managed_header_footer, :staged_uses_managed_header_footer,

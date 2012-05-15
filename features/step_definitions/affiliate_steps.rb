@@ -50,7 +50,6 @@ Given /^the following Affiliates exist:$/ do |table|
 
     affiliate = Affiliate.new(
       :display_name => hash["display_name"],
-      :name => hash["name"],
       :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
       :header_footer_css => hash["header_footer_css"],
       :header => hash["header"],
@@ -92,6 +91,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :wt_dcssip => hash['wt_dcssip'],
       :ga_web_property_id => hash['ga_web_property_id']
     )
+    affiliate.name = hash['name']
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
     affiliate.users << user

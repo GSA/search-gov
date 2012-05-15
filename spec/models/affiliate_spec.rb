@@ -44,6 +44,7 @@ describe Affiliate do
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
     it { should have_and_belong_to_many :twitter_profiles }
+    it { should_not allow_mass_assignment_of(:name) }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
@@ -560,12 +561,6 @@ describe Affiliate do
     it "should validate presence of :staged_search_results_page_title on update" do
       affiliate = Affiliate.create!(@valid_create_attributes)
       affiliate.update_attributes(:staged_search_results_page_title => "").should_not be_true
-    end
-
-    it "should not change the name attribute on update" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
-      lambda { affiliate.update_attributes(:name => "") }.should raise_error("This field cannot be changed.")
-      affiliate.name.should == "myawesomesite"
     end
 
     it "should be valid when FONT_FAMILIES includes font_family in css property hash" do

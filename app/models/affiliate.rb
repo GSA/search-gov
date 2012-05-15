@@ -86,7 +86,7 @@ class Affiliate < ActiveRecord::Base
 
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
+  attr_protected :name, :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
   serialize :youtube_handles, Array
 
@@ -222,10 +222,6 @@ class Affiliate < ActiveRecord::Base
                                             :staged_header_footer_sass, :staged_header_footer_css,
                                             :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
                                             :staged_managed_header_links, :staged_managed_footer_links]
-
-  def name=(name)
-    new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
-  end
 
   def domains_as_array(reload = false)
     @domains_as_array ||= site_domains(reload).ordered.collect { |site_domain| site_domain.domain }

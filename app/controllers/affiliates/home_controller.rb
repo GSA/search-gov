@@ -52,6 +52,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def create
     @affiliate = Affiliate.new(params[:affiliate])
+    @affiliate.name = params[:affiliate][:name] if params[:affiliate]
     @affiliate.users << @current_user
     if @affiliate.save
       @affiliate.push_staged_changes
