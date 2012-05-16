@@ -218,18 +218,18 @@ describe Emailer do
     before do
       @user = users(:affiliate_manager)
       @affiliate = affiliates(:basic_affiliate)
-      @report_date = Date.parse('2012-04-13')
+      report_date = Date.parse('2012-04-13')
       DailyUsageStat.destroy_all
       DailySearchModuleStat.destroy_all
-      [@report_date, @report_date - 1.month, @report_date - 1.year].each_with_index do |report_date, index|
-        DailyUsageStat.create!(:day => report_date, :affiliate => @affiliate.name, :total_queries => 100 * ((index + 1) * (index % 2 == 0 ? 1 : -1)))
-        DailySearchModuleStat.create!(:day => report_date, :affiliate_name => @affiliate.name, :clicks => 100 * ((index + 1) * (index % 2 == 0 ? 1 : -1)), :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
-      end
+      DailyUsageStat.create(:day => report_date, :affiliate => @affiliate.name, :total_queries => 100)
+      DailyUsageStat.create(:day => report_date - 1.month, :affiliate => @affiliate.name, :total_queries => 75)
+      DailyUsageStat.create(:day => report_date - 1.year, :affiliate => @affiliate.name, :total_queries => 150)
+      DailySearchModuleStat.create!(:day => report_date, :affiliate_name => @affiliate.name, :clicks => 100, :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
       DailyQueryStat.destroy_all
       ['query1', 'query2', 'query3'].each_with_index do |query, index|
-        DailyQueryStat.create!(:day => @report_date, :query => query, :affiliate => @affiliate.name, :times => 100)
+        DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => @affiliate.name, :times => 100)
       end
-      @email = Emailer.affiliate_monthly_report(@user, @report_date)
+      @email = Emailer.affiliate_monthly_report(@user, report_date)
     end
     
     it "should be sent to the email address of the user specified" do
@@ -241,7 +241,7 @@ describe Emailer do
     end
     
     it "should calculate the proper totals for the data in the database" do
-      @email.should have_body_text(/100    150.00%    -66.67%   100/)
+      @email.should have_body_text(/100    33.33%    -33.33%   100/)
       @email.should have_body_text(/0    0.00%    0.00%   0/)
       @email.should have_body_text(/Most Popular Queries for April 2012/)
       @email.should have_body_text(/NPEspanol Site\n  \n  Not enough historic data to compute most popular/)
