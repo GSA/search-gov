@@ -26,14 +26,14 @@ class SiteDomain < ActiveRecord::Base
     added_site_domains.count > 0 ? {:success => true, :added => added_site_domains.count} : {:success => false, :error_message => 'No domains uploaded; please check your file and try again.'}
   end
 
-  def populate
-    get_frontier.each do |link|
+  def populate(max_docs = MAX_DOCS_PER_CRAWL)
+    get_frontier(max_docs).each do |link|
       indexed_document = affiliate.indexed_documents.create(:url => link)
       indexed_document.fetch if indexed_document
     end
   end
 
-  def get_frontier(max_docs = MAX_DOCS_PER_CRAWL)
+  def get_frontier(max_docs)
     return [] if domain.starts_with('.')
     start_page, queue, robots, frontier = "http://#{domain}/", [], {}, Set.new
     parsed_start_page_url = URI.parse(start_page)
@@ -70,13 +70,22 @@ class SiteDomain < ActiveRecord::Base
     links = doc.css('a').collect do |hlink|
       hlink['href'].squish.gsub(/#.*/, '') rescue nil
     end.uniq.compact.collect do |link|
-      link_url = URI.parse(link) rescue nil
+      link_url = process_link(current_url, link)
       if link_url.present?
-        link_url = current_url.merge(link_url) if link_url.relative?
-        link_url.to_s if link_url.scheme == "http" and link_url.host =~ /#{parsed_start_page_url.host}/i and link_url.path =~ /#{parsed_start_page_url.path}/i and link_url != current_url and !link_url.to_s.include?('?')
+        link_url.to_s if link_url.scheme == "http" and link_url.host =~ /#{parsed_start_page_url.host}/i and
+          link_url.path =~ /#{parsed_start_page_url.path}/i and link_url != current_url and !link_url.to_s.include?('?') and
+          !(link_url.path =~ /\.(wmv|mov|css|csv|doc|docx|gif|htc|ico|jpeg|jpg|js|json|mp3|png|rss|swf|txt|wsdl|xml|pdf)$/i)
       end
     end
     links.uniq.compact
+  end
+
+  def process_link(current_url, link)
+    link_url = URI.parse(link)
+    link_url = URI.merge_unless_recursive(current_url, link_url) if link_url.relative?
+    link_url
+  rescue
+    nil
   end
 
   def to_label

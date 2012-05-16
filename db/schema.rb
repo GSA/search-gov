@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20120522030302) do
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
     t.string   "ga_web_property_id",                        :limit => 20
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -89,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20120522030302) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "youtube_handles"
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
@@ -195,6 +195,16 @@ ActiveRecord::Schema.define(:version => 20120522030302) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "common_substrings", :force => true do |t|
+    t.integer  "indexed_domain_id",                  :null => false
+    t.text     "substring",                          :null => false
+    t.float    "saturation",        :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "common_substrings", ["indexed_domain_id"], :name => "index_common_substrings_on_indexed_domain_id"
 
   create_table "connections", :force => true do |t|
     t.integer  "affiliate_id",                                          :null => false

@@ -100,24 +100,29 @@ describe SiteDomain do
     end
   end
 
-  describe "#populate" do
+  describe "#populate(max_docs = MAX_DOCS_PER_CRAWL)" do
     let(:site_domain) { affiliate.site_domains.create!(:domain => "foo.gov") }
     let(:frontier) { %w(http://foo.gov/ http://foo.gov/page.html) }
 
-    before do
-      site_domain.should_receive(:get_frontier).and_return frontier
-    end
-
     it "should attempt to create a new IndexedDocument for each link in the frontier" do
+      site_domain.should_receive(:get_frontier).with(SiteDomain::MAX_DOCS_PER_CRAWL).and_return frontier
       site_domain.populate
       frontier.each { |link| affiliate.indexed_documents.find_by_url(link).should_not be_nil }
     end
 
     it "should fetch/index the ones that were successfully created" do
+      site_domain.should_receive(:get_frontier).with(SiteDomain::MAX_DOCS_PER_CRAWL).and_return frontier
       id1 = mock("indexed doc")
       site_domain.stub_chain(:affiliate, :indexed_documents, :create).and_return(id1, nil)
       id1.should_receive(:fetch)
       site_domain.populate
+    end
+
+    context "when max_docs is passed in" do
+      it "should only return max_docs links" do
+        site_domain.should_receive(:get_frontier).with(3).and_return frontier
+        site_domain.populate(3)
+      end
     end
   end
 
@@ -153,7 +158,7 @@ describe SiteDomain do
     let(:site_domain) { affiliate.site_domains.create!(:domain => "www.agency.gov/test") }
 
     context "when there are links in the file" do
-      let(:linky_file) { open(Rails.root.to_s + '/spec/fixtures/html/page_with_pdf_links.html') }
+      let(:linky_file) { open(Rails.root.to_s + '/spec/fixtures/html/page_with_all_kinds_of_links.html') }
 
       it "should return an array of eligible links from the HTML file" do
         links = %w(http://www.agency.gov/test/another_relative.html http://www.agency.gov/test/another_absolute.html)
@@ -170,12 +175,12 @@ describe SiteDomain do
     end
   end
 
-  describe "#get_frontier(max_docs = MAX_DOCS_PER_CRAWL)" do
+  describe "#get_frontier(max_docs)" do
     context "when the site domain starts with a . (e.g., .mil)" do
       let(:site_domain) { affiliate.site_domains.create!(:domain => ".gov") }
 
       it "should return an empty array" do
-        site_domain.get_frontier.should == []
+        site_domain.get_frontier(100).should == []
       end
     end
 
@@ -193,13 +198,11 @@ describe SiteDomain do
       end
 
       it "should return an sorted array of valid/eligible HTML pages reachable from that start URL" do
-        site_domain.get_frontier.should == %w(http://www.agency.gov/ http://www.agency.gov/sub1/dupe.html http://www.agency.gov/sub1/page1.html http://www.agency.gov/sub2/page1.html http://www.agency.gov/sub2/page2.html http://www.agency.gov/test/another_absolute.html http://www.agency.gov/test/another_relative.html)
+        site_domain.get_frontier(100).should == %w(http://www.agency.gov/ http://www.agency.gov/sub1/dupe.html http://www.agency.gov/sub1/page1.html http://www.agency.gov/sub2/page1.html http://www.agency.gov/sub2/page2.html http://www.agency.gov/test/another_absolute.html http://www.agency.gov/test/another_relative.html)
       end
 
-      context "when max_docs is passed in" do
-        it "should only return max_docs links" do
-          site_domain.get_frontier(3).size.should == 3
-        end
+      it "should only return max_docs links" do
+        site_domain.get_frontier(3).size.should == 3
       end
 
       context "when some of the linked URLs are non-HTML content" do
@@ -208,7 +211,7 @@ describe SiteDomain do
         end
 
         it "should ignore them" do
-          site_domain.get_frontier.size.should == 2
+          site_domain.get_frontier(100).size.should == 2
         end
       end
 
@@ -218,7 +221,7 @@ describe SiteDomain do
         end
 
         it "should ignore them" do
-          site_domain.get_frontier.size.should == 2
+          site_domain.get_frontier(100).size.should == 2
         end
       end
 
@@ -229,7 +232,7 @@ describe SiteDomain do
 
         it "should log the problem" do
           Rails.logger.should_receive(:warn)
-          site_domain.get_frontier
+          site_domain.get_frontier(100)
         end
       end
 

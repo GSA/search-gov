@@ -564,39 +564,16 @@ describe IndexedDocument do
         end
       end
 
-      context "when the page has a description meta tag" do
-        it "should use it when creating the boosted content" do
-          indexed_document.index_html(file)
-          indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
-        end
-
-        context "when the description is an empty string" do
-          before do
-            indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers-empty-description.html')
-          end
-          it "should use the initial subset of non-HTML words of the web page as the description" do
-            indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
-            indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
-          end
-        end
+      it "should extract the text body from the document" do
+        indexed_document.should_receive(:extract_body_from).and_return "this is the body"
+        indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
+        indexed_document.body.should == "this is the body"
       end
 
-      context "when the page has a differently capitalized DeScriPtioN meta tag" do
-        it "should still find it and use it" do
-          indexed_document.index_html(file)
-          indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
-        end
-      end
-
-      context "when the page does not have a description meta tag" do
-        before do
-          indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
-        end
-
-        it "should use the initial subset of non-HTML words of the web page as the description" do
-          indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
-          indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
-        end
+      it "should use a subset of the body as the description" do
+        indexed_document.should_receive(:html_description_from).and_return "foo..."
+        indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
+        indexed_document.description.should == "foo..."
       end
 
       context "when the page body (inner text) is empty" do
@@ -613,6 +590,41 @@ describe IndexedDocument do
         indexed_document.should_receive(:discover_nested_pdfs).with(an_instance_of(Nokogiri::HTML::Document))
         indexed_document.index_html(file)
       end
+    end
+  end
+
+  describe "#remove_common_substring(unescaped_substring)" do
+    it "should remove the substring from the body and update the description" do
+      indexed_document = IndexedDocument.create!(:title => "some title", :body => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :description => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :last_crawl_status => 'OK', :url => "http://www.gov.gov/a.html", :affiliate => affiliates(:basic_affiliate))
+      indexed_document.remove_common_substring("Skip to Main Content Home FAQs Site")
+      indexed_document.body.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
+      indexed_document.description.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
+    end
+  end
+
+  describe "#html_description_from(str)" do
+    it "should return a truncated version of the string" do
+      indexed_document = IndexedDocument.new
+      text_block = "any old string"
+      text_block.should_receive(:truncate).with(IndexedDocument::TRUNCATED_DESC_LENGTH, :separator => ' ').and_return "blah"
+      indexed_document.html_description_from(text_block).should == "blah"
+    end
+  end
+
+  describe "#extract_body_from(nokogiri_doc)" do
+    fixtures :indexed_domains
+    let(:doc) { Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/audiences.html')) }
+    let(:indexed_domain) { indexed_domains(:sample) }
+
+    before do
+      indexed_domain.common_substrings.create!(:substring => "Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print", :saturation => 99.9)
+      indexed_domain.common_substrings.create!(:substring => "Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal.", :saturation => 99.9)
+    end
+
+    it "should return the inner text of the body of the document minus any common substrings" do
+      indexed_document = IndexedDocument.new(:indexed_domain => indexed_domain, :url => "http://gov.dotgov.gov/page.html")
+      body = indexed_document.extract_body_from(doc)
+      body.should == "Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010"
     end
   end
 
@@ -661,25 +673,6 @@ describe IndexedDocument do
         @aff.indexed_documents.count.should == 0
       end
     end
-  end
-
-  describe "#merge_url_unless_recursion_with(target_url)" do
-    let(:indexed_document) { IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://healthvermont.gov/family/wic/documents/foo.pdf") }
-
-    context "when the target URL contains a relative URL that is a subset of the indexed document's URL" do
-      let(:target_url) { "documents/foo.pdf" }
-      it "should return nil" do
-        indexed_document.merge_url_unless_recursion_with(target_url).should be_nil
-      end
-    end
-
-    context "when the target URL can't be parsed" do
-      let(:target_url) { "http://bad.url/ foo.pdf" }
-      it "should return nil" do
-        indexed_document.merge_url_unless_recursion_with(target_url).should be_nil
-      end
-    end
-
   end
 
   describe "#index_pdf(file)" do

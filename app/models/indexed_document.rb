@@ -23,10 +23,11 @@ class IndexedDocument < ActiveRecord::Base
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
+  scope :html, where(:doctype => 'html')
   scope :crawled, where('last_crawled_at IS NOT NULL')
 
   TRUNCATED_TITLE_LENGTH = 60
-  TRUNCATED_DESC_LENGTH = 250
+  TRUNCATED_DESC_LENGTH = 64000
   MAX_URLS_PER_FILE_UPLOAD = 100
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   DOWNLOAD_TIMEOUT_SECS = 60
@@ -126,40 +127,51 @@ class IndexedDocument < ActiveRecord::Base
     file.open if file.closed?
     doc = Nokogiri::HTML(file)
     title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
-    description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
-    description = nil if description.blank?
-    doc.xpath('//script').each { |x| x.remove }
-    doc.xpath('//style').each { |x| x.remove }
-    body = scrub_inner_text(doc.inner_text)
+    doc.css('script').each(&:remove)
+    doc.css('style').each(&:remove)
+    body = extract_body_from(doc)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
-    description ||= body.gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+    description = html_description_from(body)
     update_attributes!(:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
     discover_nested_pdfs(doc)
   end
 
+  def html_description_from(str)
+    str.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+  end
+
+  def extract_body_from(nokogiri_doc)
+    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html)))
+  end
+
+  def scrub_inner_text(inner_text)
+    inner_text.gsub(/ /, ' ').squish.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub('&amp;', '&').squish
+  end
+
+  def remove_common_substrings(body)
+    indexed_domain = IndexedDomain.find_by_domain(self_url.host)
+    return body unless indexed_domain.present? and indexed_domain.common_substrings.present?
+    escaped_substrings = indexed_domain.common_substrings.map { |common_substring| Regexp.escape(common_substring.substring) }
+    substring_regex = ['(', escaped_substrings.join('|'), ')'].join
+    body.gsub(/#{substring_regex}/, ' ').squish
+  end
+
+  def remove_common_substring(unescaped_substring)
+    self.body = self.body.gsub(/#{Regexp.escape(unescaped_substring)}/, ' ').squish
+    self.description = html_description_from(self.body)
+    self.save!
+  end
+
   def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
-      URI::parse(link_url).path.split('.').last.downcase == "pdf" rescue false
+      URI.parse(link_url).path.split('.').last.downcase == "pdf" rescue false
     end.map do |relative_pdf_url|
-      merge_url_unless_recursion_with(relative_pdf_url)
+      URI.merge_unless_recursive(self_url, URI.parse(relative_pdf_url)).to_s rescue nil
     end.uniq.compact.first(max_pdfs).each do |pdf_url|
       if (idoc = IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf'))
         idoc.fetch
       end
     end
-  end
-
-  def merge_url_unless_recursion_with(target_url)
-    begin
-      link_url = URI.parse(target_url)
-      self_url.path.end_with?(link_url.path) ? nil : self_url.merge(link_url).to_s
-    rescue
-      nil
-    end
-  end
-
-  def scrub_inner_text(inner_text)
-    inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
   end
 
   def index_pdf(pdf_file_path)
@@ -277,7 +289,7 @@ class IndexedDocument < ActiveRecord::Base
     if self_url
       scheme = self_url.scheme.downcase
       host = self_url.host.downcase
-      request = self_url.request_uri.gsub(/\/+/,'/')
+      request = self_url.request_uri.gsub(/\/+/, '/')
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end

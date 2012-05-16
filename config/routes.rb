@@ -161,6 +161,7 @@ UsasearchRails3::Application.routes.draw do
     resources :monthly_reports, :only => :index
     resources :affiliate_reports, :only => :index
     resources :email_templates do as_routes end
+    resources :common_substrings do as_routes end
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
