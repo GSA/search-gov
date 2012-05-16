@@ -153,7 +153,7 @@ class Emailer < ActionMailer::Base
       stats[:total_queries] = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, affiliate.name)
       stats[:total_clicks] = DailySearchModuleStat.where({:day => @report_date.beginning_of_month..@report_date.end_of_month, :affiliate_name => affiliate.name}).sum(:clicks)
       stats[:last_month_total_queries] = DailyUsageStat.monthly_totals(last_month.year, last_month.month, affiliate.name)
-      stats[:last_year_total_queries] = DailySearchModuleStat.where({:day => last_year.beginning_of_month..last_year.end_of_month, :affiliate_name => affiliate.name}).sum(:clicks)
+      stats[:last_year_total_queries] = DailyUsageStat.monthly_totals(last_year.year, last_year.month, affiliate.name)
       stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
       stats[:last_year_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_year_total_queries])
       stats[:popular_queries] = DailyQueryStat.most_popular_terms(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month, 10)
@@ -191,7 +191,6 @@ class Emailer < ActionMailer::Base
   end
   
   def calculate_percent_change(current_value, previous_value)
-    percent_change = previous_value != 0 ? (current_value.to_f - previous_value.to_f) / previous_value.to_f : 0
-    (previous_value < current_value ? -1 : 1) * percent_change * 100
+    (previous_value != 0 ? (current_value.to_f - previous_value.to_f) / previous_value.to_f : 0) * 100
   end
 end
