@@ -989,6 +989,7 @@ describe WebSearch do
         Tweet.reindex
         twitter_profile = TwitterProfile.create!(:screen_name => 'test', :twitter_id => 123)
         @affiliate.twitter_profiles << twitter_profile
+        @affiliate.update_attributes(:is_twitter_govbox_enabled => true)
       end
       
       it "should find the most recent relevant tweet" do
@@ -1008,9 +1009,22 @@ describe WebSearch do
       it "should not find any tweets if the affiliate has not Twitter Profiles" do
         @affiliate.twitter_profiles.delete_all
         Tweet.should_not_receive(:search_for)
-        search = WebSearch.new(:query => 'america', :affiliate => @affiliate, :page => 3)
+        search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
         search.run
         search.tweets.should be_nil
+      end
+      
+      context "when the affiliate has disabled the Twitter govbox" do
+        before do
+          @affiliate.update_attributes(:is_twitter_govbox_enabled => false) 
+        end
+        
+        it "should not search for Tweets" do
+          Tweet.should_not_receive(:search_for)
+          search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
+          search.run
+          search.tweets.should be_nil
+        end
       end
     end
 

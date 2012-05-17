@@ -234,7 +234,8 @@ class WebSearch < Search
       @news_items = NewsItem.search_for(query, affiliate.rss_feeds.non_videos.govbox_enabled, nil, 1)
       @video_news_items = NewsItem.search_for(query, affiliate.rss_feeds.videos.govbox_enabled, nil, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
-      @tweets = Tweet.search_for(query, affiliate.twitter_profiles.collect(&:twitter_id)) unless affiliate.twitter_profiles.collect(&:twitter_id).empty?
+      affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
+      @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
     end
   end
 

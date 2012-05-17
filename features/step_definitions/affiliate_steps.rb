@@ -84,6 +84,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
       :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
+      :is_twitter_govbox_enabled => hash["is_twitter_govbox_enabled"] || false,
       :results_source => hash["results_source"] || "bing",
       :is_related_searches_enabled => hash["is_related_searches_enabled"] || true,
       :wt_javascript_url => hash['wt_javascript_url'],

@@ -31,6 +31,13 @@
             %td.actions
               = results_modules_form.check_box :is_medline_govbox_enabled
               = results_modules_form.label :is_medline_govbox_enabled, nil, :class => 'hide'
+          - if @affiliate.twitter_profiles.any?
+            %tr.row-item
+              %td.name Recent Tweets
+              %td.source Twitter
+              %td.actions
+                = results_modules_form.check_box :is_twitter_govbox_enabled
+                = results_modules_form.label :is_twitter_govbox_enabled, nil, :class => 'hide'          
           - @affiliate.rss_feeds.each_with_index do |rss_feed, index|
             = results_modules_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
               %tr.row-item

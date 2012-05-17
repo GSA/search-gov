@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515171018) do
+ActiveRecord::Schema.define(:version => 20120517130213) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20120515171018) do
     t.datetime "staged_page_background_image_updated_at"
     t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "youtube_handles"
+    t.boolean  "is_twitter_govbox_enabled",                                       :default => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
