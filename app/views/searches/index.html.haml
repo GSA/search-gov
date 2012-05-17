@@ -5,7 +5,7 @@
     .summary-wrapper= render 'shared/results_summary', :affiliate => @affiliate, :search => @search, :search_options => @search_options, :search_vertical => @search_vertical
 #left_column
   = render 'shared/affiliate_vertical_navigation'
-  &nbsp;
+%a{ :id => 'main_content', :name => 'main_content' }
 #results
   = render "shared/search", :path => search_path unless @affiliate.uses_one_serp?
   = render :partial => "shared/searchresults", :locals => { :search => @search }

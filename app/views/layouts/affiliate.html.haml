@@ -33,6 +33,8 @@
 
     %title= @page_title
   %body{ :class => render_affiliate_body_class(@affiliate), :style => render_affiliate_body_style(@affiliate) }
+    #skiplink
+      %a{:href => "#main_content"} Skip to Main Content
     #container
       = render_affiliate_header(@affiliate, @search_options)
       #search.clearfix

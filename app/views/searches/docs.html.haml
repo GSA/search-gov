@@ -9,6 +9,7 @@
         = render 'shared/blank_search_results', :search => @search
 #left_column
   = render "shared/affiliate_vertical_navigation"
+%a{ :id => 'main_content', :name => 'main_content' }
 #results
   = render 'docs_search_form' unless @affiliate.uses_one_serp?
   %a{:name => "content"}
