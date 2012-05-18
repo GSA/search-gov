@@ -74,6 +74,12 @@
             %td.actions
               = results_modules_form.check_box :show_deep_links
               = results_modules_form.label :show_deep_links, nil, :class => 'hide'
+          - if @affiliate.uses_bing_odie_results?
+            %tr.row-item
+              %td.name New URLs
+              %td.actions
+                = results_modules_form.check_box :is_odie_govbox_enabled
+                = results_modules_form.label :is_odie_govbox_enabled, nil, :class => 'hide'
 
 .connections
   %h2 Related Sites

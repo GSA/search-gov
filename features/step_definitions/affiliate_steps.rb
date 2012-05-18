@@ -85,7 +85,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
       :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
       :is_twitter_govbox_enabled => hash["is_twitter_govbox_enabled"] || false,
-      :results_source => hash["results_source"] || "bing",
+      :results_source => hash["results_source"] || "bing+odie",
       :is_related_searches_enabled => hash["is_related_searches_enabled"] || true,
       :wt_javascript_url => hash['wt_javascript_url'],
       :wt_dcsimg_hash => hash['wt_dcsimg_hash'],
