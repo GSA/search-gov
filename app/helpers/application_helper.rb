@@ -14,6 +14,11 @@ module ApplicationHelper
     end
     (page_title.blank? ? "" : "#{page_title} - ") + site_title
   end
+  
+  def build_mobile_page_title(page_title)
+    site_title = (t :usagov_mobile)
+    page_title.blank? ? site_title : "#{page_title} | #{site_title}"
+  end
 
   def show_flash_messages
     unless (flash.nil? or flash.empty?)

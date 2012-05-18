@@ -9,6 +9,12 @@ describe "layouts/application.mobile.haml" do
       render
       rendered.should have_selector("script[src='/javascripts/webtrends_mobile_english.js'][type='text/javascript']")
     end
+    
+    it "should show the page title plus the mobile site title" do
+      assign(:title, "A Mobile Page")
+      render
+      rendered.should have_selector("title", :content => "A Mobile Page | USA.gov mobile")
+    end
   end
 
   context "when locale is set to English" do
