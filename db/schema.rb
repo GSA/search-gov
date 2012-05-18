@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518162529) do
+ActiveRecord::Schema.define(:version => 20120518195112) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -82,9 +82,6 @@ ActiveRecord::Schema.define(:version => 20120518162529) do
     t.boolean  "is_time_filter_enabled",                                          :default => true
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
-    t.string   "wt_javascript_url"
-    t.string   "wt_dcsimg_hash",                            :limit => 50
-    t.string   "wt_dcssip",                                 :limit => 50
     t.string   "ga_web_property_id",                        :limit => 20
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"

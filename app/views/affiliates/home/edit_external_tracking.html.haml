@@ -6,17 +6,6 @@
   .site-info
     = form_for @affiliate, :url => { :action => :update_external_tracking }, :html => { :class=>"generic-form external-tracking-form" } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
-      %h2 WebTrends
-      %ul
-        %li
-          = f.label :wt_javascript_url, "JavaScript URL"
-          = f.text_field :wt_javascript_url, :class => 'txt'
-        %li
-          = f.label :wt_dcsimg_hash, "DCSIMG Hash"
-          = f.text_field :wt_dcsimg_hash, :limit => 50, :class => 'txt'
-        %li
-          = f.label :wt_dcssip, "DCSSIP"
-          = f.text_field :wt_dcssip, :limit => 50, :class => 'txt'
       %h2 Google Analytics
       %ul
         %li

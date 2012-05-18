@@ -72,7 +72,7 @@ Feature:  Administration
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
 
-  Scenario: Viewing affiliate edit page from the Admin Center
+  Scenario: Viewing Super Admin affiliate edit page
     Given the following Affiliates exist:
       | display_name | name       | contact_email                | contact_name | managed_header_home_url | staged_managed_header_home_url | managed_header_text  | staged_managed_header_text  | header_footer_css     | staged_header_footer_css | header          | staged_header          | footer          | staged_footer          |
       | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | web.agency.gov          | staged.agency.gov              | this is my SERP page | this is my staged SERP page | #live { color: blue } | #staged { color: green } | <h1>header</h1> | <h1>staged header</h1> | <h1>footer</h1> | <h1>staged footer</h1> |
@@ -90,7 +90,7 @@ Feature:  Administration
     And the textarea labeled "Footer" should contain "<h1>footer</h1>"
     And the textarea labeled "Staged footer" should contain "<h1>staged footer</h1>"
 
-  Scenario: Updating affiliate uses_one_serp flag and theme from Admin Center
+  Scenario: Updating affiliate from Super Admin affiliate edit page
     Given the following Affiliates exist:
       | display_name | name       | contact_email                | contact_name | uses_one_serp |
       | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | false         |
@@ -99,12 +99,15 @@ Feature:  Administration
     And I check "Uses one serp"
     And I select "Gettysburg" from "Theme"
     And I fill in "YouTube handles" with "usgovernment,whitehouse"
+    And I fill in "External tracking code" with "<script>var tracking;</script>"
     And I press "Update"
     And I go to the agency.gov's admin edit affiliate page
     Then the "Uses one serp" checkbox should be checked
     And the "Theme" field should contain "elegant"
     And the "Staged theme" field should contain "default"
     And the "YouTube handles" field should contain "usgovernment,whitehouse"
+    When I go to agency.gov's search page
+    Then the page body should contain "<script>var tracking;</script>"
 
   Scenario: Viewing monthly reports for affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -129,7 +132,7 @@ Feature:  Administration
     When I select "agency2.gov" from "Affiliate"
     And I press "Submit"
     Then I should see "Total Queries: 6,200"
-    
+
   Scenario: Viewing affiliate reports
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
@@ -144,7 +147,7 @@ Feature:  Administration
     And I follow "Affiliate Reports"
     Then I should see a total for "agency.gov" with a total of "300" per day
     And I should see a total for "agency2.gov" with a total of "400" per day
-    
+
     Given the following DailyUsageStats exist for each day in "2012-04"
       | total_queries | affiliate   |
       | 100           | agency.gov  |

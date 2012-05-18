@@ -1,0 +1,4 @@
+= render "/shared/webtrends_affiliates" unless @affiliate.exclude_webtrends?
+= render "/shared/affiliate_custom_google_analytics" if @affiliate.ga_web_property_id.present?
+= raw @affiliate.external_tracking_code
+

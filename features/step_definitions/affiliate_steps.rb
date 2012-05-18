@@ -2,10 +2,10 @@ Given /^the following Affiliates exist:$/ do |table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
-      :email => hash["contact_email"],
+      :email => hash[:contact_email],
       :password => "random_string",
       :password_confirmation => "random_string",
-      :contact_name => hash["contact_name"],
+      :contact_name => hash[:contact_name],
       :phone => "301-123-4567",
       :address => "123 Penn Ave",
       :address2 => "Ste 100",
@@ -15,7 +15,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :organization_name=> "Agency",
       :government_affiliation => "1"
     }
-    user = User.find_by_email(hash["contact_email"]) || User.create!( valid_options )
+    user = User.find_by_email(hash[:contact_email]) || User.create!( valid_options )
     user.update_attribute(:is_affiliate, true)
     user.update_attribute(:approval_status, 'approved')
 
@@ -29,8 +29,8 @@ Given /^the following Affiliates exist:$/ do |table|
       staged_theme = hash[:theme] || 'custom'
       uses_managed_header_footer = (hash[:uses_managed_header_footer].blank? or hash[:uses_managed_header_footer] == 'true') ? true : false
     else
-      affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
-      staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
+      affiliate_template = hash[:affiliate_template_name].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash[:affiliate_template_name])
+      staged_affiliate_template = hash[:staged_affiliate_template_name].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash[:staged_affiliate_template_name])
       theme = nil
       staged_theme = nil
       uses_managed_header_footer = nil
@@ -49,48 +49,46 @@ Given /^the following Affiliates exist:$/ do |table|
     end if uses_one_serp
 
     affiliate = Affiliate.new(
-      :display_name => hash["display_name"],
+      :display_name => hash[:display_name],
       :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
-      :header_footer_css => hash["header_footer_css"],
-      :header => hash["header"],
-      :footer => hash["footer"],
+      :header_footer_css => hash[:header_footer_css],
+      :header => hash[:header],
+      :footer => hash[:footer],
       :staged_affiliate_template_id => staged_affiliate_template.nil? ? nil : staged_affiliate_template.id,
-      :staged_header_footer_css => hash["staged_header_footer_css"],
-      :staged_header => hash["staged_header"],
-      :staged_footer => hash["staged_footer"],
-      :is_sayt_enabled => hash["is_sayt_enabled"],
-      :search_results_page_title => hash["search_results_page_title"],
-      :staged_search_results_page_title => hash["staged_search_results_page_title"],
-      :has_staged_content => hash["has_staged_content"] || false,
-      :exclude_webtrends => hash["exclude_webtrends"] || false,
-      :is_popular_links_enabled => hash["is_popular_links_enabled"] || true,
-      :external_css_url => hash["external_css_url"],
-      :staged_external_css_url => hash["staged_external_css_url"],
-      :favicon_url => hash["favicon_url"],
-      :staged_favicon_url => hash["staged_favicon_url"],
-      :facebook_handle => hash["facebook_handle"],
-      :flickr_url => hash["flickr_url"],
-      :twitter_handle => hash["twitter_handle"],
-      :youtube_handles => hash["youtube_handles"].present? ? hash['youtube_handles'].split(',') : nil,
+      :staged_header_footer_css => hash[:staged_header_footer_css],
+      :staged_header => hash[:staged_header],
+      :staged_footer => hash[:staged_footer],
+      :is_sayt_enabled => hash[:is_sayt_enabled],
+      :search_results_page_title => hash[:search_results_page_title],
+      :staged_search_results_page_title => hash[:staged_search_results_page_title],
+      :has_staged_content => hash[:has_staged_content] || false,
+      :exclude_webtrends => hash[:exclude_webtrends] || false,
+      :is_popular_links_enabled => hash[:is_popular_links_enabled] || true,
+      :external_css_url => hash[:external_css_url],
+      :staged_external_css_url => hash[:staged_external_css_url],
+      :favicon_url => hash[:favicon_url],
+      :staged_favicon_url => hash[:staged_favicon_url],
+      :facebook_handle => hash[:facebook_handle],
+      :flickr_url => hash[:flickr_url],
+      :twitter_handle => hash[:twitter_handle],
+      :youtube_handles => hash[:youtube_handles].present? ? hash[:youtube_handles].split(',') : nil,
       :theme => theme,
       :staged_theme => staged_theme,
       :css_property_hash => css_properties,
       :uses_managed_header_footer => uses_managed_header_footer,
-      :managed_header_home_url => hash["managed_header_home_url"],
-      :staged_managed_header_home_url => hash["staged_managed_header_home_url"],
-      :managed_header_text => hash["managed_header_text"],
-      :staged_managed_header_text => hash["staged_managed_header_text"],
-      :top_searches_label => hash["top_searches_label"] || 'Search Trends',
-      :locale => hash["locale"] || 'en',
-      :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
-      :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
-      :is_twitter_govbox_enabled => hash["is_twitter_govbox_enabled"] || false,
-      :results_source => hash["results_source"] || "bing+odie",
-      :is_related_searches_enabled => hash["is_related_searches_enabled"] || true,
-      :wt_javascript_url => hash['wt_javascript_url'],
-      :wt_dcsimg_hash => hash['wt_dcsimg_hash'],
-      :wt_dcssip => hash['wt_dcssip'],
-      :ga_web_property_id => hash['ga_web_property_id']
+      :managed_header_home_url => hash[:managed_header_home_url],
+      :staged_managed_header_home_url => hash[:staged_managed_header_home_url],
+      :managed_header_text => hash[:managed_header_text],
+      :staged_managed_header_text => hash[:staged_managed_header_text],
+      :top_searches_label => hash[:top_searches_label] || 'Search Trends',
+      :locale => hash[:locale] || 'en',
+      :is_agency_govbox_enabled => hash[:is_agency_govbox_enabled] || false,
+      :is_medline_govbox_enabled => hash[:is_medline_govbox_enabled] || false,
+      :is_twitter_govbox_enabled => hash[:is_twitter_govbox_enabled] || false,
+      :results_source => hash[:results_source] || 'bing+odie',
+      :is_related_searches_enabled => hash[:is_related_searches_enabled] || true,
+      :ga_web_property_id => hash[:ga_web_property_id],
+      :external_tracking_code => hash[:external_tracking_code]
     )
     affiliate.name = hash['name']
     affiliate.uses_one_serp = uses_one_serp

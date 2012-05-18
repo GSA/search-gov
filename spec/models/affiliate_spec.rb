@@ -439,17 +439,11 @@ describe Affiliate do
                                    :flickr_url => '   http://www.flickr.com/photos/whitehouse   ',
                                    :twitter_handle => '     whitehouse   ',
                                    :youtube_handles => ['     whitehouse   ', '  USGovernment ', ' whitehouse '],
-                                   :wt_javascript_url => '  http://search.usa.gov/javascripts/webtrends_english.js  ',
-                                   :wt_dcsimg_hash => ' MY_DCSIMG_HASH ',
-                                   :wt_dcssip => ' MY_DCSSIP ',
                                    :ga_web_property_id => '  WEB_PROPERTY_ID  ')
       affiliate.facebook_handle.should == 'http://www.facebook.com/WhiteHouse'
       affiliate.flickr_url.should == 'http://www.flickr.com/photos/whitehouse'
       affiliate.twitter_handle.should == 'whitehouse'
       affiliate.youtube_handles.should == %w(USGovernment whitehouse)
-      affiliate.wt_javascript_url.should == 'http://search.usa.gov/javascripts/webtrends_english.js'
-      affiliate.wt_dcsimg_hash.should == 'MY_DCSIMG_HASH'
-      affiliate.wt_dcssip.should == 'MY_DCSSIP'
       affiliate.ga_web_property_id.should == 'WEB_PROPERTY_ID'
     end
 
@@ -787,6 +781,10 @@ describe Affiliate do
         HTML
         affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
       end
+    end
+
+    it 'should not allow malformed external tracking code' do
+      expect { Affiliate.create!(:display_name => 'a site', :external_tracking_code => '<script>malformed code;') }.to raise_error
     end
   end
 

@@ -2661,50 +2661,16 @@ Feature: Affiliate clients
     And I should see "3rd Party Tracking" in the page header
 
     When I fill in the following:
-      | JavaScript URL  | search.usa.gov/javascripts/webtrends_english.js |
-      | DCSIMG Hash     | MY_DCSIMG_HASH                                  |
-      | DCSSIP          | MY_DCSSIP                                       |
       | Web Property ID | UA-XXXXX-XX                                     |
     And I press "Save"
     Then I should see "Site was successfully updated."
 
     When I go to aff.gov's search page
-    Then the page body should contain "http://search.usa.gov/javascripts/webtrends_english.js"
-    And the page body should contain "MY_DCSIMG_HASH"
-    And the page body should contain "MY_DCSSIP"
-    And the page body should contain "UA-XXXXX-XX"
+    Then the page body should contain "UA-XXXXX-XX"
 
     When I go to the "aff site" affiliate page
     And I follow "3rd Party Tracking"
-    Then the "JavaScript URL" field should contain "http://search.usa.gov/javascripts/webtrends_english.js"
-    And the "DCSIMG Hash" field should contain "MY_DCSIMG_HASH"
-    And the "DCSSIP" field should contain "MY_DCSSIP"
-    And the "Web Property ID" field should contain "UA-XXXXX-X"
+    Then the "Web Property ID" field should contain "UA-XXXXX-X"
 
-  Scenario: Editing some of WebTrends fields
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "3rd Party Tracking"
-    And I fill in the following:
-      | JavaScript URL  | http://search.usa.gov/javascripts/webtrends_english.js |
-    And I press "Save"
-    Then I should see the browser page titled "3rd Party Tracking"
-    And I should see "JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends."
-
-    When I fill in the following:
-      | JavaScript URL |           |
-      | DCSSIP         | MY_DCSSIP |
-    And I press "Save"
-    Then I should see the browser page titled "3rd Party Tracking"
-    And I should see "JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends."
-
-    When I fill in the following:
-      | JavaScript URL |           |
-      | DCSIMG Hash    |           |
-      | DCSSIP         | MY_DCSSIP |
-    And I press "Save"
-    Then I should see the browser page titled "3rd Party Tracking"
-    And I should see "JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends."
+    When I go to aff.gov's search page
+    Then the page body should contain "_gaq.push(['_setAccount', 'UA-XXXXX-XX']);"

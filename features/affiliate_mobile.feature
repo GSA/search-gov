@@ -8,9 +8,9 @@ Feature: Mobile Search for Affiliate
 
   Scenario: A search on affiliate
     Given the following Affiliates exist:
-      | display_name | name              | contact_email  | contact_name | domains | header           | footer           | is_sayt_enabled | font_family         |
-      | agency site  | agency.gov        | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | true            | Verdana, sans-serif |
-      | no sayt site | nosayt.agency.gov | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | false           | Arial, sans-serif   |
+      | display_name | name              | contact_email  | contact_name | domains | header           | footer           | is_sayt_enabled | font_family         | ga_web_property_id | external_tracking_code         |
+      | agency site  | agency.gov        | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | true            | Verdana, sans-serif | UA-MOBILE-XX       | <script>var tracking;</script> |
+      | no sayt site | nosayt.agency.gov | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | false           | Arial, sans-serif   |                    |                                |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | title              | url                       | description                          |
       | Our Emergency Page | http://www.agency.gov/911 | Updated information on the emergency |
@@ -24,6 +24,8 @@ Feature: Mobile Search for Affiliate
     And affiliate SAYT suggestions for "agency.gov" should be enabled
     And I should see the browser page titled "agency site Mobile"
     And I should see "agency site Mobile" in the mobile page header
+    And the page body should contain "_gaq.push(['_setAccount', 'UA-MOBILE-XX']);"
+    And the page body should contain "<script>var tracking;</script>"
     When I fill in "query" with "emergency"
     And I submit the search form
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag

@@ -76,7 +76,7 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
-  validate :validate_web_trends_properties, :youtube_handles_length_in_yaml
+  validate :youtube_handles_length_in_yaml, :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
@@ -216,7 +216,8 @@ class Affiliate < ActiveRecord::Base
                                 :fields => [:header, :footer,
                                             :header_footer_sass, :header_footer_css,
                                             :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
-                                            :managed_header_links, :managed_footer_links]
+                                            :managed_header_links, :managed_footer_links,
+                                            :external_tracking_code]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
                                             :staged_header_footer_sass, :staged_header_footer_css,
@@ -456,10 +457,6 @@ class Affiliate < ActiveRecord::Base
     self.external_css_url = nil
   end
 
-  def has_custom_webtrends_properties?
-    wt_javascript_url.present? and wt_dcsimg_hash.present? and wt_dcssip.present?
-  end
-
   def youtube_handles_as_text
     youtube_handles.blank? ? nil : youtube_handles.join(',')
   end
@@ -509,8 +506,7 @@ class Affiliate < ActiveRecord::Base
   def ensure_http_prefix
     set_http_prefix :favicon_url, :staged_favicon_url,
                     :external_css_url, :staged_external_css_url,
-                    :managed_header_home_url, :staged_managed_header_home_url,
-                    :wt_javascript_url
+                    :managed_header_home_url, :staged_managed_header_home_url
   end
 
   def validate_css_property_hash
@@ -677,6 +673,13 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
+  def external_tracking_code_cannot_be_malformed
+    validation_results = validate_html external_tracking_code
+    if validation_results[:has_malformed_html]
+      errors.add(:base, "External tracking code is invalid: #{validation_results[:error_message]}")
+    end
+  end
+
   def validate_html(html)
     validate_html_results = {}
     has_banned_elements = false
@@ -749,9 +752,6 @@ class Affiliate < ActiveRecord::Base
     self.facebook_handle = facebook_handle.strip unless facebook_handle.nil?
     self.flickr_url = flickr_url.strip unless flickr_url.nil?
     self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
-    self.wt_javascript_url = wt_javascript_url.strip unless wt_javascript_url.nil?
-    self.wt_dcsimg_hash = wt_dcsimg_hash.strip unless wt_dcsimg_hash.nil?
-    self.wt_dcssip = wt_dcssip.strip unless wt_dcssip.nil?
     self.ga_web_property_id = ga_web_property_id.strip unless ga_web_property_id.nil?
   end
 
@@ -759,12 +759,6 @@ class Affiliate < ActiveRecord::Base
     if staged_uses_one_serp?
       self.staged_header = strip_comments(staged_header) unless staged_header.blank?
       self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
-    end
-  end
-
-  def validate_web_trends_properties
-    if (wt_javascript_url.present? or wt_dcsimg_hash.present? or wt_dcssip.present?) and !has_custom_webtrends_properties?
-      errors.add(:base, 'JavaScript URL, DCSIMG Hash and DCSSIP are required if you are using WebTrends.')
     end
   end
 

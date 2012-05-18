@@ -4,7 +4,8 @@ class Admin::AffiliatesController < Admin::AdminController
     config.actions.exclude :delete
     config.columns = [:display_name, :name, :site_domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
-    virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer, :youtube_handles_as_text, :features]
+    virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
+                       :youtube_handles_as_text, :features, :external_tracking_code]
     config.columns << virtual_columns
     config.columns[:header_footer_css].form_ui = :textarea
     config.columns[:staged_header_footer_css].form_ui = :textarea
@@ -12,6 +13,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:staged_header].form_ui = :textarea
     config.columns[:footer].form_ui = :textarea
     config.columns[:staged_footer].form_ui = :textarea
+    config.columns[:external_tracking_code].form_ui = :textarea
     config.update.columns = [:display_name, :name, :search_results_page_title, :staged_search_results_page_title,
                              :facebook_handle, :flickr_url, :twitter_handle, :youtube_handles_as_text,
                              :uses_one_serp, :theme, :staged_theme,
@@ -20,6 +22,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :managed_header_text, :staged_managed_header_text,
                              :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
+                             :external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
                              :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source,
