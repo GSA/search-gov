@@ -6,6 +6,9 @@
     %li
       = site_information_form.label :name, "Site Handle (visible to searchers in the URL)"
       = site_information_form.text_field :name, :class => 'txt', :disabled => true
+    %li
+      = site_information_form.label :id, "Site ID (AID, used in code for features like type-ahead)"
+      = site_information_form.text_field :id, :class => 'txt', :disabled => true
   %li
     = site_information_form.label :locale, "Site Language"
     - radio_button_options = @affiliate.new_record? ? {} : { :disabled => true }

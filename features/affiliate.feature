@@ -339,6 +339,7 @@ Feature: Affiliate clients
     And I should see "Site Information" within ".main"
     And the "Site name" field should contain "aff site"
     And the "Site Handle (visible to searchers in the URL)" field should contain "aff.gov"
+    And the "Site ID (AID, used in code for features like type-ahead)" field should contain site ID for aff.gov
     And I should see "Cancel"
     When I follow "Cancel"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site

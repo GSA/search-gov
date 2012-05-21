@@ -318,3 +318,8 @@ Given /^the following Connections exist for the affiliate "([^"]*)":$/ do |affil
     affiliate.connections.create!(:connected_affiliate => connected_affiliate, :display_name => hash[:display_name])
   end
 end
+
+Then /^the "([^"]*)" field should contain site ID for (.+)$/ do |label, affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  Then %{the "#{label}" field should contain "#{affiliate.id}"}
+end
