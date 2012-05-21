@@ -2346,7 +2346,7 @@ Feature: Affiliate clients
 
   Scenario: Visiting sidebar
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | results_source |
+      | display_name   | name             | contact_email | contact_name | results_source |
       | aff site       | aff.gov          | aff@bar.gov   | John Bar     | bing+odie      |
       | bing only site | bingonly.aff.gov | aff@bar.gov   | John Bar     | bing           |
     And affiliate "aff.gov" has the following RSS feeds:
@@ -2394,8 +2394,9 @@ Feature: Affiliate clients
 
   Scenario: Editing sidebar
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name      | contact_email | contact_name |
+      | aff site     | aff.gov   | aff@bar.gov   | John Bar     |
+      | nonav site   | nonav.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name          | url                                                | position | is_navigable |
       | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | 5        | false        |
@@ -2464,6 +2465,14 @@ Feature: Affiliate clients
 
     When I follow "Hide Me" in the left column
     Then I should not see "All Time" in the left column
+
+    When I go to the "nonav site" affiliate page
+    And I follow "Sidebar"
+    And I uncheck "Is Image Search Label 0 navigable"
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+    When I go to nonav.gov's search page
+    Then I should not see "Everything" in the left column
 
   Scenario: Setting RSS feed name to blank when editing sidebar
     Given the following Affiliates exist:

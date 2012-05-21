@@ -6,15 +6,18 @@
 = javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
 = left_nav_label(@affiliate.left_nav_label) unless @affiliate.uses_one_serp?
 - left_nav_tag = @affiliate.uses_one_serp? ? :div : :span
-%ul.rss-feeds
-  %li
-    = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), @affiliate.default_search_label, params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|
-      = content_tag left_nav_tag, everything
-  = render_navigations @affiliate.navigations.active, search_params, left_nav_tag,
-    @search.instance_of?(ImageSearch), { :document_collection => document_collection, :rss_feed => rss_feed }
+- time_filters_css_class = @affiliate.navigations.active.present? ? 'time-filters' : 'time-filters no-active-nav'
+
+- if @affiliate.navigations.active.present?
+  %ul.rss-feeds
+    %li
+      = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), @affiliate.default_search_label, params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|
+        = content_tag left_nav_tag, everything
+    = render_navigations @affiliate.navigations.active, search_params, left_nav_tag,
+      @search.instance_of?(ImageSearch), { :document_collection => document_collection, :rss_feed => rss_feed }
 
 - if @search.instance_of?(NewsSearch) and @affiliate.is_time_filter_enabled?
-  %ul.time-filters
+  %ul{ :class => "#{time_filters_css_class}" }
     %li
       = link_to_if(params[:tbs], t(:all_time), rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
         = content_tag left_nav_tag, everything
@@ -24,7 +27,7 @@
           = content_tag left_nav_tag, last_time
 
 - if @search.instance_of?(VideoNewsSearch) and @affiliate.is_time_filter_enabled?
-  %ul.time-filters
+  %ul{ :class => "#{time_filters_css_class}" }
     %li
       = link_to_if(params[:tbs], t(:all_time), rss_feed ? video_news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
         = content_tag left_nav_tag, everything

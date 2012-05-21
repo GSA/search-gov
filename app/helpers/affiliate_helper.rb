@@ -110,12 +110,12 @@ module AffiliateHelper
 
     unless affiliate.managed_header_text.blank?
       color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_text_color)
-      style = "color: #{color}; font-family: Georgia, serif; font-size: 50px; display: inline-block; margin: 0 auto;"
+      style = "color: #{color}; font-family: Georgia, serif; font-size: 50px; display: inline-block; margin: 0;"
       content << link_to_unless(affiliate.managed_header_home_url.blank?, content_tag(:div, affiliate.managed_header_text, :style => style), affiliate.managed_header_home_url)
     end
 
     background_color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_background_color)
-    alignment = affiliate.managed_header_text.blank? ? 'center' : 'left';
+    alignment = affiliate.managed_header_text.blank? || affiliate.header_image_file_name.blank? ? 'center' : 'left';
     header_style = "text-align: #{alignment};"
     header_style << " background-color: #{background_color};" unless background_color.blank?
     content.blank? ? content : content_tag(:div, content.html_safe, :id => 'managed_header', :style => "#{header_style}").html_safe
