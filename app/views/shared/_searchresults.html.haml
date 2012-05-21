@@ -1,6 +1,5 @@
 - result_partial = result_partial_for(search)
 - first = true
-%a{:name => "content"}
 = render('shared/results_summary', :affiliate => @affiliate, :search => @search, :search_vertical => @search_vertical) unless @affiliate.uses_one_serp?
 - if search.first_page?
   - if search.has_boosted_contents? or search.has_featured_collections?

@@ -1,15 +1,7 @@
 = form_tag(search_path(:m => "true"), :method => :get, :id=>"search_form") do
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :affiliate, @affiliate.name
-  .search
-    .searchBoxContainer.dvCenter
-      .dvSearchBox.results
-        = text_field :search, :query, { :maxlength => 255, :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
-        .dvSearchClose.results
-          = image_tag "/m/i/close.png", :style => "display: none;"
-      .dvSearchBtn.results
-        = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png", :id => 'Search'
-      .clear
+  = render :partial => 'shared/search_box'
 - if js_enabled_mobile_device?
   :javascript
     document.getElementById("search_query").focus();

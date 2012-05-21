@@ -1,3 +1,6 @@
+@import "compass/css3/border-radius"
+@import "compass/typography/text/replacement"
+
 body, html, div, p, h1, h2, h3, h4, a, span, ul, li
   background: none
   border: #ffffff none 0
@@ -121,11 +124,11 @@ img
 
 .searchBoxContainer
   padding: 5px 10px
-  width: 290px
+  width: 294px
 
 .dvSearchBox
   float: left
-  width: 253px
+  width: 262px
   height: 32px
 
 .dvSearchClose
@@ -133,13 +136,13 @@ img
   float: right
   top: -30px
   width: 32px
-  height: 30px
+  height: 32px
   z-index: 9999
   img
     width: 24px
     height: 24px
     margin: 0
-    padding: 0
+    padding: 3px 0
 
 .mobileSearchTextBox
   background-image: url('/m/i/textBoxSkin.png')
@@ -152,23 +155,37 @@ img
   width: 245px
 
 .mobileSearchTextBoxResultsPage
-  background-image: url('/m/i/textBoxSkin_ResultsPage.png')
-  background-color: Transparent
-  background-repeat: no-repeat
-  background-position: center left
-  border: none
+  -webkit-appearance: none
+  border: 1px solid #CACACA
+  +border-right-radius(0px)
+  +border-left-radius
   font-size: 1em
   height: 30px
-  padding: 1px 0 1px 15px
+  margin: 0
+  padding: 0px 0 0px 15px
   width: 245px
 
 .dvSearchBtn
-  float: right
+  float: left
   margin: 0
-  width: 37px
-  height: 32px
-  input
-    border-radius: 0
+  #Search
+    +hide-text
+    border:
+      color: #CACACA
+      style: solid
+      width: 1px 1px 1px 0
+    +border-top-left-radius(0px)
+    +border-top-right-radius
+    +border-bottom-right-radius
+    +border-bottom-left-radius(0px)
+    background:
+      image: url(/images/search_button.png)
+      repeat: no-repeat
+      position: center
+    height: 32px
+    margin: 0
+    padding: 0
+    width: 32px
 
 #homeNav
   padding: 0 0 20px 0
@@ -398,10 +415,10 @@ li
     a
       text-decoration: none
       display: block
-      padding: .2em .4em
+      padding: .2em 15px
       line-height: 1.5
       zoom: 1
-      font-size: 1em
+      font-size: 16px
       &.ui-state-hover, &.ui-state-active
         font-weight: bold
         margin: -1px

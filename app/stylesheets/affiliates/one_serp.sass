@@ -123,7 +123,8 @@ body
   padding: 0 0 0 160px
   margin: 0 0 15px 0
   #search_query
-    +border-radius
+    +border-top-left-radius
+    +border-bottom-left-radius
     float: left
     background-color: #FFF
     border: 1px solid #CACACA
@@ -131,13 +132,20 @@ body
       size: 13px
       weight: normal
     height: 20px
-    margin-right: 8px
     outline: 0
     padding: 4px 0 4px $results-padding-size - 1
     width: 545px
+    &.has-sayt-suggestion
+      +border-bottom-left-radius(0px)
 
   #search_button
-    +border-radius
+    +hide-text
+    +border-top-right-radius
+    +border-bottom-right-radius
+    background:
+      image: url(/images/search_button.png)
+      repeat: no-repeat
+      position: center
     float: left
     font:
       size: 13px
@@ -145,7 +153,7 @@ body
     margin: 0
     padding: 0
     text-transform: uppercase
-    width: 90px
+    width: 30px
     height: 30px
 
 #results

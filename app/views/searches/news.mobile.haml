@@ -3,15 +3,7 @@
   = hidden_field_tag :affiliate, @affiliate.name
   = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
   = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
-  .search
-    .searchBoxContainer.dvCenter
-      .dvSearchBox.results
-        = text_field :search, :query, { :maxlength => 255, :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
-        .dvSearchClose.results
-          = image_tag "/m/i/close.png", :style => "display: none;"
-      .dvSearchBtn.results
-        = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png", :id => 'Search'
-      .clear
+  = render :partial => 'shared/search_box'
 
 - if @search.results.present?
   %hr.topresults

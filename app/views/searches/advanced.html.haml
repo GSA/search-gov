@@ -1,4 +1,4 @@
-%a{ :id => 'main_content', :name => 'main_content' }
+%a#main_content
 #advanced-header
 - target = params[:embedded] ? nil : '_parent'
 = form_tag(search_path, :method => :get, :id => 'advanced-firstgov', :class => 'advanced', :name=> 'advanced-firstgov', :target => target) do

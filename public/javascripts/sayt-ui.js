@@ -80,6 +80,7 @@ jQuery(document).ready(function() {
     },
     open: function() {
       jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
+      jQuery('.one-serp #search_query').addClass('has-sayt-suggestion');
       if (isSearchUsaDesktop) {
         jQuery('.ui-autocomplete').addClass('search_usa_autocomplete');
         jQuery('.ui-autocomplete').css({ width: '617px' });
@@ -90,6 +91,9 @@ jQuery(document).ready(function() {
       } else if (isProgram) {
         jQuery('.ui-autocomplete').addClass('program_autocomplete');
       }
+    },
+    close: function() {
+      jQuery('.one-serp #search_query').removeClass('has-sayt-suggestion');
     },
     position: position
   });
