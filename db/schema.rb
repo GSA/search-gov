@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518195112) do
+ActiveRecord::Schema.define(:version => 20120522030302) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20120518195112) do
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
-    t.boolean  "is_image_search_enabled",                                         :default => true
     t.string   "top_searches_label",                                              :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
@@ -78,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20120518195112) do
     t.boolean  "staged_uses_one_serp"
     t.integer  "fetch_concurrency",                                               :default => 1,               :null => false
     t.string   "default_search_label",                      :limit => 20,                                      :null => false
-    t.string   "old_image_search_label",                    :limit => 20
     t.boolean  "is_time_filter_enabled",                                          :default => true
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
@@ -262,12 +260,10 @@ ActiveRecord::Schema.define(:version => 20120518195112) do
   add_index "daily_usage_stats", ["day", "affiliate"], :name => "index_daily_usage_stats_on_day_and_affiliate", :unique => true
 
   create_table "document_collections", :force => true do |t|
-    t.integer  "affiliate_id",                    :null => false
-    t.string   "name",                            :null => false
+    t.integer  "affiliate_id", :null => false
+    t.string   "name",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
-    t.boolean  "is_navigable", :default => false
   end
 
   add_index "document_collections", ["affiliate_id", "name"], :name => "index_document_collections_on_affiliate_id_and_name", :unique => true
@@ -619,8 +615,6 @@ ActiveRecord::Schema.define(:version => 20120518195112) do
     t.string   "name",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_navigable",    :default => false
-    t.integer  "position"
     t.boolean  "shown_in_govbox", :default => false, :null => false
     t.boolean  "is_managed",      :default => false, :null => false
     t.boolean  "is_video",        :default => false, :null => false
