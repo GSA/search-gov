@@ -12,9 +12,14 @@ class NewsSearch < Search
     @tbs = options[:tbs]
     @since = since_when(@tbs)
     assign_rss_feed(options[:channel])
+    if @rss_feed
+      @rss_feeds = [@rss_feed]
+    else
+      @rss_feeds = navigable_feeds
+      @rss_feed = @rss_feeds.first if @rss_feeds.count == 1
+    end
     @hits, @total = [] , 0
-    @rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.rss_feeds.navigable_only
-    @per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
+    assign_per_page
   end
 
   def search
@@ -31,7 +36,7 @@ class NewsSearch < Search
     if response
       @total = response.total
       @results = paginate(process_results(response))
-      @hits = response.hits
+      @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1
       @endrecord = @startrecord + @results.size - 1
     end
@@ -39,6 +44,14 @@ class NewsSearch < Search
 
   def assign_rss_feed(channel_id)
     @rss_feed = @affiliate.rss_feeds.find_by_id(channel_id.to_i) if channel_id.present?
+  end
+
+  def navigable_feeds
+    @affiliate.rss_feeds.navigable_only
+  end
+
+  def assign_per_page
+    @per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
   end
 
   def process_results(response)

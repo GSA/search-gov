@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe NewsSearch do
-  fixtures :affiliates, :rss_feeds, :news_items
+  fixtures :affiliates, :rss_feeds, :navigations, :news_items
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
