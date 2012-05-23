@@ -157,5 +157,27 @@ describe Robot do
       Robot.update_for(some_domain).should == robot
     end
   end
-
+  
+  describe "#sitemap" do
+    context "when the robots.txt file exists" do
+      before do
+        @html_io = open(Rails.root.to_s + '/spec/fixtures/txt/robots.txt')
+        robot.stub!(:open).and_return @html_io
+      end
+      
+      it "should return the first sitemap link found" do
+        robot.sitemap.should == "http://www.example.gov/sitemap.xml"
+      end
+    end
+    
+    context "when the file does not exist" do
+      before do
+        robot.stub!(:open).and_raise Exception.new("404 Document Not Found")
+      end
+      
+      it "should return nil" do
+        robot.sitemap.should be_nil
+      end
+    end
+  end
 end
