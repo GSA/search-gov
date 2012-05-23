@@ -481,7 +481,9 @@ class Affiliate < ActiveRecord::Base
   def autodiscover_sitemap
     begin
       sitemap_url = Robot.find_or_create_by_domain(site_domains.first.domain).sitemap
+      puts sitemap_url
       sitemap = Sitemap.create(:url => sitemap_url, :affiliate => self) if sitemap_url
+      puts sitemap.errors.inspect
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering sitemap for #{self.name}: #{e.message}")
     end

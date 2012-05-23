@@ -1996,9 +1996,8 @@ describe Affiliate do
       end
       
       it "should add the sitemap to the list of sitemaps for the affiliate" do
-        @affiliate.sitemaps.size.should == 0
+        Sitemap.should_receive(:create).with(:url => "http://nps.gov/sitemap.xml", :affiliate => @affiliate)
         @affiliate.autodiscover_sitemap
-        @affiliate.sitemaps.size.should == 1
       end
     end
     
@@ -2010,9 +2009,8 @@ describe Affiliate do
       end
       
       it "should not add a sitemap" do
-        @affiliate.sitemaps.size.should == 0
+        Sitemap.should_not_receive(:create)
         @affiliate.autodiscover_sitemap
-        @affiliate.sitemaps.size.should == 0
       end
     end
     
