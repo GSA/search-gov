@@ -468,7 +468,87 @@ class Affiliate < ActiveRecord::Base
   def unused_features
     features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
   end
+  
+  def autodiscover
+    if site_domains.size == 1
+      autodiscover_sitemap
+      autodiscover_rss_feeds
+      autodiscover_favicon_url
+      autodiscover_social_media
+    end
+  end
 
+  def autodiscover_sitemap
+    begin
+      sitemap_url = Robot.find_or_create_by_domain(site_domains.first.domain).sitemap
+      sitemap = Sitemap.create(:url => sitemap_url, :affiliate => self) if sitemap_url
+    rescue Exception => e
+      Rails.logger.error("Error when autodiscovering sitemap for #{self.name}: #{e.message}")
+    end
+  end
+  
+  def autodiscover_rss_feeds
+    begin
+      @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
+      @home_page_doc.xpath("//link[@rel='alternate']").each do |link_element|
+        rss_feed_url = link_element.attribute("href").value
+        title = link_element.attribute("title").nil? ? rss_feed_url : link_element.attribute("title").value
+        if rss_feed_url
+          rss_feed = self.rss_feeds.new(:name => title)
+          rss_feed.rss_feed_urls << RssFeedUrl.new(:url => rss_feed_url)
+          rss_feed.save
+        end
+      end
+    rescue Exception => e
+      Rails.logger.error("Error when autodiscovering rss feeds for #{self.name}: #{e.message}")
+    end      
+  end
+
+  def autodiscover_favicon_url
+    begin
+      home_page_url = "http://#{site_domains.first.domain}"
+      @home_page_doc = @home_page_doc || Nokogiri::HTML(open(home_page_url))
+      icon_url = nil
+      @home_page_doc.xpath("//link[@rel='icon']").each do |link_element|
+        icon_url = link_element.attribute("href").value
+        icon_url = icon_url.start_with?("http://") ? icon_url : "http://#{home_page_url}icon_url"
+        break
+      end
+      unless icon_url
+        icon_url = home_page_url + "/favicon.ico" unless (timeout(10) { open(home_page_url + "/favicon.ico") } rescue nil).nil?
+      end
+      update_attributes(:favicon_url => icon_url) unless icon_url.nil?
+    rescue Exception => e
+      Rails.logger.error("Error when autodiscovering favicon for #{self.name}: #{e.message}")
+    end            
+  end
+  
+  def autodiscover_social_media
+    begin
+      @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
+      social_media_handles = {}
+      @home_page_doc.xpath("//a").each do |anchor_tag|
+        href = anchor_tag.attribute("href").value rescue nil
+        if href
+          social_media_handles[:twitter_handle] = href.split("/").last if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/ and social_media_handles[:twitter].nil?
+          social_media_handles[:facebook_handle] = href.split("/").last if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/ and social_media_handles[:facebook_handle].nil?
+          social_media_handles[:flickr_url] = href if href =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/ and social_media_handles[:flickr_url].nil?
+          if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
+            youtube_handle = href.split("/").last
+            if youtube_handles
+              youtube_handles << youtube_handle
+            else
+              update_attributes(:youtube_handles => [youtube_handle])
+            end
+          end
+        end
+      end
+      update_attributes(social_media_handles)
+    rescue Exception => e
+      Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
+    end
+  end
+  
   private
 
   def batch_size

@@ -93,6 +93,7 @@ class SiteDomain < ActiveRecord::Base
   end
 
   protected
+  
   def normalize_domain
     self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
   end

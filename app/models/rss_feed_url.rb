@@ -72,6 +72,7 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   private
+  
   def url_must_point_to_a_feed
     return unless changed.include?('url')
     set_http_prefix :url

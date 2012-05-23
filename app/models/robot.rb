@@ -37,6 +37,15 @@ class Robot < ActiveRecord::Base
       delete unless new_record?
     end
   end
+  
+  def sitemap
+    if (robots_txt = fetch_robots_txt)
+      robots_txt.read.each do |line|
+        return line[8..-1].strip if line.start_with?("Sitemap:")
+      end
+    end
+    return nil
+  end
 
   def self.populate_from_indexed_domains
     IndexedDomain.select("distinct domain").each { |result| find_or_initialize_by_domain(result[:domain]).save_or_delete }

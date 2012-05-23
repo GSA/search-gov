@@ -73,6 +73,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def create_content_sources
     if @affiliate.update_attributes(params[:affiliate])
+      @affiliate.autodiscover
       redirect_to get_the_code_affiliate_path(@affiliate)
     else
       @current_step = :content_sources
