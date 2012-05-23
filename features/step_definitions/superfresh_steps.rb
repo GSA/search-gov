@@ -12,12 +12,17 @@ end
 Given /^the following IndexedDocuments exist:$/ do |table|
   ActiveRecord::Observer.disable_observers
   table.hashes.each do |hash|
-    IndexedDocument.create!(:title => hash[:title],
-                            :description => hash[:description],
-                            :url => hash[:url],
-                            :affiliate => Affiliate.find_by_name(hash[:affiliate]),
-                            :last_crawled_at => hash[:last_crawled_at],
-                            :last_crawl_status => hash[:last_crawl_status])
+    IndexedDocument.create! do |id|
+      id.title = hash[:title]
+      id.description = hash[:description]
+      id.url = hash[:url]
+      id.affiliate = Affiliate.find_by_name(hash[:affiliate])
+      id.last_crawled_at = hash[:last_crawled_at]
+      id.last_crawl_status = hash[:last_crawl_status]
+      if hash[:created_at].present?
+        id.created_at = eval(hash[:created_at].gsub(/ /, '.'))
+      end
+    end
   end
   Sunspot.commit
   ActiveRecord::Observer.enable_observers

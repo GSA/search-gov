@@ -60,6 +60,7 @@ class IndexedDocument < ActiveRecord::Base
     string :doctype
     integer :affiliate_id
     string :url
+    time :created_at, :trie => true
   end
 
   def fetch
@@ -187,7 +188,7 @@ class IndexedDocument < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, affiliate, document_collection, page = 1, per_page = 3)
+    def search_for(query, affiliate, document_collection, page = 1, per_page = 3, created_at = nil)
       sanitized_query = preprocess(query)
       return if affiliate.nil? or sanitized_query.blank?
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
@@ -202,6 +203,7 @@ class IndexedDocument < ActiveRecord::Base
           end unless document_collection.nil?
           without(:url).any_of affiliate.excluded_urls.collect { |excluded_url| excluded_url.url } unless affiliate.excluded_urls.empty?
           with(:last_crawl_status, OK_STATUS)
+          with(:created_at).greater_than(created_at) if created_at.present?
           paginate :page => page, :per_page => per_page
         end
       end

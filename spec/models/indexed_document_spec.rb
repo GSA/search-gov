@@ -347,6 +347,28 @@ describe IndexedDocument do
       specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).should_not be_nil }
     end
 
+    context 'when filtering based on created_at' do
+      before do
+        IndexedDocument.destroy_all
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'old doc 8', :url => 'http://www.agency.gov/doc8.pdf',
+                                                        :content_hash => nil, :created_at => 4.months.ago))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'new doc 9', :url => 'http://www.agency.gov/doc9.pdf',
+                                                        :content_hash => nil, :created_at => 1.weeks.ago))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'new doc 10', :url => 'http://www.agency.gov/doc10.pdf',
+                                                        :content_hash => nil, :created_at => 2.weeks.ago))
+        IndexedDocument.reindex
+        Sunspot.commit
+      end
+
+      it 'should return documents created after the specified date' do
+        odie = IndexedDocument.search_for('doc', affiliates(:basic_affiliate), nil, 1, 3, Date.current.ago(3.months))
+        titles = odie.results.collect(&:title)
+        titles.should include('new doc 9')
+        titles.should include('new doc 10')
+        titles.should_not include('old doc 8')
+      end
+    end
+
     context "when .search raises an exception" do
       it "should return nil" do
         IndexedDocument.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))

@@ -222,7 +222,7 @@ class WebSearch < Search
     @boosted_contents = BoostedContent.search_for(query, affiliate)
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate)
-      documents = @indexed_results.nil? ? IndexedDocument.search_for(query, affiliate, nil) : nil
+      documents = @indexed_results.nil? ? IndexedDocument.search_for(query, affiliate, nil, 1, 3, Date.current.ago(3.months)) : nil
       if documents
         @indexed_documents = documents.hits(:verify => true)
         remove_bing_matches_from_indexed_documents
