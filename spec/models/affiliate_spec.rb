@@ -2160,7 +2160,6 @@ describe Affiliate do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_social_media_urls.html"))
         Nokogiri::HTML::Document.stub!(:parse).and_return doc
-        @affiliate.youtube_handles = ["whitehouse_test"]
         @affiliate.autodiscover_social_media
       end
       
@@ -2177,7 +2176,18 @@ describe Affiliate do
       end
       
       it "should update the youtube handles with all the youtube handles found on the page" do
-        @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2", "whitehouse_test"]
+        @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2"]
+      end
+      
+      context "when there are existing youtube handles" do
+        before do
+          @affiliate.update_attributes(:youtube_handles => ['whitehouse_test'])
+        end
+        
+        it "should add new handles to the list" do
+          @affiliate.autodiscover_social_media
+          @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2", "whitehouse_test"]
+        end
       end
     end
     
