@@ -739,10 +739,17 @@ describe WebSearch do
 
       before do
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
-                         :title => "NewsItem title",
-                         :description => "NewsItem description",
+                         :title => "NewsItem title highlighted from Solr",
+                         :description => "NewsItem description highlighted from Solr",
                          :published_at => DateTime.parse("2011-09-26 21:33:05"),
                          :guid => '80798 at www.whitehouse.gov',
+                         :rss_feed_id => rss_feeds(:white_house_blog).id,
+                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
+        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm',
+                         :title => "Title w/o highlighting",
+                         :description => "Description w/o highlighting",
+                         :published_at => DateTime.parse("2011-09-26 21:33:05"),
+                         :guid => '80799 at www.whitehouse.gov',
                          :rss_feed_id => rss_feeds(:white_house_blog).id,
                          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
         Sunspot.commit
@@ -756,8 +763,11 @@ describe WebSearch do
 
       it "should replace Bing's result title with the NewsItem title" do
         @search.run
-        @search.results.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title"
-        @search.results.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description"
+        results_of_interest = @search.results.last(2)
+        results_of_interest.first['title'].should == "Title w/o highlighting"
+        results_of_interest.first['content'].should == "Description w/o highlighting"
+        results_of_interest.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from Solr"
+        results_of_interest.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from Solr"
       end
     end
 

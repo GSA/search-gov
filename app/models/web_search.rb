@@ -346,7 +346,12 @@ class WebSearch < Search
   def news_item_title_desc(result_url)
     @news_item_hash ||= build_news_item_hash_from_search
     news_item_hit = @news_item_hash[result_url]
-    [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)] if news_item_hit.present?
+    if news_item_hit.present?
+      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
+    else
+      news_item = NewsItem.find_by_link(result_url)
+      [news_item.title, news_item.description] if news_item
+    end
   end
 
   def build_news_item_hash_from_search
