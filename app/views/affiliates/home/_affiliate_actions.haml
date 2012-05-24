@@ -1,8 +1,8 @@
 .action-row.current-site-row
-  = link_to "View Current", search_url(:affiliate=> affiliate.name, :query=>"gov"), :target => "_blank"
+  = link_to "View Current", search_url(:protocol => 'http', :affiliate=> affiliate.name, :query=>"gov"), :target => "_blank"
   = button_to "Delete Site", affiliate_path(affiliate), :confirm => "You are about to delete this site. Are you sure?", :method => :delete, :class => 'generic-button delete-site-button'
 - if affiliate.has_staged_content?
   .action-row.staged-site-row
-    = link_to "View Staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1), :target => "_blank"
+    = link_to "View Staged", search_url(:protocol => 'http', :affiliate=> affiliate.name, :query=>"gov", :staged => 1), :target => "_blank"
     = button_to "Push Changes", push_content_for_affiliate_path(affiliate, :affiliate_id => affiliate.id), :class => 'generic-button push-changes-button'
     = button_to "Cancel Changes", cancel_staged_changes_for_affiliate_path(affiliate), :class => 'generic-button cancel-changes-button'
