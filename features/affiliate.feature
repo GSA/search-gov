@@ -1319,6 +1319,7 @@ Feature: Affiliate clients
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
     When "aff@bar.gov" opens the email
+    Then I should see "The header and footer for aff site have been changed" in the email subject
     And I should see "The header and/or footer for aff site have been updated" in the email body
     And I should see "Old header" in the email body
     And I should see "Old footer" in the email body
@@ -2013,6 +2014,7 @@ Feature: Affiliate clients
     And I fill in "Name" with "Existing User"
     And I press "Add User"
     When "existing@usa.gov" opens the email
+    Then I should see "USASearch Affiliate Program: You Were Added to aff site" in the email subject
     And I should see "Dear Existing User" in the email body
     And I should see "You have been successfully added to aff site by John Bar" in the email body
 

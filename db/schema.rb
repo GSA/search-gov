@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522030302) do
+ActiveRecord::Schema.define(:version => 20120524224947) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -283,6 +283,7 @@ ActiveRecord::Schema.define(:version => 20120522030302) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subject"
   end
 
   create_table "excluded_domains", :force => true do |t|
