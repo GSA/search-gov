@@ -468,7 +468,7 @@ class Affiliate < ActiveRecord::Base
   def unused_features
     features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
   end
-  
+
   def autodiscover
     if site_domains.size == 1
       autodiscover_sitemap
@@ -481,14 +481,12 @@ class Affiliate < ActiveRecord::Base
   def autodiscover_sitemap
     begin
       sitemap_url = Robot.find_or_create_by_domain(site_domains.first.domain).sitemap
-      puts sitemap_url
-      sitemap = Sitemap.create(:url => sitemap_url, :affiliate => self) if sitemap_url
-      puts sitemap.errors.inspect
+      Sitemap.create(:url => sitemap_url, :affiliate => self) if sitemap_url
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering sitemap for #{self.name}: #{e.message}")
     end
   end
-  
+
   def autodiscover_rss_feeds
     begin
       @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
@@ -503,7 +501,7 @@ class Affiliate < ActiveRecord::Base
       end
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering rss feeds for #{self.name}: #{e.message}")
-    end      
+    end
   end
 
   def autodiscover_favicon_url
@@ -522,9 +520,9 @@ class Affiliate < ActiveRecord::Base
       update_attributes(:favicon_url => icon_url) unless icon_url.nil?
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering favicon for #{self.name}: #{e.message}")
-    end            
+    end
   end
-  
+
   def autodiscover_social_media
     begin
       @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
@@ -550,7 +548,7 @@ class Affiliate < ActiveRecord::Base
       Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
     end
   end
-  
+
   private
 
   def batch_size
@@ -738,7 +736,7 @@ class Affiliate < ActiveRecord::Base
     return unless is_validate_staged_header_footer
     validate_header_results = validate_html staged_header
     if validate_header_results[:has_malformed_html]
-      errors.add(:base, "HTML to customize the top of your search results page is invalid: #{validate_header_results[:error_message]}")
+      errors.add(:base, malformed_html_error_message(:top))
     end
 
     if validate_header_results[:has_banned_elements]
@@ -747,7 +745,7 @@ class Affiliate < ActiveRecord::Base
 
     validate_footer_results = validate_html staged_footer
     if validate_footer_results[:has_malformed_html]
-      errors.add(:base, "HTML to customize the bottom of your search results page is invalid: #{validate_footer_results[:error_message]}")
+      errors.add(:base, malformed_html_error_message(:bottom))
     end
 
     if validate_footer_results[:has_banned_elements]
@@ -776,6 +774,11 @@ class Affiliate < ActiveRecord::Base
     end
     validate_html_results[:has_banned_elements] = has_banned_elements
     validate_html_results
+  end
+
+  def malformed_html_error_message(field_name)
+    email_link = %Q{<a href="mailto:***REMOVED***">***REMOVED***</a>}
+    "HTML to customize the #{field_name.to_s} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end
 
   def sanitize_html(html)

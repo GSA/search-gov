@@ -714,24 +714,24 @@ describe Affiliate do
         end
 
         it "should not allow malformed HTML in staged header or staged footer" do
-          header_error_message = %q(HTML to customize the top of your search results page is invalid)
-          footer_error_message = %q(HTML to customize the bottom of your search results page is invalid)
+          header_error_message = 'HTML to customize the top of your search results is invalid'
+          footer_error_message = 'HTML to customize the bottom of your search results is invalid'
           affiliate.is_validate_staged_header_footer = true
 
           html_with_body = <<-HTML
             <html><body><h1>html with script</h1></body></html>
           HTML
           affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body).should be_false
-          affiliate.errors[:base].join.should match(/#{header_error_message}/)
-          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+          affiliate.errors[:base].join.should include("#{header_error_message}")
+          affiliate.errors[:base].join.should include("#{footer_error_message}")
 
           malformed_html_fragments = <<-HTML
             <link href="http://cdn.agency.gov/link.css"></script>
             <h1>html with link</h1>
           HTML
           affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be_false
-          affiliate.errors[:base].join.should match(/#{header_error_message}/)
-          affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+          affiliate.errors[:base].join.should include("#{header_error_message}")
+          affiliate.errors[:base].join.should include("#{footer_error_message}")
         end
       end
 
@@ -1946,17 +1946,17 @@ describe Affiliate do
       end
     end
   end
-  
+
   describe "#autodiscover" do
     before do
       @affiliate = affiliates(:basic_affiliate)
     end
-    
+
     context "when a single site domain exists" do
       before do
         @affiliate.site_domains << SiteDomain.new(:site_name => 'nps.gov', :domain => 'nps.gov')
       end
-      
+
       it "should call autodiscover for sitemaps, rss feeds and favicons" do
         @affiliate.should_receive(:autodiscover_sitemap).and_return true
         @affiliate.should_receive(:autodiscover_rss_feeds).and_return true
@@ -1965,13 +1965,13 @@ describe Affiliate do
         @affiliate.autodiscover
       end
     end
-    
+
     context "when more than a single site_domain exists" do
       before do
         @affiliate.site_domains << SiteDomain.new(:site_name => 'first.nps.gov', :domain => 'first.nps.gov')
         @affiliate.site_domains << SiteDomain.new(:site_name => 'second.nps.gov', :domain => 'second.nps.gov')
       end
-      
+
       it "should not autodiscover anything" do
         @affiliate.should_not_receive(:autodiscover_sitemap)
         @affiliate.should_not_receive(:autodiscover_rss_feeds)
@@ -1981,133 +1981,133 @@ describe Affiliate do
       end
     end
   end
-  
+
   describe "#autodiscover_sitemap" do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
     end
-    
+
     context "when the affiliate's robots.txt has a reference to a sitemap" do
       before do
         robot = Robot.new
         robot.stub!(:sitemap).and_return "http://nps.gov/sitemap.xml"
         Robot.stub!(:find_or_create_by_domain).and_return(robot)
       end
-      
+
       it "should add the sitemap to the list of sitemaps for the affiliate" do
         Sitemap.should_receive(:create).with(:url => "http://nps.gov/sitemap.xml", :affiliate => @affiliate)
         @affiliate.autodiscover_sitemap
       end
     end
-    
+
     context "when the affiliate's robots.txt does not reference a sitemap" do
       before do
         robot = Robot.new
         robot.stub!(:sitemap).and_return nil
         Robot.stub!(:find_or_create_by_domain).and_return(robot)
       end
-      
+
       it "should not add a sitemap" do
         Sitemap.should_not_receive(:create)
         @affiliate.autodiscover_sitemap
       end
     end
-    
+
     context "when something goes horribly wrong" do
       before do
         Robot.stub!(:find_or_create_by_domain).and_raise "Some Exception"
       end
-      
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering sitemap for #{@affiliate.name}: Some Exception")
         @affiliate.autodiscover_sitemap
       end
     end
   end
-  
+
   describe "#autodiscover_rss_feeds" do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.site_domains << SiteDomain.new(:site_name => 'USA.gov', :domain => 'usa.gov')
       @affiliate.rss_feeds.destroy_all
     end
-    
+
     context "when the home page has alternate links to an rss feed" do
       before do
         stub!(:open).and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
         Kernel.stub!(:open).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
       end
-      
+
       it "should add the feed to the affiliate's rss feeds" do
         @affiliate.rss_feeds.size.should == 0
         @affiliate.autodiscover_rss_feeds
         @affiliate.reload
         @affiliate.rss_feeds.size.should == 2
       end
-      
+
       it "should not re-fetch the home page content if it's already been fetched" do
         @affiliate.autodiscover_rss_feeds
         Nokogiri::HTML::Document.should_not_receive(:parse)
         @affiliate.autodiscover_rss_feeds
       end
     end
-    
+
     context "when the home page does not have links to an rss feed" do
       before do
       end
-      
+
       it "should not create any rss feeds" do
         @affiliate.rss_feeds.size.should == 0
         @affiliate.autodiscover_rss_feeds
         @affiliate.rss_feeds.size.should == 0
       end
     end
-    
+
     context "when something goes horribly wrong" do
       before do
         Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
       end
-      
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering rss feeds for #{@affiliate.name}: Some Exception")
         @affiliate.autodiscover_rss_feeds
       end
     end
   end
-  
+
   describe "#autodiscover_favicon_url" do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
       @affiliate.update_attributes(:favicon_url => nil)
     end
-    
+
     context "when a favicon is listed as a link with rel='icon'" do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_icon_link.html"))
         Nokogiri::HTML::Document.stub!(:parse).and_return doc
       end
-      
+
       it "should update the affiliate's favicon_url attribute with the value" do
         @affiliate.autodiscover_favicon_url
         @affiliate.favicon_url.should_not be_nil
         @affiliate.favicon_url.should == "http://usa.gov/resources/images/usa_favicon.gif"
       end
-      
+
       it "should not check the home page content more than once if a local copy is available" do
         @affiliate.autodiscover_favicon_url
         Nokogiri::HTML.should_not_receive(:new)
         @affiliate.should_not_receive(:open)
         @affiliate.autodiscover_favicon_url
       end
-      
+
       context "when the favicon link is relative" do
         before do
           doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_relative_icon_link.html"))
           Nokogiri::HTML::Document.stub!(:parse).and_return doc
         end
-        
+
         it "should store a full url as the favicon link" do
           @affiliate.autodiscover_favicon_url
           @affiliate.favicon_url.should_not be_nil
@@ -2115,7 +2115,7 @@ describe Affiliate do
         end
       end
     end
-    
+
     context "when no favicon link is present in the HTML, but a file at http://domain.gov/favicon.ico exists" do
       it "should update the affiliate's favicon_url attribute" do
         @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
@@ -2125,13 +2125,13 @@ describe Affiliate do
         @affiliate.favicon_url.should == "http://nps.gov/favicon.ico"
       end
     end
-    
+
     context "when no favicon link is present in HTML and no file exists at the default location" do
       before do
         @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
         @affiliate.should_receive(:open).with("http://nps.gov/favicon.ico").and_raise "Some Exception"
       end
-      
+
       it "should not update the affiliate's favicon_url attribute" do
         @affiliate.autodiscover_favicon_url
         @affiliate.favicon_url.should be_nil
@@ -2142,89 +2142,89 @@ describe Affiliate do
       before do
         Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
       end
-    
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering favicon for #{@affiliate.name}: Some Exception")
         @affiliate.autodiscover_favicon_url
       end
-    end    
+    end
   end
-  
+
   describe "#autodiscover_social_media" do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
     end
-    
+
     context "when the page has social media links" do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_social_media_urls.html"))
         Nokogiri::HTML::Document.stub!(:parse).and_return doc
         @affiliate.autodiscover_social_media
       end
-      
+
       it "should update the twitter handle with the first twitter handle found" do
         @affiliate.twitter_handle.should == "whitehouse"
       end
-      
+
       it "should update the facebook handle with the first Facebook handle found" do
         @affiliate.facebook_handle.should == "whitehouse"
       end
-      
+
       it "should update the flickr url with the first Flickr url found" do
         @affiliate.flickr_url.should == "http://flickr.com/whitehouse"
       end
-      
+
       it "should update the youtube handles with all the youtube handles found on the page" do
         @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2"]
       end
-      
+
       context "when there are existing youtube handles" do
         before do
           @affiliate.update_attributes(:youtube_handles => ['whitehouse_test'])
         end
-        
+
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2", "whitehouse_test"]
         end
       end
     end
-    
+
     context "when the page has no valid social media links" do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_bad_social_media_urls.html"))
         Nokogiri::HTML::Document.stub!(:parse).and_return doc
         @affiliate.autodiscover_social_media
       end
-      
+
       it "should not update the twitter handle" do
         @affiliate.twitter_handle.should be_nil
       end
-      
+
       it "should not update the facebook handle" do
         @affiliate.facebook_handle.should be_nil
       end
-      
+
       it "should not update the flickr handle" do
         @affiliate.flickr_url.should be_nil
       end
-      
+
       it "should not update the youtube handles" do
         @affiliate.youtube_handles.should be_nil
       end
     end
-    
+
     context "when something goes horribly wrong" do
       before do
         Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
       end
-    
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering social media for #{@affiliate.name}: Some Exception")
         @affiliate.autodiscover_social_media
       end
-    end    
+    end
 
   end
 end

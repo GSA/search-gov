@@ -13,4 +13,9 @@
         = f.submit "Save for Preview", :id => "save_for_preview", :class => 'form-submit-button save-for-preview-button'
         = f.submit "Make Live", :id => "make_live", :class => 'form-submit-button make-live-button'
         = link_to "Cancel", affiliate_path(@affiliate), :class => 'cancel'
+.hide
+  = form_tag 'http://validator.w3.org/nu/', :id => 'validator_form', :method => :post, :multipart => true, :target => '_blank' do
+    = hidden_field_tag :showsource, '1'
+    = text_area_tag :content
+    = submit_tag 'Validate'
 

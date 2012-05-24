@@ -76,6 +76,14 @@ function setupRssForm() {
   });
 }
 
+function generateValidationHtml(source) {
+  var prefix = "<!DOCTYPE html>\n<html>\n<head>\n<title>\n</title>\n</head>\n<body>\n<div id='container'>\n";
+  var textAreaWrapper = "<div id='" + source + "'>\n";
+  var textAreaValue = jQuery('#affiliate_staged_' + source).val();
+  var suffix = "</div>\n</div>\n</body>\n</html>\n";
+  return prefix + textAreaWrapper + textAreaValue + suffix;
+}
+
 jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
@@ -169,4 +177,18 @@ jQuery(document).ready(function() {
 
   setupConnections();
   setupRssForm();
+
+  jQuery('#validate_header_link').click(function(event) {
+    event.preventDefault();
+    jQuery('#content').val(generateValidationHtml('header'));
+    jQuery('#validator_form').submit();
+    return false;
+  });
+
+  jQuery('#validate_footer_link').click(function(event) {
+    event.preventDefault();
+    jQuery('#content').val(generateValidationHtml('footer'));
+    jQuery('#validator_form').submit();
+    return false;
+  });
 });

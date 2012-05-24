@@ -8,7 +8,9 @@
       = custom_header_footer_form.text_field :staged_external_css_url, :class => "txt", :maxlength => 255
   %li
     = custom_header_footer_form.label :staged_header, "Enter HTML to customize the top of your search results page."
+    = link_to 'Validate', '#validate_header_link', :id => 'validate_header_link'
     = custom_header_footer_form.text_area :staged_header
   %li
     = custom_header_footer_form.label :staged_footer, "Enter HTML to customize the bottom of your search results page."
+    = link_to 'Validate', '#validate_footer_link', :id => 'validate_footer_link'
     = custom_header_footer_form.text_area :staged_footer
