@@ -170,7 +170,7 @@ class WebSearch < Search
 
   def process_web_results(response)
     processed = response.web.results.collect do |result|
-      title, content = news_item_title_desc(result)
+      title, content = news_item_title_desc(result.url)
       title ||= (result.title rescue nil)
       content ||= (result.description rescue '')
       if title.present? and not url_is_excluded(result.url)
