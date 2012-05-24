@@ -82,8 +82,8 @@ class WebSearch < Search
     query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ') if options[:query_not].present?
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     unless options[:site_limits].blank?
-      @matching_site_limits = options[:site_limits].split.collect{|site| site if options[:affiliate].includes_domain?(site) }.compact
-      query += " #{self.matching_site_limits.collect{|site| "site:#{site}" }.join(' OR ')}"
+      @matching_site_limits = options[:site_limits].split.collect { |site| site if options[:affiliate].includes_domain?(site) }.compact
+      query += " #{self.matching_site_limits.collect { |site| "site:#{site}" }.join(' OR ')}"
     end
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
@@ -170,8 +170,9 @@ class WebSearch < Search
 
   def process_web_results(response)
     processed = response.web.results.collect do |result|
-      title = result.title rescue nil
-      content = result.description rescue ''
+      title, content = news_item_title_desc(result)
+      title ||= (result.title rescue nil)
+      content ||= (result.description rescue '')
       if title.present? and not url_is_excluded(result.url)
         {
           'title' => title,
@@ -294,7 +295,7 @@ class WebSearch < Search
     affiliate_scope += domains unless domains.blank?
     affiliate_scope += ")" unless scope_ids.blank? and domains.blank?
     affiliate_scope += " #{generate_default_scope}" if (scope_ids.blank? and domains.blank? and (@query =~ /site:/).nil?)
-    affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect{|keyword| "\"#{keyword}\""}.join(" OR ")})" unless affiliate.scope_keywords.blank?
+    affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")})" unless affiliate.scope_keywords.blank?
     affiliate_scope.strip
   end
 
@@ -340,6 +341,23 @@ class WebSearch < Search
         false
       end
     end
+  end
+
+  def news_item_title_desc(result_url)
+    @news_item_hash ||= build_news_item_hash_from_search
+    news_item_hit = @news_item_hash[result_url]
+    [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)] if news_item_hit.present?
+  end
+
+  def build_news_item_hash_from_search
+    news_item_hash = {}
+    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds, nil, 1, 100)
+    if news_items_overrides and news_items_overrides.total > 0
+      news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
+        news_item_hash[news_item_result.link] = news_item_hit
+      end
+    end
+    news_item_hash
   end
 
 end

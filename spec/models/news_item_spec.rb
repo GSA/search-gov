@@ -14,19 +14,27 @@ describe NewsItem do
     }
   end
 
-  it { should validate_presence_of :link }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :description }
-  it { should validate_presence_of :published_at }
-  it { should validate_presence_of :guid }
-  it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id) }
-  it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_id) }
-  it { should validate_presence_of :rss_feed_id }
-  it { should validate_presence_of :rss_feed_url_id }
-  it { should belong_to :rss_feed }
+  describe "creating a new NewsItem" do
+    it { should validate_presence_of :link }
+    it { should validate_presence_of :title }
+    it { should validate_presence_of :description }
+    it { should validate_presence_of :published_at }
+    it { should validate_presence_of :guid }
+    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id) }
+    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_id) }
+    it { should validate_presence_of :rss_feed_id }
+    it { should validate_presence_of :rss_feed_url_id }
+    it { should belong_to :rss_feed }
 
-  it "should create a new instance given valid attributes" do
-    NewsItem.create!(@valid_attributes)
+    it "should create a new instance given valid attributes" do
+      NewsItem.create!(@valid_attributes)
+    end
+
+    it "should scrub out extra whitespace, tabs, newlines from title/desc" do
+      news_item = NewsItem.create!(@valid_attributes.merge(:title => " \nDOD Marks Growth in Spouses’ Employment Program \n     ", :description => " \nSome     description \n     "))
+      news_item.title.should == 'DOD Marks Growth in Spouses’ Employment Program'
+      news_item.description.should == 'Some description'
+    end
   end
 
   describe "#search_for(query, rss_feeds, since = nil, page = 1)" do
@@ -54,7 +62,7 @@ describe NewsItem do
     context "when there are no RSS feeds passed in" do
       before do
         @affiliate = @blog.affiliate
-        @affiliate.rss_feeds.each {|f| f.update_attribute(:shown_in_govbox, false)}
+        @affiliate.rss_feeds.each { |f| f.update_attribute(:shown_in_govbox, false) }
       end
 
       it "should return nil" do

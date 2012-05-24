@@ -253,7 +253,7 @@ module SearchHelper
   end
 
   def bing_spelling_suggestion_for(search, affiliate, vertical)
-    if (search.spelling_suggestion)
+    if search.spelling_suggestion
       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
       opts = {:query=> suggestion_for_url}

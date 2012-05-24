@@ -2,6 +2,7 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :description, :link, :published_at, :guid, :rss_feed_id, :rss_feed_url_id
   validates_uniqueness_of :guid, :scope => :rss_feed_id
   validates_uniqueness_of :link, :scope => :rss_feed_id
+  before_validation :clean_text_fields
   belongs_to :rss_feed
   belongs_to :rss_feed_url
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
@@ -42,5 +43,16 @@ class NewsItem < ActiveRecord::Base
         end rescue nil
       end
     end
+  end
+
+  private
+
+  def clean_text_fields
+    self.title = clean_text_field(self.title)
+    self.description = clean_text_field(self.description)
+  end
+
+  def clean_text_field(str)
+    str.gsub(/[\r\t\n]/,'').squish if str.present?
   end
 end

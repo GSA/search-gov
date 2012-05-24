@@ -696,7 +696,7 @@ describe WebSearch do
       end
     end
 
-    context "when results contain listing missing a description" do
+    context "when results contain a listing that is missing a description" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => 'data'))
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
@@ -732,6 +732,33 @@ describe WebSearch do
         @search.results.size.should == 4
       end
 
+    end
+
+    context "when Bing result has an URL that matches a known NewsItem URL" do
+      fixtures :rss_feeds, :rss_feed_urls
+
+      before do
+        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
+                         :title => "NewsItem title",
+                         :description => "NewsItem description",
+                         :published_at => DateTime.parse("2011-09-26 21:33:05"),
+                         :guid => '80798 at www.whitehouse.gov',
+                         :rss_feed_id => rss_feeds(:white_house_blog).id,
+                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
+        Sunspot.commit
+        hits = NewsItem.search_for("NewsItem", [rss_feeds(:white_house_blog)], nil, 1, 100)
+        NewsItem.stub!(:search_for).and_return hits
+        @search = WebSearch.new(@valid_options)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+      end
+
+      it "should replace Bing's result title with the NewsItem title" do
+        @search.run
+        @search.results.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title"
+        @search.results.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description"
+      end
     end
 
     context "when searching for misspelled terms" do
@@ -982,7 +1009,7 @@ describe WebSearch do
         end
       end
     end
-    
+
     context "tweets" do
       before do
         @tweet = Tweet.create!(:tweet_text => "I love america.", :published_at => Time.now, :twitter_profile_id => 123, :tweet_id => 123)
@@ -991,7 +1018,7 @@ describe WebSearch do
         @affiliate.twitter_profiles << twitter_profile
         @affiliate.update_attributes(:is_twitter_govbox_enabled => true)
       end
-      
+
       it "should find the most recent relevant tweet" do
         search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
         search.run
@@ -999,13 +1026,13 @@ describe WebSearch do
         search.tweets.results.should_not be_empty
         search.tweets.results.first.should == @tweet
       end
-      
+
       it "should not find tweets if not on the first page" do
         search = WebSearch.new(:query => 'america', :affiliate => @affiliate, :page => 3)
         search.run
         search.tweets.should be_nil
       end
-      
+
       it "should not find any tweets if the affiliate has not Twitter Profiles" do
         @affiliate.twitter_profiles.delete_all
         Tweet.should_not_receive(:search_for)
@@ -1013,12 +1040,12 @@ describe WebSearch do
         search.run
         search.tweets.should be_nil
       end
-      
+
       context "when the affiliate has disabled the Twitter govbox" do
         before do
-          @affiliate.update_attributes(:is_twitter_govbox_enabled => false) 
+          @affiliate.update_attributes(:is_twitter_govbox_enabled => false)
         end
-        
+
         it "should not search for Tweets" do
           Tweet.should_not_receive(:search_for)
           search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
@@ -1076,6 +1103,7 @@ describe WebSearch do
           NewsItem.should_receive(:search_for).with('item', videos_rss_feeds, nil, 1).and_return(video_results)
 
           search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
+          search.stub!(:build_news_item_hash_from_search).and_return Hash.new
           search.run
           search.news_items.should == non_video_results
           search.video_news_items.should == video_results
