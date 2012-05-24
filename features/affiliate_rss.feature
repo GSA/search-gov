@@ -80,3 +80,27 @@ Feature: Affiliate RSS
       | RSS feed URL 0 | gdata.youtube.com/feeds/base/videos?author=noaa |
     And I press "Add"
     Then I should see "Name can't be blank"
+
+  Scenario: Previewing crawled news items
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name  | url                                  |
+      | Press | http://www.whitehouse.gov/feed/press |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I follow "RSS"
+    And I follow "Preview" in the page content
+    Then I should see "First item"
+    And I should see "Second item"
+    And I go to the "aff site" affiliate page
+    And I follow "RSS"
+    And I follow "Press"
+    And I follow "Preview" in the page content
+    Then I should see "First item"
+    And I should see "Second item"
