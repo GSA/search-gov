@@ -246,7 +246,9 @@ describe Emailer do
       body.should include('0 0.00% 0.00% 0')
       body.should include('Most Popular Queries for April 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query1 100 query2 100 query3 100')
+      body.should include('query1 100')
+      body.should include('query2 100')
+      body.should include('query3 100')
     end
   end
 
