@@ -143,6 +143,7 @@ class Emailer < ActionMailer::Base
 
   def affiliate_monthly_report(user, report_date)
     setup_email(user.email, __method__)
+    content_type 'text/html'
     @subject = ERB.new(@email_template_subject).result(binding)
     @report_date = report_date
     last_month = @report_date - 1.month
@@ -170,7 +171,7 @@ class Emailer < ActionMailer::Base
     @total_stats[:last_month_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_month_total_queries])
     @total_stats[:last_year_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_year_total_queries])
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.html { render :inline => ERB.new(@email_template_body).result(binding) }
+      format.html { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 
