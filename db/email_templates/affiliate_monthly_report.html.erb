@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type='text/css'>
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+  }
+  table { border-collapse: collapse; }
+  tr.even { background-color: #D8D8D8; }
+  tr.heading {
+    background-color: #696969;
+    color: white;
+  }
+  tr.sub-heading {
+    background-color: #909090;
+    color: white;
+  }
+  td,th {
+    border: 1px solid #CACACA;
+    padding: 5px;
+  }
+  tr.blank td {
+    border: 0;
+    line-height: 0.8em;
+  }
+  td { text-align: right; }
+  td.text { text-align: left; }
+  p { margin-top: 0; }
+</style>
+</head>
+<body>
+<h2>All sites dashboard</h2>
+
+<table>
+<thead>
+<tr class="heading">
+  <th>Site</th>
+  <th>Queries</th>
+  <th>Compared to last month</th>
+  <th>Compared to last year</th>
+  <th>Clicks</th>
+</tr>
+</thead>
+<tbody>
+<% @affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+<tr class="<%= cycle('odd', 'even') %>">
+  <td class="text"><%= affiliate_stats[:affiliate].display_name %></td>
+  <td><%= affiliate_stats[:total_queries] %></td>
+  <td><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
+  <td><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
+  <td><%= affiliate_stats[:total_clicks] %></td>
+</tr>
+<% end %>
+<tr class="<%= cycle('odd', 'even') %>">
+  <td class="text">TOTAL</td>
+  <td><%= @total_stats[:total_queries] %></td>
+  <td><%= "%.2f" % @total_stats[:last_month_percent_change] %>%</td>
+  <td><%= "%.2f" % @total_stats[:last_year_percent_change] %>%</td>
+  <td><%= @total_stats[:total_clicks] %></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Most Popular Queries for <%= "#{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year}" %></h2>
+
+<table>
+<tbody>
+<% @affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+  <tr class="heading">
+    <th colspan="2"><%= affiliate_stats[:affiliate].display_name %></th>
+  </tr>
+  <% if affiliate_stats[:popular_queries].is_a?(String) %>
+    <tr>
+      <td colspan="2"><%= affiliate_stats[:popular_queries] %></td>
+    </tr>
+  <% else %>
+    <tr class="sub-heading">
+      <th>Query Term</th>
+      <th>Frequency</th>
+    </tr>
+    <% affiliate_stats[:popular_queries].each do |popular_query| %>
+      <tr class="<%= cycle('odd', 'even', :name => 'colors') %>">
+        <td class="text"><%= popular_query.query %></td>
+        <td><%= popular_query.times %></td>
+      </tr>
+    <% end %>
+    <% reset_cycle('colors') %>
+  <% end %>
+  <tr class='blank'><td colspan="2">&nbsp;</td></tr>
+<% end %>
+</tbody>
+</table>
+<p>
+  Visit our Admin Center <%= affiliates_url %> for more details.
+  <br />
+  Happy reporting!
+</p>
+<p>The USASearch Team</p>
+</body>
+</html>

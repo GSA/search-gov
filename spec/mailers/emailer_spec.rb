@@ -212,7 +212,7 @@ describe Emailer do
       @email.should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/)
     end
   end
-  
+
   context "#affiliate_monthly_report" do
     fixtures :users, :affiliates
     before do
@@ -231,26 +231,25 @@ describe Emailer do
       end
       @email = Emailer.affiliate_monthly_report(@user, report_date)
     end
-    
+
     it "should be sent to the email address of the user specified" do
       @email.should deliver_to(@user.email)
     end
-    
+
     it "should have a subject which includes the month/year specified" do
       @email.should have_subject(/April 2012/)
     end
-    
+
     it "should calculate the proper totals for the data in the database" do
-      @email.should have_body_text(/100    33.33%    -33.33%   100/)
-      @email.should have_body_text(/0    0.00%    0.00%   0/)
-      @email.should have_body_text(/Most Popular Queries for April 2012/)
-      @email.should have_body_text(/NPEspanol Site\n  \n  Not enough historic data to compute most popular/)
-      @email.should have_body_text(/query1: 100/)
-      @email.should have_body_text(/query2: 100/)
-      @email.should have_body_text(/query3: 100/)
+      body = Sanitize.clean(@email.default_part_body.to_s).squish
+      body.should include('100 33.33% -33.33% 100')
+      body.should include('0 0.00% 0.00% 0')
+      body.should include('Most Popular Queries for April 2012')
+      body.should include('NPEspanol Site Not enough historic data to compute most popular')
+      body.should include('query1 100 query2 100 query3 100')
     end
   end
-  
+
   context "when a template is missing" do
     before do
       @user = mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token')
@@ -259,15 +258,15 @@ describe Emailer do
       EmailTemplate.destroy_all
       @email = Emailer.welcome_to_new_user_added_by_affiliate(@affiliate, @user, @current_user)
     end
-    
+
     it "should send an email to the developers" do
       @email.should deliver_to(Emailer::DEVELOPERS_EMAIL)
     end
-    
+
     it "should tell the developers to create a template for that method" do
       @email.should have_body_text(/Someone tried to send an email via the welcome_to_new_user_added_by_affiliate method, but we don\'t have a template for that method.  Please create one.  Thanks!/)
     end
-    
+
     after do
       EmailTemplate.load_default_templates
     end

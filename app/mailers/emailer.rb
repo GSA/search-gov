@@ -1,4 +1,5 @@
 class Emailer < ActionMailer::Base
+  include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
   DEVELOPERS_EMAIL = "developers@searchsi.com"
 
@@ -146,7 +147,7 @@ class Emailer < ActionMailer::Base
     @report_date = report_date
     last_month = @report_date - 1.month
     last_year = @report_date - 1.year
-    @affiliate_stats = {}
+    @affiliate_stats = ActiveSupport::OrderedHash.new
     user.affiliates.each do |affiliate|
       stats = {}
       stats[:affiliate] = affiliate
@@ -169,7 +170,7 @@ class Emailer < ActionMailer::Base
     @total_stats[:last_month_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_month_total_queries])
     @total_stats[:last_year_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_year_total_queries])
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
+      format.html { render :inline => ERB.new(@email_template_body).result(binding) }
     end
   end
 
