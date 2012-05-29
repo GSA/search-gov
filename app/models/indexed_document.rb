@@ -162,7 +162,7 @@ class IndexedDocument < ActiveRecord::Base
   def remove_common_substring(unescaped_substring)
     self.body = self.body.gsub(/#{Regexp.escape(unescaped_substring)}/, ' ').squish
     self.description = html_description_from(self.body)
-    self.save!
+    self.save
   end
 
   def body_for_substring_detection

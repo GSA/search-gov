@@ -616,11 +616,18 @@ describe IndexedDocument do
   end
 
   describe "#remove_common_substring(unescaped_substring)" do
+    let(:indexed_document) { IndexedDocument.create!(:title => "some title", :body => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :description => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :last_crawl_status => 'OK', :url => "http://www.gov.gov/a.html", :affiliate => affiliates(:basic_affiliate))}
+
     it "should remove the substring from the body and update the description" do
-      indexed_document = IndexedDocument.create!(:title => "some title", :body => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :description => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :last_crawl_status => 'OK', :url => "http://www.gov.gov/a.html", :affiliate => affiliates(:basic_affiliate))
       indexed_document.remove_common_substring("Skip to Main Content Home FAQs Site")
       indexed_document.body.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
       indexed_document.description.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
+    end
+
+    context "when there is no body/description left after removing the template (e.g., 90% of the pages have different titles but duplicate descriptions)" do
+      it "should just ignore the validation failure and move on (versus raising an exception)" do
+        indexed_document.remove_common_substring("THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT")
+      end
     end
   end
 
