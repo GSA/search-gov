@@ -1,0 +1,36 @@
+.span-24
+  .content-box.analytics
+    = form_tag(admin_compare_search_results_path, :method => :get) do
+      %ul
+        %li
+          = label_tag :analytics_affiliate_pick, "Affiliate"
+          = select nil, :affiliate_pick, @affiliate_picklist, {:selected=> @affiliate_pick}, {:id=>"Affiliate"}
+        %li
+          = label_tag :query, "Query"
+          = text_field_tag :query, @query, :size => 50
+        %li
+          = submit_tag "Search"
+- if @bing_search and @odie_search
+  %table
+    %tbody
+      %tr
+        %th{:style => 'width: 50%; border-right: 1px solid black;'}
+          Bing Results
+        %th{:style => 'width: 50%;'}
+          ODIE Results
+      %tr
+        %td{:style => 'width: 50%; border-right: 1px solid black;'}
+          - if @bing_search.results.present?
+            = results_summary(@bing_search.startrecord, @bing_search.endrecord, @bing_search.total, @bing_search.query)
+            - @bing_search.results.each_with_index do |result, index|
+              = render "/searches/result", :result => result, :affiliate => @affiliate, :search => @bing_search, :index => (@bing_search.startrecord + index - 1), :first => true
+          - else
+            No results
+        %td{:style => 'width: 50%;'}
+          - if @odie_search.results.present?
+            = results_summary(@odie_search.startrecord, @odie_search.endrecord, @odie_search.total, @odie_search.query)
+            - @odie_search.hits.each_with_index do |hit, index|
+              = render "/shared/indexed_document", :hit => hit, :index => index, :show_full_listing => false
+          - else
+            No results
+  = will_paginate(@bing_search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
