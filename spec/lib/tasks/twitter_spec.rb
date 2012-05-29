@@ -54,7 +54,7 @@ describe "Twitter rake tasks" do
           @client.should_receive(:on_reconnect)
           @client.should_receive(:on_interval).with(3600)
           @client.should_receive(:follow).with(TwitterProfile.all.collect(&:twitter_id))
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @rake[@task_name].invoke("true")
         end        
 
@@ -63,11 +63,24 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:info).with("[TWITTER] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
           @rake[@task_name].invoke("true")
           Tweet.count.should == 1
           Tweet.first.tweet_text.should == "2o piece nugget I just KILLED EM"
+        end
+
+        it "should log an error if something goes wrong in creating a Tweet" do
+          @stream.stub!(:each_item).and_yield(@raw_status)
+          @stream.stub!(:on_error)
+          @stream.stub!(:on_reconnect)
+          @stream.stub!(:on_max_reconnects)
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          @logger.should_receive(:error).with("[TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=195571096760762369: Some Exception")
+          Tweet.stub!(:create).and_raise "Some Exception"
+          @rake[@task_name].invoke("true")
+          Tweet.count.should == 0
         end
         
         it "should only create a new tweet if the user id matches a TwitterProfile" do
@@ -76,8 +89,8 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:info).with("[TWITTER] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
           @rake[@task_name].invoke("true")
           Tweet.count.should == 0
         end
@@ -88,8 +101,8 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:info).with("[TWITTER] Received delete request for status#1234")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [ONDELETE] Received delete request for status#1234")
           @rake[@task_name].invoke("true")
           Tweet.find_by_tweet_id(1234).should be_nil
         end
@@ -99,8 +112,8 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:error).with("[TWITTER] MultiJson::DecodeError occured in stream: Bad message")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:error).with("[TWITTER] [ERROR] MultiJson::DecodeError occured in stream: Bad message")
           @rake[@task_name].invoke("true")
         end
         
@@ -111,9 +124,9 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect).and_yield(1, 1)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:info).with("[TWITTER] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
-          @logger.should_receive(:info).with("[TWITTER] Reconnecting at #{timestamp.in_time_zone('UTC').strftime('%a %b %d %H:%M:%S %Z %Y')}...")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          @logger.should_receive(:info).with("[TWITTER] [RECONNECT] Reconnecting at #{timestamp.in_time_zone('UTC').strftime('%a %b %d %H:%M:%S %Z %Y')}...")
           @rake[@task_name].invoke("true")
         end
         
@@ -124,9 +137,9 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_error)
           @stream.stub!(:on_reconnect)
           @stream.stub!(:on_max_reconnects)
-          @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:info).with("[TWITTER] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
-          @logger.should_receive(:info).with("[TWITTER] Time has elapsed, shutting down connection.")
+          @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          @logger.should_receive(:info).with("[TWITTER] [ONINTERVAL] Time has elapsed, shutting down connection.")
           @client.should_receive(:stop)
           @rake[@task_name].invoke("true")
         end
@@ -142,7 +155,7 @@ describe "Twitter rake tasks" do
             @client.should_receive(:on_reconnect)
             @client.should_receive(:on_interval).with(3600)
             @client.should_not_receive(:follow)
-            @logger.should_receive(:info).with("[TWITTER] Connecting to Twitter to follow 0 Twitter profiles.")
+            @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 0 Twitter profiles.")
             @rake[@task_name].invoke("true")
           end
         end
