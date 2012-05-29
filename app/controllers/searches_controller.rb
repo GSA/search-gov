@@ -96,7 +96,7 @@ class SearchesController < ApplicationController
     end
     if @affiliate && params["staged"]
       @affiliate.uses_one_serp = @affiliate.staged_uses_one_serp
-      @affiliate.header_footer_sass = @affiliate.staged_header_footer_sass
+      @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
       @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id

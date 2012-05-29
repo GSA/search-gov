@@ -78,7 +78,8 @@ class Affiliate < ActiveRecord::Base
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validate :youtube_handles_length_in_yaml, :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix
+  before_save :set_css_properties, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
@@ -214,13 +215,13 @@ class Affiliate < ActiveRecord::Base
   define_json_columns_accessors :column_name_method => :previous_fields, :fields => [:previous_header, :previous_footer]
   define_json_columns_accessors :column_name_method => :live_fields,
                                 :fields => [:header, :footer,
-                                            :header_footer_sass, :header_footer_css,
+                                            :header_footer_css, :nested_header_footer_css,
                                             :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
                                             :managed_header_links, :managed_footer_links,
                                             :external_tracking_code]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
-                                            :staged_header_footer_sass, :staged_header_footer_css,
+                                            :staged_header_footer_css, :staged_nested_header_footer_css,
                                             :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
                                             :staged_managed_header_links, :staged_managed_footer_links]
 
@@ -711,25 +712,25 @@ class Affiliate < ActiveRecord::Base
     self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
   end
 
-  def set_header_footer_sass
-    self.staged_header_footer_sass = staged_header_footer_css.blank? ? nil : parse_css(staged_header_footer_css)
-    self.header_footer_sass = header_footer_css.blank? ? nil : parse_css(header_footer_css)
-  end
-
   def validate_header_footer_css
     begin
-      parse_css(header_footer_css)
-      parse_css(staged_header_footer_css)
+      self.staged_nested_header_footer_css = generate_nested_css(staged_header_footer_css)
+      self.nested_header_footer_css = generate_nested_css(header_footer_css)
     rescue Sass::SyntaxError => err
       errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
     end
   end
 
-  def parse_css(css)
+  def generate_nested_css(css)
     return if css.blank?
-    sass_values = Sass::CSS.new(css).render
-    Sass::Engine.new(sass_values).render
-    sass_values.split("\n").collect { |sass_value| "  #{sass_value}" }.join("\n")
+    original_sass_values = Sass::CSS.new(css).render.split("\n")
+    sass_values = ".header-footer\n"
+    at_rules_to_reject = %w(@charset @import)
+    sanitized_sass_values = original_sass_values.reject { |sass_value| sass_value =~ /^(#{at_rules_to_reject.join('|')})/ }.
+        collect { |sass_value| "  #{sass_value}" }.
+        join("\n")
+    sass_values << sanitized_sass_values
+    Sass::Engine.new(sass_values, { :style => :compressed }).render
   end
 
   def validate_staged_header_footer

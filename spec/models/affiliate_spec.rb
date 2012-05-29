@@ -320,13 +320,13 @@ describe Affiliate do
       Affiliate.find(affiliate.id).staged_css_property_hash[:font_family].should == 'Georgia, serif'
     end
 
-    it "should set header_footer_sass fields" do
-      affiliate.update_attributes!(:staged_header_footer_css => 'h1 { color: blue} ', :header_footer_css => '')
-      affiliate.staged_header_footer_sass.should =~ /color: blue/
-      affiliate.header_footer_sass.should be_blank
-      affiliate.update_attributes!(:staged_header_footer_css => '', :header_footer_css => 'live.h1 { color: red }')
-      affiliate.staged_header_footer_sass.should be_blank
-      affiliate.header_footer_sass.should =~ /color: red/
+    it "should set header_footer_nested_css fields" do
+      affiliate.update_attributes!(:staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', :header_footer_css => '')
+      affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+      affiliate.header_footer_css.should be_blank
+      affiliate.update_attributes!(:staged_header_footer_css => '', :header_footer_css => '@charset "UTF-8"; @import url("other.css"); live.h1 { color: red }')
+      affiliate.staged_nested_header_footer_css.should be_blank
+      affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer live.h1{color:red}')}$/
     end
 
     it "should set previous json fields" do
