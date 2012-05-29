@@ -30,6 +30,16 @@ describe AffiliateObserver do
       end
     end
 
+   context "when affiliate has more than one SiteDomain" do
+      it "should not attempt to crawl/fetch/index documents" do
+        Resque.should_not_receive(:enqueue_with_priority)
+        affiliate = Affiliate.new(:display_name => 'my portal search')
+        affiliate.site_domains.build(:domain => "justone.gov")
+        affiliate.site_domains.build(:domain => "wait-there-is-another.gov")
+        affiliate.save!
+      end
+    end
+
   end
 
   describe "#after_update" do
