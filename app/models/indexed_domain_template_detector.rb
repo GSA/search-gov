@@ -4,6 +4,7 @@ class IndexedDomainTemplateDetector
 
   PAIR_SAMPLES = 10
   WORD_COUNT_THRESHOLD = 6
+  PAGE_COUNT_THRESHOLD = 10
   SATURATION_THRESHOLD_PCT = 60.0
   SUBSTRING_LENGTH_SIMILARITY_THRESHOLD_PCT = 75.0
 
@@ -23,7 +24,7 @@ class IndexedDomainTemplateDetector
 
   def detect_common_substring
     good_html_idocs_ids = get_good_html_idocs_ids
-    return unless good_html_idocs_ids.many?
+    return unless good_html_idocs_ids.size >= PAGE_COUNT_THRESHOLD
     candidate_substrings = get_candidate_substrings(good_html_idocs_ids)
     local_lcs = get_local_longest_common_substring(candidate_substrings)
     if local_lcs.split(' ').size >= WORD_COUNT_THRESHOLD
@@ -55,7 +56,7 @@ class IndexedDomainTemplateDetector
   def get_candidate_substring_between_random_document_pair(good_html_idocs_ids)
     idx = rand(good_html_idocs_ids.size-1)
     doc1, doc2 = IndexedDocument.find([good_html_idocs_ids[idx], good_html_idocs_ids[idx+1]])
-    doc1.body.longest_common_substring(doc2.body)
+    doc1.body_for_substring_detection.longest_common_substring(doc2.body_for_substring_detection)
   end
 
   def compute_saturation(lcs)

@@ -28,6 +28,8 @@ class IndexedDocument < ActiveRecord::Base
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 64000
+  LARGE_DOCUMENT_SAMPLE_SIZE = 7500
+  LARGE_DOCUMENT_THRESHOLD = 3 * LARGE_DOCUMENT_SAMPLE_SIZE
   MAX_URLS_PER_FILE_UPLOAD = 100
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   DOWNLOAD_TIMEOUT_SECS = 60
@@ -161,6 +163,11 @@ class IndexedDocument < ActiveRecord::Base
     self.body = self.body.gsub(/#{Regexp.escape(unescaped_substring)}/, ' ').squish
     self.description = html_description_from(self.body)
     self.save!
+  end
+
+  def body_for_substring_detection
+    return nil if body.nil?
+    body.size >= LARGE_DOCUMENT_THRESHOLD ? body.first(LARGE_DOCUMENT_SAMPLE_SIZE) + body.last(LARGE_DOCUMENT_SAMPLE_SIZE) : body
   end
 
   def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)

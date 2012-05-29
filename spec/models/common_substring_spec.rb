@@ -21,6 +21,11 @@ describe CommonSubstring do
       CommonSubstring.create!(@valid_attributes)
     end
 
+    it "should trim whitespace from substring" do
+      CommonSubstring.create!(@valid_attributes.merge(:substring => " remove leading and ending spaces "))
+      CommonSubstring.find_by_substring("remove leading and ending spaces").should_not be_nil
+    end
+
     context "when there are associated IndexedDocuments that contain the substring" do
       before do
         aff = affiliates(:power_affiliate)

@@ -624,6 +624,31 @@ describe IndexedDocument do
     end
   end
 
+  describe "#body_for_substring_detection" do
+    context "when body length is under a threshold" do
+      before do
+        @indexed_document = IndexedDocument.new(:body => "something reasonable")
+      end
+
+      it "should return the body unchanged" do
+        @indexed_document.body_for_substring_detection.should == @indexed_document.body
+      end
+    end
+
+    context "when body length is over a threshold" do
+      before do
+        @header = 'a' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
+        @footer = 'z' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
+        content = 'q' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
+        @indexed_document = IndexedDocument.new(:body => @header + content + @footer)
+      end
+
+      it "should return the leftmost part of the body concatenated with the rightmost part of the body" do
+        @indexed_document.body_for_substring_detection.should == @header + @footer
+      end
+    end
+  end
+
   describe "#html_description_from(str)" do
     it "should return a truncated version of the string" do
       indexed_document = IndexedDocument.new
