@@ -15,6 +15,6 @@ class CommonSubstring < ActiveRecord::Base
   end
 
   def strip_whitespace
-    self.substring.strip!
+    self.substring.strip! if self.substring.present?
   end
 end
