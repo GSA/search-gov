@@ -20,6 +20,16 @@ describe AffiliateObserver do
                                                 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published']
       end
     end
+
+    context "when affiliate has exactly one SiteDomain" do
+      it "should attempt to crawl/fetch/index documents in the background (at low priority) from that domain and other domains covered by it" do
+        Resque.should_receive(:enqueue_with_priority).with(:low, SiteDomainCrawler, an_instance_of(Fixnum))
+        affiliate = Affiliate.new(:display_name => 'my site search')
+        affiliate.site_domains.build(:domain => "justone.gov")
+        affiliate.save!
+      end
+    end
+
   end
 
   describe "#after_update" do

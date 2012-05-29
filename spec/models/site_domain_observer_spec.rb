@@ -30,22 +30,18 @@ describe SiteDomainObserver do
     end
   end
 
-  context "after the creation of an affiliate's SiteDomain" do
-    it "should attempt to crawl/fetch/index documents in the background (at low priority) from that domain and other domains covered by it" do
-      Resque.should_receive(:enqueue_with_priority).with(:low, SiteDomainCrawler, an_instance_of(Fixnum))
-      affiliate.site_domains.create!(:domain => "stillmore.gov")
+  context "after the creation of an affiliate's first SiteDomain" do
+    before do
+      affiliate.site_domains.destroy_all
+      ResqueSpec.reset!
     end
 
-    context "when it's the affiliate's first SiteDomain" do
-      it "should enqueue the revalidation of an affiliate's indexed documents" do
-        affiliate.site_domains.destroy_all
-        ResqueSpec.reset!
-        affiliate.site_domains.create!(:domain => "newone.gov")
-        affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should have_queued(idoc.id) }
-        ResqueSpec.reset!
-        affiliate.site_domains.create!(:domain => "anotherone.gov")
-        affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should_not have_queued(idoc.id) }
-      end
+    it "should enqueue the revalidation of an affiliate's indexed documents" do
+      affiliate.site_domains.create!(:domain => "newone.gov")
+      affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should have_queued(idoc.id) }
+      ResqueSpec.reset!
+      affiliate.site_domains.create!(:domain => "anotherone.gov")
+      affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should_not have_queued(idoc.id) }
     end
   end
 end

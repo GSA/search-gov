@@ -9,6 +9,8 @@ class AffiliateObserver < ActiveRecord::Observer
       youtube_handles = generate_youtube_urls affiliate.youtube_handles
       create_video_rss_feed(affiliate, youtube_handles)
     end
+
+    crawl_domain(affiliate.site_domains.first) if affiliate.site_domains.count == 1
   end
 
   def after_update(affiliate)
@@ -51,4 +53,9 @@ class AffiliateObserver < ActiveRecord::Observer
     urls.each { |url| rss_feed.rss_feed_urls.build(:url => url) }
     rss_feed.save!
   end
+
+  def crawl_domain(site_domain)
+    Resque.enqueue_with_priority(:low, SiteDomainCrawler, site_domain.id)
+  end
+
 end
