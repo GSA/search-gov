@@ -6,12 +6,13 @@ class CommonSubstring < ActiveRecord::Base
 
   after_create :remove_from_indexed_documents
 
+  BATCH_SIZE_FOR_SUBSTRING_STRIPPING = 5
+
   private
 
   def remove_from_indexed_documents
-    indexed_domain.indexed_documents.find_each(:conditions => ['body like ?', '%' + substring + '%']) do |idoc|
-      idoc.remove_common_substring(substring)
-    end
+    options = {:batch_size => BATCH_SIZE_FOR_SUBSTRING_STRIPPING, :conditions => ['body like ?', '%' + substring + '%']}
+    indexed_domain.indexed_documents.html.find_each(options) { |idoc| idoc.remove_common_substring(substring) }
   end
 
   def strip_whitespace
