@@ -47,4 +47,14 @@ describe CommonSubstring do
     end
   end
 
+  describe "updating a substring" do
+    it "should not try to modify the potentially frozen string instance" do
+      cs = CommonSubstring.create!(@valid_attributes)
+      cs.reload
+      cs.substring = " frozen "
+      cs.substring.freeze
+      cs.save!
+    end
+  end
+
 end
