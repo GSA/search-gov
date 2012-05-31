@@ -7,22 +7,46 @@ class FlickrPhoto < ActiveRecord::Base
   class << self
     
     def import_photos(affiliate)
-      if affiliate.flickr_url =~ /\/photos\//
-        flickr_user = flickr.people.findByUsername(:username => affiliate.flickr_url.split("/").last)
-        if flickr_user
+      unless affiliate.flickr_url.blank?
+        flickr_id = get_flickr_id_for_user_or_group(affiliate.flickr_url)
+        if flickr_id
           done_importing = false
-          photos = flickr.people.getPublicPhotos(:user_id => flickr_user["nsid"], :extras => EXTRA_FIELDS)
-          more_to_index = store_photos(photos, affiliate)
-          if photos.pages > 1 and more_to_index
-            2.upto(photos.pages) do |page|
-              photos = flickr.people.getPublicPhotos(:user_id => flickr_user["nsid"], :extras => EXTRA_FIELDS, :page => page)
-              break unless store_photos(photos, affiliate)
+          photos = get_photos_for_user_or_group(flickr_id, {:extras => EXTRA_FIELDS})
+          if photos
+            more_to_index = store_photos(photos, affiliate)
+            if photos.pages > 1 and more_to_index
+              2.upto(photos.pages) do |page|
+                photos = get_photos_for_user_or_group(flickr_id, {:extras => EXTRA_FIELDS, :page => page})
+                if photos
+                  break unless store_photos(photos, affiliate)
+                end
+              end
             end
           end
         end
       end
     end
     
+    def get_flickr_id_for_user_or_group(flickr_url)
+      if flickr_url =~ /\/photos\//
+        return {:flickr_id_type => :user_id, :flickr_id_value => flickr.people.findByUsername(:username => flickr_url.split("/").last)} rescue nil
+      elsif flickr_url =~ /\/groups\//
+        groups_search = flickr.groups.search(:text => flickr_url.split("/").last) rescue nil
+        return {:flickr_id_type => :group_id, :flickr_id_value => groups_search.first} if groups_search and groups_search.size == 1
+      end
+      return nil
+    end
+    
+    def get_photos_for_user_or_group(flickr_id_hash, other_params)
+      if flickr_id_hash[:flickr_id_type] == :user_id
+        return flickr.people.getPublicPhotos({:user_id => flickr_id_hash[:flickr_id_value]["nsid"]}.merge(other_params)) rescue nil
+      elsif flickr_id_hash[:flickr_id_type] == :group_id
+        return flickr.groups.pools.getPhotos({:group_id => flickr_id_hash[:flickr_id_value]["nsid"]}.merge(other_params)) rescue nil
+      else
+        return nil
+      end
+    end
+        
     def store_photos(photos, affiliate)
       photos.each do |photo|
         return false if affiliate.flickr_photos.find_by_flickr_id(photo.to_hash["id"])
