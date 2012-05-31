@@ -2227,4 +2227,15 @@ describe Affiliate do
     end
 
   end
+
+  describe "#import_flickr_photos" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+    end
+    
+    it "should import the photos from Flickr" do
+      FlickrPhoto.should_receive(:import_photos).with(@affiliate).and_return true
+      @affiliate.import_flickr_photos
+    end
+  end
 end

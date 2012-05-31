@@ -18,3 +18,6 @@ Twitter.configure do |config|
   config.oauth_token = "***REMOVED***"
   config.oauth_token_secret = "***REMOVED***"
 end
+
+FlickRaw.api_key = "b02eafbfcd42104c049bc8521c3ed746"
+FlickRaw.shared_secret = "63a7bfe60edc356b"

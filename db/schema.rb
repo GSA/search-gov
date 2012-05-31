@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529182101) do
+ActiveRecord::Schema.define(:version => 20120529192221) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -362,6 +362,65 @@ ActiveRecord::Schema.define(:version => 20120529182101) do
 
   add_index "features", ["internal_name"], :name => "index_features_on_internal_name"
 
+  create_table "flickr_photos", :force => true do |t|
+    t.boolean  "is_public"
+    t.integer  "farm"
+    t.string   "title"
+    t.string   "flickr_id"
+    t.string   "server"
+    t.boolean  "is_family"
+    t.string   "secret"
+    t.string   "owner"
+    t.boolean  "is_friend"
+    t.string   "last_update",  :limit => 15
+    t.string   "url_sq"
+    t.string   "url_t"
+    t.string   "url_s"
+    t.string   "url_q"
+    t.string   "url_m"
+    t.string   "url_n"
+    t.string   "url_z"
+    t.string   "url_c"
+    t.string   "url_l"
+    t.string   "url_o"
+    t.integer  "width_sq"
+    t.integer  "width_t"
+    t.integer  "width_s"
+    t.integer  "width_q"
+    t.integer  "width_m"
+    t.integer  "width_n"
+    t.integer  "width_z"
+    t.integer  "width_c"
+    t.integer  "width_l"
+    t.integer  "width_o"
+    t.integer  "height_sq"
+    t.integer  "height_t"
+    t.integer  "height_s"
+    t.integer  "height_q"
+    t.integer  "height_m"
+    t.integer  "height_n"
+    t.integer  "height_z"
+    t.integer  "height_c"
+    t.integer  "height_l"
+    t.integer  "height_o"
+    t.text     "description"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "accuracy"
+    t.integer  "license",      :limit => 3
+    t.text     "tags"
+    t.text     "machine_tags"
+    t.datetime "date_taken"
+    t.datetime "date_upload"
+    t.string   "path_alias",   :limit => 50
+    t.string   "owner_name",   :limit => 50
+    t.string   "icon_server",  :limit => 10
+    t.integer  "icon_farm"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "food_recalls", :force => true do |t|
     t.integer  "recall_id"
     t.string   "summary",                   :null => false
@@ -419,7 +478,7 @@ ActiveRecord::Schema.define(:version => 20120529182101) do
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|

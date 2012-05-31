@@ -28,6 +28,7 @@ class Affiliate < ActiveRecord::Base
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_and_belongs_to_many :twitter_profiles
+  has_many :flickr_photos
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
 
@@ -548,6 +549,10 @@ class Affiliate < ActiveRecord::Base
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
     end
+  end
+  
+  def import_flickr_photos
+    FlickrPhoto.import_photos(self)
   end
 
   private

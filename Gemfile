@@ -50,6 +50,7 @@ gem 'googlecharts'
 gem 'sanitize'
 gem 'tweetstream'
 gem 'twitter'
+gem 'flickraw'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
