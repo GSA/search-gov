@@ -178,9 +178,6 @@ describe "searches/index.html.haml" do
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :twitter_username => 'IRSnews')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/', :locale => 'en')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/es/', :locale => 'es')
-        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/forms/1040.pdf', :title => "Form 1040", :rank => 1, :locale => 'en')
-        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/forms/1040nr.pdf', :title => "Form 1040-NR", :rank => 2, :locale => 'en')
-        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/pub/irs-pdf/f1040.pdf', :title => "Formulario 1040 U.S. Individual Income Tax Return", :rank => 2, :locale => 'es')
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
@@ -196,7 +193,7 @@ describe "searches/index.html.haml" do
       context "if the first result matches the URL in the agency query" do
         it "should format the first result as a special agency result" do
           render
-          rendered.should have_selector "div[class='govbox agency']"
+          rendered.should have_selector '.govbox.agency'
           rendered.should contain("www.irs.gov")
           rendered.should contain(/888-555-1040 \(Contact\)/)
           rendered.should_not contain(/Toll-free:/)
@@ -209,10 +206,6 @@ describe "searches/index.html.haml" do
           rendered.should have_selector "input[type='submit'][value='Search']"
           rendered.should have_selector("a", :href => @agency.twitter_profile_link, :content => "Twitter")
           rendered.should_not contain("Facebook:")
-          rendered.should have_selector("div[class='popular-pages']")
-          rendered.should contain(/Form 1040-NR/)
-          rendered.should_not contain(/Páginas populares/)
-          rendered.should contain(/Popular Pages/)
         end
 
         context "when there are no phone numbers" do
@@ -240,13 +233,7 @@ describe "searches/index.html.haml" do
 
         it "should not render a special agency result, even if the first result matches" do
           render
-          rendered.should_not have_selector "div[class='govbox agency']"
-          rendered.should_not contain(/Contact: 888-555-1040/)
-          rendered.should_not contain(/Search within irs.gov/)
-          rendered.should have_selector "form[action='/search']"
-          rendered.should_not have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
-          rendered.should_not have_selector("div[class='popular']")
-          rendered.should_not contain(/Popular Pages/)
+          rendered.should_not have_selector '.govbox.agency'
         end
       end
 
@@ -258,11 +245,7 @@ describe "searches/index.html.haml" do
         context "when the Spanish URL does not match the result url (and when the English URL does)" do
           it "should not render a special agency result, even if the first result matches the English URL" do
             render
-            rendered.should_not have_selector "div[class=govbox]"
-            rendered.should_not contain(/Contact: 888-555-1040/)
-            rendered.should_not contain(/Search within irs.gov/)
-            rendered.should have_selector "form[action='/search']"
-            rendered.should_not have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
+            rendered.should_not have_selector '.govbox.agency'
           end
         end
 
@@ -287,10 +270,6 @@ describe "searches/index.html.haml" do
             rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
             rendered.should have_selector "input[type='hidden'][name='locale'][value='es']"
             rendered.should have_selector "input[type='submit'][value='Buscar']"
-            rendered.should have_selector("div[class='popular-pages']")
-            rendered.should contain("Formulario 1040 U.S. Individual Income Tax Return")
-            rendered.should contain(/Páginas populares/)
-            rendered.should_not contain(/Popular Pages/)
           end
         end
 
@@ -312,37 +291,10 @@ describe "searches/index.html.haml" do
 
         it "should not render a special agency result, even if the first result matches" do
           render
-          rendered.should_not have_selector "div[class='govbox']"
-          rendered.should_not contain(/Contact: 888-555-1040/)
-          rendered.should_not contain(/Search within irs.gov/)
-          rendered.should have_selector "form[action='/search']"
-          rendered.should_not have_selector("input[type='hidden'][name='sitelimit'][value='irs.gov']")
+          rendered.should_not have_selector '.govbox.agency'
         end
       end
-
-      context "when there are popular urls with identical titles" do
-        before do
-          @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'Form 1040', :rank => 3, :locale => 'en')
-        end
-
-        it "should modify the duplicate titles to include numbers" do
-          render
-          rendered.should have_selector "a[href='http://some.link']", :content => 'Form 1040 (1)'
-          rendered.should have_selector "a[href='http://www.irs.gov/forms/1040.pdf']", :content => 'Form 1040 (2)'
-        end
-      end
-
-      context "when a title is longer than 50 characters" do
-        before do
-          @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'This is a really long title that we are going to truncate so it is not so long.', :rank => 5, :locale => 'en')
-        end
-
-        it "should truncate the title" do
-          render
-          rendered.should contain(/This is a really long title that we are going\.\.\./)
-        end
-      end
-    end
+   end
 
     context "when a med topic record matches the query" do
       fixtures :med_topics

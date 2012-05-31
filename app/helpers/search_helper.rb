@@ -87,33 +87,6 @@ module SearchHelper
     tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
   end
 
-  def display_agency_popular_links(popular_urls, search, affiliate, vertical)
-    titles = popular_urls.collect{|popular_url| popular_url.title }
-    duplicate_titles = titles.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys
-    duplicate_counters = {}
-    popular_links = []
-    popular_urls.each_with_index do |popular_url, index|
-      if duplicate_titles.include?(popular_url.title)
-        dup_count = duplicate_counters[popular_url.title]
-        if dup_count.nil?
-          title = popular_url.title.truncate(46, :separator => " ") + " (1)"
-          duplicate_counters[popular_url.title] = 1
-        else
-          title = popular_url.title.truncate(46, :separator => " ") + " (#{dup_count + 1})"
-          duplicate_counters[popular_url.title] = dup_count + 1
-        end
-      else
-        title = popular_url.title.truncate(50, :separator => " ")
-      end
-      popular_links << content_tag(:li, display_agency_popular_url(title, popular_url.url, search, affiliate, index, vertical))
-    end
-    content_tag(:ul, raw(popular_links))
-  end
-
-  def display_agency_popular_url(title, url, search, affiliate, position, vertical)
-    tracked_click_link(h(url), h(title), search, affiliate, position, 'APOP', vertical)
-  end
-
   def strip_url_protocol(url)
     url.gsub(/^http(s)?:\/\//, '')
   end

@@ -17,12 +17,7 @@
           = image_tag 'govbox/phone.gif', :alt => ''
           = display_agency_phone_numbers(search.agency)
       = display_agency_social_media_links(search.agency)
-    - unless search.agency.displayable_popular_urls.empty?
-      .popular-pages
-        %h3
-          = t:agency_popular_pages
-        = display_agency_popular_links(search.agency.displayable_popular_urls[0..4], search, affiliate, @search_vertical)
-    .search-within{:style => "#{search.agency.displayable_popular_urls.empty? ? 'clear: none;' : 'clear: left;'}"}
+    .search-within
       %h3
         #{t :agency_search_within_label} #{search.agency.domain}
       = form_tag search_path, :method => :get do

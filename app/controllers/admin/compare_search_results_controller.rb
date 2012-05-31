@@ -7,7 +7,6 @@ class Admin::CompareSearchResultsController < Admin::AdminController
       @query = params[:query]
       @affiliate = Affiliate.find_by_name(params[:affiliate_pick])
       @search_options = search_options_from_params(@affiliate, params)
-      puts @search_options[:affiliate]
       @bing_search = WebSearch.new(@search_options)
       @odie_search = OdieSearch.new(@search_options)
       @bing_search.run

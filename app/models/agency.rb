@@ -3,7 +3,6 @@ class Agency < ActiveRecord::Base
   validates_uniqueness_of :domain
   has_many :agency_queries, :dependent => :destroy
   has_many :agency_urls, :dependent => :destroy
-  has_many :agency_popular_urls, :dependent => :destroy, :order => 'source ASC, rank DESC'
   after_save :generate_agency_queries
 
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
@@ -23,10 +22,6 @@ class Agency < ActiveRecord::Base
 
   def flickr_profile_link
     self.flickr_url.present? ? self.flickr_url : nil
-  end
-
-  def displayable_popular_urls(locale = I18n.locale)
-    @cached_displayable_popular_urls ||= compute_displayable_popular_urls(locale)
   end
 
   def has_phone_number?
@@ -50,9 +45,5 @@ class Agency < ActiveRecord::Base
       end
     end unless self.name_variants.nil?
     self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation) if self.abbreviation.present?
-  end
-
-  def compute_displayable_popular_urls(locale)
-    locale.blank? ? self.agency_popular_urls : self.agency_popular_urls.with_locale(locale)
   end
 end

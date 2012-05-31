@@ -82,11 +82,6 @@ UsasearchRails3::Application.routes.draw do
         post :preferences
       end
     end
-    resources :popular_links, :controller => "affiliates/popular_links", :only => [:index] do
-      collection do
-        post :preferences
-      end
-    end
     resources :api, :controller => "affiliates/api"
     resources :featured_collections, :controller => "affiliates/featured_collections"
     resources :rss_feeds, :controller => "affiliates/rss_feeds" do
@@ -140,8 +135,6 @@ UsasearchRails3::Application.routes.draw do
     resources :site_pages do as_routes end
     resources :agencies do as_routes end
     resources :agency_queries do as_routes end
-    resources :agency_urls do as_routes end
-    resources :agency_popular_urls do as_routes end
     resources :logfile_blocked_queries do as_routes end
     resources :logfile_blocked_ips do as_routes end
     resources :logfile_blocked_class_cs do as_routes end

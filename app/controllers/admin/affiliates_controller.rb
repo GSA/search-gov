@@ -25,7 +25,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
-                             :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source,
+                             :has_staged_content, :exclude_webtrends, :locale, :results_source,
                              :sitemaps, :affiliate_feature_addition]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :affiliate_template, :locale]

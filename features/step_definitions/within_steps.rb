@@ -18,7 +18,6 @@
   'in the homepage footer' => '.footer',
   'in the homepage about section' => '.about',
   'in the homepage tagline' => '.tagline',
-  'in the popular urls section' => '#popular_urls',
   'in the left column' => '#left_column',
   'in the selected vertical navigation' => '#sidebar span',
   'in the search results section' => '#results',

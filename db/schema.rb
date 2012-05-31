@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529192221) do
+ActiveRecord::Schema.define(:version => 20120531155034) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20120529192221) do
     t.string   "search_results_page_title",                                                                    :null => false
     t.string   "staged_search_results_page_title",                                                             :null => false
     t.boolean  "exclude_webtrends",                                               :default => false,           :null => false
-    t.boolean  "is_popular_links_enabled",                                        :default => true
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
@@ -126,17 +125,6 @@ ActiveRecord::Schema.define(:version => 20120529192221) do
     t.string   "facebook_username", :limit => 75
     t.string   "flickr_url"
   end
-
-  create_table "agency_popular_urls", :force => true do |t|
-    t.integer "agency_id",                                   :null => false
-    t.string  "url",                                         :null => false
-    t.integer "rank",                                        :null => false
-    t.string  "title",                                       :null => false
-    t.string  "source",                 :default => "admin"
-    t.string  "locale",    :limit => 6,                      :null => false
-  end
-
-  add_index "agency_popular_urls", ["agency_id"], :name => "index_agency_popular_urls_on_agency_id"
 
   create_table "agency_queries", :force => true do |t|
     t.string   "phrase"
@@ -621,17 +609,6 @@ ActiveRecord::Schema.define(:version => 20120529192221) do
   add_index "news_items", ["link"], :name => "index_news_items_on_link"
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
   add_index "news_items", ["rss_feed_url_id"], :name => "index_news_items_on_rss_feed_url_id"
-
-  create_table "popular_urls", :force => true do |t|
-    t.integer  "affiliate_id", :null => false
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.integer  "rank",         :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "popular_urls", ["affiliate_id"], :name => "index_popular_urls_on_affiliate_id"
 
   create_table "recall_details", :force => true do |t|
     t.integer  "recall_id"

@@ -33,7 +33,6 @@ describe Affiliate do
     it { should have_and_belong_to_many :users }
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
-    it { should have_many(:popular_urls).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
     it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { should have_many(:features) }
@@ -2232,7 +2231,7 @@ describe Affiliate do
     before do
       @affiliate = affiliates(:basic_affiliate)
     end
-    
+
     it "should import the photos from Flickr" do
       FlickrPhoto.should_receive(:import_photos).with(@affiliate).and_return true
       @affiliate.import_flickr_photos

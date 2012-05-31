@@ -63,7 +63,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_search_results_page_title => hash[:staged_search_results_page_title],
       :has_staged_content => hash[:has_staged_content] || false,
       :exclude_webtrends => hash[:exclude_webtrends] || false,
-      :is_popular_links_enabled => hash[:is_popular_links_enabled] || true,
       :external_css_url => hash[:external_css_url],
       :staged_external_css_url => hash[:staged_external_css_url],
       :favicon_url => hash[:favicon_url],
@@ -194,20 +193,6 @@ end
 
 Then /^I should see "([^\"]*)" in the site wizards header$/ do |step|
   page.should have_selector(".steps_header img[alt='#{step}']")
-end
-
-Given /^the following popular URLs exist:$/ do |table|
-  table.hashes.each do |hash|
-    affiliate = Affiliate.find_by_name hash['affiliate_name']
-    PopularUrl.create!(:affiliate => affiliate,
-                                :title => hash['title'],
-                                :url => hash['url'],
-                                :rank => hash['rank'])
-  end
-end
-
-Then /^I should see (\d+) popular URLs$/ do |count|
-  page.should have_selector("#popular_urls ul>li>a", :count => count)
 end
 
 Given /^the following DailySearchModuleStats exist for each day in yesterday's month$/ do |table|

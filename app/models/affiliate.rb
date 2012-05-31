@@ -13,7 +13,6 @@ class Affiliate < ActiveRecord::Base
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
-  has_many :popular_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
   has_many :rss_feeds, :order => 'rss_feeds.name ASC, rss_feeds.id ASC', :dependent => :destroy
@@ -69,7 +68,6 @@ class Affiliate < ActiveRecord::Base
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
-  validates_associated :popular_urls
   validates_attachment_content_type :page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_page_background_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
@@ -550,7 +548,7 @@ class Affiliate < ActiveRecord::Base
       Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
     end
   end
-  
+
   def import_flickr_photos
     FlickrPhoto.import_photos(self)
   end

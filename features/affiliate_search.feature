@@ -373,43 +373,6 @@ Feature: Affiliate Search
     Then I should see the browser page titled "benefits site:ssa.gov - USA.gov Search Results"
     And the "query" field should contain "benefits site:ssa.gov"
 
-  Scenario: Searchers see agency popular pages in English
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email  | contact_name | domains | is_agency_govbox_enabled  |
-      | agency site  | ssa.gov    | aff@agency.gov | John Bar     | ssa.gov | true                      |
-    And the following Agency entries exist:
-      | name | domain  |
-      | SSA  | ssa.gov |
-    And the following Agency Urls exist:
-      | name | locale | url                         |
-      | SSA  | en     | http://www.ssa.gov/         |
-      | SSA  | es     | http://www.ssa.gov/espanol/ |
-    And the following Agency Popular Urls exist:
-      | name | locale | rank | title                                 | url                                                |
-      | SSA  | en     | 20   | Get or replace a Social Security card | http://www.ssa.gov/ssnumber/                       |
-      | SSA  | en     | 10   | Apply online for retirement benefits  | http://www.ssa.gov/planners/about.htm              |
-      | SSA  | es     | 20   | Solicite beneficios de jubilación     | http://www.ssa.gov/espanol/plan/sobreelplan.htm    |
-      | SSA  | es     | 10   | Solicite beneficios de incapacidad    | http://www.ssa.gov/espanol/soliciteporincapacidad/ |
-    And I am logged in with email "aff@agency.gov" and password "random_string"
-    When I am on ssa.gov's search page
-    And I fill in "query" with "ssa"
-    And I press "Search"
-    Then I should see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
-    And I should see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
-    And I should not see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
-    And I should not see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
-
-    When I go to the affiliate admin page with "ssa.gov" selected
-    And I follow "Results modules"
-    And I uncheck "Is agency govbox enabled"
-    And I press "Save"
-
-    When I am on ssa.gov's search page
-    And I fill in "query" with "ssa"
-    And I press "Search"
-    Then I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
-    And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
-
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
       | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled |
