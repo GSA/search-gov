@@ -36,7 +36,8 @@ describe CommonSubstring do
 
       it "should apply the change to all associated IndexedDocuments that contain the substring in the body" do
         substring = "has this text"
-        indexed_domains(:sample).common_substrings.create!(:substring => substring, :saturation => 99.3)
+        cs = indexed_domains(:sample).common_substrings.create!(:substring => substring, :saturation => 99.3)
+        cs.send(:remove_from_indexed_documents)
         @doc1.reload
         @doc1.body.should == 'doc1 in it'
         @doc2.reload
