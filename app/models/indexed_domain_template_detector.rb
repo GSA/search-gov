@@ -2,7 +2,7 @@ class IndexedDomainTemplateDetector
   extend Resque::Plugins::Priority
   @queue = :primary
 
-  PAIR_SAMPLES = 5
+  PAIR_SAMPLES = 10
   WORD_COUNT_THRESHOLD = 6
   PAGE_COUNT_THRESHOLD = 10
   SATURATION_THRESHOLD_PCT = 60.0
