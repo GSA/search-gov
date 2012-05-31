@@ -4,9 +4,9 @@ class CommonSubstring < ActiveRecord::Base
   validates_presence_of :substring, :indexed_domain_id, :saturation
   validates_uniqueness_of :substring, :scope => :indexed_domain_id
 
-  after_create :remove_from_indexed_documents
+  after_commit :remove_from_indexed_documents, :on => :create
 
-  BATCH_SIZE_FOR_SUBSTRING_STRIPPING = 5
+  BATCH_SIZE_FOR_SUBSTRING_STRIPPING = 100
 
   private
 
