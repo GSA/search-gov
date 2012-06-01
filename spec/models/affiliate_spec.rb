@@ -101,13 +101,19 @@ describe Affiliate do
       end
 
       it "should set default search_results_page_title if search_results_page_title is blank" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:locale => 'en'))
+        affiliate.search_results_page_title.should == '{Query} - {SiteName} Search Results'
+
         affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.search_results_page_title.should == "{Query} - {SiteName} Search Results"
+        affiliate.search_results_page_title.should == '{Query} - {SiteName} resultados de la búsqueda'
       end
 
       it "should set default staged_search_results_page_title if staged_search_results_page_title is blank" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:locale => 'en'))
+        affiliate.staged_search_results_page_title.should == '{Query} - {SiteName} Search Results'
+
         affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.staged_search_results_page_title.should == "{Query} - {SiteName} Search Results"
+        affiliate.staged_search_results_page_title.should == '{Query} - {SiteName} resultados de la búsqueda'
       end
 
       it "should update css_properties with json string from css property hash" do
@@ -1510,7 +1516,7 @@ describe Affiliate do
   end
 
   describe "#build_search_results_page_title" do
-    let(:affiliate) { Affiliate.create(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create(@valid_create_attributes.merge(:locale => 'en')) }
 
     it "should handle nil query" do
       affiliate.build_search_results_page_title(nil).should == " - My Awesome Site Search Results"
@@ -1532,7 +1538,7 @@ describe Affiliate do
   end
 
   describe "#build_staged_search_results_page_title" do
-    let(:affiliate) { Affiliate.create(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create(@valid_create_attributes.merge(:locale => 'en')) }
 
     it "should handle nil query" do
       affiliate.build_staged_search_results_page_title(nil).should == " - My Awesome Site Search Results"

@@ -580,11 +580,11 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_default_search_results_page_title
-    self.search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.search_results_page_title.blank?
+    self.search_results_page_title = I18n.translate(:default_serp_title, :locale => locale) if self.search_results_page_title.blank?
   end
 
   def set_default_staged_search_results_page_title
-    self.staged_search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.staged_search_results_page_title.blank?
+    self.staged_search_results_page_title = I18n.translate(:default_serp_title, :locale => locale) if self.staged_search_results_page_title.blank?
   end
 
   def ensure_http_prefix

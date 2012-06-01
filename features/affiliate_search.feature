@@ -584,7 +584,7 @@ Feature: Affiliate Search
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
     When I am on es.bar.gov's search page
     And I follow "Press" in the left column
-    Then I should see the browser page titled "Press - Spanish bar site Search Results"
+    Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
     And I should see "Resultados 1-2 de aproximadamente 2"
     And I should not see "Results 1-2 of aproximadamente 2 de"
     And I should see 2 news results
@@ -597,7 +597,7 @@ Feature: Affiliate Search
     And I follow "Videos de 'first item'"
     And I fill in "query" with ""
     And I press "Buscar"
-    Then I should see the browser page titled "Spanish Videos - Spanish bar site Search Results"
+    Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following Affiliates exist:

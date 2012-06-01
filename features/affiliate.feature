@@ -232,7 +232,7 @@ Feature: Affiliate clients
     When I go to agencygov's search page
     And I fill in "query" with "White House"
     And I press "Buscar"
-    Then I should see "White House - My awesome agency Search Results"
+    Then I should see "White House - My awesome agency resultados de la búsqueda"
     And I should see "Búsqueda avanzada"
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
@@ -2628,7 +2628,7 @@ Feature: Affiliate clients
     And I should not see "Related Searches for item by aff site" in the search results section
     And I should not see "some unique item"
     When I follow "Search in Spanish"
-    Then I should see the browser page titled "item - Spanish site Search Results"
+    Then I should see the browser page titled "item - Spanish site resultados de la búsqueda"
 
     When I go to the "Spanish site" affiliate page
     And I follow "Results modules"
