@@ -42,9 +42,8 @@ class FlickrPhoto < ActiveRecord::Base
         return flickr.people.getPublicPhotos({:user_id => flickr_id_hash[:flickr_id_value]["nsid"]}.merge(other_params)) rescue nil
       elsif flickr_id_hash[:flickr_id_type] == :group_id
         return flickr.groups.pools.getPhotos({:group_id => flickr_id_hash[:flickr_id_value]["nsid"]}.merge(other_params)) rescue nil
-      else
-        return nil
       end
+      return nil
     end
         
     def store_photos(photos, affiliate)

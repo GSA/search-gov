@@ -135,6 +135,18 @@ describe FlickrPhoto do
         end
       end
       
+      context "when something unexpected gets returned as a group" do
+        before do
+          flickr.groups.should_receive(:search).with(:text => "USAgency").and_return {}
+        end
+        
+        it "should not blow up" do
+          flickr.groups.pools.should_not_receive(:getPhotos)
+          FlickrPhoto.import_photos(@affiliate)
+          FlickrPhoto.count.should == 0
+        end
+      end
+      
       context "when an error occurs looking up photos" do
         before do
           flickr.groups.should_receive(:search).with(:text => "USAgency").and_return @group_search_response
