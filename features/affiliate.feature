@@ -249,7 +249,7 @@ Feature: Affiliate clients
     And I press "Next"
     Then "affiliate_manager_with_no_affiliates@fixtures.org" should receive an email
     When I open the email
-    Then I should see "Your new Affiliate site" in the email subject
+    Then I should see "Your new site: My awesome agency" in the email subject
     And I should see "Dear A New Manager" in the email body
     And I should see "Site name: My awesome agency" in the email body
     And I should see "affiliate_manager_with_no_affiliates@fixtures.org" in the email body
