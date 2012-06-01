@@ -74,8 +74,8 @@ describe "searches/index.html.haml" do
       @search.stub!(:images).and_return []
       @search.stub!(:error_message).and_return nil
       @search.stub!(:startrecord).and_return 1
-      @search.stub!(:endrecord).and_return "don't care"
-      @search.stub!(:total).and_return "don't care"
+      @search.stub!(:endrecord).and_return 10
+      @search.stub!(:total).and_return 2000
       @search.stub!(:page).and_return 1
       @search_result = {'title' => "some title",
                         'unescapedUrl'=> "http://www.foo.com/url",

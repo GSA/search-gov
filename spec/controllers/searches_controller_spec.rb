@@ -401,7 +401,7 @@ describe SearchesController do
 
     it "should output a page that summarizes the results" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
-      response.body.should contain("Results 1-2 of about 2 for 'pdf'")
+      response.body.should contain("2 results")
     end
 
     it "should have a 'Results by USASearch' logo" do
@@ -521,7 +521,7 @@ describe SearchesController do
 
       it "should output a page that summarizes the results" do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
-        response.body.should contain("Results 1-1 of about 1 for 'element'")
+        response.body.should contain('1 result')
       end
 
       it "should have a 'Results by USASearch' logo" do

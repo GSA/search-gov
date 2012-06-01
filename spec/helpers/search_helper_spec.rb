@@ -741,4 +741,35 @@ describe SearchHelper do
 
     specify { helper.translate_bing_highlights(body_with_regex_special_character, excluded_terms).should == "<strong>[Mil</strong> .Mil .gov" }
   end
+
+  describe '#make_summary_p' do
+    context 'when locale = :en' do
+      it "should return 'Page %{page} of about %{total} results' when total >= 100 and page > 1" do
+        search = mock(Search, :total => 2000, :page => 5, :first_page? => false)
+        make_summary_p(search).should == '<p>Page 5 of about 2,000 results</p>'
+      end
+    end
+
+    context 'when locale = :es' do
+      before(:all) { I18n.locale = :es }
+
+      it "should return '1 resultado' when total = 1" do
+        search = mock(Search, :total => 1, :first_page? => true)
+        make_summary_p(search).should == '<p>1 resultado</p>'
+      end
+
+      it "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
+        search = mock(Search, :total => 80, :page => 5, :first_page? => false)
+        make_summary_p(search).should == '<p>Página 5 de 80 resultados</p>'
+      end
+
+      it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
+        search = mock(Search, :total => 2000, :page => 5, :first_page? => false)
+        make_summary_p(search).should == '<p>Página 5 de aproximadamente 2.000 resultados</p>'
+      end
+
+      after(:all) { I18n.locale = I18n.default_locale }
+    end
+
+  end
 end

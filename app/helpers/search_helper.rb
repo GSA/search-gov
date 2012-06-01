@@ -241,20 +241,19 @@ module SearchHelper
     end
   end
 
-  def results_summary(a, b, total, q)
-    p_sum = make_summary_p(a, b, total, q)
+  def results_summary(search)
+    p_sum = make_summary_p(search)
     content_tag(:div, raw(p_sum), :id => "summary")
   end
 
-  def indexed_docs_results_summary(a, b, total, query)
-    content_tag(:div, raw(make_summary_p(a, b, total, query)), :id => "summary")
-  end
-
-  def make_summary_p(a, b, total, query)
-    if query.blank? and total > 0
-      content_tag(:p, t(:results_summary_with_blank_query, :from => a, :to => b, :total => number_with_delimiter(total)))
+  def make_summary_p(search)
+    approximate = search.total >= 100 ? t(:approximate) : ''
+    total = pluralize(number_with_delimiter(search.total, :delimiter => t(:number_delimiter)), t(:result))
+    if search.first_page?
+      content_tag(:p, "#{approximate}#{total}")
     else
-      content_tag(:p, t(:results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query))
+      content_tag(:p, t(:results_summary, :approximate => approximate.downcase, :page => search.page,
+                        :total => total))
     end
   end
 

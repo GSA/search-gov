@@ -111,7 +111,7 @@ Feature: Affiliate Search
     When there are 30 video news items for "Videos"
     And I am on bar.gov's search page
     And I follow "Videos"
-    Then I should see "Results 1-20"
+    Then I should see "32 results"
     And I should see 20 video news results
 
     When I am on es.bar.gov's search page
@@ -177,7 +177,7 @@ Feature: Affiliate Search
     When I am on es.bar.gov's search page
     And I fill in "query" with "gobierno"
     And I press "Buscar"
-    Then I should see "Resultados 1-10"
+    Then I should see "gobierno - Spanish bar site resultados de la búsqueda"
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
@@ -239,12 +239,12 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    Then I should see "Results 1-"
+    Then I should see at least 2 search results
 
     When I follow "Press"
     Then I should see "Sorry, no results found for 'item'. Remove all filters or try entering fewer or broader query terms."
     When I follow "Remove all filters"
-    Then I should see "Results 1-"
+    Then I should see at least 2 search results
 
     When I fill in "query" with "item"
     And I press "Search"
@@ -253,7 +253,7 @@ Feature: Affiliate Search
     When I follow "Last day"
     Then I should see "Sorry, no results found for 'item' in the last day. Remove all filters or try entering fewer or broader query terms."
     When I follow "Remove all filters"
-    Then I should see "Results 1-"
+    Then I should see at least 2 search results
 
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following Affiliates exist:
@@ -270,12 +270,12 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Buscar"
-    Then I should see "Resultados 1-10"
+    Then I should see at least 2 search results
 
     When I follow "Press"
     Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
     When I follow "Elimine los filtros"
-    Then I should see "Resultados 1-10"
+    Then I should see at least 2 search results
 
     When I fill in "query" with "item"
     And I press "Buscar"
@@ -283,7 +283,7 @@ Feature: Affiliate Search
     And I follow "Último día"
     Then I should see "No hemos encontrado ningún resultado que contenga 'item' en el último día. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
     When I follow "Elimine los filtros"
-    Then I should see "Resultados 1-10"
+    Then I should see at least 2 search results
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
@@ -292,7 +292,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "president"
     And I press "Search"
-    Then I should see "Results 1-10"
+    Then I should see at least 2 search results
     And I should not see "Search this site"
 
   Scenario: Visiting Spanish affiliate search with multiple domains
@@ -302,7 +302,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "president"
     And I press "Buscar"
-    Then I should see "Resultados 1-10"
+    Then I should see at least 2 search results
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
@@ -553,8 +553,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I follow "Press" in the left column
     Then I should see the browser page titled "Press - bar site Search Results"
-    And I should see "Results 1-2 of about 2"
-    And I should not see "Results 1-2 of about 2 for"
+    Then I should see "2 results"
     And I should see 2 news results
     And I should see "First item"
     And I should see "Second item"
@@ -585,8 +584,7 @@ Feature: Affiliate Search
     When I am on es.bar.gov's search page
     And I follow "Press" in the left column
     Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
-    And I should see "Resultados 1-2 de aproximadamente 2"
-    And I should not see "Results 1-2 of aproximadamente 2 de"
+    Then I should see "2 resultados"
     And I should see 2 news results
     And I should see "First Spanish item"
     And I should see "Second Spanish item"

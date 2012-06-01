@@ -4,7 +4,7 @@
     .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
     .summary-wrapper
       - if @search.results.present?
-        = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query]
+        = results_summary(@search)
       - else
         = render 'shared/blank_search_results', :search => @search
 #left_column
@@ -14,7 +14,7 @@
   = render 'docs_search_form' unless @affiliate.uses_one_serp?
   %a{:name => "content"}
   - if @search.results.present?
-    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query] unless @affiliate.uses_one_serp?
+    = results_summary(@search) unless @affiliate.uses_one_serp?
     - @search.hits.each_with_index do |hit, index|
       = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => true
     .pagination-and-logo

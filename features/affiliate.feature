@@ -1775,7 +1775,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Search"
-    Then I should see "Results 1-"
+    Then I should see at least 2 search results
     And I should see "emergency"
 
     When I go to es.aff.gov's search page
@@ -1789,7 +1789,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Busque información del Gobierno"
-    Then I should see "Resultados 1-"
+    Then I should see at least 2 search results
     And I should see "emergency"
 
     When I am on the affiliate advanced search page for "en.aff.gov"
@@ -1826,7 +1826,7 @@ Feature: Affiliate clients
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
-    And I should see "Results 1-20"
+    Then I should see 20 search results
 
     When I am on the affiliate advanced search page for "en.aff.gov"
     And I choose "Off"
@@ -2237,7 +2237,7 @@ Feature: Affiliate clients
     Then I should see some Bing search results
 
     When I follow "WH Blog"
-    Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
+    Then I should see 1 news results
     And I should see "white house cabinet"
 
   Scenario: Inputing a bad Excluded Url

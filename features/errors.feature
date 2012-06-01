@@ -10,7 +10,7 @@ Feature: Errors
     And I should see "What should you do?"
     When I fill in "query" with "USA"
     And I press "Search"
-    Then I should see "Results 1-10"
+    Then I should see "USA - USA.gov Search Results"
 
   Scenario: Going to the Spanish 404 page
     When I go to the Spanish 404 page
@@ -19,7 +19,7 @@ Feature: Errors
     And I should see "¿Qué puede hacer?"
     When I fill in "query" with "USA"
     And I press "Buscar"
-    Then I should see "Resultados 1-10"
+    Then I should see "USA - Gobierno.USA.gov resultados de la búsqueda"
 
   Scenario: Going to an affiliate 404 page in English
      Given the following Affiliates exist:
@@ -34,18 +34,7 @@ Feature: Errors
     And I should see "Live footer"
     When I fill in "query" with "USA"
     And I press "Search"
-    Then I should see "Results 1-10"
-
-    When I go to the aff.gov's staged 404 page
-    Then I should see the browser page titled "Oops! We can't find the file - aff site"
-    And I should see "Staged header"
-    And I should see "Oops! We can't find the file."
-    And I should see "What should you do?"
-    And I should see "Please describe what you are looking for:"
-    And I should see "Staged footer"
-    When I fill in "query" with "USA"
-    And I press "Search"
-    Then I should see "Results 1-10"
+    Then I should see "USA - aff site Search Results"
 
   Scenario: Going to an affiliate 404 page in Spanish
     Given the following Affiliates exist:
@@ -60,18 +49,7 @@ Feature: Errors
     And I should see "Live footer"
     When I fill in "query" with "USA"
     And I press "Buscar"
-    Then I should see "Resultados 1-10"
-
-    When I go to the es.aff.gov's staged 404 page
-    Then I should see the browser page titled "La página que busca no está disponible - aff site"
-    And I should see "Staged header"
-    And I should see "La página que busca no está disponible."
-    And I should see "¿Qué puede hacer?"
-    And I should see "Por favor describa la información que busca:"
-    And I should see "Staged footer"
-    When I fill in "query" with "USA"
-    And I press "Buscar"
-    Then I should see "Resultados 1-10"
+    Then I should see "USA - aff site resultados de la búsqueda"
 
   Scenario: Going to the 404 page using mobile device
     Given I am using a mobile device

@@ -54,11 +54,6 @@ describe "shared/_searchresults.html.haml" do
       view.stub!(:search).and_return @search
     end
 
-    it "should show a results summary" do
-      render
-      rendered.should contain("Results 1-10 of about 20 for 'tax forms'")
-    end
-
     context "when on the first page for an affiliate with deep-links turned on" do
       it "should show deep links" do
         render

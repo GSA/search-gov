@@ -21,7 +21,7 @@
       %tr{:style => 'vertical-align: text-top;'}
         %td{:style => 'width: 50%; border-right: 1px solid black; vertical-align: top;'}
           - if @bing_search.results.present?
-            = results_summary(@bing_search.startrecord, @bing_search.endrecord, @bing_search.total, @bing_search.query)
+            = results_summary(@bing_search)
             - @bing_search.results.each_with_index do |result, index|
               %div{:style => 'height: 150px;'}
                 = render "/searches/result", :result => result, :affiliate => @affiliate, :search => @bing_search, :index => (@bing_search.startrecord + index - 1), :first => true
@@ -29,7 +29,7 @@
             No results
         %td{:style => 'width: 50%; vertical-align: top;'}
           - if @odie_search.results.present?
-            = results_summary(@odie_search.startrecord, @odie_search.endrecord, @odie_search.total, @odie_search.query)
+            = results_summary(@odie_search)
             - @odie_search.hits.each_with_index do |hit, index|
               %div{:style => 'height: 150px;'}
                 = render "/shared/indexed_document", :hit => hit, :index => index, :show_full_listing => true
