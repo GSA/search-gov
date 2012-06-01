@@ -10,15 +10,13 @@ describe IndexedDomainTemplateDetector do
       idtd = IndexedDomainTemplateDetector.new(indexed_domain)
       indexed_domain.common_substrings.create!(:substring => "existing entry with nav elements", :saturation => 70.1)
       IndexedDomainTemplateDetector.stub!(:new).and_return(idtd)
-      cs1 = CommonSubstring.new(:substring => "existing entry with nav elements", :saturation => 99.9)
-      cs2 = CommonSubstring.new(:substring => "footer stuff", :saturation => 91.1)
-      idtd.stub!(:detect_common_substring).and_return(cs1, cs2, nil)
+      cs = CommonSubstring.new(:substring => "existing entry with nav elements", :saturation => 99.9)
+      idtd.stub!(:detect_common_substring).and_return(cs)
     end
 
-    it "should find all large common substrings/templates and create CommonSubstring records from them" do
+    it "should find one large common substring/template and create a CommonSubstring record from it" do
       IndexedDomainTemplateDetector.perform(indexed_domain.id)
       indexed_domain.common_substrings.find_by_substring("existing entry with nav elements").saturation.should == 99.9
-      indexed_domain.common_substrings.find_by_substring("footer stuff").saturation.should == 91.1
     end
   end
 
