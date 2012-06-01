@@ -83,7 +83,7 @@ class FlickrPhoto < ActiveRecord::Base
           params[key] = value
         end
       end
-      params.reject{|k,v| %w{datetakengranularity views media_status media context isfriend}.include?(k) }
+      params.reject{|k,v| FlickrPhoto.column_names.include?(k) == false }
     end
   end
 end
