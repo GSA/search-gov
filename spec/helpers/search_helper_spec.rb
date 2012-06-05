@@ -578,12 +578,21 @@ describe SearchHelper do
   end
 
   describe "#display_result_description" do
-    before do
+    it 'should be html safe' do
       search = { 'content' => 'irs' }
-      @description = helper.display_result_description(search)
+      helper.display_result_description(search).should be_html_safe
     end
 
-    specify { @description.should be_html_safe }
+    it 'should truncate long description' do
+      description = <<-DESCRIPTION
+The Vietnam War Memorial National Mall Washington, D.C. 2:27 P.M. EDT THE PRESIDENT:  Good afternoon, everybody.
+Chuck, thank you for your words and your friendship and your life of service.
+Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
+      DESCRIPTION
+      truncated_description = helper.display_result_description({ 'content' => description })
+      truncated_description.should =~ /distinguished\.\.\.$/
+      truncated_description.length.should == 255
+    end
   end
 
   describe "#display_search_all_affiliate_sites_suggestion" do
