@@ -194,7 +194,7 @@ module SearchHelper
   end
 
   def display_result_description(result, query = nil, affiliate = nil)
-    translate_bing_highlights(h(result['content']), excluded_highlight_terms(affiliate, query)).html_safe
+    translate_bing_highlights(h(truncate_html_prose_on_words(result['content'], 255)), excluded_highlight_terms(affiliate, query)).html_safe
   end
 
   def display_medline_results_description(summary, query)
