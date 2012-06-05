@@ -765,11 +765,10 @@ describe SearchHelper do
 
       it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
         search = mock(Search, :total => 2000, :page => 5, :first_page? => false)
-        make_summary_p(search).should == '<p>Página 5 de aproximadamente 2.000 resultados</p>'
+        make_summary_p(search).should == '<p>Página 5 de aproximadamente 2,000 resultados</p>'
       end
 
       after(:all) { I18n.locale = I18n.default_locale }
     end
-
   end
 end

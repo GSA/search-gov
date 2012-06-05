@@ -248,7 +248,7 @@ module SearchHelper
 
   def make_summary_p(search)
     approximate = search.total >= 100 ? t(:approximate) : ''
-    total = pluralize(number_with_delimiter(search.total, :delimiter => t(:number_delimiter)), t(:result))
+    total = pluralize(number_with_delimiter(search.total, :delimiter => ','), t(:result))
     if search.first_page?
       content_tag(:p, "#{approximate}#{total}")
     else
