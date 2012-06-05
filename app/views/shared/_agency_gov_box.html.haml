@@ -1,28 +1,29 @@
-.searchresult.blended{:id => "searchresult#{index+1}"}
-  .govbox.agency
-    %span.official-tag
-      = t :agency_official_site
-    %h2= display_bing_result_title(result, search, affiliate, index, @search_vertical)
-    %h3.result-url= display_agency_link(result, search, affiliate, index, @search_vertical)
-    %p.description
-      = display_result_description(result)
-    - if index == 0 && search.first_page?
-      %div
-        = display_deep_links_for(result, search, affiliate, @search_vertical)
-    .stay-connected
-      %h3
-        = t :agency_stay_connected_label
-      - if search.agency.has_phone_number?
-        .phone-wrapper
-          = image_tag 'govbox/phone.gif', :alt => ''
-          = display_agency_phone_numbers(search.agency)
-      = display_agency_social_media_links(search.agency)
-    .search-within
-      %h3
-        #{t :agency_search_within_label} #{search.agency.domain}
-      = form_tag search_path, :method => :get do
-        = hidden_field_tag 'sitelimit', search.agency.domain
-        = hidden_field_tag 'locale', I18n.locale.to_s
-        = hidden_field_tag :affiliate, spanish_locale? ? 'gobiernousa' : 'usagov'
-        = text_field_tag 'query', ''
-        = submit_tag t :search
+= render_govbox do
+  .searchresult.blended{:id => "searchresult#{index+1}"}
+    .agency
+      %span.official-tag
+        = t :agency_official_site
+      %h2= display_bing_result_title(result, search, affiliate, index, @search_vertical)
+      %h3.result-url= display_agency_link(result, search, affiliate, index, @search_vertical)
+      %p.description
+        = display_result_description(result)
+      - if index == 0 && search.first_page?
+        %div
+          = display_deep_links_for(result, search, affiliate, @search_vertical)
+      .stay-connected
+        %h3
+          = t :agency_stay_connected_label
+        - if search.agency.has_phone_number?
+          .phone-wrapper
+            = image_tag 'govbox/phone.gif', :alt => ''
+            = display_agency_phone_numbers(search.agency)
+        = display_agency_social_media_links(search.agency)
+      .search-within
+        %h3
+          #{t :agency_search_within_label} #{search.agency.domain}
+        = form_tag search_path, :method => :get do
+          = hidden_field_tag 'sitelimit', search.agency.domain
+          = hidden_field_tag 'locale', I18n.locale.to_s
+          = hidden_field_tag :affiliate, spanish_locale? ? 'gobiernousa' : 'usagov'
+          = text_field_tag 'query', ''
+          = submit_tag t :search

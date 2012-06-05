@@ -194,7 +194,7 @@ describe "searches/index.html.haml" do
       context "if the first result matches the URL in the agency query" do
         it "should format the first result as a special agency result" do
           render
-          rendered.should have_selector '.govbox.agency'
+          rendered.should have_selector '.agency'
           rendered.should contain("www.irs.gov")
           rendered.should contain(/888-555-1040 \(Contact\)/)
           rendered.should_not contain(/Toll-free:/)
@@ -263,7 +263,7 @@ describe "searches/index.html.haml" do
 
           it "should render the first result as a Spanish agency govbox" do
             render
-            rendered.should have_selector "div[class='govbox agency']"
+            rendered.should have_selector "div[class='agency']"
             rendered.should contain(/888-555-1040 \(Contacto\)/)
             rendered.should contain(/Buscar en irs.gov/)
             rendered.should contain(/Twitter \(en inglés\)/)

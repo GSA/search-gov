@@ -1,122 +1,22 @@
-=topfade
-  :background #fff url(/images/bg.png) repeat-x scroll 0 -153px
+#results
+  .govbox-wrapper-top
+    :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
+    :behavior url(/javascripts/iepngfix.htc)
+    :height 8px
+    :line-height 8px
+    :margin-top 0.75em
 
-#results .govbox
-  @include clearfix
-  :margin 0
-  +topfade
-  :border 1px solid #ddd
-  :padding 8px $results-padding-size
-  @include border-radius
-  h3
-    :font-size 1.5em
-    :margin 0 0 1em 0
-  ul
-    :margin 0 0 0 1em
-    :padding-left 0.5em
-  p
-    :margin-top 0
-    :margin-bottom .2em
-  &.agency, &.medline
-    :line-height 1
-    h2
-      margin-bottom: 3px
-    h3
-      font:
-        size: 1.1em
-        weight: bold
-      &.result-url
-        margin: 0
-    a.link-to-full-url
-      font:
-        weight: normal
-      :line-height 1.1
-      :padding-right 8px
-      :margin-right 3px
-    .official-tag
-      :float right
-      :font
-        :size 1.1em
-        :weight bold
-    .description
-      :font-size 1.1em
-      :line-height 1.1
-      :margin 0.5em 0 0.3em
-      ul
-        list-style: none
-        margin: 0
-        padding: 0 0 0 8px
-    .section
-      :float left
-      :margin
-        :top 0.4em
-      :width 50%
-      h3
-        margin: 0
-  &.agency
-    .stay-connected
-      @extend .section
-      .phone-wrapper
-        :float left
-        img, ul
-          :float left
-        img
-          :margin-top 0.3em
-        ul
-          :margin-left 7px
-          :width 270px
-      ul
-        :color #222222
-        :list-style none
-        :margin 0.3em 0 0
-        :padding 0
-        li
-          :line-height 1.2
-        &.social-media
-          :background none
-          :float left
-          :height 16px
-          li
-            :display inline
-            :float left
-          a
-            :float left
-            :font-size 0
-            :height 16px
-            :line-height 0
-            :padding 0 3px
-            :text-indent -999em
-            :width 16px
-            &.facebook
-              :background url('/images/govbox/facebook.gif') left top no-repeat
-            &.flickr
-              :background url('/images/govbox/flickr.gif') left top no-repeat
-            &.twitter
-              :background url('/images/govbox/twitter.gif') left top no-repeat
-            &.youtube
-              :background url('/images/govbox/youtube.gif') left top no-repeat
-    .search-within
-      @extend .section
-      form
-        :margin 0.4em 0 0
-        #query
-          :width 230px
-  &.medline
-    .official-tag
-      padding-right: 20px
-    .related-medline-topics, .clinical-trials, .lang-mapped-topic
-      @extend .section
-      ul
-        list-style: none
-        margin: 0.3em 0 0
-        padding: 0
-        li
-          line-height: 1.2
+  .govbox-wrapper-bottom
+    :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
+    :behavior url(/javascripts/iepngfix.htc)
+    :height 8px
 
-.en #results .medline .official-tag
-  background: url(/images/medline.en.png) no-repeat right center
-.es #results .medline .official-tag
-  background: url(/images/medline.es.png) no-repeat right center
+  .govbox-wrapper-middle
+    +clearfix
+    :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
+    :behavior url(/javascripts/iepngfix.htc)
+    margin: 0
+    padding: 0.8em $results-padding-size 0 25px
 
 #results .recalls-govbox, #results .recalls
   h3
@@ -174,3 +74,279 @@
     margin-bottom: 0.75em
     .details
       :padding-top 0.5em
+
+.govbox-title
+  h3.alt
+    font-size: 1.15em
+    margin:
+      top: 0
+      bottom: 0.8em
+    span.recommended-by
+      color: gray
+      font:
+        size: 0.9em
+        style: italic
+        weight: normal
+      a
+        color: gray
+        text-decoration: underline
+
+#results .govbox
+  margin:
+    bottom: 1em
+    left: 10px
+  @extend .govbox-title
+  //h3.alt
+    font-size: 1.15em
+    margin:
+      top: 0
+      bottom: 0.8em
+    span.recommended-by
+      color: gray
+      font:
+        size: 0.9em
+        style: italic
+        weight: normal
+      a
+        color: gray
+        text-decoration: underline
+
+#results .blended
+  margin-left: 0
+  padding: 0
+  .agency, .medline
+    +clearfix
+    :line-height 1
+    h2
+      margin-bottom: 3px
+    h3
+      font:
+        size: 1.1em
+        weight: bold
+      &.result-url
+        margin: 0
+    a.link-to-full-url
+      font:
+        weight: normal
+      :line-height 1.1
+      :padding-right 8px
+      :margin-right 3px
+    .official-tag
+      :float right
+      :font
+        :size 1.1em
+        :weight bold
+    .description
+      :font-size 1.1em
+      :line-height 1.1
+      :margin 0.5em 0 0.3em
+      ul
+        list-style: none
+        margin: 0
+        padding: 0 0 0 8px
+    .section
+      :float left
+      :margin
+        :top 0.4em
+      :width 50%
+      h3
+        margin: 0
+  .agency
+    .stay-connected
+      @extend .section
+      .phone-wrapper
+        :float left
+        img, ul
+          :float left
+        img
+          :margin-top 0.3em
+        ul
+          :margin-left 7px
+          :width 270px
+      ul
+        :color #222222
+        :list-style none
+        :margin 0.3em 0 0
+        :padding 0
+        li
+          :line-height 1.2
+        &.social-media
+          :background none
+          :float left
+          :height 16px
+          li
+            :display inline
+            :float left
+          a
+            :float left
+            :font-size 0
+            :height 16px
+            :line-height 0
+            :padding 0 3px
+            :text-indent -999em
+            :width 16px
+            &.facebook
+              :background url('/images/govbox/facebook.gif') left top no-repeat
+            &.flickr
+              :background url('/images/govbox/flickr.gif') left top no-repeat
+            &.twitter
+              :background url('/images/govbox/twitter.png') -7px -8px no-repeat
+            &.youtube
+              :background url('/images/govbox/youtube.gif') left top no-repeat
+    .search-within
+      @extend .section
+      form
+        :margin 0.4em 0 0
+        #query
+          :width 230px
+  .medline
+    p
+      :margin-top 0
+      :margin-bottom .2em
+    ul
+      :margin 0 0 0 1em
+      :padding-left 0.5em
+    .official-tag
+      padding-right: 20px
+    .related-medline-topics, .clinical-trials, .lang-mapped-topic
+      @extend .section
+      ul
+        list-style: none
+        margin: 0.3em 0 0
+        padding: 0
+        li
+          line-height: 1.2
+
+.en #results .medline .official-tag
+  background: url(/images/medline.en.png) no-repeat right center
+.es #results .medline .official-tag
+  background: url(/images/medline.es.png) no-repeat right center
+
+#results #boosted
+  .searchresult
+    margin:
+      left: 0
+    padding: 0
+
+
+#results .featured-collection
+  +clearfix
+  margin:
+    left: 0
+  padding: 0
+  h2
+    margin: 0 0 0.5em
+    span.recommended-by
+      color: gray
+      font:
+        size: 0.8em
+        style: italic
+        weight: normal
+  .image
+    float: left
+    img
+      display: block
+      margin-bottom: 5px
+    span
+      font-weight: normal
+      width: auto
+      word-wrap: break-word
+      &.attribution
+        font-weight: normal
+    a
+      display: inline
+      word-wrap: break-word
+  ul
+    +clearfix
+    list-style: none
+    margin: 0
+    padding: 0
+    li
+      +inline-block
+      vertical-align: top
+      margin: 0 0 3px 0
+      padding: 0
+  &.one-column
+    li
+      clear: left
+      width: 99%
+    &.with-image
+      .image
+        width: 125px
+      ul
+        margin-left: 135px
+  &.two-column
+    li
+      width: 49%
+    li.left
+      clear: left
+      margin-right: 5px
+    &.with-image
+      .image
+        width: 100px
+      ul
+        margin-left: 110px
+
+#results #photo_govbox
+  .photo
+    +inline-block
+    margin:
+      right: 10px
+      bottom: 0.8em
+
+#results #video_news_items_govbox
+  .searchresult.newsitem
+    +clearfix
+    +inline-block
+    font-size: 0.8em
+    height: auto
+    margin:
+      right: 20px
+      left: 0
+    padding: 0
+    width: 120px
+    h4
+      font-size: 1.25em
+      margin-bottom: 0
+
+#results #news_items_govbox
+  .newsitem
+    margin:
+      left: 0
+    padding: 0
+
+#results #indexed_documents
+  .indexeddocresult.searchresult
+    margin:
+      left: 0
+    padding: 0
+  .indexeddocresult h2
+    font-size: 1.1em
+    font-weight: normal
+    span.uext_type
+      font-size: 0.7em
+
+#results #related_searches
+  ul
+    +clearfix
+    margin: 0 0 1em 0
+    padding: 0
+  li
+    +inline-block
+    line-height: 1.2
+    width: 49%
+
+#twitter_govbox
+  +clearfix
+  background: url('/images/twitter_logo.png') -7px -8px no-repeat
+  padding-left: 35px
+  margin-bottom: 1em
+  @extend .govbox-title
+  a
+    text-decoration: none
+  .profile-image
+    float: left
+    margin-right: 10px
+  .timestamp
+    clear: both
+    text-align: right

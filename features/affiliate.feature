@@ -1682,7 +1682,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Search"
-    Then I should see "Related Searches for obama by aff site" in the search results section
+    Then I should see "Related Searches for 'obama' by aff site" in the search results section
     And I should see "some unique obama term"
     And I should not see "aff.gov"
 
@@ -1697,7 +1697,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Buscar"
-    Then I should see "Búsquedas relacionadas a obama de aff site" in the search results section
+    Then I should see "Búsquedas relacionadas a 'obama' de aff site" in the search results section
     And I should see "some unique obama term"
     And I should not see "aff.gov"
 
@@ -2583,7 +2583,7 @@ Feature: Affiliate clients
     And I should not see "Fourth item" in the rss feed govbox
     And I should not see "Fifth item" in the rss feed govbox
     And I should see "Space Suit Evolution"
-    And I should see "Related Searches for item by aff site" in the search results section
+    And I should see "Related Searches for 'item' by aff site" in the search results section
     And I should see "some unique item"
 
     When I am logged in with email "aff@bar.gov" and password "random_string"
@@ -2625,7 +2625,7 @@ Feature: Affiliate clients
     And I should see "Fourth item" in the rss feed govbox
     And I should see "Fifth item" in the rss feed govbox
     And I should not see "Space Suit Evolution"
-    And I should not see "Related Searches for item by aff site" in the search results section
+    And I should not see "Related Searches" in the search results section
     And I should not see "some unique item"
     When I follow "Search in Spanish"
     Then I should see the browser page titled "item - Spanish site resultados de la búsqueda"

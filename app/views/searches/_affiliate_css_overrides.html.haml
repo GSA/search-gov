@@ -41,13 +41,16 @@
       a, a:visited
         color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
     #results .searchresult
-      .govbox.agency, .govbox.medline
+      .agency, .medline
         h3, .official-tag
           color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
       h3 a, h4 .feed_name
         color: #{render_affiliate_css_property_value(css_property_hash, :url_link_color)}
     #results
-      #boosted h3.alt, .featured-collection h2, .related-searches-wrapper-middle h3, .govbox-wrapper-middle h3.alt, .twitter-govbox h3.alt
+      .govbox
+        h3.alt, h3.alt a
+          color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
+      .featured-collection h2, .featured-collection h2 a, #twitter_govbox h3.alt
         color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     #results .pagination
       a, a:visited

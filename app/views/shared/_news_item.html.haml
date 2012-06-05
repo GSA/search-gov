@@ -1,4 +1,4 @@
-.newsitem.searchresult.clearfix{:id => "newsitem#{index+1}"}
+.newsitem.searchresult{:id => "newsitem#{index+1}"}
   - if hit.instance.rss_feed.is_video?
     .thumbnail= render_news_item_video_thumbnail_link_with_click_tracking(@affiliate, @search, @search_vertical, hit.instance, index)
   %div{ :class => hit.instance.rss_feed.is_video? ? 'mixed' : nil }

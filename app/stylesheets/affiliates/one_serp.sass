@@ -186,7 +186,7 @@ body
   .pagination-and-logo
     clear: both
     height: 35px
-    margin: 1.5em 0 0
+    margin: 1.5em 0 0 20px
     padding: 14px 0 14px $results-padding-size - 6px
 
   .pagination
@@ -212,7 +212,7 @@ body
   width: 140px
   overflow: hidden
   display: inline
-  padding: 3px 20px 0 0
+  padding: 3px 0 0 0
   ul.rss-feeds, ul.time-filters
     font-size: 1.1em
     margin: 0
@@ -256,10 +256,8 @@ body
 
 #results
   .searchresult
-    margin-bottom: 1em
+    margin: 0 0 1em 20px
     padding-left: $results-padding-size
-    &.blended
-      :padding 0
 
   .searchresult  h2
     font-size: 1.4em
@@ -268,16 +266,6 @@ body
     span.uext_type
       font-size: 0.7em
 
-  #indexed_documents
-    margin-bottom: 1em
-    #indexeddocresult1
-      padding-top: 0
-    .indexeddocresult h2
-      font-size: 1.1em
-      font-weight: normal
-      margin: 0
-      span.uext_type
-        font-size: 0.7em
 
   .searchresult  h3
     font-size: 1.1em
@@ -295,50 +283,6 @@ body
     color: white
     display: none
 
-  .related-searches-wrapper-top, .indexed-documents-wrapper-top, .govbox-wrapper-top
-    :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
-    :behavior url(/javascripts/iepngfix.htc)
-    :height 8px
-    :line-height 8px
-    :margin-top 0.75em
-
-  .related-searches-wrapper-bottom, .indexed-documents-wrapper-bottom, .govbox-wrapper-bottom
-    :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
-    :behavior url(/javascripts/iepngfix.htc)
-    :height 8px
-
-  .related-searches-wrapper-middle, .indexed-documents-wrapper-middle, .govbox-wrapper-middle
-    +clearfix
-    :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
-    :behavior url(/javascripts/iepngfix.htc)
-    margin: 0
-    padding: 0.8em $results-padding-size 0 0
-    h3.alt
-      font-size: 1.15em
-      margin-top: 0
-      margin-bottom: 0.5em
-      margin-left: $results-padding-size
-      span.recommended-by
-        color: gray
-        font:
-          size: 0.9em
-          style: italic
-          weight: normal
-    ul
-      list-style: none
-      margin: 0 0 0 $results-padding-size
-      padding: 0
-      width: 630px
-      li
-        float: left
-        line-height: 1.2
-        margin: 0
-        padding: 0
-        width: 312px
-
-    .see-more-documents
-      padding-left: $results-padding-size
-
   .results
     display: block
     overflow: hidden
@@ -346,101 +290,6 @@ body
     padding-right: 5em
     padding-top:   1em
 
-  #boosted
-    +border-radius
-    border: 1px #ddd solid
-    margin:
-      top: 0
-      bottom: 1em
-    padding: $results-padding-top-size $results-padding-size 0
-    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-    h3.alt
-      font-size: 1.15em
-      margin-top: 0
-      span.recommended-by
-        color: gray
-        font:
-          size: 0.9em
-          style: italic
-          weight: normal
-    .searchresult
-      padding-left: 0
-    .see-more-documents
-      margin-bottom: 10px
-
-  .featured-collection
-    +border-radius
-    +clearfix
-    border: 1px solid #DDD
-    margin:
-      top: 0
-      bottom: 1em
-    padding: $results-padding-top-size $results-padding-size
-    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-    h2
-      margin: 0 0 0.5em
-      span.recommended-by
-        color: gray
-        font:
-          size: 0.8em
-          style: italic
-          weight: normal
-    .image
-      float: left
-      img
-        display: block
-        margin-bottom: 5px
-      span
-        font-weight: normal
-        width: auto
-        word-wrap: break-word
-        &.attribution
-          font-weight: normal
-      a
-        display: inline
-        word-wrap: break-word
-    ul
-      float: left
-      list-style: none
-      margin: 0
-      padding: 0
-      li
-        float: left
-        line-height: 1.2
-        margin: 0 0 3px 0
-        padding: 0
-    &.one-column-with-image
-      .image
-        width: 125px
-      ul
-        margin: 0 0 0 10px
-        width: 490px
-      li
-        clear: left
-        width: 100%
-    &.one-column-without-image
-      li
-        clear: left
-        width: 100%
-    &.two-column-with-image
-      .image
-        width: 100px
-      ul
-        margin: 0 0 0 10px
-        width: 515px
-      li
-        width: 49%
-      li.left
-        clear: left
-        margin-right: 5px
-    &.two-column-without-image
-      ul
-        width: 100%
-      li
-        width: 49%
-      li.left
-        clear: left
-        margin-right: 5px
   table.deep-links
     :padding 0
     :margin 0
@@ -449,8 +298,6 @@ body
     td
       line-height: 1.1em
       padding: 0
-
-@import "govbox"
 
 #search .page-not-found
   :margin 50px auto
@@ -514,32 +361,11 @@ body
   h4
     font-size: 1.25em
 
-#video_news_items_govbox
-  margin-bottom: 1em
-  .newsitem.video
-    +clearfix
-    +inline-block
-    font-size: 0.8em
-    height: auto
-    margin-top: 0.8em
-    margin-right: 10px
-    width: 120px
-    h4
-      font-size: 1.25em
-      margin-bottom: 0
-
-#news_items_govbox
-  margin-bottom: 1em
-  .newsitem
-    margin-top: 0.8em
-  #newsitem1
-    padding-top: 0
+@import "govbox"
 
 #searchresult1
   &.first
     padding-top: $results-padding-top-size + 1
-  &.blended
-    padding-top: 0
 #indexeddocresult1
   padding-top: $results-padding-top-size + 1
 #newsitem1

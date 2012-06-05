@@ -27,21 +27,6 @@ module AffiliateHelper
     templates.join
   end
 
-  def render_rss_feed_url_last_crawl_status(rss_feed_url)
-    return rss_feed_url.last_crawl_status if RssFeedUrl::STATUSES.include?(rss_feed_url.last_crawl_status)
-
-    dialog_id = "rss_feed_url_error_#{rss_feed_url.id}"
-    render_last_crawl_status_dialog(dialog_id, rss_feed_url.url, rss_feed_url.last_crawl_status).html_safe
-  end
-
-
-  def render_last_crawl_status(indexed_document)
-    return indexed_document.last_crawl_status if indexed_document.last_crawl_status == IndexedDocument::OK_STATUS or indexed_document.last_crawl_status.blank?
-
-    dialog_id = "crawled_url_error_#{indexed_document.id}"
-    render_last_crawl_status_dialog(dialog_id, indexed_document.url, indexed_document.last_crawl_status).html_safe
-  end
-
   def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)
     content = ''
     content << link_to('Error', '#', :class => 'dialog-link', :dialog_id => dialog_id)
@@ -226,31 +211,5 @@ module AffiliateHelper
       content_tag :div, content.join("\n").html_safe, :data => data, :class => theme_class
     end
     content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
-  end
-
-  def render_connected_affiliate_links(affiliate, query)
-    return if affiliate.connections.blank?
-
-    content = []
-    affiliate.connections.each_with_index do |connection, index|
-      first = index == 0 ? ' first' : ''
-      content << content_tag(:li,
-                             link_to(connection.label,
-                                     search_path(:affiliate => connection.connected_affiliate.name, :query => query),
-                                     :class => "updatable#{first}").html_safe)
-    end
-    content_tag(:ul, content.join("\n").html_safe)
-  end
-
-  def link_to_navigable(navigable)
-    case navigable.class.name
-    when 'DocumentCollection' then link_to('Collection', [navigable.affiliate, navigable])
-    when 'RssFeed' then link_to('RSS', [navigable.affiliate, navigable])
-    when 'ImageSearchLabel' then 'Bing'
-    end
-  end
-
-  def render_navigable_field_name_for(navigation)
-    navigation.navigable.instance_of?(ImageSearchLabel) ? navigation.navigable_type.underscore : navigation.navigable_type.underscore.pluralize
   end
 end

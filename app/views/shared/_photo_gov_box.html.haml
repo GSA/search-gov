@@ -1,13 +1,10 @@
-#photo-govbox
-  .govbox-wrapper-top
-  .govbox-wrapper-middle
+= render_govbox do
+  #photo_govbox
     %h3.alt
       = t(:photo_results, :query => search.query)
       %span.recommended-by
         = t :by
         = affiliate.display_name
-    %div{:style => 'margin-left: 15px; margin-bottom: 15px;'}
-      - search.photos.hits.each do |photo|
-        %div{:style => 'float: left; margin-right: 5px; width: 80px; min-height: 80px; text-align: center;'}
-          = display_flickr_photo_thumbnail(photo, search, affiliate)
-  .govbox-wrapper-bottom
+    - search.photos.hits.each do |photo|
+      .photo
+        = display_flickr_photo_thumbnail(photo, search, affiliate)

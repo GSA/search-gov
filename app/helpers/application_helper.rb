@@ -14,7 +14,7 @@ module ApplicationHelper
     end
     (page_title.blank? ? "" : "#{page_title} - ") + site_title
   end
-  
+
   def build_mobile_page_title(page_title)
     site_title = (t :usagov_mobile)
     page_title.blank? ? site_title : "#{page_title} | #{site_title}"
@@ -71,8 +71,6 @@ module ApplicationHelper
       ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"]
     ]
   }
-
-  BACKGROUND_COLORS = {:en => "#003366", :es => "#A40000"}
 
   def header_links
     raw iterate_links(HEADER_LINKS[I18n.locale.to_sym])
@@ -162,10 +160,6 @@ module ApplicationHelper
 
   def spanish_locale?
     I18n.locale.to_s == "es"
-  end
-
-  def locale_dependent_background_color
-    BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]
   end
 
   def highlight_hit(hit, field_name)

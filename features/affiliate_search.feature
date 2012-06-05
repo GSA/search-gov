@@ -610,7 +610,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
-    Then I should see "Recent tweet for america (@USASearch)"
+    Then I should see "Recent tweet for 'america' by @USASearch"
     And I should see "AMERICA is great!"
     And I should see "AMERICA" in bold font
 
@@ -643,8 +643,8 @@ Feature: Affiliate Search
     When I go to bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
-    Then I should see "Recent tweet for america (@USASearch)"
-    
+    Then I should see "Recent tweet for 'america' by @USASearch"
+
   Scenario: When there are relevant Flickr photos for a search
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
@@ -656,11 +656,11 @@ Feature: Affiliate Search
     And I fill in "query" with "america"
     And I press "Search"
     Then I should see "Photos of 'america' by bar site"
-    
+
     When I fill in "query" with "obama"
     And I press "Search"
     Then I should not see "Photos of 'america' by bar site"
-    
+
   Scenario: Enabling and disabling Flickr photos
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
@@ -681,7 +681,7 @@ Feature: Affiliate Search
     When I go to the affiliate admin page with "bar.gov" selected
     And I follow "Results module"
     Then I should see "Photos"
-    
+
     When I check "Is photo govbox enabled"
     And I press "Save"
     When I go to bar.gov's search page

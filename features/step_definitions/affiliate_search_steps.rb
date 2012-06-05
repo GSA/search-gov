@@ -111,7 +111,7 @@ end
 
 Given /^the following Twitter Profiles exist:$/ do |table|
   table.hashes.each do |hash|
-    twitter_profile = TwitterProfile.create!(:screen_name => hash[:screen_name], :twitter_id => hash[:twitter_id])
+    twitter_profile = TwitterProfile.create!(:screen_name => hash[:screen_name], :twitter_id => hash[:twitter_id], :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
     affiliate = Affiliate.find_by_name(hash[:affiliate])
     affiliate.twitter_profiles << twitter_profile
   end

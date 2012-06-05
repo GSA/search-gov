@@ -1024,7 +1024,7 @@ describe WebSearch do
       before do
         @tweet = Tweet.create!(:tweet_text => "I love america.", :published_at => Time.now, :twitter_profile_id => 123, :tweet_id => 123)
         Tweet.reindex
-        twitter_profile = TwitterProfile.create!(:screen_name => 'test', :twitter_id => 123)
+        twitter_profile = TwitterProfile.create!(:screen_name => 'test', :twitter_id => 123, :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
         @affiliate.twitter_profiles << twitter_profile
         @affiliate.update_attributes(:is_twitter_govbox_enabled => true)
       end
@@ -1064,14 +1064,14 @@ describe WebSearch do
         end
       end
     end
-    
+
     context "photos" do
       before do
         FlickrPhoto.destroy_all
         @photo = FlickrPhoto.create(:flickr_id => 1, :affiliate => @affiliate, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
         FlickrPhoto.reindex
       end
-      
+
       context "when the affiliate has photo govbox enabled" do
         before do
           @affiliate.update_attributes(:is_photo_govbox_enabled => true)
@@ -1083,19 +1083,19 @@ describe WebSearch do
           search.photos.should_not be_nil
           search.photos.results.first.should == @photo
         end
-      
+
         it "should not find any photos if it's not on the first page" do
           search = WebSearch.new(:query => "obama", :affiliate => @affiliate, :page => 3)
           search.run
           search.photos.should be_nil
         end
       end
-      
+
       context "when the affiliate does not have photo govbox enabled" do
         before do
           @affiliate.update_attributes(:is_photo_govbox_enabled => false)
         end
-        
+
         it "should not search for Flickr Photos" do
           FlickrPhoto.should_not_receive(:search_for)
           search = WebSearch.new(:query => "obama", :affiliate => @affiliate)
@@ -1104,7 +1104,7 @@ describe WebSearch do
         end
       end
     end
-      
+
     context "on normal search runs" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => 'logme', :affiliate => @affiliate))

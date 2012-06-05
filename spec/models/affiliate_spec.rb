@@ -1929,6 +1929,7 @@ describe Affiliate do
       @twitter_user = mock(Object)
       @twitter_user.stub!(:id).and_return 123
       @twitter_user.stub!(:screen_name).and_return "NewHandle"
+      @twitter_user.stub!(:profile_image_url).and_return 'http://a0.twimg.com/profile_images/2183009986/normal.jpg'
       @affiliate = affiliates(:basic_affiliate)
     end
 

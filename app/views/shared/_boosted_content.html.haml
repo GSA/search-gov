@@ -1,6 +1,5 @@
-#boosted
-  .boosted-contents-wrapper-top
-  .boosted-contents-wrapper-middle
+= render_govbox do
+  #boosted
     %h3.alt
       = t(:recommended)
       %span.recommended-by
@@ -15,4 +14,3 @@
           = highlight_hit(hit, :description).html_safe
         %h3.result-url
           = boosted_content_link_with_click_tracking(h(shorten_url(boosted_content_url)), boosted_content_url, @affiliate, search.query, index, @search_vertical)
-  .boosted-contents-wrapper-bottom

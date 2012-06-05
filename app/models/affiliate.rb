@@ -886,7 +886,7 @@ class Affiliate < ActiveRecord::Base
     if changed_attributes.has_key?("twitter_handle") and self.twitter_handle.present?
       twitter_user = Twitter.user(self.twitter_handle) rescue nil
       if twitter_user
-        twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name)
+        twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name, :profile_image_url => twitter_user.profile_image_url)
         self.twitter_profiles << twitter_profile
       end
     end

@@ -1,7 +1,6 @@
 - if search.video_news_items and search.video_news_items.total > 0
-  #video_news_items_govbox
-    .govbox-wrapper-top
-    .govbox-wrapper-middle
+  = render_govbox do
+    #video_news_items_govbox
       %h3.alt
         = link_to_unless(search.affiliate.rss_feeds.videos.navigable_only.empty?, I18n.t(:video_news_results, :query => search.query, :affiliate => search.affiliate.display_name), video_news_search_path(:query => search.query, :affiliate => search.affiliate.name))
         %span.recommended-by
@@ -9,4 +8,3 @@
           = @affiliate.display_name
       - search.video_news_items.hits(:verify => true).first(4).each_with_index do |hit, index|
         = render 'shared/video_news_item', :hit => hit, :index => index
-    .govbox-wrapper-bottom

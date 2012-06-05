@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620204107) do
+ActiveRecord::Schema.define(:version => 20120620215944) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -782,6 +782,7 @@ ActiveRecord::Schema.define(:version => 20120620204107) do
     t.string   "screen_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_image_url", :null => false
   end
 
   add_index "twitter_profiles", ["twitter_id"], :name => "index_twitter_profiles_on_twitter_id"

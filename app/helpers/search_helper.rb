@@ -82,11 +82,6 @@ module SearchHelper
     raw html
   end
 
-  def display_agency_link(result, search, affiliate, position, vertical)
-    link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
-    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
-  end
-
   def strip_url_protocol(url)
     url.gsub(/^http(s)?:\/\//, '')
   end
@@ -132,21 +127,6 @@ module SearchHelper
     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, 'BWEB', vertical)
   end
 
-  def display_medline_result_title(search, affiliate)
-    raw tracked_click_link(h(search.med_topic.medline_url), highlight_string(h(search.med_topic.medline_title)), search, affiliate, 0, "MEDL")
-  end
-
-  def display_medline_topic_with_click_tracking(med_topic, query, locale, affiliate)
-    onmousedown = onmousedown_for_click(query, 0, nil, 'MEDL', Time.now.to_i, :web)
-    affiliate_name = affiliate.nil? ? nil : affiliate.name
-    raw "<a href=\"#{h search_path(:affiliate => affiliate_name, :query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
-  end
-
-  def display_medline_clinical_trail_with_click_tracking(mesh_title, query)
-    onmousedown = onmousedown_for_click(query, 0, nil, 'MEDL', Time.now.to_i, :web)
-    raw "<a href=\"http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h(mesh_title) + "\"")}\" #{onmousedown}>#{mesh_title}</a>"
-  end
-
   def highlight_string(s)
     "<strong>#{s}</strong>".html_safe
   end
@@ -172,11 +152,6 @@ module SearchHelper
     link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical)
   end
 
-  def featured_collection_link_with_click_tracking(title, url, affiliate, query, position, vertical)
-    return title if url.blank?
-    link_with_click_tracking(title, url, affiliate, query, position, "BBG", vertical)
-  end
-
   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
     aff_name = affiliate.nil? ? "" : affiliate.name
     query = search.spelling_suggestion || search.query
@@ -195,10 +170,6 @@ module SearchHelper
 
   def display_result_description(result, query = nil, affiliate = nil)
     translate_bing_highlights(h(truncate_html_prose_on_words(result['content'], 255)), excluded_highlight_terms(affiliate, query)).html_safe
-  end
-
-  def display_medline_results_description(summary, query)
-    highlight(truncate_html_prose_on_words(summary, 300), query).html_safe
   end
 
   def news_description(hit)
@@ -255,28 +226,6 @@ module SearchHelper
       content_tag(:p, t(:results_summary, :approximate => approximate.downcase, :page => search.page,
                         :total => total))
     end
-  end
-
-  def agency_url_matches_by_locale(result_url, agency, locale)
-    agency.agency_urls.find_by_url_and_locale(result_url, locale.to_s).nil? ? false : true
-  end
-
-  def display_agency_phone_numbers(agency)
-    content = ""
-    content << content_tag(:li, "#{agency.phone} (#{t :agency_phone_label})") if agency.phone.present?
-    content << content_tag(:li, "#{agency.toll_free_phone} (#{t :agency_toll_free_phone_label})") if agency.toll_free_phone.present?
-    content << content_tag(:li, "#{agency.tty_phone} (#{t :agency_tty_phone_label})") if agency.tty_phone.present?
-    content_tag :ul, content.html_safe
-  end
-
-  def display_agency_social_media_links(agency)
-    list_html = ""
-    Agency::SOCIAL_MEDIA_SERVICES.each do |service|
-      profile_link = agency.send("#{service.downcase}_profile_link".to_sym)
-      title = "#{service}#{spanish_locale? ? " (en inglés)" : ""}"
-      list_html << content_tag(:li, link_to(title, profile_link, :title => title, :class => service.downcase)) unless profile_link.blank?
-    end
-    content_tag(:ul, list_html.html_safe, :class => 'social-media')
   end
 
   def advanced_search_link(search_options, affiliate = nil)
@@ -363,12 +312,8 @@ module SearchHelper
   end
 
   def related_topics_header(affiliate, query)
-    if affiliate
-      related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
-    else
-      related_topics_suffix = content_tag :span, "#{I18n.t :related_topics_suffix}", :class => 'by-usa-gov'
-    end
-    "#{I18n.t :related_topics_prefix} #{h query} #{related_topics_suffix}".html_safe
+    related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
+    "#{I18n.t :related_topics_prefix} '#{h query}' #{related_topics_suffix}".html_safe
   end
 
   def render_no_results_banner
@@ -386,20 +331,6 @@ module SearchHelper
     end
   end
 
-  def featured_collection_css_classes(featured_collection, initial_classes = %w( featured-collection searchresult ))
-    css_classes = initial_classes
-    css_class = ''
-    css_class << featured_collection.layout.parameterize
-    css_class << (featured_collection.image_file_name.present? ? '-with-image' : '-without-image')
-    css_classes << css_class
-    css_classes.join(" ")
-  end
-
-  def render_featured_collection_link_title(link, index, highlighted_link_titles)
-    return link.title if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
-    highlighted_link_titles[index].html_safe
-  end
-
   def display_search_all_affiliate_sites_suggestion(search, affiliate)
     return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
     html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(" ")}. "
@@ -409,20 +340,13 @@ module SearchHelper
     raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end
 
-  def render_featured_collection_image(fc)
-    begin
-      unless fc.image_file_name.blank?
-        content = []
-        content << image_tag(fc.image.url(fc.has_one_column_layout? ? :medium : :small), :alt => fc.image_alt_text)
-        unless fc.image_attribution.blank?
-          content << content_tag(:span, I18n.t(:image))
-          content << link_to_unless(fc.image_attribution_url.blank?, content_tag(:span, fc.image_attribution, :class => 'attribution'), fc.image_attribution_url)
-        end
-        content_tag(:div, content.join("\n").html_safe, :class => 'image')
-      end
-    rescue Exception
-      nil
+  def render_govbox
+    content = content_tag(:div, '', :class => 'govbox-wrapper-top')
+    content << content_tag(:div, :class => 'govbox-wrapper-middle') do
+      yield
     end
+    content << content_tag(:div, '', :class => 'govbox-wrapper-bottom')
+    raw(content_tag(:div, raw(content), :class => 'govbox'))
   end
 
   private
@@ -517,53 +441,4 @@ module SearchHelper
   def left_nav_label(label_text)
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
-
-  def render_navigations(navigations, search_params, left_nav_tag, is_image_search, dc_and_feed_hash)
-    content = []
-    navigations.each do |navigation|
-      navigable = navigation.navigable
-      html = case navigation.navigable_type
-             when 'DocumentCollection'
-               render_document_collection_navigation navigable, search_params, left_nav_tag, dc_and_feed_hash[:document_collection]
-             when 'ImageSearchLabel'
-               render_image_search_label_navigation navigable, search_params, left_nav_tag, is_image_search
-             when 'RssFeed'
-               render_rss_feed_navigation navigable, search_params, left_nav_tag, dc_and_feed_hash[:rss_feed]
-             end
-      content << content_tag(:li, html.html_safe)
-    end
-    content.join("\n").html_safe
-  end
-
-  def render_document_collection_navigation(navigable, search_params, left_nav_tag, document_collection)
-    link_to_unless((document_collection && document_collection.id == navigable.id),
-                   navigable.name,
-                   docs_search_path(search_params.merge(:dc => navigable.id).remove(:channel, :tbs)),
-                   :class => 'updatable') do |collection_name|
-      content_tag left_nav_tag, collection_name
-    end
-  end
-
-  def render_image_search_label_navigation(navigable, search_params, left_nav_tag, is_image_search)
-    link_to_unless(is_image_search, navigable.name, image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
-      content_tag left_nav_tag, images
-    end
-  end
-
-  def render_rss_feed_navigation(navigable, search_params, left_nav_tag, rss_feed)
-    link_to_unless((rss_feed && rss_feed.id == navigable.id),
-                   navigable.name,
-                   news_search_path(search_params.merge(:channel => navigable.id)),
-                   :class => 'updatable') do |feed_name|
-      content_tag left_nav_tag, feed_name
-   end
-  end
-  
-  def display_flickr_photo_thumbnail(flickr_photo, search, affiliate)
-    html = ""
-    thumbnail = image_tag(flickr_photo.instance.url_sq, :alt => flickr_photo.instance.title, :title => flickr_photo.instance.title)
-    html << tracked_click_link(flickr_photo.instance.flickr_url, thumbnail, search, affiliate, 0, "PHOTO")
-    raw html
-  end
-
 end

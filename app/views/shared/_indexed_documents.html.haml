@@ -1,8 +1,5 @@
 - unless search.indexed_documents.blank?
-  #indexed_documents
-    .indexed-documents-wrapper-top
-    .indexed-documents-wrapper-middle
-      .related_indexeddocs
-        - search.indexed_documents.each_with_index do |hit, index|
-          = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => false
-    .indexed-documents-wrapper-bottom
+  = render_govbox do
+    #indexed_documents
+      - search.indexed_documents.each_with_index do |hit, index|
+        = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => false

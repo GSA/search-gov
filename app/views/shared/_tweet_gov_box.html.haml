@@ -1,11 +1,10 @@
 - tweet = search.tweets.hits.first
-#twitter-govbox
-  .govbox-wrapper-top
-  .govbox-wrapper-middle
-    %h3.alt
-      Recent tweet for #{search.query} (#{ link_to "@#{tweet.instance.twitter_profile.screen_name}", tweet.instance.twitter_profile.link_to_profile })
-    %div{:style => 'margin-left: 15px;'}
-      = highlight_hit(tweet, :tweet_text).html_safe
-    %div{:style => 'text-align: right;'}
-      = link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet
-  .govbox-wrapper-bottom
+#twitter_govbox
+  %h3.alt
+    Recent tweet for '#{search.query}'
+    %span.recommended-by
+      = t :by
+      = link_to("@#{tweet.instance.twitter_profile.screen_name}", tweet.instance.twitter_profile.link_to_profile)
+  .profile-image=image_tag tweet.instance.twitter_profile.profile_image_url, :alt => tweet.instance.twitter_profile.screen_name
+  .tweet-text= highlight_hit(tweet, :tweet_text).html_safe
+  .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet

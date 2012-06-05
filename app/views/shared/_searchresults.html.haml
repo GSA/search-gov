@@ -1,26 +1,24 @@
 - result_partial = result_partial_for(search)
-- first = true
 = render('shared/results_summary', :affiliate => @affiliate, :search => @search, :search_vertical => @search_vertical) unless @affiliate.uses_one_serp?
 - if search.first_page?
   - if search.has_boosted_contents? or search.has_featured_collections?
-    - first = false
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
   - elsif search.photos.present? and search.photos.results.any?
     = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
   - elsif search.med_topic.present?
-    - first = false
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
 - if search.results.present?
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
-      = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1), :first => first
-    = render "/shared/video_news_govbox", :search => @search if index == 1 and search.first_page?
-    = render "/shared/news_govbox", :search => @search if index == 2 and search.first_page?
-    = render "/shared/tweet_gov_box", :search => @search if index == 3 and search.first_page? and search.tweets and search.tweets.results.any?
-    - if @affiliate.uses_bing_odie_results? and @affiliate.is_odie_govbox_enabled? and search.first_page? and index == 4
-      = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate
-  = render "/shared/related_topics_wrapper"
+      = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
+    - if search.first_page?
+      = render "/shared/video_news_govbox", :search => @search if index == 1
+      = render "/shared/news_govbox", :search => @search if index == 2
+      = render "/shared/tweet_gov_box", :search => @search if index == 3 and search.tweets and search.tweets.results.any?
+      - if @affiliate.uses_bing_odie_results? and @affiliate.is_odie_govbox_enabled? and index == 4
+        = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate
+  = render 'shared/related_topics'
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     = search_results_by_logo(search.are_results_by_bing?)

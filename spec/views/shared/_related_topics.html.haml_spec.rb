@@ -1,11 +1,15 @@
 require 'spec/spec_helper'
-describe "shared/_related_topics_wrapper.html.haml" do
+
+describe "shared/_related_topics.html.haml" do
+  fixtures :affiliates
+
   before do
     @search = stub("Search")
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     @search.stub!(:query).and_return "<i>tax forms</i>"
     @search.stub!(:spelling_suggestion).and_return nil
     assign(:search, @search)
+    assign(:affiliate, affiliates(:usagov_affiliate))
   end
 
   context "when there are related topics" do
@@ -17,8 +21,8 @@ describe "shared/_related_topics_wrapper.html.haml" do
 
     it  "should display related topics" do
       render
-      rendered.should have_selector('h3', :content => 'Related Searches for <i>tax forms</i>')
-      rendered.should have_selector('ul', :id => 'relatedsearch')
+      rendered.should have_selector('#related_searches')
+      rendered.should have_selector('h3', :content => %q{Related Searches for '<i>tax forms</i>'})
       rendered.should have_selector('a', :content => 'cia gets downcased')
       rendered.should have_selector('a', :content => 'first-1 keeps the hyphen')
       rendered.should have_selector('a', :content => 'second one is a string')
@@ -35,7 +39,7 @@ describe "shared/_related_topics_wrapper.html.haml" do
 
     it  "should not display related topics" do
       render
-      rendered.should_not have_selector('ul', :id => 'relatedsearch')
+      rendered.should_not have_selector('#related_searches')
     end
   end
 
@@ -54,8 +58,7 @@ describe "shared/_related_topics_wrapper.html.haml" do
     it  "should display related topics" do
       view.should_receive(:search_path).exactly(4).times.with(hash_including(:embedded => true))
       render
-      rendered.should have_selector('ul', :id => 'relatedsearch')
-      rendered.should have_selector("#relatedsearch a", :count => 4)
+      rendered.should have_selector("#related_searches a", :count => 4)
     end
   end
 
