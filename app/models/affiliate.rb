@@ -509,7 +509,7 @@ class Affiliate < ActiveRecord::Base
       home_page_url = "http://#{site_domains.first.domain}"
       @home_page_doc = @home_page_doc || Nokogiri::HTML(open(home_page_url))
       icon_url = nil
-      @home_page_doc.xpath("//link[@rel='icon']").each do |link_element|
+      @home_page_doc.xpath("//link[@rel='shortcut icon' or @rel='icon']").each do |link_element|
         icon_url = link_element.attribute("href").value
         icon_url = icon_url.start_with?('http://') ? icon_url : "#{home_page_url}#{icon_url}"
         break

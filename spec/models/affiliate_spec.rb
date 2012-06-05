@@ -2121,7 +2121,7 @@ describe Affiliate do
 
     context "when no favicon link is present in the HTML, but a file at http://domain.gov/favicon.ico exists" do
       it "should update the affiliate's favicon_url attribute" do
-        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
+        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html")
         @affiliate.should_receive(:open).with("http://nps.gov/favicon.ico").and_return File.read(Rails.root.to_s + "/spec/fixtures/ico/favicon.ico")
         @affiliate.autodiscover_favicon_url
         @affiliate.favicon_url.should_not be_nil
@@ -2131,7 +2131,7 @@ describe Affiliate do
 
     context "when no favicon link is present in HTML and no file exists at the default location" do
       before do
-        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
+        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html")
         @affiliate.should_receive(:open).with("http://nps.gov/favicon.ico").and_raise "Some Exception"
       end
 
