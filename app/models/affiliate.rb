@@ -511,7 +511,7 @@ class Affiliate < ActiveRecord::Base
       icon_url = nil
       @home_page_doc.xpath("//link[@rel='icon']").each do |link_element|
         icon_url = link_element.attribute("href").value
-        icon_url = icon_url.start_with?("http://") ? icon_url : "http://#{home_page_url}icon_url"
+        icon_url = icon_url.start_with?('http://') ? icon_url : "#{home_page_url}#{icon_url}"
         break
       end
       unless icon_url

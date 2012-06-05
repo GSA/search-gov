@@ -2070,9 +2070,7 @@ describe Affiliate do
     end
 
     context "when something goes horribly wrong" do
-      before do
-        Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
-      end
+      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
 
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering rss feeds for #{@affiliate.name}: Some Exception")
@@ -2088,10 +2086,10 @@ describe Affiliate do
       @affiliate.update_attributes(:favicon_url => nil)
     end
 
-    context "when a favicon is listed as a link with rel='icon'" do
+    context "when the favicon link is an absolute path" do
       before do
-        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_icon_link.html"))
-        Nokogiri::HTML::Document.stub!(:parse).and_return doc
+        page_with_favicon = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_icon_link.html')
+        @affiliate.should_receive(:open).and_return(page_with_favicon)
       end
 
       it "should update the affiliate's favicon_url attribute with the value" do
@@ -2106,18 +2104,18 @@ describe Affiliate do
         @affiliate.should_not_receive(:open)
         @affiliate.autodiscover_favicon_url
       end
+    end
 
-      context "when the favicon link is relative" do
-        before do
-          doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_relative_icon_link.html"))
-          Nokogiri::HTML::Document.stub!(:parse).and_return doc
-        end
+    context "when the favicon link is a relative path" do
+      before do
+        page_with_favicon = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_relative_icon_link.html')
+        @affiliate.should_receive(:open).and_return(page_with_favicon)
+      end
 
-        it "should store a full url as the favicon link" do
-          @affiliate.autodiscover_favicon_url
-          @affiliate.favicon_url.should_not be_nil
-          @affiliate.favicon_url.should == "http://usa.gov/resources/images/usa_favicon.gif"
-        end
+      it "should store a full url as the favicon link" do
+        @affiliate.autodiscover_favicon_url
+        @affiliate.favicon_url.should_not be_nil
+        @affiliate.favicon_url.should == "http://nps.gov/resources/images/usa_favicon.gif"
       end
     end
 
@@ -2144,9 +2142,7 @@ describe Affiliate do
     end
 
     context "when something goes horribly wrong" do
-      before do
-        Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
-      end
+      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
 
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering favicon for #{@affiliate.name}: Some Exception")
@@ -2163,8 +2159,8 @@ describe Affiliate do
 
     context "when the page has social media links" do
       before do
-        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_social_media_urls.html"))
-        Nokogiri::HTML::Document.stub!(:parse).and_return doc
+        page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
+        @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
         @affiliate.autodiscover_social_media
       end
 
@@ -2198,8 +2194,8 @@ describe Affiliate do
 
     context "when the page has no valid social media links" do
       before do
-        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/home_page_with_bad_social_media_urls.html"))
-        Nokogiri::HTML::Document.stub!(:parse).and_return doc
+        page_with_bad_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_bad_social_media_urls.html')
+        @affiliate.should_receive(:open).and_return(page_with_bad_social_media_urls)
         @affiliate.autodiscover_social_media
       end
 
@@ -2221,9 +2217,7 @@ describe Affiliate do
     end
 
     context "when something goes horribly wrong" do
-      before do
-        Nokogiri::HTML::Document.stub!(:parse).and_raise "Some Exception"
-      end
+      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
 
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Error when autodiscovering social media for #{@affiliate.name}: Some Exception")
