@@ -18,7 +18,8 @@ class WebSearch < Search
               :indexed_documents,
               :indexed_results,
               :matching_site_limits,
-              :tweets
+              :tweets,
+              :photos
 
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
@@ -237,6 +238,7 @@ class WebSearch < Search
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
+      @photos = FlickrPhoto.search_for(query, affiliate) #if affiliate.is_photo_govbox_enabled?
     end
   end
 
@@ -250,6 +252,7 @@ class WebSearch < Search
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
     modules << "TWEET" unless self.tweets.nil? or self.tweets.total.zero?
+    modules << "PHOTO" unless self.photos.nil? or self.photos.total.zero?
     vertical =
       case self.class.to_s
         when "ImageSearch"

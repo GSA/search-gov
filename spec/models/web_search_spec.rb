@@ -1043,7 +1043,7 @@ describe WebSearch do
         search.tweets.should be_nil
       end
 
-      it "should not find any tweets if the affiliate has not Twitter Profiles" do
+      it "should not find any tweets if the affiliate has no Twitter Profiles" do
         @affiliate.twitter_profiles.delete_all
         Tweet.should_not_receive(:search_for)
         search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
@@ -1064,7 +1064,28 @@ describe WebSearch do
         end
       end
     end
-
+    
+    context "photos" do
+      before do
+        FlickrPhoto.destroy_all
+        @photo = FlickrPhoto.create(:flickr_id => 1, :affiliate => @affiliate, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
+        FlickrPhoto.reindex
+      end
+      
+      it "should find relevant photos" do
+        search = WebSearch.new(:query => "obama", :affiliate => @affiliate)
+        search.run
+        search.photos.should_not be_nil
+        search.photos.results.first.should == @photo
+      end
+      
+      it "should not find any photos if it's not on the first page" do
+        search = WebSearch.new(:query => "obama", :affiliate => @affiliate, :page => 3)
+        search.run
+        search.photos.should be_nil
+      end
+    end
+      
     context "on normal search runs" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => 'logme', :affiliate => @affiliate))

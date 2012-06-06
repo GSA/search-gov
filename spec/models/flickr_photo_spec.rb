@@ -17,6 +17,48 @@ describe FlickrPhoto do
     should validate_uniqueness_of(:flickr_id).scoped_to(:affiliate_id)
   end
   
+  describe "#search_for" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      FlickrPhoto.destroy_all
+      FlickrPhoto.create(:flickr_id => 1, :affiliate => @affiliate, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
+      FlickrPhoto.create(:flickr_id => 2, :affiliate => @affiliate, :title => 'Barack Obama and Joe Biden in Air Force One', :description => 'President Barack Obama and Vice President Joe Biden boarding Air Force One for a quick trip somewhere.', :tags => "joe biden vice president barack obama", :date_taken => Time.now - 2.days)
+      FlickrPhoto.create(:flickr_id => 3, :affiliate => @affiliate, :title => 'Barack and Michelle Obama', :description => 'President Barack Obama and First Lady Michelle Obama attend a state dinner at the White House', :tags => "barack obama michelle whitehouse", :date_taken => Time.now - 4.days)
+      FlickrPhoto.create(:flickr_id => 4, :affiliate => @affiliate, :title => 'Barack Obama Throws First Pitch', :description => 'President Barack Obama throws out the first pitch at a Washington Nationals baseball game.', :date_taken => Time.now - 5.days)
+      FlickrPhoto.create(:flickr_id => 5, :affiliate => @affiliate, :title => "President Obama walks his daughters to school", :description => '', :tags => 'barack obama sasha malia')
+      FlickrPhoto.create(:flickr_id => 6, :affiliate => @affiliate, :title => 'POTUS gets in car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car batman", :date_taken => Time.now - 14.days)
+      FlickrPhoto.reindex
+    end
+    
+    context "when searching with default page and per_page" do
+      before do
+        @search = FlickrPhoto.search_for("obama", @affiliate)
+      end
+      
+      it "should default to the first page" do
+        @search.results.first_page?.should be_true
+      end
+      
+      it "should return five results" do
+        @search.results.size.should == 5
+      end
+    end
+    
+    context "when searching with page and per_page parameters" do
+      before do
+        @search = FlickrPhoto.search_for("obama", @affiliate, 2, 2)
+      end
+      
+      it "should return the proper page" do
+        @search.results.first_page?.should be_false
+      end
+      
+      it "should page the results accordingly" do
+        @search.results.size.should == 2
+      end
+    end
+  end
+  
   describe "#import_photos" do
     before do
       @affiliate = affiliates(:basic_affiliate)

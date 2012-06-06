@@ -4,7 +4,30 @@ class FlickrPhoto < ActiveRecord::Base
   validates_uniqueness_of :flickr_id, :scope => :affiliate_id
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
   
+  searchable do
+    text :title, :stored => true
+    text :description, :stored => true
+    text :tag, :stored => true do |flickr_photo|
+      flickr_photo.tags.split(" ") unless flickr_photo.tags.blank?
+    end
+    integer :affiliate_id
+  end
+  
+  def flickr_url
+    "http://www.flickr.com/photos/#{self.owner}/#{self.flickr_id}/"
+  end
+  
   class << self
+    
+    def search_for(query, affiliate, page = 1, per_page = 5)
+      search do
+        fulltext query do
+          highlight :title, :description, :frag_list_builder => 'single'
+        end
+        with(:affiliate_id, affiliate.id)
+        paginate :page => page, :per_page => per_page
+      end
+    end
     
     def import_photos(affiliate)
       unless affiliate.flickr_url.blank?

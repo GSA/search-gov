@@ -123,3 +123,10 @@ Given /^the following Tweets exist:$/ do |table|
   end
   Tweet.reindex
 end
+
+Given /^the following FlickrPhotos exist:$/ do |table|
+  table.hashes.each do |hash|
+    affiliate = Affiliate.find_by_name(hash[:affiliate_name])
+    FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_t => hash[:url_t], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :affiliate => affiliate)
+  end
+end

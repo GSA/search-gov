@@ -558,4 +558,14 @@ module SearchHelper
       content_tag left_nav_tag, feed_name
    end
   end
+  
+  def display_flickr_photo_thumbnail(flickr_photo, search, affiliate)
+    html = ""
+    thumbnail = image_tag(flickr_photo.instance.url_t)
+    html << tracked_click_link(flickr_photo.instance.flickr_url, thumbnail, search, affiliate, 0, "PHOTO")
+    html << "<br/>"
+    html << highlight_hit(flickr_photo, :title).html_safe
+    raw html
+  end
+
 end

@@ -1,0 +1,10 @@
+#photo-govbox
+  .govbox-wrapper-top
+  .govbox-wrapper-middle
+    %h3.alt
+      Photos from Flickr
+    %div{:style => 'margin-left: 15px; margin-bottom: 15px;'}
+      - search.photos.hits.each do |photo|
+        %div{:style => 'float: left; margin-right: 5px; width: 100px; min-height: 100px; text-align: center;'}
+          = display_flickr_photo_thumbnail(photo, search, affiliate)
+  .govbox-wrapper-bottom

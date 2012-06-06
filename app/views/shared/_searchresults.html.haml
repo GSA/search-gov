@@ -6,6 +6,8 @@
     - first = false
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
+  - elsif search.photos.present? and search.photos.results.any?
+    = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
   - elsif search.med_topic.present?
     - first = false
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
