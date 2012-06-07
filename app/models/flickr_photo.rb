@@ -5,9 +5,9 @@ class FlickrPhoto < ActiveRecord::Base
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
   
   searchable do
-    text :title, :stored => true
-    text :description, :stored => true
-    text :tag, :stored => true do |flickr_photo|
+    text :title
+    text :description
+    text :tag do |flickr_photo|
       flickr_photo.tags.split(" ") unless flickr_photo.tags.blank?
     end
     integer :affiliate_id
@@ -18,12 +18,13 @@ class FlickrPhoto < ActiveRecord::Base
   end
   
   class << self
+    include QueryPreprocessor
     
     def search_for(query, affiliate, page = 1, per_page = 5)
+      sanitized_query = preprocess(query)
+      return nil if sanitized_query.blank?
       search do
-        fulltext query do
-          highlight :title, :description, :frag_list_builder => 'single'
-        end
+        fulltext sanitized_query
         with(:affiliate_id, affiliate.id)
         paginate :page => page, :per_page => per_page
       end

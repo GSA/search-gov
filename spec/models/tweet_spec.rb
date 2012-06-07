@@ -58,6 +58,16 @@ describe Tweet do
         search.results.first.twitter_profile_id.should == 12345
       end
     end
+    
+    context "when a blank search is entered" do
+      before do
+        @search = FlickrPhoto.search_for("", @affiliate)
+      end
+      
+      it "should return nil" do
+        @search.should be_nil
+      end
+    end
   end
   
   describe "#link_to_tweet" do

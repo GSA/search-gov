@@ -57,6 +57,16 @@ describe FlickrPhoto do
         @search.results.size.should == 2
       end
     end
+    
+    context "when a blank search is entered" do
+      before do
+        @search = FlickrPhoto.search_for("", @affiliate)
+      end
+      
+      it "should return nil" do
+        @search.should be_nil
+      end
+    end
   end
   
   describe "#import_photos" do

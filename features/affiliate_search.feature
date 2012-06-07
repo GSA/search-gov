@@ -650,16 +650,14 @@ Feature: Affiliate Search
       | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
     And the following FlickrPhotos exist:
-      | title     | description             | url_t                         | owner | flickr_id | affiliate_name  |
+      | title     | description             | url_sq                         | owner | flickr_id | affiliate_name  |
       | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
-    Then I should see "Photos from Flickr"
-    And I should see "AMERICA"
-    And I should see "AMERICA" in bold font
+    Then I should see "Photos of 'america' by bar site"
     
     When I fill in "query" with "obama"
     And I press "Search"
-    Then I should not see "Photos from Flickr"
+    Then I should not see "Photos of 'america' by bar site"
   
