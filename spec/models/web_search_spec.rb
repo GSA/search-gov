@@ -1072,17 +1072,36 @@ describe WebSearch do
         FlickrPhoto.reindex
       end
       
-      it "should find relevant photos" do
-        search = WebSearch.new(:query => "obama", :affiliate => @affiliate)
-        search.run
-        search.photos.should_not be_nil
-        search.photos.results.first.should == @photo
+      context "when the affiliate has photo govbox enabled" do
+        before do
+          @affiliate.update_attributes(:is_photo_govbox_enabled => true)
+        end
+
+        it "should find relevant photos" do
+          search = WebSearch.new(:query => "obama", :affiliate => @affiliate)
+          search.run
+          search.photos.should_not be_nil
+          search.photos.results.first.should == @photo
+        end
+      
+        it "should not find any photos if it's not on the first page" do
+          search = WebSearch.new(:query => "obama", :affiliate => @affiliate, :page => 3)
+          search.run
+          search.photos.should be_nil
+        end
       end
       
-      it "should not find any photos if it's not on the first page" do
-        search = WebSearch.new(:query => "obama", :affiliate => @affiliate, :page => 3)
-        search.run
-        search.photos.should be_nil
+      context "when the affiliate does not have photo govbox enabled" do
+        before do
+          @affiliate.update_attributes(:is_photo_govbox_enabled => false)
+        end
+        
+        it "should not search for Flickr Photos" do
+          FlickrPhoto.should_not_receive(:search_for)
+          search = WebSearch.new(:query => "obama", :affiliate => @affiliate)
+          search.run
+          search.photos.should be_nil
+        end
       end
     end
       
