@@ -660,4 +660,31 @@ Feature: Affiliate Search
     When I fill in "query" with "obama"
     And I press "Search"
     Then I should not see "Photos of 'america' by bar site"
-  
+    
+  Scenario: Enabling and disabling Flickr photos
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | false                     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "bar.gov" selected
+    And I follow "Results modules"
+    Then I should not see "Photos"
+
+    Given the following FlickrPhotos exist:
+      | title     | description             | url_sq                         | owner | flickr_id | affiliate_name  |
+      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov          |
+    When I am on bar.gov's search page
+    And I fill in "query" with "america"
+    And I press "Search"
+    Then I should not see "Photos of 'america' by bar site"
+
+    When I go to the affiliate admin page with "bar.gov" selected
+    And I follow "Results module"
+    Then I should see "Photos"
+    
+    When I check "Is photo govbox enabled"
+    And I press "Save"
+    When I go to bar.gov's search page
+    And I fill in "query" with "america"
+    And I press "Search"
+    Then I should see "Photos of 'america' by bar site"

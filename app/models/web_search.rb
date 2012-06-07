@@ -238,7 +238,7 @@ class WebSearch < Search
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
-      @photos = FlickrPhoto.search_for(query, affiliate) #if affiliate.is_photo_govbox_enabled?
+      @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
     end
   end
 

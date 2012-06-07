@@ -129,4 +129,5 @@ Given /^the following FlickrPhotos exist:$/ do |table|
     affiliate = Affiliate.find_by_name(hash[:affiliate_name])
     FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :affiliate => affiliate)
   end
+  FlickrPhoto.reindex
 end

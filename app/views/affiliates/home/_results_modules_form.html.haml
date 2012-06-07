@@ -19,6 +19,13 @@
             %th Name
             %th Source
             %th Show as GovBox
+          - if @affiliate.flickr_photos.any?
+            %tr.row-item
+              %td.name Photos
+              %td.source Flickr
+              %td.actions
+                = results_modules_form.check_box :is_photo_govbox_enabled
+                = results_modules_form.label :is_photo_govbox_enabled, nil, :class => 'hide'
           %tr.row-item
             %td.name Agency
             %td.source USASearch
