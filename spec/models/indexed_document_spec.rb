@@ -882,7 +882,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when a file is passed in with 100 or fewer URLs" do
+    context "when a file is passed in with fewer than the maximum number of allowable URLs" do
       before do
         @urls = %w(http://search.usa.gov/ http://usa.gov/ http://data.gov/)
         tempfile = Tempfile.new('urls.txt')
@@ -905,31 +905,32 @@ describe IndexedDocument do
       end
     end
 
-    context "when a file is passed in with more than 100 URLs" do
+    context "when a file is passed in with more than the limit of URLs" do
       before do
         tempfile = Tempfile.new('too_many_urls.txt')
-        101.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
+        10001.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
         tempfile.close
         tempfile.open
         @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
+        IndexedDocument.stub!(:create).and_return mock("idoc", :errors => [])
       end
 
-      it "should return with success == false and error message if max URLs is set below the number of URLs in the file" do
+      it "should return with success == false and error message if the number of URLs in the file exceeds MAX_URLS_PER_FILE_UPLOAD" do
         result = IndexedDocument.process_file(@file, @affiliate)
         result[:success].should be_false
-        result[:error_message].should == 'Too many URLs in your file.  Please limit your file to 100 URLs.'
+        result[:error_message].should == 'Too many URLs in your file.  Please limit your file to 10000 URLs.'
       end
 
-      it "should return with success == true if max URLs is set above the number of URLs in the file" do
-        result = IndexedDocument.process_file(@file, @affiliate, 1000)
+      it "should return with success == true if max_urls param is set above the number of URLs in the file" do
+        result = IndexedDocument.process_file(@file, @affiliate, 100000)
         result[:success].should be_true
-        result[:count].should == 101
+        result[:count].should == 10001
       end
 
       it "should return with success == true if '0' is passed as the number of maximum urls" do
         result = IndexedDocument.process_file(@file, @affiliate, 0)
         result[:success].should be_true
-        result[:count].should == 101
+        result[:count].should == 10001
       end
     end
 
