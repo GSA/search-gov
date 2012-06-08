@@ -16,7 +16,7 @@ Feature: Admin Superfresh Interface
     When I attach the file "features/support/too_many_superfresh_urls.txt" to "superfresh_urls"
     And I press "Upload"
     Then I should be on the superfresh bulk upload admin page
-    And I should see "Successfully uploaded 101 urls."
+    And I should see "Successfully uploaded 10001 urls."
 
     When I attach the file "features/support/no_superfresh_urls.txt" to "superfresh_urls"
     And I press "Upload"
