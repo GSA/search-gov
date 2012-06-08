@@ -228,10 +228,10 @@ describe Affiliates::OnDemandUrlsController do
       before do
         UserSession.create(users(:affiliate_manager))
       end
-      
+
       context "when the affiliate owns the affiliate and successfully bulk upload URLs" do
         before do
-          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 100).and_return({:success => true, :count => 5})
+          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => true, :count => 5})
           post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
         end
 
@@ -241,7 +241,7 @@ describe Affiliates::OnDemandUrlsController do
 
       context "when the affiliate owns the affiliate and failed to bulk upload boosted contents" do
         before do
-          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 100).and_return({:success => false, :error_message => 'error'})
+          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => false, :error_message => 'error'})
           post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
         end
 
@@ -250,12 +250,12 @@ describe Affiliates::OnDemandUrlsController do
         it { should render_template(:bulk_new) }
       end
     end
-    
+
     context "when logged in as an admin" do
       before do
         UserSession.create(users(:affiliate_admin))
       end
-      
+
       it "should not limit the number of urls" do
         IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 0).and_return({:success => true, :count => 5})
         post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
