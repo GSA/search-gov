@@ -5,6 +5,7 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
   before do
     IndexedDocument.destroy_all
     @affiliate = affiliates(:basic_affiliate)
+    @unfetched = @affiliate.indexed_documents.build(:url => 'http://some.mil/foo')
     @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
                                              :description => 'This is a PDF document.',
                                              :url => 'http://something.gov/pdf.pdf',
@@ -17,36 +18,36 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
                                                  :last_crawl_status => 'duplicate',
                                                  :body => "this is the doc body",
                                                  :content_hash => nil)
-    @unfetched = @affiliate.indexed_documents.build(:url => 'http://some.mil/foo')
     @affiliate.save!
-    Affiliate.should_receive(:find).with(@affiliate.id).and_return @affiliate
-    @idocs = @affiliate.indexed_documents
-    @affiliate.should_receive(:indexed_documents).and_return @idocs
   end
 
   it "should handle extent 'ok'" do
-    @idocs.should_receive(:find_each).with(:batch_size => 100, :conditions => ["last_crawl_status = 'OK' and id between ? and ?", an_instance_of(Fixnum), an_instance_of(Fixnum)]).and_yield(@ok)
+    IndexedDocument.should_receive(:find).once.with(@ok.id).and_return @ok
     @ok.should_receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2, 'ok')
+    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'ok')
   end
 
   it "should handle extent 'not_ok'" do
-    @idocs.should_receive(:find_each).with(:batch_size => 100, :conditions => ["last_crawl_status <> 'OK' or isnull(last_crawl_status) and id between ? and ?", an_instance_of(Fixnum), an_instance_of(Fixnum)]).and_yield(@not_ok)
+    IndexedDocument.should_receive(:find).with(@not_ok.id).and_return @not_ok
+    IndexedDocument.should_receive(:find).with(@unfetched.id).and_return @unfetched
+    @unfetched.should_receive(:fetch)
     @not_ok.should_receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2, 'not_ok')
+    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'not_ok')
   end
 
   it "should handle extent 'unfetched'" do
-    @idocs.should_receive(:find_each).with(:batch_size => 100, :conditions => ["isnull(last_crawl_status) and id between ? and ?", an_instance_of(Fixnum), an_instance_of(Fixnum)]).and_yield(@unfetched)
+    IndexedDocument.should_receive(:find).once.with(@unfetched.id).and_return @unfetched
     @unfetched.should_receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2, 'unfetched')
+    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'unfetched')
   end
 
   it "should handle default extent 'all'" do
-    @idocs.should_receive(:find_each).with(:batch_size => 100, :conditions => ["1=1 and id between ? and ?", an_instance_of(Fixnum), an_instance_of(Fixnum)]).and_yield(@unfetched).and_yield(@not_ok).and_yield(@ok)
+    IndexedDocument.should_receive(:find).with(@unfetched.id).and_return @unfetched
+    IndexedDocument.should_receive(:find).with(@ok.id).and_return @ok
+    IndexedDocument.should_receive(:find).with(@not_ok.id).and_return @not_ok
     @not_ok.should_receive(:fetch)
     @ok.should_receive(:fetch)
     @unfetched.should_receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2, nil)
+    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, nil)
   end
 end
