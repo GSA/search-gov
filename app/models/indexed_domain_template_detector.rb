@@ -56,7 +56,7 @@ class IndexedDomainTemplateDetector
   def get_candidate_substring_between_random_document_pair(good_html_idocs_ids)
     idx = rand(good_html_idocs_ids.size-1)
     doc1, doc2 = IndexedDocument.find([good_html_idocs_ids[idx], good_html_idocs_ids[idx+1]])
-    doc1.body_for_substring_detection.longest_common_substring(doc2.body_for_substring_detection)
+    doc1.body_for_substring_detection.longest_common_substring(doc2.body_for_substring_detection).squish
   end
 
   def compute_saturation(lcs)

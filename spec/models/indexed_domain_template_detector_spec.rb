@@ -137,8 +137,8 @@ describe IndexedDomainTemplateDetector do
       IndexedDocument.should_receive(:find).with([43, 44]).and_return [doc1, doc2]
     end
 
-    it "should get a sample LCS from a random pair of documents" do
-      idtd.get_candidate_substring_between_random_document_pair(1.upto(100).to_a).should == " body is pretty large"
+    it "should get a whitespace-stripped sample LCS from a random pair of documents" do
+      idtd.get_candidate_substring_between_random_document_pair(1.upto(100).to_a).should == "body is pretty large"
     end
   end
 
