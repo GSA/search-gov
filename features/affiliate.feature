@@ -2661,7 +2661,7 @@ Feature: Affiliate clients
     And I press "Save"
     Then I should see "Related site handle <b>someinvalidname</b> is invalid"
 
-  Scenario: Editing 3rd Party Tracking
+  Scenario: Visiting 3rd Party Tracking
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
@@ -2671,18 +2671,23 @@ Feature: Affiliate clients
     Then I should see the browser page titled "3rd Party Tracking"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > 3rd Party Tracking
     And I should see "3rd Party Tracking" in the page header
+    When I follow "Cancel"
+    Then I should see the browser page titled "Site: aff site"
 
-    When I fill in the following:
-      | Web Property ID | UA-XXXXX-XX                                     |
-    And I press "Save"
-    Then I should see "Site was successfully updated."
-
-    When I go to aff.gov's search page
-    Then the page body should contain "UA-XXXXX-XX"
-
+  Scenario: Editing 3rd Party Tracking
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
     When I go to the "aff site" affiliate page
     And I follow "3rd Party Tracking"
-    Then the "Web Property ID" field should contain "UA-XXXXX-X"
-
-    When I go to aff.gov's search page
-    Then the page body should contain "_gaq.push(['_setAccount', 'UA-XXXXX-XX']);"
+    And I fill in "Please insert your web analytics JavaScript code below" with "<script>var analytics;</script>"
+    And I press "Submit"
+    Then I should see "Your request to update your web analytics code has been submitted."
+    And "***REMOVED***" should receive an email
+    When I open the email
+    Then I should see "3rd Party Tracking" in the email subject
+    And I should see "Site: aff site" in the email body
+    And I should see "Requested by: John Bar <aff@bar.gov>" in the email body
+    And I should see "<script>var analytics;</script>" in the email body

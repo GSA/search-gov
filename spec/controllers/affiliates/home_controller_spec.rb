@@ -1504,27 +1504,28 @@ describe Affiliates::HomeController do
       it { should redirect_to home_page_path }
     end
 
-    context "when logged in as the affiliate manager and successfully updated the site" do
+    context "when logged in as the affiliate manager and successfully submit the request" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
+      let(:emailer) { mock(Emailer) }
 
       before do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_not_receive(:update_attributes_for_live)
-        affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:ga_web_property_id => 'WEB_PROPERTY_ID')).and_return(true)
+        external_tracking_code = '<script>var analytics;</script>'
+        Emailer.should_receive(:update_external_tracking_code).with(affiliate, current_user, external_tracking_code).and_return(emailer)
+        emailer.should_receive(:deliver)
 
-        put :update_external_tracking, :id => affiliate.id, :affiliate => { :ga_web_property_id => 'WEB_PROPERTY_ID' }, :commit => 'Save'
+        put :update_external_tracking, :id => affiliate.id, :external_tracking_code => external_tracking_code, :commit => 'Submit'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should set_the_flash.to(/Site was successfully updated/) }
+      it { should set_the_flash.to(/Your request to update your web analytics code has been submitted/) }
       it { should redirect_to(affiliate_path(affiliate)) }
     end
 
-    context "when logged in as the affiliate manager and failed to update the site" do
+    context "when logged in as the affiliate manager and the external_tracking_code is blank" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
 
@@ -1532,14 +1533,13 @@ describe Affiliates::HomeController do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_not_receive(:update_attributes_for_live)
-        affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:ga_web_property_id => 'WEB_PROPERTY_ID')).and_return(false)
+        Emailer.should_not_receive(:update_external_tracking_code)
 
-        put :update_external_tracking, :id => affiliate.id, :affiliate => { :ga_web_property_id => 'WEB_PROPERTY_ID' }, :commit => 'Save'
+        put :update_external_tracking, :id => affiliate.id, :external_tracking_code => '', :commit => 'Submit'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash.to(/Web analytics JavaScript code can't be blank/) }
       it { should render_template("affiliates/home/edit_external_tracking") }
     end
   end

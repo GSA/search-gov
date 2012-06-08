@@ -22,7 +22,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :managed_header_text, :staged_managed_header_text,
                              :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
-                             :external_tracking_code,
+                             :ga_web_property_id, :external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
                              :has_staged_content, :exclude_webtrends, :locale, :results_source,

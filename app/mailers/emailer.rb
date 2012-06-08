@@ -175,6 +175,17 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def update_external_tracking_code(affiliate, current_user, external_tracking_code)
+    setup_email('***REMOVED***', __method__)
+    @affiliate = affiliate
+    @current_user = current_user
+    @external_tracking_code = external_tracking_code
+    @subject = ERB.new(@email_template_subject).result(binding)
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   private
 
   def setup_email(recipients, method_name)

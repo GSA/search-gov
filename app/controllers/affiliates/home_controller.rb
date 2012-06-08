@@ -249,7 +249,13 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_external_tracking
-    update
+    if params[:external_tracking_code].present?
+      Emailer.update_external_tracking_code(@affiliate, current_user, params[:external_tracking_code]).deliver
+      redirect_to @affiliate, :flash => { :success => 'Your request to update your web analytics code has been submitted.' }
+    else
+      flash.now[:error] = "Web analytics JavaScript code can't be blank"
+      render :action => :edit_external_tracking
+    end
   end
 
   def new_connection_fields

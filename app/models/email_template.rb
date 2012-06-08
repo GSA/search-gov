@@ -17,7 +17,8 @@ class EmailTemplate < ActiveRecord::Base
       :saucelabs_report => '[USASearch] Sauce Labs Report',
       :objectionable_content_alert => '[USASearch] Objectionable Content Alert',
       :affiliate_header_footer_change => '[USASearch] The header and footer for <%= @affiliate.display_name %> have been changed',
-      :affiliate_monthly_report => '[USASearch] Monthly Search Analytics Report for <%= Date::MONTHNAMES[@report_date.month.to_i] %> <%= @report_date.year %>'
+      :affiliate_monthly_report => '[USASearch] Monthly Search Analytics Report for <%= Date::MONTHNAMES[@report_date.month.to_i] %> <%= @report_date.year %>',
+      :update_external_tracking_code => '[USASearch] 3rd Party Tracking'
   }
 
   class << self
