@@ -45,7 +45,6 @@ gem 'SystemTimer'
 gem 'high_voltage'
 gem 'backports'
 gem 'mechanize'
-gem 'pdf-toolkit', "~> 0.5.0"
 gem 'googlecharts'
 gem 'sanitize'
 gem 'tweetstream'

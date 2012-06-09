@@ -765,7 +765,7 @@ describe IndexedDocument do
 
     context "when the page content is empty" do
       before do
-        PDF::Toolkit.stub!(:pdftotext).and_return ""
+        indexed_document.stub!(:parse_pdf_file).and_return ""
       end
 
       it "should raise an IndexedDocumentError" do
@@ -774,24 +774,28 @@ describe IndexedDocument do
     end
   end
 
-  describe "#generate_pdf_title(pdf_file_path, body)" do
+  describe "#generate_pdf_title(pdf_file_path, pdf_text)" do
+    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+
     context "when title is an integer" do
       before do
-        pdf = mock("pdf")
-        PDF::Toolkit.stub!(:open).and_return pdf
-        pdf.stub!(:title).and_return 1578
+        indexed_document.stub!(:parse_pdf_file).and_return "title: 1578"
       end
 
       it "should coerce the title into a string" do
-        title = IndexedDocument.new.send(:generate_pdf_title, nil, "whatever")
+        title = indexed_document.send(:generate_pdf_title, nil, "whatever")
         title.should == "1578"
       end
     end
 
     context "when PDF document has no title" do
+      before do
+        indexed_document.stub!(:parse_pdf_file).and_return "Author: me\nDate: recently\n"
+      end
+
       context "when body text contains no periods or newlines" do
         it "should return the cleaned body text" do
-          title = IndexedDocument.new.send(:generate_pdf_title, nil, "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface")
+          title = indexed_document.send(:generate_pdf_title, nil, "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface")
           title.should == "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface"
         end
       end

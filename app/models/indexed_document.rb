@@ -1,5 +1,3 @@
-require 'pdf/toolkit'
-
 class IndexedDocument < ActiveRecord::Base
   class IndexedDocumentError < RuntimeError;
   end
@@ -183,7 +181,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def index_pdf(pdf_file_path)
-    pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) { |io| io.read }
+    pdf_text = parse_pdf_file(pdf_file_path,'t').strip
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
     update_attributes!(:title => generate_pdf_title(pdf_file_path, pdf_text), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
@@ -275,9 +273,13 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def generate_pdf_title(pdf_file_path, pdf_text)
-    pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
-    return pdf.title.to_s unless pdf.nil? or pdf.title.blank?
+    parse_pdf_file(pdf_file_path,'m').scan(/title: (.*)/i)[0][0]
+  rescue
     pdf_text.split(/[\n.]/).first
+  end
+
+  def parse_pdf_file(pdf_file_path, option)
+    %x[cat #{pdf_file_path} | java -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
   end
 
   def generate_pdf_description(pdf_text)
