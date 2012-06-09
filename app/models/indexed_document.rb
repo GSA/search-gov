@@ -30,7 +30,7 @@ class IndexedDocument < ActiveRecord::Base
   LARGE_DOCUMENT_THRESHOLD = 3 * LARGE_DOCUMENT_SAMPLE_SIZE
   MAX_URLS_PER_FILE_UPLOAD = 10000
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
-  DOWNLOAD_TIMEOUT_SECS = 60
+  DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
