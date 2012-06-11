@@ -8,7 +8,7 @@ class FlickrPhoto < ActiveRecord::Base
     text :title
     text :description
     text :tag do |flickr_photo|
-      flickr_photo.tags.split(" ") unless flickr_photo.tags.blank?
+      flickr_photo.tags.split(",") unless flickr_photo.tags.blank?
     end
     integer :affiliate_id
   end
@@ -105,6 +105,18 @@ class FlickrPhoto < ActiveRecord::Base
         else
           params[key] = value
         end
+      end
+      if params["tags"].blank?
+        params["tags"] = nil
+      else
+        params["tags"] = ""
+        photo_info = flickr.photos.getInfo(:photo_id => params["flickr_id"]) rescue nil
+        unless photo_info.nil? or photo_info.empty?
+          photo_info["tags"].each do |tag|
+            params["tags"] << "#{tag["raw"]},"
+          end
+        end
+        params["tags"].chop!
       end
       params.reject{|k,v| FlickrPhoto.column_names.include?(k) == false }
     end
