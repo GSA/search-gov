@@ -111,7 +111,7 @@ class FlickrPhoto < ActiveRecord::Base
       else
         params["tags"] = ""
         photo_info = flickr.photos.getInfo(:photo_id => params["flickr_id"]) rescue nil
-        unless photo_info.nil? or photo_info.empty?
+        unless photo_info.nil?
           photo_info["tags"].each do |tag|
             params["tags"] << "#{tag["raw"]},"
           end
