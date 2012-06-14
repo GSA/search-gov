@@ -3,6 +3,7 @@ class FlickrPhoto < ActiveRecord::Base
   validates_presence_of :flickr_id, :affiliate
   validates_uniqueness_of :flickr_id, :scope => :affiliate_id
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
+  after_create :update_with_raw_tags
   
   searchable do
     text :title
@@ -15,6 +16,11 @@ class FlickrPhoto < ActiveRecord::Base
   
   def flickr_url
     "http://www.flickr.com/photos/#{self.owner}/#{self.flickr_id}/"
+  end
+    
+  def update_with_raw_tags
+    tag_string = get_raw_tags.collect{|tag| tag["raw"]}.join(",")
+    update_attributes(:tags => tag_string.blank? ? nil : tag_string)
   end
   
   class << self
@@ -106,19 +112,16 @@ class FlickrPhoto < ActiveRecord::Base
           params[key] = value
         end
       end
-      if params["tags"].blank?
-        params["tags"] = nil
-      else
-        params["tags"] = ""
-        photo_info = flickr.photos.getInfo(:photo_id => params["flickr_id"]) rescue nil
-        unless photo_info.nil?
-          photo_info["tags"].each do |tag|
-            params["tags"] << "#{tag["raw"]},"
-          end
-        end
-        params["tags"].chop!
-      end
       params.reject{|k,v| FlickrPhoto.column_names.include?(k) == false }
     end
+  end
+    
+  def get_photo_info
+    flickr.photos.getInfo(:photo_id => self.flickr_id) rescue nil
+  end
+  
+  def get_raw_tags
+    photo_info = get_photo_info
+    photo_info.nil? ? [] : photo_info["tags"]
   end
 end

@@ -105,6 +105,8 @@ describe FlickrPhoto do
         @second_photos_response.stub!(:pages).and_return 2
         @second_photos_response.stub!(:page).and_return 2
         @photo_info = {"dateuploaded"=>"1233790899", "publiceditability"=>{"canaddmeta"=>0, "cancomment"=>1}, "usage"=>{"candownload"=>1, "canshare"=>1, "canblog"=>0, "canprint"=>0}, "farm"=>4, "title"=>"0203091648", "editability"=>{"canaddmeta"=>0, "cancomment"=>0}, "comments"=>"0", "urls"=>[{"type"=>"photopage", "_content"=>"http://www.flickr.com/photos/greggersh/3253668705/"}], "license"=>"1", "safety_level"=>"0", "notes"=>[], "id"=>"3253668705", "server"=>"3264", "views"=>"43", "tags"=>[{"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-54699", "_content"=>"hotandsoursoup", "raw"=>"hot and sour soup"}, {"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-1975", "_content"=>"soup", "raw"=>"soup"}, {"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-195793", "_content"=>"umami", "raw"=>"umami"}], "media"=>"photo", "dates"=>{"posted"=>"1233790899", "lastupdate"=>"1339165784", "takengranularity"=>"0", "taken"=>"2009-02-04 18:41:39"}, "isfavorite"=>0, "description"=>"", "people"=>{"haspeople"=>0}, "secret"=>"b452012751", "visibility"=>{"ispublic"=>1, "isfamily"=>0, "isfriend"=>0}, "rotation"=>0, "owner"=>{"nsid"=>"35034349064@N01", "realname"=>"Greg Gershman", "location"=>"", "username"=>"GregGersh", "iconfarm"=>1, "iconserver"=>"1"}}
+        @other_photo_info = {"tags"=>[] }
+
       end
       
       context "when the user name is valid, and the user has photos" do
@@ -113,7 +115,7 @@ describe FlickrPhoto do
           flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrPhoto::EXTRA_FIELDS).and_return @first_photos_response
           flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrPhoto::EXTRA_FIELDS, :page => 2).and_return @second_photos_response
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668705").once.and_return @photo_info
-          flickr.photos.should_not_receive(:getInfo).with(:photo_id => "3253668675")
+          flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668675").once.and_return @other_photo_info
         end
           
         it "should use the Flickr API to lookup the username and store their photos" do
@@ -129,7 +131,8 @@ describe FlickrPhoto do
           first_photo.icon_server.should == "1"
           first_photo.tags.should == "hot and sour soup,soup,umami"
           last_photo = FlickrPhoto.last
-          last_photo.tags.should be_nil
+          last_photo.flickr_id.should == "3253668675"
+          last_photo.tags.should be_blank
         end
       end
     
