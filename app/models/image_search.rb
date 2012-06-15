@@ -1,7 +1,5 @@
 class ImageSearch < WebSearch
   
-  attr_reader :flickr_results
-
   def initialize(options = {})
     super(options)
     @bing_search = BingImageSearch.new(USER_AGENT)
