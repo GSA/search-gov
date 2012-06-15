@@ -40,7 +40,7 @@ class Search
     options[:query]
   end
 
-  # This does your search.  It should
+  # This does your search.
   def run
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
     @error_message = (I18n.translate :empty_query) and return false unless @query.present? or allow_blank_query?

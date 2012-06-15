@@ -671,8 +671,8 @@ Feature: Affiliate Search
     Then I should not see "Photos"
 
     Given the following FlickrPhotos exist:
-      | title     | description             | url_sq                         | owner | flickr_id | affiliate_name  |
-      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov          |
+      | title     | description             | url_sq                        | owner | flickr_id | affiliate_name  |
+      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"

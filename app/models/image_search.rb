@@ -1,4 +1,6 @@
 class ImageSearch < WebSearch
+  
+  attr_reader :flickr_results
 
   def initialize(options = {})
     super(options)
@@ -10,15 +12,34 @@ class ImageSearch < WebSearch
 
   def search
     begin
-      parse_bing_response(perform_bing_search)
+      @affiliate.flickr_photos.any? ? perform_odie_image_search : parse_bing_response(perform_bing_search)
     rescue BingSearch::BingSearchError => error
       Rails.logger.warn "Error getting search results from Bing server: #{error}"
       false
     end
   end
+  
+  def perform_odie_image_search
+    odie_image_search = OdieImageSearch.new(@options)
+    odie_image_search.run
+    if odie_image_search.total == 0
+      parse_bing_response(perform_bing_search)
+    else
+      odie_image_search
+    end
+  end
 
   def handle_response(response)
-    handle_bing_response(response)
+    response.is_a?(OdieImageSearch) ? handle_odie_response(response) : handle_bing_response(response)
+  end
+  
+  def handle_odie_response(response)
+    unless response.nil? and response.total > 0
+      @total = response.total
+      @results = response.results
+      @startrecord = response.startrecord
+      @endrecord = response.endrecord
+    end
   end
 
   def hits(response)
