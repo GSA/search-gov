@@ -272,9 +272,9 @@ module ApplicationHelper
 
   def attribution
     txt = []
-    txt << "<!-- ----------------------------------------------------------------------------------- -->"
-    txt << "<!--                                  Powered by USASearch.                              -->"
-    txt << "<!-- Register for the USASearch Affiliate Program at http://search.usa.gov/affiliates/   -->"
+    txt << "<!-- ----------------------------------------------------------------------------------------------- -->"
+    txt << "<!--                                  Results by USASearch.                                          -->"
+    txt << "<!-- helping government create a great search experience. Learn more at http://usasearch.howto.gov   -->"
     txt << txt.first
     txt.join("\n").html_safe
   end
