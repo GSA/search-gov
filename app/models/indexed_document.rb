@@ -29,6 +29,7 @@ class IndexedDocument < ActiveRecord::Base
   LARGE_DOCUMENT_SAMPLE_SIZE = 7500
   LARGE_DOCUMENT_THRESHOLD = 3 * LARGE_DOCUMENT_SAMPLE_SIZE
   MAX_URLS_PER_FILE_UPLOAD = 10000
+  MAX_DOC_SIZE = 50.megabytes
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
@@ -69,7 +70,7 @@ class IndexedDocument < ActiveRecord::Base
     file = nil
     begin
       timeout(DOWNLOAD_TIMEOUT_SECS) do
-        file = open(url)
+        self.load_time = Benchmark.realtime { file = open(url) }
         content_type = file.content_type
         if file.is_a?(StringIO)
           tempfile = Tempfile.new(Time.now.to_i)
@@ -111,6 +112,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def index_document(file, content_type)
+    raise IndexedDocumentError.new "Document is over #{MAX_DOC_SIZE/1.megabyte}mb limit" if file.size > MAX_DOC_SIZE
     if content_type =~ /pdf/
       index_pdf(file.path)
     elsif content_type =~ /html/
@@ -142,7 +144,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def extract_body_from(nokogiri_doc)
-    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html)))
+    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html))) rescue ''
   end
 
   def scrub_inner_text(inner_text)
@@ -168,15 +170,13 @@ class IndexedDocument < ActiveRecord::Base
     body.size >= LARGE_DOCUMENT_THRESHOLD ? body.first(LARGE_DOCUMENT_SAMPLE_SIZE) + body.last(LARGE_DOCUMENT_SAMPLE_SIZE) : body
   end
 
-  def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)
+  def discover_nested_pdfs(doc)
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
       URI.parse(link_url).path.split('.').last.downcase == "pdf" rescue false
     end.map do |relative_pdf_url|
       URI.merge_unless_recursive(self_url, URI.parse(relative_pdf_url)).to_s rescue nil
-    end.uniq.compact.first(max_pdfs).each do |pdf_url|
-      if (idoc = IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf'))
-        idoc.fetch
-      end
+    end.uniq.compact.each do |pdf_url|
+      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
     end
   end
 
@@ -273,13 +273,13 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def generate_pdf_title(pdf_file_path, pdf_text)
-    parse_pdf_file(pdf_file_path,'m').scan(/title: (.*)/i)[0][0]
+    parse_pdf_file(pdf_file_path,'m').scan(/title: (\w.*)/i)[0][0].squish
   rescue
-    pdf_text.split(/[\n.]/).first
+    pdf_text.split(/[\n.]/).first.squish
   end
 
   def parse_pdf_file(pdf_file_path, option)
-    %x[cat #{pdf_file_path} | java -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
+    %x[cat #{pdf_file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
   end
 
   def generate_pdf_description(pdf_text)

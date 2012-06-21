@@ -572,6 +572,16 @@ describe IndexedDocument do
         lambda { @indexed_document.index_document(@file, @file.content_type) }.should raise_error(IndexedDocument::IndexedDocumentError, "Unsupported document type: application/msword")
       end
     end
+
+    context "when the document is too big" do
+      before do
+        @file.stub!(:size).and_return IndexedDocument::MAX_DOC_SIZE+1
+      end
+
+      it "should raise an IndexedDocumentError error indicating that the document is too big" do
+        lambda { @indexed_document.index_document(@file, @file.content_type) }.should raise_error(IndexedDocument::IndexedDocumentError, "Document is over 50mb limit")
+      end
+    end
   end
 
   describe "#index_html(file)" do
@@ -702,19 +712,6 @@ describe IndexedDocument do
         @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").doctype.should == 'pdf'
       end
 
-      it "should fetch and index the PDF content for those URLs" do
-        idoc = mock("IndexedDocument")
-        IndexedDocument.stub!(:create).and_return(idoc, nil)
-        idoc.should_receive(:fetch)
-        @indexed_document.discover_nested_pdfs(@doc)
-      end
-
-      context "when the HTML document contains more than the threshold number of PDFs" do
-        it "should only discover up to the specified maximum number of them" do
-          @indexed_document.discover_nested_pdfs(@doc, 1)
-          @aff.indexed_documents.count.should == 1
-        end
-      end
     end
 
     context "when the HTML document contains no PDF links" do
@@ -777,6 +774,17 @@ describe IndexedDocument do
   describe "#generate_pdf_title(pdf_file_path, pdf_text)" do
     let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
 
+    context "when title is defined" do
+      before do
+        indexed_document.stub!(:parse_pdf_file).and_return "title: some gov  document "
+      end
+
+      it "should return the title" do
+        title = indexed_document.send(:generate_pdf_title, nil, "whatever")
+        title.should == "some gov document"
+      end
+    end
+
     context "when title is an integer" do
       before do
         indexed_document.stub!(:parse_pdf_file).and_return "title: 1578"
@@ -785,6 +793,17 @@ describe IndexedDocument do
       it "should coerce the title into a string" do
         title = indexed_document.send(:generate_pdf_title, nil, "whatever")
         title.should == "1578"
+      end
+    end
+
+    context "when title is a blank" do
+      before do
+        indexed_document.stub!(:parse_pdf_file).and_return "title:  "
+      end
+
+      it "should attempt to return the body text" do
+        title = indexed_document.send(:generate_pdf_title, nil, "whatever")
+        title.should == "whatever"
       end
     end
 

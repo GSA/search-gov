@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608183158) do
+ActiveRecord::Schema.define(:version => 20120620204107) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120608183158) do
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
     t.string   "ga_web_property_id",                        :limit => 20
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -88,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20120608183158) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "youtube_handles"
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
@@ -464,6 +464,7 @@ ActiveRecord::Schema.define(:version => 20120608183158) do
     t.string   "last_crawl_status"
     t.string   "content_hash",      :limit => 32
     t.integer  "indexed_domain_id"
+    t.integer  "load_time"
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
