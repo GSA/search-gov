@@ -4,8 +4,13 @@ class ImageSearch < WebSearch
     super(options)
     @bing_search = BingImageSearch.new(USER_AGENT)
     @sources = "Spell+Image"
+    @results_by_bing = true
   end
 
+  def are_results_by_bing?
+    @results_by_bing
+  end
+  
   protected
 
   def search
@@ -23,6 +28,7 @@ class ImageSearch < WebSearch
     if odie_image_search.total == 0
       parse_bing_response(perform_bing_search)
     else
+      @results_by_bing = false
       odie_image_search
     end
   end

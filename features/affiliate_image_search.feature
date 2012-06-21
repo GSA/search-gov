@@ -54,9 +54,12 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "usa.gov"
     And I should not see "flickr.com"
+    And I should see the Results by Bing logo
     
     When I am on bar.gov's image search page
     And I fill in "query" with "america"
     And I press "Search"
     Then I should not see "usa.gov"
     And I should see "flickr.com"
+    And I should see the Results by USASearch logo
+    
