@@ -64,7 +64,7 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def populate_for(day, limit = nil)
-      name_id_list = Affiliate.all.collect { |aff| {:name => aff.name, :id => aff.id} }
+      name_id_list = Affiliate.select([:id, :name]).collect { |aff| {:name => aff.name, :id => aff.id} }
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 

@@ -48,8 +48,7 @@ class AffiliateObserver < ActiveRecord::Observer
   end
 
   def create_video_rss_feed(affiliate, urls)
-    rss_feed = affiliate.rss_feeds.build(:name => 'Videos')
-    rss_feed.is_managed = true
+    rss_feed = affiliate.rss_feeds.build(:name => 'Videos', :is_managed => true)
     urls.each { |url| rss_feed.rss_feed_urls.build(:url => url) }
     rss_feed.save!
   end
