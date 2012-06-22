@@ -1,7 +1,7 @@
 - tweet = search.tweets.hits.first
 #twitter_govbox
   %h3.alt
-    Recent tweet for '#{search.query}'
+    = t(:recent_tweet_for, :query => search.query)
     %span.recommended-by
       = t :by
       = link_to("@#{tweet.instance.twitter_profile.screen_name}", tweet.instance.twitter_profile.link_to_profile)

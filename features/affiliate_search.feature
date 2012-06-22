@@ -476,21 +476,32 @@ Feature: Affiliate Search
 
   Scenario: When an affiliate uses Bing+Odie results
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains | results_source |
-      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | bing+odie      |
+      | display_name | name       | contact_email | contact_name | domains | results_source | locale |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | bing+odie      | en     |
+      | Spanish site | es.nih.gov | aff@bar.gov   | John Bar     | nih.gov | bing+odie      | es     |
     And the following IndexedDocuments exist:
-      | url                     | affiliate | title                 | description              | last_crawl_status | created_at   |
-      | http://nih.gov/old.html | nih.gov   | NIH Post 4 months ago | This is the NIH old page | OK                | 4 months ago |
-      | http://nih.gov/2.html   | nih.gov   | NIH Post 9 weeks ago  | This is post 9           | OK                | 9 weeks ago  |
-      | http://nih.gov/1.html   | nih.gov   | NIH Post 10 weeks ago | This is post 10          | OK                | 10 weeks ago |
-    And the url "http://nih.gov/1.html" has been crawled
-    And the url "http://nih.gov/2.html" has been crawled
-    And I am on nih.gov's search page
+      | url                        | affiliate  | title                         | description                      | last_crawl_status | created_at   |
+      | http://nih.gov/old.html    | nih.gov    | NIH Post 4 months ago         | This is the NIH old page         | OK                | 4 months ago |
+      | http://nih.gov/2.html      | nih.gov    | NIH Post 9 weeks ago          | This is post 9                   | OK                | 9 weeks ago  |
+      | http://nih.gov/1.html      | nih.gov    | NIH Post 10 weeks ago         | This is post 10                  | OK                | 10 weeks ago |
+      | http://es.nih.gov/old.html | es.nih.gov | NIH Spanish Post 4 months ago | This is the NIH old Spanish page | OK                | 4 months ago |
+      | http://es.nih.gov/2.html   | es.nih.gov | NIH Spanish Post 9 weeks ago  | This is Spanish post 9           | OK                | 9 weeks ago  |
+      | http://es.nih.gov/1.html   | es.nih.gov | NIH Spanish Post 10 weeks ago | This is Spanish post 10          | OK                | 10 weeks ago |
+    When I am on nih.gov's search page
     And I fill in "query" with "NIH"
     And I press "Search"
-    Then I should see "NIH Post 9 weeks ago" in the indexed documents section
+    Then I should see "Other documents for 'NIH' by agency site"
+    And I should see "NIH Post 9 weeks ago" in the indexed documents section
     And I should see "NIH Post 10 weeks ago" in the indexed documents section
     And I should not see "NIH Post 4 months ago" in the indexed documents section
+
+    When I am on es.nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Buscar"
+    Then I should see "Otros documentos para 'NIH' de Spanish site"
+    And I should see "NIH Spanish Post 9 weeks ago" in the indexed documents section
+    And I should see "NIH Spanish Post 10 weeks ago" in the indexed documents section
+    And I should not see "NIH Spanish Post 4 months ago" in the indexed documents section
 
   Scenario: When an affiliate has scope keywords
     Given the following Affiliates exist:
@@ -599,20 +610,30 @@ Feature: Affiliate Search
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | is_twitter_govbox_enabled |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
+      | display_name | name       | contact_email | contact_name | locale | is_twitter_govbox_enabled |
+      | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
+      | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     | true                      |
     And the following Twitter Profiles exist:
-      | screen_name   | twitter_id  | affiliate |
-      | USASearch     | 123         | bar.gov   |
+      | screen_name | twitter_id | affiliate  |
+      | USASearch   | 123        | bar.gov    |
+      | GobiernoUSA | 456        | es.bar.gov |
     And the following Tweets exist:
-      | tweet_text          | tweet_id    | published_at        | twitter_profile_id  |
-      | AMERICA is great!   | 123456      | 2012-05-01 00:00:00 | 123                 |
+      | tweet_text                | tweet_id | published_at        | twitter_profile_id |
+      | AMERICA is great!         | 123456   | 2012-05-01 00:00:00 | 123                |
+      | Estados Unidos es grande! | 789012   | 2012-05-01 00:00:00 | 456                |
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
     Then I should see "Recent tweet for 'america' by @USASearch"
     And I should see "AMERICA is great!"
     And I should see "AMERICA" in bold font
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "Estados Unidos"
+    And I press "Buscar"
+    Then I should see "Tweet más reciente para 'Estados Unidos' de @GobiernoUSA"
+    And I should see "Estados Unidos es grande!"
+    And I should see "Estados Unidos" in bold font
 
   Scenario: Enabling and disabling the Twitter govbox
     Given the following Affiliates exist:
