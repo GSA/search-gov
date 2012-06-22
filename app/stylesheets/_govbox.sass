@@ -96,20 +96,6 @@
     bottom: 1em
     left: 10px
   @extend .govbox-title
-  //h3.alt
-    font-size: 1.15em
-    margin:
-      top: 0
-      bottom: 0.8em
-    span.recommended-by
-      color: gray
-      font:
-        size: 0.9em
-        style: italic
-        weight: normal
-      a
-        color: gray
-        text-decoration: underline
 
 #results .blended
   margin-left: 0
@@ -338,8 +324,10 @@
 
 #twitter_govbox
   +clearfix
-  background: url('/images/twitter_logo.png') -7px -8px no-repeat
-  padding-left: 35px
+  background: url('/images/twitter_logo.png') -7px 4px no-repeat
+  padding:
+    top: 1em
+    left: 35px
   margin-bottom: 1em
   @extend .govbox-title
   a
@@ -348,5 +336,4 @@
     float: left
     margin-right: 10px
   .timestamp
-    clear: both
     text-align: right
