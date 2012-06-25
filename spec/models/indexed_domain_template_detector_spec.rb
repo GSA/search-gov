@@ -81,13 +81,13 @@ describe IndexedDomainTemplateDetector do
 
   describe "#get_local_longest_common_substring(candidate_substrings)" do
     let(:idtd) { IndexedDomainTemplateDetector.new(indexed_domain) }
-    it "should find the LCS between the first string in the array and the others that aren't too much shorter" do
+    it "should find the trimmed LCS between the first string in the array and the others that aren't too much shorter" do
       candidate_substrings = ["when there are multiple docs for the indexed domain when the substring is too short should return nil",
                               "there are multiple docs for the indexed domain too short",
                               "more text when there are multiple docs for the indexed domain when the substring is too short should return something",
                               "well, this one does not look like the others",
                               "when there are multiple docs for the indexed domain when the substring is too short should return hello"]
-      idtd.get_local_longest_common_substring(candidate_substrings).should == "when there are multiple docs for the indexed domain when the substring is too short should return "
+      idtd.get_local_longest_common_substring(candidate_substrings).should == "when there are multiple docs for the indexed domain when the substring is too short should return"
     end
   end
 
@@ -137,8 +137,8 @@ describe IndexedDomainTemplateDetector do
       IndexedDocument.should_receive(:find).with([43, 44]).and_return [doc1, doc2]
     end
 
-    it "should get a whitespace-stripped sample LCS from a random pair of documents" do
-      idtd.get_candidate_substring_between_random_document_pair(1.upto(100).to_a).should == "body is pretty large"
+    it "should get a sample LCS from a random pair of documents" do
+      idtd.get_candidate_substring_between_random_document_pair(1.upto(100).to_a).should == " body is pretty large"
     end
   end
 
