@@ -90,16 +90,10 @@ class SearchesController < ApplicationController
     @affiliate = Affiliate.find_by_name(params[:affiliate]) unless params[:affiliate].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
-    if @affiliate and params[:oneserp]
-      @affiliate.uses_one_serp = true
-      @affiliate.css_property_hash[:show_content_box_shadow] = '1'
-    end
     if @affiliate && params["staged"]
-      @affiliate.uses_one_serp = @affiliate.staged_uses_one_serp
       @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
-      @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
       @affiliate.favicon_url = @affiliate.staged_favicon_url
       @affiliate.external_css_url = @affiliate.staged_external_css_url
       @affiliate.theme = @affiliate.staged_theme

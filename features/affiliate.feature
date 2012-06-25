@@ -200,8 +200,7 @@ Feature: Affiliate clients
     And the "Show deep links" checkbox should be checked
 
     When I go to agencygov's search page
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see "My awesome agency" in the SERP header
+    Then I should see "My awesome agency" in the SERP header
     And I should see "Images" in the left column
     And I should not see "Recalls Feed" in the left column
 
@@ -375,117 +374,40 @@ Feature: Affiliate clients
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
 
-  Scenario: Visiting the look and feel page on a site with legacy template
+  Scenario: Updating predefined theme and saving it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
+      | display_name | name    | contact_email | contact_name | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | elegant |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
+    When I go to the affiliate admin page
+    And I follow "aff site"
     And I follow "Look and feel"
-    Then I should see the browser page titled "Look and Feel"
-    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
-    And I should see "Look and Feel" in the page header
-    And the "Continue using legacy template" radio button should be checked
-    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
-    And the "Default" template should be selected
-    And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
-    When I follow "Cancel"
-    Then I should see the browser page titled "Site: aff site"
-
-  Scenario: Updating the look and feel from legacy template to one serp and make it live
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    Then the "Font family" field should contain "Arial, sans-serif"
-    And the "Add top padding" checkbox should not be checked
-    And the "Add drop shadow" checkbox should not be checked
-    And the "Liberty Bell" theme should be selected
-
-    When I choose "Start using One SERP theme"
-    And I choose "Virgin Islands"
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Updated changes to your live site successfully"
-
-    When I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see "Old header"
-    And I should see "Old footer"
-
-    When I go to the "aff site" affiliate page
-    When I follow "Look and feel"
-    Then the "Virgin Islands" theme should be selected
-    And I should not see "Start using One SERP theme"
-    And I should not see "Template"
-
-    When I follow "Header and footer"
-    Then I should see "Use a managed header/footer"
-
-  Scenario: Updating the look and feel from legacy template to one serp and save it for preview
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    And I choose "Start using One SERP theme"
-    And I select "Times, serif" from "Font family"
-    And I check "Add top padding"
-    And I check "Add drop shadow"
-    And I choose "Virgin Islands"
-    And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes to your site successfully"
-
-    When I follow "View Current"
-    Then I should not see the page with affiliate stylesheet "one_serp"
-    And I should see "Old header"
-    And I should see "Old footer"
-
-    When I go to the "aff site" affiliate page
-    And I follow "Header and footer"
-    Then the "Option 2. Use CSS/HTML code to create a custom header/footer" radio button should be checked
-    When I choose "Option 1. Use a managed header/footer"
-    And I fill in the following:
-      | Header text     | updated header text without image |
-      | Header home URL | www.agency.gov                    |
+    Then the "Gettysburg" theme should be selected
+    When I choose "Virgin Islands"
     And I press "Save for Preview"
     Then I should see "Staged changes to your site successfully"
+    When I follow "Look and feel"
+    Then the "Virgin Islands" theme should be selected
 
-    When I go to the "aff site" affiliate page
-    And I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see the page with content border
-    And I should see the page with content box shadow
-    And I should see a link to "updated header text without image" with url for "http://www.agency.gov"
-
-    When I go to the "aff site" affiliate page
-    And I press "Push Changes"
-    Then I should see "Staged content is now visible"
-    When I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see the page with content border
-    And I should see the page with content box shadow
-    And I should see a link to "updated header text without image" with url for "http://www.agency.gov"
-
-  Scenario: Updating the look and feel from legacy to one serp and header contains style element
+  Scenario: Updating predefined theme and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | header                                  | footer     | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | <style>h1{color:blue}</style>Old header | Old footer | false         |
+      | display_name | name    | contact_email | contact_name | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | natural |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
+    When I go to the affiliate admin page
+    And I follow "aff site"
     And I follow "Look and feel"
-    And I choose "Start using One SERP theme"
+    Then the "Grand Canyon" theme should be selected
+    When I choose "Virgin Islands"
     And I press "Make Live"
-    Then I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+    Then I should see "Updated changes to your live site successfully"
+    When I follow "Look and feel"
+    Then the "Virgin Islands" theme should be selected
 
-  Scenario: Editing user interface and saving it for preview on a site with one serp
+  Scenario: Editing user interface and saving it for preview on a site
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   | false                      |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | external_css_url                 | header_footer_css         | header     | footer     | favicon_url                | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | http://cdn.agency.gov/custom.css | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | custom | false               | false                   | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -496,7 +418,6 @@ Feature: Affiliate clients
     And I should not see "Start using One SERP theme"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
-    And I should not see "Template"
     And the "Font family" field should contain "Verdana, sans-serif"
     And the "Custom" theme should be selected
     And the "Custom" theme should be visible
@@ -581,14 +502,11 @@ Feature: Affiliate clients
     And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with internal CSS ".header-footer .current\{color:blue\}"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with content border
     And I should not see the page with content box shadow
     And I should not see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
     When I go to the "aff site" affiliate page
@@ -597,14 +515,11 @@ Feature: Affiliate clients
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should see the page with content border
     And I should see the page with content box shadow
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "ht tp://cdn.agency.gov/custom.css"
 
     When I go to the "aff site" affiliate page
@@ -640,76 +555,17 @@ Feature: Affiliate clients
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
     And I should see the page with content border
     And I should see the page with content box shadow
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
-  Scenario: Updating theme and saving it for preview
+  Scenario: Editing look and feel with invalid input and saving it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    And I choose "Virgin Islands"
-    And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes to your site successfully"
-    When I follow "Look and feel"
-    Then the "Virgin Islands" theme should be selected
-
-  Scenario: Editing look and feel and saving it for preview on a site with legacy template
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | false         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    And I fill in the following:
-      | Search results page title                                       | {SiteName} : {Query}              |
-      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-    And I choose "Basic Gray"
-    And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes to your site successfully"
-
-    When I follow "View Current"
-    Then I should see "gov - aff site Search Results"
-    And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "default"
-    And I should not see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should not see the page with affiliate stylesheet "basic_gray"
-
-    When I go to the "aff site" affiliate page
-    And I follow "View Staged"
-    Then I should see "aff site : gov"
-    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-
-    When I go to the "aff site" affiliate page
-    And I press "Push Changes"
-    And I go to the "aff site" affiliate page
-    And I follow "View Current"
-    Then I should see "aff site : gov"
-    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-
-  Scenario: Editing look and feel with problem and saving it for preview
-    Given the following Affiliates exist:
-      | display_name | name    | domains     | contact_email | contact_name | uses_one_serp |
-      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     | true          |
+      | display_name | name    | domains     | contact_email | contact_name | theme  |
+      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     | custom |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -725,10 +581,10 @@ Feature: Affiliate clients
     And I should see "Title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
-  Scenario: Editing look and feel and make it live on a site with one serp
+  Scenario: Editing custom theme look and feel and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | false               | false                   |
+      | display_name | name    | contact_email | contact_name | theme  | search_results_page_title           | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | show_content_border | show_content_box_shadow |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom | {Query} - {SiteName} Search Results | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | false               | false                   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -760,12 +616,9 @@ Feature: Affiliate clients
     When I follow "View Current"
     Then I should see "aff site : gov"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with internal CSS "bg.png"
     And the page body should match "background:\ \#EEEEEE\ url\(.+\) repeat\-y"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
 
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -786,102 +639,10 @@ Feature: Affiliate clients
     And the "URL link color" field should contain "#007000"
     And I should see "bg.png" image
 
-  Scenario: Deleting page background image and make it live
+  Scenario: Editing custom theme look and feel with invalid input and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    And I attach the file "features/support/bg.png" to "Page background image"
-    And I fill in "Page background color" with "#FEDCBA"
-    And I press "Make Live"
-    Then I should see "Updated changes to your live site successfully"
-
-    When I follow "View Current"
-    Then the page body should contain "background: #FEDCBA url"
-    And the page body should contain "bg.png"
-
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    And I check "Mark page background image for deletion"
-    And I press "Make Live"
-    Then I should see "Updated changes to your live site successfully"
-
-    When I follow "View Current"
-    Then the page body should contain "background-color: #FEDCBA"
-    And the page body should not contain "background: #FEDCBA url"
-    And the page body should not contain "bg.png"
-
-  Scenario: Updating theme and make it live
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | theme   | staged_theme |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | natural | gray         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    Then the "Grand Canyon" theme should be selected
-    When I choose "Virgin Islands"
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Updated changes to your live site successfully"
-    When I follow "Look and feel"
-    Then the "Virgin Islands" theme should be selected
-
-   Scenario: Editing look and feel and make it live on a site with legacy template and existing header/footer
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | false         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    And I fill in the following:
-      | Search results page title                                              | {SiteName} : {Query}              |
-      | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
-    And I choose "Basic Gray"
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Updated changes to your live site successfully"
-    And I should not see "View Staged"
-
-    When I follow "View Current"
-    Then I should see "aff site : gov"
-    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-
-    Scenario: Editing look and feel and make it live on a site with legacy template without existing header/footer
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header    | Old footer    | false         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Look and feel"
-    And I fill in the following:
-      | Search results page title                                       | {SiteName} : {Query}              |
-      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-    And I choose "Basic Gray"
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Updated changes to your live site successfully"
-    And I should not see "View Staged"
-
-    When I follow "View Current"
-    Then I should see "aff site : gov"
-    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should not see the page with affiliate stylesheet "default"
-
-  Scenario: Editing look and feel with problem and make it live
-    Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        | uses_one_serp |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            | true          |
+      | display_name | name    | contact_email | contact_name | theme  | staged_theme |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom | custom       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -907,49 +668,91 @@ Feature: Affiliate clients
     And I should see "Description text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Url link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
-  Scenario: Editing look and feel where staged and live sites are out of sync and has_staged_content is false
+  Scenario: Deleting page background image and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              | false         |
+      | display_name | name    | contact_email | contact_name | theme  |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom |
     And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I attach the file "features/support/bg.png" to "Page background image"
+    And I fill in "Page background color" with "#FEDCBA"
+    And I press "Make Live"
+    Then I should see "Updated changes to your live site successfully"
+
+    When I follow "View Current"
+    Then the page body should contain "background: #FEDCBA url"
+    And the page body should contain "bg.png"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I check "Mark page background image for deletion"
+    And I press "Make Live"
+    Then I should see "Updated changes to your live site successfully"
+
+    When I follow "View Current"
+    Then the page body should contain "background-color: #FEDCBA"
+    And the page body should not contain "background: #FEDCBA url"
+    And the page body should not contain "bg.png"
+
+  Scenario: Editing user interface where staged and live sites are out of sync and has_staged_content is false
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false              | false                      | Live Search Results       | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    Then I should not see "View Staged"
+    And I should not see "Push Changes" button
+    And I should not see "Cancel Changes" button
+
+    When I follow "View Current"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
+
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search results page title" field should contain "Live Search Results"
-    And the "Default" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
-    When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes to your site successfully"
-    When I follow "View Staged"
-    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
-    And I should see "Live Search Results"
-    And I should see 10 search results
 
-  Scenario: Editing look and feel where staged and live sites are out sync and has_staged_content is true
+    When I follow "Header and footer"
+    Then the "Enter HTML to customize the top of your search results page." field should contain "Live header"
+    Then the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
+
+  Scenario: Visiting user interface where staged and live sites are out sync and has_staged_content is true
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true               | false                      | Live Search Results       | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see "Staged Search Results"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search results page title" field should contain "Staged Search Results"
-    And the "Basic Gray" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
-    When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes to your site successfully"
-    When I follow "View Staged"
-    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should see "Staged Search Results"
 
-  Scenario: Resetting style on a site with one serp
+    When I follow "Header and footer"
+    Then the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
+    Then the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
+
+  Scenario: Resetting custom theme
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | theme  | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -984,8 +787,8 @@ Feature: Affiliate clients
 
   Scenario: Editing managed header/footer and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | uses_one_serp | theme   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | true          | default |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1008,8 +811,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
     And I should see a link to "Blog" with url for "http://blog.agency.gov" in the SERP header
     And I should see a link to "About Us" with url for "http://about.agency.gov" in the SERP footer
@@ -1040,8 +842,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "updated header with image" with url for "http://www.agency.gov"
+    Then I should see a link to "updated header with image" with url for "http://www.agency.gov"
     And I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "small.jpg" image
 
@@ -1056,8 +857,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should not see "updated header with image" in the SERP header
+    Then I should not see "updated header with image" in the SERP header
     And I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "searchlogo.gif" image
 
@@ -1070,8 +870,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should not see an image with alt text "logo"
+    Then I should not see an image with alt text "logo"
 
   Scenario: Editing managed header/footer with invalid input and make it live
     Given the following Affiliates exist:
@@ -1104,8 +903,8 @@ Feature: Affiliate clients
 
   Scenario: Editing managed header/footer and save it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | uses_one_serp | theme   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | true          | default |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1128,8 +927,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "live header with image" with url for "http://live.agency.gov"
+    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
     And I should see an image link to "logo" with url for "http://live.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
@@ -1170,8 +968,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
+    Then I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
     And I should see an image link to "logo" with url for "http://staged.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "Features" with url for "http://features.agency.gov" in the SERP header
@@ -1195,8 +992,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "live header with image" with url for "http://live.agency.gov"
+    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
     And I should see an image link to "logo" with url for "http://live.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
@@ -1263,7 +1059,6 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
-    And I should see the page with affiliate stylesheet "one_serp"
     Then I should see "New header"
     And I should see "New footer"
 
@@ -1287,7 +1082,6 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see "New header"
     And I should see "New footer"
 
@@ -1297,14 +1091,13 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see "New header"
     And I should see "New footer"
 
   Scenario: Editing custom header/footer and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | uses_managed_header_footer | theme  | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | false                      | custom | false               | false                   |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header_footer_css         | header     | footer     | favicon_url                | external_css_url                 |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -1339,13 +1132,12 @@ Feature: Affiliate clients
     Then I should see "New header"
     And I should see "New footer"
     And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
-    And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
-  Scenario: Editing custom header/footer with problem and save for preview
+  Scenario: Editing custom header/footer with invalid input and save it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default | false                      |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header_footer_css         | header     | footer     | favicon_url                | external_css_url          |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -1369,16 +1161,15 @@ Feature: Affiliate clients
     And I should see "HTML to customize the top of your search results is invalid. Click on the validate link below or email us at ***REMOVED***"
     And I should see "HTML to customize the bottom of your search results page can't contain script, style, link elements."
 
-  Scenario: Editing custom header/footer with problem and make it live
+  Scenario: Editing custom header/footer with invalid input and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default | false                      |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Header and footer"
     And I fill in the following:
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css                                   |
       | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }                                     |
       | Enter HTML to customize the top of your search results page.           | <html><body>New header <style>h1{color:blue}</style></body></html> |
       | Enter HTML to customize the bottom of your search results page.        | <div>New footer</a>                                                |
@@ -1414,8 +1205,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
     And I should not see "custom header"
     And I should not see "custom footer"
 
@@ -1442,8 +1232,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
@@ -1487,8 +1276,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the header and footer page for affiliate without external_css_url
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -1496,130 +1285,126 @@ Feature: Affiliate clients
 
   Scenario: Visiting the header and footer page for affiliate with staged_external_css_url
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | has_staged_content | staged_external_css_url          |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true               | cdn.agency.gov/staged_custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
 
-  Scenario: Visiting the header and footer page for affiliate with legacy templates
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_one_serp | uses_managed_header_footer | external_css_url          |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         | false                      | cdn.agency.gov/custom.css |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Header and footer"
-    Then I should not see a field labeled "Header text"
-    When I fill in the following:
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }        |
-      | Enter HTML to customize the top of your search results page.           | New header                       |
-      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Updated changes to your live site successfully"
-
-    When I go to aff.gov's search page
-    Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
-    And I should not see the page with affiliate stylesheet "one_serp"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
-    And I should see "New header"
-    And I should see "New footer"
-
   Scenario: Visiting an affiliate SERP without a header
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     When I go to aff.gov's search page
     Then I should see "aff site" in the SERP header
 
     Given the following Affiliates exist:
-      | display_name | name     | contact_email | contact_name | search_results_page_title           | header |
-      | aff2 site    | aff2.gov | aff2@bar.gov  | John Bar     | {Query} - {SiteName} Search Results |        |
+      | display_name | name     | contact_email | contact_name | uses_managed_header_footer | header |
+      | aff2 site    | aff2.gov | aff2@bar.gov  | John Bar     | false                      |        |
     When I go to aff2.gov's search page
-    Then I should see "aff2 site" in the SERP header
-
-    Given the following Affiliates exist:
-      | display_name | name     | contact_email | contact_name | search_results_page_title           | managed_header_text |
-      | aff3 site    | aff3.gov | aff2@bar.gov  | John Bar     | {Query} - {SiteName} Search Results |                     |
-    When I go to aff3.gov's search page
     Then I should not see the SERP header
 
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | uses_one_serp |
-      | aff4 site     | aff4.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | false         |
-    When I go to aff4.gov's search page
+      | display_name | name     | contact_email | contact_name | managed_header_text |
+      | aff3 site    | aff3.gov | aff2@bar.gov  | John Bar     |                     |
+    When I go to aff3.gov's search page
     Then I should not see the SERP header
 
   Scenario: Cancelling staged changes from the Admin Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see "Staged Search Results"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
     When I go to the affiliate admin page
     And I press "Cancel Changes"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > bar site
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
+
     When I follow "View Current"
-    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "default"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
+    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
   Scenario: Cancelling staged changes from the site specific Admin Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains  | header     | footer     | favicon_url                       | external_css_url                 | uses_one_serp |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | false         |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "bar site" affiliate page
-    And I follow "Look and feel"
-    And I fill in the following:
-      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-      | Search results page title                                       | updated SERP title                |
-    And I choose "Basic Gray"
-    And I press "Save for Preview"
-    And I should see "Staged changes to your site successfully"
-    Then I should see "Cancel Changes" button
-    When I follow "View Staged"
-    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see "updated SERP title"
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
 
-    When I go to the "bar site" affiliate page
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see "Staged Search Results"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
+    When I go to the "aff site" affiliate page
     And I press "Cancel Changes"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > bar site
-    And I should see "Staged changes were successfully cancelled."
+    Then I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
+
     When I follow "View Current"
-    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "default"
-    And I should see "gov - bar site Search Results"
-    And I should see 10 search results
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
 
   Scenario: Cancelling staged changes from the Preview page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see "Staged Search Results"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I press "Cancel Staged Changes"
-    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
-    And I should see "Staged changes were successfully cancelled."
+    Then I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
+
     When I follow "View Current"
-    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with affiliate stylesheet "default"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
     And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
@@ -1644,8 +1429,7 @@ Feature: Affiliate clients
     And I should not see "Preview Search on Staged Site" button
 
     When I follow "Look and feel"
-    And I fill in the following:
-      | Search results page title                                   | Staged - {SiteName} : {Query} |
+    And I fill in "Search results page title" with "Staged - {SiteName} : {Query}"
     And I press "Save for Preview"
     And I follow "Preview"
     And I fill in the following within "#staged_site_search_form":
@@ -1739,8 +1523,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting an affiliate advanced search page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
-      | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
+      | display_name | name        | contact_email | contact_name |
+      | noindex site | noindex.gov | aff@aff.gov   | Two Bar      |
     When I go to noindex.gov's search page
     And I fill in "query" with "gov"
     And I press "Search"
@@ -1837,8 +1621,8 @@ Feature: Affiliate clients
 
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
@@ -1851,8 +1635,8 @@ Feature: Affiliate clients
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | locale  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | es      |
+      | display_name | name    | contact_email | contact_name | locale |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
@@ -1865,8 +1649,8 @@ Feature: Affiliate clients
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff site"
@@ -1988,8 +1772,8 @@ Feature: Affiliate clients
 
   Scenario: Viewing Manage Users for an affiliate
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email           | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage users"
@@ -2001,11 +1785,11 @@ Feature: Affiliate clients
 
   Scenario: Adding an existing user to an affiliate
     Given the following Users exist:
-      | contact_name  | email             |
-      | Existing User | existing@usa.gov  |
+      | contact_name  | email            |
+      | Existing User | existing@usa.gov |
     And the following Affiliates exist:
-      | display_name     | name             | contact_email           | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And no emails have been sent
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
@@ -2020,8 +1804,8 @@ Feature: Affiliate clients
 
   Scenario: Adding a new user to an affiliate
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email           | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And no emails have been sent
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
@@ -2052,8 +1836,8 @@ Feature: Affiliate clients
 
   Scenario: Failed to complete registration
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email           | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage users"
@@ -2082,8 +1866,8 @@ Feature: Affiliate clients
 
   Scenario: Adding a new user to a site without filling out the form
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email           | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage users"
@@ -2093,8 +1877,8 @@ Feature: Affiliate clients
 
   Scenario: A nonsense English affiliate search
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |
-      | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     When I go to aff.gov's search page
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
     And I press "Search"
@@ -2111,8 +1895,8 @@ Feature: Affiliate clients
 
   Scenario: Embedded affiliate search
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | header           | footer           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header           | footer           |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | Affiliate Header | Affiliate Footer |
     When I go to aff.gov's embedded search page
     Then I should not see "Affiliate Header"
     And I should not see "Affiliate Footer"
@@ -2123,8 +1907,8 @@ Feature: Affiliate clients
 
   Scenario: Embedded advanced affiliate search
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | header           | footer           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header           | footer           |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | Affiliate Header | Affiliate Footer |
     When I go to aff.gov's embedded search page
     And I fill in "query" with "gov"
     And I press "Search"
@@ -2289,13 +2073,6 @@ Feature: Affiliate clients
     Then I should see "Uncrawled URLs (8)"
     And I should see "Crawled URLs (10)"
 
-  Scenario: Visiting legacy affiliate with oneserp parameter
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         |
-    When I go to aff.gov's oneserp search page
-    Then I should see the page with affiliate stylesheet "one_serp"
-
   Scenario: Visiting sidebar
     Given the following Affiliates exist:
       | display_name   | name             | contact_email | contact_name | results_source |
@@ -2446,13 +2223,12 @@ Feature: Affiliate clients
     Then I should see "Rss feeds name can't be blank"
     And I should see "Document collections name can't be blank"
 
-  Scenario: Visiting legacy affiliate with oneserp and strictui parameters
+  Scenario: Visiting affiliate with strictui parameters
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_one_serp | external_css_url                | header                                                                  | footer                                                                  |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
-    When I go to aff.gov's oneserp with strictui search page
-    Then I should see the page with affiliate stylesheet "one_serp"
-    And I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
+      | display_name | name    | contact_email | contact_name | external_css_url                | header                                                                  | footer                                                                  |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
+    When I go to aff.gov's strictui search page
+    Then I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
 
@@ -2476,8 +2252,8 @@ Feature: Affiliate clients
       | display_name   | name             | contact_email | contact_name |
       | aff site       | aff.gov          | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name          | url                                                | position | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press               | 0        | true            |
+      | name  | url                                  | position | shown_in_govbox |
+      | Press | http://www.whitehouse.gov/feed/press | 0        | true            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Results modules"

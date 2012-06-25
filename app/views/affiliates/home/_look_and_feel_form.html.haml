@@ -1,13 +1,3 @@
-- unless @affiliate.uses_one_serp?
-  %h2 Choose how to customize your look and feel
-  %ul
-    %li
-      = look_and_feel_form.radio_button :staged_uses_one_serp, '0', :checked => !@affiliate.staged_uses_one_serp?, :class => 'legacy-look-and-feel-option'
-      = look_and_feel_form.label "staged_uses_one_serp_0", "Continue using legacy template", :class => 'radio-label'
-    %li
-      = look_and_feel_form.radio_button :staged_uses_one_serp, '1', :checked => @affiliate.staged_uses_one_serp?, :class => 'one-serp-look-and-feel-option'
-      = look_and_feel_form.label "staged_uses_one_serp_1", "Start using One SERP theme", :class => 'radio-label'
-
 %h2 Customize your look and feel
 %ul
   %li
@@ -16,13 +6,6 @@
   %li
     = look_and_feel_form.label :staged_favicon_url, "Favicon URL"
     = look_and_feel_form.text_field :staged_favicon_url, :class => "txt", :maxlength => 255
-
-- unless @affiliate.uses_one_serp?
-  %ul.look-and-feel-form.legacy
-    %li
-      = look_and_feel_form.label :template
-      .affiliate-template-wrapper
-        = (render_choose_site_templates @affiliate).html_safe
 
 %ul.look-and-feel-form.one-serp
   %li.css-overrides

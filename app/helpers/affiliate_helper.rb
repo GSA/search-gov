@@ -15,18 +15,6 @@ module AffiliateHelper
     link_to(image_tag("help-icon.png", :alt => "Help?", :class => "help-icon", :style => 'height: 3%; width: 3%;'), help_link.help_page_url, :target => "_blank", :id => 'help-link') if help_link
   end
 
-  def render_choose_site_templates(affiliate)
-    templates = AffiliateTemplate.all.sort_by(&:name).collect do |template|
-      checked = affiliate.staged_affiliate_template_id? ? affiliate.staged_affiliate_template_id == template.id : (template.name == 'Default')
-      content = ''
-      content << radio_button(:affiliate, :staged_affiliate_template_id, template.id, :checked => checked)
-      content << label(:affiliate, "staged_affiliate_template_id_#{template.id}", template.name)
-      content << image_tag("affiliate_template_#{template.name.downcase.gsub(' ', '_').underscore}.png")
-      content_tag :div, raw(content), :class => 'affiliate-template'
-    end
-    templates.join
-  end
-
   def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)
     content = ''
     content << link_to('Error', '#', :class => 'dialog-link', :dialog_id => dialog_id)
@@ -68,7 +56,7 @@ module AffiliateHelper
 
   def render_affiliate_header(affiliate, search_options)
     if affiliate and (search_options.nil? or !search_options[:embedded])
-      if affiliate.uses_one_serp? and affiliate.uses_managed_header_footer?
+      if affiliate.uses_managed_header_footer?
         html = render_managed_header(affiliate)
         if affiliate.managed_header_links.present?
           background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
@@ -117,7 +105,7 @@ module AffiliateHelper
 
   def render_affiliate_footer(affiliate, search_options)
     if affiliate and (search_options.nil? or !search_options[:embedded])
-      if affiliate.uses_one_serp? and affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
+      if affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
         background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
         style = background_color.blank? ? nil : "background-color: #{background_color};"
         html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
@@ -128,25 +116,14 @@ module AffiliateHelper
     end
   end
 
-  def render_affiliate_stylesheet(affiliate)
-    stylesheet_source = affiliate.uses_one_serp? ? "compiled/affiliates/one_serp" : "compiled/affiliates/#{@affiliate.affiliate_template.stylesheet}"
-    stylesheet_link_tag stylesheet_source
-  end
-
   def render_affiliate_body_class(affiliate)
-    classes = ''
-    if affiliate.uses_one_serp?
-      classes << "one-serp default #{I18n.locale} "
-      classes << 'with-content-border ' if affiliate.show_content_border?
-      classes << 'with-content-box-shadow ' if affiliate.show_content_box_shadow?
-    else
-      classes << "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}"
-    end
+    classes = "one-serp default #{I18n.locale}"
+    classes << ' with-content-border' if affiliate.show_content_border?
+    classes << ' with-content-box-shadow' if affiliate.show_content_box_shadow?
     classes
   end
 
   def render_affiliate_body_style(affiliate)
-    return unless affiliate.uses_one_serp?
     style = ''
     background_color =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
     background_image_url = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?

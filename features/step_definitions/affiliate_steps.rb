@@ -19,23 +19,6 @@ Given /^the following Affiliates exist:$/ do |table|
     user.update_attribute(:is_affiliate, true)
     user.update_attribute(:approval_status, 'approved')
 
-    default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default")
-
-    uses_one_serp = (hash[:uses_one_serp].blank? or hash[:uses_one_serp] == 'true') ? true : false
-    if uses_one_serp
-      affiliate_template = nil
-      staged_affiliate_template = nil
-      theme = hash[:theme] || 'custom'
-      staged_theme = hash[:theme] || 'custom'
-      uses_managed_header_footer = (hash[:uses_managed_header_footer].blank? or hash[:uses_managed_header_footer] == 'true') ? true : false
-    else
-      affiliate_template = hash[:affiliate_template_name].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash[:affiliate_template_name])
-      staged_affiliate_template = hash[:staged_affiliate_template_name].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash[:staged_affiliate_template_name])
-      theme = nil
-      staged_theme = nil
-      uses_managed_header_footer = nil
-    end
-
     css_properties = ActiveSupport::OrderedHash.new
     Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
       case css_property
@@ -46,15 +29,13 @@ Given /^the following Affiliates exist:$/ do |table|
         else
           css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
       end
-    end if uses_one_serp
+    end
 
     affiliate = Affiliate.new(
       :display_name => hash[:display_name],
-      :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
       :header_footer_css => hash[:header_footer_css],
       :header => hash[:header],
       :footer => hash[:footer],
-      :staged_affiliate_template_id => staged_affiliate_template.nil? ? nil : staged_affiliate_template.id,
       :staged_header_footer_css => hash[:staged_header_footer_css],
       :staged_header => hash[:staged_header],
       :staged_footer => hash[:staged_footer],
@@ -67,10 +48,11 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_external_css_url => hash[:staged_external_css_url],
       :favicon_url => hash[:favicon_url],
       :staged_favicon_url => hash[:staged_favicon_url],
-      :theme => theme,
-      :staged_theme => staged_theme,
+      :theme => hash[:theme],
+      :staged_theme => hash[:staged_theme],
       :css_property_hash => css_properties,
-      :uses_managed_header_footer => uses_managed_header_footer,
+      :uses_managed_header_footer => hash[:uses_managed_header_footer],
+      :staged_uses_managed_header_footer => hash[:staged_uses_managed_header_footer],
       :managed_header_home_url => hash[:managed_header_home_url],
       :staged_managed_header_home_url => hash[:staged_managed_header_home_url],
       :managed_header_text => hash[:managed_header_text],
@@ -87,7 +69,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :external_tracking_code => hash[:external_tracking_code]
     )
     affiliate.name = hash['name']
-    affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
     affiliate.users << user
     affiliate.flickr_profiles.create(:url => hash[:flickr_url], :profile_type => 'user', :profile_id => '1234') if hash[:flickr_url]
@@ -166,12 +147,6 @@ end
 
 Then /I should see the API key/ do
   page.should have_selector(".content-box", :text => "Your API Key:")
-end
-
-Then /^the "([^\"]*)" template should be selected$/ do |template_name|
-  actual_template_id =  field_labeled(template_name).value
-  affiliate_template = AffiliateTemplate.find(actual_template_id)
-  affiliate_template.name.should == template_name
 end
 
 Then /^(.+) for site named "([^"]*)"$/ do |step, site_display_name|

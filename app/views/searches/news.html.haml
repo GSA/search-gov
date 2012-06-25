@@ -1,20 +1,17 @@
-- if @affiliate.uses_one_serp?
-  #search_box
-    = render 'news_search_form'
-    .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
-    .summary-wrapper
-      - if @search.results.present?
-        = results_summary(@search)
-      - else
-        = render 'blank_news_search_results', :search => @search
+#search_box
+  = render 'news_search_form'
+  .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
+  .summary-wrapper
+    - if @search.results.present?
+      = results_summary(@search)
+    - else
+      = render 'blank_news_search_results', :search => @search
 #left_column
   = render "shared/affiliate_vertical_navigation"
 %a#main_content
 #results{ :class => "#{'videos' if @search.rss_feed && @search.rss_feed.is_video?}" }
-  = render 'news_search_form' unless @affiliate.uses_one_serp?
   %a{:name => "content"}
   - if @search.results.present?
-    = results_summary(@search) unless @affiliate.uses_one_serp?
     - news_item_partial = (@search.rss_feed && @search.rss_feed.is_video? or @form_path == video_news_search_path) ? 'shared/video_news_item' : 'shared/news_item'
     - @search.hits.each_with_index do |hit, index|
       = render news_item_partial, :hit => hit, :index => index
@@ -22,5 +19,3 @@
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
       = search_results_by_logo(false)
-  - elsif !@affiliate.uses_one_serp?
-    = render 'blank_news_search_results', :search => @search

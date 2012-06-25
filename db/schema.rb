@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628112427) do
+ActiveRecord::Schema.define(:version => 20120628120010) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -34,9 +34,7 @@ ActiveRecord::Schema.define(:version => 20120628112427) do
     t.datetime "updated_at"
     t.boolean  "has_staged_content",                                              :default => false,           :null => false
     t.string   "website"
-    t.integer  "affiliate_template_id"
     t.boolean  "is_sayt_enabled",                                                 :default => true
-    t.integer  "staged_affiliate_template_id"
     t.string   "display_name",                                                                                 :null => false
     t.string   "search_results_page_title",                                                                    :null => false
     t.string   "staged_search_results_page_title",                                                             :null => false
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20120628112427) do
     t.string   "staged_favicon_url"
     t.text     "css_properties"
     t.text     "staged_css_properties"
-    t.boolean  "uses_one_serp"
     t.string   "top_searches_label",                                              :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
@@ -70,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20120628112427) do
     t.string   "staged_header_image_content_type"
     t.integer  "staged_header_image_file_size"
     t.datetime "staged_header_image_updated_at"
-    t.boolean  "staged_uses_one_serp"
     t.integer  "fetch_concurrency",                                               :default => 1,               :null => false
     t.string   "default_search_label",                      :limit => 20,                                      :null => false
     t.boolean  "is_time_filter_enabled",                                          :default => true
@@ -91,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20120628112427) do
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
   end
 
-  add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
 
   create_table "affiliates_twitter_profiles", :id => false, :force => true do |t|

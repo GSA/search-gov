@@ -1,8 +1,6 @@
 require 'spec/spec_helper'
 
 describe AffiliateHelper do
-  fixtures :affiliate_templates
-
   describe "#affiliate_center_breadcrumbs" do
     it "should generate links that contain USASearch > Admin Center > a title" do
       helper.should_receive(:breadcrumbs).with([link_to("Admin Center",home_affiliates_path), "a title"])
@@ -25,26 +23,6 @@ describe AffiliateHelper do
 
       content = helper.site_wizard_header :get_the_code
       content.should have_selector("img[alt='Step 3. Get the code']")
-    end
-  end
-
-  describe "#render_choose_site_templates" do
-    it "should display radio button, label and image for the template" do
-      content = helper.render_choose_site_templates Affiliate.new
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:default).id}'][checked='checked']")
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:basic_gray).id}']")
-    end
-
-    it "should have default affiliate template checked if staged_affiliate_template is set to default" do
-      content = helper.render_choose_site_templates(Affiliate.new(:staged_affiliate_template => affiliate_templates(:default)))
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:default).id}'][checked='checked']")
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:basic_gray).id}']")
-    end
-
-    it "should have basic gray affiliate template checked if staged_affiliate_template is set to basic gray" do
-      content = helper.render_choose_site_templates(Affiliate.new(:staged_affiliate_template => affiliate_templates(:basic_gray)))
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:default).id}']")
-      content.should have_selector("input[name='affiliate[staged_affiliate_template_id]'][value='#{affiliate_templates(:basic_gray).id}'][checked='checked']")
     end
   end
 
@@ -77,16 +55,8 @@ describe AffiliateHelper do
   end
 
   describe "#render_affiliate_body_style" do
-    context "when the site uses_one_serp is set to false" do
-      let(:affiliate) { mock_model(Affiliate) }
-      it "should return blank" do
-        affiliate.should_receive(:uses_one_serp?).and_return(false)
-        helper.render_affiliate_body_style(affiliate).should be_blank
-      end
-    end
-
     context "when CloudFiles raise NoSuchContainer" do
-      let(:affiliate) { mock_model(Affiliate, :uses_one_serp? => true, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
+      let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
       it "should return only background-color" do
         helper.should_receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
         affiliate.should_receive(:page_background_image).and_raise(CloudFiles::Exception::NoSuchContainer)

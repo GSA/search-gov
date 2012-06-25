@@ -8,11 +8,8 @@
     %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}/
     %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}/
     %meta{:name => "format-detection", :content => "telephone=no" }/
-    - if @affiliate.uses_one_serp?
-      = stylesheet_link_tag 'compiled/affiliates/one_serp_mobile.css'
-    - else
-      = stylesheet_link_tag 'compiled/affiliates/default_mobile.css'
-    = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash }) if @affiliate.uses_one_serp?
+    = stylesheet_link_tag 'compiled/affiliates/one_serp_mobile.css'
+    = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash })
 
     != javascript_include_tag "jquery/jquery.min.js"
     - if @affiliate.is_sayt_enabled?

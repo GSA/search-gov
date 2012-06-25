@@ -18,10 +18,5 @@ class ErrorsController < ApplicationController
     @affiliate = Affiliate.find_by_name(params[:name]) unless params[:name].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
-    if @affiliate && params[:staged]
-      @affiliate.header = @affiliate.staged_header
-      @affiliate.footer = @affiliate.staged_footer
-      @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
-    end
   end
 end

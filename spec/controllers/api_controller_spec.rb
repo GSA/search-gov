@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe ApiController do
-  fixtures :affiliates, :affiliate_templates, :users
+  fixtures :affiliates, :users
 
   describe "#search" do
     context "when there is no api key parameter" do

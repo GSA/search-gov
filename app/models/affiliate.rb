@@ -8,8 +8,6 @@ class Affiliate < ActiveRecord::Base
 
   has_and_belongs_to_many :users
   has_many :features, :through => :affiliate_feature_addition
-  belongs_to :affiliate_template
-  belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
@@ -78,7 +76,7 @@ class Affiliate < ActiveRecord::Base
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix
+  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix
   before_save :set_css_properties, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
@@ -86,7 +84,7 @@ class Affiliate < ActiveRecord::Base
 
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :name, :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
+  attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
@@ -198,7 +196,7 @@ class Affiliate < ActiveRecord::Base
   RESULTS_SOURCE_DISPLAY_NAMES = { :bing => 'Bing', :odie => 'USASearch', :"bing+odie" => 'USASearch/Bing' }
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
-      header footer header_footer_css affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
+      header footer header_footer_css search_results_page_title favicon_url external_css_url uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -246,10 +244,6 @@ class Affiliate < ActiveRecord::Base
 
   def includes_domain?(domain)
     domains_as_array.detect{ |affiliate_domain| domain =~ /#{Regexp.escape(affiliate_domain)}/i }.nil? ? false : true
-  end
-
-  def template
-    affiliate_template.presence || AffiliateTemplate.default_template
   end
 
   def update_attributes_for_staging(attributes)
@@ -550,11 +544,6 @@ class Affiliate < ActiveRecord::Base
     boosted_contents.each { |bs| bs.remove_from_index }
   end
 
-  def set_default_affiliate_template
-    self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?
-    self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
-  end
-
   def set_name
     if self.name.blank?
       self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0, 33] unless self.display_name.blank?
@@ -660,16 +649,13 @@ class Affiliate < ActiveRecord::Base
     errors.add(:base, "#{link_type.to_s.humanize} link URL can't be blank") if add_blank_link_url_error
   end
 
-  def set_default_one_serp_fields
-    self.uses_one_serp = true if new_record? and uses_one_serp.nil?
-    self.staged_uses_one_serp = uses_one_serp if staged_uses_one_serp.nil?
-
+  def set_default_fields
     self.theme = THEMES.keys.first.to_s if theme.blank?
     self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
     self.managed_header_text = display_name if managed_header_text.nil?
     self.staged_managed_header_text = display_name if staged_managed_header_text.nil?
 
-    if new_record? and uses_one_serp?
+    if new_record?
       self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
       self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
       @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
@@ -829,10 +815,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def sanitize_staged_header_footer
-    if staged_uses_one_serp?
-      self.staged_header = strip_comments(staged_header) unless staged_header.blank?
-      self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
-    end
+    self.staged_header = strip_comments(staged_header) unless staged_header.blank?
+    self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
   end
 
   def set_attachment_attributes_to_nil(attachment)
@@ -850,8 +834,6 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_is_validate_staged_header_footer(attributes)
-    if attributes[:staged_uses_managed_header_footer] == '0' or attributes[:staged_uses_one_serp] == '1'
-      self.is_validate_staged_header_footer = true
-    end
+    self.is_validate_staged_header_footer = attributes[:staged_uses_managed_header_footer] == '0'
   end
 end

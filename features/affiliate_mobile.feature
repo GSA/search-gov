@@ -38,14 +38,6 @@ Feature: Mobile Search for Affiliate
     When I go to nosayt.agency.gov's mobile search page
     Then affiliate SAYT suggestions for "nosayt.agency.gov" should be disabled
 
-  Scenario: A search on affiliate with legacy template
-    Given the following Affiliates exist:
-      | display_name | name              | contact_email  | contact_name | domains | header           | footer           | is_sayt_enabled | uses_one_serp |
-      | agency site  | agency.gov        | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | true            | false         |
-    And I am on agency.gov's mobile search page
-    Then I should see the page with affiliate stylesheet "default_mobile.css"
-    And I should not see the page with affiliate stylesheet "one_serp_mobile.css"
-
   Scenario: Toggling back to classic mode
     Given the following Affiliates exist:
       | display_name | name       | contact_email  | contact_name | domains | header           | footer           |

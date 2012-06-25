@@ -26,10 +26,8 @@ module NavigationHelpers
       search_path(:affiliate => $1, :m => 'true')
     when /^(.*)'s embedded search page$/
       search_path(:affiliate => $1, :embedded => "1")
-    when /^(.*)'s oneserp search page$/
-      search_path(:affiliate => $1, :oneserp => "1")
-    when /^(.*)'s oneserp with strictui search page$/
-      search_path(:affiliate => $1, :oneserp => "1", :strictui => "1")
+    when /^(.*)'s strictui search page$/
+      search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
     when /^(.*)'s news search page$/

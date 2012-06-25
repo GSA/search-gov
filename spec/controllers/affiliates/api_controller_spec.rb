@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe Affiliates::ApiController do
-  fixtures :affiliates, :affiliate_templates, :users
+  fixtures :affiliates, :users
 
   before do
     activate_authlogic

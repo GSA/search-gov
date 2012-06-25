@@ -5,9 +5,6 @@
       .dvSearchClose.results
         = image_tag "/m/i/close.png", :style => "display: none;"
     .dvSearchBtn.results
-      - if @affiliate.uses_one_serp?
-        = submit_tag t(:search), :id => 'Search'
-      - else
-        = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png", :id => 'Search'
+      = submit_tag t(:search), :id => 'Search'
     .clear
 

@@ -61,11 +61,11 @@ Feature:  Administration
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
-    | display_name     | name             | contact_email         | contact_name        |
-    | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
-    | title               | url                     | description                               |
-    | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+      | title              | url                    | description                        |
+      | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results |
     When I go to the admin home page
     And I follow "Affiliate Boosted Content"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content
@@ -78,7 +78,6 @@ Feature:  Administration
       | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | web.agency.gov          | staged.agency.gov              | this is my SERP page | this is my staged SERP page | #live { color: blue } | #staged { color: green } | <h1>header</h1> | <h1>staged header</h1> | <h1>footer</h1> | <h1>staged footer</h1> |
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the agency.gov's admin edit affiliate page
-    Then the "Uses one serp" checkbox should be checked
     And the "Uses managed header footer" checkbox should be checked
     And the "Managed header home url" field should contain "http://web.agency.gov"
     And the "Staged managed header home url" field should contain "http://staged.agency.gov"
@@ -92,16 +91,14 @@ Feature:  Administration
 
   Scenario: Updating affiliate from Super Admin affiliate edit page
     Given the following Affiliates exist:
-      | display_name | name       | contact_email                | contact_name | uses_one_serp |
-      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | false         |
+      | display_name | name       | contact_email                | contact_name |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     |
     When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And I go to the agency.gov's admin edit affiliate page
-    And I check "Uses one serp"
     And I select "Gettysburg" from "Theme"
     And I fill in "External tracking code" with "<script>var tracking;</script>"
     And I press "Update"
     And I go to the agency.gov's admin edit affiliate page
-    Then the "Uses one serp" checkbox should be checked
     And the "Theme" field should contain "elegant"
     And the "Staged theme" field should contain "default"
     When I go to agency.gov's search page
@@ -154,11 +151,11 @@ Feature:  Administration
     And I press "Submit"
     Then I should see "agency.gov: 3000"
     And I should see "agency2.gov: 6000"
-  
+
   Scenario: Comparing Search Results
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
-      | display_name  | name        | contact_email | contact_name |
+      | display_name  | name     | contact_email | contact_name |
       | agency site   | aff.gov  | one@foo.gov   | One Foo      |
       | agency site 2 | aff2.gov | two@foo.gov   | Two Foo      |
     And the following IndexedDocuments exist:
@@ -166,12 +163,12 @@ Feature:  Administration
       | Space Suit America      | description for space suit item | http://aff.gov//space-suit1  | aff.gov   | 11/02/2011      | OK                |
       | America Suit Evolution  | description for space suit item | http://aff.gov//space-suit2  | aff.gov   | 11/02/2011      | OK                |
       | Space America Evolution | description for space suit item | http://aff.gov//space-suit3  | aff.gov   | 11/02/2011      | OK                |
-      | America IN SPACE        | description for space suit item | http://aff.gov//space-suit1  | aff2.gov   | 11/02/2011      | OK                |      
+      | America IN SPACE        | description for space suit item | http://aff.gov//space-suit1  | aff2.gov  | 11/02/2011      | OK                |
     When I go to the admin home page
     And I follow "Compare Search Results"
     Then I should not see "Bing Results"
     And I should not see "ODIE Results"
-    
+
     When I fill in "query" with "america"
     When I select "aff.gov" from "Affiliate"
     And I press "Search"

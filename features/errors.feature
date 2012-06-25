@@ -23,8 +23,8 @@ Feature: Errors
 
   Scenario: Going to an affiliate 404 page in English
      Given the following Affiliates exist:
-       | display_name | name    | contact_email | contact_name | header      | footer      | staged_header | staged_footer | uses_managed_header_footer |
-       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | Staged header | Staged footer | false                      |
+       | display_name | name    | contact_email | contact_name | header      | footer      | uses_managed_header_footer |
+       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | false                      |
     When I go to the aff.gov's 404 page
     Then I should see the browser page titled "Oops! We can't find the file - aff site"
     And I should see "Live header"
@@ -38,8 +38,8 @@ Feature: Errors
 
   Scenario: Going to an affiliate 404 page in Spanish
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | header      | footer      | staged_header | staged_footer | uses_managed_header_footer | locale |
-      | aff site     | es.aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | Staged header | Staged footer | false                      | es     |
+      | display_name | name       | contact_email | contact_name | header      | footer      | uses_managed_header_footer | locale |
+      | aff site     | es.aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | false                      | es     |
     When I go to the es.aff.gov's 404 page
     Then I should see the browser page titled "La página que busca no está disponible - aff site"
     And I should see "Live header"

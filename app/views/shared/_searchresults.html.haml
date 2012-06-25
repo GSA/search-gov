@@ -1,5 +1,4 @@
 - result_partial = result_partial_for(search)
-= render('shared/results_summary', :affiliate => @affiliate, :search => @search, :search_vertical => @search_vertical) unless @affiliate.uses_one_serp?
 - if search.first_page?
   - if search.has_boosted_contents? or search.has_featured_collections?
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
@@ -22,5 +21,3 @@
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     = search_results_by_logo(search.are_results_by_bing?)
-- elsif !@affiliate.uses_one_serp?
-  = render 'shared/blank_search_results', :search => @search

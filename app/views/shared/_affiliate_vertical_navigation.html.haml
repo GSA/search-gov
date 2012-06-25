@@ -3,7 +3,6 @@
 - search_params.merge!(:channel => rss_feed.id) if rss_feed
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
 = javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
-= left_nav_label(@affiliate.left_nav_label) unless @affiliate.uses_one_serp?
 - time_filters_css_class = @affiliate.navigations.active.present? ? 'time-filters' : 'time-filters no-active-nav'
 
 = render_navigations(@affiliate, @search, search_params)

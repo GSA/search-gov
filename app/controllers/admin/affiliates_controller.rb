@@ -2,7 +2,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
   active_scaffold :affiliate do |config|
     config.actions.exclude :delete
-    config.columns = [:display_name, :name, :site_domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
+    config.columns = [:display_name, :name, :site_domains, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
                        :features, :external_tracking_code]
@@ -15,7 +15,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:staged_footer].form_ui = :textarea
     config.columns[:external_tracking_code].form_ui = :textarea
     config.update.columns = [:display_name, :name, :search_results_page_title, :staged_search_results_page_title,
-                             :uses_one_serp, :theme, :staged_theme,
+                             :theme, :staged_theme,
                              :uses_managed_header_footer, :staged_uses_managed_header_footer,
                              :managed_header_home_url, :staged_managed_header_home_url,
                              :managed_header_text, :staged_managed_header_text,
@@ -23,15 +23,13 @@ class Admin::AffiliatesController < Admin::AdminController
                              :header, :staged_header, :footer, :staged_footer,
                              :ga_web_property_id, :external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
-                             :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
+                             :is_sayt_enabled, :fetch_concurrency,
                              :has_staged_content, :exclude_webtrends, :locale, :results_source,
                              :sitemaps, :affiliate_feature_addition]
     config.list.columns.exclude virtual_columns
-    config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :affiliate_template, :locale]
+    config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
     config.columns[:staged_search_results_page_title].label = "Staged search results page title"
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
-    config.columns[:affiliate_template].form_ui= :select
-    config.columns[:staged_affiliate_template].form_ui= :select
     config.columns[:theme].form_ui = :select
     config.columns[:features].associated_limit = nil
     config.columns[:staged_theme].form_ui = :select

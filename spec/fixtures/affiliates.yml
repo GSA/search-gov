@@ -5,8 +5,6 @@ usagov_affiliate:
   users: [:affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :basic_gray
-  staged_affiliate_template: [:basic_gray]
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
 
@@ -17,8 +15,6 @@ gobiernousa_affiliate:
   users: [:affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :basic_gray
-  staged_affiliate_template: [:basic_gray]
   search_results_page_title: Current {Query} - {SiteName} resultados de la búsqueda
   staged_search_results_page_title: Staged {Query} - {SiteName} resultados de la búsqueda
   locale: es
@@ -30,8 +26,6 @@ power_affiliate:
   users: [:affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :basic_gray
-  staged_affiliate_template: [:basic_gray]
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
 
@@ -41,7 +35,6 @@ basic_affiliate:
   users: [:affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
@@ -52,7 +45,6 @@ another_affiliate:
   users: [:another_affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
 
@@ -62,7 +54,6 @@ admin_affiliate:
   users: [:admin_affiliate]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
 
@@ -72,7 +63,6 @@ non_existant_affiliate:
   users: [:another_affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
@@ -83,7 +73,6 @@ spanish_affiliate:
   users: [:affiliate_manager]
   theme: elegant
   staged_theme: fun_blue
-  affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results

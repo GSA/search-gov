@@ -49,26 +49,6 @@ describe ErrorsController do
       it { should render_template("page_not_found") }
     end
 
-    context "when handling a staged affiliate request" do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-
-      before do
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        get :page_not_found, :name => affiliate.name, :staged => "1"
-      end
-
-      it { should assign_to(:affiliate).with(affiliate) }
-
-      it "should copy staged fields" do
-        assigns[:affiliate].affiliate_template_id.should == assigns[:affiliate].staged_affiliate_template_id
-      end
-
-      it { should assign_to(:page_title).with_kind_of(String) }
-      it { should respond_with(:missing) }
-      it { should render_template("layouts/affiliate") }
-      it { should render_template("page_not_found") }
-    end
-
     context "when handling a mobile request" do
       before do
         iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"

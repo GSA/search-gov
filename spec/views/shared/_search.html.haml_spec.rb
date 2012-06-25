@@ -11,28 +11,21 @@ describe "shared/_search.html.haml" do
   end
 
   context "when page is displayed" do
-    context "for an affiliate site" do
+    before do
+      @affiliate = stub('Affiliate', :name => 'aff.gov', :is_sayt_enabled => false)
+      assign(:affiliate, @affiliate)
+    end
+
+    context "when a scope id is specified" do
       before do
-        @affiliate = stub('Affiliate', :name => 'aff.gov', :uses_one_serp? => false, :is_sayt_enabled => false)
-        assign(:affiliate, @affiliate)
+        @search.stub!(:scope_id).and_return "SomeScope"
+        assign(:scope_id, 'SomeScope')
       end
 
-      it "should display a link to the advanced search page" do
+      it "should include a hidden tag with the scope id" do
+        @search.scope_id.should == 'SomeScope'
         render
-        rendered.should contain(/Advanced Search/)
-      end
-
-      context "when a scope id is specified" do
-        before do
-          @search.stub!(:scope_id).and_return "SomeScope"
-          assign(:scope_id, 'SomeScope')
-        end
-
-        it "should include a hidden tag with the scope id" do
-          @search.scope_id.should == 'SomeScope'
-          render
-          rendered.should have_selector("input[type='hidden'][id='scope_id'][value='SomeScope']")
-        end
+        rendered.should have_selector("input[type='hidden'][id='scope_id'][value='SomeScope']")
       end
     end
   end

@@ -301,37 +301,32 @@ describe Affiliates::HomeController do
 
     context "when logged in as the affiliate manager" do
       before do
-        UserSession.create(users(:affiliate_manager))
+        current_user = users(:affiliate_manager)
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        @affiliate = affiliates(:basic_affiliate)
+        current_user.stub_chain(:affiliates, :find).and_return(@affiliate)
       end
 
-      context "when editing one of the affiliate's affiliates" do
-        before do
-          @affiliate = affiliates(:basic_affiliate)
-        end
+      it "should assign @title" do
+        get :edit_site_information, :id => @affiliate.id
+        assigns[:title].should_not be_blank
+      end
 
-        it "should assign @title" do
-          get :edit_site_information, :id => @affiliate.id
-          assigns[:title].should_not be_blank
-        end
+      it "should assign @affiliate" do
+        get :edit_site_information, :id => @affiliate.id
+        assigns[:affiliate].should == @affiliate
+      end
 
-        it "should assign @affiliate" do
-          get :edit_site_information, :id => @affiliate.id
-          assigns[:affiliate].should == @affiliate
-        end
+      it "should sync staged attributes on @affiliate" do
+        @affiliate.should_receive(:sync_staged_attributes)
+        get :edit_site_information, :id => @affiliate.id
+      end
 
-        it "should sync staged attributes on @affiliate" do
-          get :edit_site_information, :id => @affiliate.id
-          assigns[:affiliate].staged_header.should == assigns[:affiliate].header
-          assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
-          assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
-          assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
-          assigns[:affiliate].has_staged_content.should == false
-        end
-
-        it "should render the edit_site_information page" do
-          get :edit_site_information, :id => @affiliate.id
-          response.should render_template("edit_site_information")
-        end
+      it "should render the edit_site_information page" do
+        get :edit_site_information, :id => @affiliate.id
+        response.should render_template("edit_site_information")
       end
     end
   end
@@ -475,7 +470,6 @@ describe Affiliates::HomeController do
         get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         assigns[:affiliate].staged_header.should == assigns[:affiliate].header
         assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
-        assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
         assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
         assigns[:affiliate].has_staged_content.should == false
       end
@@ -883,27 +877,16 @@ describe Affiliates::HomeController do
 
     context "when logged in as an affiliate manager" do
       before do
-        user = users(:affiliate_manager)
-        user.affiliates.include?(@affiliate).should be_true
-        session = UserSession.create(user)
+        current_user = users(:affiliate_manager)
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(@affiliate)
+        @affiliate.should_receive(:cancel_staged_changes)
         post :cancel_staged_changes_for, :id => @affiliate.id
       end
 
-      it "should assign @affiliate" do
-        assigns[:affiliate].should == @affiliate
-      end
-
-      it "should update @affiliate attributes for current" do
-        assigns[:affiliate].staged_header.should == assigns[:affiliate].header
-        assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
-        assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
-        assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
-        assigns[:affiliate].has_staged_content.should == false
-      end
-
-      it "should redirect to affiliate specific page" do
-        response.should redirect_to affiliate_path(@affiliate)
-      end
+      it { should assign_to(:affiliate).with(@affiliate) }
+      it { should redirect_to(affiliate_path(@affiliate)) }
     end
   end
 

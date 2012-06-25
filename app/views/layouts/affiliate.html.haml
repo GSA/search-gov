@@ -7,11 +7,7 @@
     = render_robots_meta_tag
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = stylesheet_link_tag 'compiled/advanced.css'
-    = render_affiliate_stylesheet @affiliate
-    - unless @affiliate.uses_one_serp?
-      /[if lt IE 8]
-        = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-      = stylesheet_link_tag "clearfix"
+    = stylesheet_link_tag 'compiled/affiliates/one_serp'
     - if @affiliate.is_sayt_enabled?
       = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
       = stylesheet_link_tag 'compiled/sayt.css'
@@ -29,7 +25,7 @@
         #{@affiliate.nested_header_footer_css}
     = render(:partial => 'searches/affiliate_css_overrides',
         :locals => { :css_property_hash => @affiliate.css_property_hash,
-                     :managed_header_css_properties => @affiliate.managed_header_css_properties }) if @affiliate.uses_one_serp?
+                     :managed_header_css_properties => @affiliate.managed_header_css_properties })
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
@@ -40,7 +36,7 @@
       %a{:href => "#main_content"} Skip to Main Content
     #container
       = render_affiliate_header(@affiliate, @search_options)
-      #search.clearfix
+      #search
         -unless error_page?
           %h1 Search
         - unless @affiliate.connections.blank?
