@@ -306,7 +306,7 @@ describe Affiliates::OnDemandUrlsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:indexed_documents).and_return(indexed_documents)
-        indexed_documents.should_receive(:crawled).and_return(crawled_urls)
+        indexed_documents.should_receive(:fetched).and_return(crawled_urls)
         crawled_urls.should_receive(:select).and_return(selected_fields)
         selected_fields.should_receive(:paginated_each).and_yield(doc)
 

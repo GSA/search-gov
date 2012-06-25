@@ -60,7 +60,7 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
       format.csv {
         csv_data = FasterCSV.generate do |csv|
           csv << EXPORT_CRAWLED_FIELDS
-          @affiliate.indexed_documents.crawled.select(EXPORT_CRAWLED_FIELDS).paginated_each(:page => 1, :per_page => 10000) do |doc|
+          @affiliate.indexed_documents.fetched.select(EXPORT_CRAWLED_FIELDS).paginated_each(:page => 1, :per_page => 10000) do |doc|
             description = doc.description.nil? ? '' : doc.description.squish
             csv << [doc.url, doc.title, description, doc.doctype, doc.last_crawled_at, doc.last_crawl_status]
           end

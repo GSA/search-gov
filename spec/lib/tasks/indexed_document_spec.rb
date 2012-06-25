@@ -24,12 +24,6 @@ describe "Indexed document rake tasks" do
       end
     end
 
-    context "when the extent argument is not passed in" do
-      it "should fetch/index all affiliate indexed documents" do
-        IndexedDocument.should_receive(:refresh).once.with("all")
-        @rake[@task_name].invoke
-      end
-    end
   end
 
   describe "usasearch:indexed_document:bulk_load_urls" do

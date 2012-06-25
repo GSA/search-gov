@@ -21,8 +21,10 @@ class IndexedDocument < ActiveRecord::Base
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
+  scope :not_ok, where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)")
+  scope :fetched, where('last_crawled_at IS NOT NULL')
+  scope :unfetched, where('ISNULL(last_crawled_at)')
   scope :html, where(:doctype => 'html')
-  scope :crawled, where('last_crawled_at IS NOT NULL')
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 64000
@@ -181,7 +183,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def index_pdf(pdf_file_path)
-    pdf_text = parse_pdf_file(pdf_file_path,'t').strip
+    pdf_text = parse_pdf_file(pdf_file_path, 't').strip
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
     update_attributes!(:title => generate_pdf_title(pdf_file_path, pdf_text), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
@@ -273,7 +275,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def generate_pdf_title(pdf_file_path, pdf_text)
-    parse_pdf_file(pdf_file_path,'m').scan(/title: (\w.*)/i)[0][0].squish
+    parse_pdf_file(pdf_file_path, 'm').scan(/title: (\w.*)/i)[0][0].squish
   rescue
     pdf_text.split(/[\n.]/).first.squish
   end

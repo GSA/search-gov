@@ -1,8 +1,7 @@
 namespace :usasearch do
   namespace :indexed_document do
-    desc "Fetches and indexes Affiliate indexed documents. Accepts 'all', 'not_ok', 'ok', and 'unfetched'."
+    desc "Fetches and indexes Affiliate indexed documents. Accepts 'not_ok', 'ok', and 'unfetched'."
     task :refresh, :extent, :needs => :environment do |t, args|
-      args.with_defaults(:extent => "all")
       IndexedDocument.refresh(args.extent)
     end
 

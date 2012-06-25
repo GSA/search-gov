@@ -1862,17 +1862,24 @@ describe Affiliate do
     end
   end
 
-  describe "#refresh_indexed_documents(extents)" do
+  describe "#refresh_indexed_documents(scope)" do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
       @first = @affiliate.indexed_documents.build(:url => 'http://some.mil/')
       @second = @affiliate.indexed_documents.build(:url => 'http://some.mil/foo')
       @third = @affiliate.indexed_documents.build(:url => 'http://some.mil/bar')
+      @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
+                                               :description => 'This is a PDF document.',
+                                               :url => 'http://something.gov/pdf.pdf',
+                                               :last_crawl_status => IndexedDocument::OK_STATUS,
+                                               :last_crawled_at => Time.now,
+                                               :body => "this is the doc body",
+                                               :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8")
       @affiliate.save!
     end
 
-    it "should enqueue in batches" do
+    it "should enqueue just the scoped docs in batches" do
       Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @first.id, @second.id, 'not_ok')
       Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @third.id, @third.id, 'not_ok')
       @affiliate.refresh_indexed_documents('not_ok')
