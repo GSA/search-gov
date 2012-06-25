@@ -67,9 +67,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_external_css_url => hash[:staged_external_css_url],
       :favicon_url => hash[:favicon_url],
       :staged_favicon_url => hash[:staged_favicon_url],
-      :facebook_handle => hash[:facebook_handle],
-      :flickr_url => hash[:flickr_url],
-      :twitter_handle => hash[:twitter_handle],
       :youtube_handles => hash[:youtube_handles].present? ? hash[:youtube_handles].split(',') : nil,
       :theme => theme,
       :staged_theme => staged_theme,
@@ -94,7 +91,12 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
     affiliate.users << user
-
+    affiliate.flickr_profiles.create(:url => hash[:flickr_url], :profile_type => 'user', :profile_id => '1234') if hash[:flickr_url]
+    affiliate.facebook_profiles.create(:username => hash[:facebook_handle]) if hash[:facebook_handle]
+    hash[:youtube_handles].split(',').each do |youtube_handle|
+      affiliate.youtube_profiles.create(:username => youtube_handle)
+    end if hash[:youtube_handles]
+    affiliate.twitter_profiles << TwitterProfile.create(:screen_name => hash[:twitter_handle], :twitter_id => 1234) if hash[:twitter_handle]
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(:domain => domain) } unless hash[:domains].blank?
   end
 end

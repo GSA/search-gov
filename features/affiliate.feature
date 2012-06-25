@@ -2262,60 +2262,10 @@ Feature: Affiliate clients
     Then I should see the browser page titled "Social Media"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media
     And I should see "Social Media" in the page header
-    And the "Facebook handle" field should contain "FBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter handle" field should contain "TwitterAgency"
-    And the "YouTube handle 0" field should contain "YouTubeAgency"
-    When I fill in the following:
-      | Facebook handle  | UpdatedFBAgency                             |
-      | Flickr URL       | http://www.flickr.com/groups/updatedusagov/ |
-      | Twitter handle   | UpdatedTwitterAgency                        |
-      | YouTube handle 0 | UpdatedYouTubeAgency                        |
-    And I press "Save"
-    Then I should see "Site was successfully updated."
-    When I follow "Social Media"
-    Then the "Facebook handle" field should contain "UpdatedFBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/updatedusagov/"
-    And the "Twitter handle" field should contain "UpdatedTwitterAgency"
-    And the "YouTube handle 0" field should contain "UpdatedYouTubeAgency"
-    When I follow "Cancel"
-    Then I should see the browser page titled "Site: aff site"
-
-  Scenario: Editing youtube handle
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | youtube_handles   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | USAgov,whitehouse |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    When I follow "RSS"
-    Then I should see "Videos"
-    When I follow "Social Media"
-    And I fill in "YouTube handle 0" with "     USGovernment    "
-    And I fill in "YouTube handle 1" with ""
-    And I press "Save"
-    And I follow "RSS"
-    Then I should see the following table rows:
-      | Name   | URLs                                    |
-      | Videos | gdata.youtube.com/.../videos?alt=rss... |
-    And I should not see "Delete" button
-    When I follow "Videos"
-    Then I should see the following table rows:
-      | Name            | Videos |
-      | Show as GovBox  | No     |
-      | Show in sidebar | No     |
-    And I should see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usgovernment"
-    And I should see "Pending"
-    And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=usagov"
-    And I should not see "gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse"
-    And I should not see "Delete" button
-    When I follow "Edit"
-    Then the "Name*" field should contain "Videos"
-    And the "RSS feed URL 0" field should contain "http:\/\/gdata.youtube.com\/feeds\/base\/videos\?alt=rss&author=usgovernment"
-    And the "RSS feed URL 0" field should be disabled
-    And I should not see "Mark RSS feed URL 0 for deletion"
-    And I should not see "RSS feed URL 1"
-    When I follow "Social Media" in the page content
-    Then I should see the browser page titled "Social Media"
+    And I should see "FBAgency"
+    And I should see "TwitterAgency"
+    And I should see "YouTubeAgency"
+    And I should see "http://www.flickr.com/groups/usagov/"
 
   Scenario: Visiting the URLs & Sitemaps page
     Given the following Affiliates exist:

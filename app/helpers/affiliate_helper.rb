@@ -212,4 +212,14 @@ module AffiliateHelper
     end
     content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
   end
+  
+  def render_social_media_table_row(profile)
+    first_column = content_tag(:td, profile.class.name.split("Profile").first)
+    profile_column = :username if profile.is_a?(FacebookProfile) or profile.is_a?(YoutubeProfile)
+    profile_column = :url if profile.is_a?(FlickrProfile)
+    profile_column = :screen_name if profile.is_a?(TwitterProfile)
+    second_column = content_tag(:td, profile.send(profile_column))
+    third_column = content_tag(:td, link_to('Delete', social_media_affiliate_path(:profile_id => profile.id, :profile_type => profile.class.name), :method => :delete))
+    content_tag(:tr, [first_column, second_column, third_column].join("\n").html_safe)
+  end
 end

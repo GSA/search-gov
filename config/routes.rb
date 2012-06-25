@@ -20,6 +20,7 @@ UsasearchRails3::Application.routes.draw do
       get :best_bets
       get :edit_social_media
       put :update_social_media
+      delete :social_media
       get :urls_and_sitemaps
       get :hosted_sitemaps
       get :content_sources
@@ -32,6 +33,7 @@ UsasearchRails3::Application.routes.draw do
       get :edit_external_tracking
       put :update_external_tracking
       get :new_connection_fields
+      get :new_social_media_profile
     end
     collection do
       get :home
@@ -41,7 +43,6 @@ UsasearchRails3::Application.routes.draw do
       get :new_rss_feed_fields
       get :new_managed_header_link_fields
       get :new_managed_footer_link_fields
-      get :new_youtube_handle_fields
       get '/demo' => redirect(BLOG_URL, :status => 302)
       get '/how_it_works' => redirect(BLOG_URL, :status => 302)
     end

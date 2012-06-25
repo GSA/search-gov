@@ -15,7 +15,7 @@ class ImageSearch < WebSearch
 
   def search
     begin
-      @affiliate.flickr_photos.any? ? perform_odie_image_search : parse_bing_response(perform_bing_search)
+      @affiliate.flickr_profiles.any? ? perform_odie_image_search : parse_bing_response(perform_bing_search)
     rescue BingSearch::BingSearchError => error
       Rails.logger.warn "Error getting search results from Bing server: #{error}"
       false

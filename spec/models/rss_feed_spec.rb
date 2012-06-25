@@ -185,7 +185,7 @@ describe RssFeed do
                                      http://gdata.youtube.com/feeds/api/playlists/FAKEID2?start-index=1&max-results=50
                                      http://gdata.youtube.com/feeds/api/playlists/FAKEID3?start-index=1&max-results=50) }
     before do
-      affiliate.update_attributes!(:youtube_handles => %w(whitehouse))
+      affiliate.youtube_profiles.create!(:username => 'whitehouse')
     end
 
     it "should add new youtube playlists" do
@@ -221,7 +221,7 @@ describe RssFeed do
 
   describe "#query_youtube_playlist_urls" do
     let(:affiliate) { Affiliate.create!(:display_name => 'site with youtube playlists') }
-    before { affiliate.update_attributes!(:youtube_handles => %w(whitehouse)) }
+    before { affiliate.youtube_profiles.create(:username => 'whitehouse') }
 
     it "should generate playlist urls" do
       managed_feed = affiliate.rss_feeds(true).managed.first

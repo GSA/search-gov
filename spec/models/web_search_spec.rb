@@ -1068,7 +1068,8 @@ describe WebSearch do
     context "photos" do
       before do
         FlickrPhoto.destroy_all
-        @photo = FlickrPhoto.create(:flickr_id => 1, :affiliate => @affiliate, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
+        @affiliate.flickr_profiles.create(:url => 'http://flickr.com/photos/whitehouse', :profile_type => 'user', :profile_id => '123')
+        @photo = FlickrPhoto.create(:flickr_id => 1, :flickr_profile => @affiliate.flickr_profiles.first, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
         FlickrPhoto.reindex
       end
 

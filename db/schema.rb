@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620215944) do
+ActiveRecord::Schema.define(:version => 20120628112427) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -45,9 +45,6 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
     t.string   "staged_favicon_url"
-    t.string   "facebook_handle"
-    t.string   "flickr_url"
-    t.string   "twitter_handle"
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
@@ -80,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
     t.string   "ga_web_property_id",                        :limit => 20
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -89,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
-    t.string   "youtube_handles"
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
@@ -290,6 +286,13 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
 
   add_index "excluded_urls", ["affiliate_id"], :name => "index_excluded_urls_on_affiliate_id"
 
+  create_table "facebook_profiles", :force => true do |t|
+    t.string   "username"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "faqs", :force => true do |t|
     t.string   "url"
     t.text     "question"
@@ -361,7 +364,7 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
     t.string   "secret"
     t.string   "owner"
     t.boolean  "is_friend"
-    t.string   "last_update",  :limit => 15
+    t.string   "last_update",       :limit => 15
     t.string   "url_sq"
     t.string   "url_t"
     t.string   "url_s"
@@ -396,15 +399,24 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "accuracy"
-    t.integer  "license",      :limit => 3
+    t.integer  "license",           :limit => 3
     t.text     "tags"
     t.text     "machine_tags"
     t.datetime "date_taken"
     t.datetime "date_upload"
-    t.string   "path_alias",   :limit => 50
-    t.string   "owner_name",   :limit => 50
-    t.string   "icon_server",  :limit => 10
+    t.string   "path_alias",        :limit => 50
+    t.string   "owner_name",        :limit => 50
+    t.string   "icon_server",       :limit => 10
     t.integer  "icon_farm"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "flickr_profile_id"
+  end
+
+  create_table "flickr_profiles", :force => true do |t|
+    t.string   "url"
+    t.string   "profile_type"
+    t.string   "profile_id"
     t.integer  "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -468,7 +480,7 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|
@@ -832,5 +844,12 @@ ActiveRecord::Schema.define(:version => 20120620215944) do
   add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
+
+  create_table "youtube_profiles", :force => true do |t|
+    t.string   "username"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

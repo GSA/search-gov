@@ -440,15 +440,7 @@ describe Affiliate do
 
     it "should strip text columns" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes!(:facebook_handle => '     http://www.facebook.com/WhiteHouse   ',
-                                   :flickr_url => '   http://www.flickr.com/photos/whitehouse   ',
-                                   :twitter_handle => '     whitehouse   ',
-                                   :youtube_handles => ['     whitehouse   ', '  USGovernment ', ' whitehouse '],
-                                   :ga_web_property_id => '  WEB_PROPERTY_ID  ')
-      affiliate.facebook_handle.should == 'http://www.facebook.com/WhiteHouse'
-      affiliate.flickr_url.should == 'http://www.flickr.com/photos/whitehouse'
-      affiliate.twitter_handle.should == 'whitehouse'
-      affiliate.youtube_handles.should == %w(USGovernment whitehouse)
+      affiliate.update_attributes!(:ga_web_property_id => '  WEB_PROPERTY_ID  ')
       affiliate.ga_web_property_id.should == 'WEB_PROPERTY_ID'
     end
 
@@ -666,19 +658,6 @@ describe Affiliate do
       affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].last.should match(/Footer link URL can't be blank/)
-    end
-
-    it "should validate the length of youtube_handles in YAML" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.youtube_handles = %w(extremesuperlong1234 extremesuperlong2345 extremesuperlong3456 extremesuperlong4567
-                                     extremesuperlong5678 extremesuperlong6789 extremesuperlong7890 extremesuperlong8901
-                                     extremesuperlong90ab extremesuperlong0abc extremesuperlongabcd extremesuperlongbcde)
-      affiliate.save.should be_false
-      affiliate.errors[:youtube_handles].should include('is too long')
-
-      affiliate.youtube_handles = []
-      20.times { affiliate.youtube_handles << 'extremesuperlong1234' }
-      affiliate.save!
     end
 
     context "is_validate_staged_header_footer is set to true" do
@@ -1931,35 +1910,6 @@ describe Affiliate do
     end
   end
 
-  context "when updating the twitter_handle field" do
-    before do
-      @twitter_user = mock(Object)
-      @twitter_user.stub!(:id).and_return 123
-      @twitter_user.stub!(:screen_name).and_return "NewHandle"
-      @twitter_user.stub!(:profile_image_url).and_return 'http://a0.twimg.com/profile_images/2183009986/normal.jpg'
-      @affiliate = affiliates(:basic_affiliate)
-    end
-
-    it "should associate the affiliate with either an existing or new TwitterProfile if the twitter_handle field is updated" do
-      TwitterProfile.find_by_screen_name("NewHandle").should be_nil
-      Twitter.should_receive(:user).with("NewHandle").and_return(@twitter_user)
-      @affiliate.update_attributes(:twitter_handle => 'NewHandle')
-      TwitterProfile.find_by_screen_name("NewHandle").should_not be_nil
-    end
-
-    context "when Twitter raises an error" do
-      before do
-        Twitter.should_receive(:user).and_raise "Some Error"
-      end
-
-      it "should complete the save without an error" do
-        @affiliate.update_attributes(:twitter_handle => 'NewHandle')
-        TwitterProfile.find_by_screen_name("NewHandle").should be_nil
-        @affiliate.twitter_handle.should == 'NewHandle'
-      end
-    end
-  end
-
   describe "#autodiscover" do
     before do
       @affiliate = affiliates(:basic_affiliate)
@@ -2169,19 +2119,21 @@ describe Affiliate do
       before do
         page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
         @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
+        flickr_api_response = {:nsid => '1600'}
+        flickr.people.stub!(:findByUsername).with(:username => 'whitehouse').and_return flickr_api_response
         @affiliate.autodiscover_social_media
       end
 
       it "should update the twitter handle with the first twitter handle found" do
-        @affiliate.twitter_handle.should == "whitehouse"
+        @affiliate.twitter_profiles.collect(&:screen_name).include?("whitehouse").should be_true
       end
 
       it "should update the facebook handle with the first Facebook handle found" do
-        @affiliate.facebook_handle.should == "whitehouse"
+        @affiliate.facebook_profiles.collect(&:username).include?('whitehouse').should be_true
       end
 
-      it "should update the flickr url with the first Flickr url found" do
-        @affiliate.flickr_url.should == "http://flickr.com/whitehouse"
+      it "should create a flickr profile with the first Flickr url found" do
+        @affiliate.flickr_profiles.collect(&:url).include?("http://flickr.com/whitehouse").should be_true
       end
 
       it "should update the youtube handles with all the youtube handles found on the page" do
@@ -2190,11 +2142,12 @@ describe Affiliate do
 
       context "when there are existing youtube handles" do
         before do
-          @affiliate.update_attributes(:youtube_handles => ['whitehouse_test'])
+          @affiliate.youtube_profiles.create!(:username => 'whitehouse_test')
         end
 
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
+          @affiliate.reload
           @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2", "whitehouse_test"]
         end
       end
@@ -2208,19 +2161,19 @@ describe Affiliate do
       end
 
       it "should not update the twitter handle" do
-        @affiliate.twitter_handle.should be_nil
+        @affiliate.twitter_profiles.should be_empty
       end
 
       it "should not update the facebook handle" do
-        @affiliate.facebook_handle.should be_nil
+        @affiliate.facebook_profiles.should be_empty
       end
 
       it "should not update the flickr handle" do
-        @affiliate.flickr_url.should be_nil
+        @affiliate.flickr_profiles.should be_empty
       end
 
       it "should not update the youtube handles" do
-        @affiliate.youtube_handles.should be_nil
+        @affiliate.youtube_handles.should be_empty
       end
     end
 
@@ -2238,10 +2191,13 @@ describe Affiliate do
   describe "#import_flickr_photos" do
     before do
       @affiliate = affiliates(:basic_affiliate)
+      @flickr_profiles = [@affiliate.flickr_profiles.create!(:url => 'http://www.flickr.com/photos/USAgency', :profile_id => '1234', :profile_type => 'user'),
+                          @affiliate.flickr_profiles.create!(:url => 'http://www.flickr.com/photos/USAgency2', :profile_id => '12345', :profile_type => 'user')]
+      @affiliate.stub!(:flickr_profiles).and_return @flickr_profiles
     end
 
-    it "should import the photos from Flickr" do
-      FlickrPhoto.should_receive(:import_photos).with(@affiliate).and_return true
+    it "should import the photos from ech Flickr profile" do
+      @flickr_profiles.each{|flickr_profile| flickr_profile.should_receive(:import_photos).and_return true }
       @affiliate.import_flickr_photos
     end
   end

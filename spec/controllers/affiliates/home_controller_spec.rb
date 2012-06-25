@@ -1089,14 +1089,40 @@ describe Affiliates::HomeController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_not_receive(:update_attributes_for_live)
         affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(true)
-
-        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_handle => 'FBAgency' }, :commit => 'Save'
+        facebook_profiles_attributes = {"facebook_profiles_attributes"=>{"1340809607"=>{"username"=>"USAgency"}}}
+        affiliate.should_receive(:update_attributes).with(hash_including(facebook_profiles_attributes)).and_return(true)
+        put :update_social_media, :id => affiliate.id, :affiliate => facebook_profiles_attributes, :commit => 'Save'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
       it { should set_the_flash }
-      it { should redirect_to(affiliate_path(affiliate)) }
+      it { should redirect_to(edit_social_media_affiliate_path(affiliate)) }
+    end
+    
+    context "when adding a twitter handle" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_not_receive(:update_attributes_for_live)
+        affiliate.should_not_receive(:update_attributes_for_staging)
+        twitter_profiles_attributes = {"twitter_profiles_attributes"=>{"1340809607"=>{"screen_name"=>"USAgency"}}}
+        twitter_user = mock(Object)
+        twitter_user.stub!(:id).and_return 123
+        twitter_user.stub!(:screen_name).and_return "USAgency"
+        Twitter.should_receive(:user).with("USAgency").and_return twitter_user
+        put :update_social_media, :id => affiliate.id, :affiliate => twitter_profiles_attributes, :commit => 'Save'
+      end
+      
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash }
+      it { should redirect_to(edit_social_media_affiliate_path(affiliate)) }
+      it "should create the Twitter profile for the affiliate" do
+        affiliate.twitter_profiles.first.screen_name.should == "USAgency"
+      end
     end
 
     context "when logged in as the affiliate manager and failed to update the site" do
@@ -1109,17 +1135,70 @@ describe Affiliates::HomeController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_not_receive(:update_attributes_for_live)
         affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(false)
+        facebook_profiles_attributes = {"facebook_profiles_attributes"=>{"1340809607"=>{"username"=>"USAgency"}}}
+        affiliate.should_receive(:update_attributes).with(hash_including(facebook_profiles_attributes)).and_return(false)
 
-        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_handle => 'FBAgency' }, :commit => 'Save'
+        put :update_social_media, :id => affiliate.id, :affiliate => facebook_profiles_attributes, :commit => 'Save'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
       it { should assign_to :title }
-      it { should render_template("affiliates/home/edit_social_media") }
+      it { should redirect_to(edit_social_media_affiliate_path(affiliate)) }
     end
   end
-
+  
+  describe "do DELETE on #social_media" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      current_user = users(:affiliate_manager)
+      UserSession.create(current_user)
+      User.should_receive(:find_by_id).and_return(current_user)
+      current_user.stub_chain(:affiliates, :find).and_return(@affiliate)
+    end
+    
+    context "when the profile type passed is Twitter" do
+      before do
+        @affiliate.twitter_profiles << TwitterProfile.create(:screen_name => 'NewHandle', :twitter_id => 1234)
+      end
+      
+      it "should delete the Twitter Profile from the affiliate" do
+        delete :social_media, :id => @affiliate.id.to_s, :profile_type => "TwitterProfile", :profile_id => @affiliate.twitter_profiles.first.id.to_s
+        @affiliate.twitter_profiles.should be_empty
+        TwitterProfile.find_by_screen_name('NewHandle').should_not be_nil
+        response.should redirect_to edit_social_media_affiliate_path(@affiliate)
+      end
+    end
+    
+    context "when the profile type is something else" do
+      before do
+        @affiliate.facebook_profiles.create(:username => 'barackobama')
+      end
+      
+      it "should delete the associated Facebook profile" do
+        delete :social_media, :id => @affiliate.id.to_s, :profile_type => "FacebookProfile", :profile_id => @affiliate.facebook_profiles.first.id.to_s
+        @affiliate.reload
+        @affiliate.facebook_profiles.should be_empty
+        FacebookProfile.find_by_username_and_affiliate_id("barackobama", @affiliate.id).should be_nil
+        response.should redirect_to edit_social_media_affiliate_path(@affiliate)
+      end
+    end
+  end
+  
+  describe "do GET on new_social_media_profile" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      current_user = users(:affiliate_manager)
+      UserSession.create(current_user)
+      User.should_receive(:find_by_id).and_return(current_user)
+      current_user.stub_chain(:affiliates, :find).and_return(@affiliate)
+    end
+    
+    it "should render the form for the supplied profile type" do
+      get :new_social_media_profile, :id => @affiliate.id.to_s, :profile_type => "facebook", :format => :js
+      response.should render_template("new_facebook_profile_fields")
+    end
+  end
+  
   describe "do GET on #hosted_sitemaps" do
     context "when logged in as the affiliate manager" do
       let(:affiliate) { affiliates(:basic_affiliate) }
@@ -1556,20 +1635,6 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should respond_with(:success) }
-    end
-  end
-
-  describe "do GET on #new_youtube_handle_fields" do
-    render_views
-    context "when logged in as the affiliate manager" do
-      let(:current_user) { users(:affiliate_manager) }
-
-      before do
-        UserSession.create(current_user)
-        get :new_youtube_handle_fields, :format => :js
-      end
-
       it { should respond_with(:success) }
     end
   end

@@ -21,6 +21,24 @@ describe TwitterProfile do
   end
   it { should have_many :tweets }
   it { should have_and_belong_to_many :affiliates }
+  
+  context "when creating a new TwitterProfile" do
+    before do
+      @twitter_user = mock(Object)
+      @twitter_user.stub!(:id).and_return 123
+      @twitter_user.stub!(:screen_name).and_return "NewHandle"
+    end
+  
+    it "should use the Twitter API to find out the Twitter Profile id on create" do
+      Twitter.should_receive(:user).with("NewHandle").and_return @twitter_user
+      TwitterProfile.create!(:screen_name => "NewHandle").twitter_id.should == 123
+    end
+
+    it "should not create the profile if there is an error in using the Twitter API" do
+      Twitter.should_receive(:user).and_raise "Some Error"
+      TwitterProfile.create(:screen_name => "NewHandle").errors.should_not be_empty
+    end
+  end
 
   describe "#link_to_profile" do
     before do

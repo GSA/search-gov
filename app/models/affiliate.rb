@@ -27,7 +27,9 @@ class Affiliate < ActiveRecord::Base
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_and_belongs_to_many :twitter_profiles
-  has_many :flickr_photos
+  has_many :flickr_profiles
+  has_many :facebook_profiles
+  has_many :youtube_profiles
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
 
@@ -62,7 +64,6 @@ class Affiliate < ActiveRecord::Base
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
-  before_validation :reject_blank_youtube_handles
   validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
@@ -75,20 +76,18 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
-  validate :youtube_handles_length_in_yaml, :external_tracking_code_cannot_be_malformed
+  validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :strip_text_columns, :ensure_http_prefix
   before_save :set_css_properties, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
-  after_save :associate_with_twitter_profiles
 
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :name, :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
-  serialize :youtube_handles, Array
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -96,6 +95,11 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :rss_feeds, :reject_if => proc { |a| a[:name].blank? and a[:rss_feed_urls_attributes].present? && a[:rss_feed_urls_attributes]['0'][:url].blank? }
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
+  accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
+  accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
+  accepts_nested_attributes_for :youtube_profiles, :allow_destroy => true
+  accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
+  serialize :youtube_handles, Array
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -456,15 +460,7 @@ class Affiliate < ActiveRecord::Base
     self.footer = sanitized_footer
     self.external_css_url = nil
   end
-
-  def youtube_handles_as_text
-    youtube_handles.blank? ? nil : youtube_handles.join(',')
-  end
-
-  def youtube_handles_as_text=(youtube_handles_text)
-    self.youtube_handles = youtube_handles_text.blank? ? nil : youtube_handles_text.split(',')
-  end
-
+  
   def unused_features
     features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
   end
@@ -526,31 +522,22 @@ class Affiliate < ActiveRecord::Base
   def autodiscover_social_media
     begin
       @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
-      social_media_handles = {}
       @home_page_doc.xpath("//a").each do |anchor_tag|
         href = anchor_tag.attribute("href").value rescue nil
         if href
-          social_media_handles[:twitter_handle] = href.split("/").last if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/ and social_media_handles[:twitter].nil?
-          social_media_handles[:facebook_handle] = href.split("/").last if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/ and social_media_handles[:facebook_handle].nil?
-          social_media_handles[:flickr_url] = href if href =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/ and social_media_handles[:flickr_url].nil?
-          if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
-            youtube_handle = href.split("/").last
-            if youtube_handles
-              youtube_handles << youtube_handle
-            else
-              update_attributes(:youtube_handles => [youtube_handle])
-            end
-          end
+          self.twitter_profiles.create(:screen_name => href.split("/").last) if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/
+          self.facebook_profiles.create(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/  
+          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/
+          self.youtube_profiles.create!(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
         end
       end
-      update_attributes(social_media_handles)
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
     end
   end
 
   def import_flickr_photos
-    FlickrPhoto.import_photos(self)
+    self.flickr_profiles.each(&:import_photos)
   end
 
   private
@@ -838,9 +825,6 @@ class Affiliate < ActiveRecord::Base
   end
 
   def strip_text_columns
-    self.facebook_handle = facebook_handle.strip unless facebook_handle.nil?
-    self.flickr_url = flickr_url.strip unless flickr_url.nil?
-    self.twitter_handle = twitter_handle.strip unless twitter_handle.nil?
     self.ga_web_property_id = ga_web_property_id.strip unless ga_web_property_id.nil?
   end
 
@@ -865,30 +849,9 @@ class Affiliate < ActiveRecord::Base
     self.send("#{to.to_s}_updated_at=", self.send("#{from}_updated_at"))
   end
 
-  def reject_blank_youtube_handles
-    self.youtube_handles = youtube_handles.reject(&:blank?).collect(&:strip).uniq.sort unless youtube_handles.blank?
-    self.youtube_handles = nil if youtube_handles.blank?
-  end
-
-  def youtube_handles_length_in_yaml
-    unless youtube_handles.blank?
-      errors.add(:youtube_handles, 'is too long') if youtube_handles.to_yaml.length > 250
-    end
-  end
-
   def set_is_validate_staged_header_footer(attributes)
     if attributes[:staged_uses_managed_header_footer] == '0' or attributes[:staged_uses_one_serp] == '1'
       self.is_validate_staged_header_footer = true
-    end
-  end
-
-  def associate_with_twitter_profiles
-    if changed_attributes.has_key?("twitter_handle") and self.twitter_handle.present?
-      twitter_user = Twitter.user(self.twitter_handle) rescue nil
-      if twitter_user
-        twitter_profile = TwitterProfile.find_or_create_by_twitter_id(twitter_user.id, :screen_name => twitter_user.screen_name, :profile_image_url => twitter_user.profile_image_url)
-        self.twitter_profiles << twitter_profile
-      end
     end
   end
 end

@@ -1,4 +1,4 @@
-Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
+Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
     shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
@@ -14,7 +14,7 @@ Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, t
   NewsItem.destroy_all
 end
 
-Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
+Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
@@ -29,7 +29,7 @@ Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   Sunspot.commit
 end
 
-Given /^there are (\d+)( video)? news items for "([^"]*)"$/ do |count, is_video, feed_name|
+Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video, feed_name|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
@@ -66,7 +66,7 @@ Then /^I should see agency govbox deep links$/ do
   page.should have_selector(".agency .deep-links")
 end
 
-When /^(.*)'s agency govbox is disabled$/ do |affiliate_name|
+When /^(.*)\'s agency govbox is disabled$/ do |affiliate_name|
   Affiliate.find_by_name(affiliate_name).update_attributes(:is_agency_govbox_enabled => false)
 end
 
@@ -76,7 +76,7 @@ Given /^the following Medline Topics exist:$/ do |table|
   end
 end
 
-Given /^the following Related Medline Topics for "([^"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
+Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
   locale = language == 'English' ? 'en' : 'es'
   topic = MedTopic.where(:medline_title => medline_title, :locale => locale).first
   table.hashes.each do |hash|
@@ -89,13 +89,13 @@ Then /^I should see (\d+) youtube thumbnails?$/ do |count|
   page.should have_selector("img[src^='http://i.ytimg.com/vi/']", :count => count)
 end
 
-Then /^I should see youtube thumbnail for "([^"]*)"$/ do |news_item_title|
+Then /^I should see youtube thumbnail for "([^\"]*)"$/ do |news_item_title|
   news_item = NewsItem.find_by_title(news_item_title)
   video_id = CGI.parse(URI.parse(news_item.link).query)['v']
   page.should have_selector("img[src='http://i.ytimg.com/vi/#{video_id}/2.jpg']")
 end
 
-Then /^I should see (.+)'s date in the (English|Spanish) search results$/ do |duration, locale|
+Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |duration, locale|
   date = Date.current.send(duration.to_sym)
   date_string = locale == 'Spanish' ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")
   page.should have_content(date_string)
@@ -127,7 +127,8 @@ end
 Given /^the following FlickrPhotos exist:$/ do |table|
   table.hashes.each do |hash|
     affiliate = Affiliate.find_by_name(hash[:affiliate_name])
-    FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :url_q => hash[:url_q], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :affiliate => affiliate)
+    affiliate.flickr_profiles.create!(:url => 'http://flickr.com/photos/USAgency', :profile_type => 'user', :profile_id => '1234', :affiliate => affiliate)
+    FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :url_q => hash[:url_q], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :flickr_profile => affiliate.flickr_profiles.first)
   end
   FlickrPhoto.reindex
 end

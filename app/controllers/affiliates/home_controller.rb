@@ -2,7 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
   before_filter :require_affiliate, :except => [:index, :home, :urls_and_sitemaps]
   before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
-  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields, :new_youtube_handle_fields]
+  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
   before_filter :setup_for_results_modules_actions, :only => [:edit_results_modules, :new_connection_fields]
 
@@ -100,7 +100,17 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_social_media
-    update
+    if params[:affiliate][:twitter_profiles_attributes].present?
+      twitter_profile = TwitterProfile.find_or_create_by_screen_name(params[:affiliate][:twitter_profiles_attributes].first.last[:screen_name])
+      @affiliate.twitter_profiles << twitter_profile unless @affiliate.twitter_profiles.include?(twitter_profile)
+      flash[:success] = "Added social media profile"
+    elsif @affiliate.update_attributes(params[:affiliate])
+      flash[:success] = "Added social media profile"
+    else
+      flash[:error] = @affiliate.errors
+    end
+    @title = "Social Media - "
+    redirect_to edit_social_media_affiliate_path(@affiliate)
   end
 
   def update
@@ -207,7 +217,20 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def edit_social_media
     @title = "Social Media - "
   end
-
+  
+  def social_media
+    if params[:profile_type] == 'TwitterProfile'
+      @affiliate.twitter_profiles.delete(TwitterProfile.find(params[:profile_id])) rescue nil
+    else
+      (eval params[:profile_type]).find(params[:profile_id]).destroy rescue nil
+    end
+    redirect_to edit_social_media_affiliate_path(params[:id])
+  end
+  
+  def new_social_media_profile
+    render "new_#{params[:profile_type]}_profile_fields"
+  end
+  
   def urls_and_sitemaps
     @title = "URLs & Sitemaps - "
     @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 5, :page => 1)
@@ -259,9 +282,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def new_connection_fields
-  end
-
-  def new_youtube_handle_fields
   end
 
   protected
