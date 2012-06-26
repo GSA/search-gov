@@ -432,7 +432,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def refresh_indexed_documents(scope)
-    indexed_documents.select(:id).send(scope.to_sym).find_in_batches(:batch_size => batch_size) do |batch|
+    indexed_documents.select(:id).send(scope.to_sym).find_in_batches(:batch_size => batch_size(scope)) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, scope)
     end
   end
@@ -537,8 +537,8 @@ class Affiliate < ActiveRecord::Base
 
   private
 
-  def batch_size
-    (indexed_documents.size / fetch_concurrency.to_f).ceil
+  def batch_size(scope)
+    (indexed_documents.send(scope.to_sym).size / fetch_concurrency.to_f).ceil
   end
 
   def remove_boosted_contents_from_index

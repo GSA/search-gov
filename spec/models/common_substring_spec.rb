@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe CommonSubstring do
-  fixtures :common_substrings, :indexed_domains, :affiliates
+  fixtures :common_substrings, :indexed_domains, :affiliates, :site_domains
   before do
     @valid_attributes = {
       :substring => 'U.S. Army Corps of Engineers',
@@ -28,10 +28,10 @@ describe CommonSubstring do
 
     context "when there are associated IndexedDocuments that contain the substring" do
       before do
-        aff = affiliates(:power_affiliate)
-        @doc1 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :url => "http://www.foo.gov/a.html", :body => "doc1 has this text in it")
-        @doc2 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :url => "http://www.foo.gov/b.html", :body => "doc2 has this text in it")
-        @doc3 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :url => "http://www.foo.gov/c.html", :body => "doc3 does not have this text in it")
+        aff = affiliates(:basic_affiliate)
+        @doc1 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/a.html", :body => "doc1 has this text in it")
+        @doc2 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/b.html", :body => "doc2 has this text in it")
+        @doc3 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/c.html", :body => "doc3 does not have this text in it")
       end
 
       it "should apply the change to all associated IndexedDocuments that contain the substring in the body" do

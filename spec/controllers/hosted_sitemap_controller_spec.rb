@@ -18,8 +18,10 @@ describe HostedSitemapController, "#show" do
     render_views
     before do
       @domain = "www.govdotgov.gov"
-      aff = affiliates(:basic_affiliate)
+      aff = affiliates(:power_affiliate)
       @indexed_domain = aff.indexed_domains.create!(:domain => @domain)
+      aff.site_domains.create!(:domain => @domain)
+      aff.site_domains.create!(:domain => 'honeybadger.gov')
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/foo.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/bar.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
       @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/blat.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")

@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
     t.string   "ga_web_property_id",                        :limit => 20
+    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.string   "staged_page_background_image_content_type"
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
-    t.boolean  "show_deep_links",                                                 :default => true,            :null => false
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
@@ -466,7 +466,7 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body",              :limit => 2147483647
-    t.string   "doctype",           :limit => 10,         :default => "html"
+    t.string   "doctype",           :limit => 10
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
     t.string   "content_hash",      :limit => 32

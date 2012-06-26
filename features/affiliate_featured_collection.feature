@@ -57,7 +57,7 @@ Feature: Featured Collections
       | Title*                | 2010 Atlantic Hurricane Season                    |
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml           |
       | Publish start date    | 07/01/2011                                        |
-      | Publish end date      | 07/01/2012                                        |
+      | Publish end date      | 07/01/2016                                        |
       | Keyword 0             | weather                                           |
       | Image alt text        | hurricane logo                                    |
       | Image attribution     | NOAA                                              |
@@ -76,7 +76,7 @@ Feature: Featured Collections
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Active"
     And I should see "07/01/2011"
-    And I should see "07/01/2012"
+    And I should see "07/01/2016"
     And I should see "One column"
     And I should see "weather"
     And I should see an image with alt text "hurricane logo"

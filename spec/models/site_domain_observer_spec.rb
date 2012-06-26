@@ -2,7 +2,7 @@ require 'spec/spec_helper'
 
 describe SiteDomainObserver do
   fixtures :affiliates
-  let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:affiliate) { affiliates(:power_affiliate) }
 
   before do
     affiliate.site_domains.create!(:domain => "first.gov")

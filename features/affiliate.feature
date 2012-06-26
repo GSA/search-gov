@@ -2050,7 +2050,7 @@ Feature: Affiliate clients
     And I should see "TwitterAgency"
     And I should see "YouTubeAgency"
     And I should see "http://www.flickr.com/groups/usagov/"
-    
+
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | flickr_url                            |
@@ -2068,7 +2068,7 @@ Feature: Affiliate clients
     And I should see "Photo 1"
     And I should see "Photo 2"
     And I should see "Photo 3"
-  
+
   Scenario: Previewing Tweets
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | twitter_handle  |
@@ -2088,7 +2088,7 @@ Feature: Affiliate clients
     Then I should see "Tweet 1"
     And I should see "Tweet 2"
     And I should see "Tweet 3"
-    
+
   Scenario: Previewing YouTube Social Media content
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | youtube_handles |
@@ -2100,7 +2100,7 @@ Feature: Affiliate clients
     When I follow "Recent Content" within ".actions"
     Then I should see the browser page titled "Preview Social Media"
     And I should see "There are no social media associated with this profile."
-    
+
     Given feed "Videos" has the following news items:
       | link                                                              | title       | guid  | published_ago | description    |
       | http://www.youtube.com/watch?v=SmwR9UW0ZTg&feature=youtube_gdata  | First item  | uuid1 | day           | Video 1        |
@@ -2115,6 +2115,9 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "URLs & Sitemaps"
@@ -2337,6 +2340,10 @@ Feature: Affiliate clients
       | aff site       | aff.gov    | aff@bar.gov   | John Bar     | en     | bing+odie      | aff.gov          |
       | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es     | bing           |                  |
       | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es     | odie           |                  |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
+      | whitehouse.gov       | WH Website |
     And affiliate "aff.gov" has the following RSS feeds:
       | name           | url                                                | position | shown_in_govbox |
       | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |

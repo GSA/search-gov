@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :site_domains
 
   before(:each) do
     @valid_create_attributes = {
@@ -1687,12 +1687,12 @@ describe Affiliate do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
-      @first = @affiliate.indexed_documents.build(:url => 'http://some.mil/')
-      @second = @affiliate.indexed_documents.build(:url => 'http://some.mil/foo')
-      @third = @affiliate.indexed_documents.build(:url => 'http://some.mil/bar')
+      @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')
+      @second = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo')
+      @third = @affiliate.indexed_documents.build(:url => 'http://nps.gov/bar')
       @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
                                                :description => 'This is a PDF document.',
-                                               :url => 'http://something.gov/pdf.pdf',
+                                               :url => 'http://nps.gov/pdf.pdf',
                                                :last_crawl_status => IndexedDocument::OK_STATUS,
                                                :last_crawled_at => Time.now,
                                                :body => "this is the doc body",
@@ -1754,12 +1754,12 @@ describe Affiliate do
 
   describe "#autodiscover" do
     before do
-      @affiliate = affiliates(:basic_affiliate)
+      @affiliate = affiliates(:power_affiliate)
     end
 
     context "when a single site domain exists" do
       before do
-        @affiliate.site_domains << SiteDomain.new(:site_name => 'nps.gov', :domain => 'nps.gov')
+        @affiliate.site_domains << SiteDomain.new(:site_name => 'newone.gov', :domain => 'newone.gov')
       end
 
       it "should call autodiscover for sitemaps, rss feeds and favicons" do
@@ -1833,7 +1833,7 @@ describe Affiliate do
 
   describe "#autodiscover_rss_feeds" do
     before do
-      @affiliate = affiliates(:basic_affiliate)
+      @affiliate = affiliates(:power_affiliate)
       @affiliate.site_domains << SiteDomain.new(:site_name => 'USA.gov', :domain => 'usa.gov')
       @affiliate.rss_feeds.destroy_all
     end

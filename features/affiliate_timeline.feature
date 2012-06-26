@@ -3,7 +3,7 @@ Feature: Timeline for query
   As an Affiliate
   I want to view a chart of the number of queries per day over time
 
-  Scenario: Viewing a chart for a give term
+  Scenario: Viewing a chart for a given term
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |

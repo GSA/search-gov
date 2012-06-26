@@ -158,6 +158,12 @@ Feature:  Administration
       | display_name  | name     | contact_email | contact_name |
       | agency site   | aff.gov  | one@foo.gov   | One Foo      |
       | agency site 2 | aff2.gov | two@foo.gov   | Two Foo      |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
+    And the following site domains exist for the affiliate aff2.gov:
+      | domain              | site_name      |
+      | aff.gov             | Agency2 Website |
     And the following IndexedDocuments exist:
       | title                   | description                     | url                          | affiliate | last_crawled_at | last_crawl_status |
       | Space Suit America      | description for space suit item | http://aff.gov//space-suit1  | aff.gov   | 11/02/2011      | OK                |

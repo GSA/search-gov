@@ -335,7 +335,7 @@ describe WebSearch do
 
       context "when affiliate has more than one domain specified and sitelimit does not contain matching domain" do
         before do
-          @affiliate = affiliates(:basic_affiliate)
+          @affiliate = affiliates(:power_affiliate)
           @affiliate.add_site_domains("foo.com" => nil, "bar.com" => nil)
           @bing_search = BingSearch.new(Search::USER_AGENT)
           BingSearch.stub!(:new).and_return @bing_search
@@ -1124,8 +1124,9 @@ describe WebSearch do
     context "when an affiliate has PDF documents" do
       before do
         @affiliate.indexed_documents.destroy_all
-        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.site_domains.create!(:domain => 'usa.gov')
+        @affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://usa.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://usa.gov/pdf2.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -1167,6 +1168,9 @@ describe WebSearch do
     context "when an affiliate has Bing results that are duplicated in indexed documents" do
       before do
         @affiliate.indexed_documents.destroy_all
+        @affiliate.site_domains.create!(:domain => 'usa.gov')
+        @affiliate.site_domains.create!(:domain => 'same-title-and-uri-but-different-host.gov')
+        @affiliate.site_domains.create!(:domain => 'www.gov.gov')
         @affiliate.indexed_documents.create!(:title => "Hack Day - USA.gov Blog", :description => "Hack Day description, sometimes with a trailing slash",
                                              :url => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day', :last_crawl_status => IndexedDocument::OK_STATUS)
         @affiliate.indexed_documents.create!(:title => "Projects created - USA.gov Blog", :description => "Sometimes served up via SSL!",
@@ -1446,7 +1450,7 @@ describe WebSearch do
   describe "caching in #perform(query_string, offset, enable_highlighting)" do
     before do
       @redis = WebSearch.send(:class_variable_get, :@@redis)
-      @search = WebSearch.new(:query => "foo", :affiliate => affiliates(:basic_affiliate), :per_page => 40, :filter => "strict")
+      @search = WebSearch.new(:query => "foo", :affiliate => affiliates(:power_affiliate), :per_page => 40, :filter => "strict")
       @cache_key = "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true:strict"
     end
 
@@ -1461,7 +1465,7 @@ describe WebSearch do
 
     it "should use the Spell+Image source for image searches" do
       @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true:moderate")
-      image_search = ImageSearch.new(:query => "foo", :affiliate => affiliates(:basic_affiliate), :per_page => 25, :page => 4)
+      image_search = ImageSearch.new(:query => "foo", :affiliate => affiliates(:power_affiliate), :per_page => 25, :page => 4)
       image_search.send(:perform_bing_search)
     end
 

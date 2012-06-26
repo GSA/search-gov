@@ -7,6 +7,9 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And the following IndexedDocuments exist:
       | title                | description                     | url                                             | affiliate | last_crawled_at | last_crawl_status |
       | Space Suit Evolution | description text for space suit | http://aff.gov/extremelysuperlongurl/space-suit | aff.gov   | 11/02/2011      | OK                |
@@ -41,6 +44,9 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
@@ -48,38 +54,41 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see the browser page titled "Add a new URL"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Add a new URL
     And I should see "Add a new URL" in the page header
-    When I fill in "URL" with "http://new.url.gov/page.html"
+    When I fill in "URL" with "http://new.aff.gov/page.html"
     And I press "Add"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Uncrawled URLs
-    And I should see "Successfully added http://new.url.gov/page.html."
+    And I should see "Successfully added http://new.aff.gov/page.html."
 
-    When the url "http://new.url.gov/page.html" has been crawled
+    When the url "http://new.aff.gov/page.html" has been crawled
     And I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     Then I should see "Uncrawled URLs (0)"
-    And I should see "new.url.gov/page.html" in the previously crawled URL list
+    And I should see "new.aff.gov/page.html" in the previously crawled URL list
 
     When I follow "View all" in the previously crawled URL list
-    Then I should see "new.url.gov/page.html"
+    Then I should see "new.aff.gov/page.html"
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And the following IndexedDocuments exist:
-      | url                   | affiliate |
-      | http://removeme2.mil   | aff.gov  |
-      | http://removeme.mil   | aff.gov   |
+      | url                    | affiliate |
+      | http://aff.gov/1.pdf   | aff.gov  |
+      | http://aff.gov/2.pdf   | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     When I press "Delete" in the uncrawled URL list
-    Then I should see "Removed http://removeme2.mil"
+    Then I should see "Removed http://aff.gov/1.pdf"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs & Sitemaps
     When I follow "View all"
-    And I should see "removeme.mil"
+    And I should see "aff.gov/2.pdf"
     When I press "Delete"
-    Then I should see "Removed http://removeme.mil"
+    Then I should see "Removed http://aff.gov/2.pdf"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs and Sitemaps > Uncrawled URLs
     And I should see "Site aff site has no uncrawled URLs"
 
@@ -100,6 +109,9 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
@@ -137,31 +149,37 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And the following IndexedDocuments exist:
       | url                   | affiliate | last_crawled_at |
-      | http://removeme2.mil   | aff.gov   | 2011-11-01      |
-      | http://removeme.mil  | aff.gov   | 2011-11-01      |
+      | http://aff.gov/1.html   | aff.gov   | 2011-11-01      |
+      | http://aff.gov/2.html  | aff.gov   | 2011-11-01      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     And I press "Delete"
     Then I should see the browser page titled "URLs & Sitemaps"
-    And I should see "Removed http://removeme.mil"
+    And I should see "Removed http://aff.gov/2.html"
     When I follow "View all"
-    Then I should see "removeme2.mil"
+    Then I should see "aff.gov/1.html"
     When I press "Delete"
     Then I should see the browser page titled "Previously Crawled URLs"
-    And I should see "Removed http://removeme2.mil"
+    And I should see "Removed http://aff.gov/1.html"
 
   Scenario: Exporting crawled urls to CSV
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain               | site_name      |
+      | aff.gov              | Agency Website |
     And the following IndexedDocuments exist:
-      | url                   | title   | description       |affiliate | last_crawled_at | last_crawl_status |
-      | http://aff.gov/1.html | No. 1   | Number 1          | aff.gov   | 2012-01-19      | OK                |
-      | http://aff.gov/2.html | No. 2   | Number 2          | aff.gov   | 2012-01-19      | OK                |
-      | http://aff.gov/3.html | No. 3   | Number 3          | aff.gov   |                 |                   |
+      | url                   | title   | description       |affiliate | last_crawled_at  | last_crawl_status | doctype |
+      | http://aff.gov/1.html | No. 1   | Number 1          | aff.gov   | 2012-01-19      | OK                | html    |
+      | http://aff.gov/2.html | No. 2   | Number 2          | aff.gov   | 2012-01-19      | OK                | html    |
+      | http://aff.gov/3.html | No. 3   | Number 3          | aff.gov   |                 |                   | html    |
     And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected

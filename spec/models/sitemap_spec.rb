@@ -4,9 +4,10 @@ describe Sitemap do
   fixtures :affiliates
 
   before do
+    affiliates(:power_affiliate).site_domains.create!(:domain => 'example.gov')
     @valid_attributes = {
       :url => 'http://www.example.gov/sitemap.xml',
-      :affiliate_id => affiliates(:basic_affiliate).id
+      :affiliate_id => affiliates(:power_affiliate).id
     }
   end
 
@@ -119,7 +120,7 @@ describe Sitemap do
 
       context "when the sitemap has been parsed before" do
         before do
-          IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:basic_affiliate))
+          IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:power_affiliate))
           @sitemap.affiliate.indexed_documents.size.should == 1
           @sitemap.parse(@file)
         end

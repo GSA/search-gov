@@ -336,8 +336,10 @@ describe SearchesController do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:basic_affiliate)
+      @affiliate.site_domains.create!(:domain => 'affiliate.gov')
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+      affiliates(:power_affiliate).site_domains.create!(:domain => 'otheraffiliate.gov')
       affiliates(:power_affiliate).indexed_documents << IndexedDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex
       Sunspot.commit

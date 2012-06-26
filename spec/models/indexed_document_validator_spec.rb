@@ -5,11 +5,10 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   let(:aff) { affiliates(:basic_affiliate) }
   before do
     aff.indexed_documents.destroy_all
-    aff.site_domains.destroy_all
     @idoc = aff.indexed_documents.create!(
       :title => 'PDF Title',
       :description => 'This is a PDF document.',
-      :url => 'http://something.gov/pdf.pdf',
+      :url => 'http://nps.gov/pdf.pdf',
       :last_crawl_status => IndexedDocument::OK_STATUS,
       :body => "this is the doc body",
       :affiliate_id => affiliates(:basic_affiliate).id,
@@ -24,7 +23,7 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
 
     context "when the IndexedDocument is not valid" do
       before do
-        @idoc.affiliate.site_domains.create!(:domain=>"somethingelse.gov")
+        @idoc.stub!(:valid?).and_return false
       end
 
       it "should destroy the IndexedDocument" do
@@ -41,7 +40,7 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
 
     context "when the IndexedDocument is valid" do
       before do
-        @idoc.affiliate.site_domains.create!(:domain=>"something.gov")
+        @idoc.stub!(:valid?).and_return true
       end
 
       it "should not delete the IndexedDocument" do

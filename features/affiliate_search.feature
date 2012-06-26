@@ -327,6 +327,9 @@ Feature: Affiliate Search
     Given the following Affiliates exist:
       | display_name | name       | contact_email  | contact_name |
       | agency site  | agency.gov | aff@agency.gov | John Bar     |
+    And the following site domains exist for the affiliate agency.gov:
+      | domain         | site_name      |
+      | usa.gov        | Agency Website |
     And the following IndexedDocuments exist:
       | title        | description                                                                         | url                 | affiliate  | last_crawl_status |
       | USA.gov Blog | We help you find official U.S. government information and services on the Internet. | http://blog.usa.gov | agency.gov | OK                |

@@ -112,6 +112,9 @@ Feature: Mobile Search for Affiliate
     Given the following Affiliates exist:
       | display_name | name    | contact_email   | contact_name |
       | agency site  | aff.gov | contact@aff.gov | John Bar     |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain         | site_name      |
+      | aff.gov        | Agency Website |
     And the following IndexedDocuments exist:
       | title                | description                                | url                                          | affiliate | last_crawled_at | last_crawl_status |
       | Space Suit Evolution | This is another document on space suit     | http://www.aff.gov/topics/space-suit.html    | aff.gov   | 11/02/2011      | OK                |

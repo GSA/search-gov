@@ -7,6 +7,10 @@ Feature: Affiliate Hosted Sitemaps
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following site domains exist for the affiliate aff.gov:
+      | domain                | site_name      |
+      | whitehouse.gov        | whitehouse Agency Website |
+      | ostp.gov              | ostp Agency Website |
     And the following IndexedDocuments exist:
       | url                                      | affiliate | title            | description         |
       | http://www.whitehouse.gov/our-government | aff.gov   | Our Government   | white house cabinet |

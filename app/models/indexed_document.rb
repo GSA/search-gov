@@ -1,7 +1,6 @@
 class IndexedDocument < ActiveRecord::Base
   class IndexedDocumentError < RuntimeError;
   end
-  attr_reader :url_extension
 
   belongs_to :affiliate
   belongs_to :indexed_domain
@@ -14,8 +13,6 @@ class IndexedDocument < ActiveRecord::Base
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
-  validates_exclusion_of :url_extension, :in => %w(css csv doc docx gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml), :message => "'%{value}' is not a supported file type"
-  validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   validate :site_domain_matches
   validate :robots_txt_compliance
 
@@ -67,32 +64,40 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def fetch
+    #TODO: cron that removes old temp files...still need it?
     site_domain_matches
     destroy and return unless errors.empty?
-    file = nil
     begin
+      uri = URI(url)
       timeout(DOWNLOAD_TIMEOUT_SECS) do
-        self.load_time = Benchmark.realtime { file = open(url) }
-        content_type = file.content_type
-        if file.is_a?(StringIO)
-          tempfile = Tempfile.new(Time.now.to_i)
-          tempfile.write(file.string)
-          tempfile.close
-          file = tempfile
+        self.load_time = Benchmark.realtime do
+          Net::HTTP.start(uri.host, uri.port) do |http|
+            request = Net::HTTP::Get.new uri.request_uri, {'User-Agent' => 'usasearch'}
+            http.request(request) do |response|
+              raise IndexedDocumentError.new("#{response.code} #{response.message}") unless response.kind_of?(Net::HTTPSuccess)
+              file = Tempfile.open("IndexedDocument:#{id}", Rails.root.join('tmp'))
+              begin
+                response.read_body { |chunk| file.write chunk }
+                file.flush
+                file.rewind
+                index_document(file, response.content_type)
+                update_content_hash
+              ensure
+                file.close
+                file.unlink
+              end
+            end
+          end
         end
-        index_document(file, content_type)
-        update_content_hash
       end
     rescue Exception => e
       handle_fetch_exception(e)
-    ensure
-      File.delete(file) rescue nil
     end
   end
 
   def handle_fetch_exception(e)
     begin
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil)
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil, :title => nil, :body => nil, :description => nil)
     rescue Exception
       begin
         destroy
@@ -115,34 +120,42 @@ class IndexedDocument < ActiveRecord::Base
 
   def index_document(file, content_type)
     raise IndexedDocumentError.new "Document is over #{MAX_DOC_SIZE/1.megabyte}mb limit" if file.size > MAX_DOC_SIZE
-    if content_type =~ /pdf/
-      index_pdf(file.path)
-    elsif content_type =~ /html/
-      if url_extension == 'pdf'
-        raise IndexedDocumentError.new "PDF resource redirects to HTML page"
-      else
+    case content_type
+      when /html/
         index_html(file)
-      end
-    else
-      raise IndexedDocumentError.new "Unsupported document type: #{file.content_type}"
+      when /pdf/
+        index_application_file(file.path, 'pdf')
+      when /(ms-excel|spreadsheetml)/
+        index_application_file(file.path, 'excel')
+      when /(ms-powerpoint|presentationml)/
+        index_application_file(file.path, 'ppt')
+      when /(ms-?word|wordprocessingml)/
+        index_application_file(file.path, 'word')
+      else
+        raise IndexedDocumentError.new "Unsupported document type: #{file.content_type}"
     end
   end
 
   def index_html(file)
-    file.open if file.closed?
     doc = Nokogiri::HTML(file)
     title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
     doc.css('script').each(&:remove)
     doc.css('style').each(&:remove)
     body = extract_body_from(doc)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
-    description = html_description_from(body)
+    description = generate_generic_description(body)
     update_attributes!(:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
-    discover_nested_pdfs(doc)
+    discover_nested_docs(doc)
   end
 
-  def html_description_from(str)
-    str.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+  def index_application_file(file_path, doctype)
+    document_text = parse_file(file_path, 't').strip rescue nil
+    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if document_text.blank?
+    update_attributes!(:title => extract_document_title(file_path, document_text), :description => generate_generic_description(document_text), :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+  end
+
+  def generate_generic_description(text)
+    text.gsub(/[^\w_]/, " ").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
   end
 
   def extract_body_from(nokogiri_doc)
@@ -163,7 +176,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def remove_common_substring(unescaped_substring)
     self.body = self.body.gsub(/#{Regexp.escape(unescaped_substring)}/, ' ').squish
-    self.description = html_description_from(self.body)
+    self.description = generate_generic_description(self.body)
     self.save
   end
 
@@ -172,20 +185,12 @@ class IndexedDocument < ActiveRecord::Base
     body.size >= LARGE_DOCUMENT_THRESHOLD ? body.first(LARGE_DOCUMENT_SAMPLE_SIZE) + body.last(LARGE_DOCUMENT_SAMPLE_SIZE) : body
   end
 
-  def discover_nested_pdfs(doc)
-    doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
-      URI.parse(link_url).path.split('.').last.downcase == "pdf" rescue false
-    end.map do |relative_pdf_url|
-      URI.merge_unless_recursive(self_url, URI.parse(relative_pdf_url)).to_s rescue nil
-    end.uniq.compact.each do |pdf_url|
-      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
+  def discover_nested_docs(doc)
+    doc.css('a').collect { |link| link['href'] }.compact.map do |link_url|
+      URI.merge_unless_recursive(self_url, URI.parse(link_url)).to_s rescue nil
+    end.uniq.compact.each do |link_url|
+      affiliate.indexed_documents.create(:url => link_url) if link_url.present?
     end
-  end
-
-  def index_pdf(pdf_file_path)
-    pdf_text = parse_pdf_file(pdf_file_path, 't').strip
-    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
-    update_attributes!(:title => generate_pdf_title(pdf_file_path, pdf_text), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
   def build_content_hash
@@ -264,28 +269,20 @@ class IndexedDocument < ActiveRecord::Base
     @self_url ||= URI.parse(self.url) rescue nil
   end
 
-  def url_extension
-    self_url.path.split('.').last.downcase rescue nil
-  end
-
   private
 
   def set_indexed_domain
     self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, self_url.host) if last_crawl_status_ok?
   end
 
-  def generate_pdf_title(pdf_file_path, pdf_text)
-    parse_pdf_file(pdf_file_path, 'm').scan(/title: (\w.*)/i)[0][0].squish
+  def parse_file(file_path, option)
+    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
+  end
+
+  def extract_document_title(pdf_file_path, pdf_text)
+    parse_file(pdf_file_path, 'm').scan(/title: (\w.*)/i)[0][0].squish
   rescue
     pdf_text.split(/[\n.]/).first.squish
-  end
-
-  def parse_pdf_file(pdf_file_path, option)
-    %x[cat #{pdf_file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
-  end
-
-  def generate_pdf_description(pdf_text)
-    pdf_text.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
   end
 
   def normalize_url
@@ -310,7 +307,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def site_domain_matches
     uri = self_url rescue nil
-    return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
+    return if self.affiliate.nil? or uri.nil?
     errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? do |sd|
       if sd.domain.starts_with('.')
         uri.host =~ /#{sd.domain}$/i

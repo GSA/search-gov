@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe ApiController do
-  fixtures :affiliates, :users
+  fixtures :affiliates, :users, :site_domains
 
   describe "#search" do
     context "when there is no api key parameter" do
@@ -194,7 +194,7 @@ describe ApiController do
           affiliate.indexed_documents.create!(
             :title => "PDF Title about irrigation part #{x}",
             :description => "This is a PDF document about irrigation part #{x}.",
-            :url => "http://something.gov/pdf#{x}.pdf",
+            :url => "http://nps.gov/pdf#{x}.pdf",
             :last_crawl_status => IndexedDocument::OK_STATUS,
             :body => "this is the doc body part #{x}")
         end

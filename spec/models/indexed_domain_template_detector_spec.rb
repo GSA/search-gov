@@ -155,12 +155,14 @@ describe IndexedDomainTemplateDetector do
                                             :description => "This is HTML document number #{x}.",
                                             :last_crawl_status => IndexedDocument::OK_STATUS,
                                             :body => "some#{lcs} in this document #{x}",
+                                            :doctype => 'html',
                                             :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b#{x}")
       end
       affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page4.html", :title => 'Some HTML Title4',
                                           :description => 'This is HTML document number 4.',
                                           :last_crawl_status => IndexedDocument::OK_STATUS,
                                           :body => "no template on this page",
+                                          :doctype => 'html',
                                           :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b4")
     end
 
