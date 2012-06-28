@@ -99,7 +99,6 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
   accepts_nested_attributes_for :youtube_profiles, :allow_destroy => true
   accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
-  serialize :youtube_handles, Array
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
