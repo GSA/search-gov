@@ -18,8 +18,6 @@ module NavigationHelpers
       search_path(:query => $1, :locale => 'en', :m => 'true')
     when /the advanced search page/
       advanced_search_path
-    when /the image search page/
-      image_search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
     when /^(.*)'s mobile search page$/

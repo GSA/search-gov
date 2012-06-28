@@ -127,3 +127,12 @@ Feature: Mobile Search for Affiliate
     When I follow "Next"
     Then I should see "agency site Mobile"
     And I should see "crawled document"
+
+  Scenario: A search on images
+    Given the following Affiliates exist:
+      | display_name   | name              | contact_email | contact_name |
+      | NOAA Photo Lib | photolib.noaa.gov | aff@noaa.gov  | John Bar     |
+    And I am on photolib.noaa.gov's image search page
+    And I fill in "query" with "weather"
+    And I submit the search form
+    Then I should see 30 image results

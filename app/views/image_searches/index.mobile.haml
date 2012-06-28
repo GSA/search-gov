@@ -1,18 +1,20 @@
-- search = @search
-= render :partial => "shared/header_search_links"
-= render :partial => "shared/header_search" if @show_searchbox
-- if search.results.present?
+= form_tag(image_search_path(:m => 'true'), :method => :get, :id => 'search_form') do
+  = hidden_field_tag :m, params[:m]
+  = hidden_field_tag :affiliate, @affiliate.name
+  = render :partial => 'shared/search_box'
+
+- if @search.results.present?
   .group
     .row{:style => "overflow: auto;width: 98%;"}
-      - search.results.each_with_index do |search_result, index|
+      - @search.results.each_with_index do |search_result, index|
         .searchThumbnail
           %span.image_result{:id => "searchresult#{index+1}"}
-            = display_bing_image_result_links(search_result, search, nil, index, :image)
+            = display_bing_image_result_links(search_result, @search, nil, index, :image)
   .group
     .row.center
-      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
-- elsif search.error_message
-  %p.noresults #{search.error_message}
+      = will_paginate @search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0
+- elsif @search.error_message
+  %p.noresults #{@search.error_message}
 - else
-  = no_results_for search.query
+  = no_results_for @search.query
 = render :partial => "shared/footer_search", :locals => { :search => @search }
