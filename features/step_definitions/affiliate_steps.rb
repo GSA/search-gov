@@ -67,7 +67,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_external_css_url => hash[:staged_external_css_url],
       :favicon_url => hash[:favicon_url],
       :staged_favicon_url => hash[:staged_favicon_url],
-      :youtube_handles => hash[:youtube_handles].present? ? hash[:youtube_handles].split(',') : nil,
       :theme => theme,
       :staged_theme => staged_theme,
       :css_property_hash => css_properties,
