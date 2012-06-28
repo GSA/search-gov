@@ -27,8 +27,5 @@ class MigrateSocialMediaFromHandlesToProfiles < ActiveRecord::Migration
       affiliate.update_attributes(:twitter_handle => affiliate.twitter_profiles.first.screen_name) if affiliate.twitter_profiles.any?
       affiliate.update_attributes(:youtube_handles => affiliate.youtube_profiles.collect(&:username)) if affiliate.youtube_profiles.any?
     end
-    FlickrPhoto.all.each do |flickr_photo|
-      flickr_photo.update_attributes(:affiliate_id => flickr_photo.flickr_profile.affiliate_id)
-    end
   end
 end
