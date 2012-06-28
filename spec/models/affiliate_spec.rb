@@ -2136,8 +2136,8 @@ describe Affiliate do
         @affiliate.flickr_profiles.collect(&:url).include?("http://flickr.com/whitehouse").should be_true
       end
 
-      it "should update the youtube handles with all the youtube handles found on the page" do
-        @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2"]
+      it "should update the youtube profiles with all the youtube handles found on the page" do
+        @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse", "whitehouse2"]
       end
 
       context "when there are existing youtube handles" do
@@ -2148,7 +2148,7 @@ describe Affiliate do
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.reload
-          @affiliate.youtube_handles.should == ["whitehouse", "whitehouse2", "whitehouse_test"]
+          @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse", "whitehouse2", "whitehouse_test"]
         end
       end
     end
@@ -2173,7 +2173,7 @@ describe Affiliate do
       end
 
       it "should not update the youtube handles" do
-        @affiliate.youtube_handles.should be_empty
+        @affiliate.youtube_profiles.should be_empty
       end
     end
 

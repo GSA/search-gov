@@ -14,7 +14,10 @@ class TwitterProfile < ActiveRecord::Base
   def lookup_twitter_id
     if self.screen_name and self.twitter_id.nil?
       twitter_user = Twitter.user(self.screen_name) rescue nil
-      self.twitter_id = twitter_user.id if twitter_user
+      if twitter_user      
+        self.twitter_id = twitter_user.id
+        self.profile_image_url = twitter_user.profile_image_url
+      end
     end
   end
 end

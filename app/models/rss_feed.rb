@@ -40,7 +40,7 @@ class RssFeed < ActiveRecord::Base
 
   def query_youtube_playlist_urls
     youtube_playlist_urls = []
-    affiliate.youtube_handles.each do |youtube_handle|
+    affiliate.youtube_profiles.collect(&:username).each do |youtube_handle|
       begin
         query_playlists_url = "http://gdata.youtube.com/feeds/api/users/#{youtube_handle}/playlists?start-index=1&max-results=50&v=2"
         playlists_document = Nokogiri::XML(Kernel.open(query_playlists_url))

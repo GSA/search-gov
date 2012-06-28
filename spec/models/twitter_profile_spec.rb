@@ -27,6 +27,7 @@ describe TwitterProfile do
       @twitter_user = mock(Object)
       @twitter_user.stub!(:id).and_return 123
       @twitter_user.stub!(:screen_name).and_return "NewHandle"
+      @twitter_user.stub!(:profile_image_url).and_return "http://twitter.com/profile.jpg"
     end
   
     it "should use the Twitter API to find out the Twitter Profile id on create" do

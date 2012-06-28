@@ -1113,6 +1113,7 @@ describe Affiliates::HomeController do
         twitter_user = mock(Object)
         twitter_user.stub!(:id).and_return 123
         twitter_user.stub!(:screen_name).and_return "USAgency"
+        twitter_user.stub!(:profile_image_url).and_return "http://twitter.com/profile.jpg"
         Twitter.should_receive(:user).with("USAgency").and_return twitter_user
         put :update_social_media, :id => affiliate.id, :affiliate => twitter_profiles_attributes, :commit => 'Save'
       end
@@ -1158,7 +1159,7 @@ describe Affiliates::HomeController do
     
     context "when the profile type passed is Twitter" do
       before do
-        @affiliate.twitter_profiles << TwitterProfile.create(:screen_name => 'NewHandle', :twitter_id => 1234)
+        @affiliate.twitter_profiles << TwitterProfile.create(:screen_name => 'NewHandle', :twitter_id => 1234, :profile_image_url => "http://twitter.com/profile.jpg")
       end
       
       it "should delete the Twitter Profile from the affiliate" do
