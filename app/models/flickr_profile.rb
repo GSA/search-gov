@@ -5,6 +5,7 @@ class FlickrProfile < ActiveRecord::Base
   validates_presence_of :url, :profile_type, :profile_id, :affiliate
   validates_inclusion_of :profile_type, :in => %w{user group}
   validates_uniqueness_of :url, :scope => :affiliate_id
+  validate :is_flickr_url
   
   before_validation :normalize_url
   before_validation :lookup_profile_id, :on => :create
@@ -54,6 +55,15 @@ class FlickrProfile < ActiveRecord::Base
           errors.add(:base, "We could not find the Flickr group that you specified.  Please modify the URL and try again.")
         end
       end
+    end
+  end
+  
+  def is_flickr_url
+    unless url =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/ or
+           url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+$/ or
+           url =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+$/
+      errors.add(:url, "The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.")
+      return false
     end
   end
 

@@ -107,7 +107,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     elsif @affiliate.update_attributes(params[:affiliate])
       flash[:success] = "Added social media profile"
     else
-      flash[:error] = @affiliate.errors
+      flash[:error] = @affiliate.errors.collect{|error| error.last }
     end
     @title = "Social Media - "
     redirect_to edit_social_media_affiliate_path(@affiliate)

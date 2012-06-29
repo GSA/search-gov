@@ -31,7 +31,7 @@ class YoutubeProfile < ActiveRecord::Base
   
   def create_video_rss_feed
     unless self.affiliate.rss_feeds.collect(&:rss_feed_urls).flatten.collect(&:url).include?(url)
-      rss_feed = self.affiliate.rss_feeds.build(:name => 'Videos')
+      rss_feed = self.affiliate.rss_feeds.find_or_initialize_by_name_and_is_managed('Videos', true)
       rss_feed.is_managed = true
       rss_feed.rss_feed_urls.build(:url => url)
       rss_feed.save!
@@ -40,22 +40,24 @@ class YoutubeProfile < ActiveRecord::Base
   
   def update_video_rss_feed
     if self.username_changed?
-      self.affiliate.rss_feeds.each do |rss_feed|
-        rss_feed_url = rss_feed.rss_feed_urls.find_by_url(YoutubeProfile.youtube_url(self.username_was))
-        rss_feed_url.update_attributes(:url => self.url) if rss_feed_url
+      rss_feed = self.affiliate.rss_feeds.find_by_name_and_is_managed('Videos', true)
+      if rss_feed
+        old_feed = rss_feed.rss_feed_urls.find_by_url(YoutubeProfile.youtube_url(self.username_was))
+        old_feed.destroy if old_feed
       end
+      create_video_rss_feed
     end
   end
   
   def destroy_video_rss_feed
-    self.affiliate.rss_feeds.each do |rss_feed|
-      rss_feed.rss_feed_urls.each do |rss_feed_url|
-        if rss_feed_url.url == self.url
-          if rss_feed.rss_feed_urls.count == 1
-            rss_feed.destroy
-          else
-            rss_feed_url.destroy
-          end
+    rss_feed = self.affiliate.rss_feeds.find_by_name_and_is_managed('Videos', true)
+    if rss_feed
+      rss_feed_url = rss_feed.rss_feed_urls.find_by_url(self.url)
+      if rss_feed_url
+        if rss_feed.rss_feed_urls.count == 1
+          rss_feed.destroy
+        else
+          rss_feed_url.destroy
         end
       end
     end

@@ -26,6 +26,7 @@ describe YoutubeProfile do
     @affiliate.rss_feeds.destroy_all
     @affiliate.rss_feeds.should be_empty
     profile = YoutubeProfile.create!(@valid_attributes.merge(:affiliate => @affiliate))
+    @affiliate.reload
     @affiliate.rss_feeds.should_not be_empty
     @affiliate.rss_feeds.first.name.should == 'Videos'
     @affiliate.rss_feeds.first.rss_feed_urls.should_not be_empty
@@ -53,7 +54,7 @@ describe YoutubeProfile do
     rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml').read
     Kernel.stub(:open).and_return(rss_feed_content)
     profile = YoutubeProfile.create!(@valid_attributes.merge(:affiliate => @affiliate))
-    @affiliate.rss_feeds.first.rss_feed_urls.create!(:url => 'http://something.else.com/rss.xml')
+    @affiliate.rss_feeds.find_by_name_and_is_managed('Videos', true).rss_feed_urls.create!(:url => 'http://something.else.com/rss.xml')
     profile.destroy
     @affiliate.reload
     @affiliate.rss_feeds.first.rss_feed_urls.count.should == 1

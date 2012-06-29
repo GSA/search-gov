@@ -15,9 +15,14 @@ describe FlickrProfile do
   it { should validate_presence_of :affiliate }
   it { should belong_to :affiliate }
   
+  it "should require the url to be a valid Flickr user or group" do
+    profile = FlickrProfile.create(:url => 'USAgency')
+    profile.errors.collect{|error| error.last }.include?("The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.").should be_true
+  end
+    
   context "when the profile id and type are provided at create time" do
     it "should not lookup the user profile information using the Flickr API if specified on create" do
-      profile = FlickrProfile.new(:url => 'http://flickr.com/user/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
+      profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
       flickr.people.should_not_receive(:findByUsername)
       profile.save!
     end
