@@ -2050,6 +2050,66 @@ Feature: Affiliate clients
     And I should see "TwitterAgency"
     And I should see "YouTubeAgency"
     And I should see "http://www.flickr.com/groups/usagov/"
+    
+  Scenario: Previewing Flickr Photos
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | flickr_url                            |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.flickr.com/groups/usagov/  |
+    And the following FlickrPhotos exist:
+    | affiliate_name  | title     | description       | url_sq                  | flickr_id |
+    | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         |
+    | aff.gov         | Photo 2   | A photo           | http://flickr.com/2.jpg | 2         |
+    | aff.gov         | Photo 3   | A photo           | http://flickr.com/3.jpg | 3         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    And I follow "Recent Content" within ".actions"
+    Then I should see "Preview of recent Flickr photos"
+    And I should see "Photo 1"
+    And I should see "Photo 2"
+    And I should see "Photo 3"
+  
+  Scenario: Previewing Tweets
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | twitter_handle  |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | TwitterAgency   |
+    And the following Twitter Profiles exist:
+      | screen_name | twitter_id  | profile_image_url   | affiliate |
+      | aff.gov     | 12345       | http://t.com/j.png  | aff.gov   |
+    And the following Tweets exist:
+      | tweet_text  | tweet_id  | published_at        | twitter_profile_id  |
+      | Tweet 1     | 123       | 2012-06-30 00:00:00 | 12345               |
+      | Tweet 2     | 234       | 2012-06-30 01:00:00 | 12345               |
+      | Tweet 3     | 345       | 2012-06-30 02:00:00 | 12345               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    And I follow "Recent Content" within ".actions"
+    Then I should see "Tweet 1"
+    And I should see "Tweet 2"
+    And I should see "Tweet 3"
+    
+  Scenario: Previewing YouTube Social Media content
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | youtube_handles |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | YouTubeAgency   |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    Then I should see "Recent Content"
+    When I follow "Recent Content" within ".actions"
+    Then I should see the browser page titled "Preview Social Media"
+    And I should see "There are no social media associated with this profile."
+    
+    Given feed "Videos" has the following news items:
+      | link                                                              | title       | guid  | published_ago | description    |
+      | http://www.youtube.com/watch?v=SmwR9UW0ZTg&feature=youtube_gdata  | First item  | uuid1 | day           | Video 1        |
+      | http://www.youtube.com/watch?v=k19xyGCFzmk&feature=youtube_gdata  | Second item | uuid2 | day           | Video 2        |
+    And I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    And I follow "Recent Content" within ".actions"
+    Then I should see "First item"
+    And I should see "Second item"
 
   Scenario: Visiting the URLs & Sitemaps page
     Given the following Affiliates exist:
@@ -2273,10 +2333,10 @@ Feature: Affiliate clients
 
   Scenario: Editing the results modules
     Given the following Affiliates exist:
-      | display_name   | name       | contact_email | contact_name | locale | results_source |
-      | aff site       | aff.gov    | aff@bar.gov   | John Bar     | en     | bing+odie      |
-      | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es     | bing           |
-      | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es     | odie           |
+      | display_name   | name       | contact_email | contact_name | locale | results_source | youtube_handles  |
+      | aff site       | aff.gov    | aff@bar.gov   | John Bar     | en     | bing+odie      | aff.gov          |
+      | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es     | bing           |                  |
+      | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es     | odie           |                  |
     And affiliate "aff.gov" has the following RSS feeds:
       | name           | url                                                | position | shown_in_govbox |
       | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |
@@ -2316,12 +2376,13 @@ Feature: Affiliate clients
     And I go to the "aff site" affiliate page
     And I follow "Results modules"
     And I should see the following table rows:
-      | Name           | Source    |
-      | Agency         | USASearch |
-      | Medline        | USASearch |
-      | APress         | RSS       |
-      | BPhoto Gallery | RSS       |
-      | ZNot in GovBox | RSS       |
+      | Name           | Source         |
+      | Agency         | USASearch      |
+      | Medline        | USASearch      |
+      | APress         | RSS            |
+      | BPhoto Gallery | RSS            |
+      | Videos         | YouTube (RSS)  |
+      | ZNot in GovBox | RSS            |
     And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
     And the "Show RSS feed 0 in govbox" checkbox should be checked
@@ -2330,7 +2391,7 @@ Feature: Affiliate clients
     And the "Is related searches enabled" checkbox should be checked
     And the "Is odie govbox enabled" checkbox should be checked
     And I uncheck "Show RSS feed 0 in govbox"
-    And I check "Show RSS feed 2 in govbox"
+    And I check "Show RSS feed 3 in govbox"
     And I uncheck "Is related searches enabled"
     And I uncheck "Is odie govbox enabled"
     And I fill in "Connection site handle 0" with "es.aff.gov"

@@ -57,6 +57,10 @@ class RssFeed < ActiveRecord::Base
   def self.refresh_all(freshen_managed_feeds = false)
     all(:conditions => { :is_managed => freshen_managed_feeds }, :order => 'affiliate_id ASC, id ASC').each(&:freshen)
   end
+  
+  def is_video?
+    self.is_video
+  end
 
   private
   def rss_feed_urls_cannot_be_blank

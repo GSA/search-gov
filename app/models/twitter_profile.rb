@@ -5,6 +5,10 @@ class TwitterProfile < ActiveRecord::Base
   validates_uniqueness_of :twitter_id, :screen_name
   before_validation :lookup_twitter_id
   
+  def recent
+    self.tweets.recent
+  end
+  
   def link_to_profile
     "http://twitter.com/#!/#{screen_name}"
   end

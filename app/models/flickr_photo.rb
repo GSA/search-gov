@@ -3,6 +3,7 @@ class FlickrPhoto < ActiveRecord::Base
   validates_presence_of :flickr_id, :flickr_profile
   validates_uniqueness_of :flickr_id, :scope => :flickr_profile_id
   after_create :update_with_raw_tags
+  scope :recent, :order => 'date_upload DESC', :limit => 10
   
   searchable do
     text :title

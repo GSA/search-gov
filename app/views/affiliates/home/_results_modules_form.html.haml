@@ -49,7 +49,7 @@
             = results_modules_form.fields_for :rss_feeds, rss_feed do |rss_feed_form|
               %tr.row-item
                 %td.name= link_to rss_feed.name, affiliate_rss_feed_path(@affiliate, rss_feed)
-                %td.source= link_to 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
+                %td.source= link_to rss_feed.is_video? ? 'YouTube (RSS)' : 'RSS', affiliate_rss_feed_path(@affiliate, rss_feed)
                 %td.actions
                   = rss_feed_form.check_box :shown_in_govbox
                   = rss_feed_form.label :shown_in_govbox, "Show RSS feed #{index} in govbox", :class => 'hide'

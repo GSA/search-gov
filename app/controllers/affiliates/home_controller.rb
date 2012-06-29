@@ -231,6 +231,11 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     render "new_#{params[:profile_type]}_profile_fields"
   end
   
+  def preview_social_media
+    @title = "Preview Social Media - "
+    @recent_social_media = (eval params[:profile_type]).find(params[:profile_id]).recent if params[:profile_type] and params[:profile_id] rescue nil
+  end
+  
   def urls_and_sitemaps
     @title = "URLs & Sitemaps - "
     @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 5, :page => 1)

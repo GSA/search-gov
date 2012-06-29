@@ -5,6 +5,10 @@ class FacebookProfile < ActiveRecord::Base
   
   before_validation :normalize_username
   
+  def link_to_profile
+    "http://www.facebook.com/#{self.username}"
+  end
+  
   private
   
   def normalize_username

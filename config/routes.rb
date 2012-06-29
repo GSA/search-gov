@@ -21,6 +21,7 @@ UsasearchRails3::Application.routes.draw do
       get :edit_social_media
       put :update_social_media
       delete :social_media
+      get :preview_social_media
       get :urls_and_sitemaps
       get :hosted_sitemaps
       get :content_sources

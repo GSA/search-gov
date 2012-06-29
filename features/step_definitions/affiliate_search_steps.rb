@@ -113,6 +113,7 @@ Given /^the following Twitter Profiles exist:$/ do |table|
   table.hashes.each do |hash|
     twitter_profile = TwitterProfile.create!(:screen_name => hash[:screen_name], :twitter_id => hash[:twitter_id], :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
     affiliate = Affiliate.find_by_name(hash[:affiliate])
+    affiliate.twitter_profiles.destroy_all
     affiliate.twitter_profiles << twitter_profile
   end
 end
@@ -127,7 +128,7 @@ end
 Given /^the following FlickrPhotos exist:$/ do |table|
   table.hashes.each do |hash|
     affiliate = Affiliate.find_by_name(hash[:affiliate_name])
-    affiliate.flickr_profiles.create!(:url => 'http://flickr.com/photos/USAgency', :profile_type => 'user', :profile_id => '1234', :affiliate => affiliate)
+    affiliate.flickr_profiles.find_or_create_by_url_and_profile_type_and_profile_id("http://flickr.com/photos/USagency", 'user', '1234')
     FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :url_q => hash[:url_q], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :flickr_profile => affiliate.flickr_profiles.first)
   end
   FlickrPhoto.reindex

@@ -5,6 +5,8 @@ class NewsItem < ActiveRecord::Base
   before_validation :clean_text_fields
   belongs_to :rss_feed
   belongs_to :rss_feed_url
+  scope :recent, :order => 'published_at DESC', :limit => 10
+  
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
   TIME_BASED_SEARCH_OPTIONS["h"] = :hour
   TIME_BASED_SEARCH_OPTIONS["d"] = :day

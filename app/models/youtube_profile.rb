@@ -23,6 +23,19 @@ class YoutubeProfile < ActiveRecord::Base
     YoutubeProfile.youtube_url(self.username)
   end
   
+  def recent
+    rss_feed_url = nil
+    self.affiliate.rss_feeds.each do |rss_feed|
+      rss_feed_url = rss_feed.rss_feed_urls.find_by_url(self.url)
+      break if rss_feed_url
+    end
+    rss_feed_url ? rss_feed_url.news_items.recent : nil
+  end
+    
+  def link_to_profile
+    "http://youtube.com/#{self.username}"
+  end
+  
   private
   
   def normalize_username
