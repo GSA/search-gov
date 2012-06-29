@@ -1,0 +1,7 @@
+.group
+  .row.center
+    = will_paginate collection, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0
+
+.group.clear
+  .row.center= search_results_by_logo(are_results_by_bing)
+

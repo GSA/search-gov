@@ -17,14 +17,10 @@
           .links= link_with_click_tracking(h(shorten_url(hit.instance.url)), hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
       - unless index == @search.hits.length - 1 then
         %hr
-  .group
-    .row.center
-      = will_paginate @search.hits, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0, :m => true
-  = render :partial => 'usasearch_logo'
+
+  = render_mobile_pagination_and_logo(@search.results, false)
 
 - elsif @search.error_message
   %p.noresults #{@search.error_message}
 - else
   = no_results_for @search.query
-
-= render :partial => 'shared/footer'

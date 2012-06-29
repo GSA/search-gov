@@ -17,9 +17,6 @@
             = display_deep_links_for(search_result, search, @affiliate, @search_vertical)
       - unless index == search.results.length - 1 then
         %hr
-  .group
-    .row.center
-      = will_paginate search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0
 
   - if (search && search.has_related_searches?)
     #relatedsearch
@@ -27,6 +24,8 @@
       %ul
         - search.related_search.each_with_index do |related_term, index|
           %li= tracked_click_link(search_path({:query=>strip_tags(related_term), :affiliate=> @affiliate, :m => true }),related_term.html_safe.downcase, search, @affiliate, index, 'SREL')
+
+  = render_mobile_pagination_and_logo(search.results, search.are_results_by_bing?)
 
 - elsif search.error_message
   %p.noresults #{search.error_message}

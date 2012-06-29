@@ -441,4 +441,10 @@ module SearchHelper
   def left_nav_label(label_text)
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
+
+  def render_mobile_pagination_and_logo(collection, are_results_by_bing)
+    render(:partial => 'shared/pagination_and_logo',
+           :locals => { :collection => collection,
+                        :are_results_by_bing => are_results_by_bing })
+  end
 end

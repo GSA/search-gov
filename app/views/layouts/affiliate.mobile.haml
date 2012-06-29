@@ -25,4 +25,5 @@
       #contentWrapper
         %h1.page-title #{@affiliate.display_name} #{t(:mobile)}
         = yield
+        = render :partial => 'shared/footer'
     = render :partial => '/shared/analytics'

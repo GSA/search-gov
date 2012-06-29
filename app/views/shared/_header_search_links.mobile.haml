@@ -1,6 +1,0 @@
-#topLinks
-  - search_params = {:query => params[:query], :locale => params[:locale], :m => params[:m]}
-  %ul
-    %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
-    %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
-= render :partial => "shared/small_logo"

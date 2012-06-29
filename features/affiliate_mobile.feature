@@ -31,6 +31,7 @@ Feature: Mobile Search for Affiliate
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see the browser page titled "agency site Mobile"
     And I should see "Our Emergency Page" in the mobile boosted contents section
+    And I should see the Results by Bing logo
     When I follow "Next"
     Then I should see the browser page titled "agency site Mobile"
     Then I should not see "Our Emergency Page"
@@ -48,6 +49,23 @@ Feature: Mobile Search for Affiliate
     Then I should see the browser page titled "agency site Mobile"
     When I follow "Classic"
     Then I should see the browser page titled "social security - agency site Search Results"
+
+  Scenario: When an affiliate uses ODIE results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains | results_source |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | odie           |
+    And the following IndexedDocuments exist:
+      | url                       | affiliate | title       | description     |
+      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
+      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
+    And the url "http://nih.gov/1.html" has been crawled
+    And the url "http://nih.gov/2.html" has been crawled
+    And I am on nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Search"
+    Then I should see "NIH Page 1"
+    And I should see "NIH Page 2"
+    And I should see the Results by USASearch logo
 
   Scenario: A search on RSS feeds
     Given the following Affiliates exist:
@@ -72,6 +90,7 @@ Feature: Mobile Search for Affiliate
     And I should see "Second blog item"
     And I should see "First press item"
     And I should see "Second press item"
+    And I should see the Results by USASearch logo
     When I follow "Next"
     Then I should see "agency site Mobile"
     And I should see "news item 7 title for Blog"
@@ -111,6 +130,7 @@ Feature: Mobile Search for Affiliate
     And I should see "document on space suit"
     And I should see "[PDF] Space First moonwalk"
     And I should see "document on space moonwalk"
+    And I should see the Results by USASearch logo
     When I fill in "query" with "document"
     And I submit the search form
     Then I should see "crawled document"
@@ -130,9 +150,17 @@ Feature: Mobile Search for Affiliate
 
   Scenario: A search on images
     Given the following Affiliates exist:
-      | display_name   | name              | contact_email | contact_name |
-      | NOAA Photo Lib | photolib.noaa.gov | aff@noaa.gov  | John Bar     |
+      | display_name   | name              | contact_email | contact_name | is_photo_govbox_enabled |
+      | NOAA Photo Lib | photolib.noaa.gov | aff@noaa.gov  | John Bar     | true                    |
+    And the following FlickrPhotos exist:
+      | title               | description              | url_q                         | owner | flickr_id | affiliate_name    |
+      | Current weather map | A picture of weather map | http://www.flickr.com/someurl | 123   | 456       | photolib.noaa.gov |
     And I am on photolib.noaa.gov's image search page
-    And I fill in "query" with "weather"
+    And I fill in "query" with "lighthouse"
     And I submit the search form
     Then I should see 30 image results
+    And I should see the Results by Bing logo
+    When I fill in "query" with "weather"
+    And I submit the search form
+    Then I should see 1 image result
+    And I should see the Results by USASearch logo
