@@ -4,22 +4,23 @@ class TwitterProfile < ActiveRecord::Base
   validates_presence_of :twitter_id, :screen_name, :profile_image_url
   validates_uniqueness_of :twitter_id, :screen_name
   before_validation :lookup_twitter_id
-  
+
   def recent
     self.tweets.recent
   end
-  
+
   def link_to_profile
-    "http://twitter.com/#!/#{screen_name}"
+    "http://twitter.com/#{screen_name}"
   end
-  
+
   private
-  
+
   def lookup_twitter_id
     if self.screen_name and self.twitter_id.nil?
       twitter_user = Twitter.user(self.screen_name) rescue nil
-      if twitter_user      
+      if twitter_user
         self.twitter_id = twitter_user.id
+        self.name = twitter_user.name
         self.profile_image_url = twitter_user.profile_image_url
       end
     end

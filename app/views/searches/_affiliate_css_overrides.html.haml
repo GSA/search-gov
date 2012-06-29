@@ -50,7 +50,7 @@
       .govbox
         h3.alt, h3.alt a
           color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
-      .featured-collection h2, .featured-collection h2 a, #twitter_govbox h3.alt
+      .featured-collection h2, .featured-collection h2 a
         color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     #results .pagination
       a, a:visited
@@ -58,6 +58,9 @@
       a:hover, em
         background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
         color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
+    #twitter_govbox
+      h3.alt
+        color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     #search .page-not-found
       h3.message
         color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}

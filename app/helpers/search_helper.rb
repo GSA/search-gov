@@ -340,13 +340,20 @@ module SearchHelper
     raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end
 
-  def render_govbox
-    content = content_tag(:div, '', :class => 'govbox-wrapper-top')
-    content << content_tag(:div, :class => 'govbox-wrapper-middle') do
-      yield
+  def render_govbox(column = :center)
+    if column == :center
+      content = content_tag(:div, '', :class => 'govbox-wrapper-top')
+      content << content_tag(:div, :class => 'govbox-wrapper-middle') do
+        yield
+      end
+      content << content_tag(:div, '', :class => 'govbox-wrapper-bottom')
+      raw(content_tag(:div, raw(content), :class => 'govbox'))
+    elsif column == :right
+      content = content_tag(:div, :class => 'right-column-govbox') do
+        yield
+      end
+      raw(content)
     end
-    content << content_tag(:div, '', :class => 'govbox-wrapper-bottom')
-    raw(content_tag(:div, raw(content), :class => 'govbox'))
   end
 
   private

@@ -614,24 +614,34 @@ Feature: Affiliate Search
       | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
       | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     | true                      |
     And the following Twitter Profiles exist:
-      | screen_name | twitter_id | affiliate  |
-      | USASearch   | 123        | bar.gov    |
-      | GobiernoUSA | 456        | es.bar.gov |
+      | screen_name | name            | twitter_id | affiliate  |
+      | USASearch   | USASearch.gov   | 123        | bar.gov    |
+      | GobiernoUSA | GobiernoUSA.gov | 456        | es.bar.gov |
     And the following Tweets exist:
       | tweet_text                | tweet_id | published_at        | twitter_profile_id |
-      | AMERICA is great!         | 123456   | 2012-05-01 00:00:00 | 123                |
-      | Estados Unidos es grande! | 789012   | 2012-05-01 00:00:00 | 456                |
+      | Winter season is great!   | 123456   | 2012-05-01 00:00:00 | 123                |
+      | Summer season is great!   | 234567   | 2012-04-25 00:00:00 | 123                |
+      | Fall season is great!     | 345678   | 2012-04-26 00:00:00 | 123                |
+      | Spring season is great!   | 456789   | 2012-04-27 00:00:00 | 123                |
+      | Estados Unidos es grande! | 789012   | 2012-04-28 00:00:00 | 456                |
     When I am on bar.gov's search page
-    And I fill in "query" with "america"
+    And I fill in "query" with "season"
     And I press "Search"
-    Then I should see "Recent tweet for 'america' by @USASearch"
-    And I should see "AMERICA is great!"
-    And I should see "AMERICA" in bold font
+    Then I should see "Recent tweet for 'season' by bar site"
+    And I should see a link to "USASearch.gov" with url for "http://twitter.com/USASearch"
+    And I should see "USASearch.gov @USASearch"
+    And I should see "Winter season is great!"
+    And I should see "Fall season is great!"
+    And I should see "Spring season is great!"
+    And I should see "season" in bold font
+    And I should not see "Summer season is great!"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "Estados Unidos"
     And I press "Buscar"
-    Then I should see "Tweet más reciente para 'Estados Unidos' de @GobiernoUSA"
+    Then I should see "Tweet más reciente para 'Estados Unidos' de spanish site"
+    And I should see a link to "GobiernoUSA.gov" with url for "http://twitter.com/GobiernoUSA"
+    And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos es grande!"
     And I should see "Estados Unidos" in bold font
 
@@ -645,15 +655,15 @@ Feature: Affiliate Search
     Then I should not see "Recent Tweets"
 
     Given the following Twitter Profiles exist:
-      | screen_name   | twitter_id  | affiliate |
-      | USASearch     | 123         | bar.gov   |
+      | screen_name | twitter_id | affiliate |
+      | USASearch   | 123        | bar.gov   |
     And the following Tweets exist:
       | tweet_text          | tweet_id    | published_at        | twitter_profile_id  |
       | AMERICA is great!   | 123456      | 2012-05-01 00:00:00 | 123                 |
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
-    Then I should not see "Recent tweet for america (@USASearch)"
+    Then I should not see "Recent tweet for america"
 
     When I go to the affiliate admin page with "bar.gov" selected
     And I follow "Results module"
@@ -664,7 +674,7 @@ Feature: Affiliate Search
     When I go to bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"
-    Then I should see "Recent tweet for 'america' by @USASearch"
+    Then I should see "Recent tweet for 'america' by bar site"
 
   Scenario: When there are relevant Flickr photos for a search
     Given the following Affiliates exist:

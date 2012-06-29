@@ -1024,8 +1024,10 @@ describe WebSearch do
       before do
         @tweet = Tweet.create!(:tweet_text => "I love america.", :published_at => Time.now, :twitter_profile_id => 123, :tweet_id => 123)
         Tweet.reindex
-        twitter_profile = TwitterProfile.create!(:screen_name => 'test', :twitter_id => 123, :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-        @affiliate.twitter_profiles << twitter_profile
+        @affiliate.twitter_profiles.create!(:screen_name => 'test',
+                                            :name => 'Test',
+                                            :twitter_id => 123,
+                                            :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
         @affiliate.update_attributes(:is_twitter_govbox_enabled => true)
       end
 

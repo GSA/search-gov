@@ -1,10 +1,9 @@
-- tweet = search.tweets.hits.first
-#twitter_govbox
-  %h3.alt
-    = t(:recent_tweet_for, :query => search.query)
-    %span.recommended-by
-      = t :by
-      = link_to("@#{tweet.instance.twitter_profile.screen_name}", tweet.instance.twitter_profile.link_to_profile)
-  .profile-image=image_tag tweet.instance.twitter_profile.profile_image_url, :alt => tweet.instance.twitter_profile.screen_name
-  .tweet-text= highlight_hit(tweet, :tweet_text).html_safe
-  .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet
+= render_govbox(:right) do
+  #twitter_govbox
+    %h3.alt
+      = t(:recent_tweet_for, :query => search.query)
+      %span.recommended-by
+        = t :by
+        = @affiliate.display_name
+    - search.tweets.hits(:verify => true).each do |tweet|
+      = render :partial => 'shared/tweet', :object => tweet

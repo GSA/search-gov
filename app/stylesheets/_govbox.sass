@@ -16,7 +16,7 @@
     :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
     :behavior url(/javascripts/iepngfix.htc)
     margin: 0
-    padding: 0.8em $results-padding-size 0 25px
+    padding: 0.8em 0 0 25px
 
 #results .recalls-govbox, #results .recalls
   h3
@@ -287,7 +287,7 @@
     font-size: 0.8em
     height: auto
     margin:
-      right: 20px
+      right: 5px
       left: 0
     padding: 0
     width: 120px
@@ -322,18 +322,33 @@
     line-height: 1.2
     width: 49%
 
-#twitter_govbox
-  +clearfix
-  background: url('/images/twitter_logo.png') -7px 4px no-repeat
-  padding:
-    top: 1em
-    left: 35px
-  margin-bottom: 1em
+#right_column .right-column-govbox
+  +border-radius
   @extend .govbox-title
+  border: 1px solid #CACACA
+  margin:
+    top: 1em
+    bottom: 1em
+
+.right-column-govbox #twitter_govbox
+  +clearfix
+  padding: 10px
+  h3.alt
+    margin: 0
+    font-size: 1.1em
+    padding: 0 25px 0.4em 0
+    background: url(/images/govbox/twitter.png) no-repeat 103% -4px
   a
     text-decoration: none
-  .profile-image
-    float: left
-    margin-right: 10px
+  .tweet
+    border-top: 1px solid #EEE
+    padding: 0.4em 0 0
+  .screen-name
+    color: gray
+    font-size: 0.95em
+  .tweet-text
+    margin: 0
   .timestamp
-    text-align: right
+    font-size: 0.8em
+    margin: 0.3em 0 0.3em 0
+

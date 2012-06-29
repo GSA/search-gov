@@ -31,6 +31,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:matching_site_limits).and_return []
     @search.stub!(:indexed_documents).and_return nil
     @search.stub!(:photos).and_return nil
+    @search.stub!(:tweets)
     assign(:search, @search)
   end
 

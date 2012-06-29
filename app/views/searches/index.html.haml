@@ -7,3 +7,5 @@
 %a#main_content
 #results
   = render :partial => "shared/searchresults", :locals => { :search => @search }
+#right_column
+  = render :partial => 'right_column', :locals => { :search => @search }

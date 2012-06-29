@@ -21,7 +21,10 @@ describe "Twitter rake tasks" do
 
       context "when connecting to Twitter" do
         before(:each) do
-          TwitterProfile.create!(:twitter_id => 123, :screen_name => 'USASearch', :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+          TwitterProfile.create!(:twitter_id => 123,
+                                 :screen_name => 'USASearch',
+                                 :name => 'USASearch',
+                                 :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
 
           EM.stub!(:defer).and_yield
           EM.stub!(:stop_event_loop).and_return true
