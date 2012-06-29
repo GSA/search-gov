@@ -33,6 +33,20 @@ describe YoutubeProfile do
     @affiliate.rss_feeds.first.rss_feed_urls.first.url.should == profile.url
   end
   
+  it "should add new YoutubeProfiles for the same affiliate to the Videos rss feed group if it exists" do
+    @affiliate.rss_feeds.destroy_all
+    @affiliate.rss_feeds.should be_empty
+    profile = YoutubeProfile.create!(@valid_attributes.merge(:affiliate => @affiliate))
+    @affiliate.reload
+    @affiliate.rss_feeds.should_not be_empty
+    @affiliate.rss_feeds.first.name.should == 'Videos'
+    @affiliate.rss_feeds.first.rss_feed_urls.count.should == 1
+    second_profile = YoutubeProfile.create!(:username => 'AnotherUSAgency', :affiliate => @affiliate)
+    @affiliate.reload
+    @affiliate.rss_feeds.count.should == 1
+    @affiliate.rss_feeds.first.rss_feed_urls.count.should == 2
+  end
+  
   it "should delete associated rss feed when the profile is deleted" do
     @affiliate.rss_feeds.destroy_all
     profile = YoutubeProfile.create!(@valid_attributes.merge(:affiliate => @affiliate))

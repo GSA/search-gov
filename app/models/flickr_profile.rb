@@ -59,9 +59,9 @@ class FlickrProfile < ActiveRecord::Base
   end
   
   def is_flickr_url
-    unless url =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/ or
-           url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+$/ or
-           url =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+$/
+    unless url =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+(\/)?$/ or
+           url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+(\/)?$/ or
+           url =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+(\/)?$/
       errors.add(:url, "The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.")
       return false
     end
