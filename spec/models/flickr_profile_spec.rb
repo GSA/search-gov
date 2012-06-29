@@ -28,6 +28,12 @@ describe FlickrProfile do
     end
   end
   
+  it "should queue the profile for import after create" do
+    ResqueSpec.reset!
+    Resque.should_receive(:enqueue_with_priority).with(:high, FlickrProfileImporter, an_instance_of(Fixnum))
+    FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
+  end
+  
   context "when no profile id or type is provided" do
     context "when the profile URL is a user URL" do
       before do

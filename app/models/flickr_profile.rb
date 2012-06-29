@@ -10,6 +10,8 @@ class FlickrProfile < ActiveRecord::Base
   before_validation :normalize_url
   before_validation :lookup_profile_id, :on => :create
   
+  after_create :queue_for_import
+  
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
 
   def import_photos
@@ -104,5 +106,9 @@ class FlickrProfile < ActiveRecord::Base
       end
     end
     params.reject{|k,v| FlickrPhoto.column_names.include?(k) == false }
+  end
+  
+  def queue_for_import
+    Resque.enqueue_with_priority(:high, FlickrProfileImporter, self.id)
   end
 end
