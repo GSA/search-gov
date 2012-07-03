@@ -1961,8 +1961,8 @@ describe Affiliate do
       before do
         page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
         @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
-        flickr_api_response = {:nsid => '1600'}
-        flickr.people.stub!(:findByUsername).with(:username => 'whitehouse').and_return flickr_api_response
+        flickr_api_response = {"id"=>"1600", "username"=>"GregGersh"} 
+        flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
         @affiliate.autodiscover_social_media
       end
 
@@ -1975,7 +1975,7 @@ describe Affiliate do
       end
 
       it "should create a flickr profile with the first Flickr url found" do
-        @affiliate.flickr_profiles.collect(&:url).include?("http://flickr.com/whitehouse").should be_true
+        @affiliate.flickr_profiles.collect(&:url).include?("http://flickr.com/photos/whitehouse").should be_true
       end
 
       it "should update the youtube profiles with all the youtube handles found on the page" do

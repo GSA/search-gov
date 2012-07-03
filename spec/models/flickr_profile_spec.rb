@@ -5,8 +5,8 @@ describe FlickrProfile do
   
   before do
     @affiliate = affiliates(:basic_affiliate)
-    @user_response = {"nsid" => '12345', "username" => 'USAgency', "id" => '12345'}
-    @group_search_response = [{"nsid"=>"1058319", "name"=>"USA.gov - Official US Government Photostreams", "eighteenplus"=>0}]
+    @user_response = {"username" => 'USAgency', "id" => '12345'}
+    @group_search_response = {"id"=>"1058319", "name"=>"USA.gov - Official US Government Photostreams", "eighteenplus"=>0}
   end
   
   it { should validate_presence_of :url }
@@ -23,7 +23,7 @@ describe FlickrProfile do
   context "when the profile id and type are provided at create time" do
     it "should not lookup the user profile information using the Flickr API if specified on create" do
       profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
-      flickr.people.should_not_receive(:findByUsername)
+      flickr.urls.should_not_receive(:lookupUser)
       profile.save!
     end
   end
@@ -41,7 +41,7 @@ describe FlickrProfile do
       end
     
       it "should lookup the user profile information using the Flickr API on create" do
-        flickr.people.should_receive(:findByUsername).with(:username => 'USAgency').and_return @user_response
+        flickr.urls.should_receive(:lookupUser).with(:url => 'http://flickr.com/photos/USAgency').and_return @user_response
         @profile.save!
         @profile.profile_type.should == "user"
         @profile.profile_id.should == "12345"
@@ -49,7 +49,7 @@ describe FlickrProfile do
       
       context "when there is an error looking up the user" do
         before do
-          flickr.people.stub!(:findByUsername).and_raise "Some Exception"
+          flickr.urls.stub!(:lookupUser).and_raise "Some Exception"
         end
         
         it "should not create the profile" do
@@ -67,7 +67,7 @@ describe FlickrProfile do
       end
   
       it "should lookup the group profile information using the Flickr API on create" do
-        flickr.groups.should_receive(:search).with(:text => "USAgency").and_return @group_search_response
+        flickr.urls.should_receive(:lookupGroup).with(:url => 'http://flickr.com/groups/USAgency').and_return @group_search_response
         @profile.save!
         @profile.profile_type.should == "group"
         @profile.profile_id.should == "1058319"
@@ -75,7 +75,7 @@ describe FlickrProfile do
       
       context "when the url can not be found via the Flickr API" do
         before do
-          flickr.stub!(:search).and_raise "Some Exception"
+          flickr.urls.stub!(:lookupGroup).and_raise "Some Exception"
         end
         
         it "should not create the profile" do

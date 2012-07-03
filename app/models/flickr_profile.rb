@@ -50,17 +50,17 @@ class FlickrProfile < ActiveRecord::Base
   
   def lookup_profile_id
     unless self.profile_type and self.profile_id
-      if self.url =~ /\/photos\// or self.url =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/
+      if self.url =~ /\/photos\//
         self.profile_type = "user"
         begin
-          self.profile_id = flickr.people.findByUsername(:username => self.url.split("/").last)["nsid"]
+          self.profile_id = flickr.urls.lookupUser(:url => self.url)["id"]
         rescue
           errors.add(:base, "We could not find the Flickr user that you specified.  Please modify the URL and try again.")
         end
       elsif self.url =~ /\/groups\//
         self.profile_type = "group"
         begin
-          self.profile_id = flickr.groups.search(:text => self.url.split("/").last).first["nsid"]
+          self.profile_id = flickr.urls.lookupGroup(:url => self.url)["id"]
         rescue
           errors.add(:base, "We could not find the Flickr group that you specified.  Please modify the URL and try again.")
         end
@@ -69,8 +69,7 @@ class FlickrProfile < ActiveRecord::Base
   end
   
   def is_flickr_url
-    unless url =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+(\/)?$/ or
-           url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+(\/)?$/ or
+    unless url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+(\/)?$/ or
            url =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+(\/)?$/
       errors.add(:url, "The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.")
       return false

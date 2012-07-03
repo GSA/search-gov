@@ -519,9 +519,10 @@ class Affiliate < ActiveRecord::Base
       @home_page_doc.xpath("//a").each do |anchor_tag|
         href = anchor_tag.attribute("href").value rescue nil
         if href
+          puts href
           self.twitter_profiles.create(:screen_name => href.split("/").last) if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/
           self.facebook_profiles.create(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/  
-          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/[A-Za-z0-9]+$/
+          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+$/ or href =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+$/
           self.youtube_profiles.create!(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
         end
       end
