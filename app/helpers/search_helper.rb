@@ -1,6 +1,6 @@
 module SearchHelper
 
-  SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls}
+  SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
 
   NO_RESULTS_BANNERS = [
       { :image_path => 'no_results/no_results_1.jpg',
@@ -106,13 +106,17 @@ module SearchHelper
     begin
       path_extname = File.extname(URI.parse(url).path)[1..-1]
       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )
-        raw "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
+        extname_span(path_extname)
       else
         ""
       end
     rescue
       ""
     end
+  end
+
+  def extname_span(extname)
+    raw "<span class=\"uext_type\">[#{extname.upcase}]</span> "
   end
 
   def excluded_highlight_terms(affiliate, query)
