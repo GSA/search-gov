@@ -2056,10 +2056,10 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | flickr_url                            |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.flickr.com/groups/usagov/  |
     And the following FlickrPhotos exist:
-    | affiliate_name  | title     | description       | url_sq                  | flickr_id |
-    | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         |
-    | aff.gov         | Photo 2   | A photo           | http://flickr.com/2.jpg | 2         |
-    | aff.gov         | Photo 3   | A photo           | http://flickr.com/3.jpg | 3         |
+      | affiliate_name  | title     | description       | url_sq                  | flickr_id | date_taken  |
+      | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         | 2012-06-01  |  
+      | aff.gov         | Photo 2   | A photo           | http://flickr.com/2.jpg | 2         | 2012-06-02  |
+      | aff.gov         | Photo 3   | A photo           | http://flickr.com/3.jpg | 3         | 2012-06-03  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
