@@ -72,7 +72,7 @@
   <indexDefaults>
     <!-- Values here affect all index writers and act as a default unless overridden. -->
     <useCompoundFile>false</useCompoundFile>
-    <mergeFactor>10</mergeFactor>
+    <mergeFactor>20</mergeFactor>
     <!-- If both ramBufferSizeMB and maxBufferedDocs is set, then Lucene will flush
      based on whichever limit is hit first.  -->
     <!--<maxBufferedDocs>1000</maxBufferedDocs>-->
