@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703130106) do
+ActiveRecord::Schema.define(:version => 20120705153644) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -288,6 +288,8 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.datetime "updated_at"
   end
 
+  add_index "facebook_profiles", ["affiliate_id"], :name => "index_facebook_profiles_on_affiliate_id"
+
   create_table "faqs", :force => true do |t|
     t.string   "url"
     t.text     "question"
@@ -416,6 +418,8 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "flickr_profiles", ["affiliate_id"], :name => "index_flickr_profiles_on_affiliate_id"
 
   create_table "food_recalls", :force => true do |t|
     t.integer  "recall_id"
@@ -847,5 +851,7 @@ ActiveRecord::Schema.define(:version => 20120703130106) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "youtube_profiles", ["affiliate_id"], :name => "index_youtube_profiles_on_affiliate_id"
 
 end
