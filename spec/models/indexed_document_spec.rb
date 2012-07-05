@@ -417,7 +417,7 @@ describe IndexedDocument do
 
     context "when there is a problem updating the attributes after catching an exception during indexing" do
       before do
-        indexed_document.stub!(:open).and_raise Exception.new("some problem during indexing")
+        Net::HTTP.stub!(:start).and_raise Exception.new("some problem during indexing")
         indexed_document.stub!(:update_attributes!).and_raise Timeout::Error
       end
 

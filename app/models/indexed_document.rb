@@ -64,7 +64,6 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def fetch
-    #TODO: cron that removes old temp files...still need it?
     site_domain_matches
     destroy and return unless errors.empty?
     begin
@@ -144,14 +143,15 @@ class IndexedDocument < ActiveRecord::Base
     body = extract_body_from(doc)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
     description = generate_generic_description(body)
-    update_attributes!(:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    self.attributes = {:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
     discover_nested_docs(doc)
   end
 
   def index_application_file(file_path, doctype)
     document_text = parse_file(file_path, 't').strip rescue nil
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if document_text.blank?
-    update_attributes!(:title => extract_document_title(file_path, document_text), :description => generate_generic_description(document_text), :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    self.attributes = {:title => extract_document_title(file_path, document_text), :description => generate_generic_description(document_text),
+                       :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
   end
 
   def generate_generic_description(text)
