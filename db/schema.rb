@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705153644) do
+ActiveRecord::Schema.define(:version => 20120706041733) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -479,6 +479,7 @@ ActiveRecord::Schema.define(:version => 20120705153644) do
   end
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
+  add_index "indexed_documents", ["affiliate_id", "id"], :name => "index_indexed_documents_on_affiliate_id_and_id", :unique => true
   add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
