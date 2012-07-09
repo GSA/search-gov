@@ -497,13 +497,13 @@ class MedTopic < ActiveRecord::Base
         new_lmtid = nil
         topic_atts.each { |name, value|
           case name
-            when :synonyms :
+            when :synonyms
               new_synonyms = value
-            when :related_topics :
+            when :related_topics
               new_related_topics = value
-            when :related_groups :
+            when :related_groups
               new_related_groups = value
-            when :lang_map :
+            when :lang_map
               new_lmtid = value unless value.nil?
             else
               new_atts[name] = value
@@ -536,15 +536,15 @@ class MedTopic < ActiveRecord::Base
             changed_topic_atts = {}
             topic_atts.each { |name, value|
               case name
-                when :synonyms :
+                when :synonyms
                   synonyms[topic] = value
-                when :related_topics :
+                when :related_topics
                   related_topics[topic] = value
-                when :related_groups :
+                when :related_groups
                   related_groups[topic] = value
-                when :lang_map :
+                when :lang_map
                   lang_mapped_topics[topic] = value unless (value.nil? && topic.lang_mapped_topic.nil?)
-                when :medline_tid :
+                when :medline_tid
                 else
                   changed_topic_atts[name] = value
               end

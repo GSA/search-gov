@@ -80,7 +80,7 @@ describe WidgetsController do
 
           it { should respond_with(:not_found) }
           it { should respond_with_content_type :html }
-          its(:response_body) { should == 'affiliate not found' }
+          its(:response) { should contain('affiliate not found') }
         end
 
         context "format=xml" do
@@ -91,7 +91,7 @@ describe WidgetsController do
 
           it { should respond_with(:not_found) }
           it { should respond_with_content_type :xml }
-          its(:response_body) { should =~ /affiliate not found/ }
+          its(:response) { should contain('affiliate not found') }
         end
 
         context "when format=json" do

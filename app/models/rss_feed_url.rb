@@ -4,8 +4,8 @@ class RssFeedUrl < ActiveRecord::Base
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
   RSS_ELEMENTS = { :item => 'item',
-                   :pubDate => 'pubDate',
-                   :link => 'link',
+                   :pubDate => %w(pubDate),
+                   :link => %w(link),
                    :title => 'title',
                    :guid => 'guid',
                    :description => 'description' }
@@ -20,7 +20,7 @@ class RssFeedUrl < ActiveRecord::Base
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
 
   PLAYLIST_RSS_ELEMENTS = RSS_ELEMENTS.merge(
-      { :pubDate => 'media:group/yt:uploaded',
+      { :pubDate => %w(media:group/yt:uploaded),
         :description => 'media:group/media:description' })
 
   MAX_YOUTUBE_RESULTS = 1000
@@ -72,7 +72,7 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   private
-  
+
   def url_must_point_to_a_feed
     return unless changed.include?('url')
     set_http_prefix :url

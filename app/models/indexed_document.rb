@@ -113,7 +113,7 @@ class IndexedDocument < ActiveRecord::Base
     rescue Mysql2::Error
       destroy
     rescue ActiveRecord::RecordInvalid
-      raise IndexedDocumentError.new(errors.full_messages.to_s)
+      raise IndexedDocumentError.new(errors.full_messages.join.to_s)
     end
   end
 

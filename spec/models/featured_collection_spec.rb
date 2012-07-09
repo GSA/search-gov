@@ -331,7 +331,7 @@ describe FeaturedCollection do
 
       context "when .search raise an exception" do
         it "should return nil" do
-          FeaturedCollection.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
+          FeaturedCollection.should_receive(:search).and_raise(RSolr::Error::Http.new({}, {}))
           FeaturedCollection.search_for('tropicales', affiliate).should be_nil
         end
       end

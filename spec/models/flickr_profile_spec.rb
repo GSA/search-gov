@@ -2,24 +2,24 @@ require 'spec/spec_helper'
 
 describe FlickrProfile do
   fixtures :affiliates
-  
+
   before do
     @affiliate = affiliates(:basic_affiliate)
     @user_response = {"username" => 'USAgency', "id" => '12345'}
     @group_search_response = {"id"=>"1058319", "name"=>"USA.gov - Official US Government Photostreams", "eighteenplus"=>0}
   end
-  
+
   it { should validate_presence_of :url }
   it { should validate_presence_of :profile_type }
   it { should validate_presence_of :profile_id }
   it { should validate_presence_of :affiliate }
   it { should belong_to :affiliate }
-  
+
   it "should require the url to be a valid Flickr user or group" do
     profile = FlickrProfile.create(:url => 'USAgency')
-    profile.errors.collect{|error| error.last }.include?("The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.").should be_true
+    profile.errors[:url].include?("The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.").should be_true
   end
-    
+
   context "when the profile id and type are provided at create time" do
     it "should not lookup the user profile information using the Flickr API if specified on create" do
       profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
@@ -27,31 +27,31 @@ describe FlickrProfile do
       profile.save!
     end
   end
-  
+
   it "should queue the profile for import after create" do
     ResqueSpec.reset!
     Resque.should_receive(:enqueue_with_priority).with(:high, FlickrProfileImporter, an_instance_of(Fixnum))
     FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
   end
-  
+
   context "when no profile id or type is provided" do
     context "when the profile URL is a user URL" do
       before do
         @profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate)
       end
-    
+
       it "should lookup the user profile information using the Flickr API on create" do
         flickr.urls.should_receive(:lookupUser).with(:url => 'http://flickr.com/photos/USAgency').and_return @user_response
         @profile.save!
         @profile.profile_type.should == "user"
         @profile.profile_id.should == "12345"
       end
-      
+
       context "when there is an error looking up the user" do
         before do
           flickr.urls.stub!(:lookupUser).and_raise "Some Exception"
         end
-        
+
         it "should not create the profile" do
           profile = FlickrProfile.create(:url => "http://flickr.com/photos/USAgency", :affiliate => @affiliate)
           profile.errors.should_not be_empty
@@ -60,24 +60,24 @@ describe FlickrProfile do
         end
       end
     end
-  
+
     context "when the profile URL is a group URL" do
       before do
         @profile = FlickrProfile.new(:url => 'http://flickr.com/groups/USAgency', :affiliate => @affiliate)
       end
-  
+
       it "should lookup the group profile information using the Flickr API on create" do
         flickr.urls.should_receive(:lookupGroup).with(:url => 'http://flickr.com/groups/USAgency').and_return @group_search_response
         @profile.save!
         @profile.profile_type.should == "group"
         @profile.profile_id.should == "1058319"
       end
-      
+
       context "when the url can not be found via the Flickr API" do
         before do
           flickr.urls.stub!(:lookupGroup).and_raise "Some Exception"
         end
-        
+
         it "should not create the profile" do
           profile = FlickrProfile.create(:url => "http://flickr.com/groups/USAgency", :affiliate => @affiliate)
           profile.errors.should_not be_empty
@@ -86,23 +86,23 @@ describe FlickrProfile do
         end
       end
     end
-  
+
     context "when the profile URL is neither a user nor a group" do
       before do
         @profile = FlickrProfile.new(:url => 'http://flickr.com/blargh/USAgency', :affiliate => @affiliate)
       end
-    
+
       it "should fail" do
         @profile.save
         @profile.errors.should_not be_empty
       end
     end
   end
-    
+
   describe "#import_photos" do
     before do
     end
-    
+
     context "when the profile's url is a Flickr photo url (http://www.flickr.com/photos/username)" do
       before do
         @profile = FlickrProfile.create!(:url => 'http://flickr.com/photos/USAAgency', :profile_type => 'user', :profile_id => '12345', :affiliate => @affiliate)
@@ -115,7 +115,7 @@ describe FlickrProfile do
         @photo_info = {"dateuploaded"=>"1233790899", "publiceditability"=>{"canaddmeta"=>0, "cancomment"=>1}, "usage"=>{"candownload"=>1, "canshare"=>1, "canblog"=>0, "canprint"=>0}, "farm"=>4, "title"=>"0203091648", "editability"=>{"canaddmeta"=>0, "cancomment"=>0}, "comments"=>"0", "urls"=>[{"type"=>"photopage", "_content"=>"http://www.flickr.com/photos/greggersh/3253668705/"}], "license"=>"1", "safety_level"=>"0", "notes"=>[], "id"=>"3253668705", "server"=>"3264", "views"=>"43", "tags"=>[{"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-54699", "_content"=>"hotandsoursoup", "raw"=>"hot and sour soup"}, {"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-1975", "_content"=>"soup", "raw"=>"soup"}, {"author"=>"35034349064@N01", "machine_tag"=>0, "id"=>"6073-3253668705-195793", "_content"=>"umami", "raw"=>"umami"}], "media"=>"photo", "dates"=>{"posted"=>"1233790899", "lastupdate"=>"1339165784", "takengranularity"=>"0", "taken"=>"2009-02-04 18:41:39"}, "isfavorite"=>0, "description"=>"", "people"=>{"haspeople"=>0}, "secret"=>"b452012751", "visibility"=>{"ispublic"=>1, "isfamily"=>0, "isfriend"=>0}, "rotation"=>0, "owner"=>{"nsid"=>"35034349064@N01", "realname"=>"Greg Gershman", "location"=>"", "username"=>"GregGersh", "iconfarm"=>1, "iconserver"=>"1"}}
         @other_photo_info = {"tags"=>[] }
       end
-      
+
       context "when the user name is valid, and the user has photos" do
         before do
           flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_return @first_photos_response
@@ -123,7 +123,7 @@ describe FlickrProfile do
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668705").once.and_return @photo_info
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668675").once.and_return @other_photo_info
         end
-          
+
         it "should use the Flickr API to lookup the username and store their photos" do
           @profile.import_photos
           @profile.flickr_photos.count.should == 2
@@ -141,21 +141,21 @@ describe FlickrProfile do
           last_photo.tags.should be_blank
         end
       end
-    
+
       context "when an error occurs looking up photos" do
         before do
           flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
           flickr.people.should_not_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2)
           flickr.photos.should_not_receive(:getInfo)
         end
-        
+
         it "should not blow up" do
           @profile.import_photos
           @profile.flickr_photos.count.should == 0
         end
       end
     end
-    
+
     context "when the affiliates url is a Flickr group url" do
       before do
         @profile = FlickrProfile.create!(:url => "http://www.flickr.com/groups/USAgency", :profile_type => 'group', :profile_id => '1058319', :affiliate => @affiliate)
@@ -174,7 +174,7 @@ describe FlickrProfile do
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668705").once.and_return @photo_info
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668675").once.and_return @photo_info
         end
-          
+
         it "should use the Flickr API to lookup the group id and store their photos" do
           @profile.import_photos
           @profile.flickr_photos.count.should == 2
@@ -188,14 +188,14 @@ describe FlickrProfile do
           first_photo.icon_server.should == "1"
         end
       end
-      
+
       context "when an error occurs looking up photos" do
         before do
           flickr.groups.pools.should_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
           flickr.groups.pools.should_not_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2)
           flickr.photos.should_not_receive(:getInfo)
         end
-        
+
         it "should not blow up" do
           @profile.import_photos
           @profile.flickr_photos.count.should == 0

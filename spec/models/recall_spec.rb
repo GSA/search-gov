@@ -451,7 +451,7 @@ describe Recall do
 
     describe "when SOLR raises an error" do
       before do
-        Recall.should_receive(:do_search).with('sheetrock OR', {}, 1, 10).and_raise(RSolr::Error::Http.new("request","response"))
+        Recall.should_receive(:do_search).with('sheetrock OR', {}, 1, 10).and_raise(RSolr::Error::Http.new({}, {}))
       end
 
       it "should return nil" do

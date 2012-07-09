@@ -370,7 +370,7 @@ describe IndexedDocument do
 
     context "when .search raises an exception" do
       it "should return nil" do
-        IndexedDocument.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
+        IndexedDocument.should_receive(:search).and_raise(RSolr::Error::Http.new({}, {}))
         IndexedDocument.search_for('tropicales', @affiliate, nil).should be_nil
       end
     end

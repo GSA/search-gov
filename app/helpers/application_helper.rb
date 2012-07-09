@@ -1,3 +1,4 @@
+# coding: utf-8
 module ApplicationHelper
 
   def current_user_is?(role)
@@ -201,7 +202,7 @@ module ApplicationHelper
     raw_text = text.to_str
     done = {}
     highlights.each do |highlight|
-      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|
+      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).flatten.each do |term|
         unless done.include?(term)
           raw_text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
           done[term] = true
@@ -297,7 +298,7 @@ module ApplicationHelper
 
       # we prefer to chop at word boundaries
 
-      when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :
+      when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE
         mb_chars = node.text.mb_chars
 
         if mb_chars.length <= max_chars
@@ -312,7 +313,7 @@ module ApplicationHelper
 
       # even if not all children are inserted, the parent tags need to be properly closed
 
-      when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :
+      when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE
         if (max_paragraphs.present? && max_paragraphs == 0)
           max_paragraphs -= 1
           buffer << "..."

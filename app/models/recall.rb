@@ -24,7 +24,7 @@ class Recall < ActiveRecord::Base
     time :recalled_on
 
     boost do |recall|
-      boost_value = Time.parse(recall.recalled_on.to_s).to_i
+      boost_value = Time.parse(recall.recalled_on.to_s).to_i if recall.recalled_on.present?
       boost_value unless recall.recalled_on.blank?
     end
 
@@ -318,9 +318,9 @@ class Recall < ActiveRecord::Base
 
   def industry
     case organization
-      when "NHTSA" : :auto
-      when "CPSC" : :product
-      when "CDC" : food_recall.food_type == "drug" ? :drug : :food
+      when "NHTSA" then :auto
+      when "CPSC" then :product
+      when "CDC" then food_recall.food_type == "drug" ? :drug : :food
       else :other
     end
   end

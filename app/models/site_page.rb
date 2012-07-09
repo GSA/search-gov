@@ -160,7 +160,7 @@ class SitePage < ActiveRecord::Base
 
   def self.get_cookies(url, host)
     http = Net::HTTP.new(host, 80)
-    response = http.post(url,{})
+    response = http.post(url,'')
     response['set-cookie']
   end
 

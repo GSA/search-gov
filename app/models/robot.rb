@@ -37,10 +37,10 @@ class Robot < ActiveRecord::Base
       delete unless new_record?
     end
   end
-  
+
   def sitemap
     if (robots_txt = fetch_robots_txt)
-      robots_txt.read.each do |line|
+      robots_txt.readlines.each do |line|
         return line[8..-1].strip if line.start_with?("Sitemap:")
       end
     end

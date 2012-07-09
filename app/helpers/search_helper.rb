@@ -95,7 +95,7 @@ module SearchHelper
       row << content_tag(:td, row_pair[1].nil? ? "" : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
       rows << content_tag(:tr, row)
     end
-    content_tag(:table, raw(rows), :class=>"deep-links")
+    content_tag(:table, raw(rows.join("\n")), :class=>"deep-links")
   end
 
   def display_bing_result_extname_prefix(bing_result)
@@ -445,10 +445,10 @@ module SearchHelper
   end
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
-    
+
     link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => 'thumbnail').html_safe, news_item.link, affiliate, search.query, index, 'NEWS', search_vertical)
   end
-  
+
   def youtube_thumbnail_url(news_item)
     video_id = CGI.parse(URI.parse(news_item.link).query)['v']
     "http://i.ytimg.com/vi/#{video_id}/2.jpg"
