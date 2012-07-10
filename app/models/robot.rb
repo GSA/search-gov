@@ -16,17 +16,24 @@ class Robot < ActiveRecord::Base
   end
 
   def build_prefixes(robots_txt)
-    prefixes_array, current_user_agent = [], '*'
-    robots_txt.each do |line|
-      if line =~ /^User-agent: */
-        current_user_agent = line.split(":").last.strip
-      elsif line =~ /^Disallow: *\// and current_user_agent == '*'
-        prefix = line.split(":").last.strip
+    disallows = get_disallows_for_useragent(robots_txt, 'usasearch')
+    if disallows.empty?
+      robots_txt.rewind
+      disallows = get_disallows_for_useragent(robots_txt, '*')
+    end
+    prefixes_array = []
+    disallows.each do |line|
+      if line =~ /^Disallow: *\//
+        prefix = line.split(":").last.squish
         prefix = "#{prefix}/" unless prefix.blank? or prefix.ends_with?("/")
         prefixes_array << prefix
       end
     end
     self.prefixes = prefixes_array.uniq.compact.join(',')
+  end
+
+  def get_disallows_for_useragent(robots_txt, user_agent)
+    robots_txt.slice_before(/User-agent:/).select {|ua_arr| ua_arr.first.split(':').last.squish == user_agent}.flatten.drop(1)
   end
 
   def save_or_delete

@@ -61,10 +61,17 @@ describe Robot do
   end
 
   describe "#build_prefixes(robots_txt)" do
-    context "when disallow prefixes are specified" do
+    context "when disallow prefixes are specified for *" do
       it "should assign a comma-separated list of prefixes, each with a trailing slash" do
         robot.build_prefixes(open(Rails.root.to_s + '/spec/fixtures/txt/robots.txt'))
         robot.prefixes.should == '/test/,/testitems/'
+      end
+    end
+
+    context "when disallow prefixes are specified for usasearch agent" do
+      it "should assign a comma-separated list of prefixes, each with a trailing slash" do
+        robot.build_prefixes(open(Rails.root.to_s + '/spec/fixtures/txt/robots_usasearch.txt'))
+        robot.prefixes.should == '/staging/'
       end
     end
 
@@ -157,24 +164,24 @@ describe Robot do
       Robot.update_for(some_domain).should == robot
     end
   end
-  
+
   describe "#sitemap" do
     context "when the robots.txt file exists" do
       before do
         @html_io = open(Rails.root.to_s + '/spec/fixtures/txt/robots.txt')
         robot.stub!(:open).and_return @html_io
       end
-      
+
       it "should return the first sitemap link found" do
         robot.sitemap.should == "http://www.example.gov/sitemap.xml"
       end
     end
-    
+
     context "when the file does not exist" do
       before do
         robot.stub!(:open).and_raise Exception.new("404 Document Not Found")
       end
-      
+
       it "should return nil" do
         robot.sitemap.should be_nil
       end
