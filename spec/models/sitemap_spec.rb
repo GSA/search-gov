@@ -109,15 +109,6 @@ describe Sitemap do
         end
       end
 
-      context "when new indexed documents are created" do
-        it "should fetch and index each indexed document that it creates" do
-          idoc = @sitemap.affiliate.indexed_documents.create(:url => "http://www.example.gov/")
-          IndexedDocument.should_receive(:create).and_return idoc
-          idoc.should_receive(:fetch)
-          @sitemap.parse(@file)
-        end
-      end
-
       context "when the sitemap has been parsed before" do
         before do
           IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:power_affiliate))

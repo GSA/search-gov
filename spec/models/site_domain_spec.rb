@@ -110,14 +110,6 @@ describe SiteDomain do
       frontier.each { |link| affiliate.indexed_documents.find_by_url(link).should_not be_nil }
     end
 
-    it "should fetch/index the ones that were successfully created" do
-      site_domain.should_receive(:get_frontier).with(SiteDomain::MAX_DOCS_PER_CRAWL).and_return frontier
-      id1 = mock("indexed doc")
-      site_domain.stub_chain(:affiliate, :indexed_documents, :create).and_return(id1, nil)
-      id1.should_receive(:fetch)
-      site_domain.populate
-    end
-
     context "when max_docs is passed in" do
       it "should only return max_docs links" do
         site_domain.should_receive(:get_frontier).with(3).and_return frontier

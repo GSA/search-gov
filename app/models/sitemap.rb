@@ -1,7 +1,7 @@
 class Sitemap < ActiveRecord::Base
   validates_presence_of :url
   validates_uniqueness_of :url, :scope => :affiliate_id
-  validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validates_format_of :url, :with => /(^$)|(^https?:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
   validate :is_valid_sitemap?
   belongs_to :affiliate
 
@@ -15,9 +15,7 @@ class Sitemap < ActiveRecord::Base
   def parse(file)
     sitemap_doc = Nokogiri::XML(file)
     sitemap_doc.xpath("//xmlns:url").each do |url|
-      if (idoc = IndexedDocument.create(:url => url.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate))
-        idoc.fetch
-      end
+      IndexedDocument.create(:url => url.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)
     end if sitemap_doc.root.name == "urlset"
     sitemap_doc.xpath("//xmlns:sitemap").each do |sitemap|
       Sitemap.create(:url => sitemap.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)

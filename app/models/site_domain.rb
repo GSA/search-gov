@@ -27,10 +27,7 @@ class SiteDomain < ActiveRecord::Base
   end
 
   def populate(max_docs = MAX_DOCS_PER_CRAWL)
-    get_frontier(max_docs).each do |link|
-      indexed_document = affiliate.indexed_documents.create(:url => link)
-      indexed_document.fetch if indexed_document
-    end
+    get_frontier(max_docs).each { |link| affiliate.indexed_documents.create(:url => link) }
   end
 
   def get_frontier(max_docs)
@@ -93,7 +90,7 @@ class SiteDomain < ActiveRecord::Base
   end
 
   protected
-  
+
   def normalize_domain
     self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
   end
