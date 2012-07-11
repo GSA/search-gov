@@ -10,7 +10,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
-  validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
+  validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
   validate :site_domain_matches
@@ -70,7 +70,7 @@ class IndexedDocument < ActiveRecord::Base
       uri = URI(url)
       timeout(DOWNLOAD_TIMEOUT_SECS) do
         self.load_time = Benchmark.realtime do
-          Net::HTTP.start(uri.host, uri.port) do |http|
+          Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
             request = Net::HTTP::Get.new uri.request_uri, {'User-Agent' => 'usasearch'}
             http.request(request) do |response|
               raise IndexedDocumentError.new("#{response.code} #{response.message}") unless response.kind_of?(Net::HTTPSuccess)
@@ -291,7 +291,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def ensure_http_prefix_on_url
-    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http://}i
+    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^https?://}i
     @self_url = nil
   end
 
@@ -314,7 +314,7 @@ class IndexedDocument < ActiveRecord::Base
       else
         site_domain_url_fragment = sd.domain
         site_domain_url_fragment.strip!
-        site_domain_url_fragment = "http://#{site_domain_url_fragment}" unless site_domain_url_fragment =~ %r{^https?://}i
+        site_domain_url_fragment = "#{uri.scheme}://#{site_domain_url_fragment}" unless site_domain_url_fragment =~ %r{^https?://}i
         site_domain_url_fragment = "#{site_domain_url_fragment}/" unless site_domain_url_fragment.ends_with?("/")
         site_domain_uri = URI.parse(site_domain_url_fragment)
         uri.host =~ /#{site_domain_uri.host}/i and uri.path =~ /#{site_domain_uri.path}/i
