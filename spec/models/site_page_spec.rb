@@ -15,10 +15,10 @@ describe SitePage do
   describe "#crawl_usa_gov" do
     context "when crawling" do
       before do
-        es_site_index_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index_es.html"))
-        en_site_index_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html"))
-        agencies_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/agencies.html"))
-        audiences_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/audiences.html"))
+        es_site_index_doc = File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index_es.html")
+        en_site_index_doc = File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
+        agencies_doc = File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/agencies.html")
+        audiences_doc = File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/audiences.html")
         SitePage.should_receive(:open).and_return(es_site_index_doc, en_site_index_doc, agencies_doc, audiences_doc)
       end
 
@@ -71,12 +71,13 @@ describe SitePage do
     context "when crawling" do
       before do
         SitePage.delete_all
-        en_page_one = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/1_en.html"))
-        en_faq = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/faq_en.html"))
-        en_page_two = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/2_en.html"))
-        es_page_one = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/1_es.html"))
-        es_faq = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/faq_es.html"))
-        es_page_two = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/2_es.html"))
+        SitePage.stub!(:get_cookies).and_return "cookie"
+        en_page_one = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/1_en.html")
+        en_faq = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/faq_en.html")
+        en_page_two = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/2_en.html")
+        es_page_one = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/1_es.html")
+        es_faq = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/faq_es.html")
+        es_page_two = File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/2_es.html")
         SitePage.stub!(:open).and_return(en_page_one, en_faq, en_page_two, en_faq, es_page_one, es_faq, es_page_two, es_faq)
       end
 
@@ -122,12 +123,12 @@ describe SitePage do
   end
 
   describe ".extract_featured_content" do
-    let(:featured_content_index_en) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_index_en.html")) }
-    let(:featured_content_item_1_en) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_1_en.html")) }
-    let(:featured_content_item_2_en) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_2_en.html")) }
-    let(:featured_content_index_es) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_index_es.html")) }
-    let(:featured_content_item_1_es) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_1_es.html")) }
-    let(:featured_content_item_2_es) { Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_2_es.html")) }
+    let(:featured_content_index_en) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_index_en.html") }
+    let(:featured_content_item_1_en) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_1_en.html") }
+    let(:featured_content_item_2_en) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_2_en.html") }
+    let(:featured_content_index_es) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_index_es.html") }
+    let(:featured_content_item_1_es) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_1_es.html") }
+    let(:featured_content_item_2_es) { File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/featured_content_item_2_es.html") }
     let(:featured_content_beach_safety) { mock_model(SitePage, { :title => 'Beach Safety', :url_slug => 'answers/beach-safety', :main_content => 'beach_safety_content' }) }
     let(:featured_content_earthquake) { mock_model(SitePage, { :title => 'Earthquake in the Northeastern U.S.', :url_slug => 'answers/earthquake-in-the-northeastern-u-s', :main_content => 'earthquake_content' }) }
     let(:featured_content_asesoramiento) { mock_model(SitePage, { :title => 'Asesoramiento en temas de vivienda', :url_slug => 'respuestas/asesoramiento-en-temas-de-vivienda', :main_content => 'asesoramiento_content' }) }

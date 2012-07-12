@@ -1,22 +1,21 @@
-require 'hpricot'
 require 'set'
 
 class SitePage < ActiveRecord::Base
   ANSWER_SITE_CONFIG = {
-      :en => {
-          :locale => 'en',
-          :host => "answers.usa.gov",
-          :base_url => "http://answers.usa.gov/system/",
-          :home_path => "selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
-          :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
-          :url_slug_prefix => "answers/" },
-      :es => {
-          :locale => 'es',
-          :host => "respuestas.gobiernousa.gov",
-          :base_url => "http://respuestas.gobiernousa.gov/system/",
-          :home_path => "selfservice.controller?CONFIGURATION=1001&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
-          :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
-          :url_slug_prefix => "respuestas/" }
+    :en => {
+      :locale => 'en',
+      :host => "answers.usa.gov",
+      :base_url => "http://answers.usa.gov/system/",
+      :home_path => "/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
+      :search_start_page_path => "/system/selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
+      :url_slug_prefix => "answers/"},
+    :es => {
+      :locale => 'es',
+      :host => "respuestas.gobiernousa.gov",
+      :base_url => "http://respuestas.gobiernousa.gov/system/",
+      :home_path => "/system/selfservice.controller?CONFIGURATION=1001&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
+      :search_start_page_path => "/system/selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
+      :url_slug_prefix => "respuestas/"}
   }
   validates_uniqueness_of :url_slug
   validates_presence_of :url_slug
@@ -35,18 +34,17 @@ class SitePage < ActiveRecord::Base
       while queue.any?
         page = queue.pop
         url = base_url + page
-        Rails.logger.debug "Working on #{url}"
         begin
-          doc = open(url) { |f| Hpricot(f) }
-          main_content = searchify_usagov_urls((doc/"#main_content").inner_html.squish.gsub(/<!--(.*?)-->/, ""))
-          raw_breadcrumb = (doc/"#breadcrumbs_dl").inner_html
+          doc = Nokogiri::HTML(open(url))
+          main_content = searchify_usagov_urls(doc.css("#main_content").inner_html.squish.gsub(/<!--(.*?)-->/, ""))
+          raw_breadcrumb = doc.css("#breadcrumbs_dl").inner_html
           breadcrumb = searchify_usagov_urls(raw_breadcrumb.gsub(/<h2.*h2>/, "").squish)
           url_slug = page.sub(".shtml", "").sub("/", "")
-          title = (doc/"#title_dl").inner_html
-          create!(:url_slug => url_slug, :title=> title, :breadcrumb => breadcrumb, :main_content => main_content)
-          links = (doc/"#main_content//a") + (doc/"#breadcrumbs_dl//a")
+          title = doc.css("#title_dl").inner_html
+          create!(:url_slug => url_slug, :title => title, :breadcrumb => breadcrumb, :main_content => main_content)
+          links = doc.css("#main_content//a") + doc.css("#breadcrumbs_dl//a")
           links.each do |link|
-            href = link.attributes['href'].squish
+            href = link['href'].squish
             if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href)
               queue.push href
               marked.add href
@@ -65,121 +63,119 @@ class SitePage < ActiveRecord::Base
     answer_sites << ANSWER_SITE_CONFIG[:en]
     answer_sites << ANSWER_SITE_CONFIG[:es]
     answer_sites.each do |site|
-      delete_all(["url_slug LIKE ?", "#{site[:url_slug_prefix]}%"])
-      cookies = get_cookies(site[:base_url] + site[:home_path], site[:host])
-      headers = { "Cookie" => cookies }
-      url = site[:base_url] + site[:search_start_page_path]
-      counter = 0
-      while url.present?
-        begin
-          doc = open(url, headers) { |f| Hpricot(f) }
-          url = nil
-          # step through each result, add it to list of pages to crawl (or crawl)
-          unless doc.blank?
-            counter += 1
-            pages = []
-            doc.search("div#main_content/ul.one_column_bullet/li/a").each do |link|
-              url = site[:base_url] + link.attributes['href']
-              faq_page = extract_page url, headers, site
-              url = nil
-              pages << faq_page unless faq_page.blank?
-            end
-            # get next page of links
-            unless doc.search("span.NextSelected").blank?
-              next_search_page_path = doc.search("span.NextSelected").first.search('a').first.attributes['href']
-              url = site[:base_url] + next_search_page_path
-            end
+      base_url = URI.parse(site[:base_url])
+      transaction do
+        delete_all(["url_slug LIKE ?", "#{site[:url_slug_prefix]}%"])
+        cookies = get_cookies(base_url.merge(site[:home_path]).to_s, site[:host])
+        headers = {"Cookie" => cookies}
+        url = base_url.merge(site[:search_start_page_path]).to_s
+        counter = 0
+        while url.present?
+          begin
+            doc = Nokogiri::HTML(open(url, headers))
+            url = nil
+            unless doc.blank?
+              counter += 1
+              pages = []
+              doc.css("div#main_content/ul li/a").each do |link|
+                url = base_url.merge(link['href']).to_s
+                faq_page = extract_page url, headers, site
+                url = nil
+                pages << faq_page unless faq_page.blank?
+              end
+              # get next page of links
+              unless doc.css("span.NextSelected").blank?
+                next_search_page_path = doc.css("span.NextSelected").first.css('a').first['href']
+                url = base_url.merge(next_search_page_path).to_s
+              end
 
-            index_page_content = ''
+              index_page_content = ''
 
-            if counter == 1
-              featured_content = extract_featured_content(headers, site[:locale])
-              index_page_content += featured_content unless featured_content.blank?
+              if counter == 1
+                featured_content = extract_featured_content(headers, site[:locale])
+                index_page_content += featured_content unless featured_content.blank?
+              end
+
+              # create the index page
+              index_page_title = "FAQs (page #{counter})"
+              index_page_content += "<h1 class='answer-title'>#{I18n.t(:top_questions, :locale => site[:locale])}</h1>"
+              index_page_content += "<ul>"
+              pages.each do |page|
+                index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
+              end
+              index_page_content += "</ul>"
+
+              index_page_content += "<p>"
+              index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter - 1}'>#{I18n.t(:prev_label, :locale => site[:locale])}</a>&nbsp;" unless counter == 1
+              index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter + 1}'>#{I18n.t(:next_label, :locale => site[:locale])}</a>" unless url.nil?
+              index_page_content += "</p>"
+              index_page_slug = "#{site[:url_slug_prefix]}#{counter}"
+              create!(:url_slug => index_page_slug, :title => index_page_title, :main_content => index_page_content)
             end
-
-            # create the index page
-            index_page_title = "FAQs (page #{counter})"
-            index_page_content += "<h1 class='answer-title'>#{I18n.t(:top_questions, :locale => site[:locale])}</h1>"
-            index_page_content += "<ul>"
-            pages.each do |page|
-              index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
-            end
-            index_page_content += "</ul>"
-
-            index_page_content += "<p>"
-            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter - 1}'>#{I18n.t(:prev_label, :locale => site[:locale])}</a>&nbsp;" unless counter == 1
-            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter + 1}'>#{I18n.t(:next_label, :locale => site[:locale])}</a>" unless url.nil?
-            index_page_content += "</p>"
-            index_page_slug = "#{site[:url_slug_prefix]}#{counter}"
-            SitePage.create(:url_slug => index_page_slug, :title => index_page_title, :main_content => index_page_content)
+          rescue Exception => e
+            Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
+            url = nil
           end
-        rescue Exception => e
-          Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
-          url = nil
         end
       end
     end
   end
 
   def self.extract_featured_content(headers, locale)
-    begin
-      answer_site = ANSWER_SITE_CONFIG[locale.to_sym]
-      url = answer_site[:base_url] + answer_site[:home_path]
-      doc = open(url, headers) { |f| Hpricot(f) }
-      url = nil
-      unless doc.blank?
-        pages = []
-        home_features = doc.search("div#home_features").last
-        home_features.search('a').each do |link|
-          url = "http://" + answer_site[:host] + link.attributes['href']
-          link_page = extract_page(url, headers, answer_site)
-          pages << link_page unless link_page.blank?
-        end
-        # create the index page
-        return nil if pages.blank?
-        index_page_content = "<h1 class='answer-title'>#{I18n.t(:featured_content, :locale => answer_site[:locale])}</h1>"
-        index_page_content += "<ul>"
-        pages.each do |page|
-          index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
-        end
-        index_page_content += "</ul>"
-        index_page_content
+    answer_site = ANSWER_SITE_CONFIG[locale.to_sym]
+    base_url = URI.parse(answer_site[:base_url])
+    url = base_url.merge(answer_site[:home_path]).to_s
+    doc = Nokogiri::HTML(open(url, headers))
+    url = nil
+    unless doc.blank?
+      pages = []
+      home_features = doc.css("div#home_features").last
+      home_features.css('a').each do |link|
+        url = base_url.merge(link['href']).to_s
+        link_page = extract_page(url, headers, answer_site)
+        pages << link_page unless link_page.blank?
       end
-    rescue => e
-      Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
-      nil
+      # create the index page
+      return nil if pages.blank?
+      index_page_content = "<h1 class='answer-title'>#{I18n.t(:featured_content, :locale => answer_site[:locale])}</h1>"
+      index_page_content += "<ul>"
+      pages.each do |page|
+        index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
+      end
+      index_page_content += "</ul>"
+      index_page_content
     end
+  rescue => e
+    Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
+    nil
   end
-
-  private
 
   def self.searchify_usagov_urls(str)
     str.gsub(".shtml", "").gsub("href=\"http://www.usa.gov/", "href=\"/").gsub("href=\"/", "href=\"/usa/").
-      gsub("\"/usa/index\"", "\"/\"").gsub("\"/usa/gobiernousa/index\"", "\"http://m.gobiernousa.gov/\"")
+      gsub("\"/usa/index\"", "\"/\"").gsub("\"/usa/gobiernousa/index\"", "\"http://m.gobiernousa.gov/\"").gsub('%20', ' ')
   end
 
   def self.get_cookies(url, host)
     http = Net::HTTP.new(host, 80)
-    response = http.post(url,'')
+    response = http.post(url, '')
     response['set-cookie']
   end
 
   def self.extract_page(url, headers, answer_site)
-    begin
-      link_doc = open(url, headers) { |f| Hpricot(f) }
-      url = nil
-      title = link_doc.search("div#main_content/h1").remove
-      body = link_doc.search("div#main_content/p").remove
-      links = link_doc.search("div#main_content/ul").remove
-      links = Hpricot::Elements[links.last]
-      content = title + body + links
-      title_text = title.inner_html
-      link_page = SitePage.find_or_initialize_by_url_slug("#{answer_site[:url_slug_prefix]}#{title_text.parameterize}")
-      link_page.update_attributes!(:title => title_text, :main_content => content.to_s)
-      link_page
-    rescue => e
-      Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
-      nil
-    end
+    link_doc = Nokogiri::HTML(open(url, headers))
+    url = nil
+    title = link_doc.css("div#main_content/h1").remove
+    body = link_doc.css("div#main_content")
+    body.css("script").each(&:remove)
+    body.css("div").each(&:remove)
+    body.css("iframe").each(&:remove)
+    title_text = title.inner_html
+    content = title.to_s + body.inner_html
+    link_page = find_or_initialize_by_url_slug("#{answer_site[:url_slug_prefix]}#{title_text.parameterize}")
+    link_page.update_attributes!(:title => title_text, :main_content => content.to_s)
+    link_page
+  rescue => e
+    Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
+    nil
   end
 end
