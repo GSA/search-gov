@@ -2,26 +2,29 @@ class FlickrProfile < ActiveRecord::Base
   belongs_to :affiliate
   has_many :flickr_photos, :dependent => :destroy
 
-  validates_presence_of :url, :profile_type, :profile_id, :affiliate
-  validates_inclusion_of :profile_type, :in => %w{user group}
-  validates_uniqueness_of :url, :scope => :affiliate_id
-  validate :is_flickr_url
-  
+  validates_format_of :url,
+                      :with => %r{^http:\/\/(www\.)?flickr.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$},
+                      :message => 'must be a valid Flickr user or Flickr group.'
+  validates_presence_of :affiliate_id
+  validates_uniqueness_of :url, :scope => :affiliate_id, :message => 'has already been added', :if => :has_valid_url?
+  validate :must_have_profile_id, :on => :create, :if => :has_valid_url?
+  validates_presence_of :profile_id, :profile_type, :if => :has_valid_url?
+  validates_inclusion_of :profile_type, :in => %w{user group}, :if => :has_valid_url?
+
   before_validation :normalize_url
-  before_validation :lookup_profile_id, :on => :create
-  
+
   after_create :queue_for_import
-  
+
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
 
   def recent
     self.flickr_photos.recent
   end
-  
+
   def link_to_profile
     self.url
   end
-  
+
   def import_photos
     done_importing = false
     photos = get_photos
@@ -37,18 +40,18 @@ class FlickrProfile < ActiveRecord::Base
       end
     end
   end
-  
+
   def get_photos(page = 1)
     self.profile_type == "user" ? (flickr.people.getPublicPhotos(:user_id => self.profile_id, :extras => EXTRA_FIELDS, :page => page) rescue nil) : (flickr.groups.pools.getPhotos(:group_id => self.profile_id, :extras => EXTRA_FIELDS, :page => page) rescue nil)
   end
-    
+
   private
-  
+
   def normalize_url
-    self.url.strip! unless self.url.nil?
+    url.strip! unless url.nil?
   end
-  
-  def lookup_profile_id
+
+  def must_have_profile_id
     unless self.profile_type and self.profile_id
       if self.url =~ /\/photos\//
         self.profile_type = "user"
@@ -67,13 +70,9 @@ class FlickrProfile < ActiveRecord::Base
       end
     end
   end
-  
-  def is_flickr_url
-    unless url =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+(\/)?$/ or
-           url =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+(\/)?$/
-      errors.add(:url, "The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.")
-      return false
-    end
+
+  def has_valid_url?
+    url =~ /http:\/\/(www\.)?flickr.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$/
   end
 
   def store_photos(photos)
@@ -83,7 +82,7 @@ class FlickrProfile < ActiveRecord::Base
     end
     true
   end
-  
+
   def api_result_to_params(api_result)
     params = {}
     api_result.each do |key,value|
@@ -114,7 +113,7 @@ class FlickrProfile < ActiveRecord::Base
     end
     params.reject{|k,v| FlickrPhoto.column_names.include?(k) == false }
   end
-  
+
   def queue_for_import
     Resque.enqueue_with_priority(:high, FlickrProfileImporter, self.id)
   end

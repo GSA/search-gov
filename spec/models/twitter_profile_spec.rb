@@ -10,9 +10,16 @@ describe TwitterProfile do
     }
   end
 
-  it { should validate_presence_of :twitter_id }
   it { should validate_presence_of :screen_name }
-  it { should validate_presence_of :profile_image_url }
+
+  context 'when screen_name is present' do
+    subject { TwitterProfile.new(:screen_name => 'USASearch') }
+
+    before { Twitter.stub(:user).and_return(nil) }
+
+    it { should validate_presence_of :twitter_id }
+    it { should validate_presence_of :profile_image_url }
+  end
 
   it "should create an instance with valid attributes" do
     TwitterProfile.create!(@valid_attributes)
@@ -38,7 +45,7 @@ describe TwitterProfile do
     end
 
     it "should not create the profile if there is an error in using the Twitter API" do
-      Twitter.should_receive(:user).and_raise "Some Error"
+      Twitter.should_receive(:user).twice.and_raise "Some Error"
       TwitterProfile.create(:screen_name => "NewHandle").errors.should_not be_empty
     end
   end

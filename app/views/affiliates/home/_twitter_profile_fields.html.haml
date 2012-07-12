@@ -1,6 +1,0 @@
-= fields_for "affiliate[twitter_profiles_attributes][#{Time.now.to_i}]", TwitterProfile.new do |twitter_profile_form|
-  = twitter_profile_form.label :screen_name, "Twitter Screen name"
-  %br
-  = twitter_profile_form.text_field :screen_name, :maxlength => 255, :size => nil, :class => 'txt'
-%br
-= submit_tag "Save", :id => "save"

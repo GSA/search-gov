@@ -120,6 +120,8 @@ module NavigationHelpers
       edit_affiliate_boosted_content_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).boosted_contents.first)
     when /the superfresh bulk upload admin page/
       admin_superfresh_urls_bulk_upload_index_path
+    when /^(.*)'s new (facebook|flickr|twitter|youtube) profile page$/
+      affiliate_social_media_path(Affiliate.find_by_name($1), :profile_type => "#{$2.camelize}Profile")
     when /the 404 page/
       '/aninvalidurl'
     when /the Spanish 404 page/

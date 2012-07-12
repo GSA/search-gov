@@ -1,7 +1,9 @@
 class TwitterProfile < ActiveRecord::Base
   has_many :tweets, :primary_key => :twitter_id, :dependent => :destroy
   has_and_belongs_to_many :affiliates
-  validates_presence_of :twitter_id, :screen_name, :profile_image_url
+  validates_presence_of :screen_name
+  validate :must_have_valid_screen_name, :if => :screen_name?
+  validates_presence_of :twitter_id, :profile_image_url, :if => :screen_name?
   validates_uniqueness_of :twitter_id, :screen_name
   before_validation :lookup_twitter_id
 
@@ -15,9 +17,17 @@ class TwitterProfile < ActiveRecord::Base
 
   private
 
+  def get_twitter_user
+    @twitter_user ||= Twitter.user(screen_name) rescue nil
+  end
+
+  def must_have_valid_screen_name
+    errors.add(:screen_name, 'does not exist') unless get_twitter_user
+  end
+
   def lookup_twitter_id
-    if self.screen_name and self.twitter_id.nil?
-      twitter_user = Twitter.user(self.screen_name) rescue nil
+    if screen_name and twitter_id.nil?
+      twitter_user = get_twitter_user
       if twitter_user
         self.twitter_id = twitter_user.id
         self.name = twitter_user.name

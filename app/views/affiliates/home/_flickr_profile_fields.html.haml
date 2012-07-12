@@ -1,6 +1,0 @@
-= fields_for "affiliate[flickr_profiles_attributes][#{Time.now.to_i}]", FlickrProfile.new do |flickr_profile_form|
-  = flickr_profile_form.label :url, "Flickr Url"
-  %br
-  = flickr_profile_form.text_field :url, :maxlength => 255, :size => nil, :class => 'txt'
-%br
-= submit_tag "Save", :id => "save"

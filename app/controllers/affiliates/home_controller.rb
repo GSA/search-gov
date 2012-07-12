@@ -15,9 +15,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       :edit_action => :edit_look_and_feel },
     :update_header_footer => {
         :edit_action => :edit_header_footer },
-    :update_social_media => {
-      :title => "Social Media - ",
-      :edit_action => :edit_social_media },
     :update_sidebar => {
         :edit_action => :edit_sidebar },
     :update_results_modules => {
@@ -97,20 +94,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def update_header_footer
     update
-  end
-
-  def update_social_media
-    if params[:affiliate][:twitter_profiles_attributes].present?
-      twitter_profile = TwitterProfile.find_or_create_by_screen_name(params[:affiliate][:twitter_profiles_attributes].first.last[:screen_name])
-      @affiliate.twitter_profiles << twitter_profile unless @affiliate.twitter_profiles.include?(twitter_profile)
-      flash[:success] = "Added social media profile"
-    elsif @affiliate.update_attributes(params[:affiliate])
-      flash[:success] = "Added social media profile"
-    else
-      flash[:error] = @affiliate.errors.collect{|error| error.last }
-    end
-    @title = "Social Media - "
-    redirect_to edit_social_media_affiliate_path(@affiliate)
   end
 
   def update
@@ -214,28 +197,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @boosted_contents = @affiliate.boosted_contents.recent
   end
 
-  def edit_social_media
-    @title = "Social Media - "
-  end
-  
-  def social_media
-    if params[:profile_type] == 'TwitterProfile'
-      @affiliate.twitter_profiles.delete(TwitterProfile.find(params[:profile_id])) rescue nil
-    else
-      (eval params[:profile_type]).find(params[:profile_id]).destroy rescue nil
-    end
-    redirect_to edit_social_media_affiliate_path(params[:id])
-  end
-  
-  def new_social_media_profile
-    render "new_#{params[:profile_type]}_profile_fields"
-  end
-  
-  def preview_social_media
-    @title = "Preview Social Media - "
-    @recent_social_media = (eval params[:profile_type]).find(params[:profile_id]).recent if params[:profile_type] and params[:profile_id] rescue nil
-  end
-  
   def urls_and_sitemaps
     @title = "URLs & Sitemaps - "
     @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 5, :page => 1)

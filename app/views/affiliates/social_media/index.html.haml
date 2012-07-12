@@ -1,0 +1,35 @@
+= content_for :title, 'Social Media - '
+.site-specific
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Social Media'])
+  %h1 Social Media
+  = render_help_link(@help_link)
+  .site-info
+    %table
+      %thead
+        %tr
+          %th Service
+          %th Profile
+          %th Actions
+      %tbody
+        - @affiliate.facebook_profiles.each do |facebook_profile|
+          = render_social_media_table_row(@affiliate, facebook_profile)
+        - @affiliate.flickr_profiles.each do |flickr_profile|
+          = render_social_media_table_row(@affiliate, flickr_profile)
+        - @affiliate.twitter_profiles.each do |twitter_profile|
+          = render_social_media_table_row(@affiliate, twitter_profile)
+        - @affiliate.youtube_profiles.each do |youtube_profile|
+          = render_social_media_table_row(@affiliate, youtube_profile)
+    %div
+      %h2
+        Create New Social Media Profile
+      %p
+        = link_to image_tag('facebook-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FacebookProfile'), :remote => true, :title => 'Add a new Facebook profile.'
+        = link_to image_tag('flickr-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FlickrProfile'), :remote => true, :title => 'Add a new Flickr profile.'
+        = link_to image_tag('twitter-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'TwitterProfile'), :remote => true, :title => 'Add a new Twitter profile.'
+        = link_to image_tag('youtube-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'YoutubeProfile'), :remote => true, :title => 'Add a new Youtube profile.'
+      %div#new_social_media_profile_form
+        = form_for affiliate_social_media_path(@affiliate), :html => { :class => 'generic-form social-media-form' } do |f|
+          = error_messages_for(@profile, :header_message => nil, :class => 'error')
+          %div#new_social_media_profile
+            - if @profile
+              = render :partial => "#{@profile.class.name.underscore}_fields", :locals => { :profile => @profile }

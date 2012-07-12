@@ -23,6 +23,27 @@ class RssFeed < ActiveRecord::Base
     rss_feed_urls.select(&:is_playlist?).sort_by { |url| url.url }.each { |u| u.freshen(ignore_older_items) }
   end
 
+  def synchronize_youtube_urls!
+    synchronize_youtube_uploaded_video_urls
+    synchronize_youtube_playlists
+    destroy if rss_feed_urls(true).blank?
+  end
+
+  def synchronize_youtube_uploaded_video_urls
+    target_urls = affiliate.youtube_profiles(true).collect(&:url)
+
+    transaction do
+      rss_feed_urls.reject(&:is_playlist?).each do |existing_rss_feed_url|
+        if target_urls.include?(existing_rss_feed_url.url)
+          target_urls.delete(existing_rss_feed_url.url)
+        else
+          existing_rss_feed_url.destroy
+        end
+      end
+      target_urls.each { |url| rss_feed_urls.create(:url => url) }
+    end
+  end
+
   def synchronize_youtube_playlists
     target_urls = query_youtube_playlist_urls
 
@@ -57,7 +78,7 @@ class RssFeed < ActiveRecord::Base
   def self.refresh_all(freshen_managed_feeds = false)
     all(:conditions => { :is_managed => freshen_managed_feeds }, :order => 'affiliate_id ASC, id ASC').each(&:freshen)
   end
-  
+
   def is_video?
     self.is_video
   end

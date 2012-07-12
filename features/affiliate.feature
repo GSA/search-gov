@@ -2039,7 +2039,7 @@ Feature: Affiliate clients
   Scenario: Visiting the social media page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | facebook_handle | flickr_url                           | twitter_handle | youtube_handles |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency        | http://www.flickr.com/groups/usagov/ | TwitterAgency  | YouTubeAgency   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency        | http://www.flickr.com/groups/usagov/ | USASearch      | YouTubeAgency   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
@@ -2047,9 +2047,75 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media
     And I should see "Social Media" in the page header
     And I should see "FBAgency"
-    And I should see "TwitterAgency"
+    And I should see "USASearch"
     And I should see "YouTubeAgency"
     And I should see "http://www.flickr.com/groups/usagov/"
+
+  Scenario: Adding Facebook profile
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to aff.gov's new facebook profile page
+    And I press "Save"
+    Then I should see "Username can't be blank"
+    When I fill in "Facebook username" with "fb"
+    And I press "Save"
+    Then I should see "Added Facebook Profile"
+
+    When I go to aff.gov's new facebook profile page
+    When I fill in "Facebook username" with "fb"
+    And I press "Save"
+    Then I should see "Username has already been added"
+    And the "Facebook username" field should contain "fb"
+
+  Scenario: Adding Flickr profile
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to aff.gov's new flickr profile page
+    And I press "Save"
+    Then I should see "Url must be a valid Flickr user or Flickr group"
+    When I fill in "Flickr url" with "http://www.flickr.com/groups/usagov/"
+    And I press "Save"
+    Then I should see "Added Flickr Profile"
+
+    When I go to aff.gov's new flickr profile page
+    When I fill in "Flickr url" with "http://www.flickr.com/groups/usagov/"
+    And I press "Save"
+    Then I should see "Url has already been added"
+    And the "Flickr url" field should contain "http://www.flickr.com/groups/usagov/"
+
+  Scenario: Adding Twitter profile
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to aff.gov's new twitter profile page
+    And I press "Save"
+    Then I should see "Screen name can't be blank"
+    When I fill in "Twitter screen name" with "USASearch"
+    And I press "Save"
+    Then I should see "Added Twitter Profile"
+
+  Scenario: Adding Youtube profile
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to aff.gov's new youtube profile page
+    And I press "Save"
+    Then I should see "Username can't be blank"
+    When I fill in "YouTube username" with "noaa"
+    And I press "Save"
+    Then I should see "Added Youtube Profile"
+
+    When I go to aff.gov's new youtube profile page
+    When I fill in "YouTube username" with "noaa"
+    And I press "Save"
+    Then I should see "Username has already been added"
+    And the "YouTube username" field should contain "noaa"
 
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:
@@ -2057,7 +2123,7 @@ Feature: Affiliate clients
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.flickr.com/groups/usagov/  |
     And the following FlickrPhotos exist:
       | affiliate_name  | title     | description       | url_sq                  | flickr_id | date_taken  |
-      | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         | 2012-06-01  |  
+      | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         | 2012-06-01  |
       | aff.gov         | Photo 2   | A photo           | http://flickr.com/2.jpg | 2         | 2012-06-02  |
       | aff.gov         | Photo 3   | A photo           | http://flickr.com/3.jpg | 3         | 2012-06-03  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
@@ -2071,11 +2137,11 @@ Feature: Affiliate clients
 
   Scenario: Previewing Tweets
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | twitter_handle  |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | TwitterAgency   |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following Twitter Profiles exist:
-      | screen_name | twitter_id  | profile_image_url   | affiliate |
-      | aff.gov     | 12345       | http://t.com/j.png  | aff.gov   |
+      | screen_name | twitter_id | profile_image_url  | affiliate |
+      | USASearch   | 12345      | http://t.com/j.png | aff.gov   |
     And the following Tweets exist:
       | tweet_text  | tweet_id  | published_at        | twitter_profile_id  |
       | Tweet 1     | 123       | 2012-06-30 00:00:00 | 12345               |

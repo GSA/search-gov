@@ -1,6 +1,0 @@
-= fields_for "affiliate[youtube_profiles_attributes][#{Time.now.to_i}]", YoutubeProfile.new do |youtube_profile_form|
-  = youtube_profile_form.label :username, "YouTube Username"
-  %br
-  = youtube_profile_form.text_field :username, :maxlength => 255, :size => nil, :class => 'txt'
-%br
-= submit_tag "Save", :id => "save"

@@ -18,10 +18,6 @@ UsasearchRails3::Application.routes.draw do
       get :preview
       post :cancel_staged_changes_for
       get :best_bets
-      get :edit_social_media
-      put :update_social_media
-      delete :social_media
-      get :preview_social_media
       get :urls_and_sitemaps
       get :hosted_sitemaps
       get :content_sources
@@ -34,7 +30,6 @@ UsasearchRails3::Application.routes.draw do
       get :edit_external_tracking
       put :update_external_tracking
       get :new_connection_fields
-      get :new_social_media_profile
     end
     collection do
       get :home
@@ -99,6 +94,15 @@ UsasearchRails3::Application.routes.draw do
       collection do
         get :bulk_new
         post :upload
+      end
+    end
+
+    resources :social_media, :controller => 'affiliates/social_media', :only => [:index, :create, :destroy] do
+      member do
+        get :preview
+      end
+      collection do
+        get :new_profile_fields
       end
     end
   end

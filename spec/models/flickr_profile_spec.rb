@@ -9,15 +9,23 @@ describe FlickrProfile do
     @group_search_response = {"id"=>"1058319", "name"=>"USA.gov - Official US Government Photostreams", "eighteenplus"=>0}
   end
 
-  it { should validate_presence_of :url }
-  it { should validate_presence_of :profile_type }
-  it { should validate_presence_of :profile_id }
-  it { should validate_presence_of :affiliate }
+  it { should validate_presence_of(:affiliate_id) }
+
+  context 'when url is valid' do
+    subject do
+      FlickrProfile.create!(:url => 'http://www.flickr.com/photos/whitehouse',
+                            :affiliate_id => @affiliate.id)
+    end
+
+    it { should validate_presence_of(:profile_id) }
+    it { should validate_presence_of(:profile_type) }
+  end
+
   it { should belong_to :affiliate }
 
   it "should require the url to be a valid Flickr user or group" do
     profile = FlickrProfile.create(:url => 'USAgency')
-    profile.errors[:url].include?("The URL you provided does not appear to be a valid Flickr user or Flickr group.  Please provide a URL for a valid Flickr user or Flickr group.").should be_true
+    profile.errors[:url].should include('must be a valid Flickr user or Flickr group.')
   end
 
   context "when the profile id and type are provided at create time" do

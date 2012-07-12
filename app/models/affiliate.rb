@@ -454,7 +454,7 @@ class Affiliate < ActiveRecord::Base
     self.footer = sanitized_footer
     self.external_css_url = nil
   end
-  
+
   def unused_features
     features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
   end
@@ -520,8 +520,8 @@ class Affiliate < ActiveRecord::Base
         href = anchor_tag.attribute("href").value rescue nil
         if href
           self.twitter_profiles.create(:screen_name => href.split("/").last) if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/
-          self.facebook_profiles.create(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/  
-          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/photos\/[A-Za-z0-9]+$/ or href =~ /http:\/\/(www\.)?flickr.com\/groups\/[A-Za-z0-9]+$/
+          self.facebook_profiles.create(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/
+          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/(photos|groups)\/[A-Za-z0-9]+$/
           self.youtube_profiles.create!(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
         end
       end
