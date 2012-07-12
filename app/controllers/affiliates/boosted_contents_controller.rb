@@ -8,7 +8,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def index
     @title = 'Best Bets: Text - '
-    @boosted_contents = @affiliate.boosted_contents.paginate(:all, :per_page => BoostedContent.per_page, :page => params[:page], :order => 'updated_at DESC, id DESC')
+    @boosted_contents = @affiliate.boosted_contents.paginate(:per_page => BoostedContent.per_page, :page => params[:page], :order => 'updated_at DESC, id DESC')
   end
 
   def new

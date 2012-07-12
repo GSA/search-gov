@@ -16,7 +16,7 @@ module SocialMediaHelper
                               affiliate_social_medium_path(:affiliate_id => affiliate.id,
                                                            :id => profile.id,
                                                            :profile_type => profile.class.name),
-                              :confirm => "Are you sure you want to delete this #{profile.class.name.titleize}?",
+                              :data => {:confirm => "Are you sure you want to delete this #{profile.class.name.titleize}?"},
                               :method => :delete)
     third_column = content_tag(:td, [preview_link, delete_button].join("\n").html_safe, :class => 'actions').html_safe
     content_tag(:tr, [first_column, second_column, third_column].join("\n").html_safe, :class => row_class)

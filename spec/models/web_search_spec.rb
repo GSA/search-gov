@@ -8,6 +8,7 @@ describe WebSearch do
     @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
     @bing_search = BingSearch.new(Search::USER_AGENT)
     BingSearch.stub!(:new).and_return @bing_search
+    @generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_result_for_ira.json")
   end
 
   describe "#run" do
@@ -16,7 +17,7 @@ describe WebSearch do
       SaytSuggestion.stub!(:search_for).and_return nil
       IndexedDocument.stub!(:search_for).and_return nil
       ActiveSupport::Notifications.should_receive(:instrument).
-        with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
+        with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String)))).and_return @generic_bing_result
       WebSearch.new(@valid_options).run
     end
 
@@ -268,7 +269,7 @@ describe WebSearch do
 
             it "should limit the query with those keywords" do
               search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
-              @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
+              @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING).and_return @generic_bing_result
               search.run
             end
           end
@@ -281,7 +282,7 @@ describe WebSearch do
 
             it "should limit the query with the scope ids and keywords" do
               search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
-              @bing_search.should_receive(:query).with('(government) (scopeid:PatentClass OR site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
+              @bing_search.should_receive(:query).with('(government) (scopeid:PatentClass OR site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING).and_return @generic_bing_result
               search.run
             end
           end
@@ -339,7 +340,7 @@ describe WebSearch do
           @affiliate.add_site_domains("foo.com" => nil, "bar.com" => nil)
           @bing_search = BingSearch.new(Search::USER_AGENT)
           BingSearch.stub!(:new).and_return @bing_search
-          @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com)', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
+          @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com)', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING).and_return @generic_bing_result
           @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'doesnotexist.gov'))
           @search.run
         end
@@ -374,7 +375,7 @@ describe WebSearch do
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
         search = WebSearch.new(@valid_options.merge(:page => 7))
-        @bing_search.should_receive(:query).with(anything(), anything(), 60, anything(), anything(), anything())
+        @bing_search.should_receive(:query).with(anything(), anything(), 60, anything(), anything(), anything()).and_return @generic_bing_result
         search.run
       end
     end

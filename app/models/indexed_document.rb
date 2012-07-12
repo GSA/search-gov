@@ -225,11 +225,11 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def uncrawled_urls(affiliate, page = 1, per_page = 30)
-      paginate(:conditions => ['affiliate_id = ? AND last_crawled_at IS NULL', affiliate.id], :page => page, :per_page => per_page)
+      where(['affiliate_id = ? AND last_crawled_at IS NULL', affiliate.id]).paginate(:page => page, :per_page => per_page)
     end
 
     def crawled_urls(affiliate, page = 1, per_page = 30)
-      paginate(:conditions => ['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at desc, id desc', :per_page => per_page)
+      where(['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id]).paginate(:page => page, :per_page => per_page).order('last_crawled_at desc, id desc')
     end
 
     def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)
@@ -309,7 +309,7 @@ class IndexedDocument < ActiveRecord::Base
     uri = self_url rescue nil
     return if self.affiliate.nil? or uri.nil?
     errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? do |sd|
-      if sd.domain.starts_with('.')
+      if sd.domain.starts_with?('.')
         uri.host =~ /#{sd.domain}$/i
       else
         site_domain_url_fragment = sd.domain

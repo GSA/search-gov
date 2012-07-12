@@ -43,7 +43,7 @@ describe Affiliates::BoostedContentsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:boosted_contents).and_return(boosted_contents)
-        boosted_contents.should_receive(:paginate).with(:all, :per_page => BoostedContent.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(boosted_contents_with_paginate)
+        boosted_contents.should_receive(:paginate).with(:per_page => BoostedContent.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(boosted_contents_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end
@@ -262,7 +262,7 @@ describe Affiliates::BoostedContentsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
 
         get :edit, :affiliate_id => affiliate.id, :id => boosted_content.id
       end
@@ -311,7 +311,7 @@ describe Affiliates::BoostedContentsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
         boosted_content.should_receive(:update_attributes).and_return(true)
         Sunspot.should_receive(:index).with(boosted_content)
 
@@ -329,7 +329,7 @@ describe Affiliates::BoostedContentsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
         boosted_content.should_receive(:update_attributes).and_return(false)
 
         post :update, :affiliate_id => affiliate.id, :id => boosted_content.id, :boosted_content => { "title" => "hello" }
@@ -380,7 +380,7 @@ describe Affiliates::BoostedContentsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
         boosted_content.should_receive(:destroy)
         boosted_content.should_receive(:solr_remove_from_index)
 
@@ -569,7 +569,7 @@ describe Affiliates::BoostedContentsController do
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml).and_return({:success => true, :created => 4, :updated => 2})
+        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml.to_s).and_return({:success => true, :created => 4, :updated => 2})
         post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
@@ -584,12 +584,12 @@ describe Affiliates::BoostedContentsController do
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml).and_return({ :success => false, :error_message => 'Your XML document could not be processed.' })
+        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml.to_s).and_return({ :success => false, :error_message => 'Your XML document could not be processed.' })
         post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
       it { should render_template(:bulk_new) }
-      it { should set_the_flash.to(/could not be processed/) }
+      it { should set_the_flash.now.to(/could not be processed/) }
     end
   end
 end

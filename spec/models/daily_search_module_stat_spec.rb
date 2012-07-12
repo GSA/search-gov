@@ -9,7 +9,7 @@ describe DailySearchModuleStat do
       :module_tag => search_modules(:video),
       :vertical => "recall",
       :locale => 'en',
-      :affiliate_name => affiliates(:power_affiliate),
+      :affiliate_name => affiliates(:power_affiliate).name,
       :impressions => 100,
       :clicks => 10
     }

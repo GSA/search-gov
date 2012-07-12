@@ -1,6 +1,6 @@
 %h2.sub-title
   Basic Settings
-= form_for @affiliate, affiliates_path do |f|
+= form_for @affiliate, :url => affiliates_path do |f|
   = f.error_messages(:header_message => nil, :class => "error")
   %ul{:style => 'list-style-type: none;'}
     %li

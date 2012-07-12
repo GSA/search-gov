@@ -1,3 +1,3 @@
 class Admin::SitemapsController < Admin::AdminController
-  active_scaffold :sitemaps
+  active_scaffold :sitemap
 end

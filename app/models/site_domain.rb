@@ -31,7 +31,7 @@ class SiteDomain < ActiveRecord::Base
   end
 
   def get_frontier(max_docs)
-    return [] if domain.starts_with('.')
+    return [] if domain.starts_with?('.')
     start_page, queue, robots, frontier = "http://#{domain}/", [], {}, Set.new
     parsed_start_page_url = URI.parse(start_page)
     marked = Set.new [start_page]

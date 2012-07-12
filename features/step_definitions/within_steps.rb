@@ -47,10 +47,10 @@
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|
       if step =~ /^I (should|should not) see/
-        Then %{#{step} within "#{selector}"}
+        %{#{step} within "#{selector}"}
       else
         within(selector) do
-          Then step
+          step step
         end
       end
     end
@@ -64,7 +64,7 @@
     When /^I fill in the following #{within}:$/ do |fields|
       within(selector) do
         fields.rows_hash.each do |name, value|
-          When %{I fill in "#{name}" with "#{value}"}
+          step %{I fill in "#{name}" with "#{value}"}
         end
       end
     end

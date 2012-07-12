@@ -18,7 +18,7 @@
           - if current_user == user
             = link_to 'My Account', account_path
             |
-          = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete, :confirm => 'Are you sure? This action can not be undone.'
+          = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete, :data => {:confirm => 'Are you sure? This action can not be undone.'}
 
 = link_to '+ Add a new user', '#add_new_user', :id => "add_new_user", :class => "sliding_trigger"
 #add_new_user_content{:class => "sliding_content add-new-user #{@user ? 'expand' : ''}", :style => 'margin-top: 3px;'}

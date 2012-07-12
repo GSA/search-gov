@@ -4,7 +4,7 @@ describe "Affiliate RSS feed rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/rss_feed"
+    load Rails.root + "lib/tasks/rss_feed.rake"
     Rake::Task.define_task(:environment)
   end
 

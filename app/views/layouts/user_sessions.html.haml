@@ -18,7 +18,12 @@
     = render '/users/recaptcha_scripts'
     :javascript
       jQuery.noConflict();
-    = (javascript_include_tag :defaults).html_safe
+    = javascript_include_tag "prototype.js"
+    = javascript_include_tag "effects.js"
+    = javascript_include_tag "dragdrop.js"
+    = javascript_include_tag "controls.js"
+    = javascript_include_tag "rails.js"
+    = javascript_include_tag "application.js"
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = (javascript_include_tag "affiliates.js").html_safe

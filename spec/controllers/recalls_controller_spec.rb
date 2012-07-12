@@ -392,7 +392,7 @@ describe RecallsController do
       end
 
       it "should not allow people to page past the MAX_PAGE limit" do
-        Recall.should_receive(:search_for).with("strollers", @valid_options_hash, @page).and_return(@search)
+        Recall.should_receive(:search_for).with("strollers", @valid_options_hash, @page.to_s).and_return(@search)
         WillPaginate::Collection.should_receive(:create).with(@page, @per_page, @max_pages * @per_page)
         get :search, :query => 'strollers', :page => @page
       end

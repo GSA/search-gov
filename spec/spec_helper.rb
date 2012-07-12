@@ -9,7 +9,6 @@ require "email_spec"
 require "authlogic/test_case"
 require 'webrat'
 require 'sunspot/rails/spec_helper'
-require 'shoulda/integrations/rspec2'
 require 'paperclip/matchers'
 
 include Authlogic::TestCase

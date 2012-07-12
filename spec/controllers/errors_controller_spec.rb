@@ -48,17 +48,5 @@ describe ErrorsController do
       it { should render_template("layouts/affiliate") }
       it { should render_template("page_not_found") }
     end
-
-    context "when handling a mobile request" do
-      before do
-        iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-        @regular_user_agent = request.env["HTTP_USER_AGENT"]
-        request.env["HTTP_USER_AGENT"] = iphone_user_agent
-        get :page_not_found
-      end
-
-      it { should respond_with(:missing) }
-      it { should render_template("public/simple_404.html") }
-    end
   end
 end

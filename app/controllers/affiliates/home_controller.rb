@@ -199,7 +199,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def urls_and_sitemaps
     @title = "URLs & Sitemaps - "
-    @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 5, :page => 1)
+    @sitemaps = @affiliate.sitemaps.paginate(:per_page => 5, :page => 1)
     @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 1, 5)
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end

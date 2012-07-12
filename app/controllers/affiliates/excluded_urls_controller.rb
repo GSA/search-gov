@@ -4,7 +4,7 @@ class Affiliates::ExcludedUrlsController < Affiliates::AffiliatesController
 
   def index
     @title = 'Emergecy Delete - '
-    @excluded_urls = @affiliate.excluded_urls.paginate(:all, :per_page => 10, :page => params[:page])
+    @excluded_urls = @affiliate.excluded_urls.paginate(:per_page => 10, :page => params[:page])
     @excluded_url = @affiliate.excluded_urls.build
   end
 
@@ -13,7 +13,7 @@ class Affiliates::ExcludedUrlsController < Affiliates::AffiliatesController
     if @excluded_url.save
       redirect_to affiliate_excluded_urls_path(@affiliate), :flash => { :success => 'Emergency Delete Url successfully created.' }
     else
-      @excluded_urls = @affiliate.excluded_urls.paginate(:all, :per_page => 10, :page => params[:page])
+      @excluded_urls = @affiliate.excluded_urls.paginate(:per_page => 10, :page => params[:page])
       render :action => :index
     end
   end

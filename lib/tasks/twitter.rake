@@ -2,7 +2,7 @@ namespace :usasearch do
   namespace :twitter do
 
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
-    task :stream, :run_once, :needs => :environment do |t, args|
+    task :stream, [:run_once] => [:environment] do |t, args|
       run_once = args.run_once == "true" ? true : false
       logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/twitter.log")
       TweetStream.configure do |config|

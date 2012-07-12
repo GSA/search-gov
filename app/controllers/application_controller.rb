@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include SslRequirement
+  include ::SslRequirement
   skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_default_locale
   before_filter :set_local_ip
@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
 
 
   def search_options_from_params(affiliate, params)
-    {
+    search_params = {
       :affiliate => affiliate,
       :page => [(params[:page] || "1").to_i, 1].max,
       :query => sanitize_query(params["query"]),
@@ -124,12 +124,22 @@ class ApplicationController < ActionController::Base
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
       :dc => params["dc"],
       :channel => params["channel"],
-      :tbs => params["tbs"],
-      :embedded => params["embedded"].present?
+      :tbs => params["tbs"]
     }
+    search_params.merge!(:embedded => params["embedded"]) if params["embedded"].present?
+    search_params
   end
 
   def sanitize_query(query)
     Sanitize.clean(query).gsub('&amp;', '&') if query
   end
+  
+  def set_format_for_tablet_devices
+    request.format = :html if is_tablet_device?
+  end
+  
+  def force_mobile_mode
+    request.format = :mobile if params[:m] == "true"
+    request.format = :html if params[:m] == "false" or params[:m] == "override"
+  end  
 end

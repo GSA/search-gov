@@ -254,3 +254,19 @@ en:
       hour:   "Hour"
       minute: "Minute"
       second: "Seconds"
+
+  will_paginate:
+    boosted_content:
+      page_entries_info:
+        single_page:
+          zero:  "No Best Bets: Text entries"
+          one:   "Displaying 1 Best Bets: Text entry"
+          other: "Displaying all %{count} Best Bets: Text entries"
+        multi_page: "Displaying Best Bets: Text entries %{from} - %{to} of %{count} in total"
+    featured_collection:
+      page_entries_info:
+        single_page:
+          zero:  "No Best Bets: Graphics entries"
+          one:   "Displaying 1 Best Bets: Graphics entry"
+          other: "Displaying all %{count} Best Bets: Graphics entries"
+        multi_page: "Displaying Best Bets: Graphics entries %{from} - %{to} of %{count} in total"

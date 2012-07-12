@@ -18,6 +18,6 @@ class UsaController < ApplicationController
   end
 
   def force_mobile_mode
-    request.format = 'mobile'
+    request.format = :mobile
   end
 end

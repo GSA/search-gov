@@ -1,3 +1,3 @@
 class Admin::LogfileWhitelistedClassCsController < Admin::AdminController
-  active_scaffold :logfile_whitelisted_class_cs
+  active_scaffold :logfile_whitelisted_class_c
 end

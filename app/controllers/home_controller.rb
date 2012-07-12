@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   has_mobile_fu
+  before_filter :force_mobile_mode
+  before_filter :set_format_for_tablet_devices
   before_filter :set_affiliate_based_on_locale_param, :only => [:index]
   before_filter :set_locale_based_on_affiliate_locale, :only => [:index]
   before_filter :set_locale, :only => [:contact_form]

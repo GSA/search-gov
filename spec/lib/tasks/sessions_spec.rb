@@ -4,7 +4,7 @@ describe "Sessions rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/sessions"
+    load Rails.root + "lib/tasks/sessions.rake"
     Rake::Task.define_task(:environment)
   end
 

@@ -41,7 +41,7 @@ describe Affiliates::RssFeedsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:rss_feeds).and_return(rss_feeds)
-        rss_feeds.should_receive(:paginate).with(:all, :per_page => 10, :page => nil).and_return(rss_feeds_with_paginate)
+        rss_feeds.should_receive(:paginate).with(:per_page => 10, :page => nil).and_return(rss_feeds_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end
@@ -247,7 +247,7 @@ describe Affiliates::RssFeedsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id).and_return(rss_feed)
+        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
 
         get :edit, :affiliate_id => affiliate.id, :id => rss_feed.id
       end
@@ -296,7 +296,7 @@ describe Affiliates::RssFeedsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id).and_return(rss_feed)
+        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
         rss_feed.should_receive(:update_attributes).and_return(true)
 
         post :update, :affiliate_id => affiliate.id, :id => rss_feed.id, :rss_feed => { "url" => "http://somethinglese.gov/feed" }
@@ -313,7 +313,7 @@ describe Affiliates::RssFeedsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id).and_return(rss_feed)
+        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
         rss_feed.should_receive(:update_attributes).and_return(false)
 
         post :update, :affiliate_id => affiliate.id, :id => rss_feed.id, :rss_feed => { "url" => "" }
@@ -363,7 +363,7 @@ describe Affiliates::RssFeedsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id).and_return(rss_feed)
+        affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
         rss_feed.should_receive(:destroy)
 
         delete :destroy, :affiliate_id => affiliate.id, :id => rss_feed.id

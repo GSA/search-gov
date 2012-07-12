@@ -61,7 +61,7 @@ describe SaytController do
   
   context "when searching in mobile mode" do
     it "should return 6 suggestions" do
-      SaytController.class_eval { def mobile?(ua); true; end }
+      SaytController.class_eval { def is_mobile_device?; true; end }
       WebSearch.should_receive(:suggestions).with(nil, "lorem", 6).and_return([@suggestion])
       get '/sayt', :q => "lorem", :callback => 'jsonp1276290049647'
     end

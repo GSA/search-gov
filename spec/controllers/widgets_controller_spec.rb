@@ -63,7 +63,7 @@ describe WidgetsController do
         let(:active_top_searches) { mock('active top searches') }
 
         before do
-          Affiliate.should_receive(:find_by_id).with(affiliate.id).and_return(affiliate)
+          Affiliate.should_receive(:find_by_id).with(affiliate.id.to_s).and_return(affiliate)
           affiliate.should_receive(:active_top_searches).and_return active_top_searches
           get :trending_searches, :aid => affiliate.id
         end

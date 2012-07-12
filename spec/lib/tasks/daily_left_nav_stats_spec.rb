@@ -4,7 +4,7 @@ describe "daily_left_nav_stats rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/daily_left_nav_stats"
+    load Rails.root + "lib/tasks/daily_left_nav_stats.rake"
     Rake::Task.define_task(:environment)
   end
 

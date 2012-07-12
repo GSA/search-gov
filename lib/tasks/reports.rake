@@ -24,7 +24,7 @@ namespace :usasearch do
     end
 
     desc "Generate Top Queries reports (daily, weekly, or monthly) per affiliate on S3 from CTRL-A delimited input file containing affiliate name, query, raw count"
-    task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :date, :needs => :environment do |t, args|
+    task :generate_top_queries_from_file, [:file_name, :period, :max_entries_per_group, :date] => [:environment] do |t, args|
       if args.file_name.nil? or args.period.nil? or args.max_entries_per_group.nil?
         Rails.logger.error "usage: rake usasearch:reports:generate_top_queries_from_file[file_name,monthly|weekly|daily,1000]"
       else
@@ -58,7 +58,7 @@ namespace :usasearch do
     end
     
     desc "Email users monthly affiliate report"
-    task :email_monthly_reports, :report_year_month, :needs => :environment do |t, args|
+    task :email_monthly_reports, [:report_year_month] => [:environment] do |t, args|
       report_date = args.report_year_month.blank? ? Date.yesterday : Date.parse(args.report_year_month + "-01")
       User.all.each do |user|
         Emailer.affiliate_monthly_report(user, report_date).deliver

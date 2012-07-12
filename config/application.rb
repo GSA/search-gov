@@ -18,7 +18,7 @@ module UsasearchRails3
     config.autoload_paths += %W(#{config.root}/extras #{Rails.root}/lib)
 
     config.middleware.use "DowncaseRouteMiddleware"
-    #    config.middleware.use ::Rack::PerftoolsProfiler
+    # config.middleware.use ::Rack::PerftoolsProfiler
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -50,6 +50,11 @@ module UsasearchRails3
     config.generators do |g|
       g.test_framework :rspec
     end
+    
+    config.assets_enabled = false
+    config.assets.version = '1.0'
+    
+    config.active_record.whitelist_attributes = false
   end
 end
 

@@ -4,7 +4,7 @@ describe "Robot rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/robot"
+    load Rails.root + 'lib/tasks/robot.rake'
     Rake::Task.define_task(:environment)
   end
 

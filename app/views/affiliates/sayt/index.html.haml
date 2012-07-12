@@ -66,11 +66,11 @@
               %td.sayt_suggestion
                 = sayt_suggestion.phrase
               %td.sayt_actions
-                = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this type-ahead suggestion. Are you sure?", :method => :delete
+                = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :data => {:confirm => "You are about to remove this type-ahead suggestion. Are you sure?"}, :method => :delete
         - if @sayt_suggestions.count > 1
           %tr#delete_all
             %th{ :colspan => 2 }
-              = button_to "Delete all", destroy_all_affiliate_type_ahead_search_index_path(@affiliate), :confirm => "You are about to delete all of your type-ahead suggestions. Are you sure?", :method => :delete
+              = button_to "Delete all", destroy_all_affiliate_type_ahead_search_index_path(@affiliate), :data => {:confirm => "You are about to delete all of your type-ahead suggestions. Are you sure?"}, :method => :delete
       %div{:style => "text-align: center; margin-bottom: 10px;"}
         = will_paginate @sayt_suggestions
 

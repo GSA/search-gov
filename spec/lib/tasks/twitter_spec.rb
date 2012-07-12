@@ -4,7 +4,7 @@ describe "Twitter rake tasks" do
   before(:each) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/twitter"
+    load Rails.root + "lib/tasks/twitter.rake"
     Rake::Task.define_task(:environment)
   end
 

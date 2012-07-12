@@ -4,7 +4,7 @@ describe "Indexed document rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/indexed_document"
+    load Rails.root + "lib/tasks/indexed_document.rake"
     Rake::Task.define_task(:environment)
   end
 

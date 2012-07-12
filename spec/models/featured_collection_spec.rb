@@ -45,7 +45,7 @@ describe FeaturedCollection do
 
   describe ".recent" do
     it "should include a scope called 'recent'" do
-      FeaturedCollection.scopes.include?(:recent).should be_true
+      FeaturedCollection.recent.should_not be_nil
     end
   end
 

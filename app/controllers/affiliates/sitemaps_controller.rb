@@ -4,7 +4,7 @@ class Affiliates::SitemapsController < Affiliates::AffiliatesController
 
   def index
     @title = 'Sitemaps - '
-    @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 10, :page => params[:page])
+    @sitemaps = @affiliate.sitemaps.paginate(:per_page => 10, :page => params[:page])
   end
 
   def new

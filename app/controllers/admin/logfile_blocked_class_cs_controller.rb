@@ -1,3 +1,3 @@
 class Admin::LogfileBlockedClassCsController < Admin::AdminController
-  active_scaffold :logfile_blocked_class_cs
+  active_scaffold :logfile_blocked_class_c
 end

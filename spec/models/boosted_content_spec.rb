@@ -86,7 +86,7 @@ describe BoostedContent do
 
   describe ".recent" do
     it "should include a scope called 'recent'" do
-      BoostedContent.scopes.include?(:recent).should be_true
+      BoostedContent.recent.should_not be_nil
     end
   end
 
@@ -118,7 +118,7 @@ describe BoostedContent do
 
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     before do
-      affiliate = Affiliate.create!(:display_name => "Test Affiliate", :name => 'test_affiliate')
+      affiliate = Affiliate.create!({:display_name => "Test Affiliate", :name => 'test_affiliate'}, :as => :test)
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
@@ -130,7 +130,7 @@ describe BoostedContent do
 
   context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
     before do
-      @disappearing_affiliate = Affiliate.create!(:display_name => "Test Affiliate", :name => 'test_affiliate')
+      @disappearing_affiliate = Affiliate.create!({:display_name => "Test Affiliate", :name => 'test_affiliate'}, :as => :test)
       BoostedContent.create!(@valid_attributes.merge(:affiliate => @disappearing_affiliate))
       @disappearing_affiliate.delete
       BoostedContent.reindex

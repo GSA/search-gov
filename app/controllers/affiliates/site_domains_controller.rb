@@ -6,8 +6,7 @@ class Affiliates::SiteDomainsController < Affiliates::AffiliatesController
   before_filter :setup_site_domain, :only => [:edit, :update, :destroy]
 
   def index
-    @site_domains = @affiliate.site_domains.paginate(:all,
-                                                     :per_page => SiteDomain.per_page,
+    @site_domains = @affiliate.site_domains.paginate(:per_page => SiteDomain.per_page,
                                                      :page => params[:page],
                                                      :order => 'updated_at DESC, id DESC')
   end

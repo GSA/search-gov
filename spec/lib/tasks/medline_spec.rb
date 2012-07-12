@@ -5,7 +5,7 @@ describe "Medline rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/medline"
+    load Rails.root + "lib/tasks/medline.rake"
     Rake::Task.define_task(:environment)
     @empty_vocab = {:topics => {}, :groups => {}}
     @empty_set = {}

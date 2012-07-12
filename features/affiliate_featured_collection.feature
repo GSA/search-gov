@@ -270,7 +270,7 @@ Feature: Featured Collections
       | title                 | url                                          |
       | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
       | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
-      | Central North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#cnp |
+      | Central NORTH Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#cnp |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
     And I follow "Edit"
@@ -283,7 +283,7 @@ Feature: Featured Collections
     And I fill in "query" with "Pacific"
     And I press "Search"
     Then I should see "Worldwide Tropical Cyclone Names" in the featured collections section
-    And I should not see "Central North Pacific"
+    And I should not see "Central NORTH Pacific"
     And I should not see "!!!sep!!!"
 
   Scenario: Validating Featured Collection on update

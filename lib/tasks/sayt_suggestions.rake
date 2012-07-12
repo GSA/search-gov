@@ -2,7 +2,7 @@ namespace :usasearch do
   namespace :sayt_suggestions do
 
     desc "generate top X SAYT suggestions from DailyQueryStats table for given YYYYMMDD date (defaults to an unlimited number for yesterday)"
-    task :compute, :day, :limit, :needs => :environment do |t, args|
+    task :compute, [:day, :limit] => [:environment] do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       yyyymmdd = args.day.to_i
       limit = args.limit.nil? ? nil : args.limit.to_i
@@ -10,7 +10,7 @@ namespace :usasearch do
     end
 
     desc "expire SAYT suggestions that have not been updated in X days (defaults to 30)"
-    task :expire, :days_back, :needs => :environment do |t, args|
+    task :expire, [:days_back] => [:environment] do |t, args|
       args.with_defaults(:days_back => 30)
       SaytSuggestion.expire(args.days_back.to_i)
     end

@@ -441,28 +441,25 @@ describe IndexedDocument do
   end
 
   describe "#update_content_hash" do
-    let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
+    before do
+      @indexed_document = IndexedDocument.create!(@valid_attributes)
+    end
+    
     context "when the content hash is a duplicate" do
-      before do
-        @dupe = indexed_document.clone
-        @dupe.update_attributes!(:title => "new title", :content_hash => "temp", :url => "http://www.nps.gov/newurl")
-        @dupe.stub!(:build_content_hash).and_return(indexed_document.content_hash)
-      end
-
       it "should raise an IndexedDocumentError with the validation error as the message" do
-        lambda { @dupe.update_content_hash }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
+        lambda { IndexedDocument.create!(@valid_attributes.merge(:url => "http://www.nps.gov/newurl")) }.should raise_error(ActiveRecord::RecordInvalid, "Validation failed: Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
 
     context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
       before do
-        indexed_document.stub!(:build_content_hash).and_return("foo")
-        indexed_document.stub!(:save!).and_raise(Mysql2::Error.new("oops"))
+        @indexed_document.stub!(:build_content_hash).and_return("foo")
+        @indexed_document.stub!(:save!).and_raise(Mysql2::Error.new("oops"))
       end
 
       it "should catch the exception and delete the record" do
-        indexed_document.update_content_hash
-        IndexedDocument.find_by_id(indexed_document.id).should be_nil
+        @indexed_document.update_content_hash
+        IndexedDocument.find_by_id(@indexed_document.id).should be_nil
       end
     end
   end
@@ -779,7 +776,7 @@ describe IndexedDocument do
 
     it "should paginate the results if the page is passed in" do
       uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 2)
-      uncrawled_urls.size.should == 0
+      uncrawled_urls.should be_empty
     end
   end
 
@@ -801,7 +798,7 @@ describe IndexedDocument do
 
     it "should paginate the results if the page is passed in" do
       crawled_urls = IndexedDocument.crawled_urls(@affiliate, 2)
-      crawled_urls.size.should == 0
+      crawled_urls.should be_empty
     end
   end
 

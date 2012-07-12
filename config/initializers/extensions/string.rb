@@ -25,5 +25,4 @@ class String
     end
     self[start, max]
   end
-
 end

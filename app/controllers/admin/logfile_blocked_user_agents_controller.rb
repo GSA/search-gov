@@ -1,3 +1,3 @@
 class Admin::LogfileBlockedUserAgentsController < Admin::AdminController
-  active_scaffold :logfile_blocked_user_agents
+  active_scaffold :logfile_blocked_user_agent
 end

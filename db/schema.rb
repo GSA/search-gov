@@ -480,7 +480,7 @@ ActiveRecord::Schema.define(:version => 20120706041733) do
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
   add_index "indexed_documents", ["affiliate_id", "id"], :name => "index_indexed_documents_on_affiliate_id_and_id", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|

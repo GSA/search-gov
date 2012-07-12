@@ -208,7 +208,7 @@ describe Affiliates::OnDemandUrlsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:indexed_documents, :find_by_id).with(indexed_document.id).and_return(indexed_document)
+        affiliate.stub_chain(:indexed_documents, :find_by_id).with(indexed_document.id.to_s).and_return(indexed_document)
         indexed_document.should_receive(:destroy)
 
         request.env["HTTP_REFERER"] = urls_and_sitemaps_affiliate_url(affiliate)
@@ -231,7 +231,7 @@ describe Affiliates::OnDemandUrlsController do
 
       context "when the affiliate owns the affiliate and successfully bulk upload URLs" do
         before do
-          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => true, :count => 5})
+          IndexedDocument.should_receive(:process_file).with(url_file.to_s, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => true, :count => 5})
           post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
         end
 
@@ -241,12 +241,12 @@ describe Affiliates::OnDemandUrlsController do
 
       context "when the affiliate owns the affiliate and failed to bulk upload boosted contents" do
         before do
-          IndexedDocument.should_receive(:process_file).with(url_file, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => false, :error_message => 'error'})
+          IndexedDocument.should_receive(:process_file).with(url_file.to_s, affiliate, IndexedDocument::MAX_URLS_PER_FILE_UPLOAD).and_return({:success => false, :error_message => 'error'})
           post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
         end
 
         it { should assign_to(:title) }
-        it { should set_the_flash.to(/error/) }
+        it { should set_the_flash.now.to(/error/) }
         it { should render_template(:bulk_new) }
       end
     end
@@ -257,7 +257,7 @@ describe Affiliates::OnDemandUrlsController do
       end
 
       it "should not limit the number of urls" do
-        IndexedDocument.should_receive(:process_file).with(url_file, affiliate, 0).and_return({:success => true, :count => 5})
+        IndexedDocument.should_receive(:process_file).with(url_file.to_s, affiliate, 0).and_return({:success => true, :count => 5})
         post :upload, :affiliate_id => affiliate.id, :indexed_documents => url_file
       end
     end
@@ -308,7 +308,7 @@ describe Affiliates::OnDemandUrlsController do
         affiliate.should_receive(:indexed_documents).and_return(indexed_documents)
         indexed_documents.should_receive(:fetched).and_return(crawled_urls)
         crawled_urls.should_receive(:select).and_return(selected_fields)
-        selected_fields.should_receive(:paginated_each).and_yield(doc)
+        selected_fields.should_receive(:paginate).and_return([doc])
 
         get :export_crawled, :affiliate_id => affiliate.id, :format => 'csv'
       end

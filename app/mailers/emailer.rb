@@ -72,10 +72,9 @@ class Emailer < ActionMailer::Base
   def mobile_feedback(email, message)
     setup_email(I18n.t(:mobile_feedback_contact_recipients), __method__)
     @from = email
-    charset "iso-8859-1"
     @message = message
     @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on, :charset => 'iso-8859-1') do |format|
       format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
@@ -123,7 +122,7 @@ class Emailer < ActionMailer::Base
 
   def objectionable_content_alert(recipient, terms)
     setup_email(recipient, __method__)
-    content_type "text/html"
+    headers['Content-Type'] = "text/html"
     @search_terms = terms
     @subject = ERB.new(@email_template_subject).result(binding)
     mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
@@ -143,7 +142,7 @@ class Emailer < ActionMailer::Base
 
   def affiliate_monthly_report(user, report_date)
     setup_email(user.email, __method__)
-    content_type 'text/html'
+    headers['Content-Type'] = 'text/html'
     @report_date = report_date
     last_month = @report_date - 1.month
     last_year = @report_date - 1.year
@@ -191,7 +190,7 @@ class Emailer < ActionMailer::Base
   def setup_email(recipients, method_name)
     @from = APP_EMAIL_ADDRESS
     @sent_on = Time.now
-    @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
+    headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
     email_template = EmailTemplate.find_by_name(method_name)
     if email_template
       @recipients = recipients

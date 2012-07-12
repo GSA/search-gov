@@ -15,6 +15,6 @@
           %th{ :colspan => 5 }
             = link_to "Add new graphics", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
             - unless @featured_collections.blank?
-              %span= page_entries_info @featured_collections, :entry_name => 'Best Bets: Graphics entry', :html => false
+              %span= page_entries_info @featured_collections, :html => false
       = render 'shared/featured_collections/affiliate_featured_collection_rows'
     = will_paginate @featured_collections

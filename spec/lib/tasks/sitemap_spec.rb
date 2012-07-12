@@ -4,7 +4,7 @@ describe "Sitemap rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/sitemap"
+    load Rails.root + "lib/tasks/sitemap.rake"
     Rake::Task.define_task(:environment)
   end
 

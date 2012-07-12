@@ -15,7 +15,7 @@
         %tr
           %th{ :colspan => 2 }
             = link_to "Add new Sitemap", new_affiliate_sitemap_path(@affiliate), :class => 'add-link last'
-            %span= page_entries_info @sitemaps, :html => false
+            %span= page_entries_info @sitemaps, :model => 'Sitemap', :html => false
       = render :partial => 'affiliates/sitemaps/list'
     = will_paginate @sitemaps
     %p

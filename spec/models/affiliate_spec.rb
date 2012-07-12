@@ -116,15 +116,15 @@ describe Affiliate do
       it "should update css_properties with json string from css property hash" do
         css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
-        JSON.parse(affiliate.css_properties, :symbolize_keys => true)[:title_link_color].should == '#33ff33'
-        JSON.parse(affiliate.css_properties, :symbolize_keys => true)[:visited_title_link_color].should == '#0000ff'
+        JSON.parse(affiliate.css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
+        JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
       it "should update staged_css_properties with json string from staged_css property hash" do
         staged_css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
-        JSON.parse(affiliate.staged_css_properties, :symbolize_keys => true)[:title_link_color].should == '#33ff33'
-        JSON.parse(affiliate.staged_css_properties, :symbolize_keys => true)[:visited_title_link_color].should == '#0000ff'
+        JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
+        JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
       it "should normalize site domains" do
@@ -147,21 +147,21 @@ describe Affiliate do
       end
 
       it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
-        affiliate = Affiliate.new(@valid_attributes)
+        affiliate = Affiliate.new(@valid_attributes, :as => :test)
         affiliate.name = @valid_attributes[:name]
         affiliate.save!
-        duplicate_affiliate = Affiliate.new(@valid_attributes)
+        duplicate_affiliate = Affiliate.new(@valid_attributes, :as => :test)
         duplicate_affiliate.name = @valid_attributes[:name].upcase
         duplicate_affiliate.save.should be_false
       end
 
       it "should populate default search label for English site" do
-        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
+        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'), :as => :test)
         affiliate.default_search_label.should == 'Everything'
       end
 
       it "should populate default search labels for Spanish site" do
-        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
+        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'), :as => :test)
         affiliate.default_search_label.should == 'Todo'
       end
     end
@@ -388,14 +388,14 @@ describe Affiliate do
     end
 
     it "should populate search labels for English site" do
-      english_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'))
+      english_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'), :as => :test)
       english_affiliate.default_search_label = ''
       english_affiliate.save!
       english_affiliate.default_search_label.should == 'Everything'
     end
 
     it "should populate search labels for Spanish site" do
-      spanish_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'))
+      spanish_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'), :as => :test)
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       spanish_affiliate.default_search_label.should == 'Todo'
@@ -1402,7 +1402,7 @@ describe Affiliate do
 
   describe "#ordered" do
     it "should include a scope called 'ordered'" do
-      Affiliate.scopes.include?(:ordered).should be_true
+      Affiliate.ordered.should_not be_nil
     end
   end
 
@@ -1716,7 +1716,7 @@ describe Affiliate do
         <h1 id="my_header">header</h1>
       HTML
 
-      affiliate = Affiliate.create!(@valid_attributes.merge(:header => tainted_header))
+      affiliate = Affiliate.create!(@valid_attributes.merge(:header => tainted_header), :as => :test)
       affiliate.sanitized_header.strip.should == %q(<h1 id="my_header">header</h1>)
     end
   end
@@ -1729,8 +1729,8 @@ describe Affiliate do
         <style>#my_footer { color:red }</style>
         <h1 id="my_footer">footer</h1>
       HTML
-
-      affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer))
+      
+      affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer), :as => :test)
       affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
     end
   end
@@ -1840,7 +1840,8 @@ describe Affiliate do
 
     context "when the home page has alternate links to an rss feed" do
       before do
-        stub!(:open).and_return File.read(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html")
+        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html"))
+        Nokogiri::HTML::Document.stub!(:parse).and_return doc
         Kernel.stub!(:open).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
       end
 
@@ -1860,6 +1861,8 @@ describe Affiliate do
 
     context "when the home page does not have links to an rss feed" do
       before do
+        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html"))
+        Nokogiri::HTML::Document.stub!(:parse).and_return doc
       end
 
       it "should not create any rss feeds" do

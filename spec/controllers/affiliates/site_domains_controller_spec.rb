@@ -41,7 +41,7 @@ describe Affiliates::SiteDomainsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:site_domains).and_return(site_domains)
-        site_domains.should_receive(:paginate).with(:all, :per_page => SiteDomain.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(site_domains_with_paginate)
+        site_domains.should_receive(:paginate).with(:per_page => SiteDomain.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(site_domains_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end
@@ -294,7 +294,7 @@ describe Affiliates::SiteDomainsController do
     context "when logged in as an affiliate manager who owns the affiliate and successfully bulk upload domains" do
       before do
         UserSession.create(users(:affiliate_manager))
-        SiteDomain.should_receive(:process_file).with(affiliate, site_domains_file).and_return({:success => true, :added => 5})
+        SiteDomain.should_receive(:process_file).with(affiliate, site_domains_file.to_s).and_return({:success => true, :added => 5})
         post :upload, :affiliate_id => affiliate.id, :site_domains => site_domains_file
       end
 
@@ -306,12 +306,12 @@ describe Affiliates::SiteDomainsController do
     context "when logged in as an affiliate manager who owns the affiliate and failed to bulk upload domains" do
       before do
         UserSession.create(users(:affiliate_manager))
-        SiteDomain.should_receive(:process_file).with(affiliate, site_domains_file).and_return({:success => false, :error_message => 'error'})
+        SiteDomain.should_receive(:process_file).with(affiliate, site_domains_file.to_s).and_return({:success => false, :error_message => 'error'})
         post :upload, :affiliate_id => affiliate.id, :site_domains => site_domains_file
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should set_the_flash.to(/error/) }
+      it { should set_the_flash.now.to(/error/) }
       it { should render_template(:bulk_new) }
     end
   end

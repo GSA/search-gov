@@ -316,7 +316,7 @@ class WebSearch < Search
 
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
+    return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with?(excluded_domain.domain) }
     @affiliate.excluded_urls.any? { |excluded_url| url == excluded_url.url }
   end
 

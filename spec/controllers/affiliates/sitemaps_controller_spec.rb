@@ -41,8 +41,7 @@ describe Affiliates::SitemapsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:sitemaps).and_return(sitemaps)
-        sitemaps.should_receive(:paginate).with(:all,
-                                                :per_page => 10,
+        sitemaps.should_receive(:paginate).with(:per_page => 10,
                                                 :page => nil).and_return(sitemaps_with_paginate)
 
         get :index, :affiliate_id => affiliate.id

@@ -1,7 +1,7 @@
 namespace :usasearch do
   namespace :rails3_log do
     desc "Transform and filter a multi-line Rails3 log file into a single line format that can be used in a Hive table"
-    task :transform_to_hive_elapsed_times_format, :file_name, :needs => :environment do |t, args|
+    task :transform_to_hive_elapsed_times_format, [:file_name] => [:environment] do |t, args|
       if args.file_name.nil?
         Rails.logger.error "usage: rake usasearch:rails3_log:transform_to_hive_elapsed_times_format[file_name]"
       else

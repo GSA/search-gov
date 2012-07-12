@@ -23,7 +23,7 @@ namespace :screenshots do
     %x{haml screenshots/report/index.html.haml > screenshots/report/index.html}
   end
 
-  task :push, :email, :needs => :environment do |t, args|
+  task :push, [:email] => [:environment] do |t, args|
     args.with_defaults(:email => "loren@siebert.org")
     
     begin
@@ -60,7 +60,7 @@ namespace :screenshots do
   end
 
   # Run the full report and email the link to someone: rake screenshots:run_and_report["email@example.com"]
-  task :run_and_report, :email, :needs => :environment do |t, args|
+  task :run_and_report, [:email] => [:environment] do |t, args|
     Rake::Task["screenshots:run"].invoke
     Rake::Task["screenshots:push"].invoke(args.email)
   end

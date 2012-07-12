@@ -75,7 +75,7 @@ describe SuperfreshUrl do
 
     it "should paginate the results if the page is passed in" do
       crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, 2)
-      crawled_urls.size.should == 0
+      crawled_urls.should be_empty
     end
 
     it "should return nil if the affiliate is missing" do

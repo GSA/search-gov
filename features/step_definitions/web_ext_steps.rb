@@ -24,7 +24,7 @@ end
 
 Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
   stripped_breadcrumbs = breadcrumbs.gsub(' > ', '')
-  Then %{I should see "#{stripped_breadcrumbs}" in the breadcrumbs}
+  step %{I should see "#{stripped_breadcrumbs}" in the breadcrumbs}
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
@@ -64,7 +64,7 @@ Then /^I should not see an image with alt text "([^"]*)"$/ do |alt|
 end
 
 Then /^the "([^"]*)" field should contain today's date$/ do |field|
-  Then %{the "#{field}" field should contain "#{Date.current.strftime(%Q{%m/%d/%Y})}"}
+  step %{the "#{field}" field should contain "#{Date.current.strftime(%Q{%m/%d/%Y})}"}
 end
 
 Then /^I should not see a field labeled "([^"]*)"$/ do |label|
@@ -77,17 +77,17 @@ And /^the "([^"]*)" field should be blank$/ do |field|
   field_value.should be_blank
 end
 
-Then /^the textarea labeled "([^"]*)" should contain "([^"]*)"$/ do |label, value|
+Then /^the textarea labeled "([^\"]*)" should contain "([^\"]*)"$/ do |label, value|
   field = find_field(label)
   field.tag_name.should == 'textarea'
-  field.text.should == value
+  field.text.strip.should == value
 end
 
-Then /^the "([^"]*)" radio button should be checked$/ do |label|
+Then /^the "([^\"]*)" radio button should be checked$/ do |label|
   field_labeled(label)['checked'].should be_true
 end
 
-Then /^the "([^"]*)" radio button should not be checked$/ do |label|
+Then /^the "([^\"]*)" radio button should not be checked$/ do |label|
   field_labeled(label)['checked'].should_not be_true
 end
 

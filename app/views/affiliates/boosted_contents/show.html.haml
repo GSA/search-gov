@@ -11,7 +11,7 @@
         %th{ :colspan => 2 }
           .actions
             = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, @boosted_content), { :class => 'edit-link' })
-            = button_to("Delete", [@affiliate, @boosted_content], :method => :delete, :confirm => "Are you sure you want to delete this Boosted Content?")
+            = button_to("Delete", [@affiliate, @boosted_content], :method => :delete, :data => {:confirm => "Are you sure you want to delete this Boosted Content?"})
     = render :partial => 'shared/boosted_contents/show'
   .add-link-wrapper
     = link_to "Add another Best Bets: Text", new_affiliate_boosted_content_path(@affiliate), :class => 'add-link'

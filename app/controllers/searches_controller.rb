@@ -9,6 +9,8 @@ class SearchesController < ApplicationController
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]
   has_mobile_fu
+  has_no_mobile_fu_for :advanced
+  before_filter :force_mobile_mode, :only => [:index, :docs, :news]
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
@@ -131,12 +133,6 @@ class SearchesController < ApplicationController
   end
 
   def adjust_mobile_mode
-    request.format = :html if is_advanced_search?
     request.format = :json if @original_format == 'application/json'
   end
-
-  def is_advanced_search?
-    params[:action] == "advanced"
-  end
-
 end

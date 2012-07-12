@@ -321,18 +321,18 @@ class Affiliate < ActiveRecord::Base
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
     if theme.to_sym == :custom
-      @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
+      @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_names => true))
     else
-      @css_property_hash ||= css_properties.blank? ? THEMES[self.theme.to_sym] : THEMES[self.theme.to_sym].reverse_merge(JSON.parse(css_properties, :symbolize_keys => true))
+      @css_property_hash ||= css_properties.blank? ? THEMES[self.theme.to_sym] : THEMES[self.theme.to_sym].reverse_merge(JSON.parse(css_properties, :symbolize_names => true))
     end
   end
 
   def staged_css_property_hash(reload = false)
     @staged_css_property_hash = nil if reload
     if staged_theme.to_sym == :custom
-      @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
+      @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_names => true))
     else
-      @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].reverse_merge(JSON.parse(staged_css_properties, :symbolize_keys => true))
+      @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].reverse_merge(JSON.parse(staged_css_properties, :symbolize_names => true))
     end
   end
 
@@ -780,15 +780,15 @@ class Affiliate < ActiveRecord::Base
   end
 
   def previous_fields
-    @previous_fields ||= previous_fields_json.blank? ? {} : JSON.parse(previous_fields_json, :symbolize_keys => true)
+    @previous_fields ||= previous_fields_json.blank? ? {} : JSON.parse(previous_fields_json, :symbolize_names => true)
   end
 
   def live_fields
-    @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_keys => true)
+    @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_names => true)
   end
 
   def staged_fields
-    @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_keys => true)
+    @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_names => true)
   end
 
   def set_json_fields

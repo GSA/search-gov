@@ -1,3 +1,3 @@
 class Admin::ExcludedDomainsController < Admin::AdminController
-  active_scaffold :excluded_domains
+  active_scaffold :excluded_domain
 end

@@ -354,9 +354,9 @@ describe "searches/index.html.haml" do
         it "should include links to the first two linked to clinicaltrials.gov" do
           render
           rendered.should contain(/ClinicalTrials.gov/)
-          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Ulcerative Colitis") + "\"")}"
-          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Crohn's Disease") + "\"")}"
-          rendered.should_not have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Irritable Bowel Syndrome") + "\"")}"
+          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Ulcerative Colitis\"")}"
+          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Crohn's Disease\"")}"
+          rendered.should_not have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Irritable Bowel Syndrome\"")}"
         end
       end
     end

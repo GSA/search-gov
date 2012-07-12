@@ -28,7 +28,7 @@
             %td.domain= site_domain.domain
             %td.actions
               = link_to("Edit", edit_affiliate_site_domain_path(@affiliate, site_domain))
-              = button_to("Delete", [@affiliate, site_domain], :method => :delete, :confirm => "Are you sure you want to delete this domain?")
+              = button_to("Delete", [@affiliate, site_domain], :method => :delete, :data => {:confirm => "Are you sure you want to delete this domain?"})
       - else
         %tr
           %td.empty{ :colspan => 3 } Site #{@affiliate.display_name} has no domain entry

@@ -4,7 +4,7 @@ describe "Indexed domain rake tasks" do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "lib/tasks/indexed_domain"
+    load Rails.root + "lib/tasks/indexed_domain.rake"
     Rake::Task.define_task(:environment)
   end
 

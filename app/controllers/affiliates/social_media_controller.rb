@@ -54,6 +54,7 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
   end
 
   def new_profile_fields
+    request.format = :js
     render "new_#{params[:profile_type].underscore}_fields"
   end
 

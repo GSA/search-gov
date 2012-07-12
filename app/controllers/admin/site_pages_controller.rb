@@ -1,3 +1,3 @@
 class Admin::SitePagesController < Admin::AdminController
-  active_scaffold :site_pages
+  active_scaffold :site_page
 end

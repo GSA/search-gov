@@ -1,5 +1,5 @@
 class Admin::FeaturesController < Admin::AdminController
-  active_scaffold :features do |config|
+  active_scaffold :feature do |config|
     config.update.columns = [:display_name]
     config.actions.exclude :delete
     config.columns.exclude :affiliate_feature_addition

@@ -2,7 +2,7 @@ namespace :usasearch do
   namespace :bulk_import do
   
     desc "Bulk Import from Google Search Appliance XML"
-    task :google_xml, :xml_file, :default_email, :needs => :environment do |t, args|
+    task :google_xml, [:xml_file, :default_email] => [:environment] do |t, args|
       default_user = User.find_by_email(args.default_email)
       xml_doc = Nokogiri::XML(File.read(args.xml_file))
       xml_doc.xpath("//collection").each do |collection|

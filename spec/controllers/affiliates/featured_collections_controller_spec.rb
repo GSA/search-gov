@@ -41,7 +41,7 @@ describe Affiliates::FeaturedCollectionsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:featured_collections).and_return(featured_collections)
-        featured_collections.should_receive(:paginate).with(:all, :per_page => FeaturedCollection.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(featured_collections_with_paginate)
+        featured_collections.should_receive(:paginate).with(:per_page => FeaturedCollection.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(featured_collections_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end
@@ -303,7 +303,7 @@ describe Affiliates::FeaturedCollectionsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
+        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id.to_s).and_return(featured_collection)
 
         featured_collection.should_receive(:featured_collection_keywords).twice.and_return(featured_collection_keywords)
         featured_collection_keywords.should_receive(:blank?).and_return(true)
@@ -361,7 +361,7 @@ describe Affiliates::FeaturedCollectionsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
+        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id.to_s).and_return(featured_collection)
         featured_collection.should_receive(:destroy_and_update_attributes).and_return(true)
 
         post :update, :affiliate_id => affiliate.id, :id => featured_collection.id, :featured_collection => { "title" => "hello" }
@@ -378,7 +378,7 @@ describe Affiliates::FeaturedCollectionsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
+        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id.to_s).and_return(featured_collection)
         featured_collection.should_receive(:destroy_and_update_attributes).and_return(false)
 
         featured_collection.should_receive(:featured_collection_keywords).twice.and_return(featured_collection_keywords)
@@ -436,7 +436,7 @@ describe Affiliates::FeaturedCollectionsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
+        affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id.to_s).and_return(featured_collection)
         featured_collection.should_receive(:destroy)
 
         delete :destroy, :affiliate_id => affiliate.id, :id => featured_collection.id

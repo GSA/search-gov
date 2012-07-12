@@ -152,9 +152,9 @@ Then /I should see the API key/ do
   page.should have_selector(".content-box", :text => "Your API Key:")
 end
 
-Then /^(.+) for site named "([^"]*)"$/ do |step, site_display_name|
+Then /^(.+) for site named "([^\"]*)"$/ do |step, site_display_name|
   site = Affiliate.find_by_display_name site_display_name
-  Then %{#{step} within "tr#site_#{site.id}"}
+  %{#{step} within "tr#site_#{site.id}"}
 end
 
 Then /^I should see sorted sites in the site dropdown list$/ do
@@ -286,5 +286,5 @@ end
 
 Then /^the "([^"]*)" field should contain site ID for (.+)$/ do |label, affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  Then %{the "#{label}" field should contain "#{affiliate.id}"}
+  step %{the "#{label}" field should contain "#{affiliate.id}"}
 end

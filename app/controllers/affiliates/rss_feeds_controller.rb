@@ -5,7 +5,7 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
 
   def index
     @title = 'RSS Feeds - '
-    @rss_feeds = @affiliate.rss_feeds.paginate(:all, :per_page => 10, :page => params[:page])
+    @rss_feeds = @affiliate.rss_feeds.paginate(:per_page => 10, :page => params[:page])
   end
 
   def new

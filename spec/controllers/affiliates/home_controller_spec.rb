@@ -152,7 +152,7 @@ describe Affiliates::HomeController do
   describe "do GET on content_sources" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
-      @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
+      @user.affiliates << Affiliate.new({:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en'}, :as => :test)
       @user.affiliates.first.id.should_not be_nil
     end
 
@@ -184,7 +184,7 @@ describe Affiliates::HomeController do
   describe "do PUT on create_content_sources" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
-      @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
+      @user.affiliates << Affiliate.new({:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en'}, :as => :test)
       @user.affiliates.first.id.should_not be_nil
     end
 
@@ -231,9 +231,9 @@ describe Affiliates::HomeController do
           @affiliate.site_domains.should_not be_empty
           @affiliate.site_domains.size.should == 2
           @affiliate.site_domains.first.errors.should be_empty
-          @affiliate.site_domains.first.domain.should == 'aff.gov'
+          @affiliate.site_domains.collect(&:domain).include?('aff.gov').should be_true
           @affiliate.site_domains.last.errors.should be_empty
-          @affiliate.site_domains.last.domain.should == 'aff2.gov'
+          @affiliate.site_domains.collect(&:domain).include?('aff2.gov').should be_true
           @affiliate.sitemaps.should_not be_empty
           @affiliate.sitemaps.size.should == 1
           @affiliate.sitemaps.first.errors.should be_empty
@@ -1412,7 +1412,7 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should set_the_flash.to(/Web analytics JavaScript code can't be blank/) }
+      it { should set_the_flash.now.to(/Web analytics JavaScript code can't be blank/) }
       it { should render_template("affiliates/home/edit_external_tracking") }
     end
   end
