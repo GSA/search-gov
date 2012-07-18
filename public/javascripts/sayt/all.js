@@ -29,6 +29,12 @@ if(options.matchSubset){for(var i=q.length-1;i>=options.minChars;i--){var c=data
 var usasearch = {};
 usasearch.jquery = jQuery.noConflict(true);
 
+if ((typeof usasearch_config === 'object') && (usasearch_config.constructor == Object)) {
+  usasearch.config = usasearch_config;
+} else {
+  usasearch.config = { autoSubmitOnSelect: true };
+}
+
 if (usagov_sayt_url === undefined) {
     var usagov_sayt_url = '';
 }
@@ -59,6 +65,8 @@ usasearch.jquery(document).ready(function() {
     max: 15,
     selectFirst: false
   }).result(function(event, data, formatted){
-    usasearch.jquery(this).closest('form').submit();
+    if (usasearch.config.autoSubmitOnSelect) {
+      usasearch.jquery(this).closest('form').submit();
+    }
   });
 });
