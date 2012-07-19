@@ -11,13 +11,13 @@ describe YoutubeProfile do
   end
 
   def managed_feeds
-    RssFeed.where(:affiliate_id => @affiliate,
+    RssFeed.where(:affiliate_id => @affiliate.id,
                   :is_managed => true,
                   :is_video => true)
   end
 
   it { should validate_presence_of :username }
-  it { should validate_presence_of :affiliate }
+  it { should validate_presence_of :affiliate_id }
 
   it "should create a new instance given valid attributes" do
     Kernel.stub(:open) do |arg|

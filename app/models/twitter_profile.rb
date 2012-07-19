@@ -3,7 +3,7 @@ class TwitterProfile < ActiveRecord::Base
   has_and_belongs_to_many :affiliates
   validates_presence_of :screen_name
   validate :must_have_valid_screen_name, :if => :screen_name?
-  validates_presence_of :twitter_id, :profile_image_url, :if => :screen_name?
+  validates_presence_of :twitter_id, :profile_image_url, :if => :get_twitter_user
   validates_uniqueness_of :twitter_id, :screen_name
   before_validation :lookup_twitter_id
 
@@ -22,7 +22,7 @@ class TwitterProfile < ActiveRecord::Base
   end
 
   def must_have_valid_screen_name
-    errors.add(:screen_name, 'does not exist') unless get_twitter_user
+    errors.add(:screen_name, 'is invalid') unless get_twitter_user
   end
 
   def lookup_twitter_id

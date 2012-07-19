@@ -12,7 +12,7 @@ describe FacebookProfile do
   end
 
   it { should validate_presence_of :username }
-  it { should validate_presence_of :affiliate }
+  it { should validate_presence_of :affiliate_id }
 
   it "should create a new instance with valid attributes" do
     FacebookProfile.create!(@valid_attributes)
