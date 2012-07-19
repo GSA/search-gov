@@ -40,7 +40,9 @@
   'in the API TOS section' => '.api.tos',
   'in the registration form' => 'form#new_user',
   'in the rss feed govbox' => '#news_items_govbox',
-  'in the video rss feed govbox' => '#video_news_items_govbox'
+  'in the video rss feed govbox' => '#video_news_items_govbox',
+  'in the active scaffold header' => 'h2',
+  'in the Super Admin page' => '.container'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

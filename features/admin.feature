@@ -182,3 +182,110 @@ Feature:  Administration
     And I should see "ODIE Results"
     And I should see "Space Suit America"
     And I should not see "America IN SPACE"
+
+  Scenario: Visiting the active scaffold pages
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+
+    When I go to the admin home page
+    And I follow "Users"
+    And I should see the following breadcrumbs: USASearch > Super Admin > Users
+
+    When I go to the admin home page
+    And I follow "Affiliates"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliates
+
+    When I go to the admin home page
+    And I follow "SAYT Filters"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SaytFilters
+
+    When I go to the admin home page
+    And I follow "SAYT Suggestions"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SaytSuggestions
+
+    When I go to the admin home page
+    And I follow "SAYT Misspellings"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Misspellings
+
+    When I go to the admin home page
+    And I follow "Affiliate Boosted Content"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content
+
+    When I go to the admin home page
+    And I follow "Collections"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > DocumentCollections
+
+    When I go to the admin home page
+    And I follow "Government Forms"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > GovForms
+
+    When I go to the admin home page
+    And I follow "Superfresh Urls"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SuperfreshUrls
+
+    When I go to the admin home page
+    And I follow "Usa.gov mobile site pages"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SitePages
+
+    When I go to the admin home page
+    And I follow "Agencies"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Agencies
+
+    When I go to the admin home page
+    And I follow "Logfile Blocked Queries"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedQueries
+
+    When I go to the admin home page
+    And I follow "Logfile Blocked IPs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedIps
+
+    When I go to the admin home page
+    And I follow "Logfile Blocked Class Cs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedClassCs
+
+    When I go to the admin home page
+    And I follow "Logfile Whitelisted Class Cs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileWhitelistedClassCs
+
+    When I go to the admin home page
+    And I follow "Logfile Blocked Regexps"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedRegexps
+
+    When I go to the admin home page
+    And I follow "Logfile Blocked User Agents"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedUserAgents
+
+    When I go to the admin home page
+    And I follow "Monthly/Weekly Report Recipients"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > ReportRecipients
+
+    When I go to the admin home page
+    And I follow "SERP Modules"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > SearchModules
+
+    When I go to the admin home page
+    And I follow "Features" in the Super Admin page
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Features
+
+    When I go to the admin home page
+    And I follow "Excluded Domains" in the Super Admin page
+    Then I should see the following breadcrumbs: USASearch > Super Admin > ExcludedDomains
+
+    When I go to the admin home page
+    And I follow "Affiliate Scopes"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Scopes
+
+    When I go to the admin home page
+    And I follow "Affiliate Catalog Prefix Whitelist"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > CatalogPrefixes
+
+    When I go to the admin home page
+    And I follow "Help Links"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > HelpLinks
+
+    When I go to the admin home page
+    And I follow "Email Templates"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > EmailTemplates
+
+    When I go to the admin home page
+    And I follow "Common Website Substrings"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > CommonSubstrings
