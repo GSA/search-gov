@@ -2126,8 +2126,8 @@ Feature: Affiliate clients
 
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | flickr_url                            |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.flickr.com/groups/usagov/  |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following FlickrPhotos exist:
       | affiliate_name  | title     | description       | url_sq                  | flickr_id | date_taken  |
       | aff.gov         | Photo 1   | A photo           | http://flickr.com/1.jpg | 1         | 2012-06-01  |
@@ -2136,7 +2136,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
-    And I follow "Recent Content" within ".actions"
+    And I follow "Recent Content"
     Then I should see the browser page titled "Recent Flickr photos"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent Flickr photos
     And I should see "Recent Flickr photos" in the page header
@@ -2159,7 +2159,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
-    And I follow "Recent Content" within ".actions"
+    And I follow "Recent Content"
     Then I should see the browser page titled "Recent tweets"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent tweets
     And I should see "Recent tweets" in the page header
@@ -2174,8 +2174,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
-    Then I should see "Recent Content"
-    When I follow "Recent Content" within ".actions"
+    And I follow "Recent Content"
     Then I should see the browser page titled "Recent YouTube videos"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent YouTube videos
     And I should see "Recent YouTube videos" in the page header
@@ -2187,7 +2186,7 @@ Feature: Affiliate clients
       | http://www.youtube.com/watch?v=k19xyGCFzmk&feature=youtube_gdata  | Second item | uuid2 | day           | Video 2        |
     And I go to the "aff site" affiliate page
     And I follow "Social Media"
-    And I follow "Recent Content" within ".actions"
+    And I follow "Recent Content"
     Then I should see "First item"
     And I should see "Second item"
 

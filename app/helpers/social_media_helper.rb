@@ -1,15 +1,25 @@
 module SocialMediaHelper
-  def render_social_media_table_row(affiliate, profile)
+  def render_social_media_table_row(affiliate, profile, row_class)
     return if profile.new_record?
     first_column = content_tag(:td, profile.class.name.split("Profile").first)
-    profile_column = :username if profile.is_a?(FacebookProfile) or profile.is_a?(YoutubeProfile)
-    profile_column = :url if profile.is_a?(FlickrProfile)
-    profile_column = :screen_name if profile.is_a?(TwitterProfile)
+    profile_column = case profile
+                     when FacebookProfile, YoutubeProfile then :username
+                     when FlickrProfile then :url
+                     when TwitterProfile then :screen_name
+                     end
     second_column = content_tag(:td, link_to(profile.send(profile_column), profile.link_to_profile, :target => "_blank"))
-    preview_link = link_to('Recent Content', preview_affiliate_social_medium_path(:affiliate_id => affiliate.id, :id => profile.id, :profile_type => profile.class.name)) unless profile.is_a?(FacebookProfile)
-    delete_link = link_to('Delete', affiliate_social_medium_path(:affiliate_id => affiliate.id, :id => profile.id, :profile_type => profile.class.name), :method => :delete)
-    third_column = content_tag(:td, [preview_link, delete_link].join(" ").html_safe, :class => 'actions').html_safe
-    content_tag(:tr, [first_column, second_column, third_column].join("\n").html_safe)
+    preview_link = link_to('Recent Content',
+                           preview_affiliate_social_medium_path(:affiliate_id => affiliate.id,
+                                                                :profile_type => profile.class.name,
+                                                                :id => profile.id)) unless profile.is_a?(FacebookProfile)
+    delete_button = button_to('Delete',
+                              affiliate_social_medium_path(:affiliate_id => affiliate.id,
+                                                           :id => profile.id,
+                                                           :profile_type => profile.class.name),
+                              :confirm => "Are you sure you want to delete this #{profile.class.name.titleize}?",
+                              :method => :delete)
+    third_column = content_tag(:td, [preview_link, delete_button].join("\n").html_safe, :class => 'actions').html_safe
+    content_tag(:tr, [first_column, second_column, third_column].join("\n").html_safe, :class => row_class)
   end
 
   def render_social_media_preview(recent_social_media)

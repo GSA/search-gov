@@ -4,7 +4,11 @@
   %h1 Social Media
   = render_help_link(@help_link)
   .site-info
-    %table
+    %table#social_media_profiles.generic-table
+      %colgroup
+        %col{ :class => 'service' }
+        %col{ :class => 'profile' }
+        %col{ :class => 'actions' }
       %thead
         %tr
           %th Service
@@ -12,14 +16,14 @@
           %th Actions
       %tbody
         - @affiliate.facebook_profiles.each do |facebook_profile|
-          = render_social_media_table_row(@affiliate, facebook_profile)
+          = render_social_media_table_row(@affiliate, facebook_profile, cycle('even', 'odd'))
         - @affiliate.flickr_profiles.each do |flickr_profile|
-          = render_social_media_table_row(@affiliate, flickr_profile)
+          = render_social_media_table_row(@affiliate, flickr_profile, cycle('even', 'odd'))
         - @affiliate.twitter_profiles.each do |twitter_profile|
-          = render_social_media_table_row(@affiliate, twitter_profile)
+          = render_social_media_table_row(@affiliate, twitter_profile, cycle('even', 'odd'))
         - @affiliate.youtube_profiles.each do |youtube_profile|
-          = render_social_media_table_row(@affiliate, youtube_profile)
-    %div
+          = render_social_media_table_row(@affiliate, youtube_profile, cycle('even', 'odd'))
+    #new_social_media
       %h2
         Create New Social Media Profile
       %p
