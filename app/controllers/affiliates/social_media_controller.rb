@@ -46,6 +46,11 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
         send(:"#{params[:profile_type].underscore}s").
         find(params[:id]).
         recent
+    @page_title = case params[:profile_type]
+                  when 'FlickrProfile' then 'Recent Flickr photos'
+                  when 'TwitterProfile' then 'Recent tweets'
+                  when 'YoutubeProfile' then 'Recent YouTube videos'
+                  end
   end
 
   def new_profile_fields

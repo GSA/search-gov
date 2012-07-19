@@ -2117,6 +2117,13 @@ Feature: Affiliate clients
     Then I should see "Username has already been added"
     And the "YouTube username" field should contain "noaa"
 
+    When I go to the "aff site" affiliate page
+    And I follow "RSS"
+    And I follow "Edit"
+    Then the "Name*" field should contain "Videos"
+    When I follow "Social Media" in the page content
+    Then I should see the browser page titled "Social Media"
+
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | flickr_url                            |
@@ -2130,7 +2137,9 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
     And I follow "Recent Content" within ".actions"
-    Then I should see "Preview of recent Flickr photos"
+    Then I should see the browser page titled "Recent Flickr photos"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent Flickr photos
+    And I should see "Recent Flickr photos" in the page header
     And I should see "Photo 1"
     And I should see "Photo 2"
     And I should see "Photo 3"
@@ -2151,6 +2160,9 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
     And I follow "Recent Content" within ".actions"
+    Then I should see the browser page titled "Recent tweets"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent tweets
+    And I should see "Recent tweets" in the page header
     Then I should see "Tweet 1"
     And I should see "Tweet 2"
     And I should see "Tweet 3"
@@ -2164,7 +2176,9 @@ Feature: Affiliate clients
     And I follow "Social Media"
     Then I should see "Recent Content"
     When I follow "Recent Content" within ".actions"
-    Then I should see the browser page titled "Preview Social Media"
+    Then I should see the browser page titled "Recent YouTube videos"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Social Media > Recent YouTube videos
+    And I should see "Recent YouTube videos" in the page header
     And I should see "There are no social media associated with this profile."
 
     Given feed "Videos" has the following news items:

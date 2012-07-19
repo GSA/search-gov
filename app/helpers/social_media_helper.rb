@@ -12,14 +12,6 @@ module SocialMediaHelper
     content_tag(:tr, [first_column, second_column, third_column].join("\n").html_safe)
   end
 
-  def render_title_for_social_media_preview(profile_type)
-    case profile_type
-    when 'FlickrProfile' then 'Preview of recent Flickr photos'
-    when 'TwitterProfile' then 'Preview of recent tweets'
-    when 'YoutubeProfile' then 'Preview of recent YouTube videos'
-    end
-  end
-
   def render_social_media_preview(recent_social_media)
     content = []
     recent_social_media.each do |social_media|
