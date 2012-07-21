@@ -336,27 +336,35 @@ describe "searches/index.html.haml" do
 
       context "when the MedTopic has related med topics" do
         before do
-          @med_topic.related_topics << med_topics(:crohns_disease)
+          related_topic = med_topics(:crohns_disease)
+          @med_topic.med_related_topics.create!(:related_medline_tid => related_topic.medline_tid,
+                                                :title => related_topic.medline_title,
+                                                :url => related_topic.medline_url)
         end
 
         it "should include the related topics in the result, with links to search results pages" do
           render
           rendered.should contain(/Related MedlinePlus Topics/)
-          rendered.should have_selector "a", :href => "/search?affiliate=usagov&locale=en&query=Crohn%27s+Disease", :content => 'Crohn\'s Disease'
+          rendered.should have_selector "a", :href => "http://www.nlm.nih.gov/medlineplus/crohnsdisease.html", :content => 'Crohn\'s Disease'
         end
       end
 
-      context "when the MedTopic has mesh titles" do
+      context "when the MedTopic has sites" do
         before do
-          @med_topic.mesh_titles = "Ulcerative Colitis:Crohn's Disease:Irritable Bowel Syndrome"
+          @med_topic.med_sites.create!(:title => 'Crohn\'s Disease',
+                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22')
+          @med_topic.med_sites.create!(:title => 'Inflammatory Bowel Diseases',
+                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22')
+          @med_topic.med_sites.create!(:title => 'Ulcerative Colitis',
+                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22')
         end
 
         it "should include links to the first two linked to clinicaltrials.gov" do
           render
           rendered.should contain(/ClinicalTrials.gov/)
-          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Ulcerative Colitis\"")}"
-          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Crohn's Disease\"")}"
-          rendered.should_not have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"Irritable Bowel Syndrome\"")}"
+          rendered.should have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22'
+          rendered.should have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22'
+          rendered.should_not have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22'
         end
       end
     end

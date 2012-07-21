@@ -165,7 +165,11 @@ module SearchHelper
   end
 
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)
-    "onmousedown=\"return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')\""
+    %Q[onmousedown="#{onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical)}"]
+  end
+
+  def onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical)
+    "return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)

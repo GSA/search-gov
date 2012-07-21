@@ -392,14 +392,13 @@ Feature: Affiliate Search
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     And the following Related Medline Topics for "Hippopotomonstrosesquippedaliophobia" in English exist:
-      | medline_title | medline_tid | summary_html   |
-      | Hippo1        | 24680       | Hippo1 summary |
+      | medline_title | medline_tid | url                                                                          |
+      | Hippo1        | 24680       | http://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
-    When I follow "Hippo1" in the medline govbox
-    Then I should see "Hippo1 - english site Search Results"
+    And I should see a link to "Hippo1" with url for "http://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "english-nih" selected

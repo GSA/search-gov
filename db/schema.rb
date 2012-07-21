@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724012116) do
+ActiveRecord::Schema.define(:version => 20120725013658) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -547,6 +547,27 @@ ActiveRecord::Schema.define(:version => 20120724012116) do
 
   add_index "med_groups", ["medline_gid"], :name => "index_med_groups_on_medline_gid"
   add_index "med_groups", ["medline_title"], :name => "index_med_groups_on_medline_title"
+
+  create_table "med_related_topics", :force => true do |t|
+    t.integer  "med_topic_id",        :null => false
+    t.integer  "related_medline_tid", :null => false
+    t.string   "title",               :null => false
+    t.string   "url",                 :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "med_related_topics", ["med_topic_id"], :name => "index_med_related_topics_on_med_topic_id"
+
+  create_table "med_sites", :force => true do |t|
+    t.integer  "med_topic_id", :null => false
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "med_sites", ["med_topic_id"], :name => "index_med_sites_on_med_topic_id"
 
   create_table "med_synonyms", :force => true do |t|
     t.string   "medline_title", :null => false
