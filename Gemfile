@@ -39,9 +39,9 @@ gem 'twitter'
 gem 'flickraw'
 gem 'bartt-ssl_requirement', '~>1.4.0', :require => 'ssl_requirement'
 gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git', :branch => 'rails-3.2'
-gem 'render_component_vho', :git => 'https://github.com/vhochstein/render_component.git'
-gem 'recordselect', :git => 'https://github.com/scambra/recordselect.git'
-gem 'active_scaffold_export', :git => 'https://github.com/naaano/active_scaffold_export.git'
+gem 'render_component_vho', :git => 'git://github.com/vhochstein/render_component.git'
+gem 'recordselect', :git => 'git://github.com/scambra/recordselect.git'
+gem 'active_scaffold_export', :git => 'git://github.com/naaano/active_scaffold_export.git'
 gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
 
@@ -69,7 +69,7 @@ group :development, :test do
   gem 'rcov'
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
-  gem 'no_peeping_toms', :git => 'https://github.com/leereilly/no-peeping-toms.git', :branch => "fix-instancemethods-deprecation-warning"
+  gem 'no_peeping_toms', :git => 'git://github.com/leereilly/no-peeping-toms.git', :branch => "fix-instancemethods-deprecation-warning"
   gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "2bc9627ba6d0ca36c68ab579b1ea521415b3b1a5"
   gem 'progress_bar'
 end
