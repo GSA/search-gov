@@ -446,8 +446,16 @@ describe IndexedDocument do
     end
     
     context "when the content hash is a duplicate" do
+      before do
+        @indexed_document.stub!(:build_content_hash).and_return("foo")
+        errors = mock(ActiveModel::Errors)
+        errors.stub!(:full_messages).and_return ["Content hash is not unique: Identical content (title and body) already indexed"]
+        @indexed_document.stub!(:errors).and_return errors
+        @indexed_document.stub!(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
+      end
+      
       it "should raise an IndexedDocumentError with the validation error as the message" do
-        lambda { IndexedDocument.create!(@valid_attributes.merge(:url => "http://www.nps.gov/newurl")) }.should raise_error(ActiveRecord::RecordInvalid, "Validation failed: Content hash is not unique: Identical content (title and body) already indexed")
+        lambda { @indexed_document.update_content_hash }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
 

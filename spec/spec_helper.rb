@@ -10,6 +10,7 @@ require "authlogic/test_case"
 require 'webrat'
 require 'sunspot/rails/spec_helper'
 require 'paperclip/matchers'
+require 'rspec/autorun'
 
 include Authlogic::TestCase
 
