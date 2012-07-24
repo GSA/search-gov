@@ -45,6 +45,8 @@ gem 'recordselect', :git => 'git://github.com/scambra/recordselect.git'
 gem 'active_scaffold_export', :git => 'git://github.com/naaano/active_scaffold_export.git'
 gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
+gem 'rspec'
+gem 'rspec-core'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -59,8 +61,6 @@ end
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'webrat'
-  gem 'rspec'
-  gem 'rspec-core'
   gem 'rspec-rails'
   gem 'remarkable_activerecord'
   gem 'email_spec'
