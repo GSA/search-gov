@@ -55,6 +55,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass'
   gem 'compass-rails'
+  gem 'execjs'
+  gem 'therubyracer', :require => 'v8'
 end
 
 # Bundle gems for the local environment. Make sure to
