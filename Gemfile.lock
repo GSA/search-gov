@@ -34,13 +34,13 @@ GIT
 
 GIT
   remote: git://github.com/GSA-OCSIT/sunspot.git
-  revision: 2bc9627ba6d0ca36c68ab579b1ea521415b3b1a5
-  ref: 2bc9627ba6d0ca36c68ab579b1ea521415b3b1a5
+  revision: b0af7f90c727ff71804e7608c27882f12670e517
+  ref: b0af7f90c727ff71804e7608c27882f12670e517
   specs:
     sunspot (2.0.0.pre.111215)
       escape (~> 0.0.4)
       pr_geohash (~> 1.0)
-      resque (~> 1.19.0)
+      resque (~> 1.21)
       rsolr (~> 1.0.6)
     sunspot_rails (2.0.0.pre.111215)
       nokogiri
@@ -293,16 +293,16 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redis (2.1.1)
-    redis-namespace (1.0.3)
+    redis-namespace (1.1.0)
       redis (< 3.0.0)
     remarkable (3.1.13)
       rspec (>= 1.2.0)
     remarkable_activerecord (3.1.13)
       remarkable (~> 3.1.13)
       rspec (>= 1.2.0)
-    resque (1.19.0)
+    resque (1.21.0)
       multi_json (~> 1.0)
-      redis-namespace (~> 1.0.2)
+      redis-namespace (~> 1.0)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
     resque_spec (0.12.2)
@@ -448,7 +448,7 @@ DEPENDENCIES
   redis-namespace
   remarkable_activerecord
   render_component_vho!
-  resque
+  resque (= 1.21.0)
   resque-priority!
   resque_spec
   rspec-rails

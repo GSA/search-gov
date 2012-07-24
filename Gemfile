@@ -14,13 +14,13 @@ gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select
 gem 'bcrypt-ruby', '>= 2.1.1', :require => 'bcrypt'
 gem 'authlogic', '>=3.0.2'
 gem 'multi_db'
-gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "2bc9627ba6d0ca36c68ab579b1ea521415b3b1a5"
+gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
 gem 'airbrake'
 gem 'fastercsv'
 gem 'yajl-ruby', :require => 'yajl'
 gem 'redis', '= 2.1.1'
 gem 'redis-namespace'
-gem 'resque'
+gem 'resque', "=1.21.0"
 gem 'resque-priority', :git => 'git://github.com/GSA-OCSIT/resque-priority.git'
 gem 'cloudfiles', :git => 'git://github.com/GSA-OCSIT/ruby-cloudfiles.git', :branch => 'escaped_name'
 gem 'cocaine'
@@ -70,7 +70,7 @@ group :development, :test do
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
   gem 'no_peeping_toms', :git => 'git://github.com/leereilly/no-peeping-toms.git', :branch => "fix-instancemethods-deprecation-warning"
-  gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "2bc9627ba6d0ca36c68ab579b1ea521415b3b1a5"
+  gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
   gem 'progress_bar'
 end
 
