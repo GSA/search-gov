@@ -24,6 +24,7 @@ class Affiliate < ActiveRecord::Base
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
+  has_many :url_prefixes, :through => :document_collections
   has_and_belongs_to_many :twitter_profiles
   has_many :flickr_profiles
   has_many :facebook_profiles

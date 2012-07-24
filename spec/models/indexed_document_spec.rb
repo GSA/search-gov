@@ -3,6 +3,9 @@ require 'spec/spec_helper'
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains
   before do
+    affiliates(:basic_affiliate).update_attribute(:results_source, 'odie')
+    affiliates(:power_affiliate).update_attribute(:results_source, 'odie')
+
     @min_valid_attributes = {
       :url => "http://min.nps.gov/link.html",
       :affiliate_id => affiliates(:basic_affiliate).id
@@ -82,15 +85,70 @@ describe IndexedDocument do
     end
   end
 
+  context "when attributes are valid" do
+    let(:idoc) { IndexedDocument.create!(@valid_attributes) }
+
+    context "when affiliate results source is Odie" do
+      before do
+        idoc.affiliate.update_attribute(:results_source, 'odie')
+      end
+
+      it "should be valid" do
+        idoc.should be_valid
+      end
+    end
+
+    context "when affiliate is using Odie API feature" do
+      before do
+        idoc.affiliate.features << Feature.find_or_create_by_internal_name('odie_api', :display_name => "api")
+      end
+
+      it "should be valid" do
+        idoc.should be_valid
+      end
+    end
+
+    context "when affiliate is using hosted sitemap feature" do
+      before do
+        idoc.affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      end
+
+      it "should be valid" do
+        idoc.should be_valid
+      end
+    end
+
+    context "when URL belongs to an affiliate's document collection" do
+      before do
+        document_collection = idoc.affiliate.document_collections.create!(:name => "sub2")
+        document_collection.url_prefixes.create!(:prefix => 'http://www.nps.gov/sub2/')
+        idoc.url = 'http://www.nps.gov/sub2/should_work.html'
+      end
+
+      it "should be valid" do
+        idoc.should be_valid
+      end
+    end
+
+    context "when none of the above four conditions are true" do
+      before do
+        idoc.affiliate.update_attribute(:results_source, 'bing')
+        idoc.affiliate.features.destroy_all
+        idoc.affiliate.document_collections.destroy_all
+      end
+
+      it "should be invalid" do
+        idoc.should_not be_valid
+        idoc.errors.full_messages.first.should == IndexedDocument::ODIE_CANDIDACY
+      end
+    end
+  end
+
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.nps.gov/#{'waytoolong'*200}/some.pdf"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))
     idoc.should_not be_valid
     idoc.errors[:url].first.should =~ /too long/
-  end
-
-  it "should create a new instance given valid attributes" do
-    IndexedDocument.create!(@valid_attributes)
   end
 
   it "should assign/create an associated indexed_domain" do
@@ -394,9 +452,15 @@ describe IndexedDocument do
     end
 
     it "should set the content hash for the entry" do
-      indexed_document.should_receive(:index_document).with(kind_of(Tempfile),'text/html')
-      indexed_document.should_receive(:update_content_hash)
+      indexed_document.should_receive(:index_document).with(kind_of(Tempfile), 'text/html')
+      indexed_document.should_receive(:save_or_destroy)
       indexed_document.fetch
+    end
+
+    it "should set the load time attribute" do
+      indexed_document.fetch
+      indexed_document.reload
+      indexed_document.load_time.should_not be_nil
     end
 
     context "when there is a problem fetching and indexing the URL content" do
@@ -440,11 +504,11 @@ describe IndexedDocument do
     end
   end
 
-  describe "#update_content_hash" do
+  describe "#save_or_destroy" do
     before do
       @indexed_document = IndexedDocument.create!(@valid_attributes)
     end
-    
+
     context "when the content hash is a duplicate" do
       before do
         @indexed_document.stub!(:build_content_hash).and_return("foo")
@@ -453,9 +517,9 @@ describe IndexedDocument do
         @indexed_document.stub!(:errors).and_return errors
         @indexed_document.stub!(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
       end
-      
+
       it "should raise an IndexedDocumentError with the validation error as the message" do
-        lambda { @indexed_document.update_content_hash }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
+        lambda { @indexed_document.save_or_destroy }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
 
@@ -466,7 +530,7 @@ describe IndexedDocument do
       end
 
       it "should catch the exception and delete the record" do
-        @indexed_document.update_content_hash
+        @indexed_document.save_or_destroy
         IndexedDocument.find_by_id(@indexed_document.id).should be_nil
       end
     end
@@ -770,7 +834,7 @@ describe IndexedDocument do
       @affiliate = affiliates(:basic_affiliate)
       @first_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :affiliate => @affiliate)
       @last_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :affiliate => @affiliate)
-      affiliates(:power_affiliate).site_domains.create!(:domain=>"anotheraffiliate.mil")
+      affiliates(:power_affiliate).site_domains.create!(:domain => "anotheraffiliate.mil")
       @other_affiliate_uncrawled_url = IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :affiliate => affiliates(:power_affiliate))
       @already_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/uncrawled.html', :affiliate => @affiliate, :last_crawled_at => Time.now)
     end
@@ -793,7 +857,7 @@ describe IndexedDocument do
       @affiliate = affiliates(:basic_affiliate)
       @first_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate)
       @last_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate)
-      affiliates(:power_affiliate).site_domains.create!(:domain=>"anotheraffiliate.mil")
+      affiliates(:power_affiliate).site_domains.create!(:domain => "anotheraffiliate.mil")
       IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate))
     end
 
@@ -922,7 +986,7 @@ describe IndexedDocument do
   describe "#refresh(extent)" do
     before do
       IndexedDocument.destroy_all
-      affiliates(:power_affiliate).site_domains.create!(:domain=>"some.mil")
+      affiliates(:power_affiliate).site_domains.create!(:domain => "some.mil")
       IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
       IndexedDocument.create!(:url => 'http://nps.gov', :affiliate => affiliates(:basic_affiliate))
       Affiliate.stub!(:find).and_return(affiliates(:power_affiliate), affiliates(:basic_affiliate))

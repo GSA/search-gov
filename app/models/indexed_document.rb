@@ -15,6 +15,7 @@ class IndexedDocument < ActiveRecord::Base
   validate :url_is_parseable
   validate :site_domain_matches
   validate :robots_txt_compliance
+  validate :odie_candidacy
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -35,6 +36,7 @@ class IndexedDocument < ActiveRecord::Base
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
+  ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap unless you are using Odie results. Set up your collection or hosted sitemap first and then upload the URL."
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -80,7 +82,7 @@ class IndexedDocument < ActiveRecord::Base
                 file.flush
                 file.rewind
                 index_document(file, response.content_type)
-                update_content_hash
+                self.content_hash = build_content_hash
               ensure
                 file.close
                 file.unlink
@@ -88,6 +90,7 @@ class IndexedDocument < ActiveRecord::Base
             end
           end
         end
+        save_or_destroy
       end
     rescue Exception => e
       handle_fetch_exception(e)
@@ -106,9 +109,8 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
-  def update_content_hash
+  def save_or_destroy
     begin
-      self.content_hash = build_content_hash
       save!
     rescue Mysql2::Error
       destroy
@@ -324,12 +326,19 @@ class IndexedDocument < ActiveRecord::Base
 
   def robots_txt_compliance
     if self_url
-      if robot = Robot.find_by_domain(self_url.host)
+      if (robot = Robot.find_by_domain(self_url.host))
         if robot.disallows?(self_url.request_uri)
           errors.add(:base, ROBOTS_TXT_COMPLIANCE)
         end
       end
     end
+  end
+
+  def odie_candidacy
+    return unless self.affiliate.present?
+    errors.add(:base, ODIE_CANDIDACY) unless self.affiliate.uses_odie_results? or
+      (self.affiliate.features & Feature.find_all_by_internal_name(%w{odie_api hosted_sitemaps})).present? or
+      self.affiliate.url_prefixes.where("prefix like ?", url + "%").present?
   end
 
   def url_is_parseable
