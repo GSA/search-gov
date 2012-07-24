@@ -48,6 +48,8 @@ gem 'mobile-fu'
 gem 'rspec'
 gem 'rspec-core'
 gem 'cucumber'
+gem "recaptcha", :require => "recaptcha/rails"
+gem 'dynamic_form'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

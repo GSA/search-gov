@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__),'spec_helper')
+require 'spec/spec_helper'
 
 $most_simply_combinded_log = '- - - [25/Sep/2008:08:48:38 +0900] "" - - "-" "-"'
 
@@ -319,20 +319,20 @@ describe :apache_log do
 	describe :LogFile do
 		describe :read do
 			it "should read all lines" do
-				logs = Apache::LogFile.read( "spec/test.log" )
+				logs = Apache::LogFile.read("spec/fixtures/log/test.log")
 				logs.size.should == 2
 			end
 
 			it "should support only combined and common log format yet" do
-				lambda { Apache::LogFile.read( "spec/test.log", :format => :combined ) }.should_not raise_error( ArgumentError )
-				lambda { Apache::LogFile.read( "spec/test.log", :format => :common ) }.should_not raise_error( ArgumentError )
+				lambda { Apache::LogFile.read( "spec/fixtures/log/test.log", :format => :combined ) }.should_not raise_error( ArgumentError )
+				lambda { Apache::LogFile.read( "spec/fixtures/log/test.log", :format => :common ) }.should_not raise_error( ArgumentError )
 			end
 		end
 
 		describe :foreach do
 			it "should read each line" do
 				i = 0
-				logs = Apache::LogFile.foreach( "spec/test.log" ) { |x|
+				logs = Apache::LogFile.foreach( "spec/fixtures/log/test.log" ) { |x|
 					i += 1
 					x.class.should == Apache::Log::Combined
 				}
@@ -342,7 +342,7 @@ describe :apache_log do
 			describe "for tsv log" do
 				it "should read each line" do
 					i = 0
-					logs = Apache::LogFile.foreach( "spec/test_tsv.log", :tab ) { |x|
+					logs = Apache::LogFile.foreach( "spec/fixtures/log/test_tsv.log", :tab ) { |x|
 						i += 1
 						x.class.should == Apache::Log::Combined
 					}
@@ -353,8 +353,8 @@ describe :apache_log do
 	end
 
 	after do
-		File.delete "spec/test.cache" rescue nil 
-		File.delete "spec/test_tsv.cache" rescue nil
+		File.delete "spec/fixtures/log/test.cache" rescue nil 
+		File.delete "spec/fixtures/log/test_tsv.cache" rescue nil
 	end
 
 	describe "io parser" do

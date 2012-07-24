@@ -1,6 +1,4 @@
 require 'active_support'
-require 'spec'
-require 'google_visualization.rb'
 
 class CollectionFixture
   attr_accessor :label, :time, :x, :y, :bubble_size, :extra, :extra_2
@@ -39,13 +37,11 @@ describe GoogleVisualization do
     end
 
     it "should render valid columns" do
-      puts "\n"
-      puts @motion_chart.render_columns
+      @motion_chart.render_columns
     end
 
     it "should render valid rows" do
-      puts "\n"
-      puts @motion_chart.render_rows
+      @motion_chart.render_rows
     end
 
     it "should raise an exception" do
@@ -74,8 +70,7 @@ describe GoogleVisualization do
     end
 
     it "should render valid columns" do
-      puts "\n"
-      puts @atl.render
+      @atl.render
     end
   end
 
@@ -89,7 +84,7 @@ describe GoogleVisualization do
     end
 
     it "#ruby_to_javascript_object should produce the correct javascript" do
-      GoogleVisualization::Mappings.ruby_to_javascript_object(Date.parse("2008-01-02")).should == "new Date(2008,01,02)" 
+      GoogleVisualization::Mappings.ruby_to_javascript_object(Date.parse("2008-01-02")).should == "new Date(2008,0,2)" 
       GoogleVisualization::Mappings.ruby_to_javascript_object("my string").should == "'my string'" 
       GoogleVisualization::Mappings.ruby_to_javascript_object(8).should == 8
       GoogleVisualization::Mappings.ruby_to_javascript_object(8.6).should == 8.6
