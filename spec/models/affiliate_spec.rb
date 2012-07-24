@@ -1729,7 +1729,7 @@ describe Affiliate do
         <style>#my_footer { color:red }</style>
         <h1 id="my_footer">footer</h1>
       HTML
-      
+
       affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer), :as => :test)
       affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
     end
@@ -1964,8 +1964,15 @@ describe Affiliate do
       before do
         page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
         @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
-        flickr_api_response = {"id"=>"1600", "username"=>"GregGersh"} 
+        flickr_api_response = {"id"=>"1600", "username"=>"GregGersh"}
         flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
+
+        Kernel.stub(:open) do |arg|
+          if arg =~ %r[^http://gdata.youtube.com/feeds/base/videos\?]
+            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+          end
+        end
+
         @affiliate.autodiscover_social_media
       end
 
@@ -1982,7 +1989,7 @@ describe Affiliate do
       end
 
       it "should update the youtube profiles with all the youtube handles found on the page" do
-        @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse", "whitehouse2"]
+        @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse1", "whitehouse2"]
       end
 
       context "when there are existing youtube handles" do
@@ -1993,7 +2000,7 @@ describe Affiliate do
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.reload
-          @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse", "whitehouse2", "whitehouse_test"]
+          @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse1", "whitehouse2", "whitehouse_test"]
         end
       end
     end
