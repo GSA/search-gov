@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake', "0.9.2.2"
 gem 'rails', "3.2.6"
 gem 'mysql2', '>0.3'
 gem 'capistrano', :git => 'git://github.com/GSA-OCSIT/capistrano.git'
