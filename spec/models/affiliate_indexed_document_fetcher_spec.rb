@@ -5,6 +5,7 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
   before do
     IndexedDocument.destroy_all
     @affiliate = affiliates(:basic_affiliate)
+    @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
     @unfetched = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo.html')
     @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
                                              :description => 'This is a PDF document.',

@@ -150,6 +150,7 @@ describe IndexedDomainTemplateDetector do
     before do
       affiliate = affiliates(:basic_affiliate)
       affiliate.indexed_documents.destroy_all
+      affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
       1.upto(3) do |x|
         affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html", :title => "Some HTML Title#{x}",
                                             :description => "This is HTML document number #{x}.",

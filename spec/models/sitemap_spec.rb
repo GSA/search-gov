@@ -91,6 +91,7 @@ describe Sitemap do
     before do
       @sitemap = Sitemap.new(@valid_attributes)
       @sitemap.stub!(:is_valid_sitemap?).and_return true
+      @sitemap.affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
     end
 
     context "when the sitemap is a valid sitemap" do
@@ -111,7 +112,7 @@ describe Sitemap do
 
       context "when the sitemap has been parsed before" do
         before do
-          IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:power_affiliate))
+          IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => @sitemap.affiliate)
           @sitemap.affiliate.indexed_documents.size.should == 1
           @sitemap.parse(@file)
         end

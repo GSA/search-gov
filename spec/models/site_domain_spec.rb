@@ -104,6 +104,10 @@ describe SiteDomain do
     let(:site_domain) { affiliate.site_domains.create!(:domain => "foo.gov") }
     let(:frontier) { %w(http://foo.gov/ http://foo.gov/page.html) }
 
+    before do
+      affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+    end
+
     it "should attempt to create a new IndexedDocument for each link in the frontier" do
       site_domain.should_receive(:get_frontier).with(SiteDomain::MAX_DOCS_PER_CRAWL).and_return frontier
       site_domain.populate

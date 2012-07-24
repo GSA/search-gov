@@ -1124,6 +1124,7 @@ describe WebSearch do
 
     context "when an affiliate has PDF documents" do
       before do
+        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @affiliate.indexed_documents.destroy_all
         @affiliate.site_domains.create!(:domain => 'usa.gov')
         @affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://usa.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1169,6 +1170,7 @@ describe WebSearch do
     context "when an affiliate has Bing results that are duplicated in indexed documents" do
       before do
         @affiliate.indexed_documents.destroy_all
+        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @affiliate.site_domains.create!(:domain => 'usa.gov')
         @affiliate.site_domains.create!(:domain => 'same-title-and-uri-but-different-host.gov')
         @affiliate.site_domains.create!(:domain => 'www.gov.gov')
@@ -1211,6 +1213,7 @@ describe WebSearch do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.site_domains.create(:domain => "nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
+        @non_affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         1.upto(15) do |index|
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
         end
@@ -1258,6 +1261,7 @@ describe WebSearch do
     context "when affiliate has no Bing results and there is an orphan indexed document" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @non_affiliate.indexed_documents.destroy_all
         IndexedDocument.reindex
         odie = @non_affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://laksjdflkjasldkjfalskdjf.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1283,6 +1287,7 @@ describe WebSearch do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
         @affiliate.stub!(:uses_odie_results?).and_return true
+        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA',
                                              :description => 'Here is a more representative document description on why we LOVE AMERICA so that we get a better sense of what the fast vector highlighter will do with the text, which happens to be longer than the 255 characters we have set as the fragment size. For a really small field, it is better to use the single fragment builder versus the default builder, which for some reason wants to chop off the front of the fragment up to the point of the first snippet.',
                                              :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1305,6 +1310,7 @@ describe WebSearch do
       before do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
+        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @affiliate.stub!(:uses_bing_odie_results?).and_return false
         @affiliate.indexed_documents.create(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
         Sunspot.commit
@@ -1593,6 +1599,7 @@ describe WebSearch do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:non_existant_affiliate)
+      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
       @affiliate.site_domains.create(:domain => "url.gov")
       @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex

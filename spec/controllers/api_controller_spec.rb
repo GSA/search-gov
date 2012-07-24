@@ -187,6 +187,7 @@ describe ApiController do
       let(:api_key) { users(:affiliate_manager).api_key }
 
       before do
+        affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         dc = affiliate.document_collections.build(:name => "My Coll")
         dc.url_prefixes.build(:prefix => "http://something.gov/")
         dc.save!

@@ -1686,6 +1686,7 @@ describe Affiliate do
   describe "#refresh_indexed_documents(scope)" do
     before do
       @affiliate = affiliates(:basic_affiliate)
+      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
       @affiliate.fetch_concurrency = 2
       @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')
       @second = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo')

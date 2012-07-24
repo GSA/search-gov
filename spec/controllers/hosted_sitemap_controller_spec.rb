@@ -19,6 +19,7 @@ describe HostedSitemapController, "#show" do
     before do
       @domain = "www.govdotgov.gov"
       aff = affiliates(:power_affiliate)
+      aff.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
       @indexed_domain = aff.indexed_domains.create!(:domain => @domain)
       aff.site_domains.create!(:domain => @domain)
       aff.site_domains.create!(:domain => 'honeybadger.gov')

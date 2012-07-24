@@ -336,6 +336,7 @@ describe SearchesController do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:basic_affiliate)
+      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
       @affiliate.site_domains.create!(:domain => 'affiliate.gov')
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)

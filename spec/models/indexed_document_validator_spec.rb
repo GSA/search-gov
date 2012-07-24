@@ -5,6 +5,7 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   let(:aff) { affiliates(:basic_affiliate) }
   before do
     aff.indexed_documents.destroy_all
+    aff.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
     @idoc = aff.indexed_documents.create!(
       :title => 'PDF Title',
       :description => 'This is a PDF document.',

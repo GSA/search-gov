@@ -29,6 +29,7 @@ describe CommonSubstring do
     context "when there are associated IndexedDocuments that contain the substring" do
       before do
         aff = affiliates(:basic_affiliate)
+        aff.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @doc1 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/a.html", :body => "doc1 has this text in it")
         @doc2 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/b.html", :body => "doc2 has this text in it")
         @doc3 = aff.indexed_documents.create!(:indexed_domain => indexed_domains(:sample), :doctype => 'html', :url => "http://gov.nps.gov/c.html", :body => "doc3 does not have this text in it")
