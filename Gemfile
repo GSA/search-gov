@@ -47,6 +47,7 @@ gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-p
 gem 'mobile-fu'
 gem 'rspec'
 gem 'rspec-core'
+gem 'cucumber'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -67,7 +68,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'cucumber'
   gem 'launchy'
   gem 'rcov'
   gem 'webster'
