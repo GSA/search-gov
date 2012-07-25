@@ -25,6 +25,18 @@
     = (javascript_include_tag "rails-ext.js").html_safe
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
+    = javascript_include_tag "active_scaffold/default/active_scaffold.js"
+    = javascript_include_tag "active_scaffold/default/rico_corner.js"
+    = javascript_include_tag "active_scaffold/default/form_enhancements.js"
+    = javascript_include_tag "active_scaffold/default/dhtml_history.js"
+    = javascript_include_tag "calendar_date_select/calendar_date_select.js"
+    = javascript_include_tag "calendar_date_select/format_american.js"
+    = stylesheet_link_tag 'active_scaffold/default/stylesheet.css'
+    = stylesheet_link_tag 'active_scaffold/default/export-stylesheet.css'
+    = stylesheet_link_tag 'calendar_date_select/default.css'
+    /[if IE]
+      = stylesheet_link_tag 'active_scaffold/default/stylesheet-ie.css'
+      = stylesheet_link_tag 'active_scaffold/default/export-stylesheet-ie.css'
     = stylesheet_link_tag 'compiled/active_scaffold_overrides.css', :media => 'screen'
 
   %body
