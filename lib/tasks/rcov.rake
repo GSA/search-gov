@@ -5,7 +5,7 @@ namespace :rcov do
   RSpec::Core::RakeTask.new(:rspec_aggregate) do |task|
     task.rcov = true
     task.pattern = 'spec/**/*_spec.rb'
-    task.rcov_opts = %w{--rails --include views -Ispec --exclude gems/,spec/,features/,seeds/,tmp/,coverage/,.bundler --aggregate tmp/coverage.data}
+    task.rcov_opts = %w{--rails --include views -Ispec --exclude gems/,spec/,spec/lib/*_spec.rb,features/,seeds/,tmp/,coverage/,.bundler --aggregate tmp/coverage.data}
     task.rspec_opts = "-c"
   end
 
