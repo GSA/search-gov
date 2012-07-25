@@ -3,6 +3,10 @@ require 'spec/spec_helper'
 describe WebSearch do
   fixtures :affiliates, :misspellings, :site_domains
 
+  before(:each) do
+    Redis.new(:host => REDIS_HOST, :port => REDIS_PORT).flushall
+  end
+
   before do
     @affiliate = affiliates(:usagov_affiliate)
     @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}

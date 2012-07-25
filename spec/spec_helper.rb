@@ -49,7 +49,7 @@ RSpec.configure do |config|
 
   REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
   REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
-  
+
   config.before(:suite) do
     Dir.mkdir("#{Rails.root}/tmp/cache") unless File.directory?("#{Rails.root}/tmp/cache")
     Dir.mkdir("#{Rails.root}/tmp/pids") unless File.directory?("#{Rails.root}/tmp/pids")
@@ -68,12 +68,8 @@ RSpec.configure do |config|
       "databases" => 16
     }.map { |k, v| "#{k} #{v}" }.join("\n")
     `echo '#{redis_options}' | redis-server -`
-  
-    EmailTemplate.load_default_templates
-  end
 
-  config.before(:each) do
-    Redis.new(:host => REDIS_HOST, :port => REDIS_PORT).flushall
+    EmailTemplate.load_default_templates
   end
 
   config.after(:suite) do
