@@ -148,8 +148,9 @@ describe SiteDomain do
     end
   end
 
-  describe "#get_links_from_html_file(file, current_url, parsed_start_page_url)" do
+  describe "#get_links_from_html_file(file, current_url, parsed_start_page_url, path_prefix)" do
     let(:parsed_start_page_url) { URI.parse("http://www.agency.gov/test/") }
+    let(:path_prefix) { "/test" }
     let(:current_url) { URI.parse("http://www.agency.gov/test/page.html") }
     let(:site_domain) { affiliate.site_domains.create!(:domain => "www.agency.gov/test") }
 
@@ -157,8 +158,8 @@ describe SiteDomain do
       let(:linky_file) { open(Rails.root.to_s + '/spec/fixtures/html/page_with_all_kinds_of_links.html') }
 
       it "should return an array of eligible links from the HTML file" do
-        links = %w(http://www.agency.gov/test/another_relative.html http://www.agency.gov/test/another_absolute.html)
-        site_domain.get_links_from_html_file(linky_file, current_url, parsed_start_page_url).should == links
+        links = %w(http://www.agency.gov/test/another_relative.html http://www.agency.gov/test/another_absolute.html http://www.agency.gov/test/another_absolute.docx http://www.agency.gov/test/another_absolute.doc)
+        site_domain.get_links_from_html_file(linky_file, current_url, parsed_start_page_url, path_prefix).should == links
       end
     end
 
@@ -166,7 +167,7 @@ describe SiteDomain do
       let(:linkless_file) { open(Rails.root.to_s + '/spec/fixtures/html/page_with_no_links.html') }
 
       it "should return an empty array" do
-        site_domain.get_links_from_html_file(linkless_file, current_url, parsed_start_page_url).should == []
+        site_domain.get_links_from_html_file(linkless_file, current_url, parsed_start_page_url, path_prefix).should == []
       end
     end
   end
@@ -174,6 +175,14 @@ describe SiteDomain do
   describe "#get_frontier(max_docs)" do
     context "when the site domain starts with a . (e.g., .mil)" do
       let(:site_domain) { affiliate.site_domains.create!(:domain => ".gov") }
+
+      it "should return an empty array" do
+        site_domain.get_frontier(100).should == []
+      end
+    end
+
+    context "when a valid start page cannot be inferred from the site domain" do
+      let(:site_domain) { affiliate.site_domains.create!(:domain => "loren.siebert.gov") }
 
       it "should return an empty array" do
         site_domain.get_frontier(100).should == []
@@ -189,6 +198,7 @@ describe SiteDomain do
 
       before do
         site_domain.stub!(:url_disallowed?).and_return(false)
+        site_domain.stub!(:infer_start_page_from_domain).and_return("http://www.agency.gov/")
         site_domain.stub!(:open).and_return(linky_file)
         site_domain.stub!(:get_links_from_html_file).and_return(links, sublinks1, sublinks2)
       end
@@ -206,8 +216,8 @@ describe SiteDomain do
           linky_file.stub!(:content_type).and_return("text/html","text/html","docx")
         end
 
-        it "should ignore them" do
-          site_domain.get_frontier(100).size.should == 2
+        it "should still return the URLs" do
+          site_domain.get_frontier(100).size.should == 5
         end
       end
 
@@ -232,6 +242,47 @@ describe SiteDomain do
         end
       end
 
+    end
+  end
+
+  describe "#infer_start_page_from_domain" do
+    let(:ok) { mock("response", :base_uri => URI.parse("http://www.fs.fed.us/rm/human-dimensions/optfuels/main.php")) }
+
+    context "when domain can be turned into a valid URL and fetched (following redirection)" do
+      let(:site_domain) { affiliate.site_domains.create!(:domain => "www.fs.fed.us/rm/human-dimensions/optfuels") }
+
+      before do
+        site_domain.should_receive(:open).once.with("http://www.fs.fed.us/rm/human-dimensions/optfuels/").and_return ok
+      end
+
+      it "should return the base URI as the start page" do
+        site_domain.infer_start_page_from_domain.should == "http://www.fs.fed.us/rm/human-dimensions/optfuels/main.php"
+      end
+    end
+
+    context "when there is a problem turning domain into a valid URL" do
+      let(:site_domain) { affiliate.site_domains.create!(:domain => "fs.fed.us/rm/human-dimensions/optfuels") }
+
+      before do
+        site_domain.should_receive(:open).once.ordered.with("http://fs.fed.us/rm/human-dimensions/optfuels/").and_raise Errno::EHOSTUNREACH
+        site_domain.should_receive(:open).once.ordered.with("http://www.fs.fed.us/rm/human-dimensions/optfuels/").and_return ok
+      end
+
+      it "should try prepending 'www.' to the domain to get the start page" do
+        site_domain.infer_start_page_from_domain.should == "http://www.fs.fed.us/rm/human-dimensions/optfuels/main.php"
+      end
+    end
+
+    context "when both the domain and www-prepended domain fail" do
+      let(:site_domain) { affiliate.site_domains.create!(:domain => "loren.siebert.gov") }
+
+      before do
+        site_domain.stub!(:open).and_raise Errno::EHOSTUNREACH
+      end
+
+      it "should return nil" do
+        site_domain.infer_start_page_from_domain.should be_nil
+      end
     end
   end
 end

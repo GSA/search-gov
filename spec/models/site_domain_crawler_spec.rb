@@ -9,11 +9,13 @@ describe SiteDomainCrawler, "#perform(site_domain_id)" do
   end
 
   context "when it can locate the SiteDomain for an affiliate" do
-    let(:site_domain) { mock("site domain") }
+    let(:affiliate) { mock("affiliate") }
+    let(:site_domain) { mock("site domain", :affiliate => affiliate) }
 
-    it "should attempt to populate the SiteDomain with indexed documents" do
+    it "should attempt to populate and fetch/index the SiteDomain with indexed documents" do
       SiteDomain.should_receive(:find_by_id).with(1).and_return(site_domain)
       site_domain.should_receive(:populate)
+      affiliate.should_receive(:refresh_indexed_documents).with('unfetched')
       SiteDomainCrawler.perform(1)
     end
   end

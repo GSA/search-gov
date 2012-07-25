@@ -8,14 +8,16 @@ class SiteDomainObserver < ActiveRecord::Observer
   end
 
   def after_create(site_domain)
-    revalidate_associated_indexed_documents(site_domain) if site_domain.affiliate.site_domains.count == 1
-    crawl_domain(site_domain) if site_domain.affiliate.site_domains.count == 1
+    if site_domain.affiliate.site_domains.count == 1
+      revalidate_associated_indexed_documents(site_domain)
+      crawl_domain(site_domain)
+    end
   end
 
   private
 
   def revalidate_associated_indexed_documents(site_domain)
-    site_domain.affiliate.indexed_documents.each{ |indexed_document| Resque.enqueue(IndexedDocumentValidator, indexed_document.id)}
+    site_domain.affiliate.indexed_documents.each { |indexed_document| Resque.enqueue(IndexedDocumentValidator, indexed_document.id) }
   end
 
   def crawl_domain(site_domain)

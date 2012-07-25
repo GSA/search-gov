@@ -32,8 +32,11 @@ class SiteDomain < ActiveRecord::Base
 
   def get_frontier(max_docs)
     return [] if domain.starts_with?('.')
-    start_page, queue, robots, frontier = "http://#{domain}/", [], {}, Set.new
+    start_page = infer_start_page_from_domain
+    return [] if start_page.nil?
+    queue, robots, frontier = [], {}, Set.new
     parsed_start_page_url = URI.parse(start_page)
+    path_prefix = URI.parse("http://#{domain}/").path
     marked = Set.new [start_page]
     queue.push start_page
     while queue.any? and frontier.size < max_docs
@@ -42,11 +45,12 @@ class SiteDomain < ActiveRecord::Base
         current_url = URI.parse(url)
         next if url_disallowed?(current_url, robots)
         file = open(url)
-        next unless file.content_type =~ /html/
-        get_links_from_html_file(file, current_url, parsed_start_page_url).each do |link|
-          unless marked.include?(link)
-            queue.push link
-            marked.add link
+        if file.content_type =~ /html/
+          get_links_from_html_file(file, current_url, parsed_start_page_url, path_prefix).each do |link|
+            unless marked.include?(link)
+              queue.push link
+              marked.add link
+            end
           end
         end
         frontier.add url
@@ -62,7 +66,13 @@ class SiteDomain < ActiveRecord::Base
     robots[current_url.host].present? and robots[current_url.host].disallows?(current_url.path)
   end
 
-  def get_links_from_html_file(file, current_url, parsed_start_page_url)
+  def infer_start_page_from_domain
+    open("http://#{domain}/").base_uri.to_s
+  rescue
+    open("http://www.#{domain}/").base_uri.to_s rescue nil
+  end
+
+  def get_links_from_html_file(file, current_url, parsed_start_page_url, path_prefix)
     doc = Nokogiri::HTML(file)
     links = doc.css('a').collect do |hlink|
       hlink['href'].squish.gsub(/#.*/, '') rescue nil
@@ -70,8 +80,8 @@ class SiteDomain < ActiveRecord::Base
       link_url = process_link(current_url, link)
       if link_url.present?
         link_url.to_s if link_url.scheme == "http" and link_url.host =~ /#{parsed_start_page_url.host}/i and
-          link_url.path =~ /#{parsed_start_page_url.path}/i and link_url != current_url and !link_url.to_s.include?('?') and
-          !(link_url.path =~ /\.(wmv|mov|css|csv|doc|docx|gif|htc|ico|jpeg|jpg|js|json|mp3|png|rss|swf|txt|wsdl|xml|pdf)$/i)
+          link_url.path =~ /#{path_prefix}/i and link_url != current_url and !link_url.to_s.include?('?') and
+          !(link_url.path =~ /\.(wmv|mov|css|csv|gif|htc|ico|jpeg|jpg|js|json|mp3|png|rss|swf|txt|wsdl|xml|zip|gz|z|bz2|tgz|jar|tar)$/i)
       end
     end
     links.uniq.compact

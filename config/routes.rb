@@ -166,6 +166,7 @@ UsasearchRails3::Application.routes.draw do
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
+  match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
   match '/admin' => 'admin/home#index', :as => :admin_home_page
 
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
