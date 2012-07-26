@@ -14,7 +14,7 @@ gem 'nokogiri', '>= 1.5.2'
 gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
 gem 'bcrypt-ruby', '>= 2.1.1', :require => 'bcrypt'
 gem 'authlogic', '>=3.0.2'
-gem 'multi_db', :git => 'git://github.com/burke/multi_db.git'
+gem 'multi_db'
 gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
 gem 'airbrake'
 gem 'fastercsv'
