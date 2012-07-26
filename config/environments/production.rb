@@ -47,12 +47,12 @@ UsasearchRails3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
+  if File.basename($0) == 'rails' || (File.basename($0) == 'rake' && !ARGV.include?('db:migrate'))
     config.after_initialize do
       MultiDb::ConnectionProxy.setup!
     end
   end
-  
+
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
