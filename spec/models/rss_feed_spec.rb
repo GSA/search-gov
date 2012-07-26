@@ -170,7 +170,6 @@ describe RssFeed do
 
         blog_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         Kernel.should_receive(:open).exactly(2).times do
-          #blog_xml.rewind
           blog_xml
         end
       end
@@ -256,10 +255,8 @@ describe RssFeed do
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
             wh_playlist_xml
-            #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
           when 'http://gdata.youtube.com/feeds/api/users/noaa/playlists?start-index=1&max-results=50&v=2'
             noaa_playlist_xml
-            #File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
             youtube_xml
           when first_youtube_url, second_youtube_url
@@ -316,16 +313,12 @@ describe RssFeed do
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
             wh_playlist_xml
-            #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
           when 'http://gdata.youtube.com/feeds/api/users/noaa/playlists?start-index=1&max-results=50&v=2'
             noaa_playlist_xml
-            #File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
             youtube_xml
-            #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           when first_youtube_url, second_youtube_url
             youtube_xml
-            #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           end
         end
       end
@@ -396,10 +389,8 @@ describe RssFeed do
         case arg
         when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
           playlist_xml
-          #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
         when first_youtube_url
           youtube_xml
-          #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         end
       end
       YoutubeProfile.create!(:affiliate => affiliate, :username => 'whitehouse')
