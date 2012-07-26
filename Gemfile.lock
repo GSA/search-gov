@@ -94,6 +94,15 @@ GIT
       rails (>= 3.1.3)
 
 GIT
+  remote: git://github.com/schoefmax/multi_db.git
+  revision: 251806a16b1e03279c774a841d371bda1533ebe7
+  ref: 251806a16b1e03279c774a841d371bda1533ebe7
+  specs:
+    multi_db (0.3.0)
+      activerecord (>= 2.1.0)
+      tlattr_accessors (>= 0.0.3)
+
+GIT
   remote: git://github.com/vhochstein/render_component.git
   revision: aeec3873019b0f7e8512f7720388666ff42d162f
   specs:
@@ -236,9 +245,6 @@ GEM
     mobile-fu (1.1.0)
       rack-mobile-detect
       rails
-    multi_db (0.3.1)
-      activerecord (>= 2.1.0)
-      tlattr_accessors (>= 0.0.3)
     multi_json (1.3.6)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
@@ -441,7 +447,7 @@ DEPENDENCIES
   launchy
   mechanize
   mobile-fu
-  multi_db
+  multi_db!
   mysql2 (> 0.3)
   no_peeping_toms!
   nokogiri (>= 1.5.2)
