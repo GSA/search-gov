@@ -213,10 +213,10 @@ describe ApplicationHelper do
     end
 
     context "when user is logged in" do
-      it "should use generate Sign Out link with predefined SSL_PROTOCOL" do
+      it "should use generate Sign Out link" do
         user = stub("User", :email => "user@fixtures.org")
         content = helper.basic_header_navigation_for(user)
-        content.should have_selector("a[href^='aprotocol']", :content => "Sign Out")
+        content.should have_selector("a[href^='/user_session']", :content => "Sign Out")
       end
     end
 

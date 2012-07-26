@@ -184,10 +184,7 @@ module ApplicationHelper
   end
 
   def url_for_logout
-    url_for(:controller => "/user_sessions",
-            :action => "destroy",
-            :protocol => ssl_protocol,
-            :only_path => false)
+    url_for(:controller => '/user_sessions', :action => :destroy)
   end
 
   def truncate_html_prose_on_words(html, length, max_paragraphs = nil)
