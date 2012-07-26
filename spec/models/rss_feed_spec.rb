@@ -40,7 +40,7 @@ describe RssFeed do
 
   context "on create" do
     before do
-      rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+      rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
       Kernel.stub(:open).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
     end
 
@@ -76,7 +76,7 @@ describe RssFeed do
 
     context "when the RSS feed is a valid feed" do
       before do
-        rss = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        rss = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
         Kernel.stub!(:open).and_return rss
       end
 
@@ -168,9 +168,9 @@ describe RssFeed do
         playlist_url = rss_feed.rss_feed_urls.build(:url => 'http://gdata.youtube.com/feeds/api/playlists/FAKEID1')
         playlist_url.save(:validate => false)
 
-        blog_xml = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        blog_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         Kernel.should_receive(:open).exactly(2).times do
-          blog_xml.rewind
+          #blog_xml.rewind
           blog_xml
         end
       end
@@ -187,18 +187,21 @@ describe RssFeed do
     context 'when affiliate has a youtube profile' do
       let(:affiliate) { Affiliate.create!(:display_name => 'site with youtube profile') }
       let(:managed_feed) { affiliate.rss_feeds(true).managed.first }
-      let(:managed_feed) { affiliate.rss_feeds(true).managed.first }
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+            playlist_xml
           when %r{http://gdata.youtube.com/feeds/api/playlists}
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           when first_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
+          else
+            pp 'not match'
           end
         end
       end
@@ -214,16 +217,18 @@ describe RssFeed do
       let(:managed_feed) { affiliate.rss_feeds(true).managed.first }
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
       let(:second_youtube_url) { YoutubeProfile.youtube_url('noaa') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/noaa/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+            playlist_xml
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           when first_youtube_url, second_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           end
         end
       end
@@ -242,18 +247,23 @@ describe RssFeed do
       let(:managed_feed) { affiliate.rss_feeds(true).managed.first }
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
       let(:second_youtube_url) { YoutubeProfile.youtube_url('noaa') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:wh_playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
+      let(:noaa_playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+            wh_playlist_xml
+            #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
           when 'http://gdata.youtube.com/feeds/api/users/noaa/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
+            noaa_playlist_xml
+            #File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           when first_youtube_url, second_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           end
         end
       end
@@ -268,16 +278,18 @@ describe RssFeed do
     context 'when destroying a youtube profile' do
       let(:affiliate) { Affiliate.create!(:display_name => 'site with youtube profile') }
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:wh_playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+            wh_playlist_xml
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           when first_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           end
         end
       end
@@ -295,18 +307,25 @@ describe RssFeed do
       let(:affiliate) { Affiliate.create!(:display_name => 'site with youtube profile') }
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
       let(:second_youtube_url) { YoutubeProfile.youtube_url('noaa') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:wh_playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
+      let(:noaa_playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+            wh_playlist_xml
+            #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
           when 'http://gdata.youtube.com/feeds/api/users/noaa/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
+            noaa_playlist_xml
+            #File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
+            #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           when first_youtube_url, second_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
+            #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           end
         end
       end
@@ -339,15 +358,18 @@ describe RssFeed do
     let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
 
     context 'when there are obsolete playlist urls' do
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+      let(:playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml') }
+
       before do
         Kernel.stub(:open) do |arg|
           case arg
           when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/noaa_playlists.xml')
+            playlist_xml
           when %r[^http://gdata.youtube.com/feeds/api/playlists]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           when first_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+            youtube_xml
           end
         end
       end
@@ -365,12 +387,23 @@ describe RssFeed do
 
   describe "#query_youtube_playlist_urls" do
     let(:affiliate) { Affiliate.create!(:display_name => 'site with youtube playlists') }
+    let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
+    let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+    let(:playlist_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml') }
 
     it "should generate playlist urls" do
+      Kernel.stub(:open) do |arg|
+        case arg
+        when 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
+          playlist_xml
+          #File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
+        when first_youtube_url
+          youtube_xml
+          #File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        end
+      end
       YoutubeProfile.create!(:affiliate => affiliate, :username => 'whitehouse')
       managed_feed = affiliate.rss_feeds(true).managed.first
-      playlists_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists.xml')
-      Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2').and_return(playlists_xml)
       urls = managed_feed.query_youtube_playlist_urls
       urls.count.should == 45
       urls.first.should == 'http://gdata.youtube.com/feeds/api/playlists/0064C709336510C9?alt=rss&start-index=1&max-results=50&v=2'
@@ -378,13 +411,25 @@ describe RssFeed do
     end
 
     context "when totalResults > 50" do
+      before do
+        owned_video_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        Kernel.stub(:open).with(first_youtube_url).and_return(owned_video_xml)
+
+        query_playlist_url = 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2'
+        playlist_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists_with_next_url.xml')
+        Kernel.stub(:open).with(query_playlist_url).and_return(nil, playlist_xml)
+
+        query_next_playlist_url = 'http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=51&max-results=50&v=2'
+        next_playlist_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_next_playlists.xml')
+
+        Kernel.stub(:open).with(query_next_playlist_url).and_return(next_playlist_xml)
+      end
+
       it "should retrieve all playlist urls" do
         YoutubeProfile.create!(:affiliate => affiliate, :username => 'whitehouse')
         managed_feed = affiliate.rss_feeds(true).managed.first
-        playlists_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_playlists_with_next_url.xml')
-        Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=1&max-results=50&v=2').and_return(playlists_xml)
-        next_playlists_xml = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_next_playlists.xml')
-        Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/api/users/whitehouse/playlists?start-index=51&max-results=50&v=2').and_return(next_playlists_xml)
+        managed_feed.rss_feed_urls(true).count.should == 1
+
         urls = managed_feed.query_youtube_playlist_urls
         urls.count.should == 52
         urls.first.should == 'http://gdata.youtube.com/feeds/api/playlists/0064C709336510C9?alt=rss&start-index=1&max-results=50&v=2'
@@ -394,12 +439,12 @@ describe RssFeed do
 
     context "when Kernel.open raises an exception" do
       let(:first_youtube_url) { YoutubeProfile.youtube_url('whitehouse') }
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
 
       before do
         Kernel.stub(:open) do |arg|
           case arg
-          when first_youtube_url
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+          when first_youtube_url then youtube_xml
           end
         end
 
@@ -432,9 +477,14 @@ describe RssFeed do
                                                                    '1' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } })
       end
 
+      let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
+
       before do
-        video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-        Kernel.stub(:open) { video_content.rewind; video_content }
+        Kernel.stub(:open) do |arg|
+          case arg
+          when %r[^http://gdata.youtube.com/feeds/base/videos] then youtube_xml
+          end
+        end
       end
 
       specify { rss_feed.should be_is_video }
