@@ -27,9 +27,9 @@ describe "Report generation rake tasks" do
         DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query2', :times => 7, :day => Date.yesterday, :locale => 'en')
         DailyQueryStat.create!(:affiliate => 'affiliate2', :query => 'query2', :times => 9, :day => Date.yesterday, :locale => 'en')
         DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 500, :day => Date.current, :locale => 'en')
-        @affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count","query1,11,5","query2,10,7",""].join("\n")
-        @affiliate2_csv_output = ["Query,Raw Count,IP-Deduped Count","query2,22,9",""].join("\n")
-        @all_csv_output = ["Query,Raw Count,IP-Deduped Count","query2,32,16","query1,11,5",""].join("\n")
+        @affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count", "query1,11,5", "query2,10,7", ""].join("\n")
+        @affiliate2_csv_output = ["Query,Raw Count,IP-Deduped Count", "query2,22,9", ""].join("\n")
+        @all_csv_output = ["Query,Raw Count,IP-Deduped Count", "query2,32,16", "query1,11,5", ""].join("\n")
       end
 
       context "when file_name or period or max entries for each group is not set" do
@@ -104,7 +104,7 @@ describe "Report generation rake tasks" do
 
       context "when a group has more than max entries per group" do
         it "should truncate the output" do
-          truncated_affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count","query1,11,5",""].join("\n")
+          truncated_affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count", "query1,11,5", ""].join("\n")
           AWS::S3::S3Object.should_receive(:store).with(anything(), truncated_affiliate1_csv_output, AWS_BUCKET_NAME).once
           @rake[@task_name].invoke(@input_file_name, "daily", "1")
         end
@@ -153,26 +153,26 @@ describe "Report generation rake tasks" do
         end
       end
     end
-  
+
     describe "usasearch:reports:email_monthly_reports" do
-      fixtures :users
+      fixtures :users, :affiliates
       before do
         @task_name = "usasearch:reports:email_monthly_reports"
         @emailer = mock(Emailer)
         @emailer.stub!(:deliver).and_return true
-        User.stub!(:all).and_return([users(:affiliate_manager), users(:another_affiliate_manager)]
-        )
       end
-      
+
       it "should have 'environment' as a prereq" do
         @rake[@task_name].prerequisites.should include("environment")
       end
-      
-      it "should deliver an email to each user" do
-        Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
-        @rake[@task_name].invoke
+
+      context "when some users are unapproved, not an affiliate, or do not have any affiliates set up yet" do
+        it "should deliver an email to each approved affiliate user with at least one affiliate" do
+          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
+          @rake[@task_name].invoke
+        end
       end
-      
+
       context "when a year/month is passed as a parameter" do
         it "should deliver the affiliate monthly report to each user with the specified date" do
           Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(2).times.and_return @emailer

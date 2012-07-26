@@ -56,12 +56,12 @@ namespace :usasearch do
         AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
       end
     end
-    
-    desc "Email users monthly affiliate report"
+
+    desc "Email approved affiliate users with active site(s) monthly affiliate report"
     task :email_monthly_reports, [:report_year_month] => [:environment] do |t, args|
       report_date = args.report_year_month.blank? ? Date.yesterday : Date.parse(args.report_year_month + "-01")
-      User.all.each do |user|
-        Emailer.affiliate_monthly_report(user, report_date).deliver
+      User.where(:is_affiliate => true).where(:approval_status => 'approved').each do |user|
+        Emailer.affiliate_monthly_report(user, report_date).deliver if user.affiliates.present?
       end
     end
   end
