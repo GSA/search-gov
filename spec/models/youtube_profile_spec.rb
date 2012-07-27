@@ -19,9 +19,35 @@ describe YoutubeProfile do
   it { should validate_presence_of :username }
   it { should validate_presence_of :affiliate_id }
 
+  it 'should validate username' do
+    Kernel.should_receive(:open).
+        with('http://gdata.youtube.com/feeds/api/users/someinvaliduser').
+        and_raise(OpenURI::HTTPError.new('404 Not Found', StringIO.new))
+
+    profile = YoutubeProfile.new(:username => 'someinvaliduser',
+                                 :affiliate => affiliates(:basic_affiliate))
+    profile.should_not be_valid
+    profile.errors[:username].should include('is invalid')
+  end
+
+  it 'should handle blank xml when fetching xml profile' do
+    Kernel.should_receive(:open).
+        with('http://gdata.youtube.com/feeds/api/users/accountclosed').
+        and_return(StringIO.new(''))
+    mock_doc = mock('doc')
+    Nokogiri.should_receive(:XML).and_return(mock_doc)
+    mock_doc.should_receive(:xpath).and_return([])
+
+    profile = YoutubeProfile.new(:username => 'accountclosed',
+                                 :affiliate => affiliates(:basic_affiliate))
+    profile.should_not be_valid
+  end
+
   it "should create a new instance given valid attributes" do
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('USAgency')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('USAgency')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end
@@ -34,6 +60,8 @@ describe YoutubeProfile do
   it "should strip whitespace from the ends of the username" do
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('whitehouse')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('whitehouse')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end
@@ -49,6 +77,8 @@ describe YoutubeProfile do
 
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('USAgency')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('USAgency')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end
@@ -67,6 +97,8 @@ describe YoutubeProfile do
 
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('USAgency'), YoutubeProfile.xml_profile_url('AnotherUSAgency')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('USAgency'), YoutubeProfile.youtube_url('AnotherUSAgency')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end
@@ -92,6 +124,8 @@ describe YoutubeProfile do
 
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('USAgency')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('USAgency')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end
@@ -110,6 +144,8 @@ describe YoutubeProfile do
 
     Kernel.stub(:open) do |arg|
       case arg
+      when YoutubeProfile.xml_profile_url('USAgency'), YoutubeProfile.xml_profile_url('America')
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
       when YoutubeProfile.youtube_url('USAgency'), YoutubeProfile.youtube_url('America')
         File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
       end

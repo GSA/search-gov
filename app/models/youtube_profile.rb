@@ -2,6 +2,7 @@ class YoutubeProfile < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :username, :affiliate_id
   validates_uniqueness_of :username, :scope => :affiliate_id, :message => 'has already been added'
+  validate :must_have_valid_username, :if => :username?
 
   before_validation :normalize_username
   after_create :create_video_rss_feed, :synchronize_managed_feed
@@ -16,6 +17,10 @@ class YoutubeProfile < ActiveRecord::Base
       url_params[:author] = username
       url_params[:orderby] = 'published'
       "http://gdata.youtube.com/feeds/base/videos?#{url_params.to_param}".downcase
+    end
+
+    def xml_profile_url(username)
+      "http://gdata.youtube.com/feeds/api/users/#{username}"
     end
   end
 
@@ -58,5 +63,14 @@ class YoutubeProfile < ActiveRecord::Base
 
   def synchronize_managed_feed
     affiliate.rss_feeds.managed.videos.first.synchronize_youtube_urls!
+  end
+
+  def must_have_valid_username
+    begin
+      doc = Nokogiri::XML(Kernel.open(YoutubeProfile.xml_profile_url(username)))
+      errors.add(:username, 'is invalid') if doc.xpath('//xmlns:entry').empty?
+    rescue
+      errors.add(:username, 'is invalid')
+    end
   end
 end

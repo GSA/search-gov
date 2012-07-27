@@ -1969,7 +1969,10 @@ describe Affiliate do
         flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
 
         Kernel.stub(:open) do |arg|
-          if arg =~ %r[^http://gdata.youtube.com/feeds/base/videos\?]
+          case arg
+            when %r[http://gdata.youtube.com/feeds/api/users/.+]
+            File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
+          when %r[^http://gdata.youtube.com/feeds/base/videos\?]
             File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           end
         end

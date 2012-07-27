@@ -30,8 +30,13 @@ describe NewsItem do
       NewsItem.create!(@valid_attributes)
     end
 
+    it 'should allow blank description for YouTube video' do
+      NewsItem.create!(@valid_attributes.merge(:link => 'HTTP://www.youtube.com/watch?v=q3GjT4zvUkk',
+                                               :description => nil))
+    end
+
     it "should scrub out extra whitespace, tabs, newlines from title/desc" do
-      news_item = NewsItem.create!(@valid_attributes.merge(:title => " \nDOD Marks Growth in Spouses’ Employment Program \n     ", :description => " \nSome     description \n     "))
+      news_item = NewsItem.create!(@valid_attributes.merge(:title => " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ", :description => " \nSome     description \n     "))
       news_item.title.should == 'DOD Marks Growth in Spouses’ Employment Program'
       news_item.description.should == 'Some description'
     end

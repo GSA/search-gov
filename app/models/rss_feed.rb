@@ -18,44 +18,22 @@ class RssFeed < ActiveRecord::Base
   accepts_nested_attributes_for :navigation
 
   def freshen(ignore_older_items = true)
-    synchronize_youtube_playlists if is_managed?
+    synchronize_youtube_urls! if is_managed?
     rss_feed_urls(true).reject(&:is_playlist?).each { |u| u.freshen(ignore_older_items) }
     rss_feed_urls.select(&:is_playlist?).sort_by { |url| url.url }.each { |u| u.freshen(ignore_older_items) }
   end
 
   def synchronize_youtube_urls!
-    synchronize_youtube_uploaded_video_urls
-    synchronize_youtube_playlists
-    destroy if rss_feed_urls(true).blank?
-  end
-
-  def synchronize_youtube_uploaded_video_urls
-    target_urls = affiliate.youtube_profiles(true).collect(&:url)
-
+    target_urls = []
+    target_urls << affiliate.youtube_profiles.collect(&:url)
+    target_urls << query_youtube_playlist_urls
+    added_or_existing_urls = []
     transaction do
-      rss_feed_urls.reject(&:is_playlist?).each do |existing_rss_feed_url|
-        if target_urls.include?(existing_rss_feed_url.url)
-          target_urls.delete(existing_rss_feed_url.url)
-        else
-          existing_rss_feed_url.destroy
-        end
+      target_urls.flatten.each do |url|
+        added_or_existing_urls << rss_feed_urls.where(:url => url).first_or_create!
       end
-      target_urls.each { |url| rss_feed_urls.create(:url => url) }
-    end
-  end
-
-  def synchronize_youtube_playlists
-    target_urls = query_youtube_playlist_urls
-
-    transaction do
-      rss_feed_urls.select(&:is_playlist?).each do |existing_rss_feed_url|
-        if target_urls.include?(existing_rss_feed_url.url)
-          target_urls.delete(existing_rss_feed_url.url)
-        else
-          existing_rss_feed_url.destroy
-        end
-      end
-      target_urls.each { |url| rss_feed_urls.create(:url => url) }
+      self.rss_feed_urls = added_or_existing_urls
+      destroy if rss_feed_urls.blank?
     end
   end
 
@@ -99,8 +77,8 @@ class RssFeed < ActiveRecord::Base
 
   def extract_playlist_urls(playlists_document, extract_counter)
     youtube_playlist_urls = []
-    playlists_document.xpath('/xmlns:feed/xmlns:entry/yt:playlistId').each do |playlist_link|
-      playlist_id = playlist_link.inner_text
+    playlists_document.xpath('/xmlns:feed/xmlns:entry').each do |entry|
+      playlist_id = entry.xpath('yt:playlistId').inner_text
       playlist_url = "http://gdata.youtube.com/feeds/api/playlists/#{playlist_id}?alt=rss&start-index=1&max-results=50&v=2"
       youtube_playlist_urls << playlist_url
     end

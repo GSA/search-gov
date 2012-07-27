@@ -74,7 +74,8 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate.flickr_profiles.create!(:url => hash[:flickr_url], :profile_type => 'user', :profile_id => '1234') if hash[:flickr_url]
     affiliate.facebook_profiles.create!(:username => hash[:facebook_handle]) if hash[:facebook_handle]
     hash[:youtube_handles].split(',').each do |youtube_handle|
-      affiliate.youtube_profiles.create!(:username => youtube_handle)
+      profile = affiliate.youtube_profiles.build(:username => youtube_handle)
+      profile.save!(:validate => false)
     end if hash[:youtube_handles]
     affiliate.twitter_profiles.create!(:screen_name => hash[:twitter_handle],
                                        :name => hash[:twitter_handle],
