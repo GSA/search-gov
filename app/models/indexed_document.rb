@@ -338,7 +338,7 @@ class IndexedDocument < ActiveRecord::Base
     return unless self.affiliate.present?
     errors.add(:base, ODIE_CANDIDACY) unless self.affiliate.uses_odie_results? or
       (self.affiliate.features & Feature.find_all_by_internal_name(%w{odie_api hosted_sitemaps})).present? or
-      self.affiliate.url_prefixes.where("prefix like ?", url + "%").present?
+      self.affiliate.url_prefixes.where("? like concat(prefix,'%')", url).present?
   end
 
   def url_is_parseable
