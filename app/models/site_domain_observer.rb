@@ -17,7 +17,7 @@ class SiteDomainObserver < ActiveRecord::Observer
   private
 
   def revalidate_associated_indexed_documents(site_domain)
-    site_domain.affiliate.indexed_documents.each { |indexed_document| Resque.enqueue(IndexedDocumentValidator, indexed_document.id) }
+    site_domain.affiliate.indexed_documents.select(:id).each { |indexed_document| Resque.enqueue(IndexedDocumentValidator, indexed_document.id) }
   end
 
   def crawl_domain(site_domain)
