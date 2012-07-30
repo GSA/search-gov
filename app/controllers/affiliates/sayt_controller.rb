@@ -53,7 +53,7 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
 
   def demo
     @affiliate = Affiliate.find_by_id(params[:affiliate_id])
-    render :layout => 'affiliate_sayt'
+    render :layout => false
   end
 
   def destroy_all

@@ -22,12 +22,6 @@ class WebSearch < Search
               :photos
 
   class << self
-    def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
-      corrected_query = Misspelling.correct(sanitized_query)
-      suggestions = SaytSuggestion.like(affiliate_id, corrected_query, num_suggestions) || []
-      suggestions[0, num_suggestions]
-    end
-
     def results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = BingSearch::DEFAULT_FILTER_SETTING)
       search = new(:query => query, :affiliate => affiliate, :filter_setting => filter_setting)
       search.run

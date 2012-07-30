@@ -168,10 +168,6 @@ describe Affiliates::SaytController do
     it "assigns affiliate" do
       assigns[:affiliate].should == @affiliate
     end
-
-    it "renders affiliate_sayt layout" do
-      response.should render_template 'layouts/affiliate_sayt'
-    end
   end
 
   describe "#sayt_preferences" do

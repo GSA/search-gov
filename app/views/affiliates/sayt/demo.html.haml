@@ -1,9 +1,20 @@
-%h2
-  Type-ahead Search Demo
+!!! 5
+%html
+  %head
+    %title Type-ahead Search Demo - USASearch
+  %body
+    %h2 Type-ahead Search Demo
 
-!= %{<form method="get" action="#{search_url}">}
-!= %{  <input type="hidden" name="affiliate" value="#{@affiliate.name}">}
-!= %{  <label for="query-field">Enter Search Term(s): </label>}
-!= %{  <input class="usagov-search-autocomplete" type="text" name="query" autocomplete="off"/>}
-!= %{  <input type="submit" value="Search" /> }
-!= %{</form>}
+    != %{<form method="get" action="#{search_url}">}
+    != %{  <input id="affiliate" name="affiliate" type="hidden" value="#{@affiliate.name}" />}
+    != %{  <label for="query">Enter Search Term(s):</label>}
+    != %{  <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="text" />}
+    != %{  <input type="submit" value="Search" /> }
+    != %{</form>}
+    :javascript
+      var usasearch_config = { siteHandle:"#{@affiliate.name}" };
+
+      var script = document.createElement('script');
+      script.type = "text/javascript";
+      script.src = "#{javascript_full_path('sayt/remote.js')}";
+      document.getElementsByTagName("head")[0].appendChild(script);

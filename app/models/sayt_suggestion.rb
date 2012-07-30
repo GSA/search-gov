@@ -48,10 +48,24 @@ class SaytSuggestion < ActiveRecord::Base
     	solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
     end
 
-    def like(affiliate_id, query, num_suggestions)
-      return [] if Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)
-      clause = "phrase LIKE ? AND affiliate_id=? AND ISNULL(deleted_at)"
-      where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select(:phrase)
+    def like_by_affiliate_id(affiliate_id, query, num_suggestions)
+      affiliate_exists = Affiliate.exists?(:id => affiliate_id, :is_sayt_enabled => true)
+      affiliate_exists ? fetch_by_affiliate_id(affiliate_id, query,num_suggestions) : []
+    end
+
+    def like_by_affiliate_name(affiliate_name, query, num_suggestions)
+      affiliate = Affiliate.select(:id).find_by_name_and_is_sayt_enabled(affiliate_name, true)
+      affiliate ? fetch_by_affiliate_id(affiliate.id, query, num_suggestions) : []
+    end
+
+    def fetch_by_affiliate_id(affiliate_id, query, num_of_suggestions)
+      corrected_query = Misspelling.correct(query)
+      clause = 'phrase LIKE ? AND affiliate_id=? AND ISNULL(deleted_at)'
+      suggestions = where([clause, "#{corrected_query}%", affiliate_id]).
+          order('popularity DESC, phrase ASC').
+          limit(num_of_suggestions).
+          select(:phrase)
+      suggestions[0, num_of_suggestions]
     end
 
     def prune_dead_ends

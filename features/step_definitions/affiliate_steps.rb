@@ -104,12 +104,9 @@ Then /^the search bar should not have SAYT enabled$/ do
   page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
 end
 
-Then /^the affiliate search bar should have SAYT enabled$/ do
-  page.should have_selector("script[type='text/javascript'][src*='/javascripts/sayt.js']")
-  page.should have_selector("input[type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery.min.js']")
-  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery.bgiframe.min.js']")
-  page.should have_selector("script[type='text/javascript'][src^='/javascripts/sayt.js']")
+Then /^the page should have SAYT enabled for (.+)$/ do |affiliate_name|
+  page.body.should include(%Q[var usasearch_config = { siteHandle:"#{affiliate_name}" };])
+  page.body.should include(%q[script.src = "http://www.example.com/javascripts/sayt/remote.js";])
 end
 
 Then /^I should see the page with favicon "([^"]*)"$/ do |favicon_url|
@@ -210,10 +207,6 @@ end
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")
-end
-
-Then /^I should see the stats code$/ do
-  page.should have_selector("#embed_stats_code_textarea")
 end
 
 Then /^I should see the affiliate custom css$/ do

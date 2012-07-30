@@ -1348,38 +1348,6 @@ describe WebSearch do
     end
   end
 
-  describe "#suggestions(affiliate_id, sanitized_query, num_suggestions)" do
-    before do
-      phrase = "aaaazy"
-      popularity = 10
-      16.times { SaytSuggestion.create!(:affiliate => @affiliate, :phrase => phrase.succ!, :popularity => (popularity = popularity.succ)) }
-    end
-
-    it "should default to returning 15 suggestions" do
-      WebSearch.suggestions(@affiliate.id, "aaa").size.should == 15
-    end
-
-    it "should accept an override for number of suggestions to return" do
-      WebSearch.suggestions(@affiliate.id, "aaa", 6).size.should == 6
-    end
-
-    it "should run the words in the query phrase against the misspellings list" do
-      SaytSuggestion.create!(:affiliate => @affiliate, :phrase => "obama president")
-      WebSearch.suggestions(@affiliate.id, "ubama pres").first.phrase.should == "obama president"
-    end
-
-    context "when no suggestions exist for the query" do
-      it "should return an empty array" do
-        WebSearch.suggestions(@affiliate.id, "nothing to see here").should == []
-      end
-    end
-
-    it "should use affiliate_id to find suggestions" do
-      SaytSuggestion.should_receive(:like).with(370, "xyz", 5)
-      WebSearch.suggestions(370, "xyz", 5)
-    end
-  end
-
   describe "#sources" do
     it "should be 'Spell+Web' for affilitate searches" do
       search = WebSearch.new(:query => 'snowflake', :affiliate => @affiliate)

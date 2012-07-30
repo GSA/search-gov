@@ -1,5 +1,8 @@
-%textarea{ :readonly => true, :id => "embed_code_textarea_#{locale}" }
+%textarea{ :readonly => true, :id => "embed_code_textarea_#{@affiliate.locale}" }
   :escaped
+    <!DOCTYPE html>
+    <html>
+    <head><title>page title</title></head>
     <body>
       #{form_tag search_url(:protocol => 'http'), :method => :get, :id => 'search_form' }
         #{hidden_field_tag :affiliate, @affiliate.name}
@@ -7,4 +10,3 @@
         #{text_field_tag :query, nil, :autocomplete => 'off', :class => 'usagov-search-autocomplete'}
         #{submit_tag 'Search'}
       </form>
-    </body>

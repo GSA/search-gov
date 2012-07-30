@@ -3,18 +3,12 @@
 %h1 Get Code
 = render_help_link(@help_link)
 
-%p Head Snippet
+%h2 Form Snippet
 = find_and_preserve do
   #embed_code_english.span-24
-    = render :partial => 'head_embed_code_text_area', :locals => { :locale => @affiliate.locale }
+    = render :partial => 'form_embed_code_text_area'
 
-%p Form Snippet
+%h2 Type-ahead search and USASearch Tag Snippet
 = find_and_preserve do
   #embed_code_english.span-24
-    = render :partial => 'form_embed_code_text_area', :locals => { :locale => @affiliate.locale }
-
-%h2 USASearch Tag Snippet
-%p
-= find_and_preserve do
-  #embed_stats_code.span-24
-    = render :partial => 'embed_stats_code_text_area'
+    = render :partial => 'bottom_page_embed_code_text_area'

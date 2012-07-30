@@ -7,10 +7,11 @@
     USASearch offers a number of ways for you to tell us about URLs for the web pages that you want to include in the USASearch index.
 
   %h2 1. USASearch Tag
-  %p
-    = find_and_preserve do
-      #embed_stats_code.span-24
-        = render :partial => 'embed_stats_code_text_area'
+  = find_and_preserve do
+    #embed_stats_code.span-24
+      %textarea{ :readonly => true, :id => "embed_code_textarea_#{@affiliate.locale}" }
+        :escaped
+            #{render_embed_code_javascript(@affiliate)}
 
   %h2 2. Sitemap
   .sitemap-list

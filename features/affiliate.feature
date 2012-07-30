@@ -130,7 +130,7 @@ Feature: Affiliate clients
     And I should see "Content Sources"
     When I fill in the following:
       | Enter the domain or URL | agency.gov                                                                   |
-      | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/485.xml                       |
+      | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/732.xml                       |
       | RSS Feed Name 0         | Recalls Feed                                                                 |
       | RSS Feed URL 0          | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
     And I press "Next"
@@ -1511,8 +1511,7 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | domains | is_sayt_enabled |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | false           |
     When I go to the affiliate sayt demo page for aff.gov
-    Then the affiliate search bar should have SAYT enabled
-    And affiliate SAYT suggestions for "aff.gov" should be enabled
+    Then the page should have SAYT enabled for aff.gov
 
   Scenario: Visiting an affiliate search page
     Given the following Affiliates exist:
@@ -1627,11 +1626,9 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
-    And I should see "Head Snippet"
     And I should see "Form Snippet"
+    And I should see "Type-ahead search and USASearch Tag Snippet"
     And I should see the code for English language sites
-    And I should see "USASearch Tag Snippet"
-    And I should see the stats code
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
     Given the following Affiliates exist:
@@ -1641,11 +1638,9 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Get Code
-    And I should see "Head Snippet"
     And I should see "Form Snippet"
+    And I should see "Type-ahead search and USASearch Tag Snippet"
     And I should see the code for Spanish language sites
-    And I should see "USASearch Tag Snippet"
-    And I should see the stats code
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:

@@ -1,8 +1,0 @@
-%textarea{ :readonly => true, :id => "embed_code_textarea_#{locale}" }
-  :escaped
-    <html>
-      <head>
-        #{javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id, :protocol => 'http')}&";}}
-        #{javascript_include_tag_with_full_path 'jquery/jquery.min.js', 'jquery/jquery.bgiframe.min.js', 'jquery/jquery.autocomplete.min.js', 'sayt.js'}
-        #{stylesheet_link_tag_with_full_path 'compiled/sayt.css'}
-      </head>

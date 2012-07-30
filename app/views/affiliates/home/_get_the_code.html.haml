@@ -8,20 +8,18 @@
         Use the options on the left to further customize the search experience for your site's visitors.
     %li
       %strong
-        INDEX YOUR CONTENT
-      %p
-        We recommend that you place this snippet of code before the closing </body> tag on all your sites' pages to make it easier for us to discover and index your content.
-      = find_and_preserve do
-        = render :partial => 'embed_stats_code_text_area'
-    %li
-      %strong
         UPDATE YOUR SEARCH FORM CODE
       %p
         Copy and paste this code into your page(s) where the search box should appear.
-        %p Head Snippet
-        = find_and_preserve do
-          = render :partial => 'head_embed_code_text_area', :locals => { :locale => @affiliate.locale }
-
         %p Form Snippet
         = find_and_preserve do
-          = render :partial => 'form_embed_code_text_area', :locals => { :locale => @affiliate.locale }
+          = render :partial => 'form_embed_code_text_area'
+
+    %li
+      %strong ENABLE TYPE-AHEAD SEARCH and INDEX YOUR CONTENT
+      %p
+        We recommend that you place this snippet of code before the closing </body> tag on all your sites' pages.
+      %p JavaScript Snippet.
+      = find_and_preserve do
+        = render :partial => 'bottom_page_embed_code_text_area'
+

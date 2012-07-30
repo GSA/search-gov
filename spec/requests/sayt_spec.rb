@@ -2,68 +2,98 @@ require 'spec/spec_helper'
 
 describe SaytController do
   fixtures :affiliates
+
+  let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:phrases) { ['lorem ipsum dolor sit amet', 'lorem ipsum sic transit gloria'].freeze }
+  let(:phrases_in_json) { phrases.to_json.freeze }
+
   before do
-    @affiliate = affiliates(:usagov_affiliate)
-    @suggestion = SaytSuggestion.create!(:phrase => "Lorem ipsum dolor sit amet", :affiliate => @affiliate)
-    SaytSuggestion.create!(:phrase => "Lorem sic transit gloria", :affiliate => @affiliate)
+    SaytController.class_eval { def is_mobile_device?; false; end }
+
+    phrases.each do |p|
+      SaytSuggestion.create!(:phrase => p, :affiliate => affiliate)
+    end
   end
 
-  it "should return empty JSONP if no aid is present" do
+  it 'should sanitize query' do
+    SaytSuggestion.should_receive(:like_by_affiliate_id).
+        with(affiliate.id.to_s, 'foo bar', 15).
+        and_return([])
+    get '/sayt', :q => 'foo  \\  bar', :callback => 'jsonp1276290049647', :aid => affiliate.id
+  end
+
+  it 'should return blank if no params present' do
+    get '/sayt'
+    response.body.should == ''
+  end
+
+  it 'should return blank if sanitized query is blank' do
+    get '/sayt', :q => '  \\  '
+    response.body.should == ''
+  end
+
+  context 'if name and query params are present' do
+    it 'should search for 15 suggestions' do
+      SaytSuggestion.should_receive(:like_by_affiliate_name).
+          with(affiliate.name, 'foo bar', 15).
+          and_return([])
+      get '/sayt', :name => affiliate.name, :q => 'foo \\ bar', :callback => 'jsonp1234'
+    end
+
+    it 'should return jsonp with matching results' do
+      get '/sayt', :name => affiliate.name, :q => '  lorem  \\ ipsum  ', :callback => 'jsonp1234'
+      response.body.should == %Q{jsonp1234(#{phrases_in_json})}
+    end
+
+    context 'when request is from mobile device' do
+      before { SaytController.class_eval { def is_mobile_device?; true; end } }
+
+      it 'should search for 6 suggestions' do
+        SaytSuggestion.should_receive(:like_by_affiliate_name).
+            with(affiliate.name, 'foo bar', 6).
+            and_return([])
+        get '/sayt', :name => affiliate.name, :q => 'foo \\ bar', :callback => 'jsonp1234'
+      end
+    end
+  end
+
+  context 'if aid and query params are present' do
+    it 'should search for 15 suggestions' do
+      SaytSuggestion.should_receive(:like_by_affiliate_id).
+          with(affiliate.id.to_s, 'foo bar', 15).
+          and_return([])
+      get '/sayt', :aid => affiliate.id, :q => 'foo \\ bar', :callback => 'jsonp1234'
+    end
+
+    it 'should return jsonp with matching results' do
+      get '/sayt', :aid => affiliate.id, :q => ' lorem \\ ipsum ', :callback => 'jsonp1234'
+      response.body.should == %Q{jsonp1234(#{phrases_in_json})}
+    end
+
+    context 'when request is from mobile device' do
+      before { SaytController.class_eval { def is_mobile_device?; true; end } }
+
+      it 'should search for 6 suggestions' do
+        SaytSuggestion.should_receive(:like_by_affiliate_id).
+            with(affiliate.id.to_s, 'foo bar', 6).
+            and_return([])
+        get '/sayt', :aid => affiliate.id, :q => 'foo \\ bar', :callback => 'jsonp1234'
+      end
+    end
+  end
+
+  it 'should return empty JSONP if name and aid params are not present' do
     get '/sayt', :q => 'lorem', :callback => 'jsonp1276290049647'
     response.body.should == 'jsonp1276290049647([])'
   end
 
   it "should return empty JSONP if nothing matches the 'q' param string" do
-    get '/sayt', :q=>"who moved my cheese", :callback => 'jsonp1276290049647', :aid => @affiliate.id
+    get '/sayt', :q=>"who moved my cheese", :callback => 'jsonp1276290049647', :aid => affiliate.id
     response.body.should == 'jsonp1276290049647([])'
   end
 
   it "should not completely melt down when strange characters are present" do
-    lambda { get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647', :aid => @affiliate.id }.should_not raise_error
-    lambda { get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647', :aid => @affiliate.id }.should_not raise_error
-  end
-
-  it "should return empty result if no params present" do
-    get '/sayt'
-    response.body.should == ''
-  end
-
-  it "should return empty result if query term is all whitespace" do
-    get '/sayt', :q=>"  ", :callback => 'jsonp1276290049647', :aid => @affiliate.id
-    response.body.should == ''
-  end
-
-  it "should call Search.suggestions with a whitespace-normalized string" do
-    WebSearch.should_receive(:suggestions).with(nil, 'does torture', an_instance_of(Fixnum)).and_return []
-    get '/sayt', :q=>"does  torture ", :callback => 'jsonp1276290049647'
-  end
-
-  context "when searching in non-mobile mode" do
-    it "should return 15 suggestions" do
-      WebSearch.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
-      get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
-    end
-  end
-
-  context "when affiliate id parameter (aid) is specified" do
-    it "should use it to find suggestions for that affiliate" do
-      WebSearch.should_receive(:suggestions).with("370", "lorem", 15).and_return([@suggestion])
-      get '/sayt', :aid=> "370", :q=>"lorem", :callback => 'jsonp1276290049647'
-    end
-  end
-
-  context "when affiliate id parameter (aid) is not specified" do
-    it "should use a null affiliate id to get the generic site-wide suggestions" do
-      WebSearch.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
-      get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
-    end
-  end
-  
-  context "when searching in mobile mode" do
-    it "should return 6 suggestions" do
-      SaytController.class_eval { def is_mobile_device?; true; end }
-      WebSearch.should_receive(:suggestions).with(nil, "lorem", 6).and_return([@suggestion])
-      get '/sayt', :q => "lorem", :callback => 'jsonp1276290049647'
-    end
+    lambda { get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647', :aid => affiliate.id }.should_not raise_error
+    lambda { get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647', :aid => affiliate.id }.should_not raise_error
   end
 end

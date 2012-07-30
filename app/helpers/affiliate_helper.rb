@@ -190,5 +190,15 @@ module AffiliateHelper
     content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
   end
 
+  def render_embed_code_javascript(affiliate)
+    embed_code = <<-JS
+      var usasearch_config = { siteHandle:"#{affiliate.name}" };
 
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "#{javascript_full_path('sayt/remote.js')}";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    JS
+    javascript_tag embed_code
+  end
 end

@@ -7,7 +7,8 @@ describe "affiliates/home/_form_embed_code_text_area.html.haml" do
   context "when locale is set to en" do
     before do
       assign(:affiliate, affiliate)
-      render :partial => 'affiliates/home/form_embed_code_text_area', :locals => { :locale => 'en' }
+      affiliate.should_receive(:locale).and_return('en')
+      render :partial => 'affiliates/home/form_embed_code_text_area'
     end
 
     it "displays search form" do
@@ -21,7 +22,8 @@ describe "affiliates/home/_form_embed_code_text_area.html.haml" do
    context "when locale is set to es" do
     before do
       assign(:affiliate, affiliate)
-      render :partial => 'affiliates/home/form_embed_code_text_area', :locals => { :locale => 'es' }
+      affiliate.should_receive(:locale).and_return('es')
+      render :partial => 'affiliates/home/form_embed_code_text_area'
     end
 
     it "displays search form" do
