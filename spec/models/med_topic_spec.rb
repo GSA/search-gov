@@ -64,6 +64,17 @@ describe MedTopic do
     end
   end
 
+  describe '.medline_xml_file_path' do
+    let(:xml_file_name) { 'mplus_topics_2012-07-21.xml' }
+    let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
+
+    it 'should create tmp/medline directory' do
+      FileUtils.should_receive(:mkdir_p).with(%r[/tmp/medline$])
+      path = MedTopic.medline_xml_file_path(xml_file_name)
+      path.should be_end_with(xml_file_path)
+    end
+  end
+
   describe '.process_medline_xml' do
     let(:xml_file_path) { Rails.root.to_s + '/spec/fixtures/xml/mplus_topics_2012-07-21.xml' }
     let(:en_med_topic) { MedTopic.where(:locale => :en).first }
@@ -244,9 +255,7 @@ describe MedTopic do
       let(:response) { mock('http response') }
 
       before do
-        File.should_receive(:exist?).with(%r[/tmp/medline$]).at_least(:once).and_return(true)
         File.should_receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
-
         File.should_receive(:open).with(/#{staging_xml_file_path}$/, 'w+').and_yield(staging_file)
 
         Net::HTTP.should_receive(:get_response).with(medline_uri).and_yield(response)
@@ -267,7 +276,6 @@ describe MedTopic do
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
 
       before do
-        File.should_receive(:exist?).with(%r[/tmp/medline$]).at_least(:once).and_return(true)
         File.should_receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
         Net::HTTP.should_not_receive(:get_response)
       end

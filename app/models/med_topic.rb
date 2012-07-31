@@ -44,7 +44,7 @@ class MedTopic < ActiveRecord::Base
 
   def self.medline_xml_file_path(name)
     tmp_dir = Rails.root.join('tmp', 'medline')
-    FileUtils.mkdir_p(dir_path.to_s) unless File.exist?(tmp_dir.to_s)
+    FileUtils.mkdir_p(tmp_dir.to_s)
     File.join(tmp_dir, name)
   end
 
