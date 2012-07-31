@@ -46,6 +46,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
+  #config.order = 'random'
 
   REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
   REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
