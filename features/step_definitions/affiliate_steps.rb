@@ -106,7 +106,7 @@ end
 
 Then /^the page should have SAYT enabled for (.+)$/ do |affiliate_name|
   page.body.should include(%Q[var usasearch_config = { siteHandle:"#{affiliate_name}" };])
-  page.body.should include(%q[script.src = "http://www.example.com/javascripts/sayt/remote.js";])
+  page.body.should include(%q[script.src = "http://www.example.com/javascripts/remote.loader.js";])
 end
 
 Then /^I should see the page with favicon "([^"]*)"$/ do |favicon_url|

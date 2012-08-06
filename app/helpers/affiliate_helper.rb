@@ -196,7 +196,7 @@ module AffiliateHelper
 
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "#{javascript_full_path('sayt/remote.js')}";
+      script.src = "#{javascript_full_path('remote.loader.js')}";
       document.getElementsByTagName("head")[0].appendChild(script);
     JS
     javascript_tag embed_code

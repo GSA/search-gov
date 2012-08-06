@@ -100,3 +100,18 @@ if (getElementsByClassName('usagov-search-autocomplete').length > 0) {
   script.src = usasearch.config.host + "/javascripts/sayt/all.js";
   document.getElementsByTagName("head")[0].appendChild(script);
 }
+
+if (usasearch.config.siteHandle) {
+  var aid = usasearch.config.siteHandle;
+
+  if (usasearch.config.enableDiscoveryTag === undefined) {
+    usasearch.config.enableDiscoveryTag = true;
+  }
+
+  if (usasearch.config.enableDiscoveryTag) {
+    var discoveryScript = document.createElement("script");
+    discoveryScript.type = "text/javascript";
+    discoveryScript.src = usasearch.config.host + "/javascripts/stats.js";
+    document.getElementsByTagName("head")[0].appendChild(discoveryScript);
+  }
+}
