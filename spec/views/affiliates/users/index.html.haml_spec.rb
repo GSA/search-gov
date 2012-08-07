@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "affiliates/users/index.html.haml" do
   fixtures :affiliates, :users
@@ -14,7 +14,7 @@ describe "affiliates/users/index.html.haml" do
       UserSession.create(@affiliate_user)
       view.stub!(:current_user).and_return @affiliate_user
     end
-    
+
     it "should not show the make owner action" do
       assign(:affiliate_id, @affiliate.to_param)
       render

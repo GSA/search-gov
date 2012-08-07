@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe FoodRecall do
   before(:each) do
@@ -13,7 +13,7 @@ describe FoodRecall do
   describe "creating new instance" do
     it { should validate_presence_of :url }
     it { should validate_presence_of :summary }
-    it { should validate_presence_of :description }    
+    it { should validate_presence_of :description }
     it { should validate_presence_of :food_type }
     it { should belong_to :recall }
 

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe GovForm do
   before(:each) do
@@ -15,7 +15,7 @@ describe GovForm do
   it "should create a new instance given valid attributes" do
     GovForm.create!(@valid_attributes)
   end
-  
+
   it { should validate_presence_of :name }
   it { should validate_presence_of :form_number }
   it { should validate_presence_of :agency }

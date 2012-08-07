@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 describe "shared/_search.html.haml" do
   before do
     @search = stub("Search")

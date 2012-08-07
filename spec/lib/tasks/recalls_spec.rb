@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Recalls rake tasks" do
   before do
@@ -176,23 +176,23 @@ describe "Recalls rake tasks" do
 12345 765456
 34567 764756
 EOF
-          File.stub!(:open).and_return file
+          File.stub!(:open).and_return StringIO.new(file)
         end
 
         it "should add the UPC value as a Recall Detail associated with the proper Recall" do
           @rake[@task_name].invoke("filename")
-          RecallDetail.find(:all, :conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id]).should_not be_empty
+          RecallDetail.all(:conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id]).should_not be_empty
         end
 
         it "should not create records if the recall can not be found" do
           @rake[@task_name].invoke("filename")
-          RecallDetail.find(:all, :conditions => ['detail_type="UPC" AND detail_value="764756"']).should be_empty
+          RecallDetail.all(:conditions => ['detail_type="UPC" AND detail_value="764756"']).should be_empty
         end
 
         it "should not create duplicate UPC values when run twice" do
           @rake[@task_name].invoke("filename")
           @rake[@task_name].invoke("filename")
-          upc_detail = RecallDetail.find(:all, :conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id])
+          upc_detail = RecallDetail.all(:conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id])
           upc_detail.should_not be_empty
           upc_detail.size.should == 1
         end

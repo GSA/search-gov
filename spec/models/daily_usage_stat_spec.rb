@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe DailyUsageStat do
   before(:each) do
@@ -33,8 +33,8 @@ describe DailyUsageStat do
       result = DailyUsageStat.monthly_totals(@year, @month, @affiliate.name)
       result.should == 200
     end
-    
-    context "when no affiliate is passed" do 
+
+    context "when no affiliate is passed" do
       it "should sum up all the DailyUsageStat values for the given month for all affiliates" do
         result = DailyUsageStat.monthly_totals(@year, @month)
         result.should == 300

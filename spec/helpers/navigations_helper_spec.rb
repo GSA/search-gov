@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe NavigationsHelper do
   shared_examples_for 'doing search on everything' do

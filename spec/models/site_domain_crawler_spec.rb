@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe SiteDomainCrawler, "#perform(site_domain_id)" do
 

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Recalls" do
   it "should map /recalls/index.xml to the recalls rss feed" do
@@ -8,4 +8,4 @@ describe "Recalls" do
     response.body.should =~ /Search.USA.gov Recalls Feed/
   end
 end
-    
+

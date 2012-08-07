@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "widgets/trending_searches.xml.haml" do
   fixtures :affiliates
@@ -26,7 +26,7 @@ describe "widgets/trending_searches.xml.haml" do
       end
     end
   end
-  
+
   context "when there is an affiliate" do
     before do
       top_search = mock_model(TopSearch, { :query => 'storm', :url => nil, :position => 2, :affiliate_id => affiliates(:basic_affiliate).id })

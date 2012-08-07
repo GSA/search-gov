@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Report generation rake tasks" do
   before do
@@ -166,11 +166,9 @@ describe "Report generation rake tasks" do
         @rake[@task_name].prerequisites.should include("environment")
       end
 
-      context "when some users are unapproved, not an affiliate, or do not have any affiliates set up yet" do
-        it "should deliver an email to each approved affiliate user with at least one affiliate" do
-          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
-          @rake[@task_name].invoke
-        end
+      it "should deliver an email to each user" do
+        Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
+        @rake[@task_name].invoke
       end
 
       context "when a year/month is passed as a parameter" do

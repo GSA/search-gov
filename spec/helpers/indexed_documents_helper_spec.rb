@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe IndexedDocumentsHelper do
   describe "#render_last_crawl_status" do

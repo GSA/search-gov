@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Twitter rake tasks" do
   before(:each) do
@@ -129,7 +129,7 @@ describe "Twitter rake tasks" do
           @stream.stub!(:on_max_reconnects)
           @logger.should_receive(:info).with("[TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
-          @logger.should_receive(:info).with("[TWITTER] [RECONNECT] Reconnecting at #{timestamp.in_time_zone('UTC').strftime('%a %b %d %H:%M:%S %Z %Y')}...")
+          @logger.should_receive(:info).with("[TWITTER] [RECONNECT] Reconnecting at #{timestamp.in_time_zone('UTC').strftime('%Y-%m-%d %H:%M:%S %Z')}...")
           @rake[@task_name].invoke("true")
         end
 

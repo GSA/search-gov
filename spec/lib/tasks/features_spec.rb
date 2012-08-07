@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Features-related rake tasks" do
   fixtures :affiliates, :features, :users

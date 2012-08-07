@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe SitemapFetcher, "#perform(sitemap_id)" do
   fixtures :affiliates

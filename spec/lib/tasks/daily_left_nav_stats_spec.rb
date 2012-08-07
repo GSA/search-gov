@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "daily_left_nav_stats rake tasks" do
   before do

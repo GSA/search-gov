@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe SearchesController do
   fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :navigations
@@ -443,10 +443,10 @@ describe SearchesController do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       assigns[:search].total.should == 1
       assigns[:search].hits.first.instance.should == news_items(:item1)
-      assigns[:search].results.first['title'].should =~ /News \xEE\x80\x80element\xEE\x80\x81 1/
+      assigns[:search].results.first['title'].should =~ /News \uE000element\uE001 1/
       assigns[:search].results.first['link'].should == "http://some.agency.gov/news/1"
       assigns[:search].results.first['publishedAt'].should be_present
-      assigns[:search].results.first['content'].should =~ /News \xEE\x80\x80element\xEE\x80\x81 1 has a description/
+      assigns[:search].results.first['content'].should =~ /News \uE000element\uE001 1 has a description/
     end
 
     context "when the affiliate does not exist" do

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe SuperfreshController, "#index" do
   it "should set the request fomat to :rss" do

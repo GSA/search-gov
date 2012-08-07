@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Affiliates::OnDemandUrlsController do
   fixtures :users, :affiliates

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe QueryCount do
   it "should initialize a new instance given valid attributes" do

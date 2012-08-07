@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Flickr rake tasks" do
   fixtures :affiliates

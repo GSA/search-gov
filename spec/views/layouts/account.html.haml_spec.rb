@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 describe "layouts/account.html.haml" do
   fixtures :users, :affiliates
   before do
@@ -6,11 +6,11 @@ describe "layouts/account.html.haml" do
     activate_authlogic
     view.stub!(:current_user).and_return nil
   end
-  
+
   context "when page is displayed" do
     it "should should not show webtrends javascript" do
       render
       rendered.should_not contain(@webtrends_tag)
-    end    
-  end  
+    end
+  end
 end

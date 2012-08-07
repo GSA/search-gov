@@ -1,3 +1,4 @@
+# coding: utf-8
 class SaytSuggestion < ActiveRecord::Base
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
   extend Resque::Plugins::Priority
@@ -8,7 +9,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
-  validates_format_of :phrase, :with=> /^[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}][\s\w\.'-]+[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}]$/iu
+  validates_format_of :phrase, :with=> /^[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*$/iu
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
@@ -124,8 +125,7 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def compute_run_rate_factor
-      t = Time.now
-      1 / Date.time_to_day_fraction(t.hour,t.min,t.sec).to_f
+      1/ DateTime.current.day_fraction.to_f
     end
   end
 

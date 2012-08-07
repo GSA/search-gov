@@ -1,4 +1,4 @@
-require "spec/spec_helper"
+require "spec_helper"
 
 describe "affiliates/home/_bottom_page_embed_code_text_area.html.haml" do
   fixtures :affiliates

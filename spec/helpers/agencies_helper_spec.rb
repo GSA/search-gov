@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AgenciesHelper do
   describe "#agency_url_matches_by_locale" do

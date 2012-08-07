@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Apache::LogFile do
 	it "should create cache_file if options 'cached' is true" do
@@ -25,7 +25,7 @@ describe Apache::LogFile do
 	end
 
 	after do
-		File.delete "spec/fixtures/log/test.cache" rescue nil 
+		File.delete "spec/fixtures/log/test.cache" rescue nil
 		File.delete "spec/fixtures/log/test_tsv.cache" rescue nil
 	end
 end

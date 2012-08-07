@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_id, scope)" do
   fixtures :affiliates

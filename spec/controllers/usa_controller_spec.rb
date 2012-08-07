@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe UsaController do
   render_views
@@ -36,14 +36,14 @@ describe UsaController do
           get :show, :url_slug=>"Some/Topic"
           assigns[:title].should == "Some Topic"
         end
-        
+
         context "when page does not exist for a slug" do
           it "should redirect to the home page" do
             get :show, :url_slug=>"Some/Topic/That/Is/Not/There"
             response.should redirect_to(home_page_path)
           end
         end
-        
+
         context "for a spanish page" do
           it "should link to the spanish homepage" do
             get :show, :url_slug => site_pages(:two).url_slug

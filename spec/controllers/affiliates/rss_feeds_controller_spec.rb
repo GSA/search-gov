@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Affiliates::RssFeedsController do
   fixtures :affiliates, :users, :rss_feeds, :rss_feed_urls, :navigations

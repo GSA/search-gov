@@ -102,7 +102,7 @@ class Search
 
   # This is used any time we want to highlight something
   def highlight_solr_hit_like_bing(hit, field_symbol)
-    return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
+    return hit.highlights(field_symbol).first.format { |phrase| "\uE000#{phrase}\uE001" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)
   end
 

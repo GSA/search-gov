@@ -19,7 +19,7 @@ class SiteDomain < ActiveRecord::Base
     end
 
     site_domain_hash = ActiveSupport::OrderedHash.new
-    FasterCSV.parse(file.read, :skip_blanks => true) do |row|
+    CSV.parse(file.read, :skip_blanks => true) do |row|
       site_domain_hash[row[0]] = row[1] unless row[0].blank?
     end
     added_site_domains = affiliate.add_site_domains(site_domain_hash)

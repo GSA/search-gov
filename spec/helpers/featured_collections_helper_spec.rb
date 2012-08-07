@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe FeaturedCollectionsHelper do
   describe "#featured_collection_link_with_click_tracking" do

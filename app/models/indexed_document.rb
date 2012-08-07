@@ -1,3 +1,4 @@
+# coding: utf-8
 class IndexedDocument < ActiveRecord::Base
   class IndexedDocumentError < RuntimeError;
   end
@@ -77,6 +78,7 @@ class IndexedDocument < ActiveRecord::Base
             http.request(request) do |response|
               raise IndexedDocumentError.new("#{response.code} #{response.message}") unless response.kind_of?(Net::HTTPSuccess)
               file = Tempfile.open("IndexedDocument:#{id}", Rails.root.join('tmp'))
+              file.set_encoding Encoding::BINARY
               begin
                 response.read_body { |chunk| file.write chunk }
                 file.flush

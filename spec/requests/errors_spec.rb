@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe ErrorsController do
   context "when handling a mobile request" do

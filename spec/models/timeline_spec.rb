@@ -1,10 +1,10 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 describe Timeline do
   fixtures :affiliates
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end
-    
+
   let(:start_date) do
     Date.yesterday.advance(:months => Timeline::DEFAULT_RANGE_IN_MONTHS)
   end

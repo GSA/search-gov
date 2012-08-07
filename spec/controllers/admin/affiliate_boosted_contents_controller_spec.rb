@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Admin::AffiliateBoostedContentsController do
   describe "#after_create_save" do

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe CommonSubstring do
   fixtures :common_substrings, :indexed_domains, :affiliates, :site_domains
