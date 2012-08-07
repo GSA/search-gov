@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AffiliateFeatureAddition do
   fixtures :affiliate_feature_additions, :features, :affiliates

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 # An example controller for testing various things.
 class ExampleController < ApplicationController

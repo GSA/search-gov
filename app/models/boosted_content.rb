@@ -140,7 +140,7 @@ class BoostedContent < ActiveRecord::Base
     results = { :created => 0, :updated => 0, :success => false }
     begin
       transaction do
-        FasterCSV.parse(csv_file.read, :skip_blanks => true) do |row|
+        CSV.parse(csv_file.read, :skip_blanks => true) do |row|
           info = {
               :title => row[0],
               :url => row[1],

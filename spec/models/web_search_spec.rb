@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe WebSearch do
   fixtures :affiliates, :misspellings, :site_domains

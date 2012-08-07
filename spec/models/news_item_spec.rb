@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe NewsItem do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls, :news_items

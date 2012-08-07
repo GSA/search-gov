@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 require 'ostruct'
 
 describe SearchHelper do
@@ -602,7 +603,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
   describe "#translate_bing_highlights" do
     let(:excluded_terms) { %w(.mil .gov) }
-    let(:body_with_regex_special_character) { "\xEE\x80\x80[Mil\xEE\x80\x81 \xEE\x80\x80.Mil\xEE\x80\x81 .gov" }
+    let(:body_with_regex_special_character) { "\uE000[Mil\uE001 \uE000.Mil\uE001 .gov" }
 
     specify { helper.translate_bing_highlights(body_with_regex_special_character, excluded_terms).should == "<strong>[Mil</strong> .Mil .gov" }
   end

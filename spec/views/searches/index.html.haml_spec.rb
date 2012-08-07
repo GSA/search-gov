@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 describe "searches/index.html.haml" do
   fixtures :affiliates, :image_search_labels, :navigations
   before do

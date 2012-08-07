@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AffiliateHelper do
   describe "#affiliate_center_breadcrumbs" do

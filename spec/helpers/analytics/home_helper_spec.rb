@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Analytics::HomeHelper do
   fixtures :affiliates

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AgencyUrl do
   it { should validate_presence_of :url }

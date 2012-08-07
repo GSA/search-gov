@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Admin::AffiliatesController do
   fixtures :users, :affiliates

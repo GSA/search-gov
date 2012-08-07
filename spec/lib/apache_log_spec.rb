@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 $most_simply_combinded_log = '- - - [25/Sep/2008:08:48:38 +0900] "" - - "-" "-"'
 

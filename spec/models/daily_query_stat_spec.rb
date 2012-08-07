@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe DailyQueryStat do
   fixtures :daily_query_stats, :affiliates
@@ -7,7 +7,7 @@ describe DailyQueryStat do
       :day => "20090830",
       :query => "government",
       :times => 314,
-      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME    
+      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME
     }
   end
 

@@ -50,10 +50,10 @@ module UsasearchRails3
     config.generators do |g|
       g.test_framework :rspec
     end
-    
+
     config.assets_enabled = false
     config.assets.version = '1.0'
-    
+
     config.active_record.whitelist_attributes = false
   end
 end
@@ -67,3 +67,4 @@ BLOG_URL = 'http://usasearch.howto.gov'
 TOS_URL = 'http://usasearch.howto.gov/tos'
 
 require 'resque/plugins/priority'
+require 'csv'

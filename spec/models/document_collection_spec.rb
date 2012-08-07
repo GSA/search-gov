@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe DocumentCollection do
   fixtures :affiliates, :document_collections, :url_prefixes, :navigations

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe NewsSearch do
   fixtures :affiliates, :rss_feeds, :navigations, :news_items

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   fixtures :affiliates

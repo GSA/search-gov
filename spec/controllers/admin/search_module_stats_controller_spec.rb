@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Admin::SearchModuleStatsController do
   fixtures :users, :search_modules, :daily_search_module_stats

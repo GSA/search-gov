@@ -320,7 +320,7 @@ class WebSearch < Search
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)
-    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
+    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
   end
 
   def remove_bing_matches_from_indexed_documents
@@ -331,7 +331,7 @@ class WebSearch < Search
         local_title = indexed_document.instance.title || ''
         @results.any? do |result|
           bing_url_minus_slash = result['unescapedUrl'].sub(/\/$/, '')
-          (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '')) or
+          (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/(\uE000|\uE001)/, '')) or
             bing_url_minus_slash == local_url_minus_slash
         end
       rescue URI::InvalidURIError

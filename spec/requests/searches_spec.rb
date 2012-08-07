@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe SearchesController do
   fixtures :affiliates, :rss_feeds, :news_items
@@ -14,13 +14,13 @@ describe SearchesController do
       it "should set format to mobile" do
         request.format.to_sym.should == :mobile
       end
-      
+
       it "should sucessfully response" do
         response.status.should == 200
       end
     end
   end
-  
+
   context "#docs" do
     context "when the request is from a mobile device" do
       before do

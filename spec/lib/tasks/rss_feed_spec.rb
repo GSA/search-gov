@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Affiliate RSS feed rake tasks" do
   before do

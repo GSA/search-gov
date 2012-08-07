@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe AutoRecall do
   before(:each) do
@@ -19,7 +19,7 @@ describe AutoRecall do
   it "should create a new instance given valid attributes" do
     AutoRecall.create!(@valid_attributes)
   end
-  
+
   describe "#to_json" do
     it "should return JSON the includes all the fields" do
       @auto_recall = AutoRecall.new(@valid_attributes)

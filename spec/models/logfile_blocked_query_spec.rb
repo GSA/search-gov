@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 describe LogfileBlockedQuery do
   fixtures :logfile_blocked_queries
 
