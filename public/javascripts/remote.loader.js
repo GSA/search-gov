@@ -5,7 +5,7 @@ if ((typeof usasearch_config === 'object') && (usasearch_config.constructor == O
 }
 
 if (usasearch.config.host === undefined) {
-  usasearch.config.host = document.location.protocol + "//search.usa.gov";
+  usasearch.config.host = ("https:" == document.location.protocol ? "https:" : "http:") + "//search.usa.gov";
 }
 
 /*
