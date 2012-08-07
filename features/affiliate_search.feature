@@ -444,20 +444,35 @@ Feature: Affiliate Search
 
   Scenario: When an affiliate uses ODIE results
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains | results_source |
-      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | odie           |
+      | display_name | name       | contact_email | contact_name | domains | results_source | locale |
+      | English site | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | odie           | en     |
+      | Spanish site | es.nih.gov | aff@bar.gov   | John Bar     | nih.gov | odie           | es     |
     And the following IndexedDocuments exist:
-      | url                       | affiliate | title       | description     |
-      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
-      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
+      | url                      | affiliate  | title        | description         |
+      | http://nih.gov/1.html    | nih.gov    | NIH Page 1   | This is page 1      |
+      | http://nih.gov/2.html    | nih.gov    | NIH Page 2   | This is page 2      |
+      | http://es.nih.gov/1.html | es.nih.gov | NIH Página 1 | Esta es la página 1 |
+      | http://es.nih.gov/2.html | es.nih.gov | NIH Página 2 | Esta es la página 2 |
     And the url "http://nih.gov/1.html" has been crawled
     And the url "http://nih.gov/2.html" has been crawled
-    And I am on nih.gov's search page
+    And the url "http://es.nih.gov/1.html" has been crawled
+    And the url "http://es.nih.gov/2.html" has been crawled
+
+    When I am on nih.gov's search page
     And I fill in "query" with "NIH"
     And I press "Search"
     Then I should not see the indexed documents section
     And I should see "NIH Page 1"
     And I should see "NIH Page 2"
+    And I should see an image link to "Results by USASearch" with url for "http://usasearch.howto.gov"
+
+    When I am on es.nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Buscar"
+    Then I should not see the indexed documents section
+    And I should see "NIH Página 1"
+    And I should see "NIH Página 2"
+    And I should see an image link to "Resultados por USASearch" with url for "http://usasearch.howto.gov"
 
   Scenario: Searcher does not see indexed documents when using Bing-only results
     Given the following Affiliates exist:
@@ -475,6 +490,7 @@ Feature: Affiliate Search
     Then I should not see the indexed documents section
     And I should not see "NIH Page 1"
     And I should not see "NIH Page 2"
+    And I should see an image with alt text "Results by Bing"
 
   Scenario: When an affiliate uses Bing+Odie results
     Given the following Affiliates exist:
@@ -496,6 +512,7 @@ Feature: Affiliate Search
     And I should see "NIH Post 9 weeks ago" in the indexed documents section
     And I should see "NIH Post 10 weeks ago" in the indexed documents section
     And I should not see "NIH Post 4 months ago" in the indexed documents section
+    And I should see an image with alt text "Results by Bing"
 
     When I am on es.nih.gov's search page
     And I fill in "query" with "NIH"
@@ -504,6 +521,7 @@ Feature: Affiliate Search
     And I should see "NIH Spanish Post 9 weeks ago" in the indexed documents section
     And I should see "NIH Spanish Post 10 weeks ago" in the indexed documents section
     And I should not see "NIH Spanish Post 4 months ago" in the indexed documents section
+    And I should see an image with alt text "Resultados por Bing"
 
   Scenario: When an affiliate has scope keywords
     Given the following Affiliates exist:

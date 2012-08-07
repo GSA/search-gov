@@ -364,6 +364,18 @@ module SearchHelper
     end
   end
 
+  def search_results_by_logo(results_by_bing)
+    if results_by_bing
+      alt = I18n.t(:results_by_bing)
+      image_source = "binglogo_#{I18n.locale.to_s}.gif"
+      image_tag(image_source, :alt => alt, :class => 'results-by-logo')
+    else
+      alt = I18n.t(:results_by_usasearch)
+      image_source = "results_by_usasearch_#{I18n.locale.to_s}.png"
+      link_to(image_tag(image_source, :alt => alt, :class => 'results-by-logo'), BLOG_URL)
+    end
+  end
+
   private
 
   def shorten_url (url, length=42)
@@ -442,10 +454,6 @@ module SearchHelper
     else
       url[0, length] + "..."
     end
-  end
-
-  def search_results_by_logo(results_by_bing)
-    results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'results-by-logo') : link_to(image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'results-by-logo'), BLOG_URL)
   end
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)

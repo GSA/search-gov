@@ -636,4 +636,46 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       after(:all) { I18n.locale = I18n.default_locale }
     end
   end
+
+  describe '#search_results_by_logo' do
+    context 'when results by Bing and locale is en' do
+      before(:all) { I18n.locale = :en }
+      after(:all) { I18n.locale = I18n.default_locale }
+
+      it 'should see an image with alt text' do
+        html = helper.search_results_by_logo(true)
+        html.should have_selector("img[alt='Results by Bing'][src^='/images/binglogo_en.gif']")
+      end
+    end
+
+    context 'when results by Bing and locale is es' do
+      before(:all) { I18n.locale = :es }
+      after(:all) { I18n.locale = I18n.default_locale }
+
+      it 'should see an image with alt text' do
+        html = helper.search_results_by_logo(true)
+        html.should have_selector("img[alt='Resultados por Bing'][src^='/images/binglogo_es.gif']")
+      end
+    end
+
+    context 'when results by USASearch and locale is en' do
+      before(:all) { I18n.locale = :en }
+      after(:all) { I18n.locale = I18n.default_locale }
+
+      it 'should see an image with alt text' do
+        html = helper.search_results_by_logo(false)
+        html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Results by USASearch'][src^='/images/results_by_usasearch_en.png']")
+      end
+    end
+
+    context 'when results by USASearch and locale is es' do
+      before(:all) { I18n.locale = :es }
+      after(:all) { I18n.locale = I18n.default_locale }
+
+      it 'should see an image with alt text' do
+        html = helper.search_results_by_logo(false)
+        html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Resultados por USASearch'][src^='/images/results_by_usasearch_es.png']")
+      end
+    end
+  end
 end
