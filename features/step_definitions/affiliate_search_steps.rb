@@ -3,7 +3,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
   table.hashes.each do |hash|
     shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
     rss_feed = affiliate.rss_feeds.new(:name => hash[:name],
-                                       :shown_in_govbox => shown_in_govbox )
+                                       :shown_in_govbox => shown_in_govbox)
     rss_feed.rss_feed_urls.build(:url => hash[:url],
                                  :last_crawled_at => hash[:last_crawled_at],
                                  :last_crawl_status => hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS)
@@ -24,7 +24,10 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
                                     :title => hash["title"],
                                     :description => hash["description"],
                                     :guid => hash["guid"],
-                                    :published_at => published_at)
+                                    :published_at => published_at,
+                                    :contributor => hash["contributor"],
+                                    :publisher => hash["publisher"],
+                                    :subject => hash["subject"])
   end
   Sunspot.commit
 end
@@ -35,7 +38,7 @@ Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video
   now = Time.current.to_i
   published_at = 1.week.ago
   count.to_i.times do |index|
-    link_param = is_video ? { :v => "#{index}" } : {}
+    link_param = is_video ? {:v => "#{index}"} : {}
     rss_feed_url.news_items.create!(:rss_feed => rss_feed,
                                     :link => "http://aff.gov/#{now}_#{index + 1}?#{link_param.to_query}",
                                     :title => "news item #{index + 1} title for #{feed_name}",

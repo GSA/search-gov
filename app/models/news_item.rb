@@ -21,16 +21,19 @@ class NewsItem < ActiveRecord::Base
     text :title, :stored => true
     text :description, :stored => true
     string :link
+    string :contributor
+    string :subject
+    string :publisher
   end
 
   class << self
     include QueryPreprocessor
 
-    def search_for(query, rss_feeds, since = nil, page = 1, per_page = 10)
+    def search_for(query, rss_feeds, since = nil, page = 1, per_page = 10, contributor = nil, subject = nil, publisher = nil)
       sanitized_query = preprocess(query)
       return nil if rss_feeds.blank?
       excluded_urls = rss_feeds.first.affiliate.excluded_urls.collect { |url| url.url }
-      instrument_hash = {:model=> self.name, :term => sanitized_query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
+      instrument_hash = {:model => self.name, :term => sanitized_query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
       instrument_hash.merge!(:since => since) if since
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
@@ -41,6 +44,13 @@ class NewsItem < ActiveRecord::Base
           with(:rss_feed_id, rss_feeds.collect(&:id))
           with(:published_at).greater_than(since) if since
           without(:link).any_of excluded_urls unless excluded_urls.empty?
+
+          %w(contributor subject publisher).each do |facet_name|
+            facet_restriction = nil
+            facet_restriction = with(facet_name.to_sym, eval(facet_name)) if eval(facet_name)
+            facet(facet_name.to_sym, :exclude => facet_restriction)
+          end
+
           order_by :published_at, :desc
           paginate :page => page, :per_page => per_page
         end rescue nil
@@ -51,8 +61,7 @@ class NewsItem < ActiveRecord::Base
   private
 
   def clean_text_fields
-    self.title = clean_text_field(self.title)
-    self.description = clean_text_field(self.description)
+    %w(title description contributor subject publisher).each { |field| self.send(field+'=', clean_text_field(self.send(field))) }
   end
 
   def clean_text_field(str)

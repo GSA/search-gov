@@ -10,7 +10,10 @@ describe NewsItem do
       :published_at => DateTime.parse("2011-09-26 21:33:05"),
       :guid => '80798 at www.whitehouse.gov',
       :rss_feed_id => rss_feeds(:white_house_blog).id,
-      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id
+      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
+      :contributor => "President",
+      :publisher => "Briefing Room",
+      :subject => "Economy"
     }
   end
 
@@ -42,7 +45,7 @@ describe NewsItem do
     end
   end
 
-  describe "#search_for(query, rss_feeds, since = nil, page = 1)" do
+  describe "#search_for(query, rss_feeds, since = nil, page = 1, contributor, subject, publisher)" do
     before do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
@@ -50,10 +53,17 @@ describe NewsItem do
       @blog_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id, :rss_feed_id => @blog.id, :guid => "unique to feed", :published_at => 3.days.ago,
                                     :link => "http://www.wh.gov/ns1",
                                     :title => "Obama adopts policies similar to other policies",
-                                    :description => "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>")
+                                    :description => "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>",
+                                    :contributor => "President",
+                                    :publisher => "Briefing Room",
+                                    :subject => "Economy")
+
       @gallery_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_press_gallery_url).id, :rss_feed_id => @gallery.id, :guid => "unique to feed", :published_at => 1.day.ago,
                                        :link => "http://www.wh.gov/ns2", :title => "Obama adopts some more things",
-                                       :description => "<p>that is the policy.</p>")
+                                       :description => "<p>that is the policy.</p>",
+                                       :contributor => "President",
+                                       :publisher => "Briefing Room",
+                                       :subject => "HIV")
       NewsItem.reindex
       Sunspot.commit
     end
@@ -62,6 +72,14 @@ describe NewsItem do
       search = NewsItem.search_for("policy", [@blog])
       search.total.should == 1
       search.results.first.should == @blog_item
+    end
+
+    context "when DublinCore fields are passed in" do
+      it "should facet and restrict results based on those criteria" do
+        search = NewsItem.search_for("policy", [@blog], nil, nil, nil, 'President', 'Economy', 'Briefing Room')
+        search.total.should == 1
+        search.results.first.should == @blog_item
+      end
     end
 
     context "when there are no RSS feeds passed in" do

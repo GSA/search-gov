@@ -42,6 +42,9 @@
   'in the rss feed govbox' => '#news_items_govbox',
   'in the video rss feed govbox' => '#video_news_items_govbox',
   'in the active scaffold header' => 'h2',
+  'in the contributor facet selector' => '#facet_contributor',
+  'in the subject facet selector' => '#facet_subject',
+  'in the publisher facet selector' => '#facet_publisher',
   'in the Super Admin page' => '.container'
 }.
   each do |within, selector|

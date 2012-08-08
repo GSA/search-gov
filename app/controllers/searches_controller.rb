@@ -101,7 +101,7 @@ class SearchesController < ApplicationController
       @affiliate.theme = @affiliate.staged_theme
       @affiliate.css_properties = @affiliate.staged_css_properties
       @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
-      @affiliate.managed_header_css_properties =  @affiliate.staged_managed_header_css_properties
+      @affiliate.managed_header_css_properties = @affiliate.staged_managed_header_css_properties
       @affiliate.managed_header_home_url = @affiliate.staged_managed_header_home_url
       @affiliate.managed_header_text = @affiliate.staged_managed_header_text
       @affiliate.header_image_file_name = @affiliate.staged_header_image_file_name
@@ -120,7 +120,7 @@ class SearchesController < ApplicationController
   end
 
   def set_web_search_options
-    %w{tbs channel}.each {|param| params.delete(param)}
+    %w{tbs channel}.each { |param| params.delete(param) }
     @search_options = search_options_from_params(@affiliate, params)
   end
 
@@ -130,6 +130,7 @@ class SearchesController < ApplicationController
 
   def set_news_search_options
     @search_options = search_options_from_params(@affiliate, params)
+    @search_options.merge!(:contributor => params["contributor"], :subject => params["subject"], :publisher => params["publisher"])
   end
 
   def adjust_mobile_mode

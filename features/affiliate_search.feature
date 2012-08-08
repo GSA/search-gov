@@ -25,9 +25,9 @@ Feature: Affiliate Search
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name     | name       | contact_email | contact_name | locale | dublin_core_mappings  |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | {:contributor=>'Administration Official',:publisher => 'Briefing Room Section', :subject => 'Issue'} |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |                                                                                                      |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                                  | is_navigable | shown_in_govbox |
       | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
@@ -39,17 +39,17 @@ Feature: Affiliate Search
       | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
+      | link                             | title       | guid  | published_ago | description                       | contributor | publisher | subject |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed | president | briefingroom | economy |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  | vicepresident | westwing | jobs |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     And feed "Videos" has the following news items:
-      | link                                       | title             | guid       | published_ago | description                              |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  |
-      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed |
+      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda  | elections |
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
@@ -84,6 +84,18 @@ Feature: Affiliate Search
       |m        |false     |
     And I should see "First item"
     And I should see "First video item"
+    And I should see "Administration Official"
+    And I should see "Issue"
+    And I should see "Briefing Room Section"
+    And I should see "<Any>" in the contributor facet selector
+    And I should see "firstlady" in the contributor facet selector
+    And I should see "president" in the contributor facet selector
+    And I should see "<Any>" in the subject facet selector
+    And I should see "economy" in the subject facet selector
+    And I should see "exercise" in the subject facet selector
+    And I should see "<Any>" in the publisher facet selector
+    And I should see "briefingroom" in the publisher facet selector
+    And I should see "westwing" in the publisher facet selector
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"

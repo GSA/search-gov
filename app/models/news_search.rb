@@ -3,7 +3,8 @@ class NewsSearch < Search
   DEFAULT_VIDEO_PER_PAGE = 20
   attr_reader :rss_feed,
               :hits,
-              :since
+              :since,
+              :facets
 
   def initialize(options = {})
     super(options)
@@ -19,11 +20,12 @@ class NewsSearch < Search
       @rss_feed = @rss_feeds.first if @rss_feeds.count == 1
     end
     @hits, @total = [] , 0
+    @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
     assign_per_page
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, @since, @page, @per_page)
+    NewsItem.search_for(@query, @rss_feeds, @since, @page, @per_page, @contributor, @subject, @publisher)
   end
 
   def cache_key
@@ -35,6 +37,7 @@ class NewsSearch < Search
   def handle_response(response)
     if response
       @total = response.total
+      @facets = response.facets
       @results = paginate(process_results(response))
       @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1

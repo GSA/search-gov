@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727042803) do
+ActiveRecord::Schema.define(:version => 20120808061238) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120727042803) do
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
+    t.text     "dublin_core_mappings"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
@@ -480,7 +481,7 @@ ActiveRecord::Schema.define(:version => 20120727042803) do
 
   add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
   add_index "indexed_documents", ["affiliate_id", "id"], :name => "index_indexed_documents_on_affiliate_id_and_id", :unique => true
-  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
   add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
 
   create_table "indexed_domains", :force => true do |t|
@@ -639,6 +640,9 @@ ActiveRecord::Schema.define(:version => 20120727042803) do
     t.datetime "created_at"
     t.integer  "rss_feed_url_id", :null => false
     t.datetime "updated_at"
+    t.string   "contributor"
+    t.string   "subject"
+    t.string   "publisher"
   end
 
   add_index "news_items", ["link"], :name => "index_news_items_on_link"

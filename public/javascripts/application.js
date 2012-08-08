@@ -56,6 +56,9 @@ jQuery(document).ready(function () {
     jQuery('#search_query').change(function() {
         update_vertical_navigation_links(jQuery(this).attr('value'));
     });
+    jQuery('.updatable_facet').change(function() {
+      window.location.replace($(this).val());
+    });
 });
 
 function update_vertical_navigation_links(new_text) {

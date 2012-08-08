@@ -66,7 +66,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :results_source => hash[:results_source] || 'bing+odie',
       :is_related_searches_enabled => hash[:is_related_searches_enabled] || true,
       :ga_web_property_id => hash[:ga_web_property_id],
-      :external_tracking_code => hash[:external_tracking_code]
+      :external_tracking_code => hash[:external_tracking_code],
+      :dublin_core_mappings => (eval(hash[:dublin_core_mappings]) rescue nil)
     )
     affiliate.name = hash['name']
     affiliate.save!
