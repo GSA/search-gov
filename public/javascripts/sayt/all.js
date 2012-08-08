@@ -78,7 +78,26 @@ usasearch.jquery(document).ready(function() {
   var jQuery = usasearch.jquery;
   monkeyPatchAutocomplete(jQuery);
 
+  var usasearchSayt = document.createElement('div');
+  usasearchSayt.id = 'usasearch_sayt';
+  jQuery('body').append(usasearchSayt);
+
+  usasearchSaytStyle = {
+    background:'none',
+    border:0,
+    display:'block',
+    float:'none',
+    height:0,
+    lineHeight:0,
+    margin:0,
+    padding:0,
+    position:'static',
+    width:0
+  };
+  jQuery('#usasearch_sayt').css(usasearchSaytStyle);
+
   jQuery(".usagov-search-autocomplete").autocomplete({
+    appendTo: '#usasearch_sayt',
     source: function(request, response) {
       jQuery.ajax({
         url: saytUrl + "q=" + encodeURIComponent(request.term),
@@ -102,14 +121,14 @@ usasearch.jquery(document).ready(function() {
       }
     },
     open: function() {
-      jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
-      jQuery('.ui-autocomplete').css('z-index', 999999);
+      jQuery('#usasearch_sayt .ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
+      jQuery('#usasearch_sayt .ui-autocomplete').css('z-index', 999999);
 
       var inputWidth = jQuery('.usagov-search-autocomplete').outerWidth(false);
-      var resultsWidth = jQuery('.ui-autocomplete').outerWidth(false);
+      var resultsWidth = jQuery('#usasearch_sayt .ui-autocomplete').outerWidth(false);
       var delta = inputWidth - resultsWidth;
-      var currentWidth = jQuery('.ui-autocomplete').width();
-      jQuery('.ui-autocomplete').css('width', currentWidth + delta + 'px');
+      var currentWidth = jQuery('#usasearch_sayt .ui-autocomplete').width();
+      jQuery('#usasearch_sayt .ui-autocomplete').css('width', currentWidth + delta + 'px');
     }
   });
 });

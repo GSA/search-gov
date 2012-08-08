@@ -92,7 +92,7 @@ var getElementsByClassName = function (className, tag, elm){
 if (getElementsByClassName('usagov-search-autocomplete').length > 0) {
   var link = document.createElement("link");
   link.type = "text/css";
-  link.href = usasearch.config.host + "/stylesheets/sayt/custom.css";
+  link.href = usasearch.config.host + "/stylesheets/compiled/sayt/custom.css";
   link.rel = "stylesheet";
   link.media = "screen";
   document.getElementsByTagName("head")[0].appendChild(link);
