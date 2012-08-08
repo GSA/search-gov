@@ -42,6 +42,12 @@ For Rails 3, we use bundler; you should be able to get all the rest of the gems 
     gem install bundler
     bundle install
 
+## Sass
+
+Since we have Rails asset pipeline disabled, we need to manually start a separate process to compile Sass stylesheets to CSS like this:
+
+    compass watch
+
 ## Solr
 
 We're using Solr for fulltext search.
