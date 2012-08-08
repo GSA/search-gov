@@ -2,6 +2,8 @@ var usasearch = {};
 
 if ((typeof usasearch_config === 'object') && (usasearch_config.constructor == Object)) {
   usasearch.config = usasearch_config;
+} else {
+  usasearch.config = {};
 }
 
 if (usasearch.config.host === undefined) {
@@ -102,13 +104,12 @@ if (getElementsByClassName('usagov-search-autocomplete').length > 0) {
 }
 
 if (usasearch.config.siteHandle) {
-  var aid = usasearch.config.siteHandle;
-
   if (usasearch.config.enableDiscoveryTag === undefined) {
     usasearch.config.enableDiscoveryTag = true;
   }
 
   if (usasearch.config.enableDiscoveryTag) {
+    var aid = usasearch.config.siteHandle;
     var discoveryScript = document.createElement("script");
     discoveryScript.type = "text/javascript";
     discoveryScript.src = usasearch.config.host + "/javascripts/stats.js";

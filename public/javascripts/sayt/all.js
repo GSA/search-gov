@@ -64,7 +64,7 @@ var monkeyPatchAutocomplete = function(jQuery) {
 if (usasearch.config.host && usasearch.config.siteHandle) {
   var saytUrl = usasearch.config.host + "/sayt?name=" +
       usasearch.config.siteHandle + "&";
-} else if (usagov_sayt_url !== undefined) {
+} else if (typeof usagov_sayt_url != 'undefined') {
   var saytUrl = usagov_sayt_url;
 }
 
@@ -103,7 +103,13 @@ usasearch.jquery(document).ready(function() {
     },
     open: function() {
       jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
-      jQuery('.ui-autocomplete').css('width', jQuery('.usagov-search-autocomplete').css('width'));
+      jQuery('.ui-autocomplete').css('z-index', 999999);
+
+      var inputWidth = jQuery('.usagov-search-autocomplete').outerWidth(false);
+      var resultsWidth = jQuery('.ui-autocomplete').outerWidth(false);
+      var delta = inputWidth - resultsWidth;
+      var currentWidth = jQuery('.ui-autocomplete').width();
+      jQuery('.ui-autocomplete').css('width', currentWidth + delta + 'px');
     }
   });
 });

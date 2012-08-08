@@ -2,6 +2,8 @@ var usasearch = {};
 
 if ((typeof usasearch_config === 'object') && (usasearch_config.constructor == Object)) {
   usasearch.config = usasearch_config;
+} else {
+  usasearch.config = {};
 }
 
 if (usasearch.config.host === undefined) {
