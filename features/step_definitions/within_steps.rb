@@ -48,13 +48,9 @@
   'in the Super Admin page' => '.container'
 }.
   each do |within, selector|
-    Then /^(.+) #{within}$/ do |step|
-      if step =~ /^I (should|should not) see/
-        %{#{step} within "#{selector}"}
-      else
-        within(selector) do
-          step step
-        end
+    Then /^(.+) #{within}$/ do |step_string|
+      within(selector) do
+        step step_string
       end
     end
   end
