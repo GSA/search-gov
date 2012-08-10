@@ -19,19 +19,31 @@ describe AutoRecall do
   it "should create a new instance given valid attributes" do
     AutoRecall.create!(@valid_attributes)
   end
-  
-  describe "#to_json" do
+
+  describe "#as_json" do
     it "should return JSON the includes all the fields" do
-      @auto_recall = AutoRecall.new(@valid_attributes)
-      parsed_json = JSON.parse(@auto_recall.to_json)
-      parsed_json["make"].should == @valid_attributes[:make]
-      parsed_json["model"].should == @valid_attributes[:model]
-      parsed_json["year"].should == @valid_attributes[:year]
-      parsed_json["component_description"].should == @valid_attributes[:component_description]
-      parsed_json["manufacturer"].should == @valid_attributes[:manufacturer]
-      parsed_json["recalled_component_id"].should == @valid_attributes[:recalled_component_id]
-      parsed_json["manufacturing_begin_date"].should == @valid_attributes[:manufacturing_begin_date].to_s
-      parsed_json["manufacturing_end_date"].should == @valid_attributes[:manufacturing_end_date].to_s
+      auto_recall = AutoRecall.create!(@valid_attributes)
+      hash = AutoRecall.find(auto_recall.id).as_json
+      hash['make'].should == @valid_attributes[:make]
+      hash['model'].should == @valid_attributes[:model]
+      hash['year'].should == @valid_attributes[:year]
+      hash['component_description'].should == @valid_attributes[:component_description]
+      hash['manufacturer'].should == @valid_attributes[:manufacturer]
+      hash['recalled_component_id'].should == @valid_attributes[:recalled_component_id]
+      hash['manufacturing_begin_date'].should == '2005-01-01'
+      hash['manufacturing_end_date'].should == '2005-12-31'
+    end
+
+    it "should not contain manufacturing_begin_date if it's in the except list" do
+      auto_recall = AutoRecall.create!(@valid_attributes)
+      hash = AutoRecall.find(auto_recall.id).as_json(:except => :manufacturing_begin_date)
+      hash.keys.should_not include('manufacturing_begin_date')
+    end
+
+    it "should not contain manufacturing_end_date if it's in the except list" do
+      auto_recall = AutoRecall.create!(@valid_attributes)
+      hash = AutoRecall.find(auto_recall.id).as_json(:except => :manufacturing_end_date)
+      hash.keys.should_not include('manufacturing_end_date')
     end
   end
 end

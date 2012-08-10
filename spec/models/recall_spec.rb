@@ -23,7 +23,7 @@ describe Recall do
     recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
     recall.save!
     recall.destroy
-    RecallDetail.find(:first, :conditions => ["recall_id = ? AND detail_type = ? AND detail_value = ?", recall.id, 'Manufacturer', 'Acme Corp']).should be_nil
+    RecallDetail.where('recall_id = ? AND detail_type = ? AND detail_value = ?', recall.id, 'Manufacturer', 'Acme Corp').first.should be_nil
   end
 
   describe "#load_cdc_data_from_rss_feed" do
@@ -652,7 +652,7 @@ describe Recall do
     end
   end
 
-  describe "#to_json" do
+  describe "#as_json" do
     context "for a CPSC recall" do
       before(:all) do
         @recall = Recall.new(:organization => 'CPSC', :recall_number => '12345', :y2k => 12345, :recalled_on => Date.parse('2010-03-01'))
@@ -665,7 +665,7 @@ describe Recall do
         @recall.save!
 
         @recall_json = "{\"organization\":\"CPSC\",\"upc\":\"0123456789\",\"manufacturers\":[\"Acme Corp\"],\"descriptions\":[\"Baby Stroller can be dangerous to children\"],\"hazards\":[\"Horrible Death\"],\"recall_number\":\"12345\",\"countries\":[\"United States\"],\"recall_date\":\"2010-03-18\",\"product_types\":[\"Dangerous Stuff\"]}"
-        @parsed_recall = JSON.parse(@recall.to_json)
+        @parsed_recall = JSON.parse([@recall].to_json).first
       end
 
       it "should properly parse the organization value" do
@@ -718,7 +718,7 @@ describe Recall do
         @recall.auto_recalls << AutoRecall.new(:make => 'TOYOTA', :model => 'CAMRY', :year => '2006', :component_description => 'BRAKES', :manufacturer => 'TOYOTA', :recalled_component_id => '1234567890', :manufacturing_begin_date => Date.parse('2006-01-01'), :manufacturing_end_date => Date.parse('2006-12-31'))
         @recall.auto_recalls << AutoRecall.new(:make => 'TOYOTA', :model => 'SIENA', :year => '2006', :component_description => 'BRAKES', :manufacturer => 'TOYOTA', :recalled_component_id => '1234567890', :manufacturing_begin_date => Date.parse('2006-01-01'), :manufacturing_end_date => Date.parse('2006-12-31'))
         @recall.save!
-        @parsed_recall = JSON.parse(@recall.to_json)
+        @parsed_recall = JSON.parse([@recall].to_json).first
       end
 
       it "should properly parse the organization" do
@@ -751,7 +751,7 @@ describe Recall do
         @recall = Recall.new(:organization => 'CDC', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
         @recall.food_recall = FoodRecall.new(:url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION", :food_type => "FOOD_TYPE")
         @recall.save!
-        @parsed_recall = JSON.parse(@recall.to_json)
+        @parsed_recall = JSON.parse([@recall].to_json).first
       end
 
       it "should properly parse the organization" do

@@ -209,19 +209,24 @@ class Recall < ActiveRecord::Base
     end
   end
 
-  def to_json(options = {})
-    recall_hash = { :organization => self.organization, :recall_number => self.recall_number,
-                   :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url}
-    detail_hash = case self.organization
+  def as_json(options = {})
+    recall_hash = {
+        :organization => organization,
+        :recall_number => recall_number,
+        :recall_date => recalled_on.strftime('%Y-%m-%d'),
+        :recall_url => recall_url
+    }
+
+    detail_hash = case organization
       when 'CPSC' then
         cpsc_hash
       when 'NHTSA' then
         nhtsa_hash
       when 'CDC' then
         cdc_hash
-                  end
-    recall_hash.merge!(detail_hash) unless detail_hash.nil?
-    recall_hash.to_json
+      end
+    recall_hash.merge!(detail_hash) if detail_hash
+    recall_hash
   end
 
   def cpsc_hash
@@ -231,16 +236,21 @@ class Recall < ActiveRecord::Base
   end
 
   def nhtsa_hash
-    nhtsa_hash = { :records => self.auto_recalls }
+    hash = {
+        :records => auto_recalls.collect do |a|
+          a.as_json(:except => [:id, :recall_id, :created_at, :updated_at])
+        end
+    }
+
     NHTSA_DETAIL_FIELDS.each_key do |detail_type|
       recall_detail = self.recall_details.find_by_detail_type(detail_type)
-      nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?
+      hash[detail_type.underscore.to_sym] = recall_detail.detail_value if recall_detail
     end
-    nhtsa_hash
+    hash
   end
 
   def cdc_hash
-    {:summary => food_recall.summary, :description => food_recall.description}
+    food_recall.as_json(:only => [:summary, :description])
   end
 
   def recall_url
