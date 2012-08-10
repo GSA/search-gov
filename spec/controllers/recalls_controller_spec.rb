@@ -212,11 +212,14 @@ describe RecallsController do
       end
 
       context "when all parameters specified" do
+        let(:first_recall) { mock_model(Recall, :as_json => { 'recall_number' => 'ABC100' }) }
+        let(:second_recall) { mock_model(Recall, :as_json => { 'recall_number' => 'DEF200' }) }
+
         before do
           @redis = RecallsController.send(:class_variable_get, :@@redis)
           @search = mock(Sunspot::Search)
-          @search.stub!(:total).and_return 1
-          @search.stub!(:results).and_return [{:key1=>"val1"}, {:key2=>"val2"}]
+          @search.stub!(:total).and_return 2
+          @search.stub!(:results).and_return [first_recall, second_recall]
           @query_string = 'stroller'
           @page = "2"
           @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20"}
@@ -239,14 +242,12 @@ describe RecallsController do
             get :search, @valid_params
           end
 
-          context "when JSON results are requested" do
-            it "should return parsable JSON" do
-              Recall.stub!(:search_for).and_return(@search)
-              get :search, @valid_params.merge(:format => 'json')
-              parsed_response = JSON.parse(response.body)
-              parsed_response["success"]["total"].should == 1
-              parsed_response["success"]["results"].should == [{"key1"=>"val1"}, {"key2"=>"val2"}]
-            end
+          it "should return parsable JSON" do
+            Recall.stub!(:search_for).and_return(@search)
+            get :search, @valid_params.merge(:format => 'json')
+            parsed_response = JSON.parse(response.body)
+            parsed_response["success"]["total"].should == 2
+            parsed_response["success"]["results"].should == [first_recall.as_json, second_recall.as_json]
           end
         end
 

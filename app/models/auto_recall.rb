@@ -1,8 +1,10 @@
 class AutoRecall < ActiveRecord::Base
   belongs_to :recall
-  
-  def to_json(options = {})
-    hash = {:make => self.make, :model => self.model, :year => self.year, :component_description => self.component_description, :manufacturing_begin_date => self.manufacturing_begin_date, :manufacturing_end_date => self.manufacturing_end_date, :manufacturer => self.manufacturer, :recalled_component_id => self.recalled_component_id}
-    hash.to_json
+
+  def as_json(options = {})
+    hash = super(options)
+    hash['manufacturing_begin_date'] = manufacturing_begin_date.strftime('%Y-%m-%d') if manufacturing_begin_date and hash.include?('manufacturing_begin_date')
+    hash['manufacturing_end_date'] = manufacturing_end_date.strftime('%Y-%m-%d') if manufacturing_end_date and hash.include?('manufacturing_end_date')
+    hash
   end
 end
