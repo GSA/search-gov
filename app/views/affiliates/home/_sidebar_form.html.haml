@@ -47,7 +47,21 @@
   .column-2
     .side-note-image= image_tag('side_notes/sidebar_2.png')
   .column-1
-    %p By default, searchers may narow results for all #{link_to 'RSS feeds', affiliate_rss_feeds_path(@affiliate)} by time period.
+    %p By default, searchers may narrow results for all #{link_to 'RSS feeds', affiliate_rss_feeds_path(@affiliate)} by time period.
     = sidebar_form.check_box :is_time_filter_enabled
     = sidebar_form.label :is_time_filter_enabled, 'Show by time period module', :class => 'checkbox-label'
 
+.by-dublin-core
+  %h2 By Dublin Core® facets
+  .column-2
+    .side-note-image= image_tag('side_notes/sidebar_2.png')
+  .column-1
+    %p
+      If you are publishing Dublin Core® metadata for publisher, subject, and contributor in your RSS feeds,
+      you can customize the facet labels here.
+    %table
+      - %w(contributor publisher subject).each do |facet_name|
+        = sidebar_form.fields_for :dublin_core_mappings do |dublin_core_form|
+          %tr
+            %th= dublin_core_form.label facet_name.to_sym, facet_name.titleize
+            %td= dublin_core_form.text_field facet_name.to_sym, :maxlength => 30, :value => @affiliate.dublin_core_mappings[facet_name.to_sym]

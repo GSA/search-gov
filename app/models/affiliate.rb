@@ -77,7 +77,7 @@ class Affiliate < ActiveRecord::Base
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix
+  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix, :nullify_blank_dublin_core_fields
   before_save :set_css_properties, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
@@ -568,6 +568,12 @@ class Affiliate < ActiveRecord::Base
     set_http_prefix :favicon_url, :staged_favicon_url,
                     :external_css_url, :staged_external_css_url,
                     :managed_header_home_url, :staged_managed_header_home_url
+  end
+
+  def nullify_blank_dublin_core_fields
+    dublin_core_mappings.each_key do |facet_name|
+      dublin_core_mappings[facet_name.to_sym] = nil if dublin_core_mappings[facet_name.to_sym].empty?
+    end unless dublin_core_mappings.nil?
   end
 
   def validate_css_property_hash

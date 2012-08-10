@@ -2268,6 +2268,10 @@ Feature: Affiliate clients
       | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | 5        | false        |
       | Press         | http://www.whitehouse.gov/feed/press               | 1        | true         |
       | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 3        | true         |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       | contributor | publisher | subject |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed | president | briefingroom | economy |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  | vicepresident | westwing | jobs |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | position | is_navigable |
       | Topics | http://aff.gov/topics/ | 4        | true         |
@@ -2312,6 +2316,40 @@ Feature: Affiliate clients
     Then I should see "Web Pictures News Q&A Galleries Topics" in the left column
     When I follow "News" in the left column
     Then I should see "All Time" in the left column
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    Then the "Subject" field should be empty
+    And the "Contributor" field should be empty
+    And the "Publisher" field should be empty
+    When I fill in the following:
+      | Subject               | My Subject     |
+      | Publisher             | My Publisher   |
+      | Contributor           | My Contributor |
+    And I check "Is Rss Feed 3 navigable"
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
+    When I go to aff.gov's search page
+    And I follow "News" in the left column
+    Then I should see "My Subject" in the left column
+    And I should see "My Publisher" in the left column
+    And I should see "My Contributor" in the left column
+
+    When I go to the "aff site" affiliate page
+    And I follow "Sidebar"
+    And I fill in the following:
+      | Subject               ||
+      | Publisher             ||
+      | Contributor           ||
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+
+    When I go to aff.gov's search page
+    And I follow "News" in the left column
+    Then I should see "Subject" in the left column
+    And I should see "Publisher" in the left column
+    And I should see "Contributor" in the left column
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
