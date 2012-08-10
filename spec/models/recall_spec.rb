@@ -653,6 +653,15 @@ describe Recall do
   end
 
   describe "#as_json" do
+    it 'should set recall_date to nil if recalled_on is nil' do
+      recall = Recall.create!(:organization => 'CPSC',
+                              :recall_number => '12345',
+                              :y2k => 12345,
+                              :recalled_on => nil)
+      hash = Recall.find(recall.id).as_json
+      hash[:recall_date].should be_nil
+    end
+
     context "for a CPSC recall" do
       before(:all) do
         @recall = Recall.new(:organization => 'CPSC', :recall_number => '12345', :y2k => 12345, :recalled_on => Date.parse('2010-03-01'))

@@ -213,7 +213,7 @@ class Recall < ActiveRecord::Base
     recall_hash = {
         :organization => organization,
         :recall_number => recall_number,
-        :recall_date => recalled_on.strftime('%Y-%m-%d'),
+        :recall_date => recalled_on ? recalled_on.strftime('%Y-%m-%d') : nil,
         :recall_url => recall_url
     }
 
