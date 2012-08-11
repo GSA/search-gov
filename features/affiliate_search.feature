@@ -39,9 +39,11 @@ Feature: Affiliate Search
       | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       | contributor | publisher | subject |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed | president | briefingroom | economy |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  | vicepresident | westwing | jobs |
+      | link                             | title       | guid       | published_ago | description                       | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           | item First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           | item Next news item for the feed  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 | day           | item Next news item for the feed  | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 | day           | item Next news item for the feed  | president     | newsroom     | foreign policy |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                  |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
@@ -54,9 +56,13 @@ Feature: Affiliate Search
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Noticias" has the following news items:
-      | link                              | title               | guid    | published_ago | description                                |
-      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           | Gobierno item First news item for the feed |
-      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           | Gobierno item Next news item for the feed  |
+      | link                              | title               | guid    | published_ago | description                                | subject        |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           | Gobierno item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           | Gobierno item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           | Gobierno item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           | Gobierno item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | Gobierno item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | Gobierno item Next news item for the feed  | olympics       |
     And feed "Spanish Videos" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
       | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
@@ -75,6 +81,8 @@ Feature: Affiliate Search
     And I should see "First video item" in the video rss feed govbox
     And I should not see "First item" in the video rss feed govbox
     And I should not see "First hidden item"
+    And I should not see "Show Options" in the left column
+    And I should not see "Hide Options" in the left column
 
     When I follow "News for 'first item'"
     Then I should be on the news search page
@@ -82,18 +90,20 @@ Feature: Affiliate Search
       |affiliate|bar.gov   |
       |query    |first item|
       |m        |false     |
+    And I should see "Show Options" in the left column
+    And I should see "Hide Options" in the left column
     And I should see "First item"
     And I should see "First video item"
     And I should see "Administration Official"
     And I should see "Issue"
     And I should see "Briefing Room Section"
-    And I should see "<Any>" in the contributor facet selector
+    And I should see "Any" in the contributor facet selector
     And I should see "firstlady" in the contributor facet selector
     And I should see "president" in the contributor facet selector
-    And I should see "<Any>" in the subject facet selector
+    And I should see "Any" in the subject facet selector
     And I should see "economy" in the subject facet selector
     And I should see "exercise" in the subject facet selector
-    And I should see "<Any>" in the publisher facet selector
+    And I should see "Any" in the publisher facet selector
     And I should see "briefingroom" in the publisher facet selector
     And I should see "westwing" in the publisher facet selector
 
@@ -159,17 +169,51 @@ Feature: Affiliate Search
     Then I should see the browser page titled "item - bar site Search Results"
     And I should not see "First hidden item"
 
-    When I follow "Press"
+    When I am on bar.gov's news search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
     And I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see "item First news item for the feed"
     And I should see "item Next news item for the feed"
+    And I should not see "More" in the left column
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
     And I should see "Related Searches" in the search results section
     And I should see "Search" button
 
-    When I follow "Last hour"
+    When feed "Press" has the following news items:
+      | link                             | title      | guid       | published_ago | description                       | contributor | publisher    | subject   |
+      | http://www.whitehouse.gov/news/5 | Fifth item | pressuuid5 | day           | item Fifth news item for the feed | president   | briefingroom | education |
+    And I am on bar.gov's news search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    Then I should see "education" in the subject facet selector
+    And I should not see collapsible facet value in the subject facet selector
+    And I should not see "More" in the left column
+
+    When feed "Press" has the following news items:
+      | link                             | title      | guid       | published_ago | description                       | contributor | publisher    | subject  |
+      | http://www.whitehouse.gov/news/6 | Sixth item | pressuuid6 | day           | item Sixth news item for the feed | president   | briefingroom | olympics |
+    And I press "Search"
+    Then I should see "olympics" in the subject facet selector
+    And I should see 2 collapsible facet values in the subject facet selector
+    And I should see "More" in the left column
+
+    When I follow "olympics" in the subject facet selector
+    Then I should see 1 news result
+    And I should see "Sixth item"
+    And I should see a link to "Any" in the subject facet selector
+    And I should see "olympics" in the subject facet selector
+    And I should not see a link to "olympics" in the subject facet selector
+
+    When I am on bar.gov's news search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    And I follow "Last hour"
     Then I should see "no results found for 'item'"
 
     When I follow "Everything"
@@ -196,13 +240,20 @@ Feature: Affiliate Search
     And I should see "Spanish Videos"
     And I should not see "Images"
     And I should not see "Search this site"
+    And I should not see "Mostrar opciones" in the left column
+    And I should not see "Ocultar opciones" in the left column
     And I should not see "Cualquier fecha"
     And I should not see "All Time"
     And I should see "Noticias sobre de 'gobierno' de Spanish bar site"
     And I should see "Videos de 'gobierno' de Spanish bar site"
 
     When I follow "Noticias sobre de 'gobierno'"
-    Then I should see "Spanish item"
+    Then I should see "Mostrar opciones" in the left column
+    And I should see "Ocultar opciones" in the left column
+    And I should see 2 collapsible facet values in the subject facet selector
+    And I should see "Más" in the subject facet selector
+    And I should see "Menos" in the subject facet selector
+    And I should see "Spanish item"
     And I should see "Spanish video item"
 
     When I am on es.bar.gov's search page

@@ -10,17 +10,20 @@
 
 = render_navigations(@affiliate, @search, search_params)
 - if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch)
-  - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
-  %ul{ :class => time_filters_css_class }
-    %li
-      = link_to_if(params[:tbs], t(:all_time), rss_feed ? send(search_path_method, search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
-        = content_tag :div, everything
-    - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
-      %li{ :class => (extent == :year ? 'last' : nil) }
-        = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), send(search_path_method, search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
-          = content_tag :div, last_time
-  - @search.facets.each do |facet|
-    - if facet.rows.any?
-      .left-nav-label-wrapper= dublin_core_attribute(@affiliate, facet.name)
-      - option_hash = {:selected => params[facet.name.to_sym].present? ? send(search_path_method, search_params) : nil}
-      .left-nav-label-wrapper= select("facet", facet.name,  facet.rows.collect {|row| [ row.value, send(search_path_method, search_params.merge(facet.name.to_sym => row.value)) ] }.insert(0,['<Any>', send(search_path_method, search_params.remove(facet.name.to_sym))]), option_hash, {:class => 'updatable_facet'})
+  .options-wrapper
+    %span#show_options= t(:show_options)
+    %span#hide_options= t(:hide_options)
+    .triangle.show-options
+
+  .time-filters-and-facets-wrapper
+    - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
+    %ul{ :class => time_filters_css_class }
+      %li
+        = link_to_if(params[:tbs], t(:all_time), rss_feed ? send(search_path_method, search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
+          = content_tag :div, everything
+      - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
+        %li{ :class => (extent == :year ? 'last' : nil) }
+          = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), send(search_path_method, search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
+            = content_tag :div, last_time
+
+    = render_facet_navs(@affiliate, @search, search_path_method, search_params)

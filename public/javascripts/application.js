@@ -56,9 +56,6 @@ jQuery(document).ready(function () {
     jQuery('#search_query').change(function() {
         update_vertical_navigation_links(jQuery(this).attr('value'));
     });
-    jQuery('.updatable_facet').change(function() {
-      window.location.replace($(this).val());
-    });
 });
 
 function update_vertical_navigation_links(new_text) {
@@ -68,3 +65,27 @@ function update_vertical_navigation_links(new_text) {
     });
     original_query = new_text;
 }
+
+function toggle_more_or_less_options() {
+  var selector = '#left_column .options-wrapper .triangle';
+  jQuery('#left_column #show_options, #left_column #hide_options').toggle();
+  jQuery(selector).toggleClass('show-options');
+  jQuery(selector).toggleClass('hide-options');
+  jQuery('#left_column .time-filters-and-facets-wrapper').slideToggle();
+}
+
+function toggle_facets(element) {
+  jQuery(element).children('.more-facets, .less-facets').toggle();
+  jQuery(element).children('.triangle').toggleClass('show-options');
+  jQuery(element).children('.triangle').toggleClass('hide-options');
+  jQuery(element).closest('ul.facet').children('.collapsible').slideToggle();
+}
+
+jQuery(document).ready(function() {
+  jQuery('.options-wrapper').click(function() {
+    toggle_more_or_less_options();
+  });
+  jQuery('.more-facets-wrapper').click(function() {
+    toggle_facets(this);
+  });
+});

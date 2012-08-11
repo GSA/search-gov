@@ -97,13 +97,8 @@ body
     width: 142px
     h3
       margin: 0
-    h4
-      margin: 12px 0 4px 0
   #left_nav_label
     font-size: 1.5em
-    line-height: 1
-  #dublin_core_filter
-    font-size: 0.95em
     line-height: 1
   .summary-wrapper
     float: left
@@ -218,10 +213,9 @@ body
   overflow: hidden
   display: inline
   padding: 3px 0 0 0
-  ul.navigations, ul.time-filters
+  ul.navigations, ul.time-filters, ul.facet
     font-size: 1.1em
     margin: 0
-    padding: 15px 0
     list-style: none
     li
       margin: 0
@@ -230,6 +224,8 @@ body
         background-color: #F0F0F0
         +border-top-right-radius
         +border-bottom-right-radius
+      &.facet-name:hover
+        background-color: inherit
     a, div
       width: 118px
     a
@@ -245,11 +241,66 @@ body
       font-weight: bold
       padding: 1px 4px 1px 14px
       cursor: pointer
+      &.facet-name
+        border-width: 0
+        cursor: default
+        padding: 3px 4px 3px 18px
 
+  ul.navigations
+    padding: 12px 0 0
+  .time-filters-and-facets-wrapper
+    +clearfix
+    display: none
   ul.time-filters
     border-top: 1px solid #CACACA
+    padding: 12px 0
     &.no-active-nav
       border-top: 0
+  ul.facet
+    border-top: 1px solid #CACACA
+    padding: 12px 0
+    .collapsible
+      display: none
+    li .selected
+      padding: 0px 4px 0px 14px
+    li div.more-facets-wrapper
+      border: 0
+      font:
+        size: 1em
+        weight: normal
+      margin: 0 5px 0 0
+      padding: 3px 4px 3px 18px
+
+  .options-wrapper, .more-facets-wrapper, .less-facets-wrapper
+    +clearfix
+    font-size: 1.1em
+    margin-bottom: 15px
+    padding: 5px 4px 5px 18px
+    &:hover
+      background-color: #F0F0F0
+      +border-top-right-radius
+      +border-bottom-right-radius
+      cursor: pointer
+  #show_options, #hide_options, .more-facets, .less-facets
+    float: left
+    font-size: 0.85em
+    margin-right: 5px
+  #hide_options, .less-facets
+    display: none
+  .triangle
+    border:
+      color: transparent
+      style: solid
+    float: left
+    height: 0
+    margin-top: 5px
+    padding: 0
+    width: 0
+    &.show-options
+      border-width: 6px 6px 0
+    &.hide-options
+      border-width: 0 6px 6px
+
 * html #left_column
   ul.navigations, ul.time-filters
     li

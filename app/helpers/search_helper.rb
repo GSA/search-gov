@@ -376,6 +376,55 @@ module SearchHelper
     end
   end
 
+  def render_facet_navs(affiliate, search, search_path_method, search_params)
+    html = []
+    search.facets.each do |facet|
+      next unless facet.rows.any?
+      facet_navs = []
+      facet_navs << content_tag(:li, dublin_core_attribute(affiliate, facet.name), :class => 'facet-name')
+
+      any_nav = link_to_unless search_params[facet.name.to_sym].blank?, 'Any', send(search_path_method, search_params.remove(facet.name.to_sym)) do |name|
+        content_tag(:div, name, :class => 'selected')
+      end
+      facet_navs << content_tag(:li, any_nav.html_safe)
+
+      shown_items = 1
+
+      selected_row = facet.rows.select { |row| params[facet.name.to_sym] == row.value }.first
+      if selected_row
+        selected_nav = content_tag(:div, selected_row.value, :class => 'selected')
+        facet_navs << content_tag(:li, selected_nav.html_safe)
+        shown_items += 1
+      end
+
+      not_selected_rows = facet.rows.reject { |row| params[facet.name.to_sym] == row.value }
+      total_rows = shown_items + not_selected_rows.count
+      not_selected_rows.each do |row|
+        facet_nav = link_to(row.value, send(search_path_method, search_params.merge(facet.name.to_sym => row.value)))
+        if (total_rows <= 6) or (shown_items <= 4)
+          facet_class = nil
+        else
+          facet_class = 'collapsible'
+        end
+        facet_navs << content_tag(:li, facet_nav.html_safe, :class => facet_class)
+        shown_items += 1
+      end
+
+      if shown_items > 6
+        more_facets_wrapper = content_tag(:div, :class => 'more-facets-wrapper') do
+          content = []
+          content << content_tag(:span, t(:show_more), :class => 'more-facets')
+          content << content_tag(:span, t(:show_less), :class => 'less-facets')
+          content << content_tag(:span, nil, :class => 'triangle show-options')
+          content.join("\n").html_safe
+        end
+        facet_navs << content_tag(:li, more_facets_wrapper.html_safe)
+      end
+      (html << content_tag(:ul, facet_navs.join("\n").html_safe, :id => "facet_#{facet.name}", :class => 'facet')) unless facet_navs.empty?
+    end
+    html.join("\n").html_safe unless html.empty?
+  end
+
   private
 
   def shorten_url (url, length=42)
