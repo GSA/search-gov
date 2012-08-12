@@ -250,7 +250,6 @@ body
     padding: 12px 0 0
   .time-filters-and-facets-wrapper
     +clearfix
-    display: none
   ul.time-filters
     border-top: 1px solid #CACACA
     padding: 12px 0
@@ -281,12 +280,18 @@ body
       +border-top-right-radius
       +border-bottom-right-radius
       cursor: pointer
+  .options-wrapper
+    #hide_options, .hide-options
+      display: none
+    &.expanded
+      #show_options, .show-options
+        display: none
+      #hide_options, .hide-options
+        display: block
   #show_options, #hide_options, .more-facets, .less-facets
     float: left
     font-size: 0.85em
     margin-right: 5px
-  #hide_options, .less-facets
-    display: none
   .triangle
     border:
       color: transparent
@@ -300,6 +305,10 @@ body
       border-width: 6px 6px 0
     &.hide-options
       border-width: 0 6px 6px
+  .time-filters-and-facets-wrapper
+    display: none
+    &.expanded
+      display: block
 
 * html #left_column
   ul.navigations, ul.time-filters
