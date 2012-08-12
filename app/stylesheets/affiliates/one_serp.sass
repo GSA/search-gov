@@ -281,12 +281,12 @@ body
       +border-bottom-right-radius
       cursor: pointer
   .options-wrapper
-    #hide_options, .hide-options
+    #hide_options
       display: none
     &.expanded
-      #show_options, .show-options
+      #show_options
         display: none
-      #hide_options, .hide-options
+      #hide_options
         display: block
   #show_options, #hide_options, .more-facets, .less-facets
     float: left
@@ -309,6 +309,9 @@ body
     display: none
     &.expanded
       display: block
+  .more-facets-wrapper
+    .less-facets
+      display: none
 
 * html #left_column
   ul.navigations, ul.time-filters

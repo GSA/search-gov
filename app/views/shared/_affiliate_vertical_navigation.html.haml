@@ -14,7 +14,7 @@
   .options-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
     %span#show_options= t(:show_options)
     %span#hide_options= t(:hide_options)
-    %span{ :class => "triangle #{options_expanded ? 'hide-options' : 'show-options'}" }
+    %span.triangle{ :class => "#{options_expanded ? 'hide-options' : 'show-options'}" }
 
   .time-filters-and-facets-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
     - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
