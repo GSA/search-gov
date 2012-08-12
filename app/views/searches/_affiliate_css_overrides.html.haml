@@ -22,7 +22,7 @@
       li div
         border-left-color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
         color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
-    #left_column h3, #left_nav_label, #dublin_core_filter
+    #left_column h3, #left_nav_label, #left_column .facet-name, , #left_column .facet .selected
       color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     .default .affiliate_autocomplete .ui-menu-item
       a, span
@@ -35,8 +35,13 @@
         color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
         &:visited
           color: #{render_affiliate_css_property_value(css_property_hash, :visited_title_link_color)}
-      #left_column a:visited
-        color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
+      #left_column
+        a:visited, #show_options, #hide_options, .more-facets, .less-facets
+          color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
+        .triangle.show-options
+          border-top-color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
+        .triangle.hide-options
+          border-bottom-color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
     #skiplink
       a, a:visited
         color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}

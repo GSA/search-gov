@@ -572,7 +572,7 @@ class Affiliate < ActiveRecord::Base
 
   def nullify_blank_dublin_core_fields
     dublin_core_mappings.each_key do |facet_name|
-      dublin_core_mappings[facet_name.to_sym] = nil if dublin_core_mappings[facet_name.to_sym].empty?
+      dublin_core_mappings[facet_name.to_sym] = nil if dublin_core_mappings[facet_name.to_sym].blank?
     end unless dublin_core_mappings.nil?
   end
 

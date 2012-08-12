@@ -88,6 +88,6 @@ module NavigationsHelper
 
   def dublin_core_attribute(affiliate, facet_name)
     mapping = affiliate.dublin_core_mappings[facet_name] || facet_name.to_s.titleize
-    content_tag(:h4, mapping, :id => 'dublin_core_filter')
+    content_tag(:div, mapping, :class => 'facet-name')
   end
 end

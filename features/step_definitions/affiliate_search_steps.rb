@@ -105,7 +105,7 @@ Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |d
   page.should have_content(date_string)
 end
 
-Then /^I should see (\d+) news results$/ do |count|
+Then /^I should see (\d+) news results?$/ do |count|
   page.should have_selector(".newsitem", :count => count)
 end
 
@@ -139,4 +139,12 @@ Given /^the following FlickrPhotos exist:$/ do |table|
     flickr_photo.update_attributes(:date_taken => Date.parse(hash[:date_taken])) unless hash[:date_taken].blank?
   end
   FlickrPhoto.reindex
+end
+
+Then /^I should see (\d+) collapsible facet values?$/ do |count|
+  page.should have_selector('.collapsible', :count => count)
+end
+
+Then /^I should not see collapsible facet value$/ do
+  page.should_not have_selector('.collapsible')
 end
