@@ -173,10 +173,12 @@ Feature: Affiliate Search
     And I fill in "query" with "item"
     And I press "Search"
     And I follow "Press"
-    And I follow "Last week"
+    Then I should not see the left column options expanded
+    When I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see "item First news item for the feed"
     And I should see "item Next news item for the feed"
+    And I should see the left column options expanded
     And I should not see "More" in the left column
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
@@ -203,11 +205,12 @@ Feature: Affiliate Search
     And I should see "More" in the left column
 
     When I follow "olympics" in the subject facet selector
-    Then I should see 1 news result
-    And I should see "Sixth item"
+    Then I should see the left column options expanded
     And I should see a link to "Any" in the subject facet selector
     And I should see "olympics" in the subject facet selector
     And I should not see a link to "olympics" in the subject facet selector
+    And I should see 1 news result
+    And I should see "Sixth item"
 
     When I am on bar.gov's news search page
     And I fill in "query" with "item"

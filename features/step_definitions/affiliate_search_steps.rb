@@ -148,3 +148,12 @@ end
 Then /^I should not see collapsible facet value$/ do
   page.should_not have_selector('.collapsible')
 end
+
+Then /^I should see the left column options expanded$/ do
+  page.should have_selector('#left_column .options-wrapper.expanded')
+end
+
+Then /^I should not see the left column options expanded$/ do
+  page.should_not have_selector('#left_column .options-wrapper.expanded')
+end
+
