@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808061238) do
+ActiveRecord::Schema.define(:version => 20120815184600) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -433,6 +434,15 @@ ActiveRecord::Schema.define(:version => 20120808061238) do
   end
 
   add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"
+
+  create_table "forms", :force => true do |t|
+    t.string   "agency"
+    t.string   "number"
+    t.string   "url"
+    t.text     "details"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "gov_forms", :force => true do |t|
     t.string   "name",        :null => false
