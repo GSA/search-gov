@@ -1,8 +1,9 @@
 class Affiliates::AffiliatesController < SslController
+  newrelic_ignore_apdex
   before_filter :setup_help_link
-  
+
   layout "account"
-  
+
   protected
 
   def require_affiliate
@@ -44,7 +45,7 @@ class Affiliates::AffiliatesController < SslController
     end
     true
   end
-  
+
   def setup_help_link
     help_link_key = request.fullpath.split("/").last
     @help_link = HelpLink.find_by_action_name(help_link_key)

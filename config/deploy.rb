@@ -3,6 +3,7 @@ require 'bundler/capistrano'
 set :stages, %w(staging production)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require 'new_relic/recipes'
 
 set :application, "usasearch"
 set :scm,         "git"
@@ -26,7 +27,7 @@ namespace :deploy do
   task :maybe_migrate, :roles => :db, :only => {:primary => true} do
     find_and_execute_task("deploy:migrate") if exists?(:migrate)
   end
-  
+
   desc "Run 'compass compile' to build the stylesheets"
   task :compass_compile, :roles => :app do
     run "cd #{current_path} ; bundle exec compass compile --output-style compressed"

@@ -1,4 +1,5 @@
 class Admin::AdminController < SslController
+  newrelic_ignore_apdex
   layout "admin"
   before_filter :require_affiliate_admin
 

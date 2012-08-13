@@ -50,6 +50,7 @@ gem 'rspec-core'
 gem 'cucumber'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dynamic_form'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
