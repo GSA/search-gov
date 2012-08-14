@@ -16,6 +16,7 @@ before "deploy:restart", "deploy:compass_compile"
 before "deploy:symlink", "deploy:web:disable"
 after :deploy, "deploy:web:enable"
 after :deploy, 'deploy:cleanup'
+after "deploy:update", "newrelic:notice_deployment"
 
 namespace :deploy do
   desc "Restart Application"
