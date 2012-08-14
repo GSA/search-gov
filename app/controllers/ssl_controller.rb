@@ -1,3 +1,3 @@
 class SslController < ApplicationController
-  ssl_required
+  ssl_exceptions
 end
