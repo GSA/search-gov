@@ -1,50 +1,47 @@
 require 'spec_helper'
 
 describe "USA.gov rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/usa_gov.rake"
+    Rake.application.rake_require('tasks/usa_gov')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:crawl_usa_gov" do
-    before do
-      @task_name = "usasearch:crawl_usa_gov"
-    end
+    let(:task_name) { 'usasearch:crawl_usa_gov' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     it "should initiate the crawling/scraping of USA.gov" do
       SitePage.should_receive(:crawl_usa_gov).once
-      @rake[@task_name].invoke
+      @rake[task_name].invoke
     end
   end
 
   describe "usasearch:crawl_answers_usa_gov" do
-    before do
-      @task_name = "usasearch:crawl_answers_usa_gov"
-    end
+    let(:task_name) { 'usasearch:crawl_answers_usa_gov' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     it "should initiate the crawling/scraping of USA.gov" do
       SitePage.should_receive(:crawl_answers_usa_gov).once
-      @rake[@task_name].invoke
+      @rake[task_name].invoke
     end
   end
 
   describe "usasearch:detect_objectionable_content" do
-    before do
-      @task_name = "usasearch:detect_objectionable_content"
-    end
+    let(:task_name) { 'usasearch:detect_objectionable_content' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     context "when always filtered search terms do not generate search results on adult-enabled SERPs" do
@@ -56,7 +53,7 @@ describe "USA.gov rake tasks" do
 
       it "should not send an alert email" do
         Emailer.should_not_receive(:deliver_objectionable_content_alert)
-        @rake[@task_name].invoke
+        @rake[task_name].invoke
       end
     end
 
@@ -73,14 +70,14 @@ describe "USA.gov rake tasks" do
       context "when no email recipient is passed in" do
         it "should default to a manager's email" do
           Emailer.should_receive(:deliver_objectionable_content_alert).once.with("amy.farrajfeijoo@gsa.gov", @array)
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
 
       context "when target date is passed in" do
         it "should calculate moving queries for that date" do
           Emailer.should_receive(:deliver_objectionable_content_alert).once.with("foo@bar.com", @array)
-          @rake[@task_name].invoke("foo@bar.com")
+          @rake[task_name].invoke("foo@bar.com")
         end
       end
     end

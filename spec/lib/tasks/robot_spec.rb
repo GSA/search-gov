@@ -1,25 +1,24 @@
 require 'spec_helper'
 
 describe "Robot rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + 'lib/tasks/robot.rake'
+    Rake.application.rake_require('tasks/robot')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:robot:populate" do
-    before do
-      @task_name = "usasearch:robot:populate"
-    end
+    let(:task_name) { 'usasearch:robot:populate' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     it "should populate/delete/manage robots from indexed_domains entries" do
       Robot.should_receive(:populate_from_indexed_domains)
-      @rake[@task_name].invoke
+      @rake[task_name].invoke
     end
   end
 

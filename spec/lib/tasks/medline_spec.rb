@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe "Medline rake tasks" do
 
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/medline.rake"
+    Rake.application.rake_require('tasks/medline')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:medline:load" do
     let(:task_name) { 'usasearch:medline:load' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
       @rake[task_name].prerequisites.should include("environment")

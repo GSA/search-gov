@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe "daily_query_stats rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/daily_query_stats.rake"
+    Rake.application.rake_require('tasks/daily_query_stats')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:daily_query_stats" do
-
     describe "usasearch:daily_query_stats:reindex_day" do
       let(:task_name) { "usasearch:daily_query_stats:reindex_day" }
+      before { @rake[task_name].reenable }
 
       it "should call #reindex for the given day" do
         DailyQueryStat.should_receive(:reindex_day).with("2011-08-13")
