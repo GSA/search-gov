@@ -1,25 +1,24 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Sitemap rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/sitemap.rake"
+    Rake.application.rake_require('tasks/sitemap')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:sitemap:refresh" do
-    before do
-      @task_name = "usasearch:sitemap:refresh"
-    end
+    let(:task_name) { 'usasearch:sitemap:refresh' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     it "should fetch/index URLs from all affiliate sitemaps" do
       Sitemap.should_receive(:refresh)
-      @rake[@task_name].invoke
+      @rake[task_name].invoke
     end
   end
 

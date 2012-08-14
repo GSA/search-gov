@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 shared_examples "a redirect to searchblog" do
   before { get "#{path}" }

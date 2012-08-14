@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Affiliates::SiteDomainsController do
   fixtures :affiliates, :users

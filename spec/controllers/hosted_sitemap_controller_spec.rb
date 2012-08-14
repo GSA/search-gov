@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe HostedSitemapController, "#show" do
   it "should set the request fomat to :xml" do

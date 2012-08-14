@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe RssFeedUrl do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls

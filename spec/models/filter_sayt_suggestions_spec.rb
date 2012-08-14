@@ -1,8 +1,8 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe FilterSaytSuggestions, "#perform(phrase)" do
   fixtures :affiliates
-  
+
   before do
     @affiliate = affiliates(:usagov_affiliate)
     @phrase = "ought to get deleted xxx"

@@ -1,40 +1,39 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Affiliate RSS feed rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/rss_feed.rake"
+    Rake.application.rake_require('tasks/rss_feed')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:rss_feed:refresh_all" do
-    before do
-      @task_name = "usasearch:rss_feed:refresh_all"
-    end
+    let(:task_name) { 'usasearch:rss_feed:refresh_all' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     context "without freshen_managed_feeds parameter" do
       it "should refresh non managed affiliate RSS feeds" do
         RssFeed.should_receive(:refresh_all).with(false)
-        @rake[@task_name].invoke
+        @rake[task_name].invoke
       end
     end
 
     context "with freshen_managed_feeds=true parameter" do
       it "should refresh managed affiliate RSS feeds" do
         RssFeed.should_receive(:refresh_all).with(true)
-        @rake[@task_name].invoke('true')
+        @rake[task_name].invoke('true')
       end
     end
 
     context "with freshen_managed_feeds != true parameter" do
       it "should refresh managed affiliate RSS feeds" do
         RssFeed.should_receive(:refresh_all).with(false)
-        @rake[@task_name].invoke('false')
+        @rake[task_name].invoke('false')
       end
     end
   end

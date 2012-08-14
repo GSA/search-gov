@@ -1,28 +1,28 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Features-related rake tasks" do
   fixtures :affiliates, :features, :users
-  before do
+
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/features.rake"
+    Rake.application.rake_require('tasks/features')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:features" do
     describe "usasearch:features:record_feature_usage" do
-      before do
-        @task_name = "usasearch:features:record_feature_usage"
-      end
+      let(:task_name) { 'usasearch:features:record_feature_usage' }
+      before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
       context "when not given a data file or feature internal name" do
         it "should print out an error message" do
           Rails.logger.should_receive(:error)
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
 
@@ -43,7 +43,7 @@ describe "Features-related rake tasks" do
         it "should create AffiliateFeatureAdditions for new affiliate IDs for that feature, ignoring dupes" do
           @f1.affiliates.size.should == 1
           @f1.affiliates.first.should == @a1
-          @rake[@task_name].invoke(@f1.internal_name, @input_file_name)
+          @rake[task_name].invoke(@f1.internal_name, @input_file_name)
           @f1.affiliates.size.should == 2
           @f1.affiliates.last.should == @a2
         end
@@ -55,12 +55,11 @@ describe "Features-related rake tasks" do
     end
 
     describe "usasearch:features:email_admin_about_new_feature_usage" do
-      before do
-        @task_name = "usasearch:features:email_admin_about_new_feature_usage"
-      end
+      let(:task_name) { 'usasearch:features:email_admin_about_new_feature_usage' }
+      before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
       context "when there is info to email" do
@@ -68,7 +67,7 @@ describe "Features-related rake tasks" do
           emailer = mock(Emailer)
           Emailer.should_receive(:new_feature_adoption_to_admin).and_return emailer
           emailer.should_receive(:deliver)
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
 
@@ -78,26 +77,27 @@ describe "Features-related rake tasks" do
         end
 
         it "should handle the nil email" do
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
     end
 
     describe "usasearch:features:user_feature_reminder" do
-      before do
-        @task_name = "usasearch:features:user_feature_reminder"
-      end
+      let(:task_name) { 'usasearch:features:user_feature_reminder' }
+      before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
-      describe "created_days_back param" do
+      context "created_days_back param" do
+        before { @rake[task_name].reenable }
+
         context "when a created_days_back param is not specified" do
           it "should default to 3 days" do
             target_day = 3.days.ago
             User.should_receive(:where).with(["created_at between ? and ?", target_day.beginning_of_day, target_day.end_of_day]).and_return []
-            @rake[@task_name].invoke
+            @rake[task_name].invoke
           end
         end
 
@@ -105,7 +105,7 @@ describe "Features-related rake tasks" do
           it "should use the param" do
             target_day = 10.days.ago
             User.should_receive(:where).with(["created_at between ? and ?", target_day.beginning_of_day, target_day.end_of_day]).and_return []
-            @rake[@task_name].invoke(10)
+            @rake[task_name].invoke(10)
           end
         end
       end
@@ -115,6 +115,7 @@ describe "Features-related rake tasks" do
         let(:ambitious_user) { users(:another_affiliate_manager) }
 
         before do
+          @rake[task_name].reenable
           AffiliateFeatureAddition.delete_all
           ambitious_user.affiliates.each { |a| a.features << Feature.all }
           User.stub!(:where).and_return [lazy_user, ambitious_user]
@@ -124,7 +125,7 @@ describe "Features-related rake tasks" do
 
         it "should email the ones with affiliates with unimplemented features" do
           Emailer.should_receive(:feature_admonishment).once.with(lazy_user, lazy_user.affiliates).and_return @emailer
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
     end

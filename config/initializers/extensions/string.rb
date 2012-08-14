@@ -1,3 +1,4 @@
+# coding: utf-8
 class String
   NON_CAPITALIZED = %w{ a al an and ante as at bajo but by cabe con conmigo consigo contigo contra de del desde
       durante e el en entre et etc for from hacia hasta in into la las los mediante ni nor o of off on onto or out

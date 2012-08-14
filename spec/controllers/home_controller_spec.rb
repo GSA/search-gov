@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe HomeController do
   fixtures :affiliates
@@ -7,7 +7,7 @@ describe HomeController do
     before do
       @affiliate = affiliates(:usagov_affiliate)
     end
-    
+
     context "when no locale is specified" do
       before do
         get :index

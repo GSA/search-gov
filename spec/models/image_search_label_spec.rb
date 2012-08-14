@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe ImageSearchLabel do
   let(:en_affiliate) { Affiliate.create!(:display_name => 'en Affiliate')}

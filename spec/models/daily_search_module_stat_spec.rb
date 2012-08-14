@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe DailySearchModuleStat do
   fixtures :daily_search_module_stats, :search_modules, :affiliates

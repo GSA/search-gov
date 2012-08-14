@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe ApiController do
   fixtures :affiliates, :users, :site_domains

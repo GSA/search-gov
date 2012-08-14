@@ -17,7 +17,6 @@ gem 'authlogic', '>=3.0.2'
 gem 'multi_db'
 gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
 gem 'airbrake'
-gem 'fastercsv'
 gem 'yajl-ruby', :require => 'yajl'
 gem 'redis', '= 2.1.1'
 gem 'redis-namespace'
@@ -29,14 +28,12 @@ gem 'paperclip-cloudfiles', :require => 'paperclip'
 gem 'sauce'
 gem 'parallel'
 gem 'aws-s3', :require => 'aws/s3', :git => 'git://github.com/GSA-OCSIT/aws-s3.git'
-gem 'SystemTimer'
 gem 'high_voltage'
-gem 'backports'
 gem 'mechanize'
 gem 'googlecharts'
 gem 'sanitize'
 gem 'tweetstream', "=1.1.4"
-gem 'twitter'
+gem 'twitter', '~> 3.0'
 gem 'flickraw'
 gem 'bartt-ssl_requirement', '~>1.4.0', :require => 'ssl_requirement'
 gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git', :branch => 'rails-3.2'
@@ -51,6 +48,8 @@ gem 'cucumber'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dynamic_form'
 gem 'newrelic_rpm'
+gem 'american_date'
+gem 'sass'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -74,7 +73,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'launchy'
-  gem 'rcov'
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
   gem 'no_peeping_toms', :git => 'git://github.com/leereilly/no-peeping-toms.git', :branch => "fix-instancemethods-deprecation-warning"
@@ -84,6 +82,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
 end

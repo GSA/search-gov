@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Affiliates::AnalyticsController do
   fixtures :users, :affiliates
@@ -275,7 +275,7 @@ describe Affiliates::AnalyticsController do
               response.body.should_not contain(/Download top queries for the week of 2012-04-15/)
               response.body.should_not contain(/Download top queries for the week of 2012-04-22/)
             end
-          end          
+          end
         end
       end
     end

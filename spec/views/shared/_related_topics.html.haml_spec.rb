@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe "shared/_related_topics.html.haml" do
   fixtures :affiliates

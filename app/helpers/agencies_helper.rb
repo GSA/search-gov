@@ -1,3 +1,4 @@
+# coding: utf-8
 module AgenciesHelper
   def agency_url_matches_by_locale(result_url, agency, locale)
     agency.agency_urls.find_by_url_and_locale(result_url, locale.to_s).nil? ? false : true

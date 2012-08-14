@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe FeaturedCollectionKeyword do
   fixtures :affiliates, :users, :featured_collections

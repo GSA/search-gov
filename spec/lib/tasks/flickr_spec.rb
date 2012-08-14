@@ -1,21 +1,20 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Flickr rake tasks" do
   fixtures :affiliates
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/flickr.rake"
+    Rake.application.rake_require('tasks/flickr')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:flickr:import_photos" do
-    before do
-      @task_name = "usasearch:flickr:import_photos"
-    end
+    let(:task_name) { 'usasearch:flickr:import_photos' }
+    before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[@task_name].prerequisites.should include("environment")
+      @rake[task_name].prerequisites.should include("environment")
     end
 
     it "should call import photos for all affiliates" do
@@ -23,7 +22,7 @@ describe "Flickr rake tasks" do
       Affiliate.should_receive(:all).and_return affiliates
       affiliates.first.should_receive(:import_flickr_photos).and_return true
       affiliates.last.should_receive(:import_flickr_photos).and_return true
-      @rake[@task_name].invoke
+      @rake[task_name].invoke
     end
   end
 

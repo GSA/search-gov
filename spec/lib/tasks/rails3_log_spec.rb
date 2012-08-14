@@ -1,28 +1,27 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "rails3_log rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/rails3_log.rake"
+    Rake.application.rake_require('tasks/rails3_log')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:rails3_log" do
 
     describe "usasearch:rails3_log:transform_to_hive_elapsed_times_format" do
-      before do
-        @task_name = "usasearch:rails3_log:transform_to_hive_elapsed_times_format"
-      end
+      let(:task_name) { 'usasearch:rails3_log:transform_to_hive_elapsed_times_format' }
+      before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
       context "when not passed a log file parameter" do
         it "should print out an error message" do
           Rails.logger.should_receive(:error)
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
 
@@ -34,7 +33,7 @@ describe "rails3_log rake tasks" do
           line4 = ''
           require 'stringio'
           $stdout = StringIO.new
-          @rake[@task_name].invoke("spec/fixtures/txt/rails3_log.txt")
+          @rake[task_name].invoke("spec/fixtures/txt/rails3_log.txt")
           $stdout.string.should == [line1, line2, line3, line4].join("\n")
         end
       end

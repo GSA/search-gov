@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe FlickrProfileImporter, "#perform(flickr_profile_id)" do
   fixtures :affiliates

@@ -150,7 +150,7 @@ class Recall < ActiveRecord::Base
     end
 
     def load_cpsc_data_from_file(file_path)
-      FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
+      CSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
     end
 
     def load_cpsc_data_from_xml_feed(url)

@@ -1,17 +1,19 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Report generation rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/reports.rake"
+    Rake.application.rake_require('tasks/reports')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:reports" do
     describe "usasearch:reports:generate_top_queries_from_file" do
+      let(:task_name) { 'usasearch:reports:generate_top_queries_from_file' }
+
       before do
-        @task_name = "usasearch:reports:generate_top_queries_from_file"
+        @rake[task_name].reenable
         AWS::S3::Base.stub!(:establish_connection).and_return true
         AWS::S3::Bucket.stub!(:find).and_return true
         AWS::S3::S3Object.stub!(:store).and_return true
@@ -35,22 +37,22 @@ describe "Report generation rake tasks" do
       context "when file_name or period or max entries for each group is not set" do
         it "should log an error" do
           Rails.logger.should_receive(:error)
-          @rake[@task_name].invoke
+          @rake[task_name].invoke
         end
       end
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
       it "should establish an AWS S3 connection" do
         AWS::S3::Base.should_receive(:establish_connection!).once
-        @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
+        @rake[task_name].invoke(@input_file_name, "monthly", "1000")
       end
 
       it "should check to make sure the bucket for search reports exists" do
         AWS::S3::Bucket.should_receive(:find).with(AWS_BUCKET_NAME).once
-        @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
+        @rake[task_name].invoke(@input_file_name, "monthly", "1000")
       end
 
       context "when the reports bucket does not exist" do
@@ -61,7 +63,7 @@ describe "Report generation rake tasks" do
 
         it "should create the bucket if it doesn't exist" do
           AWS::S3::Bucket.should_receive(:create).with(AWS_BUCKET_NAME).once
-          @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
+          @rake[task_name].invoke(@input_file_name, "monthly", "1000")
         end
       end
 
@@ -69,7 +71,7 @@ describe "Report generation rake tasks" do
         AWS::S3::S3Object.should_receive(:store).with(anything(), @affiliate1_csv_output, AWS_BUCKET_NAME).once.ordered
         AWS::S3::S3Object.should_receive(:store).with(anything(), @affiliate2_csv_output, AWS_BUCKET_NAME).once.ordered
         AWS::S3::S3Object.should_receive(:store).with(anything(), @all_csv_output, AWS_BUCKET_NAME).once.ordered
-        @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
+        @rake[task_name].invoke(@input_file_name, "monthly", "1000")
       end
 
       context "when period is set to monthly" do
@@ -78,7 +80,7 @@ describe "Report generation rake tasks" do
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymm}.csv", anything(), anything()).once.ordered
-          @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
+          @rake[task_name].invoke(@input_file_name, "monthly", "1000")
         end
       end
 
@@ -88,7 +90,7 @@ describe "Report generation rake tasks" do
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymmdd}_weekly.csv", anything(), anything()).once.ordered
-          @rake[@task_name].invoke(@input_file_name, "weekly", "1000")
+          @rake[task_name].invoke(@input_file_name, "weekly", "1000")
         end
       end
 
@@ -98,7 +100,7 @@ describe "Report generation rake tasks" do
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
           AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
-          @rake[@task_name].invoke(@input_file_name, "daily", "1000")
+          @rake[task_name].invoke(@input_file_name, "daily", "1000")
         end
       end
 
@@ -106,7 +108,7 @@ describe "Report generation rake tasks" do
         it "should truncate the output" do
           truncated_affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count", "query1,11,5", ""].join("\n")
           AWS::S3::S3Object.should_receive(:store).with(anything(), truncated_affiliate1_csv_output, AWS_BUCKET_NAME).once
-          @rake[@task_name].invoke(@input_file_name, "daily", "1")
+          @rake[task_name].invoke(@input_file_name, "daily", "1")
         end
       end
 
@@ -117,7 +119,7 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymm}.csv", anything(), anything()).once.ordered
-            @rake[@task_name].invoke(@input_file_name, "monthly", "1000", '2011-02-02')
+            @rake[task_name].invoke(@input_file_name, "monthly", "1000", '2011-02-02')
           end
         end
 
@@ -127,13 +129,13 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}_weekly.csv", anything(), anything())
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}_weekly.csv", anything(), anything())
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymmdd}_weekly.csv", anything(), anything())
-            @rake[@task_name].invoke(@input_file_name, "weekly", "1000", '2011-02-02')
+            @rake[task_name].invoke(@input_file_name, "weekly", "1000", '2011-02-02')
           end
 
           context "when processing data for the current Sunday-based week" do
             it "should not include partial data accumulated for today" do
               AWS::S3::S3Object.should_receive(:store).with(anything(), @affiliate1_csv_output, AWS_BUCKET_NAME)
-              @rake[@task_name].invoke(@input_file_name, "weekly", "1000")
+              @rake[task_name].invoke(@input_file_name, "weekly", "1000")
             end
           end
         end
@@ -144,7 +146,7 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
             AWS::S3::S3Object.should_receive(:store).with("analytics/reports/_all_/_all__top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
-            @rake[@task_name].invoke(@input_file_name, "daily", "1000", '2011-02-01')
+            @rake[task_name].invoke(@input_file_name, "daily", "1000", '2011-02-01')
           end
         end
 
@@ -156,27 +158,28 @@ describe "Report generation rake tasks" do
 
     describe "usasearch:reports:email_monthly_reports" do
       fixtures :users, :affiliates
+
+      let(:task_name) { 'usasearch:reports:email_monthly_reports' }
+
       before do
-        @task_name = "usasearch:reports:email_monthly_reports"
+        @rake[task_name].reenable
         @emailer = mock(Emailer)
         @emailer.stub!(:deliver).and_return true
       end
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
-      context "when some users are unapproved, not an affiliate, or do not have any affiliates set up yet" do
-        it "should deliver an email to each approved affiliate user with at least one affiliate" do
-          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
-          @rake[@task_name].invoke
-        end
+      it "should deliver an email to each user" do
+        Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(2).times.and_return @emailer
+        @rake[task_name].invoke
       end
 
       context "when a year/month is passed as a parameter" do
         it "should deliver the affiliate monthly report to each user with the specified date" do
           Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(2).times.and_return @emailer
-          @rake[@task_name].invoke("2012-04")
+          @rake[task_name].invoke("2012-04")
         end
       end
     end

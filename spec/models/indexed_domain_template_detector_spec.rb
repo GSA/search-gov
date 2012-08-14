@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe IndexedDomainTemplateDetector do
   fixtures :indexed_domains
@@ -21,11 +21,33 @@ describe IndexedDomainTemplateDetector do
   end
 
   describe "#detect_common_substring" do
-    let(:idtd) { IndexedDomainTemplateDetector.new(indexed_domain) }
+    fixtures :affiliates
 
     context "when there are fewer than 10 docs that are HTML and OK for the indexed domain" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
       before do
-        idtd.stub!(:get_good_html_idocs_ids).and_return 1.upto(9).to_a
+        affiliate.indexed_documents.destroy_all
+        affiliate.update_attributes!(:results_source => 'odie')
+        10.upto(18) do |x|
+          affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
+                                              :title => "Some HTML Title#{x}",
+                                              :description => "This is HTML document number #{x}.",
+                                              :last_crawl_status => IndexedDocument::OK_STATUS,
+                                              :body => "some content in this HTML document #{x}",
+                                              :doctype => 'html',
+                                              :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8#{x}")
+        end
+        affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page_with_error.html",
+                                            :last_crawl_status => 'error')
+        26.upto(30) do |x|
+          affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.pdf",
+                                              :title => "Some PDF Title#{x}",
+                                              :description => "This is PDF document number #{x}.",
+                                              :last_crawl_status => IndexedDocument::OK_STATUS,
+                                              :body => "some content in this PDF document #{x}",
+                                              :doctype => 'pdf',
+                                              :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8#{x}")
+        end
       end
 
       it "should return nil" do
@@ -34,8 +56,19 @@ describe IndexedDomainTemplateDetector do
     end
 
     context "when there are multiple docs for the indexed domain" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
       before do
-        idtd.stub!(:get_good_html_idocs_ids).and_return 1.upto(10).to_a
+        affiliate.indexed_documents.destroy_all
+        affiliate.update_attributes!(:results_source => 'odie')
+        10.upto(19) do |x|
+          affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
+                                              :title => "Some HTML Title#{x}",
+                                              :description => "This is HTML document number #{x}.",
+                                              :last_crawl_status => IndexedDocument::OK_STATUS,
+                                              :body => "some content in this document #{x}",
+                                              :doctype => 'html',
+                                              :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8#{x}")
+        end
       end
 
       context "when the substring is long enough and has a high enough saturation percentage" do
@@ -171,5 +204,4 @@ describe IndexedDomainTemplateDetector do
       idtd.compute_saturation(lcs).should == 75.0
     end
   end
-
 end

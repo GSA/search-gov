@@ -296,14 +296,14 @@ module ApplicationHelper
       # we prefer to chop at word boundaries
 
       when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE
-        mb_chars = node.text.mb_chars
+        mb_chars = node.text
 
         if mb_chars.length <= max_chars
           buffer << mb_chars
           max_chars -= mb_chars.length
         else
-          last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0) rescue 0
-          truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
+          last_space_index = (mb_chars.rindex(/\s/, max_chars) || 0) rescue 0
+          truncated_text = mb_chars[0..last_space_index].strip unless last_space_index.nil?
           buffer << "#{truncated_text}..."
           max_chars = 0
         end

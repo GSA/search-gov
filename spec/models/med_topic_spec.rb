@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe MedTopic do
   let(:valid_attributes) {
@@ -256,7 +257,9 @@ describe MedTopic do
 
       before do
         File.should_receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
-        File.should_receive(:open).with(/#{staging_xml_file_path}$/, 'w+').and_yield(staging_file)
+        File.should_receive(:open).
+            with(/#{staging_xml_file_path}$/, 'w+', :encoding => Encoding::BINARY).
+            and_yield(staging_file)
 
         Net::HTTP.should_receive(:get_response).with(medline_uri).and_yield(response)
         response.should_receive(:read_body).and_yield(xml_content)

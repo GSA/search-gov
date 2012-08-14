@@ -15,7 +15,7 @@ class MedTopic < ActiveRecord::Base
     staging_medline_xml_path = "#{xml_file_path}-staging"
     medline_xml_url = "#{MEDLINE_BASE_VOCAB_URL}#{xml_file_name}"
 
-    File.open(staging_medline_xml_path, 'w+') do |staging_file|
+    File.open(staging_medline_xml_path, 'w+', :encoding => Encoding::BINARY) do |staging_file|
       Net::HTTP.get_response(URI.parse(medline_xml_url)) do |response|
         response.read_body do |fragment|
           staging_file.write(fragment)

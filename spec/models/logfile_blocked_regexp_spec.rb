@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 describe LogfileBlockedRegexp do
   fixtures :logfile_blocked_regexps
 

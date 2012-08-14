@@ -1,3 +1,4 @@
+# coding: utf-8
 module SearchHelper
 
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
@@ -187,14 +188,14 @@ module SearchHelper
   def translate_bing_highlights(body, excluded_terms = [])
     excluded_terms.each do |term|
       body.scan(/#{Regexp.escape(term)}/i).each do |term_variant|
-        body.gsub!(/\xEE\x80\x80#{Regexp.escape(term_variant)}\xEE\x80\x81/, term_variant)
+        body.gsub!(/\uE000#{Regexp.escape(term_variant)}\uE001/, term_variant)
       end
     end
-    body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
+    body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
 
   def strip_bing_highlights(body)
-    body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')
+    body.gsub(/\uE000/, '').gsub(/\uE001/, '')
   end
 
   def shunt_from_bing_to_usasearch(bingurl, affiliate)

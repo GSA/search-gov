@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe URI do
   describe "#self.merge_unless_recursive(self_url, target_url)?" do

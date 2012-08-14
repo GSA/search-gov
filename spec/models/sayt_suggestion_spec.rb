@@ -1,4 +1,5 @@
-require 'spec/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe SaytSuggestion do
   fixtures :sayt_suggestions, :misspellings, :affiliates

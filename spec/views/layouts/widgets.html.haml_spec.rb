@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "layouts/widgets.html.haml" do
   context "when page is displayed" do

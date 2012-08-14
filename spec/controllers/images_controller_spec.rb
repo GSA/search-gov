@@ -1,8 +1,8 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe ImagesController do
   fixtures :affiliates
-  
+
   describe "#index" do
     before do
       @affiliate = affiliates(:usagov_affiliate)

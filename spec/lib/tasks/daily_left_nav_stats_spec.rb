@@ -1,17 +1,17 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "daily_left_nav_stats rake tasks" do
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + "lib/tasks/daily_left_nav_stats.rake"
+    Rake.application.rake_require('tasks/daily_left_nav_stats')
     Rake::Task.define_task(:environment)
   end
 
   describe "usasearch:daily_left_nav_stat" do
-
     describe "usasearch:daily_left_nav_stat:bulk_load" do
       let(:task_name) { "usasearch:daily_left_nav_stat:bulk_load" }
+      before { @rake[task_name].reenable }
 
       it "should call #bulk_load with the data file for the given day" do
         DailyLeftNavStat.should_receive(:bulk_load).with("/data/file.txt","2011-08-13")

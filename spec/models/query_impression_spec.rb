@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe QueryImpression do
   describe "#log(vertical, affiliate_name, query, modules)" do
@@ -15,6 +15,6 @@ describe QueryImpression do
         str.should include('"time":"2000-01-01 20:15:01"')
       end
       QueryImpression.log(:recall, Affiliate::USAGOV_AFFILIATE_NAME, "my query", %w{BWEB BSPEL})
-    end    
+    end
   end
 end

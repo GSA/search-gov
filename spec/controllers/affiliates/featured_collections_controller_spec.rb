@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Affiliates::FeaturedCollectionsController do
   fixtures :affiliates, :users, :featured_collections

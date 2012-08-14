@@ -1,24 +1,23 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Bulk Import rake tasks" do
   fixtures :users
-  before do
+  before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    load Rails.root + 'lib/tasks/bulk_import.rake'
+    Rake.application.rake_require('tasks/bulk_import')
     Rake::Task.define_task(:environment)
   end
 
-  describe "usasearch:bulk_import" do  
+  describe "usasearch:bulk_import" do
     describe "usasearch:bulk_import:google_xml" do
-      before do
-        @task_name = "usasearch:bulk_import:google_xml"
-      end
+      let(:task_name) { 'usasearch:bulk_import:google_xml' }
+      before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
-      
+
       context "when a file and default user email is specified" do
         before do
           @user = users(:affiliate_manager)
@@ -28,9 +27,9 @@ describe "Bulk Import rake tasks" do
           @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
           @xml_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "xml", "google_bulk.xml")
         end
-        
+
         it "should create affiliates corresponding to the information in the csv, and log errors if there is a problem creating an affiliate" do
-          @rake[@task_name].invoke(@xml_file_path, @user.email)
+          @rake[task_name].invoke(@xml_file_path, @user.email)
           Affiliate.all(:conditions => ["name LIKE ?", "test%"]).size.should == 2
           (first_affiliate = Affiliate.find_by_name('test1')).should_not be_nil
           first_affiliate.users.count.should == 1
