@@ -7,8 +7,8 @@ before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
 task :restart_resque_workers, :roles => :web do
-  run "sudo /home/jwynne/scripts/stop_resque_workers"
-  run "sudo /home/jwynne/scripts/start_resque_workers"
+  run "/home/jwynne/scripts/stop_resque_workers"
+  run "/home/jwynne/scripts/start_resque_workers"
 end
 
 task :warmup, :roles => :web do

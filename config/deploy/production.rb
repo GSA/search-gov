@@ -12,13 +12,13 @@ before "deploy:cleanup", "restart_resque_workers"
 before "deploy:cleanup", "restart_twitter_stream"
 
 task :restart_resque_workers, :roles => :resque_workers do
-  run "sudo /home/jwynne/scripts/stop_resque_workers"
-  run "sudo /home/jwynne/scripts/start_resque_workers"
+  run "/home/jwynne/scripts/stop_resque_workers"
+  run "/home/jwynne/scripts/start_resque_workers"
 end
 
 task :restart_twitter_stream, :roles => :cron do
-  run "sudo /home/jwynne/scripts/stop_twitter_stream"
-  run "sudo /home/jwynne/scripts/start_twitter_stream"
+  run "/home/jwynne/scripts/stop_twitter_stream"
+  run "/home/jwynne/scripts/start_twitter_stream"
 end
 
 task :production_yaml_files, :except => { :no_release => true } do
