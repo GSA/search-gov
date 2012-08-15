@@ -506,7 +506,7 @@ describe SearchHelper do
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
       content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now, :image)
-      content.should == "return clk('NASA\\'s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
+      content.should == "return clk('NASA\\&#x27;s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
     end
   end
 
