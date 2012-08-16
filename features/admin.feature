@@ -291,6 +291,9 @@ Feature:  Administration
     Then I should see the following breadcrumbs: USASearch > Super Admin > CommonSubstrings
 
     When I go to the admin home page
+    And I follow "Form Agencies"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Form Agencies
+
+    When I go to the admin home page
     And I follow "Forms"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Forms
-

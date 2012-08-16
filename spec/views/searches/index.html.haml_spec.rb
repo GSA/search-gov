@@ -33,6 +33,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:indexed_documents).and_return nil
     @search.stub!(:photos).and_return nil
     @search.stub!(:tweets)
+    @search.stub!(:has_forms?).and_return false
     assign(:search, @search)
   end
 

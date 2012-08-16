@@ -147,3 +147,19 @@ Then /^I should not see the left column options expanded$/ do
   page.should_not have_selector('#left_column .options-wrapper.expanded')
 end
 
+Given /^the following FormAgencies exist:$/ do |table|
+  table.hashes.each { |hash| FormAgency.create!(hash) }
+end
+
+Given /^the following Forms exist for (en|es) (\S+) form agency:$/ do |locale, agency_name, table|
+  form_agency = FormAgency.where(:name => agency_name, :locale => locale).first
+  table.hashes.each do |hash|
+    form_agency.forms.create! do |f|
+      hash.keys.each do |key|
+        f.send("#{key}=", hash[key])
+      end
+    end
+  end
+  pp Form.where(:form_agency_id => form_agency.id)
+end
+

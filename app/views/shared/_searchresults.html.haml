@@ -3,6 +3,8 @@
   - if search.has_boosted_contents? or search.has_featured_collections?
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
+  - elsif search.has_forms?
+    = render('shared/form_govbox')
   - elsif search.photos.present? and search.photos.results.any?
     = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
   - elsif search.med_topic.present?

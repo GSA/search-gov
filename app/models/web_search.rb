@@ -19,7 +19,8 @@ class WebSearch < Search
               :indexed_results,
               :matching_site_limits,
               :tweets,
-              :photos
+              :photos,
+              :forms
 
   class << self
     def results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = BingSearch::DEFAULT_FILTER_SETTING)
@@ -50,6 +51,10 @@ class WebSearch < Search
 
   def has_featured_collections?
     self.featured_collections and self.featured_collections.total > 0
+  end
+
+  def has_forms?
+    self.forms and self.forms.total > 0
   end
 
   def are_results_by_bing?
@@ -234,6 +239,7 @@ class WebSearch < Search
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
       @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
+      @forms = Form.search_for(query, affiliate) if query =~ /(\w+\s+\bforms?\b|\bforms?\b\s+\w+)/i and affiliate.form_agencies.present?
     end
   end
 

@@ -45,7 +45,8 @@
   'in the contributor facet selector' => '#facet_contributor',
   'in the subject facet selector' => '#facet_subject',
   'in the publisher facet selector' => '#facet_publisher',
-  'in the Super Admin page' => '.container'
+  'in the Super Admin page' => '.container',
+  'in the form govbox' => '#form_govbox'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step_string|

@@ -163,6 +163,7 @@ UsasearchRails3::Application.routes.draw do
     resources :email_templates do as_routes end
     resources :common_substrings do as_routes end
     resources :compare_search_results, :only => :index
+    resources :form_agencies do as_routes end
     resources :forms do as_routes end
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats

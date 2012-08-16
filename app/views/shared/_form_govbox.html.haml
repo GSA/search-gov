@@ -1,0 +1,21 @@
+= render_govbox do
+  .searchresult.blended
+    #form_govbox
+      - @search.forms.hits(:verify => true).each do |hit|
+        - result = hit.instance
+        %span.official-tag Official Form
+        - if result.revision_date.present?
+          %span.revision-date
+            Rev. #{result.revision_date}
+        %h2
+          = link_with_click_tracking(highlight_hit(hit, :title).html_safe, result.landing_page_url, @affiliate, @search.query, 0, 'FORM', @search_vertical)
+          (#{highlight_hit(hit, :number).html_safe})
+        %h4.agency-name= result.form_agency.display_name
+        - if result.description.present?
+          %p.description= highlight_hit(hit, :description).html_safe
+        .forms-and-instructions
+          %h3 Forms and Instructions
+          %ul
+            %li
+              = link_to "Form #{result.number}", result.url
+              %span [#{result.file_type}, #{result.file_size}, #{result.number_of_pages} #{'page'.pluralize(result.number_of_pages.to_i)}]

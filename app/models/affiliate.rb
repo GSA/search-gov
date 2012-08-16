@@ -31,6 +31,7 @@ class Affiliate < ActiveRecord::Base
   has_many :youtube_profiles
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
+  has_and_belongs_to_many :form_agencies
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },

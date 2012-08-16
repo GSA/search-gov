@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815184600) do
+ActiveRecord::Schema.define(:version => 20120816142313) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -90,6 +90,13 @@ ActiveRecord::Schema.define(:version => 20120815184600) do
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
+
+  create_table "affiliates_form_agencies", :id => false, :force => true do |t|
+    t.integer "affiliate_id",   :null => false
+    t.integer "form_agency_id", :null => false
+  end
+
+  add_index "affiliates_form_agencies", ["affiliate_id", "form_agency_id"], :name => "affiliates_form_agencies_on_foreign_keys", :unique => true
 
   create_table "affiliates_twitter_profiles", :id => false, :force => true do |t|
     t.integer "affiliate_id",       :null => false
@@ -435,15 +442,25 @@ ActiveRecord::Schema.define(:version => 20120815184600) do
 
   add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"
 
-  create_table "forms", :force => true do |t|
-    t.string   "agency",     :null => false
-    t.string   "number",     :null => false
-    t.string   "url",        :null => false
-    t.string   "file_type",  :null => false
-    t.text     "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "form_agencies", :force => true do |t|
+    t.string   "name",         :null => false
+    t.string   "locale",       :null => false
+    t.string   "display_name", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  create_table "forms", :force => true do |t|
+    t.string   "number",         :null => false
+    t.string   "url",            :null => false
+    t.string   "file_type",      :null => false
+    t.text     "details"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "form_agency_id", :null => false
+  end
+
+  add_index "forms", ["form_agency_id"], :name => "index_forms_on_form_agency_id"
 
   create_table "gov_forms", :force => true do |t|
     t.string   "name",        :null => false

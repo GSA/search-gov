@@ -32,6 +32,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:news_items)
     @search.stub!(:video_news_items)
     @search.stub!(:photos)
+    @search.stub!(:has_forms?).and_return false
 
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'

@@ -100,7 +100,7 @@
 #results .blended
   margin-left: 0
   padding: 0
-  .agency, .medline
+  .agency, .medline, #form_govbox
     +clearfix
     :line-height 1
     h2
@@ -122,6 +122,13 @@
       :font
         :size 1.1em
         :weight bold
+    .revision-date
+      clear: right
+      :float right
+      :font
+        :size 1.0em
+      margin-top: 3px
+
     .description
       :font-size 1.1em
       :line-height 1.1
@@ -202,6 +209,26 @@
         padding: 0
         li
           line-height: 1.2
+  #form_govbox
+    h2
+      line-height: 1.2
+    .agency-name
+      font:
+        size: 1.1em
+        weight: normal
+      line-height: 1.1
+      margin: 0.5em 0
+    p
+      :margin-top 0
+      :margin-bottom .2em
+    .forms-and-instructions, .faqs
+      margin-top: 0.4em
+      ul
+        list-style: none
+        margin: 0.3em 0 0
+        padding: 0
+        li
+          line-height: 1.2
 
 .en #results .medline .official-tag
   background: url(/images/medline.en.png) no-repeat right center
@@ -213,7 +240,6 @@
     margin:
       left: 0
     padding: 0
-
 
 #results .featured-collection
   +clearfix

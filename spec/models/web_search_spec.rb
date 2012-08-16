@@ -1114,6 +1114,51 @@ describe WebSearch do
       end
     end
 
+    context 'forms' do
+      fixtures :form_agencies
+
+      context 'the query contains the whole word form(s) and affiliate has form_agencies' do
+        let(:forms) { mock('forms') }
+        before { @affiliate.form_agencies << form_agencies(:en_uscis) }
+
+        it 'should assign @forms with results from Form.search_for' do
+          queries = ['form I-9', 'I-9 form', 'FORMS I-9', 'I-9 FORMS']
+          queries.each do |query|
+            Form.should_receive(:search_for).with(query, @affiliate).and_return(forms)
+            search = WebSearch.new(:query => query, :affiliate => @affiliate)
+            search.run
+            search.forms.should == forms
+          end
+        end
+      end
+
+      context 'the query does not contain the whole word form(s) and affiliate has form_agencies' do
+        before { @affiliate.form_agencies << form_agencies(:en_uscis) }
+
+        it 'should assign @forms with nil' do
+          queries = ['formula I-9', 'I-9 FORMULA']
+          queries.each do |query|
+            Form.should_not_receive(:search_for)
+            search = WebSearch.new(:query => query, :affiliate => @affiliate)
+            search.run
+            search.forms.should be_nil
+          end
+        end
+      end
+
+      context 'the query contains the whole word form(s) and affiliate does not have form_agencies' do
+        it 'should assign @forms with nil' do
+          queries = ['form I-9', 'I-9 FORM']
+          queries.each do |query|
+            Form.should_not_receive(:search_for)
+            search = WebSearch.new(:query => query, :affiliate => @affiliate)
+            search.run
+            search.forms.should be_nil
+          end
+        end
+      end
+    end
+
     context "on normal search runs" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => 'logme', :affiliate => @affiliate))

@@ -42,6 +42,7 @@ describe Affiliate do
     it { should have_many(:indexed_domains).dependent(:destroy) }
     it { should have_many(:daily_left_nav_stats).dependent(:destroy) }
     it { should have_and_belong_to_many :twitter_profiles }
+    it { should have_and_belong_to_many :form_agencies }
     it { should_not allow_mass_assignment_of(:name) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
