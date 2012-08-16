@@ -436,9 +436,10 @@ ActiveRecord::Schema.define(:version => 20120815184600) do
   add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"
 
   create_table "forms", :force => true do |t|
-    t.string   "agency"
-    t.string   "number"
-    t.string   "url"
+    t.string   "agency",     :null => false
+    t.string   "number",     :null => false
+    t.string   "url",        :null => false
+    t.string   "file_type",  :null => false
     t.text     "details"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

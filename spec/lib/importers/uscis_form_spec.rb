@@ -42,7 +42,10 @@ describe UscisForm do
     end
 
     context 'when there is existing Form with the same agency and number' do
-      let!(:existing_form) { Form.create!(:agency => 'uscis.gov', :number => 'AR-11', :url => 'http://www.uscis.gov/form.pdf') }
+      let!(:existing_form) { Form.create!(:agency => 'uscis.gov',
+                                          :number => 'AR-11',
+                                          :url => 'http://www.uscis.gov/form.pdf',
+                                          :file_type => 'PDF') }
 
       before { UscisForm.import }
 
@@ -57,7 +60,10 @@ describe UscisForm do
     end
 
     context 'when there is an obsolete Form from the same agency' do
-      let!(:obsolete_form) { Form.create!(:agency => 'uscis.gov', :number => 'obsolete', :url => 'http://www.uscis.gov/form.pdf') }
+      let!(:obsolete_form) { Form.create!(:agency => 'uscis.gov',
+                                          :number => 'obsolete',
+                                          :url => 'http://www.uscis.gov/form.pdf',
+                                          :file_type => 'PDF') }
 
       before { UscisForm.import }
 
