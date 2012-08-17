@@ -21,7 +21,7 @@ describe VideoNewsSearch do
         rss_feed = mock_model(RssFeed)
         affiliate.stub_chain(:rss_feeds, :videos, :find_by_id).and_return(rss_feed)
         search = VideoNewsSearch.new(:query => 'element', :channel => '100', :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', [rss_feed], nil, 1, 20, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', [rss_feed], nil, 1, 21, nil, nil, nil)
         search.run.should be_true
       end
     end
@@ -30,7 +30,7 @@ describe VideoNewsSearch do
       it "should search for news items from all navigable video feeds for the affiliate" do
         videos_navigable_feeds = mock('videos navigable only rss feeds', { :count => 2 })
         affiliate.stub_chain(:rss_feeds, :videos, :navigable_only).and_return(videos_navigable_feeds)
-        NewsItem.should_receive(:search_for).with('element', videos_navigable_feeds, an_instance_of(ActiveSupport::TimeWithZone), 1, 20, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', videos_navigable_feeds, an_instance_of(ActiveSupport::TimeWithZone), 1, 21, nil, nil, nil)
         search = VideoNewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
         search.run
       end
@@ -40,7 +40,7 @@ describe VideoNewsSearch do
       it "should assign @rss_feed" do
         rss_feed = mock_model(RssFeed)
         affiliate.stub_chain(:rss_feeds, :videos, :navigable_only).and_return([rss_feed])
-        NewsItem.should_receive(:search_for).with('element', [rss_feed], an_instance_of(ActiveSupport::TimeWithZone), 1, 20, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', [rss_feed], an_instance_of(ActiveSupport::TimeWithZone), 1, 21, nil, nil, nil)
         search = VideoNewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
         search.run
         search.rss_feed.should == rss_feed

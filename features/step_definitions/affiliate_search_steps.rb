@@ -89,16 +89,6 @@ Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish)
   end
 end
 
-Then /^I should see (\d+) youtube thumbnails?$/ do |count|
-  page.should have_selector("img[src^='http://i.ytimg.com/vi/']", :count => count)
-end
-
-Then /^I should see youtube thumbnail for "([^\"]*)"$/ do |news_item_title|
-  news_item = NewsItem.find_by_title(news_item_title)
-  video_id = CGI.parse(URI.parse(news_item.link).query)['v']
-  page.should have_selector("img[src='http://i.ytimg.com/vi/#{video_id}/2.jpg']")
-end
-
 Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |duration, locale|
   date = Date.current.send(duration.to_sym)
   date_string = locale == 'Spanish' ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")

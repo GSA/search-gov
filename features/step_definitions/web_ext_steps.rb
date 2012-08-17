@@ -63,6 +63,10 @@ Then /^I should not see an image with alt text "([^"]*)"$/ do |alt|
   page.should_not have_selector("img[alt='#{alt}']")
 end
 
+Then /^I should see an image with src "([^"]*)"$/ do |src|
+  page.should have_selector("img[src='#{src}']")
+end
+
 Then /^the "([^"]*)" field should contain today's date$/ do |field|
   step %{the "#{field}" field should contain "#{Date.current.strftime(%Q{%m/%d/%Y})}"}
 end

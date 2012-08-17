@@ -1,6 +1,6 @@
 class NewsSearch < Search
   DEFAULT_PER_PAGE = 10
-  DEFAULT_VIDEO_PER_PAGE = 20
+  DEFAULT_VIDEO_PER_PAGE = 21
   attr_reader :rss_feed,
               :hits,
               :since,

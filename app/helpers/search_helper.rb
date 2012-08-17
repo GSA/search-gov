@@ -508,11 +508,11 @@ module SearchHelper
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
 
-    link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => 'thumbnail').html_safe, news_item.link, affiliate, search.query, index, 'NEWS', search_vertical)
+    link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => news_item.title).html_safe, news_item.link, affiliate, search.query, index, 'NEWS', search_vertical)
   end
 
   def youtube_thumbnail_url(news_item)
-    video_id = CGI.parse(URI.parse(news_item.link).query)['v']
+    video_id = CGI.parse(URI.parse(news_item.link).query)['v'].first
     "http://i.ytimg.com/vi/#{video_id}/2.jpg"
   end
 

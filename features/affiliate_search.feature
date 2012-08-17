@@ -79,6 +79,8 @@ Feature: Affiliate Search
     And I should not see "First video item" in the rss feed govbox
     And I should see "Videos of 'first item' by bar site"
     And I should see "First video item" in the video rss feed govbox
+    And I should see an image with alt text "First video item"
+    And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
     And I should not see "First item" in the video rss feed govbox
     And I should not see "First hidden item"
     And I should not see "Show Options" in the left column
@@ -134,7 +136,7 @@ Feature: Affiliate Search
     And I am on bar.gov's search page
     And I follow "Videos"
     Then I should see "32 results"
-    And I should see 20 video news results
+    And I should see 21 video news results
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "first item"
@@ -160,8 +162,8 @@ Feature: Affiliate Search
 
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see 20 youtube thumbnails
-    And I should see youtube thumbnail for "First video item"
+    And I should see 21 video news results
+    And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
     And I should see yesterday's date in the English search results
 
     When I follow "Last year"
@@ -271,8 +273,9 @@ Feature: Affiliate Search
     And I press "Buscar"
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
-    And I should see 2 youtube thumbnails
-    And I should see youtube thumbnail for "First Spanish video item"
+    Then I should see 2 video news results
+    And I should see an image with alt text "First Spanish video item"
+    And I should see an image with src "http://i.ytimg.com/vi/EqExXXahb0s/2.jpg"
     And I should see yesterday's date in the Spanish search results
 
   Scenario: Searching a domain with Bing results that match a specific news item
