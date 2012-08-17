@@ -35,23 +35,27 @@ namespace :usasearch do
         max_entries_per_group = args.max_entries_per_group.to_i
         last_group, cnt, output = nil, 0, nil
         File.open(args.file_name).each do |line|
-          affiliate_name, query, total = line.chomp.split(/\001/)
-          if last_group.nil? || last_group != affiliate_name
-            AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
-            output = "Query,Raw Count,IP-Deduped Count\n"
-            cnt = 0
-          end
-          if cnt < max_entries_per_group
-            conditions = ['query=? AND day BETWEEN ? AND ?', query, report_date_range.first, report_date_range.last]
-            if affiliate_name != '_all_'
-              conditions.first << ' AND affiliate=?'
-              conditions << affiliate_name
+          begin
+            affiliate_name, query, total = line.chomp.split(/\001/)
+            if last_group.nil? || last_group != affiliate_name
+              AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
+              output = "Query,Raw Count,IP-Deduped Count\n"
+              cnt = 0
             end
-            daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => conditions)
-            output << "#{query},#{total},#{daily_query_stats_total}\n"
-            cnt += 1
+            if cnt < max_entries_per_group
+              conditions = ['query=? AND day BETWEEN ? AND ?', query, report_date_range.first, report_date_range.last]
+              if affiliate_name != '_all_'
+                conditions.first << ' AND affiliate=?'
+                conditions << affiliate_name
+              end
+              daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => conditions)
+              output << "#{query},#{total},#{daily_query_stats_total}\n"
+              cnt += 1
+            end
+            last_group = affiliate_name
+          rescue Exception => e
+            Rails.logger.warn "Trouble with an input line so skipping it: #{e.message}"
           end
-          last_group = affiliate_name
         end
         AWS::S3::S3Object.store(generate_report_filename(last_group, day, format, args.period), output, AWS_BUCKET_NAME) unless output.nil?
       end

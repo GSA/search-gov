@@ -154,6 +154,16 @@ describe "Report generation rake tasks" do
           File.delete(@input_file_name)
         end
       end
+
+      context "when some problem arises" do
+        before do
+          DailyQueryStat.stub!(:sum).and_raise Exception
+        end
+
+        it "should skip the line and move on" do
+          @rake[task_name].invoke(@input_file_name, "daily", "1")
+        end
+      end
     end
 
     describe "usasearch:reports:email_monthly_reports" do
