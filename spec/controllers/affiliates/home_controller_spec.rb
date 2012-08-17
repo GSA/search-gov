@@ -99,9 +99,9 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in" do
-      before do
-        UserSession.create(users(:affiliate_manager_with_no_affiliates))
-      end
+      let(:current_user) { users(:affiliate_manager_with_no_affiliates) }
+
+      before { UserSession.create(current_user) }
 
       it "should assign @affiliate" do
         post :create, :affiliate => {:display_name => 'new_affiliate'}
@@ -114,37 +114,38 @@ describe Affiliates::HomeController do
       end
 
       context "when the affiliate saves successfully" do
+        let(:affiliate) { mock_model(Affiliate, :users => []) }
+        let(:emailer) { mock(Emailer, :deliver => true) }
+
         before do
-          @emailer = mock(Emailer)
-          @emailer.stub!(:deliver).and_return true
+          Affiliate.should_receive(:new).with(hash_excluding(:name)).and_return(affiliate)
+          affiliate.should_receive(:name=).with('newaff')
+          affiliate.should_receive(:save).and_return(true)
+          affiliate.should_receive(:push_staged_changes)
+          Emailer.should_receive(:new_affiliate_site).and_return(emailer)
+          post :create, :affiliate => { :display_name => 'new_affiliate', :name => 'newaff' }
         end
 
-        it "should email the affiliate a confirmation email" do
-          Emailer.should_receive(:new_affiliate_site).and_return @emailer
-          post :create, :affiliate => {:display_name => 'new_affiliate'}
-        end
+        it { should redirect_to(content_sources_affiliate_path(affiliate))}
 
-        it "should redirect to content_sources" do
-          post :create, :affiliate => {:display_name => 'new_affiliate'}
-          response.should redirect_to(content_sources_affiliate_path(assigns[:affiliate]))
+        it 'should add current user as the affiliate user' do
+          affiliate.users.should include(current_user)
         end
       end
 
       context "when the affiliate fails to save" do
-        it "should assign @current_step to :new_site_information" do
-          post :create
-          assigns[:current_step].should == :basic_settings
-        end
+        let(:affiliate) { mock_model(Affiliate, :users => []) }
 
-        it "should not send an email" do
+        before do
+          Affiliate.should_receive(:new).with(hash_excluding(:name)).and_return(affiliate)
+          affiliate.should_receive(:name=).with('newaff')
+          affiliate.should_receive(:save).and_return(false)
           Emailer.should_not_receive(:new_affiliate_site)
-          post :create
+          post :create, :affiliate => { :display_name => 'new_affiliate', :name => 'newaff' }
         end
 
-        it "should render the new template" do
-          post :create
-          response.should render_template("new")
-        end
+        it { should assign_to(:current_step).with(:basic_settings) }
+        it { should render_template(:new) }
       end
     end
   end
