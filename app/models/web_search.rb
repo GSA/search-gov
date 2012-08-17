@@ -164,8 +164,9 @@ class WebSearch < Search
   end
 
   def process_web_results(response)
+    news_title_descriptions = NewsItem.title_description_hash_by_link(response.web.results.collect(&:url))
     processed = response.web.results.collect do |result|
-      title, content = news_item_title_desc(result.url)
+      title, content = news_item_title_desc(result.url, news_title_descriptions)
       title ||= (result.title rescue nil)
       content ||= (result.description rescue '')
       if title.present? and not url_is_excluded(result.url)
@@ -310,8 +311,8 @@ class WebSearch < Search
 
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with?(excluded_domain.domain) }
-    @affiliate.excluded_urls.any? { |excluded_url| url == excluded_url.url }
+    return true if parsed_url and (ExcludedDomain.excludes_host?(parsed_url.host) or @affiliate.excludes_url?(url))
+    false
   end
 
   def lookup_published_at_by_url(url)
@@ -340,13 +341,13 @@ class WebSearch < Search
     end
   end
 
-  def news_item_title_desc(result_url)
+  def news_item_title_desc(result_url, news_title_descriptions)
     @news_item_hash ||= build_news_item_hash_from_search
     news_item_hit = @news_item_hash[result_url]
     if news_item_hit.present?
       [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
     else
-      news_item = NewsItem.find_by_link(result_url)
+      news_item = news_title_descriptions[result_url]
       [news_item.title, news_item.description] if news_item
     end
   end

@@ -535,6 +535,10 @@ class Affiliate < ActiveRecord::Base
     self.flickr_profiles.each(&:import_photos)
   end
 
+  def excludes_url?(url)
+    self.excluded_urls.where(:url => url).any?
+  end
+
   private
 
   def batch_size(scope)

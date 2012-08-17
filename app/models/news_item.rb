@@ -56,6 +56,13 @@ class NewsItem < ActiveRecord::Base
         end rescue nil
       end
     end
+
+    def title_description_hash_by_link(urls)
+      select([:link, :title, :description]).find_all_by_link(urls).reduce({}) do |result, news_item|
+        result[news_item.link] = news_item
+        result
+      end
+    end
   end
 
   private
