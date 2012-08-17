@@ -25,14 +25,6 @@ GIT
     resque-priority (0.1)
 
 GIT
-  remote: git://github.com/GSA-OCSIT/ruby-cloudfiles.git
-  revision: a6c28c508cf64702269566d42eb99d6d3b7a86db
-  branch: escaped_name
-  specs:
-    cloudfiles (1.5.0.1)
-      json
-
-GIT
   remote: git://github.com/GSA-OCSIT/sunspot.git
   revision: b0af7f90c727ff71804e7608c27882f12670e517
   ref: b0af7f90c727ff71804e7608c27882f12670e517
@@ -154,6 +146,8 @@ GEM
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.6)
+    cloudfiles (1.4.17)
+      mime-types (>= 1.16)
     cmdparse (2.0.5)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
@@ -428,7 +422,7 @@ DEPENDENCIES
   capistrano!
   capistrano-ext
   capybara
-  cloudfiles!
+  cloudfiles (= 1.4.17)
   cocaine
   coffee-rails (~> 3.2.1)
   compass

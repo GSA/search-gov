@@ -96,6 +96,7 @@ Feature: Featured Collections
     And I fill in "query" with "hurricane"
     And I press "Search"
     Then I should see "2010 Atlantic Hurricane Season by site" in the featured collections section
+    And I should see a cloud files image to "small.jpg" in the featured collections section
 
   Scenario: Adding Featured Collection's URLs without http prefix
     Given the following Affiliates exist:
