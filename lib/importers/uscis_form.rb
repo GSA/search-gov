@@ -17,6 +17,8 @@ class UscisForm
       end
     end
     form_agency.forms = new_or_updated_forms unless new_or_updated_forms.empty?
+
+    lookup_matching_indexed_documents(form_agency.forms)
   end
 
   def self.retrieve_forms_index_url
@@ -65,15 +67,8 @@ class UscisForm
 
   def self.parse_landing_page(form)
     doc = Nokogiri::HTML(open(form.landing_page_url).read)
-    download_list_item= doc.css('#mainContent #bodyFormatting ul li').first
-    if download_list_item
-      form_path = download_list_item.css('a').first.attr(:href).to_s.strip
-      form.url = "#{BASE_URL}#{form_path}" if form_path.present?
-      download_list_item.css('a').remove
-      download_size_and_file_type = Sanitize.clean(download_list_item.content.to_s.squish)
-      download_size_and_file_type.gsub!(/(\(|\))/, '')
-      form.file_size, form.file_type = download_size_and_file_type.split(' ')
-    end
+    downloadable_list = doc.css('#mainContent #bodyFormatting ul li')
+    parse_form_urls(form, downloadable_list) if downloadable_list
 
     dl_item = doc.css('#mainContent #bodyFormatting dl').first
     if dl_item and dl_item.children.present?
@@ -81,8 +76,38 @@ class UscisForm
       dds = dl_item.xpath('./dd')
       parse_description(form, dts[0], dds[0])
       parse_number_of_pages(form, dts[1], dds[1])
-      parse_short_url(form, dl_item.xpath('.//p'))
+      parse_short_url(form, dl_item.css('p'))
     end
+  end
+
+  def self.parse_form_urls(form, downloadable_list)
+    form.links = []
+    downloadable_list.each_with_index do |list_item, index|
+      link = parse_download_list_item(list_item)
+      next if link.empty?
+      if index == 0
+        form.url = link[:url]
+        form.file_size = link[:file_size]
+        form.file_type = link[:file_type]
+      end
+      form.links << link
+    end
+  end
+
+  def self.parse_download_list_item(list_item)
+    link = list_item.css('a').first
+    return {} unless link
+
+    form_path = link.attr(:href).to_s.strip
+    url = form_path.present? ? "#{BASE_URL}#{form_path}" : nil
+    link_title = Sanitize.clean(link.content.to_s).squish
+    link_title = link_title.gsub(/\ADownload\b\s+/, '')
+
+    list_item.css('a').remove
+    download_size_and_file_type = Sanitize.clean(list_item.content.to_s.squish)
+    download_size_and_file_type = download_size_and_file_type.gsub(/(\(|\))/, '')
+    file_size, file_type = download_size_and_file_type.split
+    { :title => link_title, :url => url, :file_size => file_size, :file_type => file_type }
   end
 
   def self.parse_description(form, dt, dd)
@@ -96,11 +121,11 @@ class UscisForm
       sanitized_content = Sanitize.clean(dd.content.to_s.squish)
       form.number_of_pages = case sanitized_content
                              when %r[\A\d+]
-                               sanitized_content.slice(%r[\A\d+]).to_i
+                               sanitized_content.slice(%r[\A\d+])
                              when %r[\bForm\b:?\s\d+]i
-                               sanitized_content.slice(%r[\bForm\b:?\s\d+]i).split[1].to_i
+                               sanitized_content.slice(%r[\bForm\b:?\s\d+]i).split[1]
                              when %r[\bInstructions\b:?\s\d+]i
-                               sanitized_content.slice(%r[\bInstructions\b:?\s\d+]i).split[1].to_i
+                               sanitized_content.slice(%r[\bInstructions\b:?\s\d+]i).split[1]
                              end
     end
   end
@@ -113,6 +138,23 @@ class UscisForm
           short_url = sanitized_content.slice(%r[http://.+]).to_s.strip
           form.landing_page_url = short_url unless short_url.blank?
         end
+      end
+    end
+  end
+
+  def self.lookup_matching_indexed_documents(forms)
+    affiliate = Affiliate.find_by_name('usagov')
+    return unless affiliate
+
+    dc = DocumentCollection.where(:affiliate_id => affiliate.id, :name => 'FAQs').first
+    return unless dc
+
+    forms.each do |f|
+      odies = IndexedDocument.search_for(f.links[0][:title], affiliate, dc, 1, 2)
+      if odies and odies.results.present?
+        f.indexed_documents = odies.results
+      else
+        f.indexed_documents = []
       end
     end
   end

@@ -1,9 +1,10 @@
 class Form < ActiveRecord::Base
-  DETAIL_FIELD_NAMES = [:title, :description, :file_size, :number_of_pages, :landing_page_url, :revision_date].freeze
+  DETAIL_FIELD_NAMES = [:title, :description, :file_size, :number_of_pages, :landing_page_url, :revision_date, :links].freeze
   attr_accessible :form_agency_id, :number, :url, :file_type
   validates_presence_of :form_agency_id, :number, :url, :file_type
   serialize :details, Hash
   belongs_to :form_agency
+  has_and_belongs_to_many :indexed_documents
 
   DETAIL_FIELD_NAMES.each do |name|
     define_method name do

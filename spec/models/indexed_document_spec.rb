@@ -34,6 +34,7 @@ describe IndexedDocument do
   it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
   it { should_not allow_value("http://www.ssa.gov./trailing-period-in-domain.pdf").for(:url) }
   it { should belong_to :affiliate }
+  it { should have_and_belong_to_many :forms }
 
   context "when associated affiliate has a site domain list" do
     before do

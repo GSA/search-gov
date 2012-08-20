@@ -6,6 +6,7 @@ describe Form do
   it { should validate_presence_of :url }
   it { should validate_presence_of :file_type }
   it { should belong_to :form_agency }
+  it { should have_and_belong_to_many :indexed_documents }
 
   describe '.search_for' do
     fixtures :affiliates, :form_agencies

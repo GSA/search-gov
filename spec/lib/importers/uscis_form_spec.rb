@@ -67,8 +67,20 @@ describe UscisForm do
         form.landing_page_url.should == 'http://www.uscis.gov/ar-11'
         form.file_size.should == '370KB'
         form.file_type.should == 'PDF'
-        form.number_of_pages.should == 1
+        form.number_of_pages.should == '1'
         form.revision_date.should == '12/11/11'
+      end
+
+      it 'should populate form links' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'I-129F').first
+        form.links[1][:title].should == 'Instructions for Form I-129F'
+        form.links[1][:url].should == 'http://www.uscis.gov/files/form/i-129finstr.pdf'
+        form.links[1][:file_size].should == '219KB'
+        form.links[1][:file_type].should == 'PDF'
+        form.links[2][:title].should == 'Form G-1145, Notification of Acceptance of Application/Petition'
+        form.links[2][:url].should == 'http://www.uscis.gov/files/form/g-1145.pdf'
+        form.links[2][:file_size].should == '1KB'
+        form.links[2][:file_type].should == 'PDF'
       end
 
       it 'should handle latin characters' do
@@ -80,7 +92,7 @@ describe UscisForm do
       end
 
       it 'should handle number of pages in instruction form' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'I-539, Supplement A').first.number_of_pages.should == 2
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-539, Supplement A').first.number_of_pages.should == '2'
       end
 
       it 'should handle %mm/%yy revision date' do
@@ -132,6 +144,59 @@ describe UscisForm do
 
       it 'should delete the obsolete form' do
         Form.find_by_id(obsolete_form.id).should be_nil
+      end
+    end
+
+    context 'when there is a matching usagov FAQs IndexedDocuments' do
+      fixtures :affiliates
+
+      let!(:form_agency) do
+        FormAgency.create!(:name => 'uscis.gov',
+                           :locale => 'en',
+                           :display_name => 'U.S. Citizenship and Immigration Services')
+      end
+
+      let(:usagov) { affiliates(:usagov_affiliate) }
+
+      let!(:faqs) do
+        SiteDomain.create!(:affiliate_id => usagov.id, :domain => 'usa.gov')
+        DocumentCollection.create!(
+            :affiliate_id => usagov.id,
+            :name => 'FAQs',
+            :url_prefixes_attributes => { '0' => { :prefix => 'http://answers.usa.gov/' }})
+      end
+
+      let!(:indexed_document1) do
+        IndexedDocument.create!(:affiliate_id => usagov.id,
+                                :title => 'some docs about form AR-11',
+                                :description => 'some title about form AR-11',
+                                :url => 'http://answers.usa.gov/page1.html',
+                                :doctype => 'html',
+                                :last_crawl_status => IndexedDocument::OK_STATUS)
+      end
+
+      let!(:indexed_document2) do
+        IndexedDocument.create!(:affiliate_id => usagov.id,
+                                :title => 'another docs about form AR-11',
+                                :description => 'another title about form AR-11',
+                                :url => 'http://answers.usa.gov/page2.html',
+                                :doctype => 'html',
+                                :last_crawl_status => IndexedDocument::OK_STATUS)
+      end
+
+      let(:dc) { mock('dc', :count => 1, :first => faqs) }
+      let(:odies) { mock('odies', :results => [indexed_document1, indexed_document2])}
+
+      before do
+        IndexedDocument.reindex
+        UscisForm.import
+      end
+
+      it 'should create FormsIndexedDocuments' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first
+        form.indexed_documents.count.should == 2
+        form.indexed_documents.should include indexed_document1
+        form.indexed_documents.should include indexed_document2
       end
     end
   end

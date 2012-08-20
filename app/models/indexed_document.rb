@@ -7,6 +7,7 @@ class IndexedDocument < ActiveRecord::Base
   belongs_to :indexed_domain
   before_validation :normalize_url
   before_save :set_indexed_domain
+  has_and_belongs_to_many :forms
   validates_presence_of :url, :affiliate_id
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id

@@ -814,18 +814,32 @@ Feature: Affiliate Search
       | name      | locale | display_name                              |
       | uscis.gov | en     | U.S. Citizenship and Immigration Services |
     And the following Forms exist for en uscis.gov form agency:
-      | number | url                                     | file_type | title                               | description                                             | file_size | number_of_pages | landing_page_url         | revision_date |
-      | I-9    | http://www.uscis.gov/files/form/i-9.pdf | PDF       | Employment Eligibility Verification | All U.S. employers must complete and retain a Form I-9. | 447KB     | 1               | http://www.uscis.gov/i-9 | 8/7/09        |
+      | number | url                                       | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url           | revision_date |
+      | I-485  | http://www.uscis.gov/files/form/i-485.pdf | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485 | 8/7/09        |
+    And the following Links exist for en uscis.gov form I-485:
+      | title                                                          | url                                            | file_size | file_type |
+      | Instructions for Form I-485                                    | http://www.uscis.gov/files/form/i-485instr.pdf | 253KB     | PDF       |
+      | Form G-1145, E-Notification of Application/Petition Acceptance | http://www.uscis.gov/files/form/g-1145.pdf     | 1KB       | PDF       |
     And the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | locale | affiliate_form_agencies |
-      | en bar site  | bar.gov | aff@bar.gov   | John Bar     | en     | uscis.gov               |
+      | display_name | name    | contact_email | contact_name | locale | domains | affiliate_form_agencies |
+      | en bar site  | bar.gov | aff@bar.gov   | John Bar     | en     |         | uscis.gov               |
+      | usagov site  | usagov  | aff@bar.gov   | John Bar     | en     | usa.gov |                         |
+    And the following IndexedDocuments exist for en uscis.gov form I-485:
+      | title                | description                 | url                               | affiliate | last_crawl_status |
+      | a doc on I-485       | some odie desc. on I-485    | http://answers.usa.gov/page1.html | usagov    | OK                |
+      | another doc on I-485 | another odie desc. on I-485 | http://answers.usa.gov/page2.html | usagov    | OK                |
     When I am on bar.gov's search page
-    And I fill in "query" with "form I-9"
+    And I fill in "query" with "form I-485"
     And I press "Search"
-    Then I should see a link to "Employment Eligibility Verification" with url for "http://www.uscis.gov/i-9"
-    Then I should see "Employment Eligibility Verification (I-9)" in the form govbox
+    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485"
+    Then I should see "Application to Register Permanent Residence or Adjust Status (I-485)" in the form govbox
     And I should see "Rev. 8/7/09" in the form govbox
     And I should see "U.S. Citizenship and Immigration Services" in the form govbox
-    And I should see "All U.S. employers must complete and retain a Form I-9." in the form govbox
-    And I should see a link to "Form I-9" with url for "http://www.uscis.gov/files/form/i-9.pdf" in the form govbox
-    And I should see "Form I-9 [PDF, 447KB, 1 page]" in the form govbox
+    And I should see "To apply to adjust your status to that of a permanent resident of the United States." in the form govbox
+    And I should see a link to "Form I-485" with url for "http://www.uscis.gov/files/form/i-485.pdf" in the form govbox
+    And I should see "Form I-485 [PDF, 272KB, 1 page]" in the form govbox
+    And I should see a link to "Instructions for Form I-485" with url for "http://www.uscis.gov/files/form/i-485instr.pdf" in the form govbox
+    And I should see "Instructions for Form I-485 [PDF, 253KB]" in the form govbox
+    And I should see a link to "Form G-1145, E-Notification of Application/Petition Acceptance" with url for "http://www.uscis.gov/files/form/g-1145.pdf" in the form govbox
+    And I should see "Form G-1145, E-Notification of Application/Petition Acceptance [PDF, 1KB]" in the form govbox
+

@@ -29,6 +29,31 @@ Given /^the following IndexedDocuments exist:$/ do |table|
   ActiveRecord::Observer.enable_observers
 end
 
+
+Given /^the following IndexedDocuments exist for (en|es) (\S+) form (.+):$/ do |locale, agency_name, form_number, table|
+  form_agency = FormAgency.where(:name => agency_name, :locale => locale).first
+  form = form_agency.forms.where(:number => form_number).first
+
+  ActiveRecord::Observer.disable_observers
+  table.hashes.each do |hash|
+    idoc = IndexedDocument.create! do |id|
+      id.title = hash[:title]
+      id.description = hash[:description]
+      id.url = hash[:url]
+      id.doctype = hash[:doctype] || 'html'
+      id.affiliate = Affiliate.find_by_name(hash[:affiliate])
+      id.last_crawled_at = hash[:last_crawled_at]
+      id.last_crawl_status = hash[:last_crawl_status]
+      if hash[:created_at].present?
+        id.created_at = eval(hash[:created_at].gsub(/ /, '.'))
+      end
+    end
+    form.indexed_documents << idoc
+  end
+  Sunspot.commit
+  ActiveRecord::Observer.enable_observers
+end
+
 When /^the url "([^\"]*)" has been crawled$/ do |url|
   idoc = IndexedDocument.find_by_url(url)
   title = idoc.title.blank? ? 'some title' : idoc.title

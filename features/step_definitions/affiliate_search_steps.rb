@@ -158,8 +158,23 @@ Given /^the following Forms exist for (en|es) (\S+) form agency:$/ do |locale, a
       hash.keys.each do |key|
         f.send("#{key}=", hash[key])
       end
+      f.links ||= []
+      f.links << { :title => "Form #{f.number}",
+                   :url => f.url,
+                   :file_size => f.file_size,
+                   :file_type => f.file_type }
     end
   end
-  pp Form.where(:form_agency_id => form_agency.id)
 end
 
+Given /^the following Links exist for (en|es) (\S+) form (.+):$/ do |locale, agency_name, form_number, table|
+  form_agency = FormAgency.where(:name => agency_name, :locale => locale).first
+  form = form_agency.forms.where(:number => form_number).first
+  table.hashes.each do |hash|
+    form.links << { :title => hash[:title],
+                    :url => hash[:url],
+                    :file_size => hash[:file_size],
+                    :file_type => hash[:file_type] }
+  end
+  form.save!
+end
