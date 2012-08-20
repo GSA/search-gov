@@ -1557,9 +1557,8 @@ describe Affiliate do
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
-        site_domains.should == added_site_domains
-        site_domains[0].domain.should == "foo.gov"
-        site_domains[1].domain.should == "blat.gov/somedir"
+        site_domains.size.should == 2
+        site_domains.collect(&:domain).sort.should == %w{blat.gov/somedir foo.gov}
       end
     end
 
@@ -1569,10 +1568,8 @@ describe Affiliate do
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
-        site_domains.should == added_site_domains
-        site_domains[0].domain.should == "do.gov"
-        site_domains[1].domain.should == "bar.gov"
-        site_domains[2].domain.should == "blat.gov"
+        site_domains.size.should == 3
+        site_domains.collect(&:domain).sort.should == %w{bar.gov blat.gov do.gov}
       end
     end
 
@@ -1596,10 +1593,8 @@ describe Affiliate do
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
-        site_domains.should == added_site_domains
         site_domains.count.should == 2
-        site_domains[0].domain.should == 'foo.gov'
-        site_domains[1].domain.should == 'bar.gov/somedir'
+        site_domains.collect(&:domain).sort.should == %w{bar.gov/somedir foo.gov}
       end
     end
 

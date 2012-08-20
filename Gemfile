@@ -74,11 +74,11 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'webster'
-#  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
   gem 'no_peeping_toms', :git => 'git://github.com/leereilly/no-peeping-toms.git', :branch => "fix-instancemethods-deprecation-warning"
   gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
   gem 'progress_bar'
   gem 'thin'
+  gem 'ruby-prof'
 end
 
 group :test do

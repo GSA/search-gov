@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816142313) do
+ActiveRecord::Schema.define(:version => 20120820173652) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -786,7 +786,7 @@ ActiveRecord::Schema.define(:version => 20120816142313) do
     t.datetime "updated_at"
   end
 
-  add_index "site_domains", ["affiliate_id"], :name => "index_site_domains_on_affiliate_id"
+  add_index "site_domains", ["affiliate_id", "domain"], :name => "index_site_domains_on_affiliate_id_and_domain", :unique => true
 
   create_table "site_pages", :force => true do |t|
     t.string   "url_slug"

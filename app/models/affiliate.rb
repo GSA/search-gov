@@ -537,7 +537,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def excludes_url?(url)
-    self.excluded_urls.where(:url => url).any?
+    @excluded_urls_set ||= self.excluded_urls.collect(&:url).to_set
+    @excluded_urls_set.include?(url)
   end
 
   private

@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe WebSearch do
-  fixtures :affiliates, :misspellings, :site_domains
+  fixtures :affiliates, :misspellings, :site_domains, :rss_feeds
 
   before(:each) do
     Redis.new(:host => REDIS_HOST, :port => REDIS_PORT).flushall
@@ -1197,16 +1197,17 @@ describe WebSearch do
       end
 
       context "when an affiliate has RSS Feeds" do
-        it "should retrieve non videos and videos rss feeds" do
-          non_videos_rss_feeds = mock('non videos rss feeds')
-          @affiliate.stub_chain(:rss_feeds, :non_videos, :govbox_enabled).and_return(non_videos_rss_feeds)
-          non_video_results = mock('non video results', :total => 3)
-          NewsItem.should_receive(:search_for).with('item', non_videos_rss_feeds, nil, 1).and_return(non_video_results)
+        before do
+          @affiliate = affiliates(:basic_affiliate)
+          @affiliate.rss_feeds.each {|feed| feed.update_attribute(:shown_in_govbox, true)}
+        end
 
-          videos_rss_feeds = mock('videos rss feeds')
-          @affiliate.stub_chain(:rss_feeds, :videos, :govbox_enabled).and_return(videos_rss_feeds)
+        it "should retrieve govbox-enabled non-video and video RSS feeds" do
+          non_video_results = mock('non video results', :total => 3)
+          NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.non_videos.to_a, nil, 1).and_return(non_video_results)
+
           video_results = mock('video results', :total => 3)
-          NewsItem.should_receive(:search_for).with('item', videos_rss_feeds, nil, 1).and_return(video_results)
+          NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.videos.to_a, nil, 1).and_return(video_results)
 
           search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
           search.stub!(:build_news_item_hash_from_search).and_return Hash.new

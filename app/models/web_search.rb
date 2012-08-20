@@ -169,9 +169,9 @@ class WebSearch < Search
   end
 
   def process_web_results(response)
-    news_title_descriptions = NewsItem.title_description_hash_by_link(response.web.results.collect(&:url))
+    news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(response.web.results.collect(&:url))
     processed = response.web.results.collect do |result|
-      title, content = news_item_title_desc(result.url, news_title_descriptions)
+      title, content, published_at = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)
       content ||= (result.description rescue '')
       if title.present? and not url_is_excluded(result.url)
@@ -181,13 +181,19 @@ class WebSearch < Search
           'content' => content,
           'cacheUrl' => (result.CacheUrl rescue nil),
           'deepLinks' => result["DeepLinks"],
-          'publishedAt' => lookup_published_at_by_url(result.url)
+          'publishedAt' => published_at
         }
       else
         nil
       end
     end
     processed.compact
+  end
+
+  def url_is_excluded(url)
+    parsed_url = URI::parse(url) rescue nil
+    return true if parsed_url and (ExcludedDomain.excludes_host?(parsed_url.host) or @affiliate.excludes_url?(url))
+    false
   end
 
   def process_image_results(response)
@@ -233,8 +239,9 @@ class WebSearch < Search
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
       end
-      @news_items = NewsItem.search_for(query, affiliate.rss_feeds.non_videos.govbox_enabled, nil, 1)
-      @video_news_items = NewsItem.search_for(query, affiliate.rss_feeds.videos.govbox_enabled, nil, 1)
+      govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
+      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select {|feed| !feed.is_video?}, nil, 1)
+      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select {|feed| feed.is_video?}, nil, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
@@ -315,17 +322,6 @@ class WebSearch < Search
     "#{domains.join(delimiter)}"
   end
 
-  def url_is_excluded(url)
-    parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and (ExcludedDomain.excludes_host?(parsed_url.host) or @affiliate.excludes_url?(url))
-    false
-  end
-
-  def lookup_published_at_by_url(url)
-    news_item = NewsItem.find_by_link(url)
-    news_item.nil? ? nil : news_item.published_at
-  end
-
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
   end
@@ -347,20 +343,20 @@ class WebSearch < Search
     end
   end
 
-  def news_item_title_desc(result_url, news_title_descriptions)
+  def extract_fields_from_news_item(result_url, news_title_descriptions)
     @news_item_hash ||= build_news_item_hash_from_search
     news_item_hit = @news_item_hash[result_url]
     if news_item_hit.present?
-      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
+      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description), news_item_hit.instance.published_at]
     else
       news_item = news_title_descriptions[result_url]
-      [news_item.title, news_item.description] if news_item
+      [news_item.title, news_item.description, nil] if news_item
     end
   end
 
   def build_news_item_hash_from_search
     news_item_hash = {}
-    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds, nil, 1, 100)
+    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds)
     if news_items_overrides and news_items_overrides.total > 0
       news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
         news_item_hash[news_item_result.link] = news_item_hit
