@@ -171,7 +171,7 @@ class WebSearch < Search
   def process_web_results(response)
     news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(response.web.results.collect(&:url))
     processed = response.web.results.collect do |result|
-      title, content, published_at = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
+      title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)
       content ||= (result.description rescue '')
       if title.present? and not url_is_excluded(result.url)
@@ -181,7 +181,7 @@ class WebSearch < Search
           'content' => content,
           'cacheUrl' => (result.CacheUrl rescue nil),
           'deepLinks' => result["DeepLinks"],
-          'publishedAt' => published_at
+          'publishedAt' => (news_title_descriptions_published_at[result.url].published_at rescue nil)
         }
       else
         nil
@@ -343,14 +343,14 @@ class WebSearch < Search
     end
   end
 
-  def extract_fields_from_news_item(result_url, news_title_descriptions)
+  def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
     @news_item_hash ||= build_news_item_hash_from_search
     news_item_hit = @news_item_hash[result_url]
     if news_item_hit.present?
-      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description), news_item_hit.instance.published_at]
+      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
     else
-      news_item = news_title_descriptions[result_url]
-      [news_item.title, news_item.description, nil] if news_item
+      news_item = news_title_descriptions_published_at[result_url]
+      [news_item.title, news_item.description] if news_item
     end
   end
 
