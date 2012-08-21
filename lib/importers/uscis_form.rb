@@ -1,12 +1,16 @@
 class UscisForm
   BASE_URL = 'http://www.uscis.gov'.freeze
+  AGENCY_SUB_AGENCY = 'DHS/USCIS'.freeze
   AGENCY = 'uscis.gov'.freeze
+  AGENCY_NAME = 'U.S. Citizenship and Immigration Services'.freeze
 
   def self.import
     forms_index_url = retrieve_forms_index_url
-    form_agency = FormAgency.where(:name => 'uscis.gov', :locale => :en).first_or_create! do |fa|
-      fa.display_name = 'U.S. Citizenship and Immigration Services'
-    end
+    display_name = "DHS/#{rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if rocis_hash[AGENCY_SUB_AGENCY]
+    display_name ||= "DHS/#{AGENCY_NAME}"
+    form_agency = FormAgency.where(:name => 'uscis.gov', :locale => :en).first_or_initialize
+    form_agency.display_name = display_name
+    form_agency.save!
 
     doc = Nokogiri::HTML(open(forms_index_url).read)
     new_or_updated_forms = []
@@ -47,20 +51,27 @@ class UscisForm
       form.landing_page_url = landing_page_url
       parse_landing_page(form)
     end
+    if rocis_forms_hash[form_number]
+      form.expiration_date = rocis_forms_hash[form_number][:expiration_date]
+    end
     form.save!
     form
   end
 
   def self.parse_revision_date(form, revision_date_column)
     if revision_date_column
-      sanitized_content = Sanitize.clean(revision_date_column.content.to_s.squish)
+      sanitized_content = Sanitize.clean(revision_date_column.content.to_s).squish
       form.revision_date = case sanitized_content
                            when %r[\A\d{1,2}/\d{1,2}/\d{2,4}]
-                             sanitized_content.slice(%r[\A\d{1,2}/\d{1,2}/\d{2,4}])
-                           when %r[\A\d{2}/\d{2}\Z]
-                             sanitized_content.slice(%r[\A\d{2}/\d{2}\Z])
+                             date_string = sanitized_content.slice(%r[\A\d{1,2}/\d{1,2}/\d{2,4}])
+                             date_format = date_string =~ %r[/\d{2}\Z] ? '%m/%d/%y' : '%m/%d/%Y'
+                             Date.strptime(date_string, date_format).strftime('%-m/%-d/%y')
+                           when %r[\A\d{2}/\d{2}]
+                             date_string = sanitized_content.slice(%r[\A\d{2}/\d{2}])
+                             Date.strptime(date_string, '%m/%y').strftime('%-m/%y')
                            when %r[\A\b[[:alpha:]]+\b\s+\d{4}]
-                             sanitized_content.slice(%r[\A\b[[:alpha:]]+\b\s+\d{4}])
+                             date_string = sanitized_content.slice(%r[\A\b[[:alpha:]]+\b\s+\d{4}])
+                             Date.parse(date_string).strftime('%-m/%y') rescue date_string
                            end
     end
   end
@@ -142,11 +153,40 @@ class UscisForm
     end
   end
 
+  def self.rocis_hash
+    @@rocis_hash ||= parse_rocis_csv
+  end
+
+  def self.parse_rocis_csv
+    rocis_hash = {}
+    CSV.parse(File.binread(Rails.root.to_s + '/forms/uscis/ROCISUSCIS.csv'), :headers => true) do |row|
+      parent_agency_acronym = row['ParentAgencyAcronym']
+      agency_acronym = row['AgencyAcronym']
+      agency_name = row['AgencyName']
+      form_number = row['FormNumber']
+      form_number = form_number.gsub(/\bform\b/i, '').strip.squish if form_number.present?
+      expiration_date = Date.strptime(row['ExpirationDate'], '%m/%d/%y') rescue nil
+
+      rocis_hash["#{parent_agency_acronym}/#{agency_acronym}"] ||= {
+          :agency_name => agency_name,
+          :forms => {}
+      }
+      rocis_hash["#{parent_agency_acronym}/#{agency_acronym}"][:forms][form_number] = { :expiration_date => expiration_date }
+    end
+    rocis_hash
+  end
+
+  def self.rocis_forms_hash
+    rocis_hash[AGENCY_SUB_AGENCY][:forms]
+  end
+
   def self.lookup_matching_indexed_documents(forms)
     affiliate = Affiliate.find_by_name('usagov')
     return unless affiliate
 
-    dc = DocumentCollection.where(:affiliate_id => affiliate.id, :name => 'FAQs').first
+    dc = affiliate.document_collections.all.find do |coll|
+      coll.url_prefixes.count == 1 and coll.url_prefixes.where(:prefix => 'http://answers.usa.gov')
+    end
     return unless dc
 
     forms.each do |f|

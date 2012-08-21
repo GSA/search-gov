@@ -814,8 +814,8 @@ Feature: Affiliate Search
       | name      | locale | display_name                              |
       | uscis.gov | en     | U.S. Citizenship and Immigration Services |
     And the following Forms exist for en uscis.gov form agency:
-      | number | url                                       | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url           | revision_date |
-      | I-485  | http://www.uscis.gov/files/form/i-485.pdf | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485 | 8/7/09        |
+      | number | url                                       | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url           | revision_date | expiration_date |
+      | I-485  | http://www.uscis.gov/files/form/i-485.pdf | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485 | 8/7/09        | 2013-01-31      |
     And the following Links exist for en uscis.gov form I-485:
       | title                                                          | url                                            | file_size | file_type |
       | Instructions for Form I-485                                    | http://www.uscis.gov/files/form/i-485instr.pdf | 253KB     | PDF       |
@@ -834,6 +834,7 @@ Feature: Affiliate Search
     Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485"
     Then I should see "Application to Register Permanent Residence or Adjust Status (I-485)" in the form govbox
     And I should see "Rev. 8/7/09" in the form govbox
+    And I should see "Expires 1/31/13" in the form govbox
     And I should see "U.S. Citizenship and Immigration Services" in the form govbox
     And I should see "To apply to adjust your status to that of a permanent resident of the United States." in the form govbox
     And I should see a link to "Form I-485" with url for "http://www.uscis.gov/files/form/i-485.pdf" in the form govbox

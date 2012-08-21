@@ -262,6 +262,12 @@ module ApplicationHelper
     end
   end
 
+  def render_short_date(date, locale = I18n.locale)
+    unless date.nil?
+      locale.to_sym == :es ? date.strftime("%-d/%-m/%y") : date.strftime("%-m/%-d/%y")
+    end
+  end
+
   def attribution
     txt = []
     txt << "<!-- ----------------------------------------------------------------------------------------------- -->"

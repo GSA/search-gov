@@ -1,6 +1,9 @@
 class Admin::FormsController < Admin::AdminController
   active_scaffold :form do |config|
     config.actions = [:list, :search, :delete, :show, :export]
+    config.columns = [:form_agency, :number, :file_type,
+                      :revision_date, :expiration_date, :indexed_documents,
+                      :created_at, :updated_at]
     config.columns.exclude :details
     config.list.columns.exclude :url
     config.show.columns.add :url

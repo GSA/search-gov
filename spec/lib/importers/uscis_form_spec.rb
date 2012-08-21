@@ -37,7 +37,7 @@ describe UscisForm do
         FormAgency.count.should == 1
         FormAgency.first.name.should == 'uscis.gov'
         FormAgency.first.locale.should == 'en'
-        FormAgency.first.display_name.should == 'U.S. Citizenship and Immigration Services'
+        FormAgency.first.display_name.should == 'DHS/U.S. Citizenship and Immigration Services'
       end
     end
 
@@ -55,6 +55,10 @@ describe UscisForm do
         FormAgency.first.should == form_agency
       end
 
+      it 'should update FormAgency display name' do
+        FormAgency.first.display_name.should == 'DHS/U.S. Citizenship and Immigration Services'
+      end
+
       it 'should create forms' do
         Form.count.should == 6
       end
@@ -69,6 +73,7 @@ describe UscisForm do
         form.file_type.should == 'PDF'
         form.number_of_pages.should == '1'
         form.revision_date.should == '12/11/11'
+        form.expiration_date.strftime("%m/%d/%y").should == '12/31/14'
       end
 
       it 'should populate form links' do
@@ -88,7 +93,7 @@ describe UscisForm do
       end
 
       it 'should handle %b %Y revision date' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'EOIR-29').first.revision_date.should == 'April 2009'
+        Form.where(:form_agency_id => form_agency.id, :number => 'EOIR-29').first.revision_date.should == '4/09'
       end
 
       it 'should handle number of pages in instruction form' do
