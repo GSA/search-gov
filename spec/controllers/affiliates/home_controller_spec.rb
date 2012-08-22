@@ -320,8 +320,8 @@ describe Affiliates::HomeController do
         assigns[:affiliate].should == @affiliate
       end
 
-      it "should sync staged attributes on @affiliate" do
-        @affiliate.should_receive(:sync_staged_attributes)
+      it "should not sync staged attributes on @affiliate" do
+        @affiliate.should_not_receive(:sync_staged_attributes)
         get :edit_site_information, :id => @affiliate.id
       end
 

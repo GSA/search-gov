@@ -406,8 +406,8 @@ Feature: Affiliate clients
 
   Scenario: Editing user interface and saving it for preview on a site
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | external_css_url                 | header_footer_css         | header     | footer     | favicon_url                | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | http://cdn.agency.gov/custom.css | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | custom | false               | false                   | false                      |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | external_css_url                 | header     | footer     | favicon_url                | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | http://cdn.agency.gov/custom.css | Old header | Old footer | cdn.agency.gov/favicon.ico | custom | false               | false                   | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -478,7 +478,6 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Header and Footer of the Search Results Page
     And I should see "Header and Footer" in the page header
     Then the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
-    And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".current \{ color: blue; \}"
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
     When I fill in the following:
@@ -502,7 +501,7 @@ Feature: Affiliate clients
     And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see the page with internal CSS ".header-footer .current\{color:blue\}"
+    And I should not see the page with internal CSS ".staged"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with content border
     And I should not see the page with content box shadow

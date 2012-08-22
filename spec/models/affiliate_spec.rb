@@ -290,13 +290,13 @@ describe Affiliate do
       Affiliate.find(affiliate.id).staged_css_property_hash[:font_family].should == 'Georgia, serif'
     end
 
-    it "should set header_footer_nested_css fields" do
+    it "should not set header_footer_nested_css fields" do
       affiliate.update_attributes!(:staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', :header_footer_css => '')
-      affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+      affiliate.staged_nested_header_footer_css.should be_blank
       affiliate.header_footer_css.should be_blank
       affiliate.update_attributes!(:staged_header_footer_css => '', :header_footer_css => '@charset "UTF-8"; @import url("other.css"); live.h1 { color: red }')
       affiliate.staged_nested_header_footer_css.should be_blank
-      affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer live.h1{color:red}')}$/
+      affiliate.nested_header_footer_css.should be_blank
     end
 
     it "should set previous json fields" do
@@ -535,24 +535,20 @@ describe Affiliate do
       affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
     end
 
-    it "should validate header_footer_css" do
+    it "should not validate header_footer_css" do
       affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
-      affiliate.save.should be_false
-      affiliate.errors[:base].first.should match(/Invalid CSS/)
+      affiliate.save.should be_true
 
       affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }"))
-      affiliate.save.should be_false
-      affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
+      affiliate.save.should be_true
     end
 
-    it "should validate staged_header_footer_css for invalid css property value" do
+    it "should not validate staged_header_footer_css for invalid css property value" do
       affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { invalid-css-syntax }"))
-      affiliate.save.should be_false
-      affiliate.errors[:base].first.should match(/Invalid CSS/)
+      affiliate.save.should be_true
 
       affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { color: #DDDD }"))
-      affiliate.save.should be_false
-      affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
+      affiliate.save.should be_true
     end
 
     it "should validate staged_managed_header_links title" do
@@ -645,6 +641,19 @@ describe Affiliate do
         affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be_false
         affiliate.errors[:base].join.should include("#{header_error_message}")
         affiliate.errors[:base].join.should include("#{footer_error_message}")
+      end
+
+      it "should not validate header_footer_css" do
+        affiliate.update_attributes(:header_footer_css => "h1 { invalid-css-syntax }").should be_true
+        affiliate.update_attributes(:header_footer_css => "h1 { color: #DDDD }").should be_true
+      end
+
+      it "should validate staged_header_footer_css for invalid css property value" do
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { invalid-css-syntax }").should be_false
+        affiliate.errors[:base].first.should match(/Invalid CSS/)
+
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { color: #DDDD }").should be_false
+        affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
       end
     end
 
@@ -887,6 +896,24 @@ describe Affiliate do
                                                 :staged_header => 'staged header',
                                                 :staged_footer => 'staged footer')
       end
+
+      it "should set header_footer_nested_css fields" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
+        affiliate.update_attributes_for_staging(
+            :staged_uses_managed_header_footer => '0',
+            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+        affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+      end
+
+      it 'should not validated live header_footer_css field' do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
+        affiliate.update_attributes_for_staging(
+            :staged_uses_managed_header_footer => '0',
+            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+        affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+      end
     end
 
     context "when attributes does not contain staged_uses_managed_header_footer='0'" do
@@ -946,6 +973,25 @@ describe Affiliate do
         affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '0',
                                              :staged_header => 'staged header',
                                              :staged_footer => 'staged footer')
+      end
+
+      it "should set header_footer_nested_css fields" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.update_attributes_for_live(
+            :staged_uses_managed_header_footer => '0',
+            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+        affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+        affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+      end
+
+      it 'should not validated live header_footer_css field' do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
+        affiliate.update_attributes_for_live(
+            :staged_uses_managed_header_footer => '0',
+            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+        affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
+        affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
     end
 
@@ -1399,6 +1445,17 @@ describe Affiliate do
       affiliate.should_receive(:has_staged_content=).with(false)
       affiliate.should_receive(:save!)
       affiliate.cancel_staged_changes
+    end
+
+    it 'should copy header_footer_css' do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }',
+                                   :nested_header_footer_css => '.header_footer h1 { invalid-css-syntax }')
+      Affiliate.find(affiliate.id).cancel_staged_changes
+
+      aff_after_cancel =  Affiliate.find(affiliate.id)
+      aff_after_cancel.staged_header_footer_css.should == 'h1 { invalid-css-syntax }'
+      aff_after_cancel.staged_nested_header_footer_css.should == '.header_footer h1 { invalid-css-syntax }'
     end
   end
 

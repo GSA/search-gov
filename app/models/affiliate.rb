@@ -198,7 +198,7 @@ class Affiliate < ActiveRecord::Base
   RESULTS_SOURCE_DISPLAY_NAMES = { :bing => 'Bing', :odie => 'USASearch', :"bing+odie" => 'USASearch/Bing' }
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
-      header footer header_footer_css search_results_page_title favicon_url external_css_url uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
+      header footer header_footer_css nested_header_footer_css search_results_page_title favicon_url external_css_url uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -702,9 +702,9 @@ class Affiliate < ActiveRecord::Base
   end
 
   def validate_header_footer_css
+    return unless is_validate_staged_header_footer
     begin
       self.staged_nested_header_footer_css = generate_nested_css(staged_header_footer_css)
-      self.nested_header_footer_css = generate_nested_css(header_footer_css)
     rescue Sass::SyntaxError => err
       errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
     end
