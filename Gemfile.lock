@@ -56,15 +56,6 @@ GIT
       rails (>= 1.2)
 
 GIT
-  remote: git://github.com/leereilly/no-peeping-toms.git
-  revision: e5fbd73ea182151d06b5a3d2919f99ce3ce5b592
-  branch: fix-instancemethods-deprecation-warning
-  specs:
-    no_peeping_toms (2.1.1)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
   remote: git://github.com/naaano/active_scaffold_export.git
   revision: 61362bcdd3dda85cca497737ae6fa6f08ff87515
   specs:
@@ -77,6 +68,14 @@ GIT
   revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
     calendar_date_select (1.16.2)
+
+GIT
+  remote: git://github.com/patmaddox/no-peeping-toms.git
+  revision: 805a813adee46af41bdf4e7361df9e410b29015e
+  specs:
+    no_peeping_toms (2.1.3)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
 
 GIT
   remote: git://github.com/scambra/recordselect.git
