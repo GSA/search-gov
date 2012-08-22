@@ -844,3 +844,12 @@ Feature: Affiliate Search
     And I should see a link to "Form G-1145, E-Notification of Application/Petition Acceptance" with url for "http://www.uscis.gov/files/form/g-1145.pdf" in the form govbox
     And I should see "Form G-1145, E-Notification of Application/Petition Acceptance [PDF, 1KB]" in the form govbox
 
+  Scenario: When using tablet device
+    Given I am using a TabletPC device
+    And the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    When I am on bar.gov's search page
+    And I fill in "query" with "bar"
+    And I press "Search"
+    Then I should see some Bing search results
