@@ -185,6 +185,27 @@ background job model, consider the priorities of the existing jobs to determine 
 Odie documents will take days, and should run as low priority. But fetching and indexing a single URL uploaded by an affiliate should be high priority.
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
+### Performance
+We use NewRelic to monitor our site performance, especially on search requests. If you are doing something around search, make
+sure you aren't introducing anything to make it much slower. If you can, make it faster.
+
+With NewRelic, you can launch ‘developer mode’ on your development machine.
+
+1. Edit newrelic.yml and change this line to true:
+
+    developer_mode: true
+
+1. Run mongrel/thin
+
+1. Run a few representative SERPs with news items, gov boxes, etc
+
+1. Visit http://localhost:3000/newrelic
+
+1. The database calls view was the most useful one for me. How many extra database calls did your feature introduce? Yes, they are fast, but at 10-50 searches per second, it adds up.
+
+You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
+
+
 # Working on Stories
 
 1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to clck "Finished"? How will you know when you are done?
