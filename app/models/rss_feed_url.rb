@@ -3,25 +3,28 @@ class RssFeedUrl < ActiveRecord::Base
   OK_STATUS = 'OK'
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
-  RSS_ELEMENTS = { :item => 'item',
-                   :pubDate => %w(pubDate),
-                   :link => %w(link),
-                   :title => 'title',
-                   :guid => 'guid',
-                   :description => 'description' }
+  RSS_ELEMENTS = {:item => 'item',
+                  :pubDate => %w(pubDate),
+                  :link => %w(link),
+                  :title => 'title',
+                  :guid => 'guid',
+                  :contributor => 'dc:contributor',
+                  :publisher => 'dc:publisher',
+                  :subject => 'dc:subject',
+                  :description => 'description'}
 
-  ATOM_ELEMENTS = { :item => 'xmlns:entry',
-                    :pubDate => %w(xmlns:published xmlns:updated),
-                    :link => %w(xmlns:link[@rel='alternate'][@href]/@href xmlns:link/@href),
-                    :title => 'xmlns:title',
-                    :guid => 'xmlns:id',
-                    :description => 'xmlns:content' }
+  ATOM_ELEMENTS = {:item => 'xmlns:entry',
+                   :pubDate => %w(xmlns:published xmlns:updated),
+                   :link => %w(xmlns:link[@rel='alternate'][@href]/@href xmlns:link/@href),
+                   :title => 'xmlns:title',
+                   :guid => 'xmlns:id',
+                   :description => 'xmlns:content'}
 
-  FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
+  FEED_ELEMENTS = {:rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS}
 
   PLAYLIST_RSS_ELEMENTS = RSS_ELEMENTS.merge(
-      { :pubDate => %w(media:group/yt:uploaded),
-        :description => 'media:group/media:description' })
+    {:pubDate => %w(media:group/yt:uploaded),
+     :description => 'media:group/media:description'})
 
   MAX_YOUTUBE_RESULTS = 1000
 
@@ -90,9 +93,12 @@ class RssFeedUrl < ActiveRecord::Base
 
   def detect_feed_type(document)
     case document.root.name
-      when 'feed' then :atom
-      when 'rss' then :rss
-      else nil
+      when 'feed' then
+        :atom
+      when 'rss' then
+        :rss
+      else
+        nil
     end
   end
 
@@ -115,6 +121,9 @@ class RssFeedUrl < ActiveRecord::Base
         break if link.present?
       end
 
+      contributor = item.xpath(feed_elements[:contributor]).inner_text rescue nil
+      subject = item.xpath(feed_elements[:subject]).inner_text rescue nil
+      publisher = item.xpath(feed_elements[:publisher]).inner_text rescue nil
       title = item.xpath(feed_elements[:title]).inner_text
       guid = item.xpath(feed_elements[:guid]).inner_text
       guid = link if guid.blank?
@@ -130,6 +139,9 @@ class RssFeedUrl < ActiveRecord::Base
                            :title => title,
                            :description => description,
                            :published_at => published_at,
+                           :contributor => contributor,
+                           :publisher => publisher,
+                           :subject => subject,
                            :guid => guid)
       end
     end
@@ -156,11 +168,11 @@ class RssFeedUrl < ActiveRecord::Base
       url.sub("&start-index=1&", "&start-index=#{next_start_index}&")
     else
       query_params = CGI.parse(URI.parse(url).query)
-      url_params = { :alt => 'rss',
-                     :author => query_params['author'].first,
-                     :'max-results' => max_video_results_per_pull,
-                     :orderby => 'published',
-                     :'start-index' => next_start_index }
+      url_params = {:alt => 'rss',
+                    :author => query_params['author'].first,
+                    :'max-results' => max_video_results_per_pull,
+                    :orderby => 'published',
+                    :'start-index' => next_start_index}
       "http://gdata.youtube.com/feeds/base/videos?#{url_params.to_param}"
     end
   end

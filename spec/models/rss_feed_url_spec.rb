@@ -106,9 +106,13 @@ describe RssFeedUrl do
           newest.published_at.should == DateTime.parse('26 Sep 2011 21:33:05 +0000')
           newest.description[0, 40].should == 'Dr. Biden and David Letterman refer to a'
           newest.title.should == 'Famine in the Horn of Africa: Be a Part of the Solution'
+          newest.contributor.should == "The President"
+          newest.subject.should == "jobs"
+          newest.publisher.should == "Statements and Releases"
 
           oldest = rss_feed_url.news_items.last
           oldest.guid.should == 'http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0'
+          oldest.publisher.should be_nil
         end
       end
 
