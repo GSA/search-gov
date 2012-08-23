@@ -1,7 +1,5 @@
 # coding: utf-8
 class IndexedDocument < ActiveRecord::Base
-  include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
-
   class IndexedDocumentError < RuntimeError;
   end
 
@@ -101,7 +99,6 @@ class IndexedDocument < ActiveRecord::Base
       handle_fetch_exception(e)
     end
   end
-  add_transaction_tracer :fetch, :category => :task
 
   def handle_fetch_exception(e)
     begin
