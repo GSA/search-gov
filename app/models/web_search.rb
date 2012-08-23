@@ -264,7 +264,7 @@ class WebSearch < Search
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
       @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
-      @forms = Form.search_for(query, affiliate) if query =~ /(\w+\s+\bforms?\b|\bforms?\b\s+\w+)/i and affiliate.form_agencies.present?
+      @forms = Form.search_for(query, affiliate) if affiliate.form_agencies.present?
     end
   end
 

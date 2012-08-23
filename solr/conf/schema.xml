@@ -81,6 +81,28 @@
         <filter class="solr.SnowballPorterFilterFactory" language="Spanish" />
       </analyzer>
     </fieldtype>
+    <fieldtype class="solr.TextField" positionIncrementGap="100" name="text_form">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <!--<filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>-->
+        <filter class="solr.StopFilterFactory" words="form_stopwords.txt" ignoreCase="true"/>
+        <filter class="solr.WordDelimiterFilterFactory"
+                splitOnCaseChange="0"
+                splitOnNumerics="0"
+                stemEnglishPossessive="0"
+                catenateWords="1"
+                catenateNumbers="1"
+                catenateAll="1"
+                preserveOriginal="1"/>
+        <!--generateWordParts="0"-->
+        <!--generateNumberParts="0"-->
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
+      </analyzer>
+    </fieldtype>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
@@ -138,6 +160,7 @@
     <!-- *** This field is used by Sunspot! *** -->
     <field name="text" stored="false" type="string" multiValued="true" indexed="true"/>
     <field name="text_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
+    <field name="text_form" type="text_form" indexed="true" stored="true" multiValued="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lat" stored="true" type="tdouble" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
@@ -152,8 +175,10 @@
     <dynamicField name="*_texts" stored="true" type="text" multiValued="true" indexed="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_text_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_text_form" type="text_form" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_texts_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_texts_form" type="text_form" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_b" stored="false" type="boolean" multiValued="false" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->

@@ -18,9 +18,9 @@ class Form < ActiveRecord::Base
 
   searchable do
     integer :form_agency_id
-    text :number, :stored => true, :boost => 17.0
-    text :title, :stored => true, :boost => 8.0
-    text :description, :stored => true, :boost => 3.0
+    text :number, :stored => true, :boost => 17.0, :as => 'number_text_form'
+    text :title, :stored => true, :boost => 8.0, :as => 'title_text_form'
+    text :description, :stored => true
   end
 
   class << self
@@ -35,7 +35,8 @@ class Form < ActiveRecord::Base
         search do
           with(:form_agency_id, affiliate.form_agencies.collect(&:id))
           fulltext sanitized_query do
-            highlight :number, :title, :description, :frag_list_builder => 'single'
+            highlight :number, :title, :frag_list_builder => 'single'
+            highlight :description, :fragment_size => 255
           end
           paginate :page => 1, :per_page => 1
         end

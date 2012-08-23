@@ -57,6 +57,19 @@ Then /^I should see "([^\"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
+Then /^I should see the govbox form (number|title) "([^\"]*)" in bold font$/ do |number_or_title, text|
+  case number_or_title
+    when 'number' then
+      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/strong[text()='#{text}']").should_not be_nil
+    when 'title' then
+      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/a[1]/strong[text()='#{text}']").should_not be_nil
+  end
+end
+
+Then /^I should not see the govbox form description "([^\"]*)" in bold font$/ do |text|
+  lambda { page.find(:xpath, "//div[@id='form_govbox']//*[@class='description'][1]/strong[text()='#{text}']") }.should raise_error
+end
+
 Then /^I should not see the indexed documents section$/ do
   page.should_not have_selector("#indexed_documents")
 end

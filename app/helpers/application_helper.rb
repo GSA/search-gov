@@ -165,7 +165,9 @@ module ApplicationHelper
 
   def highlight_hit(hit, field_name)
     sym = field_name.to_sym
-    if (hit.instance.is_a?(BoostedContent) and hit.instance.affiliate.locale == 'es') or (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es')
+    if (hit.instance.is_a?(BoostedContent) and hit.instance.affiliate.locale == 'es') or
+        (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es') or
+        (hit.instance.is_a?(Form) && (sym == :number or sym == :title))
       sym = "#{field_name}_text".to_sym
     end
     return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?

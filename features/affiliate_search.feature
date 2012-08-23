@@ -814,8 +814,9 @@ Feature: Affiliate Search
       | name      | locale | display_name                              |
       | uscis.gov | en     | U.S. Citizenship and Immigration Services |
     And the following Forms exist for en uscis.gov form agency:
-      | number | url                                       | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url           | revision_date | expiration_date |
-      | I-485  | http://www.uscis.gov/files/form/i-485.pdf | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485 | 8/7/09        | 2013-01-31      |
+      | number             | url                                           | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url               | revision_date | expiration_date |
+      | I-485              | http://www.uscis.gov/files/form/i-485.pdf     | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485     | 8/7/09        | 2013-01-31      |
+      | I-485 Supplement A | http://www.uscis.gov/files/form/i-485supa.pdf | PDF       | Supplement A to Form I-485                                   | To provide a supplemental information to USCIS                                       | 170KB     | 5               | http://www.uscis.gov/i-485supa | 1/18/11       |                 |
     And the following Links exist for en uscis.gov form I-485:
       | title                                                          | url                                            | file_size | file_type |
       | Instructions for Form I-485                                    | http://www.uscis.gov/files/form/i-485instr.pdf | 253KB     | PDF       |
@@ -829,10 +830,10 @@ Feature: Affiliate Search
       | a doc on I-485       | some odie desc. on I-485    | http://answers.usa.gov/page1.html | usagov    | OK                |
       | another doc on I-485 | another odie desc. on I-485 | http://answers.usa.gov/page2.html | usagov    | OK                |
     When I am on bar.gov's search page
-    And I fill in "query" with "form I-485"
+    And I fill in "query" with "I-485"
     And I press "Search"
-    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485"
-    Then I should see "Application to Register Permanent Residence or Adjust Status (I-485)" in the form govbox
+    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
+    Then I should see the govbox form number "I-485" in bold font
     And I should see "Rev. 8/7/09" in the form govbox
     And I should see "Expires 1/31/13" in the form govbox
     And I should see "U.S. Citizenship and Immigration Services" in the form govbox
@@ -843,6 +844,24 @@ Feature: Affiliate Search
     And I should see "Instructions for Form I-485 [PDF, 253KB]" in the form govbox
     And I should see a link to "Form G-1145, E-Notification of Application/Petition Acceptance" with url for "http://www.uscis.gov/files/form/g-1145.pdf" in the form govbox
     And I should see "Form G-1145, E-Notification of Application/Petition Acceptance [PDF, 1KB]" in the form govbox
+
+    When I fill in "query" with "supplement A I-485"
+    And I press "Search"
+    Then I should see a link to "Supplement A to Form I-485" with url for "http://www.uscis.gov/i-485supa" in the form govbox
+    And I should see the govbox form number "I-485" in bold font
+    And I should see the govbox form number "Supplement" in bold font
+    And I should see the govbox form number "A" in bold font
+    And I should see the govbox form title "I-485" in bold font
+    And I should see the govbox form title "Supplement" in bold font
+    And I should see the govbox form title "A" in bold font
+    And I should not see the govbox form description "a" in bold font
+
+    When I fill in "query" with "I 485"
+    And I press "Search"
+    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
+    When I fill in "query" with "I485"
+    And I press "Search"
+    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
 
   Scenario: When using tablet device
     Given I am using a TabletPC device
