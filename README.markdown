@@ -185,7 +185,7 @@ background job model, consider the priorities of the existing jobs to determine 
 Odie documents will take days, and should run as low priority. But fetching and indexing a single URL uploaded by an affiliate should be high priority.
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
-### Performance
+# Performance
 We use NewRelic to monitor our site performance, especially on search requests. If you are doing something around search, make
 sure you aren't introducing anything to make it much slower. If you can, make it faster.
 
