@@ -45,7 +45,7 @@ class WebSearch < Search
           parsed_result_url_path = parsed_result_url.path.empty? ? '/' : parsed_result_url.path
           normalized_linked_url_host == normalized_url_host and parsed_url_path == parsed_result_url_path
         end
-        return in_bing
+        return true if in_bing
       end
       false
     rescue Exception => e
