@@ -27,6 +27,15 @@ class BingSearch
     end
   end
 
+  def parse_bing_response(response_body)
+    begin
+      json = JSON.parse(response_body)
+      json.nil? || json['SearchResponse'].blank? ? nil : ResponseData.new(json['SearchResponse'])
+    rescue JSON::ParserError => error
+      raise BingSearchError.new(error.to_s)
+    end
+  end
+
   protected
 
   def bing_api_url(query_string, query_sources, offset, count, enable_highlighting, filter_setting)

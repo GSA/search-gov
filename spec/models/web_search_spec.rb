@@ -1568,23 +1568,22 @@ describe WebSearch do
 
   describe "#self.url_present_in_bing?(url, affiliate)" do
     before do
-      @search = WebSearch.new(:affiliate => @affiliate, :query => "some term")
-      WebSearch.stub!(:new).and_return(@search)
-      @search.stub!(:run).and_return(nil)
-      @search.stub!(:results).and_return([{'unescapedUrl' => 'http://nps.gov/'},
-                                          {'unescapedUrl' => 'http://www.nps.gov/foo.xls'}])
+      bing_search = BingSearch.new
+      BingSearch.stub!(:new).and_return bing_search
+      response = "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}"
+      bing_search.stub!(:query).and_return(response)
     end
 
     context "when the URL exists in Bing results (possibly fuzzily) for that affiliate search" do
       it "should return true" do
-        WebSearch.url_present_in_bing?('http://www.nps.gov', @affiliate).should be_true
-        WebSearch.url_present_in_bing?('http://nps.gov/foo.xls', @affiliate).should be_true
+        WebSearch.url_present_in_bing?('http://www.clinicaltrials.gov/ct2/show/NCT01308762').should be_true
+        WebSearch.url_present_in_bing?('http://clinicaltrials.gov/ct2/show/NCT01308762?ihateyour=cms').should be_true
       end
     end
 
     context "when the URL does not exist in Bing results for that affiliate search" do
       it "should return false" do
-        WebSearch.url_present_in_bing?('http://www.nps.gov/nope', @affiliate).should be_false
+        WebSearch.url_present_in_bing?('http://www.nps.gov/nope').should be_false
       end
     end
 
@@ -1594,7 +1593,7 @@ describe WebSearch do
       end
 
       it "should return false" do
-        WebSearch.url_present_in_bing?('http://www.nps.gov/problem_url', @affiliate).should be_false
+        WebSearch.url_present_in_bing?('http://www.nps.gov/problem_url').should be_false
       end
     end
 

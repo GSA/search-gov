@@ -24,17 +24,18 @@ class WebSearch < Search
 
   class << self
     def results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = BingSearch::DEFAULT_FILTER_SETTING)
-      search = new(:query => query, :affiliate => affiliate, :filter_setting => filter_setting)
+      search = new(:query => query, :affiliate => affiliate, :filter => filter_setting)
       search.run
       spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
       search.results.present? && spelling_ok
     end
 
-    def url_present_in_bing?(url, affiliate)
-      search = new(:query => url, :affiliate => affiliate, :filter_setting => 'off')
-      search.run
-      if search.results.present?
-        result_urls = search.results.collect { |r| r['unescapedUrl'] }
+    def url_present_in_bing?(url)
+      bing_search = BingSearch.new
+      response = bing_search.query(url, 'Web', 0, 10, false, 'off')
+      bing_results = bing_search.parse_bing_response(response)
+      if bing_results.web.results.present?
+        result_urls = bing_results.web.results.collect { |r| r['Url'] }
         parsed_url = URI.parse(url)
         normalized_url_host = parsed_url.host.gsub("www.", '')
         in_bing = result_urls.any? do |result_url|
@@ -47,7 +48,8 @@ class WebSearch < Search
         return in_bing
       end
       false
-    rescue Exception
+    rescue Exception => e
+      Rails.logger.warn("Trouble determining if URL is in bing: #{e}")
       false
     end
   end
@@ -133,6 +135,10 @@ class WebSearch < Search
     @indexed_results = odie_search
   end
 
+  def parse_bing_response(response)
+    @bing_search.parse_bing_response(response)
+  end
+
   def perform_bing_search
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
@@ -140,15 +146,6 @@ class WebSearch < Search
       response = @bing_search.query(@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting)
       @@redis.setex(cache_key, BING_CACHE_DURATION_IN_SECONDS, response) rescue nil
       response
-    end
-  end
-
-  def parse_bing_response(response_body)
-    begin
-      json = JSON.parse(response_body)
-      json.nil? || json['SearchResponse'].blank? ? nil : ResponseData.new(json['SearchResponse'])
-    rescue JSON::ParserError => error
-      raise BingSearch::BingSearchError.new(error.to_s)
     end
   end
 

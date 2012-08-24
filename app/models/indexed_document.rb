@@ -40,7 +40,7 @@ class IndexedDocument < ActiveRecord::Base
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap unless you are using Odie results. Set up your collection or hosted sitemap first and then upload the URL."
-  BING_PRESENCE = "URL already exists in the Bing index and you are using Bing results"
+  BING_PRESENCE = "URL already exists in the Bing index"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -347,12 +347,12 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def bing_absence
-    return unless self.affiliate.present? and self.affiliate.uses_odie_results?
+    return unless self.affiliate.present?
     parsed_url = URI.parse(self.url)
     normalized_url = parsed_url.host.gsub("www.", '') << parsed_url.path
     if BingUrl.exists?(:normalized_url => normalized_url)
       errors.add(:base, BING_PRESENCE)
-    elsif WebSearch.url_present_in_bing?(url, self.affiliate)
+    elsif WebSearch.url_present_in_bing?(normalized_url)
       BingUrl.create!(:normalized_url => normalized_url)
       errors.add(:base, BING_PRESENCE)
     end
