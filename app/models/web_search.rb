@@ -30,14 +30,14 @@ class WebSearch < Search
       search.results.present? && spelling_ok
     end
 
-    def url_present_in_bing?(url)
+    def url_present_in_bing?(normalized_url)
       bing_search = BingSearch.new
-      response = bing_search.query(url, 'Web', 0, 10, false, 'off')
+      response = bing_search.query(normalized_url, 'Web', 0, 10, false, 'off')
       bing_results = bing_search.parse_bing_response(response)
       if bing_results.web.results.present?
         result_urls = bing_results.web.results.collect { |r| r['Url'] }
-        parsed_url = URI.parse(url)
-        normalized_url_host = parsed_url.host.gsub("www.", '')
+        parsed_url = URI.parse("http://" + normalized_url)
+        normalized_url_host = parsed_url.host
         in_bing = result_urls.any? do |result_url|
           parsed_result_url = URI.parse(result_url)
           normalized_linked_url_host = parsed_result_url.host.gsub("www.", '')

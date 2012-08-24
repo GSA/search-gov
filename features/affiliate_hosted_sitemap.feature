@@ -13,10 +13,10 @@ Feature: Affiliate Hosted Sitemaps
       | ostp.gov              | ostp Agency Website |
     And the following IndexedDocuments exist:
       | url                                      | affiliate | title            | description         |
-      | http://www.whitehouse.gov/our-government | aff.gov   | Our Government   | white house cabinet |
-      | http://www.ostp.gov/fake-page            | aff.gov   | Fake page        | ostp                |
-    And the url "http://www.whitehouse.gov/our-government" has been crawled
-    And the url "http://www.ostp.gov/fake-page" has been crawled
+      | http://www.whitehouse.gov/our-government/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906 | aff.gov   | Our Government   | white house cabinet |
+      | http://www.ostp.gov/fake-page/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906            | aff.gov   | Fake page        | ostp                |
+    And the url "http://www.whitehouse.gov/our-government/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906" has been crawled
+    And the url "http://www.ostp.gov/fake-page/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906" has been crawled
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Hosted Sitemaps"

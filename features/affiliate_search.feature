@@ -401,7 +401,7 @@ Feature: Affiliate Search
       | usa.gov        | Agency Website |
     And the following IndexedDocuments exist:
       | title        | description                                                                         | url                 | affiliate  | last_crawl_status |
-      | USA.gov Blog | We help you find official U.S. government information and services on the Internet. | http://blog.usa.gov | agency.gov | OK                |
+      | USA.gov Blog | We help you find official U.S. government information and services on the Internet. | http://blog.usa.gov/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906 | agency.gov | OK                |
     When I am on agency.gov's search page
     And I fill in "query" with "usa.gov blog"
     And I press "Search"

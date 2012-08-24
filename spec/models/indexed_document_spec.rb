@@ -21,6 +21,7 @@ describe IndexedDocument do
       :affiliate_id => affiliates(:basic_affiliate).id,
       :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8"
     }
+    WebSearch.stub!(:url_present_in_bing?).and_return false
   end
 
   it { should validate_presence_of :url }

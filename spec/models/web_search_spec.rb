@@ -1220,6 +1220,7 @@ describe WebSearch do
 
     context "when an affiliate has Bing results that are duplicated in indexed documents" do
       before do
+        WebSearch.stub!(:url_present_in_bing?).and_return false
         @affiliate.indexed_documents.destroy_all
         @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
         @affiliate.site_domains.create!(:domain => 'usa.gov')
@@ -1566,7 +1567,7 @@ describe WebSearch do
     end
   end
 
-  describe "#self.url_present_in_bing?(url, affiliate)" do
+  describe "#self.url_present_in_bing?(normalized_url)" do
     before do
       bing_search = BingSearch.new
       BingSearch.stub!(:new).and_return bing_search
@@ -1576,14 +1577,14 @@ describe WebSearch do
 
     context "when the URL exists in Bing results (possibly fuzzily) for that affiliate search" do
       it "should return true" do
-        WebSearch.url_present_in_bing?('http://www.clinicaltrials.gov/ct2/show/NCT01308762').should be_true
-        WebSearch.url_present_in_bing?('http://clinicaltrials.gov/ct2/show/NCT01308762?ihateyour=cms').should be_true
+        WebSearch.url_present_in_bing?('clinicaltrials.gov/ct2/show/NCT01308762').should be_true
+        WebSearch.url_present_in_bing?('clinicaltrials.gov/ct2/show/NCT01308762?ihateyour=cms').should be_true
       end
     end
 
     context "when the URL does not exist in Bing results for that affiliate search" do
       it "should return false" do
-        WebSearch.url_present_in_bing?('http://www.nps.gov/nope').should be_false
+        WebSearch.url_present_in_bing?('nps.gov/nope').should be_false
       end
     end
 
@@ -1593,7 +1594,7 @@ describe WebSearch do
       end
 
       it "should return false" do
-        WebSearch.url_present_in_bing?('http://www.nps.gov/problem_url').should be_false
+        WebSearch.url_present_in_bing?('nps.gov/problem_url').should be_false
       end
     end
 
