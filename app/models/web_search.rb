@@ -29,12 +29,33 @@ class WebSearch < Search
       spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
       search.results.present? && spelling_ok
     end
+
+    def url_present_in_bing?(url, affiliate)
+      search = new(:query => url, :affiliate => affiliate, :filter_setting => 'off')
+      search.run
+      if search.results.present?
+        result_urls = search.results.collect { |r| r['unescapedUrl'] }
+        parsed_url = URI.parse(url)
+        normalized_url_host = parsed_url.host.gsub("www.", '')
+        in_bing = result_urls.any? do |result_url|
+          parsed_result_url = URI.parse(result_url)
+          normalized_linked_url_host = parsed_result_url.host.gsub("www.", '')
+          parsed_url_path = parsed_url.path.empty? ? '/' : parsed_url.path
+          parsed_result_url_path = parsed_result_url.path.empty? ? '/' : parsed_result_url.path
+          normalized_linked_url_host == normalized_url_host and parsed_url_path == parsed_result_url_path
+        end
+        return in_bing
+      end
+      false
+    rescue Exception
+      false
+    end
   end
 
   def initialize(options = {})
     super(options)
     @offset = (@page - 1) * @per_page
-    @bing_search = BingSearch.new(USER_AGENT)
+    @bing_search = BingSearch.new
     @filter_setting = BingSearch::VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : BingSearch::DEFAULT_FILTER_SETTING
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
     @sources = "Spell+Web"
@@ -240,8 +261,8 @@ class WebSearch < Search
         @agency = agency_query.agency if agency_query
       end
       govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
-      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select {|feed| !feed.is_video?}, nil, 1)
-      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select {|feed| feed.is_video?}, nil, 1)
+      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, nil, 1)
+      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| feed.is_video? }, nil, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?

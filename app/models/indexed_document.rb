@@ -18,6 +18,7 @@ class IndexedDocument < ActiveRecord::Base
   validate :site_domain_matches
   validate :robots_txt_compliance
   validate :odie_candidacy
+  validate :bing_absence
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -39,6 +40,7 @@ class IndexedDocument < ActiveRecord::Base
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap unless you are using Odie results. Set up your collection or hosted sitemap first and then upload the URL."
+  BING_PRESENCE = "URL already exists in the Bing index and you are using Bing results"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -342,6 +344,19 @@ class IndexedDocument < ActiveRecord::Base
     errors.add(:base, ODIE_CANDIDACY) unless self.affiliate.uses_odie_results? or
       (self.affiliate.features & Feature.find_all_by_internal_name(%w{odie_api hosted_sitemaps})).present? or
       self.affiliate.url_prefixes.where("? like concat(prefix,'%')", url).present?
+  end
+
+  def bing_absence
+    return unless self.affiliate.present? and self.affiliate.uses_odie_results?
+    parsed_url = URI.parse(self.url)
+    normalized_url = parsed_url.host.gsub("www.", '') << parsed_url.path
+    if BingUrl.exists?(:normalized_url => normalized_url)
+      errors.add(:base, BING_PRESENCE)
+    elsif WebSearch.url_present_in_bing?(url, self.affiliate)
+      BingUrl.create!(:normalized_url => normalized_url)
+      errors.add(:base, BING_PRESENCE)
+    end
+  rescue Exception
   end
 
   def url_is_parseable

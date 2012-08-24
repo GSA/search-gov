@@ -1,8 +1,8 @@
 class ImageSearch < WebSearch
-  
+
   def initialize(options = {})
     super(options)
-    @bing_search = BingImageSearch.new(USER_AGENT)
+    @bing_search = BingImageSearch.new
     @sources = "Spell+Image"
     @results_by_bing = true
   end
@@ -10,7 +10,7 @@ class ImageSearch < WebSearch
   def are_results_by_bing?
     @results_by_bing
   end
-  
+
   protected
 
   def search
@@ -21,7 +21,7 @@ class ImageSearch < WebSearch
       false
     end
   end
-  
+
   def perform_odie_image_search
     odie_image_search = OdieImageSearch.new(@options)
     odie_image_search.run
@@ -36,7 +36,7 @@ class ImageSearch < WebSearch
   def handle_response(response)
     response.is_a?(OdieImageSearch) ? handle_odie_response(response) : handle_bing_response(response)
   end
-  
+
   def handle_odie_response(response)
     unless response.nil? and response.total > 0
       @total = response.total

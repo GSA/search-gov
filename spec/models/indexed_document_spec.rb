@@ -157,6 +157,49 @@ describe IndexedDocument do
     end
   end
 
+  context "when a URL is a valid candidate for Odie indexing" do
+    let(:idoc) { IndexedDocument.new(@valid_attributes) }
+
+    context "when the normalized URL is already in our list of Bing URLs" do
+      before do
+        BingUrl.create!(:normalized_url => 'nps.gov/index.htm')
+      end
+
+      it "should be invalid" do
+        idoc.should_not be_valid
+        idoc.errors.full_messages.first.should == IndexedDocument::BING_PRESENCE
+      end
+    end
+
+    context "when the URL is not in our Bing Url list but is in Bing results" do
+      before do
+        BingUrl.delete_all
+        WebSearch.stub!(:url_present_in_bing?).and_return true
+      end
+
+      it "should be invalid" do
+        idoc.should_not be_valid
+        idoc.errors.full_messages.first.should == IndexedDocument::BING_PRESENCE
+      end
+
+      it "should add the normalized URL to the list of Bing URLs" do
+        idoc.should_not be_valid
+        BingUrl.exists?(:normalized_url => 'nps.gov/index.htm').should be_true
+      end
+    end
+
+    context "when none of the above two conditions are true" do
+      before do
+        BingUrl.delete_all
+        WebSearch.stub!(:url_present_in_bing?).and_return false
+      end
+
+      it "should be valid" do
+        idoc.should be_valid
+      end
+    end
+  end
+
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.nps.gov/#{'waytoolong'*200}/some.pdf"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))

@@ -11,7 +11,7 @@ describe WebSearch do
   before do
     @affiliate = affiliates(:usagov_affiliate)
     @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
-    @bing_search = BingSearch.new(Search::USER_AGENT)
+    @bing_search = BingSearch.new
     BingSearch.stub!(:new).and_return @bing_search
     @generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_result_for_ira.json")
   end
@@ -263,7 +263,7 @@ describe WebSearch do
 
         context "when scope keywords are specified" do
           before do
-            @bing_search = BingSearch.new(Search::USER_AGENT)
+            @bing_search = BingSearch.new
             BingSearch.stub!(:new).and_return @bing_search
           end
 
@@ -343,7 +343,7 @@ describe WebSearch do
         before do
           @affiliate = affiliates(:power_affiliate)
           @affiliate.add_site_domains("foo.com" => nil, "bar.com" => nil)
-          @bing_search = BingSearch.new(Search::USER_AGENT)
+          @bing_search = BingSearch.new
           BingSearch.stub!(:new).and_return @bing_search
           @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com)', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING).and_return @generic_bing_result
           @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'doesnotexist.gov'))
@@ -1199,7 +1199,7 @@ describe WebSearch do
       context "when an affiliate has RSS Feeds" do
         before do
           @affiliate = affiliates(:basic_affiliate)
-          @affiliate.rss_feeds.each {|feed| feed.update_attribute(:shown_in_govbox, true)}
+          @affiliate.rss_feeds.each { |feed| feed.update_attribute(:shown_in_govbox, true) }
         end
 
         it "should retrieve govbox-enabled non-video and video RSS feeds" do
@@ -1564,6 +1564,40 @@ describe WebSearch do
         WebSearch.results_present_for?("some term", @affiliate).should be_false
       end
     end
+  end
+
+  describe "#self.url_present_in_bing?(url, affiliate)" do
+    before do
+      @search = WebSearch.new(:affiliate => @affiliate, :query => "some term")
+      WebSearch.stub!(:new).and_return(@search)
+      @search.stub!(:run).and_return(nil)
+      @search.stub!(:results).and_return([{'unescapedUrl' => 'http://nps.gov/'},
+                                          {'unescapedUrl' => 'http://www.nps.gov/foo.xls'}])
+    end
+
+    context "when the URL exists in Bing results (possibly fuzzily) for that affiliate search" do
+      it "should return true" do
+        WebSearch.url_present_in_bing?('http://www.nps.gov', @affiliate).should be_true
+        WebSearch.url_present_in_bing?('http://nps.gov/foo.xls', @affiliate).should be_true
+      end
+    end
+
+    context "when the URL does not exist in Bing results for that affiliate search" do
+      it "should return false" do
+        WebSearch.url_present_in_bing?('http://www.nps.gov/nope', @affiliate).should be_false
+      end
+    end
+
+    context "when some sort of exception occurs" do
+      before do
+        URI.stub!(:parse).and_raise Exception
+      end
+
+      it "should return false" do
+        WebSearch.url_present_in_bing?('http://www.nps.gov/problem_url', @affiliate).should be_false
+      end
+    end
+
   end
 
   describe "#to_xml" do
