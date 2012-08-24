@@ -23,8 +23,8 @@ class Robot < ActiveRecord::Base
     end
     prefixes_array = []
     disallows.each do |line|
-      if line =~ /^Disallow: *\//
-        prefix = line.split(":").last.squish
+      if line =~ /^Disallow: *\//i
+        prefix = line.split(":").last.split('#').first.squish
         prefix = "#{prefix}/" unless prefix.blank? or prefix.ends_with?("/")
         prefixes_array << prefix
       end
@@ -33,7 +33,7 @@ class Robot < ActiveRecord::Base
   end
 
   def get_disallows_for_useragent(robots_txt, user_agent)
-    robots_txt.slice_before(/User-agent:/).select {|ua_arr| ua_arr.first.split(':').last.squish == user_agent}.flatten.drop(1)
+    robots_txt.slice_before(/User-agent:/i).select {|ua_arr| ua_arr.first.split(':').last.squish == user_agent}.flatten.drop(1)
   end
 
   def save_or_delete
