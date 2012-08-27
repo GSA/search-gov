@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824005505) do
+ActiveRecord::Schema.define(:version => 20120827213934) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -458,14 +458,15 @@ ActiveRecord::Schema.define(:version => 20120824005505) do
   end
 
   create_table "forms", :force => true do |t|
-    t.string   "number",          :null => false
-    t.string   "url",             :null => false
-    t.string   "file_type",       :null => false
+    t.string   "number",                            :null => false
+    t.string   "url",                               :null => false
+    t.string   "file_type",                         :null => false
     t.text     "details"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "form_agency_id",  :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "form_agency_id",                    :null => false
     t.date     "expiration_date"
+    t.boolean  "govbox_enabled",  :default => true, :null => false
   end
 
   add_index "forms", ["form_agency_id"], :name => "index_forms_on_form_agency_id"

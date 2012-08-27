@@ -16,6 +16,8 @@ describe UscisForm do
     let(:form3) { mock(File, :read => form3_landing_page) }
     let(:form4_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form4.html') }
     let(:form4) { mock(File, :read => form4_landing_page) }
+    let(:form5_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form5.html') }
+    let(:form5) { mock(File, :read => form5_landing_page) }
     let(:instruction1_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/instruction1.html') }
     let(:instruction1) { mock(File, :read => instruction1_landing_page) }
     let(:instruction2_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/instruction2.html') }
@@ -27,7 +29,7 @@ describe UscisForm do
       UscisForm.should_receive(:open).
           with(%r[^http://www.uscis.gov/portal/site/uscis/menuitem.5af9bb95919f35e66f614176543f6d1a]).
           exactly(5).times.
-          and_return(form1, form2, instruction1, form3, instruction2, form4)
+          and_return(form1, form2, instruction1, form3, instruction2, form4, form5)
     end
 
     context 'when there is no exisiting FormAgency' do
@@ -37,7 +39,7 @@ describe UscisForm do
         FormAgency.count.should == 1
         FormAgency.first.name.should == 'uscis.gov'
         FormAgency.first.locale.should == 'en'
-        FormAgency.first.display_name.should == 'DHS/U.S. Citizenship and Immigration Services'
+        FormAgency.first.display_name.should == 'U.S. Citizenship and Immigration Services'
       end
     end
 
@@ -56,11 +58,11 @@ describe UscisForm do
       end
 
       it 'should update FormAgency display name' do
-        FormAgency.first.display_name.should == 'DHS/U.S. Citizenship and Immigration Services'
+        FormAgency.first.display_name.should == 'U.S. Citizenship and Immigration Services'
       end
 
       it 'should create forms' do
-        Form.count.should == 6
+        Form.count.should == 7
       end
 
       it 'should populate all the available fields' do
@@ -74,6 +76,7 @@ describe UscisForm do
         form.number_of_pages.should == '1'
         form.revision_date.should == '12/11/11'
         form.expiration_date.strftime("%m/%d/%y").should == '12/31/14'
+        form.should be_govbox_enabled
       end
 
       it 'should populate form links' do
@@ -103,6 +106,15 @@ describe UscisForm do
       it 'should handle %mm/%yy revision date' do
         Form.where(:form_agency_id => form_agency.id, :number => 'I-193').first.revision_date.should == '12/10'
       end
+
+      it 'should set govbox_enabled to false for forms that are not published by USCIS' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'EOIR-29').first.should_not be_govbox_enabled
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-193').first.should_not be_govbox_enabled
+      end
+
+      it 'should set govbox_enabled to true for forms that does not exist in ROCIS' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-800A').first.should be_govbox_enabled
+      end
     end
 
     context 'when there is existing Form with the same agency and number' do
@@ -115,17 +127,22 @@ describe UscisForm do
       let!(:existing_form) { Form.create!(:form_agency_id => form_agency.id,
                                           :number => 'AR-11',
                                           :url => 'http://www.uscis.gov/form.pdf',
-                                          :file_type => 'PDF') }
+                                          :file_type => 'PDF',
+                                          :govbox_enabled => false) }
 
       before { UscisForm.import }
 
       it 'should create/update forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 6
+        Form.where(:form_agency_id => form_agency.id).count.should == 7
       end
 
       it 'should update existing form' do
         form = Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first
         form.id.should == existing_form.id
+      end
+
+      it 'should not override govbox_enabled' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first.should_not be_govbox_enabled
       end
     end
 
@@ -144,7 +161,7 @@ describe UscisForm do
       before { UscisForm.import }
 
       it 'should create forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 6
+        Form.where(:form_agency_id => form_agency.id).count.should == 7
       end
 
       it 'should delete the obsolete form' do

@@ -6,8 +6,8 @@ class UscisForm
 
   def self.import
     forms_index_url = retrieve_forms_index_url
-    display_name = "DHS/#{rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if rocis_hash[AGENCY_SUB_AGENCY]
-    display_name ||= "DHS/#{AGENCY_NAME}"
+    display_name = "#{rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if rocis_hash[AGENCY_SUB_AGENCY]
+    display_name ||= "#{AGENCY_NAME}"
     form_agency = FormAgency.where(:name => 'uscis.gov', :locale => :en).first_or_initialize
     form_agency.display_name = display_name
     form_agency.save!
@@ -54,6 +54,11 @@ class UscisForm
     if rocis_forms_hash[form_number]
       form.expiration_date = rocis_forms_hash[form_number][:expiration_date]
     end
+
+    if form.new_record? and rocis_forms_hash[form_number].nil?
+      form.govbox_enabled = false if lookup_rocis_form_across_agency(form_number).present?
+    end
+
     form.save!
     form
   end
@@ -153,13 +158,24 @@ class UscisForm
     end
   end
 
+  def self.rocis_forms_hash
+    rocis_hash[AGENCY_SUB_AGENCY][:forms]
+  end
+
+  def self.lookup_rocis_form_across_agency(form_number)
+    rocis_hash.keys.each do |k|
+      return rocis_hash[k][:forms][form_number] if rocis_hash[k][:forms][form_number]
+    end
+    nil
+  end
+
   def self.rocis_hash
     @@rocis_hash ||= parse_rocis_csv
   end
 
   def self.parse_rocis_csv
-    rocis_hash = {}
-    CSV.parse(File.binread(Rails.root.to_s + '/forms/uscis/ROCISUSCIS.csv'), :headers => true) do |row|
+    hash = {}
+    CSV.parse(File.binread(Rails.root.to_s + '/forms/rocis/rocis_data.csv'), :headers => true) do |row|
       parent_agency_acronym = row['ParentAgencyAcronym']
       agency_acronym = row['AgencyAcronym']
       agency_name = row['AgencyName']
@@ -167,18 +183,15 @@ class UscisForm
       form_number = form_number.gsub(/\bform\b/i, '').strip.squish if form_number.present?
       expiration_date = Date.strptime(row['ExpirationDate'], '%m/%d/%y') rescue nil
 
-      rocis_hash["#{parent_agency_acronym}/#{agency_acronym}"] ||= {
+      hash["#{parent_agency_acronym}/#{agency_acronym}"] ||= {
           :agency_name => agency_name,
           :forms => {}
       }
-      rocis_hash["#{parent_agency_acronym}/#{agency_acronym}"][:forms][form_number] = { :expiration_date => expiration_date }
+      hash["#{parent_agency_acronym}/#{agency_acronym}"][:forms][form_number] = { :expiration_date => expiration_date }
     end
-    rocis_hash
+    hash
   end
 
-  def self.rocis_forms_hash
-    rocis_hash[AGENCY_SUB_AGENCY][:forms]
-  end
 
   def self.lookup_matching_indexed_documents(forms)
     affiliate = Affiliate.find_by_name('usagov')

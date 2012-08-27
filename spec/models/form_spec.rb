@@ -114,6 +114,14 @@ describe Form do
       context 'when query does not match form fields' do
         specify { Form.search_for('some query form', affiliate).results.should be_empty }
       end
+
+      context 'and govbox enabled is false' do
+        before do
+          form1.update_attributes!(:govbox_enabled => false)
+          Form.reindex
+        end
+        specify { Form.search_for('i-9', affiliate).results.should be_blank }
+      end
     end
 
     context 'when .search raise an exception' do
