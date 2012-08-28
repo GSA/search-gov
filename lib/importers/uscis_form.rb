@@ -4,9 +4,13 @@ class UscisForm
   AGENCY = 'uscis.gov'.freeze
   AGENCY_NAME = 'U.S. Citizenship and Immigration Services'.freeze
 
-  def self.import
+  def initialize(rocis_hash)
+    @rocis_hash = rocis_hash
+  end
+
+  def import
     forms_index_url = retrieve_forms_index_url
-    display_name = "#{rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if rocis_hash[AGENCY_SUB_AGENCY]
+    display_name = "#{@rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if @rocis_hash[AGENCY_SUB_AGENCY]
     display_name ||= "#{AGENCY_NAME}"
     form_agency = FormAgency.where(:name => 'uscis.gov', :locale => :en).first_or_initialize
     form_agency.display_name = display_name
@@ -25,7 +29,7 @@ class UscisForm
     lookup_matching_indexed_documents(form_agency.forms)
   end
 
-  def self.retrieve_forms_index_url
+  def retrieve_forms_index_url
     forms_index_url = nil
     doc = Nokogiri::HTML(open('http://www.uscis.gov/portal/site/uscis'))
     urls = doc.xpath(%q{//*[@id='topNav']//a[text()='FORMS']/@href}).select { |u| u.content.present? }
@@ -35,7 +39,7 @@ class UscisForm
 
   private
 
-  def self.import_form(form_agency, row)
+  def import_form(form_agency, row)
     columns = row.css('td')
 
     title_link = columns[0].css('a').first
@@ -63,7 +67,7 @@ class UscisForm
     form
   end
 
-  def self.parse_revision_date(form, revision_date_column)
+  def parse_revision_date(form, revision_date_column)
     if revision_date_column
       sanitized_content = Sanitize.clean(revision_date_column.content.to_s).squish
       form.revision_date = case sanitized_content
@@ -81,7 +85,7 @@ class UscisForm
     end
   end
 
-  def self.parse_landing_page(form)
+  def parse_landing_page(form)
     doc = Nokogiri::HTML(open(form.landing_page_url).read)
     downloadable_list = doc.css('#mainContent #bodyFormatting ul li')
     parse_form_urls(form, downloadable_list) if downloadable_list
@@ -96,7 +100,7 @@ class UscisForm
     end
   end
 
-  def self.parse_form_urls(form, downloadable_list)
+  def parse_form_urls(form, downloadable_list)
     form.links = []
     downloadable_list.each_with_index do |list_item, index|
       link = parse_download_list_item(list_item)
@@ -110,7 +114,7 @@ class UscisForm
     end
   end
 
-  def self.parse_download_list_item(list_item)
+  def parse_download_list_item(list_item)
     link = list_item.css('a').first
     return {} unless link
 
@@ -126,13 +130,13 @@ class UscisForm
     { :title => link_title, :url => url, :file_size => file_size, :file_type => file_type }
   end
 
-  def self.parse_description(form, dt, dd)
+  def parse_description(form, dt, dd)
     if dt and dd and Sanitize.clean(dt.content.to_s.squish) =~ /\APurpose of Form/i
       form.description = Sanitize.clean(dd.content.to_s.squish)
     end
   end
 
-  def self.parse_number_of_pages(form, dt, dd)
+  def parse_number_of_pages(form, dt, dd)
     if dt and dd and Sanitize.clean(dt.content.to_s.squish) =~ /\ANumber of Pages/i
       sanitized_content = Sanitize.clean(dd.content.to_s.squish)
       form.number_of_pages = case sanitized_content
@@ -146,7 +150,7 @@ class UscisForm
     end
   end
 
-  def self.parse_short_url(form, paragraphs)
+  def parse_short_url(form, paragraphs)
     if paragraphs
       paragraphs.each do |p|
         sanitized_content = Sanitize.clean(p.content.to_s.squish)
@@ -158,42 +162,18 @@ class UscisForm
     end
   end
 
-  def self.rocis_forms_hash
-    rocis_hash[AGENCY_SUB_AGENCY][:forms]
+  def rocis_forms_hash
+    @rocis_hash[AGENCY_SUB_AGENCY][:forms]
   end
 
-  def self.lookup_rocis_form_across_agency(form_number)
-    rocis_hash.keys.each do |k|
-      return rocis_hash[k][:forms][form_number] if rocis_hash[k][:forms][form_number]
+  def lookup_rocis_form_across_agency(form_number)
+    @rocis_hash.keys.each do |k|
+      return @rocis_hash[k][:forms][form_number] if @rocis_hash[k][:forms][form_number]
     end
     nil
   end
 
-  def self.rocis_hash
-    @@rocis_hash ||= parse_rocis_csv
-  end
-
-  def self.parse_rocis_csv
-    hash = {}
-    CSV.parse(File.binread(Rails.root.to_s + '/forms/rocis/rocis_data.csv'), :headers => true) do |row|
-      parent_agency_acronym = row['ParentAgencyAcronym']
-      agency_acronym = row['AgencyAcronym']
-      agency_name = row['AgencyName']
-      form_number = row['FormNumber']
-      form_number = form_number.gsub(/\bform\b/i, '').strip.squish if form_number.present?
-      expiration_date = Date.strptime(row['ExpirationDate'], '%m/%d/%y') rescue nil
-
-      hash["#{parent_agency_acronym}/#{agency_acronym}"] ||= {
-          :agency_name => agency_name,
-          :forms => {}
-      }
-      hash["#{parent_agency_acronym}/#{agency_acronym}"][:forms][form_number] = { :expiration_date => expiration_date }
-    end
-    hash
-  end
-
-
-  def self.lookup_matching_indexed_documents(forms)
+  def lookup_matching_indexed_documents(forms)
     affiliate = Affiliate.find_by_name('usagov')
     return unless affiliate
 

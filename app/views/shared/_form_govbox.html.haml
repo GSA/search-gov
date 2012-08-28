@@ -6,10 +6,10 @@
         %span.official-tag Official Form
         - if result.revision_date.present?
           %span.form-date.revision-date Rev. #{result.revision_date}
-        - if result.expiration_date.present?
-          %span.form-date.expiration-date Expires #{render_short_date(result.expiration_date)}
+          - if result.expiration_date.present?
+            %span.form-date.expiration-date Expires #{render_short_date(result.expiration_date)}
         %h2
-          = link_with_click_tracking(highlight_hit(hit, :title).html_safe, result.landing_page_url, @affiliate, @search.query, 0, 'FORM', @search_vertical)
+          = render_form_title_link(hit, result, @affiliate, @search)
           (#{highlight_hit(hit, :number).html_safe})
         %h4.agency-name= result.form_agency.display_name
         - if result.description.present?
@@ -21,9 +21,9 @@
               %li
                 = link_to "#{link[:title]}", link[:url]
                 - if index == 0
-                  %span [#{link[:file_type]}, #{link[:file_size]}, #{result.number_of_pages} #{'page'.pluralize(result.number_of_pages.to_i)}]
+                  = render_form_link(link, result.number_of_pages)
                 - else
-                  %span [#{link[:file_type]}, #{link[:file_size]}]
+                  = render_form_link(link)
         - if result.indexed_documents.present?
           .faqs
             %h3 FAQs

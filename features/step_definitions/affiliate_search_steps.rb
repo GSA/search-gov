@@ -178,6 +178,7 @@ Given /^the following Forms exist for (en|es) (\S+) form agency:$/ do |locale, a
                    :file_type => f.file_type }
     end
   end
+  Form.reindex
 end
 
 Given /^the following Links exist for (en|es) (\S+) form (.+):$/ do |locale, agency_name, form_number, table|
@@ -190,4 +191,5 @@ Given /^the following Links exist for (en|es) (\S+) form (.+):$/ do |locale, age
                     :file_type => hash[:file_type] }
   end
   form.save!
+  Form.reindex
 end

@@ -813,6 +813,7 @@ Feature: Affiliate Search
     Given the following FormAgencies exist:
       | name      | locale | display_name                              |
       | uscis.gov | en     | U.S. Citizenship and Immigration Services |
+      | ssa.gov   | en     | Social Security Administration            |
     And the following Forms exist for en uscis.gov form agency:
       | number             | url                                           | file_type | title                                                        | description                                                                          | file_size | number_of_pages | landing_page_url               | revision_date | expiration_date |
       | I-485              | http://www.uscis.gov/files/form/i-485.pdf     | PDF       | Application to Register Permanent Residence or Adjust Status | To apply to adjust your status to that of a permanent resident of the United States. | 272KB     | 1               | http://www.uscis.gov/i-485     | 8/7/09        | 2013-01-31      |
@@ -821,15 +822,17 @@ Feature: Affiliate Search
       | title                                                          | url                                            | file_size | file_type |
       | Instructions for Form I-485                                    | http://www.uscis.gov/files/form/i-485instr.pdf | 253KB     | PDF       |
       | Form G-1145, E-Notification of Application/Petition Acceptance | http://www.uscis.gov/files/form/g-1145.pdf     | 1KB       | PDF       |
+    And the following Forms exist for en ssa.gov form agency:
+      | number | url                                             | file_type | title                                                                   | expiration_date |
+      | SSA-44 | http://www.socialsecurity.gov/online/ssa-44.pdf | PDF       | Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event | 2014-07-31      |
     And the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | locale | domains | affiliate_form_agencies |
-      | en bar site  | bar.gov | aff@bar.gov   | John Bar     | en     |         | uscis.gov               |
-      | usagov site  | usagov  | aff@bar.gov   | John Bar     | en     | usa.gov |                         |
+      | display_name | name   | contact_email | contact_name | locale | domains | affiliate_form_agencies |
+      | usagov site  | usagov | aff@bar.gov   | John Bar     | en     | .gov    | ssa.gov,uscis.gov       |
     And the following IndexedDocuments exist for en uscis.gov form I-485:
       | title                | description                 | url                               | affiliate | last_crawl_status |
       | a doc on I-485       | some odie desc. on I-485    | http://answers.usa.gov/page1.html | usagov    | OK                |
       | another doc on I-485 | another odie desc. on I-485 | http://answers.usa.gov/page2.html | usagov    | OK                |
-    When I am on bar.gov's search page
+    When I am on usagov's search page
     And I fill in "query" with "I-485"
     And I press "Search"
     Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
@@ -862,6 +865,13 @@ Feature: Affiliate Search
     When I fill in "query" with "I485"
     And I press "Search"
     Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
+
+    When I fill in "query" with "SSA-44"
+    And I press "Search"
+    Then I should see a link to "Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event" with url for "http://www.socialsecurity.gov/online/ssa-44.pdf" in the form govbox
+    And I should see the govbox form number "SSA-44" in bold font
+    And I should not see "7/31/14" in the form govbox
+    And I should see "Form SSA-44 [PDF]"
 
   Scenario: When using tablet device
     Given I am using a TabletPC device

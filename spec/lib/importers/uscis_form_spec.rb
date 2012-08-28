@@ -3,8 +3,10 @@ require 'spec_helper'
 
 describe UscisForm do
   before(:all) { FormAgency.destroy_all }
+  let(:rocis_data_path) { "#{Rails.root}/spec/fixtures/csv/forms/rocis_data.csv" }
+  let(:uscis_form) { UscisForm.new(RocisData.new(rocis_data_path).to_hash) }
 
-  describe '.import' do
+  describe '#import' do
     let(:forms_index_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/forms.html') }
     let(:forms_index_url) { 'http://www.uscis.gov/vgn-ext-templating/v/index.jsp?vgnextoid=db0' }
     let(:forms_file) { mock(File, :read => forms_index_page)}
@@ -24,16 +26,16 @@ describe UscisForm do
     let(:instruction2) { mock(File, :read => instruction2_landing_page) }
 
     before do
-      UscisForm.should_receive(:retrieve_forms_index_url).and_return(forms_index_url)
-      UscisForm.should_receive(:open).with(forms_index_url).and_return(forms_file)
-      UscisForm.should_receive(:open).
+      uscis_form.should_receive(:retrieve_forms_index_url).and_return(forms_index_url)
+      uscis_form.should_receive(:open).with(forms_index_url).and_return(forms_file)
+      uscis_form.should_receive(:open).
           with(%r[^http://www.uscis.gov/portal/site/uscis/menuitem.5af9bb95919f35e66f614176543f6d1a]).
           exactly(5).times.
           and_return(form1, form2, instruction1, form3, instruction2, form4, form5)
     end
 
     context 'when there is no exisiting FormAgency' do
-      before { UscisForm.import }
+      before { uscis_form.import }
 
       it 'should create FormAgency' do
         FormAgency.count.should == 1
@@ -50,7 +52,7 @@ describe UscisForm do
                            :display_name => 'U.S. Citizenship and Immigration Services')
       end
 
-      before { UscisForm.import }
+      before { uscis_form.import }
 
       it 'should not create a new FormAgency' do
         FormAgency.count.should == 1
@@ -130,7 +132,7 @@ describe UscisForm do
                                           :file_type => 'PDF',
                                           :govbox_enabled => false) }
 
-      before { UscisForm.import }
+      before { uscis_form.import }
 
       it 'should create/update forms' do
         Form.where(:form_agency_id => form_agency.id).count.should == 7
@@ -158,7 +160,7 @@ describe UscisForm do
                                           :url => 'http://www.uscis.gov/form.pdf',
                                           :file_type => 'PDF') }
 
-      before { UscisForm.import }
+      before { uscis_form.import }
 
       it 'should create forms' do
         Form.where(:form_agency_id => form_agency.id).count.should == 7
@@ -211,7 +213,7 @@ describe UscisForm do
 
       before do
         IndexedDocument.reindex
-        UscisForm.import
+        uscis_form.import
       end
 
       it 'should create FormsIndexedDocuments' do
@@ -223,15 +225,15 @@ describe UscisForm do
     end
   end
 
-  describe '.retrieve_forms_index_url' do
+  describe '#retrieve_forms_index_url' do
     let(:forms_index_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/forms.html') }
     let(:forms_index_url) { 'http://www.uscis.gov/vgn-ext-templating/v/index.jsp?vgnextoid=db0' }
 
     it 'should return form_index_url' do
-      UscisForm.should_receive(:open).
+      uscis_form.should_receive(:open).
           with('http://www.uscis.gov/portal/site/uscis').
           and_return(forms_index_page)
-      UscisForm.retrieve_forms_index_url.should == forms_index_url
+      uscis_form.retrieve_forms_index_url.should == forms_index_url
     end
   end
 end
