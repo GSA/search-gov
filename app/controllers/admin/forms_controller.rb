@@ -9,6 +9,7 @@ class Admin::FormsController < Admin::AdminController
     config.update.columns = :govbox_enabled
     config.show.columns.add :url
     config.show.columns.add Form::DETAIL_FIELD_NAMES
+    config.show.columns.add :abstract
     config.export.columns = config.show.columns
     config.export.default_deselected_columns = [:created_at, :updated_at]
   end

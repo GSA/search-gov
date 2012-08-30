@@ -1,7 +1,7 @@
 module FormsHelper
   def render_form_title_link(hit, form, affiliate, search)
     url = form.landing_page_url.present? ? form.landing_page_url : form.url
-    link_with_click_tracking(highlight_hit(hit, :title).html_safe, url, @affiliate, @search.query, 0, 'FORM', @search_vertical)
+    link_with_click_tracking(highlight_hit(hit, :title).html_safe, url, affiliate, search.query, 0, 'FORM', @search_vertical)
   end
 
   def render_form_link(link, number_of_pages = nil)

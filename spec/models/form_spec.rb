@@ -32,6 +32,7 @@ describe Form do
           f.title = 'Employment Eligibility Verification'
           f.description = 'All U.S. employers must complete this form.'
           f.url = 'http://www.uscis.gov/files/form/i-9.pdf'
+          f.abstract = 'some of the shortest government agency form'
         end
       end
 
@@ -89,6 +90,10 @@ describe Form do
         specify { Form.search_for('i 485', affiliate).results.should == [form4] }
         specify { Form.search_for('i485', affiliate).results.should == [form4] }
         specify { Form.search_for('i-485 supplement e', affiliate).results.should == [form5] }
+      end
+
+      it 'should do fulltext search on abstract' do
+        Form.search_for('governing', affiliate).results.should == [form1]
       end
 
       context 'highlights' do

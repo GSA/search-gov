@@ -117,6 +117,10 @@ describe UscisForm do
       it 'should set govbox_enabled to true for forms that does not exist in ROCIS' do
         Form.where(:form_agency_id => form_agency.id, :number => 'I-800A').first.should be_govbox_enabled
       end
+
+      it 'should locate short URL for form I-800A' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-800A').first.landing_page_url.should == 'http://www.uscis.gov/i-800a'
+      end
     end
 
     context 'when there is existing Form with the same agency and number' do

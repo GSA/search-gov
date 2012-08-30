@@ -12,6 +12,7 @@ describe 'forms rake tasks' do
     let(:task_name) { 'usasearch:forms:import' }
     let(:rocis_hash) { mock('rocis hash') }
     let(:rocis_data) { mock('rocis data', :to_hash => rocis_hash) }
+    let(:gsa_form) { mock('gsa form') }
     let(:ssa_form) { mock('ssa form') }
     let(:uscis_form) { mock('uscis form') }
 
@@ -19,6 +20,8 @@ describe 'forms rake tasks' do
 
     it 'should import uscis forms' do
       RocisData.should_receive(:new).and_return(rocis_data)
+      GsaForm.should_receive(:new).with(rocis_hash).and_return(gsa_form)
+      gsa_form.should_receive(:import)
       SsaForm.should_receive(:new).with(rocis_hash).and_return(ssa_form)
       ssa_form.should_receive(:import)
       UscisForm.should_receive(:new).with(rocis_hash).and_return(uscis_form)

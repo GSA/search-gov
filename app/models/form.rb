@@ -1,6 +1,6 @@
 class Form < ActiveRecord::Base
   DETAIL_FIELD_NAMES = [:title, :description, :file_size, :number_of_pages, :landing_page_url, :revision_date, :links].freeze
-  attr_accessible :form_agency_id, :number, :url, :file_type, :govbox_enabled
+  attr_accessible :form_agency_id, :number, :url, :file_type, :govbox_enabled, :abstract
   validates_presence_of :form_agency_id, :number, :url, :file_type
   serialize :details, Hash
   belongs_to :form_agency
@@ -22,6 +22,7 @@ class Form < ActiveRecord::Base
     text :number, :stored => true, :boost => 17.0, :as => 'number_text_form'
     text :title, :stored => true, :boost => 8.0, :as => 'title_text_form'
     text :description, :stored => true
+    text :abstract
   end
 
   class << self

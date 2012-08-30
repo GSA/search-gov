@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827213934) do
+ActiveRecord::Schema.define(:version => 20120830225105) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -467,6 +467,7 @@ ActiveRecord::Schema.define(:version => 20120827213934) do
     t.integer  "form_agency_id",                    :null => false
     t.date     "expiration_date"
     t.boolean  "govbox_enabled",  :default => true, :null => false
+    t.text     "abstract"
   end
 
   add_index "forms", ["form_agency_id"], :name => "index_forms_on_form_agency_id"

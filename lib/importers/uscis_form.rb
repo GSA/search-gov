@@ -1,32 +1,27 @@
-class UscisForm
+class UscisForm < FormImporter
   BASE_URL = 'http://www.uscis.gov'.freeze
   AGENCY_SUB_AGENCY = 'DHS/USCIS'.freeze
   AGENCY = 'uscis.gov'.freeze
-  AGENCY_NAME = 'U.S. Citizenship and Immigration Services'.freeze
+  AGENCY_DISPLAY_NAME = 'U.S. Citizenship and Immigration Services'.freeze
 
   def initialize(rocis_hash)
-    @rocis_hash = rocis_hash
+    super({ :rocis_hash => rocis_hash,
+            :agency => AGENCY,
+            :agency_sub_agency => AGENCY_SUB_AGENCY,
+            :agency_locale => :en,
+            :agency_display_name => AGENCY_DISPLAY_NAME })
   end
 
-  def import
-    forms_index_url = retrieve_forms_index_url
-    display_name = "#{@rocis_hash[AGENCY_SUB_AGENCY][:agency_name]}" if @rocis_hash[AGENCY_SUB_AGENCY]
-    display_name ||= "#{AGENCY_NAME}"
-    form_agency = FormAgency.where(:name => 'uscis.gov', :locale => :en).first_or_initialize
-    form_agency.display_name = display_name
-    form_agency.save!
 
-    doc = Nokogiri::HTML(open(forms_index_url).read)
-    new_or_updated_forms = []
-    Form.transaction do
+  def import
+    super do |new_or_updated_forms|
+      forms_index_url = retrieve_forms_index_url
+      doc = Nokogiri::HTML(open(forms_index_url).read)
       doc.css('#foiaAD-detail tbody tr').each do |row|
-        imported_form = import_form(form_agency, row)
+        imported_form = import_form(row)
         new_or_updated_forms << imported_form if imported_form
       end
     end
-    form_agency.forms = new_or_updated_forms unless new_or_updated_forms.empty?
-
-    lookup_matching_indexed_documents(form_agency.forms)
   end
 
   def retrieve_forms_index_url
@@ -39,7 +34,7 @@ class UscisForm
 
   private
 
-  def import_form(form_agency, row)
+  def import_form(row)
     columns = row.css('td')
 
     title_link = columns[0].css('a').first
@@ -47,7 +42,7 @@ class UscisForm
     form_number = Sanitize.clean(columns[1].content.to_s.squish)
     landing_page_path = title_link.attr(:href).to_s.strip
 
-    form = form_agency.forms.where(:number => form_number).first_or_initialize
+    form = @form_agency.forms.where(:number => form_number).first_or_initialize
     form.title = form_title
     parse_revision_date(form, columns[3])
     if landing_page_path.present?
@@ -55,14 +50,7 @@ class UscisForm
       form.landing_page_url = landing_page_url
       parse_landing_page(form)
     end
-    if rocis_forms_hash[form_number]
-      form.expiration_date = rocis_forms_hash[form_number][:expiration_date]
-    end
-
-    if form.new_record? and rocis_forms_hash[form_number].nil?
-      form.govbox_enabled = false if lookup_rocis_form_across_agency(form_number).present?
-    end
-
+    populate_rocis_fields(form)
     form.save!
     form
   end
@@ -96,7 +84,7 @@ class UscisForm
       dds = dl_item.xpath('./dd')
       parse_description(form, dts[0], dds[0])
       parse_number_of_pages(form, dts[1], dds[1])
-      parse_short_url(form, dl_item.css('p'))
+      parse_short_url(form, dl_item.css('p[align="right"]'))
     end
   end
 
@@ -153,41 +141,11 @@ class UscisForm
   def parse_short_url(form, paragraphs)
     if paragraphs
       paragraphs.each do |p|
-        sanitized_content = Sanitize.clean(p.content.to_s.squish)
-        if sanitized_content =~ /This page can be found at/i
-          short_url = sanitized_content.slice(%r[http://.+]).to_s.strip
-          form.landing_page_url = short_url unless short_url.blank?
+        sanitized_content = Sanitize.clean(p.content.to_s.squish).strip
+        if sanitized_content =~ /(\bfind\b.+\bpage\b|\bpage\b.+\bfound\b)/i
+          form.landing_page_url = p.css('a').first.attr(:href)
+          break
         end
-      end
-    end
-  end
-
-  def rocis_forms_hash
-    @rocis_hash[AGENCY_SUB_AGENCY][:forms]
-  end
-
-  def lookup_rocis_form_across_agency(form_number)
-    @rocis_hash.keys.each do |k|
-      return @rocis_hash[k][:forms][form_number] if @rocis_hash[k][:forms][form_number]
-    end
-    nil
-  end
-
-  def lookup_matching_indexed_documents(forms)
-    affiliate = Affiliate.find_by_name('usagov')
-    return unless affiliate
-
-    dc = affiliate.document_collections.all.find do |coll|
-      coll.url_prefixes.count == 1 and coll.url_prefixes.where(:prefix => 'http://answers.usa.gov')
-    end
-    return unless dc
-
-    forms.each do |f|
-      odies = IndexedDocument.search_for(f.links[0][:title], affiliate, dc, 1, 2)
-      if odies and odies.results.present?
-        f.indexed_documents = odies.results
-      else
-        f.indexed_documents = []
       end
     end
   end

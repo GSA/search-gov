@@ -52,8 +52,8 @@ describe SsaForm do
         form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first
         form.title.should == 'Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event'
         form.url.should == 'http://www.socialsecurity.gov/online/ssa-44.pdf'
-        form.description.should =~ /\APer the Medicare Modernization Act of 2003/
-        form.description.should =~ /emergency basis several months ago\.\Z/
+        form.abstract.should =~ /\APer the Medicare Modernization Act of 2003/
+        form.abstract.should =~ /emergency basis several months ago\.\Z/
         form.file_type.should == 'PDF'
         form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
         form.should be_govbox_enabled
@@ -101,8 +101,8 @@ describe SsaForm do
         form.id.should == existing_form.id
         form.title.should == 'Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event'
         form.url.should == 'http://www.socialsecurity.gov/online/ssa-44.pdf'
-        form.description.should =~ /\APer the Medicare Modernization Act of 2003/
-        form.description.should =~ /emergency basis several months ago\.\Z/
+        form.abstract.should =~ /\APer the Medicare Modernization Act of 2003/
+        form.abstract.should =~ /emergency basis several months ago\.\Z/
         form.file_type.should == 'PDF'
         form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
       end
