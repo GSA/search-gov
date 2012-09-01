@@ -52,11 +52,18 @@ describe SsaForm do
         form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first
         form.title.should == 'Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event'
         form.url.should == 'http://www.socialsecurity.gov/online/ssa-44.pdf'
+        form.file_type.should == 'PDF'
+        form.should be_govbox_enabled
+      end
+
+      it 'should populate rocis fields' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first
+        form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
         form.abstract.should =~ /\APer the Medicare Modernization Act of 2003/
         form.abstract.should =~ /emergency basis several months ago\.\Z/
-        form.file_type.should == 'PDF'
-        form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
-        form.should be_govbox_enabled
+        form.line_of_business.should == 'Income Security'
+        form.subfunction.should == 'General Retirement and Disability'
+        form.public_code.should == 'Individuals or Households'
       end
 
       it 'should populate form links' do
@@ -84,11 +91,16 @@ describe SsaForm do
                            :display_name => 'U.S. Social Security Administration')
       end
 
-      let!(:existing_form) { Form.create!(:form_agency_id => form_agency.id,
-                                          :number => 'SSA-44',
-                                          :url => 'http://www.ssa.gov/form.pdf',
-                                          :file_type => 'PDF',
-                                          :govbox_enabled => false) }
+      let!(:existing_form) do
+        Form.create! do |f|
+          f.form_agency_id = form_agency.id
+          f.number = 'SSA-44'
+          f.url = 'http://www.ssa.gov/form.pdf'
+          f.file_type = 'PDF'
+          f.govbox_enabled = false
+          f.number_of_pages = 100
+        end
+      end
 
       before { ssa_form.import }
 
@@ -105,6 +117,11 @@ describe SsaForm do
         form.abstract.should =~ /emergency basis several months ago\.\Z/
         form.file_type.should == 'PDF'
         form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
+      end
+
+      it 'should reset details fields' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first
+        form.number_of_pages.should be_nil
       end
 
       it 'should not override govbox_enabled' do

@@ -31,6 +31,7 @@ class SsaForm < FormImporter
     form_url = Sanitize.clean(form_hash['link'].to_s).squish
 
     form = @form_agency.forms.where(:number => form_number).first_or_initialize
+    form.details.clear
     form.file_type = 'PDF'
     form.title = form_title
     form.url = form_url

@@ -27,6 +27,9 @@ class FormImporter
     if rocis_forms_hash[form.number]
       form.abstract = rocis_forms_hash[form.number][:abstract]
       form.expiration_date = rocis_forms_hash[form.number][:expiration_date]
+      form.line_of_business = rocis_forms_hash[form.number][:line_of_business]
+      form.subfunction = rocis_forms_hash[form.number][:subfunction]
+      form.public_code = rocis_forms_hash[form.number][:public_code]
     end
 
     if form.new_record? and rocis_forms_hash[form.number].nil?

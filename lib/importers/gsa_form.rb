@@ -29,7 +29,7 @@ class GsaForm < FormImporter
 
   def import_form(form_hash)
     form_number = Sanitize.clean(form_hash['FORM NUMBER'].to_s).squish
-    return nil if form_number =~ /(\Aonline\Z|\-SP\Z)/i or @form_numbers.include?(form_number)
+    return if @form_numbers.include?(form_number)
     form_revision_date = Sanitize.clean(form_hash['REVISION DATE'].to_s).strip
     return unless form_revision_date =~ /\A\d{2}\/\d{4}\Z/ or form_revision_date.blank?
 
@@ -38,6 +38,7 @@ class GsaForm < FormImporter
     form_file_size = form_hash['FILE SIZE'].to_s.strip
 
     form = @form_agency.forms.where(:number => form_number).first_or_initialize
+    form.details.clear
     form.file_type = 'PDF'
     form.file_size = "#{form_file_size} KB" if form_file_size.present?
     form.title = form_title

@@ -89,6 +89,9 @@ describe GsaForm do
         form = Form.where(:form_agency_id => form_agency.id, :number => 'GSA1364').first
         form.abstract.should =~ /\AThe GSA Form 1364/
         form.expiration_date.strftime('%-m/%-d/%y').should == '4/30/13'
+        form.line_of_business.should == 'Supply Chain Management'
+        form.subfunction.should == 'Services Acquisition'
+        form.public_code.should == 'Private Sector'
       end
 
       it 'should populate form links' do
@@ -125,11 +128,16 @@ describe GsaForm do
                            :display_name => 'U.S. Social Security Administration')
       end
 
-      let!(:existing_form) { Form.create!(:form_agency_id => form_agency.id,
-                                          :number => 'GSA1241',
-                                          :url => 'http://www.gsa.gov/form.pdf',
-                                          :file_type => 'PDF',
-                                          :govbox_enabled => false) }
+      let!(:existing_form) do
+        Form.create! do |f|
+          f.form_agency_id = form_agency.id
+          f.number = 'GSA1241'
+          f.url = 'http://www.gsa.gov/form.pdf'
+          f.file_type = 'PDF'
+          f.govbox_enabled = false
+          f.number_of_pages = 100
+        end
+      end
 
       before { gsa_form.import }
 
@@ -146,6 +154,11 @@ describe GsaForm do
         form.file_type.should == 'PDF'
         form.file_size.should == '574.3 KB'
         form.revision_date.should == '9/73'
+      end
+
+      it 'should reset details fields' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'GSA1241').first
+        form.number_of_pages.should be_nil
       end
 
       it 'should not override govbox_enabled' do

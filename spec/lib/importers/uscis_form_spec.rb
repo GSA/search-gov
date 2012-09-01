@@ -77,8 +77,17 @@ describe UscisForm do
         form.file_type.should == 'PDF'
         form.number_of_pages.should == '1'
         form.revision_date.should == '12/11/11'
-        form.expiration_date.strftime("%m/%d/%y").should == '12/31/14'
         form.should be_govbox_enabled
+      end
+
+      it 'should populate rocis fields' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first
+        form.expiration_date.strftime("%m/%d/%y").should == '12/31/14'
+        form.abstract.should =~ /\ASection 265 of the Immigration/
+        form.abstract.should =~ /address, employer, or school to USCIS\.\Z/
+        form.line_of_business.should == 'Homeland Security'
+        form.subfunction.should == 'Border and Transportation Security'
+        form.public_code.should == 'Individuals or Households'
       end
 
       it 'should populate form links' do

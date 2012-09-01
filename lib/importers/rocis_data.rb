@@ -20,13 +20,19 @@ class RocisData
       end
       expiration_date = Date.strptime(row['ExpirationDate'], '%m/%d/%y') rescue nil
       form_abstract = Sanitize.clean(row['Abstract'].to_s).squish
+      form_line_of_business = Sanitize.clean(row['LineOfBusiness'].to_s).squish
+      form_subfunction = Sanitize.clean(row['Subfunction'].to_s).squish
+      form_public_code = Sanitize.clean(row['PublicCode'].to_s).squish
 
       hash["#{parent_agency_acronym}/#{agency_acronym}"] ||= {
           :agency_name => agency_name,
           :forms => {} }
       hash["#{parent_agency_acronym}/#{agency_acronym}"][:forms][form_number] = {
           :expiration_date => expiration_date,
-          :abstract => form_abstract }
+          :abstract => form_abstract,
+          :line_of_business => form_line_of_business,
+          :subfunction => form_subfunction,
+          :public_code => form_public_code }
     end
     hash.freeze
   end
