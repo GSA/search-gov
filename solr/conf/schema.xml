@@ -87,7 +87,6 @@
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
-        <!--<filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>-->
         <filter class="solr.StopFilterFactory" words="form_stopwords.txt" ignoreCase="true"/>
         <filter class="solr.WordDelimiterFilterFactory"
                 splitOnCaseChange="0"
@@ -97,8 +96,6 @@
                 catenateNumbers="1"
                 catenateAll="1"
                 preserveOriginal="1"/>
-        <!--generateWordParts="0"-->
-        <!--generateNumberParts="0"-->
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
         <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
       </analyzer>
@@ -175,9 +172,11 @@
     <dynamicField name="*_texts" stored="true" type="text" multiValued="true" indexed="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_text_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_text_form" type="text_form" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_texts_es" type="text_es" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_texts_form" type="text_form" indexed="true" stored="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_b" stored="false" type="boolean" multiValued="false" indexed="true"/>
