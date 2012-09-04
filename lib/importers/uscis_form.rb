@@ -43,6 +43,7 @@ class UscisForm < FormImporter
     landing_page_path = title_link.attr(:href).to_s.strip
 
     form = @form_agency.forms.where(:number => form_number).first_or_initialize
+    form.details.clear
     form.title = form_title
     parse_revision_date(form, columns[3])
     if landing_page_path.present?

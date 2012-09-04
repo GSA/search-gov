@@ -15,9 +15,14 @@ class RocisData
       agency_name = row['AgencyName']
       form_number = row['FormNumber']
       form_number = form_number.gsub(/\bform\b/i, '').strip.squish if form_number.present?
-      if "#{parent_agency_acronym}/#{agency_acronym}" == 'GSA/GSA'
-        form_number = normalize_gsa_form_number(form_number)
+
+      case "#{parent_agency_acronym}/#{agency_acronym}"
+      when 'GSA/GSA'
+        normalize_gsa_form_number(form_number)
+      when 'DOD/DODDEP'
+        normalize_dod_form_number(form_number)
       end
+
       expiration_date = Date.strptime(row['ExpirationDate'], '%m/%d/%y') rescue nil
       form_abstract = Sanitize.clean(row['Abstract'].to_s).squish
       form_line_of_business = Sanitize.clean(row['LineOfBusiness'].to_s).squish
@@ -39,9 +44,14 @@ class RocisData
 
   private
 
+  def normalize_dod_form_number(form_number)
+    form_number.gsub!(/\s/, '-')
+    form_number
+  end
+
   def normalize_gsa_form_number(form_number)
-    form_number = form_number.gsub(/(\s+)/, '')
-    form_number = form_number.sub(/\-/, '') if form_number =~ /\A[[:alpha:]]+\-/
+    form_number.gsub!(/(\s+)/, '')
+    form_number.sub!(/\-/, '') if form_number =~ /\A[[:alpha:]]+\-/
     form_number
   end
 end

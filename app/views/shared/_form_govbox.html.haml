@@ -14,16 +14,17 @@
         %h4.agency-name= result.form_agency.display_name
         - if result.description.present?
           %p.description= truncate_html_prose_on_words(highlight_hit(hit, :description).html_safe, 255).html_safe
-        .forms-and-instructions
-          %h3 Forms and Instructions
-          %ul
-            - result.links.each_with_index do |link, index|
-              %li
-                = link_to "#{link[:title]}", link[:url]
-                - if index == 0
-                  = render_form_link(link, result.number_of_pages)
-                - else
-                  = render_form_link(link)
+        - if result.links.present?
+          .forms-and-instructions
+            %h3 Forms and Instructions
+            %ul
+              - result.links.each_with_index do |link, index|
+                %li
+                  = link_to "#{link[:title]}", link[:url]
+                  - if index == 0
+                    = render_form_link(link, result.number_of_pages)
+                  - else
+                    = render_form_link(link)
         - if result.indexed_documents.present?
           .faqs
             %h3 FAQs

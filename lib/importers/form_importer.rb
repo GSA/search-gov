@@ -5,12 +5,14 @@ class FormImporter
     @agency_sub_agency = options[:agency_sub_agency]
     @agency_locale = options[:agency_locale]
     @agency_display_name = options[:agency_display_name]
+    @uses_rocis_display_name = options[:uses_rocis_display_name]
+    @uses_rocis_display_name = true if @uses_rocis_display_name.nil?
   end
 
   protected
 
   def import
-    display_name = "#{@rocis_hash[@agency_sub_agency][:agency_name]}" if @rocis_hash[@agency_sub_agency]
+    display_name = "#{@rocis_hash[@agency_sub_agency][:agency_name]}" if @uses_rocis_display_name and @rocis_hash[@agency_sub_agency]
     display_name ||= "#{@agency_display_name}"
     @form_agency = FormAgency.where(:name => @agency, :locale => @agency_locale).first_or_initialize
     @form_agency.display_name = display_name
