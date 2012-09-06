@@ -29,29 +29,6 @@ class WebSearch < Search
       spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
       search.results.present? && spelling_ok
     end
-
-    def url_present_in_bing?(normalized_url)
-      bing_search = BingSearch.new
-      response = bing_search.query(normalized_url, 'Web', 0, 10, false, 'off')
-      bing_results = bing_search.parse_bing_response(response)
-      if bing_results.web.results.present?
-        result_urls = bing_results.web.results.collect { |r| r['Url'] }
-        parsed_url = URI.parse("http://" + normalized_url)
-        normalized_url_host = parsed_url.host
-        in_bing = result_urls.any? do |result_url|
-          parsed_result_url = URI.parse(result_url)
-          normalized_linked_url_host = parsed_result_url.host.gsub("www.", '')
-          parsed_url_path = parsed_url.path.empty? ? '/' : parsed_url.path
-          parsed_result_url_path = parsed_result_url.path.empty? ? '/' : parsed_result_url.path
-          normalized_linked_url_host == normalized_url_host and parsed_url_path == parsed_result_url_path
-        end
-        return true if in_bing
-      end
-      false
-    rescue Exception => e
-      Rails.logger.warn("Trouble determining if URL is in bing: #{e}")
-      false
-    end
   end
 
   def initialize(options = {})

@@ -1547,39 +1547,6 @@ describe WebSearch do
     end
   end
 
-  describe "#self.url_present_in_bing?(normalized_url)" do
-    before do
-      bing_search = BingSearch.new
-      BingSearch.stub!(:new).and_return bing_search
-      response = "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}"
-      bing_search.stub!(:query).and_return(response)
-    end
-
-    context "when the URL exists in Bing results (possibly fuzzily) for that affiliate search" do
-      it "should return true" do
-        WebSearch.url_present_in_bing?('clinicaltrials.gov/ct2/show/NCT01308762').should be_true
-        WebSearch.url_present_in_bing?('clinicaltrials.gov/ct2/show/NCT01308762?ihateyour=cms').should be_true
-      end
-    end
-
-    context "when the URL does not exist in Bing results for that affiliate search" do
-      it "should return false" do
-        WebSearch.url_present_in_bing?('nps.gov/nope').should be_false
-      end
-    end
-
-    context "when some sort of exception occurs" do
-      before do
-        URI.stub!(:parse).and_raise Exception
-      end
-
-      it "should return false" do
-        WebSearch.url_present_in_bing?('nps.gov/problem_url').should be_false
-      end
-    end
-
-  end
-
   describe "#to_xml" do
     context "when error message exists" do
       let(:search) { WebSearch.new(:query => 'solar'*1000, :affiliate => affiliates(:basic_affiliate)) }
