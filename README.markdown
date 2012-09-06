@@ -7,33 +7,11 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby Enterprise Edition 1.8.7. Verify that your path points to the correct version of Ruby:
+You will need Ruby 1.9.3. Verify that your path points to the correct version of Ruby:
 
-    lappy:usasearch loren$ ruby -v
-    ruby 1.8.7 (2011-02-18 patchlevel 334) [i686-darwin10.7.0], MBARI 0x6770, Ruby Enterprise Edition 2011.03
-    lappy:usasearch loren$ which ruby
-    /Users/loren/.rvm/rubies/ree-1.8.7-2011.03/bin/ruby
-
-You will need to install the latest rubygems and set up your gem sources:
-
-    gem install rubygems-update
-    update_rubygems
-    lappy:usasearch loren$ gem -v
-    1.6.2
-    lappy:usasearch loren$ which gem
-    /Users/loren/.rvm/rubies/ree-1.8.7-2011.03/bin/gem
-    lappy:usasearch loren$ more ~/.gemrc
-    ---
-    gem: --no-ri --no-rdoc
-    :benchmark: false
-    :backtrace: false
-    :update_sources: true
-    :verbose: true
-    :bulk_threshold: 1000
-    :sources:
-    - http://gems.github.com
-    - http://gems.rubyforge.org/
-    - http://gemcutter.org
+    devbox:usasearch
+    $ ruby -v
+    ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin12.1.0]
 
 ## Gems
 
@@ -64,17 +42,21 @@ You can start/stop/reindex Solr like this:
 We're using the Redis key-value store for caching and for queue workflow via Resque. Download and install the Redis server:
 
 <http://redis.io/download>
+<http://redis.io/topics/quickstart>
+
+Verify that redis-server is in your path
+
+    $ which redis-server
+    /opt/redis/bin/redis-server
 
 # Database
 
-The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.0.85), accessible from user 'root' with no password.
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65), accessible from user 'root' with no password.
 
 Create and setup your development and test databases:
 
-    rake db:create
-    rake db:create RAILS_ENV=test
-    rake db:schema:load
-    rake db:test:prepare
+    rake db:setup
+    rake db:setup RAILS_ENV=test
 
 # Tests
 
@@ -84,11 +66,11 @@ These require a Solr server to be spun up.
 
 Make sure the unit tests and functional tests run:
 
-    rake spec
+    rspec
 
 Make sure the integration tests run.
 
-    rake cucumber
+    cucumber
 
 # Code Coverage
 
@@ -96,9 +78,9 @@ We track test coverage of the codebase over time, to help identify areas where w
 
 To show the coverage on the existing codebase, do this:
 
-    rake rcov:all
+    rspec && cucumber
 
-Then to view the report, open `coverage/index.html` in your favorite browser.
+Then to view the report, open `coverage/rcov/index.html` in your favorite browser.
 
 You can click around on the files that have < 100% coverage to see what lines weren't exercised.
 
@@ -127,9 +109,11 @@ from the XML retrieved from the MedLine website (see doc/medline for more detail
     rake usasearch:medline:update
 
 ## Affiliate accounts
-Get yourself a user account
+Get yourself a user account using a bogus .gov or .mil email address.
 
-<http://127.0.0.1:3000/account>
+<http://127.0.0.1:3000/login>
+
+Look for verification URL in your rails server stdout and open it in your favorite browser.
 
 Create an affiliate for yourself called 'foo', and put in a simple header/footer like H1's or something.
 Re-run your 'taxes' search and add '&affiliate=foo' to the HTTP request.
@@ -231,8 +215,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
 1. Run regression tests to make sure all prior functionality still passes tests
 
-        rake spec
-        rake cucumber
+        rspec && cucumber
 
     The entire test suite should always be 100% green. If anything fails at any time, it's the new top priority to fix it, and no developer should check in code on top of broken tests.
 
@@ -248,12 +231,9 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
     By using the [special syntax](https://www.pivotaltracker.com/help/api?version=v3#scm_post_commit_message_syntax) in the commit message, you can associate the commit with one or more Tracker story IDs and (optionally) a state change for the story.
 
-1. Run RCov to make sure all your code gets touched by a test, at least:
+1. Make sure all your code gets touched by a test, at least:
 
-        rake rcov:all
-        open coverage/index.html
-        git add coverage
-        git ci -am "updated rcov coverage report"
+        open coverage/rcov/index.html
 
 1. Push code up to the origin. Before you do this, remember that you are committing to the master branch, and future production deployments will ideally be grabbing everything from this branch. For this reason, you'll only want to push to origin/master code that is pretty much ready for production deployment, or could be ready fairly soon, say after a day or two of iterating on feedback. One good rule of thumb is the "Washington Post" test, as it's a scenario that is raised fairly often. Before pushing to origin, ask yourself, "If this work I've just done somehow finds its way into a Washington Post article with a screenshot, will everyone be OK with that?". If so, then....
 

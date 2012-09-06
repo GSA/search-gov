@@ -35,3 +35,7 @@ AgencyUrl.create(:agency => agency, :url=>"http://www.usajobs.opm.gov/", :locale
 
 agency = Agency.create :toll_free_phone=>"800-333-4636", :name=>"USA.gov", :tty_phone=>nil, :twitter_username=>"USAgov", :name_variants=>"firstgov, firstgov.gov", :domain=>"usa.gov", :flickr_url=>"usagov", :abbreviation=>nil, :facebook_username=>"USAgov", :phone=>nil, :youtube_username=>"USGovernment"
 AgencyUrl.create(:agency => agency, :url=>"http://www.usa.gov/", :locale => 'en')
+
+Affiliate.create { |a| a.name = 'usagov'; a.display_name = 'USA.gov' }
+Affiliate.create { |a| a.name = 'gobiernousa'; a.display_name = 'GobiernoUSA.gov'; a.locale = 'es' }
+EmailTemplate.load_default_templates
