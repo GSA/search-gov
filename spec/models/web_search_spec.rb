@@ -1115,14 +1115,14 @@ describe WebSearch do
     end
 
     context 'forms' do
-      fixtures :form_agencies
+      let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov' ) }
 
       context 'the affiliate has form_agencies' do
         let(:forms) { mock('forms') }
-        before { @affiliate.form_agencies << form_agencies(:en_uscis) }
+        before { @affiliate.form_agencies << form_agency }
 
         it 'should assign @forms with results from Form.search_for' do
-          Form.should_receive(:search_for).with('form AR-11', @affiliate).and_return(forms)
+          Form.should_receive(:search_for).with('form AR-11', {:form_agencies => @affiliate.form_agencies.collect(&:id), :govbox_enabled => true, :count => 1}).and_return(forms)
           search = WebSearch.new(:query => 'form AR-11', :affiliate => @affiliate)
           search.run
           search.forms.should == forms

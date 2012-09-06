@@ -18,30 +18,40 @@ class Form < ActiveRecord::Base
 
   searchable do
     integer :form_agency_id
-    boolean :govbox_enabled
     text :number, :stored => true, :boost => 17.0, :as => 'number_text_form'
     text :title, :stored => true, :boost => 8.0, :as => 'title_text_form'
     text :description, :stored => true
     text :abstract
+    boolean :govbox_enabled
+    string :line_of_business
+    string :subfunction
+    string :public_code
+    string :file_type
   end
 
   class << self
     include QueryPreprocessor
   end
 
-  def self.search_for(query, affiliate)
+  def self.search_for(query, options = {})
     sanitized_query = preprocess(query).to_s.gsub(/\bform\b/i, '').strip
-    return nil if sanitized_query.blank?
-    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate.name }) do
+
+    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :options => options}) do
       begin
         search do
-          with(:form_agency_id, affiliate.form_agencies.collect(&:id))
-          with :govbox_enabled, true
-          fulltext sanitized_query do
-            highlight :number, :title, :frag_list_builder => 'single'
-            highlight :description, :fragment_size => 255
+          with(:form_agency_id, options[:form_agencies]) if options[:form_agencies].present?
+          with(:govbox_enabled, options[:govbox_enabled]) if options.include?(:govbox_enabled)
+          with(:line_of_business, options[:line_of_business]) if options[:line_of_business].present?
+          with(:subfunction, options[:subfunction]) if options[:subfunction].present?
+          with(:public_code, options[:public_code]) if options[:public_code].present?
+          with(:file_type, options[:file_type]) if options[:file_type].present?
+          if sanitized_query.present?
+            fulltext sanitized_query do
+              highlight :number, :title, :frag_list_builder => 'single'
+              highlight :description, :fragment_size => 255
+            end
           end
-          paginate :page => 1, :per_page => 1
+          paginate :page => 1, :per_page => (options[:count] || 100)
         end
       rescue RSolr::Error::Http => e
         Rails.logger.warn "Error Form.search_for: #{e.to_s}"

@@ -114,7 +114,13 @@ UsasearchRails3::Application.routes.draw do
   get '/recalls/index.xml' => 'recalls#index', :defaults => { :format => 'rss' }
   get '/search/recalls' => 'recalls#search', :as => :recalls_search
   resources :forms, :only => :index
-  get '/search/forms' => 'searches#forms', :as => :forms_search
+  namespace :api do
+    namespace :v1 do
+      resources :forms, :only => [:show], :defaults => { :format => 'json' } do
+        get :search, :on => :collection
+      end
+    end
+  end
   get '/search/docs' => 'searches#docs', :as => :docs_search
   get '/search/news' => 'searches#news', :as => :news_search
   get '/search/news/videos' => 'searches#video_news', :as => :video_news_search
