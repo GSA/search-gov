@@ -60,12 +60,12 @@ describe DodForm do
         form.landing_page_url.should == 'http://www.dtic.mil/whs/directives/infomgt/forms/forminfo/forminfopage1402.html'
         form.file_type.should == 'PDF'
         form.revision_date.should == '2/00'
-        form.should be_govbox_enabled
+        form.should be_verified
       end
 
-      it 'should set govbox enabled to false for forms without download link' do
+      it 'should set verified to false for forms without download link' do
         form = Form.where(:form_agency_id => form_agency.id, :number => 'DD-1').first
-        form.should_not be_govbox_enabled
+        form.should_not be_verified
         form.links.should be_empty
       end
 
@@ -159,7 +159,7 @@ describe DodForm do
           f.number = 'DD-3'
           f.url = 'http://www.defense.gov/form.pdf'
           f.file_type = 'DOC'
-          f.govbox_enabled = false
+          f.verified = false
           f.number_of_pages = 100
         end
       end
@@ -185,8 +185,8 @@ describe DodForm do
         form.number_of_pages.should be_nil
       end
 
-      it 'should not override govbox_enabled' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'DD-3').first.should_not be_govbox_enabled
+      it 'should not override verified' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'DD-3').first.should_not be_verified
       end
     end
 

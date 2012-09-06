@@ -35,7 +35,7 @@ class FormImporter
     end
 
     if form.new_record? and rocis_forms_hash[form.number].nil?
-      form.govbox_enabled = false if lookup_rocis_form_across_agency(form.number).present?
+      form.verified = false if lookup_rocis_form_across_agency(form.number).present?
     end
   end
 

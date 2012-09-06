@@ -51,7 +51,7 @@ class GsaForm < FormImporter
       form.url = form.links.first[:url]
     else
       form.url = form.landing_page_url
-      form.govbox_enabled = false
+      form.verified = false
     end
 
     form.save!

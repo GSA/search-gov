@@ -68,11 +68,11 @@ class DodForm < FormImporter
 
     fetch_links(form)
     if form.url.present?
-      form.govbox_enabled = true if form.new_record?
+      form.verified = true if form.new_record?
     else
       form.url = form.landing_page_url
       form.file_type = 'PDF'
-      form.govbox_enabled = false
+      form.verified = false
     end
 
     populate_rocis_fields(form)
@@ -106,7 +106,7 @@ class DodForm < FormImporter
 
     if form.links.empty?
       form.url = nil
-      form.govbox_enabled = false
+      form.verified = false
       return
     end
 

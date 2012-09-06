@@ -116,6 +116,7 @@ UsasearchRails3::Application.routes.draw do
   resources :forms, :only => :index
   namespace :api do
     namespace :v1 do
+      resources :form_agencies, :only => [:show, :index], :defaults => { :format => 'json' }
       resources :forms, :only => [:show], :defaults => { :format => 'json' } do
         get :search, :on => :collection
       end

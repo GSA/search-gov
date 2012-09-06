@@ -53,7 +53,7 @@ describe SsaForm do
         form.title.should == 'Medicare Income-Related Monthly Adjustment Amount - Life-Changing Event'
         form.url.should == 'http://www.socialsecurity.gov/online/ssa-44.pdf'
         form.file_type.should == 'PDF'
-        form.should be_govbox_enabled
+        form.should be_verified
       end
 
       it 'should populate rocis fields' do
@@ -97,7 +97,7 @@ describe SsaForm do
           f.number = 'SSA-44'
           f.url = 'http://www.ssa.gov/form.pdf'
           f.file_type = 'PDF'
-          f.govbox_enabled = false
+          f.verified = false
           f.number_of_pages = 100
         end
       end
@@ -124,8 +124,8 @@ describe SsaForm do
         form.number_of_pages.should be_nil
       end
 
-      it 'should not override govbox_enabled' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first.should_not be_govbox_enabled
+      it 'should not override verified' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first.should_not be_verified
       end
     end
 

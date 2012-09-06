@@ -82,7 +82,7 @@ describe GsaForm do
         form.file_type.should == 'PDF'
         form.file_size.should == '574.3 KB'
         form.revision_date.should == '9/73'
-        form.should be_govbox_enabled
+        form.should be_verified
       end
 
       it 'should populate rocis data' do
@@ -109,7 +109,7 @@ describe GsaForm do
       end
 
       it 'should hide form without download link' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'GSA1656B').first.should_not be_govbox_enabled
+        Form.where(:form_agency_id => form_agency.id, :number => 'GSA1656B').first.should_not be_verified
       end
 
       it 'should create form with blank revision date' do
@@ -134,7 +134,7 @@ describe GsaForm do
           f.number = 'GSA1241'
           f.url = 'http://www.gsa.gov/form.pdf'
           f.file_type = 'PDF'
-          f.govbox_enabled = false
+          f.verified = false
           f.number_of_pages = 100
         end
       end
@@ -161,8 +161,8 @@ describe GsaForm do
         form.number_of_pages.should be_nil
       end
 
-      it 'should not override govbox_enabled' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'GSA1241').first.should_not be_govbox_enabled
+      it 'should not override verified' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'GSA1241').first.should_not be_verified
       end
     end
 

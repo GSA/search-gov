@@ -15,10 +15,10 @@ describe Api::V1::FormsController do
       end
     end
 
-    context "when govbox_enabled param is set" do
+    context "when verified param is set" do
       it "should convert it to a boolean" do
-        Form.should_receive(:search_for).with('', hash_including(:govbox_enabled => false)).and_return Struct.new(:results).new([])
-        get :search, :govbox_enabled => 'false', :format => 'json'
+        Form.should_receive(:search_for).with('', hash_including(:verified => false)).and_return Struct.new(:results).new([])
+        get :search, :verified => 'false', :format => 'json'
       end
     end
 
@@ -44,7 +44,7 @@ describe Api::V1::FormsController do
         it "should return valid JSON" do
           get :search, :query => 'form 485', :format => 'json'
           response.should be_success
-          response.body.should == "[#{@form1.to_json},#{@form2.to_json}]"
+          response.body.should == "[#{@form1.to_json(Api::V1::FormsController::JSON_OPTIONS)},#{@form2.to_json(Api::V1::FormsController::JSON_OPTIONS)}]"
         end
       end
 
@@ -57,15 +57,15 @@ describe Api::V1::FormsController do
       end
     end
 
-    context "when Form.search_for returns nil" do
+    context "when Form.search_for returns nil or raises an exception" do
       before do
         Form.stub!(:search_for)
       end
 
-      it "should return '[]' empty array string" do
+      it "should return error string" do
         get :search, :query => 'error', :format => 'json'
-        response.should be_success
-        response.body.should == '[]'
+        response.should_not be_success
+        response.body.should =~ /There was an error processing your request/
       end
     end
   end
@@ -84,7 +84,7 @@ describe Api::V1::FormsController do
       it "should return the Form record" do
         get :show, :id => @form.id, :format => 'json'
         response.should be_success
-        response.body.should == @form.to_json
+        response.body.should == @form.to_json(Api::V1::FormsController::JSON_OPTIONS)
       end
     end
 

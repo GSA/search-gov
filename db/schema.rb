@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905222623) do
+ActiveRecord::Schema.define(:version => 20120908031541) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -459,7 +459,7 @@ ActiveRecord::Schema.define(:version => 20120905222623) do
     t.datetime "updated_at",                         :null => false
     t.integer  "form_agency_id",                     :null => false
     t.date     "expiration_date"
-    t.boolean  "govbox_enabled",   :default => true, :null => false
+    t.boolean  "verified",         :default => true, :null => false
     t.text     "abstract"
     t.string   "line_of_business"
     t.string   "subfunction"

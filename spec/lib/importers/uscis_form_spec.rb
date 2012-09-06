@@ -78,7 +78,7 @@ describe UscisForm do
         form.file_type.should == 'PDF'
         form.number_of_pages.should == '1'
         form.revision_date.should == '12/11/11'
-        form.should be_govbox_enabled
+        form.should be_verified
       end
 
       it 'should populate rocis fields' do
@@ -124,13 +124,13 @@ describe UscisForm do
         Form.where(:form_agency_id => form_agency.id, :number => 'I-193').first.revision_date.should == '12/10'
       end
 
-      it 'should set govbox_enabled to false for forms that are not published by USCIS' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'EOIR-29').first.should_not be_govbox_enabled
-        Form.where(:form_agency_id => form_agency.id, :number => 'I-193').first.should_not be_govbox_enabled
+      it 'should set verified to false for forms that are not published by USCIS' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'EOIR-29').first.should_not be_verified
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-193').first.should_not be_verified
       end
 
-      it 'should set govbox_enabled to true for forms that does not exist in ROCIS' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'I-800A').first.should be_govbox_enabled
+      it 'should set verified to true for forms that does not exist in ROCIS' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'I-800A').first.should be_verified
       end
 
       it 'should locate short URL for form I-800A' do
@@ -149,7 +149,7 @@ describe UscisForm do
                                           :number => 'AR-11',
                                           :url => 'http://www.uscis.gov/form.pdf',
                                           :file_type => 'PDF',
-                                          :govbox_enabled => false) }
+                                          :verified => false) }
 
       before { uscis_form.import }
 
@@ -162,8 +162,8 @@ describe UscisForm do
         form.id.should == existing_form.id
       end
 
-      it 'should not override govbox_enabled' do
-        Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first.should_not be_govbox_enabled
+      it 'should not override verified' do
+        Form.where(:form_agency_id => form_agency.id, :number => 'AR-11').first.should_not be_verified
       end
     end
 
