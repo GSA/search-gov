@@ -76,7 +76,7 @@ class UscisForm < FormImporter
 
   def parse_landing_page(form)
     doc = Nokogiri::HTML(open(form.landing_page_url).read)
-    downloadable_list = doc.css('#mainContent #bodyFormatting ul li')
+    downloadable_list = doc.xpath(%q{//*[@id='mainContent']/*[@id='bodyFormatting']/ul[1]/li})
     parse_form_urls(form, downloadable_list) if downloadable_list
 
     dl_item = doc.css('#mainContent #bodyFormatting dl').first

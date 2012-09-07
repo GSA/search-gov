@@ -12,6 +12,8 @@ describe UscisForm do
     let(:forms_file) { mock(File, :read => forms_index_page)}
     let(:form1_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form1.html') }
     let(:form1) { mock(File, :read => form1_landing_page) }
+    let(:form_i_90_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form_i_90.html') }
+    let(:form_i_90) { mock(File, :read => form_i_90_landing_page) }
     let(:form2_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form2.html') }
     let(:form2) { mock(File, :read => form2_landing_page) }
     let(:form3_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/uscis/form3.html') }
@@ -30,8 +32,7 @@ describe UscisForm do
       uscis_form.should_receive(:open).with(forms_index_url).and_return(forms_file)
       uscis_form.should_receive(:open).
           with(%r[^http://www.uscis.gov/portal/site/uscis/menuitem.5af9bb95919f35e66f614176543f6d1a]).
-          exactly(5).times.
-          and_return(form1, form2, instruction1, form3, instruction2, form4, form5)
+          and_return(form1, form_i_90, form2, instruction1, form3, instruction2, form4, form5)
     end
 
     context 'when there is no exisiting FormAgency' do
@@ -64,7 +65,7 @@ describe UscisForm do
       end
 
       it 'should create forms' do
-        Form.count.should == 7
+        Form.count.should == 8
       end
 
       it 'should populate all the available fields' do
@@ -100,6 +101,11 @@ describe UscisForm do
         form.links[2][:url].should == 'http://www.uscis.gov/files/form/g-1145.pdf'
         form.links[2][:file_size].should == '1KB'
         form.links[2][:file_type].should == 'PDF'
+      end
+
+      it 'should populate only links from the first list' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'I-90').first
+        form.links.count.should == 3
       end
 
       it 'should handle latin characters' do
@@ -148,7 +154,7 @@ describe UscisForm do
       before { uscis_form.import }
 
       it 'should create/update forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 7
+        Form.where(:form_agency_id => form_agency.id).count.should == 8
       end
 
       it 'should update existing form' do
@@ -176,7 +182,7 @@ describe UscisForm do
       before { uscis_form.import }
 
       it 'should create forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 7
+        Form.where(:form_agency_id => form_agency.id).count.should == 8
       end
 
       it 'should delete the obsolete form' do
