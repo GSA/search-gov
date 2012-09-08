@@ -3,32 +3,34 @@
     #form_govbox
       - @search.forms.hits(:verify => true).each do |hit|
         - result = hit.instance
-        %span.official-tag Official Form
-        - if result.revision_date.present?
-          %span.form-date.revision-date Rev. #{result.revision_date}
-          - if result.expiration_date.present?
-            %span.form-date.expiration-date Expires #{render_short_date(result.expiration_date)}
-        %h2
-          = render_form_title_link(hit, result, @affiliate, @search)
-          (#{highlight_hit(hit, :number).html_safe})
+        %h2= render_form_title_link(hit, result, @affiliate, @search)
         %h4.agency-name= result.form_agency.display_name
+        .check-mark-and-dates
+          .check-mark
+          - if result.revision_date.present?
+            %div.date-label Revised:
+            %span.form-date.revision-date #{result.revision_date}
+            - if result.expiration_date.present?
+              %div.date-label Expires:
+              %span.form-date.expiration-date #{render_short_date(result.expiration_date)}
+        .links
+          - if result.links.present?
+            .forms-and-instructions
+              %h3 Forms and Instructions
+              %ul
+                - result.links.each_with_index do |link, index|
+                  %li
+                    = link_to "#{link[:title]}", link[:url]
+                    - if index == 0
+                      = render_form_link(link, result.number_of_pages)
+                    - else
+                      = render_form_link(link)
+          - if result.indexed_documents.present?
+            .faqs
+              %h3 FAQs
+              %ul
+                - result.indexed_documents.each do |odie_doc|
+                  %li= link_to odie_doc.title, odie_doc.url
         - if result.description.present?
           %p.description= truncate_html_prose_on_words(highlight_hit(hit, :description).html_safe, 255).html_safe
-        - if result.links.present?
-          .forms-and-instructions
-            %h3 Forms and Instructions
-            %ul
-              - result.links.each_with_index do |link, index|
-                %li
-                  = link_to "#{link[:title]}", link[:url]
-                  - if index == 0
-                    = render_form_link(link, result.number_of_pages)
-                  - else
-                    = render_form_link(link)
-        - if result.indexed_documents.present?
-          .faqs
-            %h3 FAQs
-            %ul
-              - result.indexed_documents.each do |odie_doc|
-                %li= link_to odie_doc.title, odie_doc.url
 

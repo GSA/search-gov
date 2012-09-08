@@ -835,10 +835,10 @@ Feature: Affiliate Search
     When I am on usagov's search page
     And I fill in "query" with "I-485"
     And I press "Search"
-    Then I should see a link to "Application to Register Permanent Residence or Adjust Status" with url for "http://www.uscis.gov/i-485" in the form govbox
+    Then I should see a link to "Application to Register Permanent Residence or Adjust Status (I-485)" with url for "http://www.uscis.gov/i-485" in the form govbox
     Then I should see the govbox form number "I-485" in bold font
-    And I should see "Rev. 8/7/09" in the form govbox
-    And I should see "Expires 1/31/13" in the form govbox
+    And I should see "Revised: 8/7/09" in the form govbox
+    And I should see "Expires: 1/31/13" in the form govbox
     And I should see "U.S. Citizenship and Immigration Services" in the form govbox
     And I should see "To apply to adjust your status to that of a permanent resident of the United States." in the form govbox
     And I should see a link to "Form I-485" with url for "http://www.uscis.gov/files/form/i-485.pdf" in the form govbox

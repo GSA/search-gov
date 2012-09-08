@@ -60,7 +60,7 @@ end
 Then /^I should see the govbox form (number|title) "([^\"]*)" in bold font$/ do |number_or_title, text|
   case number_or_title
     when 'number' then
-      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/strong[text()='#{text}']").should_not be_nil
+      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/a[1]/strong[contains(text(),'#{text}')]").should_not be_nil
     when 'title' then
       page.find(:xpath, "//div[@id='form_govbox']/h2[1]/a[1]/strong[text()='#{text}']").should_not be_nil
   end
