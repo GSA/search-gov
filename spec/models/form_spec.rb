@@ -113,19 +113,11 @@ describe Form do
 
       context 'govbox enabled' do
         before do
-<<<<<<< HEAD
-          form4.update_attributes!(:govbox_enabled => false)
-          form5.update_attributes!(:govbox_enabled => true)
-          Form.reindex
-        end
-        specify { Form.search_for('i-485', {:govbox_enabled => true}).results.should == [form5] }
-=======
           form4.update_attributes!(:verified => false)
           form5.update_attributes!(:verified => true)
           Form.reindex
         end
         specify { Form.search_for('i-485', {:verified => true}).results.should == [form5] }
->>>>>>> [Completes #35445215] Third party developers may access a forms and form agencies API
       end
     end
 
