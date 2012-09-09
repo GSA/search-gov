@@ -45,7 +45,7 @@ describe SsaForm do
       end
 
       it 'should create forms' do
-        Form.count.should == 3
+        Form.count.should == 4
       end
 
       it 'should populate all the available fields' do
@@ -57,10 +57,10 @@ describe SsaForm do
       end
 
       it 'should populate rocis fields' do
-        form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-44').first
-        form.expiration_date.strftime('%-m/%-d/%y').should == '7/31/14'
-        form.abstract.should =~ /\APer the Medicare Modernization Act of 2003/
-        form.abstract.should =~ /emergency basis several months ago\.\Z/
+        form = Form.where(:form_agency_id => form_agency.id, :number => 'SSA-10').first
+        form.expiration_date.strftime('%-m/%-d/%y').should == '3/31/13'
+        form.abstract.should =~ /^SSA uses the information from the SSA-10-BK/
+        form.abstract.should =~ /The respondents are applicants for widow's or widower's Social Security benefits\.$/
         form.line_of_business.should == 'Income Security'
         form.subfunction.should == 'General Retirement and Disability'
         form.public_code.should == 'Individuals or Households'
@@ -105,7 +105,7 @@ describe SsaForm do
       before { ssa_form.import }
 
       it 'should create/update forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 3
+        Form.where(:form_agency_id => form_agency.id).count.should == 4
       end
 
       it 'should update existing form' do
@@ -144,7 +144,7 @@ describe SsaForm do
       before { ssa_form.import }
 
       it 'should create forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 3
+        Form.where(:form_agency_id => form_agency.id).count.should == 4
       end
 
       it 'should delete the obsolete form' do

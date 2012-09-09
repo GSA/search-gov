@@ -14,4 +14,8 @@ describe RocisData do
     rocis_hash['GSA/GSA'][:forms]['GSA527'].should be_present
     rocis_hash['GSA/GSA'][:forms]['GSA1142'].should be_present
   end
+
+  it 'should normalize SSA form number' do
+    rocis_hash['SSA/SSA'][:forms]['SSA-10'].should be_present
+  end
 end
