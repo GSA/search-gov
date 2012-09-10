@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908031541) do
+ActiveRecord::Schema.define(:version => 20120910183016) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -464,9 +464,11 @@ ActiveRecord::Schema.define(:version => 20120908031541) do
     t.string   "line_of_business"
     t.string   "subfunction"
     t.string   "public_code"
+    t.string   "title",                              :null => false
   end
 
   add_index "forms", ["form_agency_id"], :name => "index_forms_on_form_agency_id"
+  add_index "forms", ["title"], :name => "index_forms_on_title"
 
   create_table "forms_indexed_documents", :id => false, :force => true do |t|
     t.integer "form_id",             :null => false

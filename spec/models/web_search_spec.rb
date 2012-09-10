@@ -1117,22 +1117,55 @@ describe WebSearch do
     context 'forms' do
       let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov' ) }
 
-      context 'the affiliate has form_agencies' do
-        let(:forms) { mock('forms') }
-        before { @affiliate.form_agencies << form_agency }
+      context 'when the affiliate has form_agencies' do
+        let(:search) { WebSearch.new(:query => query, :affiliate => @affiliate) }
 
-        it 'should assign @forms with results from Form.search_for' do
-          Form.should_receive(:search_for).with('form AR-11', {:form_agencies => @affiliate.form_agencies.collect(&:id), :verified => true, :count => 1}).and_return(forms)
-          search = WebSearch.new(:query => 'form AR-11', :affiliate => @affiliate)
-          search.run
-          search.forms.should == forms
+        before do
+          @affiliate.form_agencies << form_agency
+          form_agency.forms.create!(:number => '99', :file_type => 'PDF') do |f|
+            f.title = 'Personal Property'
+            f.url = 'fema.gov/some_form.pdf'
+            f.description = 'contains the word FEMA'
+          end
+        end
+
+        context 'when the query qualifies for form search' do
+          let(:query) { 'some query' }
+
+          it 'should execute Form.search_for' do
+            forms = mock('forms')
+            Form.should_receive(:search_for).with(query, { :form_agencies => @affiliate.form_agencies.collect(&:id), :verified => true, :count => 1 }).and_return(forms)
+
+            search.should_receive(:qualifies_for_form_fulltext_search?).and_return(true)
+            search.run
+            search.forms.should == forms
+          end
+        end
+
+        context 'when the query does not qualify for form search' do
+          let(:query) { 'Personal Property' }
+
+          it 'should return an array of forms' do
+            search.should_receive(:qualifies_for_form_fulltext_search?).and_return(false)
+            Form.should_not_receive(:search_for)
+
+            search.run
+            search.forms.total.should == 1
+            search.forms.hits.should be_nil
+            search.forms.results.count.should == 1
+            search.forms.results.first.number.should == '99'
+            search.forms.results.first.title.should == 'Personal Property'
+          end
         end
       end
 
-      context 'the affiliate does not have form_agencies' do
+      context 'when the affiliate does not have form_agencies' do
+        let(:search) { WebSearch.new(:query => 'some query', :affiliate => @affiliate) }
+
         it 'should assign @forms with nil' do
+          search.should_not_receive(:qualifies_for_form_fulltext_search?)
           Form.should_not_receive(:search_for)
-          search = WebSearch.new(:query => 'form AR-11', :affiliate => @affiliate)
+          Form.should_not_receive(:where)
           search.run
           search.forms.should be_nil
         end

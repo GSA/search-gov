@@ -1,9 +1,8 @@
 = render_govbox do
   .searchresult.blended
     #form_govbox
-      - @search.forms.hits(:verify => true).each do |hit|
-        - result = hit.instance
-        %h2= render_form_title_link(hit, result, @affiliate, @search)
+      - render_forms(@search.forms) do |result, hit|
+        %h2= render_form_title_link(hit, result, @search, @affiliate, @search_vertical)
         %h4.agency-name= result.form_agency.display_name
         .check-mark-and-dates
           .check-mark
@@ -17,14 +16,7 @@
           - if result.links.present?
             .forms-and-instructions
               %h3 Forms and Instructions
-              %ul
-                - result.links.each_with_index do |link, index|
-                  %li
-                    = link_to "#{link[:title]}", link[:url]
-                    - if index == 0
-                      = render_form_link(link, result.number_of_pages)
-                    - else
-                      = render_form_link(link)
+              %ul= render_form_links(result)
           - if result.indexed_documents.present?
             .faqs
               %h3 FAQs
@@ -32,5 +24,4 @@
                 - result.indexed_documents.each do |odie_doc|
                   %li= link_to odie_doc.title, odie_doc.url
         - if result.description.present?
-          %p.description= truncate_html_prose_on_words(highlight_hit(hit, :description).html_safe, 255).html_safe
-
+          %p.description= render_form_description(hit, result, @search)

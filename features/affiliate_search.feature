@@ -873,6 +873,18 @@ Feature: Affiliate Search
     And I should not see "7/31/14" in the form govbox
     And I should see "Form SSA-44 [PDF]"
 
+    When I fill in "query" with "USCIS"
+    And I press "Search"
+    Then I should not see the form govbox
+
+    When I fill in "query" with "Permanent Residence"
+    And I press "Search"
+    Then I should not see the form govbox
+
+    When I fill in "query" with "Application to Register Permanent Residence or Adjust Status"
+    And I press "Search"
+    And I should see the govbox form title "Application to Register Permanent Residence or Adjust Status" in bold font
+
   Scenario: When using tablet device
     Given I am using a TabletPC device
     And the following Affiliates exist:

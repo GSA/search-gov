@@ -193,3 +193,7 @@ Given /^the following Links exist for (en|es) (\S+) form (.+):$/ do |locale, age
   form.save!
   Form.reindex
 end
+
+Then /^I should not see the form govbox$/ do
+  page.should_not have_selector('#form_govbox')
+end

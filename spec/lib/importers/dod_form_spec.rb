@@ -157,6 +157,7 @@ describe DodForm do
         Form.create! do |f|
           f.form_agency_id = form_agency.id
           f.number = 'DD-3'
+          f.title = 'Application for Gold Star Lapel Button'
           f.url = 'http://www.defense.gov/form.pdf'
           f.file_type = 'DOC'
           f.verified = false
@@ -199,6 +200,7 @@ describe DodForm do
 
       let!(:obsolete_form) { Form.create!(:form_agency_id => form_agency.id,
                                           :number => 'obsolete',
+                                          :title => 'title of an obsolete form',
                                           :url => 'http://www.defense.gov/form.pdf',
                                           :file_type => 'PDF') }
 

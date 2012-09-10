@@ -54,11 +54,15 @@ class WebSearch < Search
   end
 
   def has_forms?
-    self.forms and self.forms.total > 0
+    forms and forms.total > 0
   end
 
   def are_results_by_bing?
     self.indexed_results.nil? ? true : false
+  end
+
+  def qualifies_for_form_fulltext_search?
+    query =~ /(\bforms?\b|[[:digit:]])/i
   end
 
   protected
@@ -241,7 +245,14 @@ class WebSearch < Search
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
       @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
-      @forms = Form.search_for(query, {:form_agencies => affiliate.form_agencies.collect(&:id), :verified => true, :count => 1}) if affiliate.form_agencies.present?
+      if affiliate.form_agency_ids.present?
+        if qualifies_for_form_fulltext_search?
+          @forms = Form.search_for(query, {:form_agencies => affiliate.form_agency_ids, :verified => true, :count => 1})
+        else
+          form_results = Form.where('title = ? AND form_agency_id IN (?)', query.squish, affiliate.form_agency_ids).limit(1)[0, 1]
+          @forms = Struct.new(:total, :hits, :results).new(form_results.count, nil, form_results)
+        end
+      end
     end
   end
 
@@ -359,5 +370,4 @@ class WebSearch < Search
     end
     news_item_hash
   end
-
 end

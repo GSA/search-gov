@@ -132,6 +132,7 @@ describe GsaForm do
         Form.create! do |f|
           f.form_agency_id = form_agency.id
           f.number = 'GSA1241'
+          f.title = 'Contract for Appraisal Report'
           f.url = 'http://www.gsa.gov/form.pdf'
           f.file_type = 'PDF'
           f.verified = false
@@ -175,6 +176,7 @@ describe GsaForm do
 
       let!(:obsolete_form) { Form.create!(:form_agency_id => form_agency.id,
                                           :number => 'obsolete',
+                                          :title => 'title of an obsolete form',
                                           :url => 'http://www.gsa.gov/form.pdf',
                                           :file_type => 'PDF') }
 

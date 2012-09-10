@@ -147,6 +147,7 @@ describe UscisForm do
 
       let!(:existing_form) { Form.create!(:form_agency_id => form_agency.id,
                                           :number => 'AR-11',
+                                          :title => 'Change of Address',
                                           :url => 'http://www.uscis.gov/form.pdf',
                                           :file_type => 'PDF',
                                           :verified => false) }
@@ -176,6 +177,7 @@ describe UscisForm do
 
       let!(:obsolete_form) { Form.create!(:form_agency_id => form_agency.id,
                                           :number => 'obsolete',
+                                          :title => 'title of an obsolete form',
                                           :url => 'http://www.uscis.gov/form.pdf',
                                           :file_type => 'PDF') }
 
