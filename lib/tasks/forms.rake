@@ -7,6 +7,7 @@ namespace :usasearch do
       GsaForm.new(rocis_hash).import
       SsaForm.new(rocis_hash).import
       UscisForm.new(rocis_hash).import
+      VaForm.new(rocis_hash).import
     end
   end
 end

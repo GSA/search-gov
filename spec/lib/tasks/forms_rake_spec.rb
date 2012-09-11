@@ -16,6 +16,7 @@ describe 'forms rake tasks' do
     let(:gsa_form) { mock('gsa form') }
     let(:ssa_form) { mock('ssa form') }
     let(:uscis_form) { mock('uscis form') }
+    let(:va_form) { mock('va form') }
 
     before { @rake[task_name].reenable }
 
@@ -29,6 +30,8 @@ describe 'forms rake tasks' do
       ssa_form.should_receive(:import)
       UscisForm.should_receive(:new).with(rocis_hash).and_return(uscis_form)
       uscis_form.should_receive(:import)
+      VaForm.should_receive(:new).with(rocis_hash).and_return(va_form)
+      va_form.should_receive(:import)
       @rake[task_name].invoke
     end
   end

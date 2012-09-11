@@ -128,14 +128,4 @@ class DodForm < FormImporter
       end
     end
   end
-
-  def lookup_format(url)
-    case url
-      when /\.pdf$/i then 'PDF'
-      when /\.docx?$/i then 'DOC'
-      when /\.xls[[:alpha:]]?$/i then 'XLS'
-      when /\.fr[[:alpha:]]$/i then url.slice(/[[:alpha:]]{3}$/).upcase
-      else 'HTML'
-    end
-  end
 end

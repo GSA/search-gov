@@ -18,4 +18,11 @@ describe RocisData do
   it 'should normalize SSA form number' do
     rocis_hash['SSA/SSA'][:forms]['SSA-10'].should be_present
   end
+
+  it 'should normalize VA form number' do
+    rocis_hash['VA/VA'][:forms]['10-0137'].should be_present
+    rocis_hash['VA/VA'][:forms]['FL-10-341A'].should be_present
+    rocis_hash['VA/VA'][:forms]['FL-21-863'].should be_present
+    rocis_hash['VA/VA'][:forms]['21-534A'].should be_present
+  end
 end
