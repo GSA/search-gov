@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SiteDomain do
-  fixtures :affiliates
+  fixtures :affiliates, :features
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   it { should belong_to :affiliate }
@@ -105,7 +105,7 @@ describe SiteDomain do
     let(:frontier) { %w(http://foo.gov/ http://foo.gov/page.html) }
 
     before do
-      affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      affiliate.features << features(:hosted_sitemaps)
     end
 
     it "should attempt to create a new IndexedDocument for each link in the frontier" do

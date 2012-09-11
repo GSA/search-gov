@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchesController do
-  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :navigations
+  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :navigations, :features, :news_items
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
@@ -336,7 +336,7 @@ describe SearchesController do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:basic_affiliate)
-      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      @affiliate.features << features(:hosted_sitemaps)
       @affiliate.site_domains.create!(:domain => 'affiliate.gov')
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
       @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -423,8 +423,6 @@ describe SearchesController do
   end
 
   describe "#news" do
-    fixtures :affiliates, :rss_feeds, :news_items
-
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
@@ -500,7 +498,6 @@ describe SearchesController do
   end
 
   describe "#video_news" do
-    fixtures :affiliates
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:video_news_search) { mock('video news search') }
 

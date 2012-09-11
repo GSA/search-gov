@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe WebSearch do
-  fixtures :affiliates, :misspellings, :site_domains, :rss_feeds
+  fixtures :affiliates, :misspellings, :site_domains, :rss_feeds, :features, :rss_feed_urls
 
   before(:each) do
     Redis.new(:host => REDIS_HOST, :port => REDIS_PORT).flushall
@@ -726,10 +726,11 @@ describe WebSearch do
         affiliate = affiliates(:power_affiliate)
         ExcludedDomain.create!(:domain => "windstream.net")
         ExcludedUrl.create!(:url => @url1, :affiliate => affiliate)
-        @search = WebSearch.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
+        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
+        @search.stub!(:backfill_needed).and_return false
         @search.run
       end
 
@@ -741,8 +742,6 @@ describe WebSearch do
     end
 
     context "when Bing result has an URL that matches a known NewsItem URL" do
-      fixtures :rss_feeds, :rss_feed_urls
-
       before do
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
                          :title => "NewsItem title highlighted from Solr",
@@ -761,7 +760,8 @@ describe WebSearch do
         Sunspot.commit
         hits = NewsItem.search_for("NewsItem", [rss_feeds(:white_house_blog)], nil, 1, 100)
         NewsItem.stub!(:search_for).and_return hits
-        @search = WebSearch.new(@valid_options)
+        @search = WebSearch.new(@valid_options.merge(:page => 1))
+        @search.stub!(:backfill_needed).and_return false
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
@@ -793,7 +793,8 @@ describe WebSearch do
 
     context "when suggestions for misspelled terms contain scopeid or parenthesis" do
       before do
-        @search = WebSearch.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov'))
+        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov'))
+        @search.stub!(:backfill_needed).and_return false
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
@@ -805,7 +806,7 @@ describe WebSearch do
       end
     end
 
-    context "when the Bing spelling suggestion is identical to the original query except for Bing highight characters" do
+    context "when the Bing spelling suggestion is identical to the original query except for Bing highlight characters" do
       before do
         @search = WebSearch.new(:query => 'ct-w4', :affiliate => @affiliate)
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
@@ -864,17 +865,20 @@ describe WebSearch do
 
       context "when the page is greater than the number of results" do
         before do
-          @search = WebSearch.new(@valid_options.merge(:query => 'data'))
           json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_results_for_a_large_result_set.json")
           parsed = JSON.parse(json)
           JSON.stub!(:parse).and_return parsed
+          @affiliate.indexed_documents.delete_all
+          IndexedDocument.reindex
+          Sunspot.commit
         end
 
-        it "should use Bing's info to set the pagination" do
+        it "should use Bing's total but leave start/endrecord nil" do
           search = WebSearch.new(:query => 'government', :affiliate => @affiliate, :page => 97)
           search.run.should be_true
-          search.startrecord.should == 621
-          search.endrecord.should == 622
+          search.total.should == 622
+          search.startrecord.should be_nil
+          search.endrecord.should be_nil
         end
       end
     end
@@ -1030,6 +1034,7 @@ describe WebSearch do
       before do
         @tweet = Tweet.create!(:tweet_text => "I love america.", :published_at => Time.now, :twitter_profile_id => 123, :tweet_id => 123)
         Tweet.reindex
+        Sunspot.commit
         @affiliate.twitter_profiles.create!(:screen_name => 'USASearch',
                                             :name => 'Test',
                                             :twitter_id => 123,
@@ -1079,6 +1084,7 @@ describe WebSearch do
         @affiliate.flickr_profiles.create(:url => 'http://flickr.com/photos/whitehouse', :profile_type => 'user', :profile_id => '123')
         @photo = FlickrPhoto.create(:flickr_id => 1, :flickr_profile => @affiliate.flickr_profiles.first, :title => 'A picture of Barack Obama', :description => 'Barack Obama playing with his dog at the White House.', :tags => 'barackobama barack obama dog white house', :date_taken => Time.now - 3.days)
         FlickrPhoto.reindex
+        Sunspot.commit
       end
 
       context "when the affiliate has photo govbox enabled" do
@@ -1115,7 +1121,7 @@ describe WebSearch do
     end
 
     context 'forms' do
-      let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov' ) }
+      let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov') }
 
       context 'when the affiliate has form_agencies' do
         let(:search) { WebSearch.new(:query => query, :affiliate => @affiliate) }
@@ -1134,7 +1140,7 @@ describe WebSearch do
 
           it 'should execute Form.search_for' do
             forms = mock('forms')
-            Form.should_receive(:search_for).with(query, { :form_agencies => @affiliate.form_agencies.collect(&:id), :verified => true, :count => 1 }).and_return(forms)
+            Form.should_receive(:search_for).with(query, {:form_agencies => @affiliate.form_agencies.collect(&:id), :verified => true, :count => 1}).and_return(forms)
 
             search.should_receive(:qualify_for_form_fulltext_search?).and_return(true)
             search.run
@@ -1174,7 +1180,8 @@ describe WebSearch do
 
     context "on normal search runs" do
       before do
-        @search = WebSearch.new(@valid_options.merge(:query => 'logme', :affiliate => @affiliate))
+        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme', :affiliate => @affiliate))
+        @search.stub!(:backfill_needed).and_return false
         parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
         JSON.stub!(:parse).and_return parsed
       end
@@ -1185,91 +1192,24 @@ describe WebSearch do
       end
     end
 
-    context "when an affiliate has PDF documents" do
+    context "when an affiliate has RSS Feeds" do
       before do
-        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        @affiliate.indexed_documents.destroy_all
-        @affiliate.site_domains.create!(:domain => 'usa.gov')
-        @affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://usa.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://usa.gov/pdf2.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-        IndexedDocument.reindex
-        Sunspot.commit
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.rss_feeds.each { |feed| feed.update_attribute(:shown_in_govbox, true) }
       end
 
-      it "should find PDF documents that match the query if this is the first page" do
-        search = WebSearch.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 1))
+      it "should retrieve govbox-enabled non-video and video RSS feeds" do
+        non_video_results = mock('non video results', :total => 3)
+        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.non_videos.to_a, nil, 1).and_return(non_video_results)
+
+        video_results = mock('video results', :total => 3)
+        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.videos.to_a, nil, 1).and_return(video_results)
+
+        search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
+        search.stub!(:build_news_item_hash_from_search).and_return Hash.new
         search.run
-        search.indexed_documents.should_not be_nil
-        search.indexed_documents.count.should == 2
-      end
-
-      it "should not find any PDF documents if it's not the first page" do
-        search = WebSearch.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
-        search.run
-        search.indexed_documents.should be_nil
-      end
-
-      context "when an affiliate has RSS Feeds" do
-        before do
-          @affiliate = affiliates(:basic_affiliate)
-          @affiliate.rss_feeds.each { |feed| feed.update_attribute(:shown_in_govbox, true) }
-        end
-
-        it "should retrieve govbox-enabled non-video and video RSS feeds" do
-          non_video_results = mock('non video results', :total => 3)
-          NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.non_videos.to_a, nil, 1).and_return(non_video_results)
-
-          video_results = mock('video results', :total => 3)
-          NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.videos.to_a, nil, 1).and_return(video_results)
-
-          search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
-          search.stub!(:build_news_item_hash_from_search).and_return Hash.new
-          search.run
-          search.news_items.should == non_video_results
-          search.video_news_items.should == video_results
-        end
-      end
-    end
-
-    context "when an affiliate has Bing results that are duplicated in indexed documents" do
-      before do
-        WebSearch.stub!(:url_present_in_bing?).and_return false
-        @affiliate.indexed_documents.destroy_all
-        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        @affiliate.site_domains.create!(:domain => 'usa.gov')
-        @affiliate.site_domains.create!(:domain => 'same-title-and-uri-but-different-host.gov')
-        @affiliate.site_domains.create!(:domain => 'www.gov.gov')
-        @affiliate.indexed_documents.create!(:title => "Hack Day - USA.gov Blog", :description => "Hack Day description, sometimes with a trailing slash",
-                                             :url => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day', :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create!(:title => "Projects created - USA.gov Blog", :description => "Sometimes served up via SSL!",
-                                             :url => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day/', :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create!(:title => "another one", :description => "Projects created description",
-                                             :url => 'http://same-title-and-uri-but-different-host.gov/more?x=4', :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create!(:title => "exact url match except for trailing slash", :description => "Projects created description",
-                                             :url => 'http://www.gov.gov', :last_crawl_status => IndexedDocument::OK_STATUS)
-        IndexedDocument.reindex
-        Sunspot.commit
-      end
-
-      it "should remove the matching indexed documents" do
-        search = WebSearch.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 1))
-        search.should_receive(:process_results).and_return([{'title' => 'another one', 'unescapedUrl' => 'http://blog.usa.gov/more?x=4#anchor'},
-                                                            {'title' => 'Hack Day - USA.gov Blog', 'unescapedUrl' => 'http://usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/subdir'},
-                                                            {'title' => 'exact url match', 'unescapedUrl' => 'http://www.gov.gov/'},
-                                                            {'title' => 'Projects created - USA.gov Blog', 'unescapedUrl' => 'https://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day'}])
-        search.run
-        search.results.count.should == 4
-        search.indexed_documents.count.should == 1
-        search.indexed_documents.first.instance.url.should == 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day'
-      end
-
-      context "when one of those URLs is unparsable because it's invalid" do
-        it "should just leave it in there" do
-          search = WebSearch.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 1))
-          search.should_receive(:process_results).and_return([{'title' => 'another one', 'unescapedUrl' => 'http://www.wsdot.wa.gov/acct/library/reports-studies/2010TransitPlan[1].pdf'}])
-          search.run
-          search.results.count.should == 1
-        end
+        search.news_items.should == non_video_results
+        search.video_news_items.should == video_results
       end
     end
 
@@ -1278,7 +1218,7 @@ describe WebSearch do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.site_domains.create(:domain => "nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
-        @non_affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+        @non_affiliate.features << features(:hosted_sitemaps)
         1.upto(15) do |index|
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
         end
@@ -1288,7 +1228,7 @@ describe WebSearch do
         IndexedDocument.search_for('indexed', @non_affiliate, nil).total.should == 15
       end
 
-      it "should fill the results with paged boosted results" do
+      it "should fill the results with the Odie docs" do
         search = WebSearch.new(:query => 'indexed', :affiliate => @non_affiliate)
         search.run
         search.results.should_not be_nil
@@ -1307,8 +1247,6 @@ describe WebSearch do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.boosted_contents.destroy_all
-        IndexedDocument.reindex
-        Sunspot.commit
         IndexedDocument.stub!(:search_for).and_return nil
       end
 
@@ -1326,7 +1264,7 @@ describe WebSearch do
     context "when affiliate has no Bing results and there is an orphan indexed document" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
-        @non_affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+        @non_affiliate.features << features(:hosted_sitemaps)
         @non_affiliate.indexed_documents.destroy_all
         IndexedDocument.reindex
         odie = @non_affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://laksjdflkjasldkjfalskdjf.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1347,49 +1285,98 @@ describe WebSearch do
       end
     end
 
-    context "when an affiliate is set to use ODIE results" do
-      before do
-        IndexedDocument.destroy_all
-        @affiliate = affiliates(:basic_affiliate)
-        @affiliate.stub!(:uses_odie_results?).and_return true
-        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA',
-                                             :description => 'Here is a more representative document description on why we LOVE AMERICA so that we get a better sense of what the fast vector highlighter will do with the text, which happens to be longer than the 255 characters we have set as the fragment size. For a really small field, it is better to use the single fragment builder versus the default builder, which for some reason wants to chop off the front of the fragment up to the point of the first snippet.',
-                                             :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
-        Sunspot.commit
-        IndexedDocument.reindex
-        @search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
-        @search.should_not_receive(:perform_bing_search)
-        @search.run
+    describe "ODIE backfill" do
+      context "when we want X Bing results from page Y and there are X of them" do
+        before do
+          @search = WebSearch.new(@valid_options.merge(:page => 1))
+          json = File.read(Rails.root.to_s + "/spec/fixtures/json/page1_10results.json")
+          parsed = JSON.parse(json)
+          JSON.stub!(:parse).and_return parsed
+          @search.run
+        end
+
+        it "should return the X Bing results" do
+          @search.total.should == 1940000
+          @search.results.size.should == 10
+          @search.startrecord.should == 1
+          @search.endrecord.should == 10
+        end
       end
 
-      it "should not use Bing results, but instead use ODIE results" do
-        @search.total.should == 1
-        @search.results.first['title'].should == 'I LOVE AMERICA'
-        @search.results.first['content'].should == 'we LOVE AMERICA so that we get a better sense of what the fast vector highlighter will do with the text, which happens to be longer than the 255 characters we have set as the fragment size. For a really small field, it is better to use the single fragment builder'
-        @search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
-      end
-    end
+      context "when we want X Bing results from page Y and there are 0 <= n < X of them" do
+        before do
+          @search = WebSearch.new(@valid_options.merge(:page => 2))
+          json = File.read(Rails.root.to_s + "/spec/fixtures/json/page2_6results.json")
+          parsed = JSON.parse(json)
+          JSON.stub!(:parse).and_return parsed
+        end
 
-    context "when an affiliate is set to use Bing+Odie results" do
-      before do
-        IndexedDocument.destroy_all
-        @affiliate = affiliates(:basic_affiliate)
-        @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        @affiliate.stub!(:uses_bing_odie_results?).and_return false
-        @affiliate.indexed_documents.create(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
-        Sunspot.commit
-        IndexedDocument.reindex
-        @search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
-        @search.should_receive(:bing_offset).and_return 0
-        @search.run
+        context "when there are Odie results" do
+          before do
+            IndexedDocument.destroy_all
+            @affiliate.features << features(:hosted_sitemaps)
+            @affiliate.site_domains.create!(:domain => 'nps.gov')
+            @affiliate.indexed_documents.create!(:title => 'government I LOVE AMERICA', :description => 'government WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
+            IndexedDocument.reindex
+            Sunspot.commit
+          end
+
+          it "should indicate that there is another page of results" do
+            @search.run
+            @search.total.should == 21
+            @search.results.size.should == 6
+            @search.startrecord.should == 11
+            @search.endrecord.should == 16
+          end
+
+        end
+
+        context "when there are no Odie results" do
+          before do
+            IndexedDocument.destroy_all
+            IndexedDocument.reindex
+            Sunspot.commit
+          end
+
+          it "should return the X Bing results" do
+            @search.run
+            @search.total.should == 16
+            @search.results.size.should == 6
+            @search.startrecord.should == 11
+            @search.endrecord.should == 16
+          end
+        end
       end
 
-      it "should use Bing results and populate the indexed_documents field with the Indexed Document results" do
-        @search.indexed_documents.should_not be_nil
-        @search.indexed_documents.should_not be_empty
-        @search.indexed_documents.first.instance.should == @affiliate.indexed_documents.first
+      context "when we want X Bing results from page Y and there are none" do
+        before do
+          @search = WebSearch.new(@valid_options.merge(:page => 4))
+          json = File.read(Rails.root.to_s + "/spec/fixtures/json/12total_2results.json")
+          parsed = JSON.parse(json)
+          JSON.stub!(:parse).and_return parsed
+        end
+
+        context "when there are Odie results" do
+          before do
+            IndexedDocument.destroy_all
+            @affiliate.features << features(:hosted_sitemaps)
+            @affiliate.site_domains.create!(:domain => 'nps.gov')
+            11.times { |x| @affiliate.indexed_documents.create!(:title => "government I LOVE AMERICA #{x}", :description => "government WE LOVE AMERICA #{x}", :url => "http://nps.gov/america#{x}.html", :last_crawl_status => IndexedDocument::OK_STATUS) }
+            IndexedDocument.reindex
+            Sunspot.commit
+          end
+
+          it "should subtract the total number of Bing results pages available and page into the Odie results" do
+            @search.run
+            @search.total.should == 31
+            @search.results.size.should == 1
+            @search.startrecord.should == 31
+            @search.endrecord.should == 31
+          end
+        end
+
       end
+
     end
   end
 
@@ -1615,7 +1602,9 @@ describe WebSearch do
     context "when the Bing results are empty and there are instead locally indexed results" do
       before do
         affiliate = affiliates(:non_existant_affiliate)
-        affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.')
+        affiliate.features << features(:hosted_sitemaps)
+        affiliate.site_domains.create(:domain => "url.gov")
+        affiliate.indexed_documents.create!(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.', :body => "so tedious", :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
         Sunspot.commit
         @search = WebSearch.new(:query => 'white house', :affiliate => affiliate)
@@ -1632,7 +1621,7 @@ describe WebSearch do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:non_existant_affiliate)
-      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      @affiliate.features << features(:hosted_sitemaps)
       @affiliate.site_domains.create(:domain => "url.gov")
       @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex

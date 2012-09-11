@@ -16,8 +16,6 @@
     - if search.first_page?
       = render "/shared/video_news_govbox", :search => @search if index == 1
       = render "/shared/news_govbox", :search => @search if index == 2
-      - if @affiliate.uses_bing_odie_results? and @affiliate.is_odie_govbox_enabled? and index == 4
-        = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate
   = render 'shared/related_topics'
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

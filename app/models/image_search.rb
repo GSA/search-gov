@@ -46,6 +46,11 @@ class ImageSearch < WebSearch
     end
   end
 
+  def handle_bing_response(response)
+    @total = hits(response)
+    super(response) if @total > 0
+  end
+
   def hits(response)
     response.image.total rescue 0
   end

@@ -22,8 +22,6 @@ class ApiSearch
   private
   def self.get_search_klass(options_index)
     case options_index
-      when "odie"
-        OdieSearch
       when "news"
         NewsSearch
       when "images"

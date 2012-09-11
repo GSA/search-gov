@@ -14,20 +14,20 @@ describe HostedSitemapController, "#show" do
   end
 
   context "when the indexed domain is available" do
-    fixtures :affiliates
+    fixtures :affiliates, :features
     render_views
     before do
       @domain = "www.govdotgov.gov"
-      aff = affiliates(:power_affiliate)
-      aff.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-      @indexed_domain = aff.indexed_domains.create!(:domain => @domain)
-      aff.site_domains.create!(:domain => @domain)
-      aff.site_domains.create!(:domain => 'honeybadger.gov')
-      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/foo.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
-      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/bar.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
-      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/blat.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
-      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://#{@domain}/dupe.html", :last_crawl_status=>"dupe", :title => "foo dupe", :description => "bar dupe")
-      @indexed_domain.indexed_documents.create!(:affiliate => aff, :url => "http://www.honeybadger.gov/ignoreme.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
+      affiliate = affiliates(:power_affiliate)
+      affiliate.features << features(:hosted_sitemaps)
+      @indexed_domain = affiliate.indexed_domains.create!(:domain => @domain)
+      affiliate.site_domains.create!(:domain => @domain)
+      affiliate.site_domains.create!(:domain => 'honeybadger.gov')
+      @indexed_domain.indexed_documents.create!(:affiliate => affiliate, :url => "http://#{@domain}/foo.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
+      @indexed_domain.indexed_documents.create!(:affiliate => affiliate, :url => "http://#{@domain}/bar.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
+      @indexed_domain.indexed_documents.create!(:affiliate => affiliate, :url => "http://#{@domain}/blat.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
+      @indexed_domain.indexed_documents.create!(:affiliate => affiliate, :url => "http://#{@domain}/dupe.html", :last_crawl_status=>"dupe", :title => "foo dupe", :description => "bar dupe")
+      @indexed_domain.indexed_documents.create!(:affiliate => affiliate, :url => "http://www.honeybadger.gov/ignoreme.html", :last_crawl_status=>"OK", :title => "foo", :description => "bar")
     end
 
     context "when there are too many indexed documents for the domain to fit in a single sitemap file" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910183016) do
+ActiveRecord::Schema.define(:version => 20120913203210) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20120910183016) do
     t.text     "previous_fields_json",                      :limit => 2147483647
     t.text     "live_fields_json",                          :limit => 2147483647
     t.text     "staged_fields_json",                        :limit => 2147483647
-    t.string   "results_source",                            :limit => 15,         :default => "bing+odie"
     t.text     "scope_keywords"
     t.boolean  "uses_managed_header_footer"
     t.boolean  "staged_uses_managed_header_footer"
@@ -84,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20120910183016) do
     t.integer  "staged_page_background_image_file_size"
     t.datetime "staged_page_background_image_updated_at"
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
-    t.boolean  "is_odie_govbox_enabled",                                          :default => true,            :null => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
     t.text     "dublin_core_mappings"
   end

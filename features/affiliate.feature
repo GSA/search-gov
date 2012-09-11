@@ -2211,9 +2211,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting sidebar
     Given the following Affiliates exist:
-      | display_name   | name             | contact_email | contact_name | results_source |
-      | aff site       | aff.gov          | aff@bar.gov   | John Bar     | bing+odie      |
-      | bing only site | bingonly.aff.gov | aff@bar.gov   | John Bar     | bing           |
+      | display_name   | name             | contact_email | contact_name |
+      | aff site       | aff.gov          | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name  | url                                  | shown_in_govbox | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true            | true         |
@@ -2252,10 +2251,6 @@ Feature: Affiliate clients
     And I follow "Sidebar"
     And I follow "Add new RSS feed" in the page content
     Then I should see "Add a new RSS Feed" in the page header
-
-    When I go to the "bing only site" affiliate page
-    And I follow "Sidebar"
-    Then I should not see "Add new collection"
 
   Scenario: Editing sidebar
     Given the following Affiliates exist:
@@ -2447,10 +2442,10 @@ Feature: Affiliate clients
 
   Scenario: Editing the results modules
     Given the following Affiliates exist:
-      | display_name   | name       | contact_email | contact_name | locale | results_source | youtube_handles  |
-      | aff site       | aff.gov    | aff@bar.gov   | John Bar     | en     | bing+odie      | aff.gov          |
-      | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es     | bing           |                  |
-      | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es     | odie           |                  |
+      | display_name   | name       | contact_email | contact_name | locale  | youtube_handles  |
+      | aff site       | aff.gov    | aff@bar.gov   | John Bar     | en      | aff.gov          |
+      | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es      |                  |
+      | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es      |                  |
     And the following site domains exist for the affiliate aff.gov:
       | domain               | site_name      |
       | aff.gov              | Agency Website |
@@ -2471,9 +2466,6 @@ Feature: Affiliate clients
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Fourth item | uuid4 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
-    And the following IndexedDocuments exist:
-      | title                | description                     | url                        | affiliate | last_crawled_at | last_crawl_status |
-      | Space Suit Evolution | description for space suit item | http://aff.gov//space-suit | aff.gov   | 11/02/2011      | OK                |
     And the following SAYT Suggestions exist for aff.gov:
       | phrase           |
       | some unique item |
@@ -2486,7 +2478,6 @@ Feature: Affiliate clients
     And I should see "Third item" in the rss feed govbox
     And I should not see "Fourth item" in the rss feed govbox
     And I should not see "Fifth item" in the rss feed govbox
-    And I should see "Space Suit Evolution"
     And I should see "Related Searches for 'item' by aff site" in the search results section
     And I should see "some unique item"
 
@@ -2507,11 +2498,9 @@ Feature: Affiliate clients
     And the "Show RSS feed 1 in govbox" checkbox should be checked
     And the "Show RSS feed 2 in govbox" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
-    And the "Is odie govbox enabled" checkbox should be checked
     And I uncheck "Show RSS feed 0 in govbox"
     And I check "Show RSS feed 3 in govbox"
     And I uncheck "Is related searches enabled"
-    And I uncheck "Is odie govbox enabled"
     And I fill in "Connection site handle 0" with "es.aff.gov"
     And I fill in "Connection label 0" with "Search in Spanish"
     And I press "Save"
@@ -2534,14 +2523,6 @@ Feature: Affiliate clients
     And I should not see "some unique item"
     When I follow "Search in Spanish"
     Then I should see the browser page titled "item - Spanish site resultados de la búsqueda"
-
-    When I go to the "Spanish site" affiliate page
-    And I follow "Results modules"
-    Then I should not see "Is odie govbox enabled"
-
-    When I go to the "Odie only site" affiliate page
-    And I follow "Results modules"
-    Then I should not see "Is odie govbox enabled"
 
   Scenario: Validation in the Results modules
     Given the following Affiliates exist:

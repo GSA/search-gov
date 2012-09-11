@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe SiteDomainObserver do
-  fixtures :affiliates
+  fixtures :affiliates, :features
   let(:affiliate) { affiliates(:power_affiliate) }
 
   before do
-    affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+    affiliate.features << features(:hosted_sitemaps)
     affiliate.site_domains.create!(:domain => "first.gov")
     affiliate.site_domains.create!(:domain => "second.gov")
     affiliate.indexed_documents.create!(:url => "http://www.first.gov/")

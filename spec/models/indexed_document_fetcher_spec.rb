@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
-  fixtures :affiliates
+  fixtures :affiliates, :features
   before do
-    @aff = affiliates(:basic_affiliate)
-    @aff.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+    affiliate = affiliates(:basic_affiliate)
+    affiliate.features << features(:hosted_sitemaps)
+
     IndexedDocument.destroy_all
-    @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => @aff)
+    @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate)
   end
 
   context "when it can't locate the IndexedDocument for a given id" do

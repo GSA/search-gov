@@ -24,7 +24,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :ga_web_property_id, :external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :is_sayt_enabled, :fetch_concurrency,
-                             :has_staged_content, :exclude_webtrends, :locale, :results_source,
+                             :has_staged_content, :exclude_webtrends, :locale,
                              :sitemaps, :affiliate_feature_addition, :form_agencies]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
@@ -36,8 +36,6 @@ class Admin::AffiliatesController < Admin::AdminController
     theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }
     config.columns[:staged_theme].options = { :include_blank => '', :options => theme_options }
-    config.columns[:results_source].form_ui = :select
-    config.columns[:results_source].options = { :include_blank => false, :options => Affiliate::RESULTS_SOURCES }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
     config.columns[:form_agencies].form_ui = :select
     config.columns[:form_agencies].options = { :draggable_lists => true }

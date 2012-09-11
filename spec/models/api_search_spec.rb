@@ -133,13 +133,6 @@ describe ApiSearch do
         search.stub!(:to_json).and_return "search_result_in_json"
       end
 
-      context "when it's odie" do
-        it "should create an OdieSearch object" do
-          OdieSearch.should_receive(:new).with(params.merge(:index => 'odie')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'odie'))
-        end
-      end
-
       context "when it's web" do
         it "should create an WebSearch object" do
           WebSearch.should_receive(:new).with(params.merge(:index => 'web')).and_return(search)
@@ -174,10 +167,6 @@ describe ApiSearch do
           ApiSearch.search(params.merge(:index => 'images'))
         end
       end
-    end
-
-    context "when index is 'news'" do
-
     end
 
   end

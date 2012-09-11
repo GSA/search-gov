@@ -20,10 +20,9 @@
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
-            - unless @affiliate.uses_bing_results?
-              %li
-                = link_to "Collections", affiliate_document_collections_path(@affiliate)
-                = image_tag 'new.png', :class => 'new'
+            %li
+              = link_to "Collections", affiliate_document_collections_path(@affiliate)
+              = image_tag 'new.png', :class => 'new'
             %li= link_to "Social Media", affiliate_social_media_path(@affiliate)
         .side-block
           %h3 User Interface

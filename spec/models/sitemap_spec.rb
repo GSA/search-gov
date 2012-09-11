@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sitemap do
-  fixtures :affiliates
+  fixtures :affiliates, :features
 
   before do
     affiliates(:power_affiliate).site_domains.create!(:domain => 'example.gov')
@@ -91,7 +91,7 @@ describe Sitemap do
     before do
       @sitemap = Sitemap.new(@valid_attributes)
       @sitemap.stub!(:is_valid_sitemap?).and_return true
-      @sitemap.affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      @sitemap.affiliate.features << features(:hosted_sitemaps)
     end
 
     context "when the sitemap is a valid sitemap" do

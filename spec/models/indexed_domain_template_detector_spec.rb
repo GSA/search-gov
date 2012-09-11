@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe IndexedDomainTemplateDetector do
-  fixtures :indexed_domains
+  fixtures :indexed_domains, :features, :affiliates
+
   let(:indexed_domain) { indexed_domains(:sample) }
   let(:idtd) { IndexedDomainTemplateDetector.new(indexed_domain) }
 
@@ -21,13 +22,13 @@ describe IndexedDomainTemplateDetector do
   end
 
   describe "#detect_common_substring" do
-    fixtures :affiliates
 
     context "when there are fewer than 10 docs that are HTML and OK for the indexed domain" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         affiliate.indexed_documents.destroy_all
-        affiliate.update_attributes!(:results_source => 'odie')
+        affiliate.features << features(:hosted_sitemaps)
+
         10.upto(18) do |x|
           affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
                                               :title => "Some HTML Title#{x}",
@@ -59,7 +60,7 @@ describe IndexedDomainTemplateDetector do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         affiliate.indexed_documents.destroy_all
-        affiliate.update_attributes!(:results_source => 'odie')
+        affiliate.features << features(:hosted_sitemaps)
         10.upto(19) do |x|
           affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
                                               :title => "Some HTML Title#{x}",
@@ -176,14 +177,13 @@ describe IndexedDomainTemplateDetector do
   end
 
   describe "#compute_saturation(lcs)" do
-    fixtures :affiliates
     let(:idtd) { IndexedDomainTemplateDetector.new(indexed_domain) }
     let(:lcs) { " body is pretty large" }
 
     before do
       affiliate = affiliates(:basic_affiliate)
       affiliate.indexed_documents.destroy_all
-      affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      affiliate.features << features(:hosted_sitemaps)
       1.upto(3) do |x|
         affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html", :title => "Some HTML Title#{x}",
                                             :description => "This is HTML document number #{x}.",

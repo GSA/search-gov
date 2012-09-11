@@ -17,7 +17,7 @@
           %tr.nodrag.nodrop
             %th{ :colspan => 3 }
               = link_to "Add new RSS feed", new_affiliate_rss_feed_path(@affiliate), :class => 'add-link'
-              = link_to("Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last')unless @affiliate.uses_bing_results?
+              = link_to("Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link last')
         %tbody
           %tr.column-header.nodrag.nodrop
             %th Display name
@@ -27,7 +27,7 @@
             %td.name
               = sidebar_form.label :default_search_label, nil, :class => 'hide'
               = sidebar_form.text_field :default_search_label, :maxlength => 20
-            %td.source= @affiliate.display_results_source
+            %td.source USASearch/Bing
             %td.actions
           - @affiliate.navigations.each_with_index do |navigation, index|
             = sidebar_form.fields_for :"#{render_navigable_field_name_for navigation}", navigation.navigable do |navigable_form|

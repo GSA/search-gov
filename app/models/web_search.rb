@@ -58,7 +58,7 @@ class WebSearch < Search
   end
 
   def are_results_by_bing?
-    self.indexed_results.nil? ? true : false
+    self.indexed_results.nil?
   end
 
   def qualify_for_form_fulltext_search?
@@ -102,18 +102,10 @@ class WebSearch < Search
   end
 
   def search
-    begin
-      @affiliate.uses_odie_results? ? perform_odie_search : parse_bing_response(perform_bing_search)
-    rescue BingSearch::BingSearchError => error
-      Rails.logger.warn "Error getting search results from Bing server: #{error}"
-      false
-    end
-  end
-
-  def perform_odie_search
-    odie_search = OdieSearch.new(@options)
-    odie_search.run
-    @indexed_results = odie_search
+    parse_bing_response(perform_bing_search)
+  rescue BingSearch::BingSearchError => error
+    Rails.logger.warn "Error getting search results from Bing server: #{error}"
+    false
   end
 
   def parse_bing_response(response)
@@ -131,28 +123,37 @@ class WebSearch < Search
   end
 
   def handle_response(response)
-    @affiliate.uses_odie_results? ? handle_odie_response(response) : handle_bing_response(response)
-  end
-
-  def handle_odie_response(response)
-    unless response.nil? and response.total > 0
-      @total = response.total
-      @results = response.results
-      @startrecord = response.startrecord
-      @endrecord = response.endrecord
+    @total = hits(response)
+    available_bing_pages = (@total/@per_page.to_f).ceil
+    if backfill_needed?
+      odie_search = OdieSearch.new(@options.merge(:page => [@page - available_bing_pages, 1].max))
+      odie_response = odie_search.search
+      if odie_response and odie_response.total > 0
+        adjusted_total = available_bing_pages * @per_page + odie_response.total
+        if @total <= @per_page * (@page - 1) and available_bing_pages < @page
+          temp_total = @total
+          @total = adjusted_total
+          @results = paginate(odie_search.process_results(odie_response))
+          @total = temp_total
+          @startrecord = (@page -1) * @per_page + 1
+          @endrecord = @startrecord + odie_response.results.size - 1
+          @indexed_results = odie_response
+        end
+        @total = adjusted_total
+      end
     end
+    handle_bing_response(response) if available_bing_pages >= @page
   end
 
   def handle_bing_response(response)
-    @total = hits(response)
-    if @total.zero?
-      handle_odie_response(perform_odie_search) if self.class == WebSearch
-    else
-      @startrecord = bing_offset(response) + 1
-      @results = paginate(process_results(response))
-      @endrecord = startrecord + results.size - 1
-      @spelling_suggestion = spelling_results(response)
-    end
+    @startrecord = bing_offset(response) + 1
+    @results = paginate(process_results(response))
+    @endrecord = startrecord + results.size - 1
+    @spelling_suggestion = spelling_results(response)
+  end
+
+  def backfill_needed?
+    @total < @per_page * @page
   end
 
   def hits(response)
@@ -229,11 +230,6 @@ class WebSearch < Search
     @boosted_contents = BoostedContent.search_for(query, affiliate)
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate)
-      documents = @indexed_results.nil? ? IndexedDocument.search_for(query, affiliate, nil, 1, 3, Date.current.ago(3.months)) : nil
-      if documents
-        @indexed_documents = documents.hits(:verify => true)
-        remove_bing_matches_from_indexed_documents
-      end
       if affiliate.is_agency_govbox_enabled?
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
@@ -330,23 +326,6 @@ class WebSearch < Search
 
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
-  end
-
-  def remove_bing_matches_from_indexed_documents
-    @indexed_documents.delete_if do |indexed_document|
-      begin
-        local_url_minus_slash = indexed_document.instance.url.sub(/\/$/, '')
-        local_request_uri = URI.parse(local_url_minus_slash).request_uri
-        local_title = indexed_document.instance.title || ''
-        @results.any? do |result|
-          bing_url_minus_slash = result['unescapedUrl'].sub(/\/$/, '')
-          (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/(\uE000|\uE001)/, '')) or
-            bing_url_minus_slash == local_url_minus_slash
-        end
-      rescue URI::InvalidURIError
-        false
-      end
-    end
   end
 
   def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)

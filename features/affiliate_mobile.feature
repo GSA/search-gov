@@ -50,23 +50,6 @@ Feature: Mobile Search for Affiliate
     When I follow "Classic"
     Then I should see the browser page titled "social security - agency site Search Results"
 
-  Scenario: When an affiliate uses ODIE results
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains | results_source |
-      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | odie           |
-    And the following IndexedDocuments exist:
-      | url                       | affiliate | title       | description     |
-      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
-      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
-    And the url "http://nih.gov/1.html" has been crawled
-    And the url "http://nih.gov/2.html" has been crawled
-    And I am on nih.gov's search page
-    And I fill in "query" with "NIH"
-    And I press "Search"
-    Then I should see "NIH Page 1"
-    And I should see "NIH Page 2"
-    And I should see the Results by USASearch logo
-
   Scenario: A search on RSS feeds
     Given the following Affiliates exist:
       | display_name | name       | contact_email  | contact_name |

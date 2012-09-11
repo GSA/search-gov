@@ -3,15 +3,8 @@ Feature: Document Collections
   I want to manage groups of indexed documents
   So that my search users can navigate/filter/browse my indexed douments more easily
 
-  Scenario: Visiting affiliate center as an Odie-less affiliate
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    And affiliate "noaa.gov" has a result source of "bing"
-    When I go to the affiliate admin page with "noaa.gov" selected
-    Then I should not see "Collections"
-
   Scenario: Visiting Affiliate Document Collections index page as a new Odie affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    And affiliate "noaa.gov" has a result source of "bing+odie"
     When I go to the affiliate admin page with "noaa.gov" selected
     And I follow "Collections"
     Then I should see the following breadcrumbs: USASearch > Admin Center > Noaa Site > Collections
@@ -20,8 +13,8 @@ Feature: Document Collections
 
   Scenario: Administering a Featured Collection
     Given the following Affiliates exist:
-      | display_name | name     | contact_email              | contact_name | results_source |
-      | Noaa Site    | site.gov | affiliate_manager@site.gov | John Bar     | bing+odie      |
+      | display_name | name     | contact_email              | contact_name |
+      | Noaa Site    | site.gov | affiliate_manager@site.gov | John Bar     |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the affiliate admin page with "site.gov" selected
     And I follow "Collections"

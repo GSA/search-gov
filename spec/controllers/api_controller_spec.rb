@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApiController do
-  fixtures :affiliates, :users, :site_domains
+  fixtures :affiliates, :users, :site_domains, :features
 
   describe "#search" do
     context "when there is no api key parameter" do
@@ -170,40 +170,6 @@ describe ApiController do
         SaytSuggestion.reindex
         Sunspot.commit
         get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10', :channel => feed.id.to_s, :tbs => 'm'
-      end
-
-      describe "response body" do
-        subject { JSON.parse(response.body) }
-        its(['total']) { should == 11 }
-        its(['startrecord']) { should == 11 }
-        its(['endrecord']) { should == 11 }
-        its(['results']) { should_not be_empty }
-        its(['related']) { should_not be_empty }
-      end
-    end
-
-    context "when it's an odie search" do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:api_key) { users(:affiliate_manager).api_key }
-
-      before do
-        affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        dc = affiliate.document_collections.build(:name => "My Coll")
-        dc.url_prefixes.build(:prefix => "http://something.gov/")
-        dc.save!
-        11.times do |x|
-          affiliate.indexed_documents.create!(
-            :title => "PDF Title about irrigation part #{x}",
-            :description => "This is a PDF document about irrigation part #{x}.",
-            :url => "http://nps.gov/pdf#{x}.pdf",
-            :last_crawl_status => IndexedDocument::OK_STATUS,
-            :body => "this is the doc body part #{x}")
-        end
-        affiliate.sayt_suggestions.create!(:phrase => "irrigate is a word")
-        IndexedDocument.reindex
-        SaytSuggestion.reindex
-        Sunspot.commit
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'odie', :page => '2', :per_page => '10', :dc => dc.id.to_s
       end
 
       describe "response body" do

@@ -11,6 +11,7 @@ end
 
 Given /^the following IndexedDocuments exist:$/ do |table|
   ActiveRecord::Observer.disable_observers
+
   table.hashes.each do |hash|
     IndexedDocument.create! do |id|
       id.title = hash[:title]

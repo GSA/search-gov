@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains
+  fixtures :users, :affiliates, :site_domains, :features
 
   before(:each) do
     @valid_create_attributes = {
@@ -1711,36 +1711,10 @@ describe Affiliate do
     end
   end
 
-  describe "#uses_bing_results?" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-    end
-
-    context "when affiliate has results_source=='bing'" do
-      before do
-        @affiliate.results_source = 'bing'
-      end
-
-      it "should return true" do
-        @affiliate.uses_bing_results?.should be_true
-      end
-    end
-
-    context "when affiliate has results_source not equal to 'bing'" do
-      before do
-        @affiliate.results_source = 'odie'
-      end
-
-      it "should return false" do
-        @affiliate.uses_bing_results?.should be_false
-      end
-    end
-  end
-
   describe "#refresh_indexed_documents(scope)" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+      @affiliate.features << features(:hosted_sitemaps)
       @affiliate.fetch_concurrency = 2
       @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')
       @second = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo')
@@ -1791,7 +1765,6 @@ describe Affiliate do
   end
 
   describe "#unused_features" do
-    fixtures :features
     before do
       @affiliate = affiliates(:power_affiliate)
       @affiliate.features.delete_all
@@ -1799,10 +1772,10 @@ describe Affiliate do
 
     it "should return the collection of unused features for the affiliate" do
       ufs = @affiliate.unused_features
-      ufs.size.should == 2
+      ufs.size.should == 3
       @affiliate.features << features(:sayt)
       ufs = @affiliate.unused_features
-      ufs.size.should == 1
+      ufs.size.should == 2
       ufs.first.should == features(:disco)
     end
   end

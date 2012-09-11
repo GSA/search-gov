@@ -38,7 +38,7 @@ class IndexedDocument < ActiveRecord::Base
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
-  ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap unless you are using Odie results. Set up your collection or hosted sitemap first and then upload the URL."
+  ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap. Set up your collection or hosted sitemap first and then upload the URL."
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -339,9 +339,8 @@ class IndexedDocument < ActiveRecord::Base
 
   def odie_candidacy
     return unless self.affiliate.present?
-    errors.add(:base, ODIE_CANDIDACY) unless self.affiliate.uses_odie_results? or
-      (self.affiliate.features & Feature.find_all_by_internal_name(%w{odie_api hosted_sitemaps})).present? or
-      self.affiliate.url_prefixes.where("? like concat(prefix,'%')", url).present?
+    errors.add(:base, ODIE_CANDIDACY) unless affiliate.features.exists?(:internal_name=>'hosted_sitemaps') or
+      affiliate.url_prefixes.where("? like concat(prefix,'%')", url).present?
   end
 
   def url_is_parseable

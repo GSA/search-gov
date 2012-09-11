@@ -10,14 +10,12 @@ class OdieSearch < Search
   end
 
   def search
-    IndexedDocument.search_for(@query, @affiliate, @document_collection, @page, 10)
+    IndexedDocument.search_for(@query, @affiliate, @document_collection, @page, @per_page)
   end
 
   def cache_key
     [@query, @affiliate.id, @page, @document_collection.try(:id)].join(':')
   end
-
-  protected
 
   def handle_response(response)
     if response
@@ -39,6 +37,8 @@ class OdieSearch < Search
     end
     processed.compact
   end
+
+  protected
 
   def log_serp_impressions
     modules = []

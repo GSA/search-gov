@@ -64,7 +64,7 @@ class Affiliate < ActiveRecord::Base
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
-  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
+  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
@@ -194,8 +194,6 @@ class Affiliate < ActiveRecord::Base
 
   NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
                                    :show_content_box_shadow => '1' }
-  RESULTS_SOURCES = %w(bing odie bing+odie)
-  RESULTS_SOURCE_DISPLAY_NAMES = { :bing => 'Bing', :odie => 'USASearch', :"bing+odie" => 'USASearch/Bing' }
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
       header footer header_footer_css nested_header_footer_css search_results_page_title favicon_url external_css_url uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
@@ -381,18 +379,6 @@ class Affiliate < ActiveRecord::Base
     added_or_updated_site_domains
   end
 
-  def uses_odie_results?
-    self.results_source == 'odie'
-  end
-
-  def uses_bing_results?
-    self.results_source == 'bing'
-  end
-
-  def uses_bing_odie_results?
-    self.results_source == 'bing+odie'
-  end
-
   def show_content_border?
     css_property_hash[:show_content_border] == '1'
   end
@@ -437,10 +423,6 @@ class Affiliate < ActiveRecord::Base
     indexed_documents.select(:id).send(scope.to_sym).find_in_batches(:batch_size => batch_size(scope)) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, scope)
     end
-  end
-
-  def display_results_source
-    RESULTS_SOURCE_DISPLAY_NAMES[results_source.to_sym]
   end
 
   def sanitized_header

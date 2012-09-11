@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe OdieSearch do
-  fixtures :affiliates
+  fixtures :affiliates, :features
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
-    affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
+    affiliate.features << features(:hosted_sitemaps)
+
     affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element', :description => 'Leeloo the supreme being', :last_crawled_at => Time.now, :last_crawl_status => "OK")
     IndexedDocument.reindex
   end

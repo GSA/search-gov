@@ -2,10 +2,10 @@
 require 'spec_helper'
 
 describe IndexedDocument do
-  fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains
+  fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains, :features
   before do
-    affiliates(:basic_affiliate).update_attribute(:results_source, 'odie')
-    affiliates(:power_affiliate).update_attribute(:results_source, 'odie')
+    affiliates(:basic_affiliate).features << features(:hosted_sitemaps)
+    affiliates(:power_affiliate).features << features(:hosted_sitemaps)
 
     @min_valid_attributes = {
       :url => "http://min.nps.gov/link.html",
@@ -91,37 +91,11 @@ describe IndexedDocument do
   context "when attributes are valid" do
     let(:idoc) { IndexedDocument.create!(@valid_attributes) }
 
-    context "when affiliate results source is Odie" do
-      before do
-        idoc.affiliate.update_attribute(:results_source, 'odie')
-        idoc.affiliate.document_collections.destroy_all
-        idoc.affiliate.features.destroy_all
-      end
-
-      it "should be valid" do
-        idoc.should be_valid
-      end
-    end
-
-    context "when affiliate is using Odie API feature" do
-      before do
-        idoc.affiliate.document_collections.destroy_all
-        idoc.affiliate.features.destroy_all
-        idoc.affiliate.features << Feature.find_or_create_by_internal_name('odie_api', :display_name => "api")
-        idoc.affiliate.update_attribute(:results_source, 'bing')
-      end
-
-      it "should be valid" do
-        idoc.should be_valid
-      end
-    end
-
     context "when affiliate is using hosted sitemap feature" do
       before do
         idoc.affiliate.features.destroy_all
         idoc.affiliate.document_collections.destroy_all
-        idoc.affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "hs")
-        idoc.affiliate.update_attribute(:results_source, 'bing')
+        idoc.affiliate.features << features(:hosted_sitemaps)
       end
 
       it "should be valid" do
@@ -135,7 +109,6 @@ describe IndexedDocument do
         document_collection = idoc.affiliate.document_collections.create!(:name => "sub2")
         document_collection.url_prefixes.create!(:prefix => 'http://www.nps.gov/sub2/')
         idoc.affiliate.features.destroy_all
-        idoc.affiliate.update_attribute(:results_source, 'bing')
         idoc.url = 'http://www.nps.gov/sub2/should_work.html'
       end
 
@@ -144,9 +117,8 @@ describe IndexedDocument do
       end
     end
 
-    context "when none of the above four conditions are true" do
+    context "when none of the above conditions are true" do
       before do
-        idoc.affiliate.update_attribute(:results_source, 'bing')
         idoc.affiliate.features.destroy_all
         idoc.affiliate.document_collections.destroy_all
       end
