@@ -34,7 +34,7 @@ class Form < ActiveRecord::Base
   end
 
   def self.search_for(query, options = {})
-    sanitized_query = preprocess(query).to_s.gsub(/\bform\b/i, '').strip
+    sanitized_query = preprocess(query).to_s.gsub(/\bforms?\b/i, '').strip
 
     ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :options => options}) do
       begin

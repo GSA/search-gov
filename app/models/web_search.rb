@@ -62,7 +62,7 @@ class WebSearch < Search
   end
 
   def qualify_for_form_fulltext_search?
-    query =~ /[[:digit:]]/i or query.gsub(/\bform\b/i, '').strip.present?
+    query =~ /[[:digit:]]/i or query =~ /\bforms?\b/i && query.gsub(/\bforms?\b/i, '').strip.present?
   end
 
   protected
