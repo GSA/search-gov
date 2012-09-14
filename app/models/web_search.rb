@@ -61,8 +61,8 @@ class WebSearch < Search
     self.indexed_results.nil? ? true : false
   end
 
-  def qualifies_for_form_fulltext_search?
-    query =~ /(\bforms?\b|[[:digit:]])/i
+  def qualify_for_form_fulltext_search?
+    query =~ /[[:digit:]]/i or query.gsub(/\bform\b/i, '').strip.present?
   end
 
   protected
@@ -246,7 +246,7 @@ class WebSearch < Search
       @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
       @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
       if affiliate.form_agency_ids.present?
-        if qualifies_for_form_fulltext_search?
+        if qualify_for_form_fulltext_search?
           @forms = Form.search_for(query, {:form_agencies => affiliate.form_agency_ids, :verified => true, :count => 1})
         else
           form_results = Form.where('title = ? AND form_agency_id IN (?)', query.squish, affiliate.form_agency_ids).limit(1)[0, 1]

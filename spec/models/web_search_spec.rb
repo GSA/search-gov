@@ -1136,7 +1136,7 @@ describe WebSearch do
             forms = mock('forms')
             Form.should_receive(:search_for).with(query, { :form_agencies => @affiliate.form_agencies.collect(&:id), :verified => true, :count => 1 }).and_return(forms)
 
-            search.should_receive(:qualifies_for_form_fulltext_search?).and_return(true)
+            search.should_receive(:qualify_for_form_fulltext_search?).and_return(true)
             search.run
             search.forms.should == forms
           end
@@ -1146,7 +1146,7 @@ describe WebSearch do
           let(:query) { 'Personal Property' }
 
           it 'should return an array of forms' do
-            search.should_receive(:qualifies_for_form_fulltext_search?).and_return(false)
+            search.should_receive(:qualify_for_form_fulltext_search?).and_return(false)
             Form.should_not_receive(:search_for)
 
             search.run
@@ -1163,7 +1163,7 @@ describe WebSearch do
         let(:search) { WebSearch.new(:query => 'some query', :affiliate => @affiliate) }
 
         it 'should assign @forms with nil' do
-          search.should_not_receive(:qualifies_for_form_fulltext_search?)
+          search.should_not_receive(:qualify_for_form_fulltext_search?)
           Form.should_not_receive(:search_for)
           Form.should_not_receive(:where)
           search.run
@@ -1676,6 +1676,13 @@ describe WebSearch do
         search = WebSearch.new(:query => 'bold', :affiliate => @affiliate)
         search.send(:url_is_excluded, url).should be_false
       end
+    end
+  end
+
+  describe '#qualify_for_form_fulltext_search?' do
+    context 'when query contains only "Form"' do
+      subject { WebSearch.new(:query => 'Form', :affiliate => @affiliate) }
+      it { should_not be_qualify_for_form_fulltext_search }
     end
   end
 end
