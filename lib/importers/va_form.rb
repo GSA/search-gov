@@ -87,6 +87,7 @@ class VaForm < FormImporter
     links.each_with_index do |link, i|
       file_path = link.attr(:href).strip
       url = generate_absolute_url(file_path)
+      next if url == 'http://www.vba.va.gov/pubs/forms/'
       file_type = lookup_format(url)
       if file_type == 'PDF'
         form.url = url

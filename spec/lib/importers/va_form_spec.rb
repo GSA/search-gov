@@ -59,7 +59,7 @@ describe VaForm do
       end
 
       it 'should create forms' do
-        Form.count.should == 6
+        Form.count.should == 7
       end
 
       it 'should populate all the available fields' do
@@ -95,6 +95,12 @@ describe VaForm do
         form.expiration_date.strftime("%-m/%d/%y").should == '8/31/15'
 
         Form.where(:form_agency_id => form_agency.id, :number => 'FL-29-459').should be_present
+      end
+
+      it 'should not verify discontinued forms' do
+        form = Form.where(:form_agency_id => form_agency.id, :number => '26-0285').first
+        form.links.should be_empty
+        form.should_not be_verified
       end
 
       it 'should skip duplicate forms' do
@@ -142,7 +148,7 @@ describe VaForm do
       before { va_form.import }
 
       it 'should create/update forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 6
+        Form.where(:form_agency_id => form_agency.id).count.should == 7
       end
 
       it 'should update existing form' do
@@ -177,7 +183,7 @@ describe VaForm do
       before { va_form.import }
 
       it 'should create forms' do
-        Form.where(:form_agency_id => form_agency.id).count.should == 6
+        Form.where(:form_agency_id => form_agency.id).count.should == 7
       end
 
       it 'should delete the obsolete form' do
