@@ -1,14 +1,14 @@
 set :user,        "search"
-set :deploy_to,   "/home/jwynne/#{application}"
-set :domain,      "192.168.100.160"
+set :deploy_to,   "/home/search/#{application}"
+set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
 
 before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
 task :restart_resque_workers, :roles => :web do
-  run "/home/jwynne/scripts/stop_resque_workers"
-  run "/home/jwynne/scripts/start_resque_workers"
+  run "/home/search/scripts/stop_resque_workers"
+  run "/home/search/scripts/start_resque_workers"
 end
 
 task :warmup, :roles => :web do

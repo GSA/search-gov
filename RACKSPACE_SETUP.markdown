@@ -149,7 +149,7 @@ Make sure staging.rb is configured properly and then on local dev workstation ru
 
 Then on staging
 
-    cd /home/jwynne/usasearch/shared/log
+    cd /home/search/usasearch/shared/log
     touch production.log
 
 Then on local dev workstation run
@@ -304,12 +304,6 @@ Restart apache
 
 Setup log rotation for apache and rails/passenger in /etc/logrotate.d/{httpd,passenger}
 
-##Installing and Setting up pdftk and xpdf
-
-Install xpdf and pdftk using yum:
-
-    sudo yum install xpdf pdftk
-
 ##Installing and Setting up Jenkins
 
 Jenkins is a Continuous Integration tool that runs as a web service inside a servlet engine.  Tomcat 5 is recommended.
@@ -368,7 +362,7 @@ Set the 'Execute Shell' section to the following:
     rm -rf tmp
     mkdir tmp
     rm -rf coverage/
-    cp /home/jwynne/jenkins/database.yml config/database.yml
+    cp /home/search/jenkins/database.yml config/database.yml
     bin/rake db:schema:load RAILS_ENV=test
     bin/rake sunspot:solr:start RAILS_ENV=test
     rm -rf tmp/cache
@@ -385,6 +379,6 @@ From the post build actions, select the following:
 
 Save the configuration.
 
-On the staging server, create a copy of the project database.yml in the /home/jwynne/jenkins directory (you may have to create that directory), and set the test environment to use the MySQL root password.
+On the staging server, create a copy of the project database.yml in the /home/search/jenkins directory (you may have to create that directory), and set the test environment to use the MySQL root password.
 
 Go back to Jenkins, you should be able to select your job and click 'Build Now'.  View the console output on the build to watch as it builds, and when hopefully all tests pass.
