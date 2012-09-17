@@ -369,11 +369,11 @@ module SearchHelper
     if results_by_bing
       alt = I18n.t(:results_by_bing)
       image_source = "binglogo_#{I18n.locale.to_s}.gif"
-      image_tag(image_source, :alt => alt, :class => 'results-by-logo')
+      image_tag(image_source, :alt => alt, :class => 'results-by-logo bing')
     else
       alt = I18n.t(:results_by_usasearch)
       image_source = "results_by_usasearch_#{I18n.locale.to_s}.png"
-      link_to(image_tag(image_source, :alt => alt, :class => 'results-by-logo'), BLOG_URL)
+      link_to(image_tag(image_source, :alt => alt), BLOG_URL, :class => 'results-by-logo usasearch')
     end
   end
 

@@ -18,5 +18,5 @@
       = render "/shared/news_govbox", :search => @search if index == 2
   = render 'shared/related_topics'
   .pagination-and-logo
-    = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+    = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
     = search_results_by_logo(search.are_results_by_bing?)
