@@ -748,9 +748,9 @@ Feature: Affiliate Search
       | display_name | name   | contact_email | contact_name | locale | domains | affiliate_form_agencies |
       | usagov site  | usagov | aff@bar.gov   | John Bar     | en     | .gov    | ssa.gov,uscis.gov       |
     And the following IndexedDocuments exist for en uscis.gov form I-485:
-      | title                | description                 | url                               | affiliate | last_crawl_status |
-      | a doc on I-485       | some odie desc. on I-485    | http://answers.usa.gov/page1.html | usagov    | OK                |
-      | another doc on I-485 | another odie desc. on I-485 | http://answers.usa.gov/page2.html | usagov    | OK                |
+      | title                     | description                 | url                               | affiliate | last_crawl_status |
+      | USA.gov: * a doc on I-485 | some odie desc. on I-485    | http://answers.usa.gov/page1.html | usagov    | OK                |
+      | not ok doc on I-485       | another odie desc. on I-485 | http://answers.usa.gov/page2.html | usagov    | not OK            |
     When I am on usagov's search page
     And I fill in "query" with "I-485"
     And I press "Search"
@@ -766,6 +766,8 @@ Feature: Affiliate Search
     And I should see "Instructions for Form I-485 [PDF, 253KB]" in the form govbox
     And I should see a link to "Form G-1145, E-Notification of Application/Petition Acceptance" with url for "http://www.uscis.gov/files/form/g-1145.pdf" in the form govbox
     And I should see "Form G-1145, E-Notification of Application/Petition Acceptance [PDF, 1KB]" in the form govbox
+    And I should see a link to "USA.gov: a doc on I-485" with url for "http://answers.usa.gov/page1.html"
+    And I should not see a link to "not ok doc on I-485"
 
     When I fill in "query" with "supplement A I-485"
     And I press "Search"

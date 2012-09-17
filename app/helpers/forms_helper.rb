@@ -36,6 +36,10 @@ module FormsHelper
     content.join("\n").html_safe
   end
 
+  def render_form_faq_link(faq)
+    link_to(faq.title.gsub(/\s+\*\s+/, ' '), faq.url).html_safe
+  end
+
   def render_form_description(hit, form, search)
     if hit.present?
       truncate_html_prose_on_words(highlight_hit(hit, :description).html_safe, 255).html_safe

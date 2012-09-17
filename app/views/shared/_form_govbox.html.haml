@@ -21,7 +21,7 @@
             .faqs
               %h3 FAQs
               %ul
-                - result.indexed_documents.each do |odie_doc|
-                  %li= link_to odie_doc.title, odie_doc.url
+                - result.indexed_documents.ok.each do |odie_doc|
+                  %li= render_form_faq_link odie_doc
         - if result.description.present?
           %p.description= render_form_description(hit, result, @search)

@@ -25,6 +25,18 @@ class GsaForm < FormImporter
     end
   end
 
+  def parse_landing_page(landing_page_url)
+    tries = 0
+    begin
+      tries += 1
+      Nokogiri::HTML(open(landing_page_url).read)
+    rescue => error
+      retry if tries < 3
+      Rails.logger.warn "GsaForm#parse_landing_page: #{error.to_s}"
+      raise error
+    end
+  end
+
   private
 
   def import_form(form_hash)
@@ -59,7 +71,7 @@ class GsaForm < FormImporter
   end
 
   def scrape_links(form)
-    doc = Nokogiri::HTML(open(form.landing_page_url).read)
+    doc = parse_landing_page(form.landing_page_url)
     downloadable_list = doc.css('#formsDownloads li strong') rescue nil
     links = []
     downloadable_list.each do |item|

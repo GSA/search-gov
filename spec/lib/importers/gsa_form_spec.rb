@@ -191,4 +191,31 @@ describe GsaForm do
       end
     end
   end
+
+  describe '#parse_landing_page' do
+    let(:landing_page_url) { 'http://www.gsa.gov/portal/forms/download/113958'.freeze }
+    let!(:form1_landing_page) { File.read(Rails.root.to_s + '/spec/fixtures/html/forms/gsa/GSA1241.html') }
+    let(:form1) { mock(File, :read => form1_landing_page) }
+
+    context 'when there is an error while parse landing page' do
+      before do
+        gsa_form.should_receive(:open).with(landing_page_url).and_raise
+        gsa_form.should_receive(:open).with(landing_page_url).and_return(form1)
+        Rails.logger.should_not_receive(:warn)
+      end
+
+      it 'should return Nokogiri HTML document' do
+        gsa_form.parse_landing_page(landing_page_url).should be_kind_of(Nokogiri::HTML::Document)
+      end
+    end
+
+    context 'when all attempts to parse landing page failed' do
+      before do
+        gsa_form.stub(:open).with(landing_page_url).and_raise
+        Rails.logger.should_receive(:warn)
+      end
+
+      specify { lambda { gsa_form.parse_landing_page(landing_page_url) }.should raise_error }
+    end
+  end
 end
