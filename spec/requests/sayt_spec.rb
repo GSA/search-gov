@@ -5,7 +5,7 @@ describe SaytController do
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:phrases) { ['lorem ipsum dolor sit amet', 'lorem ipsum sic transit gloria'].freeze }
-  let(:phrases_in_json) { phrases.to_json.freeze }
+  let(:phrases_in_json) { phrases.map{|phrase| {:data => nil, :label => phrase, :section => 'default'}}.to_json.freeze }
 
   before do
     SaytController.class_eval { def is_mobile_device?; false; end }
@@ -16,8 +16,8 @@ describe SaytController do
   end
 
   it 'should sanitize query' do
-    SaytSuggestion.should_receive(:like_by_affiliate_id).
-        with(affiliate.id.to_s, 'foo bar', 15).
+    SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+        with(affiliate.id, 'foo bar', 10).
         and_return([])
     get '/sayt', :q => 'foo  \\  bar', :callback => 'jsonp1276290049647', :aid => affiliate.id
   end
@@ -33,9 +33,9 @@ describe SaytController do
   end
 
   context 'if name and query params are present' do
-    it 'should search for 15 suggestions' do
-      SaytSuggestion.should_receive(:like_by_affiliate_name).
-          with(affiliate.name, 'foo bar', 15).
+    it 'should search for 10 suggestions' do
+      SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+          with(affiliate.id, 'foo bar', 10).
           and_return([])
       get '/sayt', :name => affiliate.name, :q => 'foo \\ bar', :callback => 'jsonp1234'
     end
@@ -49,8 +49,8 @@ describe SaytController do
       before { SaytController.class_eval { def is_mobile_device?; true; end } }
 
       it 'should search for 6 suggestions' do
-        SaytSuggestion.should_receive(:like_by_affiliate_name).
-            with(affiliate.name, 'foo bar', 6).
+        SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+            with(affiliate.id, 'foo bar', 6).
             and_return([])
         get '/sayt', :name => affiliate.name, :q => 'foo \\ bar', :callback => 'jsonp1234'
       end
@@ -58,9 +58,9 @@ describe SaytController do
   end
 
   context 'if aid and query params are present' do
-    it 'should search for 15 suggestions' do
-      SaytSuggestion.should_receive(:like_by_affiliate_id).
-          with(affiliate.id.to_s, 'foo bar', 15).
+    it 'should search for 10 suggestions' do
+      SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+          with(affiliate.id, 'foo bar', 10).
           and_return([])
       get '/sayt', :aid => affiliate.id, :q => 'foo \\ bar', :callback => 'jsonp1234'
     end
@@ -74,8 +74,8 @@ describe SaytController do
       before { SaytController.class_eval { def is_mobile_device?; true; end } }
 
       it 'should search for 6 suggestions' do
-        SaytSuggestion.should_receive(:like_by_affiliate_id).
-            with(affiliate.id.to_s, 'foo bar', 6).
+        SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+            with(affiliate.id, 'foo bar', 6).
             and_return([])
         get '/sayt', :aid => affiliate.id, :q => 'foo \\ bar', :callback => 'jsonp1234'
       end
