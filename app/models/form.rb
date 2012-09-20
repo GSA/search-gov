@@ -1,6 +1,6 @@
 class Form < ActiveRecord::Base
-  DETAIL_FIELD_NAMES = [:description, :file_size, :number_of_pages, :landing_page_url, :revision_date, :links].freeze
-  attr_accessible :form_agency_id, :number, :url, :file_type, :verified, :abstract, :title
+  DETAIL_FIELD_NAMES = [:description, :file_size, :number_of_pages, :revision_date, :links].freeze
+  attr_accessible :form_agency_id, :number, :url, :file_type, :verified, :abstract, :title, :landing_page_url
   validates_presence_of :form_agency_id, :number, :url, :file_type, :title
   serialize :details, Hash
   belongs_to :form_agency
@@ -15,6 +15,18 @@ class Form < ActiveRecord::Base
       send(:details).send("[]=", name, arg)
     end
   end
+
+  scope :has_landing_page, where("landing_page_url IS NOT NULL")
+
+  scope :sayt_for, lambda { |query, limit|
+    select(%w(title landing_page_url number)).
+    where('title LIKE :first OR title LIKE :word OR number LIKE :first OR number LIKE :word', :first => "#{query}%", :word => "% #{query}%").
+    where("ISNULL(expiration_date) OR expiration_date >= DATE(NOW())").
+    order('number, title ASC').
+    limit(limit)
+  }
+
+  scope :verified, where(:verified => true)
 
   searchable do
     integer :form_agency_id
@@ -58,5 +70,9 @@ class Form < ActiveRecord::Base
         nil
       end
     end
+  end
+
+  def number_and_title
+    "#{number}: #{title}"
   end
 end

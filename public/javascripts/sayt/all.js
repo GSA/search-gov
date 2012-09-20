@@ -102,14 +102,7 @@ usasearch.jquery(document).ready(function() {
       jQuery.ajax({
         url: saytUrl + "q=" + encodeURIComponent(request.term),
         dataType: "jsonp",
-        success: function(data) {
-          response(jQuery.map(data, function(item) {
-            return {
-              label: item,
-              value: item
-            }
-          }));
-        }
+        success: response
       });
     },
     minLength: 2,

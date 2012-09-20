@@ -6,11 +6,21 @@ function monkeyPatchAutocomplete() {
   var oldFn = jQuery.ui.autocomplete.prototype._renderItem;
 
   jQuery.ui.autocomplete.prototype._renderItem = function(ul, item) {
-    var re = new RegExp("^" + this.term);
-    var t = item.label.replace(re, "<span style='color:#444444;font-weight:normal;'>" + this.term + "</span>");
+    var term;
+    if (item.data) {
+      // If it's a non-SaytSuggestion, highlight where the words start with a term
+      var re = new RegExp('\\b' + this.term, "i");
+      term = item.label.replace(re, function(match) {
+        return "<span style='color:#444444;font-weight:normal;'>" + match + "</span>";
+      });
+    } else {
+      // If it's an SaytSuggestion, only highlight the beginning of the term
+      var re = new RegExp("^" + this.term);
+      term = item.label.replace(re, "<span style='color:#444444;font-weight:normal;'>" + this.term + "</span>");
+    }
     return jQuery("<li></li>")
       .data("item.autocomplete", item)
-      .append("<a>" + t + "</a>")
+      .append("<a>" + term + "</a>")
       .appendTo(ul);
   };
 
@@ -59,7 +69,7 @@ jQuery(document).ready(function() {
   jQuery(".usagov-search-autocomplete").autocomplete({
     source: function(request, response) {
       jQuery.ajax({
-        url: usagov_sayt_url + "q=" + encodeURIComponent(request.term),
+        url: usagov_sayt_url + "q=" + encodeURIComponent(request.term) + "&extras=yes",
         dataType: "jsonp",
         success: function(data) {
           response(jQuery.map(data, function(item) {

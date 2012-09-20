@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DodForm do
-  before(:all) { FormAgency.destroy_all }
+  before(:each) { FormAgency.destroy_all }
   let(:rocis_data_path) { "#{Rails.root}/spec/fixtures/csv/forms/rocis_data.csv" }
   let(:dod_form) { DodForm.new(RocisData.new(rocis_data_path).to_hash) }
 

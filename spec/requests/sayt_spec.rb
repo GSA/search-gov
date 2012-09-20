@@ -96,4 +96,24 @@ describe SaytController do
     lambda { get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647', :aid => affiliate.id }.should_not raise_error
     lambda { get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647', :aid => affiliate.id }.should_not raise_error
   end
+
+  context 'non-SaytSuggestion content' do
+    it 'should not be included if params[:extras] is not present' do
+      SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+          with(affiliate.id, 'foo bar', 10).
+          and_return([])
+      BoostedContent.should_not_receive(:sayt_for)
+      Form.should_not_receive(:sayt_for)
+      get '/sayt', :aid => affiliate.id, :q => 'foo bar', :callback => 'ohai'
+    end
+
+    it 'should be included if params[:extras] is present' do
+      SaytSuggestion.should_receive(:fetch_by_affiliate_id).
+          with(affiliate.id, 'foo bar', 10).
+          and_return([])
+      BoostedContent.should_receive(:sayt_for).with('foo bar', affiliate.id, 2)
+      Form.should_receive(:sayt_for).with('foo bar', 2)
+      get '/sayt', :aid => affiliate.id, :q => 'foo bar', :callback => 'ohai', :extras => 'yuparino'
+    end
+  end
 end

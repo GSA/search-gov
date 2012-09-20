@@ -473,6 +473,7 @@ ActiveRecord::Schema.define(:version => 20121005170854) do
     t.string   "subfunction"
     t.string   "public_code"
     t.string   "title",                              :null => false
+    t.string   "landing_page_url"
   end
 
   add_index "forms", ["form_agency_id"], :name => "index_forms_on_form_agency_id"

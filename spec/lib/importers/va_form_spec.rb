@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe VaForm do
-  before(:all) { FormAgency.destroy_all }
+  before(:each) { FormAgency.destroy_all }
   let(:rocis_data_path) { "#{Rails.root}/spec/fixtures/csv/forms/rocis_data.csv" }
   let(:va_form) { VaForm.new(RocisData.new(rocis_data_path).to_hash) }
 

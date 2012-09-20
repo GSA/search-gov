@@ -316,6 +316,12 @@
     float: left
     .ui-menu
       margin-top: -3px
+    .ui-menu-item a, .ui-menu-item-separator
+      text-decoration: none
+      display: block
+      padding: .2em .4em
+      line-height: 1.5
+      zoom: 1
     .ui-menu-item
       margin: 0
       padding: 0
@@ -324,14 +330,14 @@
       clear: left
       width: 100%
       a
-        text-decoration: none
-        display: block
-        padding: .2em .4em
-        line-height: 1.5
-        zoom: 1
         &.ui-state-hover, &.ui-state-active
           font-weight: normal
           margin: -1px
+    .ui-menu-item-separator
+      border-bottom: 1px solid #aaaaaa
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: pre
 
 /* custom css for SAYT
 
