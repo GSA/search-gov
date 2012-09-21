@@ -98,7 +98,7 @@ jQuery(document).ready(function() {
         .find('img')
         .hide()
         .parent()
-        .find('div').html(opts.loading.finishedMsg).animate({ opacity:1 }, 1000);
+        .find('div').html(opts.loading.finishedMsg).css('text-align', 'center').animate({ opacity: 1 }, 1000);
 
     // user provided callback when done
     opts.errorCallback.call($(opts.contentSelector)[0], 'done');
@@ -139,6 +139,11 @@ jQuery(document).ready(function() {
 
         if (children.length == 0) {
           return this._error('end');
+        } else {
+          var totalRegex = /(\d+,?\d+)+\s+(results|resultados)$/;
+          var updatedTotal = $('#summary', responseText).text().match(totalRegex).slice(0, 1);
+          var currentTotal = $('#summary').text().match(totalRegex).slice(0, 1);
+          $('#summary').text($('#summary').text().replace(new RegExp(currentTotal), updatedTotal));
         }
 
         $(logos).each(function() {
