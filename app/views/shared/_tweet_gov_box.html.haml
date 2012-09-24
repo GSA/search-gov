@@ -1,9 +1,15 @@
 = render_govbox(:right) do
   #twitter_govbox
     %h3.alt
-      = t(:recent_tweet_for, :query => search.query)
+      - if search.tweets.hits(:verify => true).size == 1
+        = t(:recent_tweet_for, :query => search.query)
+      - else
+        = t(:recent_tweets_for, :query => search.query)
       %span.recommended-by
         = t :by
         = @affiliate.display_name
-    - search.tweets.hits(:verify => true).each do |tweet|
-      = render :partial => 'shared/tweet', :object => tweet
+    - search.tweets.hits(:verify => true).each_with_index do |tweet, index|
+      .tweet
+        = render_twitter_profile(tweet.instance.twitter_profile, search.query, index)
+        .tweet-text= auto_link(highlight_hit(tweet, :tweet_text), search.query, index).html_safe
+        .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet

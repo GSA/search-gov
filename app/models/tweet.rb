@@ -1,7 +1,11 @@
+require 'net/http'
+require 'uri'
+
 class Tweet < ActiveRecord::Base
+  before_save :convert_tco_links
   belongs_to :twitter_profile, :primary_key => :twitter_id
   validates_presence_of :tweet_id, :tweet_text, :published_at, :twitter_profile_id
-  validates_uniqueness_of :tweet_id
+  # validates_uniqueness_of :tweet_id
   scope :recent, :order => 'published_at DESC', :limit => 10
 
   searchable do
@@ -24,6 +28,15 @@ class Tweet < ActiveRecord::Base
         order_by(:published_at, :desc)
         paginate :page => page, :per_page => per_page
       end
+    end
+  end
+
+  def convert_tco_links
+    while link = tweet_text.match(/http[s]{0,1}:\/\/t\.co\/[A-Za-z0-9]+/)
+      uri = URI.parse(link.to_s)
+      request = Net::HTTP::Head.new(uri.path)
+      response = Net::HTTP.start(uri.hostname, uri.port) {|http| http.request(request) }
+      self.tweet_text = tweet_text.gsub(link.to_s, response['location'])
     end
   end
 

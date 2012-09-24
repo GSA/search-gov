@@ -80,4 +80,31 @@ describe Tweet do
       @tweet.link_to_tweet.should == "http://twitter.com/USASearch/status/123456"
     end
   end
+
+  describe "with t.co links" do
+    it "should convert a t.co url to a full URL" do
+      # I happen to know this t.co link will resolve to a meetup page
+      tweet = Tweet.create!(:tweet_text => "http://t.co/vuvfH6To", :tweet_id => 123456, :published_at => Time.now, :twitter_profile_id => 12345)
+      tweet.tweet_text.should == "http://www.meetup.com/bmore-on-rails/events/78736452/"
+    end
+
+    it "should convert many and various t.co urls to full URLs" do
+      tweet = Tweet.create!(:tweet_text => "Ohai, I'm a toot link: http://t.co/vuvfH6To, and some other stuff http://t.co/zlVONdxi!", :tweet_id => 123456, :published_at => Time.now, :twitter_profile_id => 12345)
+      tweet.tweet_text.should == "Ohai, I'm a toot link: http://www.meetup.com/bmore-on-rails/events/78736452/, and some other stuff http://www.youtube.com/watch?v=3g4ekwTd6Ig!"
+    end
+
+    it "should efficiently convert the same URL appearing more than once" do
+      tweet = Tweet.new(:tweet_text => "link 1: http://t.co/vuvfH6To, link 2: http://t.co/vuvfH6To, link 3: http://t.co/vuvfH6To", :tweet_id => 123456, :published_at => Time.now, :twitter_profile_id => 12345)
+      Net::HTTP.should_receive(:start).with("t.co", 80).once.and_return({'location' => 'http://www.meetup.com/bmore-on-rails/events/78736452/'})
+      tweet.save!
+      tweet.tweet_text.should == "link 1: http://www.meetup.com/bmore-on-rails/events/78736452/, link 2: http://www.meetup.com/bmore-on-rails/events/78736452/, link 3: http://www.meetup.com/bmore-on-rails/events/78736452/"
+    end
+
+    it "should not mess with non-t.co links" do
+      tweet = Tweet.new(:tweet_text => "I'm an imposter! http://ted.co/vuvfH6To! Yaaaaay!", :tweet_id => 123456, :published_at => Time.now, :twitter_profile_id => 12345)
+      Net::HTTP.should_not_receive(:start)
+      tweet.save!
+      tweet.tweet_text.should == "I'm an imposter! http://ted.co/vuvfH6To! Yaaaaay!"
+    end
+  end
 end

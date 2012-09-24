@@ -21,7 +21,6 @@ class BoostedContent < ActiveRecord::Base
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
   scope :sayt_for, lambda { |query, affiliate_id, limit|
-    clause = ' AND ) AND publish_end_on >= DATE(NOW())'
     select(%w(title url)).
     where('publish_start_on <= DATE(NOW()) AND (title LIKE ? OR title LIKE ?) AND affiliate_id = ?', "#{query}%", "% #{query}%", affiliate_id).
     where('publish_end_on >= DATE(NOW()) OR ISNULL(publish_end_on)').

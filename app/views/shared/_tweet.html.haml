@@ -1,5 +1,0 @@
-.tweet
-  = render_twitter_profile(tweet.instance.twitter_profile)
-  .tweet-text= highlight_hit(tweet, :tweet_text).html_safe
-  .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet
-

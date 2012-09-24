@@ -165,6 +165,10 @@ module SearchHelper
     raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
+  def tweet_link_with_click_tracking(html_safe_text, url, affiliate, query, position, vertical)
+    link_with_click_tracking(html_safe_text, url, affiliate, query, position, "TWEET", vertical)
+  end
+
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)
     %Q[onmousedown="#{onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical)}"]
   end

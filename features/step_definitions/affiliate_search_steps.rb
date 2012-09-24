@@ -204,3 +204,11 @@ Then /^I should see a link to "(.*?)" with sanitized "(.*?)" query$/ do |link_ti
   query_hash = CGI::parse(parsed_url.query)
   query_hash['query'].should == ["#{query}"]
 end
+
+Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
+  page.should have_link(text, :href => url)
+end
+
+Then /^a Tweet click should be logged/ do
+  Rails.logger.should_receive(:info).with("[Click] ")
+end
