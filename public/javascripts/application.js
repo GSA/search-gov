@@ -211,6 +211,11 @@ jQuery(document).ready(function() {
     callback(this,data);
   };
 
+  function finishedMessage() {
+    var backToTop = jQuery('body.es').length == 1 ? 'Volver al inicio' : 'Back to top';
+    return '<a href="#main_content">'.concat(backToTop, '</a>');
+  }
+
   jQuery('#results').infinitescroll( {
     navSelector: '#usasearch_pagination',
     nextSelector: '#usasearch_pagination a.next_page',
@@ -218,7 +223,7 @@ jQuery(document).ready(function() {
     loading: {
       img: '/images/infinite_scroll/ajax_loader.gif',
       msgText: '',
-      finishedMsg: '<a href="#main_content">Back to top</a>'
+      finishedMsg: finishedMessage()
     },
     state: {
       currPage: jQuery('#usasearch_pagination .current').text()

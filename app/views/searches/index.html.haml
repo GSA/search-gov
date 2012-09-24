@@ -4,7 +4,7 @@
   .summary-wrapper= render 'shared/results_summary', :affiliate => @affiliate, :search => @search, :search_options => @search_options, :search_vertical => @search_vertical
 #left_column
   = render 'shared/affiliate_vertical_navigation'
-%a#main_content
+%div#main_content{:name => 'main_content'}
 #results
   = render :partial => "shared/searchresults", :locals => { :search => @search }
 #right_column
