@@ -71,13 +71,13 @@ describe OdieSearch do
 
   describe "#cache_key" do
     before do
-      @dc = affiliate.document_collections.create!(:name => "whatevs")
-      @dc.url_prefixes.create!(:prefix => "http://www.usa.gov/docs/")
+      @dc = affiliate.document_collections.create!(:name => "whatevs",
+                                                   :url_prefixes_attributes => {'0' => { :prefix => 'http://www.usa.gov/docs/' } })
       @dc.navigation.update_attributes!(:is_active => true)
     end
 
     it "should output a key based on the query, affiliate id, doc collection, and page parameters" do
-      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :dc => @dc.id).cache_key.should == "element:#{affiliate.id}:4:#{@dc.id}"
+      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :document_collection => @dc).cache_key.should == "element:#{affiliate.id}:4:#{@dc.id}"
       OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key.should == "element:#{affiliate.id}:4:"
     end
   end

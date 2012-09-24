@@ -13,7 +13,7 @@
         :escaped
             #{render_embed_code_javascript(@affiliate)}
 
-  %h2 2. Sitemap
+  %h2 2. XML Sitemaps
   .sitemap-list
     %table
       %colgroup
@@ -24,7 +24,7 @@
           %th{ :colspan => 2 }
             = link_to("View all", affiliate_sitemaps_path(@affiliate), :class => 'header-link') unless @sitemaps.empty?
             = link_to "Add new Sitemap", new_affiliate_sitemap_path(@affiliate), :class => 'add-link last'
-            %span Sitemaps (#{@sitemaps.total_entries})
+            %span XML Sitemaps (#{@sitemaps.total_entries})
       = render :partial => 'affiliates/sitemaps/list'
 
   %h2 3. Specific URLs

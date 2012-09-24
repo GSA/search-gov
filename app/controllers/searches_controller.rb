@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
   end
 
   def docs
-    @search = OdieSearch.new(@search_options)
+    @search = @search_options[:document_collection] ? SiteSearch.new(@search_options) : WebSearch.new(@search_options)
     @search.run
     @form_path = docs_search_path
     @page_title = @search.query
@@ -127,6 +127,8 @@ class SearchesController < ApplicationController
 
   def set_docs_search_options
     @search_options = search_options_from_params(@affiliate, params)
+    document_collection = @affiliate.document_collections.navigable_only.find_by_id(@search_options[:dc])
+    @search_options.merge!(:document_collection => document_collection)
   end
 
   def set_news_search_options

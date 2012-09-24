@@ -35,7 +35,7 @@ module NavigationHelpers
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" docs search page$/
-      docs_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).document_collections.find_by_name($2))
+      docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2))
     when /the timeline page for "([^\"]*)"$/
       query_timeline_path($1)
     when /the affiliate admin home page/

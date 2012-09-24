@@ -83,8 +83,10 @@ describe DailyLeftNavStat do
         @affiliate = affiliates(:power_affiliate)
         @date1 = Date.parse("2012-02-27")
         @date2 = Date.parse("2012-02-28")
-        col1 = @affiliate.document_collections.create!(:name => "Col 1")
-        col2 = @affiliate.document_collections.create!(:name => "Col 2")
+        col1 = @affiliate.document_collections.create!(:name => "Col 1",
+                                                       :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/' } })
+        col2 = @affiliate.document_collections.create!(:name => "Col 2",
+                                                       :url_prefixes_attributes => { '0' => { :prefix => 'http://www.agency.gov/' } })
         rss1 = @affiliate.rss_feeds.create!(:name => "Feed 1", :rss_feed_urls_attributes => { '0' => { :url => 'http://www.whitehouse.gov/feed/blog/white-house' } })
         rss2 = @affiliate.rss_feeds.create!(:name => "Feed 2", :rss_feed_urls_attributes => { '0' => { :url => 'http://www.whitehouse.gov/feed/blog/white-house' } })
         @affiliate.daily_left_nav_stats.build(:day => @date1, :search_type => "/search", :total => 999)

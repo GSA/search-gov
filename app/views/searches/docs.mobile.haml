@@ -4,23 +4,4 @@
   = hidden_field_tag :dc, params[:dc] if params[:dc]
   = render :partial => 'shared/search_box'
 
-- if @search.results.present?
-  %hr.topresults
-  .group
-    - @search.hits.each_with_index do |hit, index|
-      .row{:id => "indexeddocresult#{index+1}"}
-        .searchResult
-          .title
-            = display_result_extname_prefix(hit.instance.url)
-            = link_with_click_tracking(truncate_html_prose_on_words(highlight_hit(hit, :title),65).html_safe, hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
-          .content= highlight_hit(hit, :description).html_safe
-          .links= link_with_click_tracking(h(shorten_url(hit.instance.url)), hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
-      - unless index == @search.hits.length - 1 then
-        %hr
-
-  = render_mobile_pagination_and_logo(@search.results, false)
-
-- elsif @search.error_message
-  %p.noresults #{@search.error_message}
-- else
-  = no_results_for @search.query
+= render :partial => 'shared/searchresults', :locals => { :search => @search }

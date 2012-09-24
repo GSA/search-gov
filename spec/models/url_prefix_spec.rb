@@ -16,6 +16,7 @@ describe UrlPrefix do
     it { should validate_uniqueness_of(:prefix).scoped_to(:document_collection_id) }
     it { should_not allow_value("foogov").for(:prefix)}
     it { should allow_value("http://www.foo.gov/").for(:prefix)}
+    it { should allow_value("https://www.foo.gov/").for(:prefix)}
     it { should allow_value("http://foo.gov/subfolder/").for(:prefix)}
 
     it "should cap prefix length at 100 characters" do
@@ -46,6 +47,14 @@ describe UrlPrefix do
     context "when submitted URL prefix has leading/trailing whitespace" do
       it "should trim it" do
         UrlPrefix.create!(@valid_attributes.merge(:prefix=> "    www.foo.gov   ")).prefix.should == "http://www.foo.gov/"
+      end
+    end
+
+    context 'when submitted URL prefix has path that is more than two directories deep' do
+      it 'should not be valid' do
+        prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => 'www.foo.gov/_Blog/2012/09'))
+        prefix.should_not be_valid
+        prefix.errors[:base].first.should =~ /two directories/
       end
     end
   end

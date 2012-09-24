@@ -8,12 +8,6 @@
       = render 'shared/blank_search_results', :search => @search
 #left_column
   = render "shared/affiliate_vertical_navigation"
-%a#main_content
+%div#main_content{:name => 'main_content'}
 #results
-  %a{:name => "content"}
-  - if @search.results.present?
-    - @search.hits.each_with_index do |hit, index|
-      = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => true
-    .pagination-and-logo
-      = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-      = search_results_by_logo(false)
+  = render :partial => "shared/searchresults", :locals => { :search => @search }

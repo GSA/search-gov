@@ -21,6 +21,7 @@
       = (javascript_include_tag "jquery/jquery.targettop.js").html_safe
       = (javascript_include_tag "affiliates.embedded.js").html_safe
     = (javascript_include_tag "jquery/jquery.infinitescroll.min.js").html_safe
+    = (javascript_include_tag 'affiliates.infinitescroll.js').html_safe
     - unless @affiliate.nested_header_footer_css.blank?
       :css
         #{@affiliate.nested_header_footer_css}

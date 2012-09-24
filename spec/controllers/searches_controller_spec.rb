@@ -332,93 +332,62 @@ describe SearchesController do
   end
 
   describe "#docs" do
-    render_views
-    before do
-      IndexedDocument.delete_all
-      @affiliate = affiliates(:basic_affiliate)
-      @affiliate.features << features(:hosted_sitemaps)
-      @affiliate.site_domains.create!(:domain => 'affiliate.gov')
-      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-      affiliates(:power_affiliate).site_domains.create!(:domain => 'otheraffiliate.gov')
-      affiliates(:power_affiliate).indexed_documents << IndexedDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-      IndexedDocument.reindex
-      Sunspot.commit
-    end
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:dc) { mock_model(DocumentCollection) }
 
-    it "should render the template" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      response.should render_template 'docs'
-      response.should render_template 'layouts/affiliate'
-    end
-
-    it "should assign various variables" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      assigns[:page_title].should =~ /pdf/
-      assigns[:search_vertical].should == :docs
-      assigns[:form_path].should == docs_search_path
-      assigns[:search].should_not be_nil
-    end
-
-    it "should default to page 1" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      assigns[:search_options][:page].should == 1
-    end
-
-    it "should find PDF files that match the query for the affiliate" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      assigns[:search].total.should == 2
-      assigns[:search].hits.first.instance.url.should_not == "http://otheraffiliate.gov/1.pdf"
-      assigns[:search].hits.last.instance.url.should_not == "http://otheraffiliate.gov/1.pdf"
-    end
-
-    it "should output a page that summarizes the results" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      response.body.should contain("2 results")
-    end
-
-    it "should have a 'Results by USASearch' logo" do
-      get :docs, :query => "pdf", :affiliate => @affiliate.name
-      response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
-      response.should have_selector("a", :href => 'http://usasearch.howto.gov')
-    end
-
-    context "when locale is spanish" do
-      before do
-        @affiliate.locale = 'es'
-        @affiliate.save!
-      end
-
-      it "should have a 'Results by USASearch' logo" do
-        get :docs, :query => "pdf", :affiliate => @affiliate.name
-        response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
-        response.should have_selector("a", :href => 'http://usasearch.howto.gov')
-      end
-    end
-
-    context "when the page number is specified" do
-      before do
-        get :docs, :query => "pdf", :affiliate => @affiliate.name, :page => 2
-      end
-
-      it "should page the results" do
-        assigns[:search_options][:page].should == 2
-        assigns[:search].total.should == 2
-        assigns[:search].results.should be_empty
-      end
-    end
-
-    context "when query is blank" do
-      let(:affiliate) { affiliates(:basic_affiliate) }
+    context 'when DocumentCollection exists' do
+      let(:site_search) { mock(SiteSearch, :query => 'gov') }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        affiliate.should_receive(:build_search_results_page_title).and_return('docs title')
-        get :docs, :affiliate => affiliate.name, :dc => '100'
+        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(dc)
+        SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
+        site_search.should_receive(:run)
+        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
       end
 
-      it { should assign_to(:search).with_kind_of(OdieSearch) }
-      it { should assign_to(:page_title).with('docs title') }
+      it { should assign_to(:affiliate).with(affiliate) }
+
+      it 'should assign various variables' do
+        assigns[:page_title].should =~ /gov/
+        assigns[:search_vertical].should == :docs
+        assigns[:form_path].should == docs_search_path
+      end
+
+      it 'should default to page 1' do
+        assigns[:search_options][:page].should == 1
+      end
+
+      it { should render_template(:docs) }
+    end
+
+    context 'when page number is specified' do
+      let(:site_search) { mock(SiteSearch, :query => 'pdf') }
+
+      before do
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(dc)
+        SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
+        site_search.should_receive(:run)
+        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100, :page => 3
+      end
+
+      specify { assigns[:search_options][:page].should == 3 }
+    end
+
+    context 'when DocumentCollection does not exist' do
+      let(:web_search) { mock(WebSearch, :query => 'gov') }
+
+      before do
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(nil)
+        WebSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(web_search)
+        web_search.should_receive(:run)
+        SiteSearch.should_not_receive(:new)
+        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
     end
   end
 
