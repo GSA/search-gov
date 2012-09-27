@@ -53,18 +53,6 @@ describe SiteSearch do
       end
     end
 
-    context 'when the affiliate has scope_ids' do
-      before { affiliate.update_attributes!(:scope_ids => 'usagov,usasearch') }
-
-      it 'should use the scope_ids' do
-        bing_search.should_receive(:query).
-            with(%r[^\(gov\) \(scopeid:usagov OR scopeid:usasearch OR site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
-                 anything(), anything(), anything(), anything(), anything()).
-            and_return('')
-        search.run
-      end
-    end
-
     context 'when the affiliate has scope_keywords' do
       before { affiliate.update_attributes!(:scope_keywords => 'patents,america,flying inventions') }
 
