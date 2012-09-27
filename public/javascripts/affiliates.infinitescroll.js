@@ -140,7 +140,7 @@ jQuery(document).ready(function() {
     behavior: 'usasearch'
   });
 
-  if ((jQuery('#usasearch_pagination').length > 0) && ($(document).height() <= $(window).height())) {
+  if ((jQuery('#usasearch_pagination').length > 0) && (jQuery('#results .searchresult').length < 10)) {
     jQuery('#results').infinitescroll('scroll');
   }
 });
