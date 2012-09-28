@@ -8,6 +8,8 @@ describe SiteDomainObserver do
     affiliate.features << features(:hosted_sitemaps)
     affiliate.site_domains.create!(:domain => "first.gov")
     affiliate.site_domains.create!(:domain => "second.gov")
+
+    BingSearch.stub(:search_for_url_in_bing).and_return(nil)
     affiliate.indexed_documents.create!(:url => "http://www.first.gov/")
     affiliate.indexed_documents.create!(:url => "http://www.second.gov/")
   end

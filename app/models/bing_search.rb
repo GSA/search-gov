@@ -36,7 +36,48 @@ class BingSearch
     end
   end
 
+  def self.search_for_url_in_bing(url)
+    candidate_urls = []
+    parsed_url = URI.parse(url)
+    parsed_url.fragment = nil
+    candidate_urls << parsed_url.to_s
+
+    parsed_url.query = nil
+    candidate_urls << parsed_url.to_s
+
+    candidate_urls.uniq.each do |candidate_url|
+      result = url_in_bing(candidate_url)
+      return result if result
+    end
+    nil
+  rescue Exception => e
+    Rails.logger.warn("Trouble determining if URL is in bing: #{e}")
+    nil
+  end
+
   protected
+
+  def self.url_in_bing(url)
+    normalized_url = normalized_url(url)
+
+    bing_url =  BingUrl.find_by_normalized_url(normalized_url)
+    return bing_url.normalized_url if bing_url
+
+    bing_search = BingSearch.new
+    response = bing_search.query(url, 'Web', 0, 10, false, 'off')
+    bing_results = bing_search.parse_bing_response(response)
+    if bing_results and bing_results.web and bing_results.web.total > 0 and bing_results.web.results.present?
+      result_urls = bing_results.web.results.collect { |r| r['Url'] }
+      result_urls.each do |result_url|
+        url_in_bing = normalized_url(result_url)
+        if normalized_url.to_s.downcase == url_in_bing.downcase
+          return url_in_bing
+        end
+      end
+    end
+    nil
+  rescue Exception
+  end
 
   def bing_api_url(query_string, query_sources, offset, count, enable_highlighting, filter_setting)
     params = [
@@ -49,5 +90,12 @@ class BingSearch
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
+  end
+
+  def self.normalized_url(url)
+    parsed_url = URI.parse(url)
+    parsed_url.path = parsed_url.path.empty? ? '/' : parsed_url.path
+    parsed_url.fragment = nil
+    parsed_url.to_s.gsub(%r[https?://(www\.)?]i, '')
   end
 end

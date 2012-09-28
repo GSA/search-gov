@@ -92,6 +92,7 @@ describe Sitemap do
       @sitemap = Sitemap.new(@valid_attributes)
       @sitemap.stub!(:is_valid_sitemap?).and_return true
       @sitemap.affiliate.features << features(:hosted_sitemaps)
+      BingSearch.stub(:search_for_url_in_bing).and_return(nil)
     end
 
     context "when the sitemap is a valid sitemap" do

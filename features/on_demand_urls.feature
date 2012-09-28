@@ -68,6 +68,24 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I follow "View all" in the previously crawled URL list
     Then I should see "new.aff.gov/page.html"
 
+  Scenario: Submitting URL that already exists in Bing
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains                       |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | answers.usa.gov,ip.sandia.gov |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs & Sitemaps"
+    And I follow "Add new URL"
+    And I fill in "URL" with "https://ip.sandia.gov/technology.do/techID=73"
+    And I press "Add"
+    Then I should see "URL already exists in the Bing index"
+    When I fill in "URL" with "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
+    And I press "Add"
+    Then I should see "URL already exists in the Bing index"
+    When I fill in "URL" with "http://www.whitehouse.gov/blog/issues/women"
+    And I press "Add"
+    Then I should see "URL already exists in the Bing index"
+
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |

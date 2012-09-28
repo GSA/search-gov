@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913203210) do
+ActiveRecord::Schema.define(:version => 20120927005505) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -159,6 +159,15 @@ ActiveRecord::Schema.define(:version => 20120913203210) do
   end
 
   add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
+
+  create_table "bing_urls", :force => true do |t|
+    t.string   "normalized_url", :limit => 2000, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "bing_urls", ["normalized_url"], :name => "index_bing_urls_on_normalized_url", :length => {"normalized_url"=>255}
+  add_index "bing_urls", ["updated_at"], :name => "index_bing_urls_on_updated_at"
 
   create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"

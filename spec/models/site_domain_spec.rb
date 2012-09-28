@@ -105,6 +105,7 @@ describe SiteDomain do
     let(:frontier) { %w(http://foo.gov/ http://foo.gov/page.html) }
 
     before do
+      BingSearch.stub(:search_for_url_in_bing).and_return(nil)
       affiliate.features << features(:hosted_sitemaps)
     end
 

@@ -21,7 +21,7 @@ describe IndexedDocument do
       :affiliate_id => affiliates(:basic_affiliate).id,
       :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8"
     }
-    WebSearch.stub!(:url_present_in_bing?).and_return false
+    BingSearch.stub(:search_for_url_in_bing).and_return(nil)
   end
 
   it { should validate_presence_of :url }
@@ -88,45 +88,29 @@ describe IndexedDocument do
     end
   end
 
-  context "when attributes are valid" do
-    let(:idoc) { IndexedDocument.create!(@valid_attributes) }
+  context "when a URL is a valid candidate for Odie indexing" do
+    let(:idoc) { IndexedDocument.new(@valid_attributes) }
+    let(:normalized_url) { 'nps.gov/index.htm' }
 
-    context "when affiliate is using hosted sitemap feature" do
+    context "when the URL exists in Bing" do
       before do
-        idoc.affiliate.features.destroy_all
-        idoc.affiliate.document_collections.destroy_all
-        idoc.affiliate.features << features(:hosted_sitemaps)
-      end
-
-      it "should be valid" do
-        idoc.should be_valid
-      end
-    end
-
-    context "when URL belongs to an affiliate's document collection" do
-      before do
-        idoc.affiliate.document_collections.destroy_all
-        dc = idoc.affiliate.document_collections.create!(:name => "sub2",
-                                                         :url_prefixes_attributes => { '0' => { :prefix => 'http://www.nps.gov/' } })
-        dc.url_prefixes.create!(:prefix => 'http://www.nps.gov/sub2/')
-        idoc.affiliate.features.destroy_all
-        idoc.url = 'http://www.nps.gov/sub2/should_work.html'
-      end
-
-      it "should be valid" do
-        idoc.should be_valid
-      end
-    end
-
-    context "when none of the above conditions are true" do
-      before do
-        idoc.affiliate.features.destroy_all
-        idoc.affiliate.document_collections.destroy_all
+        BingUrl.delete_all
+        BingSearch.should_receive(:search_for_url_in_bing).and_return(normalized_url)
       end
 
       it "should be invalid" do
-        idoc.should_not be_valid
-        idoc.errors.full_messages.first.should == IndexedDocument::ODIE_CANDIDACY
+        idoc.save.should be_false
+        idoc.errors.full_messages.first.should == IndexedDocument::BING_PRESENCE
+        BingUrl.find_by_normalized_url(normalized_url).should be_present
+      end
+    end
+
+    context "when the URL does not exist in Bing" do
+      before { BingUrl.delete_all }
+
+      it "should be valid" do
+        idoc.save!
+        BingUrl.find_by_normalized_url(normalized_url).should be_nil
       end
     end
   end

@@ -1713,6 +1713,7 @@ describe Affiliate do
 
   describe "#refresh_indexed_documents(scope)" do
     before do
+      BingSearch.stub(:search_for_url_in_bing).and_return(nil)
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.features << features(:hosted_sitemaps)
       @affiliate.fetch_concurrency = 2

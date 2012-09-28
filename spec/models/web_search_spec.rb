@@ -14,6 +14,7 @@ describe WebSearch do
     @bing_search = BingSearch.new
     BingSearch.stub!(:new).and_return @bing_search
     @generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_result_for_ira.json")
+    BingSearch.stub(:search_for_url_in_bing).and_return(nil)
   end
 
   describe "#run" do

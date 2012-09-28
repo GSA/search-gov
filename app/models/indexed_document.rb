@@ -17,7 +17,9 @@ class IndexedDocument < ActiveRecord::Base
   validate :url_is_parseable
   validate :site_domain_matches
   validate :robots_txt_compliance
-  validate :odie_candidacy
+  validate :bing_absence
+  after_rollback :create_or_update_bing_url
+  after_destroy :create_or_update_bing_url
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -38,7 +40,7 @@ class IndexedDocument < ActiveRecord::Base
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
-  ODIE_CANDIDACY = "URL must belong to a document collection or hosted sitemap. Set up your collection or hosted sitemap first and then upload the URL."
+  BING_PRESENCE = "URL already exists in the Bing index"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -337,10 +339,10 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
-  def odie_candidacy
+  def bing_absence
     return unless self.affiliate.present?
-    errors.add(:base, ODIE_CANDIDACY) unless affiliate.features.exists?(:internal_name=>'hosted_sitemaps') or
-      affiliate.url_prefixes.where("? like concat(prefix,'%')", url).present?
+    @url_in_bing = BingSearch.search_for_url_in_bing(url)
+    errors.add(:base, BING_PRESENCE) if @url_in_bing.present?
   end
 
   def url_is_parseable
@@ -364,4 +366,10 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
+  def create_or_update_bing_url
+    if @url_in_bing and errors[:base].include?(BING_PRESENCE)
+      bing_url = BingUrl.first_or_initialize(:normalized_url => @url_in_bing)
+      bing_url.new_record? ? bing_url.save! : bing_url.touch
+    end
+  end
 end
