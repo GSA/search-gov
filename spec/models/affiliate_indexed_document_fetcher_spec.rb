@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_id, scope)" do
-  fixtures :affiliates, :features
+  fixtures :affiliates, :features, :site_domains
   before do
     IndexedDocument.destroy_all
     @affiliate = affiliates(:basic_affiliate)

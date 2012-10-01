@@ -124,11 +124,11 @@ describe NavigationsHelper do
       end
 
       context 'when doing search on a specific document collection' do
-        let(:search) { mock(OdieSearch) }
+        let(:search) { mock(SiteSearch) }
 
         before do
-          search.should_receive(:instance_of?).at_least(:once) { |arg| arg == OdieSearch }
-          search.should_receive(:is_a?).at_least(:once) { |arg| arg == OdieSearch }
+          search.should_receive(:instance_of?).at_least(:once) { |arg| arg == SiteSearch }
+          search.should_receive(:is_a?).at_least(:once) { |arg| arg == SiteSearch }
           search.should_receive(:document_collection).and_return(document_collection)
         end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
-  fixtures :affiliates, :features
+  fixtures :affiliates, :features, :site_domains
 
   let(:aff) { affiliates(:basic_affiliate) }
   before do

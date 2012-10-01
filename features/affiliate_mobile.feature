@@ -98,15 +98,16 @@ Feature: Mobile Search for Affiliate
     And the following site domains exist for the affiliate aff.gov:
       | domain         | site_name      |
       | aff.gov        | Agency Website |
-    And the following IndexedDocuments exist:
-      | title                | description                                | url                                          | affiliate | last_crawled_at | last_crawl_status |
-      | Space Suit Evolution | This is another document on space suit     | http://www.aff.gov/topics/space-suit.html    | aff.gov   | 11/02/2011      | OK                |
-      | Space First moonwalk | This is another document on space moonwalk | http://www.aff.gov/topics/space-moonwalk.pdf | aff.gov   | 11/02/2011      | OK                |
-    And there are 20 crawled IndexedDocuments for "aff.gov"
     And affiliate "aff.gov" has the following document collections:
-      | name   | prefixes                   | is_navigable |
-      | Topics | http://www.aff.gov/topics/ | true         |
-    When I am on aff.gov's docs search page
+      | name   | prefixes                                           | is_navigable |
+      | Topics | http://aff.gov/crawled/,http://www.aff.gov/topics/ | true         |
+    And the following IndexedDocuments exist:
+      | title                | description                                | url                                            | affiliate | last_crawled_at | last_crawl_status |
+      | Space Suit Evolution | This is another document on space suit     | http://www.aff.gov/topics/space-suit.html      | aff.gov   | 11/02/2011      | OK                |
+      | Space First moonwalk | This is another document on space moonwalk | http://www.aff.gov/topics/space-moonwalk.pdf   | aff.gov   | 11/02/2011      | OK                |
+      | Other Space Moonwalk | This is another document on space moonwalk | http://other.aff.gov/topics/space-moonwalk.pdf | aff.gov   | 11/02/2011      | OK                |
+    And there are 20 crawled IndexedDocuments for "aff.gov"
+    When I am on aff.gov's "Topics" docs search page
     Then I should see "agency site Mobile"
     And I should see "Please enter search term(s)"
     When I fill in "query" with "space"
@@ -116,23 +117,13 @@ Feature: Mobile Search for Affiliate
     And I should see "document on space suit"
     And I should see "[PDF] Space First moonwalk"
     And I should see "document on space moonwalk"
+    And I should not see "Other Space Moonwalk"
     And I should see the Results by USASearch logo
     When I fill in "query" with "document"
     And I submit the search form
+    And I follow "Next"
+    Then I should see "agency site Mobile"
     Then I should see "crawled document"
-    When I follow "Next"
-    Then I should see "agency site Mobile"
-    And I should see "crawled document"
-
-    When I am on aff.gov's "Topics" docs search page
-    Then I should see "agency site Mobile"
-    When I fill in "query" with "document"
-    And I submit the search form
-    Then I should see "agency site Mobile"
-    And I should see "crawled document"
-    When I follow "Next"
-    Then I should see "agency site Mobile"
-    And I should see "crawled document"
 
   Scenario: A search on images
     Given the following Affiliates exist:

@@ -106,8 +106,9 @@ describe IndexedDocument do
     context "when URL belongs to an affiliate's document collection" do
       before do
         idoc.affiliate.document_collections.destroy_all
-        document_collection = idoc.affiliate.document_collections.create!(:name => "sub2")
-        document_collection.url_prefixes.create!(:prefix => 'http://www.nps.gov/sub2/')
+        dc = idoc.affiliate.document_collections.create!(:name => "sub2",
+                                                         :url_prefixes_attributes => { '0' => { :prefix => 'http://www.nps.gov/' } })
+        dc.url_prefixes.create!(:prefix => 'http://www.nps.gov/sub2/')
         idoc.affiliate.features.destroy_all
         idoc.url = 'http://www.nps.gov/sub2/should_work.html'
       end
@@ -350,7 +351,8 @@ describe IndexedDocument do
       before do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
-        @coll = @affiliate.document_collections.create!(:name => "test")
+        @coll = @affiliate.document_collections.create!(:name => "test",
+                                                        :url_prefixes_attributes => {'0' => { :prefix => 'http://www.agency.gov/' } })
         @affiliate.site_domains.create!(:domain => "ignoreme.gov")
         @coll.url_prefixes.create!(:prefix => "http://www.nps.gov/")
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 1', :description => 'This is a HTML document.', :url => 'http://www.nps.gov/html.html', :affiliate_id => @affiliate.id)

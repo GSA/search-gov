@@ -17,7 +17,7 @@ module NavigationsHelper
   def render_navigations(affiliate, search, search_params)
     return if affiliate.navigations.active.blank?
 
-    dc = search.is_a?(OdieSearch) ? search.document_collection : nil
+    dc = search.is_a?(SiteSearch) ? search.document_collection : nil
     rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
 
     nav_items = []

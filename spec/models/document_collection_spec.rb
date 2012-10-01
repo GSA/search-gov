@@ -6,7 +6,8 @@ describe DocumentCollection do
   before do
     @valid_attributes = {
       :name => 'My Collection',
-      :affiliate => affiliates(:power_affiliate)
+      :affiliate => affiliates(:power_affiliate),
+      :url_prefixes_attributes => {'0' => { :prefix => 'http://www.agency.gov/' } }
     }
   end
 
@@ -22,6 +23,11 @@ describe DocumentCollection do
       dc.navigation.affiliate_id.should == dc.affiliate_id
       dc.navigation.position.should == 100
       dc.navigation.should_not be_is_active
+    end
+
+    it 'should not allow document collection without prefix' do
+      dc = DocumentCollection.new(@valid_attributes.except(:url_prefixes_attributes))
+      dc.should_not be_valid
     end
   end
 end

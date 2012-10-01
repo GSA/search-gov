@@ -71,6 +71,12 @@ Feature: Document Collections
     And I press "Update"
     Then I should see "Name can't be blank"
 
+    When I fill in the following:
+      | Name*        |  |
+      | URL Prefix 0 |  |
+    And I press "Update"
+    Then I should see "Collection must have 1 or more URL prefixes"
+
     When I follow "Sidebar"
     Then the "Is Document Collection 1 navigable" checkbox should not be checked
     When I check "Is Document Collection 1 navigable"
