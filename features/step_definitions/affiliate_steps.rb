@@ -152,10 +152,6 @@ Then /^the "([^\"]*)" button should be checked$/ do |field|
   page.should have_selector "input[type='radio'][checked='checked'][id='#{field}']"
 end
 
-Then /I should see the API key/ do
-  page.should have_selector(".content-box", :text => "Your API Key:")
-end
-
 Then /^(.+) for site named "([^\"]*)"$/ do |step, site_display_name|
   site = Affiliate.find_by_display_name site_display_name
   %{#{step} within "tr#site_#{site.id}"}

@@ -280,14 +280,14 @@ Feature: Affiliate Search
 
   Scenario: Searching a domain with Bing results that match a specific news item
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | usa.gov |
+      | display_name | name    | contact_email | contact_name | domains         |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | answers.usa.gov |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_navigable | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | name  | url                                  | is_navigable | shown_in_govbox |
+      | Press | http://www.whitehouse.gov/feed/press | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                  |
-      | http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&USERTYPE=1&LANGUAGE=en&COUNTRY=US&ARTICLE_ID=11351       | First item  | uuid1 | day           | item First news item for the feed |
+      | link                                                                                                                                                                                                     | title      | guid  | published_ago | description                       |
+      | http://answers.usa.gov/system/selfservice.controller?CMD=VIEW_ARTICLE&EXPANDED_TOPIC_TREE_NODES=&ARTICLE_IN_NEW_WINDOW_FLAG=&ARTICLE_ID=11351&CONFIGURATION=1000&PARTITION_ID=1&TIMEZONE_OFFSET=25200000 | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
     And I fill in "query" with "president"
     And I press "Search"

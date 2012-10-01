@@ -1,5 +1,4 @@
 class RecallsController < ApplicationController
-  before_filter :validate_api_key
   before_filter :setup_affiliate
   before_filter :setup_params
   before_filter :verify_params
@@ -63,10 +62,6 @@ class RecallsController < ApplicationController
   end
 
   private
-
-  def validate_api_key
-    render :text => 'Invalid API Key', :status => 401 if request.format == 'json' and params[:api_key].present? and User.find_by_api_key(params[:api_key]).nil?
-  end
 
   def setup_affiliate
     @affiliate = Affiliate.find_by_name('usagov')

@@ -41,8 +41,6 @@ Feature: Affiliate clients
     Then I should see the browser page titled "Search API"
     And I should see the following breadcrumbs: USASearch > Admin Center > USA.gov > Search API
     And I should see "Search API" in the page header
-    And I should see the API key
-    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the API key box
     And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the API TOS section
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites

@@ -85,11 +85,6 @@ describe RecallsController do
         response.should be_success
       end
 
-      it "should not care about an API key" do
-        get :search, :query => 'strollers', :api_key => 'bad api key'
-        response.should be_success
-      end
-
       context "when there are results" do
         before do
           @query_string = "strollers"
@@ -192,25 +187,6 @@ describe RecallsController do
         @developer.save
       end
 
-      context "when an API key is specified" do
-        it "should check that the API key belongs to a user, and process the request" do
-          User.should_receive(:find_by_api_key).with(@developer.api_key).and_return @developer
-          get :search, :query => 'stroller', :api_key => @developer.api_key, :format => 'json'
-          response.should be_success
-        end
-
-        it "should return a 401 error if the key is not found" do
-          User.should_receive(:find_by_api_key).with('badkey').and_return nil
-          get :search, :query => 'stroller', :api_key => 'badkey', :format => 'json'
-          response.should_not be_success
-        end
-
-        it "should not care if the API key is not specified" do
-          get :search, :query => 'stroller', :format => 'json'
-          response.should be_success
-        end
-      end
-
       context "when all parameters specified" do
         let(:first_recall) { mock_model(Recall, :as_json => { 'recall_number' => 'ABC100' }) }
         let(:second_recall) { mock_model(Recall, :as_json => { 'recall_number' => 'DEF200' }) }
@@ -223,7 +199,7 @@ describe RecallsController do
           @query_string = 'stroller'
           @page = "2"
           @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20"}
-          @valid_params = @valid_options_hash.merge(:query => @query_string, :page => @page, :api_key => @developer.api_key, :format => 'json')
+          @valid_params = @valid_options_hash.merge(:query => @query_string, :page => @page, :format => 'json')
         end
 
         context "when result is not cached" do

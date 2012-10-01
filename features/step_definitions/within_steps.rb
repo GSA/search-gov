@@ -36,7 +36,6 @@
   'in the SERP header' => '#header',
   'in the SERP footer' => '#footer',
   'in the page content' => '.content',
-  'in the API key box' => '.content-box',
   'in the API TOS section' => '.api.tos',
   'in the registration form' => 'form#new_user',
   'in the rss feed govbox' => '#news_items_govbox',

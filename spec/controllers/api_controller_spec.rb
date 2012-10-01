@@ -4,44 +4,19 @@ describe ApiController do
   fixtures :affiliates, :users, :site_domains, :features
 
   describe "#search" do
-    context "when there is no api key parameter" do
+    context "when the affiliate does not exist" do
       before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name
+        get :search, :affiliate => 'missingaffiliate'
       end
 
-      it { should respond_with :unauthorized }
-    end
-
-    context "when the api key is blank" do
-      before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => ''
-      end
-
-      it { should respond_with :unauthorized }
-    end
-
-    context "when the api key is invalid" do
-      before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => 'bad_api_key'
-      end
-
-      it { should respond_with :unauthorized }
-    end
-
-    context "when the api key is valid, but for the wrong affiliate" do
-      before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
-      end
-
-      it { should respond_with :forbidden }
+      it { should respond_with :not_found }
     end
 
     describe "with format=json" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:api_key) { users(:affiliate_manager).api_key }
 
       before do
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'solar'
+        get :search, :affiliate => affiliate.name, :format => 'json', :query => 'solar'
       end
 
       it { should respond_with_content_type :json }
@@ -58,10 +33,9 @@ describe ApiController do
 
     context "with format=xml" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:api_key) { users(:affiliate_manager).api_key }
 
       before do
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'xml', :query => 'solar'
+        get :search, :affiliate => affiliate.name, :format => 'xml', :query => 'solar'
       end
 
       it { should respond_with_content_type :xml }
@@ -79,7 +53,7 @@ describe ApiController do
 
     context "with format=html" do
       before do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key, :format => :html
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :format => :html
       end
 
       it { should respond_with :not_acceptable }
@@ -87,7 +61,7 @@ describe ApiController do
 
     describe "options" do
       before :each do
-        @auth_params = {:affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key}
+        @auth_params = { :affiliate => affiliates(:basic_affiliate).name }
       end
 
       it "should set the affiliate" do
@@ -128,7 +102,7 @@ describe ApiController do
                                            :publish_start_on => Date.yesterday)
         BoostedContent.reindex
 
-        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title", :format => 'json'
+        get :search, :affiliate => affiliate.name, :query => "title", :format => 'json'
 
         boosted_results = JSON.parse(response.body)["boosted_results"]
         boosted_results.should_not be_blank
@@ -142,9 +116,9 @@ describe ApiController do
     describe "jsonp support" do
       it "should wrap response with predefined callback if callback is not blank" do
         affiliate = affiliates(:basic_affiliate)
-        search_results = {:spelling_suggestions => "house"}.to_json
+        search_results = { :spelling_suggestions => "house" }.to_json
         ApiSearch.should_receive(:search).and_return(search_results)
-        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "haus", :callback => 'processData', :format => 'json'
+        get :search, :affiliate => affiliate.name, :query => "haus", :callback => 'processData', :format => 'json'
         response.body.should == %{processData({"spelling_suggestions":"house"})}
       end
     end
@@ -153,7 +127,6 @@ describe ApiController do
       fixtures :rss_feeds, :rss_feed_urls, :news_items
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:feed) { rss_feeds(:white_house_blog) }
-      let(:api_key) { users(:affiliate_manager).api_key }
 
       before do
         11.times do |x|
@@ -169,7 +142,7 @@ describe ApiController do
         NewsItem.reindex
         SaytSuggestion.reindex
         Sunspot.commit
-        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10', :channel => feed.id.to_s, :tbs => 'm'
+        get :search, :affiliate => affiliate.name, :format => 'json', :query => 'irrigate', :index => 'news', :page => '2', :per_page => '10', :channel => feed.id.to_s, :tbs => 'm'
       end
 
       describe "response body" do

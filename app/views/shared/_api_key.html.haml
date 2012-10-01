@@ -1,9 +1,0 @@
-- if current_user
-  .content-box.right
-    %p
-      Your API Key:
-      %b= current_user.api_key
-    - unless (hide_tos_link rescue false)
-      %p.tos-centered= link_to 'Terms of Service', TOS_URL
-
-

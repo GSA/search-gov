@@ -2,7 +2,6 @@
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Search API'] )
 %p
   %a{ :name => "content" }
-= render "/shared/api_key"
 %h1
   Search API
 = render_help_link(@help_link)
@@ -35,9 +34,6 @@
       %span affiliate:
       The name of your affiliate site. This parameter is required.
     %li
-      %span api_key:
-      your API key. This parameter is required.
-    %li
       %span index:
       One of web, images, odie, news, or videonews. The default is 'web'. Bing provides the search results for web and image searches, while USASearch maintains the indexes for the news, video news, and document results.
     %li
@@ -67,11 +63,11 @@
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'web')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'web')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'web')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'web')
 
   %h4
     Response Fields
@@ -245,11 +241,11 @@
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'odie')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'odie')
 
   %h4
     Response Fields
@@ -280,11 +276,11 @@
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'news')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'news')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'news')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'news')
 
   %h4
     Response Fields
@@ -318,11 +314,11 @@
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'videonews')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'videonews')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'videonews')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'videonews')
 
   %h4
     Response Fields
@@ -356,11 +352,11 @@
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire', :index => 'images')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'images')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'images')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'images')
 
   %h4
     Response Fields

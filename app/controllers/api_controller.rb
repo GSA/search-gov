@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_filter :verify_api_key_and_load_affiliate
+  before_filter :load_affiliate
 
   def search
     @search_options = search_options_from_params(@affiliate, params).merge(:format => params[:format], :index => params[:index])
@@ -11,16 +11,10 @@ class ApiController < ApplicationController
   end
 
   private
-  def verify_api_key_and_load_affiliate
-    unless user = params[:api_key].present? && User.find_by_api_key(params[:api_key])
-      render :text => 'Invalid API Key', :status => 401
-      return false
-    end
-
-    unless @affiliate = user.affiliates.find_by_name(params[:affiliate])
-      render :text => 'Unauthorized', :status => 403
+  def load_affiliate
+    unless @affiliate = Affiliate.find_by_name(params[:affiliate])
+      render :text => 'Not Found', :status => 404
       false
     end
   end
-
 end
