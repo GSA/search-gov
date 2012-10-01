@@ -14,21 +14,6 @@ function monkeyPatchAutocomplete() {
       .appendTo(ul);
   };
 
-  // The server returns typeahead data in a jQuery autocomplete-compatible
-  // array of ojbects. See http://jqueryui.com/demos/autocomplete/#overview
-  // These objects, however, also contain a "section," which we render below.
-  jQuery.ui.autocomplete.prototype._renderMenu = function(ul, items) {
-    var autocomplete = this, section;
-    jQuery.each(items, function(index, item) {
-      if (item.section && item.section != section) {
-        section = item.section;
-        // Don't display anything for the 'default' section!
-        if (section != 'default') ul.append('<li class="ui-menu-item-separator">' + section + '</li>');
-      }
-      autocomplete._renderItem(ul, item);
-    });
-  };
-
   jQuery.ui.menu.prototype.refresh = function() {
     var self = this;
     self.isMouseActive = false;
@@ -71,25 +56,27 @@ jQuery(document).ready(function() {
     position.of = "#search_form";
     position.offset = "15 43";
   }
-
   jQuery(".usagov-search-autocomplete").autocomplete({
     source: function(request, response) {
       jQuery.ajax({
         url: usagov_sayt_url + "q=" + encodeURIComponent(request.term),
         dataType: "jsonp",
-        success: response // The data comes back from the server in object form at this time
+        success: function(data) {
+          response(jQuery.map(data, function(item) {
+            return {
+              label: item,
+              value: item
+            }
+          }));
+        }
       });
     },
     minLength: 2,
     delay: 250,
     select: function(event, ui) {
-      if (ui.item.data) {
-        window.location = ui.item.data;
-      } else {
-        jQuery(".usagov-search-autocomplete").val(ui.item.value.toString());
-        jQuery("#sc").val("1");
-        jQuery(this).closest('form').submit();
-      }
+      jQuery(".usagov-search-autocomplete").val(ui.item.value.toString());
+      jQuery("#sc").val("1");
+      jQuery(this).closest('form').submit();
     },
     open: function() {
       jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
