@@ -5,16 +5,16 @@ describe NewsItem do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls, :news_items
   before do
     @valid_attributes = {
-      :link => 'http://www.whitehouse.gov/latest_story.html',
-      :title => "Big story here",
-      :description => "Corps volunteers have promoted blah blah blah.",
-      :published_at => DateTime.parse("2011-09-26 21:33:05"),
-      :guid => '80798 at www.whitehouse.gov',
-      :rss_feed_id => rss_feeds(:white_house_blog).id,
-      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
-      :contributor => "President",
-      :publisher => "Briefing Room",
-      :subject => "Economy"
+        :link => 'http://www.whitehouse.gov/latest_story.html',
+        :title => "Big story here",
+        :description => "Corps volunteers have promoted blah blah blah.",
+        :published_at => DateTime.parse("2011-09-26 21:33:05"),
+        :guid => '80798 at www.whitehouse.gov',
+        :rss_feed_id => rss_feeds(:white_house_blog).id,
+        :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
+        :contributor => "President",
+        :publisher => "Briefing Room",
+        :subject => "Economy"
     }
   end
 
@@ -114,7 +114,7 @@ describe NewsItem do
 
     it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
       ActiveSupport::Notifications.should_receive(:instrument).
-        with("solr_search.usasearch", hash_including(:query => hash_including(:rss_feeds => @blog.name, :model => "NewsItem", :term => "policy")))
+          with("solr_search.usasearch", hash_including(:query => hash_including(:rss_feeds => @blog.name, :model => "NewsItem", :term => "policy")))
       NewsItem.search_for("policy", [@blog])
     end
 
@@ -129,7 +129,7 @@ describe NewsItem do
 
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
+            with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
         NewsItem.search_for("policy", [@blog, @gallery], since)
       end
     end
@@ -148,6 +148,39 @@ describe NewsItem do
       it "should return with all items" do
         NewsItem.search_for('', [@blog, @gallery]).total.should == 2
       end
+    end
+  end
+
+  describe ".title_description_date_hash_by_link(affiliate, urls)" do
+    before do
+      attributes = {
+          :link => 'http://www.whitehouse.gov/latest_story.html',
+          :title => "Big story here",
+          :description => "Corps volunteers have promoted blah blah blah.",
+          :published_at => DateTime.parse("2011-09-26 21:33:05"),
+          :guid => 'some guid',
+          :rss_feed_id => rss_feeds(:white_house_blog).id,
+          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
+          :contributor => "President",
+          :publisher => "Briefing Room",
+          :subject => "Economy"
+      }
+      2.times do |x|
+        NewsItem.create!(attributes.merge(:link => attributes[:link]+x.to_s, :guid => attributes[:guid]+x.to_s,
+                                          :title => attributes[:title]+x.to_s))
+      end
+      NewsItem.create!(attributes.merge(:link => attributes[:link]+"1", :guid => attributes[:guid]+"other",
+                                        :title => 'ignore from another affiliate', :rss_feed_id => rss_feeds(:another).id,
+                                        :rss_feed_url_id => rss_feed_urls(:another).id))
+    end
+
+    it "should return :link, :title, :description, :published_at for news items belonging to that affiliate with matching urls" do
+      urls = %w{http://www.whitehouse.gov/latest_story.html0 http://www.whitehouse.gov/latest_story.html1}
+      result = NewsItem.title_description_date_hash_by_link(affiliates(:basic_affiliate), urls)
+      result.size.should == 2
+      result['http://www.whitehouse.gov/latest_story.html0'].should be_present
+      result['http://www.whitehouse.gov/latest_story.html1'].should be_present
+      result['http://www.whitehouse.gov/latest_story.html1'].title.should == "Big story here1"
     end
   end
 end

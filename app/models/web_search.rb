@@ -169,7 +169,7 @@ class WebSearch < Search
   end
 
   def process_web_results(response)
-    news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(response.web.results.collect(&:url))
+    news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(@affiliate, response.web.results.collect(&:url))
     processed = response.web.results.collect do |result|
       title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)

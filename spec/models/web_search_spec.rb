@@ -23,7 +23,7 @@ describe WebSearch do
       SaytSuggestion.stub!(:search_for).and_return nil
       IndexedDocument.stub!(:search_for).and_return nil
       ActiveSupport::Notifications.should_receive(:instrument).
-        with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String)))).and_return @generic_bing_result
+          with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String)))).and_return @generic_bing_result
       WebSearch.new(@valid_options).run
     end
 
@@ -744,6 +744,7 @@ describe WebSearch do
 
     context "when Bing result has an URL that matches a known NewsItem URL" do
       before do
+        NewsItem.destroy_all
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
                          :title => "NewsItem title highlighted from Solr",
                          :description => "NewsItem description highlighted from Solr",
@@ -761,7 +762,7 @@ describe WebSearch do
         Sunspot.commit
         hits = NewsItem.search_for("NewsItem", [rss_feeds(:white_house_blog)], nil, 1, 100)
         NewsItem.stub!(:search_for).and_return hits
-        @search = WebSearch.new(@valid_options.merge(:page => 1))
+        @search = WebSearch.new(:query => 'government', :page => 1, :affiliate => affiliates(:basic_affiliate))
         @search.stub!(:backfill_needed).and_return false
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed = JSON.parse(json)
