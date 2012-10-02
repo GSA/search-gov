@@ -59,11 +59,13 @@ jQuery(document).ready(function () {
 });
 
 function update_vertical_navigation_links(new_text) {
-    jQuery('.updatable').each(function(){
-        var re = new RegExp("query=" + original_query, "");
-        jQuery(this).attr('href', jQuery(this).attr('href').replace(re, "query=" + new_text));
-    });
-    original_query = new_text;
+  var encodedQuery = encodeURIComponent(new_text);
+  jQuery('.updatable').each(function () {
+    var re = new RegExp("query=" + original_query, "");
+
+    jQuery(this).attr('href', jQuery(this).attr('href').replace(re, "query=" + encodedQuery));
+  });
+  original_query = encodedQuery;
 }
 
 function toggle_more_or_less_options() {
