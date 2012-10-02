@@ -1,0 +1,7 @@
+class Admin::DocumentCollectionsController < Admin::AdminController
+  active_scaffold :document_collection do |config|
+    config.columns.exclude :navigation
+    config.update.columns.exclude :affiliate
+    config.columns[:affiliate].form_ui = :select
+  end
+end

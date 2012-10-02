@@ -3,21 +3,21 @@ require 'spec_helper'
 describe SiteSearch do
   fixtures :affiliates
 
-  let(:affiliate) { affiliates(:power_affiliate) }
-  let(:dc) do
-    collection = affiliate.document_collections.build(
-        :name => 'WH only',
-        :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
-                                      '1' => { :prefix => 'http://www.whitehouse.gov/blog/' } })
-    collection.save!
-    collection.navigation.update_attributes!(:is_active => true)
-    collection
-  end
-
-  let!(:bing_search) { BingSearch.new }
-  let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }
-
   describe '#run' do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    let(:dc) do
+      collection = affiliate.document_collections.build(
+          :name => 'WH only',
+          :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
+                                        '1' => { :prefix => 'http://www.whitehouse.gov/blog/' } })
+      collection.save!
+      collection.navigation.update_attributes!(:is_active => true)
+      collection
+    end
+
+    let!(:bing_search) { BingSearch.new }
+    let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }
+
     before do
       BoostedContent.should_not_receive(:search_for)
       BingSearch.should_receive(:new).and_return(bing_search)
@@ -59,6 +59,36 @@ describe SiteSearch do
       it 'should use the scope_keywords' do
         bing_search.should_receive(:query).
             with(%r[^\(gov\) \("patents" OR "america" OR "flying inventions"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
+                 anything(), anything(), anything(), anything(), anything()).
+            and_return('')
+        search.run
+      end
+    end
+
+    context 'when the document collection has scope_keywords' do
+      before do
+        dc.update_attributes!(:scope_keywords => 'education , child development')
+        affiliate.update_attributes!(:scope_keywords => '')
+      end
+
+      it 'should use the scope_keywords' do
+        bing_search.should_receive(:query).
+            with(%r[^\(gov\) \("education" OR "child development"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
+                 anything(), anything(), anything(), anything(), anything()).
+            and_return('')
+        search.run
+      end
+    end
+
+    context 'when affiliate and document collection has scope_keywords' do
+      before do
+        affiliate.update_attributes!(:scope_keywords => 'patents,america')
+        dc.update_attributes!(:scope_keywords => 'patents,flying inventions')
+      end
+
+      it 'should use the document collection scope_keywords' do
+        bing_search.should_receive(:query).
+            with(%r[^\(gov\) \("patents" OR "flying inventions"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
                  anything(), anything(), anything(), anything(), anything()).
             and_return('')
         search.run

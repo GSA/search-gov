@@ -134,7 +134,7 @@ UsasearchRails3::Application.routes.draw do
     resources :sayt_suggestions do as_routes end
     resources :misspellings do as_routes end
     resources :affiliate_boosted_contents do as_routes end
-    resources :collections do as_routes end
+    resources :document_collections do as_routes end
     resources :url_prefixes do as_routes end
     resources :catalog_prefixes do as_routes end
     resources :gov_forms do as_routes end

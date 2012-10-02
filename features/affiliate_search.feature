@@ -280,16 +280,16 @@ Feature: Affiliate Search
 
   Scenario: Searching a domain with Bing results that match a specific news item
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains         |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | answers.usa.gov |
+      | display_name | name    | contact_email | contact_name | domains             |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov |
     And affiliate "bar.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable | shown_in_govbox |
-      | Press | http://www.whitehouse.gov/feed/press | true         | true            |
+      | Press | http://www.whitehouse.gov/feed/press | true         | false           |
     And feed "Press" has the following news items:
-      | link                                                                                                                                                                                                     | title      | guid  | published_ago | description                       |
-      | http://answers.usa.gov/system/selfservice.controller?CMD=VIEW_ARTICLE&EXPANDED_TOPIC_TREE_NODES=&ARTICLE_IN_NEW_WINDOW_FLAG=&ARTICLE_ID=11351&CONFIGURATION=1000&PARTITION_ID=1&TIMEZONE_OFFSET=25200000 | First item | uuid1 | day           | item First news item for the feed |
+      | link                                                                                                | title      | guid  | published_ago | description                       |
+      | http://usasearch.howto.gov/post/26431803694/how-to-add-javascript-for-your-third-party-web-services | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
-    And I fill in "query" with "president"
+    And I fill in "query" with "javascript"
     And I press "Search"
     Then I should see "1 day ago"
 
@@ -821,8 +821,9 @@ Feature: Affiliate Search
       | display_name | name       | contact_email | contact_name | domains                           |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov,www.howto.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name | prefixes                         | is_navigable |
-      | Blog | http://usasearch.howto.gov/post/ | true         |
+      | name         | prefixes                         | is_navigable | scope_keywords |
+      | Blog         | http://usasearch.howto.gov/post/ | true         |                |
+      | Search Notes | http://usasearch.howto.gov/post/ | true         | search notes   |
     And the following IndexedDocuments exist:
       | title                     | description                      | url                                              | affiliate  | last_crawled_at | last_crawl_status |
       | First JavaScript article  | This is an article on JavaScript | http://usasearch.howto.gov/post/JavaScript1.html | agency.gov | 11/02/2011      | OK                |
@@ -837,6 +838,9 @@ Feature: Affiliate Search
     Then I should see a link to "First JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript1.html"
     And I should see a link to "Second JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript2.html"
     And I should not see "Other JavaScript article"
+    When I follow "Search Notes" in the left column
+    Then I should see some Bing search results
+    And I should not see "How to Add JavaScript for Your Third Party Web Services"
 
   Scenario: Searching with malformed query
     Given the following Affiliates exist:

@@ -18,6 +18,10 @@ class DocumentCollection < ActiveRecord::Base
     update_attributes(params)
   end
 
+  def scope_keywords_as_array
+    @scope_keywords_as_array ||= (scope_keywords.nil? ? [] : scope_keywords.split(',').each { |keyword| keyword.strip! })
+  end
+
   private
 
   def url_prefixes_cannot_be_blank

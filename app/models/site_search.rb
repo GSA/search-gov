@@ -11,13 +11,13 @@ class SiteSearch < WebSearch
 
   def scope
     return unless @document_collection
-    remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
+    @remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
 
-    scope_keywords = []
-    @affiliate.scope_keywords_as_array.collect { |s| "\"#{s}\"" }.each do |scope_keyword|
-      separator_length = scope_keywords.empty? ? 0 : SEPARATOR.length
-      remaining_chars -= (scope_keyword.length + separator_length)
-      remaining_chars >= 0 ? (scope_keywords << scope_keyword) : break
+    query_scope_keywords = []
+    scope_keywords_as_array.collect { |s| "\"#{s}\"" }.each do |scope_keyword|
+      separator_length = query_scope_keywords.empty? ? 0 : SEPARATOR.length
+      @remaining_chars -= (scope_keyword.length + separator_length)
+      @remaining_chars >= 0 ? (query_scope_keywords << scope_keyword) : break
     end
 
     sites_within_limit = []
@@ -28,16 +28,20 @@ class SiteSearch < WebSearch
 
     sites.each do |site|
       separator_length = sites_within_limit.empty? ? 0 : SEPARATOR.length
-      remaining_chars -= (site.length + separator_length)
-      remaining_chars >= 0 ? (sites_within_limit << site) : break
+      @remaining_chars -= (site.length + separator_length)
+      @remaining_chars >= 0 ? (sites_within_limit << site) : break
     end
 
     generated_scope = ''
-    (generated_scope << "(#{scope_keywords.join(SEPARATOR)}) ") unless scope_keywords.empty?
+    (generated_scope << "(#{query_scope_keywords.join(SEPARATOR)}) ") unless query_scope_keywords.empty?
     generated_scope << "(#{sites_within_limit.join(SEPARATOR)})"
     generated_scope
   end
 
   def populate_additional_results
+  end
+
+  def scope_keywords_as_array
+    @document_collection.scope_keywords.present? ? @document_collection.scope_keywords_as_array : @affiliate.scope_keywords_as_array
   end
 end
