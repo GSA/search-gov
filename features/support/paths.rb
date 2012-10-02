@@ -26,6 +26,8 @@ module NavigationHelpers
       search_path(:affiliate => $1, :embedded => "1")
     when /^(.*)'s strictui search page$/
       search_path(:affiliate => $1, :strictui => "1")
+    when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
+      search_path(:affiliate => $1, :query => "<script>#{$2}</script>")
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
     when /^(.*)'s news search page$/

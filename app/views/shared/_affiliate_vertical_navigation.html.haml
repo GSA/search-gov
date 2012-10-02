@@ -1,5 +1,5 @@
 - rss_feed = @search.is_a?(NewsSearch) ? @search.rss_feed : nil
-- search_params = {:query => params[:query], :affiliate => @affiliate.name}
+- search_params = {:query => @search.query, :affiliate => @affiliate.name}
 - search_params.merge!(:channel => rss_feed.id) if rss_feed
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
 - search_params.merge!(:contributor => params[:contributor]) if params[:contributor]

@@ -837,3 +837,10 @@ Feature: Affiliate Search
     Then I should see a link to "First JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript1.html"
     And I should see a link to "Second JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript2.html"
     And I should not see "Other JavaScript article"
+
+  Scenario: Searching with malformed query
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     |
+    When I am on agency.gov's search page with unsanitized "hello" query
+    Then I should see a link to "Images" with sanitized "hello" query

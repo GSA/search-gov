@@ -197,3 +197,10 @@ end
 Then /^I should not see the form govbox$/ do
   page.should_not have_selector('#form_govbox')
 end
+
+Then /^I should see a link to "(.*?)" with sanitized "(.*?)" query$/ do |link_title, query|
+  path_and_query = page.find(:xpath, "//a[text()='Images']")[:href]
+  parsed_url = URI.parse("http://localhost#{path_and_query}")
+  query_hash = CGI::parse(parsed_url.query)
+  query_hash['query'].should == ["#{query}"]
+end
