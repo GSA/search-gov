@@ -72,8 +72,14 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                       |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | answers.usa.gov,ip.sandia.gov |
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When there is no Bing URL
+    And I go to the admin home page
+    And I follow "Bing URLs"
+    Then I should see "No Entries"
+    When I follow "Sign Out"
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "aff.gov" selected
+    And I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     And I follow "Add new URL"
     And I fill in "URL" with "https://ip.sandia.gov/technology.do/techID=73"
@@ -85,6 +91,16 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I fill in "URL" with "http://www.whitehouse.gov/blog/issues/women"
     And I press "Add"
     Then I should see "URL already exists in the Bing index"
+    When I follow "Sign Out"
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And I go to the admin home page
+    And I follow "Bing URLs"
+    Then I should see "ip.sandia.gov/technology.do/techID=73"
+    And I should not see "https://ip.sandia.gov/technology.do/techID=73"
+    And I should see "answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
+    And I should not see "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
+    And I should see "whitehouse.gov/blog/issues/Women"
+    And I should not see "http://www.whitehouse.gov/blog/issues/Women"
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:

@@ -297,3 +297,7 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Forms"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Forms
+
+    When I go to the admin home page
+    And I follow "Bing URLs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Bing URLs

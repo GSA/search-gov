@@ -95,6 +95,7 @@ describe IndexedDocument do
     context "when the URL exists in Bing" do
       before do
         BingUrl.delete_all
+        BingUrl.create!(:normalized_url => 'whitehouse.gov/blog/2012/09/25/president-obama-addresses-united-nations')
         BingSearch.should_receive(:search_for_url_in_bing).and_return(normalized_url)
       end
 

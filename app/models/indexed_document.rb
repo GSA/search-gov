@@ -368,7 +368,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def create_or_update_bing_url
     if @url_in_bing and errors[:base].include?(BING_PRESENCE)
-      bing_url = BingUrl.first_or_initialize(:normalized_url => @url_in_bing)
+      bing_url = BingUrl.where(:normalized_url => @url_in_bing).first_or_initialize
       bing_url.new_record? ? bing_url.save! : bing_url.touch
     end
   end
