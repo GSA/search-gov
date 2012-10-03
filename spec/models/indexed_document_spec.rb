@@ -4,9 +4,6 @@ require 'spec_helper'
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains, :features
   before do
-    affiliates(:basic_affiliate).features << features(:hosted_sitemaps)
-    affiliates(:power_affiliate).features << features(:hosted_sitemaps)
-
     @min_valid_attributes = {
       :url => "http://min.nps.gov/link.html",
       :affiliate_id => affiliates(:basic_affiliate).id

@@ -5,7 +5,6 @@ describe SiteDomainObserver do
   let(:affiliate) { affiliates(:power_affiliate) }
 
   before do
-    affiliate.features << features(:hosted_sitemaps)
     affiliate.site_domains.create!(:domain => "first.gov")
     affiliate.site_domains.create!(:domain => "second.gov")
 

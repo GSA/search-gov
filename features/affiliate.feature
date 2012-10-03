@@ -128,7 +128,7 @@ Feature: Affiliate clients
     And I should see "Content Sources"
     When I fill in the following:
       | Enter the domain or URL | agency.gov                                                                   |
-      | Sitemap URL             | http://search.usa.gov/usasearch_hosted_sitemap/732.xml                       |
+      | Sitemap URL             | http://www.jpl.nasa.gov/sitemap/xml/sitemap_category/news.xml                |
       | RSS Feed Name 0         | Recalls Feed                                                                 |
       | RSS Feed URL 0          | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
     And I press "Next"

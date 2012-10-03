@@ -19,7 +19,6 @@ UsasearchRails3::Application.routes.draw do
       post :cancel_staged_changes_for
       get :best_bets
       get :urls_and_sitemaps
-      get :hosted_sitemaps
       get :content_sources
       put :create_content_sources
       get :get_the_code
@@ -186,7 +185,6 @@ UsasearchRails3::Application.routes.draw do
   get '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-  get '/usasearch_hosted_sitemap/:id.xml' => 'hosted_sitemap#show', :as => :hosted_sitemap
   get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
   get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
   get '/api/search' => 'api#search', :as => :api_search

@@ -106,7 +106,6 @@ describe SiteDomain do
 
     before do
       BingSearch.stub(:search_for_url_in_bing).and_return(nil)
-      affiliate.features << features(:hosted_sitemaps)
     end
 
     it "should attempt to create a new IndexedDocument for each link in the frontier" do

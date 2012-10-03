@@ -994,23 +994,6 @@ describe Affiliates::HomeController do
     end
   end
 
-  describe "do GET on #hosted_sitemaps" do
-    context "when logged in as the affiliate manager" do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:current_user) { users(:affiliate_manager) }
-
-      before do
-        UserSession.create(current_user)
-        User.should_receive(:find_by_id).and_return(current_user)
-        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        get :hosted_sitemaps, :id => affiliate.id
-      end
-
-      it { should assign_to :title }
-    end
-
-  end
-
   describe "do GET on #urls_and_sitemaps" do
     context "when not logged in" do
       before do

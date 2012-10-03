@@ -1220,7 +1220,6 @@ describe WebSearch do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.site_domains.create(:domain => "nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
-        @non_affiliate.features << features(:hosted_sitemaps)
         1.upto(15) do |index|
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
         end
@@ -1266,7 +1265,6 @@ describe WebSearch do
     context "when affiliate has no Bing results and there is an orphan indexed document" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
-        @non_affiliate.features << features(:hosted_sitemaps)
         @non_affiliate.indexed_documents.destroy_all
         IndexedDocument.reindex
         odie = @non_affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://laksjdflkjasldkjfalskdjf.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1316,7 +1314,6 @@ describe WebSearch do
         context "when there are Odie results" do
           before do
             IndexedDocument.destroy_all
-            @affiliate.features << features(:hosted_sitemaps)
             @affiliate.site_domains.create!(:domain => 'nps.gov')
             @affiliate.indexed_documents.create!(:title => 'government I LOVE AMERICA', :description => 'government WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
             IndexedDocument.reindex
@@ -1361,7 +1358,6 @@ describe WebSearch do
         context "when there are Odie results" do
           before do
             IndexedDocument.destroy_all
-            @affiliate.features << features(:hosted_sitemaps)
             @affiliate.site_domains.create!(:domain => 'nps.gov')
             11.times { |x| @affiliate.indexed_documents.create!(:title => "government I LOVE AMERICA #{x}", :description => "government WE LOVE AMERICA #{x}", :url => "http://nps.gov/america#{x}.html", :last_crawl_status => IndexedDocument::OK_STATUS) }
             IndexedDocument.reindex
@@ -1604,7 +1600,6 @@ describe WebSearch do
     context "when the Bing results are empty and there are instead locally indexed results" do
       before do
         affiliate = affiliates(:non_existant_affiliate)
-        affiliate.features << features(:hosted_sitemaps)
         affiliate.site_domains.create(:domain => "url.gov")
         affiliate.indexed_documents.create!(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.', :body => "so tedious", :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
@@ -1623,7 +1618,6 @@ describe WebSearch do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:non_existant_affiliate)
-      @affiliate.features << features(:hosted_sitemaps)
       @affiliate.site_domains.create(:domain => "url.gov")
       @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex

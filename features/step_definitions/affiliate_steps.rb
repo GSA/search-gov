@@ -83,7 +83,6 @@ Given /^the following Affiliates exist:$/ do |table|
                                        :twitter_id => 1234,
                                        :profile_image_url => 'http://twitter.com/profile.jpg') if hash[:twitter_handle]
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(:domain => domain) } unless hash[:domains].blank?
-    affiliate.features << Feature.find_or_create_by_internal_name('hosted_sitemaps', :display_name => "Feature Allows them to have Indexed Docs")
 
     hash[:affiliate_form_agencies].to_s.split(',').each do |form_agency|
       affiliate.form_agencies << FormAgency.where(:name => form_agency, :locale => affiliate.locale).first

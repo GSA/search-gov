@@ -4,7 +4,6 @@ describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
   fixtures :affiliates, :features
   before do
     affiliate = affiliates(:basic_affiliate)
-    affiliate.features << features(:hosted_sitemaps)
 
     IndexedDocument.destroy_all
     @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate)

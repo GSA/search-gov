@@ -1715,7 +1715,6 @@ describe Affiliate do
     before do
       BingSearch.stub(:search_for_url_in_bing).and_return(nil)
       @affiliate = affiliates(:basic_affiliate)
-      @affiliate.features << features(:hosted_sitemaps)
       @affiliate.fetch_concurrency = 2
       @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')
       @second = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo')
@@ -1773,10 +1772,10 @@ describe Affiliate do
 
     it "should return the collection of unused features for the affiliate" do
       ufs = @affiliate.unused_features
-      ufs.size.should == 3
+      ufs.size.should == 2
       @affiliate.features << features(:sayt)
       ufs = @affiliate.unused_features
-      ufs.size.should == 2
+      ufs.size.should == 1
       ufs.first.should == features(:disco)
     end
   end

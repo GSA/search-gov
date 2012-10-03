@@ -204,10 +204,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
-  def hosted_sitemaps
-    @title = "Hosted Sitemaps - "
-  end
-
   def new_site_domain_fields
   end
 

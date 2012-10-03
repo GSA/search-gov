@@ -27,7 +27,6 @@ describe IndexedDomainTemplateDetector do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         affiliate.indexed_documents.destroy_all
-        affiliate.features << features(:hosted_sitemaps)
 
         10.upto(18) do |x|
           affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
@@ -60,7 +59,6 @@ describe IndexedDomainTemplateDetector do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         affiliate.indexed_documents.destroy_all
-        affiliate.features << features(:hosted_sitemaps)
         10.upto(19) do |x|
           affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html",
                                               :title => "Some HTML Title#{x}",
@@ -183,7 +181,6 @@ describe IndexedDomainTemplateDetector do
     before do
       affiliate = affiliates(:basic_affiliate)
       affiliate.indexed_documents.destroy_all
-      affiliate.features << features(:hosted_sitemaps)
       1.upto(3) do |x|
         affiliate.indexed_documents.create!(:url => "http://#{indexed_domain.domain}/page#{x}.html", :title => "Some HTML Title#{x}",
                                             :description => "This is HTML document number #{x}.",
