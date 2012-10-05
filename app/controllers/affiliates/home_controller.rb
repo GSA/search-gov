@@ -185,6 +185,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def home
+    @system_alerts = SystemAlert.current
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end

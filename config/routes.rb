@@ -172,6 +172,7 @@ UsasearchRails3::Application.routes.draw do
     resources :form_agencies do as_routes end
     resources :forms do as_routes end
     resources :bing_urls do as_routes end
+    resources :system_alerts do as_routes end
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect

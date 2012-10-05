@@ -1,6 +1,7 @@
 = content_for :title, "Admin Center - "
 .affiliate
   = breadcrumbs(['Admin Center'])
+  = show_system_alerts(@system_alerts)
   %h1 Admin Center
   - if @current_user.is_affiliate?
     -if @current_user.is_pending_contact_information?

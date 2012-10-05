@@ -287,3 +287,25 @@ Then /^the "([^"]*)" field should contain site ID for (.+)$/ do |label, affiliat
   affiliate = Affiliate.find_by_name(affiliate_name)
   step %{the "#{label}" field should contain "#{affiliate.id}"}
 end
+
+Given /^the following SystemAlerts exist:$/ do |table|
+  table.hashes.each do |hash|
+    start_at = case hash[:start_at]
+                 when 'today'
+                   DateTime.current
+                 when /^[[:alpha:]]/
+                   DateTime.current.send(hash[:start_at].gsub(/\s+/, '_').to_sym)
+                 else nil
+               end
+    end_at = case hash[:end_at]
+               when 'today'
+                 DateTime.current
+               when /^[[:alpha:]]/
+                 DateTime.current.send(hash[:end_at].gsub(/\s+/, '_').to_sym)
+               else nil
+             end
+    SystemAlert.create!(:message => hash[:message],
+                        :start_at => start_at,
+                        :end_at => end_at)
+  end
+end
