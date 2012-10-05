@@ -62,7 +62,7 @@ class YoutubeProfile < ActiveRecord::Base
   end
 
   def synchronize_managed_feed
-    affiliate.rss_feeds.managed.videos.first.synchronize_youtube_urls!
+    affiliate.rss_feeds.managed.videos.first.synchronize_youtube_urls! if affiliate.rss_feeds.managed.videos.present?
   end
 
   def must_have_valid_username

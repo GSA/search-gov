@@ -158,4 +158,9 @@ describe YoutubeProfile do
     rss_feed.should_receive(:synchronize_youtube_urls!)
     profile.update_attributes!(:username => 'America')
   end
+
+  it 'should not synchronize rss_feeds when there is no rss feeds' do
+    YoutubeProfile.create!(@valid_attributes)
+    lambda { @affiliate.destroy }.should_not raise_error
+  end
 end
