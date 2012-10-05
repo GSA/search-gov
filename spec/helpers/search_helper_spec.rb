@@ -569,7 +569,7 @@ Chuck, thank you for your words and your friendship and your life of service.
 Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
       DESCRIPTION
       truncated_description = helper.display_result_description({ 'content' => description })
-      truncated_description.should =~ /distinguished\.\.\.$/
+      truncated_description.should =~ /distinguished \.\.\.$/
       truncated_description.length.should == 255
     end
   end

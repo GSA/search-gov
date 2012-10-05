@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w( pending_email_verification pending_contact_information pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
-  validates_presence_of :api_key
-  validates_uniqueness_of :api_key
   validates_presence_of :phone, :if => :strict_mode
   validates_presence_of :organization_name, :if => :strict_mode
   validates_presence_of :address, :if => :strict_mode
@@ -14,7 +12,6 @@ class User < ActiveRecord::Base
   validates_acceptance_of :terms_of_service
   validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"
   has_and_belongs_to_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC'
-  before_validation :generate_api_key
   before_validation :set_initial_approval_status, :on => :create
   after_validation :set_is_affiliate, :on => :create
   after_validation :set_default_flags, :on => :create
@@ -161,10 +158,6 @@ class User < ActiveRecord::Base
 
   def welcome_user
     Emailer.welcome_to_new_developer(self).deliver if is_developer? and !skip_welcome_email
-  end
-
-  def generate_api_key
-    self.api_key = Digest::MD5.hexdigest("#{contact_name}:#{email}:#{Time.now.to_s}") if self.api_key.nil?
   end
 
   def set_is_affiliate

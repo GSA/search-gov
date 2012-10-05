@@ -100,16 +100,6 @@ describe User do
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
     end
-
-    it "should generate an API Key when creating a new user" do
-      user = User.create!(@valid_attributes)
-      user.api_key.should_not be_nil
-    end
-
-    it "should not allow duplicate API keys" do
-      user = User.create!(@valid_attributes)
-      User.create(@valid_attributes.merge(:api_key => user.api_key)).id.should be_nil
-    end
   end
 
   describe "on create" do

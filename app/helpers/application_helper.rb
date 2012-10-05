@@ -311,7 +311,7 @@ module ApplicationHelper
           max_chars -= mb_chars.length
         else
           last_space_index = (mb_chars.rindex(/\s/, max_chars) || 0) rescue 0
-          truncated_text = mb_chars[0..last_space_index].strip unless last_space_index.nil?
+          truncated_text = mb_chars[0..last_space_index].gsub(/\s+/, ' ') unless last_space_index.nil?
           buffer << "#{truncated_text}..."
           max_chars = 0
         end
