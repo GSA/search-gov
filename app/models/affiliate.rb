@@ -26,9 +26,9 @@ class Affiliate < ActiveRecord::Base
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_many :url_prefixes, :through => :document_collections
   has_and_belongs_to_many :twitter_profiles
-  has_many :flickr_profiles
-  has_many :facebook_profiles
-  has_many :youtube_profiles
+  has_many :flickr_profiles, :dependent => :destroy
+  has_many :facebook_profiles, :dependent => :destroy
+  has_many :youtube_profiles, :dependent => :destroy
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
   has_and_belongs_to_many :form_agencies

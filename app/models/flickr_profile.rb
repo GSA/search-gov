@@ -3,7 +3,7 @@ class FlickrProfile < ActiveRecord::Base
   has_many :flickr_photos, :dependent => :destroy
 
   validates_format_of :url,
-                      :with => %r{^http:\/\/(www\.)?flickr.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$},
+                      :with => %r{^http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$},
                       :message => 'must be a valid Flickr user or Flickr group.'
   validates_presence_of :affiliate_id
   validates_uniqueness_of :url, :scope => :affiliate_id, :message => 'has already been added', :if => :has_valid_url?
@@ -26,7 +26,6 @@ class FlickrProfile < ActiveRecord::Base
   end
 
   def import_photos
-    done_importing = false
     photos = get_photos
     if photos
       more_to_index = store_photos(photos)
@@ -72,7 +71,7 @@ class FlickrProfile < ActiveRecord::Base
   end
 
   def has_valid_url?
-    url =~ /http:\/\/(www\.)?flickr.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$/
+    url =~ /http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$/
   end
 
   def store_photos(photos)
