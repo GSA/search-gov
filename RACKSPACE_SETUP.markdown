@@ -147,11 +147,6 @@ Make sure staging.rb is configured properly and then on local dev workstation ru
 
     cap deploy:setup
 
-Then on staging
-
-    cd /home/search/usasearch/shared/log
-    touch production.log
-
 Then on local dev workstation run
 
     cap deploy
@@ -171,11 +166,7 @@ On staging server, type
 
     cap production deploy:setup
 
-On each node, type:
-
-    touch ~/usasearch/shared/log/production.log
-
-Make sure database.yml and sunspot.yml are in place on each node in shared/system
+Make sure database.yml, redis.yml and sunspot.yml are in place on each node in shared/system
 
 On staging server, type
 
