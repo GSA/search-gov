@@ -848,3 +848,15 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     |
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
+
+  Scenario: Searching for site specific results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
+    When I am on agency.gov's search page
+    And I fill in "query" with "jobs site:answers.usa.gov"
+    And I press "Search"
+    Then I should see "answers.usa.gov/"
+    And I fill in "query" with "jazz site:wikipedia.org"
+    And I press "Search"
+    Then I should not see "en.wikipedia.org/wiki/Jazz"

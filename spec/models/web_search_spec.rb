@@ -295,16 +295,16 @@ describe WebSearch do
         end
       end
 
-      context "when affiliate has domains specified but user specifies site: in search" do
+      context "when searcher specifies site: outside configured domains" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
         end
 
         it "should override affiliate domains in query to Bing" do
-          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov site:err.gov"))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
-          @bing_search.should_receive(:query).with(/\(government site:blat\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          @bing_search.should_receive(:query).with(/\(government\) \(site:bar\.com OR site:foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
           search.run
         end
 
@@ -317,7 +317,35 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov"))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            @bing_search.should_receive(:query).with(/\(government site:blat\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+            @bing_search.should_receive(:query).with(/\(government\) \(scopeid:PatentClass OR site:bar\.com OR site:foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+            search.run
+          end
+        end
+      end
+
+      context "when searcher specifies site: within configured domains" do
+        before do
+          @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
+        end
+
+        it "should override affiliate domains in query to Bing" do
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:answers.foo.com"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
+          @bing_search.should_receive(:query).with(/\(government site:answers\.foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          search.run
+        end
+
+        context "and the affiliate specifies a scope id" do
+          before do
+            @affiliate.scope_ids = "PatentClass"
+          end
+
+          it "should not use the query along with the scope id" do
+            search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:answers.foo.com"))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
+            @bing_search.should_receive(:query).with(/\(government site:answers\.foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
         end

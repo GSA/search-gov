@@ -79,7 +79,8 @@ class WebSearch < Search
   def build_query(options)
     query = ''
     if options[:query].present?
-      query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
+      query = remove_sites_not_in_domains(options)
+      query = query.split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
     query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"") if options[:query_quote].present?
     query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ') if options[:query_or].present?
@@ -91,6 +92,17 @@ class WebSearch < Search
     end
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
+  end
+
+  def remove_sites_not_in_domains(options)
+    user_site_limits = options[:query].scan(/\bsite:\S+\b/i).collect { |s| s.sub(/^site:/i, '') }.compact
+    rejected_sites = user_site_limits.reject { |s| options[:affiliate].includes_domain?(s) }
+    if rejected_sites.present?
+      rejected_sites_query = rejected_sites.collect { |s| "site:#{Regexp.escape(s)}" }
+      options[:query].gsub(/\b(#{rejected_sites_query.join('|')})\b/i, '')
+    else
+      options[:query]
+    end
   end
 
   def limit_field(field_name, term)
