@@ -386,7 +386,12 @@
 	clear: left;
 	width: 100%;
 }
-.ui-menu .ui-menu-item a {
+
+.ui-menu .ui-menu-item-separator {
+  border-bottom:1px solid #aaaaaa;
+}
+
+.ui-menu .ui-menu-item a, .ui-menu .ui-menu-item-separator {
 	text-decoration:none;
 	display:block;
 	padding:.2em .4em;

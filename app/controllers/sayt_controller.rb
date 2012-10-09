@@ -4,7 +4,7 @@ class SaytController < ActionController::Metal
   include ActionController::MobileFu
   has_mobile_fu
 
-  SAYT_SUGGESTION_SIZE = 15
+  SAYT_SUGGESTION_SIZE = 10
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
 
   def index
