@@ -67,8 +67,17 @@ describe SiteDomain do
     let(:site_domain) { mock_model(SiteDomain) }
 
     context "when the file is nil" do
-      specify { SiteDomain.process_file(affiliate, nil).should == {:success => false,
-                                                                   :error_message => 'Invalid file format; please upload a csv file (.csv).'} }
+      specify { SiteDomain.process_file(affiliate, nil).should == { :success => false,
+                                                                    :error_message => SiteDomain::INVALID_FILE_FORMAT_MESSAGE } }
+    end
+
+    context 'when file is not a valid csv file' do
+      let(:content_type) { 'text/csv' }
+
+      before { CSV.should_receive(:parse).and_raise }
+
+      specify { SiteDomain.process_file(affiliate, file).should == { :success => false,
+                                                                    :error_message => SiteDomain::INVALID_FILE_FORMAT_MESSAGE } }
     end
 
     context "when content type is not csv" do

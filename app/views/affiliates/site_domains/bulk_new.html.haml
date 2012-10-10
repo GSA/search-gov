@@ -5,7 +5,7 @@
 = render_help_link(@help_link)
 = form_tag upload_affiliate_site_domains_path(@affiliate), :multipart => true, :class=> "bordered" do
   %p
-    Save the file in .csv format on your computer. Do not use Microsoft Word files.
+    Save the file in .csv format on your computer. Do not use Microsoft Excel files.
     %br
     Browse for the file on your computer. Upload the file using the browse and upload option below.
     %br
@@ -19,6 +19,6 @@
     %br
     www3.sample.gov,3rd sample site
 
-  = file_field_tag 'site_domains', :accept => 'text/plain', :class => 'file'
+  = file_field_tag 'site_domains', :accept => 'text/csv', :class => 'file'
   = submit_tag "Upload", :class => 'submit btn-upload'
   = link_to "Cancel", affiliate_site_domains_path(@affiliate), :class => 'cancel'
