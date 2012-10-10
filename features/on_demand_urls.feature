@@ -90,7 +90,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see "URL already exists in the Bing index"
     When I fill in "URL" with "http://www.whitehouse.gov/blog/issues/women"
     And I press "Add"
-    Then I should see "URL already exists in the Bing index"
+    Then I should see "URL doesn't match affiliate's site domains"
+    And I should not see "URL already exists in the Bing index"
     When I follow "Sign Out"
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And I go to the admin home page
@@ -99,8 +100,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I should not see "https://ip.sandia.gov/technology.do/techID=73"
     And I should see "answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
     And I should not see "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
-    And I should see "whitehouse.gov/blog/issues/Women"
-    And I should not see "http://www.whitehouse.gov/blog/issues/Women"
+    And I should not see "whitehouse.gov/blog/issues/Women"
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:

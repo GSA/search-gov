@@ -301,7 +301,7 @@ describe WebSearch do
         end
 
         it "should override affiliate domains in query to Bing" do
-          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:blat.gov site:err.gov"))
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:foobar.com"))
           search.stub!(:handle_bing_response)
           search.stub!(:log_serp_impressions)
           @bing_search.should_receive(:query).with(/\(government\) \(site:bar\.com OR site:foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""

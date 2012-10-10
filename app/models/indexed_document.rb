@@ -340,7 +340,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def bing_absence
-    return unless self.affiliate.present?
+    return unless self.affiliate.present? and errors.blank?
     @url_in_bing = BingSearch.search_for_url_in_bing(url)
     errors.add(:base, BING_PRESENCE) if @url_in_bing.present?
   end

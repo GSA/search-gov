@@ -7,7 +7,7 @@ class Admin::FormsController < Admin::AdminController
     config.columns.exclude :details
     config.list.columns.exclude :url
     config.update.columns = :verified
-    config.show.columns.add :url
+    config.show.columns.add [:url, :landing_page_url]
     config.show.columns.add Form::DETAIL_FIELD_NAMES
     config.show.columns.add [:line_of_business, :subfunction, :public_code, :abstract]
     config.export.columns = config.show.columns

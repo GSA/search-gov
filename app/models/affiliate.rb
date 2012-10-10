@@ -243,7 +243,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def includes_domain?(domain)
-    domains_as_array.detect{ |affiliate_domain| domain =~ /#{Regexp.escape(affiliate_domain)}/i }.nil? ? false : true
+    domains_as_array.detect{ |affiliate_domain| domain =~ /\b#{Regexp.escape(affiliate_domain)}\b/i }.nil? ? false : true
   end
 
   def update_attributes_for_staging(attributes)

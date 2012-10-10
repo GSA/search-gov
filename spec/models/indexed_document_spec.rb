@@ -113,6 +113,16 @@ describe IndexedDocument do
     end
   end
 
+  context 'when a URL is not a valid candidate for Odie indexing' do
+    let(:normalized_url) { 'google.com' }
+    let(:idoc) { IndexedDocument.new(@valid_attributes.merge(:url => normalized_url)) }
+
+    it 'should not check for bing absence' do
+      BingSearch.should_not_receive(:search_for_url_in_bing)
+      idoc.save.should be_false
+    end
+  end
+
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.nps.gov/#{'waytoolong'*200}/some.pdf"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))
