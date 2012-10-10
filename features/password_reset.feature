@@ -5,7 +5,6 @@ Feature: Password Reset
   I want to have a password reset email sent to me
 
   Scenario: I canot login because I cannot remember my account password
-
     Given I am on the login page
     And I follow "Forgot your password?"
     When I fill in "email" with "affiliate_admin@fixtures.org"
@@ -15,6 +14,7 @@ Feature: Password Reset
     And "affiliate_admin@fixtures.org" should receive an email
     When I open the email
     Then I should see "Password Reset Instructions" in the email subject
+    And I should see "https://www.example.com/password_resets" in the email body
     When I click the first link in the email
     Then I should see "Change My Password"
     When I fill in "Password" with "changed"

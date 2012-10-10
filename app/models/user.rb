@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def deliver_password_reset_instructions!
+  def deliver_password_reset_instructions!(host_with_port)
     reset_perishable_token!
-    Emailer.password_reset_instructions(self).deliver
+    Emailer.password_reset_instructions(self, host_with_port).deliver
   end
 
   def to_label
