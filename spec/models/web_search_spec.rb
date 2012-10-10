@@ -219,7 +219,7 @@ describe WebSearch do
     end
 
     context "when affiliate is not nil" do
-      context "when affiliate has domains specified and user does not specify site: in search" do
+      context "when affiliate has site domains and searcher does not specify site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
         end
@@ -295,7 +295,7 @@ describe WebSearch do
         end
       end
 
-      context "when searcher specifies site: outside configured domains" do
+      context "when affiliate has site domains and searcher specifies site: outside configured domains" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
         end
@@ -323,7 +323,7 @@ describe WebSearch do
         end
       end
 
-      context "when searcher specifies site: within configured domains" do
+      context "when affiliate has site domains and searcher specifies site: within configured domains" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
         end
@@ -348,6 +348,20 @@ describe WebSearch do
             @bing_search.should_receive(:query).with(/\(government site:answers\.foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
+        end
+      end
+
+      context 'when affiliate does not have site domains and searcher specifies site:' do
+        before do
+          @affiliate.site_domains.destroy_all
+        end
+
+        it 'should allow site search in query to Bing' do
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government site:answers.foo.com"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
+          @bing_search.should_receive(:query).with(/\(government site:answers\.foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          search.run
         end
       end
 

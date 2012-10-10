@@ -95,6 +95,7 @@ class WebSearch < Search
   end
 
   def remove_sites_not_in_domains(options)
+    return options[:query] if options[:affiliate].site_domains.blank?
     user_site_limits = options[:query].scan(/\bsite:\S+\b/i).collect { |s| s.sub(/^site:/i, '') }.compact
     rejected_sites = user_site_limits.reject { |s| options[:affiliate].includes_domain?(s) }
     if rejected_sites.present?
