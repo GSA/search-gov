@@ -23,7 +23,7 @@ gem 'redis-namespace'
 gem 'resque', "=1.21.0"
 gem 'resque-priority', :git => 'git://github.com/GSA-OCSIT/resque-priority.git'
 gem 'cloudfiles', '1.4.17'
-gem 'cocaine'
+gem 'cocaine', '~> 0.3.2'
 gem 'paperclip-cloudfiles', :require => 'paperclip'
 gem 'sauce'
 gem 'parallel'
