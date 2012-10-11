@@ -118,26 +118,87 @@ describe Affiliates::SocialMediaController do
       it { should respond_with(:success) }
     end
 
+    context 'when adding Flickr profile' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:profile) { mock_model(FlickrProfile, :new_record? => true) }
+
+      before do
+        affiliate.update_attributes!(:is_photo_govbox_enabled => false)
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        flickr_profiles = mock('flickr profiles')
+        affiliate.should_receive(:flickr_profiles).and_return(flickr_profiles)
+        flickr_profiles.should_receive(:build).with('url' => 'http://flickr_url').and_return(profile)
+        profile.should_receive(:save).and_return(true)
+        affiliate.should_receive(:update_attributes!).with(:is_photo_govbox_enabled => true)
+
+        put :create,
+            :affiliate_id => affiliate.id,
+            :profile_type => 'FlickrProfile',
+            :social_media_profile => { :url => 'http://flickr_url' }
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:profile).with(profile) }
+      it { should set_the_flash.to(/added/i) }
+      it { should redirect_to(affiliate_social_media_path(affiliate)) }
+    end
+
     context 'when adding an existing Twitter Profile' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
       let(:profile) { TwitterProfile.create!(:screen_name => 'USASearch') }
 
       before do
+        affiliate.update_attributes!(:is_twitter_govbox_enabled => false)
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
 
-        TwitterProfile.should_receive(:find_or_initialize_by_screen_name).and_return(profile)
+        TwitterProfile.stub_chain(:where, :first_or_create).and_return(profile)
         twitter_profiles = mock('twitter profiles')
         affiliate.stub(:twitter_profiles).and_return(twitter_profiles)
         twitter_profiles.should_receive(:exists?).with(profile).and_return(false)
         twitter_profiles.should_receive(:<<).with(profile)
+        affiliate.should_receive(:update_attributes!).with(:is_twitter_govbox_enabled => true)
 
         put :create,
             :affiliate_id => affiliate.id,
             :profile_type => 'TwitterProfile',
             :social_media_profile => { :screen_name => 'USASearch' }
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:profile).with(profile) }
+      it { should set_the_flash.to(/added/i) }
+      it { should redirect_to(affiliate_social_media_path(affiliate)) }
+    end
+
+    context 'when adding YouTube profile' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:profile) { mock_model(YoutubeProfile, :new_record? => true) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        YoutubeProfile.stub_chain(:where, :first_or_create).and_return(profile)
+        youtube_profiles = mock('youtube profiles')
+        affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
+        youtube_profiles.should_receive(:build).with('username' => 'USASearch').and_return(profile)
+        profile.should_receive(:save).and_return(true)
+        managed_feed = mock('managed rss feed')
+        affiliate.stub_chain(:rss_feeds, :managed, :first).and_return(managed_feed)
+        managed_feed.should_receive(:update_attributes!).with(:shown_in_govbox => true)
+
+        put :create,
+            :affiliate_id => affiliate.id,
+            :profile_type => 'YoutubeProfile',
+            :social_media_profile => { :username => 'USASearch' }
       end
 
       it { should assign_to(:affiliate).with(affiliate) }

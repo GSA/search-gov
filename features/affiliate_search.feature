@@ -626,12 +626,12 @@ Feature: Affiliate Search
       | USASearch   | USASearch.gov   | 123        | bar.gov    |
       | GobiernoUSA | GobiernoUSA.gov | 456        | es.bar.gov |
     And the following Tweets exist:
-      | tweet_text                     | tweet_id | published_at        | twitter_profile_id |
-      | Winter season is great!        | 123456   | 2012-05-01 00:00:00 | 123                |
-      | Summer season is great!        | 234567   | 2012-04-25 00:00:00 | 123                |
-      | Spring season is great!        | 456789   | 2012-04-27 00:00:00 | 123                |
-      | Ok season http://t.co/vuvfH6To | 184957   | 2012-04-27 00:00:00 | 123                |
-      | Estados Unidos es grande!      | 789012   | 2012-04-28 00:00:00 | 456                |
+      | tweet_text                     | tweet_id | published_at        | twitter_profile_id | url                  | expanded_url                 | display_url           |
+      | Winter season is great!        | 123456   | 2012-05-01 00:00:00 | 123                |                      |                              |                       |
+      | Summer season is great!        | 234567   | 2012-04-25 00:00:00 | 123                |                      |                              |                       |
+      | Spring season is great!        | 456789   | 2012-04-27 00:00:00 | 123                |                      |                              |                       |
+      | Ok season http://t.co/YQQSs9bb | 184957   | 2012-04-27 00:00:00 | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
+      | Estados Unidos es grande!      | 789012   | 2012-04-28 00:00:00 | 456                |                      |                              |                       |
     When I am on bar.gov's search page
     And I fill in "query" with "season"
     And I press "Search"
@@ -640,7 +640,7 @@ Feature: Affiliate Search
     And I should see "USASearch.gov @USASearch"
     And I should see "Winter season is great!"
     And I should see "Spring season is great!"
-    And I should see a link to "http://www.meetup.com/bmore-on-rails/events/78736452/" with text "www.meetup.com/bm..."
+    And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
     And I should see "season" in bold font
     And I should not see "Summer season is great!"
 
@@ -652,7 +652,7 @@ Feature: Affiliate Search
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos es grande!"
     And I should see "Estados Unidos" in bold font
-    
+
     # @wip
     # When I am on bar.gov's search page
     # And I fill in "query" with "season"

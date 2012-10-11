@@ -2084,6 +2084,9 @@ Feature: Affiliate clients
     Then I should see "Url has already been added"
     And the "Flickr url" field should contain "http://www.flickr.com/groups/usagov/"
 
+    When I follow "Results modules"
+    Then the "Is photo govbox enabled" checkbox should be checked
+
   Scenario: Adding Twitter profile
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -2095,6 +2098,10 @@ Feature: Affiliate clients
     When I fill in "Twitter screen name" with "USASearch"
     And I press "Save"
     Then I should see "Added Twitter Profile"
+    And I should see a link to "USASearch" with url for "http://twitter.com/USASearch" in the social media list
+
+    When I follow "Results modules"
+    Then the "Is twitter govbox enabled" checkbox should be checked
 
   Scenario: Adding Youtube profile
     Given the following Affiliates exist:
@@ -2120,6 +2127,9 @@ Feature: Affiliate clients
     Then the "Name*" field should contain "Videos"
     When I follow "Social Media" in the page content
     Then I should see the browser page titled "Social Media"
+
+    When I follow "Results modules"
+    Then the "Show RSS feed 0 in govbox" checkbox should be checked
 
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:

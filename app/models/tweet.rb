@@ -2,11 +2,12 @@ require 'net/http'
 require 'uri'
 
 class Tweet < ActiveRecord::Base
-  before_save :convert_tco_links
+  before_save :sanitize_tweet_text
   belongs_to :twitter_profile, :primary_key => :twitter_id
   validates_presence_of :tweet_id, :tweet_text, :published_at, :twitter_profile_id
   validates_uniqueness_of :tweet_id
   scope :recent, :order => 'published_at DESC', :limit => 10
+  serialize :urls, Array
 
   searchable do
     text :tweet_text, :stored => true
@@ -31,13 +32,8 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  def convert_tco_links
-    while link = tweet_text.match(/http[s]{0,1}:\/\/t\.co\/[A-Za-z0-9]+/)
-      uri = URI.parse(link.to_s)
-      request = Net::HTTP::Head.new(uri.path)
-      response = Net::HTTP.start(uri.hostname, uri.port) {|http| http.request(request) }
-      self.tweet_text = tweet_text.gsub(link.to_s, response['location'])
-    end
+  def sanitize_tweet_text
+    self.tweet_text = Sanitize.clean(tweet_text).squish if tweet_text
   end
 
   def link_to_tweet

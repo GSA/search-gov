@@ -165,8 +165,15 @@ module SearchHelper
     raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
-  def tweet_link_with_click_tracking(html_safe_text, url, affiliate, query, position, vertical)
-    link_with_click_tracking(html_safe_text, url, affiliate, query, position, "TWEET", vertical)
+  def tweet_link_with_click_tracking(html_safe_text, url, twitter_url, affiliate, search, position, vertical)
+    affiliate_name = affiliate.name rescue ""
+    onmousedown = %Q[onmousedown="#{onmousedown_for_tweet_click_attribute(search.query, url, position, affiliate_name, 'TWEET', search.queried_at_seconds, vertical)}"]
+    raw "<a href=\"#{URI.escape(twitter_url)}\" #{onmousedown}>#{html_safe_text}</a>"
+  end
+
+  def onmousedown_for_tweet_click_attribute(query, url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    tracked_url = url ? "'#{URI.escape(url)}'" : 'this.href'
+    "return clk('#{h query}', #{tracked_url}, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)

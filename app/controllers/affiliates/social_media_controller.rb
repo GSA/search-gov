@@ -14,7 +14,7 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
     @profile =
         case params[:profile_type]
         when 'TwitterProfile'
-          TwitterProfile.find_or_initialize_by_screen_name(params[:social_media_profile])
+          TwitterProfile.where(:screen_name => params[:social_media_profile][:screen_name]).first_or_create
         when 'FacebookProfile', 'FlickrProfile', 'YoutubeProfile'
           @affiliate.send(:"#{params[:profile_type].underscore}s").build(params[:social_media_profile])
         end
@@ -25,6 +25,11 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
       end
     else
       @affiliate.twitter_profiles << @profile unless @affiliate.twitter_profiles.exists?(@profile)
+    end
+    case @profile.class.name
+    when 'TwitterProfile' then @affiliate.update_attributes!(:is_twitter_govbox_enabled => true)
+    when 'FlickrProfile' then @affiliate.update_attributes!(:is_photo_govbox_enabled => true)
+    when 'YoutubeProfile' then @affiliate.rss_feeds.managed.first.update_attributes!(:shown_in_govbox => true)
     end
     flash[:success] = "Added #{@profile.class.name.titleize}"
     redirect_to affiliate_social_media_path(@affiliate)

@@ -1,37 +1,22 @@
 module TwitterProfilesHelper
-  AUTO_LINK_RE = %r{
-    (?: ((?:ed2k|ftp|http|https|irc|mailto|news|gopher|nntp|telnet|webcal|xmpp|callto|feed|svn|urn|aim|rsync|tag|ssh|sftp|rtsp|afs):)// | www\. )
-    [^\s<]+
-  }x
-  BRACKETS = { ']' => '[', ')' => '(', '}' => '{' }
-  WORD_PATTERN = '\p{Word}'
-
-  # Copied from the rails_autolink gem; slightly simpler since we don't need to handle
-  # redundant calls to `auto_link'
-  def auto_link(tweet_text, query, index)
-    tweet_text.gsub(AUTO_LINK_RE) do
-      scheme, href = $1, $&
-      punctuation = []
-
-      # don't include trailing punctuation character as part of the URL
-      while href.sub!(/[^#{WORD_PATTERN}\/-]$/, '')
-        punctuation.push $&
-        if opening = BRACKETS[punctuation.last] and href.scan(opening).size > href.scan(punctuation.last).size
-          href << punctuation.pop
-          break
-        end
+  def render_tweet_text(tweet, search, index)
+    tweet_text = highlight_hit(tweet, :tweet_text)
+    if tweet.instance.urls.present?
+      processed_urls = []
+      tweet.instance.urls.each do |entity_url|
+        next if processed_urls.include?(entity_url.url)
+        processed_urls << entity_url.url
+        link = tweet_link_with_click_tracking(entity_url.display_url.html_safe, entity_url.expanded_url, entity_url.url, @affiliate, search, index, @search_vertical)
+        tweet_text.gsub!(/#{Regexp.escape(entity_url.url)}/, link)
       end
-
-      href = "http://#{href}" unless scheme
-
-      tweet_link_with_click_tracking(truncate(href.gsub(/^#{scheme}\/\//, '').html_safe, :length => 20), href, @affiliate, query, index, @search_vertical) + punctuation.reverse.join('')
     end
+    tweet_text
   end
 
-  def render_twitter_profile(profile, query, index)
+  def render_twitter_profile(profile, search, index)
     content = []
     content << profile.name
     content << content_tag(:span, " @#{profile.screen_name}", :class => 'screen-name')
-    raw(tweet_link_with_click_tracking(content.join("\n").html_safe, profile.link_to_profile, @affiliate, query, index, @search_vertical))
+    raw(tweet_link_with_click_tracking(content.join("\n").html_safe, nil, profile.link_to_profile, @affiliate, search, index, @search_vertical))
   end
 end

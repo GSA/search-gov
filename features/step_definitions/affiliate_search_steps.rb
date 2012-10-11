@@ -129,7 +129,15 @@ end
 
 Given /^the following Tweets exist:$/ do |table|
   table.hashes.each do |hash|
-    Tweet.create!(:tweet_text => hash[:tweet_text], :tweet_id => hash[:tweet_id], :published_at => Time.parse(hash[:published_at]), :twitter_profile_id => hash[:twitter_profile_id])
+    if hash[:url].present? and hash[:expanded_url].present? and hash[:display_url].present?
+      urls = [Twitter::Entity::Url.new(:url => hash[:url], :expanded_url => hash[:expanded_url], :display_url => hash[:display_url])]
+    else
+      urls = nil
+    end
+    Tweet.create!(:tweet_text => hash[:tweet_text],
+                  :tweet_id => hash[:tweet_id],
+                  :published_at => Time.parse(hash[:published_at]),
+                  :twitter_profile_id => hash[:twitter_profile_id], :urls => urls)
   end
   Tweet.reindex
 end

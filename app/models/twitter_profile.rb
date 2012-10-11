@@ -15,6 +15,10 @@ class TwitterProfile < ActiveRecord::Base
     "http://twitter.com/#{screen_name}"
   end
 
+  def self.twitter_ids_as_array
+    TwitterProfile.select(:twitter_id).collect(&:twitter_id)
+  end
+
   private
 
   def get_twitter_user
