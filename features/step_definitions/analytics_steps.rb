@@ -22,5 +22,7 @@ end
 
 Given /^the following NoResultsStats exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
   DailyQueryNoresultsStat.delete_all
-  table.hashes.each { |hash| DailyQueryNoresultsStat.create!(:day => hash["day"].to_date, :query => hash["query"], :times => hash["times"], :affiliate => affiliate_name, :locale => I18n.default_locale.to_s) }
+  table.hashes.each do |hash|
+    DailyQueryNoresultsStat.create!(:day => hash["day"].to_date, :query => hash["query"], :times => hash["times"], :affiliate => affiliate_name)
+  end
 end

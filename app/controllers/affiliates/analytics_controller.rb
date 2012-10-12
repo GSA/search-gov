@@ -10,6 +10,7 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @end_date = request["end_date"].blank? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["end_date"].to_date
     @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
     @popular_terms = DailyQueryStat.most_popular_terms(@affiliate.name, @start_date, @end_date, @num_results_dqs)
+    @popular_noresults_terms = DailyQueryNoresultsStat.most_popular_no_results_queries(@start_date, @end_date, @num_results_dqs, @affiliate.name)
   end
 
   def left_nav_usage

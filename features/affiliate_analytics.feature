@@ -15,6 +15,13 @@ Feature: Affiliate analytics
       | query 3  | 1111   | 2009-09-01 |
       | query 3  | 1112   | 2009-09-11 |
       | query 4  | 1113   | 2009-09-11 |
+    And the following NoResultsStats exist for affiliate "aff.gov":
+      | query    | times  | day        |
+      | nope 1   | 1110   | 2009-09-01 |
+      | nope 2   | 111    | 2009-09-01 |
+      | nope 3   | 1111   | 2009-09-01 |
+      | nope 3   | 1112   | 2009-09-11 |
+      | nope 4   | 1113   | 2009-09-11 |
     When I go to the affiliate admin page with "aff.gov" selected
     Then I should see "Site Analytics"
     When I follow "Query logs"
@@ -26,6 +33,11 @@ Feature: Affiliate analytics
     | Query       | Frequency |
     | query 4     | 1113      |
     | query 3     | 1112      |
+    And I should see "Queries with No Results"
+    And I should see the following table rows:
+    | Query       | Frequency |
+    | nope 4      | 1113      |
+    | nope 3      | 1112      |
     And I should not see "No queries matched"
 
   Scenario: No daily query stats available for any time period
