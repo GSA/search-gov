@@ -15,6 +15,7 @@
 #daily_top_queries.span-24
   = affiliate_analytics_daily_report_link(@affiliate.name, @end_date)
 
-.clear.span-8
-  %h2 Queries with No Results
-  = render :partial => "query_counts_table", :locals => { :query_counts => @popular_noresults_terms, :affiliate => @affiliate, :heading => ""}
+- if @popular_noresults_terms.present?
+  .clear.span-8
+    %h2 Queries with No Results
+    = render :partial => "query_counts_table", :locals => { :query_counts => @popular_noresults_terms, :affiliate => @affiliate, :heading => ""}
