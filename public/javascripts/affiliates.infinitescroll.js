@@ -127,7 +127,7 @@ jQuery(document).ready(function() {
   jQuery('#results').infinitescroll( {
     navSelector: '#usasearch_pagination',
     nextSelector: '#usasearch_pagination a.next_page',
-    itemSelector: '#results .searchresult, .results-by-logo',
+    itemSelector: '#results .searchresult, #results .image_result, .results-by-logo',
     loading: {
       img: '/images/infinite_scroll/ajax_loader.gif',
       msgText: '',

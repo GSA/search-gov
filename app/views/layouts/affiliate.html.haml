@@ -20,7 +20,7 @@
       = (javascript_include_tag "easyXDM/easyXDM.min.js").html_safe
       = (javascript_include_tag "jquery/jquery.targettop.js").html_safe
       = (javascript_include_tag "affiliates.embedded.js").html_safe
-    - if @search and (@search.instance_of?(WebSearch) or @search.instance_of?(SiteSearch))
+    - if @search and (@search.instance_of?(WebSearch) or @search.instance_of?(SiteSearch) or @search.instance_of?(ImageSearch))
       = (javascript_include_tag "jquery/jquery.infinitescroll.min.js").html_safe
       = (javascript_include_tag 'affiliates.infinitescroll.js').html_safe
     - unless @affiliate.nested_header_footer_css.blank?
