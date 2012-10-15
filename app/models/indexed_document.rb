@@ -150,7 +150,8 @@ class IndexedDocument < ActiveRecord::Base
     body = extract_body_from(doc)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
     description = generate_generic_description(body)
-    self.attributes = {:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
+    self.attributes = {:title => title, :description => description, :body => body, :doctype => 'html',
+                       :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
     discover_nested_docs(doc)
   end
 
@@ -166,7 +167,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def extract_body_from(nokogiri_doc)
-    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html))) rescue ''
+    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8')))) rescue ''
   end
 
   def scrub_inner_text(inner_text)
