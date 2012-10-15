@@ -9,12 +9,13 @@ class IndexedDomainTemplateDetector
   SUBSTRING_LENGTH_SIMILARITY_THRESHOLD_PCT = 75.0
 
   def self.perform(indexed_domain_id)
-    indexed_domain = IndexedDomain.find indexed_domain_id
-    indexed_domain_template_detector = IndexedDomainTemplateDetector.new(indexed_domain)
-    if (detected_substring = indexed_domain_template_detector.detect_common_substring)
-      common_substring = indexed_domain.common_substrings.find_or_initialize_by_substring(detected_substring.substring)
-      common_substring.saturation = detected_substring.saturation
-      common_substring.save!
+    if (indexed_domain = IndexedDomain.find_by_id indexed_domain_id)
+      indexed_domain_template_detector = IndexedDomainTemplateDetector.new(indexed_domain)
+      if (detected_substring = indexed_domain_template_detector.detect_common_substring)
+        common_substring = indexed_domain.common_substrings.find_or_initialize_by_substring(detected_substring.substring)
+        common_substring.saturation = detected_substring.saturation
+        common_substring.save!
+      end
     end
   end
 
