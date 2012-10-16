@@ -35,11 +35,17 @@ namespace :usasearch do
             twitter_client.follow(twitter_ids) do |status|
               logger.info "[#{Time.now}] [TWITTER] [FOLLOW] New tweet received: @#{status.user.screen_name}: #{status.text}"
               begin
-                Tweet.create(:tweet_id => status.id,
-                             :tweet_text => status.text,
-                             :published_at => status.created_at,
-                             :twitter_profile_id => status.user.id,
-                             :urls => status.urls) if TwitterProfile.exists?(:twitter_id => status.user.id)
+                if TwitterProfile.exists?(:twitter_id => status.user.id)
+                  urls = []
+                  urls << status.urls if status.urls.present?
+                  urls << status.media if status.media.present?
+                  urls.flatten!
+                  Tweet.create(:tweet_id => status.id,
+                               :tweet_text => status.text,
+                               :published_at => status.created_at,
+                               :twitter_profile_id => status.user.id,
+                               :urls => urls)
+                end
               rescue Exception => e
                 logger.error "[#{Time.now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=#{status.id}: #{e.message}"
               end
