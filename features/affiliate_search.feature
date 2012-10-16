@@ -416,6 +416,7 @@ Feature: Affiliate Search
       | SSA  | ssa.gov |
     And the following Agency Urls exist:
       | name | locale | url                         |
+      | SSA  | en     | http://ssa.gov/             |
       | SSA  | en     | http://www.ssa.gov/         |
       | SSA  | es     | http://www.ssa.gov/espanol/ |
     And I am logged in with email "aff@agency.gov" and password "random_string"
@@ -434,6 +435,7 @@ Feature: Affiliate Search
       | SSA  | ssa.gov |
     And the following Agency Urls exist:
       | name | locale | url                         |
+      | SSA  | en     | http://ssa.gov/             |
       | SSA  | en     | http://www.ssa.gov/         |
       | SSA  | es     | http://www.ssa.gov/espanol/ |
     When I am on usagov's search page
