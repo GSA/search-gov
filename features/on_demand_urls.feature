@@ -30,9 +30,9 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I follow "Next"
     Then I should see "aff.gov/crawled/10"
     And I should see the following table rows:
-      | URL                | Last Crawled | Status |
-      | aff.gov/.../space-suit | 11/02/2011   | OK     |
-      | aff.gov/.../rocket     | 11/01/2011   | Error  |
+      | URL                    | Last Crawled | Status |
+      | aff.gov/.../space-suit | 11/2/2011    | OK     |
+      | aff.gov/.../rocket     | 11/1/2011    | Error  |
 
     When there are 40 uncrawled IndexedDocuments for "aff.gov"
     And I go to the "aff site" affiliate page

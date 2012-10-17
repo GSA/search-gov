@@ -25,8 +25,8 @@ Feature: Featured Collections
     And I should see "Displaying 1 Best Bets: Graphics entry"
     And I should see "Add new graphics"
     And I should see "Lorem ipsum dolor sit amet,..."
-    And I should see "07/01/2011"
-    And I should see "07/01/2012"
+    And I should see "7/1/2011"
+    And I should see "7/1/2012"
     And I should see "Active"
     When there are 30 featured collections exist for the affiliate "site.gov":
       | locale | status |
@@ -75,8 +75,8 @@ Feature: Featured Collections
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Active"
-    And I should see "07/01/2011"
-    And I should see "07/01/2016"
+    And I should see "7/1/2011"
+    And I should see "7/1/2016"
     And I should see "One column"
     And I should see "weather"
     And I should see an image with alt text "hurricane logo"

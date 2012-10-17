@@ -29,12 +29,16 @@ class NewsItem < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, rss_feeds, since = nil, page = 1, per_page = 10, contributor = nil, subject = nil, publisher = nil)
+    def search_for(query, rss_feeds, since_or_time_range = nil, page = 1, per_page = 10, contributor = nil, subject = nil, publisher = nil)
+      time_range = {} unless since_or_time_range
+      time_range = since_or_time_range if since_or_time_range.is_a?(Hash)
+      time_range = { since: since_or_time_range } unless time_range
       sanitized_query = preprocess(query)
       return nil if rss_feeds.blank?
       excluded_urls = rss_feeds.first.affiliate.excluded_urls.collect { |url| url.url }
       instrument_hash = {:model => self.name, :term => sanitized_query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
-      instrument_hash.merge!(:since => since) if since
+      instrument_hash.merge!(:since => time_range[:since]) if time_range[:since]
+      instrument_hash.merge!(:until => time_range[:until]) if time_range[:until]
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
           fulltext sanitized_query do
@@ -42,7 +46,8 @@ class NewsItem < ActiveRecord::Base
             highlight :description, :fragment_size => 255
           end unless sanitized_query.blank?
           with(:rss_feed_id, rss_feeds.collect(&:id))
-          with(:published_at).greater_than(since) if since
+          with(:published_at).greater_than(time_range[:since]) if time_range[:since]
+          with(:published_at).less_than(time_range[:until]) if time_range[:until]
           without(:link).any_of excluded_urls unless excluded_urls.empty?
 
           %w(contributor subject publisher).each do |facet_name|

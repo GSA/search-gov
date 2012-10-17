@@ -18,7 +18,8 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
-    published_at = hash["published_ago"].blank? ? 1.day.ago : 1.send(hash["published_ago"]).ago
+    published_at = hash[:published_at].present? ? hash[:published_at] : nil
+    published_at ||= hash["published_ago"].blank? ? 1.day.ago : 1.send(hash["published_ago"]).ago
     rss_feed_url.news_items.create!(:rss_feed => rss_feed,
                                     :link => hash["link"],
                                     :title => hash["title"],

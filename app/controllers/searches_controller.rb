@@ -133,7 +133,11 @@ class SearchesController < ApplicationController
 
   def set_news_search_options
     @search_options = search_options_from_params(@affiliate, params)
-    @search_options.merge!(:contributor => params["contributor"], :subject => params["subject"], :publisher => params["publisher"])
+    @search_options.merge!(contributor: params[:contributor],
+                           subject: params[:subject],
+                           publisher: params[:publisher],
+                           since_date: params[:since_date],
+                           until_date: params[:until_date])
   end
 
   def adjust_mobile_mode

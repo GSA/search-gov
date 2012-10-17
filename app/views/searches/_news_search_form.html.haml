@@ -7,4 +7,7 @@
   = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
   = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
   = hidden_field_tag :affiliate, @affiliate.name
+  - if params[:since_date].present? || params[:until_date].present?
+    = hidden_field_tag :since_date, render_date(@search.since)
+    = hidden_field_tag :until_date, render_date(@search.until)
   = submit_tag(t(:search), :id => "search_button")

@@ -10,7 +10,7 @@
 
 = render_navigations(@affiliate, @search, search_params)
 - if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch)
-  - options_expanded = params[:tbs].present? || params[:contributor] || params[:publisher] || params[:subject]
+  - options_expanded = params[:tbs].present? || params[:contributor] || params[:publisher] || params[:subject] || params[:since_date].present? || params[:until_date].present?
   .options-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
     %span#show_options= t(:show_options)
     %span#hide_options= t(:hide_options)
@@ -20,11 +20,16 @@
     - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
     %ul{ :class => time_filters_css_class }
       %li
-        = link_to_if(params[:tbs], t(:all_time), rss_feed ? send(search_path_method, search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
+        = link_to_if(params[:tbs] || params[:since_date].present? || params[:until_date].present?, t(:all_time), rss_feed ? send(search_path_method, search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
           = content_tag :div, everything
       - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
-        %li{ :class => (extent == :year ? 'last' : nil) }
+        %li
           = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), send(search_path_method, search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
-            = content_tag :div, last_time
+            = content_tag :div, last_time, class: 'selected'
+      %li
+        = link_to_if(params[:since_date].blank? && params[:until_date].blank?, "#{I18n.t(:custom_range)}", '#', id: 'custom_range') do |title|
+          = content_tag :div, title, class: 'selected'
+      %li.nomarker
+        = render :partial => 'news_custom_date_range_search_form'
 
     = render_facet_navs(@affiliate, @search, search_path_method, search_params)

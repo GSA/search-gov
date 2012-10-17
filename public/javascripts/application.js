@@ -54,7 +54,9 @@ jQuery(document).ready(function () {
 
 jQuery(document).ready(function () {
     jQuery('#search_query').change(function() {
-        update_vertical_navigation_links(jQuery(this).attr('value'));
+      newValue = jQuery(this).val();
+      update_vertical_navigation_links(newValue);
+      jQuery('#left_column #cdr_query').val(newValue);
     });
 });
 
@@ -90,4 +92,21 @@ jQuery(document).ready(function() {
   jQuery('.more-facets-wrapper').click(function() {
     toggle_facets(this);
   });
+  jQuery('#left_column .time-filters #custom_range').click(function(event) {
+    event.preventDefault();
+    jQuery(this).addClass('selected');
+    jQuery('#cdr_search_form').slideDown();
+    jQuery('.time-filters li div').removeClass('selected');
+  });
+  jQuery('.time-filters li div').click(function(event) {
+    event.preventDefault();
+    if (jQuery(this).hasClass('selected')) {
+      return;
+    }
+    jQuery(this).addClass('selected');
+    jQuery('#left_column .time-filters #custom_range').removeClass('selected');
+    jQuery('#cdr_search_form').slideUp();
+  });
+  jQuery('.en #left_column #cdr_start_date').datepicker();
+  jQuery('.en #left_column #cdr_end_date').datepicker();
 });

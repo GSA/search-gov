@@ -39,30 +39,30 @@ Feature: Affiliate Search
       | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid       | published_ago | description                       | contributor   | publisher    | subject        |
-      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           | item First news item for the feed | president     | briefingroom | economy        |
-      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           | item Next news item for the feed  | vicepresident | westwing     | jobs           |
-      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 | day           | item Next news item for the feed  | firstlady     | newsroom     | health         |
-      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 | day           | item Next news item for the feed  | president     | newsroom     | foreign policy |
+      | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
     And feed "Photo Gallery" has the following news items:
-      | link                             | title       | guid  | published_ago | description                  |
+      | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     And feed "Videos" has the following news items:
-      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise |
-      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda  | elections |
+      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Noticias" has the following news items:
-      | link                              | title               | guid    | published_ago | description                                | subject        |
-      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           | Gobierno item First news item for the feed | economy        |
-      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           | Gobierno item Next news item for the feed  | jobs           |
-      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           | Gobierno item Next news item for the feed  | health         |
-      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           | Gobierno item Next news item for the feed  | foreign policy |
-      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | Gobierno item Next news item for the feed  | education      |
-      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | Gobierno item Next news item for the feed  | olympics       |
+      | link                              | title               | guid    | published_ago | published_at | description                                | subject        |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Gobierno item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Gobierno item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Gobierno item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Gobierno item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Gobierno item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | olympics       |
     And feed "Spanish Videos" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
       | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
@@ -123,6 +123,8 @@ Feature: Affiliate Search
     And I should not see "First item"
     When I follow "Last year" in the left column
     Then I should see "Videos" in the left column
+    And the "From:" field should be blank
+    And the "To:" field should be blank
     And I should not see a link to "Videos"
     And I should see "First video item"
     And I should not see "First item"
@@ -173,9 +175,11 @@ Feature: Affiliate Search
 
     When I am on bar.gov's news search page
     And I fill in "query" with "item"
-    And I press "Search"
+    And I press "Search" in the search box
     And I follow "Press"
     Then I should not see the left column options expanded
+    And the "From:" field should be blank
+    And the "To:" field should be blank
     When I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see "item First news item for the feed"
@@ -186,6 +190,43 @@ Feature: Affiliate Search
     And I should not see "item Last news item for the feed"
     And I should see "Related Searches" in the search results section
     And I should see "Search" button
+
+    When I am on bar.gov's search page
+    And I follow "Press"
+    Then I should see "Custom range"
+    And I should see "ex: 7/18/2009"
+    When I fill in "From:" with "9/30/2012"
+    And I fill in "To:" with "10/15/2012"
+    And I press "Search" in the left column
+    Then I should see the left column options expanded
+    And the "From:" field should contain "9/30/2012"
+    And the "To:" field should contain "10/15/2012"
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I fill in "query" with "item"
+    And I press "Search" in the search box
+    Then I should see the left column options expanded
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I am on es.bar.gov's search page
+    And I follow "Noticias"
+    Then I should see "Intervalo personalizado"
+    And I should see "por ejemplo, 18/7/2009"
+    When I fill in "Desde:" with "30/9/2012"
+    And I fill in "Hasta:" with "15/10/2012"
+    And I press "Buscar" in the left column
+    Then the "Desde:" field should contain "30/9/2012"
+    And the "Hasta:" field should contain "15/10/2012"
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
+
+    When I fill in "query" with "item"
+    And I press "Buscar" in the search box
+    Then I should see the left column options expanded
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
 
     When feed "Press" has the following news items:
       | link                             | title      | guid       | published_ago | description                       | contributor | publisher    | subject   |

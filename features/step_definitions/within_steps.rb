@@ -47,7 +47,8 @@
   'in the Super Admin page' => '.container',
   'in the form govbox' => '#form_govbox',
   'in the form govbox description' => '#form_govbox .description',
-  'in the social media list' => '#social_media_profiles'
+  'in the social media list' => '#social_media_profiles',
+  'in the search box' => '#search_box'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step_string|

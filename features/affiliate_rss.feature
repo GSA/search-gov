@@ -26,7 +26,7 @@ Feature: Affiliate RSS
     And I follow "Videos"
     Then I should see the following table rows:
       | URL                                                     | Last Crawled | Status |
-      | gdata.youtube.com/feeds/base/videos?author=usgovernment | 01/01/2012   | Error  |
+      | gdata.youtube.com/feeds/base/videos?author=usgovernment | 1/1/2012     | Error  |
 
   Scenario: Adding RSS feed
     Given the following Affiliates exist:

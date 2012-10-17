@@ -1,0 +1,21 @@
+- cdr_expanded = params[:since_date].present? || params[:until_date].present?
+= form_tag(@form_path, :method => :get, id: 'cdr_search_form', class: "#{cdr_expanded ? 'expanded' : nil}") do
+  .hide
+    = label_tag :cdr_query, nil, :class => 'hide'
+    = hidden_field_tag :query, @search.query, :id => 'cdr_query'
+    = hidden_field_tag :sc, 0, :id => 'cdr_sc'
+    = hidden_field_tag :locale, I18n.locale, :id => 'cdr_locale'
+    = hidden_field_tag :m, params[:m], :id => 'cdr_m'
+    = hidden_field_tag :channel, @search.rss_feed.id, id: 'cdr_channel' if @search.rss_feed
+    = hidden_field_tag :affiliate, @affiliate.name, id: 'cdr_affiliate'
+  %ul
+    %li
+      = label_tag :cdr_since_date, "#{t(:from)}:"
+      = text_field_tag :since_date, params[:since_date].present? || params[:until_date].present? ? render_date(@search.since) : nil, id: 'cdr_since_date'
+    %li
+      = label_tag :cdr_until_date, "#{t(:to)}:"
+      = text_field_tag :until_date, render_date(@search.until), id: 'cdr_until_date'
+    %li
+      %span #{I18n.t(:cdr_example)}
+    %li.button
+      = submit_tag(t(:search), :id => 'cdr_search_button')

@@ -23,8 +23,8 @@ Feature: Boosted Content
     And I should see "Add new text"
     And I should see the following table rows:
       | Title                          | URL                        | Publish Start | Status   |
-      | fresnel lens                   | www.hello.gov/fresnels.htm | 09/01/2011    | Inactive |
-      | Lorem ipsum dolor sit amet,... | www.hello.gov/there.htm    | 08/30/2011    | Active   |
+      | fresnel lens                   | www.hello.gov/fresnels.htm | 9/1/2011      | Inactive |
+      | Lorem ipsum dolor sit amet,... | www.hello.gov/there.htm    | 8/30/2011     | Active   |
     When I follow "fresnel lens"
     Then I should see "fresnel lens"
     And I should see "http://www.hello.gov/fresnels.htm"

@@ -245,6 +245,11 @@ body
         border-width: 0
         cursor: default
         padding: 3px 4px 3px 18px
+    li.nomarker
+      &:hover
+        background-color: transparent
+      div
+        border: 0
 
   ul.navigations
     padding: 12px 0 0
@@ -255,6 +260,42 @@ body
     padding: 12px 0
     &.no-active-nav
       border-top: 0
+    div
+      font-weight: normal
+      &.selected
+        font-weight: bold
+  #custom_range
+    font-weight: normal
+    &.selected
+      font-weight: bold
+  #cdr_search_form
+    display: none
+    font-size: 0.8em
+    &.expanded
+      display: block
+    ul
+      +clearfix
+      list-style: none
+      margin: 0
+      padding: 0 24px 0 18px
+    li
+      +clearfix
+      padding: 4px 4px 0 0
+      width: auto
+      &:hover
+        background-color: transparent
+      input
+        border: 1px solid #AAA
+        margin: 0
+        padding: 0
+        width: 100%
+      &.button
+        text-align: center
+        #cdr_search_button
+          +inline-block
+          font-weight: bold
+          padding: 2px 4px
+          width: auto
   ul.facet
     border-top: 1px solid #CACACA
     padding: 12px 0

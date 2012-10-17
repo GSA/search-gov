@@ -4,14 +4,31 @@ class NewsSearch < Search
   attr_reader :rss_feed,
               :hits,
               :since,
+              :until,
               :facets
 
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
     @channel = options[:channel]
-    @tbs = options[:tbs]
-    @since = since_when(@tbs)
+
+    if options[:until_date].present? || options[:since_date].present?
+      if options[:until_date].present?
+        @until = Time.strptime(options[:until_date], I18n.t(:cdr_format)).utc.end_of_day rescue Time.current.end_of_day
+      end
+
+      if options[:since_date].present?
+        @since = Time.strptime(options[:since_date], I18n.t(:cdr_format)).utc.beginning_of_day rescue nil
+        @since ||= @until ? @until.advance(years: -1).beginning_of_day : Time.current.advance(years: -1).beginning_of_day
+        @since, @until = @until.beginning_of_day, @since.end_of_day if @since and @until and @since > @until
+      end
+    end
+
+    if options[:tbs] and @since.nil? and @until.nil?
+      @tbs = options[:tbs]
+      @since = since_when(@tbs) if @tbs
+    end
+
     assign_rss_feed(options[:channel])
     if @rss_feed
       @rss_feeds = [@rss_feed]
@@ -25,11 +42,16 @@ class NewsSearch < Search
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, @since, @page, @per_page, @contributor, @subject, @publisher)
+    NewsItem.search_for(@query, @rss_feeds, { since: @since, until: @until }, @page, @per_page, @contributor, @subject, @publisher)
   end
 
   def cache_key
-    [@affiliate.id, @query, @channel, @tbs, @page, @per_page].join(':')
+    date_range = ''
+    if @since || @until
+      date_range << "#{@since.to_date.to_s}" if @since
+      date_range << "..#{@until.to_date.to_s}" if @until
+    end
+    [@affiliate.id, @query, @channel, date_range, @page, @per_page].join(':')
   end
 
   protected
@@ -71,7 +93,7 @@ class NewsSearch < Search
 
   def since_when(tbs)
     if tbs && (extent = NewsItem::TIME_BASED_SEARCH_OPTIONS[tbs])
-      1.send(extent).ago
+      1.send(extent).ago.to_time.beginning_of_day
     end
   end
 

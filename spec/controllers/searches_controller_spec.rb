@@ -436,6 +436,24 @@ describe SearchesController do
       it { should assign_to(:page_title).with('Current White House Blog - NPS Site Search Results') }
     end
 
+    context 'when searching with a date range' do
+      let(:channel_id) { rss_feeds(:white_house_blog).id }
+
+      before do
+        Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
+        news_search = mock(NewsSearch)
+        NewsSearch.should_receive(:new).
+            with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')).
+            and_return(news_search)
+        news_search.should_receive(:run)
+
+        get :news, query: 'element', affiliate: affiliate.name, channel: channel_id, tbs: 'w', since_date: '10/1/2012', until_date: '10/15/2012'
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:search_options).with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')) }
+    end
+
     describe "rendering the view" do
       render_views
 

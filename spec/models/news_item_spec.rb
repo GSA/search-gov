@@ -46,7 +46,7 @@ describe NewsItem do
     end
   end
 
-  describe "#search_for(query, rss_feeds, since = nil, page = 1, contributor, subject, publisher)" do
+  describe "#search_for(query, rss_feeds, since_or_time_range = nil, page = 1, contributor, subject, publisher)" do
     before do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
@@ -119,7 +119,7 @@ describe NewsItem do
     end
 
     context "when the 'since' parameter is specified" do
-      let(:since) { 2.days.ago }
+      let(:since) { 2.days.ago.freeze }
 
       it "should restrict results by when news was published" do
         search = NewsItem.search_for("policy", [@blog, @gallery], since)
@@ -131,6 +131,41 @@ describe NewsItem do
         ActiveSupport::Notifications.should_receive(:instrument).
             with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
         NewsItem.search_for("policy", [@blog, @gallery], since)
+      end
+    end
+
+    context "when the 'until' parameter is specified" do
+      let(:until_ts) { 2.days.ago.end_of_day.freeze }
+
+      it 'should restrict results by when news was published' do
+        search = NewsItem.search_for("policy", [@blog, @gallery], { until: until_ts })
+        search.total.should == 1
+        search.results.first.should == @blog_item
+      end
+
+      it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+            with("solr_search.usasearch", hash_including(:query => hash_including(until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
+        NewsItem.search_for("policy", [@blog, @gallery], { until: until_ts })
+      end
+    end
+
+    context "when the 'since' and 'until' parameters are specified" do
+      let(:since_ts) { 1.week.ago.end_of_day.freeze }
+      let(:until_ts) { 2.days.ago.end_of_day.freeze }
+
+      it 'should restrict results by when news was published' do
+        search = NewsItem.search_for("policy", [@blog, @gallery], { since: since_ts, until: until_ts })
+        search.total.should == 1
+        search.results.first.should == @blog_item
+
+        NewsItem.search_for("policy", [@blog, @gallery], { since: 1.month.ago, until: 1.week.ago }).total.should == 0
+      end
+
+      it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+            with("solr_search.usasearch", hash_including(:query => hash_including(since: since_ts, until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
+        NewsItem.search_for("policy", [@blog, @gallery], { since: since_ts, until: until_ts })
       end
     end
 
@@ -147,6 +182,12 @@ describe NewsItem do
     context "when query is blank" do
       it "should return with all items" do
         NewsItem.search_for('', [@blog, @gallery]).total.should == 2
+      end
+    end
+
+    context 'when since_or_date_range is an empty Hash' do
+      it "should return with all items" do
+        NewsItem.search_for('', [@blog, @gallery], {}).total.should == 2
       end
     end
   end
