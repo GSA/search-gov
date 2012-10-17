@@ -7,14 +7,13 @@ $(document).ready(function() {
     return;
   $(".usagov-search-autocomplete").autocomplete(usagov_sayt_url, {
     dataType: "jsonp",
-    // parse: function(data) {
-    //   var rows = new Array();
-    //   for (var i = 0; i < data.length; i++) {
-    //     rows[i] = {data:data[i], value:data[i], result:data[i]};
-    //   }
-    //   return rows;
-    // },
-    // TODO: Test this functionality!
+    parse: function(data) {
+      var rows = new Array();
+      for (var i = 0; i < data.length; i++) {
+        rows[i] = {data:data[i], value:data[i], result:data[i]};
+      }
+      return rows;
+    },
     formatItem: function(row, i, n) {
       return row;
     },

@@ -18,11 +18,11 @@ class Form < ActiveRecord::Base
 
   scope :has_landing_page, where("landing_page_url IS NOT NULL")
 
-  scope :sayt_for, lambda { |query, limit|
+  scope :sayt_for, lambda { |form_agency_ids, query, limit|
     select(%w(title landing_page_url number)).
-    where('title LIKE :first OR title LIKE :word OR number LIKE :first OR number LIKE :word', :first => "#{query}%", :word => "% #{query}%").
-    where("ISNULL(expiration_date) OR expiration_date >= DATE(NOW())").
-    order('number, title ASC').
+    where(:form_agency_id => form_agency_ids).
+    where('title LIKE :first OR number LIKE :first', :first => "%#{query}%").
+    order('number ASC, title ASC').
     limit(limit)
   }
 
@@ -72,7 +72,7 @@ class Form < ActiveRecord::Base
     end
   end
 
-  def number_and_title
-    "#{number}: #{title}"
+  def title_and_number
+    "#{title} (#{number})"
   end
 end

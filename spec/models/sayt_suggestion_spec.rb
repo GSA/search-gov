@@ -245,86 +245,8 @@ describe SaytSuggestion do
     end
   end
 
-  describe '#like_by_affiliate_id(affiliate_name, query, num_suggestions)' do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    context 'when sayt is enabled' do
-      let(:suggestions) { mock('suggestions') }
-
-      before do
-        Affiliate.should_receive(:exists?).
-            with(hash_including(:id => affiliate.id, :is_sayt_enabled => true)).
-            and_return(true)
-        SaytSuggestion.should_receive(:fetch_by_affiliate_id).
-            with(affiliate.id, 'child', 10).
-            and_return(suggestions)
-      end
-
-      it 'should return suggestions for that affiliate' do
-        SaytSuggestion.like_by_affiliate_id(affiliate.id, 'child', 10).should == suggestions
-      end
-    end
-
-    context 'when sayt is not enabled' do
-      before do
-        Affiliate.should_receive(:exists?).
-            with(hash_including(:id => affiliate.id, :is_sayt_enabled => true)).
-            and_return(false)
-        SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
-      end
-
-      it 'should not return suggestions for that affiliate' do
-        SaytSuggestion.like_by_affiliate_id(affiliate.id, 'child', 10).should be_empty
-      end
-    end
-  end
-
-  describe '#like_by_affiliate_name(affiliate_name, query, num_suggestions)' do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    context 'when affiliate_name is specified and sayt is enabled' do
-      let(:suggestions) { mock('suggestions') }
-      before do
-        Affiliate.should_receive(:find_by_name_and_is_sayt_enabled).
-            with(affiliate.name, true).
-            and_return(affiliate)
-
-        SaytSuggestion.should_receive(:fetch_by_affiliate_id).
-            with(affiliate.id, 'child', 10).
-            and_return(suggestions)
-      end
-
-      it 'should return suggestions for that affiliate' do
-        SaytSuggestion.like_by_affiliate_name(affiliate.name, 'child', 10).should == suggestions
-      end
-    end
-
-    context 'when affiliate_name is specified and sayt is not enabled' do
-      before do
-        Affiliate.should_receive(:find_by_name_and_is_sayt_enabled).
-            with(affiliate.name, true).
-            and_return(nil)
-
-        SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
-      end
-
-      it 'should not return suggestions for that affiliate' do
-        SaytSuggestion.like_by_affiliate_name(affiliate.name, 'child', 10).should be_blank
-      end
-    end
-  end
-
   describe '#fetch_by_affiliate_id(affiliate_id, query, num_suggestions)' do
     let(:affiliate) { affiliates(:power_affiliate) }
-
-    it 'should correct query misspelling' do
-      SaytSuggestion.create!(:phrase => 'child', :popularity => 10, :affiliate_id => affiliate.id)
-      SaytSuggestion.create!(:phrase => 'child care', :popularity => 1, :affiliate_id => affiliate.id)
-      SaytSuggestion.create!(:phrase => 'children', :popularity => 100, :affiliate_id => affiliate.id)
-      Misspelling.create!(:wrong => 'chold', :rite => 'child')
-
-      SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'chold', 10).should_not be_empty
-    end
 
     it 'should return empty array if there is no matching suggestion' do
       SaytSuggestion.create!(:phrase => 'child', :popularity => 10, :affiliate_id => affiliate.id)

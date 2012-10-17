@@ -30,6 +30,10 @@ module AffiliateHelper
     URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}").to_s
   end
 
+  def stylesheet_full_path(source)
+    URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}").to_s
+  end
+
   def render_affiliate_css_property_value(css_property_hash, property)
     css_property_hash[property].blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : css_property_hash[property]
   end

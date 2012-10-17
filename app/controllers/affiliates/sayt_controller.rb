@@ -53,7 +53,11 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
 
   def demo
     @affiliate = Affiliate.find_by_id(params[:affiliate_id])
-    render :layout => false
+    if params[:page].present? and params[:page] =~ /^[[:digit:]]$/
+      render(:template => "affiliates/sayt/demo#{params[:page]}", :layout => false)
+    else
+      render :layout => false
+    end
   end
 
   def destroy_all

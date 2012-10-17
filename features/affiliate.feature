@@ -1511,9 +1511,13 @@ Feature: Affiliate clients
   Scenario: Visiting Affiliate SAYT demo page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains | is_sayt_enabled |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | false           |
-    When I go to the affiliate sayt demo page for aff.gov
-    Then the page should have SAYT enabled for aff.gov
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | true            |
+    When I go to the affiliate sayt demo 1 page for aff.gov
+    Then I should see "Type-ahead Search Demo"
+    When I go to the affiliate sayt demo 2 page for aff.gov
+    Then I should see "Type-ahead Search Demo"
+    When I go to the affiliate sayt demo 3 page for aff.gov
+    Then I should see "Type-ahead Search Demo"
 
   Scenario: Visiting an affiliate search page
     Given the following Affiliates exist:

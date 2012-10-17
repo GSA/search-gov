@@ -18,7 +18,7 @@ class SaytController < ActionController::Metal
     else
       # Find the appropriate affiliate
       affiliate_id = if params[:name]
-        Affiliate.select(%w(id)).find_by_name_and_is_sayt_enabled(params[:name], true).try(:id)
+        Affiliate.select(:id).find_by_name_and_is_sayt_enabled(params[:name], true).try(:id)
       elsif params[:aid]
         Affiliate.exists?(:id => params[:aid], :is_sayt_enabled => true) && params[:aid].to_i
       end

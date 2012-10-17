@@ -22,7 +22,7 @@ class BoostedContent < ActiveRecord::Base
 
   scope :sayt_for, lambda { |query, affiliate_id, limit|
     select(%w(title url)).
-    where('publish_start_on <= DATE(NOW()) AND (title LIKE ? OR title LIKE ?) AND affiliate_id = ?', "#{query}%", "% #{query}%", affiliate_id).
+    where('publish_start_on <= DATE(NOW()) AND title LIKE ? AND affiliate_id = ?', "%#{query}%", affiliate_id).
     where('publish_end_on >= DATE(NOW()) OR ISNULL(publish_end_on)').
     order('title ASC').
     limit(limit)

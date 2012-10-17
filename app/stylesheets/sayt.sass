@@ -61,19 +61,20 @@
 .affiliate_autocomplete
   :border-top 0
 
-.default
-  .affiliate_autocomplete
-    .ui-menu-item
-      a, span
-        :font
-          :family verdana, verdana, sans-serif
-          :size 11px
-          :weight normal
-      a
-        :padding-left 4px
-
 .one-serp.default
   .affiliate_autocomplete
+    .ui-menu-item-separator
+      border-top: 1px solid #AAA
+      clear: left
+      display: block
+      float: left
+      margin: 0
+      padding: 0
+      width: 100%
+      span
+        :font
+          :family verdana, verdana, sans-serif
+        padding-left: 14px
     .ui-menu-item
       a, span
         :font
@@ -81,18 +82,9 @@
           :size 13px
           :weight normal
       a
-        :padding-left 12px
-
-.basic_gray
-  .affiliate_autocomplete
-    .ui-menu-item
-      a, span
-        :font
-          :family verdana, verdana, sans-serif
-          :size 14px
-          :weight normal
-      a
-        :padding-left 10px
+        :padding-left 14px
+        &.ui-state-hover, &.ui-state-active
+          :font-weight bold
 
 .program_autocomplete
   :border-top 0

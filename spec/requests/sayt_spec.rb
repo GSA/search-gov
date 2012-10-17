@@ -5,7 +5,7 @@ describe SaytController do
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:phrases) { ['lorem ipsum dolor sit amet', 'lorem ipsum sic transit gloria'].freeze }
-  let(:phrases_in_json) { phrases.map{|phrase| {:data => nil, :label => phrase, :section => 'default'}}.to_json.freeze }
+  let(:phrases_in_json) { phrases.to_json.freeze }
 
   before do
     SaytController.class_eval { def is_mobile_device?; false; end }

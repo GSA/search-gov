@@ -11,7 +11,7 @@
     - if @affiliate.is_sayt_enabled?
       = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
       = stylesheet_link_tag 'compiled/sayt.css'
-      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
+      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&extras=true&\";"
 
       = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
       = (javascript_include_tag "sayt-ui.js").html_safe

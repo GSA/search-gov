@@ -27,7 +27,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 
 var monkeyPatchAutocomplete = function(jQuery) {
   jQuery.ui.autocomplete.prototype._renderItem = function(ul, item) {
-    var re = new RegExp("^" + this.term);
+    var re = new RegExp("^" + this.term, "i");
     var t = item.label.replace(re, "<span style='color:#444444;font-weight:normal;'>" + this.term + "</span>");
     return jQuery("<li></li>")
       .data("item.autocomplete", item)

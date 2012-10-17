@@ -15,7 +15,7 @@ function monkeyPatchAutocomplete() {
       });
     } else {
       // If it's an SaytSuggestion, only highlight the beginning of the term
-      var re = new RegExp("^" + this.term);
+      var re = new RegExp("^" + this.term, "i");
       term = item.label.replace(re, "<span style='color:#444444;font-weight:normal;'>" + this.term + "</span>");
     }
     return jQuery("<li></li>")
@@ -33,7 +33,7 @@ function monkeyPatchAutocomplete() {
       if (item.section && item.section != section) {
         section = item.section;
         // Don't display anything for the 'default' section!
-        if (section != 'default') ul.append('<li class="ui-menu-item-separator">' + section + '</li>');
+        if (section != 'default') ul.append('<li class="ui-menu-item-separator"><span>' + section + '</span></li>');
       }
       autocomplete._renderItem(ul, item);
     });
@@ -85,7 +85,7 @@ jQuery(document).ready(function() {
   jQuery(".usagov-search-autocomplete").autocomplete({
     source: function(request, response) {
       jQuery.ajax({
-        url: usagov_sayt_url + "q=" + encodeURIComponent(request.term) + "&extras=yes",
+        url: usagov_sayt_url + "q=" + encodeURIComponent(request.term),
         dataType: "jsonp",
         success: response // The data comes back from the server in object form at this time
       });
@@ -106,9 +106,11 @@ jQuery(document).ready(function() {
       jQuery('.one-serp #search_query').addClass('has-sayt-suggestion');
       if (isSearchUsaDesktop) {
         jQuery('.ui-autocomplete').addClass('search_usa_autocomplete');
-        jQuery('.ui-autocomplete').css({ width: '617px' });
+        jQuery('.ui-autocomplete').css({ width: '621px' });
       } else if (isAffiliateDesktop) {
         jQuery('.ui-autocomplete').addClass('affiliate_autocomplete');
+        var inputWidth = jQuery('#search_query').outerWidth(false);
+        jQuery('.ui-autocomplete').css('width', (inputWidth - 1) + 'px');
       } else if (isMobile) {
         jQuery('.ui-autocomplete').addClass('mobile_autocomplete');
       } else if (isProgram) {
