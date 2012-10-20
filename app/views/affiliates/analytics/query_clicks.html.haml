@@ -17,6 +17,6 @@
         %tr
           %td
             = "#{idx+1}."
-            = link_to truncate(key, :length => 90), key
+            = link_to truncate(key, :length => 80), key
             = affiliate_click_queries_link(key, @affiliate, @start_date, @end_date)
           %td{:style => "text-align: right"}= value
