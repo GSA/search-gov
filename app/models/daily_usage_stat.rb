@@ -1,10 +1,7 @@
 class DailyUsageStat < ActiveRecord::Base
+  extend AffiliateDailyStats
   validates_presence_of :day, :affiliate
   validates_uniqueness_of :day, :scope => :affiliate
-
-  def self.most_recent_populated_date(affiliate_name)
-    maximum(:day, :conditions => ['affiliate=?', affiliate_name])
-  end
 
   def self.monthly_totals(year, month, affiliate_name = nil)
     report_date = Date.civil(year, month)

@@ -3,6 +3,6 @@
     Most Popular Queries
   .right.last
     %form
-      = display_select_for_date_range_window("dqs", num_results, start_date, end_date, affiliate)
+      = display_select_for_date_range_window("dqs", num_results, start_date, end_date, affiliate_analytics_path(affiliate))
 .clear.span-8
   = render :partial => "query_counts_table", :locals => { :query_counts => query_counts, :affiliate => affiliate, :heading => ""}

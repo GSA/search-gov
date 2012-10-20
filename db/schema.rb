@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016040050) do
+ActiveRecord::Schema.define(:version => 20121020000647) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -213,15 +213,24 @@ ActiveRecord::Schema.define(:version => 20121016040050) do
 
   add_index "connections", ["affiliate_id"], :name => "index_connections_on_affiliate_id"
 
-  create_table "daily_left_nav_stats", :force => true do |t|
-    t.integer "affiliate_id",                :null => false
-    t.date    "day",                         :null => false
-    t.string  "search_type",                 :null => false
-    t.string  "params"
-    t.integer "total",        :default => 0, :null => false
+  create_table "daily_click_stats", :force => true do |t|
+    t.string  "affiliate", :limit => 32,   :null => false
+    t.date    "day",                       :null => false
+    t.string  "url",       :limit => 2000, :null => false
+    t.integer "times",                     :null => false
   end
 
-  add_index "daily_left_nav_stats", ["affiliate_id", "day"], :name => "index_daily_left_nav_stats_on_affiliate_id_and_day"
+  add_index "daily_click_stats", ["affiliate", "day"], :name => "index_daily_click_stats_on_affiliate_and_day"
+
+  create_table "daily_left_nav_stats", :force => true do |t|
+    t.date    "day",                                      :null => false
+    t.string  "search_type",                              :null => false
+    t.string  "params"
+    t.integer "total",                     :default => 0, :null => false
+    t.string  "affiliate",   :limit => 32,                :null => false
+  end
+
+  add_index "daily_left_nav_stats", ["affiliate", "day"], :name => "index_daily_left_nav_stats_on_affiliate_and_day"
 
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
@@ -700,6 +709,17 @@ ActiveRecord::Schema.define(:version => 20121016040050) do
   add_index "news_items", ["link"], :name => "index_news_items_on_link"
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
   add_index "news_items", ["rss_feed_url_id"], :name => "index_news_items_on_rss_feed_url_id"
+
+  create_table "queries_clicks_stats", :force => true do |t|
+    t.string  "affiliate", :limit => 32,   :null => false
+    t.string  "query",                     :null => false
+    t.date    "day",                       :null => false
+    t.string  "url",       :limit => 2000, :null => false
+    t.integer "times",                     :null => false
+  end
+
+  add_index "queries_clicks_stats", ["affiliate", "query", "day"], :name => "aqd"
+  add_index "queries_clicks_stats", ["affiliate", "url", "day"], :name => "aud", :length => {"affiliate"=>nil, "url"=>255, "day"=>nil}
 
   create_table "recall_details", :force => true do |t|
     t.integer  "recall_id"

@@ -26,3 +26,17 @@ Given /^the following NoResultsStats exist for affiliate "([^\"]*)":$/ do |affil
     DailyQueryNoresultsStat.create!(:day => hash["day"].to_date, :query => hash["query"], :times => hash["times"], :affiliate => affiliate_name)
   end
 end
+
+Given /^affiliate "(.*?)" has the following DailyClickStats:$/ do |affiliate_name, table|
+  DailyClickStat.delete_all
+  table.hashes.each do |hash|
+    DailyClickStat.create!(:day => hash["day"].to_date, :url => hash["url"], :times => hash["times"], :affiliate => affiliate_name)
+  end
+end
+
+Given /^affiliate "(.*?)" has the following QueriesClicksStats:$/ do |affiliate_name, table|
+  QueriesClicksStat.delete_all
+  table.hashes.each do |hash|
+    QueriesClicksStat.create!(:day => hash["day"].to_date, :url => hash["url"], :query => hash["query"], :times => hash["times"], :affiliate => affiliate_name)
+  end
+end

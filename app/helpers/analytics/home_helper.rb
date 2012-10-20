@@ -13,12 +13,20 @@ module Analytics::HomeHelper
     base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
   end
 
-  def date_in_javascript_format(day)
-    [day.year, (day.month.to_i - 1), day.day].join(',')
+  def affiliate_query_clicks_link(query, affiliate, start_date, end_date)
+    title = "View top clicked URLs for this query term"
+    link = query_clicks_affiliate_analytics_path(affiliate, {:query => query, :start_date => start_date, :end_date => end_date})
+    link_to(image_tag("table_link.png", :alt => title, :size => "8x8"), link, :title => title)
   end
 
-  def analytics_path_prefix(affiliate)
-    "/affiliates/#{affiliate.id}/analytics"
+  def affiliate_click_queries_link(url, affiliate, start_date, end_date)
+    title = "View top query terms leading to this URL"
+    link = click_queries_affiliate_analytics_path(affiliate, {:url => url, :start_date => start_date, :end_date => end_date})
+    link_to(image_tag("table_link.png", :alt => title, :size => "8x8"), link, :title => title)
+  end
+
+  def date_in_javascript_format(day)
+    [day.year, (day.month.to_i - 1), day.day].join(',')
   end
 
   def monthly_report_filename(prefix, report_date)
@@ -28,7 +36,7 @@ module Analytics::HomeHelper
   def weekly_report_filename(prefix, report_date)
     "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}_weekly.csv"
   end
-  
+
   def daily_report_filename(prefix, report_date)
     "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
   end
@@ -39,7 +47,7 @@ module Analytics::HomeHelper
       "Download top queries for #{ report_date.to_s } (#{ link_to 'csv', s3_link(filename) })".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
     end
   end
-  
+
   def affiliate_analytics_weekly_report_links(affiliate_name, report_date)
     starts_of_weeks = [report_date.beginning_of_month.wday == 0 ? report_date.beginning_of_month : report_date.beginning_of_month + (7 - report_date.beginning_of_month.wday).days]
     while (starts_of_weeks.last + 7.days) <= report_date.end_of_month
@@ -57,8 +65,8 @@ module Analytics::HomeHelper
     "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
   end
 
-  def display_select_for_date_range_window(window, num_results, start_day, end_day, affiliate = nil)
-    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{analytics_path_prefix(affiliate)}/?start_date=#{start_day}&end_date=#{end_day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
+  def display_select_for_date_range_window(window, num_results, start_day, end_day, location_path)
+    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{location_path}/?start_date=#{start_day}&end_date=#{end_day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
   private

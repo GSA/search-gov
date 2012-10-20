@@ -1,6 +1,6 @@
 class DailyLeftNavStat < ActiveRecord::Base
-  validates_presence_of :affiliate_id, :day, :search_type, :total
-  belongs_to :affiliate
+  extend AffiliateDailyStats
+  validates_presence_of :affiliate, :day, :search_type, :total
   EVERYTHING = "Everything"
   ALL_TIME = "All Time"
 
@@ -9,7 +9,7 @@ class DailyLeftNavStat < ActiveRecord::Base
       return nil if end_date.nil? or start_date.nil? or affiliate.nil?
       web_hash, image_hash, docs_hash, news_hash = {}, {}, {}, {}
       sum(:total,
-          :conditions => ['day between ? AND ? AND affiliate_id = ?', start_date, end_date, affiliate.id],
+          :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate.name],
           :group => [:search_type, :params],
           :order => 'sum_total desc').each do |res|
         search_type, params = res.first
@@ -44,22 +44,6 @@ class DailyLeftNavStat < ActiveRecord::Base
       ary.join ','
     end
 
-    def most_recent_populated_date(affiliate)
-      maximum(:day, :conditions => ['affiliate_id = ?', affiliate.id])
-    end
-
-    def least_recent_populated_date(affiliate)
-      minimum(:day, :conditions => ['affiliate_id = ?', affiliate.id])
-    end
-
-    def available_dates_range(affiliate)
-      if (lrpd = least_recent_populated_date(affiliate))
-        lrpd..most_recent_populated_date(affiliate)
-      else
-        Date.yesterday..Date.yesterday
-      end
-    end
-
     def bulk_load(file_path, day_str)
       day = Date.parse day_str
       File.open(file_path).each do |line|
@@ -72,7 +56,7 @@ class DailyLeftNavStat < ActiveRecord::Base
         elsif path == '/search/docs'
           params = dc
         end
-        Affiliate.find_by_name(affiliate_name).daily_left_nav_stats.create(:day => day, :search_type => path, :params => params, :total => total) rescue next
+        create(:affiliate => affiliate_name, :day => day, :search_type => path, :params => params, :total => total) rescue next
       end
     end
   end

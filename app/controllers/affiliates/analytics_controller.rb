@@ -15,10 +15,35 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
 
   def left_nav_usage
     @title = "Page Views - "
-    @available_dates = DailyLeftNavStat.available_dates_range(@affiliate)
-    @end_date = request["end_date"].blank? ? DailyLeftNavStat.most_recent_populated_date(@affiliate) : request["end_date"].to_date
+    @available_dates = DailyLeftNavStat.available_dates_range(@affiliate.name)
+    @end_date = request["end_date"].blank? ? DailyLeftNavStat.most_recent_populated_date(@affiliate.name) : request["end_date"].to_date
     @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
     @json = DailyLeftNavStat.collect_to_json(@affiliate, @start_date, @end_date)
+  end
+
+  def query_clicks
+    @title = "Clicked URLs by Query - "
+    @end_date = request["end_date"].to_date
+    @start_date =  request["start_date"].to_date
+    @query = request["query"]
+    @top_urls = QueriesClicksStat.top_urls(@affiliate.name, @query, @start_date, @end_date)
+  end
+
+  def click_queries
+    @title = "Queries leading to Clicked URL - "
+    @end_date = request["end_date"].to_date
+    @start_date =  request["start_date"].to_date
+    @url = request["url"]
+    @top_queries = QueriesClicksStat.top_queries(@affiliate.name, @url, @start_date, @end_date)
+  end
+
+  def top_urls
+    @title = "Top Clicked URLs - "
+    @num_results_dcs = (request["num_results_dcs"] || "10").to_i
+    @available_dates = DailyClickStat.available_dates_range(@affiliate.name)
+    @end_date = request["end_date"].blank? ? DailyClickStat.most_recent_populated_date(@affiliate.name) : request["end_date"].to_date
+    @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
+    @top_urls = DailyClickStat.top_urls(@affiliate.name, @start_date, @end_date, @num_results_dcs)
   end
 
   def monthly_reports

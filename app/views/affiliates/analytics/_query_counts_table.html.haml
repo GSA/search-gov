@@ -17,4 +17,5 @@
         %td{:colspan=>2}
           = "#{idx+1+offset}."
           = affiliate_query_chart_link(query_count.query, affiliate)
+          = affiliate_query_clicks_link(query_count.query, affiliate, @start_date, @end_date)
         %td{:style => "text-align: right"}= query_count.times

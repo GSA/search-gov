@@ -19,7 +19,6 @@ class Affiliate < ActiveRecord::Base
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
-  has_many :daily_left_nav_stats, :dependent => :destroy
   has_many :affiliate_feature_addition, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy

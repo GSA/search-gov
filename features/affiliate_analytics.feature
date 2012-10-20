@@ -134,6 +134,67 @@ Feature: Affiliate analytics
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
 
+  Scenario: Viewing the Affiliate's Click Stats page
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email | contact_name |
+      | aff site     | aff.gov  | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following DailyClickStats:
+      | url                         | times |  day        |
+      | http://www.aff.gov/url1     | 10    | 2012-10-19  |
+      | http://www.aff.gov/url2     | 11    | 2012-10-19  |
+      | http://www.aff.gov/url3     | 12    | 2012-10-19  |
+      | http://www.aff.gov/url1     | 29    | 2012-10-18  |
+      | http://www.aff.gov/url2     | 18    | 2012-10-18  |
+      | http://www.aff.gov/url3     |  7    | 2012-10-18  |
+    And affiliate "aff.gov" has the following QueriesClicksStats:
+      | url                         | times |  day        |  query    |
+      | http://www.aff.gov/url1     | 5     | 2012-10-19  |  foo      |
+      | http://www.aff.gov/url2     | 50    | 2012-10-19  |  foo      |
+      | http://www.aff.gov/url1     | 4     | 2012-10-19  |  bar      |
+      | http://www.aff.gov/url1     | 2     | 2012-10-19  |  blat     |
+      | http://www.aff.gov/url1     | 15    | 2012-10-18  |  foo      |
+      | http://www.aff.gov/url2     | 25    | 2012-10-18  |  foo      |
+      | http://www.aff.gov/url1     | 2     | 2012-10-18  |  bar      |
+      | http://www.aff.gov/url1     | 1     | 2012-10-18  |  baz      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Click stats"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Top Clicked URLs
+    And I should see "Click Stats for aff site"
+    And I should see "Most Popular URLs"
+    And I should see the following table rows:
+      | URL                       | Clicks |
+      | http://www.aff.gov/url3   | 12     |
+      | http://www.aff.gov/url2   | 11     |
+      | http://www.aff.gov/url1   | 10     |
+
+    When I fill in "start_date" with "2012-10-18"
+    And I fill in "end_date" with "2012-10-19"
+    And I press "Submit"
+    Then I should see the following table rows:
+      | URL                       | Clicks |
+      | http://www.aff.gov/url1   | 39     |
+      | http://www.aff.gov/url2   | 29     |
+      | http://www.aff.gov/url3   | 19     |
+
+    When I follow "View top query terms leading to this URL"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Click Queries
+    And I should see "Top Queries leading to 'http://www.aff.gov/url1' for aff site from 2012-10-18 to 2012-10-19"
+    And I should see the following table rows:
+      | Query       | Total |
+      | foo         | 20    |
+      | bar         | 6     |
+      | blat        | 2     |
+      | baz         | 1     |
+
+    When I follow "View top clicked URLs for this query term"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Query Clicks
+    And I should see "Top Clicks on 'foo' for aff site from 2012-10-18 to 2012-10-19"
+    And I should see the following table rows:
+      | URL                       | Total  |
+      | http://www.aff.gov/url2   | 75     |
+      | http://www.aff.gov/url1   | 20     |
+
   Scenario: Viewing the Affiliate's Page Views page
     Given the following Affiliates exist:
       | display_name | name     | contact_email | contact_name |

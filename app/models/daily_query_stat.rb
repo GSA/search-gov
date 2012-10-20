@@ -1,4 +1,5 @@
 class DailyQueryStat < ActiveRecord::Base
+  extend AffiliateDailyStats
   extend Resque::Plugins::Priority
   @queue = :primary
   validates_presence_of :day, :query, :times, :affiliate
@@ -65,22 +66,6 @@ class DailyQueryStat < ActiveRecord::Base
                     :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
       results.collect { |hash| QueryCount.new(hash.first, hash.last) }
-    end
-
-    def most_recent_populated_date(affiliate_name)
-      maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
-    end
-
-    def least_recent_populated_date(affiliate_name)
-      minimum(:day, :conditions => ['affiliate = ?', affiliate_name])
-    end
-
-    def available_dates_range(affiliate_name)
-      if (lrpd = least_recent_populated_date(affiliate_name))
-        lrpd..most_recent_populated_date(affiliate_name)
-      else
-        Date.yesterday..Date.yesterday
-      end
     end
 
     def collect_query(query, start_date)
