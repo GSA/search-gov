@@ -17,15 +17,6 @@ class Form < ActiveRecord::Base
   end
 
   scope :has_landing_page, where("landing_page_url IS NOT NULL")
-
-  scope :sayt_for, lambda { |form_agency_ids, query, limit|
-    select(%w(title landing_page_url number)).
-    where(:form_agency_id => form_agency_ids).
-    where('title LIKE :first OR number LIKE :first', :first => "%#{query}%").
-    order('number ASC, title ASC').
-    limit(limit)
-  }
-
   scope :verified, where(:verified => true)
 
   searchable do
@@ -72,7 +63,15 @@ class Form < ActiveRecord::Base
     end
   end
 
-  def title_and_number
-    "#{title} (#{number})"
+  def self.sayt_for(affiliate_id, query, limit)
+    form_agency_ids = FormAgency.ids_by_affiliate_id(affiliate_id)
+    return [] if form_agency_ids.empty?
+
+    has_landing_page.verified.
+        select(%w(title landing_page_url number)).
+        where(:form_agency_id => form_agency_ids).
+        where('landing_page_url IS NOT NULL AND title LIKE ?', "#{query}%").
+        order('number ASC, title ASC').
+        limit(limit)
   end
 end

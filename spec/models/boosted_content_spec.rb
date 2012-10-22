@@ -247,7 +247,7 @@ describe BoostedContent do
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
+      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
@@ -332,7 +332,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
+      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0

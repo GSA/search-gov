@@ -258,7 +258,7 @@ class WebSearch < Search
         if qualify_for_form_fulltext_search?
           @forms = Form.search_for(query, {:form_agencies => affiliate.form_agency_ids, :verified => true, :count => 1})
         else
-          form_results = Form.where('title = ? AND form_agency_id IN (?)', query.squish, affiliate.form_agency_ids).limit(1)[0, 1]
+          form_results = Form.verified.where('title = ? AND form_agency_id IN (?)', query.squish, affiliate.form_agency_ids).limit(1)[0, 1]
           @forms = Struct.new(:total, :hits, :results).new(form_results.count, nil, form_results)
         end
       end

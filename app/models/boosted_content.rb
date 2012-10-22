@@ -20,14 +20,6 @@ class BoostedContent < ActiveRecord::Base
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
-  scope :sayt_for, lambda { |query, affiliate_id, limit|
-    select(%w(title url)).
-    where('publish_start_on <= DATE(NOW()) AND title LIKE ? AND affiliate_id = ?', "%#{query}%", affiliate_id).
-    where('publish_end_on >= DATE(NOW()) OR ISNULL(publish_end_on)').
-    order('title ASC').
-    limit(limit)
-  }
-
   searchable :auto_index => false do
     text :title, :stored => true, :boost => 10.0 do |boosted_content|
       boosted_content.title if (boosted_content.affiliate and boosted_content.affiliate.locale == "en")
@@ -104,6 +96,15 @@ class BoostedContent < ActiveRecord::Base
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
     end
   end
+
+  def self.sayt_for(affiliate_id, query, limit)
+    select(%w(title url)).
+        where('affiliate_id = ? AND title LIKE ?', affiliate_id, "#{query}%").
+        where('publish_start_on <= CURDATE() AND (publish_end_on >= CURDATE() OR ISNULL(publish_end_on))').
+        order('title ASC').
+        limit(limit)
+  end
+
   def as_json(options = {})
     {:title => title, :url => url, :description => description}
   end

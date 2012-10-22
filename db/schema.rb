@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020000647) do
+ActiveRecord::Schema.define(:version => 20121022010437) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20121020000647) do
     t.date     "publish_end_on"
   end
 
-  add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
+  add_index "boosted_contents", ["affiliate_id", "title"], :name => "index_boosted_contents_on_affiliate_id_and_title"
 
   create_table "catalog_prefixes", :force => true do |t|
     t.string   "prefix",     :null => false

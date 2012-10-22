@@ -1177,6 +1177,11 @@ describe WebSearch do
             f.url = 'fema.gov/some_form.pdf'
             f.description = 'contains the word FEMA'
           end
+          form_agency.forms.create!(:number => '70', :file_type => 'PDF') do |f|
+            f.title = 'Unverified Document'
+            f.url = 'fema.gov/some_form-800.pdf'
+            f.verified = false
+          end
         end
 
         context 'when the query qualifies for form search' do
@@ -1205,6 +1210,20 @@ describe WebSearch do
             search.forms.results.count.should == 1
             search.forms.results.first.number.should == '99'
             search.forms.results.first.title.should == 'Personal Property'
+          end
+        end
+
+        context 'when the query matches unverified form' do
+          let(:query) { 'Unverified Document' }
+
+          it 'should not return unverified forms' do
+            search.should_receive(:qualify_for_form_fulltext_search?).and_return(false)
+            Form.should_not_receive(:search_for)
+
+            search.run
+            search.forms.total.should == 0
+            search.forms.hits.should be_nil
+            search.forms.results.should be_empty
           end
         end
       end
