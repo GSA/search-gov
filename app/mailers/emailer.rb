@@ -3,6 +3,8 @@ class Emailer < ActionMailer::Base
   default_url_options[:host] = APP_URL
   DEVELOPERS_EMAIL = "developers@searchsi.com"
 
+  self.default bcc: DEVELOPERS_EMAIL
+
   def password_reset_instructions(user, host_with_port)
     setup_email(user.email, __method__)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token, :protocol => 'https', :host => host_with_port)
@@ -131,7 +133,7 @@ class Emailer < ActionMailer::Base
   end
 
   def affiliate_header_footer_change(affiliate)
-    recipients = affiliate.users.collect(&:email).join(', ') + ", #{DEVELOPERS_EMAIL}"
+    recipients = affiliate.users.collect(&:email).join(', ')
     setup_email(recipients, __method__)
     @affiliate = affiliate
     @subject = ERB.new(@email_template_subject).result(binding)
