@@ -325,7 +325,7 @@ class IndexedDocument < ActiveRecord::Base
         site_domain_url_fragment = "#{uri.scheme}://#{site_domain_url_fragment}" unless site_domain_url_fragment =~ %r{^https?://}i
         site_domain_url_fragment = "#{site_domain_url_fragment}/" unless site_domain_url_fragment.ends_with?("/")
         site_domain_uri = URI.parse(site_domain_url_fragment)
-        uri.host =~ /#{site_domain_uri.host}/i and uri.path =~ /#{site_domain_uri.path}/i
+        uri.host =~ /#{Regexp.escape(site_domain_uri.host)}$/i and uri.path =~ /^#{Regexp.escape(site_domain_uri.path)}/i
       end
     end
   end

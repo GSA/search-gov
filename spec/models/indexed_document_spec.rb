@@ -38,11 +38,19 @@ describe IndexedDocument do
     before do
       SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov/someurl")
       SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => ".mil")
+      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "www.ftc.gov")
     end
 
-    context "when URL of indexed document doen't match anything in affiliate's site domain list" do
+    context "when URL of indexed document doesn't match anything in affiliate's site domain list" do
       it "should find the record invalid" do
-        IndexedDocument.new(@valid_attributes.merge(:url => "http://www.blacklisted.gov/foo/http://www.whitelist.gov/someurl/page.pdf")).should_not be_valid
+        %w(http://www.blacklisted.gov/foo/http://www.whitelist.gov/someurl/page.pdf
+           whitelist.gov/blog/someurl/1.html
+           http://www.ftc.gov.backwards.u.is/doc.html
+           http://www1ftc.gov/doc.html).each do |url|
+          odie = IndexedDocument.new(@valid_attributes.merge(url: url))
+          odie.save.should be_false
+          odie.errors.full_messages.join(' ').should =~ /#{IndexedDocument::DOMAIN_MISMATCH_STATUS}/
+        end
       end
     end
 
