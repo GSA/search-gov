@@ -1,0 +1,25 @@
+= affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Trending Queries'] )
+
+%h1&= "Trending Queries for #{@affiliate.display_name} over the past day or so"
+= render_help_link(@help_link)
+
+%br
+- if @trending_queries.empty?
+  %p
+    No queries meet the criteria for trending queries right now.
+- else
+  .clear.span-8
+    %table.kv_pairs
+      %tr
+        %th Query
+        %th Twitter
+        %th News
+      - @trending_queries.each_with_index do |query, idx|
+        %tr
+          %td
+            = "#{idx+1}."
+            = affiliate_query_chart_link(query, @affiliate)
+            = affiliate_query_clicks_link(query, @affiliate, Date.yesterday, Date.current)
+
+          %td= twitter_query_link(query)
+          %td= google_news_query_link(query)

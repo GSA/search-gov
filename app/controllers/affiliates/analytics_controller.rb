@@ -46,6 +46,11 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @top_urls = DailyClickStat.top_urls(@affiliate.name, @start_date, @end_date, @num_results_dcs)
   end
 
+  def trending_queries
+    @title = "Today's Trending Queries - "
+    @trending_queries = DailyQueryStat.trending_queries(@affiliate.name)
+  end
+
   def monthly_reports
     @title = "Monthly Reports - "
     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.current

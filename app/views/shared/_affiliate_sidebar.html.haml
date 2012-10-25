@@ -38,6 +38,7 @@
         .side-block
           %h3 Site Analytics
           %ul
+            %li= link_to "Trending queries", trending_queries_affiliate_analytics_path(@affiliate)
             %li= link_to "Query logs", affiliate_analytics_path(@affiliate)
             %li= link_to "Click stats", top_urls_affiliate_analytics_path(@affiliate)
             %li= link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)

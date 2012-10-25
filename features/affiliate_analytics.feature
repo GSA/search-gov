@@ -195,6 +195,44 @@ Feature: Affiliate analytics
       | http://www.aff.gov/url2   | 75     |
       | http://www.aff.gov/url1   | 20     |
 
+  Scenario: Viewing trending queries for an affiliate
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist:
+      | query    | times  | days_back  | affiliate |
+      | missing  | 1110   |   2        | aff.gov   |
+      | trending | 111    |   2        | aff.gov   |
+      | downer   | 111    |   2        | aff.gov   |
+      | trending | 1111   |   1        | aff.gov   |
+      | new one  | 1112   |   1        | aff.gov   |
+      | downer   | 110    |   1        | aff.gov   |
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Trending queries"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Trending Queries
+    And I should see "Trending Queries for aff site over the past day or so"
+    And I should see the following table rows:
+      | Query       | Twitter  | News |
+      | new one     |          |      |
+      | trending    |          |      |
+
+  Scenario: When no trending queries exist for an affiliate
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist:
+      | query    | times  | days_back  | affiliate |
+      | missing  | 1110   |   2        | aff.gov   |
+      | downer   | 111    |   2        | aff.gov   |
+      | downer   | 110    |   1        | aff.gov   |
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Trending queries"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Trending Queries
+    And I should see "Trending Queries for aff site over the past day or so"
+    And I should see "No queries meet the criteria for trending queries right now."
+
   Scenario: Viewing the Affiliate's Page Views page
     Given the following Affiliates exist:
       | display_name | name     | contact_email | contact_name |

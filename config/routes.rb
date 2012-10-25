@@ -74,6 +74,7 @@ UsasearchRails3::Application.routes.draw do
         get :query_clicks
         get :click_queries
         get :top_urls
+        get :trending_queries
       end
     end
     resources :related_topics, :controller => "affiliates/related_topics" do

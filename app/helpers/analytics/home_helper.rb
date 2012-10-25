@@ -69,6 +69,18 @@ module Analytics::HomeHelper
     display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{location_path}/?start_date=#{start_day}&end_date=#{end_day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
+  def twitter_query_link(query)
+    title = "Twitter search results"
+    link = "http://twitter.com/search/#{query}"
+    link_to(image_tag("/images/govbox/twitter.png", :alt => title), link, :title => title)
+  end
+
+  def google_news_query_link(query)
+    title = "Google news results"
+    link = "https://news.google.com/news/search?q=#{query}"
+    link_to(image_tag("google.png", :alt => title), link, :title => title)
+  end
+
   private
 
   def display_select_for_window(tag_name, num_results, options_hash)
