@@ -66,7 +66,7 @@ describe 'sayt' do
                                description: 'Boosted Content Description',
                                url: 'http://agency.gov/boosted_content1.html',
                                status: 'active',
-                               publish_start_on: Date.current)
+                               publish_start_on: Date.today)
 
         BoostedContent.create!(affiliate_id: affiliate.id,
                                title: 'Lorem Boosted Content 2',
