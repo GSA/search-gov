@@ -46,7 +46,28 @@ describe DailyQueryStat do
     end
   end
 
-  describe '#most_popular_terms' do
+  describe ".trending_queries(affiliate_name)" do
+    before do
+      DailyQueryStat.delete_all
+      usagov = Affiliate::USAGOV_AFFILIATE_NAME
+      DailyQueryStat.create!(:day => Date.current - 2, :query => "trending", :times => 9, :affiliate => "another")
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "trending", :times => 900, :affiliate => "another")
+      DailyQueryStat.create!(:day => Date.current - 2, :query => "u.s. trending up-wards", :times => 9, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "u.s. trending up-wards", :times => 900, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 2, :query => "too long"*4, :times => 9, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "too long"*4, :times => 900, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 2, :query => 'probably "fake"', :times => 9, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => 'probably "fake"', :times => 900, :affiliate => usagov)
+    end
+
+    it "should filter out queries that are too long and/or have unusual punctuation" do
+      tqs = DailyQueryStat.trending_queries(Affiliate::USAGOV_AFFILIATE_NAME)
+      tqs.size.should == 1
+      tqs.first.should == "u.s. trending up-wards"
+    end
+  end
+
+  describe '.most_popular_terms' do
     context "when the table is populated" do
       before do
         DailyQueryStat.delete_all

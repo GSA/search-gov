@@ -70,7 +70,7 @@ class DailyQueryStat < ActiveRecord::Base
 
     def trending_queries(affiliate_name)
       old_date = Date.current - 2
-      sql = "select new.query, new.cnt, (new.cnt- ifnull(old.cnt,0)) diff from ( select query, sum(times) cnt from daily_query_stats where day>'#{old_date}' and affiliate='#{affiliate_name}' group by query having cnt >= 10) new left outer join ( select query, sum(times) cnt from daily_query_stats where day='#{old_date}' and affiliate='#{affiliate_name}' group by query) old on old.query=new.query where (new.cnt- ifnull(old.cnt,0)) > 0 order by diff desc limit #{RESULTS_SIZE}"
+      sql = "select new.query, new.cnt, (new.cnt- ifnull(old.cnt,0)) diff from ( select query, sum(times) cnt from daily_query_stats where day>'#{old_date}' and affiliate='#{affiliate_name}' and length(query) < 30 and query REGEXP '^[[...][.-.][:alnum:][:blank:]]+$' group by query having cnt >= 10) new left outer join ( select query, sum(times) cnt from daily_query_stats where day='#{old_date}' and affiliate='#{affiliate_name}' group by query) old on old.query=new.query where (new.cnt- ifnull(old.cnt,0)) > 0 order by diff desc limit #{RESULTS_SIZE}"
       ActiveRecord::Base.connection.execute(sql).collect(&:first)
     end
 

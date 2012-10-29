@@ -203,8 +203,10 @@ Feature: Affiliate analytics
     And the following DailyQueryStats exist:
       | query    | times  | days_back  | affiliate |
       | missing  | 1110   |   2        | aff.gov   |
+      | valid but "weird" | 111    |   2        | aff.gov   |
       | trending | 111    |   2        | aff.gov   |
       | downer   | 111    |   2        | aff.gov   |
+      | valid but "weird" | 1111   |   1        | aff.gov   |
       | trending | 1111   |   1        | aff.gov   |
       | new one  | 1112   |   1        | aff.gov   |
       | downer   | 110    |   1        | aff.gov   |
@@ -216,6 +218,7 @@ Feature: Affiliate analytics
       | Query       | Twitter  | News |
       | new one     |          |      |
       | trending    |          |      |
+    And I should not see "valid but"
 
   Scenario: When no trending queries exist for an affiliate
     Given the following Affiliates exist:
