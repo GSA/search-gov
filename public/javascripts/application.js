@@ -92,12 +92,14 @@ jQuery(document).ready(function() {
   jQuery('.more-facets-wrapper').click(function() {
     toggle_facets(this);
   });
+
   jQuery('#left_column .time-filters #custom_range').click(function(event) {
     event.preventDefault();
     jQuery(this).addClass('selected');
     jQuery('#cdr_search_form').slideDown();
     jQuery('.time-filters li div').removeClass('selected');
   });
+
   jQuery('.time-filters li div').click(function(event) {
     event.preventDefault();
     if (jQuery(this).hasClass('selected')) {
@@ -107,6 +109,16 @@ jQuery(document).ready(function() {
     jQuery('#left_column .time-filters #custom_range').removeClass('selected');
     jQuery('#cdr_search_form').slideUp();
   });
-  jQuery('.en #left_column #cdr_since_date').datepicker();
-  jQuery('.en #left_column #cdr_until_date').datepicker();
+
+  if (jQuery('#left_column .time-filters').length > 0) {
+    var enOptions = { dateFormat: 'm/d/yy' };
+    jQuery('.en #left_column #cdr_since_date').datepicker(enOptions);
+    jQuery('.en #left_column #cdr_until_date').datepicker(enOptions);
+
+    var dayNamesMin = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
+    var monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    var esOptions = { dateFormat: 'd/m/yy', monthNames: monthNames, dayNamesMin: dayNamesMin };
+    jQuery('.es #left_column #cdr_since_date').datepicker(esOptions);
+    jQuery('.es #left_column #cdr_until_date').datepicker(esOptions);
+  }
 });
