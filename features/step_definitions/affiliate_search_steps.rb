@@ -131,7 +131,7 @@ end
 Given /^the following Tweets exist:$/ do |table|
   table.hashes.each do |hash|
     if hash[:url].present? and hash[:expanded_url].present? and hash[:display_url].present?
-      urls = [Twitter::Entity::Url.new(:url => hash[:url], :expanded_url => hash[:expanded_url], :display_url => hash[:display_url])]
+      urls = [Struct.new(:display_url, :expanded_url, :url).new(hash[:display_url], hash[:expanded_url], hash[:url])]
     else
       urls = nil
     end

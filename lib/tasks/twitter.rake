@@ -40,11 +40,17 @@ namespace :usasearch do
                   urls << status.urls if status.urls.present?
                   urls << status.media if status.media.present?
                   urls.flatten!
+                  sanitized_urls = urls.select do |u|
+                    u.display_url.present? && u.expanded_url.present? && u.url.present?
+                  end.collect do |u|
+                    Struct.new(:display_url, :expanded_url, :url).new(u.display_url, u.expanded_url, u.url)
+                  end
+
                   Tweet.create(:tweet_id => status.id,
                                :tweet_text => status.text,
                                :published_at => status.created_at,
                                :twitter_profile_id => status.user.id,
-                               :urls => urls)
+                               :urls => sanitized_urls)
                 end
               rescue Exception => e
                 logger.error "[#{Time.now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=#{status.id}: #{e.message}"
