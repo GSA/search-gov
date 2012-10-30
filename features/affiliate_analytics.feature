@@ -236,6 +236,37 @@ Feature: Affiliate analytics
     And I should see "Trending Queries for aff site over the past day or so"
     And I should see "No queries meet the criteria for trending queries right now."
 
+  Scenario: Viewing low CTR queries for an affiliate
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist:
+      | query    | times  | days_back  | affiliate |
+      | zero ctr | 1110   |   1        | aff.gov   |
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Low CTR queries"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Low Click-Thru Rate (CTR) Queries
+    And I should see "Queries with low click-thru rates for aff site over the past day or so"
+    And I should see the following table rows:
+      | Query       | CTR%     |
+      | zero ctr    |   0%     |
+
+  Scenario: When no low CTR queries exist for an affiliate
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist:
+      | query    | times  | days_back  | affiliate |
+      | doesn't qualify  | 1110   |   2        | aff.gov   |
+      | nor this: one   | 111    |   2        | aff.gov   |
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Low CTR queries"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Low Click-Thru Rate (CTR) Queries
+    And I should see "Queries with low click-thru rates for aff site over the past day or so"
+    And I should see "No queries meet the criteria for low click-thru rate queries right now."
+
   Scenario: Viewing the Affiliate's Page Views page
     Given the following Affiliates exist:
       | display_name | name     | contact_email | contact_name |

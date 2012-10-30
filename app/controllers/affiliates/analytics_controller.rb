@@ -51,6 +51,11 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
     @trending_queries = DailyQueryStat.trending_queries(@affiliate.name)
   end
 
+  def low_ctr_queries
+    @title = "Today's Low Click-Thru Rate (CTR) Queries - "
+    @low_ctr_queries = DailyQueryStat.low_ctr_queries(@affiliate.name)
+  end
+
   def monthly_reports
     @title = "Monthly Reports - "
     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.current

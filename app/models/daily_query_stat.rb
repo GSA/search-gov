@@ -16,7 +16,7 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
     def reindex_day(day)
-      sum(:times, :group => :affiliate, :conditions=> ["day = ?", day], :order => "sum_times desc").each do | dqs |
+      sum(:times, :group => :affiliate, :conditions => ["day = ?", day], :order => "sum_times desc").each do |dqs|
         Resque.enqueue(DailyQueryStat, day, dqs[0])
       end
     end
@@ -24,7 +24,7 @@ class DailyQueryStat < ActiveRecord::Base
     def perform(day_string, affiliate_name)
       day = Date.parse(day_string)
       bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
-      Sunspot.index(all(:conditions=>["day=? and affiliate = ?", day, affiliate_name]))
+      Sunspot.index(all(:conditions => ["day=? and affiliate = ?", day, affiliate_name]))
     end
 
     def bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
@@ -74,8 +74,18 @@ class DailyQueryStat < ActiveRecord::Base
       ActiveRecord::Base.connection.execute(sql).collect(&:first)
     end
 
-    def collect_query(query, start_date)
-      generic_collection(["day >= ? AND query = ?", start_date, query])
+    def low_ctr_queries(affiliate_name)
+      oldest_day_to_consider = Date.current - 2
+      common_filter = "where affiliate='#{affiliate_name}' and day >= '#{oldest_day_to_consider}'"
+      sql = "select dqs.query query, 100 * ifnull(click_count,0) / query_count ctr from "+
+        "(select query, sum(times) query_count from daily_query_stats #{common_filter} "+
+        "and length(query) < 30 and query REGEXP '^[[...][.-.][:alnum:][:blank:]]+$' group by query having query_count > 10) dqs "+
+        "left outer join "+
+        "(select query, sum(times) click_count from queries_clicks_stats #{common_filter}  group by query) qcs on ( dqs.query = qcs.query) "+
+        "left outer join "+
+        "(select distinct query from daily_query_noresults_stats #{common_filter}) dqnrs on (dqs.query = dqnrs.query) "+
+        "where isnull(dqnrs.query) order by ctr limit #{RESULTS_SIZE}"
+      ActiveRecord::Base.connection.execute(sql).collect { |r| [r[0], r[1].to_i] }
     end
 
     def collect_affiliate_query(query, affiliate_name, start_date)
@@ -85,7 +95,7 @@ class DailyQueryStat < ActiveRecord::Base
     def generic_collection(conditions)
       results = sum(:times, :group => :day, :conditions => conditions, :order => "day")
       dqs=[]
-      results.each_pair { |day, times| dqs << new(:day=> day, :times => times) }
+      results.each_pair { |day, times| dqs << new(:day => day, :times => times) }
       dqs
     end
   end

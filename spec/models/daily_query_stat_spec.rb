@@ -46,9 +46,34 @@ describe DailyQueryStat do
     end
   end
 
+  describe ".low_ctr_queries(affiliate_name)" do
+    before do
+      usagov = Affiliate::USAGOV_AFFILIATE_NAME
+      DailyQueryStat.create!(:day => Date.current - 2, :query => "low ctr query", :times => 101, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "low ctr query", :times => 201, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "another low ctr query", :times => 201, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "zero ctr", :times => 21, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "zero ctr but too small", :times => 9, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "what is this?", :times => 201, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "got no results", :times => 201, :affiliate => usagov)
+      DailyQueryNoresultsStat.create!(:day => Date.current - 1, :query => "got no results", :times => 201, :affiliate => usagov)
+      QueriesClicksStat.create!(:affiliate => usagov, :query => "low ctr query", :day => Date.current - 1,
+                                :url => "http://www.gov.gov/1", :times => 14)
+      QueriesClicksStat.create!(:affiliate => usagov, :query => "another low ctr query", :day => Date.current - 1,
+                                :url => "http://www.gov.gov/2", :times => 17)
+    end
+
+    it "should filter out queries that are too long, have unusual punctuation, or are low volume" do
+      lows = DailyQueryStat.low_ctr_queries(Affiliate::USAGOV_AFFILIATE_NAME)
+      lows.size.should == 3
+      lows[0].should == ["zero ctr", 0]
+      lows[1].should == ["low ctr query", 4]
+      lows[2].should == ["another low ctr query", 8]
+    end
+  end
+
   describe ".trending_queries(affiliate_name)" do
     before do
-      DailyQueryStat.delete_all
       usagov = Affiliate::USAGOV_AFFILIATE_NAME
       DailyQueryStat.create!(:day => Date.current - 2, :query => "trending", :times => 9, :affiliate => "another")
       DailyQueryStat.create!(:day => Date.current - 1, :query => "trending", :times => 900, :affiliate => "another")
@@ -70,12 +95,12 @@ describe DailyQueryStat do
   describe '.most_popular_terms' do
     context "when the table is populated" do
       before do
-        DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        usagov = Affiliate::USAGOV_AFFILIATE_NAME
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9, :affiliate => usagov)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2, :affiliate => usagov)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1, :affiliate => usagov)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4, :affiliate => usagov)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => usagov)
       end
 
       let(:recent_date) { DailyQueryStat.most_recent_populated_date(Affiliate::USAGOV_AFFILIATE_NAME) }
@@ -132,25 +157,14 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#most_recent_populated_date" do
+  describe ".most_recent_populated_date" do
     it "should return the most recent date for an affiliate if an affiliate is passed in" do
       DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ?', 'nps.gov'])
       DailyQueryStat.most_recent_populated_date('nps.gov')
     end
   end
 
-  describe "#collect_query" do
-    let(:start_date) do
-      Date.yesterday.advance(:months => -1)
-    end
-
-    it "should filter results using affiliate_name and query" do
-      DailyQueryStat.should_receive(:generic_collection).with(['day >= ? AND query = ?', start_date, 'foo'])
-      DailyQueryStat.collect_query('foo', start_date)
-    end
-  end
-
-  describe "#collect_affiliate_query" do
+  describe ".collect_affiliate_query" do
     let(:start_date) do
       Date.yesterday.advance(:months => -1)
     end
@@ -161,7 +175,7 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#reindex_day(day)" do
+  describe ".reindex_day(day)" do
     before do
       ResqueSpec.reset!
       DailyQueryStat.delete_all
@@ -176,7 +190,7 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#perform(day_string, affiliate_name)" do
+  describe ".perform(day_string, affiliate_name)" do
     before do
       DailyQueryStat.delete_all
       DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
@@ -190,7 +204,7 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)" do
+  describe ".bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)" do
     before do
       DailyQueryStat.delete_all
       @first = DailyQueryStat.create!(:day => "20110828", :query => "government", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
