@@ -393,9 +393,9 @@ module SearchHelper
     search.facets.each do |facet|
       next unless facet.rows.any?
       facet_navs = []
-      facet_navs << content_tag(:li, dublin_core_attribute(affiliate, facet.name), :class => 'facet-name')
 
-      any_nav = link_to_unless search_params[facet.name.to_sym].blank?, 'Any', send(search_path_method, search_params.remove(facet.name.to_sym)) do |name|
+      facet_label = affiliate.dublin_core_mappings[facet.name].present? ? affiliate.dublin_core_mappings[facet.name] : t("facet.all_#{facet.name}s")
+      any_nav = link_to_unless search_params[facet.name.to_sym].blank?, facet_label, send(search_path_method, search_params.remove(facet.name.to_sym)) do |name|
         content_tag(:div, name, :class => 'selected')
       end
       facet_navs << content_tag(:li, any_nav.html_safe)

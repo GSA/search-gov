@@ -57,7 +57,7 @@ describe SaytController do
 
     context 'when sanitized_query is not empty and params[:aid] is valid' do
       it 'should do SaytSearch' do
-        Affiliate.should_receive(:exists?).with(id: affiliate.id.to_s, is_sayt_enabled: true).and_return(true)
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
         SaytSearch.should_receive(:new).
             with(hash_including(affiliate_id: affiliate.id,
                                 query: 'lorem ipsum',
@@ -72,7 +72,7 @@ describe SaytController do
 
     context 'when sanitized_query, params[:aid] and params[:extras] are present' do
       it 'should do SaytSearch' do
-        Affiliate.should_receive(:exists?).with(id: affiliate.id.to_s, is_sayt_enabled: true).and_return(true)
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
         SaytSearch.should_receive(:new).
             with(hash_including(affiliate_id: affiliate.id,
                                 query: 'lorem ipsum',
@@ -87,7 +87,7 @@ describe SaytController do
 
     context 'when sanitized_query is not empty and params[:aid] is not valid' do
       it 'should return blank' do
-        Affiliate.should_receive(:exists?).with(id: '0', is_sayt_enabled: true).and_return(false)
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with('0', true).and_return(nil)
         SaytSearch.should_not_receive(:new)
 
         get :index, :q => 'lorem // ipsum', :aid => 0
@@ -115,7 +115,7 @@ describe SaytController do
 
       context 'when sanitized_query is not empty and params[:aid] is valid' do
         it 'should do SaytSearch' do
-          Affiliate.should_receive(:exists?).with(id: affiliate.id.to_s, is_sayt_enabled: true).and_return(true)
+          Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
           SaytSearch.should_receive(:new).
               with(hash_including(affiliate_id: affiliate.id,
                                   query: 'lorem ipsum',

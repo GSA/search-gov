@@ -200,6 +200,9 @@ es:
   results_by_bing: 'Resultados por Bing'
   results_by_usasearch: 'Resultados por USASearch'
 
+  recommended_forms: 'Formularios recomendados'
+  recommended_pages: 'Páginas recomendadas'
+
   show_options: 'Mostrar opciones'
   hide_options: 'Ocultar opciones'
   show_more: 'Más'
@@ -209,6 +212,11 @@ es:
   to: 'Hasta'
   cdr_example: 'Ej. dd/mm/aaaa'
   cdr_format: '%d/%m/%Y'
+
+  facet:
+    all_contributors: 'Cualquier colaborador'
+    all_subjects: 'Cualquier tema'
+    all_publishers: 'Cualquier editor'
 
   date:
     formats:
@@ -238,29 +246,29 @@ es:
         one:  "Menos de un segundo"
         other: "Menos de %{count} segundos"
       x_seconds:
-        one:  "Desde hace un segundo"
-        other: "Desde hace %{count} segundos"
+        one:  "Hace un segundo"
+        other: "Hace %{count} segundos"
       less_than_x_minutes:
         one:  "Menos de un minuto"
         other: "Menos de %{count} minutos"
       x_minutes:
-        one:  "Desde hace un minuto"
-        other: "Desde hace %{count} minutos"
+        one:  "Hace un minuto"
+        other: "Hace %{count} minutos"
       about_x_hours:
-        one:  "Aproximadamente desde hace una hora"
-        other: "Aproximadamente desde hace %{count} horas"
+        one:  "Hace una hora"
+        other: "Hace %{count} horas"
       x_days:
-        one:  "Desde ayer"
-        other: "Desde hace %{count} días"
+        one:  "Ayer"
+        other: "Hace %{count} días"
       about_x_months:
-        one:  "Aproximadamente desde hace un mes"
-        other: "Aproximadamente desde hace %{count} meses"
+        one:  "Hace un mes"
+        other: "Hace %{count} meses"
       x_months:
-        one:  "Desde hace un mes"
-        other: "Desde hace %{count} meses"
+        one:  "Hace un mes"
+        other: "Hace %{count} meses"
       about_x_years:
-        one:  " Aproximadamente desde hace un año"
-        other: "Aproximadamente desde hace %{count} años"
+        one:  " Hace un año"
+        other: "Hace %{count} años"
       over_x_years:
         one:  "Más de un año"
         other: "Más de %{count} años"

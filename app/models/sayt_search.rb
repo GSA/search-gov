@@ -3,6 +3,7 @@ class SaytSearch
 
   def initialize(options)
     @affiliate_id = options[:affiliate_id]
+    @locale = options[:locale]
     @query = Misspelling.correct(options[:query])
     @remaining_results = options[:number_of_results] >= MIN_RESULTS_COUNT ? options[:number_of_results] : MIN_RESULTS_COUNT
     @extras = options[:extras]
@@ -33,13 +34,13 @@ class SaytSearch
 
   def get_form_results
     Form.sayt_for(@affiliate_id, @query, 2).collect do |f|
-      { section: 'Recommended Forms', label: "#{f.title} (#{f.number})", data: f.landing_page_url }
+      { section: I18n.t(:recommended_forms, locale: @locale), label: "#{f.title} (#{f.number})", data: f.landing_page_url }
     end
   end
 
   def get_boosted_content_results
     BoostedContent.sayt_for(@affiliate_id, @query, 2).collect do |b|
-      { section: 'Recommended Pages', label: b.title, data: b.url }
+      { section: I18n.t(:recommended_pages, locale: @locale), label: b.title, data: b.url }
     end
   end
 

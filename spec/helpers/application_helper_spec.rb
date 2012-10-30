@@ -36,10 +36,10 @@ describe ApplicationHelper do
         I18n.locale = :en
       end
       it "should use the Aproximadamente form" do
-        time_ago_in_words(4.hours.ago).should == "Aproximadamente desde hace 4 horas"
-        time_ago_in_words(33.days.ago).should == "Aproximadamente desde hace un mes"
-        time_ago_in_words(2.days.ago).should == "Desde hace 2 días"
-        time_ago_in_words(1.day.ago).should == "Desde ayer"
+        time_ago_in_words(4.hours.ago).should == "Hace 4 horas"
+        time_ago_in_words(33.days.ago).should == "Hace un mes"
+        time_ago_in_words(2.days.ago).should == "Hace 2 días"
+        time_ago_in_words(1.day.ago).should == "Ayer"
       end
     end
   end

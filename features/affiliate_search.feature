@@ -25,9 +25,9 @@ Feature: Affiliate Search
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | dublin_core_mappings  |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | {:contributor=>'Administration Official',:publisher => 'Briefing Room Section', :subject => 'Issue'} |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |                                                                                                      |
+      | display_name     | name       | contact_email | contact_name | locale |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                                  | is_navigable | shown_in_govbox |
       | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
@@ -96,18 +96,6 @@ Feature: Affiliate Search
     And I should see "Hide Options" in the left column
     And I should see "First item"
     And I should see "First video item"
-    And I should see "Administration Official"
-    And I should see "Issue"
-    And I should see "Briefing Room Section"
-    And I should see "Any" in the contributor facet selector
-    And I should see "firstlady" in the contributor facet selector
-    And I should see "president" in the contributor facet selector
-    And I should see "Any" in the subject facet selector
-    And I should see "economy" in the subject facet selector
-    And I should see "exercise" in the subject facet selector
-    And I should see "Any" in the publisher facet selector
-    And I should see "briefingroom" in the publisher facet selector
-    And I should see "westwing" in the publisher facet selector
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
@@ -123,8 +111,6 @@ Feature: Affiliate Search
     And I should not see "First item"
     When I follow "Last year" in the left column
     Then I should see "Videos" in the left column
-    And the "From:" field should be blank
-    And the "To:" field should be blank
     And I should not see a link to "Videos"
     And I should see "First video item"
     And I should not see "First item"
@@ -168,93 +154,6 @@ Feature: Affiliate Search
     And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
     And I should see yesterday's date in the English search results
 
-    When I follow "Last year"
-    And I follow "Everything"
-    Then I should see the browser page titled "item - bar site Search Results"
-    And I should not see "First hidden item"
-
-    When I am on bar.gov's news search page
-    And I fill in "query" with "item"
-    And I press "Search" in the search box
-    And I follow "Press"
-    Then I should not see the left column options expanded
-    And the "From:" field should be blank
-    And the "To:" field should be blank
-    When I follow "Last week"
-    Then I should see the browser page titled "item - bar site Search Results"
-    And I should see "item First news item for the feed"
-    And I should see "item Next news item for the feed"
-    And I should see the left column options expanded
-    And I should not see "More" in the left column
-    And I should not see "item More news items for the feed"
-    And I should not see "item Last news item for the feed"
-    And I should see "Related Searches" in the search results section
-    And I should see "Search" button
-
-    When I am on bar.gov's search page
-    And I follow "Press"
-    Then I should see "Custom range"
-    And I should see "Ex. mm/dd/yyyy"
-    When I fill in "From:" with "9/30/2012"
-    And I fill in "To:" with "10/15/2012"
-    And I press "Search" in the left column
-    Then I should see the left column options expanded
-    And the "From:" field should contain "9/30/2012"
-    And the "To:" field should contain "10/15/2012"
-    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
-    And I should not see a link to "Fourth item"
-
-    When I fill in "query" with "item"
-    And I press "Search" in the search box
-    Then I should see the left column options expanded
-    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
-    And I should not see a link to "Fourth item"
-
-    When I am on es.bar.gov's search page
-    And I follow "Noticias"
-    Then I should see "Elija las fechas"
-    And I should see "Ej. dd/mm/aaaa"
-    When I fill in "Desde:" with "30/9/2012"
-    And I fill in "Hasta:" with "15/10/2012"
-    And I press "Buscar" in the left column
-    Then the "Desde:" field should contain "30/9/2012"
-    And the "Hasta:" field should contain "15/10/2012"
-    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
-    And I should not see a link to "Sixth Spanish item"
-
-    When I fill in "query" with "item"
-    And I press "Buscar" in the search box
-    Then I should see the left column options expanded
-    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
-    And I should not see a link to "Sixth Spanish item"
-
-    When feed "Press" has the following news items:
-      | link                             | title      | guid       | published_ago | description                       | contributor | publisher    | subject   |
-      | http://www.whitehouse.gov/news/5 | Fifth item | pressuuid5 | day           | item Fifth news item for the feed | president   | briefingroom | education |
-    And I am on bar.gov's news search page
-    And I fill in "query" with "item"
-    And I press "Search"
-    And I follow "Press"
-    Then I should see "education" in the subject facet selector
-    And I should not see collapsible facet value in the subject facet selector
-    And I should not see "More" in the left column
-
-    When feed "Press" has the following news items:
-      | link                             | title      | guid       | published_ago | description                       | contributor | publisher    | subject  |
-      | http://www.whitehouse.gov/news/6 | Sixth item | pressuuid6 | day           | item Sixth news item for the feed | president   | briefingroom | olympics |
-    And I press "Search"
-    Then I should see "olympics" in the subject facet selector
-    And I should see 2 collapsible facet values in the subject facet selector
-    And I should see "More" in the left column
-
-    When I follow "olympics" in the subject facet selector
-    Then I should see the left column options expanded
-    And I should see a link to "Any" in the subject facet selector
-    And I should see "olympics" in the subject facet selector
-    And I should not see a link to "olympics" in the subject facet selector
-    And I should see 1 news result
-    And I should see "Sixth item"
-
     When I am on bar.gov's news search page
     And I fill in "query" with "item"
     And I press "Search"
@@ -296,9 +195,6 @@ Feature: Affiliate Search
     When I follow "Noticias sobre de 'gobierno'"
     Then I should see "Mostrar opciones" in the left column
     And I should see "Ocultar opciones" in the left column
-    And I should see 2 collapsible facet values in the subject facet selector
-    And I should see "Más" in the subject facet selector
-    And I should see "Menos" in the subject facet selector
     And I should see "Spanish item"
     And I should see "Spanish video item"
 
@@ -318,6 +214,365 @@ Feature: Affiliate Search
     And I should see an image with alt text "First Spanish video item"
     And I should see an image with src "http://i.ytimg.com/vi/EqExXXahb0s/2.jpg"
     And I should see yesterday's date in the Spanish search results
+
+  Scenario: Searching news items using time filters
+    Given the following Affiliates exist:
+      | display_name                 | name       | contact_email | contact_name | locale |
+      | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     |
+      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name          | url                                                                  | is_navigable | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         | true            |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        | false           |
+    And affiliate "es.bar.gov" has the following RSS feeds:
+      | name                  | url                                                                    | is_navigable | shown_in_govbox |
+      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
+      | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                     | true         | true            |
+      | Spanish Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
+    And feed "Photo Gallery" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
+    And feed "Videos" has the following news items:
+      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
+    And feed "Hide Me" has the following news items:
+      | link                                    | title             | guid        | published_ago | description                    |
+      | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
+    And feed "Noticias" has the following news items:
+      | link                              | title               | guid    | published_ago | published_at | description                                | subject        |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Gobierno item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Gobierno item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Gobierno item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Gobierno item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Gobierno item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | olympics       |
+    And feed "Spanish Photo Gallery" has the following news items:
+      | link                             | title       | guid    | published_ago | description                       |
+      | http://www.whitehouse.gov/news/3 | Third item  | esuuid7 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | esuuid8 | week          | item Last news item for the feed  |
+    And feed "Spanish Videos" has the following news items:
+      | link                                       | title                     | guid     | published_ago | description                           |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
+    And the following SAYT Suggestions exist for bar.gov:
+      | phrase           |
+      | Some Unique item |
+      | el paso term     |
+    When I am on bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search" in the search box
+    And I follow "Press"
+    Then I should not see the left column options expanded
+    And I should see "All Time" in the left column
+    And I should not see a link to "All Time" in the left column
+    And the "From:" field should be blank
+    And the "To:" field should be blank
+    When I follow "Last week"
+    Then I should see the left column options expanded
+    And I should see a link to "All Time" in the left column
+    And the "From:" field should be blank
+    And the "To:" field should be blank
+    And I should see the browser page titled "item - bar site Search Results"
+    And I should see "item First news item for the feed"
+    And I should see "item Next news item for the feed"
+    And I should not see "item More news items for the feed"
+    And I should not see "item Last news item for the feed"
+    And I should see "Related Searches" in the search results section
+    When I follow "Last year" in the left column
+    And I follow "Everything" in the left column
+    Then I should see the browser page titled "item - bar site Search Results"
+    And I should see "Last year" in the left column
+    And I should not see a link to "Last year" in the left column
+
+    When I am on bar.gov's search page
+    And I follow "Press"
+    Then I should see "Custom range"
+    And I should see "Ex. mm/dd/yyyy"
+    When I fill in "From:" with "9/30/2012"
+    And I fill in "To:" with "10/15/2012"
+    And I press "Search" in the left column
+    Then I should see the left column options expanded
+    And the "From:" field should contain "9/30/2012"
+    And the "To:" field should contain "10/15/2012"
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I fill in "query" with "item"
+    And I press "Search" in the search box
+    Then I should see the left column options expanded
+    And the "From:" field should contain "9/30/2012"
+    And the "To:" field should contain "10/15/2012"
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I follow "All Time" in the left column
+    Then I should not see the left column options expanded
+    And the "From:" field should be blank
+    And the "To:" field should be blank
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Buscar" in the search box
+    And I follow "Noticias"
+    Then I should not see the left column options expanded
+    And I should see "Cualquier fecha" in the left column
+    And I should not see a link to "Cualquier fecha" in the left column
+    And the "Desde:" field should be blank
+    And the "Hasta:" field should be blank
+    When I follow "Última semana"
+    Then I should see the left column options expanded
+    And I should see a link to "Cualquier fecha" in the left column
+    And the "Desde:" field should be blank
+    And the "Hasta:" field should be blank
+    And I should see the browser page titled "item - Spanish bar site resultados de la búsqueda"
+    And I should see "item First news item for the feed"
+    And I should see "item Next news item for the feed"
+    And I should not see "item More news items for the feed"
+    And I should not see "item Last news item for the feed"
+    When I follow "Último año" in the left column
+    And I follow "Todo" in the left column
+    Then I should see the browser page titled "item - Spanish bar site resultados de la búsqueda"
+    And I should see "Último año" in the left column
+    And I should not see a link to "Último año" in the left column
+
+    When I am on es.bar.gov's search page
+    And I follow "Noticias"
+    Then I should see "Elija las fechas"
+    And I should see "Ej. dd/mm/aaaa"
+    When I fill in "Desde:" with "30/9/2012"
+    And I fill in "Hasta:" with "15/10/2012"
+    And I press "Buscar" in the left column
+    Then I should see the left column options expanded
+    And the "Desde:" field should contain "30/9/2012"
+    And the "Hasta:" field should contain "15/10/2012"
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
+
+    When I fill in "query" with "item"
+    And I press "Buscar" in the search box
+    Then I should see the left column options expanded
+    And the "Desde:" field should contain "30/9/2012"
+    And the "Hasta:" field should contain "15/10/2012"
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
+
+  Scenario: Searching news items with default dublin core mappings
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | contact_name | locale |
+      | bar site         | en.bar.gov | aff@bar.gov   | John Bar     | en     |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+    And affiliate "en.bar.gov" has the following RSS feeds:
+      | name          | url                                                                  | is_navigable | shown_in_govbox |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+    And affiliate "es.bar.gov" has the following RSS feeds:
+      | name           | url                                                                    | is_navigable | shown_in_govbox |
+      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid       | published_ago | published_at | description                       | contributor | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president   | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | president   | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady   | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president   | speeches     | foreign policy |
+      | http://www.whitehouse.gov/news/5 | Fifth item  | pressuuid5 |               | 2012-10-17   | item Next news item for the feed  | president   | remarks      | foreign policy |
+      | http://www.whitehouse.gov/news/6 | Sixth item  | pressuuid6 |               | 2012-10-17   | item Next news item for the feed  | president   | statements   | foreign policy |
+    And feed "Videos" has the following news items:
+      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
+    And feed "Noticias" has the following news items:
+      | link                              | title               | guid    | published_ago | published_at | description                                | contributor | publisher    | subject        |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Gobierno item First news item for the feed | president   | briefingroom | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Gobierno item Next news item for the feed  | president   | westwing     | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           | 2012-10-01   | Gobierno item Next news item for the feed  | firstlady   | newsroom     | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | president   | speeches     | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | president   | remarks      | foreign policy |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | president   | statements   | foreign policy |
+    And feed "Spanish Videos" has the following news items:
+      | link                                       | title                     | guid     | published_ago | description                           | contributor | publisher | subject   |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed | president   | memoranda | elections |
+    When I am on en.bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    Then I should not see the left column options expanded
+    And I should see "All contributors" in the selected contributor facet selector
+    And I should not see a link to "All contributors" in the contributor facet selector
+    And I should not see collapsible facet value in the contributor facet selector
+    And I should see "All subjects" in the selected subject facet selector
+    And I should not see a link to "All subjects" in the subject facet selector
+    And I should not see collapsible facet value in the subject facet selector
+    And I should see "All publishers" in the selected publisher facet selector
+    And I should not see a link to "All publishers" in the publisher facet selector
+    And I should see 2 collapsible facet values in the publisher facet selector
+    And I should see "More" in the left column
+
+    When I follow "president" in the left column
+    Then I should see a link to "All contributors" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see "All subjects" in the left column
+    And I should not see a link to "All subjects" in the left column
+    And I should see "All publishers" in the left column
+    And I should not see a link to "All publishers" in the left column
+    And I should see "First item"
+    And I should see "Second item"
+    And I should see "Fourth item"
+    And I should not see "Third item"
+
+    When I fill in "From:" with "10/15/2012"
+    And I fill in "To:" with "10/31/2012"
+    And I press "Search" in the left column
+    Then the "From:" field should contain "10/15/2012"
+    And the "To:" field should contain "10/31/2012"
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see "Fourth item"
+    And I should not see "First item"
+    And I should not see "Second item"
+    And I should not see "Third item"
+
+    When I follow "foreign policy" in the left column
+    Then the "From:" field should contain "10/15/2012"
+    And the "To:" field should contain "10/31/2012"
+    And I should see a link to "All contributors" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see a link to "All subjects" in the left column
+    And I should see "foreign policy" in the left column
+    And I should not see a link to "foreign policy" in the left column
+    And I should see "All publishers" in the left column
+    And I should not see a link to "All publishers" in the left column
+    And I should see "Fourth item"
+    And I should not see "First item"
+    And I should not see "Second item"
+    And I should not see "Third item"
+
+    When I follow "remarks" in the left column
+    Then the "From:" field should contain "10/15/2012"
+    And the "To:" field should contain "10/31/2012"
+    And I should see a link to "All contributors" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see a link to "All subjects" in the left column
+    And I should see "foreign policy" in the left column
+    And I should not see a link to "foreign policy" in the left column
+    And I should see a link to "All publishers" in the left column
+    And I should see "remarks" in the left column
+    And I should not see a link to "remarks" in the left column
+    And I should see "Fifth item"
+    And I should not see "Fourth item"
+    And I should not see "Sixth item"
+
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Buscar"
+    And I follow "Noticias"
+    Then I should not see the left column options expanded
+    And I should see "Cualquier colaborador" in the left column
+    And I should not see a link to "Cualquier colaborador" in the left column
+    And I should not see collapsible facet value in the contributor facet selector
+    And I should see "Cualquier tema" in the left column
+    And I should not see a link to "Cualquier tema" in the left column
+    And I should see "Cualquier editor" in the left column
+    And I should not see collapsible facet value in the subject facet selector
+    And I should not see a link to "Cualquier editor" in the left column
+    And I should see 2 collapsible facet values in the publisher facet selector
+    And I should see "Más" in the left column
+
+    When I follow "president" in the left column
+    Then I should see a link to "Cualquier colaborador" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see "Cualquier tema" in the left column
+    And I should not see a link to "Cualquier tema" in the left column
+    And I should see "Cualquier editor" in the left column
+    And I should not see a link to "Cualquier editor" in the left column
+    And I should see "First Spanish item"
+    And I should see "Second Spanish item"
+    And I should see "Fourth Spanish item"
+    And I should not see "Third Spanish item"
+
+    When I fill in "Desde:" with "15/10/2012"
+    And I fill in "Hasta:" with "31/10/2012"
+    And I press "Buscar" in the left column
+    Then the "Desde:" field should contain "15/10/2012"
+    And the "Hasta:" field should contain "31/10/2012"
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see "Fourth Spanish item"
+    And I should not see "First Spanish item"
+    And I should not see "Second Spanish item"
+    And I should not see "Third Spanish item"
+
+    When I follow "foreign policy" in the left column
+    Then the "Desde:" field should contain "15/10/2012"
+    And the "Hasta:" field should contain "31/10/2012"
+    Then I should see a link to "Cualquier colaborador" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see a link to "Cualquier tema" in the left column
+    And I should see "foreign policy" in the left column
+    And I should not see a link to "foreign policy" in the left column
+    And I should see "Cualquier editor" in the left column
+    And I should not see a link to "Cualquier editor" in the left column
+    And I should see "Fourth Spanish item"
+    And I should not see "First Spanish item"
+    And I should not see "Second Spanish item"
+    And I should not see "Third Spanish item"
+
+    When I follow "remarks" in the left column
+    Then the "Desde:" field should contain "15/10/2012"
+    And the "Hasta:" field should contain "31/10/2012"
+    And I should see a link to "Cualquier colaborador" in the left column
+    And I should see "president" in the left column
+    And I should not see a link to "president" in the left column
+    And I should see a link to "Cualquier tema" in the left column
+    And I should see "foreign policy" in the left column
+    And I should not see a link to "foreign policy" in the left column
+    And I should see a link to "Cualquier editor" in the left column
+    And I should see "remarks" in the left column
+    And I should not see a link to "remarks" in the left column
+    And I should see "Fifth Spanish item"
+    And I should not see "Fourth Spanish item"
+    And I should not see "Sixth Spanish item"
+
+  Scenario: Searching news items with custom dublin core mappings
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | locale | dublin_core_mappings                                                                                 |
+      | bar site     | en.bar.gov | aff@bar.gov   | John Bar     | en     | {:contributor=>'Administration Official',:publisher => 'Briefing Room Section', :subject => 'Issue'} |
+    And affiliate "en.bar.gov" has the following RSS feeds:
+      | name  | url                                  | is_navigable | shown_in_govbox |
+      | Press | http://www.whitehouse.gov/feed/press | true         | true            |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid       | published_ago | published_at | description                       | contributor | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president   | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | president   | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady   | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president   | speeches     | foreign policy |
+    When I am on en.bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    Then I should not see the left column options expanded
+    And I should see "Administration Official" in the left column
+    And I should not see a link to "Administration Official" in the left column
+    And I should see "Issue" in the left column
+    And I should not see a link to "Issue" in the left column
+    And I should see "Briefing Room Section" in the left column
+    And I should not see a link to "Briefing Room Section" in the left column
 
   Scenario: Searching a domain with Bing results that match a specific news item
     Given the following Affiliates exist:

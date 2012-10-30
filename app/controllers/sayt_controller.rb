@@ -16,16 +16,16 @@ class SaytController < ActionController::Metal
     if sanitized_query.empty?
       self.response_body = ''
     else
-      affiliate_id = if params[:name]
-                       affiliate = Affiliate.select(:id).find_by_name_and_is_sayt_enabled(params[:name], true)
-                       affiliate ? affiliate.id : nil
-                     elsif params[:aid] && Affiliate.exists?(:id => params[:aid], :is_sayt_enabled => true)
-                       params[:aid].to_i
-                     end
+      affiliate = if params[:name]
+                    Affiliate.select([:id, :locale]).find_by_name_and_is_sayt_enabled(params[:name], true)
+                  elsif params[:aid]
+                    Affiliate.select([:id, :locale]).find_by_id_and_is_sayt_enabled(params[:aid], true)
+                  end
 
-      if affiliate_id
+      if affiliate
         options = {
-            affiliate_id: affiliate_id,
+            affiliate_id: affiliate.id,
+            locale: affiliate.locale,
             query: sanitized_query,
             number_of_results: is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE,
             extras: params[:extras].present?

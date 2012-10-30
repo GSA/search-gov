@@ -2358,9 +2358,9 @@ Feature: Affiliate clients
 
     When I go to aff.gov's search page
     And I follow "News" in the left column
-    Then I should see "Subject" in the left column
-    And I should see "Publisher" in the left column
-    And I should see "Contributor" in the left column
+    Then I should see "All subjects" in the left column
+    And I should see "All publishers" in the left column
+    And I should see "All contributors" in the left column
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"

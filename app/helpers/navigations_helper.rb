@@ -85,9 +85,4 @@ module NavigationsHelper
       content_tag(:div, feed_name)
     end
   end
-
-  def dublin_core_attribute(affiliate, facet_name)
-    mapping = affiliate.dublin_core_mappings[facet_name] || facet_name.to_s.titleize
-    content_tag(:div, mapping, :class => 'facet-name')
-  end
 end
