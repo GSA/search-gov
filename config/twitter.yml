@@ -1,0 +1,14 @@
+# TweetStream default configuration using usasearchdev account
+default:
+  username: 'usasearchdev'
+  password: '***REMOVED***tweet'
+  auth_method: !ruby/sym basic
+
+# TweetStream configuration for cron using usasearch account
+cron:
+  consumer_key: '***REMOVED***'
+  consumer_secret: '***REMOVED***'
+  oauth_token: '***REMOVED***'
+  oauth_token_secret: '***REMOVED***'
+  auth_method: !ruby/sym oauth
+

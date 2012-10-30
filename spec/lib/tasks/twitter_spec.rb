@@ -20,6 +20,48 @@ describe "Twitter rake tasks" do
         @rake[task_name].prerequisites.should include("environment")
       end
 
+      context 'configuring TweetStream' do
+        before { EM.stub!(:run) }
+
+        context 'when host argument is not specified' do
+          it 'should load default auth info' do
+            config = mock('config')
+            TweetStream.should_receive(:configure).and_yield(config)
+            config.should_receive(:username=).with('usasearchdev')
+            config.should_receive(:password=).with(kind_of(String))
+            config.should_receive(:auth_method=).with(:basic)
+
+            @rake[task_name].invoke
+          end
+        end
+
+        context 'when valid host argument is specified' do
+          it 'should load matching auth info' do
+            config = mock('config')
+            TweetStream.should_receive(:configure).and_yield(config)
+            config.should_receive(:consumer_key=).with(kind_of(String))
+            config.should_receive(:consumer_secret=).with(kind_of(String))
+            config.should_receive(:oauth_token=).with(kind_of(String))
+            config.should_receive(:oauth_token_secret=).with(kind_of(String))
+            config.should_receive(:auth_method=).with(:oauth)
+
+            @rake[task_name].invoke('cron')
+          end
+        end
+
+        context 'when invalid host argument is specified' do
+          it 'should load default auth info' do
+            config = mock('config')
+            TweetStream.should_receive(:configure).and_yield(config)
+            config.should_receive(:username=).with('usasearchdev')
+            config.should_receive(:password=).with(kind_of(String))
+            config.should_receive(:auth_method=).with(:basic)
+
+            @rake[task_name].invoke('doesnotexist')
+          end
+        end
+      end
+
       context "when connecting to Twitter" do
         let(:tweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status.json") }
         let(:tweet_status_with_partial_urls_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status_with_partial_urls.json") }

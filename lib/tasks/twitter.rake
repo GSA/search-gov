@@ -2,14 +2,15 @@ namespace :usasearch do
   namespace :twitter do
 
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
-    task :stream => [:environment] do
+    task :stream, [:host] => [:environment] do |t, args|
       logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/twitter.log")
       TweetStream.configure do |config|
-        config.consumer_key = '***REMOVED***'
-        config.consumer_secret = '***REMOVED***'
-        config.oauth_token = '***REMOVED***'
-        config.oauth_token_secret = '***REMOVED***'
-        config.auth_method = :oauth
+        twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
+        args.with_defaults(host: 'default')
+        auth_info = twitter_config[args.host] ? twitter_config[args.host] : twitter_config['default']
+        auth_info.each do |key, value|
+          config.send("#{key}=", value)
+        end
       end
 
       EM.run do
