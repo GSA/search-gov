@@ -107,6 +107,6 @@ jQuery(document).ready(function() {
     jQuery('#left_column .time-filters #custom_range').removeClass('selected');
     jQuery('#cdr_search_form').slideUp();
   });
-  jQuery('.en #left_column #cdr_start_date').datepicker();
-  jQuery('.en #left_column #cdr_end_date').datepicker();
+  jQuery('.en #left_column #cdr_since_date').datepicker();
+  jQuery('.en #left_column #cdr_until_date').datepicker();
 });
