@@ -38,50 +38,48 @@ describe Affiliates::TimelineController do
       before do
         UserSession.create(users(:affiliate_manager))
         @affiliate = affiliates(:power_affiliate)
-
-        @jobs_timeline = mock('jobs_timeline')
-        Timeline.should_receive(:load_affiliate_daily_query_stats).with('jobs', @affiliate.name).and_return(@jobs_timeline)
-
-        @last_jobs_timeline_day = Date.parse('2010-12-31')
-        dates = [@last_jobs_timeline_day.advance(:days => -1), @last_jobs_timeline_day]
-        @jobs_timeline.should_receive(:dates).and_return(dates)
+        DailyQueryStat.create!(:day => Date.current - 2, :query => "jobs", :times => 9, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.current - 1, :query => "jobs", :times => 900, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.current - 2, :query => "benefits", :times => 9, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.current - 1, :query => "benefits", :times => 900, :affiliate => @affiliate.name)
+        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
       end
 
       it "should assign @title" do
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
         assigns[:title].should_not be_blank
       end
 
       it "should assign @affiliate" do
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
         assigns[:affiliate].should == @affiliate
       end
 
       it "should assign @query" do
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
         assigns[:query].should == 'jobs'
       end
 
-      it "should assign @comparison_query" do
-        Timeline.should_receive(:load_affiliate_daily_query_stats).with('benefits', @affiliate.name).and_return('benefits_result')
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs', :comparison_query => 'benefits'
-        assigns[:comparison_query].should == 'benefits'
+      it "should assign @chart with a data column" do
+        assigns[:chart].should_not be_nil
+        assigns[:chart].data_table.cols[0].should == {:type=>"date", :label=>"Date"}
+        assigns[:chart].data_table.cols[1].should == {:type=>"number", :label=>"jobs"}
       end
 
-      it "should load affiliate daily query stats timeline" do
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
+      context "when comparison query is passed in" do
+        before do
+          get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs', :comparison_query => 'benefits'
+        end
+
+        it "should assign @comparison_query" do
+          assigns[:comparison_query].should == 'benefits'
+        end
+
+        it "should assign @chart with two data columns" do
+          assigns[:chart].should_not be_nil
+          assigns[:chart].data_table.cols[0].should == {:type=>"date", :label=>"Date"}
+          assigns[:chart].data_table.cols[1].should == {:type=>"number", :label=>"jobs"}
+          assigns[:chart].data_table.cols[2].should == {:type=>"number", :label=>"benefits"}
+        end
       end
 
-      it "should append results to @timelines" do
-        Timeline.should_receive(:load_affiliate_daily_query_stats).with('benefits', @affiliate.name).and_return('benefits_result')
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs', :comparison_query => 'benefits'
-        assigns[:timelines].should == [@jobs_timeline, 'benefits_result']
-      end
-
-      it "should assign @zoom_start_time to a month before the last date" do
-        get :show, :id => affiliates(:power_affiliate).id, :query => 'jobs'
-        assigns[:zoom_start_time].should == Date.parse('2010-11-30')
-      end
     end
   end
 end

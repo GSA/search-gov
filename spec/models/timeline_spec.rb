@@ -23,7 +23,7 @@ describe Timeline do
         timeline = Timeline.new("not in the database", @affiliate.name)
         timeline.dates.size.should == (Date.yesterday - start_date).to_i
         timeline.series.each do |timeline_entry|
-          timeline_entry.y.should == 0
+          timeline_entry.should == 0
         end
       end
 
@@ -33,7 +33,7 @@ describe Timeline do
           timeline = Timeline.new("not in the database", @affiliate.name, custom_start_date)
           timeline.dates.size.should == (Date.yesterday - custom_start_date).to_i
           timeline.series.each do |timeline_entry|
-            timeline_entry.y.should == 0
+            timeline_entry.should == 0
           end
         end
       end
@@ -49,7 +49,7 @@ describe Timeline do
         timeline = Timeline.new("foo", @affiliate.name)
         num_days = 1 + (Date.yesterday - start_date).to_i
         timeline.series.size.should == num_days
-        [1, 3, 10, 13, 14].each { |x| timeline.series[timeline.dates.index(Date.current.to_date - x.days)].y.should == 0 }
+        [1, 3, 10, 13, 14].each { |x| timeline.series[timeline.dates.index(Date.current.to_date - x.days)].should == 0 }
       end
     end
 
@@ -72,7 +72,7 @@ describe Timeline do
       it "should not prepend the data with zeros" do
         timeline = Timeline.new("foo", @affiliate.name)
         timeline.dates.first.should == start_date
-        timeline.series.first.y.should == 1
+        timeline.series.first.should == 1
       end
     end
 
@@ -86,7 +86,7 @@ describe Timeline do
       it "should not load data older than 13 months ago" do
         timeline = Timeline.new("foo", @affiliate.name)
         timeline.dates.first.should == start_date
-        timeline.series.first.y.should == 1
+        timeline.series.first.should == 1
       end
     end
 
@@ -113,7 +113,7 @@ describe Timeline do
         timeline = Timeline.new("foo", @affiliate.name)
         size= timeline.dates.size
         timeline.dates[size-1].should > timeline.dates[size-2]
-        timeline.series[timeline.dates.index(Date.yesterday)].y.should == 1
+        timeline.series[timeline.dates.index(Date.yesterday)].should == 1
       end
     end
 
@@ -128,7 +128,7 @@ describe Timeline do
       it "should combine non-default affiliate query stats" do
         timeline = Timeline.new("foo", @affiliate.name)
         timeline.dates.last.should == Date.yesterday
-        timeline.series.last.y.should == 1
+        timeline.series.last.should == 1
       end
     end
 

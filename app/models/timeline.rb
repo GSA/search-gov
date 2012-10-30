@@ -13,11 +13,11 @@ class Timeline
     pad_with_zeroes_from_to(start_date, date_marker - 1.day)
     results.each do |dqs|
       while (dqs.day != date_marker)
-        @series << Datum.new(:y => 0)
+        @series << 0
         @dates << date_marker
         date_marker += 1.day
       end
-      @series << Datum.new( :y => dqs.times)
+      @series << dqs.times
       @dates << dqs.day
       date_marker += 1.day
     end
@@ -30,7 +30,7 @@ class Timeline
   def pad_with_zeroes_from_to(from_date, to_date)
     return unless to_date >= from_date
     from_date.upto(to_date) do |day|
-      @series << Datum.new(:y => 0)
+      @series << 0
       @dates << day
     end
   end

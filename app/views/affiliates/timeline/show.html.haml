@@ -1,5 +1,2 @@
-= content_for :head do
- = setup_google_visualizations
-
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Query Timeline'])
-= render :partial => 'timeline', :locals => {:url_for_timeline => affiliate_query_timeline_path(@affiliate, @query), :timeline_options => {:width => 660, :height => 300, :zoom_start_time => @zoom_start_time}}
+= render :partial => 'timeline', :locals => {:url_for_timeline => affiliate_query_timeline_path(@affiliate, @query), :timeline_options => {:width => 660, :height => 300}}

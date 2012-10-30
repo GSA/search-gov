@@ -50,6 +50,7 @@ gem 'dynamic_form'
 gem 'newrelic_rpm'
 gem 'american_date'
 gem 'sass'
+gem "google_visualr", ">= 2.1"
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
