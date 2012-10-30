@@ -37,10 +37,19 @@ namespace :usasearch do
               logger.info "[#{Time.now}] [TWITTER] [FOLLOW] New tweet received: @#{status.user.screen_name}: #{status.text}"
               begin
                 if TwitterProfile.exists?(:twitter_id => status.user.id)
+                  if status.retweet?
+                    original_status = status.retweeted_status
+                    text = "RT @#{original_status.user.screen_name}: #{original_status.text}"
+                  else
+                    original_status = status
+                    text = original_status.text
+                  end
+
                   urls = []
-                  urls << status.urls if status.urls.present?
-                  urls << status.media if status.media.present?
+                  urls << original_status.urls if original_status.urls.present?
+                  urls << original_status.media if original_status.media.present?
                   urls.flatten!
+
                   sanitized_urls = urls.select do |u|
                     u.display_url.present? && u.expanded_url.present? && u.url.present?
                   end.collect do |u|
@@ -48,8 +57,8 @@ namespace :usasearch do
                   end
 
                   Tweet.create(:tweet_id => status.id,
-                               :tweet_text => status.text,
-                               :published_at => status.created_at,
+                               :tweet_text => text,
+                               :published_at => original_status.created_at,
                                :twitter_profile_id => status.user.id,
                                :urls => sanitized_urls)
                 end

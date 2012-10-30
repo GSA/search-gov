@@ -65,6 +65,7 @@ describe "Twitter rake tasks" do
       context "when connecting to Twitter" do
         let(:tweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status.json") }
         let(:tweet_status_with_partial_urls_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status_with_partial_urls.json") }
+        let(:retweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/retweet_status.json") }
 
         before(:each) do
           Time.stub!(:now).and_return(now)
@@ -127,8 +128,23 @@ describe "Twitter rake tasks" do
           @rake[task_name].invoke
           Tweet.count.should == 1
           tweet = Tweet.first
+          tweet.twitter_profile_id.should == 123
+          tweet.tweet_id.should == 258289885373423617
           tweet.tweet_text.should == 'Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M'
           tweet.urls.collect(&:display_url).should == %w(pic.twitter.com/y5YSDq7M)
+        end
+
+        it 'should handle retweet' do
+          @stream.stub!(:each).and_yield(retweet_status_json)
+          @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: RT @femaregion1: East Coast accounts giving specific #Sandy safety tips @femaregion1 @femaregion2 @FEMAregion3 @femaregion4 http://t.co/ ...")
+          @rake[task_name].invoke
+          Tweet.count.should == 1
+          tweet = Tweet.first
+          tweet.twitter_profile_id.should == 123
+          tweet.tweet_id.should == 263164794574626816
+          tweet.tweet_text.should == "RT @femaregion1: East Coast accounts giving specific #Sandy safety tips @femaregion1 @femaregion2 @FEMAregion3 @femaregion4 http://t.co/odIp5fl7\u2026"
+          tweet.urls.collect(&:display_url).should == %w(fema.gov/colorbox/node/)
         end
 
         it "should log an error if something goes wrong in creating a Tweet" do
