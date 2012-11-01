@@ -194,7 +194,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I follow "Press"
     Then I should see "Custom range"
-    And I should see "ex: 7/18/2009"
+    And I should see "Ex. mm/dd/yyyy"
     When I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
     And I press "Search" in the left column
@@ -212,8 +212,8 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I follow "Noticias"
-    Then I should see "Intervalo personalizado"
-    And I should see "por ejemplo, 18/7/2009"
+    Then I should see "Elija las fechas"
+    And I should see "Ej. dd/mm/aaaa"
     When I fill in "Desde:" with "30/9/2012"
     And I fill in "Hasta:" with "15/10/2012"
     And I press "Buscar" in the left column
