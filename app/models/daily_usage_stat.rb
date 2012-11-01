@@ -5,10 +5,8 @@ class DailyUsageStat < ActiveRecord::Base
 
   def self.monthly_totals(year, month, affiliate_name = nil)
     report_date = Date.civil(year, month)
-    if affiliate_name
-      DailyUsageStat.sum(:total_queries, :conditions => [ "(day between ? and ?) AND affiliate = ?", report_date.beginning_of_month, report_date.end_of_month, affiliate_name ])
-    else
-      DailyUsageStat.sum(:total_queries, :conditions => [ "(day between ? and ?)", report_date.beginning_of_month, report_date.end_of_month ])
-    end
+    affiliate_clause = affiliate_name ? "affiliate = #{affiliate_name} AND" : ""
+    DailyUsageStat.sum(:total_queries, :conditions => ["#{affiliate_clause} (day between ? and ?)",
+                                                       report_date.beginning_of_month, report_date.end_of_month])
   end
 end
