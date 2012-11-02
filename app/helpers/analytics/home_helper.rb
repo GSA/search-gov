@@ -78,7 +78,13 @@ module Analytics::HomeHelper
   def google_news_query_link(query)
     title = "Google news results"
     link = "https://news.google.com/news/search?q=#{query}"
-    link_to(image_tag("google.png", :alt => title), link, :title => title)
+    link_to(image_tag("google_news.png", :alt => title), link, :title => title)
+  end
+
+  def google_trends_query_link(query)
+    title = "Google trends"
+    link = "https://www.google.com/trends/explore#q=#{query}"
+    link_to(image_tag("google_trends.png", :alt => title), link, :title => title)
   end
 
   private

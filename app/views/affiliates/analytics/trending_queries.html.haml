@@ -14,6 +14,7 @@
         %th Query
         %th Twitter
         %th News
+        %th Trends
       - @trending_queries.each_with_index do |query, idx|
         %tr
           %td
@@ -23,3 +24,4 @@
 
           %td= twitter_query_link(query)
           %td= google_news_query_link(query)
+          %td= google_trends_query_link(query)

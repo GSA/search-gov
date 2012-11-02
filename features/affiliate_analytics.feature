@@ -215,9 +215,9 @@ Feature: Affiliate analytics
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Trending Queries
     And I should see "Trending Queries for aff site over the past day or so"
     And I should see the following table rows:
-      | Query       | Twitter  | News |
-      | new one     |          |      |
-      | trending    |          |      |
+      | Query       | Twitter  | News | Trends |
+      | new one     |          |      |        |
+      | trending    |          |      |        |
     And I should not see "valid but"
 
   Scenario: When no trending queries exist for an affiliate
