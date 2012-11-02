@@ -105,7 +105,7 @@ end
 
 Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |duration, locale|
   date = Date.current.send(duration.to_sym)
-  date_string = locale == 'Spanish' ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")
+  date_string = locale == 'Spanish' ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
   page.should have_content(date_string)
 end
 
