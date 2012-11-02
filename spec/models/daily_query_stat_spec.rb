@@ -52,11 +52,14 @@ describe DailyQueryStat do
       DailyQueryStat.create!(:day => Date.current - 2, :query => "low ctr query", :times => 101, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "low ctr query", :times => 201, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "another low ctr query", :times => 201, :affiliate => usagov)
+      DailyQueryStat.create!(:day => Date.current - 1, :query => "high ctr query", :times => 100, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "zero ctr", :times => 21, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "zero ctr but too small", :times => 9, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "what is this?", :times => 201, :affiliate => usagov)
       DailyQueryStat.create!(:day => Date.current - 1, :query => "got no results", :times => 201, :affiliate => usagov)
       DailyQueryNoresultsStat.create!(:day => Date.current - 1, :query => "got no results", :times => 201, :affiliate => usagov)
+      QueriesClicksStat.create!(:affiliate => usagov, :query => "high ctr query", :day => Date.current - 1,
+                                :url => "http://www.gov.gov/1", :times => 20)
       QueriesClicksStat.create!(:affiliate => usagov, :query => "low ctr query", :day => Date.current - 1,
                                 :url => "http://www.gov.gov/1", :times => 14)
       QueriesClicksStat.create!(:affiliate => usagov, :query => "another low ctr query", :day => Date.current - 1,
