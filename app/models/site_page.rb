@@ -44,7 +44,7 @@ class SitePage < ActiveRecord::Base
           create!(:url_slug => url_slug, :title => title, :breadcrumb => breadcrumb, :main_content => main_content)
           links = doc.css("#main_content//a") + doc.css("#breadcrumbs_dl//a")
           links.each do |link|
-            href = link['href'].squish
+            href = link['href'].squish rescue "broken link"
             if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href)
               queue.push href
               marked.add href
