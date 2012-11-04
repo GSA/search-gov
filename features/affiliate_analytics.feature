@@ -40,6 +40,23 @@ Feature: Affiliate analytics
     | nope 3      | 1112      |
     And I should not see "No queries matched"
 
+  Scenario: There are no "no results" queries to show
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist for affiliate "aff.gov":
+      | query    | times  | day        |
+      | query 1  | 1110   | 2009-09-01 |
+      | query 2  | 111    | 2009-09-01 |
+      | query 3  | 1111   | 2009-09-01 |
+      | query 3  | 1112   | 2009-09-11 |
+      | query 4  | 1113   | 2009-09-11 |
+    When I go to the affiliate admin page with "aff.gov" selected
+    Then I should see "Site Analytics"
+    When I follow "Query logs"
+    Then I should see "No queries meet the criteria for queries with no results right now."
+
   Scenario: No daily query stats available for any time period
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
