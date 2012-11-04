@@ -50,7 +50,7 @@ namespace :screenshots do
     obj.write(open('screenshots/report/index.html'))
 
     puts obj.public_url
-    Emailer.deliver_saucelabs_report(args.email, obj.public_url)
+    Emailer.saucelabs_report(args.email, obj.public_url).deliver
   end
 
   task :run do

@@ -44,7 +44,7 @@ describe "USA.gov rake tasks" do
       @rake[task_name].prerequisites.should include("environment")
     end
 
-    context "when always filtered search terms do not generate search results on adult-enabled SERPs" do
+    context "when always-filtered search terms do not generate search results on adult-enabled SERPs" do
       before do
         SaytFilter.create!(:phrase => "bad_term", :always_filtered => true)
         usagov_affiliate = Affiliate.find_by_name Affiliate::USAGOV_AFFILIATE_NAME
@@ -52,7 +52,7 @@ describe "USA.gov rake tasks" do
       end
 
       it "should not send an alert email" do
-        Emailer.should_not_receive(:deliver_objectionable_content_alert)
+        Emailer.should_not_receive(:objectionable_content_alert)
         @rake[task_name].invoke
       end
     end
@@ -69,14 +69,18 @@ describe "USA.gov rake tasks" do
 
       context "when no email recipient is passed in" do
         it "should default to a manager's email" do
-          Emailer.should_receive(:deliver_objectionable_content_alert).once.with("amy.farrajfeijoo@gsa.gov", @array)
+          emailer = mock("Emailer")
+          Emailer.should_receive(:objectionable_content_alert).once.with("amy.farrajfeijoo@gsa.gov", @array).and_return emailer
+          emailer.should_receive(:deliver)
           @rake[task_name].invoke
         end
       end
 
-      context "when target date is passed in" do
-        it "should calculate moving queries for that date" do
-          Emailer.should_receive(:deliver_objectionable_content_alert).once.with("foo@bar.com", @array)
+      context "when email recipient is passed in" do
+        it "should use that email address" do
+          emailer = mock("Emailer")
+          Emailer.should_receive(:objectionable_content_alert).once.with("foo@bar.com", @array).and_return emailer
+          emailer.should_receive(:deliver)
           @rake[task_name].invoke("foo@bar.com")
         end
       end

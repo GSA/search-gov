@@ -16,6 +16,6 @@ namespace :usasearch do
     results = SaytFilter.find_all_by_always_filtered(true).find_all do |sf|
       WebSearch.results_present_for?(sf.phrase, usagov_affiliate, true, "off")
     end
-    Emailer.deliver_objectionable_content_alert(args.email, results.collect(&:phrase)) if results.present?
+    Emailer.objectionable_content_alert(args.email, results.collect(&:phrase)).deliver if results.present?
   end
 end
