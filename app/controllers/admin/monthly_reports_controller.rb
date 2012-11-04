@@ -13,5 +13,12 @@ class Admin::MonthlyReportsController < Admin::AdminController
     conditions.merge!(:affiliate_name => @affiliate_pick) unless @affiliate_pick.blank?
     @total_clicks = DailySearchModuleStat.where(conditions).sum(:clicks)
     @affiliate_report_name = @affiliate_pick || '_all_'
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Date')
+    data_table.new_column('number', "Total Query Usage")
+    rows = DailyUsageStat.sum(:total_queries, :group => "date_format(day,'%Y-%m')" ).to_a
+    data_table.add_rows(rows)
+    options = {width: 750, height: 300, title: 'Query Totals by Month'}
+    @chart = GoogleVisualr::Interactive::AreaChart.new(data_table, options)
   end
 end

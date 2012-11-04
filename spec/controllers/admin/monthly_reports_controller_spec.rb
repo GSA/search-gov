@@ -31,6 +31,11 @@ describe Admin::MonthlyReportsController do
         assigns[:page_title].should_not be_blank
       end
 
+      it "should assign @chart" do
+        get :index
+        assigns[:chart].should_not be_blank
+      end
+
       describe "affiliate" do
         context "when no affiliate is specified by user" do
           it "should show data from all affiliates" do
