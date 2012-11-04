@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030022046) do
+ActiveRecord::Schema.define(:version => 20121104185907) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -855,10 +855,8 @@ ActiveRecord::Schema.define(:version => 20121030022046) do
 
   create_table "superfresh_urls", :force => true do |t|
     t.text     "url"
-    t.datetime "crawled_at"
     t.integer  "affiliate_id"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "superfresh_urls", ["affiliate_id"], :name => "index_superfresh_urls_on_affiliate_id"
