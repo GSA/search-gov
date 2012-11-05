@@ -9,4 +9,10 @@ class DailyUsageStat < ActiveRecord::Base
     DailyUsageStat.sum(:total_queries, :conditions => ["#{affiliate_clause} (day between ? and ?)",
                                                        report_date.beginning_of_month, report_date.end_of_month])
   end
+
+  def self.monthly_usage_histogram(report_date)
+    old_report_date = report_date - 1.month
+    minimum_threshold = 100
+    ActiveRecord::Base.connection.execute("select 10*bucket,count(*) cnt from (select case  when pct< -10 then -10 when pct>10 then 10 else pct end bucket from (select old.affiliate,round(10*(ifnull(new.cnt,0)- old.cnt)/old.cnt) pct from ( select affiliate, sum(total_queries) cnt from daily_usage_stats where day between '#{old_report_date.beginning_of_month}' and '#{old_report_date.end_of_month}' group by affiliate having cnt > #{minimum_threshold}) old left outer join ( select affiliate, sum(total_queries) cnt from daily_usage_stats where day between '#{report_date.beginning_of_month}' and '#{report_date.end_of_month}' group by affiliate ) new on old.affiliate=new.affiliate ) pcts ) buckets where not isnull(bucket) group by bucket").collect { |r| [r[0].to_i, r[1]] }
+  end
 end

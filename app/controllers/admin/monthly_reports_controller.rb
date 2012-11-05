@@ -18,7 +18,14 @@ class Admin::MonthlyReportsController < Admin::AdminController
     data_table.new_column('number', "Total Query Usage")
     rows = DailyUsageStat.sum(:total_queries, :group => "date_format(day,'%Y-%m')" ).to_a
     data_table.add_rows(rows)
-    options = {width: 750, height: 300, title: 'Query Totals by Month'}
+    options = {width: 750, height: 250, title: 'Query Totals by Month'}
     @chart = GoogleVisualr::Interactive::AreaChart.new(data_table, options)
+    histogram_table = GoogleVisualr::DataTable.new
+    histogram_table.new_column('number', 'Percent Gain/Loss')
+    histogram_table.new_column('number', 'Affiliate Count')
+    histogram_rows = DailyUsageStat.monthly_usage_histogram(@report_date)
+    histogram_table.add_rows(histogram_rows)
+    histogram_options = {width: 750, height: 250, title: 'Affiliate Gain/Loss% Compared to Prior Month'}
+    @histogram = GoogleVisualr::Interactive::ColumnChart.new(histogram_table, histogram_options)
   end
 end
