@@ -1,4 +1,6 @@
 jQuery(document).ready(function() {
+  var initialLogo = jQuery('#results .results-by-logo').hasClass('bing') ? 'bing' : 'usasearch';
+
   jQuery.infinitescroll.prototype._showdonemsg_usasearch = function() {
 
     var opts = this.options;
@@ -65,9 +67,9 @@ jQuery(document).ready(function() {
           }
         });
         box.children('.results-by-logo').wrap('<div class="pagination-and-logo" />');
-        if (currentLogo == 'usasearch') {
+        if ((initialLogo == 'bing') && (currentLogo == 'usasearch')) {
           box.children('.searchresult').addClass('indexeddocresult');
-          if ((currentLogo == 'usasearch') && ($('#indexed_documents').length == 0)) {
+          if ((initialLogo == 'bing') && (currentLogo == 'usasearch') && ($('#indexed_documents').length == 0)) {
             box.children('.searchresult').wrapAll('<div id="indexed_documents" />');
           }
         }
@@ -77,7 +79,7 @@ jQuery(document).ready(function() {
           frag.appendChild(box[0].firstChild);
         }
 
-        if (currentLogo == 'usasearch') {
+        if ((currentLogo == 'usasearch') && (initialLogo == 'bing')) {
           if ($('#results #indexed_documents').length == 0) {
             odieFrag = document.createDocumentFragment();
             var govbox = document.createElement('div');
@@ -140,7 +142,9 @@ jQuery(document).ready(function() {
     behavior: 'usasearch'
   });
 
-  if ((jQuery('#usasearch_pagination').length > 0) && (jQuery('#results .searchresult').length < 10)) {
-    jQuery('#results').infinitescroll('scroll');
+  if ((jQuery('#usasearch_pagination').length > 0) &&
+      ((jQuery('#results .searchresult').length < 10) ||
+          Math.abs(jQuery(document).height() - jQuery(window).height()) < 30)) {
+      jQuery('#results').infinitescroll('scroll');
   }
 });
