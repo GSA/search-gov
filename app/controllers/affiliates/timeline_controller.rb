@@ -19,6 +19,6 @@ class Affiliates::TimelineController < Affiliates::AffiliatesController
     end
     data_table.add_rows(rows)
     options = {width: 750, height: 300, title: 'Query Totals by Date'}
-    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, options)
+    @chart = GoogleVisualr::Interactive::AnnotatedTimeLine.new(data_table, options)
   end
 end
