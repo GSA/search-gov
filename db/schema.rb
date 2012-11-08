@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104185907) do
+ActiveRecord::Schema.define(:version => 20121108185627) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(:version => 20121104185907) do
   add_index "connections", ["affiliate_id"], :name => "index_connections_on_affiliate_id"
 
   create_table "daily_click_stats", :force => true do |t|
-    t.string  "affiliate", :limit => 32,   :null => false
+    t.string  "affiliate", :limit => 33,   :null => false
     t.date    "day",                       :null => false
     t.string  "url",       :limit => 2000, :null => false
     t.integer "times",                     :null => false
@@ -227,7 +227,7 @@ ActiveRecord::Schema.define(:version => 20121104185907) do
     t.string  "search_type",                              :null => false
     t.string  "params"
     t.integer "total",                     :default => 0, :null => false
-    t.string  "affiliate",   :limit => 32,                :null => false
+    t.string  "affiliate",   :limit => 33,                :null => false
   end
 
   add_index "daily_left_nav_stats", ["affiliate", "day"], :name => "index_daily_left_nav_stats_on_affiliate_and_day"
@@ -242,10 +242,10 @@ ActiveRecord::Schema.define(:version => 20121104185907) do
   add_index "daily_query_noresults_stats", ["affiliate", "day"], :name => "index_daily_query_noresults_stats_on_affiliate_and_day"
 
   create_table "daily_query_stats", :force => true do |t|
-    t.date    "day",                                                   :null => false
-    t.string  "query",     :limit => 100,                              :null => false
-    t.integer "times",                                                 :null => false
-    t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
+    t.date    "day",                                            :null => false
+    t.string  "query",     :limit => 100,                       :null => false
+    t.integer "times",                                          :null => false
+    t.string  "affiliate", :limit => 33,  :default => "usagov"
     t.string  "locale",    :limit => 5,   :default => "en"
   end
 
@@ -268,7 +268,7 @@ ActiveRecord::Schema.define(:version => 20121104185907) do
   create_table "daily_usage_stats", :force => true do |t|
     t.date    "day"
     t.integer "total_queries"
-    t.string  "affiliate",     :limit => 32, :default => "usasearch.gov"
+    t.string  "affiliate",     :limit => 33, :default => "usagov"
   end
 
   add_index "daily_usage_stats", ["affiliate", "day"], :name => "index_daily_usage_stats_on_affiliate_and_day", :unique => true
@@ -711,7 +711,7 @@ ActiveRecord::Schema.define(:version => 20121104185907) do
   add_index "news_items", ["rss_feed_url_id"], :name => "index_news_items_on_rss_feed_url_id"
 
   create_table "queries_clicks_stats", :force => true do |t|
-    t.string  "affiliate", :limit => 32,   :null => false
+    t.string  "affiliate", :limit => 33,   :null => false
     t.string  "query",                     :null => false
     t.date    "day",                       :null => false
     t.string  "url",       :limit => 2000, :null => false
