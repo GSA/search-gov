@@ -5,6 +5,7 @@ class Affiliate < ActiveRecord::Base
   include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
+  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 56
 
   has_and_belongs_to_many :users
   has_many :features, :through => :affiliate_feature_addition
@@ -60,6 +61,20 @@ class Affiliate < ActiveRecord::Base
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
+  has_attached_file :mobile_logo,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
+                    :ssl => true
+  has_attached_file :staged_mobile_logo,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
+                    :ssl => true
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
@@ -74,6 +89,9 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  validates_attachment_content_type :mobile_logo, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_content_type :staged_mobile_logo, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_size :staged_mobile_logo, :in => (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
@@ -86,7 +104,7 @@ class Affiliate < ActiveRecord::Base
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
-  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
+  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -195,7 +213,12 @@ class Affiliate < ActiveRecord::Base
                                    :show_content_box_shadow => '1' }
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
-      header footer header_footer_css nested_header_footer_css search_results_page_title favicon_url external_css_url uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
+      header footer header_footer_css nested_header_footer_css
+      search_results_page_title favicon_url external_css_url
+      uses_managed_header_footer managed_header_css_properties
+      managed_header_home_url managed_header_text managed_header_links
+      managed_footer_links theme css_property_hash
+      mobile_homepage_url)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -218,12 +241,13 @@ class Affiliate < ActiveRecord::Base
                                             :header_footer_css, :nested_header_footer_css,
                                             :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
                                             :managed_header_links, :managed_footer_links,
-                                            :external_tracking_code]
+                                            :external_tracking_code, :mobile_homepage_url]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
                                             :staged_header_footer_css, :staged_nested_header_footer_css,
                                             :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
-                                            :staged_managed_header_links, :staged_managed_footer_links]
+                                            :staged_managed_header_links, :staged_managed_footer_links,
+                                            :staged_mobile_homepage_url]
 
   def domains_as_array(reload = false)
     @domains_as_array ||= site_domains(reload).ordered.collect { |site_domain| site_domain.domain }
@@ -254,6 +278,10 @@ class Affiliate < ActiveRecord::Base
     if staged_header_image_updated_at == header_image_updated_at and
         attributes[:staged_header_image].present? || attributes[:mark_staged_header_image_for_deletion] == '1'
       set_attachment_attributes_to_nil(:staged_header_image)
+    end
+    if staged_mobile_logo_updated_at == mobile_logo_updated_at and
+        attributes[:staged_mobile_logo].present? || attributes[:mark_staged_mobile_logo_for_deletion] == '1'
+      set_attachment_attributes_to_nil(:staged_mobile_logo)
     end
     attributes[:has_staged_content] = true
     self.update_attributes(attributes)
@@ -400,6 +428,11 @@ class Affiliate < ActiveRecord::Base
       staged_header_image.destroy if staged_header_image_updated_at?
       copy_attachment_attributes(:header_image, :staged_header_image)
     end
+
+    if staged_mobile_logo_updated_at != mobile_logo_updated_at
+      staged_mobile_logo.destroy if staged_mobile_logo_updated_at?
+      copy_attachment_attributes(:mobile_logo, :staged_mobile_logo)
+    end
   end
 
   def set_attributes_from_staged_to_live
@@ -415,6 +448,11 @@ class Affiliate < ActiveRecord::Base
     if staged_header_image_updated_at != header_image_updated_at
       header_image.destroy if header_image_updated_at?
       copy_attachment_attributes(:staged_header_image, :header_image)
+    end
+
+    if staged_mobile_logo_updated_at != mobile_logo_updated_at
+      mobile_logo.destroy if mobile_logo_updated_at?
+      copy_attachment_attributes(:staged_mobile_logo, :mobile_logo)
     end
   end
 
@@ -444,10 +482,19 @@ class Affiliate < ActiveRecord::Base
 
   def autodiscover
     if site_domains.size == 1
+      autodiscover_homepage_url
       autodiscover_sitemap
       autodiscover_rss_feeds
       autodiscover_favicon_url
       autodiscover_social_media
+    end
+  end
+
+  def autodiscover_homepage_url
+    domain = site_domains.first.domain
+    %W(http://#{domain} http://www.#{domain}).any? do |url|
+      page = open(url) rescue nil
+      page ? (update_attributes!(managed_header_home_url: url, mobile_homepage_url: url); true) : false
     end
   end
 
@@ -554,7 +601,8 @@ class Affiliate < ActiveRecord::Base
   def ensure_http_prefix
     set_http_prefix :favicon_url, :staged_favicon_url,
                     :external_css_url, :staged_external_css_url,
-                    :managed_header_home_url, :staged_managed_header_home_url
+                    :managed_header_home_url, :staged_managed_header_home_url,
+                    :mobile_homepage_url, :staged_mobile_homepage_url
   end
 
   def nullify_blank_dublin_core_fields
@@ -797,6 +845,9 @@ class Affiliate < ActiveRecord::Base
     end
     if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
       staged_header_image.clear
+    end
+    if staged_mobile_logo? and !staged_mobile_logo.dirty? and mark_staged_mobile_logo_for_deletion == '1'
+      staged_mobile_logo.clear
     end
   end
 

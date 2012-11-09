@@ -132,7 +132,7 @@ Feature: Affiliate clients
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Content Sources"
     When I fill in the following:
-      | Enter the domain or URL | agency.gov                                                                   |
+      | Enter the domain or URL | usasearch.howto.gov                                                          |
       | Sitemap URL             | http://www.jpl.nasa.gov/sitemap/xml/sitemap_category/news.xml                |
       | RSS Feed Name 0         | Recalls Feed                                                                 |
       | RSS Feed URL 0          | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
@@ -146,7 +146,18 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Site name" field should contain "My awesome agency"
 
-    When I follow "Look and feel"
+    When I follow "Domains" in the site navigation bar
+    Then I should see the following table rows:
+      | Label               | Domain              |
+      | usasearch.howto.gov | usasearch.howto.gov |
+
+    When I follow "URLs & Sitemaps" in the site navigation bar
+    Then I should see a link to "http://www.jpl.nasa.gov/sitemap/..." with url for "http://www.jpl.nasa.gov/sitemap/xml/sitemap_category/news.xml"
+
+    When I follow "RSS" in the site navigation bar
+    Then I should see a link to "www.fda.gov/AboutFDA/.../rss.xml" with url for "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml"
+
+    When I follow "Look and feel" in the site navigation bar
     Then the "Gettysburg" theme should be selected
     And the "Page background color" field should contain "#F7F7F7"
     And the "Content background color" field should contain "#FFFFFF"
@@ -169,20 +180,17 @@ Feature: Affiliate clients
     And the "URL link color" field should contain "#007F00"
     And the "URL link color" field should be disabled
 
-    When I follow "Header and footer"
+    When I follow "Header and footer" in the site navigation bar
     Then the "Option 1. Use a managed header/footer" radio button should be checked
     And the "Header text" field should contain "My awesome agency"
     And the "Header text color" field should contain "#FFFFFF"
     And the "Header background color" field should contain "#336699"
     And the "Header/footer link color" field should contain "#336699"
     And the "Header/footer link background color" field should contain "#FFFFFF"
+    And the "Header home URL" field should contain "http://usasearch.howto.gov"
+    And the "Mobile homepage URL" field should contain "http://usasearch.howto.gov"
 
-    When I follow "Domains"
-    Then I should see the following table rows:
-      | Label       | Domain         |
-      | agency.gov  | agency.gov     |
-
-    When I follow "Sidebar"
+    When I follow "Sidebar" in the site navigation bar
     Then the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
     And the "Is Image Search Label 0 navigable" checkbox should be checked
@@ -190,7 +198,7 @@ Feature: Affiliate clients
     And the "Is Rss Feed 1 navigable" checkbox should not be checked
     And the "Show by time period module" checkbox should be checked
 
-    When I follow "Results modules"
+    When I follow "Results modules" in the site navigation bar
     Then the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
     And I should see the following table rows:
@@ -836,8 +844,10 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I fill in the following:
-      | Header text | updated header with image |
+      | Header text         | updated header with image |
+      | Mobile homepage URL | m.agency.gov              |
     And I attach the file "features/support/small.jpg" to "Header image"
+    And I attach the file "features/support/logo_mobile_en.png" to "Mobile logo"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -849,10 +859,19 @@ Feature: Affiliate clients
     And I should see "small.jpg" image
 
     When I go to the "aff site" affiliate page
+    And I follow "View Current Mobile"
+    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    And I should see "logo_mobile_en.png" image
+
+    When I go to the "aff site" affiliate page
     And I follow "Header and footer"
-    And I fill in the following:
-      | Header text | |
+    Then I should see "small.jpg" image
+    And I should see "logo_mobile_en.png" image
+    When I fill in the following:
+      | Header text         |  |
+      | Mobile homepage URL |  |
     And I attach the file "features/support/searchlogo.gif" to "Header image"
+    And I attach the file "features/support/logo_mobile_es.png" to "Mobile logo"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -864,8 +883,14 @@ Feature: Affiliate clients
     And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
+    And I follow "View Current Mobile"
+    Then I should not see an image link to "logo" with url for "http://m.agency.gov"
+    And I should see "logo_mobile_es.png" image
+
+    When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I check "Mark header image for deletion"
+    And I check "Mark mobile logo for deletion"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -923,7 +948,9 @@ Feature: Affiliate clients
       | Footer Link URL 0   | http://about.agency.gov |
       | Footer Link Title 1 | Contact Us              |
       | Footer Link URL 1   | contact.agency.gov      |
+      | Mobile homepage URL | m.agency.gov            |
     And I attach the file "features/support/searchlogo.gif" to "Header image"
+    And I attach the file "features/support/logo_mobile_en.png" to "Mobile logo"
     And I press "Make Live"
     Then I should see "Updated changes to your live site successfully"
 
@@ -938,6 +965,11 @@ Feature: Affiliate clients
     And I should see a link to "Contact Us" with url for "http://contact.agency.gov" in the SERP footer
 
     When I go to the "aff site" affiliate page
+    And I follow "View Current Mobile"
+    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    And I should see "logo_mobile_en.png" image
+
+    When I go to the "aff site" affiliate page
     When I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
     And the "Header text" field should contain "live header with image"
@@ -950,6 +982,7 @@ Feature: Affiliate clients
     And the "Footer Link URL 0" field should contain "http://about.agency.gov"
     And the "Footer Link Title 1" field should contain "Contact Us"
     And the "Footer Link URL 1" field should contain "http://contact.agency.gov"
+    And the "Mobile homepage URL" field should contain "http://m.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -964,6 +997,9 @@ Feature: Affiliate clients
       | Footer Link URL 0   | privacy.agency.gov                 |
       | Footer Link Title 1 | Policies                           |
       | Footer Link URL 1   | policies.agency.gov                |
+      | Mobile homepage URL | updated.m.agency.gov               |
+    And I attach the file "features/support/small.jpg" to "Header image"
+    And I attach the file "features/support/logo_mobile_es.png" to "Mobile logo"
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
@@ -972,15 +1008,22 @@ Feature: Affiliate clients
     And I follow "View Staged"
     Then I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
     And I should see an image link to "logo" with url for "http://staged.agency.gov"
-    And I should see "searchlogo.gif" image
+    And I should see "small.jpg" image
     And I should see a link to "Features" with url for "http://features.agency.gov" in the SERP header
     And I should see a link to "Help" with url for "http://help.agency.gov" in the SERP header
     And I should see a link to "Privacy" with url for "http://privacy.agency.gov" in the SERP footer
     And I should see a link to "Policies" with url for "http://policies.agency.gov" in the SERP footer
 
     When I go to the "aff site" affiliate page
+    And I follow "View Staged Mobile"
+    Then I should see an image link to "logo" with url for "http://updated.m.agency.gov"
+    And I should see "logo_mobile_es.png" image
+
+    When I go to the "aff site" affiliate page
     And I follow "Header and footer"
-    And I fill in the following:
+    Then I should see "small.jpg" image
+    And I should see "logo_mobile_es.png" image
+    When I fill in the following:
       | Header text | |
     And I attach the file "features/support/small.jpg" to "Header image"
     And I press "Save for Preview"
@@ -1003,16 +1046,28 @@ Feature: Affiliate clients
     And I should see a link to "Contact Us" with url for "http://contact.agency.gov" in the SERP footer
 
     When I go to the "aff site" affiliate page
+    And I follow "View Current Mobile"
+    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    And I should see "logo_mobile_en.png" image
+
+    When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I fill in the following:
       | Header text     | updated header without image |
     And I check "Mark header image for deletion"
+    And I check "Mark mobile logo for deletion"
     And I press "Save for Preview"
     Then I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see a link to "updated header without image" with url for "http://staged.agency.gov"
+    And I should not see an image with alt text "logo"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged Mobile"
+    Then I should see a link to "aff site" with url for "http://updated.m.agency.gov"
+    And I should not see an image link to "logo" with url for "http://updated.m.agency.gov"
     And I should not see an image with alt text "logo"
 
     When I go to the "aff site" affiliate page

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108185627) do
+ActiveRecord::Schema.define(:version => 20121108191315) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(:version => 20121108185627) do
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
     t.text     "dublin_core_mappings"
+    t.string   "mobile_homepage_url"
+    t.string   "mobile_logo_file_name"
+    t.string   "mobile_logo_content_type"
+    t.integer  "mobile_logo_file_size"
+    t.datetime "mobile_logo_updated_at"
+    t.string   "staged_mobile_logo_file_name"
+    t.string   "staged_mobile_logo_content_type"
+    t.integer  "staged_mobile_logo_file_size"
+    t.datetime "staged_mobile_logo_updated_at"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

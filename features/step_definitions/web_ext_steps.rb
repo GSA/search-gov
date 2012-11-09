@@ -43,6 +43,10 @@ Then /^I should see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name
   page.should have_selector("a[href='#{url}'] img[alt='#{name}']")
 end
 
+Then /^I should not see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
+  page.should_not have_selector("a[href='#{url}'] img[alt='#{name}']")
+end
+
 Then /^I should see the browser page titled "([^\"]*)"$/ do |title|
   page.should have_selector("title", :text => title)
 end

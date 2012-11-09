@@ -53,6 +53,8 @@ describe Affiliate do
     it { should validate_attachment_content_type(:staged_page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:staged_header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
+    it { should validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
+    it { should validate_attachment_content_type(:staged_mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -688,6 +690,8 @@ describe Affiliate do
       attributes.should_receive(:[]).with(:mark_staged_page_background_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]).with(:staged_header_image).and_return(nil)
       attributes.should_receive(:[]).with(:mark_staged_header_image_for_deletion).and_return(nil)
+      attributes.should_receive(:[]).with(:staged_mobile_logo).and_return(nil)
+      attributes.should_receive(:[]).with(:mark_staged_mobile_logo_for_deletion).and_return(nil)
       attributes.should_receive(:[]=).with(:has_staged_content, true)
       return_value = mock('return value')
       affiliate.should_receive(:update_attributes).with(attributes).and_return(return_value)
@@ -884,6 +888,104 @@ describe Affiliate do
         affiliate.should_not_receive(:staged_header_image_file_size=)
         affiliate.should_not_receive(:staged_header_image_updated_at=)
         attributes = { :staged_header_image => mock('new staged header image') }
+        affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+        affiliate.update_attributes_for_staging(attributes).should be_true
+      end
+    end
+
+    context "when existing staged_mobile_logo and mobile_logo are the same" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_mobile_logo) { mock('staged mobile logo') }
+
+      before do
+        yesterday = Date.current.yesterday
+        affiliate.staged_mobile_logo_file_name = 'live.gif'
+        affiliate.staged_mobile_logo_content_type = 'image/gif'
+        affiliate.staged_mobile_logo_file_size = 800
+        affiliate.staged_mobile_logo_updated_at = yesterday
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = yesterday
+        affiliate.save!
+      end
+
+      context "and update attributes contain new staged_mobile_logo" do
+        it "should destroy existing staged_mobile_logo" do
+          affiliate.should_receive(:staged_mobile_logo_file_name=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_content_type=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_file_size=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_updated_at=).with(nil)
+          attributes = { :staged_mobile_logo => mock('new staged mobile logo') }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain blank staged_mobile_logo" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_mobile_logo_file_name=)
+          affiliate.should_not_receive(:staged_mobile_logo_content_type=)
+          affiliate.should_not_receive(:staged_mobile_logo_file_size=)
+          affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
+          attributes = { :staged_mobile_logo => '' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_mobile_logo_for_deletion == '1'" do
+        it "should set staged_header attributes to nil" do
+          affiliate.should_receive(:staged_mobile_logo_file_name=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_content_type=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_file_size=).with(nil)
+          affiliate.should_receive(:staged_mobile_logo_updated_at=).with(nil)
+          attributes = { :mark_staged_mobile_logo_for_deletion => '1' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_mobile_logo_for_deletion == '0'" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_mobile_logo_file_name=)
+          affiliate.should_not_receive(:staged_mobile_logo_content_type=)
+          affiliate.should_not_receive(:staged_mobile_logo_file_size=)
+          affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
+          attributes = { :mark_staged_mobile_logo_for_deletion => '0' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+    end
+
+    context "when update_attributes contain new staged_mobile_logo and existing staged_mobile_logo and mobile_logo are different" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_mobile_logo) { mock('staged mobile logo') }
+
+      before do
+        affiliate.staged_mobile_logo_file_name = 'staged.jpg'
+        affiliate.staged_mobile_logo_content_type = 'image/jpeg'
+        affiliate.staged_mobile_logo_file_size = 700
+        affiliate.staged_mobile_logo_updated_at = Time.current
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = Time.current.yesterday
+        affiliate.save!
+      end
+
+      it "should not set staged_mobile_logo attributes to nil" do
+        affiliate.should_not_receive(:staged_mobile_logo_file_name=)
+        affiliate.should_not_receive(:staged_mobile_logo_content_type=)
+        affiliate.should_not_receive(:staged_mobile_logo_file_size=)
+        affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
+        attributes = { :staged_mobile_logo => mock('new staged mobile logo') }
         affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
         affiliate.update_attributes_for_staging(attributes).should be_true
@@ -1214,6 +1316,104 @@ describe Affiliate do
         affiliate.header_image_updated_at.should be_nil
       end
     end
+
+    context "when staged_mobile_logo and header_image are different" do
+      let(:mobile_logo) { mock('mobile_logo') }
+
+      before do
+        affiliate.staged_mobile_logo_file_name = 'staged.gif'
+        affiliate.staged_mobile_logo_content_type = 'image/gif'
+        affiliate.staged_mobile_logo_file_size = 700
+        affiliate.staged_mobile_logo_updated_at = Date.current
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy mobile_logo and set values from staged_mobile_logo columns to mobile_logo columns" do
+        affiliate.should_receive(:mobile_logo).and_return(mobile_logo)
+        mobile_logo.should_receive(:destroy)
+        affiliate.should_receive(:mobile_logo_file_name=).with(affiliate.staged_mobile_logo_file_name).ordered
+        affiliate.should_receive(:mobile_logo_content_type=).with(affiliate.staged_mobile_logo_content_type)
+        affiliate.should_receive(:mobile_logo_file_size=).with(affiliate.staged_mobile_logo_file_size)
+        affiliate.should_receive(:mobile_logo_updated_at=).with(affiliate.staged_mobile_logo_updated_at)
+        affiliate.set_attributes_from_staged_to_live
+      end
+    end
+
+    context "when staged_mobile_logo and header_image are the same" do
+      before do
+        mobile_logo_updated_at = Date.current
+        affiliate.staged_mobile_logo_file_name = 'live.gif'
+        affiliate.staged_mobile_logo_content_type = 'image/gif'
+        affiliate.staged_mobile_logo_file_size = 800
+        affiliate.staged_mobile_logo_updated_at = mobile_logo_updated_at
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = mobile_logo_updated_at
+        affiliate.save!
+      end
+
+      it "should set values from staged_mobile_logo columns to header_image columns" do
+        affiliate.should_not_receive(:mobile_logo_file_name=)
+        affiliate.should_not_receive(:mobile_logo_content_type=)
+        affiliate.should_not_receive(:mobile_logo_file_size=)
+        affiliate.should_not_receive(:mobile_logo_updated_at=)
+        affiliate.set_attributes_from_staged_to_live
+      end
+    end
+
+    context "when staged_mobile_logo exists and mobile_logo does not exist" do
+      before do
+        affiliate.staged_mobile_logo_file_name = 'staged.gif'
+        affiliate.staged_mobile_logo_content_type = 'image/gif'
+        affiliate.staged_mobile_logo_file_size = 700
+        affiliate.staged_mobile_logo_updated_at = Date.current
+        affiliate.mobile_logo_file_name = nil
+        affiliate.mobile_logo_content_type = nil
+        affiliate.mobile_logo_file_size = nil
+        affiliate.mobile_logo_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should set values from staged_mobile_logo columns to header_image columns" do
+        affiliate.should_not_receive(:mobile_logo)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.mobile_logo_file_name.should == 'staged.gif'
+        affiliate.mobile_logo_content_type.should == 'image/gif'
+        affiliate.mobile_logo_file_size.should == 700
+        affiliate.mobile_logo_updated_at.should == affiliate.staged_mobile_logo_updated_at
+      end
+    end
+
+    context "when staged_mobile_logo does not exist and mobile_logo exists" do
+      let(:mobile_logo) { mock('mobile logo') }
+
+      before do
+        affiliate.staged_mobile_logo_file_name = nil
+        affiliate.staged_mobile_logo_content_type = nil
+        affiliate.staged_mobile_logo_file_size = nil
+        affiliate.staged_mobile_logo_updated_at = nil
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = Date.current
+        affiliate.save!
+      end
+
+      it "should set values from staged_mobile_logo columns to mobile_logo columns" do
+        affiliate.should_receive(:mobile_logo).and_return(mobile_logo)
+        mobile_logo.should_receive(:destroy)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.mobile_logo_file_name.should be_nil
+        affiliate.mobile_logo_content_type.should be_nil
+        affiliate.mobile_logo_file_size.should be_nil
+        affiliate.mobile_logo_updated_at.should be_nil
+      end
+    end
   end
 
   describe "#set_attributes_from_live_to_staged" do
@@ -1376,6 +1576,81 @@ describe Affiliate do
         affiliate.staged_header_image_content_type.should be_nil
         affiliate.staged_header_image_file_size.should be_nil
         affiliate.staged_header_image_updated_at.should be_nil
+      end
+    end
+
+    context "when existing staged_mobile_logo and mobile_logo are different" do
+      let(:staged_mobile_logo) { mock('staged mobile logo') }
+
+      before do
+        affiliate.staged_mobile_logo_file_name = 'staged.jpg'
+        affiliate.staged_mobile_logo_content_type = 'image/jpeg'
+        affiliate.staged_mobile_logo_file_size = 700
+        affiliate.staged_mobile_logo_updated_at = Date.current
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_mobile_logo" do
+        affiliate.should_receive(:staged_mobile_logo).and_return(staged_mobile_logo)
+        staged_mobile_logo.should_receive(:destroy)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_mobile_logo_file_name.should == 'live.gif'
+        affiliate.staged_mobile_logo_content_type.should == 'image/gif'
+        affiliate.staged_mobile_logo_file_size.should == 800
+        affiliate.staged_mobile_logo_updated_at.should == affiliate.mobile_logo_updated_at
+      end
+    end
+
+    context "when staged_mobile_logo does not exist and mobile_logo exists" do
+      before do
+        affiliate.staged_mobile_logo_file_name = nil
+        affiliate.staged_mobile_logo_content_type = nil
+        affiliate.staged_mobile_logo_file_size = nil
+        affiliate.staged_mobile_logo_updated_at = nil
+        affiliate.mobile_logo_file_name = 'live.gif'
+        affiliate.mobile_logo_content_type = 'image/gif'
+        affiliate.mobile_logo_file_size = 800
+        affiliate.mobile_logo_updated_at = Date.current
+        affiliate.save!
+      end
+
+      it "should set values from mobile_logo columns to staged_mobile_logo columns" do
+        affiliate.should_not_receive(:staged_mobile_logo)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_mobile_logo_file_name.should == 'live.gif'
+        affiliate.staged_mobile_logo_content_type.should == 'image/gif'
+        affiliate.staged_mobile_logo_file_size.should == 800
+        affiliate.staged_mobile_logo_updated_at.should == affiliate.mobile_logo_updated_at
+      end
+    end
+
+    context "when staged_mobile_logo exists and mobile_logo does not exist" do
+      let(:staged_mobile_logo) { mock('staged mobile logo') }
+
+      before do
+        affiliate.staged_mobile_logo_file_name = 'staged.jpg'
+        affiliate.staged_mobile_logo_content_type = 'image/jpeg'
+        affiliate.staged_mobile_logo_file_size = 700
+        affiliate.staged_mobile_logo_updated_at = Date.current
+        affiliate.mobile_logo_file_name = nil
+        affiliate.mobile_logo_content_type = nil
+        affiliate.mobile_logo_file_size = nil
+        affiliate.mobile_logo_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_mobile_logo" do
+        affiliate.should_receive(:staged_mobile_logo).and_return(staged_mobile_logo)
+        staged_mobile_logo.should_receive(:destroy)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_mobile_logo_file_name.should be_nil
+        affiliate.staged_mobile_logo_content_type.should be_nil
+        affiliate.staged_mobile_logo_file_size.should be_nil
+        affiliate.staged_mobile_logo_updated_at.should be_nil
       end
     end
   end
@@ -1793,6 +2068,7 @@ describe Affiliate do
       end
 
       it "should call autodiscover for sitemaps, rss feeds and favicons" do
+        @affiliate.should_receive(:autodiscover_homepage_url)
         @affiliate.should_receive(:autodiscover_sitemap).and_return true
         @affiliate.should_receive(:autodiscover_rss_feeds).and_return true
         @affiliate.should_receive(:autodiscover_favicon_url).and_return true
@@ -1813,6 +2089,62 @@ describe Affiliate do
         @affiliate.should_not_receive(:autodiscover_favicon_url)
         @affiliate.should_not_receive(:autodiscover_social_media)
         @affiliate.autodiscover
+      end
+    end
+  end
+
+  describe '#autodiscover_homepage_url' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    context 'when domain contains valid hostname' do
+      let(:domain) { 'usasearch.howto.gov/with-path' }
+      let(:tempfile) { mock('tempfile') }
+
+      before do
+        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
+        affiliate.should_receive(:open).with('http://usasearch.howto.gov/with-path').and_return(tempfile)
+      end
+
+      it 'should update mobile homepage URL' do
+        affiliate.should_receive(:update_attributes!).with(
+            managed_header_home_url: 'http://usasearch.howto.gov/with-path',
+            mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
+
+        affiliate.autodiscover_homepage_url
+      end
+    end
+
+    context 'when valid hostname require www. prefix' do
+      let(:domain) { 'howto.gov' }
+      let(:tempfile) { mock('tempfile') }
+
+      before do
+        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
+        affiliate.should_receive(:open).with('http://howto.gov').and_raise
+        affiliate.should_receive(:open).with('http://www.howto.gov').and_return(tempfile)
+      end
+
+      it 'should update mobile homepage URL with www. prefix in the hostname' do
+        affiliate.should_receive(:update_attributes!).with(
+            managed_header_home_url: 'http://www.howto.gov',
+            mobile_homepage_url: 'http://www.howto.gov')
+
+        affiliate.autodiscover_homepage_url
+      end
+    end
+
+    context 'when domain does not contain a valid hostname' do
+      let(:domain) { '.gov' }
+
+      before do
+        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
+        affiliate.should_receive(:open).with('http://.gov').and_raise
+        affiliate.should_receive(:open).with('http://www..gov').and_raise
+      end
+
+      it 'should not update mobile homepage URL' do
+        affiliate.should_not_receive(:update_attributes!)
+        affiliate.autodiscover_homepage_url
       end
     end
   end

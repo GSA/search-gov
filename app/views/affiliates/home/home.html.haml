@@ -10,6 +10,9 @@
       %p You currently have no sites.  To begin, please add a new site.
     -else
       %table.generic-table
+        %colgroup
+          %col{ :class => 'site-name' }
+          %col{ :class => 'actions' }
         %thead
           %tr
             %th{:colspan => 2}

@@ -2,6 +2,9 @@
   = affiliate_center_breadcrumbs(@affiliate.display_name)
   %h1= "Site: #{@affiliate.display_name}"
   %table.generic-table
+    %colgroup
+      %col{ :class => 'site-name' }
+      %col{ :class => 'actions' }
     %thead
       %tr
         %th.secondary-header

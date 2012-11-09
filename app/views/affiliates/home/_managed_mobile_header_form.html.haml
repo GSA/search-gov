@@ -1,0 +1,17 @@
+%ul{ :class => 'header-footer-fields' }
+  %li
+    = managed_mobile_header_form.label :staged_mobile_homepage_url, "Mobile homepage URL"
+    = managed_mobile_header_form.text_field :staged_mobile_homepage_url, :maxlength => 128, :class => 'txt'
+  %li
+    %div
+      = managed_mobile_header_form.label :staged_mobile_logo, "Mobile logo"
+      .header-image
+        - if managed_mobile_header_form.object.staged_mobile_logo.present?
+          = image_tag(managed_mobile_header_form.object.staged_mobile_logo.url(:large))
+          = managed_mobile_header_form.check_box :mark_staged_mobile_logo_for_deletion, { :class => 'checkbox mark-image-for-deletion' }
+          = managed_mobile_header_form.label :mark_staged_mobile_logo_for_deletion, 'Mark mobile logo for deletion'
+      .header-image-file-field-wrapper
+        = managed_mobile_header_form.file_field :staged_mobile_logo, { :class => 'file' }
+      %span GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB
+
+

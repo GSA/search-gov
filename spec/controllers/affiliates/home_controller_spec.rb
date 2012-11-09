@@ -183,91 +183,46 @@ describe Affiliates::HomeController do
   end
 
   describe "do PUT on create_content_sources" do
-    before do
-      @user = users(:affiliate_manager_with_no_affiliates)
-      @user.affiliates << Affiliate.new({:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en'}, :as => :test)
-      @user.affiliates.first.id.should_not be_nil
-    end
+    let(:current_user) { users(:affiliate_manager_with_no_affiliates) }
+    let(:affiliate) { Affiliate.create!({ name: 'new_aff', display_name: 'new_aff', theme: 'default', locale: 'en' }) }
+
+    before { current_user.affiliates << affiliate }
 
     it "should require login" do
-      put :create_content_sources, :id => @user.affiliates.first.id
+      put :create_content_sources, :id => current_user.affiliates.first.id
       response.should redirect_to(login_path)
     end
 
     context "when logged in" do
       before do
-        UserSession.create(@user)
-        Kernel.stub!(:open).and_return(File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml'), File.open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml'))
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
       end
 
-      context "for a valid request" do
+      context 'when the affiliate updates successfully' do
         before do
-          put :create_content_sources, :id => @user.affiliates.first.id,
-              :affiliate => {
-                  :site_domains_attributes => {
-                      "0".to_sym => { :domain => 'aff.gov' },
-                      "1".to_sym => { :domain => 'aff2.gov' }
-                  },
-                  :sitemaps_attributes => {
-                      "0".to_sym => { :url => 'http://aff.gov/sitemap.xml' }
-                  },
-                  :rss_feeds_attributes => {
-                      "0".to_sym => { :name => 'Feed 1', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff.gov/feed.xml' } } }
-                  }
-              }
+          affiliate_params = mock('request params', to_s: 'create content source params')
+          affiliate.should_receive(:update_attributes).with('create content source params').and_return(true)
+          affiliate.should_receive(:autodiscover)
+          put :create_content_sources, id: affiliate.id, affiliate: affiliate_params
         end
 
-        it "should assign the affiliate" do
-          assigns[:affiliate].should_not be_nil
-          assigns[:affiliate].should == @user.affiliates.first
-        end
-
-        it "should redirect to :get_the_code, assuming there are no errors" do
-          response.should redirect_to get_the_code_affiliate_path(@user.affiliates.first)
-        end
-
-        it "should create SiteDomains, Sitemaps and RSS feeds if provided" do
-          @affiliate = assigns[:affiliate]
-          @affiliate.errors.should be_empty
-          @affiliate.site_domains.should_not be_empty
-          @affiliate.site_domains.size.should == 2
-          @affiliate.site_domains.first.errors.should be_empty
-          @affiliate.site_domains.collect(&:domain).include?('aff.gov').should be_true
-          @affiliate.site_domains.last.errors.should be_empty
-          @affiliate.site_domains.collect(&:domain).include?('aff2.gov').should be_true
-          @affiliate.sitemaps.should_not be_empty
-          @affiliate.sitemaps.size.should == 1
-          @affiliate.sitemaps.first.errors.should be_empty
-          @affiliate.sitemaps.first.url.should == "http://aff.gov/sitemap.xml"
-          @affiliate.rss_feeds.should_not be_empty
-          @affiliate.rss_feeds.size.should == 1
-          @affiliate.rss_feeds.first.errors.should be_empty
-          @affiliate.rss_feeds.first.rss_feed_urls.first.url.should == "http://aff.gov/feed.xml"
-          @affiliate.rss_feeds.first.name.should == "Feed 1"
-        end
+        it { should assign_to(:affiliate).with(affiliate) }
+        it { should redirect_to get_the_code_affiliate_path(affiliate) }
       end
 
-      context "for an invalid request" do
+      context 'when the affiliate fails to update' do
         before do
-          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => {
-              :site_domains_attributes => {
-                  "0".to_sym => { :domain => 'aff.gov' },
-                  "1".to_sym => { :domain => 'aff2.gov' }
-              },
-              :sitemaps_attributes => {
-                  "0".to_sym => { :url => 'http://aff.gov/sitemap.xml' },
-                  "1".to_sym => { :url => 'http://aff2.gov/sitemap.xml' }
-              },
-              :rss_feeds_attributes => {
-                  "0".to_sym => { :name => '', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff.gov/feed.xml' } } },
-                  "1".to_sym => { :name => 'Feed 2', :rss_feed_urls_attributes => { "0".to_sym => { :url => 'http://aff2.gov/feed.xml' } } }
-              }
-          }
+          affiliate_params = mock('request params', to_s: 'create content source params')
+          affiliate.should_receive(:update_attributes).with('create content source params').and_return(false)
+          affiliate.should_not_receive(:autodiscover)
+          put :create_content_sources, id: affiliate.id, affiliate: affiliate_params
         end
 
-        it "should re-render the template with errors" do
-          response.should render_template("content_sources")
-        end
+        it { should assign_to(:affiliate).with(affiliate) }
+        it { should assign_to(:current_step).with(:content_sources) }
+        it { should render_template(:content_sources) }
       end
     end
   end

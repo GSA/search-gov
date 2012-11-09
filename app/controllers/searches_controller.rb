@@ -115,6 +115,11 @@ class SearchesController < ApplicationController
       @affiliate.page_background_image_content_type = @affiliate.staged_page_background_image_content_type
       @affiliate.page_background_image_file_size = @affiliate.staged_page_background_image_file_size
       @affiliate.page_background_image_updated_at = @affiliate.staged_page_background_image_updated_at
+      @affiliate.mobile_homepage_url = @affiliate.staged_mobile_homepage_url
+      @affiliate.mobile_logo_file_name = @affiliate.staged_mobile_logo_file_name
+      @affiliate.mobile_logo_content_type = @affiliate.staged_mobile_logo_content_type
+      @affiliate.mobile_logo_file_size = @affiliate.staged_mobile_logo_file_size
+      @affiliate.mobile_logo_updated_at = @affiliate.staged_mobile_logo_updated_at
     end
 
     @affiliate.use_strictui if params[:strictui]
