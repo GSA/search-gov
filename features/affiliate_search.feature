@@ -157,12 +157,12 @@ Feature: Affiliate Search
     When I am on bar.gov's news search page
     And I fill in "query" with "item"
     And I press "Search"
-    And I follow "Press"
+    And I follow "Photo Gallery"
     And I follow "Last hour"
     Then I should see "no results found for 'item'"
 
-    When I follow "Everything"
-    Then I should not see a link to "Everything"
+    When I follow "Everything" in the left column
+    Then I should not see a link to "Everything" in the left column
 
     When I follow "Photo Gallery"
     Then I should see "no results found for 'item'"
@@ -319,6 +319,31 @@ Feature: Affiliate Search
     Then I should not see the left column options expanded
     And the "From:" field should be blank
     And the "To:" field should be blank
+
+    When I am on bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    And I fill in "From:" with "9/30/2012"
+    And I fill in "To:" with "10/15/2012"
+    And I press "Search" in the left column
+    And I follow "Everything"
+    And I should see the browser page titled "item - bar site Search Results"
+    And I should see the left column options expanded
+    And I should not see a link to "Custom range" in the left column
+    And the "From:" field should contain "9/30/2012"
+    And the "To:" field should contain "10/15/2012"
+
+    When I am on bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Press"
+    And I fill in "From:" with "9/30/2012"
+    And I fill in "To:" with "10/15/2012"
+    And I press "Search" in the left column
+    And I follow "Last year"
+    Then I should not see a link to "Last year" in the left column
+    And I should see a link to "Custom range" in the left column
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"

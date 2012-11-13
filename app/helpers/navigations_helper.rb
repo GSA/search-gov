@@ -48,9 +48,9 @@ module NavigationsHelper
   end
 
   def render_navigation_for_search_everything(search, search_params, rss_feed, default_search_label)
-    search_everything = (search.instance_of?(WebSearch) or
-      (search.is_a?(NewsSearch) && rss_feed.nil?))
-    default_search_path = search_params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel))
+    search_everything = search.instance_of?(WebSearch) || (search.is_a?(NewsSearch) && rss_feed.nil?)
+    search_has_time_filters = search.is_a?(NewsSearch) && (search.since || search.until)
+    default_search_path = search_has_time_filters ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel))
     link_to_unless(search_everything,
                    default_search_label,
                    default_search_path,
