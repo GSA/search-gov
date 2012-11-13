@@ -148,7 +148,7 @@ describe NavigationsHelper do
       end
 
       context 'when doing search on a specific news channel' do
-        let(:search) { mock(NewsSearch) }
+        let(:search) { mock(NewsSearch, since:nil, until: nil) }
 
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == NewsSearch }
@@ -173,7 +173,7 @@ describe NavigationsHelper do
     end
 
     context 'when there are more than 1 active rss feed navigations' do
-      let(:search) { mock(NewsSearch) }
+      let(:search) { mock(NewsSearch, since:nil, until: nil) }
 
       before do
         affiliate.stub_chain(:navigations, :active).and_return(
