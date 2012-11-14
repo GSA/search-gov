@@ -139,7 +139,7 @@ class WebSearch < Search
     @total = hits(response)
     available_bing_pages = (@total/@per_page.to_f).ceil
     if backfill_needed?
-      odie_search = OdieSearch.new(@options.merge(:page => [@page - available_bing_pages, 1].max))
+      odie_search = odie_search_class.new(@options.merge(:page => [@page - available_bing_pages, 1].max))
       odie_response = odie_search.search
       if odie_response and odie_response.total > 0
         adjusted_total = available_bing_pages * @per_page + odie_response.total
@@ -276,13 +276,7 @@ class WebSearch < Search
     modules << "MEDL" unless self.med_topic.nil?
     modules << "TWEET" unless self.tweets.nil? or self.tweets.total.zero?
     modules << "PHOTO" unless self.photos.nil? or self.photos.total.zero?
-    vertical =
-      case self.class.to_s
-        when "ImageSearch"
-          :image
-        when "WebSearch"
-          :web
-      end
+    vertical = get_vertical
     QueryImpression.log(vertical, affiliate.name, self.query, modules)
   end
 
@@ -362,4 +356,13 @@ class WebSearch < Search
     end
     news_item_hash
   end
+
+  def odie_search_class
+    OdieSearch
+  end
+
+  def get_vertical
+    :web
+  end
+
 end

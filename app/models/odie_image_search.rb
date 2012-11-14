@@ -12,8 +12,6 @@ class OdieImageSearch < OdieSearch
     ["odie_image", @query, @affiliate.id, @page, @per_page].join(':')
   end
   
-  protected
-  
   def process_results(response)
     processed = response.hits(:verify => true).collect do |hit|
       {        
@@ -36,6 +34,8 @@ class OdieImageSearch < OdieSearch
     end
     processed.compact
   end
+
+  protected
 
   def log_serp_impressions
     modules = []

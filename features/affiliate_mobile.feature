@@ -124,20 +124,3 @@ Feature: Mobile Search for Affiliate
     And I follow "Next"
     Then I should see "agency site Mobile"
     Then I should see "crawled document"
-
-  Scenario: A search on images
-    Given the following Affiliates exist:
-      | display_name   | name              | contact_email | contact_name | is_photo_govbox_enabled |
-      | NOAA Photo Lib | photolib.noaa.gov | aff@noaa.gov  | John Bar     | true                    |
-    And the following FlickrPhotos exist:
-      | title               | description              | url_q                         | owner | flickr_id | affiliate_name    |
-      | Current weather map | A picture of weather map | http://www.flickr.com/someurl | 123   | 456       | photolib.noaa.gov |
-    And I am on photolib.noaa.gov's image search page
-    And I fill in "query" with "lighthouse"
-    And I submit the search form
-    Then I should see 30 image results
-    And I should see the Results by Bing logo
-    When I fill in "query" with "weather"
-    And I submit the search form
-    Then I should see 1 image result
-    And I should see the Results by USASearch logo

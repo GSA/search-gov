@@ -40,26 +40,3 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "Images"
     And I should not see "Last hour"
-  
-  Scenario: Affiliate Image Search when there are Flickr Photos, and when there are not
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | domains |
-      | foo site         | foo.gov          | aff@foo.gov           | John Bar            | usa.gov |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            | usa.gov |   
-    And the following FlickrPhotos exist:
-      | title     | description             | url_q                         | owner | flickr_id | affiliate_name  |
-      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
-    When I am on bar.gov's image search page
-    And I fill in "query" with "government"
-    And I press "Search"
-    Then I should see "usa.gov"
-    And I should not see "flickr.com"
-    And I should see the Results by Bing logo
-    
-    When I am on bar.gov's image search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should not see "usa.gov"
-    And I should see "flickr.com"
-    And I should see the Results by USASearch logo
-    
