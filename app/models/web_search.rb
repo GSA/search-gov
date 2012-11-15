@@ -210,25 +210,30 @@ class WebSearch < Search
   end
 
   def process_image_results(response)
-    response.image.results.collect do |result|
-      {
-        "title" => result.title,
-        "Width" => result.width,
-        "Height" => result.height,
-        "FileSize" => result.fileSize,
-        "ContentType" => result.contentType,
-        "Url" => result.Url,
-        "DisplayUrl" => result.displayUrl,
-        "MediaUrl" => result.mediaUrl,
-        "Thumbnail" => {
-          "Url" => result.thumbnail.url,
-          "FileSize" => result.thumbnail.fileSize,
-          "Width" => result.thumbnail.width,
-          "Height" => result.thumbnail.height,
-          "ContentType" => result.thumbnail.contentType
+    processed = response.image.results.collect do |result|
+      begin
+        {
+          "title" => result.title,
+          "Width" => result.width,
+          "Height" => result.height,
+          "FileSize" => result.fileSize,
+          "ContentType" => result.contentType,
+          "Url" => result.Url,
+          "DisplayUrl" => result.displayUrl,
+          "MediaUrl" => result.mediaUrl,
+          "Thumbnail" => {
+            "Url" => result.thumbnail.url,
+            "FileSize" => result.thumbnail.fileSize,
+            "Width" => result.thumbnail.width,
+            "Height" => result.thumbnail.height,
+            "ContentType" => result.thumbnail.contentType
+          }
         }
-      }
+      rescue NoMethodError => e
+        nil
+      end
     end
+    processed.compact
   end
 
   def spelling_results(response)

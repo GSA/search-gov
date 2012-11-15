@@ -58,6 +58,10 @@ describe ImageSearch do
       @result = subject.results.first
     end
 
+    it "should ignore results with missing Thumbnail data" do
+      subject.results.size.should==9
+    end
+
     it "includes original image meta-data" do
       @result["title"].should == "White House, Washington D.C."
       @result["Url"].should == "http://biglizards.net/blog/archives/2008/08/"
@@ -77,19 +81,6 @@ describe ImageSearch do
       @result["Thumbnail"]["ContentType"].should == "image/jpeg"
     end
 
-    context "when doing an affiliate Image Search" do
-      context "when the affiliate specified has no results for the given query" do
-        before do
-          affiliate = affiliates(:non_existant_affiliate)
-          @search = ImageSearch.new(:query => 'obama', :affiliate => affiliate)
-        end
-
-        it "should not attempt to backfill the results from locally-indexed documents" do
-          IndexedDocument.should_not_receive(:search_for)
-          @search.run
-        end
-      end
-    end
   end
 
 end
