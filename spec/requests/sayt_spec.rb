@@ -74,6 +74,13 @@ describe 'sayt' do
                                url: 'http://agency.gov/boosted_content2.html',
                                status: 'active',
                                publish_start_on: Date.current.tomorrow)
+
+        BoostedContent.create!(affiliate_id: affiliate.id,
+                               title: 'Lorem Boosted Content 3 inactive',
+                               description: 'Boosted Content Description',
+                               url: 'http://agency.gov/boosted_content3.html',
+                               status: 'inactive',
+                               publish_start_on: Date.today)
       end
 
       it 'should return results with SaytSuggestions, Forms and Boosted Contents' do

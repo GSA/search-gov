@@ -98,8 +98,8 @@ class BoostedContent < ActiveRecord::Base
   end
 
   def self.sayt_for(affiliate_id, query, limit)
-    select(%w(title url)).
-        where('affiliate_id = ? AND title LIKE ?', affiliate_id, "#{query}%").
+    select(%w(title url))
+        where("affiliate_id = ? AND title LIKE ? AND status = 'active'", affiliate_id, "#{query}%").
         where('publish_start_on <= CURDATE() AND (publish_end_on >= CURDATE() OR ISNULL(publish_end_on))').
         order('title ASC').
         limit(limit)
