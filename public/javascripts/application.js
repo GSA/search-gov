@@ -1,7 +1,7 @@
 function clk(a, b, c, d, e, f, g, h) {
   if (document.images) {
     var img = new Image;
-    img.src = ['/clicked?','u=',encodeURIComponent(b),'&q=',escape(a),'&p=',c,'&a=',d,'&s=',e,'&t=',f,'&v=',g,'&l=',h].join('');
+    img.src = ['/clicked?','u=',encodeURIComponent(b),'&q=',encodeURIComponent(a),'&p=',c,'&a=',d,'&s=',e,'&t=',f,'&v=',g,'&l=',h].join('');
   }
   return true;
 }
