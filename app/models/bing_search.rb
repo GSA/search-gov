@@ -55,8 +55,6 @@ class BingSearch
     nil
   end
 
-  protected
-
   def self.url_in_bing(url)
     normalized_url = normalized_url(url)
 

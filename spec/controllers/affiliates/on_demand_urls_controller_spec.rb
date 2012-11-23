@@ -73,7 +73,7 @@ describe Affiliates::OnDemandUrlsController do
       it { should redirect_to(home_page_path) }
     end
 
-    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully create a URL" do
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
       let(:current_user) { users(:affiliate_manager) }
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:indexed_document) { mock_model(IndexedDocument, :url => 'http://www.agency.gov/document1.html') }
@@ -85,46 +85,50 @@ describe Affiliates::OnDemandUrlsController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
 
         affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
-        indexed_document.should_receive(:save).and_return(true)
       end
 
-      context "Rails request/response stuff" do
+      context "when URL successfully created" do
         before do
+          indexed_document.should_receive(:save).and_return(true)
+        end
+
+        context "Rails request/response stuff" do
+          before do
+            post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
+          end
+
+          it { should assign_to(:indexed_document).with(indexed_document) }
+          it { should set_the_flash }
+          it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+        end
+
+        it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
+          ResqueSpec.reset!
+          Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
+          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/another.html'}
+        end
+
+        it "should delete it from BingUrl table first, as it may no longer be in Bing" do
+          bing_url = mock("BingUrl")
+          BingUrl.should_receive(:find_by_normalized_url).with('agency.gov/document1.html').and_return(bing_url)
+          bing_url.should_receive(:destroy)
+          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
+        end
+
+      end
+
+      context "when we failed to create a URL" do
+        before do
+          indexed_document.should_receive(:save).and_return(false)
+
           post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
         end
 
         it { should assign_to(:indexed_document).with(indexed_document) }
-        it { should set_the_flash }
-        it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+        it { should assign_to(:title).with_kind_of(String) }
+        it { should render_template(:new) }
       end
 
-      it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
-        ResqueSpec.reset!
-        Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
-        post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/another.html'}
-      end
-    end
-
-    context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to create a URL" do
-      let(:current_user) { users(:affiliate_manager) }
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:indexed_document) { mock_model(IndexedDocument, :url => 'http://www.agency.gov/document1.html') }
-
-      before do
-        UserSession.create(current_user)
-        User.should_receive(:find_by_id).and_return(current_user)
-
-        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-
-        affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
-        indexed_document.should_receive(:save).and_return(false)
-
-        post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
-      end
-
-      it { should assign_to(:indexed_document).with(indexed_document) }
-      it { should assign_to(:title).with_kind_of(String) }
-      it { should render_template(:new) }
     end
   end
 
@@ -290,7 +294,7 @@ describe Affiliates::OnDemandUrlsController do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
       let(:crawled_urls) { mock('crawled URLs') }
-      let(:indexed_documents) { mock('indexed documents')}
+      let(:indexed_documents) { mock('indexed documents') }
       let(:selected_fields) { mock('selected fields') }
       let(:doc) { mock_model(IndexedDocument,
                              :url => 'http://url.to/my/doc.html',

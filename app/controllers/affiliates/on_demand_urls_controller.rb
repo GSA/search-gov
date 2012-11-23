@@ -14,6 +14,9 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
 
   def create
     @indexed_document = @affiliate.indexed_documents.build(params[:indexed_document])
+    if (bing_url = BingUrl.find_by_normalized_url(BingSearch.normalized_url(@indexed_document.url)))
+      bing_url.destroy
+    end
     if @indexed_document.save
       Resque.enqueue_with_priority(:high, IndexedDocumentFetcher, @indexed_document.id)
       redirect_to uncrawled_affiliate_on_demand_urls_path(@affiliate), :flash => { :success => "Successfully added #{@indexed_document.url}. It will be indexed soon." }
