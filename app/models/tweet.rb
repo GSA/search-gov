@@ -18,13 +18,14 @@ class Tweet < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, twitter_profile_ids, page = 1, per_page = 3)
+    def search_for(query, twitter_profile_ids, since_ts = nil, page = 1, per_page = 3)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
       search do
         fulltext sanitized_query do
           highlight :tweet_text, :frag_list_builder => :single
         end
+        with(:published_at).greater_than(since_ts) if since_ts
         with(:twitter_profile_id, twitter_profile_ids)
         order_by(:published_at, :desc)
         paginate :page => page, :per_page => per_page

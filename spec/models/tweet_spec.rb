@@ -40,7 +40,7 @@ describe Tweet do
       Tweet.destroy_all
       Tweet.create!(:tweet_id => 1234567, :tweet_text => "Good morning, America!", :published_at => now, :twitter_profile_id => 12345)
       Tweet.create!(:tweet_id => 2345678, :tweet_text => "Good morning, America!", :published_at => now - 10.seconds, :twitter_profile_id => 23456)
-      Tweet.create!(:tweet_id => 3456789, :tweet_text => "Hello, America!", :published_at => now - 1.hour, :twitter_profile_id => 12345)
+      Tweet.create!(:tweet_id => 3456789, :tweet_text => "Hello, America!", :published_at => 4.months.ago, :twitter_profile_id => 12345)
       Tweet.reindex
     end
 
@@ -62,11 +62,20 @@ describe Tweet do
 
     context "when specifying a page/per_page value" do
       it "should page the results accordingly" do
-        search = Tweet.search_for("america", [12345, 23456], 2, 2)
+        search = Tweet.search_for("america", [12345, 23456], nil, 2, 2)
         search.total.should == 3
         search.results.size.should == 1
         search.results.first.tweet_text.should == "Hello, America!"
         search.results.first.twitter_profile_id.should == 12345
+      end
+    end
+
+    context "when a tweet is more than 3 months old" do
+      it "shouldn't find it" do
+        search = Tweet.search_for("america", [12345], 3.months.ago)
+        search.total.should == 1
+        search.results.size.should == 1
+        search.results.last.tweet_text.should == "Good morning, America!"
       end
     end
 

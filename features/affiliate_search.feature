@@ -39,11 +39,12 @@ Feature: Affiliate Search
       | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
-      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
-      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | vicepresident | westwing     | jobs           |
-      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
-      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
+      | link                             | title       | guid       | published_ago | multiplier   | published_at | description                       | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |      1       |             | item First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |      1       |             | item Next news item for the feed  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/9 | stale first item  | pressuuid9 | months  |      14      |             | item first Stale news item  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               |      1       |2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               |      1       |2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
@@ -75,6 +76,7 @@ Feature: Affiliate Search
     And I fill in "query" with "first item"
     And I press "Search"
     Then I should see "News for 'first item' by bar site"
+    And I should not see "stale"
     And I should see "First item" in the rss feed govbox
     And I should not see "First video item" in the rss feed govbox
     And I should see "Videos of 'first item' by bar site"
@@ -949,12 +951,12 @@ Feature: Affiliate Search
       | USASearch   | USASearch.gov   | 123        | bar.gov    |
       | GobiernoUSA | GobiernoUSA.gov | 456        | es.bar.gov |
     And the following Tweets exist:
-      | tweet_text                     | tweet_id | published_at        | twitter_profile_id | url                  | expanded_url                 | display_url           |
-      | Winter season is great!        | 123456   | 2012-05-01 00:00:00 | 123                |                      |                              |                       |
-      | Summer season is great!        | 234567   | 2012-04-25 00:00:00 | 123                |                      |                              |                       |
-      | Spring season is great!        | 456789   | 2012-04-27 00:00:00 | 123                |                      |                              |                       |
-      | Ok season http://t.co/YQQSs9bb | 184957   | 2012-04-27 00:00:00 | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
-      | Estados Unidos es grande!      | 789012   | 2012-04-28 00:00:00 | 456                |                      |                              |                       |
+      | tweet_text                     | tweet_id | published_ago | twitter_profile_id | url                  | expanded_url                 | display_url           |
+      | Winter season is great!        | 123456   | hour          | 123                |                      |                              |                       |
+      | Summer season is great!        | 234567   | year          | 123                |                      |                              |                       |
+      | Spring season is great!        | 456789   | hour          | 123                |                      |                              |                       |
+      | Ok season http://t.co/YQQSs9bb | 184957   | hour          | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
+      | Estados Unidos es grande!      | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
     And I fill in "query" with "season"
     And I press "Search"
@@ -976,13 +978,6 @@ Feature: Affiliate Search
     And I should see "Estados Unidos es grande!"
     And I should see "Estados Unidos" in bold font
 
-    # @wip
-    # When I am on bar.gov's search page
-    # And I fill in "query" with "season"
-    # And I press "Search"
-    # And I follow "http://www.meetup.com/bmore-on-rails/events/78736452/"
-    # Then a Tweet click should be logged
-
   Scenario: Enabling and disabling the Twitter govbox
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale |
@@ -996,8 +991,8 @@ Feature: Affiliate Search
       | screen_name | twitter_id | affiliate |
       | USASearch   | 123        | bar.gov   |
     And the following Tweets exist:
-      | tweet_text          | tweet_id    | published_at        | twitter_profile_id  |
-      | AMERICA is great!   | 123456      | 2012-05-01 00:00:00 | 123                 |
+      | tweet_text          | tweet_id    | published_ago        | twitter_profile_id  |
+      | AMERICA is great!   | 123456      | hour                 | 123                 |
     When I am on bar.gov's search page
     And I fill in "query" with "america"
     And I press "Search"

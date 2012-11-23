@@ -19,7 +19,8 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
     published_at = hash[:published_at].present? ? hash[:published_at] : nil
-    published_at ||= hash["published_ago"].blank? ? 1.day.ago : 1.send(hash["published_ago"]).ago
+    multiplier = (hash[:multiplier] || "1").to_i
+    published_at ||= hash["published_ago"].blank? ? 1.day.ago : multiplier.send(hash["published_ago"]).ago
     rss_feed_url.news_items.create!(:rss_feed => rss_feed,
                                     :link => hash["link"],
                                     :title => hash["title"],
@@ -137,7 +138,7 @@ Given /^the following Tweets exist:$/ do |table|
     end
     Tweet.create!(:tweet_text => hash[:tweet_text],
                   :tweet_id => hash[:tweet_id],
-                  :published_at => Time.parse(hash[:published_at]),
+                  :published_at => 1.send(hash[:published_ago]).ago,
                   :twitter_profile_id => hash[:twitter_profile_id], :urls => urls)
   end
   Tweet.reindex

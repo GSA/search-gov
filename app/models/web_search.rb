@@ -253,11 +253,11 @@ class WebSearch < Search
         @agency = agency_query.agency if agency_query
       end
       govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
-      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, nil, 1)
-      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| feed.is_video? }, nil, 1)
+      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, 13.months.ago, 1)
+      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| feed.is_video? }, 13.months.ago, 1)
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
       affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
-      @tweets = Tweet.search_for(query, affiliate_twitter_profiles) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
+      @tweets = Tweet.search_for(query, affiliate_twitter_profiles, 3.months.ago) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
       @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
       if affiliate.form_agency_ids.present?
         if qualify_for_form_fulltext_search?
