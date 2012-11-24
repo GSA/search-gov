@@ -178,8 +178,6 @@ UsasearchRails3::Application.routes.draw do
     resources :forms do as_routes end
     resources :bing_urls do as_routes end
     resources :system_alerts do as_routes end
-    resources :tweets do as_routes end
-    resources :twitter_profiles do as_routes end
     resources :news_items do as_routes end
     resources :rss_feeds do as_routes end
     resources :rss_feed_urls do as_routes end
