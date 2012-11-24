@@ -2218,10 +2218,10 @@ Feature: Affiliate clients
       | screen_name | twitter_id | profile_image_url  | affiliate |
       | USASearch   | 12345      | http://t.com/j.png | aff.gov   |
     And the following Tweets exist:
-      | tweet_text  | tweet_id  | published_at        | twitter_profile_id  |
-      | Tweet 1     | 123       | 2012-06-30 00:00:00 | 12345               |
-      | Tweet 2     | 234       | 2012-06-30 01:00:00 | 12345               |
-      | Tweet 3     | 345       | 2012-06-30 02:00:00 | 12345               |
+      | tweet_text  | tweet_id  | published_ago        | twitter_profile_id  |
+      | Tweet 1     | 123       | hour                 | 12345               |
+      | Tweet 2     | 234       | day                  | 12345               |
+      | Tweet 3     | 345       | week                 | 12345               |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
