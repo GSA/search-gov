@@ -2101,6 +2101,7 @@ describe Affiliate do
       let(:tempfile) { mock('tempfile') }
 
       before do
+        affiliate.stub_chain(:site_domains, :count).and_return(1)
         affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
         affiliate.should_receive(:open).with('http://usasearch.howto.gov/with-path').and_return(tempfile)
       end
@@ -2108,7 +2109,9 @@ describe Affiliate do
       it 'should update mobile homepage URL' do
         affiliate.should_receive(:update_attributes!).with(
             managed_header_home_url: 'http://usasearch.howto.gov/with-path',
-            mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
+            staged_managed_header_home_url: 'http://usasearch.howto.gov/with-path',
+            mobile_homepage_url: 'http://usasearch.howto.gov/with-path',
+            staged_mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
 
         affiliate.autodiscover_homepage_url
       end
@@ -2119,6 +2122,7 @@ describe Affiliate do
       let(:tempfile) { mock('tempfile') }
 
       before do
+        affiliate.stub_chain(:site_domains, :count).and_return(1)
         affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
         affiliate.should_receive(:open).with('http://howto.gov').and_raise
         affiliate.should_receive(:open).with('http://www.howto.gov').and_return(tempfile)
@@ -2127,7 +2131,9 @@ describe Affiliate do
       it 'should update mobile homepage URL with www. prefix in the hostname' do
         affiliate.should_receive(:update_attributes!).with(
             managed_header_home_url: 'http://www.howto.gov',
-            mobile_homepage_url: 'http://www.howto.gov')
+            staged_managed_header_home_url: 'http://www.howto.gov',
+            mobile_homepage_url: 'http://www.howto.gov',
+            staged_mobile_homepage_url: 'http://www.howto.gov',)
 
         affiliate.autodiscover_homepage_url
       end
@@ -2137,6 +2143,7 @@ describe Affiliate do
       let(:domain) { '.gov' }
 
       before do
+        affiliate.stub_chain(:site_domains, :count).and_return(1)
         affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
         affiliate.should_receive(:open).with('http://.gov').and_raise
         affiliate.should_receive(:open).with('http://www..gov').and_raise
@@ -2144,6 +2151,47 @@ describe Affiliate do
 
       it 'should not update mobile homepage URL' do
         affiliate.should_not_receive(:update_attributes!)
+        affiliate.autodiscover_homepage_url
+      end
+    end
+
+    context 'when the managed header home URL is present' do
+      before do
+        affiliate.stub_chain(:site_domains, :count).and_return(1)
+        affiliate.should_receive(:managed_header_home_url).twice.and_return('http://www.usa.gov')
+        affiliate.should_receive(:mobile_homepage_url).twice.and_return(nil)
+        affiliate.stub_chain(:site_domains, :first, :domain).and_return('usa.gov')
+      end
+
+      it 'should update mobile homepage URL' do
+        affiliate.should_receive(:update_attributes!).
+            with(mobile_homepage_url: 'http://usa.gov',
+                 staged_mobile_homepage_url: 'http://usa.gov')
+        affiliate.autodiscover_homepage_url
+      end
+    end
+
+    context 'when the mobile homepage URL is present' do
+      before do
+        affiliate.stub_chain(:site_domains, :count).and_return(1)
+        affiliate.should_receive(:managed_header_home_url).twice.and_return(nil)
+        affiliate.should_receive(:mobile_homepage_url).and_return('http://www.usa.gov')
+        affiliate.stub_chain(:site_domains, :first, :domain).and_return('usa.gov')
+      end
+
+      it 'should update mobile homepage URL' do
+        affiliate.should_receive(:update_attributes!).
+            with(managed_header_home_url: 'http://usa.gov',
+                 staged_managed_header_home_url: 'http://usa.gov')
+        affiliate.autodiscover_homepage_url
+      end
+    end
+
+    context 'when there are 2 or more site domains' do
+      before { affiliate.stub_chain(:site_domains, :count).and_return(2) }
+
+      it 'should not update mobile homepage URL' do
+        affiliate.should_not_receive(:open)
         affiliate.autodiscover_homepage_url
       end
     end

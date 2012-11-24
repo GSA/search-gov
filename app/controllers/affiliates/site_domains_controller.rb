@@ -19,6 +19,7 @@ class Affiliates::SiteDomainsController < Affiliates::AffiliatesController
     @site_domain = @affiliate.site_domains.build(params[:site_domain])
     if @site_domain.save
       @affiliate.normalize_site_domains
+      @affiliate.autodiscover_homepage_url
       redirect_to affiliate_site_domains_path(@affiliate), :flash => { :success => "Domain was successfully added." }
     else
       render :action => :new

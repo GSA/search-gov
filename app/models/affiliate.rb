@@ -491,10 +491,25 @@ class Affiliate < ActiveRecord::Base
   end
 
   def autodiscover_homepage_url
-    domain = site_domains.first.domain
+    return unless (managed_header_home_url.blank? || mobile_homepage_url.blank?) && (site_domains.count == 1)
+        domain = site_domains.first.domain
     %W(http://#{domain} http://www.#{domain}).any? do |url|
       page = open(url) rescue nil
-      page ? (update_attributes!(managed_header_home_url: url, mobile_homepage_url: url); true) : false
+      if page
+        update_params = {}
+        if managed_header_home_url.blank?
+          update_params[:managed_header_home_url] = url
+          update_params[:staged_managed_header_home_url] = url
+        end
+        if mobile_homepage_url.blank?
+          update_params[:mobile_homepage_url] = url
+          update_params[:staged_mobile_homepage_url] = url
+        end
+        update_attributes!(update_params)
+        true
+      else
+        false
+      end
     end
   end
 

@@ -77,6 +77,22 @@ Feature: Affiliate site domain
     And I should see the following breadcrumbs: USASearch > Admin Center > agency site > Domains
     And I should see "Site agency site has no domain entry"
 
+  Scenario: Adding a single site domain
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email                | contact_name |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     |
+    And I am logged in with email "affiliate_manager@agency.gov" and password "random_string"
+    When I go to the affiliate admin page with "agency.gov" selected
+    And I follow "Domains" in the site navigation bar
+    And I follow "Add new domain"
+    And I fill in the following:
+      | Domain | whitehouse.gov |
+    And I press "Add"
+    Then I should see "Domain was successfully added."
+    When I follow "Header and footer" in the site navigation bar
+    Then the "Header home URL" field should contain "http://whitehouse.gov"
+    And the "Mobile homepage URL" field should contain "http://whitehouse.gov"
+
   Scenario: Bulk uploading site domains without exisiting site domains
     Given the following Affiliates exist:
       | display_name | name       | contact_email                | contact_name |

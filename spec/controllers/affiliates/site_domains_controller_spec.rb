@@ -91,6 +91,7 @@ describe Affiliates::SiteDomainsController do
         affiliate.stub_chain(:site_domains, :build).and_return(site_domain)
         site_domain.should_receive(:save).and_return(true)
         affiliate.should_receive(:normalize_site_domains)
+        affiliate.should_receive(:autodiscover_homepage_url)
         post :create, :affiliate_id => affiliate.id, :site_domain => { :domain => 'usa.gov' }
       end
 
