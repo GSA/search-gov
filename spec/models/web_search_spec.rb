@@ -1263,10 +1263,10 @@ describe WebSearch do
 
       it "should retrieve govbox-enabled non-video and video RSS feeds" do
         non_video_results = mock('non video results', :total => 3)
-        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.non_videos.to_a, nil, 1).and_return(non_video_results)
+        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.non_videos.to_a, a_kind_of(Time), 1).and_return(non_video_results)
 
         video_results = mock('video results', :total => 3)
-        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.videos.to_a, nil, 1).and_return(video_results)
+        NewsItem.should_receive(:search_for).with('item', @affiliate.rss_feeds.govbox_enabled.videos.to_a, a_kind_of(Time), 1).and_return(video_results)
 
         search = WebSearch.new(@valid_options.merge(:query => 'item', :affiliate => @affiliate, :page => 1))
         search.stub!(:build_news_item_hash_from_search).and_return Hash.new
