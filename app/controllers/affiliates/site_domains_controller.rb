@@ -8,7 +8,7 @@ class Affiliates::SiteDomainsController < Affiliates::AffiliatesController
   def index
     @site_domains = @affiliate.site_domains.paginate(:per_page => SiteDomain.per_page,
                                                      :page => params[:page],
-                                                     :order => 'updated_at DESC, id DESC')
+                                                     :order => 'domain ASC')
   end
 
   def new

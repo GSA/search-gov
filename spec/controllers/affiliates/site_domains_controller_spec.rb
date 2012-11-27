@@ -41,7 +41,7 @@ describe Affiliates::SiteDomainsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:site_domains).and_return(site_domains)
-        site_domains.should_receive(:paginate).with(:per_page => SiteDomain.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(site_domains_with_paginate)
+        site_domains.should_receive(:paginate).with(:per_page => SiteDomain.per_page, :page => nil, :order => 'domain ASC').and_return(site_domains_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end

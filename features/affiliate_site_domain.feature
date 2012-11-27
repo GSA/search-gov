@@ -16,15 +16,17 @@ Feature: Affiliate site domain
     And I should see "Site agency site has no domain entry"
 
     When the following site domains exist for the affiliate agency.gov:
-      | domain         | site_name       |
-      | whitehouse.gov | The White House |
-      | usa.gov        |                 |
+      | site_name       | domain          |
+      | The White House | whitehouse.gov  |
+      |                 | usa.gov         |
+      | GobiernoUSA.gov | gobiernousa.gov |
     And I go to the affiliate admin page with "agency.gov" selected
     And I follow "Domains"
     Then I should see the following table rows:
-      | Label           | Domain         |
-      | usa.gov         | usa.gov        |
-      | The White House | whitehouse.gov |
+      | Label           | Domain          |
+      | GobiernoUSA.gov | gobiernousa.gov |
+      | usa.gov         | usa.gov         |
+      | The White House | whitehouse.gov  |
 
   Scenario: Adding, editing and deleting site domain
     Given the following Affiliates exist:
@@ -113,9 +115,9 @@ Feature: Affiliate site domain
     And I should see the following table rows:
       | Label            | Domain         |
       | The White House  | whitehouse.gov |
-      | 3rd USA.gov site | www3.usa.gov   |
-      | 2nd USA.gov site | www2.usa.gov   |
       | www1.usa.gov     | www1.usa.gov   |
+      | 2nd USA.gov site | www2.usa.gov   |
+      | 3rd USA.gov site | www3.usa.gov   |
 
   Scenario: Bulk uploading site domains with existing site domains
     Given the following Affiliates exist:
@@ -143,6 +145,6 @@ Feature: Affiliate site domain
     And I should see "Successfully uploaded 2 domains."
     And I should see the following table rows:
       | Label          | Domain         |
-      | whitehouse.gov | whitehouse.gov |
       | usa.gov        | usa.gov        |
+      | whitehouse.gov | whitehouse.gov |
       | GSA            | www.gsa.gov    |
