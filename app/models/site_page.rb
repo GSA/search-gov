@@ -27,7 +27,7 @@ class SitePage < ActiveRecord::Base
     skip_page_es = "/gobiernousa/index.shtml"
     base_url = "http://www.usa.gov"
     total, queue = 0, []
-    marked = Set.new [skip_page_es, skip_page_en, start_page_en, start_page_es]
+    marked = Set.new [skip_page_es, skip_page_en, start_page_en, start_page_es.downcase]
     queue.push start_page_en, start_page_es
     transaction do
       delete_all
@@ -45,9 +45,9 @@ class SitePage < ActiveRecord::Base
           links = doc.css("#main_content//a") + doc.css("#breadcrumbs_dl//a")
           links.each do |link|
             href = link['href'].squish rescue "broken link"
-            if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href)
+            if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href.downcase)
               queue.push href
-              marked.add href
+              marked.add href.downcase
             end
           end
           total += 1

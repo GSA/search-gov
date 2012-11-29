@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121184515) do
+ActiveRecord::Schema.define(:version => 20121129025138) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -846,7 +846,6 @@ ActiveRecord::Schema.define(:version => 20121121184515) do
     t.string   "breadcrumb",   :limit => 2048
     t.text     "main_content"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "site_pages", ["url_slug"], :name => "index_site_pages_on_url_slug", :unique => true
