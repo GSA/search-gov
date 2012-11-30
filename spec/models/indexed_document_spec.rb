@@ -352,7 +352,7 @@ describe IndexedDocument do
         IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
         @coll = @affiliate.document_collections.create!(:name => "test",
-                                                        :url_prefixes_attributes => {'0' => { :prefix => 'http://www.agency.gov/' } })
+                                                        :url_prefixes_attributes => {'0' => {:prefix => 'http://www.agency.gov/'}})
         @affiliate.site_domains.create!(:domain => "ignoreme.gov")
         @coll.url_prefixes.create!(:prefix => "http://www.nps.gov/")
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 1', :description => 'This is a HTML document.', :url => 'http://www.nps.gov/html.html', :affiliate_id => @affiliate.id)
@@ -977,13 +977,28 @@ describe IndexedDocument do
       affiliates(:power_affiliate).site_domains.create!(:domain => "some.mil")
       IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
       IndexedDocument.create!(:url => 'http://nps.gov', :affiliate => affiliates(:basic_affiliate))
-      Affiliate.stub!(:find).and_return(affiliates(:power_affiliate), affiliates(:basic_affiliate))
     end
 
-    it "should call refresh_indexed_documents(extent) on each affiliate that has indexed docs" do
-      affiliates(:power_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
-      affiliates(:basic_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
-      IndexedDocument.refresh('unfetched')
+    context "when affiliates exist" do
+      before do
+        Affiliate.stub!(:find).and_return(affiliates(:power_affiliate), affiliates(:basic_affiliate))
+      end
+
+      it "should call refresh_indexed_documents(extent) on each affiliate that has indexed docs" do
+        affiliates(:power_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
+        affiliates(:basic_affiliate).should_receive(:refresh_indexed_documents).with('unfetched')
+        IndexedDocument.refresh('unfetched')
+      end
+    end
+
+    context "when affiliate has disappeared in the meanwhile" do
+      before do
+        Affiliate.stub!(:find).and_raise ActiveRecord::RecordNotFound
+      end
+
+      it "should ignore it and move on to the next affiliate" do
+        IndexedDocument.refresh('unfetched')
+      end
     end
   end
 

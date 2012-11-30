@@ -260,7 +260,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def refresh(extent)
-      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) }
+      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil}
     end
 
     def bulk_load_urls(file_path)

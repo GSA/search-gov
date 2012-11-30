@@ -43,4 +43,14 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
     AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'unfetched')
   end
 
+  context "when affiliate or indexed document have disappeared before job runs" do
+    before do
+      IndexedDocument.stub!(:find).and_raise ActiveRecord::RecordNotFound
+    end
+
+    it "should ignore the problem and move on" do
+      AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'unfetched')
+    end
+  end
+
 end

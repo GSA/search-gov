@@ -11,5 +11,7 @@ class AffiliateIndexedDocumentFetcher
       return if ((Time.now-start_time)/60).to_i > max_runtime_in_minutes.to_i
       IndexedDocument.find(indexed_document.id).fetch
     end
+  rescue ActiveRecord::RecordNotFound => e
+    Rails.logger.warn "Ignoring race condition in AffiliateIndexedDocumentFetcher: #{e}"
   end
 end
