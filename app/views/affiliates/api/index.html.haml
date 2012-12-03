@@ -35,7 +35,8 @@
       The name of your affiliate site. This parameter is required.
     %li
       %span index:
-      One of web, images, odie, news, or videonews. The default is 'web'. Bing provides the search results for web and image searches, while USASearch maintains the indexes for the news, video news, and document results.
+      One of web, images, docs, news, or videonews. The default is 'web'. Bing provides the search results for web, docs, and image searches,
+      backfilled by supplemental documents indexed by USASearch. The indexes for the news and video news results are maintained by USASearch.
     %li
       %span format:
       json or xml. The default is JSON.
@@ -54,7 +55,10 @@
       Examples: \ue000water\ue001 for JSON format and &amp;#57344;water&amp;#57345; for HTML format.
     %li
       %span callback:
-      For JSONP requests (index must be 'json'), this specifies the name of the callback function (e.g., 'parseResponse').
+      For JSONP requests (format must be 'json'), this specifies the name of the callback function (e.g., 'parseResponse').
+    %li
+      %span dc:
+      For document collection requests (i.e., index must be 'docs'), this specifies the document collection id number.
   %h2
     Examples
   %br
@@ -68,6 +72,10 @@
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
       = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'web')
+    %li
+      %span Restrict results to a particular document collection
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :dc => '123', :query => 'water', :index => 'docs')
 
   %h4
     Response Fields
