@@ -9,7 +9,7 @@ class ApiSearch
     search_klass = get_search_klass options[:index]
     search = search_klass.new(options)
     api_cache_key = ['API',search_klass, search.cache_key, format].join(':')
-    if cached = @@redis.get(api_cache_key) rescue nil
+    if (cached = (@@redis.get(api_cache_key) rescue nil))
       cached
     else
       search.run
@@ -28,6 +28,8 @@ class ApiSearch
         ImageSearch
       when "videonews"
         VideoNewsSearch
+      when "docs"
+        SiteSearch
       else
         WebSearch
     end

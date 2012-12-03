@@ -3,17 +3,24 @@ require 'spec_helper'
 describe SiteSearch do
   fixtures :affiliates
 
-  describe '#run' do
-    let(:affiliate) { affiliates(:power_affiliate) }
-    let(:dc) do
-      collection = affiliate.document_collections.build(
-          :name => 'WH only',
-          :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
-                                        '1' => { :prefix => 'http://www.whitehouse.gov/blog/' } })
-      collection.save!
-      collection.navigation.update_attributes!(:is_active => true)
-      collection
+  let(:affiliate) { affiliates(:power_affiliate) }
+  let(:dc) do
+    collection = affiliate.document_collections.build(
+      :name => 'WH only',
+      :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
+                                    '1' => { :prefix => 'http://www.whitehouse.gov/blog/' } })
+    collection.save!
+    collection.navigation.update_attributes!(:is_active => true)
+    collection
+  end
+
+  describe ".initialize" do
+    it "should use the dc param to find a document collection when document_collection isn't present" do
+      SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id).document_collection.should == dc
     end
+  end
+
+  describe '#run' do
 
     let!(:bing_search) { BingSearch.new }
     let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }

@@ -3,7 +3,7 @@ class SiteSearch < WebSearch
   attr_reader :document_collection
 
   def initialize(options = {})
-    @document_collection = options[:document_collection]
+    @document_collection = options[:document_collection] || (DocumentCollection.find(options[:dc]) rescue nil)
     super(options)
   end
 
