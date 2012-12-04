@@ -59,6 +59,9 @@
     %li
       %span dc:
       For document collection requests (i.e., index must be 'docs'), this specifies the document collection id number.
+    %li
+      %span sort_by:
+      For news searches (i.e., index must be 'news'), this specifies sorting results either by date or by relevancy. Possible values are 'r' and 'd'. Omitting this parameter defaults to date-based sorting.
   %h2
     Examples
   %br
@@ -76,6 +79,10 @@
       %span Restrict results to a particular document collection
       %br
       = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :dc => '123', :query => 'water', :index => 'docs')
+    %li
+      %span Find news items most relevant to 'fiscal cliff'
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :sort_by => 'r', :query => 'fiscal cliff', :index => 'news')
 
   %h4
     Response Fields

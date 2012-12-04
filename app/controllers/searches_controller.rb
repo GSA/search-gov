@@ -141,6 +141,7 @@ class SearchesController < ApplicationController
     @search_options.merge!(contributor: params[:contributor],
                            subject: params[:subject],
                            publisher: params[:publisher],
+                           sort_by: params[:sort_by],
                            since_date: params[:since_date],
                            until_date: params[:until_date])
   end

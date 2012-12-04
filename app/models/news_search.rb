@@ -36,13 +36,15 @@ class NewsSearch < Search
       @rss_feeds = navigable_feeds
       @rss_feed = @rss_feeds.first if @rss_feeds.count == 1
     end
-    @hits, @total = [] , 0
+    @hits, @total = [], 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
+    @sort_by_relevance = options[:sort_by] == 'r'
     assign_per_page
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, { since: @since, until: @until }, @page, @per_page, @contributor, @subject, @publisher)
+    NewsItem.search_for(@query, @rss_feeds, {since: @since, until: @until}, @page, @per_page,
+                        @contributor, @subject, @publisher, @sort_by_relevance)
   end
 
   def cache_key

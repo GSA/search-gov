@@ -171,7 +171,7 @@ describe NewsSearch do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher')
+        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', false)
         search.run.should be_true
       end
     end
@@ -181,7 +181,7 @@ describe NewsSearch do
 
       it "should set per_page to 21" do
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 21, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 21, nil, nil, nil, false)
         search.run.should be_true
       end
     end
@@ -190,7 +190,7 @@ describe NewsSearch do
       it "should search for news items from all active feeds for the affiliate" do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
         search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, { since: one_week_ago, until: nil }, 1, 10, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, { since: one_week_ago, until: nil }, 1, 10, nil, nil, nil, false)
         search.run
       end
     end
@@ -201,7 +201,7 @@ describe NewsSearch do
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, since_date: '10/1/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: Time.parse('2012-10-01 00:00:00Z'), until: nil }, 1, 10, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', [feed], { since: Time.parse('2012-10-01 00:00:00Z'), until: nil }, 1, 10, nil, nil, nil, false)
 
         news_search.run
       end
@@ -214,9 +214,18 @@ describe NewsSearch do
         until_ts = Time.parse('2012-10-31')
         Time.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: until_ts.utc.end_of_day }, 1, 10, nil, nil, nil)
+        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: until_ts.utc.end_of_day }, 1, 10, nil, nil, nil, false)
 
         news_search.run
+      end
+    end
+
+    context 'when sorting by relevance' do
+      it 'should pass in the sort_by param' do
+        feed = affiliate.rss_feeds.first
+        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject', :sort_by => 'r')
+        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', true)
+        search.run.should be_true
       end
     end
   end

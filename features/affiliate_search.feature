@@ -290,6 +290,10 @@ Feature: Affiliate Search
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
     And I should see "Related Searches" in the search results section
+    When I follow "Relevance"
+    Then I should not see a link to "Relevance" in the left column
+    When I follow "Date"
+    Then I should not see a link to "Date" in the left column
     When I follow "Last year" in the left column
     And I follow "Everything" in the left column
     Then I should see the browser page titled "item - bar site Search Results"

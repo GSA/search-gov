@@ -29,7 +29,8 @@ class NewsItem < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, rss_feeds, since_or_time_range = nil, page = 1, per_page = 10, contributor = nil, subject = nil, publisher = nil)
+    def search_for(query, rss_feeds, since_or_time_range = nil, page = 1, per_page = 10,
+      contributor = nil, subject = nil, publisher = nil, sort_by_relevance = false)
       if since_or_time_range.is_a?(Hash)
         since_ts = since_or_time_range[:since]
         until_ts = since_or_time_range[:until]
@@ -61,7 +62,7 @@ class NewsItem < ActiveRecord::Base
             facet(facet_name.to_sym, :exclude => facet_restriction)
           end
 
-          order_by :published_at, :desc
+          order_by(:published_at, :desc) unless sort_by_relevance
           paginate :page => page, :per_page => per_page
         end rescue nil
       end
