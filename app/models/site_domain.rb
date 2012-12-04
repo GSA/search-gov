@@ -1,6 +1,6 @@
 class SiteDomain < ActiveRecord::Base
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w(text/csv text/comma-separated-values application/vnd.ms-excel)
-  MAX_DOCS_PER_CRAWL = 2000
+  MAX_DOCS_PER_CRAWL = 1000
   INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format; please upload a csv file (.csv).'
 
   before_validation :normalize_domain

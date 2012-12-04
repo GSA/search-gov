@@ -700,7 +700,7 @@ describe IndexedDocument do
     end
   end
 
-  describe "#discover_nested_docs(doc, max)" do
+  describe "#discover_nested_docs(doc)" do
     before do
       @aff = affiliates(:basic_affiliate)
       @aff.site_domains.destroy_all
@@ -714,7 +714,7 @@ describe IndexedDocument do
       end
 
       it "should create new IndexedDocuments with absolute URLs based on valid URLs with matching site domains" do
-        @aff.indexed_documents.should_receive(:create).exactly(13).times
+        @aff.indexed_documents.should_receive(:create).exactly(10).times
         @indexed_document.discover_nested_docs(@doc)
       end
     end

@@ -194,10 +194,11 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def discover_nested_docs(doc)
-    doc.css('a').collect { |link| link['href'] }.compact.map do |link_url|
-      URI.merge_unless_recursive(self_url, URI.parse(link_url)).to_s rescue nil
+    doc.css('a').map { |link| link['href'] }.map do |link_url|
+      url = URI.merge_unless_recursive(self_url, URI.parse(link_url)).to_s rescue nil
+      url if url.present? && url =~ /\.(pdf|docx?|xlsx?|pptx?)$/i
     end.uniq.compact.each do |link_url|
-      affiliate.indexed_documents.create(:url => link_url) if link_url.present?
+      affiliate.indexed_documents.create(:url => link_url)
     end
   end
 

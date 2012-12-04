@@ -167,7 +167,7 @@ describe SiteDomain do
       let(:linky_file) { open(Rails.root.to_s + '/spec/fixtures/html/page_with_all_kinds_of_links.html') }
 
       it "should return an array of eligible links from the HTML file" do
-        links = %w(http://www.agency.gov/test/another_relative.html http://www.agency.gov/test/another_absolute.html http://www.agency.gov/test/another_absolute.docx http://www.agency.gov/test/another_absolute.doc)
+        links = %w(http://www.agency.gov/test/another_relative.html http://www.agency.gov/test/another_absolute_html_doc http://www.agency.gov/test/another_absolute.docx http://www.agency.gov/test/another_absolute.doc http://www.agency.gov/test/another_absolute.XLSX http://www.agency.gov/test/another_absolute.xls http://www.agency.gov/test/another_absolute.PPTX http://www.agency.gov/test/another_absolute.ppt)
         site_domain.get_links_from_html_file(linky_file, current_url, parsed_start_page_url, path_prefix).should == links
       end
     end
