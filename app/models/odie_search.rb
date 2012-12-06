@@ -24,6 +24,7 @@ class OdieSearch < Search
       @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1
       @endrecord = @startrecord + @results.size - 1
+      @module_tag = @total > 0 ? 'AIDOC' : nil
     end
   end
 
@@ -42,7 +43,7 @@ class OdieSearch < Search
 
   def log_serp_impressions
     modules = []
-    modules << "AIDOC" unless @total.zero?
+    modules << @module_tag if @module_tag
     QueryImpression.log(:odie, @affiliate.name, @query, modules)
   end
 end

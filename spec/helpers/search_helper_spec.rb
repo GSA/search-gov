@@ -8,13 +8,20 @@ describe SearchHelper do
     @affiliate = affiliates(:usagov_affiliate)
   end
 
-  describe "#display_bing_result_links" do
+  describe "#display_web_result_link" do
     it "should shorten really long URLs" do
       result = {}
       result['unescapedUrl'] = "actual content is..."
       result['cacheUrl'] = "...not important here"
       helper.should_receive(:shorten_url).once
-      helper.display_bing_result_links(result, WebSearch.new(:affiliate => @affiliate), @affiliate, 1, :web)
+      helper.display_web_result_link(result, WebSearch.new(:affiliate => @affiliate), @affiliate, 1, :web)
+    end
+
+    it "should render the assigned results module" do
+      result = { 'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov' }
+      search = mock(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
+      html = helper.display_web_result_link(result, search, @affiliate, 1, :web)
+      html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en')\" class='link-to-full-url'>http://usasearch.howto.gov</a>"
     end
 
     context "when affiliate exists" do
@@ -23,7 +30,7 @@ describe SearchHelper do
 
       it "should not display search within this site link" do
         helper.should_not_receive(:display_search_within_this_site_link).with(result, search, @affiliate).and_return('search_within_this_site_link')
-        helper.display_bing_result_links(result, search, @affiliate, 1, :web)
+        helper.display_web_result_link(result, search, @affiliate, 1, :web)
       end
     end
   end
@@ -426,7 +433,7 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_bing_image_result_links" do
+  describe "#display_image_result_link" do
     before do
       @result = { 'Url' => 'http://aHost.gov/aPath',
                   'title' => 'aTitle',
@@ -434,44 +441,44 @@ describe SearchHelper do
                   'MediaUrl' => 'aMediaUrl' }
       @query = "NASA's"
       @affiliate = mock('affiliate', :name => 'special affiliate name')
-      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
+      @search = mock('search', { query: @query, queried_at_seconds: Time.now.to_i, spelling_suggestion: nil, module_tag: 'BOGUS_MODULE' })
       @index = 100
       @onmousedown_attr = 'onmousedown attribute'
     end
 
     it "should generate onmousedown with affiliate name" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
-      helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
+      helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
     end
 
     it "should generate onmousedown with blank affiliate name if affiliate is nil" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['Url'], @index, "", "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, "", 'BOGUS_MODULE', @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
-      helper.display_bing_image_result_links(@result, @search, nil, @index, :image)
+      helper.display_image_result_link(@result, @search, nil, @index, :image)
     end
 
     it "should contain tracked links" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+            with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr).and_return("thumbnail_image_link_content")
       helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
 
-      content = helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
+      content = helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
 
       content.should contain("thumbnail_image_link_content")
       content.should contain("thumbnail_link_content")
     end
 
     it "should use spelling suggestion as the query if one exists" do
-      @search = mock('search', {:query => 'satalate', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
+      @search = mock('search', { query: 'satalate', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite', module_tag: 'BOGUS_MODULE' })
       helper.should_receive(:onmousedown_attribute_for_image_click).
-          with("satellite", @result['Url'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
+          with("satellite", @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
           and_return(@onmousedown_attr)
-      helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
+      helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
     end
   end
 
@@ -677,6 +684,15 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         html = helper.search_results_by_logo(false)
         html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Resultados por USASearch'][src^='/images/results_by_usasearch_es.png']")
       end
+    end
+  end
+
+  describe '#display_web_result_title' do
+    it 'should render search results module' do
+      result = { 'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov' }
+      search = mock(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
+      html = helper.display_web_result_title(result, search, @affiliate, 1, :web)
+      html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en')\" >USASearch</a>"
     end
   end
 end

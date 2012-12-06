@@ -1308,6 +1308,11 @@ describe WebSearch do
         JSON.stub!(:parse).and_return parsed
       end
 
+      it "should assign module_tag to BWEB" do
+        @search.run
+        @search.module_tag.should == 'BWEB'
+      end
+
       it "should log info about the query" do
         QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme', %w{BWEB OVER BSPEL})
         @search.run
@@ -1362,6 +1367,12 @@ describe WebSearch do
         search.indexed_documents.should be_nil
         search.are_results_by_bing?.should be_false
       end
+
+      it 'should log info about the query' do
+        QueryImpression.should_receive(:log).with(:web, @non_affiliate.name, 'indexed', %w{AIDOC})
+        search = WebSearch.new(:query => 'indexed', :affiliate => @non_affiliate)
+        search.run
+      end
     end
 
     context "when affiliate has no Bing results and IndexedDocuments search returns nil" do
@@ -1379,6 +1390,12 @@ describe WebSearch do
         search.results.should be_empty
         search.startrecord.should be_nil
         search.endrecord.should be_nil
+      end
+
+      it 'should log info about the query' do
+        QueryImpression.should_receive(:log).with(:web, @non_affiliate.name, 'some bogus + + query', [])
+        search = WebSearch.new(:query => 'some bogus + + query', :affiliate => @non_affiliate)
+        search.run
       end
     end
 

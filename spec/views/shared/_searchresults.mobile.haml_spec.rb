@@ -24,6 +24,7 @@ describe "shared/_searchresults.mobile.haml" do
     @search.stub!(:med_topic)
     @search.stub!(:first_page?).and_return true
     @search.stub!(:are_results_by_bing?).and_return(false)
+    @search.stub!(:module_tag).and_return('BWEB')
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'

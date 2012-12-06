@@ -6,7 +6,7 @@ module AgenciesHelper
 
   def display_agency_link(result, search, affiliate, position, vertical)
     link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
-    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
+    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, search.module_tag, vertical, "class='link-to-full-url'")
   end
 
   def display_agency_phone_numbers(agency)

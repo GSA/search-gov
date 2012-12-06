@@ -37,6 +37,34 @@ describe ImageSearch do
         @search.run
       end
     end
+
+    context 'when the affiliate has no Bing results, but has Flickr images' do
+      before do
+        @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.site_domains.create(:domain => 'nonsense.com')
+        flickr_profile = FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @non_affiliate, :profile_type => 'user', :profile_id => '12345')
+        FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
+        FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
+        FlickrPhoto.create!(:flickr_id => 7, :flickr_profile => flickr_profile, :title => 'irrelevant photo', :description => 'irrelevant', :tags => "car,batman", :date_taken => Time.now - 14.days)
+        FlickrPhoto.reindex
+      end
+
+      it 'should fill the results with the flickr photos' do
+        search = ImageSearch.new(:query => 'obama', :affiliate => @non_affiliate)
+        search.run
+        search.results.should_not be_empty
+        search.total.should == 2
+        search.module_tag.should == 'FLICKR'
+        search.results.first['title'].should == 'President Obama walks his daughters to school'
+        search.results.last['title'].should == 'POTUS gets in car.'
+      end
+
+      it 'should log info about the query' do
+        QueryImpression.should_receive(:log).with(:image, @non_affiliate.name, 'obama', %w{FLICKR})
+        search = ImageSearch.new(:query => 'obama', :affiliate => @non_affiliate)
+        search.run
+      end
+    end
   end
 
   subject do

@@ -66,6 +66,7 @@ class NewsSearch < Search
       @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1
       @endrecord = @startrecord + @results.size - 1
+      @module_tag = @total > 0 ? 'NEWS' : nil
     end
   end
 
@@ -101,7 +102,7 @@ class NewsSearch < Search
 
   def log_serp_impressions
     modules = []
-    modules << "NEWS" unless @total.zero?
+    modules << @module_tag if @module_tag
     modules << "SREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end

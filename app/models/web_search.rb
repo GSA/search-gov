@@ -156,6 +156,7 @@ class WebSearch < Search
       end
     end
     handle_bing_response(response) if available_bing_pages >= @page
+    assign_module_tag
   end
 
   def handle_bing_response(response)
@@ -167,6 +168,14 @@ class WebSearch < Search
 
   def backfill_needed?
     @total < @per_page * @page
+  end
+
+  def assign_module_tag
+    if @total > 0
+      @module_tag = are_results_by_bing? ? 'BWEB' : 'AIDOC'
+    else
+      @module_tag = nil
+    end
   end
 
   def hits(response)
@@ -273,7 +282,7 @@ class WebSearch < Search
 
   def log_serp_impressions
     modules = []
-    modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
+    modules << @module_tag if @module_tag
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "NEWS" unless self.news_items.nil? or self.news_items.total.zero?

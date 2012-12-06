@@ -31,4 +31,11 @@ class ImageSearch < WebSearch
     :image
   end
 
+  def assign_module_tag
+    if @total > 0
+      @module_tag = are_results_by_bing? ? 'IMAG' : 'FLICKR'
+    else
+      @module_tag = nil
+    end
+  end
 end

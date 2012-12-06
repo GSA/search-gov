@@ -9,7 +9,7 @@
         .searchResult
           .title
             = display_bing_result_extname_prefix(search_result)
-            = display_bing_result_title(search_result, search, @affiliate, index, @search_vertical)
+            = display_web_result_title(search_result, search, @affiliate, index, @search_vertical)
           .content
             = display_result_description(search_result)
           .links= shorten_url(search_result['unescapedUrl'])

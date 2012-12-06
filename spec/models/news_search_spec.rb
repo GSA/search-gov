@@ -139,6 +139,7 @@ describe NewsSearch do
         @search.results.size.should == 0
         @search.hits.size.should == 0
         @search.total.should == 0
+        @search.module_tag.should be_nil
       end
 
       it "should set error message" do

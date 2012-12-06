@@ -29,10 +29,10 @@ module SearchHelper
     end
   end
 
-  def display_bing_image_result_links(result, search, affiliate, index, vertical)
+  def display_image_result_link(result, search, affiliate, index, vertical)
     affiliate_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
-    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["Url"], index, affiliate_name, "IMAG", search.queried_at_seconds, vertical)
+    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["Url"], index, affiliate_name, search.module_tag, search.queried_at_seconds, vertical)
     html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
     raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
@@ -65,8 +65,8 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def display_bing_result_links (result, search, affiliate, position, vertical)
-    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
+  def display_web_result_link (result, search, affiliate, position, vertical)
+    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, search.module_tag, vertical, "class='link-to-full-url'")
     raw html
   end
 
@@ -128,8 +128,8 @@ module SearchHelper
     excluded_domains + excluded_keywords
   end
 
-  def display_bing_result_title(result, search, affiliate, position, vertical)
-    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, 'BWEB', vertical)
+  def display_web_result_title(result, search, affiliate, position, vertical)
+    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, search.module_tag, vertical)
   end
 
   def highlight_string(s)

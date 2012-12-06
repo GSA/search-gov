@@ -22,7 +22,8 @@ class Search
               :results,
               :related_search,
               :spelling_suggestion,
-              :queried_at_seconds
+              :queried_at_seconds,
+              :module_tag
 
   def initialize(options = {})
     @options = options

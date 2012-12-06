@@ -34,6 +34,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:photos).and_return nil
     @search.stub!(:tweets)
     @search.stub!(:has_forms?).and_return false
+    @search.stub!(:module_tag).and_return('BWEB')
     assign(:search, @search)
   end
 

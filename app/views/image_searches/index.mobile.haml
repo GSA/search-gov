@@ -9,7 +9,7 @@
       - @search.results.each_with_index do |search_result, index|
         .searchThumbnail
           %span.image_result{:id => "searchresult#{index+1}"}
-            = display_bing_image_result_links(search_result, @search, nil, index, :image)
+            = display_image_result_link(search_result, @search, nil, index, :image)
 
   = render_mobile_pagination_and_logo(@search.results, @search.are_results_by_bing?)
 
