@@ -267,10 +267,6 @@ Feature:  Administration
     Then I should see the following breadcrumbs: USASearch > Super Admin > Features
 
     When I go to the admin home page
-    And I follow "Excluded Domains" in the Super Admin page
-    Then I should see the following breadcrumbs: USASearch > Super Admin > ExcludedDomains
-
-    When I go to the admin home page
     And I follow "Affiliate Scopes"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Scopes
 

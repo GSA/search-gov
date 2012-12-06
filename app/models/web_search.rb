@@ -183,11 +183,12 @@ class WebSearch < Search
 
   def process_web_results(response)
     news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(@affiliate, response.web.results.collect(&:url))
+    excluded_urls_absent = @affiliate.excluded_urls.empty?
     processed = response.web.results.collect do |result|
       title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)
       content ||= (result.description rescue '')
-      if title.present? and not url_is_excluded(result.url)
+      if title.present? and (excluded_urls_absent or not url_is_excluded(result.url))
         {
           'title' => title,
           'unescapedUrl' => result.url,
@@ -205,7 +206,7 @@ class WebSearch < Search
 
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and (ExcludedDomain.excludes_host?(parsed_url.host) or @affiliate.excludes_url?(url))
+    return true if parsed_url and @affiliate.excludes_url?(url)
     false
   end
 
@@ -311,8 +312,9 @@ class WebSearch < Search
   end
 
   def generate_affiliate_scope
-    domains = (@query =~ /site:/) ? nil : fill_domains_to_remainder
-    scope_ids = (@query =~ /site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
+    domains = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : fill_domains_to_remainder
+    scope_ids = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
+    excluded_domains = (@query =~ /-site:/) ? nil : affiliate.excluded_domains.collect { |ed| "-site:" + ed.domain }.join(" AND ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scope_ids.blank? and domains.blank?
     affiliate_scope += scope_ids unless scope_ids.blank?
@@ -321,6 +323,7 @@ class WebSearch < Search
     affiliate_scope += ")" unless scope_ids.blank? and domains.blank?
     affiliate_scope += " #{generate_default_scope}" if (scope_ids.blank? and domains.blank? and (@query =~ /site:/).nil?)
     affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")})" unless affiliate.scope_keywords.blank?
+    affiliate_scope += [' (', excluded_domains, ')'].join unless excluded_domains.blank?
     affiliate_scope.strip
   end
 
@@ -331,7 +334,7 @@ class WebSearch < Search
       site_str = "site:#{site}"
       encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
       break if (remaining_chars -= encoded_str.length) < 0
-      domains << site_str
+      domains.unshift site_str
     end unless affiliate.domains_as_array.blank?
     "#{domains.join(delimiter)}"
   end

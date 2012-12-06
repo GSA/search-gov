@@ -38,6 +38,7 @@ class IndexedDocument < ActiveRecord::Base
   DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
+  DOMAIN_EXCLUDED_STATUS = "URL matches affiliate's excluded site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   BING_PRESENCE = "URL already exists in the Bing index"
@@ -261,7 +262,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def refresh(extent)
-      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil}
+      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil }
     end
 
     def bulk_load_urls(file_path)
@@ -328,6 +329,11 @@ class IndexedDocument < ActiveRecord::Base
         site_domain_uri = URI.parse(site_domain_url_fragment)
         uri.host =~ /#{Regexp.escape(site_domain_uri.host)}$/i and uri.path =~ /^#{Regexp.escape(site_domain_uri.path)}/i
       end
+    end
+
+    errors.add(:base, DOMAIN_EXCLUDED_STATUS) if self.affiliate.excluded_domains.any? do |ed|
+      excluded_domain_uri = URI.parse("#{uri.scheme}://#{ed.domain}/")
+      uri.host =~ /#{Regexp.escape(excluded_domain_uri.host)}$/i and uri.path =~ /^#{Regexp.escape(excluded_domain_uri.path)}/i
     end
   end
 

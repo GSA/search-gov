@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129025138) do
+ActiveRecord::Schema.define(:version => 20121206054207) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -304,7 +304,10 @@ ActiveRecord::Schema.define(:version => 20121129025138) do
     t.string   "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "affiliate_id", :default => 130687165, :null => false
   end
+
+  add_index "excluded_domains", ["affiliate_id"], :name => "index_excluded_domains_on_affiliate_id"
 
   create_table "excluded_urls", :force => true do |t|
     t.text     "url"

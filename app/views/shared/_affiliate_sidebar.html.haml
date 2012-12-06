@@ -16,6 +16,7 @@
           %h3 Content Sources
           %ul
             %li= link_to "Domains", affiliate_site_domains_path(@affiliate)
+            %li= link_to "Excluded Domains", affiliate_excluded_domains_path(@affiliate)
             %li= link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate)

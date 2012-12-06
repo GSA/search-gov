@@ -1,0 +1,28 @@
+.excluded_domains
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Excluded Domains"])
+  %h1 Excluded Domains
+  = render_help_link(@help_link)  
+  %p
+  .add-excluded-url
+    = form_for([@affiliate, @excluded_domain], :html => { :multipart => true }) do |f|
+      = render :partial => 'form', :locals => { :form => f }
+      = f.submit "Add"
+  .excluded-url-list{:style => 'margin-top: 10px;'}
+    %table
+      %colgroup
+        %col{ :class => 'domain' }
+        %col{ :class => 'actions' }
+      %tbody
+        %tr.column-header
+          %th Domain
+          %th Actions
+        - unless @excluded_domains.blank?
+          - @excluded_domains.each do |excluded_domain|
+            %tr.row-item
+              %td
+                = excluded_domain.domain
+              %td.actions
+                = button_to("Delete", [@affiliate, excluded_domain], :method => :delete, :data => {:confirm => "Are you sure you want to delete this excluded domain?"})
+        - else
+          %tr
+            %td.empty{ :colspan => 2 } Site #{@affiliate.display_name} has no excluded domains

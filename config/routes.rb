@@ -92,6 +92,7 @@ UsasearchRails3::Application.routes.draw do
     end
     resources :document_collections, :controller => "affiliates/document_collections"
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
+    resources :excluded_domains, :controller => "affiliates/excluded_domains", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :top_searches, :controller => "affiliates/top_searches", :only => [:index, :create]
     resources :site_domains, :controller => "affiliates/site_domains" do

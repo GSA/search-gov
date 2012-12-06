@@ -18,7 +18,8 @@ class Affiliate < ActiveRecord::Base
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
-  has_many :site_domains, :dependent => :destroy
+  has_many :site_domains, :dependent => :destroy, :order => 'domain ASC'
+  has_many :excluded_domains, :dependent => :destroy, :order => 'domain ASC'
   has_many :indexed_domains, :dependent => :destroy
   has_many :affiliate_feature_addition, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
@@ -250,7 +251,7 @@ class Affiliate < ActiveRecord::Base
                                             :staged_mobile_homepage_url]
 
   def domains_as_array(reload = false)
-    @domains_as_array ||= site_domains(reload).ordered.collect { |site_domain| site_domain.domain }
+    @domains_as_array ||= site_domains(reload).collect(&:domain)
   end
 
   def scope_ids_as_array

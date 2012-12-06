@@ -1,18 +1,12 @@
 class SiteDomain < ActiveRecord::Base
+  acts_as_search_domain
+
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w(text/csv text/comma-separated-values application/vnd.ms-excel)
   MAX_DOCS_PER_CRAWL = 1000
   INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format; please upload a csv file (.csv).'
 
-  before_validation :normalize_domain
-  validates_presence_of :domain
-  validates_format_of :domain, :with => /^([a-z0-9]+)?([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/[^?.]*)?$/ix
-  validates_uniqueness_of :domain, :scope => :affiliate_id
   validate :domain_coverage, :if => Proc.new { |site_domain| site_domain.affiliate.present? }
   before_save :set_site_name
-
-  belongs_to :affiliate
-
-  scope :ordered, {:order => 'domain ASC'}
 
   def self.process_file(affiliate, file)
     if file.blank? or !VALID_UPLOAD_FILE_CONTENT_TYPE.include? file.content_type
@@ -100,15 +94,7 @@ class SiteDomain < ActiveRecord::Base
     nil
   end
 
-  def to_label
-    domain
-  end
-
   protected
-
-  def normalize_domain
-    self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
-  end
 
   def set_site_name
     self.site_name = domain if site_name.blank?

@@ -219,6 +219,67 @@ describe WebSearch do
     end
 
     context "when affiliate is not nil" do
+      context "when affiliate has excluded domains and site domains and searcher doesn't specify -site:" do
+        before do
+          @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
+          @affiliate.excluded_domains.build(:domain => "exclude1.gov")
+          @affiliate.excluded_domains.build(:domain => "exclude2.gov")
+          @affiliate.save!
+        end
+
+        it "should send those excluded domains in query to Bing" do
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
+          @bing_search.should_receive(:query).with(/\(government\) \(site:bar\.com OR site:foo\.com\) \(-site:exclude1\.gov AND -site:exclude2\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          search.run
+        end
+      end
+
+      context "when affiliate has excluded domains and searcher specifies -site:" do
+        before do
+          @affiliate.excluded_domains.build(:domain => "exclude1.gov")
+          @affiliate.excluded_domains.build(:domain => "exclude2.gov")
+          @affiliate.save!
+        end
+
+        it "should override excluded domains in query to Bing" do
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government -site:exclude3.gov"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
+          @bing_search.should_receive(:query).with(/\(government -site:exclude3\.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          search.run
+        end
+
+        context "and the affiliate specifies a scope id" do
+          before do
+            @affiliate.scope_ids = "PatentClass"
+          end
+
+          it "should use the query along with the scope id" do
+            search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government -site:exclude3.gov"))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
+            @bing_search.should_receive(:query).with(/\(government -site:exclude3\.gov\) \(scopeid:PatentClass\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+            search.run
+          end
+        end
+      end
+
+      context 'when affiliate does not have excluded domains and searcher specifies -site:' do
+        before do
+          @affiliate.excluded_domains.destroy_all
+        end
+
+        it 'should allow -site search in query to Bing' do
+          search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query => "government -site:answers.foo.com"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
+          @bing_search.should_receive(:query).with(/\(government -site:answers\.foo\.com\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          search.run
+        end
+      end
+
       context "when affiliate has site domains and searcher does not specify site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
@@ -234,7 +295,7 @@ describe WebSearch do
 
         context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
           before do
-            site_domain_hash = Hash["a10001".upto("a10100").collect { |x| ["#{x}.gov", nil] }]
+            site_domain_hash = Hash["a10001".upto("a10075").collect { |x| ["#{x}.gov", nil] }]
             site_domain_hash
             @affiliate.add_site_domains(site_domain_hash)
           end
@@ -243,7 +304,7 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            @bing_search.should_receive(:query).with(/a10071.gov\)$/, anything(), anything(), anything(), anything(), anything()).and_return ""
+            @bing_search.should_receive(:query).with(/\(site:a10069.gov/, anything(), anything(), anything(), anything(), anything()).and_return ""
             search.run
           end
         end
@@ -765,9 +826,7 @@ describe WebSearch do
     context "when Bing results contain excluded URLs" do
       before do
         @url1 = "http://www.uspto.gov/web.html"
-        @url2 = "http://www.windstream.net/web.html"
         affiliate = affiliates(:power_affiliate)
-        ExcludedDomain.create!(:domain => "windstream.net")
         ExcludedUrl.create!(:url => @url1, :affiliate => affiliate)
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
@@ -778,8 +837,8 @@ describe WebSearch do
       end
 
       it "should filter out the excluded URLs" do
-        @search.results.any? { |result| result['unescapedUrl'] == @url1 or result['unescapedUrl'] == @url2 }.should be_false
-        @search.results.size.should == 4
+        @search.results.any? { |result| result['unescapedUrl'] == @url1 }.should be_false
+        @search.results.size.should == 5
       end
 
     end

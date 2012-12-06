@@ -34,6 +34,34 @@ describe IndexedDocument do
   it { should belong_to :affiliate }
   it { should have_and_belong_to_many :forms }
 
+  context "when associated affiliate has an excluded domain list" do
+    before do
+      affiliate = affiliates(:basic_affiliate)
+      affiliate.add_site_domains('site1.gov' => nil, 'site2.gov' => nil)
+      affiliate.excluded_domains.build(:domain => "beta.site1.gov")
+      affiliate.excluded_domains.build(:domain => "site2.gov/subdir")
+      affiliate.save!
+    end
+
+    context "when URL of indexed document matches something in affiliate's excluded domain list" do
+      it "should find the record invalid" do
+        %w(http://beta.site1.gov/foo http://www.site2.gov/subdir/doc.html).each do |url|
+          odie = IndexedDocument.new(@valid_attributes.merge(url: url))
+          odie.save.should be_false
+          odie.errors.full_messages.join(' ').should =~ /#{IndexedDocument::DOMAIN_EXCLUDED_STATUS}/
+        end
+      end
+    end
+
+    context "when URL of indexed document doesn't match anything in affiliate's excluded domain list" do
+      it "should find the record valid given all other attributes are valid" do
+        %w(http://ok.site1.gov/foo http://www.site2.gov/subdir2/doc.html).each do |url|
+          IndexedDocument.new(@valid_attributes.merge(:url => url)).should be_valid
+        end
+      end
+    end
+  end
+
   context "when associated affiliate has a site domain list" do
     before do
       SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov/someurl")
