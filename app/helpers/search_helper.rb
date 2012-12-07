@@ -29,11 +29,11 @@ module SearchHelper
     end
   end
 
-  def display_image_result_link(result, search, affiliate, index, vertical)
+  def display_image_result_link(result, search, affiliate, index, vertical, max_width = nil, max_height = nil)
     affiliate_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
     onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["Url"], index, affiliate_name, search.module_tag, search.queried_at_seconds, vertical)
-    html = tracked_click_thumbnail_image_link(result, onmousedown_attribute, 135, 135)
+    html = tracked_click_thumbnail_image_link(result, onmousedown_attribute, max_width, max_height)
     raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
 

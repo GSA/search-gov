@@ -464,7 +464,7 @@ describe SearchHelper do
       helper.should_receive(:onmousedown_attribute_for_image_click).
             with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
-      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, 135, 135).and_return("thumbnail_image_link_content")
+      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, nil, nil).and_return("thumbnail_image_link_content")
       helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
 
       content = helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
