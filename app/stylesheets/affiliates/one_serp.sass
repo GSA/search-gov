@@ -171,24 +171,36 @@ body
       margin-left: 0
   &.images
     width: 740px
+    padding-left: 34px
 
   span.image_result
     float: left
-    width: 173px
-    height: 200px
-    margin: 0
-    padding: 0 0 0 10px
-    text-align: center
+    height: 165px
+    margin: 0 5px 5px 0
     vertical-align: top
+
+    a.image-link
+      float: left
+      clear: both
+      display: block
+      margin: 0
+      padding: 0
 
     img
       margin: 0
-      padding: 5px
+      padding: 5px 3px
       border: 1px solid #CCC
       vertical-align: top
-    a
+      max-width: 135px
+      max-height: 135px
+
+    a.host-link
+      clear: both
       display: block
       font-size: 0.8em
+      text-align: center
+      vertical-align: top
+      max-width: 135px
 
   .pagination-and-logo
     clear: both

@@ -33,7 +33,7 @@ module SearchHelper
     affiliate_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
     onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["Url"], index, affiliate_name, search.module_tag, search.queried_at_seconds, vertical)
-    html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
+    html = tracked_click_thumbnail_image_link(result, onmousedown_attribute, 135, 135)
     raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
 
@@ -42,12 +42,13 @@ module SearchHelper
             result["MediaUrl"],
             :onmousedown => onmousedown_attr,
             :alt => result["title"],
-            :rel => "no-follow"
+            :rel => "no-follow",
+            :class => 'image-link'
   end
 
   def tracked_click_thumbnail_link(result, onmousedown_attr)
     link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow"
+    link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow", class: 'host-link'
   end
 
   def thumbnail_image_tag(result, max_width=nil, max_height=nil)
