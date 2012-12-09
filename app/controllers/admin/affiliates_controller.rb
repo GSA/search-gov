@@ -5,7 +5,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns = [:display_name, :name, :site_domains, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
-                       :features, :external_tracking_code]
+                       :features, :external_tracking_code, :submitted_external_tracking_code]
     config.columns << virtual_columns
     config.columns[:header_footer_css].form_ui = :textarea
     config.columns[:staged_header_footer_css].form_ui = :textarea
@@ -14,6 +14,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:footer].form_ui = :textarea
     config.columns[:staged_footer].form_ui = :textarea
     config.columns[:external_tracking_code].form_ui = :textarea
+    config.columns[:submitted_external_tracking_code].form_ui = :textarea
     config.update.columns = [:display_name, :name, :search_results_page_title, :staged_search_results_page_title,
                              :theme, :staged_theme,
                              :uses_managed_header_footer, :staged_uses_managed_header_footer,
@@ -21,7 +22,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :managed_header_text, :staged_managed_header_text,
                              :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
-                             :ga_web_property_id, :external_tracking_code,
+                             :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :is_sayt_enabled, :fetch_concurrency,
                              :has_staged_content, :exclude_webtrends, :locale,

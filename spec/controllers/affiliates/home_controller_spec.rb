@@ -1276,16 +1276,57 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
+      render_views
+
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
 
       before do
         UserSession.create(current_user)
-        get :edit_external_tracking, :id => affiliate.id
       end
 
-      it { should assign_to(:affiliate).with(affiliate) }
-      it { should respond_with(:success) }
+      context "at all times" do
+        before do
+          get :edit_external_tracking, :id => affiliate.id
+        end
+
+        it { should assign_to(:affiliate).with(affiliate) }
+        it { should respond_with(:success) }
+      end
+
+      context "when submitted external tracking code exists" do
+        before do
+          affiliate.update_attribute(:submitted_external_tracking_code, "foo")
+        end
+
+        it "should let the user know the status" do
+          get :edit_external_tracking, :id => affiliate.id
+          response.body.should contain("The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.")
+        end
+      end
+
+      context "when live external tracking code doesn't exist" do
+        before do
+          affiliate.update_attribute(:external_tracking_code, nil)
+        end
+
+        it "should let the user know the status" do
+          get :edit_external_tracking, :id => affiliate.id
+          response.body.should contain("You do not currently have any tracking code live for your site.")
+        end
+      end
+
+      context "when live external tracking code exists" do
+        before do
+          affiliate.update_attribute(:external_tracking_code, "<script>var analytics;</script>")
+        end
+
+        it "should show it to the user" do
+          get :edit_external_tracking, :id => affiliate.id
+          response.body.should contain("Here is the current tracking code that is live for your site:")
+          response.body.should contain("<script>var analytics;</script>")
+        end
+      end
     end
   end
 
@@ -1320,19 +1361,22 @@ describe Affiliates::HomeController do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
       let(:emailer) { mock(Emailer) }
+      let(:external_tracking_code) { "<script>var analytics;</script>" }
 
       before do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        external_tracking_code = '<script>var analytics;</script>'
         Emailer.should_receive(:update_external_tracking_code).with(affiliate, current_user, external_tracking_code).and_return(emailer)
         emailer.should_receive(:deliver)
 
-        put :update_external_tracking, :id => affiliate.id, :external_tracking_code => external_tracking_code, :commit => 'Submit'
+        put :update_external_tracking, :id => affiliate.id, :submitted_external_tracking_code => external_tracking_code, :commit => 'Submit'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      it "should update the submitted_external_tracking_code field" do
+        affiliate.submitted_external_tracking_code.should == external_tracking_code
+      end
       it { should set_the_flash.to(/Your request to update your web analytics code has been submitted/) }
       it { should redirect_to(affiliate_path(affiliate)) }
     end
@@ -1347,7 +1391,7 @@ describe Affiliates::HomeController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         Emailer.should_not_receive(:update_external_tracking_code)
 
-        put :update_external_tracking, :id => affiliate.id, :external_tracking_code => '', :commit => 'Submit'
+        put :update_external_tracking, :id => affiliate.id, :submitted_external_tracking_code => '', :commit => 'Submit'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }

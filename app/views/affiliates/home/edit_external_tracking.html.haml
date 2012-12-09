@@ -4,12 +4,23 @@
   %h1 3rd Party Tracking
   = render_help_link(@help_link)
   .site-info
+    - if @affiliate.external_tracking_code.present?
+      %p
+        Here is the current tracking code that is live for your site:
+      %pre
+        = @affiliate.external_tracking_code
+    - else
+      %p
+        You do not currently have any tracking code live for your site.
+    - if @affiliate.submitted_external_tracking_code.present?
+      %p
+        The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.
     = form_for @affiliate, :url => { :action => :update_external_tracking }, :html => { :class=>"generic-form external-tracking-form" } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       %ul
         %li
-          = label_tag :external_tracking_code, "Please insert your web analytics JavaScript code below"
-          = text_area_tag :external_tracking_code
+          = label_tag :submitted_external_tracking_code, "Please insert your web analytics JavaScript code below:"
+          = text_area_tag :submitted_external_tracking_code
         %li
           = f.submit "Submit", :id => "submit"
           = link_to "Cancel", affiliate_path(@affiliate)

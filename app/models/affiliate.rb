@@ -242,7 +242,7 @@ class Affiliate < ActiveRecord::Base
                                             :header_footer_css, :nested_header_footer_css,
                                             :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
                                             :managed_header_links, :managed_footer_links,
-                                            :external_tracking_code, :mobile_homepage_url]
+                                            :external_tracking_code, :submitted_external_tracking_code, :mobile_homepage_url]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
                                             :staged_header_footer_css, :staged_nested_header_footer_css,
