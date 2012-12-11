@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207053338) do
+ActiveRecord::Schema.define(:version => 20121211061037) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -177,18 +177,24 @@ ActiveRecord::Schema.define(:version => 20121207053338) do
   add_index "bing_urls", ["normalized_url"], :name => "index_bing_urls_on_normalized_url", :length => {"normalized_url"=>255}
   add_index "bing_urls", ["updated_at"], :name => "index_bing_urls_on_updated_at"
 
+  create_table "boosted_content_keywords", :force => true do |t|
+    t.integer  "boosted_content_id", :null => false
+    t.string   "value",              :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "boosted_content_keywords", ["boosted_content_id"], :name => "index_boosted_content_keywords_on_boosted_content_id"
+
   create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"
-    t.string   "title",                                            :null => false
-    t.string   "url",                                              :null => false
-    t.string   "description",                                      :null => false
+    t.string   "title",            :null => false
+    t.string   "url",              :null => false
+    t.string   "description",      :null => false
     t.datetime "created_at"
-    t.string   "locale",           :limit => 6,                    :null => false
     t.datetime "updated_at"
-    t.text     "keywords"
-    t.boolean  "auto_generated",                :default => false, :null => false
-    t.string   "status",                                           :null => false
-    t.date     "publish_start_on",                                 :null => false
+    t.string   "status",           :null => false
+    t.date     "publish_start_on", :null => false
     t.date     "publish_end_on"
   end
 

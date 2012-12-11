@@ -42,6 +42,20 @@ jQuery(document).ready(function() {
     return false;
   });
 
+  jQuery('#add_another_bc_keyword').click(function() {
+
+    var inputTagFormat =
+        "<tr class='row-item'>\
+          <td>\
+            <input id='boosted_content_boosted_content_keywords_attributes_#_value' name='boosted_content[boosted_content_keywords_attributes][#][value]' maxlength='255' type='text' />\
+          </td>\
+        </tr>";
+    var inputTag = inputTagFormat.replace(/#/g, new Date().getTime());
+    jQuery('.keywords table tbody').append(inputTag);
+    jQuery('.keywords input').last().focus();
+    return false;
+  });
+
   jQuery('#add_another_url_prefix').click(function() {
     var inputTagFormat =
         "<tr class='row-item'>\

@@ -304,10 +304,6 @@ describe FeaturedCollection do
                                                                        :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
                                                                        :position => '0')
           inactive_featured_collection.save!
-          inactive_featured_collection = affiliate.featured_collections.build(:title => 'inactive tropicales',
-                                                                      :status => 'inactive',
-                                                                      :layout => 'one column')
-          inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
           FeaturedCollection.reindex
         end
 

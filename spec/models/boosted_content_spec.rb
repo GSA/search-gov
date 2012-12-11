@@ -9,8 +9,6 @@ describe BoostedContent do
       :url => "http://www.someaffiliate.gov/foobar",
       :title => "The foobar page",
       :description => "All about foobar, boosted to the top",
-      :keywords => 'unrelated, terms',
-      :auto_generated => false,
       :status => 'active',
       :publish_start_on => Date.yesterday
     }
@@ -34,6 +32,7 @@ describe BoostedContent do
     specify { BoostedContent.new(:status => 'inactive').should_not be_is_active }
 
     it { should belong_to :affiliate }
+    it { should have_many(:boosted_content_keywords).dependent(:destroy) }
 
     it "should create a new instance given valid attributes" do
       BoostedContent.create!(@valid_attributes)
@@ -50,14 +49,6 @@ describe BoostedContent do
       BoostedContent.create!(@valid_attributes)
       duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       duplicate.should be_valid
-    end
-
-    it "should allow nil keywords" do
-      BoostedContent.create!(@valid_attributes.merge(:keywords => nil))
-    end
-
-    it "should allow an empty keywords value" do
-      BoostedContent.create!(@valid_attributes.merge(:keywords => ""))
     end
 
     it "should not allow publish start date before publish end date" do
@@ -125,19 +116,6 @@ describe BoostedContent do
 
     it "should also delete the boosted Content" do
       BoostedContent.find_by_url(@valid_attributes[:url]).should be_nil
-    end
-  end
-
-  context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
-    before do
-      @disappearing_affiliate = Affiliate.create!({:display_name => "Test Affiliate", :name => 'test_affiliate'}, :as => :test)
-      BoostedContent.create!(@valid_attributes.merge(:affiliate => @disappearing_affiliate))
-      @disappearing_affiliate.delete
-      BoostedContent.reindex
-    end
-
-    it "should not find the orphaned boosted Content while searching for Search.USA.gov boosted Contents" do
-      BoostedContent.search_for("foobar", @disappearing_affiliate).total.should == 0
     end
   end
 
@@ -247,7 +225,7 @@ describe BoostedContent do
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
+      BoostedContent.solr_search_ids { with :affiliate_id, basic_affiliate.id; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
@@ -302,7 +280,7 @@ describe BoostedContent do
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 1
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.title.should == "an old title"
-      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.length.should == 1
+      BoostedContent.solr_search_ids { with :affiliate_id, basic_affiliate.id; paginate(:page => 1, :per_page => 10) }.length.should == 1
     end
   end
 
@@ -332,7 +310,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
+      BoostedContent.solr_search_ids { with :affiliate_id, basic_affiliate.id; paginate(:page => 1, :per_page => 10) }.should =~ basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
@@ -389,13 +367,15 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
   describe "#search_for" do
     context "when the term is not mentioned in the description" do
       before do
-        @boosted_content = BoostedContent.create!(@valid_attributes)
-        Sunspot.commit
+        @boosted_content = BoostedContent.new(@valid_attributes)
+        @boosted_content.boosted_content_keywords.build(:value => 'pollution')
+        @boosted_content.save!
         BoostedContent.reindex
+        Sunspot.commit
       end
 
       it "should find a boosted content by keyword" do
-        search = BoostedContent.search_for('unrelated', @affiliate)
+        search = BoostedContent.search_for('pollute', @affiliate)
         search.total.should == 1
         search.results.first.should == @boosted_content
       end
@@ -411,9 +391,11 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     context "when the Boosted Content is in English" do
       before do
-        BoostedContent.create!(@valid_attributes.merge(:title => 'sports', :description => 'speak', :keywords => 'dance'))
-        Sunspot.commit
+        bc = BoostedContent.new(@valid_attributes.merge(:title => 'sports', :description => 'speak'))
+        bc.boosted_content_keywords.build(:value => 'dance')
+        bc.save!
         BoostedContent.reindex
+        Sunspot.commit
       end
 
       it "should find by title, description and keywords (ignoring stopwords), and highlight terms in the title and description" do
@@ -430,9 +412,11 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     context "when the Boosted Content is in Spanish" do
       before do
         @spanish_affiliate = affiliates(:gobiernousa_affiliate)
-        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar Cambio de hora', :description => 'hablar Cambio de hora', :keywords => 'caminar Cambio de hora', :affiliate => @spanish_affiliate))
-        Sunspot.commit
+        bc = BoostedContent.new(@valid_attributes.merge(:title => 'jugar Cambio de hora', :description => 'hablar Cambio de hora', :affiliate => @spanish_affiliate))
+        bc.boosted_content_keywords.build(:value => 'caminar Cambio de hora')
+        bc.save!
         BoostedContent.reindex
+        Sunspot.commit
       end
 
       it "should find stemmed equivalents for the title, description and keywords (ignoring stopwords), and highlight terms in the title and description" do
@@ -448,9 +432,11 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
     context "when query contains special characters" do
       before do
-        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar'))
-        Sunspot.commit
+        bc = BoostedContent.new(@valid_attributes.merge(:title => 'jugar', :description => 'hablar'))
+        bc.boosted_content_keywords.build(:value => 'caminar')
+        bc.save!
         BoostedContent.reindex
+        Sunspot.commit
       end
 
       [ '"   ', '   "       ', '+++', '+-', '-+'].each do |query|

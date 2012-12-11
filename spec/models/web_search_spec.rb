@@ -1583,8 +1583,7 @@ describe WebSearch do
 
     context "when boosted contents are present" do
       before do
-        affiliate.boosted_contents.create!(:title => "boosted obama content", :url => "http://example.com", :description => "description", :locale => 'en',
-                                           :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+        affiliate.boosted_contents.create!(:title => "boosted obama content", :url => "http://example.com", :description => "description", :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
         Sunspot.commit
         search.run

@@ -14,10 +14,12 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   def new
     @title = "Add a new Best Bets: Text - "
     @boosted_content = @affiliate.boosted_contents.new(:publish_start_on => Date.current)
+    setup_blank_keywords
   end
 
   def edit
     @title = "Edit Best Bets: Text entry"
+    setup_blank_keywords
   end
 
   def update
@@ -37,6 +39,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
       redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Best Bets: Text entry successfully added' }
     else
       @title = "Edit Best Bets: Text entry"
+      setup_blank_keywords
       render :action => :new
     end
   end
@@ -66,7 +69,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def bulk
     results = BoostedContent.process_boosted_content_bulk_upload_for(@affiliate, params[:bulk_upload_file])
-    if (results[:success])
+    if results[:success]
       messages = []
       messages << "#{results[:created]} Best Bets: Text entries successfully created." if results[:created] > 0
       messages << "#{results[:updated]} Best Bets: Text entries successfully updated." if results[:updated] > 0
@@ -87,5 +90,9 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def index_boosted_content(boosted_content)
     Sunspot.index(boosted_content)
+  end
+
+  def setup_blank_keywords
+    @boosted_content.boosted_content_keywords.build if @boosted_content.boosted_content_keywords.blank?
   end
 end

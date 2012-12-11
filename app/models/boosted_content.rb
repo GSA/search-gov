@@ -8,41 +8,41 @@ class BoostedContent < ActiveRecord::Base
   @@per_page = 20
 
   belongs_to :affiliate
+  has_many :boosted_content_keywords, :dependent => :destroy
+  accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validate :publish_start_and_end_dates
-  before_validation :set_locale
   before_save :ensure_http_prefix_on_url
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
   searchable :auto_index => false do
+    integer :affiliate_id
     text :title, :stored => true, :boost => 10.0 do |boosted_content|
-      boosted_content.title if (boosted_content.affiliate and boosted_content.affiliate.locale == "en")
+      boosted_content.title if boosted_content.affiliate.locale == "en"
     end
     text :description, :stored => true, :boost => 4.0 do |boosted_content|
-      boosted_content.description if (boosted_content.affiliate and boosted_content.affiliate.locale == "en")
+      boosted_content.description if boosted_content.affiliate.locale == "en"
     end
     text :keywords do |boosted_content|
-      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or (boosted_content.affiliate and boosted_content.affiliate.locale != "en")
+      boosted_content.boosted_content_keywords.map { |keyword| keyword.value } if boosted_content.boosted_content_keywords.present? and
+        boosted_content.affiliate.locale == "en"
     end
     text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |boosted_content|
-      boosted_content.title if (boosted_content.affiliate and boosted_content.affiliate.locale == "es")
+      boosted_content.title if boosted_content.affiliate.locale == "es"
     end
     text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |boosted_content|
-      boosted_content.description if (boosted_content.affiliate and boosted_content.affiliate.locale == "es")
+      boosted_content.description if boosted_content.affiliate.locale == "es"
     end
     text :keywords_es, :as => "keywords_text_es" do |boosted_content|
-      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or (boosted_content.affiliate and boosted_content.affiliate.locale != "es")
+      boosted_content.boosted_content_keywords.map { |keyword| keyword.value } if boosted_content.boosted_content_keywords.present? and
+        boosted_content.affiliate.locale == "es"
     end
-    string :affiliate_name do |boosted_content|
-        boosted_content.affiliate.name if boosted_content.affiliate
-    end
-    string :status
+    boolean :is_active, :using => :is_active?
     time :publish_start_on, :trie => true
     time :publish_end_on, :trie => true
   end
@@ -70,8 +70,8 @@ class BoostedContent < ActiveRecord::Base
           fulltext sanitized_query do
             highlight :title, :description, :title_es, :description_es, :frag_list_builder => 'single'
           end
-          with(:affiliate_name, affiliate.name)
-          with(:status, 'active')
+          with(:affiliate_id, affiliate.id)
+          with(:is_active, true)
           with(:publish_start_on).less_than(Date.current)
           any_of do
             with(:publish_end_on).greater_than(Date.current)
@@ -185,10 +185,6 @@ class BoostedContent < ActiveRecord::Base
   end
 
   private
-
-  def set_locale
-    self.locale = self.affiliate ? self.affiliate.locale : I18n.default_locale.to_s
-  end
 
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
