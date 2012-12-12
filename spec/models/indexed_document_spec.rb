@@ -159,6 +159,13 @@ describe IndexedDocument do
     end
   end
 
+  it "should mark invalid URLs that have an extension that we have blacklisted" do
+    movie = "http://www.nps.gov/some.mov"
+    idoc = IndexedDocument.new(@valid_attributes.merge(:url => movie))
+    idoc.should_not be_valid
+    idoc.errors.full_messages.first.should == IndexedDocument::UNSUPPORTED_EXTENSION
+  end
+
   it "should cap URL length at 2000 characters" do
     too_long = "http://www.nps.gov/#{'waytoolong'*200}/some.pdf"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))

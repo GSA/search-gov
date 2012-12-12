@@ -15,6 +15,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
+  validate :extension_ok
   validate :site_domain_matches
   validate :robots_txt_compliance
   validate :bing_absence
@@ -40,9 +41,11 @@ class IndexedDocument < ActiveRecord::Base
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   DOMAIN_EXCLUDED_STATUS = "URL matches affiliate's excluded site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
+  UNSUPPORTED_EXTENSION = "URL extension is not one we index"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   BING_PRESENCE = "URL already exists in the Bing index"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
+  BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 
   searchable do
     text :title, :stored => true, :boost => 10.0 do |idoc|
@@ -355,6 +358,12 @@ class IndexedDocument < ActiveRecord::Base
 
   def url_is_parseable
     URI.parse(self.url) rescue errors.add(:base, UNPARSEABLE_URL_STATUS)
+  end
+
+  def extension_ok
+    path = URI.parse(self.url).path rescue ""
+    extension = File.extname(path).sub(".","").downcase
+    errors.add(:base, UNSUPPORTED_EXTENSION) if BLACKLISTED_EXTENSIONS.include?(extension)
   end
 
   def last_crawl_status_ok?

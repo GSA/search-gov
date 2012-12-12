@@ -4,7 +4,7 @@ class SiteDomain < ActiveRecord::Base
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w(text/csv text/comma-separated-values application/vnd.ms-excel)
   MAX_DOCS_PER_CRAWL = 1000
   INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format; please upload a csv file (.csv).'
-
+  BLACKLISTED_EXTENSION_REGEXP = Regexp.new("\.#{IndexedDocument::BLACKLISTED_EXTENSIONS.join('|')}$", true)
   validate :domain_coverage, :if => Proc.new { |site_domain| site_domain.affiliate.present? }
   before_save :set_site_name
 
@@ -80,7 +80,7 @@ class SiteDomain < ActiveRecord::Base
       if link_url.present?
         link_url.to_s if link_url.scheme == "http" and link_url.host =~ /#{parsed_start_page_url.host}/i and
           link_url.path =~ /#{path_prefix}/i and link_url != current_url and !link_url.to_s.include?('?') and
-          !(link_url.path =~ /\.(wmv|mov|css|csv|gif|htc|ico|jpeg|jpg|js|json|mp3|png|rss|swf|txt|wsdl|xml|zip|gz|z|bz2|tgz|jar|tar)$/i)
+          !(BLACKLISTED_EXTENSION_REGEXP.match(link_url.path))
       end
     end
     links.uniq.compact
