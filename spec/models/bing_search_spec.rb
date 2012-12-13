@@ -34,6 +34,14 @@ describe BingSearch do
     end
   end
 
+  describe '.normalized_url(url)' do
+    context "when URL is poorly formed" do
+      it 'should return nil' do
+        BingSearch.normalized_url("http://www.whitehouse.gov/htdata/CMSP/LegAtlas/Cases/Clinton B. Craft, 6 O.R.W. 150 (1990); Craft v. Nat'l Park Serv., 34 F.3d 918 (9th Cir. 1994)/Craft v. Nat'l Park Serv., 34 F. 3d 918 (9th Cir. 1994).pdf").should be_nil
+      end
+    end
+  end
+
   describe '.url_in_bing' do
     let!(:bing_search) { BingSearch.new }
 
