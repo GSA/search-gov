@@ -18,6 +18,13 @@ describe TwitterProfile do
     profile.errors[:screen_name].should include('is invalid')
   end
 
+  context "when screen_name has leading @" do
+    it 'should normalize screen_name before validation' do
+      tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => '@at_sign'))
+      tp.screen_name.should == 'at_sign'
+    end
+  end
+
   context 'when screen_name is valid' do
     let(:twitter_user) do
       mock('twitter user',
