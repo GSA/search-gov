@@ -58,7 +58,7 @@ group :assets do
   gem 'compass'
   gem 'compass-rails'
   gem 'execjs'
-  gem 'libv8', '~> 3.11.8'
+  gem 'libv8', '3.11.8.3'
   gem 'therubyracer', :require => 'v8'
 end
 

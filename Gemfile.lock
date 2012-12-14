@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: git://github.com/activescaffold/active_scaffold.git
-  revision: 04c580efdb5b4b819bb122b0c77b25f939dce3d4
+  revision: 50e0ec848b4fe6537518ffa031802adef0aef7f9
   specs:
     active_scaffold (3.3.0.rc)
       rails (~> 3.2.0)
@@ -226,7 +226,7 @@ GEM
     json (1.7.5)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libv8 (3.11.8.4)
+    libv8 (3.11.8.3)
     libwebsocket (0.1.7.1)
       addressable
       websocket
@@ -469,7 +469,7 @@ DEPENDENCIES
   jquery-rails
   json
   launchy
-  libv8 (~> 3.11.8)
+  libv8 (= 3.11.8.3)
   mechanize
   mobile-fu
   multi_db
