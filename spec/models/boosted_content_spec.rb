@@ -257,21 +257,19 @@ describe BoostedContent do
       results[:updated].should == 0
     end
 
-    it "should not update existing boosted Contents if one of the import failed" do
+    it "should not update existing boosted Contents if one of the imports failed" do
       basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
       BoostedContent.reindex
       Sunspot.commit
+      bc = BoostedContent.new(:title => 'This is a listing about Texas',
+                              :url => 'http://some.url',
+                              :description => 'This is the description of the listing',
+                              :status => 'active', :publish_start_on => Date.current)
 
-      BoostedContent.should_receive(:find_or_initialize_by_url).
-          with(hash_including(:url => 'http://some.url')).
-          and_return(BoostedContent.new(:title => 'This is a listing about Texas',
-                                        :url => 'http://some.url',
-                                        :description => 'This is the description of the listing',
-                                        :status => 'active', :publish_start_on => Date.current))
+      BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
 
-      BoostedContent.should_receive(:find_or_initialize_by_url).
-          with(hash_including(:url => 'http://some.other.url')).
-          and_raise(ActiveRecord::RecordInvalid)
+      BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
+        and_raise(ActiveRecord::RecordInvalid.new(bc))
 
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
       Sunspot.commit
@@ -342,18 +340,16 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       results[:updated].should == 0
     end
 
-    it "should not update existing boosted Contents if one of the import failed" do
+    it "should not update existing boosted Contents if one of the imports failed" do
       basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
-      BoostedContent.should_receive(:find_or_initialize_by_url).
-          with(hash_including(:url => 'http://some.url')).
-          and_return(BoostedContent.new(:title => 'This is a listing about Texas',
-                                        :url => 'http://some.url',
-                                        :description => 'This is the description of the listing',
-                                        :status => 'active', :publish_start_on => Date.current))
+      bc = BoostedContent.new(:title => 'This is a listing about Texas',
+                              :url => 'http://some.url',
+                              :description => 'This is the description of the listing',
+                              :status => 'active', :publish_start_on => Date.current)
+      BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
 
-      BoostedContent.should_receive(:find_or_initialize_by_url).
-          with(hash_including(:url => 'http://some.other.url')).
-          and_raise(ActiveRecord::RecordInvalid)
+      BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
+        and_raise(ActiveRecord::RecordInvalid.new(bc))
 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
