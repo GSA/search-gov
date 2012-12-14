@@ -58,8 +58,8 @@ group :assets do
   gem 'compass'
   gem 'compass-rails'
   gem 'execjs'
-  gem 'libv8', '3.11.8.3'
-  gem 'therubyracer', :require => 'v8'
+  gem 'libv8', '~> 3.3.10'
+  gem 'therubyracer', '~> 0.10.0', :require => 'v8'
 end
 
 # Bundle gems for the local environment. Make sure to
