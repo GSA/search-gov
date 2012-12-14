@@ -50,9 +50,9 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     And feed "Videos" has the following news items:
-      | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
-      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
+      | link                                       | title             | guid       |  multiplier    | published_ago | description                              | contributor | publisher | subject   |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        14      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 |        1       | day           | item Second video news item for the feed | president   | memoranda | elections |
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
@@ -112,10 +112,12 @@ Feature: Affiliate Search
     Then I should see "First video item"
     And I should not see "First item"
     When I follow "Last year" in the left column
+    And I fill in "query" with "second item"
+    And I press "Search"
     Then I should see "Videos" in the left column
     And I should not see a link to "Videos"
-    And I should see "First video item"
-    And I should not see "First item"
+    And I should see "Second video item"
+    And I should not see "Second item"
 
     When I am on bar.gov's search page
     And I fill in "query" with "loren"
@@ -153,7 +155,7 @@ Feature: Affiliate Search
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see 21 video news results
-    And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
+    And I should see an image with src "http://i.ytimg.com/vi/R2RWscJM97U/2.jpg"
     And I should see yesterday's date in the English search results
 
     When I am on bar.gov's news search page
