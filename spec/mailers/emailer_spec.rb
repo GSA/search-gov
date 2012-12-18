@@ -172,7 +172,7 @@ describe Emailer do
     it { should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
 
-  context "#affiliate_monthly_report" do
+  describe "#affiliate_monthly_report" do
     let(:user) { users(:affiliate_manager) }
     let(:report_date) { Date.parse('2012-04-13') }
 
@@ -201,6 +201,35 @@ describe Emailer do
       body.should include('100 33.33% -33.33% 100')
       body.should include('0 0.00% 0.00% 0')
       body.should include('Most Popular Queries for April 2012')
+      body.should include('NPEspanol Site Not enough historic data to compute most popular')
+      body.should include('query1 100')
+      body.should include('query2 100')
+      body.should include('query3 100')
+    end
+  end
+
+  describe "#affiliate_yearly_report" do
+    let(:user) { users(:affiliate_manager) }
+    let(:report_year) { 2012 }
+
+    before do
+      affiliate = affiliates(:basic_affiliate)
+      DailyQueryStat.destroy_all
+      report_date = Date.civil(report_year, 1, 1)
+      %w{query1 query2 query3}.each do |query|
+        DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100)
+      end
+    end
+
+    subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
+
+    it { should deliver_to(user.email) }
+    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should have_subject(/2012 Yearly Search Analytics Report/) }
+
+    it "should calculate the proper totals for the data in the database" do
+      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body.should include('Most Popular Queries for 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
       body.should include('query1 100')
       body.should include('query2 100')

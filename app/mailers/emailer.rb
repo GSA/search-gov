@@ -142,6 +142,21 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def affiliate_yearly_report(user, year)
+    setup_email(user.email, __method__)
+    headers['Content-Type'] = 'text/html'
+    jan1 = Date.civil(year, 1, 1)
+    @report_year = year
+    @affiliate_stats = {}
+    user.affiliates.select([:display_name, :name]).order(:name).each do |affiliate|
+      @affiliate_stats[affiliate.display_name] = DailyQueryStat.most_popular_terms(affiliate.name, jan1, jan1.end_of_year, 1000)
+    end
+    @subject = ERB.new(@email_template_subject).result(binding)
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.html { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   def affiliate_monthly_report(user, report_date)
     setup_email(user.email, __method__)
     headers['Content-Type'] = 'text/html'

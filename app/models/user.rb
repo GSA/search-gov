@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   after_update :deliver_welcome_email
   attr_accessor :government_affiliation, :strict_mode, :invited, :skip_welcome_email, :terms_of_service, :inviter, :require_password
   attr_protected :strict_mode, :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
+  scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt

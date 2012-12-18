@@ -74,5 +74,33 @@ describe "Report generation rake tasks" do
         end
       end
     end
+
+    describe "usasearch:reports:email_yearly_reports" do
+      fixtures :users, :affiliates
+
+      let(:task_name) { 'usasearch:reports:email_yearly_reports' }
+
+      before do
+        @rake[task_name].reenable
+        @emailer = mock(Emailer)
+        @emailer.stub!(:deliver).and_return true
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[task_name].prerequisites.should include("environment")
+      end
+
+      it "should deliver an email to each user" do
+        Emailer.should_receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(2).times.and_return @emailer
+        @rake[task_name].invoke
+      end
+
+      context "when a year is passed as a parameter" do
+        it "should deliver the affiliate yearly report to each user for the specified year" do
+          Emailer.should_receive(:affiliate_yearly_report).with(anything(), 2011).exactly(2).times.and_return @emailer
+          @rake[task_name].invoke("2011")
+        end
+      end
+    end
   end
 end

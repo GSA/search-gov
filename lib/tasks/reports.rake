@@ -15,8 +15,16 @@ namespace :usasearch do
     desc "Email approved affiliate users with active site(s) monthly affiliate report"
     task :email_monthly_reports, [:report_year_month] => [:environment] do |t, args|
       report_date = args.report_year_month.blank? ? Date.yesterday : Date.parse(args.report_year_month + "-01")
-      User.where(:is_affiliate => true).where(:approval_status => 'approved').each do |user|
+      User.approved_affiliate.each do |user|
         Emailer.affiliate_monthly_report(user, report_date).deliver if user.affiliates.present?
+      end
+    end
+
+    desc "Email approved affiliate users with active site(s) yearly affiliate report"
+    task :email_yearly_reports, [:report_year] => [:environment] do |t, args|
+      report_year = args.report_year || Date.current.year
+      User.approved_affiliate.each do |user|
+        Emailer.affiliate_yearly_report(user, report_year.to_i).deliver if user.affiliates.present?
       end
     end
   end
