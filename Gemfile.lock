@@ -41,26 +41,11 @@ GIT
       escape (~> 0.0.4)
 
 GIT
-  remote: git://github.com/activescaffold/active_scaffold.git
-  revision: 50e0ec848b4fe6537518ffa031802adef0aef7f9
-  specs:
-    active_scaffold (3.3.0.rc)
-      rails (~> 3.2.0)
-
-GIT
   remote: git://github.com/jeremydurham/us-state-select-plugin.git
   revision: aa69cc1f23eea7cadd5acdcda74a0333d41852c1
   specs:
     us_states_select (1.2.0)
       rails (>= 1.2)
-
-GIT
-  remote: git://github.com/naaano/active_scaffold_export.git
-  revision: c56b023a76374a9babef5f23691d9a4440b9df56
-  specs:
-    active_scaffold_export (3.3.0)
-      active_scaffold
-      active_scaffold (>= 3.3.0.rc)
 
 GIT
   remote: git://github.com/paneq/calendar_date_select.git
@@ -106,6 +91,11 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
+    active_scaffold (3.2.17)
+      rails (>= 3.1.3)
+    active_scaffold_export (3.2.2)
+      active_scaffold
+      active_scaffold (>= 3.1)
     activemodel (3.2.8)
       activesupport (= 3.2.8)
       builder (~> 3.0.0)
@@ -437,8 +427,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_scaffold!
-  active_scaffold_export!
+  active_scaffold (~> 3.2.17)
+  active_scaffold_export
   airbrake
   american_date
   authlogic
