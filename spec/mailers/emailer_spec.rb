@@ -225,7 +225,7 @@ describe Emailer do
 
     it { should deliver_to(user.email) }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/2012 Yearly Search Analytics Report/) }
+    it { should have_subject(/2012 Year in Review/) }
 
     it "should calculate the proper totals for the data in the database" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
