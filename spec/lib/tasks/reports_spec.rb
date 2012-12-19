@@ -101,6 +101,14 @@ describe "Report generation rake tasks" do
           @rake[task_name].invoke("2011")
         end
       end
+
+      context "when Emailer raises an exception" do
+        it "should log it and proceed to the next user" do
+          Emailer.should_receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(2).times.and_raise Net::SMTPFatalError
+          Rails.logger.should_receive(:warn).exactly(2).times
+          @rake[task_name].invoke
+        end
+      end
     end
   end
 end

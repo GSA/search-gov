@@ -24,7 +24,11 @@ namespace :usasearch do
     task :email_yearly_reports, [:report_year] => [:environment] do |t, args|
       report_year = args.report_year || Date.current.year
       User.approved_affiliate.each do |user|
-        Emailer.affiliate_yearly_report(user, report_year.to_i).deliver if user.affiliates.present?
+        begin
+          Emailer.affiliate_yearly_report(user, report_year.to_i).deliver if user.affiliates.present?
+        rescue Exception => e
+          Rails.logger.warn "Trouble emailing yearly report to user #{user.id}: #{e}"
+        end
       end
     end
   end
