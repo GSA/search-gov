@@ -8,6 +8,7 @@ describe Agency do
       :domain => 'irs.gov',
       :phone => '800-555-1234',
       :abbreviation => 'IRS',
+      :organization_code => 'XX00',
       :name_variants => 'External Revenue Service, The Man',
       :toll_free_phone => '800-555-1212',
       :tty_phone => '800-555-1212',

@@ -125,6 +125,7 @@ UsasearchRails3::Application.routes.draw do
       resources :forms, :only => [:show], :defaults => { :format => 'json' } do
         get :search, :on => :collection
       end
+      get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
     end
   end
   get '/search/docs' => 'searches#docs', :as => :docs_search

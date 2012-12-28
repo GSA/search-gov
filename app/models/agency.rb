@@ -44,6 +44,9 @@ class Agency < ActiveRecord::Base
         self.agency_queries << AgencyQuery.new(:phrase => "#{prefix} #{name_variant.downcase.strip}")
       end
     end unless self.name_variants.nil?
-    self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation) if self.abbreviation.present?
+    if self.abbreviation.present?
+      self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation)
+      self.agency_queries << AgencyQuery.new(:phrase => "the #{self.abbreviation}")
+    end
   end
 end

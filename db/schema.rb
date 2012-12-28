@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217231144) do
+ActiveRecord::Schema.define(:version => 20121228001629) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20121217231144) do
     t.string   "youtube_username",  :limit => 40
     t.string   "facebook_username", :limit => 75
     t.string   "flickr_url"
+    t.string   "organization_code"
   end
 
   create_table "agency_queries", :force => true do |t|
