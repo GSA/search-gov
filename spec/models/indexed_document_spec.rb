@@ -427,6 +427,19 @@ describe IndexedDocument do
       specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).should_not be_nil }
     end
 
+    context 'when the query contains local params' do
+      before do
+        IndexedDocument.destroy_all
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc1', :url => 'http://www.nps.gov/odie_doc1.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc2', :url => 'http://www.nps.gov/odie_doc2.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc3', :url => 'http://www.nps.gov/odie_doc3.pdf', :content_hash => nil))
+        IndexedDocument.reindex
+        Sunspot.commit
+      end
+
+      specify { IndexedDocument.search_for('{!rows=3} odie', affiliates(:basic_affiliate), nil, 1, 1).hits.count.should == 1 }
+    end
+
     context 'when filtering based on created_at' do
       before do
         IndexedDocument.destroy_all
