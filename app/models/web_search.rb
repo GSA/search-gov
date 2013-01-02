@@ -1,6 +1,5 @@
 class WebSearch < Search
 
-  BING_CACHE_DURATION_IN_SECONDS = 60 * 60 * 6
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
 
   attr_reader :offset,
@@ -115,24 +114,12 @@ class WebSearch < Search
   end
 
   def search
-    parse_bing_response(perform_bing_search)
+    ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => @formatted_query}) do
+      @bing_search.query(@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting)
+    end
   rescue BingSearch::BingSearchError => error
     Rails.logger.warn "Error getting search results from Bing server: #{error}"
     false
-  end
-
-  def parse_bing_response(response)
-    @bing_search.parse_bing_response(response)
-  end
-
-  def perform_bing_search
-    response_body = @@redis.get(cache_key) rescue nil
-    return response_body unless response_body.nil?
-    ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => @formatted_query}) do
-      response = @bing_search.query(@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting)
-      @@redis.setex(cache_key, BING_CACHE_DURATION_IN_SECONDS, response) rescue nil
-      response
-    end
   end
 
   def handle_response(response)
@@ -196,7 +183,7 @@ class WebSearch < Search
     processed = response.web.results.collect do |result|
       title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)
-      content ||= (result.description rescue '')
+      content ||= result.description || ''
       if title.present? and (excluded_urls_absent or not url_is_excluded(result.url))
         {
           'title' => title,

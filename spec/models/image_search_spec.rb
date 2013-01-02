@@ -17,24 +17,15 @@ describe ImageSearch do
       @search.run
     end
 
-    it "should perform a bing search" do
-      @search.should_not_receive(:perform_odie_search)
-      @search.run
-    end
-
-    it "should handle the response as a Bing response" do
-      @search.should_not_receive(:handle_odie_response)
-      @search.run
-    end
-
-    context "when a Bing error occurs" do
+    context "when there are no Bing or Flickr results" do
       before do
-        @search.stub!(:perform_bing_search).and_raise BingSearch::BingSearchError.new
+        @noresults_search = ImageSearch.new(:query => 'shuttle', :affiliate => @affiliate)
+        @noresults_search.stub!(:search).and_return {}
       end
 
-      it "should log the error" do
-        Rails.logger.should_receive(:warn)
-        @search.run
+      it "should assign a nil module_tag" do
+        @noresults_search.run
+        @noresults_search.module_tag.should be_nil
       end
     end
 
@@ -70,7 +61,7 @@ describe ImageSearch do
   subject do
     search = ImageSearch.new(:query => "White House", :affiliate => @affiliate)
     body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
-    search.stub!(:perform_bing_search).and_return(body)
+    search.stub!(:search).and_return(Hashie::Rash.new(JSON.parse(body)).search_response)
     search.run
     search
   end

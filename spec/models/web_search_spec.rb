@@ -42,41 +42,9 @@ describe WebSearch do
       end
     end
 
-    context "when response body is nil from Bing" do
+    context "when Bing search throws some exception" do
       before do
-        JSON.should_receive(:parse).once.and_return(nil)
-        @search = WebSearch.new(@valid_options)
-      end
-
-      it "should still return true when searching" do
-        @search.run.should be_true
-      end
-
-      it "should populate additional results" do
-        @search.should_receive(:populate_additional_results).and_return true
-        @search.run
-      end
-    end
-
-    context "when response body from Bing is an empty collection" do
-      before do
-        JSON.should_receive(:parse).once.and_return({})
-        @search = WebSearch.new(@valid_options)
-      end
-
-      it "should still return true when searching" do
-        @search.run.should be_true
-      end
-
-      it "should populate additional results" do
-        @search.should_receive(:populate_additional_results).and_return true
-        @search.run
-      end
-    end
-
-    context "when JSON cannot be parsed for some reason" do
-      before do
-        JSON.should_receive(:parse).once.and_raise(JSON::ParserError)
+        $bing_api_connection.stub!(:get).and_raise(JSON::ParserError)
         @search = WebSearch.new(@valid_options)
       end
 
@@ -90,101 +58,6 @@ describe WebSearch do
       end
     end
 
-    context "when a SocketError occurs" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise SocketError
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-    end
-
-    context "when Bing gives us the hand" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise Errno::ECONNREFUSED
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-    end
-
-    context "when Akamai DNS sends us to an unreachable IP address for api.bing.net" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise Errno::EHOSTUNREACH
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-
-    end
-
-    context "when Bing kicks us to the curb" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise Errno::ECONNRESET
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-
-    end
-
-    context "when Bing takes waaaaaaaaay to long to respond" do
-      context "and throws a Timeout::Error" do
-        before do
-          @search = WebSearch.new(@valid_options)
-          @search.stub!(:populate_additional_results).and_return true
-          SaytSuggestion.stub!(:search_for).and_return nil
-          Net::HTTP::Get.stub!(:new).and_raise Timeout::Error
-        end
-
-        it "should return false when searching" do
-          @search.run.should be_false
-        end
-      end
-
-      context "and throws a Errno::ETIMEDOUT error" do
-        before do
-          @search = WebSearch.new(@valid_options)
-          Net::HTTP::Get.stub!(:new).and_raise Errno::ETIMEDOUT
-        end
-
-        it "should return false when searching" do
-          @search.run.should be_false
-        end
-      end
-
-    end
-
-    context "when Bing stops talking in mid-sentence" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise EOFError
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-
-    end
-
-    context "when Bing is unreachable" do
-      before do
-        @search = WebSearch.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise Errno::ENETUNREACH
-      end
-
-      it "should return false when searching" do
-        @search.run.should be_false
-      end
-    end
 
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting parameter to Bing as an option" do
@@ -792,12 +665,13 @@ describe WebSearch do
       end
     end
 
-    context "when results contain listing missing a title" do
+    context "when results contain a listing missing a title" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => 'Nas & Kelis'))
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
         parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
+        rashie = Hashie::Rash.new parsed
+        @search.stub!(:search).and_return rashie.search_response
       end
 
       it "should ignore that result" do
@@ -811,7 +685,8 @@ describe WebSearch do
         @search = WebSearch.new(@valid_options.merge(:query => 'data'))
         json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
         parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
+        rashie = Hashie::Rash.new parsed
+        @search.stub!(:search).and_return rashie.search_response
       end
 
       it "should use a blank description" do
@@ -1606,36 +1481,6 @@ describe WebSearch do
       end
     end
 
-  end
-
-  describe "caching in #perform(query_string, offset, enable_highlighting)" do
-    before do
-      @redis = WebSearch.send(:class_variable_get, :@@redis)
-      @search = WebSearch.new(:query => "foo", :affiliate => affiliates(:power_affiliate), :per_page => 40, :filter => "strict")
-      @cache_key = "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true:strict"
-    end
-
-    it "should have a cache_key containing bing query, sources, offset, count, highlighting, adult filter" do
-      @search.cache_key.should == @cache_key
-    end
-
-    it "should attempt to get the results from the Redis cache" do
-      @redis.should_receive(:get).with(@cache_key)
-      @search.send(:perform_bing_search)
-    end
-
-    it "should use the Spell+Image source for image searches" do
-      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true:moderate")
-      image_search = ImageSearch.new(:query => "foo", :affiliate => affiliates(:power_affiliate), :per_page => 25, :page => 4)
-      image_search.send(:perform_bing_search)
-    end
-
-    context "when no results in cache" do
-      it "should store newly fetched results in cache with appropriate expiry" do
-        @redis.should_receive(:setex).with(@cache_key, WebSearch::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
-        @search.send(:perform_bing_search)
-      end
-    end
   end
 
   describe "#self.results_present_for?(query, affiliate, is_misspelling_allowed)" do

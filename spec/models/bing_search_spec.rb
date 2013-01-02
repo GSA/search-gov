@@ -59,14 +59,19 @@ describe BingSearch do
     context 'when url exists in BingSearch' do
       let(:url) { 'http://www.clinicaltrials.gov/ct2/show/NCT01308762' }
       let(:normalized_url) { 'clinicaltrials.gov/ct2/show/NCT01308762' }
-      let(:response) { "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}" }
+      let(:response) do
+        raw = "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}"
+        json = JSON.parse raw
+        rashie = Hashie::Rash.new json
+        rashie.search_response
+      end
 
       it 'should return url without scheme and fragment' do
         BingUrl.should_receive(:find_by_normalized_url).with(normalized_url).and_return(nil)
         BingSearch.should_receive(:new).and_return bing_search
         bing_search.should_receive(:query).
-            with(url, anything, anything, anything, anything, anything).
-            and_return(response)
+          with(url, anything, anything, anything, anything, anything).
+          and_return(response)
         BingSearch.url_in_bing(url).should == normalized_url
       end
     end
@@ -74,14 +79,19 @@ describe BingSearch do
     context 'when url does not exist in BingSearch' do
       let(:url) { 'http://www.clinicaltrials.gov/ct2/show/NCT01308762' }
       let(:normalized_url) { 'clinicaltrials.gov/ct2/show/NCT01308762' }
-      let(:response) { "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/OtherNCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/OtherNCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}" }
+      let(:response) do
+        raw = "{\"SearchResponse\":{\"Version\":\"2.2\",\"Query\":{\"SearchTerms\":\"http:\\/\\/www.clinicaltrials.gov\\/ct2\\/show\\/NCT01308762\"},\"Web\":{\"Total\":1,\"Offset\":0,\"Results\":[{\"Title\":\"A Clinical Study, to Evaluate the Safety and Tolerability of ...\",\"Description\":\"A Clinical Study, to Evaluate the Safety and Tolerability of Intradermal IMM-101 in Adult Melanoma Cancer Patients\",\"Url\":\"http:\\/\\/clinicaltrials.gov\\/ct2\\/show\\/OtherNCT01308762\",\"CacheUrl\":\"http:\\/\\/cc.bingj.com\\/cache.aspx?q=%22http+www+clinicaltrials+gov+ct2+show+nct01308762%22&d=4927994596163714&w=a3798854,eee0c025\",\"DisplayUrl\":\"clinicaltrials.gov\\/ct2\\/show\\/OtherNCT01308762\",\"DateTime\":\"2012-08-20T14:14:00Z\"}]}}}"
+        json = JSON.parse raw
+        rashie = Hashie::Rash.new json
+        rashie.search_response
+      end
 
       it 'should return nil' do
         BingUrl.should_receive(:find_by_normalized_url).with(normalized_url).and_return(nil)
         BingSearch.should_receive(:new).and_return bing_search
         bing_search.should_receive(:query).
-            with('http://www.clinicaltrials.gov/ct2/show/NCT01308762', anything, anything, anything, anything, anything).
-            and_return(response)
+          with('http://www.clinicaltrials.gov/ct2/show/NCT01308762', anything, anything, anything, anything, anything).
+          and_return(response)
         BingSearch.url_in_bing(url).should be_nil
       end
     end

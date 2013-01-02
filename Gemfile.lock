@@ -192,6 +192,8 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     fattr (2.2.1)
     ffi (1.2.0)
     flickraw (0.9.6)
@@ -204,6 +206,7 @@ GEM
     google_visualr (2.1.5)
     googlecharts (1.6.8)
     haml (3.1.7)
+    hashie (1.2.0)
     high_voltage (1.2.1)
     highline (1.6.15)
     hike (1.2.1)
@@ -257,6 +260,7 @@ GEM
     newrelic_rpm (3.5.3.25)
     nokogiri (1.5.5)
     ntlm-http (0.1.1)
+    oj (2.0.0)
     options (2.3.0)
       fattr
     paperclip-cloudfiles (2.3.10.1)
@@ -295,6 +299,8 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
+    rash (0.3.2)
+      hashie (~> 1.2.0)
     rdoc (3.12)
       json (~> 1.4)
     recaptcha (0.3.4)
@@ -450,6 +456,7 @@ DEPENDENCIES
   dynamic_form
   email_spec
   execjs
+  faraday_middleware
   flickraw
   google_visualr
   googlecharts
@@ -463,14 +470,17 @@ DEPENDENCIES
   mobile-fu
   multi_db
   mysql2 (> 0.3)
+  net-http-persistent
   newrelic_rpm
   no_peeping_toms!
   nokogiri
+  oj
   paperclip-cloudfiles
   parallel
   progress_bar
   rails (= 3.2.8)
   rake
+  rash
   recaptcha
   recordselect!
   redis

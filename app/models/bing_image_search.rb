@@ -11,6 +11,6 @@ class BingImageSearch < BingSearch
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "query=#{URI.escape(query_string)}"
     ]
-    "#{JSON_SITE}?" + params.join('&')
+    "#{BING_API_ENDPOINT}?#{params.join('&')}"
   end
 end

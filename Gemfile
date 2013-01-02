@@ -50,6 +50,10 @@ gem 'newrelic_rpm'
 gem 'american_date'
 gem 'sass'
 gem "google_visualr"
+gem 'oj'
+gem 'faraday_middleware'
+gem 'net-http-persistent'
+gem 'rash'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
