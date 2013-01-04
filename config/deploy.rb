@@ -14,6 +14,7 @@ set :deploy_via, :remote_cache
 before "deploy:restart", "deploy:maybe_migrate"
 before "deploy:restart", "deploy:compass_compile"
 before "deploy:symlink", "deploy:web:disable"
+before "deploy:symlink", "deploy:symlink_cache"
 after :deploy, "deploy:web:enable"
 after :deploy, 'deploy:cleanup'
 after "deploy:update", "newrelic:notice_deployment"
@@ -32,6 +33,11 @@ namespace :deploy do
   desc "Run 'compass compile' to build the stylesheets"
   task :compass_compile, :roles => :app do
     run "cd #{current_path} ; bundle exec compass compile --output-style compressed"
+  end
+
+  desc "Create symlink for tmp/cache"
+  task :symlink_cache, :roles => :app do
+    run "ln -s #{shared_path}/cache #{release_path}/tmp/cache"
   end
 end
 
