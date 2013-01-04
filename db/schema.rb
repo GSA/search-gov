@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228001629) do
+ActiveRecord::Schema.define(:version => 20130105165926) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20121228001629) do
     t.string   "staged_mobile_logo_content_type"
     t.integer  "staged_mobile_logo_file_size"
     t.datetime "staged_mobile_logo_updated_at"
+    t.boolean  "jobs_enabled",                                                    :default => false,           :null => false
+    t.integer  "agency_id"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

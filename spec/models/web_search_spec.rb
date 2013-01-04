@@ -23,7 +23,7 @@ describe WebSearch do
       SaytSuggestion.stub!(:search_for).and_return nil
       IndexedDocument.stub!(:search_for).and_return nil
       ActiveSupport::Notifications.should_receive(:instrument).
-          with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String)))).and_return @generic_bing_result
+        with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String)))).and_return @generic_bing_result
       WebSearch.new(@valid_options).run
     end
 
@@ -890,6 +890,38 @@ describe WebSearch do
           search = WebSearch.new(:query => '     irs   ', :affiliate => @affiliate)
           search.run
           search.agency.should == @agency
+        end
+      end
+    end
+
+    context "when the affiliate has the jobs govbox enabled" do
+      before do
+        @affiliate.stub!(:jobs_enabled?).and_return(true)
+      end
+
+      context "when the affiliate has a related agency with an org code" do
+        before do
+          agency = Agency.create!({:name => 'Some New Agency',
+                                   :domain => 'SNA.gov',
+                                   :abbreviation => 'SNA',
+                                   :organization_code => 'XX00',
+                                   :name_variants => 'Some Service'})
+          @affiliate.stub!(:agency).and_return(agency)
+        end
+
+        it "should call Usajobs.search with the query, org code, size, and hl params" do
+          Usajobs.should_receive(:search).with(:query => 'summer jobs', :hl => 1, :size => 3, :organization_id => 'XX00').and_return "foo"
+          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate)
+          search.run
+          search.jobs.should == "foo"
+        end
+      end
+
+      context "when the affiliate does not have a related agency with an org code" do
+        it "should call Usajobs.search with just the query, size, and hl param" do
+          Usajobs.should_receive(:search).with(:query => 'summer jobs', :hl => 1, :size => 3).and_return nil
+          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate)
+          search.run
         end
       end
     end

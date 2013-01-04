@@ -33,6 +33,7 @@ class Affiliate < ActiveRecord::Base
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
   has_and_belongs_to_many :form_agencies
+  belongs_to :agency
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
@@ -583,6 +584,10 @@ class Affiliate < ActiveRecord::Base
   def excludes_url?(url)
     @excluded_urls_set ||= self.excluded_urls.collect(&:url).to_set
     @excluded_urls_set.include?(url)
+  end
+
+  def has_organization_code?
+    agency.present? && agency.organization_code.present?
   end
 
   private

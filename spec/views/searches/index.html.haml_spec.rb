@@ -33,6 +33,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:indexed_documents).and_return nil
     @search.stub!(:photos).and_return nil
     @search.stub!(:tweets)
+    @search.stub!(:jobs)
     @search.stub!(:has_forms?).and_return false
     @search.stub!(:module_tag).and_return('BWEB')
     assign(:search, @search)
@@ -175,6 +176,61 @@ describe "searches/index.html.haml" do
         render
         rendered.should_not have_selector("span[class='uext_type']")
       end
+    end
+
+    context "when jobs results are available" do
+      before do
+        agency = Agency.create!({:name => 'Some New Agency',
+                                 :domain => 'SNA.gov',
+                                 :abbreviation => 'SNA',
+                                 :organization_code => 'XX00',
+                                 :name_variants => 'Some Service'})
+        @affiliate.stub!(:agency).and_return(agency)
+        @affiliate.stub!(:jobs_enabled?).and_return(true)
+        json = [
+          {"id" => "328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)", "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"]},
+          {"id" => "328437201", "position_title" => "Some Research Job", "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 26, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"]},
+          {"id" => "328437202", "position_title" => "Bi-Weekly Research Job", "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"]},
+          {"id" => "328437203", "position_title" => "Zero Money Research Job", "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Bye, MA"]}
+        ]
+        mashies = json.collect { |x| Hashie::Mash.new(x) }
+        @search.stub!(:query).and_return "research jobs"
+        @search_result = {'title' => "This is about research jobs",
+                          'unescapedUrl' => "http://www.cdc.gov/jobs",
+                          'content' => "Research jobs don't pay well",
+                          'cacheUrl'=> "http://www.cached.com/url"}
+        @search_results = [@search_result]
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search.stub!(:jobs).and_return mashies
+      end
+
+      it "should show them in a govbox" do
+        render
+        rendered.should contain("Job Openings")
+        rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
+        rendered.should contain("Agricultural Research Service")
+        rendered.should contain("Boston, MA - $51,871+/yr")
+        rendered.should contain("Apply by 12 Oct 2023")
+
+        rendered.should contain("Some Research Job")
+        rendered.should contain("Some Research Service")
+        rendered.should contain("Multiple Locations - $24+/hr")
+        rendered.should contain("Apply by 13 Oct 2023")
+
+        rendered.should contain("Bi-Weekly Research Job")
+        rendered.should contain("BW Research Service")
+        rendered.should contain("Hello, MA")
+        rendered.should contain("Apply by 15 Oct 2023")
+
+        rendered.should contain("Zero Money Research Job")
+        rendered.should contain("Some Poor Research Service")
+        rendered.should contain("Bye, MA")
+        rendered.should contain("Apply by 14 Oct 2023")
+
+        rendered.should contain("See all SNA job openings")
+      end
+
     end
 
     context "when an agency record matches the query" do

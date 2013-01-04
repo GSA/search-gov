@@ -26,7 +26,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :is_sayt_enabled, :fetch_concurrency,
                              :has_staged_content, :exclude_webtrends, :locale,
-                             :sitemaps, :affiliate_feature_addition, :form_agencies, :excluded_domains]
+                             :sitemaps, :affiliate_feature_addition, :form_agencies, :jobs_enabled, :agency, :excluded_domains]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
     config.columns[:staged_search_results_page_title].label = "Staged search results page title"
@@ -34,6 +34,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:theme].form_ui = :select
     config.columns[:features].associated_limit = nil
     config.columns[:staged_theme].form_ui = :select
+    config.columns[:agency].form_ui = :select
     theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }
     config.columns[:staged_theme].options = { :include_blank => '', :options => theme_options }

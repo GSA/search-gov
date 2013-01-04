@@ -1,0 +1,4 @@
+#TODO: change default to production host later
+host: 'http://localhost:3001'
+endpoint: '/api/position_openings/search'
+adapter: :net_http_persistent
