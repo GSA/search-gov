@@ -14,7 +14,7 @@ module Usajobs
     :WC => 'Without Compensation'}.freeze
 
   def self.establish_connection!
-    usajobs_api_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/usajobs.yml")).result)
+    usajobs_api_config = YAML.load_file("#{Rails.root}/config/usajobs.yml")
     @endpoint = usajobs_api_config['endpoint']
     @usajobs_api_connection = Faraday.new usajobs_api_config['host'] do |conn|
       conn.request :json
@@ -29,7 +29,7 @@ module Usajobs
   end
 
   def self.search(options)
-    @usajobs_api_connection.get(@endpoint, options).body if options[:query] =~ /\b#{JOB_RELATED_KEYWORDS}\b/i
+    @usajobs_api_connection.get(@endpoint, options).body  if options[:query] =~ /\b#{JOB_RELATED_KEYWORDS}\b/i
   rescue Exception => e
     Rails.logger.error("Trouble fetching USAJobs information: #{e}")
   end
