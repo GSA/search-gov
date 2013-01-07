@@ -11,7 +11,7 @@ describe Usajobs do
       end
 
       it "should log any errors that occur" do
-        Rails.logger.should_receive(:error).with("Trouble fetching USAJobs information: getaddrinfo: nodename nor servname provided, or not known")
+        Rails.logger.should_receive(:error).with(/Trouble fetching USAJobs information/)
         Usajobs.search(:query => 'jobs')
       end
     end
