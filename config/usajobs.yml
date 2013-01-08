@@ -1,4 +1,3 @@
-#TODO: change default to production host later
-host: 'http://localhost:3001'
-endpoint: '/api/position_openings/search'
+host: 'http://198.61.238.46'
+endpoint: '/usajobs/api/position_openings/search.json'
 adapter: :net_http_persistent
