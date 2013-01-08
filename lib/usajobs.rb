@@ -32,6 +32,7 @@ module Usajobs
     @usajobs_api_connection.get(@endpoint, options).body  if options[:query] =~ /\b#{JOB_RELATED_KEYWORDS}\b/i
   rescue Exception => e
     Rails.logger.error("Trouble fetching USAJobs information: #{e}")
+    nil
   end
 end
 

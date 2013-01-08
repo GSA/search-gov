@@ -10,9 +10,9 @@ describe Usajobs do
         Usajobs.establish_connection!
       end
 
-      it "should log any errors that occur" do
+      it "should log any errors that occur and return nil" do
         Rails.logger.should_receive(:error).with(/Trouble fetching USAJobs information/)
-        Usajobs.search(:query => 'jobs')
+        Usajobs.search(:query => 'jobs').should be_nil
       end
     end
   end
