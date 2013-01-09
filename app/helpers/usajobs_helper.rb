@@ -4,7 +4,7 @@ module UsajobsHelper
   end
 
   def job_application_deadline(yyyy_mm_dd)
-    "Apply by #{Date.parse(yyyy_mm_dd).to_s(:rfc822)}"
+    "Apply by #{Date.parse(yyyy_mm_dd).to_s(:long)}"
   end
 
   def locations_and_salary(job)
