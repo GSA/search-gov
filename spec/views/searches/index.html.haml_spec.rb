@@ -226,7 +226,7 @@ describe "searches/index.html.haml" do
       end
 
 
-      context "when there is an agency associated with the affiliate" do
+      context 'when there is an agency associated with the affiliate' do
         before do
           agency = Agency.create!({:name => 'Some New Agency',
                                    :domain => 'SNA.gov',
