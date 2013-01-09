@@ -5,7 +5,7 @@
     - search.jobs.each do |job|
       .job
         .job-title= title_link(job)
-        - unless search.affiliate.has_organization_code?
+        - unless search.affiliate.has_organization_code? && search.affiliate.agency.organization_code.length==4
           .job-organization= job.organization_name
         .job-locations-money= locations_and_salary(job)
         .job-dates= job_application_deadline(job.end_date)

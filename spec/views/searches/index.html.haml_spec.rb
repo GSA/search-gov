@@ -84,9 +84,9 @@ describe "searches/index.html.haml" do
       @search.stub!(:total).and_return 2000
       @search.stub!(:page).and_return 1
       @search_result = {'title' => "some title",
-                        'unescapedUrl'=> "http://www.foo.com/url",
-                        'content'=> "This is a sample result",
-                        'cacheUrl'=> "http://www.cached.com/url"
+                        'unescapedUrl' => "http://www.foo.com/url",
+                        'content' => "This is a sample result",
+                        'cacheUrl' => "http://www.cached.com/url"
       }
       @search_results = []
       @search_results.stub!(:total_pages).and_return 1
@@ -122,9 +122,9 @@ describe "searches/index.html.haml" do
         @dangerous_title = "Dangerous Title"
         @dangerous_content = "Dangerous Content"
         @search_result = {'title' => @dangerous_title,
-                          'unescapedUrl'=> @dangerous_url,
-                          'content'=> @dangerous_content,
-                          'cacheUrl'=> @dangerous_url
+                          'unescapedUrl' => @dangerous_url,
+                          'content' => @dangerous_content,
+                          'cacheUrl' => @dangerous_url
         }
         @search_results = []
         @search_results.stub!(:total_pages).and_return 1
@@ -142,9 +142,9 @@ describe "searches/index.html.haml" do
       before do
         @pdf_url = "http://www.army.mil/~bob/resume.pdf"
         @search_result = {'title' => "Bob's resume",
-                          'unescapedUrl'=> @pdf_url,
-                          'content'=> "Bob is really good",
-                          'cacheUrl'=> @pdf_url
+                          'unescapedUrl' => @pdf_url,
+                          'content' => "Bob is really good",
+                          'cacheUrl' => @pdf_url
         }
         @search_results = []
         @search_results.stub!(:total_pages).and_return 1
@@ -162,9 +162,9 @@ describe "searches/index.html.haml" do
       before do
         @non_pdf_url = "http://www.army.mil/~bob/resume/"
         @search_result = {'title' => "Bob's resume",
-                          'unescapedUrl'=> @non_pdf_url,
-                          'content'=> "Bob is really good",
-                          'cacheUrl'=> @non_pdf_url
+                          'unescapedUrl' => @non_pdf_url,
+                          'content' => "Bob is really good",
+                          'cacheUrl' => @non_pdf_url
         }
         @search_results = []
         @search_results.stub!(:total_pages).and_return 1
@@ -192,7 +192,7 @@ describe "searches/index.html.haml" do
         @search_result = {'title' => "This is about research jobs",
                           'unescapedUrl' => "http://www.cdc.gov/jobs",
                           'content' => "Research jobs don't pay well",
-                          'cacheUrl'=> "http://www.cached.com/url"}
+                          'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
@@ -225,7 +225,6 @@ describe "searches/index.html.haml" do
         rendered.should contain("All federal job openings")
       end
 
-
       context 'when there is an agency associated with the affiliate' do
         before do
           agency = Agency.create!({:name => 'Some New Agency',
@@ -236,10 +235,35 @@ describe "searches/index.html.haml" do
           @affiliate.stub!(:agency).and_return(agency)
         end
 
-        it "should show the agency-specific info" do
+        it "should show the agency-specific info without agency name" do
           render
           rendered.should contain("Job Openings at SNA")
           rendered.should contain("See all SNA job openings")
+          rendered.should_not contain("Agricultural Research Service")
+          rendered.should_not contain("Some Research Service")
+          rendered.should_not contain("BW Research Service")
+          rendered.should_not contain("Some Poor Research Service")
+        end
+      end
+
+      context 'when there is a department associated with the affiliate' do
+        before do
+          dept = Agency.create!({:name => 'Some New Dept',
+                                   :domain => 'DOS.gov',
+                                   :abbreviation => 'DOS',
+                                   :organization_code => 'DS',
+                                   :name_variants => 'Service Dept'})
+          @affiliate.stub!(:agency).and_return(dept)
+        end
+
+        it "should show the agency-specific info" do
+          render
+          rendered.should contain("Job Openings at DOS")
+          rendered.should contain("See all DOS job openings")
+          rendered.should contain("Agricultural Research Service")
+          rendered.should contain("Some Research Service")
+          rendered.should contain("BW Research Service")
+          rendered.should contain("Some Poor Research Service")
         end
       end
 
@@ -254,9 +278,9 @@ describe "searches/index.html.haml" do
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
-                          'unescapedUrl'=> "http://www.irs.gov/",
-                          'content'=> "The official page of the Internal Revenue Service",
-                          'cacheUrl'=> "http://www.cached.com/url"}
+                          'unescapedUrl' => "http://www.irs.gov/",
+                          'content' => "The official page of the Internal Revenue Service",
+                          'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
@@ -325,9 +349,9 @@ describe "searches/index.html.haml" do
         context "when the Spanish URL matches the result url" do
           before do
             @search_result = {'title' => "Internal Revenue Service - Spanish",
-                              'unescapedUrl'=> "http://www.irs.gov/es/",
-                              'content'=> "The official page of the Internal Revenue Service",
-                              'cacheUrl'=> "http://www.cached.com/url"}
+                              'unescapedUrl' => "http://www.irs.gov/es/",
+                              'content' => "The official page of the Internal Revenue Service",
+                              'cacheUrl' => "http://www.cached.com/url"}
             @search_results = [@search_result]
             @search_results.stub!(:total_pages).and_return 1
             @search.stub!(:results).and_return @search_results
@@ -354,9 +378,9 @@ describe "searches/index.html.haml" do
       context "when the matching result is not the first result" do
         before do
           dummy_result = {'title' => "External Revenue Service",
-                          'unescapedUrl'=> "http://www.ers.gov/",
-                          'content'=> "The official page of the External Revenue Service",
-                          'cacheUrl'=> "http://www.cached.com/url"}
+                          'unescapedUrl' => "http://www.ers.gov/",
+                          'content' => "The official page of the External Revenue Service",
+                          'cacheUrl' => "http://www.cached.com/url"}
           @search_results = [dummy_result, @search_result]
           @search_results.stub!(:total_pages).and_return 1
           @search.stub!(:results).and_return @search_results
@@ -367,7 +391,7 @@ describe "searches/index.html.haml" do
           rendered.should_not have_selector '.govbox.agency'
         end
       end
-   end
+    end
 
     context "when a med topic record matches the query" do
       fixtures :med_topics
@@ -381,7 +405,7 @@ describe "searches/index.html.haml" do
         another_search_result = {'title' => "Ulcerative Colitis",
                                  'unescapedUrl' => "http://ulcerativecolitis.gov",
                                  'content' => "I have ulcerative colitis.",
-                                 'cacheUrl' => "http://www.cached.com/url" }
+                                 'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [another_search_result, @search_result]
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
