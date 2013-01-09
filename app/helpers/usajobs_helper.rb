@@ -31,7 +31,7 @@ module UsajobsHelper
   end
 
   def format_locations(locations)
-    locations.many? ? "Multiple Locations" : locations.first.sub(/, (US|DC)/, '')
+    locations.many? ? "Multiple Locations" : locations.first.sub(', US', '').sub(', DC', '')
   end
 
   def agency_jobs_link(agency)
