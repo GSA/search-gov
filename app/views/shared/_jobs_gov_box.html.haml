@@ -1,13 +1,13 @@
 = render_govbox(:right) do
   #usajobs_govbox
     %h3.alt
-      = "Job Openings"
+      = job_openings_header(search.affiliate.agency)
     - search.jobs.each do |job|
       .job
-        .job-title= job_position_title(job)
-        .job-organization= job.organization_name
-        .job-locations-money= job_position_locations_and_salary(job)
+        .job-title= title_link(job)
+        - unless search.affiliate.has_organization_code?
+          .job-organization= job.organization_name
+        .job-locations-money= locations_and_salary(job)
         .job-dates= job_application_deadline(job.end_date)
 
-    - if search.affiliate.has_organization_code?
-      .job-agency= agency_jobs_link(search.affiliate.agency)
+    .more-jobs= agency_jobs_link(search.affiliate.agency)

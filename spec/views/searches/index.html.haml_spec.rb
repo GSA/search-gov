@@ -180,18 +180,12 @@ describe "searches/index.html.haml" do
 
     context "when jobs results are available" do
       before do
-        agency = Agency.create!({:name => 'Some New Agency',
-                                 :domain => 'SNA.gov',
-                                 :abbreviation => 'SNA',
-                                 :organization_code => 'XX00',
-                                 :name_variants => 'Some Service'})
-        @affiliate.stub!(:agency).and_return(agency)
         @affiliate.stub!(:jobs_enabled?).and_return(true)
         json = [
           {"id" => "328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)", "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"]},
-          {"id" => "328437201", "position_title" => "Some Research Job", "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 26, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"]},
-          {"id" => "328437202", "position_title" => "Bi-Weekly Research Job", "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"]},
-          {"id" => "328437203", "position_title" => "Zero Money Research Job", "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Bye, MA"]}
+          {"id" => "328437201", "position_title" => "Some Research Job", "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"]},
+          {"id" => "328437202", "position_title" => "Bi-Weekly Research Job", "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA, US"]},
+          {"id" => "328437203", "position_title" => "Zero Money Research Job", "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Washington DC Metro Area, DC"]}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
         @search.stub!(:query).and_return "research jobs"
@@ -210,12 +204,12 @@ describe "searches/index.html.haml" do
         rendered.should contain("Job Openings")
         rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
         rendered.should contain("Agricultural Research Service")
-        rendered.should contain("Boston, MA - $51,871+/yr")
+        rendered.should contain("Boston, MA * $51,871+/yr")
         rendered.should contain("Apply by 12 Oct 2023")
 
         rendered.should contain("Some Research Job")
         rendered.should contain("Some Research Service")
-        rendered.should contain("Multiple Locations - $24+/hr")
+        rendered.should contain("Multiple Locations * $24/hr")
         rendered.should contain("Apply by 13 Oct 2023")
 
         rendered.should contain("Bi-Weekly Research Job")
@@ -225,10 +219,28 @@ describe "searches/index.html.haml" do
 
         rendered.should contain("Zero Money Research Job")
         rendered.should contain("Some Poor Research Service")
-        rendered.should contain("Bye, MA")
+        rendered.should contain("Washington DC Metro Area")
         rendered.should contain("Apply by 14 Oct 2023")
 
-        rendered.should contain("See all SNA job openings")
+        rendered.should contain("All federal job openings")
+      end
+
+
+      context "when there is an agency associated with the affiliate" do
+        before do
+          agency = Agency.create!({:name => 'Some New Agency',
+                                   :domain => 'SNA.gov',
+                                   :abbreviation => 'SNA',
+                                   :organization_code => 'XX00',
+                                   :name_variants => 'Some Service'})
+          @affiliate.stub!(:agency).and_return(agency)
+        end
+
+        it "should show the agency-specific info" do
+          render
+          rendered.should contain("Job Openings at SNA")
+          rendered.should contain("See all SNA job openings")
+        end
       end
 
     end
