@@ -8,10 +8,10 @@ module UsajobsHelper
   end
 
   def locations_and_salary(job)
-    location_str = format_locations(job.locations)
+    content = h(format_locations(job.locations))
     salary_str = format_salary(job)
-    dash_salary = salary_str.present? ? " * #{salary_str}" : ''
-    "#{location_str}#{dash_salary}"
+    (content << " &nbsp;&nbsp;&bull;&nbsp;&nbsp; ".html_safe << h(salary_str)) if salary_str.present?
+    content
   end
 
   def format_salary(job)
