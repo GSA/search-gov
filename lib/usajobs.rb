@@ -21,7 +21,7 @@ module Usajobs
       conn.response :mashify
       conn.response :json
       conn.response :caching do
-        ActiveSupport::Cache::FileStore.new File.join(Rails.root, 'tmp', 'cache'), {:namespace => 'usajobs_api', :expires_in => 86400}
+        ActiveSupport::Cache::FileStore.new File.join(Rails.root, 'tmp', 'cache'), {:namespace => 'usajobs_api', :expires_in => 3600}
       end
       conn.use :instrumentation
       conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
