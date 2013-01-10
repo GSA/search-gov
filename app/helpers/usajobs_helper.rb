@@ -45,6 +45,7 @@ module UsajobsHelper
 
   def job_openings_header(agency)
     at = agency.nil? ? '' : " at #{agency.abbreviation || agency.name}"
-    "Job Openings#{at}"
+    job_openings = at.present? ? 'Job Openings' : 'Federal Job Openings'
+    "#{job_openings}#{content_tag(:span, h(at), class: 'jobs-agency').html_safe}".html_safe
   end
 end

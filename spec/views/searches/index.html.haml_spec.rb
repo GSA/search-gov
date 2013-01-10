@@ -201,7 +201,7 @@ describe "searches/index.html.haml" do
 
       it "should show them in a govbox" do
         render
-        rendered.should contain("Job Openings")
+        rendered.should contain("Federal Job Openings")
         rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
         rendered.should contain("Agricultural Research Service")
         rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871+/yr")
