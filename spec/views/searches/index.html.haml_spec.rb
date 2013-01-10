@@ -204,23 +204,23 @@ describe "searches/index.html.haml" do
         rendered.should contain("Job Openings")
         rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
         rendered.should contain("Agricultural Research Service")
-        rendered.should contain("Boston, MA * $51,871+/yr")
-        rendered.should contain("Apply by 12 Oct 2023")
+        rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871+/yr")
+        rendered.should contain("Apply by October 12, 2023")
 
         rendered.should contain("Some Research Job")
         rendered.should contain("Some Research Service")
-        rendered.should contain("Multiple Locations * $24/hr")
-        rendered.should contain("Apply by 13 Oct 2023")
+        rendered.should contain("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24/hr")
+        rendered.should contain("Apply by October 13, 2023")
 
         rendered.should contain("Bi-Weekly Research Job")
         rendered.should contain("BW Research Service")
         rendered.should contain("Hello, MA")
-        rendered.should contain("Apply by 15 Oct 2023")
+        rendered.should contain("Apply by October 15, 2023")
 
         rendered.should contain("Zero Money Research Job")
         rendered.should contain("Some Poor Research Service")
         rendered.should contain("Washington DC Metro Area")
-        rendered.should contain("Apply by 14 Oct 2023")
+        rendered.should contain("Apply by October 14, 2023")
 
         rendered.should contain("All federal job openings")
       end
