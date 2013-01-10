@@ -38,6 +38,12 @@
             %td.actions
               = results_modules_form.check_box :is_medline_govbox_enabled
               = results_modules_form.label :is_medline_govbox_enabled, nil, :class => 'hide'
+          %tr.row-item
+            %td.name Federal jobs
+            %td.source USASearch
+            %td.actions
+              = results_modules_form.check_box :jobs_enabled
+              = results_modules_form.label :jobs_enabled, 'Is jobs govbox enabled', :class => 'hide'
           - if @affiliate.twitter_profiles.any?
             %tr.row-item
               %td.name Recent Tweets

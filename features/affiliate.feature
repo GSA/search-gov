@@ -2519,9 +2519,9 @@ Feature: Affiliate clients
       | Spanish site   | es.aff.gov | aff@bar.gov   | John Bar     | es      |                  |
       | Odie only site | odieonly   | aff@bar.gov   | John Bar     | es      |                  |
     And the following site domains exist for the affiliate aff.gov:
-      | domain               | site_name      |
-      | aff.gov              | Agency Website |
-      | whitehouse.gov       | WH Website |
+      | domain         | site_name      |
+      | aff.gov        | Agency Website |
+      | whitehouse.gov | WH Website     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name           | url                                                | position | shown_in_govbox |
       | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |
@@ -2560,16 +2560,19 @@ Feature: Affiliate clients
       | Name           | Source         |
       | Agency         | USASearch      |
       | Medline        | USASearch      |
+      | Federal jobs   | USASearch      |
       | APress         | RSS            |
       | BPhoto Gallery | RSS            |
       | Videos         | YouTube (RSS)  |
       | ZNot in GovBox | RSS            |
     And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
+    And the "Is jobs govbox enabled" checkbox should not be checked
     And the "Show RSS feed 0 in govbox" checkbox should be checked
     And the "Show RSS feed 1 in govbox" checkbox should be checked
     And the "Show RSS feed 2 in govbox" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
+    When I check "Is jobs govbox enabled"
     And I uncheck "Show RSS feed 0 in govbox"
     And I check "Show RSS feed 3 in govbox"
     And I uncheck "Is related searches enabled"
@@ -2595,6 +2598,10 @@ Feature: Affiliate clients
     And I should not see "some unique item"
     When I follow "Search in Spanish"
     Then I should see the browser page titled "item - Spanish site resultados de la búsqueda"
+
+    And I go to the "aff site" affiliate page
+    And I follow "Results modules"
+    Then the "Is jobs govbox enabled" checkbox should be checked
 
   Scenario: Validation in the Results modules
     Given the following Affiliates exist:
