@@ -258,7 +258,7 @@ describe Affiliates::BoostedContentsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
-        boosted_content.should_receive(:update_attributes).and_return(true)
+        boosted_content.should_receive(:destroy_and_update_attributes).and_return(true)
         Sunspot.should_receive(:index).with(boosted_content)
 
         post :update, :affiliate_id => affiliate.id, :id => boosted_content.id, :boosted_content => { "title" => "hello" }
@@ -276,7 +276,7 @@ describe Affiliates::BoostedContentsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id.to_s).and_return(boosted_content)
-        boosted_content.should_receive(:update_attributes).and_return(false)
+        boosted_content.should_receive(:destroy_and_update_attributes).and_return(false)
 
         post :update, :affiliate_id => affiliate.id, :id => boosted_content.id, :boosted_content => { "title" => "hello" }
       end
