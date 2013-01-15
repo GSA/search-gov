@@ -1,6 +1,6 @@
 class Admin::AffiliateScopesController < Admin::AdminController
   active_scaffold :affiliate do |config|
-    config.label = 'Affiliate Scopes'
+    config.label = 'Customer Scopes'
     config.columns = [:display_name, :scope_ids, :scope_keywords]
     config.list.sorting = { :display_name => :asc }
     config.update.columns = [:scope_ids, :scope_keywords]

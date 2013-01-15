@@ -2,6 +2,7 @@ class Admin::SuperfreshUrlsBulkUploadController < Admin::AdminController
   VALID_CONTENT_TYPES = %w{text/plain txt}
 
   def index
+    @page_title = 'Superfresh Bulk Upload'
   end
 
   def upload

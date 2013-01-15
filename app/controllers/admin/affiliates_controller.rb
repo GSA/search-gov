@@ -1,8 +1,9 @@
 class Admin::AffiliatesController < Admin::AdminController
 
   active_scaffold :affiliate do |config|
+    config.label = 'Sites'
     config.actions.exclude :delete
-    config.columns = [:display_name, :name, :site_domains, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
+    config.columns = [:id, :display_name, :name, :site_domains, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
                        :features, :external_tracking_code, :submitted_external_tracking_code]
@@ -42,6 +43,11 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:form_agencies].form_ui = :select
     config.columns[:form_agencies].options = { :draggable_lists => true }
     actions.add :export
+    config.export.default_deselected_columns = [:header_footer_css,
+                                                :staged_header_footer_css,
+                                                :header,
+                                                :staged_header,
+                                                :footer, :staged_footer]
   end
 
   def analytics

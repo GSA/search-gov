@@ -6,14 +6,6 @@ Feature:  Administration
     And I should see the following breadcrumbs: USASearch > Super Admin
     And I should see "Super Admin" in the page header
     And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
-    And I should see "Users"
-    And I should see "Affiliates"
-    And I should see "SAYT Filters"
-    And I should see "Affiliate Boosted"
-    And I should see "Superfresh Urls"
-    And I should see "Superfresh Bulk Upload"
-    And I should not see "Query Grouping"
-    And I should see "Agencies"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
@@ -33,8 +25,8 @@ Feature:  Administration
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
-    And I follow "Affiliates" within ".main"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliates
+    And I follow "Sites" within ".main"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Sites
     And I should see "Site name"
     And I should see "Site Handle (visible to searchers in the URL)"
     And I should see "agency site"
@@ -54,9 +46,9 @@ Feature:  Administration
   Scenario: Visiting the SAYT Filters admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
-    And I follow "SAYT Filters" within ".main"
+    And I follow "Filters" within ".main"
     Then I should be on the sayt filters admin page
-    And I should see the following breadcrumbs: USASearch > Super Admin > SaytFilters
+    And I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Filters
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -67,8 +59,8 @@ Feature:  Administration
       | title              | url                    | description                        |
       | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results |
     When I go to the admin home page
-    And I follow "Affiliate Boosted Content"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content
+    And I follow "Best Bets: Text"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Best Bets: Text
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
 
@@ -139,7 +131,7 @@ Feature:  Administration
       | 300           | agency.gov  |
       | 400           | agency2.gov |
     When I go to the admin home page
-    And I follow "Affiliate Reports"
+    And I follow "Customer Reports"
     Then I should see a total for "agency.gov" with a total of "300" per day
     And I should see a total for "agency2.gov" with a total of "400" per day
 
@@ -191,88 +183,92 @@ Feature:  Administration
     And I should see the following breadcrumbs: USASearch > Super Admin > Users
 
     When I go to the admin home page
-    And I follow "Affiliates"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliates
+    And I follow "Sites"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Sites
 
     When I go to the admin home page
-    And I follow "SAYT Filters"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SaytFilters
+    And I follow "Filters"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Filters
 
     When I go to the admin home page
-    And I follow "SAYT Suggestions"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SaytSuggestions
+    And I follow "Suggestions"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Suggestions
 
     When I go to the admin home page
-    And I follow "SAYT Misspellings"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Misspellings
+    And I follow "Misspellings"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Misspellings
 
     When I go to the admin home page
-    And I follow "Affiliate Boosted Content"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Boosted Content
+    And I follow "Best Bets: Text"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Best Bets: Text
 
     When I go to the admin home page
     And I follow "Collections"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > DocumentCollections
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Collections
 
     When I go to the admin home page
     And I follow "Government Forms"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > GovForms
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Government Forms
 
     When I go to the admin home page
     And I follow "Superfresh Urls"
     Then I should see the following breadcrumbs: USASearch > Super Admin > SuperfreshUrls
 
     When I go to the admin home page
-    And I follow "Usa.gov mobile site pages"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SitePages
+    And I follow "Superfresh Bulk Upload"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Superfresh Bulk Upload
+
+    When I go to the admin home page
+    And I follow "USA.gov Mobile"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > USA.gov Mobile
 
     When I go to the admin home page
     And I follow "Agencies"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Agencies
 
     When I go to the admin home page
-    And I follow "Logfile Blocked Queries"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedQueries
+    And I follow "Blocked Queries"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Queries
 
     When I go to the admin home page
-    And I follow "Logfile Blocked IPs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedIps
+    And I follow "Blocked IPs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked IPs
 
     When I go to the admin home page
-    And I follow "Logfile Blocked Class Cs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedClassCs
+    And I follow "Blocked Class Cs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Class Cs
 
     When I go to the admin home page
-    And I follow "Logfile Whitelisted Class Cs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileWhitelistedClassCs
+    And I follow "Whitelisted Class Cs"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Whitelisted Class Cs
 
     When I go to the admin home page
-    And I follow "Logfile Blocked Regexps"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedRegexps
+    And I follow "Blocked Regexps"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Regexps
 
     When I go to the admin home page
-    And I follow "Logfile Blocked User Agents"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > LogfileBlockedUserAgents
+    And I follow "Blocked User Agents"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked User Agents
 
     When I go to the admin home page
     And I follow "Monthly/Weekly Report Recipients"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > ReportRecipients
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Monthly/Weekly Report Recipients
 
     When I go to the admin home page
-    And I follow "SERP Modules"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SearchModules
+    And I follow "Modules"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Modules
 
     When I go to the admin home page
     And I follow "Features" in the Super Admin page
     Then I should see the following breadcrumbs: USASearch > Super Admin > Features
 
     When I go to the admin home page
-    And I follow "Affiliate Scopes"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Affiliate Scopes
+    And I follow "Customer Scopes"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Customer Scopes
 
     When I go to the admin home page
-    And I follow "Affiliate Catalog Prefix Whitelist"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > CatalogPrefixes
+    And I follow "Customer Catalog Prefix Whitelist"
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Customer Catalog Prefix Whitelist
 
     When I go to the admin home page
     And I follow "Help Links"
@@ -284,7 +280,7 @@ Feature:  Administration
 
     When I go to the admin home page
     And I follow "Common Website Substrings"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > CommonSubstrings
+    Then I should see the following breadcrumbs: USASearch > Super Admin > Common Website Substrings
 
     When I go to the admin home page
     And I follow "Form Agencies"
