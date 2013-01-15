@@ -1,5 +1,5 @@
 class Affiliates::AffiliatesController < SslController
-  newrelic_ignore_apdex
+  newrelic_ignore
   before_filter :setup_help_link
 
   layout "account"
