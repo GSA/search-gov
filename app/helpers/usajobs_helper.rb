@@ -39,7 +39,7 @@ module UsajobsHelper
       link_to "See all #{agency.abbreviation || agency.name} job openings",
               "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
     else
-      link_to 'All federal job openings', 'https://www.usajobs.gov/JobSearch/Search/GetResults'
+      link_to 'All federal job openings', 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
     end
   end
 
