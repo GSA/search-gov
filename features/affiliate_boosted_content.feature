@@ -157,7 +157,7 @@ Feature: Boosted Content
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keyword 0" with "banana"
-    And I fill in "Keyword 1" with "apples"
+    And I fill in "Keyword 1" with ""
     And I press "Update"
     Then I should see "Best Bets: Text entry successfully updated"
     And I should see "new title"
@@ -166,7 +166,7 @@ Feature: Boosted Content
     And I should see "new description"
     And I should not see "a description"
     And I should see boosted content keyword "banana"
-    And I should see boosted content keyword "apples"
+    And I should not see "xyz"
     When I follow "Edit"
     And I follow "Cancel"
     Then I should see "Best Bets: Text" in the page header

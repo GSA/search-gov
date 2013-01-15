@@ -23,7 +23,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   end
 
   def update
-    if @boosted_content.update_attributes(params[:boosted_content])
+    if @boosted_content.destroy_and_update_attributes(params[:boosted_content])
       index_boosted_content(@boosted_content)
       redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Best Bets: Text entry successfully updated' }
     else

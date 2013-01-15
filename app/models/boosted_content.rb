@@ -117,6 +117,14 @@ class BoostedContent < ActiveRecord::Base
     status.humanize
   end
 
+  def destroy_and_update_attributes(params)
+    params[:boosted_content_keywords_attributes].each do |keyword_attributes|
+      keyword = keyword_attributes[1]
+      keyword[:_destroy] = true if keyword[:value].blank?
+    end
+    update_attributes(params)
+  end
+
   protected
 
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
