@@ -1,6 +1,6 @@
 module UsajobsHelper
   def title_link(job)
-    link_to(job.position_title.html_safe, "https://www.usajobs.gov/GetJob/ViewDetails/#{job.id}")
+    link_to(job.position_title.html_safe, "https://www.usajobs.gov/GetJob/ViewDetails/#{job.id}?PostingChannelID=USASearch")
   end
 
   def job_application_deadline(yyyy_mm_dd)
@@ -37,7 +37,7 @@ module UsajobsHelper
   def agency_jobs_link(agency)
     if agency.present?
       link_to "See all #{agency.abbreviation || agency.name} job openings",
-              "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}"
+              "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
     else
       link_to 'All federal job openings', 'https://www.usajobs.gov/JobSearch/Search/GetResults'
     end
