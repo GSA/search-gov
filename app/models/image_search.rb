@@ -9,7 +9,7 @@ class ImageSearch < WebSearch
   protected
 
   def hits(response)
-    response.image.total rescue 0
+    (response.image.results.blank? ? 0 : response.image.total) rescue 0
   end
 
   def bing_offset(response)
