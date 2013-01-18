@@ -5,27 +5,6 @@ class Sitemap < ActiveRecord::Base
   validate :is_valid_sitemap?
   belongs_to :affiliate
 
-  def fetch
-    parse(open(url))
-    update_attribute(:last_crawled_at, Time.now)
-  rescue Exception => e
-    Rails.logger.warn "Trouble fetching #{url} to index: #{e}"
-  end
-
-  def parse(file)
-    sitemap_doc = Nokogiri::XML(file)
-    sitemap_doc.xpath("//xmlns:url").each do |url|
-      IndexedDocument.create(:url => url.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)
-    end if sitemap_doc.root.name == "urlset"
-    sitemap_doc.xpath("//xmlns:sitemap").each do |sitemap|
-      Sitemap.create(:url => sitemap.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)
-    end if sitemap_doc.root.name == "sitemapindex"
-  end
-
-  def self.refresh
-    all.each { |sitemap| Resque.enqueue_with_priority(:low, SitemapFetcher, sitemap.id) }
-  end
-
   private
 
   def is_valid_sitemap?
