@@ -16,4 +16,12 @@ describe Usajobs do
       end
     end
   end
+
+  describe '.query_eligible?(query)' do
+    context 'when the search phrase is blocked' do
+      it 'should return false' do
+        Usajobs.query_eligible?('job descriptions').should be_false
+      end
+    end
+  end
 end

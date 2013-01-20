@@ -1,5 +1,6 @@
 module Usajobs
   JOB_RELATED_KEYWORDS = '((position|job|opening|posting|employment)s?|(opportunit|vacanc)(y|ies))'
+  BLOCKED_KEYWORDS = 'descriptions?'
 
   RATE_INTERVALS = {
     :BW => 'Bi-weekly',
@@ -29,10 +30,16 @@ module Usajobs
   end
 
   def self.search(options)
-    @usajobs_api_connection.get(@endpoint, options).body  if options[:query] =~ /\b#{JOB_RELATED_KEYWORDS}\b/i
+    if query_eligible?(options[:query])
+      @usajobs_api_connection.get(@endpoint, options).body
+    end
   rescue Exception => e
     Rails.logger.error("Trouble fetching USAJobs information: #{e}")
     nil
+  end
+
+  def self.query_eligible?(query)
+    query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i)
   end
 end
 
