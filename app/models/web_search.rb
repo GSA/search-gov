@@ -282,6 +282,7 @@ class WebSearch < Search
     modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
+    modules << "JOBS" if self.jobs.present?
     modules << "TWEET" unless self.tweets.nil? or self.tweets.total.zero?
     modules << "PHOTO" unless self.photos.nil? or self.photos.total.zero?
     vertical = get_vertical

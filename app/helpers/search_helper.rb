@@ -158,6 +158,10 @@ module SearchHelper
     link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical)
   end
 
+  def job_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
+    link_with_click_tracking(html_safe_title, url, affiliate, query, position, "JOBS", vertical)
+  end
+
   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
     aff_name = affiliate.nil? ? "" : affiliate.name
     query = search.spelling_suggestion || search.query

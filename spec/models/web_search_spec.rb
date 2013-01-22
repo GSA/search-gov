@@ -1226,6 +1226,22 @@ describe WebSearch do
       end
     end
 
+    context "when there are jobs results" do
+      before do
+        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme jobs', :affiliate => @affiliate))
+        @affiliate.stub!(:jobs_enabled?).and_return true
+        @search.stub!(:backfill_needed).and_return false
+        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
+        JSON.stub!(:parse).and_return parsed
+        Usajobs.stub!(:search).and_return %w{some array}
+      end
+
+      it "should log info about the query" do
+        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme jobs', %w{BWEB OVER BSPEL JOBS})
+        @search.run
+      end
+    end
+
     context "when an affiliate has RSS Feeds" do
       before do
         @affiliate = affiliates(:basic_affiliate)

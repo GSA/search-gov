@@ -1,6 +1,7 @@
 module UsajobsHelper
-  def title_link(job)
-    link_to(job.position_title.html_safe, "https://www.usajobs.gov/GetJob/ViewDetails/#{job.id}?PostingChannelID=USASearch")
+  def title_link(job, search, index)
+    job_link_with_click_tracking(job.position_title.html_safe, "https://www.usajobs.gov/GetJob/ViewDetails/#{job.id}?PostingChannelID=USASearch",
+                                 search.affiliate, search.query, index, @search_vertical)
   end
 
   def job_application_deadline(yyyy_mm_dd)
@@ -34,13 +35,15 @@ module UsajobsHelper
     locations.many? ? "Multiple Locations" : locations.first
   end
 
-  def agency_jobs_link(agency)
+  def agency_jobs_link(search)
+    title = 'All federal job openings'
+    url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
+    agency = search.affiliate.agency
     if agency.present?
-      link_to "See all #{agency.abbreviation || agency.name} job openings",
-              "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
-    else
-      link_to 'All federal job openings', 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
+      title = "See all #{agency.abbreviation || agency.name} job openings"
+      url= "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
     end
+    job_link_with_click_tracking title, url, search.affiliate, search.query, agency_jobs_link_index = -1, @search_vertical
   end
 
   def job_openings_header(agency)
