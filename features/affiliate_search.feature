@@ -616,7 +616,7 @@ Feature: Affiliate Search
       | Press | http://www.whitehouse.gov/feed/press | true         | false           |
     And feed "Press" has the following news items:
       | link                                                                            | title      | guid  | published_ago | description                       |
-      | http://usasearch.howto.gov/post/18861028503/how-to-add-our-code-to-your-website | First item | uuid1 | day           | item First news item for the feed |
+      | http://usasearch.howto.gov/post/26431803694/how-to-add-javascript-for-your-third-party-web-services | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
     And I fill in "query" with "javascript"
     And I press "Search"
@@ -1164,7 +1164,7 @@ Feature: Affiliate Search
     And I follow "Blog" in the left column
     And I fill in "query" with "JavaScript"
     And I press "Search"
-    Then I should see a link to "How to Add Our Code to Your Website" with url for "http://usasearch.howto.gov/post/18861028503/how-to-add-our-code-to-your-website"
+    Then I should see a link to "How to Add JavaScript for Your Third Party Web Services" with url for "http://usasearch.howto.gov/post/26431803694/how-to-add-javascript-for-your-third-party-web-services"
     When I follow "Next"
     Then I should see a link to "First JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript1.html"
     And I should see a link to "Second JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript2.html"
