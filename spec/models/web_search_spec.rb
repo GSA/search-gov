@@ -769,7 +769,7 @@ describe WebSearch do
       end
     end
 
-    context "when suggestions for misspelled terms contain scopeid or parenthesis" do
+    context "when suggestions for misspelled terms contain scopeid or parenthesis or excluded domains" do
       before do
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov'))
         @search.stub!(:backfill_needed).and_return false

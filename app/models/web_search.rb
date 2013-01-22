@@ -343,7 +343,8 @@ class WebSearch < Search
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)
-    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
+    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/\(-site[^)]*\)/,'').
+      gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').squish unless did_you_mean_suggestion.nil?
   end
 
   def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
