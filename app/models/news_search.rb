@@ -66,8 +66,12 @@ class NewsSearch < Search
       @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1
       @endrecord = @startrecord + @results.size - 1
-      @module_tag = @total > 0 ? 'NEWS' : nil
+      assign_module_tag
     end
+  end
+
+  def assign_module_tag
+    @module_tag = @total > 0 ? 'NEWS' : nil
   end
 
   def assign_rss_feed(channel_id)

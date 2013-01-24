@@ -5,6 +5,10 @@ class VideoNewsSearch < NewsSearch
 
   protected
 
+  def assign_module_tag
+    @module_tag = @total > 0 ? 'VIDS' : nil
+  end
+
   def assign_rss_feed(channel_id)
     @rss_feed = @affiliate.rss_feeds.videos.find_by_id(channel_id.to_i) if channel_id.present?
   end

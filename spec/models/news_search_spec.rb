@@ -121,7 +121,7 @@ describe NewsSearch do
     it "should log info about the query and module impressions" do
       SaytSuggestion.stub!(:related_search).and_return %{some array}
       search = NewsSearch.new(:query => 'element', :affiliate => affiliate)
-      QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ["NEWS", 'SREL'])
+      QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['NEWS', 'SREL'])
       search.run
     end
 

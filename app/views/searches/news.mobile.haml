@@ -9,12 +9,13 @@
   %hr.topresults
   .group
     - @search.hits.each_with_index do |hit, index|
+      - module_name = hit.instance.rss_feed.is_video? ? 'VIDS' : 'NEWS'
       .row{:id => "newsitem#{index+1}"}
         .searchResult
-          .title= link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, @affiliate, @search.query, index, 'NEWS', @search_vertical)
+          .title= link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, @affiliate, @search.query, index, module_name, @search_vertical)
           .timestamp= time_ago_in_words(hit.instance.published_at)
           .content= news_description(hit)
-          .links= link_with_click_tracking(h(shorten_url(hit.instance.link)), hit.instance.link, @affiliate, @search.query, index, 'NEWS', @search_vertical)
+          .links= link_with_click_tracking(h(shorten_url(hit.instance.link)), hit.instance.link, @affiliate, @search.query, index, module_name, @search_vertical)
       - unless index == @search.hits.length - 1 then
         %hr
 

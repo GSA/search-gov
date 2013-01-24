@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe VideoNewsSearch do
-  fixtures :affiliates, :rss_feeds, :news_items
+  fixtures :affiliates, :rss_feeds, :rss_feed_urls, :news_items
 
   let(:affiliate) { affiliates(:basic_affiliate) }
-
-  before(:all) do
-    NewsItem.reindex
-  end
 
   describe "#initialize(options)" do
     it "should set the class name to 'VideoNewsSearch'" do
@@ -16,6 +12,26 @@ describe VideoNewsSearch do
   end
 
   describe "#run" do
+    context 'when video news items are found' do
+      before do
+        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
+                         :title => "video NewsItem title element",
+                         :description => "video NewsItem description element",
+                         :published_at => DateTime.parse("2011-09-26 21:33:05"),
+                         :guid => '80798 at www.whitehouse.gov',
+                         :rss_feed_id => rss_feeds(:managed_video).id,
+                         :rss_feed_url_id => rss_feed_urls(:youtube_video).id)
+        NewsItem.reindex
+        Sunspot.commit
+      end
+
+      it "should log info about the query and module impressions" do
+        search = VideoNewsSearch.new(:query => 'element', :affiliate => affiliate, :channel => rss_feeds(:managed_video).id)
+        QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['VIDS'])
+        search.run
+      end
+    end
+
     context "when a valid active RSS feed is specified" do
       it "should only search for news items from that feed" do
         rss_feed = mock_model(RssFeed)

@@ -278,7 +278,8 @@ class WebSearch < Search
     modules << @module_tag if @module_tag
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
-    modules << "NEWS" unless self.news_items.nil? or self.news_items.total.zero?
+    modules << 'NEWS' if self.news_items.present? and self.news_items.total > 0
+    modules << 'VIDS' if self.video_news_items.present? and self.video_news_items.total > 0
     modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
