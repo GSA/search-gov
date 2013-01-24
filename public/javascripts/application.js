@@ -93,32 +93,79 @@ jQuery(document).ready(function() {
     toggle_facets(this);
   });
 
-  jQuery('#left_column .time-filters #custom_range').click(function(event) {
-    event.preventDefault();
-    jQuery(this).addClass('selected');
-    jQuery('#cdr_search_form').slideDown();
-    jQuery('.time-filters li div').removeClass('selected');
-  });
-
-  jQuery('.time-filters li div').click(function(event) {
-    event.preventDefault();
-    if (jQuery(this).hasClass('selected')) {
-      return;
-    }
-    jQuery(this).addClass('selected');
-    jQuery('#left_column .time-filters #custom_range').removeClass('selected');
-    jQuery('#cdr_search_form').slideUp();
-  });
-
-  if (jQuery('#left_column .time-filters').length > 0) {
-    var enOptions = { dateFormat: 'm/d/yy' };
-    jQuery('.en #left_column #cdr_since_date').datepicker(enOptions);
-    jQuery('.en #left_column #cdr_until_date').datepicker(enOptions);
+  if (jQuery('#results .time-filters').length > 0) {
+    var currentCdrField;
+    var enOptions = { dateFormat: 'm/d/yy', maxDate: '+0d' };
+    jQuery('.en #results #cdr_date_picker').datepicker(enOptions);
 
     var dayNamesMin = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
     var monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-    var esOptions = { dateFormat: 'd/m/yy', monthNames: monthNames, dayNamesMin: dayNamesMin };
-    jQuery('.es #left_column #cdr_since_date').datepicker(esOptions);
-    jQuery('.es #left_column #cdr_until_date').datepicker(esOptions);
+    var esOptions = { dateFormat: 'd/m/yy', monthNames: monthNames, dayNamesMin: dayNamesMin, maxDate: '+0d' };
+    jQuery('.es #results #cdr_date_picker').datepicker(esOptions);
+
+    jQuery('#results #cdr_since_date').focus(function() {
+      currentCdrField = this;
+      jQuery('#results #cdr_date_picker').datepicker('setDate', jQuery(this).val());
+      jQuery('#results .from .date-wrapper').addClass('highlight');
+      jQuery('#results .to .date-wrapper').removeClass('highlight');
+      jQuery(this).select();
+    });
+
+    jQuery('#results #cdr_until_date').focus(function() {
+      currentCdrField = this;
+      jQuery('#results #cdr_date_picker').datepicker('setDate', jQuery(this).val());
+      jQuery('#results .from .date-wrapper').removeClass('highlight');
+      jQuery('#results .to .date-wrapper').addClass('highlight');
+      jQuery(this).select();
+    });
+
+    jQuery('#results #cdr_date_picker').datepicker('option', 'onSelect', function(dateText, inst) {
+      if (jQuery(currentCdrField).attr('id') == 'cdr_since_date') {
+        jQuery('#results #cdr_since_date').val(dateText);
+        jQuery('#results #cdr_until_date').focus();
+      } else if (jQuery(currentCdrField).attr('id') == 'cdr_until_date') {
+        jQuery('#results #cdr_until_date').val(dateText);
+        jQuery('#results #cdr_until_date').focus();
+      }
+    });
   }
+
+  jQuery('#results .current-time-filter').click(function(event) {
+    event.preventDefault();
+    jQuery('#results ul.sort-filter-options').hide();
+    jQuery('#results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
+    jQuery('#results ul.time-filter-options').toggle();
+    jQuery('#results .current-time-filter .triangle').toggleClass('show-options hide-options');
+    return false;
+  });
+
+  jQuery(document).click(function(event) {
+    jQuery('#results ul.time-filter-options, #results ul.sort-filter-options').hide();
+    jQuery('#results .current-time-filter .triangle, #results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
+  });
+
+  jQuery('#results .current-sort-filter').click(function(event) {
+    event.preventDefault();
+    jQuery('#results ul.time-filter-options').hide();
+    jQuery('#results .current-time-filter .triangle').addClass('show-options').removeClass('hide-options');
+    jQuery('#results ul.sort-filter-options').toggle();
+    jQuery('#results .current-sort-filter .triangle').toggleClass('show-options hide-options');
+    return false;
+  });
+
+  jQuery('#results #custom_range').overlay({
+    mask: {
+      color: '#EFEFEF',
+      loadSpeed: 200,
+      opacity: 0.8
+    },
+    top: '35%',
+    onLoad: function() {
+      jQuery('#results #cdr_since_date').focus();
+    }
+  });
+
+  jQuery('#results #cdr_search_form').submit(function(event) {
+    jQuery('#results #custom_range').overlay().close();
+  });
 });

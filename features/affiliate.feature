@@ -2347,7 +2347,7 @@ Feature: Affiliate clients
     Then I should see "Everything Images Press FAQs Photo Gallery Topics" in the left column
     And I should not see "Hide Me" in the left column
     When I follow "Press" in the left column
-    Then I should see "All Time" in the left column
+    Then I should see "All Time" in the results filters
 
     When I am logged in with email "aff@bar.gov" and password "random_string"
     And I go to the "aff site" affiliate page
@@ -2381,7 +2381,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     Then I should see "Web Pictures News Q&A Galleries Topics" in the left column
     When I follow "News" in the left column
-    Then I should see "All Time" in the left column
+    Then I should see "All Time" in the results filters
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"

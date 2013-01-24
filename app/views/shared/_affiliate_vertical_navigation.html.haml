@@ -1,47 +1,12 @@
-- rss_feed = @search.is_a?(NewsSearch) ? @search.rss_feed : nil
-- search_params = {:query => @search.query, :affiliate => @affiliate.name}
-- search_params.merge!(:channel => rss_feed.id) if rss_feed
-- search_params.merge!(:tbs => params[:tbs]) if params[:since_date].blank? and params[:until_date].blank? and params[:tbs]
-- search_params.merge!(:contributor => params[:contributor]) if params[:contributor]
-- search_params.merge!(:publisher => params[:publisher]) if params[:publisher]
-- search_params.merge!(:subject => params[:subject]) if params[:subject]
-- if @search && @search.is_a?(NewsSearch)
-  - search_params.merge!(:since_date => render_date(@search.since)) if params[:since_date].present?
-  - search_params.merge!(:until_date => render_date(@search.until)) if params[:until_date].present?
 = javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
-- time_filters_css_class = @affiliate.navigations.active.present? ? 'time-filters' : 'time-filters no-active-nav'
 
-= render_navigations(@affiliate, @search, search_params)
-- if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch)
-  - options_expanded = params[:tbs].present? || params[:contributor] || params[:publisher] || params[:subject] || params[:since_date].present? || params[:until_date].present? || params[:sort_by].present?
+= render_navigations(@affiliate, @search, @search_params)
+- if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch) and @search.facets.any? { |facet| facet.rows.any? }
+  - options_expanded = params[:contributor] || params[:publisher] || params[:subject]
   .options-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
     %span#show_options= t(:show_options)
     %span#hide_options= t(:hide_options)
     %span.triangle{ :class => "#{options_expanded ? 'hide-options' : 'show-options'}" }
 
   .time-filters-and-facets-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
-    - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
-    %ul{ :class => time_filters_css_class }
-      %li
-        = link_to_if(@search.since || @search.until, t(:all_time), rss_feed ? send(search_path_method, search_params.remove(:tbs, :since_date, :until_date)) : search_path(search_params.remove(:tbs, :since_date, :until_date)), :class => 'updatable') do |all_time|
-          = content_tag :div, all_time, class: 'selected'
-      - search_uses_predefined_time_filter = params[:tbs].present? && params[:since_date].blank? && params[:until_date].blank?
-      - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
-        %li
-          = link_to_unless((search_uses_predefined_time_filter && (params[:tbs] == tbs)), t("last_#{extent}".to_sym), send(search_path_method, search_params.merge(:tbs => tbs).remove(:since_date, :until_date)), :class => 'updatable') do |last_time|
-            = content_tag :div, last_time, class: 'selected'
-      %li
-        = link_to_if(params[:since_date].blank? && params[:until_date].blank?, "#{I18n.t(:custom_range)}", '#', id: 'custom_range') do |title|
-          = content_tag :div, title, class: 'selected'
-      %li.nomarker
-        = render partial: 'news_custom_date_range_search_form', locals: { search_params: search_params }
-
-    = render_facet_navs(@affiliate, @search, search_path_method, search_params)
-
-    %ul{ :class => time_filters_css_class }  
-      %li
-        = link_to_if((params[:sort_by].present? && params[:sort_by] != 'r') || params[:sort_by].blank?, t(:by_relevance), rss_feed ? send(search_path_method, search_params.merge(sort_by: 'r')) : search_path(search_params.merge(sort_by: 'r')), :class => 'updatable') do |sort_by|
-          = content_tag :div, sort_by, class: 'selected'
-      %li
-        = link_to_if(params[:sort_by] == 'r', t(:by_date), rss_feed ? send(search_path_method, search_params.merge(sort_by: 'd')) : search_path(search_params.merge(sort_by: 'd')), :class => 'updatable') do |sort_by|
-          = content_tag :div, sort_by, class: 'selected'
+    = render_facet_navs(@affiliate, @search, @search_params)

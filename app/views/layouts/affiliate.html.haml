@@ -12,6 +12,8 @@
     - if @affiliate.is_sayt_enabled? or (@search && @search.is_a?(NewsSearch))
       = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
       = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
+      = (javascript_include_tag "jquery/jquery.tools.expose.min.js").html_safe
+      = (javascript_include_tag "jquery/jquery.tools.overlay.min.js").html_safe
 
     - if @affiliate.is_sayt_enabled?
       = stylesheet_link_tag 'compiled/sayt.css'

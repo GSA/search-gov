@@ -133,13 +133,27 @@ class ApplicationController < ActionController::Base
   def sanitize_query(query)
     Sanitize.clean(query).gsub('&amp;', '&') if query
   end
-  
+
   def set_format_for_tablet_devices
     request.format = :html if is_tablet_device?
   end
-  
+
   def force_mobile_mode
     request.format = :mobile if params[:m] == "true"
     request.format = :html if params[:m] == "false" or params[:m] == "override"
-  end  
+  end
+
+  def set_search_params
+    @search_params = { query: @search.query, affiliate: @affiliate.name }
+    if @search.is_a?(NewsSearch)
+      @search_params.merge!(channel: @search.rss_feed.id) if @search.rss_feed
+      @search_params.merge!(tbs: params[:tbs]) if params[:since_date].blank? and params[:until_date].blank? and params[:tbs]
+      @search_params.merge!(since_date: @search.since.strftime(I18n.t(:cdr_format))) if params[:since_date].present? && @search.since
+      @search_params.merge!(until_date: @search.until.strftime(I18n.t(:cdr_format))) if params[:until_date].present? && @search.until
+      @search_params.merge!(sort_by: params[:sort_by]) if params[:sort_by]
+      @search_params.merge!(contributor: params[:contributor]) if params[:contributor]
+      @search_params.merge!(publisher: params[:publisher]) if params[:publisher]
+      @search_params.merge!(subject: params[:subject]) if params[:subject]
+    end
+  end
 end

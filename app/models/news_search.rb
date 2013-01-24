@@ -3,6 +3,7 @@ class NewsSearch < Search
   DEFAULT_VIDEO_PER_PAGE = 21
   attr_reader :rss_feed,
               :hits,
+              :tbs,
               :since,
               :until,
               :facets
@@ -24,7 +25,7 @@ class NewsSearch < Search
       end
     end
 
-    if options[:tbs] and @since.nil? and @until.nil?
+    if NewsItem::TIME_BASED_SEARCH_OPTIONS.keys.include?(options[:tbs]) and @since.nil? and @until.nil?
       @tbs = options[:tbs]
       @since = since_when(@tbs) if @tbs
     end

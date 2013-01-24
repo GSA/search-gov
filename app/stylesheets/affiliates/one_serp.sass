@@ -162,6 +162,148 @@ body
   display: inline
   padding-top: 8px
   width: 550px
+  .results-filters
+    +clearfix
+    padding-bottom: 10px
+  .time-filters, .sort-filters, .clear-filters
+    float: left
+    font-size: 1.1em
+    a
+      display: block
+  .time-filters, .sort-filters
+    margin-right: 15px
+  .current-time-filter, .current-sort-filter, .clear-filter
+    +clearfix
+    cursor: pointer
+    font-weight: bold
+    padding: 5px $results-padding-size
+    &:hover
+      background-color: #F0F0F0
+    span
+      float: left
+      &.current-label
+        margin-right: 5px
+    #show_options, #hide_options
+      float: left
+      font-size: 0.85em
+      margin-right: 5px
+    .triangle
+      border:
+        color: transparent
+        style: solid
+      float: left
+      height: 0
+      margin-top: 5px
+      padding: 0
+      width: 0
+      &.show-options
+        border-width: 6px 6px 0
+      &.hide-options
+        border-width: 0 6px 6px
+  .clear-filter
+    font-weight: normal
+    padding: 5px $results-padding-size
+    &:hover
+      background-color: #F0F0F0
+    a
+      text-decoration: none
+  .time-filter-options, .sort-filter-options
+    background: #FFF
+    border:
+      style: solid
+      width: 1px
+    border-color: #CACACA
+    display: none
+    float: left
+    list-style: none
+    margin: 0
+    padding: 0
+    position: absolute
+    z-index: 9999999
+    li
+      padding: 0
+      &:hover
+        background-color: #F0F0F0
+      a, div
+        padding: 5px $results-padding-size
+        text-decoration: none
+      .selected
+        font-weight: bold
+  #cdr_search_form
+    +border-radius
+    background: #FFF
+    border:
+      color: #CACACA
+      style: solid
+      width: 1pix
+    display: none
+    font-family: Verdana,Arial,sans-serif
+    padding: 10px
+    h3
+      margin-bottom: 0.5em
+    a.close
+      background-image: url(/images/overlay/close.png)
+      cursor: pointer
+      height: 28px
+      position: absolute
+      right: -15px
+      top: -15px
+      width: 28px
+    ul
+      +clearfix
+      list-style: none
+      margin: 0
+      padding: 0
+    li
+      padding: 4px 4px 0 0
+      width: 354px
+      &:hover
+        background-color: transparent
+      #cdr_date_picker
+        float: right
+        .ui-datepicker
+          padding: 0.2em 0.5em 0
+        .ui-datepicker-inline
+          +border-top-left-radius(0)
+        .ui-widget-content
+          background: #EFEFEF
+          border:
+            width: 0
+        a
+          color: black
+      .from, .to
+        float: left
+        width: 174px
+        label
+          float: left
+          font-size: 1.2em
+          padding: 5px 3px
+          width: 50px
+        .date-wrapper
+          float: left
+          padding: 5px
+          &.highlight
+            background-color: #EFEFEF
+            +border-left-radius
+        input
+          border: 1px solid #AAA
+          float: left
+          margin: 0
+          padding: 3px
+          width: 100px
+      .to
+        clear: left
+        margin-top: 10px
+      .button
+        clear: left
+        float: left
+        margin-top: 10px
+        #cdr_search_button
+          +border-radius
+          +inline-block
+          font-weight: bold
+          margin-left: 61px
+          padding: 2px 4px
   &.images, &.videos
     padding-top: 18px
     padding-left: 20px
@@ -172,6 +314,9 @@ body
   &.images
     width: 740px
     padding-left: 34px
+  &.news
+    .results-filters
+      margin-left: 20px
 
   span.image_result
     float: left
@@ -232,7 +377,7 @@ body
   overflow: hidden
   display: inline
   padding: 3px 0 0 0
-  ul.navigations, ul.time-filters, ul.facet
+  ul.navigations, ul.facet
     font-size: 1.1em
     margin: 0
     list-style: none
@@ -264,58 +409,11 @@ body
         border-width: 0
         cursor: default
         padding: 3px 4px 3px 18px
-    li.nomarker
-      &:hover
-        background-color: transparent
-      div
-        border: 0
 
   ul.navigations
     padding: 12px 0 0
   .time-filters-and-facets-wrapper
     +clearfix
-  ul.time-filters
-    border-top: 1px solid #CACACA
-    padding: 12px 0
-    &.no-active-nav
-      border-top: 0
-    div
-      font-weight: normal
-      &.selected
-        font-weight: bold
-  #custom_range
-    font-weight: normal
-    &.selected
-      font-weight: bold
-  #cdr_search_form
-    display: none
-    font-size: 0.8em
-    &.expanded
-      display: block
-    ul
-      +clearfix
-      list-style: none
-      margin: 0
-      padding: 0 24px 0 18px
-    li
-      +clearfix
-      padding: 4px 4px 0 0
-      width: auto
-      &:hover
-        background-color: transparent
-      input
-        border: 1px solid #AAA
-        margin: 0
-        padding: 0
-        width: 100%
-      &.button
-        text-align: center
-        #cdr_search_button
-          +border-radius
-          +inline-block
-          font-weight: bold
-          padding: 2px 4px
-          width: auto
   ul.facet
     border-top: 1px solid #CACACA
     padding: 12px 0
@@ -375,7 +473,7 @@ body
       display: none
 
 * html #left_column
-  ul.navigations, ul.time-filters
+  ul.navigations
     li
       div
         border-width: 0 0 0 4px

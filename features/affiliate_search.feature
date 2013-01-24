@@ -111,7 +111,7 @@ Feature: Affiliate Search
     And I should not see a link to "Videos"
     Then I should see "First video item"
     And I should not see "First item"
-    When I follow "Last year" in the left column
+    When I follow "Last year" in the results filters
     And I fill in "query" with "second item"
     And I press "Search"
     Then I should see "Videos" in the left column
@@ -276,14 +276,15 @@ Feature: Affiliate Search
     And I fill in "query" with "item"
     And I press "Search" in the search box
     And I follow "Press"
-    Then I should not see the left column options expanded
-    And I should see "All Time" in the left column
-    And I should not see a link to "All Time" in the left column
+    Then I should see "All Time" in the results filters
+    And I should not see a link to "All Time" in the results filters
     And the "From:" field should be blank
     And the "To:" field should be blank
+    And I should see "Most recent" in the selected sort filter
+    And I should not see a link to "Most recent" in the results filters
+    And I should see a link to "Best match" in the results filters
     When I follow "Last week"
-    Then I should see the left column options expanded
-    And I should see a link to "All Time" in the left column
+    Then I should see a link to "All Time" in the results filters
     And the "From:" field should be blank
     And the "To:" field should be blank
     And I should see the browser page titled "item - bar site Search Results"
@@ -292,24 +293,27 @@ Feature: Affiliate Search
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
     And I should see "Related Searches" in the search results section
-    When I follow "Relevance"
-    Then I should not see a link to "Relevance" in the left column
-    When I follow "Date"
-    Then I should not see a link to "Date" in the left column
-    When I follow "Last year" in the left column
+    When I follow "Best match"
+    Then I should see "Best match" in the selected sort filter
+    And I should not see a link to "Best match" in the results filters
+    And I should see a link to "Most recent" in the results filters
+    When I follow "Most recent"
+    Then I should see "Most recent" in the selected sort filter
+    And I should not see a link to "Most recent" in the results filters
+    And I should see a link to "Best match" in the results filters
+    When I follow "Last year" in the results filters
     And I follow "Everything" in the left column
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see "Last year" in the left column
-    And I should not see a link to "Last year" in the left column
+    And I should see "Last year" in the search results section
+    And I should not see a link to "Last year" in the search results section
 
     When I am on bar.gov's search page
     And I follow "Press"
     Then I should see "Custom range"
-    And I should see "Ex. mm/dd/yyyy"
     When I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
-    And I press "Search" in the left column
-    Then I should see the left column options expanded
+    And I press "Search" in the results filters
+    Then I should see "Sep 30, 2012 - Oct 15, 2012" in the results filters
     And the "From:" field should contain "9/30/2012"
     And the "To:" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
@@ -317,15 +321,13 @@ Feature: Affiliate Search
 
     When I fill in "query" with "item"
     And I press "Search" in the search box
-    Then I should see the left column options expanded
     And the "From:" field should contain "9/30/2012"
     And the "To:" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
     And I should not see a link to "Fourth item"
 
-    When I follow "All Time" in the left column
-    Then I should not see the left column options expanded
-    And the "From:" field should be blank
+    When I follow "All Time" in the results filters
+    Then the "From:" field should be blank
     And the "To:" field should be blank
 
     When I am on bar.gov's search page
@@ -334,11 +336,10 @@ Feature: Affiliate Search
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
-    And I press "Search" in the left column
+    And I press "Search" in the results filters
     And I follow "Everything"
     And I should see the browser page titled "item - bar site Search Results"
-    And I should see the left column options expanded
-    And I should not see a link to "Custom range" in the left column
+    And I should see "Custom range" in the selected time filter
     And the "From:" field should contain "9/30/2012"
     And the "To:" field should contain "10/15/2012"
 
@@ -348,23 +349,31 @@ Feature: Affiliate Search
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
-    And I press "Search" in the left column
+    And I press "Search" in the results filters
     And I follow "Last year"
-    Then I should not see a link to "Last year" in the left column
-    And I should see a link to "Custom range" in the left column
+    Then I should see "Last year" in the selected time filter
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
     And I press "Buscar" in the search box
     And I follow "Noticias"
-    Then I should not see the left column options expanded
-    And I should see "Cualquier fecha" in the left column
-    And I should not see a link to "Cualquier fecha" in the left column
+    Then I should see "Cualquier fecha" in the selected time filter
+    And I should not see a link to "Cualquier fecha" in the results filters
     And the "Desde:" field should be blank
     And the "Hasta:" field should be blank
+    And I should see "Más recientes" in the selected sort filter
+    And I should not see a link to "Más recientes" in the results filters
+    And I should see a link to "Más relevantes" in the results filters
+    When I follow "Más relevantes"
+    Then I should see "Más relevantes" in the selected sort filter
+    And I should not see a link to "Más relevantes" in the results filters
+    And I should see a link to "Más recientes" in the results filters
+    When I follow "Más recientes"
+    Then I should see "Más recientes" in the selected sort filter
+    And I should not see a link to "Más recientes" in the results filters
+    And I should see a link to "Más relevantes" in the results filters
     When I follow "Última semana"
-    Then I should see the left column options expanded
-    And I should see a link to "Cualquier fecha" in the left column
+    Then I should see a link to "Cualquier fecha" in the results filters
     And the "Desde:" field should be blank
     And the "Hasta:" field should be blank
     And I should see the browser page titled "item - Spanish bar site resultados de la búsqueda"
@@ -372,29 +381,26 @@ Feature: Affiliate Search
     And I should see "item Next news item for the feed"
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
-    When I follow "Último año" in the left column
+    When I follow "Último año" in the results filters
     And I follow "Todo" in the left column
     Then I should see the browser page titled "item - Spanish bar site resultados de la búsqueda"
-    And I should see "Último año" in the left column
-    And I should not see a link to "Último año" in the left column
+    And I should see "Último año" in the selected time filter
+    And I should not see a link to "Último año" in the results filters
 
     When I am on es.bar.gov's search page
     And I follow "Noticias"
     Then I should see "Elija las fechas"
-    And I should see "Ej. dd/mm/aaaa"
     When I fill in "Desde:" with "30/9/2012"
     And I fill in "Hasta:" with "15/10/2012"
-    And I press "Buscar" in the left column
-    Then I should see the left column options expanded
-    And the "Desde:" field should contain "30/9/2012"
+    And I press "Buscar" in the results filters
+    Then the "Desde:" field should contain "30/9/2012"
     And the "Hasta:" field should contain "15/10/2012"
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
     And I should not see a link to "Sixth Spanish item"
 
     When I fill in "query" with "item"
     And I press "Buscar" in the search box
-    Then I should see the left column options expanded
-    And the "Desde:" field should contain "30/9/2012"
+    Then the "Desde:" field should contain "30/9/2012"
     And the "Hasta:" field should contain "15/10/2012"
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
     And I should not see a link to "Sixth Spanish item"
@@ -467,7 +473,7 @@ Feature: Affiliate Search
 
     When I fill in "From:" with "10/15/2012"
     And I fill in "To:" with "10/31/2012"
-    And I press "Search" in the left column
+    And I press "Search" in the results filters
     Then the "From:" field should contain "10/15/2012"
     And the "To:" field should contain "10/31/2012"
     And I should see "president" in the left column
@@ -509,6 +515,12 @@ Feature: Affiliate Search
     And I should not see "Fourth item"
     And I should not see "Sixth item"
 
+    When I follow "Clear" in the results filters
+    Then I should not see the left column options expanded
+    And I should not see a link to "All contributors" in the contributor facet selector
+    And I should not see a link to "All publishers" in the left column
+    And I should not see a link to "All subjects" in the left column
+
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
     And I press "Buscar"
@@ -540,7 +552,7 @@ Feature: Affiliate Search
 
     When I fill in "Desde:" with "15/10/2012"
     And I fill in "Hasta:" with "31/10/2012"
-    And I press "Buscar" in the left column
+    And I press "Buscar" in the results filters
     Then the "Desde:" field should contain "15/10/2012"
     And the "Hasta:" field should contain "31/10/2012"
     And I should see "president" in the left column

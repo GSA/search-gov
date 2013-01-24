@@ -11,6 +11,7 @@ class ImageSearchesController < ApplicationController
     @page_title = @search.query
     handle_affiliate_search
     @search_vertical = :image
+    set_search_params
     respond_to do |format|
       format.html {}
       format.mobile {}

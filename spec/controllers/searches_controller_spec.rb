@@ -45,6 +45,9 @@ describe SearchesController do
         @search.should_not be_nil
         @search.results.should_not be_nil
       end
+
+      it { should assign_to(:search_params).with(
+                      hash_including(affiliate: @affiliate.name, query: 'social security')) }
     end
 
     context "when searching in Spanish" do
@@ -343,7 +346,7 @@ describe SearchesController do
         affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(dc)
         SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
         site_search.should_receive(:run)
-        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
+        get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
@@ -357,6 +360,9 @@ describe SearchesController do
       it 'should default to page 1' do
         assigns[:search_options][:page].should == 1
       end
+
+      it { should assign_to(:search_params).with(
+                      hash_including(affiliate: affiliate.name, query: 'gov')) }
 
       it { should render_template(:docs) }
     end
@@ -436,12 +442,48 @@ describe SearchesController do
       it { should assign_to(:page_title).with('Current White House Blog - NPS Site Search Results') }
     end
 
+
+    context 'when searching with tbs' do
+      before do
+        Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
+        news_search = mock(NewsSearch, query: 'element', rss_feed: rss_feeds(:white_house_blog))
+        news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
+        NewsSearch.should_receive(:new).with(hash_including(tbs: 'w')).and_return(news_search)
+        news_search.should_receive(:run)
+
+        get :news,
+            query: 'element',
+            affiliate: affiliate.name,
+            channel: rss_feeds(:white_house_blog).id,
+            tbs: 'w',
+            sort_by: 'r',
+            contributor: 'The President',
+            publisher: 'The White House',
+            subject: 'Economy'
+      end
+
+      it { should assign_to(:search_params).with(
+                      hash_including(affiliate: affiliate.name,
+                                     query: 'element',
+                                     channel: rss_feeds(:white_house_blog).id,
+                                     tbs: 'w',
+                                     sort_by: 'r',
+                                     contributor: 'The President',
+                                     publisher: 'The White House',
+                                     subject: 'Economy')) }
+    end
+
     context 'when searching with a date range' do
       let(:channel_id) { rss_feeds(:white_house_blog).id }
 
       before do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = mock(NewsSearch)
+        news_search = mock(NewsSearch,
+                           query: 'element',
+                           rss_feed: rss_feeds(:white_house_blog),
+                           since: Time.parse('2012-10-1'),
+                           until: Time.parse('2012-10-15'))
+        news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
         NewsSearch.should_receive(:new).
             with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')).
             and_return(news_search)
@@ -452,6 +494,12 @@ describe SearchesController do
 
       it { should assign_to(:affiliate).with(affiliate) }
       it { should assign_to(:search_options).with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')) }
+      it { should assign_to(:search_params).with(
+                      hash_including(affiliate: affiliate.name,
+                                     query: 'element',
+                                     channel: rss_feeds(:white_house_blog).id,
+                                     since_date: '10/01/2012',
+                                     until_date: '10/15/2012')) }
     end
 
     describe "rendering the view" do
@@ -486,9 +534,10 @@ describe SearchesController do
 
   describe "#video_news" do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:video_news_search) { mock('video news search') }
 
     context "when the query is not blank" do
+      let(:video_news_search) { mock('video news search', query: 'element') }
+
       before do
         VideoNewsSearch.should_receive(:new).and_return(video_news_search)
         video_news_search.should_receive(:run)
@@ -504,6 +553,8 @@ describe SearchesController do
     end
 
     context "when the query is blank and total is > 0" do
+      let(:video_news_search) { mock('video news search', query: '') }
+
       before do
         VideoNewsSearch.should_receive(:new).and_return(video_news_search)
         video_news_search.should_receive(:run)

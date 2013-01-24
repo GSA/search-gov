@@ -393,7 +393,8 @@ module SearchHelper
     end
   end
 
-  def render_facet_navs(affiliate, search, search_path_method, search_params)
+  def render_facet_navs(affiliate, search, search_params)
+    search_path_method = (search.class.to_s.underscore + '_path').to_sym
     html = []
     search.facets.each do |facet|
       next unless facet.rows.any?

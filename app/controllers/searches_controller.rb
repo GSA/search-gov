@@ -24,6 +24,7 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     set_affiliate_search_page_title
     @search_vertical = :web
+    set_search_params
     respond_to do |format|
       format.any(:html, :mobile) {}
       format.json { render :json => @search }
@@ -37,6 +38,7 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     @search_vertical = :docs
     set_affiliate_search_page_title
+    set_search_params
     respond_to { |format| format.any(:html, :mobile) {} }
   end
 
@@ -47,6 +49,7 @@ class SearchesController < ApplicationController
     set_news_search_page_title
     set_affiliate_search_page_title
     @search_vertical = :news
+    set_search_params
     respond_to { |format| format.any(:html, :mobile) {} }
   end
 
@@ -58,6 +61,7 @@ class SearchesController < ApplicationController
     set_affiliate_search_page_title
     @search_vertical = :news
     request.format = :html
+    set_search_params
     respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
   end
 

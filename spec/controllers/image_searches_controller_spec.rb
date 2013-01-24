@@ -22,6 +22,8 @@ describe ImageSearchesController do
         it { should assign_to(:search).with(image_search) }
         it { should assign_to :affiliate }
         it { should assign_to(:page_title).with("Current thunder & lightning - NPS Site Search Results") }
+        it { should assign_to(:search_params).with(
+                        hash_including(affiliate: @affiliate.name, query: 'thunder & lightning')) }
         it { should render_template 'image_searches/index' }
 
         it "should render the template" do

@@ -37,6 +37,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:has_forms?).and_return false
     @search.stub!(:module_tag).and_return('BWEB')
     assign(:search, @search)
+    assign(:search_params, { affiliate: @affiliate.name, query: 'test' })
   end
 
   context "when spelling suggestion is available" do
