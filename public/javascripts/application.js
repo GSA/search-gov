@@ -128,44 +128,44 @@ jQuery(document).ready(function() {
         jQuery('#results #cdr_until_date').focus();
       }
     });
+
+    jQuery('#results .current-time-filter').click(function(event) {
+      event.preventDefault();
+      jQuery('#results ul.sort-filter-options').hide();
+      jQuery('#results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
+      jQuery('#results ul.time-filter-options').toggle();
+      jQuery('#results .current-time-filter .triangle').toggleClass('show-options hide-options');
+      return false;
+    });
+
+    jQuery(document).click(function(event) {
+      jQuery('#results ul.time-filter-options, #results ul.sort-filter-options').hide();
+      jQuery('#results .current-time-filter .triangle, #results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
+    });
+
+    jQuery('#results .current-sort-filter').click(function(event) {
+      event.preventDefault();
+      jQuery('#results ul.time-filter-options').hide();
+      jQuery('#results .current-time-filter .triangle').addClass('show-options').removeClass('hide-options');
+      jQuery('#results ul.sort-filter-options').toggle();
+      jQuery('#results .current-sort-filter .triangle').toggleClass('show-options hide-options');
+      return false;
+    });
+
+    jQuery('#results #custom_range').overlay({
+      mask: {
+        color: '#EFEFEF',
+        loadSpeed: 200,
+        opacity: 0.8
+      },
+      top: '35%',
+      onLoad: function() {
+        jQuery('#results #cdr_since_date').focus();
+      }
+    });
+
+    jQuery('#results #cdr_search_form').submit(function(event) {
+      jQuery('#results #custom_range').overlay().close();
+    });
   }
-
-  jQuery('#results .current-time-filter').click(function(event) {
-    event.preventDefault();
-    jQuery('#results ul.sort-filter-options').hide();
-    jQuery('#results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
-    jQuery('#results ul.time-filter-options').toggle();
-    jQuery('#results .current-time-filter .triangle').toggleClass('show-options hide-options');
-    return false;
-  });
-
-  jQuery(document).click(function(event) {
-    jQuery('#results ul.time-filter-options, #results ul.sort-filter-options').hide();
-    jQuery('#results .current-time-filter .triangle, #results .current-sort-filter .triangle').addClass('show-options').removeClass('hide-options');
-  });
-
-  jQuery('#results .current-sort-filter').click(function(event) {
-    event.preventDefault();
-    jQuery('#results ul.time-filter-options').hide();
-    jQuery('#results .current-time-filter .triangle').addClass('show-options').removeClass('hide-options');
-    jQuery('#results ul.sort-filter-options').toggle();
-    jQuery('#results .current-sort-filter .triangle').toggleClass('show-options hide-options');
-    return false;
-  });
-
-  jQuery('#results #custom_range').overlay({
-    mask: {
-      color: '#EFEFEF',
-      loadSpeed: 200,
-      opacity: 0.8
-    },
-    top: '35%',
-    onLoad: function() {
-      jQuery('#results #cdr_since_date').focus();
-    }
-  });
-
-  jQuery('#results #cdr_search_form').submit(function(event) {
-    jQuery('#results #custom_range').overlay().close();
-  });
 });

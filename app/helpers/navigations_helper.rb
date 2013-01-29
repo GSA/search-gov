@@ -15,6 +15,10 @@ module NavigationsHelper
   end
 
   def render_navigations(affiliate, search, search_params)
+    if search.is_a?(SiteSearch) && search.document_collection && !search.document_collection.navigation.is_active?
+      return render_navigations_for_non_navigable_document_collection(search, search_params)
+    end
+
     return if affiliate.navigations.active.blank?
 
     dc = search.is_a?(SiteSearch) ? search.document_collection : nil
@@ -45,6 +49,12 @@ module NavigationsHelper
     end
     nav_html = nav_items.collect { |nav_item| content_tag(:li, nav_item.html_safe) }
     content_tag(:ul, nav_html.join("\n").html_safe, :class => 'navigations')
+  end
+
+  def render_navigations_for_non_navigable_document_collection(search, search_params)
+    dc = search.document_collection
+    nav_item = render_navigation_for_document_collection(dc, search_params, dc)
+    content_tag(:ul, content_tag(:li, nav_item), class: 'navigations')
   end
 
   def render_navigation_for_search_everything(search, search_params, rss_feed, default_search_label)

@@ -68,11 +68,14 @@ describe NavigationsHelper do
     end
 
     let(:document_collection) { mock_model(DocumentCollection, :name => 'Blog') }
+
     let(:document_collection_nav) do
       mock_model(Navigation,
                  :navigable => document_collection,
                  :navigable_type => document_collection.class.name)
     end
+
+    let(:non_navigable_document_collection) { mock_model(DocumentCollection, name: 'News') }
 
     let(:search_params) { { :query => 'gov', :affiliate => affiliate.name } }
 
@@ -129,7 +132,8 @@ describe NavigationsHelper do
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == SiteSearch }
           search.should_receive(:is_a?).at_least(:once) { |arg| arg == SiteSearch }
-          search.should_receive(:document_collection).and_return(document_collection)
+          search.should_receive(:document_collection).at_least(:once).and_return(document_collection)
+          document_collection.stub_chain(:navigation, :is_active?).and_return(true)
         end
 
         it 'should render document collection name' do
@@ -145,6 +149,26 @@ describe NavigationsHelper do
         it_behaves_like 'doing non web search'
         it_behaves_like 'doing non image search'
         it_behaves_like 'doing non news channel specific search'
+      end
+
+      context 'when searching on non navigable document collection' do
+        let(:search) { mock(SiteSearch) }
+
+        before do
+          search.should_receive(:is_a?).at_least(:once) { |arg| arg == SiteSearch }
+          search.should_receive(:document_collection).at_least(:once).and_return(non_navigable_document_collection)
+          non_navigable_document_collection.stub_chain(:navigation, :is_active?).and_return(false)
+        end
+
+        it 'should render document collection name' do
+          html = helper.render_navigations(affiliate, search, search_params)
+          html.should have_selector('.navigations', content: 'News')
+        end
+
+        it 'should not render a link to document collection' do
+          html = helper.render_navigations(affiliate, search, search_params)
+          html.should_not have_selector('.navigations a', content: 'News')
+        end
       end
 
       context 'when doing search on a specific news channel' do

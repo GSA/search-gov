@@ -136,8 +136,8 @@ class SearchesController < ApplicationController
 
   def set_docs_search_options
     @search_options = search_options_from_params(@affiliate, params)
-    document_collection = @affiliate.document_collections.navigable_only.find_by_id(@search_options[:dc])
-    @search_options.merge!(:document_collection => document_collection)
+    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
+    @search_options.merge!(document_collection: document_collection)
   end
 
   def set_news_search_options

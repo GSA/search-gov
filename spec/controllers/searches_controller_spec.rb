@@ -343,7 +343,7 @@ describe SearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(dc)
+        affiliate.stub_chain(:document_collections, :find_by_id).and_return(dc)
         SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
         site_search.should_receive(:run)
         get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
@@ -372,7 +372,7 @@ describe SearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(dc)
+        affiliate.stub_chain(:document_collections, :find_by_id).and_return(dc)
         SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
         site_search.should_receive(:run)
         get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100, :page => 3
@@ -386,7 +386,7 @@ describe SearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        affiliate.stub_chain(:document_collections, :navigable_only, :find_by_id).and_return(nil)
+        affiliate.stub_chain(:document_collections, :find_by_id).and_return(nil)
         WebSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(web_search)
         web_search.should_receive(:run)
         SiteSearch.should_not_receive(:new)

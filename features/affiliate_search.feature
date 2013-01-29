@@ -1185,6 +1185,26 @@ Feature: Affiliate Search
     Then I should see some Bing search results
     And I should not see "How to Add JavaScript for Your Third Party Web Services"
 
+  Scenario: Searching on non navigable document collection
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
+    And affiliate "agency.gov" has the following document collections:
+      | name | prefixes            | is_navigable |
+      | Blog | http://blog.usa.gov | false        |
+      | Web  | http://www.usa.gov  | true         |
+    When I am on agency.gov's "Blog" docs search page
+    Then I should see "Blog" in the left column
+    And I should not see a link to "Everything" in the left column
+    And I should not see a link to "Blog" in the left column
+    And I should not see a link to "Search Notes" in the left column
+    When I fill in "query" with "Noaa"
+    And I press "Search"
+    Then I should see some Bing search results
+    And I should not see a link to "Everything" in the left column
+    And I should not see a link to "Blog" in the left column
+    And I should not see a link to "Search Notes" in the left column
+
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name |
