@@ -443,6 +443,11 @@ module SearchHelper
     html.join("\n").html_safe unless html.empty?
   end
 
+  def render_advance_search_operators_help_text
+    link = link_to I18n.t(:advanced_search_operator_link), 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+    content_tag(:div, I18n.t(:advanced_search_operator, link: link).html_safe)
+  end
+
   private
 
   def shorten_url (url, length=42)

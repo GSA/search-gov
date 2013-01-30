@@ -26,6 +26,13 @@ describe "searches/advanced.html.haml" do
       rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
     end
 
+    it 'should render advanced search operators link' do
+      render
+      rendered.should have_selector(:a,
+                                    content: 'advanced search operators',
+                                    href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
+    end
+
     describe "adult filter options" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
@@ -61,6 +68,13 @@ describe "searches/advanced.html.haml" do
     it "should show options for adult searches, defaulting to moderate" do
       render
       rendered.should have_selector("input[type='radio'][name='filter'][value='moderate'][checked='checked']")
+    end
+
+    it 'should render advanced search operators link' do
+      render
+      rendered.should have_selector(:a,
+                                    content: 'opciones de búsqueda avanzada',
+                                    href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
     end
 
     after do

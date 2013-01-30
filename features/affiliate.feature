@@ -1632,7 +1632,7 @@ Feature: Affiliate clients
     And I should see "Use las siguientes opciones para hacer una búsqueda específica."
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
-    And I press "Busque información del Gobierno"
+    And I press "Buscar"
     Then I should see at least 2 search results
     And I should see "emergency"
 
@@ -1663,14 +1663,6 @@ Feature: Affiliate clients
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "filetype:pdf"
-
-    When I am on the affiliate advanced search page for "en.aff.gov"
-    And I fill in "query" with "barack obama"
-    And I select "20" from "per-page"
-    And I press "Search"
-    Then I should see "Affiliate Header"
-    And I should see "Affiliate Footer"
-    Then I should see 20 search results
 
     When I am on the affiliate advanced search page for "en.aff.gov"
     And I choose "Off"
