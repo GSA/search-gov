@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', "3.2.10"
+gem 'rails', "3.2.11"
 gem 'mysql2', '>0.3'
 gem 'capistrano', :git => 'git://github.com/GSA-OCSIT/capistrano.git'
 gem 'capistrano-ext'
