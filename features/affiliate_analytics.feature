@@ -180,19 +180,19 @@ Feature: Affiliate analytics
     And I should see "Click Stats for aff site"
     And I should see "Most Popular URLs"
     And I should see the following table rows:
-      | URL                       | Clicks |
-      | http://www.aff.gov/url3   | 12     |
-      | http://www.aff.gov/url2   | 11     |
-      | http://www.aff.gov/url1   | 10     |
+      | URL              | Clicks |
+      | www.aff.gov/url3 | 12     |
+      | www.aff.gov/url2 | 11     |
+      | www.aff.gov/url1 | 10     |
 
     When I fill in "start_date" with "2012-10-18"
     And I fill in "end_date" with "2012-10-19"
     And I press "Submit"
     Then I should see the following table rows:
-      | URL                       | Clicks |
-      | http://www.aff.gov/url1   | 39     |
-      | http://www.aff.gov/url2   | 29     |
-      | http://www.aff.gov/url3   | 19     |
+      | URL              | Clicks |
+      | www.aff.gov/url1 | 39     |
+      | www.aff.gov/url2 | 29     |
+      | www.aff.gov/url3 | 19     |
 
     When I follow "View top query terms leading to this URL"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > Click Queries

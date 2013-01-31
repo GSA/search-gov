@@ -2,27 +2,30 @@
 
 %h1&= "Click Stats for #{@affiliate.display_name}"
 = render_help_link(@help_link)
-.span-24
+.span-23
   = render :partial => "date_range_select", :locals => { :path => top_urls_affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates, :show_tag => "Show most popular clicks from"}
 .clear
 
 %br
 
-.clear.span-12.header-box
-  .left
-    Most Popular URLs
-  .right.last
-    %form
-      = display_select_for_date_range_window("dcs", @num_results_dcs, @start_date, @end_date, top_urls_affiliate_analytics_path(@affiliate))
-.clear.span-12
+#top_urls.clear.span-23
   %table.kv_pairs
-    %tr
-      %th{:style=>"text-align:center"} URL
-      %th{:style=>"text-align:right"} Clicks
-    - @top_urls.each_with_index do |(key, value), idx|
+    %thead
       %tr
-        %td
-          = "#{idx+1}."
-          = link_to truncate(key, :length => 80), key
-          = affiliate_click_queries_link(key, @affiliate, @start_date, @end_date)
-        %td{:style => "text-align: right"}= value
+        %th{ colspan: 2 }
+          .right.last
+            %form
+              = display_select_for_date_range_window("dcs", @num_results_dcs, @start_date, @end_date, top_urls_affiliate_analytics_path(@affiliate))
+          .title
+            Most Popular URLs
+    %tbody
+      %tr
+        %th{:style=>"text-align:center"} URL
+        %th{:style=>"text-align:right"} Clicks
+      - @top_urls.each_with_index do |(key, value), idx|
+        %tr{ class: cycle('even', 'odd') }
+          %td.url
+            = "#{idx+1}."
+            = link_to shorten_url(key, 80), key
+            = affiliate_click_queries_link(key, @affiliate, @start_date, @end_date)
+          %td{:style => "text-align: right"}= value
