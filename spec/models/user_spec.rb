@@ -204,7 +204,7 @@ describe User do
     end
   end
 
-  describe "#is_government_affiliated?" do
+  describe "#has_government_affiliated_email?" do
     it "should return true if the e-mail address ends with .gov or .mil" do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
         user = User.new(@valid_affiliate_attributes.merge({:email => email}))
@@ -212,11 +212,22 @@ describe User do
       end
     end
 
-    it "should return false if the e-mail adress does not end with .gov or .mil" do
-      user = User.new(@valid_affiliate_attributes.merge({:email => 'affiliate@corp.com'}))
-      user.has_government_affiliated_email?.should be_false
-      user = User.new(@valid_affiliate_attributes.merge({:email => nil}))
-      user.has_government_affiliated_email?.should be_false
+    it 'should return true if the email address ends with .fed.us' do
+      user = User.new(@valid_affiliate_attributes.merge({ email: 'user@fs.fed.US' }))
+      user.should be_has_government_affiliated_email
+    end
+
+    it 'should return true if the email address ends with state.*.us' do
+      %w(user@co.franklin.state.dc.US user@state.dc.US).each do |email|
+        user = User.new(@valid_affiliate_attributes.merge({ email: email }))
+        user.should be_has_government_affiliated_email
+      end
+    end
+
+    it "should return false if the e-mail adresses do not match" do
+      %w(user@affiliate@corp.com user@FSRFED.us user@fs.fed.usa user@co.franklin.state.kids.us user@lincoln.k12.oh.us user@co.state.z.us).each do |email|
+        User.new(@valid_affiliate_attributes.merge({ email: email })).should_not be_has_government_affiliated_email
+      end
     end
   end
 

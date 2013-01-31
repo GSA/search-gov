@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def has_government_affiliated_email?
-    email =~ /\.(gov|mil)$/i
+    email =~ /\.(gov|mil|fed\.us)$|(\.|@)state\.[a-z]{2}\.us$/i
   end
 
   def signed_up_to_be_an_affiliate?
