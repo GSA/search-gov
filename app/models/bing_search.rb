@@ -14,6 +14,7 @@ class BingSearch
   def query(query, sources, offset = 0, per_page = 10, enable_highlighting = true, filter_setting = DEFAULT_FILTER_SETTING)
     begin
       url = bing_api_url(query, sources, offset, per_page, enable_highlighting, filter_setting)
+      Rails.logger.debug "Bing Url: #{url}"
       response = $bing_api_connection.get(url)
       response.body.search_response
     rescue Exception => error

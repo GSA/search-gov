@@ -704,7 +704,7 @@ describe WebSearch do
         affiliate = affiliates(:power_affiliate)
         ExcludedUrl.create!(:url => @url1, :affiliate => affiliate)
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.stub!(:backfill_needed).and_return false
@@ -740,7 +740,7 @@ describe WebSearch do
         NewsItem.stub!(:search_for).and_return hits
         @search = WebSearch.new(:query => 'government', :page => 1, :affiliate => affiliates(:basic_affiliate))
         @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
@@ -758,7 +758,7 @@ describe WebSearch do
     context "when searching for misspelled terms" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => "p'resident"))
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions_pres.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -769,25 +769,40 @@ describe WebSearch do
       end
     end
 
-    context "when suggestions for misspelled terms contain scopeid or parenthesis or excluded domains" do
+    context "when suggestions for misspelled terms contain scopeid or parentheses or excluded domains" do
       before do
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov'))
         @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
       end
 
-      it "should strip them all out, leaving site: terms in the suggestion" do
-        @search.spelling_suggestion.should == "electrocoagulation site:uspto.gov"
+      it "should strip them all out" do
+        @search.spelling_suggestion.should == "electrocoagulation"
+      end
+    end
+
+    context "when original query contained misspelled word and site: param" do
+      before do
+        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(fedderal site:ftc.gov)'))
+        @search.stub!(:backfill_needed).and_return false
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/user_supplied_site_param.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should strip it out" do
+        @search.spelling_suggestion.should == "federal"
       end
     end
 
     context "when the Bing spelling suggestion is identical to the original query except for Bing highlight characters" do
       before do
         @search = WebSearch.new(:query => 'ct-w4', :affiliate => @affiliate)
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestion_containing_highlight_characters.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -801,7 +816,21 @@ describe WebSearch do
     context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
       before do
         @search = WebSearch.new(:query => 'bio-tech', :affiliate => @affiliate)
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestion_containing_a_hyphen.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should not have a spelling suggestion" do
+        @search.spelling_suggestion.should be_nil
+      end
+    end
+
+    context "when the original query was a spelling override (i.e., starting with +)" do
+      before do
+        @search = WebSearch.new(:query => '+fedderal', :affiliate => @affiliate)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/overridden_spelling_suggestion.json")
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -1211,7 +1240,7 @@ describe WebSearch do
       before do
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme', :affiliate => @affiliate))
         @search.stub!(:backfill_needed).and_return false
-        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
+        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json"))
         JSON.stub!(:parse).and_return parsed
       end
 
@@ -1231,7 +1260,7 @@ describe WebSearch do
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme jobs', :affiliate => @affiliate))
         @affiliate.stub!(:jobs_enabled?).and_return true
         @search.stub!(:backfill_needed).and_return false
-        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
+        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json"))
         JSON.stub!(:parse).and_return parsed
         Usajobs.stub!(:search).and_return %w{some array}
       end

@@ -238,7 +238,12 @@ class WebSearch < Search
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
     cleaned_query = strip_extra_chars_from(@query)
-    cleaned_suggestion_without_bing_highlights == cleaned_query ? nil : cleaned_suggestion_without_bing_highlights
+    same_or_overridden?(cleaned_suggestion_without_bing_highlights, cleaned_query) ? nil : cleaned_suggestion_without_bing_highlights
+  end
+
+  def same_or_overridden?(cleaned_suggestion_without_bing_highlights, cleaned_query)
+    cleaned_suggestion_without_bing_highlights == cleaned_query ||
+      (cleaned_suggestion_without_bing_highlights.present? && cleaned_suggestion_without_bing_highlights.starts_with?('+'))
   end
 
   def populate_additional_results
@@ -344,8 +349,11 @@ class WebSearch < Search
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)
-    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/\(-site[^)]*\)/,'').
-      gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').squish unless did_you_mean_suggestion.nil?
+    if did_you_mean_suggestion.present?
+      remaining_tokens = did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/\(-site:[^)]*\)/, '').gsub(/\(site:[^)]*\)/, '').
+        gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').split
+      remaining_tokens.reject { |token| token.starts_with?('site:') }.join(' ')
+    end
   end
 
   def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
