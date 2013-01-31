@@ -750,8 +750,8 @@ Feature: Affiliate Search
 
   Scenario: Searchers see agency deep links in English
     Given the following Affiliates exist:
-      | display_name | name       | contact_email  | contact_name | domains | is_agency_govbox_enabled  |
-      | agency site  | ssa.gov    | aff@agency.gov | John Bar     | ssa.gov | true                      |
+      | display_name | name    | contact_email  | contact_name | domains | is_agency_govbox_enabled |
+      | agency site  | ssa.gov | aff@agency.gov | John Bar     | ssa.gov | true                     |
     And the following Agency entries exist:
       | name | domain  |
       | SSA  | ssa.gov |
@@ -760,9 +760,8 @@ Feature: Affiliate Search
       | SSA  | en     | http://ssa.gov/             |
       | SSA  | en     | http://www.ssa.gov/         |
       | SSA  | es     | http://www.ssa.gov/espanol/ |
-    And I am logged in with email "aff@agency.gov" and password "random_string"
     When I am on ssa.gov's search page
-    And I fill in "query" with "ssa"
+    And I fill in "query" with "ssa.gov"
     And I press "Search"
     Then I should see agency govbox deep links
 
