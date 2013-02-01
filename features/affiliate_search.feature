@@ -751,17 +751,17 @@ Feature: Affiliate Search
   Scenario: Searchers see agency deep links in English
     Given the following Affiliates exist:
       | display_name | name    | contact_email  | contact_name | domains | is_agency_govbox_enabled |
-      | agency site  | ssa.gov | aff@agency.gov | John Bar     | ssa.gov | true                     |
+      | agency site  | tsa.gov | aff@agency.gov | John Bar     | tsa.gov | true                     |
     And the following Agency entries exist:
       | name | domain  |
-      | SSA  | ssa.gov |
+      | TSA  | tsa.gov |
     And the following Agency Urls exist:
       | name | locale | url                         |
-      | SSA  | en     | http://ssa.gov/             |
-      | SSA  | en     | http://www.ssa.gov/         |
-      | SSA  | es     | http://www.ssa.gov/espanol/ |
-    When I am on ssa.gov's search page
-    And I fill in "query" with "ssa.gov"
+      | TSA  | en     | http://tsa.gov/             |
+      | TSA  | en     | http://www.tsa.gov/         |
+      | TSA  | es     | http://www.tsa.gov/espanol/ |
+    When I am on tsa.gov's search page
+    And I fill in "query" with "tsa"
     And I press "Search"
     Then I should see agency govbox deep links
 
