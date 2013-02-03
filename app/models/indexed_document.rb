@@ -289,7 +289,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def parse_file(file_path, option)
-    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.1.jar -#{option}]
+    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar -#{option}]
   end
 
   def extract_document_title(pdf_file_path, pdf_text)
