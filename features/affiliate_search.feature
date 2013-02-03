@@ -772,20 +772,20 @@ Feature: Affiliate Search
       | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | .gov    | {Query} - {SiteName} resultados de la búsqueda | true                     | es     |
     And the following Agency entries exist:
       | name | domain  |
-      | SSA  | ssa.gov |
+      | TSA  | tsa.gov |
     And the following Agency Urls exist:
       | name | locale | url                         |
-      | SSA  | en     | http://ssa.gov/             |
-      | SSA  | en     | http://www.ssa.gov/         |
-      | SSA  | es     | http://www.ssa.gov/espanol/ |
+      | TSA  | en     | http://tsa.gov/             |
+      | TSA  | en     | http://www.tsa.gov/         |
+      | TSA  | es     | http://www.tsa.gov/espanol/ |
     When I am on usagov's search page
-    And I fill in "query" with "ssa"
+    And I fill in "query" with "tsa"
     And I press "Search"
     Then I should see the agency govbox
     When I fill in "query" with "benefits" in the agency govbox
     And I press "Search" in the agency govbox
-    Then I should see the browser page titled "benefits site:ssa.gov - USA.gov Search Results"
-    And the "query" field should contain "benefits site:ssa.gov"
+    Then I should see the browser page titled "benefits site:tsa.gov - USA.gov Search Results"
+    And the "query" field should contain "benefits site:tsa.gov"
 
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
