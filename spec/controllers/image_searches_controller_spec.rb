@@ -71,6 +71,25 @@ describe ImageSearchesController do
       it { should respond_with :success }
     end
 
+    context 'when params[:affiliate] is not a string' do
+      let(:usagov_affiliate) { affiliates(:usagov_affiliate) }
+      let(:image_search) { mock(ImageSearch, :query => 'gov') }
+
+      before do
+        Affiliate.should_receive(:find_by_name).twice do |arg|
+          arg == 'usagov' ? usagov_affiliate : nil
+        end
+        ImageSearch.should_receive(:new).with(
+            hash_including(affiliate: usagov_affiliate,
+                           query: 'gov')).
+            and_return(image_search)
+        image_search.should_receive(:run)
+        get :index, affiliate: { 'foo' => 'bar' }, query: 'gov'
+      end
+
+      it { should respond_with :success }
+    end
+
     context "when searching via the API" do
       render_views
 

@@ -23,7 +23,7 @@ class PasswordResetsController < SslController
   end
 
   def create
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:email].to_s) if params[:email].present?
     if @user
       @user.deliver_password_reset_instructions!(request.host_with_port)
       flash.now[:notice] = "Instructions to reset your password have been emailed to you. Please check your email."

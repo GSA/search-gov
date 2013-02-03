@@ -76,7 +76,7 @@ class NewsSearch < Search
   end
 
   def assign_rss_feed(channel_id)
-    @rss_feed = @affiliate.rss_feeds.find_by_id(channel_id.to_i) if channel_id.present?
+    @rss_feed = @affiliate.rss_feeds.find_by_id(channel_id.to_i) rescue nil if channel_id.present?
   end
 
   def navigable_feeds

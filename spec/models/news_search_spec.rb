@@ -42,6 +42,12 @@ describe NewsSearch do
       end
     end
 
+    context 'when channel is not a valid number' do
+      it 'should set the rss_feed member to nil' do
+        NewsSearch.new(query: 'element', channel: { 'foo' => 'bar' }, affiliate: affiliate).rss_feed.should be_nil
+      end
+    end
+
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
         NewsSearch.new(:channel => feed.id, :affiliate => affiliate).query.should be_blank

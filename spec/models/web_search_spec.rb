@@ -58,7 +58,6 @@ describe WebSearch do
       end
     end
 
-
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting parameter to Bing as an option" do
         search = WebSearch.new(@valid_options.merge(:enable_highlighting => true))
@@ -549,7 +548,7 @@ describe WebSearch do
 
         it "should not set a per page value above 50" do
           search = WebSearch.new(@valid_options.merge(:per_page => 100))
-          @bing_search.should_receive(:query).with(anything(), anything(), anything, 50, anything(), anything()).and_return ""
+          @bing_search.should_receive(:query).with(anything(), anything(), anything, 10, anything(), anything()).and_return ""
           search.run
         end
 
@@ -558,12 +557,6 @@ describe WebSearch do
             search = WebSearch.new(@valid_options)
             @bing_search.should_receive(:query).with(anything(), anything(), anything, 10, anything(), anything()).and_return ""
             search.run
-          end
-        end
-
-        context "when the per_page variable that is passed is a string" do
-          it "should fail" do
-            lambda { WebSearch.new(@valid_options.merge(:per_page => "30")) }.should raise_error
           end
         end
       end
@@ -842,13 +835,13 @@ describe WebSearch do
     end
 
     context "when paginating" do
-      default_page = 1
+      #default_page = 1
 
       it "should default to page 1 if no valid page number was specified" do
         options_without_page = @valid_options.reject { |k, v| k == :page }
-        WebSearch.new(options_without_page).page.should == default_page
-        lambda { WebSearch.new(@valid_options.merge(:page => '')) }.should raise_error
-        lambda { WebSearch.new(@valid_options.merge(:page => 'string')) }.should raise_error
+        WebSearch.new(options_without_page).page.should == Search::DEFAULT_PAGE
+        WebSearch.new(@valid_options.merge(:page => '')).page.should == Search::DEFAULT_PAGE
+        WebSearch.new(@valid_options.merge(:page => 'string')).page.should == Search::DEFAULT_PAGE
       end
 
       it "should set the page number" do
@@ -1472,7 +1465,7 @@ describe WebSearch do
     end
   end
 
-  describe "when new" do
+  describe "#new" do
     it "should have a settable query" do
       search = WebSearch.new(@valid_options)
       search.query.should == 'government'
@@ -1485,6 +1478,18 @@ describe WebSearch do
 
     it "should not require a query or affiliate" do
       lambda { WebSearch.new }.should_not raise_error(ArgumentError)
+    end
+
+    it 'should ignore invalid params' do
+      search = WebSearch.new(@valid_options.merge(page: { foo: 'bar' }, per_page: { bar: 'foo' }))
+      search.page.should == 1
+      search.per_page.should == 10
+    end
+
+    it 'should ignore params outside the allowed range' do
+      search = WebSearch.new(@valid_options.merge(page: -1, per_page: 100))
+      search.page.should == Search::DEFAULT_PAGE
+      search.per_page.should == Search::DEFAULT_PER_PAGE
     end
   end
 

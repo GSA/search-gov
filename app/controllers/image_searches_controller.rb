@@ -26,11 +26,11 @@ class ImageSearchesController < ApplicationController
   end
 
   def set_search_options
-    @affiliate = Affiliate.find_by_name(params[:affiliate]) unless params[:affiliate].blank?
+    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
     @search_options = {
-      :page => [(params[:page] || "1").to_i, 1].max,
+      :page => params[:page],
       :query => sanitize_query(params["query"]),
       :affiliate => @affiliate,
       :per_page => 30

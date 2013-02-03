@@ -94,7 +94,7 @@ class SearchesController < ApplicationController
   end
 
   def set_affiliate_options
-    @affiliate = Affiliate.find_by_name(params[:affiliate]) unless params[:affiliate].blank?
+    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
     if @affiliate && params["staged"]
@@ -136,7 +136,7 @@ class SearchesController < ApplicationController
 
   def set_docs_search_options
     @search_options = search_options_from_params(@affiliate, params)
-    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
+    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc].to_i) rescue nil if @search_options[:dc]
     @search_options.merge!(document_collection: document_collection)
   end
 

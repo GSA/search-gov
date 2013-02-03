@@ -6,6 +6,7 @@ class Search
 
   MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH = 30
   MAX_QUERYTERM_LENGTH = 1000
+  DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 10
   MAX_PER_PAGE = 50
   QUERY_STRING_ALLOCATION = 1800
@@ -29,8 +30,13 @@ class Search
     @options = options
     @query = build_query(options)
     @affiliate = options[:affiliate]
-    @page = (options[:page] || 1)
-    @per_page = [(options[:per_page] || DEFAULT_PER_PAGE), MAX_PER_PAGE].min
+
+    @page = options[:page].to_i rescue DEFAULT_PAGE
+    @page = DEFAULT_PAGE unless @page >= DEFAULT_PAGE
+
+    @per_page = options[:per_page].to_i rescue DEFAULT_PER_PAGE
+    @per_page = DEFAULT_PER_PAGE unless (DEFAULT_PER_PAGE..MAX_PER_PAGE).include?(@per_page)
+
     @related_search, @results, @spelling_suggestion = [], [], nil
     @queried_at_seconds = Time.now.to_i
   end

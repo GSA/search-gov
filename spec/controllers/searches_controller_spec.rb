@@ -62,24 +62,14 @@ describe SearchesController do
   end
 
   context "when searching with parameters" do
-    it "should not blow up if per-page is blank" do
-      get :index, :query => 'white house', "per-page" => ''
-      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
+    it "should not blow up if affiliate is not a string" do
+      get :index, query: 'gov', affiliate: { 'foo' => 'bar' }
+      assigns[:affiliate].should == @affiliate
     end
 
-    it "should not blow up if per-page is not a number" do
-      get :index, :query => 'white house', "per-page" => 'number'
-      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
-    end
-
-    it "should not blow up if per page is set to 0" do
-      get :index, :query => 'white house', "per-page" => '0'
-      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
-    end
-
-    it "should assign the per page if a valid number" do
-      get :index, :query => 'white house', "per-page" => '50'
-      assigns[:search_options][:per_page].should == 50
+    it "should not blow up if query is not a string" do
+      get :index, query: { 'foo' => 'bar' }
+      assigns[:search].query.should == %q({"foo"=&gt;"bar"})
     end
   end
 
@@ -357,10 +347,6 @@ describe SearchesController do
         assigns[:form_path].should == docs_search_path
       end
 
-      it 'should default to page 1' do
-        assigns[:search_options][:page].should == 1
-      end
-
       it { should assign_to(:search_params).with(
                       hash_including(affiliate: affiliate.name, query: 'gov')) }
 
@@ -378,7 +364,7 @@ describe SearchesController do
         get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100, :page => 3
       end
 
-      specify { assigns[:search_options][:page].should == 3 }
+      specify { assigns[:search_options][:page].should == '3' }
     end
 
     context 'when DocumentCollection does not exist' do
@@ -391,6 +377,21 @@ describe SearchesController do
         web_search.should_receive(:run)
         SiteSearch.should_not_receive(:new)
         get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+    end
+
+    context 'when params[:dc] is not a valid number' do
+      let(:web_search) { mock(WebSearch, :query => 'gov') }
+
+      before do
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        affiliate.stub_chain(:document_collections, :find_by_id).with(%q({"foo"=&gt;"bar"})).and_return(nil)
+        WebSearch.should_receive(:new).with(hash_including(query: 'pdf')).and_return(web_search)
+        web_search.should_receive(:run)
+        SiteSearch.should_not_receive(:new)
+        get :docs, query: 'pdf', affiliate: affiliate.name, dc: { 'foo' => 'bar' }
       end
 
       it { should assign_to(:affiliate).with(affiliate) }

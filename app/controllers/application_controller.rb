@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = determine_locale_from_url(params[:locale]) || I18n.default_locale
+    I18n.locale = determine_locale_from_url(params[:locale].to_s) || I18n.default_locale
   end
 
   def set_default_locale
@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_locale_from_url (locale_param)
-    return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)
+    return nil if locale_param.blank? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)
     locale_param.to_sym
   end
 
@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
   def search_options_from_params(affiliate, params)
     search_params = {
       :affiliate => affiliate,
-      :page => [(params[:page] || "1").to_i, 1].max,
+      :page => params[:page],
       :query => sanitize_query(params["query"]),
       :query_limit => params["query-limit"],
       :query_quote => sanitize_query(params["query-quote"]),
@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
       :site_limits => params["sitelimit"],
       :site_excludes => params["siteexclude"],
       :filter => params["filter"],
-      :per_page => [params["per-page"].to_i, Search::DEFAULT_PER_PAGE].max,
+      :per_page => params[:per_page],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
       :dc => params["dc"],
       :channel => params["channel"],
@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize_query(query)
-    Sanitize.clean(query).gsub('&amp;', '&') if query
+    Sanitize.clean(query.to_s).gsub('&amp;', '&') if query
   end
 
   def set_format_for_tablet_devices

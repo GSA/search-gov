@@ -5,9 +5,13 @@ describe ApiController do
 
   describe "#search" do
     context "when the affiliate does not exist" do
-      before do
-        get :search, :affiliate => 'missingaffiliate'
-      end
+      before { get :search, affiliate: 'missingaffiliate' }
+
+      it { should respond_with :not_found }
+    end
+
+    context 'when the params[:affiliate] is not a string' do
+      before { get :search, affiliate: { 'foo' => 'bar' } }
 
       it { should respond_with :not_found }
     end
@@ -72,23 +76,6 @@ describe ApiController do
       it "should set the query" do
         get :search, @auth_params.merge(:query => "fish")
         assigns[:search_options][:query].should == "fish"
-      end
-
-      describe "paging" do
-        it "should set the page" do
-          get :search, @auth_params.merge(:page => 3)
-          assigns[:search_options][:page].to_i.should == 3
-        end
-
-        it "should default the page to 1" do
-          get :search, @auth_params
-          assigns[:search_options][:page].to_i.should == 1
-        end
-
-        it "should set results_per_page from per-page" do
-          get :search, @auth_params.merge("per-page" => 15)
-          assigns[:search_options][:per_page].to_i.should == 15
-        end
       end
     end
 
