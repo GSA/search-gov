@@ -423,7 +423,7 @@ describe IndexedDocument do
       end
 
       specify { IndexedDocument.search_for('++boolean ', affiliates(:basic_affiliate), nil).total.should == 1 }
-      specify { IndexedDocument.search_for('"boolean"+- & | :', affiliates(:basic_affiliate), nil).total.should == 1 }
+      specify { IndexedDocument.search_for('"boolean"+ -', affiliates(:basic_affiliate), nil).total.should == 1 }
       specify { IndexedDocument.search_for('OR US97', affiliates(:basic_affiliate), nil).total.should == 1 }
       specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).total.should == 1 }
     end
