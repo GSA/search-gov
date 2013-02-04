@@ -19,7 +19,8 @@ class EmailTemplate < ActiveRecord::Base
       :affiliate_header_footer_change => '[USASearch] The header and footer for <%= @affiliate.display_name %> have been changed',
       :affiliate_monthly_report => '[USASearch] Monthly Search Analytics Report for <%= Date::MONTHNAMES[@report_date.month.to_i] %> <%= @report_date.year %>',
       :affiliate_yearly_report => '[USASearch] <%= @report_year %> Year in Review',
-      :update_external_tracking_code => '[USASearch] 3rd Party Tracking'
+      :update_external_tracking_code => '[USASearch] 3rd Party Tracking',
+      :public_key_upload_notification => '[USASearch] Request for log file access'
   }
 
   class << self

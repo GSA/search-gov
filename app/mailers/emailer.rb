@@ -202,6 +202,17 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def public_key_upload_notification(txtfile, current_user, affiliate)
+    setup_email(DEVELOPERS_EMAIL, __method__)
+    @affiliate = affiliate
+    @current_user = current_user
+    @subject = ERB.new(@email_template_subject).result(binding)
+    @public_key_txt = txtfile.tempfile.read
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   private
 
   def setup_email(recipients, method_name)
