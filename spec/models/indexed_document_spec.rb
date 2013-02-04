@@ -422,9 +422,10 @@ describe IndexedDocument do
         Sunspot.commit
       end
 
-      specify { IndexedDocument.search_for('++boolean ', affiliates(:basic_affiliate), nil).should_not be_nil }
-      specify { IndexedDocument.search_for('OR US97', affiliates(:basic_affiliate), nil).should_not be_nil }
-      specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).should_not be_nil }
+      specify { IndexedDocument.search_for('++boolean ', affiliates(:basic_affiliate), nil).total.should == 1 }
+      specify { IndexedDocument.search_for('"boolean"+- & | :', affiliates(:basic_affiliate), nil).total.should == 1 }
+      specify { IndexedDocument.search_for('OR US97', affiliates(:basic_affiliate), nil).total.should == 1 }
+      specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).total.should == 1 }
     end
 
     context 'when the query contains local params' do
