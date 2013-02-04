@@ -203,7 +203,7 @@ class Emailer < ActionMailer::Base
   end
 
   def public_key_upload_notification(txtfile, current_user, affiliate)
-    setup_email(DEVELOPERS_EMAIL, __method__)
+    setup_email("sysadmin@searchsi.com", __method__)
     @affiliate = affiliate
     @current_user = current_user
     @subject = ERB.new(@email_template_subject).result(binding)
