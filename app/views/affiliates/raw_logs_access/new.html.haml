@@ -3,37 +3,7 @@
 %h1
   Secure FTP Access to Raw HTTP Logs
 %p
-  You can apply for access to the raw HTTP logs for
-  = @affiliate.display_name
-  including searches, clicks, and USASearch Tag logs.
-%h2
-  How it works
-%ol
-  %li
-    Upload the public key from your key pair below.
-  %li
-    Within two business days, USASearch will enable log transfers and inform you when logs are available for download.
-  %li
-    Logs are uploaded daily, usually within several hours after midnight GMT. You can only see your own logs, and nobody else can access your logs.
-  %li
-    You access the files via SFTP. You can automate this via cron to ensure you automatically get the latest files.
-  %li
-    USASearch purges older log files automatically from the repository.
-
-%h2
-  Generating a password-less public key
-%p
-  On Unix systems, you can generate a RSA public key with no passphrase like this:
-%pre
-  :preserve
-    % cd ~
-    % ssh-keygen -q -b 4096 -t rsa
-    Enter file in which to save the key (/home/user/.ssh/id_rsa):
-    Enter passphrase (empty for no passphrase):
-    Enter same passphrase again:
-
-%p
-  Next, upload the public key (/home/user/.ssh/id_rsa.pub) here:
+  Upload your public key here:
   = form_tag affiliate_raw_logs_access_path(@affiliate), :multipart => true  do
     = file_field_tag 'txtfile'
     = submit_tag "Upload"
