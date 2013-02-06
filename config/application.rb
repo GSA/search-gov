@@ -15,9 +15,10 @@ module UsasearchRails3
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/extras #{Rails.root}/lib #{Rails.root}/lib/importers)
+    config.autoload_paths += %W(#{config.root}/extras #{Rails.root}/lib #{Rails.root}/lib/importers #{Rails.root}/lib/middlewares)
 
-    config.middleware.use "DowncaseRouteMiddleware"
+    config.middleware.use 'RejectInvalidRequestUri'
+    config.middleware.use 'DowncaseRoute'
     # config.middleware.use ::Rack::PerftoolsProfiler
 
     # Only load the plugins named here, in the order given (default is alphabetical).

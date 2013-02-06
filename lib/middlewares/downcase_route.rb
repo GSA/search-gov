@@ -1,4 +1,4 @@
-class DowncaseRouteMiddleware
+class DowncaseRoute
   def initialize(app)
     @app = app
   end
