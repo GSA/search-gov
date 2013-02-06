@@ -1,7 +1,7 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
-  DEVELOPERS_EMAIL = "developers@searchsi.com"
+  DEVELOPERS_EMAIL = "usasearchoutbound@searchsi.com"
 
   self.default bcc: DEVELOPERS_EMAIL
 
@@ -195,9 +195,10 @@ class Emailer < ActionMailer::Base
     setup_email('***REMOVED***', __method__)
     @affiliate = affiliate
     @current_user = current_user
+    @from = current_user.email
     @external_tracking_code = external_tracking_code
     @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
       format.text { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
