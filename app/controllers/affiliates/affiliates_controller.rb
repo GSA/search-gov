@@ -47,8 +47,8 @@ class Affiliates::AffiliatesController < SslController
   end
 
   def setup_help_link
-    help_link_key = request.fullpath.split("/").last
-    @help_link = HelpLink.find_by_action_name(help_link_key)
+    help_link_key = HelpLink.sanitize_request_path(request.fullpath)
+    @help_link = HelpLink.find_by_request_path(help_link_key)
   end
 
   def default_url_options(options={})

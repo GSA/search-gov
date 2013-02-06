@@ -1,7 +1,7 @@
 = content_for :title, "Raw Logs - "
 = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Raw Logs Access'] ) if @affiliate
-%h1
-  Secure FTP Access to Raw HTTP Logs
+%h1 Secure FTP Access to Raw HTTP Logs
+= render_help_link(@help_link)
 %p
   Upload your public key here:
   = form_tag affiliate_raw_logs_access_path(@affiliate), :multipart => true  do

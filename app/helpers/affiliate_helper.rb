@@ -12,7 +12,7 @@ module AffiliateHelper
   end
 
   def render_help_link(help_link)
-    link_to(image_tag("help-icon.png", :alt => "Help?", :class => "help-icon", :style => 'height: 3%; width: 3%;'), help_link.help_page_url, :target => "_blank", :id => 'help-link') if help_link
+    link_to(image_tag('help_icon.png', alt: 'Help?'), help_link.help_page_url, target: '_blank') if help_link
   end
 
   def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)

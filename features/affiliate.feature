@@ -2470,12 +2470,12 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following Help Links exist:
-      | action_name           | help_page_url               |
-      | edit_site_information | http://usasearch.howto.gov/ |
+      | request_path                      | help_page_url                                    |
+      | /affiliates/edit_site_information | http://usasearch.howto.gov/edit_site_information |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Site information"
-    Then I should see "help-icon.png" image
+    Then I should see an image link to "Help?" with url for "http://usasearch.howto.gov/edit_site_information"
 
     When I follow "RSS"
     Then I should not see "help-icon.png" image

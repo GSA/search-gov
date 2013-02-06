@@ -298,3 +298,14 @@ Feature:  Administration
     And I follow "System Alerts"
     Then I should see the following breadcrumbs: USASearch > Super Admin > System Alerts
 
+  Scenario: Adding help link
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "Help Link"
+    And I follow "Create"
+    And I fill in "Help page url" with "http://usasearch.howto.gov/edit_rss"
+    And I fill in "Request path" with "http://localhost/affiliates/1/rss_feed/2/edit/?m=false"
+    And I press "Create"
+    Then I should see the following table rows:
+      | Help page url                       | Request path              |
+      | http://usasearch.howto.gov/edit_rss | /affiliates/rss_feed/edit |
