@@ -6,11 +6,17 @@ describe SaytFilter do
   describe "Creating new instance" do
     it { should validate_presence_of :phrase }
     it { should validate_uniqueness_of :phrase }
+    it 'should validate only one of filter_only_exact_phrase and is_regex is true' do
+      SaytFilter.new(:phrase => "bAd woRd", :filter_only_exact_phrase => true, :is_regex => true).should_not be_valid
+    end
 
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
-      sf = SaytFilter.create!(:phrase => phrase)
+      sf = SaytFilter.create!(:phrase => phrase, :is_regex => false, :filter_only_exact_phrase => true, :accept => true)
       sf.phrase.should == phrase.strip
+      sf.accept.should be_true
+      sf.is_regex.should be_false
+      sf.filter_only_exact_phrase.should be_true
     end
 
     it "should create a new instance given valid attributes" do
@@ -51,6 +57,14 @@ describe SaytFilter do
 
       it "should filter 'google.com'" do
         @filter.match?("google.com").should be_true
+      end
+    end
+
+    context 'when the filter is a regex' do
+      let(:filter) { SaytFilter.create!(:phrase => "[^aeiou]\.com", :is_regex => true) }
+      it 'should match based on the regex' do
+        filter.match?("gotvowels.com").should be_true
+        filter.match?("oaeiuXcom").should be_false
       end
     end
   end
@@ -104,6 +118,41 @@ describe SaytFilter do
     context "when no key is passed in" do
       it "should operate on raw strings" do
         SaytFilter.filter(@queries).should == SaytFilter.filter(@results, "somekey").collect { |ft| ft["somekey"] }
+      end
+    end
+
+    context 'when there are exact whitelisted entries' do
+      before do
+        @queries << 'loren foo bar' << 'loren foo bar blat'
+        SaytFilter.create!(:accept => true, :phrase => "loren foo bar", :filter_only_exact_phrase => true)
+      end
+
+      it 'should not filter them' do
+        SaytFilter.filter(@queries).should include("loren foo bar")
+        SaytFilter.filter(@queries).should_not include("loren foo bar blat")
+      end
+    end
+
+    context 'when there are regex whitelisted entries' do
+      before do
+        @queries << 'snafoo' << 'snaxfoo'
+        SaytFilter.create!(:accept => true, :phrase => "^.{3}foo", :is_regex => true)
+        SaytFilter.create!(:phrase => "foo$", :is_regex => true)
+      end
+
+      it 'should not filter them' do
+        SaytFilter.filter(@queries).should include("snafoo")
+        SaytFilter.filter(@queries).should_not include("snaxfoo")
+      end
+    end
+
+    context 'when there are only whitelisted filters and no deny filters' do
+      before do
+        SaytFilter.create!(:accept => true, :phrase => "only once")
+      end
+
+      it 'should not create duplicates' do
+        SaytFilter.filter(['only once']).should == ['only once']
       end
     end
   end

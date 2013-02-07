@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206224236) do
+ActiveRecord::Schema.define(:version => 20130206220418) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -528,13 +528,13 @@ ActiveRecord::Schema.define(:version => 20130206224236) do
   end
 
   create_table "help_links", :force => true do |t|
-    t.string   "request_path"
+    t.string   "action_name"
     t.string   "help_page_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "help_links", ["request_path"], :name => "index_help_links_on_request_path"
+  add_index "help_links", ["action_name"], :name => "index_help_links_on_action_name"
 
   create_table "image_search_labels", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -807,6 +807,8 @@ ActiveRecord::Schema.define(:version => 20130206224236) do
     t.datetime "updated_at"
     t.boolean  "always_filtered",          :default => false, :null => false
     t.boolean  "filter_only_exact_phrase", :default => false, :null => false
+    t.boolean  "is_regex",                 :default => false, :null => false
+    t.boolean  "accept",                   :default => false, :null => false
   end
 
   add_index "sayt_filters", ["always_filtered"], :name => "index_sayt_filters_on_always_filtered"
