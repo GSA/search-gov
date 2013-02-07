@@ -2478,7 +2478,7 @@ Feature: Affiliate clients
     Then I should see an image link to "Help?" with url for "http://usasearch.howto.gov/edit_site_information"
 
     When I follow "RSS"
-    Then I should not see "help-icon.png" image
+    Then I should not see an image with alt text "Help?"
 
   Scenario: Visiting the results modules
     Given the following Affiliates exist:
