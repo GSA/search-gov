@@ -133,6 +133,18 @@ describe SaytFilter do
       end
     end
 
+    context 'when there are non-exact whitelisted entries' do
+      before do
+        @queries << 'loren foo' << 'loren foo bar'
+        SaytFilter.create!(:accept => true, :phrase => "loren foo", :filter_only_exact_phrase => false)
+      end
+
+      it 'should not filter them' do
+        SaytFilter.filter(@queries).should include("loren foo")
+        SaytFilter.filter(@queries).should include("loren foo bar")
+      end
+    end
+
     context 'when there are regex whitelisted entries' do
       before do
         @queries << 'snafoo' << 'snaxfoo'

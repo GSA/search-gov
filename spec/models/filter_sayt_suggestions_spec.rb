@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FilterSaytSuggestions, "#perform(phrase)" do
+describe FilterSaytSuggestions, "#perform(id)" do
   fixtures :affiliates
 
   before do
@@ -10,14 +10,14 @@ describe FilterSaytSuggestions, "#perform(phrase)" do
   end
 
   it "should run the filter against existing SaytSuggestions" do
-    SaytFilter.create!(:phrase => "xxx")
-    FilterSaytSuggestions.perform("xxx")
+    sf = SaytFilter.create!(:phrase => "xxx")
+    FilterSaytSuggestions.perform(sf.id)
     SaytSuggestion.find_by_phrase(@phrase).should be_nil
   end
 
   it "should Regexp escape the filter before applying it" do
-    SaytFilter.create!(:phrase => "ought.")
-    FilterSaytSuggestions.perform("ought.")
+    sf = SaytFilter.create!(:phrase => "ought.")
+    FilterSaytSuggestions.perform(sf.id)
     SaytSuggestion.find_by_phrase(@phrase).should_not be_nil
   end
 
@@ -30,10 +30,23 @@ describe FilterSaytSuggestions, "#perform(phrase)" do
     end
 
     it "should run the filter against existing SaytSuggestions" do
-      SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true)
-      FilterSaytSuggestions.perform("xxx")
+      sf = SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true)
+      FilterSaytSuggestions.perform(sf)
       SaytSuggestion.find_by_phrase(@should_be_deleted_phrase).should be_nil
       SaytSuggestion.find_by_phrase(@should_not_be_deleted_phrase).should_not be_nil
+    end
+  end
+
+  context "when filter is a whitelist" do
+    before do
+      SaytSuggestion.create!(:affiliate => @affiliate, :phrase => 'sex education')
+    end
+
+    let(:whitelist_filter) { SaytFilter.create!(:phrase => "sex education", :accept => true) }
+
+    it 'should not do anything to the sayt suggestions' do
+      FilterSaytSuggestions.perform(whitelist_filter)
+      SaytSuggestion.find_by_phrase('sex education').should be_present
     end
   end
 end
