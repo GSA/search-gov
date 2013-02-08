@@ -1,6 +1,16 @@
 module Usajobs
   JOB_RELATED_KEYWORDS = '((position|job|opening|posting|employment)s?|(opportunit|vacanc)(y|ies))'
-  BLOCKED_KEYWORDS = 'descriptions?'
+  SIMPLE_SINGULARS = %w{
+    statistic number level rate description trend growth projection survey forecast figure report verification record
+    authorization card classification form hazard poster fair board outlook grant funding factor other cut
+    application
+  }
+  BLOCKED_PHRASES = '(job|employment) (contract|law|training|safety)s?'
+  BLOCKED_KEYWORDS = 'data|at will|equal|status|eligibility|analysis|300 log|delayed'+
+    '|(histor)(y|ies)'+
+    "|#{Date.current.year.to_s}"+
+    "|#{BLOCKED_PHRASES}"+
+    "|(#{SIMPLE_SINGULARS.join('|')})s?"
 
   RATE_INTERVALS = {
     :BW => 'Bi-weekly',
