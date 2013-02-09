@@ -117,16 +117,16 @@ Feature: Mobile Search
 
   Scenario: Emailing from the Spanish home page
     Given I am on the Spanish homepage
-    When I follow "Envíanos un correo electrónico"
+    When I follow "Envíanos un e-mail"
     Then I should be on the mobile contact form page
-    And I should see "Escríbenos un e-mail"
-    And I should see "Tu e-mail"
+    And I should see "Envíenos un e-mail"
+    And I should see "Su e-mail"
     And I should see "Mensaje"
-    And I fill in "Tu e-mail" with "spanishmobileuser@usa.gov"
+    And I fill in "Su e-mail" with "spanishmobileuser@usa.gov"
     And I fill in "Mensaje" with "I love your site!"
     And I press "Enviar"
     Then I should be on the mobile contact form page
-    And I should see "Gracias por contactar a GobiernoUSA.gov. Te responderemos en dos días hábiles."
+    And I should see "Gracias por contactar a GobiernoUSA.gov. Le responderemos en dos días hábiles."
     And "mgobiernousa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
     Then I should see "GobiernoUSA.gov Mobile Inquiry" in the email subject
@@ -137,16 +137,16 @@ Feature: Mobile Search
 
   Scenario: Emailing from the Spanish home page with problem
     Given I am on the Spanish homepage
-    When I follow "Envíanos un correo electrónico"
-    And I fill in "Tu e-mail" with " "
+    When I follow "Envíanos un e-mail"
+    And I fill in "Su e-mail" with " "
     And I fill in "Mensaje" with " "
     And I press "Enviar"
     Then I should be on the mobile contact form page
     And I should see "Faltan datos requeridos"
-    When I fill in "Tu e-mail" with "invalid email"
+    When I fill in "Su e-mail" with "invalid email"
     And I fill in "Mensaje" with "I love your site"
     And I press "Enviar"
     Then I should be on the mobile contact form page
     And I should see "Este e-mail no es válido"
-    And the "Tu e-mail" field should contain "invalid email"
+    And the "Su e-mail" field should contain "invalid email"
     And the "Mensaje" field should contain "I love your site"
