@@ -191,9 +191,6 @@ describe Affiliates::SocialMediaController do
         affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
         youtube_profiles.should_receive(:build).with('username' => 'USASearch').and_return(profile)
         profile.should_receive(:save).and_return(true)
-        managed_feed = mock('managed rss feed')
-        affiliate.stub_chain(:rss_feeds, :managed, :first).and_return(managed_feed)
-        managed_feed.should_receive(:update_attributes!).with(:shown_in_govbox => true)
 
         put :create,
             :affiliate_id => affiliate.id,

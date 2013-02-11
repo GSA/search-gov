@@ -29,7 +29,6 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
     case @profile.class.name
     when 'TwitterProfile' then @affiliate.update_attributes!(:is_twitter_govbox_enabled => true)
     when 'FlickrProfile' then @affiliate.update_attributes!(:is_photo_govbox_enabled => true)
-    when 'YoutubeProfile' then @affiliate.rss_feeds.managed.first.update_attributes!(:shown_in_govbox => true)
     end
     flash[:success] = "Added #{@profile.class.name.titleize}"
     redirect_to affiliate_social_media_path(@affiliate)

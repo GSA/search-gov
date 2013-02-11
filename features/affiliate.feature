@@ -2176,6 +2176,7 @@ Feature: Affiliate clients
     And I follow "RSS"
     And I follow "Edit"
     Then the "Name*" field should contain "Videos"
+    And the "RSS feed URL 0" field should contain "http://gdata.youtube.com/feeds/base/videos\?alt=rss&author=noaa&orderby=published"
     When I follow "Social Media" in the page content
     Then I should see the browser page titled "Social Media"
 
@@ -2548,7 +2549,7 @@ Feature: Affiliate clients
     When I am logged in with email "aff@bar.gov" and password "random_string"
     And I go to the "aff site" affiliate page
     And I follow "Results modules"
-    And I should see the following table rows:
+    Then I should see the following table rows:
       | Name           | Source         |
       | Agency         | USASearch      |
       | Medline        | USASearch      |
@@ -2562,7 +2563,7 @@ Feature: Affiliate clients
     And the "Is jobs govbox enabled" checkbox should not be checked
     And the "Show RSS feed 0 in govbox" checkbox should be checked
     And the "Show RSS feed 1 in govbox" checkbox should be checked
-    And the "Show RSS feed 2 in govbox" checkbox should not be checked
+    And the "Show RSS feed 2 in govbox" checkbox should be checked
     And the "Is related searches enabled" checkbox should be checked
     When I check "Is jobs govbox enabled"
     And I uncheck "Show RSS feed 0 in govbox"

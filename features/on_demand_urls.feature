@@ -85,7 +85,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I fill in "URL" with "https://www.cia.gov/about-cia/todays-cia/index.html"
     And I press "Add"
     Then I should see "URL already exists in the Bing index"
-    When I fill in "URL" with "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
+    When I fill in "URL" with "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=10182"
     And I press "Add"
     Then I should see "URL already exists in the Bing index"
     When I fill in "URL" with "http://www.whitehouse.gov/blog/issues/women"
@@ -98,8 +98,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I follow "Bing URLs"
     Then I should see "cia.gov/about-cia/todays-cia/index.html"
     And I should not see "https://www.cia.gov/about-cia/todays-cia/index.html"
-    And I should see "answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
-    And I should not see "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=13221"
+    And I should see "answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=10182"
+    And I should not see "http://answers.usa.gov/system/selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=VIEW_ARTICLE&ARTICLE_ID=10182"
     And I should not see "whitehouse.gov/blog/issues/Women"
 
   Scenario: Remove a URL to be crawled

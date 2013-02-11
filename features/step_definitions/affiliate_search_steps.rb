@@ -7,7 +7,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
     rss_feed.rss_feed_urls.build(:url => hash[:url],
                                  :last_crawled_at => hash[:last_crawled_at],
                                  :last_crawl_status => hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS)
-    rss_feed.save!
+    rss_feed.save!(validate: false)
     rss_feed.navigation.update_attributes!(:is_active => hash[:is_navigable] || false,
                                            :position => hash[:position] || 100)
   end

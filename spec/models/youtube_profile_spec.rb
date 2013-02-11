@@ -2,124 +2,133 @@ require 'spec_helper'
 
 describe YoutubeProfile do
   fixtures :affiliates
-  before do
-    @affiliate = affiliates(:basic_affiliate)
-    @valid_attributes = {
-      :username => 'USAgency',
-      :affiliate => @affiliate
-    }
-  end
 
-  def managed_feeds
-    RssFeed.where(:affiliate_id => @affiliate.id,
-                  :is_managed => true,
-                  :is_video => true)
-  end
+  let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:valid_attributes) { { username: 'USAgency', affiliate: affiliate }.freeze }
+
+  before { affiliate.rss_feeds.videos.managed.destroy_all }
 
   it { should validate_presence_of :username }
   it { should validate_presence_of :affiliate_id }
 
   it 'should validate username' do
     Kernel.should_receive(:open).
-      with('http://gdata.youtube.com/feeds/api/users/someinvaliduser').
-      and_raise(OpenURI::HTTPError.new('404 Not Found', StringIO.new))
+        with('http://gdata.youtube.com/feeds/api/users/someinvaliduser').
+        and_raise(OpenURI::HTTPError.new('404 Not Found', StringIO.new))
 
-    profile = YoutubeProfile.new(:username => 'someinvaliduser',
-                                 :affiliate => affiliates(:basic_affiliate))
+    profile = YoutubeProfile.new(username: 'someinvaliduser', affiliate: affiliate)
     profile.should_not be_valid
     profile.errors[:username].should include('is invalid')
   end
 
   it 'should handle blank xml when fetching xml profile' do
     Kernel.should_receive(:open).
-      with('http://gdata.youtube.com/feeds/api/users/accountclosed').
-      and_return(StringIO.new(''))
+        with('http://gdata.youtube.com/feeds/api/users/accountclosed').
+        and_return(StringIO.new(''))
     mock_doc = mock('doc')
     Nokogiri.should_receive(:XML).and_return(mock_doc)
     mock_doc.should_receive(:xpath).and_return([])
 
-    profile = YoutubeProfile.new(:username => 'accountclosed',
-                                 :affiliate => affiliates(:basic_affiliate))
+    profile = YoutubeProfile.new(username: 'accountclosed', affiliate: affiliate)
     profile.should_not be_valid
   end
 
-  context "when XML exists" do
+  context '#create' do
+    it 'should normalize username' do
+      Kernel.stub(:open) do |arg|
+        case arg
+        when YoutubeProfile.xml_profile_url('usagency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
+        when YoutubeProfile.youtube_url('usagency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        end
+      end
+
+      Resque.stub(:enqueue_with_priority)
+
+      YoutubeProfile.create!(valid_attributes)
+      YoutubeProfile.new(valid_attributes.merge(username: 'usagency')).should_not be_valid
+    end
+  end
+
+  context '#after_create' do
     before do
       Kernel.stub(:open) do |arg|
         case arg
-          when YoutubeProfile.xml_profile_url('USAgency'), YoutubeProfile.xml_profile_url('AnotherUSAgency'), YoutubeProfile.xml_profile_url('whitehouse')
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
-          when YoutubeProfile.youtube_url('USAgency'), YoutubeProfile.youtube_url('AnotherUSAgency'), YoutubeProfile.youtube_url('whitehouse')
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        when YoutubeProfile.xml_profile_url('usagency'), YoutubeProfile.xml_profile_url('anotheragency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
+        when YoutubeProfile.youtube_url('usagency'), YoutubeProfile.youtube_url('anotheragency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         end
       end
     end
 
-    it "should create a new instance given valid attributes" do
-      YoutubeProfile.create!(@valid_attributes)
-      should validate_uniqueness_of(:username).scoped_to(:affiliate_id).with_message('has already been added')
+    context 'when the affiliate does not have an existing managed video RssFeed' do
+      before { affiliate.rss_feeds.managed.videos.destroy_all }
+
+      it 'should create managed RssFeed' do
+        Resque.should_receive(:enqueue_with_priority).
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric))
+        YoutubeProfile.create!(valid_attributes)
+        affiliate.rss_feeds(true).managed.videos.count.should == 1
+        affiliate.rss_feeds.managed.videos.first.should be_shown_in_govbox
+      end
     end
 
-    it "should strip whitespace from the ends of the username" do
-      profile = YoutubeProfile.create!(:username => '    whitehouse   ', :affiliate => @affiliate)
-      profile.username.should == 'whitehouse'
+    context 'when the affiliate has an existing managed video RssFeed' do
+      before do
+        affiliate.rss_feeds.managed.videos.destroy_all
+        YoutubeProfile.create!(valid_attributes.merge(username: 'AnotherAgency'))
+      end
+
+      it 'should not create another managed RssFeed' do
+        Resque.should_receive(:enqueue_with_priority).
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric))
+        profile = YoutubeProfile.create!(valid_attributes)
+        managed_video_feeds = affiliate.rss_feeds(true).managed.videos
+        managed_video_feeds.count.should == 1
+        feed = managed_video_feeds.first
+        feed.should be_shown_in_govbox
+        feed.rss_feed_urls.count.should == 2
+        feed.rss_feed_urls.find_by_url(profile.url).should be_present
+      end
+    end
+  end
+
+  context '#after_destroy' do
+    before do
+      Kernel.stub(:open) do |arg|
+        case arg
+        when YoutubeProfile.xml_profile_url('usagency'), YoutubeProfile.xml_profile_url('anotheragency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
+        when YoutubeProfile.youtube_url('usagency'), YoutubeProfile.youtube_url('anotheragency')
+          File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        end
+      end
     end
 
-    it "should create a corresponding Video RSS feed on create" do
-      @affiliate.rss_feeds.destroy_all
-      managed_feeds.should be_empty
+    context 'when the affiliate has other youtube profiles' do
+      it 'should not hide the managed RssFeed' do
+        Resque.should_receive(:enqueue_with_priority).
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).exactly(3).times
 
-      profile = YoutubeProfile.create!(@valid_attributes)
-      managed_feeds.should_not be_empty
-      managed_feeds.first.name.should == 'Videos'
-      managed_feeds.first.rss_feed_urls.should_not be_empty
-      managed_feeds.first.rss_feed_urls.first.url.should == profile.url
+        YoutubeProfile.create!(valid_attributes.merge(username: 'AnotherAgency'))
+        profile = YoutubeProfile.create!(valid_attributes)
+        YoutubeProfile.find(profile.id).destroy
+        affiliate.rss_feeds.managed.videos.first.should be_shown_in_govbox
+      end
     end
 
-    it "should add new YoutubeProfiles for the same affiliate to the Videos rss feed group if it exists" do
-      @affiliate.rss_feeds.destroy_all
-      managed_feeds.should be_empty
+    context 'when the affiliate has no other youtube profiles' do
+      it 'should hide the managed RssFeed' do
+        Resque.should_receive(:enqueue_with_priority).
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).twice
 
-      profile = YoutubeProfile.create!(@valid_attributes)
-      managed_feeds.count.should == 1
-      managed_feeds.first.name.should == 'Videos'
-      managed_feeds.first.rss_feed_urls.count.should == 1
-
-      managed_feeds.first.update_attributes!(:name => 'YouTube Videos')
-
-      second_profile = YoutubeProfile.create!(:username => 'AnotherUSAgency', :affiliate => @affiliate)
-      managed_feeds.count.should == 1
-      managed_feeds.first.name.should == 'YouTube Videos'
-      urls = managed_feeds.first.rss_feed_urls.collect(&:url)
-      urls.count.should == 2
-      urls.should include(profile.url, second_profile.url)
-    end
-
-    it "should synchronize managed youtube rss feed when the profile is deleted" do
-      @affiliate.rss_feeds.destroy_all
-
-      profile = YoutubeProfile.create!(@valid_attributes)
-      rss_feed = mock_model(RssFeed)
-
-      profile.stub_chain('affiliate.rss_feeds.managed.videos.first').and_return(rss_feed)
-      rss_feed.should_receive(:synchronize_youtube_urls!)
-      profile.destroy
-    end
-
-    it "should synchronize managed youtube rss feed the associated rss feed if the username is changed" do
-      @affiliate.rss_feeds.destroy_all
-
-      profile = YoutubeProfile.create!(@valid_attributes)
-      rss_feed = mock_model(RssFeed)
-
-      profile.stub_chain('affiliate.rss_feeds.managed.videos.first').and_return(rss_feed)
-      rss_feed.should_receive(:synchronize_youtube_urls!)
-      profile.update_attributes!(:username => 'AnotherUSAgency')
-    end
-
-    it 'should not synchronize rss_feeds when there are no rss feeds' do
-      YoutubeProfile.create!(@valid_attributes)
-      lambda { @affiliate.destroy }.should_not raise_error
+        profile = YoutubeProfile.create!(valid_attributes)
+        YoutubeProfile.find(profile.id).destroy
+        affiliate.rss_feeds.videos.managed.first.navigation.should_not be_is_active
+        affiliate.rss_feeds.managed.videos.first.should_not be_shown_in_govbox
+      end
     end
   end
 end
