@@ -66,6 +66,19 @@ describe SaytSuggestion do
     end
   end
 
+  describe 'saving an instance' do
+    before do
+      SaytFilter.create!(:phrase => 'accept me', :is_regex => false, :filter_only_exact_phrase => false, :accept => true)
+    end
+
+    it 'should set the is_whitelisted flag accordingly' do
+      ss = SaytSuggestion.create!(:phrase => "accept me please", :affiliate => @affiliate, :deleted_at => Time.now)
+      ss.is_whitelisted.should be_true
+      ss = SaytSuggestion.create!(:phrase => "not me please", :affiliate => @affiliate, :deleted_at => Time.now)
+      ss.is_whitelisted.should be_false
+    end
+  end
+
   describe "#expire(days_back)" do
     it "should destroy suggestions that have not been updated in X days, and that are unproteced" do
       SaytSuggestion.should_receive(:destroy_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
@@ -416,5 +429,11 @@ describe SaytSuggestion do
     end
   end
 
+  describe '.reapply_filters' do
+    it 'should enqueue ApplyFiltersToSaytSuggestion for each SaytSuggestion' do
+      SaytSuggestion.all.each { |ss| Resque.should_receive(:enqueue_with_priority).with(:high, ApplyFiltersToSaytSuggestion, ss.id) }
+      SaytSuggestion.reapply_filters
+    end
+  end
 
 end

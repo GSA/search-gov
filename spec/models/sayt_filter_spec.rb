@@ -37,16 +37,23 @@ describe SaytFilter do
       SaytFilter.find_by_phrase("two spaces").phrase.should == "two spaces"
     end
 
-    it "should enqueue the filtering of existing SaytSuggestions via Resque" do
-      ResqueSpec.reset!
-      Resque.should_receive(:enqueue_with_priority).with(:high, FilterSaytSuggestions, an_instance_of(Fixnum))
+    it "should reapply filters to existing SaytSuggestions" do
+      SaytSuggestion.should_receive(:reapply_filters)
       SaytFilter.create!(:phrase => "some valid filter phrase")
     end
 
   end
 
+  describe 'destroying an instance' do
+    it "should reapply remaining filters to existing SaytSuggestions" do
+      sf = SaytFilter.create!(:phrase => "some valid filter phrase")
+      SaytSuggestion.should_receive(:reapply_filters)
+      sf.destroy
+    end
+  end
+
   describe "#match?(target_phrase)" do
-    context "when the filter phrase is '.com'" do
+    context "when the filter phrase is basic" do
       before do
         @filter = SaytFilter.create!(:phrase => ".com")
       end
@@ -65,6 +72,15 @@ describe SaytFilter do
       it 'should match based on the regex' do
         filter.match?("gotvowels.com").should be_true
         filter.match?("oaeiuXcom").should be_false
+      end
+    end
+
+    context 'when the filter requires an exact match' do
+      let(:filter) { SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true) }
+      it 'should filter exact matches only' do
+        filter.match?("xxx").should be_true
+        filter.match?("xxxx").should be_false
+        filter.match?("xxx the").should be_false
       end
     end
   end
@@ -174,5 +190,4 @@ describe SaytFilter do
       SaytFilter.new(:phrase => 'dummy filter').to_label.should == 'dummy filter'
     end
   end
-
 end

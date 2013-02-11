@@ -12,14 +12,18 @@ class SaytFilter < ActiveRecord::Base
     accept_filters, deny_filters = accept, deny
     whitelisted = inputs.select do |candidate|
       phrase = key == nil ? candidate : candidate[key]
-      accept_filters.detect { |filter| filter.match?(phrase) }
+      filters_match?(accept_filters, phrase)
     end
     inputs -= whitelisted
     passed = inputs.reject do |candidate|
       phrase = key == nil ? candidate : candidate[key]
-      deny_filters.detect { |filter| filter.match?(phrase) }
+      filters_match?(deny_filters, phrase)
     end
     whitelisted + passed
+  end
+
+  def self.filters_match?(filters, phrase)
+    filters.detect { |filter| filter.match?(phrase) }
   end
 
   def match?(target_phrase)

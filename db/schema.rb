@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206224236) do
+ActiveRecord::Schema.define(:version => 20130211175946) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -815,13 +815,14 @@ ActiveRecord::Schema.define(:version => 20130206224236) do
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|
-    t.string   "phrase",                          :null => false
+    t.string   "phrase",                            :null => false
     t.datetime "created_at"
-    t.integer  "popularity",   :default => 1,     :null => false
+    t.integer  "popularity",     :default => 1,     :null => false
     t.datetime "updated_at"
     t.integer  "affiliate_id"
-    t.boolean  "is_protected", :default => false
+    t.boolean  "is_protected",   :default => false
     t.datetime "deleted_at"
+    t.boolean  "is_whitelisted", :default => false, :null => false
   end
 
   add_index "sayt_suggestions", ["affiliate_id", "phrase"], :name => "index_sayt_suggestions_on_affiliate_id_and_phrase", :unique => true

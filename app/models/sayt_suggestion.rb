@@ -5,6 +5,7 @@ class SaytSuggestion < ActiveRecord::Base
   @queue = :primary
 
   before_validation :squish_whitespace_and_downcase
+  before_save :set_whitelisted_status
   validates :affiliate, :presence => true
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
@@ -116,6 +117,12 @@ class SaytSuggestion < ActiveRecord::Base
     def compute_run_rate_factor
       1/ DateTime.current.day_fraction.to_f
     end
+
+    def reapply_filters
+      select(:id).find_each do |suggestion|
+        Resque.enqueue_with_priority(:high, ApplyFiltersToSaytSuggestion, suggestion.id)
+      end
+    end
   end
 
   def squish_whitespace_and_downcase
@@ -133,5 +140,9 @@ class SaytSuggestion < ActiveRecord::Base
 
   def to_label
     phrase
+  end
+
+  def set_whitelisted_status
+    self.is_whitelisted = true if SaytFilter.filters_match?(SaytFilter.accept, self.phrase)
   end
 end

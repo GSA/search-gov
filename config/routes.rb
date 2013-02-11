@@ -139,7 +139,6 @@ UsasearchRails3::Application.routes.draw do
     resources :users do as_routes end
     resources :sayt_filters do as_routes end
     resources :sayt_suggestions do as_routes end
-    resources :sayt_whitelist_entries do as_routes end
     resources :misspellings do as_routes end
     resources :affiliate_boosted_contents do as_routes end
     resources :document_collections do as_routes end
