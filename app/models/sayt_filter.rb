@@ -40,10 +40,6 @@ class SaytFilter < ActiveRecord::Base
     phrase
   end
 
-  def reject?
-    !self.accept?
-  end
-
   private
 
   def both_not_true
