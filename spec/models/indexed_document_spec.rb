@@ -502,7 +502,7 @@ describe IndexedDocument do
 
     context "when there is a problem fetching and indexing the URL content" do
       before do
-        indexed_document.url = 'http://nps.gov/usasearch_test_301.shtml'
+        indexed_document.url = 'http://www.usa.gov/usasearch_test_301.shtml'
       end
 
       it "should update the url with last crawled date and error message and set the hash/title/body/description to nil" do
