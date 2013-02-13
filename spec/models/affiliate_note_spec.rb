@@ -4,7 +4,6 @@ describe AffiliateNote do
   fixtures :affiliates
 
   it { should belong_to :affiliate }
-  it { should validate_presence_of :note }
 
   describe '#save' do
     it 'should strip note' do
