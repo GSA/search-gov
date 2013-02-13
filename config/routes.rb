@@ -135,6 +135,7 @@ UsasearchRails3::Application.routes.draw do
   resources :image_searches
   namespace :admin do
     resources :affiliates do as_routes end
+    resources :affiliate_notes do as_routes end
     resources :affiliate_templates do as_routes end
     resources :users do as_routes end
     resources :sayt_filters do as_routes end

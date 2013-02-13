@@ -34,6 +34,7 @@ class Affiliate < ActiveRecord::Base
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
   has_and_belongs_to_many :form_agencies
   belongs_to :agency
+  has_one :affiliate_note, dependent: :destroy
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },

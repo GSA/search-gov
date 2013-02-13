@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211175946) do
+ActiveRecord::Schema.define(:version => 20130213035701) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20130211175946) do
   end
 
   add_index "affiliate_feature_additions", ["affiliate_id", "feature_id"], :name => "index_affiliate_feature_additions_on_affiliate_id_and_feature_id", :unique => true
+
+  create_table "affiliate_notes", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.text     "note"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "affiliate_notes", ["affiliate_id"], :name => "index_affiliate_notes_on_affiliate_id", :unique => true
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
