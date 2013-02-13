@@ -2,7 +2,7 @@
 
 %h1
   = "Monthly Reports for #{@affiliate.display_name}"
-= render_help_link(@help_link)
+.span-24= render_help_link(@help_link)
 .span-20
   = form_tag(monthly_reports_affiliate_analytics_path(@affiliate), :method => :get) do
     = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @most_recent_date.year }

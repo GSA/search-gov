@@ -4,6 +4,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.label = 'Sites'
     config.actions.exclude :delete
     config.columns = [:id, :display_name, :name, :site_domains, :affiliate_note, :created_at, :updated_at]
+    config.columns[:affiliate_note].label = 'Note'
     config.list.sorting = { :display_name => :asc }
     virtual_columns = [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
                        :features, :external_tracking_code, :submitted_external_tracking_code]
