@@ -777,6 +777,22 @@ describe WebSearch do
       end
     end
 
+    context "when suggestions for misspelled terms contain a language specification" do
+      before do
+        @search = WebSearch.new(@valid_options.merge(
+                                  :page => 1, :query => '(enfermedades del corazón) language:es (scopeid:usagovall OR site:gov OR site:mil)'))
+        @search.stub!(:backfill_needed).and_return false
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spanish_spelling_suggestion.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should strip them all out" do
+        @search.spelling_suggestion.should == "enfermedades del corazon"
+      end
+    end
+
     context "when original query contained misspelled word and site: param" do
       before do
         @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(fedderal site:ftc.gov)'))
@@ -1481,7 +1497,7 @@ describe WebSearch do
     end
 
     it 'should ignore invalid params' do
-      search = WebSearch.new(@valid_options.merge(page: { foo: 'bar' }, per_page: { bar: 'foo' }))
+      search = WebSearch.new(@valid_options.merge(page: {foo: 'bar'}, per_page: {bar: 'foo'}))
       search.page.should == 1
       search.per_page.should == 10
     end

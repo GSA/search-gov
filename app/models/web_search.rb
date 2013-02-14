@@ -352,7 +352,7 @@ class WebSearch < Search
     if did_you_mean_suggestion.present?
       remaining_tokens = did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/\(-site:[^)]*\)/, '').gsub(/\(site:[^)]*\)/, '').
         gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').split
-      remaining_tokens.reject { |token| token.starts_with?('site:') }.join(' ')
+      remaining_tokens.reject { |token| token.starts_with?('language:','site:') }.join(' ')
     end
   end
 
