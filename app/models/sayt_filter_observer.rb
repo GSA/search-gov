@@ -1,9 +1,9 @@
 class SaytFilterObserver < ActiveRecord::Observer
   def after_save(s)
-    SaytSuggestion.reapply_filters
+    Resque.enqueue_with_priority(:low, ApplySaytFilters)
   end
 
   def after_destroy(s)
-    SaytSuggestion.reapply_filters
+    Resque.enqueue_with_priority(:low, ApplySaytFilters)
   end
 end

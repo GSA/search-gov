@@ -428,12 +428,4 @@ describe SaytSuggestion do
       end
     end
   end
-
-  describe '.reapply_filters' do
-    it 'should enqueue ApplyFiltersToSaytSuggestion for each SaytSuggestion' do
-      SaytSuggestion.all.each { |ss| Resque.should_receive(:enqueue_with_priority).with(:high, ApplyFiltersToSaytSuggestion, ss.id) }
-      SaytSuggestion.reapply_filters
-    end
-  end
-
 end

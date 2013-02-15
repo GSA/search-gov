@@ -38,7 +38,7 @@ describe SaytFilter do
     end
 
     it "should reapply filters to existing SaytSuggestions" do
-      SaytSuggestion.should_receive(:reapply_filters)
+      Resque.should_receive(:enqueue_with_priority).with(:low, ApplySaytFilters)
       SaytFilter.create!(:phrase => "some valid filter phrase")
     end
 
@@ -47,7 +47,7 @@ describe SaytFilter do
   describe 'destroying an instance' do
     it "should reapply remaining filters to existing SaytSuggestions" do
       sf = SaytFilter.create!(:phrase => "some valid filter phrase")
-      SaytSuggestion.should_receive(:reapply_filters)
+      Resque.should_receive(:enqueue_with_priority).with(:low, ApplySaytFilters)
       sf.destroy
     end
   end
