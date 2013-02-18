@@ -105,6 +105,7 @@ class ApplicationController < ActionController::Base
 
 
   def search_options_from_params(affiliate, params)
+    params.reject!{|k,v| params[k].instance_of? Array}
     search_params = {
       :affiliate => affiliate,
       :page => params[:page],

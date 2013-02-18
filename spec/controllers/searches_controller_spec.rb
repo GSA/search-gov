@@ -443,6 +443,16 @@ describe SearchesController do
       it { should assign_to(:page_title).with('Current White House Blog - NPS Site Search Results') }
     end
 
+    context "when handling an array parameter" do
+      before do
+        get :news, {"affiliate"=>affiliate.name, "channel"=>rss_feeds(:white_house_blog).id, "m"=>"false", "query"=>["loren"]}
+      end
+
+      it "should render the template" do
+        response.should render_template 'news'
+        response.should render_template 'layouts/affiliate'
+      end
+    end
 
     context 'when searching with tbs' do
       before do
