@@ -3,21 +3,12 @@
   %h1 Best Bets: Text
   = render_help_link(@help_link)
   .boosted-sites.span-24
-    .span-17.append-1.last
-      %p
-        Boost content to make specific pages appear above the main search results displayed on your pages.
-        Best Bets: Text appears above other pages whenever words in a searcher's query match text in the page's title, description, or keywords.
-      %p
-        How does it work? You can enter individual new entries or use the bulk upload feature.
-        These editorially created entries remain on your site until you decide to delete the entry, make it inactive, or until its publishing window has expired.
-    .span-6.last
-      .content-box.cross-promotion
-        %h4 Another Way to Highlight Sites
-        %p
-          = link_to "URLs", urls_and_sitemaps_affiliate_path(@affiliate)
-          \-
-          Identify new, modified, or moved pages for Bing to crawl and index.
-
+    %p
+      Boost content to make specific pages appear above the main search results displayed on your pages.
+      Best Bets: Text appears above other pages whenever words in a searcher's query match text in the page's title, description, or keywords.
+    %p
+      How does it work? You can enter individual new entries or use the bulk upload feature.
+      These editorially created entries remain on your site until you decide to delete the entry, make it inactive, or until its publishing window has expired.
 
   .boosted-content-list
     %table

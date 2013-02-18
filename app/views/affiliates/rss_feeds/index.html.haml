@@ -3,18 +3,6 @@
   .column-2
     .side-note-image= image_tag "side_notes/rss_1.png"
     .side-note-image= image_tag "side_notes/rss_2.png"
-    .side-note
-      %h5 Did you know?
-      Add one or more specific URLs by using the
-      = link_to "URLs", urls_and_sitemaps_affiliate_path(@affiliate)
-      option in the left-hand menu.
-
-    .side-note
-      %h5 Unsure if your RSS is valid?
-      We support RSS 2.0 and Atom feeds. Learn more at:
-      %ul
-        %li= link_to "RSS 2.0 specification", "http://www.rssboard.org/rss-specification"
-        %li= link_to "Atom syndication format", "http://www.atomenabled.org/developers/syndication/"
   .column-1
     %h1 RSS
     = render_help_link(@help_link)
