@@ -7,7 +7,7 @@ class YoutubeProfile < ActiveRecord::Base
   before_validation :normalize_username, if: :username?
   after_create :create_video_rss_feed
   after_create :enqueue_rss_feed_fetcher
-  after_destroy :enqueue_rss_feed_fetcher, :hide_rss_feed
+  after_destroy :hide_rss_feed
 
   def self.youtube_url(username)
     url_params = ActiveSupport::OrderedHash.new

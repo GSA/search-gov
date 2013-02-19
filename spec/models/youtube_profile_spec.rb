@@ -110,7 +110,7 @@ describe YoutubeProfile do
     context 'when the affiliate has other youtube profiles' do
       it 'should not hide the managed RssFeed' do
         Resque.should_receive(:enqueue_with_priority).
-            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).exactly(3).times
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).twice
 
         YoutubeProfile.create!(valid_attributes.merge(username: 'AnotherAgency'))
         profile = YoutubeProfile.create!(valid_attributes)
@@ -122,7 +122,7 @@ describe YoutubeProfile do
     context 'when the affiliate has no other youtube profiles' do
       it 'should hide the managed RssFeed' do
         Resque.should_receive(:enqueue_with_priority).
-            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).twice
+            with(:high, RssFeedFetcher, kind_of(Numeric), kind_of(Numeric)).once
 
         profile = YoutubeProfile.create!(valid_attributes)
         YoutubeProfile.find(profile.id).destroy
