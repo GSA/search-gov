@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213035701) do
+ActiveRecord::Schema.define(:version => 20130219183627) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -814,13 +814,11 @@ ActiveRecord::Schema.define(:version => 20130213035701) do
     t.string   "phrase",                                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "always_filtered",          :default => false, :null => false
     t.boolean  "filter_only_exact_phrase", :default => false, :null => false
     t.boolean  "is_regex",                 :default => false, :null => false
     t.boolean  "accept",                   :default => false, :null => false
   end
 
-  add_index "sayt_filters", ["always_filtered"], :name => "index_sayt_filters_on_always_filtered"
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|

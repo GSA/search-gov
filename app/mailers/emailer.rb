@@ -122,16 +122,6 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def objectionable_content_alert(recipient, terms)
-    setup_email(recipient, __method__)
-    headers['Content-Type'] = "text/html"
-    @search_terms = terms
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
-  end
-
   def affiliate_header_footer_change(affiliate)
     recipients = affiliate.users.collect(&:email).join(', ')
     setup_email(recipients, __method__)
