@@ -5,16 +5,6 @@ describe Emailer do
   include EmailSpec::Matchers
   fixtures :affiliates, :report_recipients, :users, :features
 
-  describe "#objectionable_content_alert" do
-    subject { Emailer.objectionable_content_alert('foo@bar.com', %w{ baaaaad awful }).deliver }
-
-    it { should deliver_to('foo@bar.com') }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Objectionable Content Alert/) }
-    it { should have_body_text(/baaaaad/) }
-    it { should have_body_text(/awful/) }
-  end
-
   describe "#saucelabs_report" do
     let(:url) { 'http://cdn.url' }
 
