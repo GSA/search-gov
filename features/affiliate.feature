@@ -2046,8 +2046,10 @@ Feature: Affiliate clients
     And I follow "Emergency Delete"
     And I fill in "URL*" with "http://www.whitehouse.gov/our-government"
     And I press "Add"
-    And I fill in "URL*" with "http://www.whitehouse.gov/fake-page"
+    Then I should see a link to "www.whitehouse.gov/our-government" with url for "http://www.whitehouse.gov/our-government"
+    When I fill in "URL*" with "http://www.whitehouse.gov/fake-page/with-long-path"
     And I press "Add"
+    Then I should see a link to "www.whitehouse.gov/.../with-long-path" with url for "http://www.whitehouse.gov/fake-page/with-long-path"
 
     When I go to aff.gov's search page
     And I fill in "query" with "white house cabinet"
