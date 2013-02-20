@@ -125,7 +125,7 @@ class Affiliate < ActiveRecord::Base
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
 
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
-  BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(script style link)
+  BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Site name",
@@ -781,7 +781,11 @@ class Affiliate < ActiveRecord::Base
     end
 
     if validate_header_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the top of your search results page can't contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
+      errors.add(:base, "HTML to customize the top of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
+    end
+
+    if validate_header_results[:has_banned_attributes]
+      errors.add(:base, "HTML to customize the top of your search results page must not contain the onload attribute.")
     end
 
     validate_footer_results = validate_html staged_footer
@@ -790,7 +794,11 @@ class Affiliate < ActiveRecord::Base
     end
 
     if validate_footer_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the bottom of your search results page can't contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
+      errors.add(:base, "HTML to customize the bottom of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
+    end
+
+    if validate_footer_results[:has_banned_attributes]
+      errors.add(:base, "HTML to customize the bottom of your search results page must not contain the onload attribute.")
     end
   end
 
@@ -804,6 +812,7 @@ class Affiliate < ActiveRecord::Base
   def validate_html(html)
     validate_html_results = {}
     has_banned_elements = false
+    has_banned_attributes = false
     unless html.blank?
       html_doc = Nokogiri::HTML::DocumentFragment.parse html
       unless html_doc.errors.empty?
@@ -811,9 +820,10 @@ class Affiliate < ActiveRecord::Base
         validate_html_results[:error_message] = html_doc.errors.join('. ') + '.' unless html_doc.errors.blank?
       end
       has_banned_elements = true unless html_doc.css(BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')).blank?
-
+      has_banned_attributes = true unless html_doc.xpath('*[@onload]').blank?
     end
     validate_html_results[:has_banned_elements] = has_banned_elements
+    validate_html_results[:has_banned_attributes] = has_banned_attributes
     validate_html_results
   end
 

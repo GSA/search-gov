@@ -1207,7 +1207,7 @@ Feature: Affiliate clients
     And I press "Save for Preview"
     Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
-    And I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the top of your search results page must not contain form, script, style, link elements."
     And I should see "HTML to customize the bottom of your search results is invalid. Click on the validate link below or email us at ***REMOVED***"
     When I fill in the following:
       | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                                            |
@@ -1216,7 +1216,7 @@ Feature: Affiliate clients
     And I press "Save for Preview"
     Then I should see "Colors must have either three or six digits"
     And I should see "HTML to customize the top of your search results is invalid. Click on the validate link below or email us at ***REMOVED***"
-    And I should see "HTML to customize the bottom of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the bottom of your search results page must not contain form, script, style, link elements."
 
   Scenario: Editing custom header/footer with invalid input and make it live
     Given the following Affiliates exist:
@@ -1233,7 +1233,7 @@ Feature: Affiliate clients
     And I press "Make Live"
     Then I should see "Header and Footer" in the page header
     And I should see "Invalid CSS"
-    And I should see "HTML to customize the top of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the top of your search results page must not contain form, script, style, link elements."
     And I should see "HTML to customize the bottom of your search results is invalid. Click on the validate link below or email us at ***REMOVED***"
     When I fill in the following:
       | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD }                                            |
@@ -1242,7 +1242,7 @@ Feature: Affiliate clients
     And I press "Make Live"
     Then I should see "Colors must have either three or six digits"
     And I should see "HTML to customize the top of your search results is invalid. Click on the validate link below or email us at ***REMOVED***"
-    And I should see "HTML to customize the bottom of your search results page can't contain script, style, link elements."
+    And I should see "HTML to customize the bottom of your search results page must not contain form, script, style, link elements."
 
   Scenario: Updating header/footer option from custom to managed and make it live
     Given the following Affiliates exist:

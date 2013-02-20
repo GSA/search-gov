@@ -601,9 +601,9 @@ describe Affiliate do
 
       before { affiliate.is_validate_staged_header_footer = true }
 
-      it "should not allow script, style or link elements in staged header or staged footer" do
-        header_error_message = %q(HTML to customize the top of your search results page can't contain script, style, link elements)
-        footer_error_message = %q(HTML to customize the bottom of your search results page can't contain script, style, link elements)
+      it "should not allow form, script, style or link elements in staged header or staged footer" do
+        header_error_message = %q(HTML to customize the top of your search results page must not contain form, script, style, link elements)
+        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain form, script, style, link elements)
 
         html_with_script = <<-HTML
             <script src="http://cdn.agency.gov/script.js"></script>
@@ -626,6 +626,27 @@ describe Affiliate do
             <h1>html with link</h1>
         HTML
         affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+        html_with_form = <<-HTML
+            <form></form>
+            <h1>html with link</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_form, :staged_footer => html_with_form).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+      end
+
+      it 'should not allow onload attribute in staged header or staged footer' do
+        header_error_message = %q(HTML to customize the top of your search results page must not contain the onload attribute)
+        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain the onload attribute)
+
+        html_with_onload = <<-HTML
+            <div onload="http://cdn.agency.gov/script.js"></div>
+            <h1>html with onload</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be_false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
       end
