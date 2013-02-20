@@ -95,7 +95,7 @@ document.observe("dom:loaded", function() {
     var action_link = ActiveScaffold.find_action_link(as_cancel);
     
     if (action_link) {
-      var refresh_data = action_link.readAttribute('data-cancel-refresh');
+      var refresh_data = action_link.readAttribute('data-cancel-refresh') || as_cancel.readAttribute('data-refresh');
       if (refresh_data && action_link.refresh_url) {
         event.memo.url = action_link.refresh_url;
       } else if (!refresh_data || as_cancel.readAttribute('href').blank()) {
@@ -453,6 +453,16 @@ var ActiveScaffold = {
     this.hide_empty_message(tbody);
     this.increment_record_count(tbody.up('div.active-scaffold'));
     ActiveScaffold.highlight(new_row);
+  },
+    
+  create_record_row_from_url: function(action_link, url, options) {
+    new Ajax.Request(url, {
+      method: 'get',
+      onComplete: function(response) {
+        ActiveScaffold.create_record_row(action_link.scaffold(), row, options);
+        action_link.close();
+      }
+    });
   },
   
   delete_record_row: function(row, page_reload_url) {
@@ -924,7 +934,7 @@ ActiveScaffold.ActionLink.Record = Class.create(ActiveScaffold.ActionLink.Abstra
     $super();
     if (refreshed_content_or_reload) {
       if (typeof refreshed_content_or_reload == 'string') {
-        ActiveScaffold.update_row(this.target, refreshed_content_or_update);
+        ActiveScaffold.update_row(this.target, refreshed_content_or_reload);
       } else if (this.refresh_url) {
         var target = this.target;
         new Ajax.Request(this.refresh_url, {
