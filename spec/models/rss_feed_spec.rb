@@ -29,7 +29,7 @@ describe RssFeed do
   it { should validate_presence_of :affiliate_id }
   it { should belong_to :affiliate }
   it { should have_many(:rss_feed_urls).dependent(:destroy) }
-  it { should have_many(:news_items) }
+  it { should have_many(:news_items).dependent(:destroy) }
   it { should_not allow_mass_assignment_of(:is_managed) }
   it { should_not allow_mass_assignment_of(:is_video) }
 

@@ -17,6 +17,7 @@ class YoutubeData < RssFeedData
       if usernames_have_not_changed?(usernames)
         @rss_feed.rss_feed_url_ids = @rss_feed_url_ids
         @rss_feed.news_item_ids = @news_item_ids
+        @rss_feed.destroy if usernames.empty?
       end
     end
   end
@@ -29,18 +30,7 @@ class YoutubeData < RssFeedData
     @rss_feed_url_ids << rss_feed_url.id
 
     parser = YoutubeUploadedVideosParser.new(username)
-    begin
-      parser.each_item do |item|
-        news_item = find_and_initialize(rss_feed_url, item)
-        @news_item_ids << news_item.id
-      end
-      rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                      last_crawled_at: Time.now.utc)
-    rescue => e
-      rss_feed_url.update_attributes!(last_crawl_status: e.message,
-                                      last_crawled_at: Time.now.utc)
-    end
-
+    process_parsed_rss_items(rss_feed_url, parser)
   end
 
   def import_playlist_videos(username)
@@ -52,18 +42,22 @@ class YoutubeData < RssFeedData
           first_or_create!
       @rss_feed_url_ids << rss_feed_url.id
 
-      begin
-        parser = YoutubePlaylistVideosParser.new(playlist_id)
-        parser.each_item do |item|
-          news_item = find_and_initialize(rss_feed_url, item)
-          @news_item_ids << news_item.id
-        end
-        rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                        last_crawled_at: Time.now.utc)
-      rescue => e
-        rss_feed_url.update_attributes!(last_crawl_status: e.message,
-                                        last_crawled_at: Time.now.utc)
+      parser = YoutubePlaylistVideosParser.new(playlist_id)
+      process_parsed_rss_items(rss_feed_url, parser)
+    end
+  end
+
+  def process_parsed_rss_items(rss_feed_url, parser)
+    begin
+      parser.each_item do |item|
+        news_item = find_and_initialize(rss_feed_url, item)
+        @news_item_ids << news_item.id
       end
+      rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
+                                      last_crawled_at: Time.now.utc)
+    rescue => e
+      rss_feed_url.update_attributes!(last_crawl_status: e.message,
+                                      last_crawled_at: Time.now.utc)
     end
   end
 

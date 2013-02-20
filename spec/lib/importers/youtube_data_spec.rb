@@ -238,6 +238,7 @@ describe YoutubeData do
           rss_feed.rss_feed_urls(true).collect(&:url).sort.should == %w(
               http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss
               http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse&orderby=published)
+          RssFeedUrl.where(url: 'http://gdata.youtube.com/feeds/api/playlists/2A8E588CD55F0FAF?alt=rss').should be_empty
 
           rss_feed.rss_feed_urls(true).collect(&:last_crawl_status).uniq.should == [RssFeedUrl::OK_STATUS]
 
@@ -245,7 +246,19 @@ describe YoutubeData do
           duplicate_news_items = rss_feed.news_items.where(link: link_in_both_uploaded_and_playlists)
           duplicate_news_items.count.should == 1
           duplicate_news_items.first.rss_feed_url.url.should == profile.url
-          rss_feed.news_items.where(link: invalid_links).should be_empty
+          NewsItem.where(link: invalid_links).should be_empty
+        end
+      end
+
+      context 'when the affiliate does not have a YoutubeProfile' do
+        it 'should delete the managed video feed' do
+          rss_feed.should_receive(:affiliate).and_return(affiliate)
+          affiliate.should_receive(:youtube_profiles).with(true).twice.and_return([])
+
+          importer = YoutubeData.new(rss_feed)
+          importer.import
+
+          RssFeed.find_by_id(rss_feed.id).should be_nil
         end
       end
     end

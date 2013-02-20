@@ -6,7 +6,7 @@ class RssFeed < ActiveRecord::Base
   before_save :set_is_video_flag
   belongs_to :affiliate
   has_many :rss_feed_urls, :order => 'url ASC, id ASC', :dependent => :destroy
-  has_many :news_items, :order => "published_at DESC"
+  has_many :news_items, order: 'published_at DESC', dependent: :destroy
   has_one :navigation, :as => :navigable, :dependent => :destroy
   scope :navigable_only, joins(:navigation).where(:navigations => { :is_active => true } )
   scope :govbox_enabled, where(:shown_in_govbox => true)
