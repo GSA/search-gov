@@ -319,8 +319,8 @@ Feature: Affiliate clients
 
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name | youtube_handles |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | USGovernment    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Delete Site"

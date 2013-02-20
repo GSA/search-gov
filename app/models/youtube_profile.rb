@@ -68,7 +68,7 @@ class YoutubeProfile < ActiveRecord::Base
   end
 
   def hide_rss_feed
-    if affiliate.youtube_profiles(true).empty?
+    if affiliate.youtube_profiles(true).empty? && rss_feed
       rss_feed.update_attributes!(shown_in_govbox: false)
       rss_feed.navigation.update_attributes(is_active: false)
     end
