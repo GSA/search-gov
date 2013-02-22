@@ -116,6 +116,7 @@ UsasearchRails3::Application.routes.draw do
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search
   get '/search/images' => 'image_searches#index', :as => :image_search
   get '/images' => 'images#index', :as => :images
+  resources :recalls, :only => [:index]
   get '/recalls/index.xml' => 'recalls#index', :defaults => { :format => 'rss' }
   get '/search/recalls' => 'recalls#search', :as => :recalls_search
   namespace :api do
