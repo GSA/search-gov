@@ -13,6 +13,7 @@ class RssFeed < ActiveRecord::Base
   scope :managed, where(:is_managed => true)
   scope :videos, where(:is_video => true)
   scope :non_videos, where(:is_video => false)
+  scope :updated_before, lambda { |time| where('updated_at < ?', time).order('updated_at asc, id asc') }
   attr_protected :is_managed, :is_video
   accepts_nested_attributes_for :rss_feed_urls, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? and a[:url].blank? }
   accepts_nested_attributes_for :navigation
@@ -21,8 +22,30 @@ class RssFeed < ActiveRecord::Base
     Resque.enqueue_with_priority(:high, RssFeedFetcher, id, nil, ignore_older_items)
   end
 
-  def self.refresh_all(freshen_managed_feeds = false)
-    all(:conditions => { :is_managed => freshen_managed_feeds }, :order => 'affiliate_id ASC, id ASC').each(&:freshen)
+  def self.refresh_managed_feeds(max_news_items_enqueued = 3000)
+    feeds = managed.updated_before(30.minutes.ago).sort { |a, b| b.news_items.count <=> a.news_items.count }
+    news_items_enqueued = 0
+    feed_to_enqueue = []
+    feeds.each do |f|
+      count = f.news_items.count
+      if (count >= max_news_items_enqueued) && (news_items_enqueued == 0)
+        news_items_enqueued += count
+        feed_to_enqueue << f
+      elsif (count + news_items_enqueued) < max_news_items_enqueued
+        news_items_enqueued += count
+        feed_to_enqueue << f
+      elsif news_items_enqueued >= max_news_items_enqueued
+        break
+      end
+    end
+    if feed_to_enqueue.present?
+      feed_to_enqueue.each(&:touch)
+      Resque.enqueue_with_priority(:high, RssFeedFetcher, feed_to_enqueue.collect(&:id))
+    end
+  end
+
+  def self.refresh_non_managed_feeds
+    where(is_managed: false).order('id asc').each(&:freshen)
   end
 
   def is_video?

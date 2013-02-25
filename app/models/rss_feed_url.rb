@@ -22,13 +22,21 @@ class RssFeedUrl < ActiveRecord::Base
     set_http_prefix :url
     if url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
       begin
-        rss_doc = rss_doc = Nokogiri::XML(Kernel.open(url))
+        rss_doc = Nokogiri::XML(get_feed(url))
         errors.add(:url, "does not appear to be a valid RSS feed.") unless rss_doc && %w(feed rss).include?(rss_doc.root.name)
       rescue Exception => e
         errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.message)
       end
     else
       errors.add(:url, "is invalid")
+    end
+  end
+
+  def get_feed(url)
+    if url =~ %r[https?://gdata\.youtube\.com/]i
+      YoutubeConnection.get(url)
+    else
+      Kernel.open(url)
     end
   end
 end

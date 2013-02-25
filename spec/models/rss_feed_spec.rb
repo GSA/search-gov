@@ -119,27 +119,61 @@ describe RssFeed do
     end
   end
 
-  describe "#refresh_all" do
-    context "when ignore_managed_feeds is true" do
-      it "should freshen non managed rss_feeds" do
-        blog = rss_feeds(:white_house_blog)
-        gallery = rss_feeds(:white_house_press_gallery)
-        RssFeed.should_receive(:all).with(:conditions => { :is_managed => false},
-                                          :order => 'affiliate_id ASC, id ASC').and_return([blog, gallery])
-        blog.should_receive(:freshen)
-        gallery.should_receive(:freshen)
-        RssFeed.refresh_all
-      end
+  describe '.refresh_managed_feeds' do
+    it 'should freshen managed feeds with the most news items first' do
+      feed_with_most_news_items = mock_model(RssFeed)
+      feed_with_most_news_items.stub_chain(:news_items, :count).and_return(3001)
+
+      feed_with_some_news_items = mock_model(RssFeed)
+      feed_with_some_news_items.stub_chain(:news_items, :count).and_return(90)
+
+      feed_with_few_news_items = mock_model(RssFeed)
+      feed_with_few_news_items.stub_chain(:news_items, :count).and_return(8)
+
+      managed_feeds = [feed_with_few_news_items,
+                       feed_with_most_news_items,
+                       feed_with_some_news_items]
+
+      RssFeed.stub_chain(:managed, :updated_before).and_return(managed_feeds)
+      feed_with_most_news_items.should_receive(:touch)
+      Resque.should_receive(:enqueue_with_priority).
+          with(:high, RssFeedFetcher, [feed_with_most_news_items.id])
+
+      RssFeed.refresh_managed_feeds
     end
 
-    context "when ignore_managed_feeds is false" do
-      it "should freshen managed rss_feeds" do
-        managed = mock_model(RssFeed)
-        RssFeed.should_receive(:all).with(:conditions => { :is_managed => true},
-                                          :order => 'affiliate_id ASC, id ASC').and_return([managed])
-        managed.should_receive(:freshen)
-        RssFeed.refresh_all(true)
-      end
+    it 'should enqueue as many managed feeds within limit' do
+      feed_with_most_news_items = mock_model(RssFeed)
+      feed_with_most_news_items.stub_chain(:news_items, :count).and_return(2950)
+
+      feed_with_some_news_items = mock_model(RssFeed)
+      feed_with_some_news_items.stub_chain(:news_items, :count).and_return(45)
+
+      feed_with_few_news_items = mock_model(RssFeed)
+      feed_with_few_news_items.stub_chain(:news_items, :count).and_return(8)
+
+      managed_feeds = [feed_with_few_news_items,
+                       feed_with_most_news_items,
+                       feed_with_some_news_items]
+
+      RssFeed.stub_chain(:managed, :updated_before).and_return(managed_feeds)
+      feed_with_most_news_items.should_receive(:touch).ordered
+      feed_with_some_news_items.should_receive(:touch).ordered
+
+      Resque.should_receive(:enqueue_with_priority).
+          with(:high, RssFeedFetcher, [feed_with_most_news_items.id, feed_with_some_news_items.id])
+      RssFeed.refresh_managed_feeds
+    end
+  end
+
+  describe '.refresh_non_managed_feeds' do
+    it 'should enqueue all non managed feeds' do
+      rss_feed1 = mock_model(RssFeed)
+      rss_feed2 = mock_model(RssFeed)
+      RssFeed.stub_chain(:where, :order).and_return([rss_feed1, rss_feed2])
+      rss_feed1.should_receive(:freshen)
+      rss_feed2.should_receive(:freshen)
+      RssFeed.refresh_non_managed_feeds
     end
   end
 

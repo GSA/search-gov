@@ -5,7 +5,7 @@ describe YoutubePlaylistsParser do
     it 'should return all available playlist ids' do
       playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_playlists.xml')
       next_playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/next_youtube_playlists.xml')
-      Kernel.should_receive(:open).
+      YoutubeConnection.should_receive(:get).
           with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
           twice.
           and_return(playlists_feed_doc, next_playlists_feed_doc)

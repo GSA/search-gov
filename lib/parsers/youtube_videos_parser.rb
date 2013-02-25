@@ -8,7 +8,7 @@ module YoutubeVideosParser
                     description: 'description' }.freeze
 
   def feed_document(url)
-    Nokogiri::XML(Kernel.open(url))
+    Nokogiri::XML(YoutubeConnection.get(url))
   end
 
   def parse_item(item)

@@ -2,6 +2,17 @@ require 'spec_helper'
 
 describe RssFeedFetcher do
   describe '.perform' do
+    context 'when processing multiple RssFeeds' do
+      it 'should process all of them' do
+        rss_feed_ids = [100, 200]
+        RssFeedFetcher.should_receive(:process_rss_feed_id).
+            with(100, nil, true).ordered
+        RssFeedFetcher.should_receive(:process_rss_feed_id).
+            with(200, nil, true).ordered
+        RssFeedFetcher.perform(rss_feed_ids)
+      end
+    end
+
     context 'when youtube_profile_id is present' do
       it 'should import using YoutubeData' do
         rss_feed = mock_model(RssFeed, is_video?: true)

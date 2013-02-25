@@ -13,7 +13,7 @@ describe YoutubeData do
       it 'should iterate through all videos' do
         uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         next_uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
-        Kernel.should_receive(:open).twice.and_return(uploaded_feed_doc, next_uploaded_feed_doc)
+        YoutubeConnection.should_receive(:get).twice.and_return(uploaded_feed_doc, next_uploaded_feed_doc)
 
         profile = mock_model(YoutubeProfile, username: 'whitehouse')
         importer = YoutubeData.new(rss_feed, profile)
@@ -77,13 +77,13 @@ describe YoutubeData do
 
           uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           next_uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/base/videos\?alt=rss&author=whitehouse&max-results=50&orderby=published&start-index=]).
               twice.
               and_return(uploaded_feed_doc, next_uploaded_feed_doc)
 
           playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/simple_youtube_playlists.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
               once.
               and_return(playlists_feed_doc)
@@ -91,7 +91,7 @@ describe YoutubeData do
           feed_validation_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
           playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
           next_playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_playlist_videos.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
               exactly(3).times.
               and_return(feed_validation_doc, playlist_videos_doc, next_playlist_videos_doc)
@@ -153,13 +153,13 @@ describe YoutubeData do
           uploaded_parser.should_receive(:each_item).and_raise
 
           playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/simple_youtube_playlists.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
               once.
               and_return(playlists_feed_doc)
 
           feed_validation_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
               once.
               and_return(feed_validation_doc)
@@ -213,13 +213,13 @@ describe YoutubeData do
 
           uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           next_uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/base/videos\?alt=rss&author=whitehouse&max-results=50&orderby=published&start-index=]).
               twice.
               and_return(uploaded_feed_doc, next_uploaded_feed_doc)
 
           playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/simple_youtube_playlists.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
               once.
               and_return(playlists_feed_doc)
@@ -227,7 +227,7 @@ describe YoutubeData do
           feed_validation_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
           playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
           next_playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_playlist_videos.xml')
-          Kernel.should_receive(:open).
+          YoutubeConnection.should_receive(:get).
               with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
               exactly(3).times.
               and_return(feed_validation_doc, playlist_videos_doc, next_playlist_videos_doc)

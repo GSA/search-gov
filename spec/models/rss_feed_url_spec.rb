@@ -73,7 +73,7 @@ describe RssFeedUrl do
     context "when url starts with gdata.youtube.com/feeds/" do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-        Kernel.should_receive(:open).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').and_return(rss_feed_content)
+        YoutubeConnection.should_receive(:get).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').and_return(rss_feed_content)
       end
 
       specify { rss_feed.rss_feed_urls.create!(:url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').should be_is_video }
