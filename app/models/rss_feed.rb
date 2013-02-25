@@ -23,12 +23,12 @@ class RssFeed < ActiveRecord::Base
   end
 
   def self.refresh_managed_feeds(max_news_items_enqueued = 3000)
-    feeds = managed.updated_before(30.minutes.ago).sort { |a, b| b.news_items.count <=> a.news_items.count }
+    feeds = managed.updated_before(30.minutes.ago)
     news_items_enqueued = 0
     feed_to_enqueue = []
     feeds.each do |f|
       count = f.news_items.count
-      if (count >= max_news_items_enqueued) && (news_items_enqueued == 0)
+      if news_items_enqueued == 0
         news_items_enqueued += count
         feed_to_enqueue << f
       elsif (count + news_items_enqueued) < max_news_items_enqueued

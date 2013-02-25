@@ -120,48 +120,44 @@ describe RssFeed do
   end
 
   describe '.refresh_managed_feeds' do
-    it 'should freshen managed feeds with the most news items first' do
-      feed_with_most_news_items = mock_model(RssFeed)
-      feed_with_most_news_items.stub_chain(:news_items, :count).and_return(3001)
+    it 'should freshen managed feeds' do
+      feed_1 = mock_model(RssFeed)
+      feed_1.stub_chain(:news_items, :count).and_return(3001)
 
-      feed_with_some_news_items = mock_model(RssFeed)
-      feed_with_some_news_items.stub_chain(:news_items, :count).and_return(90)
+      feed_2 = mock_model(RssFeed)
+      feed_2.stub_chain(:news_items, :count).and_return(8)
 
-      feed_with_few_news_items = mock_model(RssFeed)
-      feed_with_few_news_items.stub_chain(:news_items, :count).and_return(8)
+      feed_3 = mock_model(RssFeed)
+      feed_3.stub_chain(:news_items, :count).and_return(90)
 
-      managed_feeds = [feed_with_few_news_items,
-                       feed_with_most_news_items,
-                       feed_with_some_news_items]
+      managed_feeds = [feed_1, feed_2, feed_3]
 
       RssFeed.stub_chain(:managed, :updated_before).and_return(managed_feeds)
-      feed_with_most_news_items.should_receive(:touch)
+      feed_1.should_receive(:touch)
       Resque.should_receive(:enqueue_with_priority).
-          with(:high, RssFeedFetcher, [feed_with_most_news_items.id])
+          with(:high, RssFeedFetcher, [feed_1.id])
 
       RssFeed.refresh_managed_feeds
     end
 
     it 'should enqueue as many managed feeds within limit' do
-      feed_with_most_news_items = mock_model(RssFeed)
-      feed_with_most_news_items.stub_chain(:news_items, :count).and_return(2950)
+      feed_1 = mock_model(RssFeed)
+      feed_1.stub_chain(:news_items, :count).and_return(90)
 
-      feed_with_some_news_items = mock_model(RssFeed)
-      feed_with_some_news_items.stub_chain(:news_items, :count).and_return(45)
+      feed_2 = mock_model(RssFeed)
+      feed_2.stub_chain(:news_items, :count).and_return(3001)
 
-      feed_with_few_news_items = mock_model(RssFeed)
-      feed_with_few_news_items.stub_chain(:news_items, :count).and_return(8)
+      feed_3 = mock_model(RssFeed)
+      feed_3.stub_chain(:news_items, :count).and_return(8)
 
-      managed_feeds = [feed_with_few_news_items,
-                       feed_with_most_news_items,
-                       feed_with_some_news_items]
+      managed_feeds = [feed_1, feed_2, feed_3]
 
       RssFeed.stub_chain(:managed, :updated_before).and_return(managed_feeds)
-      feed_with_most_news_items.should_receive(:touch).ordered
-      feed_with_some_news_items.should_receive(:touch).ordered
-
+      feed_1.should_receive(:touch)
+      feed_3.should_receive(:touch)
       Resque.should_receive(:enqueue_with_priority).
-          with(:high, RssFeedFetcher, [feed_with_most_news_items.id, feed_with_some_news_items.id])
+          with(:high, RssFeedFetcher, [feed_1.id, feed_3.id])
+
       RssFeed.refresh_managed_feeds
     end
   end

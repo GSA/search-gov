@@ -14,6 +14,7 @@ describe YoutubeData do
         uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
         next_uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
         YoutubeConnection.should_receive(:get).twice.and_return(uploaded_feed_doc, next_uploaded_feed_doc)
+        rss_feed.should_not_receive(:touch)
 
         profile = mock_model(YoutubeProfile, username: 'whitehouse')
         importer = YoutubeData.new(rss_feed, profile)
@@ -96,6 +97,8 @@ describe YoutubeData do
               exactly(3).times.
               and_return(feed_validation_doc, playlist_videos_doc, next_playlist_videos_doc)
 
+          rss_feed.should_receive(:touch)
+
           importer = YoutubeData.new(rss_feed)
           importer.import
 
@@ -168,6 +171,8 @@ describe YoutubeData do
           YoutubePlaylistVideosParser.should_receive(:new).and_return(playlist_parser)
           playlist_parser.should_receive(:each_item).and_raise
 
+          rss_feed.should_receive(:touch)
+
           importer = YoutubeData.new(rss_feed)
           importer.import
 
@@ -232,6 +237,8 @@ describe YoutubeData do
               exactly(3).times.
               and_return(feed_validation_doc, playlist_videos_doc, next_playlist_videos_doc)
 
+          rss_feed.should_receive(:touch)
+
           importer = YoutubeData.new(rss_feed)
           importer.import
 
@@ -254,6 +261,7 @@ describe YoutubeData do
         it 'should delete the managed video feed' do
           rss_feed.should_receive(:affiliate).and_return(affiliate)
           affiliate.should_receive(:youtube_profiles).with(true).twice.and_return([])
+          rss_feed.should_not_receive(:touch)
 
           importer = YoutubeData.new(rss_feed)
           importer.import

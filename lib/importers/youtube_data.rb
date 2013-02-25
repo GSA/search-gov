@@ -19,6 +19,7 @@ class YoutubeData < RssFeedData
         @rss_feed.news_item_ids = @news_item_ids
         @rss_feed.destroy if usernames.empty?
       end
+      @rss_feed.touch unless @rss_feed.destroyed?
     end
   end
 
