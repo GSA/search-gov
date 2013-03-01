@@ -193,6 +193,16 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def filtered_popular_terms_report(filtered_popular_terms)
+    setup_email('***REMOVED***', __method__)
+    headers['Content-Type'] = 'text/html'
+    @subject = ERB.new(@email_template_subject).result(binding)
+    @filtered_popular_terms = filtered_popular_terms
+    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
+      format.html { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   def public_key_upload_notification(txtfile, current_user, affiliate)
     setup_email(%w{sysadmin@searchsi.com ***REMOVED***}, __method__)
     @from = current_user.email
