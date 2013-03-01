@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301170755) do
+ActiveRecord::Schema.define(:version => 20130301180839) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20130301170755) do
     t.integer "affiliate_id",       :null => false
     t.integer "twitter_profile_id", :null => false
   end
+
+  add_index "affiliates_twitter_profiles", ["affiliate_id", "twitter_profile_id"], :name => "aff_id_tp_id"
 
   create_table "affiliates_users", :id => false, :force => true do |t|
     t.integer "affiliate_id"
@@ -720,6 +722,7 @@ ActiveRecord::Schema.define(:version => 20130301170755) do
   end
 
   add_index "navigations", ["affiliate_id"], :name => "index_navigations_on_affiliate_id"
+  add_index "navigations", ["navigable_id", "navigable_type"], :name => "index_navigations_on_navigable_id_and_navigable_type"
 
   create_table "news_items", :force => true do |t|
     t.integer  "rss_feed_id",     :null => false
