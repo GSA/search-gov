@@ -58,6 +58,19 @@ describe Emailer do
     end
   end
 
+  describe "#filtered_popular_terms_report" do
+    subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver }
+
+    it { should deliver_to('***REMOVED***') }
+    it { should have_subject(/Filtered Popular Terms for Last Week/) }
+
+    it 'should contain list of filtered sayt suggestions' do
+      email.should have_body_text("foo")
+      email.should have_body_text("bar")
+      email.should have_body_text("blat")
+    end
+  end
+
   describe "#new_user_email_verification" do
     let(:user) { mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token') }
 
