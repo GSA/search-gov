@@ -958,9 +958,9 @@ describe WebSearch do
       end
 
       context "when the affiliate does not have a related agency with an org code" do
-        it "should call Usajobs.search with just the query, size, and hl param" do
-          Usajobs.should_receive(:search).with(:query => 'summer jobs', :hl => 1, :size => 3).and_return nil
-          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate)
+        it "should call Usajobs.search with just the query, size, hl, and geoip_info param" do
+          Usajobs.should_receive(:search).with(:query => 'summer jobs', :hl => 1, :size => 3, :geoip_info => 'geoip').and_return nil
+          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate, :geoip_info => 'geoip')
           search.run
         end
       end
