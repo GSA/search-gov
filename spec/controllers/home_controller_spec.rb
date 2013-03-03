@@ -8,6 +8,12 @@ describe HomeController do
       @affiliate = affiliates(:usagov_affiliate)
     end
 
+    it "should assign geoip info" do
+      GeoipLookup.stub!(:lookup).and_return OpenStruct.new(:region_name => 'CA')
+      get :index
+      assigns[:geoip_info].region_name.should == 'CA'
+    end
+
     context "when no locale is specified" do
       before do
         get :index
@@ -18,10 +24,6 @@ describe HomeController do
       it { should respond_with(:success) }
 
       specify { I18n.locale.should == I18n.default_locale }
-
-      it "should assign a local server hash indicating which datacenter served the request" do
-        assigns[:rails_server_location_in_html_comment_for_opsview].should be_instance_of(String)
-      end
     end
 
     context "when locale is specified" do

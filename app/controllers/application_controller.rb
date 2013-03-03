@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ::SslRequirement
   skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_default_locale
-  before_filter :set_local_ip
+  before_filter :set_geoip_info
   before_filter :show_searchbox
   helper :all
   helper_method :current_user_session, :current_user
@@ -37,10 +37,6 @@ class ApplicationController < ActionController::Base
 
   def set_default_locale
     I18n.locale = :en
-  end
-
-  def set_local_ip
-    @rails_server_location_in_html_comment_for_opsview = "<!-- #{SERVER_LOCATION} -->"
   end
 
   def determine_locale_from_url (locale_param)
@@ -125,10 +121,15 @@ class ApplicationController < ActionController::Base
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
       :dc => params["dc"],
       :channel => params["channel"],
-      :tbs => params["tbs"]
+      :tbs => params["tbs"],
+      :geoip_info => @geoip_info
     }
     search_params.merge!(:embedded => params["embedded"]) if params["embedded"].present?
     search_params
+  end
+
+  def set_geoip_info
+    @geoip_info = GeoipLookup.lookup request.remote_ip
   end
 
   def sanitize_query(query)

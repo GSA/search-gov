@@ -947,9 +947,11 @@ describe WebSearch do
           @affiliate.stub!(:agency).and_return(agency)
         end
 
-        it "should call Usajobs.search with the query, org code, size, and hl params" do
-          Usajobs.should_receive(:search).with(:query => 'summer jobs', :hl => 1, :size => 3, :organization_id => 'XX00').and_return "foo"
-          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate)
+        it "should call Usajobs.search with the query, org code, size, hl, and geoip_info params" do
+          Usajobs.should_receive(:search).
+            with(:query => 'summer jobs', :hl => 1, :size => 3, :organization_id => 'XX00', :geoip_info => 'geoip').
+            and_return "foo"
+          search = WebSearch.new(:query => 'summer jobs', :affiliate => @affiliate, :geoip_info => 'geoip')
           search.run
           search.jobs.should == "foo"
         end

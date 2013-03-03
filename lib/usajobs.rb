@@ -1,5 +1,6 @@
 module Usajobs
-  JOB_RELATED_KEYWORDS = '((position|job|opening|posting|employment)s?|(opportunit|vacanc)(y|ies))'
+  SIMPLE_SEARCHES = '(job|employment|internship)s?'
+  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|internship)s?|(opportunit|vacanc)(y|ies))'
   SIMPLE_SINGULARS = %w{
     statistic number level rate description trend growth projection survey forecast figure report verification record
     authorization card classification form hazard poster fair board outlook grant funding factor other cut
@@ -38,6 +39,7 @@ module Usajobs
 
   def self.search(options)
     if query_eligible?(options[:query])
+      options[:query] = enhance_query(options[:query], options[:geoip_info]) if options[:geoip_info].present?
       @usajobs_api_connection.get(@endpoint, options).body
     end
   rescue Exception => e
@@ -47,6 +49,12 @@ module Usajobs
 
   def self.query_eligible?(query)
     query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i)
+  end
+
+  def self.enhance_query(query, geoip_info)
+    simple_search_with_state = query =~ /^#{SIMPLE_SEARCHES}$/i &&
+      geoip_info.present? && geoip_info.region_name.present? && State.member?(geoip_info.region_name)
+    simple_search_with_state ? "#{query} in #{geoip_info.region_name}" : query
   end
 end
 

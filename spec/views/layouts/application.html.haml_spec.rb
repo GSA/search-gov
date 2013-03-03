@@ -6,7 +6,6 @@ describe "layouts/application.html.haml" do
     assign(:affiliate, affiliates(:basic_affiliate))
     controller.stub!(:controller_name).and_return "home"
     controller.stub!(:action_name).and_return "index"
-    assign(:rails_server_location_in_html_comment_for_opsview, "")
   end
 
   context "when page is displayed" do

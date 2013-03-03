@@ -54,6 +54,8 @@ gem 'oj'
 gem 'faraday_middleware'
 gem 'net-http-persistent'
 gem 'rash'
+gem 'geoip'
+gem 'us_states'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

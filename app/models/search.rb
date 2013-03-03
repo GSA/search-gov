@@ -24,7 +24,8 @@ class Search
               :related_search,
               :spelling_suggestion,
               :queried_at_seconds,
-              :module_tag
+              :module_tag,
+              :geoip_info
 
   def initialize(options = {})
     @options = options
@@ -39,6 +40,7 @@ class Search
 
     @related_search, @results, @spelling_suggestion = [], [], nil
     @queried_at_seconds = Time.now.to_i
+    @geoip_info = options[:geoip_info]
   end
 
   # Override this method to process various different options and augment the query string

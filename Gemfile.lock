@@ -198,6 +198,7 @@ GEM
     ffi (1.2.0)
     flickraw (0.9.6)
     fssm (0.2.9)
+    geoip (1.2.1)
     gherkin (2.11.5)
       json (>= 1.4.6)
     girl_friday (0.11.1)
@@ -415,6 +416,7 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.5)
+    us_states (0.1.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
     webrat (0.7.3)
@@ -459,6 +461,7 @@ DEPENDENCIES
   execjs
   faraday_middleware
   flickraw
+  geoip
   google_visualr
   googlecharts
   haml
@@ -509,6 +512,7 @@ DEPENDENCIES
   tweetstream
   twitter
   uglifier (>= 1.0.3)
+  us_states
   us_states_select!
   webrat
   webster

@@ -256,7 +256,7 @@ class WebSearch < Search
         @agency = agency_query.agency if agency_query
       end
       if affiliate.jobs_enabled?
-        jobs_options = {query: query, size: 3, hl: 1}
+        jobs_options = {query: query, size: 3, hl: 1, geoip_info: geoip_info}
         jobs_options.merge!(organization_id: affiliate.agency.organization_code) if affiliate.has_organization_code?
         @jobs = Usajobs.search(jobs_options)
       end
