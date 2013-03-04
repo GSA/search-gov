@@ -8,6 +8,16 @@ describe VaForm do
   describe '#form_index_page_urls' do
     subject(:urls) { va_form.form_index_page_urls.flatten }
 
+    before do
+      va_form.stub(:open) do |url|
+        case url
+        when 'http://www.va.gov/vaforms/'
+          mock(File, :read => File.read("#{Rails.root}/spec/fixtures/html/forms/va/forms.html"))
+        end
+      end
+    end
+
+
     its(:count) { should == 11 }
     its(:first) { should == VaForm::FORMS_HOME_PAGE_URL }
 
