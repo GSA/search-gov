@@ -194,7 +194,7 @@ class Emailer < ActionMailer::Base
   end
 
   def filtered_popular_terms_report(filtered_popular_terms)
-    setup_email('***REMOVED***', __method__)
+    setup_email('usagov@searchsi.com', __method__)
     headers['Content-Type'] = 'text/html'
     @subject = ERB.new(@email_template_subject).result(binding)
     @filtered_popular_terms = filtered_popular_terms
