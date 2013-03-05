@@ -2,15 +2,10 @@ class Search
   class SearchError < RuntimeError;
   end
 
-  @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
-
-  MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH = 30
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 10
   MAX_PER_PAGE = 50
-  QUERY_STRING_ALLOCATION = 1800
-  URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
   attr_reader :query,
               :affiliate,
@@ -28,8 +23,9 @@ class Search
               :geoip_info
 
   def initialize(options = {})
+    #TODO: need options?
     @options = options
-    @query = build_query(options)
+    @query = options[:query]
     @affiliate = options[:affiliate]
 
     @page = options[:page].to_i rescue DEFAULT_PAGE
@@ -43,13 +39,9 @@ class Search
     @geoip_info = options[:geoip_info]
   end
 
-  # Override this method to process various different options and augment the query string
-  def build_query(options)
-    options[:query]
-  end
-
   # This does your search.
   def run
+    #TODO: can't this happen as part of validation when Engine initialized?
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
     @error_message = (I18n.translate :empty_query) and return false unless @query.present? or allow_blank_query?
 
@@ -108,7 +100,7 @@ class Search
   def cache_key
   end
 
-  # This is used any time we want to highlight something
+  # This is used any time we want to highlight a hit from Solr with the highlight chars that Bing uses
   def highlight_solr_hit_like_bing(hit, field_symbol)
     return hit.highlights(field_symbol).first.format { |phrase| "\uE000#{phrase}\uE001" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)

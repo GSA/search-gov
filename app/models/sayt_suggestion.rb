@@ -85,6 +85,7 @@ class SaytSuggestion < ActiveRecord::Base
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
+        #TODO: move to BingSearch
         if WebSearch.results_present_for?(dqs.query, affiliate, false)
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck

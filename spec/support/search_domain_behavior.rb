@@ -4,7 +4,7 @@ shared_examples "a search domain object" do
 
   it { should belong_to :affiliate }
 
-  describe "#create" do
+  describe ".create" do
     it { should validate_presence_of :domain }
     it { should validate_presence_of :affiliate }
 

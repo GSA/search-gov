@@ -30,13 +30,13 @@
         %legend= (t :advanced_search_adult_filter_label)
         .input-wrapper
           .radio-option
-            = radio_button_tag 'filter', 'off', params['filter'] == 'off'
+            = radio_button_tag 'filter', 0, params['filter'] == '0'
             = label_tag 'filter_off', (t :advanced_search_adult_filter_off_label)
           .radio-option
-            = radio_button_tag 'filter', 'moderate', (params['filter'] || "moderate") == 'moderate'
+            = radio_button_tag 'filter', 1, (params['filter'] || '1') == '1'
             = label_tag 'filter_moderate', (t :advanced_search_adult_filter_moderate_label)
           .radio-option
-            = radio_button_tag 'filter', 'strict', params['filter'] == 'strict'
+            = radio_button_tag 'filter', 2, params['filter'] == '2'
             = label_tag 'filter_strict', (t :advanced_search_adult_filter_strict_label)
     .submit= submit_tag(t(:search), id: 'search_button')
     .advanced-search-operator= render_advance_search_operators_help_text

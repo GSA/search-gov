@@ -1,9 +1,7 @@
 class WebSearch < Search
+  DEFAULT_SEARCH_ENGINE_OPTION = 'Bing'
 
-  DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
-
-  attr_reader :offset,
-              :sources,
+  attr_reader :sources,
               :images,
               :boosted_contents,
               :filter_setting,
@@ -21,8 +19,10 @@ class WebSearch < Search
               :photos,
               :forms,
               :jobs
+              #:search_engine
 
   class << self
+    #TODO: move to BingSearch
     def results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = BingSearch::DEFAULT_FILTER_SETTING)
       search = new(:query => query, :affiliate => affiliate, :filter => filter_setting)
       search.run
@@ -33,16 +33,12 @@ class WebSearch < Search
 
   def initialize(options = {})
     super(options)
-    @offset = (@page - 1) * @per_page
-    @bing_search = BingSearch.new
-    @filter_setting = BingSearch::VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : BingSearch::DEFAULT_FILTER_SETTING
-    @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
-    @sources = "Spell+Web"
-    @formatted_query = generate_formatted_query
-  end
-
-  def cache_key
-    [@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting].join(':')
+    offset = (page - 1) * per_page + 1
+    search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
+    formatted_query_klass = "#{search_engine_option}FormattedQuery"
+    search_engine_klass = "#{search_engine_option}Search"
+    formatted_query = formatted_query_klass.constantize.new(options)
+    @search_engine = search_engine_klass.constantize.new(options.merge(query: formatted_query.query, offset: offset))
   end
 
   def has_boosted_contents?
@@ -57,6 +53,7 @@ class WebSearch < Search
     forms and forms.total > 0
   end
 
+  #TODO: used by helpers and for logging module name
   def are_results_by_bing?
     self.indexed_results.nil?
   end
@@ -76,58 +73,24 @@ class WebSearch < Search
     hash
   end
 
-  def build_query(options)
-    query = ''
-    if options[:query].present?
-      query = remove_sites_not_in_domains(options)
-      query = query.split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
-    end
-    query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"") if options[:query_quote].present?
-    query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ') if options[:query_or].present?
-    query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ') if options[:query_not].present?
-    query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
-    query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
-    query.strip
-  end
-
-  def remove_sites_not_in_domains(options)
-    return options[:query] if options[:affiliate].site_domains.blank?
-    user_site_limits = options[:query].scan(/\bsite:\S+\b/i).collect { |s| s.sub(/^site:/i, '') }.uniq
-    rejected_sites = user_site_limits.reject { |s| options[:affiliate].includes_domain?(s) }
-    if rejected_sites.present?
-      rejected_sites_query = rejected_sites.collect { |s| "site:#{Regexp.escape(s)}" }
-      options[:query].gsub(/\b(#{rejected_sites_query.join('|')})\b/i, '')
-    else
-      options[:query]
-    end
-  end
-
-  def limit_field(field_name, term)
-    if field_name.blank?
-      term
-    else
-      "#{field_name}#{term}"
-    end
-  end
-
   def search
-    ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => @formatted_query}) do
-      @bing_search.query(@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting)
+    ActiveSupport::Notifications.instrument("#{@search_engine.class.name.tableize.singularize}.usasearch", :query => {:term => @search_engine.query}) do
+      @search_engine.execute_query
     end
-  rescue BingSearch::BingSearchError => error
-    Rails.logger.warn "Error getting search results from Bing server: #{error}"
+  rescue SearchEngine::SearchError => error
+    Rails.logger.warn "Error getting search results from #{@search_engine.class.name} API endpoint: #{error}"
     false
   end
 
   def handle_response(response)
-    @total = hits(response)
-    available_bing_pages = (@total/@per_page.to_f).ceil
+    @total = response.total
+    available_search_engine_pages = (@total/@per_page.to_f).ceil
     if backfill_needed?
-      odie_search = odie_search_class.new(@options.merge(:page => [@page - available_bing_pages, 1].max))
+      odie_search = odie_search_class.new(@options.merge(:page => [@page - available_search_engine_pages, 1].max))
       odie_response = odie_search.search
       if odie_response and odie_response.total > 0
-        adjusted_total = available_bing_pages * @per_page + odie_response.total
-        if @total <= @per_page * (@page - 1) and available_bing_pages < @page
+        adjusted_total = available_search_engine_pages * @per_page + odie_response.total
+        if @total <= @per_page * (@page - 1) and available_search_engine_pages < @page
           temp_total = @total
           @total = adjusted_total
           @results = paginate(odie_search.process_results(odie_response))
@@ -139,15 +102,16 @@ class WebSearch < Search
         @total = adjusted_total
       end
     end
-    handle_bing_response(response) if available_bing_pages >= @page
+    handle_search_engine_response(response) if available_search_engine_pages >= @page
     assign_module_tag
   end
 
-  def handle_bing_response(response)
-    @startrecord = bing_offset(response) + 1
-    @results = paginate(process_results(response))
-    @endrecord = startrecord + results.size - 1
-    @spelling_suggestion = spelling_results(response)
+  def handle_search_engine_response(response)
+    @startrecord = response.start_record
+    #TODO: process_web_results to handle news/excludes
+    @results = paginate(response.results)
+    @endrecord = response.end_record
+    @spelling_suggestion = response.spelling_suggestion
   end
 
   def backfill_needed?
@@ -156,32 +120,21 @@ class WebSearch < Search
 
   def assign_module_tag
     if @total > 0
+      #TODO: module name
       @module_tag = are_results_by_bing? ? 'BWEB' : 'AIDOC'
     else
       @module_tag = nil
     end
   end
 
-  def hits(response)
-    (response.web.results.blank? ? 0 : response.web.total) rescue 0
-  end
-
-  def bing_offset(response)
-    (response.web.results.blank? ? 0 : response.web.offset) rescue 0
-  end
-
-  def process_results(response)
-    process_web_results(response)
-  end
-
   def process_web_results(response)
     news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(@affiliate, response.web.results.collect(&:url))
-    excluded_urls_absent = @affiliate.excluded_urls.empty?
+    excluded_urls_empty = @affiliate.excluded_urls.empty?
     processed = response.web.results.collect do |result|
       title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
       title ||= (result.title rescue nil)
       content ||= result.description || ''
-      if title.present? and (excluded_urls_absent or not url_is_excluded(result.url))
+      if title.present? && (excluded_urls_empty || !url_is_excluded(result.url))
         {
           'title' => title,
           'unescapedUrl' => result.url,
@@ -203,6 +156,29 @@ class WebSearch < Search
     false
   end
 
+  def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
+    @news_item_hash ||= build_news_item_hash_from_search
+    news_item_hit = @news_item_hash[result_url]
+    if news_item_hit.present?
+      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
+    else
+      news_item = news_title_descriptions_published_at[result_url]
+      [news_item.title, news_item.description] if news_item
+    end
+  end
+
+  def build_news_item_hash_from_search
+    news_item_hash = {}
+    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds)
+    if news_items_overrides and news_items_overrides.total > 0
+      news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
+        news_item_hash[news_item_result.link] = news_item_hit
+      end
+    end
+    news_item_hash
+  end
+
+  #TODO: WhyTF is this here and not in ImageSearch?
   def process_image_results(response)
     processed = response.image.results.collect do |result|
       begin
@@ -230,22 +206,12 @@ class WebSearch < Search
     processed.compact
   end
 
-  def spelling_results(response)
-    did_you_mean_suggestion = response.spell.results.first.value rescue nil
-    cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
-    cleaned_query = strip_extra_chars_from(@query)
-    same_or_overridden?(cleaned_suggestion_without_bing_highlights, cleaned_query) ? nil : cleaned_suggestion_without_bing_highlights
-  end
-
-  def same_or_overridden?(cleaned_suggestion_without_bing_highlights, cleaned_query)
-    cleaned_suggestion_without_bing_highlights == cleaned_query ||
-      (cleaned_suggestion_without_bing_highlights.present? && cleaned_suggestion_without_bing_highlights.starts_with?('+'))
-  end
-
   def populate_additional_results
     super
-    @boosted_contents = BoostedContent.search_for(query, affiliate)
+    #TODO: just curious, what does 'query' look like when there are excluded domains, etc?
+    #TODO: put in GovBox.rb
     if first_page?
+      @boosted_contents = BoostedContent.search_for(query, affiliate)
       @featured_collections = FeaturedCollection.search_for(query, affiliate)
       if affiliate.is_agency_govbox_enabled?
         agency_query = AgencyQuery.find_by_phrase(query)
@@ -291,92 +257,6 @@ class WebSearch < Search
     QueryImpression.log(vertical, affiliate.name, self.query, modules)
   end
 
-  def english_locale?
-    I18n.locale.to_s == 'en'
-  end
-
-  def locale
-    return if english_locale?
-    "language:#{I18n.locale}"
-  end
-
-  def generate_formatted_query
-    [query_plus_locale, scope].join(' ').strip
-  end
-
-  def query_plus_locale
-    "(#{query}) #{locale}".strip.squeeze(' ')
-  end
-
-  def scope
-    generate_affiliate_scope
-  end
-
-  def generate_default_scope
-    DEFAULT_SCOPE
-  end
-
-  def generate_affiliate_scope
-    domains = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : fill_domains_to_remainder
-    scope_ids = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
-    excluded_domains = (@query =~ /-site:/) ? nil : affiliate.excluded_domains.collect { |ed| "-site:" + ed.domain }.join(" AND ")
-    affiliate_scope = ""
-    affiliate_scope = "(" unless scope_ids.blank? and domains.blank?
-    affiliate_scope += scope_ids unless scope_ids.blank? or @matching_site_limits.present?
-    affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
-    affiliate_scope += domains unless domains.blank?
-    affiliate_scope += ")" unless scope_ids.blank? and domains.blank?
-    affiliate_scope += " #{generate_default_scope}" if (scope_ids.blank? and domains.blank? and (@query =~ /site:/).nil?)
-    affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")})" unless affiliate.scope_keywords.blank?
-    affiliate_scope += [' (', excluded_domains, ')'].join unless excluded_domains.blank?
-    affiliate_scope.strip
-  end
-
-  def fill_domains_to_remainder
-    remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
-    domains, delimiter = [], " OR "
-    unless @options[:site_limits].blank?
-      @matching_site_limits = @options[:site_limits].split.collect { |site| site if affiliate.includes_domain?(site) }.compact
-    end
-    domains_to_process = @matching_site_limits.present? ? @matching_site_limits : affiliate.domains_as_array
-    domains_to_process.each do |site|
-      site_str = "site:#{site}"
-      encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
-      break if (remaining_chars -= encoded_str.length) < 0
-      domains.unshift site_str
-    end unless affiliate.domains_as_array.blank?
-    "#{domains.join(delimiter)}"
-  end
-
-  def strip_extra_chars_from(did_you_mean_suggestion)
-    if did_you_mean_suggestion.present?
-      remaining_tokens = did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/\(-site:[^)]*\)/, '').gsub(/\(site:[^)]*\)/, '').
-        gsub(/[()]/, '').gsub(/(\uE000|\uE001)/, '').gsub('-', '').split
-      remaining_tokens.reject { |token| token.starts_with?('language:','site:') }.join(' ')
-    end
-  end
-
-  def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
-    @news_item_hash ||= build_news_item_hash_from_search
-    news_item_hit = @news_item_hash[result_url]
-    if news_item_hit.present?
-      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
-    else
-      news_item = news_title_descriptions_published_at[result_url]
-      [news_item.title, news_item.description] if news_item
-    end
-  end
-
-  def build_news_item_hash_from_search
-    news_item_hash = {}
-    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds)
-    if news_items_overrides and news_items_overrides.total > 0
-      news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
-        news_item_hash[news_item_result.link] = news_item_hit
-      end
-    end
-    news_item_hash
-  end
 
   def odie_search_class
     OdieSearch

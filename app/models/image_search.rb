@@ -1,5 +1,6 @@
 class ImageSearch < WebSearch
 
+  #TODO: uh, fix this whole class
   def initialize(options = {})
     super(options)
     @bing_search = BingImageSearch.new

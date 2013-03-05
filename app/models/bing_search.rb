@@ -1,86 +1,75 @@
-class BingSearch
-  class BingSearchError < RuntimeError;
-  end
-
+class BingSearch < SearchEngine
+  API_ENDPOINT = '/json.aspx'
+  API_HOST= 'http://api.bing.net'
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
-  VALID_FILTER_VALUES = %w{off moderate strict}
-  DEFAULT_FILTER_SETTING = 'moderate'
-  URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
+  VALID_ADULT_FILTERS = %w{off moderate strict}
 
-  def initialize(user_agent = BING_USER_AGENT)
-    @user_agent = user_agent
+  attr_reader :sources
+
+  def initialize(options = {})
+    super(options) do |search_engine|
+      search_engine.api_connection= connection_instance
+      search_engine.api_endpoint= API_ENDPOINT
+      filter_index = get_filter_index(options[:filter])
+      search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
+    end
+    @sources = index_sources
+    @scope_ids = options[:scope_ids]
   end
 
-  def query(query, sources, offset = 0, per_page = 10, enable_highlighting = true, filter_setting = DEFAULT_FILTER_SETTING)
-    begin
-      url = bing_api_url(query, sources, offset, per_page, enable_highlighting, filter_setting)
-      Rails.logger.debug "Bing Url: #{url}"
-      response = $bing_api_connection.get(url)
-      response.body.search_response
-    rescue Exception => error
-      raise BingSearchError.new(error)
+  protected
+
+  def params
+    params_hash = {
+      AppId: APP_ID,
+      Adult: filter_level,
+      sources: sources,
+      query: query
+    }
+    params_hash.merge!('Options' => 'EnableHighlighting') if enable_highlighting
+    params_hash.merge!('web.offset' => offset) unless offset== DEFAULT_OFFSET
+    params_hash.merge!('web.count' => per_page) unless per_page == DEFAULT_PER_PAGE
+    params_hash
+  end
+
+  def parse_search_engine_response(response)
+    bing_response = response.body.search_response
+    SearchEngineResponse.new do |search_response|
+      search_response.total = hits(bing_response)
+      search_response.start_record = bing_offset(bing_response) + 1
+      search_response.results = process_results(bing_response)
+      search_response.end_record = search_response.start_record + search_response.results.size - 1
+      spelling = bing_response.spell.results.first.value rescue nil
+      search_response.spelling_suggestion = spelling_results(spelling)
     end
   end
 
-  def self.search_for_url_in_bing(url)
-    candidate_urls = []
-    parsed_url = URI.parse(url)
-    parsed_url.fragment = nil
-    candidate_urls << parsed_url.to_s
-
-    parsed_url.query = nil
-    candidate_urls << parsed_url.to_s
-
-    candidate_urls.uniq.each do |candidate_url|
-      result = url_in_bing(candidate_url)
-      return result if result
+  def process_results(response)
+    web_results = response.web.results || []
+    processed = web_results.collect do |result|
+      title = result.title rescue nil
+      content = result.description || ''
+      title.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: content}) : nil
     end
-    nil
-  rescue Exception => e
-    Rails.logger.warn("Trouble determining if URL is in bing: #{e}")
-    nil
+    processed.compact
   end
 
-  def self.url_in_bing(url)
-    normalized_url = normalized_url(url)
-
-    bing_url = BingUrl.find_by_normalized_url(normalized_url)
-    return bing_url.normalized_url if bing_url
-
-    bing_search = BingSearch.new
-    bing_results = bing_search.query(url, 'Web', 0, 10, false, 'off')
-    if bing_results and bing_results.web and bing_results.web.total > 0 and bing_results.web.results.present?
-      result_urls = bing_results.web.results.collect { |r| r['Url'] }
-      result_urls.each do |result_url|
-        url_in_bing = normalized_url(result_url)
-        if normalized_url.to_s.downcase == url_in_bing.downcase
-          return url_in_bing
-        end
-      end
-    end
-    nil
-  rescue Exception
+  def hits(response)
+    (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
 
-  def bing_api_url(query_string, query_sources, offset, count, enable_highlighting, filter_setting)
-    params = [
-      "web.offset=#{offset}",
-      "web.count=#{count}",
-      "AppId=#{APP_ID}",
-      "sources=#{query_sources}",
-      "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
-      "Adult=#{filter_setting}",
-      "query=#{URI.escape(query_string, URI_REGEX)}"
-    ]
-    "#{BING_API_ENDPOINT}?#{params.join('&')}"
+  def bing_offset(response)
+    (response.web.results.blank? ? 0 : response.web.offset) rescue 0
   end
 
-  def self.normalized_url(url)
-    parsed_url = URI.parse(url)
-    parsed_url.path = parsed_url.path.empty? ? '/' : parsed_url.path
-    parsed_url.fragment = nil
-    parsed_url.to_s.gsub(%r[https?://(www\.)?]i, '')
-  rescue URI::InvalidURIError => e
-    nil
+  def index_sources
+    'Spell Web'
+  end
+
+  #TODO: remove url_in_bing and normalize_url checks since I nuked the routine
+
+  private
+  def connection_instance
+    @@api_connection ||= SearchApiConnection.new('bing_api', API_HOST)
   end
 end

@@ -1,0 +1,24 @@
+class GoogleFormattedQuery < FormattedQuery
+  def initialize(options = {})
+    super(options)
+    @query = query_with_sites(build_advanced_query(options))
+  end
+
+  private
+
+  def query_with_sites(user_query)
+    site_and_no_minus_site = user_query.include?('site:') && !user_query.include?('-site:')
+    matching_site_limits = @site_limits.split.select { |site| includes_domain?(site) }
+    remaining_chars = QUERY_STRING_ALLOCATION - user_query.length
+    domains = site_and_no_minus_site ? nil : fill_domains_to_remainder(remaining_chars, matching_site_limits)
+    excluded = user_query.include?('site:') ? nil : @excluded_domains.map { |ed| "-site:#{ed}" }.join(" AND ")
+    keywords = @scope_keywords.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")
+    user_query_parens = "(#{user_query})"
+    sites_keywords = [user_query_parens]
+    sites_keywords << "(#{excluded})" unless excluded.blank?
+    sites_keywords << "(#{domains})" unless domains.blank?
+    sites_keywords << "(#{keywords})" unless keywords.blank?
+    sites_keywords.join(' ')
+  end
+
+end

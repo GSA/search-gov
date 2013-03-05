@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307014939) do
+ActiveRecord::Schema.define(:version => 20130326184820) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130307014939) do
     t.boolean  "jobs_enabled",                                                    :default => false,           :null => false
     t.integer  "agency_id"
     t.boolean  "raw_log_access_enabled",                                          :default => false,           :null => false
+    t.string   "search_engine",                                                   :default => "Bing",          :null => false
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
