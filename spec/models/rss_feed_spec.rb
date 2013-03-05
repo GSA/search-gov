@@ -73,7 +73,7 @@ describe RssFeed do
     context "when the RSS feed is a valid feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        Kernel.stub!(:open).and_return rss
+        HttpConnection.stub!(:get).and_return rss
       end
 
       it "should validate" do

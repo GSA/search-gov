@@ -2401,7 +2401,7 @@ describe Affiliate do
         flickr_api_response = {"id"=>"1600", "username"=>"GregGersh"}
         flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
 
-        Kernel.stub(:open) do |arg|
+        HttpConnection.stub(:get) do |arg|
           case arg
             when %r[http://gdata.youtube.com/feeds/api/users/.+]
             File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
