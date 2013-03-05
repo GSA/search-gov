@@ -12,6 +12,9 @@ UsasearchRails3::Application.configure do
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
+  # enabled by default, but we don't care if the client might be lying about their IP address
+  config.action_dispatch.ip_spoofing_check = false
+
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
