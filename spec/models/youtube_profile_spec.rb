@@ -12,7 +12,7 @@ describe YoutubeProfile do
   it { should validate_presence_of :affiliate_id }
 
   it 'should validate username' do
-    Kernel.should_receive(:open).
+    HttpConnection.should_receive(:get).
         with('http://gdata.youtube.com/feeds/api/users/someinvaliduser').
         and_raise(OpenURI::HTTPError.new('404 Not Found', StringIO.new))
 
@@ -22,7 +22,7 @@ describe YoutubeProfile do
   end
 
   it 'should handle blank xml when fetching xml profile' do
-    Kernel.should_receive(:open).
+    HttpConnection.should_receive(:get).
         with('http://gdata.youtube.com/feeds/api/users/accountclosed').
         and_return(StringIO.new(''))
     mock_doc = mock('doc')
@@ -35,7 +35,7 @@ describe YoutubeProfile do
 
   context '#create' do
     it 'should normalize username' do
-      Kernel.stub(:open) do |arg|
+      HttpConnection.stub(:get) do |arg|
         case arg
         when YoutubeProfile.xml_profile_url('usagency')
           File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
@@ -53,7 +53,7 @@ describe YoutubeProfile do
 
   context '#after_create' do
     before do
-      Kernel.stub(:open) do |arg|
+      HttpConnection.stub(:get) do |arg|
         case arg
         when YoutubeProfile.xml_profile_url('usagency'), YoutubeProfile.xml_profile_url('anotheragency')
           File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
@@ -97,7 +97,7 @@ describe YoutubeProfile do
 
   context '#after_destroy' do
     before do
-      Kernel.stub(:open) do |arg|
+      HttpConnection.stub(:get) do |arg|
         case arg
         when YoutubeProfile.xml_profile_url('usagency'), YoutubeProfile.xml_profile_url('anotheragency')
           File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
