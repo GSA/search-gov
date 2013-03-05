@@ -37,7 +37,7 @@ describe RssFeed do
   context "on create" do
     before do
       rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-      Kernel.stub(:open).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
+      HttpConnection.stub(:get).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
     end
 
     it "should create a new instance given valid attributes" do
@@ -86,7 +86,7 @@ describe RssFeed do
     context "when the URL does not point to an RSS feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
-        Kernel.stub!(:open).and_return rss
+        HttpConnection.stub!(:get).and_return rss
       end
 
       it "should not validate" do
@@ -98,7 +98,7 @@ describe RssFeed do
 
     context "when some error is raised in checking the RSS feed" do
       before do
-        Kernel.stub!(:open).and_raise 'Some exception'
+        HttpConnection.stub!(:get).and_raise 'Some exception'
       end
 
       it "should not validate" do
@@ -194,7 +194,7 @@ describe RssFeed do
       let(:youtube_xml) { File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml') }
 
       before do
-        Kernel.stub(:open) do |arg|
+        HttpConnection.stub(:get) do |arg|
           case arg
           when %r[^http://gdata.youtube.com/feeds/base/videos] then youtube_xml
           end
@@ -213,10 +213,10 @@ describe RssFeed do
 
       before do
         video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-        Kernel.stub(:open).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&author=USGovernment').and_return(video_content)
+        HttpConnection.stub(:get).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&author=USGovernment').and_return(video_content)
 
         non_video_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        Kernel.stub(:open).with('http://usasearch.howto.gov/rss').and_return(non_video_content)
+        HttpConnection.stub(:get).with('http://usasearch.howto.gov/rss').and_return(non_video_content)
       end
 
       specify { rss_feed.should_not be_is_video }

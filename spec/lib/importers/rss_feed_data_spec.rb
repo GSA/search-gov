@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe RssFeedData do
+  disconnect_sunspot
   fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
   describe '#import' do
     context 'when the feed is in the RSS 2.0 format' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        Kernel.should_receive(:open).with('http://some.agency.gov/feed').and_return rss_feed_content
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
       end
 
       context 'when there are no news items associated with the source' do
@@ -114,7 +115,7 @@ describe RssFeedData do
 
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
-        Kernel.should_receive(:open).with(url).and_return rss_feed_content
+        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
       end
 
       context 'when there are no news items associated with the source' do
@@ -141,7 +142,7 @@ describe RssFeedData do
       before do
         rss_feed.news_items.destroy_all
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
-        Kernel.should_receive(:open).with(url).and_return rss_feed_content
+        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
 
       end
 

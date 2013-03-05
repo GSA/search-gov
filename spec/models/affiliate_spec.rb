@@ -462,7 +462,7 @@ describe Affiliate do
 
     it "should ignore rss_feeds_attributes with blank name or blank rss_feed_urls_attributes" do
       rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-      Kernel.should_receive(:open).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
+      HttpConnection.should_receive(:get).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
 
       rss_feeds_attributes = { '0' => { :name => '', :rss_feed_urls_attributes => { '0' => { :url => '' } } },
                                '1' => { :name => 'Blog', :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } } } }
@@ -2276,7 +2276,7 @@ describe Affiliate do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html"))
         Nokogiri::HTML::Document.stub!(:parse).and_return doc
-        Kernel.stub!(:open).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
+        HttpConnection.stub(:get).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
       end
 
       it "should add the feed to the affiliate's rss feeds" do

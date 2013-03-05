@@ -13,7 +13,7 @@ describe RssFeedUrl do
     context "when the RSS feed is a valid feed" do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        Kernel.should_receive(:open).with('http://bogus.example.gov/feed/blog').and_return(rss_feed_content)
+        HttpConnection.should_receive(:get).with('http://bogus.example.gov/feed/blog').and_return(rss_feed_content)
       end
 
       it "should be_valid" do
@@ -24,7 +24,7 @@ describe RssFeedUrl do
     context "when the URL does not point to an RSS feed" do
       before do
         not_rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
-        Kernel.should_receive(:open).with('http://bogus.example.gov/not_feed/blog').and_return(not_rss_feed_content)
+        HttpConnection.should_receive(:get).with('http://bogus.example.gov/not_feed/blog').and_return(not_rss_feed_content)
       end
 
       it "should not be valid" do
@@ -36,7 +36,7 @@ describe RssFeedUrl do
 
     context "when some error is raised in checking the RSS feed" do
       before do
-        Kernel.should_receive(:open).and_raise('Some exception')
+        HttpConnection.should_receive(:get).and_raise('Some exception')
       end
 
       it "should not be valid" do
@@ -57,7 +57,7 @@ describe RssFeedUrl do
     context "when URL has not changed" do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        Kernel.should_receive(:open).with('http://bogus.example.gov/feed').and_return(rss_feed_content)
+        HttpConnection.should_receive(:get).with('http://bogus.example.gov/feed').and_return(rss_feed_content)
       end
 
       it "should not validate url again" do
@@ -73,7 +73,7 @@ describe RssFeedUrl do
     context "when url starts with gdata.youtube.com/feeds/" do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-        YoutubeConnection.should_receive(:get).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').and_return(rss_feed_content)
+        HttpConnection.should_receive(:get).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').and_return(rss_feed_content)
       end
 
       specify { rss_feed.rss_feed_urls.create!(:url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').should be_is_video }

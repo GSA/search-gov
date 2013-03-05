@@ -28,7 +28,7 @@ class RssFeedData
       begin
         RssFeedUrl.transaction do
           rss_feed_url.touch(:last_crawled_at)
-          doc = Nokogiri::XML(Kernel.open(rss_feed_url.url))
+          doc = Nokogiri::XML(HttpConnection.get(rss_feed_url.url))
           feed_type = detect_feed_type(doc)
           if feed_type.nil?
             rss_feed_url.update_attributes!(last_crawl_status: 'Unknown feed type.')
