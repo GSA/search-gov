@@ -302,7 +302,7 @@ describe WebSearch do
         before do
           @affiliate = affiliates(:basic_affiliate)
           @affiliate.add_site_domains("foo.com" => nil)
-          @bing_search.should_receive(:query).with(/\(government site:www.foo.com\)/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          @bing_search.should_receive(:query).with(/\(government\) \(site:www.foo.com\)/, anything(), anything(), anything(), anything(), anything()).and_return ""
           @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'www.foo.com'))
           @search.stub!(:handle_bing_response)
           @search.stub!(:log_serp_impressions)
@@ -310,8 +310,8 @@ describe WebSearch do
         end
 
         it "should set the query with the site limits if they are part of the domain" do
-          @search.query.should == 'government site:www.foo.com'
-          @search.formatted_query.should == '(government site:www.foo.com)'
+          @search.query.should == 'government'
+          @search.formatted_query.should == '(government) (site:www.foo.com)'
         end
       end
 
@@ -510,7 +510,7 @@ describe WebSearch do
         it "should construct a query string with site limits for each of the sites" do
           @affiliate.add_site_domains({"whitehouse.gov" => nil, "omb.gov" => nil})
           search = WebSearch.new(@valid_options.merge(:site_limits => 'whitehouse.gov omb.gov'))
-          @bing_search.should_receive(:query).with(/site:whitehouse.gov OR site:omb.gov/, anything(), anything, anything(), anything(), anything()).and_return ""
+          @bing_search.should_receive(:query).with(/site:omb.gov OR site:whitehouse.gov/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
 
@@ -574,7 +574,7 @@ describe WebSearch do
                                                       :file_type => 'pdf',
                                                       :site_limits => 'whitehouse.gov omb.gov',
                                                       :site_excludes => 'nasa.gov noaa.gov'))
-          @bing_search.should_receive(:query).with(/\(intitle:government \"barack obama\" cars OR stimulus -intitle:clunkers filetype:pdf site:whitehouse.gov OR site:omb.gov -site:nasa.gov -site:noaa.gov\)/, anything(), anything, anything(), anything(), anything()).and_return ""
+          @bing_search.should_receive(:query).with(/\(intitle:government \"barack obama\" cars OR stimulus -intitle:clunkers filetype:pdf -site:nasa.gov -site:noaa.gov\) \(site:omb.gov OR site:whitehouse.gov\)/, anything(), anything, anything(), anything(), anything()).and_return ""
           search.run
         end
       end

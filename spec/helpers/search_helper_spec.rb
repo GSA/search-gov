@@ -584,23 +584,21 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   describe "#display_search_all_affiliate_sites_suggestion" do
     context "when affiliate is present and matching_site_limits is blank" do
       let(:search) { mock('search') }
-      let(:affiliate) { mock('affiliate', :name => 'nps') }
 
       before do
         search.should_receive(:matching_site_limits).and_return(nil)
       end
 
-      specify { helper.display_search_all_affiliate_sites_suggestion(search, affiliate).should be_blank }
+      specify { helper.display_search_all_affiliate_sites_suggestion(search).should be_blank }
     end
 
     context "when affiliate is present and matching_site_limits is present" do
       let(:search) { mock('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
-      let(:affiliate) { mock('affiliate', :name => 'nps') }
 
       it "should display a link to 'Yosemite from all sites'" do
         search.should_receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
         helper.should_receive(:search_path).with(hash_not_including(:sitelimit)).and_return('search_path_with_params')
-        content =  helper.display_search_all_affiliate_sites_suggestion(search, affiliate)
+        content =  helper.display_search_all_affiliate_sites_suggestion(search)
         content.should match /#{Regexp.escape("We're including results for 'Yosemite' from only WWW1.NPS.GOV.")}/
         content.should have_selector("a[href='search_path_with_params']", :content => "'Yosemite' from all sites")
         content.should be_html_safe

@@ -86,10 +86,6 @@ class WebSearch < Search
     query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ') if options[:query_or].present?
     query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ') if options[:query_not].present?
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
-    unless options[:site_limits].blank?
-      @matching_site_limits = options[:site_limits].split.collect { |site| site if options[:affiliate].includes_domain?(site) }.compact
-      query += " #{self.matching_site_limits.collect { |site| "site:#{site}" }.join(' OR ')}"
-    end
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
   end
@@ -339,7 +335,11 @@ class WebSearch < Search
   def fill_domains_to_remainder
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
     domains, delimiter = [], " OR "
-    affiliate.domains_as_array.each do |site|
+    unless @options[:site_limits].blank?
+      @matching_site_limits = @options[:site_limits].split.collect { |site| site if affiliate.includes_domain?(site) }.compact
+    end
+    domains_to_process = @matching_site_limits.present? ? @matching_site_limits : affiliate.domains_as_array
+    domains_to_process.each do |site|
       site_str = "site:#{site}"
       encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
       break if (remaining_chars -= encoded_str.length) < 0

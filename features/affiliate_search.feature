@@ -784,8 +784,9 @@ Feature: Affiliate Search
     Then I should see the agency govbox
     When I fill in "query" with "benefits" in the agency govbox
     And I press "Search" in the agency govbox
-    Then I should see the browser page titled "benefits site:tsa.gov - USA.gov Search Results"
-    And the "query" field should contain "benefits site:tsa.gov"
+    Then I should see the browser page titled "benefits - USA.gov Search Results"
+    And the "query" field should contain "benefits"
+    And I should see "We're including results for 'benefits' from only tsa.gov."
 
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
@@ -1211,7 +1212,7 @@ Feature: Affiliate Search
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
-  Scenario: Searching for site specific results
+  Scenario: Searching for site specific results using query
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
@@ -1222,3 +1223,12 @@ Feature: Affiliate Search
     And I fill in "query" with "jazz site:wikipedia.org"
     And I press "Search"
     Then I should not see "en.wikipedia.org/wiki/Jazz"
+
+  Scenario: Searching for site specific results using sitelimit
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+    When I am on agency.gov's search page with site limited to "answers.usa.gov"
+    And I fill in "query" with "jobs"
+    And I press "Search"
+    Then I should see "answers.usa.gov/"
