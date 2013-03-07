@@ -322,7 +322,7 @@ class WebSearch < Search
     excluded_domains = (@query =~ /-site:/) ? nil : affiliate.excluded_domains.collect { |ed| "-site:" + ed.domain }.join(" AND ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scope_ids.blank? and domains.blank?
-    affiliate_scope += scope_ids unless scope_ids.blank?
+    affiliate_scope += scope_ids unless scope_ids.blank? or @matching_site_limits.present?
     affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
     affiliate_scope += domains unless domains.blank?
     affiliate_scope += ")" unless scope_ids.blank? and domains.blank?

@@ -315,6 +315,25 @@ describe WebSearch do
         end
       end
 
+      context 'when the affiliate has a scope id and the sitelimit contains a matching domain' do
+        before do
+          @affiliate = affiliates(:basic_affiliate)
+          @affiliate.scope_ids = "PatentClass"
+          @affiliate.add_site_domains("foo.com" => nil)
+
+          @bing_search.should_receive(:query).with(/\(government\) \(site:www.foo.com\)/, anything(), anything(), anything(), anything(), anything()).and_return ""
+          @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'www.foo.com'))
+          @search.stub!(:handle_bing_response)
+          @search.stub!(:log_serp_impressions)
+          @search.run
+        end
+
+        it 'should set the query with the site limits if they are part of the domain' do
+          @search.query.should == 'government'
+          @search.formatted_query.should == '(government) (site:www.foo.com)'
+        end
+      end
+
       context "when affiliate has more than one domain specified and sitelimit does not contain matching domain" do
         before do
           @affiliate = affiliates(:power_affiliate)
