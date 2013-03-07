@@ -1,7 +1,6 @@
 class ResetEmailTemplates < ActiveRecord::Migration
   def up
-    EmailTemplate.delete_all
-    EmailTemplate.load_default_templates
+    EmailTemplate.delete_all(:name => 'objectionable_content_alert')
   end
 
   def down
