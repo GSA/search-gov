@@ -1,6 +1,6 @@
 class QueriesClicksStat < ActiveRecord::Base
   validates_presence_of :affiliate, :query, :day, :url, :times
-  validates_uniqueness_of :url, :scope => [:affiliate, :query, :day]
+  validates_uniqueness_of :url, :scope => [:affiliate, :query, :day], :case_sensitive => false
 
   class << self
     def top_urls(affiliate_name, query, start_date, end_date)

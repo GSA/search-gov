@@ -40,7 +40,7 @@ describe BoostedContent do
 
     it "should validate unique url" do
       BoostedContent.create!(@valid_attributes)
-      duplicate = BoostedContent.new(@valid_attributes)
+      duplicate = BoostedContent.new(@valid_attributes.merge(:url => @valid_attributes[:url].upcase))
       duplicate.should_not be_valid
       duplicate.errors[:url].first.should =~ /already been boosted/
     end
@@ -58,7 +58,7 @@ describe BoostedContent do
 
     it "should save URL with http:// prefix when it does not start with http(s)://" do
       url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
-      prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+      prefixes = %w( http https invalidHtTp:// invalidhttps:// invalidHttPsS://)
       prefixes.each do |prefix|
         boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
         boosted_content.url.should == "http://#{prefix}#{url}"
@@ -67,7 +67,7 @@ describe BoostedContent do
 
     it "should save URL as is when it starts with http(s)://" do
       url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
-      prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+      prefixes = %w( http:// HTTPS:// )
       prefixes.each do |prefix|
         boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
         boosted_content.url.should == "#{prefix}#{url}"

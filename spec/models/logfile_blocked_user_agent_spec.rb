@@ -1,15 +1,15 @@
 require 'spec_helper'
-describe ReportRecipient do
-  fixtures :report_recipients
+describe LogfileBlockedUserAgent do
+  fixtures :logfile_blocked_user_agents
 
   before do
-    @valid_attributes = {:email => "somebody@the.gov"}
+    @valid_attributes = {:agent => "spammy"}
   end
 
   it "should create a new instance given valid attributes" do
-    ReportRecipient.create!(@valid_attributes)
+    LogfileBlockedUserAgent.create!(@valid_attributes)
   end
 
-  it { should validate_presence_of :email }
-  it { should validate_uniqueness_of :email }
+  it { should validate_presence_of :agent }
+  it { should validate_uniqueness_of(:agent).case_insensitive }
 end

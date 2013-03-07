@@ -11,6 +11,6 @@ describe FeaturedCollectionKeyword do
       featured_collections(:basic).featured_collection_keywords.create!(:value => 'hurricane')
     end
 
-    it { should validate_uniqueness_of(:value).scoped_to(:featured_collection_id) }
+    it { should validate_uniqueness_of(:value).scoped_to(:featured_collection_id).case_insensitive }
   end
 end

@@ -13,7 +13,7 @@ describe UrlPrefix do
   describe "Creating new instance" do
     it { should belong_to :document_collection }
     it { should validate_presence_of :prefix }
-    it { should validate_uniqueness_of(:prefix).scoped_to(:document_collection_id) }
+    it { should validate_uniqueness_of(:prefix).scoped_to(:document_collection_id).case_insensitive }
     it { should_not allow_value("foogov").for(:prefix)}
     it { should allow_value("http://www.foo.gov/").for(:prefix)}
     it { should allow_value("https://www.foo.gov/").for(:prefix)}

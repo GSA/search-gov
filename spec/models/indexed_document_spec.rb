@@ -223,7 +223,7 @@ describe IndexedDocument do
 
   it "should validate unique url" do
     IndexedDocument.create!(@valid_attributes)
-    duplicate = IndexedDocument.new(@valid_attributes)
+    duplicate = IndexedDocument.new(@valid_attributes.merge(:url => @valid_attributes[:url].upcase))
     duplicate.should_not be_valid
     duplicate.errors[:url].first.should =~ /already been added/
   end

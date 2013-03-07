@@ -11,5 +11,5 @@ describe LogfileBlockedRegexp do
   end
 
   it { should validate_presence_of :regexp }
-  it { should validate_uniqueness_of :regexp }
+  it { should validate_uniqueness_of(:regexp).case_insensitive }
 end

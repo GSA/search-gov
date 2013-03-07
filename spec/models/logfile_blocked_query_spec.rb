@@ -11,5 +11,5 @@ describe LogfileBlockedQuery do
   end
 
   it { should validate_presence_of :query }
-  it { should validate_uniqueness_of :query }
+  it { should validate_uniqueness_of(:query).case_insensitive }
 end

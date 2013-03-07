@@ -1,6 +1,6 @@
 class Robot < ActiveRecord::Base
   validates_presence_of :domain
-  validates_uniqueness_of :domain
+  validates_uniqueness_of :domain, :case_sensitive => false
   DOWNLOAD_TIMEOUT_SECS = 10
 
   def disallows?(target_path)

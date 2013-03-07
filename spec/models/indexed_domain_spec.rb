@@ -14,7 +14,7 @@ describe IndexedDomain do
   it { should belong_to :affiliate }
   it { should have_many :indexed_documents }
   it { should have_many :common_substrings }
-  it { should validate_uniqueness_of(:domain).scoped_to(:affiliate_id) }
+  it { should validate_uniqueness_of(:domain).scoped_to(:affiliate_id).case_insensitive }
 
   it "should create a new instance given valid attributes" do
     IndexedDomain.create!(@valid_attributes)

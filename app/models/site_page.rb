@@ -17,7 +17,7 @@ class SitePage < ActiveRecord::Base
       :search_start_page_path => "/system/selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
       :url_slug_prefix => "respuestas/"}
   }
-  validates_uniqueness_of :url_slug
+  validates_uniqueness_of :url_slug, :case_sensitive => false
   validates_presence_of :url_slug
 
   def self.crawl_usa_gov

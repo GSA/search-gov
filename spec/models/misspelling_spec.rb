@@ -8,7 +8,7 @@ describe Misspelling do
 
     it { should validate_presence_of :wrong }
     it { should validate_presence_of :rite }
-    it { should validate_uniqueness_of :wrong }
+    it { should validate_uniqueness_of(:wrong).case_insensitive }
     it { should ensure_length_of(:wrong).is_at_least(3).is_at_most(80) }
     it { should_not allow_value("two words").for(:wrong) }
     %w(wwwgsa.gov español).each do |value|

@@ -5,7 +5,7 @@ describe SitePage do
   fixtures :site_pages
 
   describe "Creating new instance" do
-    it { should validate_uniqueness_of :url_slug }
+    it { should validate_uniqueness_of(:url_slug).case_insensitive }
     it { should validate_presence_of :url_slug }
 
     it "should create a new instance given valid attributes" do

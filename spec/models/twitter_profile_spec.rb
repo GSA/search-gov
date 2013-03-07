@@ -52,8 +52,8 @@ describe TwitterProfile do
   it "should create an instance with valid attributes" do
     TwitterProfile.create!(@valid_attributes)
 
-    should validate_uniqueness_of :twitter_id
-    should validate_uniqueness_of :screen_name
+    should validate_uniqueness_of(:twitter_id).case_insensitive
+    should validate_uniqueness_of(:screen_name).case_insensitive
   end
   it { should have_many :tweets }
   it { should have_and_belong_to_many :affiliates }

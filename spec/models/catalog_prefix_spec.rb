@@ -9,7 +9,7 @@ describe CatalogPrefix do
 
   describe "Creating new instance" do
     it { should validate_presence_of :prefix }
-    it { should validate_uniqueness_of(:prefix) }
+    it { should validate_uniqueness_of(:prefix).case_insensitive }
     it { should_not allow_value("foogov.gov/script").for(:prefix)}
     it { should allow_value("http://www.foo.gov/").for(:prefix)}
     it { should allow_value("http://foo.gov/subfolder").for(:prefix)}

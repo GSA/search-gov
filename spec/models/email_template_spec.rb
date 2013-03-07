@@ -14,20 +14,18 @@ describe EmailTemplate do
   it { should validate_presence_of :body }
   it "should create a new instance given valid attributes" do
     EmailTemplate.create!(@valid_attributes)
-
-    should validate_uniqueness_of :name
+    should validate_uniqueness_of(:name).case_insensitive
   end
 
   describe "#load_default_templates" do
     it "should load all the templates when no parameter is passed in" do
       EmailTemplate.load_default_templates
-      EmailTemplate.count.should == 18
+      EmailTemplate.count.should == EmailTemplate::DEFAULT_SUBJECT_HASH.size
     end
-
 
     context "when specifying a specific set of templates" do
       it "should only reload those templates, and leave the rest alone" do
-        EmailTemplate.count.should == 18
+        EmailTemplate.count.should == EmailTemplate::DEFAULT_SUBJECT_HASH.size
         before_time = Time.now
         sleep(1)
         EmailTemplate.load_default_templates(["affiliate_monthly_report", "mobile_feedback"])

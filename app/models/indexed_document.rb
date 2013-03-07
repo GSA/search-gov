@@ -10,7 +10,7 @@ class IndexedDocument < ActiveRecord::Base
   has_and_belongs_to_many :forms
   validates_presence_of :url, :affiliate_id
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
-  validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
+  validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000

@@ -24,8 +24,8 @@ describe NewsItem do
     it { should validate_presence_of :description }
     it { should validate_presence_of :published_at }
     it { should validate_presence_of :guid }
-    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id) }
-    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_id) }
+    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id).case_insensitive }
+    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_id).case_insensitive }
     it { should validate_presence_of :rss_feed_id }
     it { should validate_presence_of :rss_feed_url_id }
     it { should belong_to :rss_feed }

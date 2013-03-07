@@ -2,7 +2,7 @@ class CommonSubstring < ActiveRecord::Base
   belongs_to :indexed_domain
   before_validation :strip_whitespace
   validates_presence_of :substring, :indexed_domain_id, :saturation
-  validates_uniqueness_of :substring, :scope => :indexed_domain_id
+  validates_uniqueness_of :substring, :scope => :indexed_domain_id, :case_sensitive => false
 
   after_commit :remove_from_indexed_documents, :on => :create
 

@@ -1,6 +1,6 @@
 class Agency < ActiveRecord::Base
   validates_presence_of :name, :domain
-  validates_uniqueness_of :domain
+  validates_uniqueness_of :domain, :case_sensitive => false
   has_many :agency_queries, :dependent => :destroy
   has_many :agency_urls, :dependent => :destroy
   has_many :affiliates

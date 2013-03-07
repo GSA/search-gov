@@ -16,7 +16,7 @@ describe SaytSuggestion do
     it { should belong_to :affiliate }
     it { should validate_presence_of :affiliate }
     it { should validate_presence_of :phrase }
-    it { should validate_uniqueness_of(:phrase).scoped_to(:affiliate_id) }
+    it { should validate_uniqueness_of(:phrase).scoped_to(:affiliate_id).case_insensitive }
     it { should ensure_length_of(:phrase).is_at_least(3).is_at_most(80) }
     ["citizenship[", "email@address.com", "\"over quoted\"", "colon: here", "http:something", "site:something", "intitle:something", "passports'", ".mp3", "' pictures"].each do |phrase|
       it { should_not allow_value(phrase).for(:phrase) }

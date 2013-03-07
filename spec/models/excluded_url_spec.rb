@@ -16,7 +16,7 @@ describe ExcludedUrl do
     end
 
     it { should validate_presence_of :url }
-    it { should validate_uniqueness_of(:url).scoped_to(:affiliate_id) }
+    it { should validate_uniqueness_of(:url).scoped_to(:affiliate_id).case_insensitive }
     it { should belong_to(:affiliate) }
 
     it "should unescape the URL" do

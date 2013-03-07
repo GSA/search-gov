@@ -16,7 +16,7 @@ describe FacebookProfile do
 
   it "should create a new instance with valid attributes" do
     FacebookProfile.create!(@valid_attributes)
-    should validate_uniqueness_of(:username).scoped_to(:affiliate_id).with_message('has already been added')
+    should validate_uniqueness_of(:username).scoped_to(:affiliate_id).with_message('has already been added').case_insensitive
   end
 
   it "should strip whitespace from the username before saving" do

@@ -1,7 +1,7 @@
 class SaytFilter < ActiveRecord::Base
   before_validation :squish_whitespace_and_downcase
   validates_presence_of :phrase
-  validates_uniqueness_of :phrase
+  validates_uniqueness_of :phrase, :case_sensitive => false
   validate :both_not_true
   scope :accept, where(:accept => true)
   scope :deny, where(:accept => false)

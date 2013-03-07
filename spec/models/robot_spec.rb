@@ -8,7 +8,7 @@ describe Robot do
 
   context "when creating a new Robot" do
     it { should validate_presence_of :domain }
-    it { should validate_uniqueness_of(:domain) }
+    it { should validate_uniqueness_of(:domain).case_insensitive }
   end
 
   let(:robot) { Robot.create!(@valid_attributes) }

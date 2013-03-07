@@ -15,7 +15,7 @@ describe DocumentCollection do
     it { should belong_to :affiliate }
     it { should have_many(:url_prefixes).dependent(:destroy) }
     it { should validate_presence_of :name }
-    it { should validate_uniqueness_of(:name).scoped_to(:affiliate_id) }
+    it { should validate_uniqueness_of(:name).scoped_to(:affiliate_id).case_insensitive }
 
     it "should create navigation" do
       dc = DocumentCollection.create!(@valid_attributes)

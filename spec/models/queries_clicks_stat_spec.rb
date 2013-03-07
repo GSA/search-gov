@@ -18,7 +18,7 @@ describe QueriesClicksStat do
     it { should validate_presence_of :times }
     it { should validate_presence_of :affiliate }
     it { should validate_presence_of :url }
-    it { should validate_uniqueness_of(:url).scoped_to([:affiliate, :query, :day]) }
+    it { should validate_uniqueness_of(:url).scoped_to([:affiliate, :query, :day]).case_insensitive }
 
     it "should create a new instance given valid attributes" do
       QueriesClicksStat.create!(@valid_attributes)

@@ -14,7 +14,7 @@ describe CommonSubstring do
   it { should validate_presence_of :substring }
   it { should validate_presence_of :indexed_domain_id }
   it { should validate_presence_of :saturation }
-  it { should validate_uniqueness_of(:substring).scoped_to(:indexed_domain_id) }
+  it { should validate_uniqueness_of(:substring).scoped_to(:indexed_domain_id).case_insensitive }
 
   describe "creating a new CommonSubstring" do
     it "should create a new instance given valid attributes" do

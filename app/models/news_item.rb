@@ -1,8 +1,8 @@
 class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_id, :rss_feed_url_id
   validates_presence_of :description, :unless => :is_youtube_video?
-  validates_uniqueness_of :guid, :scope => :rss_feed_id
-  validates_uniqueness_of :link, :scope => :rss_feed_id
+  validates_uniqueness_of :guid, :scope => :rss_feed_id, :case_sensitive => false
+  validates_uniqueness_of :link, :scope => :rss_feed_id, :case_sensitive => false
   before_validation :clean_text_fields
   belongs_to :rss_feed
   belongs_to :rss_feed_url

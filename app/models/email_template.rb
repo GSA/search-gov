@@ -1,6 +1,6 @@
 class EmailTemplate < ActiveRecord::Base
   validates_presence_of :name, :subject, :body
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
 
   DEFAULT_SUBJECT_HASH = {
       :password_reset_instructions => '[USASearch] Password Reset Instructions',

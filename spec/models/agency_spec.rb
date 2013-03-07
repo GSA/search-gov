@@ -26,7 +26,7 @@ describe Agency do
 
     it { should validate_presence_of :name }
     it { should validate_presence_of :domain }
-    it { should validate_uniqueness_of :domain }
+    it { should validate_uniqueness_of(:domain).case_insensitive }
     it { should have_many :affiliates }
   end
 

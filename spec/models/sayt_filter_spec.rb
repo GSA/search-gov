@@ -5,7 +5,7 @@ describe SaytFilter do
 
   describe "Creating new instance" do
     it { should validate_presence_of :phrase }
-    it { should validate_uniqueness_of :phrase }
+    it { should validate_uniqueness_of(:phrase).case_insensitive }
     it 'should validate only one of filter_only_exact_phrase and is_regex is true' do
       SaytFilter.new(:phrase => "bAd woRd", :filter_only_exact_phrase => true, :is_regex => true).should_not be_valid
     end

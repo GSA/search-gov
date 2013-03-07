@@ -4,7 +4,8 @@ class TwitterProfile < ActiveRecord::Base
   validates_presence_of :screen_name
   validate :must_have_valid_screen_name, :if => :screen_name?
   validates_presence_of :twitter_id, :profile_image_url, :if => :get_twitter_user
-  validates_uniqueness_of :twitter_id, :screen_name
+  validates_uniqueness_of :twitter_id, :case_sensitive => false
+  validates_uniqueness_of :screen_name, :case_sensitive => false
   before_validation :normalize_screen_name
   before_validation :lookup_twitter_id
 

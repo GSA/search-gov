@@ -8,7 +8,7 @@ class SaytSuggestion < ActiveRecord::Base
   before_save :set_whitelisted_status
   validates :affiliate, :presence => true
   validates_presence_of :phrase
-  validates_uniqueness_of :phrase, :scope => :affiliate_id
+  validates_uniqueness_of :phrase, :scope => :affiliate_id, :case_sensitive => false
   validates_length_of :phrase, :within=> (3..80)
   validates_format_of :phrase, :with=> /^[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*$/iu
   belongs_to :affiliate

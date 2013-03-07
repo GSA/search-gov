@@ -11,5 +11,5 @@ describe LogfileWhitelistedClassC do
   end
 
   it { should validate_presence_of :classc }
-  it { should validate_uniqueness_of :classc }
+  it { should validate_uniqueness_of(:classc).case_insensitive }
 end

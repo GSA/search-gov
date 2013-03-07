@@ -13,7 +13,7 @@ class BoostedContent < ActiveRecord::Base
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
-  validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
+  validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validate :publish_start_and_end_dates
   before_save :ensure_http_prefix_on_url
