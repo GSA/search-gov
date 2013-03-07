@@ -61,20 +61,6 @@ GIT
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
 
-GIT
-  remote: git://github.com/scambra/recordselect.git
-  revision: 686ea86e50b2569a900c66e32ca40a3b2975c8ff
-  specs:
-    recordselect (3.2.4)
-      rails (>= 3.1.3)
-
-GIT
-  remote: git://github.com/vhochstein/render_component.git
-  revision: aeec3873019b0f7e8512f7720388666ff42d162f
-  specs:
-    render_component_vho (3.2.1)
-      railties (>= 3.1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -486,11 +472,9 @@ DEPENDENCIES
   rake
   rash
   recaptcha
-  recordselect!
   redis
   redis-namespace
   remarkable_activerecord
-  render_component_vho!
   resque
   resque-priority!
   resque_spec
