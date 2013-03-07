@@ -147,6 +147,7 @@ class ApplicationController < ActionController::Base
 
   def set_search_params
     @search_params = { query: @search.query, affiliate: @affiliate.name }
+    @search_params.merge!(sitelimit: params[:sitelimit]) if params[:sitelimit].present?
     if @search.is_a?(NewsSearch)
       @search_params.merge!(channel: @search.rss_feed.id) if @search.rss_feed
       @search_params.merge!(tbs: params[:tbs]) if params[:since_date].blank? and params[:until_date].blank? and params[:tbs]

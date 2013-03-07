@@ -8,6 +8,7 @@
   = hidden_field_tag :sort_by, params[:sort_by] if params[:sort_by]
   = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
   = hidden_field_tag :affiliate, @affiliate.name
+  = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
   - if params[:since_date].present? || params[:until_date].present?
     = hidden_field_tag :since_date, render_date(@search.since)
     = hidden_field_tag :until_date, render_date(@search.until)

@@ -9,6 +9,7 @@
     = hidden_field_tag :m, params[:m], :id => 'cdr_m'
     = hidden_field_tag :channel, @search.rss_feed.id, id: 'cdr_channel' if @search.rss_feed
     = hidden_field_tag :affiliate, @affiliate.name, id: 'cdr_affiliate'
+    = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
     = hidden_field_tag :sort_by, search_params[:sort_by], id: 'cdr_sort_by' if search_params[:sort_by]
     = hidden_field_tag :contributor, search_params[:contributor], id: 'cdr_contributor' if search_params[:contributor]
     = hidden_field_tag :subject, search_params[:subject], id: 'cdr_subject' if search_params[:subject]

@@ -1228,7 +1228,36 @@ Feature: Affiliate Search
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+    And affiliate "agency.gov" has the following document collections:
+      | name | prefixes                         | is_navigable |
+      | Blog | http://usasearch.howto.gov/post/ | true         |
+    And affiliate "agency.gov" has the following RSS feeds:
+      | name  | url                                                | is_navigable | shown_in_govbox |
+      | Press | http://www.whitehouse.gov/feed/press               | true         | false           |
+      | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         | false           |
     When I am on agency.gov's search page with site limited to "answers.usa.gov"
     And I fill in "query" with "jobs"
     And I press "Search"
+    Then I should see "answers.usa.gov/"
+
+    When I follow "Images" in the left column
+    And I press "Search"
+    And I follow "Everything" in the left column
+    Then I should see "answers.usa.gov/"
+
+    When I follow "Blog" in the left column
+    And I press "Search"
+    And I follow "Everything" in the left column
+    Then I should see "answers.usa.gov/"
+
+    When I follow "Press" in the left column
+    And I press "Search"
+    And I follow "Everything" in the left column
+    Then I should see "answers.usa.gov/"
+
+    When I follow "Press" in the left column
+    And I fill in "From:" with "1/30/2012"
+    And I press "Search" in the results filters
+    And I follow "All Time" in the results filters
+    And I follow "Everything" in the left column
     Then I should see "answers.usa.gov/"

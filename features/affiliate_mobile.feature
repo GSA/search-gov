@@ -124,3 +124,12 @@ Feature: Mobile Search for Affiliate
     And I follow "Next"
     Then I should see "agency site Mobile"
     Then I should see "crawled document"
+
+  Scenario: Searching for site specific results using sitelimit
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+    When I am on agency.gov's search page with site limited to "answers.usa.gov"
+    And I fill in "query" with "jobs"
+    And I press "Search"
+    Then I should see "answers.usa.gov/"

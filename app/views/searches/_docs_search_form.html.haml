@@ -5,4 +5,5 @@
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :dc, params[:dc] if params[:dc]
   = hidden_field_tag :affiliate, @affiliate.name
+  = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
   = submit_tag(t(:search), :id => "search_button")
