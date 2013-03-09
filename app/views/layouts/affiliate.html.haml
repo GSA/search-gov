@@ -6,6 +6,7 @@
     = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
     = render_robots_meta_tag
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
+    = (javascript_include_tag "jquery/jquery.transit.min.js").html_safe
     = stylesheet_link_tag 'compiled/advanced.css'
     = stylesheet_link_tag 'compiled/affiliates/one_serp'
 
@@ -55,5 +56,7 @@
             .connections
               = render_connected_affiliate_links @affiliate, @search ? @search.query : ''
         = yield
+    #footer_container
+      #footer_button &uarr;
       = render_affiliate_footer(@affiliate, @search_options)
     = render :partial => '/shared/analytics'

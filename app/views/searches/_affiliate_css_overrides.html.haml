@@ -1,6 +1,6 @@
 %style{ :type => 'text/css' }
   :sass
-    #container
+    #container, #footer_container
       background-color: #{render_affiliate_css_property_value(css_property_hash, :content_background_color)}
     body
       &.with-content-border #container
@@ -82,4 +82,8 @@
         color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     #search form.advanced legend
       color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
+    #footer_button
+      background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
+      border-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
+      color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
 

@@ -168,4 +168,25 @@ jQuery(document).ready(function() {
       jQuery('#results #custom_range').overlay().close();
     });
   }
+
+  if (jQuery('#footer').length > 0) {
+    var footerHeight = jQuery('#footer').outerHeight(true);
+    if (footerHeight > 0) {
+      var footerHidden = true;
+      jQuery('#footer_button').show();
+      jQuery('#footer_button').click(function () {
+        if (footerHidden) {
+          jQuery('#container').transition({ opacity: 0.1 });
+          jQuery('#footer_container').transition({ y: '-' + footerHeight });
+          jQuery(this).html('&darr;');
+          footerHidden = false;
+        } else {
+          jQuery('#container').transition({ opacity: 100 });
+          jQuery('#footer_container').transition({ y: 0 });
+          jQuery(this).html('&uarr;');
+          footerHidden = true;
+        }
+      });
+    }
+  }
 });

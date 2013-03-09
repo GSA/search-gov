@@ -634,3 +634,29 @@ body
 #infscr-loading
   margin: 0 0 1em 20px
   padding-left: $results-padding-size
+
+#footer_container
+  bottom: 0
+  height: 0
+  position: fixed
+  width: 100%
+  #footer_button
+    +border-top-radius
+    border:
+      color: #CACACA
+      style: solid
+      width: 1px 1px 0
+    cursor: pointer
+    display: none
+    font:
+      size: 1.3em
+      weight: bold
+    height: 30px
+    position: absolute
+    top: -30px
+    right: 5px
+    width: 35px
+  #footer
+    +clearfix
+    border-top: 1px solid #CACACA
+    width: 100%
