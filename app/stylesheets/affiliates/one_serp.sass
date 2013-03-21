@@ -69,7 +69,7 @@ body
 #header.managed ul.managed-header-footer-links
   font-size: 1em
 
-#footer.managed ul.managed-header-footer-links
+#usasearch_footer.managed ul.managed-header-footer-links
   font-size: 0.8em
 
 #search
@@ -635,28 +635,23 @@ body
   margin: 0 0 1em 20px
   padding-left: $results-padding-size
 
-#footer_container
-  bottom: 0
+#usasearch_footer_container
   height: 0
   position: fixed
+  bottom: 0
+  left: 0
+  text-align: left
   width: 100%
-  #footer_button
+  z-index: 10000
+  #usasearch_footer_button
     +border-top-radius
-    border:
-      color: #CACACA
-      style: solid
-      width: 1px 1px 0
     cursor: pointer
     display: none
     font:
-      size: 1.3em
-      weight: bold
-    height: 30px
-    position: absolute
-    top: -30px
+      size: 1em
+    position: fixed
     right: 5px
-    width: 35px
-  #footer
+    bottom: 0
+    padding: 5px 10px
+  #usasearch_footer.header-footer
     +clearfix
-    border-top: 1px solid #CACACA
-    width: 100%

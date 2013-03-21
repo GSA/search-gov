@@ -1165,25 +1165,25 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov,www.howto.gov |
     And affiliate "agency.gov" has the following document collections:
       | name         | prefixes                         | is_navigable | scope_keywords |
-      | Blog         | http://usasearch.howto.gov/post/ | true         |                |
-      | Search Notes | http://usasearch.howto.gov/post/ | true         | search notes   |
+      | Blog         | http://usasearch.howto.gov/blog/ | true         |                |
+      | Search Notes | http://usasearch.howto.gov/blog/ | true         | search notes   |
     And the following IndexedDocuments exist:
-      | title                     | description                      | url                                              | affiliate  | last_crawled_at | last_crawl_status |
-      | First JavaScript article  | This is an article on JavaScript | http://usasearch.howto.gov/post/JavaScript1.html | agency.gov | 11/02/2011      | OK                |
-      | Second JavaScript article | This is an article on JavaScript | http://usasearch.howto.gov/post/JavaScript2.html | agency.gov | 11/02/2011      | OK                |
-      | Other JavaScript article  | This is an article on JavaScript | http://www.howto.gov/topics/OtherJavaScript.html | agency.gov | 11/02/2011      | OK                |
+      | title                       | description                        | url                                                 | affiliate  | last_crawled_at | last_crawl_status |
+      | First social media article  | This is an article on social media | http://usasearch.howto.gov/blog/social-media-1.html | agency.gov | 11/02/2011      | OK                |
+      | Second social media article | This is an article on social media | http://usasearch.howto.gov/blog/social-media-2.html | agency.gov | 11/02/2011      | OK                |
+      | Other social media article  | This is an article on social media | http://www.howto.gov/topics/other-social-media.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
     And I follow "Blog" in the left column
-    And I fill in "query" with "JavaScript"
+    And I fill in "query" with "social media"
     And I press "Search"
-    Then I should see a link to "How to Add JavaScript for Your Third Party Web Services" with url for "http://usasearch.howto.gov/post/26431803694/how-to-add-javascript-for-your-third-party-web-services"
+    Then I should see a link to "How to Add Your Social Media to Our Index" with url for "http://usasearch.howto.gov/blog/how-to-add-your-social-media-to-our-index.html"
     When I follow "Next"
-    Then I should see a link to "First JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript1.html"
-    And I should see a link to "Second JavaScript article" with url for "http://usasearch.howto.gov/post/JavaScript2.html"
-    And I should not see "Other JavaScript article"
+    Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/blog/social-media-1.html"
+    And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/blog/social-media-2.html"
+    And I should not see "Other social media article"
     When I follow "Search Notes" in the left column
     Then I should see some Bing search results
-    And I should not see "How to Add JavaScript for Your Third Party Web Services"
+    And I should not see "How to Add Your Social Media to Our Index"
 
   Scenario: Searching on non navigable document collection
     Given the following Affiliates exist:
@@ -1230,7 +1230,7 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                         | is_navigable |
-      | Blog | http://usasearch.howto.gov/post/ | true         |
+      | Blog | http://usasearch.howto.gov/blog/ | true         |
     And affiliate "agency.gov" has the following RSS feeds:
       | name  | url                                                | is_navigable | shown_in_govbox |
       | Press | http://www.whitehouse.gov/feed/press               | true         | false           |

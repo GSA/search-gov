@@ -37,7 +37,7 @@
   'in the medline govbox' => '.medline',
   'in the agency govbox' => '.agency',
   'in the SERP header' => '#header',
-  'in the SERP footer' => '#footer',
+  'in the SERP footer' => '#usasearch_footer',
   'in the page content' => '.content',
   'in the API TOS section' => '.api.tos',
   'in the registration form' => 'form#new_user',

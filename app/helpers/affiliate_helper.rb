@@ -103,9 +103,9 @@ module AffiliateHelper
         background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
         style = background_color.blank? ? nil : "background-color: #{background_color};"
         html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
-        content_tag(:div, html.html_safe, :id => 'footer', :class => 'managed')
+        content_tag(:div, html.html_safe, id: 'usasearch_footer', class: 'managed')
       elsif !affiliate.uses_managed_header_footer? and affiliate.footer.present?
-        content_tag(:div, affiliate.footer.html_safe, :id => 'footer', :class => 'header-footer')
+        content_tag(:div, affiliate.footer.html_safe, id: 'usasearch_footer', class: 'header-footer')
       end
     end
   end
