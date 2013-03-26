@@ -180,13 +180,11 @@ jQuery(document).ready(function() {
         event.preventDefault();
         if (footerHidden) {
           maxFooterHeight = Math.min(footerHeight, jQuery(window).outerHeight(true) - 40);
-          jQuery('#container').transition({ opacity: 0.1 });
           jQuery('#usasearch_footer_container').transition({ height: maxFooterHeight });
           jQuery('#usasearch_footer_button').html('&#9650;');
           jQuery('#usasearch_footer_button').transition({ bottom: maxFooterHeight });
           footerHidden = false;
         } else {
-          jQuery('#container').transition({ opacity: 100 });
           jQuery('#usasearch_footer_button').transition({ bottom: 0 }, 300);
           jQuery('#usasearch_footer_button').html('&#9660;');
           jQuery('#usasearch_footer_container').transition({ height: 0 }, 300);
