@@ -5,11 +5,17 @@
     body
       &.with-content-border #container
         border: 1px solid #{render_affiliate_css_property_value(css_property_hash, :content_border_color)}
-      &.with-content-box-shadow #container
-        -moz-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
-        -webkit-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
-        -o-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
-        box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+      &.with-content-box-shadow
+        #container
+          -moz-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+          -webkit-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+          -o-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+          box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+        #usasearch_footer
+          -moz-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 1px 5px
+          -webkit-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 1px 5px
+          -o-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 1px 5px
+          box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 1px 5px
     #header, #usasearch_footer
       .managed-header-footer-links
         a, a:visited
@@ -84,6 +90,8 @@
       color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
     #usasearch_footer_container
       background-color: #{render_affiliate_css_property_value(css_property_hash, :page_background_color)}
+      #usasearch_footer
+        background-color: #{render_affiliate_css_property_value(css_property_hash, :content_background_color)}
     #usasearch_footer_container #usasearch_footer_button
       color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
       background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}

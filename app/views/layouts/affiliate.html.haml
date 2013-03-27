@@ -56,7 +56,7 @@
             .connections
               = render_connected_affiliate_links @affiliate, @search ? @search.query : ''
         = yield
-    #usasearch_footer_container
-      #usasearch_footer_button &#9660;
-      = render_affiliate_footer(@affiliate, @search_options)
+      #usasearch_footer_container
+        #usasearch_footer_button &#9660;
+        = render_affiliate_footer(@affiliate, @search_options)
     = render :partial => '/shared/analytics'
