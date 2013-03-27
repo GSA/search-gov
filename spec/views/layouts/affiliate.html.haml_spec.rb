@@ -1,4 +1,6 @@
+# coding: utf-8
 require 'spec_helper'
+
 describe "layouts/affiliate" do
   before do
     affiliate = mock_model(Affiliate,
@@ -90,6 +92,25 @@ describe "layouts/affiliate" do
       render
       rendered.should have_selector("link[href^='/stylesheets/jquery-ui/jquery-ui.custom.css'][type='text/css']")
       rendered.should have_selector("script[src^='/javascripts/jquery/jquery-ui.custom.min.js'][type='text/javascript']")
+    end
+  end
+
+  context 'when the en site has a footer' do
+    it 'should render Show footer tooltip' do
+      render
+      rendered.should have_selector(:a, title: 'Show footer')
+      rendered.should have_content('Hide footer')
+    end
+  end
+
+  context 'when the es site has a footer' do
+    before { I18n.locale = :es }
+    after { I18n.locale = I18n.default_locale }
+
+    it 'should render Mostrar pie de página tooltip' do
+      render
+      rendered.should have_selector(:a, title: 'Mostrar pie de página')
+      rendered.should have_content('Esconder pie de página')
     end
   end
 end

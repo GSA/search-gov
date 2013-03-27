@@ -169,27 +169,32 @@ jQuery(document).ready(function() {
     });
   }
 
-  if (jQuery('#usasearch_footer').length > 0) {
-    var footerHeight = jQuery('#usasearch_footer').outerHeight(true);
+  var footer = jQuery('#usasearch_footer');
+  if ((footer.length) > 0) {
+    var footerHeight = footer.outerHeight(true);
     if (footerHeight > 0) {
       if (!jQuery.support.transition)
         jQuery.fn.transition = jQuery.fn.animate;
       var footerHidden = true;
-      jQuery('#usasearch_footer_button').show();
+      var footerButton = jQuery('#usasearch_footer_button');
+      footerButton.show();
       var containerWidth = jQuery('#container').innerWidth();
-      jQuery('#usasearch_footer').css({ margin: '0 auto', width: containerWidth });
-      jQuery('#usasearch_footer_button').click(function(event) {
+      footer.css({ margin: '0 auto', width: containerWidth });
+      var footerContainer = jQuery('#usasearch_footer_container');
+      footerButton.click(function(event) {
         event.preventDefault();
         if (footerHidden) {
           maxFooterHeight = Math.min(footerHeight, jQuery(window).outerHeight(true) - 40);
-          jQuery('#usasearch_footer_container').transition({ height: maxFooterHeight });
-          jQuery('#usasearch_footer_button').html('&#9650;');
-          jQuery('#usasearch_footer_button').transition({ bottom: maxFooterHeight });
+          footerContainer.transition({ height: maxFooterHeight });
+          jQuery(this).html('&#9650;');
+          jQuery(this).transition({ bottom: maxFooterHeight });
+          jQuery(this).attr('title', jQuery(this).data('tooltip').hideText);
           footerHidden = false;
         } else {
-          jQuery('#usasearch_footer_button').transition({ bottom: 0 }, 300);
-          jQuery('#usasearch_footer_button').html('&#9660;');
-          jQuery('#usasearch_footer_container').transition({ height: 0 }, 300);
+          jQuery(this).transition({ bottom: 0 }, 300);
+          jQuery(this).html('&#9660;');
+          footerContainer.transition({ height: 0 }, 300);
+          jQuery(this).attr('title', jQuery(this).data('tooltip').showText);
           footerHidden = true;
         }
       });
