@@ -176,7 +176,7 @@ jQuery(document).ready(function() {
         jQuery.fn.transition = jQuery.fn.animate;
       var footerHidden = true;
       jQuery('#usasearch_footer_button').show();
-      var containerWidth = jQuery('#container').outerWidth(true);
+      var containerWidth = jQuery('#container').innerWidth();
       jQuery('#usasearch_footer').css({ margin: '0 auto', width: containerWidth });
       jQuery('#usasearch_footer_button').click(function(event) {
         event.preventDefault();

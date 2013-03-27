@@ -3,8 +3,9 @@
     #container
       background-color: #{render_affiliate_css_property_value(css_property_hash, :content_background_color)}
     body
-      &.with-content-border #container
-        border: 1px solid #{render_affiliate_css_property_value(css_property_hash, :content_border_color)}
+      &.with-content-border
+        #container, #usasearch_footer
+          border: 1px solid #{render_affiliate_css_property_value(css_property_hash, :content_border_color)}
       &.with-content-box-shadow
         #container
           -moz-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
