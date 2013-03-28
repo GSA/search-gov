@@ -1,13 +1,24 @@
 namespace :usasearch do
   namespace :twitter do
 
+    task :refresh_lists, [:host] => :environment do |t, args|
+      TwitterData.configure_twitter_auth(args.host)
+      ContinuousWorker.start { TwitterData.refresh_lists }
+    end
+
+    task :refresh_lists_statuses, [:host] => :environment do |t, args|
+      TwitterData.configure_twitter_auth(args.host)
+      ContinuousWorker.start { TwitterData.refresh_lists_statuses }
+    end
+
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
     task :stream, [:host] => [:environment] do |t, args|
       logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/twitter.log")
+      twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
+      args.with_defaults(host: 'default')
+
+      auth_info = twitter_config[args.host] ? twitter_config[args.host] : twitter_config['default']
       TweetStream.configure do |config|
-        twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
-        args.with_defaults(host: 'default')
-        auth_info = twitter_config[args.host] ? twitter_config[args.host] : twitter_config['default']
         auth_info.each do |key, value|
           config.send("#{key}=", value)
         end
@@ -29,39 +40,14 @@ namespace :usasearch do
         end
 
         do_follow = lambda do |twitter_client|
-          twitter_ids = TwitterProfile.twitter_ids_as_array
+          twitter_ids = TwitterProfile.affiliate_twitter_ids
           if twitter_ids.present?
             logger.info "[#{Time.now}] [TWITTER] [CONNECT] Connecting to Twitter to follow #{twitter_ids.size} Twitter profiles."
 
             twitter_client.follow(twitter_ids) do |status|
               logger.info "[#{Time.now}] [TWITTER] [FOLLOW] New tweet received: @#{status.user.screen_name}: #{status.text}"
               begin
-                if TwitterProfile.exists?(:twitter_id => status.user.id)
-                  if status.retweet?
-                    original_status = status.retweeted_status
-                    text = "RT @#{original_status.user.screen_name}: #{original_status.text}"
-                  else
-                    original_status = status
-                    text = original_status.text
-                  end
-
-                  urls = []
-                  urls << original_status.urls if original_status.urls.present?
-                  urls << original_status.media if original_status.media.present?
-                  urls.flatten!
-
-                  sanitized_urls = urls.select do |u|
-                    u.display_url.present? && u.expanded_url.present? && u.url.present?
-                  end.collect do |u|
-                    Struct.new(:display_url, :expanded_url, :url).new(u.display_url, u.expanded_url, u.url)
-                  end
-
-                  Tweet.create(:tweet_id => status.id,
-                               :tweet_text => text,
-                               :published_at => original_status.created_at,
-                               :twitter_profile_id => status.user.id,
-                               :urls => sanitized_urls)
-                end
+                TwitterData.import_tweet(status) if twitter_ids.include?(status.user.id)
               rescue Exception => e
                 logger.error "[#{Time.now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=#{status.id}: #{e.message}"
               end

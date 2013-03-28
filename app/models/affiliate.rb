@@ -25,7 +25,8 @@ class Affiliate < ActiveRecord::Base
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_many :url_prefixes, :through => :document_collections
-  has_and_belongs_to_many :twitter_profiles
+  has_many :affiliate_twitter_settings,:dependent => :destroy
+  has_many :twitter_profiles, through: :affiliate_twitter_settings
   has_many :flickr_profiles, :dependent => :destroy
   has_many :facebook_profiles, :dependent => :destroy
   has_many :youtube_profiles, :dependent => :destroy
@@ -580,6 +581,15 @@ class Affiliate < ActiveRecord::Base
 
   def has_organization_code?
     agency.present? && agency.organization_code.present?
+  end
+
+  def searchable_twitter_ids
+    affiliate_twitter_settings.includes(:twitter_profile).map do |ats|
+      twitter_ids = []
+      twitter_ids.push(ats.twitter_profile.twitter_id)
+      twitter_ids.push(ats.twitter_profile.twitter_lists.map(&:member_ids)) if ats.show_lists?
+      twitter_ids
+    end.flatten.uniq
   end
 
   private

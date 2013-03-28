@@ -723,16 +723,16 @@ Feature: Affiliate Search
   Scenario: Highlighting query terms
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains        |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | search.usa.gov |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | howto.gov |
     When I am on bar.gov's search page
-    And I fill in "query" with "U.S. Government's Official Search Engine"
+    And I fill in "query" with "Helping agencies deliver a great customer experience"
     And I press "Search"
-    Then I should see "Search.USA.gov"
-    And I should not see "Search.USA.gov" in bold font
+    Then I should see "howto.gov"
+    And I should not see "HowTo.gov" in bold font
 
-    When I fill in "query" with "search.usa.gov"
+    When I fill in "query" with "howto.gov"
     And I press "Search"
-    Then I should see "Search.USA.gov" in bold font
+    Then I should see "HowTo.gov" in bold font
 
   Scenario: Filtering indexed documents when they are duplicated in Bing search results
     Given the following Affiliates exist:
@@ -1127,26 +1127,24 @@ Feature: Affiliate Search
 
   Scenario: Searching document collections
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains                           |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov,www.howto.gov |
+      | display_name | name       | contact_email | contact_name | domains        |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name         | prefixes                                                                       | is_navigable |
-      | Blog         | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |
-      | Search Notes | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |
+      | name      | prefixes                 | is_navigable |
+      | Petitions | petitions.whitehouse.gov | true         |
     And the following IndexedDocuments exist:
-      | title                       | description                        | url                                                   | affiliate  | last_crawled_at | last_crawl_status |
-      | First social media article  | This is an article on social media | http://usasearch.howto.gov/manual/social-media-1.html | agency.gov | 11/02/2011      | OK                |
-      | Second social media article | This is an article on social media | http://usasearch.howto.gov/manual/social-media-2.html | agency.gov | 11/02/2011      | OK                |
-      | Other social media article  | This is an article on social media | http://www.howto.gov/topics/other-social-media.html   | agency.gov | 11/02/2011      | OK                |
+      | title                   | description                               | url                                             | affiliate  | last_crawled_at | last_crawl_status |
+      | First petition article  | This is an article death star petition    | http://petitions.whitehouse.gov/petition-1.html | agency.gov | 11/02/2011      | OK                |
+      | Second petition article | This is an article on death star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
-    And I follow "Blog" in the left column
-    And I fill in "query" with "social media"
+    And I follow "Petitions" in the left column
+    And I fill in "query" with "'death star'"
     And I press "Search"
-    Then I should see a link to "Posts tagged releases" with url for "http://usasearch.howto.gov/tagged/releases/"
+    Then I should see a link to "This Isn't the Petition Response You're Looking For | We the ..." with url for "https://petitions.whitehouse.gov/response/isnt-petition-response-youre-looking"
     And I should see a link to "Advanced Search" in the advanced search section
     When I follow "Next"
-    Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/manual/social-media-1.html"
-    And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/manual/social-media-2.html"
+    Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
+    And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
     And I should not see "Other social media article"
 
   Scenario: Searching on non navigable document collection

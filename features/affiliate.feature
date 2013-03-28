@@ -2121,8 +2121,12 @@ Feature: Affiliate clients
     And I press "Save"
     Then I should see "Screen name can't be blank"
     When I fill in "Twitter screen name" with "USASearch"
+    And I check "Show tweets from my lists"
     And I press "Save"
     Then I should see "Added Twitter Profile"
+    And I should see the following table rows:
+      | Service | Profile                |
+      | Twitter | USASearch (show lists) |
     And I should see a link to "USASearch" with url for "http://twitter.com/USASearch" in the social media list
 
     When I follow "Results modules"

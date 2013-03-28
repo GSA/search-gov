@@ -163,11 +163,16 @@ describe Affiliates::SocialMediaController do
         affiliate.stub(:twitter_profiles).and_return(twitter_profiles)
         twitter_profiles.should_receive(:exists?).with(@profile).and_return(false)
         twitter_profiles.should_receive(:<<).with(@profile)
+
+        twitter_setting = mock_model(AffiliateTwitterSetting)
+        affiliate.stub_chain(:affiliate_twitter_settings, :find_by_twitter_profile_id).and_return(twitter_setting)
+        twitter_setting.should_receive(:update_attributes!).with(show_lists: '1')
         affiliate.should_receive(:update_attributes!).with(:is_twitter_govbox_enabled => true)
 
         put :create,
             :affiliate_id => affiliate.id,
             :profile_type => 'TwitterProfile',
+            :show_lists => '1',
             :social_media_profile => { :screen_name => 'USASearch' }
       end
 

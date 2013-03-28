@@ -16,10 +16,10 @@ AWS_BUCKET_NAME = "***REMOVED***"
 CalendarDateSelect.format = :american
 
 Twitter.configure do |config|
-  config.consumer_key = "***REMOVED***"
-  config.consumer_secret = "***REMOVED***"
-  config.oauth_token = "***REMOVED***"
-  config.oauth_token_secret = "***REMOVED***"
+  twitter_auth = YAML.load_file("#{Rails.root}/config/twitter.yml")['cron']
+  twitter_auth.each do |key, value|
+    config.send("#{key}=", value)
+  end
 end
 
 FlickRaw.api_key = "***REMOVED***"

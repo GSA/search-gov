@@ -19,8 +19,8 @@ task :restart_resque_workers, :roles => :resque_workers do
 end
 
 task :restart_twitter_stream, :roles => :twitter do
-  run "/home/search/scripts/stop_twitter_stream"
-  run "/home/search/scripts/start_twitter_stream"
+  run "/home/search/scripts/stop_twitter_tasks"
+  run "/home/search/scripts/start_twitter_tasks"
 end
 
 task :production_solrconfig, :roles => :solr, :except => { :no_release => true } do

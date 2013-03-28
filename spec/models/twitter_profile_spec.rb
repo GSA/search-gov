@@ -11,6 +11,11 @@ describe TwitterProfile do
     }
   end
 
+  it { should have_many :tweets }
+  it { should have_many :affiliates }
+  it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
+  it { should have_and_belong_to_many :twitter_lists }
+
   it { should validate_presence_of :screen_name }
 
   it 'must have valid screen_name' do
@@ -63,8 +68,6 @@ describe TwitterProfile do
     should validate_uniqueness_of(:twitter_id).case_insensitive
     should validate_uniqueness_of(:screen_name).case_insensitive
   end
-  it { should have_many :tweets }
-  it { should have_and_belong_to_many :affiliates }
 
   context "when creating a new TwitterProfile" do
     before do

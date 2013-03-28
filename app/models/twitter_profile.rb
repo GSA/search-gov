@@ -1,6 +1,9 @@
 class TwitterProfile < ActiveRecord::Base
   has_many :tweets, :primary_key => :twitter_id, :dependent => :destroy
-  has_and_belongs_to_many :affiliates
+  has_many :affiliate_twitter_settings, dependent: :destroy
+  has_many :affiliates, through: :affiliate_twitter_settings
+  has_and_belongs_to_many :twitter_lists
+  serialize :lists_members, Array
   validates_presence_of :screen_name
   validate :must_have_valid_screen_name, :if => :screen_name?
   validates_presence_of :twitter_id, :profile_image_url, :if => :get_twitter_user
@@ -17,8 +20,17 @@ class TwitterProfile < ActiveRecord::Base
     "http://twitter.com/#{screen_name}"
   end
 
-  def self.twitter_ids_as_array
-    TwitterProfile.select(:twitter_id).collect(&:twitter_id)
+  def self.affiliate_twitter_ids
+    TwitterProfile.joins(:affiliate_twitter_settings).
+        select('twitter_profiles.twitter_id').
+        map(&:twitter_id)
+  end
+
+  def self.with_show_list_enabled(limit = 15)
+    TwitterProfile.joins(:affiliate_twitter_settings).
+        where('affiliate_twitter_settings.show_lists = 1').
+        order('twitter_profiles.updated_at asc').
+        limit(limit)
   end
 
   private

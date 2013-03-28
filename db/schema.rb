@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502182109) do
+ActiveRecord::Schema.define(:version => 20130503210333) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(:version => 20130502182109) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "affiliate_twitter_settings", :force => true do |t|
+    t.integer  "affiliate_id",                          :null => false
+    t.integer  "twitter_profile_id",                    :null => false
+    t.boolean  "show_lists",         :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "affiliate_twitter_settings", ["affiliate_id", "twitter_profile_id"], :name => "aff_id_tp_id"
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",                                                                                :null => false
@@ -113,13 +123,6 @@ ActiveRecord::Schema.define(:version => 20130502182109) do
   end
 
   add_index "affiliates_form_agencies", ["affiliate_id", "form_agency_id"], :name => "affiliates_form_agencies_on_foreign_keys", :unique => true
-
-  create_table "affiliates_twitter_profiles", :id => false, :force => true do |t|
-    t.integer "affiliate_id",       :null => false
-    t.integer "twitter_profile_id", :null => false
-  end
-
-  add_index "affiliates_twitter_profiles", ["affiliate_id", "twitter_profile_id"], :name => "aff_id_tp_id"
 
   create_table "affiliates_users", :id => false, :force => true do |t|
     t.integer "affiliate_id"
@@ -910,7 +913,27 @@ ActiveRecord::Schema.define(:version => 20130502182109) do
     t.text     "urls"
   end
 
+  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id", :unique => true
   add_index "tweets", ["twitter_profile_id"], :name => "index_tweets_on_twitter_profile_id"
+
+  create_table "twitter_lists", :id => false, :force => true do |t|
+    t.integer  "id",                  :limit => 8,                       :null => false
+    t.text     "member_ids",          :limit => 16777215
+    t.integer  "last_status_id",      :limit => 8,        :default => 1, :null => false
+    t.string   "statuses_updated_at"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+  end
+
+  add_index "twitter_lists", ["id"], :name => "index_twitter_lists_on_id", :unique => true
+
+  create_table "twitter_lists_twitter_profiles", :id => false, :force => true do |t|
+    t.integer "twitter_list_id",    :limit => 8, :null => false
+    t.integer "twitter_profile_id",              :null => false
+  end
+
+  add_index "twitter_lists_twitter_profiles", ["twitter_list_id", "twitter_profile_id"], :name => "twitter_list_id_profile_id", :unique => true
+  add_index "twitter_lists_twitter_profiles", ["twitter_profile_id"], :name => "index_twitter_lists_twitter_profiles_on_twitter_profile_id"
 
   create_table "twitter_profiles", :force => true do |t|
     t.integer  "twitter_id"
@@ -921,7 +944,7 @@ ActiveRecord::Schema.define(:version => 20130502182109) do
     t.string   "name",              :null => false
   end
 
-  add_index "twitter_profiles", ["twitter_id"], :name => "index_twitter_profiles_on_twitter_id"
+  add_index "twitter_profiles", ["twitter_id"], :name => "index_twitter_profiles_on_twitter_id", :unique => true
 
   create_table "url_prefixes", :force => true do |t|
     t.integer  "document_collection_id", :null => false

@@ -7,7 +7,9 @@ module SocialMediaHelper
                      when FlickrProfile then :url
                      when TwitterProfile then :screen_name
                      end
-    second_column = content_tag(:td, link_to(profile.send(profile_column), profile.link_to_profile, :target => "_blank"))
+    profile_link = link_to(profile.send(profile_column), profile.link_to_profile, target: '_blank')
+    profile_link << ' (show lists)' if profile.is_a?(TwitterProfile) && affiliate.affiliate_twitter_settings.where(twitter_profile_id: profile.id, show_lists: 1).exists?
+    second_column = content_tag(:td, profile_link.html_safe)
     preview_link = link_to('Recent Content',
                            preview_affiliate_social_medium_path(:affiliate_id => affiliate.id,
                                                                 :profile_type => profile.class.name,

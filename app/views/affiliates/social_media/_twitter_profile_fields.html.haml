@@ -3,5 +3,9 @@
   = twitter_profile_form.label :screen_name, "Twitter screen name"
   %br
   = twitter_profile_form.text_field :screen_name, :maxlength => 255, :size => nil, :class => 'txt'
+  %br
+  = check_box_tag :show_lists
+  = label_tag :show_lists, 'Show tweets from my lists'
+  %br
 %br
 = submit_tag "Save", :id => "save"

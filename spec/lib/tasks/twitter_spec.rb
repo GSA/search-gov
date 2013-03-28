@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Twitter rake tasks" do
+  disconnect_sunspot
+
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -9,11 +11,42 @@ describe "Twitter rake tasks" do
   end
 
   describe "usasearch:twitter" do
+    describe 'usasearch:twitter:refresh_lists' do
+      let(:task_name) { 'usasearch:twitter:refresh_lists' }
+
+      before { @rake[task_name].reenable }
+
+      it 'should have environment as a prereq' do
+        @rake[task_name].prerequisites.should include('environment')
+      end
+
+      it 'should start a continuous worker' do
+        ContinuousWorker.should_receive(:start)
+        @rake[task_name].invoke
+      end
+    end
+
+    describe 'usasearch:twitter:refresh_lists_statuses' do
+      let(:task_name) { 'usasearch:twitter:refresh_lists_statuses' }
+
+      before { @rake[task_name].reenable }
+
+      it 'should have environment as a prereq' do
+        @rake[task_name].prerequisites.should include('environment')
+      end
+
+      it 'should start a continuous worker' do
+        ContinuousWorker.should_receive(:start)
+        @rake[task_name].invoke
+      end
+    end
+
     describe "usasearch:twitter:stream" do
       attr_reader :stream
 
-      let!(:now) { Time.now }
+      let!(:now) { Time.current }
       let(:task_name) { 'usasearch:twitter:stream' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
@@ -21,15 +54,30 @@ describe "Twitter rake tasks" do
       end
 
       context 'configuring TweetStream' do
-        before { EM.stub!(:run) }
+        let(:auth_info) do
+          { 'default' => { 'consumer_key' => 'default_consumer_key',
+                           'consumer_secret' => 'default_consumer_secret',
+                           'oauth_token' => 'default_oauth_token',
+                           'oauth_token_secret' => 'default_oauth_secret' },
+            'cron' => { 'consumer_key' => 'default_consumer_key',
+                        'consumer_secret' => 'default_consumer_secret',
+                        'oauth_token' => 'cron_oauth_token',
+                        'oauth_token_secret' => 'cron_oauth_secret' } }
+        end
+
+        before do
+          EM.stub!(:run)
+          YAML.should_receive(:load_file).and_return(auth_info)
+        end
 
         context 'when host argument is not specified' do
           it 'should load default auth info' do
             config = mock('config')
             TweetStream.should_receive(:configure).and_yield(config)
-            config.should_receive(:username=).with('usasearchdev')
-            config.should_receive(:password=).with(kind_of(String))
-            config.should_receive(:auth_method=).with(:basic)
+            config.should_receive(:consumer_key=).with('default_consumer_key')
+            config.should_receive(:consumer_secret=).with('default_consumer_secret')
+            config.should_receive(:oauth_token=).with('default_oauth_token')
+            config.should_receive(:oauth_token_secret=).with('default_oauth_secret')
 
             @rake[task_name].invoke
           end
@@ -39,11 +87,10 @@ describe "Twitter rake tasks" do
           it 'should load matching auth info' do
             config = mock('config')
             TweetStream.should_receive(:configure).and_yield(config)
-            config.should_receive(:consumer_key=).with(kind_of(String))
-            config.should_receive(:consumer_secret=).with(kind_of(String))
-            config.should_receive(:oauth_token=).with(kind_of(String))
-            config.should_receive(:oauth_token_secret=).with(kind_of(String))
-            config.should_receive(:auth_method=).with(:oauth)
+            config.should_receive(:consumer_key=).with('default_consumer_key')
+            config.should_receive(:consumer_secret=).with('default_consumer_secret')
+            config.should_receive(:oauth_token=).with('cron_oauth_token')
+            config.should_receive(:oauth_token_secret=).with('cron_oauth_secret')
 
             @rake[task_name].invoke('cron')
           end
@@ -53,9 +100,10 @@ describe "Twitter rake tasks" do
           it 'should load default auth info' do
             config = mock('config')
             TweetStream.should_receive(:configure).and_yield(config)
-            config.should_receive(:username=).with('usasearchdev')
-            config.should_receive(:password=).with(kind_of(String))
-            config.should_receive(:auth_method=).with(:basic)
+            config.should_receive(:consumer_key=).with('default_consumer_key')
+            config.should_receive(:consumer_secret=).with('default_consumer_secret')
+            config.should_receive(:oauth_token=).with('default_oauth_token')
+            config.should_receive(:oauth_token_secret=).with('default_oauth_secret')
 
             @rake[task_name].invoke('doesnotexist')
           end
@@ -66,15 +114,12 @@ describe "Twitter rake tasks" do
         let(:tweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status.json") }
         let(:tweet_status_with_partial_urls_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status_with_partial_urls.json") }
         let(:retweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/retweet_status.json") }
+        let(:affiliate_twitter_ids) { [123].freeze }
 
         before(:each) do
           Time.stub!(:now).and_return(now)
           Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
-
-          TwitterProfile.create!(:twitter_id => 123,
-                                 :screen_name => 'USASearch',
-                                 :name => 'USASearch',
-                                 :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+          TwitterProfile.stub(:affiliate_twitter_ids).and_return(affiliate_twitter_ids)
 
           EM.stub!(:defer).and_yield
           EM.stub!(:stop_event_loop).and_return true
@@ -107,7 +152,7 @@ describe "Twitter rake tasks" do
         end
 
         it "get a list of all the TwitterProfile ids, setup various callbacks, and call follow" do
-          @client.should_receive(:follow).with(TwitterProfile.all.collect(&:twitter_id))
+          @client.should_receive(:follow).with(affiliate_twitter_ids)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @rake[task_name].invoke
         end
@@ -154,7 +199,7 @@ describe "Twitter rake tasks" do
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
           @logger.should_receive(:error).with("[#{now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=258289885373423617: Some Exception")
-          Tweet.stub!(:create).and_raise "Some Exception"
+          TwitterData.should_receive(:import_tweet).and_raise "Some Exception"
           @rake[task_name].invoke
           Tweet.count.should == 0
         end
@@ -169,7 +214,7 @@ describe "Twitter rake tasks" do
         end
 
         it "should delete a status if a delete message is received" do
-          Tweet.create!(:twitter_profile_id => TwitterProfile.first.twitter_id,
+          Tweet.create!(:twitter_profile_id => affiliate_twitter_ids.first,
                         :tweet_id => 1234,
                         :tweet_text => 'DELETE ME.',
                         :published_at => Time.now)
@@ -188,8 +233,6 @@ describe "Twitter rake tasks" do
         end
 
         it "should log when reconnecting" do
-          timestamp = Time.now
-          Time.stub!(:now).and_return timestamp
           @stream.stub!(:each).and_yield(tweet_status_json)
           @stream.stub!(:on_reconnect).and_yield(10, 1)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
@@ -211,7 +254,7 @@ describe "Twitter rake tasks" do
 
         context "when there are no Twitter Profiles" do
           before do
-            TwitterProfile.destroy_all
+            TwitterProfile.should_receive(:affiliate_twitter_ids).and_return([])
           end
 
           it "should not connect to Twitter" do

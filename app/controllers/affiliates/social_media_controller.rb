@@ -27,7 +27,10 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
       @affiliate.twitter_profiles << @profile unless @affiliate.twitter_profiles.exists?(@profile)
     end
     case @profile.class.name
-    when 'TwitterProfile' then @affiliate.update_attributes!(:is_twitter_govbox_enabled => true)
+    when 'TwitterProfile'
+      show_lists = params['show_lists'] || 0
+      @affiliate.affiliate_twitter_settings.find_by_twitter_profile_id(@profile.id).update_attributes!(show_lists: show_lists)
+      @affiliate.update_attributes!(:is_twitter_govbox_enabled => true)
     when 'FlickrProfile' then @affiliate.update_attributes!(:is_photo_govbox_enabled => true)
     end
     flash[:success] = "Added #{@profile.class.name.titleize}"
