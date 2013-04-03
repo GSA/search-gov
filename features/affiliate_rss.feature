@@ -71,10 +71,11 @@ Feature: Affiliate RSS
     And I press "Add"
     Then I should see "RSS feed must have 1 or more URLs"
     And I fill in the following:
-      | Name*          |                                                 |
-      | RSS feed URL 0 | gdata.youtube.com/feeds/base/videos?author=noaa |
+      | Name*          |                                                  |
+      | RSS feed URL 0 | http://api.usa.gov/recalls/recent.rss?per_page=1 |
     And I press "Add"
     Then I should see "Name can't be blank"
+    And I should not see "Rss feed url does not appear to be a valid RSS feed."
 
   Scenario: Previewing crawled news items
     Given the following Affiliates exist:
