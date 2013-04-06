@@ -242,6 +242,10 @@ describe ApplicationHelper do
       helper.truncate_html_prose_on_words( "this line is too long", 12 ).should == "this line is ..."
     end
 
+    it "should keep escaped characters" do
+      helper.truncate_html_prose_on_words( "this line has &lt; input &gt;", 21 ).should == "this line has &lt; ..."
+    end
+
     it "should not chop up entity refernces" do
       helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 10 ).should == "this ..."
       helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 11 ).should == "this ..."
@@ -336,6 +340,34 @@ describe ApplicationHelper do
 
     it "should return /?locale=alocale when locale argument set to 'alocale'" do
       helper.url_for_mobile_home_page('alocale').should == '/?locale=alocale&m=true'
+    end
+  end
+
+  describe '#highlight_hit' do
+    let(:hit) { mock('solr hit') }
+
+    before { hit.stub_chain('instance.is_a?').and_return(false) }
+
+    context 'when the field is highlighted' do
+      let(:highlight) { mock('solr highlight') }
+
+      before { hit.should_receive(:highlight).with(:title).twice.and_return(highlight) }
+
+      it 'should format highlighted field' do
+        formatted_result = mock('formatted result')
+        highlight.should_receive(:format).and_return(formatted_result)
+        helper.highlight_hit(hit, :title).should == formatted_result
+      end
+    end
+
+    context 'when the field is not highlighted' do
+      before { hit.should_receive(:highlight).with(:title).and_return(nil) }
+
+      it 'should HTML escape the field value' do
+        instance = mock_model(NewsItem, title: '<b> &lt;i&gt; title with escaped html </b>')
+        hit.stub(:instance).and_return(instance)
+        helper.highlight_hit(hit, :title).should == '&lt;b&gt; &amp;lt;i&amp;gt; title with escaped html &lt;/b&gt;'
+      end
     end
   end
 end

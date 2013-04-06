@@ -18,8 +18,8 @@ class NewsItem < ActiveRecord::Base
   searchable do
     integer :rss_feed_id
     time :published_at, :trie => true
-    text :title, :stored => true
-    text :description, :stored => true
+    text(:title, stored: true) { CGI::escapeHTML(title ) }
+    text(:description, stored: true) { CGI::escapeHTML(description) unless description.blank? }
     string :link
     string :contributor
     string :subject

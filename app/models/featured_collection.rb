@@ -64,9 +64,11 @@ class FeaturedCollection < ActiveRecord::Base
     string :status
     date :publish_start_on
     date :publish_end_on
-    text :title, :stored => true, :boost => 10.0
+    text :title, :stored => true, :boost => 10.0 do
+      CGI::escapeHTML title
+    end
     text :link_titles, :stored => true, :boost => 4.0 do
-      featured_collection_links.map { |link| link.title }.join(LINK_TITLE_SEPARATOR)
+      featured_collection_links.map { |link| CGI::escapeHTML link.title }.join(LINK_TITLE_SEPARATOR)
     end
     text :keyword_values do
       featured_collection_keywords.map { |keyword| keyword.value }
