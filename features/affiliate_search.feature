@@ -39,12 +39,12 @@ Feature: Affiliate Search
       | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
     And feed "Press" has the following news items:
-      | link                             | title       | guid       | published_ago | multiplier   | published_at | description                       | contributor   | publisher    | subject        |
-      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |      1       |             | item First news item for the feed | president     | briefingroom | economy        |
-      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |      1       |             | item Next news item for the feed  | vicepresident | westwing     | jobs           |
-      | http://www.whitehouse.gov/news/9 | stale first item  | pressuuid9 | months  |      14      |             | item first Stale news item  | vicepresident | westwing     | jobs           |
-      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               |      1       |2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
-      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               |      1       |2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
+      | link                             | title               | guid       | published_ago | multiplier | published_at | description                                | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | day           | 1          |              | <i> item </i> First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item         | pressuuid2 | day           | 1          |              | item Next news item for the feed           | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/9 | stale first item    | pressuuid9 | months        | 14         |              | item first Stale news item                 | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item          | pressuuid3 |               | 1          | 2012-10-01   | item Next news item for the feed           | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item         | pressuuid4 |               | 1          | 2012-10-17   | item Next news item for the feed           | president     | newsroom     | foreign policy |
     And feed "Photo Gallery" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
@@ -77,7 +77,7 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "News for 'first item' by bar site"
     And I should not see "stale"
-    And I should see "First item" in the rss feed govbox
+    And I should see "First <b> item </b>" in the rss feed govbox
     And I should not see "First video item" in the rss feed govbox
     And I should see "Videos of 'first item' by bar site"
     And I should see "First video item" in the video rss feed govbox
@@ -96,7 +96,8 @@ Feature: Affiliate Search
       |m        |false     |
     And I should see "Show Options" in the left column
     And I should see "Hide Options" in the left column
-    And I should see "First item"
+    And I should see "First <b> item </b>"
+    And I should see "i> item </i> First news item for the feed"
     And I should see "First video item"
 
     When I am on bar.gov's search page

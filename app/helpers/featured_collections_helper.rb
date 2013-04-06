@@ -12,7 +12,7 @@ module FeaturedCollectionsHelper
   end
 
   def render_featured_collection_link_title(link, index, highlighted_link_titles)
-    return link.title if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
+    return h(link.title) if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
     highlighted_link_titles[index].html_safe
   end
 

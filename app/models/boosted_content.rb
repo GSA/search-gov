@@ -23,20 +23,20 @@ class BoostedContent < ActiveRecord::Base
   searchable :auto_index => false do
     integer :affiliate_id
     text :title, :stored => true, :boost => 10.0 do |boosted_content|
-      boosted_content.title if boosted_content.affiliate.locale == "en"
+      CGI::escapeHTML(boosted_content.title) if boosted_content.affiliate.locale == "en"
     end
     text :description, :stored => true, :boost => 4.0 do |boosted_content|
-      boosted_content.description if boosted_content.affiliate.locale == "en"
+      CGI::escapeHTML(boosted_content.description) if boosted_content.affiliate.locale == "en"
     end
     text :keywords do |boosted_content|
       boosted_content.boosted_content_keywords.map { |keyword| keyword.value } if boosted_content.boosted_content_keywords.present? and
         boosted_content.affiliate.locale == "en"
     end
     text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |boosted_content|
-      boosted_content.title if boosted_content.affiliate.locale == "es"
+      CGI::escapeHTML(boosted_content.title) if boosted_content.affiliate.locale == "es"
     end
     text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |boosted_content|
-      boosted_content.description if boosted_content.affiliate.locale == "es"
+      CGI::escapeHTML(boosted_content.description) if boosted_content.affiliate.locale == "es"
     end
     text :keywords_es, :as => "keywords_text_es" do |boosted_content|
       boosted_content.boosted_content_keywords.map { |keyword| keyword.value } if boosted_content.boosted_content_keywords.present? and

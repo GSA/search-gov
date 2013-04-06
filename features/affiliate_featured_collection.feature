@@ -367,27 +367,31 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                            | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
-      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | cyclone.jpg     | cyclone image  | NOAA              | http://www.noaa.gov   |
-    And the following featured collection keywords exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | title                                     | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
+      | <i> Worldwide </i> Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | cyclone.jpg     | cyclone image  | NOAA              | http://www.noaa.gov   |
+    And the following featured collection keywords exist for featured collection titled "<i> Worldwide </i> Tropical Cyclone Names":
       | value        |
       | weather      |
       | hurricane    |
       | thunderstorm |
-    And the following featured collection links exist for featured collection titled "Worldwide Tropical Cyclone Names":
+    And the following featured collection links exist for featured collection titled "<i> Worldwide </i> Tropical Cyclone Names":
       | title                 | url                                          |
-      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+      | <i> Atlantic </i>     | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
       | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
     When I go to site.gov's search page
     And I fill in "query" with "Worldwide"
     And I press "Search"
-    Then I should see a link to "Worldwide Tropical Cyclone Names" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
+    Then I should see a link to "<i> Worldwide </i> Tropical Cyclone Names" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
     And I should see a featured collection image section
     And I should see an image with alt text "cyclone image" in the featured collections section
     And I should see a link to "NOAA" with url for "http://www.noaa.gov" in the featured collections section
     And I should see "Image: NOAA" in the featured collections section
-    And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" in the featured collections section
+    And I should see a link to "<i> Atlantic </i>" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" in the featured collections section
     And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" in the featured collections section
+    When I fill in "query" with "atlantic"
+    And I press "Search"
+    Then I should see a link to "<i> Worldwide </i> Tropical Cyclone Names" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
+    And I should see a link to "<i> Atlantic </i>" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" in the featured collections section
 
   Scenario: Affiliate search user sees featured collection without an image
     Given the following Affiliates exist:

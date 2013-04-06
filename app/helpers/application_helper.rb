@@ -171,7 +171,7 @@ module ApplicationHelper
       sym = "#{field_name}_text".to_sym
     end
     return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
-    hit.instance.send(field_name)
+    h hit.instance.send(field_name)
   end
 
   def mobile_menu_item(link_text, target)
@@ -304,7 +304,7 @@ module ApplicationHelper
       # we prefer to chop at word boundaries
 
       when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE
-        mb_chars = node.text
+        mb_chars = node.text? ? CGI::escapeHTML(node.text) : node.text
 
         if mb_chars.length <= max_chars
           buffer << mb_chars

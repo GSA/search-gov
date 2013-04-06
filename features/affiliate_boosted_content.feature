@@ -506,19 +506,25 @@ Feature: Boosted Content
 
   Scenario: Affiliate search user should see only active boosted contents within publish date range
     Given the following Affiliates exist:
-      | display_name | name    | contact_email              | contact_name |
-      | aff site     | aff.gov | affiliate_manager@site.gov | John Bar     |
+      | display_name | name       | contact_email              | contact_name | locale |
+      | aff site     | aff.gov    | affiliate_manager@site.gov | John Bar     | en     |
+      | aff es site  | es.aff.gov | affiliate_manager@site.gov | John Bar     | es     |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
       | title                                | url                         | description                      | status   | publish_start_on | publish_end_on |
       | expired boosted content              | http://www.aff.gov/expired  | expired description              | active   | prev_month       | yesterday      |
       | future1 boosted content              | http://www.aff.gov/future1  | future1 description              | active   | tomorrow         | next_month     |
       | future2 boosted content              | http://www.aff.gov/future2  | future2 description              | active   | tomorrow         |                |
-      | current boosted content              | http://www.aff.gov/current  | current description              | active   | today            | next_month     |
+      | current <b> boosted </b> content     | http://www.aff.gov/current  | current <b> description </b>     | active   | today            | next_month     |
       | current but inactive boosted content | http://www.aff.gov/inactive | current but inactive description | inactive | today            |                |
+    And the following Boosted Content entries exist for the affiliate "es.aff.gov"
+      | title                                   | url                        | description                      | status   | publish_start_on | publish_end_on |
+      | current es <b> boosted </b> content     | http://es.aff.gov/current  | current es <b> description </b>  | active   | today            | next_month     |
+      | current es but inactive boosted content | http://es.aff.gov/inactive | current but inactive description | inactive | today            |                |
     When I go to aff.gov's search page
-    And I fill in "query" with "boosted"
+    And I fill in "query" with "current"
     And I press "Search"
-    Then I should see "current boosted content"
+    Then I should see "current <b> boosted </b> content"
+    And I should see "current <b> description </b>"
     And I should not see "current but inactive"
     When I fill in "query" with "expired"
     And I press "Search"
@@ -529,6 +535,12 @@ Feature: Boosted Content
     When I fill in "query" with "future2"
     And I press "Search"
     Then I should not see "future2 boosted content"
+    When I go to es.aff.gov's search page
+    And I fill in "query" with "current"
+    And I press "Buscar"
+    Then I should see "current es <b> boosted </b> content"
+    And I should see "current es <b> description </b>"
+    And I should not see "current but inactive"
 
   Scenario: Affiliate search user should see boosted contents with higher relevancy on title
     Given the following Affiliates exist:
