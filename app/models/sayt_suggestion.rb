@@ -59,15 +59,6 @@ class SaytSuggestion < ActiveRecord::Base
       suggestions[0, num_of_suggestions]
     end
 
-    def prune_dead_ends
-      all.each do |ss|
-        unless WebSearch.results_present_for?(ss.phrase, ss.affiliate)
-          Rails.logger.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue "usasearch.gov"}"
-          ss.destroy
-        end
-      end
-    end
-
     def populate_for(day, limit = nil)
       name_id_list = Affiliate.select([:id, :name]).collect { |aff| {:name => aff.name, :id => aff.id} }
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
@@ -85,8 +76,7 @@ class SaytSuggestion < ActiveRecord::Base
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
-        #TODO: move to BingSearch
-        if WebSearch.results_present_for?(dqs.query, affiliate, false)
+        if WebSearch.results_present_for?(dqs.query, affiliate)
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck
           if (sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil))

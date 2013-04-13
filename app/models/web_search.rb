@@ -19,14 +19,13 @@ class WebSearch < Search
               :photos,
               :forms,
               :jobs
-              #:search_engine
+
 
   class << self
-    #TODO: move to BingSearch
-    def results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = BingSearch::DEFAULT_FILTER_SETTING)
-      search = new(:query => query, :affiliate => affiliate, :filter => filter_setting)
+    def results_present_for?(query, affiliate)
+      search = new(query: query, affiliate: affiliate)
       search.run
-      spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
+      spelling_ok = search.spelling_suggestion.nil? || search.spelling_suggestion.fuzzily_matches?(query)
       search.results.present? && spelling_ok
     end
   end
@@ -120,7 +119,7 @@ class WebSearch < Search
 
   def assign_module_tag
     if @total > 0
-      #TODO: module name
+      #TODO: fix module name: BWEB and GWEB?
       @module_tag = are_results_by_bing? ? 'BWEB' : 'AIDOC'
     else
       @module_tag = nil

@@ -86,22 +86,6 @@ describe SaytSuggestion do
     end
   end
 
-  describe "#prune_dead_ends" do
-    before do
-      SaytSuggestion.delete_all
-      one = SaytSuggestion.create!(:phrase => "yosemite", :affiliate_id => affiliates(:basic_affiliate).id)
-      two = SaytSuggestion.create!(:phrase => "prune me", :affiliate_id => affiliates(:basic_affiliate).id)
-      WebSearch.should_receive(:results_present_for?).with(one.phrase, affiliates(:basic_affiliate)).and_return true
-      WebSearch.should_receive(:results_present_for?).with(two.phrase, affiliates(:basic_affiliate)).and_return false
-    end
-
-    it "should delete suggestions that yield no search results" do
-      SaytSuggestion.prune_dead_ends
-      SaytSuggestion.count.should == 1
-      SaytSuggestion.first.phrase.should == "yosemite"
-    end
-  end
-
   describe "#populate_for(day, limit = nil)" do
     it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
       Affiliate.all.each do |aff|
@@ -185,8 +169,8 @@ describe SaytSuggestion do
       before do
         @one = DailyQueryStat.create!(:day => Date.current, :query => "no results for this query, or got a spelling correction", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
         @two = DailyQueryStat.create!(:day => Date.current, :query => "got results with no spelling suggestion for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        WebSearch.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate), false).and_return false
-        WebSearch.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate), false).and_return true
+        WebSearch.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate)).and_return false
+        WebSearch.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate)).and_return true
       end
 
       it "should only create SaytSuggestions for the ones with results" do
@@ -408,7 +392,7 @@ describe SaytSuggestion do
       SaytSuggestion.related_search("suggest", @affiliate).should == ["<strong>suggest</strong> me"]
     end
 
-    context "when affiliate has related searches diabled" do
+    context "when affiliate has related searches disabled" do
       before do
         @affiliate.update_attributes!(:is_related_searches_enabled => false)
       end

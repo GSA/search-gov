@@ -14,10 +14,5 @@ namespace :usasearch do
       args.with_defaults(:days_back => 30)
       SaytSuggestion.expire(args.days_back.to_i)
     end
-
-    desc "prune SAYT suggestions that yield no search results"
-    task :prune_dead_ends => :environment do
-      SaytSuggestion.prune_dead_ends
-    end
   end
 end
