@@ -134,108 +134,6 @@ describe WebSearch do
       end
     end
 
-    context "when searching for misspelled terms" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(:query => "p'resident"))
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions_pres.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should have spelling suggestions" do
-        @search.spelling_suggestion.should == "president"
-      end
-    end
-
-    context "when suggestions for misspelled terms contain scopeid or parentheses or excluded domains" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov'))
-        @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should strip them all out" do
-        @search.spelling_suggestion.should == "electrocoagulation"
-      end
-    end
-
-    context "when suggestions for misspelled terms contain a language specification" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(
-                                  :page => 1, :query => '(enfermedades del corazón) language:es (scopeid:usagovall OR site:gov OR site:mil)'))
-        @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spanish_spelling_suggestion.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should strip them all out" do
-        @search.spelling_suggestion.should == "enfermedades del corazon"
-      end
-    end
-
-    context "when original query contained misspelled word and site: param" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(fedderal site:ftc.gov)'))
-        @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/user_supplied_site_param.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should strip it out" do
-        @search.spelling_suggestion.should == "federal"
-      end
-    end
-
-    context "when the Bing spelling suggestion is identical to the original query except for Bing highlight characters" do
-      before do
-        @search = WebSearch.new(:query => 'ct-w4', :affiliate => @affiliate)
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestion_containing_highlight_characters.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should not have a spelling suggestion" do
-        @search.spelling_suggestion.should be_nil
-      end
-    end
-
-    context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
-      before do
-        @search = WebSearch.new(:query => 'bio-tech', :affiliate => @affiliate)
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestion_containing_a_hyphen.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should not have a spelling suggestion" do
-        @search.spelling_suggestion.should be_nil
-      end
-    end
-
-    context "when the original query was a spelling override (i.e., starting with +)" do
-      before do
-        @search = WebSearch.new(:query => '+fedderal', :affiliate => @affiliate)
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/overridden_spelling_suggestion.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.run
-      end
-
-      it "should not have a spelling suggestion" do
-        @search.spelling_suggestion.should be_nil
-      end
-    end
-
     context "when paginating" do
       #default_page = 1
 
@@ -563,6 +461,55 @@ describe WebSearch do
     end
   end
 
+  describe "#to_xml" do
+    context "when error message exists" do
+      let(:search) { WebSearch.new(:query => 'solar'*1000, :affiliate => affiliates(:basic_affiliate)) }
+
+      it "should be included in the search result" do
+        search.run
+        search.to_xml.should =~ /<search><error>That is too long a word. Try using a shorter word.<\/error><\/search>/
+      end
+
+    end
+
+    context "when there are search results" do
+      let(:search) { WebSearch.new(:query => 'solar', :affiliate => affiliates(:basic_affiliate)) }
+      it "should call to_xml on the result_hash" do
+        hash = {}
+        search.should_receive(:result_hash).and_return hash
+        hash.should_receive(:to_xml).with({:indent => 0, :root => :search})
+        search.to_xml
+      end
+
+    end
+  end
+
+  describe "#are_results_by_bing?" do
+    context "when doing a normal search with normal results" do
+      it "should return true" do
+        search = WebSearch.new(:query => 'white house', :affiliate => affiliates(:basic_affiliate))
+        search.run
+        search.are_results_by_bing?.should be_true
+      end
+    end
+
+    context "when the Bing results are empty and there are instead locally indexed results" do
+      before do
+        affiliate = affiliates(:non_existant_affiliate)
+        affiliate.site_domains.create(:domain => "url.gov")
+        affiliate.indexed_documents.create!(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.', :body => "so tedious", :last_crawl_status => IndexedDocument::OK_STATUS)
+        IndexedDocument.reindex
+        Sunspot.commit
+        @search = WebSearch.new(:query => 'white house', :affiliate => affiliate)
+        @search.run
+      end
+
+      it "should return false" do
+        @search.are_results_by_bing?.should be_false
+      end
+    end
+  end
+
   describe ".results_present_for?(query, affiliate)" do
     before do
       @search = WebSearch.new(:affiliate => @affiliate, :query => "some term")
@@ -619,104 +566,4 @@ describe WebSearch do
       end
     end
   end
-
-  describe "#to_xml" do
-    context "when error message exists" do
-      let(:search) { WebSearch.new(:query => 'solar'*1000, :affiliate => affiliates(:basic_affiliate)) }
-
-      it "should be included in the search result" do
-        search.run
-        search.to_xml.should =~ /<search><error>That is too long a word. Try using a shorter word.<\/error><\/search>/
-      end
-
-    end
-
-    context "when there are search results" do
-      let(:search) { WebSearch.new(:query => 'solar', :affiliate => affiliates(:basic_affiliate)) }
-      it "should call to_xml on the result_hash" do
-        hash = {}
-        search.should_receive(:result_hash).and_return hash
-        hash.should_receive(:to_xml).with({:indent => 0, :root => :search})
-        search.to_xml
-      end
-
-    end
-  end
-
-  describe "#are_results_by_bing?" do
-    context "when doing a normal search with normal results" do
-      it "should return true" do
-        search = WebSearch.new(:query => 'white house', :affiliate => affiliates(:basic_affiliate))
-        search.run
-        search.are_results_by_bing?.should be_true
-      end
-    end
-
-    context "when the Bing results are empty and there are instead locally indexed results" do
-      before do
-        affiliate = affiliates(:non_existant_affiliate)
-        affiliate.site_domains.create(:domain => "url.gov")
-        affiliate.indexed_documents.create!(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.', :body => "so tedious", :last_crawl_status => IndexedDocument::OK_STATUS)
-        IndexedDocument.reindex
-        Sunspot.commit
-        @search = WebSearch.new(:query => 'white house', :affiliate => affiliate)
-        @search.run
-      end
-
-      it "should return false" do
-        @search.are_results_by_bing?.should be_false
-      end
-    end
-  end
-
-  describe "#highlight_solr_hit_like_bing" do
-    before do
-      IndexedDocument.delete_all
-      @affiliate = affiliates(:non_existant_affiliate)
-      @affiliate.site_domains.create(:domain => "url.gov")
-      @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
-      IndexedDocument.reindex
-      Sunspot.commit
-    end
-
-    context "when the title or description have matches to the query searched" do
-      before do
-        @search = WebSearch.new(:query => 'highlight', :affiliate => @affiliate)
-        @search.run
-      end
-
-      it "should highlight in Bing-style any matches" do
-        @search.results.first['title'].should =~ /\xEE\x80\x80/
-        @search.results.first['title'].should =~ /\xEE\x80\x81/
-        @search.results.first['content'].should =~ /\xEE\x80\x80/
-        @search.results.first['content'].should =~ /\xEE\x80\x81/
-      end
-    end
-
-    context "when the title or description doesn't match the keyword queried" do
-      before do
-        @search = WebSearch.new(:query => 'bold', :affiliate => @affiliate)
-        @search.run
-      end
-
-      it "should not highlight anything" do
-        @search.results.first['title'].should_not =~ /\xEE\x80\x80/
-        @search.results.first['title'].should_not =~ /\xEE\x80\x81/
-        @search.results.first['content'].should_not =~ /\xEE\x80\x80/
-        @search.results.first['content'].should_not =~ /\xEE\x80\x81/
-      end
-    end
-  end
-
-  describe "#url_is_excluded(url)" do
-    context "when an URL is unparseable" do
-      let(:url) { "http://water.weather.gov/ahps2/hydrograph.php?wfo=lzk&gage=bkra4&view=1,1,1,1,1,1,1,1\"" }
-
-      it "should not fail, and not exclude the url" do
-        search = WebSearch.new(:query => 'bold', :affiliate => @affiliate)
-        search.send(:url_is_excluded, url).should be_false
-      end
-    end
-  end
-
 end
