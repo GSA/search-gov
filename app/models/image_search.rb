@@ -34,6 +34,7 @@ class ImageSearch < WebSearch
 
   def assign_module_tag
     if @total > 0
+      #TODO: do we need new module names for GIMG, BIMG?
       @module_tag = are_results_by_bing? ? 'IMAG' : 'FLICKR'
     else
       @module_tag = nil

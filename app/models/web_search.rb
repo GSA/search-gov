@@ -1,34 +1,23 @@
 class WebSearch < Search
   DEFAULT_SEARCH_ENGINE_OPTION = 'Bing'
 
-  attr_reader :sources,
-              :images,
-              :boosted_contents,
-              :filter_setting,
-              :enable_highlighting,
-              :agency,
-              :med_topic,
-              :news_items,
-              :video_news_items,
-              :formatted_query,
-              :featured_collections,
-              :indexed_documents,
-              :indexed_results,
-              :matching_site_limits,
-              :tweets,
-              :photos,
-              :forms,
-              :jobs
+  attr_reader :matching_site_limits
 
-
-  class << self
-    def results_present_for?(query, affiliate)
-      search = new(query: query, affiliate: affiliate)
-      search.run
-      spelling_ok = search.spelling_suggestion.nil? || search.spelling_suggestion.fuzzily_matches?(query)
-      search.results.present? && spelling_ok
-    end
-  end
+  delegate :boosted_contents,
+           :agency,
+           :med_topic,
+           :news_items,
+           :video_news_items,
+           :featured_collections,
+           :tweets,
+           :photos,
+           :forms,
+           :jobs,
+           :has_boosted_contents?,
+           :has_featured_collections?,
+           :has_forms?,
+           :to => :@govbox_set,
+           :allow_nil => true
 
   def initialize(options = {})
     super(options)
@@ -37,28 +26,23 @@ class WebSearch < Search
     formatted_query_klass = "#{search_engine_option}FormattedQuery"
     search_engine_klass = "#{search_engine_option}Search"
     formatted_query = formatted_query_klass.constantize.new(options)
+    @matching_site_limits = formatted_query.matching_site_limits
     @search_engine = search_engine_klass.constantize.new(options.merge(query: formatted_query.query, offset: offset))
-  end
-
-  def has_boosted_contents?
-    self.boosted_contents and self.boosted_contents.results.size > 0
-  end
-
-  def has_featured_collections?
-    self.featured_collections and self.featured_collections.total > 0
-  end
-
-  def has_forms?
-    forms and forms.total > 0
   end
 
   #TODO: used by helpers and for logging module name
   def are_results_by_bing?
-    self.indexed_results.nil?
+    #self.indexed_results.nil?
+    true
   end
 
-  def qualify_for_form_fulltext_search?
-    query =~ /[[:digit:]]/i or query =~ /\bforms?\b/i && query.gsub(/\bforms?\b/i, '').strip.present?
+  class << self
+    def results_present_for?(query, affiliate)
+      search = new(query: query, affiliate: affiliate)
+      search.run
+      spelling_ok = search.spelling_suggestion.nil? || search.spelling_suggestion.fuzzily_matches?(query)
+      search.results.present? && spelling_ok
+    end
   end
 
   protected
@@ -138,6 +122,7 @@ class WebSearch < Search
           'title' => title,
           'unescapedUrl' => result.url,
           'content' => content,
+          #TODO: ditch cache_url and deeplinks
           'cacheUrl' => (result.CacheUrl rescue nil),
           'deepLinks' => result["DeepLinks"],
           'publishedAt' => (news_title_descriptions_published_at[result.url].published_at rescue nil)
@@ -207,36 +192,7 @@ class WebSearch < Search
 
   def populate_additional_results
     super
-    #TODO: just curious, what does 'query' look like when there are excluded domains, etc?
-    #TODO: put in GovBox.rb
-    if first_page?
-      @boosted_contents = BoostedContent.search_for(query, affiliate)
-      @featured_collections = FeaturedCollection.search_for(query, affiliate)
-      if affiliate.is_agency_govbox_enabled?
-        agency_query = AgencyQuery.find_by_phrase(query)
-        @agency = agency_query.agency if agency_query
-      end
-      if affiliate.jobs_enabled?
-        jobs_options = {query: query, size: 3, hl: 1, geoip_info: geoip_info}
-        jobs_options.merge!(organization_id: affiliate.agency.organization_code) if affiliate.has_organization_code?
-        @jobs = Usajobs.search(jobs_options)
-      end
-      govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
-      @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, 13.months.ago, 1)
-      @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| feed.is_video? }, nil, 1)
-      @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
-      affiliate_twitter_profiles = affiliate.twitter_profiles.collect(&:twitter_id)
-      @tweets = Tweet.search_for(query, affiliate_twitter_profiles, 3.months.ago) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
-      @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
-      if affiliate.form_agency_ids.present?
-        if qualify_for_form_fulltext_search?
-          @forms = Form.search_for(query, {:form_agencies => affiliate.form_agency_ids, :verified => true, :count => 1})
-        else
-          form_results = Form.verified.where('title = ? AND form_agency_id IN (?)', query.squish, affiliate.form_agency_ids).limit(1)[0, 1]
-          @forms = Struct.new(:total, :hits, :results).new(form_results.count, nil, form_results)
-        end
-      end
-    end
+    @govbox_set = GovboxSet.new(query, affiliate, geoip_info) if first_page?
   end
 
   def log_serp_impressions
@@ -246,7 +202,6 @@ class WebSearch < Search
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
     modules << 'NEWS' if self.news_items.present? and self.news_items.total > 0
     modules << 'VIDS' if self.video_news_items.present? and self.video_news_items.total > 0
-    modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?
     modules << "JOBS" if self.jobs.present?
@@ -256,7 +211,6 @@ class WebSearch < Search
     QueryImpression.log(vertical, affiliate.name, self.query, modules)
   end
 
-
   def odie_search_class
     OdieSearch
   end
@@ -264,5 +218,4 @@ class WebSearch < Search
   def get_vertical
     :web
   end
-
 end

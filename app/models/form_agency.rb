@@ -4,12 +4,6 @@ class FormAgency < ActiveRecord::Base
   has_many :forms, :dependent => :destroy
   has_and_belongs_to_many :affiliates
 
-  def self.ids_by_affiliate_id(affiliate_id)
-    FormAgency.joins(:affiliates).
-        where('affiliates.id = ?', affiliate_id).
-        select('form_agencies.id').collect(&:id)
-  end
-
   def to_label
     "[#{locale}] #{name}"
   end

@@ -10,9 +10,74 @@ describe Form do
   it { should belong_to :form_agency }
   it { should have_and_belong_to_many :indexed_documents }
 
-  describe '.search_for' do
+  describe '.govbox_search_for(query, form_agency_ids)' do
 
-    let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov' ) }
+    context 'when the query qualifies for form fulltext search' do
+      let(:form_agency_ids) { [1, 2, 3] }
+
+      ['1099-DIV', 'disability forms'].each do |query|
+        it 'should execute Form.search_for' do
+          Form.should_receive(:search_for).with(query, {:form_agencies => form_agency_ids, :verified => true, :count => 1}).and_return('forms stuff')
+          Form.govbox_search_for(query, form_agency_ids).should == 'forms stuff'
+        end
+      end
+    end
+
+    context 'when the query does not qualify for form fulltext search' do
+      let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov') }
+
+      before do
+        form_agency.forms.create!(:number => '99', :file_type => 'PDF') do |f|
+          f.title = 'Personal Property'
+          f.url = 'fema.gov/some_form.pdf'
+          f.description = 'contains the word FEMA'
+        end
+        form_agency.forms.create!(:number => '70', :file_type => 'PDF') do |f|
+          f.title = 'Unverified Document'
+          f.url = 'fema.gov/some_form-800.pdf'
+          f.verified = false
+        end
+      end
+
+      context 'when matching forms exist' do
+        let(:query) { 'Personal Property' }
+
+        it 'should return an array of forms' do
+          forms = Form.govbox_search_for(query, [form_agency.id])
+          forms.total.should == 1
+          forms.hits.should be_nil
+          forms.results.count.should == 1
+          forms.results.first.number.should == '99'
+          forms.results.first.title.should == 'Personal Property'
+        end
+      end
+
+      context 'when the query matches unverified form' do
+        let(:query) { 'Unverified Document' }
+
+        it 'should not return unverified forms' do
+          forms = Form.govbox_search_for(query, [form_agency.id])
+          forms.total.should == 0
+          forms.hits.should be_nil
+          forms.results.should be_empty
+        end
+      end
+
+      context 'when the non-fulltext search query matches nothing' do
+        let(:query) { 'forms' }
+
+        it 'should return empty results' do
+          forms = Form.govbox_search_for(query, [form_agency.id])
+          forms.total.should == 0
+          forms.hits.should be_nil
+          forms.results.should be_empty
+        end
+      end
+    end
+  end
+
+  describe '.search_for(query, options)' do
+    let(:form_agency) { FormAgency.create!(:display_name => 'FEMA Agency', :locale => 'en', :name => 'fema.gov') }
 
     context 'when the FormAgency has forms' do
       let!(:form1) do

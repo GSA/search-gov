@@ -16,6 +16,7 @@
   - if recalls_search?
     = hidden_field_tag :sort, params[:sort] if params[:sort].present?
   - else
-    = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
+    = hidden_field_tag :filter, params[:filter] if params[:filter].present?
+    -#TODO: is @scope_id declared anywhere?
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
   = submit_tag((recalls_search? ? t(:recalls_search) : t(:search)), :id => "search_button")

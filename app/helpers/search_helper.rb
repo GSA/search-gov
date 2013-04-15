@@ -358,7 +358,7 @@ module SearchHelper
 
   def display_search_all_affiliate_sites_suggestion(search)
     return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
-    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(" ")}. "
+    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(' ')}. "
     html << "Do you want to see results for "
     html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
     html << "?"
