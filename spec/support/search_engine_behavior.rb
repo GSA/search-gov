@@ -26,8 +26,8 @@ shared_examples "a search engine" do
         normalized_response.start_record.should == 1
         normalized_response.end_record.should == 10
         normalized_response.total.should == 1940000
-        normalized_response.results.first.title.should == "Publication 590 (2011), Individual Retirement Arrangements (IRAs)"
-        normalized_response.results.first.content.should == "Examples — Worksheet for Reduced IRA Deduction for 2011; What if You Inherit an IRA? Treating it as your own. Can You Move Retirement Plan Assets?"
+        normalized_response.results.first.title.should == "Publication 590 (2011), Individual Retirement Arrangements (\xEE\x80\x80IRAs\xEE\x80\x81)"
+        normalized_response.results.first.content.should == "Examples — Worksheet for Reduced \xEE\x80\x80IRA\xEE\x80\x81 Deduction for 2011; What if You Inherit an \xEE\x80\x80IRA\xEE\x80\x81? Treating it as your own. Can You Move Retirement Plan Assets?"
         normalized_response.results.first.unescaped_url.should == "http:\/\/www.irs.gov\/publications\/p590\/index.html"
       end
     end

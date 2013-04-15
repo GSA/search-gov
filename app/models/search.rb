@@ -100,12 +100,6 @@ class Search
   def cache_key
   end
 
-  # This is used any time we want to highlight a hit from Solr with the highlight chars that Bing uses
-  def highlight_solr_hit_like_bing(hit, field_symbol)
-    return hit.highlights(field_symbol).first.format { |phrase| "\uE000#{phrase}\uE001" } unless hit.highlights(field_symbol).first.nil?
-    hit.instance.send(field_symbol)
-  end
-
   def paginate(items)
     WillPaginate::Collection.create(@page, @per_page, [@per_page * 100, @total].min) { |pager| pager.replace(items) }
   end

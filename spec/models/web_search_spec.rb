@@ -134,63 +134,6 @@ describe WebSearch do
       end
     end
 
-    context "when results contain excluded URLs" do
-      before do
-        @url1 = "http://www.uspto.gov/web.html"
-        affiliate = affiliates(:power_affiliate)
-        ExcludedUrl.create!(:url => @url1, :affiliate => affiliate)
-        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-        @search.stub!(:backfill_needed).and_return false
-        @search.run
-      end
-
-      it "should filter out the excluded URLs" do
-        @search.results.any? { |result| result['unescapedUrl'] == @url1 }.should be_false
-        @search.results.size.should == 5
-      end
-
-    end
-
-    context "when Bing result has an URL that matches a known NewsItem URL" do
-      before do
-        NewsItem.destroy_all
-        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
-                         :title => "NewsItem title highlighted from Solr",
-                         :description => "NewsItem description highlighted from Solr",
-                         :published_at => DateTime.parse("2011-09-26 21:33:05"),
-                         :guid => '80798 at www.whitehouse.gov',
-                         :rss_feed_id => rss_feeds(:white_house_blog).id,
-                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
-        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm',
-                         :title => "Title w/o highlighting",
-                         :description => "Description w/o highlighting",
-                         :published_at => DateTime.parse("2011-09-26 21:33:05"),
-                         :guid => '80799 at www.whitehouse.gov',
-                         :rss_feed_id => rss_feeds(:white_house_blog).id,
-                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
-        Sunspot.commit
-        hits = NewsItem.search_for("NewsItem", [rss_feeds(:white_house_blog)], nil, 1, 100)
-        NewsItem.stub!(:search_for).and_return hits
-        @search = WebSearch.new(:query => 'government', :page => 1, :affiliate => affiliates(:basic_affiliate))
-        @search.stub!(:backfill_needed).and_return false
-        json = File.read(Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json")
-        parsed = JSON.parse(json)
-        JSON.stub!(:parse).and_return parsed
-      end
-
-      it "should replace Bing's result title with the NewsItem title" do
-        @search.run
-        results_of_interest = @search.results.last(2)
-        results_of_interest.first['title'].should == "Title w/o highlighting"
-        results_of_interest.first['content'].should == "Description w/o highlighting"
-        results_of_interest.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from Solr"
-        results_of_interest.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from Solr"
-      end
-    end
-
     context "when searching for misspelled terms" do
       before do
         @search = WebSearch.new(@valid_options.merge(:query => "p'resident"))

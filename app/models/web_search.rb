@@ -25,7 +25,11 @@ class WebSearch < Search
     search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
     formatted_query_klass = "#{search_engine_option}FormattedQuery"
     search_engine_klass = "#{search_engine_option}Search"
-    formatted_query = formatted_query_klass.constantize.new(options)
+    query_options = options.merge(included_domains: @affiliate.domains_as_array,
+                                  excluded_domains: @affiliate.excluded_domains_as_array,
+                                  scope_ids: @affiliate.scope_ids_as_array,
+                                  scope_keywords: @affiliate.scope_keywords_as_array)
+    formatted_query = formatted_query_klass.constantize.new(query_options)
     @matching_site_limits = formatted_query.matching_site_limits
     @search_engine = search_engine_klass.constantize.new(options.merge(query: formatted_query.query, offset: offset))
   end
@@ -91,8 +95,7 @@ class WebSearch < Search
 
   def handle_search_engine_response(response)
     @startrecord = response.start_record
-    #TODO: process_web_results to handle news/excludes
-    @results = paginate(response.results)
+    @results = paginate(post_process_web_results(response.results))
     @endrecord = response.end_record
     @spelling_suggestion = response.spelling_suggestion
   end
@@ -110,56 +113,9 @@ class WebSearch < Search
     end
   end
 
-  def process_web_results(response)
-    news_title_descriptions_published_at = NewsItem.title_description_date_hash_by_link(@affiliate, response.web.results.collect(&:url))
-    excluded_urls_empty = @affiliate.excluded_urls.empty?
-    processed = response.web.results.collect do |result|
-      title, content = extract_fields_from_news_item(result.url, news_title_descriptions_published_at)
-      title ||= (result.title rescue nil)
-      content ||= result.description || ''
-      if title.present? && (excluded_urls_empty || !url_is_excluded(result.url))
-        {
-          'title' => title,
-          'unescapedUrl' => result.url,
-          'content' => content,
-          #TODO: ditch cache_url and deeplinks
-          'cacheUrl' => (result.CacheUrl rescue nil),
-          'deepLinks' => result["DeepLinks"],
-          'publishedAt' => (news_title_descriptions_published_at[result.url].published_at rescue nil)
-        }
-      else
-        nil
-      end
-    end
-    processed.compact
-  end
-
-  def url_is_excluded(url)
-    parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and @affiliate.excludes_url?(url)
-    false
-  end
-
-  def extract_fields_from_news_item(result_url, news_title_descriptions_published_at)
-    @news_item_hash ||= build_news_item_hash_from_search
-    news_item_hit = @news_item_hash[result_url]
-    if news_item_hit.present?
-      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
-    else
-      news_item = news_title_descriptions_published_at[result_url]
-      [news_item.title, news_item.description] if news_item
-    end
-  end
-
-  def build_news_item_hash_from_search
-    news_item_hash = {}
-    news_items_overrides = NewsItem.search_for(query, affiliate.rss_feeds)
-    if news_items_overrides and news_items_overrides.total > 0
-      news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
-        news_item_hash[news_item_result.link] = news_item_hit
-      end
-    end
-    news_item_hash
+  def post_process_web_results(results)
+    post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
+    post_processor.post_processed_results
   end
 
   #TODO: WhyTF is this here and not in ImageSearch?
