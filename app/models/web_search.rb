@@ -19,6 +19,7 @@ class WebSearch < Search
 
   def initialize(options = {})
     super(options)
+    @options = options
     offset = (page - 1) * per_page + 1
     search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
     formatted_query_klass = "#{search_engine_option}FormattedQuery"
@@ -34,8 +35,7 @@ class WebSearch < Search
 
   #TODO: used by helpers and for logging module name
   def are_results_by_bing?
-    #self.indexed_results.nil?
-    true
+    @indexed_results.nil?
   end
 
   class << self

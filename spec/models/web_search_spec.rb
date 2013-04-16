@@ -203,7 +203,7 @@ describe WebSearch do
         @search.stub!(:has_photos?).and_return true
       end
 
-      #TODO: module_tag should be GWEB or BWEB
+      #TODO: module_tag should be GWEB or BWEB or AIDOC
       it "should assign module_tag to BWEB" do
         @search.run
         @search.module_tag.should == 'BWEB'
@@ -486,6 +486,7 @@ describe WebSearch do
       it "should return true" do
         search = WebSearch.new(:query => 'white house', :affiliate => affiliates(:basic_affiliate))
         search.run
+        #TODO: change this
         search.are_results_by_bing?.should be_true
       end
     end

@@ -31,10 +31,9 @@ class OdieSearch < Search
   def process_results(response)
     processed = response.hits(:verify => true).collect do |hit|
       {
-        #TODO: highlight_solr_hit_like_bing has moved
-        'title' => highlight_solr_hit_like_bing(hit, :title),
+        'title' => SolrBingHighlighter.hl(hit, :title),
         'unescapedUrl' => hit.instance.url,
-        'content' => highlight_solr_hit_like_bing(hit, :description)
+        'content' => SolrBingHighlighter.hl(hit, :description)
       }
     end
     processed.compact

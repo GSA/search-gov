@@ -24,13 +24,6 @@ class WebResultsPostProcessor
     post_processed.compact
   end
 
-  protected
-
-  def highlight_solr_hit_like_bing(hit, field_symbol)
-    return hit.highlights(field_symbol).first.format { |phrase| "\uE000#{phrase}\uE001" } unless hit.highlights(field_symbol).first.nil?
-    hit.instance.send(field_symbol)
-  end
-
   private
 
   def url_is_excluded(url)
@@ -42,7 +35,7 @@ class WebResultsPostProcessor
   def title_content_from_news_item(result_url, link_hash)
     news_item_hit = @news_item_hash[result_url]
     if news_item_hit.present?
-      [highlight_solr_hit_like_bing(news_item_hit, :title), highlight_solr_hit_like_bing(news_item_hit, :description)]
+      [SolrBingHighlighter.hl(news_item_hit, :title), SolrBingHighlighter.hl(news_item_hit, :description)]
     else
       news_item = link_hash[result_url]
       [news_item.title, news_item.description] if news_item
