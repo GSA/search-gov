@@ -33,11 +33,6 @@ class WebSearch < Search
     @search_engine = search_engine_klass.constantize.new(options.merge(query: formatted_query.query, offset: offset))
   end
 
-  #TODO: used by helpers and for logging module name
-  def are_results_by_bing?
-    @indexed_results.nil?
-  end
-
   class << self
     def results_present_for?(query, affiliate)
       search = new(query: query, affiliate: affiliate)
@@ -61,10 +56,6 @@ class WebSearch < Search
     else
       super
     end
-  end
-
-  def run_has_method(member_name)
-    send(member_name).present? and send(member_name).total > 0
   end
 
   protected
@@ -122,11 +113,13 @@ class WebSearch < Search
   end
 
   def assign_module_tag
+    @module_tag = nil
     if @total > 0
-      #TODO: fix module name: BWEB and GWEB?
-      @module_tag = are_results_by_bing? ? 'BWEB' : 'AIDOC'
-    else
-      @module_tag = nil
+      if @indexed_results.present?
+        @module_tag = 'AIDOC'
+      else
+        @module_tag = @affiliate.search_engine == 'Bing' ? 'BWEB' : 'GWEB'
+      end
     end
   end
 
@@ -192,4 +185,10 @@ class WebSearch < Search
   def get_vertical
     :web
   end
+
+  private
+  def run_has_method(member_name)
+    send(member_name).present? and send(member_name).total > 0
+  end
+
 end

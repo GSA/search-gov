@@ -1,5 +1,5 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
-- if (search.first_page? and search.has_boosted_contents?)
+- if search.first_page? && search.has_boosted_contents?
   = render 'shared/boosted_content', :search => search
 - if search.results.present?
   %hr.topresults
@@ -18,14 +18,14 @@
       - unless index == search.results.length - 1 then
         %hr
 
-  - if (search.has_related_searches?)
+  - if search.has_related_searches?
     #relatedsearch
       %h3= t :searches_related_to, :query=> search.query
       %ul
         - search.related_search.each_with_index do |related_term, index|
           %li= tracked_click_link(search_path({:query=>strip_tags(related_term), :affiliate=> @affiliate, :m => true }),related_term.html_safe.downcase, search, @affiliate, index, 'SREL')
 
-  = render_mobile_pagination_and_logo(search.results, search.are_results_by_bing?)
+  = render_mobile_pagination_and_logo(search.results, search.module_tag)
 
 - elsif search.error_message
   %p.noresults #{search.error_message}

@@ -29,7 +29,6 @@ shared_examples "a formatted query" do
       end
     end
 
-
     context "when negative query terms are specified" do
       subject { described_class.new(query: 'government', query_not: 'barack obama') }
       it "should construct a query string that includes the negative query terms prefixed with '-'" do

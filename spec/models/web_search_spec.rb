@@ -276,7 +276,7 @@ describe WebSearch do
       end
     end
 
-    context "when affiliate has no Bing results and there is an orphan indexed document" do
+    context "when affiliate has no Bing results and there is an orphan document in the Odie index" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.indexed_documents.destroy_all

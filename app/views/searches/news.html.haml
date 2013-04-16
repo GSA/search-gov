@@ -55,5 +55,5 @@
     = render 'shared/related_topics'
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
-      = search_results_by_logo(false)
+      = search_results_by_logo('some type of news')
 

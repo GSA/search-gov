@@ -369,11 +369,15 @@ module SearchHelper
     end
   end
 
-  def search_results_by_logo(results_by_bing)
-    if results_by_bing
+  def search_results_by_logo(module_tag)
+    if %w(BWEB IMAG).include? module_tag
       alt = I18n.t(:results_by_bing)
       image_source = "binglogo_#{I18n.locale.to_s}.gif"
       image_tag(image_source, :alt => alt, :class => 'results-by-logo bing')
+    elsif %w(GWEB GIMAG).include? module_tag
+      alt = I18n.t(:results_by_google)
+      image_source = "googlelogo_#{I18n.locale.to_s}.png"
+      image_tag(image_source, :alt => alt, :class => 'results-by-logo google')
     else
       alt = I18n.t(:results_by_usasearch)
       image_source = "results_by_usasearch_#{I18n.locale.to_s}.png"
@@ -530,9 +534,9 @@ module SearchHelper
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
 
-  def render_mobile_pagination_and_logo(collection, are_results_by_bing)
+  def render_mobile_pagination_and_logo(collection, module_tag)
     render(:partial => 'shared/pagination_and_logo',
            :locals => { :collection => collection,
-                        :are_results_by_bing => are_results_by_bing })
+                        :module_tag => module_tag })
   end
 end

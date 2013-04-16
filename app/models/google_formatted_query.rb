@@ -12,11 +12,11 @@ class GoogleFormattedQuery < FormattedQuery
     domains = site_and_no_minus_site ? nil : fill_domains_to_remainder(remaining_chars, @matching_site_limits)
     excluded = user_query.include?('site:') ? nil : @excluded_domains.map { |ed| "-site:#{ed}" }.join(" AND ")
     keywords = @scope_keywords.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")
-    user_query_parens = "(#{user_query})"
+    user_query_parens = "#{user_query}"
     sites_keywords = [user_query_parens]
-    sites_keywords << "(#{excluded})" unless excluded.blank?
-    sites_keywords << "(#{domains})" unless domains.blank?
-    sites_keywords << "(#{keywords})" unless keywords.blank?
+    sites_keywords << "#{excluded}" unless excluded.blank?
+    sites_keywords << "#{domains}" unless domains.blank?
+    sites_keywords << "#{keywords}" unless keywords.blank?
     sites_keywords.join(' ')
   end
 

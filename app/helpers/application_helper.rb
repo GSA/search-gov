@@ -302,14 +302,12 @@ module ApplicationHelper
       # we prefer to chop at word boundaries
 
       when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE
-        mb_chars = node.text? ? CGI::escapeHTML(node.text) : node.text
-
-        if mb_chars.length <= max_chars
-          buffer << mb_chars
-          max_chars -= mb_chars.length
+        if node.text.length <= max_chars
+          buffer << node.text
+          max_chars -= node.text.length
         else
-          last_space_index = (mb_chars.rindex(/\s/, max_chars) || 0) rescue 0
-          truncated_text = mb_chars[0..last_space_index].gsub(/\s+/, ' ') unless last_space_index.nil?
+          last_space_index = (node.text.rindex(/\s/, max_chars) || 0) rescue 0
+          truncated_text = node.text[0..last_space_index].gsub(/\s+/, ' ') unless last_space_index.nil?
           buffer << "#{truncated_text}..."
           max_chars = 0
         end
