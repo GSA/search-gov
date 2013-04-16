@@ -166,43 +166,45 @@ describe GovboxSet do
       end
     end
 
-    context "when affiliate is twitter govbox enabled" do
-      before do
-        affiliate.stub!(:is_twitter_govbox_enabled?).and_return true
-      end
-
-      context "when affiliate has Twitter Profiles" do
+    describe "twitter" do
+      context "when affiliate is twitter govbox enabled" do
         before do
-          affiliate.twitter_profiles.create!(:screen_name => 'USASearch',
-                                             :name => 'Test',
-                                             :twitter_id => 123,
-                                             :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-          Tweet.should_receive(:search_for).with('foo', [123], an_instance_of(ActiveSupport::TimeWithZone)).and_return 'Twitter stuff'
+          affiliate.stub!(:is_twitter_govbox_enabled?).and_return true
         end
 
-        it "should find the most recent relevant tweet" do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.tweets.should == 'Twitter stuff'
+        context "when affiliate has Twitter Profiles" do
+          before do
+            affiliate.twitter_profiles.create!(:screen_name => 'USASearch',
+                                               :name => 'Test',
+                                               :twitter_id => 123,
+                                               :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+            Tweet.should_receive(:search_for).with('foo', [123], an_instance_of(ActiveSupport::TimeWithZone)).and_return 'Twitter stuff'
+          end
+
+          it "should find the most recent relevant tweet" do
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set.tweets.should == 'Twitter stuff'
+          end
         end
+
+        context "when affiliate has no Twitter Profiles" do
+          it "should not set tweets" do
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set.tweets.should be_nil
+          end
+        end
+
       end
 
-      context "when affiliate has no Twitter Profiles" do
+      context "when affiliate is not twitter govbox enabled" do
+        before do
+          affiliate.stub!(:is_twitter_govbox_enabled?).and_return false
+        end
+
         it "should not set tweets" do
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.tweets.should be_nil
         end
-      end
-
-    end
-
-    context "when affiliate is not twitter govbox enabled" do
-      before do
-        affiliate.stub!(:is_twitter_govbox_enabled?).and_return false
-      end
-
-      it "should not set tweets" do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.tweets.should be_nil
       end
     end
 
@@ -238,7 +240,7 @@ describe GovboxSet do
 
       context 'when the affiliate has form_agencies' do
         before do
-          affiliate.stub!(:form_agency_ids).and_return [1,2,3]
+          affiliate.stub!(:form_agency_ids).and_return [1, 2, 3]
           Form.stub!(:govbox_search_for).with('foo', affiliate.form_agency_ids).and_return "Form results"
         end
 
@@ -254,6 +256,12 @@ describe GovboxSet do
           govbox_set.forms.should be_nil
         end
       end
+    end
+
+    it 'should assign related searches' do
+      SaytSuggestion.stub!(:related_search).with('foo', affiliate).and_return "related search results"
+      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+      govbox_set.related_search.should == "related search results"
     end
 
   end

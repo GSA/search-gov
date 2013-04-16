@@ -38,9 +38,6 @@ class SiteSearch < WebSearch
     generated_scope
   end
 
-  def populate_additional_results
-  end
-
   def scope_keywords_as_array
     @document_collection.scope_keywords.present? ? @document_collection.scope_keywords_as_array : @affiliate.scope_keywords_as_array
   end

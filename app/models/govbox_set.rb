@@ -8,7 +8,8 @@ class GovboxSet
               :tweets,
               :photos,
               :forms,
-              :jobs
+              :jobs,
+              :related_search
 
   def initialize(query, affiliate, geoip_info)
     @boosted_contents = BoostedContent.search_for(query, affiliate)
@@ -30,6 +31,11 @@ class GovboxSet
     @tweets = Tweet.search_for(query, affiliate_twitter_profiles, 3.months.ago) if affiliate_twitter_profiles.any? and affiliate.is_twitter_govbox_enabled?
     @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
     @forms = Form.govbox_search_for(query, affiliate.form_agency_ids) if affiliate.form_agency_ids.present?
+    @related_search = SaytSuggestion.related_search(query, affiliate)
+  end
+
+  def has_related_searches?
+    related_search && related_search.size > 0
   end
 
   def has_boosted_contents?

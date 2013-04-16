@@ -16,7 +16,6 @@ class Search
               :startrecord,
               :endrecord,
               :results,
-              :related_search,
               :spelling_suggestion,
               :queried_at_seconds,
               :module_tag,
@@ -34,7 +33,7 @@ class Search
     @per_page = options[:per_page].to_i rescue DEFAULT_PER_PAGE
     @per_page = DEFAULT_PER_PAGE unless (DEFAULT_PER_PAGE..MAX_PER_PAGE).include?(@per_page)
 
-    @related_search, @results, @spelling_suggestion = [], [], nil
+    @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i
     @geoip_info = options[:geoip_info]
   end
@@ -54,10 +53,6 @@ class Search
 
   def first_page?
     page == 1
-  end
-
-  def has_related_searches?
-    @related_search && @related_search.size > 0
   end
 
   def as_json(options = {})
@@ -90,7 +85,6 @@ class Search
 
   # If you need to query anything else, do that here
   def populate_additional_results
-    @related_search = SaytSuggestion.related_search(@query, @affiliate)
   end
 
   def log_serp_impressions

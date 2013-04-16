@@ -41,6 +41,7 @@ class SearchEngine
   end
 
   def spelling_results(did_you_mean_suggestion)
+    return nil if did_you_mean_suggestion.blank?
     spelling_suggestion = SpellingSuggestion.new(query, did_you_mean_suggestion)
     spelling_suggestion.cleaned
   end

@@ -23,5 +23,4 @@ class SpellingSuggestion
       remaining_tokens.reject { |token| token.starts_with?('language:', 'site:') }.join(' ')
     end
   end
-
 end

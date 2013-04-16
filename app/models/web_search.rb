@@ -13,8 +13,10 @@ class WebSearch < Search
            :photos,
            :forms,
            :jobs,
+           :related_search,
            :has_boosted_contents?,
            :has_featured_collections?,
+           :has_related_searches?,
            :has_forms?,
            :to => :@govbox_set,
            :allow_nil => true
@@ -50,7 +52,7 @@ class WebSearch < Search
   end
 
   protected
-
+  #TODO: need this?
   def result_hash
     hash = super
     unless @error_message
@@ -147,7 +149,6 @@ class WebSearch < Search
   end
 
   def populate_additional_results
-    super
     @govbox_set = GovboxSet.new(query, affiliate, geoip_info) if first_page?
   end
 

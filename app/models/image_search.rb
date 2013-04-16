@@ -21,9 +21,6 @@ class ImageSearch < WebSearch
     process_image_results(response)
   end
 
-  def populate_additional_results
-  end
-
   def odie_search_class
     OdieImageSearch
   end
