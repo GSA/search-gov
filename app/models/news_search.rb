@@ -109,7 +109,6 @@ class NewsSearch < Search
   def log_serp_impressions
     modules = []
     modules << @module_tag if @module_tag
-    modules << "SREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end
 

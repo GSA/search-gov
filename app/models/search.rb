@@ -22,8 +22,6 @@ class Search
               :geoip_info
 
   def initialize(options = {})
-    #TODO: need options?
-    @options = options
     @query = options[:query]
     @affiliate = options[:affiliate]
 

@@ -16,7 +16,7 @@ describe WebSearch do
     end
 
     it "should have a settable affiliate" do
-      search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+      search = WebSearch.new(@valid_options)
       search.affiliate.should == @affiliate
     end
 
@@ -183,37 +183,35 @@ describe WebSearch do
       end
     end
 
-    context "on normal search runs" do
+    describe "logging module impressions" do
       before do
-        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme', :affiliate => @affiliate))
-        @search.stub!(:backfill_needed).and_return false
-        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json"))
-        JSON.stub!(:parse).and_return parsed
+        @search = WebSearch.new({query: 'government', affiliate: affiliates(:basic_affiliate)})
+        @search.stub!(:search)
+        @search.stub!(:handle_response)
+        @search.stub!(:populate_additional_results)
+        @search.stub!(:module_tag).and_return 'BWEB'
+        @search.stub!(:spelling_suggestion).and_return 'foo'
+        @search.stub!(:med_topic).and_return 'foo'
+        @search.stub!(:jobs).and_return [1, 2, 3]
+        @search.stub!(:has_related_searches?).and_return true
+        @search.stub!(:has_featured_collections?).and_return true
+        @search.stub!(:has_boosted_contents?).and_return true
+        @search.stub!(:has_forms?).and_return true
+        @search.stub!(:has_news_items?).and_return true
+        @search.stub!(:has_video_news_items?).and_return true
+        @search.stub!(:has_tweets?).and_return true
+        @search.stub!(:has_photos?).and_return true
       end
 
+      #TODO: module_tag should be GWEB or BWEB
       it "should assign module_tag to BWEB" do
         @search.run
         @search.module_tag.should == 'BWEB'
       end
 
       it "should log info about the query" do
-        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme', %w{BWEB OVER BSPEL})
-        @search.run
-      end
-    end
-
-    context "when there are jobs results" do
-      before do
-        @search = WebSearch.new(@valid_options.merge(:page => 1, :query => 'logme jobs', :affiliate => @affiliate))
-        @affiliate.stub!(:jobs_enabled?).and_return true
-        @search.stub!(:backfill_needed).and_return false
-        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/spelling/spelling_suggestions.json"))
-        JSON.stub!(:parse).and_return parsed
-        Usajobs.stub!(:search).and_return %w{some array}
-      end
-
-      it "should log info about the query" do
-        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme jobs', %w{BWEB OVER BSPEL JOBS})
+        all_modules = %w{BWEB OVER BSPEL SREL NEWS VIDS FORM BBG BOOS MEDL JOBS TWEET PHOTO}
+        QueryImpression.should_receive(:log).with(:web, affiliates(:basic_affiliate).name, 'government', all_modules)
         @search.run
       end
     end
@@ -392,20 +390,19 @@ describe WebSearch do
     end
   end
 
-  describe "#hits(response)" do
-    context "when Bing reports a total > 0 but gives no results whatsoever" do
-      before do
-        @search = WebSearch.new(:affiliate => @affiliate)
-        @response = mock("response")
-        web = mock("web")
-        @response.stub!(:web).and_return(web)
-        web.stub!(:results).and_return(nil)
-        web.stub!(:total).and_return(4000)
-      end
+  #TODO: handle this in bing_search_spec
+  context "when Bing reports a total > 0 but gives no results whatsoever" do
+    before do
+      @search = WebSearch.new(:affiliate => @affiliate)
+      @response = mock("response")
+      web = mock("web")
+      @response.stub!(:web).and_return(web)
+      web.stub!(:results).and_return(nil)
+      web.stub!(:total).and_return(4000)
+    end
 
-      it "should return zero for the number of hits" do
-        @search.send(:hits, @response).should == 0
-      end
+    it "should return zero for the number of hits" do
+      @search.send(:hits, @response).should == 0
     end
   end
 

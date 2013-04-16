@@ -34,20 +34,4 @@ class GovboxSet
     @related_search = SaytSuggestion.related_search(query, affiliate)
   end
 
-  def has_related_searches?
-    related_search && related_search.size > 0
-  end
-
-  def has_boosted_contents?
-    self.boosted_contents and self.boosted_contents.results.size > 0
-  end
-
-  def has_featured_collections?
-    self.featured_collections and self.featured_collections.total > 0
-  end
-
-  def has_forms?
-    forms and forms.total > 0
-  end
-
 end

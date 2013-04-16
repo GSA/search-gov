@@ -14,10 +14,6 @@ class WebSearch < Search
            :forms,
            :jobs,
            :related_search,
-           :has_boosted_contents?,
-           :has_featured_collections?,
-           :has_related_searches?,
-           :has_forms?,
            :to => :@govbox_set,
            :allow_nil => true
 
@@ -51,8 +47,27 @@ class WebSearch < Search
     end
   end
 
+  def has_related_searches?
+    related_search && related_search.size > 0
+  end
+
+  def has_boosted_contents?
+    boosted_contents and boosted_contents.results.size > 0
+  end
+
+  def method_missing(meth, *args, &block)
+    if meth.to_s =~ /^has_(.+)\?$/
+      run_has_method($1)
+    else
+      super
+    end
+  end
+
+  def run_has_method(member_name)
+    send(member_name).present? and send(member_name).total > 0
+  end
+
   protected
-  #TODO: need this?
   def result_hash
     hash = super
     unless @error_message
@@ -154,16 +169,18 @@ class WebSearch < Search
 
   def log_serp_impressions
     modules = []
-    modules << @module_tag if @module_tag
+    modules << module_tag if module_tag
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
-    modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
-    modules << 'NEWS' if self.news_items.present? and self.news_items.total > 0
-    modules << 'VIDS' if self.video_news_items.present? and self.video_news_items.total > 0
-    modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
+    modules << "SREL" if self.has_related_searches?
+    modules << 'NEWS' if self.has_news_items?
+    modules << 'VIDS' if self.has_video_news_items?
+    modules << "FORM" if self.has_forms?
+    modules << "BBG" if self.has_featured_collections?
+    modules << "BOOS" if self.has_boosted_contents?
     modules << "MEDL" unless self.med_topic.nil?
     modules << "JOBS" if self.jobs.present?
-    modules << "TWEET" unless self.tweets.nil? or self.tweets.total.zero?
-    modules << "PHOTO" unless self.photos.nil? or self.photos.total.zero?
+    modules << "TWEET" if self.has_tweets?
+    modules << "PHOTO" if self.has_photos?
     vertical = get_vertical
     QueryImpression.log(vertical, affiliate.name, self.query, modules)
   end

@@ -88,18 +88,6 @@ module SearchHelper
     url.gsub(/^http(s)?:\/\//, '')
   end
 
-  def display_deep_links_for(result, search, affiliate, vertical)
-    return if result["deepLinks"].nil?
-    rows = []
-    deep_links_are_all_pos_zero = 0
-    result["deepLinks"].in_groups_of(2)[0, 4].each do |row_pair|
-      row =  content_tag(:td, row_pair[0].nil? ? "" : tracked_click_link(h(row_pair[0].url), h(row_pair[0].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
-      row << content_tag(:td, row_pair[1].nil? ? "" : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
-      rows << content_tag(:tr, row)
-    end
-    content_tag(:table, raw(rows.join("\n")), :class=>"deep-links")
-  end
-
   def display_bing_result_extname_prefix(bing_result)
     display_result_extname_prefix(bing_result['unescapedUrl'])
   end

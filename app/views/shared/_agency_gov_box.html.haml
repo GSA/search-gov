@@ -7,9 +7,6 @@
       %h3.result-url= display_agency_link(result, search, affiliate, index, @search_vertical)
       %p.description
         = display_result_description(result)
-      - if index == 0 && search.first_page?
-        %div
-          = display_deep_links_for(result, search, affiliate, @search_vertical)
       .stay-connected
         %h3
           = t :agency_stay_connected_label

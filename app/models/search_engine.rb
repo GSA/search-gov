@@ -40,9 +40,9 @@ class SearchEngine
     (0..2).include?(idx) ? idx : 1
   end
 
-  def spelling_results(did_you_mean_suggestion)
-    return nil if did_you_mean_suggestion.blank?
-    spelling_suggestion = SpellingSuggestion.new(query, did_you_mean_suggestion)
+  def spelling_results(suggestion)
+    return nil if suggestion.blank?
+    spelling_suggestion = SpellingSuggestion.new(query, suggestion)
     spelling_suggestion.cleaned
   end
 
