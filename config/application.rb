@@ -19,6 +19,11 @@ module UsasearchRails3
 
     config.middleware.use 'RejectInvalidRequestUri'
     config.middleware.use 'DowncaseRoute'
+    config.middleware.use Rack::ResponseHeaders do |headers|
+      headers['X-Frame-Options'] = 'SAMEORIGIN'
+      headers['X-XSS-Protection']= '1; mode=block'
+    end
+
     # config.middleware.use ::Rack::PerftoolsProfiler
 
     # Only load the plugins named here, in the order given (default is alphabetical).

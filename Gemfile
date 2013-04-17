@@ -54,6 +54,7 @@ gem 'net-http-persistent'
 gem 'rash'
 gem 'geoip'
 gem 'us_states'
+gem 'rack-contrib'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
