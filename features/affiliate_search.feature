@@ -625,13 +625,13 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name | domains             |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name  | url                                  | is_navigable | shown_in_govbox |
-      | Press | http://www.whitehouse.gov/feed/press | true         | false           |
-    And feed "Press" has the following news items:
-      | link                                                                            | title      | guid  | published_ago | description                       |
-      | http://usasearch.howto.gov/post/26431803694/how-to-add-javascript-for-your-third-party-web-services | First item | uuid1 | day           | item First news item for the feed |
+      | name      | url                                 | is_navigable | shown_in_govbox |
+      | All Posts | http://usasearch.howto.gov/all.atom | true         | false           |
+    And feed "All Posts" has the following news items:
+      | link                                                | title      | guid  | published_ago | description                       |
+      | http://usasearch.howto.gov/manual/social-media.html | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
-    And I fill in "query" with "javascript"
+    And I fill in "query" with "social media"
     And I press "Search"
     Then I should see "1 day ago"
 
@@ -1165,22 +1165,22 @@ Feature: Affiliate Search
       | display_name | name       | contact_email | contact_name | domains                           |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov,www.howto.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name         | prefixes                         | is_navigable | scope_keywords |
-      | Blog         | http://usasearch.howto.gov/blog/ | true         |                |
-      | Search Notes | http://usasearch.howto.gov/blog/ | true         | search notes   |
+      | name         | prefixes                                                                       | is_navigable | scope_keywords |
+      | Blog         | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |                |
+      | Search Notes | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         | search notes   |
     And the following IndexedDocuments exist:
-      | title                       | description                        | url                                                 | affiliate  | last_crawled_at | last_crawl_status |
-      | First social media article  | This is an article on social media | http://usasearch.howto.gov/blog/social-media-1.html | agency.gov | 11/02/2011      | OK                |
-      | Second social media article | This is an article on social media | http://usasearch.howto.gov/blog/social-media-2.html | agency.gov | 11/02/2011      | OK                |
-      | Other social media article  | This is an article on social media | http://www.howto.gov/topics/other-social-media.html | agency.gov | 11/02/2011      | OK                |
+      | title                       | description                        | url                                                   | affiliate  | last_crawled_at | last_crawl_status |
+      | First social media article  | This is an article on social media | http://usasearch.howto.gov/manual/social-media-1.html | agency.gov | 11/02/2011      | OK                |
+      | Second social media article | This is an article on social media | http://usasearch.howto.gov/manual/social-media-2.html | agency.gov | 11/02/2011      | OK                |
+      | Other social media article  | This is an article on social media | http://www.howto.gov/topics/other-social-media.html   | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
     And I follow "Blog" in the left column
     And I fill in "query" with "social media"
     And I press "Search"
-    Then I should see a link to "How to Add Your Social Media to Our Index" with url for "http://usasearch.howto.gov/blog/how-to-add-your-social-media-to-our-index.html"
+    Then I should see a link to "How to Add Your Social Media to Our Index" with url for "http://usasearch.howto.gov/manual/social-media.html"
     When I follow "Next"
-    Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/blog/social-media-1.html"
-    And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/blog/social-media-2.html"
+    Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/manual/social-media-1.html"
+    And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/manual/social-media-2.html"
     And I should not see "Other social media article"
     When I follow "Search Notes" in the left column
     Then I should see some Bing search results
