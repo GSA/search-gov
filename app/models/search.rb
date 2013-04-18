@@ -18,8 +18,7 @@ class Search
               :results,
               :spelling_suggestion,
               :queried_at_seconds,
-              :module_tag,
-              :geoip_info
+              :module_tag
 
   def initialize(options = {})
     @query = options[:query]
@@ -33,7 +32,6 @@ class Search
 
     @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i
-    @geoip_info = options[:geoip_info]
   end
 
   # This does your search.
