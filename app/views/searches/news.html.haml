@@ -52,7 +52,6 @@
     - news_item_partial = (@search.rss_feed && @search.rss_feed.is_video? or @form_path == video_news_search_path) ? 'shared/video_news_item' : 'shared/news_item'
     - @search.hits.each_with_index do |hit, index|
       = render news_item_partial, :hit => hit, :index => index
-    = render 'shared/related_topics'
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
       = search_results_by_logo('some type of news')

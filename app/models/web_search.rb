@@ -30,15 +30,11 @@ class WebSearch < Search
     super(options)
     @options = options
     offset = (page - 1) * per_page + 1
-    search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
-    formatted_query_klass = "#{search_engine_option}FormattedQuery"
-    query_options = options.merge(included_domains: @affiliate.domains_as_array,
-                                  excluded_domains: @affiliate.excluded_domains_as_array,
-                                  scope_ids: @affiliate.scope_ids_as_array,
-                                  scope_keywords: @affiliate.scope_keywords_as_array)
+    formatted_query_klass = "#{@affiliate.search_engine}FormattedQuery"
+    query_options = options.merge(domains_scope_options)
     formatted_query = formatted_query_klass.constantize.new(query_options)
     @matching_site_limits = formatted_query.matching_site_limits
-    @search_engine = search_engine_klass(search_engine_option).new(options.merge(query: formatted_query.query, offset: offset))
+    @search_engine = search_engine_klass(@affiliate.search_engine).new(options.merge(query: formatted_query.query, offset: offset))
   end
 
   def has_related_searches?
@@ -60,6 +56,13 @@ class WebSearch < Search
   protected
   def search_engine_klass(search_engine_option)
     "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+  end
+
+  def domains_scope_options
+    {included_domains: @affiliate.domains_as_array,
+     excluded_domains: @affiliate.excluded_domains_as_array,
+     scope_ids: @affiliate.scope_ids_as_array,
+     scope_keywords: @affiliate.scope_keywords_as_array}
   end
 
   def result_hash
