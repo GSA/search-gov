@@ -17,22 +17,6 @@ class WebSearch < Search
            :to => :@govbox_set,
            :allow_nil => true
 
-  def initialize(options = {})
-    super(options)
-    @options = options
-    offset = (page - 1) * per_page + 1
-    search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
-    formatted_query_klass = "#{search_engine_option}FormattedQuery"
-    search_engine_klass = "#{search_engine_option}Search"
-    query_options = options.merge(included_domains: @affiliate.domains_as_array,
-                                  excluded_domains: @affiliate.excluded_domains_as_array,
-                                  scope_ids: @affiliate.scope_ids_as_array,
-                                  scope_keywords: @affiliate.scope_keywords_as_array)
-    formatted_query = formatted_query_klass.constantize.new(query_options)
-    @matching_site_limits = formatted_query.matching_site_limits
-    @search_engine = search_engine_klass.constantize.new(options.merge(query: formatted_query.query, offset: offset))
-  end
-
   class << self
     def results_present_for?(query, affiliate)
       search = new(query: query, affiliate: affiliate)
@@ -40,6 +24,21 @@ class WebSearch < Search
       spelling_ok = search.spelling_suggestion.nil? || search.spelling_suggestion.fuzzily_matches?(query)
       search.results.present? && spelling_ok
     end
+  end
+
+  def initialize(options = {})
+    super(options)
+    @options = options
+    offset = (page - 1) * per_page + 1
+    search_engine_option = @affiliate.present? ? @affiliate.search_engine : DEFAULT_SEARCH_ENGINE_OPTION
+    formatted_query_klass = "#{search_engine_option}FormattedQuery"
+    query_options = options.merge(included_domains: @affiliate.domains_as_array,
+                                  excluded_domains: @affiliate.excluded_domains_as_array,
+                                  scope_ids: @affiliate.scope_ids_as_array,
+                                  scope_keywords: @affiliate.scope_keywords_as_array)
+    formatted_query = formatted_query_klass.constantize.new(query_options)
+    @matching_site_limits = formatted_query.matching_site_limits
+    @search_engine = search_engine_klass(search_engine_option).new(options.merge(query: formatted_query.query, offset: offset))
   end
 
   def has_related_searches?
@@ -59,6 +58,10 @@ class WebSearch < Search
   end
 
   protected
+  def search_engine_klass(search_engine_option)
+    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+  end
+
   def result_hash
     hash = super
     unless @error_message
@@ -103,7 +106,7 @@ class WebSearch < Search
 
   def handle_search_engine_response(response)
     @startrecord = response.start_record
-    @results = paginate(post_process_web_results(response.results))
+    @results = paginate(post_process_results(response.results))
     @endrecord = response.end_record
     @spelling_suggestion = response.spelling_suggestion
   end
@@ -116,44 +119,24 @@ class WebSearch < Search
     @module_tag = nil
     if @total > 0
       if @indexed_results.present?
-        @module_tag = 'AIDOC'
+        @module_tag = local_index_module_tag
       else
-        @module_tag = @affiliate.search_engine == 'Bing' ? 'BWEB' : 'GWEB'
+        @module_tag = module_tag_for_search_engine(@affiliate.search_engine)
       end
     end
   end
 
-  def post_process_web_results(results)
+  def local_index_module_tag
+    'AIDOC'
+  end
+
+  def module_tag_for_search_engine(search_engine)
+    search_engine == 'Bing' ? 'BWEB' : 'GWEB'
+  end
+
+  def post_process_results(results)
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
     post_processor.post_processed_results
-  end
-
-  #TODO: WhyTF is this here and not in ImageSearch?
-  def process_image_results(response)
-    processed = response.image.results.collect do |result|
-      begin
-        {
-          "title" => result.title,
-          "Width" => result.width,
-          "Height" => result.height,
-          "FileSize" => result.fileSize,
-          "ContentType" => result.contentType,
-          "Url" => result.Url,
-          "DisplayUrl" => result.displayUrl,
-          "MediaUrl" => result.mediaUrl,
-          "Thumbnail" => {
-            "Url" => result.thumbnail.url,
-            "FileSize" => result.thumbnail.fileSize,
-            "Width" => result.thumbnail.width,
-            "Height" => result.thumbnail.height,
-            "ContentType" => result.thumbnail.contentType
-          }
-        }
-      rescue NoMethodError => e
-        nil
-      end
-    end
-    processed.compact
   end
 
   def populate_additional_results

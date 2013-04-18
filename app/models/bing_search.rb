@@ -14,7 +14,6 @@ class BingSearch < SearchEngine
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end
     @sources = index_sources
-    @scope_ids = options[:scope_ids]
   end
 
   protected
@@ -27,8 +26,6 @@ class BingSearch < SearchEngine
       query: query
     }
     params_hash.merge!('Options' => 'EnableHighlighting') if enable_highlighting
-    params_hash.merge!('web.offset' => offset) unless offset== DEFAULT_OFFSET
-    params_hash.merge!('web.count' => per_page) unless per_page == DEFAULT_PER_PAGE
     params_hash
   end
 
@@ -43,30 +40,6 @@ class BingSearch < SearchEngine
       search_response.spelling_suggestion = spelling_results(spelling)
     end
   end
-
-  def process_results(response)
-    web_results = response.web.results || []
-    processed = web_results.collect do |result|
-      title = result.title rescue nil
-      content = result.description || ''
-      title.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: content}) : nil
-    end
-    processed.compact
-  end
-
-  def hits(response)
-    (response.web.results.blank? ? 0 : response.web.total) rescue 0
-  end
-
-  def bing_offset(response)
-    (response.web.results.blank? ? 0 : response.web.offset) rescue 0
-  end
-
-  def index_sources
-    'Spell Web'
-  end
-
-  #TODO: remove url_in_bing and normalize_url checks since I nuked the routine
 
   private
   def connection_instance

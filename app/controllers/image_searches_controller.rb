@@ -32,8 +32,7 @@ class ImageSearchesController < ApplicationController
     @search_options = {
       :page => params[:page],
       :query => sanitize_query(params["query"]),
-      :affiliate => @affiliate,
-      :per_page => 30
+      :affiliate => @affiliate
     }
   end
 end
