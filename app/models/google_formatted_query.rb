@@ -1,7 +1,7 @@
 class GoogleFormattedQuery < FormattedQuery
-  def initialize(options = {})
+  def initialize(user_query, options = {})
     super(options)
-    @query = query_with_sites(build_advanced_query(options))
+    @query = query_with_sites(user_query)
   end
 
   private

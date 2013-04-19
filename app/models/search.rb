@@ -21,8 +21,10 @@ class Search
               :module_tag
 
   def initialize(options = {})
-    @query = options[:query]
     @affiliate = options[:affiliate]
+    query_related_options = options.slice(:query, :query_quote, :query_not, :query_or, :file_type, :site_excludes)
+    advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.site_domains, query_related_options)
+    @query = advanced_query_builder.build
 
     @page = options[:page].to_i rescue DEFAULT_PAGE
     @page = DEFAULT_PAGE unless @page >= DEFAULT_PAGE
@@ -36,7 +38,6 @@ class Search
 
   # This does your search.
   def run
-    #TODO: can't this happen as part of validation when Engine initialized?
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
     @error_message = (I18n.translate :empty_query) and return false unless @query.present? or allow_blank_query?
 
