@@ -1,6 +1,4 @@
 class WebSearch < Search
-  DEFAULT_SEARCH_ENGINE_OPTION = 'Bing'
-
   attr_reader :matching_site_limits
 
   delegate :boosted_contents,

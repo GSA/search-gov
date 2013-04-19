@@ -7,10 +7,9 @@ class Admin::CompareSearchResultsController < Admin::AdminController
       @query = params[:query]
       @affiliate = Affiliate.find_by_name(params[:affiliate_pick])
       @search_options = search_options_from_params(@affiliate, params)
-      #TODO: change bing to web
-      @bing_search = WebSearch.new(@search_options)
+      @web_search = WebSearch.new(@search_options)
       @odie_search = OdieSearch.new(@search_options)
-      @bing_search.run
+      @web_search.run
       @odie_search.run
     end
   end

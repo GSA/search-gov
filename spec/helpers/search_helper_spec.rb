@@ -104,7 +104,7 @@ describe SearchHelper do
 
     it "should return empty string for most types of URLs" do
       @urls_that_dont_need_a_box.each do |url|
-        helper.display_bing_result_extname_prefix({'unescapedUrl' => url}).should == ""
+        helper.display_web_result_extname_prefix({'unescapedUrl' => url}).should == ""
       end
     end
 
@@ -112,34 +112,20 @@ describe SearchHelper do
       @urls_that_need_a_box.each do |url|
         path_extname = url.gsub(/.*\//, "").gsub(/\?.*/, "").gsub(/[a-zA-Z0-9_]+\./, "").upcase
         prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
-        helper.display_bing_result_extname_prefix({'unescapedUrl' => url}).should == prefix
+        helper.display_web_result_extname_prefix({'unescapedUrl' => url}).should == prefix
       end
     end
   end
 
-  describe "#bing_spelling_suggestion_for(search, affiliate, vertical)" do
+  describe "#spelling_suggestion_for(search, affiliate, vertical)" do
     it "should return HTML escaped output containing the initial query and the suggestion" do
       affiliate = affiliates(:basic_affiliate)
       search = WebSearch.new(:query => "<initialquery>", :affiliate => affiliate)
       search.stub!(:spelling_suggestion).and_return("<suggestion>")
-      html = helper.bing_spelling_suggestion_for(search, affiliate, :web)
+      html = helper.spelling_suggestion_for(search, affiliate, :web)
       html.should contain("We're including results for <suggestion>. Do you want results only for <initialquery>?")
       html.should =~ /&lt;initialquery&gt;/
       html.should =~ /&lt;suggestion&gt;/
-    end
-  end
-
-  describe "#shunt_from_bing_to_usasearch" do
-    before do
-      @bingurl = "http://www.bing.com/search?q=Womans+Health"
-    end
-
-    it "should replace Bing search URL with USASearch search URL" do
-      helper.shunt_from_bing_to_usasearch(@bingurl, nil).should contain("query=Womans+Health")
-    end
-
-    it "should propagate affiliate parameter in URL" do
-      helper.shunt_from_bing_to_usasearch(@bingurl, affiliates(:basic_affiliate)).should contain("affiliate=#{affiliates(:basic_affiliate).name}")
     end
   end
 

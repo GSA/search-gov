@@ -10,21 +10,21 @@
           = text_field_tag :query, @query, :size => 50
         %li
           = submit_tag "Search"
-- if @bing_search and @odie_search
+- if @web_search and @odie_search
   %table
     %tbody
       %tr
         %th{:style => 'width: 50%; border-right: 1px solid black;'}
-          Bing Results
+          = "#{@affiliate.search_engine} Results"
         %th{:style => 'width: 50%;'}
           ODIE Results
       %tr{:style => 'vertical-align: text-top;'}
         %td{:style => 'width: 50%; border-right: 1px solid black; vertical-align: top;'}
-          - if @bing_search.results.present?
-            = results_summary(@bing_search)
-            - @bing_search.results.each_with_index do |result, index|
+          - if @web_search.results.present?
+            = results_summary(@web_search)
+            - @web_search.results.each_with_index do |result, index|
               %div{:style => 'height: 150px;'}
-                = render "/searches/result", :result => result, :affiliate => @affiliate, :search => @bing_search, :index => (@bing_search.startrecord + index - 1), :first => true
+                = render "/searches/result", :result => result, :affiliate => @affiliate, :search => @web_search, :index => (@web_search.startrecord + index - 1), :first => true
           - else
             No results
         %td{:style => 'width: 50%; vertical-align: top;'}
@@ -35,4 +35,4 @@
                 = render "/shared/indexed_document", :hit => hit, :index => index, :show_full_listing => true
           - else
             No results
-  = will_paginate(@bing_search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+  = will_paginate(@web_search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

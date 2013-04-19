@@ -3,7 +3,7 @@
 - else
   .searchresult{:id => "searchresult#{index+1}"}
     %h2
-      = display_bing_result_extname_prefix(result)
+      = display_web_result_extname_prefix(result)
       = display_web_result_title(result, search, affiliate, index, @search_vertical)
     - if result["publishedAt"]
       %h4= time_ago_in_words(result["publishedAt"])

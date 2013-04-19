@@ -22,7 +22,7 @@ describe SiteSearch do
 
   describe '#run' do
 
-    let!(:bing_search) { BingSearch.new }
+    let!(:web_search) { BingSearch.new }
     let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }
 
     before do

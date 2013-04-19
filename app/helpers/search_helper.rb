@@ -85,11 +85,11 @@ module SearchHelper
   end
 
   def strip_url_protocol(url)
-    url.gsub(/^http(s)?:\/\//, '')
+    url.gsub(/^https?:\/\//, '')
   end
 
-  def display_bing_result_extname_prefix(bing_result)
-    display_result_extname_prefix(bing_result['unescapedUrl'])
+  def display_web_result_extname_prefix(web_result)
+    display_result_extname_prefix(web_result['unescapedUrl'])
   end
 
   def display_result_extname_prefix(url)
@@ -202,14 +202,7 @@ module SearchHelper
     body.gsub(/\uE000/, '').gsub(/\uE001/, '')
   end
 
-  def shunt_from_bing_to_usasearch(bingurl, affiliate)
-    query = CGI::unescape(bingurl.split("?q=").last)
-    opts = {:query=> query}
-    opts.merge!(:affiliate => affiliate.name) if affiliate
-    search_path(opts)
-  end
-
-  def bing_spelling_suggestion_for(search, affiliate, vertical)
+  def spelling_suggestion_for(search, affiliate, vertical)
     if search.spelling_suggestion
       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
@@ -435,8 +428,9 @@ module SearchHelper
     html.join("\n").html_safe unless html.empty?
   end
 
-  def render_advance_search_operators_help_text
-    link = link_to I18n.t(:advanced_search_operator_link), 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+  def render_advance_search_operators_help_text(search_engine)
+    url = search_engine == 'Bing' ? 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx' : 'http://support.google.com/websearch/answer/136861?hl=en'
+    link = link_to I18n.t(:advanced_search_operator_link), url
     content_tag(:div, I18n.t(:advanced_search_operator, link: link).html_safe)
   end
 

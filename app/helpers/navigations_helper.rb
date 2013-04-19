@@ -6,7 +6,7 @@ module NavigationsHelper
       when 'RssFeed'
         link_to('RSS', [navigable.affiliate, navigable])
       when 'ImageSearchLabel'
-        'Bing'
+        navigable.affiliate.search_engine
     end
   end
 

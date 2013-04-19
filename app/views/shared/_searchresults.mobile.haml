@@ -1,4 +1,4 @@
-= bing_spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
+= spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
 - if search.first_page? && search.has_boosted_contents?
   = render 'shared/boosted_content', :search => search
 - if search.results.present?
@@ -8,7 +8,7 @@
       .row{:id => "searchresult#{index+1}"}
         .searchResult
           .title
-            = display_bing_result_extname_prefix(search_result)
+            = display_web_result_extname_prefix(search_result)
             = display_web_result_title(search_result, search, @affiliate, index, @search_vertical)
           .content
             = display_result_description(search_result)
