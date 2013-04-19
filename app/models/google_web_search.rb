@@ -4,9 +4,10 @@ class GoogleWebSearch < GoogleSearch
 
   def process_results(response)
     web_results = response.items || []
+    coder = HTMLEntities.new
     processed = web_results.collect do |result|
-      title = enable_highlighting ? convert_highlighting(CGI::unescape_html(result.html_title)) : result.title
-      content = enable_highlighting ? convert_highlighting(strip_br_tags(CGI::unescape_html(result.html_snippet))) : result.snippet
+      title = enable_highlighting ? convert_highlighting(coder.decode(result.html_title)) : result.title
+      content = enable_highlighting ? convert_highlighting(strip_br_tags(coder.decode(result.html_snippet))) : result.snippet
       if title.present?
         Hashie::Rash.new({title: title, unescaped_url: result.link, content: content})
       else
