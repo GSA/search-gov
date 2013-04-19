@@ -26,10 +26,8 @@ Feature: Homepage
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
     And I should see a link to "Home" with url for "http://usasearch.howto.gov" in the homepage about section
-    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the homepage about section
-    And I should see a link to "Features" with url for "http://usasearch.howto.gov/features" in the homepage about section
-    And I should see a link to "Success Stories" with url for "http://usasearch.howto.gov/customers" in the homepage about section
-    And I should see a link to "HelpDesk" with url for "http://usasearch.howto.gov/help-desk" in the homepage about section
+    And I should see a link to "How It Works" with url for "http://usasearch.howto.gov/help-desk.html" in the homepage about section
+    And I should see a link to "Our Customers" with url for "http://usasearch.howto.gov/customers.html" in the homepage about section
 
     When I follow "Sign Up" in the homepage about section
     Then I should see "Sign In to Use Our Services"

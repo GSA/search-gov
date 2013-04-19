@@ -2,9 +2,7 @@
   .main-menu
     %ul
       %li.first= link_to 'Home', BLOG_URL
-      %li= link_to 'About Us', "#{BLOG_URL}/about-us"
-      %li= link_to 'Features', "#{BLOG_URL}/features"
-      %li= link_to 'Success Stories', "#{BLOG_URL}/customers"
-      %li= link_to 'HelpDesk', "#{BLOG_URL}/help-desk"
+      %li= link_to 'How It Works', "#{BLOG_URL}/help-desk.html"
+      %li= link_to 'Our Customers', "#{BLOG_URL}/customers.html"
   .user-menu
     = render_user_navigation(current_user)
