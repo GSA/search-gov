@@ -112,7 +112,6 @@ class ApplicationController < ActionController::Base
       :site_limits => params["sitelimit"],
       :site_excludes => params["siteexclude"],
       :filter => params["filter"],
-      :per_page => params[:per_page],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
       :dc => params["dc"],
       :channel => params["channel"],

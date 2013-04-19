@@ -3,8 +3,7 @@ class BingWebSearch < BingSearch
 
   def params
     params_hash = super
-    params_hash.merge!('web.offset' => offset) unless offset== DEFAULT_OFFSET
-    params_hash.merge!('web.count' => per_page) unless per_page == DEFAULT_PER_PAGE
+    params_hash.merge!('web.offset' => offset) unless offset == DEFAULT_OFFSET
     params_hash
   end
 

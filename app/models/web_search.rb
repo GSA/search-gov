@@ -27,7 +27,7 @@ class WebSearch < Search
   def initialize(options = {})
     super(options)
     @options = options
-    offset = (page - 1) * per_page + 1
+    offset = (@page - 1) * @per_page + 1
     formatted_query = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
     @matching_site_limits = formatted_query.matching_site_limits
     @search_engine = search_engine_klass(@affiliate.search_engine).new(options.merge(query: formatted_query.query, offset: offset))

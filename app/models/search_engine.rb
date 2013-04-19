@@ -4,12 +4,9 @@ class SearchEngine
   end
 
   DEFAULT_OFFSET = 1
-  DEFAULT_PER_PAGE = 10
-  MAX_PER_PAGE = 50
 
   attr_accessor :query,
                 :offset,
-                :per_page,
                 :filter_level,
                 :api_connection,
                 :api_endpoint,
@@ -17,9 +14,7 @@ class SearchEngine
 
   def initialize(options = {})
     @query = options[:query]
-    #TODO: look at logic from Search class
-    @offset = options[:offset] || DEFAULT_OFFSET
-    @per_page = options[:per_page] || DEFAULT_PER_PAGE
+    @offset = options[:offset]
     @enable_highlighting = options[:enable_highlighting].nil? || options[:enable_highlighting]
     yield self
   end

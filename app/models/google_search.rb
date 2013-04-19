@@ -27,8 +27,7 @@ class GoogleSearch < SearchEngine
       q: query,
       lr: language
     }
-    params_hash.merge!(start: offset) unless offset== DEFAULT_OFFSET
-    params_hash.merge!(num: per_page) unless per_page == DEFAULT_PER_PAGE
+    params_hash.merge!(start: offset) unless offset == DEFAULT_OFFSET
     params_hash
   end
 
