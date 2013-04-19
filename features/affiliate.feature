@@ -23,17 +23,14 @@ Feature: Affiliate clients
       | Maintenance window 2 | next month |          |
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     Then I should see a link to "Home" with url for "http://usasearch.howto.gov" in the main navigation bar
-    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the main navigation bar
-    And I should see a link to "Features" with url for "http://usasearch.howto.gov/features" in the main navigation bar
-    And I should see a link to "Success Stories" with url for "http://usasearch.howto.gov/customers" in the main navigation bar
-    And I should see a link to "HelpDesk" with url for "http://usasearch.howto.gov/help-desk" in the main navigation bar
+    And I should see a link to "How It Works" with url for "http://usasearch.howto.gov/help-desk.html" in the main navigation bar
+    And I should see a link to "Our Customers" with url for "http://usasearch.howto.gov/customers.html" in the main navigation bar
     And I should see a link to "Admin Center" in the main navigation bar
     And I should not see a link to "Super Admin" in the main navigation bar
     And I should not see a link to "Analytics Center" in the main navigation bar
     And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
     And I should see "Maintenance window 1"
     And I should not see "Maintenace window 2"
-    And I should see a link to "About Us" with url for "http://usasearch.howto.gov/about-us" in the footer
     And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the footer
     And I should see a link to "Follow Us on Twitter" with url for "http://www.twitter.com/usasearch" in the footer
     And I should see a link to "USASearch@gsa.gov" with url for "mailto:***REMOVED***" in the footer

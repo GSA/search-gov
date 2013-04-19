@@ -97,10 +97,8 @@ module ApplicationHelper
   def about_usasearch_links
     links = ''
     links << link_to('Home', BLOG_URL, :class => 'first')
-    links << link_to('About Us', "#{BLOG_URL}/about-us")
-    links << link_to('Features', "#{BLOG_URL}/features")
-    links << link_to('Success Stories', "#{BLOG_URL}/customers")
-    links << link_to('HelpDesk', "#{BLOG_URL}/help-desk")
+    links << link_to('How It Works', "#{BLOG_URL}/help-desk.html")
+    links << link_to('Our Customers', "#{BLOG_URL}/customers.html")
     links << link_to('Sign Up', login_path, :class => 'last')
     raw links
   end
