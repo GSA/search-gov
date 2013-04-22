@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe GoogleSearch do
+describe GoogleWebSearch do
   before do
     common = '/customsearch/v1?alt=json&key=AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34&cx=015426204394000049396:9fkj8sbnfpi'
     common_params = '&lr=lang_en&safe=medium'
@@ -30,19 +30,16 @@ describe GoogleSearch do
       let(:minimum_search) { GoogleSearch.new(query: "taxes") }
       it 'should set appropriate defaults' do
         minimum_search.query.should == 'taxes'
-        minimum_search.offset.should == 1
         minimum_search.filter_level.should == 'medium'
-        minimum_search.per_page.should == 10
       end
     end
 
     context 'when all search params are passed in' do
-      let(:fully_specified_search) { GoogleSearch.new(query: "taxes", offset: 11, per_page: 8, filter: 2) }
+      let(:fully_specified_search) { GoogleSearch.new(query: "taxes", offset: 11, filter: 2) }
       it 'should set appropriate values from params' do
         fully_specified_search.query.should == 'taxes'
         fully_specified_search.offset.should == 11
         fully_specified_search.filter_level.should == 'high'
-        fully_specified_search.per_page.should == 8
       end
     end
 

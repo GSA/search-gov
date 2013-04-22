@@ -17,10 +17,10 @@ class SpellingSuggestion
   end
 
   def normalize(str)
-    stripped_str = str.gsub(/(\uE000|\uE001|[()])/, '')
+    stripped_str = str.gsub(/(\uE000|\uE001|[()|])/, '')
     remaining_tokens = stripped_str.split.reject do |token|
-      token.starts_with?('language:', 'site:', '-site:', 'scopeid:') || %w(OR AND NOT).include?(token)
+      token.starts_with?('language:', 'site:', '-site:', 'scopeid:') || %w(OR AND NOT).include?(token.upcase)
     end
-    remaining_tokens.join(' ').downcase
+    remaining_tokens.join(' ').gsub('-','').downcase
   end
 end

@@ -1,5 +1,4 @@
 class SearchApiConnection
-  #TODO: make attr_reader private?
   attr_reader :connection
 
   delegate :get, :to => :connection

@@ -58,7 +58,8 @@ class WebSearch < Search
     {included_domains: @affiliate.domains_as_array,
      excluded_domains: @affiliate.excluded_domains_as_array,
      scope_ids: @affiliate.scope_ids_as_array,
-     scope_keywords: @affiliate.scope_keywords_as_array}
+     scope_keywords: @affiliate.scope_keywords_as_array,
+     site_limits: @options[:site_limits]}
   end
 
   def result_hash
