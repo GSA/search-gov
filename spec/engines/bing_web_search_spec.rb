@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe BingSearch do
+describe BingWebSearch do
   before do
     common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web&'
     hl='Options=EnableHighlighting&'
@@ -9,7 +9,7 @@ describe BingSearch do
     generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira.json")
     stubs.get("#{common}#{hl}query=highlight+enabled") { [200, {}, generic_bing_result] }
     generic_bing_result_no_highlight = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira_no_highlight.json")
-    stubs.get("#{common}query=no+highlighting&web.offset=11&web.count=25") { [200, {}, generic_bing_result_no_highlight] }
+    stubs.get("#{common}query=no+highlighting&web.offset=11") { [200, {}, generic_bing_result_no_highlight] }
     stubs.get("#{common}#{hl}query=casa+blanca") { [200, {}, generic_bing_result] }
     stubs.get("#{common}#{hl}query=english") { [200, {}, generic_bing_result] }
 
@@ -32,29 +32,26 @@ describe BingSearch do
 
   it_behaves_like "a search engine"
 
-  describe ".new for BingSearch" do
+  describe ".new for BingWebSearch" do
     it 'should set Web and Spell index sources' do
-      BingSearch.new.sources.should == 'Spell Web'
+      BingWebSearch.new.sources.should == 'Spell Web'
     end
 
     context 'when only required search params are passed in' do
-      let(:minimum_search) { BingSearch.new(query: "taxes") }
+      let(:minimum_search) { BingWebSearch.new(query: "taxes") }
       it 'should set appropriate defaults' do
         minimum_search.query.should == 'taxes'
-        minimum_search.offset.should == 1
         minimum_search.filter_level.should == 'moderate'
-        minimum_search.per_page.should == 10
         minimum_search.enable_highlighting.should be_true
       end
     end
 
     context 'when all search params are passed in' do
-      let(:fully_specified_search) { BingSearch.new(query: "taxes", offset: 11, per_page: 8, filter: 2, enable_highlighting: false) }
+      let(:fully_specified_search) { BingWebSearch.new(query: "taxes", offset: 11, filter: 2, enable_highlighting: false) }
       it 'should set appropriate values from params' do
         fully_specified_search.query.should == 'taxes'
         fully_specified_search.offset.should == 11
         fully_specified_search.filter_level.should == 'strict'
-        fully_specified_search.per_page.should == 8
         fully_specified_search.enable_highlighting.should be_false
       end
     end
@@ -62,16 +59,16 @@ describe BingSearch do
     describe "adult content filters" do
       context "when a valid filter parameter is present" do
         it "should set the filter_level parameter to the Bing-specific level" do
-          BingSearch.new(query: "taxes", filter: 0).filter_level.should == 'off'
-          BingSearch.new(query: "taxes", filter: 1).filter_level.should == 'moderate'
-          BingSearch.new(query: "taxes", filter: 2).filter_level.should == 'strict'
+          BingWebSearch.new(query: "taxes", filter: 0).filter_level.should == 'off'
+          BingWebSearch.new(query: "taxes", filter: 1).filter_level.should == 'moderate'
+          BingWebSearch.new(query: "taxes", filter: 2).filter_level.should == 'strict'
         end
       end
 
       context "when the filter parameter is blank/invalid" do
         it "should set the filter_level parameter to the default value (moderate)" do
-          BingSearch.new(query: "taxes", filter: '').filter_level.should == 'moderate'
-          BingSearch.new(query: "taxes", filter: 'whatevs').filter_level.should == 'moderate'
+          BingWebSearch.new(query: "taxes", filter: '').filter_level.should == 'moderate'
+          BingWebSearch.new(query: "taxes", filter: 'whatevs').filter_level.should == 'moderate'
         end
       end
     end
@@ -80,7 +77,7 @@ describe BingSearch do
 
   describe "processing results" do
     context "when results contain a listing missing a title" do
-      let(:search) { BingSearch.new(query: "2missing1") }
+      let(:search) { BingWebSearch.new(query: "2missing1") }
 
       it "should ignore that result" do
         search_engine_response = search.execute_query
@@ -89,7 +86,7 @@ describe BingSearch do
     end
 
     context "when results contain a listing that is missing a description" do
-      let(:search) { BingSearch.new(query: "missing_descriptions") }
+      let(:search) { BingWebSearch.new(query: "missing_descriptions") }
 
       it "should use a blank description" do
         search_engine_response = search.execute_query
