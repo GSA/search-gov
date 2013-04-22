@@ -25,21 +25,16 @@ describe "shared/_searchresults.mobile.haml" do
     @search.stub!(:first_page?).and_return true
     @search.stub!(:are_results_by_bing?).and_return(false)
     @search.stub!(:module_tag).and_return('BWEB')
-    @deep_link = mock("DeepLink")
-    @deep_link.stub!(:title).and_return 'A title'
-    @deep_link.stub!(:url).and_return 'http://adeeplink.com'
 
     @plain_search_result = {'title' => "some title",
                       'unescapedUrl'=> "http://www.foo.com/url",
                       'content'=> "This is a sample result",
-                      'cacheUrl'=> "http://www.cached.com/url",
-                      'deepLinks' => [@deep_link]
+                      'cacheUrl'=> "http://www.cached.com/url"
     }
     @pdf_search_result = {'title' => "some pdf title",
                       'unescapedUrl'=> "http://www.foo.com/url.pdf",
                       'content'=> "This is a sample pdf",
-                      'cacheUrl'=> "http://www.cached.com/url.pdf",
-                      'deepLinks' => [@deep_link]
+                      'cacheUrl'=> "http://www.cached.com/url.pdf"
     }
     @search_results = []
     @search_results.stub!(:total_pages).and_return 1
@@ -61,24 +56,6 @@ describe "shared/_searchresults.mobile.haml" do
       render
       rendered.should contain("some title")
       rendered.should contain("[PDF] some pdf title")
-    end
-
-    context "when on the first page for an affiliate with deep-links turned on" do
-      it "should show deep links" do
-        render
-        rendered.should have_selector('table', :class => 'deep-links', :count => 1)
-      end
-    end
-
-    context "when on the first page for an affiliate with deep-links turned off" do
-      before do
-        @affiliate.show_deep_links = false
-      end
-
-      it "should not show deep links" do
-        render
-        rendered.should_not have_selector('table', :class => 'deep-links')
-      end
     end
 
   end
