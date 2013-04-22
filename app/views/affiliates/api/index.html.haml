@@ -203,16 +203,16 @@
       &lt;/search&gt;
 
   %br
-  %h3 Odie Search (On-Demand Indexed Document Results)
+  %h3 Document Collection Search
   %ul
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'docs')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'docs')
 
   %h4
     Response Fields

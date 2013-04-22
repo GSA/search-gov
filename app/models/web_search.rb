@@ -28,9 +28,10 @@ class WebSearch < Search
     super(options)
     @options = options
     offset = (@page - 1) * @per_page + 1
-    formatted_query = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
-    @matching_site_limits = formatted_query.matching_site_limits
-    @search_engine = search_engine_klass(@affiliate.search_engine).new(options.merge(query: formatted_query.query, offset: offset))
+    formatted_query_instance = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
+    @matching_site_limits = formatted_query_instance.matching_site_limits
+    @formatted_query = formatted_query_instance.query
+    @search_engine = search_engine_klass(@affiliate.search_engine).new(options.merge(query: @formatted_query, offset: offset))
   end
 
   def has_related_searches?
@@ -47,6 +48,10 @@ class WebSearch < Search
     else
       super
     end
+  end
+
+  def cache_key
+    [@formatted_query, @options, @affiliate.search_engine].join(':')
   end
 
   protected
