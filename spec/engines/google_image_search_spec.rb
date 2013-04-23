@@ -2,20 +2,6 @@
 require 'spec_helper'
 
 describe GoogleImageSearch do
-  before do
-    common = '/customsearch/v1?alt=json&key=AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34&cx=015426204394000049396:9fkj8sbnfpi&searchType=image'
-    common_params = '&lr=lang_en&safe=medium'
-    stubs = Faraday::Adapter::Test::Stubs.new
-    generic_google_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/image_search/obama.json")
-    stubs.get("#{common}#{common_params}&q=obama") { [200, {}, generic_google_image_result] }
-
-    @test = Faraday.new do |builder|
-      builder.adapter :test, stubs
-      builder.response :rashify
-      builder.response :json
-    end
-    Faraday.stub!(:new).and_return @test
-  end
 
   context 'when results are available' do
     let(:image_search) { GoogleImageSearch.new(query: "obama", enable_highlighting: false) }

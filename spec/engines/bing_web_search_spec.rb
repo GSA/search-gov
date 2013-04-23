@@ -2,36 +2,6 @@
 require 'spec_helper'
 
 describe BingWebSearch do
-  before do
-    common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web&'
-    hl='Options=EnableHighlighting&'
-    stubs = Faraday::Adapter::Test::Stubs.new
-    generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira.json")
-    stubs.get("#{common}#{hl}query=highlight+enabled") { [200, {}, generic_bing_result] }
-    generic_bing_result_no_highlight = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira_no_highlight.json")
-    stubs.get("#{common}query=no+highlighting&web.offset=11") { [200, {}, generic_bing_result_no_highlight] }
-    stubs.get("#{common}#{hl}query=casa+blanca") { [200, {}, generic_bing_result] }
-    stubs.get("#{common}#{hl}query=english") { [200, {}, generic_bing_result] }
-
-    two_results_1_missing_title = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/2_results_1_missing_title.json")
-    stubs.get("#{common}#{hl}query=2missing1") { [200, {}, two_results_1_missing_title] }
-
-    missing_descriptions = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/missing_descriptions.json")
-    stubs.get("#{common}#{hl}query=missing_descriptions") { [200, {}, missing_descriptions] }
-
-    no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/no_results.json")
-    stubs.get("#{common}#{hl}query=no_results") { [200, {}, no_results] }
-
-    spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/spelling_suggestion.json")
-    stubs.get("#{common}#{hl}query=electro+coagulation") { [200, {}, spelling] }
-
-    @test = Faraday.new do |builder|
-      builder.adapter :test, stubs
-      builder.response :rashify
-      builder.response :json
-    end
-    Faraday.stub!(:new).and_return @test
-  end
 
   it_behaves_like "a search engine"
 

@@ -4,7 +4,6 @@ shared_examples "a search engine" do
     it 'should set up API connection' do
       search_engine = described_class.new
       search_engine.api_endpoint.should == described_class::API_ENDPOINT
-      search_engine.api_connection.connection.should == @test
     end
   end
 

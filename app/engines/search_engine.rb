@@ -13,7 +13,7 @@ class SearchEngine
 
   def initialize(options = {})
     @query = options[:query]
-    @offset = options[:offset]
+    @offset = options[:offset] || DEFAULT_OFFSET
     @enable_highlighting = options[:enable_highlighting].nil? || options[:enable_highlighting]
     yield self
   end

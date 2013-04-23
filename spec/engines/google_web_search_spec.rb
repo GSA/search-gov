@@ -2,29 +2,6 @@
 require 'spec_helper'
 
 describe GoogleWebSearch do
-  before do
-    common = '/customsearch/v1?alt=json&key=AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34&cx=015426204394000049396:9fkj8sbnfpi'
-    common_params = '&lr=lang_en&safe=medium'
-    stubs = Faraday::Adapter::Test::Stubs.new
-    generic_google_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/ira.json")
-    stubs.get("#{common}#{common_params}&q=highlight+enabled") { [200, {}, generic_google_result] }
-    stubs.get("#{common}#{common_params}&q=no+highlighting") { [200, {}, generic_google_result] }
-    stubs.get("#{common}&lr=lang_es&safe=medium&q=casa+blanca") { [200, {}, generic_google_result] }
-    stubs.get("#{common}#{common_params}&q=english") { [200, {}, generic_google_result] }
-
-    no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/no_results.json")
-    stubs.get("#{common}#{common_params}&q=no_results") { [200, {}, no_results] }
-
-    spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/spelling_suggestion.json")
-    stubs.get("#{common}#{common_params}&q=electro+coagulation") { [200, {}, spelling] }
-
-    @test = Faraday.new do |builder|
-      builder.adapter :test, stubs
-      builder.response :rashify
-      builder.response :json
-    end
-    Faraday.stub!(:new).and_return @test
-  end
 
   it_behaves_like "a search engine"
 

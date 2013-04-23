@@ -2,20 +2,6 @@
 require 'spec_helper'
 
 describe BingImageSearch do
-  before do
-    common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image&'
-    hl='Options=EnableHighlighting&'
-    stubs = Faraday::Adapter::Test::Stubs.new
-    generic_bing_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/white_house.json")
-    stubs.get("#{common}#{hl}query=white+house") { [200, {}, generic_bing_image_result] }
-
-    @test = Faraday.new do |builder|
-      builder.adapter :test, stubs
-      builder.response :rashify
-      builder.response :json
-    end
-    Faraday.stub!(:new).and_return @test
-  end
 
   context 'when results are available' do
     let(:image_search) { BingImageSearch.new(query: "white house", enable_highlighting: true) }
