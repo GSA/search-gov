@@ -2,7 +2,7 @@ class ImageSearch < WebSearch
   protected
 
   def post_process_results(results)
-    results
+    results.select { |result| result.thumbnail.present? }
   end
 
   def populate_additional_results

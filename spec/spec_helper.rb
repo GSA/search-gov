@@ -80,6 +80,9 @@ RSpec.configure do |config|
     stubs = Faraday::Adapter::Test::Stubs.new
     generic_bing_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/white_house.json")
     stubs.get("#{common}#{hl}query=white+house") { [200, {}, generic_bing_image_result] }
+    stubs.get("#{common}#{hl}query=%28white+house%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_image_result] }
+    bing_image_no_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/no_results.json")
+    stubs.get("#{common}#{hl}query=%28unusual+image%29+%28site%3Anonsense.gov%29") { [200, {}, bing_image_no_result] }
 
     common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web&'
     generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira.json")
