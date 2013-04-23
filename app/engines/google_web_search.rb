@@ -8,11 +8,7 @@ class GoogleWebSearch < GoogleSearch
     processed = web_results.collect do |result|
       title = enable_highlighting ? convert_highlighting(coder.decode(result.html_title)) : result.title
       content = enable_highlighting ? convert_highlighting(strip_br_tags(coder.decode(result.html_snippet))) : result.snippet
-      if title.present?
-        Hashie::Rash.new({title: title, unescaped_url: result.link, content: content})
-      else
-        nil
-      end
+      Hashie::Rash.new({title: title, unescaped_url: result.link, content: content})
     end
     processed.compact
   end
@@ -20,7 +16,7 @@ class GoogleWebSearch < GoogleSearch
   private
 
   def strip_br_tags(str)
-    str.gsub(/<\/?br>/,'')
+    str.gsub(/<\/?br>/, '')
   end
 
   def convert_highlighting(str)

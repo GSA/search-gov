@@ -79,6 +79,15 @@ shared_examples "a search engine" do
         search_engine_response.total.should be_zero
       end
     end
+
+    context 'when a spelling suggestion is available' do
+      let(:search) { described_class.new(query: "electro coagulation") }
+
+      it "should set a spelling suggestion" do
+        search_engine_response = search.execute_query
+        search_engine_response.spelling_suggestion.should == 'electrocoagulation'
+      end
+    end
   end
 
 end

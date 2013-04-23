@@ -15,6 +15,9 @@ describe GoogleWebSearch do
     no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/no_results.json")
     stubs.get("#{common}#{common_params}&q=no_results") { [200, {}, no_results] }
 
+    spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/spelling_suggestion.json")
+    stubs.get("#{common}#{common_params}&q=electro+coagulation") { [200, {}, spelling] }
+
     @test = Faraday.new do |builder|
       builder.adapter :test, stubs
       builder.response :rashify

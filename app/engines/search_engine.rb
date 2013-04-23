@@ -1,4 +1,3 @@
-#TODO: move to /engines dir?
 class SearchEngine
   class SearchError < RuntimeError;
   end
