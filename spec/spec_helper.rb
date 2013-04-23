@@ -88,6 +88,13 @@ RSpec.configure do |config|
     stubs.get("#{common}query=no+highlighting&web.offset=11") { [200, {}, generic_bing_result_no_highlight] }
     stubs.get("#{common}#{hl}query=casa+blanca") { [200, {}, generic_bing_result] }
     stubs.get("#{common}#{hl}query=english") { [200, {}, generic_bing_result] }
+    stubs.get("#{common}#{hl}query=%28english%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_result] }
+
+    page2_6results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/page2_6results.json")
+    stubs.get("#{common}#{hl}query=%28fewer%29+%28site%3Anonsense.gov%29&web.offset=11") { [200, {}, page2_6results] }
+
+    total_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/total_no_results.json")
+    stubs.get("#{common}#{hl}query=total_no_results") { [200, {}, total_no_results] }
 
     two_results_1_missing_title = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/2_results_1_missing_title.json")
     stubs.get("#{common}#{hl}query=2missing1") { [200, {}, two_results_1_missing_title] }
@@ -97,6 +104,7 @@ RSpec.configure do |config|
 
     bing_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/no_results.json")
     stubs.get("#{common}#{hl}query=no_results") { [200, {}, bing_no_results] }
+    stubs.get("#{common}#{hl}query=%28no_results%29+%28site%3Anonsense.gov%29") { [200, {}, bing_no_results] }
 
     bing_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/spelling_suggestion.json")
     stubs.get("#{common}#{hl}query=electro+coagulation") { [200, {}, bing_spelling] }

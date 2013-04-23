@@ -31,7 +31,7 @@ describe ImageSearch do
 
     context 'when the affiliate has no Bing results, but has Flickr images' do
       before do
-        @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.site_domains.create(:domain => 'nonsense.com')
         flickr_profile = FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @non_affiliate, :profile_type => 'user', :profile_id => '12345')
         FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his daughters to school', :description => '', :tags => 'barack obama,sasha,malia')

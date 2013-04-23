@@ -71,7 +71,7 @@ class WebSearch < Search
     hash = super
     unless @error_message
       hash.merge!(:spelling_suggestion => @spelling_suggestion) if @spelling_suggestion
-      hash.merge!(:boosted_results => @boosted_contents.results) if has_boosted_contents?
+      hash.merge!(:boosted_results => boosted_contents.results) if has_boosted_contents?
     end
     hash
   end
@@ -86,7 +86,7 @@ class WebSearch < Search
   end
 
   def handle_response(response)
-    @total = response.total
+    @total = response.total rescue 0
     available_search_engine_pages = (@total/@per_page.to_f).ceil
     if backfill_needed?
       odie_search = odie_search_class.new(@options.merge(:page => [@page - available_search_engine_pages, 1].max))

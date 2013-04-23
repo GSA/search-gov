@@ -32,7 +32,7 @@ describe Emailer do
 
     it 'should contain lists of unadopted features for each affiliate that has any' do
       email.should have_body_text(/I noticed you registered for a new USASearch account a few days ago so I wanted to follow up to see if you have any questions/)
-      email.should have_body_text(/laksjdflkjasldkjfalskdjf.gov:\n\nDiscovery Tag\n\nSAYT/)
+      email.should have_body_text(/nonsense.gov:\n\nDiscovery Tag\n\nSAYT/)
     end
   end
 

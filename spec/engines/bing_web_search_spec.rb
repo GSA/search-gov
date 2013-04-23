@@ -70,5 +70,14 @@ describe BingWebSearch do
       end
     end
 
+    context "when Bing reports a total > 0 but gives no results whatsoever" do
+      let(:search) { BingWebSearch.new(query: "total_no_results") }
+
+      it "should return zero for the number of hits" do
+        search_engine_response = search.execute_query
+        search_engine_response.total.should == 0
+      end
+    end
+
   end
 end
