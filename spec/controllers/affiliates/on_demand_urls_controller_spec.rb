@@ -108,13 +108,6 @@ describe Affiliates::OnDemandUrlsController do
           post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/another.html'}
         end
 
-        it "should delete it from BingUrl table first, as it may no longer be in Bing" do
-          bing_url = mock("BingUrl")
-          BingUrl.should_receive(:find_by_normalized_url).with('agency.gov/document1.html').and_return(bing_url)
-          bing_url.should_receive(:destroy)
-          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
-        end
-
       end
 
       context "when we failed to create a URL" do
