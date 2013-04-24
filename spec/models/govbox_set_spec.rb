@@ -76,7 +76,7 @@ describe GovboxSet do
 
       context "when the affiliate does not have a related agency with an org code" do
         it "should call Jobs.search with just the query, size, hl, and geoip_info param" do
-          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, :geoip_info => geoip_info).and_return nil
+          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, :geoip_info => geoip_info, tags: 'federal').and_return nil
           GovboxSet.new('foo', affiliate, geoip_info)
         end
       end

@@ -1,11 +1,18 @@
 module JobsHelper
   def title_link(job, search, index)
-    job_link_with_click_tracking(job.position_title.html_safe, "https://www.usajobs.gov/GetJob/ViewDetails/#{job.id}?PostingChannelID=USASearch",
+    job_link_with_click_tracking(job.position_title.html_safe, url_for_job(job),
                                  search.affiliate, search.query, index, @search_vertical)
   end
 
+  def url_for_job(job)
+    case job.id
+    when /^usajobs/ then "#{job.url}?PostingChannelID=USASearch"
+    else job.url
+    end
+  end
+
   def job_application_deadline(yyyy_mm_dd)
-    "Apply by #{Date.parse(yyyy_mm_dd).to_s(:long)}"
+    "Apply by #{Date.parse(yyyy_mm_dd).to_s(:long)}" if yyyy_mm_dd
   end
 
   def locations_and_salary(job)
@@ -16,18 +23,20 @@ module JobsHelper
   end
 
   def format_salary(job)
-    min = number_to_currency(job.minimum, :precision => 0)
-    max = number_to_currency(job.maximum, :precision => 0)
+    return if job.minimum.nil? || job.minimum.zero?
+    max = job.maximum || 0
+    min_str = number_to_currency(job.minimum)
+    max_str = number_to_currency(job.maximum)
     case job.rate_interval_code
       when 'PA', 'PH'
         period = job.rate_interval_code == 'PA' ? 'yr' : 'hr'
-        plus = min == max ? '' : '+'
-        "#{min}#{plus}/#{period}" unless job.minimum.zero?
+        plus = max > job.minimum ? '+' : ''
+        "#{min_str}#{plus}/#{period}"
       when 'WC'
         nil
       else
-        with_max = min == max ? ' ' : "-#{max} "
-        "#{min}#{with_max}#{Jobs::RATE_INTERVALS[job.rate_interval_code.to_sym]}"
+        with_max = max > job.minimum ? "-#{max_str} " : ' '
+        "#{min_str}#{with_max}#{Jobs::RATE_INTERVALS[job.rate_interval_code.to_sym]}"
     end
   end
 
@@ -41,9 +50,19 @@ module JobsHelper
     agency = search.affiliate.agency
     if agency.present?
       title = "See all #{agency.abbreviation || agency.name} job openings"
-      url= "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
+      url = url_for_agency_jobs(agency, search.jobs.first.id)
     end
     job_link_with_click_tracking title, url, search.affiliate, search.query, agency_jobs_link_index = -1, @search_vertical
+  end
+
+  def url_for_agency_jobs(agency, job_id)
+    case job_id
+    when /^usajobs/
+      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
+    when /^ng:/
+      ng_agency = job_id.split(':')[1]
+      "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"
+    end
   end
 
   def job_openings_header(agency)

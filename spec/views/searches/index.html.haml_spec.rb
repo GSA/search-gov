@@ -128,10 +128,18 @@ describe "searches/index.html.haml" do
       before do
         @affiliate.stub!(:jobs_enabled?).and_return(true)
         json = [
-          {"id" => "328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)", "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"]},
-          {"id" => "328437201", "position_title" => "Some Research Job", "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"]},
-          {"id" => "328437202", "position_title" => "Bi-Weekly Research Job", "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"]},
-          {"id" => "328437203", "position_title" => "Zero Money Research Job", "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"]}
+          {"id" => "usajobs:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
+           "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
+           "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437200"},
+          {"id" => "usajobs:328437201", "position_title" => "Some Research Job",
+           "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"],
+           "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437201"},
+          {"id" => "usajobs:328437202", "position_title" => "Bi-Weekly Research Job",
+           "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"],
+           "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437202"},
+          {"id" => "usajobs:328437203", "position_title" => "Zero Money Research Job",
+           "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"],
+           "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437203"}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
         @search.stub!(:query).and_return "research jobs"
@@ -150,12 +158,12 @@ describe "searches/index.html.haml" do
         rendered.should contain("Federal Job Openings")
         rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
         rendered.should contain("Agricultural Research Service")
-        rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871+/yr")
+        rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871.00+/yr")
         rendered.should contain("Apply by October 12, 2023")
 
         rendered.should contain("Some Research Job")
         rendered.should contain("Some Research Service")
-        rendered.should contain("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24/hr")
+        rendered.should contain("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24.00/hr")
         rendered.should contain("Apply by October 13, 2023")
 
         rendered.should contain("Bi-Weekly Research Job")

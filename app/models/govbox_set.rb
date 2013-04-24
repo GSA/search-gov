@@ -20,7 +20,11 @@ class GovboxSet
     end
     if affiliate.jobs_enabled?
       jobs_options = {query: query, size: 3, hl: 1, geoip_info: geoip_info}
-      jobs_options.merge!(organization_id: affiliate.agency.organization_code) if affiliate.has_organization_code?
+      if affiliate.has_organization_code?
+        jobs_options.merge!(organization_id: affiliate.agency.organization_code)
+      else
+        jobs_options.merge!(tags: 'federal')
+      end
       @jobs = Jobs.search(jobs_options)
     end
     govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
