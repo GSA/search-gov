@@ -18,9 +18,6 @@ class IndexedDocument < ActiveRecord::Base
   validate :extension_ok
   validate :site_domain_matches
   validate :robots_txt_compliance
-  validate :bing_absence
-  after_rollback :create_or_update_bing_url
-  after_destroy :create_or_update_bing_url
 
   OK_STATUS = "OK"
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -350,12 +347,6 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
-  def bing_absence
-    return unless self.affiliate.present? and errors.blank?
-    @url_in_bing = BingSearch.search_for_url_in_bing(url)
-    errors.add(:base, BING_PRESENCE) if @url_in_bing.present?
-  end
-
   def url_is_parseable
     URI.parse(self.url) rescue errors.add(:base, UNPARSEABLE_URL_STATUS)
   end
@@ -383,10 +374,4 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
-  def create_or_update_bing_url
-    if @url_in_bing and errors[:base].include?(BING_PRESENCE)
-      bing_url = BingUrl.where(:normalized_url => @url_in_bing).first_or_initialize
-      bing_url.new_record? ? bing_url.save! : bing_url.touch
-    end
-  end
 end

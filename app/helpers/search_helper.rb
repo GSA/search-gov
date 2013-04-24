@@ -85,23 +85,11 @@ module SearchHelper
   end
 
   def strip_url_protocol(url)
-    url.gsub(/^http(s)?:\/\//, '')
+    url.gsub(/^https?:\/\//, '')
   end
 
-  def display_deep_links_for(result, search, affiliate, vertical)
-    return if result["deepLinks"].nil?
-    rows = []
-    deep_links_are_all_pos_zero = 0
-    result["deepLinks"].in_groups_of(2)[0, 4].each do |row_pair|
-      row =  content_tag(:td, row_pair[0].nil? ? "" : tracked_click_link(h(row_pair[0].url), h(row_pair[0].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
-      row << content_tag(:td, row_pair[1].nil? ? "" : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
-      rows << content_tag(:tr, row)
-    end
-    content_tag(:table, raw(rows.join("\n")), :class=>"deep-links")
-  end
-
-  def display_bing_result_extname_prefix(bing_result)
-    display_result_extname_prefix(bing_result['unescapedUrl'])
+  def display_web_result_extname_prefix(web_result)
+    display_result_extname_prefix(web_result['unescapedUrl'])
   end
 
   def display_result_extname_prefix(url)
@@ -162,7 +150,7 @@ module SearchHelper
     link_with_click_tracking(html_safe_title, url, affiliate, query, position, "JOBS", vertical)
   end
 
-  def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
+  def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web_search, opts = nil)
     aff_name = affiliate.nil? ? "" : affiliate.name
     query = search.spelling_suggestion || search.query
     query = query.gsub("'", "\\\\'")
@@ -214,14 +202,7 @@ module SearchHelper
     body.gsub(/\uE000/, '').gsub(/\uE001/, '')
   end
 
-  def shunt_from_bing_to_usasearch(bingurl, affiliate)
-    query = CGI::unescape(bingurl.split("?q=").last)
-    opts = {:query=> query}
-    opts.merge!(:affiliate => affiliate.name) if affiliate
-    search_path(opts)
-  end
-
-  def bing_spelling_suggestion_for(search, affiliate, vertical)
+  def spelling_suggestion_for(search, affiliate, vertical)
     if search.spelling_suggestion
       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
@@ -358,7 +339,7 @@ module SearchHelper
 
   def display_search_all_affiliate_sites_suggestion(search)
     return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
-    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(" ")}. "
+    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(' ')}. "
     html << "Do you want to see results for "
     html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
     html << "?"
@@ -381,11 +362,15 @@ module SearchHelper
     end
   end
 
-  def search_results_by_logo(results_by_bing)
-    if results_by_bing
+  def search_results_by_logo(module_tag)
+    if %w(BWEB IMAG).include? module_tag
       alt = I18n.t(:results_by_bing)
       image_source = "binglogo_#{I18n.locale.to_s}.gif"
       image_tag(image_source, :alt => alt, :class => 'results-by-logo bing')
+    elsif %w(GWEB GIMAG).include? module_tag
+      alt = I18n.t(:results_by_google)
+      image_source = "googlelogo_#{I18n.locale.to_s}.gif"
+      image_tag(image_source, :alt => alt, :class => 'results-by-logo google')
     else
       alt = I18n.t(:results_by_usasearch)
       image_source = "results_by_usasearch_#{I18n.locale.to_s}.png"
@@ -443,8 +428,9 @@ module SearchHelper
     html.join("\n").html_safe unless html.empty?
   end
 
-  def render_advance_search_operators_help_text
-    link = link_to I18n.t(:advanced_search_operator_link), 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+  def render_advance_search_operators_help_text(search_engine)
+    url = search_engine == 'Bing' ? 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx' : 'http://support.google.com/websearch/answer/136861?hl=en'
+    link = link_to I18n.t(:advanced_search_operator_link), url
     content_tag(:div, I18n.t(:advanced_search_operator, link: link).html_safe)
   end
 
@@ -542,9 +528,9 @@ module SearchHelper
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
 
-  def render_mobile_pagination_and_logo(collection, are_results_by_bing)
+  def render_mobile_pagination_and_logo(collection, module_tag)
     render(:partial => 'shared/pagination_and_logo',
            :locals => { :collection => collection,
-                        :are_results_by_bing => are_results_by_bing })
+                        :module_tag => module_tag })
   end
 end

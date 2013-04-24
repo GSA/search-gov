@@ -42,19 +42,6 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
       end
     end
 
-    context 'when the IndexedDocument url_in_bing is present' do
-      let(:normalized_url) { 'nps.gov/pdf.pdf' }
-      before do
-        BingUrl.destroy_all
-        BingSearch.should_receive(:search_for_url_in_bing).with('http://nps.gov/pdf.pdf').and_return(normalized_url)
-      end
-
-      it 'should create BingUrl' do
-        IndexedDocumentValidator.perform(@idoc.id)
-        BingUrl.find_by_normalized_url(normalized_url).should be_present
-      end
-    end
-
     context "when the IndexedDocument is valid" do
       before do
         @idoc.stub!(:valid?).and_return true

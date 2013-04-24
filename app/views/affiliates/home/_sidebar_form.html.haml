@@ -27,7 +27,8 @@
             %td.name
               = sidebar_form.label :default_search_label, nil, :class => 'hide'
               = sidebar_form.text_field :default_search_label, :maxlength => 20
-            %td.source USASearch/Bing
+            %td.source
+              = "USASearch/#{@affiliate.search_engine}"
             %td.actions
           - @affiliate.navigations.each_with_index do |navigation, index|
             = sidebar_form.fields_for :"#{render_navigable_field_name_for navigation}", navigation.navigable do |navigable_form|

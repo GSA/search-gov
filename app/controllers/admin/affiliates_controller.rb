@@ -28,7 +28,8 @@ class Admin::AffiliatesController < Admin::AdminController
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled,
                              :has_staged_content, :exclude_webtrends, :locale,
-                             :sitemaps, :affiliate_feature_addition, :form_agencies, :jobs_enabled, :agency, :excluded_domains]
+                             :sitemaps, :affiliate_feature_addition, :form_agencies, :jobs_enabled, :agency,
+                             :excluded_domains, :search_engine]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
     config.columns[:staged_search_results_page_title].label = "Staged search results page title"
@@ -49,6 +50,8 @@ class Admin::AffiliatesController < Admin::AdminController
                                                 :header,
                                                 :staged_header,
                                                 :footer, :staged_footer]
+    config.columns[:search_engine].form_ui = :select
+    config.columns[:search_engine].options = { :options => %w(Bing Google) }
   end
 
   def analytics
