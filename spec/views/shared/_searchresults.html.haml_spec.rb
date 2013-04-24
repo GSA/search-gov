@@ -6,34 +6,13 @@ describe "shared/_searchresults.html.haml" do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch")
-    @search.stub!(:affiliate).and_return @affiliate
-    @search.stub!(:related_search).and_return []
-    @search.stub!(:has_related_searches?).and_return false
-    @search.stub!(:queried_at_seconds).and_return(1271978870)
-    @search.stub!(:query).and_return "tax forms"
-    @search.stub!(:spelling_suggestion)
-    @search.stub!(:images).and_return []
-    @search.stub!(:error_message)
-    @search.stub!(:startrecord).and_return 1
-    @search.stub!(:endrecord).and_return 10
-    @search.stub!(:total).and_return 20
-    @search.stub!(:page).and_return 1
-    @search.stub!(:has_boosted_contents?)
-    @search.stub!(:scope_id)
-    @search.stub!(:agency)
-    @search.stub!(:med_topic)
-    @search.stub!(:tweets)
-    @search.stub!(:has_featured_collections?)
-    @search.stub!(:indexed_documents)
-    @search.stub!(:matching_site_limits).and_return []
-    @search.stub!(:are_results_by_bing?).and_return true
-    @search.stub!(:first_page?).and_return true
-    @search.stub!(:news_items)
-    @search.stub!(:video_news_items)
-    @search.stub!(:photos)
-    @search.stub!(:has_forms?).and_return false
-    @search.stub!(:module_tag).and_return('BWEB')
+    @search = stub("WebSearch", has_photos?: false, has_med_topic?: false, has_jobs?: false,
+                   has_forms?: false, has_boosted_contents?: false, has_related_searches?: false,
+                   has_featured_collections?: false, has_video_news_items?: false,
+                   has_news_items?: false, agency: nil, tweets: nil, query: "tax forms", affiliate: @affiliate,
+                   page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870,
+                   error_message: nil, scope_id: nil, first_page?: true, matching_site_limits: [], module_tag:'BWEB',
+                   startrecord: 1, endrecord: 10, total: 20)
 
     @search_result = {'title' => "some title",
                       'unescapedUrl' => "http://www.foo.com/url",
@@ -41,22 +20,16 @@ describe "shared/_searchresults.html.haml" do
                       'cacheUrl' => "http://www.cached.com/url"
     }
     @search_results = []
+    20.times { @search_results << @search_result }
     @search_results.stub!(:total_pages).and_return 1
     @search.stub!(:results).and_return @search_results
 
-    20.times { @search_results << @search_result }
     assign(:search, @search)
   end
 
   context "when page is displayed" do
     before do
       view.stub!(:search).and_return @search
-    end
-
-    it "should show the Bing logo" do
-      render
-      rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
-      rendered.should_not have_selector("a img[src^='/images/binglogo_en.gif']")
     end
 
     context "when featured collections are present" do
@@ -73,9 +46,17 @@ describe "shared/_searchresults.html.haml" do
       end
     end
 
-    context "when results are not by bing" do
+    context "when results are by USASearch" do
+      it "should show the Bing logo" do
+        render
+        rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
+        rendered.should_not have_selector("a img[src^='/images/binglogo_en.gif']")
+      end
+    end
+
+    context "when results are by USASearch" do
       before do
-        @search.stub!(:are_results_by_bing?).and_return false
+        @search.stub!(:module_tag).and_return 'AIDOC'
         view.stub!(:search).and_return @search
       end
 
@@ -92,6 +73,31 @@ describe "shared/_searchresults.html.haml" do
         it "should show the Spanish USASearch results by logo" do
           render
           rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/images/results_by_usasearch_es.png']")
+        end
+      end
+    end
+
+    context "when results are by Google" do
+      before do
+        @search.stub!(:module_tag).and_return 'GWEB'
+        view.stub!(:search).and_return @search
+      end
+
+      it "should show the English Google results by logo" do
+        render
+        rendered.should have_selector("img[src^='/images/googlelogo_en.gif']")
+        rendered.should_not have_selector("a img[src^='/images/googlelogo_en.gif']")
+      end
+
+      context "when the locale is Spanish" do
+        before do
+          I18n.stub!(:locale).and_return :es
+        end
+
+        it "should show the Spanish Google results by logo" do
+          render
+          rendered.should have_selector("img[src^='/images/googlelogo_es.gif']")
+          rendered.should_not have_selector("a img[src^='/images/googlelogo_es.gif']")
         end
       end
     end

@@ -37,18 +37,18 @@ describe "searches/advanced.html.haml" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
           render
-          rendered.should have_selector("input[type='radio'][name='filter'][value='moderate'][checked='checked']")
+          rendered.should have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
         end
       end
 
       context "when a valid option is present" do
         before do
-          params['filter'] = 'strict'
+          params['filter'] = '2'
         end
 
         it "should mark that option as selected" do
           render
-          rendered.should have_selector("input[type='radio'][name='filter'][value='strict'][checked='checked']")
+          rendered.should have_selector("input[type='radio'][name='filter'][value='2'][checked='checked']")
         end
       end
     end
@@ -67,7 +67,7 @@ describe "searches/advanced.html.haml" do
 
     it "should show options for adult searches, defaulting to moderate" do
       render
-      rendered.should have_selector("input[type='radio'][name='filter'][value='moderate'][checked='checked']")
+      rendered.should have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
     end
 
     it 'should render advanced search operators link' do
