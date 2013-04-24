@@ -109,10 +109,6 @@ describe GovboxSet do
         govbox_set.video_news_items.should == @video_results
       end
 
-      xit "should log info about the VIDS and NEWS query impressions" do
-        QueryImpression.should_receive(:log).with(:web, affiliate.name, 'item', %w{BWEB NEWS VIDS})
-        @search.run
-      end
     end
 
     context "med topics" do

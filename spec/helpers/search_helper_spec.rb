@@ -647,7 +647,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Results by Google'][src^='/images/googlelogo_en.png']")
+            html.should have_selector("img[alt='Results by Google'][src^='/images/googlelogo_en.gif']")
           end
         end
       end
@@ -677,7 +677,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Resultados por Google'][src^='/images/googlelogo_es.png']")
+            html.should have_selector("img[alt='Resultados por Google'][src^='/images/googlelogo_es.gif']")
           end
         end
       end
