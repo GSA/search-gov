@@ -55,6 +55,7 @@ gem 'rash'
 gem 'geoip'
 gem 'us_states'
 gem 'rack-contrib'
+gem 'htmlentities'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

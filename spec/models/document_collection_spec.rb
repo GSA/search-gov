@@ -7,7 +7,7 @@ describe DocumentCollection do
     @valid_attributes = {
       :name => 'My Collection',
       :affiliate => affiliates(:power_affiliate),
-      :url_prefixes_attributes => {'0' => { :prefix => 'http://www.agency.gov/' } }
+      :url_prefixes_attributes => {'0' => {:prefix => 'http://www.agency.gov/'}}
     }
   end
 
@@ -28,6 +28,21 @@ describe DocumentCollection do
     it 'should not allow document collection without prefix' do
       dc = DocumentCollection.new(@valid_attributes.except(:url_prefixes_attributes))
       dc.should_not be_valid
+    end
+  end
+
+  describe "#depth" do
+    subject do
+      DocumentCollection.create!(:name => 'My Collection',
+                                  :affiliate => affiliates(:power_affiliate),
+                                  :url_prefixes_attributes => {'0' => {:prefix => 'http://www.agency.gov/'},
+                                                               '1' => {:prefix => 'http://www.agency.gov/one/two/three/'},
+                                                               '2' => {:prefix => 'http://www.agency.gov/simple/'}}
+      )
+    end
+
+    it 'should return the maximum depth of its url prefixes' do
+      subject.depth.should == 3
     end
   end
 end

@@ -749,23 +749,6 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see "See more document results"
 
-  Scenario: Searchers see agency deep links in English
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email  | contact_name | domains | is_agency_govbox_enabled |
-      | agency site  | tsa.gov | aff@agency.gov | John Bar     | tsa.gov | true                     |
-    And the following Agency entries exist:
-      | name | domain  |
-      | TSA  | tsa.gov |
-    And the following Agency Urls exist:
-      | name | locale | url                         |
-      | TSA  | en     | http://tsa.gov/             |
-      | TSA  | en     | http://www.tsa.gov/         |
-      | TSA  | es     | http://www.tsa.gov/espanol/ |
-    When I am on tsa.gov's search page
-    And I fill in "query" with "tsa"
-    And I press "Search"
-    Then I should see agency govbox deep links
-
   Scenario: Searching within an agency on English SERP
     Given the following Affiliates exist:
       | display_name    | name        | contact_email | contact_name | domains | search_results_page_title                      | is_agency_govbox_enabled | locale |

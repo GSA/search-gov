@@ -35,14 +35,10 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:has_forms?).and_return false
     @search.stub!(:module_tag).and_return('BWEB')
 
-    @deep_link = mock("DeepLink")
-    @deep_link.stub!(:title).and_return 'A title'
-    @deep_link.stub!(:url).and_return 'http://adeeplink.com'
     @search_result = {'title' => "some title",
                       'unescapedUrl' => "http://www.foo.com/url",
                       'content' => "This is a sample result",
-                      'cacheUrl' => "http://www.cached.com/url",
-                      'deepLinks' => [@deep_link]
+                      'cacheUrl' => "http://www.cached.com/url"
     }
     @search_results = []
     @search_results.stub!(:total_pages).and_return 1
@@ -55,24 +51,6 @@ describe "shared/_searchresults.html.haml" do
   context "when page is displayed" do
     before do
       view.stub!(:search).and_return @search
-    end
-
-    context "when on the first page for an affiliate with deep-links turned on" do
-      it "should show deep links" do
-        render
-        rendered.should have_selector('table', :class => 'deep-links', :count => 1)
-      end
-    end
-
-    context "when on the first page for an affiliate with deep-links turned off" do
-      before do
-        @affiliate.show_deep_links = false
-      end
-
-      it "should not show deep links" do
-        render
-        rendered.should_not have_selector('table', :class => 'deep-links')
-      end
     end
 
     it "should show the Bing logo" do
@@ -123,11 +101,6 @@ describe "shared/_searchresults.html.haml" do
         @search.stub!(:page).and_return 2
         @search.stub!(:first_page?).and_return false
         view.stub!(:search).and_return @search
-      end
-
-      it "should not show any deep links" do
-        render
-        rendered.should_not have_selector('table', :class => 'deep-links')
       end
 
       context "when boosted contents are present" do

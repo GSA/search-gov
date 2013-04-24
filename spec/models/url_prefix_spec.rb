@@ -50,18 +50,20 @@ describe UrlPrefix do
       end
     end
 
-    context 'when submitted URL prefix has path that is more than two directories deep' do
-      it 'should not be valid' do
-        prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => 'www.foo.gov/_Blog/2012/09'))
-        prefix.should_not be_valid
-        prefix.errors[:base].first.should =~ /two directories/
-      end
-    end
   end
 
   describe "#label" do
     it "should return the prefix" do
       UrlPrefix.new(:prefix => "foo").label.should == "foo"
+    end
+  end
+
+  describe '#depth' do
+    it 'should return the subdirectory depth of the url prefix' do
+      UrlPrefix.new(prefix: 'http://www.gov.gov/').depth.should == 0
+      UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/').depth.should == 1
+      UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/two/').depth.should == 2
+      UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/two/three/').depth.should == 3
     end
   end
 end

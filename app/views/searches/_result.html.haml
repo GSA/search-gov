@@ -3,11 +3,9 @@
 - else
   .searchresult{:id => "searchresult#{index+1}"}
     %h2
-      = display_bing_result_extname_prefix(result)
+      = display_web_result_extname_prefix(result)
       = display_web_result_title(result, search, affiliate, index, @search_vertical)
     - if result["publishedAt"]
       %h4= time_ago_in_words(result["publishedAt"])
     %h3= display_result_description(result, search.query, affiliate)
     %h3.result-url= display_web_result_link(result, search, affiliate, index, @search_vertical)
-    - if index.zero? and search.first_page? and affiliate.show_deep_links
-      = display_deep_links_for(result, search, affiliate, @search_vertical)

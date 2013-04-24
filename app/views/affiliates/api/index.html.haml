@@ -35,7 +35,8 @@
       The name of your affiliate site. This parameter is required.
     %li
       %span index:
-      One of web, images, docs, news, or videonews. The default is 'web'. Bing provides the search results for web, docs, and image searches,
+      One of web, images, docs, news, or videonews. The default is 'web'. Either Bing or Google (depending on your account settings)
+      provides the search results for web, docs, and image searches,
       backfilled by supplemental documents indexed by USASearch. The indexes for the news and video news results are maintained by USASearch.
     %li
       %span format:
@@ -65,7 +66,7 @@
   %h2
     Examples
   %br
-  %h3 Web Search (Bing Results)
+  %h3 Web Search (Bing/Google Results)
   %ul
     %li
       %span Search for "fire" with response in JSON format
@@ -125,23 +126,11 @@
           %span title:
           The title of the result
         %li
-          %span cacheUrl:
-          A cached page for the result
-        %li
           %span unescapedUrl:
           The direct url to the result page
         %li
           %span content:
           A snippet of content from the result page highlighting the query terms
-        %li
-          %span deepLinks:
-          %ul
-            %li
-              %span Title:
-              Title of the deep-linked page
-            %li
-              %span Url:
-              Url to the deep-linked page
 
   %p
     %h4
@@ -164,34 +153,14 @@
         "results":[
           {
             "title":"Publication 17 (2010), Your Federal Income Tax",
-            "deepLinks":null,
-            "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4553228149131343&w=6228f8c9,2dcf99ee",
             "content":"However, the rust and \ue000water\ue001 damage to rugs and drapes caused by ...",
             "unescapedUrl":"http://www.irs.gov/publications/p17/ch25.html"
           },{
             "title":"Part III - Administrative, Procedural, and Miscellaneous",
-            "deepLinks":null,"cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4536005329682909",
             "content":"(4) Statement for energy efficient heating, cooling, ventilation, and hot ...",
             "unescapedUrl":"http://www.irs.gov/pub/irs-drop/n-06-52.pdf"
           },{
             "title":"Local Standards: Housing and Utilities",
-            "deepLinks": [
-              {
-                "Title":"Individuals",
-                "Url":"http://www.irs.gov/individuals/index.html"
-              },{
-                "Title":"E-File",
-                "Url":"http://www.irs.gov/efile/index.html"
-              },{
-                "Title":"Contact IRS",
-                "Url":"http://www.irs.gov/contact/index.html"
-              },{
-                "Title":"Where To File",
-                "Url":"http://www.irs.gov/file/index.html"
-              }
-              ...
-            ],
-            "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4608066291501781&w=e94447c9,486a0a05",
             "content":"Disclaimer: IRS Collection Financial Standards are intended for use in ...",
             "unescapedUrl":"http://www.irs.gov/businesses/small/article/0,,id=104696,00.html"
           }
@@ -221,28 +190,11 @@
         &lt;results type=&quot;array&quot;&gt;
           &lt;result&gt;
             &lt;title&gt;Bottled &amp;#57344;Water&amp;#57345; Information ...&lt;/title&gt;
-            &lt;deepLinks nil=&quot;true&quot;&gt;&lt;/deepLinks&gt;
-            &lt;cacheUrl&gt;http://cc.bingj.com/cache.aspx?q=water&amp;amp;d=4844560191981002&lt;/cacheUrl&gt;
             &lt;content&gt;Get bottled &amp;#57344;water&amp;#57345; and industry info ...&lt;/content&gt;
             &lt;unescapedUrl&gt;http://www.myspringwater.com/Default.aspx&lt;/unescapedUrl&gt;
           &lt;/result&gt;
           &lt;result&gt;
             &lt;title&gt;California &amp;#57344;Water&amp;#57345; Service Company: Home&lt;/title&gt;
-            &lt;deepLinks type=&quot;array&quot;&gt;
-              &lt;deepLink&gt;
-                &lt;Title&gt;Account&lt;/Title&gt;
-                &lt;Url&gt;http://www.calwater.com/your_account/index.php&lt;/Url&gt;
-              &lt;/deepLink&gt;
-              &lt;deepLink&gt;
-                &lt;Title&gt;Contact Us&lt;/Title&gt;
-                &lt;Url&gt;http://www.calwater.com/contact/index.php&lt;/Url&gt;
-              &lt;/deepLink&gt;
-              &lt;deepLink&gt;
-                &lt;Title&gt;Your District&lt;/Title&gt;
-                &lt;Url&gt;http://www.calwater.com/your_district/index.php&lt;/Url&gt;
-              &lt;/deepLink&gt;
-            &lt;/deepLinks&gt;
-            &lt;cacheUrl&gt;http://cc.bingj.com/cache.aspx?q=water&amp;amp;d=4531968189268674&amp;amp;&lt;/cacheUrl&gt;
             &lt;content&gt;Holding company of two subsidiaries: California &amp;#57344;Water&amp;#57345; ...&lt;/content&gt;
             &lt;unescapedUrl&gt;http://www.calwater.com/&lt;/unescapedUrl&gt;
           &lt;/result&gt;
@@ -251,16 +203,16 @@
       &lt;/search&gt;
 
   %br
-  %h3 Odie Search (On-Demand Indexed Document Results)
+  %h3 Document Collection Search
   %ul
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'json', :query => 'fire', :index => 'docs')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'odie')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'docs')
 
   %h4
     Response Fields

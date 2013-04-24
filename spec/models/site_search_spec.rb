@@ -18,11 +18,24 @@ describe SiteSearch do
     it "should use the dc param to find a document collection when document_collection isn't present" do
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id).document_collection.should == dc
     end
+
+    context 'when document collection max depth is >= 3' do
+      before do
+        dc.url_prefixes.create!(prefix: 'http://www.whitehouse.gov/seo/is/hard/')
+        affiliate.search_engine.should == 'Bing'
+      end
+
+      subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id) }
+
+      it 'should set the search engine to Google' do
+        subject.affiliate.search_engine.should == 'Google'
+      end
+    end
   end
 
   describe '#run' do
 
-    let!(:bing_search) { BingSearch.new }
+    let!(:web_search) { BingSearch.new }
     let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }
 
     before do

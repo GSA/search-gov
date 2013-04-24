@@ -2,7 +2,7 @@ class DocumentCollection < ActiveRecord::Base
   belongs_to :affiliate
   has_one :navigation, :as => :navigable, :dependent => :destroy
   has_many :url_prefixes, :dependent => :destroy
-  scope :navigable_only, joins(:navigation).where(:navigations => { :is_active => true } ).joins(:url_prefixes).select('distinct document_collections.*')
+  scope :navigable_only, joins(:navigation).where(:navigations => {:is_active => true}).joins(:url_prefixes).select('distinct document_collections.*')
   validates_presence_of :name, :affiliate_id
   validates_uniqueness_of :name, :scope => :affiliate_id, :case_sensitive => false
   validate :url_prefixes_cannot_be_blank
@@ -20,6 +20,10 @@ class DocumentCollection < ActiveRecord::Base
 
   def scope_keywords_as_array
     @scope_keywords_as_array ||= (scope_keywords.nil? ? [] : scope_keywords.split(',').each { |keyword| keyword.strip! })
+  end
+
+  def depth
+    url_prefixes.reduce(0) { |depth, url_prefix| [depth, url_prefix.depth].max }
   end
 
   private

@@ -22,6 +22,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:has_boosted_contents?).and_return false
     @search.stub!(:gov_forms).and_return nil
     @search.stub!(:error_message).and_return "Ignore me"
+    #TODO: remove filter setting and all the delegates, too
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:agency).and_return nil

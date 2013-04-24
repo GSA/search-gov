@@ -12,6 +12,7 @@ class NewsSearch < Search
     super(options)
     @query = (@query || '').squish
     @channel = options[:channel]
+    @enable_highlighting = options[:enable_highlighting]
 
     if options[:until_date].present? || options[:since_date].present?
       if options[:until_date].present?
@@ -90,10 +91,10 @@ class NewsSearch < Search
   def process_results(response)
     processed = response.hits(:verify => true).collect do |hit|
       {
-        'title' => highlight_solr_hit_like_bing(hit, :title),
+        'title' => @enable_highlighting ? SolrBingHighlighter.hl(hit, :title) : hit.instance.title,
         'link' => hit.instance.link,
         'publishedAt' => hit.instance.published_at,
-        'content' => highlight_solr_hit_like_bing(hit, :description)
+        'content' => @enable_highlighting ? SolrBingHighlighter.hl(hit, :description) : hit.instance.description
       }
     end
     processed.compact
@@ -108,7 +109,6 @@ class NewsSearch < Search
   def log_serp_impressions
     modules = []
     modules << @module_tag if @module_tag
-    modules << "SREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end
 

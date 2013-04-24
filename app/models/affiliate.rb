@@ -256,6 +256,10 @@ class Affiliate < ActiveRecord::Base
     @domains_as_array ||= site_domains(reload).collect(&:domain)
   end
 
+  def excluded_domains_as_array
+    @excluded_domains_as_array ||= excluded_domains.collect(&:domain)
+  end
+
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
   end
