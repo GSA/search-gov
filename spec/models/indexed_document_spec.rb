@@ -121,44 +121,6 @@ describe IndexedDocument do
     end
   end
 
-  context "when a URL is a valid candidate for Odie indexing" do
-    let(:idoc) { IndexedDocument.new(@valid_attributes) }
-    let(:normalized_url) { 'nps.gov/index.htm' }
-
-    context "when the URL exists in Bing" do
-      before do
-        BingUrl.delete_all
-        BingUrl.create!(:normalized_url => 'whitehouse.gov/blog/2012/09/25/president-obama-addresses-united-nations')
-        BingSearch.should_receive(:search_for_url_in_bing).and_return(normalized_url)
-      end
-
-      it "should be invalid" do
-        idoc.save.should be_false
-        idoc.errors.full_messages.first.should == IndexedDocument::BING_PRESENCE
-        BingUrl.find_by_normalized_url(normalized_url).should be_present
-      end
-    end
-
-    context "when the URL does not exist in Bing" do
-      before { BingUrl.delete_all }
-
-      it "should be valid" do
-        idoc.save!
-        BingUrl.find_by_normalized_url(normalized_url).should be_nil
-      end
-    end
-  end
-
-  context 'when a URL is not a valid candidate for Odie indexing' do
-    let(:normalized_url) { 'google.com' }
-    let(:idoc) { IndexedDocument.new(@valid_attributes.merge(:url => normalized_url)) }
-
-    it 'should not check for bing absence' do
-      BingSearch.should_not_receive(:search_for_url_in_bing)
-      idoc.save.should be_false
-    end
-  end
-
   it "should mark invalid URLs that have an extension that we have blacklisted" do
     movie = "http://www.nps.gov/some.mov"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => movie))

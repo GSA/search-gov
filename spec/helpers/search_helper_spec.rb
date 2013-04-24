@@ -29,7 +29,7 @@ describe SearchHelper do
       let(:search) { WebSearch.new(:affiliate => @affiliate) }
 
       it "should not display search within this site link" do
-        helper.should_not_receive(:display_search_within_this_site_link).with(result, search, @affiliate).and_return('search_within_this_site_link')
+        helper.should_not_receive(:display_search_within_this_site_link)
         helper.display_web_result_link(result, search, @affiliate, 1, :web)
       end
     end

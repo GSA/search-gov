@@ -34,54 +34,19 @@ describe SiteSearch do
   end
 
   describe '#run' do
-
-    let!(:web_search) { BingSearch.new }
-    let(:search) { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc) }
-
-    before do
-      BoostedContent.should_not_receive(:search_for)
-      BingSearch.should_receive(:new).and_return(bing_search)
-    end
+    let(:bing_formatted_query) { mock("BingFormattedQuery", matching_site_limits: nil, query: 'ignore')}
 
     it 'should include sites from document collection' do
-      bing_search.should_receive(:query).
-          with(%r[^\(gov\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
-               anything(), anything(), anything(), anything(), anything()).
-          and_return('')
-      search.run
-    end
-
-    context 'when the query with URL prefixes are too long' do
-      before do
-        30.times do |i|
-          dc.url_prefixes.create!(:prefix => "www.whitehouse.gov/the-press-office-news-releases/2012-day-#{i + 1}/")
-        end
-      end
-
-      it 'should skip some of the longest URL prefixes' do
-        bing_search.should_receive(:query).
-            with(%r[site:#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-16)')}$],
-                 anything(), anything(), anything(), anything(), anything()).
-            and_return('')
-        search.run
-        search.formatted_query.length.should <= Search::QUERY_STRING_ALLOCATION
-      end
-
-      it 'should sort formatted query by length ASC, alnum DESC' do
-        search.formatted_query.should =~ %r[^#{Regexp.escape('(gov) (site:www.whitehouse.gov/blog OR site:www.whitehouse.gov/photos-and-video')}]
-        search.formatted_query.should =~ %r[#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-1 OR site:www.whitehouse.gov/the-press-office-news-releases/2012-day-30')}]
-      end
+      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains=>["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains=>[], :scope_ids=>[], :scope_keywords=>[]}).and_return bing_formatted_query
+      SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
     context 'when the affiliate has scope_keywords' do
       before { affiliate.update_attributes!(:scope_keywords => 'patents,america,flying inventions') }
 
       it 'should use the scope_keywords' do
-        bing_search.should_receive(:query).
-            with(%r[^\(gov\) \("patents" OR "america" OR "flying inventions"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
-                 anything(), anything(), anything(), anything(), anything()).
-            and_return('')
-        search.run
+        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains=>["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains=>[], :scope_ids=>[], :scope_keywords=>'patents,america,flying inventions'.split(',')}).and_return bing_formatted_query
+        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
       end
     end
 
@@ -92,11 +57,8 @@ describe SiteSearch do
       end
 
       it 'should use the scope_keywords' do
-        bing_search.should_receive(:query).
-            with(%r[^\(gov\) \("education" OR "child development"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
-                 anything(), anything(), anything(), anything(), anything()).
-            and_return('')
-        search.run
+        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains=>["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains=>[], :scope_ids=>[], :scope_keywords=>'education,child development'.split(',')}).and_return bing_formatted_query
+        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
       end
     end
 
@@ -107,11 +69,8 @@ describe SiteSearch do
       end
 
       it 'should use the document collection scope_keywords' do
-        bing_search.should_receive(:query).
-            with(%r[^\(gov\) \("patents" OR "flying inventions"\) \(site:www\.whitehouse\.gov/blog OR site:www\.whitehouse\.gov/photos-and-video\)$],
-                 anything(), anything(), anything(), anything(), anything()).
-            and_return('')
-        search.run
+        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains=>["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains=>[], :scope_ids=>[], :scope_keywords=>'patents,flying inventions'.split(',')}).and_return bing_formatted_query
+        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
       end
     end
   end
