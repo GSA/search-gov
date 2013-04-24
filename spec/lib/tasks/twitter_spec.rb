@@ -69,6 +69,8 @@ describe "Twitter rake tasks" do
 
         before(:each) do
           Time.stub!(:now).and_return(now)
+          Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
+
           TwitterProfile.create!(:twitter_id => 123,
                                  :screen_name => 'USASearch',
                                  :name => 'USASearch',

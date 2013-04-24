@@ -166,6 +166,7 @@ describe GovboxSet do
       context "when affiliate is twitter govbox enabled" do
         before do
           affiliate.stub!(:is_twitter_govbox_enabled?).and_return true
+          Twitter.stub!(:user).and_return mock('Twitter')
         end
 
         context "when affiliate has Twitter Profiles" do
