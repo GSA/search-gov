@@ -1,5 +1,5 @@
 class SiteSearch < WebSearch
-  SEPARATOR = ' OR '.freeze
+  SEPARATOR = ' | '.freeze
   attr_reader :document_collection
 
   def initialize(options = {})

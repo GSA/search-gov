@@ -32,7 +32,7 @@ describe SiteSearch do
 
     it 'should include sites from document collection' do
       bing_search.should_receive(:query).
-          with(%r[^gov site:\(www\.whitehouse\.gov/blog OR www\.whitehouse\.gov/photos-and-video\)$],
+          with(%r[^gov site:\(www\.whitehouse\.gov/blog | www\.whitehouse\.gov/photos-and-video\)$],
                anything(), anything(), anything(), anything(), anything()).
           and_return('')
       search.run
@@ -48,15 +48,15 @@ describe SiteSearch do
       it 'should skip some of the longest URL prefixes' do
         bing_search.should_receive(:query) do |query|
           query.should match(%r[#{Regexp.escape('site:(www.whitehouse.gov/blog')}])
-          query.should match(%r[#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-14)')}$])
+          query.should match(%r[#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-13)')}$])
         end
         search.run
         search.formatted_query.length.should <= Search::QUERY_STRING_ALLOCATION
       end
 
       it 'should sort formatted query by length ASC, alnum DESC' do
-        search.formatted_query.should =~ %r[^#{Regexp.escape('gov site:(www.whitehouse.gov/blog OR www.whitehouse.gov/photos-and-video')}]
-        search.formatted_query.should =~ %r[#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-1 OR www.whitehouse.gov/the-press-office-news-releases/2012-day-30')}]
+        search.formatted_query.should =~ %r[^#{Regexp.escape('gov site:(www.whitehouse.gov/blog | www.whitehouse.gov/photos-and-video')}]
+        search.formatted_query.should =~ %r[#{Regexp.escape('www.whitehouse.gov/the-press-office-news-releases/2012-day-1 | www.whitehouse.gov/the-press-office-news-releases/2012-day-30')}]
       end
     end
 
@@ -65,7 +65,7 @@ describe SiteSearch do
 
       it 'should use the scope_keywords' do
         bing_search.should_receive(:query).
-            with(%r[^gov \("patents" OR "america" OR "flying inventions"\) site:\(www\.whitehouse\.gov/blog OR www\.whitehouse\.gov/photos-and-video\)$],
+            with('gov ("patents" | "america" | "flying inventions") site:(www.whitehouse.gov/blog | www.whitehouse.gov/photos-and-video)',
                  anything(), anything(), anything(), anything(), anything()).
             and_return('')
         search.run
@@ -80,7 +80,7 @@ describe SiteSearch do
 
       it 'should use the scope_keywords' do
         bing_search.should_receive(:query).
-            with(%r[^gov \("education" OR "child development"\) site:\(www\.whitehouse\.gov/blog OR www\.whitehouse\.gov/photos-and-video\)$],
+            with('gov ("education" | "child development") site:(www.whitehouse.gov/blog | www.whitehouse.gov/photos-and-video)',
                  anything(), anything(), anything(), anything(), anything()).
             and_return('')
         search.run
@@ -95,7 +95,7 @@ describe SiteSearch do
 
       it 'should use the document collection scope_keywords' do
         bing_search.should_receive(:query).
-            with(%r[^gov \("patents" OR "flying inventions"\) site:\(www\.whitehouse\.gov/blog OR www\.whitehouse\.gov/photos-and-video\)$],
+            with('gov ("patents" | "flying inventions") site:(www.whitehouse.gov/blog | www.whitehouse.gov/photos-and-video)',
                  anything(), anything(), anything(), anything(), anything()).
             and_return('')
         search.run

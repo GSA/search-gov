@@ -1,6 +1,6 @@
 class WebSearch < Search
 
-  DEFAULT_SCOPE = "(scopeid:usagovall OR site:(gov OR mil))"
+  DEFAULT_SCOPE = "(scopeid:usagovall | site:(gov | mil))"
 
   attr_reader :offset,
               :sources,
@@ -83,7 +83,7 @@ class WebSearch < Search
       query = query.split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
     query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"") if options[:query_quote].present?
-    query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ') if options[:query_or].present?
+    query += ' (' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' | ') + ')' if options[:query_or].present?
     query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ') if options[:query_not].present?
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " -site:(#{options[:site_excludes]})" unless options[:site_excludes].blank?
@@ -318,23 +318,23 @@ class WebSearch < Search
 
   def generate_affiliate_scope
     domains = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : fill_domains_to_remainder
-    scope_ids = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
+    scope_ids = (@query =~ /site:/ and not @query =~ /-site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" | ")
     excluded_domains = (@query =~ /-site:/) ? nil : affiliate.excluded_domains.collect(&:domain).join(' ')
     affiliate_scope = ""
     affiliate_scope = "(" unless scope_ids.blank?  or @matching_site_limits.present?
     affiliate_scope += scope_ids unless scope_ids.blank? or @matching_site_limits.present?
-    affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
+    affiliate_scope += " | " if affiliate_scope.length > 1 and domains.present?
     affiliate_scope += domains unless domains.blank?
     affiliate_scope += ")" unless scope_ids.blank? or @matching_site_limits.present?
     affiliate_scope += " #{generate_default_scope}" if (scope_ids.blank? and domains.blank? and (@query =~ /site:/).nil?)
-    affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")})" unless affiliate.scope_keywords.blank?
+    affiliate_scope += " (#{affiliate.scope_keywords_as_array.collect { |keyword| "\"#{keyword}\"" }.join(" | ")})" unless affiliate.scope_keywords.blank?
     affiliate_scope += " -site:(#{excluded_domains})" unless excluded_domains.blank?
     affiliate_scope.strip
   end
 
   def fill_domains_to_remainder
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
-    domains, delimiter = [], " OR "
+    domains, delimiter = [], " | "
     unless @options[:site_limits].blank?
       @matching_site_limits = @options[:site_limits].split.collect { |site| site if affiliate.includes_domain?(site) }.compact
     end
