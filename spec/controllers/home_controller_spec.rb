@@ -8,12 +8,6 @@ describe HomeController do
       @affiliate = affiliates(:usagov_affiliate)
     end
 
-    it "should assign geoip info" do
-      GeoipLookup.stub!(:lookup).and_return OpenStruct.new(:region_name => 'CA')
-      get :index
-      assigns[:geoip_info].region_name.should == 'CA'
-    end
-
     context "when no locale is specified" do
       before do
         get :index

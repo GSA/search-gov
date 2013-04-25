@@ -5,7 +5,7 @@
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
   - elsif search.has_forms?
     = render('shared/form_govbox')
-  - elsif search.photos.present? and search.photos.results.any?
+  - elsif search.has_photos?
     = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
   - elsif search.med_topic.present?
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
@@ -19,4 +19,4 @@
   = render 'shared/related_topics'
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
-    = search_results_by_logo(search.are_results_by_bing?)
+    = search_results_by_logo(search.module_tag)

@@ -13,12 +13,10 @@ class SearchesController < ApplicationController
   before_filter :set_format_for_tablet_devices
   before_filter :force_mobile_mode, :only => [:index, :docs, :news]
   before_filter :adjust_mobile_mode
-  SAYT_SUGGESTION_SIZE = 15
-  SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
   ssl_allowed :index, :news, :docs, :advanced, :videonews
 
   def index
-    @search = WebSearch.new(@search_options)
+    @search = WebSearch.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
     @page_title = @search.query
@@ -136,7 +134,7 @@ class SearchesController < ApplicationController
 
   def set_docs_search_options
     @search_options = search_options_from_params(@affiliate, params)
-    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc].to_i) rescue nil if @search_options[:dc]
+    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc].to_i) rescue nil
     @search_options.merge!(document_collection: document_collection)
   end
 

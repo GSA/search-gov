@@ -70,9 +70,9 @@ class NewsItem < ActiveRecord::Base
 
     def title_description_date_hash_by_link(affiliate, urls)
       fields = [:link, :title, :description, :published_at]
-      select(fields).where(:rss_feed_id => affiliate.rss_feeds.collect(&:id)).find_all_by_link(urls).reduce({}) do |result, news_item|
-        result[news_item.link] = news_item
-        result
+      select(fields).where(:rss_feed_id => affiliate.rss_feeds.collect(&:id)).find_all_by_link(urls).reduce({}) do |result_hash, news_item|
+        result_hash[news_item.link] = news_item
+        result_hash
       end
     end
   end

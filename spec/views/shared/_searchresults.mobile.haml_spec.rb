@@ -6,40 +6,21 @@ describe "shared/_searchresults.mobile.haml" do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch")
-    @search.stub!(:related_search).and_return []
-    @search.stub!(:has_related_searches?).and_return false
-    @search.stub!(:queried_at_seconds).and_return(1271978870)
-    @search.stub!(:query).and_return "tax forms"
-    @search.stub!(:spelling_suggestion)
-    @search.stub!(:images).and_return []
-    @search.stub!(:error_message)
-    @search.stub!(:startrecord).and_return 1
-    @search.stub!(:endrecord).and_return 10
-    @search.stub!(:total).and_return 20
-    @search.stub!(:page).and_return 1
-    @search.stub!(:boosted_contents)
-    @search.stub!(:scope_id)
-    @search.stub!(:agency)
-    @search.stub!(:med_topic)
-    @search.stub!(:first_page?).and_return true
-    @search.stub!(:are_results_by_bing?).and_return(false)
-    @search.stub!(:module_tag).and_return('BWEB')
-    @deep_link = mock("DeepLink")
-    @deep_link.stub!(:title).and_return 'A title'
-    @deep_link.stub!(:url).and_return 'http://adeeplink.com'
+    @search = stub("WebSearch", has_boosted_contents?: false, has_related_searches?: false, query: "tax forms", affiliate: @affiliate,
+                   page: 1, spelling_suggestion: nil, queried_at_seconds: 1271978870,
+                   error_message: nil, scope_id: nil, first_page?: true, matching_site_limits: [], module_tag: 'BWEB',
+                   startrecord: 1, endrecord: 10, total: 20)
+
 
     @plain_search_result = {'title' => "some title",
-                      'unescapedUrl'=> "http://www.foo.com/url",
-                      'content'=> "This is a sample result",
-                      'cacheUrl'=> "http://www.cached.com/url",
-                      'deepLinks' => [@deep_link]
+                            'unescapedUrl' => "http://www.foo.com/url",
+                            'content' => "This is a sample result",
+                            'cacheUrl' => "http://www.cached.com/url"
     }
     @pdf_search_result = {'title' => "some pdf title",
-                      'unescapedUrl'=> "http://www.foo.com/url.pdf",
-                      'content'=> "This is a sample pdf",
-                      'cacheUrl'=> "http://www.cached.com/url.pdf",
-                      'deepLinks' => [@deep_link]
+                          'unescapedUrl' => "http://www.foo.com/url.pdf",
+                          'content' => "This is a sample pdf",
+                          'cacheUrl' => "http://www.cached.com/url.pdf"
     }
     @search_results = []
     @search_results.stub!(:total_pages).and_return 1
@@ -62,25 +43,5 @@ describe "shared/_searchresults.mobile.haml" do
       rendered.should contain("some title")
       rendered.should contain("[PDF] some pdf title")
     end
-
-    context "when on the first page for an affiliate with deep-links turned on" do
-      it "should show deep links" do
-        render
-        rendered.should have_selector('table', :class => 'deep-links', :count => 1)
-      end
-    end
-
-    context "when on the first page for an affiliate with deep-links turned off" do
-      before do
-        @affiliate.show_deep_links = false
-      end
-
-      it "should not show deep links" do
-        render
-        rendered.should_not have_selector('table', :class => 'deep-links')
-      end
-    end
-
   end
-
 end

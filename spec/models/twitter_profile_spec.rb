@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe TwitterProfile do
   before do
+    Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
     @valid_attributes = {
       :twitter_id => 123,
       :screen_name => 'USASearch',

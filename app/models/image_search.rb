@@ -1,23 +1,8 @@
 class ImageSearch < WebSearch
-
-  def initialize(options = {})
-    super(options)
-    @bing_search = BingImageSearch.new
-    @sources = "Spell+Image"
-  end
-
   protected
 
-  def hits(response)
-    (response.image.results.blank? ? 0 : response.image.total) rescue 0
-  end
-
-  def bing_offset(response)
-    response.image.offset rescue 0
-  end
-
-  def process_results(response)
-    process_image_results(response)
+  def post_process_results(results)
+    results.select { |result| result.thumbnail.present? }
   end
 
   def populate_additional_results
@@ -31,11 +16,12 @@ class ImageSearch < WebSearch
     :image
   end
 
-  def assign_module_tag
-    if @total > 0
-      @module_tag = are_results_by_bing? ? 'IMAG' : 'FLICKR'
-    else
-      @module_tag = nil
-    end
+  def local_index_module_tag
+    'FLICKR'
   end
+
+  def module_tag_for_search_engine(search_engine)
+    search_engine == 'Bing' ? 'IMAG' : 'GIMAG'
+  end
+
 end

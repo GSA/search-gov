@@ -76,19 +76,5 @@ describe "SAYT suggestions rake tasks" do
         end
       end
     end
-
-    describe "usasearch:sayt_suggestions:prune_dead_ends" do
-      let(:task_name) { 'usasearch:sayt_suggestions:prune_dead_ends' }
-      before { @rake[task_name].reenable }
-
-      it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
-      end
-
-      it "should prune sayt_suggestions that yield no search results" do
-        SaytSuggestion.should_receive(:prune_dead_ends)
-        @rake[task_name].invoke
-      end
-    end
   end
 end

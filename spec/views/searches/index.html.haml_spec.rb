@@ -1,43 +1,21 @@
 # coding: utf-8
 require 'spec_helper'
+
+
 describe "searches/index.html.haml" do
   fixtures :affiliates, :image_search_labels, :navigations
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch")
-    @search.stub!(:query).and_return "test"
-    @search.stub!(:affiliate).and_return @affiliate
-    @search.stub!(:page).and_return 1
-    @search.stub!(:spelling_suggestion).and_return nil
-    @search.stub!(:related_search).and_return []
-    @search.stub!(:has_related_searches?).and_return false
-    @search.stub!(:queried_at_seconds).and_return(1271978870)
-    @search.stub!(:news_items)
-    @search.stub!(:video_news_items)
-    @search.stub!(:recalls)
-    @search.stub!(:extra_image_results)
-    @search.stub!(:results).and_return []
-    @search.stub!(:has_boosted_contents?).and_return false
-    @search.stub!(:gov_forms).and_return nil
-    @search.stub!(:error_message).and_return "Ignore me"
-    @search.stub!(:filter_setting).and_return nil
-    @search.stub!(:scope_id).and_return nil
-    @search.stub!(:agency).and_return nil
-    @search.stub!(:med_topic).and_return nil
-    @search.stub!(:has_featured_collections?).and_return false
-    @search.stub!(:are_results_by_bing?).and_return true
-    @search.stub!(:first_page?).and_return true
-    @search.stub!(:matching_site_limits).and_return []
-    @search.stub!(:indexed_documents).and_return nil
-    @search.stub!(:photos).and_return nil
-    @search.stub!(:tweets)
-    @search.stub!(:jobs)
-    @search.stub!(:has_forms?).and_return false
-    @search.stub!(:module_tag).and_return('BWEB')
+    @search = stub("WebSearch", has_photos?: false, med_topic: nil, has_jobs?: false,
+                   has_forms?: false, has_boosted_contents?: false, has_related_searches?: false,
+                   has_featured_collections?: false, has_video_news_items?: false,
+                   has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,
+                   page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870, results: [],
+                   error_message: "Ignore me", scope_id: nil, first_page?: true, matching_site_limits: [], module_tag:'BWEB')
     assign(:search, @search)
-    assign(:search_params, { affiliate: @affiliate.name, query: 'test' })
+    assign(:search_params, {affiliate: @affiliate.name, query: 'test'})
   end
 
   context "when spelling suggestion is available" do
@@ -57,14 +35,7 @@ describe "searches/index.html.haml" do
   context "when there is a blank search" do
     before do
       @search.stub!(:query).and_return ""
-      @search.stub!(:spelling_suggestion).and_return nil
-      @search.stub!(:results).and_return []
-      @search.stub!(:boosted_contents).and_return nil
-      @search.stub!(:faqs).and_return nil
-      @search.stub!(:gov_forms).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
-      @search.stub!(:filter_setting).and_return nil
-      @search.stub!(:scope_id).and_return nil
     end
 
     it "should show header search form" do
@@ -76,10 +47,6 @@ describe "searches/index.html.haml" do
 
   context "when there are search results" do
     before do
-      @search.stub!(:query).and_return "some query"
-      @search.stub!(:spelling_suggestion).and_return nil
-      @search.stub!(:images).and_return []
-      @search.stub!(:error_message).and_return nil
       @search.stub!(:startrecord).and_return 1
       @search.stub!(:endrecord).and_return 10
       @search.stub!(:total).and_return 2000
@@ -92,28 +59,6 @@ describe "searches/index.html.haml" do
       @search_results = []
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
-      @search.stub!(:boosted_contents).and_return nil
-      @search.stub!(:faqs).and_return nil
-      @search.stub!(:gov_forms).and_return nil
-      @search.stub!(:filter_setting).and_return nil
-      @search.stub!(:scope_id).and_return nil
-    end
-
-    it "should not display a hidden filter parameter" do
-      render
-      rendered.should_not have_selector("input[type='hidden'][name='filter']")
-    end
-
-    context "when a filter parameter is specified" do
-      before do
-        @filter_setting = "moderate"
-        @search.stub!(:filter_setting).and_return @filter_setting
-      end
-
-      it "should include a hidden input field in the search form with the filter parameter" do
-        render
-        rendered.should have_selector("input[type='hidden'][name='filter'][value='#{@filter_setting}']")
-      end
     end
 
     context "when results have potential XSS attack code" do
@@ -198,6 +143,7 @@ describe "searches/index.html.haml" do
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
         @search.stub!(:jobs).and_return mashies
+        @search.stub!(:has_jobs?).and_return true
       end
 
       it "should show them in a govbox" do
@@ -250,10 +196,10 @@ describe "searches/index.html.haml" do
       context 'when there is a department associated with the affiliate' do
         before do
           dept = Agency.create!({:name => 'Some New Dept',
-                                   :domain => 'DOS.gov',
-                                   :abbreviation => 'DOS',
-                                   :organization_code => 'DS',
-                                   :name_variants => 'Service Dept'})
+                                 :domain => 'DOS.gov',
+                                 :abbreviation => 'DOS',
+                                 :organization_code => 'DS',
+                                 :name_variants => 'Service Dept'})
           @affiliate.stub!(:agency).and_return(dept)
         end
 

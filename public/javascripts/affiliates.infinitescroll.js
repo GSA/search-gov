@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-  var initialLogo = jQuery('#results .results-by-logo').hasClass('bing') ? 'bing' : 'usasearch';
+  var initialLogoUsasearch = jQuery('#results .results-by-logo').hasClass('usasearch');
 
   jQuery.infinitescroll.prototype._showdonemsg_usasearch = function() {
 
@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
         result = (opts.state.isDone) ? 'done' : (!opts.appendCallback) ? 'no-append' : 'append',
         frag,
         odieFrag,
-        logos = ['bing', 'usasearch'],
+        logos = ['bing', 'usasearch', 'google'],
         logo,
         currentLogo,
         odieDocs;
@@ -67,9 +67,9 @@ jQuery(document).ready(function() {
           }
         });
         box.children('.results-by-logo').wrap('<div class="pagination-and-logo" />');
-        if ((initialLogo == 'bing') && (currentLogo == 'usasearch')) {
+        if (!initialLogoUsasearch && currentLogo == 'usasearch') {
           box.children('.searchresult').addClass('indexeddocresult');
-          if ((initialLogo == 'bing') && (currentLogo == 'usasearch') && ($('#indexed_documents').length == 0)) {
+          if ($('#indexed_documents').length == 0) {
             box.children('.searchresult').wrapAll('<div id="indexed_documents" />');
           }
         }
@@ -79,7 +79,7 @@ jQuery(document).ready(function() {
           frag.appendChild(box[0].firstChild);
         }
 
-        if ((currentLogo == 'usasearch') && (initialLogo == 'bing')) {
+        if (currentLogo == 'usasearch' && !initialLogoUsasearch) {
           if ($('#results #indexed_documents').length == 0) {
             odieFrag = document.createDocumentFragment();
             var govbox = document.createElement('div');

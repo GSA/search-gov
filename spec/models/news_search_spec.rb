@@ -124,12 +124,6 @@ describe NewsSearch do
   end
 
   describe "#run" do
-    it "should log info about the query and module impressions" do
-      SaytSuggestion.stub!(:related_search).and_return %{some array}
-      search = NewsSearch.new(:query => 'element', :affiliate => affiliate)
-      QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['NEWS', 'SREL'])
-      search.run
-    end
 
     context "when searching with really long queries" do
       before do

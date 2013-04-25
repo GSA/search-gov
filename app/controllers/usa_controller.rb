@@ -4,7 +4,7 @@ class UsaController < ApplicationController
   before_filter :override_locale_based_on_url
 
   def show
-    @affiliate = I18n.locale == :es ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
+    @affiliate = I18n.locale == :es ? Affiliate.find_by_name(Affiliate::GOBIERNO_AFFILIATE_NAME) : Affiliate.find_by_name(Affiliate::USAGOV_AFFILIATE_NAME)
     @search = WebSearch.new(:affiliate => @affiliate)
     @site_page = SitePage.find_by_url_slug(params["url_slug"])
     redirect_to home_page_path and return if @site_page.nil?

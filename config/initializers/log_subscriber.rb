@@ -4,6 +4,10 @@ module Instrumentation
       generic_logging("Bing Query", event, YELLOW)
     end
 
+    def google_search(event)
+      generic_logging("Google Query", event, RED)
+    end
+
     def solr_search(event)
       generic_logging("Solr Query", event, GREEN)
     end

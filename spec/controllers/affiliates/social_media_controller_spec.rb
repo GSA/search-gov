@@ -149,19 +149,20 @@ describe Affiliates::SocialMediaController do
     context 'when adding an existing Twitter Profile' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
-      let(:profile) { TwitterProfile.create!(:screen_name => 'USASearch') }
 
       before do
+        Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
+        @profile = TwitterProfile.create!(:screen_name => 'USASearch')
         affiliate.update_attributes!(:is_twitter_govbox_enabled => false)
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
 
-        TwitterProfile.stub_chain(:where, :first_or_create).and_return(profile)
+        TwitterProfile.stub_chain(:where, :first_or_create).and_return(@profile)
         twitter_profiles = mock('twitter profiles')
         affiliate.stub(:twitter_profiles).and_return(twitter_profiles)
-        twitter_profiles.should_receive(:exists?).with(profile).and_return(false)
-        twitter_profiles.should_receive(:<<).with(profile)
+        twitter_profiles.should_receive(:exists?).with(@profile).and_return(false)
+        twitter_profiles.should_receive(:<<).with(@profile)
         affiliate.should_receive(:update_attributes!).with(:is_twitter_govbox_enabled => true)
 
         put :create,
@@ -171,7 +172,7 @@ describe Affiliates::SocialMediaController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should assign_to(:profile).with(profile) }
+      it { should assign_to(:profile).with(@profile) }
       it { should set_the_flash.to(/added/i) }
       it { should redirect_to(affiliate_social_media_path(affiliate)) }
     end
@@ -261,6 +262,7 @@ describe Affiliates::SocialMediaController do
       let(:current_user) { users(:affiliate_manager) }
 
       before do
+        Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
         profile = TwitterProfile.create!(:screen_name => 'USASearch')
         affiliate.twitter_profiles << profile
         UserSession.create(current_user)
@@ -318,6 +320,7 @@ describe Affiliates::SocialMediaController do
       let(:recent_tweets) { mock('recent tweets') }
 
       before do
+        Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
         profile = affiliate.twitter_profiles.create!(:screen_name => 'USASearch')
         profile.should_receive(:recent).and_return(recent_tweets)
         UserSession.create(current_user)

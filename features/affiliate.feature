@@ -205,7 +205,6 @@ Feature: Affiliate clients
       | Recalls Feed | RSS       |
     And the "Show RSS feed 0 in govbox" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
-    And the "Show deep links" checkbox should be checked
 
     When I go to agencygov's search page
     Then I should see "My awesome agency" in the SERP header
@@ -1662,7 +1661,7 @@ Feature: Affiliate clients
     And I should see "filetype:pdf"
 
     When I am on the affiliate advanced search page for "en.aff.gov"
-    And I choose "Off"
+    And I choose "filter_0"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"

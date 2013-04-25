@@ -2,15 +2,9 @@ class Search
   class SearchError < RuntimeError;
   end
 
-  @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
-
-  MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH = 30
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 10
-  MAX_PER_PAGE = 50
-  QUERY_STRING_ALLOCATION = 1800
-  URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
   attr_reader :query,
               :affiliate,
@@ -21,31 +15,23 @@ class Search
               :startrecord,
               :endrecord,
               :results,
-              :related_search,
               :spelling_suggestion,
               :queried_at_seconds,
-              :module_tag,
-              :geoip_info
+              :module_tag
 
   def initialize(options = {})
-    @options = options
-    @query = build_query(options)
     @affiliate = options[:affiliate]
+    advanced_query_options = options.slice(:query, :query_quote, :query_not, :query_or, :file_type, :site_excludes)
+    advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.domains_as_array, advanced_query_options)
+    @query = advanced_query_builder.build
 
     @page = options[:page].to_i rescue DEFAULT_PAGE
     @page = DEFAULT_PAGE unless @page >= DEFAULT_PAGE
 
-    @per_page = options[:per_page].to_i rescue DEFAULT_PER_PAGE
-    @per_page = DEFAULT_PER_PAGE unless (DEFAULT_PER_PAGE..MAX_PER_PAGE).include?(@per_page)
+    @per_page = DEFAULT_PER_PAGE
 
-    @related_search, @results, @spelling_suggestion = [], [], nil
+    @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i
-    @geoip_info = options[:geoip_info]
-  end
-
-  # Override this method to process various different options and augment the query string
-  def build_query(options)
-    options[:query]
   end
 
   # This does your search.
@@ -62,10 +48,6 @@ class Search
 
   def first_page?
     page == 1
-  end
-
-  def has_related_searches?
-    @related_search && @related_search.size > 0
   end
 
   def as_json(options = {})
@@ -98,7 +80,6 @@ class Search
 
   # If you need to query anything else, do that here
   def populate_additional_results
-    @related_search = SaytSuggestion.related_search(@query, @affiliate)
   end
 
   def log_serp_impressions
@@ -106,12 +87,6 @@ class Search
 
   # All search classes should be cache-able, so we need to implement a unique cache key for each search class
   def cache_key
-  end
-
-  # This is used any time we want to highlight something
-  def highlight_solr_hit_like_bing(hit, field_symbol)
-    return hit.highlights(field_symbol).first.format { |phrase| "\uE000#{phrase}\uE001" } unless hit.highlights(field_symbol).first.nil?
-    hit.instance.send(field_symbol)
   end
 
   def paginate(items)
