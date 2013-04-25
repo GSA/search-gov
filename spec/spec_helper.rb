@@ -130,13 +130,16 @@ RSpec.configure do |config|
     google_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/spelling_suggestion.json")
     stubs.get("#{common}#{common_params}&q=electro+coagulation") { [200, {}, google_spelling] }
 
+    google_quota_search = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/spelling_suggestion.json")
+    stubs.get("#{common}#{common_params}&q=userquota&quotaUser=limit_me") { [200, {}, google_quota_search] }
+
     test = Faraday.new do |builder|
       builder.adapter :test, stubs
       builder.response :rashify
       builder.response :json
     end
 
-    #FIXME: this is in here just to get coverage on SearchApiConnection
+    #FIXME: this is in here just to get rcov coverage on SearchApiConnection
     params = {affiliate: 'wh', index: 'web', query: 'obama'}
     SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
 

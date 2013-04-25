@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe BingWebSearch do
 
-  it_behaves_like "a search engine"
+  it_behaves_like "a web search engine"
 
   describe ".new for BingWebSearch" do
     it 'should set Web and Spell index sources' do

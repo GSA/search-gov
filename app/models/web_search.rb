@@ -31,7 +31,8 @@ class WebSearch < Search
     formatted_query_instance = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
     @matching_site_limits = formatted_query_instance.matching_site_limits
     @formatted_query = formatted_query_instance.query
-    @search_engine = search_engine_klass(@affiliate.search_engine).new(options.merge(query: @formatted_query, offset: offset))
+    search_engine_parameters = options.merge(query: @formatted_query, offset: offset, quota_user: @affiliate.name)
+    @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)
   end
 
   def has_related_searches?
@@ -175,6 +176,7 @@ class WebSearch < Search
   end
 
   private
+
   def run_has_method(member_name)
     send(member_name).present? and send(member_name).total > 0
   end
