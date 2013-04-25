@@ -30,7 +30,7 @@ describe GoogleFormattedQuery do
           subject { GoogleFormattedQuery.new('government', included_domains: included_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
 
           it "should send those excluded domains in query" do
-            subject.query.should == 'government site:bar.com OR site:foo.com -site:exclude1.gov AND -site:exclude2.gov'
+            subject.query.should == 'government -site:exclude1.gov AND -site:exclude2.gov site:bar.com OR site:foo.com'
           end
         end
 
@@ -55,7 +55,7 @@ describe GoogleFormattedQuery do
         subject { GoogleFormattedQuery.new('government', included_domains: included_domains, scope_keywords: %w(patents america flying)) }
 
         it "should limit the query with those keywords" do
-          subject.query.should == 'government site:bar.com OR site:foo.com "patents" | "america" | "flying"'
+          subject.query.should == 'government site:bar.com OR site:foo.com "patents" OR "america" OR "flying"'
         end
       end
 
