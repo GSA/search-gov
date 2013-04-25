@@ -272,10 +272,6 @@ class Affiliate < ActiveRecord::Base
     site_domains.count > 1
   end
 
-  def includes_domain?(domain)
-    domains_as_array.detect{ |affiliate_domain| domain =~ /\b#{Regexp.escape(affiliate_domain)}\b/i }.nil? ? false : true
-  end
-
   def update_attributes_for_staging(attributes)
     set_is_validate_staged_header_footer attributes
     if staged_page_background_image_updated_at == page_background_image_updated_at and

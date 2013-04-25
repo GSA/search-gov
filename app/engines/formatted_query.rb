@@ -13,7 +13,7 @@ class FormattedQuery
 
   protected
 
-  def fill_domains_to_remainder(remaining_chars)
+  def fill_included_domains_to_remainder(remaining_chars)
     domains, delimiter = [], " OR "
     domains_to_process = @matching_site_limits.present? ? @matching_site_limits : @included_domains
     domains_to_process.each do |site|
@@ -21,6 +21,16 @@ class FormattedQuery
       break if (remaining_chars -= "#{site_str} #{delimiter}".length) < 0
       domains.unshift site_str
     end unless @included_domains.blank?
+    domains.join(delimiter)
+  end
+
+  def fill_excluded_domains_to_remainder(remaining_chars)
+    domains, delimiter = [], " AND "
+    @excluded_domains.each do |site|
+      site_str = "-site:#{site}"
+      break if (remaining_chars -= "#{site_str} #{delimiter}".length) < 0
+      domains.unshift site_str
+    end unless @excluded_domains.blank?
     domains.join(delimiter)
   end
 

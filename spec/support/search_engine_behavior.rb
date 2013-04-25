@@ -1,5 +1,5 @@
 # coding: utf-8
-shared_examples "a search engine" do
+shared_examples "a web search engine" do
   describe ".new" do
     it 'should set up API connection' do
       search_engine = described_class.new
@@ -32,7 +32,7 @@ shared_examples "a search engine" do
     end
 
     context 'when highlighting is disabled' do
-      let(:non_highlight_search) { described_class.new(query: "no highlighting", enable_highlighting: false, offset: 11, per_page: 25) }
+      let(:non_highlight_search) { described_class.new(query: "no highlighting", enable_highlighting: false, offset: 11) }
 
       it "should return a normalized response without highlighted results" do
         normalized_response = non_highlight_search.execute_query
