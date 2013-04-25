@@ -41,7 +41,7 @@ describe AdvancedQueryBuilder do
   context "when OR terms are specified" do
     subject { AdvancedQueryBuilder.new([], query: 'government', query_or: 'barack obama') }
     it "should construct a query string that includes the OR terms OR'ed together" do
-      subject.build.should =='government (barack OR obama)'
+      subject.build.should =='government (barack | obama)'
     end
   end
 
@@ -77,7 +77,7 @@ describe AdvancedQueryBuilder do
                                        site_excludes: 'nasa.gov noaa.gov',
                                        query: 'government site:.gov') }
     it "should construct a query string that incorporates all of them" do
-      subject.build.should =='government site:.gov "barack obama" -clunkers (cars OR stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov'
+      subject.build.should =='government site:.gov "barack obama" -clunkers (cars | stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov'
     end
   end
 
@@ -99,6 +99,4 @@ describe AdvancedQueryBuilder do
 
     end
   end
-
-
 end

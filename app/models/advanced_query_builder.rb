@@ -9,7 +9,7 @@ class AdvancedQueryBuilder
     query_array << remove_sites_not_in_domains(@options[:query]) if @options[:query].present?
     query_array << "\"#{@options[:query_quote]}\"" if @options[:query_quote].present?
     query_array << @options[:query_not].split.map { |term| "-#{term}" }.join(' ') if @options[:query_not].present?
-    query_array << "(#{@options[:query_or].split.join(' OR ')})" if @options[:query_or].present?
+    query_array << "(#{@options[:query_or].split.join(' | ')})" if @options[:query_or].present?
     query_array << "filetype:#{@options[:file_type]}" if @options[:file_type].present? && @options[:file_type].downcase != 'all'
     query_array << @options[:site_excludes].split.map { |site| "-site:#{site}" }.join(' ') if @options[:site_excludes].present?
     query_array.join(' ').squish
