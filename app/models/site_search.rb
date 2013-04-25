@@ -1,5 +1,5 @@
 class SiteSearch < WebSearch
-  SEPARATOR = ' | '.freeze
+  SEPARATOR = ' OR '.freeze
   attr_reader :document_collection
 
   def initialize(options = {})
@@ -22,7 +22,7 @@ class SiteSearch < WebSearch
 
     sites_within_limit = []
     sites = @document_collection.url_prefixes.collect(&:prefix).collect do |prefix|
-      "#{URI.escape(prefix.gsub(%r[(^https?://|/$)], ''))}"
+      "site:#{URI.escape(prefix.gsub(%r[(^https?://|/$)], ''))}"
     end
     sites.sort! { |a, b| a.length == b.length ? b <=> a : a.length <=> b.length }
 
@@ -34,7 +34,7 @@ class SiteSearch < WebSearch
 
     generated_scope = ''
     (generated_scope << "(#{query_scope_keywords.join(SEPARATOR)}) ") unless query_scope_keywords.empty?
-    generated_scope << "site:(#{sites_within_limit.join(SEPARATOR)})"
+    generated_scope << "(#{sites_within_limit.join(SEPARATOR)})"
     generated_scope
   end
 

@@ -1638,7 +1638,7 @@ Feature: Affiliate clients
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
-    And I should see "barack | obama"
+    And I should see "barack OR obama"
 
     When I am on the affiliate advanced search page for "en.aff.gov"
     And I fill in "query-quote" with "barack obama"
