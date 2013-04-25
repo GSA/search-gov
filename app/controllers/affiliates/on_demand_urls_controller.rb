@@ -70,14 +70,4 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
     end
   end
 
-  private
-
-  def normalized_url(url)
-    parsed_url = URI.parse(url)
-    parsed_url.path = parsed_url.path.empty? ? '/' : parsed_url.path
-    parsed_url.fragment = nil
-    parsed_url.to_s.gsub(%r[https?://(www\.)?]i, '')
-  rescue URI::InvalidURIError => e
-    nil
-  end
 end

@@ -1661,7 +1661,7 @@ Feature: Affiliate clients
     And I should see "filetype:pdf"
 
     When I am on the affiliate advanced search page for "en.aff.gov"
-    And I choose "Off"
+    And I choose "filter_0"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"

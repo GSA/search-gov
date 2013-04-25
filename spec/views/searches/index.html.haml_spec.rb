@@ -1,12 +1,14 @@
 # coding: utf-8
 require 'spec_helper'
+
+
 describe "searches/index.html.haml" do
   fixtures :affiliates, :image_search_labels, :navigations
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch", has_photos?: false, has_med_topic?: false, has_jobs?: false,
+    @search = stub("WebSearch", has_photos?: false, med_topic: nil, has_jobs?: false,
                    has_forms?: false, has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,
@@ -355,7 +357,6 @@ describe "searches/index.html.haml" do
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
         @search.stub!(:med_topic).and_return @med_topic
-        @search.stub!(:has_med_topic?).and_return true
       end
 
       it "should format the result as a Medline Govbox" do

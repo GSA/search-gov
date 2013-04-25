@@ -293,7 +293,6 @@ Feature: Affiliate Search
     And I should see "item Next news item for the feed"
     And I should not see "item More news items for the feed"
     And I should not see "item Last news item for the feed"
-    And I should see "Related Searches" in the search results section
     When I follow "Best match"
     Then I should see "Best match" in the selected sort filter
     And I should not see a link to "Best match" in the results filters

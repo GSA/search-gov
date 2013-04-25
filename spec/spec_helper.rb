@@ -80,7 +80,7 @@ RSpec.configure do |config|
     stubs = Faraday::Adapter::Test::Stubs.new
     generic_bing_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/white_house.json")
     stubs.get("#{common}#{hl}query=white+house") { [200, {}, generic_bing_image_result] }
-    stubs.get("#{common}#{hl}query=%28white+house%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_image_result] }
+    stubs.get("#{common}#{hl}query=white+house+site%3A%28nonsense.gov%29") { [200, {}, generic_bing_image_result] }
     bing_image_no_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/no_results.json")
     stubs.get("#{common}#{hl}query=%28unusual+image%29+%28site%3Anonsense.gov%29") { [200, {}, bing_image_no_result] }
 
@@ -91,10 +91,10 @@ RSpec.configure do |config|
     stubs.get("#{common}query=no+highlighting&web.offset=11") { [200, {}, generic_bing_result_no_highlight] }
     stubs.get("#{common}#{hl}query=casa+blanca") { [200, {}, generic_bing_result] }
     stubs.get("#{common}#{hl}query=english") { [200, {}, generic_bing_result] }
-    stubs.get("#{common}#{hl}query=%28english%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_result] }
+    stubs.get("#{common}#{hl}query=english+site%3A%28nonsense.gov%29") { [200, {}, generic_bing_result] }
 
     page2_6results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/page2_6results.json")
-    stubs.get("#{common}#{hl}query=%28fewer%29+%28site%3Anonsense.gov%29&web.offset=11") { [200, {}, page2_6results] }
+    stubs.get("#{common}#{hl}query=fewer+site%3A%28nonsense.gov%29&web.offset=11") { [200, {}, page2_6results] }
 
     total_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/total_no_results.json")
     stubs.get("#{common}#{hl}query=total_no_results") { [200, {}, total_no_results] }
@@ -107,7 +107,7 @@ RSpec.configure do |config|
 
     bing_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/no_results.json")
     stubs.get("#{common}#{hl}query=no_results") { [200, {}, bing_no_results] }
-    stubs.get("#{common}#{hl}query=%28no_results%29+%28site%3Anonsense.gov%29") { [200, {}, bing_no_results] }
+    stubs.get("#{common}#{hl}query=no_results+site%3A%28nonsense.gov%29") { [200, {}, bing_no_results] }
 
     bing_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/spelling_suggestion.json")
     stubs.get("#{common}#{hl}query=electro+coagulation") { [200, {}, bing_spelling] }

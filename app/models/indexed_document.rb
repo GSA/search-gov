@@ -40,7 +40,6 @@ class IndexedDocument < ActiveRecord::Base
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   UNSUPPORTED_EXTENSION = "URL extension is not one we index"
   ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
-  BING_PRESENCE = "URL already exists in the Bing index"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
   BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 

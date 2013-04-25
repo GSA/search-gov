@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe "shared/_searchresults.html.haml" do
   fixtures :affiliates
 
@@ -6,7 +7,7 @@ describe "shared/_searchresults.html.haml" do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch", has_photos?: false, has_med_topic?: false, has_jobs?: false,
+    @search = stub("WebSearch", has_photos?: false, med_topic: nil, has_jobs?: false,
                    has_forms?: false, has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: "tax forms", affiliate: @affiliate,
