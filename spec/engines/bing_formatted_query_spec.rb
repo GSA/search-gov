@@ -51,6 +51,17 @@ describe BingFormattedQuery do
         end
       end
 
+      context "when there are some included domains and too many excluded domains" do
+        let(:some_domains) { "domain10001".upto("domain10010").collect { |x| "#{x}.gov" } }
+        let(:too_many_excluded_domains) { "superlongexcludeddomain20001".upto("superlongexcludeddomain20110").collect { |x| "#{x}.gov" } }
+        subject { BingFormattedQuery.new('government', included_domains: some_domains, excluded_domains: too_many_excluded_domains) }
+
+        it "should use all the included domains and as many excluded domains as it can up to the predetermined limit" do
+          subject.query.length.should < BingFormattedQuery::QUERY_STRING_ALLOCATION
+          subject.query.should == "(government) (-site:superlongexcludeddomain20028.gov AND -site:superlongexcludeddomain20027.gov AND -site:superlongexcludeddomain20026.gov AND -site:superlongexcludeddomain20025.gov AND -site:superlongexcludeddomain20024.gov AND -site:superlongexcludeddomain20023.gov AND -site:superlongexcludeddomain20022.gov AND -site:superlongexcludeddomain20021.gov AND -site:superlongexcludeddomain20020.gov AND -site:superlongexcludeddomain20019.gov AND -site:superlongexcludeddomain20018.gov AND -site:superlongexcludeddomain20017.gov AND -site:superlongexcludeddomain20016.gov AND -site:superlongexcludeddomain20015.gov AND -site:superlongexcludeddomain20014.gov AND -site:superlongexcludeddomain20013.gov AND -site:superlongexcludeddomain20012.gov AND -site:superlongexcludeddomain20011.gov AND -site:superlongexcludeddomain20010.gov AND -site:superlongexcludeddomain20009.gov AND -site:superlongexcludeddomain20008.gov AND -site:superlongexcludeddomain20007.gov AND -site:superlongexcludeddomain20006.gov AND -site:superlongexcludeddomain20005.gov AND -site:superlongexcludeddomain20004.gov AND -site:superlongexcludeddomain20003.gov AND -site:superlongexcludeddomain20002.gov AND -site:superlongexcludeddomain20001.gov) (site:domain10010.gov OR site:domain10009.gov OR site:domain10008.gov OR site:domain10007.gov OR site:domain10006.gov OR site:domain10005.gov OR site:domain10004.gov OR site:domain10003.gov OR site:domain10002.gov OR site:domain10001.gov)"
+        end
+      end
+
       context "when scope keywords are specified" do
         subject { BingFormattedQuery.new('government', included_domains: included_domains, scope_keywords: %w(patents america flying)) }
 
