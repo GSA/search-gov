@@ -16,7 +16,7 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
         when 'TwitterProfile'
           TwitterProfile.where(:screen_name => params[:social_media_profile][:screen_name]).first_or_create
         when 'FacebookProfile', 'FlickrProfile', 'YoutubeProfile'
-          @affiliate.send(:"#{params[:profile_type].underscore}s").build(params[:social_media_profile])
+          @affiliate.send(params[:profile_type].tableize).build(params[:social_media_profile])
         end
 
     if @profile.new_record?
@@ -39,7 +39,7 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
       profile = TwitterProfile.find(params[:id])
       @affiliate.twitter_profiles.delete(profile)
     else
-      profile = @affiliate.send(:"#{params[:profile_type].underscore}s").find(params[:id]).destroy
+      profile = @affiliate.send(params[:profile_type].tableize).find(params[:id]).destroy
     end
     flash[:success] = "#{profile.class.name.titleize} successfully deleted"
     redirect_to affiliate_social_media_path(@affiliate)

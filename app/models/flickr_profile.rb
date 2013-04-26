@@ -3,7 +3,7 @@ class FlickrProfile < ActiveRecord::Base
   has_many :flickr_photos, :dependent => :destroy
 
   validates_format_of :url,
-                      :with => %r{^http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9]+(\/)?$},
+                      :with => %r{^http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9@]+(\/)?$},
                       :message => 'must be a valid Flickr user or Flickr group.'
   validates_presence_of :affiliate_id
   validates_uniqueness_of :url, :scope => :affiliate_id, :message => 'has already been added', :if => :has_valid_url?
