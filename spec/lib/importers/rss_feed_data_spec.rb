@@ -5,6 +5,22 @@ describe RssFeedData do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
   describe '#import' do
+    context 'when the feed has an item that fails validation' do
+      let(:rss_feed) { rss_feeds(:basic) }
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed.news_items.destroy_all
+      end
+
+      it 'should populate and index just the news items that are valid' do
+        RssFeedData.new(rss_feed).import
+        rss_feed_url = rss_feed.rss_feed_urls(true).first
+        rss_feed_url.last_crawl_status.should == 'OK'
+        rss_feed_url.news_items.count.should == 2
+      end
+    end
+
     context 'when the feed is in the RSS 2.0 format' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
@@ -46,12 +62,12 @@ describe RssFeedData do
           rss_feed_url.update_attributes(last_crawl_status: RssFeedUrl::OK_STATUS)
           NewsItem.destroy_all
           rss_feed_url.news_items.create!(
-              rss_feed: rss_feed,
-              link: 'http://www.whitehouse.gov/latest_story.html',
-              title: 'Big story here',
-              description: 'Corps volunteers have promoted blah blah blah.',
-              published_at: DateTime.parse('26 Sep 2011 18:31:23 +0000'),
-              guid: 'unique')
+            rss_feed: rss_feed,
+            link: 'http://www.whitehouse.gov/latest_story.html',
+            title: 'Big story here',
+            description: 'Corps volunteers have promoted blah blah blah.',
+            published_at: DateTime.parse('26 Sep 2011 18:31:23 +0000'),
+            guid: 'unique')
         end
 
         context 'when ignore_older_items set to true (default)' do
@@ -80,12 +96,12 @@ describe RssFeedData do
         before do
           NewsItem.destroy_all
           rss_feed.rss_feed_urls.first.news_items.create!(
-              rss_feed: rss_feed,
-              link: 'http://www.whitehouse.gov/latest_story.html',
-              title: 'Big story here',
-              description: 'Corps volunteers have promoted blah blah blah.',
-              published_at: DateTime.parse('26 Sep 2011 18:31:21 +0000'),
-              guid: '80671 at http://www.whitehouse.gov')
+            rss_feed: rss_feed,
+            link: 'http://www.whitehouse.gov/latest_story.html',
+            title: 'Big story here',
+            description: 'Corps volunteers have promoted blah blah blah.',
+            published_at: DateTime.parse('26 Sep 2011 18:31:21 +0000'),
+            guid: '80671 at http://www.whitehouse.gov')
         end
 
         it 'should ignore them' do
