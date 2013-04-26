@@ -87,7 +87,7 @@ class RssFeedData
       description = Nokogiri::HTML(raw_description).inner_text.squish
 
       @rss_feed.news_items.where('guid = ? OR link = ?', guid, link).
-          first_or_create!(rss_feed_url: rss_feed_url,
+          first_or_create(rss_feed_url: rss_feed_url,
                            link: link,
                            title: title,
                            description: description,
