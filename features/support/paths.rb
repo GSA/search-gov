@@ -108,10 +108,6 @@ module NavigationHelpers
       recalls_search_path
     when /the forms home page/
       forms_path
-    when /the trending searches page/
-      trending_searches_widget_path
-    when /^(.*)'s trending searches page$/
-      trending_searches_widget_path(:aid => Affiliate.find_by_name($1).id)
     when /the preview affiliate page for "([^\"]*)"/
       preview_affiliate_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/

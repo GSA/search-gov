@@ -209,10 +209,6 @@ module ApplicationHelper
     raw raw_text
   end
 
-  def render_trending_searches
-    render :partial => 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')
-  end
-
   def breadcrumbs(breadcrumbs)
     trail = link_to('USASearch', BLOG_URL)
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
