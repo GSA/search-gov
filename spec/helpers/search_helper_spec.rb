@@ -517,24 +517,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#top_search_link" do
-    before do
-      @top_search_with_url = stub_model(TopSearch, :position => 1, :query => 'query', :url => 'http://test.com/')
-      @top_search_without_url_params = {:position => 2, :query => 'another query'}
-      @top_search_without_url = stub_model(TopSearch, @top_search_without_url_params)
-    end
-
-    it "should return the predefined url if one exists" do
-      helper.top_search_link_for(@top_search_with_url).should have_selector("a", :href => @top_search_with_url.url, :content => @top_search_with_url.query, :target => '_top')
-    end
-
-    it "should return a search link if url does not exist" do
-      url_params = {:linked => 1, :widget_source => 'usa.gov'}
-      helper.should_receive(:search_url).with(@top_search_without_url_params.merge(url_params)).and_return('url_with_query_and_source_params')
-      helper.top_search_link_for(@top_search_without_url, :widget_source => 'usa.gov').should have_selector("a[href^='url_with_query_and_source_params']", :content => @top_search_without_url.query, :target => '_top')
-    end
-  end
-
   describe "#strip_url_protocol" do
     it "should remove protocol from url" do
       strip_url_protocol('http://www.whitehouse.gov').should == 'www.whitehouse.gov'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423214355) do
+ActiveRecord::Schema.define(:version => 20130426183405) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -39,26 +39,25 @@ ActiveRecord::Schema.define(:version => 20130423214355) do
   end
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                                                                         :null => false
+    t.string   "name",                                                                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_staged_content",                                              :default => false,           :null => false
+    t.boolean  "has_staged_content",                                              :default => false,  :null => false
     t.string   "website"
     t.boolean  "is_sayt_enabled",                                                 :default => true
-    t.string   "display_name",                                                                                 :null => false
-    t.string   "search_results_page_title",                                                                    :null => false
-    t.string   "staged_search_results_page_title",                                                             :null => false
-    t.boolean  "exclude_webtrends",                                               :default => false,           :null => false
+    t.string   "display_name",                                                                        :null => false
+    t.string   "search_results_page_title",                                                           :null => false
+    t.string   "staged_search_results_page_title",                                                    :null => false
+    t.boolean  "exclude_webtrends",                                               :default => false,  :null => false
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
     t.string   "staged_favicon_url"
     t.text     "css_properties"
     t.text     "staged_css_properties"
-    t.string   "top_searches_label",                                              :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
-    t.string   "locale",                                                          :default => "en",            :null => false
+    t.string   "locale",                                                          :default => "en",   :null => false
     t.text     "scope_ids"
     t.boolean  "is_agency_govbox_enabled",                                        :default => false
     t.boolean  "is_medline_govbox_enabled",                                       :default => false
@@ -76,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20130423214355) do
     t.string   "staged_header_image_content_type"
     t.integer  "staged_header_image_file_size"
     t.datetime "staged_header_image_updated_at"
-    t.integer  "fetch_concurrency",                                               :default => 1,               :null => false
-    t.string   "default_search_label",                      :limit => 20,                                      :null => false
+    t.integer  "fetch_concurrency",                                               :default => 1,      :null => false
+    t.string   "default_search_label",                      :limit => 20,                             :null => false
     t.boolean  "is_time_filter_enabled",                                          :default => true
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
@@ -101,10 +100,10 @@ ActiveRecord::Schema.define(:version => 20130423214355) do
     t.string   "staged_mobile_logo_content_type"
     t.integer  "staged_mobile_logo_file_size"
     t.datetime "staged_mobile_logo_updated_at"
-    t.boolean  "jobs_enabled",                                                    :default => false,           :null => false
+    t.boolean  "jobs_enabled",                                                    :default => false,  :null => false
     t.integer  "agency_id"
-    t.boolean  "raw_log_access_enabled",                                          :default => false,           :null => false
-    t.string   "search_engine",                                                   :default => "Bing",          :null => false
+    t.boolean  "raw_log_access_enabled",                                          :default => false,  :null => false
+    t.string   "search_engine",                                                   :default => "Bing", :null => false
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

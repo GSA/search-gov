@@ -298,25 +298,6 @@ module SearchHelper
     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)
   end
 
-  def top_search_url_for(top_search, url_options = {})
-    if top_search.url.blank?
-      query_params = {
-          :query => top_search.query,
-          :linked => 1,
-          :position => top_search.position
-      }
-      query_params.merge!(:affiliate => top_search.affiliate.name) if top_search.affiliate
-      url = search_url(query_params.merge(url_options))
-    else
-      url = top_search.url
-    end
-    url
-  end
-
-  def top_search_link_for(top_search, url_options = {}, html_options = {})
-    link_to top_search.query, top_search_url_for(top_search, url_options), html_options.merge(:target => '_top')
-  end
-
   def related_topics_header(affiliate, query)
     related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
     "#{I18n.t :related_topics_prefix} '#{h query}' #{related_topics_suffix}".html_safe

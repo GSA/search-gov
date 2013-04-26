@@ -17,7 +17,6 @@ class Affiliate < ActiveRecord::Base
   has_many :rss_feeds, :order => 'rss_feeds.name ASC, rss_feeds.id ASC', :dependent => :destroy
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
-  has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy, :order => 'domain ASC'
   has_many :excluded_domains, :dependent => :destroy, :order => 'domain ASC'
   has_many :indexed_domains, :dependent => :destroy
@@ -364,10 +363,6 @@ class Affiliate < ActiveRecord::Base
     else
       @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].reverse_merge(JSON.parse(staged_css_properties, :symbolize_names => true))
     end
-  end
-
-  def active_top_searches
-    self.top_searches.all(:conditions => 'NOT ISNULL(query)')
   end
 
   def add_site_domains(site_domain_param_hash)
