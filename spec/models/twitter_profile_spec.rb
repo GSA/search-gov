@@ -26,6 +26,13 @@ describe TwitterProfile do
     end
   end
 
+  context "when screen_name has trailing spaces" do
+    it 'should normalize screen_name before validation' do
+      tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => 'CDCSalud  '))
+      tp.screen_name.should == 'CDCSalud'
+    end
+  end
+
   context 'when screen_name is valid' do
     let(:twitter_user) do
       mock('twitter user',

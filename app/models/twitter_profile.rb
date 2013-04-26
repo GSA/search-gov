@@ -32,7 +32,7 @@ class TwitterProfile < ActiveRecord::Base
   end
 
   def normalize_screen_name
-    screen_name.gsub!('@','') unless screen_name.nil?
+    screen_name.gsub!(/[@ ]/,'') unless screen_name.nil?
   end
 
   def lookup_twitter_id
