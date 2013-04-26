@@ -21,7 +21,7 @@ class GovboxSet
     if affiliate.jobs_enabled?
       jobs_options = {query: query, size: 3, hl: 1, geoip_info: geoip_info}
       jobs_options.merge!(organization_id: affiliate.agency.organization_code) if affiliate.has_organization_code?
-      @jobs = Usajobs.search(jobs_options)
+      @jobs = Jobs.search(jobs_options)
     end
     govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
     @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, 13.months.ago, 1)

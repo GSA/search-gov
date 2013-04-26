@@ -1,4 +1,4 @@
-module Usajobs
+module Jobs
   SIMPLE_SEARCHES = '(job|employment|internship)s?'
   JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|internship)s?|(opportunit|vacanc)(y|ies))'
   SIMPLE_SINGULARS = %w{
@@ -26,29 +26,29 @@ module Usajobs
     :WC => 'Without Compensation'}.freeze
 
   def self.establish_connection!
-    usajobs_api_config = YAML.load_file("#{Rails.root}/config/usajobs.yml")
-    @endpoint = usajobs_api_config['endpoint']
-    @usajobs_api_connection = Faraday.new usajobs_api_config['host'] do |conn|
+    jobs_api_config = YAML.load_file("#{Rails.root}/config/usajobs.yml")
+    @endpoint = jobs_api_config['endpoint']
+    @jobs_api_connection = Faraday.new jobs_api_config['host'] do |conn|
       conn.request :json
       conn.response :mashify
       conn.response :json
       conn.use :instrumentation
-      conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
+      conn.adapter jobs_api_config['adapter'] || Faraday.default_adapter
     end
   end
 
   def self.search(options)
     if query_eligible?(options[:query])
       options[:query] = enhance_query(options[:query], options[:geoip_info]) if options[:geoip_info].present?
-      @usajobs_api_connection.get(@endpoint, options).body
+      @jobs_api_connection.get(@endpoint, options).body
     end
   rescue Exception => e
-    Rails.logger.error("Trouble fetching USAJobs information: #{e}")
+    Rails.logger.error("Trouble fetching jobs information: #{e}")
     nil
   end
 
   def self.query_eligible?(query)
-    query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i)
+    query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():-]/)
   end
 
   def self.enhance_query(query, geoip_info)
@@ -58,4 +58,4 @@ module Usajobs
   end
 end
 
-Usajobs.establish_connection!
+Jobs.establish_connection!

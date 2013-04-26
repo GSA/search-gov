@@ -1,18 +1,18 @@
 require 'spec_helper'
 
-describe Usajobs do
+describe Jobs do
   describe '.search(options)' do
     context "when there is some problem" do
       before do
         YAML.stub!(:load_file).and_return({'host' => 'http://nonexistent.server.gov',
                                            'endpoint' => '/test/search',
                                            'adapter' => Faraday.default_adapter})
-        Usajobs.establish_connection!
+        Jobs.establish_connection!
       end
 
       it "should log any errors that occur and return nil" do
-        Rails.logger.should_receive(:error).with(/Trouble fetching USAJobs information/)
-        Usajobs.search(:query => 'jobs').should be_nil
+        Rails.logger.should_receive(:error).with(/Trouble fetching jobs information/)
+        Jobs.search(:query => 'jobs').should be_nil
       end
     end
   end
@@ -30,7 +30,17 @@ describe Usajobs do
          "funding opportunities", "vacancy factor", "vacancy rates", "delayed opening", "opening others mail", "job corps cuts",
          "job application", "job safety and health poster", "job safety analysis standard", "job safety analysis", "employment contract",
          "application for employment"
-        ].each { |phrase| Usajobs.query_eligible?(phrase).should be_false }
+        ].each { |phrase| Jobs.query_eligible?(phrase).should be_false }
+      end
+    end
+
+    context 'when the search phrase has advanced query characteristics' do
+      it 'should return false' do
+        ['job "city of farmington"',
+         'job -loren',
+         'job (assistant OR parks)',
+         'job filetype:pdf'
+        ].each { |phrase| Jobs.query_eligible?(phrase).should be_false }
       end
     end
   end
@@ -38,7 +48,7 @@ describe Usajobs do
   describe '.enhance_query(query, geoip_info)' do
     context 'when geoip_info nil' do
       it 'should return query unchanged' do
-        Usajobs.enhance_query('jobs', nil).should == 'jobs'
+        Jobs.enhance_query('jobs', nil).should == 'jobs'
       end
     end
 
@@ -47,7 +57,7 @@ describe Usajobs do
 
       it 'should tranform query into state-based location query' do
         %w{job jobs employment internships}.each do |simple_jobs_search|
-          Usajobs.enhance_query(simple_jobs_search, geoip_info).should == "#{simple_jobs_search} in CA"
+          Jobs.enhance_query(simple_jobs_search, geoip_info).should == "#{simple_jobs_search} in CA"
         end
       end
     end

@@ -65,8 +65,8 @@ describe GovboxSet do
           affiliate.stub!(:agency).and_return(agency)
         end
 
-        it "should call Usajobs.search with the query, org code, size, hl, and geoip_info params" do
-          Usajobs.should_receive(:search).
+        it "should call Jobs.search with the query, org code, size, hl, and geoip_info params" do
+          Jobs.should_receive(:search).
             with(:query => 'foo', :hl => 1, :size => 3, :organization_id => 'ABCD', :geoip_info => geoip_info).
             and_return "jobs info"
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
@@ -75,8 +75,8 @@ describe GovboxSet do
       end
 
       context "when the affiliate does not have a related agency with an org code" do
-        it "should call Usajobs.search with just the query, size, hl, and geoip_info param" do
-          Usajobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, :geoip_info => geoip_info).and_return nil
+        it "should call Jobs.search with just the query, size, hl, and geoip_info param" do
+          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, :geoip_info => geoip_info).and_return nil
           GovboxSet.new('foo', affiliate, geoip_info)
         end
       end
