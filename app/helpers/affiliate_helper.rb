@@ -1,7 +1,7 @@
 module AffiliateHelper
   def affiliate_center_breadcrumbs(crumbs)
     aff_breadcrumbs =
-      [link_to("Admin Center",home_affiliates_path), crumbs]
+      [link_to("Admin Center", home_affiliates_path), crumbs]
     breadcrumbs(aff_breadcrumbs.flatten)
   end
 
@@ -49,18 +49,16 @@ module AffiliateHelper
   end
 
   def render_affiliate_header(affiliate, search_options)
-    if affiliate and search_options.nil?
-      if affiliate.uses_managed_header_footer?
-        html = render_managed_header(affiliate)
-        if affiliate.managed_header_links.present?
-          background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
-          style = background_color.blank? ? nil : "background-color: #{background_color};"
-          html << content_tag(:div, render_managed_links(affiliate.managed_header_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
-        end
-        content_tag(:div, html.html_safe, :id => 'header', :class => 'managed') unless html.blank?
-      elsif !affiliate.uses_managed_header_footer? and affiliate.header.present?
-        content_tag(:div, affiliate.header.html_safe, :id => 'header', :class => 'header-footer')
+    if affiliate.uses_managed_header_footer?
+      html = render_managed_header(affiliate)
+      if affiliate.managed_header_links.present?
+        background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
+        style = background_color.blank? ? nil : "background-color: #{background_color};"
+        html << content_tag(:div, render_managed_links(affiliate.managed_header_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
       end
+      content_tag(:div, html.html_safe, :id => 'header', :class => 'managed') unless html.blank?
+    elsif !affiliate.uses_managed_header_footer? and affiliate.header.present?
+      content_tag(:div, affiliate.header.html_safe, :id => 'header', :class => 'header-footer')
     end
   end
 
@@ -91,22 +89,20 @@ module AffiliateHelper
   def render_managed_links(links)
     content = ''
     links.each_with_index do |link, index|
-      options = { :class => 'first' } if index == 0
+      options = {:class => 'first'} if index == 0
       content << content_tag(:li, link_to(link[:title], link[:url], options).html_safe) << "\n"
     end
     content_tag(:ul, content.html_safe, :class => 'managed-header-footer-links')
   end
 
   def render_affiliate_footer(affiliate, search_options)
-    if affiliate and search_options.nil?
-      if affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
-        background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
-        style = background_color.blank? ? nil : "background-color: #{background_color};"
-        html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
-        content_tag(:div, html.html_safe, id: 'usasearch_footer', class: 'managed')
-      elsif !affiliate.uses_managed_header_footer? and affiliate.footer.present?
-        content_tag(:div, affiliate.footer.html_safe, id: 'usasearch_footer', class: 'header-footer')
-      end
+    if affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
+      background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
+      style = background_color.blank? ? nil : "background-color: #{background_color};"
+      html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
+      content_tag(:div, html.html_safe, id: 'usasearch_footer', class: 'managed')
+    elsif !affiliate.uses_managed_header_footer? and affiliate.footer.present?
+      content_tag(:div, affiliate.footer.html_safe, id: 'usasearch_footer', class: 'header-footer')
     end
   end
 
@@ -119,10 +115,10 @@ module AffiliateHelper
 
   def render_affiliate_body_style(affiliate)
     style = ''
-    background_color =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
+    background_color = render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_color)
     background_image_url = affiliate.page_background_image.url rescue nil if affiliate.page_background_image_file_name.present?
     if background_image_url.present?
-      background_repeat =  render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_image_repeat)
+      background_repeat = render_affiliate_css_property_value(affiliate.css_property_hash, :page_background_image_repeat)
       style << "background: #{background_color} url(#{background_image_url}) #{background_repeat} center top"
     else
       style << "background-color: #{background_color}"
@@ -136,7 +132,7 @@ module AffiliateHelper
     staged_css_property_hash = {} if staged_css_property_hash.nil?
     text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
                    render_affiliate_css_property_value(staged_css_property_hash, field_name_symbol),
-                   { :disabled => disabled, :class => 'color { hash:true, adjust:false }' }
+                   {:disabled => disabled, :class => 'color { hash:true, adjust:false }'}
   end
 
   def render_staged_managed_header_color_text_field_tag(affiliate, field_name_symbol)
@@ -144,7 +140,7 @@ module AffiliateHelper
     staged_managed_header_css_properties = {} if staged_managed_header_css_properties.nil?
     text_field_tag "affiliate[staged_managed_header_css_properties][#{field_name_symbol}]",
                    render_managed_header_css_property_value(staged_managed_header_css_properties, field_name_symbol),
-                   { :class => 'color { hash:true, adjust:false }' }
+                   {:class => 'color { hash:true, adjust:false }'}
   end
 
   def render_staged_check_box_tag(affiliate, field_name_symbol)
