@@ -49,7 +49,7 @@ module AffiliateHelper
   end
 
   def render_affiliate_header(affiliate, search_options)
-    if affiliate and (search_options.nil? or !search_options[:embedded])
+    if affiliate and search_options.nil?
       if affiliate.uses_managed_header_footer?
         html = render_managed_header(affiliate)
         if affiliate.managed_header_links.present?
@@ -98,7 +98,7 @@ module AffiliateHelper
   end
 
   def render_affiliate_footer(affiliate, search_options)
-    if affiliate and (search_options.nil? or !search_options[:embedded])
+    if affiliate and search_options.nil?
       if affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
         background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
         style = background_color.blank? ? nil : "background-color: #{background_color};"

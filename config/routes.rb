@@ -204,7 +204,6 @@ UsasearchRails3::Application.routes.draw do
   get '/login' => 'user_sessions#new', :as => :login
   get "/sayt" => "sayt#index"
   get "/clicked" => "clicked#index"
-  get "/embedded_search" => "embedded_searches#index"
   get '/program' => redirect(BLOG_URL, :status => 302)
   get "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
   get "/404" => "errors#page_not_found", :as => 'page_not_found'

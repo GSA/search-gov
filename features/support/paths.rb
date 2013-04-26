@@ -22,8 +22,6 @@ module NavigationHelpers
       search_path(:affiliate => $1)
     when /^(.*)'s mobile search page$/
       search_path(:affiliate => $1, :m => 'true')
-    when /^(.*)'s embedded search page$/
-      search_path(:affiliate => $1, :embedded => "1")
     when /^(.*)'s strictui search page$/
       search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/

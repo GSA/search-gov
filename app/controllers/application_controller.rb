@@ -101,7 +101,7 @@ class ApplicationController < ActionController::Base
 
   def search_options_from_params(affiliate, params)
     params.reject!{|k,v| params[k].instance_of? Array}
-    search_params = {
+    {
       :affiliate => affiliate,
       :page => params[:page],
       :query => sanitize_query(params["query"]),
@@ -117,8 +117,6 @@ class ApplicationController < ActionController::Base
       :channel => params["channel"],
       :tbs => params["tbs"]
     }
-    search_params.merge!(:embedded => params["embedded"]) if params["embedded"].present?
-    search_params
   end
 
   def sanitize_query(query)

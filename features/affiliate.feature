@@ -1937,30 +1937,6 @@ Feature: Affiliate clients
     And I press "Buscar"
     Then I should see "No hemos encontrado ningún resultado que contenga 'kjdfgkljdhfgkldjshfglkjdsfhg'. Intente usar otras palabras clave o sinónimos."
 
-  Scenario: Embedded affiliate search
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header           | footer           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | Affiliate Header | Affiliate Footer |
-    When I go to aff.gov's embedded search page
-    Then I should not see "Affiliate Header"
-    And I should not see "Affiliate Footer"
-    When I fill in "query" with "weather"
-    And I press "Search"
-    Then I should not see "Affiliate Header"
-    And I should not see "Affiliate Footer"
-
-  Scenario: Embedded advanced affiliate search
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header           | footer           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | Affiliate Header | Affiliate Footer |
-    When I go to aff.gov's embedded search page
-    And I fill in "query" with "gov"
-    And I press "Search"
-    And I follow "Advanced Search"
-    And I press "Search"
-    Then I should not see "Affiliate Header"
-    And I should not see "Affiliate Footer"
-
   Scenario: Affiliate without exclude webtrends
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |

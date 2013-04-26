@@ -232,16 +232,6 @@ describe SearchesController do
     end
   end
 
-  context "when handling embedded affiliate search request" do
-    before do
-      get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :embedded => "1"
-    end
-
-    it "should set embedded search options to true" do
-      assigns[:search_options][:embedded].should be_true
-    end
-  end
-
   context "when a user is attempting to visit an old-style advanced search page" do
     before do
       get :index, :form => "advanced-firstgov"
