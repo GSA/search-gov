@@ -15,16 +15,15 @@ class BingFormattedQuery < FormattedQuery
     domains = site_and_no_minus_site ? '' : fill_included_domains_to_remainder(remaining_chars)
     scope_ids_str = site_and_no_minus_site ? nil : @scope_ids.map { |scope| "scopeid:#{scope}" }.join(" OR ")
     excluded = user_query.include?('site:') ? nil : fill_excluded_domains_to_remainder(remaining_chars - domains.length)
-    scope_sites_keywords = ""
-    scope_sites_keywords = "(" unless scope_ids_str.blank? && domains.blank?
-    scope_sites_keywords += scope_ids_str unless scope_ids_str.blank? || @matching_site_limits.present?
-    scope_sites_keywords += " OR " if scope_sites_keywords.length > 1 && domains.present?
-    scope_sites_keywords += domains unless domains.blank?
-    scope_sites_keywords += ")" unless scope_ids_str.blank? && domains.blank?
-    scope_sites_keywords += " #{DEFAULT_SCOPE}" if (scope_ids_str.blank? && domains.blank? && !user_query.include?('site:'))
-    scope_sites_keywords += " (#{@scope_keywords.collect { |keyword| "\"#{keyword}\"" }.join(" OR ")})" unless @scope_keywords.blank?
-    scope_sites_keywords = ['(', excluded, ') '].join + scope_sites_keywords unless excluded.blank?
-    scope_sites_keywords
+    scope_sites = ""
+    scope_sites = "(" unless scope_ids_str.blank? && domains.blank?
+    scope_sites += scope_ids_str unless scope_ids_str.blank? || @matching_site_limits.present?
+    scope_sites += " OR " if scope_sites.length > 1 && domains.present?
+    scope_sites += domains unless domains.blank?
+    scope_sites += ")" unless scope_ids_str.blank? && domains.blank?
+    scope_sites += " #{DEFAULT_SCOPE}" if (scope_ids_str.blank? && domains.blank? && !user_query.include?('site:'))
+    scope_sites = ['(', excluded, ') '].join + scope_sites unless excluded.blank?
+    scope_sites
   end
 
   def query_plus_locale(user_query)

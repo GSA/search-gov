@@ -18,10 +18,6 @@ class DocumentCollection < ActiveRecord::Base
     update_attributes(params)
   end
 
-  def scope_keywords_as_array
-    @scope_keywords_as_array ||= (scope_keywords.nil? ? [] : scope_keywords.split(',').each { |keyword| keyword.strip! })
-  end
-
   def depth
     url_prefixes.reduce(0) { |depth, url_prefix| [depth, url_prefix.depth].max }
   end

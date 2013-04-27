@@ -6,7 +6,6 @@ class FormattedQuery
   def initialize(options = {})
     @included_domains= options.delete(:included_domains) || []
     @excluded_domains= options.delete(:excluded_domains) || []
-    @scope_keywords= options.delete(:scope_keywords) || []
     site_limits= options.delete(:site_limits) || ''
     @matching_site_limits = site_limits.split.select { |site| included_domain_contains?(site) }
   end

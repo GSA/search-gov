@@ -62,14 +62,6 @@ describe BingFormattedQuery do
         end
       end
 
-      context "when scope keywords are specified" do
-        subject { BingFormattedQuery.new('government', included_domains: included_domains, scope_keywords: %w(patents america flying)) }
-
-        it "should limit the query with those keywords" do
-          subject.query.should == '(government) (site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying")'
-        end
-      end
-
       context "when searcher specifies sitelimit: within included domains" do
         subject { BingFormattedQuery.new('government', included_domains: included_domains, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov') }
 
@@ -93,14 +85,6 @@ describe BingFormattedQuery do
   context "when scope ids are specified" do
     context "when included domains present in Bing search" do
       let(:included_domains) { %w(foo.com bar.com) }
-
-      context "when scope keywords are specified" do
-        subject { BingFormattedQuery.new('government', included_domains: included_domains, scope_ids: %w(PatentClass), scope_keywords: %w(patents america flying)) }
-
-        it "should limit the query with the scope ids and keywords" do
-          subject.query.should == '(government) (scopeid:PatentClass OR site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying")'
-        end
-      end
 
       context "when searcher specifies site: within included domains" do
         subject { BingFormattedQuery.new('government site:answers.foo.com', included_domains: included_domains, scope_ids: %w(PatentClass)) }

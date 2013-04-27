@@ -37,41 +37,21 @@ describe SiteSearch do
     let(:bing_formatted_query) { mock("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => [], :scope_keywords => []}).and_return bing_formatted_query
+      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => []}).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
     context 'when the affiliate has scope_keywords' do
-      before { affiliate.update_attributes!(:scope_keywords => 'patents,america,flying inventions') }
+      before { affiliate.scope_keywords = 'patents,america,flying' }
 
       it 'should use the scope_keywords' do
-        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => [], :scope_keywords => 'patents,america,flying inventions'.split(',')}).and_return bing_formatted_query
+        BingFormattedQuery.should_receive(:new).with('gov (patents OR america OR flying)',
+                                                     {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"],
+                                                      :excluded_domains => [],
+                                                      :scope_ids => []}).and_return bing_formatted_query
         SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
       end
     end
 
-    context 'when the document collection has scope_keywords' do
-      before do
-        dc.update_attributes!(:scope_keywords => 'education , child development')
-        affiliate.update_attributes!(:scope_keywords => '')
-      end
-
-      it 'should use the scope_keywords' do
-        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => [], :scope_keywords => 'education,child development'.split(',')}).and_return bing_formatted_query
-        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
-      end
-    end
-
-    context 'when affiliate and document collection has scope_keywords' do
-      before do
-        affiliate.update_attributes!(:scope_keywords => 'patents,america')
-        dc.update_attributes!(:scope_keywords => 'patents,flying inventions')
-      end
-
-      it 'should use the document collection scope_keywords' do
-        BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => [], :scope_keywords => 'patents,flying inventions'.split(',')}).and_return bing_formatted_query
-        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
-      end
-    end
   end
 end

@@ -63,14 +63,6 @@ describe GoogleFormattedQuery do
         end
       end
 
-      context "when scope keywords are specified" do
-        subject { GoogleFormattedQuery.new('government', included_domains: included_domains, scope_keywords: %w(patents america flying)) }
-
-        it "should limit the query with those keywords" do
-          subject.query.should == 'government site:bar.com OR site:foo.com "patents" OR "america" OR "flying"'
-        end
-      end
-
       context "when searcher specifies sitelimit: within included domains" do
         subject { GoogleFormattedQuery.new('government', included_domains: included_domains, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov') }
 

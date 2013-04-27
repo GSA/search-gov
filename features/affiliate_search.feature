@@ -1147,9 +1147,9 @@ Feature: Affiliate Search
       | display_name | name       | contact_email | contact_name | domains                           |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov,www.howto.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name         | prefixes                                                                       | is_navigable | scope_keywords |
-      | Blog         | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |                |
-      | Search Notes | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         | search notes   |
+      | name         | prefixes                                                                       | is_navigable |
+      | Blog         | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |
+      | Search Notes | http://usasearch.howto.gov/manual/,http://usasearch.howto.gov/tagged/releases/ | true         |
     And the following IndexedDocuments exist:
       | title                       | description                        | url                                                   | affiliate  | last_crawled_at | last_crawl_status |
       | First social media article  | This is an article on social media | http://usasearch.howto.gov/manual/social-media-1.html | agency.gov | 11/02/2011      | OK                |

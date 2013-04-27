@@ -33,7 +33,7 @@ describe GoogleWebSearch do
 
     describe "adult content filters" do
       context "when a valid filter parameter is present" do
-        it "should set the filter_level parameter to the Bing-specific level" do
+        it "should set the filter_level parameter to the Google-specific level" do
           GoogleWebSearch.new(query: "taxes", filter: 0).filter_level.should == 'off'
           GoogleWebSearch.new(query: "taxes", filter: 1).filter_level.should == 'medium'
           GoogleWebSearch.new(query: "taxes", filter: 2).filter_level.should == 'high'
