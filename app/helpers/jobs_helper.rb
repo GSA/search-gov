@@ -1,14 +1,8 @@
 module JobsHelper
   def title_link(job, search, index)
-    job_link_with_click_tracking(job.position_title.html_safe, url_for_job(job),
+    job_url = job.id =~ /^usajobs/ ? "#{job.url}?PostingChannelID=USASearch" : job.url
+    job_link_with_click_tracking(job.position_title.html_safe, job_url,
                                  search.affiliate, search.query, index, @search_vertical)
-  end
-
-  def url_for_job(job)
-    case job.id
-    when /^usajobs/ then "#{job.url}?PostingChannelID=USASearch"
-    else job.url
-    end
   end
 
   def job_application_deadline(yyyy_mm_dd)

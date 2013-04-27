@@ -124,7 +124,7 @@ describe "searches/index.html.haml" do
       end
     end
 
-    context "when jobs results are available" do
+    context "when federal jobs results are available" do
       before do
         @affiliate.stub!(:jobs_enabled?).and_return(true)
         json = [
@@ -156,27 +156,37 @@ describe "searches/index.html.haml" do
       it "should show them in a govbox" do
         render
         rendered.should contain("Federal Job Openings")
-        rendered.should contain("Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)")
+        rendered.should have_selector(:a,
+                                      content: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)',
+                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437200?PostingChannelID=USASearch')
         rendered.should contain("Agricultural Research Service")
         rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871.00+/yr")
         rendered.should contain("Apply by October 12, 2023")
 
-        rendered.should contain("Some Research Job")
+        rendered.should have_selector(:a,
+                                      content: 'Some Research Job',
+                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437201?PostingChannelID=USASearch')
         rendered.should contain("Some Research Service")
         rendered.should contain("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24.00/hr")
         rendered.should contain("Apply by October 13, 2023")
 
-        rendered.should contain("Bi-Weekly Research Job")
+        rendered.should have_selector(:a,
+                                      content: 'Bi-Weekly Research Job',
+                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437202?PostingChannelID=USASearch')
         rendered.should contain("BW Research Service")
         rendered.should contain("Hello, MA")
         rendered.should contain("Apply by October 15, 2023")
 
-        rendered.should contain("Zero Money Research Job")
+        rendered.should have_selector(:a,
+                                      content: 'Zero Money Research Job',
+                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437203?PostingChannelID=USASearch')
         rendered.should contain("Some Poor Research Service")
         rendered.should contain("Washington Metro Area, DC")
         rendered.should contain("Apply by October 14, 2023")
 
-        rendered.should contain("All federal job openings")
+        rendered.should have_selector(:a,
+                                      content: 'All federal job openings',
+                                      href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
       end
 
       context 'when there is an agency associated with the affiliate' do
@@ -221,6 +231,48 @@ describe "searches/index.html.haml" do
         end
       end
 
+    end
+
+    context 'when neogov jobs results are available' do
+      before do
+        @affiliate.stub!(:jobs_enabled?).and_return(true)
+        json = [
+            {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
+             "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
+             "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
+        mashies = json.collect { |x| Hashie::Mash.new(x) }
+        @search.stub!(:query).and_return "research jobs"
+        @search_result = {'title' => "This is about research jobs",
+                          'unescapedUrl' => "http://www.cdc.gov/jobs",
+                          'content' => "Research jobs don't pay well",
+                          'cacheUrl' => "http://www.cached.com/url"}
+        @search_results = [@search_result]
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search.stub!(:jobs).and_return mashies
+      end
+
+      context 'when there is  agency associated with the affiliate' do
+        before do
+          agency = Agency.create!({:name => 'State of Michigan',
+                                   :domain => 'michigan.gov',
+                                   :abbreviation => 'SOM',
+                                   :organization_code => 'USMI',
+                                   :name_variants => 'Some Service'})
+          @affiliate.stub!(:agency).and_return(agency)
+        end
+
+        it "should show the neogov links" do
+          render
+          rendered.should contain('Job Openings at SOM')
+          rendered.should have_selector(:a,
+                                        content: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)',
+                                        href: 'http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200')
+          rendered.should have_selector(:a,
+                                        content: 'See all SOM job openings',
+                                        href: 'http://agency.governmentjobs.com/michigan/default.cfm')
+        end
+      end
     end
 
     context "when an agency record matches the query" do
