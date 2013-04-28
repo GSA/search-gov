@@ -853,7 +853,8 @@ Feature: Affiliate Search
     And I am on whitehouse.gov's search page
     And I fill in "query" with "green button"
     And I press "Search"
-    Then I should see "green button" in bold font
+    Then I should see "green" in bold font
+    And I should see "button" in bold font
 
   Scenario: When a searcher enter query with invalid solr character
     Given the following Affiliates exist:
@@ -1164,9 +1165,6 @@ Feature: Affiliate Search
     Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/manual/social-media-1.html"
     And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/manual/social-media-2.html"
     And I should not see "Other social media article"
-    When I follow "Search Notes" in the left column
-    Then I should see some Bing search results
-    And I should not see "How to Add Your Social Media to Our Index"
 
   Scenario: Searching on non navigable document collection
     Given the following Affiliates exist:
