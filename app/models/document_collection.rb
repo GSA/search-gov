@@ -1,4 +1,6 @@
 class DocumentCollection < ActiveRecord::Base
+  DEPTH_WHEN_BING_FAILS = 3
+
   belongs_to :affiliate
   has_one :navigation, :as => :navigable, :dependent => :destroy
   has_many :url_prefixes, :dependent => :destroy

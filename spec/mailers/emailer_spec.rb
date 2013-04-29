@@ -58,6 +58,26 @@ describe Emailer do
     end
   end
 
+  describe "#deep_collection_notification" do
+    let(:document_collection) do
+      affiliates(:basic_affiliate).document_collections.create!(
+        :name => 'WH only',
+        :url_prefixes_attributes => {'0' => {:prefix => 'http://www.whitehouse.gov/photos-and-video/'},
+                                     '1' => {:prefix => 'http://www.whitehouse.gov/blog/is/deep'}})
+    end
+
+    subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
+
+    it { should deliver_to('***REMOVED***') }
+    it { should have_subject(/Deep document collection created/) }
+
+    it 'should contain document collection and URL prefixes' do
+      email.should have_body_text("WH only")
+      email.should have_body_text('http://www.whitehouse.gov/photos-and-video/')
+      email.should have_body_text('http://www.whitehouse.gov/blog/is/deep')
+    end
+  end
+
   describe "#filtered_popular_terms_report" do
     subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver }
 

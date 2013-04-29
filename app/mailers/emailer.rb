@@ -215,6 +215,16 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def deep_collection_notification(current_user, document_collection)
+    setup_email('***REMOVED***', __method__)
+    @document_collection = document_collection
+    @current_user = current_user
+    @subject = ERB.new(@email_template_subject).result(binding)
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.text { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   private
 
   def setup_email(recipients, method_name)

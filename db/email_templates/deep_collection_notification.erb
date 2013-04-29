@@ -1,0 +1,8 @@
+Document Collection: <%= @document_collection.name %>
+Url Prefixes:
+<% @document_collection.url_prefixes.each do |url_prefix| %>
+    <%= url_prefix.prefix %>
+<% end %>
+Site name: <%= @document_collection.affiliate.display_name %>
+Site: <%= @document_collection.affiliate.name %>
+Requested by: <%= "#{@current_user.contact_name} <#{@current_user.email}>" %>

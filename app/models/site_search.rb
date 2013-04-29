@@ -1,10 +1,9 @@
 class SiteSearch < WebSearch
   attr_reader :document_collection
-  DEPTH_WHEN_BING_FAILS = 3
 
   def initialize(options = {})
     @document_collection = options[:document_collection] || (DocumentCollection.find(options[:dc]) rescue nil)
-    options[:affiliate].search_engine='Google' if @document_collection and @document_collection.depth >= DEPTH_WHEN_BING_FAILS
+    options[:affiliate].search_engine='Google' if @document_collection and @document_collection.depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
     super(options)
   end
 
