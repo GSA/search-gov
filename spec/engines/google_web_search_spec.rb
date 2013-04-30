@@ -5,14 +5,6 @@ describe GoogleWebSearch do
 
   it_behaves_like "a web search engine"
 
-  describe "per-user quotas" do
-    let(:quota_search) { described_class.new(query: "userquota", quota_user: 'limit_me') }
-
-    it 'should send quotaUser to Google if available' do
-      quota_search.execute_query
-    end
-  end
-
   describe ".new for GoogleWebSearch" do
     context 'when only required search params are passed in' do
       let(:minimum_search) { GoogleWebSearch.new(query: "taxes") }

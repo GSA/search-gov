@@ -14,7 +14,6 @@ class GoogleSearch < SearchEngine
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end
-    @quota_user = options[:quota_user]
   end
 
   protected
@@ -26,10 +25,10 @@ class GoogleSearch < SearchEngine
       cx: SEARCH_CX,
       safe: filter_level,
       q: query,
-      lr: language
+      lr: language,
+      quotaUser: 'USASearch'
     }
     params_hash.merge!(start: offset) unless offset == DEFAULT_OFFSET
-    params_hash.merge!(quotaUser: @quota_user) if @quota_user.present?
     params_hash
   end
 
