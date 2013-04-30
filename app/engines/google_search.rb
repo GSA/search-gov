@@ -6,6 +6,7 @@ class GoogleSearch < SearchEngine
   SEARCH_CX = '015426204394000049396:9fkj8sbnfpi'
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_LANGUAGE = 'lang_en'
+  CACHE_DURATION = 5 * 60
 
   def initialize(options = {})
     super(options) do |search_engine|
@@ -51,6 +52,6 @@ class GoogleSearch < SearchEngine
   end
 
   def connection_instance
-    @@api_connection ||= SearchApiConnection.new('google_api', API_HOST)
+    @@api_connection ||= SearchApiConnection.new('google_api', API_HOST, CACHE_DURATION)
   end
 end
