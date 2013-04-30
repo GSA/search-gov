@@ -93,7 +93,6 @@ UsasearchRails3::Application.routes.draw do
     resources :document_collections, :controller => "affiliates/document_collections"
     resources :raw_logs_access, :controller => "affiliates/raw_logs_access", :only => [:new, :create]
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
-    resources :excluded_domains, :controller => "affiliates/excluded_domains", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :site_domains, :controller => "affiliates/site_domains" do
       collection do
