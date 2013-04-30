@@ -112,12 +112,12 @@ RSpec.configure do |config|
     bing_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/spelling_suggestion.json")
     stubs.get("#{common}#{hl}query=electro+coagulation") { [200, {}, bing_spelling] }
 
-    common = '/customsearch/v1?alt=json&key=AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34&cx=015426204394000049396:9fkj8sbnfpi&searchType=image&quotaUser=USASearch'
+    common = '/customsearch/v1?alt=json&key=AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ&cx=005675969675701682971:tsue0ko9g0k&searchType=image&quotaUser=USASearch'
     common_params = '&lr=lang_en&safe=medium'
     generic_google_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/image_search/obama.json")
     stubs.get("#{common}#{common_params}&q=obama") { [200, {}, generic_google_image_result] }
 
-    common = '/customsearch/v1?alt=json&key=AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34&cx=015426204394000049396:9fkj8sbnfpi&quotaUser=USASearch'
+    common = '/customsearch/v1?alt=json&key=AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ&cx=005675969675701682971:tsue0ko9g0k&quotaUser=USASearch'
     generic_google_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/ira.json")
     stubs.get("#{common}#{common_params}&q=highlight+enabled") { [200, {}, generic_google_result] }
     stubs.get("#{common}#{common_params}&q=no+highlighting") { [200, {}, generic_google_result] }
