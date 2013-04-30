@@ -2,8 +2,8 @@
 class GoogleSearch < SearchEngine
   API_ENDPOINT = '/customsearch/v1'
   API_HOST = 'https://www.googleapis.com'
-  API_KEY = 'AIzaSyAqgqnBqdXKtLfmEEzarf96hlnzD5koi34'
-  SEARCH_CX = '015426204394000049396:9fkj8sbnfpi'
+  API_KEY = 'AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ'
+  SEARCH_CX = '005675969675701682971:tsue0ko9g0k'
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
