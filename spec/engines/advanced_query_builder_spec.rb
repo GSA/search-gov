@@ -52,14 +52,32 @@ describe AdvancedQueryBuilder do
     end
   end
 
+  context "when a filetype is specified" do
+    context "when the filetype specified is not 'All'" do
+      subject { AdvancedQueryBuilder.new([], query: 'government', file_type: 'pdf') }
+      it "should construct a query string that includes a filetype" do
+        subject.build.should =='government filetype:pdf'
+      end
+    end
+
+    context "when the filetype specified is 'All'" do
+      subject { AdvancedQueryBuilder.new([], query: 'government', file_type: 'All') }
+      it "should construct a query string that does not have a filetype parameter" do
+        subject.build.should =='government'
+      end
+    end
+
+  end
+
   context "when multiple or all of the advanced query parameters are specified" do
     subject { AdvancedQueryBuilder.new([], query_quote: 'barack obama',
                                        query_or: 'cars stimulus',
                                        query_not: 'clunkers',
+                                       file_type: 'pdf',
                                        site_excludes: 'nasa.gov noaa.gov',
                                        query: 'government site:.gov') }
     it "should construct a query string that incorporates all of them" do
-      subject.build.should =='government site:.gov "barack obama" -clunkers (cars OR stimulus) -site:nasa.gov -site:noaa.gov'
+      subject.build.should =='government site:.gov "barack obama" -clunkers (cars OR stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov'
     end
   end
 
