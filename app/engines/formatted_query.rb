@@ -1,11 +1,13 @@
 class FormattedQuery
   QUERY_STRING_ALLOCATION = 1500
   attr_reader :query,
-              :matching_site_limits
+              :matching_site_limits,
+              :file_type
 
   def initialize(options = {})
     @included_domains= options.delete(:included_domains) || []
     @excluded_domains= options.delete(:excluded_domains) || []
+    @file_type = "filetype:#{options[:file_type]}" if options[:file_type] and options[:file_type].downcase != 'all'
     site_limits= options.delete(:site_limits) || ''
     @matching_site_limits = site_limits.split.select { |site| included_domain_contains?(site) }
   end

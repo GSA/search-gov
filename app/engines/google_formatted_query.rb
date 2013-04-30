@@ -14,6 +14,7 @@ class GoogleFormattedQuery < FormattedQuery
     sites = [user_query]
     sites << excluded unless excluded.blank?
     sites << domains unless domains.blank?
+    sites << file_type unless file_type.blank?
     sites.join(' ')
   end
 

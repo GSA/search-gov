@@ -20,6 +20,22 @@ describe BingFormattedQuery do
     end
   end
 
+  context "when a filetype is specified" do
+    context "when the filetype specified is not 'All'" do
+      subject { BingFormattedQuery.new('government', file_type: 'pdf') }
+      it "should construct a query string that includes a filetype at the end" do
+        subject.query.should =~ / filetype:pdf$/
+      end
+    end
+
+    context "when the filetype specified is 'All'" do
+      subject { BingFormattedQuery.new('government', file_type: 'all') }
+      it "should construct a query string that does not have a filetype parameter" do
+        subject.query.should_not =~ /filetype/
+      end
+    end
+  end
+
   describe 'included domains' do
 
     context "when included domains present" do
