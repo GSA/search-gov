@@ -216,7 +216,7 @@ class Emailer < ActionMailer::Base
   end
 
   def deep_collection_notification(current_user, document_collection)
-    setup_email('***REMOVED***', __method__)
+    setup_email('usagov@searchsi.com', __method__)
     @document_collection = document_collection
     @current_user = current_user
     @subject = ERB.new(@email_template_subject).result(binding)
