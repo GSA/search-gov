@@ -68,7 +68,7 @@ describe Emailer do
 
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
 
-    it { should deliver_to('***REMOVED***') }
+    it { should deliver_to('usagov@searchsi.com') }
     it { should have_subject(/Deep document collection created/) }
 
     it 'should contain document collection and URL prefixes' do
