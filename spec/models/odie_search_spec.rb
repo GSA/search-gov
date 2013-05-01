@@ -87,22 +87,11 @@ describe OdieSearch do
       @search.run
     end
 
-    it "should always generate a JSON representation of total, start and end records, related searches, and search results" do
+    it "should always generate a JSON representation of total, start and end records, and search results" do
       json = @search.to_json
       json.should =~ /total/
       json.should =~ /startrecord/
       json.should =~ /endrecord/
-      json.should =~ /related/
-    end
-
-    context "when related searches are present" do
-      before do
-        @search.instance_variable_set(:@related_search, ["<strong>foo</strong>", "<strong>foo</strong> is here <strong>again</strong>"])
-      end
-
-      it "should remove <strong> HTML formatting" do
-        @search.as_json[:related].should == ["foo", "foo is here again"]
-      end
     end
 
     context "when an error occurs" do

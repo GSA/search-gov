@@ -64,10 +64,13 @@ class Search
 
   def result_hash
     if @error_message
-      {:error => @error_message}
+      {error: @error_message}
     else
-      hash = {:total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results}
-      hash.merge!(:related => remove_strong(@related_search))
+      hash = {total: @total,
+              startrecord: @startrecord,
+              endrecord: @endrecord,
+              results: @results}
+      hash.merge!(related: remove_strong(related_search)) if self.respond_to?(:related_search)
       hash
     end
   end

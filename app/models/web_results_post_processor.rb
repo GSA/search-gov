@@ -13,10 +13,10 @@ class WebResultsPostProcessor
       title ||= result.title
       content ||= result.content
       if excluded_urls_empty || !url_is_excluded(result.unescaped_url)
-        Hashie::Rash.new({title: title,
-                          content: content,
-                          unescaped_url: result.unescaped_url,
-                          published_at: (link_hash[result.unescaped_url].published_at rescue nil)})
+        {'title'=> title,
+         'content'=> content,
+         'unescapedUrl'=> result.unescaped_url,
+         'publishedAt'=> (link_hash[result.unescaped_url].published_at rescue nil)}
       else
         nil
       end

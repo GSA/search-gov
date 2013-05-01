@@ -22,7 +22,7 @@ describe WebResultsPostProcessor do
       it "should filter out the excluded URLs" do
         post_processor = WebResultsPostProcessor.new('foo', affiliate, results)
         ppr = post_processor.post_processed_results
-        ppr.any? { |result| result.unescaped_url == excluded_url }.should be_false
+        ppr.any? { |result| result['unescapedUrl'] == excluded_url }.should be_false
         ppr.size.should == 5
       end
     end
@@ -67,8 +67,8 @@ describe WebResultsPostProcessor do
       end
 
       it 'should assign published date from news item' do
-        @post_processed_results.first.published_at.should == DateTime.parse("2011-09-26 21:33:06")
-        @post_processed_results.last.published_at.should == DateTime.parse("2011-09-26 21:33:05")
+        @post_processed_results.first['publishedAt'].should == DateTime.parse("2011-09-26 21:33:06")
+        @post_processed_results.last['publishedAt'].should == DateTime.parse("2011-09-26 21:33:05")
       end
     end
   end

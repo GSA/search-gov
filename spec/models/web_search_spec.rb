@@ -356,6 +356,17 @@ describe WebSearch do
         json.should =~ /spell it this way/
       end
     end
+
+    context "when related search is present" do
+      before do
+        search.stub!(:related_search).and_return ['also <strong>search</strong> this']
+      end
+
+      it "should output unhighlighted related search" do
+        json = search.to_json
+        json.should =~ /also search this/
+      end
+    end
   end
 
   describe "#to_xml" do

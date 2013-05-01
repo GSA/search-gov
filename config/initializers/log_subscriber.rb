@@ -1,10 +1,10 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
-    def bing_search(event)
+    def bing_web_search(event)
       generic_logging("Bing Query", event, YELLOW)
     end
 
-    def google_search(event)
+    def google_web_search(event)
       generic_logging("Google Query", event, RED)
     end
 
