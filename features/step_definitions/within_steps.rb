@@ -21,6 +21,7 @@
   'in the left column' => '#left_column',
   'in the selected vertical navigation' => '#sidebar span',
   'in the search results section' => '#results',
+  'in the advanced search section' => '.advancedsearch',
   'in the results filters' => '#results .results-filters',
   'in the selected time filter' => '#results .time-filters .selected',
   'in the selected sort filter' => '#results .sort-filters .selected',

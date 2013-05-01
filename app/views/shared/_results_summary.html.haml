@@ -2,10 +2,8 @@
 - if search.results.present?
   = display_search_all_affiliate_sites_suggestion(search)
   = results_summary(search)
-  - if web_search?
-    .advancedsearch
-      &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      = advanced_search_link(search_options, affiliate)
+  .advancedsearch
+    &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+    = advanced_search_link(search_options, affiliate)
 - else
   = render 'shared/blank_search_results', :search => search
-

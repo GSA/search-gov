@@ -17,6 +17,7 @@ Feature: Affiliate Search
     When I follow "Images"
     Then I should see "Everything"
     And I should see at least 8 search results
+    And I should see a link to "Advanced Search" in the advanced search section
     And I should not see "Last hour"
 
     When I follow "Everything"

@@ -99,6 +99,7 @@ Feature: Affiliate Search
     And I should see "First <b> item </b>"
     And I should see "i> item </i> First news item for the feed"
     And I should see "First video item"
+    And I should see a link to "Advanced Search" in the advanced search section
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
@@ -628,7 +629,7 @@ Feature: Affiliate Search
       | All Posts | http://usasearch.howto.gov/all.atom | true         | false           |
     And feed "All Posts" has the following news items:
       | link                                                | title      | guid  | published_ago | description                       |
-      | http://usasearch.howto.gov/manual/social-media.html | First item | uuid1 | day           | item First news item for the feed |
+      | http://usasearch.howto.gov/tagged/releases/ | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
     And I fill in "query" with "social media"
     And I press "Search"
@@ -853,8 +854,8 @@ Feature: Affiliate Search
     And I am on whitehouse.gov's search page
     And I fill in "query" with "green button"
     And I press "Search"
-    Then I should see "green" in bold font
-    And I should see "button" in bold font
+    Then I should see "Green" in bold font
+    And I should see "Button" in bold font
 
   Scenario: When a searcher enter query with invalid solr character
     Given the following Affiliates exist:
@@ -1160,7 +1161,8 @@ Feature: Affiliate Search
     And I follow "Blog" in the left column
     And I fill in "query" with "social media"
     And I press "Search"
-    Then I should see a link to "How to Add Your Social Media to Our Index" with url for "http://usasearch.howto.gov/manual/social-media.html"
+    Then I should see a link to "Posts tagged releases" with url for "http://usasearch.howto.gov/tagged/releases/"
+    And I should see a link to "Advanced Search" in the advanced search section
     When I follow "Next"
     Then I should see a link to "First social media article" with url for "http://usasearch.howto.gov/manual/social-media-1.html"
     And I should see a link to "Second social media article" with url for "http://usasearch.howto.gov/manual/social-media-2.html"

@@ -4,6 +4,9 @@
   .summary-wrapper
     - if @search.results.present?
       = results_summary(@search)
+      .advancedsearch
+        &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+        = advanced_search_link(@search_options, @affiliate)
     - else
       = render 'blank_news_search_results', :search => @search
 #left_column
