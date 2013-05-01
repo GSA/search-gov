@@ -49,7 +49,7 @@ module Jobs
   end
 
   def self.query_eligible?(query)
-    query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():-]/)
+    query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():]|^-| -\S+/)
   end
 
   def self.enhance_query(query, geoip_info)

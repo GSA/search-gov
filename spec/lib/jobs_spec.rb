@@ -18,6 +18,12 @@ describe Jobs do
   end
 
   describe '.query_eligible?(query)' do
+    context "when the search phrase contains hyphenated words" do
+      it 'should return true' do
+        Jobs.query_eligible?('full-time jobs').should be_true
+      end
+    end
+
     context 'when the search phrase is blocked' do
       it 'should return false' do
         ["employment data", "employment statistics", "employment numbers", "employment levels", "employment rate",
@@ -39,7 +45,8 @@ describe Jobs do
         ['job "city of farmington"',
          'job -loren',
          'job (assistant OR parks)',
-         'job filetype:pdf'
+         'job filetype:pdf',
+         '-loren job'
         ].each { |phrase| Jobs.query_eligible?(phrase).should be_false }
       end
     end
