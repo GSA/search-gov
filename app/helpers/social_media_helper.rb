@@ -53,7 +53,8 @@ module SocialMediaHelper
   def render_flickr_photo_preview(flickr_photo)
     content = []
     content << image_tag(flickr_photo.url_sq)
-    content << content_tag(:div, "#{link_to(flickr_photo.title, flickr_photo.flickr_url)} - #{time_ago_in_words(flickr_photo.date_taken)}".html_safe)
+    time_ago = flickr_photo.date_taken.present? ? " - #{time_ago_in_words(flickr_photo.date_taken)}" : ''
+    content << content_tag(:div, "#{link_to(flickr_photo.title, flickr_photo.flickr_url)}#{time_ago}".html_safe)
     content_tag :div, content.join("\n").html_safe, :class => 'preview', :style => 'margin-bottom: 10px;'
   end
 end
