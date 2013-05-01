@@ -13,7 +13,7 @@ class BingWebSearch < BingSearch
     processed = web_results.collect do |result|
       title = coder.decode(result.title) rescue nil
       content = coder.decode(result.description) || ''
-      title.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: content}) : nil
+      title.present? && result.url.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: content}) : nil
     end
     processed.compact
   end

@@ -58,6 +58,18 @@ describe BingWebSearch do
       end
     end
 
+    context "when results contain a listing that is missing a url" do
+      let(:search) { BingWebSearch.new(query: "missing_urls") }
+
+      it "should ignore that result" do
+        search_engine_response = search.execute_query
+        search_engine_response.results.size.should == 9
+        search_engine_response.results.each do |result|
+          result.unescaped_url.should be_present
+        end
+      end
+    end
+
     context "when results contain a listing that is missing a description" do
       let(:search) { BingWebSearch.new(query: "missing_descriptions") }
 

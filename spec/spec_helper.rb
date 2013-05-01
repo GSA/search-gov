@@ -102,6 +102,9 @@ RSpec.configure do |config|
     two_results_1_missing_title = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/2_results_1_missing_title.json")
     stubs.get("#{common}#{hl}query=2missing1") { [200, {}, two_results_1_missing_title] }
 
+    missing_urls = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/missing_urls.json")
+    stubs.get("#{common}#{hl}query=missing_urls") { [200, {}, missing_urls] }
+
     missing_descriptions = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/missing_descriptions.json")
     stubs.get("#{common}#{hl}query=missing_descriptions") { [200, {}, missing_descriptions] }
 
