@@ -37,18 +37,20 @@ describe SiteSearch do
     let(:bing_formatted_query) { mock("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => [], :scope_ids => []}).and_return bing_formatted_query
+      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
-    context 'when the affiliate has scope_keywords' do
-      before { affiliate.scope_keywords = 'patents,america,flying' }
+    context 'when the affiliate has scope_keywords and scope ids' do
+      before do
+        affiliate.scope_keywords = 'patents,america,flying'
+        affiliate.scope_ids = 'usagov,other_scope'
+      end
 
-      it 'should use the scope_keywords' do
+      it 'should only use the scope_keywords' do
         BingFormattedQuery.should_receive(:new).with('gov (patents OR america OR flying)',
                                                      {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"],
-                                                      :excluded_domains => [],
-                                                      :scope_ids => []}).and_return bing_formatted_query
+                                                      :excluded_domains => []}).and_return bing_formatted_query
         SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
       end
     end
