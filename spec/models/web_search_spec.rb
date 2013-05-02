@@ -41,26 +41,6 @@ describe WebSearch do
       search.matching_site_limits.should == %w(foo.com/subdir1 foo.com/subdir2)
     end
 
-    context 'when affiliate has scope keywords' do
-      before do
-        @affiliate.scope_keywords = 'foo,bar, blat'
-      end
-
-      context 'when user sends in query-or param in advanced search' do
-        it 'should add them to user-specified query-or param' do
-          search = WebSearch.new(@valid_options.merge(query_or: 'baz bar'))
-          search.query.should == 'government (baz OR bar OR foo OR blat)'
-        end
-      end
-
-      context 'when query-or param is blank' do
-        it 'should use the scope keywords as the query-or param' do
-          search = WebSearch.new(@valid_options)
-          search.query.should == 'government (foo OR bar OR blat)'
-        end
-      end
-    end
-
   end
 
   describe "instrumenting search engine calls" do

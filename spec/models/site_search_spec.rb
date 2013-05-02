@@ -41,20 +41,6 @@ describe SiteSearch do
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
-    context 'when the affiliate has scope_keywords and scope ids' do
-      before do
-        affiliate.scope_keywords = 'patents,america,flying'
-        affiliate.scope_ids = 'usagov,other_scope'
-      end
-
-      it 'should only use the scope_keywords' do
-        BingFormattedQuery.should_receive(:new).with('gov (patents OR america OR flying)',
-                                                     {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"],
-                                                      :excluded_domains => []}).and_return bing_formatted_query
-        SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
-      end
-    end
-
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')

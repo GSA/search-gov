@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429201006) do
+ActiveRecord::Schema.define(:version => 20130502182109) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20130429201006) do
     t.text     "previous_fields_json",                      :limit => 2147483647
     t.text     "live_fields_json",                          :limit => 2147483647
     t.text     "staged_fields_json",                        :limit => 2147483647
-    t.text     "scope_keywords"
     t.boolean  "uses_managed_header_footer"
     t.boolean  "staged_uses_managed_header_footer"
     t.string   "header_image_file_name"

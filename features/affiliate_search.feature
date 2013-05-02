@@ -838,25 +838,6 @@ Feature: Affiliate Search
     And I press "Buscar"
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  Scenario: When an affiliate has scope keywords
-    Given the following Affiliates exist:
-      | display_name | name           | contact_email | contact_name | domains | scope_keywords |
-      | agency site  | whitehouse.gov | aff@bar.gov   | John Bar     | nih.gov | green button   |
-    And I am on whitehouse.gov's search page
-    And I fill in "query" with "obama"
-    And I press "Search"
-    Then I should not see "Green Button" in bold font
-
-  Scenario: When an affiliate has scope keywords, and searches for those keywords
-    Given the following Affiliates exist:
-      | display_name | name           | contact_email | contact_name | domains | scope_keywords |
-      | agency site  | whitehouse.gov | aff@bar.gov   | John Bar     | nih.gov | green button   |
-    And I am on whitehouse.gov's search page
-    And I fill in "query" with "green button"
-    And I press "Search"
-    Then I should see "Green" in bold font
-    And I should see "Button" in bold font
-
   Scenario: When a searcher enter query with invalid solr character
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |

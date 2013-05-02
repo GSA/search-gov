@@ -22,10 +22,6 @@ class Search
   def initialize(options = {})
     @affiliate = options[:affiliate]
     advanced_query_options = options.slice(:query, :query_quote, :query_not, :query_or, :file_type, :site_excludes)
-    if @affiliate.scope_keywords.present?
-      merged_query_or = merge_scope_keywords_with_query_or(options[:query_or], @affiliate.scope_keywords_as_array)
-      advanced_query_options.merge!(query_or: merged_query_or)
-    end
     advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.domains_as_array, advanced_query_options)
     @query = advanced_query_builder.build
 
@@ -106,11 +102,6 @@ class Search
 
   def remove_strong(string_array)
     string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
-  end
-
-  private
-  def merge_scope_keywords_with_query_or(query_or_param, keyword_array)
-    ((query_or_param || '').split | keyword_array).join(' ')
   end
 
 end
