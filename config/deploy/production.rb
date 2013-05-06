@@ -11,16 +11,10 @@ role :solr, "192.168.100.174", "192.168.110.12"
 before "deploy:symlink", "production_yaml_files"
 before "deploy:symlink", "production_solrconfig"
 before "deploy:cleanup", "restart_resque_workers"
-before "deploy:cleanup", "restart_twitter_stream"
 
 task :restart_resque_workers, :roles => :resque_workers do
   run "/home/search/scripts/stop_resque_workers"
   run "/home/search/scripts/start_resque_workers"
-end
-
-task :restart_twitter_stream, :roles => :twitter do
-  run "/home/search/scripts/stop_twitter_tasks"
-  run "/home/search/scripts/start_twitter_tasks"
 end
 
 task :production_solrconfig, :roles => :solr, :except => { :no_release => true } do

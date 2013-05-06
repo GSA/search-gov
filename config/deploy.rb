@@ -17,6 +17,7 @@ before "deploy:symlink", "deploy:web:disable"
 before "deploy:symlink", "deploy:symlink_cache"
 after :deploy, "deploy:web:enable"
 after :deploy, 'deploy:cleanup'
+before "deploy:cleanup", "restart_twitter_stream"
 after "deploy:update", "newrelic:notice_deployment"
 
 namespace :deploy do
@@ -38,6 +39,11 @@ namespace :deploy do
   desc "Create symlink for tmp/cache"
   task :symlink_cache, :roles => :app do
     run "ln -s #{shared_path}/cache #{release_path}/tmp/cache"
+  end
+
+  task :restart_twitter_stream, :roles => :twitter do
+    run "/home/search/scripts/stop_twitter_tasks"
+    run "/home/search/scripts/start_twitter_tasks"
   end
 end
 

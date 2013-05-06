@@ -20,7 +20,7 @@ describe TwitterData do
   describe '#refresh_lists' do
     it 'should import twitter profile lists' do
       profile = mock_model(TwitterProfile)
-      TwitterProfile.should_receive(:with_show_list_enabled).and_return([profile])
+      TwitterProfile.stub_chain(:joins, :where, :order, :limit).and_return([profile])
       profile.should_receive(:touch)
       TwitterData.should_receive(:import_twitter_profile_lists).with(profile)
       TwitterData.refresh_lists

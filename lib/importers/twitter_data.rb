@@ -1,4 +1,5 @@
 module TwitterData
+  GET_LISTS_RATE_LIMIT = 15.freeze
   RATE_LIMIT_RESET_WINDOW = 15.minutes.freeze
   MAX_RETRY_ATTEMPTS = 3.freeze
   MAX_GET_LIST_TWEETS_ATTEMPTS = 5.freeze
@@ -42,7 +43,10 @@ module TwitterData
   end
 
   def self.refresh_lists
-    TwitterProfile.with_show_list_enabled.each do |profile|
+    TwitterProfile.joins(:affiliate_twitter_settings).
+        where('affiliate_twitter_settings.show_lists = 1').
+        order('twitter_profiles.updated_at asc').
+        limit(GET_LISTS_RATE_LIMIT).each do |profile|
       profile.touch
       import_twitter_profile_lists(profile)
     end

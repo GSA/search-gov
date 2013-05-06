@@ -2,6 +2,7 @@ set :user,        "search"
 set :deploy_to,   "/home/search/#{application}"
 set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
+role :twitter, "192.168.100.169"
 
 before "deploy:symlink", "staging_yaml_files"
 before "deploy:cleanup", "restart_resque_workers"
