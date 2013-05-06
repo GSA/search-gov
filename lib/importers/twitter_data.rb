@@ -43,10 +43,7 @@ module TwitterData
   end
 
   def self.refresh_lists
-    TwitterProfile.joins(:affiliate_twitter_settings).
-        where('affiliate_twitter_settings.show_lists = 1').
-        order('twitter_profiles.updated_at asc').
-        limit(GET_LISTS_RATE_LIMIT).each do |profile|
+    TwitterProfile.with_show_lists_enabled(GET_LISTS_RATE_LIMIT).each do |profile|
       profile.touch
       import_twitter_profile_lists(profile)
     end

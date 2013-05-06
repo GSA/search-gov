@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe TwitterProfile do
+  fixtures :affiliates
+
   before do
     Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
     @valid_attributes = {
@@ -96,6 +98,56 @@ describe TwitterProfile do
 
     it "should output a properly formatted link to the tweet" do
       @profile.link_to_profile.should == 'http://twitter.com/USASearch'
+    end
+  end
+
+  describe '.affiliate_twitter_ids' do
+    let(:affiliate1) { affiliates(:usagov_affiliate) }
+    let(:affiliate2) { affiliates(:gobiernousa_affiliate) }
+
+    before do
+      profile = TwitterProfile.new(twitter_id: 100, name: 'usasearch', profile_image_url: 'http://twitter.com/profile100.jpg')
+      profile.save(validate: false)
+      affiliate1.twitter_profiles << profile
+      profile = TwitterProfile.new(twitter_id: 101, name: 'usasearchdev', profile_image_url: 'http://twitter.com/profile101.jpg')
+      profile.save(validate: false)
+      affiliate1.twitter_profiles << profile
+      affiliate2.twitter_profiles << profile
+
+      profile = TwitterProfile.new(twitter_id: 102, name: 'usagov', profile_image_url: 'http://twitter.com/profile102.jpg')
+      profile.save(validate: false)
+    end
+
+    it 'should return twitter_ids that for profiles that belongs to an affiliate' do
+      TwitterProfile.affiliate_twitter_ids.should == [100, 101]
+    end
+  end
+
+  describe '.with_show_lists_enabled' do
+    let(:affiliate1) { affiliates(:usagov_affiliate) }
+    let(:affiliate2) { affiliates(:gobiernousa_affiliate) }
+
+    before do
+      profile = TwitterProfile.new(twitter_id: 100, name: 'usasearch', profile_image_url: 'http://twitter.com/profile100.jpg')
+      profile.save(validate: false)
+      affiliate1.twitter_profiles << profile
+      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+
+      profile = TwitterProfile.new(twitter_id: 101, name: 'usasearchdev', profile_image_url: 'http://twitter.com/profile101.jpg')
+      profile.save(validate: false)
+      affiliate1.twitter_profiles << profile
+      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+      affiliate2.twitter_profiles << profile
+      affiliate2.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+
+      profile = TwitterProfile.new(twitter_id: 102, name: 'usagov', profile_image_url: 'http://twitter.com/profile102.jpg')
+      profile.save(validate: false)
+      affiliate2.twitter_profiles << profile
+    end
+
+    it 'should return affiliate profiles with show lists enabled' do
+      profiles_with_show_lists_enabled = TwitterProfile.with_show_lists_enabled
+      profiles_with_show_lists_enabled.should == [TwitterProfile.find_by_twitter_id(100), TwitterProfile.find_by_twitter_id(101)]
     end
   end
 end

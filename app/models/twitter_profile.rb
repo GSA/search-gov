@@ -20,6 +20,20 @@ class TwitterProfile < ActiveRecord::Base
     "http://twitter.com/#{screen_name}"
   end
 
+  def self.affiliate_twitter_ids
+    TwitterProfile.joins(:affiliate_twitter_settings).
+        select('distinct twitter_profiles.twitter_id').
+        map(&:twitter_id)
+  end
+
+  def self.with_show_lists_enabled(limit = 15)
+    TwitterProfile.joins(:affiliate_twitter_settings).
+        select('distinct twitter_profiles.*').
+        where('affiliate_twitter_settings.show_lists = 1').
+        order('twitter_profiles.updated_at asc').
+        limit(limit)
+  end
+
   private
 
   def get_twitter_user
