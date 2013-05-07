@@ -208,6 +208,22 @@ describe "searches/index.html.haml" do
           rendered.should_not contain("BW Research Service")
           rendered.should_not contain("Some Poor Research Service")
         end
+
+        context 'when the affiliate locale is es' do
+          before do
+            I18n.locale = :es
+          end
+
+          it 'should localize the header' do
+            render
+            rendered.should contain(" Trabajos en SNA (en inglés)")
+          end
+
+          after do
+            I18n.locale = I18n.default_locale
+          end
+
+        end
       end
 
       context 'when there is a department associated with the affiliate' do
