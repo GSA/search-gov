@@ -629,7 +629,7 @@ Feature: Affiliate Search
       | All Posts | http://usasearch.howto.gov/all.atom | true         | false           |
     And feed "All Posts" has the following news items:
       | link                                                | title      | guid  | published_ago | description                       |
-      | http://usasearch.howto.gov/tagged/releases/ | First item | uuid1 | day           | item First news item for the feed |
+      | http://usasearch.howto.gov/help-desk.html | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
     And I fill in "query" with "social media"
     And I press "Search"
