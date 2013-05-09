@@ -622,16 +622,16 @@ Feature: Affiliate Search
 
   Scenario: Searching a domain with Bing results that match a specific news item
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains             |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | usasearch.howto.gov |
+      | display_name | name    | contact_email | contact_name | domains        |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name      | url                                 | is_navigable | shown_in_govbox |
-      | All Posts | http://usasearch.howto.gov/all.atom | true         | false           |
-    And feed "All Posts" has the following news items:
-      | link                                                | title      | guid  | published_ago | description                       |
-      | http://usasearch.howto.gov/help-desk | First item | uuid1 | day           | item First news item for the feed |
+      | name  | url                                  | is_navigable | shown_in_govbox |
+      | Press | http://www.whitehouse.gov/feed/press | true         | false           |
+    And feed "Press" has the following news items:
+      | link                                                                                                       | title      | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/the-press-office/2013/05/05/remarks-president-ohio-state-university-commencement | First item | uuid1 | day           | item First news item for the feed |
     When I am on bar.gov's search page
-    And I fill in "query" with "social media"
+    And I fill in "query" with "Commencement Address at The Ohio State University"
     And I press "Search"
     Then I should see "1 day ago"
 

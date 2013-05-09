@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503210333) do
+ActiveRecord::Schema.define(:version => 20130509143907) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20130503210333) do
     t.string   "display_name",                                                                        :null => false
     t.string   "search_results_page_title",                                                           :null => false
     t.string   "staged_search_results_page_title",                                                    :null => false
-    t.boolean  "exclude_webtrends",                                               :default => false,  :null => false
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"

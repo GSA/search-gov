@@ -9,11 +9,6 @@ describe "layouts/application.html.haml" do
   end
 
   context "when page is displayed" do
-    it "should should show webtrends javascript" do
-      render
-      rendered.should have_selector("script[src='/javascripts/webtrends_english.js'][type='text/javascript']")
-    end
-
     it "should define the SAYT url" do
       render
       rendered.should contain(/var usagov_sayt_url =/)
@@ -29,11 +24,6 @@ describe "layouts/application.html.haml" do
       render
       rendered.should have_selector("link[href^='/favicon_en.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
     end
-
-    it "should show the English version of the webtrends javascript" do
-      render
-      rendered.should have_selector("script[src='/javascripts/webtrends_english.js'][type='text/javascript']")
-    end
   end
 
   context "when locale is set to Spanish" do
@@ -44,11 +34,6 @@ describe "layouts/application.html.haml" do
     it "should render the Spanish version of the favicon" do
       render
       rendered.should have_selector("link[href^='/favicon_es.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
-    end
-
-    it "should show the Spanish version of the webtrends javascript" do
-      render
-      rendered.should have_selector("script[src='/javascripts/webtrends_spanish.js'][type='text/javascript']")
     end
   end
 end

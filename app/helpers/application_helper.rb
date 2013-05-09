@@ -103,22 +103,6 @@ module ApplicationHelper
     raw links
   end
 
-  def render_webtrends_code
-    if I18n.locale.to_s == 'es'
-      render :partial => 'shared/webtrends_spanish'
-    else
-      render :partial => 'shared/webtrends_english'
-    end
-  end
-
-  def render_mobile_webtrends_code
-    if I18n.locale.to_s == 'es'
-      render :partial => 'shared/webtrends_mobile_spanish'
-    else
-      render :partial => 'shared/webtrends_mobile_english'
-    end
-  end
-
   def basic_header_navigation_for(cur_user)
     links = []
     if cur_user

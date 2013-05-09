@@ -43,7 +43,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :search_results_page_title => hash[:search_results_page_title],
       :staged_search_results_page_title => hash[:staged_search_results_page_title],
       :has_staged_content => hash[:has_staged_content] || false,
-      :exclude_webtrends => hash[:exclude_webtrends] || false,
       :external_css_url => hash[:external_css_url],
       :staged_external_css_url => hash[:staged_external_css_url],
       :favicon_url => hash[:favicon_url],
@@ -192,14 +191,6 @@ Given /^the following DailySearchModuleStats exist for each day in "([^\"]*)"$/ 
                                     :module_tag => 'BWEB', :clicks => hash['total_clicks'], :impressions => hash['total_clicks'])
     end
   end
-end
-
-Then /^I should see the page with Webtrends tag$/ do
-  page.should have_selector("script[src*='/javascripts/webtrends_affiliates.js'][type='text/javascript']")
-end
-
-Then /^I should not see the page with Webtrends tag$/ do
-  page.should_not have_selector("script[src*='/javascripts/webtrends_affiliates.js'][type='text/javascript']")
 end
 
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|

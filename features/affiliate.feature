@@ -1937,24 +1937,10 @@ Feature: Affiliate clients
     And I press "Buscar"
     Then I should see "No hemos encontrado ningún resultado que contenga 'kjdfgkljdhfgkldjshfglkjdsfhg'. Intente usar otras palabras clave o sinónimos."
 
-  Scenario: Affiliate without exclude webtrends
+  Scenario: Site visitor sees both boosted result and featured collection for a given search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    When I go to aff.gov's search page
-    Then I should see the page with Webtrends tag
-
-  Scenario: Affiliate with exclude webtrends
-   Given the following Affiliates exist:
-     | display_name | name    | contact_email | contact_name | exclude_webtrends |
-     | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
-   When I go to aff.gov's search page
-   Then I should not see the page with Webtrends tag
-
-  Scenario: Site visitor sees both boosted result and featured collection for a given search
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | exclude_webtrends |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
       | title              | url                    | description                          |
       | Our Emergency Page | http://www.aff.gov/911 | Updated information on the emergency |
