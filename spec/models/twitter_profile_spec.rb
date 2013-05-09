@@ -123,7 +123,7 @@ describe TwitterProfile do
     end
   end
 
-  describe '.with_show_lists_enabled' do
+  describe '.show_lists_enabled' do
     let(:affiliate1) { affiliates(:usagov_affiliate) }
     let(:affiliate2) { affiliates(:gobiernousa_affiliate) }
 
@@ -146,7 +146,7 @@ describe TwitterProfile do
     end
 
     it 'should return affiliate profiles with show lists enabled' do
-      profiles_with_show_lists_enabled = TwitterProfile.with_show_lists_enabled
+      profiles_with_show_lists_enabled = TwitterProfile.show_lists_enabled
       profiles_with_show_lists_enabled.should == [TwitterProfile.find_by_twitter_id(100), TwitterProfile.find_by_twitter_id(101)]
     end
   end

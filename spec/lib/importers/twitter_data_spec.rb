@@ -20,7 +20,7 @@ describe TwitterData do
   describe '#refresh_lists' do
     it 'should import twitter profile lists' do
       profile = mock_model(TwitterProfile)
-      TwitterProfile.should_receive(:with_show_lists_enabled).and_return([profile])
+      TwitterProfile.stub_chain(:show_lists_enabled, :limit).and_return([profile])
       profile.should_receive(:touch)
       TwitterData.should_receive(:import_twitter_profile_lists).with(profile)
       TwitterData.refresh_lists
@@ -81,7 +81,7 @@ describe TwitterData do
     context 'when there is a list to refresh' do
       it 'should import list members and tweets' do
         list = mock_model(TwitterList)
-        TwitterList.stub_chain(:joins, :where, :order).and_return([list])
+        TwitterList.stub_chain(:active, :statuses_updated_before).and_return([list])
         list.should_receive(:update_column).with(:statuses_updated_at, a_kind_of(Time))
         TwitterData.should_receive(:import_list_members_and_tweets).with(list)
         TwitterData.refresh_lists_statuses

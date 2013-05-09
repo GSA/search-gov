@@ -43,7 +43,7 @@ module TwitterData
   end
 
   def self.refresh_lists
-    TwitterProfile.with_show_lists_enabled(GET_LISTS_RATE_LIMIT).each do |profile|
+    TwitterProfile.show_lists_enabled.limit(GET_LISTS_RATE_LIMIT).each do |profile|
       profile.touch
       import_twitter_profile_lists(profile)
     end
@@ -77,9 +77,7 @@ module TwitterData
   end
 
   def self.refresh_lists_statuses
-    TwitterList.joins(:twitter_profiles).
-        where('statuses_updated_at IS NULL OR statuses_updated_at < ?', RATE_LIMIT_RESET_WINDOW.ago).
-        order('statuses_updated_at asc').each do |list|
+    TwitterList.active.statuses_updated_before(RATE_LIMIT_RESET_WINDOW.ago).each do |list|
       list.update_column(:statuses_updated_at, Time.current)
       import_list_members_and_tweets(list)
     end

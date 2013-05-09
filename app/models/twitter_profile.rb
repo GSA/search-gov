@@ -3,7 +3,6 @@ class TwitterProfile < ActiveRecord::Base
   has_many :affiliate_twitter_settings, dependent: :destroy
   has_many :affiliates, through: :affiliate_twitter_settings
   has_and_belongs_to_many :twitter_lists
-  serialize :lists_members, Array
   validates_presence_of :screen_name
   validate :must_have_valid_screen_name, :if => :screen_name?
   validates_presence_of :twitter_id, :profile_image_url, :if => :get_twitter_user
@@ -11,6 +10,8 @@ class TwitterProfile < ActiveRecord::Base
   validates_uniqueness_of :screen_name, :case_sensitive => false
   before_validation :normalize_screen_name
   before_validation :lookup_twitter_id
+  scope :active, joins(:affiliate_twitter_settings).uniq
+  scope :show_lists_enabled, active.where('affiliate_twitter_settings.show_lists = 1').order('twitter_profiles.updated_at asc').uniq
 
   def recent
     self.tweets.recent
@@ -21,17 +22,7 @@ class TwitterProfile < ActiveRecord::Base
   end
 
   def self.affiliate_twitter_ids
-    TwitterProfile.joins(:affiliate_twitter_settings).
-        select('distinct twitter_profiles.twitter_id').
-        map(&:twitter_id)
-  end
-
-  def self.with_show_lists_enabled(limit = 15)
-    TwitterProfile.joins(:affiliate_twitter_settings).
-        select('distinct twitter_profiles.*').
-        where('affiliate_twitter_settings.show_lists = 1').
-        order('twitter_profiles.updated_at asc').
-        limit(limit)
+    active.select(:twitter_id).uniq.map(&:twitter_id)
   end
 
   private
