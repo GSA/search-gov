@@ -54,7 +54,6 @@ gem 'net-http-persistent'
 gem 'rash'
 gem 'geoip'
 gem 'us_states'
-gem 'rack-contrib'
 gem 'htmlentities'
 
 group :assets do
