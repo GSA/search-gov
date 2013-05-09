@@ -5,6 +5,6 @@
   %div{ :class => is_video ? 'mixed' : nil }
     - module_name = is_video ? 'VIDS' : 'NEWS'
     %h2= link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, @affiliate, @search.query, index, module_name, @search_vertical)
+    %h3.result-url= shorten_url(hit.instance.link)
     %h4= time_ago_in_words(hit.instance.published_at)
     %h3= news_description(hit)
-    %h3= link_with_click_tracking(h(shorten_url(hit.instance.link)), hit.instance.link, @affiliate, @search.query, index, module_name, @search_vertical)

@@ -66,24 +66,6 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def display_web_result_link (result, search, affiliate, position, vertical)
-    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, search.module_tag, vertical, "class='link-to-full-url'")
-    raw html
-  end
-
-  def display_search_within_this_site_link(result, search, affiliate)
-    return '' if affiliate.locale == "es" or !affiliate.has_multiple_domains? or (search.matching_site_limits.present? and search.matching_site_limits.any?)
-    site_limit = URI.parse(result['unescapedUrl']).host rescue nil
-    html = ''
-    site_limit.blank? ? '' : html << ' - ' << link_to('Search this site',
-                                                      search_path(params.merge(:affiliate => affiliate.name,
-                                                                               :locale => I18n.locale,
-                                                                               :query => search.query,
-                                                                               :sitelimit => site_limit)),
-                                                      :class => 'search-this-site')
-    raw html
-  end
-
   def strip_url_protocol(url)
     url.gsub(/^https?:\/\//, '')
   end
