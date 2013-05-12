@@ -961,7 +961,8 @@ Feature: Affiliate Search
     And I should see a link to "GobiernoUSA.gov" with url for "http://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos es grande!"
-    And I should see "Estados Unidos" in bold font
+    And I should see "Estados" in bold font in the twitter govbox
+    And I should see "Unidos" in bold font in the twitter govbox
 
   Scenario: Enabling and disabling the Twitter govbox
     Given the following Affiliates exist:
