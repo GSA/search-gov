@@ -1,8 +1,9 @@
 class ApiController < ApplicationController
+  DEFAULT_API_PER_PAGE = 10.freeze
   before_filter :load_affiliate
 
   def search
-    @search_options = search_options_from_params(@affiliate, params).merge(:format => params[:format], :index => params[:index])
+    @search_options = search_options_from_params(@affiliate, params).merge(format: params[:format], index: params[:index], per_page: DEFAULT_API_PER_PAGE)
     @search = ApiSearch.search(@search_options)
     respond_to do |format|
       format.xml { render :xml => @search }

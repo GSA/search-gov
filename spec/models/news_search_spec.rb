@@ -102,6 +102,11 @@ describe NewsSearch do
       end
     end
 
+    it 'should not overwrite per_page option' do
+      news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, per_page: '15')
+      news_search.per_page.should == 15
+    end
+
     context 'when locale is set to :es' do
       before(:all) { I18n.locale = :es }
 
@@ -180,10 +185,20 @@ describe NewsSearch do
     context "when a valid video RSS feed is specified" do
       let(:feed) { affiliate.rss_feeds.create!(:name => 'Video', :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } }) }
 
-      it "should set per_page to 21" do
-        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 21, nil, nil, nil, false)
-        search.run.should be_true
+      context 'when per_page option is not set' do
+        it "should set per_page to 20" do
+          search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
+          NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 20, nil, nil, nil, false)
+          search.run.should be_true
+        end
+      end
+
+      context 'when per_page option is set' do
+        it 'should not change the initial per_page value' do
+          search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
+          NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 15, nil, nil, nil, false)
+          search.run.should be_true
+        end
       end
     end
 
@@ -229,6 +244,23 @@ describe NewsSearch do
         search.run.should be_true
       end
     end
+
+    context 'when response is present' do
+      it 'should assign the correct start and end record' do
+        feed = affiliate.rss_feeds.first
+        search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
+        response = mock('response', total: 17, facets: [])
+        hits = [mock('hit1'), mock('hit2')]
+        response.stub_chain(:hits, :collect).and_return(hits)
+        NewsItem.should_receive(:search_for).
+            with('element', [feed], { since: nil, until: nil }, 2, 15, nil, nil, nil, false).
+            and_return(response)
+
+        search.run
+        search.startrecord.should == 16
+        search.endrecord.should == 17
+      end
+    end
   end
 
   describe "#cache_key" do
@@ -237,8 +269,8 @@ describe NewsSearch do
     let(:since_a_week_ago) { Date.current.advance(weeks: -1).to_s }
 
     it "should output a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters" do
-      NewsSearch.new(options.merge(tbs: 'w', channel: feed.id, page: 2)).cache_key.should == "#{affiliate.id}:element:#{feed.id}:#{since_a_week_ago}:2:21"
-      NewsSearch.new(options.merge(channel: feed.id)).cache_key.should == "#{affiliate.id}:element:#{feed.id}::1:21"
+      NewsSearch.new(options.merge(tbs: 'w', channel: feed.id, page: 2, per_page: 21)).cache_key.should == "#{affiliate.id}:element:#{feed.id}:#{since_a_week_ago}:2:21"
+      NewsSearch.new(options.merge(channel: feed.id)).cache_key.should == "#{affiliate.id}:element:#{feed.id}::1:20"
       NewsSearch.new(options.merge(tbs: 'w')).cache_key.should == "#{affiliate.id}:element::#{since_a_week_ago}:1:10"
       NewsSearch.new(options.merge(since_date: '10/1/2012', until_date: '10/31/2012')).cache_key.should == "#{affiliate.id}:element::2012-10-01..2012-10-31:1:10"
     end

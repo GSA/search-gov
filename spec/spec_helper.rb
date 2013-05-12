@@ -94,7 +94,7 @@ RSpec.configure do |config|
     stubs.get("#{common}#{hl}query=%28english%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_result] }
 
     page2_6results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/page2_6results.json")
-    stubs.get("#{common}#{hl}query=%28fewer%29+%28site%3Anonsense.gov%29&web.offset=11") { [200, {}, page2_6results] }
+    stubs.get("#{common}#{hl}query=%28fewer%29+%28site%3Anonsense.gov%29&web.offset=10") { [200, {}, page2_6results] }
 
     total_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/total_no_results.json")
     stubs.get("#{common}#{hl}query=total_no_results") { [200, {}, total_no_results] }

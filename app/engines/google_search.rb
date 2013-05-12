@@ -7,6 +7,9 @@ class GoogleSearch < SearchEngine
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
+  DEFAULT_START = 1.freeze
+
+  attr_reader :start
 
   def initialize(options = {})
     super(options) do |search_engine|
@@ -15,6 +18,7 @@ class GoogleSearch < SearchEngine
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end
+    @start = @offset + 1
   end
 
   protected
@@ -29,7 +33,7 @@ class GoogleSearch < SearchEngine
       lr: language,
       quotaUser: 'USASearch'
     }
-    params_hash.merge!(start: offset) unless offset == DEFAULT_OFFSET
+    params_hash.merge!(start: @start) unless @start == DEFAULT_START
     params_hash
   end
 

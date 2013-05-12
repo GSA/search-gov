@@ -129,8 +129,9 @@ Feature: Affiliate Search
     When there are 30 video news items for "Videos"
     And I am on bar.gov's search page
     And I follow "Videos"
+    Then show me the page
     Then I should see "32 results"
-    And I should see 21 video news results
+    And I should see 20 video news results
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "first item"
@@ -156,7 +157,7 @@ Feature: Affiliate Search
 
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see 21 video news results
+    And I should see 20 video news results
     And I should see an image with src "http://i.ytimg.com/vi/R2RWscJM97U/2.jpg"
     And I should see yesterday's date in the English search results
 

@@ -28,7 +28,8 @@ class Search
     @page = options[:page].to_i rescue DEFAULT_PAGE
     @page = DEFAULT_PAGE unless @page >= DEFAULT_PAGE
 
-    @per_page = DEFAULT_PER_PAGE
+    @per_page = options[:per_page].to_i rescue DEFAULT_PER_PAGE
+    @per_page = DEFAULT_PER_PAGE unless @per_page >= DEFAULT_PER_PAGE
 
     @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i

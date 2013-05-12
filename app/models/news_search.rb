@@ -1,6 +1,5 @@
 class NewsSearch < Search
-  DEFAULT_PER_PAGE = 10
-  DEFAULT_VIDEO_PER_PAGE = 21
+  DEFAULT_VIDEO_PER_PAGE = 20.freeze
   attr_reader :rss_feed,
               :hits,
               :tbs,
@@ -41,7 +40,7 @@ class NewsSearch < Search
     @hits, @total = [], 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
     @sort_by_relevance = options[:sort_by] == 'r'
-    assign_per_page
+    @per_page = DEFAULT_VIDEO_PER_PAGE if @rss_feed && @rss_feed.is_video? && options[:per_page].blank?
   end
 
   def search
@@ -66,7 +65,7 @@ class NewsSearch < Search
       @facets = response.facets
       @results = paginate(process_results(response))
       @hits = response.hits(:verify => true)
-      @startrecord = ((@page - 1) * 10) + 1
+      @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       assign_module_tag
     end
@@ -82,10 +81,6 @@ class NewsSearch < Search
 
   def navigable_feeds
     @affiliate.rss_feeds.navigable_only
-  end
-
-  def assign_per_page
-    @per_page = @rss_feed && @rss_feed.is_video? ? DEFAULT_VIDEO_PER_PAGE : DEFAULT_PER_PAGE
   end
 
   def process_results(response)

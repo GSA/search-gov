@@ -1,6 +1,7 @@
 class VideoNewsSearch < NewsSearch
   def initialize(options = {})
     super(options)
+    @per_page = DEFAULT_VIDEO_PER_PAGE if options[:per_page].blank?
   end
 
   protected
@@ -15,9 +16,5 @@ class VideoNewsSearch < NewsSearch
 
   def navigable_feeds
     @affiliate.rss_feeds.videos.navigable_only
-  end
-
-  def assign_per_page
-    @per_page = DEFAULT_VIDEO_PER_PAGE
   end
 end

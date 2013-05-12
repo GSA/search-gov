@@ -6,6 +6,10 @@ describe GoogleWebSearch do
   it_behaves_like "a web search engine"
 
   describe ".new for GoogleWebSearch" do
+    it 'should assign start' do
+      GoogleWebSearch.new(query: 'gov', offset: 15).start.should == 16
+    end
+
     context 'when only required search params are passed in' do
       let(:minimum_search) { GoogleWebSearch.new(query: "taxes") }
       it 'should set appropriate defaults' do

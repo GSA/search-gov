@@ -2,7 +2,7 @@ class SearchEngine
   class SearchError < RuntimeError;
   end
 
-  DEFAULT_OFFSET = 1
+  DEFAULT_OFFSET = 0.freeze
 
   attr_accessor :query,
                 :offset,
