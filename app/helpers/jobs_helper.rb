@@ -39,11 +39,11 @@ module JobsHelper
   end
 
   def agency_jobs_link(search)
-    title = 'All federal job openings'
+    title = t(:see_all_federal_job_openings)
     url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
     agency = search.affiliate.agency
     if agency.present?
-      title = "See all #{agency.abbreviation || agency.name} job openings"
+      title = "#{t :see_all_agency_job_openings, agency: agency.abbreviation || agency.name}"
       url = url_for_agency_jobs(agency, search.jobs.first.id)
     end
     job_link_with_click_tracking title, url, search.affiliate, search.query, agency_jobs_link_index = -1, @search_vertical

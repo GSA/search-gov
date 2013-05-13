@@ -185,8 +185,20 @@ describe "searches/index.html.haml" do
         rendered.should contain("Apply by October 14, 2023")
 
         rendered.should have_selector(:a,
-                                      content: 'All federal job openings',
+                                      content: 'See all federal job openings',
                                       href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
+      end
+
+      context 'when affiliate locale is es' do
+        before { I18n.locale = :es }
+        after { I18n.locale = I18n.default_locale }
+
+        it 'should show links with Spanish translations' do
+          render
+          rendered.should have_selector(:a,
+                                        content: 'Vea todos los trabajos en el Gobierno',
+                                        href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
+        end
       end
 
       context 'when there is an agency associated with the affiliate' do
