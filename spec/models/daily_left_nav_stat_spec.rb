@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DailyLeftNavStat do
-  fixtures :affiliates
+  fixtures :affiliates, :rss_feed_urls
   before(:each) do
     @valid_attributes = {
       :affiliate => affiliates(:power_affiliate).name,
@@ -86,8 +86,8 @@ describe DailyLeftNavStat do
                                                        :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/' } })
         col2 = @affiliate.document_collections.create!(:name => "Col 2",
                                                        :url_prefixes_attributes => { '0' => { :prefix => 'http://www.agency.gov/' } })
-        rss1 = @affiliate.rss_feeds.create!(:name => "Feed 1", :rss_feed_urls_attributes => { '0' => { :url => 'http://www.whitehouse.gov/feed/blog/white-house' } })
-        rss2 = @affiliate.rss_feeds.create!(:name => "Feed 2", :rss_feed_urls_attributes => { '0' => { :url => 'http://www.whitehouse.gov/feed/blog/white-house' } })
+        rss1 = @affiliate.rss_feeds.create!(:name => "Feed 1", rss_feed_urls: [rss_feed_urls(:white_house_blog_url)])
+        rss2 = @affiliate.rss_feeds.create!(:name => "Feed 2", rss_feed_urls: [rss_feed_urls(:white_house_blog_url)])
         DailyLeftNavStat.create!(:affiliate => @affiliate.name, :day => @date1, :search_type => "/search", :total => 999)
         DailyLeftNavStat.create!(:affiliate => @affiliate.name, :day => @date2, :search_type => "/search", :total => 1000)
         DailyLeftNavStat.create!(:affiliate => @affiliate.name, :day => @date2, :search_type => "/search/images", :total => 100)

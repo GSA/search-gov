@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GovboxSet do
-  fixtures :affiliates, :agencies
+  fixtures :affiliates, :agencies, :rss_feed_urls, :rss_feeds
 
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
@@ -95,12 +95,23 @@ describe GovboxSet do
 
     context "when an affiliate has RSS Feeds" do
       before do
-        affiliate.rss_feeds.each { |feed| feed.update_attribute(:shown_in_govbox, true) }
+        news_feed = mock_model(RssFeed, name: 'News', is_managed?: false)
+        blog_feed = mock_model(RssFeed, name: 'Blog', is_managed?: false)
+        video_feed = mock_model(RssFeed, name: 'Videos', is_managed?: true)
+        govbox_enabled_feeds = [news_feed, blog_feed, video_feed]
+        affiliate.stub_chain(:rss_feeds, :includes, :govbox_enabled, :to_a).and_return govbox_enabled_feeds
         @non_video_results = mock('non video results', :total => 3)
-        NewsItem.should_receive(:search_for).with('foo', affiliate.rss_feeds.govbox_enabled.non_videos.to_a, a_kind_of(Time), 1).and_return(@non_video_results)
+        NewsItem.should_receive(:search_for).
+            with('foo', [news_feed, blog_feed], affiliate, a_kind_of(Time), 1).
+            and_return(@non_video_results)
 
+        youtube_profile_ids = mock 'youtube profile ids'
+        affiliate.should_receive(:youtube_profile_ids).and_return youtube_profile_ids
+        youtube_feed = mock_model(RssFeed)
+        RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
         @video_results = mock('video results', :total => 3)
-        NewsItem.should_receive(:search_for).with('foo', affiliate.rss_feeds.govbox_enabled.videos.to_a, nil, 1).and_return(@video_results)
+        NewsItem.should_receive(:search_for).with('foo', [youtube_feed], affiliate, nil, 1).
+            and_return(@video_results)
       end
 
       it "should retrieve govbox-enabled non-video and video RSS feeds" do
@@ -108,7 +119,6 @@ describe GovboxSet do
         govbox_set.news_items.should == @non_video_results
         govbox_set.video_news_items.should == @video_results
       end
-
     end
 
     context "med topics" do
@@ -238,6 +248,5 @@ describe GovboxSet do
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.related_search.should == "related search results"
     end
-
   end
 end

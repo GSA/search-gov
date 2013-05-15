@@ -11,10 +11,10 @@ class VideoNewsSearch < NewsSearch
   end
 
   def assign_rss_feed(channel_id)
-    @rss_feed = @affiliate.rss_feeds.videos.find_by_id(channel_id.to_i) if channel_id.present?
+    @rss_feed = @affiliate.rss_feeds.managed.find_by_id(channel_id.to_i) if channel_id.present?
   end
 
   def navigable_feeds
-    @affiliate.rss_feeds.videos.navigable_only
+    @affiliate.rss_feeds.managed.navigable_only
   end
 end

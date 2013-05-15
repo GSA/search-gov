@@ -44,7 +44,7 @@ class WebResultsPostProcessor
 
   def build_news_item_hash_from_search(query)
     news_item_hash = {}
-    news_items_overrides = NewsItem.search_for(query, @affiliate.rss_feeds)
+    news_items_overrides = NewsItem.search_for(query, @affiliate.rss_feeds, @affiliate)
     if news_items_overrides and news_items_overrides.total > 0
       news_items_overrides.each_hit_with_result do |news_item_hit, news_item_result|
         news_item_hash[news_item_result.link] = news_item_hit

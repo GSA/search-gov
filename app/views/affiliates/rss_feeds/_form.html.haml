@@ -17,8 +17,8 @@
         - unless form.object.is_managed?
           %th= link_to('+', new_url_fields_affiliate_rss_feeds_path(@affiliate), :remote => true, :id => 'add_rss_feed_url', :class => 'add-icon', :title => 'Add RSS feed URL')
       - form.object.rss_feed_urls.build unless form.object.is_managed?
-      - form.object.rss_feed_urls.each_with_index do |rss_feed_url, index|
-        = form.fields_for :rss_feed_urls, rss_feed_url do |url_form|
+      - rss_feed_urls_for(form.object).each_with_index do |rss_feed_url, index|
+        = form.fields_for :rss_feed_urls, rss_feed_url, include_id: false do |url_form|
           = render 'url_fields', :f => url_form, :is_managed => form.object.is_managed?, :index => index
 - if form.object.is_managed?
   %p.tips

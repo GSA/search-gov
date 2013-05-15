@@ -38,12 +38,13 @@ describe Affiliate do
     it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { should have_many(:features) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
+    it { should have_many(:rss_feed_urls).through :rss_feeds }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:excluded_domains).dependent(:destroy) }
     it { should have_many(:indexed_domains).dependent(:destroy) }
     it { should have_many(:facebook_profiles).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
-    it { should have_many(:youtube_profiles).dependent(:destroy) }
+    it { should have_and_belong_to_many :youtube_profiles }
     it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { should have_many :twitter_profiles }
     it { should belong_to :agency }
@@ -458,19 +459,6 @@ describe Affiliate do
         Affiliate.find(affiliate.id).staged_header.squish.should == html_without_comments.squish
         Affiliate.find(affiliate.id).staged_footer.squish.should == html_without_comments.squish
       end
-    end
-
-    it "should ignore rss_feeds_attributes with blank name or blank rss_feed_urls_attributes" do
-      rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-      HttpConnection.should_receive(:get).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
-
-      rss_feeds_attributes = { '0' => { :name => '', :rss_feed_urls_attributes => { '0' => { :url => '' } } },
-                               '1' => { :name => 'Blog', :rss_feed_urls_attributes => { '0' => { :url => 'http://usasearch.howto.gov/rss' } } } }
-      affiliate = Affiliate.create!(:display_name => 'site with blank RSS Feed')
-      affiliate.update_attributes(:rss_feeds_attributes => rss_feeds_attributes).should be_true
-      affiliate.rss_feeds.count.should == 1
-      affiliate.rss_feeds.first.name.should == 'Blog'
-      affiliate.rss_feeds.first.rss_feed_urls.first.url.should == 'http://usasearch.howto.gov/rss'
     end
   end
 
@@ -2274,29 +2262,28 @@ describe Affiliate do
 
     context "when the home page has alternate links to an rss feed" do
       before do
-        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html"))
-        Nokogiri::HTML::Document.stub!(:parse).and_return doc
+        doc = File.read "#{Rails.root}/spec/fixtures/html/usa_gov/site_index.html"
+        @affiliate.should_receive(:open).at_least(:once).with('http://usa.gov').and_return doc
         HttpConnection.stub(:get).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
       end
 
       it "should add the feed to the affiliate's rss feeds" do
         @affiliate.rss_feeds.size.should == 0
         @affiliate.autodiscover_rss_feeds
-        @affiliate.reload
-        @affiliate.rss_feeds.size.should == 2
+        @affiliate.rss_feeds(true).size.should == 2
       end
 
       it "should not re-fetch the home page content if it's already been fetched" do
         @affiliate.autodiscover_rss_feeds
-        Nokogiri::HTML::Document.should_not_receive(:parse)
+        @affiliate.should_not_receive(:open)
         @affiliate.autodiscover_rss_feeds
       end
     end
 
     context "when the home page does not have links to an rss feed" do
       before do
-        doc = Nokogiri::HTML(open(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html"))
-        Nokogiri::HTML::Document.stub!(:parse).and_return doc
+        doc = File.read "#{Rails.root}/spec/fixtures/html/page_with_no_links.html"
+        @affiliate.should_receive(:open).and_return doc
       end
 
       it "should not create any rss feeds" do
@@ -2405,7 +2392,7 @@ describe Affiliate do
           case arg
             when %r[http://gdata.youtube.com/feeds/api/users/.+]
             File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
-          when %r[^http://gdata.youtube.com/feeds/base/videos\?]
+          when %r[^http://gdata.youtube.com/feeds/api/videos\?]
             File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           end
         end
@@ -2426,7 +2413,7 @@ describe Affiliate do
       end
 
       it "should update the youtube profiles with all the youtube handles found on the page" do
-        @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse1", "whitehouse2"]
+        @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse1 whitehouse2)
       end
 
       context "when there are existing youtube handles" do
@@ -2437,13 +2424,14 @@ describe Affiliate do
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.reload
-          @affiliate.youtube_profiles.collect(&:username).should == ["whitehouse1", "whitehouse2", "whitehouse_test"]
+          @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse1 whitehouse2 whitehouse_test)
         end
       end
     end
 
     context "when the page has no valid social media links" do
       before do
+        @affiliate.youtube_profiles.destroy_all
         page_with_bad_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_bad_social_media_urls.html')
         @affiliate.should_receive(:open).and_return(page_with_bad_social_media_urls)
         @affiliate.autodiscover_social_media

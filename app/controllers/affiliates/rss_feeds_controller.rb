@@ -4,43 +4,46 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
   before_filter :setup_rss_feed, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @title = 'RSS Feeds - '
-    @rss_feeds = @affiliate.rss_feeds.paginate(:per_page => 10, :page => params[:page])
+    @rss_feeds = @affiliate.rss_feeds.paginate(per_page: 10, page: params[:page])
   end
 
   def new
-    @title = 'Add a new RSS Feed - '
     @rss_feed = @affiliate.rss_feeds.build
   end
 
   def create
-    @rss_feed = @affiliate.rss_feeds.build(params[:rss_feed])
-    if @rss_feed.save
-      redirect_to [@affiliate, @rss_feed], :flash => { :success => 'RSS feed successfully created.' }
-    else
-      render :action => :new
+    RssFeed.transaction do
+      @rss_feed = @affiliate.rss_feeds.build(name: params[:rss_feed][:name])
+      find_or_initialize_rss_feed_urls(@rss_feed, params[:rss_feed][:rss_feed_urls_attributes])
+      if @rss_feed.save
+        redirect_to [@affiliate, @rss_feed], flash: { success: 'RSS feed successfully created.' }
+      else
+        render action: :new
+      end
     end
   end
 
   def edit
-    @title = 'Edit RSS Feed - '
   end
 
   def update
-    if @rss_feed.update_attributes(params[:rss_feed])
-      redirect_to [@affiliate, @rss_feed], :flash => { :success => 'RSS feed successfully updated.' }
-    else
-      render :action => :edit
+    RssFeed.transaction do
+      @rss_feed.name = params[:rss_feed][:name]
+      find_or_initialize_rss_feed_urls(@rss_feed, params[:rss_feed][:rss_feed_urls_attributes])
+      if @rss_feed.save
+        redirect_to [@affiliate, @rss_feed], flash: { success: 'RSS feed successfully updated.' }
+      else
+        render action: :edit
+      end
     end
   end
 
   def show
-    @title = "RSS Feed - "
   end
 
   def destroy
     @rss_feed.destroy
-    redirect_to affiliate_rss_feeds_path(@affiliate), :flash => { :success => 'RSS feed successfully deleted.' }
+    redirect_to affiliate_rss_feeds_path(@affiliate), flash: { success: 'RSS feed successfully deleted.' }
   end
 
   def new_url_fields

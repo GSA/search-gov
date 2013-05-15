@@ -21,7 +21,8 @@ describe "Twitter rake tasks" do
       end
 
       it 'should start a continuous worker' do
-        ContinuousWorker.should_receive(:start)
+        ContinuousWorker.stub(:start).and_yield
+        TwitterData.should_receive :refresh_lists
         @rake[task_name].invoke
       end
     end
@@ -36,7 +37,8 @@ describe "Twitter rake tasks" do
       end
 
       it 'should start a continuous worker' do
-        ContinuousWorker.should_receive(:start)
+        ContinuousWorker.stub(:start).and_yield
+        TwitterData.should_receive :refresh_lists_statuses
         @rake[task_name].invoke
       end
     end

@@ -41,9 +41,9 @@ namespace :deploy do
     run "ln -s #{shared_path}/cache #{release_path}/tmp/cache"
   end
 
-  task :restart_twitter_tasks, :roles => :twitter do
-    run "/home/search/scripts/stop_twitter_tasks"
-    run "/home/search/scripts/start_twitter_tasks"
+  task :restart_rake_tasks, :roles => :daemon do
+    run "/home/search/scripts/stop_rake_tasks"
+    run "/home/search/scripts/start_rake_tasks"
   end
 end
 

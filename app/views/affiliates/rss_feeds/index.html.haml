@@ -1,3 +1,4 @@
+= content_for :title, 'RSS Feeds - '
 .rss-feeds
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "RSS"])
   .column-2
@@ -29,7 +30,7 @@
                 %td.name= link_to rss_feed.name, [@affiliate, rss_feed]
                 %td.url
                   %ul
-                    - rss_feed.rss_feed_urls.each do |rss_feed_url|
+                    - rss_feed_urls_for(rss_feed).each do |rss_feed_url|
                       %li= link_to shorten_url(rss_feed_url.url, 35), rss_feed_url.url, :title => rss_feed_url.url
                 %td.actions
                   = link_to("Preview", news_search_url(:protocol => 'http', :affiliate => @affiliate.name, :channel => rss_feed.id), :target => '_blank')

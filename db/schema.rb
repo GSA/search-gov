@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521024004) do
+ActiveRecord::Schema.define(:version => 20130521192754) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -123,6 +123,13 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
 
   add_index "affiliates_users", ["affiliate_id", "user_id"], :name => "index_affiliates_users_on_affiliate_id_and_user_id", :unique => true
   add_index "affiliates_users", ["user_id"], :name => "index_affiliates_users_on_user_id"
+
+  create_table "affiliates_youtube_profiles", :id => false, :force => true do |t|
+    t.integer "affiliate_id"
+    t.integer "youtube_profile_id"
+  end
+
+  add_index "affiliates_youtube_profiles", ["affiliate_id", "youtube_profile_id"], :name => "affiliate_id_youtube_profile_id", :unique => true
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -521,6 +528,26 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
   add_index "indexed_domains", ["affiliate_id", "domain"], :name => "index_indexed_domains_on_affiliate_id_and_domain", :unique => true
   add_index "indexed_domains", ["domain"], :name => "index_indexed_domains_on_domain"
 
+  create_table "legacy_rss_feed_urls", :force => true do |t|
+    t.integer  "rss_feed_id",                              :null => false
+    t.string   "url",                                      :null => false
+    t.datetime "last_crawled_at"
+    t.string   "last_crawl_status", :default => "Pending", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "legacy_rss_feed_urls", ["rss_feed_id"], :name => "index_rss_feed_urls_on_rss_feed_id"
+
+  create_table "legacy_youtube_profiles", :force => true do |t|
+    t.string   "username"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "legacy_youtube_profiles", ["affiliate_id"], :name => "index_youtube_profiles_on_affiliate_id"
+
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
     t.datetime "created_at"
@@ -661,7 +688,7 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
   add_index "navigations", ["navigable_id", "navigable_type"], :name => "index_navigations_on_navigable_id_and_navigable_type"
 
   create_table "news_items", :force => true do |t|
-    t.integer  "rss_feed_id",     :null => false
+    t.integer  "rss_feed_id"
     t.string   "link",            :null => false
     t.string   "title",           :null => false
     t.string   "guid",            :null => false
@@ -677,6 +704,7 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
 
   add_index "news_items", ["link"], :name => "index_news_items_on_link"
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
+  add_index "news_items", ["rss_feed_url_id", "link"], :name => "index_news_items_on_rss_feed_url_id_and_link", :unique => true
   add_index "news_items", ["rss_feed_url_id"], :name => "index_news_items_on_rss_feed_url_id"
 
   create_table "queries_clicks_stats", :force => true do |t|
@@ -727,27 +755,36 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
   add_index "robots", ["domain"], :name => "index_robots_on_domain"
 
   create_table "rss_feed_urls", :force => true do |t|
-    t.integer  "rss_feed_id",                              :null => false
-    t.string   "url",                                      :null => false
+    t.string   "rss_feed_owner_type",                        :null => false
+    t.string   "url",                                        :null => false
     t.datetime "last_crawled_at"
-    t.string   "last_crawl_status", :default => "Pending", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "last_crawl_status",   :default => "Pending", :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
-  add_index "rss_feed_urls", ["rss_feed_id"], :name => "index_rss_feed_urls_on_rss_feed_id"
+  add_index "rss_feed_urls", ["rss_feed_owner_type", "url"], :name => "index_rss_feed_urls_on_rss_feed_owner_type_and_url", :unique => true
+
+  create_table "rss_feed_urls_rss_feeds", :id => false, :force => true do |t|
+    t.integer "rss_feed_url_id", :null => false
+    t.integer "rss_feed_id",     :null => false
+  end
+
+  add_index "rss_feed_urls_rss_feeds", ["rss_feed_id", "rss_feed_url_id"], :name => "index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id", :unique => true
 
   create_table "rss_feeds", :force => true do |t|
-    t.integer  "affiliate_id",                       :null => false
+    t.integer  "owner_id",                           :null => false
     t.string   "name",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "shown_in_govbox", :default => false, :null => false
     t.boolean  "is_managed",      :default => false, :null => false
     t.boolean  "is_video",        :default => false, :null => false
+    t.string   "owner_type",                         :null => false
   end
 
-  add_index "rss_feeds", ["affiliate_id"], :name => "index_rss_feeds_on_affiliate_id"
+  add_index "rss_feeds", ["owner_id"], :name => "index_rss_feeds_on_affiliate_id"
+  add_index "rss_feeds", ["owner_type", "owner_id"], :name => "index_rss_feeds_on_owner_type_and_owner_id"
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",                                      :null => false
@@ -938,12 +975,11 @@ ActiveRecord::Schema.define(:version => 20130521024004) do
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 
   create_table "youtube_profiles", :force => true do |t|
-    t.string   "username"
-    t.integer  "affiliate_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "username",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "youtube_profiles", ["affiliate_id"], :name => "index_youtube_profiles_on_affiliate_id"
+  add_index "youtube_profiles", ["username"], :name => "index_youtube_profiles_on_username", :unique => true
 
 end

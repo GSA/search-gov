@@ -26,14 +26,17 @@ class GovboxSet
       end
       @jobs = Jobs.search(jobs_options)
     end
-    govbox_enabled_feeds = affiliate.rss_feeds.govbox_enabled.to_a
-    @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_video? }, 13.months.ago, 1)
-    @video_news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| feed.is_video? }, nil, 1)
+    govbox_enabled_feeds = affiliate.rss_feeds.includes(:rss_feed_urls).govbox_enabled.to_a
+    @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_managed? }, affiliate, 13.months.ago, 1)
+
+    youtube_profile_ids = affiliate.youtube_profile_ids
+    video_feeds = govbox_enabled_feeds.any?(&:is_managed?) ? RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids) : []
+    @video_news_items = NewsItem.search_for(query, video_feeds, affiliate, nil, 1)
+
     @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
     affiliate_twitter_ids = affiliate.searchable_twitter_ids
     @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago) if affiliate_twitter_ids.any? and affiliate.is_twitter_govbox_enabled?
     @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
     @related_search = SaytSuggestion.related_search(query, affiliate)
   end
-
 end

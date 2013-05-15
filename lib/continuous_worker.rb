@@ -1,7 +1,7 @@
 module ContinuousWorker
   MAX_RETRIES = 3.freeze
   EXECUTE_INTERVAL = 15.minutes.freeze
-  RETRY_INTERVAL = 30.freeze
+  RETRY_INTERVAL = 5.minutes.freeze
 
   def self.start
     while true do

@@ -1,3 +1,4 @@
+= content_for :title, 'RSS Feed - '
 .show-rss-feed.rss-url-list
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "RSS Feed"])
   %h1 RSS Feed
@@ -36,7 +37,7 @@
         %th Last Crawled
         %th Status
 
-      - @rss_feed.rss_feed_urls.each do |url|
+      - rss_feed_urls_for(@rss_feed).each do |url|
         %tr{:class => cycle('even', 'odd')}
           %td= link_to strip_url_protocol(url.url), url.url, :title => url.url
           %td= url.last_crawled_at.nil? ? 'Pending' : render_date(url.last_crawled_at)

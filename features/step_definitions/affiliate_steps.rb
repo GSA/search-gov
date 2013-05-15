@@ -72,8 +72,11 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate.flickr_profiles.create!(:url => hash[:flickr_url], :profile_type => 'user', :profile_id => '1234') if hash[:flickr_url]
     affiliate.facebook_profiles.create!(:username => hash[:facebook_handle]) if hash[:facebook_handle]
     hash[:youtube_handles].split(',').each do |youtube_handle|
-      profile = affiliate.youtube_profiles.build(:username => youtube_handle)
-      profile.save!(:validate => false)
+      profile = YoutubeProfile.where(username: youtube_handle).first_or_initialize
+      profile.save!(validate: false)
+      affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists? profile
+      managed_feed = affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
+      managed_feed.update_attributes!(shown_in_govbox: true)
     end if hash[:youtube_handles]
     affiliate.twitter_profiles.create!(:screen_name => hash[:twitter_handle],
                                        :name => hash[:twitter_handle],

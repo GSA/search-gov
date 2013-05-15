@@ -25,19 +25,19 @@ Feature: Affiliate Search
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_navigable | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         | true            |
-      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        | false           |
+      | name          | url                                                | is_navigable | shown_in_govbox | is_managed |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         | true            |            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         | true            |            |
+      | Videos        |                                                    | true         | true            | true       |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        | false           |            |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                                    | is_navigable | shown_in_govbox |
-      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
-      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
+      | name           | url                                                              | is_navigable | shown_in_govbox | is_managed |
+      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         | true            |            |
+      | Spanish Videos |                                                                  | true         | true            | true       |
     And feed "Press" has the following news items:
       | link                             | title               | guid       | published_ago | multiplier | published_at | description                                | contributor   | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | day           | 1          |              | <i> item </i> First news item for the feed | president     | briefingroom | economy        |
@@ -49,7 +49,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
-    And feed "Videos" has the following news items:
+    And feed "en_agency" has the following news items:
       | link                                       | title             | guid       |  multiplier    | published_ago | description                              | contributor | publisher | subject   |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        14      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 |        1       | day           | item Second video news item for the feed | president   | memoranda | elections |
@@ -64,7 +64,7 @@ Feature: Affiliate Search
       | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Gobierno item Next news item for the feed  | foreign policy |
       | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Gobierno item Next news item for the feed  | education      |
       | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | olympics       |
-    And feed "Spanish Videos" has the following news items:
+    And feed "es_agency" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
       | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
@@ -126,7 +126,7 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see "News for 'loren' from bar site"
 
-    When there are 30 video news items for "Videos"
+    When there are 30 video news items for "en_agency"
     And I am on bar.gov's search page
     And I follow "Videos"
     Then I should see "32 results"
@@ -223,20 +223,20 @@ Feature: Affiliate Search
 
   Scenario: Searching news items using time filters
     Given the following Affiliates exist:
-      | display_name                 | name       | contact_email | contact_name | locale |
-      | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     |
-      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
+      | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
+      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_navigable | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true         | true            |
-      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false        | false           |
+      | name          | url                                                | is_navigable | shown_in_govbox | is_managed |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         | true            |            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         | true            |            |
+      | Videos        |                                                    | true         | true            | true       |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        | false           |            |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name                  | url                                                                    | is_navigable | shown_in_govbox |
-      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
-      | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                     | true         | true            |
-      | Spanish Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
+      | name                  | url                                                              | is_navigable | shown_in_govbox | is_managed |
+      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         | true            |            |
+      | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/es-photo-gallery            | true         | true            |            |
+      | Spanish Videos        |                                                                  | true         | true            | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
@@ -247,7 +247,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
-    And feed "Videos" has the following news items:
+    And feed "en_agency" has the following news items:
       | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
@@ -266,7 +266,7 @@ Feature: Affiliate Search
       | link                             | title       | guid    | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | esuuid7 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | esuuid8 | week          | item Last news item for the feed  |
-    And feed "Spanish Videos" has the following news items:
+    And feed "es_agency" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
       | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
@@ -865,17 +865,17 @@ Feature: Affiliate Search
 
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
+      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                                                  | is_navigable | shown_in_govbox |
-      | Press  | http://www.whitehouse.gov/feed/press                                 | true         | true            |
-      | Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+      | name   | url                                  | is_navigable | shown_in_govbox | is_managed |
+      | Press  | http://www.whitehouse.gov/feed/press | true         | true            |            |
+      | Videos |                                      | true         | true            | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
       | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
-    And feed "Videos" has the following news items:
+    And feed "en_agency" has the following news items:
       | link                                       | title            | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
     When I am on bar.gov's search page
@@ -896,17 +896,17 @@ Feature: Affiliate Search
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                                  | is_navigable | shown_in_govbox |
-      | Press          | http://www.whitehouse.gov/feed/press                                 | true         | true            |
-      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+      | name           | url                                  | is_navigable | shown_in_govbox | is_managed |
+      | Press          | http://www.whitehouse.gov/feed/press | true         | true            |            |
+      | Spanish Videos |                                      | true         | true            | true       |
     And feed "Press" has the following news items:
       | link                             | title               | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First Spanish item  | uuid1 | day           | item First news item for the feed |
       | http://www.whitehouse.gov/news/2 | Second Spanish item | uuid2 | day           | item Next news item for the feed  |
-    And feed "Spanish Videos" has the following news items:
+    And feed "es_agency" has the following news items:
       | link                                       | title            | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
     When I am on es.bar.gov's search page

@@ -15,7 +15,7 @@ describe ContinuousWorker do
   describe '.execute_with_retry' do
     it 'should sleep and retry 3 times before raising the error' do
       MockModule.should_receive(:process).exactly(4).times.and_raise
-      ContinuousWorker.should_receive(:sleep).exactly(3).times.with(30)
+      ContinuousWorker.should_receive(:sleep).exactly(3).times.with(300)
       lambda { ContinuousWorker.execute_with_retry { MockModule.process } }.should raise_error
     end
   end

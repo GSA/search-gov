@@ -2130,17 +2130,11 @@ Feature: Affiliate clients
     And I press "Save"
     Then I should see "Added Youtube Profile"
 
-    When I go to aff.gov's new youtube profile page
-    When I fill in "YouTube username" with "noaa"
-    And I press "Save"
-    Then I should see "Username has already been added"
-    And the "YouTube username" field should contain "noaa"
-
     When I go to the "aff site" affiliate page
     And I follow "RSS"
     And I follow "Edit"
     Then the "Name*" field should contain "Videos"
-    And the "RSS feed URL 0" field should contain "http://gdata.youtube.com/feeds/base/videos\?alt=rss&author=noaa&orderby=published"
+    And the "RSS feed URL 0" field should contain "http://gdata.youtube.com/feeds/api/videos\?alt=rss&author=noaa&orderby=published"
     When I follow "Social Media" in the page content
     Then I should see the browser page titled "Social Media"
 
@@ -2203,10 +2197,10 @@ Feature: Affiliate clients
     And I should see "Recent YouTube videos" in the page header
     And I should see "There are no social media associated with this profile."
 
-    Given feed "Videos" has the following news items:
-      | link                                                              | title       | guid  | published_ago | description    |
-      | http://www.youtube.com/watch?v=SmwR9UW0ZTg&feature=youtube_gdata  | First item  | uuid1 | day           | Video 1        |
-      | http://www.youtube.com/watch?v=k19xyGCFzmk&feature=youtube_gdata  | Second item | uuid2 | day           | Video 2        |
+    Given feed "YouTubeAgency" has the following news items:
+      | link                                                             | title       | guid  | published_ago | description |
+      | http://www.youtube.com/watch?v=SmwR9UW0ZTg&feature=youtube_gdata | First item  | uuid1 | day           | Video 1     |
+      | http://www.youtube.com/watch?v=k19xyGCFzmk&feature=youtube_gdata | Second item | uuid2 | day           | Video 2     |
     And I go to the "aff site" affiliate page
     And I follow "Social Media"
     And I follow "Recent Content"
@@ -2483,7 +2477,7 @@ Feature: Affiliate clients
       | name           | url                                                | position | shown_in_govbox |
       | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |
       | BPhoto Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true            |
-      | ZNot in GovBox | http://www.whitehouse.gov/feed/media/photo-gallery | 2        | false           |
+      | ZNot in GovBox | http://www.whitehouse.gov/feed/media/not-in-govbox | 2        | false           |
     And feed "APress" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
@@ -2493,8 +2487,8 @@ Feature: Affiliate clients
       | http://www.whitehouse.gov/news/3 | Third item | uuid3 | day           | item Next news item for the feed |
     And feed "ZNot in Govbox" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/3 | Fourth item | uuid4 | week          | item More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item More news items for the feed |
+      | http://www.whitehouse.gov/news/5 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
     And the following SAYT Suggestions exist for aff.gov:
       | phrase           |
       | some unique item |

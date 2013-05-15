@@ -1,26 +1,43 @@
 white_house_blog:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: White House Blog
+  rss_feed_urls: white_house_blog_url
 white_house_press_gallery:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: White House Press Gallery
+  rss_feed_urls: white_house_press_gallery_url
 basic:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: An Agency Feed
+  rss_feed_urls: basic_url
 managed_video:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: Videos
   is_managed: true
+  is_video: false
+youtube_feed:
+  owner: whitehouse (YoutubeProfile)
+  name: whitehouse
   is_video: true
+  rss_feed_urls: youtube_video_url, playlist_video_url
+nps_youtube_feed:
+  owner: nps (YoutubeProfile)
+  name: nps
+  is_video: true
+  rss_feed_urls: youtube_video_url, playlist_video_url
 another:
-  affiliate: :another_affiliate
+  owner: another_affiliate (Affiliate)
   name: Another Agency Feed
+  rss_feed_urls: another_url
 atom_feed:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: ICPSR Search Results
+  rss_feed_urls: atom_feed_url
 not_navigable:
-  affiliate: :basic_affiliate
+  owner: basic_affiliate (Affiliate)
   name: ICPSR Search Results
+  rss_feed_urls: not_navigable_url
 es_white_house_blog:
-  affiliate: :gobiernousa_affiliate
+  owner: gobiernousa_affiliate (Affiliate)
   name: Spanish White House Blog
+  rss_feed_urls: es_white_house_blog_url

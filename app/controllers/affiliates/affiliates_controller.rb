@@ -54,4 +54,36 @@ class Affiliates::AffiliatesController < SslController
   def default_url_options(options={})
     {}
   end
+
+  def build_rss_feeds(attributes)
+    rss_feeds_attributes = attributes || {}
+    rss_feeds_attributes.each_value do |rss_feed_attributes|
+      name = rss_feed_attributes[:name].strip
+      next if name.blank?
+      rss_feed = @affiliate.rss_feeds.build(name: name)
+      find_or_initialize_rss_feed_urls(rss_feed, rss_feed_attributes[:rss_feed_urls_attributes])
+    end
+  end
+
+  def find_or_initialize_rss_feed_urls(rss_feed, attributes)
+    existing_rss_feed_urls = []
+    new_urls = []
+
+    rss_feed_urls_attributes = attributes || {}
+    rss_feed_urls_attributes.each_value do |url_attributes|
+      url = url_attributes[:url].strip
+      next if url.blank? or url_attributes[:_destroy] == '1'
+      rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: 'Affiliate', url: url).first
+      if rss_feed_url
+        existing_rss_feed_urls << rss_feed_url
+      else
+        new_urls << url_attributes[:url]
+      end
+    end
+
+    rss_feed.rss_feed_urls = existing_rss_feed_urls
+    new_urls.each do |url|
+      rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
+    end
+  end
 end

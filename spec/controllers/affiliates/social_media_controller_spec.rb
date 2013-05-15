@@ -124,7 +124,6 @@ describe Affiliates::SocialMediaController do
       let(:profile) { mock_model(FlickrProfile, :new_record? => true) }
 
       before do
-        affiliate.update_attributes!(:is_photo_govbox_enabled => false)
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
@@ -149,65 +148,95 @@ describe Affiliates::SocialMediaController do
     context 'when adding an existing Twitter Profile' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
+      let(:profile) { mock_model(TwitterProfile, new_record?: false) }
 
       before do
-        Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
-        @profile = TwitterProfile.create!(:screen_name => 'USASearch')
-        affiliate.update_attributes!(:is_twitter_govbox_enabled => false)
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
 
-        TwitterProfile.stub_chain(:where, :first_or_create).and_return(@profile)
+        controller.should_receive(:find_or_initialize_profile).and_return(profile)
         twitter_profiles = mock('twitter profiles')
         affiliate.stub(:twitter_profiles).and_return(twitter_profiles)
-        twitter_profiles.should_receive(:exists?).with(@profile).and_return(false)
-        twitter_profiles.should_receive(:<<).with(@profile)
+        twitter_profiles.should_receive(:exists?).with(profile).and_return true
+        twitter_profiles.should_not_receive(:<<)
 
         twitter_setting = mock_model(AffiliateTwitterSetting)
         affiliate.stub_chain(:affiliate_twitter_settings, :find_by_twitter_profile_id).and_return(twitter_setting)
         twitter_setting.should_receive(:update_attributes!).with(show_lists: '1')
-        affiliate.should_receive(:update_attributes!).with(:is_twitter_govbox_enabled => true)
+        affiliate.should_receive(:update_attributes!).with(is_twitter_govbox_enabled: true)
 
         put :create,
-            :affiliate_id => affiliate.id,
+            :affiliate_id => affiliate.id.to_s,
             :profile_type => 'TwitterProfile',
             :show_lists => '1',
             :social_media_profile => { :screen_name => 'USASearch' }
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should assign_to(:profile).with(@profile) }
+      it { should assign_to(:profile).with(profile) }
       it { should set_the_flash.to(/added/i) }
       it { should redirect_to(affiliate_social_media_path(affiliate)) }
     end
 
-    context 'when adding YouTube profile' do
+    context 'when profile_type is YoutubeProfile' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
-      let(:profile) { mock_model(YoutubeProfile, :new_record? => true) }
+      let(:profile) { mock_model(YoutubeProfile) }
 
       before do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        controller.should_receive(:find_or_initialize_profile).and_return(profile)
 
-        YoutubeProfile.stub_chain(:where, :first_or_create).and_return(profile)
-        youtube_profiles = mock('youtube profiles')
-        affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
-        youtube_profiles.should_receive(:build).with('username' => 'USASearch').and_return(profile)
-        profile.should_receive(:save).and_return(true)
-
-        put :create,
-            :affiliate_id => affiliate.id,
-            :profile_type => 'YoutubeProfile',
-            :social_media_profile => { :username => 'USASearch' }
+        rss_feed = mock_model(RssFeed)
+        affiliate.stub_chain(:rss_feeds, :where, :first_or_initialize).and_return rss_feed
+        rss_feed.should_receive(:shown_in_govbox=).with true
+        rss_feed.should_receive :save!
       end
 
-      it { should assign_to(:affiliate).with(affiliate) }
-      it { should assign_to(:profile).with(profile) }
-      it { should set_the_flash.to(/added/i) }
-      it { should redirect_to(affiliate_social_media_path(affiliate)) }
+      context 'when the profile is a new record' do
+        before do
+          profile.should_receive(:new_record?).and_return true
+          profile.should_receive(:save).and_return true
+          youtube_profiles = mock('youtube profiles')
+          affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
+          affiliate.stub_chain(:youtube_profiles, :exists?).and_return false
+          affiliate.youtube_profiles.should_receive(:<<).with(profile)
+
+          put :create,
+              :affiliate_id => affiliate.id,
+              :profile_type => 'YoutubeProfile',
+              :social_media_profile => { :username => 'USASearch' }
+        end
+
+        it { should assign_to(:affiliate).with(affiliate) }
+        it { should assign_to(:profile).with(profile) }
+        it { should set_the_flash.to(/added/i) }
+        it { should redirect_to(affiliate_social_media_path(affiliate)) }
+      end
+
+      context 'when the profile is not a new record' do
+        before do
+          profile.should_receive(:new_record?).and_return false
+          profile.should_not_receive :save
+          youtube_profiles = mock('youtube profiles')
+          affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
+          affiliate.stub_chain(:youtube_profiles, :exists?).and_return true
+          affiliate.youtube_profiles.should_not_receive(:<<)
+
+          put :create,
+              :affiliate_id => affiliate.id,
+              :profile_type => 'YoutubeProfile',
+              :social_media_profile => { :username => 'USASearch' }
+        end
+
+        it { should assign_to(:affiliate).with(affiliate) }
+        it { should assign_to(:profile).with(profile) }
+        it { should set_the_flash.to(/added/i) }
+        it { should redirect_to(affiliate_social_media_path(affiliate)) }
+      end
     end
   end
 
@@ -267,26 +296,50 @@ describe Affiliates::SocialMediaController do
       let(:current_user) { users(:affiliate_manager) }
 
       before do
-        Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
-        profile = TwitterProfile.create!(:screen_name => 'USASearch')
-        affiliate.twitter_profiles << profile
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
 
+        profile = mock_model(TwitterProfile)
         TwitterProfile.should_receive(:find).with(profile.id.to_s).and_return(profile)
         twitter_profiles = mock('twitter profiles')
         affiliate.should_receive(:twitter_profiles).and_return(twitter_profiles)
         twitter_profiles.should_receive(:delete).with(profile)
 
         delete :destroy,
-               :affiliate_id => affiliate.id,
+               :affiliate_id => affiliate.id.to_s,
                :profile_type => 'TwitterProfile',
                :id => profile.id.to_s
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
       it { should set_the_flash.to('Twitter Profile successfully deleted') }
+      it { should redirect_to(affiliate_social_media_path(affiliate)) }
+    end
+
+    context 'when deleting YoutubeProfile' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        profile = mock_model(YoutubeProfile)
+        YoutubeProfile.should_receive(:find).with(profile.id.to_s).and_return(profile)
+        youtube_profiles = mock('youtube profiles')
+        affiliate.should_receive(:youtube_profiles).and_return(youtube_profiles)
+        youtube_profiles.should_receive(:delete).with(profile)
+
+        delete :destroy,
+               :affiliate_id => affiliate.id.to_s,
+               :profile_type => 'YoutubeProfile',
+               :id => profile.id.to_s
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash.to('Youtube Profile successfully deleted') }
       it { should redirect_to(affiliate_social_media_path(affiliate)) }
     end
   end

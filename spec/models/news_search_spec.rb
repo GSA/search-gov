@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NewsSearch do
-  fixtures :affiliates, :rss_feeds, :navigations, :news_items
+  fixtures :affiliates, :rss_feed_urls, :rss_feeds, :navigations, :news_items, :youtube_profiles
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -177,18 +177,19 @@ describe NewsSearch do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', false)
+        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', false)
         search.run.should be_true
       end
     end
 
-    context "when a valid video RSS feed is specified" do
-      let(:feed) { affiliate.rss_feeds.create!(:name => 'Video', :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } }) }
+    context "when a valid managed RSS feed is specified" do
+      let(:feed) { rss_feeds(:managed_video) }
+      let(:youtube_profile_feed) { rss_feeds(:nps_youtube_feed) }
 
       context 'when per_page option is not set' do
         it "should set per_page to 20" do
           search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-          NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 20, nil, nil, nil, false)
+          NewsItem.should_receive(:search_for).with('element', [youtube_profile_feed], affiliate, { since: nil, until: nil }, 1, 20, nil, nil, nil, false)
           search.run.should be_true
         end
       end
@@ -196,7 +197,7 @@ describe NewsSearch do
       context 'when per_page option is set' do
         it 'should not change the initial per_page value' do
           search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
-          NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 15, nil, nil, nil, false)
+          NewsItem.should_receive(:search_for).with('element', [youtube_profile_feed], affiliate, { since: nil, until: nil }, 1, 15, nil, nil, nil, false)
           search.run.should be_true
         end
       end
@@ -206,18 +207,18 @@ describe NewsSearch do
       it "should search for news items from all active feeds for the affiliate" do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
         search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, { since: one_week_ago, until: nil }, 1, 10, nil, nil, nil, false)
+        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, affiliate, { since: one_week_ago, until: nil }, 1, 10, nil, nil, nil, false)
         search.run
       end
     end
 
     context 'when searching with since_date' do
       it 'should search for NewsItem with since option' do
-        feed = mock_model(RssFeed, is_video?: false)
+        feed = mock_model(RssFeed, is_managed?: false)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, since_date: '10/1/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: Time.parse('2012-10-01 00:00:00Z'), until: nil }, 1, 10, nil, nil, nil, false)
+        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: Time.parse('2012-10-01 00:00:00Z'), until: nil }, 1, 10, nil, nil, nil, false)
 
         news_search.run
       end
@@ -225,12 +226,12 @@ describe NewsSearch do
 
     context 'when searching with until_date' do
       it 'should search for NewsItem with until option' do
-        feed = mock_model(RssFeed, is_video?: false)
+        feed = mock_model(RssFeed, is_managed?: false)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
         until_ts = Time.parse('2012-10-31')
         Time.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: until_ts.utc.end_of_day }, 1, 10, nil, nil, nil, false)
+        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: until_ts.utc.end_of_day }, 1, 10, nil, nil, nil, false)
 
         news_search.run
       end
@@ -240,7 +241,7 @@ describe NewsSearch do
       it 'should pass in the sort_by param' do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject', :sort_by => 'r')
-        NewsItem.should_receive(:search_for).with('element', [feed], { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', true)
+        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', true)
         search.run.should be_true
       end
     end
@@ -253,7 +254,7 @@ describe NewsSearch do
         hits = [mock('hit1'), mock('hit2')]
         response.stub_chain(:hits, :collect).and_return(hits)
         NewsItem.should_receive(:search_for).
-            with('element', [feed], { since: nil, until: nil }, 2, 15, nil, nil, nil, false).
+            with('element', [feed], affiliate, { since: nil, until: nil }, 2, 15, nil, nil, nil, false).
             and_return(response)
 
         search.run
@@ -265,7 +266,7 @@ describe NewsSearch do
 
   describe "#cache_key" do
     let(:options) { { query: 'element', affiliate: affiliate} }
-    let(:feed) { affiliate.rss_feeds.create!(:name => 'Video', :rss_feed_urls_attributes => { '0' => { :url => 'http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse' } }) }
+    let(:feed) { rss_feeds(:managed_video) }
     let(:since_a_week_ago) { Date.current.advance(weeks: -1).to_s }
 
     it "should output a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters" do
@@ -275,5 +276,4 @@ describe NewsSearch do
       NewsSearch.new(options.merge(since_date: '10/1/2012', until_date: '10/31/2012')).cache_key.should == "#{affiliate.id}:element::2012-10-01..2012-10-31:1:10"
     end
   end
-
 end

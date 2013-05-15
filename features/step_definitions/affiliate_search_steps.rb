@@ -1,15 +1,28 @@
 Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
+    rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: 'Affiliate',
+                                    url: hash[:url]).first_or_initialize
+    rss_feed_url.assign_attributes(last_crawled_at: hash[:last_crawled_at],
+                                    last_crawl_status: hash[:last_crawl_status] ||
+                                        RssFeedUrl::PENDING_STATUS)
+    rss_feed_url.save!(validate: false)
+
     shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
-    rss_feed = affiliate.rss_feeds.new(:name => hash[:name],
-                                       :shown_in_govbox => shown_in_govbox)
-    rss_feed.rss_feed_urls.build(:url => hash[:url],
-                                 :last_crawled_at => hash[:last_crawled_at],
-                                 :last_crawl_status => hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS)
-    rss_feed.save!(validate: false)
-    rss_feed.navigation.update_attributes!(:is_active => hash[:is_navigable] || false,
-                                           :position => hash[:position] || 100)
+    is_managed = hash[:is_managed].blank? ? false : hash[:is_managed]
+
+    if is_managed
+      rss_feed = affiliate.rss_feeds.where(is_managed: true).first_or_initialize
+      rss_feed.update_attributes!(name: hash[:name],
+                                  shown_in_govbox: shown_in_govbox)
+    else
+      rss_feed = affiliate.rss_feeds.create!(name: hash[:name],
+                                             is_managed: is_managed,
+                                             shown_in_govbox: shown_in_govbox,
+                                             rss_feed_urls: [rss_feed_url])
+    end
+    rss_feed.navigation.update_attributes!(is_active: hash[:is_navigable] || false,
+                                           position: hash[:position] || 100)
   end
   NewsItem.destroy_all
 end
@@ -19,17 +32,16 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
     published_at = hash[:published_at].present? ? hash[:published_at] : nil
-    multiplier = (hash[:multiplier] || "1").to_i
-    published_at ||= hash["published_ago"].blank? ? 1.day.ago : multiplier.send(hash["published_ago"]).ago
-    rss_feed_url.news_items.create!(:rss_feed => rss_feed,
-                                    :link => hash["link"],
-                                    :title => hash["title"],
-                                    :description => hash["description"],
-                                    :guid => hash["guid"],
-                                    :published_at => published_at,
-                                    :contributor => hash["contributor"],
-                                    :publisher => hash["publisher"],
-                                    :subject => hash["subject"])
+    multiplier = (hash[:multiplier] || '1').to_i
+    published_at ||= hash['published_ago'].blank? ? 1.day.ago : multiplier.send(hash['published_ago']).ago
+    rss_feed_url.news_items.create!(link: hash['link'],
+                                    title: hash['title'],
+                                    description: hash['description'],
+                                    guid: hash['guid'],
+                                    published_at: published_at,
+                                    contributor: hash['contributor'],
+                                    publisher: hash['publisher'],
+                                    subject: hash['subject'])
   end
   Sunspot.commit
 end
@@ -41,8 +53,7 @@ Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video
   published_at = 1.week.ago
   count.to_i.times do |index|
     link_param = is_video ? {:v => "#{index}"} : {}
-    rss_feed_url.news_items.create!(:rss_feed => rss_feed,
-                                    :link => "http://aff.gov/#{now}_#{index + 1}?#{link_param.to_query}",
+    rss_feed_url.news_items.create!(:link => "http://aff.gov/#{now}_#{index + 1}?#{link_param.to_query}",
                                     :title => "news item #{index + 1} title for #{feed_name}",
                                     :description => "news item #{index + 1} description for #{feed_name}",
                                     :guid => "#{now}_#{index + 1}",

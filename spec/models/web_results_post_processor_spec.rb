@@ -45,14 +45,12 @@ describe WebResultsPostProcessor do
                          :description => "NewsItem description highlighted from Solr",
                          :published_at => DateTime.parse("2011-09-26 21:33:05"),
                          :guid => '80798 at www.whitehouse.gov',
-                         :rss_feed_id => rss_feeds(:white_house_blog).id,
                          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm',
                          :title => "Title w/o highlighting",
                          :description => "Description w/o highlighting",
                          :published_at => DateTime.parse("2011-09-26 21:33:06"),
                          :guid => '80799 at www.whitehouse.gov',
-                         :rss_feed_id => rss_feeds(:white_house_blog).id,
                          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
         Sunspot.commit
         post_processor = WebResultsPostProcessor.new('NewsItem', affiliate, results)

@@ -37,14 +37,22 @@ class NewsSearch < Search
       @rss_feeds = navigable_feeds
       @rss_feed = @rss_feeds.first if @rss_feeds.count == 1
     end
+
+    if @rss_feeds.any?(&:is_managed?) and @affiliate.youtube_profile_ids.present?
+      youtube_profile_ids = affiliate.youtube_profile_ids
+      youtube_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
+      @rss_feeds.reject!(&:is_managed?)
+      @rss_feeds.push *youtube_feeds
+    end
+
     @hits, @total = [], 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
     @sort_by_relevance = options[:sort_by] == 'r'
-    @per_page = DEFAULT_VIDEO_PER_PAGE if @rss_feed && @rss_feed.is_video? && options[:per_page].blank?
+    @per_page = DEFAULT_VIDEO_PER_PAGE if @rss_feed && @rss_feed.is_managed? && options[:per_page].blank?
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, {since: @since, until: @until}, @page, @per_page,
+    NewsItem.search_for(@query, @rss_feeds, @affiliate, {since: @since, until: @until}, @page, @per_page,
                         @contributor, @subject, @publisher, @sort_by_relevance)
   end
 
@@ -80,7 +88,7 @@ class NewsSearch < Search
   end
 
   def navigable_feeds
-    @affiliate.rss_feeds.navigable_only
+    @affiliate.rss_feeds.includes(:rss_feed_urls).navigable_only
   end
 
   def process_results(response)

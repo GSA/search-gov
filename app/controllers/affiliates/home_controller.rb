@@ -69,12 +69,14 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def create_content_sources
-    if @affiliate.update_attributes(params[:affiliate])
-      @affiliate.autodiscover
-      redirect_to get_the_code_affiliate_path(@affiliate)
-    else
-      @current_step = :content_sources
-      render :action => :content_sources
+    Affiliate.transaction do
+      if @affiliate.update_attributes(create_content_sources_params(params[:affiliate]))
+        @affiliate.autodiscover
+        redirect_to get_the_code_affiliate_path(@affiliate)
+      else
+        @current_step = :content_sources
+        render :action => :content_sources
+      end
     end
   end
 
@@ -269,5 +271,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def setup_for_results_modules_actions
     @affiliate.connections.build if @affiliate.connections.blank?
+  end
+
+  def create_content_sources_params(affiliate_params)
+    build_rss_feeds(affiliate_params[:rss_feeds_attributes])
+    affiliate_params.except(:rss_feeds_attributes)
   end
 end

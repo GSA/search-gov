@@ -14,7 +14,8 @@ class Affiliate < ActiveRecord::Base
   has_many :superfresh_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
-  has_many :rss_feeds, :order => 'rss_feeds.name ASC, rss_feeds.id ASC', :dependent => :destroy
+  has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC', dependent: :destroy
+  has_many :rss_feed_urls, through: :rss_feeds, uniq: true
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
   has_many :site_domains, :dependent => :destroy, :order => 'domain ASC'
@@ -29,7 +30,7 @@ class Affiliate < ActiveRecord::Base
   has_many :twitter_profiles, through: :affiliate_twitter_settings
   has_many :flickr_profiles, :dependent => :destroy
   has_many :facebook_profiles, :dependent => :destroy
-  has_many :youtube_profiles, :dependent => :destroy
+  has_and_belongs_to_many :youtube_profiles
   has_one :image_search_label, :dependent => :destroy
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
   belongs_to :agency
@@ -111,12 +112,12 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
-  accepts_nested_attributes_for :rss_feeds, :reject_if => proc { |a| a[:name].blank? and a[:rss_feed_urls_attributes].present? && a[:rss_feed_urls_attributes]['0'][:url].blank? }
+  accepts_nested_attributes_for :rss_feeds
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
   accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
-  accepts_nested_attributes_for :youtube_profiles, :allow_destroy => true
+  #accepts_nested_attributes_for :youtube_profiles, :allow_destroy => true
   accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
   serialize :dublin_core_mappings, Hash
 
@@ -520,13 +521,10 @@ class Affiliate < ActiveRecord::Base
     begin
       @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
       @home_page_doc.xpath("//link[@rel='alternate']").each do |link_element|
-        rss_feed_url = link_element.attribute("href").value
-        title = link_element.attribute("title").nil? ? rss_feed_url : link_element.attribute("title").value
-        if rss_feed_url
-          rss_feed = self.rss_feeds.new(:name => title)
-          rss_feed.rss_feed_urls << RssFeedUrl.new(:url => rss_feed_url)
-          rss_feed.save
-        end
+        url = link_element.attribute("href").value
+        title = link_element.attribute("title").blank? ? url : link_element.attribute("title").value
+        rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: self.class.name, url: url).first_or_initialize
+        self.rss_feeds.create(name: title, rss_feed_urls: [rss_feed_url]) if rss_feed_url.valid?
       end
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering rss feeds for #{self.name}: #{e.message}")

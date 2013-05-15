@@ -202,10 +202,9 @@ describe Affiliates::HomeController do
 
       context 'when the affiliate updates successfully' do
         before do
-          affiliate_params = mock('request params', to_s: 'create content source params')
-          affiliate.should_receive(:update_attributes).with('create content source params').and_return(true)
+          affiliate.should_receive(:update_attributes).with({}).and_return(true)
           affiliate.should_receive(:autodiscover)
-          put :create_content_sources, id: affiliate.id, affiliate: affiliate_params
+          put :create_content_sources, id: affiliate.id, affiliate: {}
         end
 
         it { should assign_to(:affiliate).with(affiliate) }
@@ -214,10 +213,9 @@ describe Affiliates::HomeController do
 
       context 'when the affiliate fails to update' do
         before do
-          affiliate_params = mock('request params', to_s: 'create content source params')
-          affiliate.should_receive(:update_attributes).with('create content source params').and_return(false)
+          affiliate.should_receive(:update_attributes).with({}).and_return(false)
           affiliate.should_not_receive(:autodiscover)
-          put :create_content_sources, id: affiliate.id, affiliate: affiliate_params
+          put :create_content_sources, id: affiliate.id, affiliate: {}
         end
 
         it { should assign_to(:affiliate).with(affiliate) }

@@ -80,14 +80,14 @@ describe NavigationsHelper do
     let(:search_params) { { :query => 'gov', :affiliate => affiliate.name } }
 
     context 'when there is no active navigation' do
-      before { affiliate.stub_chain(:navigations, :active).and_return([]) }
+      before { affiliate.stub_chain(:navigations, :includes, :active).and_return([]) }
 
       specify { helper.render_navigations(affiliate, mock(WebSearch), search_params).should be_blank }
     end
 
     context 'when there are active navigations' do
       before do
-        affiliate.stub_chain(:navigations, :active).
+        affiliate.stub_chain(:navigations, :includes, :active).
             and_return([image_nav, rss_feed_nav, document_collection_nav])
       end
 
@@ -200,7 +200,7 @@ describe NavigationsHelper do
       let(:search) { mock(NewsSearch, since:nil, until: nil) }
 
       before do
-        affiliate.stub_chain(:navigations, :active).and_return(
+        affiliate.stub_chain(:navigations, :includes, :active).and_return(
             [image_nav, rss_feed_nav, document_collection_nav, another_rss_feed_nav])
         search.should_receive(:instance_of?).at_least(:once) { |arg| arg == NewsSearch }
         search.should_receive(:is_a?).at_least(:once) { |arg| arg == NewsSearch }

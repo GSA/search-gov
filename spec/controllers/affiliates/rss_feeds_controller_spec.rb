@@ -46,7 +46,6 @@ describe Affiliates::RssFeedsController do
         get :index, :affiliate_id => affiliate.id
       end
 
-      it { should assign_to(:title).with_kind_of(String) }
       it { should assign_to(:rss_feeds).with(rss_feeds_with_paginate) }
       it { should respond_with(:success) }
     end
@@ -90,7 +89,6 @@ describe Affiliates::RssFeedsController do
         get :new, :affiliate_id => affiliate.id
       end
 
-      it { should assign_to(:title).with_kind_of(String) }
       it { should assign_to(:rss_feed).with(rss_feed) }
       it { should respond_with(:success) }
     end
@@ -194,7 +192,6 @@ describe Affiliates::RssFeedsController do
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
-      it { should assign_to(:title).with_kind_of(String) }
     end
 
     context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the RSS feed" do
@@ -252,7 +249,6 @@ describe Affiliates::RssFeedsController do
         get :edit, :affiliate_id => affiliate.id, :id => rss_feed.id
       end
 
-      it { should assign_to(:title).with_kind_of(String) }
       it { should assign_to(:rss_feed).with(rss_feed) }
     end
   end
@@ -297,9 +293,9 @@ describe Affiliates::RssFeedsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
-        rss_feed.should_receive(:update_attributes).and_return(true)
+        rss_feed.should_receive(:save).and_return(true)
 
-        post :update, :affiliate_id => affiliate.id, :id => rss_feed.id, :rss_feed => { "url" => "http://somethinglese.gov/feed" }
+        post :update, :affiliate_id => affiliate.id, :id => rss_feed.id.to_s, :rss_feed => { "url" => "http://somethinglese.gov/feed" }
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
@@ -314,7 +310,7 @@ describe Affiliates::RssFeedsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
-        rss_feed.should_receive(:update_attributes).and_return(false)
+        rss_feed.should_receive(:save).and_return(false)
 
         post :update, :affiliate_id => affiliate.id, :id => rss_feed.id, :rss_feed => { "url" => "" }
       end

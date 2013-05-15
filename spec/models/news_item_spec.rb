@@ -2,7 +2,10 @@
 require 'spec_helper'
 
 describe NewsItem do
-  fixtures :affiliates, :rss_feeds, :rss_feed_urls, :news_items
+  fixtures :affiliates, :rss_feed_urls, :rss_feeds, :news_items
+
+  let(:affiliate) { affiliates(:basic_affiliate) }
+
   before do
     @valid_attributes = {
       :link => 'http://www.whitehouse.gov/latest_story.html',
@@ -10,7 +13,6 @@ describe NewsItem do
       :description => "Corps volunteers have promoted blah blah blah.",
       :published_at => DateTime.parse("2011-09-26 21:33:05"),
       :guid => '80798 at www.whitehouse.gov',
-      :rss_feed_id => rss_feeds(:white_house_blog).id,
       :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
       :contributor => "President",
       :publisher => "Briefing Room",
@@ -24,11 +26,9 @@ describe NewsItem do
     it { should validate_presence_of :description }
     it { should validate_presence_of :published_at }
     it { should validate_presence_of :guid }
-    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_id).case_insensitive }
-    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_id).case_insensitive }
-    it { should validate_presence_of :rss_feed_id }
+    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_url_id).case_insensitive }
+    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_url_id).case_insensitive }
     it { should validate_presence_of :rss_feed_url_id }
-    it { should belong_to :rss_feed }
 
     it "should create a new instance given valid attributes" do
       NewsItem.create!(@valid_attributes)
@@ -51,33 +51,38 @@ describe NewsItem do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
       @gallery = rss_feeds(:white_house_press_gallery)
-      @blog_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id, :rss_feed_id => @blog.id, :guid => "unique to feed", :published_at => 3.days.ago,
-                                    :link => "http://www.wh.gov/ns1",
-                                    :title => "Obama adopts policies similar to other policies",
-                                    :description => "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>",
-                                    :contributor => "President",
-                                    :publisher => "Briefing Room",
-                                    :subject => "Economy")
+      @blog_item = NewsItem.create!(rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id,
+                                    guid: 'unique to feed',
+                                    published_at: 3.days.ago,
+                                    link: 'http://www.wh.gov/ns1',
+                                    title: 'Obama adopts policies similar to other policies',
+                                    description: "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>",
+                                    contributor: 'President',
+                                    publisher: 'Briefing Room',
+                                    subject: 'Economy')
 
-      @gallery_item = NewsItem.create!(:rss_feed_url_id => rss_feed_urls(:white_house_press_gallery_url).id, :rss_feed_id => @gallery.id, :guid => "unique to feed", :published_at => 1.day.ago,
-                                       :link => "http://www.wh.gov/ns2", :title => "Obama adopts some more things",
-                                       :description => "<p>that is the policy.</p>",
-                                       :contributor => "President",
-                                       :publisher => "Briefing Room",
-                                       :subject => "HIV")
+      @gallery_item = NewsItem.create!(rss_feed_url: rss_feed_urls(:white_house_press_gallery_url),
+                                       guid: '`unique to feed',
+                                       published_at: 1.day.ago,
+                                       link: 'http://www.wh.gov/ns2',
+                                       title: 'Obama adopts some more things',
+                                       description: '<p>that is the policy.</p>',
+                                       contributor: 'President',
+                                       publisher: 'Briefing Room',
+                                       subject: 'HIV')
       NewsItem.reindex
       Sunspot.commit
     end
 
     it "should restrict results to the collection of RSS feeds specified" do
-      search = NewsItem.search_for("policy", [@blog])
+      search = NewsItem.search_for('policy', [@blog], affiliate)
       search.total.should == 1
       search.results.first.should == @blog_item
     end
 
     context "when DublinCore fields are passed in" do
       it "should facet and restrict results based on those criteria" do
-        search = NewsItem.search_for("policy", [@blog], nil, nil, nil, 'President', 'Economy', 'Briefing Room')
+        search = NewsItem.search_for("policy", [@blog], affiliate, nil, nil, nil, 'President', 'Economy', 'Briefing Room')
         search.total.should == 1
         search.results.first.should == @blog_item
       end
@@ -86,44 +91,37 @@ describe NewsItem do
     describe "sorting" do
       context "when sort_by_relevance param is true" do
         it 'should sort results by relevance' do
-          search = NewsItem.search_for("policy", [@blog, @gallery], nil, nil, nil, nil, nil, nil, true)
+          search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, nil, nil, nil, nil, nil, nil, true)
           search.results.first.should == @blog_item
         end
       end
 
       context "when sort_by_relevance param is false" do
         it 'should sort results by date' do
-          search = NewsItem.search_for("policy", [@blog, @gallery], nil, nil, nil, nil, nil, nil, false)
+          search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, nil, nil, nil, nil, nil, nil, false)
           search.results.first.should == @gallery_item
         end
       end
     end
 
-    context "when there are no RSS feeds passed in" do
-      before do
-        @affiliate = @blog.affiliate
-        @affiliate.rss_feeds.each { |f| f.update_attribute(:shown_in_govbox, false) }
-      end
-
-      it "should return nil" do
-        NewsItem.search_for("policy", @affiliate.rss_feeds.govbox_enabled).should be_nil
-      end
+    context "when searching with blank rss feeds" do
+      specify { NewsItem.search_for('policy', [], affiliate).should be_nil }
     end
 
     context "when the affiliate has excluded URLs defined" do
       before do
-        @blog.affiliate.excluded_urls.create!(:url => "http://www.wh.gov/ns1")
+        affiliate.excluded_urls.create!(url: 'http://www.wh.gov/ns1')
       end
 
       it "should exclude those from the results" do
-        search = NewsItem.search_for("policy", [@blog, @gallery])
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate)
         search.total.should == 1
         search.results.first.should == @gallery_item
       end
     end
 
     it "should sort by descreasing published_at" do
-      search = NewsItem.search_for("policy", [@blog, @gallery])
+      search = NewsItem.search_for("policy", [@blog, @gallery], affiliate)
       search.total.should == 2
       search.results.first.should == @gallery_item
     end
@@ -131,14 +129,14 @@ describe NewsItem do
     it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
       ActiveSupport::Notifications.should_receive(:instrument).
         with("solr_search.usasearch", hash_including(:query => hash_including(:rss_feeds => @blog.name, :model => "NewsItem", :term => "policy")))
-      NewsItem.search_for("policy", [@blog])
+      NewsItem.search_for('policy', [@blog], affiliate)
     end
 
     context "when the 'since' parameter is specified" do
       let(:since) { 2.days.ago.freeze }
 
       it "should restrict results by when news was published" do
-        search = NewsItem.search_for("policy", [@blog, @gallery], since)
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, since)
         search.total.should == 1
         search.results.first.should == @gallery_item
       end
@@ -146,7 +144,7 @@ describe NewsItem do
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
-        NewsItem.search_for("policy", [@blog, @gallery], since)
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, since)
       end
     end
 
@@ -154,7 +152,7 @@ describe NewsItem do
       let(:until_ts) { 2.days.ago.end_of_day.freeze }
 
       it 'should restrict results by when news was published' do
-        search = NewsItem.search_for("policy", [@blog, @gallery], {until: until_ts})
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, {until: until_ts})
         search.total.should == 1
         search.results.first.should == @blog_item
       end
@@ -162,7 +160,7 @@ describe NewsItem do
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
-        NewsItem.search_for("policy", [@blog, @gallery], {until: until_ts})
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {until: until_ts})
       end
     end
 
@@ -171,39 +169,46 @@ describe NewsItem do
       let(:until_ts) { 2.days.ago.end_of_day.freeze }
 
       it 'should restrict results by when news was published' do
-        search = NewsItem.search_for("policy", [@blog, @gallery], {since: since_ts, until: until_ts})
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: since_ts, until: until_ts})
         search.total.should == 1
         search.results.first.should == @blog_item
 
-        NewsItem.search_for("policy", [@blog, @gallery], {since: 1.month.ago, until: 1.week.ago}).total.should == 0
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: 1.month.ago, until: 1.week.ago}).total.should == 0
       end
 
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(since: since_ts, until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
-        NewsItem.search_for("policy", [@blog, @gallery], {since: since_ts, until: until_ts})
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: since_ts, until: until_ts})
       end
     end
 
     context "when query contains only special characters" do
       ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-        specify { NewsItem.search_for(query, [@blog, @gallery]).total.should == 2 }
+        specify { NewsItem.search_for(query, [@blog, @gallery], affiliate).total.should == 2 }
       end
 
       %w(+++science --science -+science).each do |query|
-        specify { NewsItem.search_for(query, [@blog, @gallery]).total.should == 1 }
+        specify { NewsItem.search_for(query, [@blog, @gallery], affiliate).total.should == 1 }
       end
     end
 
     context "when query is blank" do
       it "should return with all items" do
-        NewsItem.search_for('', [@blog, @gallery]).total.should == 2
+        NewsItem.search_for('', [@blog, @gallery], affiliate).total.should == 2
       end
     end
 
     context 'when since_or_date_range is an empty Hash' do
       it "should return with all items" do
-        NewsItem.search_for('', [@blog, @gallery], {}).total.should == 2
+        NewsItem.search_for('', [@blog, @gallery], affiliate, {}).total.should == 2
+      end
+    end
+
+    context 'when .search raises an error' do
+      it 'should return nil' do
+        NewsItem.should_receive(:search).and_raise(RSolr::Error::Http.new({}, {}))
+        NewsItem.search_for('', [@blog], affiliate).should be_nil
       end
     end
   end
@@ -216,7 +221,6 @@ describe NewsItem do
         :description => "Corps volunteers have promoted blah blah blah.",
         :published_at => DateTime.parse("2011-09-26 21:33:05"),
         :guid => 'some guid',
-        :rss_feed_id => rss_feeds(:white_house_blog).id,
         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
         :contributor => "President",
         :publisher => "Briefing Room",
@@ -227,13 +231,13 @@ describe NewsItem do
                                           :title => attributes[:title]+x.to_s))
       end
       NewsItem.create!(attributes.merge(:link => attributes[:link]+"1", :guid => attributes[:guid]+"other",
-                                        :title => 'ignore from another affiliate', :rss_feed_id => rss_feeds(:another).id,
-                                        :rss_feed_url_id => rss_feed_urls(:another).id))
+                                        :title => 'ignore from another affiliate',
+                                        :rss_feed_url_id => rss_feed_urls(:another_url).id))
     end
 
     it "should return :link, :title, :description, :published_at for news items belonging to that affiliate with matching urls" do
       urls = %w{http://www.whitehouse.gov/latest_story.html0 http://www.whitehouse.gov/latest_story.html1}
-      result = NewsItem.title_description_date_hash_by_link(affiliates(:basic_affiliate), urls)
+      result = NewsItem.title_description_date_hash_by_link(affiliate, urls)
       result.size.should == 2
       result['http://www.whitehouse.gov/latest_story.html0'].should be_present
       result['http://www.whitehouse.gov/latest_story.html1'].should be_present

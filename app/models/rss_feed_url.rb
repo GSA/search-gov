@@ -1,15 +1,27 @@
-require 'rss'
-
 class RssFeedUrl < ActiveRecord::Base
   include ActiveRecordExtension
   OK_STATUS = 'OK'
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
 
-  belongs_to :rss_feed
-  has_many :news_items, :order => "published_at DESC", :dependent => :destroy
-  validates_presence_of :url
-  validate :url_must_point_to_a_feed
+  attr_readonly :rss_feed_owner_type, :url
+  has_and_belongs_to_many :rss_feeds
+  has_many :news_items, order: 'published_at DESC', dependent: :destroy
+  validates_presence_of :rss_feed_owner_type, :url
+  validates_uniqueness_of :url, scope: :rss_feed_owner_type, case_sensitive: false
+  validate :url_must_point_to_a_feed, on: :create
+
+  scope :active, joins(:rss_feeds).uniq
+  scope :rss_feed_owned_by_affiliate, where(rss_feed_owner_type: Affiliate.name)
+  scope :rss_feed_owned_by_youtube_profile, where(rss_feed_owner_type: YoutubeProfile.name)
+
+  def self.refresh_affiliate_feeds
+    RssFeedUrl.rss_feed_owned_by_affiliate.active.each(&:freshen)
+  end
+
+  def freshen(ignore_older_items = true)
+    Resque.enqueue_with_priority(:high, RssFeedFetcher, id, ignore_older_items) if rss_feed_owner_type == 'Affiliate'
+  end
 
   def is_video?
     url =~ /^https?:\/\/gdata\.youtube\.com\/feeds\/.+$/i
@@ -18,7 +30,6 @@ class RssFeedUrl < ActiveRecord::Base
   private
 
   def url_must_point_to_a_feed
-    return unless changed.include?('url')
     set_http_prefix :url
     if url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
       begin

@@ -5,9 +5,11 @@ class NavigableObserver < ActiveRecord::Observer
 
   def after_create(model)
     position, is_active = model.instance_of?(ImageSearchLabel) ? IMAGE_SEARCH_LABEL_POSITION_AND_IS_ACTIVE_FLAG : DEFAULT_POSITION_AND_NOT_ACTIVE_FLAG
-    navigation = model.build_navigation(:affiliate_id => model.affiliate_id,
-                                        :position => position,
-                                        :is_active => is_active)
+    return if model.instance_of?(RssFeed) && !model.owner.instance_of?(Affiliate)
+    affiliate_id = model.instance_of?(RssFeed) ? model.owner_id : model.affiliate_id
+    navigation = model.build_navigation(affiliate_id: affiliate_id,
+                                        position: position,
+                                        is_active: is_active)
     navigation.save!
   end
 end

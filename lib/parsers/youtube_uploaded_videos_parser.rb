@@ -25,7 +25,7 @@ class YoutubeUploadedVideosParser
     url_params[:'max-results'] = MAX_RESULTS_PER_FEED
     url_params[:orderby] = 'published'
     url_params[:'start-index'] = start_index
-    "http://gdata.youtube.com/feeds/base/videos?#{url_params.to_param}".downcase
+    "http://gdata.youtube.com/feeds/api/videos?#{url_params.to_param}".downcase
   end
 
   def next_uploaded_videos_url(username, document)
