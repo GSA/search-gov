@@ -73,7 +73,7 @@ Feature: Affiliate Search
       | Some Unique item |
       | el paso term     |
     When I am on bar.gov's search page
-    And I fill in "query" with "first item"
+    And I fill in "Enter your search term" with "first item"
     And I press "Search"
     Then I should see "News for 'first item' by bar site"
     And I should not see "stale"
@@ -129,12 +129,11 @@ Feature: Affiliate Search
     When there are 30 video news items for "Videos"
     And I am on bar.gov's search page
     And I follow "Videos"
-    Then show me the page
     Then I should see "32 results"
     And I should see 20 video news results
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "first item"
+    And I fill in "Ingrese su búsqueda" with "first item"
     And I press "Buscar"
     Then I should see "Videos de 'first item' de Spanish bar site"
     And I should see "First Spanish video item" in the video rss feed govbox
@@ -702,7 +701,7 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name | domains                |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
     When I am on bar.gov's search page
-    And I fill in "query" with "president"
+    And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see at least 2 search results
     And I should not see "Search this site"
@@ -712,7 +711,7 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name | domains                | locale |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     |
     When I am on bar.gov's search page
-    And I fill in "query" with "president"
+    And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar"
     Then I should see at least 2 search results
     And I should see "Todo"
@@ -1140,7 +1139,7 @@ Feature: Affiliate Search
       | Second petition article | This is an article on death star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
     And I follow "Petitions" in the left column
-    And I fill in "query" with "'death star'"
+    And I fill in "Enter your search term" with "'death star'"
     And I press "Search"
     Then I should see a link to "This Isn't the Petition Response You're Looking For | We the ..." with url for "https://petitions.whitehouse.gov/response/isnt-petition-response-youre-looking"
     And I should see a link to "Advanced Search" in the advanced search section
