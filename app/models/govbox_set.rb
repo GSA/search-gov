@@ -7,7 +7,6 @@ class GovboxSet
               :featured_collections,
               :tweets,
               :photos,
-              :forms,
               :jobs,
               :related_search
 
@@ -34,7 +33,6 @@ class GovboxSet
     affiliate_twitter_ids = affiliate.searchable_twitter_ids
     @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago) if affiliate_twitter_ids.any? and affiliate.is_twitter_govbox_enabled?
     @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
-    @forms = Form.govbox_search_for(query, affiliate.form_agency_ids) if affiliate.form_agency_ids.present?
     @related_search = SaytSuggestion.related_search(query, affiliate)
   end
 

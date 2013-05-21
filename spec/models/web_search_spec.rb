@@ -130,7 +130,6 @@ describe WebSearch do
         @search.stub!(:has_related_searches?).and_return true
         @search.stub!(:has_featured_collections?).and_return true
         @search.stub!(:has_boosted_contents?).and_return true
-        @search.stub!(:has_forms?).and_return true
         @search.stub!(:has_news_items?).and_return true
         @search.stub!(:has_video_news_items?).and_return true
         @search.stub!(:has_tweets?).and_return true
@@ -143,7 +142,7 @@ describe WebSearch do
       end
 
       it "should log info about the query" do
-        all_modules = %w{BWEB OVER BSPEL SREL NEWS VIDS FORM BBG BOOS MEDL JOBS TWEET PHOTO}
+        all_modules = %w{BWEB OVER BSPEL SREL NEWS VIDS BBG BOOS MEDL JOBS TWEET PHOTO}
         QueryImpression.should_receive(:log).with(:web, affiliates(:basic_affiliate).name, 'government', all_modules)
         @search.run
       end

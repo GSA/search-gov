@@ -104,8 +104,6 @@ module NavigationHelpers
       recalls_path
     when /the recalls search page/
       recalls_search_path
-    when /the forms home page/
-      forms_path
     when /the preview affiliate page for "([^\"]*)"/
       preview_affiliate_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/

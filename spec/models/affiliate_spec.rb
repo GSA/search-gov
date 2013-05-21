@@ -46,7 +46,6 @@ describe Affiliate do
     it { should have_many(:youtube_profiles).dependent(:destroy) }
     it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { should have_many :twitter_profiles }
-    it { should have_and_belong_to_many :form_agencies }
     it { should belong_to :agency }
     it { should have_one(:affiliate_note).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:name) }

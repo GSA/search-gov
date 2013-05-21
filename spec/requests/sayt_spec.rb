@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'sayt' do
-  fixtures :affiliates, :form_agencies
+  fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:phrases) { ['lorem ipsum dolor sit amet', 'lorem ipsum sic transit gloria'].freeze }
@@ -43,24 +43,8 @@ describe 'sayt' do
       response.body.should == %Q{jsonp1234(#{phrases_with_section_and_label_in_json})}
     end
 
-    context 'when there are boosted contents and forms' do
+    context 'when there are boosted contents' do
       before do
-        form_agency = form_agencies(:en_uscis)
-
-        Form.create!(form_agency_id: form_agency.id, number: 'I-100', title: 'Lorem Verified Form') do |f|
-          f.file_type = 'pdf'
-          f.verified = true
-          f.landing_page_url = 'http://agency.gov/forms/i-100.html'
-          f.url = 'http://agency.gov/forms/i-100.pdf'
-        end
-        Form.create!(form_agency_id: form_agency.id, number: 'I-200', title: 'Lorem Not Verified Form') do |f|
-          f.file_type = 'pdf'
-          f.verified = false
-          f.landing_page_url = 'http://agency.gov/forms/i-200.html'
-          f.url = 'http://agency.gov/forms/i-200.pdf'
-        end
-        affiliate.form_agencies = [form_agency]
-
         BoostedContent.create!(affiliate_id: affiliate.id,
                                title: 'Lorem Boosted Content 1',
                                description: 'Boosted Content Description',
@@ -83,21 +67,15 @@ describe 'sayt' do
                                publish_start_on: Date.today)
       end
 
-      it 'should return results with SaytSuggestions, Forms and Boosted Contents' do
+      it 'should return results with SaytSuggestions and Boosted Contents' do
         get '/sayt', :name => affiliate.name, :q => 'lorem', :callback => 'jsonp1234', :extras => 'true'
         results = phrases.collect { |p| { section: 'default', label: p } }
-        results << { section: 'Recommended Forms', label: 'Lorem Verified Form (I-100)', data: 'http://agency.gov/forms/i-100.html'}
         results << { section: 'Recommended Pages', label: 'Lorem Boosted Content 1', data: 'http://agency.gov/boosted_content1.html'}
         response.body.should == %Q{jsonp1234(#{results.to_json})}
       end
 
       it 'should not return SAYT results that do not start with query' do
         get '/sayt', :name => affiliate.name, :q => 'orem', :callback => 'jsonp1234', :extras => 'true'
-        response.body.should == 'jsonp1234([])'
-      end
-
-      it 'should not return Forms that do not start with query' do
-        get '/sayt', :name => affiliate.name, :q => 'Verified', :callback => 'jsonp1234', :extras => 'true'
         response.body.should == 'jsonp1234([])'
       end
 

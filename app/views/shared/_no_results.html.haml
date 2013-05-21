@@ -18,6 +18,4 @@
         %li= t(:"no_results.browse_government_photostreams", :flickr_link => link_to(t(:"no_results.flickr_url_text"), t(:"no_results.flickr_url"))).html_safe
       - elsif recalls_search?
         %li= t(:"no_results.go_to_recalls_gov", :recalls_gov_link => link_to("Recalls.gov", "http://www.recalls.gov")).html_safe
-      - elsif forms_search?
-        %li= t(:"no_results.browse_government_forms", :government_forms_link => link_to("Government Forms", "http://www.usa.gov/Topics/Reference_Shelf/forms.shtml")).html_safe
       %li= t(:"no_results.contact_usa_gov", :contact_usa_gov_link => link_to(t(:"no_results.contact_usa_gov_url_text"), t(:"no_results.contact_usa_gov_url"))).html_safe

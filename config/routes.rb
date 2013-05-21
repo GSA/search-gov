@@ -119,10 +119,6 @@ UsasearchRails3::Application.routes.draw do
   get '/search/recalls' => 'recalls#search', :as => :recalls_search
   namespace :api do
     namespace :v1 do
-      resources :form_agencies, :only => [:show, :index], :defaults => { :format => 'json' }
-      resources :forms, :only => [:show], :defaults => { :format => 'json' } do
-        get :search, :on => :collection
-      end
       get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
     end
   end
@@ -142,8 +138,6 @@ UsasearchRails3::Application.routes.draw do
     resources :document_collections do as_routes end
     resources :url_prefixes do as_routes end
     resources :catalog_prefixes do as_routes end
-    resources :gov_forms do as_routes end
-    resources :top_forms, :only => [:index, :create, :update, :destroy]
     resources :superfresh_urls do as_routes end
     resources :superfresh_urls_bulk_upload, :only => :index do
       collection do
@@ -175,8 +169,6 @@ UsasearchRails3::Application.routes.draw do
     resources :email_templates do as_routes end
     resources :common_substrings do as_routes end
     resources :compare_search_results, :only => :index
-    resources :form_agencies do as_routes end
-    resources :forms do as_routes end
     resources :bing_urls do as_routes end
     resources :system_alerts do as_routes end
     resources :news_items do as_routes end

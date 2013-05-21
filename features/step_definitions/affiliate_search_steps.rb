@@ -59,19 +59,6 @@ Then /^I should see "([^\"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
-Then /^I should see the govbox form (number|title) "([^\"]*)" in bold font$/ do |number_or_title, text|
-  case number_or_title
-    when 'number' then
-      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/a[1]/strong[contains(text(),'#{text}')]").should_not be_nil
-    when 'title' then
-      page.find(:xpath, "//div[@id='form_govbox']/h2[1]/a[1]/strong[text()='#{text}']").should_not be_nil
-  end
-end
-
-Then /^I should not see the govbox form description "([^\"]*)" in bold font$/ do |text|
-  lambda { page.find(:xpath, "//div[@id='form_govbox']//*[@class='description'][1]/strong[text()='#{text}']") }.should raise_error
-end
-
 Then /^I should not see the indexed documents section$/ do
   page.should_not have_selector("#indexed_documents")
 end
@@ -164,44 +151,6 @@ end
 
 Then /^I should not see the left column options expanded$/ do
   page.should_not have_selector('#left_column .options-wrapper.expanded')
-end
-
-Given /^the following FormAgencies exist:$/ do |table|
-  table.hashes.each { |hash| FormAgency.create!(hash) }
-end
-
-Given /^the following Forms exist for (en|es) (\S+) form agency:$/ do |locale, agency_name, table|
-  form_agency = FormAgency.where(:name => agency_name, :locale => locale).first
-  table.hashes.each do |hash|
-    form_agency.forms.create! do |f|
-      hash.keys.each do |key|
-        f.send("#{key}=", hash[key])
-      end
-      f.links ||= []
-      f.links << { :title => "Form #{f.number}",
-                   :url => f.url,
-                   :file_size => f.file_size,
-                   :file_type => f.file_type }
-    end
-  end
-  Form.reindex
-end
-
-Given /^the following Links exist for (en|es) (\S+) form (.+):$/ do |locale, agency_name, form_number, table|
-  form_agency = FormAgency.where(:name => agency_name, :locale => locale).first
-  form = form_agency.forms.where(:number => form_number).first
-  table.hashes.each do |hash|
-    form.links << { :title => hash[:title],
-                    :url => hash[:url],
-                    :file_size => hash[:file_size],
-                    :file_type => hash[:file_type] }
-  end
-  form.save!
-  Form.reindex
-end
-
-Then /^I should not see the form govbox$/ do
-  page.should_not have_selector('#form_govbox')
 end
 
 Then /^I should see a link to "(.*?)" with sanitized "(.*?)" query$/ do |link_title, query|

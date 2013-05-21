@@ -233,28 +233,6 @@ describe GovboxSet do
       end
     end
 
-    describe 'forms' do
-
-      context 'when the affiliate has form_agencies' do
-        before do
-          affiliate.stub!(:form_agency_ids).and_return [1, 2, 3]
-          Form.stub!(:govbox_search_for).with('foo', affiliate.form_agency_ids).and_return "Form results"
-        end
-
-        it 'should assign relevant forms' do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.forms.should == 'Form results'
-        end
-      end
-
-      context 'when the affiliate does not have form_agencies' do
-        it 'should assign forms with nil' do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.forms.should be_nil
-        end
-      end
-    end
-
     it 'should assign related searches' do
       SaytSuggestion.stub!(:related_search).with('foo', affiliate).and_return "related search results"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)

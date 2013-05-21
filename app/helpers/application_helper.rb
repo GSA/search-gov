@@ -147,9 +147,7 @@ module ApplicationHelper
 
   def highlight_hit(hit, field_name)
     sym = field_name.to_sym
-    if (hit.instance.is_a?(BoostedContent) and hit.instance.affiliate.locale == 'es') or
-        (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es') or
-        (hit.instance.is_a?(Form) && (sym == :number or sym == :title))
+    if (hit.instance.is_a?(BoostedContent) or hit.instance.is_a?(IndexedDocument)) and hit.instance.affiliate.locale == 'es'
       sym = "#{field_name}_text".to_sym
     end
     return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
@@ -239,12 +237,6 @@ module ApplicationHelper
   def render_date(date, locale = I18n.locale)
     unless date.nil?
       locale.to_sym == :es ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
-    end
-  end
-
-  def render_short_date(date, locale = I18n.locale)
-    unless date.nil?
-      locale.to_sym == :es ? date.strftime("%-d/%-m/%y") : date.strftime("%-m/%-d/%y")
     end
   end
 

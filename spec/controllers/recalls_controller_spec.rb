@@ -16,7 +16,7 @@ describe RecallsController do
         assigns[:page_title].should be_nil
       end
 
-      it "should set the page title to 'Search.USA.gov Forms'" do
+      it "should set the page title to 'Search.USA.gov Recalls'" do
         response.should have_selector("title", :content => 'Search.USA.gov Recalls')
       end
 

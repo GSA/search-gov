@@ -9,7 +9,7 @@ describe "searches/index.html.haml" do
     assign(:affiliate, @affiliate)
 
     @search = stub("WebSearch", has_photos?: false, med_topic: nil, jobs: nil,
-                   has_forms?: false, has_boosted_contents?: false, has_related_searches?: false,
+                   has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,
                    page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870, results: [],

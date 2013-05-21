@@ -207,10 +207,6 @@ Feature:  Administration
     Then I should see the following breadcrumbs: USASearch > Super Admin > Collections
 
     When I go to the admin home page
-    And I follow "Government Forms"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Government Forms
-
-    When I go to the admin home page
     And I follow "Superfresh Urls"
     Then I should see the following breadcrumbs: USASearch > Super Admin > SuperfreshUrls
 
@@ -281,14 +277,6 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Common Website Substrings"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Common Website Substrings
-
-    When I go to the admin home page
-    And I follow "Form Agencies"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Form Agencies
-
-    When I go to the admin home page
-    And I follow "Forms"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Forms
 
     When I go to the admin home page
     And I follow "System Alerts"

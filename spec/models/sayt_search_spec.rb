@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe SaytSearch do
-  fixtures :affiliates, :form_agencies
+  fixtures :affiliates
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:es_affiliate) { affiliates(:gobiernousa_affiliate) }
 
@@ -16,18 +16,6 @@ describe SaytSearch do
     let(:query) { 'foo' }
     let(:search_params) { { affiliate_id: affiliate.id, locale: affiliate.locale, query: query, number_of_results: 10, extras: true } }
     let(:search) { SaytSearch.new(search_params) }
-
-    let(:forms) do
-      form1 = mock_model(Form,
-                         number: 'I-100',
-                         title: 'Foo Verified Form',
-                         landing_page_url: 'http://www.agency.gov/form1.html')
-      form2 = mock_model(Form,
-                         number: 'I-200',
-                         title: 'Foo Another Verified Form',
-                         landing_page_url: 'http://www.agency.gov/form2.html')
-      [form1, form2]
-    end
 
     let(:boosted_contents) do
       boosted_content1 = mock_model(BoostedContent,
@@ -43,7 +31,6 @@ describe SaytSearch do
       search_params[:query] = 'chold'
 
       Misspelling.should_receive(:correct).with('chold').and_return('child')
-      Form.should_receive(:sayt_for).with(affiliate.id, 'child', 2).and_return([])
       BoostedContent.should_receive(:sayt_for).with(affiliate.id, 'child', 2).and_return([])
       SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'child', 10).and_return([])
 
@@ -51,14 +38,11 @@ describe SaytSearch do
     end
 
     it 'should return an array of hash' do
-      Form.should_receive(:sayt_for).with(affiliate.id, 'foo', 2).and_return(forms)
       BoostedContent.should_receive(:sayt_for).with(affiliate.id, 'foo', 2).and_return(boosted_contents)
-      SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'foo', 6).and_return(sayt_suggestions)
+      SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
       search.results.should == [{ section: 'default', label: 'foo1' },
                                 { section: 'default', label: 'foo2' },
-                                { section: 'Recommended Forms', label: 'Foo Verified Form (I-100)', data: 'http://www.agency.gov/form1.html' },
-                                { section: 'Recommended Forms', label: 'Foo Another Verified Form (I-200)', data: 'http://www.agency.gov/form2.html' },
                                 { section: 'Recommended Pages', label: 'Foo Boosted Content 1', data: 'http://www.agency.gov/boosted_content1.html' },
                                 { section: 'Recommended Pages', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }]
     end
@@ -67,14 +51,11 @@ describe SaytSearch do
       let(:search_params) { { affiliate_id: es_affiliate.id, locale: es_affiliate.locale, query: query, number_of_results: 10, extras: true } }
 
       it 'should return an array of Hash with Spanish translations' do
-        Form.should_receive(:sayt_for).with(es_affiliate.id, 'foo', 2).and_return(forms)
         BoostedContent.should_receive(:sayt_for).with(es_affiliate.id, 'foo', 2).and_return(boosted_contents)
-        SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 6).and_return(sayt_suggestions)
+        SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
         search.results.should == [{ section: 'default', label: 'foo1' },
                                   { section: 'default', label: 'foo2' },
-                                  { section: 'Formularios recomendados', label: 'Foo Verified Form (I-100)', data: 'http://www.agency.gov/form1.html' },
-                                  { section: 'Formularios recomendados', label: 'Foo Another Verified Form (I-200)', data: 'http://www.agency.gov/form2.html' },
                                   { section: 'Páginas recomendadas', label: 'Foo Boosted Content 1', data: 'http://www.agency.gov/boosted_content1.html' },
                                   { section: 'Páginas recomendadas', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }]
       end
@@ -86,7 +67,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      Form.should_not_receive(:sayt_for)
       BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
 
@@ -99,7 +79,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      Form.should_not_receive(:sayt_for)
       BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
 
@@ -112,7 +91,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      Form.should_not_receive(:sayt_for)
       BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_receive(:fetch_by_affiliate_id).and_return(sayt_suggestions)
 

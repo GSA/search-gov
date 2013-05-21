@@ -28,7 +28,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled,
                              :has_staged_content, :locale,
-                             :sitemaps, :affiliate_feature_addition, :form_agencies, :jobs_enabled, :agency,
+                             :sitemaps, :affiliate_feature_addition, :jobs_enabled, :agency,
                              :excluded_domains, :search_engine]
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
@@ -42,8 +42,6 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }
     config.columns[:staged_theme].options = { :include_blank => '', :options => theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
-    config.columns[:form_agencies].form_ui = :select
-    config.columns[:form_agencies].options = { :draggable_lists => true }
     actions.add :export
     config.export.default_deselected_columns = [:header_footer_css,
                                                 :staged_header_footer_css,

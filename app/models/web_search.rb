@@ -9,7 +9,6 @@ class WebSearch < Search
            :featured_collections,
            :tweets,
            :photos,
-           :forms,
            :jobs,
            :related_search,
            :to => :@govbox_set,
@@ -156,7 +155,6 @@ class WebSearch < Search
     modules << "SREL" if self.has_related_searches?
     modules << 'NEWS' if self.has_news_items?
     modules << 'VIDS' if self.has_video_news_items?
-    modules << "FORM" if self.has_forms?
     modules << "BBG" if self.has_featured_collections?
     modules << "BOOS" if self.has_boosted_contents?
     modules << "MEDL" unless self.med_topic.nil?
