@@ -2141,6 +2141,18 @@ Feature: Affiliate clients
     When I follow "Results modules"
     Then the "Show RSS feed 0 in govbox" checkbox should be checked
 
+  Scenario: Deleting Youtube Profile
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | youtube_handles |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | en_agency       |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    And I press "Delete"
+    Then I should see "Youtube Profile successfully deleted"
+    When I follow "RSS"
+    Then I should not see "Videos"
+
   Scenario: Previewing Flickr Photos
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |

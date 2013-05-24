@@ -1,7 +1,7 @@
 = javascript_tag "var original_query = \"#{escape_javascript @search.query}\";"
 
 = render_navigations(@affiliate, @search, @search_params)
-- if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch) and @search.facets.any? { |facet| facet.rows.any? }
+- if @affiliate.is_time_filter_enabled? and @search.kind_of?(NewsSearch) and @search.facets and @search.facets.any? { |facet| facet.rows.any? }
   - options_expanded = params[:contributor] || params[:publisher] || params[:subject]
   .options-wrapper{ :class => "#{options_expanded ? 'expanded' : nil}" }
     %span#show_options= t(:show_options)

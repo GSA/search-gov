@@ -39,6 +39,9 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
     if %w(YoutubeProfile TwitterProfile).include? params[:profile_type]
       profile = profile_type_class.send(:find, params[:id])
       @affiliate.send(profile.class.name.tableize).send(:delete, profile)
+      if params[:profile_type] == 'YoutubeProfile' and @affiliate.youtube_profiles.empty?
+        @affiliate.rss_feeds.managed.destroy_all
+      end
     else
       profile = @affiliate.send(params[:profile_type].tableize).find(params[:id]).destroy
     end

@@ -17,7 +17,7 @@ before "deploy:symlink", "deploy:web:disable"
 before "deploy:symlink", "deploy:symlink_cache"
 after :deploy, "deploy:web:enable"
 after :deploy, 'deploy:cleanup'
-before "deploy:cleanup", "deploy:restart_twitter_tasks"
+before "deploy:cleanup", "deploy:restart_rake_tasks"
 after "deploy:update", "newrelic:notice_deployment"
 
 namespace :deploy do

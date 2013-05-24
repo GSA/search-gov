@@ -71,16 +71,13 @@ describe YoutubeData do
       playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/simple_youtube_playlists.xml')
       YoutubeConnection.should_receive(:get).
           with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
-          once.
           and_return(playlists_feed_doc)
 
-      feed_validation_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
       playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
       next_playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_playlist_videos.xml')
       YoutubeConnection.should_receive(:get).
           with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
-          exactly(3).times.
-          and_return(feed_validation_doc, playlist_videos_doc, next_playlist_videos_doc)
+          and_return(playlist_videos_doc, next_playlist_videos_doc)
 
       importer = YoutubeData.new(profile)
       importer.import
@@ -110,12 +107,6 @@ describe YoutubeData do
             once.
             and_return(playlists_feed_doc)
 
-        feed_validation_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
-        YoutubeConnection.should_receive(:get).
-            with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
-            once.
-            and_return(feed_validation_doc)
-
         playlist_parser = mock('YoutubePlaylistVideosParser')
         YoutubePlaylistVideosParser.should_receive(:new).and_return(playlist_parser)
         playlist_parser.should_receive(:each_item).and_raise
@@ -133,13 +124,11 @@ describe YoutubeData do
         uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube_missing_title.xml')
         YoutubeConnection.should_receive(:get).
             with(%r[^http://gdata.youtube.com/feeds/api/videos\?alt=rss&author=whitehouse&max-results=50&orderby=published&start-index=]).
-            once.
             and_return(uploaded_feed_doc)
 
         playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/no_entry_playlist.xml')
         YoutubeConnection.should_receive(:get).
             with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
-            once.
             and_return(playlists_feed_doc)
 
         importer = YoutubeData.new(profile)

@@ -27,8 +27,9 @@ class YoutubeData < RssFeedData
   private
 
   def import_uploaded_videos(username)
-    rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: RSS_FEED_OWNER_TYPE,
-                                    url: YoutubeProfile.youtube_url(username)).first_or_create!
+    rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
+        where(url: YoutubeProfile.youtube_url(username)).first_or_initialize
+    rss_feed_url.save(validate: false)
     return unless rss_feed_url
     @rss_feed_url_ids << rss_feed_url.id
 
@@ -38,8 +39,9 @@ class YoutubeData < RssFeedData
 
   def import_playlist_videos(username)
     get_playlist_ids(username).each do |playlist_id|
-      rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: RSS_FEED_OWNER_TYPE,
-                                      url: YoutubeProfile.playlist_url(playlist_id)).first_or_create!
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
+          where(url: YoutubeProfile.playlist_url(playlist_id)).first_or_initialize
+      rss_feed_url.save(validate: false)
       @rss_feed_url_ids << rss_feed_url.id
 
       parser = YoutubePlaylistVideosParser.new(playlist_id)

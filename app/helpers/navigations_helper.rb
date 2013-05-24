@@ -20,7 +20,7 @@ module NavigationsHelper
       return render_navigations_for_non_navigable_document_collection(search, search_params)
     end
 
-    return if affiliate.navigations.includes(:navigable).active.blank?
+    return if affiliate.navigations.active.blank?
 
     dc = search.is_a?(SiteSearch) ? search.document_collection : nil
     rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
@@ -31,7 +31,7 @@ module NavigationsHelper
                                                          rss_feed,
                                                          affiliate.default_search_label)
 
-    affiliate.navigations.includes(:navigable).active.each do |navigation|
+    affiliate.navigations.active.each do |navigation|
       navigable = navigation.navigable
       nav_items << case navigation.navigable_type
         when 'ImageSearchLabel'

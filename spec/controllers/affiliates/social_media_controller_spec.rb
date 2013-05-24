@@ -328,8 +328,8 @@ describe Affiliates::SocialMediaController do
 
         profile = mock_model(YoutubeProfile)
         YoutubeProfile.should_receive(:find).with(profile.id.to_s).and_return(profile)
-        youtube_profiles = mock('youtube profiles')
-        affiliate.should_receive(:youtube_profiles).and_return(youtube_profiles)
+        youtube_profiles = mock('youtube profiles', empty?: false)
+        affiliate.should_receive(:youtube_profiles).twice.and_return(youtube_profiles)
         youtube_profiles.should_receive(:delete).with(profile)
 
         delete :destroy,
