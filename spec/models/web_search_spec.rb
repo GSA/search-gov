@@ -148,6 +148,17 @@ describe WebSearch do
       end
     end
 
+    describe "populating additional results" do
+      before do
+        @search = WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate), :geoip_info => 'test')
+      end
+
+      it 'should get the info from GovboxSet' do
+        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test').and_return nil
+        @search.run
+      end
+    end
+
     context "when the affiliate has no Bing/Google results, but has indexed documents" do
       before do
         @non_affiliate = affiliates(:non_existent_affiliate)
