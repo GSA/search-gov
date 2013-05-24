@@ -6,7 +6,7 @@ describe GovboxSet do
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:geoip_info) { GeoipLookup.lookup('216.102.95.101') }
+    let(:geoip_info) { mock('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
 
     it 'should assign boosted contents' do
       BoostedContent.stub!(:search_for).with('foo', affiliate).and_return "BoostedContent results"
@@ -65,9 +65,9 @@ describe GovboxSet do
           affiliate.stub!(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the query, org code, size, hl, and geoip_info params" do
+        it "should call Jobs.search with the query, org code, size, hl, and lat_lon params" do
           Jobs.should_receive(:search).
-            with(:query => 'foo', :hl => 1, :size => 3, :organization_id => 'ABCD', :geoip_info => geoip_info).
+            with(:query => 'foo', :hl => 1, :size => 3, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
             and_return "jobs info"
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.jobs.should == "jobs info"
@@ -75,9 +75,9 @@ describe GovboxSet do
       end
 
       context "when the affiliate does not have a related agency with an org code" do
-        it "should call Jobs.search with just the query, size, hl, and geoip_info param" do
-          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, :geoip_info => geoip_info, tags: 'federal').and_return nil
-          GovboxSet.new('foo', affiliate, geoip_info)
+        it "should call Jobs.search with just the query, size, hl, and lat_lon param" do
+          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, tags: 'federal').and_return nil
+          GovboxSet.new('foo', affiliate, nil)
         end
       end
     end

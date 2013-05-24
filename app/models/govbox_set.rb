@@ -18,12 +18,10 @@ class GovboxSet
       @agency = agency_query.agency if agency_query
     end
     if affiliate.jobs_enabled?
-      jobs_options = {query: query, size: 3, hl: 1, geoip_info: geoip_info}
-      if affiliate.has_organization_code?
-        jobs_options.merge!(organization_id: affiliate.agency.organization_code)
-      else
-        jobs_options.merge!(tags: 'federal')
-      end
+      jobs_options = {query: query, size: 3, hl: 1}
+      org_tags_hash = affiliate.has_organization_code? ? {organization_id: affiliate.agency.organization_code} : {tags: 'federal'}
+      jobs_options.merge!(org_tags_hash)
+      jobs_options.merge!(lat_lon: [geoip_info.latitude, geoip_info.longitude].join(',')) if geoip_info.present?
       @jobs = Jobs.search(jobs_options)
     end
     govbox_enabled_feeds = affiliate.rss_feeds.includes(:rss_feed_urls).govbox_enabled.to_a

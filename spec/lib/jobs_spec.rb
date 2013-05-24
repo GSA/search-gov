@@ -51,22 +51,4 @@ describe Jobs do
       end
     end
   end
-
-  describe '.enhance_query(query, geoip_info)' do
-    context 'when geoip_info nil' do
-      it 'should return query unchanged' do
-        Jobs.enhance_query('jobs', nil).should == 'jobs'
-      end
-    end
-
-    context 'when query is a simple jobs query and user is in a known US state' do
-      let(:geoip_info) { OpenStruct.new(:region_name => 'CA') }
-
-      it 'should tranform query into state-based location query' do
-        %w{job jobs employment internships}.each do |simple_jobs_search|
-          Jobs.enhance_query(simple_jobs_search, geoip_info).should == "#{simple_jobs_search} in CA"
-        end
-      end
-    end
-  end
 end

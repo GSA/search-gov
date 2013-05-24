@@ -39,10 +39,7 @@ module Jobs
   end
 
   def self.search(options)
-    if query_eligible?(options[:query])
-      options[:query] = enhance_query(options[:query], options[:geoip_info]) if options[:geoip_info].present?
-      @jobs_api_connection.get(@endpoint, options).body
-    end
+    @jobs_api_connection.get(@endpoint, options).body if query_eligible?(options[:query])
   rescue Exception => e
     Rails.logger.error("Trouble fetching jobs information: #{e}")
     nil
@@ -52,11 +49,6 @@ module Jobs
     query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():]|^-| -\S+/)
   end
 
-  def self.enhance_query(query, geoip_info)
-    simple_search_with_state = query =~ /^#{SIMPLE_SEARCHES}$/i &&
-      geoip_info.present? && geoip_info.region_name.present? && State.member?(geoip_info.region_name)
-    simple_search_with_state ? "#{query} in #{geoip_info.region_name}" : query
-  end
 end
 
 Jobs.establish_connection!
