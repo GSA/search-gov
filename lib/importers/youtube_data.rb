@@ -8,8 +8,10 @@ class YoutubeData < RssFeedData
   end
 
   def self.refresh_feeds
-    YoutubeProfile.active.each do |profile|
+    YoutubeProfile.active.map(&:id).each do |profile_id|
       begin
+        profile = YoutubeProfile.find_by_id profile_id
+        next unless profile
         profile.rss_feed.touch
         YoutubeData.new(profile).import
       rescue => error
@@ -54,7 +56,7 @@ class YoutubeData < RssFeedData
       news_item_ids = []
       parser.each_item do |item|
         news_item = create_or_update(rss_feed_url, item)
-        news_item_ids << news_item.id if news_item && news_item.rss_feed_url_id == rss_feed_url.id
+        news_item_ids << news_item.id if news_item
       end
       rss_feed_url.news_item_ids = news_item_ids
       rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
@@ -74,14 +76,14 @@ class YoutubeData < RssFeedData
     news_item = NewsItem.where(rss_feed_url_id: [@rss_feed_url_ids],
                                link: item[:link]).first
 
-    if news_item.nil? or news_item.rss_feed_url_id == rss_feed_url.id
-      news_item ||= rss_feed_url.news_items.build(link: item[:link])
-      news_item.guid = item[:guid]
-      news_item.title = item[:title]
-      news_item.description = item[:description]
-      news_item.published_at = item[:published_at]
-      news_item.save!
-    end
+    return if news_item && news_item.rss_feed_url_id != rss_feed_url.id
+    news_item ||= rss_feed_url.news_items.build(link: item[:link])
+    news_item.rss_feed_url_id == rss_feed_url.id
+    news_item.guid = item[:guid]
+    news_item.title = item[:title]
+    news_item.description = item[:description]
+    news_item.published_at = item[:published_at]
+    news_item.save!
     news_item
   rescue => e
     puts "Failed to create_or_update #{rss_feed_url.inspect}, item: #{item.inspect}, error: #{e}"

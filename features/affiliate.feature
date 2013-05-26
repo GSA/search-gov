@@ -236,9 +236,10 @@ Feature: Affiliate clients
     And I press "Next"
     Then I should see the code for Spanish language sites
     When I go to agencygov's search page
-    And I fill in "query" with "White House"
+    And I fill in "query" with "gobierno"
     And I press "Buscar"
-    Then I should see "White House - My awesome agency resultados de la búsqueda"
+    Then I should see "gobierno - My awesome agency resultados de la búsqueda"
+    Then show me the page
     And I should see "Búsqueda avanzada"
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"

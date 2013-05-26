@@ -11,6 +11,7 @@ describe YoutubeData do
 
     before do
       YoutubeProfile.should_receive(:active).and_return [profile]
+      YoutubeProfile.should_receive(:find_by_id).with(profile.id).and_return profile
       YoutubeData.should_receive(:new).with(profile).and_return youtube_data
       rss_feed.should_receive :touch
     end
@@ -85,6 +86,14 @@ describe YoutubeData do
       rss_feed.rss_feed_urls(true).collect(&:url).sort.should == %w(
               http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss
               http://gdata.youtube.com/feeds/api/videos?alt=rss&author=whitehouse&orderby=published)
+
+      RssFeedUrl.rss_feed_owned_by_youtube_profile.
+          where(url: 'http://gdata.youtube.com/feeds/api/videos?alt=rss&author=whitehouse&orderby=published').
+          first.news_items.count.should == 28
+
+      RssFeedUrl.rss_feed_owned_by_youtube_profile.
+          where(url: 'http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss').
+          first.news_items.count.should == 87
 
       rss_feed.rss_feed_urls(true).collect(&:last_crawl_status).uniq.should == [RssFeedUrl::OK_STATUS]
 

@@ -1,12 +1,7 @@
 YOUTUBE_GDATA_SITE = 'http://gdata.youtube.com'.freeze
-YOUTUBE_GDATA_CACHE_DURATION_IN_SECONDS = (60 * 60 * 2).freeze
 
 $youtube_connection = Faraday.new YOUTUBE_GDATA_SITE do |conn|
-  cache_dir = File.join(Rails.root, 'tmp', 'cache')
   conn.adapter :net_http_persistent
-  conn.response :caching do
-    ActiveSupport::Cache::FileStore.new cache_dir, namespace: 'yt_api', expires_in: YOUTUBE_GDATA_CACHE_DURATION_IN_SECONDS
-  end
 end
 
 module YoutubeConnection
