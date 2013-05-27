@@ -13,7 +13,7 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
 
   def create
     RssFeed.transaction do
-      @rss_feed = @affiliate.rss_feeds.build(name: params[:rss_feed][:name])
+      @rss_feed = @affiliate.rss_feeds.build(params[:rss_feed].except(:rss_feed_urls_attributes))
       find_or_initialize_rss_feed_urls(@rss_feed, params[:rss_feed][:rss_feed_urls_attributes])
       if @rss_feed.save
         redirect_to [@affiliate, @rss_feed], flash: { success: 'RSS feed successfully created.' }
@@ -28,7 +28,7 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
 
   def update
     RssFeed.transaction do
-      @rss_feed.name = params[:rss_feed][:name]
+      @rss_feed.assign_attributes params[:rss_feed].except(:rss_feed_urls_attributes)
       find_or_initialize_rss_feed_urls(@rss_feed, params[:rss_feed][:rss_feed_urls_attributes])
       if @rss_feed.save
         redirect_to [@affiliate, @rss_feed], flash: { success: 'RSS feed successfully updated.' }

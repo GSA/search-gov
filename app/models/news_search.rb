@@ -45,15 +45,25 @@ class NewsSearch < Search
       @rss_feeds.push *youtube_feeds
     end
 
+    @tags = @rss_feed && @rss_feed.show_only_media_content? ? %w(image) : []
+
     @hits, @total = [], 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
     @sort_by_relevance = options[:sort_by] == 'r'
-    @per_page = DEFAULT_VIDEO_PER_PAGE if @rss_feed && @rss_feed.is_managed? && options[:per_page].blank?
+    if @rss_feed and
+        @rss_feed.is_managed? || @rss_feed.show_only_media_content? and
+        options[:per_page].blank?
+      @per_page = DEFAULT_VIDEO_PER_PAGE
+    end
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, @affiliate, {since: @since, until: @until}, @page, @per_page,
-                        @contributor, @subject, @publisher, @sort_by_relevance)
+    NewsItem.search_for(@query, @rss_feeds, @affiliate,
+                        since: @since, until: @until,
+                        page: @page, per_page: @per_page,
+                        contributor: @contributor, subject: @subject, publisher: @publisher,
+                        sort_by_relevance: @sort_by_relevance,
+                        tags: @tags)
   end
 
   def cache_key

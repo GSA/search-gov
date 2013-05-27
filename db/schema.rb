@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521192754) do
+ActiveRecord::Schema.define(:version => 20130527222128) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -700,6 +700,7 @@ ActiveRecord::Schema.define(:version => 20130521192754) do
     t.string   "contributor"
     t.string   "subject"
     t.string   "publisher"
+    t.text     "properties"
   end
 
   add_index "news_items", ["link"], :name => "index_news_items_on_link"
@@ -773,14 +774,15 @@ ActiveRecord::Schema.define(:version => 20130521192754) do
   add_index "rss_feed_urls_rss_feeds", ["rss_feed_id", "rss_feed_url_id"], :name => "index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id", :unique => true
 
   create_table "rss_feeds", :force => true do |t|
-    t.integer  "owner_id",                           :null => false
-    t.string   "name",                               :null => false
+    t.integer  "owner_id",                                   :null => false
+    t.string   "name",                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "shown_in_govbox", :default => false, :null => false
-    t.boolean  "is_managed",      :default => false, :null => false
-    t.boolean  "is_video",        :default => false, :null => false
-    t.string   "owner_type",                         :null => false
+    t.boolean  "shown_in_govbox",         :default => false, :null => false
+    t.boolean  "is_managed",              :default => false, :null => false
+    t.boolean  "is_video",                :default => false, :null => false
+    t.string   "owner_type",                                 :null => false
+    t.boolean  "show_only_media_content", :default => false, :null => false
   end
 
   add_index "rss_feeds", ["owner_id"], :name => "index_rss_feeds_on_affiliate_id"

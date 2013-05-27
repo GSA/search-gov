@@ -85,6 +85,32 @@ function toggle_facets(element) {
   jQuery(element).closest('ul.facet').children('.collapsible').slideToggle();
 }
 
+function load_image_spans(newsItems) {
+  jQuery(newsItems).each(function() {
+    jQuery(this).children('a').hover(
+      function() {
+        var item = jQuery(this).parent();
+        var span = jQuery(this).children('span.host').first();
+        if (! jQuery(span).hasClass('position-assigned')) {
+          jQuery(span).position({
+            my: 'left top',
+            at: 'left top',
+            of: item,
+            collision: 'none'
+          });
+          jQuery(span).addClass('position-assigned');
+        }
+        jQuery(span).css({ width: item.innerWidth() - 10 });
+        jQuery(span).show();
+      },
+      function() {
+        var span = jQuery(this).children('span.host').first();
+        jQuery(span).hide();
+      }
+    );
+  });
+}
+
 jQuery(document).ready(function() {
   jQuery('.options-wrapper').click(function() {
     toggle_more_or_less_options();
@@ -199,5 +225,8 @@ jQuery(document).ready(function() {
         }
       });
     }
+  }
+  if (jQuery('#results.media').length > 0) {
+    load_image_spans(jQuery('.newsitem.image').toArray());
   }
 });

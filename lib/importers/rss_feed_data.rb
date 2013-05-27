@@ -9,7 +9,9 @@ class RssFeedData
                    contributor: 'dc:contributor',
                    publisher: 'dc:publisher',
                    subject: 'dc:subject',
-                   description: 'description' }.freeze
+                   description: 'description',
+                   media_content: 'media:content[@url]',
+                   media_thumbnail: 'media:thumbnail[@url]' }.freeze
 
   ATOM_ELEMENTS = { item: 'xmlns:entry',
                     pubDate: %w(xmlns:published xmlns:updated),
@@ -54,6 +56,7 @@ class RssFeedData
 
   def extract_news_items(doc, feed_elements, most_recently)
     return unless doc
+    has_media_ns = doc.namespaces['xmlns:media'].present?
     doc.xpath("//#{feed_elements[:item]}").each do |item|
       published_at = nil
       feed_elements[:pubDate].each do |pub_date_path|
@@ -84,6 +87,32 @@ class RssFeedData
       raw_description = item.xpath(feed_elements[:description]).inner_text
       description = Nokogiri::HTML(raw_description).inner_text.squish
 
+      if description.blank? and has_media_ns
+        media_description = item.xpath('./media:description').first
+        if media_description
+          description = Nokogiri::HTML(media_description.inner_text).inner_text.squish
+        end
+      end
+
+      properties = {}
+      if has_media_ns && feed_elements[:media_content].present? and
+          (media_content = item.xpath(feed_elements[:media_content]).first)
+        url = media_content.attr('url').to_s.squish
+        if url.present?
+          type = media_content.attr('type').to_s.squish
+          type ||= determine_media_type_from_url url
+          media_content_props = { url: url }
+          media_content_props[:type] = type if type.present?
+          properties[:media_content] = media_content_props
+
+          if feed_elements[:media_thumbnail].present? and
+              (media_thumbnail = item.xpath(feed_elements[:media_thumbnail]).first)
+            url = media_thumbnail.attr('url').to_s.squish
+            properties[:media_thumbnail] = { url: url } if url.present?
+          end
+        end
+      end
+
       news_item = @rss_feed_url.news_items.where(link: link).first_or_initialize
       next if !news_item.new_record? && news_item.published_at >= published_at
       news_item.assign_attributes(guid: guid,
@@ -92,8 +121,22 @@ class RssFeedData
                                   published_at: published_at,
                                   contributor: contributor,
                                   publisher: publisher,
-                                  subject: subject)
-      news_item.save
+                                  subject: subject,
+                                  properties: properties)
+      unless news_item.save
+        Rails.logger.error "news_item: #{news_item.errors.full_messages}"
+      end
+    end
+  end
+
+  def self.determine_media_type_from_url(url)
+    case url
+    when /\.(gif)$/i then
+      'image/gif'
+    when /\.(jpg|jpeg|jpe|jif|jfif|jfi)$/i then
+      'image/jpeg'
+    when /\.(png)$/i then
+      'image/png'
     end
   end
 end

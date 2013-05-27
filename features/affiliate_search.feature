@@ -696,6 +696,23 @@ Feature: Affiliate Search
     When I follow "Elimine los filtros"
     Then I should see at least 2 search results
 
+  Scenario: Searching on a site with media RSS
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name   | url                                   | is_navigable | show_only_media_content |
+      | Photos | http://www.whitehouse.gov/feed/photos | true         | true                    |
+    And feed "Photos" has the following news items:
+      | link                              | title   | description     | guid  | published_ago | thumbnail_url                          | content_url                            |
+      | http://www.whitehouse.gov/photo/1 | Photo 1 | desc of photo 1 | uuid1 | week          | http://www.whitehouse.gov/media/t1.png | http://www.whitehouse.gov/media/c1.png |
+      | http://www.whitehouse.gov/photo/2 | Photo 2 | desc of photo 2 | uuid2 | week          | http://www.whitehouse.gov/media/t2.png | http://www.whitehouse.gov/media/c2.jpg |
+      | http://www.whitehouse.gov/photo/3 | Photo 3 | no media        | uuid3 | week          |                                        |                                        |
+    When I am on bar.gov's "Photos" news search page
+    And I fill in "query" with "photo"
+    And I press "Search"
+    Then I should see 2 image news results
+
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                |

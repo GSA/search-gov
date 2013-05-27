@@ -176,8 +176,15 @@ describe NewsSearch do
     context "when a valid active RSS feed is specified" do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
-        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject')
-        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', false)
+        search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate,
+                                contributor: 'contributor', publisher: 'publisher', subject: 'subject')
+        NewsItem.should_receive(:search_for).
+            with('element', [feed], affiliate,
+                 since: nil, until: nil,
+                 page: 1, per_page: 10,
+                 contributor: 'contributor', subject: 'subject', publisher: 'publisher',
+                 sort_by_relevance: false,
+                 tags: [])
         search.run.should be_true
       end
     end
@@ -189,7 +196,13 @@ describe NewsSearch do
       context 'when per_page option is not set' do
         it "should set per_page to 20" do
           search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-          NewsItem.should_receive(:search_for).with('element', [youtube_profile_feed], affiliate, { since: nil, until: nil }, 1, 20, nil, nil, nil, false)
+          NewsItem.should_receive(:search_for).
+              with('element', [youtube_profile_feed], affiliate,
+                   since: nil, until: nil,
+                   page: 1, per_page: 20,
+                   contributor: nil, subject: nil, publisher: nil,
+                   sort_by_relevance: false,
+                   tags: [])
           search.run.should be_true
         end
       end
@@ -197,7 +210,45 @@ describe NewsSearch do
       context 'when per_page option is set' do
         it 'should not change the initial per_page value' do
           search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
-          NewsItem.should_receive(:search_for).with('element', [youtube_profile_feed], affiliate, { since: nil, until: nil }, 1, 15, nil, nil, nil, false)
+          NewsItem.should_receive(:search_for).
+              with('element', [youtube_profile_feed], affiliate,
+                   since: nil, until: nil,
+                   page: 1, per_page: 15,
+                   contributor: nil, subject: nil, publisher: nil,
+                   sort_by_relevance: false,
+                   tags: [])
+          search.run.should be_true
+        end
+      end
+    end
+
+    context 'when a valid media RSS feed is specified' do
+      let(:feed) { rss_feeds(:media_feed) }
+
+      context 'when per_page option is not set' do
+        it 'should set per_page to 20' do
+          search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
+          NewsItem.should_receive(:search_for).
+              with('element', [feed], affiliate,
+                   since: nil, until: nil,
+                   page: 1, per_page: 20,
+                   contributor: nil, subject: nil, publisher: nil,
+                   sort_by_relevance: false,
+                   tags: %w(image))
+          search.run.should be_true
+        end
+      end
+
+      context 'when per_page option is set' do
+        it 'should not change the initial per_page value' do
+          search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
+          NewsItem.should_receive(:search_for).
+              with('element', [feed], affiliate,
+                   since: nil, until: nil,
+                   page: 1, per_page: 15,
+                   contributor: nil, subject: nil, publisher: nil,
+                   sort_by_relevance: false,
+                   tags: %w(image))
           search.run.should be_true
         end
       end
@@ -206,19 +257,31 @@ describe NewsSearch do
     context "when no RSS feed is specified" do
       it "should search for news items from all active feeds for the affiliate" do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
-        search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
-        NewsItem.should_receive(:search_for).with('element', affiliate.rss_feeds.navigable_only, affiliate, { since: one_week_ago, until: nil }, 1, 10, nil, nil, nil, false)
+        search = NewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
+        NewsItem.should_receive(:search_for).
+            with('element', affiliate.rss_feeds.navigable_only, affiliate,
+                 since: one_week_ago, until: nil,
+                 page: 1, per_page: 10,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [])
         search.run
       end
     end
 
     context 'when searching with since_date' do
       it 'should search for NewsItem with since option' do
-        feed = mock_model(RssFeed, is_managed?: false)
+        feed = mock_model(RssFeed, is_managed?: false, show_only_media_content?: false)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, since_date: '10/1/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: Time.parse('2012-10-01 00:00:00Z'), until: nil }, 1, 10, nil, nil, nil, false)
+        NewsItem.should_receive(:search_for).
+            with('element', [feed], affiliate,
+                 since: Time.parse('2012-10-01 00:00:00Z'), until: nil,
+                 page: 1, per_page: 10,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [])
 
         news_search.run
       end
@@ -226,12 +289,19 @@ describe NewsSearch do
 
     context 'when searching with until_date' do
       it 'should search for NewsItem with until option' do
-        feed = mock_model(RssFeed, is_managed?: false)
+        feed = mock_model(RssFeed, is_managed?: false, show_only_media_content?: false)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
+
         until_ts = Time.parse('2012-10-31')
         Time.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
-        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: until_ts.utc.end_of_day }, 1, 10, nil, nil, nil, false)
+        NewsItem.should_receive(:search_for).
+            with('element', [feed], affiliate,
+                 since: nil, until: until_ts.utc.end_of_day,
+                 page: 1, per_page: 10,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [])
 
         news_search.run
       end
@@ -240,8 +310,16 @@ describe NewsSearch do
     context 'when sorting by relevance' do
       it 'should pass in the sort_by param' do
         feed = affiliate.rss_feeds.first
-        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate, :contributor => 'contributor', :publisher => 'publisher', :subject => 'subject', :sort_by => 'r')
-        NewsItem.should_receive(:search_for).with('element', [feed], affiliate, { since: nil, until: nil }, 1, 10, 'contributor', 'subject', 'publisher', true)
+        search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate,
+                                contributor: 'contributor', publisher: 'publisher', subject: 'subject',
+                                sort_by: 'r')
+        NewsItem.should_receive(:search_for).
+            with('element', [feed], affiliate,
+                 since: nil, until: nil,
+                 page: 1, per_page: 10,
+                 contributor: 'contributor', subject: 'subject', publisher: 'publisher',
+                 sort_by_relevance: true,
+                 tags: [])
         search.run.should be_true
       end
     end
@@ -254,7 +332,12 @@ describe NewsSearch do
         hits = [mock('hit1'), mock('hit2')]
         response.stub_chain(:hits, :collect).and_return(hits)
         NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate, { since: nil, until: nil }, 2, 15, nil, nil, nil, false).
+            with('element', [feed], affiliate,
+                 since: nil, until: nil,
+                 page: 2, per_page: 15,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: []).
             and_return(response)
 
         search.run

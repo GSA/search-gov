@@ -10,15 +10,18 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
 
     shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
     is_managed = hash[:is_managed].blank? ? false : hash[:is_managed]
+    show_only_media_content = hash[:show_only_media_content].blank? ? false : hash[:show_only_media_content]
 
     if is_managed
       rss_feed = affiliate.rss_feeds.where(is_managed: true).first_or_initialize
       rss_feed.update_attributes!(name: hash[:name],
-                                  shown_in_govbox: shown_in_govbox)
+                                  shown_in_govbox: shown_in_govbox,
+                                  show_only_media_content: show_only_media_content)
     else
       rss_feed = affiliate.rss_feeds.create!(name: hash[:name],
                                              is_managed: is_managed,
                                              shown_in_govbox: shown_in_govbox,
+                                             show_only_media_content: show_only_media_content,
                                              rss_feed_urls: [rss_feed_url])
     end
     rss_feed.navigation.update_attributes!(is_active: hash[:is_navigable] || false,
@@ -34,6 +37,10 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
     published_at = hash[:published_at].present? ? hash[:published_at] : nil
     multiplier = (hash[:multiplier] || '1').to_i
     published_at ||= hash['published_ago'].blank? ? 1.day.ago : multiplier.send(hash['published_ago']).ago
+    properties = {}
+    properties[:media_content] = { url: hash[:content_url] } if hash[:content_url].present?
+    properties[:media_thumbnail] = { url: hash[:thumbnail_url] } if hash[:thumbnail_url].present?
+
     rss_feed_url.news_items.create!(link: hash['link'],
                                     title: hash['title'],
                                     description: hash['description'],
@@ -41,7 +48,8 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
                                     published_at: published_at,
                                     contributor: hash['contributor'],
                                     publisher: hash['publisher'],
-                                    subject: hash['subject'])
+                                    subject: hash['subject'],
+                                    properties: properties)
   end
   Sunspot.commit
 end
@@ -108,8 +116,8 @@ Then /^I should see (\d+) news results?$/ do |count|
   page.should have_selector(".newsitem", :count => count)
 end
 
-Then /^I should see (\d+) video news results$/ do |count|
-  page.should have_selector(".newsitem.video", :count => count)
+Then /^I should see (\d+) (image|video) news results$/ do |count, media_type|
+  page.should have_selector(".newsitem.#{media_type}", count: count)
 end
 
 Given /^the following Twitter Profiles exist:$/ do |table|

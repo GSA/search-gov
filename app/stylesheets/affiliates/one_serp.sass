@@ -165,6 +165,9 @@ body
   .results-filters
     +clearfix
     padding-bottom: 10px
+  &.text, &.videos
+    .results-filters
+      margin-left: 15px
   .time-filters, .sort-filters, .clear-filters
     float: left
     font-size: 1.1em
@@ -200,6 +203,8 @@ body
         border-width: 6px 6px 0
       &.hide-options
         border-width: 0 6px 6px
+  .current-time-filter
+    padding-left: 0
   .clear-filter
     font-weight: normal
     padding: 5px $results-padding-size
@@ -306,13 +311,19 @@ body
             weight: bold
           margin-left: 61px
           padding: 0.3em 0.5em
-  &.images, &.videos
+  &.images, &.videos, &.media
     padding-top: 18px
     padding-left: 20px
+  &.text
+    .results-filters
+      margin-left: 35px
   &.videos
     width: 695px
     .searchresult.video
       margin-left: 0
+  &.media
+    padding-left: 35px
+    width: 780px
   &.images
     width: 740px
     padding-left: 34px
@@ -560,6 +571,11 @@ body
   .message, .what-to-do-wrapper
     :width 765px
 
+.news-items
+  margin: 0
+  padding: 0
+.media .news-items
+  padding-left: $results-padding-size
 .newsitem
   +clearfix
   h4
@@ -581,15 +597,34 @@ body
   h4
     font-size: 1.25em
 
+#results .newsitem.searchresult.image
+  float: left
+  font-size: 1em
+  margin: 0 8px 8px 0
+  height: 110px
+  padding: 0
+  min-width: 100px
+  max-width: 146px
+  a
+    float: left
+  span.host
+    background-color: #333
+    color: #EEE
+    display: none
+    padding: 0 5px
+    position: absolute
+    z-index: 10
+  img
+    float: left
+    max-width: 146px
+
 #searchresult1
   &.first
     padding-top: $results-padding-top-size + 1
 #indexeddocresult1
   padding-top: $results-padding-top-size + 1
-#newsitem1
+#results.text #newsitem1
   padding-top: $results-padding-top-size + 1
-  &.video
-    padding-top: 0
 
 #search
   .connections-wrapper

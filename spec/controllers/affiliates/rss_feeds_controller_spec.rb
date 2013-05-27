@@ -295,7 +295,8 @@ describe Affiliates::RssFeedsController do
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
         rss_feed.should_receive(:save).and_return(true)
 
-        post :update, :affiliate_id => affiliate.id, :id => rss_feed.id.to_s, :rss_feed => { "url" => "http://somethinglese.gov/feed" }
+        post :update, affiliate_id: affiliate.id, id: rss_feed.id.to_s,
+             rss_feed: { rss_feed_urls_attributes: { '0' => { 'url' => 'http://somethinglese.gov/feed' } } }
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
@@ -312,7 +313,8 @@ describe Affiliates::RssFeedsController do
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(rss_feed.id.to_s).and_return(rss_feed)
         rss_feed.should_receive(:save).and_return(false)
 
-        post :update, :affiliate_id => affiliate.id, :id => rss_feed.id, :rss_feed => { "url" => "" }
+        post :update, affiliate_id: affiliate.id, id: rss_feed.id.to_s,
+             rss_feed: { rss_feed_urls_attributes: { '0' => { 'url' => 'http://somethinglese.gov/feed' } } }
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }

@@ -482,8 +482,14 @@ module SearchHelper
   end
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
-
     link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => news_item.title).html_safe, news_item.link, affiliate, search.query, index, 'VIDS', search_vertical)
+  end
+
+  def render_news_item_image_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
+    content = image_tag news_item.thumbnail_url, alt: news_item.title
+    host = URI.parse(news_item.link).host rescue nil
+    content << content_tag(:span, host, class: 'host')
+    link_with_click_tracking(content.html_safe, news_item.link, affiliate, search.query, index, 'NIMAG', search_vertical)
   end
 
   def youtube_thumbnail_url(news_item)

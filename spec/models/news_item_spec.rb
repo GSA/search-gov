@@ -40,13 +40,29 @@ describe NewsItem do
     end
 
     it "should scrub out extra whitespace, tabs, newlines from title/desc" do
-      news_item = NewsItem.create!(@valid_attributes.merge(:title => " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ", :description => " \nSome     description \n     "))
+      news_item = NewsItem.create!(
+          @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ",
+                                  description: " \nSome     description \n     "))
       news_item.title.should == 'DOD Marks Growth in Spouses’ Employment Program'
       news_item.description.should == 'Some description'
     end
+
+    it 'should set tags to image if media_thumbnail_url and media_content_url are present' do
+      properties = {
+          media_thumbnail: {
+              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg',
+              height: '75', width: '75' },
+          media_content: {
+              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+              type: 'image/jpeg',
+              height: '819', width: '1024' }
+      }
+      news_item = NewsItem.create!(@valid_attributes.merge properties: properties)
+      NewsItem.find(news_item.id).tags.should == %w(image)
+    end
   end
 
-  describe "#search_for(query, rss_feeds, since_or_time_range = nil, page = 1, contributor, subject, publisher)" do
+  describe "#search_for(query, rss_feeds, options = {})" do
     before do
       NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
@@ -61,6 +77,15 @@ describe NewsItem do
                                     publisher: 'Briefing Room',
                                     subject: 'Economy')
 
+      properties = {
+          media_thumbnail: {
+              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg',
+              height: '75', width: '75' },
+          media_content: {
+              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+              type: 'image/jpeg',
+              height: '819', width: '1024' }
+      }
       @gallery_item = NewsItem.create!(rss_feed_url: rss_feed_urls(:white_house_press_gallery_url),
                                        guid: '`unique to feed',
                                        published_at: 1.day.ago,
@@ -69,7 +94,8 @@ describe NewsItem do
                                        description: '<p>that is the policy.</p>',
                                        contributor: 'President',
                                        publisher: 'Briefing Room',
-                                       subject: 'HIV')
+                                       subject: 'HIV',
+                                       properties: properties)
       NewsItem.reindex
       Sunspot.commit
     end
@@ -82,7 +108,10 @@ describe NewsItem do
 
     context "when DublinCore fields are passed in" do
       it "should facet and restrict results based on those criteria" do
-        search = NewsItem.search_for("policy", [@blog], affiliate, nil, nil, nil, 'President', 'Economy', 'Briefing Room')
+        search = NewsItem.search_for('policy', [@blog], affiliate,
+                                     contributor: 'President',
+                                     subject: 'Economy',
+                                     publisher: 'Briefing Room')
         search.total.should == 1
         search.results.first.should == @blog_item
       end
@@ -91,14 +120,16 @@ describe NewsItem do
     describe "sorting" do
       context "when sort_by_relevance param is true" do
         it 'should sort results by relevance' do
-          search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, nil, nil, nil, nil, nil, nil, true)
+          search = NewsItem.search_for('policy', [@blog, @gallery], affiliate,
+                                       sort_by_relevance: true)
           search.results.first.should == @blog_item
         end
       end
 
       context "when sort_by_relevance param is false" do
         it 'should sort results by date' do
-          search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, nil, nil, nil, nil, nil, nil, false)
+          search = NewsItem.search_for('policy', [@blog, @gallery], affiliate,
+                                       sort_by_relevance: false)
           search.results.first.should == @gallery_item
         end
       end
@@ -136,7 +167,7 @@ describe NewsItem do
       let(:since) { 2.days.ago.freeze }
 
       it "should restrict results by when news was published" do
-        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, since)
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, since: since)
         search.total.should == 1
         search.results.first.should == @gallery_item
       end
@@ -144,7 +175,7 @@ describe NewsItem do
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(:since => since, :rss_feeds => "#{@blog.name},#{@gallery.name}", :model => "NewsItem", :term => "policy")))
-        NewsItem.search_for("policy", [@blog, @gallery], affiliate, since)
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, since: since)
       end
     end
 
@@ -152,7 +183,7 @@ describe NewsItem do
       let(:until_ts) { 2.days.ago.end_of_day.freeze }
 
       it 'should restrict results by when news was published' do
-        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, {until: until_ts})
+        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, until: until_ts)
         search.total.should == 1
         search.results.first.should == @blog_item
       end
@@ -160,7 +191,7 @@ describe NewsItem do
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
-        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {until: until_ts})
+        NewsItem.search_for("policy", [@blog, @gallery], affiliate, until: until_ts)
       end
     end
 
@@ -169,17 +200,33 @@ describe NewsItem do
       let(:until_ts) { 2.days.ago.end_of_day.freeze }
 
       it 'should restrict results by when news was published' do
-        search = NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: since_ts, until: until_ts})
+        search = NewsItem.search_for('policy', [@blog, @gallery], affiliate,
+                                     since: since_ts, until: until_ts)
         search.total.should == 1
         search.results.first.should == @blog_item
 
-        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: 1.month.ago, until: 1.week.ago}).total.should == 0
+        NewsItem.search_for('policy', [@blog, @gallery], affiliate,
+                            since: 1.month.ago, until: 1.week.ago).total.should == 0
       end
 
       it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(since: since_ts, until: until_ts, rss_feeds: "#{@blog.name},#{@gallery.name}", model: 'NewsItem', term: 'policy')))
-        NewsItem.search_for("policy", [@blog, @gallery], affiliate, {since: since_ts, until: until_ts})
+            with('solr_search.usasearch',
+                 { query: { since: since_ts,
+                            until: until_ts,
+                            rss_feeds: "#{@blog.name},#{@gallery.name}",
+                            model: 'NewsItem',
+                            term: 'policy' } })
+        NewsItem.search_for('policy', [@blog, @gallery], affiliate,
+                            since: since_ts, until: until_ts)
+      end
+    end
+
+    context 'when tags parameter is specified' do
+      it 'should restrict results with media content and thumbnail in the properties' do
+        search = NewsItem.search_for('policy', [@blog, @gallery], affiliate, tags: %w(image))
+        search.total.should == 1
+        search.results.first.should == @gallery_item
       end
     end
 
@@ -199,7 +246,7 @@ describe NewsItem do
       end
     end
 
-    context 'when since_or_date_range is an empty Hash' do
+    context 'when options is an empty Hash' do
       it "should return with all items" do
         NewsItem.search_for('', [@blog, @gallery], affiliate, {}).total.should == 2
       end

@@ -102,7 +102,7 @@ describe GovboxSet do
         affiliate.stub_chain(:rss_feeds, :includes, :govbox_enabled, :to_a).and_return govbox_enabled_feeds
         @non_video_results = mock('non video results', :total => 3)
         NewsItem.should_receive(:search_for).
-            with('foo', [news_feed, blog_feed], affiliate, a_kind_of(Time), 1).
+            with('foo', [news_feed, blog_feed], affiliate, { since: a_kind_of(Time) }).
             and_return(@non_video_results)
 
         youtube_profile_ids = mock 'youtube profile ids'
@@ -110,7 +110,7 @@ describe GovboxSet do
         youtube_feed = mock_model(RssFeed)
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
         @video_results = mock('video results', :total => 3)
-        NewsItem.should_receive(:search_for).with('foo', [youtube_feed], affiliate, nil, 1).
+        NewsItem.should_receive(:search_for).with('foo', [youtube_feed], affiliate).
             and_return(@video_results)
       end
 

@@ -4,6 +4,13 @@
     %li
       = form.label :name, "Name*"
       = form.text_field :name, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :show_only_media_content, 'Feed type*'
+      .feed-type
+        = form.radio_button :show_only_media_content, false
+        = form.label :show_only_media_content, 'RSS', value: false, style: 'float: none;'
+        = form.radio_button :show_only_media_content, true
+        = form.label :show_only_media_content, 'Media RSS', value: true, style: 'float: none;'
 
 .url-section
   %table.rss-url-list

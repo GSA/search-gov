@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RssFeedData do
   disconnect_sunspot
-  fixtures :rss_feeds, :rss_feed_urls
+  fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
@@ -115,6 +115,34 @@ describe RssFeedData do
       end
     end
 
+    context 'when the feed uses Media RSS' do
+      let(:media_rss_url) { rss_feed_urls :media_feed_url }
+      let(:rss_feed) { rss_feeds :media_feed }
+      let(:affiliate) { affiliates :basic_affiliate }
+      before do
+        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss.xml"
+        HttpConnection.should_receive(:get).with(media_rss_url.url).and_return rss_feed_content
+      end
+
+      it 'should persist media thumbnail and media content properties' do
+        RssFeedData.new(media_rss_url).import
+        media_rss_url.news_items(true).count.should == 3
+        item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
+
+        media_content = item_with_media_props.properties[:media_content]
+        media_content.should == { url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+                                  type: 'image/jpeg' }
+
+        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
+        media_thumbnail.should == { url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg' }
+        item_with_media_props.tags.should == %w(image)
+
+        no_media_content_url_item = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
+        no_media_content_url_item.properties.should be_empty
+        no_media_content_url_item.tags.should be_empty
+      end
+    end
+
     context 'when the feed is in the Atom format' do
       let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
@@ -155,6 +183,15 @@ describe RssFeedData do
         rss_feed_url.reload
         rss_feed_url.news_items.count.should == 0
         rss_feed_url.last_crawl_status.should == 'Unknown feed type.'
+      end
+    end
+  end
+
+  describe '.determine_media_type_from_url' do
+    it 'should identify images' do
+      %w(gif JPEG png).each do |ext|
+        url = "http://some.agency.gov/media.#{ext}"
+        RssFeedData.determine_media_type_from_url(url).should == "image/#{ext.downcase}"
       end
     end
   end

@@ -22,4 +22,22 @@ module NewsSearchHelper
     current_label = sort_by == 'r' ? I18n.t(:by_relevance) : I18n.t(:by_date)
     content_tag(:span, h(current_label), class: 'current-label')
   end
+
+  def determine_feed_type(rss_feed)
+    if rss_feed && rss_feed.is_managed?
+      'videos'
+    elsif rss_feed and rss_feed.show_only_media_content?
+      'media'
+    else
+      'text'
+    end
+  end
+
+  def determine_news_item_partial(feed_type)
+    case feed_type
+    when 'text' then 'shared/news_item'
+    when 'videos' then 'shared/video_news_item'
+    when 'media' then 'shared/image_news_item'
+    end
+  end
 end

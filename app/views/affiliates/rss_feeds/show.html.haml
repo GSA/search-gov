@@ -20,6 +20,9 @@
         %td.name Name
         %td= @rss_feed.name
       %tr
+        %td.name Feed type
+        %td= @rss_feed.show_only_media_content? ? 'Media RSS' : 'RSS'
+      %tr
         %td.name Show as GovBox
         %td= @rss_feed.shown_in_govbox? ? 'Yes' : 'No'
       %tr

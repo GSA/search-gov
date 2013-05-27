@@ -12,7 +12,8 @@
 #left_column
   = render "shared/affiliate_vertical_navigation"
 %a#main_content
-#results{ :class => "#{@search.rss_feed && @search.rss_feed.is_managed? ? 'videos' : 'news'}" }
+- @feed_type = determine_feed_type @search.rss_feed
+#results{ class: @feed_type }
   %a{:name => "content"}
   - if @affiliate.is_time_filter_enabled?
     - search_path_method = (@search.class.to_s.underscore + '_path').to_sym
@@ -52,9 +53,8 @@
       = render partial: 'news_custom_date_range_search_form', locals: { search_params: @search_params }
 
   - if @search.results.present?
-    - news_item_partial = (@search.rss_feed && @search.rss_feed.is_managed? or @form_path == video_news_search_path) ? 'shared/video_news_item' : 'shared/news_item'
     - @search.hits.each_with_index do |hit, index|
-      = render news_item_partial, :hit => hit, :index => index
+      = render determine_news_item_partial(@feed_type), :hit => hit, :index => index
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
       = search_results_by_logo('some type of news')

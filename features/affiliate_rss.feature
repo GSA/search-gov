@@ -38,6 +38,7 @@ Feature: Affiliate RSS
     Then I should see "RSS feed successfully created."
     And I should see the following table rows:
       | Name            | Videos |
+      | Feed type       | RSS    |
       | Show as GovBox  | No     |
       | Show in sidebar | No     |
     And I should see the following table rows:
@@ -54,9 +55,38 @@ Feature: Affiliate RSS
     And I press "Update"
     Then I should see "RSS feed successfully updated."
     And I should see the following table rows:
+      | Name            | Videos |
+      | Feed type       | RSS    |
+      | Show as GovBox  | No     |
+      | Show in sidebar | No     |
+    And I should see the following table rows:
       | URL                                                     | Last Crawled | Status  |
       | gdata.youtube.com/feeds/base/videos?author=noaa         | Pending      | Pending |
       | gdata.youtube.com/feeds/base/videos?author=usgovernment | Pending      | Pending |
+
+  Scenario: Adding MRSS feed
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I follow "RSS"
+    And I follow "Add new RSS feed"
+    And I fill in the following:
+      | Name*          | Videos                                                                         |
+      | RSS feed URL 0 | www.flickr.com/services/feeds/photos_public.gne?id=27784370@N05&format=rss_200 |
+    And I choose "Media RSS"
+    And I press "Add"
+    Then I should see "RSS feed successfully created."
+    And I should see the following table rows:
+      | Name            | Videos    |
+      | Feed type       | Media RSS |
+      | Show as GovBox  | No        |
+      | Show in sidebar | No        |
+    And I should see the following table rows:
+      | URL                                                                            | Last Crawled | Status  |
+      | www.flickr.com/services/feeds/photos_public.gne?id=27784370@N05&format=rss_200 | Pending      | Pending |
+    And I should not see "http://www.flickr.com/services/feeds/photos_public.gne?id=27784370@N05&format=rss_200"
 
   Scenario: Validating RSS feed input
     Given the following Affiliates exist:

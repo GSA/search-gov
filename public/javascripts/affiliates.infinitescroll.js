@@ -31,8 +31,7 @@ jQuery(document).ready(function() {
         odieFrag,
         logos = ['bing', 'usasearch', 'google'],
         logo,
-        currentLogo,
-        odieDocs;
+        currentLogo;
 
     switch (result) {
 
@@ -106,7 +105,7 @@ jQuery(document).ready(function() {
         break;
     }
 
-    opts.loading.finished.call($(opts.contentSelector)[0],opts)
+    opts.loading.finished.call($(opts.contentSelector)[0],opts);
 
     // smooth scroll to ease in the new content
     if (opts.animate) {
@@ -117,7 +116,6 @@ jQuery(document).ready(function() {
     }
 
     if (!opts.animate) opts.state.isDuringAjax = false; // once the call is done, we can allow it again.
-
     callback(this,data);
   };
 
@@ -126,7 +124,7 @@ jQuery(document).ready(function() {
     return '<a href="#main_content">'.concat(backToTop, '</a>');
   }
 
-  jQuery('#results').infinitescroll( {
+  jQuery('#results').infinitescroll({
     navSelector: '#usasearch_pagination',
     nextSelector: '#usasearch_pagination a.next_page',
     itemSelector: '#results .searchresult, #results .image_result, .results-by-logo',
@@ -140,6 +138,8 @@ jQuery(document).ready(function() {
     },
     bufferPx: 500,
     behavior: 'usasearch'
+  }, function(arrayOfNewElems) {
+    load_image_spans(arrayOfNewElems);
   });
 
   if ((jQuery('#usasearch_pagination').length > 0) &&

@@ -6,6 +6,7 @@ class NewsItem < ActiveRecord::Base
   before_validation :clean_text_fields
   belongs_to :rss_feed_url
   scope :recent, :order => 'published_at DESC', :limit => 10
+  serialize :properties, Hash
 
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
   TIME_BASED_SEARCH_OPTIONS["h"] = :hour
@@ -23,26 +24,23 @@ class NewsItem < ActiveRecord::Base
     string :contributor
     string :subject
     string :publisher
+    string :tags, multiple: true
   end
 
   class << self
     include QueryPreprocessor
+    def search_for(query, rss_feeds, affiliate, options = {})
+      since_ts = options[:since]
+      until_ts = options[:until]
+      page = options[:page] || 1
+      per_page = options[:per_page] || 10
 
-    def search_for(query, rss_feeds, affiliate, since_or_time_range = nil, page = 1, per_page = 10,
-      contributor = nil, subject = nil, publisher = nil, sort_by_relevance = false)
-      if since_or_time_range.is_a?(Hash)
-        since_ts = since_or_time_range[:since]
-        until_ts = since_or_time_range[:until]
-      else
-        since_ts = since_or_time_range
-        until_ts = nil
-      end
 
       sanitized_query = preprocess(query)
       return nil if rss_feeds.blank?
       return nil if (rss_feed_url_ids = rss_feeds.map(&:rss_feed_urls).flatten.uniq.map(&:id)).blank?
       excluded_urls = affiliate.excluded_urls.collect { |url| url.url }
-      instrument_hash = {:model => self.name, :term => sanitized_query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
+      instrument_hash = { model: self.name, term: sanitized_query, rss_feeds: rss_feeds.map(&:name).join(',') }
       instrument_hash.merge!(:since => since_ts) if since_ts
       instrument_hash.merge!(:until => until_ts) if until_ts
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
@@ -56,14 +54,15 @@ class NewsItem < ActiveRecord::Base
             with(:published_at).greater_than(since_ts) if since_ts
             with(:published_at).less_than(until_ts) if until_ts
             without(:link).any_of excluded_urls unless excluded_urls.empty?
+            with(:tags, options[:tags]) if options[:tags].present?
 
-            %w(contributor subject publisher).each do |facet_name|
+            [:contributor, :subject, :publisher].each do |facet_name|
               facet_restriction = nil
-              facet_restriction = with(facet_name.to_sym, eval(facet_name)) if eval(facet_name)
-              facet(facet_name.to_sym, :exclude => facet_restriction)
+              facet_restriction = with(facet_name, options[facet_name]) if options[facet_name]
+              facet(facet_name, exclude: facet_restriction)
             end
 
-            order_by(:published_at, :desc) unless sort_by_relevance
+            order_by(:published_at, :desc) unless options[:sort_by_relevance]
             paginate :page => page, :per_page => per_page
           end
         rescue RSolr::Error::Http => e
@@ -84,6 +83,21 @@ class NewsItem < ActiveRecord::Base
 
   def is_video?
     link =~ /^#{Regexp.escape('http://www.youtube.com/watch?v=')}.+/i
+  end
+
+  def tags
+    if properties.key?(:media_content) and
+        properties[:media_content][:url].present? and
+        properties.key?(:media_thumbnail) and
+        properties[:media_thumbnail][:url].present?
+      %w(image)
+    else
+      []
+    end
+  end
+
+  def thumbnail_url
+    properties[:media_thumbnail][:url] if properties[:media_thumbnail]
   end
 
   private

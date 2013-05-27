@@ -1,5 +1,5 @@
 - is_video = @rss_feed and @rss_feed.is_managed?
-.newsitem.searchresult{:id => "newsitem#{index+1}"}
+.newsitem.searchresult{:id => "newsitem#{@search.startrecord + index}"}
   - if is_video
     .thumbnail= render_news_item_video_thumbnail_link_with_click_tracking(@affiliate, @search, @search_vertical, hit.instance, index)
   %div{ :class => is_video ? 'mixed' : nil }
