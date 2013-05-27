@@ -5,8 +5,9 @@ describe "searches/advanced.html.haml" do
   fixtures :affiliates
 
   context "visiting the advanced search page for an English language affiliate" do
+    let(:affiliate) { affiliates(:usagov_affiliate) }
     before do
-      assign(:affiliate, affiliates(:usagov_affiliate))
+      assign(:affiliate, affiliate)
     end
 
     it "should display text via the I18n in English" do
@@ -33,6 +34,17 @@ describe "searches/advanced.html.haml" do
                                     href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
     end
 
+    context 'when the search engine is Google' do
+      before { affiliate.should_receive(:search_engine).and_return 'Google' }
+
+      it 'should render advanced search operators link' do
+        render
+        rendered.should have_selector(:a,
+                                      content: 'advanced search operators',
+                                      href: 'https://support.google.com/websearch/answer/136861?hl=en')
+      end
+    end
+
     describe "adult filter options" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
@@ -55,9 +67,10 @@ describe "searches/advanced.html.haml" do
   end
 
   context "visiting the Spanish version of the page" do
+    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
     before do
       I18n.locale = :es
-      assign(:affiliate, affiliates(:gobiernousa_affiliate))
+      assign(:affiliate, affiliate)
     end
 
     it "should display text in Spanish" do
@@ -74,7 +87,18 @@ describe "searches/advanced.html.haml" do
       render
       rendered.should have_selector(:a,
                                     content: 'opciones de búsqueda avanzada',
-                                    href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
+                                    href: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx')
+    end
+
+    context 'when the search engine is Google' do
+      before { affiliate.should_receive(:search_engine).and_return 'Google' }
+
+      it 'should render advanced search operators link' do
+        render
+        rendered.should have_selector(:a,
+                                      content: 'opciones de búsqueda avanzada',
+                                      href: 'https://support.google.com/websearch/answer/136861?hl=es')
+      end
     end
 
     after do

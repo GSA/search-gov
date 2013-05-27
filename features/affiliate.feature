@@ -239,7 +239,6 @@ Feature: Affiliate clients
     And I fill in "query" with "gobierno"
     And I press "Buscar"
     Then I should see "gobierno - My awesome agency resultados de la búsqueda"
-    Then show me the page
     And I should see "Búsqueda avanzada"
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"

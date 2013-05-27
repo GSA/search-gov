@@ -390,7 +390,7 @@ module SearchHelper
   end
 
   def render_advance_search_operators_help_text(search_engine)
-    url = search_engine == 'Bing' ? 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx' : 'http://support.google.com/websearch/answer/136861?hl=en'
+    url = t "advanced_search_operator_url_on_#{search_engine.downcase}"
     link = link_to I18n.t(:advanced_search_operator_link), url
     content_tag(:div, I18n.t(:advanced_search_operator, link: link).html_safe)
   end
