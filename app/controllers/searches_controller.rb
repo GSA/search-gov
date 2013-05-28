@@ -16,7 +16,7 @@ class SearchesController < ApplicationController
   ssl_allowed :index, :news, :docs, :advanced, :videonews
 
   def index
-    @search = WebSearch.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
+    @search = WebSearch.new(@search_options.merge(lat_lon: cookies[:lat_lon]))
     @search.run
     @form_path = search_path
     @page_title = @search.query

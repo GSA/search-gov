@@ -150,11 +150,11 @@ describe WebSearch do
 
     describe "populating additional results" do
       before do
-        @search = WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate), :geoip_info => 'test')
+        @search = WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate), :lat_lon => '-23.9,45.1')
       end
 
       it 'should get the info from GovboxSet' do
-        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test').and_return nil
+        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), '-23.9,45.1').and_return nil
         @search.run
       end
     end
