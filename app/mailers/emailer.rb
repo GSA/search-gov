@@ -71,16 +71,6 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def mobile_feedback(email, message)
-    setup_email(I18n.t(:mobile_feedback_contact_recipients), __method__)
-    @from = email
-    @message = message
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on, :charset => 'iso-8859-1') do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
-  end
-
   def new_affiliate_site(affiliate, user)
     setup_email(user.email, __method__)
     @affiliate = affiliate

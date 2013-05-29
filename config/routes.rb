@@ -144,7 +144,6 @@ UsasearchRails3::Application.routes.draw do
         post :upload
       end
     end
-    resources :site_pages do as_routes end
     resources :agencies do as_routes end
     resources :agency_urls do as_routes end
     resources :agency_queries do as_routes end
@@ -186,8 +185,6 @@ UsasearchRails3::Application.routes.draw do
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-  get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
-  get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
   get '/api/search' => 'api#search', :as => :api_search
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/login' => 'user_sessions#new', :as => :login

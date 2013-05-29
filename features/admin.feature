@@ -183,10 +183,6 @@ Feature:  Administration
     And I should see the following breadcrumbs: USASearch > Super Admin > Users
 
     When I go to the admin home page
-    And I follow "Sites"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Sites
-
-    When I go to the admin home page
     And I follow "Filters"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Filters
 
@@ -213,10 +209,6 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Superfresh Bulk Upload"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Superfresh Bulk Upload
-
-    When I go to the admin home page
-    And I follow "USA.gov Mobile"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > USA.gov Mobile
 
     When I go to the admin home page
     And I follow "Agencies"

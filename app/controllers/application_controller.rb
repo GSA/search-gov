@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user
   protect_from_forgery
-  AVAILABLE_LOCALES = [:en, :es]
   VALID_FORMATS = %w{html rss json xml mobile}
 
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
@@ -30,25 +29,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_locale
-    I18n.locale = determine_locale_from_url(params[:locale].to_s) || I18n.default_locale
-  end
-
   def set_default_locale
     I18n.locale = :en
-  end
-
-  def determine_locale_from_url (locale_param)
-    return nil if locale_param.blank? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)
-    locale_param.to_sym
-  end
-
-  def locale_exists? (locale)
-    available_locales.include?(locale.to_sym)
-  end
-
-  def available_locales
-    AVAILABLE_LOCALES
   end
 
   def default_url_options(options={})

@@ -154,10 +154,6 @@ module ApplicationHelper
     h hit.instance.send(field_name)
   end
 
-  def mobile_menu_item(link_text, target)
-    content_tag(:li, link_to(content_tag(:div, link_text), target), :class => 'list-item')
-  end
-
   def url_for_login
     url_for(:controller => "/user_sessions",
             :action => "new",
@@ -205,14 +201,8 @@ module ApplicationHelper
     content = ''
     if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i) or error_page?
       content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
-    elsif mobile_landing_page?
-      content = tag(:meta, {:name => 'ROBOTS', :content => 'INDEX, NOFOLLOW'})
     end
     raw content
-  end
-
-  def mobile_landing_page?
-    controller.controller_path == "home" and request.format == :mobile
   end
 
   def render_connect_section
