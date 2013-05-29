@@ -336,6 +336,45 @@ describe WebSearch do
       end
     end
 
+    context "when jobs are present" do
+      before do
+        @jobs_array = []
+        @jobs_array << Hashie::Mash.new(
+          id: "usajobs:12345",
+          position_title: "Physician  (Primary Care - Women Clinic)",
+          organization_name: "Veterans Affairs, Veterans Health Administration",
+          rate_interval_code: "PA",
+          minimum: 60000,
+          maximum: 70000,
+          start_date: "2012-10-05",
+          end_date: "2023-10-04",
+          locations: [
+            "Memphis, TN", "Lansing, MI"
+          ],
+          url: "https://www.usajobs.gov/GetJob/ViewDetails/12345")
+        @jobs_array << Hashie::Mash.new(
+          id: "usajobs:23456",
+          position_title: "PHYSICAL THERAPIST",
+          organization_name: "Veterans Affairs, Veterans Health Administration",
+          rate_interval_code: "PA",
+          minimum: 40000,
+          maximum: 50000,
+          start_date: "2012-10-05",
+          end_date: "2023-10-04",
+          locations: [
+            "Fulton, MD"
+          ],
+          url: "https://www.usajobs.gov/GetJob/ViewDetails/23456")
+        search.stub!(:jobs).and_return @jobs_array
+      end
+
+      it "should output jobs" do
+        json = search.to_json
+        parsed = JSON.parse(json)
+        parsed['jobs'].to_json.should == @jobs_array.to_json
+      end
+    end
+
     context "when spelling suggestion is present" do
       before do
         search.instance_variable_set(:@spelling_suggestion, "spell it this way")

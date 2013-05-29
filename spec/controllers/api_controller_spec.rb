@@ -75,6 +75,11 @@ describe ApiController do
         get :search, @auth_params.merge(:query => "fish")
         assigns[:search_options][:query].should == "fish"
       end
+
+      it "should set the lat_lon" do
+        get :search, @auth_params.merge(:query => "fish", :lat_lon => '37.7676,-122.5164')
+        assigns[:search_options][:lat_lon].should == "37.7676,-122.5164"
+      end
     end
 
     describe "jsonp support" do

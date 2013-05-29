@@ -71,6 +71,7 @@ class WebSearch < Search
     unless @error_message
       hash.merge!(:spelling_suggestion => @spelling_suggestion) if @spelling_suggestion
       hash.merge!(:boosted_results => boosted_contents.results) if has_boosted_contents?
+      hash.merge!(:jobs => jobs) if jobs.present?
     end
     hash
   end

@@ -6,7 +6,7 @@
   Search API
 = render_help_link(@help_link)
 %p
-  USASearch's Search Data API returns web, images, document, news, and video news search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
+  USASearch's Search Data API returns web, images, document, news, and video news search results, in JSON or XML format, along with sections for summary stats, boosted sites, jobs, and related searches.
 %p
   The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
@@ -63,6 +63,9 @@
     %li
       %span sort_by:
       For news searches (i.e., index must be 'news'), this specifies sorting results either by date or by relevancy. Possible values are 'r' and 'd'. Omitting this parameter defaults to date-based sorting.
+    %li
+      %span lat_lon:
+      A comma-separated lat/lon pair (e.g., '34.56,-122.42'). Some results modules like jobs can show location-based results if this optional parameter is passed in.
   %h2
     Examples
   %br
@@ -105,6 +108,43 @@
     %li
       %span spelling_suggestion:
       A "did you mean" search suggestion for a potentially mistyped query term
+    %li
+      %span jobs:
+      Array of jobs if any jobs matched the query term.
+      %ul
+        %li
+          %span id:
+          The ID of the job as returned by the
+          = link_to 'Jobs API', 'http://usasearch.howto.gov/developer/jobs.html'
+        %li
+          %span position_title:
+          The job title
+        %li
+          %span organization_name:
+          The organization offering the position
+        %li
+          %span rate_interval_code:
+          The rate interval code, as described by
+          = link_to 'USAJobs Schemas', 'https://schemas.usajobs.gov/Enumerations/CodeLists.xml'
+        %li
+          %span minimum:
+          The lower range of the salary/wage
+        %li
+          %span maximum:
+          The upper range of the salary/wage
+        %li
+          %span start_date:
+          The date the position is available for applications
+        %li
+          %span end_date:
+          The last day applications are accepted for this position
+        %li
+          %span url:
+          The URL hosting the official information on the position
+        %li
+          %span locations:
+          Array of locations (e.g., 'Fairfax, VA') where this position is available
+
     %li
       %span boosted_results:
       Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
