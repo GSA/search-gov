@@ -856,7 +856,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
@@ -880,7 +880,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should not see an image link to "logo" with url for "http://m.agency.gov"
+    Then I should not see an image link to "aff site" with url for "http://m.agency.gov"
     And I should see "logo_mobile_es.png" image
 
     When I go to the "aff site" affiliate page
@@ -893,7 +893,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should not see an image with alt text "logo"
+    Then I should not see an image with alt text "aff site"
 
   Scenario: Editing managed header/footer with invalid input and make it live
     Given the following Affiliates exist:
@@ -962,7 +962,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
@@ -1012,7 +1012,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged Mobile"
-    Then I should see an image link to "logo" with url for "http://updated.m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://updated.m.agency.gov"
     And I should see "logo_mobile_es.png" image
 
     When I go to the "aff site" affiliate page
@@ -1043,7 +1043,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "logo" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
@@ -1063,7 +1063,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Staged Mobile"
     Then I should see a link to "aff site" with url for "http://updated.m.agency.gov"
-    And I should not see an image link to "logo" with url for "http://updated.m.agency.gov"
+    And I should not see an image link to "aff site" with url for "http://updated.m.agency.gov"
     And I should not see an image with alt text "logo"
 
     When I go to the "aff site" affiliate page
