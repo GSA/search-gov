@@ -103,15 +103,6 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def saucelabs_report(admin_email, sauce_labs_link)
-    setup_email(admin_email, __method__)
-    @sauce_labs_link = sauce_labs_link
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
-  end
-
   def affiliate_header_footer_change(affiliate)
     recipients = affiliate.users.collect(&:email).join(', ')
     setup_email(recipients, __method__)

@@ -230,7 +230,7 @@ describe "Twitter rake tasks" do
         it "should log an error message if one is received" do
           @stream.stub!(:each).and_yield('Bad message')
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:error).with("[#{now}] [TWITTER] [ERROR] MultiJson::DecodeError occured in stream: Bad message")
+          @logger.should_receive(:error).with("[#{now}] [TWITTER] [ERROR] Yajl::ParseError occured in stream: Bad message")
           @rake[task_name].invoke
         end
 

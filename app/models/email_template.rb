@@ -14,7 +14,6 @@ class EmailTemplate < ActiveRecord::Base
       :new_affiliate_site => '[USASearch] Your new site: <%= @affiliate.display_name %>',
       :new_affiliate_user => '[USASearch] USASearch Affiliate Program: You Were Added to <%= @affiliate.display_name %>',
       :welcome_to_new_user_added_by_affiliate => '[USASearch] Welcome to the USASearch Affiliate Program',
-      :saucelabs_report => '[USASearch] Sauce Labs Report',
       :affiliate_header_footer_change => '[USASearch] The header and footer for <%= @affiliate.display_name %> have been changed',
       :affiliate_monthly_report => '[USASearch] Monthly Search Analytics Report for <%= Date::MONTHNAMES[@report_date.month.to_i] %> <%= @report_date.year %>',
       :affiliate_yearly_report => '[USASearch] <%= @report_year %> Year in Review',

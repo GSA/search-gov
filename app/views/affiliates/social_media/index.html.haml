@@ -33,7 +33,7 @@
         = link_to image_tag('youtube-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'YoutubeProfile'), :remote => true, :title => 'Add a new Youtube profile.'
       %div#new_social_media_profile_form
         = form_for affiliate_social_media_path(@affiliate), :html => { :class => 'generic-form social-media-form' } do |f|
-          = error_messages_for(@profile, :header_message => nil, :class => 'error')
+          = error_messages_for('profile', :header_message => nil, :class => 'error')
           %div#new_social_media_profile
             - if @profile
               = render :partial => "#{@profile.class.name.underscore}_fields", :locals => { :profile => @profile }

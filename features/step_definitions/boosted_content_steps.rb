@@ -33,7 +33,7 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
 end
 
 When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do |button, pos|
-  within(".boosted-content-list tbody tr:nth-child(#{pos.to_i + 1})") { click_button(button) }
+  within(".boosted-content-list table tbody tr.row-item:nth-child(#{pos.to_i + 1})") { click_button(button) }
 end
 
 When /^there are (\d+) Boosted Content entries exist for the affiliate "([^\"]*)":$/ do |count, affiliate_name, table|

@@ -5,17 +5,6 @@ describe Emailer do
   include EmailSpec::Matchers
   fixtures :affiliates, :report_recipients, :users, :features
 
-  describe "#saucelabs_report" do
-    let(:url) { 'http://cdn.url' }
-
-    subject { Emailer.saucelabs_report('foo@bar.com', url).deliver }
-
-    it { should deliver_to('foo@bar.com') }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Sauce Labs Report/) }
-    it { should have_body_text(/#{url}/) }
-  end
-
   describe "#feature_admonishment(user, affiliates_with_unused_features)" do
     let(:user) { users(:another_affiliate_manager) }
 
