@@ -52,6 +52,7 @@ gem 'oj'
 gem 'faraday_middleware'
 gem 'net-http-persistent'
 gem 'rash'
+gem 'geoip'
 gem 'us_states'
 gem 'htmlentities'
 

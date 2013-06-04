@@ -10,7 +10,7 @@ class GovboxSet
               :jobs,
               :related_search
 
-  def initialize(query, affiliate, lat_lon)
+  def initialize(query, affiliate, geoip_info)
     @boosted_contents = BoostedContent.search_for(query, affiliate)
     @featured_collections = FeaturedCollection.search_for(query, affiliate)
     if affiliate.is_agency_govbox_enabled?
@@ -21,7 +21,7 @@ class GovboxSet
       jobs_options = {query: query, size: 3, hl: 1}
       org_tags_hash = affiliate.has_organization_code? ? {organization_id: affiliate.agency.organization_code} : {tags: 'federal'}
       jobs_options.merge!(org_tags_hash)
-      jobs_options.merge!(lat_lon: lat_lon) if lat_lon.present?
+      jobs_options.merge!(lat_lon: [geoip_info.latitude, geoip_info.longitude].join(',')) if geoip_info.present?
       @jobs = Jobs.search(jobs_options)
     end
     govbox_enabled_feeds = affiliate.rss_feeds.includes(:rss_feed_urls).govbox_enabled.to_a

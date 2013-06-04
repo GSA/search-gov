@@ -3,20 +3,20 @@ require 'spec_helper'
 describe GovboxSet do
   fixtures :affiliates, :agencies, :rss_feed_urls, :rss_feeds
 
-  describe ".new(query, affiliate, lat_lon)" do
+  describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:lat_lon) { '12.34,-34.56' }
+    let(:geoip_info) { mock('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
 
     it 'should assign boosted contents' do
       BoostedContent.stub!(:search_for).with('foo', affiliate).and_return "BoostedContent results"
-      govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.boosted_contents.should == "BoostedContent results"
     end
 
     it 'should assign featured collections' do
       FeaturedCollection.stub!(:search_for).with('foo', affiliate).and_return "FeaturedCollection results"
-      govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.featured_collections.should == "FeaturedCollection results"
     end
 
@@ -31,14 +31,14 @@ describe GovboxSet do
         end
 
         it 'should assign agency' do
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.agency.should == agency
         end
       end
 
       context 'when query does not match an agency' do
         it 'should assign nil agency' do
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.agency.should be_nil
         end
       end
@@ -50,7 +50,7 @@ describe GovboxSet do
       end
 
       it 'should assign nil agency' do
-        govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.agency.should be_nil
       end
     end
@@ -69,7 +69,7 @@ describe GovboxSet do
           Jobs.should_receive(:search).
             with(:query => 'foo', :hl => 1, :size => 3, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
             and_return "jobs info"
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.jobs.should == "jobs info"
         end
       end
@@ -88,7 +88,7 @@ describe GovboxSet do
       end
 
       it 'should assign nil jobs' do
-        govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.jobs.should be_nil
       end
     end
@@ -115,7 +115,7 @@ describe GovboxSet do
       end
 
       it "should retrieve govbox-enabled non-video and video RSS feeds" do
-        govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.news_items.should == @non_video_results
         govbox_set.video_news_items.should == @video_results
       end
@@ -131,7 +131,7 @@ describe GovboxSet do
 
         context "when the search matches a MedTopic record" do
           it "should retrieve the associated Med Topic record" do
-            govbox_set = GovboxSet.new('ulcerative colitis', affiliate, lat_lon)
+            govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
             govbox_set.med_topic.should == med_topics(:ulcerative_colitis)
           end
 
@@ -141,7 +141,7 @@ describe GovboxSet do
             end
 
             it "should retrieve the spanish version of the med topic" do
-              govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, lat_lon)
+              govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, geoip_info)
               govbox_set.med_topic.should == med_topics(:ulcerative_colitis_es)
             end
 
@@ -154,7 +154,7 @@ describe GovboxSet do
 
         context "when the query does not match a med topic" do
           it "should not set the med topic" do
-            govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.med_topic.should be_nil
           end
         end
@@ -166,7 +166,7 @@ describe GovboxSet do
         end
 
         it "should not set the med topic" do
-          govbox_set = GovboxSet.new('ulcerative colitis', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
           govbox_set.med_topic.should be_nil
         end
       end
@@ -189,14 +189,14 @@ describe GovboxSet do
           end
 
           it "should find the most recent relevant tweet" do
-            govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.tweets.should == 'Twitter stuff'
           end
         end
 
         context "when affiliate has no Twitter Profiles" do
           it "should not set tweets" do
-            govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.tweets.should be_nil
           end
         end
@@ -209,7 +209,7 @@ describe GovboxSet do
         end
 
         it "should not set tweets" do
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.tweets.should be_nil
         end
       end
@@ -226,7 +226,7 @@ describe GovboxSet do
         end
 
         it "should find relevant photos" do
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.photos.should == "FlickrPhoto results"
         end
       end
@@ -237,7 +237,7 @@ describe GovboxSet do
         end
 
         it "should not search for Flickr Photos" do
-          govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.photos.should be_nil
         end
       end
@@ -245,7 +245,7 @@ describe GovboxSet do
 
     it 'should assign related searches' do
       SaytSuggestion.stub!(:related_search).with('foo', affiliate).and_return "related search results"
-      govbox_set = GovboxSet.new('foo', affiliate, lat_lon)
+      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.related_search.should == "related search results"
     end
   end

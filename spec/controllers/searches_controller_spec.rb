@@ -73,21 +73,6 @@ describe SearchesController do
     end
   end
 
-  context 'when lan_lon cookie is set' do
-    let(:web_search) { mock(WebSearch, :query => 'jobs') }
-
-    before do
-      web_search.stub!(:run)
-      request.cookies['lat_lon'] = '12.34,-98.76'
-      @affiliate = affiliates(:power_affiliate)
-    end
-
-    it 'should pass lat_lon into WebSearch' do
-      WebSearch.should_receive(:new).with(hash_including(:lat_lon => '12.34,-98.76')).and_return(web_search)
-      get :index, :affiliate => @affiliate.name, :query => "jobs"
-    end
-  end
-
   context "when handling a valid affiliate search request" do
     render_views
     before do
