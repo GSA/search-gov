@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527222128) do
+ActiveRecord::Schema.define(:version => 20130604222205) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -528,26 +528,6 @@ ActiveRecord::Schema.define(:version => 20130527222128) do
   add_index "indexed_domains", ["affiliate_id", "domain"], :name => "index_indexed_domains_on_affiliate_id_and_domain", :unique => true
   add_index "indexed_domains", ["domain"], :name => "index_indexed_domains_on_domain"
 
-  create_table "legacy_rss_feed_urls", :force => true do |t|
-    t.integer  "rss_feed_id",                              :null => false
-    t.string   "url",                                      :null => false
-    t.datetime "last_crawled_at"
-    t.string   "last_crawl_status", :default => "Pending", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "legacy_rss_feed_urls", ["rss_feed_id"], :name => "index_rss_feed_urls_on_rss_feed_id"
-
-  create_table "legacy_youtube_profiles", :force => true do |t|
-    t.string   "username"
-    t.integer  "affiliate_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "legacy_youtube_profiles", ["affiliate_id"], :name => "index_youtube_profiles_on_affiliate_id"
-
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
     t.datetime "created_at"
@@ -592,19 +572,6 @@ ActiveRecord::Schema.define(:version => 20130527222128) do
     t.datetime "updated_at"
   end
 
-  create_table "med_groups", :force => true do |t|
-    t.integer  "medline_gid"
-    t.string   "medline_title",                                  :null => false
-    t.string   "medline_url",   :limit => 120
-    t.string   "locale",        :limit => 5,   :default => "en"
-    t.boolean  "visible",                      :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "med_groups", ["medline_gid"], :name => "index_med_groups_on_medline_gid"
-  add_index "med_groups", ["medline_title"], :name => "index_med_groups_on_medline_title"
-
   create_table "med_related_topics", :force => true do |t|
     t.integer  "med_topic_id",        :null => false
     t.integer  "related_medline_tid", :null => false
@@ -635,31 +602,14 @@ ActiveRecord::Schema.define(:version => 20130527222128) do
 
   add_index "med_synonyms", ["medline_title"], :name => "index_med_synonyms_on_medline_title"
 
-  create_table "med_topic_groups", :force => true do |t|
-    t.integer  "topic_id",   :null => false
-    t.integer  "group_id",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "med_topic_relateds", :force => true do |t|
-    t.integer  "topic_id",         :null => false
-    t.integer  "related_topic_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "med_topics", :force => true do |t|
     t.integer  "medline_tid"
-    t.string   "medline_title",                                         :null => false
-    t.string   "medline_url",          :limit => 120
-    t.string   "locale",               :limit => 5,   :default => "en"
-    t.integer  "lang_mapped_topic_id"
+    t.string   "medline_title",                                  :null => false
+    t.string   "medline_url",   :limit => 120
+    t.string   "locale",        :limit => 5,   :default => "en"
     t.text     "summary_html"
-    t.boolean  "visible",                             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "mesh_titles",                         :default => ""
   end
 
   add_index "med_topics", ["medline_tid"], :name => "index_med_topics_on_medline_tid"
