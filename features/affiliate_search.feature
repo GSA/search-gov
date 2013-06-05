@@ -58,16 +58,16 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Noticias" has the following news items:
       | link                              | title               | guid    | published_ago | published_at | description                                | subject        |
-      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Gobierno item First news item for the feed | economy        |
-      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Gobierno item Next news item for the feed  | jobs           |
-      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Gobierno item Next news item for the feed  | health         |
-      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Gobierno item Next news item for the feed  | foreign policy |
-      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Gobierno item Next news item for the feed  | education      |
-      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | olympics       |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Obama item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Obama item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Obama item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Obama item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Obama item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Obama item Next news item for the feed  | olympics       |
     And feed "es_agency" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
-      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
-      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Obama video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Obama video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
       | phrase           |
       | Some Unique item |
@@ -182,9 +182,9 @@ Feature: Affiliate Search
     And I should see "Search" button
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "gobierno"
+    And I fill in "query" with "obama"
     And I press "Buscar"
-    Then I should see "gobierno - Spanish bar site resultados de la búsqueda"
+    Then I should see "obama - Spanish bar site resultados de la búsqueda"
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
@@ -195,24 +195,24 @@ Feature: Affiliate Search
     And I should not see "Ocultar opciones" in the left column
     And I should not see "Cualquier fecha"
     And I should not see "All Time"
-    And I should see "Noticias sobre de 'gobierno' de Spanish bar site"
-    And I should see "Videos de 'gobierno' de Spanish bar site"
+    And I should see "Noticias sobre de 'obama' de Spanish bar site"
+    And I should see "Videos de 'obama' de Spanish bar site"
 
-    When I follow "Noticias sobre de 'gobierno'"
+    When I follow "Noticias sobre de 'obama'"
     Then I should see "Mostrar opciones" in the left column
     And I should see "Ocultar opciones" in the left column
     And I should see "Spanish item"
     And I should see "Spanish video item"
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "gobierno"
+    And I fill in "query" with "obama"
     And I press "Buscar"
-    And I follow "Videos de 'gobierno'"
+    And I follow "Videos de 'obama'"
     Then I should see "Spanish video item"
     And I should not see "Spanish item"
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "gobierno"
+    And I fill in "query" with "obama"
     And I press "Buscar"
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
