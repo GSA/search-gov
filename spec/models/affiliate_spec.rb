@@ -144,6 +144,13 @@ describe Affiliate do
                                                                         '2' => { :domain => 'usa.gov' } }))
         affiliate.site_domains(true).count.should == 1
         affiliate.site_domains.first.domain.should == 'usa.gov'
+
+        affiliate = Affiliate.create!(
+            @valid_create_attributes.merge(
+                site_domains_attributes: { '0' => { domain: 'sec.gov' },
+                                           '1' => { domain: 'www.sec.gov.staging.net' } }))
+        expect(affiliate.site_domains(true).count).to eq(2)
+        expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
 
       it "should default the govbox fields to OFF" do
@@ -1949,12 +1956,9 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
-        site_domains.should == added_site_domains
-        site_domains.count.should == 3
-        site_domains[0].domain.should == 'bar.gov'
-        site_domains[1].domain.should == 'blat.gov'
-        site_domains[2].domain.should == 'xxbar.gov'
+        site_domain_names = affiliate.site_domains(true).map(&:domain)
+        expect(added_site_domains.map(&:domain)).to eq(site_domain_names)
+        expect(site_domain_names).to eq(%w(bar.gov blat.gov xxbar.gov))
       end
     end
 

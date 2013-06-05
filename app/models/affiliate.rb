@@ -363,13 +363,13 @@ class Affiliate < ActiveRecord::Base
   end
 
   def add_site_domains(site_domain_param_hash)
-    site_domain_hash = existing_site_domain_hash
     transaction do
-      site_domain_param_hash.each do |domain, site_name|
-        site_domain = site_domains.build(:domain => domain, :site_name => site_name)
-        site_domain_hash[site_domain.domain] = site_domain if site_domain.valid?
-      end
-      normalize_site_domains site_domain_hash
+      added_site_domains = site_domain_param_hash.map do |domain, site_name|
+        site_domain = site_domains.build(domain: domain, site_name: site_name)
+        site_domain if site_domain.save
+      end.compact
+      normalize_site_domains
+      site_domains.where(id: added_site_domains.map(&:id))
     end
   end
 
@@ -379,26 +379,9 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def normalize_site_domains(site_domain_hash = existing_site_domain_hash)
-    added_or_updated_site_domains = []
-    domain_list = site_domain_hash.keys.sort { |a, b| a.length == b.length ? (a <=> b) : (a.length <=> b.length) }
-    while domain_list.length > 0
-      site_domain = site_domain_hash[domain_list.first]
-
-      added_or_updated_site_domains << site_domain if site_domain.new_record? and site_domain.save
-
-      domain_list = domain_list.drop(1).delete_if do |domain|
-        period_prefix = domain_list.first.starts_with?('.') ? '' : '.'
-        if  domain.start_with?(domain_list.first) or domain.include?(period_prefix + domain_list.first)
-          site_domain = site_domain_hash[domain]
-          site_domain.destroy unless site_domain.new_record?
-          true
-        else
-          false
-        end
-      end
-    end
-    added_or_updated_site_domains
+  def normalize_site_domains
+    all_site_domains = site_domains(true).sort { |a, b| a.domain.length <=> b.domain.length }
+    all_site_domains.each { |domain| domain.destroy unless domain.valid? }
   end
 
   def show_content_border?
@@ -836,10 +819,6 @@ class Affiliate < ActiveRecord::Base
       doc.css("#{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')}").each(&:remove)
       doc.to_html
     end
-  end
-
-  def existing_site_domain_hash
-    Hash[site_domains(true).collect { |current_site_domain| [current_site_domain.domain, current_site_domain] }]
   end
 
   def update_error_keys

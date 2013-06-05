@@ -5,7 +5,7 @@ class SiteDomain < ActiveRecord::Base
   MAX_DOCS_PER_CRAWL = 1000
   INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format; please upload a csv file (.csv).'
   BLACKLISTED_EXTENSION_REGEXP = Regexp.new("\.#{IndexedDocument::BLACKLISTED_EXTENSIONS.join('|')}$", true)
-  validate :domain_coverage, :if => Proc.new { |site_domain| site_domain.affiliate.present? }
+  validate :domain_coverage, if: Proc.new { |site_domain| site_domain.domain.present? and site_domain.affiliate.present? }
   before_save :set_site_name
 
   def self.process_file(affiliate, file)
@@ -102,8 +102,18 @@ class SiteDomain < ActiveRecord::Base
 
   def domain_coverage
     existing = self.affiliate.site_domains.detect do |existing_site_domain|
-      period_prefix = existing_site_domain.domain.starts_with?('.') ? '' : '.'
-      self.id != existing_site_domain.id and (self.domain.start_with?(existing_site_domain.domain) or self.domain.include?(period_prefix + existing_site_domain.domain))
+      existing_domain_str, existing_path_str = existing_site_domain.domain.split '/', 2
+      existing_domain_str.insert(0, '.') unless existing_domain_str.start_with?('.')
+      (existing_path_str ||= '').insert 0, '/'
+
+      new_domain_str, new_path_str = domain.split '/', 2
+      new_domain_str.insert(0, '.') unless new_domain_str.start_with?('.')
+      (new_path_str ||= '').insert 0, '/'
+
+      next if id == existing_site_domain.id
+
+      new_domain_str.end_with?(existing_domain_str) and
+          new_path_str.start_with?(existing_path_str)
     end
     errors.add(:base, "'#{self.domain}' is already covered by your existing site domain '#{existing.domain}'") if existing
   end
