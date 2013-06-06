@@ -18,7 +18,7 @@ class SuperfreshUrl < ActiveRecord::Base
 
     def process_file(file, affiliate = nil, max_urls = MAX_URLS_PER_FILE_UPLOAD)
       counter = 0
-      if file.tempfile.lines.count <= max_urls and file.tempfile.open
+      if file.tempfile.each_line.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
         counter
       else
