@@ -239,10 +239,6 @@ Feature:  Administration
     Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked User Agents
 
     When I go to the admin home page
-    And I follow "Monthly/Weekly Report Recipients"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Monthly/Weekly Report Recipients
-
-    When I go to the admin home page
     And I follow "Modules"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Modules
 

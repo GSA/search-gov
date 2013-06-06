@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605183727) do
+ActiveRecord::Schema.define(:version => 20130606173023) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -689,12 +689,6 @@ ActiveRecord::Schema.define(:version => 20130605183727) do
   end
 
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
-
-  create_table "report_recipients", :force => true do |t|
-    t.string   "email",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "robots", :force => true do |t|
     t.string   "domain",     :null => false
