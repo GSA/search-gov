@@ -3,11 +3,11 @@
   %head
     %title Type-ahead Search Demo - USASearch
     = javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id, :protocol => 'http')}&";}
-    = javascript_include_tag javascript_full_path('jquery/jquery.min.js')
-    = javascript_include_tag javascript_full_path('jquery/jquery.bgiframe.min.js')
-    = javascript_include_tag javascript_full_path('jquery/jquery.autocomplete.min.js')
-    = javascript_include_tag javascript_full_path('sayt.js')
-    = stylesheet_link_tag stylesheet_full_path('compiled/sayt.css')
+    = javascript_full_path_tag request, '/javascripts/jquery/jquery.min.js'
+    = javascript_full_path_tag request, '/javascripts/jquery/jquery.bgiframe.min.js'
+    = javascript_full_path_tag request, '/javascripts/jquery/jquery.autocomplete.min.js'
+    = javascript_full_path_tag request, '/javascripts/sayt.js'
+    = stylesheet_link_tag "#{request.scheme}://#{request.host_with_port}/stylesheets/compiled/sayt.css"
   %body
     %h2 Type-ahead Search Demo
 

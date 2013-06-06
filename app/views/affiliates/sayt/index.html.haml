@@ -3,7 +3,7 @@
 
 .span-16.last
   %h1 Type-ahead Search
-  = render_help_link(@help_link)  
+  = render_help_link(@help_link)
   %p
     Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
   - if @affiliate.is_sayt_enabled?
@@ -78,4 +78,4 @@
       = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_index_path(@affiliate) }
 
 .span-8.last
-  .content-box.image= image_tag "side_notes/sayt.png"
+  .content-box.image= image_tag 'legacy/side_notes/sayt.png'

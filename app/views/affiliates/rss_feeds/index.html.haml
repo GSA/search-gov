@@ -2,8 +2,8 @@
 .rss-feeds
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "RSS"])
   .column-2
-    .side-note-image= image_tag "side_notes/rss_1.png"
-    .side-note-image= image_tag "side_notes/rss_2.png"
+    .side-note-image= image_tag 'legacy/side_notes/rss_1.png'
+    .side-note-image= image_tag 'legacy/side_notes/rss_2.png'
   .column-1
     %h1 RSS
     = render_help_link(@help_link)

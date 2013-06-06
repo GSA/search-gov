@@ -1,0 +1,16 @@
+//= require legacy/jquery/jquery.min
+//= require legacy/jquery/jquery-ui.custom.min
+//= require sayt/internal
+//= require legacy/jquery.popup
+//= require jquery_extensions/jquery.tablednd_0_5
+//= require jquery_extensions/tree.jquery
+//= require shared/jquery.noconflict
+//= require prototype
+//= require legacy/rails
+//= require legacy/application
+//= require legacy/affiliates
+//= require legacy/admin_affiliates_shared
+//= require legacy/analytics
+//= require calendar_date_select/calendar_date_select
+//= require calendar_date_select/format_american
+//= require jscolor/jscolor

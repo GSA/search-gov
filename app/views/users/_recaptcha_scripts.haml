@@ -1,7 +1,0 @@
-:javascript
-  var RecaptchaOptions = {theme: 'white'};
-= (javascript_include_tag "#{Recaptcha::RECAPTCHA_API_SECURE_SERVER_URL}/js/recaptcha_ajax.js").html_safe
-:javascript
-  jQuery(function() {
-      Recaptcha.create('#{RECAPTCHA_PUBLIC_KEY}', 'dynamic_recaptcha', RecaptchaOptions);
-  });

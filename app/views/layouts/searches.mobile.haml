@@ -1,0 +1,25 @@
+!!!strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym}
+  %head
+    %title
+      #{@affiliate.display_name} #{t(:mobile)}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    = render_robots_meta_tag
+    %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}/
+    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}/
+    %meta{:name => "format-detection", :content => "telephone=no" }/
+    = stylesheet_link_tag 'searches_mobile'
+    = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash })
+  %body
+    #container
+      #contentWrapper
+        #searchHeader
+          = render_mobile_header(@affiliate)
+        = yield
+        = render :partial => 'shared/footer'
+
+    - if @affiliate.is_sayt_enabled?
+      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id)}&\";"
+    = javascript_include_tag 'searches_mobile'
+
+    = render :partial => '/shared/analytics'

@@ -3,7 +3,7 @@
     .dvSearchBox.results
       = text_field :search, :query, { :maxlength => 255, :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
       .dvSearchClose.results
-        = image_tag "/m/i/close.png", :style => "display: none;"
+        = image_tag 'legacy/m/close.png', :style => "display: none;"
     .dvSearchBtn.results
       = submit_tag t(:search), :id => 'Search'
     .clear

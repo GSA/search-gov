@@ -1,5 +1,5 @@
 class ImageSearchesController < ApplicationController
-  layout 'affiliate'
+  layout 'searches'
 
   before_filter :set_search_options
   ssl_allowed :index

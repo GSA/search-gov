@@ -22,7 +22,7 @@ describe SearchesController do
 
       it "should render the template" do
         response.should render_template 'index'
-        response.should render_template 'layouts/affiliate'
+        response.should render_template 'layouts/searches'
       end
 
       it "should assign the query as the page title" do
@@ -91,7 +91,7 @@ describe SearchesController do
 
     it "should render the template" do
       response.should render_template 'index'
-      response.should render_template 'layouts/affiliate'
+      response.should render_template 'layouts/searches'
     end
 
     it "should set an affiliate page title" do
@@ -149,7 +149,7 @@ describe SearchesController do
     end
 
     it { should respond_with(:success) }
-    it { should render_template 'layouts/affiliate' }
+    it { should render_template 'layouts/searches' }
     it { should render_template 'searches/index' }
   end
 
@@ -195,7 +195,7 @@ describe SearchesController do
 
     it "should render the template" do
       response.should render_template 'index'
-      response.should render_template 'layouts/affiliate'
+      response.should render_template 'layouts/searches'
     end
   end
 
@@ -211,7 +211,7 @@ describe SearchesController do
 
     it "should render the template" do
       response.should render_template 'index'
-      response.should render_template 'layouts/affiliate'
+      response.should render_template 'layouts/searches'
     end
   end
 
@@ -424,7 +424,7 @@ describe SearchesController do
 
       it "should render the news template" do
         response.should render_template 'news'
-        response.should render_template 'layouts/affiliate'
+        response.should render_template 'layouts/searches'
       end
     end
 
@@ -440,7 +440,7 @@ describe SearchesController do
 
       it "should render the template" do
         response.should render_template 'news'
-        response.should render_template 'layouts/affiliate'
+        response.should render_template 'layouts/searches'
       end
     end
 
@@ -509,7 +509,7 @@ describe SearchesController do
       it "should render the template" do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.should render_template 'news'
-        response.should render_template 'layouts/affiliate'
+        response.should render_template 'layouts/searches'
       end
 
       it "should output a page that summarizes the results" do
@@ -519,14 +519,14 @@ describe SearchesController do
 
       it "should have a 'Results by USASearch' logo" do
         get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
-        response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
+        response.should have_selector("img[src^='/assets/searches/results_by_usasearch_en.png']")
         response.should have_selector("a", :href => 'http://usasearch.howto.gov')
       end
 
       context "when the locale is spanish" do
         it "should show a spanish results-by logo" do
           get :news, :query => 'element', :affiliate => affiliates(:gobiernousa_affiliate).name, :channel => rss_feeds(:es_white_house_blog).id, :tbs => "w"
-          response.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
+          response.should have_selector("img[src^='/assets/searches/results_by_usasearch_es.png']")
           response.should have_selector("a", :href => 'http://usasearch.howto.gov')
         end
       end
@@ -550,7 +550,7 @@ describe SearchesController do
       it { should assign_to(:search_vertical).with(:news) }
       it { should assign_to(:form_path).with(video_news_search_path) }
       it { should render_template(:news) }
-      it { should render_template("layouts/affiliate") }
+      it { should render_template("layouts/searches") }
     end
 
     context "when the query is blank and total is > 0" do

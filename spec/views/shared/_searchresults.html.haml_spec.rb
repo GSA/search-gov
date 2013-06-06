@@ -50,8 +50,8 @@ describe "shared/_searchresults.html.haml" do
     context "when results are by USASearch" do
       it "should show the Bing logo" do
         render
-        rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
-        rendered.should_not have_selector("a img[src^='/images/binglogo_en.gif']")
+        rendered.should have_selector("img[src^='/assets/searches/binglogo_en.gif']")
+        rendered.should_not have_selector("a img[src^='/assets/searches/binglogo_en.gif']")
       end
     end
 
@@ -63,7 +63,7 @@ describe "shared/_searchresults.html.haml" do
 
       it "should show the English USASearch results by logo" do
         render
-        rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/images/results_by_usasearch_en.png']")
+        rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/assets/searches/results_by_usasearch_en.png']")
       end
 
       context "when the locale is Spanish" do
@@ -73,7 +73,7 @@ describe "shared/_searchresults.html.haml" do
 
         it "should show the Spanish USASearch results by logo" do
           render
-          rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/images/results_by_usasearch_es.png']")
+          rendered.should have_selector("a[href='http://usasearch.howto.gov'] img[src^='/assets/searches/results_by_usasearch_es.png']")
         end
       end
     end
@@ -86,8 +86,8 @@ describe "shared/_searchresults.html.haml" do
 
       it "should show the English Google results by logo" do
         render
-        rendered.should have_selector("img[src^='/images/googlelogo_en.gif']")
-        rendered.should_not have_selector("a img[src^='/images/googlelogo_en.gif']")
+        rendered.should have_selector("img[src^='/assets/searches/googlelogo_en.gif']")
+        rendered.should_not have_selector("a img[src^='/assets/searches/googlelogo_en.gif']")
       end
 
       context "when the locale is Spanish" do
@@ -97,8 +97,8 @@ describe "shared/_searchresults.html.haml" do
 
         it "should show the Spanish Google results by logo" do
           render
-          rendered.should have_selector("img[src^='/images/googlelogo_es.gif']")
-          rendered.should_not have_selector("a img[src^='/images/googlelogo_es.gif']")
+          rendered.should have_selector("img[src^='/assets/searches/googlelogo_es.gif']")
+          rendered.should_not have_selector("a img[src^='/assets/searches/googlelogo_es.gif']")
         end
       end
     end

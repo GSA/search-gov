@@ -94,15 +94,11 @@ Given /^the following Misspelling exist:$/ do |table|
 end
 
 Then /^the search bar should have SAYT enabled$/ do
-  page.should have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
 end
 
 Then /^the search bar should not have SAYT enabled$/ do
-  page.should_not have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-  page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
 end
 
 Then /^the page should have SAYT enabled for (.+)$/ do |affiliate_name|
@@ -136,7 +132,7 @@ end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  page.body.should match("aid=#{affiliate.id}")
+  page.body.should match(%r{var usagov_sayt_url = "http://www.example.com/sayt\?aid=#{affiliate.id}})
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affiliate_name|

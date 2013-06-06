@@ -4,7 +4,7 @@ class DowncaseRoute
   end
 
   def call(env)
-    env['PATH_INFO'] = env['PATH_INFO'].downcase
+    env['PATH_INFO'] = env['PATH_INFO'].downcase unless env['PATH_INFO'] =~ /\.(css|gif|png|jpg|js)\Z/i
     @app.call(env)
   end
 end

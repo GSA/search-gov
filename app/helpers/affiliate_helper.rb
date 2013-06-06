@@ -8,11 +8,11 @@ module AffiliateHelper
   def site_wizard_header(current_step)
     steps = {:basic_settings => 0, :content_sources => 1, :get_the_code => 2}
     step_contents = ["Step 1. Basic Settings", "Step 2. Set up site", "Step 3. Get the code"]
-    image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}")
+    image_tag("legacy/site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}")
   end
 
   def render_help_link(help_link)
-    link_to(image_tag('help_icon.png', alt: 'Help?'), help_link.help_page_url, target: '_blank') if help_link
+    link_to(image_tag('legacy/help_icon.png', alt: 'Help?'), help_link.help_page_url, target: '_blank') if help_link
   end
 
   def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)
@@ -26,12 +26,8 @@ module AffiliateHelper
     content.html_safe
   end
 
-  def javascript_full_path(source)
-    URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}").to_s
-  end
-
-  def stylesheet_full_path(source)
-    URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}").to_s
+  def javascript_full_path_tag(request, source)
+    javascript_include_tag "#{request.scheme}://#{request.host_with_port}#{source}"
   end
 
   def render_affiliate_css_property_value(css_property_hash, property)
@@ -156,7 +152,7 @@ module AffiliateHelper
       content = []
       content << radio_button(:affiliate, :staged_theme, theme, :checked => selected, :class => 'update-css-properties-trigger')
       content << label(:affiliate, "staged_theme_#{theme}", Affiliate::THEMES[theme][:display_name])
-      content << image_tag("affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
+      content << image_tag("legacy/affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
       content_tag :div, content.join("\n").html_safe, :class => 'theme'
     end
     content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
@@ -170,7 +166,7 @@ module AffiliateHelper
       content << radio_button(:affiliate, :staged_theme, theme, :checked => selected, :class => 'update-css-properties-trigger')
       content << label(:affiliate, "staged_theme_#{theme}", Affiliate::THEMES[theme][:display_name])
 
-      content << image_tag("affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
+      content << image_tag("legacy/affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
       content << submit_tag("Customize", :type => 'button', :name => 'customize', :class => 'customize-theme-button') unless theme == :custom
       theme_class = 'theme'
       theme_class << ' hidden-custom-theme' if theme == :custom and affiliate.staged_theme.to_sym != :custom
@@ -186,7 +182,7 @@ module AffiliateHelper
 
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "#{javascript_full_path('remote.loader.js')}";
+      script.src = "#{request.scheme}://#{request.host_with_port}/javascripts/remote.loader.js";
       document.getElementsByTagName("head")[0].appendChild(script);
     JS
     javascript_tag embed_code

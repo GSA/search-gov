@@ -1,8 +1,5 @@
 .page-not-found
   %a{:name => "content"}
-  - unless @affiliate
-    .logo-wrapper
-      = link_to(image_tag("USAsearch_large_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale), :id => 'landing_page_logo', :class => 'web')
   %h3.message
     = t(:"page_not_found.page_removed")
   .what-to-do-wrapper

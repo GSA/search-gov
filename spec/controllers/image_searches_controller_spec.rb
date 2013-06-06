@@ -28,7 +28,7 @@ describe ImageSearchesController do
 
         it "should render the template" do
           response.should render_template 'image_searches/index'
-          response.should render_template 'layouts/affiliate'
+          response.should render_template 'layouts/searches'
         end
       end
 

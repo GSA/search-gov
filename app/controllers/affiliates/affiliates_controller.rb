@@ -2,7 +2,7 @@ class Affiliates::AffiliatesController < SslController
   newrelic_ignore
   before_filter :setup_help_link
 
-  layout "account"
+  layout 'affiliates'
 
   protected
 

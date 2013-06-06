@@ -1,23 +1,22 @@
-%style{ :type => 'text/css' }
-  :sass
-    body
-      color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
-    body, #search_query, li
-      font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
-    #Search
-      background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
-    h1.page-title
-      color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
-      background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
-    h1.alt, #relatedsearch h3
-      color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
-    a
+:sass
+  body
+    color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
+  body, #search_query, li
+    font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
+  #Search
+    background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
+  h1.page-title
+    color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
+    background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
+  h1.alt, #relatedsearch h3
+    color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
+  a
+    color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
+    &:visited
+      color: #{render_affiliate_css_property_value(css_property_hash, :visited_title_link_color)}
+  .searchResult
+    .links
+      color: #{render_affiliate_css_property_value(css_property_hash, :url_link_color)}
+  .pagination
+    a, a:visited
       color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
-      &:visited
-        color: #{render_affiliate_css_property_value(css_property_hash, :visited_title_link_color)}
-    .searchResult
-      .links
-        color: #{render_affiliate_css_property_value(css_property_hash, :url_link_color)}
-    .pagination
-      a, a:visited
-        color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}

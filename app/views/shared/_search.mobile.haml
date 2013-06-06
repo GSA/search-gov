@@ -5,8 +5,8 @@
   .dvSearchBox
     = text_field :search, :query, { :maxlength => 255, :name => "query", :autocomplete => "off", :class => "mobileSearchTextBox usagov-search-autocomplete" }
     .dvSearchClose
-      = image_tag "/m/i/close.png", :style => "display: none;"
+      = image_tag 'legacy/m/close.png', :style => "display: none;"
   .dvSearchBtn
-    = image_submit_tag "/m/i/btnSearchSkin.png", :id => 'Search'
+    = image_submit_tag 'legacy/m/btnSearchSkin.png', :id => 'Search'
   .clear
 

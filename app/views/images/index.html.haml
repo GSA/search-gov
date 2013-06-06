@@ -3,5 +3,5 @@
 .center-wrapper
   .homepage.images
     %a{:name => "content"}
-    = link_to(image_tag("USAsearch_large_#{I18n.locale}_images.gif" , :alt => "USASearch Images Home"), images_path(:locale => I18n.locale), :id => 'landing_page_logo')
+    = link_to(image_tag("legacy/USAsearch_large_#{I18n.locale}_images.gif" , :alt => "USASearch Images Home"), images_path(:locale => I18n.locale), :id => 'landing_page_logo')
     = render "shared/search", :path => image_search_path

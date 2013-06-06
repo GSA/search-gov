@@ -6,7 +6,12 @@ GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 module UsasearchRails3
   class Application < Rails::Application
@@ -53,7 +58,7 @@ module UsasearchRails3
       g.test_framework :rspec
     end
 
-    config.assets_enabled = false
+    config.assets.enabled = true
     config.assets.version = '1.0'
 
     config.active_record.whitelist_attributes = false

@@ -7,7 +7,7 @@ class ErrorsController < ApplicationController
     @page_title = I18n.t(:"page_not_found.title")
     @page_title << " - #{@affiliate.display_name}" if @affiliate
     respond_to do |format|
-      format.html { render :layout => 'affiliate', :status => 404 }
+      format.html { render :layout => 'searches', :status => 404 }
       format.mobile { render :file => File.join(Rails.root, 'public', 'simple_404'),
                              :formats => [:html],
                              :status => 404,

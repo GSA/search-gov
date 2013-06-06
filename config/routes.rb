@@ -110,6 +110,13 @@ UsasearchRails3::Application.routes.draw do
       end
     end
   end
+
+  scope module: 'v2' do
+    resources :affiliates, path: 'sites', as: 'sites' do
+      resources :boosted_contents
+    end
+  end
+
   get '/search' => 'searches#index', :as => :search
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search
   get '/search/images' => 'image_searches#index', :as => :image_search
@@ -177,7 +184,6 @@ UsasearchRails3::Application.routes.draw do
 
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   get '/' => 'home#index', :as => :home_page
-  match '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed

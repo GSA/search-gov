@@ -12,7 +12,7 @@
           = t :agency_stay_connected_label
         - if search.agency.has_phone_number?
           .phone-wrapper
-            = image_tag 'govbox/phone.gif', :alt => ''
+            = image_tag 'legacy/govbox/phone.gif', :alt => ''
             = display_agency_phone_numbers(search.agency)
         = display_agency_social_media_links(search.agency)
       .search-within

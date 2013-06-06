@@ -1,0 +1,4 @@
+var recaptchaOptions = {theme: 'white'};
+jQuery.getScript('<%= "#{Recaptcha::RECAPTCHA_API_SECURE_SERVER_URL}/js/recaptcha_ajax.js" %>', function() {
+  Recaptcha.create('<%= "#{RECAPTCHA_PUBLIC_KEY}" %>', 'dynamic_recaptcha', recaptchaOptions);
+});

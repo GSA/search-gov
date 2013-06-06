@@ -15,7 +15,7 @@ describe ErrorsController do
       it { should assign_to(:affiliate).with(affiliate) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should respond_with(:missing) }
-      it { should render_template("layouts/affiliate") }
+      it { should render_template('layouts/searches') }
       it { should render_template("page_not_found") }
     end
 
@@ -30,7 +30,7 @@ describe ErrorsController do
       it { should assign_to(:affiliate).with(affiliate) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should respond_with(:missing) }
-      it { should render_template("layouts/affiliate") }
+      it { should render_template('layouts/searches') }
       it { should render_template("page_not_found") }
     end
 
@@ -45,7 +45,7 @@ describe ErrorsController do
       it { should assign_to(:affiliate).with(affiliate) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should respond_with(:missing) }
-      it { should render_template("layouts/affiliate") }
+      it { should render_template('layouts/searches') }
       it { should render_template("page_not_found") }
     end
   end

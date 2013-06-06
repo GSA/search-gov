@@ -50,7 +50,8 @@ UsasearchRails3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  if File.basename($0) == 'rails' || (File.basename($0) == 'rake' && !ARGV.include?('db:migrate'))
+  if File.basename($0) == 'rails' || (File.basename($0) == 'rake' &&
+      ARGV.join !~ /db:migrate|assets:clean|assets:precompile/)
     config.after_initialize do
       MultiDb::ConnectionProxy.setup!
     end
@@ -58,6 +59,8 @@ UsasearchRails3::Application.configure do
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :yui
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -70,6 +73,8 @@ UsasearchRails3::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
+  config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application).+\.js$/ }
+  config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application).+\.css$/ }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true

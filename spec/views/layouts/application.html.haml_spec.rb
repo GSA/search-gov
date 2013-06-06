@@ -22,7 +22,7 @@ describe "layouts/application.html.haml" do
 
     it "should render the English version of the favicon" do
       render
-      rendered.should have_selector("link[href^='/favicon_en.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
+      rendered.should have_selector("link[href^='/favicon_en.ico'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
     end
   end
 
@@ -33,7 +33,7 @@ describe "layouts/application.html.haml" do
 
     it "should render the Spanish version of the favicon" do
       render
-      rendered.should have_selector("link[href^='/favicon_es.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
+      rendered.should have_selector("link[href^='/favicon_es.ico'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
     end
   end
 end

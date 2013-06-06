@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-  layout 'affiliate'
 
   skip_before_filter :verify_authenticity_token
   before_filter :handle_old_advanced_form, :only => [:index]
@@ -60,7 +59,7 @@ class SearchesController < ApplicationController
     @search_vertical = :news
     request.format = :html
     set_search_params
-    respond_to { |format| format.html { render :action => :news, :layout => "affiliate" } }
+    respond_to { |format| format.html { render action: :news } }
   end
 
   def advanced

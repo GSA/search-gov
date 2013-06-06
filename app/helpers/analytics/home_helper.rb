@@ -2,7 +2,7 @@ module Analytics::HomeHelper
   def base_query_chart_link(query, path_for_query_timeline)
     html = link_to(query, path_for_query_timeline)
     html << " "
-    html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
+    html << link_to(image_tag('legacy/open_new_window.png', :alt => "Open graph in new window", :size => "8x8"),
                     path_for_query_timeline,
                     :class => 'analytics-timeline-popup',
                     :title => "Open graph in new window")
@@ -16,13 +16,13 @@ module Analytics::HomeHelper
   def affiliate_query_clicks_link(query, affiliate, start_date, end_date)
     title = "View top clicked URLs for this query term"
     link = query_clicks_affiliate_analytics_path(affiliate, {:query => query, :start_date => start_date, :end_date => end_date})
-    link_to(image_tag("table_link.png", :alt => title, :size => "8x8"), link, :title => title)
+    link_to(image_tag('legacy/table_link.png', :alt => title, :size => "8x8"), link, :title => title)
   end
 
   def affiliate_click_queries_link(url, affiliate, start_date, end_date)
     title = "View top query terms leading to this URL"
     link = click_queries_affiliate_analytics_path(affiliate, {:url => url, :start_date => start_date, :end_date => end_date})
-    link_to(image_tag("table_link.png", :alt => title, :size => "8x8"), link, :title => title)
+    link_to(image_tag('legacy/table_link.png', :alt => title, :size => "8x8"), link, :title => title)
   end
 
   def date_in_javascript_format(day)
@@ -72,19 +72,19 @@ module Analytics::HomeHelper
   def twitter_query_link(query)
     title = "Twitter search results"
     link = "http://twitter.com/search/#{query}"
-    link_to(image_tag("/images/govbox/twitter.png", :alt => title), link, :title => title)
+    link_to(image_tag('legacy/govbox/twitter.png', :alt => title), link, :title => title)
   end
 
   def google_news_query_link(query)
     title = "Google news results"
     link = "https://news.google.com/news/search?q=#{query}"
-    link_to(image_tag("google_news.png", :alt => title), link, :title => title)
+    link_to(image_tag('legacy/google_news.png', :alt => title), link, :title => title)
   end
 
   def google_trends_query_link(query)
     title = "Google trends"
     link = "https://www.google.com/trends/explore#q=#{query}"
-    link_to(image_tag("google_trends.png", :alt => title), link, :title => title)
+    link_to(image_tag('legacy/google_trends.png', :alt => title), link, :title => title)
   end
 
   private

@@ -18,8 +18,6 @@ Feature: Mobile Search for Affiliate
       | Our Tourism Page   | http://www.agency.gov/tou | Tourism information                  |
     And I am on agency.gov's search page
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
-    And I should see the page with affiliate stylesheet "one_serp_mobile.css"
-    And I should not see the page with affiliate stylesheet "default_mobile.css"
     And I should see the page with internal CSS "font-family: Verdana, sans-serif"
     And affiliate SAYT suggestions for "agency.gov" should be enabled
     And I should see the browser page titled "agency site Mobile"

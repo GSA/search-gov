@@ -27,10 +27,10 @@
       %h2
         Create New Social Media Profile
       %p
-        = link_to image_tag('facebook-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FacebookProfile'), :remote => true, :title => 'Add a new Facebook profile.'
-        = link_to image_tag('flickr-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FlickrProfile'), :remote => true, :title => 'Add a new Flickr profile.'
-        = link_to image_tag('twitter-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'TwitterProfile'), :remote => true, :title => 'Add a new Twitter profile.'
-        = link_to image_tag('youtube-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'YoutubeProfile'), :remote => true, :title => 'Add a new Youtube profile.'
+        = link_to image_tag('legacy/facebook-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FacebookProfile'), :remote => true, :title => 'Add a new Facebook profile.'
+        = link_to image_tag('legacy/flickr-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'FlickrProfile'), :remote => true, :title => 'Add a new Flickr profile.'
+        = link_to image_tag('legacy/twitter-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'TwitterProfile'), :remote => true, :title => 'Add a new Twitter profile.'
+        = link_to image_tag('legacy/youtube-64x64.png'), new_profile_fields_affiliate_social_media_path(@affiliate, :profile_type => 'YoutubeProfile'), :remote => true, :title => 'Add a new Youtube profile.'
       %div#new_social_media_profile_form
         = form_for affiliate_social_media_path(@affiliate), :html => { :class => 'generic-form social-media-form' } do |f|
           = error_messages_for('profile', :header_message => nil, :class => 'error')

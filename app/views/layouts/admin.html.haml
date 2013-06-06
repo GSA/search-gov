@@ -5,38 +5,10 @@
     = favicon_link_tag
     = csrf_meta_tags
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
-    = stylesheet_link_tag 'compiled/main.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/new_main.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
-    = (javascript_include_tag "jquery/jquery.min.js").html_safe
-    = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
-    != javascript_include_tag "jquery/jquery.tablednd_0_5.js"
-    = (javascript_include_tag "admin_affiliates_shared.js").html_safe
-    = javascript_include_tag "https://www.google.com/jsapi"
-    :javascript
-      jQuery.noConflict();
-    = javascript_include_tag "prototype.js"
-    = javascript_include_tag "effects.js"
-    = javascript_include_tag "dragdrop.js"
-    = javascript_include_tag "controls.js"
-    = javascript_include_tag "rails.js"
-    = javascript_include_tag "application.js"
-    = (javascript_include_tag "rails-ext.js").html_safe
-    = javascript_include_tag "active_scaffold/default/active_scaffold.js"
-    = javascript_include_tag "active_scaffold/default/rico_corner.js"
-    = javascript_include_tag "active_scaffold/default/form_enhancements.js"
-    = javascript_include_tag "active_scaffold/default/dhtml_history.js"
-    = javascript_include_tag "active_scaffold.js"
-    = javascript_include_tag "calendar_date_select/calendar_date_select.js"
-    = javascript_include_tag "calendar_date_select/format_american.js"
-    = stylesheet_link_tag 'active_scaffold/default/stylesheet.css'
-    = stylesheet_link_tag 'active_scaffold/default/export-stylesheet.css'
-    = stylesheet_link_tag 'calendar_date_select/default.css'
+    = stylesheet_link_tag 'admin'
     /[if IE]
-      = stylesheet_link_tag 'active_scaffold/default/stylesheet-ie.css'
-      = stylesheet_link_tag 'active_scaffold/default/export-stylesheet-ie.css'
-    = stylesheet_link_tag 'compiled/active_scaffold_overrides.css', :media => 'screen'
-
+      = stylesheet_link_tag 'admin_ie'
+    = javascript_include_tag 'https://www.google.com/jsapi'
   %body
     = render "/shared/program_header"
     .outer-container
@@ -52,3 +24,4 @@
             .span-10.prepend-7.append-7= show_flash_messages
             .clear
             = yield
+    = javascript_include_tag 'admin'

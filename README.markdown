@@ -20,11 +20,18 @@ For Rails 3, we use bundler; you should be able to get all the rest of the gems 
     gem install bundler
     bundle install
 
-## Sass
+## Asset pipeline
 
-Since we have Rails asset pipeline disabled, we need to manually start a separate process to compile Sass stylesheets to CSS like this:
+A few tips when working with asset pipeline:
 
-    compass watch
+* Ensure that your asset directory is in the asset paths by running the following in the console:
+
+        y Rails.application.assets.paths
+
+* Find out which file is served for a given asset path by running the following in the console:
+
+        Rails.application.assets['relative_path/to_asset.ext']
+
 
 ## Solr
 
@@ -234,6 +241,10 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 1. Make sure all your code gets touched by a test, at least:
 
         open coverage/rcov/index.html
+
+1. Run assets:precompile before pushing to origin if you modified one or more assets. Verify your generated assets in the public/assets directory. Always clean your public/assets directory after running assets:precompile. You will not see changes to your code in app/assets if the same asset exists in public/assets.
+
+        rake assets:precompile
 
 1. Push code up to the origin. Before you do this, remember that you are committing to the master branch, and future production deployments will ideally be grabbing everything from this branch. For this reason, you'll only want to push to origin/master code that is pretty much ready for production deployment, or could be ready fairly soon, say after a day or two of iterating on feedback. One good rule of thumb is the "Washington Post" test, as it's a scenario that is raised fairly often. Before pushing to origin, ask yourself, "If this work I've just done somehow finds its way into a Washington Post article with a screenshot, will everyone be OK with that?". If so, then....
 

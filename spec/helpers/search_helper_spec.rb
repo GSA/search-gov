@@ -553,7 +553,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Results by Bing'][src^='/images/binglogo_en.gif']")
+            html.should have_selector("img[alt='Results by Bing'][src^='/assets/searches/binglogo_en.gif']")
           end
         end
       end
@@ -562,7 +562,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Results by Google'][src^='/images/googlelogo_en.gif']")
+            html.should have_selector("img[alt='Results by Google'][src^='/assets/searches/googlelogo_en.gif']")
           end
         end
       end
@@ -570,7 +570,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       context 'when results by USASearch' do
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Results by USASearch'][src^='/images/results_by_usasearch_en.png']")
+          html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
         end
       end
     end
@@ -583,7 +583,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Resultados por Bing'][src^='/images/binglogo_es.gif']")
+            html.should have_selector("img[alt='Resultados por Bing'][src^='/assets/searches/binglogo_es.gif']")
           end
         end
       end
@@ -592,7 +592,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Resultados por Google'][src^='/images/googlelogo_es.gif']")
+            html.should have_selector("img[alt='Resultados por Google'][src^='/assets/searches/googlelogo_es.gif']")
           end
         end
       end
@@ -603,7 +603,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Resultados por USASearch'][src^='/images/results_by_usasearch_es.png']")
+          html.should have_selector("a[href='http://usasearch.howto.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
         end
       end
     end

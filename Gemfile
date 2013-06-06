@@ -4,8 +4,7 @@ gem 'rake'
 gem 'rails', "3.2.12"
 gem 'mysql2', '>0.3'
 gem 'capistrano'
-gem 'jquery-rails'
-gem 'haml', '~> 3.1.8'
+gem 'haml'
 gem 'json'
 gem 'will_paginate'
 gem 'nokogiri'
@@ -55,11 +54,11 @@ group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass'
   gem 'compass-rails'
-  gem 'execjs'
-  gem 'libv8', '~> 3.3.10'
-  gem 'therubyracer', '~> 0.10.0', :require => 'v8'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
+  gem 'therubyracer'
+  gem 'yui-compressor'
 end
 
 # Bundle gems for the local environment. Make sure to
