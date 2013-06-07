@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
-  fixtures :affiliates, :report_recipients, :users, :features
+  fixtures :affiliates, :users, :features
 
   describe "#feature_admonishment(user, affiliates_with_unused_features)" do
     let(:user) { users(:another_affiliate_manager) }

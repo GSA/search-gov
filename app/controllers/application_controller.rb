@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   def template_not_found(error)
     if VALID_FORMATS.include?(request.format)
       raise error
+    else
+      render text: '406 Not Acceptable', status: 406
     end
   end
 
