@@ -179,8 +179,7 @@ GEM
       multi_json (~> 1.3)
     google_visualr (2.1.7)
     googlecharts (1.6.8)
-    haml (4.0.3)
-      tilt
+    haml (3.1.8)
     hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
@@ -422,7 +421,7 @@ DEPENDENCIES
   geoip
   google_visualr
   googlecharts
-  haml
+  haml (~> 3.1.8)
   htmlentities
   jquery-rails
   json
