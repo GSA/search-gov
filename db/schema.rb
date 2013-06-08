@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606173023) do
+ActiveRecord::Schema.define(:version => 20130608031607) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -166,22 +166,6 @@ ActiveRecord::Schema.define(:version => 20130606173023) do
   end
 
   add_index "agency_urls", ["agency_id", "locale", "url"], :name => "index_agency_urls_on_agency_id_and_locale_and_url"
-
-  create_table "auto_recalls", :force => true do |t|
-    t.integer  "recall_id"
-    t.string   "make",                     :limit => 25
-    t.string   "model"
-    t.integer  "year"
-    t.string   "component_description"
-    t.date     "manufacturing_begin_date"
-    t.date     "manufacturing_end_date"
-    t.string   "manufacturer",             :limit => 40
-    t.string   "recalled_component_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
 
   create_table "boosted_content_keywords", :force => true do |t|
     t.integer  "boosted_content_id", :null => false
@@ -469,18 +453,6 @@ ActiveRecord::Schema.define(:version => 20130606173023) do
 
   add_index "flickr_profiles", ["affiliate_id"], :name => "index_flickr_profiles_on_affiliate_id"
 
-  create_table "food_recalls", :force => true do |t|
-    t.integer  "recall_id"
-    t.string   "summary",                   :null => false
-    t.text     "description",               :null => false
-    t.string   "url",                       :null => false
-    t.string   "food_type",   :limit => 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"
-
   create_table "help_links", :force => true do |t|
     t.string   "request_path"
     t.string   "help_page_url"
@@ -668,27 +640,6 @@ ActiveRecord::Schema.define(:version => 20130606173023) do
 
   add_index "queries_clicks_stats", ["affiliate", "query", "day"], :name => "aqd"
   add_index "queries_clicks_stats", ["affiliate", "url", "day"], :name => "aud", :length => {"affiliate"=>nil, "url"=>255, "day"=>nil}
-
-  create_table "recall_details", :force => true do |t|
-    t.integer  "recall_id"
-    t.string   "detail_type"
-    t.string   "detail_value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "recall_details", ["recall_id"], :name => "index_recall_details_on_recall_id"
-
-  create_table "recalls", :force => true do |t|
-    t.string   "recall_number", :limit => 10
-    t.integer  "y2k"
-    t.date     "recalled_on"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "organization",  :limit => 10
-  end
-
-  add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
 
   create_table "robots", :force => true do |t|
     t.string   "domain",     :null => false

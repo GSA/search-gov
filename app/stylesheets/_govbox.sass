@@ -1,79 +1,19 @@
 #results
   .govbox-wrapper-top
     :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
-    :behavior url(/javascripts/iepngfix.htc)
     :height 8px
     :line-height 8px
     :margin-top 0.75em
 
   .govbox-wrapper-bottom
     :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
-    :behavior url(/javascripts/iepngfix.htc)
     :height 8px
 
   .govbox-wrapper-middle
     +clearfix
     :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
-    :behavior url(/javascripts/iepngfix.htc)
     margin: 0
     padding: 0.8em 0 0 25px
-
-#results .recalls-govbox, #results .recalls
-  h3
-    :font-size 1.3em
-    :line-height 19px
-    :color $red
-    :padding-left 15px
-    :margin 0 0 0 -15px
-    :background white url('/images/red_triangle.png') left top no-repeat
-    a, a:visited, .recall_stats
-      :font-size 0.75em
-      :display block
-      :color $red
-      :text-decoration none
-      :font-style italic
-  .sort
-    :margin-bottom 0.5em
-    a
-      :text-decoration none
-  .recall
-    :overflow hidden
-    :margin-bottom 1em
-    .agency
-      :color #222
-    .industry-icon
-      :text-align center
-      :color gray
-      :font-weight bold
-      :width 50px
-      :padding 0
-      :float left
-      span
-        :clear left
-    .details
-      :width 550px
-      :float left
-      :padding-left 15px
-      a
-        :text-decoration none
-      .recall-date
-        :color gray
-        :font-style italic
-      .description
-        .recall-date
-          :display inline
-      .url
-        a
-          :color $green
-
-#results .recalls-govbox
-  :margin-bottom 20px
-  :padding-left $results-padding-size
-  .recall
-    @include clearfix
-    margin-bottom: 0.75em
-    .details
-      :padding-top 0.5em
 
 .govbox-title
   h3.alt

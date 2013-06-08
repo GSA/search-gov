@@ -21,7 +21,6 @@
       = javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id)}&";}
       = (javascript_include_tag "sayt-ui.js").html_safe
       = stylesheet_link_tag 'compiled/sayt.css'
-    = (javascript_include_tag "jquery/jquery.dropdownPlain.js").html_safe
     != javascript_include_tag "jquery/jquery.popup.js"
     != javascript_include_tag "jquery/jquery.tablednd_0_5.js"
     = (javascript_include_tag "tree.jquery.js").html_safe
@@ -33,8 +32,6 @@
     = javascript_include_tag "controls.js"
     = javascript_include_tag "rails.js"
     = javascript_include_tag "application.js"
-    /[if IE]
-      = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = (javascript_include_tag "affiliates.js").html_safe
     = (javascript_include_tag "admin_affiliates_shared.js").html_safe
     != javascript_include_tag "analytics.js"

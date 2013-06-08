@@ -8,8 +8,6 @@ module ApplicationHelper
   def build_page_title(page_title)
     if image_search?
       site_title = (t :images_site_title)
-    elsif recalls_search?
-      site_title = (t :recalls_site_title)
     else
       site_title = page_title.blank? ? (t :site_title) : (t :serp_title)
     end
@@ -250,7 +248,7 @@ module ApplicationHelper
   end
 
   def display_mobile_or_add_this_link?
-    return true if %w{ home images recalls searches image_searches pages }.include?(controller.controller_path)
+    return true if %w{ home images searches image_searches pages }.include?(controller.controller_path)
     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
   end
 

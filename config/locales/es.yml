@@ -13,12 +13,10 @@ es:
   last_week: "Última semana"
   last_month: "Último mes"
   last_year: "Último año"
-  recalls_search: Buscar productos retirados
   did_you_mean: "Se incluyen resultados para %{assumed_term}. ¿Desea mostrar solo los resultados para %{term_as_typed}?"
   approximate: 'Aproximadamente '
   result: 'resultado'
   results_summary: 'Página %{page} de %{approximate}%{total}'
-  cached: "En caché"
   news_results: "Noticias sobre de '%{query}'"
   video_news_results: "Videos de '%{query}'"
   photo_results: "Fotos de '%{query}'"
@@ -43,26 +41,6 @@ es:
   or_try_broader: "de su búsqueda, use otras palabras clave o intente usando sinónimos."
   back_to_all_affiliate_results: "Regresa a todos los resultados de %{affiliate_name} >>"
   no_results_for_and_try: "No hemos encontrado ningún resultado que contenga '%{query}'. Intente usar otras palabras clave o sinónimos."
-  no_results:
-    cant_find_results: "No hemos podido encontrar resultados que contengan:"
-    what_should_you_do: "¿Qué puede hacer?"
-    basic_suggestions:
-      - Intente su búsqueda otra vez.
-      - Verifique que haya escrito correctamente las palabras de su búsqueda.
-      - Use palabras distintas que tengan el mismo significado.
-      - Use menos palabras.
-      - Use palabras con significado más general.
-      - No use comillas (“) en su búsqueda.
-    go_to_usa_gov: "Visite %{usa_gov_link} y busque entre nuestros temas la información que necesita."
-    usa_gov_url_text: "GobiernoUSA.gov"
-    usa_gov_url: "http://GobiernoUSA.gov"
-    browse_government_photostreams: "Visite la %{flickr_link} para encontrar más fotos y videos del Gobierno."
-    flickr_url_text: "galería oficial de USA.gov en Flickr"
-    flickr_url: "http://www.flickr.com/groups/usagov/"
-    contact_usa_gov: "¿Todavía no encuentra la información que necesita? %{contact_usa_gov_link} si necesita ayuda para encontrar información del Gobierno."
-    contact_usa_gov_url_text: "Comuníquese con nosotros"
-    contact_usa_gov_url: "http://www.usa.gov/gobiernousa/Contactenos.shtml"
-    source: "Fuente"
   page_not_found:
     title: "La página que busca no está disponible"
     page_removed: "La página que busca no está disponible. Lo sentimos, pero la página que busca probablemente ya no existe, ha cambiado de nombre, o está temporalmente fuera de servicio."
@@ -86,27 +64,7 @@ es:
   image: "Imagen de"
   images_for: "Imágenes de %{query}"
   images_site_title: "Buscador.USA.gov Imágenes"
-  recalls: Retirados
-  recalls_for: "Productos retirados: %{query}"
   in_english: "(en inglés)"
-  view_all_images_for: "Ver todas las imágenes de %{query}"
-  government_web: "Todo el Gobierno"
-  recall_govbox_header: "Resultados de la base de datos de productos retirados, Gobierno de EE. UU."
-  displaying_count_of_total_for_query: Mostrando %{start}-%{end} de %{total} por %{query}
-  view_more_recalls: Vea más productos retirados
-  industry:
-    auto:
-      name: auto
-      agency_name: Administración Nacional de Seguridad del Tráfico en las Carreteras
-    product:
-      name: producto
-      agency_name: Comisión para la Seguridad de los Productos de Consumo
-    food:
-      name: alimentos
-      agency_name: Departamento de Agricultura
-    drug:
-      name: medicinas
-      agency_name: Administración de Alimentos y Medicamentos
   sort_by: Ordenar por
   by_date: 'Más recientes'
   by_relevance: 'Más relevantes'
@@ -117,7 +75,6 @@ es:
   advanced_search_query_quote_label: "La frase exacta"
   advanced_search_query_or_label: "Cualquiera de estas palabras"
   advanced_search_query_not_label: "Ninguna de estas palabras"
-  advanced_search_language_label: "Idioma"
   advanced_search_adult_filter_label: "Búsqueda segura"
   advanced_search_adult_filter_strict_label: "Estricta"
   advanced_search_adult_filter_moderate_label: "Moderada"
@@ -129,43 +86,12 @@ es:
   advanced_search_operator_url_on_bing: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx'
   advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=es'
   advanced_search_operator: 'Usted también puede usar las %{link} para limitar sus búsquedas y hacerlas más específicas.'
-  search_results_restriction_message_front: "Esta búsqueda se limitó a sitios de <b>{{scope_setting}}</b>."
-  search_results_restriction_message_link: "Puede buscar otra vez sin esa restricción."
 
   usagov_mobile: "GobiernoUSA.gov móvil"
-  contact_your_government: "Envíenos un e-mail"
-  specific_audiences: "Audiencias específicas"
-  citizen_services: "De Servicios a Ciudadanos"
-  explore_topics: "Explorar los temas"
-  explore_faqs: "Respuestas"
-  top_questions: "RESPUESTAS MÁS POPULARES"
-  featured_content: "LO MÁS DESTACADO"
-  find_government_agencies: "Buscar Agencias de Gobierno"
-  contact_us: "Contáctanos en español"
-  call_1800FEDINFO: "Llame al 1 (800) FED-INFO"
-  sms_services: "SMS Services"
-  email_us: "Envíanos un e-mail"
-  visit_our_blog: "Visite nuestro blog"
-  usagov_resources: "USA.gov Recursos"
-  email_address: "Su e-mail"
-  message: "Mensaje"
-  submit: "Enviar"
-  usagov_full_site: "USA.gov completo del sitio"
   next_page: "Siguiente página"
   view_site_in: "Versión:"
   classic: "Web"
   mobile: "Móvil"
-  contact_your_government_url: "/usa/gobiernousa/Contactenos"
-  specific_audiences_url: "/usa/gobiernousa/Usuarios"
-  citizen_services_url: "/usa/gobiernousa/Temas/Servicios"
-  explore_topics_url: "/usa/gobiernousa/Temas"
-  explore_faqs_url: "/usa/respuestas/1"
-  find_government_agencies_url: "/usa/gobiernousa/Agencias/index"
-  mobile_feedback_contact_recipients: "mgobiernousa.gov@mail.fedinfo.gov"
-  mobile_feedback_subject: "GobiernoUSA.gov Mobile Inquiry"
-  contact_thank_you: "Gracias por contactar a GobiernoUSA.gov. Le responderemos en dos días hábiles."
-  contact_missing_required_fields: "Faltan datos requeridos"
-  contact_invalid_email: "Este e-mail no es válido"
   searches_related_to: "Búsquedas relacionadas a '%{query}'"
   job_openings: "Trabajos"
   at_agency: "en %{agency} (en inglés)"
@@ -183,7 +109,6 @@ es:
   agency_tty_phone_label: TTY
   agency_search_within_label: Buscar en
   agency_stay_connected_label: "Siga conectado"
-  agency_popular_pages: "Páginas populares"
 
   medline_official_result: Resultado oficial de MedlinePlus
   medline_related_topics: Temas relacionados de MedlinePlus

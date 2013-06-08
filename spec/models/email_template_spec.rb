@@ -28,7 +28,7 @@ describe EmailTemplate do
         EmailTemplate.count.should == EmailTemplate::DEFAULT_SUBJECT_HASH.size
         before_time = Time.now
         sleep(1)
-        EmailTemplate.load_default_templates(["affiliate_monthly_report", "mobile_feedback"])
+        EmailTemplate.load_default_templates(%w(affiliate_monthly_report password_reset_instructions))
         EmailTemplate.all(:conditions => ['created_at > ?', before_time]).size.should == 2
       end
     end

@@ -66,10 +66,6 @@ module NavigationHelpers
       query_search_affiliate_analytics_path
     when /the affiliate advanced search page for "([^\"]*)"$/
       advanced_search_path(:affiliate => $1)
-    when /the mobile contact form page/
-      contact_form_path
-    when /the Spanish mobile contact form page/
-      contact_form_path(:locale => 'es')
     when /the query groups admin page/
       analytics_query_groups_path
     when /the boosted contents admin page/
@@ -100,10 +96,6 @@ module NavigationHelpers
       demo_affiliate_type_ahead_search_index_path(Affiliate.find_by_name($2), :page => $1)
     when /the (.*)'s featured collections page$/
       affiliate_featured_collections_path(Affiliate.find_by_name($1))
-    when /the recalls landing page/
-      recalls_path
-    when /the recalls search page/
-      recalls_search_path
     when /the preview affiliate page for "([^\"]*)"/
       preview_affiliate_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/

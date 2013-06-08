@@ -3,24 +3,6 @@ module SearchHelper
 
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
 
-  NO_RESULTS_BANNERS = [
-      { :image_path => 'no_results/no_results_1.jpg',
-        :url_text => 'Library of Congress',
-        :url => 'http://blogs.loc.gov/law/2010/09/do-you-remember-how-to-use-a-card-catalog/' },
-      { :image_path => 'no_results/no_results_2.jpg',
-        :url_text => 'Oregon State Library',
-        :url => 'http://www.oregon.gov/OSL/photos_1930_1941.shtml' },
-      { :image_path => 'no_results/no_results_3.jpg',
-        :url_text => 'NOAA Photo Library',
-        :url => 'http://www.photolib.noaa.gov/htmls/theb1805.htm' },
-      { :image_path => 'no_results/no_results_4.jpg',
-        :url_text => 'Oregon State Library',
-        :url => 'http://www.oregon.gov/OSL/photos_1930_1941.shtml' },
-      { :image_path => 'no_results/no_results_5.jpg',
-        :url_text => 'Naval Historical Center',
-        :url => 'http://www.history.navy.mil/photos/images/h97000/h97134c.htm' }
-  ]
-
   def result_partial_for(search)
     if search.is_a?(ImageSearch)
       "/image_searches/result"
@@ -103,17 +85,6 @@ module SearchHelper
 
   def highlight_string(s)
     "<strong>#{s}</strong>".html_safe
-  end
-
-  def display_recall_result_url_with_click_tracking(recall_url, query, position, vertical)
-    onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
-    raw "<a href=\"#{h recall_url}\" #{onmousedown}>#{shorten_url(recall_url)}</a>"
-  end
-
-  def display_recall_result_title_with_click_tracking(result, hit, query, position, vertical, summary_length)
-    title= (highlight_like_solr(result.summary.truncate(summary_length, :separator => " "), hit.highlights)).html_safe
-    onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
-    raw "<a href=\"#{h result.recall_url}\" #{onmousedown}>#{title}</a>"
   end
 
   def link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical, html_opts = nil)
@@ -229,10 +200,6 @@ module SearchHelper
     controller.controller_name == "image_searches" or controller.controller_name == "images"
   end
 
-  def recalls_search?
-    controller.controller_name == "recalls"
-  end
-
   def error_page?
     controller.controller_name == "errors"
   end
@@ -281,21 +248,6 @@ module SearchHelper
   def related_topics_header(affiliate, query)
     related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
     "#{I18n.t :related_topics_prefix} '#{h query}' #{related_topics_suffix}".html_safe
-  end
-
-  def render_no_results_banner
-    banner = NO_RESULTS_BANNERS.shuffle.first
-    content_tag(:div, :class => "no-results-banner") do
-      content = image_tag(banner[:image_path], :alt => '')
-      content << content_tag(:div, :class => 'no-results-banner-source') do
-        banner_source_content = []
-        banner_source_content << content_tag(:span, %{#{t :"no_results.source"}: })
-        banner_source_content << link_to(banner[:url_text], banner[:url])
-        banner_source_content << content_tag(:span, t(:"in_english"), :class => 'in-english')
-        banner_source_content.join("\n").html_safe
-      end
-      content
-    end
   end
 
   def display_search_all_affiliate_sites_suggestion(search)
