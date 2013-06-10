@@ -317,9 +317,6 @@ a:visited
   .popular-wrapper
     :margin 0 auto
     :text-align left
-    &.recalls
-      :min-width 650px
-      :width 50%
     &.forms
       :width 83%
 
@@ -374,22 +371,14 @@ div.auto_complete ul li
 #web_vertical_navigation
   @extend .vertical-navigation
   :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -152px
-  :behavior url(/javascripts/iepngfix.htc)
 
 #images_vertical_navigation
   @extend .vertical-navigation
   :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -114px
-  :behavior url(/javascripts/iepngfix.htc)
-
-#recalls_vertical_navigation
-  @extend .vertical-navigation
-  :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -76px
-  :behavior url(/javascripts/iepngfix.htc)
 
 #forms_vertical_navigation
   @extend .vertical-navigation
   :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -38px
-  :behavior url(/javascripts/iepngfix.htc)
 
 #summary
   p
@@ -401,20 +390,17 @@ div.auto_complete ul li
 
 .related-searches-wrapper-top, .boosted-contents-wrapper-top
   :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
-  :behavior url(/javascripts/iepngfix.htc)
   :height 8px
   :line-height 8px
   :margin-top 0.75em
 
 .related-searches-wrapper-bottom, .boosted-contents-wrapper-bottom
   :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
-  :behavior url(/javascripts/iepngfix.htc)
   :height 8px
 
 .related-searches-wrapper-middle, .boosted-contents-wrapper-middle
   @include clearfix
   :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
-  :behavior url(/javascripts/iepngfix.htc)
   :padding 0 0 0.5em 0
   h3.alt
     +blueprint-typography(true)
@@ -467,13 +453,6 @@ ul#related_gov_forms
   a, a:visited, a:hover
     :color gray
     :text-decoration none
-
-#results.recalls
-  .recalls
-    h3
-      :margin-left 0
-    .sort
-      :margin-left 15px
 
 .hidden
   :position absolute
@@ -582,16 +561,6 @@ ul#related_gov_forms
       :background url('/images/btn_search_images.gif') no-repeat
       :margin 13px 0 0 3px
       :width 130px
-
-.recalls
-  #search_form
-    :height 43px
-    #search_query
-      :width 431px
-    #search_button
-      :background url('/images/btn_search_recalls.gif') no-repeat
-      :margin 13px 0 0 3px
-      :width 149px
 
 .forms
   #search_form

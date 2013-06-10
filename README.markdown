@@ -106,7 +106,7 @@ You should be able to type in 'taxes' and get search results.
 If you are interested in helath related data, you can also load MedLinePlus data
 from the XML retrieved from the MedLine website (see doc/medline for more details).
 
-    rake usasearch:medline:update
+    rake usasearch:medline:load
 
 ## Affiliate accounts
 Get yourself a user account using a bogus .gov or .mil email address.

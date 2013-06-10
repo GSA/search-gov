@@ -13,13 +13,10 @@ en:
   last_week: "Last week"
   last_month: "Last month"
   last_year: "Last year"
-  popular_links: "Popular Links"
-  recalls_search: "Search Recalls"
   did_you_mean: "We're including results for %{assumed_term}. Do you want results only for %{term_as_typed}?"
   approximate: 'About '
   result: 'result'
   results_summary: 'Page %{page} of %{approximate}%{total}'
-  cached: "Cached"
   news_results: "News for '%{query}'"
   video_news_results: "Videos of '%{query}'"
   photo_results: "Photos of '%{query}'"
@@ -43,28 +40,6 @@ en:
   remove_all_filters: "Remove all filters"
   or_try_broader: "or try entering fewer or broader query terms."
   no_results_for_and_try: "Sorry, no results found for '%{query}'. Try entering fewer or broader query terms."
-  no_results:
-    cant_find_results: "Oops! We can't find results for your search:"
-    what_should_you_do: "What should you do?"
-    basic_suggestions:
-      - Try your search again.
-      - Make sure all the words are spelled correctly.
-      - Try different words that mean the same thing.
-      - Try fewer words.
-      - Try more general words.
-      - Try the phrase without quotation marks.
-    go_to_usa_gov: "Or, go to %{usa_gov_link} and browse through our topics for the information you want."
-    usa_gov_url_text: "USA.gov"
-    usa_gov_url: "http://USA.gov"
-    browse_government_photostreams: "Or, browse USA.gov's list of %{flickr_link} to find more government photos and videos."
-    flickr_url_text: "Official Government Flickr Photostreams"
-    flickr_url: "http://www.flickr.com/groups/usagov/"
-    go_to_recalls_gov: "Or, go to %{recalls_gov_link} to obtain the latest recall information, to report a dangerous product, or to learn important safety tips by product type."
-    recalls_gov_url: "http://www.recalls.gov"
-    contact_usa_gov: "Still can't find what you're looking for? %{contact_usa_gov_link} about any government question you have."
-    contact_usa_gov_url_text: "Contact USA.gov"
-    contact_usa_gov_url: "http://www.usa.gov/Contact_Us.shtml"
-    source: "Source"
   page_not_found:
     title: "Oops! We can't find the file"
     page_removed: "Oops! We can't find the file. We're sorry, but the page you're looking for might have been removed, had its name changed, or is temporarily unavailable."
@@ -89,28 +64,7 @@ en:
   image: "Image:"
   images_for: "Images for %{query}"
   images_site_title: "Search.USA.gov Images"
-  recalls: Recalls
-  recalls_for: "Recalls for %{query}"
-  recalls_site_title: "Search.USA.gov Recalls"
   in_english: ""
-  view_all_images_for: "View all images for %{query}"
-  government_web: "Government Web"
-  recall_govbox_header: "Results from the U.S. Government's Recalls Database"
-  displaying_count_of_total_for_query: Displaying %{start}-%{end} of %{total} for %{query}
-  view_more_recalls: View More Recalls
-  industry:
-    auto:
-      name: auto
-      agency_name: National Highway Traffic Safety Administration
-    product:
-      name: product
-      agency_name: Consumer Product Safety Commission
-    food:
-      name: food
-      agency_name: United States Department of Agriculture
-    drug:
-      name: drug
-      agency_name: Food and Drug Administration
   sort_by: Sort by
   by_date: 'Most recent'
   by_relevance: 'Best match'
@@ -120,7 +74,6 @@ en:
   advanced_search_query_quote_label: "This exact phrase"
   advanced_search_query_or_label: "Any of these words"
   advanced_search_query_not_label: "None of these words"
-  advanced_search_language_label: "Language"
   advanced_search_adult_filter_label: "Safe Search"
   advanced_search_adult_filter_strict_label: "Strict"
   advanced_search_adult_filter_moderate_label: "Moderate"
@@ -132,43 +85,12 @@ en:
   advanced_search_operator_url_on_bing: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
   advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=en'
   advanced_search_operator: 'You can also use %{link} to help limit and focus your searches.'
-  search_results_restriction_message_front: "This search was restricted to <b>%{scope_setting}</b>."
-  search_results_restriction_message_link: "Search again without the restriction."
 
   usagov_mobile: "USA.gov mobile"
-  contact_your_government: "Contact your Government"
-  email_address: "Email Address"
-  message: "Message"
-  submit: "Submit"
-  call_1800FEDINFO: "Call 1 (800) FED-INFO"
-  sms_services: "Text/SMS Services"
-  email_us: "E-mail us"
-  visit_our_blog: "Visit Our Blog"
-  usagov_resources: "Explore USA.gov"
-  specific_audiences: "By Specific Audience"
-  citizen_services: "Get It Done Online!"
-  explore_topics: "Explore Topics"
-  explore_faqs: "FAQs"
-  top_questions: "Top Questions"
-  featured_content: "Featured Content"
-  find_government_agencies: "Find Government Agencies"
-  usagov_full_site: "USA.gov Full Site"
   next_page: "Next Page"
   view_site_in: "View site in:"
   classic: "Classic"
   mobile: "Mobile"
-  contact_your_government_url: "/usa/Contact"
-  specific_audiences_url: "/usa/Topics/Audiences"
-  citizen_services_url: "/usa/Citizen/Services"
-  explore_topics_url: "/usa/Citizen/Topics/All-Topics"
-  explore_faqs_url: "/usa/answers/1"
-  find_government_agencies_url: "/usa/Agencies"
-  contact_us: "Contact Us"
-  mobile_feedback_contact_recipients: "musa.gov@mail.fedinfo.gov"
-  mobile_feedback_subject: "USA.gov Mobile Inquiry"
-  contact_thank_you: "Thank you for contacting USA.gov. We will respond to you within two business days."
-  contact_missing_required_fields: "Missing required fields (*)"
-  contact_invalid_email: "Email address is not valid"
   searches_related_to: "Searches related to '%{query}'"
   job_openings: "Job Openings"
   at_agency: "at %{agency}"
@@ -186,7 +108,6 @@ en:
   agency_tty_phone_label: TTY
   agency_search_within_label: Search within
   agency_stay_connected_label: "Stay Connected"
-  agency_popular_pages: "Popular Pages"
 
   medline_official_result: Official result from MedlinePlus
   medline_related_topics: Related MedlinePlus Topics

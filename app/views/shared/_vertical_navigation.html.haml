@@ -3,6 +3,3 @@
   = content_tag :span, 'Web'
 = link_to_unless image_search?, t(:images), path_to_search(search_params, images_path(search_params), image_search_path(search_params)) do |images|
   = content_tag :span, t(:images)
-- if english_locale?
-  = link_to_unless recalls_search?, t(:recalls), recalls_search_path(search_params) do |recalls|
-    = content_tag :span, t(:recalls)

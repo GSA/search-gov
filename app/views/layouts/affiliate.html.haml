@@ -32,8 +32,6 @@
         :locals => { :css_property_hash => @affiliate.css_property_hash,
                      :managed_header_css_properties => @affiliate.managed_header_css_properties })
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
-    /[if IE]
-      = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     /[if IE 7]
       = stylesheet_link_tag 'compiled/ie7.css'
 

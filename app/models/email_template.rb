@@ -10,7 +10,6 @@ class EmailTemplate < ActiveRecord::Base
       :new_user_email_verification => '[USASearch] Email Verification',
       :welcome_to_new_user => '[USASearch] Welcome to the USASearch Affiliate Program',
       :welcome_to_new_developer => '[USASearch] Welcome to the USASearch Program: APIs and Web Services',
-      :mobile_feedback => '[USASearch] <%= I18n.t(:mobile_feedback_subject) %>',
       :new_affiliate_site => '[USASearch] Your new site: <%= @affiliate.display_name %>',
       :new_affiliate_user => '[USASearch] USASearch Affiliate Program: You Were Added to <%= @affiliate.display_name %>',
       :welcome_to_new_user_added_by_affiliate => '[USASearch] Welcome to the USASearch Affiliate Program',
