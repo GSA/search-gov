@@ -8,8 +8,8 @@ role :resque_workers,  "192.168.100.170", "192.168.100.173"
 role :daemon, "192.168.100.170"
 role :solr, "192.168.100.174", "192.168.110.12"
 
-before "deploy:symlink", "production_yaml_files"
-before "deploy:symlink", "production_solrconfig"
+before 'deploy:assets:precompile', 'production_yaml_files'
+before 'deploy:create_symlink', 'production_solrconfig'
 before "deploy:cleanup", "restart_resque_workers"
 
 task :restart_resque_workers, :roles => :resque_workers do
