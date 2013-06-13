@@ -1,14 +1,11 @@
 %tbody
   %tr.column-header
-    %th URL
-    %th Actions
+    %th{ :colspan => 2 } URL
   - unless @uncrawled_urls.blank?
     - @uncrawled_urls.each do |uncrawled_url|
       %tr{:class => cycle('even', 'odd')}
-        %td
+        %td{ :colspan => 2 }
           = link_to shorten_url(uncrawled_url.url, shorten_url_length), uncrawled_url.url, :title => uncrawled_url.url
-        %td.actions
-          = button_to("Delete", affiliate_on_demand_url_path(@affiliate, uncrawled_url), :method => :delete, :data => {:confirm => "Are you sure you want to delete this URL?"})
   - else
     %tr
       %td.empty{ :colspan => 2 } Site #{@affiliate.display_name} has no uncrawled URLs

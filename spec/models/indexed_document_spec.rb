@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe IndexedDocument do
-  fixtures :affiliates, :superfresh_urls, :site_domains, :indexed_domains, :features
+  fixtures :affiliates, :superfresh_urls, :site_domains, :features
   before do
     @min_valid_attributes = {
       :url => "http://min.nps.gov/link.html",
@@ -15,8 +15,7 @@ describe IndexedDocument do
       :doctype => 'html',
       :last_crawl_status => IndexedDocument::OK_STATUS,
       :body => "this is the doc body",
-      :affiliate_id => affiliates(:basic_affiliate).id,
-      :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8"
+      :affiliate_id => affiliates(:basic_affiliate).id
     }
     BingSearch.stub(:search_for_url_in_bing).and_return(nil)
   end
@@ -33,93 +32,6 @@ describe IndexedDocument do
   it { should_not allow_value("http://www.ssa.gov./trailing-period-in-domain.pdf").for(:url) }
   it { should belong_to :affiliate }
 
-  context "when associated affiliate has an excluded domain list" do
-    before do
-      affiliate = affiliates(:basic_affiliate)
-      affiliate.add_site_domains('site1.gov' => nil, 'site2.gov' => nil)
-      affiliate.excluded_domains.build(:domain => "beta.site1.gov")
-      affiliate.excluded_domains.build(:domain => "site2.gov/subdir")
-      affiliate.save!
-    end
-
-    context "when URL of indexed document matches something in affiliate's excluded domain list" do
-      it "should find the record invalid" do
-        %w(http://beta.site1.gov/foo http://www.site2.gov/subdir/doc.html).each do |url|
-          odie = IndexedDocument.new(@valid_attributes.merge(url: url))
-          odie.save.should be_false
-          odie.errors.full_messages.join(' ').should =~ /#{IndexedDocument::DOMAIN_EXCLUDED_STATUS}/
-        end
-      end
-    end
-
-    context "when URL of indexed document doesn't match anything in affiliate's excluded domain list" do
-      it "should find the record valid given all other attributes are valid" do
-        %w(http://ok.site1.gov/foo http://www.site2.gov/subdir2/doc.html).each do |url|
-          IndexedDocument.new(@valid_attributes.merge(:url => url)).should be_valid
-        end
-      end
-    end
-  end
-
-  context "when associated affiliate has a site domain list" do
-    before do
-      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "whitelist.gov/someurl")
-      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => ".mil")
-      SiteDomain.create!(:affiliate => affiliates(:basic_affiliate), :domain => "www.ftc.gov")
-    end
-
-    context "when URL of indexed document doesn't match anything in affiliate's site domain list" do
-      it "should find the record invalid" do
-        %w(http://www.blacklisted.gov/foo/http://www.whitelist.gov/someurl/page.pdf
-           whitelist.gov/blog/someurl/1.html
-           http://www.ftc.gov.backwards.u.is/doc.html
-           http://www1ftc.gov/doc.html).each do |url|
-          odie = IndexedDocument.new(@valid_attributes.merge(url: url))
-          odie.save.should be_false
-          odie.errors.full_messages.join(' ').should =~ /#{IndexedDocument::DOMAIN_MISMATCH_STATUS}/
-        end
-      end
-    end
-
-    context "when URL of indexed document matches something in affiliate's site domain list" do
-      it "should find the record valid given all other attributes are valid" do
-        %w{http://www.WHITELIST.gov/someurl/page.pdf http://www.army.mil/someurl/page.pdf}.each do |url|
-          IndexedDocument.new(@valid_attributes.merge(:url => url)).should be_valid
-        end
-      end
-    end
-  end
-
-  context "when associated affiliate has no site domains" do
-    before do
-      affiliates(:basic_affiliate).site_domains.destroy_all
-    end
-
-    it "should find the record invalid" do
-      IndexedDocument.new(@valid_attributes.merge(:url => "http://www.nps.gov/foo.pdf")).should_not be_valid
-    end
-  end
-
-  context "when robots.txt info exists for the domain" do
-    before do
-      Robot.create!(:domain => 'nps.gov', :prefixes => '/test/,/test2/')
-    end
-
-    context "when there is a match" do
-      it "should mark the record invalid" do
-        idoc = IndexedDocument.new(@valid_attributes.merge(:url => 'http://nps.gov/test/no.pdf'))
-        idoc.should_not be_valid
-        idoc.errors.full_messages.first.should == IndexedDocument::ROBOTS_TXT_COMPLIANCE
-      end
-    end
-
-    context "when there is no match" do
-      it "should not mark the record invalid" do
-        IndexedDocument.new(@valid_attributes.merge(:url => 'http://nps.gov/ok/test/no.pdf')).should be_valid
-      end
-    end
-  end
-
   it "should mark invalid URLs that have an extension that we have blacklisted" do
     movie = "http://www.nps.gov/some.mov"
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => movie))
@@ -132,11 +44,6 @@ describe IndexedDocument do
     idoc = IndexedDocument.new(@valid_attributes.merge(:url => too_long))
     idoc.should_not be_valid
     idoc.errors[:url].first.should =~ /too long/
-  end
-
-  it "should assign/create an associated indexed_domain" do
-    IndexedDocument.create!(@valid_attributes)
-    IndexedDomain.find_by_affiliate_id_and_domain(affiliates(:basic_affiliate).id, "www.nps.gov").should_not be_nil
   end
 
   describe "normalizing URLs when saving" do
@@ -196,17 +103,6 @@ describe IndexedDocument do
     duplicate.should be_valid
   end
 
-  it "should validate unique content hash across URLs for a given affiliate" do
-    attrs = @valid_attributes.merge(:content_hash => '92ebcfafee3260a041f9624525a45328')
-    IndexedDocument.create!(attrs)
-    duplicate = IndexedDocument.new(attrs.merge(:url => "http://www.nps.gov/myurl.html"))
-    duplicate.should_not be_valid
-    duplicate.errors[:content_hash].first.should =~ /Identical content/
-    affiliates(:power_affiliate).site_domains.create!(:domain => affiliates(:basic_affiliate).site_domains.first.domain)
-    duplicate = IndexedDocument.new(attrs.merge(:affiliate_id => affiliates(:power_affiliate).id))
-    duplicate.should be_valid
-  end
-
   it "should validate URL against URI.parse to catch things that aren't caught in the regexp" do
     odie = IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://www.gov.gov/pipesare||bad")
     odie.valid?.should be_false
@@ -223,35 +119,6 @@ describe IndexedDocument do
     odie = IndexedDocument.create!(@min_valid_attributes)
     odie.update_attributes(:title => 'bogus title', :description => ' ', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false
     odie.errors[:description].first.should =~ /can't be blank/
-  end
-
-  describe "deleting an IndexedDocument" do
-    context "when it doesn't have an IndexedDomain associated with it" do
-      before do
-        @indexed_document = IndexedDocument.create(@min_valid_attributes)
-      end
-
-      it "should still work" do
-        @indexed_document.indexed_domain.should be_nil
-        @indexed_document.destroy
-      end
-    end
-
-    context "when it's the last IndexedDocument associated with an IndexedDomain" do
-      before do
-        IndexedDocument.destroy_all
-        @indexed_document = IndexedDocument.create!(@valid_attributes)
-        @indexed_document.update_attributes!(:title => 'bogus title', :description => 'description', :last_crawl_status => IndexedDocument::OK_STATUS, :content_hash => '92ebcfafee3260a041f9624525a45328')
-        IndexedDocument.create!(@valid_attributes.merge(:url => "http://www.nps.gov/second.html"))
-      end
-
-      it "should delete the associated orphaned IndexedDomain, too" do
-        IndexedDocument.last.destroy
-        IndexedDomain.find_by_domain("www.nps.gov").should_not be_nil
-        IndexedDocument.last.destroy
-        IndexedDomain.find_by_domain("www.nps.gov").should be_nil
-      end
-    end
   end
 
   describe "#search_for" do
@@ -376,9 +243,9 @@ describe IndexedDocument do
     context "when the query contains boolean operators" do
       before do
         IndexedDocument.destroy_all
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'boolean operator', :url => 'http://www.nps.gov/boolean.pdf', :content_hash => nil))
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'OR US97', :url => 'http://www.nps.gov/or_97.pdf', :content_hash => nil))
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'Newport city OR', :url => 'http://www.nps.gov/newport.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'boolean operator', :url => 'http://www.nps.gov/boolean.pdf'))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'OR US97', :url => 'http://www.nps.gov/or_97.pdf'))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'Newport city OR', :url => 'http://www.nps.gov/newport.pdf'))
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -392,9 +259,9 @@ describe IndexedDocument do
     context 'when the query contains local params' do
       before do
         IndexedDocument.destroy_all
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc1', :url => 'http://www.nps.gov/odie_doc1.pdf', :content_hash => nil))
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc2', :url => 'http://www.nps.gov/odie_doc2.pdf', :content_hash => nil))
-        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc3', :url => 'http://www.nps.gov/odie_doc3.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc1', :url => 'http://www.nps.gov/odie_doc1.pdf'))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc2', :url => 'http://www.nps.gov/odie_doc2.pdf'))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'odie doc3', :url => 'http://www.nps.gov/odie_doc3.pdf'))
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -406,11 +273,11 @@ describe IndexedDocument do
       before do
         IndexedDocument.destroy_all
         IndexedDocument.create!(@valid_attributes.merge(:title => 'old doc 8', :url => 'http://www.nps.gov/doc8.pdf',
-                                                        :content_hash => nil, :created_at => 4.months.ago))
+                                                        :created_at => 4.months.ago))
         IndexedDocument.create!(@valid_attributes.merge(:title => 'new doc 9', :url => 'http://www.nps.gov/doc9.pdf',
-                                                        :content_hash => nil, :created_at => 1.weeks.ago))
+                                                        :created_at => 1.weeks.ago))
         IndexedDocument.create!(@valid_attributes.merge(:title => 'new doc 10', :url => 'http://www.nps.gov/doc10.pdf',
-                                                        :content_hash => nil, :created_at => 2.weeks.ago))
+                                                        :created_at => 2.weeks.ago))
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -436,25 +303,6 @@ describe IndexedDocument do
 
     let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
 
-    context "when the URL isn't a match for existing site domain entries for the affiliate" do
-      before do
-        indexed_document.affiliate.site_domains.destroy_all
-        indexed_document.affiliate.site_domains.create!(:domain => "somethingelse.gov")
-      end
-
-      it "should delete the entry and stop processing" do
-        indexed_document.should_receive(:remove_from_index)
-        indexed_document.fetch
-        IndexedDocument.exists?(indexed_document.id).should be_false
-      end
-    end
-
-    it "should set the content hash for the entry" do
-      indexed_document.should_receive(:index_document).with(kind_of(Tempfile), 'text/html')
-      indexed_document.should_receive(:save_or_destroy)
-      indexed_document.fetch
-    end
-
     it "should set the load time attribute" do
       indexed_document.fetch
       indexed_document.reload
@@ -470,7 +318,6 @@ describe IndexedDocument do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
         indexed_document.last_crawl_status.should == "301 Moved Permanently"
-        indexed_document.content_hash.should be_nil
         indexed_document.body.should be_nil
         indexed_document.title.should be_nil
         indexed_document.description.should be_nil
@@ -507,23 +354,8 @@ describe IndexedDocument do
       @indexed_document = IndexedDocument.create!(@valid_attributes)
     end
 
-    context "when the content hash is a duplicate" do
-      before do
-        @indexed_document.stub!(:build_content_hash).and_return("foo")
-        errors = mock(ActiveModel::Errors)
-        errors.stub!(:full_messages).and_return ["Content hash is not unique: Identical content (title and body) already indexed"]
-        @indexed_document.stub!(:errors).and_return errors
-        @indexed_document.stub!(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
-      end
-
-      it "should raise an IndexedDocumentError with the validation error as the message" do
-        lambda { @indexed_document.save_or_destroy }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
-      end
-    end
-
     context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
       before do
-        @indexed_document.stub!(:build_content_hash).and_return("foo")
         @indexed_document.stub!(:save!).and_raise(Mysql2::Error.new("oops"))
       end
 
@@ -617,23 +449,10 @@ describe IndexedDocument do
       let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
       let(:file) { open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm') }
 
-      context "when the title is long" do
-        it "should use the title, truncated to 60 characters on a word boundary" do
-          indexed_document.index_html(file)
-          indexed_document.title.should == "Fire Island National Seashore - Fire Island Light Station..."
-        end
-      end
-
       it "should extract the text body from the document" do
         indexed_document.should_receive(:extract_body_from).and_return "this is the body"
         indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
         indexed_document.body.should == "this is the body"
-      end
-
-      it "should use a subset of the body as the description" do
-        indexed_document.should_receive(:generate_generic_description).and_return "foo..."
-        indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
-        indexed_document.description.should == "foo..."
       end
 
       context "when the page body (inner text) is empty" do
@@ -646,122 +465,38 @@ describe IndexedDocument do
         end
       end
 
-      it "should try to find and index nested URLs" do
-        indexed_document.should_receive(:discover_nested_docs).with(an_instance_of(Nokogiri::HTML::Document))
-        indexed_document.index_html(file)
-      end
-    end
-  end
-
-  describe "#remove_common_substring(unescaped_substring)" do
-    let(:indexed_document) { IndexedDocument.create!(:title => "some title", :body => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :description => "THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT", :last_crawl_status => 'OK', :url => "http://www.nps.gov/a.html", :affiliate => affiliates(:basic_affiliate)) }
-
-    it "should remove the substring from the body and update the description" do
-      indexed_document.remove_common_substring("Skip to Main Content Home FAQs Site")
-      indexed_document.body.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
-      indexed_document.description.should=="THIS IS GOOD TEXT THIS IS GOOD TEXT"
-    end
-
-    context "when there is no body/description left after removing the template (e.g., 90% of the pages have different titles but duplicate descriptions)" do
-      it "should just ignore the validation failure and move on (versus raising an exception)" do
-        indexed_document.remove_common_substring("THIS IS GOOD TEXTSkip to Main Content Home FAQs SiteTHIS IS GOOD TEXT")
-      end
-    end
-  end
-
-  describe "#body_for_substring_detection" do
-    context "when body length is under a threshold" do
-      before do
-        @indexed_document = IndexedDocument.new(:body => "something reasonable")
-      end
-
-      it "should return the body unchanged" do
-        @indexed_document.body_for_substring_detection.should == @indexed_document.body
-      end
-    end
-
-    context "when body length is over a threshold" do
-      before do
-        @header = 'a' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
-        @footer = 'z' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
-        content = 'q' * IndexedDocument::LARGE_DOCUMENT_SAMPLE_SIZE
-        @indexed_document = IndexedDocument.new(:body => @header + content + @footer)
-      end
-
-      it "should return the leftmost part of the body concatenated with the rightmost part of the body" do
-        @indexed_document.body_for_substring_detection.should == @header + @footer
-      end
     end
   end
 
   describe "#extract_body_from(nokogiri_doc)" do
     let(:doc) { Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/audiences.html')) }
-    let(:indexed_domain) { indexed_domains(:sample) }
 
-    before do
-      indexed_domain.common_substrings.create!(:substring => "Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print", :saturation => 99.9)
-      indexed_domain.common_substrings.create!(:substring => "Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal.", :saturation => 99.9)
-    end
-
-    it "should return the inner text of the body of the document minus any common substrings" do
-      indexed_document = IndexedDocument.new(:indexed_domain => indexed_domain, :url => "http://gov.nps.gov/page.html")
+    it "should return the inner text of the body of the document" do
+      indexed_document = IndexedDocument.new(:url => "http://gov.nps.gov/page.html")
       body = indexed_document.extract_body_from(doc)
-      body.should == "Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010"
+      body.should == "Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010 Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal."
     end
-  end
-
-  describe "#discover_nested_docs(doc)" do
-    before do
-      @aff = affiliates(:basic_affiliate)
-      @aff.site_domains.destroy_all
-      @aff.site_domains.create(:domain => "agency.gov")
-      @indexed_document = IndexedDocument.new(:affiliate => @aff, :url => "http://www.agency.gov/index.html")
-    end
-
-    context "when the HTML document contains links" do
-      before do
-        @doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/page_with_all_kinds_of_links.html'))
-      end
-
-      it "should create new IndexedDocuments with absolute URLs based on valid URLs with matching site domains" do
-        @aff.indexed_documents.should_receive(:create).exactly(10).times
-        @indexed_document.discover_nested_docs(@doc)
-      end
-    end
-
   end
 
   describe "#index_application_file(file)" do
-    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes.merge(title: 'preset title', description: 'preset description')) }
 
     context "for a normal application file (PDF/Word/PPT/Excel)" do
       before do
         indexed_document.index_application_file(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf", 'pdf')
       end
 
-      it "should create an indexed document that has a title based on the title field and a description from the body text" do
+      it "should update the body of the indexed document, leaving title field and description intact" do
         indexed_document.id.should_not be_nil
-        indexed_document.title.should == "This is a test PDF file, we are use it to test our PDF parsing technology"
-        indexed_document.description.should =~ /This is a test PDF file/
-        indexed_document.description.should =~ /in the right.../
+        indexed_document.body.should == "This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me."
+        indexed_document.description.should == 'preset description'
+        indexed_document.title.should == 'preset title'
         indexed_document.url.should == @min_valid_attributes[:url]
       end
 
       it "should set the the time and status from the crawl" do
         indexed_document.last_crawled_at.should_not be_nil
         indexed_document.last_crawl_status.should == IndexedDocument::OK_STATUS
-      end
-    end
-
-    context "for a PDF that, when parsed, has garbage characters in the description" do
-      before do
-        indexed_document.index_application_file(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf", 'pdf')
-      end
-
-      it "should remove the garbage characters from the description" do
-        indexed_document.description.should_not =~ /[“’‘”]/
-        indexed_document.description[0..-4].should_not =~ /[^\w_ ]/
-        indexed_document.description.should_not =~ / /
       end
     end
 
@@ -772,56 +507,6 @@ describe IndexedDocument do
 
       it "should raise an IndexedDocumentError" do
         lambda { indexed_document.index_application_file(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf", 'pdf') }.should raise_error(IndexedDocument::IndexedDocumentError)
-      end
-    end
-  end
-
-  describe "#extract_document_title(pdf_file_path, pdf_text)" do
-    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
-
-    context "when title is defined" do
-      before do
-        indexed_document.stub!(:parse_file).and_return "title: some gov  document "
-      end
-
-      it "should return the title" do
-        title = indexed_document.send(:extract_document_title, nil, "whatever")
-        title.should == "some gov document"
-      end
-    end
-
-    context "when title is an integer" do
-      before do
-        indexed_document.stub!(:parse_file).and_return "title: 1578"
-      end
-
-      it "should coerce the title into a string" do
-        title = indexed_document.send(:extract_document_title, nil, "whatever")
-        title.should == "1578"
-      end
-    end
-
-    context "when title is a blank" do
-      before do
-        indexed_document.stub!(:parse_file).and_return "title:  "
-      end
-
-      it "should attempt to return the body text" do
-        title = indexed_document.send(:extract_document_title, nil, "whatever")
-        title.should == "whatever"
-      end
-    end
-
-    context "when application document has no title" do
-      before do
-        indexed_document.stub!(:parse_file).and_return "Author: me\nDate: recently\n"
-      end
-
-      context "when body text contains no periods or newlines" do
-        it "should return the cleaned body text" do
-          title = indexed_document.send(:extract_document_title, nil, "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface")
-          title.should == "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface"
-        end
       end
     end
   end
@@ -872,115 +557,6 @@ describe IndexedDocument do
     end
   end
 
-  describe "#process_file" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-    end
-
-    context "when file format is not text/plain or txt" do
-      before do
-        @urls = %w(http://search.usa.gov http://nps.gov/url.html http://data.gov)
-        tempfile = Tempfile.new('urls.xml')
-        @urls.each do |url|
-          tempfile.write(url + "\n")
-        end
-        tempfile.close
-        tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/xml')
-      end
-
-      it "should return with error_message" do
-        IndexedDocument.process_file(@file, @affiliate).should == {:success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
-      end
-    end
-
-    context "when a file is passed in without any URLs" do
-      before do
-        tempfile = Tempfile.new('urls.txt')
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
-      end
-
-      it "should return with success = false, and error message" do
-        result = IndexedDocument.process_file(@file, @affiliate)
-        result[:success].should be_false
-        result[:error_message].should == 'No URLs uploaded; please check your file and try again.'
-      end
-
-      it "should not trigger a refresh on all the unfetched URLs for that affiliate" do
-        @affiliate.should_not_receive(:refresh_indexed_documents)
-      end
-    end
-
-    context "when a file is passed in with fewer than the maximum number of allowable URLs" do
-      before do
-        @urls = %w(http://nps.gov/url1.html http://nps.gov/url2.html http://nps.gov/url3.html)
-        tempfile = Tempfile.new('urls.txt')
-        @urls.each do |url|
-          tempfile.write(url + "\n")
-        end
-        tempfile.close
-        tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
-        @result = IndexedDocument.process_file(@file, @affiliate)
-      end
-
-      it "should create a new IndexedDocument for each of the lines in the file" do
-        @urls.each { |url| IndexedDocument.find_by_url_and_affiliate_id(url, @affiliate.id).should_not be_nil }
-      end
-
-      it "should return with success = true, and count" do
-        @result[:success].should be_true
-        @result[:count].should == 3
-      end
-    end
-
-    context "when a file is passed in with more than the limit of URLs" do
-      before do
-        tempfile = Tempfile.new('too_many_urls.txt')
-        10001.times { |x| tempfile.write("http://nps.gov/#{x}\n") }
-        tempfile.close
-        tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
-        IndexedDocument.stub!(:create).and_return mock("idoc", :errors => [])
-      end
-
-      it "should return with success == false and error message if the number of URLs in the file exceeds MAX_URLS_PER_FILE_UPLOAD" do
-        result = IndexedDocument.process_file(@file, @affiliate)
-        result[:success].should be_false
-        result[:error_message].should == 'Too many URLs in your file.  Please limit your file to 10000 URLs.'
-      end
-
-      it "should return with success == true if max_urls param is set above the number of URLs in the file" do
-        result = IndexedDocument.process_file(@file, @affiliate, 100000)
-        result[:success].should be_true
-        result[:count].should == 10001
-      end
-
-      it "should return with success == true if '0' is passed as the number of maximum urls" do
-        result = IndexedDocument.process_file(@file, @affiliate, 0)
-        result[:success].should be_true
-        result[:count].should == 10001
-      end
-    end
-
-    context "when a file has at least one URL processed" do
-      before do
-        tempfile = Tempfile.new('urls.txt')
-        %w(http://search.usa.gov/ http://nps.gov/uploaded.html http://data.gov/).each do |url|
-          tempfile.write(url + "\n")
-        end
-        tempfile.close
-        tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
-      end
-
-      it "should trigger a refresh on all the unfetched URLs for that affiliate" do
-        @affiliate.should_receive(:refresh_indexed_documents).with('unfetched')
-        IndexedDocument.process_file(@file, @affiliate)
-      end
-    end
-  end
-
   describe "#refresh(extent)" do
     before do
       IndexedDocument.destroy_all
@@ -1008,41 +584,6 @@ describe IndexedDocument do
 
       it "should ignore it and move on to the next affiliate" do
         IndexedDocument.refresh('unfetched')
-      end
-    end
-  end
-
-  describe "#bulk_load_urls" do
-    before do
-      IndexedDocument.destroy_all
-      @file = Tempfile.new('aid_urls.txt')
-      @aff = affiliates(:basic_affiliate)
-      2.times { @file.puts([@aff.id, 'http://www.nps.gov/'].join("\t")) }
-      @file.puts([@aff.id, 'http://www.usa.z/invalid'].join("\t"))
-      @file.close
-    end
-
-    it "should create new, valid IndexedDocument entries" do
-      IndexedDocument.bulk_load_urls(@file.path)
-      IndexedDocument.count.should == 1
-      IndexedDocument.find_by_url_and_affiliate_id("http://www.nps.gov/", @aff.id).should_not be_nil
-    end
-
-    it "should enqueue fetching and indexing content for these unfetched URLs" do
-      IndexedDocument.should_receive(:refresh).with('unfetched')
-      IndexedDocument.bulk_load_urls(@file.path)
-    end
-
-  end
-
-  describe "#build_content_hash" do
-    it "should build it from the title and body" do
-      IndexedDocument.new(@valid_attributes).build_content_hash.should == 'c9046962bfec2648b59f3a4213b09bb4'
-    end
-
-    context "when title is empty" do
-      it "should just use the body" do
-        IndexedDocument.new(@valid_attributes.merge(:title => nil)).build_content_hash.should == '0a56786098d4b95f93ebff6070b0a24f'
       end
     end
   end

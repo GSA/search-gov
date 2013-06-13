@@ -1,8 +1,8 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
-  before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
-  before_filter :require_affiliate, :except => [:index, :home, :urls_and_sitemaps]
+  before_filter :require_affiliate_or_admin, :only => [:home, :urls]
+  before_filter :require_affiliate, :except => [:index, :home, :urls]
   before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
-  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
+  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_look_and_feel, :edit_header_footer]
   before_filter :setup_for_results_modules_actions, :only => [:edit_results_modules, :new_connection_fields]
 
@@ -200,17 +200,14 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @boosted_contents = @affiliate.boosted_contents.recent
   end
 
-  def urls_and_sitemaps
-    @title = "URLs & Sitemaps - "
-    @sitemaps = @affiliate.sitemaps.paginate(:per_page => 5, :page => 1)
+  def urls
+    @title = "URLs - "
+    @site_feed_url = @affiliate.site_feed_url || SiteFeedUrl.new(affiliate: @affiliate)
     @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 1, 5)
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
   def new_site_domain_fields
-  end
-
-  def new_sitemap_fields
   end
 
   def new_rss_feed_fields

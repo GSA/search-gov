@@ -1002,7 +1002,7 @@ h3.api-item
       margin: 0.5em 0 0
       padding: 0 0 0 1em
 
-.featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .rss-url-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
+.featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .rss-url-list, .excluded-url-list, .crawled-url-list, .uncrawled-url-list, .entry-list
   table
     border: 1px solid #BDBDBD
     table-layout: fixed
@@ -1150,7 +1150,7 @@ h3.api-item
     @extend .crawled-url-list
     @extend .uncrawled-url-list
 
-.add-featured-collection, .edit-featured-collection, .add-document-collection, .edit-document-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap, .add-url, .add-new-entry, .edit-entry
+.add-featured-collection, .edit-featured-collection, .add-document-collection, .edit-document-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-url, .add-new-entry, .edit-entry
   @include border-radius
   border: 1px solid #BDBDBD
   overflow: hidden
@@ -1494,10 +1494,10 @@ h3.api-item
   p
     margin-bottom: 0.5em
 
-#urls_and_sitemaps
+#urls
   +clearfix
 
-.site-domains .domain, .sitemaps .url
+.site-domains .domain
   input.txt
     width: 580px
 
@@ -1508,7 +1508,7 @@ h3.api-item
     display: block
     margin-top: 0
 
-#add_sitemap, #add_domain
+#add_domain
   +hide-text
   +inline-block
   margin-left: 5px

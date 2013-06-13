@@ -947,10 +947,10 @@ describe Affiliates::HomeController do
     end
   end
 
-  describe "do GET on #urls_and_sitemaps" do
+  describe "do GET on #urls" do
     context "when not logged in" do
       before do
-        get :urls_and_sitemaps, :id => affiliates(:power_affiliate).id
+        get :urls, :id => affiliates(:power_affiliate).id
       end
 
       it { should redirect_to login_path }
@@ -959,7 +959,7 @@ describe Affiliates::HomeController do
     context "when logged in but not an affiliate manager" do
       before do
         UserSession.create(users(:developer))
-        get :urls_and_sitemaps, :id => affiliates(:power_affiliate).id
+        get :urls, :id => affiliates(:power_affiliate).id
       end
 
       it { should redirect_to home_page_path }
@@ -968,7 +968,7 @@ describe Affiliates::HomeController do
     context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
       before do
         UserSession.create(users(:affiliate_manager))
-        get :urls_and_sitemaps, :id => affiliates(:another_affiliate).id
+        get :urls, :id => affiliates(:another_affiliate).id
       end
 
       it { should redirect_to home_page_path }
@@ -977,25 +977,22 @@ describe Affiliates::HomeController do
     context "when logged in as the USA admin" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_admin) }
-      let(:recent_sitemaps) { mock('recent sitemaps') }
       let(:recent_uncrawled_urls) { mock('recent uncrawled urls') }
       let(:recent_crawled_urls) { mock('recent crawled urls') }
 
       before do
         UserSession.create(current_user)
-        User.should_receive(:find_by_id).and_return(current_user)
+        User.stub!(:find_by_id).and_return(current_user)
+        affiliate.id.should_not be_nil
 
-        affiliate.stub_chain(:sitemaps, :paginate).and_return(recent_sitemaps)
-        Affiliate.should_receive(:find).and_return(affiliate)
-        IndexedDocument.should_receive(:uncrawled_urls).with(affiliate, 1, 5).and_return(recent_uncrawled_urls)
-        IndexedDocument.should_receive(:crawled_urls).with(affiliate, 1, 5).and_return(recent_crawled_urls)
-
-        get :urls_and_sitemaps, :id => affiliate.id
+        Affiliate.stub!(:find).and_return(affiliate)
+        IndexedDocument.stub!(:uncrawled_urls).with(affiliate, 1, 5).and_return(recent_uncrawled_urls)
+        IndexedDocument.stub!(:crawled_urls).with(affiliate, 1, 5).and_return(recent_crawled_urls)
+        get :urls, :id => affiliate.id
       end
 
       it { should assign_to :title }
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should assign_to(:sitemaps).with(recent_sitemaps) }
       it { should assign_to(:uncrawled_urls).with(recent_uncrawled_urls) }
       it { should assign_to(:crawled_urls).with(recent_crawled_urls) }
       it { should respond_with(:success) }
@@ -1004,7 +1001,6 @@ describe Affiliates::HomeController do
     context "when logged in as the affiliate manager" do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:current_user) { users(:affiliate_manager) }
-      let(:recent_sitemaps) { mock('recent sitemaps') }
       let(:recent_uncrawled_urls) { mock('recent uncrawled urls') }
       let(:recent_crawled_urls) { mock('recent crawled urls') }
 
@@ -1013,16 +1009,14 @@ describe Affiliates::HomeController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:sitemaps, :paginate).and_return(recent_sitemaps)
         IndexedDocument.should_receive(:uncrawled_urls).with(affiliate, 1, 5).and_return(recent_uncrawled_urls)
         IndexedDocument.should_receive(:crawled_urls).with(affiliate, 1, 5).and_return(recent_crawled_urls)
 
-        get :urls_and_sitemaps, :id => affiliate.id
+        get :urls, :id => affiliate.id
       end
 
       it { should assign_to :title }
       it { should assign_to(:affiliate).with(affiliate) }
-      it { should assign_to(:sitemaps).with(recent_sitemaps) }
       it { should assign_to(:uncrawled_urls).with(recent_uncrawled_urls) }
       it { should assign_to(:crawled_urls).with(recent_crawled_urls) }
       it { should respond_with(:success) }

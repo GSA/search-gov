@@ -15,8 +15,7 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
       :url => url,
       :last_crawl_status => IndexedDocument::OK_STATUS,
       :body => "this is the doc body",
-      :affiliate_id => affiliates(:basic_affiliate).id,
-      :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8"
+      :affiliate_id => affiliates(:basic_affiliate).id
     )
   end
 

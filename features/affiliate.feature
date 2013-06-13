@@ -131,7 +131,6 @@ Feature: Affiliate clients
     And I should see "Content Sources"
     When I fill in the following:
       | Enter the domain or URL | usasearch.howto.gov                                                          |
-      | Sitemap URL             | http://www.jpl.nasa.gov/sitemap/xml/sitemap_category/news.xml                |
       | RSS Feed Name 0         | Recalls Feed                                                                 |
       | RSS Feed URL 0          | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml |
     And I press "Next"
@@ -148,9 +147,6 @@ Feature: Affiliate clients
     Then I should see the following table rows:
       | Label               | Domain              |
       | usasearch.howto.gov | usasearch.howto.gov |
-
-    When I follow "URLs & Sitemaps" in the site navigation bar
-    Then I should see a link to "http://www.jpl.nasa.gov/sitemap/..." with url for "http://www.jpl.nasa.gov/sitemap/xml/sitemap_category/news.xml"
 
     When I follow "RSS" in the site navigation bar
     Then I should see a link to "www.fda.gov/AboutFDA/.../rss.xml" with url for "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml"
@@ -2220,28 +2216,23 @@ Feature: Affiliate clients
     Then I should see "First item"
     And I should see "Second item"
 
-  Scenario: Visiting the URLs & Sitemaps page
+  Scenario: Visiting the URLs page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And the following site domains exist for the affiliate aff.gov:
-      | domain               | site_name      |
-      | aff.gov              | Agency Website |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
-    And I follow "URLs & Sitemaps"
-    Then I should see the browser page titled "URLs & Sitemaps"
-    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs & Sitemaps
-    And I should see "URLs" in the page header
-    And I should see "Sitemaps (0)"
-    And I should see "Site aff site has no sitemaps"
+    And I follow "URLs"
+    Then I should see the browser page titled "URLs"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs
+    And I should see "RSS Site Feed URL" in the page header
     And I should see "Uncrawled URLs (0)"
     And I should see "Crawled URLs (0)"
 
     When there are 8 uncrawled IndexedDocuments for "aff.gov"
     And there are 10 crawled IndexedDocuments for "aff.gov"
     And I go to the "aff site" affiliate page
-    And I follow "URLs & Sitemaps"
+    And I follow "URLs"
     Then I should see "Uncrawled URLs (8)"
     And I should see "Crawled URLs (10)"
 

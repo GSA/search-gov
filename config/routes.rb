@@ -18,7 +18,7 @@ UsasearchRails3::Application.routes.draw do
       get :preview
       post :cancel_staged_changes_for
       get :best_bets
-      get :urls_and_sitemaps
+      get :urls
       get :content_sources
       put :create_content_sources
       get :get_the_code
@@ -34,7 +34,6 @@ UsasearchRails3::Application.routes.draw do
       get :home
       put :update_contact_information
       get :new_site_domain_fields
-      get :new_sitemap_fields
       get :new_rss_feed_fields
       get :new_managed_header_link_fields
       get :new_managed_footer_link_fields
@@ -49,6 +48,7 @@ UsasearchRails3::Application.routes.draw do
         post :bulk
       end
     end
+    resources :site_feed_urls, :controller => "affiliates/site_feed_url"
     resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:new, :create, :destroy] do
       collection do
         post :upload
@@ -93,7 +93,6 @@ UsasearchRails3::Application.routes.draw do
     resources :document_collections, :controller => "affiliates/document_collections"
     resources :raw_logs_access, :controller => "affiliates/raw_logs_access", :only => [:new, :create]
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
-    resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :site_domains, :controller => "affiliates/site_domains" do
       collection do
         get :bulk_new
@@ -142,6 +141,7 @@ UsasearchRails3::Application.routes.draw do
     resources :document_collections do as_routes end
     resources :url_prefixes do as_routes end
     resources :catalog_prefixes do as_routes end
+    resources :site_feed_urls do as_routes end
     resources :superfresh_urls do as_routes end
     resources :superfresh_urls_bulk_upload, :only => :index do
       collection do
@@ -161,7 +161,6 @@ UsasearchRails3::Application.routes.draw do
     resources :excluded_domains do as_routes end
     resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
-    resources :sitemaps do as_routes end
     resources :features do as_routes end
     resources :affiliate_feature_additions do as_routes end
     resources :help_links do as_routes end
@@ -169,7 +168,6 @@ UsasearchRails3::Application.routes.draw do
     resources :monthly_reports, :only => :index
     resources :affiliate_reports, :only => :index
     resources :email_templates do as_routes end
-    resources :common_substrings do as_routes end
     resources :compare_search_results, :only => :index
     resources :bing_urls do as_routes end
     resources :system_alerts do as_routes end

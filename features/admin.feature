@@ -263,10 +263,6 @@ Feature:  Administration
     Then I should see the following breadcrumbs: USASearch > Super Admin > EmailTemplates
 
     When I go to the admin home page
-    And I follow "Common Website Substrings"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Common Website Substrings
-
-    When I go to the admin home page
     And I follow "System Alerts"
     Then I should see the following breadcrumbs: USASearch > Super Admin > System Alerts
 

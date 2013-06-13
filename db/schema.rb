@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608031607) do
+ActiveRecord::Schema.define(:version => 20130617165154) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -195,16 +195,6 @@ ActiveRecord::Schema.define(:version => 20130608031607) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "common_substrings", :force => true do |t|
-    t.integer  "indexed_domain_id",                  :null => false
-    t.text     "substring",                          :null => false
-    t.float    "saturation",        :default => 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "common_substrings", ["indexed_domain_id"], :name => "index_common_substrings_on_indexed_domain_id"
 
   create_table "connections", :force => true do |t|
     t.integer  "affiliate_id",                                          :null => false
@@ -482,23 +472,11 @@ ActiveRecord::Schema.define(:version => 20130608031607) do
     t.string   "doctype",           :limit => 10
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
-    t.string   "content_hash",      :limit => 32
-    t.integer  "indexed_domain_id"
     t.integer  "load_time"
   end
 
-  add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
   add_index "indexed_documents", ["affiliate_id", "id"], :name => "index_indexed_documents_on_affiliate_id_and_id", :unique => true
   add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"affiliate_id"=>nil, "url"=>50}
-  add_index "indexed_documents", ["indexed_domain_id"], :name => "index_indexed_documents_on_indexed_domain_id"
-
-  create_table "indexed_domains", :force => true do |t|
-    t.integer "affiliate_id", :null => false
-    t.string  "domain",       :null => false
-  end
-
-  add_index "indexed_domains", ["affiliate_id", "domain"], :name => "index_indexed_domains_on_affiliate_id_and_domain", :unique => true
-  add_index "indexed_domains", ["domain"], :name => "index_indexed_domains_on_domain"
 
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
@@ -641,15 +619,6 @@ ActiveRecord::Schema.define(:version => 20130608031607) do
   add_index "queries_clicks_stats", ["affiliate", "query", "day"], :name => "aqd"
   add_index "queries_clicks_stats", ["affiliate", "url", "day"], :name => "aud", :length => {"affiliate"=>nil, "url"=>255, "day"=>nil}
 
-  create_table "robots", :force => true do |t|
-    t.string   "domain",     :null => false
-    t.text     "prefixes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "robots", ["domain"], :name => "index_robots_on_domain"
-
   create_table "rss_feed_urls", :force => true do |t|
     t.string   "rss_feed_owner_type",                        :null => false
     t.string   "url",                                        :null => false
@@ -736,15 +705,17 @@ ActiveRecord::Schema.define(:version => 20130608031607) do
 
   add_index "site_domains", ["affiliate_id", "domain"], :name => "index_site_domains_on_affiliate_id_and_domain", :unique => true
 
-  create_table "sitemaps", :force => true do |t|
-    t.string   "url"
-    t.integer  "affiliate_id"
-    t.datetime "last_crawled_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "site_feed_urls", :force => true do |t|
+    t.integer  "affiliate_id",                             :null => false
+    t.string   "rss_url",                                  :null => false
+    t.string   "last_fetch_status", :default => "Pending", :null => false
+    t.datetime "last_checked_at"
+    t.integer  "quota",             :default => 500,       :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
-  add_index "sitemaps", ["affiliate_id"], :name => "index_sitemaps_on_affiliate_id"
+  add_index "site_feed_urls", ["affiliate_id"], :name => "index_site_feed_urls_on_affiliate_id", :unique => true
 
   create_table "superfresh_urls", :force => true do |t|
     t.text     "url"

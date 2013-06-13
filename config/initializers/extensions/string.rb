@@ -12,18 +12,4 @@ class String
     gsub(/(\b|')[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }
   end
 
-  def longest_common_substring(s2)
-    max, start = 0, 0
-    self.length.times do |i|
-      s2.length.times do |j|
-        x = 0
-        while self[i + x] == s2[j + x]
-          x += 1
-          break if (i + x) >= self.length or (j + x) >= s2.length
-        end
-        max, start = x, i if x > max
-      end
-    end
-    self[start, max]
-  end
 end

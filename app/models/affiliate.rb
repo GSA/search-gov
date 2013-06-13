@@ -17,10 +17,8 @@ class Affiliate < ActiveRecord::Base
   has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC', dependent: :destroy
   has_many :rss_feed_urls, through: :rss_feeds, uniq: true
   has_many :excluded_urls, :dependent => :destroy
-  has_many :sitemaps, :dependent => :destroy
   has_many :site_domains, :dependent => :destroy, :order => 'domain ASC'
   has_many :excluded_domains, :dependent => :destroy, :order => 'domain ASC'
-  has_many :indexed_domains, :dependent => :destroy
   has_many :affiliate_feature_addition, :dependent => :destroy
   has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
@@ -35,6 +33,7 @@ class Affiliate < ActiveRecord::Base
   has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
   belongs_to :agency
   has_one :affiliate_note, dependent: :destroy
+  has_one :site_feed_url, dependent: :destroy
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
@@ -110,14 +109,12 @@ class Affiliate < ActiveRecord::Base
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
-  accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
   accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
-  #accepts_nested_attributes_for :youtube_profiles, :allow_destroy => true
   accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
   serialize :dublin_core_mappings, Hash
 
@@ -461,7 +458,6 @@ class Affiliate < ActiveRecord::Base
   def autodiscover
     if site_domains.size == 1
       autodiscover_homepage_url
-      autodiscover_sitemap
       autodiscover_rss_feeds
       autodiscover_favicon_url
       autodiscover_social_media
@@ -488,15 +484,6 @@ class Affiliate < ActiveRecord::Base
       else
         false
       end
-    end
-  end
-
-  def autodiscover_sitemap
-    begin
-      sitemap_url = Robot.find_or_create_by_domain(site_domains.first.domain).sitemap
-      Sitemap.create(:url => sitemap_url, :affiliate => self) if sitemap_url
-    rescue Exception => e
-      Rails.logger.error("Error when autodiscovering sitemap for #{self.name}: #{e.message}")
     end
   end
 

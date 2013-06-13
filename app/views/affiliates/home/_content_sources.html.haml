@@ -13,15 +13,6 @@
         %br
         = site_domain_form.text_field :domain, :class => 'txt'
         = link_to('+', new_site_domain_fields_affiliates_path, :remote => true, :id => 'add_domain', :class => 'add-icon')
-  .sitemaps
-    %h2.sub-title
-      Sitemaps
-    = f.fields_for :sitemaps, @affiliate.sitemaps.build do |sitemap_form|
-      .url
-        = sitemap_form.label :url, "Sitemap URL"
-        %br
-        = sitemap_form.text_field :url, :class => 'txt'
-        = link_to('+', new_sitemap_fields_affiliates_path, :remote => true, :id => 'add_sitemap', :class => 'add-icon')
   .rss-feeds
     %h2.sub-title RSS Feeds
     %table

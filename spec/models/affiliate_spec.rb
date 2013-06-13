@@ -41,7 +41,6 @@ describe Affiliate do
     it { should have_many(:rss_feed_urls).through :rss_feeds }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:excluded_domains).dependent(:destroy) }
-    it { should have_many(:indexed_domains).dependent(:destroy) }
     it { should have_many(:facebook_profiles).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
     it { should have_and_belong_to_many :youtube_profiles }
@@ -2017,8 +2016,7 @@ describe Affiliate do
                                                :url => 'http://nps.gov/pdf.pdf',
                                                :last_crawl_status => IndexedDocument::OK_STATUS,
                                                :last_crawled_at => Time.now,
-                                               :body => "this is the doc body",
-                                               :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8")
+                                               :body => "this is the doc body")
       @affiliate.save!
     end
 
@@ -2083,9 +2081,8 @@ describe Affiliate do
         @affiliate.site_domains << SiteDomain.new(:site_name => 'newone.gov', :domain => 'newone.gov')
       end
 
-      it "should call autodiscover for sitemaps, rss feeds and favicons" do
+      it "should call autodiscover for rss feeds and favicons" do
         @affiliate.should_receive(:autodiscover_homepage_url)
-        @affiliate.should_receive(:autodiscover_sitemap).and_return true
         @affiliate.should_receive(:autodiscover_rss_feeds).and_return true
         @affiliate.should_receive(:autodiscover_favicon_url).and_return true
         @affiliate.should_receive(:autodiscover_social_media).and_return true
@@ -2100,7 +2097,6 @@ describe Affiliate do
       end
 
       it "should not autodiscover anything" do
-        @affiliate.should_not_receive(:autodiscover_sitemap)
         @affiliate.should_not_receive(:autodiscover_rss_feeds)
         @affiliate.should_not_receive(:autodiscover_favicon_url)
         @affiliate.should_not_receive(:autodiscover_social_media)
@@ -2209,50 +2205,6 @@ describe Affiliate do
       it 'should not update mobile homepage URL' do
         affiliate.should_not_receive(:open)
         affiliate.autodiscover_homepage_url
-      end
-    end
-  end
-
-  describe "#autodiscover_sitemap" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
-    end
-
-    context "when the affiliate's robots.txt has a reference to a sitemap" do
-      before do
-        robot = Robot.new
-        robot.stub!(:sitemap).and_return "http://nps.gov/sitemap.xml"
-        Robot.stub!(:find_or_create_by_domain).and_return(robot)
-      end
-
-      it "should add the sitemap to the list of sitemaps for the affiliate" do
-        Sitemap.should_receive(:create).with(:url => "http://nps.gov/sitemap.xml", :affiliate => @affiliate)
-        @affiliate.autodiscover_sitemap
-      end
-    end
-
-    context "when the affiliate's robots.txt does not reference a sitemap" do
-      before do
-        robot = Robot.new
-        robot.stub!(:sitemap).and_return nil
-        Robot.stub!(:find_or_create_by_domain).and_return(robot)
-      end
-
-      it "should not add a sitemap" do
-        Sitemap.should_not_receive(:create)
-        @affiliate.autodiscover_sitemap
-      end
-    end
-
-    context "when something goes horribly wrong" do
-      before do
-        Robot.stub!(:find_or_create_by_domain).and_raise "Some Exception"
-      end
-
-      it "should log an error" do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering sitemap for #{@affiliate.name}: Some Exception")
-        @affiliate.autodiscover_sitemap
       end
     end
   end

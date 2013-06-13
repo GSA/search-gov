@@ -11,15 +11,13 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
                                              :url => 'http://nps.gov/pdf.pdf',
                                              :last_crawl_status => IndexedDocument::OK_STATUS,
                                              :last_crawled_at => Time.now,
-                                             :body => "this is the doc body",
-                                             :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8")
+                                             :body => "this is the doc body")
     @not_ok = @affiliate.indexed_documents.build(:title => 'Dupe PDF Title',
                                                  :description => 'Dupe This is a PDF document.',
                                                  :url => 'http://nps.gov/dupe_pdf.pdf',
                                                  :last_crawl_status => 'duplicate',
                                                  :last_crawled_at => Time.now,
-                                                 :body => "this is the doc body",
-                                                 :content_hash => nil)
+                                                 :body => "this is the doc body")
     @affiliate.save!
   end
 

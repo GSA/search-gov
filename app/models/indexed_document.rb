@@ -4,22 +4,19 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   belongs_to :affiliate
-  belongs_to :indexed_domain
   before_validation :normalize_url
-  before_save :set_indexed_domain
   validates_presence_of :url, :affiliate_id
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
-  validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
   validate :extension_ok
-  validate :site_domain_matches
-  validate :robots_txt_compliance
 
   OK_STATUS = "OK"
+  SUMMARIZED_STATUS = 'summarized'
   scope :ok, where(:last_crawl_status => OK_STATUS)
+  scope :summarized, where(:last_crawl_status => SUMMARIZED_STATUS)
   scope :not_ok, where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)")
   scope :fetched, where('last_crawled_at IS NOT NULL')
   scope :unfetched, where('ISNULL(last_crawled_at)')
@@ -38,7 +35,6 @@ class IndexedDocument < ActiveRecord::Base
   DOMAIN_EXCLUDED_STATUS = "URL matches affiliate's excluded site domains"
   UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   UNSUPPORTED_EXTENSION = "URL extension is not one we index"
-  ROBOTS_TXT_COMPLIANCE = "URL blocked by site's robots.txt file"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
   BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 
@@ -69,7 +65,6 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def fetch
-    site_domain_matches
     destroy and return unless errors.empty?
     begin
       uri = URI(url)
@@ -86,7 +81,6 @@ class IndexedDocument < ActiveRecord::Base
                 file.flush
                 file.rewind
                 index_document(file, response.content_type)
-                self.content_hash = build_content_hash
               ensure
                 file.close
                 file.unlink
@@ -103,7 +97,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def handle_fetch_exception(e)
     begin
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil, :title => nil, :body => nil, :description => nil)
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :title => nil, :body => nil, :description => nil)
     rescue Exception
       begin
         destroy
@@ -143,66 +137,26 @@ class IndexedDocument < ActiveRecord::Base
 
   def index_html(file)
     doc = Nokogiri::HTML(file)
-    title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
     doc.css('script').each(&:remove)
     doc.css('style').each(&:remove)
     body = extract_body_from(doc)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
-    description = generate_generic_description(body)
-    self.attributes = {:title => title, :description => description, :body => body, :doctype => 'html',
+    self.attributes = {:body => body, :doctype => 'html',
                        :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
-    discover_nested_docs(doc)
   end
 
   def index_application_file(file_path, doctype)
     document_text = parse_file(file_path, 't').strip rescue nil
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if document_text.blank?
-    self.attributes = {:title => extract_document_title(file_path, document_text), :description => generate_generic_description(document_text),
-                       :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
-  end
-
-  def generate_generic_description(text)
-    text.gsub(/[^\w_]/, " ").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
+    self.attributes = {:body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
   end
 
   def extract_body_from(nokogiri_doc)
-    remove_common_substrings(scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8')))) rescue ''
+    scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8'))) rescue ''
   end
 
   def scrub_inner_text(inner_text)
     inner_text.gsub(/ /, ' ').squish.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub('&amp;', '&').squish
-  end
-
-  def remove_common_substrings(body)
-    indexed_domain = IndexedDomain.find_by_domain(self_url.host)
-    return body unless indexed_domain.present? and indexed_domain.common_substrings.present?
-    escaped_substrings = indexed_domain.common_substrings.map { |common_substring| Regexp.escape(common_substring.substring) }
-    substring_regex = ['(', escaped_substrings.join('|'), ')'].join
-    body.gsub(/#{substring_regex}/, ' ').squish
-  end
-
-  def remove_common_substring(unescaped_substring)
-    self.body = self.body.gsub(/#{Regexp.escape(unescaped_substring)}/, ' ').squish
-    self.description = generate_generic_description(self.body)
-    self.save
-  end
-
-  def body_for_substring_detection
-    return nil if body.nil?
-    body.size >= LARGE_DOCUMENT_THRESHOLD ? body.first(LARGE_DOCUMENT_SAMPLE_SIZE) + body.last(LARGE_DOCUMENT_SAMPLE_SIZE) : body
-  end
-
-  def discover_nested_docs(doc)
-    doc.css('a').map { |link| link['href'] }.map do |link_url|
-      url = URI.merge_unless_recursive(self_url, URI.parse(link_url)).to_s rescue nil
-      url if url.present? && url =~ /\.(pdf|docx?|xlsx?|pptx?)$/i
-    end.uniq.compact.each do |link_url|
-      affiliate.indexed_documents.create(:url => link_url)
-    end
-  end
-
-  def build_content_hash
-    Digest::MD5.hexdigest((self.title || '') + self.body)
   end
 
   class << self
@@ -240,35 +194,8 @@ class IndexedDocument < ActiveRecord::Base
       where(['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id]).paginate(:page => page, :per_page => per_page).order('last_crawled_at desc, id desc')
     end
 
-    def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)
-      if file.blank? or !VALID_BULK_UPLOAD_CONTENT_TYPES.include?(file.content_type)
-        return {:success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
-      end
-
-      counter = 0
-      if (max_urls == 0 or file.tempfile.each_line.count <= max_urls) and file.tempfile.open
-        file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
-        if counter > 0
-          affiliate.refresh_indexed_documents('unfetched')
-          {:success => true, :count => counter}
-        else
-          {:success => false, :error_message => 'No URLs uploaded; please check your file and try again.'}
-        end
-      else
-        {:success => false, :error_message => "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."}
-      end
-    end
-
     def refresh(extent)
       select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil }
-    end
-
-    def bulk_load_urls(file_path)
-      File.open(file_path).each do |line|
-        affiliate_id, url = line.chomp.split("\t")
-        create(:url => url, :affiliate_id => affiliate_id)
-      end
-      refresh('unfetched')
     end
 
   end
@@ -279,18 +206,8 @@ class IndexedDocument < ActiveRecord::Base
 
   private
 
-  def set_indexed_domain
-    self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, self_url.host) if last_crawl_status_ok?
-  end
-
   def parse_file(file_path, option)
     %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar -#{option}]
-  end
-
-  def extract_document_title(pdf_file_path, pdf_text)
-    parse_file(pdf_file_path, 'm').scan(/title: (\w.*)/i)[0][0].squish
-  rescue
-    pdf_text.split(/[\n.]/).first.squish
   end
 
   def normalize_url
@@ -310,38 +227,6 @@ class IndexedDocument < ActiveRecord::Base
       request = self_url.request_uri.gsub(/\/+/, '/')
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
-    end
-  end
-
-  def site_domain_matches
-    uri = self_url rescue nil
-    return if self.affiliate.nil? or uri.nil?
-    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? do |sd|
-      if sd.domain.starts_with?('.')
-        uri.host =~ /#{sd.domain}$/i
-      else
-        site_domain_url_fragment = sd.domain
-        site_domain_url_fragment.strip!
-        site_domain_url_fragment = "#{uri.scheme}://#{site_domain_url_fragment}" unless site_domain_url_fragment =~ %r{^https?://}i
-        site_domain_url_fragment = "#{site_domain_url_fragment}/" unless site_domain_url_fragment.ends_with?("/")
-        site_domain_uri = URI.parse(site_domain_url_fragment)
-        uri.host =~ /#{Regexp.escape(site_domain_uri.host)}$/i and uri.path =~ /^#{Regexp.escape(site_domain_uri.path)}/i
-      end
-    end
-
-    errors.add(:base, DOMAIN_EXCLUDED_STATUS) if self.affiliate.excluded_domains.any? do |ed|
-      excluded_domain_uri = URI.parse("#{uri.scheme}://#{ed.domain}/")
-      uri.host =~ /#{Regexp.escape(excluded_domain_uri.host)}$/i and uri.path =~ /^#{Regexp.escape(excluded_domain_uri.path)}/i
-    end
-  end
-
-  def robots_txt_compliance
-    if self_url
-      if (robot = Robot.find_by_domain(self_url.host))
-        if robot.disallows?(self_url.request_uri)
-          errors.add(:base, ROBOTS_TXT_COMPLIANCE)
-        end
-      end
     end
   end
 
