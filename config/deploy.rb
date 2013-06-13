@@ -14,7 +14,7 @@ set :deploy_via, :remote_cache
 before "deploy:restart", "deploy:maybe_migrate"
 before 'deploy:create_symlink', 'deploy:web:disable'
 before 'deploy:create_symlink', 'deploy:symlink_cache'
-before 'deploy:create_symlink', 'deploy:create_sayt_symlink'
+before 'deploy:create_symlink', 'deploy:create_js_symlink'
 after 'deploy:restart', 'deploy:web:enable'
 after 'deploy:restart', 'deploy:cleanup'
 before "deploy:cleanup", "deploy:restart_rake_tasks"
@@ -43,8 +43,9 @@ namespace :deploy do
   end
 
   desc 'Create symlink for static resources'
-  task :create_sayt_symlink, :roles => :web do
+  task :create_js_symlink, :roles => :web do
     run "ln -s #{shared_path}/assets/sayt_loader.js #{release_path}/public/javascripts/remote.loader.js"
+    run "ln -s #{shared_path}/assets/stats.js #{release_path}/public/javascripts/stats.js"
     run "ln -s #{shared_path}/assets/sayt_loader.js #{release_path}/public/javascripts/sayt/remote.js"
   end
 end
