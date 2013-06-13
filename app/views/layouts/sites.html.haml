@@ -1,0 +1,31 @@
+!!!strict
+%html{html_attrs('en-us')}
+  %head
+    %title
+      = yield :title
+      \- USASearch
+    = favicon_link_tag
+    = csrf_meta_tags
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    %meta{ name: 'description', content: 'The USASearch Affiliate Program provides free hosted search services for any federal, state, local, tribal, or territorial government agency.' }
+    %meta{ name: 'keywords', content: 'Affiliate Program, Firstgov search, first gov search, USASearch, USA Search, USAGovSearch, USA gov search, USAGovSearch, USA gov search, hosted search, government images, government recalls, government web, government websites, USA, US, United States, US Government, u.s. government, federal, state, local, tribal, territorial, territories' }
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:400,700'
+    = stylesheet_link_tag 'sites'
+    /[if IE 7]
+      = stylesheet_link_tag 'sites_ie7'
+    :javascript
+      var usasearch_config = { siteHandle: 'usasearch', host: '//search.usa.gov' }
+    = javascript_include_tag 'sites'
+    /[if lt IE 9]
+      = javascript_include_tag 'sites_ie'
+    = yield :head
+  %body
+    #skiplink
+      %a{href: '#content'} Skip to Main Content
+    = render 'sites/shared/header'
+    = render 'sites/shared/site_selector'
+    .l-main-container
+      = render 'sites/shared/site_nav'
+      .l-content
+        = yield
+    -#= javascript_include_tag 'sayt_loader'

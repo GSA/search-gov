@@ -110,9 +110,9 @@ UsasearchRails3::Application.routes.draw do
     end
   end
 
-  scope module: 'v2' do
-    resources :affiliates, path: 'sites', as: 'sites' do
-      resources :boosted_contents
+  scope module: 'sites' do
+    resources :sites, only: [:show] do
+      resource :setting, only: [:edit, :update]
     end
   end
 

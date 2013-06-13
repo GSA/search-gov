@@ -1,0 +1,19 @@
+= content_for :title, @affiliate.display_name
+= form_for @affiliate, url: site_setting_path(@affiliate), html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Settings
+    .action-bar
+      = f.submit 'Save Settings', class: 'btn submit disabled', disabled: true
+
+  = render_site_success_flash_message
+  = f.error_messages class: 'alert alert-error'
+  = f.label :display_name, 'Site Name', class: 'required'
+  %span.help-block We use your site handle in the HTTP request to specify displaying your customized settings. This field is required.
+  = f.text_field :display_name, class: 'required'
+  %dl
+    %dt Site Handle
+    %dd= @affiliate.name
+    %dt Site ID
+    %dd= @affiliate.id
+    %dt Site Language
+    %dd= site_locale @affiliate

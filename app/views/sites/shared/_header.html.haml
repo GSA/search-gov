@@ -1,0 +1,29 @@
+#navbar.navbar
+  .navbar-inner
+    .container
+      = link_to BLOG_URL, class: 'brand' do
+        %span.usa USA
+        %span.search> Search
+      %ul.nav
+        %li= link_to 'How It Works', 'http://usasearch.howto.gov/help-desk.html'
+        %li= link_to 'Our Customers', 'http://usasearch.howto.gov/customers.html'
+      = form_tag 'http://search.howto.gov/search/news', method: :get, class: 'navbar-search' do
+        .input-append
+          = hidden_field_tag 'affiliate', 'usasearch'
+          = hidden_field_tag 'channel', 968
+          = search_field_tag 'query', nil, class: 'search-query usagov-search-autocomplete', placeholder: 'Search', autocomplete: 'false'
+          = submit_tag 'Search', class: 'btn submit'
+      %ul.nav.auth
+        %li#nav-auth-menu.dropdown
+          = link_to '#nav-auth-menu', { 'data-toggle' => 'dropdown' } do
+            = current_user.email
+            %i.icon-caret-down
+          %ul.dropdown-menu(data-no-turbolink)
+            %li
+              = link_to account_path, tabindex: -1 do
+                %i.icon-user
+                My account
+            %li
+              = link_to url_for_logout, method: :delete, tabindex: -1 do
+                %i.icon-signout
+                Sign out

@@ -1,0 +1,28 @@
+.l-site-nav.main
+  %ul.nav
+    %li.active
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Dashboard' } do
+        %i.icon-dashboard.icon-2x
+    %li
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Analytics' } do
+        %i.icon-bar-chart.icon-2x
+    %li
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Manage Content' } do
+        %i.icon-file.icon-2x
+    %li
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Manage Display' } do
+        %i.icon-desktop.icon-2x
+    %li
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Preview' } do
+        %i.icon-eye-open.icon-2x
+    %li
+      = link_to '#', { 'data-toggle' => 'tooltip', 'title' => 'Activate Search' } do
+        %i.icon-code.icon-2x
+.l-site-nav.sub
+  .main-nav-info
+    .title Dashboard
+    .description Use the Dashboard to get the bird's eye view of your site.
+  %ul.nav.nav-list
+    %li{ site_nav_css_class_hash(controller_name, 'sites') }= link_to 'Site Overview', site_path(@affiliate)
+    %li= link_to 'Manage Users'
+    %li{ site_nav_css_class_hash(controller_name, 'settings') }= link_to 'Settings', edit_site_setting_path(@affiliate)

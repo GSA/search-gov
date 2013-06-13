@@ -57,17 +57,17 @@ Feature: Affiliate Search
       | link                                    | title             | guid        | published_ago | description                    |
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Noticias" has the following news items:
-      | link                              | title               | guid    | published_ago | published_at | description                                | subject        |
-      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Obama item First news item for the feed | economy        |
-      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Obama item Next news item for the feed  | jobs           |
-      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Obama item Next news item for the feed  | health         |
-      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Obama item Next news item for the feed  | foreign policy |
-      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Obama item Next news item for the feed  | education      |
-      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Obama item Next news item for the feed  | olympics       |
+      | link                              | title          | guid    | published_ago | published_at | description                             | subject        |
+      | http://www.gobiernousa.gov/news/1 | Noticia uno    | esuuid1 | day           |              | Obama item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Noticia dos    | esuuid2 | day           |              | Obama item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Noticia tres   | esuuid3 | day           |              | Obama item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Noticia cuatro | esuuid4 | day           |              | Obama item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Noticia cinco  | esuuid5 | day           | 2012-10-1    | Obama item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Noticia seis   | esuuid6 | day           | 2012-10-17   | Obama item Next news item for the feed  | olympics       |
     And feed "es_agency" has the following news items:
-      | link                                       | title                     | guid     | published_ago | description                           |
-      | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Obama video news item for the feed |
-      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Obama video news item for the feed |
+      | link                                       | title             | guid     | published_ago | description                        |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | Noticia video uno | esvuuid1 | day           | Obama video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Noticia video dos | esvuuid2 | day           | Obama video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
       | phrase           |
       | Some Unique item |
@@ -133,10 +133,10 @@ Feature: Affiliate Search
     And I should see 20 video news results
 
     When I am on es.bar.gov's search page
-    And I fill in "Ingrese su búsqueda" with "first item"
+    And I fill in "Ingrese su búsqueda" with "noticia uno"
     And I press "Buscar"
-    Then I should see "Videos de 'first item' de Spanish bar site"
-    And I should see "First Spanish video item" in the video rss feed govbox
+    Then I should see "Videos de 'noticia uno' de Spanish bar site"
+    And I should see "Noticia video uno" in the video rss feed govbox
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
@@ -201,15 +201,15 @@ Feature: Affiliate Search
     When I follow "Noticias sobre de 'obama'"
     Then I should see "Mostrar opciones" in the left column
     And I should see "Ocultar opciones" in the left column
-    And I should see "Spanish item"
-    And I should see "Spanish video item"
+    And I should see "Noticia uno"
+    And I should see "Noticia video uno"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
     And I press "Buscar"
     And I follow "Videos de 'obama'"
-    Then I should see "Spanish video item"
-    And I should not see "Spanish item"
+    Then I should see "Noticia video uno"
+    And I should not see "Noticia uno"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
@@ -217,7 +217,7 @@ Feature: Affiliate Search
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     Then I should see 2 video news results
-    And I should see an image with alt text "First Spanish video item"
+    And I should see an image with alt text "Noticia video uno"
     And I should see an image with src "http://i.ytimg.com/vi/EqExXXahb0s/2.jpg"
     And I should see yesterday's date in the Spanish search results
 
@@ -905,24 +905,24 @@ Feature: Affiliate Search
       | Press          | http://www.whitehouse.gov/feed/press | true         | true            |            |
       | Spanish Videos |                                      | true         | true            | true       |
     And feed "Press" has the following news items:
-      | link                             | title               | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/1 | First Spanish item  | uuid1 | day           | item First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second Spanish item | uuid2 | day           | item Next news item for the feed  |
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | Noticia uno | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Noticia dos | uuid2 | day           | item Next news item for the feed  |
     And feed "es_agency" has the following news items:
-      | link                                       | title            | guid       | published_ago | description                             |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
+      | link                                       | title             | guid       | published_ago | description                             |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | Noticia video uno | videouuid1 | day           | item First video news item for the feed |
     When I am on es.bar.gov's search page
     And I follow "Press" in the left column
     Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
     Then I should see "2 resultados"
     And I should see 2 news results
-    And I should see "First Spanish item"
-    And I should see "Second Spanish item"
+    And I should see "Noticia uno"
+    And I should see "Noticia dos"
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "first item"
+    And I fill in "query" with "noticia uno"
     And I press "Buscar"
-    And I follow "Videos de 'first item'"
+    And I follow "Videos de 'noticia uno'"
     And I fill in "query" with ""
     And I press "Buscar"
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
