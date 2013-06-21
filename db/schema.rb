@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617165154) do
+ActiveRecord::Schema.define(:version => 20130621211017) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -473,6 +473,7 @@ ActiveRecord::Schema.define(:version => 20130617165154) do
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
     t.integer  "load_time"
+    t.string   "source",                                  :default => "rss", :null => false
   end
 
   add_index "indexed_documents", ["affiliate_id", "id"], :name => "index_indexed_documents_on_affiliate_id_and_id", :unique => true

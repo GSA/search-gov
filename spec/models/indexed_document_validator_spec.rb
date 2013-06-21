@@ -7,7 +7,6 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   let(:url) { 'http://nps.gov/pdf.pdf' }
   before do
     aff.indexed_documents.destroy_all
-    BingSearch.stub(:search_for_url_in_bing).with('http://nps.gov/pdf.pdf').and_return(nil)
 
     @idoc = aff.indexed_documents.create!(
       :title => 'PDF Title',

@@ -1,12 +1,12 @@
 Feature: Affiliate On-Demand Url Indexing Interface
-  In order to give affiliates the ability to submit a RSS Feed URL for on-demand indexing
+  In order to give affiliates the ability to submit a RSS Feed URL or individual document for on-demand indexing
   As an affiliate
-  I want to see and manage my Indexed Documents and the feed that lists them
+  I want to see and manage my Indexed Documents and the RSS feed that lists them
 
   Scenario: Visiting my URLs page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following IndexedDocuments exist:
       | title                | description                     | url                                             | affiliate | last_crawled_at | last_crawl_status |
       | Space Suit Evolution | description text for space suit | http://aff.gov/extremelysuperlongurl/space-suit | aff.gov   | 11/02/2011      | OK                |
@@ -39,8 +39,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
 
   Scenario: Submit a RSS Feed URL for on-demand indexing
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs"
@@ -58,15 +58,59 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I press "Submit"
     Then I should see "Problem creating RSS site feed: Rss url can't be blank"
 
+  Scenario: Submit an individual URL for on-demand indexing
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs"
+    And I follow "Add new URL"
+    Then I should see the browser page titled "Add a new URL"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs > Add a new URL
+    And I should see "Add a new URL" in the page header
+    When I fill in "URL" with "http://new.aff.gov/page.html"
+    And I fill in "Title" with "Some title"
+    And I fill in "Description" with "Some description"
+    And I press "Add"
+    Then I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs > Uncrawled URLs
+    And I should see "Successfully added http://new.aff.gov/page.html."
+
+    When the url "http://new.aff.gov/page.html" has been crawled
+    And I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs"
+    Then I should see "Uncrawled URLs (0)"
+    And I should see "new.aff.gov/page.html" in the previously crawled URL list
+
+    When I follow "View all" in the previously crawled URL list
+    Then I should see "new.aff.gov/page.html"
+
+  Scenario: Remove a crawled URL
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following IndexedDocuments exist:
+      | url                  | affiliate | source |
+      | http://aff.gov/1.pdf | aff.gov   | manual |
+    And the url "http://aff.gov/1.pdf" has been crawled
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs"
+    Then I should see "aff.gov/1.pdf" in the previously crawled URL list
+
+    When I press "Delete" in the previously crawled URL list
+    Then I should see "Removed http://aff.gov/1.pdf"
+    And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs
+
   Scenario: Exporting crawled urls to CSV
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following IndexedDocuments exist:
-      | url                   | title   | description       |affiliate | last_crawled_at  | last_crawl_status | doctype |
-      | http://aff.gov/1.html | No. 1   | Number 1          | aff.gov   | 2012-01-19      | OK                | html    |
-      | http://aff.gov/2.html | No. 2   | Number 2          | aff.gov   | 2012-01-19      | OK                | html    |
-      | http://aff.gov/3.html | No. 3   | Number 3          | aff.gov   |                 |                   | html    |
+      | url                   | title | description | affiliate | last_crawled_at | last_crawl_status | doctype |
+      | http://aff.gov/1.html | No. 1 | Number 1    | aff.gov   | 2012-01-19      | OK                | html    |
+      | http://aff.gov/2.html | No. 2 | Number 2    | aff.gov   | 2012-01-19      | OK                | html    |
+      | http://aff.gov/3.html | No. 3 | Number 3    | aff.gov   |                 |                   | html    |
     And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected

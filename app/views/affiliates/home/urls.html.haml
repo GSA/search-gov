@@ -1,24 +1,30 @@
 #urls
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "URLs"])
-  %h1 RSS Site Feed URL
+  %h1 Add a URL
   = render_help_link(@help_link)
 
   %p
-    USASearch lets you use an RSS feed to tell us about URLs for the web pages that you want to include in the USASearch index.
-    Just include the link, title, and description in each item element.
+    Are specific web pages missing from your "Everything" web results? Tell us about these pages and we'll include them in our web index.
+    = link_to "Add specific URLs", new_affiliate_on_demand_url_path(@affiliate)
+    , or use an RSS feed to automate the process. For each URL, be sure to include the link, title, and description.
 
+  %h2 Manage URLs via RSS feed
   = form_for([@affiliate, @site_feed_url], :html => { :multipart => true }) do |f|
     = f.text_field 'rss_url'
     = f.submit "Submit", :class => 'submit'
-  = button_to("Delete", [@affiliate, @site_feed_url], :method => :delete, :data => {:confirm => "Are you sure you want to delete this RSS feed URL and all your indexed documents?"}) if @affiliate.site_feed_url.rss_url.present?
+  - if @affiliate.site_feed_url.rss_url.present?
+    = "RSS Feed Status: #{@affiliate.site_feed_url.last_fetch_status}"
+    = button_to("Delete", [@affiliate, @site_feed_url], :method => :delete, :data => {:confirm => "Are you sure you want to delete this RSS feed URL and all your indexed documents added via RSS?"})
 
   .uncrawled-url-list
     %table
       %colgroup
         %col{ :class => 'url' }
+        %col{ :class => 'actions' }
       %thead
         %tr
           %th{:colspan => 2}
+            = link_to "Add new URL", new_affiliate_on_demand_url_path(@affiliate), :class => 'add-link last'
             = link_to("View all", uncrawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link last') unless @uncrawled_urls.empty?
             %span Uncrawled URLs (#{@uncrawled_urls.total_entries})
           = render :partial => 'affiliates/on_demand_urls/uncrawled_urls', :locals => { :shorten_url_length => 80 }
@@ -27,11 +33,13 @@
     %table
       %colgroup
         %col{ :class => 'url' }
+        %col{ :class => 'source' }
         %col{ :class => 'last-crawled-at' }
         %col{ :class => 'last-crawl-status' }
+        %col{ :class => 'actions' }
       %thead
         %tr
-          %th{:colspan => 3}
+          %th{:colspan => 5}
             = link_to("View all", crawled_affiliate_on_demand_urls_path(@affiliate), :class => 'header-link') unless @crawled_urls.empty?
             = link_to("Export to CSV", export_crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
             %span Previously Crawled URLs (#{@crawled_urls.total_entries})

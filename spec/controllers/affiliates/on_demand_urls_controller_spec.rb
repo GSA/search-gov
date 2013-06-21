@@ -6,6 +6,176 @@ describe Affiliates::OnDemandUrlsController do
     activate_authlogic
   end
 
+  describe "#new" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        get :new, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :new, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:indexed_document) { mock('indexed document') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
+
+        get :new, :affiliate_id => affiliate.id
+      end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should assign_to(:indexed_document).with(indexed_document) }
+      it { should respond_with(:success) }
+    end
+  end
+
+  describe "#create" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        post :create, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        post :create, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:indexed_document) { mock_model(IndexedDocument, :url => 'http://www.agency.gov/document1.html') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        affiliate.stub_chain(:indexed_documents, :build).and_return(indexed_document)
+      end
+
+      context "when URL successfully created" do
+        before do
+          indexed_document.should_receive(:save).and_return(true)
+        end
+
+        context "Rails request/response stuff" do
+          before do
+            post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
+          end
+
+          it { should assign_to(:indexed_document).with(indexed_document) }
+          it { should set_the_flash }
+          it { should redirect_to(uncrawled_affiliate_on_demand_urls_path(affiliate)) }
+        end
+
+        it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
+          ResqueSpec.reset!
+          Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
+          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/another.html'}
+        end
+
+      end
+
+      context "when we failed to create a URL" do
+        before do
+          indexed_document.should_receive(:save).and_return(false)
+
+          post :create, :affiliate_id => affiliate.id, :indexed_document => {:url => 'http://www.agency.gov/document1.html'}
+        end
+
+        it { should assign_to(:indexed_document).with(indexed_document) }
+        it { should assign_to(:title).with_kind_of(String) }
+        it { should render_template(:new) }
+      end
+
+    end
+  end
+
+  describe "#destroy" do
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:indexed_document) { mock_model(IndexedDocument, :url => 'http://www.agency.gov/document1.html') }
+    let(:another_indexed_document) { mock_model(IndexedDocument) }
+
+    context "when affiliate manager is not logged in" do
+      before do
+        delete :destroy, :affiliate_id => affiliate.id, :id => indexed_document.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        delete :destroy, :affiliate_id => another_affiliate.id, :id => indexed_document.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the indexed document" do
+      before do
+        UserSession.create(current_user)
+        delete :destroy, :affiliate_id => affiliate.id, :id => another_indexed_document.id
+      end
+
+      it { should redirect_to(urls_affiliate_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully delete the indexed document" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:indexed_documents, :find_by_id).with(indexed_document.id.to_s).and_return(indexed_document)
+        indexed_document.should_receive(:destroy)
+
+        request.env["HTTP_REFERER"] = urls_affiliate_url(affiliate)
+        delete :destroy, :affiliate_id => affiliate.id, :id => indexed_document.id
+      end
+
+      it { should set_the_flash }
+      it { should redirect_to(:back) }
+    end
+  end
+
   describe "#crawled" do
     context "when affiliate manager is not logged in" do
       let(:affiliate) { affiliates(:basic_affiliate) }

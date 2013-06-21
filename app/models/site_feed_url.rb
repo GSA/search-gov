@@ -1,20 +1,25 @@
 class SiteFeedUrl < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :rss_url
-  after_destroy :fast_destroy_indexed_docs
+  after_destroy :fast_destroy_indexed_rss_docs
+
+  def self.refresh_all
+    select(:id).each do |site_feed_url|
+      Resque.enqueue_with_priority(:low, SiteFeedUrlFetcher, site_feed_url.id)
+    end
+  end
 
   def fetch
     touch(:last_checked_at)
     rss_doc = Nokogiri::XML(HttpConnection.get(rss_url))
     records = parse(rss_doc)
-    links = []
-    records.each do |record|
+    links = records.map do |record|
       affiliate.indexed_documents.create(url: record[:link], title: record[:title], description: record[:description],
-                                         last_crawl_status: IndexedDocument::SUMMARIZED_STATUS)
-      links << record[:link]
+                                         last_crawl_status: IndexedDocument::SUMMARIZED_STATUS, source: 'rss')
+      record[:link]
     end
     update_attributes!(last_fetch_status: 'OK')
-    IndexedDocument.destroy_all(["affiliate_id = ? and url not in (?)", affiliate.id, links.compact.sort.uniq])
+    IndexedDocument.destroy_all(["affiliate_id = ? and url not in (?) and source = 'rss'", affiliate.id, links.compact.sort.uniq])
     affiliate.refresh_indexed_documents(IndexedDocument::SUMMARIZED_STATUS)
   rescue Exception => e
     Rails.logger.warn(e)
@@ -37,8 +42,11 @@ class SiteFeedUrl < ActiveRecord::Base
     end.compact
   end
 
-  def fast_destroy_indexed_docs
-    Sunspot.remove(IndexedDocument) { with(:affiliate_id, self.affiliate.id) }
-    IndexedDocument.select(:id).where(affiliate_id: self.affiliate.id).delete_all
+  def fast_destroy_indexed_rss_docs
+    Sunspot.remove(IndexedDocument) do
+      with(:affiliate_id, self.affiliate.id)
+      without(:source, 'rss')
+    end
+    IndexedDocument.select(:id).where(affiliate_id: self.affiliate.id, source: 'rss').delete_all
   end
 end

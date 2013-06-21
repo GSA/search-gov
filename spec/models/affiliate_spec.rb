@@ -2005,7 +2005,6 @@ describe Affiliate do
 
   describe "#refresh_indexed_documents(scope)" do
     before do
-      BingSearch.stub(:search_for_url_in_bing).and_return(nil)
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
       @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')

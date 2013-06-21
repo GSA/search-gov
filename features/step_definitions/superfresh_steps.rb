@@ -17,6 +17,7 @@ Given /^the following IndexedDocuments exist:$/ do |table|
       id.title = hash[:title]
       id.description = hash[:description]
       id.url = hash[:url]
+      id.source = hash[:source] || 'rss'
       id.doctype = hash[:doctype] || 'html'
       id.affiliate = Affiliate.find_by_name(hash[:affiliate])
       id.last_crawled_at = hash[:last_crawled_at]

@@ -17,7 +17,6 @@ describe IndexedDocument do
       :body => "this is the doc body",
       :affiliate_id => affiliates(:basic_affiliate).id
     }
-    BingSearch.stub(:search_for_url_in_bing).and_return(nil)
   end
 
   it { should validate_presence_of :url }

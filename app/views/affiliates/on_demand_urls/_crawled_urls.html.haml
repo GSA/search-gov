@@ -1,13 +1,19 @@
 %tbody
   %tr.column-header
     %th URL
+    %th Source
     %th Last Crawled
     %th Status
+    %th Actions
   - @crawled_urls.each do |crawled_url|
     %tr{:class => cycle('even', 'odd')}
       %td
         = link_to shorten_url(crawled_url.url, shorten_url_length), crawled_url.url, :title => crawled_url.url
       %td
+        = crawled_url.source
+      %td
         = render_date crawled_url.last_crawled_at
       %td
         = render_last_crawl_status crawled_url
+      %td.actions
+        = button_to("Delete", affiliate_on_demand_url_path(@affiliate, crawled_url), :method => :delete, :data => {:confirm => "Are you sure you want to delete this URL?"})

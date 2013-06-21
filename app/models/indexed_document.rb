@@ -58,6 +58,7 @@ class IndexedDocument < ActiveRecord::Base
       idoc.body if idoc.affiliate.locale == "es"
     end
     string :last_crawl_status
+    string :source
     string :doctype
     integer :affiliate_id
     string :url
@@ -113,6 +114,7 @@ class IndexedDocument < ActiveRecord::Base
     rescue Mysql2::Error
       destroy
     rescue ActiveRecord::RecordInvalid
+      #TODO: test this
       raise IndexedDocumentError.new(errors.full_messages.join.to_s)
     end
   end

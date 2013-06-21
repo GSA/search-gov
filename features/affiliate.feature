@@ -2225,7 +2225,7 @@ Feature: Affiliate clients
     And I follow "URLs"
     Then I should see the browser page titled "URLs"
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > URLs
-    And I should see "RSS Site Feed URL" in the page header
+    And I should see "Add a URL" in the page header
     And I should see "Uncrawled URLs (0)"
     And I should see "Crawled URLs (0)"
 

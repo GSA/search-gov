@@ -17,6 +17,7 @@ class Affiliates::SiteFeedUrlController < Affiliates::AffiliatesController
   def update
     site_feed_url = SiteFeedUrl.find_or_initialize_by_affiliate_id @affiliate.id
     site_feed_url.rss_url = params[:site_feed_url][:rss_url]
+    site_feed_url.last_fetch_status = 'Pending'
     if site_feed_url.save
       Resque.enqueue_with_priority(:high, SiteFeedUrlFetcher, site_feed_url.id)
       flash_hash = {success: 'RSS site feed URL updated. It will be fetched soon for indexing.'}
