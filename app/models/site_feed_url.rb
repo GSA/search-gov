@@ -14,7 +14,7 @@ class SiteFeedUrl < ActiveRecord::Base
       links << record[:link]
     end
     update_attributes!(last_fetch_status: 'OK')
-    IndexedDocument.destroy_all(["affiliate_id = ? and url not in (?)", affiliate.id, links.sort.uniq])
+    IndexedDocument.destroy_all(["affiliate_id = ? and url not in (?)", affiliate.id, links.compact.sort.uniq])
     affiliate.refresh_indexed_documents(IndexedDocument::SUMMARIZED_STATUS)
   rescue Exception => e
     Rails.logger.warn(e)
@@ -25,13 +25,16 @@ class SiteFeedUrl < ActiveRecord::Base
 
   def parse(doc)
     doc.xpath("//item").first(quota).map do |item|
-      link = item.xpath('link').inner_text
-      link.squish! if link.present?
-      title = item.xpath('title').inner_text
-      raw_description = item.xpath('description').inner_text
-      description = Nokogiri::HTML(raw_description).inner_text.squish
-      {link: link, title: title, description: description}
-    end
+      begin
+        link = item.xpath('link').inner_text.squish
+        title = item.xpath('title').inner_text.squish
+        raw_description = item.xpath('description').inner_text
+        description = Nokogiri::HTML(raw_description).inner_text.squish
+        {link: link, title: title, description: description}
+      rescue Exception
+        nil
+      end
+    end.compact
   end
 
   def fast_destroy_indexed_docs

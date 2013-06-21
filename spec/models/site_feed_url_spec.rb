@@ -63,6 +63,18 @@ describe SiteFeedUrl do
         site_feed_url.last_fetch_status.should == 'bad!'
       end
     end
+
+    context 'when a field is missing (title/desc)' do
+      before do
+        HttpConnection.stub(:get).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog_missing_description_entirely.xml")
+        IndexedDocument.destroy_all
+      end
+
+      it 'should ignore the invalid records' do
+        site_feed_url.fetch
+        IndexedDocument.count.should == 2
+      end
+    end
   end
 
   describe ".delete" do
