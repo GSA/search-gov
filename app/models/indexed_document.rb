@@ -238,10 +238,6 @@ class IndexedDocument < ActiveRecord::Base
     errors.add(:base, UNSUPPORTED_EXTENSION) if BLACKLISTED_EXTENSIONS.include?(extension)
   end
 
-  def last_crawl_status_ok?
-    last_crawl_status == OK_STATUS
-  end
-
   def normalize_error_message(e)
     case
       when e.message.starts_with?('redirection forbidden')
