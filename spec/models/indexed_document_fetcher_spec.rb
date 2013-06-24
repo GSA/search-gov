@@ -6,7 +6,7 @@ describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
     affiliate = affiliates(:basic_affiliate)
 
     IndexedDocument.destroy_all
-    @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate)
+    @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate, :title => 'Document Title 1', :description => 'This is a Document.')
   end
 
   context "when it can't locate the IndexedDocument for a given id" do

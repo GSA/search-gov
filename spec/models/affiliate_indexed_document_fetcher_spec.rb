@@ -5,7 +5,8 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
   before do
     IndexedDocument.destroy_all
     @affiliate = affiliates(:basic_affiliate)
-    @unfetched = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo.html')
+    @unfetched = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo.html', :title => 'Doc Title',
+                                                    :description => 'This is a document.')
     @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
                                              :description => 'This is a PDF document.',
                                              :url => 'http://nps.gov/pdf.pdf',

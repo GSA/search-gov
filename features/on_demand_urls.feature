@@ -90,8 +90,8 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following IndexedDocuments exist:
-      | url                  | affiliate | source |
-      | http://aff.gov/1.pdf | aff.gov   | manual |
+      | url                  | affiliate | source | title       | description   |
+      | http://aff.gov/1.pdf | aff.gov   | manual | some title  | describe me   |
     And the url "http://aff.gov/1.pdf" has been crawled
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected

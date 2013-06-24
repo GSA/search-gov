@@ -55,7 +55,7 @@ describe SiteFeedUrl do
       end
     end
 
-    context 'when an exception occurs' do
+    context 'when an exception occurs fetching the feed' do
       before do
         HttpConnection.stub(:get).and_raise Exception.new("bad!")
       end
@@ -74,7 +74,7 @@ describe SiteFeedUrl do
 
       it 'should ignore the invalid records' do
         site_feed_url.fetch
-        IndexedDocument.count.should == 2
+        IndexedDocument.count.should == 1
       end
     end
   end

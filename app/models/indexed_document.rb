@@ -5,8 +5,7 @@ class IndexedDocument < ActiveRecord::Base
 
   belongs_to :affiliate
   before_validation :normalize_url
-  validates_presence_of :url, :affiliate_id
-  validates_presence_of :title, :description, :if => :last_crawl_status_ok?
+  validates_presence_of :url, :affiliate_id, :title, :description
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
   validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
@@ -109,14 +108,11 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def save_or_destroy
-    begin
-      save!
-    rescue Mysql2::Error
-      destroy
-    rescue ActiveRecord::RecordInvalid
-      #TODO: test this
-      raise IndexedDocumentError.new(errors.full_messages.join.to_s)
-    end
+    save!
+  rescue Mysql2::Error
+    destroy
+  rescue ActiveRecord::RecordInvalid
+    raise IndexedDocumentError.new("Problem saving indexed document: record invalid")
   end
 
   def index_document(file, content_type)
@@ -238,7 +234,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def extension_ok
     path = URI.parse(self.url).path rescue ""
-    extension = File.extname(path).sub(".","").downcase
+    extension = File.extname(path).sub(".", "").downcase
     errors.add(:base, UNSUPPORTED_EXTENSION) if BLACKLISTED_EXTENSIONS.include?(extension)
   end
 

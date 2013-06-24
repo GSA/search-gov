@@ -6,12 +6,12 @@ describe Affiliate do
 
   before(:each) do
     @valid_create_attributes = {
-        :display_name => "My Awesome Site",
-        :website => "http://www.someaffiliate.gov",
-        :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-        :footer => "<center>gasp</center>",
-        :theme => "elegant",
-        :locale => 'es'
+      :display_name => "My Awesome Site",
+      :website => "http://www.someaffiliate.gov",
+      :header => "<table><tr><td>html layout from 1998</td></tr></table>",
+      :footer => "<center>gasp</center>",
+      :theme => "elegant",
+      :locale => 'es'
     }
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end
@@ -123,14 +123,14 @@ describe Affiliate do
       end
 
       it "should update css_properties with json string from css property hash" do
-        css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
+        css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
       it "should update staged_css_properties with json string from staged_css property hash" do
-        staged_css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
+        staged_css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
         JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
         JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
@@ -138,16 +138,16 @@ describe Affiliate do
 
       it "should normalize site domains" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(
-                                          :site_domains_attributes => { '0' => { :domain => 'www1.usa.gov' },
-                                                                        '1' => { :domain => 'www2.usa.gov' },
-                                                                        '2' => { :domain => 'usa.gov' } }))
+                                        :site_domains_attributes => {'0' => {:domain => 'www1.usa.gov'},
+                                                                     '1' => {:domain => 'www2.usa.gov'},
+                                                                     '2' => {:domain => 'usa.gov'}}))
         affiliate.site_domains(true).count.should == 1
         affiliate.site_domains.first.domain.should == 'usa.gov'
 
         affiliate = Affiliate.create!(
-            @valid_create_attributes.merge(
-                site_domains_attributes: { '0' => { domain: 'sec.gov' },
-                                           '1' => { domain: 'www.sec.gov.staging.net' } }))
+          @valid_create_attributes.merge(
+            site_domains_attributes: {'0' => {domain: 'sec.gov'},
+                                      '1' => {domain: 'www.sec.gov.staging.net'}}))
         expect(affiliate.site_domains(true).count).to eq(2)
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
@@ -252,9 +252,9 @@ describe Affiliate do
 
     it "should not override non custom theme attributes" do
       affiliate.theme = 'elegant'
-      affiliate.css_property_hash = { :page_background_color => '#FFFFFF' }
+      affiliate.css_property_hash = {:page_background_color => '#FFFFFF'}
       affiliate.staged_theme = 'fun_blue'
-      affiliate.staged_css_property_hash = { :page_background_color => '#FFFFFF' }
+      affiliate.staged_css_property_hash = {:page_background_color => '#FFFFFF'}
       affiliate.save!
       Affiliate.find(affiliate.id).css_property_hash[:page_background_color].should == Affiliate::THEMES[:elegant][:page_background_color]
       Affiliate.find(affiliate.id).staged_css_property_hash[:page_background_color].should == Affiliate::THEMES[:fun_blue][:page_background_color]
@@ -297,8 +297,8 @@ describe Affiliate do
     end
 
     it "should set css properties" do
-      affiliate.css_property_hash = { :font_family => 'Verdana, sans-serif' }
-      affiliate.staged_css_property_hash = { :font_family => 'Georgia, serif' }
+      affiliate.css_property_hash = {:font_family => 'Verdana, sans-serif'}
+      affiliate.staged_css_property_hash = {:font_family => 'Georgia, serif'}
       affiliate.save!
       Affiliate.find(affiliate.id).css_property_hash[:font_family].should == 'Verdana, sans-serif'
       Affiliate.find(affiliate.id).staged_css_property_hash[:font_family].should == 'Georgia, serif'
@@ -334,23 +334,23 @@ describe Affiliate do
     end
 
     it "should set staged_managed_header_links" do
-      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => 'Blog', :url => 'http://blog.agency.gov' },
-                                                 "1" => { :position => '0', :title => 'News', :url => 'http://news.agency.gov' },
-                                                 "2" => { :position => '2', :title => 'Services', :url => 'http://services.agency.gov' } }
+      staged_managed_header_links_attributes = {"0" => {:position => '1', :title => 'Blog', :url => 'http://blog.agency.gov'},
+                                                "1" => {:position => '0', :title => 'News', :url => 'http://news.agency.gov'},
+                                                "2" => {:position => '2', :title => 'Services', :url => 'http://services.agency.gov'}}
       affiliate.update_attributes!(:staged_managed_header_links_attributes => staged_managed_header_links_attributes)
-      affiliate.staged_managed_header_links.should == [{ :position => 0, :title => 'News', :url => 'http://news.agency.gov' },
-                                                       { :position => 1, :title => 'Blog', :url => 'http://blog.agency.gov' },
-                                                       { :position => 2, :title => 'Services', :url => 'http://services.agency.gov' }]
+      affiliate.staged_managed_header_links.should == [{:position => 0, :title => 'News', :url => 'http://news.agency.gov'},
+                                                       {:position => 1, :title => 'Blog', :url => 'http://blog.agency.gov'},
+                                                       {:position => 2, :title => 'Services', :url => 'http://services.agency.gov'}]
     end
 
     it "should set staged_managed_footer_links" do
-      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => 'About Us', :url => 'http://about.agency.gov' },
-                                                 "1" => { :position => '0', :title => 'Home', :url => 'http://www.agency.gov' },
-                                                 "2" => { :position => '2', :title => 'Contact Us', :url => 'http://contact.agency.gov' } }
+      staged_managed_footer_links_attributes = {"0" => {:position => '1', :title => 'About Us', :url => 'http://about.agency.gov'},
+                                                "1" => {:position => '0', :title => 'Home', :url => 'http://www.agency.gov'},
+                                                "2" => {:position => '2', :title => 'Contact Us', :url => 'http://contact.agency.gov'}}
       affiliate.update_attributes!(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes)
-      affiliate.staged_managed_footer_links.should == [{ :position => 0, :title => 'Home', :url => 'http://www.agency.gov' },
-                                                       { :position => 1, :title => 'About Us', :url => 'http://about.agency.gov' },
-                                                       { :position => 2, :title => 'Contact Us', :url => 'http://contact.agency.gov' }]
+      affiliate.staged_managed_footer_links.should == [{:position => 0, :title => 'Home', :url => 'http://www.agency.gov'},
+                                                       {:position => 1, :title => 'About Us', :url => 'http://about.agency.gov'},
+                                                       {:position => 2, :title => 'Contact Us', :url => 'http://contact.agency.gov'}]
     end
 
     context "when there is an existing staged page background image" do
@@ -493,32 +493,32 @@ describe Affiliate do
 
     it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
       Affiliate::FONT_FAMILIES.each do |font_family|
-        Affiliate.new(@valid_create_attributes.merge(:css_property_hash => { 'font_family' => font_family })).should be_valid
+        Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family})).should be_valid
       end
     end
 
     it "should not be valid when FONT_FAMILIES does not include font_family in css property hash" do
-      Affiliate.new(@valid_create_attributes.merge(:css_property_hash => { 'font_family' => 'Comic Sans MS' })).should_not be_valid
+      Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => 'Comic Sans MS'})).should_not be_valid
     end
 
     it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
       %w{ #333 #FFF #fff #12F #666666 #666FFF #FFFfff #ffffff }.each do |valid_color|
-        css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'left_tab_text_color' => "#{valid_color}",
-                                                                           'title_link_color' => "#{valid_color}",
-                                                                           'visited_title_link_color' => "#{valid_color}",
-                                                                           'description_text_color' => "#{valid_color}",
-                                                                           'url_link_color' => "#{valid_color}" })
+        css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'left_tab_text_color' => "#{valid_color}",
+                                                                          'title_link_color' => "#{valid_color}",
+                                                                          'visited_title_link_color' => "#{valid_color}",
+                                                                          'description_text_color' => "#{valid_color}",
+                                                                          'url_link_color' => "#{valid_color}"})
         Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash)).should be_valid
       end
     end
 
     it "should be invalid when color property in css property hash does not consist of a # character followed by 3 or 6 hexadecimal digits " do
       %w{ 333 invalid #err #1 #22 #4444 #55555 ffffff 1 22 4444 55555 666666 }.each do |invalid_color|
-        css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'left_tab_text_color' => "#{invalid_color}",
-                                                                           'title_link_color' => "#{invalid_color}",
-                                                                           'visited_title_link_color' => "#{invalid_color}",
-                                                                           'description_text_color' => "#{invalid_color}",
-                                                                           'url_link_color' => "#{invalid_color}" })
+        css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'left_tab_text_color' => "#{invalid_color}",
+                                                                          'title_link_color' => "#{invalid_color}",
+                                                                          'visited_title_link_color' => "#{invalid_color}",
+                                                                          'description_text_color' => "#{invalid_color}",
+                                                                          'url_link_color' => "#{invalid_color}"})
         affiliate = Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
         affiliate.should_not be_valid
         affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -529,7 +529,7 @@ describe Affiliate do
     end
 
     it "should validate color property in staged css property hash" do
-      staged_css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD' })
+      staged_css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
       affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
       affiliate.save.should be_false
       affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -554,8 +554,8 @@ describe Affiliate do
 
     it "should validate staged_managed_header_links title" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => '', :url => 'blog.agency.gov' },
-                                                 "1" => { :position => '0', :title => 'News', :url => 'http://news.agency.gov' } }
+      staged_managed_header_links_attributes = {"0" => {:position => '1', :title => '', :url => 'blog.agency.gov'},
+                                                "1" => {:position => '0', :title => 'News', :url => 'http://news.agency.gov'}}
       affiliate.update_attributes(:staged_managed_header_links_attributes => staged_managed_header_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].first.should match(/Header link title can't be blank/)
@@ -563,8 +563,8 @@ describe Affiliate do
 
     it "should validate staged_managed_header_links URL" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => 'Blog', :url => 'blog' },
-                                                 "1" => { :position => '0', :title => 'News', :url => '' } }
+      staged_managed_header_links_attributes = {"0" => {:position => '1', :title => 'Blog', :url => 'blog'},
+                                                "1" => {:position => '0', :title => 'News', :url => ''}}
       affiliate.update_attributes(:staged_managed_header_links_attributes => staged_managed_header_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].last.should match(/Header link URL can't be blank/)
@@ -572,8 +572,8 @@ describe Affiliate do
 
     it "should validate staged_managed_footer_links title" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => '', :url => 'about.agency.gov' },
-                                                 "1" => { :position => '0', :title => 'Home', :url => 'http://www.agency.gov' } }
+      staged_managed_footer_links_attributes = {"0" => {:position => '1', :title => '', :url => 'about.agency.gov'},
+                                                "1" => {:position => '0', :title => 'Home', :url => 'http://www.agency.gov'}}
       affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].first.should match(/Footer link title can't be blank/)
@@ -581,8 +581,8 @@ describe Affiliate do
 
     it "should validate staged_managed_footer_links URL" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => 'About Us', :url => 'http://about.agency.gov' },
-                                                 "1" => { :position => '0', :title => 'Home', :url => '' } }
+      staged_managed_footer_links_attributes = {"0" => {:position => '1', :title => 'About Us', :url => 'http://about.agency.gov'},
+                                                "1" => {:position => '0', :title => 'Home', :url => ''}}
       affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
       affiliate.errors.count.should == 1
       affiliate.errors[:base].last.should match(/Footer link URL can't be blank/)
@@ -739,7 +739,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_page_background_image_content_type=).with(nil)
           affiliate.should_receive(:staged_page_background_image_file_size=).with(nil)
           affiliate.should_receive(:staged_page_background_image_updated_at=).with(nil)
-          attributes = { :staged_page_background_image => mock('new staged page background image') }
+          attributes = {:staged_page_background_image => mock('new staged page background image')}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -752,7 +752,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_page_background_image_content_type=)
           affiliate.should_not_receive(:staged_page_background_image_file_size=)
           affiliate.should_not_receive(:staged_page_background_image_updated_at=)
-          attributes = { :staged_page_background_image => '' }
+          attributes = {:staged_page_background_image => ''}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -765,7 +765,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_page_background_image_content_type=).with(nil)
           affiliate.should_receive(:staged_page_background_image_file_size=).with(nil)
           affiliate.should_receive(:staged_page_background_image_updated_at=).with(nil)
-          attributes = { :mark_staged_page_background_image_for_deletion => '1' }
+          attributes = {:mark_staged_page_background_image_for_deletion => '1'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -778,7 +778,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_page_background_image_content_type=)
           affiliate.should_not_receive(:staged_page_background_image_file_size=)
           affiliate.should_not_receive(:staged_page_background_image_updated_at=)
-          attributes = { :mark_staged_page_background_image_for_deletion => '0' }
+          attributes = {:mark_staged_page_background_image_for_deletion => '0'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -807,7 +807,7 @@ describe Affiliate do
         affiliate.should_not_receive(:staged_page_background_image_content_type=)
         affiliate.should_not_receive(:staged_page_background_image_file_size=)
         affiliate.should_not_receive(:staged_page_background_image_updated_at=)
-        attributes = { :staged_page_background_image => mock('new staged page background image') }
+        attributes = {:staged_page_background_image => mock('new staged page background image')}
         affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
         affiliate.update_attributes_for_staging(attributes).should be_true
@@ -837,7 +837,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_header_image_content_type=).with(nil)
           affiliate.should_receive(:staged_header_image_file_size=).with(nil)
           affiliate.should_receive(:staged_header_image_updated_at=).with(nil)
-          attributes = { :staged_header_image => mock('new staged header image') }
+          attributes = {:staged_header_image => mock('new staged header image')}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -850,7 +850,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_header_image_content_type=)
           affiliate.should_not_receive(:staged_header_image_file_size=)
           affiliate.should_not_receive(:staged_header_image_updated_at=)
-          attributes = { :staged_header_image => '' }
+          attributes = {:staged_header_image => ''}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -863,7 +863,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_header_image_content_type=).with(nil)
           affiliate.should_receive(:staged_header_image_file_size=).with(nil)
           affiliate.should_receive(:staged_header_image_updated_at=).with(nil)
-          attributes = { :mark_staged_header_image_for_deletion => '1' }
+          attributes = {:mark_staged_header_image_for_deletion => '1'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -876,7 +876,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_header_image_content_type=)
           affiliate.should_not_receive(:staged_header_image_file_size=)
           affiliate.should_not_receive(:staged_header_image_updated_at=)
-          attributes = { :mark_staged_header_image_for_deletion => '0' }
+          attributes = {:mark_staged_header_image_for_deletion => '0'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -905,7 +905,7 @@ describe Affiliate do
         affiliate.should_not_receive(:staged_header_image_content_type=)
         affiliate.should_not_receive(:staged_header_image_file_size=)
         affiliate.should_not_receive(:staged_header_image_updated_at=)
-        attributes = { :staged_header_image => mock('new staged header image') }
+        attributes = {:staged_header_image => mock('new staged header image')}
         affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
         affiliate.update_attributes_for_staging(attributes).should be_true
@@ -935,7 +935,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_mobile_logo_content_type=).with(nil)
           affiliate.should_receive(:staged_mobile_logo_file_size=).with(nil)
           affiliate.should_receive(:staged_mobile_logo_updated_at=).with(nil)
-          attributes = { :staged_mobile_logo => mock('new staged mobile logo') }
+          attributes = {:staged_mobile_logo => mock('new staged mobile logo')}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -948,7 +948,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_mobile_logo_content_type=)
           affiliate.should_not_receive(:staged_mobile_logo_file_size=)
           affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
-          attributes = { :staged_mobile_logo => '' }
+          attributes = {:staged_mobile_logo => ''}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -961,7 +961,7 @@ describe Affiliate do
           affiliate.should_receive(:staged_mobile_logo_content_type=).with(nil)
           affiliate.should_receive(:staged_mobile_logo_file_size=).with(nil)
           affiliate.should_receive(:staged_mobile_logo_updated_at=).with(nil)
-          attributes = { :mark_staged_mobile_logo_for_deletion => '1' }
+          attributes = {:mark_staged_mobile_logo_for_deletion => '1'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -974,7 +974,7 @@ describe Affiliate do
           affiliate.should_not_receive(:staged_mobile_logo_content_type=)
           affiliate.should_not_receive(:staged_mobile_logo_file_size=)
           affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
-          attributes = { :mark_staged_mobile_logo_for_deletion => '0' }
+          attributes = {:mark_staged_mobile_logo_for_deletion => '0'}
           affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
           affiliate.update_attributes_for_staging(attributes).should be_true
@@ -1003,7 +1003,7 @@ describe Affiliate do
         affiliate.should_not_receive(:staged_mobile_logo_content_type=)
         affiliate.should_not_receive(:staged_mobile_logo_file_size=)
         affiliate.should_not_receive(:staged_mobile_logo_updated_at=)
-        attributes = { :staged_mobile_logo => mock('new staged mobile logo') }
+        attributes = {:staged_mobile_logo => mock('new staged mobile logo')}
         affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
 
         affiliate.update_attributes_for_staging(attributes).should be_true
@@ -1023,8 +1023,8 @@ describe Affiliate do
         affiliate = Affiliate.create!(@valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
         affiliate.update_attributes_for_staging(
-            :staged_uses_managed_header_footer => '0',
-            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_uses_managed_header_footer => '0',
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
 
@@ -1032,8 +1032,8 @@ describe Affiliate do
         affiliate = Affiliate.create!(@valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_staging(
-            :staged_uses_managed_header_footer => '0',
-            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_uses_managed_header_footer => '0',
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
     end
@@ -1100,8 +1100,8 @@ describe Affiliate do
       it "should set header_footer_nested_css fields" do
         affiliate = Affiliate.create!(@valid_create_attributes)
         affiliate.update_attributes_for_live(
-            :staged_uses_managed_header_footer => '0',
-            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_uses_managed_header_footer => '0',
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
         affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
@@ -1110,8 +1110,8 @@ describe Affiliate do
         affiliate = Affiliate.create!(@valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_live(
-            :staged_uses_managed_header_footer => '0',
-            :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_uses_managed_header_footer => '0',
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
         affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
@@ -1748,7 +1748,7 @@ describe Affiliate do
                                    :nested_header_footer_css => '.header_footer h1 { invalid-css-syntax }')
       Affiliate.find(affiliate.id).cancel_staged_changes
 
-      aff_after_cancel =  Affiliate.find(affiliate.id)
+      aff_after_cancel = Affiliate.find(affiliate.id)
       aff_after_cancel.staged_header_footer_css.should == 'h1 { invalid-css-syntax }'
       aff_after_cancel.staged_nested_header_footer_css.should == '.header_footer h1 { invalid-css-syntax }'
     end
@@ -1833,17 +1833,17 @@ describe Affiliate do
 
   describe "#css_property_hash" do
     context "when theme is custom" do
-      let(:css_property_hash) { { :title_link_color => '#33ff33', :visited_title_link_color => '#0000ff' }.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
+      let(:css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
       let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'custom', :css_property_hash => css_property_hash)) }
 
       specify { affiliate.css_property_hash(true).should == css_property_hash }
     end
 
     context "when theme is not custom" do
-      let(:css_property_hash) { { :font_family => Affiliate::FONT_FAMILIES.last } }
+      let(:css_property_hash) { {:font_family => Affiliate::FONT_FAMILIES.last} }
       let(:affiliate) { Affiliate.create!(
-          @valid_create_attributes.merge(:theme => 'elegant',
-                                         :css_property_hash => css_property_hash)) }
+        @valid_create_attributes.merge(:theme => 'elegant',
+                                       :css_property_hash => css_property_hash)) }
 
       specify { affiliate.css_property_hash(true).should == Affiliate::THEMES[:elegant].reverse_merge(css_property_hash) }
     end
@@ -1851,18 +1851,18 @@ describe Affiliate do
 
   describe "#staged_css_property_hash" do
     context "when theme is custom" do
-      let(:staged_css_property_hash) { { :title_link_color => '#33ff33', :visited_title_link_color => '#0000ff' }.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
+      let(:staged_css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
       let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'natural', :staged_theme => 'custom', :staged_css_property_hash => staged_css_property_hash)) }
 
       specify { affiliate.staged_css_property_hash(true).should == staged_css_property_hash }
     end
 
     context "when theme is not custom" do
-      let(:staged_css_property_hash) { { :font_family => Affiliate::FONT_FAMILIES.last } }
+      let(:staged_css_property_hash) { {:font_family => Affiliate::FONT_FAMILIES.last} }
       let(:affiliate) { Affiliate.create!(
-          @valid_create_attributes.merge(:theme => 'natural',
-                                         :staged_theme => 'elegant',
-                                         :staged_css_property_hash => staged_css_property_hash)) }
+        @valid_create_attributes.merge(:theme => 'natural',
+                                       :staged_theme => 'elegant',
+                                       :staged_css_property_hash => staged_css_property_hash)) }
 
       specify { affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:elegant].reverse_merge(staged_css_property_hash) }
     end
@@ -1971,7 +1971,7 @@ describe Affiliate do
       end
 
       it "should filter out existing domains" do
-        added_site_domains = affiliate.add_site_domains({ 'foo.gov' => nil, 'bar.gov' => nil })
+        added_site_domains = affiliate.add_site_domains({'foo.gov' => nil, 'bar.gov' => nil})
 
         added_site_domains.count.should == 2
         site_domains = affiliate.site_domains(true)
@@ -1989,12 +1989,12 @@ describe Affiliate do
 
     context "when existing domain is covered by new ones" do
       before do
-        affiliate.add_site_domains({ 'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil })
+        affiliate.add_site_domains({'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil})
         SiteDomain.where(:affiliate_id => affiliate.id).count.should == 3
       end
 
       it "should filter out existing domains" do
-        affiliate.update_site_domain(site_domain, { :domain => 'usa.gov', :site_name => nil }).should be_true
+        affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil}).should be_true
 
         site_domains = affiliate.site_domains(true)
         site_domains.count.should == 1
@@ -2007,9 +2007,9 @@ describe Affiliate do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
-      @first = @affiliate.indexed_documents.build(:url => 'http://nps.gov/')
-      @second = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo')
-      @third = @affiliate.indexed_documents.build(:url => 'http://nps.gov/bar')
+      @first = @affiliate.indexed_documents.build(:title => 'Document Title 1', :description => 'This is a Document.', :url => 'http://nps.gov/')
+      @second = @affiliate.indexed_documents.build(:title => 'Document Title 2', :description => 'This is a Document 2.', :url => 'http://nps.gov/foo')
+      @third = @affiliate.indexed_documents.build(:title => 'Document Title 3', :description => 'This is a Document 3.', :url => 'http://nps.gov/bar')
       @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
                                                :description => 'This is a PDF document.',
                                                :url => 'http://nps.gov/pdf.pdf',
@@ -2119,10 +2119,10 @@ describe Affiliate do
 
       it 'should update mobile homepage URL' do
         affiliate.should_receive(:update_attributes!).with(
-            managed_header_home_url: 'http://usasearch.howto.gov/with-path',
-            staged_managed_header_home_url: 'http://usasearch.howto.gov/with-path',
-            mobile_homepage_url: 'http://usasearch.howto.gov/with-path',
-            staged_mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
+          managed_header_home_url: 'http://usasearch.howto.gov/with-path',
+          staged_managed_header_home_url: 'http://usasearch.howto.gov/with-path',
+          mobile_homepage_url: 'http://usasearch.howto.gov/with-path',
+          staged_mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
 
         affiliate.autodiscover_homepage_url
       end
@@ -2141,10 +2141,10 @@ describe Affiliate do
 
       it 'should update mobile homepage URL with www. prefix in the hostname' do
         affiliate.should_receive(:update_attributes!).with(
-            managed_header_home_url: 'http://www.howto.gov',
-            staged_managed_header_home_url: 'http://www.howto.gov',
-            mobile_homepage_url: 'http://www.howto.gov',
-            staged_mobile_homepage_url: 'http://www.howto.gov',)
+          managed_header_home_url: 'http://www.howto.gov',
+          staged_managed_header_home_url: 'http://www.howto.gov',
+          mobile_homepage_url: 'http://www.howto.gov',
+          staged_mobile_homepage_url: 'http://www.howto.gov',)
 
         affiliate.autodiscover_homepage_url
       end
@@ -2176,8 +2176,8 @@ describe Affiliate do
 
       it 'should update mobile homepage URL' do
         affiliate.should_receive(:update_attributes!).
-            with(mobile_homepage_url: 'http://usa.gov',
-                 staged_mobile_homepage_url: 'http://usa.gov')
+          with(mobile_homepage_url: 'http://usa.gov',
+               staged_mobile_homepage_url: 'http://usa.gov')
         affiliate.autodiscover_homepage_url
       end
     end
@@ -2192,8 +2192,8 @@ describe Affiliate do
 
       it 'should update mobile homepage URL' do
         affiliate.should_receive(:update_attributes!).
-            with(managed_header_home_url: 'http://usa.gov',
-                 staged_managed_header_home_url: 'http://usa.gov')
+          with(managed_header_home_url: 'http://usa.gov',
+               staged_managed_header_home_url: 'http://usa.gov')
         affiliate.autodiscover_homepage_url
       end
     end
@@ -2340,15 +2340,15 @@ describe Affiliate do
       before do
         page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
         @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
-        flickr_api_response = {"id"=>"1600", "username"=>"GregGersh"}
+        flickr_api_response = {"id" => "1600", "username" => "GregGersh"}
         flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
 
         HttpConnection.stub(:get) do |arg|
           case arg
             when %r[http://gdata.youtube.com/feeds/api/users/.+]
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
-          when %r[^http://gdata.youtube.com/feeds/api/videos\?]
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+              File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
+            when %r[^http://gdata.youtube.com/feeds/api/videos\?]
+              File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
           end
         end
 
@@ -2429,7 +2429,7 @@ describe Affiliate do
     end
 
     it "should import the photos from ech Flickr profile" do
-      @flickr_profiles.each{|flickr_profile| flickr_profile.should_receive(:import_photos).and_return true }
+      @flickr_profiles.each { |flickr_profile| flickr_profile.should_receive(:import_photos).and_return true }
       @affiliate.import_flickr_photos
     end
   end

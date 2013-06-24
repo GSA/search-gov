@@ -5,6 +5,8 @@ describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :features
   before do
     @min_valid_attributes = {
+      :title => 'Some Title',
+      :description => 'This is a document.',
       :url => "http://min.nps.gov/link.html",
       :affiliate_id => affiliates(:basic_affiliate).id
     }
@@ -21,6 +23,8 @@ describe IndexedDocument do
 
   it { should validate_presence_of :url }
   it { should validate_presence_of :affiliate_id }
+  it { should validate_presence_of :title }
+  it { should validate_presence_of :description }
   it { should allow_value("http://some.site.gov/url").for(:url) }
   it { should allow_value("http://some.site.mil/").for(:url) }
   it { should allow_value("http://some.govsite.com/url").for(:url) }
@@ -103,7 +107,8 @@ describe IndexedDocument do
   end
 
   it "should validate URL against URI.parse to catch things that aren't caught in the regexp" do
-    odie = IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://www.gov.gov/pipesare||bad")
+    odie = IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://www.gov.gov/pipesare||bad", :title => 'Some Title',
+                               :description => 'This is a document.')
     odie.valid?.should be_false
     odie.errors.full_messages.first.should == IndexedDocument::UNPARSEABLE_URL_STATUS
   end
@@ -363,6 +368,16 @@ describe IndexedDocument do
         IndexedDocument.find_by_id(@indexed_document.id).should be_nil
       end
     end
+
+    context 'when record is invalid' do
+      before do
+        @indexed_document.stub!(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
+      end
+
+      it 'should raise IndexedDocumentError' do
+        lambda { @indexed_document.save_or_destroy }.should raise_error(IndexedDocument::IndexedDocumentError, "Problem saving indexed document: record invalid")
+      end
+    end
   end
 
   describe "#index_document(file, content_type)" do
@@ -514,11 +529,12 @@ describe IndexedDocument do
     before do
       IndexedDocument.destroy_all
       @affiliate = affiliates(:basic_affiliate)
-      @first_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :affiliate => @affiliate)
-      @last_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :affiliate => @affiliate)
-      affiliates(:power_affiliate).site_domains.create!(:domain => "anotheraffiliate.mil")
-      @other_affiliate_uncrawled_url = IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :affiliate => affiliates(:power_affiliate))
-      @already_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/uncrawled.html', :affiliate => @affiliate, :last_crawled_at => Time.now)
+      @first_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :affiliate => @affiliate, :title => 'Some Title',
+                                                     :description => 'This is a document.')
+      @last_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :affiliate => @affiliate, :title => 'Some Title',
+                                                    :description => 'This is a document.')
+      @other_affiliate_uncrawled_url = IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :affiliate => affiliates(:power_affiliate), :title => 'Some Title', :description => 'This is a document.')
+      @already_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/uncrawled.html', :affiliate => @affiliate, :last_crawled_at => Time.now, :title => 'Some Title', :description => 'This is a document.')
     end
 
     it "should return the first page of all crawled urls" do
@@ -537,10 +553,9 @@ describe IndexedDocument do
   describe "#crawled_urls" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @first_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate)
-      @last_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate)
-      affiliates(:power_affiliate).site_domains.create!(:domain => "anotheraffiliate.mil")
-      IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate))
+      @first_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some Title', :description => 'This is a document.')
+      @last_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some Title', :description => 'This is a document.')
+      IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate), :title => 'Some Title', :description => 'This is a document.')
     end
 
     it "should return the first page of all crawled urls" do
@@ -559,9 +574,10 @@ describe IndexedDocument do
   describe "#refresh(extent)" do
     before do
       IndexedDocument.destroy_all
-      affiliates(:power_affiliate).site_domains.create!(:domain => "some.mil")
-      IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
-      IndexedDocument.create!(:url => 'http://nps.gov', :affiliate => affiliates(:basic_affiliate))
+      IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate), :title => 'Some Title',
+                              :description => 'This is a document.')
+      IndexedDocument.create!(:url => 'http://nps.gov', :affiliate => affiliates(:basic_affiliate), :title => 'Some Title',
+                              :description => 'This is a document.')
     end
 
     context "when affiliates exist" do

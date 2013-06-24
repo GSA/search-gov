@@ -30,16 +30,12 @@ class SiteFeedUrl < ActiveRecord::Base
 
   def parse(doc)
     doc.xpath("//item").first(quota).map do |item|
-      begin
-        link = item.xpath('link').inner_text.squish
-        title = item.xpath('title').inner_text.squish
-        raw_description = item.xpath('description').inner_text
-        description = Nokogiri::HTML(raw_description).inner_text.squish
-        {link: link, title: title, description: description}
-      rescue Exception
-        nil
-      end
-    end.compact
+      link = item.xpath('link').inner_text.squish
+      title = item.xpath('title').inner_text.squish
+      raw_description = item.xpath('description').inner_text
+      description = Nokogiri::HTML(raw_description).inner_text.squish
+      {link: link, title: title, description: description}
+    end
   end
 
   def fast_destroy_indexed_rss_docs
