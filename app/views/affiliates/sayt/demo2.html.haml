@@ -16,5 +16,5 @@
       var usagov_sayt_url = "//#{request.host_with_port}/sayt?aid=#{@affiliate.id}&";
       var script = document.createElement('script');
       script.type = "text/javascript";
-      script.src = "#{request.scheme}://#{request.host_with_port}/javascripts/sayt/remote.js";
+      script.src = "//#{request.host_with_port}/javascripts/sayt/remote.js";
       document.getElementsByTagName("head")[0].appendChild(script);

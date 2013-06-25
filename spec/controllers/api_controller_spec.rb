@@ -28,6 +28,7 @@ describe ApiController do
 
       it { should respond_with_content_type :json }
       it { should respond_with :success }
+      it { should be_ssl_allowed }
 
       describe "response body" do
         subject { JSON.parse(response.body) }

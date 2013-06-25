@@ -15,5 +15,5 @@
       var usasearch_config = { siteHandle:"#{@affiliate.name}", host:"http://#{request.host_with_port}" };
       var script = document.createElement('script');
       script.type = "text/javascript";
-      script.src = "#{request.scheme}://#{request.host_with_port}/javascripts/remote.loader.js";
+      script.src = "//#{request.host_with_port}/javascripts/remote.loader.js";
       document.getElementsByTagName("head")[0].appendChild(script);

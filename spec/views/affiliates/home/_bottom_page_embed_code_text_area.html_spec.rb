@@ -16,7 +16,7 @@ describe "affiliates/home/_bottom_page_embed_code_text_area.html.haml" do
       rendered.should contain %[var usasearch_config = { siteHandle:"nps.gov" };]
       rendered.should contain %[var script = document.createElement("script");]
       rendered.should contain %[script.type = "text/javascript";]
-      rendered.should contain %[script.src = "http://test.host/javascripts/remote.loader.js";]
+      rendered.should contain %[script.src = "//test.host/javascripts/remote.loader.js";]
       rendered.should contain %[document.getElementsByTagName("head")[0].appendChild(script);]
     end
   end
@@ -33,7 +33,7 @@ describe "affiliates/home/_bottom_page_embed_code_text_area.html.haml" do
       rendered.should contain %[var usasearch_config = { siteHandle:"nps.gov" };]
       rendered.should contain %[var script = document.createElement("script");]
       rendered.should contain %[script.type = "text/javascript";]
-      rendered.should contain %[script.src = "http://test.host/javascripts/remote.loader.js";]
+      rendered.should contain %[script.src = "//test.host/javascripts/remote.loader.js";]
       rendered.should contain %[document.getElementsByTagName("head")[0].appendChild(script);]
     end
   end

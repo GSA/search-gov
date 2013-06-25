@@ -27,7 +27,7 @@ module AffiliateHelper
   end
 
   def javascript_full_path_tag(request, source)
-    javascript_include_tag "#{request.scheme}://#{request.host_with_port}#{source}"
+    javascript_include_tag "//#{request.host_with_port}#{source}"
   end
 
   def render_affiliate_css_property_value(css_property_hash, property)
@@ -182,7 +182,7 @@ module AffiliateHelper
 
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "#{request.scheme}://#{request.host_with_port}/javascripts/remote.loader.js";
+      script.src = "//#{request.host_with_port}/javascripts/remote.loader.js";
       document.getElementsByTagName("head")[0].appendChild(script);
     JS
     javascript_tag embed_code
