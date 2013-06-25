@@ -12,7 +12,7 @@
     != %{  <input type="submit" value="Search" /> }
     != %{</form>}
     :javascript
-      var usasearch_config = { siteHandle:"#{@affiliate.name}", host:"http://#{request.host_with_port}" };
+      var usasearch_config = { siteHandle:"#{@affiliate.name}", host:"//#{request.host_with_port}" };
       var script = document.createElement('script');
       script.type = "text/javascript";
       script.src = "//#{request.host_with_port}/javascripts/remote.loader.js";
