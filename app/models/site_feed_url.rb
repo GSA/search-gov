@@ -29,7 +29,9 @@ class SiteFeedUrl < ActiveRecord::Base
   private
 
   def parse(doc)
-    doc.xpath("//item").first(quota).map do |item|
+    items = doc.xpath("//item")
+    cnt = [quota, items.size].min
+    items.first(cnt).map do |item|
       link = item.xpath('link').inner_text.squish
       title = item.xpath('title').inner_text.squish
       raw_description = item.xpath('description').inner_text

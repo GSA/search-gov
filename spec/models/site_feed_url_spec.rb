@@ -77,6 +77,18 @@ describe SiteFeedUrl do
         IndexedDocument.count.should == 1
       end
     end
+
+    context 'when feed has fewer items than quota' do
+      before do
+        HttpConnection.stub(:get).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
+        site_feed_url.quota = 1000
+      end
+
+      it 'should just parse what is there' do
+        site_feed_url.fetch
+        IndexedDocument.count.should == 3
+      end
+    end
   end
 
   describe ".delete" do
