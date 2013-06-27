@@ -212,64 +212,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#truncate_html_prose_on_words" do
-    it "should cope with empty input" do
-      [nil, "", "  ", "\n\r\t  \r\n"].each do |empty_ish_xml|
-        helper.truncate_html_prose_on_words( empty_ish_xml, 42 ).should == ""
-      end
-    end
-
-    it "should truncate text" do
-      helper.truncate_html_prose_on_words( "this line is too long", 12 ).should == "this line is ..."
-    end
-
-    it "should keep escaped characters" do
-      helper.truncate_html_prose_on_words( "this line has &lt; input &gt;", 21 ).should == "this line has &lt; ..."
-    end
-
-    it "should not chop up entity refernces" do
-      helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 10 ).should == "this ..."
-      helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 11 ).should == "this ..."
-      helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 12 ).should == "this ..."
-      helper.truncate_html_prose_on_words( "this line&nbsp;is&nbsp;too long", 13 ).should == "this ..."
-    end
-
-    it "should truncate paragraphs" do
-      helper.truncate_html_prose_on_words( "<ul><li>this</li><li>list</li><li>is</li><li>too</li><li>long</li></ul>", 42, 3 ).should == "<ul><li>this</li><li>list</li><li>is</li>...</ul>"
-    end
-
-    it "should be able to truncate some medline html reasonably well" do
-      en_restless_legs_html = "<p>Restless legs syndrome (RLS) causes a powerful urge to move your legs. Your legs become uncomfortable when you are lying down or sitting. Some people describe it as a creeping, crawling, tingling or burning sensation. Moving makes your legs feel better, but not for long.</p><p>In most cases, there is no known cause for RLS. In other cases, RLS is caused by a disease or condition, such as anemia or pregnancy. Some medicines can also cause temporary RLS. Caffeine, tobacco and alcohol may make symptoms worse.</p><p>Lifestyle changes, such as regular sleep habits, relaxation techniques and moderate exercise during the day can help. If those don't work, medicines may reduce the symptoms of RLS.</p>"
-      es_tos_html = "<p>La tos es un reflejo que mantiene despejada la garganta y las v&#xED;as respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o protegerse. La tos puede ser aguda o cr&#xF3;nica. La tos aguda comienza s&#xFA;bitamente y no suele durar m&#xE1;s de 2 o 3 semanas. Los cuadros agudos de tos son los que se adquieren frecuentemente con un <a href=\"http://www.nlm.nih.gov/medlineplus/spanish/commoncold.html\">resfr&#xED;o</a> o una <a href=\"http://www.nlm.nih.gov/medlineplus/spanish/flu.html\">gripe</a>. La tos cr&#xF3;nica dura m&#xE1;s de 2 o 3 semanas. Entre las causas de la tos cr&#xF3;nica se encuentran:</p><ul><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/asthma.html\">Asma</a></li><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/allergy.html\">Alergias</a></li><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/copdchronicobstructivepulmonarydisease.html\">Enfermedad pulmonar obstructiva cr&#xF3;nica</a> (EPOC)</li><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/smoking.html\">Fumar</a></li><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/gerd.html\">Reflujo gastroesof&#xE1;gico</a></li><li><a href=\"http://www.nlm.nih.gov/medlineplus/spanish/throatdisorders.html\">Enfermedades de la garganta</a>, tal como el crup en ni&#xF1;os</li><li>Algunas medicinas</li></ul><p>El agua puede ayudar a mejorar la tos - ya sea que la ingiera o que la agregue al ambiente con un inyector de vapor o un vaporizador. Si esta resfriado o engripado, los antihistam&#xED;nicos pueden dar mejores resultados que los <a href=\"http://www.nlm.nih.gov/medlineplus/spanish/coldandcoughmedicines.html\">medicamentos para la tos sin receta m&#xE9;dica</a>. Los ni&#xF1;os menores de 2 a&#xF1;os no deben recibir medicamentos para la tos. Para ni&#xF1;os mayores de 2 a&#xF1;os, sea precavido y lea cuidadosamente las indicaciones.</p>"
-
-      helper.truncate_html_prose_on_words(en_restless_legs_html, 42).should == "<p>Restless legs syndrome (RLS) causes a ...</p>"
-      helper.truncate_html_prose_on_words(en_restless_legs_html, 142).should == "<p>Restless legs syndrome (RLS) causes a powerful urge to move your legs. Your legs become uncomfortable when you are lying down or sitting. Some ...</p>"
-      helper.truncate_html_prose_on_words(en_restless_legs_html, 242).should == "<p>Restless legs syndrome (RLS) causes a powerful urge to move your legs. Your legs become uncomfortable when you are lying down or sitting. Some people describe it as a creeping, crawling, tingling or burning sensation. Moving makes your legs ...</p>"
-
-      helper.truncate_html_prose_on_words(es_tos_html, 42).should == "<p>La tos es un reflejo que mantiene ...</p>"
-      helper.truncate_html_prose_on_words(es_tos_html, 142).should == "<p>La tos es un reflejo que mantiene despejada la garganta y las vías respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o ...</p>"
-      helper.truncate_html_prose_on_words(es_tos_html, 242).should == "<p>La tos es un reflejo que mantiene despejada la garganta y las vías respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o protegerse. La tos puede ser aguda o crónica. La tos aguda comienza súbitamente y no suele durar ...</p>"
-      helper.truncate_html_prose_on_words(es_tos_html, 342).should == "<p>La tos es un reflejo que mantiene despejada la garganta y las vías respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o protegerse. La tos puede ser aguda o crónica. La tos aguda comienza súbitamente y no suele durar más de 2 o 3 semanas. Los cuadros agudos de tos son los que se adquieren frecuentemente con un <a href='http://www.nlm.nih.gov/medlineplus/spanish/commoncold.html'>resfrío</a></p>"
-      helper.truncate_html_prose_on_words(es_tos_html, 542).should == "<p>La tos es un reflejo que mantiene despejada la garganta y las vías respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o protegerse. La tos puede ser aguda o crónica. La tos aguda comienza súbitamente y no suele durar más de 2 o 3 semanas. Los cuadros agudos de tos son los que se adquieren frecuentemente con un <a href='http://www.nlm.nih.gov/medlineplus/spanish/commoncold.html'>resfrío</a> o una <a href='http://www.nlm.nih.gov/medlineplus/spanish/flu.html'>gripe</a>. La tos crónica dura más de 2 o 3 semanas. Entre las causas de la tos crónica se encuentran:</p><ul><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/asthma.html'>Asma</a></li><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/allergy.html'>Alergias</a></li><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/copdchronicobstructivepulmonarydisease.html'>Enfermedad pulmonar obstructiva crónica</a> (EPOC)</li><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/smoking.html'>Fumar</a></li><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/gerd.html'>Reflujo gastroesofágico</a></li><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/throatdisorders.html'>E...</a></li></ul>"
-      helper.truncate_html_prose_on_words(es_tos_html, 542, 2).should == "<p>La tos es un reflejo que mantiene despejada la garganta y las vías respiratorias. Aunque puede ser molesta, la tos ayuda al cuerpo a curarse o protegerse. La tos puede ser aguda o crónica. La tos aguda comienza súbitamente y no suele durar más de 2 o 3 semanas. Los cuadros agudos de tos son los que se adquieren frecuentemente con un <a href='http://www.nlm.nih.gov/medlineplus/spanish/commoncold.html'>resfrío</a> o una <a href='http://www.nlm.nih.gov/medlineplus/spanish/flu.html'>gripe</a>. La tos crónica dura más de 2 o 3 semanas. Entre las causas de la tos crónica se encuentran:</p><ul><li><a href='http://www.nlm.nih.gov/medlineplus/spanish/asthma.html'>Asma</a></li>...</ul>"
-    end
-
-    it "should be able to process multibyte characters" do
-      helper.truncate_html_prose_on_words("<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum</p>", 60).should == "<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble ...</p>"
-      helper.truncate_html_prose_on_words("<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum</p>", 51).should == "<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ ...</p>"
-      helper.truncate_html_prose_on_words("<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum</p>", 50).should == "<p>Candy Dynamics Recalls Toxic Waste® Short ...</p>"
-    end
-
-    # see http://stackoverflow.com/questions/6206885/malformed-utf-8-character-when-calling-rindex-on-string-containing-trademark-sy
-    it "should deal with oil spills instead of throwing an exception due to mb character confusion" do
-      @oil_spill = "<p>On this page you&#x2019;ll find information about those possible effects and steps you can take to protect yourself and your family.</p>"
-      10.upto(11) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this ...</p>" }
-      12.upto(16) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this page ...</p>" }
-      17.upto(18) { |n| helper.truncate_html_prose_on_words(@oil_spill, n) }
-      19.upto(20) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this page you’ll ...</p>" }
-    end
-  end
-
   describe "#highlight_like_solr" do
     it "should highlight based on the hit highlights returned from solr" do
       chicken_highlight = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ recall")

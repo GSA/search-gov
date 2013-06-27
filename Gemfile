@@ -49,6 +49,7 @@ gem 'rash'
 gem 'geoip'
 gem 'us_states'
 gem 'htmlentities'
+gem 'truncate_html'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

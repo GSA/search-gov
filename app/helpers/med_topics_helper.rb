@@ -4,7 +4,7 @@ module MedTopicsHelper
   end
 
   def display_medline_results_description(summary, query)
-    highlight(truncate_html_prose_on_words(summary, 300), query).html_safe
+    highlight(truncate_html(summary, length: 300), query).html_safe
   end
 
   def display_medline_url_with_click_tracking(title, url, search, affiliate)

@@ -751,21 +751,6 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "HowTo.gov" in bold font
 
-  Scenario: Filtering indexed documents when they are duplicated in Bing search results
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email  | contact_name |
-      | agency site  | agency.gov | aff@agency.gov | John Bar     |
-    And the following site domains exist for the affiliate agency.gov:
-      | domain         | site_name      |
-      | usa.gov        | Agency Website |
-    And the following IndexedDocuments exist:
-      | title        | description                                                                         | url                 | affiliate  | last_crawl_status |
-      | USA.gov Blog | We help you find official U.S. government information and services on the Internet. | http://blog.usa.gov/A4C32FAE6F3DB386FC32ED1C4F3024742ED30906 | agency.gov | OK                |
-    When I am on agency.gov's search page
-    And I fill in "query" with "usa.gov blog"
-    And I press "Search"
-    Then I should not see "See more document results"
-
   Scenario: Searching within an agency on English SERP
     Given the following Affiliates exist:
       | display_name    | name        | contact_email | contact_name | domains | search_results_page_title                      | is_agency_govbox_enabled | locale |

@@ -466,8 +466,14 @@ describe SearchHelper do
 
   describe "#display_result_description" do
     it 'should be html safe' do
-      search = {'content' => 'irs'}
-      helper.display_result_description(search).should be_html_safe
+      description = <<-DESCRIPTION
+loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html truncate me if you want
+      DESCRIPTION
+
+      search = {'content' => description}
+      result = helper.display_result_description(search)
+      result.should be_html_safe
+      result.should == "<strong>loren</strong> &amp; david&#x27;s excellent™ html &quot;examples&quot; on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david&#x27;s excellent™ html &quot;examples&quot; on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; ..."
     end
 
     it 'should truncate long description' do
@@ -477,8 +483,8 @@ Chuck, thank you for your words and your friendship and your life of service.
 Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
       DESCRIPTION
       truncated_description = helper.display_result_description({'content' => description})
-      truncated_description.should =~ /distinguished \.\.\.$/
-      truncated_description.length.should == 255
+      truncated_description.should =~ /friends, \.\.\.$/
+      truncated_description.length.should <= 255
     end
   end
 

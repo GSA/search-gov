@@ -158,14 +158,6 @@ module ApplicationHelper
     url_for(:controller => '/user_sessions', :action => :destroy)
   end
 
-  def truncate_html_prose_on_words(html, length, max_paragraphs = nil)
-    html_root = Nokogiri::HTML.fragment(html.strip) rescue nil
-    truncated_html = ""
-    append_html_prose(truncated_html, html_root, length, max_paragraphs) unless html_root.nil?
-    truncated_html
-  end
-
-
   def highlight_like_solr(text, highlights)
     raw_text = text.to_str
     done = {}
@@ -245,59 +237,6 @@ module ApplicationHelper
   def display_mobile_or_add_this_link?
     return true if %w{ home images searches image_searches pages }.include?(controller.controller_path)
     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
-  end
-
-  def append_html_prose(buffer, node, max_chars, max_paragraphs)
-    return [max_chars, max_paragraphs] if max_chars <= 0
-
-    case node.node_type
-
-      # todo: should have separate case for entity refs but they will probably not work anyways until ruby 1.9
-
-      # we prefer to chop at word boundaries
-
-      when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE
-        mb_chars = node.text? ? CGI::escapeHTML(node.text) : node.text
-
-        if mb_chars.length <= max_chars
-          buffer << mb_chars
-          max_chars -= mb_chars.length
-        else
-          last_space_index = (mb_chars.rindex(/\s/, max_chars) || 0) rescue 0
-          truncated_text = mb_chars[0..last_space_index].gsub(/\s+/, ' ') unless last_space_index.nil?
-          buffer << "#{truncated_text}..."
-          max_chars = 0
-        end
-
-      # even if not all children are inserted, the parent tags need to be properly closed
-
-      when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE
-        if (max_paragraphs.present? && max_paragraphs == 0)
-          max_paragraphs -= 1
-          buffer << "..."
-        elsif max_paragraphs.nil? || max_paragraphs > 0
-          if node.element?
-            buffer << "<#{node.name}"
-            node.attributes.each do |name, value|
-              buffer << " #{name}='#{value}'"
-            end
-            buffer << ">"
-
-          end
-          node.children.each do |child|
-            max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)
-          end
-
-          if node.element?
-            buffer << "</#{node.name}>"
-            if max_paragraphs.present? && %w{h1 h2 h3 p li div quote}.include?(node.name)
-              max_paragraphs -= 1
-            end
-          end
-        end
-      else
-    end
-    [max_chars, max_paragraphs]
   end
 
 end

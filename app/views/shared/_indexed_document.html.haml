@@ -1,7 +1,7 @@
 .indexeddocresult.searchresult{:id => "indexeddocresult#{index+1}"}
   %h2
     = display_result_extname_prefix(hit.instance.url)
-    = link_with_click_tracking(truncate_html_prose_on_words(highlight_hit(hit, :title),65).html_safe, hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
+    = link_with_click_tracking(truncate_html(highlight_hit(hit, :title), length:65).html_safe, hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
   - if show_full_listing
     %h3= highlight_hit(hit, :description).html_safe
     %h3= link_with_click_tracking(h(shorten_url(hit.instance.url)), hit.instance.url, @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
