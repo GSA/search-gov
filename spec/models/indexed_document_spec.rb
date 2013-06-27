@@ -50,6 +50,13 @@ describe IndexedDocument do
   end
 
   describe "normalizing URLs when saving" do
+    context "when a blank URL is passed in" do
+      let(:url) { "" }
+      it 'should mark record as invalid' do
+        IndexedDocument.new(@valid_attributes.merge(:url => url)).should_not be_valid
+      end
+    end
+
     context "when URL doesn't have a protocol" do
       let(:url) { "www.nps.gov/sdfsdf" }
       it "should prepend it with http://" do

@@ -209,6 +209,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def normalize_url
+    return if self.url.blank?
     ensure_http_prefix_on_url
     downcase_scheme_and_host_and_remove_anchor_tags
   end
