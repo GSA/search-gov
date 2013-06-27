@@ -33,7 +33,7 @@ namespace :deploy do
 
   desc "Create symlink for tmp/cache"
   task :symlink_cache, :roles => :app do
-    run "ln -s #{shared_path}/cache #{release_path}/tmp/cache"
+    run "ln -s #{shared_path}/api_cache #{release_path}/tmp/api_cache"
   end
 
   desc 'Restart daemon rake tasks'

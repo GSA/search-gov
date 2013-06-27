@@ -5,7 +5,7 @@ class SearchApiConnection
 
   def initialize(name, site, cache_duration = 60 * 60 * 6)
     @connection = Faraday.new site do |conn|
-      cache_dir = File.join(Rails.root, 'tmp', 'cache')
+      cache_dir = File.join(Rails.root, 'tmp', 'api_cache')
       conn.request :json
       conn.response :rashify
       conn.response :json
