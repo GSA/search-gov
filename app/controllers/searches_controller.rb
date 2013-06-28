@@ -121,6 +121,8 @@ class SearchesController < ApplicationController
       @affiliate.mobile_logo_content_type = @affiliate.staged_mobile_logo_content_type
       @affiliate.mobile_logo_file_size = @affiliate.staged_mobile_logo_file_size
       @affiliate.mobile_logo_updated_at = @affiliate.staged_mobile_logo_updated_at
+      @affiliate.look_and_feel_css = @affiliate.staged_look_and_feel_css
+      @affiliate.mobile_look_and_feel_css = @affiliate.staged_mobile_look_and_feel_css
     end
 
     @affiliate.use_strictui if params[:strictui]

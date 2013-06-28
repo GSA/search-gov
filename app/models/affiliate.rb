@@ -98,7 +98,7 @@ class Affiliate < ActiveRecord::Base
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix, :nullify_blank_dublin_core_fields
-  before_save :set_css_properties, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
@@ -218,7 +218,7 @@ class Affiliate < ActiveRecord::Base
       uses_managed_header_footer managed_header_css_properties
       managed_header_home_url managed_header_text managed_header_links
       managed_footer_links theme css_property_hash
-      mobile_homepage_url)
+      mobile_homepage_url look_and_feel_css mobile_look_and_feel_css)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -241,13 +241,15 @@ class Affiliate < ActiveRecord::Base
                                             :header_footer_css, :nested_header_footer_css,
                                             :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
                                             :managed_header_links, :managed_footer_links,
-                                            :external_tracking_code, :submitted_external_tracking_code, :mobile_homepage_url]
+                                            :external_tracking_code, :submitted_external_tracking_code, :mobile_homepage_url,
+                                            :look_and_feel_css, :mobile_look_and_feel_css]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
                                             :staged_header_footer_css, :staged_nested_header_footer_css,
                                             :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
                                             :staged_managed_header_links, :staged_managed_footer_links,
-                                            :staged_mobile_homepage_url]
+                                            :staged_mobile_homepage_url,
+                                            :staged_look_and_feel_css, :staged_mobile_look_and_feel_css]
 
   def domains_as_array(reload = false)
     @domains_as_array ||= site_domains(reload).collect(&:domain)
@@ -738,7 +740,7 @@ class Affiliate < ActiveRecord::Base
         collect { |sass_value| "  #{sass_value}" }.
         join("\n")
     sass_values << sanitized_sass_values
-    Sass::Engine.new(sass_values, { :style => :compressed }).render
+    Renderers::Sass.new(sass_values).render
   end
 
   def validate_staged_header_footer
@@ -876,5 +878,23 @@ class Affiliate < ActiveRecord::Base
 
   def set_is_validate_staged_header_footer(attributes)
     self.is_validate_staged_header_footer = attributes[:staged_uses_managed_header_footer] == '0'
+  end
+
+  def generate_look_and_feel_css
+    css_hash = {}
+    css_hash.merge!(css_property_hash) if css_property_hash(true)
+    css_hash.merge!(managed_header_css_properties) if managed_header_css_properties
+    renderer = Renderers::AffiliateCss.new(css_hash)
+
+    self.look_and_feel_css = renderer.render_desktop_css
+    self.mobile_look_and_feel_css = renderer.render_mobile_css
+
+    css_hash = {}
+    css_hash.merge!(staged_css_property_hash) if staged_css_property_hash(true)
+    css_hash.merge!(staged_managed_header_css_properties) if staged_managed_header_css_properties
+    renderer = Renderers::AffiliateCss.new(css_hash)
+
+    self.staged_look_and_feel_css = renderer.render_desktop_css
+    self.staged_mobile_look_and_feel_css = renderer.render_mobile_css
   end
 end

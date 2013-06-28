@@ -180,6 +180,22 @@ describe Affiliate do
         affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'), :as => :test)
         affiliate.default_search_label.should == 'Todo'
       end
+
+      it 'should set look_and_feel_css' do
+        affiliate = Affiliate.create! @valid_attributes
+
+        expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
+        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
+        expect(affiliate.look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#369\}/)
+        expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
+        expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
+
+        expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
+        expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
+        expect(affiliate.staged_look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#00396f\}/)
+        expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
+        expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#20c\}/)
+      end
     end
   end
 
@@ -302,6 +318,27 @@ describe Affiliate do
       affiliate.save!
       Affiliate.find(affiliate.id).css_property_hash[:font_family].should == 'Verdana, sans-serif'
       Affiliate.find(affiliate.id).staged_css_property_hash[:font_family].should == 'Georgia, serif'
+    end
+
+    it 'should set look_and_feel_css' do
+      affiliate.staged_theme = 'natural'
+      affiliate.css_property_hash = { font_family: 'Verdana, sans-serif' }
+      affiliate.staged_css_property_hash = { font_family: 'Georgia, serif' }
+      affiliate.managed_header_css_properties = { header_footer_link_color: '#445566' }
+      affiliate.staged_managed_header_css_properties = { header_footer_link_color: '#AABBCC' }
+      affiliate.save!
+
+      expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Verdana,sans-serif\}/)
+      expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
+      expect(affiliate.look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#456\}/)
+      expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Verdana,sans-serif\}/)
+      expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
+
+      expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Georgia,serif\}/)
+      expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#b58100\}\n$/)
+      expect(affiliate.staged_look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#abc\}/)
+      expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Georgia,serif\}/)
+      expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#008eb5\}/)
     end
 
     it "should not set header_footer_nested_css fields" do
@@ -718,7 +755,7 @@ describe Affiliate do
 
     context "when existing staged_page_background_image and page_background_image are the same" do
       let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
-      let(:staged_page_background_image) { mock('staged page backgroun image') }
+      let(:staged_page_background_image) { mock('staged page background image') }
 
       before do
         yesterday = Date.current.yesterday
