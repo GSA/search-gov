@@ -11,7 +11,7 @@ class TwitterProfile < ActiveRecord::Base
   before_validation :normalize_screen_name
   before_validation :lookup_twitter_id
   scope :active, joins(:affiliate_twitter_settings).uniq
-  scope :show_lists_enabled, active.where('affiliate_twitter_settings.show_lists = 1').order('twitter_profiles.updated_at asc').uniq
+  scope :show_lists_enabled, active.where('affiliate_twitter_settings.show_lists = 1').order('twitter_profiles.updated_at asc, twitter_profiles.id asc').uniq
 
   def recent
     self.tweets.recent
