@@ -9,9 +9,8 @@
     - unless @affiliate.nested_header_footer_css.blank?
       :css
         #{@affiliate.nested_header_footer_css}
-    = render(:partial => 'searches/affiliate_css_overrides',
-        :locals => { :css_property_hash => @affiliate.css_property_hash,
-                     :managed_header_css_properties => @affiliate.managed_header_css_properties })
+    :css
+      #{@affiliate.look_and_feel_css}
     /[if IE 7]
       = stylesheet_link_tag 'searches_ie7'
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?

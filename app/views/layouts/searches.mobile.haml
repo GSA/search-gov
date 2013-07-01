@@ -9,7 +9,8 @@
     %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}/
     %meta{:name => "format-detection", :content => "telephone=no" }/
     = stylesheet_link_tag 'searches_mobile'
-    = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash })
+    :css
+      #{@affiliate.mobile_look_and_feel_css}
   %body
     #container
       #contentWrapper

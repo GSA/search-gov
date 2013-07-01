@@ -881,20 +881,26 @@ class Affiliate < ActiveRecord::Base
   end
 
   def generate_look_and_feel_css
-    css_hash = {}
-    css_hash.merge!(css_property_hash) if css_property_hash(true)
-    css_hash.merge!(managed_header_css_properties) if managed_header_css_properties
-    renderer = Renderers::AffiliateCss.new(css_hash)
-
+    renderer = Renderers::AffiliateCss.new(build_css_hash)
     self.look_and_feel_css = renderer.render_desktop_css
     self.mobile_look_and_feel_css = renderer.render_mobile_css
 
-    css_hash = {}
-    css_hash.merge!(staged_css_property_hash) if staged_css_property_hash(true)
-    css_hash.merge!(staged_managed_header_css_properties) if staged_managed_header_css_properties
-    renderer = Renderers::AffiliateCss.new(css_hash)
-
+    renderer = Renderers::AffiliateCss.new(build_staged_css_hash)
     self.staged_look_and_feel_css = renderer.render_desktop_css
     self.staged_mobile_look_and_feel_css = renderer.render_mobile_css
+  end
+
+  def build_css_hash
+    css_hash = {}
+    css_hash.merge!(css_property_hash) if css_property_hash(true)
+    css_hash.merge!(managed_header_css_properties) if managed_header_css_properties
+    css_hash
+  end
+
+  def build_staged_css_hash
+    staged_css_hash = {}
+    staged_css_hash.merge!(staged_css_property_hash) if staged_css_property_hash(true)
+    staged_css_hash.merge!(staged_managed_header_css_properties) if staged_managed_header_css_properties
+    staged_css_hash
   end
 end

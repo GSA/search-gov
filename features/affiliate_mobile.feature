@@ -18,7 +18,7 @@ Feature: Mobile Search for Affiliate
       | Our Tourism Page   | http://www.agency.gov/tou | Tourism information                  |
     And I am on agency.gov's search page
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
-    And I should see the page with internal CSS "font-family: Verdana, sans-serif"
+    And I should see the page with internal CSS "font-family:Verdana,sans-serif"
     And affiliate SAYT suggestions for "agency.gov" should be enabled
     And I should see the browser page titled "agency site Mobile"
     And I should see "agency site Mobile" in the mobile page header
@@ -36,6 +36,7 @@ Feature: Mobile Search for Affiliate
 
     When I go to nosayt.agency.gov's mobile search page
     Then affiliate SAYT suggestions for "nosayt.agency.gov" should be disabled
+    And I should see the page with internal CSS "font-family:Arial,sans-serif"
 
   Scenario: Toggling back to classic mode
     Given the following Affiliates exist:

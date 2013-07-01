@@ -502,6 +502,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see "gov - aff site Search Results"
+    And I should see the page with internal CSS "Verdana,sans-serif"
     And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
@@ -515,6 +516,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see "aff site : gov"
+    And I should see the page with internal CSS "Helvetica,sans-serif"
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
@@ -555,6 +557,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see "aff site : gov"
+    And I should see the page with internal CSS "Helvetica,sans-serif"
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
@@ -620,6 +623,7 @@ Feature: Affiliate clients
     Then I should see "aff site : gov"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with internal CSS "bg.png"
+    And I should see the page with internal CSS "Helvetica,sans-serif"
     And the page body should match "background:\ \#EEEEEE\ url\(.+\) repeat\-y"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
 
