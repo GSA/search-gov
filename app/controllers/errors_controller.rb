@@ -2,6 +2,7 @@ class ErrorsController < ApplicationController
   before_filter :setup_affiliate
   has_mobile_fu
   before_filter :force_mobile_mode
+  STATIC_ASSET_FORMATS = /\b(css|image|javascript)\b/i
 
   def page_not_found
     @page_title = I18n.t(:"page_not_found.title")
@@ -12,12 +13,14 @@ class ErrorsController < ApplicationController
                              :formats => [:html],
                              :status => 404,
                              :layout => false }
+      format.any { render text: '404 Not Found', status: 404 }
     end
   end
 
   private
 
   def setup_affiliate
+    return if request.format.to_s =~ STATIC_ASSET_FORMATS
     @affiliate = Affiliate.find_by_name(params[:name]) unless params[:name].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale

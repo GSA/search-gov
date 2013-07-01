@@ -48,5 +48,15 @@ describe ErrorsController do
       it { should render_template('layouts/searches') }
       it { should render_template("page_not_found") }
     end
+
+    context 'when handling static asset format' do
+      before do
+        Affiliate.should_not_receive(:find_by_name)
+        get :page_not_found, format: :js
+      end
+
+      it { should respond_with(:missing) }
+      it { should_not render_template('layouts/searches') }
+    end
   end
 end
