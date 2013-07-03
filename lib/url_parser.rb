@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module UrlParser
   def self.normalize(url)
     url = "http://#{url}" unless url =~ /^https?:\/\//i
