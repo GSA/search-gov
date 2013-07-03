@@ -183,7 +183,7 @@ describe IndexedDocument do
         IndexedDocument.reindex
       end
 
-      it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
+      it "should find by title, description, and body for that affiliate, and highlight the terms in the title, description, and body" do
         title_search = IndexedDocument.search_for('swim pollutant', @affiliate, nil)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title).should_not be_nil
@@ -192,7 +192,7 @@ describe IndexedDocument do
         description_search.hits.first.highlight(:description).should_not be_nil
         body_search = IndexedDocument.search_for('swim', @affiliate, nil)
         body_search.total.should == 1
-        body_search.hits.first.highlight(:body).should be_nil
+        body_search.hits.first.highlight(:body).should_not be_nil
       end
     end
 
@@ -208,7 +208,7 @@ describe IndexedDocument do
         IndexedDocument.reindex
       end
 
-      it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
+      it "should find by title, description, and body for that affiliate, and highlight the terms in the title, description, and body" do
         title_search = IndexedDocument.search_for('jugando', @affiliate, nil)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title_text).should_not be_nil
@@ -217,7 +217,7 @@ describe IndexedDocument do
         description_search.hits.first.highlight(:description_text).should_not be_nil
         body_search = IndexedDocument.search_for('Declaraciones', @affiliate, nil)
         body_search.total.should == 1
-        body_search.hits.first.highlight(:body_text).should be_nil
+        body_search.hits.first.highlight(:body_text).should_not be_nil
       end
     end
 

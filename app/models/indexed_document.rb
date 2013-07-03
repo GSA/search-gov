@@ -50,10 +50,10 @@ class IndexedDocument < ActiveRecord::Base
     text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |idoc|
       idoc.description if idoc.affiliate.locale == "es"
     end
-    text :body do |idoc|
+    text :body, :stored => true do |idoc|
       idoc.body if idoc.affiliate.locale == "en"
     end
-    text :body_es, :as => "body_text_es" do |idoc|
+    text :body_es, :stored => true, :as => "body_text_es" do |idoc|
       idoc.body if idoc.affiliate.locale == "es"
     end
     string :last_crawl_status
@@ -168,6 +168,7 @@ class IndexedDocument < ActiveRecord::Base
           fulltext sanitized_query do
             highlight :title, :title_es, :frag_list_builder => 'single'
             highlight :description, :description_es, :fragment_size => 255
+            highlight :body, :body_es, :fragment_size => 255
           end
           with(:affiliate_id, affiliate.id)
           any_of do

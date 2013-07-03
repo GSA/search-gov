@@ -6,7 +6,10 @@ describe OdieSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
-    affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element', :description => 'Leeloo the supreme being', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+    affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element',
+                                        :description => 'Leeloo the supreme being',
+                                        :body => 'other esoteric content related to the document somehow',
+                                        :last_crawled_at => Time.now, :last_crawl_status => "OK")
     IndexedDocument.reindex
   end
 
@@ -64,6 +67,21 @@ describe OdieSearch do
       it "should set error message" do
         @search.run
         @search.error_message.should_not be_nil
+      end
+    end
+
+    context 'when result body has the hit highlight, not the description' do
+
+      it 'should return the body hit as the description' do
+        search = OdieSearch.new(query: "supreme", affiliate: affiliate)
+        search.run
+        search.results.first['content'].should =~ /\xEE\x80\x80supreme\xEE\x80\x81/
+        search = OdieSearch.new(query: "esoteric", affiliate: affiliate)
+        search.run
+        search.results.first['content'].should =~ /\xEE\x80\x80esoteric\xEE\x80\x81/
+        search = OdieSearch.new(query: "fifth", affiliate: affiliate)
+        search.run
+        search.results.first['content'].should == 'Leeloo the supreme being'
       end
     end
   end

@@ -30,10 +30,11 @@ class OdieSearch < Search
 
   def process_results(response)
     processed = response.hits(:verify => true).collect do |hit|
+      content_field = hit.highlights(:description).empty? && hit.highlights(:body).present? ? :body : :description
       {
         'title' => SolrBingHighlighter.hl(hit, :title),
         'unescapedUrl' => hit.instance.url,
-        'content' => SolrBingHighlighter.hl(hit, :description)
+        'content' => SolrBingHighlighter.hl(hit, content_field)
       }
     end
     processed.compact
