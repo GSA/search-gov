@@ -7,6 +7,9 @@ class RssFeedUrl < ActiveRecord::Base
   attr_readonly :rss_feed_owner_type, :url
   has_and_belongs_to_many :rss_feeds
   has_many :news_items, order: 'published_at DESC', dependent: :destroy
+
+  before_validation :normalize_url, on: :create
+
   validates_presence_of :rss_feed_owner_type, :url
   validates_uniqueness_of :url, scope: :rss_feed_owner_type, case_sensitive: false
   validate :url_must_point_to_a_feed, on: :create
@@ -27,10 +30,26 @@ class RssFeedUrl < ActiveRecord::Base
     url =~ /^https?:\/\/gdata\.youtube\.com\/feeds\/.+$/i
   end
 
+  def self.find_existing_or_initialize(url)
+    normalized_url = UrlParser.normalize url
+    return new(url: url) unless normalized_url
+
+    url_without_protocol = normalized_url.sub(/^https?:\/\//i, '')
+    where('(url = ? OR url = ?)',
+          "http://#{url_without_protocol}",
+          "https://#{url_without_protocol}").first_or_initialize do |u|
+      u.url = normalized_url
+    end
+  end
+
   private
 
+  def normalize_url
+    normalized_url = UrlParser.normalize url
+    self.url = normalized_url if normalized_url
+  end
+
   def url_must_point_to_a_feed
-    set_http_prefix :url
     if url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
       begin
         rss_doc = Nokogiri::XML(HttpConnection.get(url))

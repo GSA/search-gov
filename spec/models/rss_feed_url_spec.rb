@@ -53,9 +53,10 @@ describe RssFeedUrl do
 
     context 'when URL has the wrong format' do
       it 'should not be valid' do
-        rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate', url: 'not_a_valid_url')
+        rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate', url: 'http: // some invalid /')
         rss_feed_url.save.should be_false
         rss_feed_url.errors[:url].should include('is invalid')
+        rss_feed_url.url.should == 'http: // some invalid /'
       end
     end
 
@@ -107,6 +108,22 @@ describe RssFeedUrl do
       rss_feed_url = rss_feed_urls(:youtube_video_url)
       Resque.should_not_receive :enqueue_with_priority
       rss_feed_url.freshen
+    end
+  end
+
+  describe '.find_existing_or_initialize' do
+    let(:existing_url) { rss_feed_urls(:white_house_blog_url) }
+    let(:existing_url_without_scheme) { existing_url.url.sub(/^https?:\/\//i, '') }
+    let(:existing_url_in_other_protocol) { "https://#{existing_url_without_scheme}" }
+
+    it 'should find existing URL in HTTP or HTTPS protocol' do
+      expect(RssFeedUrl.rss_feed_owned_by_affiliate.
+                 find_existing_or_initialize(existing_url_without_scheme)).to eq(existing_url)
+    end
+
+    it 'should find existing URL in other protocol' do
+      expect(RssFeedUrl.rss_feed_owned_by_affiliate.
+                 find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
     end
   end
 end

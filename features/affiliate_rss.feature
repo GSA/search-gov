@@ -88,6 +88,29 @@ Feature: Affiliate RSS
       | www.flickr.com/services/feeds/photos_public.gne?id=27784370@N05&format=rss_200 | Pending      | Pending |
     And I should not see "http://www.flickr.com/services/feeds/photos_public.gne?id=27784370@N05&format=rss_200"
 
+  Scenario: Adding duplicate RSS feed
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I follow "RSS"
+    And I follow "Add new RSS feed"
+    And I fill in the following:
+      | Name*          | Recalls                                          |
+      | RSS feed URL 0 | http://api.usa.gov/recalls/recent.rss?per_page=1 |
+    And I press "Add"
+    Then I should see "RSS feed successfully created."
+    And I follow "Add new RSS feed"
+    And I fill in the following:
+      | Name*          | Another Recalls                           |
+      | RSS feed URL 0 | api.usa.gov/recalls/recent.rss?per_page=1 |
+    And I press "Add"
+    Then I should see "RSS feed successfully created."
+    And I should see the following table rows:
+      | URL                                       | Last Crawled | Status  |
+      | api.usa.gov/recalls/recent.rss?per_page=1 | Pending      | Pending |
+
   Scenario: Validating RSS feed input
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -105,7 +128,13 @@ Feature: Affiliate RSS
       | RSS feed URL 0 | http://api.usa.gov/recalls/recent.rss?per_page=1 |
     And I press "Add"
     Then I should see "Name can't be blank"
-    And I should not see "Rss feed url does not appear to be a valid RSS feed."
+    When I fill in the following:
+      | Name*          | My invalid feed                                   |
+      | RSS feed URL 0 | http://api.usa.gov/recalls/recent.json?per_page=1 |
+      | RSS feed URL 1 | http:// /recalls                                  |
+    And I press "Add"
+    Then I should see "Rss feed url does not appear to be a valid RSS feed."
+    And I should see "Rss feed url is invalid"
 
   Scenario: Previewing crawled news items
     Given the following Affiliates exist:

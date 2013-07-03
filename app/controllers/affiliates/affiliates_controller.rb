@@ -71,13 +71,13 @@ class Affiliates::AffiliatesController < SslController
 
     rss_feed_urls_attributes = attributes || {}
     rss_feed_urls_attributes.each_value do |url_attributes|
-      url = url_attributes[:url].strip
+      url = url_attributes[:url]
       next if url.blank? or url_attributes[:_destroy] == '1'
-      rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: 'Affiliate', url: url).first
-      if rss_feed_url
-        existing_rss_feed_urls << rss_feed_url
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize url
+      if rss_feed_url.new_record?
+        new_urls << rss_feed_url.url
       else
-        new_urls << url_attributes[:url]
+        existing_rss_feed_urls << rss_feed_url
       end
     end
 
