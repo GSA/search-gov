@@ -32,23 +32,31 @@ describe SiteFeedUrl do
       end
 
       it 'should delete any RSS-sourced indexed documents that are not in the feed' do
-        links = %w(http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50 http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution)
+        links = %w(http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50
+                   http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution
+                   http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0)
         IndexedDocument.should_receive(:destroy_all).with(["affiliate_id = ? and url not in (?) and source = 'rss'", site_feed_url.affiliate.id, links])
         site_feed_url.fetch
       end
 
       it 'should try to create {quota} indexed documents with link, title, desc and summarized status, but not body' do
         site_feed_url.fetch
-        idocs = IndexedDocument.last(2)
+        idocs = IndexedDocument.last(3)
         idocs.first.url.should == 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
         idocs.first.title.should == 'Famine in the Horn of Africa: Be a Part of the Solution'
         idocs.first.description.should =~ /FWD them to your neighbors/
         idocs.first.body.should be_nil
         idocs.first.source.should == 'rss'
         idocs.first.last_crawl_status.should == IndexedDocument::SUMMARIZED_STATUS
-        idocs.last.url.should == 'http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50'
-        idocs.last.title.should == 'A Call to Peace: Perspectives of Volunteers on the Peace Corps at 50'
-        idocs.last.description.should =~ /200,000 Peace Corps volunteers/
+        idocs[1].url.should == 'http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50'
+        idocs[1].title.should == 'A Call to Peace: Perspectives of Volunteers on the Peace Corps at 50'
+        idocs[1].description.should =~ /200,000 Peace Corps volunteers/
+        idocs[1].body.should be_nil
+        idocs[1].source.should == 'rss'
+        idocs[1].last_crawl_status.should == IndexedDocument::SUMMARIZED_STATUS
+        idocs.last.url.should == 'http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0'
+        idocs.last.title.should == 'Supporting Scientists at the Lab Bench ... and at Bedtime'
+        idocs.last.description.should =~ /from the Office of Science and Technology/
         idocs.last.body.should be_nil
         idocs.last.source.should == 'rss'
         idocs.last.last_crawl_status.should == IndexedDocument::SUMMARIZED_STATUS

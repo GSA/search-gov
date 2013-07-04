@@ -1,6 +1,3 @@
-require 'net/http'
-require 'uri'
-
 class Tweet < ActiveRecord::Base
   before_save :sanitize_tweet_text
   belongs_to :twitter_profile, :primary_key => :twitter_id

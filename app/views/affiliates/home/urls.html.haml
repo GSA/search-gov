@@ -10,6 +10,7 @@
 
   %h2 Manage URLs via RSS feed
   = form_for([@affiliate, @site_feed_url], :html => { :multipart => true }) do |f|
+    = f.label 'rss_url', nil, class: 'hide'
     = f.text_field 'rss_url'
     = f.submit "Submit", :class => 'submit'
   - if @affiliate.site_feed_url.rss_url.present?

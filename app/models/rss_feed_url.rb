@@ -8,7 +8,7 @@ class RssFeedUrl < ActiveRecord::Base
   has_and_belongs_to_many :rss_feeds
   has_many :news_items, order: 'published_at DESC', dependent: :destroy
 
-  before_validation :normalize_url, on: :create
+  before_validation NormalizeUrl.new(:url), on: :create
 
   validates_presence_of :rss_feed_owner_type, :url
   validates_uniqueness_of :url, scope: :rss_feed_owner_type, case_sensitive: false
@@ -43,11 +43,6 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   private
-
-  def normalize_url
-    normalized_url = UrlParser.normalize url
-    self.url = normalized_url if normalized_url
-  end
 
   def url_must_point_to_a_feed
     if url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix

@@ -113,9 +113,9 @@ class RssFeedData
         end
       end
 
-      news_item = @rss_feed_url.news_items.where(link: link).first_or_initialize
-      next if !news_item.new_record? && news_item.published_at >= published_at
+      news_item = @rss_feed_url.news_items.where('guid = :guid OR link = :link', guid: guid, link: link).first_or_initialize
       news_item.assign_attributes(guid: guid,
+                                  link: link,
                                   title: title,
                                   description: description,
                                   published_at: published_at,

@@ -20,7 +20,7 @@ module UsasearchRails3
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/extras #{Rails.root}/lib #{Rails.root}/lib/importers #{Rails.root}/lib/middlewares #{Rails.root}/lib/parsers #{Rails.root}/lib/renderers)
+    config.autoload_paths += Dir[config.root.join('lib', '**/').to_s]
 
     config.middleware.use 'RejectInvalidRequestUri'
     config.middleware.use 'DowncaseRoute'

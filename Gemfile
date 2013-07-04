@@ -50,6 +50,7 @@ gem 'geoip'
 gem 'us_states'
 gem 'htmlentities'
 gem 'truncate_html'
+gem 'addressable'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

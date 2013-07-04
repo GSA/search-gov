@@ -1,5 +1,6 @@
 class SiteFeedUrl < ActiveRecord::Base
   belongs_to :affiliate
+  before_validation NormalizeUrl.new(:rss_url)
   validates_presence_of :rss_url
   after_destroy :fast_destroy_indexed_rss_docs
 
