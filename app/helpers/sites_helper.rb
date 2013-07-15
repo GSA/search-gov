@@ -10,6 +10,10 @@ module SitesHelper
     end
   end
 
+  def render_site_help_link(help_link)
+    link_to('Help?', help_link.help_page_url, class: 'help-link menu') if help_link
+  end
+
   def site_nav_css_class_hash(current_nav, nav_name)
     current_nav == nav_name ? { class: 'active'} : {}
   end

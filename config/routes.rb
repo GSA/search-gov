@@ -191,6 +191,7 @@ UsasearchRails3::Application.routes.draw do
   get "/sayt" => "sayt#index"
   get "/clicked" => "clicked#index"
   get '/program' => redirect(BLOG_URL, :status => 302)
+  get '/help_docs' => 'help_docs#show', defaults: { format: :json }
   get "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
   get "/404" => "errors#page_not_found", :as => 'page_not_found'
   get "*path" => "errors#page_not_found"

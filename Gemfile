@@ -91,4 +91,5 @@ group :test do
   gem 'simplecov-rcov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
+  gem 'poltergeist'
 end

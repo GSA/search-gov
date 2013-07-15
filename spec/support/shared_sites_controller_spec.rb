@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 shared_examples_for 'restricted to approved user action' do |request_method, action, parameters = nil, sessions = nil, flash = nil|
   context 'when user is not logged in' do
     it 'should redirect to login page' do

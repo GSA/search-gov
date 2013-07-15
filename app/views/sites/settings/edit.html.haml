@@ -3,6 +3,7 @@
   .sub-nav-heading
     %h2 Settings
     .action-bar
+      = render_site_help_link @help_link
       = f.submit 'Save Settings', class: 'btn submit disabled', disabled: true
 
   = render_site_success_flash_message

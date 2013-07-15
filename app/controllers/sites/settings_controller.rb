@@ -1,5 +1,6 @@
 class Sites::SettingsController < Sites::BaseController
   before_filter :setup_affiliate
+  before_filter :setup_help_link
 
   def edit
   end

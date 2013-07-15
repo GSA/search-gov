@@ -25,3 +25,15 @@ Feature: Admin Center
     When I fill in "Site Name" with ""
     And I press "Save Settings"
     Then I should see "Site name can't be blank"
+
+  @javascript
+  Scenario: Clicking on help link
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And the following Help Links exist:
+      | request_path        | help_page_url                                           |
+      | /sites/setting/edit | http://usasearch.howto.gov/manual/site-information.html |
+    When I go to the USA.gov's site page
+    And I follow "Settings"
+    Then I should see a link to "Help?" with url for "http://usasearch.howto.gov/manual/site-information.html"
+    When I follow "Help?"
+    Then I should see a link to "Site Information" with url for "http://usasearch.howto.gov/manual/site-information.html"

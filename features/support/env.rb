@@ -22,6 +22,9 @@ require 'email_spec/cucumber'
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
 # your application behaves in the production environment, where an error page will
@@ -43,6 +46,7 @@ ActionController::Base.allow_rescue = false
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
   DatabaseCleaner.strategy = :transaction
+  Cucumber::Rails::Database.javascript_strategy = :truncation, { except: %w(email_templates) }
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
