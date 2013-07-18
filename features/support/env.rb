@@ -23,6 +23,9 @@ require 'email_spec/cucumber'
 Capybara.default_selector = :css
 
 require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new app, port: 8899
+end
 Capybara.javascript_driver = :poltergeist
 
 # By default, any exception happening in your Rails application will bubble up
