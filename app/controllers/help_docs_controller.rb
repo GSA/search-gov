@@ -1,6 +1,6 @@
-class HelpDocsController < ApplicationController
-  before_filter :require_usasearch_url_param
+class HelpDocsController < SslController
   respond_to :json
+  before_filter :require_usasearch_url_param
 
   def show
     respond_with ({ body: HelpDoc.extract_article(params[:url]) })
