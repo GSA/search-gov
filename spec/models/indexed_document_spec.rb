@@ -325,13 +325,13 @@ describe IndexedDocument do
         indexed_document.url = 'http://www.usa.gov/usasearch_test_301.shtml'
       end
 
-      it "should update the url with last crawled date and error message and set the hash/title/body/description to nil" do
+      it "should update the url with last crawled date and error message and set the body to nil" do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
         indexed_document.last_crawl_status.should == "301 Moved Permanently"
         indexed_document.body.should be_nil
-        indexed_document.title.should be_nil
-        indexed_document.description.should be_nil
+        indexed_document.description.should == 'This is a document.'
+        indexed_document.title.should == 'Some Title'
       end
     end
 
