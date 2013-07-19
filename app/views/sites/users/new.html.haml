@@ -1,0 +1,15 @@
+= content_for :title, "#{@affiliate.display_name} - Add User"
+= form_for @user, url: { action: :create }, html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Add User
+    .action-bar
+      = link_to_current_help_page
+      = link_to 'View Users', site_users_path(@affiliate)
+      = f.submit 'Add', class: 'btn submit disabled', disabled: true
+
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = f.label :contact_name, 'Name', class: 'required'
+  = f.text_field :contact_name, class: 'required'
+  = f.label :email, 'Email', class: 'required'
+  = f.text_field :email, class: 'required'

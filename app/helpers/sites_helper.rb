@@ -1,5 +1,5 @@
 module SitesHelper
-  def render_site_success_flash_message
+  def render_site_flash_message
     if flash.present?
       html = flash.map do |key, msg|
         content = button_tag '×', class: 'close', 'data-dismiss' => 'alert'
@@ -10,7 +10,9 @@ module SitesHelper
     end
   end
 
-  def render_site_help_link(help_link)
+  def link_to_current_help_page
+    help_link_key = HelpLink.sanitize_request_path request.fullpath
+    help_link = HelpLink.find_by_request_path help_link_key
     link_to('Help?', help_link.help_page_url, class: 'help-link menu') if help_link
   end
 

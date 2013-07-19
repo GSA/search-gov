@@ -1,0 +1,18 @@
+.off-screen-text {
+  background-color: transparent;
+  border: 0;
+  height: 1px;
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  overflow: hidden;
+  *text-indent: -9999px;
+  width: 1px;
+}
+
+.off-screen-text:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}

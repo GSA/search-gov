@@ -7,7 +7,7 @@ class Affiliate < ActiveRecord::Base
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 56
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, order: 'contact_name'
   has_many :features, :through => :affiliate_feature_addition
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy

@@ -6,7 +6,7 @@
   }
 
   .help-block {
-    font-size: @baseFontSize * 0.9;
+    .muted;
     width: 360px;
   }
 
@@ -17,5 +17,9 @@
   input.required {
     font-size: @baseFontSize * 1.25;
     padding: 12px 6px;
+  }
+
+  .field_with_errors input[type='text'] {
+    border-color: @errorBorder;
   }
 }

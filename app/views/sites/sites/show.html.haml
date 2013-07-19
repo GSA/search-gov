@@ -1,3 +1,5 @@
-= content_for :title, @affiliate.display_name
+= content_for :title, "#{@affiliate.display_name} - Site Overview"
 .sub-nav-heading
   %h2 Site Overview
+  .action-bar
+    = link_to_current_help_page

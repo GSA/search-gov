@@ -294,3 +294,11 @@ Given /^the following SystemAlerts exist:$/ do |table|
                         :end_at => end_at)
   end
 end
+
+When /^the Affiliate "(.*?)" has the following users:$/ do |name, table|
+  affiliate = Affiliate.find_by_name name
+  table.hashes.each do |hash|
+    user = User.find_by_email hash[:email]
+    affiliate.users << user unless affiliate.users.exists?(user)
+  end
+end

@@ -5,7 +5,7 @@ describe Sites::SitesController do
   before { activate_authlogic }
 
   describe '#show' do
-    it_should_behave_like 'restricted to approved user action', :get, :show
+    it_should_behave_like 'restricted to approved user', :get, :show
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'

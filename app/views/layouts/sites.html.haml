@@ -3,7 +3,6 @@
   %head
     %title
       = yield :title
-      \- USASearch
     = favicon_link_tag
     = csrf_meta_tags
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
@@ -28,7 +27,7 @@
       = render 'sites/shared/site_nav'
       .l-content
         = yield
-    #help-doc.modal.hide.fade.stretch
+    #help-doc.modal.hide.fade.stretch(data-no-turbolink)
       .modal-body.stretch
         = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
           &times;

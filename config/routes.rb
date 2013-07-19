@@ -113,6 +113,7 @@ UsasearchRails3::Application.routes.draw do
   scope module: 'sites' do
     resources :sites, only: [:show] do
       resource :setting, only: [:edit, :update]
+      resources :users, only: [:index, :new, :create, :destroy]
     end
   end
 
