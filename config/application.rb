@@ -72,6 +72,7 @@ SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALES.collect { |locale| [SUPPORTED_LOCAL
 SUPPORTED_VERTICALS = %w{web image recall}
 BLOG_URL = 'http://usasearch.howto.gov'
 TOS_URL = 'http://usasearch.howto.gov/tos'
+USA_GOV_URL = 'http://www.usa.gov'
 
 require 'resque/plugins/priority'
 require 'csv'

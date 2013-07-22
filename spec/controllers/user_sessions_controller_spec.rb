@@ -13,6 +13,15 @@ describe UserSessionsController do
   end
 
   describe "do POST on create" do
+    context 'when the user is not approved' do
+      before do
+        post :create, user_session: { email: 'affiliate_manager_with_not_approved_status@fixtures.org',
+                                      password: 'admin' }
+      end
+
+      it { should redirect_to 'http://www.usa.gov' }
+    end
+
     context "when the user session fails to save" do
       it "should assign @user" do
         user = mock_model(User)
