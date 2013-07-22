@@ -16,7 +16,7 @@ describe UserSessionsController do
     context 'when the user is not approved' do
       before do
         post :create, user_session: { email: 'affiliate_manager_with_not_approved_status@fixtures.org',
-                                      password: 'admin' }
+                                      password: '' }
       end
 
       it { should redirect_to 'http://www.usa.gov' }

@@ -38,5 +38,4 @@ Feature: User sessions
       | Email                         | affiliate_manager_with_not_approved_status@fixtures.org    |
       | Password                      | admin                                                      |
     And I press "Login"
-    Then I should be on the user session page
-    And I should see "Your account is not approved"
+    And I should not see "Log In"
