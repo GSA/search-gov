@@ -13,5 +13,42 @@ describe PasswordResetsController do
       before { post :create, email: { 'foo' => 'bar' } }
       it { should set_the_flash.to(/No user was found with that email address/).now }
     end
+
+    context 'when User is not approved' do
+      before do
+        user = mock_model User
+        User.should_receive(:find_by_email).with('not_approved@email.gov').and_return user
+        user.should_receive(:is_not_approved?).and_return true
+        post :create, email: 'not_approved@email.gov'
+      end
+
+      it { should redirect_to('http://www.usa.gov') }
+    end
+  end
+
+  describe '#edit' do
+    context 'when User is not approved' do
+      before do
+        user = mock_model User
+        User.should_receive(:find_using_perishable_token).and_return user
+        user.should_receive(:is_not_approved?).and_return true
+        get :edit, id: 'my token'
+      end
+
+      it { should redirect_to('http://www.usa.gov') }
+    end
+  end
+
+  describe '#updated' do
+    context 'when User is not approved' do
+      before do
+        user = mock_model User
+        User.should_receive(:find_using_perishable_token).and_return user
+        user.should_receive(:is_not_approved?).and_return true
+        put :update, id: 'my token'
+      end
+
+      it { should redirect_to('http://www.usa.gov') }
+    end
   end
 end
