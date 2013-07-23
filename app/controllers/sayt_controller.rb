@@ -5,6 +5,7 @@ class SaytController < ActionController::Metal
   include AbstractController::Callbacks
   include ActionController::MobileFu
   include Airbrake::Rails::ControllerMethods
+  include NewRelic::Agent::Instrumentation::ControllerInstrumentation
   has_mobile_fu
 
   SAYT_SUGGESTION_SIZE = 10
