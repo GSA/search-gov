@@ -8,6 +8,8 @@ describe SaytController do
   let(:search) { mock(SaytSearch, results: results) }
 
   describe '#index' do
+    it { should respond_to(:airbrake_request_data) }
+
     context 'when sanitized query is empty' do
       it 'returns empty string' do
         get :index, :q => ' \\ '
@@ -126,6 +128,19 @@ describe SaytController do
           get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234'
           response.body.should == %Q{jsonp1234(some json string)}
         end
+      end
+    end
+
+    context 'when params[:name] is not a String' do
+      before do
+        Affiliate.should_not_receive(:select)
+        get :index, q: 'gov', name: { siteHandle: 'badparam' }
+      end
+
+      it { should respond_with(:success) }
+
+      it 'should ignore it' do
+        response.body.should eq('')
       end
     end
   end
