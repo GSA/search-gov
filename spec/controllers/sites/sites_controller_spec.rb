@@ -10,17 +10,17 @@ describe Sites::SitesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      before { get :show, id: affiliate.id }
+      before { get :show, id: site.id }
 
-      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:affiliate).with(site) }
     end
 
     context 'when logged in as super admin' do
       include_context 'super admin logged in to a site'
 
-      before { get :show, id: affiliate.id }
+      before { get :show, id: site.id }
 
-      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:affiliate).with(site) }
     end
   end
 end
