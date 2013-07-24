@@ -2436,7 +2436,7 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And the following Help Links exist:
+    And the following HelpLinks exist:
       | request_path                      | help_page_url                                    |
       | /affiliates/edit_site_information | http://usasearch.howto.gov/edit_site_information |
     And I am logged in with email "aff@bar.gov" and password "random_string"
