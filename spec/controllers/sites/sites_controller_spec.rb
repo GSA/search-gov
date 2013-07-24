@@ -12,7 +12,7 @@ describe Sites::SitesController do
 
       before { get :show, id: site.id }
 
-      it { should assign_to(:affiliate).with(site) }
+      it { should assign_to(:site).with(site) }
     end
 
     context 'when logged in as super admin' do
@@ -20,7 +20,7 @@ describe Sites::SitesController do
 
       before { get :show, id: site.id }
 
-      it { should assign_to(:affiliate).with(site) }
+      it { should assign_to(:site).with(site) }
     end
   end
 end

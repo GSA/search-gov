@@ -56,6 +56,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_managed_header_home_url => hash[:staged_managed_header_home_url],
       :managed_header_text => hash[:managed_header_text],
       :staged_managed_header_text => hash[:staged_managed_header_text],
+      :mobile_homepage_url => hash[:mobile_homepage_url],
+      :staged_mobile_homepage_url => hash[:staged_mobile_homepage_url],
       :locale => hash[:locale] || 'en',
       :is_agency_govbox_enabled => hash[:is_agency_govbox_enabled] || false,
       :is_medline_govbox_enabled => hash[:is_medline_govbox_enabled] || false,

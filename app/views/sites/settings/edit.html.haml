@@ -1,5 +1,5 @@
-= content_for :title, "#{@affiliate.display_name} - Settings"
-= form_for @affiliate, url: site_setting_path(@affiliate), html: { class: 'form' }  do |f|
+= content_for_site_page_title @site, 'Settings'
+= form_for @site, as: :site, url: site_setting_path(@site), html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2 Settings
     .action-bar
@@ -13,8 +13,8 @@
   = f.text_field :display_name, class: 'required'
   %dl
     %dt Site Handle
-    %dd= @affiliate.name
+    %dd= @site.name
     %dt Site ID
-    %dd= @affiliate.id
+    %dd= @site.id
     %dt Site Language
-    %dd= site_locale @affiliate
+    %dd= site_locale @site

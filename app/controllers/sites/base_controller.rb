@@ -29,19 +29,14 @@ class Sites::BaseController < SslController
     end
   end
 
-  def setup_affiliate
-    affiliate_id = params[:site_id] || params[:id]
+  def setup_site
+    site_id = params[:site_id] || params[:id]
     if current_user.is_affiliate_admin?
-      @affiliate = Affiliate.find(affiliate_id)
+      @site = Affiliate.find(site_id)
     elsif current_user.is_affiliate?
-      @affiliate = current_user.affiliates.find(affiliate_id) rescue redirect_to(home_affiliates_path) and return false
+      @site = current_user.affiliates.find(site_id) rescue redirect_to(home_affiliates_path) and return false
     end
     true
-  end
-
-  def setup_help_link
-    help_link_key = HelpLink.sanitize_request_path(request.fullpath)
-    @help_link = HelpLink.find_by_request_path(help_link_key)
   end
 
   def default_url_options

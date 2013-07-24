@@ -114,6 +114,7 @@ UsasearchRails3::Application.routes.draw do
     resources :sites, only: [:show] do
       resource :setting, only: [:edit, :update]
       resources :users, only: [:index, :new, :create, :destroy]
+      resource :preview, only: [:show]
     end
   end
 

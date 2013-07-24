@@ -27,8 +27,9 @@
       = render 'sites/shared/site_nav'
       .l-content
         = yield
-    #help-doc.modal.hide.fade.stretch(data-no-turbolink)
-      .modal-body.stretch
+    #help-doc.modal.fade(data-no-turbolink)
+      .modal-body
         = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
           &times;
         .content
+    #preview

@@ -1,34 +1,16 @@
 .l-site-nav.main
   %ul.nav
-    %li.active
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Dashboard' } do
-        %i.icon-dashboard.icon-2x
-        %span.description Dashboard
-    %li
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Analytics' } do
-        %i.icon-bar-chart.icon-2x
-        %span.description Analytics
-    %li
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Manage Content' } do
-        %i.icon-file.icon-2x
-        %span.description Manage Content
-    %li
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Manage Display' } do
-        %i.icon-desktop.icon-2x
-        %span.description Manage Display
-    %li
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Preview' } do
-        %i.icon-eye-open.icon-2x
-        %span.description Preview
-    %li
-      = link_to '#', { 'data-toggle' => 'tooltip', :title => 'Activate Search' } do
-        %i.icon-code.icon-2x
-        %span.description Activate Search
+    %li.active= link_to_main_nav 'Dashboard', site_path(@site), 'icon-dashboard'
+    %li= link_to_main_nav 'Analytics', '#', 'icon-bar-chart'
+    %li= link_to_main_nav 'Manage Content', '#', 'icon-file'
+    %li= link_to_main_nav 'Manage Display', '#', 'icon-desktop'
+    %li= link_to_main_nav 'Preview', '#preview', 'icon-eye-open', id: 'preview-trigger', data: { url: "#{site_preview_path(@site, format: :js)}" }
+    %li= link_to_main_nav 'Activate Search', '#', 'icon-code'
 .l-site-nav.sub
   .main-nav-info
     .title Dashboard
     .description Use the Dashboard to get the bird's eye view of your site.
   %ul.nav.nav-list
-    %li{ site_nav_css_class_hash(controller_name, 'sites') }= link_to 'Site Overview', site_path(@affiliate)
-    %li{ site_nav_css_class_hash(controller_name, 'users') }= link_to 'Manage Users', site_users_path(@affiliate)
-    %li{ site_nav_css_class_hash(controller_name, 'settings') }= link_to 'Settings', edit_site_setting_path(@affiliate)
+    %li{ site_nav_css_class_hash(controller_name, 'sites') }= link_to 'Site Overview', site_path(@site)
+    %li{ site_nav_css_class_hash(controller_name, 'users') }= link_to 'Manage Users', site_users_path(@site)
+    %li{ site_nav_css_class_hash(controller_name, 'settings') }= link_to 'Settings', edit_site_setting_path(@site)

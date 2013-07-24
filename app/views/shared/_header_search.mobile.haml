@@ -1,7 +1,9 @@
 = form_tag(search_path(:m => "true"), :method => :get, :id=>"search_form") do
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :affiliate, @affiliate.name
-  = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
+  = hidden_field_tag_if_key_exists :sitelimit
+  = hidden_field_tag_if_key_exists :staged
+  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
   = render :partial => 'shared/search_box'
 - if js_enabled_mobile_device?
   :javascript

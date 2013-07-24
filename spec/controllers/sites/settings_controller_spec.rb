@@ -33,7 +33,7 @@ describe Sites::SettingsController do
 
         put :update,
             site_id: site.id,
-            affiliate: { display_name: 'new name', not_allowed_key: 'not allowed value' }
+            site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
       end
 
       it { should redirect_to edit_site_setting_path(site) }
@@ -50,7 +50,7 @@ describe Sites::SettingsController do
 
         put :update,
             site_id: site.id,
-            affiliate: { display_name: 'new name', not_allowed_key: 'not allowed value' }
+            site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
       end
 
       it { should render_template :edit }

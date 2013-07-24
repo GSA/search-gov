@@ -4,11 +4,13 @@
   = text_field_tag 'search', @search.query, { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
-  = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
-  = hidden_field_tag :sort_by, params[:sort_by] if params[:sort_by]
+  = hidden_field_tag_if_key_exists :tbs
+  = hidden_field_tag_if_key_exists :sort_by
   = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
   = hidden_field_tag :affiliate, @affiliate.name
-  = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
+  = hidden_field_tag_if_key_exists :sitelimit
+  = hidden_field_tag_if_key_exists :staged
+  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
   - if params[:since_date].present? || params[:until_date].present?
     = hidden_field_tag :since_date, render_date(@search.since)
     = hidden_field_tag :until_date, render_date(@search.until)

@@ -1,0 +1,21 @@
+#preview.modal.fade(data-no-turbolink)
+  .navbar
+    .navbar-inner
+      .container
+        %h1.off-screen-text Preview
+        %ul.nav
+          = render_preview_links 'View Staged', @site, staged: true
+          = render_preview_links 'View Current', @site
+          = render_preview_links 'View Staged Mobile', @site, staged: true, m: true
+          = render_preview_links 'View Current Mobile', @site, m: true
+        = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
+          &times;
+        %ul.nav.pull-right
+  .preview-wrapper
+    %iframe{ name: 'preview-frame', src: search_path(affiliate: @site.name, query: 'gov', staged: true, external_tracking_code_disabled: true) }
+      %p Your browser does not support iframe. Use these links to preview your search results page.
+      %ul.nav
+        = render_preview_links 'View Staged', @site, { staged: true }, '_blank'
+        = render_preview_links 'View Current', @site, {}, '_blank'
+        = render_preview_links 'View Staged Mobile', @site, { staged: true, m: true }, '_blank'
+        = render_preview_links 'View Current Mobile', @site, { m: true }, '_blank'

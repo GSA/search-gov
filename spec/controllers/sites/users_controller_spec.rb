@@ -16,7 +16,7 @@ describe Sites::UsersController do
         get :index, site_id: site.id
       end
 
-      it { should assign_to(:affiliate).with site }
+      it { should assign_to(:site).with site }
       it { should assign_to(:users).with site_users }
     end
   end
@@ -29,7 +29,7 @@ describe Sites::UsersController do
 
       before { get :new, site_id: site.id }
 
-      it { should assign_to(:affiliate).with site }
+      it { should assign_to(:site).with site }
       it { should assign_to(:user).with_kind_of(User) }
     end
   end

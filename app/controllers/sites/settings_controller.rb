@@ -1,13 +1,12 @@
 class Sites::SettingsController < Sites::BaseController
-  before_filter :setup_affiliate
-  before_filter :setup_help_link
+  before_filter :setup_site
 
   def edit
   end
 
   def update
-    if @affiliate.update_attributes affiliate_params
-      redirect_to edit_site_setting_path(@affiliate), flash: { success: 'Your site settings have been updated.' }
+    if @site.update_attributes site_params
+      redirect_to edit_site_setting_path(@site), flash: { success: 'Your site settings have been updated.' }
     else
       render action: :edit
     end
@@ -15,7 +14,7 @@ class Sites::SettingsController < Sites::BaseController
 
   private
 
-  def affiliate_params
-    params[:affiliate] ? params[:affiliate].slice(:display_name) : {}
+  def site_params
+    params[:site] ? params[:site].slice(:display_name) : {}
   end
 end

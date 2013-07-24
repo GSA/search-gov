@@ -1,8 +1,10 @@
 = form_tag(news_search_path(:m => 'true'), :method => :get, :id => 'search_form') do
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :affiliate, @affiliate.name
-  = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
+  = hidden_field_tag_if_key_exists :tbs
   = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
+  = hidden_field_tag_if_key_exists :staged
+  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
   = render :partial => 'shared/search_box'
 
 - if @search.results.present?

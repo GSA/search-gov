@@ -11,13 +11,14 @@
       line-height: @siteMainNavItemHeight;
     }
 
-
-    li > a {
+    li > a, li > a:focus {
+      background-color: @siteMainNavBackground;
       color: #999999;
+      outline: none;
       text-align: center;
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 
-      &:hover, &:focus {
+      &:hover {
         background-color: @siteMainNavBackground;
         color: @white;
       }
@@ -25,8 +26,7 @@
   }
 
   .nav > .active > a,
-  .nav > .active > a:hover,
-  .nav > .active > a:focus {
+  .nav > .active > a:hover {
     background-color: @siteMainNavBackground;
     background-image: none;
     color: @white;

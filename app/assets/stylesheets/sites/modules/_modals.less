@@ -1,12 +1,31 @@
-.modal.stretch {
+.modal-stretch {
   max-height: 80%;
   margin-left: -35%;
-  left: 50%;
   width: 70%;
   overflow-y: scroll;
 
   .modal-body {
     max-height: none;
     height: auto;
+  }
+}
+
+.modal-full {
+  .border-radius(0);
+  border: 0;
+  height: auto;
+  max-height: none;
+  margin-left: 0;
+  width: 100%;
+  overflow-y: scroll;
+
+  &.fade.in {
+    top: 0;
+  }
+
+  .modal-body {
+    max-height: none;
+    height: auto;
+    padding: 0;
   }
 }

@@ -6,11 +6,11 @@
     = hidden_field_tag :sc, 0
     = text_field_tag 'search', @search ? @search.query : '', { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
   = hidden_field_tag :m, params[:m]
-  = hidden_field_tag :sitelimit, params[:sitelimit] if params[:sitelimit]
+  = hidden_field_tag_if_key_exists :sitelimit
 
-  - if @affiliate.present?
-    = hidden_field_tag :affiliate, @affiliate.name
-    = hidden_field_tag :staged, params[:staged] if params[:staged].present?
+  = hidden_field_tag :affiliate, @affiliate.name
+  = hidden_field_tag_if_key_exists :staged
+  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
 
   = hidden_field_tag :filter, params[:filter] if params[:filter].present?
   = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id

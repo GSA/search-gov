@@ -459,4 +459,12 @@ module SearchHelper
            :locals => { :collection => collection,
                         :module_tag => module_tag })
   end
+
+  def external_tracking_code_disabled?
+    params[:external_tracking_code_disabled].present?
+  end
+
+  def hidden_field_tag_if_key_exists(param_sym)
+    hidden_field_tag param_sym, params[param_sym] if params[param_sym]
+  end
 end
