@@ -43,6 +43,17 @@ describe WebSearch do
 
   end
 
+  describe "#cache_key" do
+    before do
+      @affiliate = affiliates(:usagov_affiliate)
+      @valid_options = {query: 'government', affiliate: @affiliate, page: 5}
+    end
+
+    it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
+      WebSearch.new(@valid_options).cache_key.should == "(government) (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
+    end
+  end
+
   describe "instrumenting search engine calls" do
     context 'when Bing is the engine' do
       before do

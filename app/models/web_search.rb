@@ -51,7 +51,7 @@ class WebSearch < Search
   end
 
   def cache_key
-    [@formatted_query, @options, @affiliate.search_engine].join(':')
+    [@formatted_query, @options.remove(:affiliate).merge(affiliate_id: @affiliate.id), @affiliate.search_engine].join(':')
   end
 
   protected
