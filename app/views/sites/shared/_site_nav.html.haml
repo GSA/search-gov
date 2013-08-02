@@ -4,7 +4,7 @@
     %li= link_to_main_nav 'Analytics', '#', 'icon-bar-chart'
     %li= link_to_main_nav 'Manage Content', '#', 'icon-file'
     %li= link_to_main_nav 'Manage Display', '#', 'icon-desktop'
-    %li= link_to_main_nav 'Preview', '#preview', 'icon-eye-open', id: 'preview-trigger', data: { url: "#{site_preview_path(@site, format: :js)}" }
+    %li= link_to_main_nav 'Preview', '#preview', 'icon-eye-open', id: 'preview-trigger', data: { url: "#{site_preview_path(@site)}" }
     %li= link_to_main_nav 'Activate Search', '#', 'icon-code'
 .l-site-nav.sub
   .main-nav-info

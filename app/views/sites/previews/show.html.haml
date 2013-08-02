@@ -11,6 +11,7 @@
         = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
           &times;
         %ul.nav.pull-right
+          %li= link_to_current_help_page
   .preview-wrapper
     %iframe{ name: 'preview-frame', src: search_path(affiliate: @site.name, query: 'gov', staged: true, external_tracking_code_disabled: true) }
       %p Your browser does not support iframe. Use these links to preview your search results page.

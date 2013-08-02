@@ -1,6 +1,6 @@
 fillPreviewModal = (data) ->
   $('#preview').replaceWith data
-  $('#preview').modal 'show'
+  $('#preview').modal backdrop: false
 
 loadPreview = (url) ->
   $.get url, fillPreviewModal, 'html'
