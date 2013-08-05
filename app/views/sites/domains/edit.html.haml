@@ -1,0 +1,10 @@
+= content_for_site_page_title @site, 'Edit Domain'
+= form_for @domain, as: :domain, url: { action: :update }, html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Edit Domain
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'List Domains', site_domains_path(@site)
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render f

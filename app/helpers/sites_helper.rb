@@ -14,22 +14,35 @@ module SitesHelper
     end
   end
 
-  def link_to_main_nav(title, path, icon, link_options = {})
+  def main_nav_item(title, path, icon, nav_controllers, link_options = {})
     link_options.reverse_merge! 'data-toggle' => 'tooltip', 'data-original-title' => title
-    link_to path, link_options do
+    item_content = link_to path, link_options do
       inner_html = content_tag :i, nil, class: "#{icon} icon-2x"
       inner_html << content_tag(:span, title, class: 'description')
     end
+    content_tag :li, item_content, main_nav_css_class_hash(nav_controllers)
   end
 
-  def link_to_current_help_page
+  def main_nav_css_class_hash(nav_controllers)
+    nav_controllers.include?(controller_name) ? { class: 'active' } : {}
+  end
+
+  def site_dashboard_controllers
+    %w(sites users settings)
+  end
+
+  def site_manage_content_controllers
+    %w(contents domains)
+  end
+
+  def list_item_with_link_to_current_help_page
     help_link_key = HelpLink.sanitize_request_path request.fullpath
     help_link = HelpLink.find_by_request_path help_link_key
-    link_to('Help?', help_link.help_page_url, class: 'help-link menu') if help_link
+    content_tag(:li, link_to('Help?', help_link.help_page_url, class: 'help-link menu')) if help_link
   end
 
-  def site_nav_css_class_hash(current_nav, nav_name)
-    current_nav == nav_name ? { class: 'active'} : {}
+  def site_nav_css_class_hash(nav_name)
+    nav_name == controller_name ? { class: 'active'} : {}
   end
 
   def site_locale(site)

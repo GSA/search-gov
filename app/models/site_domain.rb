@@ -3,7 +3,7 @@ class SiteDomain < ActiveRecord::Base
 
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w(text/csv text/comma-separated-values application/vnd.ms-excel)
   MAX_DOCS_PER_CRAWL = 1000
-  INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format; please upload a csv file (.csv).'
+  INVALID_FILE_FORMAT_MESSAGE = 'Invalid file format. Please upload a csv file (.csv).'
   BLACKLISTED_EXTENSION_REGEXP = Regexp.new("\.#{IndexedDocument::BLACKLISTED_EXTENSIONS.join('|')}$", true)
   validate :domain_coverage, if: Proc.new { |site_domain| site_domain.domain.present? and site_domain.affiliate.present? }
   before_save :set_site_name

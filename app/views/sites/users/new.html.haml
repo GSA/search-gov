@@ -3,9 +3,10 @@
   .sub-nav-heading
     %h2 Add User
     .action-bar
-      = link_to_current_help_page
-      = link_to 'View Users', site_users_path(@site)
-      = f.submit 'Add', class: 'btn submit disabled', disabled: true
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'View Users', site_users_path(@site)
+        %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
 
   = render_site_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'

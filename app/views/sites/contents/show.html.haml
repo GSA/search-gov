@@ -1,0 +1,34 @@
+= content_for_site_page_title @site, 'Content Overview'
+.sub-nav-heading
+  %h2 Content Overview
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+%ul.primary-list
+  %li
+    = link_to site_domains_path(@site) do
+      %i.icon-globe.icon-4x
+      %div Domains
+  %li
+    = link_to '#' do
+      %span.no-icon Best Bets: Text
+  %li
+    = link_to '#' do
+      %span.no-icon Best Bets: Graphics
+  %li
+    = link_to '#', class: 'only-icon' do
+      %i.icon-rss.icon-4x
+      %div.off-screen-text RSS
+  %li
+    = link_to '#', class: 'only-icon' do
+      %i.icon-twitter.icon-4x
+      %div.off-screen-text Twitter
+  %li
+    = link_to '#', class: 'only-icon' do
+      %i.icon-youtube.icon-4x
+      %div.off-screen-text YouTube
+  %li
+    = link_to '#', class: 'only-icon' do
+      %i.icon-flickr.icon-4x
+      %div.off-screen-text Flickr

@@ -1,12 +1,12 @@
-Feature: Admin Center
+Feature: Dashboard
 
   Scenario: Viewing a site without logging in
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     Then I should see "Log In"
 
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     Then I should see "Admin Center"
     And I should see USA.gov selected in the site selector
     And I should see a link to "Dashboard" in the active site main navigation
@@ -14,7 +14,7 @@ Feature: Admin Center
 
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     And I follow "Settings"
     Then I should see USA.gov selected in the site selector
     And I should see a link to "Dashboard" in the active site main navigation
@@ -33,7 +33,7 @@ Feature: Admin Center
       | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
       | /sites/preview      | http://usasearch.howto.gov/manual/preview.html        |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     And I follow "Settings"
     Then I should be able to access the "How to Edit Your Settings" help page
     When I follow "Preview"
@@ -51,7 +51,7 @@ Feature: Admin Center
       | admin1@fixtures.gov |
       | admin2@fixtures.gov |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     Then I should see the following table rows:
       | Affiliate Manager affiliate_manager@fixtures.org |
@@ -60,7 +60,7 @@ Feature: Admin Center
 
   Scenario: Add/remove user
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's site page
+    When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     And I follow "Add User"
     And I fill in the following:
@@ -80,7 +80,7 @@ Feature: Admin Center
       | display_name | name       | contact_email   | contact_name | has_staged_content | managed_header_text | staged_managed_header_text | managed_header_home_url | staged_managed_header_home_url | mobile_homepage_url | staged_mobile_homepage_url |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true               | live header text    | staged header text         | live.home.agency.gov    | staged.home.agency.gov         | m.live.agency.gov   | m.staged.agency.gov        |
     And I am logged in with email "john@agency.gov" and password "random_string"
-    When I go to the agency.gov's site page
+    When I go to the agency.gov's Dashboard page
     And I follow "Preview"
     Then the preview layer should be visible
     And I should see a link to "View Staged"

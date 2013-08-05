@@ -58,7 +58,7 @@ Feature: Affiliate site domain
     When I fill in the following:
       | Domain |  |
     And I press "Save"
-    Then I should see "Domain is invalid"
+    Then I should see "Domain can't be blank"
     When I follow "Cancel"
     Then I should see the browser page titled "Domains"
 

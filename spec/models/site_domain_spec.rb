@@ -72,7 +72,7 @@ describe SiteDomain do
       let(:content_type) { 'text/xml' }
 
       specify { SiteDomain.process_file(affiliate, file).should == {:success => false,
-                                                                    :error_message => 'Invalid file format; please upload a csv file (.csv).'} }
+                                                                    :error_message => 'Invalid file format. Please upload a csv file (.csv).'} }
     end
 
     context "when content type is csv and successfully added domains" do
