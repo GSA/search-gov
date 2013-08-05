@@ -29,14 +29,17 @@ Feature: Admin Center
   @javascript
   Scenario: Clicking on help link
     Given the following HelpLinks exist:
-      | request_path        | help_page_url                                           |
-      | /sites/setting/edit | http://usasearch.howto.gov/manual/site-information.html |
+      | request_path        | help_page_url                                         |
+      | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
+      | /sites/preview      | http://usasearch.howto.gov/manual/preview.html        |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's site page
     And I follow "Settings"
-    Then I should see a link to "Help?" with url for "http://usasearch.howto.gov/manual/site-information.html"
-    When I follow "Help?"
-    Then I should see a link to "Site Information" with url for "http://usasearch.howto.gov/manual/site-information.html"
+    Then I should be able to access the "How to Edit Your Settings" help page
+    When I follow "Preview"
+    Then I should be able to access the "How to Preview Your Search Results" help page in the preview layer
+    When I close the preview layer
+    Then I should be able to access the "How to Edit Your Settings" help page
 
   Scenario: List users
     Given the following Users exist:
@@ -79,7 +82,8 @@ Feature: Admin Center
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's site page
     And I follow "Preview"
-    Then I should see a link to "View Staged"
+    Then the preview layer should be visible
+    And I should see a link to "View Staged"
     And I should see a link to "View Current"
     And I should see a link to "View Staged Mobile"
     And I should see a link to "View Current Mobile"
