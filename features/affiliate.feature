@@ -32,10 +32,6 @@ Feature: Affiliate clients
     And I should see "Maintenance window 1"
     And I should see a link to "survey" with url for "http://link.to.survey.gov"
     And I should not see "Maintenace window 2"
-    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the footer
-    And I should see a link to "Follow Us on Twitter" with url for "http://www.twitter.com/usasearch" in the footer
-    And I should see a link to "USASearch@gsa.gov" with url for "mailto:***REMOVED***" in the footer
-    And I should see a link to "Office of Citizen Services & Innovative Technologies" with url for "http://www.gsa.gov/portal/category/25729" in the footer
 
   Scenario: Visiting the Affiliate API Pages as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"

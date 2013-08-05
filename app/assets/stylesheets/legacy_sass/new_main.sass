@@ -3,6 +3,7 @@
 @import "compass/css3/inline-block"
 @import "compass/typography/text/replacement"
 @import "compass/utilities/general/clearfix"
+@import font-awesome
 
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
@@ -343,40 +344,39 @@ input.wide-text
     padding-right: 16px
 
 .footer
-  clear: both
-  color: white
-  height: 121px
-  margin: 0
-  padding: 10px 0 0
-  width: 100%
-  font:
-    size: 14px
+  background-color: #E9E9E9
+  font-size: 14px
+  margin-top: 20px
+  padding: 20px 0 10px
   text-align: center
-  a, a:visited
-    color: #AAA
-    text-decoration: none
-  a:hover
-    color: #FF5A00
+
+  .container
+    *zoom: 1
+    width: 940px
+    &:before, &:after
+      content: ""
+      display: table
+      line-height: 0
+      margin-right: auto
+      margin-left: auto
+    &:after
+      clear: both
+    > p
+      margin-bottom: 10px
+
   .footer-links
-    background: image-url('legacy/bg-footer.jpg') repeat-x 0 0
-    height: 33px
-    padding-top: 8px
-    ul
-      margin: 0
-      padding: 0
-    li
-      +inline-block
-      border-left: 1px solid #999
-      list-style: none
-      padding: 0 8px 0 10px
-      &.first
-        border-left: 0
-  .footer-taglines
-    background-color: black
-    padding: 10px 0
-    p
-      margin: 0
-      padding: 0
+    list-style: none
+    margin: 0 0 10px 0
+    padding: 0
+    > li
+      display: inline-block
+      *display: inline
+      padding-right: 5px
+      padding-left: 5px
+      *zoom: 1
+
+  .muted
+    color: #999
 
 .outer-container
   width: 98%
@@ -935,11 +935,6 @@ table.generic-table
     right: auto
     bottom: auto
     text-align: left!important
-  #recaptcha_response_field
-    top: 21px
-    right: 1px
-    left: 0
-    bottom: 7px
 
 h3.api-item
   font-weight: bold

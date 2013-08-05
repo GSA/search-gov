@@ -1,15 +1,33 @@
 .footer
-  .footer-links
-    %ul
-      %li.first= link_to 'Terms of Service', TOS_URL
-      %li= link_to 'Follow Us on Twitter', 'http://www.twitter.com/usasearch'
-      %li= link_to 'USASearch@gsa.gov', 'mailto:***REMOVED***'
-  .footer-taglines
-    %p An Official Website of the US Government
+  .container
+    %ul.footer-links
+      %li= link_to 'APIs', 'http://usasearch.howto.gov/developer/index.html'
+      %li.muted &bull;
+      %li
+        = content_tag :i, nil, class: 'icon-twitter'
+        = link_to '@USASearch', 'https://twitter.com/usasearch'
+      %li.muted &bull;
+      %li
+        = content_tag :i, nil, class: 'icon-envelope-alt'
+        = link_to 'USASearch@gsa.gov', 'mailto:***REMOVED***'
+      %li.muted &bull;
+      %li
+        = content_tag :i, nil, class: 'icon-phone'
+        202-505-5315
+      %li.muted &bull;
+      %li= link_to 'Terms of Service', 'http://usasearch.howto.gov/tos.html'
     %p
+      An Official Website of the U.S. Government
+      %br
       Sponsored by GSA's
       = link_to 'Office of Citizen Services & Innovative Technologies', 'http://www.gsa.gov/portal/category/25729'
-    %p
-      = link_to image_tag('legacy/usagov_footer_logo.png', :alt => 'USA.gov logo'), 'http://www.usa.gov'
-      = link_to image_tag('legacy/howtogov_footer_logo.png', :alt => 'HowTo.gov logo'), 'http://www.howto.gov'
-
+    %ul.footer-links
+      %li
+        = link_to 'http://www.gsa.gov/' do
+          = image_tag 'https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/logo_footer_gsa.png', alt: 'GSA.gov logo'
+      %li
+        = link_to 'http://www.howto.gov/' do
+          = image_tag 'https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/footer_htlogo.png', alt: 'HowTo.gov logo'
+      %li
+        = link_to 'http://www.usa.gov/' do
+          = image_tag 'https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/logo_footer_usaGov.png', alt: 'USA.gov logo'
