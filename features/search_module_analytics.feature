@@ -39,7 +39,7 @@ Feature: Search Module Analytics
     | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
     When I am on the admin home page
     And I follow "Search Module Stats"
-    And I should see "Search Module Stats"
+    Then I should see "Search Module Stats"
     And I should see "Impressions and Clicks by Module"
     And I should see the following table rows:
     | Module      | Impressions     | Clicks | Clickthru Rate   |
@@ -71,4 +71,4 @@ Feature: Search Module Analytics
     And no search module data exists
     When I am on the admin home page
     And I follow "Search Module Stats"
-    And I should see "No data matched your filters"
+    Then I should see "No data matched your filters"

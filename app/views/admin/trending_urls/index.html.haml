@@ -1,0 +1,20 @@
+.span-24
+  - if @trending_urls.present?
+    .header-box
+      %h3 Trending URLs by Affiliate
+    %table
+      %tr
+        %th Affiliate
+        %th URL
+        %th{:style=>"text-align: right"} Current Rank
+        %th{:style=>"text-align: right"} Average Rank
+        %th Historical Ranks
+      - @trending_urls.each do |trending_url|
+        %tr
+          %td= trending_url.affiliate_name
+          %td= link_to truncate(trending_url.url, length: 60), trending_url.url
+          %td{:style=>"text-align: right"}= trending_url.current_rank + 1
+          %td{:style=>"text-align: right"}= trending_url.average_rank + 1
+          %td= trending_url.historical_ranks.map{|rank| rank + 1}.join(',')
+  - else
+    %h3 No URLs are trending for any affiliate right now

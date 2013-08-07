@@ -173,6 +173,7 @@ UsasearchRails3::Application.routes.draw do
     resources :compare_search_results, :only => :index
     resources :bing_urls do as_routes end
     resources :system_alerts do as_routes end
+    resources :trending_urls, :only => :index
     resources :news_items do as_routes end
     resources :rss_feeds do as_routes end
     resources :rss_feed_urls do as_routes end
