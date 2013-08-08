@@ -32,7 +32,7 @@ module SitesHelper
   end
 
   def site_manage_content_controllers
-    %w(contents domains)
+    %w(contents domains flickr_urls)
   end
 
   def list_item_with_link_to_current_help_page

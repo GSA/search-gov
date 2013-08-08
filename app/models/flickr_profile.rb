@@ -1,7 +1,9 @@
 class FlickrProfile < ActiveRecord::Base
+  attr_readonly :url
   belongs_to :affiliate
   has_many :flickr_photos, :dependent => :destroy
 
+  before_validation NormalizeUrl.new(:url), on: :create
   validates_format_of :url,
                       :with => %r{^http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9@]+(\/)?$},
                       :message => 'must be a valid Flickr user or Flickr group.'
@@ -10,8 +12,6 @@ class FlickrProfile < ActiveRecord::Base
   validate :must_have_profile_id, :on => :create, :if => :has_valid_url?
   validates_presence_of :profile_id, :profile_type, :if => :has_valid_url?
   validates_inclusion_of :profile_type, :in => %w{user group}, :if => :has_valid_url?
-
-  before_validation :normalize_url
 
   after_create :queue_for_import
 
@@ -45,10 +45,6 @@ class FlickrProfile < ActiveRecord::Base
   end
 
   private
-
-  def normalize_url
-    url.strip! unless url.nil?
-  end
 
   def must_have_profile_id
     unless self.profile_type and self.profile_id
