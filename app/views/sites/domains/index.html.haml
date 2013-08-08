@@ -4,7 +4,6 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
-      %li= link_to 'Bulk Upload', new_bulk_upload_site_domains_path(@site)
       %li= link_to 'Add Domain', new_site_domain_path(@site)
 
 = render_site_flash_message

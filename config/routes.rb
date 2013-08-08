@@ -116,12 +116,7 @@ UsasearchRails3::Application.routes.draw do
       resources :users, only: [:index, :new, :create, :destroy]
       resource :preview, only: [:show]
       resource :content, only: [:show]
-      resources :domains, except: [:show] do
-        collection do
-          get :new_bulk_upload
-          post :bulk_upload
-        end
-      end
+      resources :domains, except: [:show]
     end
   end
 

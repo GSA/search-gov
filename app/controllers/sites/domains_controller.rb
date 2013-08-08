@@ -1,6 +1,4 @@
 class Sites::DomainsController < Sites::BaseController
-  include ActionView::Helpers::TextHelper
-
   before_filter :setup_site
   before_filter :setup_domain, only: [:edit, :update, :destroy]
 
@@ -40,20 +38,6 @@ class Sites::DomainsController < Sites::BaseController
     @domain.destroy
     redirect_to site_domains_path(@site),
                 flash: { success: "You have removed #{@domain.domain} from this site." }
-  end
-
-  def new_bulk_upload
-  end
-
-  def bulk_upload
-    result = SiteDomain.process_file(@site, params[:domains_data_file])
-    if result[:success]
-      redirect_to site_domains_path(@site),
-                  flash: { success: "You have added #{pluralize(result[:added], 'domain')} to this site." }
-    else
-      flash.now[:error] = result[:error_message]
-      render action: :new_bulk_upload
-    end
   end
 
   private

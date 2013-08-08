@@ -104,27 +104,4 @@ describe Sites::DomainsController do
       end
     end
   end
-
-  describe '#bulk_upload' do
-    it_should_behave_like 'restricted to approved user', :post, :update
-
-    context 'when logged in as affiliate' do
-      include_context 'approved user logged in to a site'
-
-      context 'when domains data file is not valid' do
-        before do
-          domains_data_file = mock('domains data file', to_s: 'file content')
-
-          SiteDomain.should_receive(:process_file).
-              with(site, 'file content').
-              and_return({ error_message: 'some error message' })
-
-          post :bulk_upload, domains_data_file: domains_data_file
-        end
-
-        it { should set_the_flash.to('some error message').now }
-        it { should render_template(:new_bulk_upload) }
-      end
-    end
-  end
 end
