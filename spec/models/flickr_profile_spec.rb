@@ -30,6 +30,13 @@ describe FlickrProfile do
     profile.errors[:url].should include('must be a valid Flickr user or Flickr group.')
   end
 
+  it 'should not allow duplicate profile_id with the same affiliate_id and profile_type' do
+    FlickrProfile.create!(affiliate: @affiliate, url: 'www.flickr.com/groups/usagov')
+    duplicate_profile = FlickrProfile.new(affiliate: @affiliate, url: 'www.flickr.com/groups/usagov/')
+    duplicate_profile.save.should be_false
+    duplicate_profile.errors.full_messages.should == ['Profile has already been added']
+  end
+
   context "when the profile id and type are provided at create time" do
     it "should not lookup the user profile information using the Flickr API if specified on create" do
       profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')

@@ -8,8 +8,12 @@ class FlickrProfile < ActiveRecord::Base
                       :with => %r{^http:\/\/(www\.)?flickr\.com\/(groups|photos)\/[A-Za-z0-9@]+(\/)?$},
                       :message => 'must be a valid Flickr user or Flickr group.'
   validates_presence_of :affiliate_id
-  validates_uniqueness_of :url, :scope => :affiliate_id, :message => 'has already been added', :if => :has_valid_url?
   validate :must_have_profile_id, :on => :create, :if => :has_valid_url?
+  validates_uniqueness_of :profile_id,
+                          scope: [:affiliate_id, :profile_type],
+                          case_sensitive: false,
+                          message: 'has already been added',
+                          if: :has_valid_url?
   validates_presence_of :profile_id, :profile_type, :if => :has_valid_url?
   validates_inclusion_of :profile_type, :in => %w{user group}, :if => :has_valid_url?
 

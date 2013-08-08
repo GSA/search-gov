@@ -2089,7 +2089,7 @@ Feature: Affiliate clients
     When I go to aff.gov's new flickr profile page
     When I fill in "Flickr url" with "http://www.flickr.com/groups/usagov/"
     And I press "Save"
-    Then I should see "Url has already been added"
+    Then I should see "Profile has already been added"
     And the "Flickr url" field should contain "http://www.flickr.com/groups/usagov/"
 
     When I follow "Results modules"

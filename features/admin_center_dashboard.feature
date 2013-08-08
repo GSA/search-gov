@@ -1,5 +1,6 @@
 Feature: Dashboard
 
+  @javascript
   Scenario: Viewing a site without logging in
     When I go to the usagov's Dashboard page
     Then I should see "Log In"
