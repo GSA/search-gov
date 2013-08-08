@@ -3,7 +3,7 @@ class TrendingUrl
   DEFAULT_HISTORICAL_HOURS = 24
   TOP_COUNT = 100
 
-  attr_accessor :affiliate_name, :url
+  attr_accessor :affiliate, :url
 
   cattr_reader :redis
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
@@ -21,7 +21,8 @@ class TrendingUrl
   end
 
   def initialize(affiliate_name, url)
-    self.affiliate_name, self.url = affiliate_name, url
+    self.affiliate = Affiliate.find_by_name affiliate_name
+    self.url = url
   end
 
   def current_rank
@@ -46,7 +47,7 @@ class TrendingUrl
   end
 
   def get_rank(hour)
-    key = ['UrlCounts', hour, self.affiliate_name].join(":")
+    key = ['UrlCounts', hour, self.affiliate.name].join(":")
     top_urls = @@redis.zrevrange(key, 0, TOP_COUNT - 1)
     top_urls.index(self.url)
   end

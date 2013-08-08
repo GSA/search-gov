@@ -11,7 +11,7 @@
         %th Historical Ranks
       - @trending_urls.each do |trending_url|
         %tr
-          %td= trending_url.affiliate_name
+          %td= link_to trending_url.affiliate.display_name, affiliate_analytics_path(trending_url.affiliate)
           %td= link_to truncate(trending_url.url, length: 60), trending_url.url
           %td{:style=>"text-align: right"}= trending_url.current_rank + 1
           %td{:style=>"text-align: right"}= trending_url.average_rank + 1
