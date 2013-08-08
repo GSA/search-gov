@@ -53,7 +53,7 @@ Feature: Manage Content
       | http://www.flickr.com/groups/usagov/     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Flickr URLs"
+    And I follow "Flickr"
     Then I should see the following table rows:
       | www.flickr.com/groups/usagov/     |
       | www.flickr.com/photos/whitehouse/ |
@@ -64,7 +64,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Flickr URLs"
+    And I follow "Flickr"
     And I follow "Add Flickr URL"
     When I fill in "Flickr URL" with "www.flickr.com/groups/usagov/"
     And I press "Add"
