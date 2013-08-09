@@ -25,7 +25,7 @@ class Affiliate < ActiveRecord::Base
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_many :url_prefixes, :through => :document_collections
   has_many :affiliate_twitter_settings,:dependent => :destroy
-  has_many :twitter_profiles, through: :affiliate_twitter_settings
+  has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
   has_many :flickr_profiles, dependent: :destroy, order: 'flickr_profiles.url ASC'
   has_many :facebook_profiles, :dependent => :destroy
   has_and_belongs_to_many :youtube_profiles

@@ -6,8 +6,7 @@ class TwitterProfile < ActiveRecord::Base
   validates_presence_of :screen_name
   validate :must_have_valid_screen_name, :if => :screen_name?
   validates_presence_of :twitter_id, :profile_image_url, :if => :get_twitter_user
-  validates_uniqueness_of :twitter_id, :case_sensitive => false
-  validates_uniqueness_of :screen_name, :case_sensitive => false
+  validates_uniqueness_of :twitter_id
   before_validation :normalize_screen_name
   before_validation :lookup_twitter_id
   scope :active, joins(:affiliate_twitter_settings).uniq
@@ -23,6 +22,15 @@ class TwitterProfile < ActiveRecord::Base
 
   def self.affiliate_twitter_ids
     active.select(:twitter_id).uniq.map(&:twitter_id)
+  end
+
+  def self.find_existing_or_create!(twitter_user)
+    twitter_profile = where(twitter_id: twitter_user.id).first_or_initialize
+    twitter_profile.screen_name = twitter_user.screen_name
+    twitter_profile.name = twitter_user.name
+    twitter_profile.profile_image_url = twitter_user.profile_image_url
+    twitter_profile.save!
+    twitter_profile
   end
 
   private

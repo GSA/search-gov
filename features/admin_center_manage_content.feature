@@ -71,3 +71,38 @@ Feature: Manage Content
     Then I should see "You have added www.flickr.com/groups/usagov/ to this site"
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
+
+  Scenario: View Twitter Handles
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    When the following Twitter handles exist for the site "agency.gov":
+      | screen_name |
+      | usasearch   |
+      | usagov      |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Twitter"
+    Then I should see the following table rows:
+      | @usagov    |
+      | @USASearch |
+
+  Scenario: Add/remove Twitter Handle
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Twitter"
+    And I follow "Add Twitter Handle"
+    When I fill in "Twitter Handle" with "usasearch"
+    And I check "Show tweets from my lists"
+    And I press "Add"
+    Then I should see "You have added @USASearch to this site"
+    And I should see a link to "@USASearch (show lists)" with url for "https://twitter.com/USASearch"
+    When I press "Remove"
+    Then I should see "You have removed @USASearch from this site"
+    When I follow "Add Twitter Handle"
+    When I fill in "Twitter Handle" with "usasearch101"
+    And I press "Add"
+    Then I should see "Screen name not found"

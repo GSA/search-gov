@@ -1,0 +1,17 @@
+= content_for_site_page_title @site, 'Twitter'
+.sub-nav-heading
+  %h2 Twitter
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Add Twitter Handle', new_site_twitter_handle_path(@site)
+
+= render_site_flash_message
+%table.table.table-no-header
+  %tbody
+    - @twitter_handles.each do |twitter_handle|
+      %tr
+        %td= link_to_twitter_handle twitter_handle
+        %td.actions
+          %ul
+            %li= button_to 'Remove', site_twitter_handle_path(@site, twitter_handle.id), method: :delete, data: { confirm: "Are you sure you wish to remove @#{twitter_handle.screen_name} from this site?" }, class: 'btn btn-small'

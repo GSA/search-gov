@@ -118,6 +118,7 @@ UsasearchRails3::Application.routes.draw do
       resource :content, only: [:show]
       resources :domains, except: [:show]
       resources :flickr_urls, only: [:index, :new, :create, :destroy]
+      resources :twitter_handles, only: [:index, :new, :create, :destroy]
     end
   end
 

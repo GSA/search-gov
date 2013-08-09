@@ -1,7 +1,7 @@
 Before do
   Sunspot.remove_all!
   ActiveRecord::Fixtures.reset_cache
-  ActiveRecord::Fixtures.create_fixtures('spec/fixtures', %w(users agencies affiliates))
+  ActiveRecord::Fixtures.create_fixtures('spec/fixtures', %w(users agencies affiliates twitter_profiles))
 end
 
 After('@featured_collection') do
