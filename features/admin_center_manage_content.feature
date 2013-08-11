@@ -107,11 +107,11 @@ Feature: Manage Content
     And I press "Add"
     Then I should see "Screen name is not found"
 
-  Scenario: View YouTube channels
+  Scenario: View YouTube Usernames
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    When the following YouTube channels exist for the site "agency.gov":
+    When the following YouTube usernames exist for the site "agency.gov":
       | username     |
       | usgovernment |
       | gobiernousa  |
@@ -122,21 +122,21 @@ Feature: Manage Content
       | gobiernousa  |
       | usgovernment |
 
-  Scenario: Add/remove YouTube Channel
+  Scenario: Add/remove YouTube Username
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube"
-    And I follow "Add YouTube Channel"
-    When I fill in "YouTube Channel" with "USGovernment"
+    And I follow "Add YouTube Username"
+    When I fill in "YouTube Username" with " USGovernment "
     And I press "Add"
-    Then I should see "You have added usgovernment channel to this site"
+    Then I should see "You have added usgovernment to this site"
     And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
     When I press "Remove"
-    Then I should see "You have removed usgovernment channel from this site"
-    When I follow "Add YouTube Channel"
-    When I fill in "YouTube Channel" with "usasearch"
+    Then I should see "You have removed usgovernment from this site"
+    When I follow "Add YouTube Username"
+    When I fill in "YouTube Username" with "usasearch"
     And I press "Add"
     Then I should see "Username is not found"

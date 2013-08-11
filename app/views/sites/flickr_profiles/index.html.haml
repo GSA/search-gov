@@ -9,7 +9,7 @@
 = render_site_flash_message
 %table.table.table-no-header
   %tbody
-    - @flickr_urls.each do |flickr_url|
+    - @flickr_profiles.each do |flickr_url|
       %tr
         %td= link_to_url_without_protocol flickr_url.url, target: '_blank'
         %td.actions

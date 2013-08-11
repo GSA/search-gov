@@ -88,6 +88,14 @@ describe TwitterProfile do
       Twitter.should_receive(:user).exactly(3).times.and_raise "Some Error"
       TwitterProfile.create(:screen_name => "NewHandle").errors.should_not be_empty
     end
+
+    it 'should not revalidate Twitter user when twitter_id, screen_name, name and profile_image_url are present' do
+      Twitter.should_not_receive(:user)
+      TwitterProfile.create!(twitter_id: 12,
+                             screen_name: 'jack',
+                             name: 'Jack D',
+                             profile_image_url: 'http://twitter.com/profile.jpg')
+    end
   end
 
   describe "#link_to_profile" do

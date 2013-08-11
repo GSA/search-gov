@@ -24,7 +24,7 @@ class TwitterProfile < ActiveRecord::Base
     active.select(:twitter_id).uniq.map(&:twitter_id)
   end
 
-  def self.find_existing_or_create!(twitter_user)
+  def self.find_and_update_or_create!(twitter_user)
     twitter_profile = where(twitter_id: twitter_user.id).first_or_initialize
     twitter_profile.screen_name = twitter_user.screen_name
     twitter_profile.name = twitter_user.name
@@ -33,14 +33,19 @@ class TwitterProfile < ActiveRecord::Base
     twitter_profile
   end
 
+  def profile_complete?
+    twitter_id.present? && screen_name.present? && name.present? && profile_image_url.present?
+  end
+
   private
 
   def get_twitter_user
+    return if profile_complete?
     @twitter_user ||= Twitter.user(screen_name) rescue nil
   end
 
   def must_have_valid_screen_name
-    errors.add(:screen_name, 'is invalid') unless get_twitter_user
+    errors.add(:screen_name, 'is invalid') unless profile_complete? || get_twitter_user
   end
 
   def normalize_screen_name
@@ -48,7 +53,7 @@ class TwitterProfile < ActiveRecord::Base
   end
 
   def lookup_twitter_id
-    if screen_name and twitter_id.nil?
+    if screen_name.present? and twitter_id.nil?
       twitter_user = get_twitter_user
       if twitter_user
         self.twitter_id = twitter_user.id

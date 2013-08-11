@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Add Twitter Handle'
-= form_for @twitter_handle, as: :twitter_handle, url: { action: :create }, html: { class: 'form' }  do |f|
+= form_for @twitter_profile, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2 Add Twitter Handle
     .action-bar
@@ -10,7 +10,7 @@
   = render_site_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   = f.label :screen_name, 'Twitter Handle', class: 'required'
-  = f.text_field :screen_name, class: 'required'
+  = f.text_field :screen_name, class: 'required input-primary'
   = label_tag nil, class: 'checkbox' do
     = check_box_tag :show_lists
     Show tweets from my lists

@@ -95,4 +95,3 @@ Feature: Dashboard
     Then the preview iframe should contain a link to "http://m.staged.agency.gov"
     When I follow "View Current Mobile"
     Then the preview iframe should contain a link to "http://m.live.agency.gov"
-

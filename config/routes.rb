@@ -117,9 +117,15 @@ UsasearchRails3::Application.routes.draw do
       resource :preview, only: [:show]
       resource :content, only: [:show]
       resources :domains, except: [:show]
-      resources :flickr_urls, only: [:index, :new, :create, :destroy]
-      resources :twitter_handles, only: [:index, :new, :create, :destroy]
-      resources :youtube_channels, only: [:index, :new, :create, :destroy]
+      resources :flickr_urls,
+                controller: 'flickr_profiles',
+                only: [:index, :new, :create, :destroy]
+      resources :twitter_handles,
+                controller: 'twitter_profiles',
+                only: [:index, :new, :create, :destroy]
+      resources :youtube_usernames,
+                controller: 'youtube_profiles',
+                only: [:index, :new, :create, :destroy]
     end
   end
 

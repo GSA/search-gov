@@ -1,0 +1,17 @@
+= content_for_site_page_title @site, 'YouTube'
+.sub-nav-heading
+  %h2 YouTube
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Add YouTube Username', new_site_youtube_username_path(@site)
+
+= render_site_flash_message
+%table.table.table-no-header
+  %tbody
+    - @youtube_profiles.each do |youtube_profile|
+      %tr
+        %td= link_to youtube_profile.username, "http://www.youtube.com/user/#{youtube_profile.username}", target: '_blank'
+        %td.actions
+          %ul
+            %li= button_to 'Remove', site_youtube_username_path(@site, youtube_profile.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{youtube_profile.username} from this site?" }, class: 'btn btn-small'

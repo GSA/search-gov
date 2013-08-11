@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Add Flickr URL'
-= form_for @flickr_url, as: :flickr_url, url: { action: :create }, html: { class: 'form' }  do |f|
+= form_for @flickr_profile, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2 Add Flickr URL
     .action-bar
@@ -10,5 +10,5 @@
   = render_site_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   = f.label :url, 'Flickr URL', class: 'required'
-  = f.text_field :url, class: 'required'
+  = f.text_field :url, class: 'required input-primary'
 

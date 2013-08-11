@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sites::FlickrUrlsController do
+describe Sites::FlickrProfilesController do
   fixtures :users, :affiliates
   before { activate_authlogic }
 
@@ -10,15 +10,15 @@ describe Sites::FlickrUrlsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:flickr_urls) { mock('flickr_urls') }
+      let(:flickr_profiles) { mock('flickr profiles') }
 
       before do
-        site.should_receive(:flickr_profiles).and_return(flickr_urls)
+        site.should_receive(:flickr_profiles).and_return(flickr_profiles)
         get :index, id: site.id
       end
 
       it { should assign_to(:site).with(site) }
-      it { should assign_to(:flickr_urls).with(flickr_urls) }
+      it { should assign_to(:flickr_profiles).with(flickr_profiles) }
     end
   end
 
@@ -29,46 +29,46 @@ describe Sites::FlickrUrlsController do
       include_context 'approved user logged in to a site'
 
       context 'when Flickr URL params are valid' do
-        let(:flickr_url) { mock_model(FlickrProfile, url: 'http://www.flickr.com/groups/usagov/') }
+        let(:flickr_profile) { mock_model(FlickrProfile, url: 'http://www.flickr.com/groups/usagov/') }
 
         before do
           flickr_profiles = mock('flickr profiles')
           site.stub(:flickr_profiles).and_return(flickr_profiles)
           flickr_profiles.should_receive(:build).
               with('url' => 'http://www.flickr.com/groups/usagov/').
-              and_return(flickr_url)
+              and_return(flickr_profile)
 
-          flickr_url.should_receive(:save).and_return(true)
+          flickr_profile.should_receive(:save).and_return(true)
           site.should_receive(:update_attributes!).with(is_photo_govbox_enabled: true)
 
           post :create,
                site_id: site.id,
-               flickr_url: { url: 'http://www.flickr.com/groups/usagov/', not_allowed_key: 'not allowed value' }
+               flickr_profile: { url: 'http://www.flickr.com/groups/usagov/', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:flickr_url).with(flickr_url) }
+        it { should assign_to(:flickr_profile).with(flickr_profile) }
         it { should redirect_to site_flickr_urls_path(site) }
         it { should set_the_flash.to('You have added www.flickr.com/groups/usagov/ to this site.') }
       end
 
       context 'when Flickr URL params are not valid' do
-        let(:flickr_url) { mock_model(FlickrProfile, url: 'usagov') }
+        let(:flickr_profile) { mock_model(FlickrProfile, url: 'usagov') }
 
         before do
           flickr_profiles = mock('flickr profiles')
           site.stub(:flickr_profiles).and_return(flickr_profiles)
           flickr_profiles.should_receive(:build).
               with('url' => 'usagov').
-              and_return(flickr_url)
+              and_return(flickr_profile)
 
-          flickr_url.should_receive(:save).and_return(false)
+          flickr_profile.should_receive(:save).and_return(false)
 
           post :create,
                site_id: site.id,
-               flickr_url: { url: 'usagov', not_allowed_key: 'not allowed value' }
+               flickr_profile: { url: 'usagov', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:flickr_url).with(flickr_url) }
+        it { should assign_to(:flickr_profile).with(flickr_profile) }
         it { should render_template(:new) }
       end
     end
@@ -81,13 +81,13 @@ describe Sites::FlickrUrlsController do
       include_context 'approved user logged in to a site'
 
       before do
-        flickr_profiles = mock('flickr urls')
+        flickr_profiles = mock('flickr profiles')
         site.stub(:flickr_profiles).and_return(flickr_profiles)
 
-        flickr_url = mock_model(FlickrProfile, url: 'http://www.flickr.com/groups/usagov/')
+        flickr_profile = mock_model(FlickrProfile, url: 'http://www.flickr.com/groups/usagov/')
         flickr_profiles.should_receive(:find_by_id).with('100').
-            and_return(flickr_url)
-        flickr_url.should_receive(:destroy)
+            and_return(flickr_profile)
+        flickr_profile.should_receive(:destroy)
 
         delete :destroy, site_id: site.id, id: 100
       end
