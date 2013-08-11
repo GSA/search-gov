@@ -56,9 +56,9 @@ class YoutubeProfile < ActiveRecord::Base
   def must_have_valid_username
     begin
       doc = Nokogiri::XML(HttpConnection.get(YoutubeProfile.xml_profile_url(username)))
-      errors.add(:username, 'is invalid') if doc.xpath('//xmlns:entry').empty?
+      errors.add(:username, 'is not found') if doc.xpath('//xmlns:entry').empty?
     rescue
-      errors.add(:username, 'is invalid')
+      errors.add(:username, 'is not found')
     end
   end
 end

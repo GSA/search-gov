@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles
 
   before(:each) do
     @valid_create_attributes = {
@@ -2416,7 +2416,7 @@ describe Affiliate do
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.reload
-          @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse1 whitehouse2 whitehouse_test)
+          @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse_test whitehouse1 whitehouse2)
         end
       end
     end

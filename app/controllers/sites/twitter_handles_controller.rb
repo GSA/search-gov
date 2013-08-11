@@ -16,7 +16,7 @@ class Sites::TwitterHandlesController < Sites::BaseController
 
     unless twitter_user
       @twitter_handle = TwitterProfile.new twitter_handle_params
-      @twitter_handle.errors[:screen_name] = 'not found'
+      @twitter_handle.errors[:screen_name] = 'is not found'
       render action: :new and return
     end
 

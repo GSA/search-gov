@@ -73,4 +73,27 @@ describe Sites::FlickrUrlsController do
       end
     end
   end
+
+  describe '#destroy' do
+    it_should_behave_like 'restricted to approved user', :delete, :destroy
+
+    context 'when logged in as affiliate' do
+      include_context 'approved user logged in to a site'
+
+      before do
+        flickr_profiles = mock('flickr urls')
+        site.stub(:flickr_profiles).and_return(flickr_profiles)
+
+        flickr_url = mock_model(FlickrProfile, url: 'http://www.flickr.com/groups/usagov/')
+        flickr_profiles.should_receive(:find_by_id).with('100').
+            and_return(flickr_url)
+        flickr_url.should_receive(:destroy)
+
+        delete :destroy, site_id: site.id, id: 100
+      end
+
+      it { should redirect_to(site_flickr_urls_path(site)) }
+      it { should set_the_flash.to(%r[You have removed www.flickr.com/groups/usagov/ from this site]) }
+    end
+  end
 end

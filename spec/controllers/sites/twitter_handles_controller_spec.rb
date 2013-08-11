@@ -112,4 +112,27 @@ describe Sites::TwitterHandlesController do
       end
     end
   end
+
+  describe '#destroy' do
+    it_should_behave_like 'restricted to approved user', :delete, :destroy
+
+    context 'when logged in as affiliate' do
+      include_context 'approved user logged in to a site'
+
+      before do
+        twitter_profiles = mock('twitter profiles')
+        site.stub(:twitter_profiles).and_return(twitter_profiles)
+
+        twitter_handle = mock_model(TwitterProfile, screen_name: 'USASearch')
+        twitter_profiles.should_receive(:find_by_id).with('100').
+            and_return(twitter_handle)
+        twitter_profiles.should_receive(:delete).with(twitter_handle)
+
+        delete :destroy, site_id: site.id, id: 100
+      end
+
+      it { should redirect_to(site_twitter_handles_path(site)) }
+      it { should set_the_flash.to(/You have removed @USASearch from this site/) }
+    end
+  end
 end

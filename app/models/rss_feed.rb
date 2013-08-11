@@ -23,6 +23,13 @@ class RssFeed < ActiveRecord::Base
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation
 
+  def self.enable_youtube_govbox!(site)
+    rss_feed = site.rss_feeds.where(is_managed: true).first_or_initialize(name: 'Videos')
+    rss_feed.shown_in_govbox = true
+    rss_feed.save!
+    rss_feed
+  end
+
   private
   def rss_feed_urls_cannot_be_blank
     errors.add(:base, 'RSS feed must have 1 or more URLs.') if !is_managed? and rss_feed_urls.blank? || rss_feed_urls.all?(&:marked_for_destruction?)

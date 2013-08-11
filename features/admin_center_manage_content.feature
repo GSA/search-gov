@@ -105,4 +105,38 @@ Feature: Manage Content
     When I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "usasearch101"
     And I press "Add"
-    Then I should see "Screen name not found"
+    Then I should see "Screen name is not found"
+
+  Scenario: View YouTube channels
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    When the following YouTube channels exist for the site "agency.gov":
+      | username     |
+      | usgovernment |
+      | gobiernousa  |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "YouTube"
+    Then I should see the following table rows:
+      | gobiernousa  |
+      | usgovernment |
+
+  Scenario: Add/remove YouTube Channel
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "YouTube"
+    And I follow "Add YouTube Channel"
+    When I fill in "YouTube Channel" with "USGovernment"
+    And I press "Add"
+    Then I should see "You have added usgovernment channel to this site"
+    And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
+    When I press "Remove"
+    Then I should see "You have removed usgovernment channel from this site"
+    When I follow "Add YouTube Channel"
+    When I fill in "YouTube Channel" with "usasearch"
+    And I press "Add"
+    Then I should see "Username is not found"
