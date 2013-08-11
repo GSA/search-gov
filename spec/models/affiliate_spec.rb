@@ -2416,7 +2416,7 @@ describe Affiliate do
         it "should add new handles to the list" do
           @affiliate.autodiscover_social_media
           @affiliate.reload
-          @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse_test whitehouse1 whitehouse2)
+          @affiliate.youtube_profiles.collect(&:username).sort.should == %w(natlparkservice whitehouse1 whitehouse2 whitehouse_test)
         end
       end
     end

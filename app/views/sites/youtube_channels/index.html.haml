@@ -14,4 +14,4 @@
         %td= link_to youtube_channel.username, "http://www.youtube.com/user/#{youtube_channel.username}", target: '_blank'
         %td.actions
           %ul
-            %li= button_to 'Remove', site_youtube_channel_path(@site, youtube_channel.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{youtube_channel.username} from this site?" }, class: 'btn btn-small'
+            %li= button_to 'Remove', site_youtube_channel_path(@site, youtube_channel.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{youtube_channel.username} channel from this site?" }, class: 'btn btn-small'
