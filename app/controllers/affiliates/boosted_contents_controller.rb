@@ -68,7 +68,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   end
 
   def bulk
-    results = BoostedContent.process_boosted_content_bulk_upload_for(@affiliate, params[:bulk_upload_file])
+    results = BoostedContent.bulk_upload(@affiliate, params[:bulk_upload_file])
     if results[:success]
       messages = []
       messages << "#{results[:created]} Best Bets: Text entries successfully created." if results[:created] > 0

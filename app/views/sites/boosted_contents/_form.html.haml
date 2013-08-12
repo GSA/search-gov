@@ -1,0 +1,34 @@
+= render_site_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :url, 'URL', class: 'required'
+= form.text_field :url, class: 'required input-primary'
+= form.label :title, 'Title', class: 'required'
+= form.text_field :title, class: 'required'
+= form.label :description, 'Description', class: 'required'
+= form.text_area :description, class: 'required', rows: 5
+= form.label :status, 'Status', class: 'required'
+= form.select :status, BoostedContent::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
+
+.required= form.label :publish_start_on, 'Publish Start Date'
+.input-append.calendar
+  %div= form.date_picker_field :publish_start_on, assign_start_date: true
+  %span.add-on.add-on-icon
+    %i.icon.icon-calendar.icon-2x
+
+.optional
+  = form.label :publish_end_on, 'Publish End Date'
+  %span (Optional)
+.input-append.calendar
+  %div= form.date_picker_field :publish_end_on, assign_start_date: true
+  %span.add-on.add-on-icon
+    %i.icon.icon-calendar.icon-2x
+
+%fieldset.keywords
+  .optional
+    %legend
+      Keywords
+      %span (Optional)
+  - @boosted_content.boosted_content_keywords.each_with_index do |keyword, index|
+    = form.fields_for :boosted_content_keywords, keyword do |keyword_fields|
+      = render 'sites/boosted_contents/keyword', f: keyword_fields, index: index
+= link_to_add_new_boosted_content_keyword 'Add Another Keyword', @site, @boosted_content

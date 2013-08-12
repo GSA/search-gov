@@ -6,8 +6,8 @@ enablePrimaryButton = (e) ->
   true
 
 ready = ->
-  $('.form input[type="text"]').on 'keydown', enablePrimaryButton
-  $('.form input[type="text"]').on 'paste', enablePrimaryButton
+  $('.form input[type="text"], .form textarea').on 'keydown', enablePrimaryButton
+  $('.form input[type="text"], .form textarea').on 'paste', enablePrimaryButton
   $('.form input[type="file"]').on 'change', enablePrimaryButton
 
 $(document).ready(ready)

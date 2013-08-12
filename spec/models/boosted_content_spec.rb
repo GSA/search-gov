@@ -126,7 +126,7 @@ describe BoostedContent do
 
       before do
         BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml_file).and_return({ :success => true, :created => 1, :updated => 0 })
-        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, xml_file)
+        @results = BoostedContent.bulk_upload(affiliate, xml_file)
       end
 
       subject { @results }
@@ -141,7 +141,7 @@ describe BoostedContent do
 
       before do
         BoostedContent.should_receive(:process_boosted_content_csv_upload_for).with(affiliate, csv_file).and_return({ :success => true, :created => 1, :updated => 0 })
-        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, csv_file)
+        @results = BoostedContent.bulk_upload(affiliate, csv_file)
       end
 
       subject { @results }
@@ -156,7 +156,7 @@ describe BoostedContent do
 
       before do
         BoostedContent.should_receive(:process_boosted_content_csv_upload_for).with(affiliate, txt_file).and_return({ :success => true, :created => 1, :updated => 0 })
-        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, txt_file)
+        @results = BoostedContent.bulk_upload(affiliate, txt_file)
       end
 
       subject { @results }
@@ -170,7 +170,7 @@ describe BoostedContent do
       let(:png_file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
 
       before do
-        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, png_file)
+        @results = BoostedContent.bulk_upload(affiliate, png_file)
       end
 
       subject { @results }
@@ -181,7 +181,7 @@ describe BoostedContent do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       before do
-        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, nil)
+        @results = BoostedContent.bulk_upload(affiliate, nil)
       end
 
       subject { @results }

@@ -473,7 +473,7 @@ describe Affiliates::BoostedContentsController do
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml.to_s).and_return({:success => true, :created => 4, :updated => 2})
+        BoostedContent.should_receive(:bulk_upload).with(affiliate, xml.to_s).and_return({:success => true, :created => 4, :updated => 2})
         post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
@@ -488,7 +488,7 @@ describe Affiliates::BoostedContentsController do
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml.to_s).and_return({ :success => false, :error_message => 'Your XML document could not be processed.' })
+        BoostedContent.should_receive(:bulk_upload).with(affiliate, xml.to_s).and_return({ :success => false, :error_message => 'Your XML document could not be processed.' })
         post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 

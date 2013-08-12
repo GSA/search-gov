@@ -5,9 +5,23 @@ enablePrimaryButton = (e) ->
   $(disabled).addClass 'btn-primary'
   true
 
-$(document).on 'keydown', '.form input[type="text"]', enablePrimaryButton
-$(document).on 'paste', '.form input[type="text"]', enablePrimaryButton
-$(document).on 'change', '.form input[type="file"]', enablePrimaryButton
+
+$(document).on 'keydown',
+  '.form input[type="text"], .form textarea',
+  enablePrimaryButton
+$(document).on 'paste',
+  '.form input[type="text"], .form textarea',
+  enablePrimaryButton
+$(document).on 'change',
+  '.form input[type="file"], .form input[type="text"], .form select',
+  enablePrimaryButton
+
+showDatePicker = (e) ->
+  if $(this).hasClass('calendar')
+    dateField = $(this).find('input').first()
+    $(dateField).datepicker 'show'
+
+$(document).on 'click', '.form .calendar', showDatePicker
 
 ready = ->
   $('.form input.input-primary').focus()

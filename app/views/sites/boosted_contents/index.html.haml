@@ -1,0 +1,24 @@
+= content_for_site_page_title @site, 'Best Bets: Text'
+.sub-nav-heading
+  %h2 Best Bets: Text
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Bulk Upload', new_bulk_upload_site_best_bets_texts_path(@site)
+      %li= link_to 'Add Best Bets: Text', new_site_best_bets_text_path(@site)
+
+= render_site_flash_message
+%table.table.table-no-header
+  %tbody
+    - @boosted_contents.each do |boosted_content|
+      %tr{ boosted_content_status_class_hash(boosted_content) }
+        %td
+          = link_to boosted_content.title, boosted_content.url, target: '_blank'
+          %ul.info
+            = boosted_content_status_and_dates_item boosted_content
+            = boosted_content_keywords_item boosted_content
+        %td.actions
+          %ul
+            %li= link_to 'Edit', edit_site_best_bets_text_path(@site, boosted_content.id)
+            %li= button_to 'Remove', site_best_bets_text_path(@site, boosted_content.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{boosted_content.title} from this site?" }, class: 'btn btn-small'
+= will_paginate @boosted_contents, renderer: BootstrapPagination::Rails

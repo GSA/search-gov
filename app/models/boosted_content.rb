@@ -8,7 +8,7 @@ class BoostedContent < ActiveRecord::Base
   @@per_page = 20
 
   belongs_to :affiliate
-  has_many :boosted_content_keywords, :dependent => :destroy
+  has_many :boosted_content_keywords, dependent: :destroy, order: 'value'
   accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
   validates :affiliate, :presence => true
@@ -82,7 +82,7 @@ class BoostedContent < ActiveRecord::Base
       end
     end
 
-    def process_boosted_content_bulk_upload_for(affiliate, bulk_upload_file)
+    def bulk_upload(affiliate, bulk_upload_file)
       filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
       return { :success => false, :error_message => "Your filename should have .xml, .csv or .txt extension."} unless filename =~ /\.(xml|csv|txt)$/
       if filename =~ /xml$/
@@ -123,6 +123,14 @@ class BoostedContent < ActiveRecord::Base
       keyword[:_destroy] = true if keyword[:value].blank?
     end
     update_attributes(params)
+  end
+
+  def active_and_searchable?
+    if publish_end_on
+      is_active? && (publish_start_on..publish_end_on).include?(Date.current)
+    else
+      is_active? && (Date.current >= publish_start_on)
+    end
   end
 
   protected

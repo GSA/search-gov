@@ -3,23 +3,65 @@
 
   label {
     font-weight: bold;
+    &.multivalued {
+      .off-screen-text();
+    }
+  }
+
+  fieldset legend {
+    border-width: 0;
+    font-size: @baseFontSize;
+    font-weight: bold;
+    line-height: @baseLineHeight;
+    margin-bottom: 5px;
   }
 
   .help-block {
     .muted;
-    width: 360px;
+    width: 60%;
   }
 
-  input[type='text'] {
-    width: 360px;
+  input[type='text'], textarea {
+    width: 60%;
   }
 
-  input.required {
-    font-size: @baseFontSize * 1.25;
+  input[type='text'].date {
+    width: 136px;
+  }
+
+  input[type='text'], select {
+    font-size: (@baseFontSize * 1.25);
     padding: 12px 6px;
   }
 
-  .field_with_errors input[type='text'] {
-    border-color: @errorBorder;
+  .add-on.add-on-icon {
+    height: 36px;
+    padding: 8px 5px 0;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  select.required {
+    height: 46px;
+  }
+
+  .field_with_errors {
+    .control-group.error();
+  }
+
+  .input-append div {
+    display: inline-block;
+    .ie7-inline-block();
+  }
+
+  .required, .optional {
+    label {
+      display: inline-block;
+    }
+    span {
+      .muted();
+      font-weight: normal;
+    }
   }
 }

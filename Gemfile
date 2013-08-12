@@ -53,6 +53,8 @@ gem 'truncate_html'
 gem 'addressable'
 gem 'select2-rails'
 gem 'turbolinks'
+gem 'strong_parameters'
+gem 'will_paginate-bootstrap'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

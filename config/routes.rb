@@ -116,6 +116,13 @@ UsasearchRails3::Application.routes.draw do
       resources :users, only: [:index, :new, :create, :destroy]
       resource :preview, only: [:show]
       resource :content, only: [:show]
+      resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
+        collection do
+          get :new_keyword
+          get :new_bulk_upload
+          post :bulk_upload
+        end
+      end
       resources :domains, except: [:show]
       resources :flickr_urls,
                 controller: 'flickr_profiles',

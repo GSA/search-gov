@@ -32,7 +32,7 @@ module SitesHelper
   end
 
   def site_manage_content_controllers
-    %w(contents domains flickr_profiles twitter_profiles youtube_profiles)
+    %w(boosted_contents contents domains flickr_profiles twitter_profiles youtube_profiles)
   end
 
   def list_item_with_link_to_current_help_page
@@ -60,5 +60,13 @@ module SitesHelper
       link_options = { affiliate: @site.name, query: 'gov', external_tracking_code_disabled: true }.merge options
       link_to title, search_path(link_options), target: target
     end
+  end
+
+  def link_to_add_new_boosted_content_keyword(title, site, boosted_content)
+    link_to title,
+            new_keyword_site_best_bets_texts_path(site),
+            remote: true,
+            data: { params: { index: boosted_content.boosted_content_keywords.length } },
+            id: 'new-keyword-trigger'
   end
 end

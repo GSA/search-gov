@@ -1,15 +1,18 @@
 .l-site-selector {
   background-color: @white;
+  z-index: @zindexStickyBar;
 }
 .l-site-selector-inner {
   .clearfix();
   border-bottom: 1px solid @siteNavBorderColor;
   padding-right: 28px;
   padding-left: 20px;
+
   .nav {
     float: left;
     margin-bottom: 0;
   }
+
   .nav-header {
     padding-left: 0;
     label {
@@ -18,12 +21,9 @@
     }
   }
 
-
   h1 {
     color: @grayLight;
     float: right;
     font-weight: normal;
   }
 }
-
-

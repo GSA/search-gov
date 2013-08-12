@@ -12,22 +12,20 @@ end
 Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"$/ do |aff_name, table|
   affiliate = Affiliate.find_by_name aff_name
   sites = table.hashes.collect do |hash|
-    publish_start_on = hash['publish_start_on']
+    hash[:affiliate] = affiliate
+    hash[:status] = 'active' if hash[:status].blank?
+    publish_start_on = hash[:publish_start_on]
     publish_start_on = Date.current if publish_start_on == 'today'
     publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z_]*$/
     publish_start_on = Date.current if publish_start_on.blank?
+    hash[:publish_start_on] = publish_start_on
 
-    publish_end_on = hash['publish_end_on']
+    publish_end_on = hash[:publish_end_on]
     publish_end_on = Date.current if publish_end_on == 'today'
     publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z_]*$/
+    hash[:publish_end_on] = publish_end_on
 
-    BoostedContent.create!(:url => hash["url"],
-                           :description => hash["description"],
-                           :title => hash["title"],
-                           :affiliate => affiliate,
-                           :status => hash['status'] || 'active',
-                           :publish_start_on => publish_start_on,
-                           :publish_end_on => publish_end_on)
+    BoostedContent.create! hash
   end
   Sunspot.index(sites) # because BoostedContent has auto indexing turned off for saves/creates
 end
@@ -67,4 +65,20 @@ end
 
 And /^I should see boosted content keyword "([^\"]*)"$/ do |keyword|
   page.should have_selector(".keywords span", :text => keyword)
+end
+
+When /^(?:|I )add the following keywords:$/ do |table|
+  keyword_fields_count = page.all(:css, '.keywords input').count
+  table.hashes.each_with_index do |hash, index|
+    click_link 'Add Another Keyword'
+    keyword_label = "Keyword #{keyword_fields_count + index + 1}"
+    find('label', text: "#{keyword_label}")
+    fill_in(keyword_label, with: hash[:keyword])
+  end
+end
+
+Then /^(?:|I )should see the following best bets text keywords:$/ do |table|
+  table.hashes.each do |hash|
+    page.should have_selector '.keywords li', text: hash[:keyword]
+  end
 end
