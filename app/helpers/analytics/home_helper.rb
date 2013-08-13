@@ -87,6 +87,10 @@ module Analytics::HomeHelper
     link_to(image_tag('legacy/google_trends.png', :alt => title), link, :title => title)
   end
 
+  def linked_shortened_url_without_protocol(url)
+    link_to(strip_url_protocol(shorten_url(url)), url)
+  end
+
   private
 
   def display_select_for_window(tag_name, num_results, options_hash)

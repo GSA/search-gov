@@ -22,5 +22,18 @@ describe Sites::SitesController do
 
       it { should assign_to(:site).with(site) }
     end
+
+    context 'when affiliate is looking at dashboard data' do
+      include_context 'approved user logged in to a site'
+
+      let(:dashboard) { double('Dashboard') }
+
+      before do
+        Dashboard.should_receive(:new).with(site).and_return dashboard
+        get :show, id: site.id
+      end
+
+      it { should assign_to(:dashboard).with(dashboard) }
+    end
   end
 end

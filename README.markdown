@@ -46,7 +46,7 @@ You can start/stop/reindex Solr like this:
 
 ## Redis
 
-We're using the Redis key-value store for caching and for queue workflow via Resque. Download and install the Redis server:
+We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics. Download and install the Redis server:
 
 <http://redis.io/download>
 <http://redis.io/topics/quickstart>
