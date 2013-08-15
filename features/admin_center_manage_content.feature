@@ -4,8 +4,7 @@ Feature: Manage Content
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Manage Content page
     Then I should see "Admin Center"
-    And I should see USA.gov selected in the site selector
-    And I should see a link to "Manage Content" in the active site main navigation
+    Then I should see a link to "Manage Content" in the active site main navigation
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets texts
@@ -40,7 +39,7 @@ Feature: Manage Content
       | Description        | spring cleaning                                     |
       | Keyword 1          | releases                                            |
     And I select "Active" from "Status"
-    And I add the following keywords:
+    And I add the following best bets text keywords:
       | keyword |
       | rails   |
       | recalls |
@@ -135,6 +134,56 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
+  @javascript
+  Scenario: View RSS
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following RSS feeds:
+      | name   | url                                                     | last_crawl_status | last_crawled_at | show_only_media_content | is_managed |
+      | News   | usasearch.howto.gov/all.atom                            | OK                | 2013-01-01      |                         |            |
+      | Videos | gdata.youtube.com/feeds/base/videos?author=usgovernment | Pending           | Pending         |                         | true       |
+      | Images | www.flickr.com/photos_public.gne?id=27784370@N05        | 404 Not Found     | 2013-07-01      | true                    |            |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "RSS"
+    Then I should see the following table rows:
+      | Images (Media RSS) |
+      | News               |
+      | Videos (YouTube)   |
+    When I follow "Images"
+    Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the URLs modal
+    When I follow "Error"
+    Then I should find "404 Not Found" in the RSS URL error section
+
+  @javascript
+  Scenario: Add/edit/remove RSS Feed
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "RSS"
+    And I follow "Add RSS Feed"
+    When I fill in the following:
+      | Name      | Recalls                                                    |
+      | URL 1     | http://www.cpsc.gov/en/Newsroom/CPSC-RSS-Feed/Recalls-RSS/ |
+    And I choose "RSS"
+    And I add the following RSS Feed URLs:
+      | url                                                                                |
+      | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml |
+    And I press "Add"
+    Then I should see "You have added Recalls to this site"
+    When I follow "Edit"
+    And I fill in "Name" with "Food, Safety and Pet Health Recalls"
+    And I add the following RSS Feed URLs:
+      | url                                                                            |
+      | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml |
+    And I press "Save"
+    Then I should see "You have updated Food, Safety and Pet Health Recalls"
+    When I press "Remove"
+    Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
+
   Scenario: View Twitter Handles
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -162,7 +211,8 @@ Feature: Manage Content
     And I check "Show tweets from my lists"
     And I press "Add"
     Then I should see "You have added @USASearch to this site"
-    And I should see a link to "@USASearch (show lists)" with url for "https://twitter.com/USASearch"
+    And I should see a link to "@USASearch" with url for "https://twitter.com/USASearch"
+    And I should see "@USASearch (show lists)"
     When I press "Remove"
     Then I should see "You have removed @USASearch from this site"
     When I follow "Add Twitter Handle"

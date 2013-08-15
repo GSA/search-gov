@@ -19,4 +19,17 @@ module TwitterProfilesHelper
     content << content_tag(:span, " @#{profile.screen_name}", :class => 'screen-name')
     raw(tweet_link_with_click_tracking(content.join("\n").html_safe, nil, profile.link_to_profile, @affiliate, search, index, @search_vertical))
   end
+
+  def link_to_twitter_handle(twitter_profile)
+    link_to "@#{twitter_profile.screen_name}",
+            "https://twitter.com/#{twitter_profile.screen_name}",
+            target: '_blank'
+  end
+
+  def twitter_profile_properties(site, twitter_profile)
+    if site.affiliate_twitter_settings.
+        exists?(twitter_profile_id: twitter_profile.id, show_lists: 1)
+      content_tag :span, '(show lists)', class: 'properties'
+    end
+  end
 end

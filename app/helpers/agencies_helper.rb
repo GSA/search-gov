@@ -5,7 +5,7 @@ module AgenciesHelper
   end
 
   def display_agency_link(result, search, affiliate, position, vertical)
-    link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
+    link_title = url_without_protocol(shorten_url(result['unescapedUrl']))
     tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, search.module_tag, vertical, "class='link-to-full-url'")
   end
 

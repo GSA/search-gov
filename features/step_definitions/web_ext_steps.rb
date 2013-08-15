@@ -113,3 +113,7 @@ Then /^I should see a cloud files image to "(.*?)"$/ do |image_file_name|
   image_url.should =~ /#{Regexp.escape(image_file_name)}/
   lambda { Kernel.open(image_url) }.should_not raise_error
 end
+
+Then /^I should find "(.+)" in (.+)$/ do |text, locator|
+  find selector_for(locator), text: text, visible: true
+end

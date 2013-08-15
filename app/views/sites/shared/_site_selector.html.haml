@@ -1,7 +1,0 @@
-.l-site-selector
-  .l-site-selector-inner
-    %ul.nav
-      %li.nav-header
-        = label_tag :site_select, 'Select a site'
-      %li= select('site', 'id', current_user.affiliates.map{|p| [ p.display_name, p.id ] }, { include_blank: true }, id: 'site_select' )
-    %h1 Admin Center

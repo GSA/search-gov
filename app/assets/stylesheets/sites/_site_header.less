@@ -1,0 +1,29 @@
+.l-site-header {
+  background-color: @white;
+  z-index: @zindexStickyBar;
+}
+.l-site-header-inner {
+  .clearfix();
+  border-bottom: 1px solid @siteMainNavBackground;
+  height: 60px;
+  padding-right: 28px;
+  padding-left: 20px;
+
+  .site-display-name {
+    .muted();
+    overflow: hidden;
+    font-size: (@baseFontSize * 1.1);
+    line-height: 20px;
+    padding: 20px 0 0;
+    > span {
+      .off-screen-text();
+    }
+  }
+
+  h1 {
+    .muted();
+    float: right;
+    font-weight: normal;
+    margin-left: 10px;
+  }
+}

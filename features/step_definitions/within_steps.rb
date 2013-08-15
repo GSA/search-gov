@@ -55,6 +55,7 @@
   'in the social media list' => '#social_media_profiles',
   'in the search box' => '#search_box',
   'in the twitter govbox' => '#twitter_govbox',
+  'in the site header' => '.l-site-header',
   'in the active site main navigation' => '.l-site-nav.main .active',
   'in the active site sub navigation' => '.l-site-nav.sub .active'
 }.

@@ -42,6 +42,6 @@
 
       - rss_feed_urls_for(@rss_feed).each do |url|
         %tr{:class => cycle('even', 'odd')}
-          %td= link_to strip_url_protocol(url.url), url.url, :title => url.url
+          %td= link_to url_without_protocol(url.url), url.url, :title => url.url
           %td= url.last_crawled_at.nil? ? 'Pending' : render_date(url.last_crawled_at)
           %td= render_rss_feed_url_last_crawl_status url

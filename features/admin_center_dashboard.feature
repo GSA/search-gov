@@ -9,7 +9,7 @@ Feature: Dashboard
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
     Then I should see "Admin Center"
-    And I should see USA.gov selected in the site selector
+    And I should see "USA.gov" in the site header
     And I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Site Overview" in the active site sub navigation
 
@@ -17,8 +17,7 @@ Feature: Dashboard
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
-    Then I should see USA.gov selected in the site selector
-    And I should see a link to "Dashboard" in the active site main navigation
+    Then I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Settings" in the active site sub navigation
     When I fill in "Site Name" with "agency site"
     And I press "Save Settings"

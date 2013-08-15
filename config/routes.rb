@@ -124,6 +124,9 @@ UsasearchRails3::Application.routes.draw do
         end
       end
       resources :domains, except: [:show]
+      resources :rss_feeds do
+        collection { get :new_url }
+      end
       resources :flickr_urls,
                 controller: 'flickr_profiles',
                 only: [:index, :new, :create, :destroy]

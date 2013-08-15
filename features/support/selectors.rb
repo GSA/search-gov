@@ -10,6 +10,10 @@ module HtmlSelectorsHelpers
 
     when /the page/
       "html > body"
+    when /the URLs modal/
+      '#urls'
+    when /the RSS URL error section/
+      '#urls .error'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

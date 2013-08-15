@@ -5,7 +5,13 @@
         %span.usa USA
         %span.search> Search
       %ul.nav
-        %li= link_to 'Add Site', '#'
+        %li.site-select-item
+          = label_tag :site_select, 'Select a site'
+          = site_select
+        %li
+          = link_to '#' do
+            %i.icon-plus
+            Add Site
       %ul.nav.auth
         %li#nav-auth-menu.dropdown
           = link_to '#nav-auth-menu', { 'data-toggle' => 'dropdown' } do

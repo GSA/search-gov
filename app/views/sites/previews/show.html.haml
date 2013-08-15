@@ -8,8 +8,7 @@
           = render_preview_links 'View Current', @site
           = render_preview_links 'View Staged Mobile', @site, staged: true, m: true
           = render_preview_links 'View Current Mobile', @site, m: true
-        = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
-          &times;
+        = modal_close_button
         %ul.nav.pull-right
           %li= list_item_with_link_to_current_help_page
   .preview-wrapper

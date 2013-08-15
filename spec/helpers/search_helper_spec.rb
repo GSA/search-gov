@@ -450,20 +450,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#strip_url_protocol" do
-    it "should remove protocol from url" do
-      strip_url_protocol('http://www.whitehouse.gov').should == 'www.whitehouse.gov'
-    end
-
-    it "should remove only the matching prefix protocol" do
-      strip_url_protocol('http://www.whitehouse.govhttp://invalidurl').should == 'www.whitehouse.govhttp://invalidurl'
-    end
-
-    it "should not remove anything if no matching protocol found" do
-      strip_url_protocol('www.whitehouse.gov').should == 'www.whitehouse.gov'
-    end
-  end
-
   describe "#display_result_description" do
     it 'should be html safe' do
       description = <<-DESCRIPTION

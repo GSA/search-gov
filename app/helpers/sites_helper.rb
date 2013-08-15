@@ -1,6 +1,13 @@
 module SitesHelper
+  def site_select
+    sites = current_user.affiliates.map { |p| [ "#{p.display_name} (#{p.name})", p.id ] }
+    select_options = { include_blank: true, selected: nil }
+    html_options = { id: 'site_select', class: 'site-select' }
+    select 'site', 'id', sites, select_options, html_options
+  end
+
   def content_for_site_page_title(site, title)
-    content_for :title, "#{title} - #{@site.display_name}"
+    content_for :title, "#{title} - #{site.display_name}"
   end
 
   def render_site_flash_message
@@ -28,11 +35,12 @@ module SitesHelper
   end
 
   def site_dashboard_controllers
-    %w(sites users settings)
+    %w(settings sites users)
   end
 
   def site_manage_content_controllers
-    %w(boosted_contents contents domains flickr_profiles twitter_profiles youtube_profiles)
+    %w(boosted_contents contents domains flickr_profiles rss_feeds
+        twitter_profiles youtube_profiles)
   end
 
   def list_item_with_link_to_current_help_page
@@ -68,5 +76,13 @@ module SitesHelper
             remote: true,
             data: { params: { index: boosted_content.boosted_content_keywords.length } },
             id: 'new-keyword-trigger'
+  end
+
+  def link_to_add_new_rss_feed_url(title, site, rss_feed)
+    link_to title,
+            new_url_site_rss_feeds_path(site),
+            remote: true,
+            data: { params: { index: rss_feed.rss_feed_urls.length } },
+            id: 'new-url-trigger'
   end
 end

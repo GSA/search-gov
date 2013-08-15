@@ -59,15 +59,4 @@ module SocialMediaHelper
     content << content_tag(:div, "#{link_to(flickr_photo.title, flickr_photo.flickr_url)}#{time_ago}".html_safe)
     content_tag :div, content.join("\n").html_safe, :class => 'preview', :style => 'margin-bottom: 10px;'
   end
-
-  def link_to_twitter_handle(twitter_handle)
-    link_to "https://twitter.com/#{twitter_handle.screen_name}", target: '_blank' do
-      content = "@#{twitter_handle.screen_name}"
-      if @site.affiliate_twitter_settings.
-          exists?(twitter_profile_id: twitter_handle.id, show_lists: 1)
-        content << ' (show lists)'
-      end
-      content
-    end
-  end
 end

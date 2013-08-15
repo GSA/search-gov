@@ -88,7 +88,7 @@ module Analytics::HomeHelper
   end
 
   def linked_shortened_url_without_protocol(url)
-    link_to(strip_url_protocol(shorten_url(url)), url)
+    link_to(url_without_protocol(shorten_url(url)), url)
   end
 
   private

@@ -48,10 +48,6 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def strip_url_protocol(url)
-    url.gsub(/^https?:\/\//, '')
-  end
-
   def display_web_result_extname_prefix(web_result)
     display_result_extname_prefix(web_result['unescapedUrl'])
   end

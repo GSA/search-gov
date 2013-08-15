@@ -21,14 +21,13 @@
     #skiplink
       %a{href: '#content'} Skip to Main Content
     = render 'sites/shared/header'
-    = render 'sites/shared/site_selector'
+    = render 'sites/shared/site_header'
     .l-main-container
       = render 'sites/shared/site_nav'
       .l-content
         = yield
-    #help-doc.modal.fade(data-no-turbolink)
+    #help-doc.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
       .modal-body
-        = button_tag type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' do
-          &times;
+        = modal_close_button
         .content
-    #preview
+    #preview{ 'aria-hidden' => 'true' }

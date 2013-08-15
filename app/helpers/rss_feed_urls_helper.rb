@@ -9,6 +9,28 @@ module RssFeedUrlsHelper
     end
   end
 
+  def rss_feed_url_class_hash(url)
+    RssFeedUrl::STATUSES.include?(url.last_crawl_status) ? {} : { class: 'error' }
+  end
+
+  def rss_feed_url_last_crawl_status_error(url)
+    return if RssFeedUrl::STATUSES.include?(url.last_crawl_status)
+    content_tag :div, id: "rss-feed-url-error-#{url.id}", class: 'error collapse' do
+      url.last_crawl_status
+    end
+  end
+
+  def rss_feed_url_last_crawled_on(url)
+    url.last_crawled_at.nil? ? 'Pending' : render_date(url.last_crawled_at)
+  end
+
+  def rss_feed_url_last_crawl_status(url)
+    return url.last_crawl_status if RssFeedUrl::STATUSES.include?(url.last_crawl_status)
+    link_to 'Error',
+            "#rss-feed-url-error-#{url.id}",
+            data: { toggle: 'collapse' }
+  end
+
   def render_rss_feed_url_last_crawl_status(rss_feed_url)
     return rss_feed_url.last_crawl_status if RssFeedUrl::STATUSES.include?(rss_feed_url.last_crawl_status)
 

@@ -67,7 +67,7 @@ And /^I should see boosted content keyword "([^\"]*)"$/ do |keyword|
   page.should have_selector(".keywords span", :text => keyword)
 end
 
-When /^(?:|I )add the following keywords:$/ do |table|
+When /^(?:|I )add the following best bets text keywords:$/ do |table|
   keyword_fields_count = page.all(:css, '.keywords input').count
   table.hashes.each_with_index do |hash, index|
     click_link 'Add Another Keyword'
