@@ -12,16 +12,16 @@ class TrendingUrl
     sorted_trending_affiliate_keys = @@redis.keys("TrendingUrls:*").sort
     trending_urls = []
     sorted_trending_affiliate_keys.each do |key|
-      aff_name = key.split(':').last
+      affiliate = Affiliate.find_by_name(key.split(':').last)
       @@redis.smembers(key).sort.each do |trending_url|
-        trending_urls << new(aff_name, trending_url)
-      end
+        trending_urls << new(affiliate, trending_url)
+      end if affiliate.present?
     end
     trending_urls
   end
 
-  def initialize(affiliate_name, url)
-    self.affiliate = Affiliate.find_by_name affiliate_name
+  def initialize(affiliate, url)
+    self.affiliate = affiliate
     self.url = url
   end
 
