@@ -177,8 +177,8 @@ describe "sites/sites/show.html.haml" do
     end
 
     context 'when showing month-to-date usage totals' do
-      let(:formatted_beginning_of_month) { Date.current.beginning_of_month.to_formatted_s(:long).squish  }
-      let(:formatted_today) { Date.current.to_formatted_s(:long).squish  }
+      let(:formatted_beginning_of_month) { Date.current.beginning_of_month.to_formatted_s(:long).squish }
+      let(:formatted_today) { Date.current.to_formatted_s(:long).squish }
 
       before do
         assign :dashboard, double('Dashboard', monthly_queries_to_date: 12345, monthly_clicks_to_date: 5678).as_null_object
@@ -186,12 +186,10 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show the totals in a month-to-date div' do
         render
-        rendered.should have_selector("#month-to-date") do |mtd|
-          mtd.should have_selector("h3", content: "This Month's Totals to Date")
-          mtd.should have_selector("p", content: "Dates: #{formatted_beginning_of_month} - #{formatted_today}")
-          mtd.should have_selector("p", content: "Total Queries: 12,345")
-          mtd.should have_selector("p", content: "Total Clicks: 5,678")
-        end
+        rendered.should have_selector("h3", content: "This Month's Totals to Date")
+        rendered.should have_selector("p", content: "Dates: #{formatted_beginning_of_month} - #{formatted_today}")
+        rendered.should have_selector("p", content: "Total Queries: 12,345")
+        rendered.should have_selector("p", content: "Total Clicks: 5,678")
       end
     end
 
