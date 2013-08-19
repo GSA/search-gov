@@ -15,7 +15,7 @@ module RssFeedUrlsHelper
 
   def rss_feed_url_last_crawl_status_error(url)
     return if RssFeedUrl::STATUSES.include?(url.last_crawl_status)
-    content_tag :div, id: "rss-feed-url-error-#{url.id}", class: 'collapse' do
+    content_tag :div, id: "rss-feed-url-error-#{url.id}", class: 'collapse last-crawl-status' do
       url.last_crawl_status
     end
   end
