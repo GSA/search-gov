@@ -39,7 +39,7 @@ module SitesHelper
   end
 
   def site_manage_content_controllers
-    %w(boosted_contents contents domains flickr_profiles rss_feeds
+    %w(boosted_contents contents document_collections domains flickr_profiles rss_feeds
         twitter_profiles youtube_profiles)
   end
 
@@ -54,7 +54,7 @@ module SitesHelper
   end
 
   def site_locale(site)
-    site.locale == :es ? 'Spanish' : 'English'
+    site.locale == 'es' ? 'Spanish' : 'English'
   end
 
   def render_preview_links(title, site, options = {}, target = 'preview-frame')
@@ -76,13 +76,5 @@ module SitesHelper
             remote: true,
             data: { params: { index: boosted_content.boosted_content_keywords.length } },
             id: 'new-keyword-trigger'
-  end
-
-  def link_to_add_new_rss_feed_url(title, site, rss_feed)
-    link_to title,
-            new_url_site_rss_feeds_path(site),
-            remote: true,
-            data: { params: { index: rss_feed.rss_feed_urls.length } },
-            id: 'new-url-trigger'
   end
 end

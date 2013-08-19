@@ -19,12 +19,19 @@ Feature: Dashboard
     And I follow "Settings"
     Then I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Settings" in the active site sub navigation
+    And I should see "Site Handle usagov"
+    And I should see "Site Language English"
     When I fill in "Site Name" with "agency site"
     And I press "Save Settings"
     Then I should see "Your site settings have been updated"
     When I fill in "Site Name" with ""
     And I press "Save Settings"
     Then I should see "Site name can't be blank"
+
+    When I go to the gobiernousa's Dashboard page
+    And I follow "Settings"
+    Then I should see "Site Handle gobiernousa"
+    And I should see "Site Language Spanish"
 
   @javascript
   Scenario: Clicking on help link

@@ -17,7 +17,7 @@ class Affiliates::DocumentCollectionsController < Affiliates::AffiliatesControll
   def create
     @document_collection = @affiliate.document_collections.build(params[:document_collection])
     if @document_collection.save
-      Emailer.deep_collection_notification(current_user, @document_collection).deliver if @document_collection.depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
+      Emailer.deep_collection_notification(current_user, @document_collection).deliver if @document_collection.too_deep_for_bing?
       redirect_to [@affiliate, @document_collection], :flash => { :success => 'Collection successfully added.' }
     else
       @title = 'Add a new Collection - '

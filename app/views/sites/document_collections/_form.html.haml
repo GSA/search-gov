@@ -1,0 +1,14 @@
+= render_site_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :name, 'Name', class: 'required'
+= form.text_field :name, class: 'required input-primary'
+
+%fieldset.url-prefixes.multivalued
+  .optional
+    %legend
+      URL Prefixes
+      %span (Requires 1 or more)
+  - @document_collection.url_prefixes.each_with_index do |url, index|
+    = form.fields_for :url_prefixes, url do |url_fields|
+      = render 'url_prefix', f: url_fields, index: index
+= link_to_add_new_url_prefix 'Add Another URL Prefix', @site, @document_collection

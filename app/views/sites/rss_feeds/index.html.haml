@@ -16,7 +16,7 @@
           = rss_feed_properties rss_feed
         %td.actions.actions-3x
           %ul
-            %li= link_to_rss_feed_preview @site, rss_feed
+            %li= link_to_preview_rss_feed @site, rss_feed
             %li= link_to 'Edit', edit_site_rss_feed_path(@site, rss_feed.id)
             = list_item_with_button_to_remove_rss_feed @site, rss_feed
 #urls.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }

@@ -1,4 +1,14 @@
 module RssFeedsHelper
+  def link_to_view_rss_feed_urls(site, rss_feed)
+    title = content_tag(:h1, "#{h(rss_feed.name)} #{rss_feed_properties(rss_feed)}")
+    link_to rss_feed.name,
+            site_rss_feed_path(site, rss_feed.id),
+            class: 'modal-page-viewer-link',
+            data: { container: '#urls',
+                    title: title,
+                    selector: '.urls' }
+  end
+
   def rss_feed_properties(rss_feed)
     if rss_feed.show_only_media_content?
       content_tag :span, '(Media RSS)', class: 'properties'
@@ -7,20 +17,10 @@ module RssFeedsHelper
     end
   end
 
-  def link_to_rss_feed_preview(site, rss_feed)
+  def link_to_preview_rss_feed(site, rss_feed)
     link_to 'Preview',
             news_search_url(protocol: 'http', affiliate: site.name, channel: rss_feed.id),
             target: '_blank'
-  end
-
-  def link_to_view_rss_feed_urls(site, rss_feed)
-    title = content_tag :h1 do
-      "#{h(rss_feed.name)} #{rss_feed_properties(rss_feed)}"
-    end
-    link_to rss_feed.name,
-            site_rss_feed_path(site, rss_feed.id),
-            class: 'view-urls-link',
-            data: { title: title }
   end
 
   def list_item_with_button_to_remove_rss_feed(site, rss_feed)

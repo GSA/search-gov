@@ -1,4 +1,5 @@
 class DocumentCollection < ActiveRecord::Base
+  include ActiveRecordExtension
   DEPTH_WHEN_BING_FAILS = 3
 
   belongs_to :affiliate
@@ -8,6 +9,7 @@ class DocumentCollection < ActiveRecord::Base
   validates_presence_of :name, :affiliate_id
   validates_uniqueness_of :name, :scope => :affiliate_id, :case_sensitive => false
   validate :url_prefixes_cannot_be_blank
+  after_validation :update_error_keys
 
   accepts_nested_attributes_for :url_prefixes, :allow_destroy => true, :reject_if => proc { |a| a['prefix'].blank? }
   accepts_nested_attributes_for :navigation
@@ -24,9 +26,17 @@ class DocumentCollection < ActiveRecord::Base
     url_prefixes.reduce(0) { |depth, url_prefix| [depth, url_prefix.depth].max }
   end
 
+  def too_deep_for_bing?
+    depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
+  end
+
   private
 
   def url_prefixes_cannot_be_blank
-    errors.add(:base, "Collection must have 1 or more URL prefixes") if url_prefixes.blank? or url_prefixes.all?(&:marked_for_destruction?)
+    errors.add(:base, 'Collection must have 1 or more URL prefixes') if url_prefixes.blank? or url_prefixes.all?(&:marked_for_destruction?)
+  end
+
+  def update_error_keys
+    swap_error_key(:"url_prefixes.prefix", :url_prefix)
   end
 end

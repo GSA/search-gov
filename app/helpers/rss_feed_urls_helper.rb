@@ -15,7 +15,7 @@ module RssFeedUrlsHelper
 
   def rss_feed_url_last_crawl_status_error(url)
     return if RssFeedUrl::STATUSES.include?(url.last_crawl_status)
-    content_tag :div, id: "rss-feed-url-error-#{url.id}", class: 'error collapse' do
+    content_tag :div, id: "rss-feed-url-error-#{url.id}", class: 'collapse' do
       url.last_crawl_status
     end
   end
@@ -36,5 +36,13 @@ module RssFeedUrlsHelper
 
     dialog_id = "rss_feed_url_error_#{rss_feed_url.id}"
     render_last_crawl_status_dialog(dialog_id, rss_feed_url.url, rss_feed_url.last_crawl_status).html_safe
+  end
+
+  def link_to_add_new_rss_feed_url(title, site, rss_feed)
+    link_to title,
+            new_url_site_rss_feeds_path(site),
+            remote: true,
+            data: { params: { index: rss_feed.rss_feed_urls.length } },
+            id: 'new-url-trigger'
   end
 end

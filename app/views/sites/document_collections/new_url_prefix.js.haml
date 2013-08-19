@@ -1,0 +1,5 @@
+= fields_for "document_collection[url_prefixes_attributes][#{@index}]" do |f|
+  :plain
+    jQuery('.form .url-prefixes').append("#{escape_javascript(render('url_prefix', f: f, keyword: UrlPrefix.new, index: @index))}");
+    jQuery('#new-url-prefix-trigger').data({ params: { index: "#{@index + 1}" } });
+    jQuery('.form .url-prefixes input').last().focus();

@@ -11,6 +11,9 @@
       %i.icon-globe.icon-4x
       %div Domains
   %li
+    = link_to site_collections_path(@site) do
+      %span.no-icon Collections
+  %li
     = link_to site_best_bets_texts_path(@site) do
       %span.no-icon Best Bets: Text
   %li

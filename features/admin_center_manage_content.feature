@@ -70,6 +70,57 @@ Feature: Manage Content
     And I press "Upload"
     Then I should see "You have added 2 Best Bets: Texts."
 
+  @javascript
+  Scenario: View Collections
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following document collections:
+      | name | prefixes                            |
+      | News | agency1.gov/news/                   |
+      | Blog | agency2.gov/blog/,agency3.gov/blog/ |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Collections"
+    Then I should see the following table rows:
+      | Blog |
+      | News |
+    When I follow "Blog"
+    Then I should find "agency2.gov/blog/" in the Collection URL Prefixes modal
+    And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
+
+  @javascript
+  Scenario: Add/edit/remove Collection
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Collection"
+    And I follow "Add Collection"
+    When I fill in the following:
+      | Name         | News                  |
+      | URL Prefix 1 | www.agency1.gov/news/ |
+    And I add the following Collection URL Prefixes:
+      | url_prefix           |
+      | www.agency2.gov/news |
+      | news.agency3.gov     |
+    And I press "Add"
+    Then I should see "You have added News to this site"
+    When I follow "Edit"
+    Then the "Name" field should contain "News"
+    And the "URL Prefix 1" field should contain "http://news.agency3.gov/"
+    And the "URL Prefix 2" field should contain "http://www.agency1.gov/news/"
+    And the "URL Prefix 3" field should contain "http://www.agency2.gov/news/"
+    When I fill in "Name" with "News and Blog"
+    And I add the following Collection URL Prefixes:
+      | url_prefix       |
+      | blog.agency4.gov |
+    And I press "Save"
+    Then I should see "You have updated News and Blog"
+    When I press "Remove"
+    Then I should see "You have removed News and Blog from this site"
+
   Scenario: View domains
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -152,7 +203,7 @@ Feature: Manage Content
       | News               |
       | Videos (YouTube)   |
     When I follow "Images"
-    Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the URLs modal
+    Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the RSS URLs modal
     When I follow "Error"
     Then I should find "404 Not Found" in the RSS URL error section
 
@@ -175,7 +226,10 @@ Feature: Manage Content
     And I press "Add"
     Then I should see "You have added Recalls to this site"
     When I follow "Edit"
-    And I fill in "Name" with "Food, Safety and Pet Health Recalls"
+    Then the "Name" field should contain "Recalls"
+    And the "URL 1" field should contain "http://www.cpsc.gov/en/Newsroom/CPSC-RSS-Feed/Recalls-RSS/"
+    And the "URL 2" field should contain "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml"
+    When I fill in "Name" with "Food, Safety and Pet Health Recalls"
     And I add the following RSS Feed URLs:
       | url                                                                            |
       | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml |

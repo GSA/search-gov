@@ -10,8 +10,10 @@ module HtmlSelectorsHelpers
 
     when /the page/
       "html > body"
-    when /the URLs modal/
-      '#urls'
+    when /the Collection URL Prefixes modal/
+      '#url-prefixes .modal-body .url-prefixes'
+    when /the RSS URLs modal/
+      '#urls .modal-body .urls'
     when /the RSS URL error section/
       '#urls .error'
 

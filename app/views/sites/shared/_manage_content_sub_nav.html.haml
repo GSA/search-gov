@@ -3,6 +3,7 @@
 %ul.nav.nav-list
   %li{ site_nav_css_class_hash('contents') }= link_to 'Content Overview', site_content_path(@site)
   %li{ site_nav_css_class_hash('domains') }= link_to 'Domains', site_domains_path(@site)
+  %li{ site_nav_css_class_hash('document_collections') }= link_to 'Collections', site_collections_path(@site)
   %li{ site_nav_css_class_hash('boosted_contents') }= link_to 'Best Bets: Text', site_best_bets_texts_path(@site)
   %li{ site_nav_css_class_hash('rss_feeds') }= link_to 'RSS', site_rss_feeds_path(@site)
   %li{ site_nav_css_class_hash('youtube_profiles') }= link_to 'YouTube', site_youtube_usernames_path(@site)

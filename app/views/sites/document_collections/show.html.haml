@@ -1,0 +1,21 @@
+= content_for_site_page_title @site, 'Collection'
+.sub-nav-heading
+  %h2 Collection
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'View All', site_collections_path(@site)
+      %li= link_to 'Edit', edit_site_collection_path(@site, @document_collection)
+.primary-content
+  %dl
+    %dt Name
+    %dd #{@document_collection.name}
+  .url-prefixes
+    %table.table
+      %thead
+        %tr
+          %th URL Prefixes
+      %tbody
+        - @document_collection.url_prefixes.each do |url_prefix|
+          %tr
+            %td= url_without_protocol url_prefix.prefix

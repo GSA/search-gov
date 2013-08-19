@@ -112,10 +112,9 @@ UsasearchRails3::Application.routes.draw do
 
   scope module: 'sites' do
     resources :sites, only: [:show] do
-      resource :setting, only: [:edit, :update]
-      resources :users, only: [:index, :new, :create, :destroy]
-      resource :preview, only: [:show]
       resource :content, only: [:show]
+      resource :preview, only: [:show]
+      resource :setting, only: [:edit, :update]
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
           get :new_keyword
@@ -123,16 +122,20 @@ UsasearchRails3::Application.routes.draw do
           post :bulk_upload
         end
       end
-      resources :domains, except: [:show]
-      resources :rss_feeds do
-        collection { get :new_url }
+      resources :collections, controller: 'document_collections' do
+        collection { get :new_url_prefix }
       end
+      resources :domains, except: [:show]
       resources :flickr_urls,
                 controller: 'flickr_profiles',
                 only: [:index, :new, :create, :destroy]
+      resources :rss_feeds do
+        collection { get :new_url }
+      end
       resources :twitter_handles,
                 controller: 'twitter_profiles',
                 only: [:index, :new, :create, :destroy]
+      resources :users, only: [:index, :new, :create, :destroy]
       resources :youtube_usernames,
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
