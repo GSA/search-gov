@@ -5,6 +5,8 @@
     %ul
       = list_item_with_link_to_current_help_page
 
+= render_site_flash_message
+
 .analytics_panel
   %h3 Top Queries
   - if @dashboard.top_queries.present?

@@ -1,11 +1,15 @@
 .l-site-nav.main
-  %ul.nav
-    = main_nav_item 'Dashboard', site_path(@site), 'icon-dashboard', site_dashboard_controllers
-    = main_nav_item 'Analytics', '#', 'icon-bar-chart', []
-    = main_nav_item 'Manage Content', site_content_path(@site), 'icon-file', site_manage_content_controllers
-    = main_nav_item 'Manage Display', '#', 'icon-desktop', []
-    = main_nav_item 'Preview', '#preview', 'icon-eye-open', [], id: 'preview-trigger', data: { url: "#{site_preview_path(@site)}" }
-    = main_nav_item 'Activate Search', '#', 'icon-code', []
+  - unless @site.new_record?
+    %ul.nav
+      = main_nav_item 'Dashboard', site_path(@site), 'icon-dashboard', site_dashboard_controllers
+      = main_nav_item 'Analytics', '#', 'icon-bar-chart', []
+      = main_nav_item 'Manage Content', site_content_path(@site), 'icon-file', site_manage_content_controllers
+      = main_nav_item 'Manage Display', '#', 'icon-desktop', []
+      = main_nav_item 'Preview', '#preview', 'icon-eye-open', [], id: 'preview-trigger', data: { url: "#{site_preview_path(@site)}" }
+      = main_nav_item 'Activate Search', '#', 'icon-code', []
 .l-site-nav.sub
-  = render('sites/shared/dashboard_sub_nav') if site_dashboard_controllers.include?(controller_name)
-  = render('sites/shared/manage_content_sub_nav') if site_manage_content_controllers.include?(controller_name)
+  - if @site.new_record?
+    = render('sites/shared/new_site_sub_nav') if controller_name == 'sites'
+  - else
+    = render('sites/shared/dashboard_sub_nav') if site_dashboard_controllers.include?(controller_name)
+    = render('sites/shared/manage_content_sub_nav') if site_manage_content_controllers.include?(controller_name)

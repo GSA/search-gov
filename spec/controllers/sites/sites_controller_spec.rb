@@ -36,4 +36,35 @@ describe Sites::SitesController do
       it { should assign_to(:dashboard).with(dashboard) }
     end
   end
+
+  describe "#create" do
+    it_should_behave_like 'restricted to approved user', :post, :create
+
+    context "when logged in" do
+      include_context 'approved user logged in to a site'
+
+      context "when the affiliate saves successfully" do
+        let(:site) { mock_model(Affiliate, :users => []) }
+        let(:emailer) { mock(Emailer, :deliver => true) }
+
+        before do
+          Affiliate.should_receive(:new).with("site_domains_attributes" => {"0" => {"domain" => "http://www.brandnew.gov"}},
+                                              "display_name" => "New Aff", "locale" => "es").and_return(site)
+          site.should_receive(:name=).with('newaff')
+          site.should_receive(:save).and_return(true)
+          site.should_receive(:push_staged_changes)
+          Emailer.should_receive(:new_affiliate_site).and_return(emailer)
+          post :create, affiliate: {site_domains_attributes: {"0" => {domain: "http://www.brandnew.gov"}},
+                                    display_name: "New Aff", name: "newaff", locale: "es"}
+        end
+
+        it { should redirect_to(site_path(site)) }
+
+        it 'should add current user as a site user' do
+          site.users.should include(current_user)
+        end
+      end
+    end
+  end
+
 end

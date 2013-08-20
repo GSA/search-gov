@@ -111,7 +111,10 @@ UsasearchRails3::Application.routes.draw do
   end
 
   scope module: 'sites' do
-    resources :sites, only: [:show] do
+    resources :sites do
+      resource :setting, only: [:edit, :update]
+      resources :users, only: [:index, :new, :create, :destroy]
+      resource :preview, only: [:show]
       resource :content, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]

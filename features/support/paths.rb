@@ -112,6 +112,8 @@ module NavigationHelpers
       site_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Content page$/
       site_content_path(Affiliate.find_by_name($1))
+    when /^the new site page$/
+      new_site_path
     when /the 404 page/
       '/aninvalidurl'
     when /the Spanish 404 page/

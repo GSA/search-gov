@@ -101,3 +101,28 @@ Feature: Dashboard
     Then the preview iframe should contain a link to "http://m.staged.agency.gov"
     When I follow "View Current Mobile"
     Then the preview iframe should contain a link to "http://m.live.agency.gov"
+
+  Scenario: Adding a new site
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the new site page
+    Then I should see the browser page titled "New Site Setup"
+    When I fill in the following:
+      | Homepage URL | http://www.awesome.gov/ |
+      | Display Name | Agency Gov              |
+      | Site Handle  | x                       |
+    And I press "Add"
+    Then I should see "Site Handle (visible to searchers in the URL) is too short"
+    When I fill in the following:
+      | Homepage URL | http://www.awesome.gov/ |
+      | Display Name | Agency Gov              |
+      | Site Handle  | agencygov               |
+    And I choose "Spanish"
+    And I press "Add"
+    Then I should see "You have added 'Agency Gov' as a site."
+    And I should land on the agencygov's Dashboard page
+    And "affiliate_manager@fixtures.org" should receive an email
+    When I open the email
+    Then I should see "Your new site: Agency Gov" in the email subject
+    And I should see "Dear Affiliate Manager" in the email body
+    And I should see "Site name: Agency Gov" in the email body
+    And I should see "affiliate_manager@fixtures.org" in the email body

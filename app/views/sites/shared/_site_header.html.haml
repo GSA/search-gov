@@ -1,6 +1,7 @@
 .l-site-header
   .l-site-header-inner
     %h1 Admin Center
-    .site-display-name
-      %span Site Name:
-      #{@site.display_name} (#{@site.name})
+    - unless @site.new_record?
+      .site-display-name
+        %span Site Name:
+        #{@site.display_name} (#{@site.name})

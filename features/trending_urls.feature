@@ -27,7 +27,6 @@ Feature: Trending URLs Snapshot
     When I am on the admin home page
     And I follow "Trending URLs"
     Then I should see "Trending URLs by Affiliate"
-    And show me the page
     And I should see the following table rows:
     | Affiliate      | URL                              | Current Rank | Average Rank   |  Historical Ranks |
     | bureau.gov     | http://www.aff1.gov/url1.html    | 1            | 2              |  2,2              |

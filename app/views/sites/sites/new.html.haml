@@ -1,0 +1,28 @@
+= content_for :title, 'New Site Setup'
+= form_for @site, url: { action: :create }, html: { class: 'form form-horizontal' }  do |f|
+  .sub-nav-heading
+    %h2 Add Site
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  .control-group
+    = f.fields_for :site_domains, @site.site_domains.build do |site_domain_fields|
+      = site_domain_fields.label :domain, 'Homepage URL:', class: 'control-label'
+      = site_domain_fields.text_field :domain, class: 'required controls input-primary', type: 'url', placeholder: 'Enter the primary website this search will be designed for', pattern: '^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$'
+  .control-group
+    = f.label :display_name, 'Display Name:', class: 'control-label'
+    = f.text_field :display_name, class: 'required controls', placeholder: 'Visible to searchers on the results page'
+  .control-group
+    = f.label :name, 'Site Handle:', class: 'control-label'
+    = f.text_field :name, class: 'required controls', pattern: '^[a-z0-9._-]+$', placeholder: 'Visible to searchers as a parameter in the URL (cannot have spaces)'
+  .control-group
+    = f.label :locale, 'Site Language:', class: 'control-label'
+    = f.label :locale, value: 'en', class: 'controls' do
+      = f.radio_button :locale, 'en', class: 'required controls'
+      English
+    = f.label :locale, value: 'es', class: 'controls' do
+      = f.radio_button :locale, "es", class: 'required controls'
+      Spanish
