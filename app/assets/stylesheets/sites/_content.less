@@ -1,0 +1,93 @@
+.content {
+  .clearfix();
+  .inline();
+  .unstyled();
+  display: block;
+  margin: 20px 0 0;
+
+  > li {
+    float: left;
+    padding: 0 10px 20px;
+  }
+
+  .content-item {
+    img {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    a {
+      .border-radius(@baseBorderRadius);
+
+      border: 1px solid #DDD;
+      display: block;
+      padding-top: 10px;
+      text-align: center;
+      text-decoration: none;
+      height: 80px;
+      width: 90px;
+
+      &.only-icon {
+        height: 75px;
+        padding-top: 15px;
+      }
+
+      i, img {
+        background-color: white;
+        .opacity(60);
+      }
+
+      &:hover, &:focus {
+        i, img {
+          .opacity(100);
+        }
+      }
+    }
+
+    .no-icon {
+      display: block;
+      padding-top: 10px;
+    }
+
+    .name {
+      width: 90px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &.domains .name {
+      margin-top: -3px;
+    }
+
+    &.flickr img {
+      padding-top: 7px;
+    }
+
+    &.flickr .name {
+      margin-top: 2px;
+    }
+
+    &.rss img {
+      padding-top: 5px;
+      width: 50px;
+    }
+
+    &.twitter img {
+      margin-top: -5px;
+      width: 64px;
+    }
+
+    &.twitter .name {
+      margin-top: -5px;
+    }
+
+    &.youtube img {
+      width: 60px;
+    }
+
+    &.youtube .name {
+      margin-top: -3px;
+    }
+  }
+}
