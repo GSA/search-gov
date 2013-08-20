@@ -59,10 +59,6 @@ jQuery(document).ready(function() {
           logo = this;
           if (box.children('.results-by-logo').hasClass(logo)) {
             currentLogo = logo;
-            $('#results .pagination-and-logo').each(function() {
-              if ($(this).children().hasClass(logo))
-                $(this).remove();
-            });
           }
         });
         box.children('.results-by-logo').wrap('<div class="pagination-and-logo" />');
