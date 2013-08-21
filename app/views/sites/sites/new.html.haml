@@ -11,13 +11,13 @@
   .control-group
     = f.fields_for :site_domains, @site.site_domains.build do |site_domain_fields|
       = site_domain_fields.label :domain, 'Homepage URL:', class: 'control-label'
-      = site_domain_fields.text_field :domain, class: 'required controls input-primary', type: 'url', placeholder: 'Enter the primary website this search will be designed for', pattern: '^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$'
+      = site_domain_fields.text_field :domain, required: true, class: 'required controls input-primary', type: 'url', placeholder: 'Enter the primary website this search will be designed for', pattern: '^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$', title: 'Please enter a fully qualified URL (including http://, http://www, etc.).'
   .control-group
     = f.label :display_name, 'Display Name:', class: 'control-label'
-    = f.text_field :display_name, class: 'required controls', placeholder: 'Visible to searchers on the results page'
+    = f.text_field :display_name, required: true, class: 'required controls', placeholder: 'Visible to searchers on the results page'
   .control-group
     = f.label :name, 'Site Handle:', class: 'control-label'
-    = f.text_field :name, class: 'required controls', pattern: '^[a-z0-9._-]+$', placeholder: 'Visible to searchers as a parameter in the URL (cannot have spaces)'
+    = f.text_field :name, required: true, class: 'required controls', pattern: '^[a-z0-9._-]+$', placeholder: 'Visible to searchers in the URL', title: 'Handles can have lowercase letters, numbers, periods, hyphens, and underscores only.'
   .control-group
     = f.label :locale, 'Site Language:', class: 'control-label'
     = f.label :locale, value: 'en', class: 'controls' do

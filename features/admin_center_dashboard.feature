@@ -21,12 +21,12 @@ Feature: Dashboard
     And I should see a link to "Settings" in the active site sub navigation
     And I should see "Site Handle usagov"
     And I should see "Site Language English"
-    When I fill in "Site Name" with "agency site"
+    When I fill in "Display Name" with "agency site"
     And I press "Save Settings"
     Then I should see "Your site settings have been updated"
-    When I fill in "Site Name" with ""
+    When I fill in "Display Name" with ""
     And I press "Save Settings"
-    Then I should see "Site name can't be blank"
+    Then I should see "Display name can't be blank"
 
     When I go to the gobiernousa's Dashboard page
     And I follow "Settings"

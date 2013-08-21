@@ -125,7 +125,7 @@ class Affiliate < ActiveRecord::Base
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
-    :display_name => "Site name",
+    :display_name => "Display name",
     :name => "Site Handle (visible to searchers in the URL)",
     :staged_search_results_page_title => "Search results page title"
   }

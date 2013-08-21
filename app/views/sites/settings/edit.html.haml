@@ -9,7 +9,7 @@
 
   = render_site_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
-  = f.label :display_name, 'Site Name', class: 'required'
+  = f.label :display_name, 'Display Name', class: 'required'
   = f.text_field :display_name, class: 'required'
   %dl
     %dt Site Handle
