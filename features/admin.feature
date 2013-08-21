@@ -27,7 +27,7 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Sites" within ".main"
     Then I should see the following breadcrumbs: USASearch > Super Admin > Sites
-    And I should see "Site name"
+    And I should see "Display name"
     And I should see "Site Handle (visible to searchers in the URL)"
     And I should see "agency site"
     And I should see "agency.gov"

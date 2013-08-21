@@ -258,7 +258,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page
     And I follow "Add New Site"
     And I press "Next"
-    Then I should see "Site name can't be blank"
+    Then I should see "Display name can't be blank"
     And I should not see "Site Handle (visible to searchers in the URL) can't be blank"
     And I should not see "Site Handle (visible to searchers in the URL) is too short"
     And I should not see "Site Handle (visible to searchers in the URL) is invalid"
@@ -372,7 +372,7 @@ Feature: Affiliate clients
       | Site name |  |
     And I press "Save"
     Then I should see "Site Information" within "title"
-    And I should see "Site name can't be blank"
+    And I should see "Display name can't be blank"
 
   Scenario: Updating predefined theme and saving it for preview
     Given the following Affiliates exist:
