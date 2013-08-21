@@ -1711,7 +1711,7 @@ describe Affiliate do
   end
 
   describe "#human_attribute_name" do
-    Affiliate.human_attribute_name("display_name").should == "Site name"
+    Affiliate.human_attribute_name("display_name").should == "Display name"
     Affiliate.human_attribute_name("name").should == "Site Handle (visible to searchers in the URL)"
     Affiliate.human_attribute_name("staged_search_results_page_title").should == "Search results page title"
   end
