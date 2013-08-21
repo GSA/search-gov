@@ -14,3 +14,4 @@
 //= require calendar_date_select/calendar_date_select
 //= require calendar_date_select/format_american
 //= require jscolor/jscolor
+//= require legacy/google_analytics

@@ -4,3 +4,4 @@
 //= require legacy/application
 //= require legacy/application.mobile
 //= require searches/close
+//= require searches/google_analytics

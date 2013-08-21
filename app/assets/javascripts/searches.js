@@ -7,3 +7,4 @@
 //= require legacy/application
 //= require jquery_extensions/jquery.infinitescroll.min
 //= require searches/infinitescroll
+//= require searches/google_analytics

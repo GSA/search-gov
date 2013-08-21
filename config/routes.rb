@@ -112,12 +112,10 @@ UsasearchRails3::Application.routes.draw do
 
   scope module: 'sites' do
     resources :sites do
-      resource :setting, only: [:edit, :update]
-      resources :users, only: [:index, :new, :create, :destroy]
-      resource :preview, only: [:show]
       resource :content, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]
+
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
           get :new_keyword
