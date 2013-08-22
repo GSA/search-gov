@@ -1,6 +1,25 @@
 Feature: Dashboard
 
-  @javascript
+  Scenario: Visiting /sites for user with existing sites
+    Given the following Affiliates exist:
+      | display_name | name         | contact_email      | contact_name |
+      | agency1 site | 1.agency.gov | manager@agency.gov | John Manager |
+      | agency3 site | 3.agency.gov | manager@agency.gov | John Manager |
+    And I am logged in with email "manager@agency.gov" and password "random_string"
+    When I go to the sites page
+    Then I should see "agency1 site"
+    When I go to the 3.agency.gov's Manage Content page
+    And I press "Set as default site"
+    Then I should see "You have set agency3 site as your default site"
+    And I should see "Manage Content"
+    When I go to the sites page
+    Then I should see "agency3 site (3.agency.gov)" in the site header
+
+  Scenario: Visiting /sites for user without existing site
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the sites page
+    Then I should see "Add a New Site"
+
   Scenario: Viewing a site without logging in
     When I go to the usagov's Dashboard page
     Then I should see "Log In"

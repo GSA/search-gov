@@ -6,6 +6,40 @@ module SitesHelper
     select 'site', 'id', sites, select_options, html_options
   end
 
+  def site_pin(site)
+    if current_user.default_affiliate_id != site.id
+      button_to_enabled_pin_site(site)
+    else
+      button_to_disabled_pin_site
+    end
+  end
+
+  def button_to_enabled_pin_site(site)
+    title = 'Set as default site'
+    wrapper_options = { id: 'pin-site',
+                        'data-toggle' => 'tooltip',
+                        'data-original-title' => title }
+
+    form_for @site, as: :site, url: pin_site_path(site), html: wrapper_options do
+      button_tag class: 'btn', type: :submit do
+        inner_html = content_tag(:i, nil, class: 'icon icon-pushpin')
+        inner_html << content_tag(:span, title, class: 'description')
+      end
+    end
+  end
+
+  def button_to_disabled_pin_site
+    title = 'Your default site'
+    wrapper_options = { id: 'pin-site',
+                        'data-toggle' => 'tooltip',
+                        'data-original-title' => title }
+    content_tag :div, wrapper_options do
+      inner_html = content_tag(:i, nil, class: 'icon icon-pushpin')
+      inner_html << content_tag(:span, title, class: 'description')
+      content_tag :div, inner_html, class: 'btn disabled'
+    end
+  end
+
   def content_for_site_page_title(site, title)
     content_for :title, "#{title} - #{site.display_name}"
   end

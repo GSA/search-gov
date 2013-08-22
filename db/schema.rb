@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822141517) do
+ActiveRecord::Schema.define(:version => 20130822153040) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -828,6 +828,7 @@ ActiveRecord::Schema.define(:version => 20130822141517) do
     t.boolean  "welcome_email_sent",                     :default => false,                        :null => false
     t.boolean  "requires_manual_approval",               :default => false
     t.text     "notes"
+    t.integer  "default_affiliate_id"
   end
 
   add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true

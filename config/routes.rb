@@ -112,6 +112,8 @@ UsasearchRails3::Application.routes.draw do
 
   scope module: 'sites' do
     resources :sites do
+      member { put :pin }
+
       resource :content, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]

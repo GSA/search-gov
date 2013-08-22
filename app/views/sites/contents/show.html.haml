@@ -5,6 +5,7 @@
     %ul
       = list_item_with_link_to_current_help_page
 
+= render_site_flash_message
 %ul.content
   %li.content-item.domains
     = link_to site_domains_path(@site) do

@@ -34,6 +34,24 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
   end
 end
 
+shared_context 'approved user logged in' do
+  let(:current_user) { users(:affiliate_manager) }
+
+  before do
+    UserSession.create current_user
+    User.should_receive(:find_by_id).and_return(current_user)
+  end
+end
+
+shared_context 'super admin logged in' do
+  let(:current_user) { users(:affiliate_admin) }
+
+  before do
+    UserSession.create current_user
+    User.should_receive(:find_by_id).and_return(current_user)
+  end
+end
+
 shared_context 'approved user logged in to a site' do
   let(:current_user) { users(:affiliate_manager) }
   let(:site) { affiliates(:basic_affiliate) }
