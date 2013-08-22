@@ -11,7 +11,6 @@ class Sites::BaseController < SslController
     unless current_user
       store_location
       redirect_to login_url
-      false
     end
   end
 
@@ -25,18 +24,16 @@ class Sites::BaseController < SslController
         flash[:notice] = 'Your contact information is not complete.'
       end
       redirect_to home_affiliates_path
-      false
     end
   end
 
   def setup_site
     site_id = params[:site_id] || params[:id]
     if current_user.is_affiliate_admin?
-      @site = Affiliate.find(site_id) rescue redirect_to(sites_path) and return false
+      @site = Affiliate.find(site_id) rescue redirect_to(sites_path)
     elsif current_user.is_affiliate?
-      @site = current_user.affiliates.find(site_id) rescue redirect_to(sites_path) and return false
+      @site = current_user.affiliates.find(site_id) rescue redirect_to(sites_path)
     end
-    true
   end
 
   def default_url_options
