@@ -2,11 +2,11 @@
   - unless @site.new_record?
     %ul.nav
       = main_nav_item 'Dashboard', site_path(@site), 'icon-dashboard', site_dashboard_controllers
-      = main_nav_item 'Analytics', '#', 'icon-bar-chart', []
+      = main_nav_item 'Analytics (Coming Soon)', '#', 'icon-bar-chart', []
       = main_nav_item 'Manage Content', site_content_path(@site), 'icon-file', site_manage_content_controllers
-      = main_nav_item 'Manage Display', '#', 'icon-desktop', []
+      = main_nav_item 'Manage Display (Coming Soon)', '#', 'icon-desktop', []
       = main_nav_item 'Preview', '#preview', 'icon-eye-open', [], id: 'preview-trigger', data: { url: "#{site_preview_path(@site)}" }
-      = main_nav_item 'Activate Search', '#', 'icon-code', []
+      = main_nav_item 'Activate Search (Coming Soon)', '#', 'icon-code', []
 .l-site-nav.sub
   - if @site.new_record?
     = render('sites/shared/new_site_sub_nav') if controller_name == 'sites'
