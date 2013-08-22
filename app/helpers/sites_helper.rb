@@ -22,7 +22,7 @@ module SitesHelper
 
     form_for @site, as: :site, url: pin_site_path(site), html: wrapper_options do
       button_tag class: 'btn', type: :submit do
-        inner_html = content_tag(:i, nil, class: 'icon icon-pushpin')
+        inner_html = stacked_pushpin
         inner_html << content_tag(:span, title, class: 'description')
       end
     end
@@ -34,7 +34,7 @@ module SitesHelper
                         'data-toggle' => 'tooltip',
                         'data-original-title' => title }
     content_tag :div, wrapper_options do
-      inner_html = content_tag(:i, nil, class: 'icon icon-pushpin')
+      inner_html = stacked_pushpin
       inner_html << content_tag(:span, title, class: 'description')
       content_tag :div, inner_html, class: 'btn disabled'
     end

@@ -15,7 +15,7 @@
     font-size: (@baseFontSize * 1.1);
     line-height: 20px;
     padding: 20px 0 0;
-    > span {
+    > span.label {
       .off-screen-text();
     }
   }
@@ -37,6 +37,25 @@
   display: inline-block;
   .ie7-inline-block();
   margin: 0;
+  padding: 0;
+
+  .btn {
+    .muted();
+    .opacity(65);
+    background: none;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+
+    &:hover, &:focus {
+      .opacity(100);
+    }
+
+    &.disabled {
+      color: #FF9232;
+      .opacity(100);
+    }
+  }
 
   .description {
     .off-screen-text();

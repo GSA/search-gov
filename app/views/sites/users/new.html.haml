@@ -5,7 +5,7 @@
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= link_to 'View Users', site_users_path(@site)
+        %li= link_to 'View All', site_users_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
 
   = render_site_flash_message

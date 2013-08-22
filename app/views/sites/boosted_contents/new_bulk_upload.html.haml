@@ -5,7 +5,7 @@
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= link_to 'List Best Bets: Texts', site_best_bets_texts_path(@site)
+        %li= link_to 'View All', site_best_bets_texts_path(@site)
         %li= submit_tag 'Upload', class: 'btn submit disabled', disabled: true
   = render_site_flash_message
   = file_field_tag 'best_bets_text_data_file', accept: 'text/csv,application/xml,text/plain'

@@ -5,6 +5,6 @@
       %span.beta Beta
     - unless @site.new_record?
       .site-display-name
-        %span Display Name:
+        %span.label Display Name:
         #{@site.display_name} (#{@site.name})
         = site_pin @site

@@ -5,6 +5,6 @@
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= link_to 'View Domains', site_domains_path(@site)
+        %li= link_to 'View All', site_domains_path(@site)
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
   = render f
