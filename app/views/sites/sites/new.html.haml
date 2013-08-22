@@ -9,7 +9,7 @@
   = render_site_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   .control-group
-    = f.fields_for :site_domains, @site.site_domains.build do |site_domain_fields|
+    = f.fields_for :site_domains, @site.site_domains.first do |site_domain_fields|
       = site_domain_fields.label :domain, 'Homepage URL:', class: 'control-label'
       = site_domain_fields.text_field :domain, required: true, class: 'required controls input-primary', type: 'url', placeholder: 'Enter the primary website this search will be designed for', pattern: '^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$', title: 'Please enter a fully qualified URL (including http://, http://www, etc.).'
   .control-group

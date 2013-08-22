@@ -20,6 +20,7 @@ class Sites::SitesController < Sites::BaseController
 
   def new
     @site = Affiliate.new
+    @site.site_domains.build
   end
 
   def create
@@ -31,7 +32,8 @@ class Sites::SitesController < Sites::BaseController
       Emailer.new_affiliate_site(@site, current_user).deliver
       redirect_to site_path(@site), flash: { success: "You have added '#{@site.display_name}' as a site." }
     else
-      render :action => :new
+      @site.site_domains.first.domain = "http://#{@site.site_domains.first.domain}" if @site.site_domains.first.domain.present?
+      render action: :new
     end
   end
 
