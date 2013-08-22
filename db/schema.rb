@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621211017) do
+ActiveRecord::Schema.define(:version => 20130822141517) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -617,6 +617,7 @@ ActiveRecord::Schema.define(:version => 20130621211017) do
     t.integer "times",                     :null => false
   end
 
+  add_index "queries_clicks_stats", ["affiliate", "day"], :name => "index_queries_clicks_stats_on_affiliate_and_day"
   add_index "queries_clicks_stats", ["affiliate", "query", "day"], :name => "aqd"
   add_index "queries_clicks_stats", ["affiliate", "url", "day"], :name => "aud", :length => {"affiliate"=>nil, "url"=>255, "day"=>nil}
 
