@@ -117,3 +117,8 @@ end
 Then /^I should find "(.+)" in (.+)$/ do |text, locator|
   find selector_for(locator), text: text, visible: true
 end
+
+Then(/^the "(.*?)" select field should contain (\d+) options?$/) do |label, count|
+  field = find_field(label)
+  field.find(:xpath, './/option', count: count)
+end

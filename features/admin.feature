@@ -42,6 +42,8 @@ Feature:  Administration
     And I follow "Users" within ".main"
     Then I should be on the users admin page
     And I should see the following breadcrumbs: USASearch > Super Admin > Users
+    When I follow "Edit"
+    Then the "Default affiliate" select field should contain 1 option
 
   Scenario: Visiting the SAYT Filters admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
