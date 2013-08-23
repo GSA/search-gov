@@ -1,0 +1,32 @@
+.sub-nav-heading {
+  background-color: @white;
+  border-bottom: 1px solid @siteNavBorderColor;
+  min-width: (@containerWidth - (@siteMainNavWidth + @siteSubNavWidth + 1 + 40));
+  position: fixed;
+  top: @siteNavTop;
+  right: 0;
+  left: (@siteMainNavWidth + @siteSubNavWidth + 1);
+  padding-right: 28px;
+  padding-left: 28px;
+  z-index: @zindexStickyBar;
+
+  h2 {
+    color: @textColor;
+    float: left;
+    line-height: 46px;
+    margin: 5px 0;
+  }
+  .action-bar {
+    .actions();
+    float: right;
+    line-height: 46px;
+    padding: 5px 0;
+  }
+}
+
+#domains-menu {
+  .dropdown-menu {
+    .pull-right();
+    .dropdown-menu .pull-right();
+  }
+}

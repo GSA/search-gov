@@ -1,12 +1,12 @@
 = content_for_site_page_title @site, 'Raw Logs'
-= form_tag site_raw_logs_access_path, multipart: true, class: 'form'  do
+= form_tag site_raw_logs_access_path, multipart: true, class: 'form' do
   .sub-nav-heading
     %h2 Raw Logs
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= submit_tag "Upload", class: 'btn submit'
+        %li= submit_tag 'Upload', class: 'btn submit disabled', disabled: true
   = render_site_flash_message
 
-  %h3 Upload your public key here:
+  = label_tag 'txtfile', 'Public key'
   = file_field_tag 'txtfile'

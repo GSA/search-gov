@@ -7,13 +7,14 @@ class IndexedDocument < ActiveRecord::Base
   before_validation :normalize_url
   validates_presence_of :url, :affiliate_id, :title, :description
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
-  validates_format_of :url, :with => /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
+  validates_format_of :url, with: /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix, allow_blank: true
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
   validate :extension_ok
 
   OK_STATUS = "OK"
   SUMMARIZED_STATUS = 'summarized'
+  NON_ERROR_STATUSES = [OK_STATUS, SUMMARIZED_STATUS]
   scope :ok, where(:last_crawl_status => OK_STATUS)
   scope :summarized, where(:last_crawl_status => SUMMARIZED_STATUS)
   scope :not_ok, where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)")
@@ -157,6 +158,10 @@ class IndexedDocument < ActiveRecord::Base
     inner_text.gsub(/ /, ' ').squish.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub('&amp;', '&').squish
   end
 
+  def last_crawl_status_error?
+    !NON_ERROR_STATUSES.include?(last_crawl_status)
+  end
+
   class << self
     include QueryPreprocessor
 
@@ -201,6 +206,10 @@ class IndexedDocument < ActiveRecord::Base
 
   def self_url
     @self_url ||= URI.parse(self.url) rescue nil
+  end
+
+  def source_manual?
+    source == 'manual'
   end
 
   private

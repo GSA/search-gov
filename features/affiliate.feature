@@ -2037,7 +2037,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Site information"
     And I follow "Emergency Delete"
-    And I fill in "URL*" with "www.whitehouse.gov/our-government"
+    And I fill in "URL*" with "www.whitehouse"
     And I press "Add"
     Then I should see "Url is invalid"
 

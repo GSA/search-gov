@@ -8,7 +8,10 @@ describe FlickrPhoto do
       :flickr_id => '12345678'
     }
     @affiliate = affiliates(:basic_affiliate)
-    @flickr_profile = FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
+    @flickr_profile = FlickrProfile.create!(url: 'http://www.flickr.com/groups/usagov/',
+                                            affiliate: @affiliate,
+                                            profile_type: 'user',
+                                            profile_id: '12345')
   end
 
   it { should validate_presence_of :flickr_id }

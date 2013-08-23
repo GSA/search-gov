@@ -1,0 +1,25 @@
+= content_for_site_page_title @site, 'Supplemental Feed'
+= form_for @site_feed_url, url: site_supplemental_feed_path(@site), html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Supplemental Feed
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'Supplemental URLs', site_supplemental_urls_path(@site)
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = f.label :rss_url, 'URL', class: 'required input-primary'
+  = f.text_field :rss_url, class: 'required'
+
+  - unless @site_feed_url.new_record?
+    %dl
+      %dt Last Crawled
+      %dd= site_feed_url_last_crawled @site_feed_url.last_checked_at
+      %dt Status
+      %dd= @site_feed_url.last_fetch_status
+
+- unless @site_feed_url.new_record?
+  .l-inner-content
+    = button_to 'Remove', site_supplemental_feed_path(@site), method: :delete, data: { confirm: 'Are you sure you wish to remove your supplemental feed?' }, class: 'btn btn-small btn-danger'

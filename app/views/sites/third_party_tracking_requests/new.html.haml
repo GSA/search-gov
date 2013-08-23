@@ -10,15 +10,15 @@
   = render_site_flash_message
 
   %dl
-    %dt Existing Code:
-    %dd
-      - if @site.external_tracking_code.present?
+    - if @site.external_tracking_code.present?
+      %dt Existing Code
+      %dd
         %p Here is the current tracking code that is live for your site:
         %pre= @site.external_tracking_code
-      - else
-        %p You do not currently have any tracking code live for your site.
+    - else
+      %p You do not currently have any tracking code live for your site.
     - if @site.submitted_external_tracking_code.present?
-      %dt New Code:
+      %dt New Code
       %dd
         %p The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.
 

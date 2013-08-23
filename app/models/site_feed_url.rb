@@ -1,4 +1,5 @@
 class SiteFeedUrl < ActiveRecord::Base
+  HUMAN_ATTRIBUTE_NAME_HASH = { rss_url: 'URL' }
   belongs_to :affiliate
   before_validation NormalizeUrl.new(:rss_url)
   validates_presence_of :rss_url
@@ -25,6 +26,10 @@ class SiteFeedUrl < ActiveRecord::Base
   rescue Exception => e
     Rails.logger.warn(e)
     update_attributes!(last_fetch_status: e.message)
+  end
+
+  def self.human_attribute_name(attribute_key_name, options = {})
+    HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
   end
 
   private

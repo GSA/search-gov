@@ -16,6 +16,8 @@ module HtmlSelectorsHelpers
       '#urls .modal-body .urls'
     when /the RSS URL last crawl status error message/
       '#urls .error .last-crawl-status.in'
+    when /the Supplemental URL last crawl status error message/
+      '#indexed-documents .error .last-crawl-status.in'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

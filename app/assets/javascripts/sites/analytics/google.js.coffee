@@ -9,4 +9,13 @@
 `
 
 $(document).on 'page:change', () ->
-  ga 'send', 'pageview'
+  ga 'create', 'UA-31302465-4', 'usa.gov'
+  page = window.location.pathname + window.location.search
+  ga 'send', 'pageview', { 'page': page }
+
+trackViewModal = () ->
+  page = $(this).data 'url'
+  page ?= $(this).attr 'href'
+  ga 'send', 'pageview', { 'page': page, 'title': 'viewModal', }
+
+$(document).on 'click', '.help-link, #preview-trigger', trackViewModal

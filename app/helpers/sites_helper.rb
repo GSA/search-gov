@@ -81,8 +81,9 @@ module SitesHelper
   end
 
   def site_manage_content_controllers
-    %w(boosted_contents contents document_collections domains flickr_profiles rss_feeds
-        twitter_profiles youtube_profiles)
+    %w(boosted_contents contents document_collections domains excluded_urls
+       flickr_profiles indexed_documents rss_feeds site_feed_urls
+       twitter_profiles youtube_profiles)
   end
 
   def list_item_with_link_to_current_help_page
@@ -90,8 +91,8 @@ module SitesHelper
     content_tag(:li, link_to('Help?', help_link.help_page_url, class: 'help-link menu')) if help_link
   end
 
-  def site_nav_css_class_hash(nav_name)
-    nav_name == controller_name ? { class: 'active'} : {}
+  def site_nav_css_class_hash(*nav_names)
+    nav_names.include?(controller_name) ? { class: 'active'} : {}
   end
 
   def site_locale(site)

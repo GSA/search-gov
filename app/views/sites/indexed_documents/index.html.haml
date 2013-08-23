@@ -1,0 +1,32 @@
+= content_for_site_page_title @site, 'Supplemental URLs'
+.sub-nav-heading
+  %h2 Supplemental URLs
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Supplemental Feed', edit_site_supplemental_feed_path(@site)
+      %li= link_to 'Add Supplemental URL', new_site_supplemental_url_path(@site)
+
+= render_site_flash_message
+%table#indexed-documents.table
+  %thead
+    %tr
+      %th URL
+      %th Source
+      %th Last Crawled
+      %th Status
+      %th Actions
+  %tbody
+    - @indexed_documents.each do |indexed_document|
+      %tr{ indexed_document_class_hash(indexed_document) }
+        %td
+          = link_to url_without_protocol(indexed_document.url), indexed_document.url, target: '_blank'
+          = indexed_document_last_crawl_status_error indexed_document
+        %td= indexed_document_source indexed_document.source
+        %td= indexed_document_last_crawled_on indexed_document
+        %td= indexed_document_last_crawl_status indexed_document
+        %td.actions.actions-1x
+          %ul
+            - if indexed_document.source_manual?
+              %li= button_to 'Remove', site_supplemental_url_path(@site, indexed_document.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{url_without_protocol(indexed_document.url)} from this site?" }, class: 'btn btn-small'
+= will_paginate @indexed_documents, renderer: BootstrapPagination::Rails

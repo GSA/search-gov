@@ -114,16 +114,19 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
-      resource :queries, only: [:show]
-      resource :clicks, only: [:show]
-      resource :monthly_reports, only: [:show]
-      resource :third_party_tracking_request, only: [:new, :create]
-      resource :raw_logs_access, only: [:new, :create]
-      resource :embed_code, only: [:show]
       resource :api_instructions, only: [:show]
+      resource :clicks, only: [:show]
       resource :content, only: [:show]
+      resource :embed_code, only: [:show]
+      resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]
+      resource :raw_logs_access, only: [:new, :create]
+      resource :queries, only: [:show]
       resource :setting, only: [:edit, :update]
+      resource :third_party_tracking_request, only: [:new, :create]
+      resource :supplemental_feed,
+               controller: 'site_feed_urls',
+               only: [:edit, :create, :update, :destroy]
 
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
@@ -135,13 +138,21 @@ UsasearchRails3::Application.routes.draw do
       resources :collections, controller: 'document_collections' do
         collection { get :new_url_prefix }
       end
-      resources :domains, except: [:show]
+      resources :domains, except: [:show] do
+        member { get :advanced }
+      end
+      resources :filter_urls,
+                controller: 'excluded_urls',
+                only: [:index, :new, :create, :destroy]
       resources :flickr_urls,
                 controller: 'flickr_profiles',
                 only: [:index, :new, :create, :destroy]
       resources :rss_feeds do
         collection { get :new_url }
       end
+      resources :supplemental_urls,
+                controller: 'indexed_documents',
+                except: [:show, :edit, :update]
       resources :twitter_handles,
                 controller: 'twitter_profiles',
                 only: [:index, :new, :create, :destroy]

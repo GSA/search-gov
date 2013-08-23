@@ -1,0 +1,17 @@
+= content_for_site_page_title @site, 'Add Supplemental URL'
+= form_for @indexed_document, url: { action: :create }, html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Add Supplemental URL
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'View All', site_supplemental_urls_path(@site)
+        %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = f.label :url, 'URL', class: 'required'
+  = f.text_field :url, class: 'required input-primary'
+  = f.label :title, nil, class: 'required'
+  = f.text_field :title, class: 'required'
+  = f.label :description, nil, class: 'required'
+  = f.text_field :description, class: 'required'

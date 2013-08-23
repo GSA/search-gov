@@ -24,7 +24,7 @@ span.properties {
 }
 
 .actions {
-  ul {
+  > ul {
     .inline();
     .pull-right();
     .unstyled();
@@ -34,6 +34,11 @@ span.properties {
     > li {
       padding-right: 0;
       padding-left: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      outline: none;
     }
 
     form {

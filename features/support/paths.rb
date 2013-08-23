@@ -116,6 +116,10 @@ module NavigationHelpers
       site_embed_code_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Analytics page$/
       new_site_raw_logs_access_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Filter URLs page$/
+      site_filter_urls_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Supplemental URLs page$/
+      site_supplemental_urls_path(Affiliate.find_by_name($1))
     when /^the sites page$/
       sites_path
     when /^the new site page$/

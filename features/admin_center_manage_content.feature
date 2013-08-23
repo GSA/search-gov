@@ -156,6 +156,35 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed gobiernousa.gov from this site"
 
+  Scenario: View Filter URLs
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following Excluded URLs exist for the site "agency.gov":
+      | url                     |
+      | http://aff.gov/bad-url1 |
+      | http://aff.gov/bad-url2 |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Filter URLs page
+    Then I should see the following table rows:
+      | aff.gov/bad-url1 |
+      | aff.gov/bad-url2 |
+
+  Scenario: Add/remove Filter URL
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Filter URLs page
+    And I follow "Add Filter URL"
+    And I fill in "URL" with "agency.gov/exclude-me.html"
+    And I press "Add"
+    Then I should see "You have added agency.gov/exclude-me.html to this site"
+    And I should see the following table rows:
+      | agency.gov/exclude-me.html |
+    When I press "Remove"
+    Then I should see "You have removed agency.gov/exclude-me.html from this site"
+
   Scenario: View Flickr URLs
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -237,6 +266,65 @@ Feature: Manage Content
     Then I should see "You have updated Food, Safety and Pet Health Recalls"
     When I press "Remove"
     Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
+
+  Scenario: Edit/remove Supplemental Feed
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Supplemental URLs page
+    And I follow "Supplemental Feed"
+    And I press "Save"
+    Then I should see "URL can't be blank"
+    When I fill in the following:
+      | URL | usasearch.howto.gov/all.atom |
+    And I press "Save"
+    Then I should see "You have updated your supplemental feed for this site"
+    And the "URL" field should contain "http://usasearch.howto.gov/all.atom"
+    And I should see "Last Crawled Pending"
+    And I should see "Status Pending"
+    When I press "Remove"
+    Then I should see "You have removed your supplemental feed from this site"
+
+  @javascript
+  Scenario: View Supplemental URLs
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following IndexedDocuments exist:
+      | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
+      | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
+      | http://aff.gov/extremelysuperlongurl/rocket     | Rocket Evolution     | description text for rocket     | agency.gov | 11/01/2011      | 404 Not Found     | rss    |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Supplemental URLs page
+    Then I should see the following table rows:
+      | URL                                      | Source | Last Crawled | Status |
+      | aff.gov/extremelysuperlongurl/rocket     | Feed   | 11/1/2011    | Error  |
+      | aff.gov/extremelysuperlongurl/space-suit | Manual | 11/2/2011    | OK     |
+    When I follow "Error"
+    Then I should find "404 Not Found" in the Supplemental URL last crawl status error message
+
+  Scenario: Add/edit/remove Supplemental URL
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Supplemental URLs page
+    And I follow "Add Supplemental URL"
+    And I fill in the following:
+      | URL         | usasearch.howto.gov/developer/jobs.html             |
+      | Title       | Jobs API                                            |
+      | Description | Helping job seekers land a job with the government. |
+    And I press "Add"
+    Then I should see "You have added usasearch.howto.gov/developer/jobs.html to this site"
+    And I should see the following table rows:
+      | URL                                     | Source |
+      | usasearch.howto.gov/developer/jobs.html | Manual |
+    And I should see the following table rows:
+      | Status     |
+      | Summarized |
+    When I press "Remove"
+    Then I should see "You have removed usasearch.howto.gov/developer/jobs.html from this site"
 
   Scenario: View Twitter Handles
     Given the following Affiliates exist:
