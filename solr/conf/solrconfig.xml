@@ -290,7 +290,7 @@
          autowarmCount - the number of entries to prepopulate from
            and old cache.
          -->
-    <filterCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="1024"/>
+    <filterCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="0"/>
     <!-- Cache used to hold field values that are quickly accessible
          by document id.  The fieldValueCache is created by default
          even if not configured here.
