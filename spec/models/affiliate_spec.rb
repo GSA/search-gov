@@ -36,11 +36,12 @@ describe Affiliate do
     it { should have_many :sayt_suggestions }
     it { should have_many(:featured_collections).dependent(:destroy) }
     it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
-    it { should have_many(:features) }
+    it { should have_many(:features).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
     it { should have_many(:rss_feed_urls).through :rss_feeds }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:excluded_domains).dependent(:destroy) }
+    it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:facebook_profiles).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
     it { should have_and_belong_to_many :youtube_profiles }
@@ -48,6 +49,14 @@ describe Affiliate do
     it { should have_many :twitter_profiles }
     it { should belong_to :agency }
     it { should have_one(:affiliate_note).dependent(:destroy) }
+    it { should have_many(:navigations).dependent(:destroy) }
+    it { should have_many(:daily_query_noresults_stats).dependent(:delete_all) }
+    it { should have_many(:daily_click_stats).dependent(:delete_all) }
+    it { should have_many(:queries_clicks_stats).dependent(:delete_all) }
+    it { should have_many(:daily_left_nav_stats).dependent(:delete_all) }
+    it { should have_many(:daily_usage_stats).dependent(:delete_all) }
+    it { should have_many(:daily_search_module_stats).dependent(:delete_all) }
+    it { should have_many(:daily_query_stats).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:name) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
@@ -322,10 +331,10 @@ describe Affiliate do
 
     it 'should set look_and_feel_css' do
       affiliate.staged_theme = 'natural'
-      affiliate.css_property_hash = { font_family: 'Verdana, sans-serif' }
-      affiliate.staged_css_property_hash = { font_family: 'Georgia, serif' }
-      affiliate.managed_header_css_properties = { header_footer_link_color: '#445566' }
-      affiliate.staged_managed_header_css_properties = { header_footer_link_color: '#AABBCC' }
+      affiliate.css_property_hash = {font_family: 'Verdana, sans-serif'}
+      affiliate.staged_css_property_hash = {font_family: 'Georgia, serif'}
+      affiliate.managed_header_css_properties = {header_footer_link_color: '#445566'}
+      affiliate.staged_managed_header_css_properties = {header_footer_link_color: '#AABBCC'}
       affiliate.save!
 
       expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Verdana,sans-serif\}/)

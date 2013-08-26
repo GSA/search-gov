@@ -18,3 +18,4 @@
     %dd= @site.id
     %dt Site Language
     %dd= site_locale @site
+= button_to('Delete', site_path(@site), :data => {:confirm => "Are you sure you want to delete this site?"}, :method => :delete, :class => 'btn btn-danger')

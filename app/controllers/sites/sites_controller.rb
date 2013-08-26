@@ -1,5 +1,5 @@
 class Sites::SitesController < Sites::BaseController
-  before_filter :setup_site, only: [:show, :pin]
+  before_filter :setup_site, only: [:show, :pin, :destroy]
 
   def index
     if current_user.is_affiliate_admin? and current_user.default_affiliate
@@ -35,6 +35,11 @@ class Sites::SitesController < Sites::BaseController
       @site.site_domains.first.domain = "http://#{@site.site_domains.first.domain}" if @site.site_domains.first.domain.present?
       render action: :new
     end
+  end
+
+  def destroy
+    Resque.enqueue_with_priority(:low, SiteDestroyer, @site.id)
+    redirect_to new_site_path, :flash => {:success => "Scheduled site '#{@site.display_name}' for deletion. This could take several hours to complete."}
   end
 
   def pin

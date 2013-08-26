@@ -147,4 +147,26 @@ describe Sites::SitesController do
       it { should set_the_flash.to('You have set NPS Site as your default site.') }
     end
   end
+
+  describe "#destroy" do
+    it_should_behave_like 'restricted to approved user', :delete, :destroy
+
+    context 'when logged in as affiliate' do
+      include_context 'approved user logged in to a site'
+
+      it 'should enqueue destruction of affiliate' do
+        Resque.should_receive(:enqueue_with_priority).with(:low, SiteDestroyer, site.id)
+        delete :destroy, id: site.id
+      end
+
+      context 'when successful' do
+        before do
+          delete :destroy, id: site.id
+        end
+
+        it { should redirect_to(new_site_path) }
+        it { should set_the_flash.to("Scheduled site '#{site.display_name}' for deletion. This could take several hours to complete.") }
+      end
+    end
+  end
 end

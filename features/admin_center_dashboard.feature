@@ -149,3 +149,11 @@ Feature: Dashboard
     And I should see "Dear Affiliate Manager" in the email body
     And I should see "Site name: Agency Gov" in the email body
     And I should see "affiliate_manager@fixtures.org" in the email body
+
+  Scenario: Deleting a site
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    And I follow "Settings"
+    And I press "Delete"
+    Then I should land on the new site page 
+    And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."

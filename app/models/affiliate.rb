@@ -9,7 +9,7 @@ class Affiliate < ActiveRecord::Base
 
   has_and_belongs_to_many :users, order: 'contact_name'
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
-  has_many :features, :through => :affiliate_feature_addition
+  has_many :features, :through => :affiliate_feature_addition, :dependent => :destroy
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
@@ -31,10 +31,17 @@ class Affiliate < ActiveRecord::Base
   has_many :facebook_profiles, :dependent => :destroy
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.username ASC'
   has_one :image_search_label, :dependent => :destroy
-  has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
+  has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC', :dependent => :destroy
   belongs_to :agency
   has_one :affiliate_note, dependent: :destroy
   has_one :site_feed_url, dependent: :destroy
+  has_many :daily_query_stats, dependent: :destroy, foreign_key: :affiliate, primary_key: :name
+  has_many :daily_query_noresults_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
+  has_many :daily_click_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
+  has_many :queries_clicks_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
+  has_many :daily_left_nav_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
+  has_many :daily_usage_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
+  has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
