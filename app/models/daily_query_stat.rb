@@ -35,6 +35,12 @@ class DailyQueryStat < ActiveRecord::Base
       end
     end
 
+    def prune_before(time)
+      Sunspot.remove(DailyQueryStat) do
+        with(:day).less_than(time)
+      end
+    end
+
     def search_for(query, affiliate_name, start_date = 1.year.ago, end_date = Date.current, per_page = 3000)
       solr_search_ids do
         with :affiliate, affiliate_name

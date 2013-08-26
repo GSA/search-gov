@@ -10,6 +10,11 @@ namespace :usasearch do
         DailyQueryStat.reindex_day(day)
       end
     end
+
+    desc 'tell Solr to prune DailyQueryStats more than X months old'
+    task :prune_before, [:months_back] => [:environment] do |t,args|
+      DailyQueryStat.prune_before(args[:months_back].to_i.months.ago.beginning_of_month.beginning_of_day)
+    end
   end
 
 end

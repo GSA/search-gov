@@ -207,6 +207,25 @@ describe DailyQueryStat do
     end
   end
 
+  describe '.prune_before(time)' do
+    let(:min_day) { 5.months.ago.beginning_of_month }
+
+    before do
+      DailyQueryStat.delete_all
+      DailyQueryStat.create!(:day => min_day - 1.day, :query => "delete this", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => min_day, :query => "keep this", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.reindex
+      Sunspot.commit
+    end
+
+    it 'should remove records older than time' do
+      DailyQueryStat.prune_before(min_day.beginning_of_day)
+      Sunspot.commit
+      DailyQueryStat.search_for("delete", Affiliate::USAGOV_AFFILIATE_NAME).should == []
+      DailyQueryStat.search_for("keep", Affiliate::USAGOV_AFFILIATE_NAME).size.should == 1
+    end
+  end
+
   describe ".bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)" do
     before do
       DailyQueryStat.delete_all

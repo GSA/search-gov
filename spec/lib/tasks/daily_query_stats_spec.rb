@@ -26,6 +26,17 @@ describe "daily_query_stats rake tasks" do
       end
     end
 
+    describe "usasearch:daily_query_stats:prune_before" do
+      let(:task_name) { "usasearch:daily_query_stats:prune_before" }
+      before { @rake[task_name].reenable }
+
+      it "should call #prune_before for X months ago" do
+        months_back = '13'
+        DailyQueryStat.should_receive(:prune_before).with(months_back.to_i.months.ago.beginning_of_month.beginning_of_day)
+        @rake[task_name].invoke("13")
+      end
+    end
+
   end
 
 end
