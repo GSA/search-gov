@@ -213,7 +213,7 @@ describe DailyQueryStat do
     before do
       DailyQueryStat.delete_all
       DailyQueryStat.create!(:day => min_day - 1.day, :query => "delete this", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-      DailyQueryStat.create!(:day => min_day, :query => "keep this", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => min_day + 1.day, :query => "keep this", :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       DailyQueryStat.reindex
       Sunspot.commit
     end
