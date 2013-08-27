@@ -1,0 +1,15 @@
+= content_for_site_page_title @site, 'Get Code'
+.sub-nav-heading
+  %h2 Get Code
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+%h2 Form Snippet
+= find_and_preserve do
+  = render 'form_embed_code_text_area'
+
+%h2 Type-ahead search and USASearch Tag Snippet
+= find_and_preserve do
+  = render 'bottom_page_embed_code_text_area'
+

@@ -155,5 +155,5 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I press "Delete"
-    Then I should land on the new site page 
+    Then I should land on the new site page
     And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."

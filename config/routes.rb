@@ -114,6 +114,8 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
+      resource :embed_code, only: [:show]
+      resource :api_instructions, only: [:show]
       resource :content, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]

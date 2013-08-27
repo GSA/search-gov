@@ -112,6 +112,8 @@ module NavigationHelpers
       site_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Content page$/
       site_content_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Activate Search page$/
+      site_embed_code_path(Affiliate.find_by_name($1))
     when /^the sites page$/
       sites_path
     when /^the new site page$/

@@ -1,0 +1,5 @@
+.main-nav-info
+  .title Activate Search
+%ul.nav.nav-list
+  %li{ site_nav_css_class_hash('embed_codes') }= link_to 'Code Snippets', site_embed_code_path(@site)
+  %li{ site_nav_css_class_hash('api_instructions') }= link_to 'API Instructions', site_api_instructions_path(@site)

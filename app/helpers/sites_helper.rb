@@ -72,6 +72,10 @@ module SitesHelper
     %w(settings sites users)
   end
 
+  def site_activate_search_controllers
+    %w(embed_codes api_instructions)
+  end
+
   def site_manage_content_controllers
     %w(boosted_contents contents document_collections domains flickr_profiles rss_feeds
         twitter_profiles youtube_profiles)
