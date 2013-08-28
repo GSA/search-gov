@@ -76,6 +76,10 @@ module SitesHelper
     %w(embed_codes api_instructions)
   end
 
+  def site_analytics_controllers
+    %w(raw_logs_accesses)
+  end
+
   def site_manage_content_controllers
     %w(boosted_contents contents document_collections domains flickr_profiles rss_feeds
         twitter_profiles youtube_profiles)
