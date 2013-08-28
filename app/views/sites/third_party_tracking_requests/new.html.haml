@@ -1,0 +1,25 @@
+= content_for_site_page_title @site, '3rd Party Tracking'
+= form_tag site_third_party_tracking_request_path, class: 'form' do
+  .sub-nav-heading
+    %h2 3rd Party Tracking
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= submit_tag "Submit", class: 'btn submit disabled', disabled: true
+
+  = render_site_flash_message
+
+  %dl
+    %dt Existing Code:
+    %dd
+      - if @site.external_tracking_code.present?
+        %p Here is the current tracking code that is live for your site:
+        %pre= @site.external_tracking_code
+      - else
+        %p You do not currently have any tracking code live for your site.
+    - if @site.submitted_external_tracking_code.present?
+      %dt New Code:
+      %dd
+        %p The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.
+
+  = text_area_tag :submitted_external_tracking_code, nil, required: true, class: 'required input-primary', placeholder: "Please insert your web analytics JavaScript code here.", id: 'external_tracking_code'
