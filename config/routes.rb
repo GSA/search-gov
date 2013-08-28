@@ -114,6 +114,9 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
+      resource :queries, only: [:show]
+      resource :clicks, only: [:show]
+      resource :monthly_reports, only: [:show]
       resource :third_party_tracking_request, only: [:new, :create]
       resource :raw_logs_access, only: [:new, :create]
       resource :embed_code, only: [:show]

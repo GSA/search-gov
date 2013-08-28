@@ -1,7 +1,5 @@
-class Sites::TwitterProfilesController < Sites::BaseController
+class Sites::TwitterProfilesController < Sites::SetupSiteController
   include TextHelper
-
-  before_filter :setup_site
 
   def index
     @twitter_profiles = @site.twitter_profiles

@@ -1,5 +1,4 @@
-class Sites::DomainsController < Sites::BaseController
-  before_filter :setup_site
+class Sites::DomainsController < Sites::SetupSiteController
   before_filter :setup_domain, only: [:edit, :update, :destroy]
 
   def index

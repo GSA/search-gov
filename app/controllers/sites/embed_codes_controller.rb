@@ -1,6 +1,4 @@
-class Sites::EmbedCodesController < Sites::BaseController
-  before_filter :setup_site
-
+class Sites::EmbedCodesController < Sites::SetupSiteController
   def show
   end
 end

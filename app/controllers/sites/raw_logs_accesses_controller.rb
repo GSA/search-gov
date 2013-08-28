@@ -1,5 +1,4 @@
-class Sites::RawLogsAccessesController < Sites::BaseController
-  before_filter :setup_site
+class Sites::RawLogsAccessesController < Sites::SetupSiteController
 
   def new
   end

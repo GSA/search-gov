@@ -77,7 +77,7 @@ module SitesHelper
   end
 
   def site_analytics_controllers
-    %w(raw_logs_accesses third_party_tracking_requests)
+    %w(queries clicks monthly_reports raw_logs_accesses third_party_tracking_requests)
   end
 
   def site_manage_content_controllers

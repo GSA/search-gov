@@ -1,6 +1,4 @@
-class Sites::UsersController < Sites::BaseController
-  before_filter :setup_site
-
+class Sites::UsersController < Sites::SetupSiteController
   def index
     @users = @site.users
   end

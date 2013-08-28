@@ -1,5 +1,4 @@
-class Sites::YoutubeProfilesController < Sites::BaseController
-  before_filter :setup_site
+class Sites::YoutubeProfilesController < Sites::SetupSiteController
 
   def index
     @youtube_profiles = @site.youtube_profiles

@@ -1,6 +1,4 @@
-class Sites::ContentsController < Sites::BaseController
-  before_filter :setup_site
-
+class Sites::ContentsController < Sites::SetupSiteController
   def show
   end
 end

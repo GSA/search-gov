@@ -10,7 +10,7 @@ Feature: Affiliate log access
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | true            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Analytics page
-#    And I follow "Raw logs access"
+    And I follow "Raw Logs"
     Then I should see "Raw Logs"
 
     When I press "Upload"

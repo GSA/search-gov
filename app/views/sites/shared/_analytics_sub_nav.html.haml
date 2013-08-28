@@ -1,5 +1,8 @@
 .main-nav-info
   .title Analytics
 %ul.nav.nav-list
+  %li{ site_nav_css_class_hash('queries') }= link_to 'Queries', site_queries_path(@site)
+  %li{ site_nav_css_class_hash('clicks') }= link_to 'Clicks', site_clicks_path(@site)
+  %li{ site_nav_css_class_hash('monthly_reports') }= link_to 'Monthly Reports', site_monthly_reports_path(@site)
   %li{ site_nav_css_class_hash('third_party_tracking_requests') }= link_to '3rd Party Tracking', new_site_third_party_tracking_request_path(@site)
   %li{ site_nav_css_class_hash('raw_logs_accesses') }= link_to 'Raw Logs', new_site_raw_logs_access_path(@site)

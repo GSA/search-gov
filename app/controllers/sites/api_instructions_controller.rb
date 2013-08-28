@@ -1,6 +1,4 @@
-class Sites::ApiInstructionsController < Sites::BaseController
-  before_filter :setup_site
-
+class Sites::ApiInstructionsController < Sites::SetupSiteController
   def show
   end
 end

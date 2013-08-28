@@ -1,5 +1,4 @@
-class Sites::SettingsController < Sites::BaseController
-  before_filter :setup_site
+class Sites::SettingsController < Sites::SetupSiteController
 
   def edit
   end

@@ -1,5 +1,4 @@
-class Sites::DocumentCollectionsController < Sites::BaseController
-  before_filter :setup_site
+class Sites::DocumentCollectionsController < Sites::SetupSiteController
   before_filter :setup_collection, only: [:show, :edit, :update, :destroy]
 
   def index

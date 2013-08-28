@@ -1,7 +1,5 @@
-class Sites::FlickrProfilesController < Sites::BaseController
+class Sites::FlickrProfilesController < Sites::SetupSiteController
   include TextHelper
-
-  before_filter :setup_site
 
   def index
     @flickr_profiles = @site.flickr_profiles

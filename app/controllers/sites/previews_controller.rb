@@ -1,5 +1,4 @@
-class Sites::PreviewsController < Sites::BaseController
-  before_filter :setup_site
+class Sites::PreviewsController < Sites::SetupSiteController
 
   def show
     respond_to do |format|

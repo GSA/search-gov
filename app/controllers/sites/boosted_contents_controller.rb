@@ -1,6 +1,5 @@
-class Sites::BoostedContentsController < Sites::BaseController
+class Sites::BoostedContentsController < Sites::SetupSiteController
   include ActionView::Helpers::TextHelper
-  before_filter :setup_site
   before_filter :setup_boosted_content, only: [:edit, :update, :destroy]
 
   def index

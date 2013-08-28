@@ -1,6 +1,5 @@
-class Sites::RssFeedsController < Sites::BaseController
+class Sites::RssFeedsController < Sites::SetupSiteController
   include ActionView::Helpers::TextHelper
-  before_filter :setup_site
   before_filter :setup_rss_feed, only: [:show, :edit, :update]
   before_filter :setup_non_managed_rss_feed, only: [:destroy]
 
