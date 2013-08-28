@@ -5,12 +5,9 @@
     %ul
       = list_item_with_link_to_current_help_page
 
-%h2 API Instructions
-
 %p
-  USASearch's Search Data API returns web, images, document, news, and video news search results, in JSON or XML format, along with sections for summary stats, boosted sites, jobs, and related searches.
-%p
-  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
+  Returns results for web, images, videos, documents, and news in JSON or XML, along with sections for summary stats,
+  boosted sites (that is, best bests), jobs, and related searches.
 
 .api
   %h3
