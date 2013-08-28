@@ -4,6 +4,7 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
+      = render 'sites/shared/domains_advanced_options'
       %li= link_to 'Add Filter URL', new_site_filter_url_path(@site)
 
 = render_site_flash_message

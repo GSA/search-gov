@@ -4,14 +4,7 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
-      %li#domains-menu.dropdown
-        = link_to '#domains-menu', data: { toggle: 'dropdown' } do
-          Advanced
-          %i.icon-caret-down
-        %ul.dropdown-menu
-          %li= link_to 'Supplemental Feed', edit_site_supplemental_feed_path(@site)
-          %li= link_to 'Supplemental URLs', site_supplemental_urls_path(@site)
-          %li= link_to 'Filter URLs', site_filter_urls_path(@site)
+      = render 'sites/shared/domains_advanced_options'
       %li= link_to 'Add Domain', new_site_domain_path(@site)
 
 = render_site_flash_message

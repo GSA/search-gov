@@ -5,7 +5,7 @@
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= link_to 'Supplemental URLs', site_supplemental_urls_path(@site)
+        = render 'sites/shared/domains_advanced_options'
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
 
   = render_site_flash_message
