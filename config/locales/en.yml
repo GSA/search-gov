@@ -17,7 +17,8 @@ en:
   approximate: 'About '
   result: 'result'
   results_summary: 'Page %{page} of %{approximate}%{total}'
-  news_results: "News for '%{query}'"
+  default_rss_govbox_label: 'News'
+  news_results: "%{rss_govbox_label} for '%{query}'"
   video_news_results: "Videos of '%{query}'"
   photo_results: "Photos of '%{query}'"
   related_searches: "Related Searches"

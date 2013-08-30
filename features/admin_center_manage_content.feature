@@ -389,7 +389,13 @@ Feature: Manage Content
     And I press "Add"
     Then I should see "You have added usgovernment to this site"
     And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
-    When I press "Remove"
+
+    When I follow "Manage Display"
+    Then the "Is video govbox enabled" checkbox should be checked
+
+    When I follow "Manage Content"
+    And I follow "YouTube"
+    And I press "Remove"
     Then I should see "You have removed usgovernment from this site"
     When I follow "Add YouTube Username"
     When I fill in "YouTube Username" with "usasearch"

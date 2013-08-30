@@ -27,8 +27,6 @@ class Sites::TwitterProfilesController < Sites::SetupSiteController
       twitter_setting = AffiliateTwitterSetting.new(twitter_setting_params)
       twitter_setting.save!
 
-      @site.update_attributes!(is_twitter_govbox_enabled: true)
-
       redirect_to site_twitter_handles_path(@site),
                   flash: { success: "You have added @#{twitter_user.screen_name} to this site." }
     end

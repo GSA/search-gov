@@ -1,0 +1,6 @@
+= fields_for "site[connections_attributes][#{@index}]" do |f|
+  :plain
+    jQuery('#related-sites tbody').append("#{escape_javascript(render('connection_fields', f: f, keyword: Connection.new, index: @index))}");
+    jQuery('#new-connection-trigger').data({ params: { index: "#{@index + 1}" } });
+    jQuery('#related-sites').tableDnDUpdate();
+    jQuery('#related-sites .site-name input[type="text"]').last().focus();

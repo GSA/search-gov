@@ -1,0 +1,61 @@
+%h3 GovBoxes
+%table#govboxes.table
+  %thead
+    %tr
+      %th Name
+      %th Source
+      %th Setting
+  %tbody
+    - if @site.rss_feeds.non_managed.non_mrss.exists?
+      %tr
+        %td.name
+          = f.label :rss_govbox_label, nil, class: 'hide'
+          = f.text_field :rss_govbox_label
+        %td.cell-1x RSS (combined)
+        %td.cell-1x
+          .switch-button= f.check_box :is_rss_govbox_enabled
+          = f.label :is_rss_govbox_enabled, nil, maxlength: 20, class: 'hide'
+    - if @site.youtube_profiles.exists?
+      %tr
+        %td Videos
+        %td.cell-1x YouTube
+        %td.cell-1x
+          .switch-button= f.check_box :is_video_govbox_enabled
+          = f.label :is_video_govbox_enabled, nil, maxlength: 20, class: 'hide'
+    - if @site.flickr_profiles.exists?
+      %tr
+        %td Photos
+        %td.cell-1x Flickr
+        %td.cell-1x
+          .switch-button= f.check_box :is_photo_govbox_enabled
+          = f.label :is_photo_govbox_enabled, nil, class: 'hide'
+    %tr
+      %td Job openings
+      %td.cell-1x USAJobs/NeoGov
+      %td.cell-1x
+        .switch-button= f.check_box :jobs_enabled
+        = f.label :jobs_enabled, 'Is jobs govbox enabled', class: 'hide'
+    %tr
+      %td Agency contact information
+      %td.cell-1x USASearch
+      %td.cell-1x
+        .switch-button= f.check_box :is_agency_govbox_enabled
+        = f.label :is_agency_govbox_enabled, nil, class: 'hide'
+    %tr
+      %td Related searches
+      %td.cell-1x USASearch
+      %td.cell-1x
+        .switch-button= f.check_box :is_related_searches_enabled
+        = f.label :is_related_searches_enabled, nil, class: 'hide'
+    %tr
+      %td Health topics
+      %td.cell-1x Medline Plus
+      %td.cell-1x
+        .switch-button= f.check_box :is_medline_govbox_enabled
+        = f.label :is_medline_govbox_enabled, nil, class: 'hide'
+    - if @site.twitter_profiles.exists?
+      %tr
+        %td Recent Tweets
+        %td.cell-1x Twitter
+        %td.cell-1x
+          .muted ON (delete Twitter to turn off)

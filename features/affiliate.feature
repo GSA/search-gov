@@ -189,14 +189,9 @@ Feature: Affiliate clients
     And the "Show by time period module" checkbox should be checked
 
     When I follow "Results modules" in the site navigation bar
-    Then the "Is agency govbox enabled" checkbox should not be checked
+    Then the "Is rss govbox enabled" checkbox should not be checked
+    And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
-    And I should see the following table rows:
-      | Name         | Source    |
-      | Agency       | USASearch |
-      | Medline      | USASearch |
-      | Recalls Feed | RSS       |
-    And the "Show RSS feed 0 in govbox" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
 
     When I go to agencygov's search page
@@ -2112,9 +2107,6 @@ Feature: Affiliate clients
       | Twitter | USASearch (show lists) |
     And I should see a link to "USASearch" with url for "http://twitter.com/USASearch" in the social media list
 
-    When I follow "Results modules"
-    Then the "Is twitter govbox enabled" checkbox should be checked
-
   Scenario: Adding Youtube profile
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -2136,7 +2128,7 @@ Feature: Affiliate clients
     Then I should see the browser page titled "Social Media"
 
     When I follow "Results modules"
-    Then the "Show RSS feed 0 in govbox" checkbox should be checked
+    Then the "Is video govbox enabled" checkbox should be checked
 
   Scenario: Deleting Youtube Profile
     Given the following Affiliates exist:
@@ -2459,14 +2451,6 @@ Feature: Affiliate clients
     When I follow "Add new RSS feed" in the page content
     Then I should see "Add a new RSS Feed" in the page header
 
-    When I follow "Results modules"
-    And I follow "Press" in the page content
-    Then I should see "www.whitehouse.gov/feed/press"
-
-    When I follow "Results modules"
-    And I follow "RSS" in the page content
-    Then I should see "www.whitehouse.gov/feed/press"
-
   Scenario: Editing the results modules
     Given the following Affiliates exist:
       | display_name   | name       | contact_email | contact_name | locale  | youtube_handles  |
@@ -2478,10 +2462,10 @@ Feature: Affiliate clients
       | aff.gov        | Agency Website |
       | whitehouse.gov | WH Website     |
     And affiliate "aff.gov" has the following RSS feeds:
-      | name           | url                                                | position | shown_in_govbox |
-      | APress         | http://www.whitehouse.gov/feed/press               | 0        | true            |
-      | BPhoto Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        | true            |
-      | ZNot in GovBox | http://www.whitehouse.gov/feed/media/not-in-govbox | 2        | false           |
+      | name           | url                                                | position |
+      | APress         | http://www.whitehouse.gov/feed/press               | 0        |
+      | BPhoto Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 1        |
+    And the rss govbox is enabled for the site "aff.gov"
     And feed "APress" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
@@ -2489,10 +2473,6 @@ Feature: Affiliate clients
     And feed "BPhoto Gallery" has the following news items:
       | link                             | title      | guid  | published_ago | description                      |
       | http://www.whitehouse.gov/news/3 | Third item | uuid3 | day           | item Next news item for the feed |
-    And feed "ZNot in Govbox" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item More news items for the feed |
-      | http://www.whitehouse.gov/news/5 | Fifth item  | uuid5 | week          | item Last news item for the feed  |
     And the following SAYT Suggestions exist for aff.gov:
       | phrase           |
       | some unique item |
@@ -2511,25 +2491,15 @@ Feature: Affiliate clients
     When I am logged in with email "aff@bar.gov" and password "random_string"
     And I go to the "aff site" affiliate page
     And I follow "Results modules"
-    Then I should see the following table rows:
-      | Name           | Source         |
-      | Agency         | USASearch      |
-      | Medline        | USASearch      |
-      | Federal jobs   | USASearch      |
-      | APress         | RSS            |
-      | BPhoto Gallery | RSS            |
-      | Videos         | YouTube (RSS)  |
-      | ZNot in GovBox | RSS            |
+    And the "Rss govbox label" field should contain "News"
+    And the "Is rss govbox enabled" checkbox should be checked
     And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should not be checked
     And the "Is jobs govbox enabled" checkbox should not be checked
-    And the "Show RSS feed 0 in govbox" checkbox should be checked
-    And the "Show RSS feed 1 in govbox" checkbox should be checked
-    And the "Show RSS feed 2 in govbox" checkbox should be checked
     And the "Is related searches enabled" checkbox should be checked
-    When I check "Is jobs govbox enabled"
-    And I uncheck "Show RSS feed 0 in govbox"
-    And I check "Show RSS feed 3 in govbox"
+
+    When I uncheck "Is rss govbox enabled"
+    And I check "Is jobs govbox enabled"
     And I uncheck "Is related searches enabled"
     And I fill in "Connection site handle 0" with "es.aff.gov"
     And I fill in "Connection label 0" with "Search in Spanish"
@@ -2542,13 +2512,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    And I should see "News for 'item' by aff site"
-    And I should not see "First item" in the rss feed govbox
-    And I should not see "Second item" in the rss feed govbox
-    And I should see "Third item" in the rss feed govbox
-    And I should see "Fourth item" in the rss feed govbox
-    And I should see "Fifth item" in the rss feed govbox
-    And I should not see "Space Suit Evolution"
+    And I should not see "News for 'item' by aff site"
     And I should not see "Related Searches" in the search results section
     And I should not see "some unique item"
     When I follow "Search in Spanish"

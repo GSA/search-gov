@@ -469,9 +469,20 @@ describe Affiliate do
       affiliate.ga_web_property_id.should == 'WEB_PROPERTY_ID'
     end
 
-    context "on oneserp site" do
-      it "should remove comments from staged_header and staged_footer fields" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+
+    it 'should set default RSS govbox label if the value is blank' do
+      en_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en'))
+      en_affiliate.rss_govbox_label.should == 'News'
+      en_affiliate.update_attributes!(rss_govbox_label: '')
+      en_affiliate.rss_govbox_label.should == 'News'
+
+      es_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'es'))
+      es_affiliate.rss_govbox_label.should == 'Noticias'
+      es_affiliate.update_attributes!({ rss_govbox_label: '' })
+      es_affiliate.rss_govbox_label.should == 'Noticias'
+    end
+
+    it 'should remove comments from staged_header and staged_footer fields' do
         html_with_comments = <<-HTML
         <div class="level1">
           <!--[if IE]>
@@ -511,7 +522,6 @@ describe Affiliate do
         Affiliate.find(affiliate.id).staged_header.squish.should == html_without_comments.squish
         Affiliate.find(affiliate.id).staged_footer.squish.should == html_without_comments.squish
       end
-    end
   end
 
   describe "on destroy" do

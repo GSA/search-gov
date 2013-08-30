@@ -29,15 +29,17 @@ Feature: Affiliate Search
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable | shown_in_govbox | is_managed |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         | true            |            |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         | true            |            |
-      | Videos        |                                                    | true         | true            | true       |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        | false           |            |
+      | name          | url                                                | is_navigable | is_managed |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |            |
+      | Videos        |                                                    | true         | true       |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        |            |
+    And the rss govbox is enabled for the site "bar.gov"
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                              | is_navigable | shown_in_govbox | is_managed |
-      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         | true            |            |
-      | Spanish Videos |                                                                  | true         | true            | true       |
+      | name           | url                                                              | is_navigable | is_managed |
+      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
+      | Spanish Videos |                                                                  | true         | true       |
+    And the rss govbox is enabled for the site "es.bar.gov"
     And feed "Press" has the following news items:
       | link                             | title               | guid       | published_ago | multiplier | published_at | description                                | contributor   | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | day           | 1          |              | <i> item </i> First news item for the feed | president     | briefingroom | economy        |
@@ -84,7 +86,6 @@ Feature: Affiliate Search
     And I should see an image with alt text "First video item"
     And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
     And I should not see "First item" in the video rss feed govbox
-    And I should not see "First hidden item"
     And I should not see "Show Options" in the left column
     And I should not see "Hide Options" in the left column
 
@@ -964,37 +965,6 @@ Feature: Affiliate Search
     And I should see "Estados Unidos es grande!"
     And I should see "Estados" in bold font in the twitter govbox
     And I should see "Unidos" in bold font in the twitter govbox
-
-  Scenario: Enabling and disabling the Twitter govbox
-    Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Results modules"
-    Then I should not see "Recent Tweets"
-
-    Given the following Twitter Profiles exist:
-      | screen_name | twitter_id | affiliate |
-      | USASearch   | 123        | bar.gov   |
-    And the following Tweets exist:
-      | tweet_text          | tweet_id    | published_ago        | twitter_profile_id  |
-      | AMERICA is great!   | 123456      | hour                 | 123                 |
-    When I am on bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should not see "Recent tweet for america"
-
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Results module"
-    Then I should see "Recent Tweets"
-
-    When I check "Is twitter govbox enabled"
-    And I press "Save"
-    When I go to bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should see "Recent tweet for 'america' by bar site"
 
   Scenario: When there are relevant Flickr photos for a search
     Given the following Affiliates exist:

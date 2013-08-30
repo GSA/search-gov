@@ -1,0 +1,14 @@
+%h3 Related Sites
+%table#related-sites.table
+  %colgroup
+    %col{ class: 'site-name' }
+    %col{ class: 'site-label' }
+  %thead
+    %tr.nodrag.nodrop
+      %th Site Handle
+      %th Label
+  %tbody
+    - @site.connections.each_with_index do |connection, index|
+      = f.fields_for :connections, connection do |connection_form|
+        = render partial: 'connection_fields', locals: { f: connection_form, index: index }
+= link_to_add_new_connection('Add Another Related Site', @site)

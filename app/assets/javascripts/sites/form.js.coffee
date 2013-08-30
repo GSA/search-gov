@@ -12,7 +12,7 @@ $(document).on 'paste',
   '.form input[type="text"], .form input[type="url"], .form textarea',
   enablePrimaryButton
 $(document).on 'change',
-  '.form input[type="file"], .form input[type="text"], .form input[type="url"], .form select',
+  '.form input[type="file"], .form input[type="text"], .form input[type="url"], .form select, .form input[type="checkbox"]',
   enablePrimaryButton
 
 showDatePicker = (e) ->

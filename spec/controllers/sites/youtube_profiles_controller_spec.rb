@@ -46,7 +46,7 @@ describe Sites::YoutubeProfilesController do
               with(youtube_profile.id).
               and_return(false)
           youtube_profiles.should_receive(:<<).with(youtube_profile)
-          RssFeed.should_receive(:enable_youtube_govbox!).with(site)
+          site.should_receive(:enable_video_govbox!)
 
           post :create,
                site_id: site.id,
@@ -125,6 +125,8 @@ describe Sites::YoutubeProfilesController do
         youtube_profiles.should_receive(:find_by_id).with('100').
             and_return(youtube_profile)
         youtube_profiles.should_receive(:delete).with(youtube_profile)
+        youtube_profiles.should_receive(:exists?).and_return(false)
+        site.should_receive(:disable_video_govbox!)
 
         delete :destroy, site_id: site.id, id: 100
       end

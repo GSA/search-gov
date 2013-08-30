@@ -1,5 +1,9 @@
+$(document).on 'hide', '#preview', () ->
+  $('body').removeClass 'preview'
+
 fillPreviewModal = (data) ->
   $('#preview').replaceWith data
+  $('body').addClass 'preview'
   $('#preview').modal backdrop: false
 
 loadPreview = (url) ->

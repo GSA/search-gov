@@ -23,12 +23,9 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
       @affiliate.twitter_profiles << @profile unless @affiliate.twitter_profiles.exists? @profile
       show_lists = params[:show_lists] || 0
       @affiliate.affiliate_twitter_settings.find_by_twitter_profile_id(@profile.id).update_attributes!(show_lists: show_lists)
-      @affiliate.update_attributes!(is_twitter_govbox_enabled: true)
     when YoutubeProfile
       @affiliate.youtube_profiles << @profile unless @affiliate.youtube_profiles.exists? @profile
-      rss_feed = @affiliate.rss_feeds.where(is_managed: true).first_or_initialize(name: 'Videos')
-      rss_feed.shown_in_govbox = true
-      rss_feed.save!
+      @affiliate.enable_video_govbox!
     end
 
     flash[:success] = "Added #{@profile.class.name.titleize}"
@@ -39,8 +36,8 @@ class Affiliates::SocialMediaController < Affiliates::AffiliatesController
     if %w(YoutubeProfile TwitterProfile).include? params[:profile_type]
       profile = profile_type_class.send(:find, params[:id])
       @affiliate.send(profile.class.name.tableize).send(:delete, profile)
-      if params[:profile_type] == 'YoutubeProfile' and @affiliate.youtube_profiles.empty?
-        @affiliate.rss_feeds.managed.destroy_all
+      if params[:profile_type] == 'YoutubeProfile' and @affiliate.youtube_profiles(true).empty?
+        @affiliate.disable_video_govbox!
       end
     else
       profile = @affiliate.send(params[:profile_type].tableize).find(params[:id]).destroy

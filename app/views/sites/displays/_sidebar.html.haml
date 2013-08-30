@@ -1,0 +1,31 @@
+%h3 Sidebar
+= f.label :left_nav_label, 'Results Page Label'
+= f.text_field :left_nav_label, maxlength: 20
+
+%table#sidebar.table.table-draggable
+  %thead
+    %tr.nodrag.nodrop
+      %th Name
+      %th Source
+      %th Setting
+  %tbody
+    %tr.nodrag.nodrop
+      %td
+        %i.icon.icon-reorder{ style: 'visibility: hidden' }
+        = f.label :default_search_label, nil, class: 'required hide'
+        = f.text_field :default_search_label, maxlength: 20
+      %td= "USASearch/#{@site.search_engine}"
+      %td.muted ON
+    - @site.navigations.each_with_index do |nav, index|
+      = f.fields_for :"#{render_navigable_field_name_for nav}", nav.navigable do |navigable_form|
+        = navigable_form.fields_for :navigation do |navigation_form|
+          %tr{ id: "navigation-#{nav.id}" }
+            %td
+              %i.draggable.icon.icon-reorder
+              = navigation_form.hidden_field :position, { value: index, class: 'position' }
+              = navigable_form.label :name, "#{nav.navigable_type.titleize} #{index}", class: 'hide'
+              = navigable_form.text_field :name
+            %td.cell-1x= link_to_site_navigable(nav.navigable)
+            %td.cell-1x
+              = navigation_form.label :is_active, "Is #{nav.navigable_type.titleize} #{index} navigable", class: 'hide'
+              .switch-button= navigation_form.check_box :is_active

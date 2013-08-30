@@ -1,4 +1,19 @@
 module NavigationsHelper
+  def link_to_site_navigable(navigable)
+    case navigable.class.name
+    when 'DocumentCollection'
+      link_to('Collection', edit_site_collection_path(navigable.affiliate, navigable))
+    when 'RssFeed'
+      if navigable.is_managed?
+        link_to('YouTube', site_youtube_usernames_path(navigable.owner))
+      else
+        link_to('RSS', edit_site_rss_feed_path(navigable.owner, navigable))
+      end
+    when 'ImageSearchLabel'
+      navigable.affiliate.search_engine
+    end
+  end
+
   def link_to_navigable(navigable)
     case navigable.class.name
       when 'DocumentCollection'

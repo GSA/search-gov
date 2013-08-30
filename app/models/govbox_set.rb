@@ -24,16 +24,23 @@ class GovboxSet
       jobs_options.merge!(lat_lon: [geoip_info.latitude, geoip_info.longitude].join(',')) if geoip_info.present?
       @jobs = Jobs.search(jobs_options)
     end
-    govbox_enabled_feeds = affiliate.rss_feeds.includes(:rss_feed_urls).govbox_enabled.to_a
-    @news_items = NewsItem.search_for(query, govbox_enabled_feeds.select { |feed| !feed.is_managed? }, affiliate, since: 13.months.ago)
 
-    youtube_profile_ids = affiliate.youtube_profile_ids
-    video_feeds = govbox_enabled_feeds.any?(&:is_managed?) ? RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids) : []
-    @video_news_items = NewsItem.search_for(query, video_feeds, affiliate)
+    if affiliate.is_rss_govbox_enabled?
+      non_managed_feeds = affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
+      @news_items = NewsItem.search_for(query, non_managed_feeds, affiliate, since: 13.months.ago)
+    end
+
+    if affiliate.is_video_govbox_enabled?
+      youtube_profile_ids = affiliate.youtube_profile_ids
+      video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
+      @video_news_items = NewsItem.search_for(query, video_feeds, affiliate)
+    end
 
     @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
+
     affiliate_twitter_ids = affiliate.searchable_twitter_ids
-    @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago) if affiliate_twitter_ids.any? and affiliate.is_twitter_govbox_enabled?
+    @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago) if affiliate_twitter_ids.any?
+
     @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
     @related_search = SaytSuggestion.related_search(query, affiliate)
   end

@@ -164,7 +164,6 @@ describe Affiliates::SocialMediaController do
         twitter_setting = mock_model(AffiliateTwitterSetting)
         affiliate.stub_chain(:affiliate_twitter_settings, :find_by_twitter_profile_id).and_return(twitter_setting)
         twitter_setting.should_receive(:update_attributes!).with(show_lists: '1')
-        affiliate.should_receive(:update_attributes!).with(is_twitter_govbox_enabled: true)
 
         put :create,
             :affiliate_id => affiliate.id.to_s,
@@ -189,11 +188,6 @@ describe Affiliates::SocialMediaController do
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         controller.should_receive(:find_or_initialize_profile).and_return(profile)
-
-        rss_feed = mock_model(RssFeed)
-        affiliate.stub_chain(:rss_feeds, :where, :first_or_initialize).and_return rss_feed
-        rss_feed.should_receive(:shown_in_govbox=).with true
-        rss_feed.should_receive :save!
       end
 
       context 'when the profile is a new record' do
@@ -204,6 +198,7 @@ describe Affiliates::SocialMediaController do
           affiliate.stub(:youtube_profiles).and_return(youtube_profiles)
           affiliate.stub_chain(:youtube_profiles, :exists?).and_return false
           affiliate.youtube_profiles.should_receive(:<<).with(profile)
+          affiliate.should_receive(:enable_video_govbox!)
 
           put :create,
               :affiliate_id => affiliate.id,

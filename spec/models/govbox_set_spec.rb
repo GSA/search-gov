@@ -93,34 +93,45 @@ describe GovboxSet do
       end
     end
 
-    context "when an affiliate has RSS Feeds" do
+    context 'when an affiliate has news govbox enabled' do
       before do
+        affiliate.should_receive(:is_rss_govbox_enabled?).and_return(true)
+        affiliate.should_receive(:is_video_govbox_enabled?).and_return(false)
         news_feed = mock_model(RssFeed, name: 'News', is_managed?: false)
         blog_feed = mock_model(RssFeed, name: 'Blog', is_managed?: false)
-        video_feed = mock_model(RssFeed, name: 'Videos', is_managed?: true)
-        govbox_enabled_feeds = [news_feed, blog_feed, video_feed]
-        affiliate.stub_chain(:rss_feeds, :includes, :govbox_enabled, :to_a).and_return govbox_enabled_feeds
+        non_managed_feeds = [news_feed, blog_feed]
+        affiliate.stub_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).and_return non_managed_feeds
         @non_video_results = mock('non video results', :total => 3)
         NewsItem.should_receive(:search_for).
             with('foo', [news_feed, blog_feed], affiliate, { since: a_kind_of(Time) }).
             and_return(@non_video_results)
+      end
+
+      it 'should retrieve non-video news items' do
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.news_items.should == @non_video_results
+      end
+    end
+
+    context 'when an affiliate has video govbox enabled' do
+      before do
+        affiliate.should_receive(:is_rss_govbox_enabled?).and_return(false)
+        affiliate.should_receive(:is_video_govbox_enabled?).and_return(true)
 
         youtube_profile_ids = mock 'youtube profile ids'
         affiliate.should_receive(:youtube_profile_ids).and_return youtube_profile_ids
         youtube_feed = mock_model(RssFeed)
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
-        @video_results = mock('video results', :total => 3)
+        @video_results = mock('video results', total: 3)
         NewsItem.should_receive(:search_for).with('foo', [youtube_feed], affiliate).
             and_return(@video_results)
       end
 
-      it "should retrieve govbox-enabled non-video and video RSS feeds" do
+      it 'should retrieve video news items' do
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.news_items.should == @non_video_results
         govbox_set.video_news_items.should == @video_results
       end
     end
-
     context "med topics" do
       fixtures :med_topics
       context "when the affiliate has the medline govbox enabled" do
@@ -175,7 +186,6 @@ describe GovboxSet do
     describe "twitter" do
       context "when affiliate is twitter govbox enabled" do
         before do
-          affiliate.stub!(:is_twitter_govbox_enabled?).and_return true
           Twitter.stub!(:user).and_return mock('Twitter')
         end
 
@@ -201,17 +211,6 @@ describe GovboxSet do
           end
         end
 
-      end
-
-      context "when affiliate is not twitter govbox enabled" do
-        before do
-          affiliate.stub!(:is_twitter_govbox_enabled?).and_return false
-        end
-
-        it "should not set tweets" do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.tweets.should be_nil
-        end
       end
     end
 

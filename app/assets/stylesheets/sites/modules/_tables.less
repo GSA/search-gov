@@ -12,6 +12,10 @@
   }
 }
 
+.table .cell-1x {
+  width: 66px;
+}
+
 .table-no-header {
   tbody:first-child tr:first-child td {
     border-top: 0;
@@ -32,5 +36,23 @@
   display: inline;
   > li {
     margin-right: 5px;
+  }
+}
+
+.table-draggable {
+  margin-left: -17px;
+
+  thead th:first-child {
+    padding-left: 17px;
+  }
+
+  .ondrag {
+    background-color: @grayLighter;
+  }
+}
+
+.form .table tr {
+  th:first-child, td:first-child {
+    padding-left: 0px;
   }
 }

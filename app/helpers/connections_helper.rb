@@ -12,4 +12,12 @@ module ConnectionsHelper
     end
     content_tag(:ul, content.join("\n").html_safe)
   end
+
+  def link_to_add_new_connection(title, site)
+    link_to title,
+            new_connection_site_display_path(site),
+            remote: true,
+            data: { params: { index: site.connections.length } },
+            id: 'new-connection-trigger'
+  end
 end

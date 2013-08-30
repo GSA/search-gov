@@ -17,7 +17,7 @@ class Sites::YoutubeProfilesController < Sites::SetupSiteController
         render action: :new
       else
         @site.youtube_profiles << @youtube_profile
-        RssFeed.enable_youtube_govbox! @site
+        @site.enable_video_govbox!
         redirect_to site_youtube_usernames_path(@site),
                     flash: { success: "You have added #{@youtube_profile.username} to this site." }
       end
@@ -31,6 +31,7 @@ class Sites::YoutubeProfilesController < Sites::SetupSiteController
     redirect_to site_youtube_usernames_path(@site) and return unless @youtube_profile
 
     @site.youtube_profiles.delete @youtube_profile
+    @site.disable_video_govbox! unless @site.youtube_profiles(true).exists?
     redirect_to site_youtube_usernames_path(@site),
                 flash: { success: "You have removed #{@youtube_profile.username} from this site." }
   end

@@ -57,7 +57,7 @@ Feature: Dashboard
     Given the following HelpLinks exist:
       | request_path        | help_page_url                                         |
       | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
-      | /sites/preview      | http://usasearch.howto.gov/manual/preview.html        |
+      | /sites/preview      | http://usasearch.howto.gov/sites/manual/preview.html  |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
     And I follow "Settings"

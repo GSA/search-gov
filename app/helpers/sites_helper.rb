@@ -86,6 +86,10 @@ module SitesHelper
        twitter_profiles youtube_profiles)
   end
 
+  def site_manage_display_controllers
+    %w(advanced_displays displays font_and_colors image_assets)
+  end
+
   def list_item_with_link_to_current_help_page
     help_link = HelpLink.lookup(request, controller.action_name)
     content_tag(:li, link_to('Help?', help_link.help_page_url, class: 'help-link menu')) if help_link

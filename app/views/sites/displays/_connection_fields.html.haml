@@ -1,0 +1,9 @@
+%tr{ id: "connection-#{index}"}
+  %td.site-name
+    %i.draggable.icon.icon-reorder
+    = f.label :affiliate_name, "Connection site handle #{index}", class: 'hide'
+    = f.text_field :affiliate_name, maxlength: 33
+    = f.hidden_field :position, { class: 'position' }
+  %td.site-label
+    = f.label :label, "Connection label #{index}", class: 'hide'
+    = f.text_field :label, maxlength: 50

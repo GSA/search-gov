@@ -1,0 +1,15 @@
+= content_for_site_page_title @site, 'Display Overview'
+= form_for @site, as: :site, url: site_display_path, html: { class: 'form', id: 'edit-display' } do |f|
+  .sub-nav-heading
+    %h2 Display Overview
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+
+  = render partial: 'sidebar', locals: { f: f }
+  = render partial: 'govboxes', locals: { f: f }
+  = render partial: 'related_sites', locals: { f: f }

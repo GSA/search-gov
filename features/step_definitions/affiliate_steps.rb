@@ -304,3 +304,8 @@ When /^the Affiliate "(.*?)" has the following users:$/ do |name, table|
     affiliate.users << user unless affiliate.users.exists?(user)
   end
 end
+
+When /^the rss govbox is enabled for the site "(.*?)"$/ do |name|
+  site = Affiliate.find_by_name name
+  site.update_attributes!(is_rss_govbox_enabled: true)
+end

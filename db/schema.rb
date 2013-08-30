@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822153040) do
+ActiveRecord::Schema.define(:version => 20130907143907) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -112,6 +112,9 @@ ActiveRecord::Schema.define(:version => 20130822153040) do
     t.integer  "agency_id"
     t.boolean  "raw_log_access_enabled",                                          :default => false,  :null => false
     t.string   "search_engine",                                                   :default => "Bing", :null => false
+    t.boolean  "is_rss_govbox_enabled",                                           :default => false,  :null => false
+    t.string   "rss_govbox_label",                                                                    :null => false
+    t.boolean  "is_video_govbox_enabled",                                         :default => true,   :null => false
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

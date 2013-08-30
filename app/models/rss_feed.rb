@@ -11,10 +11,10 @@ class RssFeed < ActiveRecord::Base
   has_one :navigation, :as => :navigable, :dependent => :destroy
 
   scope :navigable_only, joins(:navigation).where(:navigations => { :is_active => true } )
-  scope :govbox_enabled, where(:shown_in_govbox => true)
   scope :managed, where(:is_managed => true)
   scope :videos, where(:is_video => true)
   scope :non_managed, where(is_managed: false)
+  scope :non_mrss, where(show_only_media_content: false)
   scope :updated_before, lambda { |time| where('updated_at < ?', time).order('updated_at asc, id asc') }
   scope :owned_by_affiliate, where(owner_type: 'Affiliate')
   scope :owned_by_youtube_profile, where(owner_type: 'YoutubeProfile')
@@ -22,13 +22,6 @@ class RssFeed < ActiveRecord::Base
   attr_protected :is_video
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation
-
-  def self.enable_youtube_govbox!(site)
-    rss_feed = site.rss_feeds.where(is_managed: true).first_or_initialize(name: 'Videos')
-    rss_feed.shown_in_govbox = true
-    rss_feed.save!
-    rss_feed
-  end
 
   private
   def rss_feed_urls_cannot_be_blank

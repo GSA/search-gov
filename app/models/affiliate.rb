@@ -88,6 +88,7 @@ class Affiliate < ActiveRecord::Base
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  before_validation :set_default_rss_govbox_label
   validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
@@ -569,6 +570,30 @@ class Affiliate < ActiveRecord::Base
     end.flatten.uniq
   end
 
+  def destroy_and_update_attributes(params)
+    params[:connections_attributes].each do |connection_attributes|
+      connection = connection_attributes[1]
+      connection[:_destroy] = true if connection[:affiliate_name].blank? && connection[:label].blank?
+    end
+    update_attributes(params)
+  end
+
+  def enable_video_govbox!
+    transaction do
+      rss_feed = rss_feeds.managed.first_or_initialize(name: 'Videos')
+      rss_feed.save!
+      update_attributes!(is_video_govbox_enabled: true)
+    end
+  end
+
+  def disable_video_govbox!
+    transaction do
+      rss_feed = rss_feeds.managed.first
+      rss_feed.destroy if rss_feed
+      update_attributes!(is_video_govbox_enabled: false)
+    end
+  end
+
   private
 
   def batch_size(scope)
@@ -596,6 +621,10 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_staged_search_results_page_title
     self.staged_search_results_page_title = I18n.translate(:default_serp_title, :locale => locale) if self.staged_search_results_page_title.blank?
+  end
+
+  def set_default_rss_govbox_label
+    self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
   end
 
   def ensure_http_prefix

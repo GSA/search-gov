@@ -5,4 +5,5 @@ Given(/^the following YouTube usernames exist for the site "(.*?)":$/) do |site_
     profile.save!
     site.youtube_profiles << profile
   end
+  site.enable_video_govbox!
 end

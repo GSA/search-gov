@@ -114,19 +114,25 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
+      resource :advanced_display, only: [:edit]
       resource :api_instructions, only: [:show]
       resource :clicks, only: [:show]
       resource :content, only: [:show]
+      resource :display, only: [:edit, :update] do
+        collection { get :new_connection }
+      end
       resource :embed_code, only: [:show]
+      resource :font_and_color, only: [:edit]
+      resource :image_assets, only: [:edit]
       resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]
       resource :raw_logs_access, only: [:new, :create]
       resource :queries, only: [:show]
       resource :setting, only: [:edit, :update]
-      resource :third_party_tracking_request, only: [:new, :create]
       resource :supplemental_feed,
                controller: 'site_feed_urls',
                only: [:edit, :create, :update, :destroy]
+      resource :third_party_tracking_request, only: [:new, :create]
 
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
