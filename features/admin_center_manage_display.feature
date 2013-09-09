@@ -22,7 +22,7 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
 
-    Then the "Results Page Label" field should be blank
+    Then the "Label for Sidebar" field should be blank
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
     And the "Is Image Search Label 0 navigable" checkbox should be checked
@@ -33,7 +33,7 @@ Feature: Manage Display
     And the "Rss Feed 3" field should contain "Videos"
 
     When I fill in the following:
-      | Results Page Label    | Search        |
+      | Label for Sidebar     | Search        |
       | Default search label  | Web           |
       | Image Search Label 0  | Latest Images |
       | Document Collection 1 | Latest Blog   |
@@ -46,7 +46,7 @@ Feature: Manage Display
 
     And I press "Save"
     Then I should see "You have updated your site display settings"
-    And the "Results Page Label" field should contain "Search"
+    And the "Label for Sidebar" field should contain "Search"
     And the "Default search label" field should contain "Web"
     And the "Image Search Label 0" field should contain "Latest Images"
     And the "Is Image Search Label 0 navigable" checkbox should not be checked
