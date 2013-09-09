@@ -574,7 +574,7 @@ Feature: Affiliate clients
     And I press "Save for Preview"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
-    And I should see "Page background image file size must be under 512 KB"
+    And I should see "Page Background Image file size must be under 512 KB"
     And I should see "Title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
@@ -657,7 +657,7 @@ Feature: Affiliate clients
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
-    And I should see "Page background image file size must be under 512 KB"
+    And I should see "Page Background Image file size must be under 512 KB"
     And I should see "Search button text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Search button background color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Left tab text color should consist of a # character followed by 3 or 6 hexadecimal digits"
@@ -910,7 +910,7 @@ Feature: Affiliate clients
     Then I should see "Header and Footer" in the page header
     And I should see "Header background color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Header text color should consist of a # character followed by 3 or 6 hexadecimal digits"
-    And I should see "Header image file size must be under 512 KB"
+    And I should see "Logo file size must be under 512 KB"
     And I should see "Header link title can't be blank"
     And I should see "Header link URL can't be blank"
     And I should see "Footer link title can't be blank"

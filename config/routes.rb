@@ -123,7 +123,7 @@ UsasearchRails3::Application.routes.draw do
       end
       resource :embed_code, only: [:show]
       resource :font_and_color, only: [:edit]
-      resource :image_assets, only: [:edit]
+      resource :image_assets, only: [:edit, :update]
       resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]
       resource :raw_logs_access, only: [:new, :create]

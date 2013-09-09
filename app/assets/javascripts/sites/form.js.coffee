@@ -23,7 +23,7 @@ showDatePicker = (e) ->
 $(document).on 'click', '.form .calendar', showDatePicker
 
 ready = ->
-  $('.form input.input-primary').focus()
+  $('.form[id^="new_"] input.input-primary').focus()
 
 $(document).ready ready
 $(document).on 'page:change', ready

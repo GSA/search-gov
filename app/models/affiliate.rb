@@ -6,6 +6,10 @@ class Affiliate < ActiveRecord::Base
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 56
+  VALID_IMAGE_CONTENT_TYPES = %w(image/gif image/jpeg image/pjpeg image/png image/x-png).freeze
+  INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
+  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
 
   has_and_belongs_to_many :users, order: 'contact_name'
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
@@ -94,16 +98,52 @@ class Affiliate < ActiveRecord::Base
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
-  validates_attachment_content_type :page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_content_type :staged_page_background_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_size :staged_page_background_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  validates_attachment_content_type :mobile_logo, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_content_type :staged_mobile_logo, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
-  validates_attachment_size :staged_mobile_logo, :in => (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
+
+  validates_attachment_content_type :page_background_image,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :page_background_image,
+                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_IMAGE_SIZE_MESSAGE
+
+  validates_attachment_content_type :staged_page_background_image,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :staged_page_background_image,
+                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_IMAGE_SIZE_MESSAGE
+
+  validates_attachment_content_type :header_image,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :header_image,
+                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_IMAGE_SIZE_MESSAGE
+
+  validates_attachment_content_type :staged_header_image,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :staged_header_image,
+                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_IMAGE_SIZE_MESSAGE
+
+  validates_attachment_content_type :mobile_logo,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :mobile_logo,
+                            in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
+
+  validates_attachment_content_type :staged_mobile_logo,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :staged_mobile_logo,
+                            in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
+
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer,
+           :validate_managed_header_css_properties,
+           :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix, :nullify_blank_dublin_core_fields
@@ -115,7 +155,9 @@ class Affiliate < ActiveRecord::Base
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
-  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
+  attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
+  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion
+  attr_accessor :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
@@ -136,7 +178,10 @@ class Affiliate < ActiveRecord::Base
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Display name",
     :name => "Site Handle (visible to searchers in the URL)",
-    :staged_search_results_page_title => "Search results page title"
+    :staged_search_results_page_title => "Search results page title",
+    :header_image_file_size => 'Logo file size',
+    :mobile_logo_file_size => 'Mobile Logo file size',
+    :page_background_image_file_size => 'Page Background Image file size'
   }
 
   FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif',
@@ -594,6 +639,15 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
+  def copy_image_assets_from_live_to_staged!
+    self.staged_favicon_url = favicon_url
+    staged_css_property_hash[:page_background_image_repeat] = css_property_hash[:page_background_image_repeat]
+    copy_attachment_attributes :header_image, :staged_header_image
+    copy_attachment_attributes :mobile_logo, :staged_mobile_logo
+    copy_attachment_attributes :page_background_image, :staged_page_background_image
+    save!
+  end
+
   private
 
   def batch_size(scope)
@@ -878,11 +932,22 @@ class Affiliate < ActiveRecord::Base
     if staged_page_background_image? and !staged_page_background_image.dirty? and mark_staged_page_background_image_for_deletion == '1'
       staged_page_background_image.clear
     end
+    if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
+      page_background_image.clear
+    end
+
     if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
       staged_header_image.clear
     end
+    if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
+      header_image.clear
+    end
+
     if staged_mobile_logo? and !staged_mobile_logo.dirty? and mark_staged_mobile_logo_for_deletion == '1'
       staged_mobile_logo.clear
+    end
+    if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
+      mobile_logo.clear
     end
   end
 
