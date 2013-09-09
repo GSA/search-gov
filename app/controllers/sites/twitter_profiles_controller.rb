@@ -24,9 +24,7 @@ class Sites::TwitterProfilesController < Sites::SetupSiteController
       flash.now[:notice] = "You have already added @#{twitter_user.screen_name} to this site."
       render action: :new
     else
-      twitter_setting = AffiliateTwitterSetting.new(twitter_setting_params)
-      twitter_setting.save!
-
+      AffiliateTwitterSetting.create!(twitter_setting_params)
       redirect_to site_twitter_handles_path(@site),
                   flash: { success: "You have added @#{twitter_user.screen_name} to this site." }
     end

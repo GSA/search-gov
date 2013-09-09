@@ -45,12 +45,10 @@ describe Sites::TwitterProfilesController do
               with(twitter_profile.id).
               and_return(false)
 
-          AffiliateTwitterSetting.should_receive(:new).
+          AffiliateTwitterSetting.should_receive(:create!).
               with(affiliate_id: site.id,
                    twitter_profile_id: twitter_profile.id,
-                   show_lists: '1').
-              and_return(twitter_setting)
-          twitter_setting.should_receive(:save!)
+                   show_lists: '1')
 
           post :create,
                site_id: site.id,

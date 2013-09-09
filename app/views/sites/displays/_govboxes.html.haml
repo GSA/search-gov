@@ -11,21 +11,21 @@
         %td.name
           = f.label :rss_govbox_label, nil, class: 'hide'
           = f.text_field :rss_govbox_label
-        %td.cell-1x RSS (combined)
+        %td.cell-1x= link_to 'RSS (combined)', site_rss_feeds_path(@site)
         %td.cell-1x
           .switch-button= f.check_box :is_rss_govbox_enabled
           = f.label :is_rss_govbox_enabled, nil, maxlength: 20, class: 'hide'
     - if @site.youtube_profiles.exists?
       %tr
         %td Videos
-        %td.cell-1x YouTube
+        %td.cell-1x= link_to 'YouTube', site_youtube_usernames_path(@site)
         %td.cell-1x
           .switch-button= f.check_box :is_video_govbox_enabled
           = f.label :is_video_govbox_enabled, nil, maxlength: 20, class: 'hide'
     - if @site.flickr_profiles.exists?
       %tr
         %td Photos
-        %td.cell-1x Flickr
+        %td.cell-1x= link_to 'Flickr', site_flickr_urls_path(@site)
         %td.cell-1x
           .switch-button= f.check_box :is_photo_govbox_enabled
           = f.label :is_photo_govbox_enabled, nil, class: 'hide'
@@ -56,6 +56,6 @@
     - if @site.twitter_profiles.exists?
       %tr
         %td Recent Tweets
-        %td.cell-1x Twitter
+        %td.cell-1x= link_to 'Twitter', site_twitter_handles_path(@site)
         %td.cell-1x
           .muted ON (delete Twitter to turn off)

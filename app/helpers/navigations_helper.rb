@@ -10,7 +10,12 @@ module NavigationsHelper
         link_to('RSS', edit_site_rss_feed_path(navigable.owner, navigable))
       end
     when 'ImageSearchLabel'
-      navigable.affiliate.search_engine
+      content = link_to 'Domains', site_domains_path(navigable.affiliate)
+      if navigable.affiliate.flickr_profiles.exists?
+        content << raw('/')
+        content << link_to('Flickr', site_flickr_urls_path(navigable.affiliate))
+      end
+      content
     end
   end
 
