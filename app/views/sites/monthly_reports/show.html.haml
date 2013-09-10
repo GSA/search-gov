@@ -1,6 +1,31 @@
 = content_for_site_page_title @site, 'Monthly Reports'
-.sub-nav-heading
-  %h2 Monthly Reports- coming soon!
-  .action-bar
-    %ul
-      = list_item_with_link_to_current_help_page
+= form_tag site_monthly_reports_path(@site), class: 'form', method: :get do
+  .sub-nav-heading
+    %h2 Monthly Reports
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= submit_tag 'Generate Report', class: 'btn submit'
+  .required= label_tag :pick_month, 'Change Month'
+  .input-append.calendar
+    %div= text_field_tag 'mmyyyy', @monthly_report.picked_mmyyyy, class: 'date', data: { provide: 'date picker', 'date-autoclose' => true,
+      'date-start-view' => 'decade', 'date-min-view-mode' => 'months', 'date-format' => 'mm/yyyy',
+      'date-start-date' => @monthly_report.earliest_mmyyyy, 'date-end-date' => @monthly_report.latest_mmyyyy }
+    %span.add-on.add-on-icon
+      %i.icon.icon-calendar.icon-2x
+
+%h3= "Monthly Usage Stats for #{@monthly_report.picked_date.strftime('%B %Y')}"
+
+%dl.dl-horizontal#queries_clicks
+  %dt Total Queries
+  %dd= number_with_delimiter @monthly_report.total_queries
+  %dt Total Clicks
+  %dd= number_with_delimiter @monthly_report.total_clicks
+
+= render partial: 'search_modules_stats', locals: { search_module_stats: @monthly_report.search_module_stats }
+
+%h3 Download Top Queries
+%ul.unstyled#report_links
+  %li= affiliate_analytics_monthly_report_link(@site.name, @monthly_report.picked_date )
+  - affiliate_analytics_weekly_report_links(@site.name, @monthly_report.picked_date).each do |weekly_report_link|
+    %li= weekly_report_link

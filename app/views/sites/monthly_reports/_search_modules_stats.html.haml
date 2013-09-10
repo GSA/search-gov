@@ -1,0 +1,17 @@
+%h3 Impressions and Clicks by Module
+%table.table.table-striped.table-bordered.table-analytics#by_module
+  %thead
+    %tr
+      %th Module
+      %th Impressions
+      %th Clicks
+      %th Clickthru Rate
+  %tbody
+    - search_module_stats.each do |stat|
+      %tr
+        %td= stat.display_name
+        %td= number_with_delimiter(stat.impressions)
+        %td= number_with_delimiter(stat.clicks)
+        %td
+          = number_to_percentage(stat.clickthru_ratio, :precision => 1)
+          = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC')

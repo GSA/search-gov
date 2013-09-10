@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907143907) do
+ActiveRecord::Schema.define(:version => 20130910203819) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -260,6 +260,7 @@ ActiveRecord::Schema.define(:version => 20130907143907) do
     t.integer "clicks",         :null => false
   end
 
+  add_index "daily_search_module_stats", ["affiliate_name", "day"], :name => "index_daily_search_module_stats_on_affiliate_name_and_day"
   add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|
@@ -807,7 +808,6 @@ ActiveRecord::Schema.define(:version => 20130907143907) do
     t.string   "password_salt"
     t.string   "persistence_token"
     t.integer  "login_count",                            :default => 0,                            :null => false
-    t.string   "time_zone",                              :default => "Eastern Time (US & Canada)", :null => false
     t.boolean  "is_affiliate_admin",                     :default => false,                        :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
@@ -818,13 +818,7 @@ ActiveRecord::Schema.define(:version => 20130907143907) do
     t.datetime "updated_at"
     t.string   "contact_name"
     t.boolean  "is_affiliate",                           :default => true,                         :null => false
-    t.string   "phone"
     t.string   "organization_name"
-    t.string   "address"
-    t.string   "address2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
     t.string   "api_key",                  :limit => 32
     t.string   "approval_status",                                                                  :null => false
     t.string   "email_verification_token"
@@ -832,6 +826,13 @@ ActiveRecord::Schema.define(:version => 20130907143907) do
     t.boolean  "requires_manual_approval",               :default => false
     t.text     "notes"
     t.integer  "default_affiliate_id"
+    t.string   "time_zone",                              :default => "Eastern Time (US & Canada)", :null => false
+    t.string   "phone"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
   end
 
   add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true

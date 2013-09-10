@@ -11,6 +11,14 @@ class DailySearchModuleStat < ActiveRecord::Base
     maximum(:day)
   end
 
+  def self.most_recent_populated_date_for(site_name)
+    where(affiliate_name: site_name).maximum(:day)
+  end
+
+  def self.oldest_populated_date_for(site_name)
+    where(affiliate_name: site_name).minimum(:day)
+  end
+
   def self.module_stats_for_daterange(daterange, affiliate_name = nil, vertical = nil)
     conditions = {:day => daterange}
     conditions.merge!(:affiliate_name => affiliate_name) if affiliate_name
