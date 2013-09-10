@@ -15,7 +15,8 @@
   - if @site.uses_managed_header_footer?
     %fieldset
       = f.label :header_image, 'Logo'
-      = f.file_field :header_image
+      = f.file_field :header_image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
+      %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
       - if @site.header_image.present? and !@site.header_image.dirty?
         .image= image_tag(@site.header_image.url(:large), alt: 'Logo')
         = f.label :mark_header_image_for_deletion, class: 'checkbox' do
@@ -24,7 +25,8 @@
 
   %fieldset
     = f.label :mobile_logo, 'Mobile Logo'
-    = f.file_field :mobile_logo
+    = f.file_field :mobile_logo, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
+    %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB
     - if @site.mobile_logo.present? && !@site.mobile_logo.dirty?
       .image= image_tag(@site.mobile_logo.url(:large), alt: 'Mobile Logo')
       = f.label :mark_mobile_logo_for_deletion, class: 'checkbox' do
@@ -33,7 +35,8 @@
 
   %fieldset
     = f.label :page_background_image, 'Page Background Image'
-    = f.file_field :page_background_image
+    = f.file_field :page_background_image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
+    %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
     - if @site.page_background_image.present? && !@site.page_background_image.dirty?
       .image= image_tag(@site.page_background_image.url(:large), alt: 'Page Background Image')
       = f.label :mark_page_background_image_for_deletion, class: 'checkbox' do

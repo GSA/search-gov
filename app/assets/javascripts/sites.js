@@ -3,6 +3,8 @@
 //= require turbolinks
 //= require select2
 //= require jquery_extensions/jquery.tablednd
+//= require bootstrap-filestyle/bootstrap-filestyle
+//= require bootstrap-filestyle/bootstrap-filestyle-data-api
 //= require_directory ./sites
 //= require bootstrap-switch/bootstrap-switch
 //= require_directory ./sites/analytics
