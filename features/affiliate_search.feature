@@ -147,7 +147,7 @@ Feature: Affiliate Search
     And I should see "Press"
     And I should see "Photo Gallery"
     And I should see "Videos"
-    And I should not see "Hide Me"
+    And I should not see "Hide Me" in the left column
     And I should not see "All Time"
     And I should not see "Last hour"
     And I should not see "Last day"
