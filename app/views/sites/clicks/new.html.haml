@@ -1,0 +1,23 @@
+= content_for_site_page_title @site, 'Clicks'
+= form_for @clicks_request, url: { action: :create }, html: { class: 'form' }  do |form|
+  .sub-nav-heading
+    %h2 Clicks
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= form.submit 'Search', class: 'btn submit'
+  = render form
+
+%table.table.table-striped.table-bordered.table-kv-pairs
+  %thead
+    %tr
+      %th Top URLs
+      %th Clicks
+  %tbody
+    - @clicks_request.top_urls.each_with_index do |(url, click_count), idx|
+      %tr
+        %td
+          = "#{idx+1}."
+          = linked_shortened_url_without_protocol(url)
+        %td= link_to number_with_delimiter(click_count), site_click_queries_path(@site,
+          {:url => url, :start_date => @clicks_request.start_date, :end_date => @clicks_request.end_date})

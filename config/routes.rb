@@ -116,7 +116,10 @@ UsasearchRails3::Application.routes.draw do
 
       resource :advanced_display, only: [:edit]
       resource :api_instructions, only: [:show]
-      resource :clicks, only: [:show]
+      resource :clicks, only: [:new, :create]
+      resource :query_clicks, only: [:show]
+      resource :click_queries, only: [:show]
+
       resource :content, only: [:show]
       resource :display, only: [:edit, :update] do
         collection { get :new_connection }

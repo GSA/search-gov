@@ -1,0 +1,22 @@
+= content_for_site_page_title @site, 'Query Clicks'
+.sub-nav-heading
+  %h2 Query Clicks
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+%h3= "Top Clicks on '#{@query}' from #{@start_date} to #{@end_date}"
+
+%table.table.table-striped.table-bordered.table-kv-pairs
+  %thead
+    %tr
+      %th URL
+      %th Total
+  %tbody
+    - @top_urls.each_with_index do |(url, total), idx|
+      %tr
+        %td
+          = "#{idx+1}. #{url}"
+        %td= link_to number_with_delimiter(total), site_click_queries_path(@site,
+          {:url => url, :start_date => @start_date, :end_date => @end_date})
+

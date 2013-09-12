@@ -94,6 +94,7 @@ GEM
       builder
       mime-types
       xml-simple
+    backports (3.3.3)
     bartt-ssl_requirement (1.4.2)
     bcrypt-ruby (3.0.1)
     bourne (1.1.2)
@@ -145,6 +146,7 @@ GEM
       rails (~> 3.0)
     daemons (1.1.9)
     database_cleaner (1.0.1)
+    descendants_tracker (0.0.1)
     diff-lcs (1.2.4)
     dynamic_form (1.1.4)
     em-http-request (1.0.3)
@@ -397,6 +399,9 @@ GEM
     us_states (0.1.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    virtus (0.5.5)
+      backports (~> 3.3)
+      descendants_tracker (~> 0.0.1)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -494,6 +499,7 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   us_states
   us_states_select!
+  virtus
   webrat
   webster
   will_paginate
