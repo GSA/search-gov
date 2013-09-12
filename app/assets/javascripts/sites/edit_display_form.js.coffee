@@ -6,16 +6,9 @@ processEditDisplayForm = () ->
 
 $(document).on 'submit', '#edit-display', processEditDisplayForm
 
-enablePrimaryButton = () ->
-  disabled = $('.form .btn.submit.disabled')
-  $(disabled).removeAttr 'disabled'
-  $(disabled).removeClass 'disabled'
-  $(disabled).addClass 'btn-primary'
-  true
-
 ready = () ->
   $('#related-sites, #sidebar').tableDnD
-    onDrop: enablePrimaryButton,
+    onDrop: window.usasearch.enablePrimaryButton,
     onDragClass: 'ondrag',
     dragHandle: '.draggable'
 

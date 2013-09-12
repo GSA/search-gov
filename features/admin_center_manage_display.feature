@@ -141,13 +141,51 @@ Feature: Manage Display
     And the "Connection site handle 0" field should contain "3.agency.gov"
     And the "Connection label 0" field should contain "agency site 3 SERP"
 
-  Scenario: Editing Font & Color
+  Scenario: Editing Font & Colors
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
-    When I go to the agency.gov's Font & Color page
-    Then I should see "Font & Color (Coming Soon)"
+    When I go to the agency.gov's Font & Colors page
+    Then the "Font Family" field should contain "Arial, sans-serif"
+    And the "Default" radio button should be checked
+    And the "Show Content Border" checkbox should not be checked
+    And the "Show Content Box Shadow" checkbox should not be checked
+
+    When I select "Helvetica, sans-serif" from "Font Family"
+    When I choose "Custom"
+    And I fill in the following:
+      | Page Background Color    | #000001 |
+      | Content Background Color | #000020 |
+      | Content Border Color     | #000300 |
+      | Content Box Shadow Color | #004000 |
+      | Icon Color               | #050000 |
+      | Button Background Color  | #600000 |
+      | Active Sidebar Color     | #000007 |
+      | Link Color               | #000080 |
+      | Visited Link Color       | #000900 |
+      | Result URL Color         | #00A000 |
+      | Description Text Color   | #0B0000 |
+    And I check "Show Content Border"
+    And I check "Show Content Box Shadow"
+    And I press "Save"
+
+    Then I should see "You have updated your font & colors"
+    And the "Font Family" field should contain "Helvetica, sans-serif"
+    And the "Custom" radio button should be checked
+    And the "Page Background Color" field should contain "#000001"
+    And the "Content Background Color" field should contain "#000020"
+    And the "Show Content Border" checkbox should be checked
+    And the "Content Border Color" field should contain "#000300"
+    And the "Show Content Box Shadow" checkbox should be checked
+    And the "Content Box Shadow Color" field should contain "#004000"
+    And the "Icon Color" field should contain "#050000"
+    And the "Button Background Color" field should contain "#600000"
+    And the "Active Sidebar Color" field should contain "#000007"
+    And the "Link Color" field should contain "#000080"
+    And the "Visited Link Color" field should contain "#000900"
+    And the "Result URL Color" field should contain "#00A000"
+    And the "Description Text Color" field should contain "#0B0000"
 
   Scenario: Editing Image Assets
     Given the following Affiliates exist:

@@ -1,3 +1,121 @@
-= content_for_site_page_title @site, 'Font & Color (Coming Soon)'
-.sub-nav-heading
-  %h2 Font & Color (Coming Soon)
+= content_for_site_page_title @site, 'Font & Colors'
+.font-colors-wrapper
+  #preview-font-colors{ preview_page_css_hash(@site.css_property_hash) }
+    .serp-content{ preview_content_class_hash(@site), preview_content_css_hash(@site) }
+      .serp-search-box
+        %input{ type: 'text', disabled: true }
+        .btn-search{ preview_search_button_css_hash(@site.css_property_hash) }
+          %i.icon.icon-search
+      .serp-results-wrapper{ preview_results_css_hash(@site.css_property_hash) }
+        .serp-sidebar
+          .serp-sidebar-item-active{ preview_active_sidebar_item_css_hash(@site.css_property_hash) } Sidebar 1
+          .serp-sidebar-item{ preview_result_title_css_hash(@site.css_property_hash) } Sidebar 2
+        .serp-results
+          .serp-result
+            .serp-result-title{ preview_result_title_css_hash(@site.css_property_hash) }
+              Result Title
+            .serp-result-url{ preview_result_url_css_hash(@site.css_property_hash) }
+              www.agency.gov
+            .serp-result-description{ preview_description_css_hash(@site.css_property_hash) }
+              Result Description
+          .serp-result
+            .serp-result-title-visited{ preview_visited_result_title_css_hash(@site.css_property_hash) }
+              Visited Title
+            .serp-result-url{ preview_result_url_css_hash(@site.css_property_hash) }
+              news.agency.gov
+            .serp-result-description{ preview_description_css_hash(@site.css_property_hash) }
+              Result Description
+
+= form_for @site, as: :site, url: site_font_and_colors_path(@site), html: { class: 'form', id: 'edit-font-and-colors' } do |f|
+  .sub-nav-heading
+    %h2 Font & Colors
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render_site_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+
+  = f.fields_for :css_property_hash do |css|
+    = css.label :font_family, 'Font Family'
+    = css.select :font_family,
+      options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@site.css_property_hash, :font_family)),
+      {},
+      { data: { 'target-css-properties' => 'font-family', 'target-selector' => '#preview-font-colors .serp-results-wrapper' } }
+
+  %fieldset
+    %legend Color Scheme
+    = f.label :theme, value: 'default', class: 'radio' do
+      = f.radio_button :theme, 'default'
+      Default
+    = f.label :theme, value: 'custom', class: 'radio' do
+      = f.radio_button :theme, 'custom'
+      Custom
+
+  = f.fields_for :css_property_hash do |css|
+    = css.label :page_background_color, 'Page Background Color'
+    .input-append.color{ data: { color: site_css_color_property(@site.css_property_hash, :page_background_color), provide: 'colorpicker', 'default-color' => "#{Affiliate::DEFAULT_CSS_PROPERTIES[:page_background_color]}", 'target-css-properties' => 'background-color', 'target-selector' => '#preview-font-colors' }}
+      %div= css.text_field :page_background_color, value: @site.css_property_hash[:page_background_color]
+      %span.add-on.add-on-colorpicker
+        %i
+
+    = css.label :content_background_color, 'Content Background Color'
+    = color_picker_component css, :content_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-content' }
+
+    = css.label :show_content_border, class: 'checkbox' do
+      = css.check_box :show_content_border,
+        { checked: @site.show_content_border?,
+          data: { 'target-selector' => '#preview-font-colors .serp-content' } }
+      Show Content Border
+
+    = css.label :content_border_color, 'Content Border Color'
+    = color_picker_component css, :content_border_color, @site.css_property_hash,
+      { 'target-css-properties' => 'border-color',
+        'target-selector' => '#preview-font-colors .serp-content' }
+
+    %fieldset
+      = css.label :show_content_box_shadow, class: 'checkbox' do
+        = css.check_box :show_content_box_shadow, { checked: @site.show_content_box_shadow? }
+        Show Content Box Shadow
+      %span.help-block Not supported by IE7/IE8
+
+    = css.label :content_box_shadow_color, 'Content Box Shadow Color'
+    = color_picker_component css, :content_box_shadow_color, @site.css_property_hash,
+      { 'target-selector' => '#preview-font-colors .serp-content' }
+
+    = css.label :search_button_text_color, 'Icon Color'
+    = color_picker_component css, :search_button_text_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .btn-search' }
+
+    = css.label :search_button_background_color, 'Button Background Color'
+    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color, border-color',
+        'target-selector' => '#preview-font-colors .btn-search' }
+
+    = css.label :left_tab_text_color, 'Active Sidebar Color'
+    = color_picker_component css, :left_tab_text_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-sidebar-item-active' }
+
+    = css.label :title_link_color, 'Link Color'
+    = color_picker_component css, :title_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-title, #preview-font-colors .serp-sidebar-item' }
+
+    = css.label :visited_title_link_color, 'Visited Link Color'
+    = color_picker_component css, :visited_title_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-title-visited' }
+
+    = css.label :url_link_color, 'Result URL Color'
+    = color_picker_component css, :url_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-url' }
+
+    = css.label :description_text_color, 'Description Text Color'
+    = color_picker_component css, :description_text_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-description' }

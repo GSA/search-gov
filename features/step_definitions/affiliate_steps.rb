@@ -23,9 +23,9 @@ Given /^the following Affiliates exist:$/ do |table|
     Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
       case css_property
         when :show_content_border
-          css_properties[css_property] = hash.has_key?('show_content_border') ? (hash[:show_content_border] == 'true' ? '1' : '0') : '1'
+          css_properties[css_property] = hash.has_key?('show_content_border') ? (hash[:show_content_border] == 'true' ? '1' : '0') : '0'
         when :show_content_box_shadow
-          css_properties[css_property] = hash.has_key?('show_content_box_shadow') ? (hash[:show_content_box_shadow] == 'true' ? '1' : '0') : '1'
+          css_properties[css_property] = hash.has_key?('show_content_box_shadow') ? (hash[:show_content_box_shadow] == 'true' ? '1' : '0') : '0'
         else
           css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
       end

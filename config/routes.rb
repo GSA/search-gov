@@ -125,7 +125,7 @@ UsasearchRails3::Application.routes.draw do
         collection { get :new_connection }
       end
       resource :embed_code, only: [:show]
-      resource :font_and_color, only: [:edit]
+      resource :font_and_colors, only: [:edit, :update]
       resource :image_assets, only: [:edit, :update]
       resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]

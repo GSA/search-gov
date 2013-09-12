@@ -184,8 +184,7 @@ class Affiliate < ActiveRecord::Base
     :page_background_image_file_size => 'Page Background Image file size'
   }
 
-  FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif',
-                   'Georgia, serif', 'Times, serif']
+  FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif']
   BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
   THEMES = ActiveSupport::OrderedHash.new
@@ -262,9 +261,6 @@ class Affiliate < ActiveRecord::Base
       :header_text_color => THEMES[:default][:search_button_text_color],
       :header_footer_link_background_color => THEMES[:default][:search_button_text_color],
       :header_footer_link_color => THEMES[:default][:search_button_background_color] }
-
-  NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
-                                   :show_content_box_shadow => '1' }
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
       header footer header_footer_css nested_header_footer_css
@@ -648,6 +644,12 @@ class Affiliate < ActiveRecord::Base
     save!
   end
 
+  def copy_css_property_hash_from_live_to_staged!
+    self.staged_theme = theme
+    self.staged_css_property_hash = css_property_hash
+    save!
+  end
+
   private
 
   def batch_size(scope)
@@ -784,9 +786,7 @@ class Affiliate < ActiveRecord::Base
       self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
       self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
       @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
-      @css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
       @staged_css_property_hash = ActiveSupport::OrderedHash.new if @staged_css_property_hash.nil?
-      @staged_css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
     end
 
     if uses_managed_header_footer?

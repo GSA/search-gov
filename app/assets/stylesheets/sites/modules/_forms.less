@@ -6,11 +6,17 @@
     &.multivalued {
       .off-screen-text();
     }
+    &.checkbox {
+      margin-bottom: 10px;
+    }
   }
 
   fieldset {
     margin-bottom: 10px;
     &.multivalued {
+      margin-bottom: 0;
+    }
+    label.checkbox, span.help-block {
       margin-bottom: 0;
     }
   }
@@ -37,7 +43,7 @@
     width: 90%;
   }
 
-  input[type='text'].date {
+  input[type='text'].date, .color input[type='text'] {
     width: 136px;
   }
 
@@ -46,12 +52,17 @@
     padding: 10px 6px;
   }
 
-  .add-on.add-on-icon {
+  .add-on.add-on-icon, .add-on.add-on-colorpicker {
     height: 36px;
     padding: 4px 5px 0;
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .add-on.add-on-colorpicker {
+    height: 36px;
+    width: 36px;
   }
 
   select {
@@ -65,6 +76,11 @@
   .input-append div {
     display: inline-block;
     .ie7-inline-block();
+  }
+
+  .input-append.color .add-on i {
+    width: 36px;
+    height: 32px;
   }
 
   .required, .optional {

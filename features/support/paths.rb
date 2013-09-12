@@ -114,8 +114,8 @@ module NavigationHelpers
       site_content_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Display page$/
       edit_site_display_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Font & Color page$/
-      edit_site_font_and_color_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Font & Colors page$/
+      edit_site_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Image Assets page$/
       edit_site_image_assets_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Advanced Display page$/

@@ -154,7 +154,7 @@ Feature: Affiliate clients
     And the "Add top padding" checkbox should not be checked
     And the "Content border color" field should contain "#CACACA"
     And the "Content border color" field should be disabled
-    And the "Add drop shadow" checkbox should be checked
+    And the "Add drop shadow" checkbox should not be checked
     And the "Content box shadow color" field should contain "#555555"
     And the "Content box shadow color" field should be disabled
     And the "Search button text color" field should contain "#FFFFFF"

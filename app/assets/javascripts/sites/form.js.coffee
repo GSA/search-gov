@@ -1,21 +1,14 @@
-enablePrimaryButton = (e) ->
-  disabled = $('.form .btn.submit.disabled')
-  $(disabled).removeAttr 'disabled'
-  $(disabled).removeClass 'disabled'
-  $(disabled).addClass 'btn-primary'
-  true
-
 $(document).on 'keydown',
   '.form input[type="text"], .form input[type="url"], .form textarea',
-  enablePrimaryButton
+  window.usasearch.enablePrimaryButton
 $(document).on 'paste',
   '.form input[type="text"], .form input[type="url"], .form textarea',
-  enablePrimaryButton
+  window.usasearch.enablePrimaryButton
 $(document).on 'change',
-  '.form input[type="file"], .form input[type="text"], .form input[type="url"], .form select, .form input[type="checkbox"]',
-  enablePrimaryButton
+  ' .form input[type="checkbox"], .form input[type="file"], .form input[type="radio"], .form input[type="text"], .form input[type="url"], .form select',
+  window.usasearch.enablePrimaryButton
 
-showDatePicker = (e) ->
+showDatePicker = () ->
   if $(this).hasClass('calendar')
     dateField = $(this).find('input').first()
     $(dateField).datepicker 'show'
