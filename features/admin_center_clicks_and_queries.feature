@@ -30,34 +30,37 @@ Feature: Clicks and Queries stats
     And I follow "Clicks"
     Then I should see "Clicks"
     And I should see the following table rows:
-      | Top URLs         | Clicks |
-      | www.aff.gov/url3 | 12     |
-      | www.aff.gov/url2 | 11     |
-      | www.aff.gov/url1 | 10     |
+      | Top URLs Clicked | # of Clicks |
+      | www.aff.gov/url1 | 39          |
+      | www.aff.gov/url2 | 29          |
+      | www.aff.gov/url3 | 19          |
+
+    When I fill in "From" with "2012-10-19"
+    And I fill in "To" with "2012-10-19"
+    And I press "Generate Report"
+    Then I should see the following table rows:
+      | Top URLs Clicked | # of Clicks |
+      | www.aff.gov/url3 | 12          |
+      | www.aff.gov/url2 | 11          |
+      | www.aff.gov/url1 | 10          |
 
     When I fill in "From" with "2012-10-18"
     And I fill in "To" with "2012-10-19"
-    And I press "Search"
-    Then I should see the following table rows:
-      | URL              | Clicks |
-      | www.aff.gov/url1 | 39     |
-      | www.aff.gov/url2 | 29     |
-      | www.aff.gov/url3 | 19     |
-
-    When I follow "39"
+    And I press "Generate Report"
+    And I follow "39"
     Then I should see "Click Queries"
     And I should see "Top Queries leading to 'http://www.aff.gov/url1' from 2012-10-18 to 2012-10-19"
     And I should see the following table rows:
-      | Query       | Total    |
-      | foo         | 20       |
-      | bar         | 6        |
-      | blat        | 2        |
-      | baz         | 1        |
+      | Top Queries | # of Clicks    |
+      | foo         | 20             |
+      | bar         | 6              |
+      | blat        | 2              |
+      | baz         | 1              |
 
     When I follow "20"
     Then I should see "Query Clicks"
     And I should see "Top Clicks on 'foo' from 2012-10-18 to 2012-10-19"
     And I should see the following table rows:
-      | URL                       | Total  |
-      | http://www.aff.gov/url2   | 75     |
-      | http://www.aff.gov/url1   | 20     |
+      | Top URLs Clicked | # of Clicks |
+      | www.aff.gov/url2 | 75          |
+      | www.aff.gov/url1 | 20          |

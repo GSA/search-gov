@@ -10,8 +10,8 @@
 %table.table.table-striped.table-bordered.table-kv-pairs
   %thead
     %tr
-      %th URL
-      %th Total
+      %th Top URLs Clicked
+      %th # of Clicks
   %tbody
     - @top_urls.each_with_index do |(url, total), idx|
       %tr
@@ -21,3 +21,4 @@
         %td= link_to number_with_delimiter(total), site_click_queries_path(@site,
           {:url => url, :start_date => @start_date, :end_date => @end_date})
 
+%p Tip: Select the hyperlinked number in the # of Clicks column to view the top queries that led to a click for each URL.
