@@ -16,7 +16,8 @@
     - @top_urls.each_with_index do |(url, total), idx|
       %tr
         %td
-          = "#{idx+1}. #{url}"
+          = "#{idx+1}. "
+          = linked_shortened_url_without_protocol(url)
         %td= link_to number_with_delimiter(total), site_click_queries_path(@site,
           {:url => url, :start_date => @start_date, :end_date => @end_date})
 
