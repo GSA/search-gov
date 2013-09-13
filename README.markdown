@@ -7,11 +7,11 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 1.9.3. Verify that your path points to the correct version of Ruby:
+You will need Ruby 2.0. Verify that your path points to the correct version of Ruby:
 
     devbox:usasearch
     $ ruby -v
-    ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin12.1.0]
+    ruby 2.0.0p195 (2013-05-14 revision 40734) [x86_64-darwin12.3.0]
 
 ## Gems
 
