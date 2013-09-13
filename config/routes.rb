@@ -119,6 +119,7 @@ UsasearchRails3::Application.routes.draw do
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :click_queries, only: [:show]
+      resource :queries, only: [:new, :create]
 
       resource :content, only: [:show]
       resource :display, only: [:edit, :update] do
@@ -130,7 +131,6 @@ UsasearchRails3::Application.routes.draw do
       resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]
       resource :raw_logs_access, only: [:new, :create]
-      resource :queries, only: [:show]
       resource :setting, only: [:edit, :update]
       resource :supplemental_feed,
                controller: 'site_feed_urls',

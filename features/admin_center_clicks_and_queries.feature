@@ -3,6 +3,50 @@ Feature: Clicks and Queries stats
   As a site customer
   I want to see top clicked URLs, the queries that led to them, and the clicked URLs that came from those queries
 
+  Scenario: Viewing the Site's Query Stats page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following DailyQueryStats exist for affiliate "aff.gov":
+      | query          | times | day        |
+      | pollution      | 100   | 2012-10-19 |
+      | old pollution  | 10    | 2012-10-01 |
+      | something else | 50    | 2012-10-18 |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the aff.gov's Analytics page
+    And I follow "Queries"
+    Then I should see "Queries"
+    And I should see the following table rows:
+      | Top Queries     | # of Queries   |
+      | pollution       | 100            |
+      | something else  | 50             |
+      | old pollution   | 10             |
+
+    When I fill in "Query" with "pollute"
+    And I fill in "From" with "2012-10-18"
+    And I fill in "To" with "2012-10-19"
+    And I press "Generate Report"
+    Then I should see the following table rows:
+      | Top Queries     | # of Queries   |
+      | pollution       | 100            |
+
+    When I fill in "Query" with "nothing to see here"
+    And I fill in "From" with "2012-10-18"
+    And I fill in "To" with "2012-10-19"
+    And I press "Generate Report"
+    Then I should see "Sorry, no results found for 'nothing to see here'"
+
+  Scenario: Viewing the Site's Query Stats page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And there are no daily query stats
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the aff.gov's Analytics page
+    And I follow "Queries"
+    Then I should see "Queries"
+    And I should see "Your site has not received any search queries yet"
+
   Scenario: Viewing the Site's Click Stats page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
