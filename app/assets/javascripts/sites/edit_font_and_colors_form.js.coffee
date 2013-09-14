@@ -44,7 +44,7 @@ disableColorPickers = () ->
   $('[data-provide="colorpicker"] .add-on-colorpicker').each () ->
     $(this).tooltip
       placement: 'right',
-      title: 'Select Custom theme to modify'
+      title: 'Select Custom color scheme to modify'
 
 ready = () ->
   return unless $('#edit-font-and-colors')[0]?
