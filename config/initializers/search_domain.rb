@@ -19,7 +19,7 @@ module SearchDomain
     protected
 
     def normalize_domain
-      self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
+      self.domain = domain.gsub(/(^https?:\/\/(www\.)?| |\/$)/, '').downcase unless domain.blank?
     end
   end
 
