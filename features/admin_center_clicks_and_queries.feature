@@ -36,7 +36,7 @@ Feature: Clicks and Queries stats
     And I press "Generate Report"
     Then I should see "Sorry, no results found for 'nothing to see here'"
 
-  Scenario: Viewing the Site's Query Stats page
+  Scenario: Viewing the Site's Query Stats page with no results
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
@@ -46,6 +46,9 @@ Feature: Clicks and Queries stats
     And I follow "Queries"
     Then I should see "Queries"
     And I should see "Your site has not received any search queries yet"
+    When I fill in "Query" with "nothing to see here"
+    And I press "Generate Report"
+    Then I should see "Sorry, no results found for 'nothing to see here'"
 
   Scenario: Viewing the Site's Click Stats page
     Given the following Affiliates exist:

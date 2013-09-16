@@ -29,7 +29,7 @@ class QueriesRequest
       most_popular_terms = DailyQueryStat.most_popular_terms(@site.name, @start_date, @end_date)
       return [] if most_popular_terms.instance_of? String
       most_popular_terms
-    else
+    elsif @start_date.present? and @end_date.present?
       DailyQueryStat.query_counts_for_terms_like(@query, @site.name, @start_date, @end_date).collect { |hash| QueryCount.new(hash.first, hash.last) }
     end
   end
