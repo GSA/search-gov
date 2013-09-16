@@ -650,6 +650,10 @@ class Affiliate < ActiveRecord::Base
     save!
   end
 
+  def uses_custom_theme?
+    theme != 'default'
+  end
+
   private
 
   def batch_size(scope)

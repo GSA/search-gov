@@ -49,7 +49,7 @@
       = f.radio_button :theme, 'default'
       Default
     = f.label :theme, value: 'custom', class: 'radio' do
-      = f.radio_button :theme, 'custom'
+      = f.radio_button :theme, 'custom', checked: @site.uses_custom_theme?
       Custom
 
   = f.fields_for :css_property_hash do |css|
