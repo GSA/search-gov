@@ -132,7 +132,7 @@ Feature: Dashboard
       | Site Handle  | x                       |
     And I press "Add"
     Then I should see "Site Handle (visible to searchers in the URL) is too short"
-    And the "Homepage URL" field should contain "http://www.awesome.gov"
+    And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
       | Homepage URL | http://www.awesome.gov/ |
