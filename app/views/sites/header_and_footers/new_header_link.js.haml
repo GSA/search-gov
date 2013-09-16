@@ -1,0 +1,4 @@
+:plain
+  jQuery('#header-links tbody').append("#{escape_javascript(render('managed_header_link_fields', header_link: {}, index: @index))}");
+  jQuery('#new-site-header-link-trigger').data({ params: { index: "#{@index + 1}" } });
+  jQuery('#header-links tbody .title').last().focus();

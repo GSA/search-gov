@@ -118,8 +118,8 @@ module NavigationHelpers
       edit_site_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Image Assets page$/
       edit_site_image_assets_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Advanced Display page$/
-      edit_site_advanced_display_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Header & Footer page$/
+      edit_site_header_and_footer_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Activate Search page$/
       site_embed_code_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Analytics page$/

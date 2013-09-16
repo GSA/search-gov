@@ -40,10 +40,9 @@ describe AffiliateHelper do
     context "when the affiliate has a header image and an exception occurs when trying to retrieve the image" do
       let(:header_image) { mock('header image') }
       let(:affiliate) { mock_model(Affiliate,
+                                   :css_property_hash => Affiliate::DEFAULT_CSS_PROPERTIES,
                                    :header_image_file_name => 'logo.gif',
                                    :header_image => header_image,
-                                   :managed_header_text => nil,
-                                   :managed_header_home_url => nil,
                                    :managed_header_css_properties => Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES) }
 
       before do

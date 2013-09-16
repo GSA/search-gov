@@ -6,16 +6,14 @@
         %ul.nav
           = render_preview_links 'View Staged', @site, staged: true
           = render_preview_links 'View Current', @site
-          = render_preview_links 'View Staged Mobile', @site, staged: true, m: true
           = render_preview_links 'View Current Mobile', @site, m: true
         = modal_close_button
         %ul.nav.pull-right
           %li= list_item_with_link_to_current_help_page
   .preview-wrapper
-    %iframe{ name: 'preview-frame', src: search_path(affiliate: @site.name, query: 'gov', staged: true, external_tracking_code_disabled: true) }
+    %iframe{ name: 'preview-frame', src: search_path(preview_search_path_options(@site)) }
       %p Your browser does not support iframe. Use these links to preview your search results page.
       %ul.nav
         = render_preview_links 'View Staged', @site, { staged: true }, '_blank'
         = render_preview_links 'View Current', @site, {}, '_blank'
-        = render_preview_links 'View Staged Mobile', @site, { staged: true, m: true }, '_blank'
         = render_preview_links 'View Current Mobile', @site, { m: true }, '_blank'

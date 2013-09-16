@@ -87,7 +87,7 @@ module SitesHelper
   end
 
   def site_manage_display_controllers
-    %w(advanced_displays displays font_and_colors image_assets)
+    %w(header_and_footers displays font_and_colors image_assets)
   end
 
   def list_item_with_link_to_current_help_page
@@ -122,5 +122,13 @@ module SitesHelper
             remote: true,
             data: { params: { index: boosted_content.boosted_content_keywords.length } },
             id: 'new-keyword-trigger'
+  end
+
+  def preview_search_path_options(site)
+    default_options = { affiliate: @site.name,
+                        external_tracking_code_disabled: true,
+                        query: 'gov' }
+    default_options[:staged] = '1' if @site.has_staged_content?
+    default_options
   end
 end

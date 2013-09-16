@@ -173,13 +173,6 @@ Feature: Affiliate clients
 
     When I follow "Header and footer" in the site navigation bar
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "My awesome agency"
-    And the "Header text color" field should contain "#FFFFFF"
-    And the "Header background color" field should contain "#336699"
-    And the "Header/footer link color" field should contain "#336699"
-    And the "Header/footer link background color" field should contain "#FFFFFF"
-    And the "Header home URL" field should contain "http://usasearch.howto.gov"
-    And the "Mobile homepage URL" field should contain "http://usasearch.howto.gov"
 
     When I follow "Sidebar" in the site navigation bar
     Then the "Default search label" field should contain "Everything"
@@ -786,16 +779,13 @@ Feature: Affiliate clients
 
   Scenario: Editing managed header/footer and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | contact_name | website               |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.agency.gov |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "aff site"
     And I fill in the following:
-      | Header text         | updated header without image |
-      | Header home URL     | www.agency.gov               |
       | Header Link Title 0 | News                         |
       | Header Link URL 0   | news.agency.gov              |
       | Header Link Title 1 | Blog                         |
@@ -810,7 +800,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
     And I should see a link to "Blog" with url for "http://blog.agency.gov" in the SERP header
     And I should see a link to "About Us" with url for "http://about.agency.gov" in the SERP footer
@@ -819,8 +809,6 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "updated header without image"
-    And the "Header home URL" field should contain "http://www.agency.gov"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "news.agency.gov"
     And the "Header Link Title 1" field should contain "Blog"
@@ -832,9 +820,6 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
-    And I fill in the following:
-      | Header text         | updated header with image |
-      | Mobile homepage URL | m.agency.gov              |
     And I attach the file "features/support/small.jpg" to "Header image"
     And I attach the file "features/support/logo_mobile_en.png" to "Mobile logo"
     And I press "Make Live"
@@ -843,22 +828,18 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "updated header with image" with url for "http://www.agency.gov"
-    And I should see an image link to "logo" with url for "http://www.agency.gov"
+    Then I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "small.jpg" image
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://www.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then I should see "small.jpg" image
     And I should see "logo_mobile_en.png" image
-    When I fill in the following:
-      | Header text         |  |
-      | Mobile homepage URL |  |
     And I attach the file "features/support/searchlogo.gif" to "Header image"
     And I attach the file "features/support/logo_mobile_es.png" to "Mobile logo"
     And I press "Make Live"
@@ -867,13 +848,12 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should not see "updated header with image" in the SERP header
     And I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should not see an image link to "aff site" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://www.agency.gov"
     And I should see "logo_mobile_es.png" image
 
     When I go to the "aff site" affiliate page
@@ -896,8 +876,6 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I fill in the following:
-      | Header background color | #DDDD              |
-      | Header text color       | #XXXXX             |
       | Header Link Title 0     | News               |
       | Header Link URL 0       |                    |
       | Header Link Title 1     |                    |
@@ -909,8 +887,6 @@ Feature: Affiliate clients
     And I attach the file "features/support/very_large.jpg" to "Header image"
     And I press "Make Live"
     Then I should see "Header and Footer" in the page header
-    And I should see "Header background color should consist of a # character followed by 3 or 6 hexadecimal digits"
-    And I should see "Header text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Logo file size must be under 512 KB"
     And I should see "Header link title can't be blank"
     And I should see "Header link URL can't be blank"
@@ -919,16 +895,13 @@ Feature: Affiliate clients
 
   Scenario: Editing managed header/footer and save it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | contact_name | website               |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://www.agency.gov |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "aff site"
     And I fill in the following:
-      | Header text         | live header with image  |
-      | Header home URL     | live.agency.gov         |
       | Header Link Title 0 | News                    |
       | Header Link URL 0   | news.agency.gov         |
       | Header Link Title 1 | Blog                    |
@@ -937,7 +910,6 @@ Feature: Affiliate clients
       | Footer Link URL 0   | http://about.agency.gov |
       | Footer Link Title 1 | Contact Us              |
       | Footer Link URL 1   | contact.agency.gov      |
-      | Mobile homepage URL | m.agency.gov            |
     And I attach the file "features/support/searchlogo.gif" to "Header image"
     And I attach the file "features/support/logo_mobile_en.png" to "Mobile logo"
     And I press "Make Live"
@@ -945,8 +917,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
-    And I should see an image link to "logo" with url for "http://live.agency.gov"
+    Then I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
     And I should see a link to "Blog" with url for "http://blog.agency.gov" in the SERP header
@@ -955,14 +926,12 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://www.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
     When I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "live header with image"
-    And the "Header home URL" field should contain "http://live.agency.gov"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
     And the "Header Link Title 1" field should contain "Blog"
@@ -971,13 +940,10 @@ Feature: Affiliate clients
     And the "Footer Link URL 0" field should contain "http://about.agency.gov"
     And the "Footer Link Title 1" field should contain "Contact Us"
     And the "Footer Link URL 1" field should contain "http://contact.agency.gov"
-    And the "Mobile homepage URL" field should contain "http://m.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I fill in the following:
-      | Header text         | updated header with existing image |
-      | Header home URL     | staged.agency.gov                  |
       | Header Link Title 0 | Features                           |
       | Header Link URL 0   | features.agency.gov                |
       | Header Link Title 1 | Help                               |
@@ -986,7 +952,6 @@ Feature: Affiliate clients
       | Footer Link URL 0   | privacy.agency.gov                 |
       | Footer Link Title 1 | Policies                           |
       | Footer Link URL 1   | policies.agency.gov                |
-      | Mobile homepage URL | updated.m.agency.gov               |
     And I attach the file "features/support/small.jpg" to "Header image"
     And I attach the file "features/support/logo_mobile_es.png" to "Mobile logo"
     And I press "Save for Preview"
@@ -995,8 +960,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
-    And I should see an image link to "logo" with url for "http://staged.agency.gov"
+    Then I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "small.jpg" image
     And I should see a link to "Features" with url for "http://features.agency.gov" in the SERP header
     And I should see a link to "Help" with url for "http://help.agency.gov" in the SERP header
@@ -1005,29 +969,26 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged Mobile"
-    Then I should see an image link to "aff site" with url for "http://updated.m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://www.agency.gov"
     And I should see "logo_mobile_es.png" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then I should see "small.jpg" image
     And I should see "logo_mobile_es.png" image
-    When I fill in the following:
-      | Header text | |
     And I attach the file "features/support/small.jpg" to "Header image"
     And I press "Save for Preview"
     Then I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    And I should not see "updated header without image" in the SERP header
-    And I should see an image link to "logo" with url for "http://staged.agency.gov"
+    And I should not see "aff site" in the SERP header
+    And I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "small.jpg" image
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
-    And I should see an image link to "logo" with url for "http://live.agency.gov"
+    Then I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
     And I should see a link to "Blog" with url for "http://blog.agency.gov" in the SERP header
@@ -1036,13 +997,11 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current Mobile"
-    Then I should see an image link to "aff site" with url for "http://m.agency.gov"
+    Then I should see an image link to "aff site" with url for "http://www.agency.gov"
     And I should see "logo_mobile_en.png" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
-    And I fill in the following:
-      | Header text     | updated header without image |
     And I check "Mark header image for deletion"
     And I check "Mark mobile logo for deletion"
     And I press "Save for Preview"
@@ -1050,19 +1009,16 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see a link to "updated header without image" with url for "http://staged.agency.gov"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
     And I should not see an image with alt text "logo"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged Mobile"
-    Then I should see a link to "aff site" with url for "http://updated.m.agency.gov"
-    And I should not see an image link to "aff site" with url for "http://updated.m.agency.gov"
-    And I should not see an image with alt text "logo"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
-    And I should see an image link to "logo" with url for "http://live.agency.gov"
+    Then I should see an image link to "logo" with url for "http://www.agency.gov"
     And I should see "searchlogo.gif" image
     And I should see a link to "News" with url for "http://news.agency.gov" in the SERP header
     And I should see a link to "Blog" with url for "http://blog.agency.gov" in the SERP header
@@ -1074,7 +1030,7 @@ Feature: Affiliate clients
     Then I should see "Staged content is now visible"
 
     When I follow "View Current"
-    And I should see a link to "updated header without image" with url for "http://staged.agency.gov"
+    And I should see a link to "aff site" with url for "http://www.agency.gov"
     And I should not see an image with alt text "logo"
     And I should see a link to "Features" with url for "http://features.agency.gov" in the SERP header
     And I should see a link to "Help" with url for "http://help.agency.gov" in the SERP header
@@ -1235,63 +1191,53 @@ Feature: Affiliate clients
 
   Scenario: Updating header/footer option from custom to managed and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header        | footer        |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | custom header | custom footer |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header        | footer        | website               |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | custom header | custom footer | http://www.agency.gov |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 2. Use CSS/HTML code to create a custom header/footer" radio button should be checked
     When I choose "Option 1. Use a managed header/footer"
-    And I fill in the following:
-      | Header text     | updated header without image |
-      | Header home URL | www.agency.gov               |
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Updated changes to your live site successfully"
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
     And I should not see "custom header"
     And I should not see "custom footer"
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "updated header without image"
-    And the "Header home URL" field should contain "http://www.agency.gov"
 
   Scenario: Updating header/footer option from custom to managed and save it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | website               |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | http://www.agency.gov |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I choose "Option 1. Use a managed header/footer"
-    And I fill in the following:
-      | Header text     | updated header without image |
-      | Header home URL | www.agency.gov               |
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Admin Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
     Then I should see "Staged content is now visible"
 
     When I follow "View Current"
-    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    Then I should see a link to "aff site" with url for "http://www.agency.gov"
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     Then the "Option 1. Use a managed header/footer" radio button should be checked
-    And the "Header text" field should contain "updated header without image"
-    And the "Header home URL" field should contain "http://www.agency.gov"
 
   Scenario: Editing custom header/footer and push the changes to live
      Given the following Affiliates exist:
@@ -1349,12 +1295,6 @@ Feature: Affiliate clients
       | display_name | name     | contact_email | contact_name | uses_managed_header_footer | header |
       | aff2 site    | aff2.gov | aff2@bar.gov  | John Bar     | false                      |        |
     When I go to aff2.gov's search page
-    Then I should not see the SERP header
-
-    Given the following Affiliates exist:
-      | display_name | name     | contact_email | contact_name | managed_header_text |
-      | aff3 site    | aff3.gov | aff2@bar.gov  | John Bar     |                     |
-    When I go to aff3.gov's search page
     Then I should not see the SERP header
 
   Scenario: Cancelling staged changes from the Admin Center page

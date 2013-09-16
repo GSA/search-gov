@@ -195,13 +195,13 @@ describe Affiliate do
 
         expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
-        expect(affiliate.look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#369\}/)
+        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#369\}/)
         expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
         expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
 
         expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
         expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
-        expect(affiliate.staged_look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#00396f\}/)
+        expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
         expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
         expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#20c\}/)
       end
@@ -333,19 +333,17 @@ describe Affiliate do
       affiliate.staged_theme = 'natural'
       affiliate.css_property_hash = {font_family: 'Verdana, sans-serif'}
       affiliate.staged_css_property_hash = {font_family: 'Georgia, serif'}
-      affiliate.managed_header_css_properties = {header_footer_link_color: '#445566'}
-      affiliate.staged_managed_header_css_properties = {header_footer_link_color: '#AABBCC'}
       affiliate.save!
 
       expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Verdana,sans-serif\}/)
       expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
-      expect(affiliate.look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#456\}/)
+      expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#369\}/)
       expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Verdana,sans-serif\}/)
       expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
 
       expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Georgia,serif\}/)
       expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#b58100\}\n$/)
-      expect(affiliate.staged_look_and_feel_css).to match(/.managed-header-footer-links a:visited\{color:#abc\}/)
+      expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#b58100\}/)
       expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Georgia,serif\}/)
       expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#008eb5\}/)
     end
@@ -2175,11 +2173,7 @@ describe Affiliate do
 
       it 'should update mobile homepage URL' do
         affiliate.should_receive(:update_attributes!).with(
-          managed_header_home_url: 'http://usasearch.howto.gov/with-path',
-          staged_managed_header_home_url: 'http://usasearch.howto.gov/with-path',
-          mobile_homepage_url: 'http://usasearch.howto.gov/with-path',
-          staged_mobile_homepage_url: 'http://usasearch.howto.gov/with-path')
-
+          website: 'http://usasearch.howto.gov/with-path')
         affiliate.autodiscover_homepage_url
       end
     end
@@ -2196,12 +2190,7 @@ describe Affiliate do
       end
 
       it 'should update mobile homepage URL with www. prefix in the hostname' do
-        affiliate.should_receive(:update_attributes!).with(
-          managed_header_home_url: 'http://www.howto.gov',
-          staged_managed_header_home_url: 'http://www.howto.gov',
-          mobile_homepage_url: 'http://www.howto.gov',
-          staged_mobile_homepage_url: 'http://www.howto.gov',)
-
+        affiliate.should_receive(:update_attributes!).with(website: 'http://www.howto.gov')
         affiliate.autodiscover_homepage_url
       end
     end
@@ -2222,34 +2211,15 @@ describe Affiliate do
       end
     end
 
-    context 'when the managed header home URL is present' do
+    context 'when website is present' do
       before do
         affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.should_receive(:managed_header_home_url).twice.and_return('http://www.usa.gov')
-        affiliate.should_receive(:mobile_homepage_url).twice.and_return(nil)
+        affiliate.should_receive(:website).and_return('http://www.usa.gov')
         affiliate.stub_chain(:site_domains, :first, :domain).and_return('usa.gov')
       end
 
-      it 'should update mobile homepage URL' do
-        affiliate.should_receive(:update_attributes!).
-          with(mobile_homepage_url: 'http://usa.gov',
-               staged_mobile_homepage_url: 'http://usa.gov')
-        affiliate.autodiscover_homepage_url
-      end
-    end
-
-    context 'when the mobile homepage URL is present' do
-      before do
-        affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.should_receive(:managed_header_home_url).twice.and_return(nil)
-        affiliate.should_receive(:mobile_homepage_url).and_return('http://www.usa.gov')
-        affiliate.stub_chain(:site_domains, :first, :domain).and_return('usa.gov')
-      end
-
-      it 'should update mobile homepage URL' do
-        affiliate.should_receive(:update_attributes!).
-          with(managed_header_home_url: 'http://usa.gov',
-               staged_managed_header_home_url: 'http://usa.gov')
+      it 'should not update mobile homepage URL' do
+        affiliate.should_not_receive(:open)
         affiliate.autodiscover_homepage_url
       end
     end

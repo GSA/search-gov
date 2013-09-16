@@ -19,7 +19,7 @@
     #skiplink
       %a{:href => "#main_content"} Skip to Main Content
     #container
-      = render_affiliate_header(@affiliate, @search_options)
+      = render_affiliate_header(@affiliate)
       #search
         -unless error_page?
           %h1 Search
@@ -30,7 +30,7 @@
         = yield
       #usasearch_footer_container
         %a#usasearch_footer_button{ title: t(:show_footer) } &#9660;
-        = render_affiliate_footer(@affiliate, @search_options)
+        = render_affiliate_footer(@affiliate)
 
     - if @affiliate.is_sayt_enabled?
       = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id, extras: true)}&\";"

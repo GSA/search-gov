@@ -1,17 +1,4 @@
 %ul{ :class => "header-footer-fields managed" }
-  %li.css-overrides
-    %div
-      = label_tag 'affiliate[staged_managed_header_css_properties][header_background_color]', 'Header background color'
-      = render_staged_managed_header_color_text_field_tag @affiliate, :header_background_color
-    %div
-      = label_tag 'affiliate[staged_managed_header_css_properties][header_text_color]', 'Header text color'
-      = render_staged_managed_header_color_text_field_tag @affiliate, :header_text_color
-  %li
-    = managed_header_footer_form.label :staged_managed_header_home_url, "Header home URL"
-    = managed_header_footer_form.text_field :staged_managed_header_home_url, :maxlength => 128, :class => 'txt'
-  %li
-    = managed_header_footer_form.label :staged_managed_header_text, "Header text"
-    = managed_header_footer_form.text_field :staged_managed_header_text, :maxlength => 64, :class => 'txt'
   %li
     %div
       = managed_header_footer_form.label :staged_header_image, "Header image"
@@ -23,13 +10,6 @@
       .header-image-file-field-wrapper
         = managed_header_footer_form.file_field :staged_header_image, { :class => 'file' }
       %span GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
-  %li.css-overrides
-    %div
-      = label_tag 'affiliate[staged_managed_header_css_properties][header_footer_link_background_color]', 'Header/footer link background color'
-      = render_staged_managed_header_color_text_field_tag @affiliate, :header_footer_link_background_color
-    %div
-      = label_tag 'affiliate[staged_managed_header_css_properties][header_footer_link_color]', 'Header/footer link color'
-      = render_staged_managed_header_color_text_field_tag @affiliate, :header_footer_link_color
   %li
     %h3 Header Links
     .header-links

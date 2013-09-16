@@ -15,10 +15,11 @@ body
       -webkit-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
       -o-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
       box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
-#header, #usasearch_footer
-  .managed-header-footer-links
-    a, a:visited
-      color: <%= render_managed_header_css_property_value(@css_hash, :header_footer_link_color, false) %>
+#header.managed, #usasearch_footer.managed
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_text_color) %>
+  color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+  a, a:visited
+    color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 #search_button, #cdr_search_button
   background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
   border: 1px solid <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>

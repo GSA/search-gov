@@ -8,3 +8,21 @@ input.btn {
     font-weight: normal;
   }
 }
+
+.btn-flat[type="submit"] {
+  border: none;
+  background-color: @dropdownBackground;
+  clear: both;
+  color: @dropdownLinkColor;
+  display: block;
+  font-weight: normal;
+  line-height: @baseLineHeight;
+  padding: 3px 20px;
+  text-align: left;
+  white-space: nowrap;
+  width: 160px;
+
+  &:focus, &:hover {
+    .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  }
+}

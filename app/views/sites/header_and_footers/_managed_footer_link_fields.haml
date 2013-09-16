@@ -1,0 +1,9 @@
+%tr{ id: "footer-link-#{index}"}
+  %td.title
+    %i.draggable.icon.icon-reorder
+    = label_tag "site[managed_footer_links_attributes][#{index}][title]", "Footer Link Title #{index}", { class: 'hide' }
+    = text_field_tag "site[managed_footer_links_attributes][#{index}][title]", footer_link[:title], { class: 'title', maxlength: 32, size: nil }
+    = hidden_field_tag "site[managed_footer_links_attributes][#{index}][position]", index, { class: 'position' }
+  %td.url
+    = label_tag "site[managed_footer_links_attributes][#{index}][url]", "Footer Link URL #{index}", { :class => 'hide' }
+    = text_field_tag "site[managed_footer_links_attributes][#{index}][url]", footer_link[:url], { class: 'url', maxlength: 128, size: nil }

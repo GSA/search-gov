@@ -457,7 +457,7 @@ module SearchHelper
   end
 
   def external_tracking_code_disabled?
-    params[:external_tracking_code_disabled].present?
+    params[:external_tracking_code_disabled] == 'true'
   end
 
   def hidden_field_tag_if_key_exists(param_sym)

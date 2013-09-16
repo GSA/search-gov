@@ -91,6 +91,7 @@ class Affiliate < ActiveRecord::Base
                     :ssl => true
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
+  before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   before_validation :set_default_rss_govbox_label
   validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale
@@ -143,7 +144,7 @@ class Affiliate < ActiveRecord::Base
 
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer,
            :validate_managed_header_css_properties,
-           :validate_staged_managed_header_links, :validate_staged_managed_footer_links
+           :validate_managed_header_links, :validate_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix, :nullify_blank_dublin_core_fields
@@ -158,6 +159,7 @@ class Affiliate < ActiveRecord::Base
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
   attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion
   attr_accessor :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
+  attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
@@ -517,21 +519,12 @@ class Affiliate < ActiveRecord::Base
   end
 
   def autodiscover_homepage_url
-    return unless (managed_header_home_url.blank? || mobile_homepage_url.blank?) && (site_domains.count == 1)
+    return unless website.blank? && (site_domains.count == 1)
         domain = site_domains.first.domain
     %W(http://#{domain} http://www.#{domain}).any? do |url|
       page = open(url) rescue nil
       if page
-        update_params = {}
-        if managed_header_home_url.blank?
-          update_params[:managed_header_home_url] = url
-          update_params[:staged_managed_header_home_url] = url
-        end
-        if mobile_homepage_url.blank?
-          update_params[:mobile_homepage_url] = url
-          update_params[:staged_mobile_homepage_url] = url
-        end
-        update_attributes!(update_params)
+        update_attributes!(website: url)
         true
       else
         false
@@ -745,10 +738,22 @@ class Affiliate < ActiveRecord::Base
     set_managed_links(@staged_managed_header_links_attributes, staged_managed_header_links)
   end
 
+  def set_managed_header_links
+    return if @managed_header_links_attributes.nil?
+    self.managed_header_links = []
+    set_managed_links(@managed_header_links_attributes, managed_header_links)
+  end
+
   def set_staged_managed_footer_links
     return if @staged_managed_footer_links_attributes.nil?
     self.staged_managed_footer_links = []
     set_managed_links(@staged_managed_footer_links_attributes, staged_managed_footer_links)
+  end
+
+  def set_managed_footer_links
+    return if @managed_footer_links_attributes.nil?
+    self.managed_footer_links = []
+    set_managed_links(@managed_footer_links_attributes, managed_footer_links)
   end
 
   def set_managed_links(managed_links_attributes, managed_links)
@@ -760,11 +765,13 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def validate_staged_managed_header_links
+  def validate_managed_header_links
+    validate_managed_links(managed_header_links, :header)
     validate_managed_links(staged_managed_header_links, :header)
   end
 
-  def validate_staged_managed_footer_links
+  def validate_managed_footer_links
+    validate_managed_links(managed_footer_links, :footer)
     validate_managed_links(staged_managed_footer_links, :footer)
   end
 

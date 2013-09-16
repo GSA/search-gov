@@ -18,6 +18,8 @@ module HtmlSelectorsHelpers
       '#urls .error .last-crawl-status.in'
     when /the Supplemental URL last crawl status error message/
       '#indexed-documents .error .last-crawl-status.in'
+    when /the Header & Footer form/
+      '#edit-header-and-footer'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

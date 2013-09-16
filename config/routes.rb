@@ -127,6 +127,12 @@ UsasearchRails3::Application.routes.draw do
       end
       resource :embed_code, only: [:show]
       resource :font_and_colors, only: [:edit, :update]
+      resource :header_and_footer, only: [:edit, :update] do
+        collection do
+          get :new_footer_link
+          get :new_header_link
+        end
+      end
       resource :image_assets, only: [:edit, :update]
       resource :monthly_reports, only: [:show]
       resource :preview, only: [:show]

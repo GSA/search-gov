@@ -106,23 +106,20 @@ Feature: Dashboard
   @javascript
   Scenario: Preview
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | has_staged_content | managed_header_text | staged_managed_header_text | managed_header_home_url | staged_managed_header_home_url | mobile_homepage_url | staged_mobile_homepage_url |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | true               | live header text    | staged header text         | live.home.agency.gov    | staged.home.agency.gov         | m.live.agency.gov   | m.staged.agency.gov        |
+      | display_name | name       | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Dashboard page
     And I follow "Preview"
     Then the preview layer should be visible
     And I should see a link to "View Staged"
     And I should see a link to "View Current"
-    And I should see a link to "View Staged Mobile"
     And I should see a link to "View Current Mobile"
-    And the preview iframe should contain a link to "http://staged.home.agency.gov"
+    And the preview iframe should contain "staged header text"
     When I follow "View Current"
-    Then the preview iframe should contain a link to "http://live.home.agency.gov"
-    When I follow "View Staged Mobile"
-    Then the preview iframe should contain a link to "http://m.staged.agency.gov"
+    Then the preview iframe should contain "live header text"
     When I follow "View Current Mobile"
-    Then the preview iframe should contain a link to "http://m.live.agency.gov"
+    Then the preview iframe should contain "agency site Mobile"
 
   Scenario: Adding a new site
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"

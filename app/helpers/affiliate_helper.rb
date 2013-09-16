@@ -30,13 +30,11 @@ module AffiliateHelper
     javascript_include_tag "//#{request.host_with_port}#{source}"
   end
 
-  def render_affiliate_header(affiliate, search_options)
+  def render_affiliate_header(affiliate)
     if affiliate.uses_managed_header_footer?
       html = render_managed_header(affiliate)
       if affiliate.managed_header_links.present?
-        background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
-        style = background_color.blank? ? nil : "background-color: #{background_color};"
-        html << content_tag(:div, render_managed_links(affiliate.managed_header_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
+        html << content_tag(:div, render_managed_links(affiliate.managed_header_links).html_safe, :class => 'managed-header-footer-links-wrapper')
       end
       content_tag(:div, html.html_safe, :id => 'header', :class => 'managed') unless html.blank?
     elsif !affiliate.uses_managed_header_footer? and affiliate.header.present?
@@ -46,26 +44,18 @@ module AffiliateHelper
 
   def render_managed_header(affiliate)
     content = ''
-    unless affiliate.header_image_file_name.blank?
+    if affiliate.header_image_file_name.present?
       begin
-        image_style = "display: inline-block;#{affiliate.managed_header_text.blank? ? '' : ' float: right;'}"
-        content << link_to_unless(affiliate.managed_header_home_url.blank?, image_tag(affiliate.header_image.url, :alt => 'logo', :style => "#{image_style}"), affiliate.managed_header_home_url)
+        image_style = 'display: inline-block;'
+        content << link_to_unless(affiliate.website.blank?, image_tag(affiliate.header_image.url, :alt => 'logo', :style => "#{image_style}"), affiliate.website)
       rescue Exception
         nil
       end
+    else
+      style = 'font-family: Georgia, serif; font-size: 50px; display: inline-block; margin: 0;'
+      content << link_to_unless(affiliate.website.blank?, content_tag(:div, affiliate.display_name, style: style), affiliate.website)
     end
-
-    unless affiliate.managed_header_text.blank?
-      color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_text_color)
-      style = "color: #{color}; font-family: Georgia, serif; font-size: 50px; display: inline-block; margin: 0;"
-      content << link_to_unless(affiliate.managed_header_home_url.blank?, content_tag(:div, affiliate.managed_header_text, :style => style), affiliate.managed_header_home_url)
-    end
-
-    background_color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_background_color)
-    alignment = affiliate.managed_header_text.blank? || affiliate.header_image_file_name.blank? ? 'center' : 'left';
-    header_style = "text-align: #{alignment};"
-    header_style << " background-color: #{background_color};" unless background_color.blank?
-    content.blank? ? content : content_tag(:div, content.html_safe, :id => 'managed_header', :style => "#{header_style}").html_safe
+    content.blank? ? content : content_tag(:div, content.html_safe, id: 'managed_header').html_safe
   end
 
   def render_managed_links(links)
@@ -77,11 +67,9 @@ module AffiliateHelper
     content_tag(:ul, content.html_safe, :class => 'managed-header-footer-links')
   end
 
-  def render_affiliate_footer(affiliate, search_options)
+  def render_affiliate_footer(affiliate)
     if affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
-      background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
-      style = background_color.blank? ? nil : "background-color: #{background_color};"
-      html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
+      html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper')
       content_tag(:div, html.html_safe, id: 'usasearch_footer', class: 'managed')
     elsif !affiliate.uses_managed_header_footer? and affiliate.footer.present?
       content_tag(:div, affiliate.footer.html_safe, id: 'usasearch_footer', class: 'header-footer')
@@ -115,14 +103,6 @@ module AffiliateHelper
     text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
                    render_affiliate_css_property_value(staged_css_property_hash, field_name_symbol),
                    {:disabled => disabled, :class => 'color { hash:true, adjust:false }'}
-  end
-
-  def render_staged_managed_header_color_text_field_tag(affiliate, field_name_symbol)
-    staged_managed_header_css_properties = affiliate.staged_managed_header_css_properties
-    staged_managed_header_css_properties = {} if staged_managed_header_css_properties.nil?
-    text_field_tag "affiliate[staged_managed_header_css_properties][#{field_name_symbol}]",
-                   render_managed_header_css_property_value(staged_managed_header_css_properties, field_name_symbol),
-                   {:class => 'color { hash:true, adjust:false }'}
   end
 
   def render_staged_check_box_tag(affiliate, field_name_symbol)

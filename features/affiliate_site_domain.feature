@@ -91,9 +91,6 @@ Feature: Affiliate site domain
       | Domain | whitehouse.gov |
     And I press "Add"
     Then I should see "Domain was successfully added."
-    When I follow "Header and footer" in the site navigation bar
-    Then the "Header home URL" field should contain "http://whitehouse.gov"
-    And the "Mobile homepage URL" field should contain "http://whitehouse.gov"
 
   Scenario: Bulk uploading site domains without exisiting site domains
     Given the following Affiliates exist:

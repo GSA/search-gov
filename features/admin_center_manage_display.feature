@@ -226,10 +226,111 @@ Feature: Manage Display
     And I should not see an image with alt text "Mobile Logo"
     And I should not see an image with alt text "Page Background Image"
 
-  Scenario: Editing Advanced Display
+  @javascript
+  Scenario: Editing Managed Header & Footer
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
-    When I go to the agency.gov's Advanced Display page
-    Then I should see "Header & Footer (Coming Soon)"
+    When I go to the agency.gov's Header & Footer page
+    And I fill in the following:
+      | Header Link Title 0 | News               |
+      | Header Link URL 0   | news.agency.gov    |
+      | Footer Link Title 0 | Contact            |
+      | Footer Link URL 0   | contact.agency.gov |
+    When I follow "Add Another Header Link"
+    Then I should be able to access 2 header link rows
+    When I fill in the following:
+      | Header Link Title 1 | Blog            |
+      | Header Link URL 1   | blog.agency.gov |
+    When I follow "Add Another Footer Link"
+    Then I should be able to access 2 footer link rows
+    When I fill in the following:
+      | Footer Link Title 1 | Terms            |
+      | Footer Link URL 1   | terms.agency.gov |
+    And I press "Save"
+    Then I should see "You have updated your header and footer links"
+    And the "Header Link Title 0" field should contain "News"
+    And the "Header Link URL 0" field should contain "http://news.agency.gov"
+    And the "Header Link Title 1" field should contain "Blog"
+    And the "Header Link URL 1" field should contain "http://blog.agency.gov"
+    And the "Footer Link Title 0" field should contain "Contact"
+    And the "Footer Link URL 0" field should contain "http://contact.agency.gov"
+    And the "Footer Link Title 1" field should contain "Terms"
+    And the "Footer Link URL 1" field should contain "http://terms.agency.gov"
+
+    When I follow "Switch to Advanced Mode"
+    Then I should see "CSS to customize the top and bottom of your search results page"
+
+  Scenario: Error when Editing Managed Header & Footer
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the agency.gov's Header & Footer page
+    And I fill in the following:
+      | Header Link Title 0 | News               |
+      | Footer Link URL 0   | contact.agency.gov |
+    And I press "Save"
+    Then I should see "Header link URL can't be blank"
+    Then I should see "Footer link title can't be blank"
+
+  @javascript
+  Scenario: Editing Custom Header & Footer
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | staged_header |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | header        |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the agency.gov's Header & Footer page
+    And I follow "Switch to Advanced Mode"
+    And I fill in the following:
+      | CSS to customize the top and bottom of your search results page | .staged { color: blue } |
+      | HTML to customize the top of your search results page           | Staged Header           |
+      | HTML to customize the bottom of your search results page        | Staged Footer           |
+    And I press "Save for Preview"
+    Then I should see "You have saved header and footer changes for preview"
+    And the "CSS to customize the top and bottom of your search results page" field should contain ".staged \{ color: blue \}"
+    And the "HTML to customize the top of your search results page" field should contain "Staged Header"
+    And the "HTML to customize the bottom of your search results page" field should contain "Staged Footer"
+
+    When I access the dropdown button group within the "Header & Footer form"
+    And I press "Make Live"
+    Then I should see "You have saved header and footer changes to your live site"
+
+    When "john@agency.gov" opens the email
+    Then I should see "The header and footer for agency site have been changed" in the email subject
+    And I should see "The header and/or footer for agency site have been updated" in the email body
+    And I should see "Staged Header" in the email body
+    And I should see "Staged Footer" in the email body
+
+    When I fill in the following:
+      | CSS to customize the top and bottom of your search results page | .staged { color: red } |
+    And I press "Save for Preview"
+    Then I should see "You have saved header and footer changes for preview"
+
+    When I access the dropdown button group within the "Header & Footer form"
+    And I press "Cancel Changes"
+    Then I should see "You have cancelled header and footer changes"
+
+    When I follow "Switch to Simple Mode"
+    Then I should see "Header Links"
+
+  @javascript
+  Scenario: Error when Editing Custom Header & Footer
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the agency.gov's Header & Footer page
+    And I follow "Switch to Advanced Mode"
+    And I fill in the following:
+      | CSS to customize the top and bottom of your search results page | .staged { color: |
+    And I press "Save for Preview"
+    Then I should see "Invalid CSS"
+
+    When I access the dropdown button group within the "Header & Footer form"
+    And I press "Make Live"
+    Then I should see "Invalid CSS"
