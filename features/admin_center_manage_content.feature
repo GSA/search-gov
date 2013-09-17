@@ -7,6 +7,15 @@ Feature: Manage Content
     Then I should see a link to "Manage Content" in the active site main navigation
     And I should see a link to "Content Overview" in the active site sub navigation
 
+  Scenario: View best bets graphics
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Best Bets: Graphics"
+    Then I should see "Coming soon! You can update your Best Bets"
+
   Scenario: View best bets texts
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

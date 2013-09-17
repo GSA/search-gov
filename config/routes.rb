@@ -136,7 +136,7 @@ UsasearchRails3::Application.routes.draw do
                controller: 'site_feed_urls',
                only: [:edit, :create, :update, :destroy]
       resource :third_party_tracking_request, only: [:new, :create]
-
+      resources :best_bets_graphics, controller: 'featured_collections', only: [:index]
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
           get :new_keyword
