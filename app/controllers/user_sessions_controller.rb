@@ -13,7 +13,7 @@ class UserSessionsController < SslController
       if @user_session.user.is_developer?
         redirect_back_or_default developer_redirect_url
       else
-        redirect_back_or_default home_affiliates_path
+        redirect_back_or_default sites_path
       end
     else
       if params[:user_session][:email].present? and

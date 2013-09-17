@@ -16,21 +16,21 @@ Feature: User sessions
     And I press "Login"
     Then I should see "Email is not valid"
 
-  Scenario: Affiliate admin should be on the affiliate home page upon successful login
+  Scenario: Affiliate admin should be on the site home page upon successful login
     Given I am on the login page
     And I fill in the following in the login form:
       | Email                         | affiliate_admin@fixtures.org      |
       | Password                      | admin                             |
     And I press "Login"
-    Then I should be on the affiliate admin page
+    Then I should be on the new site page
 
-  Scenario: Affiliate manager should be on the affiliate home page upon successful login
+  Scenario: Affiliate manager should be on the site home page upon successful login
     Given I am on the login page
     And I fill in the following in the login form:
       | Email                         | affiliate_manager@fixtures.org    |
       | Password                      | admin                             |
     And I press "Login"
-    Then I should be on the affiliate admin page
+    Then I should be on the gobiernousa's Dashboard page
 
   Scenario: Affiliate manager with not approved status should not be able to login
     Given I am on the login page
