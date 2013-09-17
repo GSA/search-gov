@@ -232,4 +232,4 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Advanced Display page
-    Then I should see "Advanced Display (Coming Soon)"
+    Then I should see "Header & Footer (Coming Soon)"
