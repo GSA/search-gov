@@ -32,21 +32,7 @@ describe UserSessionsController do
     end
   end
 
-  describe "do POST on create for affiliate admin" do
-    it "should redirect to affiliate home page" do
-      post :create, :user_session => {:email => users("affiliate_admin").email, :password => "admin"}
-      response.should redirect_to(home_affiliates_url)
-    end
-  end
-
-  describe "do POST on create for affiliate manager" do
-    it "should redirect to affiliate home page" do
-      post :create, :user_session => {:email => users("affiliate_manager").email, :password => "admin"}
-      response.should redirect_to(home_affiliates_url)
-    end
-  end
-
-   describe "do POST on create for developer" do
+  describe "do POST on create for developer" do
     it "should redirect to affiliate home page" do
       post :create, :user_session => {:email => users("developer").email, :password => "admin"}
       response.should redirect_to(developer_redirect_url)
