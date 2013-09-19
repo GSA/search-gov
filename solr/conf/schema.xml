@@ -67,6 +67,7 @@
         <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.StemmerOverrideFilterFactory" dictionary="stemdict.txt" />
         <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
       </analyzer>
     </fieldtype>

@@ -443,6 +443,23 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         specify { BoostedContent.search_for(query, @affiliate).total.should == 1 }
       end
     end
+
+    context 'when query is for custom stemmed word' do
+      before do
+        BoostedContent.delete_all
+        BoostedContent.create!(@valid_attributes.merge(title: 'APHIS Biotechnology', description: 'APHIS uses the term biotechnology to mean the use of recombinant DNA technology, or genetic engineering (GE) to modify living organisms. This is an organization.'))
+        BoostedContent.reindex
+        Sunspot.commit
+      end
+
+      %w(organic organics organically).each do |query|
+        specify { BoostedContent.search_for(query, @affiliate).total.should be_zero }
+      end
+
+      %w(organizations organization organism organisms).each do |query|
+        specify { BoostedContent.search_for(query, @affiliate).total.should == 1 }
+      end
+    end
   end
 
   describe "#display_status" do
