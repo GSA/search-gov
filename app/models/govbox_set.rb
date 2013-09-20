@@ -27,7 +27,7 @@ class GovboxSet
 
     if affiliate.is_rss_govbox_enabled?
       non_managed_feeds = affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
-      @news_items = NewsItem.search_for(query, non_managed_feeds, affiliate, since: 13.months.ago)
+      @news_items = NewsItem.search_for(query, non_managed_feeds, affiliate, since: 13.months.ago.beginning_of_day)
     end
 
     if affiliate.is_video_govbox_enabled?
@@ -39,7 +39,7 @@ class GovboxSet
     @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.is_medline_govbox_enabled?
 
     affiliate_twitter_ids = affiliate.searchable_twitter_ids
-    @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago) if affiliate_twitter_ids.any?
+    @tweets = Tweet.search_for(query, affiliate_twitter_ids, 3.months.ago.beginning_of_day) if affiliate_twitter_ids.any?
 
     @photos = FlickrPhoto.search_for(query, affiliate) if affiliate.is_photo_govbox_enabled?
     @related_search = SaytSuggestion.related_search(query, affiliate)

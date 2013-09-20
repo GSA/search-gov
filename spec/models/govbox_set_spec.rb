@@ -103,11 +103,11 @@ describe GovboxSet do
         affiliate.stub_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).and_return non_managed_feeds
         @non_video_results = mock('non video results', :total => 3)
         NewsItem.should_receive(:search_for).
-            with('foo', [news_feed, blog_feed], affiliate, { since: a_kind_of(Time) }).
-            and_return(@non_video_results)
+          with('foo', [news_feed, blog_feed], affiliate, { since: 13.months.ago.beginning_of_day }).
+          and_return(@non_video_results)
       end
 
-      it 'should retrieve non-video news items' do
+      it 'should retrieve non-video news items from the last 13 months' do
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.news_items.should == @non_video_results
       end
@@ -195,10 +195,10 @@ describe GovboxSet do
                                                :name => 'Test',
                                                :twitter_id => 123,
                                                :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-            Tweet.should_receive(:search_for).with('foo', [123], an_instance_of(ActiveSupport::TimeWithZone)).and_return 'Twitter stuff'
           end
 
           it "should find the most recent relevant tweet" do
+            Tweet.should_receive(:search_for).with('foo', [123], 3.months.ago.beginning_of_day).and_return 'Twitter stuff'
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.tweets.should == 'Twitter stuff'
           end
