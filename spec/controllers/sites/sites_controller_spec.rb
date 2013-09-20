@@ -114,11 +114,15 @@ describe Sites::SitesController do
           Affiliate.should_receive(:new).with("site_domains_attributes" => {"0" => {"domain" => "http://www.brandnew.gov"}},
                                               "display_name" => "New Aff", "locale" => "es").and_return(site)
           site.should_receive(:name=).with('newaff')
+          site.should_receive(:website=).with('http://www.brandnew.gov')
           site.should_receive(:save).and_return(true)
           site.should_receive(:push_staged_changes)
           Emailer.should_receive(:new_affiliate_site).and_return(emailer)
-          post :create, affiliate: {site_domains_attributes: {"0" => {domain: "http://www.brandnew.gov"}},
-                                    display_name: "New Aff", name: "newaff", locale: "es"}
+          post :create,
+               site: { display_name: 'New Aff',
+                       locale: 'es',
+                       name: 'newaff',
+                       site_domains_attributes: { '0' => { domain: 'http://www.brandnew.gov' } },}
         end
 
         it { should redirect_to(site_path(site)) }

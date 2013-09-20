@@ -28,12 +28,14 @@ describe Sites::SettingsController do
 
       before do
         site.should_receive(:update_attributes).
-            with('display_name' => 'new name').
+            with('display_name' => 'new name', 'website' => 'usasearch.howto.gov').
             and_return true
 
         put :update,
             site_id: site.id,
-            site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
+            site: { display_name: 'new name',
+                    website: 'usasearch.howto.gov',
+                    not_allowed_key: 'not allowed value' }
       end
 
       it { should redirect_to edit_site_setting_path(site) }

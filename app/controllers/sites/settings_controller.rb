@@ -14,6 +14,6 @@ class Sites::SettingsController < Sites::SetupSiteController
   private
 
   def site_params
-    params[:site] ? params[:site].slice(:display_name) : {}
+    params.require(:site).permit(:display_name, :website)
   end
 end

@@ -1,5 +1,5 @@
 = content_for :title, 'New Site Setup'
-= form_for @site, url: { action: :create }, html: { class: 'form' }  do |f|
+= form_for @site, as: :site, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2 Add Site
     .action-bar

@@ -24,8 +24,9 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def create
-    @site = Affiliate.new(params[:affiliate].except(:name))
-    @site.name = params[:affiliate][:name]
+    @site = Affiliate.new site_params.except(:name)
+    @site.website = site_domains_attributes[:domain]
+    @site.name = site_params[:name]
     @site.users << current_user
     if @site.save
       @site.push_staged_changes
@@ -45,5 +46,19 @@ class Sites::SitesController < Sites::BaseController
   def pin
     current_user.update_attributes! default_affiliate: @site
     redirect_to :back, flash: { success: "You have set #{@site.display_name} as your default site." }
+  end
+
+  private
+
+  def site_params
+    @site_params ||= params.require(:site).
+        permit(:display_name,
+               :locale,
+               :name,
+               { site_domains_attributes: [:domain] })
+  end
+
+  def site_domains_attributes
+    site_params[:site_domains_attributes].values.first
   end
 end

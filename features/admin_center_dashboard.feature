@@ -41,8 +41,11 @@ Feature: Dashboard
     And I should see "Site Handle usagov"
     And I should see "Site Language English"
     When I fill in "Display Name" with "agency site"
+    And I fill in "Homepage URL" with "http://new.usa.gov"
     And I press "Save Settings"
     Then I should see "Your site settings have been updated"
+    And the "Display Name" field should contain "agency site"
+    And the "Homepage URL" field should contain "http://new.usa.gov"
     When I fill in "Display Name" with ""
     And I press "Save Settings"
     Then I should see "Display name can't be blank"
@@ -143,6 +146,9 @@ Feature: Dashboard
     Then I should see "You have added 'Agency Gov' as a site."
     And I should land on the agencygov's Dashboard page
     And "affiliate_manager@fixtures.org" should receive an email
+
+    When I follow "Settings"
+    Then the "Homepage URL" field should contain "http://www.awesome.gov"
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject
