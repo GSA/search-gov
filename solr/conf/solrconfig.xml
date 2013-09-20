@@ -427,6 +427,33 @@
           <str name="deftype">dismax</str>
         </lst>
         <lst>
+          <str name="fq">type:Tweet</str>
+          <str name="qf">keywords_text_es description_text_es title_texts title_text_es description_texts keywords_text</str>
+          <str name="f.title_text_es.hl.fragsize">255</str>
+          <str name="f.title_texts.hl.fragsize">255</str>
+          <str name="f.title_texts.hl.snippets">1</str>
+          <str name="f.title_text_es.hl.snippets">1</str>
+          <str name="f.description_text_es.hl.fragsize">255</str>
+          <str name="f.description_texts.hl.fragsize">255</str>
+          <str name="f.description_texts.hl.snippets">1</str>
+          <str name="f.description_text_es.hl.snippets">1</str>
+          <str name="hl.simple.pre">@@@hl@@@</str>
+          <str name="hl.simple.post">@@@endhl@@@</str>
+          <str name="fq">twitter_profile_id_im:(20179628)</str>
+          <str name="fq">published_at_d:[2013\-06\-20T18\:37\:08Z+TO+*]</str>
+          <str name="wt">ruby</str>
+          <str name="hl">on</str>
+          <str name="hl.fl">title_texts</str>
+          <str name="hl.fl">description_texts</str>
+          <str name="hl.fl">description_text_es</str>
+          <str name="hl.fl">title_text_es</str>
+          <str name="q">yosemite</str>
+          <str name="start">0</str>
+          <str name="rows">3</str>
+          <str name="fl">* score</str>
+          <str name="deftype">dismax</str>
+        </lst>
+        <lst>
           <str name="fq">type:IndexedDocument</str>
           <str name="qf">description_text_es title_texts title_text_es description_texts body_text_es body_text</str>
           <str name="f.title_text_es.hl.fragsize">255</str>
