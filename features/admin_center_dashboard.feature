@@ -127,17 +127,17 @@ Feature: Dashboard
     Then I should see the browser page titled "New Site Setup"
 
     When I fill in the following:
-      | Homepage URL | http://www.awesome.gov/ |
-      | Display Name | Agency Gov              |
-      | Site Handle  | x                       |
+      | Homepage URL | http://awesome.gov/ |
+      | Display Name | Agency Gov          |
+      | Site Handle  | x                   |
     And I press "Add"
     Then I should see "Site Handle (visible to searchers in the URL) is too short"
     And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
-      | Homepage URL | http://www.awesome.gov/ |
-      | Display Name | Agency Gov              |
-      | Site Handle  | agencygov               |
+      | Homepage URL | http://usasearch.howto.gov/ |
+      | Display Name | Agency Gov                  |
+      | Site Handle  | agencygov                   |
     And I choose "Spanish"
     And I press "Add"
     Then I should see "You have added 'Agency Gov' as a site."
@@ -145,7 +145,11 @@ Feature: Dashboard
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
-    Then the "Homepage URL" field should contain "http://www.awesome.gov"
+    Then the "Homepage URL" field should contain "http://usasearch.howto.gov"
+
+    When I follow "Manage Display"
+    And I follow "Image Assets"
+    Then the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject

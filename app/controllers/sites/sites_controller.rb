@@ -25,12 +25,12 @@ class Sites::SitesController < Sites::BaseController
 
   def create
     @site = Affiliate.new site_params.except(:name)
-    @site.website = site_domains_attributes[:domain]
     @site.name = site_params[:name]
     @site.users << current_user
     if @site.save
       @site.push_staged_changes
       Emailer.new_affiliate_site(@site, current_user).deliver
+      @site.autodiscover
       redirect_to site_path(@site), flash: { success: "You have added '#{@site.display_name}' as a site." }
     else
       @site.site_domains.first.domain = "http://#{@site.site_domains.first.domain}" if @site.site_domains.first.domain.present?
@@ -56,9 +56,5 @@ class Sites::SitesController < Sites::BaseController
                :locale,
                :name,
                { site_domains_attributes: [:domain] })
-  end
-
-  def site_domains_attributes
-    site_params[:site_domains_attributes].values.first
   end
 end
