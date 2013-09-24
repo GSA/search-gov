@@ -61,7 +61,7 @@ Feature: Mobile Search for Affiliate
       | link                             | title            | guid  | published_ago | description                        |
       | http://www.whitehouse.gov/blog/1 | First blog item  | uuid1 | day           | item 1 blog news item for the feed |
       | http://www.whitehouse.gov/blog/2 | Second blog item | uuid2 | day           | item 2 blog news item for the feed |
-    And there are 20 news items for "Blog"
+    And there are 40 news items for "Blog"
     And feed "Press" has the following news items:
       | link                              | title             | guid  | published_ago | description                         |
       | http://www.whitehouse.gov/press/1 | First press item  | uuid1 | day           | item 1 press news item for the feed |
@@ -75,7 +75,7 @@ Feature: Mobile Search for Affiliate
     And I should see the Results by USASearch logo
     When I follow "Next"
     Then I should see "agency site Mobile"
-    And I should see "news item 7 title for Blog"
+    And I should see "news item 17 title for Blog"
 
     When I am on agency.gov's "Blog" news search page
     Then I should see "agency site Mobile"
@@ -85,7 +85,7 @@ Feature: Mobile Search for Affiliate
     And I should not see "Second press item"
     When I follow "Next"
     Then I should see "agency site Mobile"
-    And I should see "news item 9 title for Blog"
+    And I should see "news item 19 title for Blog"
     When I fill in "query" with "missing"
     And I submit the search form
     Then I should see "Sorry, no results found for 'missing'."
@@ -105,7 +105,7 @@ Feature: Mobile Search for Affiliate
       | Space Suit Evolution | This is another document on space suit     | http://www.aff.gov/topics/space-suit.html      | aff.gov   | 11/02/2011      | OK                |
       | Space First moonwalk | This is another document on space moonwalk | http://www.aff.gov/topics/space-moonwalk.pdf   | aff.gov   | 11/02/2011      | OK                |
       | Other Space Moonwalk | This is another document on space moonwalk | http://other.aff.gov/topics/space-moonwalk.pdf | aff.gov   | 11/02/2011      | OK                |
-    And there are 20 crawled IndexedDocuments for "aff.gov"
+    And there are 40 crawled IndexedDocuments for "aff.gov"
     When I am on aff.gov's "Topics" docs search page
     Then I should see "agency site Mobile"
     And I should see "Please enter search term(s)"

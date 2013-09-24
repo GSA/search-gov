@@ -3,9 +3,11 @@ class SearchEngine
   end
 
   DEFAULT_OFFSET = 0.freeze
+  DEFAULT_PER_PAGE = 10.freeze
 
   attr_accessor :query,
                 :offset,
+                :per_page,
                 :filter_level,
                 :api_connection,
                 :api_endpoint,
@@ -13,6 +15,7 @@ class SearchEngine
 
   def initialize(options = {})
     @query = options[:query]
+    @per_page = options[:per_page] || DEFAULT_PER_PAGE
     @offset = options[:offset] || DEFAULT_OFFSET
     @enable_highlighting = options[:enable_highlighting].nil? || options[:enable_highlighting]
     yield self

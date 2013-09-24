@@ -324,7 +324,7 @@ describe SearchesController do
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
         affiliate.stub_chain(:document_collections, :find_by_id).and_return(dc)
-        SiteSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
+        SiteSearch.should_receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
         site_search.should_receive(:run)
         get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
       end
@@ -363,7 +363,7 @@ describe SearchesController do
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
         affiliate.stub_chain(:document_collections, :find_by_id).and_return(nil)
-        WebSearch.should_receive(:new).with(hash_including(:dc => '100')).and_return(web_search)
+        WebSearch.should_receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(web_search)
         web_search.should_receive(:run)
         SiteSearch.should_not_receive(:new)
         get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
@@ -449,7 +449,7 @@ describe SearchesController do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
         news_search = mock(NewsSearch, query: 'element', rss_feed: rss_feeds(:white_house_blog))
         news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
-        NewsSearch.should_receive(:new).with(hash_including(tbs: 'w')).and_return(news_search)
+        NewsSearch.should_receive(:new).with(hash_including(tbs: 'w', per_page: 20)).and_return(news_search)
         news_search.should_receive(:run)
 
         get :news,
@@ -540,7 +540,7 @@ describe SearchesController do
       let(:video_news_search) { mock('video news search', query: 'element') }
 
       before do
-        VideoNewsSearch.should_receive(:new).and_return(video_news_search)
+        VideoNewsSearch.should_receive(:new).with(hash_including(per_page: 20)).and_return(video_news_search)
         video_news_search.should_receive(:run)
         get :video_news, :query => "element", :affiliate => affiliate.name, :tbs => "w"
       end

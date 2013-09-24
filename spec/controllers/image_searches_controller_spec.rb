@@ -10,7 +10,7 @@ describe ImageSearchesController do
       before do
         @affiliate = affiliates(:basic_affiliate)
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(@affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(:affiliate => @affiliate, :query => 'thunder & lightning')).and_return(image_search)
+        ImageSearch.should_receive(:new).with(hash_including(affiliate: @affiliate, per_page: 20, query: 'thunder & lightning')).and_return(image_search)
         image_search.should_receive(:run)
       end
 

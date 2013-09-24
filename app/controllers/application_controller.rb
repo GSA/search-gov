@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   protect_from_forgery
   VALID_FORMATS = %w{html rss json xml mobile}
+  SERP_RESULTS_PER_PAGE = 20
 
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
@@ -88,6 +89,7 @@ class ApplicationController < ActionController::Base
     {
       :affiliate => affiliate,
       :page => params[:page],
+      :per_page => SERP_RESULTS_PER_PAGE,
       :query => sanitize_query(params["query"]),
       :query_quote => sanitize_query(params["query-quote"]),
       :query_or => sanitize_query(params["query-or"]),

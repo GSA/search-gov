@@ -20,10 +20,11 @@ describe BingWebSearch do
     end
 
     context 'when all search params are passed in' do
-      let(:fully_specified_search) { BingWebSearch.new(query: "taxes", offset: 11, filter: 2, enable_highlighting: false) }
+      let(:fully_specified_search) { BingWebSearch.new(query: "taxes", offset: 11, filter: 2, enable_highlighting: false, per_page: 25) }
       it 'should set appropriate values from params' do
         fully_specified_search.query.should == 'taxes'
         fully_specified_search.offset.should == 11
+        fully_specified_search.per_page.should == 25
         fully_specified_search.filter_level.should == 'strict'
         fully_specified_search.enable_highlighting.should be_false
       end

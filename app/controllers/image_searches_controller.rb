@@ -31,6 +31,7 @@ class ImageSearchesController < ApplicationController
     set_locale_based_on_affiliate_locale
     @search_options = {
       :page => params[:page],
+      :per_page => SERP_RESULTS_PER_PAGE,
       :query => sanitize_query(params["query"]),
       :affiliate => @affiliate
     }
