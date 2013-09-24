@@ -1,4 +1,4 @@
-%h3 GovBoxes
+%h3 Modules
 %table#govboxes.table
   %thead
     %tr
@@ -59,3 +59,9 @@
         %td.cell-1x= link_to 'Twitter', site_twitter_handles_path(@site)
         %td.cell-1x
           .muted ON (delete Twitter to turn off)
+    %tr
+      %td Type-ahead Search
+      %td.cell-1x USASearch
+      %td.cell-1x
+        .switch-button= f.check_box :is_sayt_enabled
+        = f.label :is_sayt_enabled, nil, class: 'hide'

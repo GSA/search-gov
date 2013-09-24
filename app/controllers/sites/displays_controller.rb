@@ -35,6 +35,7 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :is_medline_govbox_enabled,
         :is_photo_govbox_enabled,
         :is_related_searches_enabled,
+        :is_sayt_enabled,
         :is_rss_govbox_enabled,
         :is_video_govbox_enabled,
         :jobs_enabled,
