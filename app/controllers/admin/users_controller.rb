@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::AdminController
   active_scaffold :user do |config|
     config.actions.exclude :create, :delete
-    config.columns = [:email, :contact_name, :affiliates, :default_affiliate, :created_at, :approval_status, :notes]
+    config.columns = [:email, :contact_name, :memberships, :default_affiliate, :created_at, :approval_status, :notes]
     config.update.columns = [:email, :contact_name, :organization_name, :address, :address2, :phone, :city, :state, :zip, :is_affiliate_admin, :is_affiliate, :approval_status, :default_affiliate, :welcome_email_sent, :notes]
     config.list.sorting = { :created_at => :desc }
     config.columns[:state].form_ui = :select

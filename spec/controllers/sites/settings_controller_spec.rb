@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::SettingsController do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
 
   describe '#edit' do

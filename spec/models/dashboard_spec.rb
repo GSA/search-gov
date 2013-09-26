@@ -74,6 +74,13 @@ describe Dashboard do
     end
   end
 
+  describe '#no_results' do
+    it 'should return most_popular_no_results_queries for today' do
+      DailyQueryNoresultsStat.should_receive(:most_popular_no_results_queries).with(Date.current, Date.current, 10, site.name)
+      dashboard.no_results
+    end
+  end
+
   describe "#trending_urls" do
     context 'when trending urls are available' do
       before do
@@ -132,4 +139,27 @@ describe Dashboard do
       dashboard.monthly_clicks_to_date.should == 328
     end
   end
+
+  context 'when target date is passed into initializer' do
+    let(:target_date) { Date.parse('2013-04-28')}
+
+    let(:yday_dashboard) { Dashboard.new(site, target_date) }
+
+    it 'should use the date to compute most popular terms' do
+      DailyQueryStat.should_receive(:most_popular_terms).with(site.name, target_date, target_date, 10)
+      yday_dashboard.top_queries
+    end
+
+    it 'should use the date to compute most popular URLs' do
+      DailyClickStat.should_receive(:top_urls).with(site.name, target_date, target_date, 10)
+      yday_dashboard.top_urls
+    end
+
+    it 'should return most_popular_no_results_queries for the target date' do
+      DailyQueryNoresultsStat.should_receive(:most_popular_no_results_queries).with(target_date, target_date, 10, site.name)
+      yday_dashboard.no_results
+    end
+  end
+
+
 end

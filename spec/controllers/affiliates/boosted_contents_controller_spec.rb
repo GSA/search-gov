@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Affiliates::BoostedContentsController do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
   before do
     activate_authlogic
     BoostedContent.destroy_all

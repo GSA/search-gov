@@ -162,6 +162,17 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def daily_snapshot(membership)
+    setup_email(membership.user.email, __method__)
+    headers['Content-Type'] = 'text/html'
+    @dashboard = Dashboard.new(membership.affiliate, Date.yesterday)
+    @site = membership.affiliate
+    @subject = ERB.new(@email_template_subject).result(binding)
+    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
+      format.html { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
   def update_external_tracking_code(affiliate, current_user, external_tracking_code)
     setup_email('***REMOVED***', __method__)
     @affiliate = affiliate

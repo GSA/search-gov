@@ -1,9 +1,29 @@
 module SitesHelper
   def site_select
-    sites = current_user.affiliates.map { |p| [ "#{p.display_name} (#{p.name})", p.id ] }
-    select_options = { include_blank: true, selected: nil }
-    html_options = { id: 'site_select', class: 'site-select' }
+    sites = current_user.affiliates.map { |p| ["#{p.display_name} (#{p.name})", p.id] }
+    select_options = {include_blank: true, selected: nil}
+    html_options = {id: 'site_select', class: 'site-select'}
     select 'site', 'id', sites, select_options, html_options
+  end
+
+  def daily_snapshot_toggle(membership)
+    verb = membership.gets_daily_snapshot_email? ? 'Stop sending' : 'Send'
+    title = "#{verb} me today's snapshot as a daily email"
+    wrapper_options = {id: 'envelope-snapshot-toggle',
+                       'data-toggle' => 'tooltip',
+                       'data-original-title' => title}
+
+    form_for membership, as: :membership, url: site_membership_path(@site, membership), method: :put, html: wrapper_options do
+      button_tag class: 'btn', type: :submit do
+        inner_html = stacked_envelope
+        inner_html << content_tag(:span, title, class: 'description')
+        if membership.gets_daily_snapshot_email?
+          content_tag :div, inner_html, class: 'btn disabled'
+        else
+          inner_html
+        end
+      end
+    end
   end
 
   def site_pin(site)
@@ -16,9 +36,9 @@ module SitesHelper
 
   def button_to_enabled_pin_site(site)
     title = 'Set as default site'
-    wrapper_options = { id: 'pin-site',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => title }
+    wrapper_options = {id: 'pin-site',
+                       'data-toggle' => 'tooltip',
+                       'data-original-title' => title}
 
     form_for @site, as: :site, url: pin_site_path(site), html: wrapper_options do
       button_tag class: 'btn', type: :submit do
@@ -30,9 +50,9 @@ module SitesHelper
 
   def button_to_disabled_pin_site
     title = 'Your default site'
-    wrapper_options = { id: 'pin-site',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => title }
+    wrapper_options = {id: 'pin-site',
+                       'data-toggle' => 'tooltip',
+                       'data-original-title' => title}
     content_tag :div, wrapper_options do
       inner_html = stacked_pushpin
       inner_html << content_tag(:span, title, class: 'description')
@@ -65,7 +85,7 @@ module SitesHelper
   end
 
   def main_nav_css_class_hash(nav_controllers)
-    nav_controllers.include?(controller_name) ? { class: 'active' } : {}
+    nav_controllers.include?(controller_name) ? {class: 'active'} : {}
   end
 
   def site_dashboard_controllers
@@ -96,7 +116,7 @@ module SitesHelper
   end
 
   def site_nav_css_class_hash(*nav_names)
-    nav_names.include?(controller_name) ? { class: 'active'} : {}
+    nav_names.include?(controller_name) ? {class: 'active'} : {}
   end
 
   def site_locale(site)
@@ -107,11 +127,11 @@ module SitesHelper
     return if options[:staged].present? and !site.has_staged_content?
 
     list_item_options = options[:m].blank? &&
-        ((site.has_staged_content? and options[:staged].present?) ||
-        !site.has_staged_content?) ? { class: 'active' } : {}
+      ((site.has_staged_content? and options[:staged].present?) ||
+        !site.has_staged_content?) ? {class: 'active'} : {}
 
     content_tag :li, list_item_options do
-      link_options = { affiliate: @site.name, query: 'gov', external_tracking_code_disabled: true }.merge options
+      link_options = {affiliate: @site.name, query: 'gov', external_tracking_code_disabled: true}.merge options
       link_to title, search_path(link_options), target: target
     end
   end
@@ -120,14 +140,14 @@ module SitesHelper
     link_to title,
             new_keyword_site_best_bets_texts_path(site),
             remote: true,
-            data: { params: { index: boosted_content.boosted_content_keywords.length } },
+            data: {params: {index: boosted_content.boosted_content_keywords.length}},
             id: 'new-keyword-trigger'
   end
 
   def preview_search_path_options(site)
-    default_options = { affiliate: @site.name,
-                        external_tracking_code_disabled: true,
-                        query: 'gov' }
+    default_options = {affiliate: @site.name,
+                       external_tracking_code_disabled: true,
+                       query: 'gov'}
     default_options[:staged] = '1' if @site.has_staged_content?
     default_options
   end

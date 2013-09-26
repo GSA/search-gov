@@ -61,3 +61,32 @@
     .off-screen-text();
   }
 }
+
+#envelope-snapshot-toggle {
+  display: inline-block;
+  .ie7-inline-block();
+  margin: 0;
+  padding: 0;
+
+  .btn {
+    .opacity(33);
+    background: none;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+
+    &:hover, &:focus {
+      .opacity(100);
+    }
+
+    &.disabled {
+      .opacity(100);
+      color: #FF9232;
+    }
+  }
+
+  .description {
+    .off-screen-text();
+  }
+}
+

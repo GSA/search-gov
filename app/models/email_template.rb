@@ -19,7 +19,8 @@ class EmailTemplate < ActiveRecord::Base
       :update_external_tracking_code => '[USASearch] 3rd Party Tracking',
       :filtered_popular_terms_report => '[USASearch] Filtered Popular Terms for Last Week',
       :public_key_upload_notification => '[USASearch] Request for log file access',
-      :deep_collection_notification => '[USASearch] Deep document collection created'
+      :deep_collection_notification => '[USASearch] Deep document collection created',
+      :daily_snapshot => '[USASearch] Daily Site Snapshot for <%= @site.name %> on <%= Date.yesterday %>'
   }
 
   class << self

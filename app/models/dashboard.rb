@@ -2,7 +2,8 @@ class Dashboard
   attr_reader :trending_queries, :top_queries, :no_results, :low_ctr_queries, :trending_urls, :top_urls,
               :monthly_usage_chart, :monthly_queries_to_date, :monthly_clicks_to_date
 
-  def initialize(site)
+  def initialize(site, day = Date.current)
+    @day = day
     @site = site
   end
 
@@ -13,15 +14,15 @@ class Dashboard
   end
 
   def no_results
-    DailyQueryNoresultsStat.most_popular_no_results_queries(Date.current, Date.current, 10, @site.name)
+    DailyQueryNoresultsStat.most_popular_no_results_queries(@day, @day, 10, @site.name)
   end
 
   def top_urls
-    DailyClickStat.top_urls(@site.name, Date.current, Date.current, 10)
+    DailyClickStat.top_urls(@site.name, @day, @day, 10)
   end
 
   def top_queries
-    query_counts = DailyQueryStat.most_popular_terms(@site.name, Date.current, Date.current, 10)
+    query_counts = DailyQueryStat.most_popular_terms(@site.name, @day, @day, 10)
     query_counts.kind_of?(String) ? nil : query_counts
   end
 
@@ -45,11 +46,11 @@ class Dashboard
   end
 
   def monthly_queries_to_date
-    DailyUsageStat.monthly_totals(Date.current.year, Date.current.month, @site.name)
+    DailyUsageStat.monthly_totals(@day.year, @day.month, @site.name)
   end
 
   def monthly_clicks_to_date
-    conditions = {affiliate_name: @site.name, day: Date.current.beginning_of_month..Date.current}
+    conditions = {affiliate_name: @site.name, day: @day.beginning_of_month..@day}
     DailySearchModuleStat.where(conditions).sum(:clicks)
   end
 end

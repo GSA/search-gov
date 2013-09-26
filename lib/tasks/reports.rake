@@ -31,5 +31,12 @@ namespace :usasearch do
         end
       end
     end
+
+    desc "Email opted-in site users with site snapshot"
+    task :daily_snapshot => :environment do
+      Membership.daily_snapshot_receivers.each do |membership|
+        Emailer.daily_snapshot(membership).deliver
+      end
+    end
   end
 end

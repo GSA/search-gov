@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910203819) do
+ActiveRecord::Schema.define(:version => 20130927213218) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -118,14 +118,6 @@ ActiveRecord::Schema.define(:version => 20130910203819) do
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
-
-  create_table "affiliates_users", :id => false, :force => true do |t|
-    t.integer "affiliate_id"
-    t.integer "user_id"
-  end
-
-  add_index "affiliates_users", ["affiliate_id", "user_id"], :name => "index_affiliates_users_on_affiliate_id_and_user_id", :unique => true
-  add_index "affiliates_users", ["user_id"], :name => "index_affiliates_users_on_user_id"
 
   create_table "affiliates_youtube_profiles", :id => false, :force => true do |t|
     t.integer "affiliate_id"
@@ -569,6 +561,17 @@ ActiveRecord::Schema.define(:version => 20130910203819) do
 
   add_index "med_topics", ["medline_tid"], :name => "index_med_topics_on_medline_tid"
   add_index "med_topics", ["medline_title"], :name => "index_med_topics_on_medline_title"
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id",                                      :null => false
+    t.integer  "affiliate_id",                                 :null => false
+    t.boolean  "gets_daily_snapshot_email", :default => false, :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "memberships", ["affiliate_id", "user_id"], :name => "index_memberships_on_affiliate_id_and_user_id", :unique => true
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"

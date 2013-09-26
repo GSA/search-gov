@@ -2,8 +2,6 @@ usagov_affiliate:
   display_name: USA.gov
   name: usagov
   website: http://www.usa.gov
-  users:
-   - :affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -15,8 +13,6 @@ gobiernousa_affiliate:
   display_name: Gobierno.USA.gov
   name: gobiernousa
   website: http://www.gobiernousa.gov
-  users:
-    - :affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   search_results_page_title: Current {Query} - {SiteName} resultados de la búsqueda
@@ -27,8 +23,6 @@ power_affiliate:
   display_name: Noaa Site
   name: noaa.gov
   website: http://www.noaa.gov
-  users:
-    - :affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -37,8 +31,6 @@ power_affiliate:
 basic_affiliate:
   display_name: NPS Site
   name: nps.gov
-  users:
-    - :affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   is_sayt_enabled: false
@@ -50,8 +42,6 @@ basic_affiliate:
 another_affiliate:
   display_name: Another Gov Site
   name: another.gov
-  users:
-    - :another_affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -60,8 +50,6 @@ another_affiliate:
 admin_affiliate:
   display_name: Affiliate Gov Site
   name: affiliate.gov
-  users:
-    - :admin_affiliate
   theme: elegant
   staged_theme: fun_blue
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -70,8 +58,6 @@ admin_affiliate:
 non_existent_affiliate:
   display_name: Nonsense Domain
   name: nonsense.gov
-  users:
-    - :another_affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   is_sayt_enabled: false
@@ -81,8 +67,6 @@ non_existent_affiliate:
 spanish_affiliate:
   display_name: NPEspanol Site
   name: nps.es
-  users:
-    - :affiliate_manager
   theme: elegant
   staged_theme: fun_blue
   is_sayt_enabled: false

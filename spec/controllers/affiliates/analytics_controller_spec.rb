@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Affiliates::AnalyticsController do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
   before do
     activate_authlogic
   end

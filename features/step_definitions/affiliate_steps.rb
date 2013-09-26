@@ -302,7 +302,7 @@ When /^the Affiliate "(.*?)" has the following users:$/ do |name, table|
   affiliate = Affiliate.find_by_name name
   table.hashes.each do |hash|
     user = User.find_by_email hash[:email]
-    affiliate.users << user unless affiliate.users.exists?(user)
+    affiliate.memberships.create!(user: user)
   end
 end
 

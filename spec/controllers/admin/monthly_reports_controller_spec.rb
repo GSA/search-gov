@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::MonthlyReportsController do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end

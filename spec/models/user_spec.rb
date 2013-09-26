@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
 
   before do
     @valid_attributes = {
@@ -43,7 +43,8 @@ describe User do
     it { should validate_uniqueness_of :email }
     it { should validate_presence_of :contact_name }
     it { should validate_acceptance_of :terms_of_service }
-    it { should have_and_belong_to_many :affiliates }
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:affiliates).through :memberships }
 
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)

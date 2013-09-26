@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Connection do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :memberships
 
   it { should validate_presence_of :connected_affiliate_id }
   it { should validate_presence_of :label }

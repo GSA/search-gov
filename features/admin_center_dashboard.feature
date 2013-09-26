@@ -32,6 +32,14 @@ Feature: Dashboard
     And I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Site Overview" in the active site sub navigation
 
+  Scenario: Toggling daily snapshot email
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    And I press "Send me today's snapshot as a daily email"
+    Then I should see "You have enabled the daily snapshot setting for usagov."
+    When I press "Stop sending me today's snapshot as a daily email"
+    Then I should see "You have disabled the daily snapshot setting for usagov."
+
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page

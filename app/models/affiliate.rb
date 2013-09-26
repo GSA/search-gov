@@ -11,7 +11,8 @@ class Affiliate < ActiveRecord::Base
   INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
   INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
 
-  has_and_belongs_to_many :users, order: 'contact_name'
+  has_many :memberships, :dependent => :destroy
+  has_many :users, order: 'contact_name', through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
   has_many :features, :through => :affiliate_feature_addition, :dependent => :destroy
   has_many :boosted_contents, :dependent => :destroy

@@ -175,6 +175,7 @@ UsasearchRails3::Application.routes.draw do
       resources :youtube_usernames,
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
+      resources :memberships, only: [:update]
     end
   end
 

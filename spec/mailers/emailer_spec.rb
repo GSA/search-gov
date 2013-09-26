@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
-  fixtures :affiliates, :users, :features
+  fixtures :affiliates, :users, :features, :memberships
 
   describe "#feature_admonishment(user, affiliates_with_unused_features)" do
     let(:user) { users(:another_affiliate_manager) }
@@ -184,6 +184,55 @@ describe Emailer do
     it { should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
 
+  describe '#daily_snapshot' do
+    let(:membership) { memberships(:four) }
+
+    before do
+      ['query1', 'query2', 'query3'].each_with_index do |query, index|
+        DailyQueryStat.create!(day: Date.yesterday, query: query, affiliate: membership.affiliate.name, times: 100 + index)
+        DailyQueryNoresultsStat.create!(day: Date.yesterday, query: "#{query}blah", affiliate: membership.affiliate.name, times: 1 + index)
+        DailyClickStat.create!(day: Date.yesterday, url: "http://www.nps.gov/#{query}", affiliate: membership.affiliate.name, times: 6 + index)
+      end
+    end
+
+    subject(:email) { Emailer.daily_snapshot(membership) }
+
+    it { should deliver_to(membership.user.email) }
+    it { should have_subject(/Daily Site Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
+
+    it "should contain the daily shapshot tables for yesterday" do
+      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body.should include('Top Queries')
+      body.should include('Query # of Queries')
+      body.should include('1. query3 102')
+      body.should include('2. query2 101')
+      body.should include('3. query1 100')
+
+      body.should include('Top Clicked URLs')
+      body.should include('URL # of Clicks')
+      body.should include('1. http://www.nps.gov/query3 8')
+      body.should include('2. http://www.nps.gov/query2 7')
+      body.should include('3. http://www.nps.gov/query1 6')
+
+      body.should include('Trending Queries')
+      body.should include('query3')
+      body.should include('query2')
+      body.should include('query1')
+
+      body.should include('Queries with No Results')
+      body.should include('Query # of Queries')
+      body.should include('1. query3blah 3')
+      body.should include('2. query2blah 2')
+      body.should include('3. query1blah 1')
+
+      body.should include('Top Queries with Low Click Thrus')
+      body.should include('Query CTR %')
+      body.should include('1. query1 0%')
+      body.should include('2. query2 0%')
+      body.should include('3. query3 0%')
+    end
+  end
+
   describe "#affiliate_monthly_report" do
     let(:user) { users(:affiliate_manager) }
     let(:report_date) { Date.parse('2012-04-13') }
@@ -197,7 +246,7 @@ describe Emailer do
       DailyUsageStat.create(:day => report_date - 1.year, :affiliate => affiliate.name, :total_queries => 150)
       DailySearchModuleStat.create!(:day => report_date, :affiliate_name => affiliate.name, :clicks => 100, :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
       DailyQueryStat.destroy_all
-      ['query1', 'query2', 'query3'].each_with_index do |query, index|
+      ['query1', 'query2', 'query3'].each do |query|
         DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100)
       end
     end

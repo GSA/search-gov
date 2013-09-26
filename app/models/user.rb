@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
   validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"
-  has_and_belongs_to_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC'
+  has_many :memberships, :dependent => :destroy
+  has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
   belongs_to :default_affiliate, class_name: 'Affiliate'
   before_validation :set_initial_approval_status, :on => :create
   after_validation :set_is_affiliate, :on => :create

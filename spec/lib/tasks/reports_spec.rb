@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Report generation rake tasks" do
+  fixtures :users, :affiliates, :memberships
+
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -47,9 +49,29 @@ describe "Report generation rake tasks" do
       end
     end
 
-    describe "usasearch:reports:email_monthly_reports" do
-      fixtures :users, :affiliates
+    describe 'usasearch:reports:daily_snapshot' do
+      let(:task_name) { 'usasearch:reports:daily_snapshot' }
 
+      before do
+        @rake[task_name].reenable
+        @emailer = mock(Emailer)
+        @emailer.stub!(:deliver).and_return true
+        Membership.stub(:daily_snapshot_receivers).and_return %w(foo bar)
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[task_name].prerequisites.should include("environment")
+      end
+
+      it "should deliver an email to each daily_snapshot_receiver" do
+        Emailer.should_receive(:daily_snapshot).with('foo').and_return @emailer
+        Emailer.should_receive(:daily_snapshot).with('bar').and_return @emailer
+        @rake[task_name].invoke
+      end
+
+    end
+
+    describe "usasearch:reports:email_monthly_reports" do
       let(:task_name) { 'usasearch:reports:email_monthly_reports' }
 
       before do
@@ -76,8 +98,6 @@ describe "Report generation rake tasks" do
     end
 
     describe "usasearch:reports:email_yearly_reports" do
-      fixtures :users, :affiliates
-
       let(:task_name) { 'usasearch:reports:email_yearly_reports' }
 
       before do

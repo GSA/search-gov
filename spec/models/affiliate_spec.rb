@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships
 
   before(:each) do
     @valid_create_attributes = {
@@ -31,7 +31,8 @@ describe Affiliate do
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
       it { should allow_value(value).for(:name) }
     end
-    it { should have_and_belong_to_many :users }
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:users).through :memberships }
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
     it { should have_many(:featured_collections).dependent(:destroy) }

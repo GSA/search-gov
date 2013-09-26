@@ -1,8 +1,16 @@
 module BootstrapHelper
   def stacked_pushpin
+    stacked_icon 'pushpin'
+  end
+
+  def stacked_envelope
+    stacked_icon 'envelope'
+  end
+
+  def stacked_icon(icon_name)
     content_tag :span, class: 'icon-stack' do
       content = content_tag(:i, nil, class: 'icon icon-circle icon-stack-base')
-      content << content_tag(:i, nil, class: 'icon icon-pushpin icon-light')
+      content << content_tag(:i, nil, class: "icon icon-#{icon_name} icon-light")
     end
   end
 
