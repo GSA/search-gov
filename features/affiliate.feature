@@ -21,7 +21,7 @@ Feature: Affiliate clients
       | message                                                             | start_at   | end_at   |
       | Maintenance window 1 <a href="http://link.to.survey.gov">survey</a> | today      | tomorrow |
       | Maintenance window 2                                                | next month |          |
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     Then I should see a link to "Home" with url for "http://usasearch.howto.gov" in the main navigation bar
     And I should see a link to "How It Works" with url for "http://usasearch.howto.gov/help-desk.html" in the main navigation bar

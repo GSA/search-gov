@@ -32,6 +32,17 @@ Feature: Dashboard
     And I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Site Overview" in the active site sub navigation
 
+  Scenario: Seeing system alerts on the dashboard
+    Given the following SystemAlerts exist:
+      | message                                                             | start_at   | end_at   |
+      | Maintenance window 1 <a href="http://link.to.survey.gov">survey</a> | today      | tomorrow |
+      | Maintenance window 2                                                | next month |          |
+    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    Then I should see "Maintenance window 1"
+    And I should see a link to "survey" with url for "http://link.to.survey.gov"
+    And I should not see "Maintenace window 2"
+
   Scenario: Toggling daily snapshot email
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
