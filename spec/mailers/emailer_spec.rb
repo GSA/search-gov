@@ -188,10 +188,15 @@ describe Emailer do
     let(:membership) { memberships(:four) }
 
     before do
+      DailyQueryStat.destroy_all
+      DailyQueryNoresultsStat.destroy_all
+      DailyClickStat.destroy_all
+      QueriesClicksStat.destroy_all
       ['query1', 'query2', 'query3'].each_with_index do |query, index|
         DailyQueryStat.create!(day: Date.yesterday, query: query, affiliate: membership.affiliate.name, times: 100 + index)
         DailyQueryNoresultsStat.create!(day: Date.yesterday, query: "#{query}blah", affiliate: membership.affiliate.name, times: 1 + index)
         DailyClickStat.create!(day: Date.yesterday, url: "http://www.nps.gov/#{query}", affiliate: membership.affiliate.name, times: 6 + index)
+        QueriesClicksStat.create!(day: Date.yesterday, url: "http://www.nps.gov/#{query}", query: query, affiliate: membership.affiliate.name, times: 6 + index)
       end
     end
 
@@ -227,9 +232,9 @@ describe Emailer do
 
       body.should include('Top Queries with Low Click Thrus')
       body.should include('Query CTR %')
-      body.should include('1. query1 0%')
-      body.should include('2. query2 0%')
-      body.should include('3. query3 0%')
+      body.should include('1. query1 6%')
+      body.should include('2. query2 6%')
+      body.should include('3. query3 7%')
     end
   end
 
