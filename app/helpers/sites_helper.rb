@@ -7,6 +7,7 @@ module SitesHelper
   end
 
   def daily_snapshot_toggle(membership)
+    return if membership.nil?
     verb = membership.gets_daily_snapshot_email? ? 'Stop sending' : 'Send'
     title = "#{verb} me today's snapshot as a daily email"
     wrapper_options = {id: 'envelope-snapshot-toggle',
