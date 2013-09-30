@@ -145,6 +145,14 @@ module SitesHelper
             id: 'new-keyword-trigger'
   end
 
+  def link_to_add_new_featured_collection_keyword(title, site, featured_collection)
+    link_to title,
+            new_keyword_site_best_bets_graphics_path(site),
+            remote: true,
+            data: {params: {index: featured_collection.featured_collection_keywords.length}},
+            id: 'new-keyword-trigger'
+  end
+
   def preview_search_path_options(site)
     default_options = {affiliate: @site.name,
                        external_tracking_code_disabled: true,

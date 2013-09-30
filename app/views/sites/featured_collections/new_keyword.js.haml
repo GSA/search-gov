@@ -1,0 +1,5 @@
+= fields_for "featured_collection[featured_collection_keywords_attributes][#{@index}]" do |f|
+  :plain
+    jQuery('.form .keywords').append("#{escape_javascript(render('keyword', f: f, keyword: FeaturedCollectionKeyword.new, index: @index))}");
+    jQuery('#new-keyword-trigger').data({ params: { index: "#{@index + 1}" } });
+    jQuery('.form .keywords input').last().focus();

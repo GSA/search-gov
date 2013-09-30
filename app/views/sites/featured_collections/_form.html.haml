@@ -1,0 +1,63 @@
+= render_site_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :title, nil, class: 'required'
+= form.text_field :title, class: 'required input-primary'
+= form.optional_label :title_url, 'Title URL', class: 'required'
+= form.text_field :title_url
+= form.label :status, nil, class: 'required'
+= form.select :status, FeaturedCollection::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
+= form.label :layout, nil, class: 'required'
+= form.select :layout, FeaturedCollection::LAYOUT_OPTIONS, { include_blank: 'Select a layout' }, class: 'required'
+
+.required= form.label :publish_start_on, 'Publish Start Date'
+.input-append.calendar
+  %div= form.date_picker_field :publish_start_on, assign_start_date: true
+  %span.add-on.add-on-icon
+    %i.icon.icon-calendar.icon-2x
+
+= form.optional_label :publish_end_on, 'Publish End Date'
+.input-append.calendar
+  %div= form.date_picker_field :publish_end_on, assign_start_date: true
+  %span.add-on.add-on-icon
+    %i.icon.icon-calendar.icon-2x
+
+%fieldset
+  = form.optional_label :image
+  = form.file_field :image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
+  %span.help-block GIF, JPG or PNG with maximum size of #{FeaturedCollection::MAXIMUM_IMAGE_SIZE_IN_KB} KB
+  - if @featured_collection.image.present? && !@featured_collection.image.dirty?
+    .image= image_tag(@featured_collection.image.url(:medium), alt: 'Image')
+    = form.label :mark_image_for_deletion, class: 'checkbox' do
+      = form.check_box :mark_image_for_deletion
+      Mark Image for Deletion
+
+= form.optional_label :image_alt_text, 'Image Alt Text'
+= form.text_field :image_alt_text
+= form.optional_label :image_attribution, 'Image Attribution'
+= form.text_field :image_attribution
+= form.optional_label :image_attribution_url, 'Image Attribution URL'
+= form.text_field :image_attribution_url
+
+%fieldset
+  .optional
+    %legend
+      Keywords
+      %span (Optional)
+  .keywords
+    - @featured_collection.featured_collection_keywords.each_with_index do |keyword, index|
+      = form.fields_for :featured_collection_keywords, keyword do |keyword_fields|
+        = render 'sites/featured_collections/keyword', f: keyword_fields, index: index
+  = link_to_add_new_featured_collection_keyword 'Add Another Keyword', @site, @featured_collection
+
+%h3 Links
+%table#featured-collection-links.table
+  %thead
+    %tr.nodrag.nodrop
+      %th Title
+      %th URL
+  %tbody.links
+    - @featured_collection.featured_collection_links.each_with_index do |link, index|
+      = form.fields_for :featured_collection_links, link do |link_fields|
+        = render 'sites/featured_collections/link', f: link_fields, index: index
+.trigger-wrapper= link_to_add_new_featured_collection_link('Add Another Link', @site, @featured_collection)
+

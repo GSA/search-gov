@@ -9,12 +9,8 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                                                                                                      | title_url                | locale | status | publish_start_on | publish_end_on |
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa. | http://site.gov/content5 | en     | active | 07/01/2011       | 07/01/2012     |
-    And the following featured collection keywords exist for featured collection titled "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa.":
-      | value |
-      | muspi |
-      | merol |
+      | title                                                                                                      | title_url                | locale | status | publish_start_on | publish_end_on | keywords    |
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa. | http://site.gov/content5 | en     | active | 07/01/2011       | 07/01/2012     | muspi,merol |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the affiliate admin page with "site.gov" selected
     And I follow "Best bets"

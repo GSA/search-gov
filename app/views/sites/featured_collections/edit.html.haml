@@ -1,0 +1,11 @@
+= content_for_site_page_title @site, 'Edit Best Bets: Graphics'
+= form_for @featured_collection, url: { action: :update }, html: { class: 'form' }  do |form|
+  .sub-nav-heading
+    %h2 Edit Best Bets: Graphics
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'View All', site_best_bets_graphics_path(@site)
+        %li= form.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render form
+

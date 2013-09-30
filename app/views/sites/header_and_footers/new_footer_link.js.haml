@@ -2,3 +2,4 @@
   jQuery('#footer-links tbody').append("#{escape_javascript(render('managed_footer_link_fields', footer_link: {}, index: @index))}");
   jQuery('#new-site-footer-link-trigger').data({ params: { index: "#{@index + 1}" } });
   jQuery('#footer-links tbody .title').last().focus();
+  window.usasearch.setupHeaderAndFooterLinksDnD();

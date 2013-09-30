@@ -1,0 +1,11 @@
+%tr{ id: "featured-collection-link-#{index}"}
+  %td.title
+    %i.draggable.icon.icon-reorder
+    = f.label :position, "Link Position #{index + 1}", class: 'multivalued'
+    = f.hidden_field :position, class: 'position'
+    = f.label :title, "Link Title #{index + 1}", class: 'multivalued'
+    = f.text_field :title
+  %td
+    = f.label :url, "Link URL #{index + 1}", class: 'multivalued'
+    = f.text_field :url
+

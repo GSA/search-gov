@@ -1,0 +1,6 @@
+= fields_for "featured_collection[featured_collection_links_attributes][#{@index}]" do |f|
+  :plain
+    jQuery('.form .links').append("#{escape_javascript(render('link', f: f, keyword: FeaturedCollectionLink.new, index: @index))}");
+    jQuery('#new-link-trigger').data({ params: { index: "#{@index + 1}" } });
+    jQuery('.form .links .title input').last().focus();
+    window.usasearch.setupFeaturedCollectionLinksDnD();

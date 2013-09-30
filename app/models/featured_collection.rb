@@ -1,4 +1,6 @@
 class FeaturedCollection < ActiveRecord::Base
+  include ActiveRecordExtension
+
   CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   STATUSES = %w( active inactive )
@@ -32,7 +34,7 @@ class FeaturedCollection < ActiveRecord::Base
 
   before_validation :set_locale
   after_validation :update_errors_keys
-  before_save :ensure_http_prefix_on_title_url
+  before_save :ensure_http_prefix
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
@@ -119,11 +121,21 @@ class FeaturedCollection < ActiveRecord::Base
       link = link_attributes[1]
       link[:_destroy] = true if link[:title].blank? and link[:url].blank?
     end
-    update_attributes(params)
+    if update_attributes(params)
+      touch
+    end
   end
 
   def display_status
     status.humanize
+  end
+
+  def active_and_searchable?
+    if publish_end_on
+      is_active? && (publish_start_on..publish_end_on).include?(Date.current)
+    else
+      is_active? && (Date.current >= publish_start_on)
+    end
   end
 
   private
@@ -140,8 +152,8 @@ class FeaturedCollection < ActiveRecord::Base
     end
   end
 
-  def ensure_http_prefix_on_title_url
-    self.title_url = "http://#{self.title_url}" unless self.title_url.blank? or self.title_url =~ %r{^http(s?)://}i
+  def ensure_http_prefix
+    set_http_prefix :title_url, :image_attribution_url
   end
 
   def check_image_validation

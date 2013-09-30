@@ -6,11 +6,12 @@ processEditDisplayForm = () ->
 
 $(document).on 'submit', '#edit-display', processEditDisplayForm
 
-ready = () ->
+setupDisplayFormDnD = () ->
   $('#related-sites, #sidebar').tableDnD
     onDrop: window.usasearch.enablePrimaryButton,
     onDragClass: 'ondrag',
     dragHandle: '.draggable'
 
-$(document).ready ready
-$(document).on 'page:load', ready
+window.usasearch.setupDisplayFormDnD ?= setupDisplayFormDnD
+$(document).ready setupDisplayFormDnD
+$(document).on 'page:load', setupDisplayFormDnD

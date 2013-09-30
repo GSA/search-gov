@@ -14,11 +14,12 @@ enableMakeLiveButton = () ->
 $(document).on 'keydown', '.form textarea', enableMakeLiveButton
 $(document).on 'paste', '.form textarea', enableMakeLiveButton
 
-ready = () ->
+setupHeaderAndFooterLinksDnD = () ->
   $('#header-links, #footer-links').tableDnD
     onDrop: window.usasearch.enablePrimaryButton,
     onDragClass: 'ondrag',
     dragHandle: '.draggable'
 
-$(document).ready ready
-$(document).on 'page:load', ready
+window.usasearch.setupHeaderAndFooterLinksDnD ?= setupHeaderAndFooterLinksDnD
+$(document).ready setupHeaderAndFooterLinksDnD
+$(document).on 'page:load', setupHeaderAndFooterLinksDnD

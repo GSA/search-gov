@@ -4,7 +4,20 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
+      %li= link_to 'Add Best Bets: Graphics', new_site_best_bets_graphic_path(@site)
 
-%p
-  Coming soon! You can update your Best Bets
-  = link_to 'here', affiliate_featured_collections_path(@site), { 'data-no-turbolink' => true }
+= render_site_flash_message
+%table.table.table-no-header
+  %tbody
+    - @featured_collections.each do |fc|
+      %tr{ best_bets_status_class_hash(fc) }
+        %td
+          = featured_collection_title fc
+          %ul.info
+            = best_bets_status_and_dates_item fc
+            = featured_collection_keywords_item fc
+        %td.actions
+          %ul
+            %li= link_to 'Edit', edit_site_best_bets_graphic_path(@site, fc.id)
+            %li= button_to 'Remove', site_best_bets_graphic_path(@site, fc.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{fc.title} from this site?" }, class: 'btn btn-small'
+= will_paginate @featured_collections, renderer: BootstrapPagination::Rails

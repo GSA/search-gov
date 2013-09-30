@@ -11,10 +11,78 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following featured collections exist for the affiliate "agency.gov":
+      | title           | title_url                         | status   | publish_start_on | publish_end_on | keywords     |
+      | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
+      | Flood Watches   |                                   | inactive | 2013-08-01       |                |              |
+      | Fire Safety     |                                   | active   | 2013-09-01       | 2013-09-30     | burn,lighter |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics"
-    Then I should see "Coming soon! You can update your Best Bets"
+    Then I should see the following table rows:
+      | Fire Safety     |
+      | Flood Watches   |
+      | Tornado Warning |
+    And I should see a link to "Tornado Warning" with url for "http://agency.gov/tornado-warning"
+    And I should see "Published between 09/01/2013 and 09/30/2013"
+    And I should see "Status: Inactive"
+
+  @javascript
+  Scenario: Add/edit/remove best bets graphics
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Best Bets: Graphics"
+    And I follow "Add Best Bets: Graphics"
+    When I fill in the following:
+      | Title                 | 2010 Atlantic Hurricane Season          |
+      | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml |
+      | Publish End Date      | 07/01/2020                              |
+      | Image Alt Text        | hurricane logo                          |
+      | Image Attribution     | NOAA                                    |
+      | Image Attribution URL | www.noaa.gov/hurricane.html             |
+    And I attach the file "features/support/small.jpg" to "Image"
+    And I select "Active" from "Status"
+    And I select "One column" from "Layout"
+    And I add the following best bets keywords:
+      | keyword |
+      | storm   |
+      | weather |
+    And I add the following best bets graphics links:
+      | title              | url                                                   |
+      | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
+      | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
+    And I press "Add"
+    Then I should see "You have added 2010 Atlantic Hurricane Season to this site"
+    And I should see a link to "2010 Atlantic Hurricane Season" with url for "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And I should see "Status: Active"
+    And I should see the following best bets keywords:
+      | keyword |
+      | storm   |
+      | weather |
+    When I follow "Edit"
+    Then I should see the following:
+      | Title                 | 2010 Atlantic Hurricane Season                        |
+      | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml               |
+      | Publish End Date      | 07/01/2020                                            |
+      | Image Alt Text        | hurricane logo                                        |
+      | Image Attribution     | NOAA                                                  |
+      | Image Attribution URL | http://www.noaa.gov/hurricane.html                    |
+      | Link Title 1          | Hurricane Alex                                        |
+      | Link URL 1            | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
+      | Link Title 2          | Hurricane Danielle                                    |
+      | Link URL 2            | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
+    When I fill in "Title" with "2011 Atlantic Hurricane Season"
+    And I check "Mark Image for Deletion"
+    And I press "Save"
+    Then I should see "You have updated 2011 Atlantic Hurricane Season"
+    When I follow "Edit"
+    Then I should not see "Mark Image for Deletion"
+    When I follow "View All"
+    And I press "Remove"
+    Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
     Given the following Affiliates exist:
@@ -48,14 +116,14 @@ Feature: Manage Content
       | Description        | spring cleaning                                     |
       | Keyword 1          | releases                                            |
     And I select "Active" from "Status"
-    And I add the following best bets text keywords:
+    And I add the following best bets keywords:
       | keyword |
       | rails   |
       | recalls |
     And I press "Add"
     Then I should see "You have added Notes for Week Ending June 21, 2013 to this site"
     And I should see "Status: Active"
-    And I should see the following best bets text keywords:
+    And I should see the following best bets keywords:
       | keyword  |
       | rails    |
       | recalls  |

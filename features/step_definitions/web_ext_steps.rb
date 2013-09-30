@@ -122,3 +122,9 @@ Then(/^the "(.*?)" select field should contain (\d+) options?$/) do |label, coun
   field = find_field(label)
   field.find(:xpath, './/option', count: count)
 end
+
+Then /^I should see the following:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    step %{the "#{name}" field should contain "#{value}"}
+  end
+end

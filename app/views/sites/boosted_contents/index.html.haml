@@ -11,11 +11,11 @@
 %table.table.table-no-header
   %tbody
     - @boosted_contents.each do |boosted_content|
-      %tr{ boosted_content_status_class_hash(boosted_content) }
+      %tr{ best_bets_status_class_hash(boosted_content) }
         %td
           = link_to boosted_content.title, boosted_content.url, target: '_blank'
           %ul.info
-            = boosted_content_status_and_dates_item boosted_content
+            = best_bets_status_and_dates_item boosted_content
             = boosted_content_keywords_item boosted_content
         %td.actions
           %ul
