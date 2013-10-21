@@ -19,9 +19,9 @@ describe "sites/monthly_reports/show.html.haml" do
   end
 
   context 'regardless of the data available' do
-    it "should show the header" do
+    it "should show the header for the current month" do
       render
-      rendered.should contain "Monthly Usage Stats for #{Date::MONTHNAMES[Date.yesterday.month]} #{Date.yesterday.year}"
+      rendered.should contain "Monthly Usage Stats for #{Date::MONTHNAMES[target_date.month]} #{target_date.year}"
     end
 
     context 'when help link is available' do
