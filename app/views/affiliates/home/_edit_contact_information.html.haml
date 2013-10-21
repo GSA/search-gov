@@ -1,6 +1,0 @@
-%h2.sub-title
-  Contact information
-= form_for @user, :url => {:action => "update_contact_information"}, :html => {:class => 'generic-form', :method => :put} do |f|
-  = f.error_messages(:header_message => nil, :class => "error")
-  = render :partial => 'edit_contact_information_form', :object => f
-  = f.submit "Next", :class => 'form-submit-button next-button'

@@ -1,8 +1,8 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls]
   before_filter :require_affiliate, :except => [:index, :home, :urls]
-  before_filter :require_approved_user, :except => [:index, :home, :update_contact_information]
-  before_filter :setup_affiliate, :except => [:index, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
+  before_filter :require_approved_user, :except => [:index, :home]
+  before_filter :setup_affiliate, :except => [:index, :new, :create, :home, :new_site_domain_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_look_and_feel, :edit_header_footer]
   before_filter :setup_for_results_modules_actions, :only => [:edit_results_modules, :new_connection_fields]
 
@@ -124,37 +124,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     end
   end
 
-  def update_contact_information
-    @user = @current_user
-    @user.strict_mode = true
-    if @user.is_approved?
-      update_contact_information_for_approved_user
-    else
-      update_contact_information_for_new_user
-    end
-  end
-
-  def update_contact_information_for_approved_user
-    @title = "Add a New Site - "
-    if @user.update_attributes(params[:user])
-      @affiliate = Affiliate.new
-      @current_step = :new_site_information
-      @affiliate.site_domains.build
-    else
-      @current_step = :edit_contact_information
-    end
-    render :action => :new
-  end
-
-  def update_contact_information_for_new_user
-    if @user.update_attributes(params[:user])
-      flash[:success] = 'Thank you for providing us your contact information. <br /> To continue the signup process, check your inbox, so we may verify your email address.'.html_safe
-      redirect_to home_affiliates_path
-    else
-      render :action => :home
-    end
-  end
-
   def show
     @title = "Site: " + @affiliate.display_name + " - "
   end
@@ -191,7 +160,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end
-    @user = @current_user if @current_user.is_pending_contact_information?
   end
 
   def best_bets

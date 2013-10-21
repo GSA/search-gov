@@ -20,8 +20,6 @@ class Sites::BaseController < SslController
         flash[:notice] = 'Your email address has not been verified. Please check your inbox so we may verify your email address.'
       elsif current_user.is_pending_approval?
         flash[:notice] = 'Your account has not been approved. Please try again when you are set up.'
-      elsif current_user.is_pending_contact_information?
-        flash[:notice] = 'Your contact information is not complete.'
       end
       redirect_to home_affiliates_path
     end

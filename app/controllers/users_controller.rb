@@ -12,13 +12,9 @@ class UsersController < SslController
         else
           flash[:success] = "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
         end
-      else
-        flash[:success] = 'Thank you for registering for USA.gov Search Services.'
-      end
-
-      if @user.is_affiliate?
         redirect_to home_affiliates_path
       else
+        flash[:success] = 'Thank you for registering for USA.gov Search Services.'
         redirect_to account_path
       end
     else

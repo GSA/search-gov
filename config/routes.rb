@@ -32,7 +32,6 @@ UsasearchRails3::Application.routes.draw do
     end
     collection do
       get :home
-      put :update_contact_information
       get :new_site_domain_fields
       get :new_rss_feed_fields
       get :new_managed_header_link_fields

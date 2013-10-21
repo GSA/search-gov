@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  APPROVAL_STATUSES = %w( pending_email_verification pending_contact_information pending_approval approved not_approved )
+  APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
   validates_presence_of :phone, :if => :strict_mode
@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
   after_create :ping_admin
   after_create :deliver_email_verification
   after_create :welcome_user
-  after_update :deliver_email_verification_after_contact_information_complete
   after_update :deliver_welcome_email
   attr_accessor :government_affiliation, :strict_mode, :invited, :skip_welcome_email, :terms_of_service, :inviter, :require_password
   attr_protected :strict_mode, :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
@@ -100,7 +99,7 @@ class User < ActiveRecord::Base
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
-    default_attributes = {:government_affiliation => "1"}
+    default_attributes = { :government_affiliation => "1" }
     new_user = User.new(attributes.merge(default_attributes))
     new_user.randomize_password
     new_user.inviter = inviter
@@ -123,25 +122,18 @@ class User < ActiveRecord::Base
     Emailer.new_user_to_admin(self).deliver
   end
 
-  def deliver_email_verification_after_contact_information_complete
-    if strict_mode and is_pending_contact_information?
-      set_approval_status_to_pending_email_verification
-      deliver_new_user_email_verification
+  def deliver_email_verification
+    if is_pending_email_verification?
+      reset_email_verification_token!
+      invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_new_user_email_verification
     end
   end
 
-  def deliver_email_verification
-    deliver_new_user_email_verification if is_pending_email_verification? and !invited
-    deliver_welcome_to_new_user_added_by_affiliate if is_pending_email_verification? and invited
-  end
-
   def deliver_new_user_email_verification
-    reset_email_verification_token!
     Emailer.new_user_email_verification(self).deliver
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
-    reset_email_verification_token!
     Emailer.welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).deliver
   end
 
@@ -171,8 +163,7 @@ class User < ActiveRecord::Base
   end
 
   def set_initial_approval_status
-    (has_government_affiliated_email? ? set_approval_status_to_pending_email_verification : set_approval_status_to_pending_contact_information) if self.approval_status.blank?
-    set_approval_status_to_pending_email_verification if invited
+    set_approval_status_to_pending_email_verification if self.approval_status.blank? or invited
   end
 
   def set_default_flags
