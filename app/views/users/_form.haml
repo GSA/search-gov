@@ -1,60 +1,14 @@
-%table
-  %tr
-    %td
-      = form.label :contact_name, "Name*"
-    %td
-      = form.text_field :contact_name, :class => "text"
-  %tr
-    %td
-      = form.label :organization_name, "Government organization"
-    %td
-      = form.text_field :organization_name, :class => "text"
-  %tr
-    %td
-      = form.label :email, "Email*"
-    %td
-      = form.text_field :email, :class => "text"
-  - if !@user.new_record? && @user.is_affiliate_or_higher
-    %tr
-      %td
-        = form.label :phone
-      %td
-        = form.text_field :phone, :class => "text"
-    %tr
-      %td
-        = form.label :address, "Organization address"
-      %td
-        = form.text_field :address, :class => "text"
-    %tr
-      %td
-        = form.label :address2, "Address 2"
-      %td
-        = form.text_field :address2, :class => "text"
-    %tr
-      %td
-        = form.label :city
-      %td
-        = form.text_field :city, :class => "text"
-    %tr
-      %td
-        = form.label :state
-      %td
-        = us_state_select 'user', 'state'
-    %tr
-      %td
-        = form.label :zip
-      %td
-        = form.text_field :zip, :class => "text"
-  %tr
-    %td
-      = form.label :password, form.object.new_record? ? 'Password*' : "Change password"
-    %td
-      = form.password_field :password, :class => "text"
-  %tr
-    %td
-      = form.label :password_confirmation, form.object.new_record? ? "Password confirmation*" : "Password confirmation"
-    %td
-      = form.password_field :password_confirmation, :class => "text"
-  %tr
-    %td{:colspan => 2}
-      * Required
+= render_site_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+
+= form.label :contact_name, 'Name', class: 'required'
+= form.text_field :contact_name, class: 'required input-primary'
+= form.label :organization_name, 'Agency'
+= form.text_field :organization_name
+= form.label :email, 'Email', class: 'required'
+= form.text_field :email, type: :email, class: 'required'
+
+= form.label :password, 'Change password'
+= form.password_field :password
+= form.label :password_confirmation, 'Password confirmation'
+= form.password_field :password_confirmation

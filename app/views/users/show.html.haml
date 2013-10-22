@@ -1,80 +1,19 @@
-= content_for :title, "My Account - "
-= breadcrumbs(['My Account'])
-%h1
-  My Account
-.span-14.append-1
-  %table.account-table
-    %tr
-      %th
-        Contact Information
-      %th{:style=>"text-align:right; font-size:smaller"}
-        = link_to "+ edit your profile", edit_account_path
-        - if @user.affiliates.count == 1
-          %br
-          = link_to '+ add an additional contact', affiliate_users_path(@user.affiliates.first)
-        - elsif @user.affiliates.count > 1
-          %br
-          = link_to '+ add an additional contact', '#add_additional_contact', :id => "add_additional_contact", :class => "sliding_trigger"
-    %tr
-      %td{:class=>"label"}
-        Name:
-      %td
-        &= @user.contact_name
-    %tr
-      %td{:class=>"label"}
-        Government organization:
-      %td
-        &= @user.organization_name
-    %tr
-      %td{:class=>"label"}
-        Email:
-      %td
-        &= @user.email
-    - if @user.is_affiliate_or_higher
-      %tr
-        %td{:class=>"label"}
-          Phone:
-        %td
-          &= @user.phone
-      %tr
-        %td{:class=>"label"}
-          Organization address:
-        %td
-          &= @user.address
-      %tr
-        %td{:class=>"label"}
-          Address 2:
-        %td
-          &= @user.address2
-      %tr
-        %td{:class=>"label"}
-          City:
-        %td
-          &= @user.city
-      %tr
-        %td{:class=>"label"}
-          State:
-        %td
-          &= @user.state
-      %tr
-        %td{:class=>"label"}
-          Zip:
-        %td
-          &= @user.zip
+= content_for :title, 'My Account'
+.sub-nav-heading
+  %h2 Contact Information
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Edit', edit_account_path
 
-.span-6.last
-  #add_additional_contact_content.sliding_content
-    .content-box.cross-promotion
-      %p
-        You have multiple sites associated with your account. To add an additional contact, follow these steps:
-      %ol
-        %li
-          Go to the #{ link_to 'Admin Center', home_affiliates_path } homepage.
-        %li
-          Select a site
-        %li
-          Click on the 'Manage Users' link in the left-hand navigation.
-        %li
-          Add additional contacts for the selected site.
-        %li
-          Repeat, as needed, for each site.
+= render_site_flash_message
+
+%dl
+  %dt Name
+  %dd= @user.contact_name
+%dl
+  %dt Agency
+  %dd= @user.organization_name
+%dl
+  %dt Email
+  %dd= @user.email

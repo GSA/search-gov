@@ -72,11 +72,7 @@ Feature: Affiliate clients
       | bar site         | multibar.gov     | two@bar.gov           | Two Bar             | false              |
       | other site       | other.gov        | other@other.gov       | Other Bar           | false              |
     And I am logged in with email "two@bar.gov" and password "random_string"
-    When I go to the user account page
-    Then I should see "foo site"
-    And I should see "bar site"
-    And I should not see "other site"
-    When I follow "Admin Center"
+    When I am on the affiliate admin page
     Then I should see "foo site" for site named "foo site"
     Then I should see "View Current" for site named "foo site"
     Then I should see "View Staged" for site named "foo site"

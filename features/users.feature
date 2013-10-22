@@ -3,17 +3,11 @@ Feature: Users
   Scenario: Logged-in non-developer user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
-    Then I should see the following breadcrumbs: USASearch > My Account
+    Then I should see the browser page titled "My Account"
     And I should see "Contact Information"
-    And I should see "Email"
     And I should see "Name"
-    And I should see "Phone"
-    And I should see "Government organization"
-    And I should see "Organization address"
-    And I should see "Address 2"
-    And I should see "City"
-    And I should see "State"
-    And I should see "Zip"
+    And I should see "Agency"
+    And I should see "Email"
 
   Scenario: Visiting the login page
     Given I am on the login page
@@ -137,53 +131,16 @@ Feature: Users
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
-    And I follow "edit your profile"
-    Then I should see the following breadcrumbs: USASearch > My Account > Edit My Account
+    And I follow "Edit"
+    Then I should see the browser page titled "Edit My Account"
     And I should see "Edit My Account"
     And I should see "Name"
-    And I should see "Government organization"
+    And I should see "Agency"
     And I should see "Email"
-    And I should see "Phone"
-    And I should see "Organization address"
-    And I should see "Address 2"
-    And I should see "City"
-    And I should see "State"
-    And I should see "Zip"
     And I should see "Change password"
     And I should see "Password confirmation"
-    And I should not see "I am a government employee or contractor"
-    And I should not see "I am not affiliated with a government agency"
 
    Scenario: Logging in as a developer user
     Given I am logged in with email "developer@fixtures.org" and password "admin"
     When I go to the user account page
     Then I should see "Our Recalls API Has Moved"
-
-  Scenario: Adding additional contacts to an affiliate from an account with a single affiliate
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
-      | display_name     | name             | contact_email                 | contact_name        |
-      | aff site         | aff.gov          | affiliate_admin@fixtures.org  | John Bar            |
-    When I go to the user account page
-    Then I should see "+ add an additional contact"
-    When I follow "+ add an additional contact"
-    Then I should be on the "aff site" affiliate users page
-
-  Scenario: Adding additional contacts to an affiliate from an account with multiple affiliates
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
-      | display_name     | name             | contact_email                 | contact_name        |
-      | aff site         | aff.gov          | affiliate_admin@fixtures.org  | John Bar            |
-      | aff site 2       | aff2.gov         | affiliate_admin@fixtures.org  | John Bar            |
-    When I go to the user account page
-    Then I should see "+ add an additional contact"
-    When I follow "+ add an additional contact"
-    Then I should be on the user account page
-    And I should see "You have multiple sites associated with your account. To add an additional contact, follow these steps"
-    When I follow "Admin Center" in the page content
-    Then I should see the browser page titled "Admin Center"
-
-  Scenario: User does not see "+ add additional contact when no affiliates are associated with the account"
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the user account page
-    Then I should not see "+ add an additional contact"

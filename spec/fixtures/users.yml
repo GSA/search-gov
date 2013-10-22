@@ -6,12 +6,6 @@ affiliate_admin:
   is_affiliate_admin: true
   is_affiliate: false
   contact_name: Affiliate Administrator
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
@@ -24,12 +18,6 @@ non_affiliate_admin:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: Not An Affiliate
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
@@ -42,12 +30,6 @@ affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
@@ -60,12 +42,6 @@ another_affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Another Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
@@ -78,12 +54,6 @@ affiliate_manager_with_no_affiliates:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
@@ -106,12 +76,6 @@ marilyn:
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   is_affiliate_admin: true
   contact_name: Analyst With Full Privileges
-  phone: 301-123-4568
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Super Agency
   approval_status: approved
   welcome_email_sent: true
@@ -124,12 +88,6 @@ developer:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: A New Developer
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Developer Inc
   approval_status: approved
   welcome_email_sent: true
@@ -142,12 +100,6 @@ affiliate_manager_with_pending_contact_information_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Contact Information Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: pending_contact_information
   email_verification_token: my token
@@ -161,12 +113,6 @@ affiliate_manager_with_pending_email_verification_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Email Verification Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: pending_email_verification
   email_verification_token: my token
@@ -180,12 +126,6 @@ affiliate_manager_with_pending_approval_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Approval Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: pending_approval
   requires_manual_approval: true
@@ -198,12 +138,6 @@ affiliate_manager_with_not_approved_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Not Approved Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: not_approved
   requires_manual_approval: true
@@ -216,12 +150,6 @@ affiliate_added_by_another_affiliate_with_pending_email_verification_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Invited Affiliate Manager
-  phone: 301-123-4567
-  address: 123 Penn Ave
-  address2: Ste 100
-  city: Reston
-  state: VA
-  zip: 20022
   organization_name: Agency
   approval_status: pending_email_verification
   requires_manual_approval: false

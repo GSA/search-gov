@@ -9,12 +9,6 @@ describe User do
         :password => "password",
         :password_confirmation => "password",
         :contact_name => "Some One",
-        :phone => "301-123-4567",
-        :address => "123 Penn Ave",
-        :address2 => "Ste 100",
-        :city => "Reston",
-        :state => "VA",
-        :zip => "20022",
         :organization_name => "Agency",
         :government_affiliation => "1"
     }
@@ -184,24 +178,14 @@ describe User do
   end
 
   describe "when validating with strict_mode" do
-    it "should require organization name, phone and address fields if strict_mode is set" do
+    it "should require organization name if strict_mode is set" do
       user = User.new(@valid_affiliate_attributes)
       user.strict_mode.should be_false
-      user.should_not validate_presence_of(:phone)
       user.should_not validate_presence_of(:organization_name)
-      user.should_not validate_presence_of(:address)
-      user.should_not validate_presence_of(:city)
-      user.should_not validate_presence_of(:state)
-      user.should_not validate_presence_of(:zip)
       user.strict_mode = true
       user.should validate_presence_of(:contact_name)
       user.should validate_presence_of(:email)
-      user.should validate_presence_of(:phone)
       user.should validate_presence_of(:organization_name)
-      user.should validate_presence_of(:address)
-      user.should validate_presence_of(:city)
-      user.should validate_presence_of(:state)
-      user.should validate_presence_of(:zip)
     end
   end
 

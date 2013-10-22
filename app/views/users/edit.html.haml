@@ -1,7 +1,10 @@
-= breadcrumbs([link_to("My Account", account_path), "Edit My Account"])
-.span-18
-  = form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
-    %h1 Edit My Account
-    = f.error_messages
-    = render :partial => "form", :object => f
-    = f.submit "Update"
+= content_for :title, 'Edit My Account'
+
+= form_for @user, url: { action: :update }, html: { class: 'form' }  do |form|
+  .sub-nav-heading
+    %h2 Edit My Account
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= form.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render form

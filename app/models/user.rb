@@ -2,12 +2,7 @@ class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
-  validates_presence_of :phone, :if => :strict_mode
   validates_presence_of :organization_name, :if => :strict_mode
-  validates_presence_of :address, :if => :strict_mode
-  validates_presence_of :city, :if => :strict_mode
-  validates_presence_of :state, :if => :strict_mode
-  validates_presence_of :zip, :if => :strict_mode
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
   validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"

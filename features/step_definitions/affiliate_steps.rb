@@ -6,12 +6,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :password => "random_string",
       :password_confirmation => "random_string",
       :contact_name => hash[:contact_name],
-      :phone => "301-123-4567",
-      :address => "123 Penn Ave",
-      :address2 => "Ste 100",
-      :city => "Reston",
-      :state => "VA",
-      :zip => "20022",
       :organization_name=> "Agency",
       :government_affiliation => "1"
     }

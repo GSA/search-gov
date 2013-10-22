@@ -1,5 +1,5 @@
 .l-site-nav.main
-  - unless @site.new_record?
+  - unless @site.nil? || @site.new_record?
     %ul.nav
       = main_nav_item 'Dashboard', site_path(@site), 'icon-dashboard', site_dashboard_controllers
       = main_nav_item 'Analytics', new_site_queries_path(@site), 'icon-bar-chart', site_analytics_controllers
@@ -8,7 +8,7 @@
       = main_nav_item 'Preview', '#preview', 'icon-eye-open', [], id: 'preview-trigger', data: { url: "#{site_preview_path(@site)}" }
       = main_nav_item 'Activate Search', site_embed_code_path(@site), 'icon-code', site_activate_search_controllers
 .l-site-nav.sub
-  - if @site.new_record?
+  - if @site.nil? || @site.new_record?
     = render('sites/shared/new_site_sub_nav') if controller_name == 'sites'
   - else
     = render('sites/shared/dashboard_sub_nav') if site_dashboard_controllers.include?(controller_name)

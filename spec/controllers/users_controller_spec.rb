@@ -26,25 +26,24 @@ describe UsersController do
 
     describe "do POST on update" do
       it "should assign the user" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "UTC"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
         assigns[:user].should be_instance_of(User)
       end
 
       it "should update the user record" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "FOO", :contact_name => "BAR"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
         user = User.find_by_email("changed@foo.com")
-        user.time_zone.should == "FOO"
         user.contact_name.should == "BAR"
       end
 
       it "should redirect to account page on success with flash message" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "UTC"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
         response.should redirect_to(account_url)
         flash[:success].should == "Account updated!"
       end
 
       it "should render edit on failure" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "UTC", :password=>"not", :password_confirmation => "the same"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :password=>"not", :password_confirmation => "the same"}
         response.should render_template(:edit)
       end
 
@@ -79,7 +78,7 @@ describe UsersController do
 
     describe "do POST on update" do
       it "should redirect the developer to the USA.gov developer page" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :time_zone => "UTC"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
         response.should redirect_to(developer_redirect_url)
       end
     end
