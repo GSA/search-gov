@@ -9,7 +9,6 @@ class EmailVerificationController < ApplicationController
       if @user.is_pending_approval?
         notice_message << "<p>Because you don't have a .gov or .mil email address, your account is pending approval.</p>"
         notice_message << "<p>We will be in touch with you within two business days to confirm that you are a government employee or contractor and to set up your account.</p>"
-        notice_message << "<p>Regards,<br />The USASearchTeam<br />usasearch.gsa.gov</p>"
       end
       flash[:notice] = notice_message.html_safe
     else
