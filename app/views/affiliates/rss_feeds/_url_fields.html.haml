@@ -1,9 +1,0 @@
-%tr.row-item.url
-  %td.url
-    = f.label :url, "RSS feed URL #{index}", :class => 'hide'
-    = f.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }.merge(is_managed ? { :disabled => 'disabled' } : {})
-  - unless is_managed
-    %td.remove
-      = f.label :_destroy, "Mark RSS feed URL #{index} for deletion", :class => 'hide'
-      = check_box_tag "rss_feed[rss_feed_urls_attributes][#{index}[_destroy]", '1', false, :class => 'destroy-url hide'
-      = link_to('-', "#", :class => 'remove-url remove-icon', :title => 'Remove RSS feed URL')

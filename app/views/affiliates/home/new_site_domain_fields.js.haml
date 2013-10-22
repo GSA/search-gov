@@ -1,4 +1,0 @@
-- now = Time.now.to_i
-= fields_for "affiliate[site_domains_attributes][#{now}]", SiteDomain.new do |f|
-  :plain
-    jQuery('.site-domains').append("#{escape_javascript(render('site_domain_fields', :f => f, :index => now))}");

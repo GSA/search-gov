@@ -3,12 +3,12 @@ require 'spec_helper'
 describe AffiliateHelper do
   describe "#affiliate_center_breadcrumbs" do
     it "should generate links that contain USASearch > Admin Center > a title" do
-      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",home_affiliates_path), "a title"])
+      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",sites_path), "a title"])
       helper.affiliate_center_breadcrumbs("a title")
     end
 
     it "should generate links that contain USASearch > Admin Center > a link > a title" do
-      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",home_affiliates_path),link_to("a link", "http://blah"), "a title"])
+      helper.should_receive(:breadcrumbs).with([link_to("Admin Center",sites_path),link_to("a link", "http://blah"), "a title"])
       helper.affiliate_center_breadcrumbs([link_to("a link", "http://blah"), "a title"])
     end
   end

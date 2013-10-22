@@ -1,18 +1,4 @@
 module Analytics::HomeHelper
-  def base_query_chart_link(query, path_for_query_timeline)
-    html = link_to(query, path_for_query_timeline)
-    html << " "
-    html << link_to(image_tag('legacy/open_new_window.png', :alt => "Open graph in new window", :size => "8x8"),
-                    path_for_query_timeline,
-                    :class => 'analytics-timeline-popup',
-                    :title => "Open graph in new window")
-    html
-  end
-
-  def affiliate_query_chart_link(query, affiliate)
-    base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
-  end
-
   def affiliate_query_clicks_link(query, affiliate, start_date, end_date)
     title = "View top clicked URLs for this query term"
     link = query_clicks_affiliate_analytics_path(affiliate, {:query => query, :start_date => start_date, :end_date => end_date})

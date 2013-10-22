@@ -4,8 +4,7 @@ class Sites::SitesController < Sites::BaseController
   def index
     if current_user.is_affiliate_admin? and current_user.default_affiliate
       redirect_to site_path(current_user.default_affiliate)
-    elsif current_user.is_affiliate? &&
-        current_user.affiliates.exists?(current_user.default_affiliate_id)
+    elsif current_user.is_affiliate? and current_user.affiliates.exists?(current_user.default_affiliate_id)
       redirect_to site_path(current_user.default_affiliate)
     elsif current_user.affiliates.first
       redirect_to site_path(current_user.affiliates.first)
@@ -40,7 +39,7 @@ class Sites::SitesController < Sites::BaseController
 
   def destroy
     Resque.enqueue_with_priority(:low, SiteDestroyer, @site.id)
-    redirect_to new_site_path, :flash => {:success => "Scheduled site '#{@site.display_name}' for deletion. This could take several hours to complete."}
+    redirect_to new_site_path, :flash => { :success => "Scheduled site '#{@site.display_name}' for deletion. This could take several hours to complete." }
   end
 
   def pin

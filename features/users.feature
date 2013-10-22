@@ -13,6 +13,7 @@ Feature: Users
     Given I am on the login page
     Then I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the registration form
 
+  @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the login page
     Then I should see "Sign In to Use Our Services"
@@ -27,10 +28,9 @@ Feature: Users
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
-    Then I should be on the affiliate admin page
+    Then I should be on the user account page
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
-    And I should see a link to "Admin Center" in the main navigation bar
-    When I follow "Sign Out"
+    When I sign out
     Then I should be on the login page
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
@@ -43,11 +43,10 @@ Feature: Users
       | Password                      | huge_secret                 |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
+    And I should be on the user account page
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
     Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
-    When I follow "Add New Site"
-    Then I should be on the new affiliate page
 
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the login page
@@ -59,11 +58,12 @@ Feature: Users
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
-    Then I should be on the affiliate admin page
-    When I follow "Add New Site"
-    Then I should be on the affiliate admin page
+    Then I should be on the user account page
+    When I follow "Add Site"
+    Then I should be on the user account page
     And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
 
+  @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given I am on the login page
     When I fill in the following in the new user form:
@@ -74,11 +74,9 @@ Feature: Users
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
-    Then I should be on the affiliate admin page
+    Then I should be on the user account page
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
-    And I should see a link to "Admin Center" in the main navigation bar
-
-    When I follow "Sign Out"
+    When I sign out
     Then I should be on the login page
     And "lorem.ipsum@corporate.com" should receive an email
     When I open the email
@@ -93,23 +91,6 @@ Feature: Users
     Then I should see "Thank you for verifying your email."
     And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
     And "lorem.ipsum@corporate.com" should receive no emails
-
-  Scenario: Registering as a new affiliate user with a .mil email address
-    Given I am on the login page
-    And I fill in the following in the new user form:
-    | Email                         | lorem.ipsum@agency.mil      |
-    | Name                          | Lorem Ipsum                 |
-    | Government organization       | The Agency                  |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
-    And I check "I am a government employee or contractor"
-    And I check "I have read and accept the"
-    And I press "Register for a new account"
-    Then I should see the browser page titled "Admin Center"
-    And I should see the following breadcrumbs: USASearch > Admin Center
-    And I should see "Admin Center" in the page header
-    And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
-    And I should see a link to "Admin Center" in the main navigation bar
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the login page

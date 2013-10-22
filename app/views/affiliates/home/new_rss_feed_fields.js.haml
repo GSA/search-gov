@@ -1,4 +1,0 @@
-- now = Time.now.to_i
-= fields_for "affiliate[rss_feeds_attributes][#{now}]", RssFeed.new do |f|
-  :plain
-    jQuery('.rss-feeds table').append("#{escape_javascript(render('rss_feed_fields', :f => f, :index => now))}");

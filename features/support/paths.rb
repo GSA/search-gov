@@ -58,8 +58,6 @@ module NavigationHelpers
       password_resets_path
     when /the user account page/
       account_path
-    when /the affiliate welcome page/
-      affiliates_path
     when /the reports homepage/
       monthly_reports_path
     when /the affiliate analytics query search results page/
@@ -70,22 +68,14 @@ module NavigationHelpers
       analytics_query_groups_path
     when /the boosted contents admin page/
       admin_boosted_contents_path
-    when /the affiliate boosted contents admin page/
-      admin_affiliate_boosted_contents_path
-    when /the affiliate on-demand urls page for "([^\"]*)"/
-      affiliate_on_demand_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
-    when /the affiliate crawled on-demand urls page for "([^\"]*)"/
-      crawled_affiliate_on_demand_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
-    when /the affiliate uncrawled on-demand urls page for "([^\"]*)"/
-      uncrawled_affiliate_on_demand_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
     when /the superfresh feed/
       main_superfresh_feed_path
     when /admin sayt suggestions upload/
       new_admin_sayt_suggestions_upload_path
     when /the affiliate admin page with "([^\"]*)" selected$/
-      home_affiliates_path(:said => Affiliate.find_by_name($1).id)
+      sites_path(:said => Affiliate.find_by_name($1).id)
     when /the affiliate admin page/
-      home_affiliates_path
+      sites_path
     when /the "([^\"]*)" affiliate page$/
       affiliate_path(Affiliate.find_by_display_name($1))
     when /the "([^\"]*)" affiliate users page$/

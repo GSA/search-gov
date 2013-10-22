@@ -5,109 +5,8 @@ UsasearchRails3::Application.routes.draw do
   resources :password_resets
   resources :email_verification, :only => :show
   resources :complete_registration, :only => [:edit, :update]
-  resources :affiliates, :controller => "affiliates/home" do
-    member do
-      post :push_content_for
-      get :embed_code
-      get :edit_site_information
-      put :update_site_information
-      get :edit_look_and_feel
-      put :update_look_and_feel
-      get :edit_header_footer
-      put :update_header_footer
-      get :preview
-      post :cancel_staged_changes_for
-      get :best_bets
-      get :urls
-      get :content_sources
-      put :create_content_sources
-      get :get_the_code
-      get :edit_sidebar
-      put :update_sidebar
-      get :edit_results_modules
-      put :update_results_modules
-      get :edit_external_tracking
-      put :update_external_tracking
-      get :new_connection_fields
-    end
-    collection do
-      get :home
-      get :new_site_domain_fields
-      get :new_rss_feed_fields
-      get :new_managed_header_link_fields
-      get :new_managed_footer_link_fields
-      get '/demo' => redirect(BLOG_URL, :status => 302)
-      get '/how_it_works' => redirect(BLOG_URL, :status => 302)
-    end
-    resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
-    resources :boosted_contents, :controller => "affiliates/boosted_contents" do
-      collection do
-        delete :destroy_all
-        get :bulk_new
-        post :bulk
-      end
-    end
-    resources :site_feed_urls, :controller => "affiliates/site_feed_url"
-    resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:new, :create, :destroy] do
-      collection do
-        post :upload
-        get :crawled
-        get :uncrawled
-        get :bulk_new
-        get :export_crawled, :constraints => { :format => 'csv' }
-      end
-    end
-    resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do
-      collection do
-        post :upload
-        post :preferences
-        get :demo
-        delete :destroy_all
-      end
-    end
-    resources :analytics, :controller => "affiliates/analytics", :only => [:index] do
-      collection do
-        get :monthly_reports
-        get :query_search
-        get :left_nav_usage
-        get :query_clicks
-        get :click_queries
-        get :top_urls
-        get :trending_queries
-        get :low_ctr_queries
-      end
-    end
-    resources :related_topics, :controller => "affiliates/related_topics" do
-      collection do
-        post :preferences
-      end
-    end
-    resources :api, :controller => "affiliates/api"
-    resources :featured_collections, :controller => "affiliates/featured_collections"
-    resources :rss_feeds, :controller => "affiliates/rss_feeds" do
-      collection do
-        get :new_url_fields
-      end
-    end
-    resources :document_collections, :controller => "affiliates/document_collections"
-    resources :raw_logs_access, :controller => "affiliates/raw_logs_access", :only => [:new, :create]
-    resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
-    resources :site_domains, :controller => "affiliates/site_domains" do
-      collection do
-        get :bulk_new
-        post :upload
-      end
-    end
-
-    resources :social_media, :controller => 'affiliates/social_media', :only => [:index, :create, :destroy] do
-      member do
-        get :preview
-      end
-      collection do
-        get :new_profile_fields
-      end
-    end
-  end
+  get '/affiliates/:id', to: redirect('/sites/%{id}')
+  get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   scope module: 'sites' do
     resources :sites do
@@ -250,7 +149,6 @@ UsasearchRails3::Application.routes.draw do
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
   match '/admin' => 'admin/home#index', :as => :admin_home_page
 
-  match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   get '/' => 'home#index', :as => :home_page
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed

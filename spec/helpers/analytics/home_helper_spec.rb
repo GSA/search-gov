@@ -3,14 +3,6 @@ require 'spec_helper'
 describe Analytics::HomeHelper do
   fixtures :affiliates
 
-  describe "#affiliate_query_chart_link" do
-    it "should render query chart link" do
-      content = helper.affiliate_query_chart_link('query', affiliates(:power_affiliate))
-      content.should have_selector("a[href^='/affiliates/#{affiliates(:power_affiliate).id}/analytics/timeline/query']", :content => 'query')
-      content.should have_selector("a[href^='/affiliates/#{affiliates(:power_affiliate).id}/analytics/timeline/query'][title='Open graph in new window']")
-    end
-  end
-
   describe "#affiliate_analytics_daily_report_link" do
     context "s3 file exists" do
       before do

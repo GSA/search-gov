@@ -11,13 +11,3 @@ describe "/program" do
   let(:path) { '/program' }
   it_should_behave_like "a redirect to searchblog"
 end
-
-describe "/affiliates/demo" do
-  let(:path) { '/affiliates/demo' }
-  it_should_behave_like "a redirect to searchblog"
-end
-
-describe "/affiliates/how_it_works" do
-  let(:path) { '/affiliates/how_it_works' }
-  it_should_behave_like "a redirect to searchblog"
-end

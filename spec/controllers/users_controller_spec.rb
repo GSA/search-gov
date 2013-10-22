@@ -102,10 +102,10 @@ describe UsersController do
           @user.should_receive(:save).and_return(true)
         end
 
-        it "should redirect to affiliate home for affiliate user" do
+        it "should redirect to account page for affiliate user" do
           @user.should_receive(:is_affiliate?).and_return(true)
           post :create
-          response.should redirect_to(home_affiliates_path)
+          response.should redirect_to(account_path)
         end
 
         it "should redirect to my account page for non affiliate user" do

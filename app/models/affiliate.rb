@@ -30,7 +30,7 @@ class Affiliate < ActiveRecord::Base
   has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
   has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_many :url_prefixes, :through => :document_collections
-  has_many :affiliate_twitter_settings,:dependent => :destroy
+  has_many :affiliate_twitter_settings, :dependent => :destroy
   has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
   has_many :flickr_profiles, dependent: :destroy, order: 'flickr_profiles.url ASC'
   has_many :facebook_profiles, :dependent => :destroy
@@ -97,8 +97,8 @@ class Affiliate < ActiveRecord::Base
   before_validation :set_default_rss_govbox_label
   validates_presence_of :display_name, :name, :locale
   validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :within=> (2..33)
-  validates_format_of :name, :with=> /^[a-z0-9._-]+$/
+  validates_length_of :name, :within => (2..33)
+  validates_format_of :name, :with => /^[a-z0-9._-]+$/
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
 
   validates_attachment_content_type :page_background_image,
@@ -154,7 +154,7 @@ class Affiliate < ActiveRecord::Base
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
 
-  scope :ordered, {:order => 'display_name ASC'}
+  scope :ordered, { :order => 'display_name ASC' }
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
@@ -178,11 +178,11 @@ class Affiliate < ActiveRecord::Base
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
-    :display_name => "Display name",
-    :name => "Site Handle (visible to searchers in the URL)",
-    :header_image_file_size => 'Logo file size',
-    :mobile_logo_file_size => 'Mobile Logo file size',
-    :page_background_image_file_size => 'Page Background Image file size'
+      :display_name => "Display name",
+      :name => "Site Handle (visible to searchers in the URL)",
+      :header_image_file_size => 'Logo file size',
+      :mobile_logo_file_size => 'Mobile Logo file size',
+      :page_background_image_file_size => 'Page Background Image file size'
   }
 
   FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif']
@@ -222,9 +222,9 @@ class Affiliate < ActiveRecord::Base
                         :search_button_background_color => '#0CA5D8',
                         :left_tab_text_color => '#87CB00',
                         :title_link_color => '#0CA5D8',
-                       :visited_title_link_color => '#A972AB',
-                       :description_text_color => '#444444',
-                       :url_link_color => '#3DB7E0' }
+                        :visited_title_link_color => '#A972AB',
+                        :description_text_color => '#444444',
+                        :url_link_color => '#3DB7E0' }
   THEMES[:gray] = { :display_name => 'Mount Rushmore',
                     :page_background_color => '#F7F7F7',
                     :content_background_color => '#FFFFFF',
@@ -311,7 +311,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def scope_ids_as_array
-    @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
+    @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
   end
 
   def has_multiple_domains?
@@ -491,7 +491,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def unused_features
-    features.any? ? Feature.where('id not in (?)',features.collect(&:id)) : Feature.all
+    features.any? ? Feature.where('id not in (?)', features.collect(&:id)) : Feature.all
   end
 
   def autodiscover
@@ -505,7 +505,7 @@ class Affiliate < ActiveRecord::Base
 
   def autodiscover_homepage_url
     return unless website.blank? && (site_domains.count == 1)
-        domain = site_domains.first.domain
+    domain = site_domains.first.domain
     %W(http://#{domain} http://www.#{domain}).any? do |url|
       page = open(url) rescue nil
       if page
@@ -728,7 +728,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_managed_links(managed_links_attributes, managed_links)
-     managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
+    managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
       next if link[:title].blank? and link[:url].blank?
       url = link[:url]
       url = "http://#{url}" if url.present? and url !~ %r{^http(s?)://}i

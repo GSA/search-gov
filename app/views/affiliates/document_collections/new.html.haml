@@ -1,9 +1,0 @@
-= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Add a new Collection"])
-%h1 Add a new Collection
-= render_help_link(@help_link)
-.add-document-collection
-  = form_for([@affiliate, @document_collection], :html => { :multipart => true }) do |f|
-    = render :partial => 'shared/document_collections/form', :locals => { :form => f }
-    = f.submit "Add"
-    = link_to 'Cancel', affiliate_document_collections_path(@affiliate), :class => 'cancel'
-

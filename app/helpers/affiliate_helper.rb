@@ -1,7 +1,7 @@
 module AffiliateHelper
   def affiliate_center_breadcrumbs(crumbs)
     aff_breadcrumbs =
-      [link_to("Admin Center", home_affiliates_path), crumbs]
+      [link_to("Admin Center", sites_path), crumbs]
     breadcrumbs(aff_breadcrumbs.flatten)
   end
 

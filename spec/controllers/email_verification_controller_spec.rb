@@ -32,7 +32,7 @@ describe EmailVerificationController do
       end
 
       it "redirects to affiliates landing page" do
-        response.should redirect_to(home_affiliates_path)
+        response.should redirect_to(account_path)
       end
     end
 
@@ -52,7 +52,7 @@ describe EmailVerificationController do
       end
 
       it "redirects to affiliates landing page" do
-        response.should redirect_to(home_affiliates_path)
+        response.should redirect_to(account_path)
       end
     end
   end

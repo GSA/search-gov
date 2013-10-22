@@ -1,8 +1,0 @@
-%tr.row-item
-  %td.title
-    = hidden_field_tag "affiliate[staged_managed_footer_links_attributes][#{index}][position]", index, { :class => 'position' }
-    = label_tag "affiliate[staged_managed_footer_links_attributes][#{index}][title]", "Footer Link Title #{index}", { :class => 'hide' }
-    = text_field_tag "affiliate[staged_managed_footer_links_attributes][#{index}][title]", link[:title], { :class => 'title', :maxlength => 32, :size => nil }
-  %td.url
-    = label_tag "affiliate[staged_managed_footer_links_attributes][#{index}][url]", "Footer Link URL #{index}", { :class => 'hide' }
-    = text_field_tag "affiliate[staged_managed_footer_links_attributes][#{index}][url]", link[:url], { :class => 'url', :maxlength => 128, :size => nil }

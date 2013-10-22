@@ -21,7 +21,7 @@ class Sites::BaseController < SslController
       elsif current_user.is_pending_approval?
         flash[:notice] = 'Your account has not been approved. Please try again when you are set up.'
       end
-      redirect_to home_affiliates_path
+      redirect_to account_path
     end
   end
 

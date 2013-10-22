@@ -32,7 +32,7 @@ describe Admin::AffiliatesController do
 
       it "should redirect to the affiliate analytics page for the affiliate id passed" do
         get :analytics, :id => @affiliate.id
-        response.should redirect_to affiliate_analytics_path(:affiliate_id => @affiliate.id)
+        response.should redirect_to new_site_queries_path(@affiliate)
       end
     end
   end

@@ -1,9 +1,0 @@
-%tr
-  %td
-    = f.label :name, "RSS Feed Name #{index}", :class => 'hide'
-    = f.text_field :name
-  %td
-    - f.object.rss_feed_urls.build if f.object.rss_feed_urls.blank?
-    = f.fields_for :rss_feed_urls, include_id: false do |url_form|
-      = url_form.label :url, "RSS Feed URL #{index}", :class => 'hide'
-      = url_form.text_field :url, :class => 'text', :maxlength => 255, :size => nil

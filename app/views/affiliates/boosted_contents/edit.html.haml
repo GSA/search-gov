@@ -1,9 +1,0 @@
-.boosted-sites.span-24
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit Best Bets: Text Entry"])
-  %h1 Edit Best Bets: Text Entry
-  = render_help_link(@help_link)
-.edit-boosted-content
-  = form_for([@affiliate, @boosted_content]) do |f|
-    = render :partial => 'shared/boosted_contents/form', :locals => { :form => f }
-    = f.submit "Update"
-    = link_to "Cancel", affiliate_boosted_contents_path(@affiliate), :class => 'cancel'

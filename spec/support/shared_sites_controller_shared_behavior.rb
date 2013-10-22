@@ -11,7 +11,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       send request_method, action, parameters, sessions, flash
-      response.should redirect_to(home_affiliates_path)
+      response.should redirect_to(account_path)
     end
   end
 
@@ -20,7 +20,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       self.send request_method, action, parameters, sessions, flash
-      response.should redirect_to(home_affiliates_path)
+      response.should redirect_to(account_path)
     end
   end
 
@@ -29,7 +29,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       self.send request_method, action, parameters, sessions, flash
-      response.should redirect_to(home_affiliates_path)
+      response.should redirect_to(account_path)
     end
   end
 end

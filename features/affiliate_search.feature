@@ -11,18 +11,6 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "Please enter search term(s)"
 
-  Scenario: Setting a Left-nav Label
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Sidebar"
-    And I fill in "Sidebar Label" with "MY AWESOME LABEL"
-    And I press "Save"
-    When I go to bar.gov's search page
-    Then I should see "MY AWESOME LABEL"
-
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
@@ -775,8 +763,7 @@ Feature: Affiliate Search
     And I should see a link to "Hippo1" with url for "http://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "english-nih" selected
-    And I follow "Results modules"
+    When I go to the english-nih's Manage Display page
     And I uncheck "Is medline govbox enabled"
     And I press "Save"
 
@@ -806,8 +793,7 @@ Feature: Affiliate Search
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "spanish-nih" selected
-    And I follow "Results modules"
+    When I go to the spanish-nih's Manage Display page
     And I uncheck "Is medline govbox enabled"
     And I press "Save"
 
@@ -940,50 +926,6 @@ Feature: Affiliate Search
     And I should see "Estados Unidos es grande!"
     And I should see "Estados" in bold font in the twitter govbox
     And I should see "Unidos" in bold font in the twitter govbox
-
-  Scenario: When there are relevant Flickr photos for a search
-    Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
-    And the following FlickrPhotos exist:
-      | title     | description             | url_sq                         | owner | flickr_id | affiliate_name  |
-      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
-    When I am on bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should see "Photos of 'america' by bar site"
-
-    When I fill in "query" with "obama"
-    And I press "Search"
-    Then I should not see "Photos of 'america' by bar site"
-
-  Scenario: Enabling and disabling Flickr photos
-    Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | false                     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Results modules"
-    Then I should not see "Photos"
-
-    Given the following FlickrPhotos exist:
-      | title     | description             | url_sq                        | owner | flickr_id | affiliate_name  |
-      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
-    When I am on bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should not see "Photos of 'america' by bar site"
-
-    When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Results module"
-    Then I should see "Photos"
-
-    When I check "Is photo govbox enabled"
-    And I press "Save"
-    When I go to bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search"
-    Then I should see "Photos of 'america' by bar site"
 
   Scenario: When using tablet device
     Given I am using a TabletPC device

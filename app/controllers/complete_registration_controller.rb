@@ -9,7 +9,7 @@ class CompleteRegistrationController < SslController
   def update
     if @user.complete_registration(params[:user])
       flash[:success] = 'You have successfully completed your account registration.'
-      redirect_to home_affiliates_path
+      redirect_to sites_path
     else
       render :action => :edit
     end

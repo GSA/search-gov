@@ -52,6 +52,6 @@ class Admin::AffiliatesController < Admin::AdminController
   end
 
   def analytics
-    redirect_to affiliate_analytics_path(:affiliate_id => params[:id])
+    redirect_to new_site_queries_path(Affiliate.find params[:id])
   end
 end

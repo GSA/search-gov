@@ -57,7 +57,7 @@ describe CompleteRegistrationController do
           flash[:success].should_not be_blank
         end
 
-        specify { response.should redirect_to(home_affiliates_path) }
+        specify { response.should redirect_to(sites_path) }
       end
 
       context "when the form parameters are invalid" do

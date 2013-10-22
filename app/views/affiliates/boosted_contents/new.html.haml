@@ -1,8 +1,0 @@
-= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Add a new Best Bets: Text"])
-%h1 Add a new Best Bets: Text
-= render_help_link(@help_link)
-.add-boosted-content
-  = form_for([@affiliate, @boosted_content]) do |f|
-    = render :partial => 'shared/boosted_contents/form', :locals => { :form => f }
-    = f.submit "Add"
-    = link_to "Cancel", affiliate_boosted_contents_path(@affiliate), :class => 'cancel'

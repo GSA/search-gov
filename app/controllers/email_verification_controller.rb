@@ -14,7 +14,6 @@ class EmailVerificationController < ApplicationController
     else
       flash[:notice] = 'Sorry! Your email verification is invalid. Are you sure you copied the right link from your email?'
     end
-    redirect_to home_affiliates_path
+    redirect_to account_path
   end
 end
-
