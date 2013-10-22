@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchesController do
-  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :navigations, :features, :news_items
+  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :rss_feed_urls, :navigations, :features, :news_items
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
@@ -26,11 +26,11 @@ describe SearchesController do
       end
 
       it "should assign the query as the page title" do
-        @page_title.should == "Current social security - USA.gov Search Results"
+        @page_title.should == "social security - USA.gov Search Results"
       end
 
       it "should show a custom title for the results page" do
-        response.body.should contain("Current social security - USA.gov Search Results")
+        response.body.should contain("social security - USA.gov Search Results")
       end
 
       it "should set the query in the Search model" do
@@ -95,7 +95,7 @@ describe SearchesController do
     end
 
     it "should set an affiliate page title" do
-      @page_title.should == "Current thunder & lightning - Noaa Site Search Results"
+      @page_title.should == "thunder & lightning - Noaa Site Search Results"
     end
 
     it "should render the header in the response" do
@@ -135,7 +135,7 @@ describe SearchesController do
 
     it "should set an affiliate page title" do
       get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
-      assigns[:page_title].should == "Staged weather - Noaa Site Search Results"
+      assigns[:page_title].should == "weather - Noaa Site Search Results"
     end
   end
 
@@ -397,7 +397,7 @@ describe SearchesController do
 
     it "should assign page title, vertical, form_path, and search members" do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w", :page => "1", :per_page => "5"
-      assigns[:page_title].should == "Current element - #{affiliate.display_name} Search Results"
+      assigns[:page_title].should == "element - #{affiliate.display_name} Search Results"
       assigns[:search_vertical].should == :news
       assigns[:form_path].should == news_search_path
       assigns[:search].should be_an_instance_of(NewsSearch)
@@ -430,7 +430,7 @@ describe SearchesController do
 
     context "when the query is blank and total is > 0" do
       before { get :news, :query => "", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w" }
-      it { should assign_to(:page_title).with('Current White House Blog - NPS Site Search Results') }
+      it { should assign_to(:page_title).with('White House Blog - NPS Site Search Results') }
     end
 
     context "when handling an array parameter" do
@@ -546,7 +546,7 @@ describe SearchesController do
       end
 
       it { should assign_to(:search).with(video_news_search) }
-      it { should assign_to(:page_title).with("Current element - #{affiliate.display_name} Search Results") }
+      it { should assign_to(:page_title).with("element - #{affiliate.display_name} Search Results") }
       it { should assign_to(:search_vertical).with(:news) }
       it { should assign_to(:form_path).with(video_news_search_path) }
       it { should render_template(:news) }
@@ -565,7 +565,7 @@ describe SearchesController do
         get :video_news, :query => "", :affiliate => affiliate.name, :channel => '100', :tbs => "w"
       end
 
-      it { should assign_to(:page_title).with('Current Videos - NPS Site Search Results') }
+      it { should assign_to(:page_title).with('Videos - NPS Site Search Results') }
     end
   end
 end

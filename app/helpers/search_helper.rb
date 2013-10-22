@@ -295,7 +295,7 @@ module SearchHelper
       next unless facet.rows.any?
       facet_navs = []
 
-      facet_label = affiliate.dublin_core_mappings[facet.name].present? ? affiliate.dublin_core_mappings[facet.name] : t("facet.all_#{facet.name}s")
+      facet_label = t("facet.all_#{facet.name}s")
       any_nav = link_to_unless search_params[facet.name.to_sym].blank?, facet_label, send(search_path_method, search_params.remove(facet.name.to_sym)) do |name|
         content_tag(:div, name, :class => 'selected')
       end

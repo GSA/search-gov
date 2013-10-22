@@ -17,7 +17,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:staged_footer].form_ui = :textarea
     config.columns[:external_tracking_code].form_ui = :textarea
     config.columns[:submitted_external_tracking_code].form_ui = :textarea
-    config.update.columns = [:display_name, :name, :search_results_page_title, :staged_search_results_page_title,
+    config.update.columns = [:display_name, :name,
                              :theme, :staged_theme,
                              :uses_managed_header_footer, :staged_uses_managed_header_footer,
                              :managed_header_home_url, :staged_managed_header_home_url,
@@ -31,8 +31,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :affiliate_feature_addition, :jobs_enabled, :agency,
                              :excluded_domains, :search_engine]
     config.list.columns.exclude virtual_columns
-    config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :locale]
-    config.columns[:staged_search_results_page_title].label = "Staged search results page title"
+    config.create.columns = [:display_name, :name, :header_footer_css, :header, :footer, :locale]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:theme].form_ui = :select
     config.columns[:features].associated_limit = nil

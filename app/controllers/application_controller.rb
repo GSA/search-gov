@@ -132,4 +132,11 @@ class ApplicationController < ActionController::Base
       @search_params.merge!(subject: params[:subject]) if params[:subject]
     end
   end
+
+  def set_search_page_title
+    query_string = @page_title.blank? ? '' : @page_title
+    @page_title = I18n.t(:default_serp_title,
+                         query: query_string,
+                         site_name: @affiliate.display_name)
+  end
 end

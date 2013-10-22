@@ -19,7 +19,7 @@ class SearchesController < ApplicationController
     @search.run
     @form_path = search_path
     @page_title = @search.query
-    set_affiliate_search_page_title
+    set_search_page_title
     @search_vertical = :web
     set_search_params
     respond_to do |format|
@@ -34,7 +34,7 @@ class SearchesController < ApplicationController
     @form_path = docs_search_path
     @page_title = @search.query
     @search_vertical = :docs
-    set_affiliate_search_page_title
+    set_search_page_title
     set_search_params
     respond_to { |format| format.any(:html, :mobile) {} }
   end
@@ -44,7 +44,7 @@ class SearchesController < ApplicationController
     @search.run
     @form_path = news_search_path
     set_news_search_page_title
-    set_affiliate_search_page_title
+    set_search_page_title
     @search_vertical = :news
     set_search_params
     respond_to { |format| format.any(:html, :mobile) {} }
@@ -55,7 +55,7 @@ class SearchesController < ApplicationController
     @search.run
     @form_path = video_news_search_path
     set_news_search_page_title
-    set_affiliate_search_page_title
+    set_search_page_title
     @search_vertical = :news
     request.format = :html
     set_search_params
@@ -63,16 +63,11 @@ class SearchesController < ApplicationController
   end
 
   def advanced
-    @page_title = t :advanced_search
+    @page_title = "#{t(:advanced_search)} - #{@affiliate.display_name}"
     @affiliate = @search_options[:affiliate]
-    @page_title += " - #{@affiliate.display_name}"
   end
 
   private
-
-  def set_affiliate_search_page_title
-    @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(@page_title) : @affiliate.build_search_results_page_title(@page_title)
-  end
 
   def set_news_search_page_title
     if params[:query].present?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927213218) do
+ActiveRecord::Schema.define(:version => 20131022171328) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(:version => 20130927213218) do
     t.string   "website"
     t.boolean  "is_sayt_enabled",                                                 :default => true
     t.string   "display_name",                                                                        :null => false
-    t.string   "search_results_page_title",                                                           :null => false
-    t.string   "staged_search_results_page_title",                                                    :null => false
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
@@ -85,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20130927213218) do
     t.datetime "staged_header_image_updated_at"
     t.integer  "fetch_concurrency",                                               :default => 1,      :null => false
     t.string   "default_search_label",                      :limit => 20,                             :null => false
-    t.boolean  "is_time_filter_enabled",                                          :default => true
     t.boolean  "is_related_searches_enabled",                                     :default => true
     t.string   "left_nav_label",                            :limit => 20
     t.string   "ga_web_property_id",                        :limit => 20
@@ -99,7 +96,6 @@ ActiveRecord::Schema.define(:version => 20130927213218) do
     t.datetime "staged_page_background_image_updated_at"
     t.boolean  "is_twitter_govbox_enabled",                                       :default => false
     t.boolean  "is_photo_govbox_enabled",                                         :default => false
-    t.text     "dublin_core_mappings"
     t.string   "mobile_logo_file_name"
     t.string   "mobile_logo_content_type"
     t.integer  "mobile_logo_file_size"

@@ -93,9 +93,9 @@ class Affiliate < ActiveRecord::Base
 
   before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_managed_header_links, :set_managed_footer_links
-  before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  before_validation :set_name, :on => :create
   before_validation :set_default_rss_govbox_label
-  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale
+  validates_presence_of :display_name, :name, :locale
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
@@ -148,7 +148,7 @@ class Affiliate < ActiveRecord::Base
            :validate_managed_header_links, :validate_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix, :nullify_blank_dublin_core_fields
+  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_staged_attachments
   after_create :normalize_site_domains
@@ -170,7 +170,6 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
   accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
   accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
-  serialize :dublin_core_mappings, Hash
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -181,7 +180,6 @@ class Affiliate < ActiveRecord::Base
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Display name",
     :name => "Site Handle (visible to searchers in the URL)",
-    :staged_search_results_page_title => "Search results page title",
     :header_image_file_size => 'Logo file size',
     :mobile_logo_file_size => 'Mobile Logo file size',
     :page_background_image_file_size => 'Page Background Image file size'
@@ -267,7 +265,7 @@ class Affiliate < ActiveRecord::Base
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
       header footer header_footer_css nested_header_footer_css
-      search_results_page_title favicon_url external_css_url
+      favicon_url external_css_url
       uses_managed_header_footer managed_header_css_properties
       managed_header_home_url managed_header_text managed_header_links
       managed_footer_links theme css_property_hash
@@ -352,20 +350,6 @@ class Affiliate < ActiveRecord::Base
         false
       end
     end
-  end
-
-  def build_search_results_page_title(query)
-    build_page_title(self.search_results_page_title, query)
-  end
-
-  def build_staged_search_results_page_title(query)
-    build_page_title(self.staged_search_results_page_title, query)
-  end
-
-  def build_page_title(page_title, query)
-    query_string = query.blank? ? '' : query
-    page_title = page_title.gsub(/\{query\}/i, query_string)
-    page_title.gsub(/\{sitename\}/i, self.display_name)
   end
 
   def push_staged_changes
@@ -669,14 +653,6 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def set_default_search_results_page_title
-    self.search_results_page_title = I18n.translate(:default_serp_title, :locale => locale) if self.search_results_page_title.blank?
-  end
-
-  def set_default_staged_search_results_page_title
-    self.staged_search_results_page_title = I18n.translate(:default_serp_title, :locale => locale) if self.staged_search_results_page_title.blank?
-  end
-
   def set_default_rss_govbox_label
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
   end
@@ -686,12 +662,6 @@ class Affiliate < ActiveRecord::Base
                     :external_css_url, :staged_external_css_url,
                     :managed_header_home_url, :staged_managed_header_home_url,
                     :mobile_homepage_url, :staged_mobile_homepage_url
-  end
-
-  def nullify_blank_dublin_core_fields
-    dublin_core_mappings.each_key do |facet_name|
-      dublin_core_mappings[facet_name.to_sym] = nil if dublin_core_mappings[facet_name.to_sym].blank?
-    end unless dublin_core_mappings.nil?
   end
 
   def validate_css_property_hash

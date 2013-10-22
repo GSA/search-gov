@@ -116,22 +116,6 @@ describe Affiliate do
         affiliate.name.should == "123"
       end
 
-      it "should set default search_results_page_title if search_results_page_title is blank" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:locale => 'en'))
-        affiliate.search_results_page_title.should == '{Query} - {SiteName} Search Results'
-
-        affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.search_results_page_title.should == '{Query} - {SiteName} resultados de la búsqueda'
-      end
-
-      it "should set default staged_search_results_page_title if staged_search_results_page_title is blank" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:locale => 'en'))
-        affiliate.staged_search_results_page_title.should == '{Query} - {SiteName} Search Results'
-
-        affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.staged_search_results_page_title.should == '{Query} - {SiteName} resultados de la búsqueda'
-      end
-
       it "should update css_properties with json string from css property hash" do
         css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
@@ -536,16 +520,6 @@ describe Affiliate do
   end
 
   describe "validations" do
-    it "should validate presence of :search_results_page_title on update" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes(:search_results_page_title => "").should_not be_true
-    end
-
-    it "should validate presence of :staged_search_results_page_title on update" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes(:staged_search_results_page_title => "").should_not be_true
-    end
-
     it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
       Affiliate::FONT_FAMILIES.each do |font_family|
         Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family})).should be_valid
@@ -1731,51 +1705,6 @@ describe Affiliate do
   describe "#human_attribute_name" do
     Affiliate.human_attribute_name("display_name").should == "Display name"
     Affiliate.human_attribute_name("name").should == "Site Handle (visible to searchers in the URL)"
-    Affiliate.human_attribute_name("staged_search_results_page_title").should == "Search results page title"
-  end
-
-  describe "#build_search_results_page_title" do
-    let(:affiliate) { Affiliate.create(@valid_create_attributes.merge(:locale => 'en')) }
-
-    it "should handle nil query" do
-      affiliate.build_search_results_page_title(nil).should == " - My Awesome Site Search Results"
-    end
-
-    it "should return default search results page title" do
-      affiliate.build_search_results_page_title("gov").should == "gov - My Awesome Site Search Results"
-    end
-
-    it "should return search results page title with updated format" do
-      affiliate.update_attributes! :search_results_page_title => "{SiteName} Search Results: {Query}"
-      affiliate.build_search_results_page_title("healthcare").should == "My Awesome Site Search Results: healthcare"
-    end
-
-    it "should return plain search results page title when search_results_page_title field does not contain special format" do
-      affiliate.update_attributes! :search_results_page_title => "Plain Search Results Page"
-      affiliate.build_search_results_page_title("healthcare").should == "Plain Search Results Page"
-    end
-  end
-
-  describe "#build_staged_search_results_page_title" do
-    let(:affiliate) { Affiliate.create(@valid_create_attributes.merge(:locale => 'en')) }
-
-    it "should handle nil query" do
-      affiliate.build_staged_search_results_page_title(nil).should == " - My Awesome Site Search Results"
-    end
-
-    it "should return default staged search results page title" do
-      affiliate.build_staged_search_results_page_title("gov").should == "gov - My Awesome Site Search Results"
-    end
-
-    it "should return staged search results page title with updated format" do
-      affiliate.update_attributes! :staged_search_results_page_title => "{SiteName} Search Results: {Query}"
-      affiliate.build_staged_search_results_page_title("healthcare").should == "My Awesome Site Search Results: healthcare"
-    end
-
-    it "should return plain staged search results page title when staged_search_results_page_title field does not contain special format" do
-      affiliate.update_attributes! :staged_search_results_page_title => "Plain Search Results Page"
-      affiliate.build_staged_search_results_page_title("healthcare").should == "Plain Search Results Page"
-    end
   end
 
   describe "#push_staged_changes" do

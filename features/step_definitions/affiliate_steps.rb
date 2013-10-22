@@ -40,8 +40,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_header => hash[:staged_header],
       :staged_footer => hash[:staged_footer],
       :is_sayt_enabled => hash[:is_sayt_enabled],
-      :search_results_page_title => hash[:search_results_page_title],
-      :staged_search_results_page_title => hash[:staged_search_results_page_title],
       :has_staged_content => hash[:has_staged_content] || false,
       :external_css_url => hash[:external_css_url],
       :staged_external_css_url => hash[:staged_external_css_url],
@@ -66,9 +64,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :is_related_searches_enabled => hash[:is_related_searches_enabled] || true,
       :ga_web_property_id => hash[:ga_web_property_id],
       :external_tracking_code => hash[:external_tracking_code],
-      :website => hash[:website],
-      :dublin_core_mappings => (eval(hash[:dublin_core_mappings]) rescue nil)
-    )
+      :website => hash[:website])
     affiliate.name = hash['name']
     affiliate.save!
     affiliate.users << user

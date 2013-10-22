@@ -5,8 +5,8 @@ Feature: Image search
 
   Scenario: Image search landing page
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the homepage
     And I follow "Images" in the search navigation
     Then I should be on the images page
@@ -30,8 +30,8 @@ Feature: Image search
 
   Scenario: Visiting Spanish image search homepage
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+      | display_name    | name        | contact_email | contact_name | header                  | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on the Spanish homepage
     And I follow "Imágenes" in the search navigation
     Then I should see the browser page titled "Buscador.USA.gov Imágenes"
@@ -50,8 +50,8 @@ Feature: Image search
 
   Scenario: A unicode search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the homepage
     And I follow "Images"
     When I fill in "query" with "البيت الأبيض"
@@ -60,8 +60,8 @@ Feature: Image search
 
   Scenario: Visiting other verticals from the image search homepage
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the images page
     And I follow "Web" in the search navigation
     Then I should be on the homepage

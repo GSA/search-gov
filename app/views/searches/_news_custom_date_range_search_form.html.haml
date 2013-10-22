@@ -1,4 +1,3 @@
-- cdr_expanded = params[:since_date].present? || params[:until_date].present?
 = form_tag(@form_path, :method => :get, id: 'cdr_search_form') do
   %a{ class: 'close' }
   .hide
@@ -24,6 +23,5 @@
       .to
         = label_tag :cdr_until_date, "#{t(:to)}:"
         .date-wrapper= text_field_tag :until_date, render_date(@search.until), id: 'cdr_until_date'
-      -#%span #{I18n.t(:cdr_example)}
       .button
         = submit_tag(t(:search), :id => 'cdr_search_button')

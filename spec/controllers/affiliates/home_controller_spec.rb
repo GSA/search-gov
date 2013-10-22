@@ -424,7 +424,6 @@ describe Affiliates::HomeController do
         get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         assigns[:affiliate].staged_header.should == assigns[:affiliate].header
         assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
-        assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
         assigns[:affiliate].has_staged_content.should == false
       end
 

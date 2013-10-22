@@ -5,8 +5,8 @@ Feature: Homepage
 
   Scenario: Visiting the home page
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the homepage
     Then I should not see "ROBOTS" meta tag
     And affiliate SAYT suggestions for "usagov" should be enabled
@@ -34,8 +34,8 @@ Feature: Homepage
 
   Scenario: A typical popular search from the home page
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | uses_managed_header_footer | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | false                      | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | uses_managed_header_footer | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | false                      | USA.gov Header |
     When I am on the homepage
     And I fill in "query" with "president"
     And I submit the search form
@@ -45,8 +45,8 @@ Feature: Homepage
 
   Scenario: Entering a blank advanced search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the advanced search page
     And I press "Search"
     Then I should be on the search page
@@ -60,8 +60,8 @@ Feature: Homepage
 
   Scenario: Visiting the homepage as a Spanish speaker
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+      | display_name    | name        | contact_email | contact_name | header                  | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on the Spanish homepage
     Then I should not see "ROBOTS" meta tag
     And affiliate SAYT suggestions for "gobiernousa" should be enabled
@@ -79,8 +79,8 @@ Feature: Homepage
 
   Scenario: a typical search from the Spanish homepage
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+      | display_name    | name        | contact_email | contact_name | header                  | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on the Spanish homepage
     Then I should see the browser page titled "Buscador.USA.gov: el buscador oficial del Gobierno de los Estados Unidos en español"
     When I fill in "query" with "president"
@@ -90,26 +90,26 @@ Feature: Homepage
 
   Scenario: Clicking on the red Buscador.USA.gov button
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
-      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | {Query} - {SiteName} Search Results            | en     |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+      | display_name    | name        | contact_email | contact_name | header                  | locale |
+      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | en     |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on the homepage
     And I follow "Buscador.USA.gov" in the search navigation
     Then I should see the browser page titled "Buscador.USA.gov: el buscador oficial del Gobierno de los Estados Unidos en español"
 
   Scenario: Clicking on the red Search.USA.gov button
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
-      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | {Query} - {SiteName} Search Results            | en     |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+      | display_name    | name        | contact_email | contact_name | header                  | locale |
+      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | en     |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on the Spanish homepage
     And I follow "Search.USA.gov" in the search navigation
     Then I should see the browser page titled "Search.USA.gov: The U.S. Government's Official Search Engine"
 
   Scenario: Clicking on Advanced Search on the homepage
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the homepage
     And I fill in "query" with "gov"
     And I press "Search"
@@ -119,8 +119,8 @@ Feature: Homepage
 
   Scenario: Visiting other verticals from the homepage
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the homepage
     And I follow "Images" in the search navigation
     Then I should be on the images page

@@ -21,7 +21,7 @@ describe ImageSearchesController do
 
         it { should assign_to(:search).with(image_search) }
         it { should assign_to :affiliate }
-        it { should assign_to(:page_title).with("Current thunder & lightning - NPS Site Search Results") }
+        it { should assign_to(:page_title).with("thunder & lightning - NPS Site Search Results") }
         it { should assign_to(:search_params).with(
                         hash_including(affiliate: @affiliate.name, query: 'thunder & lightning')) }
         it { should render_template 'image_searches/index' }
@@ -37,7 +37,7 @@ describe ImageSearchesController do
           get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>', :staged => "true"
         end
 
-        it { should assign_to(:page_title).with("Staged thunder & lightning - NPS Site Search Results") }
+        it { should assign_to(:page_title).with("thunder & lightning - NPS Site Search Results") }
       end
 
       context "via the JSON API" do
@@ -62,7 +62,6 @@ describe ImageSearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
-        affiliate.should_receive(:build_search_results_page_title)
         ImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => nil)).and_return(image_search)
         image_search.should_receive(:run)
         get :index, :affiliate => "agency100"

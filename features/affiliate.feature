@@ -180,7 +180,6 @@ Feature: Affiliate clients
     And the "Is Image Search Label 0 navigable" checkbox should be checked
     And the "Rss Feed 1" field should contain "Recalls Feed"
     And the "Is Rss Feed 1 navigable" checkbox should not be checked
-    And the "Show by time period module" checkbox should be checked
 
     When I follow "Results modules" in the site navigation bar
     Then the "Is rss govbox enabled" checkbox should not be checked
@@ -378,8 +377,8 @@ Feature: Affiliate clients
 
   Scenario: Editing user interface and saving it for preview on a site
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | external_css_url                 | header     | footer     | favicon_url                | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | http://cdn.agency.gov/custom.css | Old header | Old footer | cdn.agency.gov/favicon.ico | custom | false               | false                   | false                      |
+      | display_name | name    | contact_email | contact_name | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | external_css_url                 | header     | footer     | favicon_url                | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | http://cdn.agency.gov/custom.css | Old header | Old footer | cdn.agency.gov/favicon.ico | custom | false               | false                   | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -388,7 +387,6 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Admin Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel" in the page header
     And I should not see "Start using One SERP theme"
-    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
     And the "Font family" field should contain "Verdana, sans-serif"
     And the "Custom" theme should be selected
@@ -407,7 +405,6 @@ Feature: Affiliate clients
     And the "Description text color" field should contain "#CCCCCC"
     And the "URL link color" field should contain "#009000"
     When I fill in the following:
-      | Search results page title                                              | {SiteName} : {Query}              |
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
       | Page background color                                                  | #EEEEEE                           |
       | Content background color                                               | #D6D6D6                           |
@@ -428,9 +425,8 @@ Feature: Affiliate clients
     And I should see "Staged changes to your site successfully"
 
     When I follow "Look and feel"
-    Then the "Search results page title" field should contain "\{SiteName\} : \{Query\}"
-    And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
-    Then the "Font family" field should contain "Helvetica, sans-serif"
+    Then the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
+    And the "Font family" field should contain "Helvetica, sans-serif"
     And the "Page background color" field should contain "#EEEEEE"
     And the "Content background color" field should contain "#D6D6D6"
     And the "Add top padding" checkbox should be checked
@@ -483,8 +479,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
-    Then I should see "aff site : gov"
-    And I should see the page with internal CSS "Helvetica,sans-serif"
+    Then I should see the page with internal CSS "Helvetica,sans-serif"
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
@@ -524,8 +519,7 @@ Feature: Affiliate clients
 
     When I go to the "aff site" affiliate page
     And I follow "View Current"
-    Then I should see "aff site : gov"
-    And I should see the page with internal CSS "Helvetica,sans-serif"
+    Then I should see the page with internal CSS "Helvetica,sans-serif"
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
@@ -544,27 +538,24 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title |                       |
       | Title link color          | invalid color         |
       | Visited title link color  | invalid visited color |
     And I attach the file "features/support/very_large.jpg" to "Page background image"
     And I press "Save for Preview"
     Then I should see "Look and Feel of the Search Results Page" within "title"
-    And I should see "Search results page title can't be blank"
     And I should see "Page Background Image file size must be under 512 KB"
     And I should see "Title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
   Scenario: Editing custom theme look and feel and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | theme  | search_results_page_title           | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom | {Query} - {SiteName} Search Results | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | false               | false                   |
+      | display_name | name    | contact_email | contact_name | theme  | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | show_content_border | show_content_box_shadow |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | custom | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | false               | false                   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                              | {SiteName} : {Query}              |
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
       | Page background color                                                  | #EEEEEE                           |
       | Content background color                                               | #D6D6D6                           |
@@ -588,8 +579,7 @@ Feature: Affiliate clients
     And I should not see "View Staged"
 
     When I follow "View Current"
-    Then I should see "aff site : gov"
-    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with internal CSS "bg.png"
     And I should see the page with internal CSS "Helvetica,sans-serif"
     And the page body should match "background:\ \#EEEEEE\ url\(.+\) repeat\-y"
@@ -622,7 +612,6 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title      |                       |
       | Search button text color       | #DDDD                 |
       | Search button background color | invalid color         |
       | Left tab text color            | invalid color         |
@@ -633,7 +622,6 @@ Feature: Affiliate clients
     And I attach the file "features/support/very_large.jpg" to "Page background image"
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
-    And I should see "Search results page title can't be blank"
     And I should see "Page Background Image file size must be under 512 KB"
     And I should see "Search button text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Search button background color should consist of a # character followed by 3 or 6 hexadecimal digits"
@@ -673,8 +661,8 @@ Feature: Affiliate clients
 
   Scenario: Editing user interface where staged and live sites are out of sync and has_staged_content is false
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false              | false                      | Live Search Results       | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false              | false                      | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     Then I should not see "View Staged"
@@ -683,46 +671,41 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then the "Search results page title" field should contain "Live Search Results"
-    And the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
+    Then the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
 
     When I follow "Header and footer"
     Then the "Enter HTML to customize the top of your search results page." field should contain "Live header"
-    Then the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
 
   Scenario: Visiting user interface where staged and live sites are out sync and has_staged_content is true
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true               | false                      | Live Search Results       | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | header      | footer      | favicon_url                | staged_uses_managed_header_footer | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true               | false                      | Live header | Live footer | cdn.agency.gov/favicon.ico | false                             | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see "Staged Search Results"
     And I should see "Staged header"
     And I should see "Staged footer"
 
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then the "Search results page title" field should contain "Staged Search Results"
-    And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
+    Then the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
 
     When I follow "Header and footer"
     Then the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
-    Then the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
 
   Scenario: Resetting custom theme
     Given the following Affiliates exist:
@@ -1282,20 +1265,18 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Admin Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header      | footer      | favicon_url                     | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see "Staged Search Results"
     And I should see "Staged header"
     And I should see "Staged footer"
 
@@ -1309,26 +1290,23 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
   Scenario: Cancelling staged changes from the site specific Admin Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header      | footer      | favicon_url                     | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see "Staged Search Results"
     And I should see "Staged header"
     And I should see "Staged footer"
 
@@ -1341,26 +1319,23 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
   Scenario: Cancelling staged changes from the Preview page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | search_results_page_title | header      | footer      | favicon_url                     | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live Search Results       | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
+      | display_name | name    | contact_email | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header      | footer      | favicon_url                     | staged_header | staged_footer | staged_favicon_url                |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | true               | false                      | false                             | Live header | Live footer | cdn.agency.gov/live_favicon.ico | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
-    And I should see "Staged Search Results"
     And I should see "Staged header"
     And I should see "Staged footer"
 
@@ -1374,7 +1349,6 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/live_favicon.ico"
-    And I should see "Live Search Results"
     And I should see "Live header"
     And I should see "Live footer"
 
@@ -1397,21 +1371,22 @@ Feature: Affiliate clients
     And I should see "Search on Live Site" button
     And I should not see "Preview Search on Staged Site" button
 
-    When I follow "Look and feel"
-    And I fill in "Search results page title" with "Staged - {SiteName} : {Query}"
-    And I press "Save for Preview"
-    And I follow "Preview"
-    And I fill in the following within "#staged_site_search_form":
-      | query | White House |
-    And I press "Preview Search on Staged Site"
-    Then I should see "Staged - aff site : White House" within "title"
-
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I fill in the following within "#live_site_search_form":
       | query | White House |
     And I press "Search on Live Site"
     Then I should see "White House - aff site Search Results"
+
+    When I go to the "aff site" affiliate page
+    When I follow "Look and feel"
+    And I fill in "Favicon URL" with "http://aff.gov/staged-favicon.ico"
+    And I press "Save for Preview"
+    And I follow "Preview"
+    And I fill in the following within "#staged_site_search_form":
+      | query | White House |
+    And I press "Preview Search on Staged Site"
+    And I should see the page with favicon "http://aff.gov/staged-favicon.ico"
 
     When I go to the "aff site" affiliate page
     And I follow "Preview"
@@ -1422,7 +1397,7 @@ Feature: Affiliate clients
     And I fill in the following within "#live_site_search_form":
       | query | White House |
     And I press "Search on Live Site"
-    Then I should see "Staged - aff site : White House" within "title"
+    And I should see the page with favicon "http://aff.gov/staged-favicon.ico"
 
   Scenario: Related searches on English SERPs for given affiliate search
     Given the following Affiliates exist:
@@ -2206,9 +2181,9 @@ Feature: Affiliate clients
       | Press         | http://www.whitehouse.gov/feed/press               | 1        | true         |
       | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | 3        | true         |
     And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       | contributor | publisher | subject |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed | president | briefingroom | economy |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  | vicepresident | westwing | jobs |
+      | link                             | title       | guid  | published_ago | description                       | contributor   | publisher    | subject |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed | president     | briefingroom | economy |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  | vicepresident | westwing     | jobs    |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | position | is_navigable |
       | Topics | http://aff.gov/topics/ | 4        | true         |
@@ -2238,7 +2213,6 @@ Feature: Affiliate clients
     And the "Is Document Collection 4 navigable" checkbox should be checked
     And the "Document Collection 6" field should contain "Help"
     And the "Is Document Collection 6 navigable" checkbox should not be checked
-    And the "Show by time period module" checkbox should be checked
 
     When I fill in the following:
       | Default search label  | Web       |
@@ -2251,42 +2225,6 @@ Feature: Affiliate clients
 
     When I go to aff.gov's search page
     Then I should see "Web Pictures News Q&A Galleries Topics" in the left column
-    When I follow "News" in the left column
-    Then I should see "All Time" in the results filters
-
-    When I go to the "aff site" affiliate page
-    And I follow "Sidebar"
-    Then the "Subject" field should be empty
-    And the "Contributor" field should be empty
-    And the "Publisher" field should be empty
-    When I fill in the following:
-      | Subject               | My Subject     |
-      | Publisher             | My Publisher   |
-      | Contributor           | My Contributor |
-    And I check "Is Rss Feed 3 navigable"
-    And I press "Save"
-    Then I should see "Site was successfully updated."
-
-    When I go to aff.gov's search page
-    And I follow "News" in the left column
-    Then I should see "My Subject" in the left column
-    And I should see "My Publisher" in the left column
-    And I should see "My Contributor" in the left column
-
-    When I go to the "aff site" affiliate page
-    And I follow "Sidebar"
-    And I fill in the following:
-      | Subject               ||
-      | Publisher             ||
-      | Contributor           ||
-    And I press "Save"
-    Then I should see "Site was successfully updated."
-
-    When I go to aff.gov's search page
-    And I follow "News" in the left column
-    Then I should see "All subjects" in the left column
-    And I should see "All publishers" in the left column
-    And I should see "All contributors" in the left column
 
     When I go to the "aff site" affiliate page
     And I follow "Sidebar"
@@ -2295,7 +2233,6 @@ Feature: Affiliate clients
     And I uncheck "Is Rss Feed 3 navigable"
     And I check "Is Rss Feed 5 navigable"
     And I check "Is Document Collection 6 navigable"
-    And I uncheck "Show by time period module"
     And I press "Save"
     Then I should see "Site was successfully updated."
 
@@ -2303,9 +2240,6 @@ Feature: Affiliate clients
     Then I should see "Web News Topics Hide Me Help" in the left column
     And I should not see "Galleries" in the left column
     And I should not see "Q&A" in the left column
-
-    When I follow "Hide Me" in the left column
-    Then I should not see "All Time" in the left column
 
     When I go to the "nonav site" affiliate page
     And I follow "Sidebar"
