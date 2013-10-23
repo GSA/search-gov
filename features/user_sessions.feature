@@ -1,5 +1,13 @@
 Feature: User sessions
 
+  @javascript
+  Scenario: Already logged-in user visits login page
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the login page
+    Then I should see "Contact Information"
+    When I sign out
+    Then I should be on the login page
+
   Scenario: User has trouble logging in
     Given I am on the login page
     And I fill in the following in the login form:
