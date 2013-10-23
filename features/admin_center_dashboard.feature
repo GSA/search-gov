@@ -74,20 +74,20 @@ Feature: Dashboard
     Then I should see "Site Handle gobiernousa"
     And I should see "Site Language Spanish"
 
-  @javascript
-  Scenario: Clicking on help link
-    Given the following HelpLinks exist:
-      | request_path        | help_page_url                                         |
-      | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
-      | /sites/preview      | http://usasearch.howto.gov/sites/manual/preview.html  |
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's Dashboard page
-    And I follow "Settings"
-    Then I should be able to access the "How to Edit Your Settings" help page
-    When I follow "Preview"
-    Then I should be able to access the "How to Preview Your Search Results" help page in the preview layer
-    When I close the preview layer
-    Then I should be able to access the "How to Edit Your Settings" help page
+#  @javascript
+#  Scenario: Clicking on help link
+#    Given the following HelpLinks exist:
+#      | request_path        | help_page_url                                         |
+#      | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
+#      | /sites/preview      | http://usasearch.howto.gov/sites/manual/preview.html  |
+#    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+#    When I go to the usagov's Dashboard page
+#    And I follow "Settings"
+#    Then I should be able to access the "How to Edit Your Settings" help page
+#    When I follow "Preview"
+#    Then I should be able to access the "How to Preview Your Search Results" help page in the preview layer
+#    When I close the preview layer
+#    Then I should be able to access the "How to Edit Your Settings" help page
 
   Scenario: List users
     Given the following Users exist:
