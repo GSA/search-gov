@@ -177,6 +177,16 @@ describe SearchHelper do
       end
     end
 
+    context "when the URL contains a really long host name and is an http url and has an empty path and no trailing /" do
+      before do
+        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com"
+      end
+
+      it "should truncate the URL and have no trailing /" do
+        helper.send(:shorten_url, @url, 30).should == "http://www128376218.skjdhfskdj..."
+      end
+    end
+
 
     context "when the URL contains a really long host name and has a really long query parameter" do
       before do
@@ -424,7 +434,7 @@ describe SearchHelper do
 
     it "should be a link to the result thumbnail url" do
       content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
-      content.should have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']")
+      content.should have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']", content: 'aHost.gov')
     end
   end
 
