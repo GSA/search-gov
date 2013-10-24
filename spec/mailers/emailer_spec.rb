@@ -245,15 +245,13 @@ describe Emailer do
     before do
       affiliate = affiliates(:basic_affiliate)
       DailyUsageStat.destroy_all
-      DailySearchModuleStat.destroy_all
-      DailyUsageStat.create(:day => report_date, :affiliate => affiliate.name, :total_queries => 100)
-      DailyUsageStat.create(:day => report_date - 1.month, :affiliate => affiliate.name, :total_queries => 75)
-      DailyUsageStat.create(:day => report_date - 1.year, :affiliate => affiliate.name, :total_queries => 150)
-      DailySearchModuleStat.create!(:day => report_date, :affiliate_name => affiliate.name, :clicks => 100, :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
       DailyQueryStat.destroy_all
-      ['query1', 'query2', 'query3'].each do |query|
-        DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100)
-      end
+      DailySearchModuleStat.destroy_all
+      DailyUsageStat.create!(:day => report_date, :affiliate => affiliate.name, :total_queries => 100)
+      DailyUsageStat.create!(:day => report_date - 1.month, :affiliate => affiliate.name, :total_queries => 75)
+      DailyUsageStat.create!(:day => report_date - 1.year, :affiliate => affiliate.name, :total_queries => 150)
+      DailySearchModuleStat.create!(:day => report_date, :affiliate_name => affiliate.name, :clicks => 100, :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
+      %w(query1 query2 query3).each { |query| DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100) }
     end
 
     subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
