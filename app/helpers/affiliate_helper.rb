@@ -1,35 +1,4 @@
 module AffiliateHelper
-  def affiliate_center_breadcrumbs(crumbs)
-    aff_breadcrumbs =
-      [link_to("Admin Center", sites_path), crumbs]
-    breadcrumbs(aff_breadcrumbs.flatten)
-  end
-
-  def site_wizard_header(current_step)
-    steps = {:basic_settings => 0, :content_sources => 1, :get_the_code => 2}
-    step_contents = ["Step 1. Basic Settings", "Step 2. Set up site", "Step 3. Get the code"]
-    image_tag("legacy/site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}")
-  end
-
-  def render_help_link(help_link)
-    link_to(image_tag('legacy/help_icon.png', alt: 'Help?'), help_link.help_page_url, target: '_blank') if help_link
-  end
-
-  def render_last_crawl_status_dialog(dialog_id, url, last_crawl_status)
-    content = ''
-    content << link_to('Error', '#', :class => 'dialog-link', :dialog_id => dialog_id)
-    content << link_to(content_tag(:span, nil, :class => 'ui-icon ui-icon-newwin'), '#', :class => 'dialog-link', :dialog_id => dialog_id)
-    error_message_text = h(url)
-    error_message_text << tag(:br)
-    error_message_text << h(last_crawl_status)
-    content << content_tag(:div, error_message_text.html_safe, :class => 'url-error-message hide', :id => dialog_id)
-    content.html_safe
-  end
-
-  def javascript_full_path_tag(request, source)
-    javascript_include_tag "//#{request.host_with_port}#{source}"
-  end
-
   def render_affiliate_header(affiliate)
     if affiliate.uses_managed_header_footer?
       html = render_managed_header(affiliate)
@@ -94,15 +63,6 @@ module AffiliateHelper
       style << "background-color: #{background_color}"
     end
     style
-  end
-
-  def render_staged_color_text_field_tag(affiliate, field_name_symbol)
-    staged_css_property_hash = affiliate.staged_theme == 'custom' ? affiliate.staged_css_property_hash : Affiliate::THEMES[affiliate.staged_theme.to_sym]
-    disabled = affiliate.staged_theme != 'custom'
-    staged_css_property_hash = {} if staged_css_property_hash.nil?
-    text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
-                   render_affiliate_css_property_value(staged_css_property_hash, field_name_symbol),
-                   {:disabled => disabled, :class => 'color { hash:true, adjust:false }'}
   end
 
   def render_embed_code_javascript(affiliate)

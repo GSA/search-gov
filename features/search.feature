@@ -1054,7 +1054,7 @@ Feature: Affiliate Search
 
   Scenario: Visiting affiliate with strictui parameters
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | external_css_url                | header         | footer |
+      | display_name | name    | contact_email | contact_name | external_css_url                | header                                                                  | footer                                                                  |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
     When I go to aff.gov's strictui search page
     Then I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
@@ -1076,3 +1076,25 @@ Feature: Affiliate Search
     When I follow "Other Site"
     Then I should see the browser page titled "jobs - other site Search Results"
 
+  Scenario: Searching on sites with Boosted Contents
+    Given the following Affiliates exist:
+      | display_name   | name          | contact_email   | contact_name | locale |
+      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
+      | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |
+    And the following Boosted Content entries exist for the affiliate "agency.gov"
+      | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
+      | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+    And the following Boosted Content entries exist for the affiliate "es.agency.gov"
+      | title                             | url                       | description |
+      | la página de prueba de Emergencia | http://www.agency.gov/911 | Some terms  |
+    When I am on agency.gov's search page
+    And I fill in "query" with "notes"
+    And I press "Search"
+    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://usasearch.howto.gov/releases/2013-05-31.html" in the boosted contents section
+    And I should not see a link to "Notes for Week Ending June 21, 2013"
+
+    When I am on es.agency.gov's search page
+    And I fill in "query" with "emergencia"
+    And I press "Buscar"
+    Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section

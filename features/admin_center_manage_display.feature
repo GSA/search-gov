@@ -192,8 +192,8 @@ Feature: Manage Display
 
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       |
+      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
@@ -209,7 +209,14 @@ Feature: Manage Display
     And I should see an image with alt text "Page Background Image"
     And the "Page Background Image Repeat" field should contain "repeat-y"
 
-    When I check "Mark Logo for Deletion"
+    When I am on agency.gov's search page
+    Then I should see an image link to "logo" with url for "http://main.agency.gov"
+    And the page body should contain "bg.png"
+    When I am on agency.gov's mobile search page
+    Then I should see an image link to "agency site" with url for "http://main.agency.gov"
+
+    When I go to the agency.gov's Image Assets page
+    And I check "Mark Logo for Deletion"
     And I check "Mark Mobile Logo for Deletion"
     And I check "Mark Page Background Image for Deletion"
     And I press "Save"
@@ -249,8 +256,8 @@ Feature: Manage Display
     When I follow "Add Another Footer Link"
     Then I should be able to access 2 footer link rows
     When I fill in the following:
-      | Footer Link Title 1 | Terms            |
-      | Footer Link URL 1   | terms.agency.gov |
+      | Footer Link Title 1 | Terms of Service |
+      | Footer Link URL 1   | tos.agency.gov   |
     And I press "Save"
     Then I should see "You have updated your header and footer links"
     And the "Header Link Title 0" field should contain "News"
@@ -260,9 +267,16 @@ Feature: Manage Display
     And the "Footer Link Title 0" field should contain "Contact"
     And the "Footer Link URL 0" field should contain "http://contact.agency.gov"
     And the "Footer Link Title 1" field should contain "Terms"
-    And the "Footer Link URL 1" field should contain "http://terms.agency.gov"
+    And the "Footer Link URL 1" field should contain "http://tos.agency.gov"
 
-    When I follow "Switch to Advanced Mode"
+    When I am on agency.gov's search page
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+    Then I should see a link to "Contact" with url for "http://contact.agency.gov"
+    Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+
+    When I go to the agency.gov's Header & Footer page
+    And I follow "Switch to Advanced Mode"
     Then I should see "CSS to customize the top and bottom of your search results page"
 
   Scenario: Error when Editing Managed Header & Footer
