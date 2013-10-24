@@ -33,5 +33,11 @@ describe Connection do
       connection.affiliate_name = 'gobiernousa'
       connection.should_not be_valid
     end
+
+    it 'should require connected affiliate to exist' do
+      connection.affiliate_name = 'unknown'
+      connection.should_not be_valid
+    end
   end
+
 end
