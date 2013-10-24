@@ -105,43 +105,6 @@ module AffiliateHelper
                    {:disabled => disabled, :class => 'color { hash:true, adjust:false }'}
   end
 
-  def render_staged_check_box_tag(affiliate, field_name_symbol)
-    check_box_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
-                  '1',
-                  affiliate.staged_css_property_hash[field_name_symbol] == '1'
-  end
-
-  def render_new_site_themes(affiliate)
-    themes = Affiliate::THEMES.keys.collect do |theme|
-      next if theme == :custom
-      selected = affiliate.staged_theme.blank? ? theme == :default : affiliate.staged_theme.to_sym == theme
-      content = []
-      content << radio_button(:affiliate, :staged_theme, theme, :checked => selected, :class => 'update-css-properties-trigger')
-      content << label(:affiliate, "staged_theme_#{theme}", Affiliate::THEMES[theme][:display_name])
-      content << image_tag("legacy/affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
-      content_tag :div, content.join("\n").html_safe, :class => 'theme'
-    end
-    content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
-  end
-
-  def render_site_themes(affiliate)
-    themes = Affiliate::THEMES.keys.collect do |theme|
-      content = []
-
-      selected = affiliate.staged_theme.to_sym == theme
-      content << radio_button(:affiliate, :staged_theme, theme, :checked => selected, :class => 'update-css-properties-trigger')
-      content << label(:affiliate, "staged_theme_#{theme}", Affiliate::THEMES[theme][:display_name])
-
-      content << image_tag("legacy/affiliates/themes/#{theme}.png", :class => 'css-properties-image-trigger')
-      content << submit_tag("Customize", :type => 'button', :name => 'customize', :class => 'customize-theme-button') unless theme == :custom
-      theme_class = 'theme'
-      theme_class << ' hidden-custom-theme' if theme == :custom and affiliate.staged_theme.to_sym != :custom
-      data = theme == :custom ? nil : Affiliate::THEMES[theme].to_json
-      content_tag :div, content.join("\n").html_safe, :data => data, :class => theme_class
-    end
-    content_tag(:div, themes.join("\n").html_safe, :class => 'themes')
-  end
-
   def render_embed_code_javascript(affiliate)
     embed_code = <<-JS
       var usasearch_config = { siteHandle:"#{affiliate.name}" };
