@@ -19,18 +19,6 @@ module NavigationsHelper
     end
   end
 
-  def link_to_navigable(navigable)
-    case navigable.class.name
-      when 'DocumentCollection'
-        link_to('Collection', [navigable.affiliate, navigable])
-      when 'RssFeed'
-        name = navigable.is_managed? ? 'YouTube (RSS)' : 'RSS'
-        link_to(name, [navigable.owner, navigable])
-      when 'ImageSearchLabel'
-        navigable.affiliate.search_engine
-    end
-  end
-
   def render_navigable_field_name_for(navigation)
     navigation.navigable.instance_of?(ImageSearchLabel) ? navigation.navigable_type.underscore : navigation.navigable_type.underscore.pluralize
   end
