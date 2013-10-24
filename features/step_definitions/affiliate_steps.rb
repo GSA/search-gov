@@ -257,7 +257,7 @@ Given /^the following Connections exist for the affiliate "([^"]*)":$/ do |affil
   affiliate = Affiliate.find_by_name(affiliate_name)
   table.hashes.each do |hash|
     connected_affiliate = Affiliate.find_by_name(hash[:connected_affiliate])
-    affiliate.connections.create!(:connected_affiliate => connected_affiliate, :display_name => hash[:display_name])
+    affiliate.connections.create!(connected_affiliate: connected_affiliate, label: hash[:display_name])
   end
 end
 
