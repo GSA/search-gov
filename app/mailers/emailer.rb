@@ -6,115 +6,69 @@ class Emailer < ActionMailer::Base
   self.default bcc: DEVELOPERS_EMAIL
 
   def password_reset_instructions(user, host_with_port)
-    setup_email(user.email, __method__)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token, :protocol => 'https', :host => host_with_port)
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(user.email, __method__)
+    send_mail(:text)
   end
 
   def new_user_to_admin(user)
-    setup_email("usagov@searchsi.com", __method__)
     @user = user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email("usagov@searchsi.com", __method__)
+    send_mail(:text)
   end
 
   def new_feature_adoption_to_admin
     affiliate_feature_additions_grouping = AffiliateFeatureAddition.where(["created_at >= ?", Date.yesterday.beginning_of_day]).group_by(&:affiliate_id)
     if affiliate_feature_additions_grouping.any?
-      setup_email("usagov@searchsi.com", __method__)
       @affiliate_feature_additions_grouping = affiliate_feature_additions_grouping
-      @subject = ERB.new(@email_template_subject).result(binding)
-      mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-        format.text { render :text => ERB.new(@email_template_body).result(binding) }
-      end
+      setup_email("usagov@searchsi.com", __method__)
+      send_mail(:text)
     end
   end
 
   def feature_admonishment(user, affiliates_with_unused_features)
-    setup_email(user.email, __method__)
     @affiliates_with_unused_features = affiliates_with_unused_features
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(user.email, __method__)
+    send_mail(:text)
   end
 
   def new_user_email_verification(user)
-    setup_email(user.email, __method__)
-    @user = user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def welcome_to_new_user(user)
-    setup_email(user.email, __method__)
-    @user = user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def welcome_to_new_developer(user)
-    setup_email(user.email, __method__)
-    @user = user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def new_affiliate_site(affiliate, user)
-    setup_email(user.email, __method__)
     @affiliate = affiliate
-    @user = user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def new_affiliate_user(affiliate, user, current_user)
-    setup_email(user.email, __method__)
     @affiliate = affiliate
-    @user = user
     @current_user = current_user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
-    setup_email(user.email, __method__)
-    @user = user
     @affiliate = affiliate
     @current_user = current_user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    generic_user_text_email(user, __method__)
   end
 
   def affiliate_header_footer_change(affiliate)
     recipients = affiliate.users.collect(&:email).join(', ')
-    setup_email(recipients, __method__)
     @affiliate = affiliate
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(recipients, __method__)
+    send_mail(:text)
   end
 
   def affiliate_yearly_report(user, year)
-    setup_email(user.email, __method__)
     headers['Content-Type'] = 'text/html'
     jan1 = Date.civil(year, 1, 1)
     @report_year = year
@@ -122,14 +76,11 @@ class Emailer < ActionMailer::Base
     user.affiliates.select([:display_name, :name]).order(:name).each do |affiliate|
       @affiliate_stats[affiliate.display_name] = DailyQueryStat.most_popular_terms(affiliate.name, jan1, jan1.end_of_year, 100)
     end
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.html { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(user.email, __method__)
+    send_mail(:html)
   end
 
   def affiliate_monthly_report(user, report_date)
-    setup_email(user.email, __method__)
     headers['Content-Type'] = 'text/html'
     @report_date = report_date
     last_month = @report_date - 1.month
@@ -139,7 +90,7 @@ class Emailer < ActionMailer::Base
       stats = {}
       stats[:affiliate] = affiliate
       stats[:total_queries] = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, affiliate.name)
-      stats[:total_clicks] = DailySearchModuleStat.where({:day => @report_date.beginning_of_month..@report_date.end_of_month, :affiliate_name => affiliate.name}).sum(:clicks)
+      stats[:total_clicks] = DailySearchModuleStat.where({ :day => @report_date.beginning_of_month..@report_date.end_of_month, :affiliate_name => affiliate.name }).sum(:clicks)
       stats[:last_month_total_queries] = DailyUsageStat.monthly_totals(last_month.year, last_month.month, affiliate.name)
       stats[:last_year_total_queries] = DailyUsageStat.monthly_totals(last_year.year, last_year.month, affiliate.name)
       stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
@@ -147,7 +98,7 @@ class Emailer < ActionMailer::Base
       stats[:popular_queries] = DailyQueryStat.most_popular_terms(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month, 10)
       @affiliate_stats[affiliate.name] = stats
     end
-    @total_stats = {:total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0}
+    @total_stats = { :total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0 }
     @affiliate_stats.each do |affiliate_name, affiliate_stats|
       @total_stats[:total_queries] += affiliate_stats[:total_queries]
       @total_stats[:total_clicks] += affiliate_stats[:total_clicks]
@@ -156,43 +107,32 @@ class Emailer < ActionMailer::Base
     end
     @total_stats[:last_month_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_month_total_queries])
     @total_stats[:last_year_percent_change] = calculate_percent_change(@total_stats[:total_queries], @total_stats[:last_year_total_queries])
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.html { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(user.email, __method__)
+    send_mail(:html)
   end
 
   def daily_snapshot(membership)
-    setup_email(membership.user.email, __method__)
+    @site = membership.affiliate
     headers['Content-Type'] = 'text/html'
     @dashboard = Dashboard.new(membership.affiliate, Date.yesterday)
-    @site = membership.affiliate
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.html { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email(membership.user.email, __method__)
+    send_mail(:html)
   end
 
   def update_external_tracking_code(affiliate, current_user, external_tracking_code)
-    setup_email('***REMOVED***', __method__)
     @affiliate = affiliate
     @current_user = current_user
-    @from = current_user.email
     @external_tracking_code = external_tracking_code
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    setup_email('***REMOVED***', __method__)
+    @from = current_user.email
+    send_mail(:text)
   end
 
   def filtered_popular_terms_report(filtered_popular_terms)
     setup_email('usagov@searchsi.com', __method__)
     headers['Content-Type'] = 'text/html'
-    @subject = ERB.new(@email_template_subject).result(binding)
     @filtered_popular_terms = filtered_popular_terms
-    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
-      format.html { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    send_mail(:html)
   end
 
   def public_key_upload_notification(txtfile, current_user, affiliate)
@@ -200,21 +140,15 @@ class Emailer < ActionMailer::Base
     @from = current_user.email
     @affiliate = affiliate
     @current_user = current_user
-    @subject = ERB.new(@email_template_subject).result(binding)
     @public_key_txt = txtfile.tempfile.read
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    send_mail(:text)
   end
 
   def deep_collection_notification(current_user, document_collection)
     setup_email('usagov@searchsi.com', __method__)
     @document_collection = document_collection
     @current_user = current_user
-    @subject = ERB.new(@email_template_subject).result(binding)
-    mail(:to => @recipients, :subject => @subject, :from => @from, :date => @sent_on) do |format|
-      format.text { render :text => ERB.new(@email_template_body).result(binding) }
-    end
+    send_mail(:text)
   end
 
   private
@@ -233,9 +167,23 @@ class Emailer < ActionMailer::Base
       @email_template_subject = '[USASearch] Missing Email template'
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
+    @subject = ERB.new(@email_template_subject).result(binding)
   end
 
   def calculate_percent_change(current_value, previous_value)
     (previous_value != 0 ? (current_value.to_f - previous_value.to_f) / previous_value.to_f : 0) * 100
   end
+
+  def send_mail(format_method)
+    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
+      format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
+    end
+  end
+
+  def generic_user_text_email(user, method)
+    @user = user
+    setup_email(user.email, method)
+    send_mail(:text)
+  end
+
 end

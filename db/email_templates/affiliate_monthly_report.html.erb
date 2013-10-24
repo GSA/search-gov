@@ -48,7 +48,7 @@
 </tbody>
 </table>
 
-<h2 style="<%= h2_style %>">Most Popular Queries for <%= "#{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year}" %></h2>
+<h2 style="<%= h2_style %>">Most Popular Queries for <%= "#{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}" %></h2>
 
 <table style="<%= table_style %>">
 <tbody>
