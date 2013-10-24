@@ -55,21 +55,7 @@ class Affiliate < ActiveRecord::Base
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
-  has_attached_file :staged_page_background_image,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
-                    :ssl => true
   has_attached_file :header_image,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
-                    :ssl => true
-  has_attached_file :staged_header_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
@@ -83,15 +69,7 @@ class Affiliate < ActiveRecord::Base
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
                     :ssl => true
-  has_attached_file :staged_mobile_logo,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
-                    :ssl => true
 
-  before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_name, :on => :create
   before_validation :set_default_rss_govbox_label
@@ -108,24 +86,10 @@ class Affiliate < ActiveRecord::Base
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_IMAGE_SIZE_MESSAGE
 
-  validates_attachment_content_type :staged_page_background_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :staged_page_background_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
-
   validates_attachment_content_type :header_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
                                     message: INVALID_CONTENT_TYPE_MESSAGE
   validates_attachment_size :header_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
-
-  validates_attachment_content_type :staged_header_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :staged_header_image,
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_IMAGE_SIZE_MESSAGE
 
@@ -136,13 +100,6 @@ class Affiliate < ActiveRecord::Base
                             in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
 
-  validates_attachment_content_type :staged_mobile_logo,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :staged_mobile_logo,
-                            in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
-
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer,
            :validate_managed_header_css_properties,
            :validate_managed_header_links, :validate_managed_footer_links
@@ -150,7 +107,7 @@ class Affiliate < ActiveRecord::Base
   after_validation :update_error_keys
   before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
-  before_update :clear_existing_staged_attachments
+  before_update :clear_existing_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
 
@@ -158,8 +115,7 @@ class Affiliate < ActiveRecord::Base
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
-  attr_accessor :mark_staged_page_background_image_for_deletion, :mark_staged_header_image_for_deletion, :mark_staged_mobile_logo_for_deletion
-  attr_accessor :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes, :is_validate_staged_header_footer
+  attr_accessor :is_validate_staged_header_footer
   attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
@@ -320,18 +276,6 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_staging(attributes)
     set_is_validate_staged_header_footer attributes
-    if staged_page_background_image_updated_at == page_background_image_updated_at and
-        attributes[:staged_page_background_image].present? || attributes[:mark_staged_page_background_image_for_deletion] == '1'
-      set_attachment_attributes_to_nil(:staged_page_background_image)
-    end
-    if staged_header_image_updated_at == header_image_updated_at and
-        attributes[:staged_header_image].present? || attributes[:mark_staged_header_image_for_deletion] == '1'
-      set_attachment_attributes_to_nil(:staged_header_image)
-    end
-    if staged_mobile_logo_updated_at == mobile_logo_updated_at and
-        attributes[:staged_mobile_logo].present? || attributes[:mark_staged_mobile_logo_for_deletion] == '1'
-      set_attachment_attributes_to_nil(:staged_mobile_logo)
-    end
     attributes[:has_staged_content] = true
     self.update_attributes(attributes)
   end
@@ -432,41 +376,11 @@ class Affiliate < ActiveRecord::Base
     ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
       self.send("staged_#{field}=", self.send("#{field}"))
     end
-
-    if staged_page_background_image_updated_at != page_background_image_updated_at
-      staged_page_background_image.destroy if staged_page_background_image_updated_at?
-      copy_attachment_attributes(:page_background_image, :staged_page_background_image)
-    end
-
-    if staged_header_image_updated_at != header_image_updated_at
-      staged_header_image.destroy if staged_header_image_updated_at?
-      copy_attachment_attributes(:header_image, :staged_header_image)
-    end
-
-    if staged_mobile_logo_updated_at != mobile_logo_updated_at
-      staged_mobile_logo.destroy if staged_mobile_logo_updated_at?
-      copy_attachment_attributes(:mobile_logo, :staged_mobile_logo)
-    end
   end
 
   def set_attributes_from_staged_to_live
     ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
       self.send("#{field}=", self.send("staged_#{field}"))
-    end
-
-    if staged_page_background_image_updated_at != page_background_image_updated_at
-      page_background_image.destroy if page_background_image_updated_at?
-      copy_attachment_attributes(:staged_page_background_image, :page_background_image)
-    end
-
-    if staged_header_image_updated_at != header_image_updated_at
-      header_image.destroy if header_image_updated_at?
-      copy_attachment_attributes(:staged_header_image, :header_image)
-    end
-
-    if staged_mobile_logo_updated_at != mobile_logo_updated_at
-      mobile_logo.destroy if mobile_logo_updated_at?
-      copy_attachment_attributes(:staged_mobile_logo, :mobile_logo)
     end
   end
 
@@ -910,24 +824,15 @@ class Affiliate < ActiveRecord::Base
     self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
 
-  def clear_existing_staged_attachments
-    if staged_page_background_image? and !staged_page_background_image.dirty? and mark_staged_page_background_image_for_deletion == '1'
-      staged_page_background_image.clear
-    end
+  def clear_existing_attachments
     if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
       page_background_image.clear
     end
 
-    if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
-      staged_header_image.clear
-    end
     if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
       header_image.clear
     end
 
-    if staged_mobile_logo? and !staged_mobile_logo.dirty? and mark_staged_mobile_logo_for_deletion == '1'
-      staged_mobile_logo.clear
-    end
     if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
       mobile_logo.clear
     end

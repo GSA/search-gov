@@ -80,6 +80,16 @@ Feature: Manage Content
     Then I should see "You have updated 2011 Atlantic Hurricane Season"
     When I follow "Edit"
     Then I should not see "Mark Image for Deletion"
+
+    When I fill in the following:
+      | Link Title 1 | Hurricane Alex                                        |
+      | Link URL 1   |                                                       |
+      | Link Title 2 |                                                       |
+      | Link URL 2   | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
+    And I press "Save"
+    Then I should see "Best bets: graphics links title can't be blank"
+    Then I should see "Best bets: graphics links url can't be blank"
+
     When I follow "View All"
     And I press "Remove"
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"

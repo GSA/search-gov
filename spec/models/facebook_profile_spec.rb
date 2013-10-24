@@ -23,4 +23,9 @@ describe FacebookProfile do
     profile = FacebookProfile.create(:affiliate => @affiliate, :username => '   whitehouse   ')
     profile.username.should == 'whitehouse'
   end
+
+  it 'generates link for the profile' do
+    profile = FacebookProfile.create(affiliate: @affiliate, username: 'whitehouse')
+    profile.link_to_profile.should == 'http://www.facebook.com/whitehouse'
+  end
 end
