@@ -32,14 +32,6 @@ class YoutubeProfile < ActiveRecord::Base
     YoutubeProfile.youtube_url(self.username)
   end
 
-  def recent
-    rss_feed.news_items.recent
-  end
-
-  def link_to_profile
-    "http://youtube.com/#{username}"
-  end
-
   private
 
   def normalize_username

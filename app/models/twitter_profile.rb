@@ -12,10 +12,6 @@ class TwitterProfile < ActiveRecord::Base
   scope :active, joins(:affiliate_twitter_settings).uniq
   scope :show_lists_enabled, active.where('affiliate_twitter_settings.show_lists = 1').order('twitter_profiles.updated_at asc, twitter_profiles.id asc').uniq
 
-  def recent
-    self.tweets.recent
-  end
-
   def link_to_profile
     "http://twitter.com/#{screen_name}"
   end
