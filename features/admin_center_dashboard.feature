@@ -111,6 +111,12 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     And I follow "Add User"
+    When I fill in the following:
+      | Name  | Another Admin |
+      | Email |  another_affiliate_manager@fixtures.org   |
+    And I press "Add"
+    Then I should see "You have added another_affiliate_manager@fixtures.org to this site"
+    When I follow "Add User"
     And I fill in the following:
       | Name  | Admin Doe |
       | Email |           |
