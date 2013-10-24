@@ -20,8 +20,7 @@ class UserMonthlyReport
       @affiliate_stats[affiliate.name] = stats
     end
     @total_stats = { :total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0 }
-    puts "Aff stats: #{@affiliate_stats}"
-    @affiliate_stats.values do |affiliate_stats|
+    @affiliate_stats.each do |aff, affiliate_stats|
       @total_stats[:total_queries] += affiliate_stats[:total_queries]
       @total_stats[:total_clicks] += affiliate_stats[:total_clicks]
       @total_stats[:last_month_total_queries] += affiliate_stats[:last_month_total_queries]
