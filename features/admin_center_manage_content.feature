@@ -4,7 +4,7 @@ Feature: Manage Content
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Manage Content page
     Then I should see "Admin Center"
-    Then I should see a link to "Manage Content" in the active site main navigation
+    Then I should see a link to "Content" in the active site main navigation
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets graphics
@@ -477,15 +477,15 @@ Feature: Manage Content
     Then I should see "You have added usgovernment to this site"
     And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
 
-    When I follow "Manage Display"
+    When I follow "Display"
     Then the "Is video govbox enabled" checkbox should be checked
 
-    When I follow "Manage Content"
+    When I follow "Content"
     And I follow "RSS"
     And I follow "Videos"
     Then I should see "gdata.youtube.com/feeds/api/videos?alt=rss&author=usgovernment&orderby=published"
 
-    When I follow "Manage Content"
+    When I follow "Content"
     And I follow "YouTube"
     And I press "Remove"
     Then I should see "You have removed usgovernment from this site"

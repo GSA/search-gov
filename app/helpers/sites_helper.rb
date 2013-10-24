@@ -8,16 +8,24 @@ module SitesHelper
 
   def daily_snapshot_toggle(membership)
     return if membership.nil?
-    verb = membership.gets_daily_snapshot_email? ? 'Stop sending' : 'Send'
+    description_class = 'description label off-screen-text'
+    if membership.gets_daily_snapshot_email?
+      button_class = 'btn disabled'
+      description_class << ' label-warning'
+      verb = 'Stop sending'
+    else
+      button_class = 'btn'
+      verb = 'Send'
+    end
     title = "#{verb} me today's snapshot as a daily email"
     wrapper_options = {id: 'envelope-snapshot-toggle',
                        'data-toggle' => 'tooltip',
                        'data-original-title' => title}
 
     form_for membership, as: :membership, url: site_membership_path(@site, membership), method: :put, html: wrapper_options do
-      button_tag class: 'btn', type: :submit do
+      button_tag class: button_class, type: :submit do
         inner_html = stacked_envelope
-        inner_html << content_tag(:span, title, class: 'description')
+        inner_html << content_tag(:span, title, class: description_class)
         if membership.gets_daily_snapshot_email?
           content_tag :div, inner_html, class: 'btn disabled'
         else
@@ -36,15 +44,15 @@ module SitesHelper
   end
 
   def button_to_enabled_pin_site(site)
-    title = 'Set as default site'
+    title = 'Set as my default site'
     wrapper_options = {id: 'pin-site',
                        'data-toggle' => 'tooltip',
                        'data-original-title' => title}
 
-    form_for @site, as: :site, url: pin_site_path(site), html: wrapper_options do
+    form_for site, as: :site, url: pin_site_path(site), html: wrapper_options do
       button_tag class: 'btn', type: :submit do
         inner_html = stacked_pushpin
-        inner_html << content_tag(:span, title, class: 'description')
+        inner_html << content_tag(:span, title, class: 'description label off-screen-text')
       end
     end
   end
@@ -56,7 +64,7 @@ module SitesHelper
                        'data-original-title' => title}
     content_tag :div, wrapper_options do
       inner_html = stacked_pushpin
-      inner_html << content_tag(:span, title, class: 'description')
+      inner_html << content_tag(:span, title, class: 'description label label-warning off-screen-text')
       content_tag :div, inner_html, class: 'btn disabled'
     end
   end
@@ -132,7 +140,7 @@ module SitesHelper
         !site.has_staged_content?) ? {class: 'active'} : {}
 
     content_tag :li, list_item_options do
-      link_options = {affiliate: @site.name, query: 'gov', external_tracking_code_disabled: true}.merge options
+      link_options = {affiliate: site.name, query: 'gov', external_tracking_code_disabled: true}.merge options
       link_to title, search_path(link_options), target: target
     end
   end
@@ -154,10 +162,10 @@ module SitesHelper
   end
 
   def preview_search_path_options(site)
-    default_options = {affiliate: @site.name,
+    default_options = {affiliate: site.name,
                        external_tracking_code_disabled: true,
                        query: 'gov'}
-    default_options[:staged] = '1' if @site.has_staged_content?
+    default_options[:staged] = '1' if site.has_staged_content?
     default_options
   end
 end

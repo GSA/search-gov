@@ -2,4 +2,5 @@
   = render partial: 'date_picker', locals: { date_label: 'From', date_method: :start_date, form: form}
   = render partial: 'date_picker', locals: { date_label: 'To', date_method: :end_date, form: form}
   %li= form.label :query, "Query"
-  %li= form.text_field :query, class: 'search-query input-block-level'
+  %li
+    %div= form.text_field :query

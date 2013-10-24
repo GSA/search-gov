@@ -1,0 +1,76 @@
+@import 'sites/modules/_mixins.less';
+
+.l-site-nav, .l-site-header {
+  [class^="icon-"] {
+    display: none;
+  }
+}
+
+.l-site-nav.main .description {
+  .on-screen-text();
+}
+
+
+.calendar .add-on-icon {
+  background: image-url('calendar_date_select/calendar.gif') no-repeat center center;
+}
+
+
+i.icon-calendar, i.icon-globe, i.icon-search, i.icon-user, i.icon-signout {
+  display: none;
+}
+
+.content .content-item.domains .name {
+  display: inline-block;
+  *display: inline;
+  margin-top: 10px;
+  zoom: 1;
+}
+
+.icon-caret-down:before {
+  content: "\25bc";
+}
+
+.icon-caret-down {
+  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x25bc;')";
+}
+
+.icon-plus:before {
+  content: "\2b";
+}
+
+.icon-plus {
+  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2b;')";
+}
+
+.icon-reorder:before {
+  content: "\2195";
+}
+.icon-reorder {
+  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2195;')";
+}
+
+#pin-site, #envelope-snapshot-toggle {
+  .btn {
+    .description {
+      background-color: #999;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+
+      &.label-warning {
+        background-color: #F89406;
+      }
+    }
+  }
+}
+
+#envelope-snapshot-toggle {
+  margin-left: 10px;
+}
+
+#preview-font-colors .btn-search {
+  background: image-url('searches/search_button.png') no-repeat center;
+  height: 20px;
+  width: 13px;
+}

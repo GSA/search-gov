@@ -839,13 +839,6 @@ class Affiliate < ActiveRecord::Base
     self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
   end
 
-  def set_attachment_attributes_to_nil(attachment)
-    self.send("#{attachment.to_s}_file_name=", nil)
-    self.send("#{attachment.to_s}_content_type=", nil)
-    self.send("#{attachment.to_s}_file_size=", nil)
-    self.send("#{attachment.to_s}_updated_at=", nil)
-  end
-
   def copy_attachment_attributes(from, to)
     self.send("#{to.to_s}_file_name=", self.send("#{from}_file_name"))
     self.send("#{to.to_s}_content_type=", self.send("#{from}_content_type"))

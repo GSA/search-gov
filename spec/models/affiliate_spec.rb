@@ -508,6 +508,112 @@ describe Affiliate do
       affiliate.save.should be_true
     end
 
+    context "is_validate_staged_header_footer is set to true" do
+      let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                          :uses_managed_header_footer => false,
+                                          :staged_uses_managed_header_footer => false) }
+
+      before { affiliate.is_validate_staged_header_footer = true }
+
+      it "should not allow form, script, style or link elements in staged header or staged footer" do
+        header_error_message = %q(HTML to customize the top of your search results page must not contain form, script, style, link elements)
+        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain form, script, style, link elements)
+
+        html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+        html_with_style = <<-HTML
+            <style>#my_header { color:red }</style>
+            <h1>html with style</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_style, :staged_footer => html_with_style).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+        html_with_link = <<-HTML
+            <link href="http://cdn.agency.gov/link.css" />
+            <h1>html with link</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+
+        html_with_form = <<-HTML
+            <form></form>
+            <h1>html with link</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_form, :staged_footer => html_with_form).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+      end
+
+      it 'should not allow onload attribute in staged header or staged footer' do
+        header_error_message = %q(HTML to customize the top of your search results page must not contain the onload attribute)
+        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain the onload attribute)
+
+        html_with_onload = <<-HTML
+            <div onload="http://cdn.agency.gov/script.js"></div>
+            <h1>html with onload</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be_false
+        affiliate.errors[:base].join.should match(/#{header_error_message}/)
+        affiliate.errors[:base].join.should match(/#{footer_error_message}/)
+      end
+
+      it "should not allow malformed HTML in staged header or staged footer" do
+        header_error_message = 'HTML to customize the top of your search results is invalid'
+        footer_error_message = 'HTML to customize the bottom of your search results is invalid'
+
+        html_with_body = <<-HTML
+            <html><body><h1>html with script</h1></body></html>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body).should be_false
+        affiliate.errors[:base].join.should include("#{header_error_message}")
+        affiliate.errors[:base].join.should include("#{footer_error_message}")
+
+        malformed_html_fragments = <<-HTML
+            <link href="http://cdn.agency.gov/link.css"></script>
+            <h1>html with link</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be_false
+        affiliate.errors[:base].join.should include("#{header_error_message}")
+        affiliate.errors[:base].join.should include("#{footer_error_message}")
+      end
+
+      it "should not validate header_footer_css" do
+        affiliate.update_attributes(:header_footer_css => "h1 { invalid-css-syntax }").should be_true
+        affiliate.update_attributes(:header_footer_css => "h1 { color: #DDDD }").should be_true
+      end
+
+      it "should validate staged_header_footer_css for invalid css property value" do
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { invalid-css-syntax }").should be_false
+        affiliate.errors[:base].first.should match(/Invalid CSS/)
+
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { color: #DDDD }").should be_false
+        affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
+      end
+    end
+
+    context "is_validate_staged_header_footer is set to false" do
+      let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
+                                          :uses_managed_header_footer => false,
+                                          :staged_uses_managed_header_footer => false) }
+      it "should allow script, style or link elements in staged header or staged footer" do
+        affiliate.is_validate_staged_header_footer = false
+
+        html_with_script = <<-HTML
+            <script src="http://cdn.agency.gov/script.js"></script>
+            <h1>html with script</h1>
+        HTML
+        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
+      end
+    end
+
     it 'should not allow malformed external tracking code' do
       expect { Affiliate.create!(:display_name => 'a site', :external_tracking_code => '<script>malformed code;') }.to raise_error
     end

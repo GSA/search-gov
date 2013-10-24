@@ -9,7 +9,7 @@ Feature: Dashboard
     When I go to the sites page
     Then I should see "agency1 site"
     When I go to the 3.agency.gov's Manage Content page
-    And I press "Set as default site"
+    And I press "Set as my default site"
     Then I should see "You have set agency3 site as your default site"
     And I should see "Manage Content"
     When I go to the sites page
@@ -172,7 +172,7 @@ Feature: Dashboard
     When I follow "Settings"
     Then the "Homepage URL" field should contain "http://usasearch.howto.gov"
 
-    When I follow "Manage Display"
+    When I follow "Display"
     And I follow "Image Assets"
     Then the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
 
