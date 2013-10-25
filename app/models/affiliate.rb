@@ -617,22 +617,10 @@ class Affiliate < ActiveRecord::Base
     errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
   end
 
-  def set_staged_managed_header_links
-    return if @staged_managed_header_links_attributes.nil?
-    self.staged_managed_header_links = []
-    set_managed_links(@staged_managed_header_links_attributes, staged_managed_header_links)
-  end
-
   def set_managed_header_links
     return if @managed_header_links_attributes.nil?
     self.managed_header_links = []
     set_managed_links(@managed_header_links_attributes, managed_header_links)
-  end
-
-  def set_staged_managed_footer_links
-    return if @staged_managed_footer_links_attributes.nil?
-    self.staged_managed_footer_links = []
-    set_managed_links(@staged_managed_footer_links_attributes, staged_managed_footer_links)
   end
 
   def set_managed_footer_links

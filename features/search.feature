@@ -1076,6 +1076,27 @@ Feature: Affiliate Search
     When I follow "Other Site"
     Then I should see the browser page titled "jobs - other site Search Results"
 
+  Scenario: Searching on sites with Featured Collections
+    Given the following Affiliates exist:
+      | display_name   | name          | contact_email   | contact_name | locale |
+      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
+    And the following featured collections exist for the affiliate "agency.gov":
+      | title           | title_url                         | status   | publish_start_on | publish_end_on | layout       |
+      | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                | two column   |
+    And the following featured collection links exist for featured collection titled "Tornado Warning":
+      | title                 | url                                          |
+      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+      | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
+    When I am on agency.gov's search page
+    And I fill in "query" with "warnings for a tornado"
+    And I press "Search"
+    Then I should see "Tornado Warning by agency site" in the featured collections section
+    And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" on the left featured collection link list
+    And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" on the right featured collection link list
+    When I fill in "query" with "Atlantic"
+    And I press "Search"
+    Then I should see a featured collection link title with "Atlantic" highlighted
+
   Scenario: Searching on sites with Boosted Contents
     Given the following Affiliates exist:
       | display_name   | name          | contact_email   | contact_name | locale |
