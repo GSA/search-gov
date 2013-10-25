@@ -481,6 +481,11 @@ Feature: Manage Content
     Then the "Is video govbox enabled" checkbox should be checked
 
     When I follow "Manage Content"
+    And I follow "RSS"
+    And I follow "Videos"
+    Then I should see "gdata.youtube.com/feeds/api/videos?alt=rss&author=usgovernment&orderby=published"
+
+    When I follow "Manage Content"
     And I follow "YouTube"
     And I press "Remove"
     Then I should see "You have removed usgovernment from this site"
