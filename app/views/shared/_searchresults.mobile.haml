@@ -10,7 +10,7 @@
           .title
             = display_web_result_extname_prefix(search_result)
             = display_web_result_title(search_result, search, @affiliate, index, @search_vertical)
-          .links= shorten_url(search_result['unescapedUrl'])
+          .links= UrlParser.shorten_url(search_result['unescapedUrl'])
           .content
             = display_result_description(search_result)
       - unless index == search.results.length - 1 then
