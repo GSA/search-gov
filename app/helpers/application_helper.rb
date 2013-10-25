@@ -115,11 +115,11 @@ module ApplicationHelper
       links << link_to('Admin Center', sites_path) if current_user_is?(:affiliate)
       first_added = false
       list_items = links.collect do |link|
-        unless first_added
-          first_added = true
-          content_tag(:li, link.html_safe, :class => 'first')
-        else
+        if first_added
           content_tag(:li, link.html_safe)
+        else
+          first_added = true
+          content_tag(:li, link.html_safe, class: 'first')
         end
       end
       content_tag(:ul, list_items.join("\n").html_safe).html_safe

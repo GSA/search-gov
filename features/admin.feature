@@ -16,6 +16,13 @@ Feature:  Administration
     When I follow "Sign Out"
     Then I should be on the login page
 
+  Scenario: Visiting the admin home page as an admin who is also an affiliate
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And "affiliate_admin@fixtures.org" is an affiliate
+    When I go to the admin home page
+    Then I should see "Super Admin" in the user menu
+    And I should see "Admin Center" in the user menu
+
   Scenario: Visiting the affiliate admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:

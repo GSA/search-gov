@@ -300,3 +300,7 @@ When /^the rss govbox is enabled for the site "(.*?)"$/ do |name|
   site = Affiliate.find_by_name name
   site.update_attributes!(is_rss_govbox_enabled: true)
 end
+
+Given(/^"(.*?)" is an affiliate$/) do |email|
+  User.find_by_email(email).update_attribute(:is_affiliate, true)
+end

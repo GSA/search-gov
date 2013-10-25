@@ -7,6 +7,7 @@
   'in the site navigation bar' => '.affiliate-left-nav',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the page header' => 'h1',
+  'in the user menu' => '.user-menu',
   'in the mobile page header' => 'h1.page-title',
   'in the connect section' => '.connect',
   'in the footer' => '.footer',
