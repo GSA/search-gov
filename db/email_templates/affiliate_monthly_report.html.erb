@@ -1,87 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
-<%
-   h2_style = 'font-size: 1.5em; margin-bottom: 0.3em;'
-   table_style = 'border-collapse: collapse;'
-   tr_even_style = 'background-color: #D8D8D8;'
-   tr_heading_style = 'background-color: #696969; color: white;'
-   tr_sub_heading_style = 'background-color: #909090; color: white;'
-   th_style = 'border: 1px solid #CACACA; padding: 5px; text-align: center;'
-   td_style = 'border: 1px solid #CACACA; padding: 5px; text-align: right;'
-   td_text_style = 'border: 1px solid #CACACA; padding: 5px; text-align: left;'
-   td_blank_style = 'border: 0; line-height: 0.8em;'
-   p_style = 'margin-top: 0;'
-%>
+  <title></title>
+  <%
+     h2_style = 'font-size: 1.5em; margin-bottom: 0.3em;'
+     table_style = 'border-collapse: collapse;'
+     tr_even_style = 'background-color: #D8D8D8;'
+     tr_heading_style = 'background-color: #696969; color: white;'
+     tr_sub_heading_style = 'background-color: #909090; color: white;'
+     th_style = 'border: 1px solid #CACACA; padding: 5px; text-align: center;'
+     td_style = 'border: 1px solid #CACACA; padding: 5px; text-align: right;'
+     td_text_style = 'border: 1px solid #CACACA; padding: 5px; text-align: left;'
+     td_blank_style = 'border: 0; line-height: 0.8em;'
+     p_style = 'margin-top: 0;'
+  %>
 </head>
 <body>
-<h2 style="<%= h2_style %>">All sites dashboard</h2>
-
+<h2 style="<%= h2_style %>">Queries and Clicks</h2>
 <table style="<%= table_style %>">
-<thead>
-<tr style="<%= tr_heading_style %>">
-  <th style="<%= th_style %>">Site</th>
-  <th style="<%= th_style %>">Queries</th>
-  <th style="<%= th_style %>">Compared to last month</th>
-  <th style="<%= th_style %>">Compared to last year</th>
-  <th style="<%= th_style %>">Clicks</th>
-</tr>
-</thead>
-<tbody>
-<% @user_monthly_report.affiliate_stats.each do |foo, affiliate_stats| %>
-<tr style="<%= cycle('', tr_even_style) %>">
-  <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
-  <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
-  <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
-  <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
-  <td style="<%= td_style %>"><%= affiliate_stats[:total_clicks] %></td>
-</tr>
-<% end %>
-<tr style="<%= cycle('', tr_even_style) %>">
-  <td style="<%= td_text_style %>">TOTAL</td>
-  <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_queries] %></td>
-  <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_month_percent_change] %>%</td>
-  <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_year_percent_change] %>%</td>
-  <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_clicks] %></td>
-</tr>
-</tbody>
-</table>
-
-<h2 style="<%= h2_style %>">Most Popular Queries for <%= "#{Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i]} #{@user_monthly_report.report_date.year}" %></h2>
-
-<table style="<%= table_style %>">
-<tbody>
-<% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+  <thead>
   <tr style="<%= tr_heading_style %>">
-    <th colspan="2" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
+    <th style="<%= th_style %>">Site</th>
+    <th style="<%= th_style %>">Queries</th>
+    <th style="<%= th_style %>">Queries vs. last month</th>
+    <th style="<%= th_style %>">Queries vs. last year</th>
+    <th style="<%= th_style %>">Clicks</th>
   </tr>
-  <% if affiliate_stats[:popular_queries].is_a?(String) %>
-    <tr>
-      <td colspan="2" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
-    </tr>
-  <% else %>
-    <tr style="<%= tr_sub_heading_style %>">
-      <th style="<%= th_style %>">Query Term</th>
-      <th style="<%= th_style %>">Frequency</th>
-    </tr>
-    <% affiliate_stats[:popular_queries].each do |popular_query| %>
-      <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-        <td style="<%= td_text_style %>"><%= popular_query.query %></td>
-        <td style="<%= td_style %>"><%= popular_query.times %></td>
+  </thead>
+  <tbody>
+  <% @user_monthly_reports.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+      <tr style="<%= cycle('', tr_even_style) %>">
+        <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
+        <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
+        <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
+        <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
+        <td style="<%= td_style %>"><%= affiliate_stats[:total_clicks] %></td>
       </tr>
-    <% end %>
-    <% reset_cycle('colors') %>
   <% end %>
-  <tr><td colspan="2" style="<%= td_blank_style %>">&nbsp;</td></tr>
-<% end %>
-</tbody>
+  <tr style="<%= cycle('', tr_even_style) %>">
+    <td style="<%= td_text_style %>">TOTAL</td>
+    <td style="<%= td_style %>"><%= @user_monthly_reports.total_stats[:total_queries] %></td>
+    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_reports.total_stats[:last_month_percent_change] %>%</td>
+    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_reports.total_stats[:last_year_percent_change] %>%</td>
+    <td style="<%= td_style %>"><%= @user_monthly_reports.total_stats[:total_clicks] %></td>
+  </tr>
+  </tbody>
+</table>
+<h2 style="<%= h2_style %>">Top 10 Searches
+  for <%= "#{Date::MONTHNAMES[@user_monthly_reports.report_date.month.to_i]} #{@user_monthly_reports.report_date.year}" %></h2>
+<table style="<%= table_style %>">
+  <tbody>
+  <% @user_monthly_reports.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+      <tr style="<%= tr_heading_style %>">
+        <th colspan="2" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
+      </tr>
+      <% if affiliate_stats[:popular_queries].is_a?(String) %>
+          <tr>
+            <td colspan="2" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
+          </tr>
+      <% else %>
+          <tr style="<%= tr_sub_heading_style %>">
+            <th style="<%= th_style %>">Search Term</th>
+            <th style="<%= th_style %>">Frequency</th>
+          </tr>
+          <% affiliate_stats[:popular_queries].each do |popular_query| %>
+              <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
+                <td style="<%= td_text_style %>"><%= popular_query.query %></td>
+                <td style="<%= td_style %>"><%= popular_query.times %></td>
+              </tr>
+          <% end %>
+          <% reset_cycle('colors') %>
+      <% end %>
+      <tr>
+        <td colspan="2" style="<%= td_blank_style %>">&nbsp;</td>
+      </tr>
+  <% end %>
+  </tbody>
 </table>
 <p style="<%= p_style %>">
   Visit our Admin Center <%= sites_url %> for more details.
-  <br />
+  <br/>
   Happy reporting!
 </p>
+
 <p style="<%= p_style %>">The USASearch Team</p>
 </body>
 </html>
