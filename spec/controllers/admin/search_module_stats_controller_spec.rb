@@ -110,9 +110,9 @@ describe Admin::SearchModuleStatsController do
         start_date = "July 21, 2011"
         end_date = "July 29, 2011"
         affiliate = "usasearch.gov"
-        locale = "en"
         vertical = "web"
-        DailySearchModuleStat.should_receive(:module_stats_for_daterange).with(start_date.to_date..end_date.to_date, affiliate, vertical).and_return "foo"
+        msa = double("ModuleStatsAnalytics", module_stats: 'foo')
+        ModuleStatsAnalytics.should_receive(:new).with(start_date.to_date..end_date.to_date, affiliate, vertical).and_return msa
         get :index, :start_date => start_date, :end_date => end_date, :affiliate_pick => affiliate, :vertical_pick => vertical
         assigns[:search_module_stats].should == "foo"
       end

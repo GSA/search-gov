@@ -37,6 +37,8 @@ describe "sites/monthly_reports/show.html.haml" do
   end
 
   context 'when queries and clicks are available for the month' do
+    let(:other_site) { affiliates(:power_affiliate) }
+
     before do
       DailyUsageStat.create!(:day => target_date.beginning_of_month, :total_queries => 100, :affiliate => site.name)
       DailyUsageStat.create!(:day => target_date.end_of_month, :total_queries => 1000, :affiliate => site.name)
@@ -49,7 +51,10 @@ describe "sites/monthly_reports/show.html.haml" do
                                     :vertical => 'web', :module_tag => 'VIDEO', :clicks => 67, :impressions => 671)
       DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
                                     :vertical => 'web', :module_tag => 'VIDEO', :clicks => 12, :impressions => 129)
-
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BWEB', :clicks => 100, :impressions => 200)
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'VIDEO', :clicks => 333, :impressions => 1000)
       render
     end
 
@@ -60,24 +65,12 @@ describe "sites/monthly_reports/show.html.haml" do
       end
     end
 
-    it 'should show the breakdown by module' do
-      rendered.should have_selector("#by_module") do |snippet|
-        snippet.should contain "Module"
-        snippet.should contain "Impressions"
-        snippet.should contain "Clicks"
-        snippet.should contain "Clickthru Rate"
-        snippet.should contain "Bing Web"
-        snippet.should contain "7,478"
-        snippet.should contain "1,001"
-        snippet.should contain "13.4%"
-        snippet.should contain "Bing Video"
-        snippet.should contain "800"
-        snippet.should contain "79"
-        snippet.should contain "9.9%"
-        snippet.should contain "Total"
-        snippet.should contain "8,278"
-        snippet.should contain "1,080"
-        snippet.should contain "13.0%"
+    it 'should show the breakdown by module and comparison to overall average' do
+      rendered.should have_selector("#by_module tr", count: 4) do |rows|
+        rows[0].should contain "Module Impressions Clicks Your CTR Average CTR"
+        rows[1].should contain "Bing Web 7,478 1,001 13.4% 14.3%"
+        rows[2].should contain "Bing Video 800 79 9.9% 22.9%"
+        rows[3].should contain "Total 8,278 1,080 13.0%"
       end
     end
   end
@@ -95,7 +88,7 @@ describe "sites/monthly_reports/show.html.haml" do
         lis[3].should contain "Download top queries for the week of 2013-09-15"
         lis[4].should contain "Download top queries for the week of 2013-09-22"
         lis[5].should contain "Download top queries for the week of 2013-09-29"
-        lis.each {|li| li.should have_selector("a", content: 'csv') }
+        lis.each { |li| li.should have_selector("a", content: 'csv') }
       end
     end
   end

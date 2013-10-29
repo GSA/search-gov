@@ -16,7 +16,8 @@ class MonthlyReport
   end
 
   def search_module_stats
-    DailySearchModuleStat.module_stats_for_daterange(@month_range, @site.name)
+    module_stats_analytics = ModuleStatsAnalytics.new(@month_range, @site.name)
+    module_stats_analytics.module_stats
   end
 
   def picked_mmyyyy

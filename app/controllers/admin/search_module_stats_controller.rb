@@ -6,6 +6,7 @@ class Admin::SearchModuleStatsController < Admin::AdminController
     @start_date = request["start_date"].blank? ? @end_date.beginning_of_month : request["start_date"].to_date
     @affiliate_pick = request["affiliate_pick"].blank? ? nil : request["affiliate_pick"]
     @vertical_pick = request["vertical_pick"].blank? ? nil : request["vertical_pick"]
-    @search_module_stats = DailySearchModuleStat.module_stats_for_daterange(@start_date..@end_date, @affiliate_pick, @vertical_pick)
+    module_stats_analytics = ModuleStatsAnalytics.new(@start_date..@end_date, @affiliate_pick, @vertical_pick)
+    @search_module_stats = module_stats_analytics.module_stats
   end
 end

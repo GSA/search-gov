@@ -5,7 +5,8 @@
       %th Module
       %th Impressions
       %th Clicks
-      %th Clickthru Rate
+      %th Your CTR
+      %th Average CTR
   %tbody
     - search_module_stats.each do |stat|
       %tr
@@ -15,3 +16,4 @@
         %td
           = number_to_percentage(stat.clickthru_ratio, :precision => 1)
           = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC')
+        %td= number_to_percentage(stat.average_clickthru_ratio, :precision => 1)
