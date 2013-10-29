@@ -28,7 +28,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @user_monthly_reports.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+  <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
       <tr style="<%= cycle('', tr_even_style) %>">
         <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
         <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
@@ -39,18 +39,18 @@
   <% end %>
   <tr style="<%= cycle('', tr_even_style) %>">
     <td style="<%= td_text_style %>">TOTAL</td>
-    <td style="<%= td_style %>"><%= @user_monthly_reports.total_stats[:total_queries] %></td>
-    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_reports.total_stats[:last_month_percent_change] %>%</td>
-    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_reports.total_stats[:last_year_percent_change] %>%</td>
-    <td style="<%= td_style %>"><%= @user_monthly_reports.total_stats[:total_clicks] %></td>
+    <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_queries] %></td>
+    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_month_percent_change] %>%</td>
+    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_year_percent_change] %>%</td>
+    <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_clicks] %></td>
   </tr>
   </tbody>
 </table>
 <h2 style="<%= h2_style %>">Top 10 Searches
-  for <%= "#{Date::MONTHNAMES[@user_monthly_reports.report_date.month.to_i]} #{@user_monthly_reports.report_date.year}" %></h2>
+  for <%= "#{Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i]} #{@user_monthly_report.report_date.year}" %></h2>
 <table style="<%= table_style %>">
   <tbody>
-  <% @user_monthly_reports.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
+  <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
       <tr style="<%= tr_heading_style %>">
         <th colspan="2" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
       </tr>

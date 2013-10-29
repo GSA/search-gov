@@ -264,7 +264,7 @@ describe Emailer do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('100 33.33% -33.33% 100')
       body.should include('0 0.00% 0.00% 0')
-      body.should include('Most Popular Queries for April 2012')
+      body.should include('Top 10 Searches for April 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
       body.should include('query1 100')
       body.should include('query2 100')
