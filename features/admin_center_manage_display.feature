@@ -86,7 +86,7 @@ Feature: Manage Display
     And the "Is jobs govbox enabled" checkbox should not be checked
     And the "Is agency govbox enabled" checkbox should not be checked
     And the "Is related searches enabled" checkbox should be checked
-    And the "Is sayt enabled" checkbox should not be checked
+    And the "Is sayt enabled" checkbox should be checked
     And the "Is medline govbox enabled" checkbox should not be checked
     And I should see "Recent Tweets"
 
@@ -98,7 +98,7 @@ Feature: Manage Display
     And I check "Is agency govbox enabled"
     And I uncheck "Is related searches enabled"
     And I check "Is medline govbox enabled"
-    And I check "Is sayt enabled"
+    And I uncheck "Is sayt enabled"
 
     And I press "Save"
     Then I should see "You have updated your site display settings"
@@ -110,7 +110,7 @@ Feature: Manage Display
     And the "Is agency govbox enabled" checkbox should be checked
     And the "Is related searches enabled" checkbox should not be checked
     And the "Is medline govbox enabled" checkbox should be checked
-    And the "Is sayt enabled" checkbox should be checked
+    And the "Is sayt enabled" checkbox should not be checked
 
   @javascript
   Scenario: Editing Related Sites

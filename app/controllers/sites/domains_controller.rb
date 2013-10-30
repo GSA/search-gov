@@ -13,7 +13,6 @@ class Sites::DomainsController < Sites::SetupSiteController
     @domain = @site.site_domains.build domain_params
     if @domain.save
       @site.normalize_site_domains
-      @site.autodiscover_homepage_url
       redirect_to site_domains_path(@site),
                   flash: { success: "You have added #{@domain.domain} to this site." }
     else
@@ -47,6 +46,6 @@ class Sites::DomainsController < Sites::SetupSiteController
   end
 
   def domain_params
-    @domain_params ||= params[:domain].slice(:domain)
+    params.require(:domain).permit(:domain)
   end
 end

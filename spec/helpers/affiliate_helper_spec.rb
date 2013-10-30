@@ -7,8 +7,7 @@ describe AffiliateHelper do
       let(:affiliate) { mock_model(Affiliate,
                                    :css_property_hash => Affiliate::DEFAULT_CSS_PROPERTIES,
                                    :header_image_file_name => 'logo.gif',
-                                   :header_image => header_image,
-                                   :managed_header_css_properties => Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES) }
+                                   :header_image => header_image) }
 
       before do
         header_image.should_receive(:url).and_raise

@@ -37,6 +37,6 @@ class Sites::UsersController < Sites::SetupSiteController
   private
 
   def user_params
-    @user_params ||= params[:user].slice(:contact_name, :email)
+    @user_params ||= params.require(:user).permit(:contact_name, :email)
   end
 end

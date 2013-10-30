@@ -1,18 +1,22 @@
 isShowBoxShadow = () ->
   $('#site_css_property_hash_show_content_box_shadow').prop 'checked'
 
+setBoxShadow = (selector, shadow) ->
+  $selector = $(selector)
+  $selector.css '-webkit-box-shadow', shadow
+  $selector.css '-moz-box-shadow', shadow
+  $selector.css 'box-shadow', shadow
+
 changeBoxShadow = (e) ->
   $this = $(e.target)
-  $targetSelector = $($this.attr 'data-target-selector')
+  targetSelector = $this.attr 'data-target-selector'
 
   if isShowBoxShadow()
     shadow = "0 0 5px #{e.color.toHex()}"
   else
     shadow = '0 0 0'
 
-  $targetSelector.css '-webkit-box-shadow', shadow
-  $targetSelector.css '-moz-box-shadow', shadow
-  $targetSelector.css 'box-shadow', shadow
+  setBoxShadow targetSelector, shadow
 
 changeColor = (e) ->
   $this = $(this)
@@ -46,11 +50,14 @@ disableColorPickers = () ->
       placement: 'right',
       title: 'Select Custom color scheme to modify'
 
+isTheme = (theme) ->
+  $("#site_theme_#{theme}").prop 'checked'
+
 ready = () ->
   return unless $('#edit-font-and-colors')[0]?
-  if $('#site_theme_custom').prop 'checked'
+  if isTheme 'custom'
     enableColorPickers()
-  else if $('#site_theme_default').prop 'checked'
+  else if isTheme 'default'
     disableColorPickers()
 
 $(document).ready ready
@@ -90,12 +97,11 @@ $(document).on 'change', '#site_css_property_hash_show_content_border', (e) ->
 showOrHideBoxShadow = () ->
   $colorInputField = $('#site_css_property_hash_content_box_shadow_color')
   color = $colorInputField.val()
-  $colorPicker = $($colorInputField.parents('[data-provide="colorpicker"]')[0])
+  contentSelector = '#preview-font-colors .serp-content'
   if isShowBoxShadow() and isValidColor(color)
-    $colorPicker.colorpicker().colorpicker 'setValue', color
+    setBoxShadow contentSelector, "0 0 5px #{color}"
   else if !isShowBoxShadow()
-    $colorPicker.colorpicker().colorpicker 'setValue', color
-  ready
+    setBoxShadow contentSelector, '0 0 0'
 
 $(document).on 'change', '#site_css_property_hash_show_content_box_shadow', showOrHideBoxShadow
 

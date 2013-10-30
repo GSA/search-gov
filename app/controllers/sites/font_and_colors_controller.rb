@@ -4,7 +4,6 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
 
   def update
     if @site.update_attributes(site_params)
-      @site.copy_css_property_hash_from_live_to_staged!
       redirect_to edit_site_font_and_colors_path(@site),
                   flash: { success: 'You have updated your font & colors.' }
     else

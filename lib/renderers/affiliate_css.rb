@@ -2,8 +2,8 @@ module Renderers
   class AffiliateCss
     include AffiliateCssHelper
 
-    DESKTOP_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/app/views/affiliates/home/_look_and_feel.css.sass.erb").read.freeze
-    MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/app/views/affiliates/home/_mobile_look_and_feel.css.sass.erb").read.freeze
+    DESKTOP_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_look_and_feel.css.sass.erb").read.freeze
+    MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").read.freeze
 
     def initialize(css_hash)
       @css_hash = css_hash.freeze

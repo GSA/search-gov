@@ -111,12 +111,18 @@ describe Sites::SitesController do
         let(:emailer) { mock(Emailer, :deliver => true) }
 
         before do
-          Affiliate.should_receive(:new).with("site_domains_attributes" => {"0" => {"domain" => "http://www.brandnew.gov"}},
-                                              "display_name" => "New Aff", "locale" => "es").and_return(site)
-          site.should_receive(:name=).with('newaff')
+          Affiliate.should_receive(:new).with(
+              'display_name' => 'New Aff',
+              'locale' => 'es',
+              'name' => 'newaff',
+              'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
           site.should_receive(:save).and_return(true)
           site.should_receive(:push_staged_changes)
-          site.should_receive(:autodiscover)
+
+          autodiscoverer = mock(SiteAutodiscoverer)
+          SiteAutodiscoverer.should_receive(:new).with(site).and_return(autodiscoverer)
+          autodiscoverer.should_receive(:run)
+
           Emailer.should_receive(:new_affiliate_site).and_return(emailer)
           post :create,
                site: { display_name: 'New Aff',

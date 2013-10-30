@@ -2,81 +2,29 @@ Given /^the following Affiliates exist:$/ do |table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
-      :email => hash[:contact_email],
-      :password => "random_string",
-      :password_confirmation => "random_string",
-      :contact_name => hash[:contact_name],
-      :organization_name=> "Agency",
-      :government_affiliation => "1"
+        email: hash[:contact_email],
+        password: 'random_string',
+        password_confirmation: 'random_string',
+        contact_name: hash[:contact_name],
+        organization_name: 'Agency',
+        government_affiliation: '1'
     }
-    user = User.find_by_email(hash[:contact_email]) || User.create!( valid_options )
+    user = User.find_by_email(hash[:contact_email]) || User.create!( valid_options)
     user.update_attribute(:is_affiliate, true)
     user.update_attribute(:approval_status, 'approved')
 
-    css_properties = ActiveSupport::OrderedHash.new
-    Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
-      case css_property
-        when :show_content_border
-          css_properties[css_property] = hash.has_key?('show_content_border') ? (hash[:show_content_border] == 'true' ? '1' : '0') : '0'
-        when :show_content_box_shadow
-          css_properties[css_property] = hash.has_key?('show_content_box_shadow') ? (hash[:show_content_box_shadow] == 'true' ? '1' : '0') : '0'
-        else
-          css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
-      end
-    end
-
-    affiliate = Affiliate.new(
-      :display_name => hash[:display_name],
-      :header_footer_css => hash[:header_footer_css],
-      :header => hash[:header],
-      :footer => hash[:footer],
-      :staged_header_footer_css => hash[:staged_header_footer_css],
-      :staged_header => hash[:staged_header],
-      :staged_footer => hash[:staged_footer],
-      :is_sayt_enabled => hash[:is_sayt_enabled],
-      :has_staged_content => hash[:has_staged_content] || false,
-      :external_css_url => hash[:external_css_url],
-      :staged_external_css_url => hash[:staged_external_css_url],
-      :favicon_url => hash[:favicon_url],
-      :staged_favicon_url => hash[:staged_favicon_url],
-      :theme => hash[:theme],
-      :staged_theme => hash[:staged_theme],
-      :css_property_hash => css_properties,
-      :uses_managed_header_footer => hash[:uses_managed_header_footer],
-      :staged_uses_managed_header_footer => hash[:staged_uses_managed_header_footer],
-      :managed_header_home_url => hash[:managed_header_home_url],
-      :staged_managed_header_home_url => hash[:staged_managed_header_home_url],
-      :managed_header_text => hash[:managed_header_text],
-      :staged_managed_header_text => hash[:staged_managed_header_text],
-      :mobile_homepage_url => hash[:mobile_homepage_url],
-      :staged_mobile_homepage_url => hash[:staged_mobile_homepage_url],
-      :locale => hash[:locale] || 'en',
-      :is_agency_govbox_enabled => hash[:is_agency_govbox_enabled] || false,
-      :is_medline_govbox_enabled => hash[:is_medline_govbox_enabled] || false,
-      :is_twitter_govbox_enabled => hash[:is_twitter_govbox_enabled] || false,
-      :is_photo_govbox_enabled => hash[:is_photo_govbox_enabled] || false,
-      :is_related_searches_enabled => hash[:is_related_searches_enabled] || true,
-      :ga_web_property_id => hash[:ga_web_property_id],
-      :external_tracking_code => hash[:external_tracking_code],
-      :website => hash[:website])
-    affiliate.name = hash['name']
-    affiliate.save!
+    excluded_keys = %w(contact_email contact_name domains youtube_handles)
+    affiliate = Affiliate.create!(hash.except *excluded_keys)
     affiliate.users << user
-    affiliate.flickr_profiles.create!(:url => hash[:flickr_url], :profile_type => 'user', :profile_id => '1234') if hash[:flickr_url]
-    affiliate.facebook_profiles.create!(:username => hash[:facebook_handle]) if hash[:facebook_handle]
+
     hash[:youtube_handles].split(',').each do |youtube_handle|
       profile = YoutubeProfile.where(username: youtube_handle).first_or_initialize
       profile.save!(validate: false)
       affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists? profile
       managed_feed = affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
-      managed_feed.update_attributes!(shown_in_govbox: true)
-    end if hash[:youtube_handles]
-    affiliate.twitter_profiles.create!(:screen_name => hash[:twitter_handle],
-                                       :name => hash[:twitter_handle],
-                                       :twitter_id => 1234,
-                                       :profile_image_url => 'http://twitter.com/profile.jpg') if hash[:twitter_handle]
-    hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(:domain => domain) } unless hash[:domains].blank?
+    end if hash[:youtube_handles].present?
 
+    hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
   end
 end
 

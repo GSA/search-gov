@@ -22,7 +22,7 @@ class Search
   def initialize(options = {})
     @affiliate = options[:affiliate]
     advanced_query_options = options.slice(:query, :query_quote, :query_not, :query_or, :file_type, :site_excludes)
-    advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.domains_as_array, advanced_query_options)
+    advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.site_domains.pluck(:domain), advanced_query_options)
     @query = advanced_query_builder.build
 
     @page = options[:page].to_i rescue DEFAULT_PAGE

@@ -10,6 +10,7 @@ class Affiliate < ActiveRecord::Base
   INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
   INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
   INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
+  MAX_NAME_LENGTH = 33.freeze
 
   has_many :memberships, :dependent => :destroy
   has_many :users, order: 'contact_name', through: :memberships
@@ -70,12 +71,13 @@ class Affiliate < ActiveRecord::Base
                     :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
                     :ssl => true
 
+  before_validation :set_default_fields, on: :create
+  before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
-  before_validation :set_name, :on => :create
   before_validation :set_default_rss_govbox_label
-  validates_presence_of :display_name, :name, :locale
+  validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :within => (2..33)
+  validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
   validates_format_of :name, :with => /^[a-z0-9._-]+$/
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
 
@@ -100,20 +102,19 @@ class Affiliate < ActiveRecord::Base
                             in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
 
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_staged_header_footer,
-           :validate_managed_header_css_properties,
+  validate :validate_css_property_hash, :validate_staged_header_footer_css, :validate_staged_header_footer,
            :validate_managed_header_links, :validate_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :set_default_fields, :strip_text_columns, :ensure_http_prefix
+  before_save :strip_text_columns, :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
 
   scope :ordered, { :order => 'display_name ASC' }
-  attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :name, :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
+  attr_writer :css_property_hash
+  attr_protected :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
   attr_accessor :is_validate_staged_header_footer
   attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
@@ -145,66 +146,19 @@ class Affiliate < ActiveRecord::Base
   BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
   THEMES = ActiveSupport::OrderedHash.new
-  THEMES[:default] = { :display_name => 'Liberty Bell',
-                       :page_background_color => '#F7F7F7',
-                       :content_background_color => '#FFFFFF',
-                       :content_border_color => '#CACACA',
-                       :content_box_shadow_color => '#555555',
-                       :search_button_text_color => '#FFFFFF',
-                       :search_button_background_color => '#00396F',
-                       :left_tab_text_color => '#9E3030',
-                       :title_link_color => '#2200CC',
-                       :visited_title_link_color => '#800080',
-                       :description_text_color => '#000000',
-                       :url_link_color => '#008000' }
-  THEMES[:elegant] = { :display_name => 'Gettysburg',
-                       :page_background_color => '#F7F7F7',
-                       :content_background_color => '#FFFFFF',
-                       :content_border_color => '#CACACA',
-                       :content_box_shadow_color => '#555555',
-                       :search_button_text_color => '#FFFFFF',
-                       :search_button_background_color => '#336699',
-                       :left_tab_text_color => '#C71D2E',
-                       :title_link_color => '#336699',
-                       :visited_title_link_color => '#8F5576',
-                       :description_text_color => '#595959',
-                       :url_link_color => '#007F00' }
-  THEMES[:fun_blue] = { :display_name => 'Virgin Islands',
-                        :page_background_color => '#F7F7F7',
-                        :content_background_color => '#FFFFFF',
-                        :content_border_color => '#CACACA',
-                        :content_box_shadow_color => '#555555',
-                        :search_button_text_color => '#FFFFFF',
-                        :search_button_background_color => '#0CA5D8',
-                        :left_tab_text_color => '#87CB00',
-                        :title_link_color => '#0CA5D8',
-                        :visited_title_link_color => '#A972AB',
-                        :description_text_color => '#444444',
-                        :url_link_color => '#3DB7E0' }
-  THEMES[:gray] = { :display_name => 'Mount Rushmore',
-                    :page_background_color => '#F7F7F7',
-                    :content_background_color => '#FFFFFF',
-                    :content_border_color => '#CACACA',
-                    :content_box_shadow_color => '#555555',
-                    :search_button_text_color => '#FFFFFF',
-                    :search_button_background_color => '#555555',
-                    :left_tab_text_color => '#A10000',
-                    :title_link_color => '#555555',
-                    :visited_title_link_color => '#854268',
-                    :description_text_color => '#595959',
-                    :url_link_color => '#2C5D80' }
-  THEMES[:natural] = { :display_name => 'Grand Canyon',
-                       :page_background_color => '#F7F7F7',
-                       :content_background_color => '#FFFFFF',
-                       :content_border_color => '#CACACA',
-                       :content_box_shadow_color => '#555555',
-                       :search_button_text_color => '#FFFFFF',
-                       :search_button_background_color => '#B58100',
-                       :left_tab_text_color => '#B58100',
-                       :title_link_color => '#B58100',
-                       :visited_title_link_color => '#008EB5',
-                       :description_text_color => '#333333',
-                       :url_link_color => '#B58100' }
+  THEMES[:default] = {
+      page_background_color: '#F7F7F7',
+      content_background_color: '#FFFFFF',
+      content_border_color: '#CACACA',
+      content_box_shadow_color: '#555555',
+      search_button_text_color: '#FFFFFF',
+      search_button_background_color: '#00396F',
+      left_tab_text_color: '#9E3030',
+      title_link_color: '#2200CC',
+      visited_title_link_color: '#800080',
+      description_text_color: '#000000',
+      url_link_color: '#008000' }
+
   THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = {
@@ -213,19 +167,7 @@ class Affiliate < ActiveRecord::Base
       :show_content_box_shadow => '0',
       :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
 
-  DEFAULT_MANAGED_HEADER_CSS_PROPERTIES = {
-      :header_background_color => THEMES[:default][:search_button_background_color],
-      :header_text_color => THEMES[:default][:search_button_text_color],
-      :header_footer_link_background_color => THEMES[:default][:search_button_text_color],
-      :header_footer_link_color => THEMES[:default][:search_button_background_color] }
-
-  ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
-      header footer header_footer_css nested_header_footer_css
-      favicon_url external_css_url
-      uses_managed_header_footer managed_header_css_properties
-      managed_header_home_url managed_header_text managed_header_links
-      managed_footer_links theme css_property_hash
-      mobile_homepage_url look_and_feel_css mobile_look_and_feel_css)
+  ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -242,29 +184,16 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  define_json_columns_accessors :column_name_method => :previous_fields, :fields => [:previous_header, :previous_footer]
-  define_json_columns_accessors :column_name_method => :live_fields,
-                                :fields => [:header, :footer,
-                                            :header_footer_css, :nested_header_footer_css,
-                                            :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
-                                            :managed_header_links, :managed_footer_links,
-                                            :external_tracking_code, :submitted_external_tracking_code, :mobile_homepage_url,
-                                            :look_and_feel_css, :mobile_look_and_feel_css]
-  define_json_columns_accessors :column_name_method => :staged_fields,
-                                :fields => [:staged_header, :staged_footer,
-                                            :staged_header_footer_css, :staged_nested_header_footer_css,
-                                            :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
-                                            :staged_managed_header_links, :staged_managed_footer_links,
-                                            :staged_mobile_homepage_url,
-                                            :staged_look_and_feel_css, :staged_mobile_look_and_feel_css]
-
-  def domains_as_array(reload = false)
-    @domains_as_array ||= site_domains(reload).collect(&:domain)
-  end
-
-  def excluded_domains_as_array
-    @excluded_domains_as_array ||= excluded_domains.collect(&:domain)
-  end
+  define_json_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
+  define_json_columns_accessors column_name_method: :live_fields,
+                                fields: [:header, :footer,
+                                         :header_footer_css, :nested_header_footer_css,
+                                         :managed_header_links, :managed_footer_links,
+                                         :external_tracking_code, :submitted_external_tracking_code,
+                                         :look_and_feel_css, :mobile_look_and_feel_css]
+  define_json_columns_accessors column_name_method: :staged_fields,
+                                fields: [:staged_header, :staged_footer,
+                                         :staged_header_footer_css, :staged_nested_header_footer_css]
 
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
@@ -326,19 +255,10 @@ class Affiliate < ActiveRecord::Base
 
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
-    if theme.to_sym == :custom
-      @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_names => true))
+    if theme.to_sym == :default
+      @css_property_hash ||= THEMES[:default].reverse_merge(load_css_properties)
     else
-      @css_property_hash ||= css_properties.blank? ? THEMES[self.theme.to_sym] : THEMES[self.theme.to_sym].reverse_merge(JSON.parse(css_properties, :symbolize_names => true))
-    end
-  end
-
-  def staged_css_property_hash(reload = false)
-    @staged_css_property_hash = nil if reload
-    if staged_theme.to_sym == :custom
-      @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_names => true))
-    else
-      @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].reverse_merge(JSON.parse(staged_css_properties, :symbolize_names => true))
+      @css_property_hash ||= load_css_properties
     end
   end
 
@@ -408,79 +328,6 @@ class Affiliate < ActiveRecord::Base
     features.any? ? Feature.where('id not in (?)', features.collect(&:id)) : Feature.all
   end
 
-  def autodiscover
-    if site_domains.size == 1
-      autodiscover_homepage_url
-      autodiscover_rss_feeds
-      autodiscover_favicon_url
-      autodiscover_social_media
-    end
-  end
-
-  def autodiscover_homepage_url
-    return unless website.blank? && (site_domains.count == 1)
-    domain = site_domains.first.domain
-    %W(http://#{domain} http://www.#{domain}).any? do |url|
-      page = open(url) rescue nil
-      if page
-        update_attributes!(website: url)
-        true
-      else
-        false
-      end
-    end
-  end
-
-  def autodiscover_rss_feeds
-    begin
-      @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
-      @home_page_doc.xpath("//link[@rel='alternate']").each do |link_element|
-        url = link_element.attribute("href").value
-        title = link_element.attribute("title").blank? ? url : link_element.attribute("title").value
-        rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: self.class.name, url: url).first_or_initialize
-        self.rss_feeds.create(name: title, rss_feed_urls: [rss_feed_url]) if rss_feed_url.valid?
-      end
-    rescue Exception => e
-      Rails.logger.error("Error when autodiscovering rss feeds for #{self.name}: #{e.message}")
-    end
-  end
-
-  def autodiscover_favicon_url
-    begin
-      home_page_url = "http://#{site_domains.first.domain}"
-      @home_page_doc = @home_page_doc || Nokogiri::HTML(open(home_page_url))
-      icon_url = nil
-      @home_page_doc.xpath("//link[@rel='shortcut icon' or @rel='icon']").each do |link_element|
-        icon_url = link_element.attribute("href").value
-        icon_url = icon_url =~ %r[^https?://]i ? icon_url : "#{home_page_url}#{icon_url}"
-        break
-      end
-      unless icon_url
-        icon_url = home_page_url + "/favicon.ico" unless (timeout(10) { open(home_page_url + "/favicon.ico") } rescue nil).nil?
-      end
-      update_attributes(:favicon_url => icon_url) unless icon_url.nil?
-    rescue Exception => e
-      Rails.logger.error("Error when autodiscovering favicon for #{self.name}: #{e.message}")
-    end
-  end
-
-  def autodiscover_social_media
-    begin
-      @home_page_doc = @home_page_doc || Nokogiri::HTML(open("http://#{site_domains.first.domain}"))
-      @home_page_doc.xpath("//a").each do |anchor_tag|
-        href = anchor_tag.attribute("href").value rescue nil
-        if href
-          self.twitter_profiles.create(:screen_name => href.split("/").last) if href =~ /http:\/\/(www\.)?twitter.com\/[A-Za-z0-9]+$/
-          self.facebook_profiles.create(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?facebook.com\/[A-Za-z0-9]+$/
-          self.flickr_profiles.create(:url => href) if href =~ /http:\/\/(www\.)?flickr.com\/(photos|groups)\/[A-Za-z0-9]+$/
-          self.youtube_profiles.create!(:username => href.split("/").last) if href =~ /http:\/\/(www\.)?youtube.com\/[A-Za-z0-9]+$/
-        end
-      end
-    rescue Exception => e
-      Rails.logger.error("Error when autodiscovering social media for #{self.name}: #{e.message}")
-    end
-  end
-
   def import_flickr_photos
     self.flickr_profiles.each(&:import_photos)
   end
@@ -496,8 +343,7 @@ class Affiliate < ActiveRecord::Base
 
   def searchable_twitter_ids
     affiliate_twitter_settings.includes(:twitter_profile).map do |ats|
-      twitter_ids = []
-      twitter_ids.push(ats.twitter_profile.twitter_id)
+      twitter_ids = [ats.twitter_profile.twitter_id]
       twitter_ids.push(ats.twitter_profile.twitter_lists.map(&:member_ids)) if ats.show_lists?
       twitter_ids
     end.flatten.uniq
@@ -527,21 +373,6 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def copy_image_assets_from_live_to_staged!
-    self.staged_favicon_url = favicon_url
-    staged_css_property_hash[:page_background_image_repeat] = css_property_hash[:page_background_image_repeat]
-    copy_attachment_attributes :header_image, :staged_header_image
-    copy_attachment_attributes :mobile_logo, :staged_mobile_logo
-    copy_attachment_attributes :page_background_image, :staged_page_background_image
-    save!
-  end
-
-  def copy_css_property_hash_from_live_to_staged!
-    self.staged_theme = theme
-    self.staged_css_property_hash = css_property_hash
-    save!
-  end
-
   def uses_custom_theme?
     theme != 'default'
   end
@@ -556,15 +387,8 @@ class Affiliate < ActiveRecord::Base
     boosted_contents.each { |bs| bs.remove_from_index }
   end
 
-  def set_name
-    if self.name.blank?
-      self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0, 33] unless self.display_name.blank?
-      self.name = nil if !self.name.blank? and self.name.length < 3
-      self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)
-      self.name = Digest::MD5.hexdigest("#{Time.now.to_s}")[0..8] if self.name.blank?
-    else
-      self.name = self.name.downcase
-    end
+  def downcase_name
+    self.name = name.downcase if name.present?
   end
 
   def set_default_rss_govbox_label
@@ -572,20 +396,13 @@ class Affiliate < ActiveRecord::Base
   end
 
   def ensure_http_prefix
-    set_http_prefix :favicon_url, :staged_favicon_url,
-                    :external_css_url, :staged_external_css_url,
-                    :managed_header_home_url, :staged_managed_header_home_url,
-                    :mobile_homepage_url, :staged_mobile_homepage_url
+    set_http_prefix :favicon_url, :external_css_url
   end
 
   def validate_css_property_hash
     unless @css_property_hash.blank?
       validate_font_family @css_property_hash
       validate_color_in_css_property_hash @css_property_hash
-    end
-    unless @staged_css_property_hash.blank?
-      validate_font_family @staged_css_property_hash
-      validate_color_in_css_property_hash @staged_css_property_hash
     end
   end
 
@@ -598,17 +415,6 @@ class Affiliate < ActiveRecord::Base
       DEFAULT_CSS_PROPERTIES.keys.each do |key|
         validate_color_property(key, hash[key])
       end
-    end
-  end
-
-  def validate_managed_header_css_properties
-    validates_color_in_managed_header_css_properties staged_managed_header_css_properties unless staged_managed_header_css_properties.blank?
-    validates_color_in_managed_header_css_properties managed_header_css_properties unless managed_header_css_properties.blank?
-  end
-
-  def validates_color_in_managed_header_css_properties(css_properties)
-    DEFAULT_MANAGED_HEADER_CSS_PROPERTIES.keys.each do |key|
-      validate_color_property(key, css_properties[key])
     end
   end
 
@@ -640,12 +446,10 @@ class Affiliate < ActiveRecord::Base
 
   def validate_managed_header_links
     validate_managed_links(managed_header_links, :header)
-    validate_managed_links(staged_managed_header_links, :header)
   end
 
   def validate_managed_footer_links
     validate_managed_links(managed_footer_links, :footer)
-    validate_managed_links(staged_managed_footer_links, :footer)
   end
 
   def validate_managed_links(links, link_type)
@@ -662,42 +466,16 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_fields
     self.theme = THEMES.keys.first.to_s if theme.blank?
-    self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
-    self.managed_header_text = display_name if managed_header_text.nil?
-    self.staged_managed_header_text = display_name if staged_managed_header_text.nil?
-
-    if new_record?
-      self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
-      self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
-      @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
-      @staged_css_property_hash = ActiveSupport::OrderedHash.new if @staged_css_property_hash.nil?
-    end
-
-    if uses_managed_header_footer?
-      self.managed_header_css_properties = ActiveSupport::OrderedHash.new if managed_header_css_properties.nil?
-      current_css_property_hash = theme.to_sym == :custom ? css_property_hash : THEMES[theme.to_sym]
-      self.managed_header_css_properties[:header_background_color] = current_css_property_hash[:search_button_background_color] if managed_header_css_properties[:header_background_color].nil?
-      self.managed_header_css_properties[:header_text_color] = current_css_property_hash[:search_button_text_color] if managed_header_css_properties[:header_text_color].nil?
-      self.managed_header_css_properties[:header_footer_link_color] = current_css_property_hash[:search_button_background_color] if managed_header_css_properties[:header_footer_link_color].blank?
-      self.managed_header_css_properties[:header_footer_link_background_color] = current_css_property_hash[:search_button_text_color] if managed_header_css_properties[:header_footer_link_background_color].blank?
-    end
-
-    if staged_uses_managed_header_footer?
-      self.staged_managed_header_css_properties = ActiveSupport::OrderedHash.new if staged_managed_header_css_properties.nil?
-      current_staged_css_property_hash = staged_theme.to_sym == :custom ? staged_css_property_hash : THEMES[staged_theme.to_sym]
-      self.staged_managed_header_css_properties[:header_background_color] = current_staged_css_property_hash[:search_button_background_color] if staged_managed_header_css_properties[:header_background_color].nil?
-      self.staged_managed_header_css_properties[:header_text_color] = current_staged_css_property_hash[:search_button_text_color] if staged_managed_header_css_properties[:header_text_color].nil?
-      self.staged_managed_header_css_properties[:header_footer_link_color] = current_staged_css_property_hash[:search_button_background_color] if staged_managed_header_css_properties[:header_footer_link_color].blank?
-      self.staged_managed_header_css_properties[:header_footer_link_background_color] = current_staged_css_property_hash[:search_button_text_color] if staged_managed_header_css_properties[:header_footer_link_background_color].blank?
-    end
+    self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
+    self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
+    @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
   end
 
   def set_css_properties
     self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
-    self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
   end
 
-  def validate_header_footer_css
+  def validate_staged_header_footer_css
     return unless is_validate_staged_header_footer
     begin
       self.staged_nested_header_footer_css = generate_nested_css(staged_header_footer_css)
@@ -707,15 +485,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def generate_nested_css(css)
-    return if css.blank?
-    original_sass_values = Sass::CSS.new(css).render.split("\n")
-    sass_values = ".header-footer\n"
-    at_rules_to_reject = %w(@charset @import)
-    sanitized_sass_values = original_sass_values.reject { |sass_value| sass_value =~ /^(#{at_rules_to_reject.join('|')})/ }.
-        collect { |sass_value| "  #{sass_value}" }.
-        join("\n")
-    sass_values << sanitized_sass_values
-    Renderers::Sass.new(sass_values).render
+    Renderers::CssToNestedCss.new('.header-footer', css).render if css.present?
   end
 
   def validate_staged_header_footer
@@ -812,6 +582,11 @@ class Affiliate < ActiveRecord::Base
     self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
 
+  def load_css_properties
+    return {} if css_properties.blank?
+    JSON.parse(css_properties, :symbolize_names => true)
+  end
+
   def clear_existing_attachments
     if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
       page_background_image.clear
@@ -839,13 +614,6 @@ class Affiliate < ActiveRecord::Base
     self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
   end
 
-  def copy_attachment_attributes(from, to)
-    self.send("#{to.to_s}_file_name=", self.send("#{from}_file_name"))
-    self.send("#{to.to_s}_content_type=", self.send("#{from}_content_type"))
-    self.send("#{to.to_s}_file_size=", self.send("#{from}_file_size"))
-    self.send("#{to.to_s}_updated_at=", self.send("#{from}_updated_at"))
-  end
-
   def set_is_validate_staged_header_footer(attributes)
     self.is_validate_staged_header_footer = attributes[:staged_uses_managed_header_footer] == '0'
   end
@@ -854,23 +622,11 @@ class Affiliate < ActiveRecord::Base
     renderer = Renderers::AffiliateCss.new(build_css_hash)
     self.look_and_feel_css = renderer.render_desktop_css
     self.mobile_look_and_feel_css = renderer.render_mobile_css
-
-    renderer = Renderers::AffiliateCss.new(build_staged_css_hash)
-    self.staged_look_and_feel_css = renderer.render_desktop_css
-    self.staged_mobile_look_and_feel_css = renderer.render_mobile_css
   end
 
   def build_css_hash
     css_hash = {}
     css_hash.merge!(css_property_hash) if css_property_hash(true)
-    css_hash.merge!(managed_header_css_properties) if managed_header_css_properties
     css_hash
-  end
-
-  def build_staged_css_hash
-    staged_css_hash = {}
-    staged_css_hash.merge!(staged_css_property_hash) if staged_css_property_hash(true)
-    staged_css_hash.merge!(staged_managed_header_css_properties) if staged_managed_header_css_properties
-    staged_css_hash
   end
 end

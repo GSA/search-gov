@@ -89,35 +89,11 @@ class SearchesController < ApplicationController
     @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
-    if @affiliate && params["staged"]
+    if @affiliate && params['staged']
       @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
-      @affiliate.favicon_url = @affiliate.staged_favicon_url
-      @affiliate.external_css_url = @affiliate.staged_external_css_url
-      @affiliate.theme = @affiliate.staged_theme
-      @affiliate.css_properties = @affiliate.staged_css_properties
       @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
-      @affiliate.managed_header_css_properties = @affiliate.staged_managed_header_css_properties
-      @affiliate.managed_header_home_url = @affiliate.staged_managed_header_home_url
-      @affiliate.managed_header_text = @affiliate.staged_managed_header_text
-      @affiliate.header_image_file_name = @affiliate.staged_header_image_file_name
-      @affiliate.header_image_content_type = @affiliate.staged_header_image_content_type
-      @affiliate.header_image_file_size = @affiliate.staged_header_image_file_size
-      @affiliate.header_image_updated_at = @affiliate.staged_header_image_updated_at
-      @affiliate.managed_header_links = @affiliate.staged_managed_header_links
-      @affiliate.managed_footer_links = @affiliate.staged_managed_footer_links
-      @affiliate.page_background_image_file_name = @affiliate.staged_page_background_image_file_name
-      @affiliate.page_background_image_content_type = @affiliate.staged_page_background_image_content_type
-      @affiliate.page_background_image_file_size = @affiliate.staged_page_background_image_file_size
-      @affiliate.page_background_image_updated_at = @affiliate.staged_page_background_image_updated_at
-      @affiliate.mobile_homepage_url = @affiliate.staged_mobile_homepage_url
-      @affiliate.mobile_logo_file_name = @affiliate.staged_mobile_logo_file_name
-      @affiliate.mobile_logo_content_type = @affiliate.staged_mobile_logo_content_type
-      @affiliate.mobile_logo_file_size = @affiliate.staged_mobile_logo_file_size
-      @affiliate.mobile_logo_updated_at = @affiliate.staged_mobile_logo_updated_at
-      @affiliate.look_and_feel_css = @affiliate.staged_look_and_feel_css
-      @affiliate.mobile_look_and_feel_css = @affiliate.staged_mobile_look_and_feel_css
     end
 
     @affiliate.use_strictui if params[:strictui]

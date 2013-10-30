@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031151846) do
+ActiveRecord::Schema.define(:version => 20131101025738) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -49,69 +49,52 @@ ActiveRecord::Schema.define(:version => 20131031151846) do
   add_index "affiliate_twitter_settings", ["affiliate_id", "twitter_profile_id"], :name => "aff_id_tp_id"
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                                                                :null => false
+    t.string   "name",                                                                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_staged_content",                                              :default => false,  :null => false
+    t.boolean  "has_staged_content",                                       :default => false,  :null => false
     t.string   "website"
-    t.boolean  "is_sayt_enabled",                                                 :default => true
-    t.string   "display_name",                                                                        :null => false
+    t.boolean  "is_sayt_enabled",                                          :default => true
+    t.string   "display_name",                                                                 :null => false
     t.string   "external_css_url"
-    t.string   "staged_external_css_url"
     t.string   "favicon_url"
-    t.string   "staged_favicon_url"
     t.text     "css_properties"
-    t.text     "staged_css_properties"
     t.string   "theme"
-    t.string   "staged_theme"
-    t.string   "locale",                                                          :default => "en",   :null => false
+    t.string   "locale",                                                   :default => "en",   :null => false
     t.text     "scope_ids"
-    t.boolean  "is_agency_govbox_enabled",                                        :default => false
-    t.boolean  "is_medline_govbox_enabled",                                       :default => false
-    t.text     "previous_fields_json",                      :limit => 2147483647
-    t.text     "live_fields_json",                          :limit => 2147483647
-    t.text     "staged_fields_json",                        :limit => 2147483647
+    t.boolean  "is_agency_govbox_enabled",                                 :default => false
+    t.boolean  "is_medline_govbox_enabled",                                :default => false
+    t.text     "previous_fields_json",               :limit => 2147483647
+    t.text     "live_fields_json",                   :limit => 2147483647
+    t.text     "staged_fields_json",                 :limit => 2147483647
     t.boolean  "uses_managed_header_footer"
     t.boolean  "staged_uses_managed_header_footer"
     t.string   "header_image_file_name"
     t.string   "header_image_content_type"
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
-    t.string   "staged_header_image_file_name"
-    t.string   "staged_header_image_content_type"
-    t.integer  "staged_header_image_file_size"
-    t.datetime "staged_header_image_updated_at"
-    t.integer  "fetch_concurrency",                                               :default => 1,      :null => false
-    t.string   "default_search_label",                      :limit => 20,                             :null => false
-    t.boolean  "is_related_searches_enabled",                                     :default => true
-    t.string   "left_nav_label",                            :limit => 20
-    t.string   "ga_web_property_id",                        :limit => 20
+    t.integer  "fetch_concurrency",                                        :default => 1,      :null => false
+    t.string   "default_search_label",               :limit => 20,                             :null => false
+    t.boolean  "is_related_searches_enabled",                              :default => true
+    t.string   "left_nav_label",                     :limit => 20
+    t.string   "ga_web_property_id",                 :limit => 20
     t.string   "page_background_image_file_name"
     t.string   "page_background_image_content_type"
     t.integer  "page_background_image_file_size"
     t.datetime "page_background_image_updated_at"
-    t.string   "staged_page_background_image_file_name"
-    t.string   "staged_page_background_image_content_type"
-    t.integer  "staged_page_background_image_file_size"
-    t.datetime "staged_page_background_image_updated_at"
-    t.boolean  "is_twitter_govbox_enabled",                                       :default => false
-    t.boolean  "is_photo_govbox_enabled",                                         :default => false
+    t.boolean  "is_photo_govbox_enabled",                                  :default => false
     t.string   "mobile_logo_file_name"
     t.string   "mobile_logo_content_type"
     t.integer  "mobile_logo_file_size"
     t.datetime "mobile_logo_updated_at"
-    t.string   "staged_mobile_logo_file_name"
-    t.string   "staged_mobile_logo_content_type"
-    t.integer  "staged_mobile_logo_file_size"
-    t.datetime "staged_mobile_logo_updated_at"
-    t.boolean  "jobs_enabled",                                                    :default => false,  :null => false
+    t.boolean  "jobs_enabled",                                             :default => false,  :null => false
     t.integer  "agency_id"
-    t.boolean  "raw_log_access_enabled",                                          :default => false,  :null => false
-    t.string   "search_engine",                                                   :default => "Bing", :null => false
-    t.boolean  "is_rss_govbox_enabled",                                           :default => false,  :null => false
-    t.string   "rss_govbox_label",                                                                    :null => false
-    t.boolean  "is_video_govbox_enabled",                                         :default => true,   :null => false
-    t.boolean  "dap_enabled",                                                     :default => true,   :null => false
+    t.boolean  "raw_log_access_enabled",                                   :default => false,  :null => false
+    t.string   "search_engine",                                            :default => "Bing", :null => false
+    t.boolean  "is_rss_govbox_enabled",                                    :default => false,  :null => false
+    t.string   "rss_govbox_label",                                                             :null => false
+    t.boolean  "is_video_govbox_enabled",                                  :default => true,   :null => false
+    t.boolean  "dap_enabled",                                              :default => true,   :null => false
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
@@ -648,7 +631,6 @@ ActiveRecord::Schema.define(:version => 20131031151846) do
     t.string   "name",                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "shown_in_govbox",         :default => false, :null => false
     t.boolean  "is_managed",              :default => false, :null => false
     t.boolean  "is_video",                :default => false, :null => false
     t.string   "owner_type",                                 :null => false

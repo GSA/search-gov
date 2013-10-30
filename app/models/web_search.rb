@@ -60,8 +60,8 @@ class WebSearch < Search
   end
 
   def domains_scope_options
-    {included_domains: @affiliate.domains_as_array,
-     excluded_domains: @affiliate.excluded_domains_as_array,
+    {included_domains: @affiliate.site_domains.pluck(:domain),
+     excluded_domains: @affiliate.excluded_domains.pluck(:domain),
      scope_ids: @affiliate.scope_ids_as_array,
      site_limits: @options[:site_limits]}
   end

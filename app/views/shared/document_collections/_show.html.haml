@@ -1,9 +1,0 @@
-%tbody
-  %tr
-    %td.name Name
-    %td= @document_collection.name
-  %tr
-    %td.name Url Prefixes
-    %td.url-prefixes
-      - @document_collection.url_prefixes.each do |url_prefix|
-        %span= url_prefix.prefix

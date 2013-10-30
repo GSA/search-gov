@@ -70,7 +70,7 @@ module SearchHelper
   end
 
   def excluded_highlight_terms(affiliate, query)
-    excluded_domains = affiliate.present? ? affiliate.domains_as_array : []
+    excluded_domains = affiliate.present? ? affiliate.site_domains.pluck(:domain) : []
     excluded_domains.reject!{|domain| query =~ /#{domain}/ } if query.present?
     excluded_domains
   end
@@ -346,7 +346,7 @@ module SearchHelper
 
   def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
     feed = RssFeed.owned_by_affiliate.joins(:rss_feed_urls).
-        where(owner_id: affiliate.id, 'rss_feed_urls.id' => rss_feed_url_id, shown_in_govbox: true).first
+        where(owner_id: affiliate.id, 'rss_feed_urls.id' => rss_feed_url_id).first
     content_tag(:span, feed.name, class: 'feed_name') if feed
   end
 

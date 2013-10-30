@@ -216,16 +216,16 @@ Feature: Affiliate Search
       | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
       | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable | shown_in_govbox | is_managed |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         | true            |            |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         | true            |            |
-      | Videos        |                                                    | true         | true            | true       |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        | false           |            |
+      | name          | url                                                | is_navigable | is_managed |
+      | Press         | http://www.whitehouse.gov/feed/press               | true         |            |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |            |
+      | Videos        |                                                    | true         | true       |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        |            |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name                  | url                                                              | is_navigable | shown_in_govbox | is_managed |
-      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         | true            |            |
-      | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/es-photo-gallery            | true         | true            |            |
-      | Spanish Videos        |                                                                  | true         | true            | true       |
+      | name                  | url                                                              | is_navigable | is_managed |
+      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
+      | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/es-photo-gallery            | true         |            |
+      | Spanish Videos        |                                                                  | true         | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
@@ -401,13 +401,13 @@ Feature: Affiliate Search
       | bar site         | en.bar.gov | aff@bar.gov   | John Bar     | en     |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "en.bar.gov" has the following RSS feeds:
-      | name          | url                                                                  | is_navigable | shown_in_govbox |
-      | Press         | http://www.whitehouse.gov/feed/press                                 | true         | true            |
-      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         | true            |
+      | name          | url                                                                  | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true         |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                                                    | is_navigable | shown_in_govbox |
-      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         | true            |
-      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         | true            |
+      | name           | url                                                                    | is_navigable |
+      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president   | briefingroom | economy        |
@@ -589,8 +589,8 @@ Feature: Affiliate Search
       | display_name | name    | contact_email | contact_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name  | url                                  | is_navigable | shown_in_govbox |
-      | Press | http://www.whitehouse.gov/feed/press | true         | false           |
+      | name  | url                                  | is_navigable |
+      | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
       | link                                                                                                       | title      | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/the-press-office/2013/05/05/remarks-president-ohio-state-university-commencement | First item | uuid1 | day           | item First news item for the feed |
@@ -848,9 +848,9 @@ Feature: Affiliate Search
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                  | is_navigable | shown_in_govbox | is_managed |
-      | Press  | http://www.whitehouse.gov/feed/press | true         | true            |            |
-      | Videos |                                      | true         | true            | true       |
+      | name   | url                                  | is_navigable | is_managed |
+      | Press  | http://www.whitehouse.gov/feed/press | true         |            |
+      | Videos |                                      | true         | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
@@ -879,9 +879,9 @@ Feature: Affiliate Search
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                  | is_navigable | shown_in_govbox | is_managed |
-      | Press          | http://www.whitehouse.gov/feed/press | true         | true            |            |
-      | Spanish Videos |                                      | true         | true            | true       |
+      | name           | url                                  | is_navigable | is_managed |
+      | Press          | http://www.whitehouse.gov/feed/press | true         |            |
+      | Spanish Videos |                                      | true         | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | Noticia uno | uuid1 | day           | item First news item for the feed |
@@ -907,9 +907,9 @@ Feature: Affiliate Search
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | locale | is_twitter_govbox_enabled |
-      | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
-      | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     | true                      |
+      | display_name | name       | contact_email | contact_name | locale |
+      | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     |
+      | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And the following Twitter Profiles exist:
       | screen_name | name            | twitter_id | affiliate  |
       | USASearch   | USASearch.gov   | 123        | bar.gov    |
@@ -1022,9 +1022,9 @@ Feature: Affiliate Search
       | name | prefixes                         | is_navigable |
       | Blog | http://usasearch.howto.gov/blog/ | true         |
     And affiliate "agency.gov" has the following RSS feeds:
-      | name  | url                                                | is_navigable | shown_in_govbox |
-      | Press | http://www.whitehouse.gov/feed/press               | true         | false           |
-      | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         | false           |
+      | name  | url                                                | is_navigable |
+      | Press | http://www.whitehouse.gov/feed/press               | true         |
+      | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     When I am on agency.gov's search page with site limited to "answers.usa.gov"
     And I fill in "query" with "jobs"
     And I press "Search"

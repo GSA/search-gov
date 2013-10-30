@@ -40,7 +40,6 @@ describe Sites::DomainsController do
 
           domain.should_receive(:save).and_return(true)
           site.should_receive(:normalize_site_domains)
-          site.should_receive(:autodiscover_homepage_url)
 
           post :create,
                site_id: site.id,

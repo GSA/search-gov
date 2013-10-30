@@ -67,10 +67,6 @@ describe RssFeed do
       end
     end
 
-    it "should set shown_in_govbox to false by default" do
-      RssFeed.create!(@valid_attributes).shown_in_govbox.should be_false
-    end
-
     context "when the RSS feed is a valid feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')

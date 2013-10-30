@@ -42,7 +42,7 @@ class Sites::TwitterProfilesController < Sites::SetupSiteController
   private
 
   def twitter_profile_params
-    @twitter_profile_params ||= params[:twitter_profile].slice(:screen_name)
+    @twitter_profile_params ||= params.require(:twitter_profile).permit(:screen_name)
   end
 
   def twitter_setting_params

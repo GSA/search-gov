@@ -8,19 +8,16 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
                                         RssFeedUrl::PENDING_STATUS)
     rss_feed_url.save!(validate: false)
 
-    shown_in_govbox = hash[:shown_in_govbox].blank? ? true : hash[:shown_in_govbox]
     is_managed = hash[:is_managed].blank? ? false : hash[:is_managed]
     show_only_media_content = hash[:show_only_media_content].blank? ? false : hash[:show_only_media_content]
 
     if is_managed
       rss_feed = affiliate.rss_feeds.where(is_managed: true).first_or_initialize
       rss_feed.update_attributes!(name: hash[:name],
-                                  shown_in_govbox: shown_in_govbox,
                                   show_only_media_content: show_only_media_content)
     else
       rss_feed = affiliate.rss_feeds.create!(name: hash[:name],
                                              is_managed: is_managed,
-                                             shown_in_govbox: shown_in_govbox,
                                              show_only_media_content: show_only_media_content,
                                              rss_feed_urls: [rss_feed_url])
     end

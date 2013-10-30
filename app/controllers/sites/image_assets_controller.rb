@@ -4,7 +4,6 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
 
   def update
     if @site.update_attributes(site_params)
-      @site.copy_image_assets_from_live_to_staged!
       redirect_to edit_site_image_assets_path(@site),
                   flash: { success: 'You have updated your image assets.' }
     else

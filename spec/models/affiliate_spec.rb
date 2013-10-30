@@ -6,14 +6,14 @@ describe Affiliate do
 
   before(:each) do
     @valid_create_attributes = {
-      :display_name => "My Awesome Site",
-      :website => "http://www.someaffiliate.gov",
-      :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>",
-      :theme => "elegant",
-      :locale => 'es'
-    }
-    @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
+        display_name: 'My Awesome Site',
+        name: 'myawesomesite',
+        website: 'http://www.someaffiliate.gov',
+        header: '<table><tr><td>html layout from 1998</td></tr></table>',
+        footer: '<center>gasp</center>',
+        locale: 'es'
+    }.freeze
+    @valid_attributes = @valid_create_attributes.merge(name: 'someaffiliate.gov').freeze
   end
 
   describe "Creating new instance of Affiliate" do
@@ -58,7 +58,6 @@ describe Affiliate do
     it { should have_many(:daily_usage_stats).dependent(:delete_all) }
     it { should have_many(:daily_search_module_stats).dependent(:delete_all) }
     it { should have_many(:daily_query_stats).dependent(:destroy) }
-    it { should_not allow_mass_assignment_of(:name) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
@@ -70,11 +69,6 @@ describe Affiliate do
       Affiliate.create!(@valid_create_attributes)
     end
 
-    it "should generate Site Handle based on display name" do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site"))
-      affiliate.name.should == "affiliatesite"
-    end
-
     it "should downcase the name if it's uppercase" do
       affiliate = Affiliate.new(@valid_create_attributes)
       affiliate.name = 'AffiliateSite'
@@ -83,36 +77,6 @@ describe Affiliate do
     end
 
     describe "on create" do
-      it "should generate Site Handle based on MD5 hash value when the display name is too short" do
-        Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "A"))
-        affiliate.name.should == "hexvalue"
-      end
-
-      it "should generate Site Handle based on MD5 hash value if display name contains less than 3 valid characters" do
-        Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "3!!"))
-        affiliate.name.should == "hexvalue"
-      end
-
-      it "should generate Site Handle using MD5 hash value when the candidate Site Handle already exists" do
-        Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
-        first_affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site123___----...."))
-        first_affiliate.name.should == "affiliatesite123___----...."
-        second_affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site123___----...."))
-        second_affiliate.name.should == "hexvalue"
-      end
-
-      it "should generate Site Handle with 33 characters if display name is greater than 33 characters" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "1234567890!!1234567890!!1234567890!!123456"))
-        affiliate.name.should == "123456789012345678901234567890123"
-      end
-
-      it "should generate Site Handle with 3 characters if display name is 3 characters" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "123"))
-        affiliate.name.should == "123"
-      end
-
       it "should update css_properties with json string from css property hash" do
         css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
@@ -120,25 +84,19 @@ describe Affiliate do
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
-      it "should update staged_css_properties with json string from staged_css property hash" do
-        staged_css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
-        JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
-        JSON.parse(affiliate.staged_css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
-      end
-
       it "should normalize site domains" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(
-                                        :site_domains_attributes => {'0' => {:domain => 'www1.usa.gov'},
-                                                                     '1' => {:domain => 'www2.usa.gov'},
-                                                                     '2' => {:domain => 'usa.gov'}}))
+                                          site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
+                                                                     '1' => { domain: 'www2.usa.gov' },
+                                                                     '2' => { domain: 'usa.gov' } }))
         affiliate.site_domains(true).count.should == 1
         affiliate.site_domains.first.domain.should == 'usa.gov'
 
         affiliate = Affiliate.create!(
-          @valid_create_attributes.merge(
-            site_domains_attributes: {'0' => {domain: 'sec.gov'},
-                                      '1' => {domain: 'www.sec.gov.staging.net'}}))
+            @valid_create_attributes.merge(
+                name: 'anothersite',
+                site_domains_attributes: { '0' => { domain: 'sec.gov' },
+                                           '1' => { domain: 'www.sec.gov.staging.net' } }))
         expect(affiliate.site_domains(true).count).to eq(2)
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
@@ -176,16 +134,10 @@ describe Affiliate do
         affiliate = Affiliate.create! @valid_attributes
 
         expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
-        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
-        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#369\}/)
+        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
+        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
         expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
-        expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
-
-        expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
-        expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
-        expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
-        expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
-        expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#20c\}/)
+        expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:purple\}/)
       end
     end
   end
@@ -193,148 +145,60 @@ describe Affiliate do
   describe "on save" do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
-    it "should set theme columns by default" do
-      affiliate.theme = nil
-      affiliate.staged_theme = nil
-      affiliate.save!
-      affiliate.theme.should == 'default'
-      affiliate.staged_theme.should == 'default'
-    end
-
-    it "should set managed header text fields to display_name if the current values are nil" do
-      affiliate.display_name = 'my agency'
-      affiliate.managed_header_text = nil
-      affiliate.staged_managed_header_text = nil
-      affiliate.save!
-      affiliate.managed_header_text.should == 'my agency'
-      affiliate.staged_managed_header_text.should == 'my agency'
-    end
-
-    it "should not set managed header text fields to display_name if the current values are blank but not nil" do
-      affiliate.display_name = 'my agency'
-      affiliate.managed_header_text = '  '
-      affiliate.staged_managed_header_text = '  '
-      affiliate.save!
-      affiliate.managed_header_text.should be_blank
-      affiliate.staged_managed_header_text.should be_blank
-    end
-
-    it "should set managed_header_css_properties if the affiliate uses_managed_header_footer" do
-      affiliate.theme = 'elegant'
-      affiliate.managed_header_css_properties = nil
-      affiliate.uses_managed_header_footer = true
-
-      affiliate.staged_theme = 'fun_blue'
-      affiliate.staged_uses_managed_header_footer = true
-      affiliate.staged_managed_header_css_properties = nil
-
-      affiliate.save!
-
-      affiliate.managed_header_css_properties[:header_background_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
-      affiliate.managed_header_css_properties[:header_text_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
-      affiliate.managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
-      affiliate.managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
-      affiliate.staged_managed_header_css_properties[:header_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
-      affiliate.staged_managed_header_css_properties[:header_text_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
-      affiliate.staged_managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
-      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
-    end
-
-    it "should set default header_footer_link_color and header_footer_link_background_color" do
-      affiliate.theme = 'elegant'
-      affiliate.uses_managed_header_footer = true
-      affiliate.staged_theme = 'fun_blue'
-      affiliate.staged_uses_managed_header_footer = true
-      affiliate.managed_header_css_properties[:header_footer_link_color] = ''
-      affiliate.managed_header_css_properties[:header_footer_link_background_color] = ''
-      affiliate.staged_managed_header_css_properties[:header_footer_link_color] = ''
-      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color] = ''
-      affiliate.save!
-
-      affiliate.managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
-      affiliate.managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
-      affiliate.staged_managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
-      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
-    end
-
-    it "should not override non custom theme attributes" do
-      affiliate.theme = 'elegant'
+    it 'should not override default theme attributes' do
+      affiliate.theme = 'default'
       affiliate.css_property_hash = {:page_background_color => '#FFFFFF'}
-      affiliate.staged_theme = 'fun_blue'
-      affiliate.staged_css_property_hash = {:page_background_color => '#FFFFFF'}
       affiliate.save!
-      Affiliate.find(affiliate.id).css_property_hash[:page_background_color].should == Affiliate::THEMES[:elegant][:page_background_color]
-      Affiliate.find(affiliate.id).staged_css_property_hash[:page_background_color].should == Affiliate::THEMES[:fun_blue][:page_background_color]
+      Affiliate.find(affiliate.id).css_property_hash[:page_background_color].should == Affiliate::THEMES[:default][:page_background_color]
     end
 
-    it "should save staged favicon URL with http:// prefix when it does not start with http(s)://" do
-      url = 'cdn.agency.gov/staged_favicon.ico'
+    it "should save favicon URL with http:// prefix when it does not start with http(s)://" do
+      url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        affiliate.update_attributes!(:staged_favicon_url => "#{prefix}#{url}")
-        affiliate.staged_favicon_url.should == "http://#{prefix}#{url}"
+        affiliate.update_attributes!(favicon_url: "#{prefix}#{url}")
+        affiliate.favicon_url.should == "http://#{prefix}#{url}"
       end
     end
 
-    it "should save staged favicon URL as is when it starts with http(s)://" do
-      url = 'cdn.agency.gov/staged_favicon.ico'
+    it "should save favicon URL as is when it starts with http(s)://" do
+      url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        affiliate.update_attributes(:staged_favicon_url => "#{prefix}#{url}")
-        affiliate.staged_favicon_url.should == "#{prefix}#{url}"
+        affiliate.update_attributes(favicon_url: "#{prefix}#{url}")
+        affiliate.favicon_url.should == "#{prefix}#{url}"
       end
     end
 
-    it "should save staged external CSS URL with http:// prefix when it does not start with http(s)://" do
+    it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        affiliate.update_attributes!(:staged_external_css_url => "#{prefix}#{url}")
-        affiliate.staged_external_css_url.should == "http://#{prefix}#{url}"
+        affiliate.update_attributes!(:external_css_url => "#{prefix}#{url}")
+        affiliate.external_css_url.should == "http://#{prefix}#{url}"
       end
     end
 
-    it "should save staged external CSS URL as is when it starts with http(s)://" do
+    it "should save external CSS URL as is when it starts with http(s)://" do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        affiliate.update_attributes!(:staged_external_css_url => "#{prefix}#{url}")
-        affiliate.staged_external_css_url.should == "#{prefix}#{url}"
+        affiliate.update_attributes!(:external_css_url => "#{prefix}#{url}")
+        affiliate.external_css_url.should == "#{prefix}#{url}"
       end
     end
 
     it "should set css properties" do
-      affiliate.css_property_hash = {:font_family => 'Verdana, sans-serif'}
-      affiliate.staged_css_property_hash = {:font_family => 'Georgia, serif'}
+      affiliate.css_property_hash = { font_family: 'Verdana, sans-serif' }
       affiliate.save!
       Affiliate.find(affiliate.id).css_property_hash[:font_family].should == 'Verdana, sans-serif'
-      Affiliate.find(affiliate.id).staged_css_property_hash[:font_family].should == 'Georgia, serif'
-    end
-
-    it 'should set look_and_feel_css' do
-      affiliate.staged_theme = 'natural'
-      affiliate.css_property_hash = {font_family: 'Verdana, sans-serif'}
-      affiliate.staged_css_property_hash = {font_family: 'Georgia, serif'}
-      affiliate.save!
-
-      expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Verdana,sans-serif\}/)
-      expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#369\}\n$/)
-      expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#369\}/)
-      expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Verdana,sans-serif\}/)
-      expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:#8f5576\}/)
-
-      expect(affiliate.staged_look_and_feel_css).to match(/#search,#search_query\{font-family:Georgia,serif\}/)
-      expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#b58100\}\n$/)
-      expect(affiliate.staged_look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#b58100\}/)
-      expect(affiliate.staged_mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Georgia,serif\}/)
-      expect(affiliate.staged_mobile_look_and_feel_css).to match(/a:visited\{color:#008eb5\}/)
     end
 
     it "should not set header_footer_nested_css fields" do
-      affiliate.update_attributes!(:staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', :header_footer_css => '')
+      affiliate.update_attributes!(staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', header_footer_css: '')
       affiliate.staged_nested_header_footer_css.should be_blank
       affiliate.header_footer_css.should be_blank
-      affiliate.update_attributes!(:staged_header_footer_css => '', :header_footer_css => '@charset "UTF-8"; @import url("other.css"); live.h1 { color: red }')
+      affiliate.update_attributes!(staged_header_footer_css: '', header_footer_css: '@charset "UTF-8"; @import url("other.css"); live.h1 { color: red }')
       affiliate.staged_nested_header_footer_css.should be_blank
       affiliate.nested_header_footer_css.should be_blank
     end
@@ -386,7 +250,7 @@ describe Affiliate do
       en_affiliate.update_attributes!(rss_govbox_label: '')
       en_affiliate.rss_govbox_label.should == 'News'
 
-      es_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'es'))
+      es_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'es', name: 'es-site'))
       es_affiliate.rss_govbox_label.should == 'Noticias'
       es_affiliate.update_attributes!({ rss_govbox_label: '' })
       es_affiliate.rss_govbox_label.should == 'Noticias'
@@ -435,8 +299,8 @@ describe Affiliate do
   end
 
   describe "on destroy" do
-    let(:affiliate) { Affiliate.create!(:display_name => 'connecting affiliate') }
-    let(:connected_affiliate) { Affiliate.create!(:display_name => 'connected affiliate') }
+    let(:affiliate) { Affiliate.create!(display_name: 'connecting affiliate', name: 'anothersite') }
+    let(:connected_affiliate) { Affiliate.create!(display_name: 'connected affiliate', name: 'connectedsite') }
 
     it "should destroy connection" do
       affiliate.connections.create!(:connected_affiliate => connected_affiliate, :label => 'search connected affiliate')
@@ -485,8 +349,8 @@ describe Affiliate do
     end
 
     it "should validate color property in staged css property hash" do
-      staged_css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
+      css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
+      affiliate = Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
       affiliate.save.should be_false
       affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -496,22 +360,23 @@ describe Affiliate do
       affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
       affiliate.save.should be_true
 
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }"))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }", name: 'anothersite'))
       affiliate.save.should be_true
     end
 
     it "should not validate staged_header_footer_css for invalid css property value" do
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { invalid-css-syntax }"))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
       affiliate.save.should be_true
 
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { color: #DDDD }"))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
       affiliate.save.should be_true
     end
 
     context "is_validate_staged_header_footer is set to true" do
-      let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
-                                          :uses_managed_header_footer => false,
-                                          :staged_uses_managed_header_footer => false) }
+      let(:affiliate) { Affiliate.create!(display_name: 'test header footer validation',
+                                          name: 'testheaderfootervalidation',
+                                          uses_managed_header_footer: false,
+                                          staged_uses_managed_header_footer: false) }
 
       before { affiliate.is_validate_staged_header_footer = true }
 
@@ -600,9 +465,10 @@ describe Affiliate do
     end
 
     context "is_validate_staged_header_footer is set to false" do
-      let(:affiliate) { Affiliate.create!(:display_name => 'test header footer validation',
-                                          :uses_managed_header_footer => false,
-                                          :staged_uses_managed_header_footer => false) }
+      let(:affiliate) { Affiliate.create!(display_name: 'test header footer validation',
+                                          name: 'testheaderfootervalidation',
+                                          uses_managed_header_footer: false,
+                                          staged_uses_managed_header_footer: false) }
       it "should allow script, style or link elements in staged header or staged footer" do
         affiliate.is_validate_staged_header_footer = false
 
@@ -632,7 +498,7 @@ describe Affiliate do
 
     context "when attributes contain staged_uses_managed_header_footer='0'" do
       it "should set is_validate_staged_header_footer to true" do
-        affiliate = Affiliate.create!(:display_name => 'oneserp affiliate')
+        affiliate = Affiliate.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
         affiliate.should_receive(:is_validate_staged_header_footer=).with(true)
         affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '0',
                                                 :staged_header => 'staged header',
@@ -660,10 +526,9 @@ describe Affiliate do
 
     context "when attributes does not contain staged_uses_managed_header_footer='0'" do
       it "should set is_validate_staged_header_footer to false" do
-        affiliate = Affiliate.create!(:display_name => 'oneserp affiliate')
+        affiliate = Affiliate.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
         affiliate.should_receive(:is_validate_staged_header_footer=).with(false)
-        affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '1',
-                                                :staged_managed_header_home_url => 'http://usasearch.howto.gov')
+        affiliate.update_attributes_for_staging(staged_uses_managed_header_footer: '1')
       end
     end
   end
@@ -740,8 +605,7 @@ describe Affiliate do
     context "when attributes does not contain staged_uses_managed_header_footer='0'" do
       it "should set is_validate_staged_header_footer to false" do
         affiliate.should_receive(:is_validate_staged_header_footer=).with(false)
-        affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '1',
-                                             :staged_managed_header_home_url => 'http://usasearch.howto.gov')
+        affiliate.update_attributes_for_live(staged_uses_managed_header_footer: '1')
       end
     end
   end
@@ -836,32 +700,6 @@ describe Affiliate do
     end
   end
 
-  describe "#domains_as_array" do
-    before do
-      @affiliate = Affiliate.create!(@valid_create_attributes)
-      @affiliate.add_site_domains('one.domain.com' => nil, 'two.domain.com' => nil)
-    end
-
-    it "should return an array" do
-      @affiliate.domains_as_array.is_a?(Array).should be_true
-    end
-
-    it "should have two entries split on line break" do
-      @affiliate.domains_as_array.size.should == 2
-      @affiliate.domains_as_array.should == %w( one.domain.com two.domain.com )
-    end
-
-    context "when domains is nil" do
-      before do
-        @affiliate = Affiliate.create!(@valid_create_attributes)
-      end
-
-      it "should not error when called, and return empty" do
-        @affiliate.domains_as_array.should == []
-      end
-    end
-  end
-
   describe "#has_multiple_domains?" do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
@@ -893,32 +731,13 @@ describe Affiliate do
       specify { affiliate.css_property_hash(true).should == css_property_hash }
     end
 
-    context "when theme is not custom" do
-      let(:css_property_hash) { {:font_family => Affiliate::FONT_FAMILIES.last} }
+    context 'when theme is default' do
+      let(:css_property_hash) { { font_family: Affiliate::FONT_FAMILIES.last }.freeze }
       let(:affiliate) { Affiliate.create!(
-        @valid_create_attributes.merge(:theme => 'elegant',
-                                       :css_property_hash => css_property_hash)) }
+        @valid_create_attributes.merge(theme: 'default',
+                                       css_property_hash: css_property_hash)) }
 
-      specify { affiliate.css_property_hash(true).should == Affiliate::THEMES[:elegant].reverse_merge(css_property_hash) }
-    end
-  end
-
-  describe "#staged_css_property_hash" do
-    context "when theme is custom" do
-      let(:staged_css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
-      let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'natural', :staged_theme => 'custom', :staged_css_property_hash => staged_css_property_hash)) }
-
-      specify { affiliate.staged_css_property_hash(true).should == staged_css_property_hash }
-    end
-
-    context "when theme is not custom" do
-      let(:staged_css_property_hash) { {:font_family => Affiliate::FONT_FAMILIES.last} }
-      let(:affiliate) { Affiliate.create!(
-        @valid_create_attributes.merge(:theme => 'natural',
-                                       :staged_theme => 'elegant',
-                                       :staged_css_property_hash => staged_css_property_hash)) }
-
-      specify { affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:elegant].reverse_merge(staged_css_property_hash) }
+      specify { affiliate.css_property_hash(true).should == Affiliate::THEMES[:default].merge(css_property_hash) }
     end
   end
 
@@ -1122,328 +941,6 @@ describe Affiliate do
       ufs.size.should == 1
       ufs.first.should == features(:disco)
     end
-  end
-
-  describe "#autodiscover" do
-    before do
-      @affiliate = affiliates(:power_affiliate)
-    end
-
-    context "when a single site domain exists" do
-      before do
-        @affiliate.site_domains << SiteDomain.new(:site_name => 'newone.gov', :domain => 'newone.gov')
-      end
-
-      it "should call autodiscover for rss feeds and favicons" do
-        @affiliate.should_receive(:autodiscover_homepage_url)
-        @affiliate.should_receive(:autodiscover_rss_feeds).and_return true
-        @affiliate.should_receive(:autodiscover_favicon_url).and_return true
-        @affiliate.should_receive(:autodiscover_social_media).and_return true
-        @affiliate.autodiscover
-      end
-    end
-
-    context "when more than a single site_domain exists" do
-      before do
-        @affiliate.site_domains << SiteDomain.new(:site_name => 'first.nps.gov', :domain => 'first.nps.gov')
-        @affiliate.site_domains << SiteDomain.new(:site_name => 'second.nps.gov', :domain => 'second.nps.gov')
-      end
-
-      it "should not autodiscover anything" do
-        @affiliate.should_not_receive(:autodiscover_rss_feeds)
-        @affiliate.should_not_receive(:autodiscover_favicon_url)
-        @affiliate.should_not_receive(:autodiscover_social_media)
-        @affiliate.autodiscover
-      end
-    end
-  end
-
-  describe '#autodiscover_homepage_url' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    context 'when domain contains valid hostname' do
-      let(:domain) { 'usasearch.howto.gov/with-path' }
-      let(:tempfile) { mock('tempfile') }
-
-      before do
-        affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
-        affiliate.should_receive(:open).with('http://usasearch.howto.gov/with-path').and_return(tempfile)
-      end
-
-      it 'should update mobile homepage URL' do
-        affiliate.should_receive(:update_attributes!).with(
-          website: 'http://usasearch.howto.gov/with-path')
-        affiliate.autodiscover_homepage_url
-      end
-    end
-
-    context 'when valid hostname require www. prefix' do
-      let(:domain) { 'howto.gov' }
-      let(:tempfile) { mock('tempfile') }
-
-      before do
-        affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
-        affiliate.should_receive(:open).with('http://howto.gov').and_raise
-        affiliate.should_receive(:open).with('http://www.howto.gov').and_return(tempfile)
-      end
-
-      it 'should update mobile homepage URL with www. prefix in the hostname' do
-        affiliate.should_receive(:update_attributes!).with(website: 'http://www.howto.gov')
-        affiliate.autodiscover_homepage_url
-      end
-    end
-
-    context 'when domain does not contain a valid hostname' do
-      let(:domain) { '.gov' }
-
-      before do
-        affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.stub_chain(:site_domains, :first, :domain).and_return(domain)
-        affiliate.should_receive(:open).with('http://.gov').and_raise
-        affiliate.should_receive(:open).with('http://www..gov').and_raise
-      end
-
-      it 'should not update mobile homepage URL' do
-        affiliate.should_not_receive(:update_attributes!)
-        affiliate.autodiscover_homepage_url
-      end
-    end
-
-    context 'when website is present' do
-      before do
-        affiliate.stub_chain(:site_domains, :count).and_return(1)
-        affiliate.should_receive(:website).and_return('http://www.usa.gov')
-        affiliate.stub_chain(:site_domains, :first, :domain).and_return('usa.gov')
-      end
-
-      it 'should not update mobile homepage URL' do
-        affiliate.should_not_receive(:open)
-        affiliate.autodiscover_homepage_url
-      end
-    end
-
-    context 'when there are 2 or more site domains' do
-      before { affiliate.stub_chain(:site_domains, :count).and_return(2) }
-
-      it 'should not update mobile homepage URL' do
-        affiliate.should_not_receive(:open)
-        affiliate.autodiscover_homepage_url
-      end
-    end
-  end
-
-  describe "#autodiscover_rss_feeds" do
-    before do
-      @affiliate = affiliates(:power_affiliate)
-      @affiliate.site_domains << SiteDomain.new(:site_name => 'USA.gov', :domain => 'usa.gov')
-      @affiliate.rss_feeds.destroy_all
-    end
-
-    context "when the home page has alternate links to an rss feed" do
-      before do
-        doc = File.read "#{Rails.root}/spec/fixtures/html/usa_gov/site_index.html"
-        @affiliate.should_receive(:open).at_least(:once).with('http://usa.gov').and_return doc
-        HttpConnection.stub(:get).and_return File.read(Rails.root.to_s + "/spec/fixtures/rss/wh_blog.xml")
-      end
-
-      it "should add the feed to the affiliate's rss feeds" do
-        @affiliate.rss_feeds.size.should == 0
-        @affiliate.autodiscover_rss_feeds
-        @affiliate.rss_feeds(true).size.should == 2
-      end
-
-      it "should not re-fetch the home page content if it's already been fetched" do
-        @affiliate.autodiscover_rss_feeds
-        @affiliate.should_not_receive(:open)
-        @affiliate.autodiscover_rss_feeds
-      end
-    end
-
-    context "when the home page does not have links to an rss feed" do
-      before do
-        doc = File.read "#{Rails.root}/spec/fixtures/html/page_with_no_links.html"
-        @affiliate.should_receive(:open).and_return doc
-      end
-
-      it "should not create any rss feeds" do
-        @affiliate.rss_feeds.size.should == 0
-        @affiliate.autodiscover_rss_feeds
-        @affiliate.rss_feeds.size.should == 0
-      end
-    end
-
-    context "when something goes horribly wrong" do
-      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
-
-      it "should log an error" do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering rss feeds for #{@affiliate.name}: Some Exception")
-        @affiliate.autodiscover_rss_feeds
-      end
-    end
-  end
-
-  describe "#autodiscover_favicon_url" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
-      @affiliate.update_attributes(:favicon_url => nil)
-    end
-
-    context "when the favicon link is an absolute path" do
-      before do
-        page_with_favicon = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_icon_link.html')
-        @affiliate.should_receive(:open).and_return(page_with_favicon)
-      end
-
-      it "should update the affiliate's favicon_url attribute with the value" do
-        @affiliate.autodiscover_favicon_url
-        @affiliate.favicon_url.should_not be_nil
-        @affiliate.favicon_url.should == "http://usa.gov/resources/images/usa_favicon.gif"
-      end
-
-      it "should not check the home page content more than once if a local copy is available" do
-        @affiliate.autodiscover_favicon_url
-        Nokogiri::HTML.should_not_receive(:new)
-        @affiliate.should_not_receive(:open)
-        @affiliate.autodiscover_favicon_url
-      end
-    end
-
-    context "when the favicon link is a relative path" do
-      before do
-        page_with_favicon = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_relative_icon_link.html')
-        @affiliate.should_receive(:open).and_return(page_with_favicon)
-      end
-
-      it "should store a full url as the favicon link" do
-        @affiliate.autodiscover_favicon_url
-        @affiliate.favicon_url.should_not be_nil
-        @affiliate.favicon_url.should == "http://nps.gov/resources/images/usa_favicon.gif"
-      end
-    end
-
-    context "when no favicon link is present in the HTML, but a file at http://domain.gov/favicon.ico exists" do
-      it "should update the affiliate's favicon_url attribute" do
-        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html")
-        @affiliate.should_receive(:open).with("http://nps.gov/favicon.ico").and_return File.read(Rails.root.to_s + "/spec/fixtures/ico/favicon.ico")
-        @affiliate.autodiscover_favicon_url
-        @affiliate.favicon_url.should_not be_nil
-        @affiliate.favicon_url.should == "http://nps.gov/favicon.ico"
-      end
-    end
-
-    context "when no favicon link is present in HTML and no file exists at the default location" do
-      before do
-        @affiliate.should_receive(:open).with("http://nps.gov").and_return File.read(Rails.root.to_s + "/spec/fixtures/html/page_with_no_links.html")
-        @affiliate.should_receive(:open).with("http://nps.gov/favicon.ico").and_raise "Some Exception"
-      end
-
-      it "should not update the affiliate's favicon_url attribute" do
-        @affiliate.autodiscover_favicon_url
-        @affiliate.favicon_url.should be_nil
-      end
-    end
-
-    context "when something goes horribly wrong" do
-      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
-
-      it "should log an error" do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering favicon for #{@affiliate.name}: Some Exception")
-        @affiliate.autodiscover_favicon_url
-      end
-    end
-  end
-
-  describe "#autodiscover_social_media" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @affiliate.site_domains << SiteDomain.new(:site_name => 'NPS.gov', :domain => 'nps.gov')
-    end
-
-    context "when the page has social media links" do
-      before do
-        page_with_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_social_media_urls.html')
-        @affiliate.should_receive(:open).and_return(page_with_social_media_urls)
-        flickr_api_response = {"id" => "1600", "username" => "GregGersh"}
-        flickr.urls.stub!(:lookupUser).with(:url => 'http://flickr.com/photos/whitehouse').and_return flickr_api_response
-
-        HttpConnection.stub(:get) do |arg|
-          case arg
-            when %r[http://gdata.youtube.com/feeds/api/users/.+]
-              File.read(Rails.root.to_s + '/spec/fixtures/rss/youtube_user.xml')
-            when %r[^http://gdata.youtube.com/feeds/api/videos\?]
-              File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-          end
-        end
-
-        @affiliate.autodiscover_social_media
-      end
-
-      it "should update the twitter handle with the first twitter handle found" do
-        @affiliate.twitter_profiles.collect(&:screen_name).include?("whitehouse").should be_true
-      end
-
-      it "should update the facebook handle with the first Facebook handle found" do
-        @affiliate.facebook_profiles.collect(&:username).include?('whitehouse').should be_true
-      end
-
-      it "should create a flickr profile with the first Flickr url found" do
-        @affiliate.flickr_profiles.collect(&:url).include?("http://flickr.com/photos/whitehouse").should be_true
-      end
-
-      it "should update the youtube profiles with all the youtube handles found on the page" do
-        @affiliate.youtube_profiles.collect(&:username).should == %w(natlparkservice whitehouse1 whitehouse2)
-      end
-
-      context "when there are existing youtube handles" do
-        before do
-          @affiliate.youtube_profiles.create!(:username => 'whitehouse_test')
-        end
-
-        it "should add new handles to the list" do
-          @affiliate.autodiscover_social_media
-          @affiliate.reload
-          @affiliate.youtube_profiles.collect(&:username).sort.should == %w(natlparkservice whitehouse1 whitehouse2 whitehouse_test)
-        end
-      end
-    end
-
-    context "when the page has no valid social media links" do
-      before do
-        @affiliate.youtube_profiles.destroy_all
-        page_with_bad_social_media_urls = File.open(Rails.root.to_s + '/spec/fixtures/html/home_page_with_bad_social_media_urls.html')
-        @affiliate.should_receive(:open).and_return(page_with_bad_social_media_urls)
-        @affiliate.autodiscover_social_media
-      end
-
-      it "should not update the twitter handle" do
-        @affiliate.twitter_profiles.should be_empty
-      end
-
-      it "should not update the facebook handle" do
-        @affiliate.facebook_profiles.should be_empty
-      end
-
-      it "should not update the flickr handle" do
-        @affiliate.flickr_profiles.should be_empty
-      end
-
-      it "should not update the youtube handles" do
-        @affiliate.youtube_profiles.should be_empty
-      end
-    end
-
-    context "when something goes horribly wrong" do
-      before { @affiliate.should_receive(:open).and_raise 'Some Exception' }
-
-      it "should log an error" do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering social media for #{@affiliate.name}: Some Exception")
-        @affiliate.autodiscover_social_media
-      end
-    end
-
   end
 
   describe "#import_flickr_photos" do
