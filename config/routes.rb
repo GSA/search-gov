@@ -5,6 +5,7 @@ UsasearchRails3::Application.routes.draw do
   resources :password_resets
   resources :email_verification, :only => :show
   resources :complete_registration, :only => [:edit, :update]
+  get '/affiliates', to: redirect('/sites')
   get '/affiliates/:id', to: redirect('/sites/%{id}')
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
