@@ -11,3 +11,4 @@
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   = hidden_field_tag :mode, @mode
   = render partial: "#{@mode}_mode_form", locals: { f: f }
+= render partial: 'validate_html_form' if @mode == 'advanced'

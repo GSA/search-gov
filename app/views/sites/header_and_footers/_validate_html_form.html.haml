@@ -1,0 +1,4 @@
+= form_tag 'http://validator.w3.org/nu/', id: 'validator-form', method: :post, multipart: true, target: '_blank' do
+  = hidden_field_tag :showsource, '1'
+  = text_area_tag :content
+  = submit_tag 'Validate'
