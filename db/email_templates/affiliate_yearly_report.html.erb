@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
-<%
-   h2_style = 'font-size: 1.5em; margin-bottom: 0.3em;'
-   table_style = 'border-collapse: collapse;'
-   tr_even_style = 'background-color: #D8D8D8;'
-   tr_heading_style = 'background-color: #696969; color: white;'
-   tr_sub_heading_style = 'background-color: #909090; color: white;'
-   th_style = 'border: 1px solid #CACACA; padding: 5px; text-align: center;'
-   td_style = 'border: 1px solid #CACACA; padding: 5px; text-align: right;'
-   td_text_style = 'border: 1px solid #CACACA; padding: 5px; text-align: left;'
-   td_blank_style = 'border: 0; line-height: 0.8em;'
-   p_style = 'margin-top: 0;'
-%>
+  <title></title>
+  <%
+     h2_style = 'font-size: 1.5em; margin-bottom: 0.3em;'
+     table_style = 'border-collapse: collapse;'
+     tr_even_style = 'background-color: #D8D8D8;'
+     tr_heading_style = 'background-color: #696969; color: white;'
+     tr_sub_heading_style = 'background-color: #909090; color: white;'
+     th_style = 'border: 1px solid #CACACA; padding: 5px; text-align: center;'
+     td_style = 'border: 1px solid #CACACA; padding: 5px; text-align: right;'
+     td_text_style = 'border: 1px solid #CACACA; padding: 5px; text-align: left;'
+     td_blank_style = 'border: 0; line-height: 0.8em;'
+     p_style = 'margin-top: 0;'
+  %>
 </head>
 <body>
 <p style="<%= p_style %>">What did visitors to your website search for in <%= @report_year %>? The top 1,000 most
   searched terms follow.</p>
 
 <h2 style="<%= h2_style %>">Most Popular Queries for <%= @report_year %></h2>
-
 <table style="<%= table_style %>">
-<tbody>
-<% @affiliate_stats.each do |affiliate_display_name, popular_queries| %>
-  <tr style="<%= tr_heading_style %>">
-    <th colspan="2" style="<%= th_style %>"><%= affiliate_display_name %></th>
-  </tr>
-  <% if popular_queries.is_a?(String) %>
-    <tr>
-      <td colspan="2" style="<%= td_style %>"><%= popular_queries %></td>
-    </tr>
-  <% else %>
-    <tr style="<%= tr_sub_heading_style %>">
-      <th style="<%= th_style %>">Query Term</th>
-      <th style="<%= th_style %>">Frequency</th>
-    </tr>
-    <% popular_queries.each do |popular_query| %>
-      <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-        <td style="<%= td_text_style %>"><%= popular_query.query %></td>
-        <td style="<%= td_style %>"><%= popular_query.times %></td>
+  <tbody>
+  <% @affiliate_stats.each do |affiliate_display_name, popular_queries| %>
+      <tr style="<%= tr_heading_style %>">
+        <th colspan="2" style="<%= th_style %>"><%= affiliate_display_name %></th>
       </tr>
-    <% end %>
-    <% reset_cycle('colors') %>
+      <% if popular_queries.is_a?(String) %>
+          <tr>
+            <td colspan="2" style="<%= td_style %>"><%= popular_queries %></td>
+          </tr>
+      <% else %>
+          <tr style="<%= tr_sub_heading_style %>">
+            <th style="<%= th_style %>">Query Term</th>
+            <th style="<%= th_style %>">Frequency</th>
+          </tr>
+          <% popular_queries.each do |popular_query| %>
+              <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
+                <td style="<%= td_text_style %>"><%= popular_query.query %></td>
+                <td style="<%= td_style %>"><%= popular_query.times %></td>
+              </tr>
+          <% end %>
+          <% reset_cycle('colors') %>
+      <% end %>
+      <tr>
+        <td colspan="2" style="<%= td_blank_style %>">&nbsp;</td>
+      </tr>
   <% end %>
-  <tr><td colspan="2" style="<%= td_blank_style %>">&nbsp;</td></tr>
-<% end %>
-</tbody>
+  </tbody>
 </table>
+
 <p style="<%= p_style %>">
-  Visit our Admin Center <%= sites_url %> for more details.
-  <br/>
-  Happy holidays and new year!
+  <br/> Visit our Admin Center for more detailed analytics.
+  <br/> <%= sites_url %>
+  <br/>Happy holidays and new year!
 </p>
-<p style="<%= p_style %>">The USASearch Team</p>
+
+<p style="<%= p_style %>">USASearch Team
+  <br/> General Services Administration
+  <br/> 202-505-5315 | USASearch@gsa.gov
+  <br/> http://usasearch.howto.gov
+</p>
 </body>
 </html>

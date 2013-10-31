@@ -1,18 +1,14 @@
-Dear <%= @user.contact_name %>,
+<%= @user.contact_name %> added a new site to your account.
 
-A new site <%= @affiliate.display_name %> (<%= site_url(@affiliate) %>) has been added to your USASearch account. Here's the information for your new site.
+Name: <%= @affiliate.display_name %>
+Handle: <%= @affiliate.name %>
+ID: <%= @affiliate.id %>
 
-Site name: <%= @affiliate.display_name %>
-User who added site: <%= @user.email %>
-Manage site settings: <%= site_url(@affiliate) %>
+Visit our Admin Center to customize it.
 
+<%= site_url(@affiliate) %>
 
-Now that your site is set up, visit the Affiliate Center to further customize your site. Get started now.
-
-1. Add additional sites: <%= new_site_url %>
-2. Customize the look and feel: <%= edit_site_display_url(@affiliate) %>
-
-Questions or comments? Send us an email and we'll get back to you promptly.
-
-The USASearch Team
-***REMOVED***
+USASearch Team
+General Services Administration
+202-505-5315 | USASearch@gsa.gov
+http://usasearch.howto.gov

@@ -1,11 +1,11 @@
-<%= @user.contact_name %> just signed up for USA Search Services with the following information:
-
+Name: <%= @user.contact_name %>
 Email: <%= @user.email %>
 Organization name: <%= @user.organization_name %>
 
 <% if @user.requires_manual_approval? %>
-  This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.
+    This person doesn't have a .gov or .mil email address. Verify and approve him.
 <% elsif @user.affiliates.any? %>
-  This user was added to affiliate '<%= @user.affiliates.last.display_name %>' by <%= @user.inviter.contact_name %>. This user will be automatically approved after they verify their email.
+    <%= @user.inviter.contact_name %> added this person to '<%= @user.affiliates.last.display_name %>'. He'll be approved after verifying his email.
 <% end %>
 
+To edit or approve this new person, visit https://search.usa.gov/admin/users#as_admin__users:1:created_at:DESC

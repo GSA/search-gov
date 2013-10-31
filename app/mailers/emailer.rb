@@ -40,10 +40,6 @@ class Emailer < ActionMailer::Base
     generic_user_text_email(user, __method__)
   end
 
-  def welcome_to_new_developer(user)
-    generic_user_text_email(user, __method__)
-  end
-
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
     generic_user_text_email(user, __method__)

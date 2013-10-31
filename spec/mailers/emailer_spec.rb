@@ -17,11 +17,10 @@ describe Emailer do
 
     it { should deliver_to(user.email) }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Getting started with USASearch features/) }
+    it { should have_subject(/Getting started with USASearch/) }
 
     it 'should contain lists of unadopted features for each affiliate that has any' do
-      email.should have_body_text(/I noticed you registered for a new USASearch account a few days ago so I wanted to follow up to see if you have any questions/)
-      email.should have_body_text(/nonsense.gov:\n\nDiscovery Tag\n\nSAYT/)
+      email.should have_body_text(/Now that you've had a few days to dig into USASearch/)
     end
   end
 
@@ -38,7 +37,7 @@ describe Emailer do
 
     it { should deliver_to('usagov@searchsi.com') }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Features adopted by customers yesterday/) }
+    it { should have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
       email.should have_body_text("Yesterday, these customers turned on some features:")
@@ -58,7 +57,7 @@ describe Emailer do
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
 
     it { should deliver_to('usagov@searchsi.com') }
-    it { should have_subject(/Deep document collection created/) }
+    it { should have_subject(/Deep collection created/) }
 
     it 'should contain document collection and URL prefixes' do
       email.should have_body_text("WH only")
@@ -87,7 +86,7 @@ describe Emailer do
 
     it { should deliver_to('admin@agency.gov') }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Email Verification/) }
+    it { should have_subject(/Verify your email/) }
     it { should have_body_text(/http:\/\/localhost:3000\/email_verification\/some_special_token/) }
   end
 
@@ -106,8 +105,8 @@ describe Emailer do
 
       it { should deliver_to('usagov@searchsi.com') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-      it { should have_subject(/New user signed up for USA Search Services/) }
-      it { should have_body_text(/This user signed up as an affiliate, but the user doesn't have a \.gov or \.mil email address\. Please verify and approve this user\./) }
+      it { should have_subject(/New user sign up/) }
+      it { should have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
 
     context "affiliate user has .gov email address" do
@@ -124,7 +123,7 @@ describe Emailer do
 
       it { should deliver_to('usagov@searchsi.com') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-      it { should have_subject(/New user signed up for USA Search Services/) }
+      it { should have_subject(/New user sign up/) }
       it { should_not have_body_text /This user signed up as an affiliate/ }
     end
 
@@ -143,7 +142,7 @@ describe Emailer do
 
       it { should deliver_to('usagov@searchsi.com') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-      it { should have_body_text /This user was added to affiliate 'Noaa Site' by Affiliate Manager\. This user will be automatically approved after they verify their email\./ }
+      it { should have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
@@ -180,7 +179,7 @@ describe Emailer do
 
     it { should deliver_to("invitee@agency.com") }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
-    it { should have_subject(/Welcome to the USASearch Affiliate Program/) }
+    it { should have_subject(/Welcome to USASearch/) }
     it { should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
 
@@ -203,7 +202,7 @@ describe Emailer do
     subject(:email) { Emailer.daily_snapshot(membership) }
 
     it { should deliver_to(membership.user.email) }
-    it { should have_subject(/Daily Site Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
+    it { should have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
 
     it "should contain the daily shapshot tables for yesterday" do
       body = Sanitize.clean(email.default_part_body.to_s).squish

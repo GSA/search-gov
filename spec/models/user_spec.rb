@@ -77,16 +77,8 @@ describe User do
       User.create!(@valid_attributes)
     end
 
-    context "when the user is a developer" do
-      it "should send the developer a welcome email" do
-        Emailer.should_receive(:welcome_to_new_developer).with(an_instance_of(User)).and_return @emailer
-        User.create!(@valid_developer_attributes)
-      end
-    end
-
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
-        Emailer.should_not_receive(:welcome_to_new_developer)
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
     end
@@ -322,7 +314,6 @@ describe User do
       it "should receive welcome new user added by affiliate email verification" do
         Emailer.should_receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         Emailer.should_not_receive(:new_user_email_verification)
-        Emailer.should_not_receive(:welcome_to_new_developer)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         new_user.save!
         new_user.email_verification_token.should_not be_blank

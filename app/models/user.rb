@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   after_validation :set_default_flags, :on => :create
   after_create :ping_admin
   after_create :deliver_email_verification
-  after_create :welcome_user
   after_update :deliver_welcome_email
   attr_accessor :government_affiliation, :strict_mode, :invited, :skip_welcome_email, :terms_of_service, :inviter, :require_password
   attr_protected :strict_mode, :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
@@ -145,10 +144,6 @@ class User < ActiveRecord::Base
       save!
       Emailer.welcome_to_new_user(self).deliver
     end
-  end
-
-  def welcome_user
-    Emailer.welcome_to_new_developer(self).deliver if is_developer? and !skip_welcome_email
   end
 
   def set_is_affiliate
