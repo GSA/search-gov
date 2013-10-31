@@ -1,2 +1,3 @@
+= render "/shared/affiliate_google_analytics" if @affiliate.dap_enabled?
 = render "/shared/affiliate_custom_google_analytics" if @affiliate.ga_web_property_id.present?
 = raw @affiliate.external_tracking_code unless external_tracking_code_disabled?

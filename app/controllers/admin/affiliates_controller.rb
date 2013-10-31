@@ -26,7 +26,7 @@ class Admin::AffiliatesController < Admin::AdminController
                              :header, :staged_header, :footer, :staged_footer,
                              :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
-                             :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled,
+                             :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled, :dap_enabled,
                              :has_staged_content, :locale,
                              :affiliate_feature_addition, :jobs_enabled, :agency,
                              :excluded_domains, :search_engine]
