@@ -178,9 +178,9 @@ Feature: Dashboard
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject
-    And I should see "Dear Affiliate Manager" in the email body
-    And I should see "Site name: Agency Gov" in the email body
-    And I should see "affiliate_manager@fixtures.org" in the email body
+    And I should see "Affiliate Manager" in the email body
+    And I should see "Name: Agency Gov" in the email body
+    And I should see "Handle: agencygov" in the email body
 
   Scenario: Deleting a site
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"

@@ -317,8 +317,8 @@ Feature: Manage Display
     Then I should see "You have saved header and footer changes to your live site"
 
     When "john@agency.gov" opens the email
-    Then I should see "The header and footer for agency site have been changed" in the email subject
-    And I should see "The header and/or footer for agency site have been updated" in the email body
+    Then I should see "Your header and footer for agency site changed" in the email subject
+    And I should see "You've changed the header or footer for agency site so we're sending you this email for your records" in the email body
     And I should see "Staged Header" in the email body
     And I should see "Staged Footer" in the email body
 

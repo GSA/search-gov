@@ -13,7 +13,7 @@ Feature: Password Reset
     And I should see "Instructions to reset your password have been emailed to you"
     And "affiliate_admin@fixtures.org" should receive an email
     When I open the email
-    Then I should see "Password Reset Instructions" in the email subject
+    Then I should see "Reset your password" in the email subject
     And I should see "https://www.example.com/password_resets" in the email body
     When I click the first link in the email
     Then I should see "Change My Password"

@@ -34,7 +34,7 @@ Feature: Users
     Then I should be on the login page
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
-    Then I should see "Email Verification" in the email subject
+    Then I should see "Verify your email" in the email subject
     When I click the first link in the email
     Then I should be on the login page
     Given a clear email queue
@@ -46,7 +46,7 @@ Feature: Users
     And I should be on the user account page
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
-    Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
+    Then I should see "Welcome to USASearch" in the email subject
 
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the login page
@@ -80,7 +80,7 @@ Feature: Users
     Then I should be on the login page
     And "lorem.ipsum@corporate.com" should receive an email
     When I open the email
-    Then I should see "Email Verification" in the email subject
+    Then I should see "Verify your email" in the email subject
     When I click the first link in the email
     Then I should be on the login page
     Given a clear email queue
