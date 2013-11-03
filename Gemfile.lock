@@ -202,6 +202,8 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.8.0)
+    keen (0.7.7)
+      multi_json (~> 1.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     less (2.3.2)
@@ -454,6 +456,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   json
+  keen
   launchy
   less-rails-bootstrap (~> 2.3)
   mobile-fu

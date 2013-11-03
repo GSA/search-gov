@@ -432,7 +432,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       result = {'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov'}
       search = mock(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
       html = helper.display_web_result_title(result, search, @affiliate, 1, :web)
-      html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en')\" >USASearch</a>"
+      html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>"
     end
   end
 end

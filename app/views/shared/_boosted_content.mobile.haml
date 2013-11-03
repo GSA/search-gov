@@ -9,7 +9,7 @@
     .row{:id => "boostedresult#{index+1}", :style => 'border: none;'}
       .searchResult
         .title
-          = boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical)
+          = boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical, hit.instance.id)
         .links
           = UrlParser.shorten_url(boosted_content_url)
         .content

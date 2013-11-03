@@ -56,6 +56,7 @@ gem 'turbolinks'
 gem 'strong_parameters'
 gem 'will_paginate-bootstrap'
 gem 'virtus'
+gem 'keen'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

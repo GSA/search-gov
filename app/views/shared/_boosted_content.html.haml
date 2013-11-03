@@ -9,7 +9,7 @@
       - boosted_content_url = hit.instance.url
       .searchresult{:id => "boostedresult#{index+1}"}
         %h2
-          = boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical)
+          = boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical, hit.instance.id)
         %h3.result-url= UrlParser.shorten_url(boosted_content_url)
         %h3
           = highlight_hit(hit, :description).html_safe

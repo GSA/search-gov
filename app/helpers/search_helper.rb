@@ -83,14 +83,14 @@ module SearchHelper
     "<strong>#{s}</strong>".html_safe
   end
 
-  def link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical, html_opts = nil)
+  def link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical, model_id = nil)
     aff_name = affiliate.name rescue ""
-    onmousedown = onmousedown_for_click(query, position, aff_name, source, Time.now.to_i, vertical)
-    raw "<a href=\"#{h url}\" #{onmousedown} #{html_opts}>#{html_safe_title}</a>"
+    onmousedown = onmousedown_for_click(query, position, aff_name, source, Time.now.to_i, vertical, model_id)
+    raw "<a href=\"#{h url}\" #{onmousedown}>#{html_safe_title}</a>"
   end
 
-  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
-    link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical)
+  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical, model_id = nil)
+    link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical, model_id)
   end
 
   def job_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
@@ -116,12 +116,12 @@ module SearchHelper
     "return clk('#{h query}', #{tracked_url}, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
-  def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)
-    %Q[onmousedown="#{onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical)}"]
+  def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical, model_id = nil)
+    %Q[onmousedown="#{onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical, model_id)}"]
   end
 
-  def onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical)
-    "return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
+  def onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical, model_id)
+    "return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}', '#{model_id}')"
   end
 
   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)

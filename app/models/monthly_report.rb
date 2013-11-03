@@ -2,7 +2,7 @@ class MonthlyReport
 
   def initialize(site, year, month)
     @site, @year, @month = site, year.to_i, month.to_i
-    start_date = Date.civil(@year, @month)
+    start_date = picked_date
     end_date = start_date.end_of_month
     @month_range = start_date..end_date
   end

@@ -8,16 +8,16 @@ describe FeaturedCollectionsHelper do
         url.should_receive(:blank?).and_return(true)
       end
 
-      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web).should == 'link title' }
+      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web, 1234).should == 'link title' }
     end
 
     context "when the url is not blank" do
       before do
         url.should_receive(:blank?).and_return(false)
-        helper.should_receive(:link_with_click_tracking).with('link title', url, nil, 'query term', 1, 'BBG', :web).and_return('link with click tracking')
+        helper.should_receive(:link_with_click_tracking).with('link title', url, nil, 'query term', 1, 'BBG', :web, 1234).and_return('link with click tracking')
       end
 
-      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web).should == 'link with click tracking' }
+      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web, 1234).should == 'link with click tracking' }
     end
   end
 

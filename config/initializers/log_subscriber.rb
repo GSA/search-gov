@@ -1,5 +1,13 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
+    def best_bets_drill_down(event)
+      generic_logging("Keen Best Bets Query", event, CYAN)
+    end
+
+    def best_bets_publish(event)
+      generic_logging("Keen Best Bets Publish", event, CYAN)
+    end
+
     def bing_web_search(event)
       generic_logging("Bing Query", event, YELLOW)
     end

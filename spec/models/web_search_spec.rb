@@ -145,6 +145,7 @@ describe WebSearch do
         @search.stub!(:has_video_news_items?).and_return true
         @search.stub!(:has_tweets?).and_return true
         @search.stub!(:has_photos?).and_return true
+        BestBetImpressionsLogger.stub!(:log)
       end
 
       it "should assign module_tag to BWEB" do
@@ -156,6 +157,21 @@ describe WebSearch do
         all_modules = %w{BWEB OVER BSPEL SREL NEWS VIDS BBG BOOS MEDL JOBS TWEET PHOTO}
         QueryImpression.should_receive(:log).with(:web, affiliates(:basic_affiliate).name, 'government', all_modules)
         @search.run
+      end
+
+      context 'when some sort of boosted contents are available' do
+        let(:featured_collections) { [1,2,3]}
+        let(:boosted_contents) { [4,5,6]}
+
+        before do
+          @search.stub!(:boosted_contents).and_return boosted_contents
+          @search.stub!(:featured_collections).and_return featured_collections
+        end
+
+        it 'should publish the impressions separately' do
+          BestBetImpressionsLogger.should_receive(:log).with(affiliates(:basic_affiliate).id, 'government', featured_collections, boosted_contents)
+          @search.run
+        end
       end
     end
 
@@ -338,6 +354,7 @@ describe WebSearch do
                                            :description => "english description", :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
         Sunspot.commit
+        Keen.stub(:publish_async)
         search.run
       end
 

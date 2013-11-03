@@ -51,6 +51,10 @@ describe "sites/monthly_reports/show.html.haml" do
                                     :vertical => 'web', :module_tag => 'VIDEO', :clicks => 67, :impressions => 671)
       DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
                                     :vertical => 'web', :module_tag => 'VIDEO', :clicks => 12, :impressions => 129)
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BOOS', :clicks => 41, :impressions => 42)
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BBG', :clicks => 51, :impressions => 52)
       DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
                                     :vertical => 'web', :module_tag => 'BWEB', :clicks => 100, :impressions => 200)
       DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
@@ -61,16 +65,20 @@ describe "sites/monthly_reports/show.html.haml" do
     it 'should show the monthy query and click totals' do
       rendered.should have_selector("#queries_clicks") do |snippet|
         snippet.should contain "1,100"
-        snippet.should contain "1,080"
+        snippet.should contain "1,172"
       end
     end
 
     it 'should show the breakdown by module and comparison to overall average' do
-      rendered.should have_selector("#by_module tr", count: 4) do |rows|
+      rendered.should have_selector("#by_module tr", count: 6) do |rows|
         rows[0].should contain "Module Impressions Clicks Your CTR Average CTR"
         rows[1].should contain "Bing Web 7,478 1,001 13.4% 14.3%"
         rows[2].should contain "Bing Video 800 79 9.9% 22.9%"
-        rows[3].should contain "Total 8,278 1,080 13.0%"
+        rows[3].should contain "Best Bets Graphic (drill down) 52 51 98.1%"
+        rows[3].should have_selector("a", content: '(drill down)', href: "/sites/#{site.id}/best_bets_drill_down?module_tag=BBG")
+        rows[4].should contain "Best Bets Text (drill down) 42 41 97.6%"
+        rows[4].should have_selector("a", content: '(drill down)', href: "/sites/#{site.id}/best_bets_drill_down?module_tag=BOOS")
+        rows[5].should contain "Total 8,372 1,172 14.0%"
       end
     end
   end

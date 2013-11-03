@@ -34,6 +34,7 @@ UsasearchRails3::Application.routes.draw do
       end
       resource :image_assets, only: [:edit, :update]
       resource :monthly_reports, only: [:show]
+      resource :best_bets_drill_down, only: [:show]
       resource :preview, only: [:show]
       resource :raw_logs_access, only: [:new, :create]
       resource :setting, only: [:edit, :update]

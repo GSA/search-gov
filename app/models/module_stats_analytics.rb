@@ -46,7 +46,7 @@ class ModuleStatsAnalytics
     historical_ctr = DailySearchModuleStat.select(CTR_QUERY).where(merged_conditions).group(:day).map { |r| r.ctr }
     OpenStruct.new(display_name: stat.display_name, clicks: stat.clicks, impressions: stat.impressions,
                    clickthru_ratio: clickthru_ratio(stat.clicks, stat.impressions), historical_ctr: historical_ctr,
-                   average_clickthru_ratio: average_clickthru_ratio)
+                   module_tag: stat.module_tag, average_clickthru_ratio: average_clickthru_ratio)
   end
 
   def global_ctrs

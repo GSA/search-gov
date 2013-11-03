@@ -21,9 +21,9 @@ module FeaturedCollectionsHelper
             id: 'new-link-trigger'
   end
 
-  def featured_collection_link_with_click_tracking(title, url, affiliate, query, position, vertical)
+  def featured_collection_link_with_click_tracking(title, url, affiliate, query, position, vertical, model_id)
     return title if url.blank?
-    link_with_click_tracking(title, url, affiliate, query, position, 'BBG', vertical)
+    link_with_click_tracking(title, url, affiliate, query, position, 'BBG', vertical, model_id)
   end
 
   def featured_collection_css_classes(featured_collection, initial_classes = %w(featured-collection searchresult))

@@ -8,7 +8,7 @@ module MedTopicsHelper
   end
 
   def display_medline_url_with_click_tracking(title, url, search, affiliate)
-    onmousedown = onmousedown_for_click_attribute(search.query, 0, affiliate.name, 'MEDL', search.queried_at_seconds, :web)
+    onmousedown = onmousedown_for_click_attribute(search.query, 0, affiliate.name, 'MEDL', search.queried_at_seconds, :web, nil)
     link_to(title, url, :onmousedown => onmousedown)
   end
 end

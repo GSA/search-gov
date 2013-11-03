@@ -10,7 +10,10 @@
   %tbody
     - search_module_stats.each do |stat|
       %tr
-        %td= stat.display_name
+        %td
+          = stat.display_name
+          - if %w(BBG BOOS).include? stat.module_tag
+            = link_to '(drill down)', site_best_bets_drill_down_path(@site, module_tag: stat.module_tag) if params[:mmyyy].nil? or params[:mmyyy] == Date.current.strftime('%m/%Y')
         %td= number_with_delimiter(stat.impressions)
         %td= number_with_delimiter(stat.clicks)
         %td

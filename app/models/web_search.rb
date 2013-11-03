@@ -78,7 +78,7 @@ class WebSearch < Search
 
 
   def search
-    ActiveSupport::Notifications.instrument("#{@search_engine.class.name.tableize.singularize}.usasearch", :query => {:term => @search_engine.query}) do
+    ActiveSupport::Notifications.instrument("#{@search_engine.class.name.tableize.singularize}.usasearch", :query => { :term => @search_engine.query }) do
       @search_engine.execute_query
     end
   rescue SearchEngine::SearchError => error
@@ -164,6 +164,7 @@ class WebSearch < Search
     modules << "PHOTO" if self.has_photos?
     vertical = get_vertical
     QueryImpression.log(vertical, affiliate.name, self.query, modules)
+    BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 
   def odie_search_class
