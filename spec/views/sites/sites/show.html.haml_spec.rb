@@ -47,7 +47,7 @@ describe "sites/sites/show.html.haml" do
         rendered.should have_selector("h3", content: "Trending URLs")
         rendered.should have_selector("ol#trending_urls li", count: 2) do |lis|
           lis[0].should have_selector("a", content: 'www.gov.gov/url1.html', href: trending_urls[0])
-          lis[1].should have_selector("a", content: 'www.gov.gov/this/url/.../reason/url2.html', href: trending_urls[1])
+          lis[1].should have_selector("a", content: 'www.gov.gov/this/.../some/reason/url2.html', href: trending_urls[1])
         end
       end
 
@@ -84,9 +84,9 @@ describe "sites/sites/show.html.haml" do
         rendered.should have_selector("h3", content: "Top Clicked URLs")
         rendered.should have_selector("ol#top_urls li", count: 2) do |lis|
           lis[0].inner_text.should == 'www.gov.gov/clicked_url4.html [20]'
-          lis[1].inner_text.should == 'www.gov.gov/this/.../clicked_url5.html [10]'
+          lis[1].inner_text.should == 'www.gov.gov/this/url/.../clicked_url5.html [10]'
           lis[0].should have_selector("a", content: 'www.gov.gov/clicked_url4.html', href: 'http://www.gov.gov/clicked_url4.html')
-          lis[1].should have_selector("a", content: 'www.gov.gov/this/.../clicked_url5.html', href: 'http://www.gov.gov/this/url/is/really/long/for/some/reason/clicked_url5.html')
+          lis[1].should have_selector("a", content: 'www.gov.gov/this/url/.../clicked_url5.html', href: 'http://www.gov.gov/this/url/is/really/long/for/some/reason/clicked_url5.html')
         end
       end
     end

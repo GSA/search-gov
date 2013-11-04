@@ -57,6 +57,7 @@ gem 'strong_parameters'
 gem 'will_paginate-bootstrap'
 gem 'virtus'
 gem 'keen'
+gem 'truncator'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
