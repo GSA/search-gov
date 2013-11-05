@@ -35,14 +35,8 @@ class SiteAutodiscoverer
   def autodiscover_favicon_url
     return unless site_valid_for_autodiscovery?
     begin
-      favicon_url = nil
-      website_doc.xpath(FAVICON_LINK_XPATH).each do |link_element|
-        favicon_url = generate_url link_element.attr(:href).to_s.strip
-        break if favicon_url.present?
-      end
-
+      favicon_url = extract_favicon_url
       favicon_url ||= detect_default_favicon
-
       @site.update_attributes!(favicon_url: favicon_url) if favicon_url.present?
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
@@ -53,10 +47,7 @@ class SiteAutodiscoverer
     return unless site_valid_for_autodiscovery?
     begin
       website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
-        url = generate_url link_element.attr(:href).to_s.strip
-        title = link_element.attr(:title).to_s.squish
-        title = url unless title.present?
-        create_rss_feed title, url
+        create_rss_feed *extract_rss_feed_link(link_element)
       end
     rescue Exception => e
       Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}: #{e.message}")
@@ -94,9 +85,25 @@ class SiteAutodiscoverer
     href =~ %r[https?://]i ? href : "#{website_host_with_scheme}#{href}"
   end
 
+  def extract_favicon_url
+    favicon_url = nil
+    website_doc.xpath(FAVICON_LINK_XPATH).each do |link_element|
+      favicon_url = generate_url link_element.attr(:href).to_s.strip
+      break if favicon_url.present?
+    end
+    favicon_url
+  end
+
   def detect_default_favicon
     default_favicon_url = "#{website_host_with_scheme}/favicon.ico"
     default_favicon_url unless (timeout(10) { open(default_favicon_url) } rescue nil).nil?
+  end
+
+  def extract_rss_feed_link(link_element)
+    url = generate_url link_element.attr(:href).to_s.strip
+    title = link_element.attr(:title).to_s.squish
+    title = url unless title.present?
+    [title, url]
   end
 
   def website_host_with_scheme
