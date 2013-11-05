@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105164530) do
+ActiveRecord::Schema.define(:version => 20131105194916) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -287,16 +287,6 @@ ActiveRecord::Schema.define(:version => 20131105164530) do
   end
 
   add_index "facebook_profiles", ["affiliate_id"], :name => "index_facebook_profiles_on_affiliate_id"
-
-  create_table "faqs", :force => true do |t|
-    t.string   "url"
-    t.text     "question"
-    t.text     "answer"
-    t.integer  "ranking"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "locale",     :limit => 5, :default => "en"
-  end
 
   create_table "featured_collection_keywords", :force => true do |t|
     t.integer  "featured_collection_id", :null => false
