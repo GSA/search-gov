@@ -1,0 +1,7 @@
+.pagination
+  = will_paginate(results,
+      class: 'content-block-item',
+      link_separator: pagination_link_separator(params[:page]),
+      next_label: "#{(t :next_label)} &#12297;",
+      page_links: false,
+      previous_label: "&#12296; #{(t :prev_label)}")

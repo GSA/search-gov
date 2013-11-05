@@ -1,21 +1,16 @@
-body
-  color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
-body, #search_query, li
-  font-family: <%= render_affiliate_css_property_value(@css_hash, :font_family) %>
-#Search
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
-h1.page-title
-  color: <%= render_affiliate_css_property_value(@css_hash, :search_button_text_color) %>
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
-h1.alt, #relatedsearch h3
-  color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-a
-  color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
-  &:visited
-    color: <%= render_affiliate_css_property_value(@css_hash, :visited_title_link_color) %>
-.searchResult
-  .links
-    color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
-.pagination
-  a, a:visited
+#best-bets, #results
+  a
+    color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
+    &:visited
+      color: <%= render_affiliate_css_property_value(@css_hash, :visited_title_link_color) %>
+  .result
+    .url
+      color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
+      &:visited
+        color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
+    .description
+      color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
+
+#related-searches a
+  &, &:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>

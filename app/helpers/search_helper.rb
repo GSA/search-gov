@@ -372,12 +372,6 @@ module SearchHelper
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
 
-  def render_mobile_pagination_and_logo(collection, module_tag)
-    render(:partial => 'shared/pagination_and_logo',
-           :locals => { :collection => collection,
-                        :module_tag => module_tag })
-  end
-
   def external_tracking_code_disabled?
     params[:external_tracking_code_disabled] == 'true'
   end

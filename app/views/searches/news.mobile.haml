@@ -1,29 +1,7 @@
-= form_tag(news_search_path(:m => 'true'), :method => :get, :id => 'search_form') do
-  = hidden_field_tag :m, params[:m]
-  = hidden_field_tag :affiliate, @affiliate.name
-  = hidden_field_tag_if_key_exists :tbs
-  = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
-  = hidden_field_tag_if_key_exists :staged
-  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
-  = render :partial => 'shared/search_box'
-
 - if @search.results.present?
-  %hr.topresults
-  .group
-    - @search.hits.each_with_index do |hit, index|
-      - module_name = hit.instance.is_video? ? 'VIDS' : 'NEWS'
-      .row{:id => "newsitem#{index+1}"}
-        .searchResult
-          .title= link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, @affiliate, @search.query, index, module_name, @search_vertical)
-          .links= Truncator::UrlParser.shorten_url(hit.instance.link)
-          .timestamp= time_ago_in_words(hit.instance.published_at)
-          .content= news_description(hit)
-      - unless index == @search.hits.length - 1 then
-        %hr
+  .hide-on-sayt-open
+    = render partial: 'news_results', locals: { search: @search }
+    = render partial: 'pagination', locals: { results: @search.results }
 
-  = render_mobile_pagination_and_logo(@search.results, 'Some type of news')
-
-- elsif @search.error_message
-  %p.noresults #{@search.error_message}
 - else
-  = no_results_for @search.query
+  = render partial: 'no_results', locals: { search: @search }

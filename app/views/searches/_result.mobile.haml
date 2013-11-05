@@ -1,0 +1,10 @@
+.content-block-item.result{ id: "result-#{index + 1}" }
+  %h3
+    = display_web_result_extname_prefix(result)
+    = display_web_result_title(result, search, search.affiliate, index, @search_vertical)
+  %span.url= Truncator::UrlParser.shorten_url(result['unescapedUrl'])
+  %span.description
+    - if result['publishedAt']
+      = time_ago_in_words(result['publishedAt'])
+      \-
+    = display_result_description(result, search.query, search.affiliate)

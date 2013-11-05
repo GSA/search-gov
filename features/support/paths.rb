@@ -34,10 +34,14 @@ module NavigationHelpers
       news_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" news search page$/
       news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
+    when /^(.*)'s "([^\"]*)" mobile news search page$/
+      news_search_path(affiliate: $1, channel: Affiliate.find_by_name($1).rss_feeds.find_by_name($2), m: 'true')
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" docs search page$/
       docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2))
+    when /^(.*)'s "([^\"]*)" mobile site search page$/
+      docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2), m: 'true')
     when /the timeline page for "([^\"]*)"$/
       query_timeline_path($1)
     when /^the (.*)'s admin edit affiliate page$/

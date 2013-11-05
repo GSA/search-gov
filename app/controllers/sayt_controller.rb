@@ -1,15 +1,11 @@
 require 'airbrake/rails/controller_methods'
+require 'action_controller/parameters'
 
 class SaytController < ActionController::Metal
-  include AbstractController::Helpers
-  include AbstractController::Callbacks
-  include ActionController::MobileFu
   include Airbrake::Rails::ControllerMethods
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
-  has_mobile_fu
 
-  SAYT_SUGGESTION_SIZE = 10
-  SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
+  SAYT_SUGGESTION_SIZE = 5
 
   def index
     original_logger_level = Rails.logger.level
@@ -31,12 +27,17 @@ class SaytController < ActionController::Metal
             affiliate_id: affiliate.id,
             locale: affiliate.locale,
             query: sanitized_query,
-            number_of_results: is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE,
+            number_of_results: SAYT_SUGGESTION_SIZE,
             extras: sayt_params[:extras].present?
         }
         search = SaytSearch.new(options)
-        self.response_body = "#{sayt_params[:callback]}(#{search.results.to_json})"
-        self.content_type = "application/json"
+        self.content_type = 'application/json'
+
+        if params[:callback].blank?
+          self.response_body = search.results.to_json
+        else
+          self.response_body = "#{sayt_params[:callback]}(#{search.results.to_json})"
+        end
       else
         self.response_body = ''
       end
@@ -48,7 +49,9 @@ class SaytController < ActionController::Metal
   private
 
   def sayt_params
-    @sayt_params ||=
-        params.slice(:aid, :callback, :extras, :name, :q).reject { |k, v| !v.is_a?(String) }
+    @sayt_params ||= begin
+      parameters = ActionController::Parameters.new(params)
+      parameters.permit(:aid, :callback, :extras, :name, :q)
+    end
   end
 end

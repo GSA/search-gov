@@ -24,7 +24,7 @@ describe SaytController do
             with(hash_including(affiliate_id: affiliate.id,
                                 query: 'lorem ipsum',
                                 extras: false,
-                                number_of_results: 10)).
+                                number_of_results: 5)).
             and_return(search)
 
         get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :callback => 'jsonp1234'
@@ -40,7 +40,7 @@ describe SaytController do
             with(hash_including(:affiliate_id => affiliate.id,
                                 :query => 'lorem ipsum',
                                 :extras => true,
-                                number_of_results: 10)).
+                                number_of_results: 5)).
             and_return(search)
 
         get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :callback => 'jsonp1234', :extras => 'true'
@@ -64,7 +64,7 @@ describe SaytController do
             with(hash_including(affiliate_id: affiliate.id,
                                 query: 'lorem ipsum',
                                 extras: false,
-                                number_of_results: 10)).
+                                number_of_results: 5)).
             and_return(search)
 
         get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234'
@@ -79,7 +79,7 @@ describe SaytController do
             with(hash_including(affiliate_id: affiliate.id,
                                 query: 'lorem ipsum',
                                 extras: true,
-                                number_of_results: 10)).
+                                number_of_results: 5)).
             and_return(search)
 
         get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234', :extras => 'true'
@@ -97,50 +97,18 @@ describe SaytController do
       end
     end
 
-    context 'when request is from mobile device' do
-      before { controller.stub(:is_mobile_device?).and_return(true) }
+    context 'when callback parameter is not specified' do
+      it 'should return json string' do
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
+        SaytSearch.should_receive(:new).
+            with(hash_including(affiliate_id: affiliate.id,
+                                query: 'lorem ipsum',
+                                extras: false,
+                                number_of_results: 5)).
+            and_return(search)
 
-      context 'when sanitized_query is not empty and params[:name] is valid' do
-        it 'should do SaytSearch' do
-          Affiliate.should_receive(:find_by_name_and_is_sayt_enabled).with(affiliate.name, true).and_return(affiliate)
-          SaytSearch.should_receive(:new).
-              with(hash_including(affiliate_id: affiliate.id,
-                                  query: 'lorem ipsum',
-                                  extras: false,
-                                  number_of_results: 6)).
-              and_return(search)
-
-          get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :callback => 'jsonp1234'
-          response.body.should == %Q{jsonp1234(some json string)}
-        end
-      end
-
-      context 'when sanitized_query is not empty and params[:aid] is valid' do
-        it 'should do SaytSearch' do
-          Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
-          SaytSearch.should_receive(:new).
-              with(hash_including(affiliate_id: affiliate.id,
-                                  query: 'lorem ipsum',
-                                  extras: false,
-                                  number_of_results: 6)).
-              and_return(search)
-
-          get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234'
-          response.body.should == %Q{jsonp1234(some json string)}
-        end
-      end
-    end
-
-    context 'when params[:name] is not a String' do
-      before do
-        Affiliate.should_not_receive(:select)
-        get :index, q: 'gov', name: { siteHandle: 'badparam' }
-      end
-
-      it { should respond_with(:success) }
-
-      it 'should ignore it' do
-        response.body.should eq('')
+        get :index, q: 'lorem \\ ipsum', aid: affiliate.id, invalid_param: 'invalid'
+        response.body.should == 'some json string'
       end
     end
   end

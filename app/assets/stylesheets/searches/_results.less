@@ -1,0 +1,63 @@
+#best-bets, #results {
+  .content-block();
+
+  .content-provider {
+    font-size: 12px;
+    margin: 5px 0;
+    &, a {
+      color: #505050;
+      font-family: 'Arial';
+      font-size: 12px;
+    }
+  }
+
+  .result {
+    h3 {
+      font-size: 18px;
+      font-weight: normal;
+      margin: 10px 0 5px;
+    }
+    .url, .description {
+      display: block;
+      word-wrap: break-word;
+    }
+  }
+}
+
+#related-searches {
+  .content-block();
+  ul {
+    .list-unstyled();
+  }
+}
+
+.pagination {
+  .content-block();
+  .disabled {
+    .hidden();
+  }
+
+  .content-block-item {
+    padding: 0;
+  }
+  .previous_page, .current_page, .next_page {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .previous_page, .next_page {
+    color: @icon-color;
+  }
+
+  .previous_page, .current_page {
+    padding: 5px 12px 8px 6px;
+  }
+  .next_page {
+    padding: 5px 6px 8px 12px;
+  }
+}
+
+#no-results {
+  .content-block();
+  font-size: 18px;
+}

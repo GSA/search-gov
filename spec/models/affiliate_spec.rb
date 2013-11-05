@@ -136,7 +136,6 @@ describe Affiliate do
         expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
-        expect(affiliate.mobile_look_and_feel_css).to match(/body,#search_query,li\{font-family:Arial,sans-serif\}/)
         expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:purple\}/)
       end
     end

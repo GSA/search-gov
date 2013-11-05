@@ -1,9 +1,7 @@
-= form_tag(docs_search_path(:m => 'true'), :method => :get, :id => 'search_form') do
-  = hidden_field_tag :m, params[:m]
-  = hidden_field_tag :affiliate, @affiliate.name
-  = hidden_field_tag_if_key_exists :dc
-  = hidden_field_tag_if_key_exists :staged
-  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
-  = render :partial => 'shared/search_box'
+- if @search.results.present?
+  .hide-on-sayt-open
+    = render partial: 'organic_results', locals: { search: @search }
+    = render partial: 'pagination', locals: { results: @search.results }
 
-= render :partial => 'shared/searchresults', :locals => { :search => @search }
+- else
+  = render partial: 'no_results', locals: { search: @search }

@@ -1,26 +1,31 @@
 !!!strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym}
+%html{ lang: @affiliate.locale }
   %head
-    %title
-      #{@affiliate.display_name} #{t(:mobile)}
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    %meta{ charset: 'UTF-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
     = render_robots_meta_tag
-    %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}/
-    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}/
-    %meta{:name => "format-detection", :content => "telephone=no" }/
+    = attribution
+    = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
+
+    %title #{@page_title}
+
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
     = stylesheet_link_tag 'searches_mobile'
     :css
       #{@affiliate.mobile_look_and_feel_css}
+
   %body
-    #container
-      #contentWrapper
-        #searchHeader
-          = render_mobile_header(@affiliate)
-        = yield
-        = render :partial => 'shared/footer'
+    #main-nav
+      %header#header
+        .logo= mobile_header @affiliate
+      = render partial: 'form', locals: { search: @search }
 
-    - if @affiliate.is_sayt_enabled?
-      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id)}&\";"
+    = yield
+
     = javascript_include_tag 'searches_mobile'
+    /[if lt IE 9]
+      = javascript_include_tag 'searches_ie_lt9'
 
-    = render :partial => '/shared/analytics'
+    = render partial: 'usasearch_serp_analytics'
+    = render partial: 'shared/analytics'

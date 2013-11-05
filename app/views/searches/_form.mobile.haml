@@ -1,0 +1,20 @@
+= form_tag request.path, method: :get, id: 'search-bar' do
+  = hidden_field_tag :m, params[:m]
+  = hidden_field_tag :affiliate, search.affiliate.name
+  = hidden_field_tag_if_key_exists :sitelimit
+  = hidden_field_tag_if_key_exists :staged
+  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
+
+  - if search.is_a? NewsSearch
+    = hidden_field_tag_if_key_exists :tbs
+    = hidden_field_tag :channel, search.rss_feed.id if search.rss_feed
+
+  - elsif search.is_a? SiteSearch
+    = hidden_field_tag_if_key_exists :dc
+
+  = label_tag :query, t(:search_label), class: 'sr-only'
+  = text_field_tag :query, search.query, spellcheck: 'off', type: 'search',
+    class: typeahead_query_class(search.affiliate)
+  = button_tag class: 'btn', type: 'submit', id: 'search-button' do
+    %span.sr-only= t(:search)
+    %span.glyphicon.glyphicon-search

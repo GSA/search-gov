@@ -1,0 +1,37 @@
+#main-nav {
+  background-color: #ebebeb;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+
+  &.sticky {
+    .box-shadow(0 3px 12px rgba(0,0,0,.800));
+    position: fixed;
+  }
+}
+
+#header {
+  background-color: @block-background-color;
+  margin-bottom: @content-block-margin;
+
+  .logo {
+    border-bottom: 1px solid @block-border-color;
+    padding: 10px 60px;
+  }
+
+  .logo img {
+    .img-responsive();
+    margin: 0 auto;
+    max-height: 50px;
+
+    @media (min-width: @screen-sm) {
+      max-height: 80px;
+    }
+  }
+
+  .logo h1 {
+    margin: 0;
+    text-align: center;
+  }
+}

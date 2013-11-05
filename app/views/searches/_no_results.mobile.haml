@@ -1,0 +1,6 @@
+#no-results
+  .content-block-item
+    - if search.error_message
+      #{search.error_message}
+    - else
+      = t(:no_results_for_and_try, query: search.query)

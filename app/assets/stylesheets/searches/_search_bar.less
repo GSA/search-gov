@@ -1,0 +1,27 @@
+#search-bar {
+  .content-block();
+  height: 40px;
+  position: relative;
+
+  .twitter-typeahead {
+    width: 100%;
+  }
+  input[type='search'], input[type='text'] {
+    .box-shadow(none);
+    border-color: transparent;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+    height: 40px;
+  }
+  .btn {
+    background-color: transparent;
+    border-color: transparent;
+    color: #000;
+  }
+  #search-button {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    z-index: 10;
+  }
+}

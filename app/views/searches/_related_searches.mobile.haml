@@ -1,0 +1,7 @@
+#related-searches
+  .content-block-item= t :related_searches
+  .content-block-item
+    %ul
+      - search.related_search.each_with_index do |related_term, index|
+        - options = { affiliate: search.affiliate.name, query: strip_tags(related_term) }
+        %li= tracked_click_link(search_path(options),related_term.html_safe.downcase, search, search.affiliate, index, 'SREL', @search_vertical)
