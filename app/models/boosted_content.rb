@@ -1,8 +1,7 @@
 class BoostedContent < ActiveRecord::Base
+  include ActiveRecordExtension
+  include BestBet
   require 'rexml/document'
-
-  STATUSES = %w( active inactive )
-  STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
 
   cattr_reader :per_page
   @@per_page = 20
@@ -14,8 +13,6 @@ class BoostedContent < ActiveRecord::Base
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
-  validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
-  validate :publish_start_and_end_dates
   before_save :ensure_http_prefix_on_url
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
@@ -45,12 +42,6 @@ class BoostedContent < ActiveRecord::Base
     boolean :is_active, :using => :is_active?
     time :publish_start_on, :trie => true
     time :publish_end_on, :trie => true
-  end
-
-  STATUSES.each do |status|
-    define_method "is_#{status}?" do
-      self.status == status
-    end
   end
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
@@ -113,24 +104,9 @@ class BoostedContent < ActiveRecord::Base
     { :title => title, :url => url, :description => description }.to_xml(options)
   end
 
-  def display_status
-    status.humanize
-  end
-
   def destroy_and_update_attributes(params)
-    params[:boosted_content_keywords_attributes].each do |keyword_attributes|
-      keyword = keyword_attributes[1]
-      keyword[:_destroy] = true if keyword[:value].blank?
-    end
-    update_attributes(params)
-  end
-
-  def active_and_searchable?
-    if publish_end_on
-      is_active? && (publish_start_on..publish_end_on).include?(Date.current)
-    else
-      is_active? && (Date.current >= publish_start_on)
-    end
+    destroy_on_blank(params[:boosted_content_keywords_attributes], :value)
+    touch if update_attributes(params)
   end
 
   protected
@@ -201,14 +177,6 @@ class BoostedContent < ActiveRecord::Base
   end
 
   private
-
-  def publish_start_and_end_dates
-    start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
-    end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?
-    if start_date.present? and end_date.present? and start_date > end_date
-      errors.add(:base, "Publish end date can't be before publish start date")
-    end
-  end
 
   def ensure_http_prefix_on_url
     self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^https?://}i

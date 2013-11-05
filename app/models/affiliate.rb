@@ -350,10 +350,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def destroy_and_update_attributes(params)
-    params[:connections_attributes].each do |connection_attributes|
-      connection = connection_attributes[1]
-      connection[:_destroy] = true if connection[:affiliate_name].blank? && connection[:label].blank?
-    end
+    destroy_on_blank(params[:connections_attributes], :affiliate_name, :label)
     update_attributes(params)
   end
 

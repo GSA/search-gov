@@ -13,11 +13,6 @@ describe FeaturedCollection do
   it { should have_attached_file :image }
   it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
-  SUPPORTED_LOCALES.each do |locale|
-    it { should allow_value(locale).for(:locale) }
-  end
-  it { should_not allow_value("invalid_locale").for(:locale) }
-
   FeaturedCollection::STATUSES.each do |status|
     it { should allow_value(status).for(:status) }
   end
@@ -39,10 +34,6 @@ describe FeaturedCollection do
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
-
-  it "should default the locale to the locale of the affiliate" do
-    FeaturedCollection.create!(:title => 'Title', :publish_start_on => Date.current, :affiliate => affiliates(:spanish_affiliate), :status => 'active', :layout => 'one column').locale.should == "es"
-  end
 
   describe ".recent" do
     it "should include a scope called 'recent'" do

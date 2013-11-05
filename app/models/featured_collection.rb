@@ -1,10 +1,9 @@
 class FeaturedCollection < ActiveRecord::Base
   include ActiveRecordExtension
+  include BestBet
 
   CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
-  STATUSES = %w( active inactive )
-  STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
   LAYOUTS = ['one column', 'two column']
   LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
   LINK_TITLE_SEPARATOR = "!!!sep!!!"
@@ -14,10 +13,7 @@ class FeaturedCollection < ActiveRecord::Base
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :publish_start_on
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
-  validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validates_inclusion_of :layout, :in => LAYOUTS, :message => 'must be selected'
-  validate :publish_start_and_end_dates
   validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validates_attachment_content_type :image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
 
@@ -32,7 +28,6 @@ class FeaturedCollection < ActiveRecord::Base
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
 
-  before_validation :set_locale
   after_validation :update_errors_keys
   before_save :ensure_http_prefix
   before_post_process :check_image_validation
@@ -43,12 +38,6 @@ class FeaturedCollection < ActiveRecord::Base
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
 
   attr_accessor :mark_image_for_deletion
-
-  STATUSES.each do |status|
-    define_method "is_#{status}?" do
-      self.status == status
-    end
-  end
 
   LAYOUTS.each do |layout|
     define_method "has_#{layout.parameterize('_')}_layout?" do
@@ -62,7 +51,6 @@ class FeaturedCollection < ActiveRecord::Base
 
   searchable do
     integer :affiliate_id
-    string :locale
     string :status
     date :publish_start_on
     date :publish_end_on
@@ -113,44 +101,12 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   def destroy_and_update_attributes(params)
-    params[:featured_collection_keywords_attributes].each do |keyword_attributes|
-      keyword = keyword_attributes[1]
-      keyword[:_destroy] = true if keyword[:value].blank?
-    end
-    params[:featured_collection_links_attributes].each do |link_attributes|
-      link = link_attributes[1]
-      link[:_destroy] = true if link[:title].blank? and link[:url].blank?
-    end
-    if update_attributes(params)
-      touch
-    end
-  end
-
-  def display_status
-    status.humanize
-  end
-
-  def active_and_searchable?
-    if publish_end_on
-      is_active? && (publish_start_on..publish_end_on).include?(Date.current)
-    else
-      is_active? && (Date.current >= publish_start_on)
-    end
+    destroy_on_blank(params[:featured_collection_keywords_attributes], :value)
+    destroy_on_blank(params[:featured_collection_links_attributes], :title, :url)
+    touch if update_attributes(params)
   end
 
   private
-
-  def set_locale
-    self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
-  end
-
-  def publish_start_and_end_dates
-    start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
-    end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?
-    if start_date.present? and end_date.present? and start_date > end_date
-      errors.add(:base, "Publish end date can't be before publish start date")
-    end
-  end
 
   def ensure_http_prefix
     set_http_prefix :title_url, :image_attribution_url

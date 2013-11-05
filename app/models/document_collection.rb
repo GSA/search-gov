@@ -15,10 +15,7 @@ class DocumentCollection < ActiveRecord::Base
   accepts_nested_attributes_for :navigation
 
   def destroy_and_update_attributes(params)
-    params[:url_prefixes_attributes].each do |url_prefix_attributes|
-      url_prefix = url_prefix_attributes[1]
-      url_prefix[:_destroy] = true if url_prefix[:prefix].blank?
-    end
+    destroy_on_blank(params[:url_prefixes_attributes], :prefix)
     update_attributes(params)
   end
 

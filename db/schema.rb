@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101025738) do
+ActiveRecord::Schema.define(:version => 20131105164530) do
 
   create_table "affiliate_feature_additions", :force => true do |t|
     t.integer  "affiliate_id", :null => false
@@ -322,7 +322,6 @@ ActiveRecord::Schema.define(:version => 20131101025738) do
     t.integer  "affiliate_id"
     t.string   "title",                 :null => false
     t.string   "title_url"
-    t.string   "locale",                :null => false
     t.string   "status",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

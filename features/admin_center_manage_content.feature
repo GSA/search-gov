@@ -139,9 +139,12 @@ Feature: Manage Content
       | recalls  |
       | releases |
     When I follow "Edit"
-    And I fill in "Title" with "Release for Week Ending June 21, 2013"
+    And I fill in the following:
+      | Title     | Release for Week Ending June 21, 2013 |
+      | Keyword 1 |                                       |
     And I press "Save"
     Then I should see "You have updated Release for Week Ending June 21, 2013"
+    And I should not see "rails"
     When I press "Remove"
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
@@ -191,21 +194,26 @@ Feature: Manage Content
     And I add the following Collection URL Prefixes:
       | url_prefix           |
       | www.agency2.gov/news |
-      | news.agency3.gov     |
+      | 1.agency3.gov     |
     And I press "Add"
     Then I should see "You have added News to this site"
     When I follow "Edit"
     Then the "Name" field should contain "News"
-    And the "URL Prefix 1" field should contain "http://news.agency3.gov/"
+    And the "URL Prefix 1" field should contain "http://1.agency3.gov/"
     And the "URL Prefix 2" field should contain "http://www.agency1.gov/news/"
     And the "URL Prefix 3" field should contain "http://www.agency2.gov/news/"
-    When I fill in "Name" with "News and Blog"
+    When I fill in the following:
+      | Name         | News and Blog |
+      | URL Prefix 1 |               |
     And I add the following Collection URL Prefixes:
       | url_prefix       |
       | blog.agency4.gov |
     And I press "Save"
     Then I should see "You have updated News and Blog"
-    When I press "Remove"
+    When I follow "Edit"
+    Then the "URL Prefix 1" field should contain "blog.agency4.gov"
+    When I follow "View All"
+    And I press "Remove"
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View domains

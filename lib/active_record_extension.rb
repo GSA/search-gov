@@ -9,4 +9,11 @@ module ActiveRecordExtension
       self.send(:"#{field.to_s}=", "http://#{value.strip}") unless value.blank? or value =~ %r{^http(s?)://}i
     end
   end
+
+  def destroy_on_blank(attributes, *keys)
+    attributes.each do |attribute|
+      item = attribute[1]
+      item[:_destroy] = true if keys.all? { |key| item[key].blank? }
+    end
+  end
 end

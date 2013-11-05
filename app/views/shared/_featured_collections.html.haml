@@ -7,6 +7,6 @@
           = featured_collection_link_with_click_tracking(highlight_hit(hit, :title).html_safe, result.title_url, @affiliate, search.query, 0, @search_vertical)
           %span.recommended-by
             = t :by_site
-            = @affiliate ? @affiliate.display_name : t(:usa_gov)
+            = @affiliate.display_name
         = render_featured_collection_image result
         = render :partial => 'shared/featured_collection_links', :locals => { :search => search, :hit => hit, :result => result } unless result.featured_collection_links.blank?

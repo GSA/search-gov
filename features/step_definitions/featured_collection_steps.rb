@@ -61,39 +61,6 @@ Then /^I should not see a featured collection image section$/ do
   page.should_not have_selector(".featured-collection .image")
 end
 
-When /^there are (\d+) featured collections exist with the following attributes:$/ do |count, table|
-  table.hashes.each do |hash|
-    count.to_i.times do |i|
-      featured_collection = FeaturedCollection.new(
-          :title => hash['title'] || "random title #{i + 1}",
-          :title_url => hash['title_url'] || "http://example/random_content#{i + 1}.html",
-          :locale => hash['locale'],
-          :status => hash['status'] || "active",
-          :layout => hash['layout'] || 'one column',
-          :publish_start_on => Date.current)
-      featured_collection.featured_collection_keywords.build(:value => "keyword value #{i + 1}")
-      featured_collection.save!
-    end
-  end
-end
-
-Given /^there are (\d+) featured collections exist for the affiliate "([^"]*)":$/ do |count, affiliate_name, table|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  table.hashes.each do |hash|
-    count.to_i.times do |i|
-      featured_collection = affiliate.featured_collections.build(
-          :title => hash['title'] || "random title #{i + 1}",
-          :title_url => hash['title_url'] || "http://example/random_content#{i + 1}.html",
-          :locale => hash['locale'],
-          :status => hash['status'] || "active",
-          :layout => hash['layout'] || 'one column',
-          :publish_start_on => Date.current)
-      featured_collection.featured_collection_keywords.build(:value => "keyword value #{i + 1}")
-      featured_collection.save!
-    end
-  end
-end
-
 Given /^the following featured collection links exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
   featured_collection = FeaturedCollection.find_by_title(featured_collection_title)
   table.hashes.each_with_index do |hash, i|
