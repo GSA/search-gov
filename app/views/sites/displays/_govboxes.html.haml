@@ -9,50 +9,36 @@
     - if @site.rss_feeds.non_managed.non_mrss.exists?
       %tr
         %td.name
-          = f.label :rss_govbox_label, nil, class: 'hide'
+          = f.label :rss_govbox_label, nil, class: 'off-screen-text'
           = f.text_field :rss_govbox_label
         %td.cell-1x= link_to 'RSS (combined)', site_rss_feeds_path(@site)
-        %td.cell-1x
-          .switch-button= f.check_box :is_rss_govbox_enabled
-          = f.label :is_rss_govbox_enabled, nil, maxlength: 20, class: 'hide'
+        = switch_cell f, :is_rss_govbox_enabled
     - if @site.youtube_profiles.exists?
       %tr
         %td Videos
         %td.cell-1x= link_to 'YouTube', site_youtube_usernames_path(@site)
-        %td.cell-1x
-          .switch-button= f.check_box :is_video_govbox_enabled
-          = f.label :is_video_govbox_enabled, nil, maxlength: 20, class: 'hide'
+        = switch_cell f, :is_video_govbox_enabled
     - if @site.flickr_profiles.exists?
       %tr
         %td Photos
         %td.cell-1x= link_to 'Flickr', site_flickr_urls_path(@site)
-        %td.cell-1x
-          .switch-button= f.check_box :is_photo_govbox_enabled
-          = f.label :is_photo_govbox_enabled, nil, class: 'hide'
+        = switch_cell f, :is_photo_govbox_enabled
     %tr
       %td Job openings
       %td.cell-1x USAJobs/NeoGov
-      %td.cell-1x
-        .switch-button= f.check_box :jobs_enabled
-        = f.label :jobs_enabled, 'Is jobs govbox enabled', class: 'hide'
+      = switch_cell f, :jobs_enabled
     %tr
       %td Agency contact information
       %td.cell-1x USASearch
-      %td.cell-1x
-        .switch-button= f.check_box :is_agency_govbox_enabled
-        = f.label :is_agency_govbox_enabled, nil, class: 'hide'
+      = switch_cell f, :is_agency_govbox_enabled
     %tr
       %td Related searches
       %td.cell-1x USASearch
-      %td.cell-1x
-        .switch-button= f.check_box :is_related_searches_enabled
-        = f.label :is_related_searches_enabled, nil, class: 'hide'
+      = switch_cell f, :is_related_searches_enabled
     %tr
       %td Health topics
       %td.cell-1x Medline Plus
-      %td.cell-1x
-        .switch-button= f.check_box :is_medline_govbox_enabled
-        = f.label :is_medline_govbox_enabled, nil, class: 'hide'
+      = switch_cell f, :is_medline_govbox_enabled
     - if @site.twitter_profiles.exists?
       %tr
         %td Recent Tweets
@@ -62,6 +48,4 @@
     %tr
       %td Type-ahead Search
       %td.cell-1x USASearch
-      %td.cell-1x
-        .switch-button= f.check_box :is_sayt_enabled
-        = f.label :is_sayt_enabled, nil, class: 'hide'
+      = switch_cell f, :is_sayt_enabled

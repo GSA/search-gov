@@ -3,6 +3,7 @@ Feature: Affiliate 3rd party tracking
   As a site customer
   I want to upload my JS tracking code
 
+  @javascript
   Scenario: Setting 3rd Party Tracking
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -13,7 +14,8 @@ Feature: Affiliate 3rd party tracking
     Then I should see the browser page titled "3rd Party Tracking"
     And I should see "3rd Party Tracking"
 
-    When I press "Submit"
+    When I fill in "external_tracking_code" with " "
+    And I press "Submit"
     Then I should see "Web analytics JavaScript code can't be blank"
 
     When I fill in "external_tracking_code" with "<script>var analytics;</script>"

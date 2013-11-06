@@ -16,7 +16,7 @@
   'in the side note boxes' => '.column-2',
   'in the search navigation' => '#main_nav',
   'in the homepage header' => '.header',
-  'in the homepage footer' => '.footer',
+  'in the homepage footer' => '.footer.links',
   'in the homepage about section' => '.about',
   'in the homepage tagline' => '.tagline',
   'in the left column' => '#left_column',

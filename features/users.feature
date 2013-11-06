@@ -21,10 +21,10 @@ Feature: Users
     And the "I am a government employee or contractor" checkbox should not be checked
     And the "I have read and accept the" checkbox should not be checked
     When I fill in the following in the new user form:
-    | Email                         | lorem.ipsum@agency.gov      |
-    | Name                          | Lorem Ipsum                 |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
+      | Email                  | lorem.ipsum@agency.gov |
+      | Name                   | Lorem Ipsum            |
+      | Password*              | huge_secret            |
+      | Password confirmation* | huge_secret            |
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
@@ -51,10 +51,10 @@ Feature: Users
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the login page
     When I fill in the following in the new user form:
-    | Email                         | lorem.ipsum@agency.gov      |
-    | Name                          | Lorem Ipsum                 |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
+      | Email                  | lorem.ipsum@agency.gov |
+      | Name                   | Lorem Ipsum            |
+      | Password*              | huge_secret            |
+      | Password confirmation* | huge_secret            |
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
@@ -67,10 +67,10 @@ Feature: Users
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given I am on the login page
     When I fill in the following in the new user form:
-    | Email                         | lorem.ipsum@corporate.com   |
-    | Name                          | Lorem Ipsum                 |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
+      | Email                  | lorem.ipsum@corporate.com |
+      | Name                   | Lorem Ipsum               |
+      | Password*              | huge_secret               |
+      | Password confirmation* | huge_secret               |
     And I check "I am a government employee or contractor"
     And I check "I have read and accept the"
     And I press "Register for a new account"
@@ -101,10 +101,10 @@ Feature: Users
   Scenario: Registering without asserting government affiliation or accepting the Terms of Service
     Given I am on the login page
     When I fill in the following in the new user form:
-    | Email                         | lorem.imsum@notagency.com   |
-    | Name                          | Lorem Ipsum                 |
-    | Password                      | huge_secret                 |
-    | Password confirmation         | huge_secret                 |
+      | Email                  | lorem.imsum@notagency.com |
+      | Name                   | Lorem Ipsum               |
+      | Password*              | huge_secret               |
+      | Password confirmation* | huge_secret               |
     And I press "Register for a new account"
     Then I should see "Affiliation with government is required to register for an account"
     And I should see "Terms of service must be accepted"

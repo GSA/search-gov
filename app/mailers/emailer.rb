@@ -107,12 +107,12 @@ class Emailer < ActionMailer::Base
     send_mail(:html)
   end
 
-  def public_key_upload_notification(txtfile, current_user, affiliate)
+  def public_key_upload_notification(public_key_txt, current_user, affiliate)
     setup_email(%w{sysadmin@searchsi.com ***REMOVED***}, __method__)
     @from = current_user.email
     @affiliate = affiliate
     @current_user = current_user
-    @public_key_txt = txtfile.tempfile.read
+    @public_key_txt = public_key_txt
     send_mail(:text)
   end
 

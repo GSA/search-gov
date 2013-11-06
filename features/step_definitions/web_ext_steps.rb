@@ -48,7 +48,7 @@ Then /^I should not see an image link to "([^"]*)" with url for "([^"]*)"$/ do |
 end
 
 Then /^I should see the browser page titled "([^\"]*)"$/ do |title|
-  page.should have_selector("title", :text => title)
+  page.should have_title title
 end
 
 Then /^I should see "([^\"]*)" in "([^\"]*)" meta tag$/ do |content, name|

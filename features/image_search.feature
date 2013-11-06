@@ -48,16 +48,6 @@ Feature: Image search
     And I follow "USASearch Images Home"
     Then I should see the browser page titled "Buscador.USA.gov Imágenes"
 
-  Scenario: A unicode search
-    Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
-    When I am on the homepage
-    And I follow "Images"
-    When I fill in "query" with "البيت الأبيض"
-    And I submit the search form
-    Then I should see "البيت الأبيض"
-
   Scenario: Visiting other verticals from the image search homepage
     Given the following Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         |

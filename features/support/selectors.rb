@@ -20,6 +20,12 @@ module HtmlSelectorsHelpers
       '#indexed-documents .error .last-crawl-status.in'
     when /the Header & Footer form/
       '#edit-header-and-footer'
+    when /the Admin Center content/
+      '.l-content'
+    when /the first scaffold row/
+      '.records > tr:first-child'
+    when /the first table body row/
+      "table tbody tr:first-child"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

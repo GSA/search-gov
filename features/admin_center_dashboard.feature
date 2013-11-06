@@ -51,6 +51,7 @@ Feature: Dashboard
     When I press "Stop sending me today's snapshot as a daily email"
     Then I should see "You have disabled the daily snapshot setting for usagov."
 
+  @javascript
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
@@ -106,6 +107,7 @@ Feature: Dashboard
       | Jane Admin admin2@fixtures.gov                   |
       | John Admin admin1@fixtures.gov                   |
 
+  @javascript
   Scenario: Add/remove user
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
@@ -125,7 +127,7 @@ Feature: Dashboard
     When I fill in "Email" with "admin@email.gov"
     And I press "Add"
     Then I should see "notified admin@email.gov on how to login and to access this site"
-    When I press "Remove"
+    When I press "Remove" within the first table body row
     Then I should see "You have removed admin@email.gov from this site"
 
   @javascript
@@ -146,6 +148,7 @@ Feature: Dashboard
     When I follow "View Current Mobile"
     Then the preview iframe should contain "agency site Mobile"
 
+  @javascript
   Scenario: Adding a new site
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the new site page

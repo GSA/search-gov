@@ -20,4 +20,25 @@ module BootstrapHelper
               data: { confirm: confirm_message },
               class: 'btn btn-small'
   end
+
+  def navigation_switch_cell(form, nav, index)
+    label_content = "Is #{nav.navigable_type.titleize} #{index} navigable"
+    switch_cell(form, :is_active, label_content)
+  end
+
+  def switch_cell(form, name, label_content = nil)
+    content = switch_button(form, name)
+
+    label_content ||= name.to_s
+    cell_id = "#{label_content.downcase.gsub(' ', '_')}_switch"
+    content << form.label(name, label_content, class: 'hide')
+
+    content_tag(:td, class: 'cell-1x', id: cell_id) { content }
+  end
+
+  private
+
+  def switch_button(form, name)
+    content_tag(:div, class: 'switch-button') { form.check_box name }
+  end
 end

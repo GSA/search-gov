@@ -9,24 +9,19 @@ SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 # files.
 
 require 'cucumber/rails'
-if RUBY_VERSION =~ /1.8/
-  require 'test/unit/testresult'
-  Test::Unit.run = true
-end
+require 'capybara/rails'
 require 'email_spec/cucumber'
-
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
-Capybara.default_wait_time = 5
-Capybara.server_boot_timeout = 300
+Capybara.default_wait_time = 10
 
 require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new app, port: 8899
+  Capybara::Poltergeist::Driver.new app, port: 8899, js_errors: false
 end
 Capybara.javascript_driver = :poltergeist
 

@@ -82,7 +82,7 @@ group :development, :test do
   gem 'email_spec'
   gem 'database_cleaner'
   gem 'shoulda-matchers','~>1.4.0'
-  gem 'capybara', '~>1.1'
+  gem 'capybara'
   gem 'launchy'
   gem 'webster'
   gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'

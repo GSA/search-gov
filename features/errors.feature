@@ -10,7 +10,7 @@ Feature: Errors
     And I should see "What should you do?"
     When I fill in "query" with "USA"
     And I press "Search"
-    Then I should see "USA - USA.gov Search Results"
+    Then I should see the browser page titled "USA - USA.gov Search Results"
 
   Scenario: Going to the Spanish 404 page
     When I go to the Spanish 404 page
@@ -19,7 +19,7 @@ Feature: Errors
     And I should see "¿Qué puede hacer?"
     When I fill in "query" with "USA"
     And I press "Buscar"
-    Then I should see "USA - Gobierno.USA.gov resultados de la búsqueda"
+    Then I should see the browser page titled "USA - Gobierno.USA.gov resultados de la búsqueda"
 
   Scenario: Going to an affiliate 404 page in English
      Given the following Affiliates exist:
@@ -34,7 +34,7 @@ Feature: Errors
     And I should see "Live footer"
     When I fill in "query" with "USA"
     And I press "Search"
-    Then I should see "USA - aff site Search Results"
+    Then I should see the browser page titled "USA - aff site Search Results"
 
   Scenario: Going to an affiliate 404 page in Spanish
     Given the following Affiliates exist:
@@ -49,7 +49,7 @@ Feature: Errors
     And I should see "Live footer"
     When I fill in "query" with "USA"
     And I press "Buscar"
-    Then I should see "USA - aff site resultados de la búsqueda"
+    Then I should see the browser page titled "USA - aff site resultados de la búsqueda"
 
   Scenario: Going to the 404 page using mobile device
     Given I am using a mobile device

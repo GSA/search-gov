@@ -49,7 +49,7 @@ Feature:  Administration
     And I follow "Users" within ".main"
     Then I should be on the users admin page
     And I should see the following breadcrumbs: USASearch > Super Admin > Users
-    When I follow "Edit"
+    When I follow "Edit" within the first scaffold row
     Then the "Default affiliate" select field should contain 1 option
 
   Scenario: Visiting the SAYT Filters admin page as an admin

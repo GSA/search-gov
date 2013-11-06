@@ -26,6 +26,4 @@
               = navigable_form.label :name, "#{nav.navigable_type.titleize} #{index}", class: 'hide'
               = navigable_form.text_field :name
             %td.cell-1x= link_to_site_navigable(nav.navigable)
-            %td.cell-1x
-              = navigation_form.label :is_active, "Is #{nav.navigable_type.titleize} #{index} navigable", class: 'hide'
-              .switch-button= navigation_form.check_box :is_active
+            = navigation_switch_cell navigation_form, nav, index

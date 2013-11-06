@@ -74,7 +74,9 @@ Given /^all featured collections are indexed$/ do
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)" on the (left|right) featured collection link list$/ do |link_title, url, position|
-  page.should have_selector(".featured-collection li.#{position} a", :text => link_title, :href => url)
+  within ".featured-collection li.#{position}" do
+    page.should have_link link_title, href: url
+  end
 end
 
 When /^(?:|I )add the following best bets graphics links:$/ do |table|

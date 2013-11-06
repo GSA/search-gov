@@ -1,5 +1,6 @@
 Feature: Manage Display
 
+  @javascript
   Scenario: Editing Sidebar Settings
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -25,11 +26,11 @@ Feature: Manage Display
     Then the "Label for Sidebar" field should be blank
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
-    And the "Is Image Search Label 0 navigable" checkbox should be checked
+    And the "Is Image Search Label 0 navigable" should be switched on
     And the "Document Collection 1" field should contain "Blog"
-    And the "Is Document Collection 1 navigable" checkbox should be checked
+    And the "Is Document Collection 1 navigable" should be switched on
     And the "Rss Feed 2" field should contain "Press"
-    And the "Is Rss Feed 2 navigable" checkbox should not be checked
+    And the "Is Rss Feed 2 navigable" should be switched off
     And the "Rss Feed 3" field should contain "Videos"
 
     When I fill in the following:
@@ -39,24 +40,25 @@ Feature: Manage Display
       | Document Collection 1 | Latest Blog   |
       | Rss Feed 2            | Latest Press  |
       | Rss Feed 3            | Latest Videos |
-    And I uncheck "Is Image Search Label 0 navigable"
-    And I uncheck "Is Document Collection 1 navigable"
-    And I check "Is Rss Feed 2 navigable"
-    And I check "Is Rss Feed 3 navigable"
+    And I switch off "Is Image Search Label 0 navigable"
+    And I switch off "Is Document Collection 1 navigable"
+    And I switch on "Is Rss Feed 2 navigable"
+    And I switch on "Is Rss Feed 3 navigable"
 
     And I press "Save"
     Then I should see "You have updated your site display settings"
     And the "Label for Sidebar" field should contain "Search"
     And the "Default search label" field should contain "Web"
     And the "Image Search Label 0" field should contain "Latest Images"
-    And the "Is Image Search Label 0 navigable" checkbox should not be checked
+    And the "Is Image Search Label 0 navigable" should be switched off
     And the "Document Collection 1" field should contain "Latest Blog"
-    And the "Is Document Collection 1 navigable" checkbox should not be checked
+    And the "Is Document Collection 1 navigable" should be switched off
     And the "Rss Feed 2" field should contain "Latest Press"
-    And the "Is Rss Feed 2 navigable" checkbox should be checked
+    And the "Is Rss Feed 2 navigable" should be switched on
     And the "Rss Feed 3" field should contain "Latest Videos"
-    And the "Is Rss Feed 3 navigable" checkbox should be checked
+    And the "Is Rss Feed 3 navigable" should be switched on
 
+  @javascript
   Scenario: Editing GovBoxes Settings
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -80,37 +82,37 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
 
     And the "Rss govbox label" field should contain "News"
-    And the "Is rss govbox enabled" checkbox should not be checked
-    And the "Is video govbox enabled" checkbox should be checked
-    And the "Is photo govbox enabled" checkbox should be checked
-    And the "Is jobs govbox enabled" checkbox should not be checked
-    And the "Is agency govbox enabled" checkbox should not be checked
-    And the "Is related searches enabled" checkbox should be checked
-    And the "Is sayt enabled" checkbox should be checked
-    And the "Is medline govbox enabled" checkbox should not be checked
+    And the "Is rss govbox enabled" should be switched off
+    And the "Is video govbox enabled" should be switched on
+    And the "Is photo govbox enabled" should be switched on
+    And the "Jobs enabled" should be switched off
+    And the "Is agency govbox enabled" should be switched off
+    And the "Is related searches enabled" should be switched on
+    And the "Is sayt enabled" should be switched on
+    And the "Is medline govbox enabled" should be switched off
     And I should see "Recent Tweets"
 
     When I fill in "Rss govbox label" with "Latest News"
-    And I check "Is rss govbox enabled"
-    And I uncheck "Is video govbox enabled"
-    And I uncheck "Is photo govbox enabled"
-    And I check "Is jobs govbox enabled"
-    And I check "Is agency govbox enabled"
-    And I uncheck "Is related searches enabled"
-    And I check "Is medline govbox enabled"
-    And I uncheck "Is sayt enabled"
+    And I switch on "Is rss govbox enabled"
+    And I switch off "Is video govbox enabled"
+    And I switch off "Is photo govbox enabled"
+    And I switch on "Jobs enabled"
+    And I switch on "Is agency govbox enabled"
+    And I switch off "Is related searches enabled"
+    And I switch on "Is medline govbox enabled"
+    And I switch off "Is sayt enabled"
 
     And I press "Save"
     Then I should see "You have updated your site display settings"
     And the "Rss govbox label" field should contain "Latest News"
-    And the "Is rss govbox enabled" checkbox should be checked
-    And the "Is video govbox enabled" checkbox should not be checked
-    And the "Is photo govbox enabled" checkbox should not be checked
-    And the "Is jobs govbox enabled" checkbox should be checked
-    And the "Is agency govbox enabled" checkbox should be checked
-    And the "Is related searches enabled" checkbox should not be checked
-    And the "Is medline govbox enabled" checkbox should be checked
-    And the "Is sayt enabled" checkbox should not be checked
+    And the "Is rss govbox enabled" should be switched on
+    And the "Is video govbox enabled" should be switched off
+    And the "Is photo govbox enabled" should be switched off
+    And the "Jobs enabled" should be switched on
+    And the "Is agency govbox enabled" should be switched on
+    And the "Is related searches enabled" should be switched off
+    And the "Is medline govbox enabled" should be switched on
+    And the "Is sayt enabled" should be switched off
 
   @javascript
   Scenario: Editing Related Sites
@@ -144,6 +146,7 @@ Feature: Manage Display
     And the "Connection site handle 0" field should contain "3.agency.gov"
     And the "Connection label 0" field should contain "agency site 3 SERP"
 
+  @javascript
   Scenario: Editing Font & Colors
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -156,7 +159,7 @@ Feature: Manage Display
     And the "Show Content Box Shadow" checkbox should not be checked
 
     When I select "Helvetica, sans-serif" from "Font Family"
-    When I choose "Custom"
+    And I choose "Custom"
     And I fill in the following:
       | Page Background Color    | #000001 |
       | Content Background Color | #000020 |
@@ -190,6 +193,7 @@ Feature: Manage Display
     And the "Result URL Color" field should contain "#00A000"
     And the "Description Text Color" field should contain "#0B0000"
 
+  @javascript
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
@@ -279,6 +283,7 @@ Feature: Manage Display
     And I follow "Switch to Advanced Mode"
     Then I should see "CSS to customize the top and bottom of your search results page"
 
+  @javascript
   Scenario: Error when Editing Managed Header & Footer
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

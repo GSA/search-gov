@@ -1,3 +1,4 @@
+@javascript
 Feature: Manage Content
 
   Scenario: Viewing Manage Content page after logging in
@@ -18,7 +19,7 @@ Feature: Manage Content
       | Fire Safety     |                                   | active   | 2013-09-01       | 2013-09-30     | burn,lighter |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Best Bets: Graphics"
+    And I follow "Best Bets: Graphics" within the Admin Center content
     Then I should see the following table rows:
       | Fire Safety     |
       | Flood Watches   |
@@ -27,14 +28,13 @@ Feature: Manage Content
     And I should see "Published between 09/01/2013 and 09/30/2013"
     And I should see "Status: Inactive"
 
-  @javascript
   Scenario: Add/edit/remove best bets graphics
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Best Bets: Graphics"
+    And I follow "Best Bets: Graphics" within the Admin Center content
     And I follow "Add Best Bets: Graphics"
     When I fill in the following:
       | Title                 | 2010 Atlantic Hurricane Season          |
@@ -104,21 +104,20 @@ Feature: Manage Content
       | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Best Bets: Text"
+    And I follow "Best Bets: Text" within the Admin Center content
     Then I should see the following table rows:
       | Notes for Week Ending June 21, 2013 |
       | Notes for Week Ending May 31, 2013  |
     And I should see "Status: Active"
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
-  @javascript
   Scenario: Add/edit/remove best bets texts
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Best Bets: Text"
+    And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Add Best Bets: Text"
     When I fill in the following:
       | URL                | http://usasearch.howto.gov/releases/2013-06-21.html |
@@ -154,13 +153,12 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Best Bets: Text"
+    And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Bulk Upload"
     And I attach the file "features/support/boosted_content.csv" to "best_bets_text_data_file"
     And I press "Upload"
     Then I should see "You have added 2 Best Bets: Texts."
 
-  @javascript
   Scenario: View Collections
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -171,7 +169,7 @@ Feature: Manage Content
       | Blog | agency2.gov/blog/,agency3.gov/blog/ |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Collections"
+    And I follow "Collections" within the Admin Center content
     Then I should see the following table rows:
       | Blog |
       | News |
@@ -179,14 +177,13 @@ Feature: Manage Content
     Then I should find "agency2.gov/blog/" in the Collection URL Prefixes modal
     And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
 
-  @javascript
   Scenario: Add/edit/remove Collection
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Collection"
+    And I follow "Collection" within the Admin Center content
     And I follow "Add Collection"
     When I fill in the following:
       | Name         | News                  |
@@ -227,7 +224,7 @@ Feature: Manage Content
       | gobiernousa.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Domains"
+    And I follow "Domains" within the Admin Center content
     Then I should see the following table rows:
       | gobiernousa.gov |
       | usa.gov         |
@@ -239,7 +236,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Domains"
+    And I follow "Domains" within the Admin Center content
     And I follow "Add Domain"
     When I fill in "Domain" with "usa.gov"
     And I press "Add"
@@ -290,7 +287,7 @@ Feature: Manage Content
       | http://www.flickr.com/groups/usagov/     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Flickr"
+    And I follow "Flickr" within the Admin Center content
     Then I should see the following table rows:
       | www.flickr.com/groups/usagov/     |
       | www.flickr.com/photos/whitehouse/ |
@@ -301,7 +298,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Flickr"
+    And I follow "Flickr" within the Admin Center content
     And I follow "Add Flickr URL"
     When I fill in "Flickr URL" with "www.flickr.com/groups/usagov/"
     And I press "Add"
@@ -309,7 +306,6 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
-  @javascript
   Scenario: View RSS
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -321,7 +317,7 @@ Feature: Manage Content
       | Images | www.flickr.com/photos_public.gne?id=27784370@N05        | 404 Not Found     | 2013-07-01      | true                    |            |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "RSS"
+    And I follow "RSS" within the Admin Center content
     Then I should see the following table rows:
       | Images (Media RSS) |
       | News               |
@@ -331,14 +327,13 @@ Feature: Manage Content
     When I follow "Error"
     Then I should find "404 Not Found" in the RSS URL last crawl status error message
 
-  @javascript
   Scenario: Add/edit/remove RSS Feed
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "RSS"
+    And I follow "RSS" within the Admin Center content
     And I follow "Add RSS Feed"
     When I fill in the following:
       | Name  | Recalls                                                                         |
@@ -368,7 +363,9 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Supplemental URLs page
+    And I access the "Advanced" dropdown menu
     And I follow "Supplemental Feed"
+    And I fill in "URL" with ""
     And I press "Save"
     Then I should see "URL can't be blank"
     When I fill in the following:
@@ -381,7 +378,6 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed your supplemental feed from this site"
 
-  @javascript
   Scenario: View Supplemental URLs
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -431,7 +427,7 @@ Feature: Manage Content
       | usagov      |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Twitter"
+    And I follow "Twitter" within the Admin Center content
     Then I should see the following table rows:
       | @usagov    |
       | @USASearch |
@@ -442,7 +438,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "Twitter"
+    And I follow "Twitter" within the Admin Center content
     And I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "usasearch"
     And I check "Show tweets from my lists"
@@ -467,7 +463,7 @@ Feature: Manage Content
       | gobiernousa  |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "YouTube"
+    And I follow "YouTube" within the Admin Center content
     Then I should see the following table rows:
       | gobiernousa  |
       | usgovernment |
@@ -478,7 +474,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    And I follow "YouTube"
+    And I follow "YouTube" within the Admin Center content
     And I follow "Add YouTube Username"
     When I fill in "YouTube Username" with " USGovernment "
     And I press "Add"
@@ -486,15 +482,16 @@ Feature: Manage Content
     And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
 
     When I follow "Display"
-    Then the "Is video govbox enabled" checkbox should be checked
+    Then the "Is video govbox enabled" should be switched on
 
     When I follow "Content"
-    And I follow "RSS"
+    And I follow "RSS" within the Admin Center content
     And I follow "Videos"
     Then I should see "gdata.youtube.com/feeds/api/videos?alt=rss&author=usgovernment&orderby=published"
 
-    When I follow "Content"
-    And I follow "YouTube"
+    When I dismiss the "urls" modal dialog
+    And I follow "Content"
+    And I follow "YouTube" within the Admin Center content
     And I press "Remove"
     Then I should see "You have removed usgovernment from this site"
     When I follow "Add YouTube Username"
