@@ -9,6 +9,7 @@
   = render form
 
 - if @clicks_request.top_urls.present?
+  %p Tip: Select the hyperlinked number in the # of Clicks column to view the top queries that led to a click for each URL.
   %table.table.table-striped.table-bordered.table-kv-pairs
     %thead
       %tr
@@ -23,6 +24,5 @@
           %td= link_to number_with_delimiter(click_count), site_click_queries_path(@site,
             {:url => url, :start_date => @clicks_request.start_date, :end_date => @clicks_request.end_date})
 
-  %p Tip: Select the hyperlinked number in the # of Clicks column to view the top queries that led to a click for each URL.
 - else
   %p Your site has not received any clicks on search results yet.
