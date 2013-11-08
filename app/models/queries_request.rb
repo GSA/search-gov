@@ -1,4 +1,5 @@
 class QueriesRequest
+  MAX_RESULTS = 1000
   include Virtus
 
   extend ActiveModel::Naming
@@ -26,7 +27,7 @@ class QueriesRequest
 
   def compute_top_queries
     if @query.blank?
-      most_popular_terms = DailyQueryStat.most_popular_terms(@site.name, @start_date, @end_date)
+      most_popular_terms = DailyQueryStat.most_popular_terms(@site.name, @start_date, @end_date, MAX_RESULTS)
       return [] if most_popular_terms.instance_of? String
       most_popular_terms
     elsif @start_date.present? and @end_date.present?

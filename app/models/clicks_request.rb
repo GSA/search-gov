@@ -1,4 +1,5 @@
 class ClicksRequest
+  MAX_RESULTS = 1000
   include Virtus
 
   extend ActiveModel::Naming
@@ -18,7 +19,7 @@ class ClicksRequest
     @available_dates= DailyClickStat.available_dates_range(site.name)
     @end_date = end_date.nil? ? DailyClickStat.most_recent_populated_date(site.name) : end_date.to_date
     @start_date = start_date.nil? ? (@end_date and @end_date.beginning_of_month) : start_date.to_date
-    @top_urls = DailyClickStat.top_urls(site.name, @start_date, @end_date)
+    @top_urls = DailyClickStat.top_urls(site.name, @start_date, @end_date, MAX_RESULTS)
   end
 
 end
