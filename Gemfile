@@ -58,6 +58,7 @@ gem 'will_paginate-bootstrap'
 gem 'virtus'
 gem 'keen'
 gem 'truncator'
+gem 'em-http-request', '~> 1.0'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
