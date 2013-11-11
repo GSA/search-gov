@@ -776,9 +776,9 @@ CREATE TABLE `top_searches` (
 
 CREATE TABLE `tweets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tweet_id` bigint(20) DEFAULT NULL,
+  `tweet_id` bigint(20) unsigned NOT NULL,
   `tweet_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `twitter_profile_id` int(11) DEFAULT NULL,
+  `twitter_profile_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `published_at` datetime DEFAULT NULL,
@@ -789,9 +789,9 @@ CREATE TABLE `tweets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `twitter_lists` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) unsigned NOT NULL,
   `member_ids` mediumtext COLLATE utf8_unicode_ci,
-  `last_status_id` bigint(20) NOT NULL DEFAULT '1',
+  `last_status_id` bigint(20) unsigned NOT NULL DEFAULT '1',
   `statuses_updated_at` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -799,7 +799,7 @@ CREATE TABLE `twitter_lists` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `twitter_lists_twitter_profiles` (
-  `twitter_list_id` bigint(20) NOT NULL,
+  `twitter_list_id` bigint(20) unsigned NOT NULL,
   `twitter_profile_id` int(11) NOT NULL,
   UNIQUE KEY `twitter_list_id_profile_id` (`twitter_list_id`,`twitter_profile_id`),
   KEY `index_twitter_lists_twitter_profiles_on_twitter_profile_id` (`twitter_profile_id`)
@@ -807,7 +807,7 @@ CREATE TABLE `twitter_lists_twitter_profiles` (
 
 CREATE TABLE `twitter_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `twitter_id` int(11) DEFAULT NULL,
+  `twitter_id` bigint(20) unsigned NOT NULL,
   `screen_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -1949,3 +1949,11 @@ INSERT INTO schema_migrations (version) VALUES ('20131101025738');
 INSERT INTO schema_migrations (version) VALUES ('20131105164530');
 
 INSERT INTO schema_migrations (version) VALUES ('20131105194916');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111145731');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111161615');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111162126');
+
+INSERT INTO schema_migrations (version) VALUES ('20131112001834');

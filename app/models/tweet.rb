@@ -9,7 +9,7 @@ class Tweet < ActiveRecord::Base
   searchable do
     text :tweet_text, :stored => true
     time :published_at
-    integer :twitter_profile_id, :multiple => true
+    long :twitter_profile_id, :multiple => true
   end
 
   class << self
