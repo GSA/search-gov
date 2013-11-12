@@ -489,8 +489,7 @@ Feature: Manage Content
     And I follow "Videos"
     Then I should see "gdata.youtube.com/feeds/api/videos?alt=rss&author=usgovernment&orderby=published"
 
-    When I dismiss the "urls" modal dialog
-    And I follow "Content"
+    When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
     And I press "Remove"
     Then I should see "You have removed usgovernment from this site"
