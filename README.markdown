@@ -71,7 +71,7 @@ We use poltergeist gem to test Javascript. This gem depends on PhantomJS.
 
 Download and install PhantomJS:
 
-    <http://phantomjs.org/download.html>
+<http://phantomjs.org/download.html>
 
 These require a Solr server to be spun up.
 

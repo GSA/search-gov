@@ -1,4 +1,5 @@
 require 'simplecov'
+SimpleCov.command_name 'RSpec'
 require 'simplecov-rcov'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 
