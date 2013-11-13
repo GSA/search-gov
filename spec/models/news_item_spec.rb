@@ -60,6 +60,11 @@ describe NewsItem do
       news_item = NewsItem.create!(@valid_attributes.merge properties: properties)
       NewsItem.find(news_item.id).tags.should == %w(image)
     end
+
+    it 'should validate link URL is a well-formed absolute URL' do
+      news_item = NewsItem.new(@valid_attributes.merge(link: '/relative/url'))
+      news_item.valid?.should be_false
+    end
   end
 
   describe "#search_for(query, rss_feeds, options = {})" do
