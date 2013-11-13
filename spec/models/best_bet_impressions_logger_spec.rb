@@ -11,7 +11,7 @@ describe BestBetImpressionsLogger do
     it 'should log to Keen' do
       query_hash = { :affiliate_id => affiliate.id, :module => 'BBG', :query => 'foo', :model_id => featured_collections(:basic).id }
       Keen.should_receive(:publish_async).with(:impressions, query_hash)
-      BestBetImpressionsLogger.log(affiliate.id, 'foo', bbgs, nil)
+      BestBetImpressionsLogger.log(affiliate.id, 'Foo', bbgs, nil)
     end
   end
 
