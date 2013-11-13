@@ -73,12 +73,14 @@ redis_options = {
 
 EmailTemplate.load_default_templates
 
+# EventMachine instance for Keen IO
+Thread.new { EventMachine.run }
+
 at_exit do
   %x{
     cat #{REDIS_PID} | xargs kill -9
     rm -f #{REDIS_CACHE_PATH}dump.rdb
   }
-end
 
-# EventMachine instance for Keen IO
-Thread.new { EventMachine.run }
+  EventMachine.stop
+end

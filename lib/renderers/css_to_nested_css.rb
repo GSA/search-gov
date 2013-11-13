@@ -8,7 +8,7 @@ module Renderers
     end
 
     def render
-      Sass.new(render_nested_sass).render
+      ::Renderers::Sass.new(render_nested_sass).render
     end
 
     private
