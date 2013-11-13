@@ -391,6 +391,8 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     us_states (0.1.1)
+    validate_url (0.2.0)
+      activemodel (>= 3.0.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
     virtus (0.5.5)
@@ -496,6 +498,7 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   us_states
   us_states_select!
+  validate_url
   virtus
   webrat
   webster

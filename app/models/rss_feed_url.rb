@@ -45,7 +45,7 @@ class RssFeedUrl < ActiveRecord::Base
   private
 
   def url_must_point_to_a_feed
-    if url =~ /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+    if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
         rss_doc = Nokogiri::XML(HttpConnection.get(url))
         errors.add(:url, "does not appear to be a valid RSS feed.") unless rss_doc && %w(feed rss).include?(rss_doc.root.name)

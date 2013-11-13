@@ -32,7 +32,6 @@ describe IndexedDocument do
   it { should allow_value("http://some.govsite.info/url").for(:url) }
   it { should allow_value("https://some.govsite.info/url").for(:url) }
   it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
-  it { should_not allow_value("http://www.ssa.gov./trailing-period-in-domain.pdf").for(:url) }
   it { should belong_to :affiliate }
 
   it "should mark invalid URLs that have an extension that we have blacklisted" do
@@ -111,13 +110,6 @@ describe IndexedDocument do
     affiliates(:power_affiliate).site_domains.create!(:domain => affiliates(:basic_affiliate).site_domains.first.domain)
     duplicate = IndexedDocument.new(@valid_attributes.merge(:affiliate_id => affiliates(:power_affiliate).id))
     duplicate.should be_valid
-  end
-
-  it "should validate URL against URI.parse to catch things that aren't caught in the regexp" do
-    odie = IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://www.gov.gov/pipesare||bad", :title => 'Some Title',
-                               :description => 'This is a document.')
-    odie.valid?.should be_false
-    odie.errors.full_messages.first.should == IndexedDocument::UNPARSEABLE_URL_STATUS
   end
 
   it "should not allow setting last_crawl_status to OK if the title is blank" do

@@ -1,10 +1,11 @@
 class NewsItem < ActiveRecord::Base
+  before_validation :clean_text_fields
+  before_validation :downcase_scheme
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
   validates_presence_of :description, :unless => :is_video?
-  validates_format_of :link, with: /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
+  validates_url :link
   validates_uniqueness_of :guid, scope: :rss_feed_url_id, :case_sensitive => false
   validates_uniqueness_of :link, scope: :rss_feed_url_id, :case_sensitive => false
-  before_validation :clean_text_fields
   belongs_to :rss_feed_url
   scope :recent, :order => 'published_at DESC', :limit => 10
   serialize :properties, Hash
@@ -105,6 +106,10 @@ class NewsItem < ActiveRecord::Base
 
   def clean_text_fields
     %w(title description contributor subject publisher).each { |field| self.send(field+'=', clean_text_field(self.send(field))) }
+  end
+
+  def downcase_scheme
+    self.link = link.sub('HTTP','http').sub('httpS','https') if link.present?
   end
 
   def clean_text_field(str)

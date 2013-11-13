@@ -13,7 +13,6 @@ describe CatalogPrefix do
     it { should_not allow_value("foogov.gov/script").for(:prefix)}
     it { should allow_value("http://www.foo.gov/").for(:prefix)}
     it { should allow_value("http://foo.gov/subfolder").for(:prefix)}
-
   end
 
   describe "#label" do

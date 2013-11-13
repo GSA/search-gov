@@ -1,7 +1,7 @@
 class SuperfreshUrl < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :url
-  validates_format_of :url, :with => /(^$)|(^https?:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validates_url :url
 
   MSNBOT_USER_AGENT = "msnbot-UDiscovery/2.0b (+http://search.msn.com/msnbot.htm)"
   MAX_URLS_PER_FILE_UPLOAD = 100

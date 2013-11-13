@@ -7,9 +7,8 @@ class IndexedDocument < ActiveRecord::Base
   before_validation :normalize_url
   validates_presence_of :url, :affiliate_id, :title, :description
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
-  validates_format_of :url, with: /^https?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix, allow_blank: true
+  validates_url :url, allow_blank: true
   validates_length_of :url, :maximum => 2000
-  validate :url_is_parseable
   validate :extension_ok
 
   OK_STATUS = "OK"
@@ -237,10 +236,6 @@ class IndexedDocument < ActiveRecord::Base
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end
-  end
-
-  def url_is_parseable
-    URI.parse(self.url) rescue errors.add(:base, UNPARSEABLE_URL_STATUS)
   end
 
   def extension_ok
