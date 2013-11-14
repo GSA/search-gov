@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', "3.2.12"
+gem 'rails', "3.2.15"
 gem 'mysql2', '>0.3'
 gem 'capistrano'
 gem 'haml'
