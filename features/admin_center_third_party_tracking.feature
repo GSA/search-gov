@@ -15,11 +15,11 @@ Feature: Affiliate 3rd party tracking
     And I should see "3rd Party Tracking"
 
     When I fill in "external_tracking_code" with " "
-    And I press "Submit"
+    And I submit the form by pressing "Submit"
     Then I should see "Web analytics JavaScript code can't be blank"
 
     When I fill in "external_tracking_code" with "<script>var analytics;</script>"
-    And I press "Submit"
+    And I submit the form by pressing "Submit"
     Then I should see "Your request to update your web analytics code has been submitted."
     And "***REMOVED***" should receive an email
 

@@ -13,11 +13,11 @@ Feature: Affiliate log access
     And I follow "Raw Logs"
 
     And I attach the file "features/support/blank.txt" to "txtfile"
-    And I press "Upload"
+    And I submit the form by pressing "Upload"
     Then I should see "Your public key file could not be processed. Please check the format and try again."
 
     And I attach the file "features/support/id_rsa.pub" to "txtfile"
-    And I press "Upload"
+    And I submit the form by pressing "Upload"
     Then I should land on the aff.gov's Dashboard page
     And I should see "Public key successfully uploaded."
     And "***REMOVED***" should receive an email

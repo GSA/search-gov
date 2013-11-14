@@ -54,7 +54,7 @@ Feature: Manage Content
       | title              | url                                                   |
       | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
       | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added 2010 Atlantic Hurricane Season to this site"
     And I should see a link to "2010 Atlantic Hurricane Season" with url for "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Status: Active"
@@ -76,7 +76,7 @@ Feature: Manage Content
       | Link URL 2            | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
     When I fill in "Title" with "2011 Atlantic Hurricane Season"
     And I check "Mark Image for Deletion"
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated 2011 Atlantic Hurricane Season"
     When I follow "Edit"
     Then I should not see "Mark Image for Deletion"
@@ -86,7 +86,7 @@ Feature: Manage Content
       | Link URL 1   |                                                       |
       | Link Title 2 |                                                       |
       | Link URL 2   | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "Best bets: graphics links title can't be blank"
     Then I should see "Best bets: graphics links url can't be blank"
 
@@ -129,7 +129,7 @@ Feature: Manage Content
       | keyword |
       | rails   |
       | recalls |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added Notes for Week Ending June 21, 2013 to this site"
     And I should see "Status: Active"
     And I should see the following best bets keywords:
@@ -141,7 +141,7 @@ Feature: Manage Content
     And I fill in the following:
       | Title     | Release for Week Ending June 21, 2013 |
       | Keyword 1 |                                       |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated Release for Week Ending June 21, 2013"
     And I should not see "rails"
     When I press "Remove"
@@ -156,7 +156,7 @@ Feature: Manage Content
     And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Bulk Upload"
     And I attach the file "features/support/boosted_content.csv" to "best_bets_text_data_file"
-    And I press "Upload"
+    And I submit the form by pressing "Upload"
     Then I should see "You have added 2 Best Bets: Texts."
 
   Scenario: View Collections
@@ -192,7 +192,7 @@ Feature: Manage Content
       | url_prefix           |
       | www.agency2.gov/news |
       | 1.agency3.gov     |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added News to this site"
     When I follow "Edit"
     Then the "Name" field should contain "News"
@@ -205,7 +205,7 @@ Feature: Manage Content
     And I add the following Collection URL Prefixes:
       | url_prefix       |
       | blog.agency4.gov |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated News and Blog"
     When I follow "Edit"
     Then the "URL Prefix 1" field should contain "blog.agency4.gov"
@@ -239,11 +239,11 @@ Feature: Manage Content
     And I follow "Domains" within the Admin Center content
     And I follow "Add Domain"
     When I fill in "Domain" with "usa.gov"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added usa.gov to this site"
     When I follow "Edit"
     And I fill in "Domain" with "gobiernousa.gov"
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated gobiernousa.gov"
     When I press "Remove"
     Then I should see "You have removed gobiernousa.gov from this site"
@@ -270,7 +270,7 @@ Feature: Manage Content
     When I go to the agency.gov's Filter URLs page
     And I follow "Add Filter URL"
     And I fill in "URL" with "agency.gov/exclude-me.html"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added agency.gov/exclude-me.html to this site"
     And I should see the following table rows:
       | agency.gov/exclude-me.html |
@@ -301,7 +301,7 @@ Feature: Manage Content
     And I follow "Flickr" within the Admin Center content
     And I follow "Add Flickr URL"
     When I fill in "Flickr URL" with "www.flickr.com/groups/usagov/"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added www.flickr.com/groups/usagov/ to this site"
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
@@ -342,7 +342,7 @@ Feature: Manage Content
     And I add the following RSS Feed URLs:
       | url                                                                                |
       | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added Recalls to this site"
     When I follow "Edit"
     Then the "Name" field should contain "Recalls"
@@ -352,7 +352,7 @@ Feature: Manage Content
     And I add the following RSS Feed URLs:
       | url                                                                            |
       | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated Food, Safety and Pet Health Recalls"
     When I press "Remove"
     Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
@@ -366,11 +366,11 @@ Feature: Manage Content
     And I access the "Advanced" dropdown menu
     And I follow "Supplemental Feed"
     And I fill in "URL" with ""
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "URL can't be blank"
     When I fill in the following:
       | URL | usasearch.howto.gov/all.atom |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your supplemental feed for this site"
     And the "URL" field should contain "http://usasearch.howto.gov/all.atom"
     And I should see "Last Crawled Pending"
@@ -406,7 +406,7 @@ Feature: Manage Content
       | URL         | usasearch.howto.gov/developer/jobs.html             |
       | Title       | Jobs API                                            |
       | Description | Helping job seekers land a job with the government. |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added usasearch.howto.gov/developer/jobs.html to this site"
     And I should see the following table rows:
       | URL                                     | Source |
@@ -442,7 +442,7 @@ Feature: Manage Content
     And I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "usasearch"
     And I check "Show tweets from my lists"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added @USASearch to this site"
     And I should see a link to "@USASearch" with url for "https://twitter.com/USASearch"
     And I should see "@USASearch (show lists)"
@@ -450,7 +450,7 @@ Feature: Manage Content
     Then I should see "You have removed @USASearch from this site"
     When I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "usasearch101"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "Screen name is not found"
 
   Scenario: View YouTube Usernames
@@ -477,7 +477,7 @@ Feature: Manage Content
     And I follow "YouTube" within the Admin Center content
     And I follow "Add YouTube Username"
     When I fill in "YouTube Username" with " USGovernment "
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added usgovernment to this site"
     And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
 
@@ -495,5 +495,5 @@ Feature: Manage Content
     Then I should see "You have removed usgovernment from this site"
     When I follow "Add YouTube Username"
     When I fill in "YouTube Username" with "usasearch"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "Username is not found"

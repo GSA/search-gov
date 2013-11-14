@@ -61,7 +61,7 @@
   'in the active site sub navigation' => '.l-site-nav.sub .active'
 }.
   each do |suffix, selector|
-    Then /^(.+) #{suffix}$/ do |step_string|
+    Then /^(.+) #{Regexp.escape(suffix)}$/ do |step_string|
       within(selector) do
         step step_string
       end
@@ -73,7 +73,7 @@
   'in the login form' => '#new_user_session'
 }.
   each do |suffix, selector|
-    When /^I fill in the following #{suffix}:$/ do |fields|
+    When /^I fill in the following #{Regexp.escape(suffix)}:$/ do |fields|
       within(selector) do
         fields.rows_hash.each do |name, value|
           step %{I fill in "#{name}" with "#{value}"}

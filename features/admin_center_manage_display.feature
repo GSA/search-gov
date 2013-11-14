@@ -45,7 +45,7 @@ Feature: Manage Display
     And I switch on "Is Rss Feed 2 navigable"
     And I switch on "Is Rss Feed 3 navigable"
 
-    And I press "Save"
+    When I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
     And the "Label for Sidebar" field should contain "Search"
     And the "Default search label" field should contain "Web"
@@ -102,7 +102,7 @@ Feature: Manage Display
     And I switch on "Is medline govbox enabled"
     And I switch off "Is sayt enabled"
 
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
     And the "Rss govbox label" field should contain "Latest News"
     And the "Is rss govbox enabled" should be switched on
@@ -131,7 +131,7 @@ Feature: Manage Display
     When I fill in the following:
       | Connection site handle 1 | 3.agency.gov       |
       | Connection label 1       | agency site 3 SERP |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
     And the "Connection site handle 0" field should contain "2.agency.gov"
     And the "Connection label 0" field should contain "agency site 2 SERP"
@@ -141,7 +141,7 @@ Feature: Manage Display
     And I fill in the following:
       | Connection site handle 0 | |
       | Connection label 0       | |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
     And the "Connection site handle 0" field should contain "3.agency.gov"
     And the "Connection label 0" field should contain "agency site 3 SERP"
@@ -174,7 +174,7 @@ Feature: Manage Display
       | Description Text Color   | #0B0000 |
     And I check "Show Content Border"
     And I check "Show Content Box Shadow"
-    And I press "Save"
+    And I submit the form by pressing "Save"
 
     Then I should see "You have updated your font & colors"
     And the "Font Family" field should contain "Helvetica, sans-serif"
@@ -205,7 +205,7 @@ Feature: Manage Display
     And I attach the file "features/support/logo_mobile_en.png" to "Mobile Logo"
     And I attach the file "features/support/bg.png" to "Page Background Image"
     And I select "repeat-y" from "Page Background Image Repeat"
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
     And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I should see an image with alt text "Logo"
@@ -223,7 +223,7 @@ Feature: Manage Display
     And I check "Mark Logo for Deletion"
     And I check "Mark Mobile Logo for Deletion"
     And I check "Mark Page Background Image for Deletion"
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
     And I should not see an image with alt text "Logo"
     And I should not see an image with alt text "Mobile Logo"
@@ -232,7 +232,7 @@ Feature: Manage Display
     When I attach the file "features/support/very_large.jpg" to "Logo"
     When I attach the file "features/support/very_large.jpg" to "Mobile Logo"
     When I attach the file "features/support/very_large.jpg" to "Page Background Image"
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "Logo file size must be under 512 KB"
     Then I should see "Mobile Logo file size must be under 56 KB"
     Then I should see "Page Background Image file size must be under 512 KB"
@@ -262,7 +262,7 @@ Feature: Manage Display
     When I fill in the following:
       | Footer Link Title 1 | Terms of Service |
       | Footer Link URL 1   | tos.agency.gov   |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "You have updated your header and footer links"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
@@ -294,7 +294,7 @@ Feature: Manage Display
     And I fill in the following:
       | Header Link Title 0 | News               |
       | Footer Link URL 0   | contact.agency.gov |
-    And I press "Save"
+    And I submit the form by pressing "Save"
     Then I should see "Header link URL can't be blank"
     Then I should see "Footer link title can't be blank"
 
@@ -311,7 +311,7 @@ Feature: Manage Display
       | CSS to customize the top and bottom of your search results page | .staged { color: blue } |
       | HTML to customize the top of your search results page           | Staged Header           |
       | HTML to customize the bottom of your search results page        | Staged Footer           |
-    And I press "Save for Preview"
+    And I submit the form by pressing "Save for Preview"
     Then I should see "You have saved header and footer changes for preview"
     And the "CSS to customize the top and bottom of your search results page" field should contain ".staged \{ color: blue \}"
     And the "HTML to customize the top of your search results page" field should contain "Staged Header"
@@ -329,7 +329,7 @@ Feature: Manage Display
 
     When I fill in the following:
       | CSS to customize the top and bottom of your search results page | .staged { color: red } |
-    And I press "Save for Preview"
+    And I submit the form by pressing "Save for Preview"
     Then I should see "You have saved header and footer changes for preview"
 
     When I access the dropdown button group within the "Header & Footer form"
@@ -350,7 +350,7 @@ Feature: Manage Display
     And I follow "Switch to Advanced Mode"
     And I fill in the following:
       | CSS to customize the top and bottom of your search results page | .staged { color: |
-    And I press "Save for Preview"
+    And I submit the form by pressing "Save for Preview"
     Then I should see "Invalid CSS"
 
     When I access the dropdown button group within the "Header & Footer form"

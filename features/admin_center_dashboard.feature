@@ -62,12 +62,12 @@ Feature: Dashboard
     And I should see "Site Language English"
     When I fill in "Display Name" with "agency site"
     And I fill in "Homepage URL" with "http://new.usa.gov"
-    And I press "Save Settings"
+    And I submit the form by pressing "Save Settings"
     Then I should see "Your site settings have been updated"
     And the "Display Name" field should contain "agency site"
     And the "Homepage URL" field should contain "http://new.usa.gov"
     When I fill in "Display Name" with ""
-    And I press "Save Settings"
+    And I submit the form by pressing "Save Settings"
     Then I should see "Display name can't be blank"
 
     When I go to the gobiernousa's Dashboard page
@@ -121,16 +121,16 @@ Feature: Dashboard
     When I fill in the following:
       | Name  | Another Admin |
       | Email |  another_affiliate_manager@fixtures.org   |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added another_affiliate_manager@fixtures.org to this site"
     When I follow "Add User"
     And I fill in the following:
       | Name  | Admin Doe |
       | Email |           |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "Email can't be blank"
     When I fill in "Email" with "admin@email.gov"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "notified admin@email.gov on how to login and to access this site"
     When I press "Remove" within the first table body row
     Then I should see "You have removed admin@email.gov from this site"
@@ -163,7 +163,7 @@ Feature: Dashboard
       | Homepage URL | http://awesome.gov/ |
       | Display Name | Agency Gov          |
       | Site Handle  | x                   |
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "Site Handle (visible to searchers in the URL) is too short"
     And the "Homepage URL" field should contain "http://awesome.gov"
 
@@ -172,7 +172,7 @@ Feature: Dashboard
       | Display Name | Agency Gov                  |
       | Site Handle  | agencygov                   |
     And I choose "Spanish"
-    And I press "Add"
+    And I submit the form by pressing "Add"
     Then I should see "You have added 'Agency Gov' as a site."
     And I should land on the agencygov's Dashboard page
     And "affiliate_manager@fixtures.org" should receive an email
