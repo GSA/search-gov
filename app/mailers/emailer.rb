@@ -1,7 +1,7 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
-  DEVELOPERS_EMAIL = "usasearchoutbound@searchsi.com"
+  DEVELOPERS_EMAIL = "usasearchoutbound@mail.usasearch.howto.gov"
 
   self.default bcc: DEVELOPERS_EMAIL
 
@@ -13,7 +13,7 @@ class Emailer < ActionMailer::Base
 
   def new_user_to_admin(user)
     @user = user
-    setup_email("usagov@searchsi.com", __method__)
+    setup_email("usagov@mail.usasearch.howto.gov", __method__)
     send_mail(:text)
   end
 
@@ -21,7 +21,7 @@ class Emailer < ActionMailer::Base
     affiliate_feature_additions_grouping = AffiliateFeatureAddition.where(["created_at >= ?", Date.yesterday.beginning_of_day]).group_by(&:affiliate_id)
     if affiliate_feature_additions_grouping.any?
       @affiliate_feature_additions_grouping = affiliate_feature_additions_grouping
-      setup_email("usagov@searchsi.com", __method__)
+      setup_email("usagov@mail.usasearch.howto.gov", __method__)
       send_mail(:text)
     end
   end
@@ -101,14 +101,14 @@ class Emailer < ActionMailer::Base
   end
 
   def filtered_popular_terms_report(filtered_popular_terms)
-    setup_email('usagov@searchsi.com', __method__)
+    setup_email('usagov@mail.usasearch.howto.gov', __method__)
     headers['Content-Type'] = 'text/html'
     @filtered_popular_terms = filtered_popular_terms
     send_mail(:html)
   end
 
   def public_key_upload_notification(public_key_txt, current_user, affiliate)
-    setup_email(%w{sysadmin@searchsi.com ***REMOVED***}, __method__)
+    setup_email(%w{sysadmin@mail.usasearch.howto.gov ***REMOVED***}, __method__)
     @from = current_user.email
     @affiliate = affiliate
     @current_user = current_user
@@ -117,7 +117,7 @@ class Emailer < ActionMailer::Base
   end
 
   def deep_collection_notification(current_user, document_collection)
-    setup_email('usagov@searchsi.com', __method__)
+    setup_email('usagov@mail.usasearch.howto.gov', __method__)
     @document_collection = document_collection
     @current_user = current_user
     send_mail(:text)

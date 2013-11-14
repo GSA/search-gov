@@ -35,7 +35,7 @@ describe Emailer do
 
     subject(:email) { Emailer.new_feature_adoption_to_admin.deliver }
 
-    it { should deliver_to('usagov@searchsi.com') }
+    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
     it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
     it { should have_subject(/Features adopted yesterday/) }
 
@@ -56,7 +56,7 @@ describe Emailer do
 
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
 
-    it { should deliver_to('usagov@searchsi.com') }
+    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
     it { should have_subject(/Deep collection created/) }
 
     it 'should contain document collection and URL prefixes' do
@@ -69,7 +69,7 @@ describe Emailer do
   describe "#filtered_popular_terms_report" do
     subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver }
 
-    it { should deliver_to('usagov@searchsi.com') }
+    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
     it { should have_subject(/Filtered Popular Terms for Last Week/) }
 
     it 'should contain list of filtered sayt suggestions' do
@@ -103,7 +103,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@searchsi.com') }
+      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
       it { should have_subject(/New user sign up/) }
       it { should have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
@@ -121,7 +121,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@searchsi.com') }
+      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
       it { should have_subject(/New user sign up/) }
       it { should_not have_body_text /This user signed up as an affiliate/ }
@@ -140,7 +140,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@searchsi.com') }
+      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
       it { should have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
@@ -158,7 +158,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@searchsi.com') }
+      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
       it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
       it { should_not have_body_text /This user was added to affiliate/ }
     end
