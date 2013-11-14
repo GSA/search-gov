@@ -26,4 +26,30 @@ describe BestBetImpressionsLogger do
       BestBetImpressionsLogger.log(affiliate.id, 'foo', nil, boos)
     end
   end
+
+  context 'when there is a problem with EventMachine that raises a Keen::Error' do
+    let(:boos) { mock('boosted contents', results: [boosted_contents(:basic), boosted_contents(:another)]) }
+
+    before do
+      Keen.stub(:publish_async).and_raise Keen::Error.new('foo')
+    end
+
+    it 'should catch the exception and log the error' do
+      Rails.logger.should_receive(:error).twice
+      BestBetImpressionsLogger.log(affiliate.id, 'foo', nil, boos)
+    end
+  end
+
+  context 'when there is a problem with EventMachine that raises a RuntimeError' do
+    let(:boos) { mock('boosted contents', results: [boosted_contents(:basic), boosted_contents(:another)]) }
+
+    before do
+      Keen.stub(:publish_async).and_raise RuntimeError.new('foo')
+    end
+
+    it 'should catch the exception and log the error' do
+      Rails.logger.should_receive(:error).twice
+      BestBetImpressionsLogger.log(affiliate.id, 'foo', nil, boos)
+    end
+  end
 end

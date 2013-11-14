@@ -27,6 +27,8 @@ class BestBetImpressionsLogger
       ActiveSupport::Notifications.instrument("best_bets_publish.usasearch", :query => query_hash) do
         Keen.publish_async(:impressions, query_hash)
       end
+    rescue Keen::Error, RuntimeError => e
+      Rails.logger.error "Problem publishing Best Bet event to Keen: #{e}"
     end
 
   end
