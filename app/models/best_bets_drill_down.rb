@@ -1,5 +1,4 @@
 class BestBetsDrillDown
-  MAPPING = { bbg: FeaturedCollection, boos: BoostedContent }
   attr_reader :module_name
 
   def initialize(site, module_tag)
@@ -25,7 +24,7 @@ class BestBetsDrillDown
   end
 
   def build_hash(model_id, impression_count, click_count)
-    klass = MAPPING[@module.tag.downcase.to_sym]
+    klass = BestBetType.get_klass @module.tag
     clickthru_ratio = (100.0 * click_count / impression_count) rescue 0.0
     { model: klass.find(model_id), impression_count: impression_count, click_count: click_count, clickthru_ratio: clickthru_ratio }
   rescue ActiveRecord::RecordNotFound => e

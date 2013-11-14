@@ -43,9 +43,9 @@ describe "sites/best_bets_drill_downs/show.html.haml" do
 
     it 'should show the breakdown by module and comparison to overall average' do
       rendered.should have_selector("table tbody tr", count: 2) do |rows|
-        rows[0].should contain "my boosted content (edit) 4 1 25.0%"
+        rows[0].should contain "my boosted content (edit) 4 (drill down) 1 25.0%"
         rows[0].should have_selector("a", content: '(edit)', href: "/sites/#{site.id}/best_bets_texts/#{boosted_contents(:basic).id}/edit")
-        rows[1].should contain "something else (edit) 5 0 0.0%"
+        rows[1].should contain "something else (edit) 5 (drill down) 0 0.0%"
         rows[1].should have_selector("a", content: '(edit)', href: "/sites/#{site.id}/best_bets_texts/#{boosted_contents(:another).id}/edit")
       end
     end

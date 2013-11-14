@@ -19,6 +19,8 @@
         %td
           = stat[:model].title
           = best_bet_edit_link(@site, stat[:model])
-        %td= number_with_delimiter(stat[:impression_count])
+        %td
+          = number_with_delimiter(stat[:impression_count])
+          = link_to "(drill down)", site_best_bet_queries_path(@site.id, {model_id: model_id, module_tag: params['module_tag']})
         %td= number_with_delimiter(stat[:click_count])
         %td= number_to_percentage(stat[:clickthru_ratio], :precision => 1)
