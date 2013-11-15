@@ -96,7 +96,6 @@ class Emailer < ActionMailer::Base
     @current_user = current_user
     @external_tracking_code = external_tracking_code
     setup_email('***REMOVED***', __method__)
-    @from = current_user.email
     send_mail(:text)
   end
 
@@ -109,7 +108,6 @@ class Emailer < ActionMailer::Base
 
   def public_key_upload_notification(public_key_txt, current_user, affiliate)
     setup_email(%w{sysadmin@mail.usasearch.howto.gov ***REMOVED***}, __method__)
-    @from = current_user.email
     @affiliate = affiliate
     @current_user = current_user
     @public_key_txt = public_key_txt
