@@ -10,6 +10,5 @@
 //= require sites/shared/enable_primary_button
 //= require_directory ./sites
 //= require bootstrap-switch/bootstrap-switch
-//= require_directory ./sites/analytics
 //= require keentivate/keentivate.min
-//= require keentivate/initialize
+//= require_directory ./sites/analytics
