@@ -5,7 +5,7 @@ class FeaturedCollection < ActiveRecord::Base
   CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   LAYOUTS = ['one column', 'two column']
-  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
+  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout] }
   LINK_TITLE_SEPARATOR = "!!!sep!!!"
 
   cattr_reader :per_page
@@ -94,6 +94,19 @@ class FeaturedCollection < ActiveRecord::Base
         end
       end
     end
+
+    def grep(affiliate_id, query)
+      substring_search_fields = %w(title title_url)
+      field_clauses = substring_search_fields.collect { |field| "#{field} LIKE ?" }
+      values = Array.new(substring_search_fields.size, "%#{query}%")
+      bcs = where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
+      ids = where(affiliate_id: affiliate_id).pluck(:id)
+      keywords = FeaturedCollectionKeyword.grep(ids, query)
+      links = FeaturedCollectionLink.grep(ids, query)
+      matches = keywords.collect(&:featured_collection) + links.collect(&:featured_collection) + bcs
+      where(id: matches.uniq.map(&:id))
+    end
+
   end
 
   def self.human_attribute_name(attribute_key_name, options = {})

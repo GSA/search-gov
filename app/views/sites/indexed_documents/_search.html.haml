@@ -1,0 +1,11 @@
+= form_tag search_site_supplemental_urls_path(@site), class: 'form-search' do
+  .input-append
+    %input.span2.search-query{type: "text", name: 'query'}/
+    %button.btn{type: "submit"} Search
+  =link_to 'Reset', site_supplemental_urls_path(@site)
+- if params[:query].present?
+  %p
+  - if @indexed_documents.present?
+    = "Showing matches for '#{params[:query]}'"
+  - else
+    = "No Supplemental URLs found matching '#{params[:query]}'"

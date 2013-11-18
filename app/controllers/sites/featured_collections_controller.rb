@@ -13,6 +13,11 @@ class Sites::FeaturedCollectionsController < Sites::SetupSiteController
     build_keywords_and_links
   end
 
+  def search
+    @featured_collections = FeaturedCollection.grep(@site.id, params[:query]).paginate(per_page: 1000, page: 1, order: 'updated_at DESC, title ASC')
+    render action: :index
+  end
+
   def new_keyword
     @index = params[:index].to_i
     respond_to { |format| format.js }

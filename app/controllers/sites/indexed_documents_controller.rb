@@ -8,6 +8,11 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
         page: params[:page], order: 'id DESC')
   end
 
+  def search
+    @indexed_documents = IndexedDocument.grep(@site.id, params[:query]).paginate(per_page: 1000, page: 1, order: 'updated_at DESC, title ASC')
+    render action: :index
+  end
+
   def new
     @indexed_document = @site.indexed_documents.build
   end

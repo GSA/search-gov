@@ -73,6 +73,16 @@ class BoostedContent < ActiveRecord::Base
       end
     end
 
+    def grep(affiliate_id, query)
+      substring_search_fields = %w(title url description)
+      field_clauses = substring_search_fields.collect {|field| "#{field} LIKE ?"}
+      values = Array.new(substring_search_fields.size, "%#{query}%")
+      bcs = where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
+      keywords = BoostedContentKeyword.grep(where(affiliate_id: affiliate_id).pluck(:id), query)
+      matches = keywords.collect(&:boosted_content) + bcs
+      where(id: matches.uniq.map(&:id))
+    end
+
     def bulk_upload(affiliate, bulk_upload_file)
       filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
       return { :success => false, :error_message => "Your filename should have .xml, .csv or .txt extension."} unless filename =~ /\.(xml|csv|txt)$/

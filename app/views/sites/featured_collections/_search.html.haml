@@ -1,0 +1,11 @@
+= form_tag search_site_best_bets_graphics_path(@site), class: 'form-search' do
+  .input-append
+    %input.span2.search-query{type: "text", name: 'query'}/
+    %button.btn{type: "submit"} Search
+  =link_to 'Reset', site_best_bets_graphics_path(@site)
+- if params[:query].present?
+  %p
+  - if @featured_collections.present?
+    = "Showing matches for '#{params[:query]}'"
+  - else
+    = "No Featured Collections found matching '#{params[:query]}'"

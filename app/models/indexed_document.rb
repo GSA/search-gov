@@ -189,6 +189,13 @@ class IndexedDocument < ActiveRecord::Base
       nil
     end
 
+    def grep(affiliate_id, query)
+      substring_search_fields = %w(url)
+      field_clauses = substring_search_fields.collect {|field| "#{field} LIKE ?"}
+      values = Array.new(substring_search_fields.size, "%#{query}%")
+      where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
+    end
+
     def uncrawled_urls(affiliate, page = 1, per_page = 30)
       where(['affiliate_id = ? AND last_crawled_at IS NULL', affiliate.id]).paginate(:page => page, :per_page => per_page)
     end

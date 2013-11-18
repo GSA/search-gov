@@ -46,6 +46,7 @@ UsasearchRails3::Application.routes.draw do
 
       resources :best_bets_graphics, controller: 'featured_collections', except: [:show] do
         collection do
+          post :search
           get :new_keyword
           get :new_link
         end
@@ -53,6 +54,7 @@ UsasearchRails3::Application.routes.draw do
 
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
+          post :search
           get :new_keyword
           get :new_bulk_upload
           post :bulk_upload
@@ -75,7 +77,11 @@ UsasearchRails3::Application.routes.draw do
       end
       resources :supplemental_urls,
                 controller: 'indexed_documents',
-                except: [:show, :edit, :update]
+                except: [:show, :edit, :update] do
+        collection do
+          post :search
+        end
+      end
       resources :twitter_handles,
                 controller: 'twitter_profiles',
                 only: [:index, :new, :create, :destroy]

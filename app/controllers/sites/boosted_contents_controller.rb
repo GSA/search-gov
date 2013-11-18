@@ -9,6 +9,11 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
         order: 'updated_at DESC, title ASC')
   end
 
+  def search
+    @boosted_contents = BoostedContent.grep(@site.id, params[:query]).paginate(per_page: 1000, page: 1, order: 'updated_at DESC, title ASC')
+    render action: :index
+  end
+
   def new
     @boosted_content = BoostedContent.new(publish_start_on: Date.current)
     build_keywords

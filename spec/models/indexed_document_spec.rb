@@ -570,6 +570,25 @@ describe IndexedDocument do
     end
   end
 
+  describe '.grep(affiliate_id, query)' do
+    context 'when url field has substring match' do
+      before do
+        @affiliate = affiliates(:basic_affiliate)
+        one = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some document Title', :description => 'This is a document.')
+        two = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Another Title', :description => 'This is also a document.')
+        IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Third Title', :description => 'This is the last document.')
+        @array = [one, two]
+      end
+
+      it 'should find the records' do
+        matches = IndexedDocument.grep(@affiliate.id, 'nps.gov')
+        matches.size.should == 2
+        matches.should match_array(@array)
+      end
+    end
+
+  end
+
   describe "#refresh(extent)" do
     before do
       IndexedDocument.destroy_all
