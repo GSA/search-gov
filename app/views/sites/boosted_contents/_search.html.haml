@@ -1,0 +1,11 @@
+= form_tag site_best_bets_texts_path(@site), class: 'form-search', method: :get do
+  .input-append
+    %input.span2.search-query{type: "text", name: 'query'}/
+    %button.btn{type: "submit"} Search
+  =link_to 'Reset', site_best_bets_texts_path(@site)
+- if params[:query].present?
+  %p
+  - if @boosted_contents.present?
+    = "Showing matches for '#{params[:query]}'"
+  - else
+    = "No Best Bets found matching '#{params[:query]}'"

@@ -20,6 +20,7 @@ class IndexedDocument < ActiveRecord::Base
   scope :fetched, where('last_crawled_at IS NOT NULL')
   scope :unfetched, where('ISNULL(last_crawled_at)')
   scope :html, where(:doctype => 'html')
+  scope :by_matching_url, -> substring { where("url like ?","%#{substring}%") if substring.present? }
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 64000

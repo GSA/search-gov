@@ -5,12 +5,12 @@ describe BoostedContent do
   before do
     @affiliate = affiliates(:usagov_affiliate)
     @valid_attributes = {
-      :affiliate => @affiliate,
-      :url => "http://www.someaffiliate.gov/foobar",
-      :title => "The foobar page",
-      :description => "All about foobar, boosted to the top",
-      :status => 'active',
-      :publish_start_on => Date.yesterday
+        :affiliate => @affiliate,
+        :url => "http://www.someaffiliate.gov/foobar",
+        :title => "The foobar page",
+        :description => "All about foobar, boosted to the top",
+        :status => 'active',
+        :publish_start_on => Date.yesterday
     }
   end
 
@@ -81,6 +81,62 @@ describe BoostedContent do
     end
   end
 
+  describe '.substring_match(query)' do
+    context 'when only the parent record has substring match in selected text fields' do
+      before do
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my blah title', description: 'my blah description'))
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/1', title: 'my second efgh title', description: 'my second blah description'))
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/2', title: 'my third blah title', description: 'my third jkl description'))
+        @affiliate.save!
+      end
+
+      it 'should find the records' do
+        %w{bcd efg jk}.each do |substring|
+          @affiliate.boosted_contents.substring_match(substring).size.should == 1
+        end
+        @affiliate.boosted_contents.substring_match('gov').size.should == 3
+      end
+
+      context 'when the keywords has substring match in selected fields' do
+        before do
+          BoostedContent.last.boosted_content_keywords.create!(:value => 'third')
+          BoostedContent.last.boosted_content_keywords.create!(:value => 'thirdly')
+        end
+
+        it 'should find the record just once' do
+          @affiliate.boosted_contents.substring_match('third').size.should == 1
+        end
+      end
+    end
+
+    context 'when keywords association has substring match in selected fields' do
+      before do
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
+        bc.boosted_content_keywords.build(:value => 'pollution')
+        bc.save!
+      end
+
+      it 'should find the records' do
+        @affiliate.boosted_contents.substring_match('pollution').size.should == 1
+      end
+    end
+
+    context 'when neither the parent or the child records match' do
+      before do
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
+        bc.boosted_content_keywords.build(:value => 'pollution')
+        bc.save!
+      end
+
+      it 'should not find any records' do
+        @affiliate.boosted_contents.substring_match('sfgdfgdfgdfg').size.should be_zero
+      end
+    end
+  end
+
   describe "#human_attribute_name" do
     specify { BoostedContent.human_attribute_name("publish_start_on").should == "Publish start date" }
     specify { BoostedContent.human_attribute_name("publish_end_on").should == "Publish end date" }
@@ -109,7 +165,7 @@ describe BoostedContent do
 
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     before do
-      affiliate = Affiliate.create!({:display_name => "Test Affiliate", :name => 'test_affiliate'}, :as => :test)
+      affiliate = Affiliate.create!({ :display_name => "Test Affiliate", :name => 'test_affiliate' }, :as => :test)
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
@@ -269,7 +325,7 @@ describe BoostedContent do
       BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
 
       BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
-        and_raise(ActiveRecord::RecordInvalid.new(bc))
+          and_raise(ActiveRecord::RecordInvalid.new(bc))
 
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
       Sunspot.commit
@@ -349,7 +405,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
 
       BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
-        and_raise(ActiveRecord::RecordInvalid.new(bc))
+          and_raise(ActiveRecord::RecordInvalid.new(bc))
 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
@@ -380,7 +436,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     context "when the affiliate is specified" do
       it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"BoostedContent", :term => "foo")))
+            with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model => "BoostedContent", :term => "foo")))
         BoostedContent.search_for('foo', @affiliate)
       end
     end
@@ -435,7 +491,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         Sunspot.commit
       end
 
-      [ '"   ', '   "       ', '+++', '+-', '-+'].each do |query|
+      ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
         specify { BoostedContent.search_for(query, @affiliate).should be_nil }
       end
 

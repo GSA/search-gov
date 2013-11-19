@@ -2,10 +2,10 @@ class Sites::FeaturedCollectionsController < Sites::SetupSiteController
   before_filter :setup_featured_collection, only: [:edit, :update, :destroy]
 
   def index
-    @featured_collections = @site.featured_collections.paginate(
+    @featured_collections = @site.featured_collections.substring_match(params[:query]).paginate(
         per_page: FeaturedCollection.per_page,
         page: params[:page],
-        order: 'updated_at DESC, title ASC')
+        order: 'featured_collections.updated_at DESC, featured_collections.title ASC')
   end
 
   def new

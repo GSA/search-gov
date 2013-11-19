@@ -5,7 +5,7 @@ class FeaturedCollection < ActiveRecord::Base
   CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   LAYOUTS = ['one column', 'two column']
-  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
+  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout] }
   LINK_TITLE_SEPARATOR = "!!!sep!!!"
 
   cattr_reader :per_page
@@ -33,6 +33,12 @@ class FeaturedCollection < ActiveRecord::Base
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
+  scope :substring_match, -> substring do
+    select('DISTINCT featured_collections.*').
+        includes([:featured_collection_keywords, :featured_collection_links]).
+        where(FieldMatchers.build(substring, featured_collections: %w{title title_url}, featured_collection_keywords: %w{value},
+                                  featured_collection_links: %w(title url))) if substring.present?
+  end
 
   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
@@ -94,6 +100,7 @@ class FeaturedCollection < ActiveRecord::Base
         end
       end
     end
+
   end
 
   def self.human_attribute_name(attribute_key_name, options = {})

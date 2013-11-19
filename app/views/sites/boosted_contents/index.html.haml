@@ -8,6 +8,9 @@
       %li= link_to 'Add Best Bets: Text', new_site_best_bets_text_path(@site)
 
 = render_site_flash_message
+
+= render partial: 'search'
+
 %table.table.table-no-header
   %tbody
     - @boosted_contents.each do |boosted_content|

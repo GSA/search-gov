@@ -28,6 +28,23 @@ Feature: Manage Content
     And I should see "Published between 09/01/2013 and 09/30/2013"
     And I should see "Status: Inactive"
 
+  Scenario: Filtering best bets graphics
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following featured collections exist for the affiliate "agency.gov":
+      | title           | title_url                         | status   | publish_start_on | publish_end_on | keywords     |
+      | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
+      | Flood Watches   |                                   | inactive | 2013-08-01       |                |              |
+      | Fire Safety     |                                   | active   | 2013-09-01       | 2013-09-30     | burn,lighter |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Best Bets: Graphics" within the Admin Center content
+    And I fill in "query" with "lighter"
+    And I press "Search"
+    Then I should see the following table rows:
+      | Fire Safety     |
+
   Scenario: Add/edit/remove best bets graphics
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -110,6 +127,22 @@ Feature: Manage Content
       | Notes for Week Ending May 31, 2013  |
     And I should see "Status: Active"
     And I should see "Published between 08/01/2013 and 01/01/2022"
+
+  Scenario: View best bets texts
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    When the following Boosted Content entries exist for the affiliate "agency.gov"
+      | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
+      | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Best Bets: Text" within the Admin Center content
+    And I fill in "query" with "lean"
+    And I press "Search"
+    Then I should see the following table rows:
+      | Notes for Week Ending June 21, 2013 |
 
   Scenario: Add/edit/remove best bets texts
     Given the following Affiliates exist:
@@ -394,6 +427,22 @@ Feature: Manage Content
       | aff.gov/extremelysuperlongurl/space-suit | Manual | 11/2/2011    | OK     |
     When I follow "Error"
     Then I should find "404 Not Found" in the Supplemental URL last crawl status error message
+
+  Scenario: Filtering Supplemental URLs
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following IndexedDocuments exist:
+      | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
+      | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
+      | http://aff.gov/extremelysuperlongurl/rocket     | Rocket Evolution     | description text for rocket     | agency.gov | 11/01/2011      | 404 Not Found     | rss    |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Supplemental URLs page
+    And I fill in "query" with "rocket"
+    And I press "Search"
+    Then I should see the following table rows:
+      | URL                                      | Source | Last Crawled | Status |
+      | aff.gov/extremelysuperlongurl/rocket     | Feed   | 11/1/2011    | Error  |
 
   Scenario: Add/edit/remove Supplemental URL
     Given the following Affiliates exist:

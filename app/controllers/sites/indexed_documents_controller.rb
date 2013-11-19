@@ -4,7 +4,7 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
   before_filter :setup_indexed_document, only: [:destroy]
 
   def index
-    @indexed_documents = @site.indexed_documents.paginate(
+    @indexed_documents = @site.indexed_documents.by_matching_url(params[:query]).paginate(
         page: params[:page], order: 'id DESC')
   end
 

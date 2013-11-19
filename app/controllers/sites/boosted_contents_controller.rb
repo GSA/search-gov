@@ -3,10 +3,10 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
   before_filter :setup_boosted_content, only: [:edit, :update, :destroy]
 
   def index
-    @boosted_contents = @site.boosted_contents.paginate(
+    @boosted_contents = @site.boosted_contents.substring_match(params[:query]).paginate(
         per_page: BoostedContent.per_page,
         page: params[:page],
-        order: 'updated_at DESC, title ASC')
+        order: 'boosted_contents.updated_at DESC, boosted_contents.title ASC')
   end
 
   def new

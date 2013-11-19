@@ -16,6 +16,11 @@ class BoostedContent < ActiveRecord::Base
   before_save :ensure_http_prefix_on_url
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
+  scope :substring_match, -> substring do
+    select('DISTINCT boosted_contents.*').
+        includes(:boosted_content_keywords).
+        where(FieldMatchers.build(substring, boosted_contents: %w{title url description}, boosted_content_keywords: %w{value})) if substring.present?
+  end
 
   searchable :auto_index => false do
     integer :affiliate_id

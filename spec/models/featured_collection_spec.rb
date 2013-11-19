@@ -28,8 +28,8 @@ describe FeaturedCollection do
   end
   it { should_not allow_value("bogus layout").for(:layout) }
 
-  specify { FeaturedCollection.new(:layout => 'one column').should be_has_one_column_layout }
-  specify { FeaturedCollection.new(:layout => 'two column').should be_has_two_column_layout }
+  specify { FeaturedCollection.new(:layout => 'one column').should have_one_column_layout }
+  specify { FeaturedCollection.new(:layout => 'two column').should have_two_column_layout }
 
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
@@ -114,7 +114,7 @@ describe FeaturedCollection do
         it "should clear existing image" do
           image.should_receive(:dirty?).and_return(false)
           image.should_receive(:clear)
-          featured_collection.update_attributes({ :mark_image_for_deletion => '1'})
+          featured_collection.update_attributes({ :mark_image_for_deletion => '1' })
         end
       end
 
@@ -122,7 +122,7 @@ describe FeaturedCollection do
         it "should not clear the existing image" do
           image.should_receive(:dirty?).and_return(true)
           image.should_not_receive(:clear)
-          featured_collection.update_attributes({ :title => 'updated'})
+          featured_collection.update_attributes({ :title => 'updated' })
         end
       end
     end
@@ -133,6 +133,92 @@ describe FeaturedCollection do
         image.should_not_receive(:clear)
         featured_collection.update_attributes(:title => 'new title')
       end
+    end
+  end
+
+  describe '.substring_match(query)' do
+    context 'with an affiliate' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      context 'when only the parent record has substring match in selected text fields' do
+        before do
+          affiliate.featured_collections.create!(:title => 'My awesome featured collection abc',
+                                                 :title_url => 'http://www.dotgov.gov/page.html',
+                                                 :status => 'active',
+                                                 :layout => 'one column',
+                                                 :publish_start_on => Date.current)
+          affiliate.featured_collections.create!(:title => 'Another awesome featured collection',
+                                                 :title_url => 'http://www.dotgov.gov/defg.html',
+                                                 :status => 'active',
+                                                 :layout => 'one column',
+                                                 :publish_start_on => Date.current)
+        end
+
+        it 'should find the records' do
+          %w{abc defg}.each do |substring|
+            affiliate.featured_collections.substring_match(substring).size.should == 1
+          end
+          affiliate.featured_collections.substring_match('awesome').size.should == 2
+        end
+
+        context 'when keywords have substring match in selected fields' do
+          before do
+            fc = FeaturedCollection.last
+            fc.featured_collection_keywords.build(:value => 'page2')
+            fc.featured_collection_keywords.build(:value => 'hello')
+            fc.save!
+          end
+
+          it 'should find the record just once' do
+            %w{page2 llo}.each do |substring|
+              affiliate.featured_collections.substring_match(substring).size.should == 1
+            end
+          end
+        end
+      end
+
+      context 'when at least one has_many association has substring match in selected fields' do
+        before do
+          fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
+                                                    :title_url => 'http://www.dotgov.gov/page.html',
+                                                    :status => 'active',
+                                                    :layout => 'one column',
+                                                    :publish_start_on => Date.current)
+          fc.featured_collection_keywords.build(:value => 'word1')
+          fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
+                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                             :position => '0')
+
+          fc.save!
+        end
+
+        it 'should find the records' do
+          %w{word1 cyclone}.each do |substring|
+            affiliate.featured_collections.substring_match(substring).size.should == 1
+          end
+        end
+      end
+
+      context 'when neither the parent or the child records have a match' do
+        before do
+          fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
+                                                    :title_url => 'http://www.dotgov.gov/page.html',
+                                                    :status => 'active',
+                                                    :layout => 'one column',
+                                                    :publish_start_on => Date.current)
+          fc.featured_collection_keywords.build(:value => 'word1')
+          fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
+                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                             :position => '0')
+
+          fc.save!
+        end
+
+        it 'should not find any records' do
+          affiliate.featured_collections.substring_match('sdfsdfsdf').size.should be_zero
+        end
+      end
+
     end
   end
 
@@ -199,12 +285,12 @@ describe FeaturedCollection do
       context "when there is an active English featured collection and current date is within publish date range" do
         before do
           @featured_collection_params = [
-            { :title => 'today',
-              :publish_start_on => Date.current,
-              :publish_end_on => Date.current },
-            { :title => 'within_publish_date_range',
-              :publish_start_on => Date.current.prev_month,
-              :publish_end_on => Date.current.next_month },
+              { :title => 'today',
+                :publish_start_on => Date.current,
+                :publish_end_on => Date.current },
+              { :title => 'within_publish_date_range',
+                :publish_start_on => Date.current.prev_month,
+                :publish_end_on => Date.current.next_month },
           ]
           @featured_collection_params.each_with_index do |params, index|
             featured_collection = affiliate.featured_collections.build(:title => "Featured collection #{params[:title]}",
@@ -227,7 +313,7 @@ describe FeaturedCollection do
         end
 
         context "when query contains special characters" do
-          [ '"   ', '   "       ', '+++', '+-', '-+'].each do |query|
+          ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
             specify { FeaturedCollection.search_for(query, affiliate).should be_nil }
           end
 
@@ -240,14 +326,14 @@ describe FeaturedCollection do
       context "when there is an active English featured collection and current date is not within publish date range" do
         before do
           featured_collection_params = [
-            { :title => 'past_publish_date_range',
-              :publish_start_on => Date.current.prev_year,
-              :publish_end_on => Date.current.yesterday },
-            { :title => 'future_publish_date_range',
-              :publish_start_on => Date.current.tomorrow,
-              :publish_end_on => Date.current.next_month },
-            { :title => 'future_publish_start_date',
-              :publish_start_on => Date.current.tomorrow }
+              { :title => 'past_publish_date_range',
+                :publish_start_on => Date.current.prev_year,
+                :publish_end_on => Date.current.yesterday },
+              { :title => 'future_publish_date_range',
+                :publish_start_on => Date.current.tomorrow,
+                :publish_end_on => Date.current.next_month },
+              { :title => 'future_publish_start_date',
+                :publish_start_on => Date.current.tomorrow }
           ]
           featured_collection_params.each_with_index do |params, index|
             featured_collection = affiliate.featured_collections.build(:title => "Featured collection #{params[:title]}",
