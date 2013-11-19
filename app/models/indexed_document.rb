@@ -190,14 +190,6 @@ class IndexedDocument < ActiveRecord::Base
       nil
     end
 
-    def uncrawled_urls(affiliate, page = 1, per_page = 30)
-      where(['affiliate_id = ? AND last_crawled_at IS NULL', affiliate.id]).paginate(:page => page, :per_page => per_page)
-    end
-
-    def crawled_urls(affiliate, page = 1, per_page = 30)
-      where(['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id]).paginate(:page => page, :per_page => per_page).order('last_crawled_at desc, id desc')
-    end
-
     def refresh(extent)
       select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil }
     end

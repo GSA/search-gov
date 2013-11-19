@@ -524,52 +524,6 @@ describe IndexedDocument do
     end
   end
 
-  describe "#uncrawled_urls" do
-    before do
-      IndexedDocument.destroy_all
-      @affiliate = affiliates(:basic_affiliate)
-      @first_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :affiliate => @affiliate, :title => 'Some Title',
-                                                     :description => 'This is a document.')
-      @last_uncrawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :affiliate => @affiliate, :title => 'Some Title',
-                                                    :description => 'This is a document.')
-      @other_affiliate_uncrawled_url = IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :affiliate => affiliates(:power_affiliate), :title => 'Some Title', :description => 'This is a document.')
-      @already_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/uncrawled.html', :affiliate => @affiliate, :last_crawled_at => Time.now, :title => 'Some Title', :description => 'This is a document.')
-    end
-
-    it "should return the first page of all crawled urls" do
-      uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate)
-      uncrawled_urls.size.should == 2
-      uncrawled_urls.include?(@first_uncrawled_url).should be_true
-      uncrawled_urls.include?(@last_uncrawled_url).should be_true
-    end
-
-    it "should paginate the results if the page is passed in" do
-      uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 2)
-      uncrawled_urls.should be_empty
-    end
-  end
-
-  describe "#crawled_urls" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @first_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some Title', :description => 'This is a document.')
-      @last_crawled_url = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some Title', :description => 'This is a document.')
-      IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate), :title => 'Some Title', :description => 'This is a document.')
-    end
-
-    it "should return the first page of all crawled urls" do
-      crawled_urls = IndexedDocument.crawled_urls(@affiliate)
-      crawled_urls.size.should == 2
-      crawled_urls.include?(@first_crawled_url).should be_true
-      crawled_urls.include?(@last_crawled_url).should be_true
-    end
-
-    it "should paginate the results if the page is passed in" do
-      crawled_urls = IndexedDocument.crawled_urls(@affiliate, 2)
-      crawled_urls.should be_empty
-    end
-  end
-
   describe '.by_matching_url(query)' do
     context 'when url field has substring match' do
       before do
