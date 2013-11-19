@@ -12,33 +12,29 @@ describe SaytSearch do
     [sayt_suggestion1, sayt_suggestion2]
   end
 
+  before do
+    common = {status: 'active', publish_start_on: Date.yesterday, description: 'blah'}
+    affiliate.boosted_contents.create!(common.merge(url: 'http://www.agency.gov/boosted_content1.html', title: 'Foo Boosted Content 1'))
+    affiliate.boosted_contents.create!(common.merge(url: 'http://www.agency.gov/boosted_content2.html', title: 'Foo Boosted Content 2'))
+    es_affiliate.boosted_contents.create!(common.merge(url: 'http://www.agency.gov/boosted_content1.html', title: 'Foo Boosted Content 1'))
+    es_affiliate.boosted_contents.create!(common.merge(url: 'http://www.agency.gov/boosted_content2.html', title: 'Foo Boosted Content 2'))
+  end
+
   context 'when affiliate_id and query are present' do
     let(:query) { 'foo' }
     let(:search_params) { { affiliate_id: affiliate.id, locale: affiliate.locale, query: query, number_of_results: 10, extras: true } }
     let(:search) { SaytSearch.new(search_params) }
 
-    let(:boosted_contents) do
-      boosted_content1 = mock_model(BoostedContent,
-                                    title: 'Foo Boosted Content 1',
-                                    url: 'http://www.agency.gov/boosted_content1.html')
-      boosted_content2 = mock_model(BoostedContent,
-                                    title: 'Foo Boosted Content 2',
-                                    url: 'http://www.agency.gov/boosted_content2.html')
-      [boosted_content1, boosted_content2]
-    end
-
     it 'should correct query misspelling' do
       search_params[:query] = 'chold'
 
       Misspelling.should_receive(:correct).with('chold').and_return('child')
-      BoostedContent.should_receive(:sayt_for).with(affiliate.id, 'child', 2).and_return([])
       SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'child', 10).and_return([])
 
       search.results.should == []
     end
 
     it 'should return an array of hash' do
-      BoostedContent.should_receive(:sayt_for).with(affiliate.id, 'foo', 2).and_return(boosted_contents)
       SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
       search.results.should == [{ section: 'default', label: 'foo1' },
@@ -51,7 +47,6 @@ describe SaytSearch do
       let(:search_params) { { affiliate_id: es_affiliate.id, locale: es_affiliate.locale, query: query, number_of_results: 10, extras: true } }
 
       it 'should return an array of Hash with Spanish translations' do
-        BoostedContent.should_receive(:sayt_for).with(es_affiliate.id, 'foo', 2).and_return(boosted_contents)
         SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
         search.results.should == [{ section: 'default', label: 'foo1' },
@@ -67,7 +62,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
 
       search.results.should == []
@@ -79,7 +73,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
 
       search.results.should == []
@@ -91,7 +84,6 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      BoostedContent.should_not_receive(:sayt_for)
       SaytSuggestion.should_receive(:fetch_by_affiliate_id).and_return(sayt_suggestions)
 
       search.results.should == %w(foo1 foo2)
