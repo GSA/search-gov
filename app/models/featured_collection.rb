@@ -33,6 +33,12 @@ class FeaturedCollection < ActiveRecord::Base
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
+  scope :substring_match, -> substring do
+    select('DISTINCT featured_collections.*').
+        joins([:featured_collection_keywords, :featured_collection_links]).
+        where(FieldMatchers.build(substring, featured_collections: %w{title title_url}, featured_collection_keywords: %w{value},
+                                  featured_collection_links: %w(title url))) if substring.present?
+  end
 
   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
@@ -93,18 +99,6 @@ class FeaturedCollection < ActiveRecord::Base
           nil
         end
       end
-    end
-
-    def grep(affiliate_id, query)
-      substring_search_fields = %w(title title_url)
-      field_clauses = substring_search_fields.collect { |field| "#{field} LIKE ?" }
-      values = Array.new(substring_search_fields.size, "%#{query}%")
-      bcs = where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
-      ids = where(affiliate_id: affiliate_id).pluck(:id)
-      keywords = FeaturedCollectionKeyword.grep(ids, query)
-      links = FeaturedCollectionLink.grep(ids, query)
-      matches = keywords.collect(&:featured_collection) + links.collect(&:featured_collection) + bcs
-      where(id: matches.uniq.map(&:id))
     end
 
   end

@@ -16,6 +16,10 @@ class BoostedContent < ActiveRecord::Base
   before_save :ensure_http_prefix_on_url
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
+  scope :substring_match, -> substring do
+    joins(:boosted_content_keywords).
+        where(FieldMatchers.build(substring, boosted_contents: %w{title url description}, boosted_content_keywords: %w{value})) if substring.present?
+  end
 
   searchable :auto_index => false do
     integer :affiliate_id
@@ -71,16 +75,6 @@ class BoostedContent < ActiveRecord::Base
           paginate :page => page, :per_page => per_page
         end rescue nil
       end
-    end
-
-    def grep(affiliate_id, query)
-      substring_search_fields = %w(title url description)
-      field_clauses = substring_search_fields.collect {|field| "#{field} LIKE ?"}
-      values = Array.new(substring_search_fields.size, "%#{query}%")
-      bcs = where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
-      keywords = BoostedContentKeyword.grep(where(affiliate_id: affiliate_id).pluck(:id), query)
-      matches = keywords.collect(&:boosted_content) + bcs
-      where(id: matches.uniq.map(&:id))
     end
 
     def bulk_upload(affiliate, bulk_upload_file)

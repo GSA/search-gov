@@ -4,13 +4,8 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
   before_filter :setup_indexed_document, only: [:destroy]
 
   def index
-    @indexed_documents = @site.indexed_documents.paginate(
+    @indexed_documents = @site.indexed_documents.by_matching_url(params[:query]).paginate(
         page: params[:page], order: 'id DESC')
-  end
-
-  def search
-    @indexed_documents = IndexedDocument.grep(@site.id, params[:query]).paginate(per_page: 1000, page: 1, order: 'updated_at DESC, title ASC')
-    render action: :index
   end
 
   def new

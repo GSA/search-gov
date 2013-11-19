@@ -2,7 +2,7 @@ class Sites::FeaturedCollectionsController < Sites::SetupSiteController
   before_filter :setup_featured_collection, only: [:edit, :update, :destroy]
 
   def index
-    @featured_collections = @site.featured_collections.paginate(
+    @featured_collections = @site.featured_collections.substring_match(params[:query]).paginate(
         per_page: FeaturedCollection.per_page,
         page: params[:page],
         order: 'updated_at DESC, title ASC')
@@ -11,11 +11,6 @@ class Sites::FeaturedCollectionsController < Sites::SetupSiteController
   def new
     @featured_collection = FeaturedCollection.new(publish_start_on: Date.current)
     build_keywords_and_links
-  end
-
-  def search
-    @featured_collections = FeaturedCollection.grep(@site.id, params[:query]).paginate(per_page: 1000, page: 1, order: 'updated_at DESC, title ASC')
-    render action: :index
   end
 
   def new_keyword

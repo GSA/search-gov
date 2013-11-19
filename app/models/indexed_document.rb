@@ -20,6 +20,7 @@ class IndexedDocument < ActiveRecord::Base
   scope :fetched, where('last_crawled_at IS NOT NULL')
   scope :unfetched, where('ISNULL(last_crawled_at)')
   scope :html, where(:doctype => 'html')
+  scope :by_matching_url, -> substring { where("url like ?","%#{substring}%") if substring.present? }
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 64000
@@ -187,13 +188,6 @@ class IndexedDocument < ActiveRecord::Base
     rescue RSolr::Error::Http => e
       Rails.logger.warn "Error IndexedDocument#search_for: #{e.to_s}"
       nil
-    end
-
-    def grep(affiliate_id, query)
-      substring_search_fields = %w(url)
-      field_clauses = substring_search_fields.collect {|field| "#{field} LIKE ?"}
-      values = Array.new(substring_search_fields.size, "%#{query}%")
-      where(affiliate_id: affiliate_id).where(field_clauses.join(" OR "), *values)
     end
 
     def uncrawled_urls(affiliate, page = 1, per_page = 30)
