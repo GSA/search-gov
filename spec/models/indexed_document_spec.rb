@@ -570,7 +570,7 @@ describe IndexedDocument do
     end
   end
 
-  describe '.grep(affiliate_id, query)' do
+  describe '.by_matching_url(query)' do
     context 'when url field has substring match' do
       before do
         @affiliate = affiliates(:basic_affiliate)
@@ -581,7 +581,7 @@ describe IndexedDocument do
       end
 
       it 'should find the records' do
-        matches = IndexedDocument.grep(@affiliate.id, 'nps.gov')
+        matches = @affiliate.indexed_documents.by_matching_url('nps.gov')
         matches.size.should == 2
         matches.should match_array(@array)
       end

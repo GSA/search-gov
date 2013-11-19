@@ -6,7 +6,7 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
     @boosted_contents = @site.boosted_contents.substring_match(params[:query]).paginate(
         per_page: BoostedContent.per_page,
         page: params[:page],
-        order: 'updated_at DESC, title ASC')
+        order: 'boosted_contents.updated_at DESC, boosted_contents.title ASC')
   end
 
   def new

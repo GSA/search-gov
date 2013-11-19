@@ -13,7 +13,7 @@ describe Sites::FeaturedCollectionsController do
       let(:featured_collections) { mock('featured collections') }
 
       before do
-        site.stub_chain(:featured_collections, :paginate).and_return(featured_collections)
+        site.stub_chain(:featured_collections, :substring_match, :paginate).and_return(featured_collections)
         get :index, id: site.id
       end
 

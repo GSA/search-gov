@@ -13,7 +13,7 @@ describe Sites::IndexedDocumentsController do
       let(:indexed_documents) { mock('indexed documents') }
 
       before do
-        site.stub_chain(:indexed_documents, :paginate).and_return(indexed_documents)
+        site.stub_chain(:indexed_documents, :substring_match, :paginate).and_return(indexed_documents)
         get :index, site_id: site.id
       end
 

@@ -35,7 +35,7 @@ class FeaturedCollection < ActiveRecord::Base
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
   scope :substring_match, -> substring do
     select('DISTINCT featured_collections.*').
-        joins([:featured_collection_keywords, :featured_collection_links]).
+        includes([:featured_collection_keywords, :featured_collection_links]).
         where(FieldMatchers.build(substring, featured_collections: %w{title title_url}, featured_collection_keywords: %w{value},
                                   featured_collection_links: %w(title url))) if substring.present?
   end

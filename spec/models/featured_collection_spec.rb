@@ -136,31 +136,29 @@ describe FeaturedCollection do
     end
   end
 
-  describe '.grep(affiliate_id, query)' do
+  describe '.substring_match(query)' do
     context 'with an affiliate' do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
-      context 'when parent record has substring match in selected text fields' do
+      context 'when only the parent record has substring match in selected text fields' do
         before do
-          one = affiliate.featured_collections.create!(:title => 'My awesome featured collection',
-                                                       :title_url => 'http://www.dotgov.gov/page.html',
-                                                       :status => 'active',
-                                                       :layout => 'one column',
-                                                       :publish_start_on => Date.current)
-          two = affiliate.featured_collections.create!(:title => 'Another awesome featured collection',
-                                                       :title_url => 'http://www.dotgov.gov/page2.html',
-                                                       :status => 'active',
-                                                       :layout => 'one column',
-                                                       :publish_start_on => Date.current)
-          @array = [one, two]
+          affiliate.featured_collections.create!(:title => 'My awesome featured collection abc',
+                                                 :title_url => 'http://www.dotgov.gov/page.html',
+                                                 :status => 'active',
+                                                 :layout => 'one column',
+                                                 :publish_start_on => Date.current)
+          affiliate.featured_collections.create!(:title => 'Another awesome featured collection',
+                                                 :title_url => 'http://www.dotgov.gov/defg.html',
+                                                 :status => 'active',
+                                                 :layout => 'one column',
+                                                 :publish_start_on => Date.current)
         end
 
         it 'should find the records' do
-          %w{awesome page}.each do |substring|
-            matches = FeaturedCollection.grep(affiliate.id, substring)
-            matches.size.should == 2
-            matches.should match_array(@array)
+          %w{abc defg}.each do |substring|
+            affiliate.featured_collections.substring_match(substring).size.should == 1
           end
+          affiliate.featured_collections.substring_match('awesome').size.should == 2
         end
 
         context 'when keywords have substring match in selected fields' do
@@ -172,15 +170,14 @@ describe FeaturedCollection do
           end
 
           it 'should find the record just once' do
-            matches = FeaturedCollection.grep(affiliate.id, 'page2')
-            matches.size.should == 1
-            matches = FeaturedCollection.grep(affiliate.id, 'llo')
-            matches.size.should == 1
+            %w{page2 llo}.each do |substring|
+              affiliate.featured_collections.substring_match(substring).size.should == 1
+            end
           end
         end
       end
 
-      context 'when has_many association has substring match in selected fields' do
+      context 'when at least one has_many association has substring match in selected fields' do
         before do
           fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                     :title_url => 'http://www.dotgov.gov/page.html',
@@ -196,16 +193,13 @@ describe FeaturedCollection do
         end
 
         it 'should find the records' do
-          matches = FeaturedCollection.grep(affiliate.id, 'word1')
-          matches.size.should == 1
-          matches.first.featured_collection_keywords.first.value.should == 'word1'
-          matches = FeaturedCollection.grep(affiliate.id, 'cyclone')
-          matches.size.should == 1
-          matches.first.featured_collection_links.first.title.should == 'Worldwide Tropical Cyclone Names Part1'
+          %w{word1 cyclone}.each do |substring|
+            affiliate.featured_collections.substring_match(substring).size.should == 1
+          end
         end
       end
 
-      context 'when neither the parent or the child records match' do
+      context 'when neither the parent or the child records have a match' do
         before do
           fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                     :title_url => 'http://www.dotgov.gov/page.html',
@@ -221,7 +215,7 @@ describe FeaturedCollection do
         end
 
         it 'should not find any records' do
-          FeaturedCollection.grep(affiliate.id, 'blah').should be_empty
+          affiliate.featured_collections.substring_match('sdfsdfsdf').size.should be_zero
         end
       end
 

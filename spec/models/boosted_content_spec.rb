@@ -81,66 +81,60 @@ describe BoostedContent do
     end
   end
 
-  describe '.grep(affiliate_id, query)' do
-    context 'when parent record has substring match in selected text fields' do
+  describe '.substring_match(query)' do
+    context 'when only the parent record has substring match in selected text fields' do
       before do
-        one = BoostedContent.create!(affiliate: @affiliate, url: 'http://www.abcd.gov/', title: 'my efgh title',
-                                     description: 'my ijkl description', status: 'active', publish_start_on: Date.yesterday)
-        two = BoostedContent.create!(affiliate: @affiliate, url: 'http://www.abcd.gov/1', title: 'my second efgh title',
-                                     description: 'my second ijkl description', status: 'active', publish_start_on: Date.yesterday)
-        @array = [one, two]
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my blah title', description: 'my blah description'))
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/1', title: 'my second efgh title', description: 'my second blah description'))
+        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/2', title: 'my third blah title', description: 'my third jkl description'))
+        @affiliate.save!
       end
 
       it 'should find the records' do
         %w{bcd efg jk}.each do |substring|
-          matches = BoostedContent.grep(@affiliate.id, substring)
-          matches.size.should == 2
-          matches.should match_array(@array)
+          @affiliate.boosted_contents.substring_match(substring).size.should == 1
         end
+        @affiliate.boosted_contents.substring_match('gov').size.should == 3
       end
 
-      context 'when has_many association has substring match in selected fields' do
+      context 'when the keywords has substring match in selected fields' do
         before do
-          bc = BoostedContent.last
-          bc.boosted_content_keywords.build(:value => 'second')
-          bc.save!
+          BoostedContent.last.boosted_content_keywords.create!(:value => 'third')
+          BoostedContent.last.boosted_content_keywords.create!(:value => 'thirdly')
         end
 
         it 'should find the record just once' do
-          matches = BoostedContent.grep(@affiliate.id, 'second')
-          matches.size.should == 1
+          @affiliate.boosted_contents.substring_match('third').size.should == 1
         end
       end
     end
 
-    context 'when has_many association has substring match in selected fields' do
+    context 'when keywords association has substring match in selected fields' do
       before do
-        bc = BoostedContent.create!(affiliate: @affiliate, url: 'http://www.abcd.gov/', title: 'my efgh title',
-                                    description: 'my ijkl description', status: 'active', publish_start_on: Date.yesterday)
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
         bc.boosted_content_keywords.build(:value => 'pollution')
         bc.save!
       end
 
       it 'should find the records' do
-        matches = BoostedContent.grep(@affiliate.id, 'pollution')
-        matches.size.should == 1
-        matches.first.boosted_content_keywords.first.value.should == 'pollution'
+        @affiliate.boosted_contents.substring_match('pollution').size.should == 1
       end
     end
 
     context 'when neither the parent or the child records match' do
       before do
-        bc = BoostedContent.create!(affiliate: @affiliate, url: 'http://www.abcd.gov/', title: 'my efgh title',
-                                    description: 'my ijkl description', status: 'active', publish_start_on: Date.yesterday)
+        common = {status: 'active', publish_start_on: Date.yesterday}
+        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
         bc.boosted_content_keywords.build(:value => 'pollution')
         bc.save!
       end
 
       it 'should not find any records' do
-        BoostedContent.grep(@affiliate.id, 'blah').should be_empty
+        @affiliate.boosted_contents.substring_match('sfgdfgdfgdfg').size.should be_zero
       end
     end
-
   end
 
   describe "#human_attribute_name" do
