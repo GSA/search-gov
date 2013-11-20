@@ -1,0 +1,10 @@
+ready = () ->
+  $('#keen-io').each () ->
+    new keentivate({
+      projectId: '<%= "#{Keen.project_id}" %>',
+      readKey: '<%= "#{Keen.read_key}" %>' },
+    {
+      keenClass: "keentivate"
+    });
+$(document).ready ready
+$(document).on 'page:load', ready
