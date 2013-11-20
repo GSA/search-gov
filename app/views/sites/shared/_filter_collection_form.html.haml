@@ -1,0 +1,11 @@
+= form_tag collection_path, class: 'form-search', method: :get do
+  .input-append
+    %input.span2.search-query{type: "text", name: 'query'}/
+    %button.btn{type: "submit"} Search
+  =link_to 'Reset', collection_path
+- if query.present?
+  %p
+  - if collection.present?
+    = "Showing matches for '#{query}'"
+  - else
+    = "#{no_match_message} '#{query}'"

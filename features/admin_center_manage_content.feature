@@ -44,6 +44,12 @@ Feature: Manage Content
     And I press "Search"
     Then I should see the following table rows:
       | Fire Safety     |
+    And I should see "Showing matches for 'lighter'"
+    And I fill in "query" with "lksdjflskdjf"
+    And I press "Search"
+    Then I should see "No Best Bets found matching 'lksdjflskdjf'"
+    When I follow "Reset"
+    Then I should be on the agency.gov's Best Bets Graphics page
 
   Scenario: Add/edit/remove best bets graphics
     Given the following Affiliates exist:
@@ -128,7 +134,7 @@ Feature: Manage Content
     And I should see "Status: Active"
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
-  Scenario: View best bets texts
+  Scenario: Filtering best bets texts
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
@@ -143,6 +149,12 @@ Feature: Manage Content
     And I press "Search"
     Then I should see the following table rows:
       | Notes for Week Ending June 21, 2013 |
+    And I should see "Showing matches for 'lean'"
+    And I fill in "query" with "lksdjflskdjf"
+    And I press "Search"
+    Then I should see "No Best Bets found matching 'lksdjflskdjf'"
+    When I follow "Reset"
+    Then I should be on the agency.gov's Best Bets Texts page
 
   Scenario: Add/edit/remove best bets texts
     Given the following Affiliates exist:
@@ -443,6 +455,12 @@ Feature: Manage Content
     Then I should see the following table rows:
       | URL                                      | Source | Last Crawled | Status |
       | aff.gov/extremelysuperlongurl/rocket     | Feed   | 11/1/2011    | Error  |
+    And I should see "Showing matches for 'rocket'"
+    And I fill in "query" with "lksdjflskdjf"
+    And I press "Search"
+    Then I should see "No Supplemental URLs found matching 'lksdjflskdjf'"
+    When I follow "Reset"
+    Then I should be on the agency.gov's Supplemental URLs page
 
   Scenario: Add/edit/remove Supplemental URL
     Given the following Affiliates exist:

@@ -110,6 +110,10 @@ module NavigationHelpers
       edit_site_header_and_footer_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Activate Search page$/
       site_embed_code_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Best Bets Graphics page$/
+      site_best_bets_graphics_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Best Bets Texts page$/
+      site_best_bets_texts_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Analytics page$/
       new_site_raw_logs_access_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Filter URLs page$/
