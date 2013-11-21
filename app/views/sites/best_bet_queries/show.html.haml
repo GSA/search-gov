@@ -10,4 +10,4 @@
     = "Title: #{@best_bet.title}"
     = best_bet_edit_link(@site, @best_bet)
 
-  #keen-io.keentivate{"data-keen-filter" => "affiliate_id=#{@site.id}|model_id=#{@best_bet.id}|module=#{params[:module_tag]}", "data-keen-event" => "impressions", "data-keen-title" => "Queries leading to this best bet", "data-keen-type" => "pie", "data-keen-group" => 'query', 'data-keen-timeframe' => 'this_month'}
+  #keen-best-bets-queries{ data: { module: params[:module_tag], affiliate_id: @site.id, model_id: @best_bet.id }}

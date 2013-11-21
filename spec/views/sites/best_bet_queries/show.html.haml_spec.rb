@@ -40,7 +40,7 @@ describe "sites/best_bet_queries/show.html.haml" do
     end
 
     it 'should show a Keen pie chart for the current month' do
-      rendered.should have_selector(".keentivate", { "data-keen-filter" => "affiliate_id=#{site.id}|model_id=#{best_bet.id}|module=BOOS", "data-keen-event" => "impressions", "data-keen-title" => "Queries leading to this best bet", "data-keen-type" => "pie", "data-keen-group" => 'query', 'data-keen-timeframe' => 'this_month' })
+      rendered.should have_selector("#keen-best-bets-queries", { "data-module" => "BOOS", "data-model-id" => "#{best_bet.id}", 'data-affiliate-id' => "#{site.id}" })
     end
   end
 
