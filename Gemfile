@@ -57,7 +57,7 @@ gem 'strong_parameters'
 gem 'will_paginate-bootstrap'
 gem 'virtus'
 gem 'keen'
-gem 'truncator', :git => 'git://github.com/loren/truncator.git', :branch => 'missing_param_value'
+gem 'truncator'
 gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 
