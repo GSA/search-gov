@@ -131,26 +131,4 @@ describe Sites::BoostedContentsController do
     end
   end
 
-  describe '#bulk_upload' do
-    it_should_behave_like 'restricted to approved user', :post, :update
-
-    context 'when logged in as affiliate' do
-      include_context 'approved user logged in to a site'
-
-      context 'when best bets text data file is not valid' do
-        before do
-          data_file = mock('best bets text data file', to_s: 'file content')
-
-          BoostedContent.should_receive(:bulk_upload).
-              with(site, 'file content').
-              and_return({ error_message: 'some error message' })
-
-          post :bulk_upload, best_bets_text_data_file: data_file
-        end
-
-        it { should set_the_flash.to('some error message').now }
-        it { should render_template(:new_bulk_upload) }
-      end
-    end
-  end
 end

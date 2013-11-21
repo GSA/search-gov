@@ -1,7 +1,6 @@
 class BoostedContent < ActiveRecord::Base
   include ActiveRecordExtension
   include BestBet
-  require 'rexml/document'
 
   cattr_reader :per_page
   @@per_page = 20
@@ -78,16 +77,6 @@ class BoostedContent < ActiveRecord::Base
       end
     end
 
-    def bulk_upload(affiliate, bulk_upload_file)
-      filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
-      return { :success => false, :error_message => "Your filename should have .xml, .csv or .txt extension."} unless filename =~ /\.(xml|csv|txt)$/
-      if filename =~ /xml$/
-        process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
-      else
-        process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
-      end
-    end
-
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
     end
@@ -104,73 +93,6 @@ class BoostedContent < ActiveRecord::Base
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:boosted_content_keywords_attributes], :value)
     touch if update_attributes(params)
-  end
-
-  protected
-
-  def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
-    results = { :created => 0, :updated => 0, :success => false }
-    boosted_contents = []
-    begin
-      doc=REXML::Document.new(xml_file.read)
-      transaction do
-        doc.root.each_element('//entry') do |entry|
-          info = {
-            :url => entry.elements["url"].first.to_s,
-            :title => entry.elements["title"].first.to_s,
-            :description => entry.elements["description"].first.to_s,
-            :affiliate_id => affiliate.id
-          }
-          boosted_contents << import_boosted_content(results, info)
-        end
-      end
-      Sunspot.index(boosted_contents)
-      results[:success] = true
-    rescue
-      results[:error_message] = "Your XML document could not be processed. Please check the format and try again."
-      Rails.logger.warn "Problem processing boosted Content XML document: #{$!}"
-    end
-    results
-  end
-
-  def self.process_boosted_content_csv_upload_for(affiliate, csv_file)
-    boosted_contents = []
-    results = { :created => 0, :updated => 0, :success => false }
-    begin
-      transaction do
-        CSV.parse(csv_file.read, :skip_blanks => true) do |row|
-          info = {
-              :title => row[0],
-              :url => row[1],
-              :description => row[2],
-              :affiliate_id => affiliate.id
-          }
-          boosted_contents << import_boosted_content(results, info)
-        end
-      end
-      Sunspot.index(boosted_contents)
-      results[:success] = true
-    rescue
-      results[:error_message] = "Your CSV document could not be processed. Please check the format and try again."
-      Rails.logger.warn "Problem processing boosted Content CSV document: #{$!}"
-    end
-    results
-  end
-
-  def self.import_boosted_content(results, attributes)
-
-    boosted_content_attributes = attributes.merge({ :status => 'active',
-                                                    :publish_start_on => Date.current })
-    boosted_content = find_or_initialize_by_url(boosted_content_attributes)
-    boosted_content.affiliate_id = attributes[:affiliate_id]
-    if boosted_content.new_record?
-      boosted_content.save!
-      results[:created] += 1
-    else
-      boosted_content.update_attributes!(boosted_content_attributes)
-      results[:updated] += 1
-    end
-    boosted_content
   end
 
   private
