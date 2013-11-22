@@ -18,7 +18,7 @@ module MobileHelper
   def serp_attribution(search_module_tag)
     powered_by = I18n.t :powered_by
     if %w(BWEB IMAG).include? search_module_tag
-      link_to "#{powered_by} Bing", 'http://www.bing.com'
+      "#{powered_by} Bing"
     elsif %w(GWEB GIMAG).include? search_module_tag
       "#{powered_by} Google"
     else
