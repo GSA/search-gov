@@ -187,6 +187,11 @@ describe Affiliate do
       end
     end
 
+    it 'should prefix website with http://' do
+      affiliate.update_attributes!(website: 'usa.gov')
+      affiliate.website.should == 'http://usa.gov'
+    end
+
     it "should set css properties" do
       affiliate.css_property_hash = { font_family: 'Verdana, sans-serif' }
       affiliate.save!

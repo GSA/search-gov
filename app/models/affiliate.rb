@@ -393,7 +393,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def ensure_http_prefix
-    set_http_prefix :favicon_url, :external_css_url
+    set_http_prefix :favicon_url, :external_css_url, :website
   end
 
   def validate_css_property_hash
