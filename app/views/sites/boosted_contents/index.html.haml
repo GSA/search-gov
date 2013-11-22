@@ -4,7 +4,7 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
-      %li= link_to 'Bulk Upload', new_bulk_upload_site_best_bets_texts_path(@site)
+      %li= link_to 'Bulk Upload', new_site_best_bets_texts_bulk_upload_path(@site)
       %li= link_to 'Add Best Bets: Text', new_site_best_bets_text_path(@site)
 
 = render_site_flash_message

@@ -1,5 +1,4 @@
 class Sites::BoostedContentsController < Sites::SetupSiteController
-  include ActionView::Helpers::TextHelper
   before_filter :setup_boosted_content, only: [:edit, :update, :destroy]
 
   def index
@@ -53,24 +52,6 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
                 flash: { success: "You have removed #{@boosted_content.title} from this site." }
   end
 
-  def new_bulk_upload
-  end
-
-  def bulk_upload
-    results = BoostedContent.bulk_upload(@site, bulk_upload_params)
-    if results[:success]
-      messages = []
-      messages << 'Bulk upload is complete.'
-      messages << "You have added #{pluralize(results[:created], 'Best Bets: Text')}."
-      messages << "You have updated #{pluralize(results[:updated], 'Best Bets: Text')}." if results[:updated] > 0
-      redirect_to site_best_bets_texts_path(@site),
-                  flash: { success: "#{messages.join('<br/>')}".html_safe }
-    else
-      flash.now[:error] = results[:error_message]
-      render action: :new_bulk_upload
-    end
-  end
-
   private
 
   def setup_boosted_content
@@ -92,9 +73,5 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
 
   def index_boosted_content
     Sunspot.index @boosted_content
-  end
-
-  def bulk_upload_params
-    params.permit(:best_bets_text_data_file)[:best_bets_text_data_file]
   end
 end

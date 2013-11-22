@@ -58,6 +58,9 @@ UsasearchRails3::Application.routes.draw do
           post :bulk_upload
         end
       end
+
+      resources :best_bets_texts_bulk_upload, controller: 'boosted_contents_bulk_uploads', only: [:new, :create]
+
       resources :collections, controller: 'document_collections' do
         collection { get :new_url_prefix }
       end
