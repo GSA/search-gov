@@ -118,6 +118,8 @@ module NavigationHelpers
       site_best_bets_graphics_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Best Bets Texts page$/
       site_best_bets_texts_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s "([^\"]*)" RSS feed page$/
+      site_rss_feed_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^the (.*)'s Analytics page$/
       new_site_raw_logs_access_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Filter URLs page$/

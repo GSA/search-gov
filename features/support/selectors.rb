@@ -15,7 +15,7 @@ module HtmlSelectorsHelpers
     when /the RSS URLs modal/
       '#urls .modal-body .urls'
     when /the RSS URL last crawl status error message/
-      '#urls .error .last-crawl-status.in'
+      '.urls .error .last-crawl-status.in'
     when /the Supplemental URL last crawl status error message/
       '#indexed-documents .error .last-crawl-status.in'
     when /the Header & Footer form/
