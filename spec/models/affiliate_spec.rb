@@ -138,6 +138,13 @@ describe Affiliate do
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
         expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:purple\}/)
       end
+
+      it 'should set Keen scoped key' do
+        KeenScopedKey.stub(:generate).and_return '65e233adc8a9f...'
+        affiliate = Affiliate.create! @valid_attributes
+        affiliate.keen_scoped_key.should == '65e233adc8a9f...'
+     end
+
     end
   end
 
