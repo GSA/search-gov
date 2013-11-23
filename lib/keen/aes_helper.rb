@@ -19,10 +19,6 @@ module Keen
       msg.unpack('H*')[0]
     end
 
-    def unhexlify(msg)
-      [msg].pack('H*')
-    end
-
     def pad(msg)
       pad_len = BLOCK_SIZE - (msg.length % BLOCK_SIZE)
       padding = pad_len.chr * pad_len
