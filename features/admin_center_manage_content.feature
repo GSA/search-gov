@@ -371,7 +371,6 @@ Feature: Manage Content
     Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the RSS URLs modal
 
     When I go to the agency.gov's "Images" RSS feed page
-    Then show me the page
     And I follow "Error"
     Then I should find "404 Not Found" in the RSS URL last crawl status error message
 
