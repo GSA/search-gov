@@ -107,7 +107,8 @@ class Affiliate < ActiveRecord::Base
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
   before_save :strip_text_columns, :ensure_http_prefix
-  before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels, :set_keen_scoped_key
+  before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
+  before_create :set_keen_scoped_key
   before_update :clear_existing_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
