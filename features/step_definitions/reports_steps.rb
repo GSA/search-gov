@@ -57,8 +57,9 @@ Given /^I select "([^\"]*)" as the report date$/ do |date_string|
   select date.strftime('%B'), :from => "date[month]"
 end
 
-Then /^I should see a total for "([^"]*)" with a total of "([^"]*)" per day$/ do |affiliate, per_day|
-  total = Date.yesterday.day * per_day.to_i
-  page.body.should match("#{affiliate}: #{total}")
+Then /^I should see a total for "([^"]*)" with a total of "([^"]*)"( per day)?$/ do |affiliate, total, daily|
+  total = daily ? Date.yesterday.day * total.to_i : total.to_i
+  text = %r[#{Regexp.escape(affiliate)} \(\d+\): #{total}]
+  page.should have_xpath('//*', text: text)
 end
 

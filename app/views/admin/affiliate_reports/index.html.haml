@@ -12,5 +12,9 @@
   %h3= "Total Queries by Affiliate for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
   .usage_stats
     %ul
-      - @affiliate_total_queries.each do |affiliate, total_queries|
-        %li= "#{affiliate}: #{total_queries}"
+      - @affiliate_total_queries.each do |affiliate_data, total_queries|
+        %li
+          = link_to_if affiliate_data[1].present?, "#{affiliate_data[0]} (#{affiliate_data[1]})", site_path(affiliate_data[1].to_s) do
+            = affiliate_data[0]
+          \:
+          #{total_queries}

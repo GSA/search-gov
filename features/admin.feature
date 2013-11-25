@@ -144,8 +144,8 @@ Feature:  Administration
       | 200           | agency2.gov |
     When I select "April 2012" as the report date
     And I press "Submit"
-    Then I should see "agency.gov: 3000"
-    And I should see "agency2.gov: 6000"
+    Then I should see a total for "agency.gov" with a total of "3000"
+    Then I should see a total for "agency2.gov" with a total of "6000"
 
   Scenario: Comparing Search Results
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
