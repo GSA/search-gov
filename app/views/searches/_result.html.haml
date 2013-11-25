@@ -5,7 +5,7 @@
     %h2
       = display_web_result_extname_prefix(result)
       = display_web_result_title(result, search, affiliate, index, @search_vertical)
-    %h3.result-url= Truncator::UrlParser.shorten_url(result['unescapedUrl'])
+    %h3.result-url= truncate_url(result['unescapedUrl'])
     - if result["publishedAt"]
       %h4= time_ago_in_words(result["publishedAt"])
     %h3= display_result_description(result, search.query, affiliate)

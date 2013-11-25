@@ -29,7 +29,7 @@ module SearchHelper
   end
 
   def tracked_click_thumbnail_link(result, onmousedown_attr)
-    link = URI.parse(result["Url"]).host rescue Truncator::UrlParser.shorten_url(result["Url"])
+    link = URI.parse(result["Url"]).host rescue truncate_url(result["Url"])
     link_to link, result["Url"], :onmousedown => onmousedown_attr, :rel => "no-follow", class: 'host-link'
   end
 

@@ -1,5 +1,5 @@
 .content-block-item.result{ class: "boosted-content-#{index + 1}" }
   - boosted_content_url = hit.instance.url
   %h3= boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, search.affiliate, search.query, index, @search_vertical, hit.instance.id)
-  %span.url= Truncator::UrlParser.shorten_url(boosted_content_url)
+  %span.url= truncate_url(boosted_content_url)
   %span.description= highlight_hit(hit, :description).html_safe
