@@ -21,7 +21,7 @@ Capybara.default_wait_time = 10
 
 require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new app, port: 8899, js_errors: false
+  Capybara::Poltergeist::Driver.new app, port: 8888, js_errors: false
 end
 Capybara.javascript_driver = :poltergeist
 
