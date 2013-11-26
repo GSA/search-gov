@@ -2,12 +2,16 @@
   .content-block();
 
   .content-provider {
+    color: #505050;
     font-size: 12px;
     margin: 5px 0;
-    &, a {
-      color: #505050;
-      font-family: 'Arial';
-      font-size: 12px;
+    .bing {
+      background: asset-data-url('searches/bing_logo.png') right no-repeat;
+      height: 19px;
+      span {
+        font-family: 'Arial';
+        padding-right: 58px;
+      }
     }
   }
 

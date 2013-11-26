@@ -8,13 +8,13 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
-    Then I should see "Powered by Bing"
+    Then I should see Powered by Bing logo
     And I should see at least "2" web search results
 
     When I am on es.agency.gov's mobile search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see "Accionado por Bing"
+    Then I should see Accionado por Bing logo
     And I should see at least "2" web search results
 
   Scenario: News search
@@ -58,11 +58,11 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "USA.gov" mobile site search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
-    Then I should see "Powered by Bing"
+    Then I should see Powered by Bing logo
     And I should see at least "10" web search results
 
     When I am on es.agency.gov's "GobiernoUSA.gov" mobile site search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see "Accionado por Bing"
+    Then I should see Accionado por Bing logo
     And I should see at least "10" web search results

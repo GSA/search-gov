@@ -22,3 +22,7 @@ Given /^the following Agency Urls exist:$/ do |table|
     agency.agency_urls.create!(:locale => hash[:locale], :url => hash[:url])
   end
 end
+
+Then(/^I should see (Powered by|Accionado por) Bing logo$/) do |text|
+  page.should have_selector '.content-provider .bing', text: text
+end
