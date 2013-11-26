@@ -12,3 +12,9 @@ Then(/^the preview iframe should contain "(.*?)"$/) do |text|
     page.should have_content text
   end
 end
+
+Then(/^the preview iframe should contain Powered by Bing logo$/) do
+  page.within_frame('preview-frame') do
+    page.should have_selector '.content-provider .bing'
+  end
+end

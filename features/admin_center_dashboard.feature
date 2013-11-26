@@ -151,7 +151,7 @@ Feature: Dashboard
     When I follow "View Current"
     Then the preview iframe should contain "live header text"
     When I follow "View Current Mobile"
-    Then the preview iframe should contain "Powered by Bing"
+    Then the preview iframe should contain Powered by Bing logo
 
   @javascript
   Scenario: Adding a new site
