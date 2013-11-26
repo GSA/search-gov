@@ -1,5 +1,5 @@
 - if @search.results.present?
-  #search.hide-on-sayt-open{ search_data(@search, @search_vertical) }
+  #search{ search_data(@search, @search_vertical) }
     = render partial: 'news_results', locals: { search: @search }
     = render partial: 'pagination', locals: { results: @search.results }
 

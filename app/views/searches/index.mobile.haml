@@ -1,5 +1,5 @@
 - if @search.results.present?
-  #search.hide-on-sayt-open{ search_data(@search, @search_vertical) }
+  #search{ search_data(@search, @search_vertical) }
     = render(partial: 'best_bets', locals: { search: @search }) if @search.has_boosted_contents?
     = render partial: 'organic_results', locals: { search: @search }
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?

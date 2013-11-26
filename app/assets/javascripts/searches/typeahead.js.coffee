@@ -1,15 +1,42 @@
 queryFieldSelector = '#search-bar #query.typeahead-enabled'
 
-whenFocusOnQuery = () ->
-  $('.hide-on-sayt-open').hide()
+showSearchButton = () ->
+  $('#clear-button').fadeOut()
+  $('#search-button').fadeIn()
 
-$(document).on 'focusin', queryFieldSelector, whenFocusOnQuery
-$(document).on 'typeahead:opened', queryFieldSelector, whenFocusOnQuery
+showClearButton = () ->
+  $('#search-button').fadeOut()
+  $('#clear-button').fadeIn()
+
+clearQuery = (e) ->
+  e.preventDefault()
+  e.stopPropagation()
+  $queryFieldSelector = $(queryFieldSelector)
+  $queryFieldSelector.typeahead 'setQuery', ''
+  showSearchButton()
+  $queryFieldSelector.focus()
+
+$(document).on 'click', '#clear-button', clearQuery
 
 showCurrentResults = () ->
-  $('.hide-on-sayt-open').show()
+  showSearchButton()
+  $this = $(this)
+  $this.fadeOut().off 'click'
 
-$(document).on 'typeahead:closed', queryFieldSelector, showCurrentResults
+whenFocusOnQuery = (e) ->
+  $backdrop = $('#typeahead-backdrop')
+
+  unless $backdrop.hasClass 'shown'
+    $backdrop.addClass('shown').fadeIn().on 'click', showCurrentResults
+
+  if e.currentTarget.value.length > 0
+    showClearButton()
+  else
+    showSearchButton()
+
+$(document).on 'keyup', queryFieldSelector, whenFocusOnQuery
+$(document).on 'typeahead:opened', queryFieldSelector, whenFocusOnQuery
+
 
 whenSelected = () ->
   $('#search-bar').submit()

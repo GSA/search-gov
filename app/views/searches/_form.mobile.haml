@@ -18,3 +18,7 @@
   = button_tag class: 'btn', type: 'submit', id: 'search-button' do
     %span.sr-only= t(:search)
     %span.glyphicon.glyphicon-search
+  = button_tag class: 'btn', type: 'button', id: 'clear-button' do
+    %span.sr-only= t(:clear)
+    %span.glyphicon.glyphicon-remove
+  = submit_tag nil, id: 'submit-button'
