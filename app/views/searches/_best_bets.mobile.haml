@@ -6,4 +6,4 @@
         = t(:by)
         = search.affiliate.display_name
   - search.boosted_contents.hits(verify: true).each_with_index do |hit, index|
-    = render partial: 'boosted_content', locals: { search: search, hit: hit, index: index }
+    = render partial: 'boosted_content', locals: { hit: hit, index: index }

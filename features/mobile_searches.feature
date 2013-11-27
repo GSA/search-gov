@@ -5,11 +5,20 @@ Feature: Searches using mobile device
       | display_name | name          | contact_email    | contact_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
       | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+    And the following Boosted Content entries exist for the affiliate "en.agency.gov"
+      | url                                                             | title                  | description                             |
+      | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |
+    And the following SAYT Suggestions exist for en.agency.gov:
+      | phrase                 |
+      | president list         |
+      | president inauguration |
     When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see Powered by Bing logo
+    And I should see 1 Best Bets Text
     And I should see at least "2" web search results
+    And I should see 2 related searches
 
     When I am on es.agency.gov's mobile search page
     And I fill in "Ingrese su búsqueda" with "gobierno"

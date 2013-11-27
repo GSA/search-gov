@@ -2,4 +2,4 @@
   .content-block-item
     .content-provider= serp_attribution search.module_tag
   - @search.hits.each_with_index do |hit, index|
-    = render partial: 'news_result', locals: { search: search, hit: hit, index: index }
+    = render partial: 'news_result', locals: { hit: hit, position: search.startrecord + index }

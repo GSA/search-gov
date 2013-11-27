@@ -175,10 +175,10 @@ Feature: Affiliate Search
     And I press "Buscar" in the search box
     Then I should see the browser page titled "obama - Spanish bar site resultados de la búsqueda"
     And I should see "Todo"
-    And I should not see "Everything"
+    And I should not see "Everything" in the left column
     And I should see "Imágenes"
     And I should see "Spanish Videos"
-    And I should not see "Images"
+    And I should not see "Images" in the left column
     And I should not see "Search this site"
     And I should not see "Mostrar opciones" in the left column
     And I should not see "Ocultar opciones" in the left column
