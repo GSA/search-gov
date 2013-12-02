@@ -6,6 +6,6 @@ module TextHelper
   end
 
   def truncate_url(url, truncation_length = DEFAULT_URL_TRUNCATION_LENGTH)
-    Truncator::UrlParser.shorten_url(url, truncation_length)
+    Truncator::UrlParser.shorten_url(url, truncation_length) if url.present?
   end
 end
