@@ -7,8 +7,6 @@ Encoding.default_internal = Encoding::UTF_8
 # Initialize the rails application
 UsasearchRails3::Application.initialize!
 
-APP_EMAIL_ADDRESS = "***REMOVED***"
-
 AWS_ACCESS_KEY_ID = "***REMOVED***"
 AWS_SECRET_ACCESS_KEY = "***REMOVED***"
 AWS_BUCKET_NAME = "***REMOVED***"

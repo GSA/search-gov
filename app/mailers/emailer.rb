@@ -1,9 +1,13 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
-  DEVELOPERS_EMAIL = "usasearchoutbound@mail.usasearch.howto.gov"
+  BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
+  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@mail.usasearch.howto.gov'.freeze
+  REPLY_TO_EMAIL_ADDRESS = 'USASearch@gsa.gov'.freeze
 
-  self.default bcc: DEVELOPERS_EMAIL
+  self.default bcc: BCC_TO_EMAIL_ADDRESS,
+               from: DELIVER_FROM_EMAIL_ADDRESS,
+               reply_to: REPLY_TO_EMAIL_ADDRESS
 
   def password_reset_instructions(user, host_with_port)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token, :protocol => 'https', :host => host_with_port)
@@ -124,7 +128,6 @@ class Emailer < ActionMailer::Base
   private
 
   def setup_email(recipients, method_name)
-    @from = APP_EMAIL_ADDRESS
     @sent_on = Time.now
     headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
     email_template = EmailTemplate.find_by_name(method_name)
@@ -133,7 +136,7 @@ class Emailer < ActionMailer::Base
       @email_template_subject = email_template.subject
       @email_template_body = email_template.body
     else
-      @recipients = DEVELOPERS_EMAIL
+      @recipients = BCC_TO_EMAIL_ADDRESS
       @email_template_subject = '[USASearch] Missing Email template'
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
@@ -141,7 +144,7 @@ class Emailer < ActionMailer::Base
   end
 
   def send_mail(format_method)
-    mail(to: @recipients, subject: @subject, from: @from, date: @sent_on) do |format|
+    mail(to: @recipients, subject: @subject, date: @sent_on) do |format|
       format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end

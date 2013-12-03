@@ -16,7 +16,9 @@ describe Emailer do
     subject(:email) { Emailer.feature_admonishment(user, user.affiliates).deliver }
 
     it { should deliver_to(user.email) }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
+    it { should deliver_from(Emailer::DELIVER_FROM_EMAIL_ADDRESS) }
+    it { should reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { should have_subject(/Getting started with USASearch/) }
 
     it 'should contain lists of unadopted features for each affiliate that has any' do
@@ -36,7 +38,7 @@ describe Emailer do
     subject(:email) { Emailer.new_feature_adoption_to_admin.deliver }
 
     it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
@@ -85,7 +87,7 @@ describe Emailer do
     subject { Emailer.new_user_email_verification(user).deliver }
 
     it { should deliver_to('admin@agency.gov') }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/Verify your email/) }
     it { should have_body_text(/http:\/\/localhost:3000\/email_verification\/some_special_token/) }
   end
@@ -104,7 +106,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+      it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
       it { should have_subject(/New user sign up/) }
       it { should have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
@@ -122,7 +124,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+      it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
       it { should have_subject(/New user sign up/) }
       it { should_not have_body_text /This user signed up as an affiliate/ }
     end
@@ -141,7 +143,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+      it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
       it { should have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
 
@@ -159,7 +161,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+      it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
       it { should_not have_body_text /This user was added to affiliate/ }
     end
   end
@@ -178,7 +180,7 @@ describe Emailer do
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
     it { should deliver_to("invitee@agency.com") }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/Welcome to USASearch/) }
     it { should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
@@ -256,7 +258,7 @@ describe Emailer do
     subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
 
     it { should deliver_to(user.email) }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/April 2012/) }
 
     it "should calculate the proper totals for the data in the database" do
@@ -287,7 +289,7 @@ describe Emailer do
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
 
     it { should deliver_to(user.email) }
-    it { should bcc_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/2012 Year in Review/) }
 
     it "should calculate the proper totals for the data in the database" do
@@ -309,7 +311,7 @@ describe Emailer do
 
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
-    it { should deliver_to(Emailer::DEVELOPERS_EMAIL) }
+    it { should deliver_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject('[USASearch] Missing Email template') }
     it { should have_body_text(/Someone tried to send an email via the welcome_to_new_user_added_by_affiliate method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 
