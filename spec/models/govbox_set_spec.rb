@@ -15,7 +15,8 @@ describe GovboxSet do
     end
 
     it 'should assign featured collections' do
-      FeaturedCollection.stub!(:search_for).with('foo', affiliate).and_return "FeaturedCollection results"
+      affiliate.locale = 'en'
+      ElasticFeaturedCollection.stub!(:search_for).with(q:'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection results"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.featured_collections.should == "FeaturedCollection results"
     end

@@ -1089,6 +1089,7 @@ Feature: Affiliate Search
       | title                 | url                                          |
       | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
       | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
+    And all featured collections are indexed
     When I am on agency.gov's search page
     And I fill in "query" with "warnings for a tornado"
     And I press "Search" in the search box

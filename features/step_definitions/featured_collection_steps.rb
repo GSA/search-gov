@@ -70,7 +70,7 @@ Given /^the following featured collection links exist for featured collection ti
 end
 
 Given /^all featured collections are indexed$/ do
-  FeaturedCollection.reindex
+  ElasticFeaturedCollection.commit
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)" on the (left|right) featured collection link list$/ do |link_title, url, position|

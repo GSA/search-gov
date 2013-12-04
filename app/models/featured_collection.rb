@@ -6,7 +6,6 @@ class FeaturedCollection < ActiveRecord::Base
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   LAYOUTS = ['one column', 'two column']
   LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout] }
-  LINK_TITLE_SEPARATOR = "!!!sep!!!"
 
   cattr_reader :per_page
   @@per_page = 20
@@ -29,7 +28,7 @@ class FeaturedCollection < ActiveRecord::Base
                     :ssl => true
 
   after_validation :update_errors_keys
-  before_save :ensure_http_prefix
+  before_save :ensure_http_prefix, :sanitize_html_in_title
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
@@ -55,54 +54,6 @@ class FeaturedCollection < ActiveRecord::Base
       :publish_start_on => "Publish start date",
   }
 
-  searchable do
-    integer :affiliate_id
-    string :status
-    date :publish_start_on
-    date :publish_end_on
-    text :title, :stored => true, :boost => 10.0 do
-      CGI::escapeHTML title
-    end
-    text :link_titles, :stored => true, :boost => 4.0 do
-      featured_collection_links.map { |link| CGI::escapeHTML link.title }.join(LINK_TITLE_SEPARATOR)
-    end
-    text :keyword_values do
-      featured_collection_keywords.map { |keyword| keyword.value }
-    end
-  end
-
-  class << self
-    include QueryPreprocessor
-
-    def search_for(query, affiliate)
-      sanitized_query = preprocess(query)
-      return nil if sanitized_query.blank?
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate.name }) do
-        begin
-          search do
-            with :affiliate_id, affiliate.id
-            with :status, "active"
-            any_of do
-              with(:publish_start_on).less_than(Time.current)
-            end
-            any_of do
-              with(:publish_end_on).greater_than(Time.current)
-              with :publish_end_on, nil
-            end
-            keywords sanitized_query do
-              highlight :title, :link_titles, :frag_list_builder => 'single'
-            end
-            paginate :page => 1, :per_page => 1
-          end
-        rescue RSolr::Error::Http => e
-          Rails.logger.warn "Error FeaturedCollection#search_for: #{e.to_s}"
-          nil
-        end
-      end
-    end
-
-  end
-
   def self.human_attribute_name(attribute_key_name, options = {})
     HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
   end
@@ -117,6 +68,10 @@ class FeaturedCollection < ActiveRecord::Base
 
   def ensure_http_prefix
     set_http_prefix :title_url, :image_attribution_url
+  end
+
+  def sanitize_html_in_title
+    self.title = Sanitize.clean(self.title)
   end
 
   def check_image_validation
