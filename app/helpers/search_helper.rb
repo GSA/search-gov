@@ -129,12 +129,12 @@ module SearchHelper
   end
 
   def display_result_description(result, query = nil, affiliate = nil)
-    translate_bing_highlights(truncate_html(h(result['content']), length: 150, separator: ' ', :omission => ' ...'),
-                              excluded_highlight_terms(affiliate, query)).html_safe
+    truncate_html(translate_bing_highlights(h(result['content']),
+                                            excluded_highlight_terms(affiliate, query)))
   end
 
   def news_description(hit)
-    truncate_html(highlight_hit(hit, :description), length: 150).sub(/^([^A-Z<])/,'...\1').html_safe
+    truncate_html(highlight_hit(hit, :description)).sub(/^([^A-Z<])/,'...\1').html_safe
   end
 
   def translate_bing_highlights(body, excluded_terms = [])

@@ -285,7 +285,7 @@ describe SearchHelper do
       search = {'content' => description}
       result = helper.display_result_description(search)
       result.should be_html_safe
-      result.should == "<strong>loren</strong> &amp; david&#x27;s excellent™ html &quot;examples&quot; on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david&#x27;s ..."
+      result.should == "<strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david's excellent™ html \"examples\" on the ..."
     end
 
     it 'should truncate long description' do
@@ -295,8 +295,8 @@ Chuck, thank you for your words and your friendship and your life of service.
 Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
       DESCRIPTION
       truncated_description = helper.display_result_description({'content' => description})
-      truncated_description.should =~ /words \.\.\.$/
-      truncated_description.length.should <= 255
+      truncated_description.should =~ /and \.\.\.$/
+      truncated_description.length.should <= 153
     end
   end
 
