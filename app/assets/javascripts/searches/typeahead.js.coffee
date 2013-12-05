@@ -21,7 +21,7 @@ $(document).on 'click', '#clear-button', clearQuery
 showCurrentResults = () ->
   showSearchButton()
   $this = $(this)
-  $this.fadeOut().off 'click'
+  $this.removeClass('shown').fadeOut().off 'click'
 
 whenFocusOnQuery = (e) ->
   $backdrop = $('#typeahead-backdrop')
