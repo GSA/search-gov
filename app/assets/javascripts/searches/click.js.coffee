@@ -9,9 +9,8 @@ trackClick = (e) ->
 
 $(document).on 'click', '#search .result a, #search #related-searches a', trackClick
 
-visitLink = ($link) ->
-  href = $link.attr 'href'
-  window.location.href = href
+visitLink = (link) ->
+  window.location.href = link.href if link?
 
 onResultClick = (e) ->
   $target = $(e.target)
@@ -21,8 +20,7 @@ onResultClick = (e) ->
   else
     $result = $target.parents('.result')
 
-  $link = $result.find('a')
-  $link.trigger 'click'
-  visitLink $link
+  $link = $result.find('h3 a').trigger('click')
+  visitLink $link[0]
 
 $(document).on 'click', '#search .result', onResultClick

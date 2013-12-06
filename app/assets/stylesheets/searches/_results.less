@@ -38,6 +38,114 @@
   .pull-left();
 }
 
+#best-bets {
+  .content-trigger {
+    padding: 0;
+  }
+
+  .show-less, .show-more {
+    color: @icon-color;
+    cursor: pointer;
+    display: block;
+    padding: 5px 12px 8px;
+    text-decoration: none;
+
+    .glyphicon {
+      top: 2px;
+    }
+  }
+
+  #best-bet-3, #best-bet-4, .show-less {
+    display: block;
+  }
+  .show-more {
+    display: none;
+  }
+
+  @media (min-width: @screen-md) {
+    .content-trigger {
+      display: none;
+    }
+  }
+
+  &.collapsed {
+    #best-bet-3, #best-bet-4, .show-less {
+      display: none;
+    }
+
+    .show-more {
+      display: block;
+    }
+
+    @media (max-width: @screen-sm-max) {
+      .featured-collection ul {
+        max-height: 4.75em;
+      }
+    }
+    @media (min-width: @screen-md) {
+      #best-bet-3, #best-bet-4 {
+        display: block;
+      }
+    }
+  }
+}
+
+#best-bets .featured-collection {
+  h3 {
+    .text-overflow();
+  }
+
+  .image-and-title {
+    .clearfix();
+    margin-bottom: 8px;
+  }
+
+  .image {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    width: 60px;
+
+    img {
+      .img-responsive();
+    }
+
+    @media (min-width: @screen-sm) { width: 100px; }
+    @media (min-width: @screen-md) { width: 125px; }
+  }
+
+  ul {
+    .list-unstyled();
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0;
+
+    > li {
+      .text-overflow();
+      line-height: 1.2em;
+    }
+
+    @media (min-width: @screen-md) {
+      &.two-column {
+        .list-inline();
+
+        > li {
+          padding-left: 0;
+          width: 49%;
+        }
+      }
+    }
+  }
+
+  &.has-image {
+    h3 {
+      margin-left: 70px;
+      @media (min-width: @screen-sm) { margin-left: 110px; }
+      @media (min-width: @screen-md) { margin-left: 135px; }
+    }
+  }
+}
+
 #related-searches {
   .content-block();
   ul {
@@ -45,11 +153,7 @@
   }
 }
 
-#search {
-  a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
-  }
-}
+#search a { .tap-highlight(); }
 
 .pagination {
   .content-block();
@@ -76,6 +180,9 @@
     padding: 8px 6px 8px 12px;
   }
 
+  .glyphicon {
+    top: 2px;
+  }
   .glyphicon-chevron-left {
     margin-right: 8px;
   }

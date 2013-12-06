@@ -1,4 +1,4 @@
-#best-bets
+#best-bets.collapsed
   .content-block-item
     .content-provider
       = t(:recommended)
@@ -6,4 +6,17 @@
         = t(:by)
         = search.affiliate.display_name
   - search.boosted_contents.hits(verify: true).each_with_index do |hit, index|
-    = render partial: 'boosted_content', locals: { hit: hit, index: index }
+    = render partial: 'boosted_content', locals: { hit: hit, position: index + 1 }
+
+  - has_hidden_links = false
+  - search.featured_collections.hits(verify: true).each_with_index do |hit, index|
+    - has_hidden_links = true if hit.instance.featured_collection_links.count > 4
+    = render partial: 'featured_collection', locals: { hit: hit, position: search.boosted_contents_count + index + 1 }
+  - if search.boosted_contents_count > 2 or has_hidden_links
+    .content-block-item.content-trigger
+      .show-more
+        = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
+        Show More
+      .show-less
+        = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-up')
+        Show Less

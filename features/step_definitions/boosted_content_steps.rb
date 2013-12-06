@@ -35,7 +35,7 @@ When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do
 end
 
 Then /^I should see (\d+) Best Bets Texts?$/ do |count|
-  page.should have_selector("#best-bets .boosted-content-#{count}")
+  page.should have_selector('#best-bets .boosted-content', count: count)
 end
 
 And /^I should see boosted content keyword "([^\"]*)"$/ do |keyword|

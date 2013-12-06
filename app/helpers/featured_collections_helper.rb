@@ -54,4 +54,32 @@ module FeaturedCollectionsHelper
     end
   end
 
+  def featured_collection_class_hash(fc)
+    classes = %w(featured-collection)
+    (classes << 'has-image') if fc.image_file_name.present?
+    { class: classes.join(' ') }
+  end
+
+  def featured_collection_image(fc)
+    begin
+      if fc.image_file_name.present?
+        content = image_tag(fc.image.url(:medium), alt: fc.image_alt_text)
+        content_tag(:div, content, class: 'image')
+      end
+    rescue => e
+      Rails.logger.warn e
+      nil
+    end
+  end
+
+  def featured_collection_link_titles(hit)
+    if hit.highlights(:link_titles).present?
+      highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR).map do |title|
+        title.html_safe
+      end
+    else
+      hit.instance.featured_collection_links.map { |link| h(link.title) }
+    end
+  end
+
 end
