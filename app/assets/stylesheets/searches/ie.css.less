@@ -1,28 +1,7 @@
-#search-bar {
-  #clear-button, #search-button {
-    border-width: 0;
-    padding: 0;
-  }
-  #clear-button {
-    top: 8px;
-    right: 5px;
-  }
-  #search-button {
-    top: 5px;
-    right: 8px;
-  }
-}
+@import "searches/custom_bootstrap/_sprites.less";
 
-.glyphicon.glyphicon-search {
-  &:before { content: asset-url('searches/glyphicons_search.png'); }
-  height: 24px;
-  width: 24px;
-}
-
-.glyphicon.glyphicon-remove {
-  &:before { content: asset-url('searches/glyphicons_remove.png'); }
-  height: 24px;
-  width: 24px;
+#search-bar #search-button {
+  font: ~"0/0" a;
 }
 
 .pagination {
@@ -37,16 +16,14 @@
   }
 }
 
-.glyphicon.glyphicon-chevron-left {
-  &:before { content: asset-url('searches/glyphicons_chevron_left.png'); }
-  top: 5px;
+.glyphicon {
+  &:before { content: none }
+  .icon();
+  margin-top: -1px;
 }
 
-.glyphicon.glyphicon-chevron-right {
-  &:before { content: asset-url('searches/glyphicons_chevron_right.png'); }
-  top: 5px;
-}
+.glyphicon-chevron-down  { .icon-chevron-down(); }
+.glyphicon-chevron-left  { .icon-chevron-left(); }
+.glyphicon-chevron-right { .icon-chevron-right(); }
+.glyphicon-chevron-up    { .icon-chevron-up(); }
 
-.glyphicon.glyphicon-chevron-down, .glyphicon.glyphicon-chevron-up {
-  display: none;
-}

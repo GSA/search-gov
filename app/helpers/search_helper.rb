@@ -379,4 +379,8 @@ module SearchHelper
   def hidden_field_tag_if_key_exists(param_sym)
     hidden_field_tag param_sym, params[param_sym] if params[param_sym]
   end
+
+  def search_bar_class(search)
+    'has-query-term' if search.query.present?
+  end
 end

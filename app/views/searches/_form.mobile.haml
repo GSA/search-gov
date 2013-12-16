@@ -1,4 +1,4 @@
-= form_tag request.path, method: :get, id: 'search-bar' do
+= form_tag request.path, method: :get, id: 'search-bar', class: search_bar_class(search) do
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :affiliate, search.affiliate.name
   = hidden_field_tag_if_key_exists :sitelimit
@@ -15,10 +15,6 @@
   = label_tag :query, t(:search_label), class: 'sr-only'
   = text_field_tag :query, search.query, spellcheck: 'off', type: 'search',
     class: typeahead_query_class(search.affiliate)
-  = button_tag class: 'btn', type: 'submit', id: 'search-button' do
-    %span.sr-only= t(:search)
-    %span.glyphicon.glyphicon-search
-  = button_tag class: 'btn', type: 'button', id: 'clear-button' do
-    %span.sr-only= t(:clear)
-    %span.glyphicon.glyphicon-remove
-  = submit_tag nil, id: 'submit-button'
+  #clear-button
+    %span= t(:clear)
+  = submit_tag t(:search), id: 'search-button'
