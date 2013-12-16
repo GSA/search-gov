@@ -8,12 +8,13 @@
   - search.boosted_contents.hits(verify: true).each_with_index do |hit, index|
     = render partial: 'boosted_content', locals: { hit: hit, position: index + 1 }
 
-  - has_hidden_links = false
+  - fc_content_trigger_class_hash = {}
   - search.featured_collections.hits(verify: true).each_with_index do |hit, index|
-    - has_hidden_links = true if hit.instance.featured_collection_links.count > 4
+    - fc_content_trigger_class_hash = featured_collection_content_trigger_class_hash(search.best_bets_count, hit.instance)
     = render partial: 'featured_collection', locals: { hit: hit, position: search.boosted_contents_count + index + 1 }
-  - if search.boosted_contents_count > 2 or has_hidden_links
-    .content-block-item.content-trigger
+
+  - if search.boosted_contents_count > 2 or fc_content_trigger_class_hash.present?
+    .content-block-item.content-trigger{ fc_content_trigger_class_hash }
       .show-more
         = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
         Show More

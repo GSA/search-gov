@@ -39,10 +39,6 @@
 }
 
 #best-bets {
-  .content-trigger {
-    padding: 0;
-  }
-
   .show-less, .show-more {
     color: @icon-color;
     cursor: pointer;
@@ -55,35 +51,37 @@
     }
   }
 
-  #best-bet-3, #best-bet-4, .show-less {
+  .boosted-content, .featured-collection, .show-less {
     display: block;
   }
+
   .show-more {
     display: none;
   }
 
-  @media (min-width: @screen-md) {
-    .content-trigger {
-      display: none;
-    }
-  }
-
   &.collapsed {
-    #best-bet-3, #best-bet-4, .show-less {
+    .boosted-content, .featured-collection, .show-less {
       display: none;
     }
 
-    .show-more {
+    #best-bet-1, #best-bet-2, .show-more {
       display: block;
     }
 
-    @media (max-width: @screen-sm-max) {
-      .featured-collection ul {
-        max-height: 4.75em;
-      }
+    .featured-collection ul {
+      max-height: 4.75em;
     }
+  }
+
+  .content-trigger {
+    padding: 0;
+
     @media (min-width: @screen-md) {
-      #best-bet-3, #best-bet-4 {
+      &.two-column-hide-trigger {
+        display: none;
+      }
+
+      &.has-collapsed-featured-collection {
         display: block;
       }
     }
@@ -110,7 +108,7 @@
       .img-responsive();
     }
 
-    @media (min-width: @screen-sm) { width: 100px; }
+    @media (min-width: @screen-sm) { width: 90px; }
     @media (min-width: @screen-md) { width: 125px; }
   }
 
@@ -123,6 +121,7 @@
     > li {
       .text-overflow();
       line-height: 1.2em;
+      vertical-align: top;
     }
 
     @media (min-width: @screen-md) {
@@ -130,6 +129,8 @@
         .list-inline();
 
         > li {
+          display: inline;
+          float: left;
           padding-left: 0;
           width: 49%;
         }
@@ -140,7 +141,7 @@
   &.has-image {
     h3 {
       margin-left: 70px;
-      @media (min-width: @screen-sm) { margin-left: 110px; }
+      @media (min-width: @screen-sm) { margin-left: 100px; }
       @media (min-width: @screen-md) { margin-left: 135px; }
     }
   }

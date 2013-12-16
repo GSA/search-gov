@@ -46,8 +46,16 @@ class WebSearch < Search
     boosted_contents and boosted_contents.results.size > 0
   end
 
+  def best_bets_count
+    boosted_contents_count + featured_collections_count
+  end
+
   def boosted_contents_count
     has_boosted_contents? ? boosted_contents.results.size : 0
+  end
+
+  def featured_collections_count
+    has_featured_collections? ? featured_collections.results.size : 0
   end
 
   def has_featured_collections?
