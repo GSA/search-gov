@@ -1,7 +1,9 @@
 Given /^the following featured collections exist for the affiliate "([^"]*)":$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  table.hashes.each do |attrs|
-    publish_start_on = attrs[:publish_start_on]
+  table.hashes.each do |attributes|
+    attrs = attributes.except(* %w(image_file_path keywords publish_end_on publish_start_on))
+
+    publish_start_on = attributes[:publish_start_on]
     if publish_start_on.blank? || publish_start_on == 'today'
       publish_start_on = Date.current
     elsif publish_start_on =~ /^[a-zA-Z_]+$/
@@ -9,7 +11,7 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
     end
     attrs[:publish_start_on] = publish_start_on
 
-    publish_end_on = attrs[:publish_end_on]
+    publish_end_on = attributes[:publish_end_on]
     if publish_end_on == 'today'
       publish_end_on = Date.current
     elsif publish_end_on =~ /^[a-zA-Z_]+$/
@@ -19,16 +21,21 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
 
     attrs[:layout] ||= FeaturedCollection::LAYOUTS[0]
 
-    if attrs[:keywords].present?
+    if attributes[:image_file_path].present?
+      image = File.open "#{Rails.root}/#{attributes[:image_file_path]}"
+      attrs[:image] = image
+    end
+
+    if attributes[:keywords].present?
       index = -1
-      keyword_attributes = attrs[:keywords].split(',').map do |keyword|
+      keyword_attributes = attributes[:keywords].split(',').map do |keyword|
         index += 1
         [index.to_s, { value: keyword }]
       end
       attrs[:featured_collection_keywords_attributes] = Hash[keyword_attributes]
     end
 
-    affiliate.featured_collections.create!(attrs.except('keywords'))
+    affiliate.featured_collections.create!(attrs)
   end
 end
 
@@ -90,4 +97,8 @@ When /^(?:|I )add the following best bets graphics links:$/ do |table|
     find('label', text: "#{link_url_label}")
     fill_in(link_url_label, with: hash[:url])
   end
+end
+
+Then /^I should see (\d+) Best Bets Graphics?$/ do |count|
+  page.should have_selector('#best-bets .featured-collection', count: count)
 end

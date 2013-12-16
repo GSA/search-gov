@@ -1,5 +1,5 @@
-.content-block-item.result{ class: "boosted-content-#{index + 1}" }
+.content-block-item.result{ id: "best-bet-#{position}", class: 'boosted-content', onclick: 'void(0)' }
   - boosted_content_url = hit.instance.url
-  %h3= boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, search.affiliate, search.query, index, @search_vertical, hit.instance.id)
+  %h3= link_to_best_bet_title(hit, boosted_content_url, position, 'BOOS')
   %span.url= truncate_url(boosted_content_url)
-  %span.description= highlight_hit(hit, :description).html_safe
+  %span.description= truncate_html highlight_hit(hit, :description)

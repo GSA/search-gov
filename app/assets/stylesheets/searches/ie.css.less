@@ -1,0 +1,52 @@
+#search-bar {
+  #clear-button, #search-button {
+    border-width: 0;
+    padding: 0;
+  }
+  #clear-button {
+    top: 8px;
+    right: 5px;
+  }
+  #search-button {
+    top: 5px;
+    right: 8px;
+  }
+}
+
+.glyphicon.glyphicon-search {
+  &:before { content: asset-url('searches/glyphicons_search.png'); }
+  height: 24px;
+  width: 24px;
+}
+
+.glyphicon.glyphicon-remove {
+  &:before { content: asset-url('searches/glyphicons_remove.png'); }
+  height: 24px;
+  width: 24px;
+}
+
+.pagination {
+  .previous_page, .current_page, a.next_page {
+    color: #000;
+    font-size: 1em;
+    line-height: 1.5em;
+  }
+
+  .next_page, .previous_page {
+    padding-top: 5px;
+  }
+}
+
+.glyphicon.glyphicon-chevron-left {
+  &:before { content: asset-url('searches/glyphicons_chevron_left.png'); }
+  top: 5px;
+}
+
+.glyphicon.glyphicon-chevron-right {
+  &:before { content: asset-url('searches/glyphicons_chevron_right.png'); }
+  top: 5px;
+}
+
+.glyphicon.glyphicon-chevron-down, .glyphicon.glyphicon-chevron-up {
+  display: none;
+}

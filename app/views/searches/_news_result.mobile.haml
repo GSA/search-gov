@@ -1,8 +1,8 @@
-.content-block-item.result{ id: "result-#{index + 1}" }
+.content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
+  - news_item_url = hit.instance.link
   %h3
-    - module_name = hit.instance.is_video? ? 'VIDS' : 'NEWS'
-    = link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, search.affiliate, search.query, index, module_name, @search_vertical)
-  %span.url= truncate_url(hit.instance.link)
+    = link_to_news_item_title hit, news_item_url, position
+  %span.url= truncate_url(news_item_url)
   %span.description
     = time_ago_in_words(hit.instance.published_at)
     \-

@@ -12,20 +12,23 @@
 
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
     = stylesheet_link_tag 'searches_mobile'
+    /[if IE]
+      = stylesheet_link_tag 'searches_mobile_ie'
     :css
       #{@affiliate.mobile_look_and_feel_css}
+    /[if lt IE 9]
+      = javascript_include_tag 'searches_ie_lt9'
 
   %body
     #main-nav
       %header#header
         .logo= mobile_header @affiliate
       = render partial: 'form', locals: { search: @search }
+    #typeahead-backdrop
 
     = yield
 
     = javascript_include_tag 'searches_mobile'
-    /[if lt IE 9]
-      = javascript_include_tag 'searches_ie_lt9'
 
     = render partial: 'usasearch_serp_analytics'
     = render partial: 'shared/analytics'

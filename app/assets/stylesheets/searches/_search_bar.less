@@ -18,10 +18,23 @@
     border-color: transparent;
     color: #000;
   }
-  #search-button {
+  #clear-button, #search-button {
     position: absolute;
     top: 3px;
     right: 0;
     z-index: 10;
   }
+  #clear-button {
+    display: none;
+  }
+
+  #submit-button {
+    .text-hide();
+  }
+}
+
+#typeahead-backdrop {
+  .modal-backdrop();
+  background-color: @body-bg;
+  display: none;
 }

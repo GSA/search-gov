@@ -122,4 +122,27 @@ describe FeaturedCollectionsHelper do
       end
     end
   end
+
+  describe '#featured_collection_image' do
+    context 'when fc.image raises CloudFiles::Exception::InvalidResponse' do
+      it 'returns nil' do
+        fc = mock_model(FeaturedCollection, image_file_name: 'small.jpg')
+        fc.should_receive(:image).and_raise CloudFiles::Exception::InvalidResponse.new
+        helper.featured_collection_image(fc).should be_nil
+      end
+    end
+  end
+
+  describe '#featured_collection_link_titles' do
+    context 'when link titles are not highlighted' do
+      it 'returns an array link titles' do
+        links = [mock_model(FeaturedCollectionLink, title: 'title1'),
+                       mock_model(FeaturedCollectionLink, title: 'title2')]
+        fc = mock_model(FeaturedCollection, featured_collection_links: links)
+        hit = mock('FeaturedCollection hit', instance: fc)
+        hit.should_receive(:highlights).with(:link_titles).and_return nil
+        helper.featured_collection_link_titles(hit).should == %w(title1 title2)
+      end
+    end
+  end
 end

@@ -49,4 +49,40 @@ module FeaturedCollectionsHelper
     end
   end
 
+  def featured_collection_class_hash(fc)
+    classes = %w(featured-collection)
+    classes << 'has-image' if fc.image_file_name.present?
+    { class: classes }
+  end
+
+  def featured_collection_image(fc)
+    begin
+      if fc.image_file_name.present?
+        content = image_tag(fc.image.url(:medium), alt: fc.image_alt_text)
+        content_tag(:div, content, class: 'image')
+      end
+    rescue => e
+      Rails.logger.warn e
+      nil
+    end
+  end
+
+  def featured_collection_link_titles(hit)
+    if hit.highlights(:link_titles).present?
+      highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR).map do |title|
+        title.html_safe
+      end
+    else
+      hit.instance.featured_collection_links.map { |link| h(link.title) }
+    end
+  end
+
+  def featured_collection_content_trigger_class_hash(best_bets_count, fc)
+    classes = []
+    links_count = fc.featured_collection_links.count
+    classes << 'has-collapsed-featured-collection' if best_bets_count > 2
+    classes << 'one-column-show-trigger' if links_count > 4
+    classes << 'two-column-hide-trigger' if fc.has_two_column_layout? and links_count <= 8
+    classes.present? ? { class: classes } : {}
+  end
 end

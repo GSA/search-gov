@@ -36,6 +36,16 @@ module BootstrapHelper
     content_tag(:td, class: 'cell-1x', id: cell_id) { content }
   end
 
+  def pagination_label(direction)
+    if direction == :next
+      content_tag(:span, I18n.t(:next_label)) <<
+          content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-right')
+    else
+      content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-left') <<
+          content_tag(:span, I18n.t(:prev_label))
+    end
+  end
+
   private
 
   def switch_button(form, name)

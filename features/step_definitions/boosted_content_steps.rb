@@ -34,8 +34,8 @@ When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do
   within(".boosted-content-list table tbody tr.row-item:nth-child(#{pos.to_i + 1})") { click_button(button) }
 end
 
-Then /^I should see (\d+) Boosted Content Entries$/ do |count|
-  page.should have_selector(".boosted-content-list .row-item", :count => count)
+Then /^I should see (\d+) Best Bets Texts?$/ do |count|
+  page.should have_selector('#best-bets .boosted-content', count: count)
 end
 
 And /^I should see boosted content keyword "([^\"]*)"$/ do |keyword|
