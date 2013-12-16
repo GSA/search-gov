@@ -9,9 +9,10 @@
     = render partial: 'boosted_content', locals: { hit: hit, position: index + 1 }
 
   - fc_content_trigger_class_hash = {}
-  - search.featured_collections.hits(verify: true).each_with_index do |hit, index|
-    - fc_content_trigger_class_hash = featured_collection_content_trigger_class_hash(search.best_bets_count, hit.instance)
-    = render partial: 'featured_collection', locals: { hit: hit, position: search.boosted_contents_count + index + 1 }
+  - if search.has_featured_collections?
+    - result = search.featured_collections.results.first
+    - fc_content_trigger_class_hash = featured_collection_content_trigger_class_hash(search.best_bets_count, result)
+    = render partial: 'featured_collection', locals: { result: result, position: search.boosted_contents_count + 1 }
 
   - if search.boosted_contents_count > 2 or fc_content_trigger_class_hash.present?
     .content-block-item.content-trigger{ fc_content_trigger_class_hash }

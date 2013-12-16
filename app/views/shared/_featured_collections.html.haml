@@ -1,12 +1,12 @@
-- if search.featured_collections.total > 0 and search.featured_collections.results.present?
+- if search.has_featured_collections?
   = render_govbox do
     .featured-collections
-      - search.featured_collections.results.each do |result|
-        %div{ :class => "#{featured_collection_css_classes(result)}" }
-          %h2
-            = featured_collection_link_with_click_tracking(result.title.html_safe, result.title_url, @affiliate, search.query, 0, @search_vertical, result.id)
-            %span.recommended-by
-              = t :by_site
-              = @affiliate.display_name
-          = render_featured_collection_image result
-          = render :partial => 'shared/featured_collection_links', :locals => { :search => search, :result => result } if result.featured_collection_links.present?
+      - result = search.featured_collections.results.first
+      %div{ :class => "#{featured_collection_css_classes(result)}" }
+        %h2
+          = featured_collection_link_with_click_tracking(result.title.html_safe, result.title_url, @affiliate, search.query, 0, @search_vertical, result.id)
+          %span.recommended-by
+            = t :by_site
+            = @affiliate.display_name
+        = render_featured_collection_image result
+        = render :partial => 'shared/featured_collection_links', :locals => { :search => search, :result => result } if result.featured_collection_links.present?

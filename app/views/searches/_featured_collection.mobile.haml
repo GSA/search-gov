@@ -1,9 +1,8 @@
-.content-block-item.result{ featured_collection_class_hash(hit.instance), id: "best-bet-#{position}", onclick: 'void(0)' }
+.content-block-item.result{ featured_collection_class_hash(result), id: "best-bet-#{position}", onclick: 'void(0)' }
   .image-and-title
-    = featured_collection_image hit.instance
-    %h3= link_to_best_bet_title(hit, hit.instance.title_url, position, 'BBG')
-  %ul{ class: "#{hit.instance.layout.gsub(' ', '-')}" }
-    - link_titles = featured_collection_link_titles(hit)
-    - hit.instance.featured_collection_links.each_with_index do |link, index|
+    = featured_collection_image result
+    %h3= link_to_featured_collection_title(result.id, result.title, result.title_url, position)
+  %ul{ class: "#{result.layout.gsub(' ', '-')}" }
+    - result.featured_collection_links.each do |link|
       %li
-        = link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[index]
+        = link_to_featured_collection_title result.id, link.title, link.url, position

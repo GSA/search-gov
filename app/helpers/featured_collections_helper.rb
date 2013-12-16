@@ -67,16 +67,6 @@ module FeaturedCollectionsHelper
     end
   end
 
-  def featured_collection_link_titles(hit)
-    if hit.highlights(:link_titles).present?
-      highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR).map do |title|
-        title.html_safe
-      end
-    else
-      hit.instance.featured_collection_links.map { |link| h(link.title) }
-    end
-  end
-
   def featured_collection_content_trigger_class_hash(best_bets_count, fc)
     classes = []
     links_count = fc.featured_collection_links.count

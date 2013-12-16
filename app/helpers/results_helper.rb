@@ -17,6 +17,11 @@ module ResultsHelper
     link_to_if url.present?, title, url, data: { click: click_data }
   end
 
+  def link_to_featured_collection_title(id, title, url, position)
+    click_data = { i: id, p: position, s: 'BBG' }
+    link_to_if url.present?, title.html_safe, url, data: { click: click_data }
+  end
+
   def link_to_web_result_title(search, result, position)
     title = translate_bing_highlights(
         h(result['title']),
