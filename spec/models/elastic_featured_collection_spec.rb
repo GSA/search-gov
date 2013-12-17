@@ -78,6 +78,29 @@ describe ElasticFeaturedCollection do
       end
     end
 
+    context 'when field has HTML entity like an ampersand' do
+      before do
+        featured_collection = affiliate.featured_collections.build(title: 'Peas & Carrots',
+                                                                   status: 'active',
+                                                                   layout: 'one column',
+                                                                   publish_start_on: Date.current)
+        featured_collection.featured_collection_links.build(title: 'highlighting and entities',
+                                                            url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                                            position: '0')
+        featured_collection.save!
+        ElasticFeaturedCollection.commit
+      end
+
+      it 'should escape the entity but show the highlight' do
+        search = ElasticFeaturedCollection.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.locale)
+        first = search.results.first
+        first.title.should == "Peas &amp; <strong>Carrots</strong>"
+        search = ElasticFeaturedCollection.search_for(q: 'entity', affiliate_id: affiliate.id, language: affiliate.locale)
+        first = search.results.first
+        first.title.should == "Peas &amp; Carrots"
+      end
+    end
+
     context 'when highlight is turned off' do
       it 'should not highlight matches' do
         search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale, highlighting: false)
