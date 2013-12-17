@@ -17,7 +17,7 @@
     .content-block-item.content-trigger{ fc_content_trigger_class_hash }
       .show-more
         = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
-        %span.text-hide Show More
+        %span.text-hide= t(:show_more_label)
       .show-less
         = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-up')
-        %span.text-hide Show Less
+        %span.text-hide= t(:show_less_label)
