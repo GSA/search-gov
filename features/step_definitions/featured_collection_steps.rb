@@ -36,6 +36,7 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
     end
 
     affiliate.featured_collections.create!(attrs)
+    ElasticFeaturedCollection.commit
   end
 end
 
@@ -50,6 +51,7 @@ Then /^the following featured collection keywords exist for featured collection 
     featured_collection.featured_collection_keywords.build(:value => hash['value'])
   end
   featured_collection.save!
+  ElasticFeaturedCollection.commit
 end
 
 Then /^I should see a featured collection title with "([^"]*)" highlighted$/ do |highlighted|
@@ -74,9 +76,6 @@ Given /^the following featured collection links exist for featured collection ti
     featured_collection.featured_collection_links.build(:title => hash[:title], :url => hash[:url], :position => hash[:position] || i)
   end
   featured_collection.save!
-end
-
-Given /^all featured collections are indexed$/ do
   ElasticFeaturedCollection.commit
 end
 
