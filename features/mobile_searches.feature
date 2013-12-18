@@ -33,6 +33,7 @@ Feature: Searches using mobile device
     Then I should see Powered by Bing logo
     And I should see 3 Best Bets Texts
     And I should see 1 Best Bets Graphic
+    And I should see "44. Barack Obama The Presidents Photo Galleries 43. George W. Bush"
     And I should see "Show more"
     And I should see "Show less"
     And I should see at least "2" web search results

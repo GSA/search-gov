@@ -1,0 +1,3 @@
+- links = hit.instance.featured_collection_links
+- rearrange_featured_collection_links_indices(links.size).each do |index|
+  %li= link_to_best_bet_title hit, links[index].url, position, 'BBG', title: link_titles[index]

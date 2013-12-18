@@ -4,6 +4,5 @@
     %h3= link_to_best_bet_title(hit, hit.instance.title_url, position, 'BBG')
   %ul{ class: "#{hit.instance.layout.gsub(' ', '-')}" }
     - link_titles = featured_collection_link_titles(hit)
-    - hit.instance.featured_collection_links.each_with_index do |link, index|
-      %li
-        = link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[index]
+    = render partial: "featured_collection_#{hit.instance.layout.gsub(' ', '_')}_links",
+      locals: { hit: hit, position: position, link_titles: link_titles }
