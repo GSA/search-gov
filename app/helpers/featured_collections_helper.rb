@@ -83,10 +83,12 @@ module FeaturedCollectionsHelper
   end
 
   def featured_collection_content_trigger_class_hash(best_bets_count, fc)
-    classes = []
     links_count = fc.featured_collection_links.count
+    return {} if best_bets_count <= 2 and links_count <= 4
+
+    classes = []
     classes << 'has-collapsed-featured-collection' if best_bets_count > 2
-    classes << 'one-column-show-trigger' if links_count > 4
+    classes << 'one-column-hide-trigger' if links_count <= 4
     classes << 'two-column-hide-trigger' if fc.has_two_column_layout? and links_count <= 8
     classes.present? ? { class: classes } : {}
   end
