@@ -70,7 +70,7 @@
     }
 
     .featured-collection ul {
-      max-height: 6.8em;
+      max-height: 10em;
     }
   }
 
@@ -124,13 +124,21 @@
   ul {
     .list-unstyled();
     display: block;
+    font-size: 1em;
+    line-height: 1.8em;
     overflow: hidden;
     margin-bottom: 0;
 
     > li {
       .text-overflow();
-      line-height: 1.7em;
+      margin-bottom: 0.1em;
       vertical-align: top;
+    }
+
+    a {
+      display: block;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
     }
 
     @media (min-width: @screen-sm) {
