@@ -89,9 +89,10 @@ describe Report do
       DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query2', :times => 7, :day => Date.yesterday, :locale => 'en')
       DailyQueryStat.create!(:affiliate => 'affiliate2', :query => 'query2', :times => 9, :day => Date.yesterday, :locale => 'en')
       DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 500, :day => Date.current, :locale => 'en')
-      @affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count", "query1,11,5", "query2,10,7", ""].join("\n")
-      @affiliate2_csv_output = ["Query,Raw Count,IP-Deduped Count", "query2,22,9", ""].join("\n")
-      @all_csv_output = ["Query,Raw Count,IP-Deduped Count", "query2,32,16", "query1,11,5", ""].join("\n")
+      heading = "Query Term,Total Count (Bots + Humans),Real Count (Humans only)"
+      @affiliate1_csv_output = [heading, "query1,11,5", "query2,10,7", ""].join("\n")
+      @affiliate2_csv_output = [heading, "query2,22,9", ""].join("\n")
+      @all_csv_output = [heading, "query2,32,16", "query1,11,5", ""].join("\n")
     end
 
     let(:report) { Report.new(@input_file_name, "monthly", 1000, Date.yesterday) }
@@ -164,7 +165,7 @@ describe Report do
     context "when a group has more than max entries per group" do
       let(:report) { Report.new(@input_file_name, "daily", 1, Date.yesterday) }
       it "should truncate the output" do
-        truncated_affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count", "query1,11,5", ""].join("\n")
+        truncated_affiliate1_csv_output = ["Query Term,Total Count (Bots + Humans),Real Count (Humans only)", "query1,11,5", ""].join("\n")
         AWS::S3::S3Object.should_receive(:store).with(anything(), truncated_affiliate1_csv_output, AWS_BUCKET_NAME).once
         report.generate_top_queries_from_file
       end

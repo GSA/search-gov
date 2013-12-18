@@ -39,7 +39,7 @@ class Report
         affiliate_name, query, total = line.chomp.split(/\001/)
         if last_group.nil? || last_group != affiliate_name
           AWS::S3::S3Object.store(generate_report_filename(last_group, formatted_date), output, AWS_BUCKET_NAME) unless output.nil?
-          output = "Query,Raw Count,IP-Deduped Count\n"
+          output = "Query Term,Total Count (Bots + Humans),Real Count (Humans only)\n"
           cnt = 0
         end
         if cnt < @group_max
