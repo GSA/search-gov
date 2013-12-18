@@ -4,10 +4,6 @@ class String
       durante e el en entre et etc for from hacia hasta in into la las los mediante ni nor o of off on onto or out
       para pero por salvo según sin so sobre than the to tras u un una unas unos v versus via vs vía with y }
 
-  def fuzzily_matches?(str)
-    gsub(/[\W]/, '').eql? str.gsub(/[\W]/, '') unless str.nil?
-  end
-
   def sentence_case
     gsub(/(\b|')[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }
   end

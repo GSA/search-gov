@@ -18,7 +18,7 @@ class WebSearch < Search
     def results_present_for?(query, affiliate)
       search = new(query: query, affiliate: affiliate)
       search.run
-      spelling_ok = search.spelling_suggestion.nil? || search.spelling_suggestion.fuzzily_matches?(query)
+      spelling_ok = search.spelling_suggestion.nil? || FuzzyMatcher.new(search.spelling_suggestion, query).matches?
       search.results.present? && spelling_ok
     end
   end
