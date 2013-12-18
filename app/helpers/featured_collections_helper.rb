@@ -82,20 +82,13 @@ module FeaturedCollectionsHelper
     end
   end
 
-  def rearrange_featured_collection_links_indices(links_size)
-    left_links_size = (links_size / 2) + (links_size % 2)
-    left_links_size.times.map do |i|
-      [i, i + left_links_size]
-    end.flatten.slice(0, links_size)
-  end
-
   def featured_collection_content_trigger_class_hash(best_bets_count, fc)
     links_count = fc.featured_collection_links.count
     return {} if best_bets_count <= 2 and links_count <= 4
 
     classes = []
     classes << 'has-collapsed-featured-collection' if best_bets_count > 2
-    classes << 'one-column-hide-trigger' if links_count <= 4
+    classes << (links_count <= 4 ? 'one-column-hide-trigger' : 'one-column-show-trigger')
     classes << 'two-column-hide-trigger' if fc.has_two_column_layout? and links_count <= 8
     classes.present? ? { class: classes } : {}
   end

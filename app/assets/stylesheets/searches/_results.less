@@ -71,6 +71,18 @@
 
     .featured-collection ul {
       max-height: 10em;
+
+      &.two-column.right {
+        display: none;
+      }
+
+      &.two-column {
+        @media (min-width: @screen-sm) {
+          &.two-column.right {
+            display: block;
+          }
+        }
+      }
     }
   }
 
@@ -130,12 +142,13 @@
     margin-bottom: 0;
 
     > li {
-      .text-overflow();
       margin-bottom: 0.1em;
+      padding-right: 10px;
       vertical-align: top;
     }
 
     a {
+      .text-overflow();
       display: block;
       padding-top: 0.3em;
       padding-bottom: 0.3em;
@@ -143,14 +156,8 @@
 
     @media (min-width: @screen-sm) {
       &.two-column {
-        .list-inline();
-
-        > li {
-          display: inline;
-          float: left;
-          padding-left: 0;
-          width: 49%;
-        }
+        float: left;
+        width: 50%;
       }
     }
   }
