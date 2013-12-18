@@ -15,8 +15,9 @@
           - if BestBetType.module_tags.include?(stat.module_tag) and (params[:mmyyyy].nil? or params[:mmyyyy] == Date.current.strftime('%m/%Y'))
             = link_to '(drill down)', site_best_bets_drill_down_path(@site, module_tag: stat.module_tag)
         %td= number_with_delimiter(stat.impressions)
-        %td= number_with_delimiter(stat.clicks)
+        %td= non_zero_number_with_delimiter(stat.clicks)
         %td
-          = number_to_percentage(stat.clickthru_ratio, :precision => 1)
-          = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC')
+          - if stat.clickthru_ratio > 0.0
+            = number_to_percentage(stat.clickthru_ratio, :precision => 1)
+            = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC')
         %td= number_to_percentage(stat.average_clickthru_ratio, :precision => 1)

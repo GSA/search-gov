@@ -83,6 +83,49 @@ describe "sites/monthly_reports/show.html.haml" do
     end
   end
 
+  context 'when only queries are available for the month (e.g., API customer)' do
+    let(:other_site) { affiliates(:power_affiliate) }
+
+    before do
+      DailyUsageStat.create!(:day => target_date.beginning_of_month, :total_queries => 100, :affiliate => site.name)
+
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BWEB', :clicks => 0, :impressions => 1289)
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BWEB', :clicks => 0, :impressions => 6189)
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'VIDEO', :clicks => 0, :impressions => 671)
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'VIDEO', :clicks => 0, :impressions => 129)
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BOOS', :clicks => 0, :impressions => 42)
+      DailySearchModuleStat.create!(:day => target_date.beginning_of_month, :affiliate_name => site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BBG', :clicks => 0, :impressions => 52)
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'BWEB', :clicks => 100, :impressions => 200)
+      DailySearchModuleStat.create!(:day => target_date.end_of_month, :affiliate_name => other_site.name, :locale => 'en',
+                                    :vertical => 'web', :module_tag => 'VIDEO', :clicks => 333, :impressions => 1000)
+      render
+    end
+
+    it 'should show the click total as n/a' do
+      rendered.should have_selector("#queries_clicks") do |snippet|
+        snippet.should contain "Total Clicks n/a"
+      end
+    end
+
+    it 'should show the click breakdowns by module as n/a with a blank for the CTR column, ordered by impression count' do
+      rendered.should have_selector("#by_module tr", count: 6) do |rows|
+        rows[0].should contain "Module Impressions Clicks Your CTR Average CTR"
+        rows[1].should contain "Bing Web 7,478 n/a 1.3%"
+        rows[2].should contain "Bing Video 800 n/a 18.5%"
+        rows[3].should contain "Best Bets Graphic (drill down) 52 n/a 0.0%"
+        rows[4].should contain "Best Bets Text (drill down) 42 n/a 0.0%"
+        rows[5].should contain "Total 8,372 n/a"
+      end
+    end
+  end
+
   context 'when report links are available' do
     before do
       render

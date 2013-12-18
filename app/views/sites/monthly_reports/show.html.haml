@@ -20,7 +20,7 @@
   %dt Total Queries
   %dd= number_with_delimiter @monthly_report.total_queries
   %dt Total Clicks
-  %dd= number_with_delimiter @monthly_report.total_clicks
+  %dd= non_zero_number_with_delimiter @monthly_report.total_clicks
 
 = render partial: 'search_modules_stats', locals: { search_module_stats: @monthly_report.search_module_stats }
 
