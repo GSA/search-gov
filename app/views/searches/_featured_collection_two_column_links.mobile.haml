@@ -4,7 +4,7 @@
 
 %ul.two-column.left
   - links.slice(0, left_links_size).each_with_index do |link, index|
-    %li{ class: "link-#{index + 1}" }= link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[index]
+    %li= link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[index]
 %ul.two-column.right
   - links.slice(left_links_size, links_size - left_links_size).each_with_index do |link, index|
     %li= link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[left_links_size + index]
