@@ -5,6 +5,8 @@ describe FeaturedCollectionKeyword do
 
   it { should validate_presence_of :value }
   it { should belong_to :featured_collection }
+  it { should_not allow_value("piped|keywords").for(:value) }
+  it { should_not allow_value("comma,separated,keywords").for(:value) }
 
   describe "validates uniqueness of keyword scoped to featured collection" do
     before do
