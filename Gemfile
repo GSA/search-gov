@@ -97,8 +97,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', '~> 0.6.4', :require => false
-  gem 'simplecov-rcov', :require => false
+  gem 'codeclimate-test-reporter', require: false
+  gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
   gem 'poltergeist'

@@ -1,7 +1,8 @@
 require 'simplecov'
 SimpleCov.command_name 'RSpec'
-require 'simplecov-rcov'
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
@@ -53,24 +54,11 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
   #config.order = 'random'
 
-  REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
-  REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
-
   config.before(:suite) do
-    Dir.mkdir("#{Rails.root}/tmp/cache") unless File.directory?("#{Rails.root}/tmp/cache")
-    Dir.mkdir("#{Rails.root}/tmp/pids") unless File.directory?("#{Rails.root}/tmp/pids")
-    redis_options = {
-      "daemonize" => 'yes',
-      "pidfile" => REDIS_PID,
-      "port" => 6380,
-      "timeout" => 300,
-      "dbfilename" => "dump.rdb",
-      "dir" => REDIS_CACHE_PATH,
-      "loglevel" => "debug",
-      "logfile" => "stdout",
-      "databases" => 16
-    }.map { |k, v| "#{k} #{v}" }.join("\n")
-    `echo '#{redis_options}' | redis-server -`
+    unless ENV['TRAVIS']
+      require 'test_services'
+      TestServices::start_redis
+    end
 
     EmailTemplate.load_default_templates
   end
@@ -148,12 +136,8 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    %x{
-      cat #{REDIS_PID} | xargs kill -9
-      rm -f #{REDIS_CACHE_PATH}dump.rdb
-    }
+    TestServices::stop_redis unless ENV['TRAVIS']
   end
-
 end
 
 Webrat.configure do |config|

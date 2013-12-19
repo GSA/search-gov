@@ -1,5 +1,9 @@
 # USASearch Info
 
+## Code Status
+
+ [![Build Status](https://magnum.travis-ci.com/GSA-OCSIT/usasearch.png?token=EKwfm8JUGsTqz6oYyPkg)](https://magnum.travis-ci.com/GSA-OCSIT/usasearch)
+
 ## Rails
 
 If you have no experience with Ruby on Rails, this is not the document for you. This README assumes you already have a

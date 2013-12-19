@@ -7,7 +7,7 @@ development:
 
 test:
   <<: *defaults
-  port: 6380
+  port: <%= ENV['TRAVIS'] ? 6379 : 6380 %>
 
 cucumber:
   <<: *defaults
