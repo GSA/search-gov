@@ -59,7 +59,7 @@ class WebSearch < Search
   end
 
   def has_featured_collections?
-    featured_collections and featured_collections.results.size > 0
+    featured_collections and featured_collections.total > 0 and featured_collections.results.size > 0
   end
 
   def method_missing(meth, *args, &block)

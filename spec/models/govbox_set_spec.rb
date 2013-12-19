@@ -14,10 +14,11 @@ describe GovboxSet do
       govbox_set.boosted_contents.should == "BoostedContent results"
     end
 
-    it 'should assign featured collections' do
-      FeaturedCollection.stub!(:search_for).with('foo', affiliate).and_return "FeaturedCollection results"
+    it 'should assign a single featured collection' do
+      affiliate.locale = 'en'
+      ElasticFeaturedCollection.stub!(:search_for).with(q:'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-      govbox_set.featured_collections.should == "FeaturedCollection results"
+      govbox_set.featured_collections.should == "FeaturedCollection result"
     end
 
     context 'when affiliate is agency govbox enabled' do

@@ -33,11 +33,6 @@ module FeaturedCollectionsHelper
     css_classes.join(' ')
   end
 
-  def render_featured_collection_link_title(link, index, highlighted_link_titles)
-    return h(link.title) if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
-    highlighted_link_titles[index].html_safe
-  end
-
   def render_featured_collection_image(fc)
     begin
       unless fc.image_file_name.blank?
@@ -69,16 +64,6 @@ module FeaturedCollectionsHelper
     rescue => e
       Rails.logger.warn e
       nil
-    end
-  end
-
-  def featured_collection_link_titles(hit)
-    if hit.highlights(:link_titles).present?
-      highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR).map do |title|
-        title.html_safe
-      end
-    else
-      hit.instance.featured_collection_links.map { |link| h(link.title) }
     end
   end
 

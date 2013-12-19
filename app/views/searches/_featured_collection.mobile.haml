@@ -1,7 +1,6 @@
-.content-block-item.result{ featured_collection_class_hash(hit.instance), id: "best-bet-#{position}", onclick: 'void(0)' }
+.content-block-item.result{ featured_collection_class_hash(result), id: "best-bet-#{position}", onclick: 'void(0)' }
   .image-and-title
-    = featured_collection_image hit.instance
-    %h3= link_to_best_bet_title(hit, hit.instance.title_url, position, 'BBG')
-  - link_titles = featured_collection_link_titles(hit)
-  = render partial: "featured_collection_#{hit.instance.layout.gsub(' ', '_')}_links",
-    locals: { hit: hit, position: position, link_titles: link_titles }
+    = featured_collection_image result
+    %h3= link_to_featured_collection_title(result.id, result.title, result.title_url, position)
+  = render partial: "featured_collection_#{result.layout.gsub(' ', '_')}_links",
+    locals: { result: result, position: position }

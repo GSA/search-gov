@@ -20,6 +20,10 @@ module Instrumentation
       generic_logging("Solr Query", event, GREEN)
     end
 
+    def es_search(event)
+      generic_logging("Elasticsearch Query", event, GREEN)
+    end
+
     private
     def generic_logging(label, event, color)
       name = '%s (%.1fms)' % [label, event.duration]

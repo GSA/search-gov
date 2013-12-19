@@ -1,10 +1,10 @@
-- links = hit.instance.featured_collection_links
+- links = result.featured_collection_links
 - links_size = links.size
 - left_links_size = (links_size / 2) + (links_size % 2)
 
 %ul.two-column.left
-  - links.slice(0, left_links_size).each_with_index do |link, index|
-    %li= link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[index]
+  - links.slice(0, left_links_size).each do |link|
+    %li= link_to_featured_collection_title result.id, link.title, link.url, position
 %ul.two-column.right
-  - links.slice(left_links_size, links_size - left_links_size).each_with_index do |link, index|
-    %li= link_to_best_bet_title hit, link.url, position, 'BBG', title: link_titles[left_links_size + index]
+  - links.slice(left_links_size, links_size - left_links_size).each do |link|
+    %li= link_to_featured_collection_title result.id, link.title, link.url, position

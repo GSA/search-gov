@@ -35,7 +35,7 @@ A few tips when working with asset pipeline:
 
 ## Solr
 
-We're using Solr for fulltext search.
+We're using Solr for fulltext search but we're migrating to [ElasticSearch](http://www.elasticsearch.org/).
 
 You can start/stop/reindex Solr like this:
 
@@ -43,6 +43,16 @@ You can start/stop/reindex Solr like this:
     rake sunspot:solr:stop
     rake sunspot:solr:run
     rake sunspot:solr:reindex
+
+On a Mac, ElasticSearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
+
+    $ brew install elasticsearch
+
+Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
+
+You can reindex supported indexes like this
+
+    rake usasearch:elasticsearch:reindex[FeaturedCollection]
 
 ## Redis
 
