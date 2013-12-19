@@ -14,14 +14,14 @@ class Click
                    :model_id => model_id
     }
     Rails.logger.info("[Click] #{click_hash.to_json}")
-    if %w(BBG BOOS).include? results_source
-      affiliate_id = Affiliate.where(name: affiliate_name).pluck(:id).first rescue nil
-      if affiliate_id
-        keen_hash = { :affiliate_id => affiliate_id, :module => results_source, :url => url, :query => query, :model_id => model_id }
-        ActiveSupport::Notifications.instrument("best_bets_publish.usasearch", :query => keen_hash) do
-          Keen.publish_async(:clicks, keen_hash)
-        end
-      end
+    log_best_bet_click(affiliate_name, model_id, query, results_source, url) if %w(BBG BOOS).include?(results_source)
+  end
+
+  def self.log_best_bet_click(affiliate_name, model_id, query, results_source, url)
+    id = Affiliate.where(name: affiliate_name).pluck(:id).first
+    if id.present?
+      keen_hash = { :affiliate_id => id, :module => results_source, :url => url, :query => query, :model_id => model_id }
+      KeenBestBetLogger.log(:clicks, keen_hash)
     end
   end
 end

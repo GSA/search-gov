@@ -27,22 +27,22 @@ describe Click do
       context 'when affiliate exists' do
         let(:affiliate) { affiliates(:basic_affiliate) }
 
-        it 'should asynchronously publish BOOS click info to Keen' do
+        it 'should publish BOOS click info to Keen' do
           keen_hash = { :affiliate_id => affiliate.id, :module => 'BOOS', :url => "http://www.fda.gov/foo.html", :query => "my query", :model_id => "123456" }
-          Keen.should_receive(:publish_async).with(:clicks, keen_hash)
+          KeenBestBetLogger.should_receive(:log).with(:clicks, keen_hash)
           Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", affiliate.name, "7", "BOOS", "web", "en", "mozilla", "123456")
         end
 
-        it 'should asynchronously publish BBG click info to Keen' do
+        it 'should publish BBG click info to Keen' do
           keen_hash = { :affiliate_id => affiliate.id, :module => 'BBG', :url => "http://www.fda.gov/foo.html", :query => "my query", :model_id => "123456" }
-          Keen.should_receive(:publish_async).with(:clicks, keen_hash)
+          KeenBestBetLogger.should_receive(:log).with(:clicks, keen_hash)
           Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", affiliate.name, "7", "BBG", "web", "en", "mozilla", "123456")
         end
       end
 
       context 'when affiliate does not exist' do
         it 'should not publish click info to Keen' do
-          Keen.should_not_receive(:publish_async)
+          KeenBestBetLogger.should_not_receive(:log)
           Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", 'does not exist', "7", "BBG", "web", "en", "mozilla", "123456")
         end
       end
