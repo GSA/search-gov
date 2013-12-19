@@ -146,19 +146,11 @@ module SitesHelper
   end
 
   def link_to_add_new_boosted_content_keyword(title, site, boosted_content)
-    link_to title,
-            new_keyword_site_best_bets_texts_path(site),
-            remote: true,
-            data: {params: {index: boosted_content.boosted_content_keywords.length}},
-            id: 'new-keyword-trigger'
+    instrumented_link_to title, new_keyword_site_best_bets_texts_path(site), boosted_content.boosted_content_keywords.length, 'keyword'
   end
 
   def link_to_add_new_featured_collection_keyword(title, site, featured_collection)
-    link_to title,
-            new_keyword_site_best_bets_graphics_path(site),
-            remote: true,
-            data: {params: {index: featured_collection.featured_collection_keywords.length}},
-            id: 'new-keyword-trigger'
+    instrumented_link_to title, new_keyword_site_best_bets_graphics_path(site), featured_collection.featured_collection_keywords.length, 'keyword'
   end
 
   def preview_search_path_options(site)

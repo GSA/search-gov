@@ -32,10 +32,6 @@ module RssFeedUrlsHelper
   end
 
   def link_to_add_new_rss_feed_url(title, site, rss_feed)
-    link_to title,
-            new_url_site_rss_feeds_path(site),
-            remote: true,
-            data: { params: { index: rss_feed.rss_feed_urls.length } },
-            id: 'new-url-trigger'
+    instrumented_link_to title, new_url_site_rss_feeds_path(site), rss_feed.rss_feed_urls.length, 'url'
   end
 end

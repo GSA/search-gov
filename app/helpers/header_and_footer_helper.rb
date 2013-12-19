@@ -8,19 +8,11 @@ module HeaderAndFooterHelper
   end
 
   def link_to_add_new_site_header_link(title, site)
-    link_to title,
-            new_header_link_site_header_and_footer_path(site),
-            remote: true,
-            data: { params: { index: site.managed_header_links.length } },
-            id: 'new-site-header-link-trigger'
+    instrumented_link_to title, new_header_link_site_header_and_footer_path(site), site.managed_header_links.length, 'site-header-link'
   end
 
   def link_to_add_new_site_footer_link(title, site)
-    link_to title,
-            new_footer_link_site_header_and_footer_path(site),
-            remote: true,
-            data: { params: { index: site.managed_footer_links.length } },
-            id: 'new-site-footer-link-trigger'
+    instrumented_link_to title, new_footer_link_site_header_and_footer_path(site), site.managed_footer_links.length, 'site-footer-link'
   end
 
   def save_for_preview_button(form, site)

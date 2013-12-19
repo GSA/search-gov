@@ -8,5 +8,5 @@
           %span.recommended-by
             = t :by_site
             = @affiliate.display_name
-        = render_featured_collection_image result
+        = render_featured_collection_image result if result.image_file_name.present?
         = render :partial => 'shared/featured_collection_links', :locals => { :search => search, :result => result } if result.featured_collection_links.present?
