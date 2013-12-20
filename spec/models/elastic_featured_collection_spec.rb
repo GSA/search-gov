@@ -291,6 +291,9 @@ describe ElasticFeaturedCollection do
           featured_collection.featured_collection_links.build(title: 'Beneficios y ayuda financiera verificación',
                                                               url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                               position: 0)
+          featured_collection.featured_collection_links.build(title: 'Lotería de visas 2015',
+                                                              url: 'http://www.nhc.noaa.gov/aboutnames3.shtml',
+                                                              position: 1)
           featured_collection.save!
           ElasticFeaturedCollection.commit
         end
@@ -304,6 +307,10 @@ describe ElasticFeaturedCollection do
           overstemmed_queries.each do |query|
             ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
           end
+        end
+
+        it 'should handle custom synonyms' do
+          ElasticFeaturedCollection.search_for(q: 'visa', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
         end
       end
     end
