@@ -2,9 +2,10 @@ Feature: Searches using mobile device
 
   Scenario: Web search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | contact_name | locale | domains   |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |           |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |           |
+      | Hippo site   | hippo         | admin@agency.gov | John Bar     | en     | hippo.gov |
     And the following Boosted Content entries exist for the affiliate "en.agency.gov"
       | url                                                             | title                  | description                             |
       | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |
@@ -15,6 +16,9 @@ Feature: Searches using mobile device
       | http://http://www.whitehouse.gov/administration/president-obama | Presidente Barack Obama       | the 44th President of the United States |
       | http://www.whitehouse.gov/about/presidents/georgewbush          | Presidente George W. Bush     | the 43rd President of the United States |
       | http://www.whitehouse.gov/about/presidents/williamjclinton      | Presidente William J. Clinton | the 42nd President of the United States |
+    And the following Boosted Content entries exist for the affiliate "hippo"
+      | url                                     | title                  | description                                            |
+      | http://hippo.gov/hippopotamus-amphibius | Hippopotamus amphibius | large, mostly herbivorous mammal in sub-Saharan Africa |
     And the following featured collections exist for the affiliate "en.agency.gov":
       | title                       | title_url                                  | status | publish_start_on | publish_end_on | layout     | image_file_path            |
       | The 21st Century Presidents | http://www.whitehouse.gov/about/presidents | active | 2013-07-01       |                | two column | features/support/small.jpg |
@@ -47,6 +51,12 @@ Feature: Searches using mobile device
     And I should see "Mostrar más"
     And I should see "Mostrar menos"
     And I should see at least "2" web search results
+
+    When I am on hippo's mobile search page
+    And I fill in "Enter your search term" with "hippopotamus"
+    And I press "Search"
+    Then I should see "Sorry, no results found for 'hippopotamus'."
+    And I should see "Hippopotamus amphibius"
 
   Scenario: News search
     Given the following Affiliates exist:

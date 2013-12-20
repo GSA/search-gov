@@ -1,9 +1,10 @@
-- if @search.results.present?
-  #search{ search_data(@search, @search_vertical) }
-    = render(partial: 'best_bets', locals: { search: @search }) if @search.has_best_bets?
+#search{ search_data(@search, @search_vertical) }
+  - if @search.results.blank?
+    = render partial: 'no_results', locals: { search: @search }
+
+  = render(partial: 'best_bets', locals: { search: @search }) if @search.has_best_bets?
+
+  - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
     = render partial: 'pagination', locals: { results: @search.results }
-
-- else
-  = render partial: 'no_results', locals: { search: @search }
