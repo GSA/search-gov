@@ -9,26 +9,30 @@ Feature: Clicks and Queries stats
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following DailyQueryStats exist for affiliate "aff.gov":
       | query          | times | day        |
-      | pollution      | 100   | 2012-10-19 |
+      | pollution      | 101   | 2012-10-19 |
       | old pollution  | 10    | 2012-10-01 |
       | something else | 50    | 2012-10-18 |
+    And affiliate "aff.gov" has the following QueriesClicksStats:
+      | url                     | times | day        | query            |
+      | http://www.aff.gov/url1 | 20    | 2012-10-19 | pollution        |
+      | http://www.aff.gov/url2 | 40    | 2012-10-18 | something else   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Analytics page
     And I follow "Queries"
     Then I should see "Queries"
     And I should see the following table rows:
-      | Top Queries     | # of Queries   |
-      | pollution       | 100            |
-      | something else  | 50             |
-      | old pollution   | 10             |
+      | Top Queries     | # of Queries   | # of Clicks | CTR   |
+      | pollution       | 101            |   20        | 19.8% |
+      | something else  | 50             |   40        | 80.0% |
+      | old pollution   | 10             |   0         | 0.0%  |
 
     When I fill in "Query" with "pollute"
     And I fill in "From" with "2012-10-18"
     And I fill in "To" with "2012-10-19"
     And I press "Generate Report"
     Then I should see the following table rows:
-      | Top Queries     | # of Queries   |
-      | pollution       | 100            |
+      | Top Queries     | # of Queries   | # of Clicks | CTR   |
+      | pollution       | 101            |   20        | 19.8% |
 
     When I fill in "Query" with "nothing to see here"
     And I fill in "From" with "2012-10-18"

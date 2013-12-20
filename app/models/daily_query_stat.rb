@@ -50,17 +50,6 @@ class DailyQueryStat < ActiveRecord::Base
       end rescue nil
     end
 
-    def query_counts_for_terms_like(query, affiliate_name, start_date = 1.year.ago, end_date = Date.current)
-      unless query.blank?
-        solr_search_result_ids = search_for(query, affiliate_name, start_date, end_date, 50000)
-        return sum(:times,
-                   :group => :query,
-                   :conditions => "id in (#{solr_search_result_ids.join(',')})",
-                   :order => "sum_times desc") unless solr_search_result_ids.empty?
-      end
-      []
-    end
-
     def most_popular_terms(affiliate_name, start_date, end_date, num_results = RESULTS_SIZE)
       return INSUFFICIENT_DATA if end_date.nil? or start_date.nil?
       results = sum(:times,
@@ -96,16 +85,6 @@ class DailyQueryStat < ActiveRecord::Base
       ActiveRecord::Base.connection.execute(sql).collect { |r| [r[0], r[1].to_i] }
     end
 
-    def collect_affiliate_query(query, affiliate_name, start_date)
-      generic_collection(["day >= ? AND affiliate = ? AND query = ?", start_date, affiliate_name, query])
-    end
-
-    def generic_collection(conditions)
-      results = sum(:times, :group => :day, :conditions => conditions, :order => "day")
-      dqs=[]
-      results.each_pair { |day, times| dqs << new(:day => day, :times => times) }
-      dqs
-    end
   end
 
   private

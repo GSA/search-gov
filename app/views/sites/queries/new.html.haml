@@ -9,20 +9,24 @@
   = render form
 
 - if @queries_request.top_queries.present?
-  %p Tip: Select the hyperlinked number in the # of Queries column to view the top clicked URLs for each query.
+  %p Tip: Select the hyperlinked number in the # of Clicks column to view the top clicked URLs for each query.
   %table.table.table-striped.table-bordered.table-kv-pairs
     %thead
       %tr
         %th Top Queries
         %th # of Queries
+        %th # of Clicks
+        %th CTR
     %tbody
-      - @queries_request.top_queries.each_with_index do |query_count, idx|
+      - @queries_request.top_queries.each_with_index do |query_click_count, idx|
         %tr
           %td
             = "#{idx+1}."
-            = query_count.query
-          %td= link_to number_with_delimiter(query_count.times), site_query_clicks_path(@site,
-            {:query => query_count.query, :start_date => @queries_request.start_date, :end_date => @queries_request.end_date})
+            = query_click_count.query
+          %td= number_with_delimiter(query_click_count.queries)
+          %td= link_to_unless query_click_count.clicks.zero?, number_with_delimiter(query_click_count.clicks), site_query_clicks_path(@site,
+            {:query => query_click_count.query, :start_date => @queries_request.start_date, :end_date => @queries_request.end_date})
+          %td= number_to_percentage(query_click_count.ctr, precision: 1)
 - elsif @queries_request.query.present?
   %p= "Sorry, no results found for '#{@queries_request.query}'."
 - else

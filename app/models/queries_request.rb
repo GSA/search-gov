@@ -17,22 +17,32 @@ class QueriesRequest
   end
 
   def save
-    @available_dates= DailyQueryStat.available_dates_range(site.name)
+    @available_dates = DailyQueryStat.available_dates_range(site.name)
     @end_date = end_date.nil? ? DailyQueryStat.most_recent_populated_date(site.name) : end_date.to_date
     @start_date = start_date.nil? ? (@end_date and @end_date.beginning_of_month) : start_date.to_date
-    @top_queries = compute_top_queries
+    @top_queries = compute_top_query_stats
   end
 
   private
 
-  def compute_top_queries
-    if @query.blank?
-      most_popular_terms = DailyQueryStat.most_popular_terms(@site.name, @start_date, @end_date, MAX_RESULTS)
-      return [] if most_popular_terms.instance_of? String
-      most_popular_terms
-    elsif @start_date.present? and @end_date.present?
-      DailyQueryStat.query_counts_for_terms_like(@query, @site.name, @start_date, @end_date).collect { |hash| QueryCount.new(hash.first, hash.last) }
-    end
+  def compute_top_query_stats
+    ids_clause = @query.present? ? matching_ids : nil
+    fields = "q.query query, q.cnt queries, ifnull(c.cnt,0) clicks, 100.0*ifnull(c.cnt,0)/q.cnt ctr"
+    sql = "select #{fields} from (#{table_subquery('daily_query_stats')} #{ids_clause} #{group_count_limit(MAX_RESULTS)}) q LEFT OUTER JOIN (#{table_subquery('queries_clicks_stats')} #{group_count_limit(5*MAX_RESULTS)}) c on q.query = c.query order by q.cnt desc"
+    ActiveRecord::Base.connection.execute(sql).map { |tuple| QueryClickCount.new(*tuple) }
   end
 
+  def matching_ids
+    ids = DailyQueryStat.search_for(@query, @site.name, @start_date, @end_date, MAX_RESULTS)
+    ids = [-1] unless ids.present?
+    "and id in (#{ids.join(',')})"
+  end
+
+  def table_subquery(tablename)
+    "select query, sum(times) cnt from #{tablename} where affiliate='#{@site.name}' and day between '#{@start_date}' and '#{@end_date}'"
+  end
+
+  def group_count_limit(limit)
+    "group by query order by cnt desc limit #{limit}"
+  end
 end

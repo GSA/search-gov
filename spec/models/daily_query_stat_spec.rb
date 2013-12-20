@@ -167,17 +167,6 @@ describe DailyQueryStat do
     end
   end
 
-  describe ".collect_affiliate_query" do
-    let(:start_date) do
-      Date.yesterday.advance(:months => -1)
-    end
-
-    it "should filter results using affiliate_name and query" do
-      DailyQueryStat.should_receive(:generic_collection).with(['day >= ? AND affiliate = ? AND query = ?', start_date, 'aff', 'foo'])
-      DailyQueryStat.collect_affiliate_query('foo', 'aff', start_date)
-    end
-  end
-
   describe ".reindex_day(day)" do
     before do
       ResqueSpec.reset!
