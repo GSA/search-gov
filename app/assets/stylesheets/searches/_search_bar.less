@@ -12,6 +12,13 @@
     font-size: @font-size-large;
     line-height: @line-height-large;
     height: 40px;
+    padding-right: 0;
+    border-right: 40px solid transparent;
+
+    @media (min-width: @screen-sm) {
+      border-right-width: 75px;
+
+    }
   }
 
   #search-button, #clear-button {
