@@ -33,7 +33,7 @@ A few tips when working with asset pipeline:
         Rails.application.assets['relative_path/to_asset.ext']
 
 
-## Solr
+## Solr and Elasticsearch
 
 We're using Solr for fulltext search but we're migrating to [ElasticSearch](http://www.elasticsearch.org/).
 
@@ -53,6 +53,14 @@ Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to 
 You can reindex supported indexes like this
 
     rake usasearch:elasticsearch:reindex[FeaturedCollection]
+
+Install the [Inquisitor](https://github.com/polyfractal/elasticsearch-inquisitor) plugin to see how our analyzers look at text.
+
+    http://localhost:9200/_plugin/inquisitor/#/analyzers
+
+Install the [Head](http://mobz.github.io/elasticsearch-head/) plugin so you have a simple GUI for testing queries and looking at index data.
+
+    http://localhost:9200/_plugin/head/
 
 ## Redis
 
