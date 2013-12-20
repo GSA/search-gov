@@ -757,8 +757,8 @@ Feature: Affiliate Search
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled |
-      | english site | english-nih | aff@bar.gov   | John Bar     | nih.gov | true                      |
+      | display_name | name        | contact_email | contact_name | is_medline_govbox_enabled |
+      | english site | english-nih | aff@bar.gov   | John Bar     | true                      |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
@@ -792,23 +792,23 @@ Feature: Affiliate Search
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled | locale |
-      | spanish site | spanish-nih | aff@bar.gov   | John Bar     | nih.gov | true                      | es     |
+      | display_name | name        | contact_email | contact_name | is_medline_govbox_enabled | locale |
+      | spanish site | spanish-nih | aff@bar.gov   | John Bar     | true                      | es     |
     And the following Medline Topics exist:
-      | medline_title                        | medline_tid | locale | summary_html                                                     |
-      | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+      | medline_title | medline_tid | locale | summary_html                                                                     |
+      | Alzheimer     | 12345       | en     | Alzheimer's disease (AD) is the most common form of dementia among older people. |
     When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I fill in "query" with "alzheimer"
     And I press "Buscar" in the search box
-    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    Then I should not see "electroencefalografistas and Other Irrational Fears"
 
     Given the following Medline Topics exist:
-      | medline_title                        | medline_tid | locale | summary_html                                                     |
-      | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
+      | medline_title | medline_tid | locale | summary_html                                                                                               |
+      | Alzheimer     | 67890       | es     | MedlinePlus: La enfermedad de Alzheimer (EA) es la forma más común de demencia entre las personas mayores. |
     When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I fill in "query" with "alzheimer"
     And I press "Buscar" in the search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
+    Then I should see "La enfermedad de Alzheimer" in the medline govbox
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the spanish-nih's Manage Display page
@@ -816,9 +816,9 @@ Feature: Affiliate Search
     And I press "Save"
 
     When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I fill in "query" with "alzheimer"
     And I press "Buscar" in the search box
-    Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
+    Then I should not see "MedlinePlus: La enfermedad de Alzheimer"
 
   Scenario: When a searcher enter query with invalid solr character
     Given the following Affiliates exist:
@@ -1101,13 +1101,16 @@ Feature: Affiliate Search
 
   Scenario: Searching on sites with Boosted Contents
     Given the following Affiliates exist:
-      | display_name   | name          | contact_email   | contact_name | locale |
-      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
-      | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |
+      | display_name   | name          | contact_email   | contact_name | locale | domains             |
+      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     | usasearch.howto.gov |
+      | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |                     |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
       | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+    And the following Boosted Content Keywords exist for the entry titled "Notes for Week Ending May 31, 2013"
+      | extremely |
+      | obscure   |
     And the following Boosted Content entries exist for the affiliate "es.agency.gov"
       | title                             | url                       | description |
       | la página de prueba de Emergencia | http://www.agency.gov/911 | Some terms  |
@@ -1116,6 +1119,11 @@ Feature: Affiliate Search
     And I press "Search" in the search box
     Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://usasearch.howto.gov/releases/2013-05-31.html" in the boosted contents section
     And I should not see a link to "Notes for Week Ending June 21, 2013"
+
+    When I fill in "query" with "extremely obscure notes"
+    And I press "Search" in the search box
+    Then I should see "Sorry, no results found"
+    And I should not see "Notes for Week Ending May 31, 2013"
 
     When I am on es.agency.gov's search page
     And I fill in "query" with "emergencia"

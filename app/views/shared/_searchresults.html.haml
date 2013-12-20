@@ -1,13 +1,13 @@
 - result_partial = result_partial_for(search)
-- if search.first_page?
-  - if search.has_boosted_contents? or search.has_featured_collections?
-    = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
-    = render('shared/featured_collections', :search => search) if search.has_featured_collections?
-  - elsif search.has_photos?
-    = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
-  - elsif search.med_topic.present?
-    = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
 - if search.results.present?
+  - if search.first_page?
+    - if search.has_boosted_contents? or search.has_featured_collections?
+      = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
+      = render('shared/featured_collections', :search => search) if search.has_featured_collections?
+    - elsif search.has_photos?
+      = render 'shared/photo_gov_box', :search => @search, :affiliate => @affiliate
+    - elsif search.med_topic.present?
+      = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
       = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)

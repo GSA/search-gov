@@ -1,8 +1,8 @@
-Given /^the following Boosted Content Keywords exist for the entry titled "([^\"]*)"$/ do |title, table|
+Given /^the following Boosted Content Keywords exist for the entry titled "([^\"]*)"$/ do |title, fields|
   boosted_content = BoostedContent.find_by_title title
   boosted_content.boosted_content_keywords.delete_all
-  table.hashes.each do |hash|
-    boosted_content.boosted_content_keywords.build(:value => hash['value'])
+  fields.raw.flatten.each do |value|
+    boosted_content.boosted_content_keywords.build(value: value)
   end
   boosted_content.save!
   boosted_content.index
