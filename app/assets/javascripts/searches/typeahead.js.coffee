@@ -1,12 +1,18 @@
-queryFieldSelector = '#search-bar #query.typeahead-enabled'
+queryFieldSelector = '#search-bar #query'
+queryFieldSelectorWithTypeahead = '#search-bar #query.typeahead-enabled'
 
 clearQuery = (e) ->
   e.preventDefault()
   e.stopPropagation()
   $queryFieldSelector = $(queryFieldSelector)
-  $queryFieldSelector.typeahead 'setQuery', ''
-  $('#search-bar').removeClass 'has-query-term'
+
+  if $queryFieldSelector.hasClass 'typeahead-enabled'
+    $queryFieldSelector.typeahead('setQuery', '')
+  else
+    $queryFieldSelector.val('')
+
   $queryFieldSelector.focus()
+  $('#search-bar').removeClass 'has-query-term'
 
 $(document).on 'click', '#clear-button', clearQuery
 
@@ -31,17 +37,17 @@ whenFocusOnQuery = (e) ->
     $('#search-bar').submit()
 
 $(document).on 'keyup', queryFieldSelector, whenFocusOnQuery
-$(document).on 'typeahead:opened', queryFieldSelector, whenFocusOnQuery
+$(document).on 'typeahead:opened', queryFieldSelectorWithTypeahead, whenFocusOnQuery
 
 
 whenSelected = () ->
   $('#search-bar').submit()
 
-$(document).on 'typeahead:selected', queryFieldSelector, whenSelected
+$(document).on 'typeahead:selected', queryFieldSelectorWithTypeahead, whenSelected
 
 ready = () ->
   siteHandle = encodeURIComponent $('#search-bar #affiliate').val();
-  $(queryFieldSelector).typeahead
+  $(queryFieldSelectorWithTypeahead).typeahead
     remote: "/sayt?name=#{siteHandle}&q=%QUERY",
     minLength: 2
 
