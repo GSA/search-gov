@@ -69,20 +69,10 @@
       display: block;
     }
 
-    .featured-collection ul {
+    .featured-collection .links {
+      .clearfix();
       max-height: 10em;
-
-      &.two-column.right {
-        display: none;
-      }
-
-      &.two-column {
-        @media (min-width: @screen-sm) {
-          &.two-column.right {
-            display: block;
-          }
-        }
-      }
+      overflow: hidden;
     }
   }
 
@@ -142,8 +132,7 @@
     margin-bottom: 0;
 
     > li {
-      margin-bottom: 0.1em;
-      padding-right: 10px;
+      padding-right: 15px;
       vertical-align: top;
     }
 
@@ -153,12 +142,12 @@
       padding-top: 0.3em;
       padding-bottom: 0.3em;
     }
+  }
 
+  &.two-column ul {
     @media (min-width: @screen-sm) {
-      &.two-column {
-        float: left;
-        width: 50%;
-      }
+      float: left;
+      width: 50%;
     }
   }
 

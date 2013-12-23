@@ -38,6 +38,7 @@ module FeaturedCollectionsHelper
   def featured_collection_class_hash(fc)
     classes = %w(featured-collection)
     classes << 'has-image' if fc.image_file_name.present?
+    classes << 'two-column' if fc.has_two_column_layout?
     { class: classes }
   end
 
