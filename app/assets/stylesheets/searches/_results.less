@@ -160,6 +160,75 @@
   }
 }
 
+#tweets {
+  .content-block();
+
+  .tweet {
+    position: relative;
+
+    .logo {
+      .hide-text();
+      background: transparent image-url('legacy/govbox/twitter.png') center no-repeat;
+      height: 32px;
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      width: 32px;
+    }
+
+    .profile {
+      .clearfix();
+      text-decoration: none;
+      &:hover {
+        .profile-name {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .profile-image {
+      float: left;
+      margin-top: 10px;
+      width: 38px;
+
+      @media (min-width: @screen-sm) {
+        width: 48px;
+      }
+
+      img {
+        .img-responsive();
+        border-color: 1px solid transparent;
+        border-radius: @border-radius-base;
+      }
+    }
+
+    .profile-name, .profile-screen-name {
+      display: block;
+      margin-left: 43px;
+      margin-right: 35px;
+      @media (min-width: @screen-sm) {
+        margin-left: 53px;
+      }
+    }
+    .profile-name {
+      font-size: 18px;
+      line-height: 1;
+      margin-top: 10px;
+    }
+
+    .profile-screen-name {
+      color: @icon-color;
+    }
+
+    .text, .timestamp {
+      margin-top: 5px;
+    }
+    .timestamp a {
+      color: @icon-color;
+    }
+  }
+}
+
 #related-searches {
   .content-block();
   ul {

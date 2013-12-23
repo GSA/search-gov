@@ -918,19 +918,15 @@ Feature: Affiliate Search
       | GobiernoUSA | GobiernoUSA.gov | 456        | es.bar.gov |
     And the following Tweets exist:
       | tweet_text                     | tweet_id | published_ago | twitter_profile_id | url                  | expanded_url                 | display_url           |
-      | Winter season is great!        | 123456   | hour          | 123                |                      |                              |                       |
       | Summer season is great!        | 234567   | year          | 123                |                      |                              |                       |
-      | Spring season is great!        | 456789   | hour          | 123                |                      |                              |                       |
       | Ok season http://t.co/YQQSs9bb | 184957   | hour          | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
       | Estados Unidos es grande!      | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
     And I fill in "query" with "season"
     And I press "Search" in the search box
-    Then I should see "Recent tweets for 'season' by bar site"
+    Then I should see "Recent tweet for 'season' by bar site"
     And I should see a link to "USASearch.gov" with url for "http://twitter.com/USASearch"
     And I should see "USASearch.gov @USASearch"
-    And I should see "Winter season is great!"
-    And I should see "Spring season is great!"
     And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
     And I should see "season" in bold font
     And I should not see "Summer season is great!"

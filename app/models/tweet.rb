@@ -15,7 +15,7 @@ class Tweet < ActiveRecord::Base
   class << self
     include QueryPreprocessor
 
-    def search_for(query, twitter_profile_ids, since_ts = nil, page = 1, per_page = 3)
+    def search_for(query, twitter_profile_ids, since_ts = nil, page = 1, per_page = 1)
       sanitized_query = preprocess(query)
       return nil if sanitized_query.blank?
       instrument_hash = { model: self.name, :term => sanitized_query, profiles_count: twitter_profile_ids.count }

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TwitterProfilesHelper do
   fixtures :affiliates
 
-  describe '#render_tweet_text' do
+  describe '#legacy_render_tweet_text' do
     let(:tweet_text) { 'Search Notes for the Week Ending September 21, 2012 - http://t.co/YQQSs9bb http://t.co/YQQSs9bb' }
     let(:tweet) do
       urls = [mock(Twitter::Entity::Url,
@@ -26,12 +26,12 @@ describe TwitterProfilesHelper do
     end
 
     it 'should render tweet link with click tracking' do
-      result = helper.render_tweet_text(tweet, search, 1)
+      result = helper.legacy_render_tweet_text(tweet, search, 1)
       result.should == %q[Search Notes for the Week Ending September 21, 2012 - <a href="http://t.co/YQQSs9bb" onmousedown="return clk('notes', 'http://tmblr.co/Z8xAVxUEKvaK', 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">tmblr.co/Z8xAVxUEKvaK</a> <a href="http://t.co/YQQSs9bb" onmousedown="return clk('notes', 'http://tmblr.co/Z8xAVxUEKvaK', 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">tmblr.co/Z8xAVxUEKvaK</a>]
     end
   end
 
-  describe '#render_twitter_profile' do
+  describe '#legacy_render_twitter_profile' do
     let(:profile) { mock_model(TwitterProfile, :link_to_profile => 'http://twitter.com/USASearch')}
     let(:search) { mock(Search, :query => 'notes', :queried_at_seconds => 1350362825)}
 
@@ -41,7 +41,7 @@ describe TwitterProfilesHelper do
     end
 
     it 'should render link with click tracking' do
-      result = helper.render_twitter_profile(profile, search, 1)
+      result = helper.legacy_render_twitter_profile(profile, search, 1)
       result.should == %Q[<a href="http://twitter.com/USASearch" onmousedown="return clk('notes', this.href, 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">\n<span class="screen-name"> @</span></a>]
     end
   end

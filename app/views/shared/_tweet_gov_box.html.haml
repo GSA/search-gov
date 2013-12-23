@@ -10,6 +10,6 @@
         = @affiliate.display_name
     - search.tweets.hits(:verify => true).each_with_index do |tweet, index|
       .tweet
-        = render_twitter_profile(tweet.instance.twitter_profile, search, index)
-        .tweet-text= render_tweet_text(tweet, search, index).html_safe
+        = legacy_render_twitter_profile(tweet.instance.twitter_profile, search, index)
+        .tweet-text= legacy_render_tweet_text(tweet, search, index).html_safe
         .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet

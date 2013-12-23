@@ -39,6 +39,11 @@ module ResultsHelper
     link_to title, hit_url, data: { click: click_data }
   end
 
+  def link_to_tweet_link(tweet, title, url, position, options = {})
+    click_data = { i: tweet.instance.id, p: position, s: 'TWEET' }
+    link_to title, url, { data: { click: click_data } }.reverse_merge(options)
+  end
+
   def link_to_related_search(search, related_term, position)
     click_data = { p: position, s: 'SREL' }
     link_to related_term.downcase.html_safe,

@@ -8,6 +8,7 @@ trackClick = (e) ->
   jQuery.ajax '/clicked', async: false, data: data
 
 $(document).on 'click', '#search .result a, #search #related-searches a', trackClick
+$(document).on 'click.tweet', '#tweets .profile, #tweets .text a, #tweets .timestamp a', trackClick
 
 visitLink = (link) ->
   window.location.href = link.href if link?

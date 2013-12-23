@@ -1,0 +1,8 @@
+#tweets
+  - search.tweets.hits(verify: true).each_with_index do |tweet, index|
+    .content-block-item.tweet
+      = link_to 'Twitter', 'https://twitter.com', class: 'logo'
+      = twitter_profile(tweet, index + 1)
+      .text= tweet_text(tweet , index + 1)
+      .timestamp
+        = link_to_tweet_link(tweet, time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet, index + 1)

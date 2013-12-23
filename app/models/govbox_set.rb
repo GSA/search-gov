@@ -35,7 +35,7 @@ class GovboxSet
 
   def init_tweets
     affiliate_twitter_ids = @affiliate.searchable_twitter_ids
-    @tweets = Tweet.search_for(@query, affiliate_twitter_ids, 3.months.ago.beginning_of_day) if affiliate_twitter_ids.any?
+    @tweets = Tweet.search_for(@query, affiliate_twitter_ids, 3.days.ago.beginning_of_day) if affiliate_twitter_ids.any?
   end
 
   def init_med_topic

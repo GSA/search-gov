@@ -48,7 +48,7 @@ describe Tweet do
     it "should find the 3 most recent tweets that matches the term(s) queried from any of the Twitter accounts specified" do
       search = Tweet.search_for("america", [12345, 23456])
       search.total.should == 3
-      search.results.size.should == 3
+      search.results.size.should == 1
       search.results.first.tweet_text.should == "Good morning, America!"
       search.results.first.twitter_profile_id.should == 12345
     end
