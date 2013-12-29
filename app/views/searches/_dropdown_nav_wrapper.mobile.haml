@@ -1,0 +1,7 @@
+%li.dropdown#nav-dropdown.open.collapsed
+  = link_to '#nav-dropdown', class: 'dropdown-toggle' do
+    .show-more
+      %span= t(:show_more)
+      = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
+  %ul.dropdown-menu
+    #{html}

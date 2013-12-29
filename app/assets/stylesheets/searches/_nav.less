@@ -1,0 +1,111 @@
+.navbar-default {
+  background-color: white;
+}
+
+#nav {
+  border-top-width: 0;
+  transition: none;
+
+  .navbar-nav {
+    float: none;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    > li {
+      @media (min-width: @grid-float-breakpoint) {
+        max-width: 24%;
+      }
+    }
+
+    > li > a, > li > span, .dropdown-menu > li a {
+      .text-overflow();
+      border-top: 1px solid @block-border-color;
+      border-left: 3px solid transparent;
+      display: block;
+      line-height: @line-height-computed;
+      padding: 7px 9px 10px 21px;
+
+      @media (min-width: @grid-float-breakpoint) {
+        border-top: 3px solid transparent;
+        border-left-width: 0;
+        padding: 7px 9px 10px;
+      }
+    }
+
+    > li > a:hover {
+      @media (min-width: @grid-float-breakpoint) {
+        background-color: @navbar-default-bg;
+        color: @navbar-default-link-hover-color;
+      }
+    }
+
+    .dropdown-menu {
+      @media (min-width: @grid-float-breakpoint) {
+        border-top-width: 0;
+        max-width: 250px;
+      }
+
+      @media (min-width: @screen-lg) {
+        max-width: 300px;
+      }
+    }
+
+    .dropdown-menu > li > a {
+      @media (min-width: @grid-float-breakpoint) {
+        border-top: 1px solid @block-border-color;
+        color: @navbar-default-link-color;
+
+        &:hover {
+          color: @navbar-default-link-hover-color;
+        }
+      }
+    }
+
+    > li:first-child a, > li:first-child span {
+      border-top-width: 0;
+
+      @media (min-width: @grid-float-breakpoint) {
+        border-top-width: 3px;
+      }
+    }
+
+    > li.dropdown > a {
+      display: none;
+
+      @media (min-width: @grid-float-breakpoint) {
+        display: block;
+      }
+    }
+
+    .dropdown-menu {
+      padding: 0;
+    }
+
+    > li.active span {
+      font-weight: bold;
+    }
+  }
+
+  a { .tap-highlight(); }
+
+  .glyphicon {
+    top: 2px;
+  }
+}
+
+.navbar-default .navbar-nav > .open {
+  &.collapsed {
+    > a, > a:focus {
+      @media (min-width: @grid-float-breakpoint) {
+        background-color: transparent;
+        color: @navbar-default-link-color;
+      }
+    }
+
+    .dropdown-menu {
+      @media (min-width: @grid-float-breakpoint) {
+        display: none;
+      }
+    }
+  }
+}

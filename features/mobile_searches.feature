@@ -115,3 +115,73 @@ Feature: Searches using mobile device
     And I press "Buscar"
     Then I should see Accionado por Bing logo
     And I should see at least "10" web search results
+
+  Scenario: Site navigations without dropdown menu
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name | prefixes                |
+      | FAQs | http://answers.usa.gov/ |
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name     | url                                | is_navigable |
+      | Articles | http://en.agency.gov/feed/articles | true         |
+    And there are 10 news items for "Articles"
+    When I am on en.agency.gov's mobile search page
+    Then I should see "Everything" within the SERP active navigation
+
+    When I fill in "Enter your search term" with "news"
+    And I press "Search"
+    Then I should see "Everything" within the SERP active navigation
+    And I should see at least "10" web search results
+
+    When I follow "FAQs"
+    And I press "Search"
+    Then I should see "FAQs" within the SERP active navigation
+    And I should see at least "10" web search results
+
+    When I follow "Articles"
+    Then I should see "Articles" within the SERP active navigation
+    And I should see at least "10" web search results
+
+  Scenario: Site navigations with dropdown menu
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name | prefixes                | position | is_navigable |
+      | FAQs | http://answers.usa.gov/ | 0        | true         |
+      | Apps | http://apps.usa.gov/    | 2        | true         |
+      | Beta | http://apps.usa.gov/    | 6        | false        |
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name     | url                                | is_navigable | position |
+      | Articles | http://en.agency.gov/feed/articles | true         | 1        |
+      | Blog     | http://en.agency.gov/feed/blog     | true         | 3        |
+      | News     | http://en.agency.gov/feed/News     | true         | 4        |
+      | Inactive | http://en.agency.gov/feed/News     | false        | 5        |
+    And there are 10 news items for "News"
+
+    When I am on en.agency.gov's mobile search page
+    Then I should see "Everything" within the SERP active navigation
+    And I fill in "Enter your search term" with "news"
+    And I press "Search"
+
+    Then I should see "Everything" within the SERP active navigation
+    And I should see "Everything FAQs Articles More Apps Blog News" within the SERP navigation
+    And I should see at least "10" web search results
+
+    When I follow "Apps"
+    Then I should see "Apps" within the SERP active navigation
+    And I should see "Everything FAQs Apps More Articles Blog News" within the SERP navigation
+    And I should see at least "10" web search results
+
+    When I follow "News"
+    Then I should see "News" within the SERP active navigation
+    And I should see "Everything FAQs News More Articles Apps Blog" within the SERP navigation
+    And I should see at least "10" web search results
+
+    When I am on en.agency.gov's "Beta" mobile site search page
+    Then I should not see the mobile navigation
+
+    When I am on en.agency.gov's "Inactive" mobile news search page
+    Then I should not see the mobile navigation

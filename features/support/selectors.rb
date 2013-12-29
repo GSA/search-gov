@@ -26,6 +26,10 @@ module HtmlSelectorsHelpers
       '.records > tr:first-child'
     when /the first table body row/
       "table tbody tr:first-child"
+    when /the SERP active navigation/
+      '#nav .active'
+    when /the SERP navigation/
+      '#nav'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

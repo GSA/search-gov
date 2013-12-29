@@ -22,7 +22,9 @@
   %body
     #main-nav
       %header#header
+        = render partial: 'nav_button', locals: { search: @search }
         .logo= mobile_header @affiliate
+        = mobile_navigations(@search, @search_params)
       = render partial: 'form', locals: { search: @search }
     #typeahead-backdrop
 

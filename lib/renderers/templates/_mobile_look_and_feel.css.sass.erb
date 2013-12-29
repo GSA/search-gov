@@ -1,9 +1,15 @@
-#header
+#header .logo
   a, a:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
 
 #search-bar #search-button
   background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+
+#nav .navbar-nav > li.active span
+  border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+  color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+  @media (min-width: 768px)
+    border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
 
 #best-bets, #tweets, #results
   a
