@@ -21,6 +21,7 @@ class BingSearch < SearchEngine
   def params
     params_hash = {
       AppId: APP_ID,
+      fdtrace: 1,
       Adult: filter_level,
       sources: sources,
       query: query
@@ -38,6 +39,7 @@ class BingSearch < SearchEngine
       search_response.end_record = search_response.start_record + search_response.results.size - 1
       spelling = bing_response.spell.results.first.value rescue nil
       search_response.spelling_suggestion = spelling_results(spelling)
+      search_response.tracking_information = response.headers['X-FDT-Ref']
     end
   end
 

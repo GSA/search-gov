@@ -1,5 +1,5 @@
 class WebSearch < Search
-  attr_reader :matching_site_limits
+  attr_reader :matching_site_limits, :tracking_information
 
   delegate :boosted_contents,
            :agency,
@@ -135,6 +135,7 @@ class WebSearch < Search
     @results = paginate(post_process_results(response.results))
     @endrecord = response.end_record
     @spelling_suggestion = response.spelling_suggestion
+    @tracking_information = response.tracking_information
   end
 
   def backfill_needed?

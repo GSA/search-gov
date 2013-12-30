@@ -12,8 +12,9 @@ describe "searches/index.html.haml" do
                    has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,
-                   page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870, results: [],
-                   error_message: "Ignore me", scope_id: nil, first_page?: true, matching_site_limits: [], module_tag:'BWEB')
+                   page: 1, spelling_suggestion: nil, queried_at_seconds: 1271978870, results: [],
+                   error_message: "Ignore me", scope_id: nil, first_page?: true, matching_site_limits: [],
+                   module_tag: 'BWEB', tracking_information: 'Ref A: whatever')
     assign(:search, @search)
     assign(:search_params, {affiliate: @affiliate.name, query: 'test'})
   end

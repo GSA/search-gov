@@ -3,7 +3,8 @@ class SearchEngineResponse
                 :results,
                 :start_record,
                 :end_record,
-                :total
+                :total,
+                :tracking_information
   def initialize
     yield self
   end

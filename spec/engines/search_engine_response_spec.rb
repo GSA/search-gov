@@ -8,6 +8,7 @@ describe SearchEngineResponse do
       search_response.results = %w(a b c)
       search_response.end_record = 20
       search_response.spelling_suggestion = 'spell'
+      search_response.tracking_information = 'Ref A: foo bar blat'
     end
   end
 
@@ -29,5 +30,9 @@ describe SearchEngineResponse do
 
   it 'should assign results' do
     search_engine_response.results.should == %w(a b c)
+  end
+
+  it 'should assign tracking information' do
+    search_engine_response.tracking_information.should == 'Ref A: foo bar blat'
   end
 end

@@ -46,6 +46,7 @@ class GoogleSearch < SearchEngine
       search_response.total = google_response.queries.request.first.total_results.to_i
       spelling = google_response.spelling.corrected_query rescue nil
       search_response.spelling_suggestion = spelling_results(spelling)
+      search_response.tracking_information = response.headers['etag']
     end
   end
 
