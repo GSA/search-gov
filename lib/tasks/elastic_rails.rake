@@ -1,6 +1,6 @@
 namespace :usasearch do
   namespace :elasticsearch do
-    desc 'Reindex Rails data for given comma separated indexes'
+    desc 'Reindex ActiveRecord-based Rails data for given comma-separated indexes'
     task :reindex, [:index_names] => :environment do |t, args|
       args.index_names.split(',').each do |index_name|
         rails_klass = index_name.constantize
