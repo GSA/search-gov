@@ -68,7 +68,9 @@ module Indexable
   end
 
   def search(query)
-    hits = ES::client.search(index: index_name, type: index_type, body: query.body, from: query.offset, size: query.size, sort: query.sort)['hits']
+    params = { preference: '_local', index: index_name, type: index_type, body: query.body,
+               from: query.offset, size: query.size, sort: query.sort }
+    hits = ES::client.search(params)['hits']
     hits['offset'] = query.offset
     "#{self.name}Results".constantize.new(hits)
   end

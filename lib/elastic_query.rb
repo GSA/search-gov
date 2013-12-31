@@ -18,7 +18,6 @@ class ElasticQuery
     Jbuilder.encode do |json|
       query(json)
       highlight(json) if @highlighting
-      filter(json)
     end
   end
 
