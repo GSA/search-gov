@@ -115,13 +115,20 @@ To show the coverage on the existing codebase, do this:
 
     rspec && cucumber
 
-Then to view the report, open `coverage/rcov/index.html` in your favorite browser.
+Then to view the report, open `coverage/index.html` in your favorite browser.
 
 You can click around on the files that have < 100% coverage to see what lines weren't exercised.
 
 Make sure you commit any changes to the coverage directory back to git.
 
-# Running it
+# Code Quality
+
+We use Code Climate to track this. Code Climate consolidates the results from a suite of static analysis tools into a
+single real-time report so we can identify hotspots, evaluate new approaches, and improve code quality.
+
+[![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
+
+# Running the app
 
 Fire up a server and try it all out:
 
