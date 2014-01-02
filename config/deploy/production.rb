@@ -27,4 +27,5 @@ task :production_specific_files, :except => { :no_release => true } do
   run "cp #{shared_path}/system/redis.yml #{release_path}/config/redis.yml"
   run "cp #{shared_path}/system/geoip.dat #{release_path}/db/geoip/geoip.dat"
   run "cp #{shared_path}/system/keen.rb #{release_path}/config/initializers/keen.rb"
+  run "cp #{shared_path}/system/elasticsearch.yml #{release_path}/config/elasticsearch.yml"
 end
