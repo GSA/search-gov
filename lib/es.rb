@@ -2,6 +2,7 @@ module ES
   INDEX_PREFIX = "#{Rails.env}:usasearch".freeze
 
   def self.client
-    @@client ||= Elasticsearch::Client.new(log: Rails.env == 'development')
+    es_config = YAML.load_file("#{Rails.root}/config/elasticsearch.yml")
+    @@client ||= Elasticsearch::Client.new(log: Rails.env == 'development', host: es_config['host'])
   end
 end
