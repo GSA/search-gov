@@ -9,6 +9,3 @@
     = render partial: 'organic_results', locals: { search: @search }
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
     = render partial: 'pagination', locals: { results: @search.results }
-/
-  Tracking:
-  = @search.tracking_information
