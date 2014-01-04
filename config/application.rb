@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
+GC::Profiler.enable
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
