@@ -75,7 +75,7 @@ class GovboxSet
   end
 
   def init_best_bets
-    @boosted_contents = BoostedContent.search_for(@query, @affiliate)
     @featured_collections = ElasticFeaturedCollection.search_for(q: @query, affiliate_id: @affiliate.id, size: 1, language: @affiliate.locale)
+    @boosted_contents = ElasticBoostedContent.search_for(q: @query, affiliate_id: @affiliate.id, size: 3, language: @affiliate.locale)
   end
 end

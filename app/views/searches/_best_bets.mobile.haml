@@ -5,8 +5,9 @@
       %span.recommended-by
         = t(:by)
         = search.affiliate.display_name
-  - search.boosted_contents.hits(verify: true).each_with_index do |hit, index|
-    = render partial: 'boosted_content', locals: { hit: hit, position: index + 1 }
+  - if search.has_boosted_contents?
+    - search.boosted_contents.results.each_with_index do |result, index|
+      = render partial: 'boosted_content', locals: { result: result, position: index + 1 }
 
   - fc_content_trigger_class_hash = {}
   - if search.has_featured_collections?

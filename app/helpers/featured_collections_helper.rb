@@ -11,11 +11,6 @@ module FeaturedCollectionsHelper
     instrumented_link_to title, new_link_site_best_bets_graphics_path(site), fc.featured_collection_links.length, 'link'
   end
 
-  def featured_collection_link_with_click_tracking(title, url, affiliate, query, position, vertical, model_id)
-    return title if url.blank?
-    link_with_click_tracking(title, url, affiliate, query, position, 'BBG', vertical, model_id)
-  end
-
   def featured_collection_css_classes(featured_collection, initial_classes = %w(featured-collection searchresult))
     css_classes = initial_classes
     css_classes << featured_collection.layout.parameterize

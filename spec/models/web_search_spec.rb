@@ -352,15 +352,14 @@ describe WebSearch do
       before do
         affiliate.boosted_contents.create!(:title => "boosted english content", :url => "http://nonsense.gov",
                                            :description => "english description", :status => 'active', :publish_start_on => Date.current)
-        BoostedContent.reindex
-        Sunspot.commit
+        ElasticBoostedContent.commit
         Keen.stub(:publish_async)
         search.run
       end
 
       it "should output boosted results" do
         json = search.to_json
-        json.should =~ /boosted english content/
+        json.should =~ %r{boosted <strong>english</strong> content}
       end
     end
 

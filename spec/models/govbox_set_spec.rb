@@ -9,7 +9,8 @@ describe GovboxSet do
     let(:geoip_info) { mock('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
 
     it 'should assign boosted contents' do
-      BoostedContent.stub!(:search_for).with('foo', affiliate).and_return "BoostedContent results"
+      affiliate.locale = 'en'
+      ElasticBoostedContent.stub!(:search_for).with(q:'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.boosted_contents.should == "BoostedContent results"
     end

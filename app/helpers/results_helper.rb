@@ -10,15 +10,8 @@ module ResultsHelper
     }
   end
 
-  def link_to_best_bet_title(hit, url, position, source, options = {})
-    title = options[:title] || highlight_hit(hit, :title).html_safe
-    click_data = { i: hit.instance.id, p: position, s: source }
-
-    link_to_if url.present?, title, url, data: { click: click_data }
-  end
-
-  def link_to_featured_collection_title(id, title, url, position)
-    click_data = { i: id, p: position, s: 'BBG' }
+  def link_to_best_bet_title(id, title, url, position, module_name)
+    click_data = { i: id, p: position, s: module_name }
     link_to_if url.present?, title.html_safe, url, data: { click: click_data }
   end
 

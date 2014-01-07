@@ -4,7 +4,7 @@
 
 %ul
   - links.slice(0, left_links_size).each do |link|
-    %li= link_to_featured_collection_title result.id, link.title, link.url, position
+    %li= link_to_best_bet_title result.id, link.title, link.url, position, 'BBG'
 %ul
   - links.slice(left_links_size, links_size - left_links_size).each do |link|
-    %li= link_to_featured_collection_title result.id, link.title, link.url, position
+    %li= link_to_best_bet_title result.id, link.title, link.url, position, 'BBG'

@@ -21,7 +21,6 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
   def create
     @boosted_content = @site.boosted_contents.build(boosted_content_params)
     if @boosted_content.save
-      index_boosted_content
       redirect_to site_best_bets_texts_path(@site),
                   flash: { success: "You have added #{@boosted_content.title} to this site." }
     else
@@ -36,7 +35,6 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
 
   def update
     if @boosted_content.destroy_and_update_attributes(boosted_content_params)
-      index_boosted_content
       redirect_to site_best_bets_texts_path(@site),
                   flash: { success: "You have updated #{@boosted_content.title}." }
     else
@@ -47,7 +45,6 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
 
   def destroy
     @boosted_content.destroy
-    @boosted_content.solr_remove_from_index
     redirect_to site_best_bets_texts_path(@site),
                 flash: { success: "You have removed #{@boosted_content.title} from this site." }
   end
@@ -71,7 +68,4 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
         build if @boosted_content.boosted_content_keywords.blank?
   end
 
-  def index_boosted_content
-    Sunspot.index @boosted_content
-  end
 end

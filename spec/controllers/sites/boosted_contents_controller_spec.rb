@@ -39,7 +39,6 @@ describe Sites::BoostedContentsController do
               and_return(boosted_content)
 
           boosted_content.should_receive(:save).and_return(true)
-          Sunspot.should_receive(:index).with(boosted_content)
 
           post :create,
                site_id: site.id,
@@ -121,7 +120,6 @@ describe Sites::BoostedContentsController do
         boosted_contents.should_receive(:find_by_id).with('100').
             and_return(boosted_content)
         boosted_content.should_receive(:destroy)
-        boosted_content.should_receive(:solr_remove_from_index)
 
         delete :destroy, site_id: site.id, id: 100
       end

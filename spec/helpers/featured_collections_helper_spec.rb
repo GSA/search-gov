@@ -1,25 +1,6 @@
 require 'spec_helper'
 
 describe FeaturedCollectionsHelper do
-  describe "#featured_collection_link_with_click_tracking" do
-    let(:url) { mock('url') }
-    context "when the url is blank" do
-      before do
-        url.should_receive(:blank?).and_return(true)
-      end
-
-      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web, 1234).should == 'link title' }
-    end
-
-    context "when the url is not blank" do
-      before do
-        url.should_receive(:blank?).and_return(false)
-        helper.should_receive(:link_with_click_tracking).with('link title', url, nil, 'query term', 1, 'BBG', :web, 1234).and_return('link with click tracking')
-      end
-
-      specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web, 1234).should == 'link with click tracking' }
-    end
-  end
 
   describe "#render_featured_collection_image" do
     context "when the featured collection has an image and successfully retrieve the image" do

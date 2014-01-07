@@ -55,7 +55,11 @@ On a Mac, ElasticSearch is easy to install with [Homebrew](http://mxcl.github.co
 
 Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
-You can reindex supported indexes like this
+You can create the USASearch-related indexes like this:
+
+    rake usasearch:elasticsearch:create_indexes
+
+You can reindex ActiveRecord-backed indexes like this:
 
     rake usasearch:elasticsearch:reindex[FeaturedCollection]
 

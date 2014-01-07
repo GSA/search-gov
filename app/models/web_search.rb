@@ -43,7 +43,7 @@ class WebSearch < Search
   end
 
   def has_boosted_contents?
-    boosted_contents and boosted_contents.results.size > 0
+    boosted_contents and boosted_contents.total > 0 and boosted_contents.results.size > 0
   end
 
   def best_bets_count

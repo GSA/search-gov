@@ -1,1 +1,0 @@
-ElasticFeaturedCollection.create_index unless ElasticFeaturedCollection.index_exists?

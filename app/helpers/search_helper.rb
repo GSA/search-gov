@@ -89,10 +89,6 @@ module SearchHelper
     raw "<a href=\"#{h url}\" #{onmousedown}>#{html_safe_title}</a>"
   end
 
-  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical, model_id = nil)
-    link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical, model_id)
-  end
-
   def job_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
     link_with_click_tracking(html_safe_title, url, affiliate, query, position, "JOBS", vertical)
   end

@@ -37,13 +37,7 @@ class BoostedContentBulkUploader
   end
 
   def import_boosted_contents
-    boosted_contents = []
-    ActiveRecord::Base.transaction do
-      @records_hash.each do |info|
-        boosted_contents << import_boosted_content(info)
-      end
-    end
-    Sunspot.index(boosted_contents) if boosted_contents.present?
+    @records_hash.each { |info| import_boosted_content(info) }
     @results[:success] = true
   end
 

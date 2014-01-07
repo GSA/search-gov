@@ -132,24 +132,5 @@ describe "shared/_searchresults.html.haml" do
         end
       end
     end
-
-    context "when a boosted Content is returned as a hit, but that boosted Content is not in the database" do
-      before do
-        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test', :status => 'active', :publish_start_on => Date.yesterday, :affiliate => @affiliate)
-        BoostedContent.reindex
-        boosted_content.delete
-        boosted_contents_results = BoostedContent.search_for("test", @affiliate)
-        boosted_contents_results.hits.first.instance.should be_nil
-        @search.stub!(:has_boosted_contents?).and_return(true)
-        @search.stub!(:boosted_contents).and_return boosted_contents_results
-        view.stub!(:search).and_return @search
-      end
-
-      it "should render the page without an error, and without boosted Contents" do
-        render
-        rendered.should have_selector('div#boosted', :content => "")
-        rendered.should_not have_selector('div#boosted .searchresult')
-      end
-    end
   end
 end

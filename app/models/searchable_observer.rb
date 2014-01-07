@@ -1,5 +1,5 @@
 class SearchableObserver < ActiveRecord::Observer
-  observe :featured_collection
+  observe :featured_collection, :boosted_content
 
   def after_save(model)
     model_name = model.class.name
@@ -11,6 +11,6 @@ class SearchableObserver < ActiveRecord::Observer
   end
 
   def after_destroy(model)
-    ElasticFeaturedCollection.delete(model.id)
+    "Elastic#{model.class.name}".constantize.delete(model.id)
   end
 end

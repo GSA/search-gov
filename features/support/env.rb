@@ -58,6 +58,10 @@ unless ENV['TRAVIS']
 end
 
 EmailTemplate.load_default_templates
+Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
+  klass = File.basename(filename, '.rb').camelize.constantize
+  klass.recreate_index if klass.kind_of?(Indexable)
+end
 
 # EventMachine instance for Keen IO
 Thread.new { EventMachine.run }

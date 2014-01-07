@@ -45,7 +45,7 @@ module Indexable
 
   def search_for(options)
     query = "#{self.name}Query".constantize.new options
-    ActiveSupport::Notifications.instrument("es_search.usasearch", query: { model: self.name, term: query.body }) do
+    ActiveSupport::Notifications.instrument("query.elasticsearch", payload: { model: self.name, term: query.body }) do
       search(query)
     end
   rescue Exception => e

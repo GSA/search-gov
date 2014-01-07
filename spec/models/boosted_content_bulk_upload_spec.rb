@@ -53,20 +53,16 @@ describe BoostedContentBulkUploader do
 
       before do
         affiliate.boosted_contents.destroy_all
-        BoostedContent.reindex
-        Sunspot.commit
         xml_file.stub(:original_filename).and_return "foo.xml"
       end
 
       it "should create and index boosted Contents from an xml document" do
         results = uploader.upload(xml_file)
-        Sunspot.commit
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 2
         affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
         affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-        BoostedContent.solr_search_ids { with :affiliate_id, affiliate.id; paginate(:page => 1, :per_page => 10) }.should =~ affiliate.boosted_content_ids
         results[:success].should be_true
         results[:created].should == 2
         results[:updated].should == 0
@@ -75,7 +71,6 @@ describe BoostedContentBulkUploader do
       it "should update existing boosted Contents if the url matches" do
         affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
         results = uploader.upload(xml_file)
-        Sunspot.commit
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 2
@@ -88,7 +83,6 @@ describe BoostedContentBulkUploader do
       it "should merge with preexisting boosted Contents" do
         affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :publish_start_on => Date.current, :status => 'active')
         results = uploader.upload(xml_file)
-        Sunspot.commit
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 3
@@ -96,30 +90,6 @@ describe BoostedContentBulkUploader do
         results[:success].should be_true
         results[:created].should == 2
         results[:updated].should == 0
-      end
-
-      it "should not update existing boosted Contents if one of the imports failed" do
-        affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
-        BoostedContent.reindex
-        Sunspot.commit
-        bc = BoostedContent.new(:title => 'This is a listing about Texas',
-                                :url => 'http://some.url',
-                                :description => 'This is the description of the listing',
-                                :status => 'active', :publish_start_on => Date.current)
-
-        BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
-
-        BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
-            and_raise(ActiveRecord::RecordInvalid.new(bc))
-
-        results = uploader.upload(xml_file)
-        Sunspot.commit
-
-        results[:success].should be_false
-        affiliate.reload
-        affiliate.boosted_contents.length.should == 1
-        affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.title.should == "an old title"
-        BoostedContent.solr_search_ids { with :affiliate_id, affiliate.id; paginate(:page => 1, :per_page => 10) }.length.should == 1
       end
     end
     
@@ -137,20 +107,16 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
 
       before do
         affiliate.boosted_contents.destroy_all
-        BoostedContent.reindex
-        Sunspot.commit
         csv_file.stub(:original_filename).and_return "foo.csv"
       end
 
       it "should create and index boosted Contents from an csv document" do
         results = uploader.upload(csv_file)
-        Sunspot.commit
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 2
         affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url}
         affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-        BoostedContent.solr_search_ids { with :affiliate_id, affiliate.id; paginate(:page => 1, :per_page => 10) }.should =~ affiliate.boosted_content_ids
         results[:success].should be_true
         results[:created].should == 2
         results[:updated].should == 0
@@ -182,24 +148,6 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         results[:updated].should == 0
       end
 
-      it "should not update existing boosted Contents if one of the imports failed" do
-        affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :status => 'active', :publish_start_on => Date.current)
-        bc = BoostedContent.new(:title => 'This is a listing about Texas',
-                                :url => 'http://some.url',
-                                :description => 'This is the description of the listing',
-                                :status => 'active', :publish_start_on => Date.current)
-        BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.url')).and_return(bc)
-
-        BoostedContent.should_receive(:find_or_initialize_by_url).with(hash_including(:url => 'http://some.other.url')).
-            and_raise(ActiveRecord::RecordInvalid.new(bc))
-
-        results = uploader.upload(csv_file)
-
-        results[:success].should be_false
-        affiliate.reload
-        affiliate.boosted_contents.length.should == 1
-        affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.title.should == "an old title"
-      end
     end
   end
 end

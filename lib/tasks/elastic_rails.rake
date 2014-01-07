@@ -19,5 +19,13 @@ namespace :usasearch do
     task :recreate_index, [:index_name] => :environment do |t, args|
       "Elastic#{args.index_name}".constantize.recreate_index
     end
+
+    desc 'Ensure all indexes are created'
+    task create_indexes: :environment do
+      Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
+        klass = File.basename(filename, '.rb').camelize.constantize
+        klass.create_index if klass.kind_of?(Indexable) and not klass.index_exists?
+      end
+    end
   end
 end

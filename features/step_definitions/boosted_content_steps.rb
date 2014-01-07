@@ -5,13 +5,12 @@ Given /^the following Boosted Content Keywords exist for the entry titled "([^\"
     boosted_content.boosted_content_keywords.build(:value => hash['value'])
   end
   boosted_content.save!
-  boosted_content.index
-  Sunspot.commit
+  ElasticBoostedContent.commit
 end
 
 Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"$/ do |aff_name, table|
   affiliate = Affiliate.find_by_name aff_name
-  sites = table.hashes.collect do |hash|
+  table.hashes.collect do |hash|
     hash[:affiliate] = affiliate
     hash[:status] = 'active' if hash[:status].blank?
     publish_start_on = hash[:publish_start_on]
@@ -27,7 +26,7 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
 
     BoostedContent.create! hash
   end
-  Sunspot.index(sites) # because BoostedContent has auto indexing turned off for saves/creates
+  ElasticBoostedContent.commit
 end
 
 When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do |button, pos|
