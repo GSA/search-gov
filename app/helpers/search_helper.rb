@@ -69,14 +69,8 @@ module SearchHelper
     raw "<span class=\"uext_type\">[#{extname.upcase}]</span> "
   end
 
-  def excluded_highlight_terms(affiliate, query)
-    excluded_domains = affiliate.present? ? affiliate.site_domains.pluck(:domain) : []
-    excluded_domains.reject!{|domain| query =~ /#{domain}/ } if query.present?
-    excluded_domains
-  end
-
   def display_web_result_title(result, search, affiliate, position, vertical)
-    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, search.module_tag, vertical)
+    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, search.module_tag, vertical)
   end
 
   def highlight_string(s)
@@ -124,21 +118,15 @@ module SearchHelper
     "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
-  def display_result_description(result, query = nil, affiliate = nil)
-    truncate_html(translate_bing_highlights(h(result['content']),
-                                            excluded_highlight_terms(affiliate, query)))
+  def display_result_description(result)
+    truncate_html(translate_bing_highlights(h(result['content'])))
   end
 
   def news_description(hit)
     truncate_html(highlight_hit(hit, :description)).sub(/^([^A-Z<])/,'...\1').html_safe
   end
 
-  def translate_bing_highlights(body, excluded_terms = [])
-    excluded_terms.each do |term|
-      body.scan(/#{Regexp.escape(term)}/i).each do |term_variant|
-        body.gsub!(/\uE000#{Regexp.escape(term_variant)}\uE001/, term_variant)
-      end
-    end
+  def translate_bing_highlights(body)
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
 

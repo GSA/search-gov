@@ -336,10 +336,9 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   end
 
   describe "#translate_bing_highlights" do
-    let(:excluded_terms) { %w(.mil .gov) }
-    let(:body_with_regex_special_character) { "\uE000[Mil\uE001 \uE000.Mil\uE001 .gov" }
+    let(:body_with_regex_special_character) { "\uE000[Mil\uE001 .gov" }
 
-    specify { helper.translate_bing_highlights(body_with_regex_special_character, excluded_terms).should == "<strong>[Mil</strong> .Mil .gov" }
+    specify { helper.translate_bing_highlights(body_with_regex_special_character).should == "<strong>[Mil</strong> .gov" }
   end
 
   describe '#make_summary_p' do

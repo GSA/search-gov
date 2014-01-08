@@ -8,4 +8,4 @@
     %h3.result-url= truncate_url(result['unescapedUrl'])
     - if result["publishedAt"]
       %h4= time_ago_in_words(result["publishedAt"])
-    %h3= display_result_description(result, search.query, affiliate)
+    %h3= display_result_description(result)

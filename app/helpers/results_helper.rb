@@ -16,9 +16,7 @@ module ResultsHelper
   end
 
   def link_to_web_result_title(search, result, position)
-    title = translate_bing_highlights(
-        h(result['title']),
-        excluded_highlight_terms(search.affiliate, search.query)).html_safe
+    title = translate_bing_highlights(h(result['title'])).html_safe
 
     click_data = { p: position }
     link_to title, result['unescapedUrl'], data: { click: click_data }

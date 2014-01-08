@@ -717,20 +717,6 @@ Feature: Affiliate Search
     And I press "Search" in the search box
     Then I should not see "Photos of 'america' by bar site"
 
-  Scenario: Highlighting query terms
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains        |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | howto.gov |
-    When I am on bar.gov's search page
-    And I fill in "query" with "Helping agencies deliver a great customer experience"
-    And I press "Search" in the search box
-    Then I should see "howto.gov"
-    And I should not see "HowTo.gov" in bold font
-
-    When I fill in "query" with "howto.gov"
-    And I press "Search" in the search box
-    Then I should see "HowTo.gov" in bold font
-
   Scenario: Searching within an agency on English SERP
     Given the following Affiliates exist:
       | display_name    | name        | contact_email | contact_name | domains | is_agency_govbox_enabled | locale |
