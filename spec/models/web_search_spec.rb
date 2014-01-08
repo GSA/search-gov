@@ -188,6 +188,7 @@ describe WebSearch do
 
     context "when the affiliate has no Bing/Google results, but has indexed documents" do
       before do
+        ElasticIndexedDocument.recreate_index
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.site_domains.create(:domain => "nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
@@ -197,10 +198,9 @@ describe WebSearch do
                                                                   :description => 'This is an indexed result no_result.',
                                                                   :last_crawl_status => IndexedDocument::OK_STATUS)
         end
-        IndexedDocument.reindex
-        Sunspot.commit
+        ElasticIndexedDocument.commit
         @non_affiliate.indexed_documents.size.should == 15
-        IndexedDocument.search_for('indexed', @non_affiliate, nil).total.should == 15
+        ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.locale).total.should == 15
       end
 
       it "should fill the results with the Odie docs" do
@@ -209,8 +209,8 @@ describe WebSearch do
         search.total.should == 15
         search.startrecord.should == 1
         search.endrecord.should == 10
-        search.results.first['unescapedUrl'].should == "http://nonsense.com/1.html"
-        search.results.last['unescapedUrl'].should == "http://nonsense.com/10.html"
+        search.results.first['unescapedUrl'].should =~ /nonsense.com/
+        search.results.last['unescapedUrl'].should =~ /nonsense.com/
         search.module_tag.should == 'AIDOC'
       end
 
@@ -220,7 +220,7 @@ describe WebSearch do
       before do
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.boosted_contents.destroy_all
-        IndexedDocument.stub!(:search_for).and_return nil
+        ElasticIndexedDocument.stub!(:search_for).and_return nil
         @search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
       end
 
@@ -246,13 +246,12 @@ describe WebSearch do
 
     context "when affiliate has no Bing/Google results and there is an orphan document in the Odie index" do
       before do
+        ElasticIndexedDocument.recreate_index
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.indexed_documents.destroy_all
-        IndexedDocument.reindex
         odie = @non_affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://nonsense.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
-        Sunspot.commit
+        ElasticIndexedDocument.commit
         odie.delete
-        IndexedDocument.solr_search_ids { with :affiliate_id, affiliates(:non_existent_affiliate).id }.first.should == odie.id
       end
 
       it "should return with zero results" do
@@ -261,9 +260,6 @@ describe WebSearch do
         search.results.should be_blank
       end
 
-      after do
-        IndexedDocument.reindex
-      end
     end
 
     describe "ODIE backfill" do
@@ -285,13 +281,13 @@ describe WebSearch do
         before do
           @affiliate = affiliates(:non_existent_affiliate)
           @search = WebSearch.new(:query => 'fewer', :affiliate => @affiliate, :page => 2)
+          ElasticIndexedDocument.recreate_index
         end
 
         context "when there are Odie results" do
           before do
             @affiliate.indexed_documents.create!(:title => 'fewer I LOVE AMERICA', :description => 'fewer WE LOVE AMERICA', :url => 'http://nonsense.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
-            IndexedDocument.reindex
-            Sunspot.commit
+            ElasticIndexedDocument.commit
           end
 
           it "should indicate that there is another page of results" do
@@ -305,11 +301,6 @@ describe WebSearch do
         end
 
         context "when there are no Odie results" do
-          before do
-            IndexedDocument.destroy_all
-            IndexedDocument.reindex
-            Sunspot.commit
-          end
 
           it "should return the X Bing/Google results" do
             @search.run

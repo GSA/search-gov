@@ -102,6 +102,7 @@ describe SiteFeedUrl do
   describe ".delete" do
 
     before do
+      ElasticIndexedDocument.recreate_index
       IndexedDocument.delete_all
       IndexedDocument.create!(title: 'Some Title',
                               description: 'This is a document.',
@@ -127,15 +128,15 @@ describe SiteFeedUrl do
                               body: "this is the next doc body",
                               source: 'manual',
                               affiliate_id: affiliates(:basic_affiliate).id)
-      IndexedDocument.reindex
-      Sunspot.commit
     end
 
     it "should batch-delete affiliate's indexed documents as well" do
       IndexedDocument.count.should == 3
       site_feed_url.destroy
+      ElasticIndexedDocument.commit
       IndexedDocument.count.should == 1
       IndexedDocument.first.title.should == 'Some Title Three'
+      ElasticIndexedDocument.search_for(q: 'some title', affiliate_id: affiliates(:basic_affiliate).id, language: affiliates(:basic_affiliate).locale).total.should == 1
     end
   end
 

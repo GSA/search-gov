@@ -47,10 +47,9 @@ class SiteFeedUrl < ActiveRecord::Base
   end
 
   def fast_destroy_indexed_rss_docs
-    Sunspot.remove(IndexedDocument) do
-      with(:affiliate_id, self.affiliate.id)
-      without(:source, 'rss')
-    end
-    IndexedDocument.select(:id).where(affiliate_id: self.affiliate.id, source: 'rss').delete_all
+    indexed_rss_docs = IndexedDocument.select(:id).where(affiliate_id: self.affiliate.id, source: 'rss')
+    ids = indexed_rss_docs.collect(&:id)
+    ElasticIndexedDocument.delete(ids)
+    indexed_rss_docs.delete_all
   end
 end

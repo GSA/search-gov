@@ -3,6 +3,8 @@ class ElasticQuery
 
   DEFAULT_SIZE = 10.freeze
   MAX_SIZE = 100.freeze
+  DEFAULT_PRE_TAG = '<strong>'
+  DEFAULT_POST_TAG = '</strong>'
   attr_reader :offset, :size, :sort
   attr_accessor :highlighted_fields
 
@@ -33,10 +35,18 @@ class ElasticQuery
 
   def highlight(json)
     json.highlight do
-      json.pre_tags %w(<strong>)
-      json.post_tags %w(</strong>)
+      json.pre_tags pre_tags
+      json.post_tags post_tags
       highlight_fields(json)
     end if self.highlighted_fields.present?
+  end
+
+  def pre_tags
+    [DEFAULT_PRE_TAG]
+  end
+
+  def post_tags
+    [DEFAULT_POST_TAG]
   end
 
   def highlight_fields(json)

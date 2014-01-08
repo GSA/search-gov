@@ -55,12 +55,13 @@ RSpec.configure do |config|
   #config.order = 'random'
 
   config.before(:suite) do
+    require 'test_services'
     unless ENV['TRAVIS']
-      require 'test_services'
       TestServices::start_redis
     end
 
     EmailTemplate.load_default_templates
+    TestServices::create_es_indexes
   end
 
   config.before(:each) do
@@ -136,6 +137,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
+    TestServices::delete_es_indexes
     TestServices::stop_redis unless ENV['TRAVIS']
   end
 end

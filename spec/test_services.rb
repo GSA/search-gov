@@ -33,4 +33,15 @@ module TestServices
     }
   end
 
+  def create_es_indexes
+    Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
+      klass = File.basename(filename, '.rb').camelize.constantize
+      klass.recreate_index if klass.kind_of?(Indexable)
+    end
+  end
+
+  def delete_es_indexes
+    ES::client.indices.delete(index: "test-usasearch-*") rescue nil
+  end
+
 end

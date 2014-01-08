@@ -30,9 +30,9 @@
         %td{:style => 'width: 50%; vertical-align: top;'}
           - if @odie_search.results.present?
             = results_summary(@odie_search)
-            - @odie_search.hits.each_with_index do |hit, index|
+            - @odie_search.results.each_with_index do |result, index|
               %div{:style => 'height: 150px;'}
-                = render "/shared/indexed_document", :hit => hit, :index => index, :show_full_listing => true
+                = render "/shared/indexed_document", :result => result, :index => index, :show_full_listing => true
           - else
             No results
   = will_paginate(@web_search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

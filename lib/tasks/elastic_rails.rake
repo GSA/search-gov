@@ -1,18 +1,23 @@
 namespace :usasearch do
   namespace :elasticsearch do
-    desc 'Reindex ActiveRecord-based Rails data for given comma-separated indexes'
-    task :reindex, [:index_names] => :environment do |t, args|
-      args.index_names.split(',').each do |index_name|
-        rails_klass = index_name.constantize
-        elastic_klass = "Elastic#{index_name}".constantize
-        importer_klass = "Elastic#{index_name}Data".constantize
-        elastic_klass.recreate_index
-        rails_klass.find_each do |instance|
-          importer = importer_klass.new(instance)
-          builder = importer.to_builder
-          elastic_klass.index(builder.attributes!.symbolize_keys)
-        end
-      end
+    desc 'Index all ActiveRecord-based Rails data for given plus-separated indexes'
+    task :index_all, [:index_names] => :environment do |t, args|
+      index_all(args.index_names, ElasticIndexer)
+    end
+
+    desc 'Use Resque to parallelize indexing of all ActiveRecord-based Rails data for given plus-separated indexes'
+    task :resque_index_all, [:index_names] => :environment do |t, args|
+      index_all(args.index_names, ElasticResqueIndexer)
+    end
+
+    desc 'Migrate and index an index'
+    task :migrate, [:index_name] => :environment do |t, args|
+      ElasticMigration.migrate(args.index_name)
+    end
+
+    desc 'Use Resque to migrate and index an index in parallel'
+    task :resque_migrate, [:index_name] => :environment do |t, args|
+      ElasticResqueMigration.migrate(args.index_name)
     end
 
     desc 'Recreate an index'
@@ -28,4 +33,11 @@ namespace :usasearch do
       end
     end
   end
+
+  def index_all(index_names, indexer_klass)
+    index_names.split('+').each do |index_name|
+      indexer_klass.index_all(index_name.squish)
+    end
+  end
+
 end

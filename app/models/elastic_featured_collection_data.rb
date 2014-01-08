@@ -1,5 +1,4 @@
 class ElasticFeaturedCollectionData
-
   def initialize(featured_collection)
     @featured_collection = featured_collection
   end

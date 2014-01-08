@@ -1,5 +1,6 @@
 class ElasticFeaturedCollection
   extend Indexable
+  OPTIMIZING_INCLUDES = [:affiliate, :featured_collection_keywords, :featured_collection_links].freeze
 
   self.settings = ElasticSettings::COMMON
 

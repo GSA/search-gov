@@ -22,48 +22,13 @@ class IndexedDocument < ActiveRecord::Base
   scope :html, where(:doctype => 'html')
   scope :by_matching_url, -> substring { where("url like ?","%#{substring}%") if substring.present? }
 
-  TRUNCATED_TITLE_LENGTH = 60
-  TRUNCATED_DESC_LENGTH = 64000
   LARGE_DOCUMENT_SAMPLE_SIZE = 7500
   LARGE_DOCUMENT_THRESHOLD = 3 * LARGE_DOCUMENT_SAMPLE_SIZE
-  MAX_URLS_PER_FILE_UPLOAD = 10000
   MAX_DOC_SIZE = 50.megabytes
-  MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
-  DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
-  DOMAIN_EXCLUDED_STATUS = "URL matches affiliate's excluded site domains"
-  UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   UNSUPPORTED_EXTENSION = "URL extension is not one we index"
-  VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
   BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
-
-  searchable do
-    text :title, :stored => true, :boost => 10.0 do |idoc|
-      idoc.title if idoc.affiliate.locale == "en"
-    end
-    text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |idoc|
-      idoc.title if idoc.affiliate.locale == "es"
-    end
-    text :description, :stored => true, :boost => 4.0 do |idoc|
-      idoc.description if idoc.affiliate.locale == "en"
-    end
-    text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |idoc|
-      idoc.description if idoc.affiliate.locale == "es"
-    end
-    text :body, :stored => true do |idoc|
-      idoc.body if idoc.affiliate.locale == "en"
-    end
-    text :body_es, :stored => true, :as => "body_text_es" do |idoc|
-      idoc.body if idoc.affiliate.locale == "es"
-    end
-    string :last_crawl_status
-    string :source
-    string :doctype
-    integer :affiliate_id
-    string :url
-    time :created_at, :trie => true
-  end
 
   def fetch
     destroy and return unless errors.empty?
@@ -160,40 +125,6 @@ class IndexedDocument < ActiveRecord::Base
 
   def last_crawl_status_error?
     !NON_ERROR_STATUSES.include?(last_crawl_status)
-  end
-
-  class << self
-    include QueryPreprocessor
-
-    def search_for(query, affiliate, document_collection, page = 1, per_page = 3, created_at = nil)
-      sanitized_query = preprocess(query)
-      return if affiliate.nil? or sanitized_query.blank?
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
-        search do
-          fulltext sanitized_query do
-            highlight :title, :title_es, :frag_list_builder => 'single'
-            highlight :description, :description_es, :fragment_size => 255
-            highlight :body, :body_es, :fragment_size => 255
-          end
-          with(:affiliate_id, affiliate.id)
-          any_of do
-            document_collection.url_prefixes.each { |url_prefix| with(:url).starting_with(url_prefix.prefix) }
-          end unless document_collection.nil?
-          without(:url).any_of affiliate.excluded_urls.collect { |excluded_url| excluded_url.url } unless affiliate.excluded_urls.empty?
-          with(:last_crawl_status, OK_STATUS)
-          with(:created_at).greater_than(created_at) if created_at.present?
-          paginate :page => page, :per_page => per_page
-        end
-      end
-    rescue RSolr::Error::Http => e
-      Rails.logger.warn "Error IndexedDocument#search_for: #{e.to_s}"
-      nil
-    end
-
-    def refresh(extent)
-      select("distinct affiliate_id").each { |result| Affiliate.find(result[:affiliate_id]).refresh_indexed_documents(extent) rescue nil }
-    end
-
   end
 
   def self_url

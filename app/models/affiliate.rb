@@ -12,45 +12,52 @@ class Affiliate < ActiveRecord::Base
   INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
   MAX_NAME_LENGTH = 33.freeze
 
-  has_many :memberships, :dependent => :destroy
+  with_options dependent: :destroy do |assoc|
+    assoc.has_many :memberships
+    assoc.has_many :features, :through => :affiliate_feature_addition
+    assoc.has_many :boosted_contents
+    assoc.has_many :sayt_suggestions
+    assoc.has_many :superfresh_urls
+    assoc.has_many :featured_collections
+    assoc.has_many :indexed_documents
+    assoc.has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC'
+    assoc.has_many :excluded_urls
+    assoc.has_many :site_domains, :order => 'domain ASC'
+    assoc.has_many :excluded_domains, :order => 'domain ASC'
+    assoc.has_many :affiliate_feature_addition
+    assoc.has_many :connections, :order => 'connections.position ASC'
+    assoc.has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection'
+    assoc.has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC'
+    assoc.has_many :flickr_profiles, order: 'flickr_profiles.url ASC'
+    assoc.has_many :facebook_profiles
+    assoc.has_one :image_search_label
+    assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
+    assoc.has_one :affiliate_note
+    assoc.has_one :site_feed_url
+    assoc.has_many :affiliate_twitter_settings
+  end
+
   has_many :users, order: 'contact_name', through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
-  has_many :features, :through => :affiliate_feature_addition, :dependent => :destroy
-  has_many :boosted_contents, :dependent => :destroy
-  has_many :sayt_suggestions, :dependent => :destroy
-  has_many :superfresh_urls, :dependent => :destroy
-  has_many :featured_collections, :dependent => :destroy
-  has_many :indexed_documents, :dependent => :destroy
-  has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC', dependent: :destroy
   has_many :rss_feed_urls, through: :rss_feeds, uniq: true
-  has_many :excluded_urls, :dependent => :destroy
-  has_many :site_domains, :dependent => :destroy, :order => 'domain ASC'
-  has_many :excluded_domains, :dependent => :destroy, :order => 'domain ASC'
-  has_many :affiliate_feature_addition, :dependent => :destroy
-  has_many :connections, :order => 'connections.position ASC', :dependent => :destroy
-  has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection', :dependent => :destroy
-  has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC', :dependent => :destroy
   has_many :url_prefixes, :through => :document_collections
-  has_many :affiliate_twitter_settings, :dependent => :destroy
   has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
-  has_many :flickr_profiles, dependent: :destroy, order: 'flickr_profiles.url ASC'
-  has_many :facebook_profiles, :dependent => :destroy
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.username ASC'
-  has_one :image_search_label, :dependent => :destroy
-  has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC', :dependent => :destroy
   belongs_to :agency
-  has_one :affiliate_note, dependent: :destroy
-  has_one :site_feed_url, dependent: :destroy
+
   has_many :daily_query_stats, dependent: :destroy, foreign_key: :affiliate, primary_key: :name
-  has_many :daily_query_noresults_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
-  has_many :daily_click_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
-  has_many :queries_clicks_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
-  has_many :daily_left_nav_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
-  has_many :daily_usage_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
   has_and_belongs_to_many :tags
   belongs_to :status
 
+  with_options dependent: :delete_all, foreign_key: :affiliate, primary_key: :name do |assoc|
+    assoc.has_many :daily_query_noresults_stats
+    assoc.has_many :daily_click_stats
+    assoc.has_many :queries_clicks_stats
+    assoc.has_many :daily_left_nav_stats
+    assoc.has_many :daily_usage_stats
+  end
+  
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -138,11 +145,11 @@ class Affiliate < ActiveRecord::Base
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
-      :display_name => "Display name",
-      :name => "Site Handle (visible to searchers in the URL)",
-      :header_image_file_size => 'Logo file size',
-      :mobile_logo_file_size => 'Mobile Logo file size',
-      :page_background_image_file_size => 'Page Background Image file size'
+    :display_name => "Display name",
+    :name => "Site Handle (visible to searchers in the URL)",
+    :header_image_file_size => 'Logo file size',
+    :mobile_logo_file_size => 'Mobile Logo file size',
+    :page_background_image_file_size => 'Page Background Image file size'
   }
 
   FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif']
@@ -150,25 +157,25 @@ class Affiliate < ActiveRecord::Base
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = {
-      page_background_color: '#F7F7F7',
-      content_background_color: '#FFFFFF',
-      content_border_color: '#CACACA',
-      content_box_shadow_color: '#555555',
-      search_button_text_color: '#FFFFFF',
-      search_button_background_color: '#00396F',
-      left_tab_text_color: '#9E3030',
-      title_link_color: '#2200CC',
-      visited_title_link_color: '#800080',
-      description_text_color: '#000000',
-      url_link_color: '#008000' }
+    page_background_color: '#F7F7F7',
+    content_background_color: '#FFFFFF',
+    content_border_color: '#CACACA',
+    content_box_shadow_color: '#555555',
+    search_button_text_color: '#FFFFFF',
+    search_button_background_color: '#00396F',
+    left_tab_text_color: '#9E3030',
+    title_link_color: '#2200CC',
+    visited_title_link_color: '#800080',
+    description_text_color: '#000000',
+    url_link_color: '#008000' }
 
   THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = {
-      :font_family => FONT_FAMILIES[0],
-      :show_content_border => '0',
-      :show_content_box_shadow => '0',
-      :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
+    :font_family => FONT_FAMILIES[0],
+    :show_content_border => '0',
+    :show_content_box_shadow => '0',
+    :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 

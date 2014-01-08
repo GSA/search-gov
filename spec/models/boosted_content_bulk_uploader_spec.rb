@@ -5,6 +5,10 @@ describe BoostedContentBulkUploader do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:uploader) { BoostedContentBulkUploader.new(affiliate) }
 
+  before do
+    ElasticBoostedContent.recreate_index
+  end
+
   describe "#upload" do
     context "when the uploaded file has .png extension" do
       let(:png_file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
