@@ -1,52 +1,30 @@
-class Sites::BoostedContentsController < Sites::SetupSiteController
+class Sites::BoostedContentsController < Sites::BestBetsController
   before_filter :setup_boosted_content, only: [:edit, :update, :destroy]
 
   def index
-    @boosted_contents = @site.boosted_contents.substring_match(params[:query]).paginate(
-        per_page: BoostedContent.per_page,
-        page: params[:page],
-        order: 'boosted_contents.updated_at DESC, boosted_contents.title ASC')
+    @boosted_contents = search_best_bets(BoostedContent)
   end
 
   def new
     @boosted_content = BoostedContent.new(publish_start_on: Date.current)
-    build_keywords
-  end
-
-  def new_keyword
-    @index = params[:index].to_i
-    respond_to { |format| format.js }
+    build_children
   end
 
   def create
     @boosted_content = @site.boosted_contents.build(boosted_content_params)
-    if @boosted_content.save
-      redirect_to site_best_bets_texts_path(@site),
-                  flash: { success: "You have added #{@boosted_content.title} to this site." }
-    else
-      build_keywords
-      render action: :new
-    end
-  end
-
-  def edit
-    build_keywords
+    create_best_bet(@boosted_content, site_best_bets_texts_path(@site))
   end
 
   def update
-    if @boosted_content.destroy_and_update_attributes(boosted_content_params)
-      redirect_to site_best_bets_texts_path(@site),
-                  flash: { success: "You have updated #{@boosted_content.title}." }
-    else
-      build_keywords
-      render action: :edit
-    end
+    update_best_bet(@boosted_content, site_best_bets_texts_path(@site), boosted_content_params)
   end
 
   def destroy
-    @boosted_content.destroy
-    redirect_to site_best_bets_texts_path(@site),
-                flash: { success: "You have removed #{@boosted_content.title} from this site." }
+    destroy_best_bet(@boosted_content, site_best_bets_texts_path(@site))
+  end
+
+  def build_children
+    @boosted_content.boosted_content_keywords.build if @boosted_content.boosted_content_keywords.blank?
   end
 
   private
@@ -61,11 +39,6 @@ class Sites::BoostedContentsController < Sites::SetupSiteController
         permit(:url, :title, :description, :status,
                :publish_start_on, :publish_end_on,
                boosted_content_keywords_attributes: [:id, :value])
-  end
-
-  def build_keywords
-    @boosted_content.boosted_content_keywords.
-        build if @boosted_content.boosted_content_keywords.blank?
   end
 
 end
