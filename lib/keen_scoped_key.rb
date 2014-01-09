@@ -1,4 +1,3 @@
-require 'keen/scopedkey'
 module KeenScopedKey
   def self.generate(affiliate_id)
     data = { "filters" => [{ "property_name" => "affiliate_id", "operator" => "eq", "property_value" => affiliate_id }] }
