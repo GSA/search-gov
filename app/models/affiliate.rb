@@ -48,6 +48,8 @@ class Affiliate < ActiveRecord::Base
   has_many :daily_left_nav_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
   has_many :daily_usage_stats, dependent: :delete_all, foreign_key: :affiliate, primary_key: :name
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
+  has_and_belongs_to_many :tags
+  belongs_to :status
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
@@ -191,7 +193,8 @@ class Affiliate < ActiveRecord::Base
                                          :header_footer_css, :nested_header_footer_css,
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
-                                         :look_and_feel_css, :mobile_look_and_feel_css]
+                                         :look_and_feel_css, :mobile_look_and_feel_css,
+                                         :go_live_date]
   define_json_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
