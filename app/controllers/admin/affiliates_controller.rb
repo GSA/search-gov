@@ -24,12 +24,12 @@ class Admin::AffiliatesController < Admin::AdminController
                              :affiliate_feature_addition, :jobs_enabled, :agency,
                              :excluded_domains, :search_engine]
 
-    config.update.columns.add_subgroup 'Analytics & Tracking Code' do |name_group|
+    config.update.columns.add_subgroup 'Analytics-Tracking Code' do |name_group|
       name_group.add :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code
       name_group.collapsed = true
     end
 
-    config.update.columns.add_subgroup 'Theme, Header, Footer & URLs' do |name_group|
+    config.update.columns.add_subgroup 'Theme-Header-Footer-URLs' do |name_group|
       name_group.add :theme, :has_staged_content,
                      :uses_managed_header_footer, :staged_uses_managed_header_footer,
                      :header_footer_css, :staged_header_footer_css,
