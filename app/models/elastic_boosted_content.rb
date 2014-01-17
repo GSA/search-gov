@@ -1,5 +1,6 @@
 class ElasticBoostedContent
   extend Indexable
+  OPTIMIZING_INCLUDES = [:affiliate, :boosted_content_keywords].freeze
 
   self.settings = ElasticSettings::COMMON
 

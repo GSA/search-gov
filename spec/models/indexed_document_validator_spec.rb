@@ -33,11 +33,6 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
         IndexedDocumentValidator.perform(@idoc.id)
       end
 
-      it "should remove IndexedDocument from solr" do
-        IndexedDocument.solr_search_ids { with :affiliate_id, aff.id }.should_not be_blank
-        @idoc.should_receive(:remove_from_index)
-        IndexedDocumentValidator.perform(@idoc.id)
-      end
     end
 
     context "when the IndexedDocument is valid" do

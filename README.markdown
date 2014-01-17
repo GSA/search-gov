@@ -59,9 +59,25 @@ You can create the USASearch-related indexes like this:
 
     rake usasearch:elasticsearch:create_indexes
 
-You can reindex ActiveRecord-backed indexes like this:
+You can index all the records from ActiveRecord-backed indexes like this:
 
-    rake usasearch:elasticsearch:reindex[FeaturedCollection]
+    rake usasearch:elasticsearch:index_all[FeaturedCollection+BoostedContent]
+
+If you want it to run in parallel using Resque workers, call it like this:
+
+    rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
+
+Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the ElasticSearch schema first, do this:
+
+    rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
+
+If you are changing a schema and want to migrate the index without having it be unavailable, do this:
+
+    rake usasearch:elasticsearch:migrate[FeaturedCollection]
+
+Same thing, but using Resque to index in parallel:
+
+    rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
 
 Install the [Inquisitor](https://github.com/polyfractal/elasticsearch-inquisitor) plugin to see how our analyzers look at text.
 

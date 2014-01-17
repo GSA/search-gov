@@ -52,21 +52,20 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+require 'test_services'
 unless ENV['TRAVIS']
-  require 'test_services'
   TestServices::start_redis
 end
 
 EmailTemplate.load_default_templates
-Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
-  klass = File.basename(filename, '.rb').camelize.constantize
-  klass.recreate_index if klass.kind_of?(Indexable)
-end
+TestServices::create_es_indexes
 
 # EventMachine instance for Keen IO
 Thread.new { EventMachine.run }
 
 at_exit do
+  TestServices::delete_es_indexes
   TestServices::stop_redis unless ENV['TRAVIS']
   EventMachine.stop
+
 end

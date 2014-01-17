@@ -1,14 +1,5 @@
 class ElasticFeaturedCollectionResults < ElasticResults
 
-  def extract_results(hits)
-    ids = hits.collect { |hit| hit['_id'] }
-    instances = FeaturedCollection.where(id: ids).includes([:featured_collection_links, :featured_collection_keywords])
-    instance_hash = Hash[instances.map { |instance| [instance.id, instance] }]
-    hits.map { |hit| highlight_instance(hit['highlight'], instance_hash[hit['_id'].to_i]) }.compact
-  end
-
-  private
-
   def highlight_instance(highlight, instance)
     if highlight.present? and instance.present?
       instance.title = highlight['title'].first if highlight['title']

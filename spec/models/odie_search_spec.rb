@@ -6,11 +6,12 @@ describe OdieSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
+    ElasticIndexedDocument.recreate_index
     affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element',
                                         :description => 'Leeloo the supreme being',
                                         :body => 'other esoteric content related to the document somehow',
                                         :last_crawled_at => Time.now, :last_crawl_status => "OK")
-    IndexedDocument.reindex
+    ElasticIndexedDocument.commit
   end
 
   describe "#initialize(options)" do

@@ -1,16 +1,20 @@
 class OdieSearch < Search
-  attr_reader :document_collection,
-              :hits
+  attr_reader :document_collection
 
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
     @document_collection = options[:document_collection]
-    @hits, @total = [], 0
+    @total = 0
   end
 
   def search
-    IndexedDocument.search_for(@query, @affiliate, @document_collection, @page, @per_page)
+    ElasticIndexedDocument.search_for(q: @query,
+                                      affiliate_id: @affiliate.id,
+                                      document_collection: @document_collection,
+                                      language: @affiliate.locale,
+                                      size: @per_page,
+                                      offset: (@page - 1) * @per_page)
   end
 
   def cache_key
@@ -21,7 +25,6 @@ class OdieSearch < Search
     if response
       @total = response.total
       @results = paginate(process_results(response))
-      @hits = response.hits(:verify => true)
       @startrecord = ((@page - 1) * 10) + 1
       @endrecord = @startrecord + @results.size - 1
       @module_tag = @total > 0 ? 'AIDOC' : nil
@@ -29,18 +32,22 @@ class OdieSearch < Search
   end
 
   def process_results(response)
-    processed = response.hits(:verify => true).collect do |hit|
-      content_field = hit.highlights(:description).empty? && hit.highlights(:body).present? ? :body : :description
+    processed = response.results.collect do |result|
+      content_field = !(has_highlight?(result.description)) && has_highlight?(result.body) ? result.body : result.description
       {
-        'title' => SolrBingHighlighter.hl(hit, :title),
-        'unescapedUrl' => hit.instance.url,
-        'content' => SolrBingHighlighter.hl(hit, content_field)
+        'title' => result.title,
+        'unescapedUrl' => result.url,
+        'content' => content_field
       }
     end
     processed.compact
   end
 
   protected
+
+  def has_highlight?(field)
+    field =~ /\uE000/
+  end
 
   def log_serp_impressions
     modules = []

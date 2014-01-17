@@ -1,27 +1,60 @@
 module Indexable
   attr_accessor :default_sort, :mappings, :settings
-  attr_writer :index_name, :index_type
+
+  DELIMTER = '-'
 
   def index_name
-    assign_index_name unless defined?(@index_name)
-    @index_name
+    @index_name ||= [base_index_name, Time.now.strftime("%Y%m%d%H%M%S%L")].join(DELIMTER)
+  end
+
+  def reader_alias
+    self.index_alias :reader
+  end
+
+  def writer_alias
+    self.index_alias :writer
+  end
+
+  def index_alias(type)
+    [self.base_index_name, type].join(DELIMTER)
   end
 
   def index_type
-    assign_index_type unless defined?(@index_type)
-    @index_type
+    @index_type ||= self.name.underscore
+  end
+
+  def base_index_name
+    [ES::INDEX_PREFIX, self.name.tableize].join(DELIMTER)
   end
 
   def delete_index
-    ES::client.indices.delete index: index_name
+    ES::client.indices.delete(index: "#{base_index_name}#{DELIMTER}*")
   end
 
   def create_index
     ES::client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
+    ES::client.indices.put_alias index: index_name, name: writer_alias
+    ES::client.indices.put_alias index: index_name, name: reader_alias
+  end
+
+  def migrate_writer
+    @index_name = nil
+    ES::client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
+    update_alias(writer_alias)
+  end
+
+  def migrate_reader
+    old_index = ES::client.indices.get_alias(name: reader_alias).keys.first
+    new_index = ES::client.indices.get_alias(name: writer_alias).keys.first
+    update_alias(reader_alias, new_index)
+    ES::client.indices.delete(index: old_index)
   end
 
   def index_exists?
-    ES::client.indices.exists index: index_name
+    ES::client.indices.get_alias(name: writer_alias)
+    true
+  rescue Elasticsearch::Transport::Transport::Errors::NotFound
+    false
   end
 
   def recreate_index
@@ -29,18 +62,33 @@ module Indexable
     create_index
   end
 
-  def index(record)
-    hash = { index: index_name, type: index_type, id: record[:id], body: record.except(:id, :ttl) }
-    hash.merge!(ttl: record[:ttl]) if record[:ttl]
-    ES::client.index(hash)
-    Rails.logger.info "Indexed entry #{record[:id]} to index #{index_name}"
+  def index(records)
+    records = [records] unless records.is_a?(Array)
+    ES::client.bulk(body: bulkify(records))
+    Rails.logger.info "Indexed #{records.size} entries to index #{index_name}"
   end
 
-  def delete(id)
-    ES::client.delete(index: index_name, type: index_type, id: id)
+  def bulkify(records)
+    records.reduce([]) do |bulk_array, record|
+      meta_data = { _index: writer_alias, _type: index_type, _id: record[:id] }
+      meta_data.merge!(_ttl: record[:ttl]) if record[:ttl]
+      bulk_array << { index: meta_data }
+      bulk_array << record.except(:id, :ttl)
+    end
+  end
+
+  def delete(ids)
+    ids = [ids] unless ids.is_a?(Array)
+    ES::client.bulk(body: bulkify_delete(ids))
   rescue Exception => e
     Rails.logger.error "Problem in #{self.name}#delete(): #{e}"
     nil
+  end
+
+  def bulkify_delete(ids)
+    ids.map do |id|
+      { delete: { _index: writer_alias, _type: index_type, _id: id } }
+    end
   end
 
   def search_for(options)
@@ -54,25 +102,27 @@ module Indexable
   end
 
   def commit
-    ES::client.indices.refresh index: index_name
+    ES::client.indices.refresh index: writer_alias
   end
 
   private
 
-  def assign_index_name
-    self.index_name = [ES::INDEX_PREFIX, self.name.tableize].join(':').freeze
-  end
-
-  def assign_index_type
-    self.index_type = self.name.underscore.freeze
-  end
-
   def search(query)
-    params = { preference: '_local', index: index_name, type: index_type, body: query.body,
+    params = { preference: '_local', index: reader_alias, type: index_type, body: query.body,
                from: query.offset, size: query.size, sort: query.sort }
     hits = ES::client.search(params)['hits']
     hits['offset'] = query.offset
     "#{self.name}Results".constantize.new(hits)
+  end
+
+  def update_alias(alias_name, new_index = index_name)
+    old_index = ES::client.indices.get_alias(name: alias_name).keys.first
+    ES::client.indices.update_aliases body: {
+      actions: [
+        { remove: { index: old_index, alias: alias_name } },
+        { add: { index: new_index, alias: alias_name } }
+      ]
+    }
   end
 
 end

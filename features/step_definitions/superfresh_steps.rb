@@ -10,8 +10,6 @@ Given /^the following SuperfreshUrls exist:$/ do |table|
 end
 
 Given /^the following IndexedDocuments exist:$/ do |table|
-  ActiveRecord::Observer.disable_observers
-
   table.hashes.each do |hash|
     IndexedDocument.create! do |id|
       id.title = hash[:title]
@@ -27,8 +25,7 @@ Given /^the following IndexedDocuments exist:$/ do |table|
       end
     end
   end
-  Sunspot.commit
-  ActiveRecord::Observer.enable_observers
+  ElasticIndexedDocument.commit
 end
 
 When /^the url "([^\"]*)" has been crawled$/ do |url|
