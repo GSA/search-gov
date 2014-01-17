@@ -3,8 +3,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Sidebar Settings
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
+      | display_name | name       | contact_email   | contact_name | left_nav_label                   |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is way too long       |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -23,7 +23,8 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
 
-    Then the "Label for Sidebar" field should be blank
+    Then the "Label for Sidebar" field should contain "This label is w"
+    And the "Label for Sidebar" field should not contain "This label is way too long"
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
     And the "Is Image Search Label 0 navigable" should be switched on
@@ -34,7 +35,7 @@ Feature: Manage Display
     And the "Rss Feed 3" field should contain "Videos"
 
     When I fill in the following:
-      | Label for Sidebar     | Search        |
+      | Label for Sidebar     |         |
       | Default search label  | Web           |
       | Image Search Label 0  | Latest Images |
       | Document Collection 1 | Latest Blog   |
@@ -47,7 +48,7 @@ Feature: Manage Display
 
     When I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
-    And the "Label for Sidebar" field should contain "Search"
+    And the "Label for Sidebar" field should be blank
     And the "Default search label" field should contain "Web"
     And the "Image Search Label 0" field should contain "Latest Images"
     And the "Is Image Search Label 0 navigable" should be switched off

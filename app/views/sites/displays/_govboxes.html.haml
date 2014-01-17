@@ -10,7 +10,7 @@
       %tr
         %td.name
           = f.label :rss_govbox_label, nil, class: 'off-screen-text'
-          = f.text_field :rss_govbox_label
+          = f.text_field :rss_govbox_label, maxlength: 15
         %td.cell-1x= link_to 'RSS (combined)', site_rss_feeds_path(@site)
         = switch_cell f, :is_rss_govbox_enabled
     - if @site.youtube_profiles.exists?

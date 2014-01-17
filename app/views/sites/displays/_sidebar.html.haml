@@ -1,6 +1,6 @@
 %h3 Sidebar (Faceted Navigation)
 = f.label :left_nav_label, 'Label for Sidebar'
-= f.text_field :left_nav_label, maxlength: 20
+= f.text_field :left_nav_label, maxlength: 15
 
 %table#sidebar.table.table-draggable
   %thead
@@ -13,7 +13,7 @@
       %td
         %i.icon.icon-reorder{ style: 'visibility: hidden' }
         = f.label :default_search_label, nil, class: 'required hide'
-        = f.text_field :default_search_label, maxlength: 20
+        = f.text_field :default_search_label, maxlength: 15
       %td= link_to 'Domains', site_domains_path(@site)
       %td.muted ON
     - @site.navigations.each_with_index do |nav, index|
@@ -24,6 +24,6 @@
               %i.draggable.icon.icon-reorder
               = navigation_form.hidden_field :position, { value: index, class: 'position' }
               = navigable_form.label :name, "#{nav.navigable_type.titleize} #{index}", class: 'hide'
-              = navigable_form.text_field :name
+              = navigable_form.text_field :name, maxlength: 15
             %td.cell-1x= link_to_site_navigable(nav.navigable)
             = navigation_switch_cell navigation_form, nav, index

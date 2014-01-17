@@ -21,7 +21,7 @@ Given /^the following Affiliates exist:$/ do |table|
       profile = YoutubeProfile.where(username: youtube_handle).first_or_initialize
       profile.save!(validate: false)
       affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists? profile
-      managed_feed = affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
+      affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
     end if hash[:youtube_handles].present?
 
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
