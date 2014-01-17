@@ -103,20 +103,19 @@ class IndexedDocument < ActiveRecord::Base
     doc = Nokogiri::HTML(file)
     doc.css('script').each(&:remove)
     doc.css('style').each(&:remove)
-    body = extract_body_from(doc)
-    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
-    self.attributes = {:body => body, :doctype => 'html',
-                       :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
+    self.attributes = { body: extract_body_from(doc), doctype: 'html', last_crawled_at: Time.now, last_crawl_status: OK_STATUS }
   end
 
   def index_application_file(file_path, doctype)
     document_text = parse_file(file_path, 't').strip rescue nil
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if document_text.blank?
-    self.attributes = {:body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS}
+    self.attributes = { :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS }
   end
 
   def extract_body_from(nokogiri_doc)
-    scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8'))) rescue ''
+    body = scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8'))) rescue ''
+    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
+    body
   end
 
   def scrub_inner_text(inner_text)
