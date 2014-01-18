@@ -10,13 +10,8 @@ module MobileNavigationsHelper
 
     html = search_everything_navigation(search, search_params)
     nav_items = build_navigations_items(search, search_params, dc, rss_feed, navigations)
-
-    if navigations.length <= 3
-      navigation_wrapper(html.html_safe << nav_items.join("\n").html_safe)
-    else
-      active_navigation_index = detect_active_navigation_index(search, navigations, dc, rss_feed)
-      navigations_with_dropdown(html, nav_items, active_navigation_index)
-    end
+    active_navigation_index = detect_active_navigation_index(search, navigations, dc, rss_feed)
+    build_navigations html, nav_items, navigations.length, active_navigation_index
   end
 
   def is_inactive_site_search?(search)
@@ -50,39 +45,65 @@ module MobileNavigationsHelper
   end
 
   def build_navigations_items(search, search_params, dc, rss_feed, navigations)
+    query = search.query
     navigations.map do |navigation|
-      case navigation.navigable
-      when DocumentCollection
-        document_collection_navigation(search, search_params, dc, navigation)
-      when RssFeed
-        rss_feed_navigation(search, search_params, rss_feed, navigation)
-      end
+      navigable = navigation.navigable
+      active_navigable, path =
+          case navigable
+          when DocumentCollection
+            [dc, document_collection_search_path(search_params, navigable, query)]
+          when RssFeed
+            [rss_feed, rss_feed_search_path(search_params, navigable, query)]
+          end
+      build_navigation(active_navigable, navigable, path)
     end
   end
 
-  def document_collection_navigation(search, search_params, dc, navigation)
-    navigable = navigation.navigable
-    is_active = dc == navigable
-    dc_params = search_params.slice(:affiliate, :external_tracking_code_disabled, :m, :sitelimit).
-        merge(dc: navigable.id,
-              query: search.query)
-
-    navigation_item(is_active, navigable.name, docs_search_path(dc_params))
+  def document_collection_search_path(search_params, navigable, query)
+    dc_params = navigable_params(search_params, :dc, navigable.id, query,
+                                 :affiliate, :external_tracking_code_disabled, :m, :sitelimit)
+    docs_search_path(dc_params)
   end
 
-  def rss_feed_navigation(search, search_params, rss_feed, navigation)
-    navigable = navigation.navigable
-    is_active = rss_feed == navigable
-    rss_params = search_params.slice(:affiliate, :external_tracking_code_disabled, :m, :tbs).
-        merge(channel: navigable.id,
-              query: search.query)
+  def rss_feed_search_path(search_params, navigable, query)
+    rss_params = navigable_params(search_params, :channel, navigable.id, query,
+                                  :affiliate, :external_tracking_code_disabled, :m, :tbs)
+    news_search_path(rss_params)
+  end
 
-    navigation_item(is_active, navigable.name, news_search_path(rss_params))
+  def navigable_params(search_params, id_sym, id, query, *keys)
+    search_params.slice(*keys).merge(id_sym => id, :query => query)
+  end
+
+  def build_navigation(active_navigable, navigable, path)
+    is_active = active_navigable == navigable
+    navigation_item(is_active, navigable.name, path)
+  end
+
+  def navigation_item(is_active, title, path)
+    css_class = is_active ? 'active' : nil
+    content_tag(:li, nil, class: css_class) do
+      link_to_unless is_active, title, path do
+        content_tag(:span, title)
+      end
+    end
   end
 
   def detect_active_navigation_index(search, navigations, dc, rss_feed)
     return if search.instance_of?(WebSearch) || (dc.nil? && rss_feed.nil?)
     navigations.map(&:navigable).find_index { |n| (n == dc) || (n == rss_feed) }
+  end
+
+  def build_navigations(html, nav_items, navigations_length, active_nav_index)
+    if navigations_length <= 3
+      navigation_wrapper(html.html_safe << nav_items.join("\n").html_safe)
+    else
+      navigations_with_dropdown(html, nav_items, active_nav_index)
+    end
+  end
+
+  def navigation_wrapper(html)
+    render partial: '/searches/nav_wrapper', locals: { html: html }
   end
 
   def navigations_with_dropdown(html, nav_items, active_nav_index)
@@ -99,20 +120,7 @@ module MobileNavigationsHelper
     navigation_wrapper(html)
   end
 
-  def navigation_wrapper(html)
-    render partial: 'nav_wrapper', locals: { html: html }
-  end
-
   def dropdown_navigation_wrapper(html)
-    render partial: 'dropdown_nav_wrapper', locals: { html: html }
-  end
-
-  def navigation_item(is_active, title, path)
-    css_class = is_active ? 'active' : nil
-    content_tag(:li, nil, class: css_class) do
-      link_to_unless is_active, title, path do
-        content_tag(:span, title)
-      end
-    end
+    render partial: '/searches/dropdown_nav_wrapper', locals: { html: html }
   end
 end
