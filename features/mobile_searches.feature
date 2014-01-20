@@ -154,11 +154,12 @@ Feature: Searches using mobile device
       | Apps | http://apps.usa.gov/    | 2        | true         |
       | Beta | http://apps.usa.gov/    | 6        | false        |
     And affiliate "en.agency.gov" has the following RSS feeds:
-      | name     | url                                | is_navigable | position |
-      | Articles | http://en.agency.gov/feed/articles | true         | 1        |
-      | Blog     | http://en.agency.gov/feed/blog     | true         | 3        |
-      | News     | http://en.agency.gov/feed/News     | true         | 4        |
-      | Inactive | http://en.agency.gov/feed/News     | false        | 5        |
+      | name      | url                                | is_navigable | position | show_only_media_content |
+      | Articles  | http://en.agency.gov/feed/articles | true         | 1        | false                   |
+      | Blog      | http://en.agency.gov/feed/blog     | true         | 3        | false                   |
+      | Media RSS | http://en.agency.gov/feed/Images   | true         | 4        | true                    |
+      | Inactive  | http://en.agency.gov/feed/News     | false        | 5        | false                   |
+      | News      | http://en.agency.gov/feed/News     | true         | 7        | false                   |
     And there are 10 news items for "News"
 
     When I am on en.agency.gov's mobile search page

@@ -29,8 +29,10 @@ module MobileNavigationsHelper
   def renderable_navigations(affiliate)
     navigations = affiliate.navigations.active
     navigations.reject! do |n|
-      n.navigable.is_a?(ImageSearchLabel) ||
-          (n.navigable.is_a?(RssFeed) && n.navigable.is_managed?)
+      navigable = n.navigable
+      navigable.is_a?(ImageSearchLabel) ||
+          (navigable.is_a?(RssFeed) &&
+              (navigable.is_managed? || navigable.show_only_media_content?))
     end
     navigations.to_a
   end
