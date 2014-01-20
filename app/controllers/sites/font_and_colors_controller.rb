@@ -14,7 +14,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
   private
 
   def site_params
-    params.require(:site).permit(
+    @site_params = params.require(:site).permit(
         { css_property_hash: [:content_background_color,
                               :content_border_color,
                               :content_box_shadow_color,
@@ -30,5 +30,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
                               :url_link_color,
                               :visited_title_link_color] },
         :theme)
+    @site_params[:css_property_hash] = @site.css_property_hash.merge(@site_params[:css_property_hash])
+    @site_params
   end
 end

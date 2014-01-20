@@ -12,7 +12,7 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
   end
 
   def site_params
-    params.require(:site).permit(
+    @site_params = params.require(:site).permit(
         { css_property_hash: [:page_background_image_repeat] },
         :favicon_url,
         :header_image,
@@ -21,5 +21,7 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
         :mark_page_background_image_for_deletion,
         :mobile_logo,
         :page_background_image)
+    @site_params[:css_property_hash] = @site.css_property_hash.merge(@site_params[:css_property_hash])
+    @site_params
   end
 end

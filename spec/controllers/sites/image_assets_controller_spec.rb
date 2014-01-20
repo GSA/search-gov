@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sites::FontAndColorsController do
+describe Sites::ImageAssetsController do
   fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
 
@@ -12,7 +12,7 @@ describe Sites::FontAndColorsController do
 
       context 'when site params are not valid' do
         before do
-          site.should_receive(:css_property_hash).and_return(page_background_image_repeat: 'repeat-x')
+          site.should_receive(:css_property_hash).and_return(font_family: 'Arial, san-serif')
           site.should_receive(:update_attributes).
               with(hash_including('css_property_hash' => { 'font_family' => 'Arial, san-serif',
                                                            'page_background_image_repeat' => 'repeat-x' })).
@@ -21,7 +21,7 @@ describe Sites::FontAndColorsController do
           put :update,
               site_id: site.id,
               id: 100,
-              site: { css_property_hash: { font_family: 'Arial, san-serif' } }
+              site: { css_property_hash: { page_background_image_repeat: 'repeat-x' } }
         end
 
         it { should render_template(:edit) }
