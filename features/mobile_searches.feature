@@ -149,17 +149,17 @@ Feature: Searches using mobile device
       | display_name | name          | contact_email    | contact_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
     And affiliate "en.agency.gov" has the following document collections:
-      | name | prefixes                | position | is_navigable |
-      | FAQs | http://answers.usa.gov/ | 0        | true         |
-      | Apps | http://apps.usa.gov/    | 2        | true         |
-      | Beta | http://apps.usa.gov/    | 6        | false        |
+      | name                 | prefixes                | position | is_navigable |
+      | FAQs                 | http://answers.usa.gov/ | 0        | true         |
+      | Apps                 | http://apps.usa.gov/    | 2        | true         |
+      | Inactive site search | http://apps.usa.gov/    | 6        | false        |
     And affiliate "en.agency.gov" has the following RSS feeds:
-      | name      | url                                | is_navigable | position | show_only_media_content |
-      | Articles  | http://en.agency.gov/feed/articles | true         | 1        | false                   |
-      | Blog      | http://en.agency.gov/feed/blog     | true         | 3        | false                   |
-      | Media RSS | http://en.agency.gov/feed/Images   | true         | 4        | true                    |
-      | Inactive  | http://en.agency.gov/feed/News     | false        | 5        | false                   |
-      | News      | http://en.agency.gov/feed/News     | true         | 7        | false                   |
+      | name                 | url                                | is_navigable | position | show_only_media_content |
+      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |
+      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |
+      | Media RSS            | http://en.agency.gov/feed/Images   | true         | 4        | true                    |
+      | Inactive news search | http://en.agency.gov/feed/News     | false        | 5        | false                   |
+      | News                 | http://en.agency.gov/feed/News     | true         | 7        | false                   |
     And there are 10 news items for "News"
 
     When I am on en.agency.gov's mobile search page
@@ -181,8 +181,8 @@ Feature: Searches using mobile device
     And I should see "Everything FAQs News More Articles Apps Blog" within the SERP navigation
     And I should see at least "10" web search results
 
-    When I am on en.agency.gov's "Beta" mobile site search page
-    Then I should not see the mobile navigation
+    When I am on en.agency.gov's "Inactive site search" mobile site search page
+    Then I should see "Inactive site search" within the SERP active navigation
 
-    When I am on en.agency.gov's "Inactive" mobile news search page
-    Then I should not see the mobile navigation
+    When I am on en.agency.gov's "Inactive news search" mobile news search page
+    Then I should see "Inactive news search" within the SERP active navigation

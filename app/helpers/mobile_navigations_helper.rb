@@ -1,10 +1,28 @@
 module MobileNavigationsHelper
-  def mobile_navigations(search, search_params)
-    return if is_inactive_site_search?(search) || is_inactive_news_search?(search)
+  def navigations_and_logo(search, search_params)
+    affiliate = search.affiliate
+    logo_html = content_tag :div, mobile_header(affiliate), class: 'logo'
 
-    navigations = renderable_navigations(search.affiliate)
-    return if navigations.blank?
+    if is_inactive_site_search?(search)
+      return logo_html << navigation_context(search.document_collection)
+    elsif is_inactive_news_search?(search)
+      return logo_html << navigation_context(search.rss_feed)
+    end
 
+    navigations = renderable_navigations(affiliate)
+
+    if navigations.present?
+      html = render(partial: '/searches/nav_button') <<
+          logo_html <<
+          mobile_navigations(search, search_params, navigations)
+    else
+      html = logo_html
+    end
+
+    html.html_safe
+  end
+
+  def mobile_navigations(search, search_params, navigations)
     dc = search.is_a?(SiteSearch) ? search.document_collection : nil
     rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
 
@@ -12,6 +30,10 @@ module MobileNavigationsHelper
     nav_items = build_navigations_items(search, search_params, dc, rss_feed, navigations)
     active_navigation_index = detect_active_navigation_index(search, navigations, dc, rss_feed)
     build_navigations html, nav_items, navigations.length, active_navigation_index
+  end
+
+  def active_search?(search)
+    !is_inactive_site_search?(search) && !is_inactive_news_search?(search)
   end
 
   def is_inactive_site_search?(search)
@@ -24,6 +46,11 @@ module MobileNavigationsHelper
     search.is_a?(NewsSearch) &&
         search.rss_feed &&
         !search.rss_feed.navigation.is_active?
+  end
+
+  def navigation_context(navigable)
+    nav_html = navigation_item(true, navigable.name)
+    navigation_wrapper(nav_html, 'in')
   end
 
   def renderable_navigations(affiliate)
@@ -82,7 +109,7 @@ module MobileNavigationsHelper
     navigation_item(is_active, navigable.name, path)
   end
 
-  def navigation_item(is_active, title, path)
+  def navigation_item(is_active, title, path = nil)
     css_class = is_active ? 'active' : nil
     content_tag(:li, nil, class: css_class) do
       link_to_unless is_active, title, path do
@@ -104,8 +131,8 @@ module MobileNavigationsHelper
     end
   end
 
-  def navigation_wrapper(html)
-    render partial: '/searches/nav_wrapper', locals: { html: html }
+  def navigation_wrapper(html, nav_class = nil)
+    render partial: '/searches/nav_wrapper', locals: { html: html, nav_class: nav_class }
   end
 
   def navigations_with_dropdown(html, nav_items, active_nav_index)
