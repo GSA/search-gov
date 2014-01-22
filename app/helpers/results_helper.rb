@@ -31,7 +31,8 @@ module ResultsHelper
   end
 
   def link_to_tweet_link(tweet, title, url, position, options = {})
-    click_data = { i: tweet.instance.id, p: position, s: 'TWEET' }
+    clicked_url = options.delete(:url) { url }
+    click_data = { i: tweet.instance.id, p: position, s: 'TWEET', u: clicked_url }
     link_to title, url, { data: { click: click_data } }.reverse_merge(options)
   end
 

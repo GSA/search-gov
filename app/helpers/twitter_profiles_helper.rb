@@ -1,26 +1,24 @@
 module TwitterProfilesHelper
   def legacy_render_tweet_text(tweet, search, index)
-    html = highlight_hit(tweet, :tweet_text)
-    if tweet.instance.urls.present?
-      processed_urls = []
-      tweet.instance.urls.each do |entity_url|
-        next if processed_urls.include?(entity_url.url)
-        processed_urls << entity_url.url
-        link = tweet_link_with_click_tracking(entity_url.display_url.html_safe, entity_url.expanded_url, entity_url.url, @affiliate, search, index, @search_vertical)
-        html.gsub!(/#{Regexp.escape(entity_url.url)}/, link)
-      end
+    inject_tweet_links(tweet) do |entity_url|
+      tweet_link_with_click_tracking(entity_url.display_url.html_safe, entity_url.expanded_url, entity_url.url, @affiliate, search, index, @search_vertical)
     end
-    html
   end
 
   def tweet_text(tweet, position)
+    inject_tweet_links(tweet) do |entity_url|
+      link_to_tweet_link(tweet, entity_url.display_url.html_safe, entity_url.url, position, url: entity_url.expanded_url)
+    end
+  end
+
+  def inject_tweet_links(tweet)
     html = highlight_hit(tweet, :tweet_text)
     if tweet.instance.urls.present?
       processed_urls = []
       tweet.instance.urls.each do |entity_url|
         next if processed_urls.include?(entity_url.url)
         processed_urls << entity_url.url
-        link = link_to_tweet_link(tweet, entity_url.display_url.html_safe, entity_url.url, position)
+        link = yield entity_url
         html.gsub!(/#{Regexp.escape(entity_url.url)}/, link)
       end
     end

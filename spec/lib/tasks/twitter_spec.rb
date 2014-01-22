@@ -163,6 +163,7 @@ describe "Twitter rake tasks" do
           @stream.stub!(:each).and_yield(tweet_status_json)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          TwitterData.should_receive(:within_tweet_creation_time_threshold?) { true }
           @rake[task_name].invoke
           Tweet.count.should == 1
           tweet = Tweet.first
@@ -174,6 +175,7 @@ describe "Twitter rake tasks" do
           @stream.stub!(:each).and_yield(tweet_status_with_partial_urls_json)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          TwitterData.should_receive(:within_tweet_creation_time_threshold?).and_return(true)
           @rake[task_name].invoke
           Tweet.count.should == 1
           tweet = Tweet.first
@@ -187,6 +189,7 @@ describe "Twitter rake tasks" do
           @stream.stub!(:each).and_yield(retweet_status_json)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: RT @femaregion1: East Coast accounts giving specific #Sandy safety tips @femaregion1 @femaregion2 @FEMAregion3 @femaregion4 http://t.co/ ...")
+          TwitterData.should_receive(:within_tweet_creation_time_threshold?).and_return(true)
           @rake[task_name].invoke
           Tweet.count.should == 1
           tweet = Tweet.first
@@ -207,12 +210,11 @@ describe "Twitter rake tasks" do
         end
 
         it "should only create a new tweet if the user id matches a TwitterProfile" do
-          Tweet.count.should == 0
           @stream.stub!(:each).and_yield(@other_status)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
+          TwitterData.should_not_receive(:import_tweet)
           @rake[task_name].invoke
-          Tweet.count.should == 0
         end
 
         it "should delete a status if a delete message is received" do
@@ -230,7 +232,7 @@ describe "Twitter rake tasks" do
         it "should log an error message if one is received" do
           @stream.stub!(:each).and_yield('Bad message')
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          @logger.should_receive(:error).with("[#{now}] [TWITTER] [ERROR] Yajl::ParseError occured in stream: Bad message")
+          @logger.should_receive(:error).with("[#{now}] [TWITTER] [ERROR] MultiJson::DecodeError occured in stream: Bad message")
           @rake[task_name].invoke
         end
 

@@ -1,13 +1,17 @@
 namespace :usasearch do
   namespace :twitter do
 
+    desc 'refresh twitter lists members'
     task :refresh_lists, [:host] => :environment do |t, args|
-      TwitterData.configure_twitter_auth(args.host)
+      args.with_defaults host: 'default'
+      TwitterClient.twitter_auth_env = args.host
       ContinuousWorker.start { TwitterData.refresh_lists }
     end
 
+    desc 'refresh tweets from lists'
     task :refresh_lists_statuses, [:host] => :environment do |t, args|
-      TwitterData.configure_twitter_auth(args.host)
+      args.with_defaults host: 'default'
+      TwitterClient.twitter_auth_env = args.host
       ContinuousWorker.start { TwitterData.refresh_lists_statuses }
     end
 
@@ -17,7 +21,9 @@ namespace :usasearch do
       twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
       args.with_defaults(host: 'default')
 
-      auth_info = twitter_config[args.host] ? twitter_config[args.host] : twitter_config['default']
+      TwitterClient.twitter_auth_env = args.host
+      auth_info = twitter_config[args.host]
+      auth_info ||= twitter_config['default']
       TweetStream.configure do |config|
         auth_info.each do |key, value|
           config.send("#{key}=", value)

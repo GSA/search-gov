@@ -3,6 +3,8 @@ require 'spec_helper'
 describe TwitterData do
   disconnect_sunspot
 
+  let(:client) { mock('Twitter Client') }
+
   describe '#import_profile' do
     let(:user) do
       mock(Twitter::User, id: 100,
@@ -14,6 +16,25 @@ describe TwitterData do
     it 'should create profile' do
       TwitterData.import_profile(user)
       TwitterProfile.find_by_twitter_id(user.id).should be_present
+    end
+  end
+
+  describe '#import_tweet' do
+    it 'should ignore tweets older than 3 days ago' do
+      status = mock(Twitter::Tweet,
+                    id: 100,
+                    retweet?: false,
+                    text: 'hello from Twitter',
+                    urls: [],
+                    media: [])
+
+      tweet = mock_model(Tweet, new_record?: true)
+
+      status.should_receive(:created_at).and_return(100.hours.ago)
+      Tweet.stub_chain(:where, :first_or_initialize) { tweet }
+      tweet.should_not_receive(:update_attributes!)
+
+      TwitterData.import_tweet(status)
     end
   end
 
@@ -33,7 +54,8 @@ describe TwitterData do
     let(:ar_list) { mock_model(TwitterList) }
 
     before do
-      Twitter.should_receive(:lists).with(100).and_return([list])
+      TwitterClient.should_receive(:instance).and_return(client)
+      client.should_receive(:lists).with(100).and_return([list])
       TwitterData.should_receive(:import_list).with(8).and_return(ar_list)
     end
 
@@ -69,10 +91,16 @@ describe TwitterData do
     it 'should return member ids' do
       member_ids = [[17, 13, 11], [5, 3, 2], []].freeze
       cursor = mock(Twitter::Cursor)
-      Twitter.should_receive(:list_members).with(100, cursor: -1).and_return(cursor)
-      Twitter.should_receive(:list_members).with(100, cursor: 5).and_return(cursor)
-      cursor.stub_chain(:users, :map).and_return(member_ids[0], member_ids[1])
-      cursor.should_receive(:next_cursor).and_return(5, 0)
+
+      TwitterClient.stub(:instance) { client }
+      client.should_receive(:list_members).with(100, cursor: -1).and_return(cursor)
+      client.should_receive(:list_members).with(100, cursor: 5).and_return(cursor)
+
+      cursor_attrs = mock('cursor attributes')
+      cursor.stub(:attrs).and_return(cursor_attrs)
+
+      cursor_attrs.stub_chain(:[], :map).and_return(member_ids[0], member_ids[1])
+      cursor_attrs.should_receive(:[]).with(:next_cursor).and_return(5, 0)
       TwitterData.get_list_member_ids(100).should == member_ids.flatten
     end
   end
@@ -97,20 +125,21 @@ describe TwitterData do
     before { TwitterList.stub(:find_by_id).and_return(list) }
 
     it 'should process all tweets' do
-      Twitter.should_receive(:list_timeline).
+      TwitterClient.should_receive(:instance).twice.and_return(client)
+
+      client.should_receive(:list_timeline).
           with(list.id,
                { since_id: list.last_status_id, count: TwitterData::LIST_TIMELINE_PER_PAGE }).
           and_return(statuses)
 
       statuses.should_receive(:each).and_yield(status)
-      TwitterData.should_receive(:import_profile).with(status.user)
       TwitterData.should_receive(:import_tweet).with(status)
 
       statuses.stub_chain(:first, :id).and_return(1000)
       statuses.stub_chain(:last, :id).and_return(500)
 
       statuses.should_receive(:length).and_return(TwitterData::LIST_TIMELINE_PER_PAGE)
-      Twitter.should_receive(:list_timeline).
+      client.should_receive(:list_timeline).
           with(list.id,
                { since_id: list.last_status_id, max_id: 500, count: TwitterData::LIST_TIMELINE_PER_PAGE }).
           and_return([])
@@ -122,7 +151,8 @@ describe TwitterData do
 
   describe '#get_list_statuses' do
     it 'should return an empty array if the list is not found' do
-      Twitter.should_receive(:list_timeline).and_raise(Twitter::Error::NotFound)
+      TwitterClient.should_receive(:instance).and_return(client)
+      client.should_receive(:list_timeline).and_raise(Twitter::Error::NotFound)
       TwitterData.get_list_statuses(1, {}).should be_empty
     end
   end

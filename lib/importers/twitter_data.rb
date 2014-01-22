@@ -9,14 +9,33 @@ module TwitterData
     profile = TwitterProfile.where(twitter_id: twitter_user.id).first_or_initialize
     profile.screen_name = twitter_user.screen_name
     profile.name = twitter_user.name
-    profile.profile_image_url = twitter_user.profile_image_url
+    profile.profile_image_url = twitter_user.profile_image_url.to_s
     profile.save(validate: false)
+    profile
   end
 
   def self.import_tweet(status)
     tweet = Tweet.where(tweet_id: status.id).first_or_initialize
     return unless tweet.new_record?
 
+    original_status, text = extract_original_status_and_text(status)
+    return unless within_tweet_creation_time_threshold?(original_status.created_at)
+
+    import_profile(status.user)
+
+    sanitized_urls = extract_sanitized_urls(original_status)
+
+    tweet.update_attributes!(tweet_text: text,
+                             published_at: original_status.created_at,
+                             twitter_profile_id: status.user.id,
+                             urls: sanitized_urls)
+  end
+
+  def self.within_tweet_creation_time_threshold?(created_at)
+    created_at > 3.days.ago.beginning_of_day
+  end
+
+  def self.extract_original_status_and_text(status)
     if status.retweet?
       original_status = status.retweeted_status
       text = "RT @#{original_status.user.screen_name}: #{original_status.text}"
@@ -24,22 +43,20 @@ module TwitterData
       original_status = status
       text = original_status.text
     end
+    [original_status, text]
+  end
 
+  def self.extract_sanitized_urls(status)
     urls = []
-    urls << original_status.urls if original_status.urls.present?
-    urls << original_status.media if original_status.media.present?
+    urls << status.urls if status.urls.present?
+    urls << status.media if status.media.present?
     urls.flatten!
 
-    sanitized_urls = urls.select do |u|
+    urls.select do |u|
       u.display_url.present? && u.expanded_url.present? && u.url.present?
-    end.collect do |u|
-      Struct.new(:display_url, :expanded_url, :url).new(u.display_url, u.expanded_url, u.url)
+    end.map do |u|
+      Struct.new(:display_url, :expanded_url, :url).new(u.display_url, u.expanded_url.to_s, u.url.to_s)
     end
-
-    tweet.update_attributes!(tweet_text: text,
-                             published_at: original_status.created_at,
-                             twitter_profile_id: status.user.id,
-                             urls: sanitized_urls)
   end
 
   def self.refresh_lists
@@ -50,7 +67,7 @@ module TwitterData
   end
 
   def self.import_twitter_profile_lists(profile)
-    TwitterApiRunner.run { Twitter.lists(profile.twitter_id) }.each do |list|
+    TwitterApiRunner.run { TwitterClient.instance.lists(profile.twitter_id) }.each do |list|
       twitter_list = import_list(list.id)
       profile.twitter_lists << twitter_list unless profile.twitter_lists.exists?(twitter_list.id)
     end
@@ -68,9 +85,9 @@ module TwitterData
     next_cursor = -1
     until next_cursor.zero? do
       TwitterApiRunner.run do
-        cursor = Twitter.list_members(list_id, cursor: next_cursor)
-        member_ids.push(*cursor.users.map(&:id))
-        next_cursor = cursor.next_cursor
+        cursor = TwitterClient.instance.list_members(list_id, cursor: next_cursor)
+        member_ids.push(*cursor.attrs[:users].map { |u| u[:id] })
+        next_cursor = cursor.attrs[:next_cursor]
       end
     end
     member_ids.uniq
@@ -89,7 +106,6 @@ module TwitterData
     MAX_GET_LIST_TWEETS_ATTEMPTS.times do
       break if (statuses = get_list_statuses(list.id, options)).empty?
       statuses.each do |status|
-        import_profile(status.user)
         import_tweet(status)
       end
       max_last_status_id = [max_last_status_id, statuses.first.id].max
@@ -100,18 +116,8 @@ module TwitterData
   end
 
   def self.get_list_statuses(list_id, options)
-    TwitterApiRunner.run { Twitter.list_timeline(list_id, options) }
+    TwitterApiRunner.run { TwitterClient.instance.list_timeline(list_id, options) }
   rescue Twitter::Error::NotFound
     []
-  end
-
-  def self.configure_twitter_auth(host)
-    Twitter.configure do |config|
-      twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
-      twitter_auth = twitter_config[host] ? twitter_config[host] : twitter_config['default']
-      twitter_auth.each do |key, value|
-        config.send("#{key}=", value)
-      end
-    end
   end
 end

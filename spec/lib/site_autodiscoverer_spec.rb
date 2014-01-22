@@ -196,7 +196,7 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create flickr profile' do
-        Twitter.should_receive(:user).and_return(nil)
+        TwitterClient.stub_chain(:instance, :user) { nil }
         YoutubeProfile.stub_chain(:where, :first_or_initialize).
             and_return(mock_model(YoutubeProfile, save: false))
 
@@ -215,10 +215,10 @@ describe SiteAutodiscoverer do
             and_return(mock_model(YoutubeProfile, save: false))
 
         twitter_user = mock('twitter user', screen_name: 'USASsearch')
-        Twitter.should_receive(:user).and_return(twitter_user)
+        TwitterClient.stub_chain(:instance, :user) { twitter_user }
 
         twitter_profile = mock_model(TwitterProfile)
-        TwitterProfile.should_receive(:find_and_update_or_create!).
+        TwitterData.should_receive(:import_profile).
             with(twitter_user).
             and_return(twitter_profile)
 
@@ -232,7 +232,7 @@ describe SiteAutodiscoverer do
 
       it 'should create youtube profile' do
         site.stub_chain(:flickr_profiles, :create)
-        Twitter.should_receive(:user).and_return(nil)
+        TwitterClient.stub_chain(:instance, :user) { nil }
 
         youtube_profile = mock_model(YoutubeProfile, new_record?: true)
         YoutubeProfile.stub_chain(:where, :first_or_initialize).

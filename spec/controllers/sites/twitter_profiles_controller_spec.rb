@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Sites::TwitterProfilesController do
   fixtures :users, :affiliates, :memberships
+  let(:client) { mock('TwitterClient') }
+
   before { activate_authlogic }
 
   describe '#index' do
@@ -34,8 +36,9 @@ describe Sites::TwitterProfilesController do
         let(:twitter_setting) { mock_model(AffiliateTwitterSetting) }
 
         before do
-          Twitter.should_receive(:user).with('usasearch').and_return(twitter_user)
-          TwitterProfile.should_receive(:find_and_update_or_create!).
+          TwitterClient.should_receive(:instance).and_return(client)
+          client.should_receive(:user).with('usasearch').and_return(twitter_user)
+          TwitterData.should_receive(:import_profile).
               with(twitter_user).
               and_return(twitter_profile)
 
@@ -66,8 +69,9 @@ describe Sites::TwitterProfilesController do
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, new_record?: true) }
 
         before do
-          Twitter.should_receive(:user).with('usasearch').and_return(twitter_user)
-          TwitterProfile.should_receive(:find_and_update_or_create!).
+          TwitterClient.should_receive(:instance).and_return(client)
+          client.should_receive(:user).with('usasearch').and_return(twitter_user)
+          TwitterData.should_receive(:import_profile).
               with(twitter_user).
               and_return(existing_twitter_profile)
 
@@ -95,7 +99,8 @@ describe Sites::TwitterProfilesController do
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, new_record?: true) }
 
         before do
-          Twitter.should_receive(:user).with('invalid handle').and_return(nil)
+          TwitterClient.should_receive(:instance).and_return(client)
+          client.should_receive(:user).with('invalid handle').and_return(nil)
           TwitterProfile.should_receive(:new).
               with('screen_name' => 'invalid handle').
               and_return(new_twitter_profile)

@@ -130,10 +130,10 @@ class SiteAutodiscoverer
 
   def create_twitter_profile(url)
     screen_name = extract_profile_name(url)
-    twitter_user = Twitter.user(screen_name) rescue nil
+    twitter_user = TwitterClient.instance.user(screen_name) rescue nil
     return unless twitter_user
 
-    twitter_profile = TwitterProfile.find_and_update_or_create! twitter_user
+    twitter_profile = TwitterData.import_profile twitter_user
 
     unless @site.twitter_profiles.exists?(twitter_profile.id)
       @site.affiliate_twitter_settings.create(twitter_profile: twitter_profile)

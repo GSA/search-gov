@@ -10,7 +10,7 @@ class Sites::TwitterProfilesController < Sites::SetupSiteController
   end
 
   def create
-    twitter_user = Twitter.user(twitter_profile_params[:screen_name]) rescue nil
+    twitter_user = TwitterClient.instance.user(twitter_profile_params[:screen_name]) rescue nil
 
     unless twitter_user
       @twitter_profile = TwitterProfile.new twitter_profile_params
@@ -18,7 +18,7 @@ class Sites::TwitterProfilesController < Sites::SetupSiteController
       render action: :new and return
     end
 
-    @twitter_profile = TwitterProfile.find_and_update_or_create! twitter_user
+    @twitter_profile = TwitterData.import_profile twitter_user
     if @site.twitter_profiles.exists?(@twitter_profile.id)
       @twitter_profile = TwitterProfile.new twitter_profile_params
       flash.now[:notice] = "You have already added @#{twitter_user.screen_name} to this site."

@@ -3,8 +3,8 @@ trackClick = (e) ->
   $link = $(e.currentTarget)
   data = $.extend {},
     $('#search').data(),
-    $link.data('click'),
-    { u: this.href }
+    { u: this.href },
+    $link.data('click')
   jQuery.ajax '/clicked', async: false, data: data
 
 $(document).on 'click', '#search .result a, #search #related-searches a', trackClick
