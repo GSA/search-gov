@@ -139,6 +139,7 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliate_feature_additions do as_routes end
     resources :help_links do as_routes end
     resources :search_module_stats, :only => :index
+    resources :synonyms do as_routes end
     resources :monthly_reports, :only => :index
     resources :affiliate_reports, :only => :index
     resources :email_templates do as_routes end

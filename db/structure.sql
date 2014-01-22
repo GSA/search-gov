@@ -770,6 +770,18 @@ CREATE TABLE `superfresh_urls` (
   KEY `index_superfresh_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `synonyms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entry` varchar(255) NOT NULL,
+  `notes` text,
+  `status` varchar(255) NOT NULL DEFAULT 'Candidate',
+  `locale` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_synonyms_on_entry_and_locale` (`entry`,`locale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `system_alerts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` varchar(255) NOT NULL,
@@ -2021,3 +2033,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140113180351');
 INSERT INTO schema_migrations (version) VALUES ('20140116181607');
 
 INSERT INTO schema_migrations (version) VALUES ('20140117200917');
+
+INSERT INTO schema_migrations (version) VALUES ('20140123013644');
