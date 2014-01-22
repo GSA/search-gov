@@ -952,12 +952,11 @@ Feature: Affiliate Search
     And I follow "Petitions" in the left column
     And I fill in "Enter your search term" with "'death star'"
     And I press "Search" in the search box
-    Then I should see a link to "This Isn't the Petition Response You're Looking For | We the ..." with url for "https://petitions.whitehouse.gov/response/isnt-petition-response-youre-looking"
+    Then I should see "This Isn't the Petition Response You're Looking For"
     And I should see a link to "Advanced Search" in the advanced search section
     When I follow "Next"
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
-    And I should not see "Other social media article"
 
   Scenario: Searching on non navigable document collection
     Given the following Affiliates exist:
