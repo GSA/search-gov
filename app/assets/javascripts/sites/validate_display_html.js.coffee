@@ -1,7 +1,8 @@
 generateFullHtmlDocument = (targetId, content) ->
-  docPrefix = "<!DOCTYPE html>\n<html>\n<head><title>#{targetId}</title></head>\n<body>\n<div id='container'>\n";
+  docType = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'
+  docPrefix = "<head><title>#{targetId}</title></head>\n<body>\n<div id='container'>\n";
   docSuffix = "</div>\n</body>\n</html>";
-  "#{docPrefix}<div id='#{targetId}'>\n#{content}\n</div>\n#{docSuffix}"
+  "#{docType}\n#{docPrefix}<div id='#{targetId}'>\n#{content}\n</div>\n#{docSuffix}"
 
 
 validateDisplayHtml = (sourceSelector, targetId) ->
