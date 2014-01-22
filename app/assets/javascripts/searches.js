@@ -7,5 +7,4 @@
 //= require legacy/application
 //= require jquery_extensions/jquery.infinitescroll.min
 //= require searches/infinitescroll
-//= require searches/legacy_footer
 //= require searches/google_analytics

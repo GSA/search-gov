@@ -28,13 +28,14 @@
             .connections
               = render_connected_affiliate_links @affiliate, @search ? @search.query : ''
         = yield
-      #usasearch_footer_container{ data: { is_hidden: 'true' } }
-        %a#usasearch_footer_button{ title: t(:show_footer),
-            data: { show_text: t(:show_footer), hide_text: t(:hide_footer) } } &#9660;
+      #usasearch_footer_container
+        %a#usasearch_footer_button{ title: t(:show_footer) } &#9660;
         = render_affiliate_footer(@affiliate)
 
     - if @affiliate.is_sayt_enabled?
       = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id, extras: true)}&\";"
     = javascript_include_tag 'searches'
+    :javascript
+      jQuery('#usasearch_footer_button').data('tooltip', { showText: '#{t :show_footer}', hideText: '#{t :hide_footer}' });
     = render :partial => '/shared/analytics'
     = render partial: '/shared/tracking'
