@@ -45,7 +45,7 @@ describe 'layouts/searches' do
     it 'should render Show footer tooltip' do
       render
       rendered.should have_selector(:a, title: 'Show footer')
-      rendered.should have_content('Hide footer')
+      rendered.should have_selector(:a, 'data-hide-text' => 'Hide footer', 'data-show-text' => 'Show footer')
     end
   end
 
@@ -56,7 +56,7 @@ describe 'layouts/searches' do
     it 'should render Mostrar pie de página tooltip' do
       render
       rendered.should have_selector(:a, title: 'Mostrar pie de página')
-      rendered.should have_content('Esconder pie de página')
+      rendered.should have_selector(:a, 'data-hide-text' => 'Esconder pie de página', 'data-show-text' => 'Mostrar pie de página')
     end
   end
 
