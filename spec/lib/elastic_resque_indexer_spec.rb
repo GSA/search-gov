@@ -42,6 +42,21 @@ describe ElasticResqueIndexer do
       search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
       search.total.should == 2
     end
+
+    context 'when data payload is empty' do
+      before do
+        affiliate.indexed_documents.ok.destroy_all
+        affiliate.indexed_documents.summarized.destroy_all
+      end
+
+      it 'should not index anything' do
+        ElasticIndexedDocument.should_not_receive(:index)
+        start_id = IndexedDocument.minimum(:id)
+        end_id = IndexedDocument.maximum(:id)
+        ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)
+      end
+    end
+
   end
 
 end

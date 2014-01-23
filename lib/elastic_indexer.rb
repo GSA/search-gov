@@ -10,9 +10,13 @@ class ElasticIndexer
 
   def index_all
     @rails_klass.find_in_batches(include: @includes, batch_size: DEFAULT_BATCH_SIZE) do |batch|
-      data = hashify_data(batch)
-      @elastic_klass.index(data) if data.present?
+      index_batch(batch)
     end
+  end
+
+  def index_batch(batch)
+    data = hashify_data(batch)
+    @elastic_klass.index(data) if data.present?
   end
 
   def hashify_data(batch)

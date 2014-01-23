@@ -8,7 +8,7 @@ class ElasticResqueIndexer < ElasticIndexer
 
   def index_all
     batch = @rails_klass.where(id: @start_id..@end_id).includes(@includes)
-    @elastic_klass.index(hashify_data(batch))
+    index_batch(batch)
   end
 
   class << self
