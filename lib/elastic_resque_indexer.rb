@@ -14,7 +14,7 @@ class ElasticResqueIndexer < ElasticIndexer
   class << self
     def index_all(index_name)
       rails_klass = index_name.constantize
-      rails_klass.select(rails_klass.primary_key.to_sym).find_in_batches do |records|
+      rails_klass.select(rails_klass.primary_key.to_sym).find_in_batches(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE) do |records|
         Resque.enqueue(ElasticResqueIndexer, index_name, records.first.id, records.last.id)
       end
     end

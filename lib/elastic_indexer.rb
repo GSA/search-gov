@@ -1,4 +1,6 @@
 class ElasticIndexer
+  DEFAULT_BATCH_SIZE = 100
+
   def initialize(index_name)
     @rails_klass = index_name.constantize
     @elastic_klass = "Elastic#{index_name}".constantize
@@ -7,8 +9,9 @@ class ElasticIndexer
   end
 
   def index_all
-    @rails_klass.find_in_batches(include: @includes) do |batch|
-      @elastic_klass.index(hashify_data(batch))
+    @rails_klass.find_in_batches(include: @includes, batch_size: DEFAULT_BATCH_SIZE) do |batch|
+      data = hashify_data(batch)
+      @elastic_klass.index(data) if data.present?
     end
   end
 
