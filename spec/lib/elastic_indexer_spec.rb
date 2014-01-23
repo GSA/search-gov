@@ -35,9 +35,9 @@ describe ElasticIndexer do
     end
 
     it "should make use of available optimizing includes" do
-      FeaturedCollection.should_receive(:find_in_batches).with(include: ElasticFeaturedCollection::OPTIMIZING_INCLUDES)
+      FeaturedCollection.should_receive(:find_in_batches).with(include: ElasticFeaturedCollection::OPTIMIZING_INCLUDES, batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
       ElasticIndexer.index_all("FeaturedCollection")
-      IndexedDocument.should_receive(:find_in_batches).with(include: nil)
+      IndexedDocument.should_receive(:find_in_batches).with(include: nil, batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
       ElasticIndexer.index_all("IndexedDocument")
     end
 
