@@ -26,8 +26,8 @@ Feature:  Administration
   Scenario: Visiting the affiliate admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name |
-      | agency site  | agency.gov | one@foo.gov   | One Foo      |
+      | display_name | name       | contact_email | contact_name | website                |
+      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
     And the following site domains exist for the affiliate agency.gov:
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
@@ -39,6 +39,7 @@ Feature:  Administration
     And I should see "agency site"
     And I should see "agency.gov"
     And I should see "www1.agency-site.gov"
+    And I should see a link to "beta.agency.gov" with url for "http://beta.agency.gov"
 
     When I follow "www1.agency-site.gov"
     Then I should see "Agency Website"

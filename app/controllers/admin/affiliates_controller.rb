@@ -3,9 +3,11 @@ class Admin::AffiliatesController < Admin::AdminController
   active_scaffold :affiliate do |config|
     config.label = 'Sites'
     config.actions.exclude :delete
-    config.columns = [:id, :display_name, :name, :status, :tags, :site_domains, :affiliate_note, :created_at, :updated_at]
+    config.columns = [:id, :display_name, :name, :website, :status, :tags, :site_domains, :affiliate_note, :created_at, :updated_at]
     config.columns[:affiliate_note].label = 'Note'
+    config.columns[:website].label = 'Homepage URL'
     config.list.sorting = { :display_name => :asc }
+
     virtual_columns = [:go_live_date,
                        :header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
                        :features, :external_tracking_code, :submitted_external_tracking_code]
@@ -17,7 +19,7 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    config.update.columns = [:display_name, :name,
+    config.update.columns = [:display_name, :name, :website,
                              :tags, :status, :go_live_date, :affiliate_note,
                              :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled, :dap_enabled,
                              :locale,
@@ -52,7 +54,8 @@ class Admin::AffiliatesController < Admin::AdminController
                                                 :staged_header_footer_css,
                                                 :header,
                                                 :staged_header,
-                                                :footer, :staged_footer]
+                                                :footer, :staged_footer,
+                                                :external_tracking_code, :submitted_external_tracking_code]
     config.columns[:search_engine].form_ui = :select
     config.columns[:search_engine].options = { :options => %w(Bing Google) }
 
