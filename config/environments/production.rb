@@ -90,4 +90,4 @@ SSL_PROTOCOL = "https"
 RECAPTCHA_PUBLIC_KEY = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
-TwitterClient.twitter_auth_env :cron
+TwitterClient.twitter_auth_env = :cron
