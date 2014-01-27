@@ -32,10 +32,6 @@ module MobileNavigationsHelper
     build_navigations html, nav_items, navigations.length, active_navigation_index
   end
 
-  def active_search?(search)
-    !is_inactive_site_search?(search) && !is_inactive_news_search?(search)
-  end
-
   def is_inactive_site_search?(search)
     search.is_a?(SiteSearch) &&
         search.document_collection &&
