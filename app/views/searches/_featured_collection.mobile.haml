@@ -1,6 +1,6 @@
 .content-block-item.result{ featured_collection_class_hash(result), id: "best-bet-#{position}", onclick: 'void(0)' }
-  .image-and-title
-    = featured_collection_image result
+  = featured_collection_image result
+  .title-and-links
     %h3= link_to_best_bet_title(result.id, result.title, result.title_url, position, 'BBG')
-  .links= render partial: "featured_collection_#{result.layout.gsub(' ', '_')}_links",
-    locals: { result: result, position: position }
+    .links= render partial: "featured_collection_#{result.layout.gsub(' ', '_')}_links",
+      locals: { result: result, position: position }

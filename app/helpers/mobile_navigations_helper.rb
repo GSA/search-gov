@@ -1,25 +1,14 @@
 module MobileNavigationsHelper
-  def navigations_and_logo(search, search_params)
-    affiliate = search.affiliate
-    logo_html = content_tag :div, mobile_header(affiliate), class: 'logo'
-
+  def navigations_and_logo(search, search_params, navigations)
     if is_inactive_site_search?(search)
-      return logo_html << navigation_context(search.document_collection)
+      return navigation_context(search.document_collection)
     elsif is_inactive_news_search?(search)
-      return logo_html << navigation_context(search.rss_feed)
+      return navigation_context(search.rss_feed)
     end
-
-    navigations = renderable_navigations(affiliate)
 
     if navigations.present?
-      html = render(partial: '/searches/nav_button') <<
-          logo_html <<
-          mobile_navigations(search, search_params, navigations)
-    else
-      html = logo_html
+      mobile_navigations(search, search_params, navigations).html_safe
     end
-
-    html.html_safe
   end
 
   def mobile_navigations(search, search_params, navigations)

@@ -1,19 +1,9 @@
-#search-bar-wrapper {
-  @media (min-width: @screen-sm) {
-    background-color: white;
-    border-bottom: 1px solid @block-border-color;
-    margin-bottom: @content-block-margin;
-    padding: @content-block-margin 0;
-  }
-}
-
 #search-bar {
   .content-block();
   height: 40px;
   position: relative;
 
   @media (min-width: @screen-sm) {
-    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
     width: (@screen-sm - (2 * @content-block-margin));
@@ -21,14 +11,15 @@
 
   .twitter-typeahead {
     width: 100%;
+    background-color: @body-bg;
     @media (min-width: @screen-sm) {
-      background-color: @body-bg;
       border-radius: @border-radius-base;
     }
   }
 
   input[type='search'], input[type='text'] {
     .box-shadow(none);
+    background-color: @body-bg;
     border-color: transparent;
     font-size: @font-size-large;
     line-height: @line-height-large;
@@ -37,7 +28,6 @@
     border-right: 40px solid transparent;
 
     @media (min-width: @screen-sm) {
-      background-color: @body-bg;
       border-right-width: 75px;
     }
   }

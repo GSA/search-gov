@@ -3,7 +3,12 @@
 }
 
 #nav-wrapper {
-  border-bottom: 1px solid @block-border-color;
+  border-top: 1px solid @block-border-color;
+  margin: 0;
+
+  @media (min-width: @screen-sm) {
+    border-width: 0;
+  }
 }
 
 #nav {
@@ -11,6 +16,7 @@
   transition: none;
 
   @media (min-width: @screen-sm) {
+    border-bottom-width: 0;
     margin: 0 auto;
     width: @screen-sm;
   }

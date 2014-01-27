@@ -1,8 +1,9 @@
-#main-nav {
-  background-color: #ebebeb;
+#header-wrapper {
+  background-color: @block-background-color;
   position: relative;
   top: 0;
   width: 100%;
+  z-index: (@zindex-modal-background + 10);
 
   &.sticky {
     .box-shadow(0 3px 12px rgba(0,0,0,.800));
@@ -11,30 +12,62 @@
 }
 
 #header {
-  background-color: @block-background-color;
-  margin-bottom: @content-block-margin;
+  .clearfix();
+  .content-block();
+  margin: 0 0 @content-block-margin;
+  padding-top: 4px;
 
-  @media (min-width: @screen-sm) {
-    margin-bottom: 0;
+  @media (min-width: @screen-md) {
+    margin: 0 auto @content-block-margin;
+    padding-top: @content-block-margin;
+    width: @screen-md;
   }
 
   .logo {
-    border-bottom: 1px solid @block-border-color;
-    padding: 10px 60px;
-  }
+    margin-bottom: @content-block-margin;
+    padding: 8px 60px 0;
 
-  .logo img {
-    .img-responsive();
-    margin: 0 auto;
-    max-height: 50px;
-
-    @media (min-width: @screen-sm) {
-      max-height: 80px;
+    a {
+      color: @gray-light;
+      text-decoration: none;
     }
-  }
 
-  .logo h1 {
-    margin: 0;
-    text-align: center;
+    @media (min-width: @screen-md) {
+      float: left;
+      margin: 0;
+      padding: 0 @content-block-margin 0 0;
+      width: ((@screen-md - (@screen-sm - (2 * @content-block-margin))) / 2);
+    }
+
+    &.text {
+      display: block;
+      float: none;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      width: 100%;
+
+      h1 {
+        .text-clip();
+        margin: 0;
+        padding: 8px 60px @content-block-margin;
+        font-size: 18px;
+
+        @media (min-width: @screen-md) {
+          padding-top: 0;
+        }
+      }
+    }
+
+    img {
+      .img-responsive();
+      margin: 0 auto;
+      max-height: 50px;
+
+      @media (min-width: @screen-md) {
+        margin: 0;
+        float: right;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-#best-bets.collapsed
+#best-bets.collapsible.collapsed
   .content-block-item.content-block-item-header
     .content-provider
       = t(:recommended)
@@ -16,7 +16,7 @@
     = render partial: 'featured_collection', locals: { result: result, position: search.boosted_contents_count + 1 }
 
   - if search.boosted_contents_count > 2 or fc_content_trigger_class_hash.present?
-    .content-block-item.content-trigger{ fc_content_trigger_class_hash }
+    .content-block-item.content-block-item-footer.content-trigger{ fc_content_trigger_class_hash }
       .show-more
         = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
         %span.text-hide= t(:show_more_label)

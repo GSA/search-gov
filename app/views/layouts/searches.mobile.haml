@@ -20,9 +20,13 @@
       = javascript_include_tag 'searches_ie_lt9'
 
   %body
-    #main-nav
-      %header#header= navigations_and_logo(@search, @search_params)
-      #search-bar-wrapper= render partial: 'form', locals: { search: @search }
+    #header-wrapper
+      - navigations = renderable_navigations(@affiliate)
+      #header
+        = render(partial: 'nav_button') if navigations.present?
+        = mobile_header @affiliate
+        = render partial: 'form', locals: { search: @search }
+        = navigations_and_logo(@search, @search_params, navigations)
     #typeahead-backdrop
 
     = yield

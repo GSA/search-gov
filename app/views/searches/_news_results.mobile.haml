@@ -1,5 +1,5 @@
 #results
-  .content-block-item
-    .content-provider= serp_attribution search.module_tag
   - @search.hits.each_with_index do |hit, index|
     = render partial: 'news_result', locals: { hit: hit, position: search.startrecord + index }
+  .content-block-item.content-block-item-footer
+    .content-provider= serp_attribution search.module_tag
