@@ -2,9 +2,18 @@
   background-color: white;
 }
 
+#nav-wrapper {
+  border-bottom: 1px solid @block-border-color;
+}
+
 #nav {
   border-top-width: 0;
   transition: none;
+
+  @media (min-width: @screen-sm) {
+    margin: 0 auto;
+    width: @screen-sm;
+  }
 
   .navbar-nav {
     float: none;

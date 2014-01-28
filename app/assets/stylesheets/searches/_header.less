@@ -14,6 +14,10 @@
   background-color: @block-background-color;
   margin-bottom: @content-block-margin;
 
+  @media (min-width: @screen-sm) {
+    margin-bottom: 0;
+  }
+
   .logo {
     border-bottom: 1px solid @block-border-color;
     padding: 10px 60px;

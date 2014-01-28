@@ -22,7 +22,7 @@
   %body
     #main-nav
       %header#header= navigations_and_logo(@search, @search_params)
-      = render partial: 'form', locals: { search: @search }
+      #search-bar-wrapper= render partial: 'form', locals: { search: @search }
     #typeahead-backdrop
 
     = yield

@@ -12,6 +12,14 @@
   &:first-child {
     border-top-width: 0;
   }
+
+  @media (min-width: @screen-desktop) {
+    border-top-width: 0;
+
+    &.heading {
+      border-bottom: 1px solid @block-border-color;
+    }
+  }
 }
 
 .content-provider {
