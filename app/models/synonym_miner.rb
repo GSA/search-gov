@@ -1,15 +1,14 @@
 class SynonymMiner
   @queue = :low
 
-  def initialize(affiliate, words_per_affiliate = 1000, months_back = 12)
+  def initialize(affiliate, days_back = 1)
     @affiliate = affiliate
-    @words_per_affiliate = words_per_affiliate
-    @months_back = months_back
+    @days_back = days_back
     @domains = @affiliate.site_domains.pluck(:domain)
   end
 
   def mine
-    candidates.each { |candidate_group| Synonym.create_entry_for(candidate_group.join(', '), @affiliate.locale) }
+    candidates.each { |candidate_group| Synonym.create_entry_for(candidate_group.join(', '), @affiliate) }
   end
 
   def candidates
@@ -35,8 +34,8 @@ class SynonymMiner
   end
 
   def popular_single_word_terms
-    conditions = ['day >= ? AND affiliate = ? and query not like "% %"', @months_back.months.ago.to_date, @affiliate.name]
-    DailyQueryStat.sum(:times, group: :query, conditions: conditions, order: "sum_times desc", limit: @words_per_affiliate).collect(&:first)
+    conditions = ['updated_at >= ? AND affiliate_id = ? and phrase not like "% %" and deleted_at IS NULL', @days_back.days.ago, @affiliate.id]
+    SaytSuggestion.where(conditions).order("popularity desc").pluck(:phrase)
   end
 
   def filter_stemmed(singles)
@@ -66,9 +65,9 @@ class SynonymMiner
     field.gsub(/(,|['’]s)/i, '').scan(/\uE000([^\uE000]*)\uE001/).flatten.map(&:downcase).reject { |f| f =~ /\A[0-9]+\z/ } - @domains
   end
 
-  def self.perform(affiliate_id, words_per_affiliate, months_back)
+  def self.perform(affiliate_id, days_back)
     affiliate = Affiliate.find affiliate_id
-    synonym_miner = new(affiliate, words_per_affiliate, months_back)
+    synonym_miner = new(affiliate, days_back)
     synonym_miner.mine
   rescue ActiveRecord::RecordNotFound
     Rails.logger.warn("Could not find affiliate #{affiliate_id} in SynonymMiner.perform()")

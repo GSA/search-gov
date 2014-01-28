@@ -20,20 +20,20 @@ describe "synonyms rake tasks" do
         @rake[task_name].prerequisites.should include("environment")
       end
 
-      context "when words_per_affiliate and months_back are specified" do
-        it "should mine synonyms based on top X words per affiliate over last Y months" do
-          words_per_affiliate, months_back = 101, 7
+      context "when days_back are specified" do
+        it "should mine synonyms based on last X days worth of SaytSuggestions per affiliate" do
+          days_back = 7
           Affiliate.pluck(:id).each do |affiliate_id|
-            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, words_per_affiliate, months_back)
+            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, days_back)
           end
-          @rake[task_name].invoke(words_per_affiliate, months_back)
+          @rake[task_name].invoke(days_back)
         end
       end
 
-      context "when words_per_affiliate and months_back are not specified" do
-        it "should mine synonyms based on top 100 words per affiliate over last 2 months" do
+      context "when days_back is not specified" do
+        it "should mine synonyms based on SaytSuggestions per affiliate updated over last day" do
           Affiliate.pluck(:id).each do |affiliate_id|
-            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, 100, 2)
+            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, 1)
           end
           @rake[task_name].invoke
         end

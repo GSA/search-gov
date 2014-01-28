@@ -778,6 +778,7 @@ CREATE TABLE `synonyms` (
   `locale` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `affiliate_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_synonyms_on_entry_and_locale` (`entry`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2035,3 +2036,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140116181607');
 INSERT INTO schema_migrations (version) VALUES ('20140117200917');
 
 INSERT INTO schema_migrations (version) VALUES ('20140123013644');
+
+INSERT INTO schema_migrations (version) VALUES ('20140129010331');

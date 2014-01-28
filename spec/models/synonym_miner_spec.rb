@@ -4,22 +4,22 @@ describe SynonymMiner do
   fixtures :affiliates, :site_domains
 
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:synonym_miner) { SynonymMiner.new(affiliate, 20, 3) }
+  let(:synonym_miner) { SynonymMiner.new(affiliate, 3) }
 
   describe "#perform" do
     context 'when affiliate cannot be found' do
       it 'should log exception' do
         Rails.logger.should_receive(:warn)
-        SynonymMiner.perform(-1,1,1)
+        SynonymMiner.perform(-1,1)
       end
     end
 
     context 'when affiliate exists' do
       it 'should mine the synonyms for that site' do
         miner = mock(SynonymMiner)
-        SynonymMiner.stub(:new).with(affiliate, 101, 7).and_return miner
+        SynonymMiner.stub(:new).with(affiliate, 7).and_return miner
         miner.should_receive(:mine)
-        SynonymMiner.perform(affiliate.id, 101, 7)
+        SynonymMiner.perform(affiliate.id, 7)
       end
     end
   end
@@ -30,16 +30,22 @@ describe SynonymMiner do
     end
 
     it "should attempt to create entries for synonym candidates" do
-      Synonym.should_receive(:create_entry_for).with('abc, alphabet', affiliate.locale)
-      Synonym.should_receive(:create_entry_for).with('park, parking', affiliate.locale)
+      Synonym.should_receive(:create_entry_for).with('abc, alphabet', affiliate)
+      Synonym.should_receive(:create_entry_for).with('park, parking', affiliate)
       synonym_miner.mine
     end
   end
 
   describe ".popular_single_word_terms" do
-    it 'should return the N most popular single-word terms based on Daily Query Stats for the last X months' do
-      result = { "bicycling" => 10001, "tax" => 10000, "loren" => 425 }
-      DailyQueryStat.should_receive(:sum).with(:times, group: :query, conditions: ['day >= ? AND affiliate = ? and query not like "% %"', 3.months.ago.to_date, affiliate.name], order: "sum_times desc", limit: 20).and_return(result)
+    before do
+      affiliate.sayt_suggestions.build(phrase: 'loren', popularity: 425)
+      affiliate.sayt_suggestions.build(phrase: 'tax', popularity: 10000)
+      affiliate.sayt_suggestions.build(phrase: 'tax extra words', popularity: 10000)
+      affiliate.sayt_suggestions.build(phrase: 'bicycling', popularity: 10001)
+      affiliate.save!
+    end
+
+    it 'should return the single-word terms from SaytSuggestions that have been updated in the last X days ordered by popularity' do
       synonym_miner.popular_single_word_terms.should == %w{bicycling tax loren}
     end
   end

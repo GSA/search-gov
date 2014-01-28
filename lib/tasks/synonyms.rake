@@ -1,11 +1,11 @@
 namespace :usasearch do
   namespace :synonyms do
 
-    desc "mine synonyms in parallel for top X queries for each site over last N months (defaults to 100 queries over last 2 months)"
-    task :mine, [:words_per_affiliate, :months_back] => [:environment] do |t, args|
-      args.with_defaults(words_per_affiliate: '100', months_back: '2')
-      words_per_affiliate, months_back = args.words_per_affiliate.to_i, args.months_back.to_i
-      Affiliate.pluck(:id).each { |affiliate_id| Resque.enqueue(SynonymMiner, affiliate_id, words_per_affiliate, months_back) }
+    desc "mine synonyms in parallel for SAYT suggestions updated for each site over last N days (defaults to 1 day)"
+    task :mine, [:days_back] => [:environment] do |t, args|
+      args.with_defaults(days_back: '1')
+      days_back = args.days_back.to_i
+      Affiliate.pluck(:id).each { |affiliate_id| Resque.enqueue(SynonymMiner, affiliate_id, days_back) }
     end
   end
 end
