@@ -191,15 +191,6 @@ describe ElasticIndexedDocument do
       ElasticIndexedDocument.commit
     end
 
-    describe "misspellings and fuzzy matches" do
-      it 'should return results for slight misspellings after the first two characters' do
-        oops = %w{yossemite yosemity speling publicaciones}
-        oops.each do |misspeling|
-          ElasticIndexedDocument.search_for(q: misspeling, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        end
-      end
-    end
-
     describe "title and description and body" do
       it 'should be case insentitive' do
         ElasticIndexedDocument.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
@@ -215,11 +206,36 @@ describe ElasticIndexedDocument do
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
+          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
         end
 
         %w(+++obama --obama +-obama).each do |query|
           specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+        end
+      end
+
+      context 'when query contains advanced elements like phrases and excluded terms' do
+        before do
+          affiliate.indexed_documents.create!(title: 'This document is about Brad L. Miller and nobody else',
+                                              description: 'Yosemite publications',
+                                              body: 'some other text about dolphins',
+                                              url: 'http://www.nhc.noaa.gov/testblm1.shtml',
+                                              last_crawl_status: IndexedDocument::OK_STATUS)
+          affiliate.indexed_documents.create!(title: 'This document has the letter L and is about another Brad Miller',
+                                              description: 'yellowstone publications',
+                                              body: 'some other text about whales',
+                                              url: 'http://www.nhc.noaa.gov/testblm2.shtml',
+                                              last_crawl_status: IndexedDocument::OK_STATUS)
+          ElasticIndexedDocument.commit
+        end
+
+        it 'should use them to find documents' do
+          ElasticIndexedDocument.search_for(q: '"Brad Miller"', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 2
+          ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 2
+          ElasticIndexedDocument.search_for(q: 'Brad Miller +porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 0
+          ElasticIndexedDocument.search_for(q: 'Brad +Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
         end
       end
 

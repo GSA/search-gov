@@ -27,10 +27,12 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
     json.query do
       json.bool do
         json.set! :should do |should_json|
-          should_json.child! { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
+          should_json.child! do
+            query_string(should_json, highlighted_fields, @q, query_string_options)
+          end
         end
       end
-    end if @q
+    end if @q.present?
   end
 
   def pre_tags
@@ -47,6 +49,20 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
       json.description
       json.body
     end
+  end
+
+  def query_string(json, fields, query, options = {})
+    json.query_string do
+      json.fields fields
+      json.query query
+      options.each do |option, value|
+        json.set! option, value
+      end
+    end
+  end
+
+  def query_string_options
+    { analyzer: @text_analyzer }
   end
 
 end

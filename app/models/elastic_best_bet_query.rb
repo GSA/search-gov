@@ -21,7 +21,7 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
           should_json.child! { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
         end
       end
-    end if @q
+    end if @q.present?
   end
 
   def filter_field_on_current_date(json, field, operator)

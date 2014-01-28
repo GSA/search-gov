@@ -248,7 +248,7 @@ describe ElasticFeaturedCollection do
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
+          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
         end
 
         %w(+++obama --obama +-obama).each do |query|
