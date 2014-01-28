@@ -248,7 +248,7 @@ describe ElasticFeaturedCollection do
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
@@ -328,7 +328,8 @@ describe ElasticFeaturedCollection do
   context "when searching raises an exception" do
     it "should return nil" do
       ES::client.should_receive(:search).and_raise StandardError
-      ElasticFeaturedCollection.search_for(q: 'query', affiliate_id: affiliate.id, language: affiliate.locale).should be_nil
+      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
+      ElasticFeaturedCollection.search_for(options).should be_an_instance_of(ElasticFeaturedCollectionResults)
     end
   end
 

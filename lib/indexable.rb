@@ -2,6 +2,7 @@ module Indexable
   attr_accessor :default_sort, :mappings, :settings
 
   DELIMTER = '-'
+  NO_HITS = { 'total' => 0, 'offset' => 0, 'hits' => [] }
 
   def index_name
     @index_name ||= [base_index_name, Time.now.strftime("%Y%m%d%H%M%S%L")].join(DELIMTER)
@@ -98,7 +99,7 @@ module Indexable
     end
   rescue Exception => e
     Rails.logger.error "Problem in #{self.name}#search_for(): #{e}"
-    nil
+    "#{self.name}Results".constantize.new(NO_HITS)
   end
 
   def commit

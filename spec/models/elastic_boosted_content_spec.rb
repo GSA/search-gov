@@ -262,7 +262,7 @@ describe ElasticBoostedContent do
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
@@ -325,7 +325,8 @@ describe ElasticBoostedContent do
   context "when searching raises an exception" do
     it "should return nil" do
       ES::client.should_receive(:search).and_raise StandardError
-      ElasticBoostedContent.search_for(q: 'query', affiliate_id: affiliate.id, language: affiliate.locale).should be_nil
+      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
+      ElasticBoostedContent.search_for(options).should be_an_instance_of(ElasticBoostedContentResults)
     end
   end
 

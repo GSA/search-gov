@@ -206,7 +206,7 @@ describe ElasticIndexedDocument do
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
@@ -214,7 +214,7 @@ describe ElasticIndexedDocument do
         end
       end
 
-      context 'when query contains advanced elements like phrases and excluded terms' do
+      context 'when query contains advanced elements like exact phrases and Booleans' do
         before do
           affiliate.indexed_documents.create!(title: 'This document is about Brad L. Miller and nobody else',
                                               description: 'Yosemite publications',
@@ -229,13 +229,13 @@ describe ElasticIndexedDocument do
           ElasticIndexedDocument.commit
         end
 
-        it 'should use them to find documents' do
+        it 'should use them to find documents using an implicit AND operator' do
           ElasticIndexedDocument.search_for(q: '"Brad Miller"', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
           ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
           ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 2
-          ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 2
-          ElasticIndexedDocument.search_for(q: 'Brad Miller +porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 0
-          ElasticIndexedDocument.search_for(q: 'Brad +Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 0
+          ElasticIndexedDocument.search_for(q: '"other text" (porpoises OR whales)', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
         end
       end
 
@@ -290,9 +290,10 @@ describe ElasticIndexedDocument do
   end
 
   context "when searching raises an exception" do
-    it "should return nil" do
+    it "should return an appropriate result set with zero hits" do
       ES::client.should_receive(:search).and_raise StandardError
-      ElasticIndexedDocument.search_for(q: 'query', affiliate_id: affiliate.id, language: affiliate.locale).should be_nil
+      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
+      ElasticIndexedDocument.search_for(options).should be_an_instance_of(ElasticIndexedDocumentResults)
     end
   end
 

@@ -1,5 +1,4 @@
 class ElasticQuery
-  include QueryPreprocessor
 
   DEFAULT_SIZE = 10.freeze
   MAX_SIZE = 100.freeze
@@ -12,7 +11,7 @@ class ElasticQuery
     options.reverse_merge!(size: DEFAULT_SIZE)
     @offset = options[:offset].to_i
     @size = [options[:size].to_i, MAX_SIZE].min
-    @q = preprocess(options[:q]) if options[:q].present?
+    @q = options[:q]
     @highlighting = !(options[:highlighting] == false)
   end
 

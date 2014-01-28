@@ -62,7 +62,7 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
   end
 
   def query_string_options
-    { analyzer: @text_analyzer }
+    { analyzer: @text_analyzer, default_operator: 'AND' }
   end
 
 end
