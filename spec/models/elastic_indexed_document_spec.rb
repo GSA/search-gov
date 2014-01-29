@@ -210,7 +210,7 @@ describe ElasticIndexedDocument do
         end
 
         %w(+++obama --obama +-obama).each do |query|
-          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
       end
 
