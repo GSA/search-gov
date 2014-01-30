@@ -21,6 +21,15 @@
       font-weight: normal;
       margin: 10px 0 5px;
 
+      @media (min-width: @screen-desktop) {
+        font-size: 16px;
+        margin-bottom: 2px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
       .uext_type {
         bottom: 0.1em;
         font-size: 75%;
@@ -30,6 +39,11 @@
     .url, .description {
       display: block;
       word-wrap: break-word;
+
+      @media (min-width: @screen-desktop) {
+        font-size: 13px;
+        line-height: 1.2em;
+      }
     }
 
     .url {
