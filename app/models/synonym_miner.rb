@@ -1,5 +1,5 @@
 class SynonymMiner
-  @queue = :low
+  @queue = :primary_low
 
   def initialize(affiliate, days_back = 1)
     @affiliate = affiliate
