@@ -6,6 +6,18 @@ describe SynonymMiner do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:synonym_miner) { SynonymMiner.new(affiliate, 3) }
 
+  describe "#new" do
+    before do
+      affiliate.search_engine = 'Google'
+    end
+
+    it 'should ensure the affiliate search engine temporarily set to Bing' do
+      affiliate.search_engine.should == 'Google'
+      synonym_miner = SynonymMiner.new(affiliate)
+      affiliate.search_engine.should == 'Bing'
+    end
+  end
+
   describe "#perform" do
     context 'when affiliate cannot be found' do
       it 'should log exception' do
@@ -74,7 +86,7 @@ describe SynonymMiner do
       let(:queries) { %w{christmas fishing haleakala gobbledegook} }
 
       before do
-        synonym_miner.stub(:site_search_results).and_return(
+        synonym_miner.stub(:bing_site_search_results).and_return(
           [{ "title" => "\uE000Christmas\uE001 is on \uE000December 25\uE001", "content" => "\uE000December 25\uE001 is \uE000Christmas\uE001" },
            { "title" => "more \uE000Christmas\uE001 stuff", "content" => "more \uE000December 25\uE001 stuff about \uE000Christmas\uE001" }],
           [{ "title" => "\uE000fishing\uE001 is for \uE000fish\uE001", "content" => "go to a lake" }],
@@ -96,7 +108,7 @@ describe SynonymMiner do
     end
 
     it 'should return 20 site search results for that affiliate on that query' do
-      synonym_miner.site_search_results('foo').should == [1, 2]
+      synonym_miner.bing_site_search_results('foo').should == [1, 2]
     end
 
   end

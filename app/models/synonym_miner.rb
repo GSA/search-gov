@@ -3,6 +3,7 @@ class SynonymMiner
 
   def initialize(affiliate, days_back = 1)
     @affiliate = affiliate
+    @affiliate.search_engine = 'Bing'
     @days_back = days_back
     @domains = @affiliate.site_domains.pluck(:domain)
   end
@@ -48,10 +49,10 @@ class SynonymMiner
   end
 
   def scrape_synonyms(queries)
-    queries.collect { |query| extract_equivalents(site_search_results(query)) }.uniq.select { |values| values.many? }
+    queries.collect { |query| extract_equivalents(bing_site_search_results(query)) }.uniq.select { |values| values.many? }
   end
 
-  def site_search_results(query)
+  def bing_site_search_results(query)
     search = SiteSearch.new(query: query, affiliate: @affiliate, per_page: 20)
     search.run
     search.results
