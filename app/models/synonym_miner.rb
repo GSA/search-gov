@@ -63,8 +63,7 @@ class SynonymMiner
   end
 
   def extract_highlights(field)
-    field.gsub(/(,|['’]s)/i, '').scan(/\uE000([^\uE000]*)\uE001/).flatten.map(&:downcase).
-      reject { |f| f =~ /\A[0-9]+\z/ }.select { |f| f =~ /\A(\w|\s)+\z/i } - @domains
+    field.gsub(/(,|['’]s)/i, '').scan(/\uE000([^\uE000]*)\uE001/).flatten.map(&:downcase).select { |f| f =~ /\A[a-z](\w|\s)+\z/i } - @domains
   end
 
   def self.perform(affiliate_id, days_back)

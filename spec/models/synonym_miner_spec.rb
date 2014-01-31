@@ -180,6 +180,14 @@ describe SynonymMiner do
       end
     end
 
+    context 'when highlight starts with a number' do
+      let(:field) { "\uE0001abcd\uE001 stuff \uE00021 jump street\uE001" }
+
+      it 'should strip it out' do
+        synonym_miner.extract_highlights(field).should == []
+      end
+    end
+
     context 'when highlight is a anything other than letters, numbers, underscores, and spaces' do
       let(:field) { "\uE000hi-there\uE001 stuff \uE0001/ab\uE001 \uE0001:ab\uE001 \uE0001:ab\uE001 \uE000(hi)\uE001" }
 
