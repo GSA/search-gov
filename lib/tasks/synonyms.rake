@@ -1,11 +1,16 @@
 namespace :usasearch do
   namespace :synonyms do
 
-    desc "mine synonyms in parallel for SAYT suggestions updated for each site over last N days (defaults to 1 day)"
-    task :mine, [:days_back] => [:environment] do |t, args|
-      args.with_defaults(days_back: '1')
-      days_back = args.days_back.to_i
-      Affiliate.pluck(:id).each { |affiliate_id| Resque.enqueue(SynonymMiner, affiliate_id, days_back) }
+    desc "mine synonyms in parallel for most popular SAYT suggestions for each site"
+    task :mine, [:min_popularity] => [:environment] do |t, args|
+      args.with_defaults(min_popularity: '10')
+      min_popularity = args.min_popularity.to_i
+      Affiliate.pluck(:id).each { |affiliate_id| Resque.enqueue(SynonymMiner, affiliate_id, min_popularity) }
+    end
+
+    desc "combine any overlapping synonyms per locale"
+    task group_overlapping_synonyms: :environment do
+      Synonym.pluck(:locale).uniq.each { |locale| Synonym.group_overlapping_synonyms(locale) }
     end
   end
 end

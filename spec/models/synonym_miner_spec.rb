@@ -42,8 +42,8 @@ describe SynonymMiner do
     end
 
     it "should attempt to create entries for synonym candidates" do
-      Synonym.should_receive(:create_entry_for).with('abc, alphabet', affiliate)
-      Synonym.should_receive(:create_entry_for).with('park, parking', affiliate)
+      Synonym.should_receive(:create_entry_for).with(%w{abc alphabet}, affiliate)
+      Synonym.should_receive(:create_entry_for).with(%w{park parking}, affiliate)
       synonym_miner.mine
     end
   end
@@ -116,21 +116,21 @@ describe SynonymMiner do
   describe ".candidates" do
     before do
       synonym_miner.stub(:popular_single_word_terms).and_return %w{houses taxation death nps}
-      synonym_miner.stub(:scrape_synonyms).and_return [%w{house houses},
+      synonym_miner.stub(:scrape_synonyms).and_return [%w{house housing},
                                                        %w{tax taxes taxing taxed taxation},
                                                        %w{death taxes},
                                                        ['nps', 'national park service']]
     end
 
-    it 'should return sets of possible synonym candidates for an affiliate' do
+    it 'should return sets of possible single-word synonym candidates for an affiliate' do
       synonym_miner.candidates.should == [["death", "tax", "taxation", "taxed", "taxes", "taxing"],
-                                          ['nps', 'national park service']]
+                                          ['house', 'housing']]
     end
   end
 
   describe ".filter_stemmed(singles)" do
-    it 'should filter out single-words-only synonym sets (e.g., %w{house houses}) where all terms analyze to the same token' do
-      synonym_miner.filter_stemmed([%w{house houses}, %w{tax taxes taxing taxed taxation}]).should == [%w{tax taxes taxing taxed taxation}]
+    it 'should filter out words from sets that analyze to the same token, and alphabetize the result' do
+      synonym_miner.filter_stemmed([%w{house houses}, %w{tax taxes taxing taxed taxation taxations}]).should == [%w{tax taxation taxed taxes taxing }]
     end
   end
 

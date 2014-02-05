@@ -40,7 +40,7 @@ A few tips when working with asset pipeline:
 
 ## Solr and Elasticsearch
 
-We're using Solr for fulltext search but we're migrating to [ElasticSearch](http://www.elasticsearch.org/).
+We're using Solr for fulltext search but we're migrating to [Elasticsearch](http://www.elasticsearch.org/).
 
 You can start/stop/reindex Solr like this:
 
@@ -49,11 +49,17 @@ You can start/stop/reindex Solr like this:
     rake sunspot:solr:run
     rake sunspot:solr:reindex
 
-On a Mac, ElasticSearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
+On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
     $ brew install elasticsearch
 
+To upgrade via homebrew:
+
+    $ brew update && brew upgrade elasticsearch
+    
 Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
+
+### Indexes
 
 You can create the USASearch-related indexes like this:
 
@@ -67,7 +73,7 @@ If you want it to run in parallel using Resque workers, call it like this:
 
     rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
 
-Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the ElasticSearch schema first, do this:
+Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the Elasticsearch schema first, do this:
 
     rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
 

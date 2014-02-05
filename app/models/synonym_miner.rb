@@ -1,23 +1,22 @@
 class SynonymMiner
   @queue = :primary_low
 
-  def initialize(affiliate, days_back = 1)
+  def initialize(affiliate, min_popularity = 10)
     @affiliate = affiliate
     @affiliate.search_engine = 'Bing'
-    @days_back = days_back
+    @min_popularity = min_popularity
     @domains = @affiliate.site_domains.pluck(:domain)
   end
 
   def mine
-    candidates.each { |candidate_group| Synonym.create_entry_for(candidate_group.join(', '), @affiliate) }
+    candidates.each { |candidate_group| Synonym.create_entry_for(candidate_group, @affiliate) }
   end
 
   def candidates
     raw_synonym_sets = scrape_synonyms(popular_single_word_terms)
     grouped_synonyms = group_overlapping_sets(raw_synonym_sets)
-    probably_acronyms, all_single_words = grouped_synonyms.partition { |synonym_array| synonym_array.any? { |synonym| synonym.split.many? } }
-    unstemmed_singles = filter_stemmed(all_single_words)
-    (probably_acronyms + unstemmed_singles).sort
+    all_single_words = grouped_synonyms.reject { |synonym_array| synonym_array.any? { |synonym| synonym.split.many? } }
+    filter_stemmed(all_single_words).sort
   end
 
   def group_overlapping_sets(raw_synonym_sets)
@@ -35,12 +34,23 @@ class SynonymMiner
   end
 
   def popular_single_word_terms
-    conditions = ['updated_at >= ? AND affiliate_id = ? and phrase not like "% %" and deleted_at IS NULL', @days_back.days.ago, @affiliate.id]
+    conditions = ['affiliate_id = ? and popularity >= ? and phrase not like "% %" and deleted_at IS NULL and is_protected = 0', @affiliate.id, @min_popularity]
     SaytSuggestion.where(conditions).order("popularity desc").pluck(:phrase)
   end
 
   def filter_stemmed(singles)
-    singles.select { |synset| tokens_from_analyzer(synset).many? }
+    singles.collect { |synset| remove_plurals(synset) }.select { |synset| synset.many? }
+  end
+
+  def remove_plurals(synset)
+    plurals_removed = []
+    sorted_by_length = synset.sort_by { |word| word.length }
+    while sorted_by_length.present?
+      candidate = sorted_by_length.shift
+      sorted_by_length = sorted_by_length.reject { |word| tokens_from_analyzer([word, candidate]).one? }
+      plurals_removed << candidate
+    end
+    plurals_removed.sort
   end
 
   def tokens_from_analyzer(synset)
@@ -67,9 +77,9 @@ class SynonymMiner
       select { |f| f =~ /\A[a-z](\w|\s)+\z/i } - @domains
   end
 
-  def self.perform(affiliate_id, days_back)
+  def self.perform(affiliate_id, min_popularity)
     affiliate = Affiliate.find affiliate_id
-    synonym_miner = new(affiliate, days_back)
+    synonym_miner = new(affiliate, min_popularity)
     synonym_miner.mine
   rescue ActiveRecord::RecordNotFound
     Rails.logger.warn("Could not find affiliate #{affiliate_id} in SynonymMiner.perform()")

@@ -281,9 +281,6 @@ describe ElasticIndexedDocument do
           end
         end
 
-        it 'should handle custom synonyms' do
-          ElasticIndexedDocument.search_for(q: 'visa', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        end
       end
     end
 

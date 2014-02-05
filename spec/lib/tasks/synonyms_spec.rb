@@ -20,23 +20,37 @@ describe "synonyms rake tasks" do
         @rake[task_name].prerequisites.should include("environment")
       end
 
-      context "when days_back are specified" do
-        it "should mine synonyms based on last X days worth of SaytSuggestions per affiliate" do
-          days_back = 7
+      context "when min_popularity is specified" do
+        it "should mine synonyms based SaytSuggestions with a popularity of at least X" do
+          min_popularity = 7
           Affiliate.pluck(:id).each do |affiliate_id|
-            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, days_back)
+            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, min_popularity)
           end
-          @rake[task_name].invoke(days_back)
+          @rake[task_name].invoke(min_popularity)
         end
       end
 
-      context "when days_back is not specified" do
-        it "should mine synonyms based on SaytSuggestions per affiliate updated over last day" do
+      context "when min_popularity is not specified" do
+        it "should mine synonyms based SaytSuggestions with a popularity of at least 10" do
           Affiliate.pluck(:id).each do |affiliate_id|
-            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, 1)
+            Resque.should_receive(:enqueue).with(SynonymMiner, affiliate_id, 10)
           end
           @rake[task_name].invoke
         end
+      end
+    end
+
+    describe "usasearch:synonyms:group_overlapping_synonyms" do
+      before do
+        Synonym.create_entry_for(['internal revenue service', 'irs'], affiliates(:basic_affiliate))
+        Synonym.create_entry_for(['visa', 'visas'], affiliates(:gobiernousa_affiliate))
+      end
+
+      let(:task_name) { 'usasearch:synonyms:group_overlapping_synonyms' }
+      it 'should group overlapping synonyms per locale' do
+        Synonym.should_receive(:group_overlapping_synonyms).with('en')
+        Synonym.should_receive(:group_overlapping_synonyms).with('es')
+        @rake[task_name].invoke
       end
     end
 

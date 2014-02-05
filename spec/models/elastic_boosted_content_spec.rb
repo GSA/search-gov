@@ -313,10 +313,6 @@ describe ElasticBoostedContent do
             ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
           end
         end
-
-        it 'should handle custom synonyms' do
-          ElasticBoostedContent.search_for(q: 'visa', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        end
       end
     end
 

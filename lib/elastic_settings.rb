@@ -1,30 +1,24 @@
 module ElasticSettings
-  ES_SYNONYMS = ["visa, visas"]
-  EN_SYNONYMS = [
-    'sequestered, sequestration, sequestrations => sequester',
-    'bomber, bombed, bombing, bombs, bombers, bombings => bomb',
-    'fracturing, fracking, hydrofracking, hydrofracturing'
-  ]
   COMMON = {
     index: {
       analysis: {
         filter: {
-          es_synonym: { type: 'synonym', synonyms: ES_SYNONYMS },
-          en_synonym: { type: 'synonym', synonyms: EN_SYNONYMS },
           en_stop_filter: { type: "stop", stopwords: ["_english_"] },
+          en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")) },
           en_stem_filter: { type: "stemmer", name: "minimal_english" },
           es_stop_filter: { type: "stop", stopwords: ["_spanish_"] },
+          es_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "es_synonyms.txt")) },
           es_stem_filter: { type: "stemmer", name: "light_spanish" }
         },
         analyzer: {
           en_analyzer: {
             type: "custom",
             tokenizer: "standard",
-            filter: %w(standard asciifolding lowercase en_stop_filter en_synonym en_stem_filter) },
+            filter: %w(standard asciifolding lowercase en_stop_filter en_stem_filter en_synonym) },
           es_analyzer: {
             type: "custom",
             tokenizer: "standard",
-            filter: %w(standard asciifolding lowercase es_stop_filter es_synonym es_stem_filter) },
+            filter: %w(standard asciifolding lowercase es_stop_filter es_stem_filter es_synonym) },
           case_insensitive_keyword_analyzer: {
             tokenizer: 'keyword',
             filter: %w(standard asciifolding lowercase) } } } }
