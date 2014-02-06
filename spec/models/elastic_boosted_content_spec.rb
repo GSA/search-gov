@@ -225,6 +225,39 @@ describe ElasticBoostedContent do
       ElasticBoostedContent.commit
     end
 
+    context 'when various apostrophes are present in title/desc/keywords' do
+      before do
+        apostrophe_1 = affiliate.boosted_contents.build(title: "hawai`i o'reilly",
+                                                           status: 'active',
+                                                           description: "ignore them",
+                                                           url: 'http://www.nhc.noaa.gov/hi1.shtml',
+                                                           publish_start_on: Date.current)
+        apostrophe_1.save!
+        apostrophe_2 = affiliate.boosted_contents.build(title: "island",
+                                                           status: 'active',
+                                                           description: "Hawaiʻi's language orthography has it's own special characters",
+                                                           url: 'http://www.nhc.noaa.gov/hi2.shtml',
+                                                           publish_start_on: Date.current)
+        apostrophe_2.save!
+        apostrophe_3 = affiliate.boosted_contents.build(title: "loren's island",
+                                                           status: 'active',
+                                                           description: 'paradise',
+                                                           url: 'http://www.nhc.noaa.gov/hi3.shtml',
+                                                           publish_start_on: Date.current)
+        apostrophe_3.boosted_content_keywords.build(value: "Hawai'i")
+        apostrophe_3.save!
+        ElasticBoostedContent.commit
+      end
+
+      it 'should ignore them' do
+        ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 3
+        ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 3
+        ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+      end
+    end
+
     describe 'keywords' do
       it 'should be case insensitive' do
         ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
