@@ -12,13 +12,13 @@ gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'authlogic'
 gem 'multi_db'
-gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
+gem 'sunspot_rails', :git => 'git://github.com/GSA/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
 gem 'airbrake'
 gem 'yajl-ruby', :require => 'yajl'
 gem 'redis'
 gem 'redis-namespace'
 gem 'resque'
-gem 'resque-priority', :git => 'git://github.com/GSA-OCSIT/resque-priority.git'
+gem 'resque-priority', :git => 'git://github.com/GSA/resque-priority.git'
 gem 'cloudfiles', '1.4.17'
 gem 'cocaine', '~> 0.3.2'
 gem 'paperclip-cloudfiles', :require => 'paperclip'
@@ -91,7 +91,7 @@ group :development, :test do
   gem 'launchy'
   gem 'webster'
   gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'
-  gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
+  gem 'sunspot_solr', :git => 'git://github.com/GSA/sunspot.git', :ref => "b0af7f90c727ff71804e7608c27882f12670e517"
   gem 'progress_bar'
   gem 'thin'
 end

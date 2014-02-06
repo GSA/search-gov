@@ -7,7 +7,7 @@ require 'new_relic/recipes'
 
 set :application, "usasearch"
 set :scm,         "git"
-set :repository,  "git@github.com:GSA-OCSIT/#{application}.git"
+set :repository,  "git@github.com:GSA/#{application}.git"
 set :use_sudo,    false
 set :deploy_via, :remote_cache
 
