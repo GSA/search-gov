@@ -10,7 +10,11 @@ namespace :usasearch do
 
     desc "combine any overlapping synonyms per locale"
     task group_overlapping_synonyms: :environment do
-      Synonym.pluck(:locale).uniq.each { |locale| Synonym.group_overlapping_synonyms(locale) }
+      Synonym.pluck(:locale).uniq.each do |locale|
+        %w{Approved Candidate}.each do |status|
+          Synonym.group_overlapping_synonyms(locale, status)
+        end
+      end
     end
   end
 end

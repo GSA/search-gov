@@ -47,9 +47,12 @@ describe "synonyms rake tasks" do
       end
 
       let(:task_name) { 'usasearch:synonyms:group_overlapping_synonyms' }
-      it 'should group overlapping synonyms per locale' do
-        Synonym.should_receive(:group_overlapping_synonyms).with('en')
-        Synonym.should_receive(:group_overlapping_synonyms).with('es')
+
+      it 'should group overlapping synonyms per locale per status' do
+        Synonym.should_receive(:group_overlapping_synonyms).with('en', 'Approved')
+        Synonym.should_receive(:group_overlapping_synonyms).with('es', 'Approved')
+        Synonym.should_receive(:group_overlapping_synonyms).with('en', 'Candidate')
+        Synonym.should_receive(:group_overlapping_synonyms).with('es', 'Candidate')
         @rake[task_name].invoke
       end
     end

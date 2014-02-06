@@ -2,6 +2,8 @@ class Synonym < ActiveRecord::Base
   STATES = %w{Candidate Approved Rejected}
   ENTRY_DELIMITER = ', '
   belongs_to :affiliate
+  scope :approved, where(:status => 'Approved')
+  scope :candidates, where(:status => 'Candidate')
 
   def self.create_entry_for(candidate_group, affiliate)
     entry = format_entry(candidate_group)
@@ -25,8 +27,8 @@ class Synonym < ActiveRecord::Base
     arr.collect(&:squish).collect(&:downcase).sort.uniq.join(ENTRY_DELIMITER)
   end
 
-  def self.group_overlapping_synonyms(locale)
-    synonyms = where(locale: locale).order("length(entry) DESC").to_a
+  def self.group_overlapping_synonyms(locale, status)
+    synonyms = where(locale: locale, status: status).order("length(entry) DESC")
     while synonyms.present?
       candidate = synonyms.shift
       overlapping, distinct = synonyms.partition { |synonym_instance| synonym_instance.overlaps_with?(candidate) }
