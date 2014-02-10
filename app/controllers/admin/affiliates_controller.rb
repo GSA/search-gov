@@ -40,6 +40,11 @@ class Admin::AffiliatesController < Admin::AdminController
       name_group.collapsed = true
     end
 
+    config.update.columns.add_subgroup 'Dublin Core Mappings' do |name_group|
+      name_group.add :dc_contributor, :dc_subject, :dc_publisher
+      name_group.collapsed = true
+    end
+
     config.list.columns.exclude virtual_columns
     config.create.columns = [:display_name, :name, :header_footer_css, :header, :footer, :locale]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"

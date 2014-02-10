@@ -57,7 +57,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :daily_left_nav_stats
     assoc.has_many :daily_usage_stats
   end
-  
+
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -179,7 +179,7 @@ class Affiliate < ActiveRecord::Base
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 
-  def self.define_json_columns_accessors(args)
+  def self.define_hash_columns_accessors(args)
     column_name_method = args[:column_name_method]
     fields = args[:fields]
 
@@ -194,17 +194,21 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  define_json_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
-  define_json_columns_accessors column_name_method: :live_fields,
+  define_hash_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
+  define_hash_columns_accessors column_name_method: :live_fields,
                                 fields: [:header, :footer,
                                          :header_footer_css, :nested_header_footer_css,
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :go_live_date]
-  define_json_columns_accessors column_name_method: :staged_fields,
+  define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
+
+  serialize :dublin_core_mappings, Hash
+  define_hash_columns_accessors column_name_method: :dublin_core_mappings,
+                                fields: [:dc_contributor, :dc_publisher, :dc_subject]
 
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
