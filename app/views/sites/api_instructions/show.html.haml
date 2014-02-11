@@ -66,6 +66,20 @@
       %span lat_lon:
       A comma-separated lat/lon pair (e.g., '34.56,-122.42'). Some results modules like jobs can show location-based results if this optional parameter is passed in.
 
+  %p
+    For web and image results from Bing or Google, you can also use their respective query parameters.
+  %ul
+    %li
+      Bing:
+      =link_to 'Advanced Search Keywords', 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+      and
+      =link_to 'Advanced Search Options', 'http://onlinehelp.microsoft.com/en-us/bing/ff808438.aspx'
+    %li
+      Google:
+      = link_to 'Search Operators', 'https://support.google.com/websearch/answer/136861?hl=en'
+      and
+      =link_to 'Punctuation and Symbols', 'https://support.google.com/websearch/answer/2466433'
+
   %h3 Web Search Examples (Bing/Google Results)
   %ul
     %li
@@ -89,6 +103,9 @@
     Response Fields
   %p
     Note that not all response fields appear in all queries.
+    Tweets aren't provided in our API. If you'd like to include your tweets, use
+    = link_to "Twitter's API", "https://dev.twitter.com/"
+    directly.
   %ul
     %li
       %span total:
