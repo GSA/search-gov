@@ -1,0 +1,11 @@
+#jobs.search.collapsible.collapsed
+  .content-block-item.content-block-item-header
+    .content-provider
+      = job_openings_header(search.affiliate.agency)
+  - search.jobs.each_with_index do |job, index|
+    = render partial: 'job', locals: { affiliate: search.affiliate, job: job, position: index + 1 }
+  - if search.jobs.count > 3
+    .content-block-item.content-block-item-footer.content-trigger
+      = render partial: 'show_more_show_less'
+  .content-block-item.content-block-item-footer
+    .content-provider= link_to_agency_jobs_link(search)

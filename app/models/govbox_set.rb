@@ -59,7 +59,7 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      jobs_options = { query: @query, size: 3, hl: 1 }
+      jobs_options = { query: @query, size: 10, hl: 1 }
       org_tags_hash = @affiliate.has_organization_code? ? { organization_id: @affiliate.agency.organization_code } : { tags: 'federal' }
       jobs_options.merge!(org_tags_hash)
       jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?

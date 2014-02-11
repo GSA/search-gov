@@ -1,0 +1,40 @@
+.search.collapsible {
+  .show-less, .show-more {
+    color: @icon-color;
+    cursor: pointer;
+    padding: 10px 12px 12px;
+    text-align: center;
+    text-decoration: none;
+
+    @media (min-width: @screen-desktop) {
+      padding: 5px 0;
+    }
+
+    .glyphicon {
+      top: 2px;
+    }
+  }
+
+  .collapsible-item, .show-less {
+    display: block;
+  }
+
+  .show-more {
+    display: none;
+  }
+
+  &.collapsed {
+    .collapsible-item, .show-less {
+      display: none;
+    }
+
+    .show-more {
+      display: block;
+    }
+  }
+
+  .content-trigger {
+    padding: 0;
+  }
+
+}

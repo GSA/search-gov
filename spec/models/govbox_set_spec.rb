@@ -69,7 +69,7 @@ describe GovboxSet do
 
         it "should call Jobs.search with the query, org code, size, hl, and lat_lon params" do
           Jobs.should_receive(:search).
-            with(:query => 'foo', :hl => 1, :size => 3, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
+            with(:query => 'foo', :hl => 1, :size => 10, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
             and_return "jobs info"
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.jobs.should == "jobs info"
@@ -78,7 +78,7 @@ describe GovboxSet do
 
       context "when the affiliate does not have a related agency with an org code" do
         it "should call Jobs.search with just the query, size, hl, and lat_lon param" do
-          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 3, tags: 'federal').and_return nil
+          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 10, tags: 'federal').and_return nil
           GovboxSet.new('foo', affiliate, nil)
         end
       end

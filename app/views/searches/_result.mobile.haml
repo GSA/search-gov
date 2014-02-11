@@ -1,7 +1,7 @@
 .content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
   %h3
     = display_web_result_extname_prefix(result)
-    = link_to_web_result_title(search, result, position)
+    = link_to_web_result_title(result, position)
   %div.url= truncate_url(result['unescapedUrl'])
   %span.description
     - if result['publishedAt']

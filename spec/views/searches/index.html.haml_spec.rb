@@ -178,12 +178,7 @@ describe "searches/index.html.haml" do
         rendered.should contain("Hello, MA")
         rendered.should contain("Apply by October 15, 2023")
 
-        rendered.should have_selector(:a,
-                                      content: 'Zero Money Research Job',
-                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437203?PostingChannelID=USASearch')
-        rendered.should contain("Some Poor Research Service")
-        rendered.should contain("Washington Metro Area, DC")
-        rendered.should contain("Apply by October 14, 2023")
+        rendered.should_not contain('Zero Money Research Job')
 
         rendered.should have_selector(:a,
                                       content: 'See all federal job openings',
@@ -256,7 +251,7 @@ describe "searches/index.html.haml" do
           rendered.should contain("Agricultural Research Service")
           rendered.should contain("Some Research Service")
           rendered.should contain("BW Research Service")
-          rendered.should contain("Some Poor Research Service")
+          rendered.should_not contain("Some Poor Research Service")
         end
       end
 

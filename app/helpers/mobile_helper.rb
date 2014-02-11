@@ -1,9 +1,11 @@
 module MobileHelper
   def mobile_header(affiliate)
     css_classes = 'logo'
-    if affiliate.mobile_logo_file_name.present?
+    logo_url = affiliate.mobile_logo.url rescue nil if affiliate.mobile_logo_file_name.present?
+
+    if logo_url.present?
       html = link_to_if(affiliate.website.present?,
-                        image_tag(affiliate.mobile_logo.url, alt: affiliate.display_name),
+                        image_tag(logo_url, alt: affiliate.display_name),
                         affiliate.website)
     else
       html = link_to_if(affiliate.website.present?,
@@ -21,7 +23,9 @@ module MobileHelper
   def serp_attribution(search_module_tag)
     powered_by = I18n.t :powered_by
     if %w(BWEB IMAG).include? search_module_tag
-      content_tag(:div, class: 'bing') { content_tag :span, powered_by }
+      content_tag(:div, class: 'bing') do
+        (powered_by << content_tag(:span, 'Bing')).html_safe
+      end
     elsif %w(GWEB GIMAG).include? search_module_tag
       "#{powered_by} Google"
     else

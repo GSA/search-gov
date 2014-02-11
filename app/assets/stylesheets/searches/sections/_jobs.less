@@ -1,0 +1,26 @@
+#jobs {
+  .content-block();
+
+  #job-1, #job-2, #job-3 {
+    display: block;
+  }
+
+  .field-separator {
+    display: none;
+    @media (min-width: @screen-sm) {
+      display: inline;
+    }
+  }
+
+  .job-locations-money, .job-dates {
+    @media (min-width: @screen-sm) {
+      display: inline;
+    }
+  }
+
+  .job-organization, .job-locations-money, .job-dates {
+    @media (min-width: @screen-desktop) {
+      .smaller-result-item();
+    }
+  }
+}

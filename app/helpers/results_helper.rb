@@ -10,12 +10,12 @@ module ResultsHelper
     }
   end
 
-  def link_to_best_bet_title(id, title, url, position, module_name)
+  def link_to_result_title(id, title, url, position, module_name, options = {})
     click_data = { i: id, p: position, s: module_name }
-    link_to_if url.present?, title.html_safe, url, data: { click: click_data }
+    link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
-  def link_to_web_result_title(search, result, position)
+  def link_to_web_result_title(result, position)
     title = translate_bing_highlights(h(result['title'])).html_safe
 
     click_data = { p: position }

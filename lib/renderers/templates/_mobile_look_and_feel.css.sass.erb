@@ -7,8 +7,9 @@
   @media (min-width: 768px)
     border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
 
-#best-bets, #tweets, #results
-  a
+#search
+  color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
+  .result a, .tweet a
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
     &:visited
       color: <%= render_affiliate_css_property_value(@css_hash, :visited_title_link_color) %>
@@ -19,8 +20,6 @@
       color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
       &:visited
         color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
-    .description
-      color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
 
 #related-searches a
   &, &:visited

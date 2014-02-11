@@ -1,0 +1,141 @@
+#best-bets {
+  .content-block();
+
+  &.collapsed {
+    #best-bet-1, #best-bet-2 {
+      display: block;
+    }
+
+    .featured-collection .links {
+      .clearfix();
+      max-height: 10em;
+      overflow: hidden;
+
+      @media (min-width: @screen-desktop) {
+        max-height: 6em;
+      }
+    }
+  }
+
+  .content-trigger {
+    &.one-column-hide-trigger {
+      display: none;
+    }
+
+    &.has-collapsed-featured-collection {
+      display: block;
+    }
+
+    @media (min-width: @screen-sm) {
+      &.two-column-hide-trigger {
+        display: none;
+      }
+
+      &.has-collapsed-featured-collection {
+        display: block;
+      }
+    }
+  }
+}
+
+#best-bets .featured-collection {
+  h3 {
+    .text-overflow();
+
+    @media (min-width: @screen-desktop) {
+      margin-bottom: 0.3em;
+    }
+  }
+
+  .image-and-title {
+    .clearfix();
+    margin-bottom: 5px;
+  }
+
+  @featured-collection-image-width: 50px;
+  @featured-collection-content-left-margin: (@featured-collection-image-width + 10px);
+
+  @tablet-featured-collection-image-width: 110px;
+  @tablet-featured-collection-content-left-margin: (@tablet-featured-collection-image-width + 10px);
+
+  .image {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    width: @featured-collection-image-width;
+
+    @media (min-width: @screen-sm) {
+      width: @tablet-featured-collection-image-width;
+    }
+
+    img {
+      .img-responsive();
+    }
+  }
+
+  ul {
+    .list-unstyled();
+    display: block;
+    font-size: 1em;
+    line-height: 1.8em;
+    overflow: hidden;
+    margin-bottom: 0;
+
+    @media (min-width: @screen-desktop) {
+      .smaller-result-item();
+    }
+
+    > li {
+      padding-right: 15px;
+      vertical-align: top;
+    }
+
+    a {
+      .text-overflow();
+      display: block;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+
+      @media (min-width: @screen-desktop) {
+        padding: 0.2em 0;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.two-column ul {
+    @media (min-width: @screen-sm) {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .title-and-links {
+    .clearfix();
+  }
+
+  &.has-image {
+    .title-and-links {
+      @media (min-width: @screen-sm) {
+        margin-left: @tablet-featured-collection-content-left-margin;
+      }
+    }
+
+    h3 {
+      margin-left: @featured-collection-content-left-margin;
+
+      @media (min-width: @screen-sm) {
+        margin-left: 0;
+      }
+    }
+
+    .links {
+      clear: both;
+
+      @media (min-width: @screen-sm) {
+        clear: none;
+        display: block;
+      }
+    }
+  }
+}

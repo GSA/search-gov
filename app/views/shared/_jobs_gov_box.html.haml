@@ -2,7 +2,7 @@
   #jobs_govbox
     %h3.alt
       = job_openings_header(search.affiliate.agency)
-    - search.jobs.each_with_index do |job, index|
+    - search.jobs.slice(0, 3).each_with_index do |job, index|
       .job
         .job-title= title_link(job, search, index)
         - unless search.affiliate.has_organization_code? && search.affiliate.agency.organization_code.length==4

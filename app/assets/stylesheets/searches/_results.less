@@ -1,19 +1,55 @@
-#best-bets, #results {
-  .content-block();
+.content-block-item.content-block-item-footer {
+  padding: 0;
 
   .content-provider {
     color: #505050;
     font-size: 12px;
-    margin: 5px 0;
+    margin: 0;
+    text-align: right;
+
+    a {
+      color: #505050;
+      display: block;
+      padding: 10px 12px 12px;
+      text-decoration: none;
+
+      @media (min-width: @screen-desktop) {
+        padding: 8px 12px;
+      }
+    }
+
+    .bing, .usajobs {
+      span {
+        .text-hide();
+      }
+    }
+
     .bing {
       background: asset-data-url('searches/bing_logo.png') right no-repeat;
       height: 19px;
-      span {
-        font-family: 'Arial';
-        padding-right: 58px;
+      margin: 12px;
+      padding-right: 58px;
+      font-family: 'Arial';
+
+      @media (min-width: @screen-desktop) {
+        margin: 8px 12px;
       }
     }
+
+    .usajobs {
+      background: asset-data-url('searches/usajobs.jpg') no-repeat right;
+      border-right: 12px solid transparent;
+      padding-right: 94px;
+    }
   }
+}
+
+#results {
+  .content-block();
+}
+
+#search {
+  a { .tap-highlight(); }
 
   .result {
     h3 {
@@ -36,6 +72,7 @@
         position: relative;
       }
     }
+
     .url, .description {
       display: block;
       word-wrap: break-word;
@@ -52,269 +89,6 @@
   }
 }
 
-#best-bets .content-provider {
-  font-size: 1em;
-  .pull-left();
-}
-
-#best-bets {
-  .show-less, .show-more {
-    color: @icon-color;
-    cursor: pointer;
-    display: block;
-    padding: 10px 12px 12px;
-    text-align: center;
-    text-decoration: none;
-
-    @media (min-width: @screen-desktop) {
-      padding: 5px 0;
-    }
-
-    .glyphicon {
-      top: 2px;
-    }
-  }
-
-  .boosted-content, .featured-collection, .show-less {
-    display: block;
-  }
-
-  .show-more {
-    display: none;
-  }
-
-  &.collapsed {
-    .boosted-content, .featured-collection, .show-less {
-      display: none;
-    }
-
-    #best-bet-1, #best-bet-2, .show-more {
-      display: block;
-    }
-
-    .featured-collection .links {
-      .clearfix();
-      max-height: 10em;
-      overflow: hidden;
-
-      @media (min-width: @screen-desktop) {
-        max-height: 6em;
-      }
-    }
-  }
-
-  .content-trigger {
-    padding: 0;
-
-    &.one-column-hide-trigger {
-      display: none;
-    }
-
-    &.has-collapsed-featured-collection {
-      display: block;
-    }
-
-    @media (min-width: @screen-sm) {
-      &.two-column-hide-trigger {
-        display: none;
-      }
-
-      &.has-collapsed-featured-collection {
-        display: block;
-      }
-    }
-  }
-}
-
-#best-bets .featured-collection {
-  h3 {
-    .text-overflow();
-
-    @media (min-width: @screen-desktop) {
-      margin-bottom: 0.3em;
-    }
-  }
-
-  .image-and-title {
-    .clearfix();
-    margin-bottom: 5px;
-  }
-
-  @featured-collection-image-width: 50px;
-  @featured-collection-content-left-margin: (@featured-collection-image-width + 10px);
-
-  @tablet-featured-collection-image-width: 110px;
-  @tablet-featured-collection-content-left-margin: (@tablet-featured-collection-image-width + 10px);
-
-  .image {
-    display: block;
-    float: left;
-    margin-top: 10px;
-    width: @featured-collection-image-width;
-
-    @media (min-width: @screen-sm) {
-      width: @tablet-featured-collection-image-width;
-    }
-
-    img {
-      .img-responsive();
-    }
-  }
-
-  ul {
-    .list-unstyled();
-    display: block;
-    font-size: 1em;
-    line-height: 1.8em;
-    overflow: hidden;
-    margin-bottom: 0;
-
-    @media (min-width: @screen-desktop) {
-      .smaller-result-item();
-    }
-
-    > li {
-      padding-right: 15px;
-      vertical-align: top;
-    }
-
-    a {
-      .text-overflow();
-      display: block;
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-
-      @media (min-width: @screen-desktop) {
-        padding: 0.2em 0;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  &.two-column ul {
-    @media (min-width: @screen-sm) {
-      float: left;
-      width: 50%;
-    }
-  }
-
-  .title-and-links {
-    .clearfix();
-  }
-
-  &.has-image {
-    .title-and-links {
-      @media (min-width: @screen-sm) {
-        margin-left: @tablet-featured-collection-content-left-margin;
-      }
-    }
-
-    h3 {
-      margin-left: @featured-collection-content-left-margin;
-
-      @media (min-width: @screen-sm) {
-        margin-left: 0;
-      }
-    }
-
-    .links {
-      clear: both;
-
-      @media (min-width: @screen-sm) {
-        clear: none;
-        display: block;
-      }
-    }
-  }
-}
-
-#tweets {
-  .content-block();
-
-  .tweet {
-    position: relative;
-
-    .logo {
-      .hide-text();
-      background: transparent image-url('legacy/govbox/twitter.png') center no-repeat;
-      height: 32px;
-      position: absolute;
-      top: 10px;
-      right: 5px;
-      width: 32px;
-    }
-
-    .profile {
-      .clearfix();
-      text-decoration: none;
-      &:hover {
-        .profile-name {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .profile-image {
-      float: left;
-      margin-top: 10px;
-      width: 38px;
-
-      @media (min-width: @screen-sm) {
-        width: 48px;
-      }
-
-      img {
-        .img-responsive();
-        border-color: 1px solid transparent;
-        border-radius: @border-radius-base;
-      }
-    }
-
-    .profile-name, .profile-screen-name {
-      display: block;
-      margin-left: 43px;
-      margin-right: 35px;
-      @media (min-width: @screen-sm) {
-        margin-left: 53px;
-      }
-    }
-    .profile-name {
-      font-size: 18px;
-      line-height: 1;
-      margin-top: 10px;
-
-      @media (min-width: @screen-sm) {
-        margin-top: 15px;
-      }
-
-      @media (min-width: @screen-desktop) {
-        font-size: 16px;
-        line-height: 1.1;
-      }
-    }
-
-    .profile-screen-name {
-      color: @icon-color;
-
-      @media (min-width: @screen-desktop) {
-        .smaller-result-item();
-      }
-    }
-
-    .text, .timestamp {
-      margin-top: 5px;
-
-      @media (min-width: @screen-desktop) {
-        .smaller-result-item();
-      }
-    }
-
-    .timestamp a {
-      color: @icon-color;
-    }
-  }
-}
-
 #related-searches {
   .content-block();
 
@@ -322,8 +96,6 @@
     .list-unstyled();
   }
 }
-
-#search a { .tap-highlight(); }
 
 .pagination {
   .content-block();
