@@ -1,13 +1,6 @@
 class ElasticTextFilteredQuery < ElasticQuery
-  MIN_SIMILARITY = 0.80
 
-  def initialize(options)
-    super(options)
-    @affiliate_id = options[:affiliate_id]
-    @text_analyzer = "#{options[:language]}_analyzer"
-  end
-
-  def query(json)
+  def filtered_query(json)
     json.query do
       json.filtered do
         filtered_query_query(json)
@@ -16,8 +9,24 @@ class ElasticTextFilteredQuery < ElasticQuery
     end
   end
 
-  def multi_match_options
-    { operator: :and, analyzer: @text_analyzer, fuzziness: MIN_SIMILARITY, prefix_length: 2 }
+  def filtered_query_query(json)
+    json.query do
+      query_string(json, highlighted_fields, @q, query_string_options)
+    end if @q.present?
+  end
+
+  def query_string(json, fields, query, options = {})
+    json.query_string do
+      json.fields fields
+      json.query query
+      options.each do |option, value|
+        json.set! option, value
+      end
+    end
+  end
+
+  def query_string_options
+    { analyzer: @text_analyzer, default_operator: 'AND' }
   end
 
 end

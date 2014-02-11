@@ -849,10 +849,10 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I follow "Press" in the left column
     Then I should see the browser page titled "Press - bar site Search Results"
-    Then I should see "2 results"
-    And I should see 2 news results
     And I should see "First item"
     And I should see "Second item"
+    And I should see "2 results"
+    And I should see 2 news results
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"

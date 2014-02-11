@@ -13,6 +13,8 @@ class ElasticQuery
     @size = [options[:size].to_i, MAX_SIZE].min
     @q = options[:q]
     @highlighting = !(options[:highlighting] == false)
+    @text_analyzer = "#{options[:language]}_analyzer"
+    @sort = options[:sort]
   end
 
   def body

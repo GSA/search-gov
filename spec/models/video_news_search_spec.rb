@@ -23,8 +23,8 @@ describe VideoNewsSearch do
     context 'when video news items are found' do
       it "should log info about the query and module impressions" do
         search = VideoNewsSearch.new(query: 'element', affiliate: affiliate, channel: mock_model(RssFeed).id)
-        response = mock('results', total: 1, facets: [], hits: [])
-        NewsItem.should_receive(:search_for).and_return response
+        response = mock(ElasticNewsItemResults, total: 1, facets: [], results: [])
+        ElasticNewsItem.should_receive(:search_for).and_return response
         QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['VIDS'])
         search.run
       end
@@ -38,13 +38,13 @@ describe VideoNewsSearch do
         youtube_feeds = [mock_model(RssFeed)]
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return youtube_feeds
         search = VideoNewsSearch.new(query: 'element', channel: '100', affiliate: affiliate)
-        NewsItem.should_receive(:search_for).
-            with('element', youtube_feeds, affiliate,
-                 since: nil, until: nil,
-                 page: 1, per_page: 20,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: youtube_feeds, excluded_urls: affiliate.excluded_urls,
+               since: nil, until: nil,
+               offset: 0, size: 20,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en')
         search.run.should be_true
       end
     end
@@ -56,13 +56,13 @@ describe VideoNewsSearch do
         affiliate.should_receive(:youtube_profile_ids).twice.and_return mock('youtube profile ids')
         youtube_feeds = [mock_model(RssFeed)]
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return youtube_feeds
-        NewsItem.should_receive(:search_for).
-            with('element', youtube_feeds, affiliate,
-                 since: Time.current.advance(weeks: -1).beginning_of_day, until: nil,
-                 page: 1, per_page: 20,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: youtube_feeds, excluded_urls: affiliate.excluded_urls,
+               since: Time.current.advance(weeks: -1).beginning_of_day, until: nil,
+               offset: 0, size: 20,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en')
         search = VideoNewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
         search.run
         search.rss_feed.should == videos_navigable_feeds.first

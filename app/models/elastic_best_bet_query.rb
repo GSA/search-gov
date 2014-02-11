@@ -1,4 +1,14 @@
 class ElasticBestBetQuery < ElasticTextFilteredQuery
+  MIN_SIMILARITY = 0.80
+
+  def initialize(options)
+    super(options)
+    @affiliate_id = options[:affiliate_id]
+  end
+
+  def query(json)
+    filtered_query(json)
+  end
 
   def filtered_query_filter(json)
     json.filter do
@@ -22,6 +32,10 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
         end
       end
     end if @q.present?
+  end
+
+  def multi_match_options
+    { operator: :and, analyzer: @text_analyzer, fuzziness: MIN_SIMILARITY, prefix_length: 2 }
   end
 
   def filter_field_on_current_date(json, field, operator)

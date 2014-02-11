@@ -1,7 +1,6 @@
 class NewsSearch < Search
   DEFAULT_VIDEO_PER_PAGE = 20.freeze
   attr_reader :rss_feed,
-              :hits,
               :tbs,
               :since,
               :until,
@@ -47,23 +46,21 @@ class NewsSearch < Search
 
     @tags = @rss_feed && @rss_feed.show_only_media_content? ? %w(image) : []
 
-    @hits, @total = [], 0
+    @total = 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
     @sort_by_relevance = options[:sort_by] == 'r'
-    if @rss_feed and
-        @rss_feed.is_managed? || @rss_feed.show_only_media_content? and
-        options[:per_page].blank?
+    if @rss_feed and @rss_feed.is_managed? || @rss_feed.show_only_media_content? and options[:per_page].blank?
       @per_page = DEFAULT_VIDEO_PER_PAGE
     end
   end
 
   def search
-    NewsItem.search_for(@query, @rss_feeds, @affiliate,
-                        since: @since, until: @until,
-                        page: @page, per_page: @per_page,
-                        contributor: @contributor, subject: @subject, publisher: @publisher,
-                        sort_by_relevance: @sort_by_relevance,
-                        tags: @tags)
+    ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
+                               since: @since, until: @until,
+                               size: @per_page, offset: (@page - 1) * @per_page,
+                               contributor: @contributor, subject: @subject, publisher: @publisher,
+                               sort_by_relevance: @sort_by_relevance,
+                               tags: @tags, language: @affiliate.locale)
   end
 
   def cache_key
@@ -81,8 +78,7 @@ class NewsSearch < Search
     if response
       @total = response.total
       @facets = response.facets
-      @results = paginate(process_results(response))
-      @hits = response.hits(:verify => true)
+      @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       assign_module_tag
@@ -99,18 +95,6 @@ class NewsSearch < Search
 
   def navigable_feeds
     @affiliate.rss_feeds.includes(:rss_feed_urls).navigable_only
-  end
-
-  def process_results(response)
-    processed = response.hits(:verify => true).collect do |hit|
-      {
-        'title' => @enable_highlighting ? SolrBingHighlighter.hl(hit, :title) : hit.instance.title,
-        'link' => hit.instance.link,
-        'publishedAt' => hit.instance.published_at,
-        'content' => @enable_highlighting ? SolrBingHighlighter.hl(hit, :description) : hit.instance.description
-      }
-    end
-    processed.compact
   end
 
   def since_when(tbs)

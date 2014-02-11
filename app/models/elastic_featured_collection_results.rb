@@ -1,10 +1,8 @@
 class ElasticFeaturedCollectionResults < ElasticResults
 
   def highlight_instance(highlight, instance)
-    if highlight.present? and instance.present?
-      instance.title = highlight['title'].first if highlight['title']
-      highlight_link_titles(highlight['link_titles'], instance) if highlight['link_titles']
-    end
+    instance.title = highlight['title'].first if highlight['title']
+    highlight_link_titles(highlight['link_titles'], instance) if highlight['link_titles']
     instance
   end
 

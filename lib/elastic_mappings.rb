@@ -14,7 +14,7 @@ module ElasticMappings
       publish_start_on: { type: 'date', format: 'YYYY-MM-dd' },
       publish_end_on: { type: 'date', format: 'YYYY-MM-dd', null_value: '9999-12-31' },
       title: { type: 'string', term_vector: 'with_positions_offsets' },
-      keyword_values: { type: 'string', analyzer: 'case_insensitive_keyword_analyzer' } }
+      keyword_values: ElasticSettings::KEYWORD }
   ).freeze
 
 end

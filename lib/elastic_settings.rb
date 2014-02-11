@@ -1,4 +1,6 @@
 module ElasticSettings
+  KEYWORD = { type: 'string', analyzer: 'case_insensitive_keyword_analyzer' }
+
   COMMON = {
     index: {
       analysis: {

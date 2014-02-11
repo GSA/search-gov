@@ -9,7 +9,7 @@ class ElasticIndexedDocument
               title: { type: 'string', term_vector: 'with_positions_offsets' },
               description: { type: 'string', term_vector: 'with_positions_offsets' },
               body: { type: 'string', term_vector: 'with_positions_offsets' },
-              url: { type: 'string', analyzer: 'case_insensitive_keyword_analyzer' }
+              url: ElasticSettings::KEYWORD
           }
       )
   }

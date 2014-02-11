@@ -22,12 +22,12 @@ module ResultsHelper
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
-  def link_to_news_item_title(hit, hit_url, position)
-    title = highlight_hit(hit, :title).html_safe
-    module_tag = hit.instance.is_video? ? 'VIDS' : 'NEWS'
+  def link_to_news_item_title(instance, position)
+    title = translate_bing_highlights(h(instance.title)).html_safe
+    module_tag = instance.is_video? ? 'VIDS' : 'NEWS'
 
     click_data = { p: position, s: module_tag }
-    link_to title, hit_url, data: { click: click_data }
+    link_to title, instance.link, data: { click: click_data }
   end
 
   def link_to_tweet_link(tweet, title, url, position, options = {})

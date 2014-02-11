@@ -52,19 +52,17 @@ class YoutubeData < RssFeedData
   end
 
   def process_parsed_rss_items(rss_feed_url, parser)
-    begin
-      news_item_ids = []
-      parser.each_item do |item|
-        news_item = create_or_update(rss_feed_url, item)
-        news_item_ids << news_item.id if news_item
-      end
-      rss_feed_url.news_item_ids = news_item_ids
-      rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                      last_crawled_at: Time.now.utc)
-    rescue => e
-      rss_feed_url.update_attributes!(last_crawl_status: e.message,
-                                      last_crawled_at: Time.now.utc)
+    news_item_ids = []
+    parser.each_item do |item|
+      news_item = create_or_update(rss_feed_url, item)
+      news_item_ids << news_item.id if news_item
     end
+    rss_feed_url.news_item_ids = news_item_ids
+    rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
+                                    last_crawled_at: Time.now.utc)
+  rescue => e
+    rss_feed_url.update_attributes!(last_crawl_status: e.message,
+                                    last_crawled_at: Time.now.utc)
   end
 
   def get_playlist_ids(username)
@@ -85,8 +83,8 @@ class YoutubeData < RssFeedData
     news_item.published_at = item[:published_at]
     news_item.save!
     news_item
-  rescue => e
-    puts "Failed to create_or_update #{rss_feed_url.inspect}, item: #{item.inspect}, error: #{e}"
-    nil
+    rescue => e
+      puts "Failed to create_or_update #{rss_feed_url.inspect}, item: #{item.inspect}, error: #{e}"
+      nil
   end
 end

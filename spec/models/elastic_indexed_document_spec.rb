@@ -7,7 +7,7 @@ describe ElasticIndexedDocument do
 
   before do
     ElasticIndexedDocument.recreate_index
-    affiliate.indexed_documents.destroy_all
+    affiliate.indexed_documents.delete_all
     affiliate.locale = 'en'
   end
 
@@ -101,7 +101,7 @@ describe ElasticIndexedDocument do
                      "This is just some filler text that will get ignored when making snippets. "*10,
                      "This sentence ends with President Obama.",
                      "Excessive risk-taking led to the financial crisis. "*10,
-                     "And President Obama said some other stuff too."].join(' ')
+                     "And President Obama said some other stuff too."].join(' ').squish
         affiliate.indexed_documents.create!(title: 'Worldwide Tropical Cyclone Names',
                                             description: long_text,
                                             body: long_text,
@@ -110,10 +110,10 @@ describe ElasticIndexedDocument do
         ElasticIndexedDocument.commit
       end
 
-      it 'should show everything in multiple fragments joined by ellipses' do
+      it 'should show everything in two 75 char fragments joined by ellipses' do
         search = ElasticIndexedDocument.search_for(q: 'president', affiliate_id: affiliate.id, language: affiliate.locale)
         first = search.results.first
-        ellipsized_results = "\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent...when making snippets.  This sentence ends with \uE000President\uE001 Obama. Excessive risk-taking led to the financial...risk-taking led to the financial crisis.  And \uE000President\uE001 Obama said some other stuff too."
+        ellipsized_results = "\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall...snippets. This sentence ends with \uE000President\uE001 Obama. Excessive risk-taking led"
         first.description.should == ellipsized_results
         first.body.should == ellipsized_results
       end

@@ -22,6 +22,17 @@ describe RssFeedUrl do
         expect { RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate',
                                     url: 'http://bogus.example.gov/feed/blog') }.to_not raise_error
       end
+
+      context 'when RSS feed contains a <language> element' do
+        before do
+          RssFeedData.stub(:extract_language).and_return 'es'
+        end
+
+        it 'should assign it' do
+          RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate',
+                             url: 'http://bogus.example.gov/feed/blog').language.should == 'es'
+        end
+      end
     end
 
     context 'when the URL does not point to an RSS feed' do
@@ -90,7 +101,7 @@ describe RssFeedUrl do
       rss_feed_url_1 = mock_model(RssFeedUrl)
       rss_feed_url_2 = mock_model(RssFeedUrl)
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
-          and_return([rss_feed_url_1, rss_feed_url_2])
+        and_return([rss_feed_url_1, rss_feed_url_2])
       rss_feed_url_1.should_receive(:freshen)
       rss_feed_url_2.should_receive(:freshen)
       RssFeedUrl.refresh_affiliate_feeds
@@ -118,12 +129,12 @@ describe RssFeedUrl do
 
     it 'should find existing URL in HTTP or HTTPS protocol' do
       expect(RssFeedUrl.rss_feed_owned_by_affiliate.
-                 find_existing_or_initialize(existing_url_without_scheme)).to eq(existing_url)
+               find_existing_or_initialize(existing_url_without_scheme)).to eq(existing_url)
     end
 
     it 'should find existing URL in other protocol' do
       expect(RssFeedUrl.rss_feed_owned_by_affiliate.
-                 find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
+               find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
     end
   end
 end

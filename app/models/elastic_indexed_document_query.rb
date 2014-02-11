@@ -1,18 +1,21 @@
-# coding: utf-8
 class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
 
   def initialize(options)
     super(options)
+    @affiliate_id = options[:affiliate_id]
     @document_collection = options[:document_collection]
     self.highlighted_fields = %w(title description body)
   end
 
+  def query(json)
+    filtered_query(json)
+  end
+
   def filtered_query_filter(json)
-    #TODO: cache these?
     json.filter do
       json.bool do
         json.must do
-          json.child! { json.term { json.affiliate_id @affiliate_id } }
+          json.term { json.affiliate_id @affiliate_id }
         end
         json.set! :should do |should_json|
           @document_collection.url_prefixes.each do |url_prefix|
@@ -23,16 +26,12 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
     end
   end
 
-  def filtered_query_query(json)
-    json.query do
-      json.bool do
-        json.set! :should do |should_json|
-          should_json.child! do
-            query_string(should_json, highlighted_fields, @q, query_string_options)
-          end
-        end
-      end
-    end if @q.present?
+  def highlight_fields(json)
+    json.fields do
+      json.set! :title, { number_of_fragments: 0 }
+      json.set! :description, {fragment_size: 75, number_of_fragments: 2}
+      json.set! :body, {fragment_size: 75, number_of_fragments: 2}
+    end
   end
 
   def pre_tags
@@ -41,28 +40,6 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
 
   def post_tags
     %w()
-  end
-
-  def highlight_fields(json)
-    json.fields do
-      json.set! :title, { number_of_fragments: 0 }
-      json.description
-      json.body
-    end
-  end
-
-  def query_string(json, fields, query, options = {})
-    json.query_string do
-      json.fields fields
-      json.query query
-      options.each do |option, value|
-        json.set! option, value
-      end
-    end
-  end
-
-  def query_string_options
-    { analyzer: @text_analyzer, default_operator: 'AND' }
   end
 
 end

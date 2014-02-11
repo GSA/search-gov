@@ -48,7 +48,7 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
                                     subject: hash['subject'],
                                     properties: properties)
   end
-  Sunspot.commit
+  ElasticNewsItem.commit
 end
 
 Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video, feed_name|
@@ -64,7 +64,7 @@ Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video
                                     :guid => "#{now}_#{index + 1}",
                                     :published_at => published_at - index)
   end
-  Sunspot.commit
+  ElasticNewsItem.commit
 end
 
 Then /^I should not see "([^\"]*)" in bold font$/ do |text|

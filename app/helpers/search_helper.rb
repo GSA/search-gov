@@ -122,8 +122,8 @@ module SearchHelper
     truncate_html(translate_bing_highlights(h(result['content'])))
   end
 
-  def news_description(hit)
-    truncate_html(highlight_hit(hit, :description)).sub(/^([^A-Z<])/,'...\1').html_safe
+  def news_description(instance)
+    truncate_html(translate_bing_highlights(h(instance.description))).sub(/^([^A-Z<])/,'...\1').html_safe
   end
 
   def translate_bing_highlights(body)
@@ -340,7 +340,8 @@ module SearchHelper
   private
 
   def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
-    link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => news_item.title).html_safe, news_item.link, affiliate, search.query, index, 'VIDS', search_vertical)
+    link_with_click_tracking(image_tag(youtube_thumbnail_url(news_item), :alt => strip_bing_highlights(news_item.title)).html_safe,
+                             news_item.link, affiliate, search.query, index, 'VIDS', search_vertical)
   end
 
   def render_news_item_image_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)

@@ -41,8 +41,8 @@ describe WebResultsPostProcessor do
       before do
         NewsItem.destroy_all
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
-                         :title => "NewsItem title highlighted from Solr",
-                         :description => "NewsItem description highlighted from Solr",
+                         :title => "NewsItem title highlighted from ElasticSearch",
+                         :description => "NewsItem description highlighted from ElasticSearch",
                          :published_at => DateTime.parse("2011-09-26 21:33:05"),
                          :guid => '80798 at www.whitehouse.gov',
                          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
@@ -52,7 +52,7 @@ describe WebResultsPostProcessor do
                          :published_at => DateTime.parse("2011-09-26 21:33:06"),
                          :guid => '80799 at www.whitehouse.gov',
                          :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
-        Sunspot.commit
+        ElasticNewsItem.commit
         post_processor = WebResultsPostProcessor.new('NewsItem', affiliate, results)
         @post_processed_results = post_processor.post_processed_results
       end
@@ -60,8 +60,8 @@ describe WebResultsPostProcessor do
       it "should replace Bing's result title with the NewsItem title" do
         @post_processed_results.first['title'].should == "Title w/o highlighting"
         @post_processed_results.first['content'].should == "Description w/o highlighting"
-        @post_processed_results.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from Solr"
-        @post_processed_results.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from Solr"
+        @post_processed_results.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from ElasticSearch"
+        @post_processed_results.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from ElasticSearch"
       end
 
       it 'should assign published date from news item' do

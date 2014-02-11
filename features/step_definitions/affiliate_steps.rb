@@ -26,6 +26,7 @@ Given /^the following Affiliates exist:$/ do |table|
 
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
   end
+  ElasticNewsItem.recreate_index
 end
 
 Given /^the following Misspelling exist:$/ do |table|

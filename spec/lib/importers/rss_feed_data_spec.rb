@@ -195,4 +195,29 @@ describe RssFeedData do
       end
     end
   end
+
+  describe '.extract_language(rss_doc)' do
+    context 'when rss_doc contains a language element' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        @rss_doc = Nokogiri::XML(rss_feed_content)
+      end
+
+      it 'should return the first two letters downcased (e.g., es/en)' do
+        RssFeedData.extract_language(@rss_doc).should == 'en'
+      end
+    end
+
+    context 'when rss_doc does not contain a language element' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        @rss_doc = Nokogiri::XML(rss_feed_content)
+      end
+
+      it 'should return nil' do
+        RssFeedData.extract_language(@rss_doc).should be_nil
+      end
+    end
+  end
+
 end

@@ -52,8 +52,8 @@
     = render partial: 'news_custom_date_range_search_form', locals: { search_params: @search_params }
 
   - if @search.results.present?
-    - @search.hits.each_with_index do |hit, index|
-      = render determine_news_item_partial(@feed_type), :hit => hit, :index => index
+    - @search.results.each_with_index do |instance, index|
+      = render determine_news_item_partial(@feed_type), :instance => instance, :index => index
     .pagination-and-logo
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :id => 'usasearch_pagination')
       = search_results_by_logo('some type of news')

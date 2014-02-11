@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe YoutubeData do
-  disconnect_sunspot
   fixtures :affiliates, :rss_feeds, :rss_feed_urls, :youtube_profiles
 
   describe '.refresh_feeds' do

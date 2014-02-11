@@ -25,14 +25,14 @@ class OdieSearch < Search
     if response
       @total = response.total
       @results = paginate(process_results(response))
-      @startrecord = ((@page - 1) * 10) + 1
+      @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       @module_tag = @total > 0 ? 'AIDOC' : nil
     end
   end
 
   def process_results(response)
-    processed = response.results.collect do |result|
+    response.results.collect do |result|
       content_field = !(has_highlight?(result.description)) && has_highlight?(result.body) ? result.body : result.description
       {
         'title' => result.title,
@@ -40,7 +40,6 @@ class OdieSearch < Search
         'content' => content_field
       }
     end
-    processed.compact
   end
 
   protected

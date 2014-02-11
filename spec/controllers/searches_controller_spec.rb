@@ -392,7 +392,8 @@ describe SearchesController do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
-      NewsItem.reindex
+      NewsItem.all.each { |news_item| news_item.save! }
+      ElasticNewsItem.commit
     end
 
     it "should assign page title, vertical, form_path, and search members" do
@@ -406,11 +407,11 @@ describe SearchesController do
     it "should find news items that match the query for the affiliate" do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       assigns[:search].total.should == 1
-      assigns[:search].hits.first.instance.should == news_items(:item1)
-      assigns[:search].results.first['title'].should =~ /News \uE000element\uE001 1/
-      assigns[:search].results.first['link'].should == "http://some.agency.gov/news/1"
-      assigns[:search].results.first['publishedAt'].should be_present
-      assigns[:search].results.first['content'].should =~ /News \uE000element\uE001 1 has a description/
+      assigns[:search].results.first.should == news_items(:item1)
+      assigns[:search].results.first.title.should == "News \uE000element\uE001 1"
+      assigns[:search].results.first.link.should == "http://some.agency.gov/news/1"
+      assigns[:search].results.first.published_at.should be_present
+      assigns[:search].results.first.description.should == "News \uE000element\uE001 1 has a description"
     end
 
     context "when the affiliate does not exist" do

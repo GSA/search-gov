@@ -48,6 +48,7 @@ class RssFeedUrl < ActiveRecord::Base
     if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
         rss_doc = Nokogiri::XML(HttpConnection.get(url))
+        self.language = RssFeedData.extract_language(rss_doc)
         errors.add(:url, "does not appear to be a valid RSS feed.") unless rss_doc && %w(feed rss).include?(rss_doc.root.name)
       rescue Exception => e
         errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.message)

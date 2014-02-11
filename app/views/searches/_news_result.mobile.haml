@@ -1,9 +1,8 @@
 .content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
-  - news_item_url = hit.instance.link
   %h3
-    = link_to_news_item_title hit, news_item_url, position
-  %span.url= truncate_url(news_item_url)
+    = link_to_news_item_title(instance, position)
+  %span.url= truncate_url(instance.link)
   %span.description
-    = time_ago_in_words(hit.instance.published_at)
+    = time_ago_in_words(instance.published_at)
     \-
-    = news_description(hit)
+    = news_description(instance)

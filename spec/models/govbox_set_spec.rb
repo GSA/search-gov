@@ -10,14 +10,14 @@ describe GovboxSet do
 
     it 'should assign boosted contents' do
       affiliate.locale = 'en'
-      ElasticBoostedContent.stub!(:search_for).with(q:'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
+      ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.boosted_contents.should == "BoostedContent results"
     end
 
     it 'should assign a single featured collection' do
       affiliate.locale = 'en'
-      ElasticFeaturedCollection.stub!(:search_for).with(q:'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
+      ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
       govbox_set.featured_collections.should == "FeaturedCollection result"
     end
@@ -104,8 +104,9 @@ describe GovboxSet do
         non_managed_feeds = [news_feed, blog_feed]
         affiliate.stub_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).and_return non_managed_feeds
         @non_video_results = mock('non video results', :total => 3)
-        NewsItem.should_receive(:search_for).
-          with('foo', [news_feed, blog_feed], affiliate, { since: 13.months.ago.beginning_of_day }).
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
+               since: 13.months.ago.beginning_of_day, language: 'en').
           and_return(@non_video_results)
       end
 
@@ -125,8 +126,9 @@ describe GovboxSet do
         youtube_feed = mock_model(RssFeed)
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
         @video_results = mock('video results', total: 3)
-        NewsItem.should_receive(:search_for).with('foo', [youtube_feed], affiliate).
-            and_return(@video_results)
+        ElasticNewsItem.should_receive(:search_for).with(q: 'foo', rss_feeds: [youtube_feed],
+                                                         excluded_urls: affiliate.excluded_urls, language: 'en').
+          and_return(@video_results)
       end
 
       it 'should retrieve video news items' do
@@ -134,6 +136,7 @@ describe GovboxSet do
         govbox_set.video_news_items.should == @video_results
       end
     end
+
     context "med topics" do
       fixtures :med_topics
       context "when the affiliate has the medline govbox enabled" do

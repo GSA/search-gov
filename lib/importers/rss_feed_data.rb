@@ -52,6 +52,11 @@ class RssFeedData
     end
   end
 
+  def self.extract_language(rss_doc)
+    lang = rss_doc.xpath('//language').inner_text.downcase rescue nil
+    lang.present? ? lang.first(2) : nil
+  end
+
   private
 
   def extract_news_items(doc, feed_elements, most_recently)

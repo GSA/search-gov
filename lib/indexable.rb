@@ -99,7 +99,7 @@ module Indexable
     end
   rescue Exception => e
     Rails.logger.error "Problem in #{self.name}#search_for(): #{e}"
-    "#{self.name}Results".constantize.new(NO_HITS)
+    "#{self.name}Results".constantize.new(NO_HITS, nil)
   end
 
   def commit
@@ -109,11 +109,13 @@ module Indexable
   private
 
   def search(query)
-    params = { preference: '_local', index: reader_alias, type: index_type, body: query.body,
-               from: query.offset, size: query.size, sort: query.sort }
-    hits = ES::client.search(params)['hits']
+    params = { preference: '_local', index: reader_alias, type: index_type, body: query.body, from: query.offset, size: query.size }
+    params.merge!(sort: query.sort) if query.sort.present?
+    result = ES::client.search(params)
+    hits = result['hits']
     hits['offset'] = query.offset
-    "#{self.name}Results".constantize.new(hits)
+    facets = result['facets']
+    "#{self.name}Results".constantize.new(hits, facets)
   end
 
   def update_alias(alias_name, new_index = index_name)

@@ -6,7 +6,8 @@ describe NewsSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before(:all) do
-    NewsItem.reindex
+    NewsItem.all.each { |news_item| news_item.save! }
+    ElasticNewsItem.commit
   end
 
   describe "#initialize(options)" do
@@ -142,7 +143,6 @@ describe NewsSearch do
       it "should have 0 results" do
         @search.run
         @search.results.size.should == 0
-        @search.hits.size.should == 0
         @search.total.should == 0
         @search.module_tag.should be_nil
       end
@@ -178,13 +178,13 @@ describe NewsSearch do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate,
                                 contributor: 'contributor', publisher: 'publisher', subject: 'subject')
-        NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate,
-                 since: nil, until: nil,
-                 page: 1, per_page: 10,
-                 contributor: 'contributor', subject: 'subject', publisher: 'publisher',
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+               since: nil, until: nil,
+               offset: 0, size: 10,
+               contributor: 'contributor', subject: 'subject', publisher: 'publisher',
+               sort_by_relevance: false,
+               tags: [], language: 'en')
         search.run.should be_true
       end
     end
@@ -196,13 +196,13 @@ describe NewsSearch do
       context 'when per_page option is not set' do
         it "should set per_page to 20" do
           search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-          NewsItem.should_receive(:search_for).
-              with('element', [youtube_profile_feed], affiliate,
-                   since: nil, until: nil,
-                   page: 1, per_page: 20,
-                   contributor: nil, subject: nil, publisher: nil,
-                   sort_by_relevance: false,
-                   tags: [])
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 20,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [], language: 'en')
           search.run.should be_true
         end
       end
@@ -210,13 +210,13 @@ describe NewsSearch do
       context 'when per_page option is set' do
         it 'should not change the initial per_page value' do
           search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
-          NewsItem.should_receive(:search_for).
-              with('element', [youtube_profile_feed], affiliate,
-                   since: nil, until: nil,
-                   page: 1, per_page: 15,
-                   contributor: nil, subject: nil, publisher: nil,
-                   sort_by_relevance: false,
-                   tags: [])
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 15,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [], language: 'en')
           search.run.should be_true
         end
       end
@@ -228,13 +228,13 @@ describe NewsSearch do
       context 'when per_page option is not set' do
         it 'should set per_page to 20' do
           search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
-          NewsItem.should_receive(:search_for).
-              with('element', [feed], affiliate,
-                   since: nil, until: nil,
-                   page: 1, per_page: 20,
-                   contributor: nil, subject: nil, publisher: nil,
-                   sort_by_relevance: false,
-                   tags: %w(image))
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 20,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: %w(image), language: 'en')
           search.run.should be_true
         end
       end
@@ -242,13 +242,13 @@ describe NewsSearch do
       context 'when per_page option is set' do
         it 'should not change the initial per_page value' do
           search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
-          NewsItem.should_receive(:search_for).
-              with('element', [feed], affiliate,
-                   since: nil, until: nil,
-                   page: 1, per_page: 15,
-                   contributor: nil, subject: nil, publisher: nil,
-                   sort_by_relevance: false,
-                   tags: %w(image))
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 15,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: %w(image), language: 'en')
           search.run.should be_true
         end
       end
@@ -258,13 +258,13 @@ describe NewsSearch do
       it "should search for news items from all active feeds for the affiliate" do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
         search = NewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
-        NewsItem.should_receive(:search_for).
-            with('element', affiliate.rss_feeds.navigable_only, affiliate,
-                 since: one_week_ago, until: nil,
-                 page: 1, per_page: 10,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: affiliate.rss_feeds.navigable_only, excluded_urls: affiliate.excluded_urls,
+               since: one_week_ago, until: nil,
+               offset: 0, size: 10,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en')
         search.run
       end
     end
@@ -275,13 +275,13 @@ describe NewsSearch do
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, since_date: '10/1/2012')
-        NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate,
-                 since: Time.parse('2012-10-01 00:00:00Z'), until: nil,
-                 page: 1, per_page: 10,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+               since: Time.parse('2012-10-01 00:00:00Z'), until: nil,
+               offset: 0, size: 10,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en')
 
         news_search.run
       end
@@ -295,13 +295,13 @@ describe NewsSearch do
         until_ts = Time.parse('2012-10-31')
         Time.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
-        NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate,
-                 since: nil, until: until_ts.utc.end_of_day,
-                 page: 1, per_page: 10,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+               since: nil, until: until_ts.utc.end_of_day,
+               offset: 0, size: 10,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en')
 
         news_search.run
       end
@@ -313,13 +313,13 @@ describe NewsSearch do
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate,
                                 contributor: 'contributor', publisher: 'publisher', subject: 'subject',
                                 sort_by: 'r')
-        NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate,
-                 since: nil, until: nil,
-                 page: 1, per_page: 10,
-                 contributor: 'contributor', subject: 'subject', publisher: 'publisher',
-                 sort_by_relevance: true,
-                 tags: [])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+               since: nil, until: nil,
+               offset: 0, size: 10,
+               contributor: 'contributor', subject: 'subject', publisher: 'publisher',
+               sort_by_relevance: true,
+               tags: [], language: 'en')
         search.run.should be_true
       end
     end
@@ -328,17 +328,15 @@ describe NewsSearch do
       it 'should assign the correct start and end record' do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
-        response = mock('response', total: 17, facets: [])
-        hits = [mock('hit1'), mock('hit2')]
-        response.stub_chain(:hits, :collect).and_return(hits)
-        NewsItem.should_receive(:search_for).
-            with('element', [feed], affiliate,
-                 since: nil, until: nil,
-                 page: 2, per_page: 15,
-                 contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
-                 tags: []).
-            and_return(response)
+        response = mock(ElasticNewsItemResults, total: 17, offset: 15, facets: [], results: [mock('result1'), mock('result2')])
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+               since: nil, until: nil,
+               offset: 15, size: 15,
+               contributor: nil, subject: nil, publisher: nil,
+               sort_by_relevance: false,
+               tags: [], language: 'en').
+          and_return(response)
 
         search.run
         search.startrecord.should == 16
@@ -348,7 +346,7 @@ describe NewsSearch do
   end
 
   describe "#cache_key" do
-    let(:options) { { query: 'element', affiliate: affiliate} }
+    let(:options) { { query: 'element', affiliate: affiliate } }
     let(:feed) { rss_feeds(:managed_video) }
     let(:since_a_week_ago) { Date.current.advance(weeks: -1).to_s }
 
