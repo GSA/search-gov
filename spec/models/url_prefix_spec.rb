@@ -19,8 +19,8 @@ describe UrlPrefix do
     it { should allow_value("https://www.foo.gov/").for(:prefix)}
     it { should allow_value("http://foo.gov/subfolder/").for(:prefix)}
 
-    it "should cap prefix length at 100 characters" do
-      too_long = "http://www.foo.gov/#{'waytoolong'*10}/"
+    it "should cap prefix length at 255 characters" do
+      too_long = "http://www.foo.gov/#{'waytoolong'*25}/"
       url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix=> too_long))
       url_prefix.should_not be_valid
       url_prefix.errors[:prefix].first.should =~ /too long/
