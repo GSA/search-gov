@@ -42,16 +42,20 @@
     &.text {
       display: block;
       float: none;
-      height: 60px;
+      height: 50px;
       margin: 0 auto;
-      padding: 0;
+      padding: 0 60px;
       text-align: center;
       width: 100%;
+
+      @media (min-width: @screen-sm) {
+        height: auto;
+      }
 
       h1 {
         .text-clip();
         margin: 0;
-        padding: 8px 60px @content-block-margin;
+        padding: 8px 0 @content-block-margin;
         font-size: 18px;
 
         @media (min-width: @screen-md) {
