@@ -1,5 +1,6 @@
 #header-wrapper {
   background-color: @block-background-color;
+  margin-bottom: @content-block-margin;
   position: relative;
   top: 0;
   width: 100%;
@@ -13,12 +14,13 @@
 
 #header {
   .clearfix();
-  .content-block();
-  margin: 0 0 @content-block-margin;
+  background-color: @block-background-color;
+  border-radius: @border-radius-base;
+  margin: 0;
   padding-top: 4px;
 
   @media (min-width: @screen-md) {
-    margin: 0 auto @content-block-margin;
+    margin: 0 auto;
     padding-top: @content-block-margin;
     width: @screen-md;
   }

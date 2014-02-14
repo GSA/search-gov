@@ -2,12 +2,13 @@
   background-color: @block-background-color;
   border-radius: @border-radius-base;
   margin: 0 @content-block-margin @content-block-margin;
+  overflow: hidden;
 }
 
 .content-block-item {
   .clearfix();
   border-top: 1px solid @block-border-color;
-  padding: 5px 12px 8px;
+  padding: 8px 12px 12px;
 
   &:first-child {
     border-top-width: 0;
@@ -15,6 +16,7 @@
 
   @media (min-width: @screen-desktop) {
     border-top-width: 0;
+    padding: 5px 12px 8px;
 
     &.content-block-item-header {
       border-bottom: 1px solid @block-border-color;
@@ -22,6 +24,25 @@
 
     &.content-block-item-footer {
       border-top: 1px solid @block-border-color;
+    }
+  }
+}
+
+.item-title() {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 10px 0 5px;
+
+  a, a:focus, a:hover {
+    text-decoration: none;
+  }
+
+  @media (min-width: @screen-desktop) {
+    font-size: 16px;
+    margin-bottom: 2px;
+
+    a, a:focus, a:hover {
+      text-decoration: underline;
     }
   }
 }

@@ -27,7 +27,7 @@ module MobileHelper
         (powered_by << content_tag(:span, 'Bing')).html_safe
       end
     elsif %w(GWEB GIMAG).include? search_module_tag
-      "#{powered_by} Google"
+      content_tag(:span, "#{powered_by} Google")
     else
       link_to "#{powered_by} USASearch", 'http://usasearch.howto.gov'
     end

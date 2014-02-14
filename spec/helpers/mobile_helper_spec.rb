@@ -20,7 +20,7 @@ describe MobileHelper do
   describe '#serp_attribution' do
     context 'when module_tag is GWEB' do
       it 'returns Powered by Google' do
-        helper.serp_attribution('GWEB').should == 'Powered by Google'
+        helper.serp_attribution('GWEB').should have_content('Powered by Google')
       end
     end
   end

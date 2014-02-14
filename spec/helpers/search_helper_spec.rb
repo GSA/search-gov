@@ -50,18 +50,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#spelling_suggestion_for(search, affiliate, vertical)" do
-    it "should return HTML escaped output containing the initial query and the suggestion" do
-      affiliate = affiliates(:basic_affiliate)
-      search = WebSearch.new(:query => "<initialquery>", :affiliate => affiliate)
-      search.stub!(:spelling_suggestion).and_return("<suggestion>")
-      html = helper.spelling_suggestion_for(search, affiliate, :web)
-      html.should contain("We're including results for <suggestion>. Do you want results only for <initialquery>?")
-      html.should =~ /&lt;initialquery&gt;/
-      html.should =~ /&lt;suggestion&gt;/
-    end
-  end
-
   describe "#thumbnail_image_tag" do
     before do
       @image_result = {
@@ -267,7 +255,7 @@ describe SearchHelper do
       let(:search) { mock('search', { :query => 'accion de  gracias.', :spelling_suggestion => 'acción de gracias', :queried_at_seconds => Time.now.to_i }) }
 
       it 'should not show the suggestion' do
-        helper.spelling_suggestion_for(search, affiliates(:basic_affiliate), 'blah').should be_blank
+        helper.legacy_spelling_suggestion(search, affiliates(:basic_affiliate), 'blah').should be_blank
       end
     end
   end

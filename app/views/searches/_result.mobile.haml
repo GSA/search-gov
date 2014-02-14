@@ -2,7 +2,7 @@
   %h3
     = display_web_result_extname_prefix(result)
     = link_to_web_result_title(result, position)
-  %div.url= truncate_url(result['unescapedUrl'])
+  %div.url= url_without_protocol result['unescapedUrl']
   %span.description
     - if result['publishedAt']
       = time_ago_in_words(result['publishedAt'])

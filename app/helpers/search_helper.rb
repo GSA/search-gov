@@ -134,24 +134,6 @@ module SearchHelper
     body.gsub(/\uE000/, '').gsub(/\uE001/, '')
   end
 
-  def spelling_suggestion_for(search, affiliate, vertical)
-    if search.spelling_suggestion
-      rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
-      unless FuzzyMatcher.new(rendered_suggestion, search.query).matches?
-        suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
-        opts = { :query => suggestion_for_url }
-        opts.merge!(:affiliate => affiliate.name) if affiliate
-        corrected_url = image_search? ? image_search_path(opts) : search_path(opts)
-        opts.merge!(:query => "+#{search.query}")
-        original_url = image_search? ? image_search_path(opts) : search_path(opts)
-        did_you_mean = t :did_you_mean,
-                         :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
-                         :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
-        content_tag(:h4, raw(did_you_mean), :class => 'did-you-mean')
-      end
-    end
-  end
-
   def results_summary(search)
     p_sum = make_summary_p(search)
     content_tag(:div, raw(p_sum), :id => "summary")

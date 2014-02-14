@@ -2,6 +2,7 @@
   - if @search.results.blank?
     = render partial: 'no_results', locals: { search: @search }
 
+  = spelling_suggestion(@search)
   = render(partial: 'best_bets', locals: { search: @search }) if @search.has_best_bets?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
   = render partial: 'tweets', locals: { search:  @search } if @search.tweets and @search.tweets.results.present?

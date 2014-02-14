@@ -4,6 +4,10 @@
   .tweet {
     position: relative;
 
+    a, a:focus, a:hover {
+      text-decoration: none;
+    }
+
     .logo {
       .hide-text();
       background: transparent image-url('legacy/govbox/twitter.png') center no-repeat;
@@ -16,12 +20,6 @@
 
     .profile {
       .clearfix();
-      text-decoration: none;
-      &:hover {
-        .profile-name {
-          text-decoration: underline;
-        }
-      }
     }
 
     .profile-image {
@@ -60,6 +58,10 @@
       @media (min-width: @screen-desktop) {
         font-size: 16px;
         line-height: 1.1;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
 
@@ -79,7 +81,7 @@
       }
     }
 
-    .text a {
+    .text a:hover {
       @media (min-width: @screen-desktop) {
         text-decoration: underline;
       }

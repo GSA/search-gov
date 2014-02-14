@@ -1,13 +1,16 @@
-.content-block-item.content-block-item-footer {
+.content-block-item.content-block-item-header {
+  color: #999;
+}
+
+#search .content-block-item.content-block-item-footer {
   padding: 0;
 
   .content-provider {
-    color: #505050;
     font-size: 12px;
     margin: 0;
     text-align: right;
 
-    a {
+    > a, > span {
       color: #505050;
       display: block;
       padding: 10px 12px 12px;
@@ -16,6 +19,10 @@
       @media (min-width: @screen-desktop) {
         padding: 8px 12px;
       }
+    }
+
+    a, a:focus, a:hover {
+      text-decoration: none;
     }
 
     .bing, .usajobs {
@@ -44,27 +51,48 @@
   }
 }
 
-#results {
+#spelling-suggestion, #results {
   .content-block();
+}
+
+#spelling-suggestion {
+
+  > .content-block-item {}
+
+  .suggested-query {
+    .item-title();
+
+    a {
+      font-style: italic;
+    }
+  }
+
+  .original-query {
+    @media (min-width: @screen-desktop) {
+      .smaller-result-item();
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 #search {
   a { .tap-highlight(); }
+  a, a:focus, a:hover {
+    text-decoration: none;
+  }
+
+  @media (min-width: @screen-desktop) {
+    a, a:focus, a:hover {
+      text-decoration: underline;
+    }
+  }
 
   .result {
     h3 {
-      font-size: 18px;
-      font-weight: normal;
-      margin: 10px 0 5px;
-
-      @media (min-width: @screen-desktop) {
-        font-size: 16px;
-        margin-bottom: 2px;
-
-        a {
-          text-decoration: underline;
-        }
-      }
+      .item-title();
 
       .uext_type {
         bottom: 0.1em;
@@ -83,7 +111,7 @@
     }
 
     .url {
-      .text-clip();
+      .text-overflow();
       height: 1.5em;
     }
   }
@@ -97,8 +125,13 @@
   }
 }
 
-.pagination {
+#search .pagination {
   .content-block();
+
+  a, a:focus, a:hover {
+    text-decoration: none;
+  }
+
   .disabled {
     .hidden();
   }
