@@ -13,9 +13,18 @@ describe NewsSearch do
   describe "#initialize(options)" do
     let(:feed) { affiliate.rss_feeds.first }
 
-    it "should set the time-based search parameter" do
-      search = NewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate)
-      search.since.should == Time.current.advance(weeks: -1).beginning_of_day
+    context 'when the parameter is hour' do
+      it 'should find just the last hour' do
+        search = NewsSearch.new(:query => '   element   OR', :tbs => "h", :affiliate => affiliate)
+        search.since.to_i.should == 1.hour.ago.to_i
+      end
+    end
+
+    context 'when the parameter is not hour' do
+      it "should set the time-based search parameter based on the beginning of the day" do
+        search = NewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate)
+        search.since.to_i.should == Time.current.advance(weeks: -1).beginning_of_day.to_i
+      end
     end
 
     context "when the tbs param isn't set" do

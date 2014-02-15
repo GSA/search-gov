@@ -99,7 +99,9 @@ class NewsSearch < Search
 
   def since_when(tbs)
     if tbs && (extent = NewsItem::TIME_BASED_SEARCH_OPTIONS[tbs])
-      1.send(extent).ago.to_time.beginning_of_day
+      time = 1.send(extent).ago
+      time = time.beginning_of_day if extent != :hour
+      time
     end
   end
 
