@@ -32,7 +32,7 @@ module MobileHelper
       powered_by_digital_gov_search = []
       powered_by_digital_gov_search << "#{powered_by}" <<
           (content_tag(:span, 'DIGITAL', class: 'digital') << content_tag(:span, 'GOV', class: 'gov')) <<
-          content_tag(:span, 'SEARCH', class: 'search')
+          content_tag(:span, 'Search', class: 'search')
       link_to powered_by_digital_gov_search.join("\n").html_safe, 'http://search.digitalgov.gov', class: 'digital-gov-search'
     end
   end

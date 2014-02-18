@@ -72,8 +72,8 @@ SUPPORTED_LOCALES = %w{en es}
 SUPPORTED_LOCALE_WITH_NAMES = {'en' => 'English', 'es' => 'Spanish'}
 SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALES.collect { |locale| [SUPPORTED_LOCALE_WITH_NAMES[locale], locale] }
 SUPPORTED_VERTICALS = %w{web image recall}
-BLOG_URL = 'http://usasearch.howto.gov'
-TOS_URL = 'http://usasearch.howto.gov/tos'
+BLOG_URL = 'http://search.digitalgov.gov'
+TOS_URL = 'http://search.digitalgov.gov/tos'
 USA_GOV_URL = 'http://www.usa.gov'
 
 require 'resque/plugins/priority'
