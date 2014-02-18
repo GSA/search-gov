@@ -90,7 +90,7 @@ describe Report do
       DailyQueryStat.create!(:affiliate => 'affiliate2', :query => 'query2', :times => 9, :day => Date.yesterday, :locale => 'en')
       DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 500, :day => Date.current, :locale => 'en')
       heading = "Query Term,Total Count (Bots + Humans),Real Count (Humans only)"
-      @affiliate1_csv_output = [heading, "query1,11,5", "query2,10,7", ""].join("\n")
+      @affiliate1_csv_output = [heading, "query2,10,7", "query1,11,5", ""].join("\n")
       @affiliate2_csv_output = [heading, "query2,22,9", ""].join("\n")
       @all_csv_output = [heading, "query2,32,16", "query1,11,5", ""].join("\n")
     end

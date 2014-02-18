@@ -23,23 +23,23 @@ class Report
     end
     query_start_date..query_end_date
   end
-  
+
   def day_formatted_for_period
     date_format = @period == "monthly" ? '%Y%m' : '%Y%m%d'
-    @day.strftime(date_format)    
+    @day.strftime(date_format)
   end
 
   def generate_top_queries_from_file
     report_date_range = generate_report_date_range
     establish_aws_connection
     formatted_date = day_formatted_for_period
-    last_group, cnt, output = nil, 0, nil
+    last_group, cnt, output = nil, 0, []
     File.open(@file_name).each do |line|
       begin
         affiliate_name, query, total = line.chomp.split(/\001/)
         if last_group.nil? || last_group != affiliate_name
-          AWS::S3::S3Object.store(generate_report_filename(last_group, formatted_date), output, AWS_BUCKET_NAME) unless output.nil?
-          output = "Query Term,Total Count (Bots + Humans),Real Count (Humans only)\n"
+          store_report(formatted_date, last_group, output)
+          output.clear
           cnt = 0
         end
         if cnt < @group_max
@@ -49,7 +49,7 @@ class Report
             conditions << affiliate_name
           end
           daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => conditions)
-          output << "#{query},#{total},#{daily_query_stats_total}\n"
+          output << [query, total, daily_query_stats_total]
           cnt += 1
         end
         last_group = affiliate_name
@@ -57,6 +57,19 @@ class Report
         Rails.logger.warn "Trouble with an input line so skipping it: #{e.message}"
       end
     end
-    AWS::S3::S3Object.store(generate_report_filename(last_group, formatted_date), output, AWS_BUCKET_NAME) unless output.nil?
+    store_report(formatted_date, last_group, output)
   end
+
+  private
+
+  def store_report(formatted_date, last_group, output)
+    if output.present?
+      sorted_output = output.sort_by! { |arr| -arr.last }
+      sorted_output.insert(0, ["Query Term", "Total Count (Bots + Humans)", "Real Count (Humans only)"])
+      sorted_output << [""]
+      csv_sorted_output = sorted_output.map { |arr| arr.join(',') }.join("\n")
+      AWS::S3::S3Object.store(generate_report_filename(last_group, formatted_date), csv_sorted_output, AWS_BUCKET_NAME)
+    end
+  end
+
 end
