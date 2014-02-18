@@ -11,7 +11,7 @@ Feature: Users
 
   Scenario: Visiting the login page
     Given I am on the login page
-    Then I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the registration form
+    Then I should see a link to "Terms of Service" with url for "http://search.digitalgov.gov/tos" in the registration form
 
   @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address

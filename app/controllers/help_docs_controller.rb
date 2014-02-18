@@ -9,6 +9,6 @@ class HelpDocsController < SslController
   private
 
   def require_usasearch_url_param
-    redirect_to page_not_found_path unless params[:url] =~ %r[^http://usasearch\.howto\.gov/.+]i
+    redirect_to page_not_found_path unless params[:url] =~ %r[^http://search\.digitalgov\.gov/.+]i
   end
 end

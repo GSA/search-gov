@@ -15,11 +15,9 @@
       .inner-container
         .container
           .span-24.main
-            - if @page_title.nil? and active_scaffold_config.nil?
-              = breadcrumbs(["Super Admin"])
-            - elsif @parent_page_title.present? and @page_title.present?
+            - if @parent_page_title.present? and @page_title.present?
               = breadcrumbs([link_to("Super Admin", admin_home_page_path), link_to(@parent_page_title, { :action => :index }), @page_title])
-            - else
+            - elsif @page_title || (active_scaffold_config && active_scaffold_config.label)
               = breadcrumbs([link_to("Super Admin", admin_home_page_path), @page_title || active_scaffold_config.label])
             .span-10.prepend-7.append-7= show_flash_messages
             .clear

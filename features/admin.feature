@@ -3,9 +3,7 @@ Feature:  Administration
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
-    And I should see the following breadcrumbs: USASearch > Super Admin
     And I should see "Super Admin" in the page header
-    And I should see a link to "USASearch" with url for "http://usasearch.howto.gov" in the breadcrumbs
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
@@ -33,7 +31,7 @@ Feature:  Administration
       | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
     And I follow "Sites" within ".main"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Sites
+    Then I should see the following breadcrumbs: Super Admin > Sites
     And I should see "Display name"
     And I should see "Site Handle (visible to searchers in the URL)"
     And I should see "agency site"
@@ -49,7 +47,7 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Users" within ".main"
     Then I should be on the users admin page
-    And I should see the following breadcrumbs: USASearch > Super Admin > Users
+    And I should see the following breadcrumbs: Super Admin > Users
     When I follow "Edit" within the first scaffold row
     Then the "Default affiliate" select field should contain 1 option
 
@@ -58,7 +56,7 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Filters" within ".main"
     Then I should be on the sayt filters admin page
-    And I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Filters
+    And I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -70,7 +68,7 @@ Feature:  Administration
       | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results |
     When I go to the admin home page
     And I follow "Best Bets: Text"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Best Bets: Text
+    Then I should see the following breadcrumbs: Super Admin > Best Bets: Text
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
 
@@ -158,103 +156,103 @@ Feature:  Administration
 
     When I go to the admin home page
     And I follow "Users"
-    And I should see the following breadcrumbs: USASearch > Super Admin > Users
+    And I should see the following breadcrumbs: Super Admin > Users
 
     When I go to the admin home page
     And I follow "Filters"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Filters
+    Then I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 
     When I go to the admin home page
     And I follow "Suggestions"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Suggestions
+    Then I should see the following breadcrumbs: Super Admin > Type Ahead Suggestions
 
     When I go to the admin home page
     And I follow "Misspellings"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Type Ahead Misspellings
+    Then I should see the following breadcrumbs: Super Admin > Type Ahead Misspellings
 
     When I go to the admin home page
     And I follow "Best Bets: Text"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Best Bets: Text
+    Then I should see the following breadcrumbs: Super Admin > Best Bets: Text
 
     When I go to the admin home page
     And I follow "Collections"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Collections
+    Then I should see the following breadcrumbs: Super Admin > Collections
 
     When I go to the admin home page
     And I follow "Superfresh Urls"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > SuperfreshUrls
+    Then I should see the following breadcrumbs: Super Admin > SuperfreshUrls
 
     When I go to the admin home page
     And I follow "Superfresh Bulk Upload"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Superfresh Bulk Upload
+    Then I should see the following breadcrumbs: Super Admin > Superfresh Bulk Upload
 
     When I go to the admin home page
     And I follow "Agencies"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Agencies
+    Then I should see the following breadcrumbs: Super Admin > Agencies
 
     When I go to the admin home page
     And I follow "Blocked Queries"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Queries
+    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Queries
 
     When I go to the admin home page
     And I follow "Blocked IPs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked IPs
+    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked IPs
 
     When I go to the admin home page
     And I follow "Blocked Class Cs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Class Cs
+    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Class Cs
 
     When I go to the admin home page
     And I follow "Whitelisted Class Cs"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Whitelisted Class Cs
+    Then I should see the following breadcrumbs: Super Admin > Logfile Whitelisted Class Cs
 
     When I go to the admin home page
     And I follow "Blocked Regexps"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked Regexps
+    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Regexps
 
     When I go to the admin home page
     And I follow "Blocked User Agents"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Logfile Blocked User Agents
+    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked User Agents
 
     When I go to the admin home page
     And I follow "Modules"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Modules
+    Then I should see the following breadcrumbs: Super Admin > Modules
 
     When I go to the admin home page
     And I follow "Features" in the Super Admin page
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Features
+    Then I should see the following breadcrumbs: Super Admin > Features
 
     When I go to the admin home page
     And I follow "Statuses" in the Super Admin page
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Site Statuses
+    Then I should see the following breadcrumbs: Super Admin > Site Statuses
     And I should see "active"
     And I should see "inactive"
 
     When I go to the admin home page
     And I follow "Tags" in the Super Admin page
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Site Tags
+    Then I should see the following breadcrumbs: Super Admin > Site Tags
     And I should see "bad code"
     And I should see "case study"
 
     When I go to the admin home page
     And I follow "Customer Scopes"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Customer Scopes
+    Then I should see the following breadcrumbs: Super Admin > Customer Scopes
 
     When I go to the admin home page
     And I follow "Customer Catalog Prefix Whitelist"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > Customer Catalog Prefix Whitelist
+    Then I should see the following breadcrumbs: Super Admin > Customer Catalog Prefix Whitelist
 
     When I go to the admin home page
     And I follow "Help Links"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > HelpLinks
+    Then I should see the following breadcrumbs: Super Admin > HelpLinks
 
     When I go to the admin home page
     And I follow "Email Templates"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > EmailTemplates
+    Then I should see the following breadcrumbs: Super Admin > EmailTemplates
 
     When I go to the admin home page
     And I follow "System Alerts"
-    Then I should see the following breadcrumbs: USASearch > Super Admin > System Alerts
+    Then I should see the following breadcrumbs: Super Admin > System Alerts
 
   Scenario: Adding help link
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

@@ -17,20 +17,6 @@ Feature: Homepage
     And I should see a link to "Publications" with url for "http://publications.usa.gov/"
     And I should see "GOVERNMENT" in the search navigation
     And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
-    And I should see "Connect with USASearch" in the connect section
-    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
-    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
-    And I should see a link to "Our Blog" with url for "http://usasearch.howto.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
-    And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
-    And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
-    And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
-    And I should see a link to "Home" with url for "http://usasearch.howto.gov" in the homepage about section
-    And I should see a link to "How It Works" with url for "http://usasearch.howto.gov/help-desk.html" in the homepage about section
-    And I should see a link to "Our Customers" with url for "http://usasearch.howto.gov/customers.html" in the homepage about section
-
-    When I follow "Sign Up" in the homepage about section
-    Then I should see "Sign In to Use Our Services"
 
   Scenario: A typical popular search from the home page
     Given the following Affiliates exist:
@@ -71,11 +57,6 @@ Feature: Homepage
     And I should see "GOBIERNO" in the search navigation
     And I should see a link to "Cambiar el tamaño del texto" with url for "http://www.usa.gov/gobiernousa/Tamano_Texto.shtml"
     And I should not see "Connect with USASearch"
-    And I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage footer
-    And I should see a link to "Políticas del sitio" with url for "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"
-    And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"
-    And I should see "Móvil"
-    And I should see "Buscador.USA.gov" in the homepage tagline
 
   Scenario: a typical search from the Spanish homepage
     Given the following Affiliates exist:

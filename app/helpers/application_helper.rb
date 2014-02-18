@@ -45,46 +45,8 @@ module ApplicationHelper
     ]
   }
 
-  FOOTER_LINKS = {
-    :en => [
-      ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
-      ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml"],
-      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"]],
-    :es => [
-      ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
-      ["Políticas del sitio", "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"],
-      ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"]
-    ]
-  }
-
   def header_links
     raw iterate_links(HEADER_LINKS[I18n.locale.to_sym])
-  end
-
-  def footer_links
-    links = FOOTER_LINKS[I18n.locale.to_sym].clone
-    (links << [I18n.translate(:mobile), "http://m.gobiernousa.gov"]) if spanish_locale?
-    raw iterate_links(links)
-  end
-
-  def render_about_usasearch
-    if english_locale?
-      result = content_tag(:div, :class => 'footer about') do
-        content = content_tag(:span, "ABOUT USASearch   > ")
-        content << about_usasearch_links
-        content
-      end
-      result
-    end
-  end
-
-  def about_usasearch_links
-    links = ''
-    links << link_to('Home', BLOG_URL, :class => 'first')
-    links << link_to('How It Works', "#{BLOG_URL}/help-desk.html")
-    links << link_to('Our Customers', "#{BLOG_URL}/customers.html")
-    links << link_to('Sign Up', login_path, :class => 'last')
-    raw links
   end
 
   def basic_header_navigation_for(cur_user)
@@ -161,9 +123,9 @@ module ApplicationHelper
   end
 
   def breadcrumbs(breadcrumbs)
-    trail = link_to('USASearch', BLOG_URL)
+    trail = ''
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
-    content_tag(:div, trail, :class => 'breadcrumbs')
+    content_tag(:div, trail.html_safe, :class => 'breadcrumbs')
   end
 
   def url_for_mobile_home_page(locale = I18n.locale)
@@ -178,25 +140,6 @@ module ApplicationHelper
     raw content
   end
 
-  def render_connect_section
-    return unless english_locale?
-    content_tag(:div, :class => 'connect') do
-      tags = []
-      tags << content_tag(:span, "Connect with USASearch")
-      tags << connect_links
-      tags.join("\n").html_safe
-    end
-  end
-
-  def connect_links
-    tags = []
-    tags << link_to('Twitter', "http://twitter.com/usasearch", :class => 'twitter', :title => 'Twitter')
-    tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile') if display_mobile_or_add_this_link?
-    tags << link_to('Our Blog', BLOG_URL, :class => 'blog', :title => 'Our Blog')
-    tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share') if display_mobile_or_add_this_link?
-    tags.join("\n").html_safe
-  end
-
   def render_date(date, locale = I18n.locale)
     unless date.nil?
       locale.to_sym == :es ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
@@ -205,9 +148,9 @@ module ApplicationHelper
 
   def attribution
     txt = []
-    txt << "<!-- ----------------------------------------------------------------------------------------------- -->"
-    txt << "<!--                                  Results by USASearch.                                          -->"
-    txt << "<!-- helping government create a great search experience. Learn more at http://usasearch.howto.gov   -->"
+    txt << '<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->'
+    txt << '<!--                                  Powered by DIGITALGOV | Search                                 -->'
+    txt << '<!-- helping government create a great search experience. Learn more at http://search.digitalgov.gov -->'
     txt << txt.first
     txt.join("\n").html_safe
   end
@@ -221,10 +164,4 @@ module ApplicationHelper
   def iterate_links(links)
     links.collect { |link| link_to(link[0], link[1], :class => link[2]) }.join unless links.nil?
   end
-
-  def display_mobile_or_add_this_link?
-    return true if %w{ home images searches image_searches pages }.include?(controller.controller_path)
-    controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
-  end
-
 end

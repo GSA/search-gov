@@ -83,11 +83,11 @@ Feature: Searches using mobile device
     And there are 5 news items for "Noticias-1"
 
     When I am on en.agency.gov's "News-1" mobile news search page
-    Then I should see "Powered by USASearch"
+    Then I should see "Powered by DIGITALGOV Search"
     And I should see at least "10" web search results
 
     When I am on es.agency.gov's "Noticias-1" mobile news search page
-    Then I should see "Accionado por USASearch"
+    Then I should see "Accionado por DIGITALGOV Search"
     And I should see at least "5" web search results
 
   Scenario: Site search

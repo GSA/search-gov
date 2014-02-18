@@ -29,11 +29,7 @@ module MobileHelper
     elsif %w(GWEB GIMAG).include? search_module_tag
       content_tag(:span, "#{powered_by} Google")
     else
-      powered_by_digital_gov_search = []
-      powered_by_digital_gov_search << "#{powered_by}" <<
-          (content_tag(:span, 'DIGITAL', class: 'digital') << content_tag(:span, 'GOV', class: 'gov')) <<
-          content_tag(:span, 'Search', class: 'search')
-      link_to powered_by_digital_gov_search.join("\n").html_safe, 'http://search.digitalgov.gov', class: 'digital-gov-search'
+      render partial: 'searches/powered_by_digital_gov_search'
     end
   end
 

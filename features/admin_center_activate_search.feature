@@ -23,4 +23,4 @@ Feature: Activate Search
     When I go to the usagov's Activate Search page
     And I follow "API Instructions"
     Then I should see "API Instructions"
-    And I should see a link to "Terms of Service" with url for "http://usasearch.howto.gov/tos" in the API TOS section
+    And I should see a link to "Terms of Service" with url for "http://search.digitalgov.gov/tos" in the API TOS section

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HelpDocsController do
   describe '#show' do
-    let(:url) { 'http://usasearch.howto.gov/manual/site-information.html' }
+    let(:url) { 'http://search.digitalgov.gov/manual/site-information.html' }
 
     before do
       HelpDoc.should_receive(:extract_article).with(url).and_return 'Site Information'

@@ -78,8 +78,8 @@ Feature: Dashboard
   @javascript
   Scenario: Clicking on help link on Admin Center
     Given the following HelpLinks exist:
-      | request_path        | help_page_url                                         |
-      | /sites/setting/edit | http://usasearch.howto.gov/sites/manual/settings.html |
+      | request_path        | help_page_url                                           |
+      | /sites/setting/edit | http://search.digitalgov.gov/sites/manual/settings.html |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
@@ -88,8 +88,8 @@ Feature: Dashboard
   @javascript
   Scenario: Clicking on help link on Preview
     Given the following HelpLinks exist:
-      | request_path        | help_page_url                                         |
-      | /sites/preview      | http://usasearch.howto.gov/sites/manual/preview.html  |
+      | request_path   | help_page_url                                          |
+      | /sites/preview | http://search.digitalgov.gov/sites/manual/preview.html |
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
     And I follow "Preview"
@@ -168,7 +168,7 @@ Feature: Dashboard
     And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
-      | Homepage URL | http://usasearch.howto.gov/ |
+      | Homepage URL | http://search.digitalgov.gov/ |
       | Display Name | Agency Gov                  |
       | Site Handle  | agencygov                   |
     And I choose "Spanish"
@@ -178,7 +178,7 @@ Feature: Dashboard
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
-    Then the "Homepage URL" field should contain "http://usasearch.howto.gov"
+    Then the "Homepage URL" field should contain "http://search.digitalgov.gov"
 
     When I follow "Display"
     And I follow "Image Assets"

@@ -517,20 +517,6 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.body.should contain('1 result')
       end
-
-      it "should have a 'Results by USASearch' logo" do
-        get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
-        response.should have_selector("img[src^='/assets/searches/results_by_usasearch_en.png']")
-        response.should have_selector("a", :href => 'http://usasearch.howto.gov')
-      end
-
-      context "when the locale is spanish" do
-        it "should show a spanish results-by logo" do
-          get :news, :query => 'element', :affiliate => affiliates(:gobiernousa_affiliate).name, :channel => rss_feeds(:es_white_house_blog).id, :tbs => "w"
-          response.should have_selector("img[src^='/assets/searches/results_by_usasearch_es.png']")
-          response.should have_selector("a", :href => 'http://usasearch.howto.gov')
-        end
-      end
     end
   end
 

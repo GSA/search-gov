@@ -9,7 +9,7 @@ module HelpDoc
 
   def self.prefix_links_with_scheme_and_host(doc)
     doc.css('#main-container a[@href^="/"]').each do |a|
-      a['href'] = "http://usasearch.howto.gov#{a['href']}"
+      a['href'] = "#{BLOG_URL}#{a['href']}"
     end
   end
 end
