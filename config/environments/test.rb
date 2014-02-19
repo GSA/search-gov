@@ -32,10 +32,10 @@ UsasearchRails3::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-  
+
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :logger
-  
+
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=3600"
@@ -51,3 +51,5 @@ SSL_PROTOCOL = "http"
 # reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
 RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
 RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'
+
+USASEARCH_HOST = USASEARCH_HOST_WITH_PORT = 'www.example.com'

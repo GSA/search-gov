@@ -10,6 +10,7 @@ after :deploy, "warmup"
 
 task :staging_yaml_files, roles: :app do
   run "cp #{shared_path}/system/usajobs.yml #{release_path}/config/usajobs.yml"
+  run "cp #{shared_path}/system/usasearch.yml #{release_path}/config/usasearch.yml"
 end
 
 task :restart_resque_workers, :roles => :web do

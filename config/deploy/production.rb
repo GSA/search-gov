@@ -29,4 +29,5 @@ task :production_specific_files, :except => { :no_release => true } do
   run "cp -r #{shared_path}/system/analysis #{release_path}/config/locales/"
   run "cp #{shared_path}/system/keen.rb #{release_path}/config/initializers/keen.rb"
   run "cp #{shared_path}/system/elasticsearch.yml #{release_path}/config/elasticsearch.yml"
+  run "cp #{shared_path}/system/usasearch.yml #{release_path}/config/usasearch.yml"
 end
