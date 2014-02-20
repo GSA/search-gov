@@ -132,16 +132,12 @@ module SitesHelper
     site.locale == 'es' ? 'Spanish' : 'English'
   end
 
-  def render_preview_links(title, site, options = {}, target = 'preview-frame')
+  def list_item_with_link_to_preview_serp(title, site, options = {})
     return if options[:staged].present? and !site.has_staged_content?
 
-    list_item_options = options[:m].blank? &&
-      ((site.has_staged_content? and options[:staged].present?) ||
-        !site.has_staged_content?) ? {class: 'active'} : {}
-
-    content_tag :li, list_item_options do
-      link_options = {affiliate: site.name, query: 'gov', external_tracking_code_disabled: true}.merge options
-      link_to title, search_path(link_options), target: target
+    content_tag :li do
+      link_options = { affiliate: site.name, protocol: 'http', query: 'gov' }.merge options
+      link_to title, search_url(link_options), target: '_blank'
     end
   end
 
@@ -153,11 +149,10 @@ module SitesHelper
     instrumented_link_to title, new_keyword_site_best_bets_graphics_path(site), featured_collection.featured_collection_keywords.length, 'keyword'
   end
 
-  def preview_search_path_options(site)
-    default_options = {affiliate: site.name,
-                       external_tracking_code_disabled: true,
-                       query: 'gov'}
-    default_options[:staged] = '1' if site.has_staged_content?
-    default_options
+  def preview_serp_link_options
+    { class: 'modal-page-viewer-link',
+      'data-modal-container' => '#preview-container',
+      'data-modal-content-selector' => '#preview',
+      'data-modal-title' => content_tag(:h1, 'Preview Search Results') }
   end
 end

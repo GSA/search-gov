@@ -19,8 +19,4 @@
             %li= link_to 'Edit', edit_site_collection_path(@site, document_collection.id)
             = list_item_with_button_to_remove_collection @site, document_collection
 #url-prefixes.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
-  .modal-header
-    = modal_close_button
-    .title
-  .modal-body
-    .content
+  = render partial: 'sites/shared/modal'

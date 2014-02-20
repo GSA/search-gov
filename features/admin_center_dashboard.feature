@@ -85,16 +85,6 @@ Feature: Dashboard
     And I follow "Settings"
     Then I should be able to access the "How to Edit Your Settings" help page
 
-  @javascript
-  Scenario: Clicking on help link on Preview
-    Given the following HelpLinks exist:
-      | request_path   | help_page_url                                          |
-      | /sites/preview | http://search.digitalgov.gov/sites/manual/preview.html |
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's Dashboard page
-    And I follow "Preview"
-    Then I should be able to access the "How to Preview Your Search Results" help page in the preview layer
-
   Scenario: List users
     Given the following Users exist:
       | contact_name | email               |
@@ -143,15 +133,9 @@ Feature: Dashboard
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Dashboard page
     And I follow "Preview"
-    Then the preview layer should be visible
-    And I should see a link to "View Staged"
-    And I should see a link to "View Current"
-    And I should see a link to "View Current Mobile"
-    And the preview iframe should contain "staged header text"
-    When I follow "View Current"
-    Then the preview iframe should contain "live header text"
-    When I follow "View Current Mobile"
-    Then the preview iframe should contain Powered by Bing logo
+    Then I should find "View Staged" in the Preview modal
+    And I should find "View Current" in the Preview modal
+    And I should find "View Current Mobile" in the Preview modal
 
   @javascript
   Scenario: Adding a new site

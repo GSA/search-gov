@@ -4,9 +4,9 @@ module RssFeedsHelper
     link_to rss_feed.name,
             site_rss_feed_path(site, rss_feed.id),
             class: 'modal-page-viewer-link',
-            data: { container: '#urls',
-                    title: title,
-                    selector: '.urls' }
+            data: { modal_container: '#urls',
+                    modal_title: title,
+                    modal_content_selector: '.urls' }
   end
 
   def rss_feed_properties(rss_feed)

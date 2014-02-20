@@ -4,9 +4,9 @@ module DocumentCollectionsHelper
     link_to collection.name,
             site_collection_path(site, collection.id),
             class: 'modal-page-viewer-link',
-            data: { container: '#url-prefixes',
-                    title: title,
-                    selector: '.url-prefixes' }
+            data: { modal_container: '#url-prefixes',
+                    modal_title: title,
+                    modal_content_selector: '.url-prefixes' }
   end
 
   def link_to_preview_collection(site, collection)
