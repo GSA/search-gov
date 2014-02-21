@@ -4,7 +4,7 @@ set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
 role :daemon, "192.168.100.169"
 
-before "deploy:create_symlink", "staging_yaml_files"
+before 'deploy:assets:precompile', 'staging_yaml_files'
 before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
