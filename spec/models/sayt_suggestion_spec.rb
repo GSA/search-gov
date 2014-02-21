@@ -325,67 +325,12 @@ describe SaytSuggestion do
     end
   end
 
-  describe "#search_for" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-    end
-
-    context "for normal queries" do
-      before do
-        SaytSuggestion.destroy_all
-        SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
-        SaytSuggestion.create!(:affiliate_id => affiliates(:power_affiliate).id, :phrase => "also suggest this", :popularity => 31)
-        SaytSuggestion.reindex
-        Sunspot.commit
-      end
-
-      it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
-        ActiveSupport::Notifications.should_receive(:instrument).
-          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"SaytSuggestion", :term => "foo")))
-        SaytSuggestion.search_for("foo", @affiliate.id)
-      end
-
-      it "should ignore exact matches regardless of case" do
-        SaytSuggestion.search_for("suggest me", @affiliate.id).total.should be_zero
-        SaytSuggestion.search_for("Suggest Me", @affiliate.id).total.should be_zero
-      end
-
-      it "should return suggestions for a given affiliate" do
-        SaytSuggestion.search_for("suggestion", @affiliate.id).total.should == 1
-        SaytSuggestion.search_for("suggestion", @affiliate.id).results.first.popularity.should == 30
-      end
-    end
-
-    context "when a user's query contains a stop word" do
-      before do
-        SaytSuggestion.destroy_all
-        SaytSuggestion.create!(:phrase => 'health it for america', :popularity => 1, :affiliate => @affiliate)
-        SaytSuggestion.create!(:phrase => 'health care for america', :popularity => 1, :affiliate => @affiliate)
-        SaytSuggestion.reindex
-      end
-
-      it "should return nothing if the user's query is only a stopword" do
-        SaytSuggestion.search_for("it", @affiliate.id).total.should == 0
-      end
-
-      it "should return all matching suggestions if the user's query contains a non-stopword term" do
-        SaytSuggestion.search_for("health", @affiliate.id).total.should == 2
-      end
-
-      it "should return all matching suggestions if the user's query contains both valid terms and a stopword" do
-        suggestions = SaytSuggestion.search_for("health for america", @affiliate.id)
-        suggestions.total.should == 2
-      end
-    end
-  end
-
   describe "#related_search" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      SaytSuggestion.delete_all
+      SaytSuggestion.destroy_all
       SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
-      SaytSuggestion.reindex
-      Sunspot.commit
+      ElasticSaytSuggestion.commit
     end
 
     it "should return an array of highlighted strings" do
@@ -394,7 +339,7 @@ describe SaytSuggestion do
 
     context "when affiliate has related searches disabled" do
       before do
-        @affiliate.update_attributes!(:is_related_searches_enabled => false)
+        @affiliate.is_related_searches_enabled = false
       end
 
       it "should return an empty array" do
@@ -402,14 +347,5 @@ describe SaytSuggestion do
       end
     end
 
-    context "when query contains invalid characters" do
-      ['"   ', '   "       ', '++', '+-', '-+'].each do |query|
-        specify { SaytSuggestion.related_search(query, @affiliate).should be_nil }
-      end
-
-      [' +++suggest', ' ---suggest -+suggest'].each do |query|
-        specify { SaytSuggestion.related_search(query, @affiliate).count.should == 1 }
-      end
-    end
   end
 end

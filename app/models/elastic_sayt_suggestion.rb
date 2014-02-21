@@ -1,0 +1,18 @@
+class ElasticSaytSuggestion
+  extend Indexable
+
+  self.settings = ElasticSettings::COMMON
+
+  self.mappings = {
+    index_type => ElasticMappings::COMMON.deep_merge(
+      properties: {
+        phrase: {
+          type: "multi_field",
+          fields: { phrase: { type: 'string', term_vector: 'with_positions_offsets' },
+                    keyword: ElasticSettings::KEYWORD } },
+        popularity: { type: 'integer', index: :not_analyzed }
+      }
+    )
+  }
+
+end
