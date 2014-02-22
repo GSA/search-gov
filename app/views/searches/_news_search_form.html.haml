@@ -10,7 +10,6 @@
   = hidden_field_tag :affiliate, @affiliate.name
   = hidden_field_tag_if_key_exists :sitelimit
   = hidden_field_tag_if_key_exists :staged
-  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
   - if params[:since_date].present? || params[:until_date].present?
     = hidden_field_tag :since_date, render_date(@search.since)
     = hidden_field_tag :until_date, render_date(@search.until)

@@ -26,7 +26,6 @@ describe 'layouts/searches' do
     assign(:affiliate, affiliate)
     search = mock(WebSearch, query: 'america')
     assign(:search, search)
-    view.stub(:external_tracking_code_disabled?).and_return(false)
   end
 
   it 'should render look and feel css' do
@@ -57,18 +56,6 @@ describe 'layouts/searches' do
       render
       rendered.should have_selector(:a, title: 'Mostrar pie de página')
       rendered.should have_content('Esconder pie de página')
-    end
-  end
-
-  context 'when the external tracking code is disabled' do
-    before do
-      affiliate.should_not_receive(:external_tracking_code)
-      view.should_receive(:external_tracking_code_disabled?).and_return(true)
-    end
-
-    it 'should not render tracking code' do
-      render
-      rendered.should_not have_content('TRACKING CODE')
     end
   end
 end

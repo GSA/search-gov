@@ -1,0 +1,64 @@
+.visually-hidden-label-form {
+  margin: 0 auto 10px;
+  width: 360px;
+
+  #errorExplanation {
+    width: 320px;
+    margin: 10px auto 20px;
+    padding: @paddingLarge;
+
+    > h3, > p {
+      display: none;
+    }
+    ul {
+      .unstyled();
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+
+  .alert {
+    padding: @paddingLarge;
+    text-align: left;
+    width: 320px;
+  }
+
+  label {
+    .sr-only();
+  }
+
+  > input[type='email'],
+  > input[type='text'],
+  > input[type='password'],
+  > .field_with_errors > input[type='email'],
+  > .field_with_errors > input[type='text'],
+  > .field_with_errors > input[type='password'] {
+    width: 320px;
+  }
+
+  > input[type='submit'],
+  > .field_with_errors > input[type='submit'] {
+    .btn();
+    .btn-primary();
+    width: 360px;
+  }
+
+  > input[type='email'],
+  > input[type='text'],
+  > input[type='password'],
+  > input[type='submit'],
+  > .field_with_errors > input[type='email'],
+  > .field_with_errors > input[type='text'],
+  > .field_with_errors > input[type='password'],
+  > .field_with_errors > input[type='submit']
+  {
+    display: block;
+    font-size: @fontSizeLarge;
+    margin: 0 auto 10px;
+    padding: @paddingLarge;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}

@@ -1,5 +1,6 @@
-#skiplink {
-  .hide-text;
+a#skiplink {
+  .sr-only();
+  .sr-only-focusable();
 }
 
 a.menu:hover, a.menu:focus {
@@ -10,6 +11,11 @@ a.menu:hover, a.menu:focus {
   padding-top: @contentTop;
   padding-right: 20px;
   padding-left: 20px;
+
+  &.l-content-without-site {
+    margin-left: 0;
+    padding-top: @contentWithoutSiteTop;
+  }
 }
 
 .l-inner-content {

@@ -1,5 +1,4 @@
 class EmailVerificationController < ApplicationController
-  layout 'affiliates'
   before_filter :require_user
 
   def show

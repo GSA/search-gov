@@ -1,11 +1,11 @@
 !!!strict
 %html{ lang: 'en-US' }
   %head
+    %meta{ charset: 'UTF-8' }
+    = csrf_meta_tags
     %title
       = yield :title
     = favicon_link_tag
-    = csrf_meta_tags
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     %meta{ name: 'description', content: 'The USASearch Affiliate Program provides free hosted search services for any federal, state, local, tribal, or territorial government agency.' }
     %meta{ name: 'keywords', content: 'Affiliate Program, Firstgov search, first gov search, USASearch, USA Search, USAGovSearch, USA gov search, USAGovSearch, USA gov search, hosted search, government images, government recalls, government web, government websites, USA, US, United States, US Government, u.s. government, federal, state, local, tribal, territorial, territories' }
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
@@ -22,17 +22,16 @@
     = javascript_include_tag 'https://www.google.com/jsapi'
     = yield :head
   %body
-    #skiplink
-      %a{href: '#content'} Skip to Main Content
+    %a#skiplink{ href: '#main-content' } Skip to Main Content
     = render 'sites/shared/header'
     = render 'sites/shared/site_header'
     .l-main-container
       = render 'sites/shared/site_nav'
-      .l-content
+      #main-content.l-content
         = yield
     #help-doc.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
       .modal-body
         = modal_close_button
-        .content
+        .modal-content
     #preview-container.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
       = render partial: 'sites/shared/modal'

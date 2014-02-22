@@ -1,8 +1,0 @@
-#main_nav
-  .main-menu
-    %ul
-      %li.first= link_to 'Home', BLOG_URL
-      %li= link_to 'How It Works', "#{BLOG_URL}/help-desk.html"
-      %li= link_to 'Our Customers', "#{BLOG_URL}/customers.html"
-  .user-menu
-    = render_user_navigation(current_user)

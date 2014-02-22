@@ -6,7 +6,7 @@
       = list_item_with_link_to_current_help_page
       %li= link_to 'Add User', new_site_user_path(@site)
 
-= render_site_flash_message
+= render_flash_message
 %table.table.table-no-header
   %tbody
     - @users.each do |user|

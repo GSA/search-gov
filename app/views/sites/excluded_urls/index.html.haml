@@ -7,7 +7,7 @@
       = render 'sites/shared/domains_advanced_options'
       %li= link_to 'Add Filter URL', new_site_filter_url_path(@site)
 
-= render_site_flash_message
+= render_flash_message
 %table.table.table-no-header
   %tbody
     - @excluded_urls.each do |excluded_url|

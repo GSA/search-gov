@@ -1,36 +1,27 @@
 !!!strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale }
+%html{ lang: 'en-US' }
   %head
-    = attribution
-    %title= build_page_title(@page_title)
-    = favicon_link_tag "/favicon_#{I18n.locale}.ico"
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
-    = render_robots_meta_tag
-    = yield :head
+    %meta{ charset: 'UTF-8' }
+    = csrf_meta_tags
+    %title
+      = yield :title
+    = favicon_link_tag
+
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
     = stylesheet_link_tag 'application'
-  %body{ :class => I18n.locale }
-    #skiplink
-      %a{:href => "#content"} Skip to Main Content
-    .container
-      .span-24.header-wrap
-        .header
-          #headerlinks
-            = header_links
-      .span-24.main-wrap
-        .main
-          #main_nav_wrap
-            #main_nav
-              #other_search_page= link_to(image_tag("legacy/search_usa_gov_red_#{other_locale_str}_button.gif", :alt => (t :red_button_alt_value)), home_page_path(:locale => other_locale_str))
-              #change_text_size= link_to((t :change_text_size), (t :change_text_size_url))
-              #navlinks
-                %span.gov
-                  = t(:government)
-                  &nbsp; &gt;
-                - search_params = {:query => params[:query], :locale => params[:locale]}
-                = link_to_unless web_search?, content_tag(:span, 'Web'), path_to_search(search_params, home_page_path(search_params), search_path(search_params))
-                = link_to_unless image_search?, content_tag(:span, t(:images)), path_to_search(search_params, images_path(search_params), image_search_path(search_params))
-          = yield
-      .span-24.bottom-wrap
-        .bottom &nbsp;
-    = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";" if @affiliate
+    /[if lt IE 9]
+      = stylesheet_link_tag 'application_ie_lt9'
+
+  %body
+    %a#skiplink{ href: '#main-content' } Skip to Main Content
+    #navbar.navbar
+      .navbar-inner
+        .container
+          = render partial: 'shared/brand'
+          = yield :navigation
+    .l-main-container
+      #main-content.l-content.l-content-without-site
+        = yield
     = javascript_include_tag 'application'
+    /[if lt IE 9]
+      = javascript_include_tag 'application_ie_lt9'

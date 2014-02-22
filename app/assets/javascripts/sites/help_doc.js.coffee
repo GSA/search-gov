@@ -1,5 +1,7 @@
+modalContentSelector = '#help-doc .modal-body .modal-content'
+
 fillHelpLinkModal = (data) ->
-  $('#help-doc .modal-body .content').append data.body
+  $(modalContentSelector).append data.body
   $('#help-doc').modal 'show'
 
 loadHelpDoc = (url) ->
@@ -9,10 +11,10 @@ loadHelpDoc = (url) ->
 
 $(document).on 'click', '.help-link', () ->
   url = $(this).attr('href')
-  contentSelector = '#help-doc .modal-body .content'
-  if $(contentSelector).is(':empty') or $('#help-doc').data('url') isnt url
+  $modalContentSelector = $(modalContentSelector)
+  if $modalContentSelector.is(':empty') or $('#help-doc').data('url') isnt url
     $('#help-doc').data 'url', url
-    $(contentSelector).empty()
+    $modalContentSelector.empty()
     loadHelpDoc url
   else
     $('#help-doc').modal 'show'

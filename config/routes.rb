@@ -1,13 +1,29 @@
 UsasearchRails3::Application.routes.draw do
+  get '/search' => 'searches#index', as: :search, defaults: { host: USASEARCH_HOST }
+  get '/api/search' => 'api#search', as: :api_search, defaults: { host: USASEARCH_HOST }
+  get '/search/advanced' => 'searches#advanced', as: :advanced_search, defaults: { host: USASEARCH_HOST }
+  get '/search/images' => 'image_searches#index', as: :image_search, defaults: { host: USASEARCH_HOST }
+  get '/search/docs' => 'searches#docs', as: :docs_search, defaults: { host: USASEARCH_HOST }
+  get '/search/news' => 'searches#news', as: :news_search, defaults: { host: USASEARCH_HOST }
+  get '/search/news/videos' => 'searches#video_news', as: :video_news_search, defaults: { host: USASEARCH_HOST }
+  namespace :api do
+    namespace :v1 do
+      get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
+    end
+  end
+
+  get '/sayt' => 'sayt#index'
+  get '/clicked' => 'clicked#index'
+  get '/login' => 'user_sessions#new', as: :login
+  get '/signup' => 'users#new', as: :signup
+  root to: redirect('/login')
+
   resource :account, :controller => "users"
-  resources :users, :except => [:new]
+  resources :users
   resource :user_session
   resources :password_resets
   resources :email_verification, :only => :show
   resources :complete_registration, :only => [:edit, :update]
-  get '/affiliates', to: redirect('/sites')
-  get '/affiliates/:id', to: redirect('/sites/%{id}')
-  get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   scope module: 'sites' do
     resources :sites do
@@ -90,18 +106,10 @@ UsasearchRails3::Application.routes.draw do
     end
   end
 
-  get '/search' => 'searches#index', as: :search, defaults: { host: USASEARCH_HOST }
-  get '/search/advanced' => 'searches#advanced', as: :advanced_search, defaults: { host: USASEARCH_HOST }
-  get '/search/images' => 'image_searches#index', as: :image_search, defaults: { host: USASEARCH_HOST }
-  get '/images' => 'images#index', as: :images, defaults: { host: USASEARCH_HOST }
-  namespace :api do
-    namespace :v1 do
-      get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
-    end
-  end
-  get '/search/docs' => 'searches#docs', as: :docs_search, defaults: { host: USASEARCH_HOST }
-  get '/search/news' => 'searches#news', as: :news_search, defaults: { host: USASEARCH_HOST }
-  get '/search/news/videos' => 'searches#video_news', as: :video_news_search, defaults: { host: USASEARCH_HOST }
+  get '/help_docs' => 'help_docs#show', defaults: { format: :json }
+  get '/affiliates', to: redirect('/sites')
+  get '/affiliates/:id', to: redirect('/sites/%{id}')
+  get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
     resources :affiliates do as_routes end
@@ -158,18 +166,11 @@ UsasearchRails3::Application.routes.draw do
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
   match '/admin' => 'admin/home#index', :as => :admin_home_page
 
-  get '/' => 'home#index', :as => :home_page
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-  get '/api/search' => 'api#search', as: :api_search, defaults: { host: USASEARCH_HOST }
+
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/login' => 'user_sessions#new', :as => :login
-  get "/sayt" => "sayt#index"
-  get "/clicked" => "clicked#index"
   get '/program' => redirect(BLOG_URL, :status => 302)
-  get '/help_docs' => 'help_docs#show', defaults: { format: :json }
-  get "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
-  get "/404" => "errors#page_not_found", :as => 'page_not_found'
-  get "*path" => "errors#page_not_found"
-  root :to => "home#index"
+
+  get "*path" => redirect('http://www.usa.gov/page-not-found', status: 302)
 end

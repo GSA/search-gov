@@ -11,7 +11,7 @@ describe Admin::AffiliatesController do
 
     it "should redirect to the usasearch home page" do
       get :index
-      response.should redirect_to(home_page_url)
+      response.should redirect_to(account_path)
     end
   end
 

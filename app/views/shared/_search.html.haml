@@ -10,7 +10,6 @@
 
   = hidden_field_tag :affiliate, @affiliate.name
   = hidden_field_tag_if_key_exists :staged
-  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
 
   = hidden_field_tag :filter, params[:filter] if params[:filter].present?
   = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id

@@ -7,7 +7,6 @@ describe "shared/_search.html.haml" do
     @search.stub!(:scope_id).and_return nil
     assign(:search, @search)
     view.stub!(:path).and_return search_path
-    view.stub!(:web_search?).and_return true
   end
 
   context "when page is displayed" do

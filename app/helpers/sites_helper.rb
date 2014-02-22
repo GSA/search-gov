@@ -73,17 +73,6 @@ module SitesHelper
     content_for :title, "#{title} - #{site.display_name}"
   end
 
-  def render_site_flash_message
-    if flash.present?
-      html = flash.map do |key, msg|
-        content = button_tag '×', class: 'close', 'data-dismiss' => 'alert'
-        content << msg
-        content_tag(:div, content.html_safe, class: "alert alert-#{key}")
-      end
-      html.join('\n').html_safe
-    end
-  end
-
   def main_nav_item(title, path, icon, nav_controllers, link_options = {})
     link_options.reverse_merge! 'data-toggle' => 'tooltip', 'data-original-title' => title
     item_content = link_to path, link_options do

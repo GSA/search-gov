@@ -8,7 +8,7 @@
         = render 'sites/shared/domains_advanced_options'
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
 
-  = render_site_flash_message
+  = render_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   = f.label :rss_url, 'URL', class: 'required input-primary'
   = f.text_field :rss_url, class: 'required'

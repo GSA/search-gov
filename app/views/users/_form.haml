@@ -1,14 +1,12 @@
-= render_site_flash_message
+= render_flash_message
 = form.error_messages class: 'alert alert-error', header_tag: 'h3'
 
 = form.label :contact_name, 'Name', class: 'required'
 = form.text_field :contact_name, class: 'required input-primary'
-= form.label :organization_name, 'Agency'
+= form.label :organization_name, 'Government agency'
 = form.text_field :organization_name
 = form.label :email, 'Email', class: 'required'
-= form.text_field :email, type: :email, class: 'required'
+= form.email_field :email, class: 'required'
 
-= form.label :password, 'Change password'
-= form.password_field :password
-= form.label :password_confirmation, 'Password confirmation'
-= form.password_field :password_confirmation
+= form.label :password
+= form.password_field :password, class: 'required'

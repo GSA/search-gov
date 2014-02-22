@@ -6,7 +6,7 @@
       = list_item_with_link_to_current_help_page
       %li= link_to 'Add Twitter Handle', new_site_twitter_handle_path(@site)
 
-= render_site_flash_message
+= render_flash_message
 %table.table.table-no-header
   %tbody
     - @twitter_profiles.each do |twitter_profile|

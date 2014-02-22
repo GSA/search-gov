@@ -7,7 +7,7 @@
       %ul
         = list_item_with_link_to_current_help_page
         = render partial: "#{@mode}_mode_action_bar_items", locals: { f: f }
-  = render_site_flash_message
+  = render_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
   = hidden_field_tag :mode, @mode
   = render partial: "#{@mode}_mode_form", locals: { f: f }

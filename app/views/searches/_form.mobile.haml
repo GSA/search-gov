@@ -3,7 +3,6 @@
   = hidden_field_tag :affiliate, search.affiliate.name
   = hidden_field_tag_if_key_exists :sitelimit
   = hidden_field_tag_if_key_exists :staged
-  = hidden_field_tag_if_key_exists :external_tracking_code_disabled
 
   - if search.is_a? NewsSearch
     = hidden_field_tag_if_key_exists :tbs

@@ -12,12 +12,8 @@ class Admin::AdminController < SslController
   def require_affiliate_admin
     return false if require_user == false
     unless current_user.is_affiliate_admin?
-      redirect_to home_page_url
+      redirect_to account_path
       return false
     end
-  end
-
-  def default_url_options(options={})
-    {}
   end
 end

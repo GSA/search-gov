@@ -33,8 +33,4 @@ class Sites::BaseController < SslController
       @site = current_user.affiliates.find(site_id) rescue redirect_to(sites_path)
     end
   end
-
-  def default_url_options
-    {}
-  end
 end

@@ -22,7 +22,7 @@ Feature: Dashboard
 
   Scenario: Viewing a site without logging in
     When I go to the usagov's Dashboard page
-    Then I should see "Log In"
+    Then I should see "Login" button
 
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
@@ -124,6 +124,30 @@ Feature: Dashboard
     Then I should see "notified admin@email.gov on how to login and to access this site"
     When I press "Remove" within the first table body row
     Then I should see "You have removed admin@email.gov from this site"
+
+  @javascript
+  Scenario: Complete sign up process
+    Given no emails have been sent
+    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    And I follow "Manage Users"
+    And I follow "Add User"
+    When I fill in the following:
+      | Name  | Jane Admin     |
+      | Email | jane@admin.org |
+    And I submit the form by pressing "Add"
+    And I sign out
+    Then "jane@admin.org" should receive an email
+
+    When I open the email
+    And I click the complete registration link in the email
+    Then the "Your full name" field should contain "Jane Admin"
+    Then the "Email" field should contain "jane@admin.org"
+    When I fill in the following:
+      | Government agency | My Agency   |
+      | Password          | huge_secret |
+    And I press "Complete the sign up process"
+    Then I should see "Site Overview"
 
   @javascript
   Scenario: Preview

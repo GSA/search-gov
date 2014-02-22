@@ -1,5 +1,4 @@
 class CompleteRegistrationController < SslController
-  layout 'affiliates'
   before_filter :require_no_user
   before_filter :load_user_using_email_verification_token, :only => [:edit, :update]
 
@@ -13,10 +12,6 @@ class CompleteRegistrationController < SslController
     else
       render :action => :edit
     end
-  end
-
-  def default_url_options(options={})
-    {}
   end
 
   private

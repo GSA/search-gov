@@ -123,4 +123,8 @@ class SearchesController < ApplicationController
   def adjust_mobile_mode
     request.format = :json if @original_format == 'application/json'
   end
+
+  def default_url_options(options={})
+    request.format && request.format.to_sym == :mobile ? { :m => 'true' } : { :m => 'false' }
+  end
 end

@@ -1,5 +1,4 @@
 class PasswordResetsController < SslController
-  layout 'affiliates'
   before_filter :require_no_user
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
   before_filter :load_user_by_email, only: [:create]
@@ -10,11 +9,11 @@ class PasswordResetsController < SslController
   end
 
   def update
+    @user.require_password = true
     @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
       flash[:notice] = "Password successfully updated"
-      redirect_to account_url
+      redirect_to account_path
     else
       render :action => :edit
     end
@@ -38,7 +37,7 @@ class PasswordResetsController < SslController
 
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
-    redirect_to home_page_path unless @user
+    redirect_to login_path unless @user
   end
 
   def load_user_by_email

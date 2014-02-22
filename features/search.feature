@@ -1117,3 +1117,12 @@ Feature: Affiliate Search
     And I should not see a link to "Issue" in the left column
     And I should see "Briefing Room Section" in the left column
     And I should not see a link to "Briefing Room Section" in the left column
+
+  Scenario: Entering a blank advanced search
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
+    When I am on the advanced search page
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "Please enter search term(s)"

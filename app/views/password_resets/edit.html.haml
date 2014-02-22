@@ -1,16 +1,11 @@
-.span-15
-  = form_for @user, :url => password_reset_path, :html => {:class=>"bordered", :method => :put} do |f|
-    %h1
-      Change My Password
-    = f.error_messages(:header_message => nil, :class => "error")
-    %dl
-      %dt
-        = f.label :password
-      %dd
-        = f.password_field :password, :class => "text"
-      %dt
-        = f.label :password_confirmation
-      %dd
-        = f.password_field :password_confirmation, :class => "text"
-
-    = f.submit "Update my password and log me in"
+= content_for :title, 'Reset my password'
+= content_for :navigation do
+  %ul.nav.login
+    %li= link_to 'Login', login_path
+.without-site-wrapper
+  = form_for @user, url: password_reset_path, html: { id: 'password-reset-form' } do |f|
+    = render_flash_message(false)
+    = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+    = f.label :password
+    = f.password_field :password, placeholder: 'Password'
+    = f.submit 'Reset my password and log me in'

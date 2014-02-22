@@ -3,6 +3,11 @@ class UsersController < SslController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
 
+  def new
+    @user = User.new
+    render layout: 'application'
+  end
+
   def create
     @user = User.new(params[:user])
     if verify_recaptcha(:model => @user, :message => 'Word verification is incorrect') && @user.save
@@ -17,8 +22,8 @@ class UsersController < SslController
       end
       redirect_to account_path
     else
-      @user_session = UserSession.new
-      render :template => "user_sessions/new", :layout => "user_sessions"
+      flash.delete(:recaptcha_error)
+      render action: :new, layout: 'application'
     end
   end
 

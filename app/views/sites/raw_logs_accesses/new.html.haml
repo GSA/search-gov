@@ -6,7 +6,7 @@
       %ul
         = list_item_with_link_to_current_help_page
         %li= submit_tag 'Upload', class: 'btn submit disabled', disabled: true
-  = render_site_flash_message
+  = render_flash_message
 
   = label_tag 'txtfile', 'Public key'
   = file_field_tag 'txtfile'

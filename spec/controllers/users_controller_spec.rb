@@ -43,7 +43,7 @@ describe UsersController do
       end
 
       it "should render edit on failure" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :password=>"not", :password_confirmation => "the same"}
+        post :update, :id => @user.id, :user => {:email => "changed@foo.com", :password=>"not"}
         response.should render_template(:edit)
       end
 
@@ -122,12 +122,7 @@ describe UsersController do
 
         it "should render login page on failure" do
           post :create
-          response.should render_template("user_sessions/new")
-        end
-
-        it "should assign @user_session on failure" do
-          post :create
-          assigns[:user_session].should be_instance_of(UserSession)
+          response.should render_template("new")
         end
       end
     end

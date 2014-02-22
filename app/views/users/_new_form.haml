@@ -1,20 +1,16 @@
-%li
-  = new_form.label :contact_name, "Name*"
-  = new_form.text_field :contact_name, :class => "txt"
-%li
-  = new_form.label :organization_name, "Government organization"
-  = new_form.text_field :organization_name, :class => "txt"
-%li
-  = new_form.label :email, "Email*"
-  = new_form.text_field :email, :class => "txt"
-%li
-  = new_form.label :password, 'Password*'
-  = new_form.password_field :password, :class => "txt"
-%li
-  = new_form.label :password_confirmation, "Password confirmation*"
-  = new_form.password_field :password_confirmation, :class => "txt"
-%li
-  = label_tag :recaptcha_response_field, "Word verification*"
-  #dynamic_recaptcha
-%li.required
-  = content_tag :label, '*Required'
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :contact_name, 'Your full name'
+= form.text_field :contact_name, placeholder: 'Your full name'
+= form.label :organization_name, 'Government agency'
+= form.text_field :organization_name, placeholder: 'Government agency'
+= form.label :email
+= form.email_field :email, placeholder: 'Email'
+= form.label :password
+= form.password_field :password, placeholder: 'Password'
+- if form.object.new_record?
+  = label_tag :recaptcha_response_field, 'Word verification'
+  = recaptcha_tags display: { theme: 'white' }
+.tos
+  By clicking Sign up, you agree to the
+  = link_to 'Terms of Service', TOS_URL, target: '_blank'
+  and that you're a government employee or contractor acting within the scope of your government contract.

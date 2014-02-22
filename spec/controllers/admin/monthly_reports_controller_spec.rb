@@ -16,7 +16,7 @@ describe Admin::MonthlyReportsController do
 
       it "should redirect to the home page" do
         get :index
-        response.should redirect_to home_page_url
+        response.should redirect_to account_path
       end
     end
 

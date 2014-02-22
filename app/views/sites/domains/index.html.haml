@@ -7,7 +7,7 @@
       = render 'sites/shared/domains_advanced_options'
       %li= link_to 'Add Domain', new_site_domain_path(@site)
 
-= render_site_flash_message
+= render_flash_message
 %table.table.table-no-header
   %tbody
     - @domains.each do |domain|

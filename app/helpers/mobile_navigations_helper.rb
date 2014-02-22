@@ -52,7 +52,7 @@ module MobileNavigationsHelper
   def search_everything_navigation(search, search_params)
     search_label = search.affiliate.default_search_label
     is_active = search.instance_of?(WebSearch)
-    params = search_params.slice(:affiliate, :external_tracking_code_disabled, :m).
+    params = search_params.slice(:affiliate, :m).
         merge(query: search.query)
 
     navigation_item(is_active, search_label, search_path(params))
@@ -75,13 +75,13 @@ module MobileNavigationsHelper
 
   def document_collection_search_path(search_params, navigable, query)
     dc_params = navigable_params(search_params, :dc, navigable.id, query,
-                                 :affiliate, :external_tracking_code_disabled, :m, :sitelimit)
+                                 :affiliate, :m, :sitelimit)
     docs_search_path(dc_params)
   end
 
   def rss_feed_search_path(search_params, navigable, query)
     rss_params = navigable_params(search_params, :channel, navigable.id, query,
-                                  :affiliate, :external_tracking_code_disabled, :m, :tbs)
+                                  :affiliate, :m, :tbs)
     news_search_path(rss_params)
   end
 

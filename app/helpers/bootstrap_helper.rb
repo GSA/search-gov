@@ -46,6 +46,18 @@ module BootstrapHelper
     end
   end
 
+  def render_flash_message(with_close_button = true)
+    if flash.present?
+      html = flash.map do |key, msg|
+        content = ''
+        content << button_tag('×', class: 'close', 'data-dismiss' => 'alert') if with_close_button
+        content << msg
+        content_tag(:div, content.html_safe, class: "alert alert-#{key}")
+      end
+      html.join('\n').html_safe
+    end
+  end
+
   private
 
   def switch_button(form, name)

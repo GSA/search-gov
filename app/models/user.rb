@@ -2,21 +2,17 @@ class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
-  validates_presence_of :organization_name, :if => :strict_mode
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
-  validates_acceptance_of :terms_of_service
-  validates_acceptance_of :affiliation_with_government, :message => "is required to register for an account"
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
   belongs_to :default_affiliate, class_name: 'Affiliate'
   before_validation :set_initial_approval_status, :on => :create
-  after_validation :set_is_affiliate, :on => :create
   after_validation :set_default_flags, :on => :create
   after_create :ping_admin
   after_create :deliver_email_verification
   after_update :deliver_welcome_email
-  attr_accessor :government_affiliation, :strict_mode, :invited, :skip_welcome_email, :terms_of_service, :inviter, :require_password
-  attr_protected :strict_mode, :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
+  attr_accessor :invited, :skip_welcome_email, :inviter, :require_password
+  attr_protected :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
   scope :not_approved, where(approval_status: 'not_approved')
 
@@ -24,6 +20,7 @@ class User < ActiveRecord::Base
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
     c.perishable_token_valid_for 1.hour
     c.disable_perishable_token_maintenance(true)
+    c.require_password_confirmation = false
   end
 
   APPROVAL_STATUSES.each do |status|
@@ -55,10 +52,6 @@ class User < ActiveRecord::Base
 
   def has_government_affiliated_email?
     email =~ /\.(gov|mil|fed\.us)$|(\.|@)state\.[a-z]{2}\.us$/i
-  end
-
-  def signed_up_to_be_an_affiliate?
-    government_affiliation == "1"
   end
 
   #authlogic magic state
@@ -93,9 +86,8 @@ class User < ActiveRecord::Base
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
-    default_attributes = { :government_affiliation => "1" }
-    new_user = User.new(attributes.merge(default_attributes))
-    new_user.randomize_password
+    new_user = User.new(attributes)
+    new_user.password = Authlogic::Random.friendly_token
     new_user.inviter = inviter
     new_user.invited = true
     new_user.affiliates << affiliate
@@ -143,12 +135,6 @@ class User < ActiveRecord::Base
       self.welcome_email_sent = true
       save!
       Emailer.welcome_to_new_user(self).deliver
-    end
-  end
-
-  def set_is_affiliate
-    unless self.government_affiliation.blank?
-      self.is_affiliate = signed_up_to_be_an_affiliate? ? 1 : 0
     end
   end
 

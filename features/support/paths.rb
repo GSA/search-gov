@@ -8,10 +8,6 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the homepage/
-      root_path
-    when /the Spanish homepage/
-      root_path(:locale => 'es')
     when /the search page/
       search_path
     when /the Spanish mobile search results page for "([^\"]*)"$/
@@ -56,6 +52,8 @@ module NavigationHelpers
       admin_sayt_filters_path
     when /the login page/
       login_path
+    when /the sign up page/
+      signup_path
     when /the password reset page/
       password_resets_path
     when /the user account page/
@@ -130,14 +128,6 @@ module NavigationHelpers
       sites_path
     when /^the new site page$/
       new_site_path
-    when /the 404 page/
-      '/aninvalidurl'
-    when /the Spanish 404 page/
-      '/aninvalidurl?locale=es'
-    when /the (.*)'s 404 page$/
-      affiliate_page_not_found_path(:name => $1)
-    when /the (.*)'s staged 404 page$/
-      affiliate_page_not_found_path(:name => $1, :staged => 1)
     else
       begin
         page_name =~ /the (.*) page/

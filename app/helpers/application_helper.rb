@@ -31,33 +31,11 @@ module ApplicationHelper
     end
   end
 
-  HEADER_LINKS = {
-    :en => [
-      ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
-      ["FAQs", "http://answers.usa.gov/"],
-      ["E-mail USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
-      ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"],
-      ["Publications", "http://publications.usa.gov/"]],
-    :es => [
-      ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
-      ["Respuestas", "http://respuestas.gobiernousa.gov/"],
-      ["Contactos", "http://www.usa.gov/gobiernousa/Contactenos.shtml"]
-    ]
-  }
-
-  def header_links
-    raw iterate_links(HEADER_LINKS[I18n.locale.to_sym])
-  end
-
   def basic_header_navigation_for(cur_user)
     links = []
-    if cur_user
-      links << content_tag(:li, "#{cur_user.email}", :class => 'first')
-      links << content_tag(:li, link_to("My Account", account_path))
-      links << content_tag(:li, link_to("Sign Out", url_for_logout, :method => :delete))
-    else
-      links << content_tag(:li, link_to("Sign In", url_for_login), :class => 'first')
-    end
+    links << content_tag(:li, "#{cur_user.email}", :class => 'first')
+    links << content_tag(:li, link_to("My Account", account_path))
+    links << content_tag(:li, link_to("Sign Out", url_for_logout, :method => :delete))
     raw content_tag(:ul, raw(links.join("\n")))
   end
 
@@ -97,13 +75,6 @@ module ApplicationHelper
     h hit.instance.send(field_name)
   end
 
-  def url_for_login
-    url_for(:controller => "/user_sessions",
-            :action => "new",
-            :protocol => ssl_protocol,
-            :only_path => false)
-  end
-
   def url_for_logout
     url_for(:controller => '/user_sessions', :action => :destroy)
   end
@@ -128,13 +99,9 @@ module ApplicationHelper
     content_tag(:div, trail.html_safe, :class => 'breadcrumbs')
   end
 
-  def url_for_mobile_home_page(locale = I18n.locale)
-    locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => true)
-  end
-
   def render_robots_meta_tag
     content = ''
-    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i) or error_page?
+    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i)
       content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
     end
     raw content
@@ -153,15 +120,5 @@ module ApplicationHelper
     txt << '<!-- helping government create a great search experience. Learn more at http://search.digitalgov.gov -->'
     txt << txt.first
     txt.join("\n").html_safe
-  end
-
-  private
-
-  def ssl_protocol
-    SSL_PROTOCOL
-  end
-
-  def iterate_links(links)
-    links.collect { |link| link_to(link[0], link[1], :class => link[2]) }.join unless links.nil?
   end
 end

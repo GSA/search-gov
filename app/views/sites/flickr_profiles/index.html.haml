@@ -6,7 +6,7 @@
       = list_item_with_link_to_current_help_page
       %li= link_to 'Add Flickr URL', new_site_flickr_url_path(@site)
 
-= render_site_flash_message
+= render_flash_message
 %table.table.table-no-header
   %tbody
     - @flickr_profiles.each do |flickr_url|

@@ -157,16 +157,8 @@ module SearchHelper
     link_to((t :advanced_search), advanced_search_path(search_options), :id => 'advanced_search_link')
   end
 
-  def web_search?
-    ["searches", "home"].include?(controller.controller_name) and controller.action_name == "index"
-  end
-
   def image_search?
-    controller.controller_name == "image_searches" or controller.controller_name == "images"
-  end
-
-  def error_page?
-    controller.controller_name == "errors"
+    controller.controller_name == 'image_searches'
   end
 
   def no_results_for(query)
@@ -181,33 +173,6 @@ module SearchHelper
     no_results_message << reset_filters_link.html_safe
     no_results_message << " #{t(:or_try_broader)}"
     content_tag(:p, no_results_message.html_safe, :class => "noresults")
-  end
-
-  def search_meta_tags
-    content = ''
-    if english_locale? or spanish_locale?
-      content << tag(:meta, {:name => "description", :content => t(:web_meta_description)})
-      content << tag(:meta, {:name => "keywords", :content => t(:web_meta_keywords)})
-    end
-    raw content
-  end
-
-  def image_search_meta_tags
-    content = ''
-    if english_locale? or spanish_locale?
-      content << tag(:meta, {:name => "description", :content => t(:image_meta_description)})
-      content << tag(:meta, {:name => "keywords", :content => t(:image_meta_keywords)})
-    end
-    raw content
-  end
-
-  def path_to_search(search_params, path_to_landing_page, path_to_serp)
-    search_params[:query].blank? ? path_to_landing_page : path_to_serp
-  end
-
-
-  def path_to_image_search(search_params)
-    search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)
   end
 
   def related_topics_header(affiliate, query)
@@ -340,10 +305,6 @@ module SearchHelper
 
   def left_nav_label(label_text)
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
-  end
-
-  def external_tracking_code_disabled?
-    params[:external_tracking_code_disabled] == 'true'
   end
 
   def hidden_field_tag_if_key_exists(param_sym)

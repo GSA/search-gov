@@ -4,10 +4,8 @@ Given /^the following Affiliates exist:$/ do |table|
     valid_options = {
         email: hash[:contact_email],
         password: 'random_string',
-        password_confirmation: 'random_string',
         contact_name: hash[:contact_name],
-        organization_name: 'Agency',
-        government_affiliation: '1'
+        organization_name: 'Agency'
     }
     user = User.find_by_email(hash[:contact_email]) || User.create!( valid_options)
     user.update_attribute(:is_affiliate, true)

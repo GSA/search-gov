@@ -36,10 +36,6 @@ class ApplicationController < ActionController::Base
     I18n.locale = :en
   end
 
-  def default_url_options(options={})
-    request.format && request.format.to_sym == :mobile ? { :m => 'true' } : { :m => 'false' }
-  end
-
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

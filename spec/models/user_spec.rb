@@ -7,26 +7,14 @@ describe User do
     @valid_attributes = {
         :email => "unique_login@agency.gov",
         :password => "password",
-        :password_confirmation => "password",
         :contact_name => "Some One",
-        :organization_name => "Agency",
-        :government_affiliation => "1"
-    }
-
-    @valid_developer_attributes = {
-        :email => "some.guy@usa.gov",
-        :contact_name => "Some Guy",
-        :password => "password",
-        :password_confirmation => "password",
-        :government_affiliation => "0"
+        :organization_name => "Agency"
     }
 
     @valid_affiliate_attributes = {
         :email => "some.guy@usa.gov",
         :contact_name => "Some Guy",
-        :password => "password",
-        :password_confirmation => "password",
-        :government_affiliation => "1"
+        :password => "password"
     }
     @emailer = mock(Emailer)
     @emailer.stub!(:deliver).and_return true
@@ -36,24 +24,11 @@ describe User do
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of :email }
     it { should validate_presence_of :contact_name }
-    it { should validate_acceptance_of :terms_of_service }
     it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:affiliates).through :memberships }
 
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)
-    end
-
-    it "should create a user with a minimal set of attributes if the user is a developer" do
-      developer_user = User.new(@valid_developer_attributes)
-      developer_user.save.should be_true
-      developer_user.is_developer?.should be_true
-    end
-
-    it "should create a user with a minimal set of attributes if the user is a developer with .com email address" do
-      developer_user = User.new(@valid_developer_attributes.merge(:email => 'not.gov.user@agency.com'))
-      developer_user.save.should be_true
-      developer_user.is_developer?.should be_true
     end
 
     it "should create a user with a minimal set of attributes if the user is an affiliate" do
@@ -125,13 +100,6 @@ describe User do
       end
     end
 
-    it "should set requires_manual_approval to false if the user is a developer" do
-      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        developer_user = User.create!(@valid_developer_attributes.merge(:email => email))
-        developer_user.requires_manual_approval?.should be_false
-      end
-    end
-
     it "should set email_verification_token if the user is pending_email_verification" do
       user = User.create!(@valid_affiliate_attributes)
       user.is_pending_email_verification?.should be_true
@@ -144,7 +112,6 @@ describe User do
     it { should allow_mass_assignment_of(:email) }
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
-    it { should_not allow_mass_assignment_of(:strict_mode) }
     it { should_not allow_mass_assignment_of(:approval_status) }
     it { should_not allow_mass_assignment_of(:requires_manual_approval) }
     it { should_not allow_mass_assignment_of(:welcome_email_sent) }
@@ -166,18 +133,6 @@ describe User do
       users(:affiliate_admin).is_developer?.should be_false
       users(:affiliate_manager).is_developer?.should be_false
       users(:developer).is_developer?.should be_true
-    end
-  end
-
-  describe "when validating with strict_mode" do
-    it "should require organization name if strict_mode is set" do
-      user = User.new(@valid_affiliate_attributes)
-      user.strict_mode.should be_false
-      user.should_not validate_presence_of(:organization_name)
-      user.strict_mode = true
-      user.should validate_presence_of(:contact_name)
-      user.should validate_presence_of(:email)
-      user.should validate_presence_of(:organization_name)
     end
   end
 
@@ -229,7 +184,6 @@ describe User do
     context "has matching email verification token and requires manual approval" do
       before do
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
-        @user.strict_mode = true
         @user.update_attributes(@valid_attributes.merge(:email => 'not.gov@agency.com'))
         @user.is_pending_email_verification?.should be_true
         @user = User.find_by_email('not.gov@agency.com')
@@ -344,12 +298,9 @@ describe User do
       end
     end
 
-    context "when password and password_confirmation are blank" do
-      before do
-        @user.complete_registration({ :password => '', :password_confirmation => '' })
-      end
-
-      specify { @user.should_not be_valid }
+    context 'when password is blank' do
+      let(:user) { user = User.find @user.id }
+      specify { user.complete_registration({ password: '' }).should be_false }
     end
   end
 

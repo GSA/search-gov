@@ -21,8 +21,7 @@
     #container
       = render_affiliate_header(@affiliate)
       #search
-        -unless error_page?
-          %h1 Search
+        %h1 Search
         - unless @affiliate.connections.blank?
           .connections-wrapper
             .connections

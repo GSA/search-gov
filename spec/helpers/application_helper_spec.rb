@@ -176,32 +176,6 @@ describe ApplicationHelper do
   end
 
   describe "#basic_header_navigation_for" do
-    before(:each) do
-      helper.stub(:ssl_protocol).and_return("aprotocol")
-    end
-
-    context "when user is not logged in" do
-      it "should use generate Sign In link with predefined SSL_PROTOCOL" do
-        content = helper.basic_header_navigation_for(nil)
-        content.should have_selector("a[href^='aprotocol']", :content => "Sign In")
-      end
-
-      it "should contain Sign In and Help Desk links" do
-        content = helper.basic_header_navigation_for(nil)
-        content.should have_selector("a", :content => "Sign In")
-        content.should_not have_selector("a", :content => "My Account")
-        content.should_not have_selector("a", :content => "Sign Out")
-      end
-    end
-
-    context "when user is logged in" do
-      it "should use generate Sign Out link" do
-        user = stub("User", :email => "user@fixtures.org")
-        content = helper.basic_header_navigation_for(user)
-        content.should have_selector("a[href^='/user_session']", :content => "Sign Out")
-      end
-    end
-
     it "should contain My Account and Sign Out links" do
       user = stub("User", :email => "user@fixtures.org")
       content = helper.basic_header_navigation_for(user)
@@ -243,26 +217,6 @@ describe ApplicationHelper do
     it "should not highlight anything if term doesn't match" do
       irs_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@IRS@@@endhl@@@")
       helper.highlight_like_solr("no matches found", [irs_highlight]).should == "no matches found"
-    end
-  end
-
-  describe "#url_for_mobile_home_page" do
-    it "should return http://m.gobiernousa.gov if locale is set to 'es' and no arguments are given" do
-      I18n.should_receive(:locale).and_return('es')
-      helper.url_for_mobile_home_page.should == 'http://m.gobiernousa.gov'
-    end
-
-    it "should return /?locale=en if locale is set to 'alocale' and no arguments are given" do
-      I18n.should_receive(:locale).at_least(:once).and_return('alocale')
-      helper.url_for_mobile_home_page.should == '/?locale=alocale&m=true'
-    end
-
-    it "should return http://m.gobiernousa.gov when locale argument set to 'es'" do
-      helper.url_for_mobile_home_page('es').should == 'http://m.gobiernousa.gov'
-    end
-
-    it "should return /?locale=alocale when locale argument set to 'alocale'" do
-      helper.url_for_mobile_home_page('alocale').should == '/?locale=alocale&m=true'
     end
   end
 
