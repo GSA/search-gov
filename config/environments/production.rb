@@ -51,7 +51,7 @@ UsasearchRails3::Application.configure do
   config.active_support.deprecation = :notify
 
   if File.basename($0) == 'rails' || (File.basename($0) == 'rake' &&
-      ARGV.join !~ /db:migrate|assets:clean|assets:precompile/)
+      ARGV.join !~ /db:migrate|assets:clean|assets:precompile|usasearch:twitter/)
     config.after_initialize do
       MultiDb::ConnectionProxy.setup!
     end
