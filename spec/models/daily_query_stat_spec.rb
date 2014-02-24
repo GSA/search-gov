@@ -207,11 +207,13 @@ describe DailyQueryStat do
       Sunspot.commit
     end
 
-    it 'should remove records older than time' do
+    it 'should remove records from Solr and DB that are older than some time' do
       DailyQueryStat.prune_before(min_day.beginning_of_day)
       Sunspot.commit
       DailyQueryStat.search_for("delete", Affiliate::USAGOV_AFFILIATE_NAME).should == []
       DailyQueryStat.search_for("keep", Affiliate::USAGOV_AFFILIATE_NAME).size.should == 1
+      DailyQueryStat.where(query: "delete this").should_not be_present
+      DailyQueryStat.where(query: "keep this").should be_present
     end
   end
 

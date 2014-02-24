@@ -39,6 +39,7 @@ class DailyQueryStat < ActiveRecord::Base
       Sunspot.remove(DailyQueryStat) do
         with(:day).less_than(time)
       end
+      where(["day < ?", time]).delete_all
     end
 
     def search_for(query, affiliate_name, start_date = 1.year.ago, end_date = Date.current, per_page = 3000)
