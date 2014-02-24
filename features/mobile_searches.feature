@@ -196,3 +196,13 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see "Federal Job Openings"
     And I should see a link to "See all federal job openings" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
+
+  Scenario: When using tablet device
+    Given I am using a TabletPC device
+    And the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    When I am on bar.gov's search page
+    And I fill in "Enter your search term" with "bar"
+    And I press "Search"
+    And I should see at least "2" web search results

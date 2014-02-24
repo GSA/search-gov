@@ -927,16 +927,6 @@ Feature: Affiliate Search
     And I should see "Estados" in bold font in the twitter govbox
     And I should see "Unidos" in bold font in the twitter govbox
 
-  Scenario: When using tablet device
-    Given I am using a TabletPC device
-    And the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
-    When I am on bar.gov's search page
-    And I fill in "query" with "bar"
-    And I press "Search" in the search box
-    Then I should see some Bing search results
-
   Scenario: Searching document collections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains        |

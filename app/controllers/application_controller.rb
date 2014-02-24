@@ -110,7 +110,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_format_for_tablet_devices
-    request.format = :html if is_tablet_device?
+    request.format = :mobile if is_tablet_device?
   end
 
   def force_mobile_mode
