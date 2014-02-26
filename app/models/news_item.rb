@@ -51,7 +51,7 @@ class NewsItem < ActiveRecord::Base
   private
 
   def clean_text_fields
-    %w(title description contributor subject publisher).each { |field| self.send(field+'=', clean_text_field(self.send(field))) }
+    %w(title description contributor subject publisher link guid).each { |field| self.send(field+'=', clean_text_field(self.send(field))) }
   end
 
   def downcase_scheme
@@ -59,6 +59,6 @@ class NewsItem < ActiveRecord::Base
   end
 
   def clean_text_field(str)
-    str.squish if str.present?
+    str.strip.squish if str.present?
   end
 end

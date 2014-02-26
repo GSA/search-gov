@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'spec_helper'
 
 describe NewsItem do
@@ -39,23 +38,25 @@ describe NewsItem do
                                                :description => nil))
     end
 
-    it "should scrub out extra whitespace, tabs, newlines from title/desc" do
+    it "should scrub out extra whitespace, tabs, newlines from fields" do
       news_item = NewsItem.create!(
-          @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ",
-                                  description: " \nSome     description \n     "))
+        @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ",
+                                description: " \nSome     description \n     ",
+                                link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
+                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n",
+        ))
       news_item.title.should == 'DOD Marks Growth in Spouses’ Employment Program'
       news_item.description.should == 'Some description'
+      news_item.link.should == 'http://www.foo.gov/1.html'
+      news_item.guid.should == 'http://www.foo.gov/1.html'
     end
 
     it 'should set tags to image if media_thumbnail_url and media_content_url are present' do
       properties = {
-          media_thumbnail: {
-              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg',
-              height: '75', width: '75' },
-          media_content: {
-              url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
-              type: 'image/jpeg',
-              height: '819', width: '1024' }
+        media_thumbnail: {
+          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg', height: '75', width: '75' },
+        media_content: {
+          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024' }
       }
       news_item = NewsItem.create!(@valid_attributes.merge properties: properties)
       NewsItem.find(news_item.id).tags.should == %w(image)
