@@ -206,3 +206,36 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "bar"
     And I press "Search"
     And I should see at least "2" web search results
+
+  Scenario: Searching with matching med topic query
+    Given the following Medline Topics exist:
+      | medline_tid | medline_title     | medline_url                                              | locale | summary_html                                                                                                                                                                                                                                                                                                         |
+      | 1558        | Alcohol           | http://www.nlm.nih.gov/medlineplus/alcohol.html          | en     | <p>If you are like many Americans, you drink alcohol at least occasionally. For many people, moderate drinking is probably safe.  It may even have health benefits, including reducing your risk of certain heart problems.</p>                                                                                      |
+      | 1313        | Underage Drinking | http://www.nlm.nih.gov/medlineplus/underagedrinking.html | en     | <p>It is possible to drink legally and safely - when you're over 21. But if you're under 21, or if you drink too much at any age, alcohol can be especially risky. </p>                                                                                                                                              |
+      | 1732        | Alcohol           | http://www.nlm.nih.gov/medlineplus/spanish/alcohol.html  | es     | <p>Si usted es como muchos estadounidenses, quizás consuma bebidas alcohólicas por lo menos ocasionalmente. Para muchas personas, beber moderadamente probablemente sea sano. Quizá hasta puede tener beneficios para la salud, entre los que se incluye disminuir el riesgo de padecer algunos problemas cardiacos. |
+    And the following Related Medline Topics for "Alcohol" in English exist:
+      | medline_title     | medline_tid | url                                                      |
+      | Underage drinking | 1313        | http://www.nlm.nih.gov/medlineplus/underagedrinking.html |
+    And the following Related Medline Topics for "Alcohol" in Spanish exist:
+      | medline_title | medline_tid | url                                                        |
+      | Alcoholismo   | 1733        | http://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html |
+    And the following Medline Sites exist:
+      | medline_title | locale | title      | url                                                              |
+      | Alcohol       | en     | Alcoholism | http://clinicaltrials.gov/search/open/condition=%22Alcoholism%22 |
+    And the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale | is_medline_govbox_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | true                      |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     | true                      |
+    When I am on en.agency.gov's mobile search page
+    And I fill in "Enter your search term" with "alcohol"
+    And I press "Search"
+    Then I should see a link to "Alcohol" with url for "http://www.nlm.nih.gov/medlineplus/alcohol.html" within the med topic govbox
+    And I should see a link to "Underage drinking" with url for "http://www.nlm.nih.gov/medlineplus/underagedrinking.html" within the med topic govbox
+    And I should see a link to "Alcoholism" with url for "http://clinicaltrials.gov/search/open/condition=%22Alcoholism%22" within the med topic govbox
+
+    When I am on es.agency.gov's mobile search page
+    And I fill in "Ingrese su búsqueda" with "alcohol"
+    And I press "Buscar"
+    Then I should see a link to "Alcohol" with url for "http://www.nlm.nih.gov/medlineplus/spanish/alcohol.html" within the med topic govbox
+    And I should see a link to "Alcoholismo" with url for "http://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html" within the med topic govbox
+

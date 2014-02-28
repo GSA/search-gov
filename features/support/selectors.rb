@@ -32,6 +32,8 @@ module HtmlSelectorsHelpers
       '#nav .active'
     when /the SERP navigation/
       '#nav'
+    when /the med topic govbox/
+      '#med-topic'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

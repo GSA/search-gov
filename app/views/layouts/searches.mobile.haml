@@ -20,6 +20,7 @@
       = javascript_include_tag 'searches_ie_lt9'
 
   %body
+    %a#skiplink{ href: '#main-content' }= t 'searches.skip_to_main_content'
     #header-wrapper
       - navigations = renderable_navigations(@affiliate)
       #header
@@ -29,7 +30,7 @@
         = navigations_and_logo(@search, @search_params, navigations)
     #typeahead-backdrop
 
-    = yield
+    #main-content= yield
 
     = javascript_include_tag 'searches_mobile'
 

@@ -12,7 +12,7 @@
     = hidden_field_tag_if_key_exists :dc
 
   = label_tag :query, t(:search_label), class: 'sr-only'
-  = text_field_tag :query, search.query, spellcheck: 'off', type: 'search',
+  = text_field_tag :query, search.query, type: 'search',
     class: typeahead_query_class(search.affiliate)
   #clear-button
     %span= t(:clear)

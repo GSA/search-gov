@@ -1,0 +1,132 @@
+#med-topic {
+  .clearfix();
+  .content-block();
+
+  .content-block-item {
+    .result();
+    position: relative;
+  }
+
+  .logo-en {
+    background-image: image-url('legacy/medline.en.png');
+  }
+
+  .logo-es {
+    background-image: image-url('legacy/medline.es.png');
+  }
+
+  .logo-en,
+  .logo-es {
+    .text-hide();
+    background-repeat: no-repeat;
+    background-position: right center;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 16px;
+    width: 16px;
+  }
+
+  .result h3 {
+    .text-overflow();
+    display: block;
+    margin-right: 20px;
+  }
+
+  ul {
+    .list-unstyled();
+    display: block;
+    font-size: 1em;
+    overflow: hidden;
+    margin-bottom: 0;
+
+    @media (min-width: @screen-desktop) {
+      .smaller-result-item();
+    }
+
+    > li {
+      padding-right: 15px;
+      vertical-align: top;
+    }
+
+    a {
+      display: block;
+      line-height: 1.6em;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+
+      @media (min-width: @screen-sm) {
+        line-height: 1.2em;
+        padding: 0;
+      }
+
+      @media (min-width: @screen-desktop) {
+        text-decoration: underline;
+      }
+    }
+
+    .separator {
+      display: none;
+    }
+  }
+
+  .clinical-studies,
+  .related-topics {
+    margin-top: 10px;
+
+    h4 {
+      display: block;
+      font-size: 1.14285714em;
+      font-weight: normal;
+      line-height: 1.2em;
+      margin: 0;
+    }
+
+    @media (min-width: @screen-sm) {
+      display: block;
+      margin: 8px 0 0 0;
+
+      h4 {
+        display: inline;
+        font-size: 1em;
+        &:after { content: ":"; }
+      }
+
+      ul, li, a, .separator {
+        display: inline;
+      }
+
+      li {
+        padding: 0;
+      }
+
+      li:last-child {
+        .separator {
+          display: none;
+        }
+      }
+    }
+
+    @media (min-width: @screen-desktop) {
+      .smaller-result-item();
+      margin-top: 5px;
+    }
+  }
+
+  .content-block-item-footer {
+    @media (min-width: @screen-sm) {
+      display: none;
+    }
+  }
+
+  &.collapsed {
+    .clinical-studies,
+    .related-topics {
+      display: none;
+
+      @media (min-width: @screen-sm) {
+        display: block;
+      }
+    }
+  }
+}

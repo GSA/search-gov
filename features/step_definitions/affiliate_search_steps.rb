@@ -88,8 +88,13 @@ When /^(.*)\'s agency govbox is disabled$/ do |affiliate_name|
 end
 
 Given /^the following Medline Topics exist:$/ do |table|
+  table.hashes.each { |hash| MedTopic.create! hash }
+end
+
+Given /^the following Medline Sites exist:$/ do |table|
   table.hashes.each do |hash|
-    MedTopic.create!(:medline_title => hash['medline_title'], :medline_tid => hash['medline_tid'].to_i, :locale => hash['locale'], :summary_html => hash['summary_html'])
+    med_topic = MedTopic.where(hash.slice('medline_title', 'locale')).first
+    med_topic.med_sites.create!(hash.slice('title', 'url'))
   end
 end
 

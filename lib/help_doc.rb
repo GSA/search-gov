@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module HelpDoc
   def self.extract_article(url)
     doc = Nokogiri::HTML open(url)
