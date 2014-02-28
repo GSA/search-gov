@@ -1126,3 +1126,13 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter search term(s)"
+
+  Scenario: When using tablet device on advanced search
+    Given I am using an tabletPC device
+    And the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    When I am on the affiliate advanced search page for "bar.gov"
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "Please enter search term(s)"

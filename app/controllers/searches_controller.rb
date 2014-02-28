@@ -65,6 +65,8 @@ class SearchesController < ApplicationController
   def advanced
     @page_title = "#{t(:advanced_search)} - #{@affiliate.display_name}"
     @affiliate = @search_options[:affiliate]
+    request.format = :html
+    respond_to { |format| format.html {} }
   end
 
   private
