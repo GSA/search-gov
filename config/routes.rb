@@ -35,6 +35,7 @@ UsasearchRails3::Application.routes.draw do
       resource :query_clicks, only: [:show]
       resource :click_queries, only: [:show]
       resource :queries, only: [:new, :create]
+      resource :top_queries, only: [:new]
 
       resource :content, only: [:show]
       resource :display, only: [:edit, :update] do

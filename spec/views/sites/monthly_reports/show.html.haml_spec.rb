@@ -11,8 +11,6 @@ describe "sites/monthly_reports/show.html.haml" do
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
     view.stub!(:current_user).and_return affiliate_user
-    AWS::S3::S3Object.stub(:url_for).and_return "http://dummy/"
-    AWS::S3::S3Object.stub(:exists?).and_return true
     DailyUsageStat.delete_all
     DailySearchModuleStat.delete_all
     assign :monthly_report, MonthlyReport.new(site, target_date.year, target_date.month)

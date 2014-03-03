@@ -1,5 +1,4 @@
 class Admin::MonthlyReportsController < Admin::AdminController
-  before_filter :establish_aws_connection
 
   def index
     @page_title = 'Monthly Reports'
