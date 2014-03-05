@@ -99,7 +99,8 @@ module SitesHelper
   end
 
   def site_manage_content_controllers
-    %w(boosted_contents contents document_collections domains excluded_urls
+    %w(boosted_contents boosted_contents_bulk_uploads
+       contents document_collections domains excluded_urls
        flickr_profiles indexed_documents rss_feeds site_feed_urls
        twitter_profiles youtube_profiles featured_collections)
   end

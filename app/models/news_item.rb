@@ -1,5 +1,7 @@
 class NewsItem < ActiveRecord::Base
-  before_validation :clean_text_fields
+  extend AttributeSquisher
+
+  before_validation_squish :title, :description, :contributor, :subject, :publisher, :link, :guid, assign_nil_on_blank: true
   before_validation :downcase_scheme
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
   validates_presence_of :description, :unless => :is_video?
@@ -50,15 +52,7 @@ class NewsItem < ActiveRecord::Base
 
   private
 
-  def clean_text_fields
-    %w(title description contributor subject publisher link guid).each { |field| self.send(field+'=', clean_text_field(self.send(field))) }
-  end
-
   def downcase_scheme
     self.link = link.sub('HTTP','http').sub('httpS','https') if link.present?
-  end
-
-  def clean_text_field(str)
-    str.strip.squish if str.present?
   end
 end

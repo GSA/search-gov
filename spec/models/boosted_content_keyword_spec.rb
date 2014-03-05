@@ -14,6 +14,10 @@ describe BoostedContentKeyword do
     end
 
     it { should validate_uniqueness_of(:value).scoped_to(:boosted_content_id) }
+  end
 
+  it 'squishes value' do
+    boosted_contents(:basic).boosted_content_keywords.create!(:value => '  barack   obama  ')
+    boosted_contents(:basic).boosted_content_keywords.pluck(:value).should == ['barack obama']
   end
 end

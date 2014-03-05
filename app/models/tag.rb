@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
-  extend AutoSquishAttributes
-  auto_squish_attributes :name
+  extend AttributeSquisher
+
+  before_validation_squish :name
 
   attr_accessible :name
   has_and_belongs_to_many :affiliate

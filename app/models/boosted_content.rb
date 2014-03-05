@@ -1,6 +1,7 @@
 class BoostedContent < ActiveRecord::Base
   include ActiveRecordExtension
   include BestBet
+  extend AttributeSquisher
 
   cattr_reader :per_page
   @@per_page = 20
@@ -9,6 +10,7 @@ class BoostedContent < ActiveRecord::Base
   has_many :boosted_content_keywords, dependent: :destroy, order: 'value'
   accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
+  before_validation_squish :title, :url, :description
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false

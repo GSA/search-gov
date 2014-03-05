@@ -71,8 +71,6 @@ UsasearchRails3::Application.routes.draw do
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
           get :new_keyword
-          get :new_bulk_upload
-          post :bulk_upload
         end
       end
 

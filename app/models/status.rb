@@ -1,7 +1,9 @@
 class Status < ActiveRecord::Base
+  extend AttributeSquisher
+
+  before_validation_squish :name
+
   BASE_STATUS_IDS = [1, 2].freeze
-  extend AutoSquishAttributes
-  auto_squish_attributes :name
 
   attr_accessible :name
   has_many :affiliates
