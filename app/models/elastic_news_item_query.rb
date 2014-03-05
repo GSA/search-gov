@@ -1,5 +1,5 @@
 class ElasticNewsItemQuery < ElasticTextFilteredQuery
-  DUBLIN_CORE_FACET_NAMES = [:contributor, :subject, :publisher]
+  DUBLIN_CORE_AGG_NAMES = [:contributor, :subject, :publisher]
 
   def initialize(options)
     options[:sort] = '_score' if options[:sort_by_relevance]
@@ -9,31 +9,31 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
     @until_ts = options[:until]
     @excluded_urls = options[:excluded_urls].try(:collect, &:url)
     @tags = options[:tags]
-    @dublin_core_facets = options.slice(*DUBLIN_CORE_FACET_NAMES).delete_if { |facet_name, facet_value| facet_value.nil? }
+    @dublin_core_aggs = options.slice(*DUBLIN_CORE_AGG_NAMES).delete_if { |agg_name, agg_value| agg_value.nil? }
     self.highlighted_fields = %w(title description)
   end
 
   def query(json)
     filtered_query(json)
 
-    json.filter do
+    json.post_filter do
       json.and do
-        @dublin_core_facets.each do |facet, value|
+        @dublin_core_aggs.each do |facet, value|
           json.child! { json.term { json.set! facet, value } }
         end
       end
-    end if @dublin_core_facets.present?
+    end if @dublin_core_aggs.present?
 
-    json.facets do
-      DUBLIN_CORE_FACET_NAMES.each do |field|
-        facet(json, field)
+    json.aggs do
+      DUBLIN_CORE_AGG_NAMES.each do |field|
+        aggregation(json, field)
       end
     end
   end
 
-  def facet(json, field)
-    json.set! field do |facet_json|
-      facet_json.terms { facet_json.field field }
+  def aggregation(json, field)
+    json.set! field do |agg_json|
+      agg_json.terms { agg_json.field field }
     end
   end
 

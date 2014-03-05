@@ -4,7 +4,7 @@ class NewsSearch < Search
               :tbs,
               :since,
               :until,
-              :facets
+              :aggregations
 
   def initialize(options = {})
     super(options)
@@ -77,7 +77,7 @@ class NewsSearch < Search
   def handle_response(response)
     if response
       @total = response.total
-      @facets = response.facets
+      @aggregations = response.aggregations
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1

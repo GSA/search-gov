@@ -5,7 +5,7 @@ class ElasticNewsItem
 
   self.mappings = {
     index_type => {
-      dynamic: false,
+      dynamic: :strict,
       _analyzer: { path: "language" },
       properties: {
         language: { type: "string", index: :not_analyzed },

@@ -337,7 +337,7 @@ describe NewsSearch do
       it 'should assign the correct start and end record' do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
-        response = mock(ElasticNewsItemResults, total: 17, offset: 15, facets: [], results: [mock('result1'), mock('result2')])
+        response = mock(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: [mock('result1'), mock('result2')])
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,

@@ -114,8 +114,8 @@ module Indexable
     result = ES::client.search(params)
     hits = result['hits']
     hits['offset'] = query.offset
-    facets = result['facets']
-    "#{self.name}Results".constantize.new(hits, facets)
+    aggregations = result['aggregations']
+    "#{self.name}Results".constantize.new(hits, aggregations)
   end
 
   def update_alias(alias_name, new_index = index_name)

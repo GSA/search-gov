@@ -1,11 +1,11 @@
 class ElasticResults
-  attr_reader :total, :offset, :results, :facets
+  attr_reader :total, :offset, :results, :aggregations
 
-  def initialize(hits, facets)
+  def initialize(hits, aggregations)
     @total = hits['total']
     @offset = hits['offset']
     @results = extract_results(hits['hits'])
-    @facets = extract_facets(facets) if facets
+    @aggregations = extract_aggregations(aggregations) if aggregations
   end
 
   private
@@ -27,14 +27,14 @@ class ElasticResults
     instance
   end
 
-  def extract_facets(facets)
-    facets.collect do |field, data|
-      Hashie::Rash.new(name: field, rows: extract_facet_rows(data['terms']))
+  def extract_aggregations(aggregations)
+    aggregations.collect do |field, data|
+      Hashie::Rash.new(name: field, rows: extract_aggregation_rows(data['buckets']))
     end
   end
 
-  def extract_facet_rows(rows)
-    rows.map { |term_hash| { value: term_hash['term'] } }
+  def extract_aggregation_rows(rows)
+    rows.map { |term_hash| { value: term_hash['key'] } }
   end
 
 end

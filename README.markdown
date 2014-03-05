@@ -49,7 +49,7 @@ You can start/stop/reindex Solr like this:
     rake sunspot:solr:run
     rake sunspot:solr:reindex
 
-On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
+On a Mac, Elasticsearch 1.0 is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
     $ brew install elasticsearch
 

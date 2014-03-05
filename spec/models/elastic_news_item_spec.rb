@@ -57,13 +57,13 @@ describe ElasticNewsItem do
           search.results.size.should == 1
           search.results.first.should be_instance_of(NewsItem)
           search.offset.should == 1
-          search.facets.size.should == 3
-          contributor_facet = search.facets.detect { |facet| facet.name == 'contributor' }
-          contributor_facet.rows.first.value.should == 'President'
-          publisher_facet = search.facets.detect { |facet| facet.name == 'publisher' }
-          publisher_facet.rows.first.value.should == 'Briefing Room'
-          subject_facet = search.facets.detect { |facet| facet.name == 'subject' }
-          subject_facet.rows.collect(&:value).should match_array(%w(Economy HIV))
+          search.aggregations.size.should == 3
+          contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
+          contributor_aggregation.rows.first.value.should == 'President'
+          publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
+          publisher_aggregation.rows.first.value.should == 'Briefing Room'
+          subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
+          subject_aggregation.rows.collect(&:value).should match_array(%w(Economy HIV))
         end
 
         context 'when those results get deleted' do
@@ -165,17 +165,17 @@ describe ElasticNewsItem do
           ElasticNewsItem.commit
         end
 
-        it "should facet and restrict results based on those criteria" do
+        it "should aggregation and restrict results based on those criteria" do
           search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
           search.total.should == 1
           search.results.first.should == @blog_item
-          search.facets.size.should == 3
-          contributor_facet = search.facets.detect { |facet| facet.name == 'contributor' }
-          contributor_facet.rows.collect(&:value).should match_array(["First Lady", "President"])
-          publisher_facet = search.facets.detect { |facet| facet.name == 'publisher' }
-          publisher_facet.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room"])
-          subject_facet = search.facets.detect { |facet| facet.name == 'subject' }
-          subject_facet.rows.collect(&:value).should match_array(%w(Economy Space))
+          search.aggregations.size.should == 3
+          contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
+          contributor_aggregation.rows.collect(&:value).should match_array(["First Lady", "President"])
+          publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
+          publisher_aggregation.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room"])
+          subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
+          subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space))
         end
       end
     end

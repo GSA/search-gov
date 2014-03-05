@@ -1,5 +1,5 @@
 class ElasticBestBetQuery < ElasticTextFilteredQuery
-  MIN_SIMILARITY = 0.80
+  FUZZINESS = 0.80
 
   def initialize(options)
     super(options)
@@ -35,7 +35,7 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
   end
 
   def multi_match_options
-    { operator: :and, analyzer: @text_analyzer, fuzziness: MIN_SIMILARITY, prefix_length: 2 }
+    { operator: :and, analyzer: @text_analyzer, fuzziness: FUZZINESS, prefix_length: 2 }
   end
 
   def filter_field_on_current_date(json, field, operator)

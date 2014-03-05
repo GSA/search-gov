@@ -224,30 +224,30 @@ module SearchHelper
   def render_facet_navs(affiliate, search, search_params)
     search_path_method = (search.class.to_s.underscore + '_path').to_sym
     html = []
-    search.facets.each do |facet|
-      next unless facet.rows.any?
+    search.aggregations.each do |agg|
+      next unless agg.rows.any?
       facet_navs = []
 
-      custom_facet_label = affiliate.dublin_core_mappings[:"dc_#{facet.name}"]
-      facet_label = custom_facet_label.present? ? custom_facet_label : t("facet.all_#{facet.name}s")
-      any_nav = link_to_unless search_params[facet.name.to_sym].blank?, facet_label, send(search_path_method, search_params.remove(facet.name.to_sym)) do |name|
+      custom_facet_label = affiliate.dublin_core_mappings[:"dc_#{agg.name}"]
+      facet_label = custom_facet_label.present? ? custom_facet_label : t("facet.all_#{agg.name}s")
+      any_nav = link_to_unless search_params[agg.name.to_sym].blank?, facet_label, send(search_path_method, search_params.remove(agg.name.to_sym)) do |name|
         content_tag(:div, name, :class => 'selected')
       end
       facet_navs << content_tag(:li, any_nav.html_safe)
 
       shown_items = 1
 
-      selected_row = facet.rows.select { |row| params[facet.name.to_sym] == row.value }.first
+      selected_row = agg.rows.select { |row| params[agg.name.to_sym] == row.value }.first
       if selected_row
         selected_nav = content_tag(:div, selected_row.value, :class => 'selected')
         facet_navs << content_tag(:li, selected_nav.html_safe)
         shown_items += 1
       end
 
-      not_selected_rows = facet.rows.reject { |row| params[facet.name.to_sym] == row.value }
+      not_selected_rows = agg.rows.reject { |row| params[agg.name.to_sym] == row.value }
       total_rows = shown_items + not_selected_rows.count
       not_selected_rows.each do |row|
-        facet_nav = link_to(row.value, send(search_path_method, search_params.merge(facet.name.to_sym => row.value)))
+        facet_nav = link_to(row.value, send(search_path_method, search_params.merge(agg.name.to_sym => row.value)))
         if (total_rows <= 6) or (shown_items <= 4)
           facet_class = nil
         else
@@ -267,7 +267,7 @@ module SearchHelper
         end
         facet_navs << content_tag(:li, more_facets_wrapper.html_safe)
       end
-      (html << content_tag(:ul, facet_navs.join("\n").html_safe, :id => "facet_#{facet.name}", :class => 'facet')) unless facet_navs.empty?
+      (html << content_tag(:ul, facet_navs.join("\n").html_safe, :id => "facet_#{agg.name}", :class => 'facet')) unless facet_navs.empty?
     end
     html.join("\n").html_safe unless html.empty?
   end

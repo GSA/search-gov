@@ -23,7 +23,7 @@ describe VideoNewsSearch do
     context 'when video news items are found' do
       it "should log info about the query and module impressions" do
         search = VideoNewsSearch.new(query: 'element', affiliate: affiliate, channel: mock_model(RssFeed).id)
-        response = mock(ElasticNewsItemResults, total: 1, facets: [], results: [])
+        response = mock(ElasticNewsItemResults, total: 1, aggregations: [], results: [])
         ElasticNewsItem.should_receive(:search_for).and_return response
         QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['VIDS'])
         search.run
