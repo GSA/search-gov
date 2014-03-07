@@ -53,9 +53,7 @@ class BoostedContentBulkUploader
   end
 
   def import_boosted_content(attributes)
-    boosted_content_attributes = attributes.
-        except(:keywords).
-        merge(status: 'active', publish_start_on: Date.current)
+    boosted_content_attributes = attributes.except(:keywords).merge(status: 'active')
     boosted_content = @site.boosted_contents.find_or_initialize_by_url(boosted_content_attributes)
 
     if boosted_content.new_record?

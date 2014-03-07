@@ -36,7 +36,7 @@ describe BoostedContentBulkUploader do
     context "when uploading a CSV file" do
       let(:site_csv) {
         <<-CSV
-This is a listing    about Texas,http://some.url,This is the description of the listing,2014-01-01,2022-03-21,"Texan, ,Lone  Star "
+This is a listing    about Texas,http://some.url,This is the description of the listing,2019-01-01,2022-03-21,"Texan, ,Lone  Star "
 
 Some other listing about hurricanes,http://some.other.url,Another   description for another listing
 
@@ -44,12 +44,10 @@ Some other listing about hurricanes,http://some.other.url,Another   description 
       }
 
       let(:csv_file) { StringIO.new(site_csv) }
-      let(:current_date) { Date.parse('2014-01-01') }
 
       before do
         affiliate.boosted_contents.destroy_all
         csv_file.stub(:original_filename).and_return "foo.csv"
-        Date.stub(:current) { current_date }
       end
 
       it "should create and index boosted Contents from an csv document" do
@@ -62,7 +60,7 @@ Some other listing about hurricanes,http://some.other.url,Another   description 
 
         texas_boosted_content = affiliate.boosted_contents.find_by_url 'http://some.url'
         texas_boosted_content.title.should == 'This is a listing about Texas'
-        texas_boosted_content.publish_start_on.should == current_date
+        texas_boosted_content.publish_start_on.should == Date.parse('2019-01-01')
         texas_boosted_content.publish_end_on.should == Date.parse('2022-03-21')
         texas_boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
 
@@ -89,6 +87,7 @@ Some other listing about hurricanes,http://some.other.url,Another   description 
         affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"
 
         boosted_content = affiliate.boosted_contents.find(boosted_content.id)
+        boosted_content.publish_start_on.should == Date.parse('2019-01-01')
         boosted_content.publish_end_on.should == Date.parse('2022-03-21')
         boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
         results[:success].should be_true
