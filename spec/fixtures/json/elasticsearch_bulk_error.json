@@ -1,0 +1,34 @@
+{
+    "took": 6,
+    "errors": true,
+    "items": [
+        {
+            "create": {
+                "_index": "development-usasearch-elastic_featured_collections-20140311100038525",
+                "_type": "elastic_featured_collection",
+                "_id": "489239610",
+                "status": 409,
+                "error": "DocumentAlreadyExistsException[[development-usasearch-elastic_featured_collections-20140311100038525][0] [elastic_featured_collection][489239610]: document already exists]"
+            }
+        },
+        {
+            "index": {
+                "_index": "development-usasearch-elastic_featured_collections-20140311100038525",
+                "_type": "elastic_featured_collection",
+                "_id": "489239611",
+                "_version": 2,
+                "status": 200
+            }
+        },
+        {
+            "delete": {
+                "_index": "development-usasearch-elastic_featured_collections-20140311100038525",
+                "_type": "elastic_featured_collection",
+                "_id": "11",
+                "_version": 1,
+                "status": 404,
+                "found": false
+            }
+        }
+    ]
+}

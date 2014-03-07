@@ -55,7 +55,7 @@ class SynonymMiner
 
   def tokens_from_analyzer(synset)
     options = { text: synset.join(' '), analyzer: "#{@affiliate.locale}_analyzer", index: ElasticIndexedDocument.writer_alias }
-    ES::client.indices.analyze(options)['tokens'].collect { |t| t['token'] }.uniq
+    ES::client_reader.indices.analyze(options)['tokens'].collect { |t| t['token'] }.uniq
   end
 
   def scrape_synonyms(queries)

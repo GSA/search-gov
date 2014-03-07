@@ -41,7 +41,7 @@ module TestServices
   end
 
   def delete_es_indexes
-    ES::client.indices.delete(index: "test-usasearch-*") rescue nil
+    ES::client_reader.indices.delete(index: "test-usasearch-*") rescue nil
   end
 
 end

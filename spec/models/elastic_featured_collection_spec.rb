@@ -321,12 +321,6 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  context "when searching raises an exception" do
-    it "should return nil" do
-      ES::client.should_receive(:search).and_raise StandardError
-      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
-      ElasticFeaturedCollection.search_for(options).should be_an_instance_of(ElasticFeaturedCollectionResults)
-    end
-  end
+  it_behaves_like "an indexable"
 
 end

@@ -188,13 +188,6 @@ describe ElasticSaytSuggestion do
 
   end
 
-  #TODO: refactor me
-  context "when searching raises an exception" do
-    it "should return an appropriate result set with zero hits" do
-      ES::client.should_receive(:search).and_raise StandardError
-      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
-      ElasticSaytSuggestion.search_for(options).should be_an_instance_of(ElasticSaytSuggestionResults)
-    end
-  end
+  it_behaves_like "an indexable"
 
 end

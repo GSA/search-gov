@@ -351,12 +351,6 @@ describe ElasticBoostedContent do
 
   end
 
-  context "when searching raises an exception" do
-    it "should return nil" do
-      ES::client.should_receive(:search).and_raise StandardError
-      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
-      ElasticBoostedContent.search_for(options).should be_an_instance_of(ElasticBoostedContentResults)
-    end
-  end
+  it_behaves_like "an indexable"
 
 end

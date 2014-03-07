@@ -29,30 +29,32 @@ module Indexable
   end
 
   def delete_index
-    ES::client.indices.delete(index: "#{base_index_name}#{DELIMTER}*")
+    ES::client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
   end
 
   def create_index
-    ES::client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
-    ES::client.indices.put_alias index: index_name, name: writer_alias
-    ES::client.indices.put_alias index: index_name, name: reader_alias
+    ES::client_writers.each do |client|
+      client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
+      client.indices.put_alias index: index_name, name: writer_alias
+      client.indices.put_alias index: index_name, name: reader_alias
+    end
   end
 
   def migrate_writer
     @index_name = nil
-    ES::client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
+    ES::client_writers.each { |client| client.indices.create(index: index_name, body: { settings: settings, mappings: mappings }) }
     update_alias(writer_alias)
   end
 
   def migrate_reader
-    old_index = ES::client.indices.get_alias(name: reader_alias).keys.first
-    new_index = ES::client.indices.get_alias(name: writer_alias).keys.first
+    old_index = ES::client_reader.indices.get_alias(name: reader_alias).keys.first
+    new_index = ES::client_reader.indices.get_alias(name: writer_alias).keys.first
     update_alias(reader_alias, new_index)
-    ES::client.indices.delete(index: old_index)
+    ES::client_writers.each { |client| client.indices.delete(index: old_index) }
   end
 
   def index_exists?
-    ES::client.indices.get_alias(name: writer_alias)
+    ES::client_reader.indices.get_alias(name: writer_alias)
     true
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
     false
@@ -65,8 +67,13 @@ module Indexable
 
   def index(records)
     records = [records] unless records.is_a?(Array)
-    ES::client.bulk(body: bulkify(records))
+    bulk(bulkify(records))
     Rails.logger.info "Indexed #{records.size} entries to index #{index_name}"
+  end
+
+  def delete(ids)
+    ids = [ids] unless ids.is_a?(Array)
+    bulk(bulkify_delete(ids))
   end
 
   def bulkify(records)
@@ -76,14 +83,6 @@ module Indexable
       bulk_array << { index: meta_data }
       bulk_array << record.except(:id, :ttl)
     end
-  end
-
-  def delete(ids)
-    ids = [ids] unless ids.is_a?(Array)
-    ES::client.bulk(body: bulkify_delete(ids))
-  rescue Exception => e
-    Rails.logger.error "Problem in #{self.name}#delete(): #{e}"
-    nil
   end
 
   def bulkify_delete(ids)
@@ -103,7 +102,11 @@ module Indexable
   end
 
   def commit
-    ES::client.indices.refresh index: writer_alias
+    ES::client_writers.each { |client| client.indices.refresh index: writer_alias }
+  end
+
+  def bulk(body)
+    ES::client_writers.each { |client| client_bulk(client, body) }
   end
 
   private
@@ -111,7 +114,7 @@ module Indexable
   def search(query)
     params = { preference: '_local', index: reader_alias, type: index_type, body: query.body, from: query.offset, size: query.size }
     params.merge!(sort: query.sort) if query.sort.present?
-    result = ES::client.search(params)
+    result = ES::client_reader.search(params)
     hits = result['hits']
     hits['offset'] = query.offset
     aggregations = result['aggregations']
@@ -119,13 +122,32 @@ module Indexable
   end
 
   def update_alias(alias_name, new_index = index_name)
-    old_index = ES::client.indices.get_alias(name: alias_name).keys.first
-    ES::client.indices.update_aliases body: {
-      actions: [
-        { remove: { index: old_index, alias: alias_name } },
-        { add: { index: new_index, alias: alias_name } }
-      ]
-    }
+    old_index = ES::client_reader.indices.get_alias(name: alias_name).keys.first
+    ES::client_writers.each do |client|
+      client.indices.update_aliases body: {
+        actions: [
+          { remove: { index: old_index, alias: alias_name } },
+          { add: { index: new_index, alias: alias_name } }
+        ]
+      }
+    end
+  end
+
+  def client_bulk(client, body)
+    response = client.bulk(body: body)
+    handle_bulk_errors(client, response) if response['errors']
+  rescue Exception => e
+    Rails.logger.error "#{Time.now} Client error in #{self.name}#client_bulk(): #{e}; host: #{host_list(client) }; body: #{body}"
+    nil
+  end
+
+  def handle_bulk_errors(client, response)
+    errors = response['items'].select { |item| item.values.first['status'] >= 400 }
+    Rails.logger.error "#{Time.now} Bulk API error in #{self.name}#client_bulk(): #{errors}; host: #{host_list(client) }"
+  end
+
+  def host_list(client)
+    client.transport.hosts.collect { |h| h[:host] }.join(',')
   end
 
 end
