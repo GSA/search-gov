@@ -13,9 +13,9 @@ Feature: Affiliate Search
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
+      | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       | true                      |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       | true                      |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable | is_managed |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |            |
@@ -689,8 +689,8 @@ Feature: Affiliate Search
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains                | locale |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     |
+      | display_name | name    | contact_email | contact_name | domains                | locale | is_image_search_navigable |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     | true                      |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" in the search box
@@ -970,8 +970,8 @@ Feature: Affiliate Search
 
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     |
+      | display_name | name       | contact_email | contact_name | is_image_search_navigable |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | true                      |
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
@@ -989,8 +989,8 @@ Feature: Affiliate Search
 
   Scenario: Searching for site specific results using sitelimit
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+      | display_name | name       | contact_email | contact_name | domains | is_image_search_navigable |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    | true                      |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                         | is_navigable |
       | Blog | http://usasearch.howto.gov/blog/ | true         |

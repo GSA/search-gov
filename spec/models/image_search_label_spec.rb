@@ -15,8 +15,8 @@ describe ImageSearchLabel do
 
     it "should have active Navigation with position 0" do
       navigation = en_affiliate.image_search_label.navigation
-      navigation.position.should == 0
-      navigation.should be_is_active
+      navigation.position.should == 100
+      navigation.should_not be_is_active
     end
   end
 

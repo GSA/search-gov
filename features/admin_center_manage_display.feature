@@ -27,7 +27,7 @@ Feature: Manage Display
     And the "Label for Sidebar" field should not contain "This label is way too long"
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
-    And the "Is Image Search Label 0 navigable" should be switched on
+    And the "Is Image Search Label 0 navigable" should be switched off
     And the "Document Collection 1" field should contain "Blog"
     And the "Is Document Collection 1 navigable" should be switched on
     And the "Rss Feed 2" field should contain "Press"
@@ -41,7 +41,7 @@ Feature: Manage Display
       | Document Collection 1 | Latest Blog   |
       | Rss Feed 2            | Latest Press  |
       | Rss Feed 3            | Latest Videos |
-    And I switch off "Is Image Search Label 0 navigable"
+    And I switch on "Is Image Search Label 0 navigable"
     And I switch off "Is Document Collection 1 navigable"
     And I switch on "Is Rss Feed 2 navigable"
     And I switch on "Is Rss Feed 3 navigable"
@@ -51,7 +51,7 @@ Feature: Manage Display
     And the "Label for Sidebar" field should be blank
     And the "Default search label" field should contain "Web"
     And the "Image Search Label 0" field should contain "Latest Images"
-    And the "Is Image Search Label 0 navigable" should be switched off
+    And the "Is Image Search Label 0 navigable" should be switched on
     And the "Document Collection 1" field should contain "Latest Blog"
     And the "Is Document Collection 1 navigable" should be switched off
     And the "Rss Feed 2" field should contain "Latest Press"
