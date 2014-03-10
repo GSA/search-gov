@@ -71,6 +71,10 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
+  def establish_aws_connection
+    AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+  end
+
   def show_searchbox
     @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
   end

@@ -22,6 +22,7 @@ gem 'resque-priority', :git => 'git://github.com/GSA/resque-priority.git'
 gem 'cloudfiles', '1.4.17'
 gem 'cocaine', '~> 0.3.2'
 gem 'paperclip-cloudfiles', :require => 'paperclip'
+gem 'aws-s3', :require => 'aws/s3'
 gem 'googlecharts'
 gem 'sanitize'
 gem 'tweetstream'
@@ -61,7 +62,6 @@ gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 gem 'elasticsearch'
 gem 'jbuilder'
-gem 'rendered_csv'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

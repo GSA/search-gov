@@ -5,9 +5,9 @@ class DailyUsageStat < ActiveRecord::Base
 
   def self.monthly_totals(year, month, affiliate_name = nil)
     report_date = Date.civil(year, month)
-    conditions = {day: report_date.beginning_of_month..report_date.end_of_month}
-    conditions.merge!(affiliate: affiliate_name) if affiliate_name.present?
-    where(conditions).sum(:total_queries)
+    affiliate_clause = affiliate_name ? "affiliate = '#{affiliate_name}' AND" : ""
+    DailyUsageStat.sum(:total_queries, :conditions => ["#{affiliate_clause} (day between ? and ?)",
+                                                       report_date.beginning_of_month, report_date.end_of_month])
   end
 
   def self.monthly_usage_histogram(report_date)
@@ -17,10 +17,11 @@ class DailyUsageStat < ActiveRecord::Base
   end
 
   def self.total_queries(start_date, end_date)
-    joins('LEFT OUTER JOIN affiliates ON daily_usage_stats.affiliate = affiliates.name').
-      sum(:total_queries,
-          conditions: ['daily_usage_stats.day BETWEEN ? AND ?', start_date, end_date],
-          group: %w(daily_usage_stats.affiliate affiliates.id),
-          order: '1 DESC')
+    DailyUsageStat.
+        joins('LEFT OUTER JOIN affiliates ON daily_usage_stats.affiliate = affiliates.name').
+        sum(:total_queries,
+            conditions: ['daily_usage_stats.day BETWEEN ? AND ?', start_date, end_date],
+            group: %w(daily_usage_stats.affiliate affiliates.id),
+            order: '1 DESC')
   end
 end

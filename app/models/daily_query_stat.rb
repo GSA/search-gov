@@ -53,7 +53,13 @@ class DailyQueryStat < ActiveRecord::Base
 
     def most_popular_terms(affiliate_name, start_date, end_date, num_results = RESULTS_SIZE)
       return INSUFFICIENT_DATA if end_date.nil? or start_date.nil?
-      results = where(affiliate: affiliate_name, day: start_date..end_date).group(:query).order("sum_times desc").limit(num_results).sum(:times)
+      results = sum(:times,
+                    :group => :query,
+                    :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate_name],
+                    :having => "sum_times > 0",
+                    :joins => 'FORCE INDEX (ad)',
+                    :order => "sum_times desc",
+                    :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
       results.collect { |hash| QueryCount.new(hash.first, hash.last) }
     end

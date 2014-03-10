@@ -1,4 +1,5 @@
 class Sites::MonthlyReportsController < Sites::SetupSiteController
+  before_filter :establish_aws_connection
 
   def show
     month, year = (params[:mmyyyy] || Date.yesterday.strftime('%m/%Y')).split('/')
