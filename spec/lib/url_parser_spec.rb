@@ -13,4 +13,12 @@ describe UrlParser do
     end
   end
 
+  describe '.mime_type' do
+    it 'should identify images' do
+      %w(gif JPEG png).each do |ext|
+        url = "http://some.agency.gov/media.#{ext}"
+        UrlParser.mime_type(url).should == "image/#{ext.downcase}"
+      end
+    end
+  end
 end

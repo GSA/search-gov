@@ -4,6 +4,7 @@ gem 'rake'
 gem 'rails', "3.2.15"
 gem 'mysql2', '>0.3'
 gem 'capistrano'
+gem 'curb'
 gem 'haml'
 gem 'json'
 gem 'will_paginate'

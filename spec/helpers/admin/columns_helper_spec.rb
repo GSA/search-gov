@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::AdminHelper do
+describe Admin::ColumnsHelper do
 
   describe "#affiliates_export_column(feature)" do
     fixtures :features, :affiliates

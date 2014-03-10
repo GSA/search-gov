@@ -6,6 +6,17 @@ module UrlParser
     normalize_non_query_parts url
   end
 
+  def self.mime_type(url)
+    case url
+      when /\.(gif)$/i then
+        'image/gif'
+      when /\.(jpg|jpeg|jpe|jif|jfif|jfi)$/i then
+        'image/jpeg'
+      when /\.(png)$/i then
+        'image/png'
+    end
+  end
+
   private
 
   def self.normalize_non_query_parts(uri)

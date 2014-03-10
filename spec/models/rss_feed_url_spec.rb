@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe RssFeedUrl do
-  fixtures :rss_feeds, :rss_feed_urls
+  fixtures :rss_feeds, :rss_feed_urls, :news_items
 
   it { should have_readonly_attribute :rss_feed_owner_type }
   it { should have_readonly_attribute :url }
   it { should have_and_belong_to_many :rss_feeds }
-  it { should have_many(:news_items).dependent(:destroy) }
+  it { should have_many(:news_items) }
   it { should validate_presence_of :rss_feed_owner_type }
   it { should validate_presence_of :url }
   it { should validate_uniqueness_of(:url).scoped_to(:rss_feed_owner_type).case_insensitive }
@@ -84,6 +84,16 @@ describe RssFeedUrl do
     end
   end
 
+  describe 'on destroy' do
+    it 'destroys news items' do
+      rss_feed_url = rss_feed_urls(:white_house_blog_url)
+      news_item_ids = rss_feed_url.news_items.pluck(:id)
+      news_item_ids.should be_present
+      rss_feed_url.destroy
+      NewsItem.where('id IN (?)', news_item_ids).to_a.should be_empty
+    end
+  end
+
   describe '#is_video?' do
     context 'when url starts with gdata.youtube.com/feeds/' do
       before do
@@ -101,7 +111,7 @@ describe RssFeedUrl do
       rss_feed_url_1 = mock_model(RssFeedUrl)
       rss_feed_url_2 = mock_model(RssFeedUrl)
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
-        and_return([rss_feed_url_1, rss_feed_url_2])
+          and_return([rss_feed_url_1, rss_feed_url_2])
       rss_feed_url_1.should_receive(:freshen)
       rss_feed_url_2.should_receive(:freshen)
       RssFeedUrl.refresh_affiliate_feeds
@@ -122,6 +132,64 @@ describe RssFeedUrl do
     end
   end
 
+  describe '.enqueue_destroy_all_inactive' do
+    it 'should enqueue all affiliate owned inactive RssFeedUrls' do
+      rss_feed_urls = [rss_feed_urls(:white_house_blog_url),
+                       rss_feed_urls(:white_house_press_gallery_url)]
+      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :inactive).
+          and_return(rss_feed_urls)
+      Resque.should_receive(:enqueue_with_priority).
+          with(:low, InactiveRssFeedUrlDestroyer, rss_feed_urls(:white_house_blog_url).id)
+      Resque.should_receive(:enqueue_with_priority).
+          with(:low, InactiveRssFeedUrlDestroyer, rss_feed_urls(:white_house_press_gallery_url).id)
+
+      RssFeedUrl.enqueue_destroy_all_inactive
+    end
+  end
+
+  describe '.enqueue_destroy_all_news_items_with_404' do
+    it 'should enqueue all affiliate owned active RssFeedUrls' do
+      rss_feed_urls = [rss_feed_urls(:white_house_blog_url),
+                       rss_feed_urls(:white_house_press_gallery_url)]
+      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
+          and_return(rss_feed_urls)
+      Resque.should_receive(:enqueue_with_priority).
+          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_blog_url).id)
+      Resque.should_receive(:enqueue_with_priority).
+          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_press_gallery_url).id)
+
+      RssFeedUrl.enqueue_destroy_all_news_items_with_404
+    end
+  end
+
+  describe '#destroy_news_items' do
+    it 'should enqueue RssFeedUrlItemsChecker' do
+      rss_feed_url = rss_feed_urls(:white_house_blog_url)
+      Resque.should_receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
+      rss_feed_url.enqueue_destroy_news_items
+    end
+
+    it 'should not freshen YoutubeProfile RssFeedUrl' do
+      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      Resque.should_not_receive :enqueue_with_priority
+      rss_feed_url.enqueue_destroy_news_items
+    end
+  end
+
+  describe '#destroy_news_items' do
+    it 'should enqueue RssFeedUrlItemsChecker' do
+      rss_feed_url = rss_feed_urls(:white_house_blog_url)
+      Resque.should_receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
+      rss_feed_url.enqueue_destroy_news_items
+    end
+
+    it 'should not freshen YoutubeProfile RssFeedUrl' do
+      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      Resque.should_not_receive :enqueue_with_priority
+      rss_feed_url.enqueue_destroy_news_items
+    end
+  end
+
   describe '.find_existing_or_initialize' do
     let(:existing_url) { rss_feed_urls(:white_house_blog_url) }
     let(:existing_url_without_scheme) { existing_url.url.sub(/^https?:\/\//i, '') }
@@ -129,12 +197,12 @@ describe RssFeedUrl do
 
     it 'should find existing URL in HTTP or HTTPS protocol' do
       expect(RssFeedUrl.rss_feed_owned_by_affiliate.
-               find_existing_or_initialize(existing_url_without_scheme)).to eq(existing_url)
+                 find_existing_or_initialize(existing_url_without_scheme)).to eq(existing_url)
     end
 
     it 'should find existing URL in other protocol' do
       expect(RssFeedUrl.rss_feed_owned_by_affiliate.
-               find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
+                 find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
     end
   end
 end

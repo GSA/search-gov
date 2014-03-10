@@ -157,7 +157,11 @@ UsasearchRails3::Application.routes.draw do
     resources :trending_urls, :only => :index
     resources :news_items do as_routes end
     resources :rss_feeds do as_routes end
-    resources :rss_feed_urls do as_routes end
+    resources :rss_feed_urls do
+      member do
+        get 'destroy_news_items'
+      end
+      as_routes end
   end
   match '/admin/search_module_stats' => 'admin/search_module_stats#index', :as => :admin_search_module_stats
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect

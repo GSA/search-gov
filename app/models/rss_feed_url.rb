@@ -6,7 +6,8 @@ class RssFeedUrl < ActiveRecord::Base
 
   attr_readonly :rss_feed_owner_type, :url
   has_and_belongs_to_many :rss_feeds
-  has_many :news_items, order: 'published_at DESC', dependent: :destroy
+  has_many :news_items, order: 'published_at DESC'
+  after_destroy :blocking_destroy_news_items
 
   before_validation NormalizeUrl.new(:url), on: :create
 
@@ -15,6 +16,7 @@ class RssFeedUrl < ActiveRecord::Base
   validate :url_must_point_to_a_feed, on: :create
 
   scope :active, joins(:rss_feeds).uniq
+  scope :inactive, includes(:rss_feeds).where('rss_feeds.id IS NULL')
   scope :rss_feed_owned_by_affiliate, where(rss_feed_owner_type: Affiliate.name)
   scope :rss_feed_owned_by_youtube_profile, where(rss_feed_owner_type: YoutubeProfile.name)
 
@@ -24,6 +26,26 @@ class RssFeedUrl < ActiveRecord::Base
 
   def freshen(ignore_older_items = true)
     Resque.enqueue_with_priority(:high, RssFeedFetcher, id, ignore_older_items) if rss_feed_owner_type == 'Affiliate'
+  end
+
+  def self.enqueue_destroy_all_inactive
+    rss_feed_owned_by_affiliate.inactive.each(&:enqueue_destroy_inactive)
+  end
+
+  def enqueue_destroy_inactive
+    Resque.enqueue_with_priority(:low, InactiveRssFeedUrlDestroyer, id)
+  end
+
+  def self.enqueue_destroy_all_news_items_with_404
+    RssFeedUrl.rss_feed_owned_by_affiliate.active.each(&:enqueue_destroy_news_items_with_404)
+  end
+
+  def enqueue_destroy_news_items_with_404
+    Resque.enqueue_with_priority(:low, NewsItemsChecker, id)
+  end
+
+  def enqueue_destroy_news_items
+    Resque.enqueue_with_priority(:low, NewsItemsDestroyer, id) if rss_feed_owner_type == 'Affiliate'
   end
 
   def is_video?
@@ -42,6 +64,10 @@ class RssFeedUrl < ActiveRecord::Base
     end
   end
 
+  def to_label
+    url
+  end
+
   private
 
   def url_must_point_to_a_feed
@@ -56,5 +82,9 @@ class RssFeedUrl < ActiveRecord::Base
     else
       errors.add(:url, "is invalid")
     end
+  end
+
+  def blocking_destroy_news_items
+    NewsItemsDestroyer.perform(id)
   end
 end

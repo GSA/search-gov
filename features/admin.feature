@@ -159,6 +159,12 @@ Feature:  Administration
     And I should see the following breadcrumbs: Super Admin > Users
 
     When I go to the admin home page
+    And I follow "Rss Feed Urls"
+    And I should see the following breadcrumbs: Super Admin > Rss Feed Urls
+    When I follow "Show" within the first scaffold row
+    Then I should see "http://another.agency.gov/feed"
+
+    When I go to the admin home page
     And I follow "Filters"
     Then I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 
@@ -253,6 +259,9 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "System Alerts"
     Then I should see the following breadcrumbs: Super Admin > System Alerts
+
+    When I go to rss feeds admin page
+    Then I should see "An Agency Feed"
 
   Scenario: Adding help link
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

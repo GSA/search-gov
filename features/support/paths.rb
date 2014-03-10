@@ -48,6 +48,8 @@ module NavigationHelpers
       admin_site_pages_path
     when /users admin page/
       admin_users_path
+    when /rss feeds admin page/
+      admin_rss_feeds_path
     when /sayt filters admin page/
       admin_sayt_filters_path
     when /the login page/

@@ -143,6 +143,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
+    curb (0.8.5)
     daemons (1.1.9)
     database_cleaner (1.0.1)
     descendants_tracker (0.0.3)
@@ -463,6 +464,7 @@ DEPENDENCIES
   compass-rails
   cucumber
   cucumber-rails
+  curb
   database_cleaner
   dynamic_form
   elasticsearch

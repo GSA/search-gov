@@ -6,11 +6,22 @@ describe RssFeedData do
 
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
+    before { UrlStatusCodeFetcher.stub(:fetch) { '200 OK' } }
 
     context 'when the feed has an item that fails validation' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
         HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        UrlStatusCodeFetcher.stub(:fetch) do |arg|
+          status_code =
+              case arg
+                when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
+                  '404 Not Found'
+                else
+                  '200 OK'
+              end
+          { arg => status_code }
+        end
         rss_feed_url.news_items.destroy_all
       end
 
@@ -18,7 +29,7 @@ describe RssFeedData do
         RssFeedData.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         u.last_crawl_status.should == 'OK'
-        u.news_items.count.should == 2
+        u.news_items.count.should == 1
       end
     end
 
@@ -115,12 +126,12 @@ describe RssFeedData do
       end
     end
 
-    context 'when the feed uses Media RSS' do
+    context 'when the feed uses Media RSS with media:content@type' do
       let(:media_rss_url) { rss_feed_urls :media_feed_url }
       let(:rss_feed) { rss_feeds :media_feed }
       let(:affiliate) { affiliates :basic_affiliate }
       before do
-        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss.xml"
+        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss_with_media_content_type.xml"
         HttpConnection.should_receive(:get).with(media_rss_url.url).and_return rss_feed_content
       end
 
@@ -140,6 +151,31 @@ describe RssFeedData do
         no_media_content_url_item = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
         no_media_content_url_item.properties.should be_empty
         no_media_content_url_item.tags.should be_empty
+      end
+    end
+
+    context 'when the feed uses Media RSS without media:content@type' do
+      let(:media_rss_url) { rss_feed_urls :media_feed_url }
+      let(:rss_feed) { rss_feeds :media_feed }
+      let(:affiliate) { affiliates :basic_affiliate }
+      before do
+        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss_without_media_content_type.xml"
+        HttpConnection.should_receive(:get).with(media_rss_url.url).and_return rss_feed_content
+      end
+
+      it 'should persist media thumbnail and media content properties' do
+        RssFeedData.new(media_rss_url).import
+        media_rss_url.news_items(true).count.should == 3
+        link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
+        item_with_media_props = media_rss_url.news_items.find_by_link link
+
+        media_content = item_with_media_props.properties[:media_content]
+        media_content.should == { url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
+                                  type: 'image/jpeg' }
+
+        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
+        media_thumbnail.should == { url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg' }
+        item_with_media_props.tags.should == %w(image)
       end
     end
 
@@ -183,15 +219,6 @@ describe RssFeedData do
         rss_feed_url.reload
         rss_feed_url.news_items.count.should == 0
         rss_feed_url.last_crawl_status.should == 'Unknown feed type.'
-      end
-    end
-  end
-
-  describe '.determine_media_type_from_url' do
-    it 'should identify images' do
-      %w(gif JPEG png).each do |ext|
-        url = "http://some.agency.gov/media.#{ext}"
-        RssFeedData.determine_media_type_from_url(url).should == "image/#{ext.downcase}"
       end
     end
   end

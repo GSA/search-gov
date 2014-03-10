@@ -1,4 +1,4 @@
-module Admin::UsersHelper
+module Admin::AssociationsHelper
   def options_for_association_conditions(association)
     if association.name == :default_affiliate
       ['affiliates.id IN (?)', @record.affiliate_ids]
