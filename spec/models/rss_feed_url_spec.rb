@@ -149,14 +149,24 @@ describe RssFeedUrl do
 
   describe '.enqueue_destroy_all_news_items_with_404' do
     it 'should enqueue all affiliate owned active RssFeedUrls' do
-      rss_feed_urls = [rss_feed_urls(:white_house_blog_url),
-                       rss_feed_urls(:white_house_press_gallery_url)]
+      rss_feed_url1 = rss_feed_urls(:white_house_blog_url)
+      rss_feed_url2 = rss_feed_urls(:white_house_press_gallery_url)
+      rss_feed_urls = [rss_feed_url1, rss_feed_url2]
+
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
           and_return(rss_feed_urls)
+      rss_feed_url1_group = mock('group',
+                                 first: mock_model(NewsItem, id: 100),
+                                 last: mock_model(NewsItem, id: 199))
+      rss_feed_url2_group = mock('group',
+                                 first: mock_model(NewsItem, id: 500),
+                                 last: mock_model(NewsItem, id: 888))
+      rss_feed_url1.stub_chain(:news_items, :find_in_batches).and_yield(rss_feed_url1_group)
+      rss_feed_url2.stub_chain(:news_items, :find_in_batches).and_yield(rss_feed_url2_group)
       Resque.should_receive(:enqueue_with_priority).
-          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_blog_url).id)
+          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_blog_url).id, 100, 199)
       Resque.should_receive(:enqueue_with_priority).
-          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_press_gallery_url).id)
+          with(:low, NewsItemsChecker, rss_feed_urls(:white_house_press_gallery_url).id, 500, 888)
 
       RssFeedUrl.enqueue_destroy_all_news_items_with_404
     end

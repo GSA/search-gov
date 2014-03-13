@@ -41,7 +41,9 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def enqueue_destroy_news_items_with_404(priority = :low)
-    Resque.enqueue_with_priority(priority, NewsItemsChecker, id)
+    news_items.find_in_batches(batch_size: 500) do |group|
+      Resque.enqueue_with_priority(priority, NewsItemsChecker, id, group.first.id, group.last.id)
+    end
   end
 
   def enqueue_destroy_news_items(priority = :low)

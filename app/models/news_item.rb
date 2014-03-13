@@ -50,6 +50,12 @@ class NewsItem < ActiveRecord::Base
     'en'
   end
 
+  def self.fast_delete(ids)
+    return if ids.blank?
+    ElasticNewsItem.delete(ids)
+    NewsItem.delete_all(['id IN (?)', ids])
+  end
+
   private
 
   def downcase_scheme

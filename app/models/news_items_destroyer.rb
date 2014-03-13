@@ -6,8 +6,7 @@ class NewsItemsDestroyer
     NewsItem.where(rss_feed_url_id: rss_feed_url_id).select(:id).
         find_in_batches(batch_size: 10000) do |group|
       ids = group.map(&:id).freeze
-      ElasticNewsItem.delete(ids)
-      NewsItem.delete_all(['id IN (?)', ids])
+      NewsItem.fast_delete ids
     end
   end
 end

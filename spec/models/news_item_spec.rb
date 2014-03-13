@@ -110,4 +110,13 @@ describe NewsItem do
     end
   end
 
+  describe '#fast_delete' do
+    it 'delete from mysql and elasticsearch' do
+      ids = %w(1, 2).freeze
+      ElasticNewsItem.should_receive(:delete).with(ids)
+      NewsItem.should_receive(:delete_all).with(['id IN (?)', ids])
+      NewsItem.fast_delete(ids)
+    end
+  end
+
 end
