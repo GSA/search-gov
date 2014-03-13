@@ -40,12 +40,12 @@ class RssFeedUrl < ActiveRecord::Base
     RssFeedUrl.rss_feed_owned_by_affiliate.active.each(&:enqueue_destroy_news_items_with_404)
   end
 
-  def enqueue_destroy_news_items_with_404
-    Resque.enqueue_with_priority(:low, NewsItemsChecker, id)
+  def enqueue_destroy_news_items_with_404(priority = :low)
+    Resque.enqueue_with_priority(priority, NewsItemsChecker, id)
   end
 
-  def enqueue_destroy_news_items
-    Resque.enqueue_with_priority(:low, NewsItemsDestroyer, id) if rss_feed_owner_type == 'Affiliate'
+  def enqueue_destroy_news_items(priority = :low)
+    Resque.enqueue_with_priority(priority, NewsItemsDestroyer, id) if rss_feed_owner_type == 'Affiliate'
   end
 
   def is_video?
