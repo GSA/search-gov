@@ -1,3 +1,11 @@
+.outline-focus() {
+  &:focus {
+    outline-offset: -2px;
+    outline: 5px solid @outline-color;
+    outline: 5px auto @outline-color;
+  }
+}
+
 .content-block {
   background-color: @block-background-color;
   border-radius: @border-radius-base;
@@ -29,7 +37,6 @@
 }
 
 .item-title() {
-  font-size: 1.28571429em;
   font-weight: normal;
   margin: 10px 0 5px;
 
@@ -38,22 +45,12 @@
   }
 
   @media (min-width: @screen-desktop) {
-    font-size: 1.14285714em;
     margin-bottom: 2px;
 
     a, a:focus, a:hover {
       text-decoration: underline;
     }
   }
-}
-
-.content-provider {
-  .text-muted();
-}
-
-.smaller-result-item() {
-  font-size: 13px;
-  line-height: 1.2em;
 }
 
 .text-clip() {

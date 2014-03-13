@@ -1,9 +1,7 @@
 queryFieldSelector = '#search-bar #query'
 queryFieldSelectorWithTypeahead = '#search-bar #query.typeahead-enabled'
 
-clearQuery = (e) ->
-  e.preventDefault()
-  e.stopPropagation()
+clearQuery = ->
   $queryFieldSelector = $(queryFieldSelector)
 
   if $queryFieldSelector.hasClass 'typeahead-enabled'
@@ -14,31 +12,44 @@ clearQuery = (e) ->
   $queryFieldSelector.focus()
   $('#search-bar').removeClass 'has-query-term'
 
-$(document).on 'click', '#clear-button', clearQuery
-
-showCurrentResults = () ->
-  $this = $(this)
-  $this.removeClass('shown').fadeOut().off 'click'
-
-whenFocusOnQuery = (e) ->
-  $backdrop = $('#typeahead-backdrop')
-
-  unless $backdrop.hasClass 'shown'
-    $backdrop.addClass('shown').fadeIn().on 'click', showCurrentResults
-
-  if e.currentTarget.value.length > 0
+showOrHideClearButton = ->
+  if $(queryFieldSelector).val().length > 0
     $('#search-bar').addClass 'has-query-term'
   else
     $('#search-bar').removeClass 'has-query-term'
 
-#  submit form when pressing enter on IE8
+whenFocusOnQuery = (e) ->
+  console.log 'focus on query'
+  return if e.which? and e.which == 13
+  e.stopPropagation()
+  $('#nav-dropdown').addClass 'collapsed'
+  showOrHideClearButton()
+
+$(document).on 'focus keydown', queryFieldSelector, whenFocusOnQuery
+$(document).on 'typeahead:opened', queryFieldSelectorWithTypeahead, whenFocusOnQuery
+
+submitForm = (e) ->
+  #  submit form when pressing enter on IE8
   if e.which? and e.which == 13
     e.preventDefault()
     $('#search-bar').submit()
 
-$(document).on 'keyup', queryFieldSelector, whenFocusOnQuery
-$(document).on 'typeahead:opened', queryFieldSelectorWithTypeahead, whenFocusOnQuery
+$(document).on 'keypress', queryFieldSelector, submitForm
 
+clearQueryEvent = (e) ->
+  e.preventDefault()
+  e.stopPropagation()
+  clearQuery()
+
+$(document).on 'click.clear-button', '#clear-button', clearQueryEvent
+
+clearQueryOnKeypressEvent = (e) ->
+  e.preventDefault()
+  e.stopPropagation()
+  if e.which == 13
+    clearQuery e
+
+$(document).on 'keypress.clear-button', '#clear-button', clearQueryOnKeypressEvent
 
 whenSelected = () ->
   $('#search-bar').submit()

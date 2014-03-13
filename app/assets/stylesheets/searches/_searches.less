@@ -1,9 +1,39 @@
 body {
   min-width: 320px;
+  @media (min-width: @screen-md) {
+    font-size: 87.5%;
+  }
+}
+
+a,
+button,
+input[type=search],
+input[type=submit],
+#clear-button {
+  .outline-focus();
 }
 
 #skiplink {
   .sr-only();
+  &:focus {
+    .outline-focus();
+    color: white;
+    background-color: #004168;
+    clip: auto;
+    display: block;
+    font-size: 1.8em;
+    height: auto;
+    margin: 0.1em;
+    overflow: visible;
+    padding: 0.5em;
+    position: relative;
+    text-align: center;
+    width: auto;
+  }
+}
+
+#main-content:focus {
+  .outline-focus();
 }
 
 #search {
@@ -11,4 +41,35 @@ body {
     margin: 0 auto;
     width: @screen-sm;
   }
+
+  > h2 {
+    .sr-only;
+  }
+
+  ul {
+    font-size: @font-size-default;
+    line-height: 1;
+    margin-bottom: 0;
+
+    > li {
+      padding-right: 15px;
+      vertical-align: top;
+    }
+
+    > li > a {
+      .text-overflow();
+      display: block;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+
+      @media (min-width: @screen-desktop) {
+        padding: 0.3em 0;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.icon {
+  margin-top: 0;
 }

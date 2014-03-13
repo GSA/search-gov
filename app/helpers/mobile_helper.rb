@@ -5,12 +5,12 @@ module MobileHelper
 
     if logo_url.present?
       html = link_to_if(affiliate.website.present?,
-                        image_tag(logo_url, alt: affiliate.display_name),
-                        affiliate.website)
+                        content_tag(:h1, image_tag(logo_url, alt: affiliate.display_name)),
+                        affiliate.website, tabindex: 1)
     else
       html = link_to_if(affiliate.website.present?,
                         content_tag(:h1, affiliate.display_name),
-                        affiliate.website)
+                        affiliate.website, tabindex: 1)
       css_classes << ' text'
     end
     content_tag(:div, html, class: css_classes)

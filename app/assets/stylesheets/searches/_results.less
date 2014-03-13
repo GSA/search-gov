@@ -1,17 +1,19 @@
 .content-block-item.content-block-item-header {
-  color: #999;
+  color: @text-color;
+  font-size: 1.8em;
 }
 
 #search .content-block-item.content-block-item-footer {
-  padding: 0;
+  font-size: @font-size-default;
+  line-height: 1;
+  padding: 0.1em;
 
   .content-provider {
-    font-size: 12px;
     margin: 0;
     text-align: right;
 
     > a, > span {
-      color: #505050;
+      color: @text-color;
       display: block;
       padding: 10px 12px 12px;
       text-decoration: none;
@@ -43,7 +45,8 @@
 
     .bing {
       background: asset-data-url('searches/bing_logo.png') right no-repeat;
-      height: 19px;
+      color: #505050;
+      line-height: 19px;
       margin: 12px;
       padding-right: 58px;
       font-family: 'Arial';
@@ -67,8 +70,6 @@
 
 #spelling-suggestion {
 
-  > .content-block-item {}
-
   .suggested-query {
     .item-title();
 
@@ -78,9 +79,7 @@
   }
 
   .original-query {
-    @media (min-width: @screen-desktop) {
-      .smaller-result-item();
-    }
+    font-size: @font-size-default;
 
     a {
       text-decoration: none;
@@ -115,15 +114,16 @@
   .url, .description {
     display: block;
     word-wrap: break-word;
-
-    @media (min-width: @screen-desktop) {
-      .smaller-result-item();
-    }
   }
 
   .url {
     .text-overflow();
+    font-size: 1.7em;
     height: 1.5em;
+  }
+
+  .description {
+    font-size: 1.6em;
   }
 }
 
@@ -137,9 +137,14 @@
 
 #search .pagination {
   .content-block();
+  font-size: 1.6em;
 
-  a, a:focus, a:hover {
+  a, a:focus {
     text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   .disabled {
@@ -155,28 +160,30 @@
   }
 
   .previous_page, .next_page {
-    color: @icon-color;
+    color: @link-color;
   }
 
   .previous_page {
-    padding: 8px 12px 8px 6px;
-  }
-  .next_page {
-    padding: 8px 6px 8px 12px;
+    padding: 0.6em 12px 0.6em 6px;
   }
 
-  .glyphicon {
-    top: 2px;
+  .current_page {
+    padding: 0.6em 6px;
   }
-  .glyphicon-chevron-left {
-    margin-right: 8px;
+
+  .next_page {
+    padding: 0.6em 6px 0.6em 12px;
   }
-  .glyphicon-chevron-right {
-    margin-left: 8px;
+
+  .icon-chevron-left {
+    margin-right: 6px;
+  }
+  .icon-chevron-right {
+    margin-left: 6px;
   }
 }
 
 #no-results {
   .content-block();
-  font-size: 18px;
+  font-size: 1.6em;
 }

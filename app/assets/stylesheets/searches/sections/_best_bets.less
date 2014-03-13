@@ -1,5 +1,6 @@
 #best-bets {
   .content-block();
+  padding-bottom: 2px;
 
   &.collapsed {
     #best-bet-1, #best-bet-2 {
@@ -7,12 +8,11 @@
     }
 
     .featured-collection .links {
-      .clearfix();
-      max-height: 10em;
+      max-height: 8em;
       overflow: hidden;
 
       @media (min-width: @screen-desktop) {
-        max-height: 6em;
+        max-height: 6.4em;
       }
     }
   }
@@ -41,6 +41,7 @@
 #best-bets .featured-collection {
   h3 {
     .text-overflow();
+    padding: 0.1em 0;
 
     @media (min-width: @screen-desktop) {
       margin-bottom: 0.3em;
@@ -73,34 +74,17 @@
     }
   }
 
+  .links {
+    .clearfix();
+    font-size: @font-size-default;
+    line-height: 1;
+  }
+
   ul {
     .list-unstyled();
     display: block;
     font-size: 1em;
-    line-height: 1.8em;
     overflow: hidden;
-    margin-bottom: 0;
-
-    @media (min-width: @screen-desktop) {
-      .smaller-result-item();
-    }
-
-    > li {
-      padding-right: 15px;
-      vertical-align: top;
-    }
-
-    a {
-      .text-overflow();
-      display: block;
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-
-      @media (min-width: @screen-desktop) {
-        padding: 0.2em 0;
-        text-decoration: underline;
-      }
-    }
   }
 
   &.two-column ul {

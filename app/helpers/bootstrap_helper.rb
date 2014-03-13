@@ -39,9 +39,9 @@ module BootstrapHelper
   def pagination_label(direction)
     if direction == :next
       content_tag(:span, I18n.t(:next_label)) <<
-          content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-right')
+          content_tag(:span, nil, class: 'icon icon-chevron-right')
     else
-      content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-left') <<
+      content_tag(:span, nil, class: 'icon icon-chevron-left') <<
           content_tag(:span, I18n.t(:prev_label))
     end
   end

@@ -10,7 +10,6 @@
 
     %title #{@page_title}
 
-    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
     = stylesheet_link_tag 'searches_mobile'
     /[if IE]
       = stylesheet_link_tag 'searches_mobile_ie'
@@ -20,17 +19,16 @@
       = javascript_include_tag 'searches_ie_lt9'
 
   %body
-    %a#skiplink{ href: '#main-content' }= t 'searches.skip_to_main_content'
+    %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
     #header-wrapper
       - navigations = renderable_navigations(@affiliate)
       #header
         = render(partial: 'nav_button') if navigations.present?
         = mobile_header @affiliate
-        = render partial: 'form', locals: { search: @search }
         = navigations_and_logo(@search, @search_params, navigations)
-    #typeahead-backdrop
+        = render partial: 'form', locals: { search: @search }
 
-    #main-content= yield
+    #main-content{ tabindex: -1 }= yield
 
     = javascript_include_tag 'searches_mobile'
 

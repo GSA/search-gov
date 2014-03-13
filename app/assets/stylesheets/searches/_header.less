@@ -12,19 +12,21 @@
   background-color: @block-background-color;
   border-radius: @border-radius-base;
   margin: 0;
-  padding-top: 4px;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
 
   .logo {
     margin-bottom: @content-block-margin;
     padding: 8px 60px 0;
 
-    a {
-      text-decoration: none;
-    }
-
-    h1 {
-      color: @gray-light;
-    }
 
     &.text {
       display: block;
@@ -41,9 +43,7 @@
 
       h1 {
         .text-clip();
-        margin: 0;
-        padding: 8px 0 @content-block-margin;
-        font-size: 18px;
+        padding: 0.5em 0;
       }
     }
 

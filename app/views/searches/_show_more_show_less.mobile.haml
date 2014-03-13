@@ -1,6 +1,6 @@
-.show-more
-  = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-down')
+.show-more{ tabindex: 0 }
+  = content_tag(:span, nil, class: 'icon icon-chevron-down')
   %span.text-hide= t(:show_more_label)
-.show-less
-  = content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-up')
+.show-less{ tabindex: 0 }
+  = content_tag(:span, nil, class: 'icon icon-chevron-up')
   %span.text-hide= t(:show_less_label)

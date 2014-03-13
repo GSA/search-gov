@@ -36,34 +36,7 @@
   ul {
     .list-unstyled();
     display: block;
-    font-size: 1em;
     overflow: hidden;
-    margin-bottom: 0;
-
-    @media (min-width: @screen-desktop) {
-      .smaller-result-item();
-    }
-
-    > li {
-      padding-right: 15px;
-      vertical-align: top;
-    }
-
-    a {
-      display: block;
-      line-height: 1.6em;
-      padding-top: 0.2em;
-      padding-bottom: 0.2em;
-
-      @media (min-width: @screen-sm) {
-        line-height: 1.2em;
-        padding: 0;
-      }
-
-      @media (min-width: @screen-desktop) {
-        text-decoration: underline;
-      }
-    }
 
     .separator {
       display: none;
@@ -76,9 +49,8 @@
 
     h4 {
       display: block;
-      font-size: 1.14285714em;
+      font-size: 1.7em;
       font-weight: normal;
-      line-height: 1.2em;
       margin: 0;
     }
 
@@ -88,7 +60,8 @@
 
       h4 {
         display: inline;
-        font-size: 1em;
+        font-size: @font-size-default;
+        line-height: 1;
         &:after { content: ":"; }
       }
 
@@ -108,7 +81,6 @@
     }
 
     @media (min-width: @screen-desktop) {
-      .smaller-result-item();
       margin-top: 5px;
     }
   }

@@ -2,7 +2,7 @@
   background-color: @block-background-color;
   border-radius: @border-radius-base;
   height: 40px;
-  margin: 0 @content-block-margin @content-block-margin;
+  margin: @content-block-margin;
   position: relative;
 
   @media (min-width: @screen-sm) {
@@ -23,11 +23,12 @@
     .box-shadow(none);
     background-color: @body-bg;
     border-color: transparent;
-    font-size: @font-size-large;
-    line-height: @line-height-large;
+    font-size: 1.8em;
+    line-height: 1;
     height: 40px;
     padding-right: 0;
     border-right: 40px solid transparent;
+    vertical-align: middle;
 
     @media (min-width: @screen-sm) {
       border-right-width: 75px;

@@ -16,14 +16,21 @@
   }
 }
 
-.glyphicon {
-  &:before { content: none }
-  .icon();
-  margin-top: -1px;
+@outline-color: #EDB864;
+
+a:focus {
+  outline: 3px solid @outline-color !important;
 }
 
-.glyphicon-chevron-down  { .icon-chevron-down(); }
-.glyphicon-chevron-left  { .icon-chevron-left(); }
-.glyphicon-chevron-right { .icon-chevron-right(); }
-.glyphicon-chevron-up    { .icon-chevron-up(); }
+#search .pagination a {
+  outline: 0;
+  border: 2px solid transparent;
 
+  &:focus {
+    border-color: @outline-color;
+  }
+}
+
+.icon {
+  margin-top: -1px;
+}

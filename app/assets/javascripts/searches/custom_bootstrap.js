@@ -1,4 +1,4 @@
-//= require twitter/bootstrap/transition.js
+// require twitter/bootstrap/transition.js
 // require twitter/bootstrap/alert.js
 // require twitter/bootstrap/button.js
 // require twitter/bootstrap/carousel.js

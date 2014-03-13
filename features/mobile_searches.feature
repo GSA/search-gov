@@ -2,10 +2,10 @@ Feature: Searches using mobile device
 
   Scenario: Web search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | domains        |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |                |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |                |
-      | Hippo site   | hippo         | admin@agency.gov | John Bar     | en     | whitehouse.gov |
+      | display_name | name          | contact_email    | contact_name | locale | domains              |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |                      |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |                      |
+      | Hippo site   | hippo         | admin@agency.gov | John Bar     | en     | hippo.whitehouse.gov |
     And the following Boosted Content entries exist for the affiliate "en.agency.gov"
       | url                                                             | title                  | description                             |
       | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |

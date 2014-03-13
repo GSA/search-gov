@@ -1,4 +1,8 @@
 module MobileNavigationsHelper
+  def navigation_heading
+    @affiliate.left_nav_label.present? ? @affiliate.left_nav_label : I18n.t(:search)
+  end
+
   def navigations_and_logo(search, search_params, navigations)
     if is_inactive_site_search?(search)
       return navigation_context(search.document_collection)

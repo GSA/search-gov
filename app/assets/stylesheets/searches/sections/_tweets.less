@@ -20,6 +20,8 @@
 
     .profile {
       .clearfix();
+      display: block;
+      margin-right: 35px;
     }
 
     .profile-image {
@@ -47,7 +49,7 @@
       }
     }
     .profile-name {
-      font-size: 18px;
+      font-size: 1.8em;
       line-height: 1;
       margin-top: 10px;
 
@@ -56,9 +58,6 @@
       }
 
       @media (min-width: @screen-desktop) {
-        font-size: 16px;
-        line-height: 1.1;
-
         &:hover {
           text-decoration: underline;
         }
@@ -66,19 +65,13 @@
     }
 
     .profile-screen-name {
-      color: @icon-color;
-
-      @media (min-width: @screen-desktop) {
-        .smaller-result-item();
-      }
+      color: @text-color;
+      font-size: 1.6em;
     }
 
     .text, .timestamp {
+      font-size: 1.6em;
       margin-top: 5px;
-
-      @media (min-width: @screen-desktop) {
-        .smaller-result-item();
-      }
     }
 
     .text a:hover {
@@ -88,7 +81,7 @@
     }
 
     .timestamp a {
-      color: @icon-color;
+      color: @text-color;
     }
   }
 }

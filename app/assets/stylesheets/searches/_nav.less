@@ -3,16 +3,17 @@
 }
 
 #nav-wrapper {
-  border-top: 1px solid @block-border-color;
-  margin: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
 
   @media (min-width: @screen-sm) {
-    border-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
 #nav {
-  border-top-width: 0;
+  border-bottom: 1px solid @block-border-color;
   transition: none;
 
   @media (min-width: @screen-sm) {
@@ -37,7 +38,8 @@
       border-top: 1px solid @block-border-color;
       border-left: 3px solid transparent;
       display: block;
-      line-height: @line-height-computed;
+      font-size: 1.6em;
+      line-height: 1;
       padding: 7px 9px 10px 21px;
 
       @media (min-width: @grid-float-breakpoint) {
@@ -96,24 +98,37 @@
       padding: 0;
     }
 
+    .icon.icon-chevron-down {
+      margin-top: -2px;
+      vertical-align: middle;
+    }
+
     > li.active span {
       font-weight: bold;
+    }
+
+    .show-more {
+      .outline-focus();
     }
   }
 
   a { .tap-highlight(); }
-
-  .glyphicon {
-    top: 2px;
-  }
 }
 
-.navbar-default .navbar-nav > .open {
+#header .navbar-default .navbar-nav > .open {
   &.collapsed {
-    > a, > a:focus {
+    > a {
       @media (min-width: @grid-float-breakpoint) {
         background-color: transparent;
         color: @navbar-default-link-color;
+
+        &:focus {
+          background-color: transparent;
+        }
+
+        &:hover {
+          background-color: @navbar-default-bg;
+        }
       }
     }
 
