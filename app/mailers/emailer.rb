@@ -2,8 +2,8 @@ class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
   BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
-  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@mail.usasearch.howto.gov'.freeze
-  REPLY_TO_EMAIL_ADDRESS = 'USASearch@gsa.gov'.freeze
+  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
+  REPLY_TO_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
 
   self.default bcc: BCC_TO_EMAIL_ADDRESS,
                from: DELIVER_FROM_EMAIL_ADDRESS,
