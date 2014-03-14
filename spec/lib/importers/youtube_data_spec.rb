@@ -35,6 +35,7 @@ describe YoutubeData do
     let(:invalid_links) { %w(http://gdata.youtube.com/feeds/base/videos/MOCK1 http://gdata.youtube.com/feeds/base/videos/MOCK2) }
 
     before do
+      NewsItem.destroy_all
       NewsItem.create!(rss_feed_url: rss_feed_url,
                        link: 'http://gdata.youtube.com/feeds/base/videos/MOCK1',
                        title: 'mock title',
@@ -100,7 +101,7 @@ describe YoutubeData do
       duplicate_news_items = rss_feed.news_items.where(link: link_in_both_uploaded_and_playlists)
       duplicate_news_items.count.should == 1
       duplicate_news_items.first.rss_feed_url.url.should == profile.url
-      rss_feed.news_items.where(link: invalid_links).should be_empty
+      NewsItem.where(link: invalid_links).should be_empty
     end
 
     context 'when parsers raises an error during the import' do

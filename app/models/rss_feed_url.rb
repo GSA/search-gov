@@ -7,7 +7,7 @@ class RssFeedUrl < ActiveRecord::Base
   attr_readonly :rss_feed_owner_type, :url
   has_and_belongs_to_many :rss_feeds
   has_many :news_items, order: 'published_at DESC'
-  after_destroy :blocking_destroy_news_items
+  before_destroy :blocking_destroy_news_items
 
   before_validation NormalizeUrl.new(:url), on: :create
 

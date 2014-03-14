@@ -1,8 +1,8 @@
 class Admin::RssFeedsController < Admin::AdminController
   active_scaffold :rss_feed do |config|
-    config.columns = [:name, :owner, :created_at, :updated_at]
-    config.list.sorting = { name: :asc }
-    config.actions = [:list, :nested]
+    config.label = 'Rss Feeds'
+    config.columns = [:id, :name, :owner, :rss_feed_urls, :created_at, :updated_at]
+    config.actions = [:list, :search, :nested]
   end
 
   def conditions_for_collection

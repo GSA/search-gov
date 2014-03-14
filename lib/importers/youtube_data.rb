@@ -57,9 +57,13 @@ class YoutubeData < RssFeedData
       news_item = create_or_update(rss_feed_url, item)
       news_item_ids << news_item.id if news_item
     end
-    rss_feed_url.news_item_ids = news_item_ids
-    rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                    last_crawled_at: Time.now.utc)
+    NewsItem.transaction do
+      news_item_ids_for_removal = rss_feed_url.news_item_ids - news_item_ids
+      NewsItem.fast_delete news_item_ids_for_removal
+      rss_feed_url.news_item_ids = news_item_ids
+      rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
+                                      last_crawled_at: Time.now.utc)
+    end
   rescue => e
     rss_feed_url.update_attributes!(last_crawl_status: e.message,
                                     last_crawled_at: Time.now.utc)
