@@ -34,8 +34,7 @@
       The name of your affiliate site. This parameter is required.
     %li
       %span index:
-      One of web, images, docs, news, or videonews. The default is 'web'. Either Bing or Google (depending on your account settings)
-      provides the search results for web, docs, and image searches,
+      One of web, images, docs, news, or videonews. The default is 'web'. Bing provides the search results for web, docs, and image searches,
       backfilled by supplemental documents indexed by USASearch. The indexes for the news and video news results are maintained by USASearch.
     %li
       %span format:
@@ -67,20 +66,12 @@
       A comma-separated lat/lon pair (e.g., '34.56,-122.42'). Some results modules like jobs can show location-based results if this optional parameter is passed in.
 
   %p
-    For web and image results from Bing or Google, you can also use their respective query parameters.
-  %ul
-    %li
-      Bing:
-      =link_to 'Advanced Search Keywords', 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
-      and
-      =link_to 'Advanced Search Options', 'http://onlinehelp.microsoft.com/en-us/bing/ff808438.aspx'
-    %li
-      Google:
-      = link_to 'Search Operators', 'https://support.google.com/websearch/answer/136861?hl=en'
-      and
-      =link_to 'Punctuation and Symbols', 'https://support.google.com/websearch/answer/2466433'
+    For web and image results from Bing, you can also use their respective query parameters:
+    =link_to 'Advanced Search Keywords', 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+    and
+    =link_to 'Advanced Search Options', 'http://onlinehelp.microsoft.com/en-us/bing/ff808438.aspx'
 
-  %h3 Web Search Examples (Bing/Google Results)
+  %h3 Web Search Examples (Bing Results)
   %ul
     %li
       %span Search for "fire" with response in JSON format
@@ -102,9 +93,11 @@
   %h3
     Response Fields
   %p
-    Note that not all response fields appear in all queries.
-    Tweets aren't provided in our API. If you'd like to include your tweets, use
-    = link_to "Twitter's API", "https://dev.twitter.com/"
+    Note that not all response fields appear in all queries. Tweets and Google web results aren't provided in our API.
+    If you'd like to include them, use
+    =link_to "Twitter's API","https://dev.twitter.com/"
+    or
+    =link_to "Google's API","https://developers.google.com/custom-search/"
     directly.
   %ul
     %li

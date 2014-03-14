@@ -14,9 +14,12 @@ class ApiController < ApplicationController
   end
 
   private
+
   def load_affiliate
     @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) if params[:affiliate].present?
-    unless @affiliate
+    if @affiliate
+      @affiliate.search_engine = 'Bing'
+    else
       render :text => 'Not Found', :status => 404
       false
     end
