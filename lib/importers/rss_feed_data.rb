@@ -6,9 +6,9 @@ class RssFeedData
                    link: %w(link),
                    title: 'title',
                    guid: 'guid',
-                   contributor: 'dc:contributor',
-                   publisher: 'dc:publisher',
-                   subject: 'dc:subject',
+                   contributor: './/dc:contributor',
+                   publisher: './/dc:publisher',
+                   subject: './/dc:subject',
                    description: 'description',
                    media_content: './/media:content[@url]',
                    media_description: './media:description',
@@ -22,6 +22,11 @@ class RssFeedData
                     description: 'xmlns:content' }.freeze
 
   FEED_ELEMENTS = { rss: RSS_ELEMENTS, atom: ATOM_ELEMENTS }.freeze
+
+  NAMESPACE_URL_HASH = {
+      dc: 'http://purl.org/dc/elements/1.1/',
+      media: 'http://search.yahoo.com/mrss/'
+  }.freeze
 
   def initialize(rss_feed_url, ignore_older_items = true)
     @rss_feed_url = rss_feed_url
@@ -39,6 +44,7 @@ class RssFeedData
     end
 
     @feed_elements = FEED_ELEMENTS[feed_type]
+    detect_namespaces doc
     extract_news_items(doc)
     @rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS)
   rescue Exception => e
@@ -60,8 +66,12 @@ class RssFeedData
 
   private
 
+  def detect_namespaces(doc)
+    @has_dc_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:dc])
+    @has_media_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:media])
+  end
+
   def extract_news_items(doc)
-    @has_media_ns = doc.namespaces['xmlns:media'].present?
     most_recently = @rss_feed_url.news_items.present? ? @rss_feed_url.news_items.first.published_at : nil
 
     doc.xpath("//#{@feed_elements[:item]}").each do |item|
@@ -113,9 +123,8 @@ class RssFeedData
   end
 
   def extract_other_attributes(item)
-    attributes = extract_elements(item,
-                                  :guid, :title,
-                                  :contributor, :publisher, :subject)
+    attributes = extract_elements(item, :guid, :title)
+    attributes.merge!(extract_elements(item, :contributor, :publisher, :subject)) if @has_dc_ns
     attributes[:description] = extract_description(item)
     attributes[:properties] = extract_properties(item) if @has_media_ns
     attributes
@@ -138,7 +147,7 @@ class RssFeedData
   end
 
   def extract_properties(item)
-    media_content_node = item.xpath(@feed_elements[:media_content]).first
+    media_content_node = extract_node(item, @feed_elements[:media_content])
     return unless media_content_node
     properties = {}
 
@@ -163,8 +172,20 @@ class RssFeedData
   end
 
   def extract_element_content(item, element)
-    node = item.xpath(@feed_elements[element]).first
+    node = extract_node(item, @feed_elements[element])
     node.present? && (content = node.inner_text.to_s.squish).present? ? content : nil
+  end
+
+  def extract_node(item, path)
+    return unless path
+    namespace_hash = path_namespace_hash path
+    namespace_hash ? item.xpath(path, namespace_hash).first : item.xpath(path).first
+  end
+
+  def path_namespace_hash(path)
+    path_namespace = path.match(%r{[a-z]+:}i).to_s.gsub(/:/, '')
+    path_namespace_url = NAMESPACE_URL_HASH[path_namespace.to_sym]
+    { path_namespace => path_namespace_url } if path_namespace_url
   end
 
   def extract_node_attribute(node, attribute)

@@ -125,6 +125,20 @@ describe RssFeedData do
       end
     end
 
+    context 'when the feed does not contain dublin core namespace' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+      end
+
+      it 'imports news items' do
+        RssFeedData.new(rss_feed_url).import
+        rss_feed_url.reload
+        rss_feed_url.last_crawl_status.should == 'OK'
+        rss_feed_url.news_items.count.should == 30
+      end
+    end
+
     context 'when the feed uses Media RSS with media:content@type' do
       let(:media_rss_url) { rss_feed_urls :media_feed_url }
       let(:rss_feed) { rss_feeds :media_feed }

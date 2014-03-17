@@ -148,13 +148,20 @@ describe RssFeedUrl do
   end
 
   describe '.enqueue_destroy_all_news_items_with_404' do
-    it 'should enqueue all affiliate owned active RssFeedUrls' do
+    it 'enqueues all non throttled affiliate owned active RssFeedUrls' do
       rss_feed_url1 = rss_feed_urls(:white_house_blog_url)
       rss_feed_url2 = rss_feed_urls(:white_house_press_gallery_url)
+      active_rss_feed_urls = mock('active RssFeedUrls')
       rss_feed_urls = [rss_feed_url1, rss_feed_url2]
+      throttled_rss_feed_url_ids = [1].freeze
 
+      RssFeedUrl.should_receive(:find_throttled_rss_feed_url_ids).and_return(throttled_rss_feed_url_ids)
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
-          and_return(rss_feed_urls)
+          and_return(active_rss_feed_urls)
+      active_rss_feed_urls.should_receive(:where).
+          with('rss_feed_urls.id NOT IN (?)', throttled_rss_feed_url_ids).
+          and_return rss_feed_urls
+
       rss_feed_url1_group = mock('group',
                                  first: mock_model(NewsItem, id: 100),
                                  last: mock_model(NewsItem, id: 199))
@@ -167,8 +174,44 @@ describe RssFeedUrl do
           with(:low, NewsItemsChecker, rss_feed_urls(:white_house_blog_url).id, 100, 199)
       Resque.should_receive(:enqueue_with_priority).
           with(:low, NewsItemsChecker, rss_feed_urls(:white_house_press_gallery_url).id, 500, 888)
+      RssFeedUrl.should_receive :enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
 
       RssFeedUrl.enqueue_destroy_all_news_items_with_404
+    end
+  end
+
+  describe '.find_throttle_rss_feed_url_ids' do
+    it 'returns throttled RssFeedUrl ids' do
+      active_rss_feed_urls = mock('active RssFeedUrls')
+      throttled_rss_feed_urls = mock('RssFeedUrls', pluck: 100)
+      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
+          and_return(active_rss_feed_urls)
+      active_rss_feed_urls.should_receive(:where).with('url LIKE ?', 'http://www.army.mil/%').
+          and_return(throttled_rss_feed_urls)
+
+      RssFeedUrl.find_throttled_rss_feed_url_ids.should == [100]
+    end
+  end
+
+  describe '.enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls' do
+    context 'when throttled RssFeedUrls are present' do
+      let(:throttled_rss_feed_url_ids) { [100, 200].freeze }
+
+      before do
+        RssFeedUrl.should_receive(:find_throttled_rss_feed_url_ids).
+            and_return(throttled_rss_feed_url_ids)
+      end
+
+      it 'enqueue NewsItemsChecker with throttled = true' do
+        news_items = mock('news items')
+        NewsItem.stub_chain(:where, :limit).and_return(news_items)
+        news_items.should_receive(:order).with('id asc').and_return([mock_model(NewsItem, id: 88)])
+        news_items.should_receive(:order).with('id desc').and_return([mock_model(NewsItem, id: 99)])
+        Resque.should_receive(:enqueue_with_priority).
+            with(:low, NewsItemsChecker, throttled_rss_feed_url_ids, 88, 99, true)
+
+        RssFeedUrl.enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
+      end
     end
   end
 

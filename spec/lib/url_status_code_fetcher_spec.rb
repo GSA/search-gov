@@ -25,5 +25,15 @@ describe UrlStatusCodeFetcher do
         responses['http://search.digitalgov.gov/invalid-page'].should =~ /404/
       end
     end
+
+    context 'when execution expired' do
+      it 'logs Timeout::Error' do
+        urls = %w(http://www.example.com/doc1 http://www.example.com/doc2)
+        Timeout.should_receive(:timeout).with(30).and_raise Timeout::Error
+        Rails.logger.should_receive(:warn)
+
+        UrlStatusCodeFetcher.fetch urls
+      end
+    end
   end
 end

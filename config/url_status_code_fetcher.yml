@@ -1,0 +1,11 @@
+:default: &DEFAULT
+  :easy_options:
+    :timeout: 15
+
+  :multi_options:
+    :max_connects: 8
+
+:throttled:
+  <<: *DEFAULT
+  :multi_options:
+    :max_connects: 3

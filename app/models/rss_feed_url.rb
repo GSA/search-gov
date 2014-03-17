@@ -37,7 +37,35 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def self.enqueue_destroy_all_news_items_with_404
-    RssFeedUrl.rss_feed_owned_by_affiliate.active.each(&:enqueue_destroy_news_items_with_404)
+    non_throttled_rss_feed_urls.to_a.shuffle.each(&:enqueue_destroy_news_items_with_404)
+    enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
+  end
+
+  def self.non_throttled_rss_feed_urls
+    throttled_rss_feed_url_ids = find_throttled_rss_feed_url_ids
+    rss_feed_urls = RssFeedUrl.rss_feed_owned_by_affiliate.active
+    rss_feed_urls = rss_feed_urls.where('rss_feed_urls.id NOT IN (?)', throttled_rss_feed_url_ids) if throttled_rss_feed_url_ids.present?
+    rss_feed_urls
+  end
+
+  def self.enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
+    throttled_rss_feed_url_ids = find_throttled_rss_feed_url_ids
+    return if throttled_rss_feed_url_ids.blank?
+
+    throttled_news_items = NewsItem.where('rss_feed_url_id IN (?)', throttled_rss_feed_url_ids).limit(1)
+    first_news_item = throttled_news_items.order('id asc').first
+    return unless first_news_item
+
+    last_news_item = throttled_news_items.order('id desc').first
+
+    Resque.enqueue_with_priority(:low, NewsItemsChecker, throttled_rss_feed_url_ids, first_news_item.id, last_news_item.id, true)
+  end
+
+  def self.find_throttled_rss_feed_url_ids
+    throttled_rss_feed_url_prefixes = YAML.load_file("#{Rails.root}/config/throttled_rss_feed_url_prefixes.yml") || []
+    throttled_rss_feed_url_prefixes.map do |url_prefix|
+      RssFeedUrl.rss_feed_owned_by_affiliate.active.where('url LIKE ?', "#{url_prefix}%").pluck(:id)
+    end.flatten.compact.uniq
   end
 
   def enqueue_destroy_news_items_with_404(priority = :low)
