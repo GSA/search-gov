@@ -6,33 +6,6 @@ class Tweet < ActiveRecord::Base
   scope :recent, :order => 'published_at DESC', :limit => 10
   serialize :urls, Array
 
-  searchable do
-    text :tweet_text, :stored => true
-    time :published_at
-    long :twitter_profile_id, :multiple => true
-  end
-
-  class << self
-    include QueryPreprocessor
-
-    def search_for(query, twitter_profile_ids, since_ts = nil, page = 1, per_page = 1)
-      sanitized_query = preprocess(query)
-      return nil if sanitized_query.blank?
-      instrument_hash = { model: self.name, :term => sanitized_query, profiles_count: twitter_profile_ids.count }
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", query: instrument_hash) do
-        search do
-          fulltext sanitized_query do
-            highlight :tweet_text, :frag_list_builder => :single
-          end
-          with(:published_at).greater_than(since_ts) if since_ts
-          with(:twitter_profile_id, twitter_profile_ids)
-          order_by(:published_at, :desc)
-          paginate :page => page, :per_page => per_page
-        end
-      end
-    end
-  end
-
   def sanitize_tweet_text
     self.tweet_text = Sanitize.clean(tweet_text).squish if tweet_text
   end
@@ -40,4 +13,12 @@ class Tweet < ActiveRecord::Base
   def link_to_tweet
     "http://twitter.com/#{twitter_profile.screen_name}/status/#{tweet_id}"
   end
+
+  def language
+    twitter_profile.affiliates.first.locale
+  rescue
+    Rails.logger.warn "Found Tweet with no affiliate, so defaulting to English locale"
+    'en'
+  end
+
 end

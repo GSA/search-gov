@@ -14,15 +14,13 @@ describe TwitterProfilesHelper do
                    :url => 'http://t.co/YQQSs9bb',
                    :expanded_url => 'http://tmblr.co/Z8xAVxUEKvaK',
                    :display_url => 'tmblr.co/Z8xAVxUEKvaK')]
-      instance = mock_model(Tweet, :tweet_text => tweet_text, :urls => urls)
-      mock(Sunspot::Search::Hit, :instance => instance)
+      mock_model(Tweet, :tweet_text => tweet_text, :urls => urls)
     end
     let(:search) { mock(Search, :query => 'notes', :queried_at_seconds => 1350362825, :vertical => :web)}
 
     before do
       @affiliate = affiliates(:usagov_affiliate)
       @search_vertical = :web
-      helper.should_receive(:highlight_hit).with(tweet, :tweet_text).and_return(tweet_text)
     end
 
     it 'should render tweet link with click tracking' do

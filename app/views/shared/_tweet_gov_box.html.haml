@@ -1,15 +1,15 @@
 = render_govbox(:right) do
   #twitter_govbox
     %h3.alt
-      - if search.tweets.hits(:verify => true).size == 1
+      - if search.tweets.total == 1
         = t(:recent_tweet_for, :query => search.query)
       - else
         = t(:recent_tweets_for, :query => search.query)
       %span.recommended-by
         = t :by
         = @affiliate.display_name
-    - search.tweets.hits(:verify => true).each_with_index do |tweet, index|
+    - search.tweets.results.each_with_index do |tweet, index|
       .tweet
-        = legacy_render_twitter_profile(tweet.instance.twitter_profile, search, index)
+        = legacy_render_twitter_profile(tweet.twitter_profile, search, index)
         .tweet-text= legacy_render_tweet_text(tweet, search, index).html_safe
-        .timestamp= link_to time_ago_in_words(tweet.instance.published_at), tweet.instance.link_to_tweet
+        .timestamp= link_to time_ago_in_words(tweet.published_at), tweet.link_to_tweet

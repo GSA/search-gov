@@ -145,7 +145,7 @@ Given /^the following Tweets exist:$/ do |table|
                   :published_at => 1.send(hash[:published_ago]).ago,
                   :twitter_profile_id => hash[:twitter_profile_id], :urls => urls)
   end
-  Tweet.reindex
+  ElasticTweet.commit
 end
 
 Given /^the following FlickrPhotos exist:$/ do |table|

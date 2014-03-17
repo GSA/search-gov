@@ -907,7 +907,7 @@ Feature: Affiliate Search
       | tweet_text                     | tweet_id | published_ago | twitter_profile_id | url                  | expanded_url                 | display_url           |
       | Summer season is great!        | 234567   | year          | 123                |                      |                              |                       |
       | Ok season http://t.co/YQQSs9bb | 184957   | hour          | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
-      | Estados Unidos es grande!      | 789012   | hour          | 456                |                      |                              |                       |
+      | Estados Unidos por amigos!     | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
     And I fill in "query" with "season"
     And I press "Search" in the search box
@@ -919,14 +919,15 @@ Feature: Affiliate Search
     And I should not see "Summer season is great!"
 
     When I am on es.bar.gov's search page
-    And I fill in "query" with "Estados Unidos"
+    And I fill in "query" with "Estados Unidos amiga"
     And I press "Buscar" in the search box
-    Then I should see "Tweet más reciente para 'Estados Unidos' de spanish site"
+    Then I should see "Tweet más reciente para 'Estados Unidos amiga' de spanish site"
     And I should see a link to "GobiernoUSA.gov" with url for "http://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
-    And I should see "Estados Unidos es grande!"
+    And I should see "Estados Unidos por amigos!"
     And I should see "Estados" in bold font in the twitter govbox
     And I should see "Unidos" in bold font in the twitter govbox
+    And I should see "amigos" in bold font in the twitter govbox
 
   Scenario: Searching document collections
     Given the following Affiliates exist:

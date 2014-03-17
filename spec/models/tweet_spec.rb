@@ -1,13 +1,22 @@
 require 'spec_helper'
 
 describe Tweet do
+  fixtures :affiliates
+
   before do
     Twitter.stub!(:user).and_return mock('Twitter', :id => 12345, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
     @valid_attributes = {
-        :tweet_id => 18700887835,
-        :tweet_text => "got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::",
-        :published_at => Time.now
+      :tweet_id => 18700887835,
+      :tweet_text => "got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::",
+      :published_at => Time.now
     }
+  end
+
+  let(:profile) do
+    TwitterProfile.create!(:twitter_id => 12345,
+                           :screen_name => 'USASearch',
+                           :name => 'USASearch',
+                           :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
   end
 
   it { should validate_presence_of :tweet_id }
@@ -15,11 +24,7 @@ describe Tweet do
   it { should validate_presence_of :published_at }
   it { should validate_presence_of :twitter_profile_id }
 
-  it "should create new instance give valid attributes" do
-    profile = TwitterProfile.create!(:twitter_id => 12345,
-                                     :screen_name => 'USASearch',
-                                     :name => 'USASearch',
-                                     :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+  it "should create new instance given valid attributes" do
     tweet = Tweet.create!(@valid_attributes.merge(:twitter_profile_id => profile.id))
     tweet.tweet_id.should == @valid_attributes[:tweet_id]
     tweet.tweet_text.should == @valid_attributes[:tweet_text]
@@ -35,53 +40,26 @@ describe Tweet do
     Tweet.find(tweet.id).tweet_text.should == 'A tweet with http://t.co/h5vNlSdL and http://t.co/YQQSs9bb'
   end
 
-  describe "#search_for" do
-    before do
-      now = Time.now
-      Tweet.destroy_all
-      Tweet.create!(:tweet_id => 1234567, :tweet_text => "Good morning, America!", :published_at => now, :twitter_profile_id => 12345)
-      Tweet.create!(:tweet_id => 2345678, :tweet_text => "Good morning, America!", :published_at => now - 10.seconds, :twitter_profile_id => 23456)
-      Tweet.create!(:tweet_id => 3456789, :tweet_text => "Hello, America!", :published_at => 4.months.ago, :twitter_profile_id => 12345)
-      Tweet.reindex
-    end
+  describe "#language" do
+    context 'when tweet can be traced back to at least one affiliate' do
+      before do
+        profile.affiliates << affiliates(:gobiernousa_affiliate)
+        @tweet = profile.tweets.create!(@valid_attributes)
+      end
 
-    it "should find the 3 most recent tweets that matches the term(s) queried from any of the Twitter accounts specified" do
-      search = Tweet.search_for("america", [12345, 23456])
-      search.total.should == 3
-      search.results.size.should == 1
-      search.results.first.tweet_text.should == "Good morning, America!"
-      search.results.first.twitter_profile_id.should == 12345
-    end
-
-    it "should not find results from Twitter accounts not specified" do
-      search = Tweet.search_for("america", [23456])
-      search.total.should == 1
-      search.results.size.should == 1
-      search.results.first.tweet_text.should == "Good morning, America!"
-      search.results.first.twitter_profile_id.should == 23456
-    end
-
-    context "when specifying a page/per_page value" do
-      it "should page the results accordingly" do
-        search = Tweet.search_for("america", [12345, 23456], nil, 2, 2)
-        search.total.should == 3
-        search.results.size.should == 1
-        search.results.first.tweet_text.should == "Hello, America!"
-        search.results.first.twitter_profile_id.should == 12345
+      it 'should use the locale for the first affiliate' do
+        @tweet.language.should == 'es'
       end
     end
 
-    context "when a tweet is more than 3 months old" do
-      it "shouldn't find it" do
-        search = Tweet.search_for("america", [12345], 3.months.ago)
-        search.total.should == 1
-        search.results.size.should == 1
-        search.results.last.tweet_text.should == "Good morning, America!"
+    context 'when tweet cannot be traced back to at least one affiliate' do
+      before do
+        @tweet = Tweet.create!(@valid_attributes.merge(:twitter_profile_id => profile.id))
       end
-    end
 
-    context "when a blank search is entered" do
-      specify { Tweet.search_for('', [23456]).should be_nil }
+      it 'should use English' do
+        @tweet.language.should == 'en'
+      end
     end
   end
 

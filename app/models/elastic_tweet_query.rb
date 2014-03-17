@@ -1,0 +1,39 @@
+class ElasticTweetQuery < ElasticTextFilteredQuery
+
+  def initialize(options)
+    super({ sort: 'published_at:desc' }.merge(options))
+    @twitter_profile_ids = options[:twitter_profile_ids]
+    @since_ts = options[:since]
+    self.highlighted_fields = %w(tweet_text)
+  end
+
+  def query(json)
+    filtered_query(json)
+  end
+
+  def filtered_query_filter(json)
+    json.filter do
+      json.bool do
+        json.must do
+          json.child! { json.terms { json.twitter_profile_id @twitter_profile_ids } }
+          json.child! { published_at_filter(json) } if @since_ts
+        end
+      end
+    end
+  end
+
+  def published_at_filter(json)
+    json.range do
+      json.published_at do
+        json.gt @since_ts
+      end
+    end
+  end
+
+  def highlight_fields(json)
+    json.fields do
+      json.set! :tweet_text, { number_of_fragments: 0 }
+    end
+  end
+
+end

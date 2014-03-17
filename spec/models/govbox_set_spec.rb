@@ -203,7 +203,7 @@ describe GovboxSet do
           end
 
           it "should find the most recent relevant tweet" do
-            Tweet.should_receive(:search_for).with('foo', [123], 3.days.ago.beginning_of_day).and_return 'Twitter stuff'
+            ElasticTweet.should_receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: "en", size: 1).and_return 'Twitter stuff'
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.tweets.should == 'Twitter stuff'
           end

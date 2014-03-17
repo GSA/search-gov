@@ -12,10 +12,10 @@ module TwitterProfilesHelper
   end
 
   def inject_tweet_links(tweet)
-    html = highlight_hit(tweet, :tweet_text)
-    if tweet.instance.urls.present?
+    html = tweet.tweet_text
+    if tweet.urls.present?
       processed_urls = []
-      tweet.instance.urls.each do |entity_url|
+      tweet.urls.each do |entity_url|
         next if processed_urls.include?(entity_url.url)
         processed_urls << entity_url.url
         link = yield entity_url
@@ -34,7 +34,7 @@ module TwitterProfilesHelper
 
   def twitter_profile(tweet, position)
     content = []
-    profile = tweet.instance.twitter_profile
+    profile = tweet.twitter_profile
     content << content_tag(:div, image_tag(profile.profile_image_url, alt: "#{profile.name} avatar"), class: 'profile-image')
     content << content_tag(:span, profile.name, class: 'profile-name')
     content << content_tag(:span, "@#{profile.screen_name}", class: 'profile-screen-name')
