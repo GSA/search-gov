@@ -18,7 +18,6 @@ describe Emailer do
     it { should deliver_to(user.email) }
     it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should deliver_from(Emailer::DELIVER_FROM_EMAIL_ADDRESS) }
-    it { should reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { should have_subject(/Getting started with USASearch/) }
 
     it 'should contain lists of unadopted features for each affiliate that has any' do

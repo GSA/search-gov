@@ -2,12 +2,11 @@ class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
   BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
-  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
-  REPLY_TO_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
+  SEARCH_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
+  DELIVER_FROM_EMAIL_ADDRESS = SEARCH_EMAIL_ADDRESS
 
   self.default bcc: BCC_TO_EMAIL_ADDRESS,
-               from: DELIVER_FROM_EMAIL_ADDRESS,
-               reply_to: REPLY_TO_EMAIL_ADDRESS
+               from: DELIVER_FROM_EMAIL_ADDRESS
 
   def password_reset_instructions(user, host_with_port)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token, :protocol => 'https', :host => host_with_port)
@@ -99,7 +98,7 @@ class Emailer < ActionMailer::Base
     @affiliate = affiliate
     @current_user = current_user
     @external_tracking_code = external_tracking_code
-    setup_email('***REMOVED***', __method__)
+    setup_email(SEARCH_EMAIL_ADDRESS, __method__)
     send_mail(:text)
   end
 
@@ -111,7 +110,7 @@ class Emailer < ActionMailer::Base
   end
 
   def public_key_upload_notification(public_key_txt, current_user, affiliate)
-    setup_email(%w{sysadmin@mail.usasearch.howto.gov ***REMOVED***}, __method__)
+    setup_email(['sysadmin@mail.usasearch.howto.gov', SEARCH_EMAIL_ADDRESS], __method__)
     @affiliate = affiliate
     @current_user = current_user
     @public_key_txt = public_key_txt
