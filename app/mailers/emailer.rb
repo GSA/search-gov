@@ -2,11 +2,13 @@ class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
   BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
+  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
   SEARCH_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
-  DELIVER_FROM_EMAIL_ADDRESS = SEARCH_EMAIL_ADDRESS
+  REPLY_TO_EMAIL_ADDRESS = SEARCH_EMAIL_ADDRESS
 
   self.default bcc: BCC_TO_EMAIL_ADDRESS,
-               from: DELIVER_FROM_EMAIL_ADDRESS
+               from: DELIVER_FROM_EMAIL_ADDRESS,
+               reply_to: REPLY_TO_EMAIL_ADDRESS
 
   def password_reset_instructions(user, host_with_port)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token, :protocol => 'https', :host => host_with_port)
