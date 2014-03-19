@@ -11,13 +11,13 @@ Given /^the following DailyQueryStats exist:$/ do |table|
                            :affiliate => hash["affiliate"],
                            :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
-  Sunspot.commit
+  ElasticDailyQueryStat.commit
 end
 
 Given /^the following DailyQueryStats exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
   DailyQueryStat.delete_all
   table.hashes.each { |hash| DailyQueryStat.create!(:day => hash["day"].to_date, :query => hash["query"], :times => hash["times"], :affiliate => affiliate_name) }
-  Sunspot.commit
+  ElasticDailyQueryStat.commit
 end
 
 Given /^the following NoResultsStats exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|

@@ -6,10 +6,6 @@ class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
     self.highlighted_fields = %w(phrase)
   end
 
-  def query(json)
-    filtered_query(json)
-  end
-
   def filtered_query_filter(json)
     json.filter do
       json.bool do
@@ -20,12 +16,6 @@ class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
           json.term { json.keyword @q.downcase }
         end
       end
-    end
-  end
-
-  def highlight_fields(json)
-    json.fields do
-      json.set! :phrase, { number_of_fragments: 0 }
     end
   end
 

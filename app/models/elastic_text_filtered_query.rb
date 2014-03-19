@@ -1,5 +1,9 @@
 class ElasticTextFilteredQuery < ElasticQuery
 
+  def query(json)
+    filtered_query(json)
+  end
+
   def filtered_query(json)
     json.query do
       json.filtered do

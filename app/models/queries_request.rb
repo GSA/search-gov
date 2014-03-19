@@ -33,7 +33,7 @@ class QueriesRequest
   end
 
   def matching_ids
-    ids = DailyQueryStat.search_for(@query, @site.name, @start_date, @end_date, MAX_RESULTS)
+    ids = ElasticDailyQueryStat.search_for(q: @query, affiliate: @site.name, start_date: @start_date, end_date: @end_date, size: MAX_RESULTS).ids
     ids = [-1] unless ids.present?
     "and id in (#{ids.join(',')})"
   end

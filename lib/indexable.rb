@@ -76,6 +76,11 @@ module Indexable
     bulk(bulkify_delete(ids))
   end
 
+  def delete_by_query(options)
+    query = options.collect { |key, value| [key, value].join(':') }.join(' ')
+    ES::client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: "AND" }
+  end
+
   def bulkify(records)
     records.reduce([]) do |bulk_array, record|
       meta_data = { _index: writer_alias, _type: index_type, _id: record[:id] }

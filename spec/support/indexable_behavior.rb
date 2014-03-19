@@ -87,6 +87,15 @@ shared_examples "an indexable" do
         described_class.bulk(body)
       end
     end
+
+    describe ".delete_by_query" do
+      it 'should send a delete by query request to each cluster' do
+        [es1, es2].each do |client|
+          client.should_receive(:delete_by_query).with(index: described_class.writer_alias, q: 'foo:1 bar:two', default_operator: "AND")
+        end
+        described_class.delete_by_query({ foo: 1, bar: 'two' })
+      end
+    end
   end
 
   describe "bulk request errors" do

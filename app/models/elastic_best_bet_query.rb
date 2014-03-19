@@ -6,10 +6,6 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
     @affiliate_id = options[:affiliate_id]
   end
 
-  def query(json)
-    filtered_query(json)
-  end
-
   def filtered_query_filter(json)
     json.filter do
       json.bool do

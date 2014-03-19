@@ -7,10 +7,6 @@ class ElasticTweetQuery < ElasticTextFilteredQuery
     self.highlighted_fields = %w(tweet_text)
   end
 
-  def query(json)
-    filtered_query(json)
-  end
-
   def filtered_query_filter(json)
     json.filter do
       json.bool do
@@ -27,12 +23,6 @@ class ElasticTweetQuery < ElasticTextFilteredQuery
       json.published_at do
         json.gt @since_ts
       end
-    end
-  end
-
-  def highlight_fields(json)
-    json.fields do
-      json.set! :tweet_text, { number_of_fragments: 0 }
     end
   end
 

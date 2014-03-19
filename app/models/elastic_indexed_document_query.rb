@@ -7,10 +7,6 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
     self.highlighted_fields = %w(title description body)
   end
 
-  def query(json)
-    filtered_query(json)
-  end
-
   def filtered_query_filter(json)
     json.filter do
       json.bool do
