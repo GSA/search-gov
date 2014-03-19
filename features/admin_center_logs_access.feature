@@ -20,7 +20,7 @@ Feature: Affiliate log access
     And I submit the form by pressing "Upload"
     Then I should land on the aff.gov's Dashboard page
     And I should see "Public key successfully uploaded."
-    And "search@support.digitalgov.gov" should receive an email
+    And "***REMOVED***" should receive an email
 
     When I open the email
     Then I should see "Request for log file access" in the email subject
