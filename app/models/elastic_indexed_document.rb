@@ -1,7 +1,12 @@
 class ElasticIndexedDocument
   extend Indexable
 
-  self.settings = ElasticSettings::COMMON
+  self.settings = ElasticSettings::COMMON.deep_merge(
+    index: {
+      number_of_shards: 2,
+      number_of_replicas: 0
+    }
+  )
 
   self.mappings = {
     index_type => ElasticMappings::COMMON.deep_merge(
