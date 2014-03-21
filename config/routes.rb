@@ -1,11 +1,11 @@
 UsasearchRails3::Application.routes.draw do
-  get '/search' => 'searches#index', as: :search, defaults: { host: USASEARCH_HOST }
-  get '/api/search' => 'api#search', as: :api_search, defaults: { host: USASEARCH_HOST }
-  get '/search/advanced' => 'searches#advanced', as: :advanced_search, defaults: { host: USASEARCH_HOST }
-  get '/search/images' => 'image_searches#index', as: :image_search, defaults: { host: USASEARCH_HOST }
-  get '/search/docs' => 'searches#docs', as: :docs_search, defaults: { host: USASEARCH_HOST }
-  get '/search/news' => 'searches#news', as: :news_search, defaults: { host: USASEARCH_HOST }
-  get '/search/news/videos' => 'searches#video_news', as: :video_news_search, defaults: { host: USASEARCH_HOST }
+  get '/search' => 'searches#index', as: :search
+  get '/api/search' => 'api#search', as: :api_search
+  get '/search/advanced' => 'searches#advanced', as: :advanced_search
+  get '/search/images' => 'image_searches#index', as: :image_search
+  get '/search/docs' => 'searches#docs', as: :docs_search
+  get '/search/news' => 'searches#news', as: :news_search
+  get '/search/news/videos' => 'searches#video_news', as: :video_news_search
   namespace :api do
     namespace :v1 do
       get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }

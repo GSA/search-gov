@@ -4,13 +4,12 @@ set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
 role :daemon, "192.168.100.169"
 
-before 'deploy:assets:precompile', 'staging_yaml_files'
+before "deploy:create_symlink", "staging_yaml_files"
 before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
 task :staging_yaml_files, roles: :app do
   run "cp #{shared_path}/system/usajobs.yml #{release_path}/config/usajobs.yml"
-  run "cp #{shared_path}/system/usasearch.yml #{release_path}/config/usasearch.yml"
 end
 
 task :restart_resque_workers, :roles => :web do

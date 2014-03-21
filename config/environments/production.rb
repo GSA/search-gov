@@ -91,5 +91,3 @@ RECAPTCHA_PUBLIC_KEY = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
 TwitterClient.twitter_auth_env = :cron
-
-USASEARCH_HOST = USASEARCH_HOST_WITH_PORT = YAML.load_file("#{Rails.root}/config/usasearch.yml")['host']

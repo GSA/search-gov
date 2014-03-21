@@ -71,7 +71,7 @@ module AffiliateHelper
 
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "//#{USASEARCH_HOST_WITH_PORT}/javascripts/remote.loader.js";
+      script.src = "//#{request.host_with_port}/javascripts/remote.loader.js";
       document.getElementsByTagName("head")[0].appendChild(script);
     JS
     javascript_tag embed_code
