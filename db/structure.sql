@@ -230,7 +230,8 @@ CREATE TABLE `daily_query_stats` (
   `locale` varchar(5) DEFAULT 'en',
   PRIMARY KEY (`id`),
   KEY `da` (`day`,`affiliate`),
-  KEY `ad` (`affiliate`,`day`)
+  KEY `ad` (`affiliate`,`day`),
+  KEY `qd` (`query`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `daily_search_module_stats` (
@@ -2056,3 +2057,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140304201429');
 INSERT INTO schema_migrations (version) VALUES ('20140317203652');
 
 INSERT INTO schema_migrations (version) VALUES ('20140319192820');
+
+INSERT INTO schema_migrations (version) VALUES ('20140324183225');
