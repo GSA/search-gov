@@ -1,36 +1,41 @@
 class OdieImageSearch < OdieSearch
-  
+
   def initialize(options = {})
     super(options)
   end
-  
+
   def search
-    FlickrPhoto.search_for(@query, @affiliate, @page, @per_page)
+    ElasticFlickrPhoto.search_for(q: @query,
+                                  affiliate_id: @affiliate.id,
+                                  language: @affiliate.locale,
+                                  size: @per_page,
+                                  offset: (@page - 1) * @per_page,
+                                  highlighting: false)
   end
-  
+
   def cache_key
     ["odie_image", @query, @affiliate.id, @page, @per_page].join(':')
   end
-  
+
   def process_results(response)
-    processed = response.hits(:verify => true).collect do |hit|
-      {        
-        "title" => hit.instance.title,
-        "Width" => hit.instance.width_o,
-        "Height" => hit.instance.height_o,
+    processed = response.results.collect do |result|
+      {
+        "title" => result.title,
+        "Width" => result.width_o,
+        "Height" => result.height_o,
         "FileSize" => 0,
         "ContentType" => "",
-        "Url" => hit.instance.flickr_url,
-        "DisplayUrl" => hit.instance.flickr_url,
-        "MediaUrl" => hit.instance.url_o,
+        "Url" => result.flickr_url,
+        "DisplayUrl" => result.flickr_url,
+        "MediaUrl" => result.url_o,
         "Thumbnail" => {
-          "Url" => hit.instance.url_q,
+          "Url" => result.url_q,
           "FileSize" => 0,
-          "Width" => hit.instance.width_q,
-          "Height" => hit.instance.height_q,
+          "Width" => result.width_q,
+          "Height" => result.height_q,
           "ContentType" => ""
-          }
         }
+      }
     end
     processed.compact
   end

@@ -26,7 +26,8 @@ class GovboxSet
   private
 
   def init_photos
-    @photos = FlickrPhoto.search_for(@query, @affiliate) if @affiliate.is_photo_govbox_enabled?
+    options = {q: @query, affiliate_id: @affiliate.id, size: 5, language: @affiliate.locale, highlighting: false}
+    @photos = ElasticFlickrPhoto.search_for(options) if @affiliate.is_photo_govbox_enabled?
   end
 
   def init_related_search

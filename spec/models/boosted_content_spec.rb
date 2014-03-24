@@ -75,12 +75,6 @@ describe BoostedContent do
     end
   end
 
-  describe ".recent" do
-    it "should include a scope called 'recent'" do
-      BoostedContent.recent.should_not be_nil
-    end
-  end
-
   describe '.substring_match(query)' do
     context 'when only the parent record has substring match in selected text fields' do
       before do

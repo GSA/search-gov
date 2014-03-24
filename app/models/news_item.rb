@@ -9,7 +9,6 @@ class NewsItem < ActiveRecord::Base
   validates_uniqueness_of :guid, scope: :rss_feed_url_id, :case_sensitive => false
   validates_uniqueness_of :link, scope: :rss_feed_url_id, :case_sensitive => false
   belongs_to :rss_feed_url
-  scope :recent, :order => 'published_at DESC', :limit => 10
   serialize :properties, Hash
 
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new

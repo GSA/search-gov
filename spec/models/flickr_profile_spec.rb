@@ -73,7 +73,7 @@ describe FlickrProfile do
           profile = FlickrProfile.create(:url => "http://flickr.com/photos/USAgency", :affiliate => @affiliate)
           profile.errors.should_not be_empty
           profile.id.should be_nil
-          profile.errors.first.should == [:base, "We could not find the Flickr user that you specified.  Please modify the URL and try again."]
+          profile.errors.first.should == [:base, "We could not find the Flickr user that you specified. Please modify the URL and try again."]
         end
       end
     end
@@ -99,7 +99,7 @@ describe FlickrProfile do
           profile = FlickrProfile.create(:url => "http://flickr.com/groups/USAgency", :affiliate => @affiliate)
           profile.errors.should_not be_empty
           profile.id.should be_nil
-          profile.errors.first.should == [:base, "We could not find the Flickr group that you specified.  Please modify the URL and try again."]
+          profile.errors.first.should == [:base, "We could not find the Flickr group that you specified. Please modify the URL and try again."]
         end
       end
     end

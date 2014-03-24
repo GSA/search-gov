@@ -155,7 +155,7 @@ Given /^the following FlickrPhotos exist:$/ do |table|
     flickr_photo = FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :url_q => hash[:url_q], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :flickr_profile => affiliate.flickr_profiles.first)
     flickr_photo.update_attributes(:date_taken => Date.parse(hash[:date_taken])) unless hash[:date_taken].blank?
   end
-  FlickrPhoto.reindex
+  ElasticFlickrPhoto.commit
 end
 
 Then /^I should see (\d+) collapsible facet values?$/ do |count|

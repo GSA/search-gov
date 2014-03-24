@@ -31,7 +31,6 @@ class FeaturedCollection < ActiveRecord::Base
   before_save :ensure_http_prefix, :sanitize_html_in_title
   before_post_process :check_image_validation
   before_update :clear_existing_image
-  scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
   scope :substring_match, -> substring do
     select('DISTINCT featured_collections.*').
         includes([:featured_collection_keywords, :featured_collection_links]).

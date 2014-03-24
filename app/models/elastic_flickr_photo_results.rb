@@ -1,0 +1,2 @@
+class ElasticFlickrPhotoResults < ElasticTitleDescriptionResults
+end

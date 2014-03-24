@@ -27,7 +27,7 @@ describe ImageSearch do
         FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his unusual image daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
         FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in unusual image car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
         FlickrPhoto.create!(:flickr_id => 7, :flickr_profile => flickr_profile, :title => 'irrelevant photo', :description => 'irrelevant', :tags => "car,batman", :date_taken => Time.now - 14.days)
-        FlickrPhoto.reindex
+        ElasticFlickrPhoto.commit
       end
 
       it 'should fill the results with the flickr photos' do

@@ -5,6 +5,6 @@
       %span.recommended-by
         = t :by
         = affiliate.display_name
-    - search.photos.hits.each do |photo|
+    - search.photos.results.each do |photo|
       .photo
         = display_flickr_photo_thumbnail(photo, search, affiliate)

@@ -221,7 +221,9 @@ describe GovboxSet do
 
     describe "photos" do
       before do
-        FlickrPhoto.stub!(:search_for).with('foo', affiliate).and_return "FlickrPhoto results"
+        ElasticFlickrPhoto.stub!(:search_for).
+          with(q: 'foo', affiliate_id: affiliate.id, language: affiliate.locale, size: 5, highlighting: false).
+          and_return "FlickrPhoto results"
       end
 
       context "when the affiliate has photo govbox enabled" do

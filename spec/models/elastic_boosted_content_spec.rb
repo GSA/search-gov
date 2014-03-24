@@ -7,7 +7,7 @@ describe ElasticBoostedContent do
 
   before do
     ElasticBoostedContent.recreate_index
-    affiliate.boosted_contents.destroy_all
+    affiliate.boosted_contents.delete_all
     affiliate.locale = 'en'
   end
 

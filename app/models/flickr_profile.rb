@@ -46,20 +46,18 @@ class FlickrProfile < ActiveRecord::Base
     unless self.profile_type and self.profile_id
       if self.url =~ /\/photos\//
         self.profile_type = "user"
-        begin
-          self.profile_id = flickr.urls.lookupUser(:url => self.url)["id"]
-        rescue
-          errors.add(:base, "We could not find the Flickr user that you specified.  Please modify the URL and try again.")
-        end
       elsif self.url =~ /\/groups\//
         self.profile_type = "group"
-        begin
-          self.profile_id = flickr.urls.lookupGroup(:url => self.url)["id"]
-        rescue
-          errors.add(:base, "We could not find the Flickr group that you specified.  Please modify the URL and try again.")
-        end
       end
+      assign_profile_id
     end
+  end
+
+  def assign_profile_id
+    lookup_method = "lookup#{self.profile_type.capitalize}"
+    self.profile_id = flickr.urls.send(lookup_method, url: self.url)["id"]
+  rescue
+    errors.add(:base, "We could not find the Flickr #{self.profile_type} that you specified. Please modify the URL and try again.")
   end
 
   def has_valid_url?

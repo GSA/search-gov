@@ -16,7 +16,6 @@ class BoostedContent < ActiveRecord::Base
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
   before_save :ensure_http_prefix_on_url, :sanitize_html_in_fields
 
-  scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
   scope :substring_match, -> substring do
     select('DISTINCT boosted_contents.*').
         includes(:boosted_content_keywords).

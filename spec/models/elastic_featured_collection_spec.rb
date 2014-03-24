@@ -7,7 +7,7 @@ describe ElasticFeaturedCollection do
 
   before do
     ElasticFeaturedCollection.recreate_index
-    affiliate.featured_collections.destroy_all
+    affiliate.featured_collections.delete_all
     affiliate.locale = 'en'
   end
 
