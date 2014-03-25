@@ -19,7 +19,6 @@ showOrHideClearButton = ->
     $('#search-bar').removeClass 'has-query-term'
 
 whenFocusOnQuery = (e) ->
-  console.log 'focus on query'
   return if e.which? and e.which == 13
   e.stopPropagation()
   $('#nav-dropdown').addClass 'collapsed'
