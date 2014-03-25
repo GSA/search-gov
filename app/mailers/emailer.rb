@@ -5,6 +5,7 @@ class Emailer < ActionMailer::Base
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
   SEARCH_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
   REPLY_TO_EMAIL_ADDRESS = SEARCH_EMAIL_ADDRESS
+  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
 
   self.default bcc: BCC_TO_EMAIL_ADDRESS,
                from: DELIVER_FROM_EMAIL_ADDRESS,
@@ -100,7 +101,7 @@ class Emailer < ActionMailer::Base
     @affiliate = affiliate
     @current_user = current_user
     @external_tracking_code = external_tracking_code
-    setup_email('***REMOVED***', __method__)
+    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS, to: SEARCH_EMAIL_ADDRESS }, __method__)
     send_mail(:text)
   end
 
@@ -112,7 +113,9 @@ class Emailer < ActionMailer::Base
   end
 
   def public_key_upload_notification(public_key_txt, current_user, affiliate)
-    setup_email(%w{sysadmin@mail.usasearch.howto.gov ***REMOVED***}, __method__)
+    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
+                  to: ['sysadmin@mail.usasearch.howto.gov', SEARCH_EMAIL_ADDRESS] },
+                __method__)
     @affiliate = affiliate
     @current_user = current_user
     @public_key_txt = public_key_txt
@@ -128,12 +131,12 @@ class Emailer < ActionMailer::Base
 
   private
 
-  def setup_email(recipients, method_name)
+  def setup_email(params, method_name)
     @sent_on = Time.now
     headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
     email_template = EmailTemplate.find_by_name(method_name)
     if email_template
-      @recipients = recipients
+      @recipients, @sender = extract_recipients_and_sender(params)
       @email_template_subject = email_template.subject
       @email_template_body = email_template.body
     else
@@ -144,8 +147,23 @@ class Emailer < ActionMailer::Base
     @subject = ERB.new(@email_template_subject).result(binding)
   end
 
+  def extract_recipients_and_sender(params)
+    case params
+      when Hash
+        [params[:to], params[:from]]
+      else
+        [params, nil]
+    end
+  end
+
   def send_mail(format_method)
-    mail(to: @recipients, subject: @subject, date: @sent_on) do |format|
+    email_headers = { to: @recipients, subject: @subject, date: @sent_on }
+    if @sender.present?
+      email_headers[:from] = @sender
+      email_headers[:reply_to] = nil
+    end
+
+    mail email_headers do |format|
       format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
