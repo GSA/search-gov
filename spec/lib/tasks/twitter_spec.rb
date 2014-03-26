@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe "Twitter rake tasks" do
-  disconnect_sunspot
-
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake

@@ -33,13 +33,14 @@ describe WebResultsPostProcessor do
         results << Hashie::Rash.new(title: 'Title w/o highlighting',
                                     content: 'Description w/o highlighting',
                                     unescaped_url: 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm')
-        results << Hashie::Rash.new(title: 'NewsItem title highlighted from Solr',
-                                    content: 'NewsItem description highlighted from Solr',
+        results << Hashie::Rash.new(title: 'NewsItem title highlighted from ES',
+                                    content: 'NewsItem description highlighted from ES',
                                     unescaped_url: 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm')
       end
 
       before do
-        NewsItem.destroy_all
+        ElasticNewsItem.recreate_index
+        NewsItem.delete_all
         NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
                          :title => "NewsItem title highlighted from ElasticSearch",
                          :description => "NewsItem description highlighted from ElasticSearch",

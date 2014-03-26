@@ -100,19 +100,6 @@ WITH SERDEPROPERTIES (
 )
 STORED AS TEXTFILE;
 
-CREATE TABLE solr_query_stats (
-params STRING,
-hits STRING,
-status STRING,
-qtime STRING)
-PARTITIONED BY (ds STRING)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'
-WITH SERDEPROPERTIES (
-"input.regex" = ".*params=\\{([^}]*)\\} hits=([0-9]*) status=([0-9]*) QTime=([0-9]*).$",
-"output.format.string" = "%1$s %2$s %3$s %4$s"
-)
-STORED AS TEXTFILE;
-
 CREATE TABLE appsusagov (
 host STRING,
 identity STRING,
@@ -250,12 +237,6 @@ select ds as ds,
     regexp_replace(agent, "\"" , "") agent
 from appsusagov;
 
-create view solr_query_stats_view
-AS
-select ds,hits,status,qtime, params, regexp_extract(params, 'type:([A-Z][a-z][a-zA-Z]*)', 1) index_name
-from solr_query_stats
-where not params like '%newSearcher%';
-
 create view search_usa_gov_logs_view
 AS
 select ds as ds,
@@ -345,7 +326,6 @@ select ds,
 get_json_object(a.json,'$.total_time') total_time,
 get_json_object(a.json,'$.db_time') db_time,
 get_json_object(a.json,'$.view_time') view_time,
-get_json_object(a.json,'$.solr_time') solr_time,
 get_json_object(a.json,'$.request_url') request_url
 from app_metrics a;
 

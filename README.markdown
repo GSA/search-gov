@@ -38,16 +38,9 @@ A few tips when working with asset pipeline:
         Rails.application.assets['relative_path/to_asset.ext']
 
 
-## Solr and Elasticsearch
+## Elasticsearch
 
-We're using Solr for fulltext search but we're migrating to [Elasticsearch](http://www.elasticsearch.org/).
-
-You can start/stop/reindex Solr like this:
-
-    rake sunspot:solr:start
-    rake sunspot:solr:stop
-    rake sunspot:solr:run
-    rake sunspot:solr:reindex
+We're using [Elasticsearch](http://www.elasticsearch.org/) for fulltext search and query analytics.
 
 On a Mac, Elasticsearch 1.0 is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
@@ -121,10 +114,6 @@ We use poltergeist gem to test Javascript. This gem depends on PhantomJS.
 Download and install PhantomJS:
 
 <http://phantomjs.org/download.html>
-
-These require a Solr server to be spun up.
-
-    rake sunspot:solr:start RAILS_ENV=test
 
 Make sure the unit tests and functional tests run:
 

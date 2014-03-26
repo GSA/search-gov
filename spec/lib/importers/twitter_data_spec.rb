@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe TwitterData do
-  disconnect_sunspot
-
   let(:client) { mock('Twitter Client') }
 
   describe '#import_profile' do

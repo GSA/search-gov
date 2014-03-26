@@ -807,7 +807,7 @@ Feature: Affiliate Search
     And I press "Buscar" in the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  Scenario: When a searcher enter query with invalid solr character
+  Scenario: When a searcher enters a query with invalid Lucene character
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |

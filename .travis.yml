@@ -11,10 +11,7 @@ before_script:
   - mysql -e 'create database usasearch_test;'
   - mysql -u travis -D usasearch_test < db/structure.sql
   - cp -p config/database.travis.yml config/database.yml
-  - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - RAILS_ENV=test bundle exec rake usasearch:elasticsearch:create_indexes
-after_script:
-  - RAILS_ENV=test bundle exec rake sunspot:solr:stop
 addons:
   code_climate:
     repo_token: 8fdbc26f64a4535d461b9a5bf1c4044fb7780c684edcd07c017d4b4616957a93

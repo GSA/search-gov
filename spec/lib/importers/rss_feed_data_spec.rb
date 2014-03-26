@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe RssFeedData do
-  disconnect_sunspot
   fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
   describe '#import' do

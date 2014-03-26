@@ -14,7 +14,6 @@ require 'remarkable_activerecord'
 require "email_spec"
 require "authlogic/test_case"
 require 'webrat'
-require 'sunspot/rails/spec_helper'
 require 'paperclip/matchers'
 require 'rspec/autorun'
 

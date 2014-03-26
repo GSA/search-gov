@@ -166,7 +166,7 @@ On staging server, type
 
     cap production deploy:setup
 
-Make sure database.yml, redis.yml and sunspot.yml are in place on each node in shared/system
+Make sure database.yml, redis.yml and elasticsearch.yml are in place on each node in shared/system
 
 On staging server, type
 
@@ -219,49 +219,6 @@ To see how many are there, run this from cron:
 To start/stop/restart the workers, do this:
 
     sudo service resque_workers (start|stop|restart)
-
-## Installing Solr
-
-These instructions assume you've got the search.usa.gov codebase deployed via Capistrano to the machine you're going to install Solr on.
-
-Make sure a recent java 1.6 runtime is installed
-
-    java -version
-
-As user 'search', get the version of Solr you need
-
-    cd ~/downloads
-    wget http://ftp.wayne.edu/apache//lucene/solr/3.5.0/apache-solr-3.5.0.tgz
-    tar xvfz apache-solr-3.5.0.tgz
-    sudo rm -rf ~search/solr
-    mv apache-solr-3.5.0/example ~search/solr
-
-Copy these three files (retaining their permissions) from a working solr machine
-
-    /etc/default/jetty
-    /etc/rc.d/init.d/jetty
-    ~/solr/etc/jetty-logging.xml
-
-Note that /etc/default/jetty probably points at a solr config directory in the deployment directory,
-so if you aren't deploying the search.usa.gov app to your solr server via Capistrano,
-you will need to copy over the lib/configuration directories from another server.
-
-Start it up
-
-    sudo service jetty start
-
-Ensure it starts on reboot
-
-    sudo chkconfig --level 345 jetty on
-
-Make sure Solr is listening on 8983:
-
-    sudo netstat -tlnp | grep java
-
-Make sure the logs don't have errors
-
-    cd ~/solr/logs
-    more *stderrout.log
 
 ##Installing Phusion Passenger on Apache
 

@@ -69,28 +69,8 @@ module ApplicationHelper
     I18n.locale.to_s == "es"
   end
 
-  def highlight_hit(hit, field_name)
-    sym = field_name.to_sym
-    return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
-    h hit.instance.send(field_name)
-  end
-
   def url_for_logout
     url_for(:controller => '/user_sessions', :action => :destroy)
-  end
-
-  def highlight_like_solr(text, highlights)
-    raw_text = text.to_str
-    done = {}
-    highlights.each do |highlight|
-      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).flatten.each do |term|
-        unless done.include?(term)
-          raw_text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
-          done[term] = true
-        end
-      end
-    end
-    raw raw_text
   end
 
   def breadcrumbs(breadcrumbs)
