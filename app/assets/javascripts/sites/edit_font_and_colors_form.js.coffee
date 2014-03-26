@@ -81,7 +81,9 @@ changeCssProperty = (e, cssPropertyValue) ->
   $(targetSelector).css targetCssProperty, cssPropertyValue for targetCssProperty in targetCssProperties
 
 $(document).on 'change', '#site_css_property_hash_font_family', (e) ->
-  changeCssProperty e, $(this).val()
+  fontFamilyName = $(this).val()
+  fontFamilyName = $('.font-colors-wrapper').data('defaultFontFamily') if fontFamilyName == 'Default'
+  changeCssProperty e, fontFamilyName
 
 showOrHideContentBorder = (e, isShowContentBorder) ->
   targetSelector = $(e.target).attr 'data-target-selector'

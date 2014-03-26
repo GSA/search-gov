@@ -151,7 +151,7 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Font & Colors page
-    Then the "Font Family" field should contain "Arial, sans-serif"
+    Then the "Font Family" field should contain "Default"
     And the "Default" radio button should be checked
     And the "Show Content Border" checkbox should not be checked
     And the "Show Content Box Shadow" checkbox should not be checked

@@ -133,10 +133,10 @@ describe Affiliate do
       it 'should set look_and_feel_css' do
         affiliate = Affiliate.create! @valid_attributes
 
-        expect(affiliate.look_and_feel_css).to match(/#search,#search_query\{font-family:Arial,sans-serif\}/)
+        expect(affiliate.look_and_feel_css).to include('font-family:"Maven Pro"')
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
-        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer.managed a:visited\{color:#00396f\}/)
-        expect(affiliate.mobile_look_and_feel_css).to match(/a:visited\{color:purple\}/)
+        expect(affiliate.look_and_feel_css).to include('#usasearch_footer.managed a:visited{color:#00396f}')
+        expect(affiliate.mobile_look_and_feel_css).to include('a:visited{color:purple}')
       end
 
       it 'should set Keen scoped key' do
@@ -323,7 +323,7 @@ describe Affiliate do
 
   describe "validations" do
     it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
-      Affiliate::FONT_FAMILIES.each do |font_family|
+      FontFamily::ALL.each do |font_family|
         Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family})).should be_valid
       end
     end
@@ -743,7 +743,7 @@ describe Affiliate do
     end
 
     context 'when theme is default' do
-      let(:css_property_hash) { { font_family: Affiliate::FONT_FAMILIES.last }.freeze }
+      let(:css_property_hash) { { font_family: FontFamily::ALL.last }.freeze }
       let(:affiliate) { Affiliate.create!(
         @valid_create_attributes.merge(theme: 'default',
                                        css_property_hash: css_property_hash)) }

@@ -310,7 +310,7 @@ describe Emailer do
     subject(:email) { Emailer.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
     it { should deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { should deliver_to(Emailer::SEARCH_EMAIL_ADDRESS) }
+    it { should deliver_to(SUPPORT_EMAIL_ADDRESS) }
     it { should_not reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { should have_body_text tracking_code }
   end
@@ -323,7 +323,7 @@ describe Emailer do
     subject(:email) { Emailer.public_key_upload_notification(public_key_text, current_user, affiliate) }
 
     it { should deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { should deliver_to('sysadmin@mail.usasearch.howto.gov', Emailer::SEARCH_EMAIL_ADDRESS) }
+    it { should deliver_to('sysadmin@mail.usasearch.howto.gov', SUPPORT_EMAIL_ADDRESS) }
     it { should_not reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { should have_body_text public_key_text }
   end

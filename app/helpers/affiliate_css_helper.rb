@@ -18,10 +18,14 @@ module AffiliateCssHelper
   end
 
   def render_affiliate_css_property_value(css_property_hash, property)
-    if property.to_s =~ /color/i
-      site_css_color_property(css_property_hash, property)
-    else
-      css_property_hash[property].blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : css_property_hash[property]
+    case property.to_s
+      when /color/i
+        site_css_color_property(css_property_hash, property)
+      when /font_family/i
+        FontFamily.get_css_property_value css_property_hash[property]
+      else
+        property_value = css_property_hash[property]
+        property_value.blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : property_value
     end
   end
   alias_method :site_css_property, :render_affiliate_css_property_value

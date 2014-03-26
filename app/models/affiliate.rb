@@ -152,7 +152,6 @@ class Affiliate < ActiveRecord::Base
     :page_background_image_file_size => 'Page Background Image file size'
   }
 
-  FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif']
   BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
   THEMES = ActiveSupport::OrderedHash.new
@@ -172,7 +171,7 @@ class Affiliate < ActiveRecord::Base
   THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = {
-    :font_family => FONT_FAMILIES[0],
+    :font_family => FontFamily::DEFAULT,
     :show_content_border => '0',
     :show_content_box_shadow => '0',
     :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
@@ -419,7 +418,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def validate_font_family(hash)
-    errors.add(:base, "Font family selection is invalid") if hash['font_family'].present? and !FONT_FAMILIES.include?(hash['font_family'])
+    errors.add(:base, "Font family selection is invalid") if hash['font_family'].present? and !FontFamily.valid?(hash['font_family'])
   end
 
   def validate_color_in_css_property_hash(hash)
@@ -555,7 +554,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def malformed_html_error_message(field_name)
-    email_link = %Q{<a href="mailto:***REMOVED***">***REMOVED***</a>}
+    email_link = %Q{<a href="mailto:#{SUPPORT_EMAIL_ADDRESS}">#{SUPPORT_EMAIL_ADDRESS}</a>}
     "HTML to customize the #{field_name.to_s} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end
 

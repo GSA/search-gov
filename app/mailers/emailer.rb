@@ -3,8 +3,7 @@ class Emailer < ActionMailer::Base
   default_url_options[:host] = APP_URL
   BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
-  SEARCH_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
-  REPLY_TO_EMAIL_ADDRESS = SEARCH_EMAIL_ADDRESS
+  REPLY_TO_EMAIL_ADDRESS = SUPPORT_EMAIL_ADDRESS
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
 
   self.default bcc: BCC_TO_EMAIL_ADDRESS,
@@ -101,7 +100,7 @@ class Emailer < ActionMailer::Base
     @affiliate = affiliate
     @current_user = current_user
     @external_tracking_code = external_tracking_code
-    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS, to: SEARCH_EMAIL_ADDRESS }, __method__)
+    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS, to: SUPPORT_EMAIL_ADDRESS }, __method__)
     send_mail(:text)
   end
 
@@ -114,7 +113,7 @@ class Emailer < ActionMailer::Base
 
   def public_key_upload_notification(public_key_txt, current_user, affiliate)
     setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-                  to: ['sysadmin@mail.usasearch.howto.gov', SEARCH_EMAIL_ADDRESS] },
+                  to: ['sysadmin@mail.usasearch.howto.gov', SUPPORT_EMAIL_ADDRESS] },
                 __method__)
     @affiliate = affiliate
     @current_user = current_user

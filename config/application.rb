@@ -75,6 +75,7 @@ SUPPORTED_VERTICALS = %w{web image recall}
 BLOG_URL = 'http://search.digitalgov.gov'
 TOS_URL = 'http://search.digitalgov.gov/tos'
 USA_GOV_URL = 'http://www.usa.gov'
+SUPPORT_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
 
 require 'resque/plugins/priority'
 require 'csv'

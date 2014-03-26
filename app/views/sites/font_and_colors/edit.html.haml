@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Font & Colors'
-.font-colors-wrapper
+.font-colors-wrapper{ data: { default_font_family: FontFamily::DEFAULT_CSS_PROPERTY } }
   #preview-font-colors{ preview_page_css_hash(@site.css_property_hash) }
     .serp-content{ preview_content_class_hash(@site), preview_content_css_hash(@site) }
       .serp-search-box
@@ -39,7 +39,7 @@
   = f.fields_for :css_property_hash do |css|
     = css.label :font_family, 'Font Family'
     = css.select :font_family,
-      options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@site.css_property_hash, :font_family)),
+      options_for_select(FontFamily::ALL, render_affiliate_css_property_value(@site.css_property_hash, :font_family)),
       {},
       { data: { 'target-css-properties' => 'font-family', 'target-selector' => '#preview-font-colors .serp-results-wrapper' } }
 
