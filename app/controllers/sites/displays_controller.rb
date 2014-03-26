@@ -31,7 +31,6 @@ class Sites::DisplaysController < Sites::SetupSiteController
                                   [:id, :position, :is_active] }].freeze
     params.require(:site).permit(
         :default_search_label,
-        :is_agency_govbox_enabled,
         :is_medline_govbox_enabled,
         :is_photo_govbox_enabled,
         :is_related_searches_enabled,

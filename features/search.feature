@@ -717,30 +717,6 @@ Feature: Affiliate Search
     And I press "Search" in the search box
     Then I should not see "Photos of 'america' by bar site"
 
-  Scenario: Searching within an agency on English SERP
-    Given the following Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | domains | is_agency_govbox_enabled | locale |
-      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | .gov    | true                     | en     |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | .gov    | true                     | es     |
-    And the following Agency entries exist:
-      | name | domain  |
-      | TSA  | tsa.gov |
-    And the following Agency Urls exist:
-      | name | locale | url                         |
-      | TSA  | en     | http://tsa.gov/             |
-      | TSA  | en     | http://www.tsa.gov/         |
-      | TSA  | en     | https://www.tsa.gov/        |
-      | TSA  | es     | http://www.tsa.gov/espanol/ |
-    When I am on usagov's search page
-    And I fill in "query" with "tsa"
-    And I press "Search" in the search box
-    Then I should see the agency govbox
-    When I fill in "query" with "benefits" in the agency govbox
-    And I press "Search" in the agency govbox
-    Then I should see the browser page titled "benefits - USA.gov Search Results"
-    And the "query" field should contain "benefits"
-    And I should see "We're including results for 'benefits' from only tsa.gov."
-
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:

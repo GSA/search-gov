@@ -65,10 +65,6 @@ module ApplicationHelper
     I18n.locale.to_s == "en"
   end
 
-  def spanish_locale?
-    I18n.locale.to_s == "es"
-  end
-
   def url_for_logout
     url_for(:controller => '/user_sessions', :action => :destroy)
   end

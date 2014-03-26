@@ -87,7 +87,6 @@ Feature: Manage Display
     And the "Is video govbox enabled" should be switched on
     And the "Is photo govbox enabled" should be switched on
     And the "Jobs enabled" should be switched off
-    And the "Is agency govbox enabled" should be switched off
     And the "Is related searches enabled" should be switched on
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
@@ -98,7 +97,6 @@ Feature: Manage Display
     And I switch off "Is video govbox enabled"
     And I switch off "Is photo govbox enabled"
     And I switch on "Jobs enabled"
-    And I switch on "Is agency govbox enabled"
     And I switch off "Is related searches enabled"
     And I switch on "Is medline govbox enabled"
     And I switch off "Is sayt enabled"
@@ -110,7 +108,6 @@ Feature: Manage Display
     And the "Is video govbox enabled" should be switched off
     And the "Is photo govbox enabled" should be switched off
     And the "Jobs enabled" should be switched on
-    And the "Is agency govbox enabled" should be switched on
     And the "Is related searches enabled" should be switched off
     And the "Is medline govbox enabled" should be switched on
     And the "Is sayt enabled" should be switched off

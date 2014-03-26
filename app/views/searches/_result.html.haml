@@ -1,11 +1,8 @@
-- if search.agency.present? and index == 0 and search.first_page? and agency_url_matches_by_locale(result['unescapedUrl'], search.agency, I18n.locale)
-  = render 'shared/agency_gov_box', :result => result, :search => search, :affiliate => affiliate, :index => index
-- else
-  .searchresult{:id => "searchresult#{index+1}"}
-    %h2
-      = display_web_result_extname_prefix(result)
-      = display_web_result_title(result, search, affiliate, index, @search_vertical)
-    %h3.result-url= truncate_url(result['unescapedUrl'])
-    - if result["publishedAt"]
-      %h4= time_ago_in_words(result["publishedAt"])
-    %h3= display_result_description(result)
+.searchresult{:id => "searchresult#{index+1}"}
+  %h2
+    = display_web_result_extname_prefix(result)
+    = display_web_result_title(result, search, affiliate, index, @search_vertical)
+  %h3.result-url= truncate_url(result['unescapedUrl'])
+  - if result["publishedAt"]
+    %h4= time_ago_in_words(result["publishedAt"])
+  %h3= display_result_description(result)
