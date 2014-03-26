@@ -1,7 +1,8 @@
 module MobileHelper
   DEFAULT_FONT_STYLESHEET_LINK = 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'.freeze
+
   def font_stylesheet_link_tag(affiliate)
-    stylesheet_link_tag(DEFAULT_FONT_STYLESHEET_LINK) if affiliate.css_property_hash[:font_family] == 'Default'
+    stylesheet_link_tag(DEFAULT_FONT_STYLESHEET_LINK) if FontFamily.default?(affiliate.css_property_hash[:font_family])
   end
 
   def mobile_header(affiliate)

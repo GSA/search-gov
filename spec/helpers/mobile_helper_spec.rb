@@ -1,7 +1,16 @@
 require 'spec_helper'
 
 describe MobileHelper do
-  describe 'mobile_header' do
+  describe '#font_stylesheet_link_tag' do
+    context 'font_family is blank' do
+      it 'returns default css font family' do
+        affiliate = mock_model(Affiliate, css_property_hash: {})
+        helper.font_stylesheet_link_tag(affiliate).should include(MobileHelper::DEFAULT_FONT_STYLESHEET_LINK)
+      end
+    end
+  end
+
+  describe '#mobile_header' do
     context 'when unable to retrieve mobile logo URL' do
       it 'renders the site display name' do
         mobile_logo = mock('mobile logo')
