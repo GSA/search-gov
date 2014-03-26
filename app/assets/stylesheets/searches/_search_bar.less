@@ -30,6 +30,10 @@
     border-right: 40px solid transparent;
     vertical-align: middle;
 
+    &::-ms-clear {
+      display: none;
+    }
+
     @media (min-width: @screen-sm) {
       border-right-width: 75px;
     }

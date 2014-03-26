@@ -1,0 +1,4 @@
+- featured_collection_links_list.each_with_index do |featured_collection_links, index|
+  %ul{ class: "links-#{index + 1}" }
+    - featured_collection_links.each_with_index do |link, index|
+      %li{ class: "fc-link-item-#{index + 1}" }= link_to_result_title result.id, link.title, link.url, position, 'BBG'

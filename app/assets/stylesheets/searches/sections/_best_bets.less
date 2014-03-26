@@ -7,12 +7,32 @@
       display: block;
     }
 
+    .featured-collection.two-column {
+      ul.links-2 {
+        display: none;
+        @media (min-width: @screen-sm) {
+          display: block;
+        }
+      }
+    }
+
     .featured-collection .links {
-      max-height: 8em;
+      max-height: 8.6em;
       overflow: hidden;
 
+      > ul > li {
+        display: none;
+      }
+
+      .fc-link-item-1,
+      .fc-link-item-2,
+      .fc-link-item-3,
+      .fc-link-item-4 {
+        display: block;
+      }
+
       @media (min-width: @screen-desktop) {
-        max-height: 6.4em;
+        max-height: 7em;
       }
     }
   }
@@ -85,6 +105,10 @@
     display: block;
     font-size: 1em;
     overflow: hidden;
+
+    > li {
+      display: block;
+    }
   }
 
   &.two-column ul {
@@ -96,6 +120,10 @@
 
   .title-and-links {
     .clearfix();
+
+    h3, ul {
+      padding: 0.3em;
+    }
   }
 
   &.has-image {

@@ -2,5 +2,8 @@
   = featured_collection_image result
   .title-and-links
     %h3= link_to_result_title(result.id, result.title, result.title_url, position, 'BBG')
-    .links= render partial: "featured_collection_#{result.layout.gsub(' ', '_')}_links",
-      locals: { result: result, position: position }
+    .links
+      = render partial: 'featured_collection_links_list',
+        locals: { result: result,
+                  position: position,
+                  featured_collection_links_list: featured_collection_links_list(result) }

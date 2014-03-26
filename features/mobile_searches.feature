@@ -27,6 +27,14 @@ Feature: Searches using mobile device
       | 44. Barack Obama                | http://www.whitehouse.gov/about/presidents/barackobama                 |
       | 43. George W. Bush              | http://www.whitehouse.gov/about/presidents/georgewbush                 |
       | The Presidents Photo Galleries  | http://www.whitehouse.gov/photos-and-video/photogallery/the-presidents |
+    And the following featured collections exist for the affiliate "es.agency.gov":
+      | title          | status | publish_start_on |
+      | Lo Más Popular | active | 2013-07-01       |
+    And the following featured collection links exist for featured collection titled "Lo Más Popular":
+      | title                                               | url                                                                           |
+      | Presidente Barack Obama: ganador elecciones de 2012 | http://www.usa.gov/gobiernousa/Temas/Votaciones/Presidente-Barack-Obama.shtml |
+      | Servicios por Internet                              | http://www.usa.gov/gobiernousa/Temas/Servicios.shtml                          |
+      | Seguros de salud                                    | http://www.usa.gov/gobiernousa/Salud-Nutricion-Seguridad/Salud/Seguros.shtml  |
     And the following Twitter Profiles exist:
       | screen_name | name          | twitter_id | affiliate     |
       | USASearch   | USASearch.gov | 123        | en.agency.gov |
@@ -56,6 +64,7 @@ Feature: Searches using mobile device
     And I press "Buscar"
     Then I should see Accionado por Bing logo
     And I should see 3 Best Bets Texts
+    And I should see 1 Best Bets Graphic
     And I should see "Mostrar más"
     And I should see "Mostrar menos"
     And I should see at least "2" web search results
