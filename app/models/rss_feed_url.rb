@@ -37,41 +37,36 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def self.enqueue_destroy_all_news_items_with_404
-    non_throttled_rss_feed_urls.to_a.shuffle.each(&:enqueue_destroy_news_items_with_404)
-    enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
+    enqueue_destroy_all_news_items_with_404_by_hosts unique_non_throttled_hosts
+    enqueue_destroy_all_news_items_with_404_by_hosts throttled_hosts, true
   end
 
-  def self.non_throttled_rss_feed_urls
-    throttled_rss_feed_url_ids = find_throttled_rss_feed_url_ids
-    rss_feed_urls = RssFeedUrl.rss_feed_owned_by_affiliate.active
-    rss_feed_urls = rss_feed_urls.where('rss_feed_urls.id NOT IN (?)', throttled_rss_feed_url_ids) if throttled_rss_feed_url_ids.present?
-    rss_feed_urls
+  def self.unique_non_throttled_hosts
+    unique_hosts(RssFeedUrl.rss_feed_owned_by_affiliate.active) - throttled_hosts
   end
 
-  def self.enqueue_destroy_all_news_items_with_404_on_throttled_rss_feed_urls
-    throttled_rss_feed_url_ids = find_throttled_rss_feed_url_ids
-    return if throttled_rss_feed_url_ids.blank?
-
-    throttled_news_items = NewsItem.where('rss_feed_url_id IN (?)', throttled_rss_feed_url_ids).limit(1)
-    first_news_item = throttled_news_items.order('id asc').first
-    return unless first_news_item
-
-    last_news_item = throttled_news_items.order('id desc').first
-
-    Resque.enqueue_with_priority(:low, NewsItemsChecker, throttled_rss_feed_url_ids, first_news_item.id, last_news_item.id, true)
+  def self.throttled_hosts
+    YAML.load_file("#{Rails.root}/config/throttled_rss_feed_hosts.yml") || []
   end
 
-  def self.find_throttled_rss_feed_url_ids
-    throttled_rss_feed_url_prefixes = YAML.load_file("#{Rails.root}/config/throttled_rss_feed_url_prefixes.yml") || []
-    throttled_rss_feed_url_prefixes.map do |url_prefix|
-      RssFeedUrl.rss_feed_owned_by_affiliate.active.where('url LIKE ?', "#{url_prefix}%").pluck(:id)
-    end.flatten.compact.uniq
+  def self.enqueue_destroy_all_news_items_with_404_by_hosts(hosts, is_throttled = false)
+    hosts.each do |host|
+      rss_feed_url_ids = RssFeedUrl.rss_feed_owned_by_affiliate.active.where('url LIKE ?', "%#{host}%").pluck(:id)
+      Resque.enqueue_with_priority(:low, NewsItemsChecker, rss_feed_url_ids, is_throttled)
+    end
+  end
+
+  def self.unique_hosts(rss_feed_urls)
+    domains = Set.new
+    rss_feed_urls.each do |rss_feed_url|
+      normalized_host = Addressable::URI.parse(rss_feed_url.url).normalized_host rescue nil
+      domains.add normalized_host if normalized_host
+    end
+    domains.to_a.sort
   end
 
   def enqueue_destroy_news_items_with_404(priority = :low)
-    news_items.find_in_batches(batch_size: 500) do |group|
-      Resque.enqueue_with_priority(priority, NewsItemsChecker, id, group.first.id, group.last.id)
-    end
+    Resque.enqueue_with_priority(priority, NewsItemsChecker, id) if rss_feed_owner_type == 'Affiliate'
   end
 
   def enqueue_destroy_news_items(priority = :low)
