@@ -64,7 +64,7 @@
   }
 }
 
-#spelling-suggestion, #results {
+#spelling-suggestion, #site-limits, #results {
   .content-block();
 }
 
@@ -79,6 +79,24 @@
   }
 
   .original-query {
+    font-size: @font-size-default;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+#site-limits {
+  .search-matching-site-limits {
+    font-size: @font-size-default;
+
+    a {
+      font-style: italic;
+    }
+  }
+
+  .search-all-sites {
     font-size: @font-size-default;
 
     a {
@@ -138,14 +156,6 @@
 #search .pagination {
   .content-block();
   font-size: 1.6em;
-
-  a, a:focus {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
 
   .disabled {
     .hidden();

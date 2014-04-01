@@ -4,6 +4,7 @@
     = render partial: 'no_results', locals: { search: @search }
 
   = spelling_suggestion(@search)
+  = matching_site_limits @search, @search_params
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?

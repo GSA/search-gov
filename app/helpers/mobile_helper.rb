@@ -39,6 +39,19 @@ module MobileHelper
     end
   end
 
+  def matching_site_limits(search, search_params)
+    return if search.matching_site_limits.blank?
+    search_matching_sites_link = link_to search.query, search_path(search_params)
+    matching_sites = content_tag(:span, search.matching_site_limits.join(', '))
+    search_all_sites_link = link_to search.query, search_path(search_params.except(:sitelimit))
+    render partial: 'searches/matching_site_limits',
+           locals: {
+               search_matching_sites_hash: {
+                   query: search_matching_sites_link, matching_sites: matching_sites },
+               search_all_sites_hash: { query: search_all_sites_link }
+           }
+  end
+
   def pagination_link_separator(page_str)
     page = page_str.to_i rescue 1
     content_tag(:span, "#{I18n.t :page} #{h params[:page]}", class: 'current_page') if page > 1
