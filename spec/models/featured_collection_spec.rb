@@ -23,14 +23,6 @@ describe FeaturedCollection do
   specify { FeaturedCollection.new(:status => 'inactive').should be_is_inactive }
   specify { FeaturedCollection.new(:status => 'inactive').should_not be_is_active }
 
-  FeaturedCollection::LAYOUTS.each do |layout|
-    it { should allow_value(layout).for(:layout) }
-  end
-  it { should_not allow_value("bogus layout").for(:layout) }
-
-  specify { FeaturedCollection.new(:layout => 'one column').should have_one_column_layout }
-  specify { FeaturedCollection.new(:layout => 'two column').should have_two_column_layout }
-
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
@@ -43,7 +35,6 @@ describe FeaturedCollection do
         specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
                                              :title_url => "#{prefix}#{title_url}",
                                              :status => 'active',
-                                             :layout => 'one column',
                                              :publish_start_on => '07/01/2011',
                                              :affiliate => @affiliate).title_url.should == "http://#{prefix}#{title_url}" }
       end
@@ -56,7 +47,6 @@ describe FeaturedCollection do
         specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
                                              :title_url => "#{prefix}#{title_url}",
                                              :status => 'active',
-                                             :layout => 'one column',
                                              :publish_start_on => '07/01/2011',
                                              :affiliate => @affiliate).title_url.should == "#{prefix}#{title_url}" }
       end
@@ -66,7 +56,6 @@ describe FeaturedCollection do
   it "should not allow publish start date before publish end date" do
     featured_collection = FeaturedCollection.create(:title => 'test title',
                                                     :status => 'active',
-                                                    :layout => 'one column',
                                                     :publish_start_on => '07/01/2012',
                                                     :publish_end_on => '07/01/2011',
                                                     :affiliate => @affiliate)
@@ -91,7 +80,6 @@ describe FeaturedCollection do
     let(:featured_collection) do
       featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                                  :status => 'active',
-                                                                 :layout => 'one column',
                                                                  :publish_start_on => Date.current)
       featured_collection.featured_collection_keywords.build(:value => 'test')
       featured_collection.save!
@@ -139,12 +127,10 @@ describe FeaturedCollection do
           affiliate.featured_collections.create!(:title => 'My awesome featured collection abc',
                                                  :title_url => 'http://www.dotgov.gov/page.html',
                                                  :status => 'active',
-                                                 :layout => 'one column',
                                                  :publish_start_on => Date.current)
           affiliate.featured_collections.create!(:title => 'Another awesome featured collection',
                                                  :title_url => 'http://www.dotgov.gov/defg.html',
                                                  :status => 'active',
-                                                 :layout => 'one column',
                                                  :publish_start_on => Date.current)
         end
 
@@ -176,7 +162,6 @@ describe FeaturedCollection do
           fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                     :title_url => 'http://www.dotgov.gov/page.html',
                                                     :status => 'active',
-                                                    :layout => 'one column',
                                                     :publish_start_on => Date.current)
           fc.featured_collection_keywords.build(:value => 'word1')
           fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
@@ -198,7 +183,6 @@ describe FeaturedCollection do
           fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                     :title_url => 'http://www.dotgov.gov/page.html',
                                                     :status => 'active',
-                                                    :layout => 'one column',
                                                     :publish_start_on => Date.current)
           fc.featured_collection_keywords.build(:value => 'word1')
           fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',

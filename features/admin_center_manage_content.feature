@@ -68,7 +68,6 @@ Feature: Manage Content
       | Image Attribution URL | www.noaa.gov/hurricane.html             |
     And I attach the file "features/support/small.jpg" to "Image"
     And I select "Active" from "Status"
-    And I select "One column" from "Layout"
     And I add the following best bets keywords:
       | keyword |
       | storm   |

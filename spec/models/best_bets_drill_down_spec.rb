@@ -55,7 +55,6 @@ describe BestBetsDrillDown do
       let(:first_featured_collection) { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
                                                                    :title_url => "http://www.gov.gov/1",
                                                                    :status => 'active',
-                                                                   :layout => 'one column',
                                                                    :publish_start_on => '07/01/2011',
                                                                    :affiliate => affiliate) }
 

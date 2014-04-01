@@ -879,7 +879,7 @@ Feature: Affiliate Search
       | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And the following Twitter Profiles exist:
       | screen_name | name            | twitter_id | affiliate  |
-      | USASearch   | USASearch.gov   | 123        | bar.gov    |
+      | USAgov      | USA.gov         | 123        | bar.gov    |
       | GobiernoUSA | GobiernoUSA.gov | 456        | es.bar.gov |
     And the following Tweets exist:
       | tweet_text                     | tweet_id | published_ago | twitter_profile_id | url                  | expanded_url                 | display_url           |
@@ -890,8 +890,8 @@ Feature: Affiliate Search
     And I fill in "query" with "season"
     And I press "Search" in the search box
     Then I should see "Recent tweet for 'season' by bar site"
-    And I should see a link to "USASearch.gov" with url for "http://twitter.com/USASearch"
-    And I should see "USASearch.gov @USASearch"
+    And I should see a link to "USAgov" with url for "http://twitter.com/USAgov"
+    And I should see "USA.gov @USAgov"
     And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
     And I should see "season" in bold font
     And I should not see "Summer season is great!"
@@ -1031,8 +1031,8 @@ Feature: Affiliate Search
       | display_name   | name          | contact_email   | contact_name | locale |
       | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
     And the following featured collections exist for the affiliate "agency.gov":
-      | title           | title_url                         | status   | publish_start_on | publish_end_on | layout       |
-      | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                | two column   |
+      | title           | title_url                         | status   | publish_start_on | publish_end_on |
+      | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |
     And the following featured collection links exist for featured collection titled "Tornado Warning":
       | title                 | url                                          |
       | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |

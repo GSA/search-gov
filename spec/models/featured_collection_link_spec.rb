@@ -18,7 +18,6 @@ describe FeaturedCollectionLink do
         specify do
           featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
                                                        :status => 'active',
-                                                       :layout => 'one column',
                                                        :publish_start_on => '07/01/2011',
                                                        :affiliate => @affiliate)
           featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',
@@ -37,7 +36,6 @@ describe FeaturedCollectionLink do
         specify do
           featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
                                                        :status => 'active',
-                                                       :layout => 'one column',
                                                        :publish_start_on => '07/01/2011',
                                                        :affiliate => @affiliate)
           featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',

@@ -17,11 +17,9 @@ describe ElasticFeaturedCollection do
         before do
           affiliate.featured_collections.create!(title: 'Tropical Hurricane Names',
                                                  status: 'active',
-                                                 layout: 'one column',
                                                  publish_start_on: Date.current)
           affiliate.featured_collections.create!(title: 'More Hurricane names involving tropical',
                                                  status: 'active',
-                                                 layout: 'one column',
                                                  publish_start_on: Date.current)
           ElasticFeaturedCollection.commit
         end
@@ -55,7 +53,6 @@ describe ElasticFeaturedCollection do
     before do
       featured_collection = affiliate.featured_collections.build(title: 'Tropical Hurricane Names',
                                                                  status: 'active',
-                                                                 layout: 'one column',
                                                                  publish_start_on: Date.current)
       featured_collection.featured_collection_links.build(title: 'Worldwide Tropical Cyclone Names Part1',
                                                           url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -82,7 +79,6 @@ describe ElasticFeaturedCollection do
       before do
         featured_collection = affiliate.featured_collections.build(title: 'Peas & Carrots',
                                                                    status: 'active',
-                                                                   layout: 'one column',
                                                                    publish_start_on: Date.current)
         featured_collection.featured_collection_links.build(title: 'highlighting and entities',
                                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -115,7 +111,7 @@ describe ElasticFeaturedCollection do
     context 'when title is really long' do
       before do
         long_title = "President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards."
-        affiliate.featured_collections.create!(title: long_title, status: 'active', layout: 'one column', publish_start_on: Date.current)
+        affiliate.featured_collections.create!(title: long_title, status: 'active', publish_start_on: Date.current)
         ElasticFeaturedCollection.commit
       end
 
@@ -131,9 +127,9 @@ describe ElasticFeaturedCollection do
     context "when there are active and inactive featured collections" do
       before do
         affiliate.featured_collections.create!(title: 'Tropical Hurricane Names', status: 'active',
-                                               layout: 'one column', publish_start_on: Date.current)
+                                               publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Retired Tropical Hurricane names', status: 'inactive',
-                                               layout: 'one column', publish_start_on: Date.current)
+                                               publish_start_on: Date.current)
         ElasticFeaturedCollection.commit
       end
 
@@ -149,7 +145,7 @@ describe ElasticFeaturedCollection do
 
       before do
         other_affiliate.locale = 'en'
-        values = { title: 'Tropical Hurricane Names', status: 'active', layout: 'one column', publish_start_on: Date.current }
+        values = { title: 'Tropical Hurricane Names', status: 'active', publish_start_on: Date.current }
         affiliate.featured_collections.create!(values)
         other_affiliate.featured_collections.create!(values)
 
@@ -166,9 +162,9 @@ describe ElasticFeaturedCollection do
     context 'when publish_start_on date has not been reached' do
       before do
         affiliate.featured_collections.create!(title: 'Current Tropical Hurricane Names', status: 'active',
-                                               layout: 'one column', publish_start_on: Date.current)
+                                               publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Future Tropical Hurricane names', status: 'active',
-                                               layout: 'one column', publish_start_on: Date.tomorrow)
+                                               publish_start_on: Date.tomorrow)
         ElasticFeaturedCollection.commit
       end
 
@@ -182,9 +178,9 @@ describe ElasticFeaturedCollection do
     context 'when publish_end_on date has been reached' do
       before do
         affiliate.featured_collections.create!(title: 'Current Tropical Hurricane Names', status: 'active',
-                                               layout: 'one column', publish_start_on: Date.current)
+                                               publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Expired Tropical Hurricane names', status: 'active',
-                                               layout: 'one column', publish_start_on: 1.week.ago.to_date, publish_end_on: Date.current)
+                                               publish_start_on: 1.week.ago.to_date, publish_end_on: Date.current)
         ElasticFeaturedCollection.commit
       end
 
@@ -200,7 +196,6 @@ describe ElasticFeaturedCollection do
     before do
       featured_collection = affiliate.featured_collections.build(title: 'Obamå',
                                                                  status: 'active',
-                                                                 layout: 'one column',
                                                                  publish_start_on: Date.current)
       featured_collection.featured_collection_links.build(title: 'Bideñ',
                                                           url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
@@ -260,7 +255,6 @@ describe ElasticFeaturedCollection do
         before do
           featured_collection = affiliate.featured_collections.build(title: 'The affiliate interns use powerful engineering computers',
                                                                      status: 'active',
-                                                                     layout: 'one column',
                                                                      publish_start_on: Date.current)
           featured_collection.featured_collection_links.build(title: 'Organic feet symbolize with oceanic views',
                                                               url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
@@ -286,7 +280,6 @@ describe ElasticFeaturedCollection do
           affiliate.locale = 'es'
           featured_collection = affiliate.featured_collections.build(title: 'Leyes y el rey',
                                                                      status: 'active',
-                                                                     layout: 'one column',
                                                                      publish_start_on: Date.current)
           featured_collection.featured_collection_links.build(title: 'Beneficios y ayuda financiera verificación',
                                                               url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',

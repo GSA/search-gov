@@ -23,8 +23,8 @@ Feature: Searches using mobile device
       | url                                     | title                  | description                                            |
       | http://hippo.gov/hippopotamus-amphibius | Hippopotamus amphibius | large, mostly herbivorous mammal in sub-Saharan Africa |
     And the following featured collections exist for the affiliate "en.agency.gov":
-      | title                       | title_url                                  | status | publish_start_on | publish_end_on | layout     | image_file_path            |
-      | The 21st Century Presidents | http://www.whitehouse.gov/about/presidents | active | 2013-07-01       |                | two column | features/support/small.jpg |
+      | title                       | title_url                                  | status | publish_start_on | publish_end_on | image_file_path            |
+      | The 21st Century Presidents | http://www.whitehouse.gov/about/presidents | active | 2013-07-01       |                | features/support/small.jpg |
     And the following featured collection links exist for featured collection titled "The 21st Century Presidents":
       | title                           | url                                                                    |
       | 44. Barack Obama                | http://www.whitehouse.gov/about/presidents/barackobama                 |
@@ -40,11 +40,11 @@ Feature: Searches using mobile device
       | Seguros de salud                                    | http://www.usa.gov/gobiernousa/Salud-Nutricion-Seguridad/Salud/Seguros.shtml  |
     And the following Twitter Profiles exist:
       | screen_name | name          | twitter_id | affiliate     |
-      | USASearch   | USASearch.gov | 123        | en.agency.gov |
+      | USASearch   | USASearch.gov | 123456     | en.agency.gov |
     And the following Tweets exist:
       | tweet_text                                                                                    | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
-      | President Obama: "Don’t Just Play on Your Phone, Program It"                                  | 234567   | week          | 123                |                        |                         |                  |
-      | "We wish you all a blessed and safe holiday season." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123                | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
+      | President Obama: "Don’t Just Play on Your Phone, Program It"                                  | 234567   | week          | 123456             |                        |                         |                  |
+      | "We wish you all a blessed and safe holiday season." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
     And the following SAYT Suggestions exist for en.agency.gov:
       | phrase                 |
       | president list         |

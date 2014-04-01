@@ -4,15 +4,12 @@ class FeaturedCollection < ActiveRecord::Base
 
   CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
-  LAYOUTS = ['one column', 'two column']
-  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout] }
 
   cattr_reader :per_page
   @@per_page = 20
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :publish_start_on
-  validates_inclusion_of :layout, :in => LAYOUTS, :message => 'must be selected'
   validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validates_attachment_content_type :image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
 
@@ -42,12 +39,6 @@ class FeaturedCollection < ActiveRecord::Base
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
 
   attr_accessor :mark_image_for_deletion
-
-  LAYOUTS.each do |layout|
-    define_method "has_#{layout.parameterize('_')}_layout?" do
-      self.layout == layout
-    end
-  end
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
       :publish_start_on => "Publish start date",

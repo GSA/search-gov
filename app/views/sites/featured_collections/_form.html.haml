@@ -6,8 +6,6 @@
 = form.text_field :title_url
 = form.label :status, nil, class: 'required'
 = form.select :status, FeaturedCollection::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
-= form.label :layout, nil, class: 'required'
-= form.select :layout, FeaturedCollection::LAYOUT_OPTIONS, { include_blank: 'Select a layout' }, class: 'required'
 
 .required= form.label :publish_start_on, 'Publish Start Date'
 .input-append.calendar

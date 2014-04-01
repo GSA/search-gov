@@ -1,39 +1,9 @@
 #best-bets {
   .content-block();
-  padding-bottom: 2px;
 
   &.collapsed {
     #best-bet-1, #best-bet-2 {
       display: block;
-    }
-
-    .featured-collection.two-column {
-      ul.links-2 {
-        display: none;
-        @media (min-width: @screen-sm) {
-          display: block;
-        }
-      }
-    }
-
-    .featured-collection .links {
-      max-height: 8.6em;
-      overflow: hidden;
-
-      > ul > li {
-        display: none;
-      }
-
-      .fc-link-item-1,
-      .fc-link-item-2,
-      .fc-link-item-3,
-      .fc-link-item-4 {
-        display: block;
-      }
-
-      @media (min-width: @screen-desktop) {
-        max-height: 7em;
-      }
     }
   }
 
@@ -106,12 +76,6 @@
     font-size: 1em;
     overflow: hidden;
 
-    > li {
-      display: block;
-    }
-  }
-
-  &.two-column ul {
     @media (min-width: @screen-sm) {
       float: left;
       width: 50%;
@@ -121,8 +85,22 @@
   .title-and-links {
     .clearfix();
 
-    h3, ul {
+    h3 {
       padding: 0.3em;
+    }
+
+    .links-1 {
+      padding: 0.3em 0.3em 0;
+    }
+
+    .links-2 {
+      padding: 0 0.3em 0.3em;
+    }
+
+    @media (min-width: @screen-sm) {
+      .links-1, .links-2 {
+        padding: 0.3em;
+      }
     }
   }
 
@@ -146,6 +124,55 @@
 
       @media (min-width: @screen-sm) {
         clear: none;
+        display: block;
+      }
+    }
+  }
+}
+
+#best-bets.collapsed .featured-collection {
+  ul.links-1 {
+    > li {
+      display: none;
+    }
+
+    .fc-link-item-1,
+    .fc-link-item-2,
+    .fc-link-item-3,
+    .fc-link-item-4,
+    .fc-link-item-5 {
+      display: block;
+    }
+  }
+
+  ul.links-2 {
+    display: none;
+    @media (min-width: @screen-sm) {
+      display: block;
+    }
+  }
+
+  &.one-column-show-both-links-list {
+    ul.links-2 {
+      display: block;
+
+      > li {
+        display: none;
+      }
+
+      @media (min-width: @screen-sm) {
+        .fc-link-item-1,
+        .fc-link-item-2,
+        .fc-link-item-3,
+        .fc-link-item-4,
+        .fc-link-item-5 {
+          display: block;
+        }
+      }
+    }
+
+    ul.links-1, ul.links-2 {
+      >li.one-column-always-show-item {
         display: block;
       }
     }

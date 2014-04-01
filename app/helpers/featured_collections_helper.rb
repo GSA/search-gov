@@ -1,14 +1,14 @@
 module FeaturedCollectionsHelper
-  def featured_collection_links_list(fc)
-    if fc.has_two_column_layout?
-      links_size = fc.featured_collection_links.size
-      left_links_size = (links_size / 2) + (links_size % 2)
+  MAX_LINKS_SHOW_PER_LIST_ON_COLLAPSED = 5.freeze
+  ONE_COLUMN_SHOW_BOTH_LINKS_LIST_THRESHOLD = ((MAX_LINKS_SHOW_PER_LIST_ON_COLLAPSED * 2) - 2).freeze
+  TWO_COLUMN_HIDE_TRIGGER_THRESHOLD = (MAX_LINKS_SHOW_PER_LIST_ON_COLLAPSED * 2).freeze
 
-      [fc.featured_collection_links.slice(0, left_links_size),
-       fc.featured_collection_links.slice(left_links_size, links_size - left_links_size)]
-    else
-      [fc.featured_collection_links]
-    end
+  def featured_collection_links_list(fc)
+    links_size = fc.featured_collection_links.size
+    left_links_size = (links_size / 2) + (links_size % 2)
+
+    [fc.featured_collection_links.slice(0, left_links_size),
+     fc.featured_collection_links.slice(left_links_size, links_size - left_links_size)]
   end
 
   def featured_collection_title(fc)
@@ -23,16 +23,15 @@ module FeaturedCollectionsHelper
     instrumented_link_to title, new_link_site_best_bets_graphics_path(site), fc.featured_collection_links.length, 'link'
   end
 
-  def featured_collection_css_classes(featured_collection, initial_classes = %w(featured-collection searchresult))
-    css_classes = initial_classes
-    css_classes << featured_collection.layout.parameterize
+  def featured_collection_css_classes(featured_collection)
+    css_classes = %w(featured-collection searchresult two-column)
     (css_classes << 'with-image') if featured_collection.image_file_name.present?
     css_classes.join(' ')
   end
 
   def render_featured_collection_image(fc)
     content = []
-    content << image_tag(fc.image.url(fc.has_one_column_layout? ? :medium : :small), :alt => fc.image_alt_text)
+    content << image_tag(fc.image.url(:small), :alt => fc.image_alt_text)
     unless fc.image_attribution.blank?
       content << content_tag(:span, I18n.t(:image))
       content << link_to_unless(fc.image_attribution_url.blank?, content_tag(:span, fc.image_attribution, :class => 'attribution'), fc.image_attribution_url)
@@ -45,7 +44,8 @@ module FeaturedCollectionsHelper
   def featured_collection_class_hash(fc)
     classes = %w(featured-collection)
     classes << 'has-image' if fc.image_file_name.present?
-    classes << 'two-column' if fc.has_two_column_layout?
+    links_count = fc.featured_collection_links.count
+    classes << 'one-column-show-both-links-list' if links_count <= ONE_COLUMN_SHOW_BOTH_LINKS_LIST_THRESHOLD
     { class: classes }
   end
 
@@ -61,12 +61,12 @@ module FeaturedCollectionsHelper
 
   def featured_collection_content_trigger_class_hash(best_bets_count, fc)
     links_count = fc.featured_collection_links.count
-    return {} if best_bets_count <= 2 and links_count <= 4
+    return {} if best_bets_count <= 2 and links_count <= MAX_LINKS_SHOW_PER_LIST_ON_COLLAPSED
 
     classes = []
     classes << 'has-collapsed-featured-collection' if best_bets_count > 2
-    classes << (links_count <= 4 ? 'one-column-hide-trigger' : 'one-column-show-trigger')
-    classes << 'two-column-hide-trigger' if fc.has_two_column_layout? and links_count <= 8
+    classes << (links_count <= 5 ? 'one-column-hide-trigger' : 'one-column-show-trigger')
+    classes << 'two-column-hide-trigger' if links_count <= TWO_COLUMN_HIDE_TRIGGER_THRESHOLD
     classes.present? ? { class: classes } : {}
   end
 end

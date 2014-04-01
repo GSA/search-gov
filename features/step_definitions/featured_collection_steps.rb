@@ -19,8 +19,6 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
     end
     attrs[:publish_end_on] = publish_end_on
 
-    attrs[:layout] ||= FeaturedCollection::LAYOUTS[0]
-
     if attributes[:image_file_path].present?
       image = File.open "#{Rails.root}/#{attributes[:image_file_path]}"
       attrs[:image] = image
