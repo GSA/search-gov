@@ -36,9 +36,10 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/3 | Third item          | pressuuid3 |               | 1          | 2012-10-01   | item Next news item for the feed           | firstlady     | newsroom     | health         |
       | http://www.whitehouse.gov/news/4 | Fourth item         | pressuuid4 |               | 1          | 2012-10-17   | item Next news item for the feed           | president     | newsroom     | foreign policy |
     And feed "Photo Gallery" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
+      | link                             | title               | guid       | published_ago | description                                |
+      | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | week          | <i> item </i> First news item for the feed |
+      | http://www.whitehouse.gov/news/3 | Third item          | uuid3      | week          | item More news items for the feed          |
+      | http://www.whitehouse.gov/news/4 | Fourth item         | uuid4      | week          | item Last news item for the feed           |
     And feed "en_agency" has the following news items:
       | link                                       | title             | guid       |  multiplier    | published_ago | description                              | contributor | publisher | subject   |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        14      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
@@ -69,6 +70,7 @@ Feature: Affiliate Search
     And I should not see "stale"
     And I should see "First <b> item </b>" in the rss feed govbox
     And I should not see "First video item" in the rss feed govbox
+    And I should not see "Photo Gallery 7 days ago"
     And I should see "Videos of 'first item' by bar site"
     And I should see "First video item" in the video rss feed govbox
     And I should see an image with alt text "First video item"
