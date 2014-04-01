@@ -34,6 +34,8 @@ module HtmlSelectorsHelpers
       '#nav'
     when /the med topic govbox/
       '#med-topic'
+    when /the news govbox/
+      '#news'
     when /the search all sites row/
       '#search .search-all-sites'
 

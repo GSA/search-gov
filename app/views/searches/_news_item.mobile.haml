@@ -1,0 +1,5 @@
+.content-block-item.result{ id: "news-item-#{position}", onclick: 'void(0)' }
+  %h3
+    = link_to_news_item_title news_item, position
+  = render_feed_name_in_govbox affiliate, news_item.rss_feed_url_id
+  %span.published-distance= time_ago_in_words(news_item.published_at)

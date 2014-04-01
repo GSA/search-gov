@@ -271,3 +271,43 @@ Feature: Searches using mobile device
     And I should see "¿Quiere ver resultados para gobierno de todos los sitios?"
     When I follow "gobierno" within the search all sites row
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
+
+  Scenario: Searching with matching results on news govbox
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name   | url                              | is_navigable |
+      | Press  | http://en.agency.gov/feed/press  | true         |
+      | Photos | http://en.agency.gov/feed/photos | true         |
+    And the rss govbox is enabled for the site "en.agency.gov"
+    And affiliate "es.agency.gov" has the following RSS feeds:
+      | name     | url                                | is_navigable |
+      | Noticias | http://es.agency.gov/feed/noticias | true         |
+    And the rss govbox is enabled for the site "es.agency.gov"
+    And feed "Press" has the following news items:
+      | link                         | title                     | guid       | published_ago | multiplier | description                      |
+      | http://en.agency.gov/press/1 | First press <b> item </b> | pressuuid1 | day           | 1          | First news item for the feed     |
+      | http://en.agency.gov/press/2 | Second item               | pressuuid2 | day           | 1          | item Next news item for the feed |
+    And feed "Photos" has the following news items:
+      | link                          | title                               | guid       | published_ago | multiplier | description                      |
+      | http://en.agency.gov/photos/1 | First photo <b> item </b>           | photouuid1 | day           | 1          | First news item for the feed     |
+      | http://en.agency.gov/photos/2 | Second item                         | photouuid2 | day           | 1          | item Next news item for the feed |
+      | http://en.agency.gov/press/1  | First duplicate press <b> item </b> | pressuuid1 | day           | 7          | First news item for the feed     |
+    And feed "Noticias" has the following news items:
+      | link                            | title                     | guid         | published_ago | multiplier | description                      |
+      | http://es.agency.gov/noticias/1 | Noticia uno <b> item </b> | noticiauuid1 | day           | 1          | First news item for the feed     |
+      | http://es.agency.gov/noticias/2 | Second item               | noticiauuid2 | day           | 1          | item Next news item for the feed |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "first item"
+    And I press "Search"
+    Then I should see "First press <b> item </b>"
+    And I should see "Press 1 day ago"
+    And I should not see "First duplicate"
+
+    When I am on es.agency.gov's search page
+    And I fill in "Ingrese su búsqueda" with "noticia uno"
+    And I press "Buscar"
+    Then I should see "Noticia uno <b> item </b>"
+    And I should see "Noticias Ayer"

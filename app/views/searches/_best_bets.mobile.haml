@@ -1,10 +1,9 @@
 #best-bets.search.collapsible.collapsed
   .content-block-item.content-block-item-header
     .content-provider
-      = t(:recommended)
-      %span.recommended-by
-        = t(:by)
-        = search.affiliate.display_name
+      = t :recommended
+      = t :'searches.by'
+      = search.affiliate.display_name
   - if search.has_boosted_contents?
     - search.boosted_contents.results.each_with_index do |result, index|
       = render partial: 'boosted_content', locals: { result: result, position: index + 1 }

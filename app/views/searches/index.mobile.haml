@@ -4,7 +4,7 @@
     = render partial: 'no_results', locals: { search: @search }
 
   = spelling_suggestion(@search)
-  = matching_site_limits @search, @search_params
+  = matching_site_limits @search, @search_params if @search.results.present?
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
@@ -12,5 +12,6 @@
 
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
+    = render partial: 'news_items', locals: { search:  @search } if @search.has_news_items?
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
     = render partial: 'pagination', locals: { results: @search.results }
