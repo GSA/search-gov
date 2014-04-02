@@ -1,8 +1,8 @@
 #news-items
   .content-block-item.content-block-item-header
     .content-provider
-      = search.affiliate.rss_govbox_label
-      = t :'searches.by'
-      = search.affiliate.display_name
+      = raw t :'searches.news_about_query',
+          news_label: h(search.affiliate.rss_govbox_label),
+          query: content_tag(:span, search.query)
   - unique_news_items(search.news_items.results).first(3).each_with_index do |news_item, index|
     = render partial: 'news_item', locals: { affiliate: search.affiliate, news_item: news_item, position: index + 1 }
