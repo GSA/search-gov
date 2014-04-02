@@ -41,14 +41,20 @@ module MobileHelper
 
   def matching_site_limits(search, search_params)
     return if search.matching_site_limits.blank?
-    search_matching_sites_link = link_to search.query, search_path(search_params)
-    matching_sites = content_tag(:span, search.matching_site_limits.join(', '))
-    search_all_sites_link = link_to search.query, search_path(search_params.except(:sitelimit))
+    matching_site_query = content_tag :span, search.query
+    matching_sites = content_tag :span, search.matching_site_limits.join(', ')
+
+    query_from_all_sites_link = link_to search_path(search_params.except(:sitelimit)) do
+      raw I18n.t :'searches.site_limits.query_from_all_sites',
+                 query: content_tag(:span, search.query)
+    end
+
     render partial: 'searches/matching_site_limits',
            locals: {
-               search_matching_sites_hash: {
-                   query: search_matching_sites_link, matching_sites: matching_sites },
-               search_all_sites_hash: { query: search_all_sites_link }
+               query_and_matching_sites_hash: {
+                   query: matching_site_query, matching_sites: matching_sites },
+               query_from_all_sites_hash: {
+                   query_from_all_sites: query_from_all_sites_link }
            }
   end
 

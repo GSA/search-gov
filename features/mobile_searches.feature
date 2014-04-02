@@ -261,7 +261,7 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see "We're including results for gov from usa.gov only."
     And I should see "Do you want to see results for gov from all sites?"
-    When I follow "gov" within the search all sites row
+    When I follow "gov from all sites" within the search all sites row
     Then I should not see "We're including results for gov from usa.gov only."
 
     When I am on es.agency.gov's search page with site limited to "usa.gov"
@@ -269,7 +269,7 @@ Feature: Searches using mobile device
     And I press "Buscar"
     Then I should see "Los resultados para gobierno son solo de usa.gov."
     And I should see "¿Quiere ver resultados para gobierno de todos los sitios?"
-    When I follow "gobierno" within the search all sites row
+    When I follow "gobierno de todos los sitios" within the search all sites row
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
 
   Scenario: Searching with matching results on news govbox

@@ -106,8 +106,9 @@ es:
       related_topics: Temas relacionados
     search_results: Buscar resultados
     site_limits:
-      search_matching_sites: Los resultados para %{query} son solo de %{matching_sites}.
-      search_all_sites: ¿Quiere ver resultados para %{query} de todos los sitios?
+      including_results_for_query_from_matching_sites: Los resultados para %{query} son solo de %{matching_sites}.
+      do_you_want_to_see_results_for: ¿Quiere ver resultados para %{query_from_all_sites}?
+      query_from_all_sites: '%{query} de todos los sitios'
     skip_to_main_content: Ir al contenido principal
 
   medline_official_result: Resultado oficial de MedlinePlus
