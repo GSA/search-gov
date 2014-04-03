@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ImageSearch do
-  fixtures :affiliates
+  fixtures :affiliates, :flickr_profiles
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
@@ -23,7 +23,7 @@ describe ImageSearch do
     context 'when the affiliate has no Bing/Google results, but has Flickr images' do
       before do
         @non_affiliate = affiliates(:non_existent_affiliate)
-        flickr_profile = FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @non_affiliate, :profile_type => 'user', :profile_id => '12345')
+        flickr_profile = flickr_profiles(:another_user)
         FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his unusual image daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
         FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in unusual image car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
         FlickrPhoto.create!(:flickr_id => 7, :flickr_profile => flickr_profile, :title => 'irrelevant photo', :description => 'irrelevant', :tags => "car,batman", :date_taken => Time.now - 14.days)

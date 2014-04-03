@@ -1,128 +1,110 @@
 require 'spec_helper'
 
 describe FlickrProfile do
-  fixtures :affiliates
+  fixtures :affiliates, :flickr_profiles, :flickr_photos
 
-  before do
-    @affiliate = affiliates(:basic_affiliate)
-    @user_response = {"username" => 'USAgency', "id" => '12345'}
-    @group_search_response = {"id" => "1058319", "name" => "USA.gov - Official US Government Photostreams", "eighteenplus" => 0}
-  end
-
-  it { should validate_presence_of(:affiliate_id) }
-
-  context 'when url is valid' do
-    subject do
-      FlickrProfile.create!(:url => 'http://www.flickr.com/photos/whitehouse',
-                            :affiliate_id => @affiliate.id)
-    end
-
-    it { should validate_presence_of(:profile_id) }
-    it { should validate_presence_of(:profile_type) }
-    it { should allow_value("http://www.flickr.com/photos/61537927@N07").for(:url) }
-    it { should allow_value("http://www.flickr.com/photos/61537927@N07/").for(:url) }
-  end
+  let(:affiliate) { affiliates(:basic_affiliate) }
 
   it { should belong_to :affiliate }
+  it { should validate_presence_of(:affiliate_id) }
+  it { should validate_presence_of(:url) }
 
-  it "should require the url to be a valid Flickr user or group" do
-    profile = FlickrProfile.create(:url => 'USAgency')
-    profile.errors[:url].should include('must be a valid Flickr user or Flickr group.')
-  end
+  context 'when URL is present and valid' do
+    let(:flickr_response) { { 'id' => '40927340@N03', 'username' => 'United States Marine Corps Official Page' } }
+    let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
 
-  it 'should not allow duplicate profile_id with the same affiliate_id and profile_type' do
-    FlickrProfile.create!(affiliate: @affiliate, url: 'www.flickr.com/groups/usagov')
-    duplicate_profile = FlickrProfile.new(affiliate: @affiliate, url: 'www.flickr.com/groups/usagov/')
-    duplicate_profile.save.should be_false
-    duplicate_profile.errors.full_messages.should == ['Profile has already been added']
-  end
+    before { flickr.urls.should_receive(:lookupUser).with(url: url).and_return(flickr_response) }
 
-  context "when the profile id and type are provided at create time" do
-    it "should not lookup the user profile information using the Flickr API if specified on create" do
-      profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
-      flickr.urls.should_not_receive(:lookupUser)
-      profile.save!
+    it 'detects profile_type and profile_id' do
+      fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should be_valid
+      fp.profile_type.should == 'user'
+      fp.profile_id.should be_present
     end
   end
 
-  it "should queue the profile for import after create" do
+  context 'when profile_type is not identified' do
+    let(:url) { 'https://www.flickr.com/invalid/marine_corps/'.freeze }
+
+    it 'should not lookupUser or lookupGroup' do
+      flickr.should_not_receive(:urls)
+
+      fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_not be_valid
+      fp.profile_type.should be_blank
+    end
+  end
+
+  context 'when Flickr lookupUser fails' do
+    let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
+
+    it 'should not be valid' do
+      flickr.urls.should_receive(:lookupUser).
+          with(url: url).
+          and_raise(FlickRaw::FailedResponse.new('User not found', 1, 'flickr.urls.lookupUser') )
+      fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_not be_valid
+    end
+  end
+
+  context 'when Flickr lookupGroup fails' do
+    let(:url) { 'https://www.flickr.com/groups/usagov/'.freeze }
+
+    it 'should not be valid' do
+      flickr.urls.should_receive(:lookupGroup).
+          with(url: url).
+          and_raise(FlickRaw::FailedResponse.new('Group not found', 1, 'flickr.urls.lookupGroup') )
+      fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_not be_valid
+    end
+  end
+
+  context 'when adding a profile that already exists for the given affiliate' do
+    let(:flickr_response) { { 'id' => '40927340@N03', 'username' => 'United States Marine Corps Official Page' } }
+    let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
+
+    before { flickr.urls.stub(:lookupUser).and_return(flickr_response) }
+
+    it 'should not be valid' do
+      FlickrProfile.create! affiliate: affiliate, url: url
+      fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_not be_valid
+    end
+  end
+
+  it 'should queue the profile for import after create' do
+    flickr_response = { 'id' => '40927340@N03', 'username' => 'United States Marine Corps Official Page' }
+    url = 'https://www.flickr.com/photos/marine_corps/'.freeze
+    flickr.urls.should_receive(:lookupUser).with(url: url).and_return(flickr_response)
+
     ResqueSpec.reset!
     Resque.should_receive(:enqueue_with_priority).with(:high, FlickrProfileImporter, an_instance_of(Fixnum))
-    FlickrProfile.create(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate, :profile_type => 'user', :profile_id => '12345')
+
+    FlickrProfile.create(url: url, affiliate: affiliate)
   end
 
-  context "when no profile id or type is provided" do
-    context "when the profile URL is a user URL" do
-      before do
-        @profile = FlickrProfile.new(:url => 'http://flickr.com/photos/USAgency', :affiliate => @affiliate)
-      end
+  describe '#destroy' do
+    it 'destroys flickr photos' do
+      fp = flickr_profiles(:user)
+      photo_ids = fp.flickr_photos.pluck(:id)
+      photo_ids.should be_present
 
-      it "should lookup the user profile information using the Flickr API on create" do
-        flickr.urls.should_receive(:lookupUser).with(:url => 'http://flickr.com/photos/USAgency').and_return @user_response
-        @profile.save!
-        @profile.profile_type.should == "user"
-        @profile.profile_id.should == "12345"
-      end
+      ElasticFlickrPhoto.should_receive(:delete).with(photo_ids)
+      FlickrPhoto.should_receive(:delete_all).with(['id IN (?)', photo_ids])
 
-      context "when there is an error looking up the user" do
-        before do
-          flickr.urls.stub!(:lookupUser).and_raise "Some Exception"
-        end
-
-        it "should not create the profile" do
-          profile = FlickrProfile.create(:url => "http://flickr.com/photos/USAgency", :affiliate => @affiliate)
-          profile.errors.should_not be_empty
-          profile.id.should be_nil
-          profile.errors.first.should == [:base, "We could not find the Flickr user that you specified. Please modify the URL and try again."]
-        end
-      end
-    end
-
-    context "when the profile URL is a group URL" do
-      before do
-        @profile = FlickrProfile.new(:url => 'http://flickr.com/groups/USAgency', :affiliate => @affiliate)
-      end
-
-      it "should lookup the group profile information using the Flickr API on create" do
-        flickr.urls.should_receive(:lookupGroup).with(:url => 'http://flickr.com/groups/USAgency').and_return @group_search_response
-        @profile.save!
-        @profile.profile_type.should == "group"
-        @profile.profile_id.should == "1058319"
-      end
-
-      context "when the url can not be found via the Flickr API" do
-        before do
-          flickr.urls.stub!(:lookupGroup).and_raise "Some Exception"
-        end
-
-        it "should not create the profile" do
-          profile = FlickrProfile.create(:url => "http://flickr.com/groups/USAgency", :affiliate => @affiliate)
-          profile.errors.should_not be_empty
-          profile.id.should be_nil
-          profile.errors.first.should == [:base, "We could not find the Flickr group that you specified. Please modify the URL and try again."]
-        end
-      end
-    end
-
-    context "when the profile URL is neither a user nor a group" do
-      before do
-        @profile = FlickrProfile.new(:url => 'http://flickr.com/blargh/USAgency', :affiliate => @affiliate)
-      end
-
-      it "should fail" do
-        @profile.save
-        @profile.errors.should_not be_empty
-      end
+      fp.destroy
     end
   end
 
   describe "#import_photos" do
-    before do
-    end
-
     context "when the profile's url is a Flickr photo url (http://www.flickr.com/photos/username)" do
+      let(:user_id) { '40927340@N03'.freeze }
+      let(:user_url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
+      let(:flickr_response) { { 'id' => '40927340@N03', 'username' => 'United States Marine Corps Official Page' } }
+
       before do
-        @profile = FlickrProfile.create!(:url => 'http://flickr.com/photos/USAAgency', :profile_type => 'user', :profile_id => '12345', :affiliate => @affiliate)
+        flickr.urls.should_receive(:lookupUser).with(url: user_url).and_return(flickr_response)
+        @profile = FlickrProfile.create!(url: user_url, affiliate: affiliate)
         @first_photos_response = [{"lastupdate" => "1233790918", "url_m" => "http://farm4.staticflickr.com/3264/3253668705_b452012751.jpg", "width_m" => "500", "height_l" => "768", "ispublic" => 1, "latitude" => 0, "width_sq" => 75, "height_m" => "375", "url_n" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_n.jpg", "width_n" => "320", "farm" => 4, "title" => "0203091648", "height_sq" => 75, "height_n" => 240, "license" => "1", "datetakengranularity" => "0", "accuracy" => 0, "url_sq" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_s.jpg", "url_z" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_z.jpg", "width_z" => "640", "iconfarm" => 1, "pathalias" => "greggersh", "width_q" => "150", "height_z" => 480, "id" => "3253668705", "server" => "3264", "isfamily" => 0, "datetaken" => "2009-02-04 18:41:39", "tags" => "soup hotandsoursoup umami", "views" => "40", "url_q" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_q.jpg", "height_q" => "150", "dateupload" => "1233790899", "media" => "photo", "media_status" => "ready", "width_s" => "240", "width_t" => "100", "url_s" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_m.jpg", "height_s" => "180", "description" => "", "longitude" => 0, "context" => 0, "url_t" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_t.jpg", "height_t" => "75", "secret" => "b452012751", "owner" => "35034349064@N01", "isfriend" => 0, "ownername" => "GregGersh", "iconserver" => "1", "machine_tags" => "", "url_l" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_b.jpg", "width_l" => "1024", "o_height" => "120"}]
         @first_photos_response.stub!(:pages).and_return 2
         @first_photos_response.stub!(:page).and_return 1
@@ -135,8 +117,8 @@ describe FlickrProfile do
 
       context "when the user name is valid, and the user has photos" do
         before do
-          flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_return @first_photos_response
-          flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2).and_return @second_photos_response
+          flickr.people.should_receive(:getPublicPhotos).with(:user_id => user_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_return @first_photos_response
+          flickr.people.should_receive(:getPublicPhotos).with(:user_id => user_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 2).and_return @second_photos_response
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668705").once.and_return @photo_info
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668675").once.and_return @other_photo_info
         end
@@ -161,7 +143,7 @@ describe FlickrProfile do
 
       context "when an error occurs looking up photos" do
         before do
-          flickr.people.should_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
+          flickr.people.should_receive(:getPublicPhotos).with(:user_id => user_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
           flickr.people.should_not_receive(:getPublicPhotos).with(:user_id => "12345", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2)
           flickr.photos.should_not_receive(:getInfo)
         end
@@ -174,8 +156,14 @@ describe FlickrProfile do
     end
 
     context "when the affiliates url is a Flickr group url" do
+      let(:group_url) { 'https://www.flickr.com/groups/usagov/'.freeze }
+      let(:group_id) { '1058319@N21' }
+      let(:flickr_response) { { 'id' => group_id, 'groupname' => 'USA.gov - Official U.S. Government Photostreams' } }
+
       before do
-        @profile = FlickrProfile.create!(:url => "http://www.flickr.com/groups/USAgency", :profile_type => 'group', :profile_id => '1058319', :affiliate => @affiliate)
+        flickr.urls.should_receive(:lookupGroup).with(url: group_url).and_return(flickr_response)
+        @profile = FlickrProfile.create!(url: group_url, affiliate: affiliate)
+
         @first_photos_response = [{"lastupdate" => "1233790918", "url_m" => "http://farm4.staticflickr.com/3264/3253668705_b452012751.jpg", "width_m" => "500", "height_l" => "768", "ispublic" => 1, "latitude" => 0, "width_sq" => 75, "height_m" => "375", "url_n" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_n.jpg", "width_n" => "320", "farm" => 4, "title" => "0203091648", "height_sq" => 75, "height_n" => 240, "license" => "1", "datetakengranularity" => "0", "accuracy" => 0, "url_sq" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_s.jpg", "url_z" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_z.jpg", "width_z" => "640", "iconfarm" => 1, "pathalias" => "greggersh", "width_q" => "150", "height_z" => 480, "id" => "3253668705", "server" => "3264", "isfamily" => 0, "datetaken" => "2009-02-04 18:41:39", "tags" => "soup hotandsoursoup umami", "views" => "40", "url_q" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_q.jpg", "height_q" => "150", "dateupload" => "1233790899", "media" => "photo", "media_status" => "ready", "width_s" => "240", "width_t" => "100", "url_s" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_m.jpg", "height_s" => "180", "description" => "", "longitude" => 0, "context" => 0, "url_t" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_t.jpg", "height_t" => "75", "secret" => "b452012751", "owner" => "35034349064@N01", "isfriend" => 0, "ownername" => "GregGersh", "iconserver" => "1", "machine_tags" => "", "url_l" => "http://farm4.staticflickr.com/3264/3253668705_b452012751_b.jpg", "width_l" => "1024"}]
         @first_photos_response.stub!(:pages).and_return 2
         @first_photos_response.stub!(:page).and_return 1
@@ -186,8 +174,8 @@ describe FlickrProfile do
 
       context "when the group name is valid and the group has photos" do
         before do
-          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_return @first_photos_response
-          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2).and_return @second_photos_response
+          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => group_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_return @first_photos_response
+          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => group_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 2).and_return @second_photos_response
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668705").once.and_return @photo_info
           flickr.photos.should_receive(:getInfo).with(:photo_id => "3253668675").once.and_return @photo_info
         end
@@ -208,8 +196,8 @@ describe FlickrProfile do
 
       context "when an error occurs looking up photos" do
         before do
-          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
-          flickr.groups.pools.should_not_receive(:getPhotos).with(:group_id => "1058319", :extras => FlickrProfile::EXTRA_FIELDS, :page => 2)
+          flickr.groups.pools.should_receive(:getPhotos).with(:group_id => group_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 1).and_raise "Some Error"
+          flickr.groups.pools.should_not_receive(:getPhotos).with(:group_id => group_id, :extras => FlickrProfile::EXTRA_FIELDS, :page => 2)
           flickr.photos.should_not_receive(:getInfo)
         end
 

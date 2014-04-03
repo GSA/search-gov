@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Flickr rake tasks" do
-  fixtures :affiliates
+  fixtures :flickr_profiles
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -18,10 +18,10 @@ describe "Flickr rake tasks" do
     end
 
     it "should call import photos for all affiliates" do
-      affiliates = [affiliates(:basic_affiliate), affiliates(:power_affiliate)]
-      Affiliate.should_receive(:all).and_return affiliates
-      affiliates.first.should_receive(:import_flickr_photos).and_return true
-      affiliates.last.should_receive(:import_flickr_photos).and_return true
+      flickr_profiles = [flickr_profiles(:user), flickr_profiles(:group)]
+      FlickrProfile.should_receive(:all).and_return flickr_profiles
+      flickr_profiles.first.should_receive(:import).and_return true
+      flickr_profiles.last.should_receive(:import).and_return true
       @rake[task_name].invoke
     end
   end

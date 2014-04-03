@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe ElasticFlickrPhoto do
-  fixtures :affiliates
+  fixtures :affiliates, :flickr_profiles
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:flickr_profile) { FlickrProfile.create!(url: 'http://www.flickr.com/groups/usagov/', affiliate: affiliate, profile_type: 'user', profile_id: '12345') }
+  let(:flickr_profile) { flickr_profiles(:group) }
 
   before do
     ElasticFlickrPhoto.recreate_index
@@ -94,7 +94,7 @@ describe ElasticFlickrPhoto do
 
     context 'when there are matches across affiliates' do
       let(:other_affiliate) { affiliates(:power_affiliate) }
-      let(:other_flickr_profile) { FlickrProfile.create!(url: 'http://www.flickr.com/groups/usagov2/', affiliate: other_affiliate, profile_type: 'user', profile_id: '123456') }
+      let(:other_flickr_profile) { flickr_profiles(:user) }
 
       before do
         other_affiliate.locale = 'en'

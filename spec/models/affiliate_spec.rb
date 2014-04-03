@@ -953,18 +953,4 @@ describe Affiliate do
       ufs.first.should == features(:disco)
     end
   end
-
-  describe "#import_flickr_photos" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @flickr_profiles = [@affiliate.flickr_profiles.create!(:url => 'http://www.flickr.com/photos/USAgency', :profile_id => '1234', :profile_type => 'user'),
-                          @affiliate.flickr_profiles.create!(:url => 'http://www.flickr.com/photos/USAgency2', :profile_id => '12345', :profile_type => 'user')]
-      @affiliate.stub!(:flickr_profiles).and_return @flickr_profiles
-    end
-
-    it "should import the photos from ech Flickr profile" do
-      @flickr_profiles.each { |flickr_profile| flickr_profile.should_receive(:import_photos).and_return true }
-      @affiliate.import_flickr_photos
-    end
-  end
 end

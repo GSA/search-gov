@@ -342,10 +342,6 @@ class Affiliate < ActiveRecord::Base
     features.any? ? Feature.where('id not in (?)', features.collect(&:id)) : Feature.all
   end
 
-  def import_flickr_photos
-    self.flickr_profiles.each(&:import_photos)
-  end
-
   def excludes_url?(url)
     @excluded_urls_set ||= self.excluded_urls.collect(&:url).to_set
     @excluded_urls_set.include?(url)

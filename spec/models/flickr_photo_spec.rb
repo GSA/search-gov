@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe FlickrPhoto do
-  fixtures :affiliates
+  fixtures :affiliates, :flickr_profiles
 
   before do
     @valid_attributes = {
       :flickr_id => '12345678'
     }
     @affiliate = affiliates(:basic_affiliate)
-    @flickr_profile = FlickrProfile.create!(url: 'http://www.flickr.com/groups/usagov/',
-                                            affiliate: @affiliate,
-                                            profile_type: 'user',
-                                            profile_id: '12345')
+    @flickr_profile = flickr_profiles(:group)
   end
 
   it { should validate_presence_of :flickr_id }
