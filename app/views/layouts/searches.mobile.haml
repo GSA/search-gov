@@ -6,6 +6,7 @@
     %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
     = render_robots_meta_tag
     = attribution
+    != "<!-- aid: #{@affiliate.id} handle: #{@affiliate.name} -->"
     = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
 
     %title #{@page_title}
