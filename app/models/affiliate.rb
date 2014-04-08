@@ -385,11 +385,11 @@ class Affiliate < ActiveRecord::Base
   end
 
   def mobile_logo_url
-    mobile_logo.url rescue nil if mobile_logo_file_name.present?
+    mobile_logo.url rescue 'unable to retrieve mobile logo url' if mobile_logo_file_name.present?
   end
 
   def header_image_url
-    header_image.url rescue nil if header_image_file_name.present?
+    header_image.url rescue 'unable to retrieve header image url' if header_image_file_name.present?
   end
 
   def last_month_query_count
