@@ -110,8 +110,8 @@ class ApplicationController < ActionController::Base
   end
 
   def force_mobile_mode
-    request.format = :mobile if params[:m] == "true"
     request.format = :html if params[:m] == "false" or params[:m] == "override"
+    request.format = :mobile if @affiliate.force_mobile_format? || params[:m] == 'true'
   end
 
   def set_search_params

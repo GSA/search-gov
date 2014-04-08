@@ -296,6 +296,20 @@ describe SearchesController do
     end
   end
 
+  context 'when Affiliate.force_mobile_format = true' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      Affiliate.should_receive(:find_by_name).and_return(affiliate)
+      affiliate.should_receive(:force_mobile_format?).and_return(true)
+      request.should_receive(:format=).with(:mobile)
+      get :index, query: 'gov', affiliate: affiliate.name, m: 'true'
+    end
+
+    it { should render_template 'layouts/searches' }
+    it { should render_template 'searches/index' }
+  end
+
   describe "#advanced" do
     context "when viewing advanced search page" do
       before do

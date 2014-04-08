@@ -167,4 +167,18 @@ describe DailyQueryStat do
     end
   end
 
+  describe 'sum_for_affiliate_between_dates' do
+    it 'returns sum for the given affiliate name between specified dates' do
+      usagov = Affiliate::USAGOV_AFFILIATE_NAME
+      yesterday = Date.current.yesterday
+      last_week = Date.current.prev_week
+      where_clause = mock('where')
+      DailyQueryStat.should_receive(:where).
+          with('affiliate = ? AND day BETWEEN ? AND ?', usagov, yesterday, last_week).
+          and_return(where_clause)
+      where_clause.should_receive(:sum).with(:times)
+
+      DailyQueryStat.sum_for_affiliate_between_dates(usagov, yesterday, last_week)
+    end
+  end
 end

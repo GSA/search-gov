@@ -43,5 +43,11 @@ class DailyQueryStat < ActiveRecord::Base
       ActiveRecord::Base.connection.execute(sql).collect { |r| [r[0], r[1].to_i] }
     end
 
+    def sum_for_affiliate_between_dates(affiliate_name, start_date, end_date)
+      DailyQueryStat.where('affiliate = ? AND day BETWEEN ? AND ?',
+                           affiliate_name,
+                           start_date,
+                           end_date).sum(:times)
+    end
   end
 end

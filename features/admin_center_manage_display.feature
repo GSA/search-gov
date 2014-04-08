@@ -192,7 +192,7 @@ Feature: Manage Display
     And the "Description Text Color" field should contain "#0B0000"
 
   @javascript
-  Scenario: Editing Image Assets
+  Scenario: Editing Image Assets with force_mobile_format = false
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
@@ -237,6 +237,30 @@ Feature: Manage Display
     And I should not see an image with alt text "Logo"
     And I should not see an image with alt text "Mobile Logo"
     And I should not see an image with alt text "Page Background Image"
+
+  @javascript
+  Scenario: Editing Image Assets with force_mobile_format = true
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                | force_mobile_format |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov | true                |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Image Assets page
+    And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And I attach the file "features/support/logo_mobile_en.png" to "Mobile Logo"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your image assets"
+    And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And I should see an image with alt text "Mobile Logo"
+
+    When I am on agency.gov's search page
+    Then I should see an image link to "agency site" with url for "http://main.agency.gov"
+    And the page body should contain "logo_mobile_en.png"
+
+    When I go to the agency.gov's Image Assets page
+    And I check "Mark Mobile Logo for Deletion"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your image assets"
+    And I should not see an image with alt text "Mobile Logo"
 
   @javascript
   Scenario: Editing Managed Header & Footer

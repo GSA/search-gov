@@ -3,9 +3,13 @@ class Admin::AffiliatesController < Admin::AdminController
   active_scaffold :affiliate do |config|
     config.label = 'Sites'
     config.actions.exclude :delete
-    config.columns = [:id, :display_name, :name, :website, :status, :tags, :site_domains, :affiliate_note, :created_at, :updated_at]
+    config.columns = [:id, :display_name, :name, :website, :status, :last_month_query_count, :tags, :site_domains, :affiliate_note,
+                      :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url,
+                      :created_at, :updated_at]
     config.columns[:affiliate_note].label = 'Note'
     config.columns[:website].label = 'Homepage URL'
+    config.columns[:mobile_logo_url].label = 'Mobile Logo URL'
+    config.columns[:header_image_url].label = 'Logo URL'
     config.list.sorting = { :display_name => :asc }
 
     virtual_columns = [:go_live_date,
@@ -19,12 +23,15 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    config.update.columns = [:display_name, :name, :website,
-                             :tags, :status, :go_live_date, :affiliate_note,
-                             :is_sayt_enabled, :fetch_concurrency, :raw_log_access_enabled, :dap_enabled,
-                             :locale,
-                             :affiliate_feature_addition, :jobs_enabled, :agency,
-                             :excluded_domains, :search_engine]
+    config.update.columns = [:status, :go_live_date, :affiliate_note,
+                             :force_mobile_format, :dap_enabled, :jobs_enabled,
+                             :agency, :search_engine, :raw_log_access_enabled, :fetch_concurrency, :tags]
+
+    config.update.columns.add_subgroup 'Settings' do |name_group|
+      name_group.add :display_name, :name, :website,
+                     :is_sayt_enabled, :locale, :affiliate_feature_addition, :excluded_domains
+      name_group.collapsed = true
+    end
 
     config.update.columns.add_subgroup 'Analytics-Tracking Code' do |name_group|
       name_group.add :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code
@@ -46,6 +53,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.list.columns.exclude virtual_columns
+    config.list.columns.exclude :last_month_query_count, :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url
     config.create.columns = [:display_name, :name, :header_footer_css, :header, :footer, :locale]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:theme].form_ui = :select
@@ -55,7 +63,8 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
     actions.add :export
-    config.export.default_deselected_columns = [:header_footer_css,
+    config.export.default_deselected_columns = [:last_month_query_count,
+                                                :header_footer_css,
                                                 :staged_header_footer_css,
                                                 :header,
                                                 :staged_header,

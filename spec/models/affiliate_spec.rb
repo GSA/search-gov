@@ -953,4 +953,47 @@ describe Affiliate do
       ufs.first.should == features(:disco)
     end
   end
+
+  describe '.last_month_query_count' do
+    it 'returns previous month sum of times from DailyQueryStat' do
+      affiliate = affiliates(:power_affiliate)
+
+      Date.stub(:current).and_return(Date.new(2014, 4, 1))
+      prev_beginning_of_month = Date.new(2014, 3, 1)
+      prev_end_of_month = Date.new(2014,3, 31)
+
+      DailyQueryStat.should_receive(:sum_for_affiliate_between_dates).
+          with(affiliate.name,
+          prev_beginning_of_month,
+          prev_end_of_month).and_return(88)
+
+      affiliate.last_month_query_count.should == 88
+    end
+  end
+
+  describe '#mobile_logo_url' do
+    it 'returns mobile logo url' do
+      mobile_logo_url = 'http://link.to/mobile_logo.png'.freeze
+      mobile_logo = mock('mobile logo')
+      affiliate = affiliates(:power_affiliate)
+      affiliate.should_receive(:mobile_logo_file_name).and_return('mobile_logo.png')
+      affiliate.should_receive(:mobile_logo).and_return(mobile_logo)
+      mobile_logo.should_receive(:url).and_return(mobile_logo_url)
+
+      affiliate.mobile_logo_url.should == mobile_logo_url
+    end
+  end
+
+  describe '#header_image_url' do
+    it 'returns header image url' do
+      header_image_url = 'http://link.to/header_image.png'.freeze
+      header_image = mock('header image')
+      affiliate = affiliates(:power_affiliate)
+      affiliate.should_receive(:header_image_file_name).and_return('header_image.png')
+      affiliate.should_receive(:header_image).and_return(header_image)
+      header_image.should_receive(:url).and_return(header_image_url)
+
+      affiliate.header_image_url.should == header_image_url
+    end
+  end
 end

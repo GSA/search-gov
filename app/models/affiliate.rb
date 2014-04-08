@@ -384,6 +384,22 @@ class Affiliate < ActiveRecord::Base
     theme != 'default'
   end
 
+  def mobile_logo_url
+    mobile_logo.url rescue nil if mobile_logo_file_name.present?
+  end
+
+  def header_image_url
+    header_image.url rescue nil if header_image_file_name.present?
+  end
+
+  def last_month_query_count
+    prev_month = Date.current.prev_month
+    DailyQueryStat.sum_for_affiliate_between_dates(
+        name,
+        prev_month.beginning_of_month,
+        prev_month.end_of_month)
+  end
+
   private
 
   def batch_size(scope)

@@ -21,7 +21,7 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
         :mark_page_background_image_for_deletion,
         :mobile_logo,
         :page_background_image)
-    @site_params[:css_property_hash] = @site.css_property_hash.merge(@site_params[:css_property_hash])
+    @site_params[:css_property_hash] = @site.css_property_hash.merge(@site_params[:css_property_hash]) if @site_params[:css_property_hash]
     @site_params
   end
 end
