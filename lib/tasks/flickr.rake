@@ -3,7 +3,7 @@ namespace :usasearch do
 
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
     task :import_photos => :environment do
-      FlickrProfile.all.each(&:import)
+      FlickrProfile.all.each(&:import_photos)
     end
   end
 end

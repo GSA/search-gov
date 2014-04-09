@@ -20,8 +20,8 @@ describe "Flickr rake tasks" do
     it "should call import photos for all affiliates" do
       flickr_profiles = [flickr_profiles(:user), flickr_profiles(:group)]
       FlickrProfile.should_receive(:all).and_return flickr_profiles
-      flickr_profiles.first.should_receive(:import).and_return true
-      flickr_profiles.last.should_receive(:import).and_return true
+      flickr_profiles.first.should_receive(:import_photos).and_return true
+      flickr_profiles.last.should_receive(:import_photos).and_return true
       @rake[task_name].invoke
     end
   end
