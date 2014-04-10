@@ -73,10 +73,10 @@ describe SearchesController do
     end
   end
 
-  context "when handling a valid affiliate search request" do
+  context 'when handling a valid affiliate search request on legacy SERP' do
     render_views
     before do
-      @affiliate = affiliates(:power_affiliate)
+      @affiliate = affiliates(:legacy_affiliate)
       get :index, :affiliate => @affiliate.name, :query => "<script>thunder & lightning</script>"
       @search = assigns[:search]
       @page_title = assigns[:page_title]
@@ -95,7 +95,7 @@ describe SearchesController do
     end
 
     it "should set an affiliate page title" do
-      @page_title.should == "thunder & lightning - Noaa Site Search Results"
+      @page_title.should == 'thunder & lightning - Legacy Search Results'
     end
 
     it "should render the header in the response" do
@@ -525,11 +525,6 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.should render_template 'news'
         response.should render_template 'layouts/searches'
-      end
-
-      it "should output a page that summarizes the results" do
-        get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
-        response.body.should contain('1 result')
       end
     end
   end

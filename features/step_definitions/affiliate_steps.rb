@@ -1,4 +1,4 @@
-Given /^the following Affiliates exist:$/ do |table|
+Given /^the following( legacy)? Affiliates exist:$/ do |is_legacy, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
@@ -12,7 +12,9 @@ Given /^the following Affiliates exist:$/ do |table|
     user.update_attribute(:approval_status, 'approved')
 
     excluded_keys = %w(contact_email contact_name domains youtube_handles is_image_search_navigable)
-    affiliate = Affiliate.create!(hash.except *excluded_keys)
+    affiliate_attributes = hash.except *excluded_keys
+    affiliate_attributes['force_mobile_format'] ||= (is_legacy !~ /legacy/)
+    affiliate = Affiliate.create! affiliate_attributes
     affiliate.image_search_label.navigation.update_attributes!(is_active: true) if hash[:is_image_search_navigable] == 'true'
     affiliate.users << user
 

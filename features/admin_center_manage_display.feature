@@ -192,8 +192,8 @@ Feature: Manage Display
     And the "Description Text Color" field should contain "#0B0000"
 
   @javascript
-  Scenario: Editing Image Assets with force_mobile_format = false
-    Given the following Affiliates exist:
+  Scenario: Editing Image Assets on legacy Affiliate
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
@@ -239,10 +239,10 @@ Feature: Manage Display
     And I should not see an image with alt text "Page Background Image"
 
   @javascript
-  Scenario: Editing Image Assets with force_mobile_format = true
+  Scenario: Editing Image Assets on non legacy Affiliate
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                | force_mobile_format |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov | true                |
+      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
@@ -264,7 +264,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Managed Header & Footer
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
@@ -307,7 +307,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Error when Editing Managed Header & Footer
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
@@ -322,7 +322,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Custom Header & Footer
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name | staged_header |
       | agency site  | agency.gov | john@agency.gov | John Bar     | header        |
     And I am logged in with email "john@agency.gov" and password "random_string"
@@ -363,7 +363,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Error when Editing Custom Header & Footer
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"

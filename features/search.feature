@@ -4,7 +4,7 @@ Feature: Affiliate Search
   I want to be able to search for information
 
   Scenario: Search with a blank query on an affiliate page
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     When I am on bar.gov's search page
@@ -12,7 +12,7 @@ Feature: Affiliate Search
     Then I should see "Please enter search term(s)"
 
   Scenario: Searching with active RSS feeds
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       | true                      |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       | true                      |
@@ -213,7 +213,7 @@ Feature: Affiliate Search
     And I should see yesterday's date in the Spanish search results
 
   Scenario: Searching news items using time filters
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
       | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
       | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
@@ -398,7 +398,7 @@ Feature: Affiliate Search
     And I should not see a link to "Sixth Spanish item"
 
   Scenario: Searching news items with default dublin core mappings
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale |
       | bar site         | en.bar.gov | aff@bar.gov   | John Bar     | en     |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
@@ -587,7 +587,7 @@ Feature: Affiliate Search
     And I should not see "Sixth Spanish item"
 
   Scenario: Searching a domain with Bing results that match a specific news item
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -602,7 +602,7 @@ Feature: Affiliate Search
     Then I should see "1 day ago"
 
   Scenario: No results when searching with active RSS feeds
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -633,7 +633,7 @@ Feature: Affiliate Search
     Then I should see at least 2 search results
 
   Scenario: No results when searching on Spanish site with active RSS feeds
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -663,7 +663,7 @@ Feature: Affiliate Search
     Then I should see at least 2 search results
 
   Scenario: Searching on a site with media RSS
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -680,7 +680,7 @@ Feature: Affiliate Search
     Then I should see 2 image news results
 
   Scenario: Visiting English affiliate search with multiple domains
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
     When I am on bar.gov's search page
@@ -690,7 +690,7 @@ Feature: Affiliate Search
     And I should not see "Search this site"
 
   Scenario: Visiting Spanish affiliate search with multiple domains
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                | locale | is_image_search_navigable |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     | true                      |
     When I am on bar.gov's search page
@@ -704,7 +704,7 @@ Feature: Affiliate Search
     And I should not see "Search this site"
 
   Scenario: When there are relevant Flickr photos for a search
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
     And the following FlickrPhotos exist:
@@ -721,7 +721,7 @@ Feature: Affiliate Search
 
   @javascript
   Scenario: Searchers see English Medline Govbox
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled |
       | english site | english-nih | aff@bar.gov   | John Bar     | nih.gov | true                      |
     And the following Medline Topics exist:
@@ -756,7 +756,7 @@ Feature: Affiliate Search
 
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled | locale |
       | spanish site | spanish-nih | aff@bar.gov   | John Bar     | nih.gov | true                      | es     |
     And the following Medline Topics exist:
@@ -786,7 +786,7 @@ Feature: Affiliate Search
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
   Scenario: When a searcher enters a query with invalid Lucene character
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
     And I am on agency.gov's search page
@@ -800,7 +800,7 @@ Feature: Affiliate Search
     And I should see some Bing search results
 
   Scenario: When a searcher clicks on a collection on sidebar and the query is blank
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following document collections:
@@ -811,7 +811,7 @@ Feature: Affiliate Search
     Then I should see "Please enter search term(s)"
 
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
       | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -842,7 +842,7 @@ Feature: Affiliate Search
     Then I should see the browser page titled "Videos - bar site Search Results"
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
     And affiliate "es.bar.gov" has the following RSS feeds:
@@ -873,7 +873,7 @@ Feature: Affiliate Search
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | locale |
       | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     |
       | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
@@ -908,7 +908,7 @@ Feature: Affiliate Search
     And I should see "amigos" in bold font in the twitter govbox
 
   Scenario: Searching document collections
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains        |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
     And affiliate "agency.gov" has the following document collections:
@@ -926,7 +926,7 @@ Feature: Affiliate Search
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
   Scenario: Searching on non navigable document collection
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
     And affiliate "agency.gov" has the following document collections:
@@ -946,14 +946,14 @@ Feature: Affiliate Search
     And I should not see a link to "Search Notes" in the left column
 
   Scenario: Searching with malformed query
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | true                      |
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
   Scenario: Searching for site specific results using query
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
     When I am on agency.gov's search page
@@ -965,7 +965,7 @@ Feature: Affiliate Search
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
   Scenario: Searching for site specific results using sitelimit
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    | true                      |
     And affiliate "agency.gov" has the following document collections:
@@ -1003,7 +1003,7 @@ Feature: Affiliate Search
     Then I should see "answers.usa.gov/"
 
   Scenario: Visiting affiliate with strictui parameters
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | external_css_url                | header                                                                  | footer                                                                  |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
     When I go to aff.gov's strictui search page
@@ -1012,7 +1012,7 @@ Feature: Affiliate Search
     And I should not see tainted SERP footer
 
   Scenario: Affiliate search on affiliate with connections
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
       | other site   | other.gov  | aff@bad.gov   | John Bad     | .gov    |
@@ -1027,7 +1027,7 @@ Feature: Affiliate Search
     Then I should see the browser page titled "jobs - other site Search Results"
 
   Scenario: Searching on sites with Featured Collections
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name   | name          | contact_email   | contact_name | locale |
       | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -1048,7 +1048,7 @@ Feature: Affiliate Search
     Then I should see a featured collection link title with "Atlantic" highlighted
 
   Scenario: Searching on sites with Boosted Contents
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name   | name          | contact_email   | contact_name | locale |
       | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
       | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |
@@ -1071,7 +1071,7 @@ Feature: Affiliate Search
     Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
   Scenario: Searching news items with custom dublin core mappings
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | locale | dc_contributor          | dc_publisher          | dc_subject |
       | bar site     | en.bar.gov | aff@bar.gov   | John Bar     | en     | Administration Official | Briefing Room Section | Issue      |
     And affiliate "en.bar.gov" has the following RSS feeds:
@@ -1096,7 +1096,7 @@ Feature: Affiliate Search
     And I should not see a link to "Briefing Room Section" in the left column
 
   Scenario: Entering a blank advanced search
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         |
       | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on the advanced search page
