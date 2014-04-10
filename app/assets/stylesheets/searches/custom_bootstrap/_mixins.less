@@ -11,6 +11,11 @@
   border-radius: @border-radius-base;
   margin: 0 @content-block-margin @content-block-margin;
   overflow: hidden;
+
+  @media (min-width: @screen-desktop) {
+    border-top: 1px solid @block-border-color;
+    margin-bottom: 0;
+  }
 }
 
 .content-block-item {
@@ -25,14 +30,6 @@
   @media (min-width: @screen-desktop) {
     border-top-width: 0;
     padding: 5px 12px 8px;
-
-    &.content-block-item-header {
-      border-bottom: 1px solid @block-border-color;
-    }
-
-    &.content-block-item-footer {
-      border-top: 1px solid @block-border-color;
-    }
   }
 }
 

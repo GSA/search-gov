@@ -311,3 +311,21 @@ Feature: Searches using mobile device
     And I press "Buscar"
     Then I should see "Noticia uno <b> item </b>"
     And I should see "Noticias Ayer"
+
+  Scenario: Searching on sites with related sites
+    Given the following Affiliates exist:
+      | display_name | name           | contact_email    | contact_name | locale |
+      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     |
+      | All sites    | all.agency.gov | admin@agency.gov | John Bar     | en     |
+      | Spanish site | es.agency.gov  | admin@agency.gov | John Bar     | es     |
+    And the following Connections exist for the affiliate "en.agency.gov":
+      | connected_affiliate | display_name         |
+      | es.agency.gov       | Este tema en español |
+      | all.agency.gov      | All sites            |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "gobierno"
+    And I press "Search"
+    And I should see a link to "Este tema en español"
+    And I should see a link to "All sites"
+    When I follow "Este tema en español"
+    Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"

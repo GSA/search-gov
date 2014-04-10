@@ -1,7 +1,3 @@
-.navbar-default {
-  background-color: white;
-}
-
 #nav-wrapper {
   padding-top: 3px;
   padding-bottom: 3px;
@@ -107,8 +103,36 @@
       font-weight: bold;
     }
 
+    > li.related-site {
+      float: right;
+    }
+
     .show-more {
       .outline-focus();
+    }
+  }
+
+  &.has-related-sites {
+    #related-sites-dropdown {
+      @media (min-width: @grid-float-breakpoint) {
+        float: right;
+
+        > .dropdown-menu {
+          float: right !important;
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &.has-full-nav-items.has-related-sites {
+    .navbar-nav {
+      > li {
+        @media (min-width: @grid-float-breakpoint) {
+          max-width: 19%;
+        }
+      }
     }
   }
 

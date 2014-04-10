@@ -25,9 +25,9 @@
     #header-wrapper
       - navigations = renderable_navigations(@affiliate)
       #header
-        = render(partial: 'nav_button') if navigations.present?
+        = render(partial: 'nav_button') if navigations.present? || @search.affiliate.connections.present?
         = mobile_header @affiliate
-        = navigations_and_logo(@search, @search_params, navigations)
+        = navigations_and_related_sites(@search, @search_params, navigations)
         = render partial: 'form', locals: { search: @search }
 
     #main-content{ tabindex: -1 }= yield
