@@ -86,6 +86,14 @@ module SitesHelper
     nav_controllers.include?(controller_name) ? {class: 'active'} : {}
   end
 
+  def preview_main_nav_item(site, title)
+    if site.force_mobile_format?
+      main_nav_item title, search_path(affiliate: site.name, query: 'gov'), 'icon-eye-open', [], target: '_blank'
+    else
+      main_nav_item title, site_preview_path(site), 'icon-eye-open', [], preview_serp_link_options
+    end
+  end
+
   def site_dashboard_controllers
     %w(settings sites users)
   end

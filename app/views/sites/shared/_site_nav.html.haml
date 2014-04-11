@@ -5,7 +5,7 @@
       = main_nav_item 'Analytics', new_site_queries_path(@site), 'icon-bar-chart', site_analytics_controllers
       = main_nav_item 'Content', site_content_path(@site), 'icon-file', site_manage_content_controllers
       = main_nav_item 'Display', edit_site_display_path(@site), 'icon-desktop', site_manage_display_controllers
-      = main_nav_item 'Preview', site_preview_path(@site), 'icon-eye-open', [], preview_serp_link_options
+      = preview_main_nav_item @site, 'Preview'
       = main_nav_item 'Activate', site_embed_code_path(@site), 'icon-code', site_activate_search_controllers
 .l-site-nav.sub
   - if @site.nil? || @site.new_record?

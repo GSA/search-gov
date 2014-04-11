@@ -5,6 +5,6 @@
 .l-inner-content
   #preview
     %ul
-      = list_item_with_link_to_preview_serp 'View Staged', @site, { staged: true } unless @site.force_mobile_format?
+      = list_item_with_link_to_preview_serp 'View Staged', @site, { staged: true }
       = list_item_with_link_to_preview_serp 'View Current', @site
-      = list_item_with_link_to_preview_serp 'View Current Mobile', @site, { m: true } unless @site.force_mobile_format?
+      = list_item_with_link_to_preview_serp 'View Current Mobile', @site, { m: true }
