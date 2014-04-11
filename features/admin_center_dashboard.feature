@@ -152,14 +152,21 @@ Feature: Dashboard
   @javascript
   Scenario: Preview
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov |
+      | display_name | name              | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
+      | agency site  | legacy.agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
+      | agency site  | www.agency.gov    | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
     And I am logged in with email "john@agency.gov" and password "random_string"
-    When I go to the agency.gov's Dashboard page
+    When I go to the legacy.agency.gov's Dashboard page
     And I follow "Preview"
     Then I should find "View Staged" in the Preview modal
     And I should find "View Current" in the Preview modal
     And I should find "View Current Mobile" in the Preview modal
+
+    When I go to the www.agency.gov's Dashboard page
+    And I follow "Preview"
+    Then I should find "View Current" in the Preview modal
+    And I should not see "View Staged"
+    And I should not see "View Current Mobile"
 
   @javascript
   Scenario: Adding a new site
