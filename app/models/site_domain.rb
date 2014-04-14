@@ -33,19 +33,26 @@ class SiteDomain < ActiveRecord::Base
 
   def domain_coverage
     existing = self.affiliate.site_domains.detect do |existing_site_domain|
-      existing_domain_str, existing_path_str = existing_site_domain.domain.split '/', 2
-      existing_domain_str.insert(0, '.') unless existing_domain_str.start_with?('.')
-      (existing_path_str ||= '').insert 0, '/'
-
-      new_domain_str, new_path_str = domain.split '/', 2
-      new_domain_str.insert(0, '.') unless new_domain_str.start_with?('.')
-      (new_path_str ||= '').insert 0, '/'
-
       next if id == existing_site_domain.id
+      existing_domain_str, existing_path_str = extract_domain_path(existing_site_domain.domain)
+      new_domain_str, new_path_str = extract_domain_path(domain)
 
-      new_domain_str.end_with?(existing_domain_str) and
-          new_path_str.start_with?(existing_path_str)
+      new_domain_str.end_with?(existing_domain_str) and paths_overlap?(existing_path_str, new_path_str)
     end
     errors.add(:base, "'#{self.domain}' is already covered by your existing site domain '#{existing.domain}'") if existing
+  end
+
+  def extract_domain_path(site_domain_str)
+    domain_str, path_str = site_domain_str.split '/', 2
+    domain_str.insert(0, '.') unless domain_str.start_with?('.')
+    (path_str ||= '').insert 0, '/'
+    return domain_str, path_str
+  end
+
+  def paths_overlap?(existing_path_str, new_path_str)
+    existing_path_arr = existing_path_str.split('/')
+    new_path_arr = new_path_str.split('/')
+    return false if new_path_arr.size < existing_path_arr.size
+    new_path_arr.first(existing_path_arr.size) == existing_path_arr
   end
 end

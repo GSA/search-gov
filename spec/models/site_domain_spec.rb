@@ -19,6 +19,7 @@ describe SiteDomain do
         expect(affiliate.site_domains.build(domain: 'www.usa.gov.staging.net')).to be_valid
         expect(affiliate.site_domains.build(domain: 'test.gov')).to be_valid
         expect(affiliate.site_domains.build(domain: 'demo.test.gov/news')).to be_valid
+        expect(affiliate.site_domains.build(domain: 'test.gov/blogger')).to be_valid
       end
 
       it 'should not allow overlap' do
