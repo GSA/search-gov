@@ -135,16 +135,6 @@ module MobileNavigationsHelper
 
   def navigations_with_dropdown(html, nav_items, active_nav_index, related_sites_html)
     nav_items_length = nav_items.length
-    visible_nav_html, dropdown_nav_html = slice_nav_items(nav_items, active_nav_index)
-
-    html << "\n" << visible_nav_html.html_safe
-    html << "\n" << dropdown_navigation_wrapper(dropdown_nav_html.join("\n").html_safe, 'nav-dropdown')
-    html << related_sites_html
-
-    navigation_wrapper(html, nav_classes(nav_items_length, related_sites_html))
-  end
-
-  def slice_nav_items(nav_items, active_nav_index)
     if active_nav_index and active_nav_index > 1
       active_nav_html = nav_items.slice!(active_nav_index)
       visible_nav_html = nav_items.slice!(0) << "\n" << active_nav_html << "\n"
@@ -152,7 +142,12 @@ module MobileNavigationsHelper
       visible_nav_html = nav_items.slice!(0, 2).join("\n")
     end
     dropdown_nav_html = nav_items
-    [visible_nav_html, dropdown_nav_html]
+
+    html << "\n" << visible_nav_html.html_safe
+    html << "\n" << dropdown_navigation_wrapper(dropdown_nav_html.join("\n").html_safe, 'nav-dropdown')
+    html << related_sites_html
+
+    navigation_wrapper(html, nav_classes(nav_items_length, related_sites_html))
   end
 
   def related_site_links(search)
