@@ -63,6 +63,14 @@
       }
     }
 
+    > li:first-child a, > li:first-child span {
+      border-top-width: 0;
+
+      @media (min-width: @grid-float-breakpoint) {
+        border-top-width: 3px;
+      }
+    }
+
     .dropdown-menu > li > a {
       @media (min-width: @grid-float-breakpoint) {
         border-top: 1px solid @block-border-color;
@@ -71,14 +79,6 @@
         &:hover {
           color: @navbar-default-link-hover-color;
         }
-      }
-    }
-
-    > li:first-child a, > li:first-child span {
-      border-top-width: 0;
-
-      @media (min-width: @grid-float-breakpoint) {
-        border-top-width: 3px;
       }
     }
 
