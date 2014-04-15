@@ -63,7 +63,7 @@
       }
     }
 
-    > li:first-child a, > li:first-child span {
+    > li:first-child > a, > li:first-child span {
       border-top-width: 0;
 
       @media (min-width: @grid-float-breakpoint) {
@@ -99,7 +99,9 @@
     }
 
     > li.related-site {
-      float: right;
+      @media (min-width: @grid-float-breakpoint) {
+        float: right;
+      }
     }
 
     .show-more {
