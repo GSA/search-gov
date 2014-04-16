@@ -5,7 +5,7 @@
 = form.label :title, 'Title', class: 'required'
 = form.text_field :title, class: 'required'
 = form.label :description, 'Description', class: 'required'
-= form.text_area :description, class: 'required', rows: 5
+= form.text_area :description, class: 'required', rows: 5, maxlength: 255
 = form.label :status, 'Status', class: 'required'
 = form.select :status, BoostedContent::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
 
