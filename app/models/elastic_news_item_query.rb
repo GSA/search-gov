@@ -1,5 +1,4 @@
 class ElasticNewsItemQuery < ElasticTextFilteredQuery
-  DUBLIN_CORE_AGG_NAMES = [:contributor, :subject, :publisher]
 
   def initialize(options)
     options[:sort] = '_score' if options[:sort_by_relevance]
@@ -9,7 +8,7 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
     @until_ts = options[:until]
     @excluded_urls = options[:excluded_urls].try(:collect, &:url)
     @tags = options[:tags]
-    @dublin_core_aggs = options.slice(*DUBLIN_CORE_AGG_NAMES).delete_if { |agg_name, agg_value| agg_value.nil? }
+    @dublin_core_aggs = options.slice(*ElasticNewsItem::DUBLIN_CORE_AGG_NAMES).delete_if { |agg_name, agg_value| agg_value.nil? }
     self.highlighted_fields = %w(title description)
   end
 
@@ -25,7 +24,7 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
     end if @dublin_core_aggs.present?
 
     json.aggs do
-      DUBLIN_CORE_AGG_NAMES.each do |field|
+      ElasticNewsItem::DUBLIN_CORE_AGG_NAMES.each do |field|
         aggregation(json, field)
       end
     end

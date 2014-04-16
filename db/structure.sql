@@ -619,9 +619,9 @@ CREATE TABLE `news_items` (
   `created_at` datetime DEFAULT NULL,
   `rss_feed_url_id` int(11) NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `contributor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `publisher` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contributor` text COLLATE utf8_unicode_ci,
+  `subject` text COLLATE utf8_unicode_ci,
+  `publisher` text COLLATE utf8_unicode_ci,
   `properties` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
@@ -2053,3 +2053,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140403130657');
 INSERT INTO schema_migrations (version) VALUES ('20140408163129');
 
 INSERT INTO schema_migrations (version) VALUES ('20140410182452');
+
+INSERT INTO schema_migrations (version) VALUES ('20140416184235');

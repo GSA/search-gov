@@ -1,5 +1,6 @@
 class ElasticNewsItem
   extend Indexable
+  DUBLIN_CORE_AGG_NAMES = [:contributor, :subject, :publisher]
 
   self.settings = ElasticSettings::COMMON
 

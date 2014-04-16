@@ -32,6 +32,21 @@ describe RssFeedData do
       end
     end
 
+    context 'when a dublin core element is specified multiple times' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_multiple_dublin_core.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
+      end
+
+      it 'should create a single comma-separated list' do
+        RssFeedData.new(rss_feed_url).import
+        u = RssFeedUrl.find rss_feed_url.id
+        newest = u.news_items.first
+        newest.subject.should == 'Counterterrorism, Cybersecurity, Global Development, Global Economy, Human Rights, Multilateral Affairs, Nonproliferation, Sub Saharan Africa Middle East and North Africa, East Asia Pacific Europe and Eurasia, South and Central Asia, Western Hemisphere Foreign Policy'
+      end
+    end
+
     context 'when the feed is in the RSS 2.0 format' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read

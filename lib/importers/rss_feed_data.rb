@@ -147,7 +147,7 @@ class RssFeedData
   end
 
   def extract_properties(item)
-    media_content_node = extract_node(item, @feed_elements[:media_content])
+    media_content_node = extract_node(item, @feed_elements[:media_content]).first
     return unless media_content_node
     properties = {}
 
@@ -173,13 +173,13 @@ class RssFeedData
 
   def extract_element_content(item, element)
     node = extract_node(item, @feed_elements[element])
-    node.present? && (content = node.inner_text.to_s.squish).present? ? content : nil
+    node.present? && (content = node.map(&:inner_text).join(', ').squish).present? ? content : nil
   end
 
   def extract_node(item, path)
     return unless path
     namespace_hash = path_namespace_hash path
-    namespace_hash ? item.xpath(path, namespace_hash).first : item.xpath(path).first
+    namespace_hash ? item.xpath(path, namespace_hash) : item.xpath(path)
   end
 
   def path_namespace_hash(path)

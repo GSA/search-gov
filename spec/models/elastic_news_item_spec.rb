@@ -165,7 +165,7 @@ describe ElasticNewsItem do
           ElasticNewsItem.commit
         end
 
-        it "should aggregation and restrict results based on those criteria" do
+        it "should aggregate and restrict results based on those criteria" do
           search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
           search.total.should == 1
           search.results.first.should == @blog_item
@@ -176,6 +176,27 @@ describe ElasticNewsItem do
           publisher_aggregation.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room"])
           subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
           subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space))
+        end
+
+        context 'when a field has multiple values (comma separated)' do
+          before do
+            NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: 'multiple', published_at: 3.days.ago, link: 'http://www.wh.gov/multiple',
+                             title: 'Policy Multiple', description: "Random posting with multiple values",
+                             contributor: 'First Lady, Contributor', publisher: 'Other Folks, Publisher', subject: 'Space,Subject')
+            ElasticNewsItem.commit
+          end
+
+          it "should aggregate across multiple values based on those criteria" do
+            search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
+            search.aggregations.size.should == 3
+            contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
+            contributor_aggregation.rows.collect(&:value).should match_array(["First Lady", "President", "Contributor"])
+            publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
+            publisher_aggregation.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room", "Publisher"])
+            subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
+            subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space Subject))
+          end
+
         end
       end
     end
