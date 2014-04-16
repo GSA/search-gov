@@ -156,13 +156,16 @@ class Affiliate < ActiveRecord::Base
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = {
-    page_background_color: '#F7F7F7',
+    page_background_color: '#FFFFFF',
+    header_background_color: '#FFFFFF',
     content_background_color: '#FFFFFF',
     content_border_color: '#CACACA',
     content_box_shadow_color: '#555555',
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',
     left_tab_text_color: '#9E3030',
+    navigation_background_color: '#FFFFFF',
+    navigation_link_color: '#004168',
     title_link_color: '#2200CC',
     visited_title_link_color: '#800080',
     description_text_color: '#000000',

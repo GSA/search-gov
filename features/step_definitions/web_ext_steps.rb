@@ -27,8 +27,15 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
   step %{I should see "#{stripped_breadcrumbs}" in the breadcrumbs}
 end
 
-Then /^I should see a link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
-  page.should have_selector("a[href='#{url}']", :text => name)
+Then /^I should see a link to "([^"]*)" with url (for|that starts with|that ends with) "([^"]*)"$/ do |name, attribute_selector, url|
+  operator =
+      case attribute_selector
+        when 'that starts with' then '^='
+        when 'that ends with' then '$='
+        else '='
+      end
+
+  page.should have_selector("a[href#{operator}'#{url}']", :text => name)
 end
 
 Then /^I should see a link to "([^"]*)"$/ do |name|

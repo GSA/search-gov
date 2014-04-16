@@ -163,7 +163,8 @@ Feature: Dashboard
     And I should find "View Current Mobile" in the Preview modal
 
     When I go to the www.agency.gov's Dashboard page
-    Then I should see a link to "Preview" with url for "/search?affiliate=www.agency.gov&query=gov"
+    And I follow "Preview"
+    Then I should see a link to "Preview" with url that ends with "/search?affiliate=www.agency.gov&query=gov"
 
   @javascript
   Scenario: Adding a new site

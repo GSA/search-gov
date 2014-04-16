@@ -99,7 +99,7 @@ $(document).on 'change', '#site_css_property_hash_show_content_border', (e) ->
 showOrHideBoxShadow = () ->
   $colorInputField = $('#site_css_property_hash_content_box_shadow_color')
   color = $colorInputField.val()
-  contentSelector = '#preview-font-colors .serp-content'
+  contentSelector = '#legacy-preview-font-colors .serp-content'
   if isShowBoxShadow() and isValidColor(color)
     setBoxShadow contentSelector, "0 0 5px #{color}"
   else if !isShowBoxShadow()

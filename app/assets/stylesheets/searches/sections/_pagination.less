@@ -1,0 +1,39 @@
+#search .pagination {
+  .content-block();
+  font-size: 1.6em;
+
+  @media (min-width: @screen-md) {
+    border-bottom-width: 0;
+  }
+
+  .disabled {
+    .hidden();
+  }
+
+  .content-block-item {
+    padding: 0;
+  }
+  .previous_page, .current_page, .next_page {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .previous_page {
+    padding: 0.6em 12px 0.6em 6px;
+  }
+
+  .current_page {
+    padding: 0.6em 6px;
+  }
+
+  .next_page {
+    padding: 0.6em 6px 0.6em 12px;
+  }
+
+  .icon-chevron-left {
+    margin-right: 6px;
+  }
+  .icon-chevron-right {
+    margin-left: 6px;
+  }
+}

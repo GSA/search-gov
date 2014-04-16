@@ -1,7 +1,15 @@
 body
   font-family: <%= render_affiliate_css_property_value(@css_hash, :font_family) %>
+  @media (min-width: 992px)
+    background-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
 
-#search-bar #search-button
+#header
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
+
+#nav-button
+  border-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+
+#nav-button .icon-bar, #search-bar #search-button
   background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 
 #nav .navbar-nav > li.active span
@@ -9,6 +17,13 @@ body
   color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
   @media (min-width: 768px)
     border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+
+#nav
+  a, a:focus, a:hover, a:visited
+    color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
+
+ul.nav, .dropdown-menu
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
 
 #search
   color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
@@ -24,6 +39,6 @@ body
       &:visited
         color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
 
-#related-searches a
-  &, &:visited
+#related-searches a, #search .pagination a
+  &:hover, &:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>

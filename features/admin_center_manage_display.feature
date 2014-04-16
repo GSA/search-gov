@@ -145,7 +145,7 @@ Feature: Manage Display
     And the "Connection label 0" field should contain "agency site 3 SERP"
 
   @javascript
-  Scenario: Editing Font & Colors
+  Scenario: Editing Font & Colors on Affiliate
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
@@ -153,43 +153,86 @@ Feature: Manage Display
     When I go to the agency.gov's Font & Colors page
     Then the "Font Family" field should contain "Default"
     And the "Default" radio button should be checked
-    And the "Show Content Border" checkbox should not be checked
-    And the "Show Content Box Shadow" checkbox should not be checked
 
     When I select "Helvetica, sans-serif" from "Font Family"
     And I choose "Custom"
     And I fill in the following:
-      | Page Background Color    | #000001 |
-      | Content Background Color | #000020 |
-      | Content Border Color     | #000300 |
-      | Content Box Shadow Color | #004000 |
-      | Icon Color               | #050000 |
-      | Button Background Color  | #600000 |
-      | Active Sidebar Color     | #000007 |
-      | Link Color               | #000080 |
-      | Visited Link Color       | #000900 |
-      | Result URL Color         | #00A000 |
-      | Description Text Color   | #0B0000 |
-    And I check "Show Content Border"
-    And I check "Show Content Box Shadow"
+      | Page Background Color       | #000001 |
+      | Header Background Color     | #000020 |
+      | Navigation Background Color | #000300 |
+      | Active Navigation Color     | #004000 |
+      | Navigation Link Color       | #050000 |
+      | Button Background Color     | #600000 |
+      | Link Color                  | #000080 |
+      | Visited Link Color          | #000900 |
+      | Result URL Color            | #00A000 |
+      | Description Text Color      | #0B0000 |
     And I submit the form by pressing "Save"
 
     Then I should see "You have updated your font & colors"
     And the "Font Family" field should contain "Helvetica, sans-serif"
     And the "Custom" radio button should be checked
     And the "Page Background Color" field should contain "#000001"
-    And the "Content Background Color" field should contain "#000020"
-    And the "Show Content Border" checkbox should be checked
-    And the "Content Border Color" field should contain "#000300"
-    And the "Show Content Box Shadow" checkbox should be checked
-    And the "Content Box Shadow Color" field should contain "#004000"
-    And the "Icon Color" field should contain "#050000"
+    And the "Header Background Color" field should contain "#000020"
+    And the "Navigation Background Color" field should contain "#000300"
+    And the "Active Navigation Color" field should contain "#004000"
+    And the "Navigation Link Color" field should contain "#050000"
     And the "Button Background Color" field should contain "#600000"
-    And the "Active Sidebar Color" field should contain "#000007"
     And the "Link Color" field should contain "#000080"
     And the "Visited Link Color" field should contain "#000900"
     And the "Result URL Color" field should contain "#00A000"
     And the "Description Text Color" field should contain "#0B0000"
+
+  @javascript
+  Scenario: Editing Font & Colors on legacy Affiliate
+    Given the following legacy Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Font & Colors page
+    Then the "Font Family" field should contain "Default"
+    And the "Default" radio button should be checked
+    And the "Show Desktop Content Border" checkbox should not be checked
+    And the "Show Desktop Content Box Shadow" checkbox should not be checked
+
+    When I select "Helvetica, sans-serif" from "Font Family"
+    And I choose "Custom"
+    And I fill in the following:
+      | Page Background Color              | #000001 |
+      | Mobile Header Background Color     | #000020 |
+      | Mobile Navigation Background Color | #000300 |
+      | Active Navigation Color            | #004000 |
+      | Mobile Navigation Link Color       | #050000 |
+      | Button Background Color            | #600000 |
+      | Desktop Content Background Color   | #000007 |
+      | Desktop Content Border Color       | #000080 |
+      | Desktop Content Box Shadow Color   | #000900 |
+      | Desktop Icon Color                 | #00A000 |
+      | Link Color                         | #0B0000 |
+      | Visited Link Color                 | #C00000 |
+      | Result URL Color                   | #00000D |
+      | Description Text Color             | #0000E0 |
+    And I check "Show Desktop Content Border"
+    And I check "Show Desktop Content Box Shadow"
+    And I submit the form by pressing "Save"
+
+    Then I should see "You have updated your font & colors"
+    And the "Font Family" field should contain "Helvetica, sans-serif"
+    And the "Custom" radio button should be checked
+    And the "Page Background Color" field should contain "#000001"
+    And the "Mobile Header Background Color" field should contain "#000020"
+    And the "Mobile Navigation Background Color" field should contain "#000300"
+    And the "Active Navigation Color" field should contain "#004000"
+    And the "Mobile Navigation Link Color" field should contain "#050000"
+    And the "Button Background Color" field should contain "#600000"
+    And the "Desktop Content Background Color" field should contain "#000007"
+    And the "Desktop Content Border Color" field should contain "#000080"
+    And the "Desktop Content Box Shadow Color" field should contain "#000900"
+    And the "Desktop Icon Color" field should contain "#00A000"
+    And the "Link Color" field should contain "#0B0000"
+    And the "Visited Link Color" field should contain "#C00000"
+    And the "Result URL Color" field should contain "#00000D"
+    And the "Description Text Color" field should contain "#0000E0"
 
   @javascript
   Scenario: Editing Image Assets on legacy Affiliate

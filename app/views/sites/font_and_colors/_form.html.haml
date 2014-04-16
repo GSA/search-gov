@@ -1,0 +1,77 @@
+= form_for @site, as: :site, url: site_font_and_colors_path(@site), html: { class: 'form', id: 'edit-font-and-colors' } do |f|
+  .sub-nav-heading
+    %h2 Font & Colors
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+
+  = f.fields_for :css_property_hash do |css|
+    = css.label :font_family, 'Font Family'
+    = css.select :font_family,
+      options_for_select(FontFamily::ALL, render_affiliate_css_property_value(@site.css_property_hash, :font_family)),
+      {},
+      { data: { 'target-css-properties' => 'font-family', 'target-selector' => '#preview-font-colors' } }
+
+  %fieldset
+    %legend Color Scheme
+    = f.label :theme, value: 'default', class: 'radio' do
+      = f.radio_button :theme, 'default'
+      Default
+    = f.label :theme, value: 'custom', class: 'radio' do
+      = f.radio_button :theme, 'custom', checked: @site.uses_custom_theme?
+      Custom
+
+  = f.fields_for :css_property_hash do |css|
+    = css.label :page_background_color, 'Page Background Color'
+    .input-append.color{ data: { color: site_css_color_property(@site.css_property_hash, :page_background_color), provide: 'colorpicker', 'default-color' => "#{Affiliate::DEFAULT_CSS_PROPERTIES[:page_background_color]}", 'target-css-properties' => 'background-color', 'target-selector' => '#preview-font-colors' }}
+      %div= css.text_field :page_background_color, value: @site.css_property_hash[:page_background_color]
+      %span.add-on.add-on-colorpicker
+        %i
+
+    = css.label :header_background_color, 'Header Background Color'
+    = color_picker_component css, :header_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-header' }
+
+    = css.label :navigation_background_color, 'Navigation Background Color'
+    = color_picker_component css, :navigation_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-nav' }
+
+    = css.label :left_tab_text_color, 'Active Navigation Color'
+    = color_picker_component css, :left_tab_text_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-nav-item-active' }
+
+    = css.label :navigation_link_color, 'Navigation Link Color'
+    = color_picker_component css, :navigation_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-nav-item-link' }
+
+    = css.label :search_button_background_color, 'Button Background Color'
+    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color, border-color',
+        'target-selector' => '.serp-preview .btn-search, #preview-font-colors .hamburger' }
+
+    = css.label :title_link_color, 'Link Color'
+    = color_picker_component css, :title_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-title' }
+
+    = css.label :visited_title_link_color, 'Visited Link Color'
+    = color_picker_component css, :visited_title_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-title-visited' }
+
+    = css.label :url_link_color, 'Result URL Color'
+    = color_picker_component css, :url_link_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-url' }
+
+    = css.label :description_text_color, 'Description Text Color'
+    = color_picker_component css, :description_text_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-result-description' }
