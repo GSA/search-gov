@@ -6,5 +6,5 @@
     - module_name = is_video ? 'VIDS' : 'NEWS'
     %h2= link_with_click_tracking(translate_bing_highlights(h(instance.title)), instance.link, @affiliate, @search.query, index, module_name, @search_vertical)
     %h3.result-url= truncate_url(instance.link)
-    %h4= time_ago_in_words(instance.published_at)
+    %h4= news_item_time_ago_in_words(instance.published_at)
     %h3= news_description(instance)
