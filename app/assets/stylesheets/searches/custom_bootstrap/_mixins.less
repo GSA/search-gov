@@ -1,8 +1,11 @@
-.outline-focus() {
+.tab-focus() {
+  outline: medium solid @outline-color;
+  outline-offset: -2px;
+}
+
+.outline-on-focus() {
   &:focus {
-    outline-offset: -2px;
-    outline: 5px solid @outline-color;
-    outline: 5px auto @outline-color;
+    .tab-focus();
   }
 }
 
