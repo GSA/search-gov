@@ -20,6 +20,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
                               :content_box_shadow_color,
                               :description_text_color,
                               :font_family,
+                              :footer_background_color,
                               :header_background_color,
                               :left_tab_text_color,
                               :navigation_background_color,

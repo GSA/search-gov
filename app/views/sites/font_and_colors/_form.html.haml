@@ -26,15 +26,24 @@
 
   = f.fields_for :css_property_hash do |css|
     = css.label :page_background_color, 'Page Background Color'
-    .input-append.color{ data: { color: site_css_color_property(@site.css_property_hash, :page_background_color), provide: 'colorpicker', 'default-color' => "#{Affiliate::DEFAULT_CSS_PROPERTIES[:page_background_color]}", 'target-css-properties' => 'background-color', 'target-selector' => '#preview-font-colors' }}
-      %div= css.text_field :page_background_color, value: @site.css_property_hash[:page_background_color]
-      %span.add-on.add-on-colorpicker
-        %i
+    = color_picker_component css, :page_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '.serp-preview' }
+
+    = css.label :search_button_background_color, 'Button Background Color'
+    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color, border-color',
+        'target-selector' => '.serp-preview .btn-search, #preview-font-colors .hamburger' }
 
     = css.label :header_background_color, 'Header Background Color'
     = color_picker_component css, :header_background_color, @site.css_property_hash,
       { 'target-css-properties' => 'background-color',
         'target-selector' => '#preview-font-colors .serp-header' }
+
+    = css.label :footer_background_color, 'Footer Background Color'
+    = color_picker_component css, :footer_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-footer' }
 
     = css.label :navigation_background_color, 'Navigation Background Color'
     = color_picker_component css, :navigation_background_color, @site.css_property_hash,
@@ -50,11 +59,6 @@
     = color_picker_component css, :navigation_link_color, @site.css_property_hash,
       { 'target-css-properties' => 'color',
         'target-selector' => '#preview-font-colors .serp-nav-item-link' }
-
-    = css.label :search_button_background_color, 'Button Background Color'
-    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
-      { 'target-css-properties' => 'background-color, border-color',
-        'target-selector' => '.serp-preview .btn-search, #preview-font-colors .hamburger' }
 
     = css.label :title_link_color, 'Link Color'
     = color_picker_component css, :title_link_color, @site.css_property_hash,

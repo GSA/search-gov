@@ -1,36 +1,38 @@
 !!!strict
-%html{ lang: @affiliate.locale }
+%html{ lang: @search.affiliate.locale }
   %head
     %meta{ charset: 'UTF-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
     = render_robots_meta_tag
     = attribution
-    != "<!-- aid: #{@affiliate.id} handle: #{@affiliate.name} -->"
-    = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
+    != "<!-- aid: #{@search.affiliate.id} handle: #{@search.affiliate.name} -->"
+    = favicon_link_tag @search.affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @search.affiliate.favicon_url
 
     %title #{@page_title}
 
-    = font_stylesheet_link_tag @affiliate
+    = font_stylesheet_link_tag @search.affiliate
     = stylesheet_link_tag 'searches_mobile'
     /[if IE]
       = stylesheet_link_tag 'searches_mobile_ie'
     :css
-      #{@affiliate.mobile_look_and_feel_css}
+      #{@search.affiliate.mobile_look_and_feel_css}
     /[if lt IE 9]
       = javascript_include_tag 'searches_ie_lt9'
 
-  %body
+  %body{ body_class_hash(@search.affiliate) }
     %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
     #header-wrapper
-      - navigations = renderable_navigations(@affiliate)
+      - navigations = renderable_navigations(@search.affiliate)
       #header
         = render(partial: 'nav_button') if navigations.present? || @search.affiliate.connections.present?
-        = mobile_header @affiliate
+        = mobile_header @search.affiliate
         = navigations_and_related_sites(@search, @search_params, navigations)
         = render partial: 'form', locals: { search: @search }
 
     #main-content{ tabindex: -1 }= yield
+
+    = render partial: 'footer', locals: { affiliate: @search.affiliate } if @search.affiliate.managed_footer_links.present?
 
     = javascript_include_tag 'searches_mobile'
 

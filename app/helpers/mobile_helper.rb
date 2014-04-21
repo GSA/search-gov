@@ -1,3 +1,4 @@
+require 'benchmark'
 module MobileHelper
   DEFAULT_FONT_STYLESHEET_LINK = 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'.freeze
 
@@ -37,6 +38,11 @@ module MobileHelper
     else
       render partial: 'searches/powered_by_digital_gov_search'
     end
+  end
+
+  def body_class_hash(affiliate)
+    page_background_color = site_css_color_property(affiliate.css_property_hash, :page_background_color)
+    page_background_color =~ /^#FFF(FFF)?$/i ? { class: 'assign-default-bg' } : {}
   end
 
   def matching_site_limits(search, search_params)

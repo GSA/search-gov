@@ -37,10 +37,20 @@
       { 'target-css-properties' => 'background-color',
         'target-selector' => '.serp-preview' }
 
+    = css.label :search_button_background_color, 'Button Background Color'
+    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color, border-color',
+        'target-selector' => '.serp-preview .btn-search, #legacy-preview-font-colors .serp-footer-button, #preview-font-colors .hamburger' }
+
     = css.label :header_background_color, 'Mobile Header Background Color'
     = color_picker_component css, :header_background_color, @site.css_property_hash,
       { 'target-css-properties' => 'background-color',
         'target-selector' => '#preview-font-colors .serp-header' }
+
+    = css.label :footer_background_color, 'Mobile Footer Background Color'
+    = color_picker_component css, :footer_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-footer' }
 
     = css.label :navigation_background_color, 'Mobile Navigation Background Color'
     = color_picker_component css, :navigation_background_color, @site.css_property_hash,
@@ -56,11 +66,6 @@
     = color_picker_component css, :navigation_link_color, @site.css_property_hash,
       { 'target-css-properties' => 'color',
         'target-selector' => '#preview-font-colors .serp-nav-item-link' }
-
-    = css.label :search_button_background_color, 'Button Background Color'
-    = color_picker_component css, :search_button_background_color, @site.css_property_hash,
-      { 'target-css-properties' => 'background-color, border-color',
-        'target-selector' => '.serp-preview .btn-search, #legacy-preview-font-colors .serp-footer-button, #preview-font-colors .hamburger' }
 
     = css.label :content_background_color, 'Desktop Content Background Color'
     = color_picker_component css, :content_background_color, @site.css_property_hash,

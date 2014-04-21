@@ -65,8 +65,8 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   private
 
   def assign_mode
-    redirect_to(site_path(@site)) if @site.force_mobile_format?
     @mode = params[:mode] if MODES.include? params[:mode]
+    @mode = SIMPLE_MODE if @site.force_mobile_format?
     @mode ||= @site.staged_uses_managed_header_footer? ? SIMPLE_MODE : ADVANCED_MODE
   end
 

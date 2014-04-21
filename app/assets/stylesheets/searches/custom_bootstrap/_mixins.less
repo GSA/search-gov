@@ -35,6 +35,18 @@
   }
 }
 
+body.assign-default-bg {
+  @media (max-width: @screen-sm-max) {
+    background-color: @body-bg;
+  }
+
+  #search {
+    > div, .content-block-item {
+      border-color: @block-border-color;
+    }
+  }
+}
+
 .item-title() {
   font-weight: normal;
   margin: 10px 0 5px;

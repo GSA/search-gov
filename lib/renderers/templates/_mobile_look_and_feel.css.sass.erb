@@ -5,6 +5,9 @@ body
 #header
   background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
 
+#footer-wrapper
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
+
 #nav-button
   border-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 
@@ -17,11 +20,14 @@ body
   @media (min-width: 768px)
     border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
 
-#nav
-  a, a:focus, a:hover, a:visited
+#nav-wrapper, #footer-wrapper
+  .navbar-nav > li > a
     color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
 
-ul.nav, .dropdown-menu
+    &:focus, &:hover, &:visited
+      color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
+
+#nav, .dropdown-menu
   background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
 
 #search
