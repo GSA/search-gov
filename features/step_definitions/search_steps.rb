@@ -23,6 +23,6 @@ Given /^the following Agency Urls exist:$/ do |table|
   end
 end
 
-Then(/^I should see (Powered by|Accionado por) Bing logo$/) do |text|
+Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
   page.should have_selector '.content-provider .bing', text: text
 end

@@ -65,7 +65,7 @@ Feature: Searches using mobile device
     When I am on es.agency.gov's mobile search page
     And I fill in "Ingrese su búsqueda" with "presidente"
     And I press "Buscar"
-    Then I should see Accionado por Bing logo
+    Then I should see Generado por Bing logo
     And I should see 3 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see "Mostrar más"
@@ -99,7 +99,7 @@ Feature: Searches using mobile device
     And I should see at least "10" web search results
 
     When I am on es.agency.gov's "Noticias-1" mobile news search page
-    Then I should see "Accionado por DIGITALGOV Search"
+    Then I should see "Generado por DIGITALGOV Search"
     And I should see at least "5" web search results
 
   Scenario: Site search
@@ -125,7 +125,7 @@ Feature: Searches using mobile device
     When I am on es.agency.gov's "GobiernoUSA.gov" mobile site search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see Accionado por Bing logo
+    Then I should see Generado por Bing logo
     And I should see at least "10" web search results
 
   Scenario: Site navigations without dropdown menu

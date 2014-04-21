@@ -26,15 +26,22 @@ ul.nav, .dropdown-menu
 
 #search
   color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
+
+  > div, .content-block-item
+    border-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
+
   a, #spelling-suggestion a
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
     &:visited
       color: <%= render_affiliate_css_property_value(@css_hash, :visited_title_link_color) %>
+
   .result
     .uext_type
       color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
+
     .url, .feed-name
       color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
+
       &:visited
         color: <%= render_affiliate_css_property_value(@css_hash, :url_link_color) %>
 
