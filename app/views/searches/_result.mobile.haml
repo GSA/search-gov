@@ -5,6 +5,5 @@
   %div.url= url_without_protocol result['unescapedUrl']
   %span.description
     - if result['publishedAt']
-      = time_ago_in_words(result['publishedAt'])
-      \-
+      = news_item_time_ago_in_words(result['publishedAt'], ' - ')
     = display_result_description(result)

@@ -3,7 +3,9 @@ module NewsItemsHelper
     news_items.uniq { |n| n.link }
   end
 
-  def news_item_time_ago_in_words(published_at)
-    time_ago_in_words(published_at) if published_at < Time.current
+  def news_item_time_ago_in_words(published_at, separator = '')
+    if published_at < Time.current
+      [time_ago_in_words(published_at), separator].join
+    end
   end
 end
