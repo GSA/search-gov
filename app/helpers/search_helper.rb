@@ -3,6 +3,11 @@ module SearchHelper
 
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
 
+  def offer_commercial_results(search_url)
+    link = link_to t('searches.commercial_results.search_again'), search_url
+    t('searches.commercial_results.see_more', link: link).html_safe
+  end
+
   def result_partial_for(search)
     if search.is_a?(ImageSearch)
       "/image_searches/result"

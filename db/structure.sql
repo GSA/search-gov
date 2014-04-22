@@ -90,6 +90,7 @@ CREATE TABLE `affiliates` (
   `status_id` int(11) NOT NULL DEFAULT '2',
   `dublin_core_mappings` text COLLATE utf8_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
+  `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2055,3 +2056,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140408163129');
 INSERT INTO schema_migrations (version) VALUES ('20140410182452');
 
 INSERT INTO schema_migrations (version) VALUES ('20140416184235');
+
+INSERT INTO schema_migrations (version) VALUES ('20140421210008');

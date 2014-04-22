@@ -20,7 +20,7 @@ class ElasticTextFilteredQuery < ElasticQuery
   end
 
   def query_string(json, fields, query, options = {})
-    json.query_string do
+    json.simple_query_string do
       json.fields fields
       json.query query
       options.each do |option, value|

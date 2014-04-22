@@ -1,18 +1,7 @@
 class WebSearch < Search
-  attr_reader :matching_site_limits, :tracking_information
+  include Govboxable
 
-  delegate :boosted_contents,
-           :agency,
-           :med_topic,
-           :news_items,
-           :video_news_items,
-           :featured_collections,
-           :tweets,
-           :photos,
-           :jobs,
-           :related_search,
-           :to => :@govbox_set,
-           :allow_nil => true
+  attr_reader :matching_site_limits, :tracking_information
 
   class << self
     def results_present_for?(query, affiliate)
@@ -32,42 +21,6 @@ class WebSearch < Search
     @formatted_query = formatted_query_instance.query
     search_engine_parameters = options.merge(query: @formatted_query, offset: offset, per_page: @per_page)
     @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)
-  end
-
-  def has_related_searches?
-    related_search && related_search.size > 0
-  end
-
-  def has_best_bets?
-    has_boosted_contents? or has_featured_collections?
-  end
-
-  def has_boosted_contents?
-    boosted_contents and boosted_contents.total > 0 and boosted_contents.results.size > 0
-  end
-
-  def best_bets_count
-    boosted_contents_count + featured_collections_count
-  end
-
-  def boosted_contents_count
-    has_boosted_contents? ? boosted_contents.results.size : 0
-  end
-
-  def featured_collections_count
-    has_featured_collections? ? featured_collections.results.size : 0
-  end
-
-  def has_featured_collections?
-    featured_collections and featured_collections.total > 0 and featured_collections.results.size > 0
-  end
-
-  def method_missing(meth, *args, &block)
-    if meth.to_s =~ /^has_(.+)\?$/
-      run_has_method($1)
-    else
-      super
-    end
   end
 
   def cache_key
@@ -95,7 +48,6 @@ class WebSearch < Search
     end
     hash
   end
-
 
   def search
     ActiveSupport::Notifications.instrument("#{@search_engine.class.name.tableize.singularize}.usasearch", :query => { :term => @search_engine.query }) do
@@ -194,12 +146,6 @@ class WebSearch < Search
 
   def get_vertical
     :web
-  end
-
-  private
-
-  def run_has_method(member_name)
-    send(member_name).present? and send(member_name).total > 0
   end
 
 end

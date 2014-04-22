@@ -204,12 +204,8 @@ describe ElasticIndexedDocument do
         ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
       end
 
-      context "when query contains problem characters" do
+      context "when query only contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
-        end
-
-        %w(+++obama --obama +-obama).each do |query|
           specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
       end
@@ -234,7 +230,7 @@ describe ElasticIndexedDocument do
           ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
           ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 2
           ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 0
-          ElasticIndexedDocument.search_for(q: '"other text" (porpoises OR whales)', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: '"other text" (porpoises | whales)', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
           ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
         end
       end

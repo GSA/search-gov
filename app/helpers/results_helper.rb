@@ -22,11 +22,18 @@ module ResultsHelper
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
+  def link_to_indexed_document_title(result, position)
+    title = translate_bing_highlights(h(result.title)).html_safe
+
+    click_data = { p: position, s: 'AIDOC', i: result.id }
+    link_to title, result.url, data: { click: click_data }
+  end
+
   def link_to_news_item_title(instance, position)
     title = translate_bing_highlights(h(instance.title)).html_safe
     module_tag = instance.is_video? ? 'VIDS' : 'NEWS'
 
-    click_data = { p: position, s: module_tag }
+    click_data = { p: position, s: module_tag, i: instance.id }
     link_to title, instance.link, data: { click: click_data }
   end
 

@@ -15,15 +15,15 @@ class SearchesController < ApplicationController
   ssl_allowed :index, :news, :docs, :advanced, :videonews
 
   def index
-    @search = WebSearch.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
+    search_klass, @search_vertical, template = gets_blended_results? ? [BlendedSearch, :blended, :blended] : [WebSearch, :web, :index]
+    @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
     @page_title = @search.query
     set_search_page_title
-    @search_vertical = :web
     set_search_params
     respond_to do |format|
-      format.any(:html, :mobile) {}
+      format.any(:html, :mobile) {render template}
       format.json { render :json => @search }
     end
   end
@@ -129,4 +129,9 @@ class SearchesController < ApplicationController
   def default_url_options(options={})
     request.format && request.format.to_sym == :mobile ? { :m => 'true' } : { :m => 'false' }
   end
+
+  def gets_blended_results?
+    @affiliate.gets_blended_results && params[:cr] != 'true'
+  end
+
 end

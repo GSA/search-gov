@@ -20,7 +20,7 @@ Feature: Search Module Analytics
       | bureau.gov     | FOO        | form     | en     | 10          | 1      |
       | bureau.gov     | FOO        | image    | es     | 10          | 2      |
       | otheraff.govy  | BAR        | web      | en     | 10          | 3      |
-      | otheraff.govy  | UNKNOWN    | recall   | en     | 1           | 1      |
+      | otheraff.govy  | UNKNOWN    | blended   | en     | 1           | 1      |
     And the following search module data exists for "2011-06-11":
       | affiliate_name | module_tag | vertical | locale | impressions | clicks |
       | bureau.gov     | FOO        | web      | en     | 100         | 40     |
@@ -28,7 +28,7 @@ Feature: Search Module Analytics
       | bureau.gov     | FOO        | form     | en     | 10          | 1      |
       | bureau.gov     | FOO        | image    | es     | 10          | 2      |
       | otheraff.govy  | BAR        | web      | en     | 10          | 3      |
-      | otheraff.govy  | UNKNOWN    | recall   | en     | 1           | 1      |
+      | otheraff.govy  | UNKNOWN    | blended   | en     | 1           | 1      |
     And the following search module data exists for "2011-06-12":
       | affiliate_name | module_tag | vertical | locale | impressions | clicks |
       | bureau.gov     | FOO        | web      | en     | 100         | 40     |
@@ -36,7 +36,7 @@ Feature: Search Module Analytics
       | bureau.gov     | FOO        | form     | en     | 10          | 1      |
       | bureau.gov     | FOO        | image    | es     | 10          | 2      |
       | otheraff.govy  | BAR        | web      | en     | 10          | 3      |
-      | otheraff.govy  | UNKNOWN    | recall   | en     | 1           | 1      |
+      | otheraff.govy  | UNKNOWN    | blended   | en     | 1           | 1      |
     When I am on the admin home page
     And I follow "Search Module Stats"
     Then I should see "Search Module Stats"
@@ -58,7 +58,7 @@ Feature: Search Module Analytics
     When I fill in "start_date" with "2011-06-10"
     And I fill in "end_date" with "2011-06-10"
     And I select "bureau.gov" from "Affiliate"
-    And I select "Recall" from "Vertical"
+    And I select "Blended" from "Vertical"
     And I press "Submit"
     Then I should see "No data matched your filters"
 

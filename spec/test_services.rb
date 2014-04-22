@@ -36,7 +36,7 @@ module TestServices
   def create_es_indexes
     Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
       klass = File.basename(filename, '.rb').camelize.constantize
-      klass.recreate_index if klass.kind_of?(Indexable)
+      klass.recreate_index if klass.kind_of?(Indexable) and klass != ElasticBlended
     end
   end
 

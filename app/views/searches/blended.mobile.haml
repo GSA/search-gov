@@ -1,0 +1,16 @@
+#search{ search_data(@search, @search_vertical) }
+  %h2= t 'searches.search_results'
+  - if @search.results.blank?
+    = render partial: 'no_results', locals: { search: @search }
+
+  = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
+  = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
+  = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
+  = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
+
+  - if @search.results.present?
+    = render partial: 'searches/blended/results', locals: { search:  @search }
+    = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
+    = render partial: 'searches/blended/offer_commercial_results', locals: { search:  @search } if @search.total < @search.per_page * @search.page
+    = render partial: 'pagination', locals: { results: @search.results }
+

@@ -139,10 +139,6 @@ describe ElasticSaytSuggestion do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
           specify { ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
         end
-
-        %w(+++obama --obama +-obama).each do |query|
-          specify { ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
-        end
       end
 
       context 'when affiliate is English' do
