@@ -24,9 +24,11 @@
     %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
     #header-wrapper
       - navigations = renderable_navigations(@search.affiliate)
+      - has_menu = has_menu_items? @search, navigations
       #header
-        = render(partial: 'nav_button') if navigations.present? || @search.affiliate.connections.present?
+        = render partial: 'nav_button' if has_menu
         = mobile_header @search.affiliate
+        = main_menu @search, @search_params, navigations if has_menu
         = navigations_and_related_sites(@search, @search_params, navigations)
         = render partial: 'form', locals: { search: @search }
 

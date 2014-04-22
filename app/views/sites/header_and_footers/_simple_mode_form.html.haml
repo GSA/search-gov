@@ -1,14 +1,13 @@
-- unless @site.force_mobile_format?
-  %h3 Header Links
-  %table#header-links.table
-    %thead
-      %tr.nodrag.nodrop
-        %th Title
-        %th URL
-    %tbody
-      - @site.managed_header_links.each_with_index do |header_link, index|
-        = render partial: 'managed_header_link_fields', locals: { header_link: header_link, index: index }
-  .trigger-wrapper= link_to_add_new_site_header_link('Add Another Header Link', @site)
+%h3 Header Links
+%table#header-links.table
+  %thead
+    %tr.nodrag.nodrop
+      %th Title
+      %th URL
+  %tbody
+    - @site.managed_header_links.each_with_index do |header_link, index|
+      = render partial: 'managed_header_link_fields', locals: { header_link: header_link, index: index }
+.trigger-wrapper= link_to_add_new_site_header_link('Add Another Header Link', @site)
 
 %h3 Footer Links
 %table#footer-links.table

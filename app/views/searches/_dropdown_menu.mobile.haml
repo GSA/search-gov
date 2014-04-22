@@ -1,0 +1,6 @@
+%li.dropdown.collapsible{ id: id }
+  = link_to "##{id}", class: 'dropdown-toggle show-more' do
+    = content_tag :span, show_more_label
+    = content_tag :span, nil, class: 'caret'
+  %ul
+    #{html.html_safe}

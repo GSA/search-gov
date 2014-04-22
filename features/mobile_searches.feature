@@ -147,12 +147,12 @@ Feature: Searches using mobile device
     Then I should see "Everything" within the SERP active navigation
     And I should see at least "10" web search results
 
-    When I follow "FAQs"
+    When I follow "FAQs" within the SERP navigation
     And I press "Search"
     Then I should see "FAQs" within the SERP active navigation
     And I should see at least "10" web search results
 
-    When I follow "Articles"
+    When I follow "Articles" within the SERP navigation
     Then I should see "Articles" within the SERP active navigation
     And I should see at least "10" web search results
 
@@ -183,12 +183,12 @@ Feature: Searches using mobile device
     And I should see "Everything FAQs Articles More Apps Blog News" within the SERP navigation
     And I should see at least "10" web search results
 
-    When I follow "Apps"
+    When I follow "Apps" within the SERP navigation
     Then I should see "Apps" within the SERP active navigation
     And I should see "Everything FAQs Apps More Articles Blog News" within the SERP navigation
     And I should see at least "10" web search results
 
-    When I follow "News"
+    When I follow "News" within the SERP navigation
     Then I should see "News" within the SERP active navigation
     And I should see "Everything FAQs News More Articles Apps Blog" within the SERP navigation
     And I should see at least "10" web search results
@@ -327,5 +327,5 @@ Feature: Searches using mobile device
     And I press "Search"
     And I should see a link to "Este tema en español"
     And I should see a link to "All sites"
-    When I follow "Este tema en español"
+    When I follow "Este tema en español" within the SERP navigation
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"

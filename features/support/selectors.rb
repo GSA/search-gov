@@ -29,15 +29,17 @@ module HtmlSelectorsHelpers
     when /the first table body row/
       "table tbody tr:first-child"
     when /the SERP active navigation/
-      '#nav .active'
+      '#search-nav .active'
     when /the SERP navigation/
-      '#nav'
+      '#search-nav'
     when /the med topic govbox/
       '#med-topic'
     when /the news govbox/
       '#news'
     when /the search all sites row/
       '#search .search-all-sites'
+    when /the main menu/
+        '#main-menu'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

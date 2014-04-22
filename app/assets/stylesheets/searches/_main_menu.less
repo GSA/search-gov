@@ -1,0 +1,140 @@
+#menu-button {
+  position: relative;
+  float: right;
+  margin-right: @navbar-padding-horizontal;
+  padding: 9px 10px;
+  .navbar-vertical-align(34px);
+  background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 0;
+  border-radius: @border-radius-base;
+
+  > span {
+    float: left;
+
+    &.menu-text {
+      .sr-only();
+
+      @media (min-width: @screen-sm) {
+        display: block;
+        float: none;
+        font-size: 1.4em;
+        height: auto;
+        line-height: 1;
+        margin-left: 28px;
+        position: static;
+        vertical-align: top;
+        width: auto;
+      }
+    }
+  }
+
+  // Bars
+  .icon-bar {
+    clear: left;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+}
+
+.menu-item() {
+  .text-overflow();
+  border-left: 3px solid transparent;
+  font-size: 1.4em;
+  line-height: 1;
+  padding: 12px 10px 14px 21px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  @media (min-width: @screen-sm) {
+    padding: 6px 10px 8px 9px;
+  }
+}
+
+.menu {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: @border-radius-base;
+  padding-right: @navbar-padding-horizontal;
+  padding-left:  @navbar-padding-horizontal;
+  .clearfix();
+  -webkit-overflow-scrolling: touch;
+
+  @media (min-width: @screen-sm) {
+    .box-shadow(0 6px 12px rgba(0,0,0,.175));
+    position: absolute;
+    width: 200px;
+    top: 45px;
+    right: 12px;
+    z-index: @zindex-main-menu;
+  }
+
+  @media (min-width: @screen-lg) {
+    top: 8px;
+    right: -198px;
+  }
+
+  > ul {
+    .nav();
+    margin: 0 -@navbar-padding-horizontal;
+
+    @media (min-width: @screen-sm) {
+      padding: (@navbar-padding-horizontal/2) 0;
+    }
+
+    > li > a, > li > span {
+      .menu-item();
+      font-weight: bold;
+    }
+
+    > li > span {
+      position: relative;
+      display: block;
+    }
+
+    .divider {
+      height: 1px;
+      margin: ((@line-height-computed / 2) - 1) 0;
+      overflow: hidden;
+    }
+
+    > li > .dropdown-toggle {
+      .outline-on-focus();
+    }
+  }
+}
+
+.menu > ul > .dropdown {
+  > ul {
+    .nav();
+
+    > li > a, > li > span {
+      .menu-item();
+      padding: 12px 10px 14px 33px;
+
+      @media (min-width: @screen-sm) {
+        padding: 6px 10px 8px 21px;
+      }
+    }
+
+    > li > span {
+      position: relative;
+      display: block;
+    }
+  }
+
+  &.collapsed {
+    > ul {
+      display: none;
+    }
+  }
+}

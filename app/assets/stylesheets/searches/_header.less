@@ -10,13 +10,19 @@
   .clearfix();
   border-radius: @border-radius-base;
   margin: 0;
+  position: relative;
+
+  @media (min-width: @screen-sm) {
+    margin: 0 auto;
+    width: @screen-sm;
+  }
 
   h1 {
     margin: 0;
     padding: 0;
   }
 
-  a {
+  .logo a {
     display: block;
     text-decoration: none;
   }
@@ -25,6 +31,9 @@
     margin-bottom: @content-block-margin;
     padding: 8px 60px 0;
 
+    @media (min-width: @screen-sm) {
+      padding: 8px 100px 0;
+    }
 
     &.text {
       display: block;
@@ -37,6 +46,10 @@
 
       @media (min-width: @screen-sm) {
         height: auto;
+      }
+
+      @media (min-width: @screen-md) {
+        margin-bottom: @content-block-margin;
       }
 
       h1 {

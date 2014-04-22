@@ -1,7 +1,6 @@
-.navbar-default
-  = button_tag data: { target: '#nav', toggle: 'collapse' }, id: 'nav-button', class: 'navbar-toggle', tabindex: 2 do
-    %span.sr-only Toggle navigation
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
+= button_tag data: { target: '#main-menu', toggle: 'collapse' }, id: 'menu-button', tabindex: 2 do
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+  %span.menu-text= t :'searches.menu'
 

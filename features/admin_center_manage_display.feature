@@ -348,6 +348,14 @@ Feature: Manage Display
     Then I should see a link to "Contact" with url for "http://contact.agency.gov"
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
+    When I am on agency.gov's mobile search page
+    And I press "Menu"
+    Then I should find "Browse site" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+    Then I should see a link to "Contact" with url for "http://contact.agency.gov"
+    Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+
     When I go to the agency.gov's Header & Footer page
     And I follow "Switch to Advanced Mode"
     Then I should see "CSS to customize the top and bottom of your search results page"

@@ -21,7 +21,9 @@ showOrHideClearButton = ->
 whenFocusOnQuery = (e) ->
   return if e.which? and e.which == 13
   e.stopPropagation()
-  $('#nav .dropdown').addClass 'collapsed'
+  $('#search-nav .dropdown').addClass 'collapsed'
+  $mainMenu = $('#main-menu')
+  $mainMenu.removeClass('in').addClass('collapse') if $mainMenu.hasClass('in')
   showOrHideClearButton()
 
 $(document).on 'focus keydown', queryFieldSelector, whenFocusOnQuery

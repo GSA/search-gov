@@ -2,6 +2,11 @@ require 'benchmark'
 module MobileHelper
   DEFAULT_FONT_STYLESHEET_LINK = 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'.freeze
 
+  def dropdown_wrapper(partial, html, id, show_more_label)
+    render partial: partial,
+           locals: { html: html, id: id, show_more_label: show_more_label }
+  end
+
   def font_stylesheet_link_tag(affiliate)
     stylesheet_link_tag(DEFAULT_FONT_STYLESHEET_LINK) if FontFamily.default?(affiliate.css_property_hash[:font_family])
   end

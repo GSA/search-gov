@@ -1,6 +1,6 @@
 module MobileNavigationsHelper
   def navigation_heading
-    @affiliate.left_nav_label.present? ? @affiliate.left_nav_label : I18n.t(:search)
+    @search.affiliate.left_nav_label.present? ? @search.affiliate.left_nav_label : I18n.t(:search)
   end
 
   def navigations_and_related_sites(search, search_params, navigations)
@@ -39,7 +39,7 @@ module MobileNavigationsHelper
   end
 
   def navigation_context(navigable)
-    nav_html = navigation_item(true, navigable.name)
+    nav_html = navigation_item(navigable.name, true)
     navigation_wrapper(nav_html, 'in')
   end
 
@@ -55,26 +55,39 @@ module MobileNavigationsHelper
   end
 
   def search_everything_navigation(search, search_params)
+    search_everything_builder search, search_params do |label, is_active, path|
+      navigation_item label, is_active, path
+    end
+  end
+
+  def search_everything_builder(search, search_params)
     search_label = search.affiliate.default_search_label
     is_active = search.instance_of?(WebSearch)
     params = search_params.slice(:affiliate, :m).
         merge(query: search.query)
 
-    navigation_item(is_active, search_label, search_path(params))
+    yield search_label, is_active, search_path(params)
   end
 
   def build_navigations_items(search, search_params, dc, rss_feed, navigations)
+    navigation_builder search, search_params, dc, rss_feed, navigations do |navigable_name, is_active, path|
+      navigation_item navigable_name, is_active, path
+    end
+  end
+
+  def navigation_builder(search, search_params, dc, rss_feed, navigations)
     query = search.query
     navigations.map do |navigation|
       navigable = navigation.navigable
       active_navigable, path =
           case navigable
-          when DocumentCollection
-            [dc, document_collection_search_path(search_params, navigable, query)]
-          when RssFeed
-            [rss_feed, rss_feed_search_path(search_params, navigable, query)]
+            when DocumentCollection
+              [dc, document_collection_search_path(search_params, navigable, query)]
+            when RssFeed
+              [rss_feed, rss_feed_search_path(search_params, navigable, query)]
           end
-      build_navigation(active_navigable, navigable, path)
+      is_active = active_navigable == navigable
+      yield navigable.name, is_active, path
     end
   end
 
@@ -94,12 +107,7 @@ module MobileNavigationsHelper
     search_params.slice(*keys).merge(id_sym => id, :query => query)
   end
 
-  def build_navigation(active_navigable, navigable, path)
-    is_active = active_navigable == navigable
-    navigation_item(is_active, navigable.name, path)
-  end
-
-  def navigation_item(is_active, title, path = nil)
+  def navigation_item(title, is_active, path = nil)
     css_class = is_active ? 'active' : nil
     content_tag(:li, nil, class: css_class) do
       link_to_unless is_active, title, path do
@@ -165,19 +173,7 @@ module MobileNavigationsHelper
                                 I18n.t(:'searches.related_sites'))
   end
 
-  def related_site_item(connection, query)
-    content_tag :li,
-                related_site_link(connection, query),
-                class: 'related-site'
-  end
-
-  def related_site_link(connection, query)
-    link_to connection.label,
-            search_path(affiliate: connection.connected_affiliate.name, query: query)
-  end
-
   def dropdown_navigation_wrapper(html, id, show_more_label = I18n.t(:show_more))
-    render partial: 'searches/dropdown_nav_wrapper',
-           locals: { html: html, id: id, show_more_label: show_more_label }
+    dropdown_wrapper 'searches/dropdown_nav_wrapper', html, id, show_more_label
   end
 end
