@@ -32,7 +32,10 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
 
   def aggregation(json, field)
     json.set! field do |agg_json|
-      agg_json.terms { agg_json.field field }
+      agg_json.terms do
+        agg_json.field field
+        agg_json.size 0
+      end
     end
   end
 
@@ -64,7 +67,7 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
   def highlight_fields(json)
     json.fields do
       json.set! :title, { number_of_fragments: 0 }
-      json.set! :description, {fragment_size: 75, number_of_fragments: 2}
+      json.set! :description, { fragment_size: 75, number_of_fragments: 2 }
     end
   end
 
