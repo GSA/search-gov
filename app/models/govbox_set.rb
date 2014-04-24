@@ -52,7 +52,7 @@ class GovboxSet
       youtube_profile_ids = @affiliate.youtube_profile_ids
       video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
       @video_news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: video_feeds,
-                                                     excluded_urls: @affiliate.excluded_urls, language: @affiliate.locale)
+                                                     excluded_urls: @affiliate.excluded_urls, language: @affiliate.locale) if video_feeds.present?
     end
   end
 
@@ -60,7 +60,7 @@ class GovboxSet
     if @affiliate.is_rss_govbox_enabled?
       non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
       @news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: non_managed_feeds, excluded_urls: @affiliate.excluded_urls,
-                                               since: 13.months.ago.beginning_of_day, language: @affiliate.locale)
+                                               since: 13.months.ago.beginning_of_day, language: @affiliate.locale) if non_managed_feeds.present?
     end
   end
 
