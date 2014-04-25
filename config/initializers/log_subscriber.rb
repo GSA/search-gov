@@ -16,6 +16,10 @@ module Instrumentation
       generic_logging("Google Query", event, RED)
     end
 
+    def elastic_search(event)
+      generic_logging("#{event.payload[:index]} Query", event, MAGENTA)
+    end
+
     private
     def generic_logging(label, event, color)
       name = '%s (%.1fms)' % [label, event.duration]
@@ -32,11 +36,4 @@ ActiveSupport::Notifications.subscribe('request.faraday') do |name, start_time, 
   http_method = env[:method].to_s.upcase
   duration = end_time - start_time
   Rails.logger.info('[%s] %s %s (%.3f s)' % [url.host, http_method, url.request_uri, duration])
-end
-
-ActiveSupport::Notifications.subscribe(/elasticsearch/i) do |name, start_time, end_time, _, env|
-  payload = env[:payload]
-  duration = end_time - start_time
-  label = "%s Query (%.1fms)" % [payload[:model], duration]
-  Rails.logger.info "  \e[1m\e[32m#{label}\e[0m  #{payload[:term]}"
 end
