@@ -29,7 +29,7 @@ namespace :usasearch do
     task create_indexes: :environment do
       Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
         klass = File.basename(filename, '.rb').camelize.constantize
-        klass.create_index if klass.kind_of?(Indexable) and not klass.index_exists?
+        klass.create_index if klass.kind_of?(Indexable) and klass != ElasticBlended and not klass.index_exists?
       end
     end
   end
