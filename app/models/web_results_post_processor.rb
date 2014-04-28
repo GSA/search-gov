@@ -2,7 +2,7 @@ class WebResultsPostProcessor
   def initialize(query, affiliate, results)
     @affiliate = affiliate
     @results = results
-    @news_item_hash = @affiliate.rss_feeds.present? ? build_news_item_hash_from_search(query) : {}
+    @news_item_hash = @affiliate.rss_feeds.non_managed.present? ? build_news_item_hash_from_search(query) : {}
     @link_hash = title_description_date_hash_by_link
   end
 
