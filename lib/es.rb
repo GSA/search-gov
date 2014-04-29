@@ -1,3 +1,5 @@
+require 'typhoeus/adapters/faraday'
+
 module ES
   INDEX_PREFIX = "#{Rails.env}-usasearch".freeze
 

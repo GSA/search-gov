@@ -62,6 +62,7 @@ gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 gem 'elasticsearch'
 gem 'jbuilder'
+gem 'typhoeus'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
