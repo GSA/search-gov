@@ -2,7 +2,7 @@
   %td.title
     %i.draggable.icon.icon-reorder
     = label_tag "site[managed_header_links_attributes][#{index}][title]", "Header Link Title #{index}", { class: 'hide' }
-    = text_field_tag "site[managed_header_links_attributes][#{index}][title]", header_link[:title], { class: 'title', maxlength: 15, size: nil }
+    = text_field_tag "site[managed_header_links_attributes][#{index}][title]", header_link[:title], { class: 'title', maxlength: 32, size: nil }
     = hidden_field_tag "site[managed_header_links_attributes][#{index}][position]", index, { class: 'position' }
   %td.url
     = label_tag "site[managed_header_links_attributes][#{index}][url]", "Header Link URL #{index}", { :class => 'hide' }
