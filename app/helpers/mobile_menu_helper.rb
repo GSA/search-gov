@@ -29,11 +29,26 @@ module MobileMenuHelper
     dc = search.is_a?(SiteSearch) ? search.document_collection : nil
     rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
 
-    html = navigations.present? ? search_everything_menu_item(search, search_params) : ''
+    html = build_inactive_search_menu_item(search, dc, rss_feed) if navigations.blank?
+    return '' if html.blank? and navigations.blank?
+
+    html ||= search_everything_menu_item search, search_params
     nav_items = build_search_menu_items search, search_params, dc, rss_feed, navigations
     html << nav_items.join("\n").html_safe
 
     dropdown_menu_wrapper html, 'search-menu-dropdown', navigation_heading
+  end
+
+  def build_inactive_search_menu_item(search, dc, rss_feed)
+    return unless dc || rss_feed
+
+    inactive_navigable =
+      case
+        when is_inactive_site_search?(search) then dc
+        when is_inactive_news_search?(search) then rss_feed
+      end
+
+    menu_item inactive_navigable.name, true if inactive_navigable
   end
 
   def search_everything_menu_item(search, search_params)

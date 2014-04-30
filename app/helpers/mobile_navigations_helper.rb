@@ -1,13 +1,26 @@
 module MobileNavigationsHelper
+  def renderable_navigations(search)
+    is_inactive_search?(search) ? [] : filter_media_navs(search.affiliate)
+  end
+
+  def filter_media_navs(affiliate)
+    affiliate.navigations.active.reject do |n|
+      navigable = n.navigable
+      navigable.is_a?(ImageSearchLabel) ||
+          (navigable.is_a?(RssFeed) &&
+              (navigable.is_managed? || navigable.show_only_media_content?))
+    end
+  end
+
   def navigation_heading
     @search.affiliate.left_nav_label.present? ? @search.affiliate.left_nav_label : I18n.t(:search)
   end
 
   def navigations_and_related_sites(search, search_params, navigations)
     if is_inactive_site_search?(search)
-      return navigation_context(search.document_collection)
+      return inactive_search_navigation(search, search.document_collection)
     elsif is_inactive_news_search?(search)
-      return navigation_context(search.rss_feed)
+      return inactive_search_navigation(search, search.rss_feed)
     end
 
     if navigations.present? || search.affiliate.connections.present?
@@ -26,32 +39,9 @@ module MobileNavigationsHelper
     build_navigations html, nav_items, active_navigation_index, related_sites_html
   end
 
-  def is_inactive_site_search?(search)
-    search.is_a?(SiteSearch) &&
-        search.document_collection &&
-        !search.document_collection.navigation.is_active?
-  end
-
-  def is_inactive_news_search?(search)
-    search.is_a?(NewsSearch) &&
-        search.rss_feed &&
-        !search.rss_feed.navigation.is_active?
-  end
-
-  def navigation_context(navigable)
-    nav_html = navigation_item(navigable.name, true)
-    navigation_wrapper(nav_html, 'in')
-  end
-
-  def renderable_navigations(affiliate)
-    navigations = affiliate.navigations.active
-    navigations.reject! do |n|
-      navigable = n.navigable
-      navigable.is_a?(ImageSearchLabel) ||
-          (navigable.is_a?(RssFeed) &&
-              (navigable.is_managed? || navigable.show_only_media_content?))
-    end
-    navigations.to_a
+  def inactive_search_navigation(search, navigable)
+    html = navigation_item(navigable.name, true) << related_site_links(search)
+    navigation_wrapper(html.html_safe, 'in')
   end
 
   def search_everything_navigation(search, search_params)
