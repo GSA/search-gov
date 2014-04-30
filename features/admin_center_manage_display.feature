@@ -314,6 +314,12 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following document collections:
+      | name                 | prefixes             | position | is_navigable |
+      | Inactive site search | http://apps.usa.gov/ | 6        | false        |
+    And affiliate "agency.gov" has the following RSS feeds:
+      | name                 | url                            | is_navigable | position | show_only_media_content |
+      | Inactive news search | http://en.agency.gov/feed/News | false        | 5        | false                   |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
@@ -355,6 +361,18 @@ Feature: Manage Display
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
     Then I should see a link to "Contact" with url for "http://contact.agency.gov"
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+
+    When I am on agency.gov's "Inactive site search" mobile site search page
+    And I press "Menu"
+    Then I should find "Browse site" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+
+    When I am on agency.gov's "Inactive news search" mobile news search page
+    And I press "Menu"
+    Then I should find "Browse site" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
 
     When I go to the agency.gov's Header & Footer page
     And I follow "Switch to Advanced Mode"
