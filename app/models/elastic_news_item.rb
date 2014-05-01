@@ -14,6 +14,7 @@ class ElasticNewsItem
         title: { type: 'string', term_vector: 'with_positions_offsets' },
         description: { type: 'string', term_vector: 'with_positions_offsets' },
         published_at: { type: 'date' },
+        popularity: { type: 'integer' },
         link: ElasticSettings::KEYWORD,
         contributor: { type: 'string', analyzer: 'keyword' },
         subject: { type: 'string', analyzer: 'keyword' },

@@ -14,6 +14,8 @@ class ElasticIndexedDocument
         title: { type: 'string', term_vector: 'with_positions_offsets' },
         description: { type: 'string', term_vector: 'with_positions_offsets' },
         body: { type: 'string', term_vector: 'with_positions_offsets' },
+        published_at: { type: 'date' },
+        popularity: { type: 'integer' },
         url: ElasticSettings::KEYWORD
       }
     )

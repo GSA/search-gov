@@ -22,13 +22,16 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
         super(json)
         json.functions do
           json.child! do
-            json.boost_factor 10.0
-            json.filter do
-              json.range do
-                json.published_at do
-                  json.gt 1.week.ago.beginning_of_day
-                end
+            json.gauss do
+              json.published_at do
+                json.scale "4w"
               end
+            end
+          end
+          #TODO: change to field_value_factor when ES 1.2.0 releases
+          json.child! do
+            json.script_score do
+              json.script "_score * doc['popularity'].value"
             end
           end
         end

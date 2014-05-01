@@ -1,7 +1,7 @@
 class ElasticBlended
   #Note: keep these alphabetized
   INDEXES = %w{IndexedDocument NewsItem}
-  INDEX_BOOSTS = [1.0, 1.5]
+  INDEX_BOOSTS = [1.0, 1.0]
 
   extend Indexable
 

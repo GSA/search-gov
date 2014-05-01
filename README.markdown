@@ -42,13 +42,22 @@ A few tips when working with asset pipeline:
 
 We're using [Elasticsearch](http://www.elasticsearch.org/) for fulltext search and query analytics.
 
-On a Mac, Elasticsearch 1.0 is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
+On a Mac, Elasticsearch 1.1 is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
     $ brew install elasticsearch
 
 To upgrade via homebrew:
 
     $ brew update && brew upgrade elasticsearch
+
+To change the defaults, like number of shards, edit this file:
+
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.1.1/config/elasticsearch.yml
+
+and restart it:
+
+    $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
+    $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
     
 Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
