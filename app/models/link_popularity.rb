@@ -1,5 +1,3 @@
-require 'typhoeus/adapters/faraday'
-
 class LinkPopularity
 
   def self.popularity_for(url, days_back)
