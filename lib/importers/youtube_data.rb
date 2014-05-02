@@ -14,8 +14,8 @@ class YoutubeData < RssFeedData
         next unless profile
         profile.rss_feed.touch
         YoutubeData.new(profile).import
-      rescue => error
-        puts "Failed to import: #{profile.username}. Error: #{error}"
+      rescue => e
+        Rails.logger.error "YoutubeData.refresh_feeds: Failed to import #{profile.username}. Message: #{e}"
       end
     end
   end
@@ -44,6 +44,7 @@ class YoutubeData < RssFeedData
       rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
           where(url: YoutubeProfile.playlist_url(playlist_id)).first_or_initialize
       rss_feed_url.save(validate: false)
+      rss_feed_url.rss_feeds << @rss_feed unless rss_feed_url.rss_feeds.exists?(@rss_feed)
       @rss_feed_url_ids << rss_feed_url.id
 
       parser = YoutubePlaylistVideosParser.new(playlist_id)
@@ -65,6 +66,7 @@ class YoutubeData < RssFeedData
                                       last_crawled_at: Time.now.utc)
     end
   rescue => e
+    Rails.logger.error "YoutubeData#process_parsed_rss_items: #{e.message} \n #{e.backtrace.join(%Q{\n})}"
     rss_feed_url.update_attributes!(last_crawl_status: e.message,
                                     last_crawled_at: Time.now.utc)
   end
@@ -80,15 +82,12 @@ class YoutubeData < RssFeedData
 
     return if news_item && news_item.rss_feed_url_id != rss_feed_url.id
     news_item ||= rss_feed_url.news_items.build(link: item[:link])
-    news_item.rss_feed_url_id == rss_feed_url.id
-    news_item.guid = item[:guid]
-    news_item.title = item[:title]
-    news_item.description = item[:description]
-    news_item.published_at = item[:published_at]
+    news_item.rss_feed_url == rss_feed_url
+    news_item.assign_attributes item
     news_item.save!
     news_item
     rescue => e
-      puts "Failed to create_or_update #{rss_feed_url.inspect}, item: #{item.inspect}, error: #{e}"
+      Rails.logger.warn "YoutubeData#create_or_update: #{item.inspect}, error: #{e}"
       nil
   end
 end

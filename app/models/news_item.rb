@@ -37,6 +37,14 @@ class NewsItem < ActiveRecord::Base
     properties[:media_thumbnail][:url] if properties[:media_thumbnail]
   end
 
+  def duration
+    properties[:duration]
+  end
+
+  def duration=(duration_str)
+    properties[:duration] = duration_str
+  end
+
   def language
     rss_feed_url.language || owner_language_guess
   end

@@ -1,21 +1,21 @@
 class YoutubePlaylistsParser
-  include YoutubeVideosParser
+  include YoutubeDocumentFetcher
+
+  MAX_RESULTS_PER_FEED = 50.freeze
 
   def initialize(username)
     @username = username
   end
 
   def playlist_ids
-    document_url = playlist_ids_url
     ids = []
+    document_url = playlist_ids_url
     while document_url do
-      doc = feed_document(document_url)
-      doc.xpath('//item').each do |item|
-        ids << item.xpath('yt:playlistId').inner_text
-      end
+      doc = fetch_document document_url
+      ids << doc.xpath('//item/yt:playlistId').map { |node| node.inner_text }
       document_url = next_playlist_ids_url(doc)
     end
-    ids
+    ids.flatten
   end
 
   private

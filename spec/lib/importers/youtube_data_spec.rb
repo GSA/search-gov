@@ -22,7 +22,7 @@ describe YoutubeData do
 
     it 'should print out error message when import raises an error' do
       youtube_data.should_receive(:import).and_raise
-      YoutubeData.should_receive(:puts).with /^Failed to import/
+      Rails.logger.should_receive(:error).with /Failed to import/
       YoutubeData.refresh_feeds
     end
   end
@@ -31,8 +31,18 @@ describe YoutubeData do
     let(:profile) { youtube_profiles(:whitehouse) }
     let(:rss_feed) { rss_feeds(:youtube_feed) }
     let(:rss_feed_url) { rss_feed_urls(:youtube_video_url) }
-    let(:link_in_both_uploaded_and_playlists) { 'http://www.youtube.com/watch?v=dN0w8uPnX3s&feature=youtube_gdata' }
-    let(:invalid_links) { %w(http://gdata.youtube.com/feeds/base/videos/MOCK1 http://gdata.youtube.com/feeds/base/videos/MOCK2) }
+    let(:link_in_both_uploaded_and_playlists) do
+      %w(http://www.youtube.com/watch?v=lrVQPos6bvw&feature=youtube_gdata
+         http://www.youtube.com/watch?v=ZUrRTnKjX8Y&feature=youtube_gdata
+         http://www.youtube.com/watch?v=nrcV9IZ6dqs&feature=youtube_gdata)
+    end
+
+    let(:invalid_links) { %w(http://gdata.youtube.com/feeds/base/videos/MOCK1
+                             http://gdata.youtube.com/feeds/base/videos/MOCK2
+                             http://www.youtube.com/watch?v=S6slVd1xFcs&feature=youtube_gdata
+                             http://www.youtube.com/watch?v=nQ0Hho9ktgI&feature=youtube_gdata
+                             http://www.youtube.com/watch?v=fOvVwk5LlQM&feature=youtube_gdata
+                             http://www.youtube.com/watch?v=KkXQvtaUmpQ&feature=youtube_gdata) }
 
     before do
       NewsItem.destroy_all
@@ -62,45 +72,51 @@ describe YoutubeData do
     end
 
     it 'should synchronize RssFeedUrls and NewsItems' do
-      uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-      next_uploaded_feed_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_youtube.xml')
+      uploaded_feed_doc = Rails.root.join('spec/fixtures/rss/uploaded_videos.xml').read
+      next_uploaded_feed_doc = Rails.root.join('spec/fixtures/rss/next_uploaded_videos.xml').read
       YoutubeConnection.should_receive(:get).
           with(%r[^http://gdata.youtube.com/feeds/api/videos\?alt=rss&author=whitehouse&max-results=50&orderby=published&start-index=]).
           twice.
           and_return(uploaded_feed_doc, next_uploaded_feed_doc)
 
-      playlists_feed_doc = File.read(Rails.root.to_s + '/spec/fixtures/rss/simple_youtube_playlists.xml')
+      playlists_feed_doc = Rails.root.join('spec/fixtures/rss/simple_youtube_playlists.xml').read
       YoutubeConnection.should_receive(:get).
           with(%r[^http://gdata.youtube.com/feeds/api/users/whitehouse/playlists\?alt=rss&max-results=50&start-index=]i).
           and_return(playlists_feed_doc)
 
-      playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/playlist_videos.xml')
-      next_playlist_videos_doc = File.open(Rails.root.to_s + '/spec/fixtures/rss/next_playlist_videos.xml')
+      playlist_videos_doc = Rails.root.join('spec/fixtures/rss/playlist_videos.xml').read
+      next_playlist_videos_doc = Rails.root.join('spec/fixtures/rss/next_playlist_videos.xml').read
       YoutubeConnection.should_receive(:get).
-          with(%r[^http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3\?alt=rss]).
+          with(%r[^http://gdata.youtube.com/feeds/api/playlists/PLRJNAhZxtqH_Sciw0wjqOEuuygrYa1JW7\?alt=rss]).
           and_return(playlist_videos_doc, next_playlist_videos_doc)
+
+      Rails.logger.should_not_receive(:error)
+      Rails.logger.should_not_receive(:warn)
 
       importer = YoutubeData.new(profile)
       importer.import
 
       rss_feed.rss_feed_urls(true).collect(&:url).sort.should == %w(
-              http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss
+              http://gdata.youtube.com/feeds/api/playlists/PLRJNAhZxtqH_Sciw0wjqOEuuygrYa1JW7?alt=rss
               http://gdata.youtube.com/feeds/api/videos?alt=rss&author=whitehouse&orderby=published)
 
       RssFeedUrl.rss_feed_owned_by_youtube_profile.
           where(url: 'http://gdata.youtube.com/feeds/api/videos?alt=rss&author=whitehouse&orderby=published').
-          first.news_items.count.should == 28
+          first.news_items.count.should == 50
 
       RssFeedUrl.rss_feed_owned_by_youtube_profile.
-          where(url: 'http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss').
-          first.news_items.count.should == 87
+          where(url: 'http://gdata.youtube.com/feeds/api/playlists/PLRJNAhZxtqH_Sciw0wjqOEuuygrYa1JW7?alt=rss').
+          first.news_items.count.should == 43
 
       rss_feed.rss_feed_urls(true).collect(&:last_crawl_status).uniq.should == [RssFeedUrl::OK_STATUS]
 
-      rss_feed.news_items(true).count.should == 115
+      rss_feed.news_items(true).count.should == 93
+      rss_feed.news_items.find_by_link('http://www.youtube.com/watch?v=nrcV9IZ6dqs&feature=youtube_gdata').
+          duration.should == '1:19:58'
+
       duplicate_news_items = rss_feed.news_items.where(link: link_in_both_uploaded_and_playlists)
-      duplicate_news_items.count.should == 1
-      duplicate_news_items.first.rss_feed_url.url.should == profile.url
+      duplicate_news_items.count.should == 3
+      duplicate_news_items.map(&:rss_feed_url).map(&:url).uniq.should == [profile.url]
       NewsItem.where(link: invalid_links).should be_empty
     end
 
@@ -124,7 +140,7 @@ describe YoutubeData do
         importer.import
 
         rss_feed.rss_feed_urls.find_by_url(profile.url).last_crawl_status.should == 'RuntimeError'
-        rss_feed.rss_feed_urls.find_by_url('http://gdata.youtube.com/feeds/api/playlists/4B46E2882F13A5F3?alt=rss').last_crawl_status.should == 'RuntimeError'
+        rss_feed.rss_feed_urls.find_by_url('http://gdata.youtube.com/feeds/api/playlists/PLRJNAhZxtqH_Sciw0wjqOEuuygrYa1JW7?alt=rss').last_crawl_status.should == 'RuntimeError'
       end
     end
 
@@ -141,7 +157,7 @@ describe YoutubeData do
             and_return(playlists_feed_doc)
 
         importer = YoutubeData.new(profile)
-        importer.should_receive(:puts).with /^Failed to create_or_update/
+        Rails.logger.should_receive(:warn).with /^YoutubeData#create\_or\_update/
         importer.import
 
         rss_feed.news_items(true).count.should == 2
