@@ -57,8 +57,14 @@ Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video
   now = Time.current.to_i
   published_at = 1.week.ago
   count.to_i.times do |index|
-    link_param = is_video ? {:v => "#{index}"} : {}
-    rss_feed_url.news_items.create!(:link => "http://aff.gov/#{now}_#{index + 1}?#{link_param.to_query}",
+    if is_video
+      link_prefix = 'http://www.youtube.com/watch'
+      link_param = { v: "#{index}" }
+    else
+      link_prefix = "http://aff.gov/#{now}_#{index + 1}"
+      link_param = {}
+    end
+    rss_feed_url.news_items.create!(:link => "#{link_prefix}?#{link_param.to_query}",
                                     :title => "news item #{index + 1} title for #{feed_name}",
                                     :description => "news item #{index + 1} description for #{feed_name}",
                                     :guid => "#{now}_#{index + 1}",

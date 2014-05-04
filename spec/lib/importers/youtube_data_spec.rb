@@ -111,6 +111,9 @@ describe YoutubeData do
       rss_feed.rss_feed_urls(true).collect(&:last_crawl_status).uniq.should == [RssFeedUrl::OK_STATUS]
 
       rss_feed.news_items(true).count.should == 93
+
+      rss_feed.news_items.find_by_link('http://www.youtube.com/watch?v=lrVQPos6bvw&feature=youtube_gdata').
+          published_at.to_date.should == Date.parse('2014-05-01')
       rss_feed.news_items.find_by_link('http://www.youtube.com/watch?v=nrcV9IZ6dqs&feature=youtube_gdata').
           duration.should == '1:19:58'
 

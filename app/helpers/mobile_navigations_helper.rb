@@ -7,8 +7,7 @@ module MobileNavigationsHelper
     affiliate.navigations.active.reject do |n|
       navigable = n.navigable
       navigable.is_a?(ImageSearchLabel) ||
-          (navigable.is_a?(RssFeed) &&
-              (navigable.is_managed? || navigable.show_only_media_content?))
+          (navigable.is_a?(RssFeed) && navigable.show_only_media_content?)
     end
   end
 

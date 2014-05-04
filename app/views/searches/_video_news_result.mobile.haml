@@ -1,0 +1,9 @@
+.content-block-item.result.video{ id: "result-#{position}", onclick: 'void(0)' }
+  %h3
+    = link_to_news_item_title(instance, position)
+  .thumbnail= link_to_news_item_thumbnail instance, position
+  %span.content-host-and-published-distance
+    %span.content-host YouTube
+    %span.published-distance= news_item_time_ago_in_words(instance.published_at)
+  %span.description
+    = news_description(instance)

@@ -74,7 +74,7 @@ Feature: Affiliate Search
     And I should see "Videos of 'first item' by bar site"
     And I should see "First video item" in the video rss feed govbox
     And I should see an image with alt text "First video item"
-    And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/2.jpg"
+    And I should see an image with src "http://i.ytimg.com/vi/0hLMc-6ocRk/default.jpg"
     And I should not see "First item" in the video rss feed govbox
     And I should not see "Show Options" in the left column
     And I should not see "Hide Options" in the left column
@@ -148,7 +148,7 @@ Feature: Affiliate Search
     When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see 20 video news results
-    And I should see an image with src "http://i.ytimg.com/vi/R2RWscJM97U/2.jpg"
+    And I should see an image with src "http://i.ytimg.com/vi/R2RWscJM97U/default.jpg"
     And I should see yesterday's date in the English search results
 
     When I am on bar.gov's news search page
@@ -209,7 +209,7 @@ Feature: Affiliate Search
     Then I should see "Cualquier fecha"
     Then I should see 2 video news results
     And I should see an image with alt text "Noticia video uno"
-    And I should see an image with src "http://i.ytimg.com/vi/EqExXXahb0s/2.jpg"
+    And I should see an image with src "http://i.ytimg.com/vi/EqExXXahb0s/default.jpg"
     And I should see yesterday's date in the Spanish search results
 
   Scenario: Searching news items using time filters

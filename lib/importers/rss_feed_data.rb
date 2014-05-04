@@ -1,4 +1,6 @@
 class RssFeedData
+  include RssFeedParser
+
   RSS_FEED_OWNER_TYPE = 'Affiliate'.freeze
 
   RSS_ELEMENTS = { item: 'item',
@@ -75,7 +77,7 @@ class RssFeedData
     most_recently = @rss_feed_url.news_items.present? ? @rss_feed_url.news_items.first.published_at : nil
 
     doc.xpath("//#{@feed_elements[:item]}").each do |item|
-      published_at = extract_published_at(item)
+      published_at = extract_published_at @feed_elements[:pubDate], item
       next unless published_at.present?
       break if most_recently and published_at < most_recently and @ignore_older_items
 
@@ -100,17 +102,6 @@ class RssFeedData
         Rails.logger.error "news_item: #{news_item.errors.full_messages}"
       end
     end
-  end
-
-  def extract_published_at(item)
-    published_at = nil
-    @feed_elements[:pubDate].each do |pub_date_path|
-      published_at_str = item.xpath(pub_date_path).inner_text
-      next if published_at_str.blank?
-      published_at = DateTime.parse published_at_str
-      break if published_at.present?
-    end
-    published_at
   end
 
   def extract_link(item)

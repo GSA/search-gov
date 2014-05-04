@@ -37,6 +37,19 @@ module ResultsHelper
     link_to title, instance.link, data: { click: click_data }
   end
 
+  def link_to_news_item_thumbnail(instance, position)
+    title = instance.title
+    module_tag = 'VIDS'
+    thumbnail_html = image_tag youtube_thumbnail_url(instance), alt: title
+    duration_html = content_tag :span do
+      content_tag(:span, nil, class: 'icon icon-play') << instance.duration
+    end
+    thumbnail_html << duration_html
+
+    click_data = { p: position, s: module_tag, i: instance.id }
+    link_to thumbnail_html, instance.link, data: { click: click_data }
+  end
+
   def link_to_tweet_link(tweet, title, url, position, options = {})
     clicked_url = options.delete(:url) { url }
     click_data = { i: tweet.id, p: position, s: 'TWEET', u: clicked_url }

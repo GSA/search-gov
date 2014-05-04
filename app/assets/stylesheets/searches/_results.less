@@ -100,12 +100,6 @@
   a, a:focus, a:hover {
     text-decoration: none;
   }
-
-  @media (min-width: @screen-desktop) {
-    a, a:focus, a:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 .result {
@@ -132,6 +126,75 @@
 
   .description {
     font-size: 1.6em;
+  }
+}
+
+.result.video {
+  .thumbnail {
+    border: 0;
+    float: left;
+
+    a {
+      border: 1px solid #DDD;
+      display: block;
+      overflow: hidden;
+      position: relative;
+      height: 68px;
+      width: 122px;
+
+      img {
+        position: absolute;
+        top: -11px;
+        left: 0;
+      }
+
+      > span {
+        background-color: black;
+        background-color: rgba(0,0,0, 0.6);
+        color: white;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 0.2em;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
+      .icon-play {
+        .icon-white();
+        margin-right: 0.4em;
+      }
+    }
+  }
+
+  > span {
+    display: block;
+    margin-left: 130px;
+  }
+
+  .content-host-and-published-distance {
+    margin-bottom: 0.6em;
+  }
+
+  .content-host, .published-distance {
+    font-size: @font-size-default;
+    font-weight: bold;
+  }
+
+  .content-host {
+    margin-right: 0.7em;
+  }
+
+  .description {
+    .sr-only();
+
+    @media (min-width: @screen-sm-min) {
+      display: block;
+      height: auto;
+      margin: 0 0 0 130px;
+      position: static;
+      width: auto;
+    }
   }
 }
 
