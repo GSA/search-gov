@@ -64,9 +64,7 @@ module YoutubeVideosParser
 
   def extract_duration(item)
     duration_in_seconds_str = item.xpath(FEED_ELEMENTS[:duration], YT_NAMESPACE_HASH).inner_text
-    duration = ChronicDuration.output(duration_in_seconds_str.to_i, format: :chrono)
-    duration = nil if duration == '0'
-    duration
+    Duration.seconds_to_hoursminssecs duration_in_seconds_str.to_i
   end
 
   def extract_next_start_index(document)
