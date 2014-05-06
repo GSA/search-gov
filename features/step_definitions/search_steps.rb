@@ -2,6 +2,11 @@ Then /^I should see at least "([^"]*)" web search results?$/ do |count|
   page.should have_selector("#results #result-#{count}")
 end
 
+Then /^I should see at least "([^"]*)" video( govbox)? search results?$/ do |count, is_govbox|
+  selector = is_govbox.present? ? "#video-news-items #video-news-item-#{count}" : "#results #result-#{count}"
+  page.should have_selector selector
+end
+
 Then /^I should see "([^"]*)" after the (\d+)th search result$/ do |value, position|
   page.should have_selector("#results div:nth-of-type(#{position.to_i + 2})", :text => value)
 end

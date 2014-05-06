@@ -1,4 +1,5 @@
-.content-block-item.result.video{ id: "result-#{position}", onclick: 'void(0)' }
+- block_id_prefix ||= 'result'
+.content-block-item.result.video{ id: "#{block_id_prefix}-#{position}", onclick: 'void(0)' }
   %h3
     = link_to_news_item_title(instance, position)
   .thumbnail= link_to_news_item_thumbnail instance, position

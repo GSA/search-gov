@@ -9,6 +9,7 @@
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
   = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
+  = render partial: 'video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
 
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }

@@ -1,6 +1,11 @@
 .content-block-item.content-block-item-header {
   color: @text-color;
   font-size: 1.9em;
+  padding: 8px 12px;
+
+  @media (min-width: @screen-desktop) {
+    padding: 6px 12px 0;
+  }
 }
 
 #search .content-block-item.content-block-item-footer {
@@ -8,12 +13,10 @@
   line-height: 1;
   padding: 0.1em;
 
-  .content-provider {
+  .content-provider, .see-more {
     margin: 0;
-    text-align: right;
 
     > a, > span {
-      color: @text-color;
       display: block;
       padding: 10px 12px 12px;
       text-decoration: none;
@@ -25,6 +28,14 @@
 
     a, a:focus, a:hover {
       text-decoration: none;
+    }
+  }
+
+  .content-provider {
+    text-align: right;
+
+    > a, > span {
+      color: @text-color;
     }
 
     .digital-gov-search {
@@ -61,6 +72,10 @@
       border-right: 12px solid transparent;
       padding-right: 94px;
     }
+  }
+
+  .see-more {
+    text-align: left;
   }
 }
 
@@ -178,11 +193,14 @@
 
   .content-host, .published-distance {
     font-size: @font-size-default;
-    font-weight: bold;
   }
 
-  .content-host {
-    margin-right: 0.7em;
+  .published-distance {
+    display: block;
+
+    @media (min-width: @screen-sm-min) {
+      display: inline;
+    }
   }
 
   .description {

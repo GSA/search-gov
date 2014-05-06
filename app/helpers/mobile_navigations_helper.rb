@@ -71,22 +71,22 @@ module MobileNavigationsHelper
       active_navigable, path =
           case navigable
             when DocumentCollection
-              [dc, document_collection_search_path(search_params, navigable, query)]
+              [dc, path_for_document_collection_search(search_params, navigable, query)]
             when RssFeed
-              [rss_feed, rss_feed_search_path(search_params, navigable, query)]
+              [rss_feed, path_for_rss_feed_search(search_params, navigable, query)]
           end
       is_active = active_navigable == navigable
       yield navigable.name, is_active, path
     end
   end
 
-  def document_collection_search_path(search_params, navigable, query)
+  def path_for_document_collection_search(search_params, navigable, query)
     dc_params = navigable_params(search_params, :dc, navigable.id, query,
                                  :affiliate, :m, :sitelimit)
     docs_search_path(dc_params)
   end
 
-  def rss_feed_search_path(search_params, navigable, query)
+  def path_for_rss_feed_search(search_params, navigable, query)
     rss_params = navigable_params(search_params, :channel, navigable.id, query,
                                   :affiliate, :m, :tbs)
     news_search_path(rss_params)

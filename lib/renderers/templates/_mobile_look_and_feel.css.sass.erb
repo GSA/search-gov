@@ -64,8 +64,13 @@ $navigation-border-color: lighten(<%= render_affiliate_css_property_value(@css_h
 
   a, #spelling-suggestion a
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
+
     &:visited
       color: <%= render_affiliate_css_property_value(@css_hash, :visited_title_link_color) %>
+
+  .content-block-item-footer
+    a:visited
+      color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>
 
   .result
     .uext_type

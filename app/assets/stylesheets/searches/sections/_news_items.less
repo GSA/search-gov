@@ -1,8 +1,14 @@
-#news-items {
+#news-items, #video-news-items {
   .content-block();
 
-  .content-provider span {
-    font-weight: bold;
+  .content-provider, .see-more {
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .content-host, .feed-name {
+    margin-right: 0.5em;
   }
 
   .feed-name, .published-distance {
@@ -10,6 +16,6 @@
   }
 
   .published-distance {
-    margin-left: 0.5em;
+    color: @text-color;
   }
 }

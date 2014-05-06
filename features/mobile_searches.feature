@@ -113,19 +113,26 @@ Feature: Searches using mobile device
     And affiliate "es.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
-
     And there are 10 video news items for "usgovernment"
     And there are 5 video news items for "gobiernousa"
 
     When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "video"
+    And I press "Search"
+    And I should see at least "3" video govbox search results
+    And I should see "More videos about video"
     And I follow "Videos" within the SERP navigation
     Then I should see "Powered by DIGITALGOV Search"
-    And I should see at least "10" web search results
+    And I should see at least "10" video search results
 
     When I am on es.agency.gov's search page
-    And I follow "Videos" within the SERP navigation
+    And I fill in "Ingrese su búsqueda" with "video"
+    And I press "Buscar"
+    And I should see at least "3" video govbox search results
+    And I should see "Más videos sobre de video"
+    When I follow "Videos" within the SERP navigation
     Then I should see "Generado por DIGITALGOV Search"
-    And I should see at least "5" web search results
+    And I should see at least "5" video search results
 
   Scenario: Site search
     Given the following Affiliates exist:
