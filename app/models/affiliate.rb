@@ -5,7 +5,7 @@ class Affiliate < ActiveRecord::Base
   include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
-  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 56
+  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
   VALID_IMAGE_CONTENT_TYPES = %w(image/gif image/jpeg image/pjpeg image/png image/x-png).freeze
   INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
   INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze

@@ -279,7 +279,7 @@ Feature: Manage Display
     When I attach the file "features/support/very_large.jpg" to "Page Background Image"
     And I submit the form by pressing "Save"
     Then I should see "Logo file size must be under 512 KB"
-    Then I should see "Mobile Logo file size must be under 56 KB"
+    Then I should see "Mobile Logo file size must be under 64 KB"
     Then I should see "Page Background Image file size must be under 512 KB"
     And I should not see an image with alt text "Logo"
     And I should not see an image with alt text "Mobile Logo"
