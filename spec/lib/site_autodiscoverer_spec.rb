@@ -7,19 +7,18 @@ describe SiteAutodiscoverer do
   describe '#run' do
     context 'when domain contains valid hostname' do
       let(:domain) { 'usasearch.howto.gov/with-path' }
-      let(:tempfile) { mock('tempfile') }
+      let(:url) { "http://#{domain}" }
 
       before do
         site.stub_chain(:site_domains, :pluck).and_return([domain])
         site.stub_chain(:site_domains, :size).and_return(1)
-        autodiscoverer.should_receive(:open).
-            with('http://usasearch.howto.gov/with-path').
-            and_return(tempfile)
+        DocumentFetcher.should_receive(:fetch).
+            with(url).
+            and_return({ last_effective_url: url, body: '' })
       end
 
       it 'should update website' do
-        site.should_receive(:update_attributes!).with(
-            website: 'http://usasearch.howto.gov/with-path')
+        site.should_receive(:update_attributes!).with(website: url)
         autodiscoverer.should_receive(:autodiscover_website_contents)
         autodiscoverer.run
       end
@@ -28,17 +27,19 @@ describe SiteAutodiscoverer do
     context 'when valid hostname require www. prefix' do
       let(:domain) { 'howto.gov' }
       let(:tempfile) { mock('tempfile') }
+      let(:url) { "http://#{domain}" }
+      let(:updated_url) { "https://www.#{domain}" }
+      let(:response) { { last_effective_url: updated_url, body: '' } }
 
       before do
         site.stub_chain(:site_domains, :pluck).and_return([domain])
         site.stub_chain(:site_domains, :size).and_return(1)
-        autodiscoverer.should_receive(:open).with('http://howto.gov').and_raise
-        autodiscoverer.should_receive(:open).with('http://www.howto.gov').and_return(tempfile)
+        DocumentFetcher.should_receive(:fetch).with('http://howto.gov').and_return({})
+        DocumentFetcher.should_receive(:fetch).with('http://www.howto.gov').and_return(response)
       end
 
       it 'should update website' do
-        site.should_receive(:update_attributes!).with(
-            website: 'http://www.howto.gov')
+        site.should_receive(:update_attributes!).with(website: updated_url)
         autodiscoverer.should_receive(:autodiscover_website_contents)
         autodiscoverer.run
       end
@@ -50,8 +51,8 @@ describe SiteAutodiscoverer do
       before do
         site.stub_chain(:site_domains, :pluck).and_return([domain])
         site.stub_chain(:site_domains, :size).and_return(1)
-        autodiscoverer.should_receive(:open).with('http://.gov').and_raise
-        autodiscoverer.should_receive(:open).with('http://www..gov').and_raise
+        DocumentFetcher.should_receive(:fetch).with('http://.gov').and_return({})
+        DocumentFetcher.should_receive(:fetch).with('http://www..gov').and_return({})
       end
 
       it 'should not update website' do
@@ -72,8 +73,8 @@ describe SiteAutodiscoverer do
 
     context 'when the favicon link is an absolute path' do
       before do
-        page_with_favicon = File.open("#{Rails.root}/spec/fixtures/html/home_page_with_icon_link.html")
-        autodiscoverer.should_receive(:open).and_return(page_with_favicon)
+        page_with_favicon = Rails.root.join('spec/fixtures/html/home_page_with_icon_link.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_favicon })
       end
 
       it "should update the affiliate's favicon_url attribute with the value" do
@@ -85,8 +86,8 @@ describe SiteAutodiscoverer do
 
     context 'when the favicon link is a relative path' do
       before do
-        page_with_favicon = File.open("#{Rails.root}/spec/fixtures/html/home_page_with_relative_icon_link.html")
-        autodiscoverer.should_receive(:open).and_return(page_with_favicon)
+        page_with_favicon = Rails.root.join('spec/fixtures/html/home_page_with_relative_icon_link.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_favicon })
       end
 
       it 'should store a full url as the favicon link' do
@@ -98,12 +99,13 @@ describe SiteAutodiscoverer do
 
     context 'when default favicon.ico exists' do
       it "should update the affiliate's favicon_url attribute" do
-        autodiscoverer.should_receive(:open).
-            with('http://usa.gov').
-            and_return File.read("#{Rails.root}/spec/fixtures/html/page_with_no_links.html")
+        page_with_no_links = Rails.root.join('spec/fixtures/html/page_with_no_links.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return( { body: page_with_no_links })
+
         autodiscoverer.should_receive(:open).
             with('http://usa.gov/favicon.ico').
             and_return File.read("#{Rails.root}/spec/fixtures/ico/favicon.ico")
+
         site.should_receive(:update_attributes!).
             with(favicon_url: 'http://usa.gov/favicon.ico')
 
@@ -113,9 +115,9 @@ describe SiteAutodiscoverer do
 
     context 'when default favicon.ico does not exist' do
       it "should not update the affiliate's favicon_url attribute" do
-        autodiscoverer.should_receive(:open).
-            with('http://usa.gov').
-            and_return File.read("#{Rails.root}/spec/fixtures/html/page_with_no_links.html")
+        page_with_no_links = Rails.root.join('spec/fixtures/html/page_with_no_links.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return( { body: page_with_no_links })
+
         autodiscoverer.should_receive(:open).
             with('http://usa.gov/favicon.ico').
             and_raise('Some Exception')
@@ -126,10 +128,10 @@ describe SiteAutodiscoverer do
     end
 
     context 'when something goes horribly wrong' do
-      before { autodiscoverer.should_receive(:open).and_raise 'Some Exception' }
-
       it 'should log an error' do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering favicon for #{site.name}: Some Exception")
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({})
+
+        Rails.logger.should_receive(:error).with(/Error when autodiscovering favicon/)
         autodiscoverer.autodiscover_favicon_url
       end
     end
@@ -140,13 +142,13 @@ describe SiteAutodiscoverer do
     before do
       site.stub_chain(:site_domains, :pluck).and_return([domain])
       site.stub_chain(:site_domains, :size).and_return(1)
+      site.stub(:website).and_return('http://usa.gov')
     end
 
     context 'when the home page has alternate links to an rss feed' do
       before do
-        site.stub(:website).and_return('http://usa.gov')
-        doc = File.read "#{Rails.root}/spec/fixtures/html/autodiscovered_page.html"
-        autodiscoverer.should_receive(:open).at_least(:once).with('http://usa.gov').and_return doc
+        doc = Rails.root.join('spec/fixtures/html/autodiscovered_page.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: doc })
       end
 
       it 'should create new rss feeds' do
@@ -170,11 +172,11 @@ describe SiteAutodiscoverer do
     context 'when something goes horribly wrong' do
       before do
         autodiscoverer.should_receive(:site_valid_for_autodiscovery?).and_return(true)
-        autodiscoverer.should_receive(:open).and_raise 'Some Exception'
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({})
       end
 
       it 'should log an error' do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering rss feeds for #{site.name}: Some Exception")
+        Rails.logger.should_receive(:error).with(/Error when autodiscovering rss feeds/)
         autodiscoverer.autodiscover_rss_feeds
       end
     end
@@ -186,13 +188,13 @@ describe SiteAutodiscoverer do
     before do
       site.stub_chain(:site_domains, :pluck).and_return([domain])
       site.stub_chain(:site_domains, :size).and_return(1)
+      site.stub(:website).and_return('http://usa.gov')
     end
 
     context 'when the page has social media links' do
       before do
-        autodiscoverer.should_receive(:site_valid_for_autodiscovery?).and_return(true)
-        page_with_social_media_urls = File.open("#{Rails.root}/spec/fixtures/html/home_page_with_social_media_urls.html")
-        autodiscoverer.should_receive(:open).and_return(page_with_social_media_urls)
+        page_with_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_social_media_urls.html').read
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_social_media_urls })
       end
 
       it 'should create flickr profile' do
@@ -251,11 +253,11 @@ describe SiteAutodiscoverer do
     context 'when something goes horribly wrong' do
       before do
         autodiscoverer.should_receive(:site_valid_for_autodiscovery?).and_return(true)
-        autodiscoverer.should_receive(:open).and_raise 'Some Exception'
+        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({})
       end
 
       it 'should log an error' do
-        Rails.logger.should_receive(:error).with("Error when autodiscovering social media for #{site.name}: Some Exception")
+        Rails.logger.should_receive(:error).with(/Error when autodiscovering social media/)
         autodiscoverer.autodiscover_social_media
       end
     end

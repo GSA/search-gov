@@ -16,9 +16,9 @@ class SiteAutodiscoverer
   def autodiscover_website
     return true if @site.website.present?
     %W(http://#{@domain} http://www.#{@domain}).any? do |url|
-      doc = open(url) rescue nil
-      if doc
-        @site.update_attributes!(website: url)
+      response = fetch_and_initialize_website_doc url
+      if response[:last_effective_url].present?
+        @site.update_attributes!(website: response[:last_effective_url])
         true
       else
         false
@@ -77,7 +77,16 @@ class SiteAutodiscoverer
   private
 
   def website_doc
-    @website_doc ||= Nokogiri::HTML(open @site.website)
+    @website_doc ||= begin
+      fetch_and_initialize_website_doc @site.website
+      @website_doc
+    end
+  end
+
+  def fetch_and_initialize_website_doc(url)
+    response = DocumentFetcher.fetch url
+    @website_doc = Nokogiri::HTML response[:body] if response[:body]
+    response
   end
 
   def generate_url(href)
