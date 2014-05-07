@@ -1,7 +1,7 @@
 #tweets
   - search.tweets.results.each_with_index do |tweet, index|
     .content-block-item.tweet
-      = link_to 'Twitter', 'https://twitter.com', class: 'logo'
+      %span.logo
       = twitter_profile(tweet, index + 1)
       .text= tweet_text(tweet , index + 1)
       .timestamp
