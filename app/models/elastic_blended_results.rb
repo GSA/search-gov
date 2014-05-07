@@ -2,7 +2,7 @@ class ElasticBlendedResults < ElasticResults
 
   def highlight_instance(highlight, instance)
     elastic_results_klass = "Elastic#{instance.class.name}Results".constantize
-    elastic_results = elastic_results_klass.new(Indexable::NO_HITS, nil)
+    elastic_results = elastic_results_klass.new(Indexable::NO_HITS)
     elastic_results.highlight_instance(highlight, instance)
   end
 

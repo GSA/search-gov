@@ -10,6 +10,7 @@ module ElasticSettings
           ignore_chars: { type: "mapping", mappings: ["'=>", "’=>", "`=>"] }
         },
         filter: {
+          bigram_filter: { type: 'shingle' },
           en_stop_filter: { type: "stop", stopwords: ENGLISH_STOPWORDS },
           en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")) },
           en_stem_filter: { type: "stemmer", name: "minimal_english" },
@@ -28,6 +29,12 @@ module ElasticSettings
             tokenizer: "standard",
             char_filter: %w(ignore_chars),
             filter: %w(standard asciifolding lowercase es_stop_filter es_stem_filter es_synonym) },
+          bigram_analyzer: {
+            type: "custom",
+            tokenizer: "standard",
+            char_filter: %w(ignore_chars),
+            filter: %w(standard asciifolding lowercase bigram_filter)
+          },
           case_insensitive_keyword_analyzer: {
             tokenizer: 'keyword',
             char_filter: %w(ignore_chars),

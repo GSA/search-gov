@@ -11,14 +11,15 @@ class ElasticNewsItem
       properties: {
         language: { type: "string", index: :not_analyzed },
         rss_feed_url_id: { type: 'integer' },
-        title: { type: 'string', term_vector: 'with_positions_offsets' },
-        description: { type: 'string', term_vector: 'with_positions_offsets' },
+        title: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
+        description: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
         published_at: { type: 'date' },
         popularity: { type: 'integer' },
         link: ElasticSettings::KEYWORD,
         contributor: { type: 'string', analyzer: 'keyword' },
         subject: { type: 'string', analyzer: 'keyword' },
         publisher: { type: 'string', analyzer: 'keyword' },
+        bigram: { type: 'string', analyzer: 'bigram_analyzer'},
         tags: { type: 'string', analyzer: 'keyword' },
         id: { type: 'integer', index: :not_analyzed, include_in_all: false } }
     }

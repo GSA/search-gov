@@ -1,14 +1,23 @@
 class ElasticResults
-  attr_reader :total, :offset, :results, :aggregations
+  attr_reader :total, :offset, :results, :aggregations, :suggestion
 
-  def initialize(hits, aggregations)
-    @total = hits['total']
-    @offset = hits['offset']
-    @results = extract_results(hits['hits'])
-    @aggregations = extract_aggregations(aggregations) if aggregations
+  def initialize(result)
+    @total = result['hits']['total']
+    @offset = result['hits']['offset']
+    @results = extract_results(result['hits']['hits'])
+    @aggregations = extract_aggregations(result['aggregations']) if result['aggregations']
+    @suggestion = extract_suggestion(result['suggest']['suggestion']) if result['suggest']
+  end
+
+  def override_suggestion(suggestion)
+    @suggestion = suggestion
   end
 
   private
+
+  def extract_suggestion(suggestions)
+    Hashie::Rash.new(suggestions.first['options'].first) rescue nil
+  end
 
   def extract_results(hits)
     rails_model_klass = self.class.name.match(/\AElastic(.*)Results\z/)[1].constantize

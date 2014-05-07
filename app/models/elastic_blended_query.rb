@@ -13,6 +13,30 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
       indices_boost(json)
       query(json)
       highlight(json) if @highlighting
+      suggest(json)
+    end
+  end
+
+  def suggest(json)
+    json.suggest do
+      json.text @q
+      json.suggestion do
+        json.phrase do
+          json.analyzer 'bigram_analyzer'
+          json.field 'bigram'
+          json.size 1
+          json.direct_generator do
+            json.child! do
+              json.field 'bigram'
+              json.prefix_len 1
+            end
+          end
+          json.highlight do
+            json.pre_tag pre_tags.first
+            json.post_tag post_tags.first
+          end
+        end
+      end
     end
   end
 
@@ -40,7 +64,7 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
   end
 
   def indices_boost(json)
-    #FIXME: use aliases when https://github.com/elasticsearch/elasticsearch/issues/4756 is fixed
+    #TODO: use aliases when https://github.com/elasticsearch/elasticsearch/issues/4756 is fixed
     index_names = ES::client_reader.indices.get_alias(name: ElasticBlended.reader_alias.join(',')).keys.sort
     json.indices_boost do
       index_names.each_with_index do |index_name, idx|

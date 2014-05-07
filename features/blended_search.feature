@@ -49,3 +49,17 @@ Feature: Blended Search
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
     And I should see "blessed and safe"
+
+    Scenario: User misspells a query
+      Given the following Affiliates exist:
+        | display_name | name    | contact_email | contact_name | gets_blended_results    | is_rss_govbox_enabled |
+        | bar site     | bar.gov | aff@bar.gov   | John Bar     | true                    | false                 |
+      And the following IndexedDocuments exist:
+        | title                       | description                                  | url                 | affiliate  | last_crawled_at | last_crawl_status |
+        | First petition article      | This is an article item on barack obama      | http://p.whitehouse.gov/p-1.html | bar.gov | 11/02/2011      | OK      |
+        | Second barack obama article | This is another article on the same item     | http://p.whitehouse.gov/p-2.html | bar.gov | 11/02/2011      | OK      |
+      When I am on bar.gov's mobile search page
+      And I fill in "Enter your search term" with "barack obaama article"
+      And I press "Search"
+      Then I should see "Showing results for barack obama article"
+      And I should see "Search instead for barack obaama article"
