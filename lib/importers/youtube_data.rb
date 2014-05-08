@@ -5,6 +5,7 @@ class YoutubeData < RssFeedData
     @youtube_profile = youtube_profile
     @rss_feed = @youtube_profile.rss_feed
     @rss_feed_url_ids = []
+    @all_news_item_ids = []
   end
 
   def self.refresh_feeds
@@ -56,7 +57,10 @@ class YoutubeData < RssFeedData
     news_item_ids = []
     parser.each_item do |item|
       news_item = create_or_update(rss_feed_url, item)
-      news_item_ids << news_item.id if news_item
+      if news_item
+        news_item_ids << news_item.id
+        @all_news_item_ids << news_item.id
+      end
     end
     NewsItem.transaction do
       news_item_ids_for_removal = rss_feed_url.news_item_ids - news_item_ids
@@ -80,7 +84,8 @@ class YoutubeData < RssFeedData
     news_item = NewsItem.where(rss_feed_url_id: [@rss_feed_url_ids],
                                link: item[:link]).first
 
-    return if news_item && news_item.rss_feed_url_id != rss_feed_url.id
+    return if news_item && @all_news_item_ids.include?(news_item.id)
+
     news_item ||= rss_feed_url.news_items.build(link: item[:link])
     news_item.rss_feed_url == rss_feed_url
     news_item.assign_attributes item

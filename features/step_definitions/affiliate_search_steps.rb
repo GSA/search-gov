@@ -114,6 +114,10 @@ Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |d
   page.should have_content(date_string)
 end
 
+Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do |count, url|
+  page.should have_selector("h3 a[href='#{url}']", count: count)
+end
+
 Then /^I should see (\d+) news results?$/ do |count|
   page.should have_selector(".newsitem", :count => count)
 end
