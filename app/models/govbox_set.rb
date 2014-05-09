@@ -60,7 +60,7 @@ class GovboxSet
     if @affiliate.is_rss_govbox_enabled?
       non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
       @news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: non_managed_feeds, excluded_urls: @affiliate.excluded_urls,
-                                               since: 13.months.ago.beginning_of_day, language: @affiliate.locale) if non_managed_feeds.present?
+                                               since: 4.months.ago.beginning_of_day, language: @affiliate.locale) if non_managed_feeds.present?
     end
   end
 

@@ -106,7 +106,7 @@ describe GovboxSet do
         @non_video_results = mock('non video results', :total => 3)
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
-               since: 13.months.ago.beginning_of_day, language: 'en').
+               since: 4.months.ago.beginning_of_day, language: 'en').
           and_return(@non_video_results)
       end
 
