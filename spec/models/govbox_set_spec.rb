@@ -126,7 +126,7 @@ describe GovboxSet do
         youtube_feed = mock_model(RssFeed)
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
         @video_results = mock('video results', total: 3)
-        ElasticNewsItem.should_receive(:search_for).with(q: 'foo', rss_feeds: [youtube_feed],
+        ElasticNewsItem.should_receive(:search_for).with(q: 'foo', rss_feeds: [youtube_feed], since: 13.months.ago.beginning_of_day,
                                                          excluded_urls: affiliate.excluded_urls, language: 'en').
           and_return(@video_results)
       end

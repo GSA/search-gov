@@ -51,7 +51,7 @@ class GovboxSet
     if @affiliate.is_video_govbox_enabled?
       youtube_profile_ids = @affiliate.youtube_profile_ids
       video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
-      @video_news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: video_feeds,
+      @video_news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: video_feeds, since: 13.months.ago.beginning_of_day,
                                                      excluded_urls: @affiliate.excluded_urls, language: @affiliate.locale) if video_feeds.present?
     end
   end
