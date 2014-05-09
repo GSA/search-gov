@@ -42,7 +42,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/4 | Fourth item         | uuid4      | week          | item Last news item for the feed           |
     And feed "en_agency" has the following news items:
       | link                                       | title             | guid       |  multiplier    | published_ago | description                              | contributor | publisher | subject   |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        14      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        12      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 |        1       | day           | item Second video news item for the feed | president   | memoranda | elections |
     And feed "Hide Me" has the following news items:
       | link                                    | title             | guid        | published_ago | description                    |
