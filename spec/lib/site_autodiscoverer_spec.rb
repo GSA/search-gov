@@ -26,19 +26,37 @@ describe SiteAutodiscoverer do
 
     context 'when valid hostname require www. prefix' do
       let(:domain) { 'howto.gov' }
-      let(:tempfile) { mock('tempfile') }
-      let(:url) { "http://#{domain}" }
-      let(:updated_url) { "https://www.#{domain}" }
-      let(:response) { { last_effective_url: updated_url, body: '' } }
+      let(:url) { 'http://www.howto.gov' }
+      let(:response) { { body: '', last_effective_url: url, status: '301 Moved Permanently' } }
 
       before do
         site.stub_chain(:site_domains, :pluck).and_return([domain])
         site.stub_chain(:site_domains, :size).and_return(1)
         DocumentFetcher.should_receive(:fetch).with('http://howto.gov').and_return({})
-        DocumentFetcher.should_receive(:fetch).with('http://www.howto.gov').and_return(response)
+        DocumentFetcher.should_receive(:fetch).with(url).and_return(response)
       end
 
       it 'should update website' do
+        site.should_receive(:update_attributes!).with(website: url)
+        autodiscoverer.should_receive(:autodiscover_website_contents)
+        autodiscoverer.run
+      end
+    end
+
+    context 'when website response status code is 301' do
+      let(:domain) { 'howto.gov' }
+      let(:url) { "http://#{domain}" }
+
+      let(:updated_url) { "https://www.#{domain}" }
+      let(:response) { { body: '', status: '301 Moved Permanently', last_effective_url: updated_url } }
+
+      before do
+        site.stub_chain(:site_domains, :pluck).and_return([domain])
+        site.stub_chain(:site_domains, :size).and_return(1)
+        DocumentFetcher.should_receive(:fetch).with(url).and_return(response)
+      end
+
+      it 'should update website with the last effective URL' do
         site.should_receive(:update_attributes!).with(website: updated_url)
         autodiscoverer.should_receive(:autodiscover_website_contents)
         autodiscoverer.run

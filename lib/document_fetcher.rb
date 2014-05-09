@@ -1,6 +1,6 @@
 module DocumentFetcher
   DEFAULT_FETCH_TIMEOUT = 10.freeze
-  DEFAULT_MAX_REDIRECT = 3.freeze
+  DEFAULT_MAX_REDIRECT = 5.freeze
 
   def self.fetch(url)
     Timeout::timeout DEFAULT_FETCH_TIMEOUT do

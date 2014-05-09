@@ -18,7 +18,8 @@ class SiteAutodiscoverer
     %W(http://#{@domain} http://www.#{@domain}).any? do |url|
       response = fetch_and_initialize_website_doc url
       if response[:last_effective_url].present?
-        @site.update_attributes!(website: response[:last_effective_url])
+        website = response[:status] =~ /301/ ? response[:last_effective_url] : url
+        @site.update_attributes!(website: website)
         true
       else
         false
