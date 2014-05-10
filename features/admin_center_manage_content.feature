@@ -350,6 +350,46 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
+  Scenario: View Instagram usernames
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    When the following Instagram usernames exist for the site "agency.gov":
+      | username   |
+      | whitehouse |
+      | dg_search  |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Instagram" within the Admin Center content
+    Then I should see the following table rows:
+      | dg_search  |
+      | whitehouse |
+
+  Scenario: Add/remove Instagram usernames
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Instagram" within the Admin Center content
+    And I follow "Add Instagram Username"
+    When I fill in "Instagram Username" with "dg_search"
+    And I submit the form by pressing "Add"
+    Then I should see "You have added dg_search to this site"
+    And I should see a link to "dg_search" with url for "http://instagram.com/dg_search"
+
+    When I follow "Add Instagram Username"
+    When I fill in "Instagram Username" with "dg_search"
+    And I submit the form by pressing "Add"
+    Then I should see "You have already added dg_search to this site"
+    When I fill in "Instagram Username" with "dg_search101"
+    And I submit the form by pressing "Add"
+    Then I should see "Username is not found"
+
+    When I follow "View All"
+    And I press "Remove"
+    Then I should see "You have removed dg_search from this site"
+
   Scenario: View RSS
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

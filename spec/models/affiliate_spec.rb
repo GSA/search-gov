@@ -45,6 +45,7 @@ describe Affiliate do
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:facebook_profiles).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
+    it { should have_and_belong_to_many :instagram_profiles }
     it { should have_and_belong_to_many :youtube_profiles }
     it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { should have_many :twitter_profiles }

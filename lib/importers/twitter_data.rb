@@ -5,6 +5,10 @@ module TwitterData
   MAX_GET_LIST_TWEETS_ATTEMPTS = 5.freeze
   LIST_TIMELINE_PER_PAGE = 200.freeze
 
+  def self.find_user(screen_name)
+    TwitterClient.instance.user(screen_name) rescue nil
+  end
+
   def self.import_profile(twitter_user)
     profile = TwitterProfile.where(twitter_id: twitter_user.id).first_or_initialize
     profile.screen_name = twitter_user.screen_name

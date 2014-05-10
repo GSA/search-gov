@@ -42,6 +42,7 @@ class Affiliate < ActiveRecord::Base
   has_many :rss_feed_urls, through: :rss_feeds, uniq: true
   has_many :url_prefixes, :through => :document_collections
   has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
+  has_and_belongs_to_many :instagram_profiles, order: 'instagram_profiles.username ASC'
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.username ASC'
   belongs_to :agency
 

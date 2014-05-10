@@ -63,6 +63,7 @@ gem "validate_url"
 gem 'elasticsearch'
 gem 'jbuilder'
 gem 'typhoeus'
+gem 'instagram'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

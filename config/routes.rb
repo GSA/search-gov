@@ -87,6 +87,9 @@ UsasearchRails3::Application.routes.draw do
       resources :flickr_urls,
                 controller: 'flickr_profiles',
                 only: [:index, :new, :create, :destroy]
+      resources :instagram_usernames,
+                controller: 'instagram_profiles',
+                only: [:index, :new, :create, :destroy]
       resources :rss_feeds do
         collection { get :new_url }
       end

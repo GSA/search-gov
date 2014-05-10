@@ -9,7 +9,7 @@
 = render_flash_message
 %table.table.table-no-header
   %tbody
-    - @twitter_profiles.each do |twitter_profile|
+    - @profiles.each do |twitter_profile|
       %tr
         %td
           = link_to_twitter_handle twitter_profile

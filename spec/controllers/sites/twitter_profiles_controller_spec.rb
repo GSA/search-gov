@@ -20,7 +20,7 @@ describe Sites::TwitterProfilesController do
       end
 
       it { should assign_to(:site).with(site) }
-      it { should assign_to(:twitter_profiles).with(twitter_profiles) }
+      it { should assign_to(:profiles).with(twitter_profiles) }
     end
   end
 
@@ -32,12 +32,11 @@ describe Sites::TwitterProfilesController do
 
       context 'when screen name is valid and it has not been added to the site' do
         let(:twitter_user) { mock('Twitter User', screen_name: 'USASearch') }
-        let(:twitter_profile) { mock_model(TwitterProfile) }
+        let(:twitter_profile) { mock_model(TwitterProfile, screen_name: 'USASearch') }
         let(:twitter_setting) { mock_model(AffiliateTwitterSetting) }
 
         before do
-          TwitterClient.should_receive(:instance).and_return(client)
-          client.should_receive(:user).with('usasearch').and_return(twitter_user)
+          TwitterData.should_receive(:find_user).with('usasearch').and_return(twitter_user)
           TwitterData.should_receive(:import_profile).
               with(twitter_user).
               and_return(twitter_profile)
@@ -66,11 +65,10 @@ describe Sites::TwitterProfilesController do
       context 'when screen name is valid and it has already been added to the site' do
         let(:twitter_user) { mock('Twitter User', screen_name: 'USASearch') }
         let(:existing_twitter_profile) { mock_model(TwitterProfile) }
-        let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, new_record?: true) }
+        let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, screen_name: 'USASearch', new_record?: true) }
 
         before do
-          TwitterClient.should_receive(:instance).and_return(client)
-          client.should_receive(:user).with('usasearch').and_return(twitter_user)
+          TwitterData.should_receive(:find_user).with('usasearch').and_return(twitter_user)
           TwitterData.should_receive(:import_profile).
               with(twitter_user).
               and_return(existing_twitter_profile)
@@ -90,7 +88,7 @@ describe Sites::TwitterProfilesController do
                twitter_profile: { screen_name: 'usasearch', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:twitter_profile).with(new_twitter_profile) }
+        it { should assign_to(:profile).with(new_twitter_profile) }
         it { should set_the_flash[:notice].to(/You have already added @USASearch to this site/).now }
         it { should render_template(:new) }
       end
@@ -99,8 +97,7 @@ describe Sites::TwitterProfilesController do
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, new_record?: true) }
 
         before do
-          TwitterClient.should_receive(:instance).and_return(client)
-          client.should_receive(:user).with('invalid handle').and_return(nil)
+          TwitterData.should_receive(:find_user).with('invalid handle').and_return(nil)
           TwitterProfile.should_receive(:new).
               with('screen_name' => 'invalid handle').
               and_return(new_twitter_profile)
@@ -110,7 +107,7 @@ describe Sites::TwitterProfilesController do
                twitter_profile: { screen_name: 'invalid handle', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:twitter_profile).with(new_twitter_profile) }
+        it { should assign_to(:profile).with(new_twitter_profile) }
         it { should render_template(:new) }
       end
     end

@@ -95,6 +95,12 @@ CREATE TABLE `affiliates` (
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `affiliates_instagram_profiles` (
+  `affiliate_id` int(11) NOT NULL,
+  `instagram_profile_id` bigint(20) NOT NULL,
+  UNIQUE KEY `index_affiliates_instagram_profiles` (`affiliate_id`,`instagram_profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `affiliates_tags` (
   `affiliate_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
@@ -473,6 +479,14 @@ CREATE TABLE `indexed_documents` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_indexed_documents_on_affiliate_id_and_id` (`affiliate_id`,`id`),
   KEY `by_aid_url` (`affiliate_id`,`url`(50))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `instagram_profiles` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `logfile_blocked_class_cs` (
@@ -2062,3 +2076,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140421210008');
 INSERT INTO schema_migrations (version) VALUES ('20140501233806');
 
 INSERT INTO schema_migrations (version) VALUES ('20140507220727');
+
+INSERT INTO schema_migrations (version) VALUES ('20140510192350');
+
+INSERT INTO schema_migrations (version) VALUES ('20140510192657');
