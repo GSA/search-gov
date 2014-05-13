@@ -508,4 +508,38 @@ describe WebSearch do
       lambda { search.not_here }.should raise_error(NoMethodError)
     end
   end
+
+  describe 'has_fresh_news_items?' do
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliates(:usagov_affiliate)) }
+
+    context 'when 1 or more news items are less than 6 days old' do
+      let(:news_item_results) do
+        [mock_model(NewsItem, published_at: DateTime.current.advance(days: 2)),
+         mock_model(NewsItem, published_at: DateTime.current.advance(days: 6))]
+      end
+      let(:news_items) { mock('news items', results: news_item_results) }
+
+      before do
+        search.stub(:news_items).and_return(news_items)
+        news_items.should_receive(:total).and_return(2)
+      end
+
+      specify { search.should have_fresh_news_items }
+    end
+
+    context 'when all news items are more than 5 days old' do
+      let(:news_item_results) do
+        [mock_model(NewsItem, published_at: DateTime.current.advance(days: -7)),
+         mock_model(NewsItem, published_at: DateTime.current.advance(days: -12))]
+      end
+      let(:news_items) { mock('news items', results: news_item_results) }
+
+      before do
+        search.stub(:news_items).and_return(news_items)
+        news_items.should_receive(:total).and_return(2)
+      end
+
+      specify { search.should_not have_fresh_news_items }
+    end
+  end
 end

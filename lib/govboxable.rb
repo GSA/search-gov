@@ -39,6 +39,13 @@ module Govboxable
     featured_collections and featured_collections.total > 0 and featured_collections.results.size > 0
   end
 
+  def has_fresh_news_items?
+    @has_fresh_news_items ||= begin
+      stale_threshold = Date.current - 5
+      has_news_items? and news_items.results.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
+    end
+  end
+
   def method_missing(meth, *args, &block)
     if meth.to_s =~ /^has_(.+)\?$/
       run_has_method($1)
