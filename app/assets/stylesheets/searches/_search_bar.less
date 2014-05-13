@@ -1,31 +1,37 @@
 #search-bar {
-  background-color: @block-background-color;
+  background-color: @body-bg;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
   border-radius: @border-radius-base;
   height: 40px;
   margin: @content-block-margin;
   position: relative;
 
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     margin-left: auto;
     margin-right: auto;
-    width: (@screen-sm - (2 * @content-block-margin));
+    width: (@screen-sm-min - (2 * @content-block-margin));
+  }
+
+  @media (min-width: @screen-md-min) {
+    height: 34px;
   }
 
   .twitter-typeahead {
     width: 100%;
-    background-color: @body-bg;
-    @media (min-width: @screen-sm) {
+    @media (min-width: @screen-sm-min) {
       border-radius: @border-radius-base;
     }
   }
 
   input[type='search'], input[type='text'] {
     .box-shadow(none);
-    background-color: @body-bg;
+    background-color: transparent;
     border-color: transparent;
     font-size: 1.8em;
     line-height: 1;
-    height: 40px;
+    height: 38px;
     padding-right: 0;
     border-right: 40px solid transparent;
     vertical-align: middle;
@@ -34,8 +40,12 @@
       display: none;
     }
 
-    @media (min-width: @screen-sm) {
+    @media (min-width: @screen-sm-min) {
       border-right-width: 75px;
+    }
+
+    @media (min-width: @screen-md-min) {
+      height: 32px;
     }
   }
 
@@ -61,6 +71,13 @@
     right: 5px;
     top: 4px;
     width: 30px;
+
+    @media (min-width: @screen-md-min) {
+      height: 26px;
+      width: 26px;
+      top: 3px;
+      right: 4px;
+    }
   }
 
   #clear-button {
@@ -74,6 +91,10 @@
   #search-button {
     .icon-white();
     background-position: -41px  7px;
+
+    @media (min-width: @screen-md-min) {
+      background-position: -43px  5px;
+    }
   }
 
   &.has-query-term {
@@ -83,13 +104,13 @@
 
     #clear-button {
       display: inline-block;
-      @media (min-width: @screen-md) {
+      @media (min-width: @screen-md-min) {
         display: none;
       }
     }
   }
 
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
     &.has-query-term {
       #search-button {
         display: inline-block;
@@ -99,10 +120,4 @@
       }
     }
   }
-}
-
-#typeahead-backdrop {
-  .modal-backdrop();
-  background-color: @body-bg;
-  display: none;
 }

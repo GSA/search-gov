@@ -2,8 +2,17 @@ body
   font-family: <%= render_affiliate_css_property_value(@css_hash, :font_family) %>
   background-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
 
+$header-background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
+$header-background-lightness: lightness($header-background-color)
+$search-bar-background-color: if($header-background-lightness > 95%, #ebebeb, #fff)
+$search-bar-border-color: if($header-background-lightness > 50%, darken($header-background-color, 20%), $header-background-color)
+
 #header-wrapper
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
+  background-color: $header-background-color
+
+#search-bar
+  background-color: $search-bar-background-color
+  border-color: $search-bar-border-color
 
 #footer-wrapper
   background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
@@ -30,10 +39,9 @@ body
   &:focus, &:hover, &:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
 
-$navigation-border-color: lighten(<%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>, 30%)
-
-@if lightness(<%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>) > 50%
-  $navigation-border-color: darken(<%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>, 20%)
+$navigation-background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
+$navigation-background-lightness: lightness($navigation-background-color)
+$navigation-border-color: if($navigation-background-lightness > 50%, darken($navigation-background-color, 20%), lighten($navigation-background-color, 30%))
 
 #main-menu
   border-color: $navigation-border-color
