@@ -58,9 +58,9 @@ class SiteAutodiscoverer
   def autodiscover_social_media
     return unless site_valid_for_autodiscovery?
     begin
-      website_doc.xpath('//a[@href]').each do |anchor_element|
-        href = anchor_element.attr(:href).to_s.squish
-        if href =~ %r[https?://(www\.)?(flickr|twitter|youtube)\.com/.+]i
+      website_doc.xpath('//a/@href').each do |anchor_attr|
+        href = anchor_attr.inner_text.squish
+        if href =~ %r[https?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+]i
           send "create_#{$2}_profile", href
         end
       end
@@ -138,22 +138,30 @@ class SiteAutodiscoverer
     @site.flickr_profiles.create(url: url)
   end
 
+  def create_instagram_profile(url)
+    username = extract_profile_name url
+    instagram_profile = InstagramData.import_profile username
+    return unless instagram_profile
+
+    @site.instagram_profiles << instagram_profile unless @site.instagram_profiles.exists? instagram_profile
+  end
+
   def create_twitter_profile(url)
     screen_name = extract_profile_name(url)
-    twitter_user = TwitterClient.instance.user(screen_name) rescue nil
-    return unless twitter_user
+    twitter_profile = TwitterData.import_profile screen_name
+    return unless twitter_profile
 
-    twitter_profile = TwitterData.import_profile twitter_user
-
-    unless @site.twitter_profiles.exists?(twitter_profile.id)
-      @site.affiliate_twitter_settings.create(twitter_profile: twitter_profile)
+    unless @site.twitter_profiles.exists? twitter_profile
+      @site.affiliate_twitter_settings.create(twitter_profile_id: twitter_profile.id)
     end
   end
 
   def create_youtube_profile(url)
-    username = extract_profile_name(url)
-    youtube_profile = YoutubeProfile.where(username: username).first_or_initialize
-    if !youtube_profile.new_record? || youtube_profile.save
+    username = extract_profile_name url
+    youtube_profile = YoutubeData.import_profile username
+    return unless youtube_profile
+
+    unless @site.youtube_profiles.exists? youtube_profile
       @site.youtube_profiles << youtube_profile
       @site.enable_video_govbox!
     end

@@ -19,14 +19,12 @@ module Sites::ScaffoldProfilesController
   end
 
   def create
-    profile_user = adapter_klass.find_user create_params[primary_attribute_name]
+    @profile = adapter_klass.import_profile create_params[primary_attribute_name]
 
-    unless profile_user
+    unless @profile
       @profile = new_profile_with_not_found_error
       render action: :new and return
     end
-
-    @profile = adapter_klass.import_profile profile_user
 
     if site_profiles.exists? @profile.id
       @profile = profile_type_klass.new create_params
@@ -44,6 +42,7 @@ module Sites::ScaffoldProfilesController
     redirect_to url_for(action: :index) and return unless @profile
 
     @site.send(pluralized_profile_type).delete(@profile)
+    after_profile_deleted
     redirect_to url_for(action: :index), flash: { success: "You have removed #{human_profile_name} from this site." }
   end
 
@@ -73,5 +72,8 @@ module Sites::ScaffoldProfilesController
 
   def destroy_params
     params.permit(:id)
+  end
+
+  def after_profile_deleted
   end
 end

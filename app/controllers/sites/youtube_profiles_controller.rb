@@ -1,47 +1,17 @@
 class Sites::YoutubeProfilesController < Sites::SetupSiteController
+  include Sites::ScaffoldProfilesController
 
-  def index
-    @youtube_profiles = @site.youtube_profiles
-  end
-
-  def new
-    @youtube_profile = YoutubeProfile.new
-  end
-
-  def create
-    @youtube_profile = YoutubeProfile.where(youtube_profile_params).first_or_initialize
-    if !@youtube_profile.new_record? || @youtube_profile.save
-      if @site.youtube_profiles.exists?(@youtube_profile.id)
-        @youtube_profile = YoutubeProfile.new youtube_profile_params
-        flash.now[:notice] = "You have already added #{@youtube_profile.username} to this site."
-        render action: :new
-      else
-        @site.youtube_profiles << @youtube_profile
-        @site.enable_video_govbox!
-        redirect_to site_youtube_usernames_path(@site),
-                    flash: { success: "You have added #{@youtube_profile.username} to this site." }
-      end
-    else
-      render action: :new
-    end
-  end
-
-  def destroy
-    @youtube_profile = @site.youtube_profiles.find_by_id params[:id]
-    redirect_to site_youtube_usernames_path(@site) and return unless @youtube_profile
-
-    @site.youtube_profiles.delete @youtube_profile
-    @site.disable_video_govbox! unless @site.youtube_profiles(true).exists?
-    redirect_to site_youtube_usernames_path(@site),
-                flash: { success: "You have removed #{@youtube_profile.username} from this site." }
-  end
+  self.adapter_klass = YoutubeData
+  self.primary_attribute_name = :username
 
   private
 
-  def youtube_profile_params
-    @youtube_profile_params ||= begin
-      hash = params[:youtube_profile].slice(:username)
-      Hash[hash.map { |key, value| [key, value.present? ? value.strip : value] }]
-    end
+  def add_profile_to_site
+    super
+    @site.enable_video_govbox!
+  end
+
+  def after_profile_deleted
+    @site.disable_video_govbox! unless @site.youtube_profiles(true).exists?
   end
 end

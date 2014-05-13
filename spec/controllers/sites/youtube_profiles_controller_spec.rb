@@ -18,7 +18,7 @@ describe Sites::YoutubeProfilesController do
       end
 
       it { should assign_to(:site).with(site) }
-      it { should assign_to(:youtube_profiles).with(youtube_profiles) }
+      it { should assign_to(:profiles).with(youtube_profiles) }
     end
   end
 
@@ -30,16 +30,11 @@ describe Sites::YoutubeProfilesController do
 
       context 'when username is valid and it has not been added to the site' do
         let(:youtube_profile) do
-          mock_model(YoutubeProfile, username: 'USGovernment', new_record?: true)
+          mock_model(YoutubeProfile, username: 'USGovernment')
         end
 
         before do
-          where_results = mock('where results')
-          YoutubeProfile.should_receive(:where).with({ 'username' => 'usgovernment'}).
-              and_return(where_results)
-          where_results.should_receive(:first_or_initialize).and_return(youtube_profile)
-          youtube_profile.should_receive(:save).and_return(true)
-
+          YoutubeData.should_receive(:import_profile).with('usgovernment').and_return(youtube_profile)
           youtube_profiles = mock('youtube profiles')
           site.stub(:youtube_profiles).and_return(youtube_profiles)
           youtube_profiles.should_receive(:exists?).
@@ -62,12 +57,7 @@ describe Sites::YoutubeProfilesController do
         let(:new_youtube_profile) { mock_model(YoutubeProfile, username: 'usgovernment') }
 
         before do
-          where_results = mock('where results')
-          YoutubeProfile.should_receive(:where).with({ 'username' => 'usgovernment'}).
-              and_return(where_results)
-          where_results.should_receive(:first_or_initialize).and_return(existing_youtube_profile)
-          existing_youtube_profile.should_not_receive(:save)
-
+          YoutubeData.should_receive(:import_profile).with('usgovernment').and_return(existing_youtube_profile)
           youtube_profiles = mock('youtube profiles')
           site.stub(:youtube_profiles).and_return(youtube_profiles)
           youtube_profiles.should_receive(:exists?).
@@ -83,7 +73,7 @@ describe Sites::YoutubeProfilesController do
                youtube_profile: { username: 'usgovernment', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:youtube_profile).with(new_youtube_profile) }
+        it { should assign_to(:profile).with(new_youtube_profile) }
         it { should set_the_flash[:notice].to(/You have already added usgovernment to this site/).now }
         it { should render_template(:new) }
       end
@@ -92,20 +82,17 @@ describe Sites::YoutubeProfilesController do
         let(:new_youtube_profile) { mock_model(YoutubeProfile, id: nil, new_record?: true) }
 
         before do
-          where_results = mock('where results')
-          YoutubeProfile.should_receive(:where).
-              with({ 'username' => 'invalid username'}).
-              and_return(where_results)
-          where_results.should_receive(:first_or_initialize).
+          YoutubeData.should_receive(:import_profile).with('invalid username').and_return(nil)
+          YoutubeProfile.should_receive(:new).
+              with('username' => 'invalid username').
               and_return(new_youtube_profile)
-          new_youtube_profile.should_receive(:save).and_return(false)
 
           post :create,
                site_id: site.id,
                youtube_profile: { username: 'invalid username', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:youtube_profile).with(new_youtube_profile) }
+        it { should assign_to(:profile).with(new_youtube_profile) }
         it { should render_template(:new) }
       end
     end

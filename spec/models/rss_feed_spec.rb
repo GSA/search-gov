@@ -40,11 +40,7 @@ describe RssFeed do
     end
 
     it 'should not create navigation for other owner types' do
-      user_profile_xml = File.read("#{Rails.root}/spec/fixtures/rss/youtube_user.xml")
       username = 'thewhitehouse'.freeze
-      HttpConnection.should_receive(:get).with(YoutubeProfile.xml_profile_url(username)).
-          and_return user_profile_xml
-
       uploaded_video_xml = File.read("#{Rails.root}/spec/fixtures/rss/youtube.xml")
       HttpConnection.should_receive(:get).with(YoutubeProfile.youtube_url(username)).
           and_return uploaded_video_xml

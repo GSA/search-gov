@@ -605,3 +605,6 @@ Feature: Manage Content
     When I fill in "YouTube Username" with "usasearch"
     And I submit the form by pressing "Add"
     Then I should see "Username is not found"
+
+    When I follow "Display"
+    Then I should not see "Videos"

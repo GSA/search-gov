@@ -1,5 +1,6 @@
 class YoutubeData < RssFeedData
   RSS_FEED_OWNER_TYPE = 'YoutubeProfile'.freeze
+  YT_NAMESPACE_URL = 'http://gdata.youtube.com/schemas/2007'.freeze
 
   def initialize(youtube_profile)
     @youtube_profile = youtube_profile
@@ -21,6 +22,14 @@ class YoutubeData < RssFeedData
     end
   end
 
+  def self.import_profile(username)
+    return unless username.present?
+
+    sanitized_username = username.strip.downcase
+    YoutubeProfile.where(username: sanitized_username).first_or_create! if username_valid? sanitized_username
+  end
+
+
   def import
     import_uploaded_videos(@youtube_profile.username)
     import_playlist_videos(@youtube_profile.username)
@@ -28,6 +37,16 @@ class YoutubeData < RssFeedData
   end
 
   private
+
+  def self.username_valid?(username)
+    url = YoutubeProfile.xml_profile_url(username)
+    doc = Nokogiri::XML(DocumentFetcher.fetch(url)[:body])
+    doc and has_yt_namespace?(doc) and doc.xpath('//yt:username').present?
+  end
+
+  def self.has_yt_namespace?(doc)
+    doc.namespaces.values.include? YT_NAMESPACE_URL
+  end
 
   def import_uploaded_videos(username)
     rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.

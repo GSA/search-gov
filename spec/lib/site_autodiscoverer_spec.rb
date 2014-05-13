@@ -213,12 +213,13 @@ describe SiteAutodiscoverer do
       before do
         page_with_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_social_media_urls.html').read
         DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_social_media_urls })
+        Rails.logger.should_not_receive(:error)
       end
 
       it 'should create flickr profile' do
-        TwitterClient.stub_chain(:instance, :user) { nil }
-        YoutubeProfile.stub_chain(:where, :first_or_initialize).
-            and_return(mock_model(YoutubeProfile, save: false))
+        InstagramData.stub(:import_profile) { nil }
+        TwitterData.stub(:import_profile) { nil }
+        YoutubeData.stub(:import_profile) { nil }
 
         flickr_profiles = mock('flickr profiles')
         site.should_receive(:flickr_profiles).and_return(flickr_profiles)
@@ -229,38 +230,52 @@ describe SiteAutodiscoverer do
         autodiscoverer.autodiscover_social_media
       end
 
+      it 'creates instagram profile' do
+        site.stub_chain(:flickr_profiles, :create)
+        TwitterData.stub(:import_profile) { nil }
+        YoutubeData.stub(:import_profile) { nil }
+
+        instagram_profile = mock_model(InstagramProfile)
+        InstagramData.should_receive(:import_profile).with('whitehouse').and_return(instagram_profile)
+
+        instagram_profiles = mock('instagram profiles')
+        site.stub(:instagram_profiles) { instagram_profiles }
+
+        instagram_profiles.should_receive(:exists?).with(instagram_profile).and_return(false)
+        instagram_profiles.should_receive(:<<).with(instagram_profile)
+
+        autodiscoverer.autodiscover_social_media
+      end
+
       it 'should create twitter profile' do
         site.stub_chain(:flickr_profiles, :create)
-        YoutubeProfile.stub_chain(:where, :first_or_initialize).
-            and_return(mock_model(YoutubeProfile, save: false))
-
-        twitter_user = mock('twitter user', screen_name: 'USASsearch')
-        TwitterClient.stub_chain(:instance, :user) { twitter_user }
+        InstagramData.stub(:import_profile) { nil }
+        YoutubeData.stub(:import_profile) { nil }
 
         twitter_profile = mock_model(TwitterProfile)
         TwitterData.should_receive(:import_profile).
-            with(twitter_user).
+            with('whitehouse').
             and_return(twitter_profile)
 
         site.stub_chain(:twitter_profiles, :exists?).and_return(false)
         twitter_settings = mock('twitter_settings')
         site.should_receive(:affiliate_twitter_settings).and_return(twitter_settings)
-        twitter_settings.should_receive(:create).with(twitter_profile: twitter_profile)
+        twitter_settings.should_receive(:create).with(twitter_profile_id: twitter_profile.id)
 
         autodiscoverer.autodiscover_social_media
       end
 
       it 'should create youtube profile' do
         site.stub_chain(:flickr_profiles, :create)
-        TwitterClient.stub_chain(:instance, :user) { nil }
+        InstagramData.stub(:import_profile) { nil }
+        TwitterData.stub(:import_profile) { nil }
 
-        youtube_profile = mock_model(YoutubeProfile, new_record?: true)
-        YoutubeProfile.stub_chain(:where, :first_or_initialize).
-            and_return(youtube_profile)
-        youtube_profile.should_receive(:save).and_return(true)
+        youtube_profile = mock_model(YoutubeProfile)
+        YoutubeData.stub(:import_profile) { youtube_profile }
 
         youtube_profiles = mock('youtube profiles')
         site.stub(:youtube_profiles).and_return(youtube_profiles)
+        youtube_profiles.should_receive(:exists?).with(youtube_profile).and_return(false)
         youtube_profiles.should_receive(:<<).with(youtube_profile)
         site.should_receive(:enable_video_govbox!)
 

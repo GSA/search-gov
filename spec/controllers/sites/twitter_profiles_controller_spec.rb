@@ -36,9 +36,8 @@ describe Sites::TwitterProfilesController do
         let(:twitter_setting) { mock_model(AffiliateTwitterSetting) }
 
         before do
-          TwitterData.should_receive(:find_user).with('usasearch').and_return(twitter_user)
           TwitterData.should_receive(:import_profile).
-              with(twitter_user).
+              with('usasearch').
               and_return(twitter_profile)
 
           twitter_profiles = mock('twitter profiles')
@@ -68,9 +67,8 @@ describe Sites::TwitterProfilesController do
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, screen_name: 'USASearch', new_record?: true) }
 
         before do
-          TwitterData.should_receive(:find_user).with('usasearch').and_return(twitter_user)
           TwitterData.should_receive(:import_profile).
-              with(twitter_user).
+              with('usasearch').
               and_return(existing_twitter_profile)
 
           twitter_profiles = mock('twitter profiles')
@@ -97,7 +95,7 @@ describe Sites::TwitterProfilesController do
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, new_record?: true) }
 
         before do
-          TwitterData.should_receive(:find_user).with('invalid handle').and_return(nil)
+          TwitterData.should_receive(:import_profile).with('invalid handle').and_return(nil)
           TwitterProfile.should_receive(:new).
               with('screen_name' => 'invalid handle').
               and_return(new_twitter_profile)

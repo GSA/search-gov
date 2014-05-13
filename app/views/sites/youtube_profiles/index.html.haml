@@ -9,7 +9,7 @@
 = render_flash_message
 %table.table.table-no-header
   %tbody
-    - @youtube_profiles.each do |youtube_profile|
+    - @profiles.each do |youtube_profile|
       %tr
         %td= link_to youtube_profile.username, "http://www.youtube.com/user/#{youtube_profile.username}", target: '_blank'
         %td.actions

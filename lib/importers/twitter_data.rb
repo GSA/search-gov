@@ -10,6 +10,13 @@ module TwitterData
   end
 
   def self.import_profile(twitter_user)
+    twitter_user = TwitterData.find_user(twitter_user) unless twitter_user.respond_to?(:screen_name)
+    return unless twitter_user
+
+    create_or_update_profile twitter_user
+  end
+
+  def self.create_or_update_profile(twitter_user)
     profile = TwitterProfile.where(twitter_id: twitter_user.id).first_or_initialize
     profile.screen_name = twitter_user.screen_name
     profile.name = twitter_user.name

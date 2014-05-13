@@ -27,6 +27,33 @@ describe YoutubeData do
     end
   end
 
+  describe '.import_profile' do
+    context 'when username is valid' do
+      before do
+        user_doc = Rails.root.join('spec/fixtures/rss/youtube_user.xml').read
+        DocumentFetcher.should_receive(:fetch).
+            with('http://gdata.youtube.com/feeds/api/users/whitehouse').
+            and_return({ body: user_doc })
+      end
+
+      it 'returns YoutubeProfile' do
+        profile = YoutubeData.import_profile('whitehouse')
+        profile.id.should be_present
+        profile.username.should == 'whitehouse'
+      end
+    end
+
+    context 'when username is not valid' do
+      before do
+        DocumentFetcher.should_receive(:fetch).
+            with('http://gdata.youtube.com/feeds/api/users/whitehouse').
+            and_return({})
+      end
+
+      specify { YoutubeData.import_profile('whitehouse').should be_nil }
+    end
+  end
+
   describe '#import' do
     let(:profile) { youtube_profiles(:whitehouse) }
     let(:rss_feed) { rss_feeds(:youtube_feed) }

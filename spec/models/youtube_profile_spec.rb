@@ -9,26 +9,4 @@ describe YoutubeProfile do
   it { should have_and_belong_to_many :affiliates }
   it { should validate_uniqueness_of(:username).
                   with_message(/has already been added/).case_insensitive }
-
-  it 'should validate username' do
-    HttpConnection.should_receive(:get).
-        with('http://gdata.youtube.com/feeds/api/users/someinvaliduser').
-        and_raise(OpenURI::HTTPError.new('404 Not Found', StringIO.new))
-
-    profile = YoutubeProfile.new(username: 'someinvaliduser')
-    profile.should_not be_valid
-    profile.errors[:username].should include('is not found')
-  end
-
-  it 'should handle blank xml when fetching xml profile' do
-    HttpConnection.should_receive(:get).
-        with('http://gdata.youtube.com/feeds/api/users/accountclosed').
-        and_return(StringIO.new(''))
-    mock_doc = mock('doc')
-    Nokogiri.should_receive(:XML).and_return(mock_doc)
-    mock_doc.should_receive(:xpath).and_return([])
-
-    profile = YoutubeProfile.new(username: 'accountclosed')
-    profile.should_not be_valid
-  end
 end

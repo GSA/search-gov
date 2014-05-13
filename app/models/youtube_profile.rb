@@ -6,7 +6,6 @@ class YoutubeProfile < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username, message: 'has already been added', case_sensitive: false
-  validate :must_have_valid_username, if: :username?
 
   after_create :create_video_rss_feed
 
@@ -42,15 +41,6 @@ class YoutubeProfile < ActiveRecord::Base
     unless rss_feed
       rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.where(url: url).first_or_create!
       create_rss_feed!(name: username, rss_feed_urls: [rss_feed_url])
-    end
-  end
-
-  def must_have_valid_username
-    begin
-      doc = Nokogiri::XML(HttpConnection.get(YoutubeProfile.xml_profile_url(username)))
-      errors.add(:username, 'is not found') if doc.xpath('//xmlns:entry').empty?
-    rescue
-      errors.add(:username, 'is not found')
     end
   end
 end
