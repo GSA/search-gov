@@ -120,7 +120,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "video"
     And I press "Search"
-    And I should see at least "3" video govbox search results
+    And I should see exactly "1" video govbox search result
     And I should see "More videos about video"
     And I follow "Videos" within the SERP navigation
     And I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0"
@@ -136,7 +136,7 @@ Feature: Searches using mobile device
     When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "video"
     And I press "Buscar"
-    And I should see at least "3" video govbox search results
+    And I should see exactly "1" video govbox search results
     And I should see "Más videos sobre de video"
     When I follow "Videos" within the SERP navigation
     Then I should see "Generado por DIGITALGOV Search"
