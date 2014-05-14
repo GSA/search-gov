@@ -170,7 +170,7 @@ class Affiliate < ActiveRecord::Base
     navigation_link_color: '#505050',
     page_background_color: '#FFFFFF',
     title_link_color: '#2200CC',
-    url_link_color: '#008000',
+    url_link_color: '#006800',
     visited_title_link_color: '#800080' }
 
   THEMES[:custom] = { :display_name => 'Custom' }
