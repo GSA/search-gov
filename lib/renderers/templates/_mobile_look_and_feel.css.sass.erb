@@ -4,8 +4,9 @@ body
 
 $header-background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
 $header-background-lightness: lightness($header-background-color)
-$search-bar-background-color: if($header-background-lightness > 95%, #ebebeb, #fff)
+$search-bar-background-color: if($header-background-lightness > 95%, #efefef, #fff)
 $search-bar-border-color: if($header-background-lightness > 50%, darken($header-background-color, 20%), $header-background-color)
+$tt-hint-color: if($header-background-lightness > 95%, #505050, #595959)
 
 #header-wrapper
   background-color: $header-background-color
@@ -13,6 +14,8 @@ $search-bar-border-color: if($header-background-lightness > 50%, darken($header-
 #search-bar
   background-color: $search-bar-background-color
   border-color: $search-bar-border-color
+  .tt-hint
+    color: $tt-hint-color
 
 #footer-wrapper
   background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
