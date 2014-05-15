@@ -1,4 +1,12 @@
 module NavigationsHelper
+  def configurable_navigations(site)
+    if site.force_mobile_format? && site.flickr_profiles.blank?
+      site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
+    else
+      site.navigations
+    end
+  end
+
   def link_to_site_navigable(navigable)
     case navigable.class.name
     when 'DocumentCollection'

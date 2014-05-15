@@ -2,12 +2,22 @@ Then /^I should see at least "([^"]*)" web search results?$/ do |count|
   page.should have_selector("#results #result-#{count}")
 end
 
+Then /^I should see (exactly|at least) "([^"]*)" image search results?$/ do |is_exact, count|
+  if is_exact == 'exactly'
+    selector = '#results .result.image'
+    page.should have_selector selector, count: count
+  else
+    selector = "#results #result-#{count}.image"
+    page.should have_selector selector
+  end
+end
+
 Then /^I should see (exactly|at least) "([^"]*)" video( govbox)? search results?$/ do |is_exact, count, is_govbox|
   if is_exact == 'exactly'
     selector = is_govbox.present? ? '#video-news-items .result.video' : '#results .result.video'
     page.should have_selector selector, count: count
   else
-    selector = is_govbox.present? ? "#video-news-items #video-news-item-#{count}" : "#results #result-#{count}"
+    selector = is_govbox.present? ? "#video-news-items #video-news-item-#{count}" : "#results #result-#{count}.video"
     page.should have_selector selector
   end
 end

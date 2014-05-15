@@ -1,10 +1,10 @@
 Feature: Manage Display
 
   @javascript
-  Scenario: Editing Sidebar Settings
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | left_nav_label                   |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is way too long       |
+  Scenario: Editing Sidebar Settings on a legacy site
+    Given the following legacy Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | left_nav_label             |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is way too long |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -58,6 +58,20 @@ Feature: Manage Display
     And the "Is Rss Feed 2 navigable" should be switched on
     And the "Rss Feed 3" field should contain "Latest Videos"
     And the "Is Rss Feed 3 navigable" should be switched on
+
+  Scenario: Editing Sidebar Settings on a new site
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Display page
+    Then I should not see "Image Search Label 0"
+
+    When the following flickr URLs exist for the site "agency.gov":
+      | url                                      |
+      | http://www.flickr.com/photos/whitehouse/ |
+    And I go to the agency.gov's Manage Display page
+    Then I should see "Image Search Label 0"
 
   @javascript
   Scenario: Editing GovBoxes Settings

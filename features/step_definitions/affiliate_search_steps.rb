@@ -153,11 +153,14 @@ Given /^the following Tweets exist:$/ do |table|
 end
 
 Given /^the following FlickrPhotos exist:$/ do |table|
+  flickr_id = 100
   table.hashes.each do |hash|
     affiliate = Affiliate.find_by_name(hash[:affiliate_name])
-    affiliate.flickr_profiles.find_or_create_by_url_and_profile_type_and_profile_id("http://flickr.com/photos/USagency", 'user', '1234')
-    flickr_photo = FlickrPhoto.create!(:title => hash[:title], :description => hash[:description], :url_sq => hash[:url_sq], :url_q => hash[:url_q], :owner => hash[:owner], :flickr_id => hash[:flickr_id], :flickr_profile => affiliate.flickr_profiles.first)
-    flickr_photo.update_attributes(:date_taken => Date.parse(hash[:date_taken])) unless hash[:date_taken].blank?
+    flickr_url = 'https://www.flickr.com/photos/whitehouse'
+    flickr_profile = affiliate.flickr_profiles.where(url: flickr_url).first_or_create!
+    flickr_id += 1
+    photo_attributes = hash.except('affiliate_name').merge(flickr_id: flickr_id)
+    flickr_profile.flickr_photos.create! photo_attributes
   end
   ElasticFlickrPhoto.commit
 end

@@ -11,20 +11,27 @@ $tt-hint-color: if($header-background-lightness > 95%, #505050, #595959)
 #header-wrapper
   background-color: $header-background-color
 
+$button-background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+$button-background-lightness: lightness($button-background-color)
+
 #search-bar
   background-color: $search-bar-background-color
   border-color: $search-bar-border-color
   .tt-hint
     color: $tt-hint-color
 
+  @if $button-background-lightness > 75%
+    #search-button
+      background-image: url(<%= ActionController::Base.helpers.asset_path('bootstrap/glyphicons-halflings.png') %>)
+
 #footer-wrapper
   background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
 
 #menu-button
-  color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+  color: $button-background-color
 
 #menu-button .icon-bar, #search-bar #search-button
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
+  background-color: $button-background-color
 
 #search-nav .navbar-nav > li.active span
   border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>

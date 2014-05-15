@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe ImageSearchesController do
-  fixtures :affiliates
   describe "#index" do
     context "when searching as an affiliate and the query is present" do
+      let(:affiliate) { mock_model(Affiliate, name: 'agency100', display_name: 'NPS Site', force_mobile_format?: false) }
       let(:query) { '<script>thunder & lightning</script>' }
       let(:image_search) { mock(ImageSearch, :query => 'thunder & lightning', :modules => []) }
 
       before do
-        @affiliate = affiliates(:basic_affiliate)
-        Affiliate.should_receive(:find_by_name).with('agency100').and_return(@affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(affiliate: @affiliate, per_page: 20, query: 'thunder & lightning')).and_return(image_search)
+        Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
+        ImageSearch.should_receive(:new).with(hash_including(affiliate: affiliate, per_page: 20, query: 'thunder & lightning')).and_return(image_search)
         image_search.should_receive(:run)
       end
 
@@ -23,7 +22,7 @@ describe ImageSearchesController do
         it { should assign_to :affiliate }
         it { should assign_to(:page_title).with("thunder & lightning - NPS Site Search Results") }
         it { should assign_to(:search_params).with(
-                        hash_including(affiliate: @affiliate.name, query: 'thunder & lightning')) }
+                        hash_including(affiliate: affiliate.name, query: 'thunder & lightning')) }
         it { should render_template 'image_searches/index' }
 
         it "should render the template" do
@@ -57,7 +56,7 @@ describe ImageSearchesController do
     end
 
     context "when searching as an affiliate and the query is blank" do
-      let(:affiliate) { mock_model(Affiliate, :locale => 'en') }
+      let(:affiliate) { mock_model(Affiliate, :locale => 'en', force_mobile_format?: false) }
       let(:image_search) { mock(ImageSearch, :query => nil, :modules => []) }
 
       before do
@@ -71,13 +70,11 @@ describe ImageSearchesController do
     end
 
     context 'when params[:affiliate] is not a string' do
-      let(:usagov_affiliate) { affiliates(:usagov_affiliate) }
+      let(:usagov_affiliate) { mock_model(Affiliate, name: 'usagov', display_name: 'USA.gov', force_mobile_format?: false) }
       let(:image_search) { mock(ImageSearch, :query => 'gov', :modules => []) }
 
       before do
-        Affiliate.should_receive(:find_by_name).twice do |arg|
-          arg == 'usagov' ? usagov_affiliate : nil
-        end
+        Affiliate.should_receive(:find_by_name).with('usagov').and_return(usagov_affiliate)
         ImageSearch.should_receive(:new).with(
             hash_including(affiliate: usagov_affiliate,
                            query: 'gov')).

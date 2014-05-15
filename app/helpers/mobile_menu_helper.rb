@@ -26,39 +26,31 @@ module MobileMenuHelper
   end
 
   def search_menu_list_html(search, search_params, navigations)
-    dc = search.is_a?(SiteSearch) ? search.document_collection : nil
-    rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
+    non_default_search_navigable = detect_non_default_search_navigable search
 
-    html = build_inactive_search_menu_item(search, dc, rss_feed) if navigations.blank?
+    html = build_standalone_search_menu_item non_default_search_navigable if navigations.blank?
     return '' if html.blank? and navigations.blank?
 
-    html ||= search_everything_menu_item search, search_params
-    nav_items = build_search_menu_items search, search_params, dc, rss_feed, navigations
+    html ||= default_search_menu_item search, search_params
+    nav_items = build_search_menu_items search, search_params, non_default_search_navigable, navigations
     html << nav_items.join("\n").html_safe
 
     dropdown_menu_wrapper html, 'search-menu-dropdown', navigation_heading
   end
 
-  def build_inactive_search_menu_item(search, dc, rss_feed)
-    return unless dc || rss_feed
-
-    inactive_navigable =
-      case
-        when is_inactive_site_search?(search) then dc
-        when is_inactive_news_search?(search) then rss_feed
-      end
-
-    menu_item inactive_navigable.name, true if inactive_navigable
+  def build_standalone_search_menu_item(non_default_search_navigable)
+    return unless non_default_search_navigable
+    menu_item non_default_search_navigable.name, true if non_default_search_navigable
   end
 
-  def search_everything_menu_item(search, search_params)
+  def default_search_menu_item(search, search_params)
     search_everything_builder search, search_params do |label, is_active, path|
       menu_item label, is_active, path
     end
   end
 
-  def build_search_menu_items(search, search_params, dc, rss_feed, navigations)
-    navigation_builder search, search_params, dc, rss_feed, navigations do |navigable_name, is_active, path|
+  def build_search_menu_items(search, search_params, non_default_search_navigable, navigations)
+    navigation_builder search, search_params, non_default_search_navigable, navigations do |navigable_name, is_active, path|
       menu_item navigable_name, is_active, path
     end
   end
@@ -103,4 +95,3 @@ module MobileMenuHelper
     html << list_items_html.html_safe
   end
 end
-

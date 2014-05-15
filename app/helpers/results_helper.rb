@@ -22,6 +22,22 @@ module ResultsHelper
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
+  def link_to_image_result_title(result, position, options = { tabindex: -1 })
+    title = translate_bing_highlights(h(result['title'])).html_safe
+
+    click_data = { p: position }
+    link_to title, result['Url'], { data: { click: click_data } }.merge(options)
+  end
+
+  def link_to_image_thumbnail(result, position)
+    title = translate_bing_highlights(h(result['title'])).html_safe
+    click_data = { p: position }
+
+    link_to result['Url'], data: { click: click_data } do
+      image_tag(result['Thumbnail']['Url'], alt: title)
+    end
+  end
+
   def link_to_indexed_document_title(result, position)
     title = translate_bing_highlights(h(result.title)).html_safe
 

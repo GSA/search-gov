@@ -5,9 +5,8 @@ module MobileNavigationsHelper
 
   def filter_media_navs(affiliate)
     affiliate.navigations.active.reject do |n|
-      navigable = n.navigable
-      navigable.is_a?(ImageSearchLabel) ||
-          (navigable.is_a?(RssFeed) && navigable.show_only_media_content?)
+      (n.navigable.is_a?(ImageSearchLabel) && affiliate.flickr_profiles.blank?) ||
+      (n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?)
     end
   end
 
@@ -16,10 +15,9 @@ module MobileNavigationsHelper
   end
 
   def navigations_and_related_sites(search, search_params, navigations)
-    if is_inactive_site_search?(search)
-      return inactive_search_navigation(search, search.document_collection)
-    elsif is_inactive_news_search?(search)
-      return inactive_search_navigation(search, search.rss_feed)
+    current_navigable = detect_non_default_search_navigable search
+    if current_navigable && current_navigable.navigation.is_inactive?
+      return standalone_search_navigation search, current_navigable
     end
 
     if navigations.present? || search.affiliate.connections.present?
@@ -27,23 +25,35 @@ module MobileNavigationsHelper
     end
   end
 
-  def full_navigations(search, search_params, navigations)
-    dc = search.is_a?(SiteSearch) ? search.document_collection : nil
-    rss_feed = search.is_a?(NewsSearch) ? search.rss_feed : nil
-
-    html = navigations.present? ? search_everything_navigation(search, search_params) : ''
-    nav_items = build_navigations_items(search, search_params, dc, rss_feed, navigations)
-    active_navigation_index = detect_active_navigation_index(search, navigations, dc, rss_feed)
-    related_sites_html = related_site_links search
-    build_navigations html, nav_items, active_navigation_index, related_sites_html
-  end
-
-  def inactive_search_navigation(search, navigable)
+  def standalone_search_navigation(search, navigable)
     html = navigation_item(navigable.name, true) << related_site_links(search)
     navigation_wrapper(html.html_safe, 'in')
   end
 
-  def search_everything_navigation(search, search_params)
+  def full_navigations(search, search_params, navigations)
+    non_default_search_navigable = detect_non_default_search_navigable search
+
+    html = navigations.present? ? default_search_navigation(search, search_params) : ''
+    nav_items = build_navigations_items search, search_params, non_default_search_navigable, navigations
+    active_navigation_index = detect_active_navigation_index(search, non_default_search_navigable, navigations)
+    related_sites_html = related_site_links search
+    build_navigations html, nav_items, active_navigation_index, related_sites_html
+  end
+
+  def detect_non_default_search_navigable(search)
+    case search
+      when is_default_search?(search)
+        nil
+      when OdieImageSearch
+        search.affiliate.image_search_label
+      when SiteSearch
+        search.document_collection
+      when NewsSearch
+        search.rss_feed
+    end
+  end
+
+  def default_search_navigation(search, search_params)
     search_everything_builder search, search_params do |label, is_active, path|
       navigation_item label, is_active, path
     end
@@ -51,33 +61,43 @@ module MobileNavigationsHelper
 
   def search_everything_builder(search, search_params)
     search_label = search.affiliate.default_search_label
-    is_active = search.instance_of?(WebSearch)
     params = search_params.slice(:affiliate, :m).
         merge(query: search.query)
 
-    yield search_label, is_active, search_path(params)
+    yield search_label, is_default_search?(search), search_path(params)
   end
 
-  def build_navigations_items(search, search_params, dc, rss_feed, navigations)
-    navigation_builder search, search_params, dc, rss_feed, navigations do |navigable_name, is_active, path|
+  def is_default_search?(search)
+    search.instance_of? WebSearch
+  end
+
+  def build_navigations_items(search, search_params, non_default_search_navigable, navigations)
+    navigation_builder search, search_params, non_default_search_navigable, navigations do |navigable_name, is_active, path|
       navigation_item navigable_name, is_active, path
     end
   end
 
-  def navigation_builder(search, search_params, dc, rss_feed, navigations)
+  def navigation_builder(search, search_params, non_default_search_navigable, navigations)
     query = search.query
     navigations.map do |navigation|
       navigable = navigation.navigable
-      active_navigable, path =
+      path =
           case navigable
+            when ImageSearchLabel
+              path_for_image_search(search_params, query)
             when DocumentCollection
-              [dc, path_for_document_collection_search(search_params, navigable, query)]
+              path_for_document_collection_search(search_params, navigable, query)
             when RssFeed
-              [rss_feed, path_for_rss_feed_search(search_params, navigable, query)]
+              path_for_rss_feed_search(search_params, navigable, query)
           end
-      is_active = active_navigable == navigable
+      is_active = non_default_search_navigable == navigable
       yield navigable.name, is_active, path
     end
+  end
+
+  def path_for_image_search(search_params, query)
+    image_search_params = search_params.slice(:affiliate).merge(query: query)
+    image_search_path image_search_params
   end
 
   def path_for_document_collection_search(search_params, navigable, query)
@@ -105,9 +125,9 @@ module MobileNavigationsHelper
     end
   end
 
-  def detect_active_navigation_index(search, navigations, dc, rss_feed)
-    return if search.instance_of?(WebSearch) || (dc.nil? && rss_feed.nil?)
-    navigations.map(&:navigable).find_index { |n| (n == dc) || (n == rss_feed) }
+  def detect_active_navigation_index(search, non_default_search_navigable, navigations)
+    return if is_default_search?(search) || non_default_search_navigable.nil?
+    navigations.map(&:navigable).find_index { |n| n == non_default_search_navigable }
   end
 
   def build_navigations(html, nav_items, active_nav_index, related_sites_html)

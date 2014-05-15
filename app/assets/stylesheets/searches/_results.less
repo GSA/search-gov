@@ -144,6 +144,37 @@
   }
 }
 
+#results.images {
+  .images-wrapper {
+    .clearfix();
+    padding: 8px 6px;
+  }
+}
+
+.result.image {
+  border: 0;
+  float: left;
+  padding: 4px 6px;
+  width: (100%/3);
+
+  @media (min-width: @screen-xs-min) {
+    width: 20%;
+  }
+
+  h3, .url {
+    .sr-only();
+  }
+
+  .thumbnail {
+    max-width: 150px;
+
+    a {
+      display: block;
+      position: relative;
+    }
+  }
+}
+
 .result.video {
   .thumbnail {
     border: 0;

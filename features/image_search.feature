@@ -4,7 +4,7 @@ Feature: Image search
   I want to search for images
 
   Scenario: English Image search
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         |
       | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
     When I am on usagov's image search page
@@ -14,7 +14,7 @@ Feature: Image search
     And I should see 20 image results
 
   Scenario: Spanish image search
-    Given the following Affiliates exist:
+    Given the following legacy Affiliates exist:
       | display_name    | name        | contact_email | contact_name | header                  | locale |
       | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on gobiernousa's image search page
