@@ -5,7 +5,7 @@ describe ImageSearchesController do
   describe "#index" do
     context "when searching as an affiliate and the query is present" do
       let(:query) { '<script>thunder & lightning</script>' }
-      let(:image_search) { mock(ImageSearch, :query => 'thunder & lightning') }
+      let(:image_search) { mock(ImageSearch, :query => 'thunder & lightning', :modules => []) }
 
       before do
         @affiliate = affiliates(:basic_affiliate)
@@ -58,7 +58,7 @@ describe ImageSearchesController do
 
     context "when searching as an affiliate and the query is blank" do
       let(:affiliate) { mock_model(Affiliate, :locale => 'en') }
-      let(:image_search) { mock(ImageSearch, :query => nil) }
+      let(:image_search) { mock(ImageSearch, :query => nil, :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
@@ -72,7 +72,7 @@ describe ImageSearchesController do
 
     context 'when params[:affiliate] is not a string' do
       let(:usagov_affiliate) { affiliates(:usagov_affiliate) }
-      let(:image_search) { mock(ImageSearch, :query => 'gov') }
+      let(:image_search) { mock(ImageSearch, :query => 'gov', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).twice do |arg|
