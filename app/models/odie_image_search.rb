@@ -43,8 +43,7 @@ class OdieImageSearch < OdieSearch
   protected
 
   def log_serp_impressions
-    modules = []
-    modules << "FLICKR" unless @total.zero?
-    QueryImpression.log(:odie_image, @affiliate.name, @query, modules)
+    @modules << "FLICKR" unless @total.zero?
+    QueryImpression.log(:odie_image, @affiliate.name, @query, @modules)
   end
 end

@@ -106,9 +106,8 @@ class NewsSearch < Search
   end
 
   def log_serp_impressions
-    modules = []
-    modules << @module_tag if @module_tag
-    QueryImpression.log(:news, @affiliate.name, @query, modules)
+    @modules << @module_tag if @module_tag
+    QueryImpression.log(:news, @affiliate.name, @query, @modules)
   end
 
   def allow_blank_query?

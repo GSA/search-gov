@@ -17,7 +17,8 @@ class Search
               :results,
               :spelling_suggestion,
               :queried_at_seconds,
-              :module_tag
+              :module_tag,
+              :modules
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
@@ -33,6 +34,7 @@ class Search
 
     @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i
+    @modules = []
   end
 
   # This does your search.

@@ -12,7 +12,8 @@ class SearchesController < ApplicationController
   before_filter :set_format_for_tablet_devices
   before_filter :force_mobile_mode, :only => [:index, :docs, :news]
   before_filter :adjust_mobile_mode
-  ssl_allowed :index, :news, :docs, :advanced, :videonews
+  ssl_allowed :index, :news, :docs, :advanced, :video_news
+  after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
 
   def index
     search_klass, @search_vertical, template = gets_blended_results? ? [BlendedSearch, :blended, :blended] : [WebSearch, :web, :index]
@@ -132,6 +133,10 @@ class SearchesController < ApplicationController
 
   def gets_blended_results?
     @affiliate.gets_blended_results && params[:cr] != 'true'
+  end
+
+  def log_search_impression
+    SearchImpression.log(@search, @search_vertical, params, request)
   end
 
 end

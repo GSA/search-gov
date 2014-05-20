@@ -58,18 +58,17 @@ class BlendedSearch < Search
   end
 
   def log_serp_impressions
-    modules = []
-    modules << "LOVER" << "LSPEL" unless self.spelling_suggestion.nil?
-    modules << "SREL" if self.has_related_searches?
-    modules << modules_in_results if @total > 0
-    modules << 'VIDS' if self.has_video_news_items?
-    modules << "BBG" if self.has_featured_collections?
-    modules << "BOOS" if self.has_boosted_contents?
-    modules << "MEDL" unless self.med_topic.nil?
-    modules << "JOBS" if self.jobs.present?
-    modules << "TWEET" if self.has_tweets?
-    modules << "PHOTO" if self.has_photos?
-    QueryImpression.log(:blended, @affiliate.name, @query, modules)
+    @modules << "LOVER" << "LSPEL" unless self.spelling_suggestion.nil?
+    @modules << "SREL" if self.has_related_searches?
+    @modules << modules_in_results if @total > 0
+    @modules << 'VIDS' if self.has_video_news_items?
+    @modules << "BBG" if self.has_featured_collections?
+    @modules << "BOOS" if self.has_boosted_contents?
+    @modules << "MEDL" unless self.med_topic.nil?
+    @modules << "JOBS" if self.jobs.present?
+    @modules << "TWEET" if self.has_tweets?
+    @modules << "PHOTO" if self.has_photos?
+    QueryImpression.log(:blended, @affiliate.name, @query, @modules)
   end
 
   private

@@ -123,20 +123,18 @@ class WebSearch < Search
   end
 
   def log_serp_impressions
-    modules = []
-    modules << module_tag if module_tag
-    modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
-    modules << "SREL" if self.has_related_searches?
-    modules << 'NEWS' if self.has_news_items?
-    modules << 'VIDS' if self.has_video_news_items?
-    modules << "BBG" if self.has_featured_collections?
-    modules << "BOOS" if self.has_boosted_contents?
-    modules << "MEDL" unless self.med_topic.nil?
-    modules << "JOBS" if self.jobs.present?
-    modules << "TWEET" if self.has_tweets?
-    modules << "PHOTO" if self.has_photos?
-    vertical = get_vertical
-    QueryImpression.log(vertical, affiliate.name, self.query, modules)
+    @modules << module_tag if module_tag
+    @modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
+    @modules << "SREL" if self.has_related_searches?
+    @modules << 'NEWS' if self.has_news_items?
+    @modules << 'VIDS' if self.has_video_news_items?
+    @modules << "BBG" if self.has_featured_collections?
+    @modules << "BOOS" if self.has_boosted_contents?
+    @modules << "MEDL" unless self.med_topic.nil?
+    @modules << "JOBS" if self.jobs.present?
+    @modules << "TWEET" if self.has_tweets?
+    @modules << "PHOTO" if self.has_photos?
+    QueryImpression.log(get_vertical, affiliate.name, self.query, @modules)
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 

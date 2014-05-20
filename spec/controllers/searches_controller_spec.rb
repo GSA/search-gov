@@ -333,7 +333,7 @@ describe SearchesController do
     let(:dc) { mock_model(DocumentCollection) }
 
     context 'when DocumentCollection exists' do
-      let(:site_search) { mock(SiteSearch, :query => 'gov') }
+      let(:site_search) { mock(SiteSearch, :query => 'gov', :modules => %w(BWEB)) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -358,7 +358,7 @@ describe SearchesController do
     end
 
     context 'when page number is specified' do
-      let(:site_search) { mock(SiteSearch, :query => 'pdf') }
+      let(:site_search) { mock(SiteSearch, :query => 'pdf', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -372,7 +372,7 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection does not exist' do
-      let(:web_search) { mock(WebSearch, :query => 'gov') }
+      let(:web_search) { mock(WebSearch, :query => 'gov', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -387,7 +387,7 @@ describe SearchesController do
     end
 
     context 'when params[:dc] is not a valid number' do
-      let(:web_search) { mock(WebSearch, :query => 'gov') }
+      let(:web_search) { mock(WebSearch, :query => 'gov', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -462,7 +462,7 @@ describe SearchesController do
     context 'when searching with tbs' do
       before do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = mock(NewsSearch, query: 'element', rss_feed: rss_feeds(:white_house_blog))
+        news_search = mock(NewsSearch, query: 'element', rss_feed: rss_feeds(:white_house_blog), modules: [])
         news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
         NewsSearch.should_receive(:new).with(hash_including(tbs: 'w', per_page: 20)).and_return(news_search)
         news_search.should_receive(:run)
@@ -497,6 +497,7 @@ describe SearchesController do
         news_search = mock(NewsSearch,
                            query: 'element',
                            rss_feed: rss_feeds(:white_house_blog),
+                           modules: [],
                            since: Time.parse('2012-10-1'),
                            until: Time.parse('2012-10-15'))
         news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
@@ -533,7 +534,7 @@ describe SearchesController do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context "when the query is not blank" do
-      let(:video_news_search) { mock('video news search', query: 'element') }
+      let(:video_news_search) { mock('video news search', query: 'element', modules: []) }
 
       before do
         VideoNewsSearch.should_receive(:new).with(hash_including(per_page: 20)).and_return(video_news_search)
@@ -550,7 +551,7 @@ describe SearchesController do
     end
 
     context "when the query is blank and total is > 0" do
-      let(:video_news_search) { mock('video news search', query: '') }
+      let(:video_news_search) { mock('video news search', query: '', modules: []) }
 
       before do
         VideoNewsSearch.should_receive(:new).and_return(video_news_search)
