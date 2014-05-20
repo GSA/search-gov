@@ -24,8 +24,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_json).and_return(search_result_in_json)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json)
-
-          ApiSearch.search(params).should == search_result_in_json
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_json
         end
       end
 
@@ -34,8 +34,8 @@ describe ApiSearch do
           api_redis.should_receive(:get).with(@api_cache_key).and_return(search_result_in_json)
           api_redis.should_not_receive(:setex)
           search.should_not_receive(:run)
-
-          ApiSearch.search(params).should == search_result_in_json
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_json
         end
       end
 
@@ -45,8 +45,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_json).and_return(search_result_in_json)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json)
-
-          ApiSearch.search(params).should == search_result_in_json
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_json
         end
       end
 
@@ -56,8 +56,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_json).and_return(search_result_in_json)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json).and_raise(StandardError)
-
-          ApiSearch.search(params).should == search_result_in_json
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_json
         end
       end
     end
@@ -82,8 +82,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_xml).and_return(search_result_in_xml)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml)
-
-          ApiSearch.search(params).should == search_result_in_xml
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_xml
         end
       end
 
@@ -92,8 +92,8 @@ describe ApiSearch do
           api_redis.should_receive(:get).with(@api_cache_key).and_return(search_result_in_xml)
           api_redis.should_not_receive(:setex)
           search.should_not_receive(:run)
-
-          ApiSearch.search(params).should == search_result_in_xml
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_xml
         end
       end
 
@@ -103,8 +103,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_xml).and_return(search_result_in_xml)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml)
-
-          ApiSearch.search(params).should == search_result_in_xml
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_xml
         end
       end
 
@@ -114,8 +114,8 @@ describe ApiSearch do
           search.should_receive(:run)
           search.should_receive(:to_xml).and_return(search_result_in_xml)
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml).and_raise(StandardError)
-
-          ApiSearch.search(params).should == search_result_in_xml
+          api_search = ApiSearch.new(params)
+          api_search.run.should == search_result_in_xml
         end
       end
     end
@@ -136,42 +136,42 @@ describe ApiSearch do
       context "when it's web" do
         it "should create a WebSearch object" do
           WebSearch.should_receive(:new).with(params.merge(:index => 'web')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'web'))
+          ApiSearch.new(params.merge(:index => 'web'))
         end
       end
 
       context "when it's undefined" do
         it "should create a WebSearch object" do
           WebSearch.should_receive(:new).with(params).and_return(search)
-          ApiSearch.search(params)
+          ApiSearch.new(params)
         end
       end
 
       context "when it's news" do
         it "should create a NewsSearch object" do
           NewsSearch.should_receive(:new).with(params.merge(:index => 'news')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'news'))
+          ApiSearch.new(params.merge(:index => 'news'))
         end
       end
 
       context "when it's videonews" do
         it "should create a VideoNewsSearch object" do
           VideoNewsSearch.should_receive(:new).with(params.merge(:index => 'videonews')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'videonews'))
+          ApiSearch.new(params.merge(:index => 'videonews'))
         end
       end
 
       context "when it's images" do
         it "should create an ImageSearch object" do
           ImageSearch.should_receive(:new).with(params.merge(:index => 'images')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'images'))
+          ApiSearch.new(params.merge(:index => 'images'))
         end
       end
 
       context "when it's document collections (docs)" do
         it "should create a SiteSearch object" do
           SiteSearch.should_receive(:new).with(params.merge(:index => 'docs', :dc => '45')).and_return(search)
-          ApiSearch.search(params.merge(:index => 'docs', :dc => '45'))
+          ApiSearch.new(params.merge(:index => 'docs', :dc => '45'))
         end
       end
     end

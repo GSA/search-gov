@@ -19,10 +19,12 @@ describe ApiController do
     end
 
     describe "with format=json" do
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
 
       before do
         json = {result_field: 'result'}.to_json
-        ApiSearch.should_receive(:search).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(json)
+        ApiSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(api_search)
+        api_search.stub(:run).and_return(json)
         get :search, :affiliate => affiliate.name, :format => 'json', :query => 'solar'
       end
 
@@ -34,13 +36,16 @@ describe ApiController do
         subject { JSON.parse(response.body) }
         its(['result_field']) { should == 'result' }
       end
+
     end
 
     context "with format=xml" do
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
 
       before do
         xml = {result_field: 'result'}.to_xml
-        ApiSearch.should_receive(:search).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(xml)
+        ApiSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(api_search)
+        api_search.stub(:run).and_return(xml)
         get :search, :affiliate => affiliate.name, :format => 'xml', :query => 'solar'
       end
 
@@ -95,11 +100,16 @@ describe ApiController do
     end
 
     describe "jsonp support" do
-      it "should wrap response with predefined callback if callback is not blank" do
-        affiliate = affiliates(:basic_affiliate)
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
+
+      before do
+        ApiSearch.should_receive(:new).and_return(api_search)
         search_results = {:spelling_suggestions => "house"}.to_json
-        ApiSearch.should_receive(:search).and_return(search_results)
-        get :search, :affiliate => affiliate.name, :query => "haus", :callback => 'processData', :format => 'json'
+        api_search.stub(:run).and_return(search_results)
+      end
+
+      it "should wrap response with predefined callback if callback is not blank" do
+        get :search, :affiliate => affiliate.nameA, :query => "haus", :callback => 'processData', :format => 'json'
         response.body.should == %{processData({"spelling_suggestions":"house"})}
       end
     end

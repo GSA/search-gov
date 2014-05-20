@@ -6,10 +6,12 @@ class ApiController < ApplicationController
   def search
     @search_options = search_options_from_params(@affiliate, params).merge(
       format: params[:format], index: params[:index], per_page: DEFAULT_API_PER_PAGE, lat_lon: params[:lat_lon])
-    @search = ApiSearch.search(@search_options)
+    @search = ApiSearch.new(@search_options)
+    results = @search.run
+    SearchImpression.log(@search, get_vertical(params[:index]), params, request)
     respond_to do |format|
-      format.xml { render :xml => @search }
-      format.json { params[:callback].blank? ? render(:json => @search) : render(:json => @search, :callback => params[:callback]) }
+      format.xml { render :xml => results }
+      format.json { params[:callback].blank? ? render(:json => results) : render(:json => results, :callback => params[:callback]) }
     end
   end
 
@@ -22,6 +24,21 @@ class ApiController < ApplicationController
     else
       render :text => 'Not Found', :status => 404
       false
+    end
+  end
+
+  def get_vertical(index)
+    case index
+      when "news"
+        :news
+      when "videonews"
+        :news
+      when "images"
+        :image
+      when "docs"
+        :docs
+      else
+        :web
     end
   end
 end
