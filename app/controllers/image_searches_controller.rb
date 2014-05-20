@@ -11,6 +11,7 @@ class ImageSearchesController < ApplicationController
     set_search_page_title
     @search_vertical = :image
     set_search_params
+    SearchImpression.log(@search, @search_vertical, params, request)
     respond_to do |format|
       format.html {}
       format.json { render :json => @search }
