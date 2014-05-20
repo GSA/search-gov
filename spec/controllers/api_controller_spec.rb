@@ -13,7 +13,7 @@ describe ApiController do
     end
 
     context 'when the params[:affiliate] is not a string' do
-      before { get :search, affiliate: {'foo' => 'bar'} }
+      before { get :search, affiliate: { 'foo' => 'bar' } }
 
       it { should respond_with :not_found }
     end
@@ -22,7 +22,7 @@ describe ApiController do
       let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
 
       before do
-        json = {result_field: 'result'}.to_json
+        json = { result_field: 'result' }.to_json
         ApiSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(api_search)
         api_search.stub(:run).and_return(json)
         get :search, :affiliate => affiliate.name, :format => 'json', :query => 'solar'
@@ -43,7 +43,7 @@ describe ApiController do
       let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
 
       before do
-        xml = {result_field: 'result'}.to_xml
+        xml = { result_field: 'result' }.to_xml
         ApiSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(api_search)
         api_search.stub(:run).and_return(xml)
         get :search, :affiliate => affiliate.name, :format => 'xml', :query => 'solar'
@@ -69,7 +69,7 @@ describe ApiController do
 
     describe "options" do
       before :each do
-        @auth_params = {:affiliate => affiliates(:basic_affiliate).name}
+        @auth_params = { :affiliate => affiliates(:basic_affiliate).name }
       end
 
       it "should set the affiliate" do
@@ -104,13 +104,69 @@ describe ApiController do
 
       before do
         ApiSearch.should_receive(:new).and_return(api_search)
-        search_results = {:spelling_suggestions => "house"}.to_json
+        search_results = { :spelling_suggestions => "house" }.to_json
         api_search.stub(:run).and_return(search_results)
       end
 
       it "should wrap response with predefined callback if callback is not blank" do
-        get :search, :affiliate => affiliate.nameA, :query => "haus", :callback => 'processData', :format => 'json'
+        get :search, :affiliate => affiliate.name, :query => "haus", :callback => 'processData', :format => 'json'
         response.body.should == %{processData({"spelling_suggestions":"house"})}
+      end
+    end
+
+    describe "logging searches and impressions" do
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => [], :run => nil) }
+
+      before do
+        ApiSearch.should_receive(:new).and_return(api_search)
+      end
+
+      context "when it's web" do
+        it "should log the impression with the :web vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo", 'index' => 'web'}
+          SearchImpression.should_receive(:log).with(api_search, :web, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
+      end
+
+      context "when it's image" do
+        it "should log the impression with the :image vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo", 'index' => 'images'}
+          SearchImpression.should_receive(:log).with(api_search, :image, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
+      end
+
+      context "when it's news" do
+        it "should log the impression with the :news vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo", 'index' => 'news'}
+          SearchImpression.should_receive(:log).with(api_search, :news, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
+      end
+
+      context "when it's videonews" do
+        it "should log the impression with the :news vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo", 'index' => 'videonews'}
+          SearchImpression.should_receive(:log).with(api_search, :news, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
+      end
+
+      context "when it's document collections (docs)" do
+        it "should log the impression with the :docs vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo", 'index' => 'docs'}
+          SearchImpression.should_receive(:log).with(api_search, :docs, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
+      end
+
+      context "when it's undefined" do
+        it "should log the impression with the :web vertical" do
+          params = {'affiliate' => affiliate.name, 'query' => "foo"}
+          SearchImpression.should_receive(:log).with(api_search, :web, hash_including(params), instance_of(ActionController::TestRequest))
+          get :search, params
+        end
       end
     end
 
