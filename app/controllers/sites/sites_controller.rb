@@ -14,7 +14,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def show
-    @dashboard = Dashboard.new(@site)
+    @dashboard = params[:rtu].present? ? RtuDashboard.new(@site) : Dashboard.new(@site)
   end
 
   def new
