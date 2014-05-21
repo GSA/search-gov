@@ -4,7 +4,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.label = 'Sites'
     config.actions.exclude :delete
     config.columns = [:id, :display_name, :name, :website, :status, :last_month_query_count, :tags, :site_domains, :affiliate_note,
-                      :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url,
+                      :user_emails, :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url,
                       :created_at, :updated_at]
     config.columns[:affiliate_note].label = 'Note'
     config.columns[:website].label = 'Homepage URL'
@@ -53,7 +53,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.list.columns.exclude virtual_columns
-    config.list.columns.exclude :last_month_query_count, :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url
+    config.list.columns.exclude :last_month_query_count, :user_emails, :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url
     config.create.columns = [:display_name, :name, :header_footer_css, :header, :footer, :locale]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:theme].form_ui = :select

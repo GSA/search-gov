@@ -955,7 +955,7 @@ describe Affiliate do
     end
   end
 
-  describe '.last_month_query_count' do
+  describe '#last_month_query_count' do
     it 'returns previous month sum of times from DailyQueryStat' do
       affiliate = affiliates(:power_affiliate)
 
@@ -969,6 +969,13 @@ describe Affiliate do
           prev_end_of_month).and_return(88)
 
       affiliate.last_month_query_count.should == 88
+    end
+  end
+
+  describe '#user_emails' do
+    it 'returns comma delimited user emails' do
+      affiliate = affiliates(:non_existent_affiliate)
+      affiliate.user_emails.should == 'Another Manager <another_affiliate_manager@fixtures.org>,Pending Email Verification Affiliate Manager <affiliate_manager_with_pending_email_verification_status@fixtures.org>'
     end
   end
 

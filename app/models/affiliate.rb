@@ -405,6 +405,10 @@ class Affiliate < ActiveRecord::Base
         prev_month.end_of_month)
   end
 
+  def user_emails
+    users.map(&:to_label).join(',').html_safe
+  end
+
   private
 
   def batch_size(scope)

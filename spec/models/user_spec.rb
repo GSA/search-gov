@@ -124,7 +124,7 @@ describe User do
   describe "#to_label" do
     it "should return the user's contact name" do
       u = users(:affiliate_admin)
-      u.to_label.should == u.contact_name
+      u.to_label.should == 'Affiliate Administrator <affiliate_admin@fixtures.org>'
     end
   end
 

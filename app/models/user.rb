@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def to_label
-    contact_name
+    "#{contact_name} <#{email}>"
   end
 
   def is_affiliate_or_higher
