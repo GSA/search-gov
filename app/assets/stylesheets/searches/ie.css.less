@@ -4,30 +4,20 @@
   font: ~"0/0" a;
 }
 
-.pagination {
-  .previous_page, .current_page, a.next_page {
-    color: #000;
-    font-size: 1em;
-    line-height: 1.5em;
-  }
-
-  .next_page, .previous_page {
-    padding-top: 5px;
-  }
-}
-
 @outline-color: #EDB864;
 
 a:focus {
   outline: 3px solid @outline-color !important;
 }
 
-#search .pagination a {
-  outline: 0;
-  border: 2px solid transparent;
+#search .pagination {
+  a, span {
+    outline: 0;
+    border: 2px solid transparent;
 
-  &:focus {
-    border-color: @outline-color;
+    &:focus {
+      border-color: @outline-color;
+    }
   }
 }
 

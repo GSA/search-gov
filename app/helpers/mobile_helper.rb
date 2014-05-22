@@ -70,7 +70,6 @@ module MobileHelper
   end
 
   def pagination_link_separator(page_str)
-    page = page_str.to_i rescue 1
-    content_tag(:span, "#{I18n.t :page} #{h params[:page]}", class: 'current_page') if page > 1
+    content_tag(:span, "#{I18n.t :page} #{page_str}", class: 'current_page')
   end
 end

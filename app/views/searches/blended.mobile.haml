@@ -13,5 +13,5 @@
     = render partial: 'searches/blended/results', locals: { search:  @search }
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
     = render partial: 'searches/blended/offer_commercial_results', locals: { search:  @search } if @search.total < @search.per_page * @search.page
-    = render partial: 'pagination', locals: { results: @search.results }
+    = render partial: 'pagination', locals: { search: @search }
 

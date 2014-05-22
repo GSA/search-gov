@@ -16,4 +16,4 @@
     = render partial: 'organic_results', locals: { search: @search }
     = render partial: 'news_items', locals: { search:  @search } if @search.has_news_items? and !@search.has_fresh_news_items?
     = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
-    = render partial: 'pagination', locals: { results: @search.results }
+    = render partial: 'searches/pagination', locals: { search: @search }

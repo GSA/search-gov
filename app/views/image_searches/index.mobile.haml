@@ -5,4 +5,4 @@
 
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
-    = render partial: 'searches/pagination', locals: { results: @search.results }
+    = render partial: 'searches/pagination', locals: { search: @search }
