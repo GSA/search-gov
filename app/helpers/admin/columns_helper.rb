@@ -11,12 +11,6 @@ module Admin::ColumnsHelper
     end
   end
 
-  def user_emails_column(record, column)
-    if record.is_a?(Affiliate)
-      record.users.map(&:to_label).join(',')
-    end
-  end
-
   def name_column(record, column)
     if record.is_a? RssFeed
       link_to record.name, site_rss_feed_path(record.owner, record.id), target: '_blank'

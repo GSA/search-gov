@@ -3,8 +3,8 @@ class Admin::AffiliatesController < Admin::AdminController
   active_scaffold :affiliate do |config|
     config.label = 'Sites'
     config.actions.exclude :delete
-    config.columns = [:id, :display_name, :name, :website, :status, :last_month_query_count, :tags, :site_domains, :affiliate_note,
-                      :user_emails, :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url,
+    config.columns = [:id, :display_name, :name, :website, :user_emails, :status, :last_month_query_count, :tags, :site_domains, :affiliate_note,
+                      :force_mobile_format, :uses_managed_header_footer, :mobile_logo_url, :header_image_url,
                       :created_at, :updated_at]
     config.columns[:affiliate_note].label = 'Note'
     config.columns[:website].label = 'Homepage URL'

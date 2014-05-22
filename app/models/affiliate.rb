@@ -406,7 +406,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def user_emails
-    users.map(&:to_label).join(',').html_safe
+    users.map(&:to_label).join(',')
   end
 
   private
