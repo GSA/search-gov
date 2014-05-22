@@ -158,9 +158,9 @@ Feature: Dashboard
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the legacy.agency.gov's Dashboard page
     And I follow "Preview"
-    Then I should find "View Staged" in the Preview modal
-    And I should find "View Current" in the Preview modal
-    And I should find "View Current Mobile" in the Preview modal
+    Then I should find "View Staged Page" in the Preview modal
+    And I should find "View Current Page" in the Preview modal
+    And I should find "View Redesigned Page" in the Preview modal
 
     When I go to the www.agency.gov's Dashboard page
     And I follow "Preview"
