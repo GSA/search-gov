@@ -337,10 +337,10 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
-      | Header Link Title 0 | News               |
-      | Header Link URL 0   | news.agency.gov    |
-      | Footer Link Title 0 | Contact            |
-      | Footer Link URL 0   | contact.agency.gov |
+      | Header Link Title 0 | News                      |
+      | Header Link URL 0   | news.agency.gov           |
+      | Footer Link Title 0 | Contact                   |
+      | Footer Link URL 0   | mailto:contact@agency.gov |
     When I follow "Add Another Header Link"
     Then I should be able to access 2 header link rows
     When I fill in the following:
@@ -358,14 +358,14 @@ Feature: Manage Display
     And the "Header Link Title 1" field should contain "Blog"
     And the "Header Link URL 1" field should contain "http://blog.agency.gov"
     And the "Footer Link Title 0" field should contain "Contact"
-    And the "Footer Link URL 0" field should contain "http://contact.agency.gov"
+    And the "Footer Link URL 0" field should contain "mailto:contact@agency.gov"
     And the "Footer Link Title 1" field should contain "Terms"
     And the "Footer Link URL 1" field should contain "http://tos.agency.gov"
 
     When I am on agency.gov's search page
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
-    Then I should see a link to "Contact" with url for "http://contact.agency.gov"
+    Then I should see a link to "Contact" with url for "mailto:contact@agency.gov"
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's mobile search page
@@ -373,7 +373,7 @@ Feature: Manage Display
     Then I should find "Browse site" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
-    Then I should see a link to "Contact" with url for "http://contact.agency.gov"
+    Then I should see a link to "Contact" with url for "mailto:contact@agency.gov"
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's "Inactive site search" mobile site search page

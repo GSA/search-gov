@@ -471,7 +471,7 @@ class Affiliate < ActiveRecord::Base
     managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
       next if link[:title].blank? and link[:url].blank?
       url = link[:url]
-      url = "http://#{url}" if url.present? and url !~ %r{^http(s?)://}i
+      url = "http://#{url}" if url.present? and url !~ %r{^(http(s?)://|mailto:)}i
       managed_links << { :position => link[:position].to_i, :title => link[:title], :url => url }
     end
   end
