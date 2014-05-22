@@ -35,6 +35,26 @@ describe RtuDashboard do
     end
   end
 
+  describe "#no_results" do
+    context 'when top no results queries are available' do
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_queries.json")) }
+
+      before do
+        ES::client_reader.stub(:search).and_return json_response
+      end
+
+      it 'should return an array of QueryCount instances' do
+        no_results = json_response["aggregations"]["agg"]["buckets"].collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) }
+        dashboard.no_results.size.should == no_results.size
+        dashboard.no_results.each_with_index do |tq, idx|
+          tq.query.should == no_results[idx].query
+          tq.times.should == no_results[idx].times
+        end
+      end
+    end
+
+  end
+
   describe "#top_urls" do
     context 'when top URLs are available' do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_urls.json")) }
