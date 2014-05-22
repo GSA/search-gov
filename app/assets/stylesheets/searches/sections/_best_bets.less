@@ -1,6 +1,10 @@
 #best-bets {
   .content-block();
 
+  @media (min-width: @screen-desktop) {
+    margin-bottom: @content-block-margin;
+  }
+
   &.collapsed {
     #best-bet-1, #best-bet-2 {
       display: block;
