@@ -1,6 +1,6 @@
 #jobs.search.collapsible.collapsed.focus-on-next-sibling{ tabindex: -1 }
   .content-block-item.content-block-item-header
-    .content-provider
+    %h3.content-heading
       = job_openings_header(search.affiliate.agency)
   - search.jobs.each_with_index do |job, index|
     = render partial: 'job', locals: { affiliate: search.affiliate, job: job, position: index + 1 }

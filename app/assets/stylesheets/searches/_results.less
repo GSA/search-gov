@@ -1,10 +1,12 @@
 .content-block-item.content-block-item-header {
-  color: @text-color;
-  font-size: 1.9em;
   padding: 8px 12px;
 
+  .content-heading {
+    margin: 0;
+  }
+
   @media (min-width: @screen-desktop) {
-    padding: 6px 12px 0;
+    padding: 8px 12px 0;
   }
 }
 
@@ -117,8 +119,12 @@
   }
 }
 
+#results .content-block-item-header {
+  .sr-only();
+}
+
 .result {
-  h3 {
+  .title {
     .item-title();
 
     .uext_type {
@@ -161,7 +167,7 @@
     width: 20%;
   }
 
-  h3, .url {
+  .title, .url {
     .sr-only();
   }
 

@@ -20,7 +20,7 @@ onResultClick = (e) ->
   else
     $result = $target.parents('.result')
 
-  $link = $result.find('h3 a').trigger('click')
+  $link = $result.find('h4 a').trigger('click')
   visitLink $link[0]
 
 $(document).on 'click', '#search .result', onResultClick

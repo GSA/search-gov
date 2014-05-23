@@ -1,4 +1,6 @@
 #results
+  .content-block-item.content-block-item-header
+    %h3.content-heading= search_results_by_text search.module_tag
   - unique_news_items(@search.results).each_with_index do |instance, index|
     = render partial: news_item_partial(instance), locals: { instance: instance, position: search.startrecord + index }
   .content-block-item.content-block-item-footer

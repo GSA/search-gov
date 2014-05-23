@@ -115,7 +115,7 @@ Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |d
 end
 
 Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do |count, url|
-  page.should have_selector("h3 a[href='#{url}']", count: count)
+  page.should have_selector(".title a[href='#{url}']", count: count)
 end
 
 Then /^I should see (\d+) news results?$/ do |count|

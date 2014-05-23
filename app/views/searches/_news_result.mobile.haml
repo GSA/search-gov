@@ -1,5 +1,5 @@
 .content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
-  %h3
+  %h4.title
     = link_to_news_item_title(instance, position)
   %span.url= truncate_url(instance.link)
   %span.description

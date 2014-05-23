@@ -26,6 +26,14 @@ describe MobileHelper do
     end
   end
 
+  describe '#search_results_by_text' do
+    context 'when module_tag is GWEB' do
+      it 'returns Powered by Google' do
+        helper.search_results_by_text('GWEB').should have_content('Powered by Google')
+      end
+    end
+  end
+
   describe '#serp_attribution' do
     context 'when module_tag is GWEB' do
       it 'returns Powered by Google' do

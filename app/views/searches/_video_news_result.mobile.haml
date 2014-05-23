@@ -1,6 +1,6 @@
 - block_id_prefix ||= 'result'
 .content-block-item.result.video{ id: "#{block_id_prefix}-#{position}", onclick: 'void(0)' }
-  %h3
+  %h4.title
     = link_to_news_item_title(instance, position)
   .thumbnail= link_to_news_item_thumbnail instance, position
   %span.content-host-and-published-distance

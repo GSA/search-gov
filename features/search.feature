@@ -915,12 +915,12 @@ Feature: Affiliate Search
       | name      | prefixes                 | is_navigable |
       | Petitions | petitions.whitehouse.gov | true         |
     And the following IndexedDocuments exist:
-      | title                   | description                                      | url                                             | affiliate  | last_crawled_at | last_crawl_status |
-      | First petition article  | This is an article death star r2d2z3 petition    | http://petitions.whitehouse.gov/petition-1.html | agency.gov | 11/02/2011      | OK                |
-      | Second petition article | This is an article on death r2d2z3 star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
+      | title                   | description                                         | url                                             | affiliate  | last_crawled_at | last_crawl_status |
+      | First petition article  | This is an article death star r2d2 xyz3 petition    | http://petitions.whitehouse.gov/petition-1.html | agency.gov | 11/02/2011      | OK                |
+      | Second petition article | This is an article on death r2d2 xyz3 star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
     And I follow "Petitions" in the left column
-    And I fill in "Enter your search term" with "'death star r2d2z3'"
+    And I fill in "Enter your search term" with "'death star r2d2 xyz3'"
     And I press "Search" in the search box
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"

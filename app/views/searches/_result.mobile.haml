@@ -1,5 +1,5 @@
 .content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
-  %h3
+  %h4.title
     = display_web_result_extname_prefix(result)
     = link_to_web_result_title(result, position)
   %div.url= url_without_protocol result['unescapedUrl']

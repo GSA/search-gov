@@ -32,11 +32,20 @@ module MobileHelper
     affiliate.is_sayt_enabled? ? 'form-control typeahead-enabled' : 'form-control'
   end
 
+  def search_results_by_text(module_tag)
+    provider = case module_tag
+      when 'BWEB', 'IMAG' then ' Bing'
+      when 'GWEB', 'GIMAG' then ' Google'
+      else ' DIGITALGOV Search'
+      end
+    I18n.t(:powered_by) << provider
+  end
+
   def serp_attribution(search_module_tag)
     powered_by = I18n.t :powered_by
     if %w(BWEB IMAG).include? search_module_tag
       content_tag(:div, class: 'bing') do
-        (powered_by << content_tag(:span, 'Bing')).html_safe
+        (powered_by << content_tag(:span, ' Bing')).html_safe
       end
     elsif %w(GWEB GIMAG).include? search_module_tag
       content_tag(:span, "#{powered_by} Google")

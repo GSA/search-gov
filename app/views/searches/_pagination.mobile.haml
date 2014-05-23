@@ -1,4 +1,6 @@
 .pagination
+  .content-block-item.content-block-item-header
+    %h3.content-heading Pagination
   = will_paginate search.results,
       class: 'content-block-item',
       link_separator: pagination_link_separator(search.page),

@@ -33,9 +33,8 @@
 }
 
 #best-bets .featured-collection {
-  h3 {
+  .title {
     .text-overflow();
-    padding: 0.1em 0;
 
     @media (min-width: @screen-desktop) {
       margin-bottom: 0.3em;
@@ -70,14 +69,11 @@
 
   .links {
     .clearfix();
-    font-size: @font-size-default;
-    line-height: 1;
   }
 
   ul {
     .list-unstyled();
     display: block;
-    font-size: 1em;
     overflow: hidden;
 
     @media (min-width: @screen-sm) {
@@ -89,10 +85,6 @@
   .title-and-links {
     .clearfix();
 
-    h3 {
-      padding: 0.3em;
-    }
-
     .links-1 {
       padding: 0.3em 0.3em 0;
     }
@@ -103,7 +95,7 @@
 
     @media (min-width: @screen-sm) {
       .links-1, .links-2 {
-        padding: 0.3em;
+        padding: 0 0.3em 0.3em;
       }
     }
   }
@@ -115,7 +107,7 @@
       }
     }
 
-    h3 {
+    .title {
       margin-left: @featured-collection-content-left-margin;
 
       @media (min-width: @screen-sm) {

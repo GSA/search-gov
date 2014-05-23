@@ -2,12 +2,12 @@
 #med-topic.search.collapsible.collapsed
   .content-block-item.med-topic
     = link_to 'MedlinePlus', t(:'searches.med_topic.homepage_url'), class: "logo-#{I18n.locale}"
-    %h3= link_to_result_title(med_topic.id, med_topic.medline_title, med_topic.medline_url, 1, 'MEDL')
+    %h4.title= link_to_result_title(med_topic.id, med_topic.medline_title, med_topic.medline_url, 1, 'MEDL')
     %span.description=med_topic_description med_topic
 
     - if med_topic.med_related_topics.present?
       .related-topics
-        %h4= t :'searches.med_topic.related_topics'
+        %h5.subsection= t :'searches.med_topic.related_topics'
         %ul
           - med_topic.med_related_topics.limit(3).each do |related_topic|
             %li.related-topic
@@ -16,7 +16,7 @@
 
     - if med_topic.med_sites.present?
       .clinical-studies
-        %h4 Open clinical studies and trials
+        %h5.subsection Open clinical studies and trials
         %ul
           - med_topic.med_sites.limit(2).each do |site|
             %li

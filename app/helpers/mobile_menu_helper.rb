@@ -8,8 +8,10 @@ module MobileMenuHelper
   end
 
   def main_menu(search, search_params, navigations)
-    content_tag :div, id: 'main-menu', class: 'menu collapse' do
-      menu_list(search, search_params, navigations).html_safe
+    content_tag :div, id: 'main-menu', class: 'menu' do
+      content = content_tag :h2, I18n.t(:'searches.menu'), class: 'content-heading'
+      content << menu_list(search, search_params, navigations)
+      content.html_safe
     end
   end
 
