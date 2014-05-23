@@ -52,10 +52,9 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
               end
             end
           end
-          #TODO: change to field_value_factor when ES 1.2.0 releases
           json.child! do
-            json.script_score do
-              json.script "_score * doc['popularity'].value"
+            json.field_value_factor do
+              json.field "popularity"
             end
           end
         end
