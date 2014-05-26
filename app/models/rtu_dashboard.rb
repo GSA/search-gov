@@ -20,6 +20,22 @@ class RtuDashboard < Dashboard
     extract_significant_terms(buckets) if buckets
   end
 
+  def low_ctr_queries
+    search_query = TopNExistsQuery.new(@site.name, field: 'raw', min_doc_count: 20, size: 100000)
+    search_buckets = top_n(search_query.body, 'search')
+    searches_hash = Hash[search_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }]
+    clicked_query = TopNQuery.new(@site.name, field: 'raw', size: 1000000)
+    click_buckets = top_n(clicked_query.body, 'click')
+    clicks_hash = Hash[click_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }]
+    low_ctr_queries = searches_hash.inject([]) do |result, (term, qcount)|
+      ccount = clicks_hash[term] || 0
+      ctr = 100 * ccount / qcount
+      result << [term, ctr] if ctr < 20
+      result
+    end
+    low_ctr_queries.sort_by { |arr| arr.last }.first(10)
+  end
+
   private
 
   def top_query(klass, options = {})
