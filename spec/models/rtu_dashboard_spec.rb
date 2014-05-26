@@ -70,4 +70,19 @@ describe RtuDashboard do
     end
   end
 
+  describe "#trending_queries" do
+    context 'when trending queries are available' do
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/trending_queries.json")) }
+
+      before do
+        ES::client_reader.stub(:search).and_return json_response
+      end
+
+      it 'should return an array of trending/significant queries coming from at least 10 IPs' do
+        dashboard.trending_queries.should == ["memorial day", "petitions"]
+      end
+    end
+  end
+
+
 end

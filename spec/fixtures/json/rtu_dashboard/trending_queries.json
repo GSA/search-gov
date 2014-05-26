@@ -1,0 +1,155 @@
+{"took": 14, "timed_out": false, "_shards": {
+  "total": 1,
+  "successful": 1,
+  "failed": 0
+}, "hits": {
+  "total": 1050,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "agg": {
+    "doc_count": 1050,
+    "buckets": [
+      {
+        "key": "esse aconetimentomesta acontecendo aqui no riode janeiro",
+        "doc_count": 21,
+        "score": 0.09523809523809525,
+        "bg_count": 21,
+        "clientip": {
+          "buckets": [
+            {
+              "key": 3365246676,
+              "key_as_string": "200.149.150.212",
+              "doc_count": 11
+            },
+            {
+              "key": 3138243559,
+              "key_as_string": "187.13.203.231",
+              "doc_count": 10
+            }
+          ]
+        }
+      },
+      {
+        "key": "memorial day",
+        "doc_count": 19,
+        "score": 0.08616780045351474,
+        "bg_count": 19,
+        "clientip": {
+          "buckets": [
+            {
+              "key": 1812706323,
+              "key_as_string": "108.11.180.19",
+              "doc_count": 2
+            },
+            {
+              "key": 389940772,
+              "key_as_string": "23.62.6.36",
+              "doc_count": 1
+            },
+            {
+              "key": 390062981,
+              "key_as_string": "23.63.227.133",
+              "doc_count": 1
+            },
+            {
+              "key": 390063052,
+              "key_as_string": "23.63.227.204",
+              "doc_count": 1
+            },
+            {
+              "key": 390331670,
+              "key_as_string": "23.67.253.22",
+              "doc_count": 1
+            },
+            {
+              "key": 390728172,
+              "key_as_string": "23.74.9.236",
+              "doc_count": 1
+            },
+            {
+              "key": 1062544398,
+              "key_as_string": "63.85.36.14",
+              "doc_count": 1
+            },
+            {
+              "key": 1062757508,
+              "key_as_string": "63.88.100.132",
+              "doc_count": 1
+            },
+            {
+              "key": 1062757519,
+              "key_as_string": "63.88.100.143",
+              "doc_count": 1
+            },
+            {
+              "key": 1202913350,
+              "key_as_string": "71.179.0.70",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "petitions",
+        "doc_count": 31,
+        "score": 0.02321133786848073,
+        "bg_count": 100,
+        "clientip": {
+          "buckets": [
+            {
+              "key": 386099829,
+              "key_as_string": "23.3.106.117",
+              "doc_count": 3
+            },
+            {
+              "key": 1082295750,
+              "key_as_string": "64.130.133.198",
+              "doc_count": 3
+            },
+            {
+              "key": 1152458805,
+              "key_as_string": "68.177.32.53",
+              "doc_count": 2
+            },
+            {
+              "key": 3092569630,
+              "key_as_string": "184.84.222.30",
+              "doc_count": 2
+            },
+            {
+              "key": 385916988,
+              "key_as_string": "23.0.160.60",
+              "doc_count": 1
+            },
+            {
+              "key": 386011172,
+              "key_as_string": "23.2.16.36",
+              "doc_count": 1
+            },
+            {
+              "key": 389923485,
+              "key_as_string": "23.61.194.157",
+              "doc_count": 1
+            },
+            {
+              "key": 389923535,
+              "key_as_string": "23.61.194.207",
+              "doc_count": 1
+            },
+            {
+              "key": 390063020,
+              "key_as_string": "23.63.227.172",
+              "doc_count": 1
+            },
+            {
+              "key": 390063022,
+              "key_as_string": "23.63.227.174",
+              "doc_count": 1
+            }
+          ]
+        }
+      }
+    ]
+  }
+}}
