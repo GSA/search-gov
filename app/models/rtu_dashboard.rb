@@ -28,13 +28,7 @@ class RtuDashboard < Dashboard
     clicked_query = TopNQuery.new(@site.name, field: 'raw', size: 1000000)
     click_buckets = top_n(clicked_query.body, 'click')
     clicks_hash = Hash[click_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }]
-    low_ctr_queries = searches_hash.inject([]) do |result, (term, qcount)|
-      ccount = clicks_hash[term] || 0
-      ctr = 100 * ccount / qcount
-      result << [term, ctr] if ctr < 20
-      result
-    end
-    low_ctr_queries.sort_by { |arr| arr.last }.first(10)
+    low_ctr_queries_from_hashes(clicks_hash, searches_hash)
   end
 
   def monthly_queries_to_date
@@ -46,6 +40,15 @@ class RtuDashboard < Dashboard
   end
 
   private
+
+  def low_ctr_queries_from_hashes(clicks_hash, searches_hash)
+    searches_hash.inject([]) do |result, (term, qcount)|
+      ccount = clicks_hash[term] || 0
+      ctr = 100 * ccount / qcount
+      result << [term, ctr] if ctr < 20
+      result
+    end.sort_by { |arr| arr.last }.first(10)
+  end
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name)
