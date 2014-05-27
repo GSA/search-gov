@@ -100,4 +100,42 @@ describe RtuDashboard do
     end
   end
 
+  describe "counts" do
+    describe "#monthly_queries_to_date" do
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
+
+      before do
+        ES::client_reader.stub(:count).and_return(json_response)
+      end
+
+      it 'should return RTU query counts for current month' do
+        dashboard.monthly_queries_to_date.should == 62330
+      end
+    end
+
+    describe "#monthly_clicks_to_date" do
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
+
+      before do
+        ES::client_reader.stub(:count).and_return(json_response)
+      end
+
+      it 'should return RTU click counts for current month' do
+        dashboard.monthly_clicks_to_date.should == 62330
+      end
+    end
+
+    context 'when count is not available' do
+      before do
+        ES::client_reader.stub(:count).and_raise StandardError
+      end
+
+      it 'should return nil' do
+        dashboard.monthly_clicks_to_date.should be_nil
+        dashboard.monthly_queries_to_date.should be_nil
+      end
+    end
+
+  end
+
 end
