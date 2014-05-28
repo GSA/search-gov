@@ -1,5 +1,6 @@
 = content_for_site_page_title @site, 'Clicks'
 = form_for @clicks_request, url: { action: :create }, html: { class: 'form' }  do |form|
+  = hidden_field_tag_if_key_exists(:rtu)
   .sub-nav-heading
     %h2 Clicks
     .action-bar
