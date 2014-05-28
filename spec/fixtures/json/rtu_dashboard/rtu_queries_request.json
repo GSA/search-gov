@@ -1,0 +1,70 @@
+{"took": 135, "timed_out": false, "_shards": {
+  "total": 9,
+  "successful": 9,
+  "failed": 0
+}, "hits": {
+  "total": 30,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "agg": {
+    "buckets": [
+      {
+        "key": "petition for marine held in mexico",
+        "doc_count": 9,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 7
+            },
+            {
+              "key": "click",
+              "doc_count": 2
+            }
+          ]
+        }
+      },
+      {
+        "key": "marine in mexico petition",
+        "doc_count": 5,
+        "type": {
+          "buckets": [
+            {
+              "key": "click",
+              "doc_count": 3
+            },
+            {
+              "key": "search",
+              "doc_count": 2
+            }
+          ]
+        }
+      },
+      {
+        "key": "petition for us marine jailed in mexico",
+        "doc_count": 4,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 4
+            }
+          ]
+        }
+      },
+      {
+        "key": "petition for marine jailed in mexico",
+        "doc_count": 1,
+        "type": {
+          "buckets": [
+            {
+              "key": "click",
+              "doc_count": 1
+            }
+          ]
+        }
+      }
+    ]
+  }
+}}
