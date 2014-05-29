@@ -19,10 +19,7 @@ class ElasticDailyQueryStatQuery < ElasticTextFilteredQuery
   def filtered_query_filter(json)
     json.filter do
       json.bool do
-        json.must do
-          json.child! { json.term { json.affiliate @affiliate } }
-          json.child! { date_range(json, 'day', @start_date, @end_date) }
-        end
+        must_affiliate_date_range(json, @affiliate, 'day', @start_date, @end_date)
       end
     end
   end

@@ -9,4 +9,10 @@ module DateRangeFilter
     end
   end
 
+  def must_affiliate_date_range(json, site_name, field, start_date, end_date)
+    json.must do
+      json.child! { json.term { json.affiliate site_name } }
+      json.child! { date_range(json, field, start_date, end_date) }
+    end
+  end
 end

@@ -7,10 +7,7 @@ class DateRangeTopNQuery < TopNQuery
   end
 
   def booleans(json)
-    json.must do
-      json.child! { json.term { json.affiliate @affiliate_name } }
-      json.child! { date_range(json, '@timestamp', @start_date, @end_date) }
-    end
+    must_affiliate_date_range(json, @affiliate_name, '@timestamp', @start_date, @end_date)
   end
 
 end
