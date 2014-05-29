@@ -11,17 +11,9 @@ class RtuClicksRequest < ClicksRequest
   private
 
   def compute_top_url_stats
-    url_query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'params.url', size: MAX_RESULTS })
-    url_buckets = top_n(url_query.body)
-    stats_from_buckets(url_buckets) if url_buckets.present?
-  end
-
-  def stats_from_buckets(url_buckets)
-    url_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
-  end
-
-  def top_n(query_body)
-    ES::client_reader.search(index: "logstash-*", type: 'click', body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'params.url', size: MAX_RESULTS })
+    rtu_top_clicks = RtuTopClicks.new(query.body)
+    rtu_top_clicks.top_n
   end
 
 end

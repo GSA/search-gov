@@ -41,8 +41,8 @@ class TrendingTermsQuery
           end
         end
         json.aggs do
-          json.clientip do
-            json.terms do
+          json.clientip_count do
+            json.cardinality do
               json.field "clientip"
             end
           end

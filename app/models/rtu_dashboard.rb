@@ -80,7 +80,7 @@ class RtuDashboard < Dashboard
 
   def extract_significant_terms(buckets)
     buckets.inject([]) do |result, bucket|
-      result << bucket["key"] if bucket["clientip"]["buckets"].size >= 10
+      result << bucket["key"] if bucket["clientip_count"]["value"] >= 10
       result
     end
   end
