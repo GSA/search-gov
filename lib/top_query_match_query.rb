@@ -1,4 +1,5 @@
 class TopQueryMatchQuery
+  include DateRangeFilter
 
   def initialize(affiliate_name, raw_query, start_date, end_date, agg_options = {})
     @affiliate_name, @raw_query, @start_date, @end_date = affiliate_name, raw_query, start_date, end_date
@@ -36,19 +37,10 @@ class TopQueryMatchQuery
   def booleans(json)
     json.must do
       json.child! { json.term { json.affiliate @affiliate_name } }
-      json.child! { date_range(json) }
+      json.child! { date_range(json, '@timestamp', @start_date, @end_date) }
     end
     json.must_not do
       json.term { json.set! "useragent.device", "Spider" }
-    end
-  end
-
-  def date_range(json)
-    json.range do
-      json.set! "@timestamp" do
-        json.gte @start_date
-        json.lte @end_date
-      end
     end
   end
 

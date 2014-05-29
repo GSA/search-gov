@@ -1,4 +1,5 @@
 class ElasticDailyQueryStatQuery < ElasticTextFilteredQuery
+  include DateRangeFilter
 
   def initialize(options)
     super(options)
@@ -20,17 +21,8 @@ class ElasticDailyQueryStatQuery < ElasticTextFilteredQuery
       json.bool do
         json.must do
           json.child! { json.term { json.affiliate @affiliate } }
-          json.child! { date_filter(json) }
+          json.child! { date_range(json, 'day', @start_date, @end_date) }
         end
-      end
-    end
-  end
-
-  def date_filter(json)
-    json.range do
-      json.day do
-        json.gte @start_date
-        json.lte @end_date
       end
     end
   end
