@@ -50,7 +50,7 @@ describe RtuQueriesRequest do
       before do
         ES::client_reader.stub(:search).and_raise StandardError
       end
-      context "when end_date is specified" do
+      context "when both end_date and start_date are specified" do
         let(:rtu_queries_request) { RtuQueriesRequest.new("start_date" => "05/27/2014",
                                                           "end_date" => "05/28/2014",
                                                           "query" => "mexico petition marine",
@@ -59,7 +59,8 @@ describe RtuQueriesRequest do
           rtu_queries_request.save
         end
 
-        it 'should use it' do
+        it 'should use them' do
+          rtu_queries_request.start_date.should == Date.parse("05/27/2014")
           rtu_queries_request.end_date.should == Date.parse("05/28/2014")
         end
       end
@@ -77,31 +78,15 @@ describe RtuQueriesRequest do
         end
       end
 
-      context "when start_date is specified" do
-        let(:rtu_queries_request) { RtuQueriesRequest.new("start_date" => "05/27/2014",
-                                                          "end_date" => "05/28/2014",
-                                                          "query" => "mexico petition marine",
-                                                          "site" => site) }
-        before do
-          rtu_queries_request.save
-        end
+      context "when neither is specified" do
+        let(:rtu_queries_request) { RtuQueriesRequest.new("query" => "mexico petition marine", "site" => site) }
 
-        it 'should use it' do
-          rtu_queries_request.start_date.should == Date.parse("05/27/2014")
-        end
-
-      end
-
-      context "when start_date is not specified" do
-        let(:rtu_queries_request) { RtuQueriesRequest.new("end_date" => "05/29/2014",
-                                                          "query" => "mexico petition marine",
-                                                          "site" => site) }
         before do
           rtu_queries_request.save
         end
 
         it 'should use beginning of month of available dates range' do
-          rtu_queries_request.start_date.should == Date.yesterday.beginning_of_month
+          rtu_queries_request.start_date.should == Date.current.beginning_of_month
         end
       end
     end

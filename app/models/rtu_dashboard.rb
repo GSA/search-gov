@@ -66,8 +66,7 @@ class RtuDashboard < Dashboard
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name)
-    result = count(count_query.body, type)
-    result["count"] if result
+    RtuCount.count("logstash-#{@day.strftime("%Y.%m.")}*", type, count_query.body)
   end
 
   def top_query(klass, options = {})
@@ -79,12 +78,6 @@ class RtuDashboard < Dashboard
   def top_n(query_body, type, index_date = nil)
     index = index_date || "logstash-#{@day.strftime("%Y.%m.%d")}"
     ES::client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
-  end
-
-  def count(query_body, type)
-    ES::client_reader.count(index: "logstash-#{@day.strftime("%Y.%m.")}*", type: type, body: query_body)
-  rescue Exception => e
-    nil
   end
 
   def extract_significant_terms(buckets)

@@ -3,9 +3,14 @@ class Sites::MonthlyReportsController < Sites::SetupSiteController
 
   def show
     month, year = (params[:mmyyyy] || Date.yesterday.strftime('%m/%Y')).split('/')
-    @monthly_report = MonthlyReport.new(@site, year, month)
+    @monthly_report = monthly_report(month, year)
   rescue ArgumentError => e
     month, year = Date.yesterday.strftime('%m/%Y').split('/')
-    @monthly_report = MonthlyReport.new(@site, year, month)
+    @monthly_report = monthly_report(month, year)
+  end
+
+  private
+  def monthly_report(month, year)
+    params[:rtu].present? ? RtuMonthlyReport.new(@site, year, month) : MonthlyReport.new(@site, year, month)
   end
 end
