@@ -1,0 +1,31 @@
+{
+  "took": 30,
+  "timed_out": false,
+  "_shards": {
+    "total": 11,
+    "successful": 11,
+    "failed": 0
+  },
+  "hits": {
+    "total": 507284,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "agg": {
+      "buckets": [
+        {
+          "key_as_string": "2014-06",
+          "key": 1398902400000,
+          "doc_count": 383828
+        },
+        {
+          "key_as_string": "2014-07",
+          "key": 1598902400000,
+          "doc_count": 123456
+        }
+
+      ]
+    }
+  }
+}

@@ -1,5 +1,7 @@
 class RtuDashboard < Dashboard
 
+  RTU_START_DATE = '2014-06-01'
+
   def top_queries
     top_query(TopNQuery, field: 'raw')
   end
@@ -39,7 +41,19 @@ class RtuDashboard < Dashboard
     mtd_count("click")
   end
 
+  def monthly_queries_histogram
+    rows_pre_es = DailyUsageStat.where(affiliate: @site.name).where("day < '#{RTU_START_DATE}'").sum(:total_queries, group: "date_format(day,'%Y-%m')").to_a
+    rows_post_es = queries_by_month
+    rows_pre_es + rows_post_es
+  end
+
   private
+
+  def queries_by_month
+    query = MonthlyHistogramQuery.new(@site.name, RTU_START_DATE)
+    yyyymm_buckets = top_n(query.body, 'search', 'logstash-*')
+    yyyymm_buckets.collect { |hash| [hash["key_as_string"], hash["doc_count"]] } if yyyymm_buckets
+  end
 
   def low_ctr_queries_from_hashes(clicks_hash, searches_hash)
     searches_hash.inject([]) do |result, (term, qcount)|
@@ -62,14 +76,9 @@ class RtuDashboard < Dashboard
     buckets.collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) } if buckets
   end
 
-  def top_n(query_body, type)
-    search(query_body, type)["aggregations"]["agg"]["buckets"] rescue nil
-  end
-
-  def search(query_body, type)
-    ES::client_reader.search(index: "logstash-#{@day.strftime("%Y.%m.%d")}", type: type, body: query_body, size: 0)
-  rescue Exception => e
-    nil
+  def top_n(query_body, type, index_date = nil)
+    index = index_date || "logstash-#{@day.strftime("%Y.%m.%d")}"
+    ES::client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
   def count(query_body, type)

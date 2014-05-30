@@ -35,7 +35,7 @@ class Dashboard
   end
 
   def monthly_usage_chart
-    rows = DailyUsageStat.where(affiliate: @site.name).sum(:total_queries, group: "date_format(day,'%Y-%m')").to_a
+    rows = monthly_queries_histogram
     return nil unless rows.many?
     data_table = GoogleVisualr::DataTable.new
     data_table.new_column('string', 'Date')
@@ -53,4 +53,9 @@ class Dashboard
     conditions = {affiliate_name: @site.name, day: @day.beginning_of_month..@day}
     DailySearchModuleStat.where(conditions).sum(:clicks)
   end
+
+  def monthly_queries_histogram
+    DailyUsageStat.where(affiliate: @site.name).sum(:total_queries, group: "date_format(day,'%Y-%m')").to_a
+  end
+
 end
