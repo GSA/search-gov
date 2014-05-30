@@ -11,6 +11,7 @@
 }
 
 #search .content-block-item.content-block-item-footer {
+  clear: both;
   font-size: @font-size-default;
   line-height: 1;
   padding: 0.1em;
@@ -151,31 +152,33 @@
 }
 
 #results.images {
-  .images-wrapper {
+  .results-wrapper {
     .clearfix();
-    padding: 8px 6px;
+    padding: 6px;
   }
 }
 
 .result.image {
   border: 0;
   float: left;
-  padding: 4px 6px;
+  padding: 6px;
   width: (100%/3);
 
   @media (min-width: @screen-xs-min) {
     width: 20%;
   }
 
-  .title, .url {
+  .description, .title, .url {
     .sr-only();
   }
 
   .thumbnail {
     max-width: 150px;
+    padding: 6px;
 
     a {
       display: block;
+      overflow: hidden;
       position: relative;
     }
   }

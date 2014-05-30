@@ -3,6 +3,7 @@
 //= require searches/collapsible
 //= require searches/custom_bootstrap
 //= require searches/click
+//= require searches/images
 //= require searches/menu
 //= require searches/nav
 //= require searches/skiplink

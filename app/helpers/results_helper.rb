@@ -45,25 +45,34 @@ module ResultsHelper
     link_to title, result.url, data: { click: click_data }
   end
 
-  def link_to_news_item_title(instance, position)
+  def link_to_news_item_title(instance, position, module_tag = 'NEWS', options = {})
     title = translate_bing_highlights(h(instance.title)).html_safe
-    module_tag = instance.is_video? ? 'VIDS' : 'NEWS'
 
     click_data = { p: position, s: module_tag, i: instance.id }
-    link_to title, instance.link, data: { click: click_data }
+    link_to title, instance.link, { data: { click: click_data } }.reverse_merge(options)
   end
 
-  def link_to_news_item_thumbnail(instance, position)
-    title = instance.title
-    module_tag = 'VIDS'
-    thumbnail_html = image_tag youtube_thumbnail_url(instance), alt: title
-    duration_html = content_tag :span do
-      content_tag(:span, nil, class: 'icon icon-play') << instance.duration
-    end
-    thumbnail_html << duration_html
+  def link_to_news_item_thumbnail(module_tag, instance, position)
+    thumbnail_html =
+      case module_tag
+        when 'NIMAG' then image_news_item_thumbnail_html instance
+        when 'VIDS' then video_news_item_thumbnail_html instance
+      end
 
     click_data = { p: position, s: module_tag, i: instance.id }
     link_to thumbnail_html, instance.link, data: { click: click_data }
+  end
+
+  def image_news_item_thumbnail_html(news_item)
+    image_tag news_item.thumbnail_url, alt: news_item.title
+  end
+
+  def video_news_item_thumbnail_html(news_item)
+    thumbnail_html = image_tag youtube_thumbnail_url(news_item), alt: news_item.title
+    duration_html = content_tag :span do
+      content_tag(:span, nil, class: 'icon icon-play') << news_item.duration
+    end
+    thumbnail_html << duration_html
   end
 
   def link_to_tweet_link(tweet, title, url, position, options = {})

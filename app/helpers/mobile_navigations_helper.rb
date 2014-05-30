@@ -5,8 +5,7 @@ module MobileNavigationsHelper
 
   def filter_media_navs(affiliate)
     affiliate.navigations.active.reject do |n|
-      (n.navigable.is_a?(ImageSearchLabel) && affiliate.flickr_profiles.blank?) ||
-      (n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?)
+      (n.navigable.is_a?(ImageSearchLabel) && affiliate.flickr_profiles.blank?)
     end
   end
 

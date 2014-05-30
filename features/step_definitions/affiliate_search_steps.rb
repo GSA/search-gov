@@ -51,26 +51,34 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   ElasticNewsItem.commit
 end
 
-Given /^there are (\d+)( video)? news items for "([^\"]*)"$/ do |count, is_video, feed_name|
+Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, is_image_or_video, feed_name|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
   published_at = 1.week.ago
   count.to_i.times do |index|
-    if is_video
-      link_prefix = 'http://www.youtube.com/watch'
-      link_param = { v: "#{index}" }
-      content_prefix = 'video'
-    else
-      link_prefix = "http://aff.gov/#{now}_#{index + 1}"
-      link_param = {}
-      content_prefix = ''
+    content_prefix = ''
+    properties = {}
+
+    case is_image_or_video
+      when /image/
+        link = "http://www.usgs.gov/image_#{index + 1}"
+        properties[:media_content] = { url: "#{link}.jpg" }
+        properties[:media_thumbnail] = { url: "#{link}_q.jpg" }
+        content_prefix = 'image'
+      when /video/
+        link_param = { v: "#{index}" }
+        link = "http://www.youtube.com/watch?#{link_param.to_query}"
+        content_prefix = 'video'
+      else
+        link = "http://aff.gov/#{now}_#{index + 1}"
     end
-    rss_feed_url.news_items.create!(:link => "#{link_prefix}?#{link_param.to_query}",
+    rss_feed_url.news_items.create!(:link => link,
                                     :title => "#{content_prefix} news item #{index + 1} title for #{feed_name}",
                                     :description => "#{content_prefix} news item #{index + 1} description for #{feed_name}",
                                     :guid => "#{now}_#{index + 1}",
-                                    :published_at => published_at - index)
+                                    :published_at => published_at - index,
+                                    :properties => properties)
   end
   ElasticNewsItem.commit
 end

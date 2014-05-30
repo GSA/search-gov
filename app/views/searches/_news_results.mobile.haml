@@ -1,7 +1,10 @@
-#results
+- class_hash = news_results_class_hash(@search) || {}
+- news_item_partial = news_item_partial_by_results_class class_hash[:class]
+#results{ class_hash }
   .content-block-item.content-block-item-header
     %h3.content-heading= search_results_by_text search.module_tag
-  - unique_news_items(@search.results).each_with_index do |instance, index|
-    = render partial: news_item_partial(instance), locals: { instance: instance, position: search.startrecord + index }
+  .results-wrapper
+    - unique_news_items(@search.results).each_with_index do |instance, index|
+      = render partial: news_item_partial, locals: { instance: instance, position: search.startrecord + index }
   .content-block-item.content-block-item-footer
     .content-provider= serp_attribution search.module_tag
