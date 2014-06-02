@@ -1,0 +1,242 @@
+{"took": 16, "timed_out": false, "_shards": {
+  "total": 16,
+  "successful": 16,
+  "failed": 0
+}, "hits": {
+  "total": 622925,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "histogram": {
+    "buckets": [
+      {
+        "key_as_string": "2014-05-20",
+        "key": 1400544000000,
+        "doc_count": 9696,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 9696
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-21",
+        "key": 1400630400000,
+        "doc_count": 55294,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 55294
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-22",
+        "key": 1400716800000,
+        "doc_count": 56092,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 56092
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-23",
+        "key": 1400803200000,
+        "doc_count": 43065,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 43065
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-24",
+        "key": 1400889600000,
+        "doc_count": 27998,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 27998
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-25",
+        "key": 1400976000000,
+        "doc_count": 21247,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 21247
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-26",
+        "key": 1401062400000,
+        "doc_count": 28553,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 28553
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-27",
+        "key": 1401148800000,
+        "doc_count": 46548,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 46548
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-28",
+        "key": 1401235200000,
+        "doc_count": 46543,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 46543
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-29",
+        "key": 1401321600000,
+        "doc_count": 43225,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 43225
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-30",
+        "key": 1401408000000,
+        "doc_count": 32518,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 32518
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-05-31",
+        "key": 1401494400000,
+        "doc_count": 23756,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 16335
+            },
+            {
+              "key": "click",
+              "doc_count": 7421
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-06-01",
+        "key": 1401580800000,
+        "doc_count": 29270,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 19735
+            },
+            {
+              "key": "click",
+              "doc_count": 9535
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-06-02",
+        "key": 1401667200000,
+        "doc_count": 61986,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 41223
+            },
+            {
+              "key": "click",
+              "doc_count": 20763
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-06-03",
+        "key": 1401753600000,
+        "doc_count": 59981,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 39552
+            },
+            {
+              "key": "click",
+              "doc_count": 20429
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2014-06-04",
+        "key": 1401840000000,
+        "doc_count": 37153,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 25035
+            },
+            {
+              "key": "click",
+              "doc_count": 12118
+            }
+          ]
+        }
+      }
+    ]
+  }
+}}

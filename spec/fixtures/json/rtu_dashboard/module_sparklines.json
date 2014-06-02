@@ -1,0 +1,2957 @@
+{"took": 34, "timed_out": false, "_shards": {
+  "total": 16,
+  "successful": 16,
+  "failed": 0
+}, "hits": {
+  "total": 622925,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "agg": {
+    "buckets": [
+      {
+        "key": "BWEB",
+        "doc_count": 480309,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 7695,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7695
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 43351,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 43351
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 43214,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 43214
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 33450,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 33450
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 23667,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 23667
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 16855,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 16855
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 19686,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 19686
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 35934,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 35934
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 36077,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 36077
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 30701,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 30701
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 24033,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 24033
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 18598,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 12720
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 5878
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 23435,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 15773
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 7662
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 48296,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 32029
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 16267
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 46646,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 30534
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 16112
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 28671,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 19276
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 9395
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "SREL",
+        "doc_count": 169546,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 3324,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3324
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 17545,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 17545
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 17791,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 17791
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 13433,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 13433
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 10618,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 10618
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 6945,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6945
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 7391,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7391
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 14346,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 14346
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 14390,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 14390
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 12221,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 12221
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 9324,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9324
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 4598,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4547
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 51
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 5665,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 5604
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 61
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 12616,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 12529
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 87
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 11886,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 11786
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 100
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 7453,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7379
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 74
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "VIDS",
+        "doc_count": 164513,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 3113,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3113
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 16267,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 16267
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 17043,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 17043
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 12519,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 12519
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 10230,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 10230
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 6074,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6074
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 7036,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7036
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 13754,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 13754
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 13879,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 13879
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 11901,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 11901
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 9156,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9156
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 4768,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4414
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 354
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 5699,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 5305
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 394
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 13239,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 12538
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 701
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 12300,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 11551
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 749
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 7535,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7012
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 523
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "IMAG",
+        "doc_count": 116687,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 1557,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1557
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 10547,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 10547
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 11404,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 11404
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 8525,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 8525
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 3461,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3461
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 3862,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3862
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 7947,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7947
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 9352,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9352
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 9124,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9124
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 10935,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 10935
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 7336,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7336
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 3561,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2999
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 562
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 4086,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3373
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 713
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 9925,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 8141
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 1784
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 9198,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7598
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 1600
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 5867,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4799
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 1068
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "NEWS",
+        "doc_count": 87644,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 2004,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2004
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 9244,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9244
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 9713,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 9713
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 6577,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6577
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 3707,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3707
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 2926,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2926
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 4028,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4028
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 7787,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7787
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 7694,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 7694
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 6818,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6818
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 5060,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 5060
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 2482,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2450
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 32
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 2895,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2862
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 33
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 6420,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6351
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 69
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 6333,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 6257
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 76
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 3956,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3906
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 50
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "BOOS",
+        "doc_count": 50614,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 835,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 835
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 4475,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4475
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 4956,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4956
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 3323,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3323
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 2431,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2431
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 1686,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1686
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 2032,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2032
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 4484,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4484
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 4046,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4046
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 3453,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3453
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 2724,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2724
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 1542,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1249
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 293
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 1824,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1468
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 356
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 5552,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4545
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 1007
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 4520,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3561
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 959
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 2731,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2194
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 537
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "BSPEL",
+        "doc_count": 42979,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 771,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 771
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 4317,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4317
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 4368,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4368
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 3443,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3443
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 1909,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1909
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 1565,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1565
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 2100,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2100
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 3858,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3858
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 3567,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3567
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 3321,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3321
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 2469,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2469
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 1130,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1068
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 62
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 1362,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1290
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 72
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 3763,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3542
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 221
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 3183,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2948
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 235
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 1853,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1726
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 127
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "OVER",
+        "doc_count": 42521,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 771,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 771
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 4317,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4317
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 4368,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4368
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 3443,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3443
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 1909,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1909
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 1565,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1565
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 2100,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2100
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 3858,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3858
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 3567,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3567
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 3321,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3321
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 2469,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2469
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 1087,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1068
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 19
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 1329,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1290
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 39
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 3618,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3542
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 76
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 3033,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2948
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 85
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 1766,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1726
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 40
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "BBG",
+        "doc_count": 40866,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 814,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 814
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 4246,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4246
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 4331,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 4331
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 2926,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2926
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 1109,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1109
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 1138,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1138
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 1676,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1676
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 3727,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3727
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 3640,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3640
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 3031,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3031
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 2417,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2417
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 1169,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1019
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 150
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 1371,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1197
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 174
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 3869,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3370
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 499
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 3438,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2985
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 453
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 1964,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1699
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 265
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "TWEET",
+        "doc_count": 26813,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 487,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 487
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 2438,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2438
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 3181,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 3181
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 2145,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2145
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 2348,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2348
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 1105,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1105
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 769,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 769
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 1278,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1278
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 1841,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1841
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 1465,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1465
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 1392,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1392
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 783,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 773
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 10
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 955,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 943
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 12
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 2377,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2362
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 15
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 2607,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 2577
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 30
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 1642,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 1620
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 22
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "FLICKR",
+        "doc_count": 1455,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 17,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 17
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 126,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 126
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 84,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 84
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 78,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 78
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 52,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 52
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 10,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 10
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 57,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 57
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 91,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 91
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 70,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 70
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 268,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 268
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 91,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 91
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 27,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 25
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 2
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 23,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 23
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 78,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 70
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 8
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 291,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 287
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 4
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 92,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 88
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 4
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "JOBS",
+        "doc_count": 917,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-20",
+              "key": 1400544000000,
+              "doc_count": 18,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 18
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-21",
+              "key": 1400630400000,
+              "doc_count": 70,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 70
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-22",
+              "key": 1400716800000,
+              "doc_count": 72,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 72
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-23",
+              "key": 1400803200000,
+              "doc_count": 61,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 61
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-24",
+              "key": 1400889600000,
+              "doc_count": 36,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 36
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-25",
+              "key": 1400976000000,
+              "doc_count": 38,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 38
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-26",
+              "key": 1401062400000,
+              "doc_count": 35,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 35
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-27",
+              "key": 1401148800000,
+              "doc_count": 62,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 62
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-28",
+              "key": 1401235200000,
+              "doc_count": 81,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 81
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-29",
+              "key": 1401321600000,
+              "doc_count": 58,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 58
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-30",
+              "key": 1401408000000,
+              "doc_count": 63,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 63
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 52,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 50
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 2
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 42,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 37
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 5
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 96,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 91
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 5
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 91,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 86
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 5
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 42,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "search",
+                    "doc_count": 40
+                  },
+                  {
+                    "key": "click",
+                    "doc_count": 2
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "NIMAG",
+        "doc_count": 74,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-05-31",
+              "key": 1401494400000,
+              "doc_count": 6,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 6
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 13,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 13
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 24,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 24
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 20,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 20
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-04",
+              "key": 1401840000000,
+              "doc_count": 11,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 11
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "bweb",
+        "doc_count": 2,
+        "histogram": {
+          "buckets": [
+            {
+              "key_as_string": "2014-06-01",
+              "key": 1401580800000,
+              "doc_count": 1,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 1
+                  }
+                ]
+              }
+            },
+            {
+              "key_as_string": "2014-06-02",
+              "key": 1401667200000,
+              "doc_count": 0,
+              "type": {
+                "buckets": []
+              }
+            },
+            {
+              "key_as_string": "2014-06-03",
+              "key": 1401753600000,
+              "doc_count": 1,
+              "type": {
+                "buckets": [
+                  {
+                    "key": "click",
+                    "doc_count": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}}

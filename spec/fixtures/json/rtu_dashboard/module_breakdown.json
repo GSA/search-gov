@@ -1,0 +1,230 @@
+{"took": 14, "timed_out": false, "_shards": {
+  "total": 4,
+  "successful": 4,
+  "failed": 0
+}, "hits": {
+  "total": 202051,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "agg": {
+    "buckets": [
+      {
+        "key": "BWEB",
+        "doc_count": 147048,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 97612
+            },
+            {
+              "key": "click",
+              "doc_count": 49436
+            }
+          ]
+        }
+      },
+      {
+        "key": "VIDS",
+        "doc_count": 38773,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 36406
+            },
+            {
+              "key": "click",
+              "doc_count": 2367
+            }
+          ]
+        }
+      },
+      {
+        "key": "SREL",
+        "doc_count": 37620,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 37298
+            },
+            {
+              "key": "click",
+              "doc_count": 322
+            }
+          ]
+        }
+      },
+      {
+        "key": "IMAG",
+        "doc_count": 29076,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 23911
+            },
+            {
+              "key": "click",
+              "doc_count": 5165
+            }
+          ]
+        }
+      },
+      {
+        "key": "NEWS",
+        "doc_count": 19604,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 19376
+            },
+            {
+              "key": "click",
+              "doc_count": 228
+            }
+          ]
+        }
+      },
+      {
+        "key": "BOOS",
+        "doc_count": 14627,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 11768
+            },
+            {
+              "key": "click",
+              "doc_count": 2859
+            }
+          ]
+        }
+      },
+      {
+        "key": "BBG",
+        "doc_count": 10642,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 9251
+            },
+            {
+              "key": "click",
+              "doc_count": 1391
+            }
+          ]
+        }
+      },
+      {
+        "key": "BSPEL",
+        "doc_count": 10161,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 9506
+            },
+            {
+              "key": "click",
+              "doc_count": 655
+            }
+          ]
+        }
+      },
+      {
+        "key": "OVER",
+        "doc_count": 9746,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 9506
+            },
+            {
+              "key": "click",
+              "doc_count": 240
+            }
+          ]
+        }
+      },
+      {
+        "key": "TWEET",
+        "doc_count": 7581,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 7502
+            },
+            {
+              "key": "click",
+              "doc_count": 79
+            }
+          ]
+        }
+      },
+      {
+        "key": "FLICKR",
+        "doc_count": 484,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 468
+            },
+            {
+              "key": "click",
+              "doc_count": 16
+            }
+          ]
+        }
+      },
+      {
+        "key": "JOBS",
+        "doc_count": 271,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 254
+            },
+            {
+              "key": "click",
+              "doc_count": 17
+            }
+          ]
+        }
+      },
+      {
+        "key": "NIMAG",
+        "doc_count": 68,
+        "type": {
+          "buckets": [
+            {
+              "key": "click",
+              "doc_count": 68
+            }
+          ]
+        }
+      },
+      {
+        "key": "blah blah",
+        "doc_count": 2,
+        "type": {
+          "buckets": [
+            {
+              "key": "search",
+              "doc_count": 2
+            }
+          ]
+        }
+      }
+    ]
+  }
+}}
