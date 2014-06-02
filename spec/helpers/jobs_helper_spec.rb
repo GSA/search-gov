@@ -58,7 +58,7 @@ describe JobsHelper do
       it 'should render an organization specific link to usajobs.gov' do
         helper.should_receive(:job_link_with_click_tracking).with(
             'See all GSA job openings',
-            'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch',
+            'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
             search.affiliate, 'gov', -1, nil)
         helper.agency_jobs_link(search)
       end
@@ -70,7 +70,7 @@ describe JobsHelper do
         it 'should render an organization specific link to usajobs in Spanish' do
           helper.should_receive(:job_link_with_click_tracking).with(
               'Vea todos los trabajos en GSA',
-              'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch',
+              'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
               search.affiliate, 'gov', -1, nil)
           helper.agency_jobs_link(search)
         end

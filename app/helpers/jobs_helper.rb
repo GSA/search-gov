@@ -74,7 +74,7 @@ module JobsHelper
   def url_for_agency_jobs(agency, job_id)
     case job_id
     when /^usajobs/
-      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch"
+      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch&ApplicantEligibility=all"
     when /^ng:/
       ng_agency = job_id.split(':')[1]
       "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"
