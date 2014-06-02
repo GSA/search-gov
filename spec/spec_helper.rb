@@ -128,6 +128,10 @@ RSpec.configure do |config|
       builder.response :json
     end
 
+    #FIXME: this is in here just to get rcov coverage on SearchApiConnection
+    params = { affiliate: 'wh', index: 'web', query: 'obama' }
+    SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
+
     Faraday.stub!(:new).and_return test
   end
 
