@@ -44,4 +44,17 @@ describe RtuMonthlyReport do
 
   end
 
+  describe "#search_module_stats" do
+    let(:rtu_module_stats_analytics) { mock(RtuModuleStatsAnalytics, module_stats: "bunch of stats")}
+
+    before do
+      rangeof_date = rtu_monthly_report.picked_date..rtu_monthly_report.picked_date.end_of_month
+      RtuModuleStatsAnalytics.should_receive(:new).with(rangeof_date, site.name).and_return rtu_module_stats_analytics
+    end
+
+    it 'should return the search module stats and sparklines' do
+      rtu_monthly_report.search_module_stats.should == 'bunch of stats'
+    end
+  end
+
 end

@@ -12,6 +12,7 @@ class MonthlyHistogramQuery < TopNQuery
           json.field "@timestamp"
           json.interval 'month'
           json.format 'yyyy-MM'
+          json.min_doc_count 0
         end
       end
     end
