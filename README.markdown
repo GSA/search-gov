@@ -42,7 +42,7 @@ A few tips when working with asset pipeline:
 
 We're using [Elasticsearch](http://www.elasticsearch.org/) for fulltext search and query analytics.
 
-On a Mac, Elasticsearch 1.1 is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
+On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
     $ brew install elasticsearch
 
@@ -52,7 +52,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.2.0/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.2.1/config/elasticsearch.yml
 
 You will need to re-install any plugins:
 
