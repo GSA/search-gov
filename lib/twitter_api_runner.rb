@@ -27,7 +27,7 @@ module TwitterApiRunner
           error.rate_limit.reset_in + RATE_LIMIT_BUFFER
       when Twitter::Error::ServiceUnavailable === error
         SLEEP_INTERVAL
-      when error.cause =~ /execution expired/i
+      when error.message =~ /execution expired/i
         SLEEP_INTERVAL
       else
         0
