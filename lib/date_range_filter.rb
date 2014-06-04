@@ -14,5 +14,8 @@ module DateRangeFilter
       json.child! { json.term { json.affiliate site_name } }
       json.child! { date_range(json, field, start_date, end_date) }
     end
+    json.must_not do
+      json.term { json.set! "useragent.device", "Spider" }
+    end
   end
 end

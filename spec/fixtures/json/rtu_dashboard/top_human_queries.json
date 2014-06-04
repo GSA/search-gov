@@ -1,0 +1,22 @@
+{"took": 0, "timed_out": false, "_shards": {
+  "total": 1,
+  "successful": 1,
+  "failed": 0
+}, "hits": {
+  "total": 36,
+  "max_score": 0.0,
+  "hits": []
+}, "aggregations": {
+  "agg": {
+    "buckets": [
+      {
+        "key": "jobs",
+        "doc_count": 9
+      },
+      {
+        "key": "chartres",
+        "doc_count": 1
+      }
+    ]
+  }
+}}

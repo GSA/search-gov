@@ -22,7 +22,7 @@ class TrendingTermsQuery
         json.query do
           json.range do
             json.set! "@timestamp" do
-              json.gte "now-#{@foreground_time}"
+              json.gte "now-#{@foreground_time}/h"
             end
           end
         end

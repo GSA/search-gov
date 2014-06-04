@@ -1,12 +1,7 @@
-class RtuTopClicks
+class RtuTopClicks < RtuTopN
 
-  def initialize(query_body)
-    @query_body = query_body
-  end
-
-  def top_n
-    term_buckets = ES::client_reader.search(index: "logstash-*", type: 'click', body: @query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
-    term_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
+  def initialize(query_body, filter_bots = false)
+    super(query_body, 'click', filter_bots)
   end
 
 end

@@ -15,6 +15,10 @@ module AffiliateMinusSpiderFilter
     json.must do
       json.term { json.affiliate @affiliate_name }
     end
+    must_not_spider(json)
+  end
+
+  def must_not_spider(json)
     json.must_not do
       json.term { json.set! "useragent.device", "Spider" }
     end
