@@ -231,6 +231,27 @@ describe RssFeedData do
       end
     end
 
+    context 'when the Atom feed uses atom:summary instead of atom:content' do
+      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
+      let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
+
+      before do
+        rss_feed_content = Rails.root.join('spec/fixtures/rss/feed_with_summary.atom.xml').read
+        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
+      end
+
+      it 'saves atom:summary as description' do
+        RssFeedData.new(atom_feed_url, true).import
+        atom_feed_url.reload
+        atom_feed_url.news_items.count.should == 2
+        newest = atom_feed_url.news_items.first
+        newest.title.should == '4 - Roetter Alexander (0001609815) (Reporting)'
+        newest.description.should == 'Filed: 2014-06-04 AccNo: 0001181431-14-022756 Size: 5 KB'
+        oldest = atom_feed_url.news_items.last
+        oldest.description.should == 'Filed: 2014-06-04 AccNo: 0001181431-14-022755 Size: 8 KB'
+      end
+    end
+
     context 'when the RSS feed format can not be determined' do
       let(:url) { 'http://some.agency.gov/feed' }
 

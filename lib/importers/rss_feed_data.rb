@@ -11,7 +11,7 @@ class RssFeedData
                    contributor: './/dc:contributor',
                    publisher: './/dc:publisher',
                    subject: './/dc:subject',
-                   description: 'description',
+                   description: %w(description),
                    media_content: './/media:content[@url]',
                    media_description: './media:description',
                    media_thumbnail_url: './/media:thumbnail/@url' }.freeze
@@ -21,7 +21,7 @@ class RssFeedData
                     link: %w(xmlns:link[@rel='alternate'][@href]/@href xmlns:link/@href),
                     title: 'xmlns:title',
                     guid: 'xmlns:id',
-                    description: 'xmlns:content' }.freeze
+                    description: %w(xmlns:content xmlns:summary) }.freeze
 
   FEED_ELEMENTS = { rss: RSS_ELEMENTS, atom: ATOM_ELEMENTS }.freeze
 
@@ -97,6 +97,8 @@ class RssFeedData
         next
       end
 
+      next if !news_item.new_record? && news_item.published_at >= published_at
+
       news_item.assign_attributes attributes
       unless news_item.save
         Rails.logger.error "news_item: #{news_item.errors.full_messages}"
@@ -107,10 +109,9 @@ class RssFeedData
   def extract_link(item)
     link = nil
     @feed_elements[:link].each do |link_path|
-      link = item.xpath(link_path).inner_text
-      break if link.present?
+      break if (link = extract_element_content item, link_path)
     end
-    link.squish if link.present?
+    link.squish if link
   end
 
   def extract_other_attributes(item)
@@ -126,12 +127,14 @@ class RssFeedData
   end
 
   def extract_description(item)
-    raw_description = extract_element_content(item, :description)
-    description = nil
+    raw_description = nil
+    @feed_elements[:description].each do |description_path|
+      break if (raw_description = extract_element_content item, description_path)
+    end
     description = Sanitize.clean(raw_description).squish if raw_description
 
     if description.blank? and @has_media_ns
-      media_description = extract_element_content(item, :media_description)
+      media_description = extract_element_content(item, @feed_elements[:media_description])
       description = Sanitize.clean(media_description).squish if media_description
     end
     description
@@ -150,8 +153,8 @@ class RssFeedData
       media_content_props[:type] = media_content_type if media_content_type
       properties[:media_content] = media_content_props
 
-      media_thumbnail_url = extract_element_content(media_content_node, :media_thumbnail_url)
-      media_thumbnail_url ||= extract_element_content(item, :media_thumbnail_url)
+      media_thumbnail_url = extract_element_content(media_content_node, @feed_elements[:media_thumbnail_url])
+      media_thumbnail_url ||= extract_element_content(item, @feed_elements[:media_thumbnail_url])
       properties[:media_thumbnail] = { url: media_thumbnail_url } if media_thumbnail_url
     end
 
@@ -159,11 +162,11 @@ class RssFeedData
   end
 
   def extract_elements(item, *elements)
-    Hash[elements.map { |element| [element, extract_element_content(item, element)] }]
+    Hash[elements.map { |element| [element, extract_element_content(item, @feed_elements[element])] }]
   end
 
-  def extract_element_content(item, element)
-    node = extract_node(item, @feed_elements[element])
+  def extract_element_content(item, path)
+    node = extract_node(item, path)
     node.present? && (content = node.map(&:inner_text).join(', ').squish).present? ? content : nil
   end
 
