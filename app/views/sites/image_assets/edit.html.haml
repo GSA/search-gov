@@ -14,24 +14,24 @@
 
   - if @site.uses_managed_header_footer? and !@site.force_mobile_format?
     %fieldset
-      = f.label :header_image, 'Logo'
+      = f.label :header_image, 'Legacy Logo'
       = f.file_field :header_image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
       %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
       - if @site.header_image.present? and !@site.header_image.dirty?
-        .image= image_tag(@site.header_image.url(:large), alt: 'Logo')
+        .image= image_tag(@site.header_image.url(:large), alt: 'Legacy Logo')
         = f.label :mark_header_image_for_deletion, class: 'checkbox' do
           = f.check_box :mark_header_image_for_deletion
-          Mark Logo for Deletion
+          Mark Legacy Logo for Deletion
 
   %fieldset
-    = f.label :mobile_logo, 'Mobile Logo'
+    = f.label :mobile_logo, 'Logo'
     = f.file_field :mobile_logo, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
     %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB
     - if @site.mobile_logo.present? && !@site.mobile_logo.dirty?
-      .image= image_tag(@site.mobile_logo.url(:large), alt: 'Mobile Logo')
+      .image= image_tag(@site.mobile_logo.url(:large), alt: 'Logo')
       = f.label :mark_mobile_logo_for_deletion, class: 'checkbox' do
         = f.check_box :mark_mobile_logo_for_deletion
-        Mark Mobile Logo for Deletion
+        Mark Logo for Deletion
 
   - unless @site.force_mobile_format?
     %fieldset

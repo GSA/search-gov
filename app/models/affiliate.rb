@@ -148,8 +148,8 @@ class Affiliate < ActiveRecord::Base
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Display name",
     :name => "Site Handle (visible to searchers in the URL)",
-    :header_image_file_size => 'Logo file size',
-    :mobile_logo_file_size => 'Mobile Logo file size',
+    :header_image_file_size => 'Legacy Logo file size',
+    :mobile_logo_file_size => 'Logo file size',
     :page_background_image_file_size => 'Page Background Image file size'
   }
 

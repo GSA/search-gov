@@ -260,15 +260,15 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
-    And I attach the file "features/support/small.jpg" to "Logo"
-    And I attach the file "features/support/logo_mobile_en.png" to "Mobile Logo"
+    And I attach the file "features/support/small.jpg" to "Legacy Logo"
+    And I attach the file "features/support/logo_mobile_en.png" to "Logo"
     And I attach the file "features/support/bg.png" to "Page Background Image"
     And I select "repeat-y" from "Page Background Image Repeat"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
     And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And I should see an image with alt text "Legacy Logo"
     And I should see an image with alt text "Logo"
-    And I should see an image with alt text "Mobile Logo"
     And I should see an image with alt text "Page Background Image"
     And the "Page Background Image Repeat" field should contain "repeat-y"
 
@@ -279,24 +279,24 @@ Feature: Manage Display
     Then I should see an image link to "agency site" with url for "http://main.agency.gov"
 
     When I go to the agency.gov's Image Assets page
+    And I check "Mark Legacy Logo for Deletion"
     And I check "Mark Logo for Deletion"
-    And I check "Mark Mobile Logo for Deletion"
     And I check "Mark Page Background Image for Deletion"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
+    And I should not see an image with alt text "Legacy Logo"
     And I should not see an image with alt text "Logo"
-    And I should not see an image with alt text "Mobile Logo"
     And I should not see an image with alt text "Page Background Image"
 
+    When I attach the file "features/support/very_large.jpg" to "Legacy Logo"
     When I attach the file "features/support/very_large.jpg" to "Logo"
-    When I attach the file "features/support/very_large.jpg" to "Mobile Logo"
     When I attach the file "features/support/very_large.jpg" to "Page Background Image"
     And I submit the form by pressing "Save"
-    Then I should see "Logo file size must be under 512 KB"
-    Then I should see "Mobile Logo file size must be under 64 KB"
+    Then I should see "Legacy Logo file size must be under 512 KB"
+    Then I should see "Logo file size must be under 64 KB"
     Then I should see "Page Background Image file size must be under 512 KB"
+    And I should not see an image with alt text "Legacy Logo"
     And I should not see an image with alt text "Logo"
-    And I should not see an image with alt text "Mobile Logo"
     And I should not see an image with alt text "Page Background Image"
 
   @javascript
@@ -307,21 +307,21 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
-    And I attach the file "features/support/logo_mobile_en.png" to "Mobile Logo"
+    And I attach the file "features/support/logo_mobile_en.png" to "Logo"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
     And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
-    And I should see an image with alt text "Mobile Logo"
+    And I should see an image with alt text "Logo"
 
     When I am on agency.gov's search page
     Then I should see an image link to "agency site" with url for "http://main.agency.gov"
     And the page body should contain "logo_mobile_en.png"
 
     When I go to the agency.gov's Image Assets page
-    And I check "Mark Mobile Logo for Deletion"
+    And I check "Mark Logo for Deletion"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
-    And I should not see an image with alt text "Mobile Logo"
+    And I should not see an image with alt text "Logo"
 
   @javascript
   Scenario: Editing Managed Header & Footer
