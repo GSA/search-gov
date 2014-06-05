@@ -5,7 +5,15 @@ module MobileNavigationsHelper
 
   def filter_media_navs(affiliate)
     affiliate.navigations.active.reject do |n|
-      (n.navigable.is_a?(ImageSearchLabel) && affiliate.flickr_profiles.blank?)
+      n.navigable.is_a?(ImageSearchLabel) && !site_has_navigable_image_vertical?(affiliate)
+    end
+  end
+
+  def site_has_navigable_image_vertical?(site)
+    if site.force_mobile_format?
+      site.flickr_profiles.present? || site.is_bing_image_search_enabled?
+    else
+      true
     end
   end
 
@@ -43,7 +51,7 @@ module MobileNavigationsHelper
     case search
       when is_default_search?(search)
         nil
-      when OdieImageSearch
+      when ImageSearch, LegacyImageSearch
         search.affiliate.image_search_label
       when SiteSearch
         search.document_collection

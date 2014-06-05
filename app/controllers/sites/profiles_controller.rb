@@ -5,7 +5,10 @@ module Sites::ProfilesController
 
   included do
     class_eval do
-      cattr_accessor :pluralized_profile_type, :profile_type_klass, :profile_type
+      class_attribute :pluralized_profile_type,
+                      :profile_type,
+                      :profile_type_klass,
+                      instance_writer: false
       initialize_class_attributes
     end
   end

@@ -8,6 +8,10 @@ module Instrumentation
       generic_logging("Keen Best Bets Publish", event, CYAN)
     end
 
+    def bing_image_search(event)
+      generic_logging("Bing Image Query", event, YELLOW)
+    end
+
     def bing_web_search(event)
       generic_logging("Bing Query", event, YELLOW)
     end

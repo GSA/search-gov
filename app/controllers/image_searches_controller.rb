@@ -1,8 +1,10 @@
 class ImageSearchesController < ApplicationController
+  include MobileFriendlyController
+
   layout 'searches'
 
   before_filter :set_search_options
-  before_filter :force_mobile_format
+  before_filter :force_request_format
   ssl_allowed :index
 
   def index
@@ -26,23 +28,18 @@ class ImageSearchesController < ApplicationController
     set_affiliate_based_on_locale_param
     set_locale_based_on_affiliate_locale
     @search_options = {
-      :page => filtered_params[:page],
-      :per_page => SERP_RESULTS_PER_PAGE,
-      :query => sanitize_query(filtered_params[:query]),
-      :affiliate => @affiliate
+        affiliate: @affiliate,
+        cr: filtered_params[:cr],
+        page: filtered_params[:page],
+        query: sanitize_query(filtered_params[:query])
     }
   end
 
   def filtered_params
-    params.permit(:affiliate, :page, :per_page, :query)
-  end
-
-  def force_mobile_format
-    return if request.format && request.format.json?
-    request.format = @affiliate.force_mobile_format? ? :mobile : :html
+    params.permit(:affiliate, :cr, :m, :page, :per_page, :query, :utf8)
   end
 
   def search_klass
-    @affiliate.force_mobile_format? ? OdieImageSearch : ImageSearch
+    @affiliate.force_mobile_format? ? ImageSearch : LegacyImageSearch
   end
 end

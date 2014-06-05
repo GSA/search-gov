@@ -388,3 +388,12 @@ Feature: Searches using mobile device
     And I should see a link to "All sites"
     When I follow "Este tema en español" within the SERP navigation
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
+
+  Scenario: English search on a legacy site
+    Given the following legacy Affiliates exist:
+      | display_name      | name     | contact_email | contact_name |
+      | USA.gov           | usagov   | aff@bar.gov   | John Bar     |
+    When I am on usagov's overridden search page
+    And I fill in "query" with "jobs"
+    And I press "Search" in the search box
+    Then I should see at least 10 search results

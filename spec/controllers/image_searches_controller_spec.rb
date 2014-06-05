@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe ImageSearchesController do
   describe "#index" do
-    context "when searching as an affiliate and the query is present" do
+    context "when searching on legacy affiliate and the query is present" do
       let(:affiliate) { mock_model(Affiliate, name: 'agency100', display_name: 'NPS Site', force_mobile_format?: false) }
       let(:query) { '<script>thunder & lightning</script>' }
-      let(:image_search) { mock(ImageSearch, :query => 'thunder & lightning', :modules => []) }
+      let(:image_search) { mock(LegacyImageSearch, :query => 'thunder & lightning', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(affiliate: affiliate, per_page: 20, query: 'thunder & lightning')).and_return(image_search)
+        LegacyImageSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'thunder & lightning')).and_return(image_search)
         image_search.should_receive(:run)
       end
 
@@ -55,13 +55,13 @@ describe ImageSearchesController do
       end
     end
 
-    context "when searching as an affiliate and the query is blank" do
+    context "when searching on legacy affiliate and the query is blank" do
       let(:affiliate) { mock_model(Affiliate, :locale => 'en', force_mobile_format?: false) }
-      let(:image_search) { mock(ImageSearch, :query => nil, :modules => []) }
+      let(:image_search) { mock(LegacyImageSearch, :query => nil, :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => nil)).and_return(image_search)
+        LegacyImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => nil)).and_return(image_search)
         image_search.should_receive(:run)
         get :index, :affiliate => "agency100"
       end
@@ -71,11 +71,11 @@ describe ImageSearchesController do
 
     context 'when params[:affiliate] is not a string' do
       let(:usagov_affiliate) { mock_model(Affiliate, name: 'usagov', display_name: 'USA.gov', force_mobile_format?: false) }
-      let(:image_search) { mock(ImageSearch, :query => 'gov', :modules => []) }
+      let(:image_search) { mock(LegacyImageSearch, :query => 'gov', :modules => []) }
 
       before do
         Affiliate.should_receive(:find_by_name).with('usagov').and_return(usagov_affiliate)
-        ImageSearch.should_receive(:new).with(
+        LegacyImageSearch.should_receive(:new).with(
             hash_including(affiliate: usagov_affiliate,
                            query: 'gov')).
             and_return(image_search)
@@ -86,8 +86,13 @@ describe ImageSearchesController do
       it { should respond_with :success }
     end
 
-    context "when searching via the API" do
+    context "when searching on legacy affiliate via the API" do
+      fixtures :affiliates, :image_search_labels
       render_views
+
+      before do
+        affiliates(:usagov_affiliate).update_attributes!(force_mobile_format: false)
+      end
 
       context "when searching normally" do
         before do

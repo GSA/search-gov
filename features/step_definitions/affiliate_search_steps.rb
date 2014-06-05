@@ -160,19 +160,6 @@ Given /^the following Tweets exist:$/ do |table|
   ElasticTweet.commit
 end
 
-Given /^the following FlickrPhotos exist:$/ do |table|
-  flickr_id = 100
-  table.hashes.each do |hash|
-    affiliate = Affiliate.find_by_name(hash[:affiliate_name])
-    flickr_url = 'https://www.flickr.com/photos/whitehouse'
-    flickr_profile = affiliate.flickr_profiles.where(url: flickr_url).first_or_create!
-    flickr_id += 1
-    photo_attributes = hash.except('affiliate_name').merge(flickr_id: flickr_id)
-    flickr_profile.flickr_photos.create! photo_attributes
-  end
-  ElasticFlickrPhoto.commit
-end
-
 Then /^I should see (\d+) collapsible facet values?$/ do |count|
   page.should have_selector('.collapsible', :count => count)
 end

@@ -84,7 +84,6 @@ Feature: Affiliate Search
     And I should have the following query string:
       |affiliate|bar.gov   |
       |query    |first item|
-      |m        |false     |
     And I should see "Show Options" in the left column
     And I should see "Hide Options" in the left column
     And I should see "First <b> item </b>"
@@ -99,7 +98,6 @@ Feature: Affiliate Search
     Then I should have the following query string:
       |affiliate|bar.gov   |
       |query    |first item|
-      |m        |false     |
     And I should see "Videos" in the left column
     And I should not see a link to "Videos"
     Then I should see "First video item"

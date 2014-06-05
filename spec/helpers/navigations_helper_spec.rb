@@ -105,10 +105,10 @@ describe NavigationsHelper do
       end
 
       context 'when doing image search' do
-        let(:search) { mock(ImageSearch) }
+        let(:search) { mock(LegacyImageSearch) }
 
         before do
-          search.should_receive(:instance_of?).at_least(:once) { |arg| arg == ImageSearch }
+          search.should_receive(:instance_of?).at_least(:once) { |arg| arg == LegacyImageSearch }
         end
 
         it 'should render image search label' do

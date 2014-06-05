@@ -86,6 +86,11 @@ RSpec.configure do |config|
     image_search_params = common_image_search_params.merge(query: 'white house')
     stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 
+    image_search_params = common_image_search_params.
+        merge('image.count' => 20,
+              query: '(white house) (scopeid:usagovall OR site:gov OR site:mil)')
+    stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
+
     image_search_params = common_image_search_params.merge(query: '(white house) (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 

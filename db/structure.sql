@@ -91,6 +91,7 @@ CREATE TABLE `affiliates` (
   `dublin_core_mappings` text COLLATE utf8_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
+  `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2080,3 +2081,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140507220727');
 INSERT INTO schema_migrations (version) VALUES ('20140510192350');
 
 INSERT INTO schema_migrations (version) VALUES ('20140510192657');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605151403');

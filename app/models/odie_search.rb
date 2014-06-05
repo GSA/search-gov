@@ -1,4 +1,7 @@
 class OdieSearch < Search
+  include DefaultModuleTaggable
+
+  self.default_module_tag = 'AIDOC'.freeze
   attr_reader :document_collection
 
   def initialize(options = {})
@@ -27,7 +30,7 @@ class OdieSearch < Search
       @results = paginate(process_results(response))
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
-      @module_tag = @total > 0 ? 'AIDOC' : nil
+      @module_tag = @total > 0 ? default_module_tag : nil
     end
   end
 

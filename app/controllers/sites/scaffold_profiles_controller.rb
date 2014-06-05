@@ -6,7 +6,9 @@ module Sites::ScaffoldProfilesController
 
   included do
     class_eval do
-      cattr_accessor :adapter_klass, :primary_attribute_name
+      class_attribute :adapter_klass,
+                      :primary_attribute_name,
+                      instance_writer: false
     end
   end
 

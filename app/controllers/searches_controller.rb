@@ -1,18 +1,16 @@
 class SearchesController < ApplicationController
+  include MobileFriendlyController
+  has_no_mobile_fu_for :advanced
 
   skip_before_filter :verify_authenticity_token
+
   before_filter :handle_old_advanced_form, :only => [:index]
-  before_filter :grab_format
   before_filter :set_affiliate_options
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]
-  has_mobile_fu
-  has_no_mobile_fu_for :advanced
-  before_filter :set_format_for_tablet_devices
-  before_filter :force_mobile_mode, :only => [:index, :docs, :news]
-  before_filter :adjust_mobile_mode
-  ssl_allowed :index, :news, :docs, :advanced, :video_news
+  before_filter :force_request_format, :only => [:index, :docs, :news]
+  ssl_allowed :all
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
 
   def index
@@ -84,10 +82,6 @@ class SearchesController < ApplicationController
     redirect_to advanced_search_path(params.merge(:controller => "searches", :action => "advanced")) if params["form"] == "advanced-firstgov"
   end
 
-  def grab_format
-    @original_format = request.format
-  end
-
   def set_affiliate_options
     @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
     set_affiliate_based_on_locale_param
@@ -123,14 +117,6 @@ class SearchesController < ApplicationController
                            until_date: params[:until_date])
   end
 
-  def adjust_mobile_mode
-    request.format = :json if @original_format == 'application/json'
-  end
-
-  def default_url_options(options={})
-    request.format && request.format.to_sym == :mobile ? { :m => 'true' } : { :m => 'false' }
-  end
-
   def gets_blended_results?
     @affiliate.gets_blended_results && params[:cr] != 'true'
   end
@@ -138,5 +124,4 @@ class SearchesController < ApplicationController
   def log_search_impression
     SearchImpression.log(@search, @search_vertical, params, request)
   end
-
 end

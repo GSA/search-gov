@@ -53,7 +53,7 @@ module NavigationsHelper
         when 'ImageSearchLabel'
           render_navigation_for_image_search(navigable,
                                              search_params,
-                                             search.instance_of?(ImageSearch))
+                                             search.instance_of?(LegacyImageSearch))
         when 'DocumentCollection'
           render_navigation_for_document_collection(navigable,
                                                     search_params,

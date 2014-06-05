@@ -18,6 +18,8 @@ module NavigationHelpers
       search_path(:affiliate => $1)
     when /^(.*)'s mobile search page$/
       search_path(:affiliate => $1, :m => 'true')
+      when /^(.*)'s overridden search page$/
+        search_path(:affiliate => $1, :m => 'override')
     when /^(.*)'s strictui search page$/
       search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/

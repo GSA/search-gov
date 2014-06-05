@@ -102,16 +102,17 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize_query(query)
-    Sanitize.clean(query.to_s).gsub('&amp;', '&') if query
+    Sanitize.clean(query.to_s).gsub('&amp;', '&').squish if query
   end
 
-  def set_format_for_tablet_devices
-    request.format = :mobile if is_tablet_device?
-  end
+  def force_request_format
+    return if request.format && request.format.json?
 
-  def force_mobile_mode
-    request.format = :html if params[:m] == "false" or params[:m] == "override"
-    request.format = :mobile if @affiliate.force_mobile_format? || params[:m] == 'true'
+    if @affiliate.force_mobile_format? || params[:m] == 'true'
+      request.format = :mobile
+    elsif params[:m] == 'false' or params[:m] == 'override'
+      request.format = :html
+    end
   end
 
   def set_search_params

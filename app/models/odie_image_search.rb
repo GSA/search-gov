@@ -1,7 +1,11 @@
 class OdieImageSearch < OdieSearch
+  include DefaultModuleTaggable
+
+  self.default_module_tag = 'FLICKR'.freeze
 
   def initialize(options = {})
     super(options)
+    @skip_log_serp_impressions = options[:skip_log_serp_impressions] || false
   end
 
   def search
@@ -19,7 +23,7 @@ class OdieImageSearch < OdieSearch
 
   def process_results(response)
     processed = response.results.collect do |result|
-      {
+      Hashie::Rash.new({
         "title" => result.title,
         "Width" => result.width_o,
         "Height" => result.height_o,
@@ -35,7 +39,7 @@ class OdieImageSearch < OdieSearch
           "Height" => result.height_q,
           "ContentType" => ""
         }
-      }
+      })
     end
     processed.compact
   end
@@ -43,7 +47,9 @@ class OdieImageSearch < OdieSearch
   protected
 
   def log_serp_impressions
-    @modules << "FLICKR" unless @total.zero?
+    return if @skip_log_serp_impressions
+
+    @modules << default_module_tag unless @total.zero?
     QueryImpression.log(:odie_image, @affiliate.name, @query, @modules)
   end
 end

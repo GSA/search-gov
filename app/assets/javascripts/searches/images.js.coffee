@@ -8,12 +8,7 @@ addResizeHandler = ->
 eligibleForResizeHandler = ->
   $items = $(itemSelector)
 
-  if $items.length > 0
-    vertical = $('#search').data('v')
-
-    if vertical != 'image'
-      return true
-
+  return true if $items.length > 0
   false
 
 assignHeight = ->

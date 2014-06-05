@@ -5,4 +5,5 @@
 
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
+    = render partial: 'searches/offer_commercial_results', locals: { search:  @search } if eligible_for_commercial_results?(@search)
     = render partial: 'searches/pagination', locals: { search: @search }

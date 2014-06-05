@@ -1,88 +1,94 @@
 require 'spec_helper'
 
 describe ImageSearch do
-  fixtures :affiliates, :site_domains, :flickr_profiles
+  fixtures :affiliates
 
-  describe "#run" do
-    context "when there are no Bing/Google or Flickr results" do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-      let(:noresults_search) { ImageSearch.new(query: 'shuttle', affiliate: affiliate) }
+  let(:cr_affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
+  let(:non_cr_affiliate) { affiliates(:usagov_affiliate) }
 
-      before do
-        noresults_search.stub!(:search).and_return {}
+  describe '#run' do
+    context 'when is_bing_image_search_enabled? is false' do
+      let(:search) { ImageSearch.new(affiliate: non_cr_affiliate, query: 'white house') }
+      let!(:odie_image_search) do
+        OdieImageSearch.new affiliate: non_cr_affiliate,
+                            page: 1,
+                            per_page: 20,
+                            query: 'gov'
       end
 
-      it "should assign a nil module_tag" do
-        noresults_search.run
-        noresults_search.module_tag.should be_nil
+      before do
+        OdieImageSearch.should_receive(:new).and_return(odie_image_search)
+        odie_image_search.should_receive(:run)
+      end
+
+      context 'when OdieImageSearch results are present' do
+        before do
+          results = [mock('item'), mock('item')]
+          odie_image_search.stub(:results).and_return(results)
+        end
+
+        it 'logs SERP impressions with FLICKR' do
+          QueryImpression.should_receive(:log).with(:image, 'usagov', 'white house', %w(FLICKR))
+          search.run
+        end
+      end
+
+      context 'when OdieImageSearch results are not present' do
+        before { odie_image_search.stub(:results).and_return([]) }
+
+        it 'logs SERP impressions with FLICKR' do
+          QueryImpression.should_receive(:log).with(:image, 'usagov', 'white house', [])
+          search.run
+        end
       end
     end
 
-    context 'when the affiliate has no Bing/Google results, but has Flickr images' do
-      let(:non_affiliate) { affiliates(:non_existent_affiliate) }
+    context 'when is_bing_image_search_enabled? is true' do
+      let(:search) { ImageSearch.new(affiliate: cr_affiliate, query: 'white house') }
+
+      let!(:odie_image_search) do
+        OdieImageSearch.new affiliate: cr_affiliate,
+                            page: 1,
+                            per_page: 20,
+                            query: 'white house'
+      end
+
+      let!(:bing_image_search_adapter) do
+        SearchEngineAdapter.new BingImageSearch,
+                                affiliate: cr_affiliate,
+                                page: 1,
+                                per_page: 20,
+                                query: 'white house'
+      end
 
       before do
-        flickr_profile = flickr_profiles(:another_user)
-        FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his unusual image daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
-        FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in unusual image car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
-        FlickrPhoto.create!(:flickr_id => 7, :flickr_profile => flickr_profile, :title => 'irrelevant photo', :description => 'irrelevant', :tags => "car,batman", :date_taken => Time.now - 14.days)
-        ElasticFlickrPhoto.commit
+        OdieImageSearch.should_receive(:new).and_return(odie_image_search)
+        odie_image_search.should_receive(:run)
+        odie_image_search.stub(:results).and_return([])
+
+        SearchEngineAdapter.should_receive(:new).and_return(bing_image_search_adapter)
       end
 
-      it 'should fill the results with the flickr photos' do
-        search = ImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
-        search.run
-        search.results.should_not be_empty
-        search.total.should == 2
-        search.module_tag.should == 'FLICKR'
-        search.results.first['title'].should == 'POTUS gets in unusual image car.'
-        search.results.last['title'].should == 'President Obama walks his unusual image daughters to school'
+      context 'when BingImageSearch results are present' do
+        before do
+          results = [mock('item'), mock('item')]
+          bing_image_search_adapter.stub(:results).and_return(results)
+        end
+
+        it 'logs SERP impressions with FLICKR' do
+          QueryImpression.should_receive(:log).with(:image, 'cr.images.gov', 'white house', %w(IMAG))
+          search.run
+        end
       end
 
-      it 'should log info about the query' do
-        QueryImpression.should_receive(:log).with(:image, non_affiliate.name, 'unusual image', %w{FLICKR})
-        search = ImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
-        search.run
+      context 'when BingImageSearch results are not present' do
+        before { bing_image_search_adapter.stub(:results).and_return([]) }
+
+        it 'logs SERP impressions with FLICKR' do
+          QueryImpression.should_receive(:log).with(:image, 'cr.images.gov', 'white house', [])
+          search.run
+        end
       end
-    end
-
-    context 'when there are Bing/Google results' do
-      let(:search) { ImageSearch.new(:query => 'white house', :affiliate => affiliates(:non_existent_affiliate)) }
-
-      it "should set total" do
-        search.run
-        search.total.should == 4340000
-      end
-
-      it "should ignore results with missing Thumbnail data" do
-        search.run
-        search.results.size.should==9
-      end
-
-      it "includes original image meta-data" do
-        search.run
-        result = search.results.first
-        result["title"].should == "White House, Washington D.C."
-        result["Url"].should == "http://biglizards.net/blog/archives/2008/08/"
-        result["DisplayUrl"].should == "http://biglizards.net/blog/archives/2008/08/"
-        result["Width"].should == 391
-        result["Height"].should == 428
-        result["FileSize"].should == 37731
-        result["ContentType"].should == "image/jpeg"
-        result["MediaUrl"].should == "http://biglizards.net/Graphics/ForegroundPix/White_House.JPG"
-      end
-
-      it "includes thumbnail meta-data" do
-        search.run
-        result = search.results.first
-        result["Thumbnail"]["Url"].should == "http://ts1.mm.bing.net/images/thumbnail.aspx?q=1581721453740&id=869b85a01b58c5a200496285e0144df1"
-        result["Thumbnail"]["FileSize"].should == 4719
-        result["Thumbnail"]["Width"].should == 146
-        result["Thumbnail"]["Height"].should == 160
-        result["Thumbnail"]["ContentType"].should == "image/jpeg"
-      end
-
     end
   end
-
 end

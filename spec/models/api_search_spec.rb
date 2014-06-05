@@ -162,8 +162,8 @@ describe ApiSearch do
       end
 
       context "when it's images" do
-        it "should create an ImageSearch object" do
-          ImageSearch.should_receive(:new).with(params.merge(:index => 'images')).and_return(search)
+        it "should create an LegacyImageSearch object" do
+          LegacyImageSearch.should_receive(:new).with(params.merge(:index => 'images')).and_return(search)
           ApiSearch.new(params.merge(:index => 'images'))
         end
       end

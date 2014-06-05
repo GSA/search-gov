@@ -33,10 +33,7 @@ class WebSearch < Search
   end
 
   def domains_scope_options
-    {included_domains: @affiliate.site_domains.pluck(:domain),
-     excluded_domains: @affiliate.excluded_domains.pluck(:domain),
-     scope_ids: @affiliate.scope_ids_as_array,
-     site_limits: @options[:site_limits]}
+    DomainScopeOptionsBuilder.build @affiliate, @options[:site_limits]
   end
 
   def result_hash
@@ -78,6 +75,7 @@ class WebSearch < Search
         @total = adjusted_total
       end
     end
+
     handle_search_engine_response(response) if available_search_engine_pages >= @page
     assign_module_tag
   end

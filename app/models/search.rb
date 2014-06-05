@@ -1,10 +1,10 @@
 class Search
+  include Pageable
+
   class SearchError < RuntimeError;
   end
 
   MAX_QUERYTERM_LENGTH = 1000
-  DEFAULT_PAGE = 1
-  DEFAULT_PER_PAGE = 10
 
   attr_reader :query,
               :affiliate,
@@ -26,11 +26,7 @@ class Search
     advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.site_domains.pluck(:domain), advanced_query_options)
     @query = advanced_query_builder.build
 
-    @page = options[:page].to_i rescue DEFAULT_PAGE
-    @page = DEFAULT_PAGE unless @page >= DEFAULT_PAGE
-
-    @per_page = options[:per_page].to_i rescue DEFAULT_PER_PAGE
-    @per_page = DEFAULT_PER_PAGE unless @per_page >= DEFAULT_PER_PAGE
+    initialize_pageable_attributes options
 
     @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i

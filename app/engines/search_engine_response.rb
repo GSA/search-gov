@@ -6,6 +6,6 @@ class SearchEngineResponse
                 :total,
                 :tracking_information
   def initialize
-    yield self
+    yield self if block_given?
   end
 end

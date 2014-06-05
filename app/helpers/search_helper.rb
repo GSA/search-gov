@@ -9,7 +9,7 @@ module SearchHelper
   end
 
   def result_partial_for(search)
-    if search.is_a?(ImageSearch)
+    if search.is_a?(LegacyImageSearch)
       "/image_searches/result"
     else
       "/searches/result"

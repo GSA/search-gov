@@ -31,7 +31,7 @@ describe WebSearch do
 
     it 'should ignore params outside the allowed range' do
       search = WebSearch.new(@valid_options.merge(page: -1))
-      search.page.should == Search::DEFAULT_PAGE
+      search.page.should == Pageable::DEFAULT_PAGE
     end
 
     it 'should set matching site limits' do
@@ -117,9 +117,9 @@ describe WebSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       it "should default to page 1 if no valid page number was specified" do
-        WebSearch.new({query: 'government', affiliate: affiliate}).page.should == Search::DEFAULT_PAGE
-        WebSearch.new({query: 'government', affiliate: affiliate, page: ''}).page.should == Search::DEFAULT_PAGE
-        WebSearch.new({query: 'government', affiliate: affiliate, page: 'string'}).page.should == Search::DEFAULT_PAGE
+        WebSearch.new({query: 'government', affiliate: affiliate}).page.should == Pageable::DEFAULT_PAGE
+        WebSearch.new({query: 'government', affiliate: affiliate, page: ''}).page.should == Pageable::DEFAULT_PAGE
+        WebSearch.new({query: 'government', affiliate: affiliate, page: 'string'}).page.should == Pageable::DEFAULT_PAGE
       end
 
       it "should set the page number" do

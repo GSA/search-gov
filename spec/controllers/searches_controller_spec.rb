@@ -160,11 +160,6 @@ describe SearchesController do
       before do
         get :index, :query => 'weather', :format => "json"
         @search = assigns[:search]
-        @format = assigns[:original_format]
-      end
-
-      it "should set the format to json" do
-        @format.to_s.should == "application/json"
       end
 
       it "should serialize the results into JSON" do
@@ -219,10 +214,6 @@ describe SearchesController do
     render_views
     before do
       get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
-    end
-
-    it "should set the format to json" do
-      assigns[:original_format].to_s.should == "application/json"
     end
 
     it "should serialize the results into JSON" do
