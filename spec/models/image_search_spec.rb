@@ -1,28 +1,27 @@
 require 'spec_helper'
 
 describe ImageSearch do
-  fixtures :affiliates, :flickr_profiles
-
-  before do
-    @affiliate = affiliates(:usagov_affiliate)
-  end
+  fixtures :affiliates, :site_domains, :flickr_profiles
 
   describe "#run" do
     context "when there are no Bing/Google or Flickr results" do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+      let(:noresults_search) { ImageSearch.new(query: 'shuttle', affiliate: affiliate) }
+
       before do
-        @noresults_search = ImageSearch.new(:query => 'shuttle', :affiliate => @affiliate)
-        @noresults_search.stub!(:search).and_return {}
+        noresults_search.stub!(:search).and_return {}
       end
 
       it "should assign a nil module_tag" do
-        @noresults_search.run
-        @noresults_search.module_tag.should be_nil
+        noresults_search.run
+        noresults_search.module_tag.should be_nil
       end
     end
 
     context 'when the affiliate has no Bing/Google results, but has Flickr images' do
+      let(:non_affiliate) { affiliates(:non_existent_affiliate) }
+
       before do
-        @non_affiliate = affiliates(:non_existent_affiliate)
         flickr_profile = flickr_profiles(:another_user)
         FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his unusual image daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
         FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in unusual image car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
@@ -31,7 +30,7 @@ describe ImageSearch do
       end
 
       it 'should fill the results with the flickr photos' do
-        search = ImageSearch.new(:query => 'unusual image', :affiliate => @non_affiliate)
+        search = ImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
         search.run
         search.results.should_not be_empty
         search.total.should == 2
@@ -41,8 +40,8 @@ describe ImageSearch do
       end
 
       it 'should log info about the query' do
-        QueryImpression.should_receive(:log).with(:image, @non_affiliate.name, 'unusual image', %w{FLICKR})
-        search = ImageSearch.new(:query => 'unusual image', :affiliate => @non_affiliate)
+        QueryImpression.should_receive(:log).with(:image, non_affiliate.name, 'unusual image', %w{FLICKR})
+        search = ImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
         search.run
       end
     end

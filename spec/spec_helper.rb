@@ -64,63 +64,131 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image&'
-    hl='Options=EnableHighlighting&'
+    bing_api_path = '/json.aspx?'
+
+    bing_common_params = {
+        Adult: 'moderate',
+        AppId: 'A4C32FAE6F3DB386FC32ED1C4F3024742ED30906',
+        fdtrace: 1
+    }.freeze
+
+    bing_hl_params = {
+        Options: 'EnableHighlighting'
+    }.freeze
+
+    common_image_search_params = bing_common_params.
+        merge(bing_hl_params).
+        merge(sources: 'Spell Image').freeze
+
     stubs = Faraday::Adapter::Test::Stubs.new
-    generic_bing_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/white_house.json")
-    stubs.get("#{common}#{hl}query=white+house") { [200, {}, generic_bing_image_result] }
-    stubs.get("#{common}#{hl}query=%28white+house%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_image_result] }
-    bing_image_no_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/image_search/no_results.json")
-    stubs.get("#{common}#{hl}query=%28unusual+image%29+%28site%3Anonsense.gov%29") { [200, {}, bing_image_no_result] }
+    generic_bing_image_result = Rails.root.join('spec/fixtures/json/bing/image_search/white_house.json').read
 
-    common = '/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web&'
-    generic_bing_result = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira.json")
-    stubs.get("#{common}#{hl}query=highlight+enabled") { [200, {}, generic_bing_result] }
-    generic_bing_result_no_highlight = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/ira_no_highlight.json")
-    stubs.get("#{common}query=no+highlighting&web.offset=11") { [200, {}, generic_bing_result_no_highlight] }
-    stubs.get("#{common}#{hl}query=casa+blanca") { [200, {}, generic_bing_result] }
-    stubs.get("#{common}#{hl}query=english") { [200, {}, generic_bing_result] }
-    stubs.get("#{common}#{hl}query=%28english%29+%28site%3Anonsense.gov%29") { [200, {}, generic_bing_result] }
+    image_search_params = common_image_search_params.merge(query: 'white house')
+    stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 
-    page2_6results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/page2_6results.json")
-    stubs.get("#{common}#{hl}query=%28fewer%29+%28site%3Anonsense.gov%29&web.offset=10") { [200, {}, page2_6results] }
+    image_search_params = common_image_search_params.merge(query: '(white house) (site:nonsense.gov)')
+    stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 
-    total_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/total_no_results.json")
-    stubs.get("#{common}#{hl}query=total_no_results") { [200, {}, total_no_results] }
+    bing_image_no_result = Rails.root.join('spec/fixtures/json/bing/image_search/no_results.json').read
+    image_search_params = common_image_search_params.merge(query: '(unusual image) (site:nonsense.gov)')
+    stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, bing_image_no_result] }
 
-    two_results_1_missing_title = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/2_results_1_missing_title.json")
-    stubs.get("#{common}#{hl}query=2missing1") { [200, {}, two_results_1_missing_title] }
+    generic_bing_result_no_highlight = Rails.root.join('spec/fixtures/json/bing/web_search/ira_no_highlight.json').read
+    common_no_hl_web_search_params = bing_common_params.merge(sources: 'Spell Web').freeze
+    no_hl_web_search_params = common_no_hl_web_search_params.
+        merge(query: 'no highlighting',
+              'web.offset' => 11)
 
-    missing_urls = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/missing_urls.json")
-    stubs.get("#{common}#{hl}query=missing_urls") { [200, {}, missing_urls] }
+    stubs.get("#{bing_api_path}#{no_hl_web_search_params.to_param}") { [200, {}, generic_bing_result_no_highlight] }
 
-    missing_descriptions = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/missing_descriptions.json")
-    stubs.get("#{common}#{hl}query=missing_descriptions") { [200, {}, missing_descriptions] }
+    generic_bing_result = Rails.root.join('spec/fixtures/json/bing/web_search/ira.json').read
+    common_web_search_params = bing_common_params.
+        merge(bing_hl_params).
+        merge(sources: 'Spell Web').freeze
 
-    bing_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/no_results.json")
-    stubs.get("#{common}#{hl}query=no_results") { [200, {}, bing_no_results] }
-    stubs.get("#{common}#{hl}query=%28no_results%29+%28site%3Anonsense.gov%29") { [200, {}, bing_no_results] }
+    web_search_params = common_web_search_params.merge(query: 'highlight enabled')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
-    bing_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/bing/web_search/spelling_suggestion.json")
-    stubs.get("#{common}#{hl}query=electro+coagulation") { [200, {}, bing_spelling] }
+    web_search_params = common_web_search_params.merge(query: 'casa blanca')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
-    common = '/customsearch/v1?alt=json&key=AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ&cx=005675969675701682971:tsue0ko9g0k&searchType=image&quotaUser=USASearch'
-    common_params = '&lr=lang_en&safe=medium'
-    generic_google_image_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/image_search/obama.json")
-    stubs.get("#{common}#{common_params}&q=obama") { [200, {}, generic_google_image_result] }
+    web_search_params = common_web_search_params.merge(query: 'english')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
-    common = '/customsearch/v1?alt=json&key=AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ&cx=005675969675701682971:tsue0ko9g0k&quotaUser=USASearch'
-    generic_google_result = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/ira.json")
-    stubs.get("#{common}#{common_params}&q=highlight+enabled") { [200, {}, generic_google_result] }
-    stubs.get("#{common}#{common_params}&q=no+highlighting") { [200, {}, generic_google_result] }
-    stubs.get("#{common}&lr=lang_es&safe=medium&q=casa+blanca") { [200, {}, generic_google_result] }
-    stubs.get("#{common}#{common_params}&q=english") { [200, {}, generic_google_result] }
+    web_search_params = common_web_search_params.merge(query: '(english) (site:nonsense.gov)')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
-    google_no_results = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/no_results.json")
-    stubs.get("#{common}#{common_params}&q=no_results") { [200, {}, google_no_results] }
+    page2_6results = Rails.root.join('spec/fixtures/json/bing/web_search/page2_6results.json').read
+    web_search_params = common_web_search_params.
+        merge(query: '(fewer) (site:nonsense.gov)',
+              'web.offset' => 10)
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, page2_6results] }
 
-    google_spelling = File.read(Rails.root.to_s + "/spec/fixtures/json/google/web_search/spelling_suggestion.json")
-    stubs.get("#{common}#{common_params}&q=electro+coagulation") { [200, {}, google_spelling] }
+    total_no_results = Rails.root.join('spec/fixtures/json/bing/web_search/total_no_results.json').read
+    web_search_params = common_web_search_params.merge(query: 'total_no_results')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, total_no_results] }
+
+    two_results_1_missing_title = Rails.root.join('spec/fixtures/json/bing/web_search/2_results_1_missing_title.json').read
+    web_search_params = common_web_search_params.merge(query: '2missing1')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, two_results_1_missing_title] }
+
+    missing_urls = Rails.root.join('spec/fixtures/json/bing/web_search/missing_urls.json').read
+    web_search_params = common_web_search_params.merge(query: 'missing_urls')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, missing_urls] }
+
+    missing_descriptions = Rails.root.join('spec/fixtures/json/bing/web_search/missing_descriptions.json').read
+    web_search_params = common_web_search_params.merge(query: 'missing_descriptions')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, missing_descriptions] }
+
+    bing_no_results = Rails.root.join('spec/fixtures/json/bing/web_search/no_results.json').read
+
+    web_search_params = common_web_search_params.merge(query: 'no_results')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
+    web_search_params = common_web_search_params.merge(query: '(no_results) (site:nonsense.gov)')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
+
+    bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
+    web_search_params = common_web_search_params.merge(query: 'electro coagulation')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
+
+    google_api_path = '/customsearch/v1?'
+
+    common_web_search_params = {
+      alt: 'json',
+      cx: '005675969675701682971:tsue0ko9g0k',
+      key: 'AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ',
+      lr: 'lang_en',
+      quotaUser: 'USASearch',
+      safe: 'medium'
+    }.freeze
+
+    common_image_search_params = common_web_search_params.
+        merge(searchType: 'image').freeze
+
+    generic_google_image_result = Rails.root.join('spec/fixtures/json/google/image_search/obama.json').read
+    image_search_params = common_image_search_params.merge(q: 'obama')
+    stubs.get("#{google_api_path}#{image_search_params.to_param}") { [200, {}, generic_google_image_result] }
+
+    generic_google_result = Rails.root.join('spec/fixtures/json/google/web_search/ira.json').read
+    web_search_params = common_web_search_params.merge(q: 'highlight enabled')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    web_search_params = common_web_search_params.merge(q: 'no highlighting')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    es_web_search_params = common_web_search_params.merge(lr: 'lang_es', q: 'casa blanca')
+    stubs.get("#{google_api_path}#{es_web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    web_search_params = common_web_search_params.merge(q: 'english')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    google_no_results = Rails.root.join('spec/fixtures/json/google/web_search/no_results.json').read
+    web_search_params = common_web_search_params.merge(q: 'no_results')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_no_results] }
+
+    google_spelling = Rails.root.join('spec/fixtures/json/google/web_search/spelling_suggestion.json').read
+    web_search_params = common_web_search_params.merge(q: 'electro coagulation')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
 
     test = Faraday.new do |builder|
       builder.adapter :test, stubs
