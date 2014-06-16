@@ -9,7 +9,7 @@ class NewsSearch < Search
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
-    @channel = options[:channel]
+    @channel = options[:channel].to_i rescue nil if options[:channel].present?
     @enable_highlighting = options[:enable_highlighting]
 
     if options[:until_date].present? || options[:since_date].present?
@@ -29,9 +29,9 @@ class NewsSearch < Search
       @since = since_when(@tbs) if @tbs
     end
 
-    assign_rss_feed(options[:channel])
-    if @rss_feed
-      @rss_feeds = [@rss_feed]
+    if @channel
+      assign_rss_feed
+      @rss_feeds = @rss_feed ? [@rss_feed] : []
     else
       @rss_feeds = navigable_feeds
       @rss_feed = @rss_feeds.first if @rss_feeds.count == 1
@@ -60,7 +60,7 @@ class NewsSearch < Search
                                size: @per_page, offset: (@page - 1) * @per_page,
                                contributor: @contributor, subject: @subject, publisher: @publisher,
                                sort_by_relevance: @sort_by_relevance,
-                               tags: @tags, language: @affiliate.locale)
+                               tags: @tags, language: @affiliate.locale) if @rss_feeds.present?
   end
 
   def cache_key
@@ -89,8 +89,8 @@ class NewsSearch < Search
     @module_tag = @total > 0 ? 'NEWS' : nil
   end
 
-  def assign_rss_feed(channel_id)
-    @rss_feed = @affiliate.rss_feeds.find_by_id(channel_id.to_i) rescue nil if channel_id.present?
+  def assign_rss_feed
+    @rss_feed = @affiliate.rss_feeds.find_by_id @channel
   end
 
   def navigable_feeds

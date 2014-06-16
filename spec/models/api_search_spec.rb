@@ -149,15 +149,8 @@ describe ApiSearch do
 
       context "when it's news" do
         it "should create a NewsSearch object" do
-          NewsSearch.should_receive(:new).with(params.merge(:index => 'news')).and_return(search)
+          ApiNewsSearch.should_receive(:new).with(params.merge(:index => 'news')).and_return(search)
           ApiSearch.new(params.merge(:index => 'news'))
-        end
-      end
-
-      context "when it's videonews" do
-        it "should create a VideoNewsSearch object" do
-          VideoNewsSearch.should_receive(:new).with(params.merge(:index => 'videonews')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'videonews'))
         end
       end
 

@@ -1,8 +1,5 @@
 class VideoNewsSearch < NewsSearch
-  def initialize(options = {})
-    super(options)
-    @per_page = DEFAULT_VIDEO_PER_PAGE if options[:per_page].blank?
-  end
+  self.default_per_page = 20
 
   protected
 
@@ -10,8 +7,8 @@ class VideoNewsSearch < NewsSearch
     @module_tag = @total > 0 ? 'VIDS' : nil
   end
 
-  def assign_rss_feed(channel_id)
-    @rss_feed = @affiliate.rss_feeds.managed.find_by_id(channel_id.to_i) if channel_id.present?
+  def assign_rss_feed
+    @rss_feed = @affiliate.rss_feeds.managed.find_by_id @channel
   end
 
   def navigable_feeds

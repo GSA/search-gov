@@ -93,12 +93,9 @@
   %h3
     Response Fields
   %p
-    Note that not all response fields appear in all queries. Tweets and Google web results aren't provided in our API.
-    If you'd like to include them, use
-    =link_to "Twitter's API","https://dev.twitter.com/"
-    or
-    =link_to "Google's API","https://developers.google.com/custom-search/"
-    directly.
+    Note that not all response fields appear in all queries.
+    Results for Flickr photos, Google web pages, tweets, and YouTube videos aren't provided in our API.
+    If you'd like to include them, use their APIs directly.
   %ul
     %li
       %span total:
@@ -319,43 +316,6 @@
         %li
           %span publishedAt:
           The date the news story was published
-
-  %h3 Video News Search (Video RSS Feeds)
-  %ul
-    %li
-      %span Search for "fire" with response in JSON format
-      %br
-      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :query => 'fire', :index => 'videonews')
-    %li
-      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
-      %br
-      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'videonews')
-
-  %h3
-    Response Fields
-  %ul
-    %li
-      %span total
-    %li
-      %span startrecord
-    %li
-      %span endrecord
-    %li
-      %span results:
-      Array of video news results for the query. Each item contains the following data.
-      %ul
-        %li
-          %span title:
-          The title of the result
-        %li
-          %span unescapedUrl:
-          The direct url to the video result page
-        %li
-          %span content:
-          A snippet of content from the result page highlighting the query terms
-        %li
-          %span publishedAt:
-          The date the video news story was published
 
   %h3 Image Search
   %ul
