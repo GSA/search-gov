@@ -32,7 +32,7 @@ class ApiSearch
       when "news"
         NewsSearch
       when "images"
-        LegacyImageSearch
+        ApiLegacyImageSearch
       when "videonews"
         VideoNewsSearch
       when "docs"
