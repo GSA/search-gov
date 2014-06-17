@@ -13,7 +13,7 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
 
   def site_params
     @site_params = params.require(:site).permit(
-        { css_property_hash: [:page_background_image_repeat] },
+        { css_property_hash: [:logo_alignment, :page_background_image_repeat] },
         :favicon_url,
         :header_image,
         :mark_header_image_for_deletion,

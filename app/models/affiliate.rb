@@ -177,6 +177,7 @@ class Affiliate < ActiveRecord::Base
 
   DEFAULT_CSS_PROPERTIES = {
     :font_family => FontFamily::DEFAULT,
+    :logo_alignment => LogoAlignment::DEFAULT,
     :show_content_border => '0',
     :show_content_box_shadow => '0',
     :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
@@ -205,7 +206,7 @@ class Affiliate < ActiveRecord::Base
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :go_live_date]
+                                         :go_live_date, :logo_alignment]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -434,12 +435,17 @@ class Affiliate < ActiveRecord::Base
   def validate_css_property_hash
     unless @css_property_hash.blank?
       validate_font_family @css_property_hash
+      validate_logo_alignment @css_property_hash
       validate_color_in_css_property_hash @css_property_hash
     end
   end
 
   def validate_font_family(hash)
     errors.add(:base, "Font family selection is invalid") if hash['font_family'].present? and !FontFamily.valid?(hash['font_family'])
+  end
+
+  def validate_logo_alignment(hash)
+    errors.add(:base, 'Logo alignment is invalid') if hash['logo_alignment'].present? and !LogoAlignment.valid?(hash['logo_alignment'])
   end
 
   def validate_color_in_css_property_hash(hash)

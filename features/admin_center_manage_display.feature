@@ -259,16 +259,21 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
-    And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    Then the "Logo Alignment" field should contain "center"
+
+    When I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I attach the file "features/support/small.jpg" to "Legacy Logo"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
+    And I select "left" from "Logo Alignment"
     And I attach the file "features/support/bg.png" to "Page Background Image"
     And I select "repeat-y" from "Page Background Image Repeat"
     And I submit the form by pressing "Save"
+
     Then I should see "You have updated your image assets"
     And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I should see an image with alt text "Legacy Logo"
     And I should see an image with alt text "Logo"
+    And the "Logo Alignment" field should contain "left"
     And I should see an image with alt text "Page Background Image"
     And the "Page Background Image Repeat" field should contain "repeat-y"
 
@@ -277,6 +282,7 @@ Feature: Manage Display
     And the page body should contain "bg.png"
     When I am on agency.gov's mobile search page
     Then I should see an image link to "agency site" with url for "http://main.agency.gov"
+    And I should see a left aligned SERP logo
 
     When I go to the agency.gov's Image Assets page
     And I check "Mark Legacy Logo for Deletion"

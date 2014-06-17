@@ -46,3 +46,7 @@ end
 Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
   page.should have_selector '.content-provider .bing', text: text
 end
+
+Then /^I should see a left aligned SERP logo$/ do
+  page.should have_selector '.logo.logo-left img'
+end

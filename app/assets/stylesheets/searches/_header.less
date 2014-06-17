@@ -35,6 +35,18 @@
       padding: 8px 100px 0;
     }
 
+    &.logo-left {
+      padding-left: 0;
+
+      @media (min-width: @screen-sm) {
+        padding-left: 0;
+      }
+
+      img {
+        margin-left: @content-block-margin;
+      }
+    }
+
     &.text {
       display: block;
       float: none;

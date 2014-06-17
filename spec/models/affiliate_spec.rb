@@ -368,6 +368,11 @@ describe Affiliate do
       affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
     end
 
+    it 'validates logo alignment' do
+      Affiliate.new(@valid_create_attributes.merge(
+                        css_property_hash: { 'logo_alignment' => 'invalid' })).should_not be_valid
+    end
+
     it "should not validate header_footer_css" do
       affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
       affiliate.save.should be_true

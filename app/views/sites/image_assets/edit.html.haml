@@ -33,6 +33,11 @@
         = f.check_box :mark_mobile_logo_for_deletion
         Mark Logo for Deletion
 
+  %fieldset
+    = f.fields_for :css_property_hash do |hash|
+      = hash.label :logo_alignment, 'Logo Alignment'
+      = hash.select :logo_alignment, options_for_select(LogoAlignment::ALL, selected: @site.css_property_hash[:logo_alignment])
+
   - unless @site.force_mobile_format?
     %fieldset
       = f.label :page_background_image, 'Page Background Image'
