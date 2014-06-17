@@ -30,9 +30,11 @@ class ApiSearch
   def get_search_klass(options_index)
     case options_index
       when "news"
-        ApiNewsSearch
+        NewsSearch
       when "images"
         ApiLegacyImageSearch
+      when "videonews"
+        VideoNewsSearch
       when "docs"
         SiteSearch
       else
