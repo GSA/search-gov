@@ -89,10 +89,10 @@ describe Sites::SitesController do
     context 'when affiliate is looking at dashboard data' do
       include_context 'approved user logged in to a site'
 
-      let(:dashboard) { double('Dashboard') }
+      let(:dashboard) { double('RtuDashboard') }
 
       before do
-        Dashboard.should_receive(:new).with(site).and_return dashboard
+        RtuDashboard.should_receive(:new).with(site, Date.current, current_user.sees_filtered_totals).and_return dashboard
         get :show, id: site.id
       end
 

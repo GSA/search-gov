@@ -17,3 +17,6 @@
 %dl
   %dt Email
   %dd= @user.email
+%dl
+  %dt See analytics data minus bot traffic
+  %dd= @user.sees_filtered_totals? ? 'Yes' : 'No'

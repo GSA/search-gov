@@ -1,6 +1,12 @@
 class RtuDashboard < Dashboard
+  include LogstashPrefix
 
   RTU_START_DATE = '2014-06-01'
+
+  def initialize(site, day = Date.current, filter_bots)
+    super(site, day)
+    @filter_bots =filter_bots
+  end
 
   def top_queries
     top_query(TopNQuery, field: 'raw')
@@ -43,7 +49,7 @@ class RtuDashboard < Dashboard
 
   def monthly_queries_histogram
     rows_pre_es = DailyUsageStat.where(affiliate: @site.name).where("day < '#{RTU_START_DATE}'").sum(:total_queries, group: "date_format(day,'%Y-%m')").to_a
-    rows_post_es = queries_by_month
+    rows_post_es = queries_by_month || []
     rows_pre_es + rows_post_es
   end
 
@@ -51,7 +57,7 @@ class RtuDashboard < Dashboard
 
   def queries_by_month
     query = MonthlyHistogramQuery.new(@site.name, RTU_START_DATE)
-    yyyymm_buckets = top_n(query.body, 'search', 'logstash-*')
+    yyyymm_buckets = top_n(query.body, 'search', "#{logstash_prefix(@filter_bots)}*")
     yyyymm_buckets.collect { |hash| [hash["key_as_string"], hash["doc_count"]] } if yyyymm_buckets
   end
 
@@ -66,7 +72,7 @@ class RtuDashboard < Dashboard
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name)
-    RtuCount.count("logstash-#{@day.strftime("%Y.%m.")}*", type, count_query.body)
+    RtuCount.count("#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.")}*", type, count_query.body)
   end
 
   def top_query(klass, options = {})
@@ -76,7 +82,7 @@ class RtuDashboard < Dashboard
   end
 
   def top_n(query_body, type, index_date = nil)
-    index = index_date || "logstash-#{@day.strftime("%Y.%m.%d")}"
+    index = index_date || "#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.%d")}"
     ES::client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
   end
 

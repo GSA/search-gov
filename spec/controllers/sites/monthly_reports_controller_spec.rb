@@ -14,7 +14,7 @@ describe Sites::MonthlyReportsController do
 
       context 'when valid target month passed in' do
         before do
-          MonthlyReport.should_receive(:new).with(site, '2012', '09').and_return monthly_report
+          RtuMonthlyReport.should_receive(:new).with(site, '2012', '09', current_user.sees_filtered_totals).and_return monthly_report
           get :show, mmyyyy: '09/2012'
         end
 
@@ -23,7 +23,9 @@ describe Sites::MonthlyReportsController do
 
       context 'when no target month passed in' do
         it 'should default to yesterdays month' do
-          MonthlyReport.should_receive(:new).with(site, Date.yesterday.strftime('%Y'), Date.yesterday.strftime('%m')).and_return monthly_report
+          RtuMonthlyReport.should_receive(:new).
+            with(site, Date.yesterday.strftime('%Y'), Date.yesterday.strftime('%m'), current_user.sees_filtered_totals).
+            and_return monthly_report
           get :show
         end
       end
@@ -33,10 +35,10 @@ describe Sites::MonthlyReportsController do
           get :show, mmyyyy: 'blah'
         end
 
-        it { should assign_to(:monthly_report).with_kind_of(MonthlyReport) }
+        it { should assign_to(:monthly_report).with_kind_of(RtuMonthlyReport) }
 
-        it 'should default to beginning of yesterdays month' do
-          assigns[:monthly_report].picked_date.should == Date.yesterday.beginning_of_month
+        it 'should default to beginning of todays month' do
+          assigns[:monthly_report].picked_date.should == Date.current.beginning_of_month
         end
 
       end

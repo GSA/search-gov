@@ -1,4 +1,22 @@
-class RtuQueriesRequest < QueriesRequest
+class RtuQueriesRequest
+  MAX_RESULTS = 1000
+  include Virtus
+
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
+  include LogstashPrefix
+
+  attr_reader :start_date, :end_date, :top_queries, :available_dates, :query, :filter_bots
+
+  attribute :site, Affiliate
+  attribute :start_date, String
+  attribute :end_date, String
+  attribute :query, String
+  attribute :filter_bots, Boolean
+
+  def persisted?
+    false
+  end
 
   def save
     rtu_date_range = RtuDateRange.new(site.name, 'search')
@@ -31,7 +49,7 @@ class RtuQueriesRequest < QueriesRequest
   end
 
   def top_n(query_body)
-    ES::client_reader.search(index: "logstash-*", body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    ES::client_reader.search(index: "#{logstash_prefix(filter_bots)}*", body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
 end

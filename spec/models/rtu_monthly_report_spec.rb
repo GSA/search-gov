@@ -4,7 +4,7 @@ describe RtuMonthlyReport do
   fixtures :affiliates
 
   let(:site) { affiliates(:basic_affiliate) }
-  let(:rtu_monthly_report) { RtuMonthlyReport.new(site, '2014','5') }
+  let(:rtu_monthly_report) { RtuMonthlyReport.new(site, '2014','5', true) }
 
   describe "counts" do
     describe "#total_queries" do
@@ -49,7 +49,7 @@ describe RtuMonthlyReport do
 
     before do
       rangeof_date = rtu_monthly_report.picked_date..rtu_monthly_report.picked_date.end_of_month
-      RtuModuleStatsAnalytics.should_receive(:new).with(rangeof_date, site.name).and_return rtu_module_stats_analytics
+      RtuModuleStatsAnalytics.should_receive(:new).with(rangeof_date, site.name, true).and_return rtu_module_stats_analytics
     end
 
     it 'should return the search module stats and sparklines' do

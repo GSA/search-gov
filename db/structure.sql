@@ -907,6 +907,7 @@ CREATE TABLE `users` (
   `requires_manual_approval` tinyint(1) DEFAULT '0',
   `notes` text COLLATE utf8_unicode_ci,
   `default_affiliate_id` int(11) DEFAULT NULL,
+  `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
@@ -2083,3 +2084,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140510192350');
 INSERT INTO schema_migrations (version) VALUES ('20140510192657');
 
 INSERT INTO schema_migrations (version) VALUES ('20140605151403');
+
+INSERT INTO schema_migrations (version) VALUES ('20140618201210');

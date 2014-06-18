@@ -12,11 +12,10 @@ class Sites::MonthlyReportsController < Sites::SetupSiteController
   private
 
   def default_mm_yyyy
-    date = params[:rtu].present? ? Date.current : Date.yesterday
-    date.strftime('%m/%Y')
+    Date.current.strftime('%m/%Y')
   end
 
   def monthly_report(month, year)
-    params[:rtu].present? ? RtuMonthlyReport.new(@site, year, month) : MonthlyReport.new(@site, year, month)
+    RtuMonthlyReport.new(@site, year, month, @current_user.sees_filtered_totals?)
   end
 end

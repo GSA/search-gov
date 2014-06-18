@@ -14,7 +14,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def show
-    @dashboard = params[:rtu].present? ? RtuDashboard.new(@site) : Dashboard.new(@site)
+    @dashboard = RtuDashboard.new(@site, Date.current, @current_user.sees_filtered_totals?)
   end
 
   def new
@@ -50,9 +50,9 @@ class Sites::SitesController < Sites::BaseController
 
   def site_params
     @site_params ||= params.require(:site).
-        permit(:display_name,
-               :locale,
-               :name,
-               { site_domains_attributes: [:domain] })
+      permit(:display_name,
+             :locale,
+             :name,
+             { site_domains_attributes: [:domain] })
   end
 end

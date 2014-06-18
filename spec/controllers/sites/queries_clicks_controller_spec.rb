@@ -4,7 +4,7 @@ describe Sites::QueryClicksController do
   fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
 
-  describe '#show?rtu=true' do
+  describe '#show' do
     it_should_behave_like 'restricted to approved user', :get, :show
 
     context 'when logged in as affiliate' do
@@ -14,7 +14,7 @@ describe Sites::QueryClicksController do
 
       before do
         RtuTopClicks.stub(:new).and_return rtu_top_clicks
-        get :show, id: site.id, start_date: Date.current, end_date: Date.current, query: 'foo', rtu: true
+        get :show, id: site.id, start_date: Date.current, end_date: Date.current, query: 'foo'
       end
 
       it { should assign_to(:top_urls).with(top_n) }
