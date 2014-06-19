@@ -72,54 +72,6 @@ Feature:  Administration
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
 
-  Scenario: Viewing monthly reports for affiliates
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
-      | display_name  | name        | contact_email | contact_name |
-      | agency site   | agency.gov  | one@foo.gov   | One Foo      |
-      | agency site 2 | agency2.gov | two@foo.gov   | Two Foo      |
-    And the following DailyUsageStats exist for each day in "2012-03"
-     | total_queries | affiliate   |
-     | 100           | agency.gov  |
-     | 200           | agency2.gov |
-    When I go to the admin home page
-    And I follow "Monthly Reports"
-    Then I should not see "Total Queries: 300"
-    And I should not see "Total Clicks: 300"
-
-    When I select "agency.gov" from "Affiliate"
-    And I select "March 2012" as the report date
-    And I press "Submit"
-    Then I should see "Total Queries: 3,100"
-
-    When I select "agency2.gov" from "Affiliate"
-    And I press "Submit"
-    Then I should see "Total Queries: 6,200"
-
-  Scenario: Viewing affiliate reports
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
-      | display_name  | name        | contact_email | contact_name |
-      | agency site   | agency.gov  | one@foo.gov   | One Foo      |
-      | agency site 2 | agency2.gov | two@foo.gov   | Two Foo      |
-    And the following DailyUsageStats exists for each day in yesterday's month
-      | total_queries | affiliate   |
-      | 300           | agency.gov  |
-      | 400           | agency2.gov |
-    When I go to the admin home page
-    And I follow "Customer Reports"
-    Then I should see a total for "agency.gov" with a total of "300" per day
-    And I should see a total for "agency2.gov" with a total of "400" per day
-
-    Given the following DailyUsageStats exist for each day in "2012-04"
-      | total_queries | affiliate   |
-      | 100           | agency.gov  |
-      | 200           | agency2.gov |
-    When I select "April 2012" as the report date
-    And I press "Submit"
-    Then I should see a total for "agency.gov" with a total of "3000"
-    Then I should see a total for "agency2.gov" with a total of "6000"
-
   Scenario: Comparing Search Results
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
