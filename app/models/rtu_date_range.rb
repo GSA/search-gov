@@ -17,7 +17,9 @@ class RtuDateRange
   end
 
   def extract_date_range(result)
-    stats = result["facets"]["stats"]
+    facets = result["facets"]
+    return Date.current..Date.current if facets.nil?
+    stats = facets["stats"]
     min, max = normalize(stats["min"]), normalize(stats["max"])
     min..max
   end
