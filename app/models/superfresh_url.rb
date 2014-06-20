@@ -3,15 +3,14 @@ class SuperfreshUrl < ActiveRecord::Base
   validates_presence_of :url
   validates_url :url
 
-  MSNBOT_USER_AGENT = "msnbot-UDiscovery/2.0b (+http://search.msn.com/msnbot.htm)"
   MAX_URLS_PER_FILE_UPLOAD = 100
   DEFAULT_URL_COUNT = 500
 
   class << self
-    def uncrawled_urls(delete_afterwards)
+    def uncrawled_urls
       transaction do
         results = first(DEFAULT_URL_COUNT)
-        delete(results.collect(&:id)) if results.present? and delete_afterwards
+        delete(results.collect(&:id)) if results.present?
         results
       end
     end

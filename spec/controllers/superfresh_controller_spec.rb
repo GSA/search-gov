@@ -30,26 +30,21 @@ describe SuperfreshController, "#index" do
     end
 
     it "should render the first 500 URLs as rss/xml" do
+      superfresh_url_first_500 = SuperfreshUrl.first(500)
       get :index
-      assigns[:superfresh_urls].should == SuperfreshUrl.first(500)
+      assigns[:superfresh_urls].should == superfresh_url_first_500
       response.body.should contain(/Search.USA.gov Superfresh Feed/)
       response.body.should contain(/Recently updated URLs from around the US Government/)
       response.body.should contain(/some.mil/)
       response.body.should contain(/500/)
     end
 
-    context "when the request is from the MSNbot" do
-      before do
-        request.user_agent = SuperfreshUrl::MSNBOT_USER_AGENT
-      end
-
-      it "should delete the returned entries" do
-        SuperfreshUrl.count.should == 501
-        get :index
-        SuperfreshUrl.count.should == 1
-        get :index
-        SuperfreshUrl.count.should == 0
-      end
+    it "should delete the returned entries" do
+      SuperfreshUrl.count.should == 501
+      get :index
+      SuperfreshUrl.count.should == 1
+      get :index
+      SuperfreshUrl.count.should == 0
     end
   end
 end
