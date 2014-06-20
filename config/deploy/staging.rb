@@ -20,5 +20,5 @@ task :restart_resque_workers, :roles => :web do
 end
 
 task :warmup, :roles => :web do
-  run "wget --delete-after --user=demo --password=***REMOVED*** http://searchdemo.usa.gov"
+  run "wget --delete-after --user=demo --password=***REMOVED*** http://searchdemo.usa.gov/search?affiliate=usagov&query=government"
 end
