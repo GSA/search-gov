@@ -1,7 +1,6 @@
 #header-wrapper {
   margin-bottom: @content-block-margin;
   position: relative;
-  top: 0;
   width: 100%;
   z-index: (@zindex-modal-background + 10);
 }
@@ -10,7 +9,6 @@
   .clearfix();
   border-radius: @border-radius-base;
   margin: 0;
-  position: relative;
 
   @media (min-width: @screen-sm) {
     margin: 0 auto;
@@ -30,10 +28,6 @@
   .logo {
     margin-bottom: @content-block-margin;
     padding: 8px 60px 0;
-
-    @media (min-width: @screen-sm) {
-      padding: 8px 100px 0;
-    }
 
     &.logo-left {
       padding-left: 0;

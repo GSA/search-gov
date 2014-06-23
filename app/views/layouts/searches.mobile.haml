@@ -28,13 +28,15 @@
       #header
         = render partial: 'searches/nav_button' if has_menu
         = mobile_header @search.affiliate
-        = main_menu @search, @search_params, navigations if has_menu
+        #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
         = navigations_and_related_sites(@search, @search_params, navigations)
         = render partial: 'searches/form', locals: { search: @search }
 
     #main-content{ tabindex: -1 }= yield
 
     = render partial: 'searches/footer', locals: { affiliate: @search.affiliate } if @search.affiliate.managed_footer_links.present?
+
+    #main-menu-backdrop
 
     = javascript_include_tag 'searches_mobile'
 

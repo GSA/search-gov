@@ -33,6 +33,21 @@ input[type=submit],
   }
 }
 
+body {
+  @media (min-width: @screen-sm-min) {
+    .transition(left 0.5s ease-in-out);
+    display: block;
+    position: relative;
+    overflow-x: hidden;
+    left: 0;
+
+    &.show-menu {
+      left: -200px;
+      overflow-x: hidden;
+    }
+  }
+}
+
 #main-content {
   min-height: 600px;
 }

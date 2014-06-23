@@ -375,22 +375,22 @@ Feature: Manage Display
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's mobile search page
-    And I press "Menu"
-    Then I should find "Browse site" in the main menu
+    And I press "Browse site"
+    Then I should find "News" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
     Then I should see a link to "Contact" with url for "mailto:contact@agency.gov"
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's "Inactive site search" mobile site search page
-    And I press "Menu"
-    Then I should find "Browse site" in the main menu
+    And I press "Browse site"
+    Then I should find "News" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
 
     When I am on agency.gov's "Inactive news search" mobile news search page
-    And I press "Menu"
-    Then I should find "Browse site" in the main menu
+    And I press "Browse site"
+    Then I should find "News" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"
 

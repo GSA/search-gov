@@ -22,8 +22,7 @@ whenFocusOnQuery = (e) ->
   return if e.which? and e.which == 13
   e.stopPropagation()
   $('#search-nav .dropdown').addClass 'collapsed'
-  $mainMenu = $('#main-menu')
-  $mainMenu.removeClass('in').addClass('collapse') if $mainMenu.hasClass('in')
+  window.usasearch.hideMenu()
   showOrHideClearButton()
 
 $(document).on 'focus keydown', queryFieldSelector, whenFocusOnQuery
