@@ -1097,7 +1097,7 @@ Feature: Affiliate Search
     Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         |
       | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
-    When I am on the advanced search page
+    When I am on usagov's advanced search page
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter search term(s)"
@@ -1107,7 +1107,7 @@ Feature: Affiliate Search
     And the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
-    When I am on the affiliate advanced search page for "bar.gov"
+    When I am on bar.gov's advanced search page
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter search term(s)"

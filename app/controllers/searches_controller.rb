@@ -9,7 +9,8 @@ class SearchesController < ApplicationController
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]
-  before_filter :force_request_format, :only => [:index, :docs, :news]
+  before_filter :force_request_format, :only => [:advanced, :docs, :index, :news]
+  before_filter :filter_params, only: :advanced
   ssl_allowed :all
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
 
@@ -63,9 +64,12 @@ class SearchesController < ApplicationController
 
   def advanced
     @page_title = "#{t(:advanced_search)} - #{@affiliate.display_name}"
+    @search = WebSearch.new(@search_options)
     @affiliate = @search_options[:affiliate]
-    request.format = :html
-    respond_to { |format| format.html {} }
+    set_search_params
+    @filtered_params[:filter] = %w(0 1 2).include?(@filtered_params[:filter]) ? @filtered_params[:filter] : '1'
+    @filtered_params[:filetype] = %w(doc pdf ppt txt xls).include?(@filtered_params[:filetype]) ? @filtered_params[:filetype] : nil
+    respond_to { |format| format.any(:html, :mobile) {} }
   end
 
   private
@@ -115,6 +119,21 @@ class SearchesController < ApplicationController
                            sort_by: params[:sort_by],
                            since_date: params[:since_date],
                            until_date: params[:until_date])
+  end
+
+  def filter_params
+    @filtered_params = params.permit(:affiliate,
+                                     :'filetype',
+                                     :filter,
+                                     :m,
+                                     :query,
+                                     :'query-not',
+                                     :'query-or',
+                                     :'query-quote',
+                                     :utf8)
+    @filtered_params.keys.each do |field|
+      @filtered_params[field] = sanitize_query @filtered_params[field]
+    end
   end
 
   def gets_blended_results?

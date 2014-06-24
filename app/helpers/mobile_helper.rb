@@ -2,6 +2,17 @@ require 'benchmark'
 module MobileHelper
   DEFAULT_FONT_STYLESHEET_LINK = 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'.freeze
 
+  ADVANCED_SEARCH_FILETYPE_OPTIONS = [[I18n.t(:advanced_search_file_type_all_format_label), nil],
+                                      ['Adobe PDF', 'pdf'],
+                                      ['Microsoft Excel', 'xls'],
+                                      ['Microsoft PowerPoint', 'ppt'],
+                                      ['Microsoft Word', 'doc'],
+                                      [I18n.t(:advanced_search_file_type_txt_format_label), 'txt']].freeze
+
+  def advanced_search?
+    controller.action_name == 'advanced'
+  end
+
   def dropdown_wrapper(partial, html, id, show_more_label)
     render partial: partial,
            locals: { html: html, id: id, show_more_label: show_more_label }

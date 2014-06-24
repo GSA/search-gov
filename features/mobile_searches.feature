@@ -397,3 +397,26 @@ Feature: Searches using mobile device
     And I fill in "query" with "jobs"
     And I press "Search" in the search box
     Then I should see at least 10 search results
+
+  Scenario: Advanced search
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name     | url                                | is_navigable |
+      | Articles | http://en.agency.gov/feed/articles | true         |
+    And affiliate "es.agency.gov" has the following RSS feeds:
+      | name      | url                                | is_navigable |
+      | Artículos | http://es.agency.gov/feed/articles | true         |
+    When I am on en.agency.gov's advanced search page
+    Then I should see "Everything" within the SERP active navigation
+    And the "Moderate" radio button should be checked
+
+    When I fill in "All of these words" with "allofit"
+    And I fill in "This exact phrase" with "exact"
+    And I fill in "Any of these words" with "any"
+    And I fill in "None of these words" with "bad"
+    And I select "Adobe PDF" from "File Type"
+    And I press "Advanced Search"
+    And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"

@@ -30,7 +30,7 @@
         = mobile_header @search.affiliate
         #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
         = navigations_and_related_sites(@search, @search_params, navigations)
-        = render partial: 'searches/form', locals: { search: @search }
+        = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
 
     #main-content{ tabindex: -1 }= yield
 

@@ -12,14 +12,14 @@ module NavigationHelpers
       search_path
     when /the Spanish mobile search results page for "([^\"]*)"$/
       search_path(:query => $1, :locale => 'en', :m => 'true')
-    when /the advanced search page/
-      advanced_search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
     when /^(.*)'s mobile search page$/
       search_path(:affiliate => $1, :m => 'true')
-      when /^(.*)'s overridden search page$/
-        search_path(:affiliate => $1, :m => 'override')
+    when /^(.*)'s overridden search page$/
+      search_path(:affiliate => $1, :m => 'override')
+    when /^(.*)'s advanced search page$/
+      advanced_search_path(:affiliate => $1)
     when /^(.*)'s strictui search page$/
       search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
@@ -64,8 +64,6 @@ module NavigationHelpers
       monthly_reports_path
     when /the affiliate analytics query search results page/
       query_search_affiliate_analytics_path
-    when /the affiliate advanced search page for "([^\"]*)"$/
-      advanced_search_path(:affiliate => $1)
     when /the query groups admin page/
       analytics_query_groups_path
     when /the boosted contents admin page/

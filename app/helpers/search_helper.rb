@@ -277,10 +277,10 @@ module SearchHelper
     html.join("\n").html_safe unless html.empty?
   end
 
-  def render_advance_search_operators_help_text(search_engine)
+  def render_advance_search_operators_help_text(search_engine, options = {})
     url = t "advanced_search_operator_url_on_#{search_engine.downcase}"
     link = link_to I18n.t(:advanced_search_operator_link), url
-    content_tag(:div, I18n.t(:advanced_search_operator, link: link).html_safe)
+    content_tag(:span, I18n.t(:advanced_search_operator, link: link).html_safe, options)
   end
 
   def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
@@ -312,8 +312,8 @@ module SearchHelper
     label_text.blank? ? '&nbsp;'.html_safe : content_tag(:h3, label_text, :id => 'left_nav_label')
   end
 
-  def hidden_field_tag_if_key_exists(param_sym)
-    hidden_field_tag param_sym, params[param_sym] if params[param_sym]
+  def hidden_field_tag_if_key_exists(param_sym, value = params[param_sym])
+    hidden_field_tag param_sym, value if value
   end
 
   def search_bar_class(search)

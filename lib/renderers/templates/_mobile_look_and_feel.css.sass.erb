@@ -22,9 +22,17 @@ $button-background-lightness: lightness($button-background-color)
   .tt-hint
     color: $tt-hint-color
 
-  @if $button-background-lightness > 75%
-    #search-button
-      background-image: url(<%= ActionController::Base.helpers.asset_path('bootstrap/glyphicons-halflings.png') %>)
+#advanced-search-button
+  background-color: $button-background-color
+
+#lightness
+  width: $button-background-lightness
+
+@if $button-background-lightness > 75%
+  #search-bar #search-button
+    background-image: url(<%= ActionController::Base.helpers.asset_path('bootstrap/glyphicons-halflings.png') %>)
+  #advanced-search-button
+    color: black
 
 #footer-wrapper
   background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
