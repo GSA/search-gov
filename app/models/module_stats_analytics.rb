@@ -56,7 +56,7 @@ class ModuleStatsAnalytics
 
   def clicks_and_impressions
     DailySearchModuleStat.select('module_tag, display_name, SUM(clicks) AS clicks, SUM(impressions) AS impressions').
-        where(@conditions).group(:module_tag).order("clicks DESC, impressions DESC").joins(:search_module)
+      where(@conditions).group(:module_tag).order("clicks DESC, impressions DESC").joins(:search_module)
   end
 
   def clickthru_ratio(clicks, impressions)

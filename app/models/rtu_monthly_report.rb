@@ -20,6 +20,7 @@ class RtuMonthlyReport < MonthlyReport
   end
 
   private
+
   def month_count(type)
     count_query = CountQuery.new(@site.name)
     RtuCount.count("#{logstash_prefix(@filter_bots)}#{@year}.#{'%02d' % @month}.*", type, count_query.body)

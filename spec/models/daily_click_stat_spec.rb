@@ -22,13 +22,4 @@ describe DailyClickStat do
       DailyClickStat.create!(@valid_attributes)
     end
   end
-
-  describe ".top_urls(affiliate_name, start_date, end_date, num_results)" do
-    it "should return the num_results most popular clicked URLs for an affiliate in some date range" do
-      num_results, start_date, end_date, affiliate_name = 20, Date.yesterday, Date.current, "foo"
-      DailyClickStat.should_receive(:sum).with(:times, :group => :url, :order => "sum_times desc", :limit => num_results,
-                                               :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate_name])
-      DailyClickStat.top_urls(affiliate_name, start_date, end_date, num_results)
-    end
-  end
 end

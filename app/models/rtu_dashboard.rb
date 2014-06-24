@@ -1,10 +1,13 @@
-class RtuDashboard < Dashboard
+class RtuDashboard
   include LogstashPrefix
+  attr_reader :trending_queries, :top_queries, :no_results, :low_ctr_queries, :trending_urls, :top_urls,
+              :monthly_usage_chart, :monthly_queries_to_date, :monthly_clicks_to_date
 
   RTU_START_DATE = '2014-06-01'
 
   def initialize(site, day = Date.current, filter_bots)
-    super(site, day)
+    @site = site
+    @day = day
     @filter_bots =filter_bots
   end
 
@@ -20,6 +23,12 @@ class RtuDashboard < Dashboard
     query = TopNQuery.new(@site.name, field: 'params.url')
     buckets = top_n(query.body, 'click')
     Hash[buckets.collect { |hash| [hash["key"], hash["doc_count"]] }] if buckets
+  end
+
+  def trending_urls
+    redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+    trending_urls_key = ['TrendingUrls', @site.name].join(':')
+    redis.smembers(trending_urls_key)
   end
 
   def trending_queries
@@ -45,6 +54,17 @@ class RtuDashboard < Dashboard
 
   def monthly_clicks_to_date
     mtd_count("click")
+  end
+
+  def monthly_usage_chart
+    rows = monthly_queries_histogram
+    return nil unless rows.many?
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Date')
+    data_table.new_column('number', 'Query Total')
+    data_table.add_rows(rows)
+    options = {width: 500, height: 250, title: 'Total Search Queries Over Time'}
+    GoogleVisualr::Interactive::AreaChart.new(data_table, options)
   end
 
   def monthly_queries_histogram

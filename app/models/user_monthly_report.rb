@@ -9,14 +9,16 @@ class UserMonthlyReport
     user.affiliates.each do |affiliate|
       stats = {}
       stats[:affiliate] = affiliate
-      stats[:total_queries] = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, affiliate.name)
-      stats[:total_clicks] = DailySearchModuleStat.where(day: @report_date.beginning_of_month..@report_date.end_of_month,
-                                                         affiliate_name: affiliate.name).sum(:clicks)
+      recent_monthly_report = RtuMonthlyReport.new(affiliate, @report_date.year, @report_date.month, false)
+      stats[:total_queries] = recent_monthly_report.total_queries
+      stats[:total_clicks] = recent_monthly_report.total_clicks
+      # Reminder: migrate from DailyUsageStat to RtuMonthlyReport in July 2014 for :last_month_total_queries
       stats[:last_month_total_queries] = DailyUsageStat.monthly_totals(last_month.year, last_month.month, affiliate.name)
+      # Reminder: migrate from DailyUsageStat to ES data in June 2015 for :last_year_total_queries
       stats[:last_year_total_queries] = DailyUsageStat.monthly_totals(last_year.year, last_year.month, affiliate.name)
       stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
       stats[:last_year_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_year_total_queries])
-      stats[:popular_queries] = DailyQueryStat.most_popular_terms(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month, 10)
+      stats[:popular_queries] = RtuQueryStat.most_popular_human_searches(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month, 10)
       @affiliate_stats[affiliate.name] = stats
     end
     @total_stats = { :total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0 }

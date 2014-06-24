@@ -56,7 +56,6 @@ describe Affiliate do
     it { should have_many(:daily_click_stats).dependent(:delete_all) }
     it { should have_many(:queries_clicks_stats).dependent(:delete_all) }
     it { should have_many(:daily_usage_stats).dependent(:delete_all) }
-    it { should have_many(:daily_search_module_stats).dependent(:delete_all) }
     it { should have_many(:daily_query_stats).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }

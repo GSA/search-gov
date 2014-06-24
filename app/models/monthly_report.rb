@@ -5,6 +5,8 @@ class MonthlyReport
     start_date = picked_date
     end_date = start_date.end_of_month
     @month_range = start_date..end_date
+    rtu_date_range = RtuDateRange.new(@site.name, 'search')
+    @available_rtu_dates = rtu_date_range.available_dates_range
   end
 
   def total_queries
@@ -29,18 +31,23 @@ class MonthlyReport
   end
 
   def latest_mmyyyy
-    boundary_mmyyyy(:most_recent_populated_date_for)
+    latest_legacy_date = boundary_mmyyyy(:most_recent_populated_date_for)
+    latest = [latest_legacy_date, @available_rtu_dates.last].compact.max
+    latest ||= Date.current
+    latest.strftime('%m/%Y')
   end
 
   def earliest_mmyyyy
-    boundary_mmyyyy(:oldest_populated_date_for)
+    earliest_legacy_date = boundary_mmyyyy(:oldest_populated_date_for)
+    earliest = [earliest_legacy_date, @available_rtu_dates.first].compact.min
+    earliest ||= Date.current
+    earliest.strftime('%m/%Y')
   end
 
   private
 
   def boundary_mmyyyy(method)
-    date = DailySearchModuleStat.send(method, @site.name) || Date.yesterday
-    date.strftime('%m/%Y')
+    DailySearchModuleStat.send(method, @site.name)
   end
 
 end

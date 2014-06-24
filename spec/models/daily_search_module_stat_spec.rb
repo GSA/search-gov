@@ -30,7 +30,7 @@ describe DailySearchModuleStat do
     end
   end
 
-  describe "#most_recent_populated_date" do
+  describe "#most_recent_populated_date_for" do
     context "when data for multiple days exists" do
       before do
         DailySearchModuleStat.create!(@valid_attributes)
@@ -38,7 +38,7 @@ describe DailySearchModuleStat do
       end
 
       it "should return the most recent date" do
-        DailySearchModuleStat.most_recent_populated_date.should == Date.current
+        DailySearchModuleStat.most_recent_populated_date_for(affiliates(:power_affiliate).name).should == Date.current
       end
     end
 
@@ -48,7 +48,30 @@ describe DailySearchModuleStat do
       end
 
       it "should return nil" do
-        DailySearchModuleStat.most_recent_populated_date.should be_nil
+        DailySearchModuleStat.most_recent_populated_date_for(affiliates(:power_affiliate).name).should be_nil
+      end
+    end
+  end
+
+  describe "#oldest_populated_date_for" do
+    context "when data for multiple days exists" do
+      before do
+        DailySearchModuleStat.create!(@valid_attributes)
+        DailySearchModuleStat.create!(@valid_attributes.merge(:day => Date.yesterday))
+      end
+
+      it "should return the oldest date" do
+        DailySearchModuleStat.oldest_populated_date_for(affiliates(:power_affiliate).name).should == Date.yesterday
+      end
+    end
+
+    context "when table is empty" do
+      before do
+        DailySearchModuleStat.delete_all
+      end
+
+      it "should return nil" do
+        DailySearchModuleStat.oldest_populated_date_for(affiliates(:power_affiliate).name).should be_nil
       end
     end
   end

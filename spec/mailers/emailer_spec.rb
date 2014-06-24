@@ -52,8 +52,8 @@ describe Emailer do
     let(:document_collection) do
       affiliates(:basic_affiliate).document_collections.create!(
         :name => 'WH only',
-        :url_prefixes_attributes => {'0' => {:prefix => 'http://www.whitehouse.gov/photos-and-video/'},
-                                     '1' => {:prefix => 'http://www.whitehouse.gov/blog/is/deep'}})
+        :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
+                                      '1' => { :prefix => 'http://www.whitehouse.gov/blog/is/deep' } })
     end
 
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
@@ -187,18 +187,15 @@ describe Emailer do
 
   describe '#daily_snapshot' do
     let(:membership) { memberships(:four) }
+    let(:dashboard) { mock(RtuDashboard) }
 
     before do
-      DailyQueryStat.destroy_all
-      DailyQueryNoresultsStat.destroy_all
-      DailyClickStat.destroy_all
-      QueriesClicksStat.destroy_all
-      ['query1', 'query2', 'query3'].each_with_index do |query, index|
-        DailyQueryStat.create!(day: Date.yesterday, query: query, affiliate: membership.affiliate.name, times: 100 + index)
-        DailyQueryNoresultsStat.create!(day: Date.yesterday, query: "#{query}blah", affiliate: membership.affiliate.name, times: 1 + index)
-        DailyClickStat.create!(day: Date.yesterday, url: "http://www.nps.gov/#{query}", affiliate: membership.affiliate.name, times: 6 + index)
-        QueriesClicksStat.create!(day: Date.yesterday, url: "http://www.nps.gov/#{query}", query: query, affiliate: membership.affiliate.name, times: 6 + index)
-      end
+      RtuDashboard.stub(:new).and_return dashboard
+      dashboard.stub!(:top_queries).and_return [QueryCount.new('query3', 102), QueryCount.new('query2', 101), QueryCount.new('query1', 100)]
+      dashboard.stub!(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
+      dashboard.stub!(:trending_queries).and_return %w(query3 query2 query1)
+      dashboard.stub!(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
+      dashboard.stub!(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
     end
 
     subject(:email) { Emailer.daily_snapshot(membership) }
@@ -242,17 +239,18 @@ describe Emailer do
   describe "#affiliate_monthly_report" do
     let(:user) { users(:affiliate_manager) }
     let(:report_date) { Date.parse('2012-04-13') }
+    let(:user_monthly_report) { mock(UserMonthlyReport) }
 
     before do
-      affiliate = affiliates(:basic_affiliate)
-      DailyUsageStat.destroy_all
-      DailyQueryStat.destroy_all
-      DailySearchModuleStat.destroy_all
-      DailyUsageStat.create!(:day => report_date, :affiliate => affiliate.name, :total_queries => 100)
-      DailyUsageStat.create!(:day => report_date - 1.month, :affiliate => affiliate.name, :total_queries => 75)
-      DailyUsageStat.create!(:day => report_date - 1.year, :affiliate => affiliate.name, :total_queries => 150)
-      DailySearchModuleStat.create!(:day => report_date, :affiliate_name => affiliate.name, :clicks => 100, :locale => 'en', :vertical => 'test', :module_tag => 'test', :impressions => 1000)
-      %w(query1 query2 query3).each { |query| DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100) }
+      UserMonthlyReport.stub(:new).and_return user_monthly_report
+      as1 = { affiliate: affiliates(:basic_affiliate), total_queries: 100, last_month_percent_change: 33.33, last_year_percent_change: -33.33, total_clicks: 100, popular_queries: [QueryCount.new('query6', 55), QueryCount.new('query5', 54), QueryCount.new('query4', 53)] }
+      as2 = { affiliate: affiliates(:power_affiliate), total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [QueryCount.new('query3', 102), QueryCount.new('query2', 101), QueryCount.new('query1', 100)] }
+      as3 = { affiliate: affiliates(:spanish_affiliate), total_queries: 0, last_month_percent_change: 0, last_year_percent_change: 0, total_clicks: 0, popular_queries: RtuQueryStat::INSUFFICIENT_DATA }
+      total = { total_queries: 140, last_month_percent_change: 24, last_year_percent_change: -29, total_clicks: 135 }
+      user_monthly_report.stub(:report_date).and_return report_date
+      affiliate_stats = { affiliates(:basic_affiliate).name => as1, affiliates(:power_affiliate).name => as2, affiliates(:spanish_affiliate).name => as3 }
+      user_monthly_report.stub(:affiliate_stats).and_return affiliate_stats
+      user_monthly_report.stub(:total_stats).and_return total
     end
 
     subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
@@ -261,15 +259,20 @@ describe Emailer do
     it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/April 2012/) }
 
-    it "should calculate the proper totals for the data in the database" do
+    it "should show per-affiliate and total stats for the month" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('100 33.33% -33.33% 100')
+      body.should include('40 12.00% -9.00% 35')
       body.should include('0 0.00% 0.00% 0')
+      body.should include('140 24.00% -29.00% 135')
       body.should include('Top 10 Searches for April 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
       body.should include('query1 100')
-      body.should include('query2 100')
-      body.should include('query3 100')
+      body.should include('query2 101')
+      body.should include('query3 102')
+      body.should include('query6 55')
+      body.should include('query5 54')
+      body.should include('query4 53')
     end
   end
 
@@ -279,11 +282,8 @@ describe Emailer do
 
     before do
       affiliate = affiliates(:basic_affiliate)
-      DailyQueryStat.destroy_all
       report_date = Date.civil(report_year, 1, 1)
-      %w{query1 query2 query3}.each do |query|
-        DailyQueryStat.create!(:day => report_date, :query => query, :affiliate => affiliate.name, :times => 100)
-      end
+      RtuQueryStat.stub(:most_popular_human_searches).and_return([QueryCount.new('query6', 55), QueryCount.new('query5', 54), QueryCount.new('query4', 53)], RtuQueryStat::INSUFFICIENT_DATA)
     end
 
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
@@ -292,13 +292,13 @@ describe Emailer do
     it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
     it { should have_subject(/2012 Year in Review/) }
 
-    it "should calculate the proper totals for the data in the database" do
+    it "show stats for the year" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('Most Popular Queries for 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query1 100')
-      body.should include('query2 100')
-      body.should include('query3 100')
+      body.should include('query6 55')
+      body.should include('query5 54')
+      body.should include('query4 53')
     end
   end
 

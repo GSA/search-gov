@@ -15,6 +15,16 @@ class Sites::MonthlyReportsController < Sites::SetupSiteController
   end
 
   def monthly_report(month, year)
-    RtuMonthlyReport.new(@site, year, month, @current_user.sees_filtered_totals?)
+    if Date.civil(year.to_i, month.to_i) < Date.parse(RtuDashboard::RTU_START_DATE)
+      establish_aws_connection
+      MonthlyReport.new(@site, year, month)
+    else
+      RtuMonthlyReport.new(@site, year, month, @current_user.sees_filtered_totals?)
+    end
   end
+
+  def establish_aws_connection
+    AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+  end
+
 end

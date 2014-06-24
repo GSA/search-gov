@@ -110,28 +110,6 @@ Then /^I should see "([^\"]*)" in the site wizards header$/ do |step|
   page.should have_selector(".steps_header img[alt='#{step}']")
 end
 
-Given /^the following DailySearchModuleStats exist for each day in yesterday's month$/ do |table|
-  end_date = Date.yesterday
-  start_date = end_date.beginning_of_month
-  table.hashes.each do |hash|
-    start_date.upto(end_date) do |day|
-      DailySearchModuleStat.create!(:day => day, :affiliate_name => hash['affiliate'], :locale => 'en', :vertical => 'web',
-                                    :module_tag => 'BWEB', :clicks => hash['total_clicks'], :impressions => hash['total_clicks'])
-    end
-  end
-end
-
-Given /^the following DailySearchModuleStats exist for each day in "([^\"]*)"$/ do |month_year, table|
-  start_date = Date.parse(month_year + "-01")
-  end_date = start_date.end_of_month
-  table.hashes.each do |hash|
-    start_date.upto(end_date) do |day|
-      DailySearchModuleStat.create!(:day => day, :affiliate_name => hash['affiliate'], :locale => 'en', :vertical => 'web',
-                                    :module_tag => 'BWEB', :clicks => hash['total_clicks'], :impressions => hash['total_clicks'])
-    end
-  end
-end
-
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")

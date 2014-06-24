@@ -1,5 +1,4 @@
 class DailyUsageStat < ActiveRecord::Base
-  extend AffiliateDailyStats
   validates_presence_of :day, :affiliate
   validates_uniqueness_of :day, :scope => :affiliate
 

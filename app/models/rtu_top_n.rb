@@ -8,7 +8,8 @@ class RtuTopN
   end
 
   def top_n
-    term_buckets = ES::client_reader.search(index: "#{logstash_prefix(@filter_bots)}*", type: @type, body: @query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
+    opts = { index: "#{logstash_prefix(@filter_bots)}*", type: @type, body: @query_body, size: 0 }
+    term_buckets = ES::client_reader.search(opts)["aggregations"]["agg"]["buckets"] rescue []
     term_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
   end
 

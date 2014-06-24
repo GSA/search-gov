@@ -15,7 +15,7 @@ describe "sites/sites/show.html.haml" do
   context "when affiliate user views the dashboard" do
     context 'regardless of the data available' do
       before do
-        assign :dashboard, double('Dashboard').as_null_object
+        assign :dashboard, double('RtuDashboard').as_null_object
       end
 
       it "should show header" do
@@ -39,7 +39,7 @@ describe "sites/sites/show.html.haml" do
       let(:trending_urls) { %w[http://www.gov.gov/url1.html http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/url2.html] }
 
       before do
-        assign :dashboard, double('Dashboard', trending_urls: trending_urls).as_null_object
+        assign :dashboard, double('RtuDashboard', trending_urls: trending_urls).as_null_object
       end
 
       it 'should show them truncated in an ordered list without URL protocol' do
@@ -55,10 +55,8 @@ describe "sites/sites/show.html.haml" do
 
     context 'when no-result queries are available for today' do
       before do
-        DailyQueryNoresultsStat.create!(:day => Date.current, :query => 'nr1', :times => 100, :affiliate => site.name)
-        DailyQueryNoresultsStat.create!(:day => Date.current, :query => 'nr2', :times => 50, :affiliate => site.name)
-        no_results = DailyQueryNoresultsStat.most_popular_no_results_queries(Date.current, Date.current, 10, site.name)
-        assign :dashboard, double('Dashboard', no_results: no_results).as_null_object
+        no_results = [QueryCount.new('nr1', 100), QueryCount.new('nr2', 50)]
+        assign :dashboard, double('RtuDashboard', no_results: no_results).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -73,10 +71,8 @@ describe "sites/sites/show.html.haml" do
 
     context 'when top clicked URLs are available for today' do
       before do
-        DailyClickStat.create!(:day => Date.current, :url => 'http://www.gov.gov/clicked_url4.html', :times => 20, :affiliate => site.name)
-        DailyClickStat.create!(:day => Date.current, :url => 'http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html', :times => 10, :affiliate => site.name)
-        top_urls = DailyClickStat.top_urls(site.name, Date.current, Date.current, 10)
-        assign :dashboard, double('Dashboard', top_urls: top_urls).as_null_object
+        top_urls = {'http://www.gov.gov/clicked_url4.html' => 20, 'http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html' => 10}
+        assign :dashboard, double('RtuDashboard', top_urls: top_urls).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -93,9 +89,8 @@ describe "sites/sites/show.html.haml" do
 
     context 'when top clicked URLs are not available for today' do
       before do
-        DailyClickStat.delete_all
-        top_urls = DailyClickStat.top_urls(site.name, Date.current, Date.current, 10)
-        assign :dashboard, double('Dashboard', top_urls: top_urls).as_null_object
+        top_urls = {}
+        assign :dashboard, double('RtuDashboard', top_urls: top_urls).as_null_object
       end
 
       it 'should say something about insufficient content' do
@@ -107,10 +102,8 @@ describe "sites/sites/show.html.haml" do
 
     context 'when top queries are available for today' do
       before do
-        DailyQueryStat.create!(:day => Date.current, :query => 'jobs', :times => 20, :affiliate => site.name)
-        DailyQueryStat.create!(:day => Date.current, :query => 'economy', :times => 10, :affiliate => site.name)
-        top_queries = DailyQueryStat.most_popular_terms(site.name, Date.current, Date.current, 10)
-        assign :dashboard, double('Dashboard', top_queries: top_queries).as_null_object
+        top_queries = [QueryCount.new('jobs', 20), QueryCount.new('economy', 10)]
+        assign :dashboard, double('RtuDashboard', top_queries: top_queries).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -130,8 +123,7 @@ describe "sites/sites/show.html.haml" do
           ['rare', 2],
           ['never', 0]
         ]
-        DailyQueryStat.stub(:low_ctr_queries).with(site.name).and_return low_ctr_queries
-        assign :dashboard, double('Dashboard', low_ctr_queries: low_ctr_queries).as_null_object
+        assign :dashboard, double('RtuDashboard', low_ctr_queries: low_ctr_queries).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -148,7 +140,7 @@ describe "sites/sites/show.html.haml" do
     context 'when trending queries are available for today' do
       before do
         trending_queries = %w{obama jobs economy}
-        assign :dashboard, double('Dashboard', trending_queries: trending_queries).as_null_object
+        assign :dashboard, double('RtuDashboard', trending_queries: trending_queries).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -166,7 +158,7 @@ describe "sites/sites/show.html.haml" do
       context 'when usage chart is available' do
         before do
           chart = double('Google Chart', to_js: '')
-          assign :dashboard, double('Dashboard', monthly_usage_chart: chart).as_null_object
+          assign :dashboard, double('RtuDashboard', monthly_usage_chart: chart).as_null_object
         end
 
         it 'should show the Google chart' do
@@ -181,7 +173,7 @@ describe "sites/sites/show.html.haml" do
       let(:formatted_today) { Date.current.to_formatted_s(:long).squish }
 
       before do
-        assign :dashboard, double('Dashboard', monthly_queries_to_date: 12345, monthly_clicks_to_date: 5678).as_null_object
+        assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12345, monthly_clicks_to_date: 5678).as_null_object
       end
 
       it 'should show the totals in a month-to-date div' do

@@ -4,10 +4,6 @@ class DailySearchModuleStat < ActiveRecord::Base
   belongs_to :search_module, primary_key: "tag", foreign_key: "module_tag", class_name: "SearchModule"
   before_validation :set_locale
 
-  def self.most_recent_populated_date
-    maximum(:day)
-  end
-
   def self.most_recent_populated_date_for(site_name)
     where(affiliate_name: site_name).maximum(:day)
   end

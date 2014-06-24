@@ -75,7 +75,7 @@ class Emailer < ActionMailer::Base
     @report_year = year
     @affiliate_stats = {}
     user.affiliates.select([:display_name, :name]).order(:name).each do |affiliate|
-      @affiliate_stats[affiliate.display_name] = DailyQueryStat.most_popular_terms(affiliate.name, jan1, jan1.end_of_year, 100)
+      @affiliate_stats[affiliate.display_name] = RtuQueryStat.most_popular_human_searches(affiliate.name, jan1, jan1.end_of_year, 100)
     end
     setup_email(user.email, __method__)
     send_mail(:html)
@@ -91,7 +91,7 @@ class Emailer < ActionMailer::Base
   def daily_snapshot(membership)
     @site = membership.affiliate
     headers['Content-Type'] = 'text/html'
-    @dashboard = Dashboard.new(membership.affiliate, Date.yesterday)
+    @dashboard = RtuDashboard.new(membership.affiliate, Date.yesterday)
     setup_email(membership.user.email, __method__)
     send_mail(:html)
   end
