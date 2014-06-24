@@ -55,7 +55,6 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :daily_query_noresults_stats
     assoc.has_many :daily_click_stats
     assoc.has_many :queries_clicks_stats
-    assoc.has_many :daily_left_nav_stats
     assoc.has_many :daily_usage_stats
   end
 

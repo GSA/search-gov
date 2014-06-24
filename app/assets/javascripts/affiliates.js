@@ -3,7 +3,6 @@
 //= require sayt/internal
 //= require legacy/jquery.popup
 //= require jquery_extensions/jquery.tablednd_0_5
-//= require jquery_extensions/tree.jquery
 //= require shared/jquery.noconflict
 //= require prototype
 //= require legacy/rails

@@ -209,17 +209,6 @@ CREATE TABLE `daily_click_stats` (
   KEY `index_daily_click_stats_on_affiliate_and_day` (`affiliate`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `daily_left_nav_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` date NOT NULL,
-  `search_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `params` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `total` int(11) NOT NULL DEFAULT '0',
-  `affiliate` varchar(33) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_daily_left_nav_stats_on_affiliate_and_day` (`affiliate`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `daily_query_noresults_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `day` date NOT NULL,
@@ -2086,3 +2075,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140605151403');
 INSERT INTO schema_migrations (version) VALUES ('20140618201210');
 
 INSERT INTO schema_migrations (version) VALUES ('20140624211312');
+
+INSERT INTO schema_migrations (version) VALUES ('20140624154618');
