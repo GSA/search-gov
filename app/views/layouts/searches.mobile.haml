@@ -36,7 +36,7 @@
 
     = render partial: 'searches/footer', locals: { affiliate: @search.affiliate } if @search.affiliate.managed_footer_links.present?
 
-    #main-menu-backdrop
+    #main-menu-backdrop{ onclick: 'void(0)' }
 
     = javascript_include_tag 'searches_mobile'
 
