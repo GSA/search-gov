@@ -9,6 +9,14 @@
   border: 0;
   border-radius: @border-radius-base;
 
+  @media (min-width: @screen-sm-min) {
+    display: none;
+
+    &.has-browse-site {
+      display: block;
+    }
+  }
+
   @media (min-width: @screen-md-min) {
     float: none;
     position: absolute;

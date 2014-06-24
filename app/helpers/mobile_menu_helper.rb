@@ -7,6 +7,10 @@ module MobileMenuHelper
     end
   end
 
+  def menu_button_class(site)
+    'has-browse-site' if site.managed_header_links.present?
+  end
+
   def main_menu(search, search_params, navigations)
     content_tag :div, id: 'main-menu', class: 'menu collapse' do
       content = content_tag :h2, I18n.t(:'searches.menu'), class: 'content-heading'

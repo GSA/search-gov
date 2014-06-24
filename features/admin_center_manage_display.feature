@@ -336,11 +336,16 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And affiliate "agency.gov" has the following document collections:
       | name                 | prefixes             | position | is_navigable |
+      | Active site search   | http://apps.usa.gov/ | 3        | true         |
       | Inactive site search | http://apps.usa.gov/ | 6        | false        |
     And affiliate "agency.gov" has the following RSS feeds:
       | name                 | url                            | is_navigable | position | show_only_media_content |
       | Inactive news search | http://en.agency.gov/feed/News | false        | 5        | false                   |
     And I am logged in with email "john@agency.gov" and password "random_string"
+
+    When I am on agency.gov's mobile search page
+    Then I should not see "Browse site"
+
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
       | Header Link Title 0 | News                      |

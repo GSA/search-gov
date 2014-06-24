@@ -26,7 +26,7 @@
       - navigations = renderable_navigations @search
       - has_menu = has_menu_items? @search, navigations
       #header
-        = render partial: 'searches/nav_button' if has_menu
+        = render partial: 'searches/nav_button', locals: { search: @search } if has_menu
         = mobile_header @search.affiliate
         #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
         = navigations_and_related_sites(@search, @search_params, navigations)
