@@ -42,7 +42,7 @@ class Sites::FeaturedCollectionsController < Sites::BestBetsController
 
   def featured_collection_params
     params.require(:featured_collection).
-        permit(:image, :image_alt_text, :image_attribution, :image_attribution_url,
+        permit(:image, :image_alt_text,
                :mark_image_for_deletion,
                :publish_start_on, :publish_end_on,
                :status, :title, :title_url,

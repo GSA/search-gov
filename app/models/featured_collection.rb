@@ -57,7 +57,7 @@ class FeaturedCollection < ActiveRecord::Base
   private
 
   def ensure_http_prefix
-    set_http_prefix :title_url, :image_attribution_url
+    set_http_prefix :title_url
   end
 
   def sanitize_html_in_title

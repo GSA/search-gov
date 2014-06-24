@@ -354,8 +354,6 @@ CREATE TABLE `featured_collections` (
   `image_file_size` int(11) DEFAULT NULL,
   `image_updated_at` datetime DEFAULT NULL,
   `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image_attribution` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image_attribution_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2086,3 +2084,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140510192657');
 INSERT INTO schema_migrations (version) VALUES ('20140605151403');
 
 INSERT INTO schema_migrations (version) VALUES ('20140618201210');
+
+INSERT INTO schema_migrations (version) VALUES ('20140624211312');

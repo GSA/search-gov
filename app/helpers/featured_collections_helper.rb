@@ -30,13 +30,9 @@ module FeaturedCollectionsHelper
   end
 
   def render_featured_collection_image(fc)
-    content = []
-    content << image_tag(fc.image.url(:small), :alt => fc.image_alt_text)
-    unless fc.image_attribution.blank?
-      content << content_tag(:span, I18n.t(:image))
-      content << link_to_unless(fc.image_attribution_url.blank?, content_tag(:span, fc.image_attribution, :class => 'attribution'), fc.image_attribution_url)
+    content_tag(:div, :class => 'image') do
+      image_tag(fc.image.url(:small), alt: fc.image_alt_text)
     end
-    content_tag(:div, content.join("\n").html_safe, :class => 'image')
   rescue Exception
     nil
   end

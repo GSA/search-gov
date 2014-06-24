@@ -64,8 +64,6 @@ Feature: Manage Content
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml |
       | Publish End Date      | 07/01/2020                              |
       | Image Alt Text        | hurricane logo                          |
-      | Image Attribution     | NOAA                                    |
-      | Image Attribution URL | www.noaa.gov/hurricane.html             |
     And I attach the file "features/support/small.jpg" to "Image"
     And I select "Active" from "Status"
     And I add the following best bets keywords:
@@ -90,8 +88,6 @@ Feature: Manage Content
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml               |
       | Publish End Date      | 07/01/2020                                            |
       | Image Alt Text        | hurricane logo                                        |
-      | Image Attribution     | NOAA                                                  |
-      | Image Attribution URL | http://www.noaa.gov/hurricane.html                    |
       | Link Title 1          | Hurricane Alex                                        |
       | Link URL 1            | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
       | Link Title 2          | Hurricane Danielle                                    |
