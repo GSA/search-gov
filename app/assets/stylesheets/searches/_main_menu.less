@@ -222,8 +222,10 @@
 }
 
 .show-menu #main-menu-backdrop {
-  .modal-backdrop();
-  .opacity(0);
-  margin-right: 200px;
-  z-index: (@zindex-main-menu - 20);
+  @media (min-width: @screen-sm-min) {
+    .modal-backdrop();
+    .opacity(0);
+    margin-right: 200px;
+    z-index: (@zindex-main-menu - 20);
+  }
 }
