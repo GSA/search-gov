@@ -959,18 +959,16 @@ describe Affiliate do
   end
 
   describe '#last_month_query_count' do
-    it 'returns previous month sum of times from DailyQueryStat' do
-      affiliate = affiliates(:power_affiliate)
+    let(:count_query) { mock('CountQuery', body: 'any body') }
 
+    before do
       Date.stub(:current).and_return(Date.new(2014, 4, 1))
-      prev_beginning_of_month = Date.new(2014, 3, 1)
-      prev_end_of_month = Date.new(2014,3, 31)
+    end
 
-      DailyQueryStat.should_receive(:sum_for_affiliate_between_dates).
-          with(affiliate.name,
-          prev_beginning_of_month,
-          prev_end_of_month).and_return(88)
-
+    it 'returns previous month filtered search count from human-logstash-* indexes' do
+      affiliate = affiliates(:power_affiliate)
+      CountQuery.should_receive(:new).with(affiliate.name).and_return count_query
+      RtuCount.should_receive(:count).with("human-logstash-2014.03.*", 'search', count_query.body).and_return(88)
       affiliate.last_month_query_count.should == 88
     end
   end

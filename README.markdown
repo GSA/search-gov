@@ -185,12 +185,7 @@ Create an affiliate for yourself called 'foo', and put in a simple header/footer
 Re-run your 'taxes' search and add '&affiliate=foo' to the HTTP request.
 
 ## Analytics
-If you are looking at the analytics functionality, it helps to have some sample data in there. This will populate your
-development database with a month's worth of data for 100 query terms:
-
-    rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
-
-Give your user account admin privileges while you are at it. Here's how with rails console:
+Give your user account admin privileges. Here's how with rails console:
 
     user = User.last
     user.update_attribute(:is_affiliate_admin, true)

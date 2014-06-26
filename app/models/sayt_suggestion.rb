@@ -1,16 +1,14 @@
 # coding: utf-8
 class SaytSuggestion < ActiveRecord::Base
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
-  extend Resque::Plugins::Priority
-  @queue = :primary
 
   before_validation :squish_whitespace_and_downcase
   before_save :set_whitelisted_status
   validates :affiliate, :presence => true
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id, :case_sensitive => false
-  validates_length_of :phrase, :within=> (3..80)
-  validates_format_of :phrase, :with=> /^[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*$/iu
+  validates_length_of :phrase, :within => (3..80)
+  validates_format_of :phrase, :with => /^[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*$/iu
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
@@ -25,38 +23,19 @@ class SaytSuggestion < ActiveRecord::Base
     def fetch_by_affiliate_id(affiliate_id, query, num_of_suggestions)
       clause = 'phrase LIKE ? AND affiliate_id=? AND ISNULL(deleted_at)'
       suggestions = where([clause, "#{query}%", affiliate_id]).
-          order('popularity DESC, phrase ASC').
-          limit(num_of_suggestions).
-          select(:phrase)
+        order('popularity DESC, phrase ASC').
+        limit(num_of_suggestions).
+        select(:phrase)
       suggestions[0, num_of_suggestions]
     end
 
-    def populate_for(day, limit = nil)
-      name_id_list = Affiliate.select([:id, :name]).collect { |aff| {:name => aff.name, :id => aff.id} }
+    def populate_for(day, limit)
+      name_id_list = Affiliate.select([:id, :name]).collect { |aff| { :name => aff.name, :id => aff.id } }
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 
-    def populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit = nil)
-      Resque.enqueue(SaytSuggestion, affiliate_name, affiliate_id, day, limit)
-    end
-
-    def perform(affiliate_name, affiliate_id, day, limit = nil)
-      run_rate_factor = Date.current == day ? compute_run_rate_factor : 1.0
-      affiliate = Affiliate.find_by_id affiliate_id
-      ordered_hash = DailyQueryStat.sum(:times, :group => "query", :conditions => ["day = ? and affiliate = ?", day, affiliate_name],
-                                        :order => "sum_times DESC", :limit => limit)
-      daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
-      filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
-      filtered_daily_query_stats.each do |dqs|
-        if WebSearch.results_present_for?(dqs.query, affiliate)
-          temp_ss = new(:phrase => dqs.query)
-          temp_ss.squish_whitespace_and_downcase_and_spellcheck
-          if (sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil))
-            sayt_suggestion.popularity = dqs.times * run_rate_factor
-            sayt_suggestion.save
-          end
-        end
-      end unless filtered_daily_query_stats.empty?
+    def populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit)
+      Resque.enqueue(SaytSuggestionDiscovery, affiliate_name, affiliate_id, day, limit)
     end
 
     def process_sayt_suggestion_txt_upload(txtfile, affiliate)
@@ -69,7 +48,7 @@ class SaytSuggestion < ActiveRecord::Base
             create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
-        {:created => created, :ignored => ignored}
+        { :created => created, :ignored => ignored }
       end
     end
 
@@ -77,9 +56,6 @@ class SaytSuggestion < ActiveRecord::Base
       destroy_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
     end
 
-    def compute_run_rate_factor
-      1/ DateTime.current.day_fraction.to_f
-    end
   end
 
   def squish_whitespace_and_downcase

@@ -5,7 +5,7 @@ namespace :usasearch do
     task :compute, [:day, :limit] => [:environment] do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       yyyymmdd = args.day.to_i
-      limit = args.limit.nil? ? nil : args.limit.to_i
+      limit = args.limit.nil? ? 0 : args.limit.to_i
       SaytSuggestion.populate_for(yyyymmdd, limit)
     end
 

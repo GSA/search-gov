@@ -92,7 +92,6 @@ group :development, :test do
   gem 'shoulda-matchers','~>1.4.0'
   gem 'capybara'
   gem 'launchy'
-  gem 'webster'
   gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'
   gem 'thin'
 end

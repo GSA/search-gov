@@ -80,166 +80,34 @@ describe SaytSuggestion do
   end
 
   describe "#expire(days_back)" do
-    it "should destroy suggestions that have not been updated in X days, and that are unproteced" do
+    it "should destroy suggestions that have not been updated in X days, and that are unprotected" do
       SaytSuggestion.should_receive(:destroy_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
       SaytSuggestion.expire(30)
     end
   end
 
   describe "#populate_for(day, limit = nil)" do
-    it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
+    it "should populate SAYT suggestions for all affiliates in affiliate table" do
       Affiliate.all.each do |aff|
-        SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, nil)
+        SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, 100)
       end
-      SaytSuggestion.populate_for(Date.current)
+      SaytSuggestion.populate_for(Date.current, 100)
     end
 
-    context "when limit is set" do
-      it "should pass that param to #populate_for_affiliate_on" do
-        SaytSuggestion.should_receive(:populate_for_affiliate_on).any_number_of_times.with(anything(), anything(), Date.current, 20)
-        SaytSuggestion.populate_for(Date.current, 20)
-      end
-    end
   end
 
-  describe "#populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit = nil)" do
+  describe "#populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit)" do
     before do
       ResqueSpec.reset!
     end
+
     let(:aff) { affiliates(:basic_affiliate) }
 
     it "should enqueue the affiliate for processing" do
-      SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current)
-      SaytSuggestion.should have_queued(aff.name, aff.id, Date.current, nil)
+      SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current, 100)
+      SaytSuggestionDiscovery.should have_queued(aff.name, aff.id, Date.current, 100)
     end
 
-    context "when limit is set" do
-      it "should pass that param to enqueueing call" do
-        SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current, 20)
-        SaytSuggestion.should have_queued(aff.name, aff.id, Date.current, 20)
-      end
-    end
-  end
-
-  describe "#perform(affiliate_name, affiliate_id, day, limit = nil)" do
-    context "when no DailyQueryStats exist for the given day for an affiliate" do
-      it "should return nil" do
-        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current).should be_nil
-      end
-    end
-
-    context "when DailyQueryStats exist for multiple days for an affiliate" do
-      before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => @affiliate.name)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => @affiliate.name)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => @affiliate.name)
-        WebSearch.stub!(:results_present_for?).and_return true
-      end
-
-      it "should create unprotected suggestions" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1").is_protected.should be_false
-      end
-
-      it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1").should_not be_nil
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term2").should_not be_nil
-        SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
-      end
-
-      context "when suggestions exist that have been marked as deleted" do
-        before do
-          @suggestion = SaytSuggestion.create!(:phrase => 'today term1', :affiliate => @affiliate, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
-          @suggestion.should_not be_nil
-        end
-
-        it "should not create a new suggestion, and leave the old suggestion alone" do
-          SaytSuggestion.perform(@affiliate.name, nil, Date.current)
-          suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term1")
-          suggestion.should_not be_nil
-          suggestion.should == @suggestion
-          suggestion.deleted_at.should_not be_nil
-          suggestion.popularity.should == SaytSuggestion::MAX_POPULARITY
-        end
-      end
-    end
-
-    context "when search results with no Bing spelling suggestions are present for only some query/affiliate pairs" do
-      before do
-        @one = DailyQueryStat.create!(:day => Date.current, :query => "no results for this query, or got a spelling correction", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        @two = DailyQueryStat.create!(:day => Date.current, :query => "got results with no spelling suggestion for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        WebSearch.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate)).and_return false
-        WebSearch.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate)).and_return true
-      end
-
-      it "should only create SaytSuggestions for the ones with results" do
-        SaytSuggestion.perform(affiliates(:basic_affiliate).name, affiliates(:basic_affiliate).id, Date.current)
-        SaytSuggestion.find_by_phrase(@one.query).should be_nil
-        SaytSuggestion.find_by_phrase(@two.query).should_not be_nil
-      end
-    end
-
-    context "when SaytFilters exist" do
-      before do
-        @affiliate = affiliates(:power_affiliate)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => @affiliate.name)
-        DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => @affiliate.name)
-        SaytFilter.create!(:phrase => "term2")
-        WebSearch.stub!(:results_present_for?).and_return true
-      end
-
-      it "should apply SaytFilters to each eligible DailyQueryStat word" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term2").should be_nil
-      end
-    end
-
-    context "when SaytSuggestion already exists for an affiliate" do
-      before do
-        @affiliate = affiliates(:power_affiliate)
-        SaytSuggestion.create!(:phrase => "already here", :popularity => 10, :affiliate_id => @affiliate.id)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "already here", :times => 2, :affiliate => @affiliate.name)
-        WebSearch.stub!(:results_present_for?).and_return true
-      end
-
-      it "should update the popularity field with the new count" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.yesterday)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 2
-      end
-    end
-
-    context "when limit param is set" do
-      before do
-        @affiliate = affiliates(:power_affiliate)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "compute me", :times => 20, :affiliate => @affiliate.name)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "ignore me", :times => 19, :affiliate => @affiliate.name)
-        WebSearch.stub!(:results_present_for?).and_return true
-      end
-
-      it "should only process the top X most popular queries for that affiliate on the given day" do
-        SaytSuggestion.delete_all
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.yesterday, 1)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "compute me").popularity.should == 20
-        SaytSuggestion.count.should == 1
-      end
-    end
-
-    context "when computing for the current day" do
-      before do
-        @affiliate = affiliates(:power_affiliate)
-        d = Date.current
-        DailyQueryStat.create!(:day => d, :query => "run rate", :times => 20, :affiliate => @affiliate.name)
-        WebSearch.stub!(:results_present_for?).and_return true
-        @time = Time.utc(d.year,d.month,d.day,8,2,1)
-        Time.stub!(:now).and_return @time
-      end
-
-      it "should factor in the time of day to compute a projected run rate for the term's popularity that day" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "run rate").popularity.should == 59
-      end
-    end
   end
 
   describe '#fetch_by_affiliate_id(affiliate_id, query, num_suggestions)' do

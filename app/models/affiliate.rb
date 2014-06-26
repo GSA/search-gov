@@ -399,10 +399,8 @@ class Affiliate < ActiveRecord::Base
 
   def last_month_query_count
     prev_month = Date.current.prev_month
-    DailyQueryStat.sum_for_affiliate_between_dates(
-        name,
-        prev_month.beginning_of_month,
-        prev_month.end_of_month)
+    count_query = CountQuery.new(name)
+    RtuCount.count("human-logstash-#{prev_month.strftime("%Y.%m.")}*", 'search', count_query.body)
   end
 
   def user_emails

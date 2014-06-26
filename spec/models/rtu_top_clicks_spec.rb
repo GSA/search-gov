@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuTopClicks do
-  let(:rtu_top_clicks) { RtuTopClicks.new("some ES query body") }
+  let(:rtu_top_clicks) { RtuTopClicks.new("some ES query body", true) }
 
   describe "computing top N stats" do
 

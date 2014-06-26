@@ -18,8 +18,7 @@ describe "SaytFilters-related rake tasks" do
 
     context "when there is info to email" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "filter me",
-                               :times => 314, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        RtuQueryStat.stub(:top_n_overall_human_searches).with(1.week.ago.to_date, 5000).and_return [['filter me',1000]]
       end
 
       it "should call the Emailer's filtered_popular_terms_report method" do
@@ -32,7 +31,7 @@ describe "SaytFilters-related rake tasks" do
 
     context "when there is no info to email" do
       before do
-        DailyQueryStat.delete_all
+        RtuQueryStat.stub(:top_n_overall_human_searches).with(1.week.ago.to_date, 5000).and_return []
       end
 
       it "should handle the nil email" do

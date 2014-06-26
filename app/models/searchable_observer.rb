@@ -5,7 +5,6 @@ class SearchableObserver < ActiveRecord::Observer
           :news_item,
           :sayt_suggestion,
           :tweet,
-          :daily_query_stat,
           :flickr_photo
 
   def after_save(model)
