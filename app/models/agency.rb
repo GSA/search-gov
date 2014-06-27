@@ -1,6 +1,7 @@
 class Agency < ActiveRecord::Base
   validates_presence_of :name, :domain
   validates_uniqueness_of :domain, :case_sensitive => false
+  belongs_to :federal_register_agency
   has_many :agency_queries, :dependent => :destroy
   has_many :agency_urls, :dependent => :destroy
   has_many :affiliates

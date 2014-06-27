@@ -153,6 +153,10 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > Agencies
 
     When I go to the admin home page
+    And I follow "Federal Register Agencies"
+    Then I should see the following breadcrumbs: Super Admin > Federal Register Agencies
+
+    When I go to the admin home page
     And I follow "Blocked Queries"
     Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Queries
 

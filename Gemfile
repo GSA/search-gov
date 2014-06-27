@@ -63,6 +63,7 @@ gem "validate_url"
 gem 'elasticsearch'
 gem 'jbuilder'
 gem 'typhoeus'
+gem 'federal_register'
 gem 'instagram'
 
 group :assets do

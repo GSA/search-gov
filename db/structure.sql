@@ -130,6 +130,7 @@ CREATE TABLE `agencies` (
   `facebook_username` varchar(75) COLLATE utf8_unicode_ci DEFAULT NULL,
   `flickr_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `organization_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -355,6 +356,15 @@ CREATE TABLE `features` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_features_on_internal_name` (`internal_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `federal_register_agencies` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `short_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `flickr_photos` (
@@ -2074,6 +2084,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140605151403');
 
 INSERT INTO schema_migrations (version) VALUES ('20140618201210');
 
+INSERT INTO schema_migrations (version) VALUES ('20140624154618');
+
 INSERT INTO schema_migrations (version) VALUES ('20140624211312');
 
-INSERT INTO schema_migrations (version) VALUES ('20140624154618');
+INSERT INTO schema_migrations (version) VALUES ('20140627022428');
+
+INSERT INTO schema_migrations (version) VALUES ('20140627022533');

@@ -136,6 +136,9 @@ UsasearchRails3::Application.routes.draw do
     resources :agencies do as_routes end
     resources :agency_urls do as_routes end
     resources :agency_queries do as_routes end
+    resources :federal_register_agencies do
+      collection { get 'reimport' }
+      as_routes end
     resources :logfile_blocked_queries do as_routes end
     resources :logfile_blocked_ips do as_routes end
     resources :logfile_blocked_class_cs do as_routes end
