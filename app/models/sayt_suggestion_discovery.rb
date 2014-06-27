@@ -10,14 +10,23 @@ class SaytSuggestionDiscovery
       rtu_top_human_queries = RtuTopQueries.new(top_n_exists_query.body, true, day)
       query_counts = rtu_top_human_queries.top_n
       filtered_query_counts = SaytFilter.filter(query_counts, 0)
+      collect_filtered_query_counts(affiliate_id, filtered_query_counts, run_rate_factor) unless filtered_query_counts.empty?
+    end
+
+    def collect_filtered_query_counts(affiliate_id, filtered_query_counts, run_rate_factor)
       filtered_query_counts.each do |query_count|
-        temp_ss = SaytSuggestion.new(phrase: query_count.first)
-        temp_ss.squish_whitespace_and_downcase_and_spellcheck
-        if (sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil))
-          sayt_suggestion.popularity = query_count.last * run_rate_factor
-          sayt_suggestion.save
-        end
-      end unless filtered_query_counts.empty?
+        process_query_count(affiliate_id, query_count, run_rate_factor)
+      end
+    end
+
+    def process_query_count(affiliate_id, query_count, run_rate_factor)
+      temp_ss = SaytSuggestion.new(phrase: query_count.first)
+      temp_ss.squish_whitespace_and_downcase_and_spellcheck
+      sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil)
+      if sayt_suggestion.present?
+        sayt_suggestion.popularity = query_count.last * run_rate_factor
+        sayt_suggestion.save
+      end
     end
 
     def compute_run_rate_factor
