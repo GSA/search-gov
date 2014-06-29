@@ -1,4 +1,5 @@
 class TrendingTermsQuery
+  include AnalyticsDSL
 
   def initialize(affiliate_name, foreground_time = '3h', min_foreground_doc_count = 15)
     @affiliate_name = affiliate_name
@@ -8,29 +9,19 @@ class TrendingTermsQuery
 
   def body
     Jbuilder.encode do |json|
-      filtered_query(json)
-      terms_agg(json)
-    end
-  end
-
-  def filtered_query(json)
-    json.query do
-      json.filtered do
-        json.filter do
+      filter(json) do |json|
+        json.bool do
           booleans(json)
         end
         json.query do
-          json.range do
-            json.set! "@timestamp" do
-              json.gte "now-#{@foreground_time}/h"
-            end
-          end
+          since(json, "now-#{@foreground_time}/h")
         end
       end
+      significant_terms_agg(json)
     end
   end
 
-  def terms_agg(json)
+  def significant_terms_agg(json)
     json.aggs do
       json.agg do
         json.significant_terms do

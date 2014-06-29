@@ -7,7 +7,7 @@ class DateRangeTopNQuery < TopNQuery
   end
 
   def booleans(json)
-    must_affiliate_date_range(json, @affiliate_name, '@timestamp', @start_date, @end_date)
+    must_affiliate_date_range(json, @affiliate_name, @start_date, @end_date)
     must_not_spider(json)
   end
 

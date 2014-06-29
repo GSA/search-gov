@@ -1,40 +1,31 @@
 class ModuleSparklineQuery
+  include AnalyticsDSL
 
-  def initialize(affiliate_name = nil)
+  def initialize(affiliate_name)
     @affiliate_name = affiliate_name
   end
 
   def body
     Jbuilder.encode do |json|
-      filter(json)
-      terms_agg(json)
-    end
-  end
-
-  def filter(json)
-    json.query do
-      json.filtered do
-        json.filter do
-          json.bool do
-            booleans(json)
-          end
+      filter(json) do |json|
+        json.bool do
+          booleans(json)
         end
       end
+      histogram_terms_agg(json)
     end
   end
 
   def booleans(json)
     json.must do
       json.child! { json.term { json.affiliate @affiliate_name } }
-      json.child! { since(json) }
+      json.child! { since(json, 'now-60d/d') }
       json.child! { json.exists { json.field 'modules' } }
     end
-    json.must_not do
-      json.term { json.set! "useragent.device", "Spider" }
-    end
+    must_not_spider(json)
   end
 
-  def terms_agg(json)
+  def histogram_terms_agg(json)
     json.aggs do
       json.agg do
         json.terms do
@@ -65,15 +56,5 @@ class ModuleSparklineQuery
       end
     end
   end
-
-  private
-  def since(json)
-    json.range do
-      json.set! "@timestamp" do
-        json.gte 'now-60d/d'
-      end
-    end
-  end
-
 
 end

@@ -8,7 +8,7 @@ class DateRangeTopNFieldQuery < DateRangeTopNQuery
     json.must do
       json.child! { json.term { json.affiliate @affiliate_name } }
       json.child! { json.term { json.set! @filter_field, @filter_value } }
-      json.child! { date_range(json, '@timestamp', @start_date, @end_date) }
+      json.child! { date_range(json, @start_date, @end_date) }
     end
   end
 

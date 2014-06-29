@@ -1,6 +1,6 @@
 class OverallSparklineQuery < ModuleSparklineQuery
 
-  def terms_agg(json)
+  def histogram_terms_agg(json)
     histogram_type_agg(json)
   end
 

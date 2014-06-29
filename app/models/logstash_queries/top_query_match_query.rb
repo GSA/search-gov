@@ -1,4 +1,5 @@
 class TopQueryMatchQuery
+  include AnalyticsDSL
   include DateRangeFilter
 
   def initialize(affiliate_name, raw_query, start_date, end_date, agg_options = {})
@@ -9,7 +10,7 @@ class TopQueryMatchQuery
   def body
     Jbuilder.encode do |json|
       query(json)
-      terms_agg(json)
+      terms_type_agg(json)
     end
   end
 
@@ -35,13 +36,11 @@ class TopQueryMatchQuery
   end
 
   def booleans(json)
-    must_affiliate_date_range(json, @affiliate_name, '@timestamp', @start_date, @end_date)
-    json.must_not do
-      json.term { json.set! "useragent.device", "Spider" }
-    end
+    must_affiliate_date_range(json, @affiliate_name, @start_date, @end_date)
+    must_not_spider(json)
   end
 
-  def terms_agg(json)
+  def terms_type_agg(json)
     json.aggs do
       json.agg do
         json.terms do

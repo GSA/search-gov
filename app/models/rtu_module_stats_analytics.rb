@@ -35,7 +35,7 @@ class RtuModuleStatsAnalytics
 
   def module_sparklines
     query = ModuleSparklineQuery.new(@affiliate_name)
-    buckets = ES::client_reader.search(index: "#{logstash_prefix(@filter_bots)}*", body: query.body, size: 0)["aggregations"]["agg"]["buckets"]
+    buckets = es_search("#{logstash_prefix(@filter_bots)}*", query.body, 'agg')
     module_hash = Hash[buckets.map { |bucket| [bucket['key'], sparkline_from_buckets(bucket['histogram']['buckets'])] }]
     module_hash['Total'] = total_sparkline
     module_hash
@@ -43,7 +43,7 @@ class RtuModuleStatsAnalytics
 
   def total_sparkline
     query = OverallSparklineQuery.new(@affiliate_name)
-    buckets = ES::client_reader.search(index: "#{logstash_prefix(@filter_bots)}*", body: query.body, size: 0)["aggregations"]["histogram"]["buckets"]
+    buckets = es_search("#{logstash_prefix(@filter_bots)}*", query.body, 'histogram')
     sparkline_from_buckets(buckets)
   end
 
@@ -69,7 +69,11 @@ class RtuModuleStatsAnalytics
 
   def top_n(query_body)
     index = "#{logstash_prefix(@filter_bots)}#{@daterange.first.strftime("%Y.%m.")}*"
-    ES::client_reader.search(index: index, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    es_search(index, query_body, 'agg')
+  end
+
+  def es_search(index, query_body, agg_name)
+    ES::client_reader.search(index: index, body: query_body, size: 0)["aggregations"][agg_name]["buckets"] rescue nil
   end
 
   def stats_from_buckets(search_click_buckets)

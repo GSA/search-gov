@@ -1,11 +1,23 @@
-class MonthlyHistogramQuery < TopNQuery
+class MonthlyHistogramQuery
+  include AnalyticsDSL
 
   def initialize(affiliate_name, since)
-    super(affiliate_name)
+    @affiliate_name = affiliate_name
     @since = since
   end
 
-  def terms_agg(json)
+  def body
+    Jbuilder.encode do |json|
+      filter(json) do |json|
+        json.bool do
+          booleans(json)
+        end
+      end
+      date_histogram(json)
+    end
+  end
+
+  def date_histogram(json)
     json.aggs do
       json.agg do
         json.date_histogram do
@@ -21,20 +33,9 @@ class MonthlyHistogramQuery < TopNQuery
   def booleans(json)
     json.must do
       json.child! { json.term { json.affiliate @affiliate_name } }
-      json.child! { since(json) }
+      json.child! { since(json, @since) }
     end
-    json.must_not do
-      json.term { json.set! "useragent.device", "Spider" }
-    end
-  end
-
-  private
-  def since(json)
-    json.range do
-      json.set! "@timestamp" do
-        json.gte @since
-      end
-    end
+    must_not_spider(json)
   end
 
 end

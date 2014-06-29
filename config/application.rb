@@ -22,6 +22,7 @@ module UsasearchRails3
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += Dir[config.root.join('lib', '**/').to_s]
+    config.autoload_paths += Dir[config.root.join('app/models', '**/').to_s]
 
     config.middleware.use 'RejectInvalidRequestUri'
     config.middleware.use 'DowncaseRoute'
