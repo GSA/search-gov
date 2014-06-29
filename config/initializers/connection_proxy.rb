@@ -6,8 +6,6 @@ end
 if defined?(PhusionPassenger)
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
     if forked
-      # ... set MultiDb configuration options, if any ...
-      MultiDb::ConnectionProxy.setup!
       # Cleanup old EventMachine reactor thread
       if EM.reactor_running?
         EM.stop

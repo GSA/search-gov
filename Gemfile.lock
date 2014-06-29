@@ -236,9 +236,6 @@ GEM
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     mono_logger (1.1.0)
-    multi_db (0.3.1)
-      activerecord (>= 2.1.0)
-      tlattr_accessors (>= 0.0.3)
     multi_json (1.10.0)
     multi_test (0.0.2)
     multi_xml (0.5.5)
@@ -373,7 +370,6 @@ GEM
     thor (0.18.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    tlattr_accessors (0.0.3)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -478,7 +474,6 @@ DEPENDENCIES
   launchy
   less-rails-bootstrap
   mobile-fu
-  multi_db
   mysql2 (> 0.3)
   net-http-persistent
   newrelic_rpm
