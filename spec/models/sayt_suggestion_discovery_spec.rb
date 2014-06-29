@@ -17,7 +17,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
       SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, "today term1").is_protected.should be_false
     end
 
-    it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
+    it "should populate SaytSuggestions based on each entry for the given day" do
       SaytSuggestionDiscovery.perform(affiliate.name, affiliate.id, date_int, 10)
       SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, "today term1").should_not be_nil
       SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, "today term2").should_not be_nil

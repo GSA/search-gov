@@ -157,30 +157,6 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > Federal Register Agencies
 
     When I go to the admin home page
-    And I follow "Blocked Queries"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Queries
-
-    When I go to the admin home page
-    And I follow "Blocked IPs"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked IPs
-
-    When I go to the admin home page
-    And I follow "Blocked Class Cs"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Class Cs
-
-    When I go to the admin home page
-    And I follow "Whitelisted Class Cs"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Whitelisted Class Cs
-
-    When I go to the admin home page
-    And I follow "Blocked Regexps"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked Regexps
-
-    When I go to the admin home page
-    And I follow "Blocked User Agents"
-    Then I should see the following breadcrumbs: Super Admin > Logfile Blocked User Agents
-
-    When I go to the admin home page
     And I follow "Modules"
     Then I should see the following breadcrumbs: Super Admin > Modules
 

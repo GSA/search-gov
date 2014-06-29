@@ -46,15 +46,11 @@ class Affiliate < ActiveRecord::Base
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.username ASC'
   belongs_to :agency
 
-  has_many :daily_query_stats, dependent: :destroy, foreign_key: :affiliate, primary_key: :name
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
   has_and_belongs_to_many :tags
   belongs_to :status
 
   with_options dependent: :delete_all, foreign_key: :affiliate, primary_key: :name do |assoc|
-    assoc.has_many :daily_query_noresults_stats
-    assoc.has_many :daily_click_stats
-    assoc.has_many :queries_clicks_stats
     assoc.has_many :daily_usage_stats
   end
 

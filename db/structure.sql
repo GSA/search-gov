@@ -200,39 +200,6 @@ CREATE TABLE `connections` (
   KEY `index_connections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `daily_click_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `affiliate` varchar(33) COLLATE utf8_unicode_ci NOT NULL,
-  `day` date NOT NULL,
-  `url` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `times` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_daily_click_stats_on_affiliate_and_day` (`affiliate`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `daily_query_noresults_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` date NOT NULL,
-  `affiliate` varchar(255) NOT NULL,
-  `query` varchar(255) NOT NULL,
-  `times` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_daily_query_noresults_stats_on_affiliate_and_day` (`affiliate`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `daily_query_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` date NOT NULL,
-  `query` varchar(100) NOT NULL,
-  `times` int(11) NOT NULL,
-  `affiliate` varchar(33) DEFAULT 'usagov',
-  `locale` varchar(5) DEFAULT 'en',
-  PRIMARY KEY (`id`),
-  KEY `ad` (`affiliate`,`day`),
-  KEY `da` (`day`,`affiliate`),
-  KEY `qd` (`query`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `daily_search_module_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `day` date NOT NULL,
@@ -487,58 +454,6 @@ CREATE TABLE `instagram_profiles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `logfile_blocked_class_cs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `classc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_logfile_blocked_class_cs_on_classc` (`classc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `logfile_blocked_ips` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_logfile_blocked_ips_on_ip` (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `logfile_blocked_queries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `query` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_logfile_blocked_queries_on_query` (`query`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `logfile_blocked_regexps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `regexp` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_logfile_blocked_regexps_on_regexp` (`regexp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `logfile_blocked_user_agents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `agent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `logfile_whitelisted_class_cs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `classc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `med_related_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `med_topic_id` int(11) NOT NULL,
@@ -640,19 +555,6 @@ CREATE TABLE `news_items` (
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
   KEY `index_news_items_on_link` (`link`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `queries_clicks_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `affiliate` varchar(33) NOT NULL,
-  `query` varchar(255) NOT NULL,
-  `day` date NOT NULL,
-  `url` varchar(2000) NOT NULL,
-  `times` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `aqd` (`affiliate`,`query`,`day`),
-  KEY `aud` (`affiliate`,`url`(255),`day`),
-  KEY `index_queries_clicks_stats_on_affiliate_and_day` (`affiliate`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `rss_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -2093,3 +1995,13 @@ INSERT INTO schema_migrations (version) VALUES ('20140626203723');
 INSERT INTO schema_migrations (version) VALUES ('20140627022428');
 
 INSERT INTO schema_migrations (version) VALUES ('20140627022533');
+
+INSERT INTO schema_migrations (version) VALUES ('20140629191108');
+
+INSERT INTO schema_migrations (version) VALUES ('20140629191748');
+
+INSERT INTO schema_migrations (version) VALUES ('20140629191915');
+
+INSERT INTO schema_migrations (version) VALUES ('20140629192019');
+
+INSERT INTO schema_migrations (version) VALUES ('20140629193351');

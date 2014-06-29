@@ -1,7 +1,7 @@
 namespace :usasearch do
   namespace :sayt_suggestions do
 
-    desc "generate top X SAYT suggestions from DailyQueryStats table for given YYYYMMDD date (defaults to an unlimited number for yesterday)"
+    desc "generate top X SAYT suggestions from human Logstash searches for given YYYYMMDD date (defaults to an unlimited number for yesterday)"
     task :compute, [:day, :limit] => [:environment] do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       yyyymmdd = args.day.to_i
