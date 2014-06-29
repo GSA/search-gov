@@ -52,11 +52,7 @@ describe Affiliate do
     it { should belong_to :agency }
     it { should have_one(:affiliate_note).dependent(:destroy) }
     it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:daily_query_noresults_stats).dependent(:delete_all) }
-    it { should have_many(:daily_click_stats).dependent(:delete_all) }
-    it { should have_many(:queries_clicks_stats).dependent(:delete_all) }
     it { should have_many(:daily_usage_stats).dependent(:delete_all) }
-    it { should have_many(:daily_query_stats).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
