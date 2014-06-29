@@ -7,12 +7,8 @@ class ModuleSparklineQuery
 
   def body
     Jbuilder.encode do |json|
-      filter(json) do |json|
-        json.bool do
-          booleans(json)
-        end
-      end
-      histogram_terms_agg(json)
+      filter_booleans(json)
+      top_level_histogram_agg(json)
     end
   end
 
@@ -25,7 +21,7 @@ class ModuleSparklineQuery
     must_not_spider(json)
   end
 
-  def histogram_terms_agg(json)
+  def top_level_histogram_agg(json)
     json.aggs do
       json.agg do
         json.terms do

@@ -9,6 +9,14 @@ module AnalyticsDSL
     end
   end
 
+  def filter_booleans(json)
+    filter(json) do |json|
+      json.bool do
+        booleans(json)
+      end
+    end
+  end
+
   def terms_agg(json, agg_options)
     json.aggs do
       json.agg do

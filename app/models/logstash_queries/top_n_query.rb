@@ -8,11 +8,7 @@ class TopNQuery
 
   def body
     Jbuilder.encode do |json|
-      filter(json) do |json|
-        json.bool do
-          booleans(json)
-        end
-      end
+      filter_booleans(json)
       terms_agg(json, @agg_options)
     end
   end

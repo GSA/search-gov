@@ -7,11 +7,7 @@ class ModuleBreakdownQuery
 
   def body
     Jbuilder.encode do |json|
-      filter(json) do |json|
-        json.bool do
-          booleans(json)
-        end
-      end
+      filter_booleans(json)
       modules_type_terms_agg(json)
     end
   end
