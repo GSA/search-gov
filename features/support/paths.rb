@@ -119,7 +119,7 @@ module NavigationHelpers
     when /^the (.*)'s "([^\"]*)" RSS feed page$/
       site_rss_feed_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^the (.*)'s Analytics page$/
-      new_site_raw_logs_access_path(Affiliate.find_by_name($1))
+      new_site_queries_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Filter URLs page$/
       site_filter_urls_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Supplemental URLs page$/
