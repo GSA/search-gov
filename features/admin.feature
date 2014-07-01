@@ -157,6 +157,10 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > Federal Register Agencies
 
     When I go to the admin home page
+    And I follow "Federal Register Documents"
+    Then I should see the following breadcrumbs: Super Admin > Federal Register Documents
+
+    When I go to the admin home page
     And I follow "Modules"
     Then I should see the following breadcrumbs: Super Admin > Modules
 

@@ -4,18 +4,20 @@ describe FederalRegisterAgencyData do
   fixtures :federal_register_agencies
 
   describe '.import' do
+    let(:fr_irs) { federal_register_agencies(:fr_irs) }
+
     before do
-      fr_gsa = mock(FederalRegister::Agency, id: 210,
+      mock_gsa = mock(FederalRegister::Agency, id: 210,
                     name: 'General Services Administration',
                     short_name: 'GSA')
-      fr_irs = mock(FederalRegister::Agency, id: 254,
+      mock_irs = mock(FederalRegister::Agency, id: fr_irs.id,
                     name: 'Internal Revenue Service updated',
                     short_name: 'IRS')
-      FederalRegister::Agency.should_receive(:all).and_return([fr_gsa, fr_irs])
+      FederalRegister::Agency.should_receive(:all).and_return([mock_gsa, mock_irs])
     end
 
     it 'updates existing record with matching id' do
-      original_fr_agency = FederalRegisterAgency.find(254)
+      original_fr_agency = FederalRegisterAgency.find(fr_irs.id)
       original_fr_agency.name.should == 'Internal Revenue Service'
 
       FederalRegisterAgencyData.import
@@ -25,7 +27,7 @@ describe FederalRegisterAgencyData do
       fr_gsa.name.should == 'General Services Administration'
       fr_gsa.short_name.should == 'GSA'
 
-      update_fr_agency = FederalRegisterAgency.find(254)
+      update_fr_agency = FederalRegisterAgency.find(fr_irs.id)
       original_fr_agency.created_at.should == update_fr_agency.created_at
       update_fr_agency.name.should == 'Internal Revenue Service updated'
     end

@@ -31,9 +31,7 @@ Then /^I should not see "([^"]*)" after the (\d+)th search result$/ do |value, p
 end
 
 Given /^the following Agency entries exist:$/ do |table|
-  table.hashes.each do |hash|
-    Agency.create!(:name => hash[:name], :domain => hash[:domain])
-  end
+  table.hashes.each { |attributes| Agency.create! attributes }
 end
 
 Given /^the following Agency Urls exist:$/ do |table|

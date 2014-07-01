@@ -5,7 +5,8 @@ class Agency < ActiveRecord::Base
   has_many :agency_queries, :dependent => :destroy
   has_many :agency_urls, :dependent => :destroy
   has_many :affiliates
-  after_save :generate_agency_queries
+  after_save :generate_agency_queries,
+             :load_federal_register_documents
 
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
   SOCIAL_MEDIA_SERVICES = %w{Facebook Twitter YouTube Flickr}
@@ -50,5 +51,9 @@ class Agency < ActiveRecord::Base
       self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation)
       self.agency_queries << AgencyQuery.new(:phrase => "the #{self.abbreviation}")
     end
+  end
+
+  def load_federal_register_documents
+    federal_register_agency.load_documents if federal_register_agency
   end
 end

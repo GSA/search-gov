@@ -1,19 +1,21 @@
 class GovboxSet
-  attr_reader :boosted_contents,
-              :agency,
+  attr_reader :agency,
+              :boosted_contents,
+              :featured_collections,
+              :federal_register_documents,
+              :jobs,
               :med_topic,
               :news_items,
-              :video_news_items,
-              :featured_collections,
-              :tweets,
               :photos,
-              :jobs,
-              :related_search
+              :related_search,
+              :tweets,
+              :video_news_items
 
   def initialize(query, affiliate, geoip_info)
     @query, @affiliate, @geoip_info = query, affiliate, geoip_info
     init_best_bets
     init_agency
+    init_federal_register_documents
     init_jobs
     init_news_items
     init_video_news_items
@@ -78,6 +80,16 @@ class GovboxSet
     if @affiliate.is_agency_govbox_enabled?
       agency_query = AgencyQuery.find_by_phrase(@query)
       @agency = agency_query.agency if agency_query
+    end
+  end
+
+  def init_federal_register_documents
+    if @affiliate.is_federal_register_document_govbox_enabled? &&
+      @affiliate.agency && @affiliate.agency.federal_register_agency
+
+      @federal_register_documents = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [@affiliate.agency.federal_register_agency_id],
+                                                                              language: 'en',
+                                                                              q: @query)
     end
   end
 

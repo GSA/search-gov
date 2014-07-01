@@ -22,6 +22,11 @@ module ResultsHelper
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
+  def link_to_federal_register_document_title(document, position)
+    click_data = { p: position, s: 'FRDOC', i: document.id }
+    link_to document.title.html_safe, document.html_url, { data: { click: click_data }}
+  end
+
   def link_to_image_result_title(result, position, options = { tabindex: -1 })
     title = translate_bing_highlights(h(result['title'])).html_safe
 

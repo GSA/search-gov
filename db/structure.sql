@@ -92,6 +92,7 @@ CREATE TABLE `affiliates` (
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
   `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `is_federal_register_document_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -329,6 +330,31 @@ CREATE TABLE `federal_register_agencies` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `short_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `last_load_documents_requested_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `federal_register_agencies_federal_register_documents` (
+  `federal_register_agency_id` int(11) NOT NULL,
+  `federal_register_document_id` int(11) NOT NULL,
+  UNIQUE KEY `index_federal_register_agencies_federal_register_documents` (`federal_register_agency_id`,`federal_register_document_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `federal_register_documents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `abstract` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `html_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `document_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_page` int(11) NOT NULL,
+  `end_page` int(11) NOT NULL,
+  `page_length` int(11) NOT NULL,
+  `publication_date` date NOT NULL,
+  `comments_close_on` date DEFAULT NULL,
+  `effective_on` date DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -2005,3 +2031,13 @@ INSERT INTO schema_migrations (version) VALUES ('20140629191915');
 INSERT INTO schema_migrations (version) VALUES ('20140629192019');
 
 INSERT INTO schema_migrations (version) VALUES ('20140629193351');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630182842');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630192016');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630193205');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630225343');
+
+INSERT INTO schema_migrations (version) VALUES ('20140711151619');

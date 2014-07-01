@@ -1,11 +1,12 @@
 class SearchableObserver < ActiveRecord::Observer
-  observe :featured_collection,
-          :boosted_content,
+  observe :boosted_content,
+          :featured_collection,
+          :federal_register_document,
+          :flickr_photo,
           :indexed_document,
           :news_item,
           :sayt_suggestion,
-          :tweet,
-          :flickr_photo
+          :tweet
 
   def after_save(model)
     model_name = model.class.name

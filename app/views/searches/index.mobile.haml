@@ -6,6 +6,7 @@
   = spelling_suggestion(@search)
   = matching_site_limits @search, @search_params if @search.results.present?
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
+  = render partial: 'federal_register_documents', locals: { search: @search } if @search.has_federal_register_documents?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
   = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?

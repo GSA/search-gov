@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GovboxSet do
-  fixtures :affiliates, :agencies, :rss_feed_urls, :rss_feeds
+  fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds
 
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
@@ -54,6 +54,28 @@ describe GovboxSet do
       it 'should assign nil agency' do
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.agency.should be_nil
+      end
+    end
+
+    context 'when affiliate has an agency and the federal register document govbox enabled' do
+      let(:agency) { agencies(:irs) }
+      let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
+
+      before do
+        affiliate.stub(:agency).and_return(agency)
+        affiliate.should_receive(:is_federal_register_document_govbox_enabled?).and_return(true)
+      end
+
+      it 'searches for federal register documents' do
+        fr_docs_results = mock('federal register document results')
+        ElasticFederalRegisterDocument.should_receive(:search_for).
+          with(hash_including(federal_register_agency_ids: [federal_register_agency.id],
+                              language: 'en',
+                              q: 'foo')).
+          and_return(fr_docs_results)
+
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.federal_register_documents.should == fr_docs_results
       end
     end
 

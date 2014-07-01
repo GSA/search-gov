@@ -389,6 +389,18 @@ Feature: Searches using mobile device
     When I follow "Este tema en español" within the SERP navigation
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
 
+  Scenario: Searching on sites with federal register documents
+    And the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | IRS                 | true                                        |
+    And the following "IRS" Federal Register Document entries exist:
+      | document_number | document_type | title                                            | publication_date | comments_close_on | start_page | end_page | page_length | html_url                                                                                                       |
+      | 2014-13420      | Notice        | Proposed Information Collection; Comment Request | 2014-06-09       | 2021-08-08        | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "collection"
+    And I press "Search"
+    Then I should see a link to "Proposed Information Collection; Comment Request" with url for "https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request"
+
   Scenario: English search on a legacy site
     Given the following legacy Affiliates exist:
       | display_name      | name     | contact_email | contact_name |

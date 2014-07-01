@@ -11,12 +11,17 @@ Given /^the following( legacy)? Affiliates exist:$/ do |is_legacy, table|
     user.update_attribute(:is_affiliate, true)
     user.update_attribute(:approval_status, 'approved')
 
-    excluded_keys = %w(contact_email contact_name domains youtube_handles is_image_search_navigable)
+    excluded_keys = %w(agency_abbreviation contact_email contact_name domains youtube_handles is_image_search_navigable)
     affiliate_attributes = hash.except *excluded_keys
     affiliate_attributes['force_mobile_format'] ||= (is_legacy !~ /legacy/)
     affiliate = Affiliate.create! affiliate_attributes
     affiliate.image_search_label.navigation.update_attributes!(is_active: true) if hash[:is_image_search_navigable] == 'true'
     affiliate.users << user
+
+    if hash[:agency_abbreviation].present?
+      agency = Agency.find_by_abbreviation hash[:agency_abbreviation]
+      affiliate.update_attributes!(agency: agency)
+    end
 
     hash[:youtube_handles].split(',').each do |youtube_handle|
       profile = YoutubeProfile.where(username: youtube_handle).first_or_initialize

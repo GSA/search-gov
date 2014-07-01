@@ -60,6 +60,19 @@ describe Agency do
         @agency.id.should_not be_nil
       end
     end
+
+    context 'when there is a FederalRegisterAgency' do
+      fixtures :federal_register_agencies
+
+      it 'loads documents' do
+        fr_noaa = federal_register_agencies(:fr_noaa)
+        fr_noaa.should_receive(:load_documents)
+
+        Agency.create!(domain: 'noaa.gov',
+                       federal_register_agency: fr_noaa,
+                       name: 'National Oceanic and Atmospheric Administration')
+      end
+    end
   end
 
   describe "#twitter_profile_link" do

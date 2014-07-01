@@ -24,7 +24,9 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns = [:status, :go_live_date, :affiliate_note,
-                             :force_mobile_format, :is_bing_image_search_enabled, :dap_enabled, :jobs_enabled,
+                             :force_mobile_format, :is_bing_image_search_enabled,
+                             :is_federal_register_document_govbox_enabled,
+                             :dap_enabled, :jobs_enabled,
                              :agency, :search_engine, :raw_log_access_enabled, :fetch_concurrency, :tags]
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
@@ -53,7 +55,15 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.list.columns.exclude virtual_columns
-    config.list.columns.exclude :last_month_query_count, :user_emails, :force_mobile_format, :is_bing_image_search_enabled, :uses_managed_header_footer, :mobile_logo_url, :header_image_url
+    config.list.columns.exclude :force_mobile_format,
+                                :header_image_url,
+                                :is_bing_image_search_enabled,
+                                :is_federal_register_document_govbox_enabled,
+                                :last_month_query_count,
+                                :mobile_logo_url,
+                                :user_emails,
+                                :uses_managed_header_footer
+
     config.create.columns = [:display_name, :name, :header_footer_css, :header, :footer, :locale]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:theme].form_ui = :select

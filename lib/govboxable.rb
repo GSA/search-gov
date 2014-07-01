@@ -1,5 +1,6 @@
 module Govboxable
   delegate :boosted_contents,
+           :federal_register_documents,
            :med_topic,
            :news_items,
            :video_news_items,
