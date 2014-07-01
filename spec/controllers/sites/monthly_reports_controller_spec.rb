@@ -39,9 +39,9 @@ describe Sites::MonthlyReportsController do
       end
 
       context 'when no target month passed in' do
-        it 'should default to yesterdays month' do
+        it 'should default to todays month' do
           RtuMonthlyReport.should_receive(:new).
-            with(site, Date.yesterday.strftime('%Y'), Date.yesterday.strftime('%m'), current_user.sees_filtered_totals).
+            with(site, Date.current.strftime('%Y'), Date.current.strftime('%m'), current_user.sees_filtered_totals).
             and_return rtu_monthly_report
           get :show
         end
