@@ -35,10 +35,5 @@ describe ApiLegacyImageSearch do
       search.total.should == 0
     end
 
-    it 'should log impression with blank module' do
-      QueryImpression.should_receive(:log).with(:image, non_affiliate.name, 'unusual image', [])
-      search = ApiLegacyImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
-      search.run
-    end
   end
 end

@@ -53,6 +53,5 @@ class OdieSearch < Search
 
   def log_serp_impressions
     @modules << @module_tag if @module_tag
-    QueryImpression.log(:odie, @affiliate.name, @query, @modules)
   end
 end

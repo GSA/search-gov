@@ -68,7 +68,6 @@ class BlendedSearch < Search
     @modules << "JOBS" if self.jobs.present?
     @modules << "TWEET" if self.has_tweets?
     @modules << "PHOTO" if self.has_photos?
-    QueryImpression.log(:blended, @affiliate.name, @query, @modules)
   end
 
   private

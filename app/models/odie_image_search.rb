@@ -50,6 +50,5 @@ class OdieImageSearch < OdieSearch
     return if @skip_log_serp_impressions
 
     @modules << default_module_tag unless @total.zero?
-    QueryImpression.log(:odie_image, @affiliate.name, @query, @modules)
   end
 end

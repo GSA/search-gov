@@ -20,19 +20,6 @@ describe VideoNewsSearch do
   end
 
   describe "#run" do
-    context 'when video news items are found' do
-      it "should log info about the query and module impressions" do
-        rss_feed = mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)
-        affiliate.stub_chain(:rss_feeds, :managed, :find_by_id).and_return(rss_feed)
-
-        search = VideoNewsSearch.new(query: 'element', affiliate: affiliate, channel: rss_feed.id)
-        response = mock(ElasticNewsItemResults, total: 1, aggregations: [], results: [])
-        ElasticNewsItem.should_receive(:search_for).and_return response
-        QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ['VIDS'])
-        search.run
-      end
-    end
-
     context "when a valid active RSS feed is specified" do
       it "should only search for news items from that feed" do
         rss_feed = mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)

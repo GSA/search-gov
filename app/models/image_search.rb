@@ -46,7 +46,6 @@ class ImageSearch
       @error_message = (I18n.translate :empty_query)
     end
 
-    log_serp_impressions
   end
 
   def as_json(options = {})
@@ -79,7 +78,4 @@ class ImageSearch
     @modules << @module_tag
   end
 
-  def log_serp_impressions
-    QueryImpression.log(:image, @affiliate.name, @query, modules)
-  end
 end

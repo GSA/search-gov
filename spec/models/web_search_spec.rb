@@ -153,12 +153,6 @@ describe WebSearch do
         @search.module_tag.should == 'BWEB'
       end
 
-      it "should log info about the query" do
-        all_modules = %w{BWEB OVER BSPEL SREL NEWS VIDS BBG BOOS MEDL JOBS TWEET PHOTO}
-        QueryImpression.should_receive(:log).with(:web, affiliates(:basic_affiliate).name, 'government', all_modules)
-        @search.run
-      end
-
       context 'when some sort of boosted contents are available' do
         let(:featured_collections) { [1,2,3]}
         let(:boosted_contents) { [4,5,6]}

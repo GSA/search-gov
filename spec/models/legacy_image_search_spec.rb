@@ -39,11 +39,6 @@ describe LegacyImageSearch do
         search.results.last['title'].should == 'President Obama walks his unusual image daughters to school'
       end
 
-      it 'should log info about the query' do
-        QueryImpression.should_receive(:log).with(:image, non_affiliate.name, 'unusual image', %w{FLICKR})
-        search = LegacyImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
-        search.run
-      end
     end
 
     context 'when there are Bing/Google results' do

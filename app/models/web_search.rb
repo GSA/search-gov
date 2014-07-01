@@ -132,7 +132,6 @@ class WebSearch < Search
     @modules << "JOBS" if self.jobs.present?
     @modules << "TWEET" if self.has_tweets?
     @modules << "PHOTO" if self.has_photos?
-    QueryImpression.log(get_vertical, affiliate.name, self.query, @modules)
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 
