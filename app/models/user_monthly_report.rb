@@ -20,8 +20,8 @@ class UserMonthlyReport
     recent_monthly_report = RtuMonthlyReport.new(affiliate, @report_date.year, @report_date.month, false)
     stats[:total_queries] = recent_monthly_report.total_queries
     stats[:total_clicks] = recent_monthly_report.total_clicks
-    # Reminder: migrate from DailyUsageStat to RtuMonthlyReport in July 2014 for :last_month_total_queries
-    stats[:last_month_total_queries] = DailyUsageStat.monthly_totals(@last_month.year, @last_month.month, affiliate.name)
+    older_monthly_report = RtuMonthlyReport.new(affiliate, @last_month.year, @last_month.month, false)
+    stats[:last_month_total_queries] = older_monthly_report.total_queries
     # Reminder: migrate from DailyUsageStat to ES data in June 2015 for :last_year_total_queries
     stats[:last_year_total_queries] = DailyUsageStat.monthly_totals(@last_year.year, @last_year.month, affiliate.name)
     stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
