@@ -9,12 +9,14 @@ class TrendingTermsQuery
 
   def body
     Jbuilder.encode do |json|
-      filter(json) do |json|
-        json.bool do
-          booleans(json)
-        end
-        json.query do
-          since(json, "now-#{@foreground_time}/h")
+      json.query do
+        json.filtered do
+          json.filter do
+            booleans(json)
+          end
+          json.query do
+            since(json, "now-#{@foreground_time}/h")
+          end
         end
       end
       significant_terms_agg(json)
