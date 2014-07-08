@@ -190,7 +190,7 @@ describe Emailer do
     let(:dashboard) { mock(RtuDashboard) }
 
     before do
-      RtuDashboard.stub(:new).and_return dashboard
+      RtuDashboard.stub(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
       dashboard.stub!(:top_queries).and_return [QueryCount.new('query3', 102), QueryCount.new('query2', 101), QueryCount.new('query1', 100)]
       dashboard.stub!(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
       dashboard.stub!(:trending_queries).and_return %w(query3 query2 query1)

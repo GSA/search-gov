@@ -91,7 +91,7 @@ class Emailer < ActionMailer::Base
   def daily_snapshot(membership)
     @site = membership.affiliate
     headers['Content-Type'] = 'text/html'
-    @dashboard = RtuDashboard.new(membership.affiliate, Date.yesterday)
+    @dashboard = RtuDashboard.new(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?)
     setup_email(membership.user.email, __method__)
     send_mail(:html)
   end
