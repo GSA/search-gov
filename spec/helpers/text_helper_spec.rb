@@ -5,5 +5,8 @@ describe TextHelper do
     it "should handle a null url" do
       helper.truncate_url(nil).should be_nil
     end
+    it "should handle a malicious url" do
+      helper.truncate_url("/../../../../../../../../../../../../../../../../../../../../../..//etc/passwd").should be_nil
+    end
   end
 end

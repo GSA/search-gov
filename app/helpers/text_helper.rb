@@ -9,6 +9,8 @@ module TextHelper
 
   def truncate_url(url, truncation_length = DEFAULT_TRUNCATED_URL_LENGTH)
     Truncator::UrlParser.shorten_url(url, truncation_length) if url.present?
+  rescue Exception => e
+    nil
   end
 
   def truncate_html(html, max_length = DEFAULT_TRUNCATED_HTML_LENGTH, options = {})
