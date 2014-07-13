@@ -1,13 +1,19 @@
 require 'spec_helper'
 
 describe FederalRegisterDocumentData do
-  let(:fake_options) { mock('options') }
+  fixtures :federal_register_agencies
 
   describe '.import' do
-    it 'destroys obsolete documents' do
-      FederalRegisterDocument.should_receive(:pluck).with(:id).and_return([100, 200, 300])
-      FederalRegisterDocumentData.should_receive(:load_documents).and_return([200, 199, 299])
-      FederalRegisterDocument.should_receive(:destroy).with([100, 300])
+    let(:fr_agency) { federal_register_agencies(:fr_irs) }
+
+    it 'touches FederalRegisterAgency.last_load_documents_requested_at' do
+      fr_agency = federal_register_agencies(:fr_irs)
+      FederalRegisterAgency.should_receive(:active).and_return([fr_agency])
+
+      fr_agency.should_receive(:touch).with(:last_load_documents_requested_at)
+
+      FederalRegisterDocumentData.should_receive(:load_documents).
+        with(fr_agency, { load_all: false }).and_return []
 
       FederalRegisterDocumentData.import
     end
@@ -15,6 +21,8 @@ describe FederalRegisterDocumentData do
 
   describe '.load_documents' do
     let(:parser) { mock(FederalRegisterDocumentApiParser) }
+    let(:fr_agency) { federal_register_agencies(:fr_noaa) }
+    let(:load_documents_options) { { federal_register_agency_id: fr_agency.id, load_all: true } }
 
     let(:document_1_attributes) do
       { document_number: '2014-15054',
@@ -33,21 +41,37 @@ describe FederalRegisterDocumentData do
     end
 
     before do
-      FederalRegisterDocumentApiParser.should_receive(:new).with(fake_options).and_return(parser)
+      FederalRegisterDocumentApiParser.should_receive(:new).
+        with(load_documents_options).and_return(parser)
     end
 
     it 'imports documents' do
-      parser.should_receive(:each_document).and_yield(document_1_attributes).and_yield(document_2_attributes)
-      FederalRegisterDocumentData.should_receive(:load_document).with(document_1_attributes)
-      FederalRegisterDocumentData.should_receive(:load_document).with(document_2_attributes)
+      parser.should_receive(:each_document).
+        and_yield(document_1_attributes).
+        and_yield(document_2_attributes)
 
-      FederalRegisterDocumentData.load_documents fake_options
+      FederalRegisterDocumentData.should_receive(:load_document).
+        with(document_1_attributes)
+      FederalRegisterDocumentData.should_receive(:load_document).
+        with(document_2_attributes)
+
+      fr_agency.should_receive(:touch).with(:last_successful_load_documents_at)
+
+      FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
+    end
+
+    context 'when FederalRegisterDocumentApiParser raises an error' do
+      it 'puts error message' do
+        parser.should_receive(:each_document).and_raise
+        FederalRegisterDocumentData.should_receive(:puts).
+          with(/Failed to load documents for FederalRegisterAgency #{fr_agency.id}/)
+
+        FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
+      end
     end
   end
 
   describe '.load_document' do
-    fixtures :federal_register_agencies
-
     let(:fr_irs) { federal_register_agencies(:fr_irs) }
     let(:fr_noaa) { federal_register_agencies(:fr_noaa) }
 

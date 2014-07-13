@@ -394,12 +394,15 @@ Feature: Searches using mobile device
       | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled |
       | English site | en.agency.gov | admin@agency.gov | John Bar     | IRS                 | true                                        |
     And the following "IRS" Federal Register Document entries exist:
-      | document_number | document_type | title                                            | publication_date | comments_close_on | start_page | end_page | page_length | html_url                                                                                                       |
-      | 2014-13420      | Notice        | Proposed Information Collection; Comment Request | 2014-06-09       | 2021-08-08        | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request |
+      | document_number | document_type | title                                            | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                       |
+      | 2014-13420      | Notice        | Proposed Information Collection; Comment Request | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "collection"
     And I press "Search"
     Then I should see a link to "Proposed Information Collection; Comment Request" with url for "https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request"
+    And I should see "A Notice by Internal Revenue Service posted on June 9, 2014."
+    And I should see "Comment period ends in 7 days"
+    And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
 
   Scenario: English search on a legacy site
     Given the following legacy Affiliates exist:

@@ -1,21 +1,33 @@
 module FederalRegisterDocumentData
-  def self.import
-    current_document_ids = FederalRegisterDocument.pluck :id
-    imported_document_ids = load_documents
+  def self.import(options = { load_all: false })
+    fr_agencies = FederalRegisterAgency.active.to_a
+    fr_agencies.each { |fra| fra.touch(:last_load_documents_requested_at) }
+    # current_document_ids = FederalRegisterDocument.pluck :id
 
-    obsolete_document_ids = current_document_ids - imported_document_ids
-    FederalRegisterDocument.destroy obsolete_document_ids if imported_document_ids.present?
-    imported_document_ids.count
+    fr_agencies.each { |fr_agency| load_documents(fr_agency, options) }
+
+    # load_options = options.merge(federal_register_agency_ids: fr_agencies.collect(&:id))
+    # imported_document_ids = load_documents load_options
+
+    # obsolete_document_ids = current_document_ids - imported_document_ids
+    # FederalRegisterDocument.destroy obsolete_document_ids if imported_document_ids.present?
+    # imported_document_ids.count
   end
 
-  def self.load_documents(options = {})
+  def self.load_documents(fr_agency, options = {})
     imported_document_ids = []
-    parser = FederalRegisterDocumentApiParser.new options
+    parser_options = options.merge(federal_register_agency_id: fr_agency.id)
+    parser = FederalRegisterDocumentApiParser.new parser_options
 
     parser.each_document do |document|
       imported_document = load_document document
       imported_document_ids << imported_document.id if imported_document
     end
+
+    fr_agency.touch(:last_successful_load_documents_at)
+    imported_document_ids
+  rescue => error
+    puts "Failed to load documents for FederalRegisterAgency #{fr_agency.id} #{error.backtrace.join("\n")}"
     imported_document_ids
   end
 

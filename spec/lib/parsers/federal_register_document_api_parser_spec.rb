@@ -4,9 +4,9 @@ describe FederalRegisterDocumentApiParser do
   fixtures :agencies, :federal_register_agencies
 
   describe '#each_document' do
-    let(:parser) { parser = FederalRegisterDocumentApiParser.new }
     let(:fr_agency) { federal_register_agencies(:fr_irs) }
-    let(:results) { mock('results') }
+    let(:parser) { parser = FederalRegisterDocumentApiParser.new(federal_register_agency_ids: [fr_agency.id]) }
+    let(:results) { mock('results', next: nil) }
 
     before { FederalRegister::Article.should_receive(:search).and_return(results) }
 
@@ -72,7 +72,10 @@ describe FederalRegisterDocumentApiParser do
       document_number = ' 1111-3333 '.freeze
       title = 'arbitrary   title with   spaces'.freeze
       unsanitized_document_1 = mock('document',
-                                    attributes: { 'agencies' => [{ 'id' => 492 }, { 'id' => 159 }],
+                                    attributes: { 'agencies' => [{ 'id' => 492 },
+                                                                 { 'id' => 159 },
+                                                                 { 'id' => 159, 'raw_name' => 'duplicate agency ID' },
+                                                                 { 'raw_name' => 'agency without ID' }],
                                                   'document_number' => document_number,
                                                   'title' => title })
       results.should_receive(:each).and_yield(unsanitized_document_1)

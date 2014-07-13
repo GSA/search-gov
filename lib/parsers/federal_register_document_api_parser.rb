@@ -1,49 +1,49 @@
 class FederalRegisterDocumentApiParser
-  DEFAULT_PER_PAGE = 1000
+  DEFAULT_PER_PAGE = 100
 
-  COLLECTION_FIELDS = [:agencies].freeze
+  COLLECTION_FIELDS = %w(agencies).freeze
 
-  DATE_FIELDS = [:comments_close_on,
-                 :effective_on,
-                 :publication_date].freeze
+  DATE_FIELDS = %w(comments_close_on effective_on publication_date).freeze
 
-  NUMBER_FIELDS = [:end_page,
-                    :page_length,
-                    :start_page].freeze
+  NUMBER_FIELDS = %w(end_page page_length start_page).freeze
 
-  STRING_FIELDS = [:abstract,
-                   :document_number,
-                   :html_url,
-                   :title,
-                   :type].freeze
+  STRING_FIELDS = %w(abstract document_number html_url title type).freeze
 
   FIELDS = (COLLECTION_FIELDS + DATE_FIELDS + NUMBER_FIELDS + STRING_FIELDS).freeze
 
   def initialize(options = {})
-    @federal_register_agency_ids = options[:federal_register_agency_ids] || FederalRegisterAgency.active.pluck(:id)
+    @federal_register_agency_id = options[:federal_register_agency_id]
     @per_page = options[:per_page] || DEFAULT_PER_PAGE
+    @load_all = options[:load_all]
   end
+
+  # def each_document
+  #   @federal_register_agency_ids.each do |agency_id|
+  #     each_agency_document(agency_id) do |document|
+  #       yield document
+  #     end
+  #   end
+  # end
 
   def each_document
-    @federal_register_agency_ids.each do |agency_id|
-      each_agency_document(agency_id) do |document|
-        yield document
-      end
-    end
-  end
+    conditions = { agency_ids: [@federal_register_agency_id] }
+    conditions[:publication_date] = { gte: Date.current.advance(days: -7) } unless @load_all
 
-  def each_agency_document(agency_id)
-    params = { conditions: { agency_ids: [agency_id] },
+    params = { conditions: conditions,
                fields: FIELDS,
+               order: :newest,
                per_page: @per_page }
     results = FederalRegister::Article.search params
-    results.each { |document| yield sanitize_document(document) }
+    while results do
+      results.each { |document| yield sanitize_document(document) }
+      results = results.next
+    end
   end
 
   private
 
   def sanitize_document(document)
-    attributes = document.attributes.symbolize_keys
+    attributes = document.attributes
     sanitized_attributes = attributes.slice *NUMBER_FIELDS
 
     non_date_attributes = sanitize_attribute_values(attributes, DATE_FIELDS) do |value|
@@ -53,12 +53,12 @@ class FederalRegisterDocumentApiParser
 
     sanitized_attributes.merge! sanitize_attribute_values(attributes, STRING_FIELDS)
 
-    document_type = sanitized_attributes.delete :type
-    sanitized_attributes[:document_type] = document_type
+    document_type = sanitized_attributes.delete 'type'
+    sanitized_attributes['document_type'] = document_type
 
-    sanitized_attributes[:federal_register_agency_ids] = extract_agency_ids attributes
+    sanitized_attributes['federal_register_agency_ids'] = extract_agency_ids attributes
 
-    sanitized_attributes
+    sanitized_attributes.symbolize_keys
   end
 
   def sanitize_attribute_values(attributes, keys)
@@ -72,6 +72,6 @@ class FederalRegisterDocumentApiParser
   end
 
   def extract_agency_ids(attributes)
-    attributes[:agencies].map { |agency| agency['id'] }.sort
+    attributes['agencies'].map { |agency| agency['id'] }.compact.uniq.sort
   end
 end

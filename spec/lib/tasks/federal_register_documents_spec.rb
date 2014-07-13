@@ -17,8 +17,15 @@ describe 'Federal register documents rake tasks' do
     end
 
     it 'should import federal register documents' do
-      FederalRegisterDocumentData.should_receive(:import)
+      FederalRegisterDocumentData.should_receive(:import).with(load_all: false)
       @rake[task_name].invoke
+    end
+
+    context 'when load_all=true is specified' do
+      it 'import with load_all: true' do
+        FederalRegisterDocumentData.should_receive(:import).with(load_all: true)
+        @rake[task_name].invoke('load_all=true')
+      end
     end
   end
 end

@@ -3,7 +3,7 @@ module FederalRegisterDocumentsHelper
     document_type_span = content_tag :span, document.document_type
     agency_span = content_tag :span, agency.name
     publication_date_span = content_tag :span, document.publication_date.to_s(:long)
-    "A #{document_type_span} by #{agency_span} on #{publication_date_span}".html_safe
+    "A #{document_type_span} by #{agency_span} posted on #{publication_date_span}.".html_safe
   end
 
   def federal_register_document_comment_period(document)
@@ -18,7 +18,7 @@ module FederalRegisterDocumentsHelper
       date_delta = (document.comments_close_on - today).to_i
       date_delta_span = content_tag :span, pluralize(date_delta, 'day')
       comments_close_on_span = content_tag :span, document.comments_close_on.to_s(:long)
-      "Comment period ends in #{date_delta_span} (#{comments_close_on_span})".html_safe
+      "Comment period ends in #{date_delta_span} (#{comments_close_on_span}).".html_safe
     end
   end
 

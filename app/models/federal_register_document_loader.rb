@@ -3,6 +3,7 @@ class FederalRegisterDocumentLoader
   @queue = :primary
 
   def self.perform(federal_register_agency_id)
-    FederalRegisterDocumentData.load_documents federal_register_agency_ids: [federal_register_agency_id]
+    fr_agency = FederalRegisterAgency.find_by_id federal_register_agency_id
+    FederalRegisterDocumentData.load_documents fr_agency, load_all: true
   end
 end
