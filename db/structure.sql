@@ -346,8 +346,8 @@ CREATE TABLE `federal_register_agencies_federal_register_documents` (
 CREATE TABLE `federal_register_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `document_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `abstract` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
+  `abstract` text COLLATE utf8_unicode_ci,
   `html_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `document_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `start_page` int(11) NOT NULL,
@@ -2044,3 +2044,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140630225343');
 INSERT INTO schema_migrations (version) VALUES ('20140711151619');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714140130');
+
+INSERT INTO schema_migrations (version) VALUES ('20140715193752');
