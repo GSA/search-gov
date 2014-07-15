@@ -47,13 +47,6 @@ module Govboxable
     end
   end
 
-  def has_open_for_comments_federal_register_documents?
-    @has_open_for_comments_federal_register_documents ||= begin
-      has_federal_register_documents? &&
-        federal_register_documents.results.first.comments_close_on >= Date.current
-    end
-  end
-
   def method_missing(meth, *args, &block)
     if meth.to_s =~ /^has_(.+)\?$/
       run_has_method($1)
