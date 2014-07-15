@@ -418,8 +418,8 @@ Feature: Manage Content
     And I follow "RSS" within the Admin Center content
     And I follow "Add RSS Feed"
     When I fill in the following:
-      | Name  | Recalls                                                                         |
-      | URL 1 | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodSafety/rss.xml |
+      | Name  | Recalls                                                                          |
+      | URL 1 | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml |
     And I choose "RSS"
     And I add the following RSS Feed URLs:
       | url                                                                                |
@@ -429,7 +429,7 @@ Feature: Manage Content
     When I follow "Edit"
     Then the "Name" field should contain "Recalls"
     And the "URL 1" field should contain "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml"
-    And the "URL 2" field should contain "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodSafety/rss.xml"
+    And the "URL 2" field should contain "http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml"
     When I fill in "Name" with "Food, Safety and Pet Health Recalls"
     And I add the following RSS Feed URLs:
       | url                                                                            |
