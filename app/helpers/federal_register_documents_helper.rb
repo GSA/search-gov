@@ -1,9 +1,25 @@
 module FederalRegisterDocumentsHelper
-  def federal_register_document_info(document, agency)
+  def federal_register_document_info(document)
     document_type_span = content_tag :span, document.document_type
-    agency_span = content_tag :span, agency.name
+
+    fr_agency_names = federal_register_document_contributing_agency_names document.federal_register_agencies
+    fr_agencies_html = federal_register_agencies_html fr_agency_names
+
     publication_date_span = content_tag :span, document.publication_date.to_s(:long)
-    "A #{document_type_span} by #{agency_span} posted on #{publication_date_span}.".html_safe
+    "A #{document_type_span} #{fr_agencies_html} posted on #{publication_date_span}.".html_safe
+  end
+
+  def federal_register_document_contributing_agency_names(fr_agencies)
+    parent_ids = fr_agencies.collect(&:parent_id).compact.uniq
+    fr_agencies.reject { |fr_agency| parent_ids.include? fr_agency.id }.collect(&:name)
+  end
+
+  def federal_register_agencies_html(fr_agency_names)
+    agency_spans = fr_agency_names.sort.collect { |name| content_tag :span, name }
+    last_agency_span = agency_spans.slice!(-1)
+    agencies_html = 'by the ' << agency_spans.join(', the ').html_safe
+    agencies_html << ' and the ' if agency_spans.present?
+    agencies_html << last_agency_span
   end
 
   def federal_register_document_comment_period(document)

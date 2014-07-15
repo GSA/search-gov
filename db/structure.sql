@@ -334,6 +334,7 @@ CREATE TABLE `federal_register_agencies` (
   `updated_at` datetime NOT NULL,
   `last_load_documents_requested_at` datetime DEFAULT NULL,
   `last_successful_load_documents_at` datetime DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2046,3 +2047,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140711151619');
 INSERT INTO schema_migrations (version) VALUES ('20140714140130');
 
 INSERT INTO schema_migrations (version) VALUES ('20140715193752');
+
+INSERT INTO schema_migrations (version) VALUES ('20140715201115');

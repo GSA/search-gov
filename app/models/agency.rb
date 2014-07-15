@@ -1,4 +1,8 @@
 class Agency < ActiveRecord::Base
+  extend AttributeSquisher
+
+  before_validation_squish :domain, :name, :name_variants, :organization_code,
+                           assign_nil_on_blank: true
   validates_presence_of :name, :domain
   validates_uniqueness_of :domain, :case_sensitive => false
   belongs_to :federal_register_agency

@@ -2,16 +2,7 @@ module FederalRegisterDocumentData
   def self.import(options = { load_all: false })
     fr_agencies = FederalRegisterAgency.active.to_a
     fr_agencies.each { |fra| fra.touch(:last_load_documents_requested_at) }
-    # current_document_ids = FederalRegisterDocument.pluck :id
-
     fr_agencies.each { |fr_agency| load_documents(fr_agency, options) }
-
-    # load_options = options.merge(federal_register_agency_ids: fr_agencies.collect(&:id))
-    # imported_document_ids = load_documents load_options
-
-    # obsolete_document_ids = current_document_ids - imported_document_ids
-    # FederalRegisterDocument.destroy obsolete_document_ids if imported_document_ids.present?
-    # imported_document_ids.count
   end
 
   def self.load_documents(fr_agency, options = {})

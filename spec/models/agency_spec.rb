@@ -4,12 +4,12 @@ describe Agency do
   before do
     Agency.destroy_all
     @valid_attributes = {
-      :name => 'Internal Revenue Service',
-      :domain => 'irs.gov',
+      :name => '  Internal Revenue   Service  ',
+      :domain => ' irs.gov  ',
       :phone => '800-555-1234',
       :abbreviation => 'IRS',
-      :organization_code => 'XX00',
-      :name_variants => 'External Revenue Service, The Man',
+      :organization_code => ' XX00 ',
+      :name_variants => '  External Revenue Service,   The Man  ',
       :toll_free_phone => '800-555-1212',
       :tty_phone => '800-555-1212',
       :twitter_username => 'irs',
@@ -34,6 +34,13 @@ describe Agency do
     context "when saving with valid attributes" do
       before do
         @agency = Agency.create!(@valid_attributes)
+      end
+
+      it 'squishes name, domain and name variants' do
+        @agency.name.should eq 'Internal Revenue Service'
+        @agency.domain.should eq 'irs.gov'
+        @agency.name_variants.should eq 'External Revenue Service, The Man'
+        @agency.organization_code.should eq 'XX00'
       end
 
       it "should create a bunch of agency queries on save" do

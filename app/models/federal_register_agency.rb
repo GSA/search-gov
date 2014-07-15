@@ -1,7 +1,8 @@
 class FederalRegisterAgency < ActiveRecord::Base
   extend AttributeSquisher
 
-  attr_accessible :id, :name, :short_name
+  attr_accessible :id, :name, :parent_id, :short_name
+  belongs_to :parent, class_name: 'FederalRegisterAgency'
   has_many :agencies
   has_and_belongs_to_many :federal_register_documents
   before_validation_squish :name, :short_name, assign_nil_on_blank: true

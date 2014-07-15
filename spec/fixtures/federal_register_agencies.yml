@@ -1,7 +1,17 @@
+fr_doc:
+  name: Commerce Department
+  short_name: DOC
+
 fr_irs:
   name: Internal Revenue Service
   short_name: IRS
 
+fr_ita:
+  name: International Trade Administration
+  short_name: ITA
+  parent: fr_doc
+
 fr_noaa:
   name: National Oceanic and Atmospheric Administration
   short_name: NOAA
+  parent: fr_doc
