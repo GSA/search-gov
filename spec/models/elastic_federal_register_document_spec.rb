@@ -19,21 +19,22 @@ describe ElasticFederalRegisterDocument do
                                                            q: 'fish',
                                                            size: 1)
 
-        search.total.should eq 3
+        search.total.should eq 4
         search.results.size.should eq 1
         search.results.first.should be_instance_of(FederalRegisterDocument)
         search.offset.should eq 1
       end
 
-      it 'boosts documents with future comments_close_on' do
+      it 'sorts results by comments_close_on in the descending order' do
         search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'foreign fishing')
 
-        search.total.should eq 3
-        search.results[0].document_number.should eq '2014-15266'
-        search.results[1].document_number.should eq '2014-15173'
+        search.total.should eq 4
+        search.results[0].document_number.should eq '2014-15173'
+        search.results[1].document_number.should eq '2014-15266'
         search.results[2].document_number.should eq '2014-15269'
+        search.results[3].document_number.should eq '2014-15170'
       end
 
       context 'when there is a matching term in the abstract' do
