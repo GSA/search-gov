@@ -7,13 +7,13 @@ describe FederalRegisterDocumentsHelper do
     context 'when the document comments_close_on is before today' do
       before { document.stub(:comments_close_on).and_return Date.current.prev_week }
 
-      specify { helper.federal_register_document_comment_period(document).should eq 'Comment period ended.' }
+      specify { helper.federal_register_document_comment_period(document).should eq 'Comment Period Closed' }
     end
 
     context 'when the document comments_close_on is today' do
       before { document.stub(:comments_close_on).and_return Date.current }
 
-      specify { helper.federal_register_document_comment_period(document).should eq 'Comment period ends today.' }
+      specify { helper.federal_register_document_comment_period(document).should eq 'Comment period ends today' }
     end
   end
 end
