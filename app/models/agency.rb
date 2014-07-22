@@ -35,6 +35,14 @@ class Agency < ActiveRecord::Base
     self.phone.present? or self.toll_free_phone.present? or self.tty_phone.present?
   end
 
+  def friendly_name
+    if federal_register_agency
+      "#{name} FRA: #{federal_register_agency.to_label}"
+    else
+      name
+    end
+  end
+
   private
 
   def generate_agency_queries

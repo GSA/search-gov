@@ -231,4 +231,23 @@ describe Agency do
       end
     end
   end
+
+  describe '#friendly_name' do
+    context 'when the agency belongs to a federal register agency' do
+      fixtures :federal_register_agencies
+      let(:agency) { Agency.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
+
+      it 'returns name with Federal Register Agency name' do
+        agency.friendly_name.should match 'Internal Revenue Service FRA: Internal Revenue Service'
+      end
+    end
+
+    context 'when the agency does not belong to a federal register agency' do
+      let(:agency) { Agency.create!(@valid_attributes) }
+
+      it 'returns name with Federal Register Agency name' do
+        agency.friendly_name.should eq 'Internal Revenue Service'
+      end
+    end
+  end
 end
