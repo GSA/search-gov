@@ -1,8 +1,4 @@
 module Admin::ColumnsHelper
-  def affiliates_export_column(feature)
-    feature.affiliates.collect(&:name).sort.join(',')
-  end
-
   def id_column(record, column)
     if record.is_a?(Affiliate)
       link_to record.id, site_path(record.id), target: '_blank'

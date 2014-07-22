@@ -91,6 +91,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:theme].form_ui = :select
     config.columns[:features].associated_limit = nil
     config.columns[:agency].form_ui = :select
+
     theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
     config.columns[:theme].options = { :include_blank => '', :options => theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
@@ -102,7 +103,6 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:tags].set_link 'edit'
 
     config.columns[:status].form_ui = :select
-    config.columns[:status].options = { include_blank: false, options: Status.all.map { |s| [s.name, s.id.to_s] } }
     config.columns[:status].set_link 'edit'
     config.columns[:status].includes = [:status]
     config.columns[:status].sort_by sql: 'statuses.name'

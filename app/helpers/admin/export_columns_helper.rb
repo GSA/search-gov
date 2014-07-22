@@ -1,4 +1,8 @@
 module Admin::ExportColumnsHelper
+  def affiliates_export_column(feature)
+    feature.affiliates.collect(&:name).sort.join(',')
+  end
+
   def format_export_column_header_name(column)
     column.label
   end
