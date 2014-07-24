@@ -1,6 +1,6 @@
 module Admin::FormColumnsHelper
   def affiliate_agency_form_column(record, options)
-    agency_options = Agency.all.collect do |agency|
+    agency_options = Agency.order(:name).collect do |agency|
       [agency.friendly_name, agency.id]
     end
 

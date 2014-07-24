@@ -4,12 +4,13 @@ class Admin::AffiliatesController < Admin::AdminController
     config.label = 'Sites'
     config.actions.exclude :delete
 
-    all_columns = config.columns.reject do |column|
+    attribute_columns = config.columns.reject do |column|
       column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|key|label|_logo|_mappings|scope_ids|size|status_id|uses_managed_header_footer)\z/
     end.map(&:name)
-    all_columns << :agency
-    all_columns.sort!
+    attribute_columns << :agency
+    attribute_columns.sort!
 
+    all_columns = attribute_columns
     all_columns |= %i(mobile_logo_url header_image_url uses_managed_header_footer staged_uses_managed_header_footer)
 
     virtual_columns = [:dc_contributor, :dc_subject, :dc_publisher,
@@ -55,15 +56,14 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    config.update.columns = [:status, :go_live_date, :affiliate_note,
-                             :force_mobile_format, :is_bing_image_search_enabled,
-                             :is_federal_register_document_govbox_enabled,
-                             :dap_enabled, :jobs_enabled,
-                             :agency, :search_engine, :raw_log_access_enabled, :fetch_concurrency, :tags]
+    update_columns = %i(status go_live_date affiliate_note)
+    update_columns |= attribute_columns.reject { |column| column =~ /\A(created_at|id|updated_at)\z/i }
+    update_columns << :tags
+    config.update.columns = update_columns
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add :display_name, :name, :website,
-                     :is_sayt_enabled, :locale, :affiliate_feature_addition, :excluded_domains
+                     :locale, :affiliate_feature_addition, :excluded_domains
       name_group.collapsed = true
     end
 
@@ -86,14 +86,18 @@ class Admin::AffiliatesController < Admin::AdminController
       name_group.collapsed = true
     end
 
+    excluded_show_columns = %i(footer header header_footer_css staged_footer staged_header staged_header_footer_css)
+    show_columns = list_columns
+    show_columns |= all_columns.reject { |column| excluded_show_columns.include? column }
+    config.show.columns = show_columns
+
     config.create.columns = [:display_name, :name, :website, :locale]
-    config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:theme].form_ui = :select
     config.columns[:features].associated_limit = nil
     config.columns[:agency].form_ui = :select
 
-    theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
-    config.columns[:theme].options = { :include_blank => '', :options => theme_options }
+    theme_options = Affiliate::THEMES.keys
+    config.columns[:theme].options = { include_blank: '- select -', options: theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
 
     config.columns[:search_engine].form_ui = :select
@@ -104,8 +108,6 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.columns[:status].form_ui = :select
     config.columns[:status].set_link 'edit'
-    config.columns[:status].includes = [:status]
-    config.columns[:status].sort_by sql: 'statuses.name'
   end
 
   def analytics
