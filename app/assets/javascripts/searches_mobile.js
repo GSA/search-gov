@@ -3,8 +3,9 @@
 //= require searches/collapsible
 //= require searches/custom_bootstrap
 //= require searches/click
+//= require searches/filter_and_nav
 //= require searches/images
 //= require searches/menu
-//= require searches/nav
+//= require searches/news_search_options_modal
 //= require searches/skiplink
 //= require searches/typeahead

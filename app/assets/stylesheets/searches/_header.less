@@ -1,13 +1,12 @@
 #header-wrapper {
-  margin-bottom: @content-block-margin;
+  padding-bottom: @content-block-margin;
   position: relative;
   width: 100%;
-  z-index: (@zindex-modal-background + 10);
+  z-index: (@zindex-modal-background - 10);
 }
 
 #header {
   .clearfix();
-  border-radius: @border-radius-base;
   margin: 0;
 
   @media (min-width: @screen-sm) {

@@ -10,6 +10,10 @@ $search-bar-background-color: if($header-background-lightness > 95%, #efefef, #f
 $search-bar-border-color: if($header-background-lightness > 50%, darken($header-background-color, 20%), $header-background-color)
 $tt-hint-color: if($header-background-lightness > 95%, #505050, #595959)
 
+$navigation-background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
+$navigation-background-lightness: lightness($navigation-background-color)
+$navigation-border-color: if($navigation-background-lightness > 50%, darken($navigation-background-color, 20%), lighten($navigation-background-color, 30%))
+
 #header-wrapper
   background-color: $header-background-color
 
@@ -22,11 +26,23 @@ $button-background-lightness: lightness($button-background-color)
   .tt-hint
     color: $tt-hint-color
 
-#advanced-search-button
-  background-color: $button-background-color
+@if ($header-background-lightness == 100%) and ($navigation-background-lightness == 100%)
+  #search-nav, #search-filters
+    > .navbar-nav
+      border-width: 0 1px
+      border-left-color: transparent
+      border-right-color: transparent
+  #search-filters > .navbar-nav
+    border-top: 1px solid $search-bar-border-color
+@else
+  #header-wrapper
+    border-bottom: 1px solid $search-bar-border-color
+  #search-nav, #search-filters
+    > .nav
+      border-color: $search-bar-border-color
 
-#lightness
-  width: $button-background-lightness
+#advanced-search-button, #news-search-options-form-search-button
+  background-color: $button-background-color
 
 @if $button-background-lightness > 75%
   #search-bar #search-button
@@ -44,24 +60,18 @@ $button-background-lightness: lightness($button-background-color)
   background-color: $button-background-color
 
 #search-nav .navbar-nav > li.active span
-  border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+  border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
   color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-  @media (min-width: 768px)
-    border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
 
 #main-menu ul > li > span
   border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
   color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
 
-#search-nav-wrapper li > a, #footer-wrapper .navbar-nav > li > a
+#navs-filters-facets li > a, #footer-wrapper .navbar-nav > li > a
   color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
 
   &:focus, &:hover, &:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
-
-$navigation-background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
-$navigation-background-lightness: lightness($navigation-background-color)
-$navigation-border-color: if($navigation-background-lightness > 50%, darken($navigation-background-color, 20%), lighten($navigation-background-color, 30%))
 
 #main-menu
   border-color: $navigation-border-color
@@ -74,10 +84,15 @@ $navigation-border-color: if($navigation-background-lightness > 50%, darken($nav
   li.divider
     background-color: $navigation-border-color
 
-#search-nav .dropdown-menu
-  border-color: $navigation-border-color
+#search-nav, #search-filters
+  .dropdown-menu
+    border-color: $search-bar-border-color
 
-#search-nav .navbar-nav, #search-nav .dropdown-menu, #main-menu
+#search-nav, #search-filters
+  .navbar-nav, .dropdown-menu
+    background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
+
+#main-menu
   background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
 
 #footer-wrapper

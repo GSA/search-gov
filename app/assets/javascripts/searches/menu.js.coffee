@@ -2,6 +2,13 @@ toggleMenu = ->
   $('body').toggleClass 'show-menu'
   $('#main-menu').toggleClass 'collapse'
 
+  if menuShown()
+    $(document).on 'click.menuWrapper',
+      '.show-menu #main-menu-backdrop',
+      clickOnMenuWrapper
+  else
+    $(document).off 'click.menuWrapper'
+
 menuShown = ->
   $('body').hasClass 'show-menu'
 
@@ -25,6 +32,4 @@ $(document).on 'focus.menuButton', '#menu-button', focusMenuButton
 
 clickOnMenuWrapper = (e) ->
   e.stopPropagation()
-  toggleMenu()
-
-$(document).on 'click.menuWrapper', '.show-menu #main-menu-backdrop', clickOnMenuWrapper
+  hideMenu()

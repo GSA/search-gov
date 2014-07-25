@@ -95,12 +95,150 @@ Feature: Searches using mobile device
     And there are 5 news items for "Noticias-1"
 
     When I am on en.agency.gov's "News-1" mobile news search page
-    Then I should see "Powered by DIGITALGOV Search"
+    And I fill in "Enter your search term" with "news item"
+    And I press "Search" within the search box
+
+    Then the "Enter your search term" field should contain "news item"
+    And I should see "All time" within the current time filter
+    And I should see "Most recent" within the current sort by filter
+    And I should see "Powered by DIGITALGOV Search"
     And I should see at least "10" web search results
+
+    When I follow "Last month"
+    Then the "Enter your search term" field should contain "news item"
+    And I should see "Last month" within the current time filter
+    And I should see "Most recent" within the current sort by filter
+    And I should see at least "10" web search results
+
+    When I follow "Best match"
+    Then the "Enter your search term" field should contain "news item"
+    And I should see "Last month" within the current time filter
+    And I should see "Best match" within the current sort by filter
+    And I should see at least "10" web search results
+
+    When I follow "Last hour"
+    Then the "Enter your search term" field should contain "news item"
+    And I should see "no results found"
 
     When I am on es.agency.gov's "Noticias-1" mobile news search page
     Then I should see "Generado por DIGITALGOV Search"
     And I should see at least "5" web search results
+
+  Scenario: Custom date range news search
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name  | url                                  | is_navigable |
+      | Press | http://www.whitehouse.gov/feed/press | true         |
+    And affiliate "es.agency.gov" has the following RSS feeds:
+      | name     | url                                                              | is_navigable |
+      | Noticias | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
+      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
+      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | vicepresident | westwing     | jobs           |
+      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady     | newsroom     | health         |
+      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president     | newsroom     | foreign policy |
+    And feed "Noticias" has the following news items:
+      | link                              | title               | guid    | published_ago | published_at | description                                | subject        |
+      | http://www.gobiernousa.gov/news/1 | First Spanish item  | esuuid1 | day           |              | Gobierno item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Second Spanish item | esuuid2 | day           |              | Gobierno item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Third Spanish item  | esuuid3 | day           |              | Gobierno item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Fourth Spanish item | esuuid4 | day           |              | Gobierno item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Fifth Spanish item  | esuuid5 | day           | 2012-10-1    | Gobierno item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Sixth Spanish item  | esuuid6 | day           | 2012-10-17   | Gobierno item Next news item for the feed  | olympics       |
+
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "item"
+    And I press "Search" within the search box
+    And I follow "Press" within the SERP navigation
+
+    When I fill in "From" with "9/30/2012"
+    And I fill in "To" with "10/15/2012"
+    And I press "Search" within the news search options form
+
+    Then I should see "Press" within the SERP active navigation
+    And the "Enter your search term" field should contain "item"
+    And I should see "Sep 30, 2012 - Oct 15, 2012" within the current time filter
+    And I should see "Most recent" within the current sort by filter
+    And the "From" field should contain "9/30/2012"
+    And the "To" field should contain "10/15/2012"
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I follow "Best match"
+    Then I should see "Press" within the SERP active navigation
+    And the "Enter your search term" field should contain "item"
+    And I should see "Sep 30, 2012 - Oct 15, 2012" within the current time filter
+    And I should see "Best match" within the current sort by filter
+    And the "From" field should contain "9/30/2012"
+    And the "To" field should contain "10/15/2012"
+    And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
+    And I should not see a link to "Fourth item"
+
+    When I follow "All time"
+    Then I should see "Press" within the SERP active navigation
+    And the "Enter your search term" field should contain "item"
+    And I should see "All time" within the current time filter
+    And I should see "Best match" within the current sort by filter
+
+    When I fill in "From" with "9/30/2012"
+    And I fill in "To" with "10/15/2012"
+    And I press "Search" within the news search options form
+    And I follow "Best match"
+    And I follow "Clear"
+
+    Then I should see "Press" within the SERP active navigation
+    And the "Enter your search term" field should contain "item"
+    And I should see "All time" within the current time filter
+    And I should see "Most recent" within the current sort by filter
+
+    When I am on es.agency.gov's search page
+    And I fill in "Ingrese su búsqueda" with "item"
+    And I press "Buscar" within the search box
+    And I follow "Noticias" within the SERP navigation
+
+    When I fill in "Desde" with "30/9/2012"
+    And I fill in "Hasta" with "15/10/2012"
+    And I press "Buscar" within the news search options form
+
+    Then I should see "Noticias" within the SERP active navigation
+    And the "Ingrese su búsqueda" field should contain "item"
+    And I should see "sep 30, 2012 - oct 15, 2012" within the current time filter
+    And I should see "Más recientes" within the current sort by filter
+    And the "Desde" field should contain "30/9/2012"
+    And the "Hasta" field should contain "15/10/2012"
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
+
+    When I follow "Más relevantes"
+    Then I should see "Noticias" within the SERP active navigation
+    And the "Ingrese su búsqueda" field should contain "item"
+    And I should see "sep 30, 2012 - oct 15, 2012" within the current time filter
+    And I should see "Más relevantes" within the current sort by filter
+    And the "Desde" field should contain "30/9/2012"
+    And the "Hasta" field should contain "15/10/2012"
+    And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
+    And I should not see a link to "Sixth Spanish item"
+
+    When I follow "Cualquier fecha"
+    Then I should see "Noticias" within the SERP active navigation
+    And the "Ingrese su búsqueda" field should contain "item"
+    And I should see "Cualquier fecha" within the current time filter
+    And I should see "Más relevantes" within the current sort by filter
+
+    When I fill in "Desde" with "30/9/2012"
+    And I fill in "Hasta" with "15/10/2012"
+    And I press "Buscar" within the news search options form
+    And I follow "Más relevantes"
+    And I follow "Borrar"
+
+    Then I should see "Noticias" within the SERP active navigation
+    And the "Ingrese su búsqueda" field should contain "item"
+    And I should see "Cualquier fecha" within the current time filter
+    And I should see "Más recientes" within the current sort by filter
 
   Scenario: Media RSS search
     Given the following Affiliates exist:
@@ -113,7 +251,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's search page
     When I follow "Images" within the SERP navigation
     And I fill in "Enter your search term" with "image"
-    And I press "Search"
+    And I press "Search" within the search box
     Then I should see exactly "10" image search results
     And I should see "Powered by DIGITALGOV Search"
 

@@ -34,7 +34,7 @@ module MobileNavigationsHelper
 
   def standalone_search_navigation(search, navigable)
     html = navigation_item(navigable.name, true) << related_site_links(search)
-    navigation_wrapper(html.html_safe, 'in')
+    search_nav(html.html_safe, 'in')
   end
 
   def full_navigations(search, search_params, navigations)
@@ -95,32 +95,11 @@ module MobileNavigationsHelper
             when DocumentCollection
               path_for_document_collection_search(search_params, navigable, query)
             when RssFeed
-              path_for_rss_feed_search(search_params, navigable, query)
+              path_for_rss_feed_search(search, search_params, navigable)
           end
       is_active = non_default_search_navigable == navigable
       yield navigable.name, is_active, path
     end
-  end
-
-  def path_for_image_search(search_params, query)
-    image_search_params = search_params.slice(:affiliate).merge(query: query)
-    image_search_path image_search_params
-  end
-
-  def path_for_document_collection_search(search_params, navigable, query)
-    dc_params = navigable_params(search_params, :dc, navigable.id, query,
-                                 :affiliate, :m, :sitelimit)
-    docs_search_path(dc_params)
-  end
-
-  def path_for_rss_feed_search(search_params, navigable, query)
-    rss_params = navigable_params(search_params, :channel, navigable.id, query,
-                                  :affiliate, :m, :tbs)
-    news_search_path(rss_params)
-  end
-
-  def navigable_params(search_params, id_sym, id, query, *keys)
-    search_params.slice(*keys).merge(id_sym => id, :query => query)
   end
 
   def navigation_item(title, is_active, path = nil)
@@ -138,16 +117,19 @@ module MobileNavigationsHelper
   end
 
   def build_navigations(html, nav_items, active_nav_index, related_sites_html)
-    if nav_items.length <= 3
-      navigation_wrapper(html.html_safe << nav_items.join("\n").html_safe << related_sites_html,
+    nav_items_length = nav_items.length
+    if nav_items_length <= 3
+      search_nav(html.html_safe << nav_items.join("\n").html_safe << related_sites_html,
                          nav_classes(nav_items.length, related_sites_html))
     else
-      navigations_with_dropdown(html, nav_items, active_nav_index, related_sites_html)
+      nav_html = navigations_with_dropdown(html, nav_items, active_nav_index)
+      nav_html << related_sites_html
+      search_nav(nav_html, nav_classes(nav_items_length, related_sites_html))
     end
   end
 
-  def navigation_wrapper(html, nav_class = nil)
-    render partial: '/searches/nav_wrapper', locals: { html: html, nav_class: nav_class }
+  def search_nav(html, nav_class = nil)
+    render partial: 'searches/search_nav', locals: { html: html, nav_class: nav_class }
   end
 
   def nav_classes(nav_items_length, related_sites_html)
@@ -157,21 +139,16 @@ module MobileNavigationsHelper
     nav_classes.join ' '
   end
 
-  def navigations_with_dropdown(html, nav_items, active_nav_index, related_sites_html)
-    nav_items_length = nav_items.length
+  def navigations_with_dropdown(html, nav_items, active_nav_index)
     if active_nav_index and active_nav_index > 1
       active_nav_html = nav_items.slice!(active_nav_index)
       visible_nav_html = nav_items.slice!(0) << "\n" << active_nav_html << "\n"
     else
       visible_nav_html = nav_items.slice!(0, 2).join("\n")
     end
-    dropdown_nav_html = nav_items
 
     html << "\n" << visible_nav_html.html_safe
-    html << "\n" << dropdown_navigation_wrapper(dropdown_nav_html.join("\n").html_safe, 'nav-dropdown')
-    html << related_sites_html
-
-    navigation_wrapper(html, nav_classes(nav_items_length, related_sites_html))
+    html << "\n" << dropdown_navigation_wrapper(nav_items.join("\n"), 'nav-dropdown')
   end
 
   def related_site_links(search)
@@ -184,12 +161,12 @@ module MobileNavigationsHelper
 
   def related_site_items(connections, query)
     html = connections.map { |conn| related_site_item(conn, query) }
-    dropdown_navigation_wrapper(html.join(' ').html_safe,
+    dropdown_navigation_wrapper(html.join(' '),
                                 'related-sites-dropdown',
                                 I18n.t(:'searches.related_sites'))
   end
 
-  def dropdown_navigation_wrapper(html, id, show_more_label = I18n.t(:show_more))
-    dropdown_wrapper 'searches/dropdown_nav_wrapper', html, id, show_more_label
+  def dropdown_navigation_wrapper(html, dropdown_id, dropdown_label = I18n.t(:show_more))
+    dropdown_wrapper 'searches/dropdown_nav_wrapper', html, dropdown_id, dropdown_label
   end
 end

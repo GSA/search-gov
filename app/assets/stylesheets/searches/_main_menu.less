@@ -7,7 +7,6 @@
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 0;
-  border-radius: @border-radius-base;
 
   @media (min-width: @screen-sm-min) {
     display: none;
@@ -91,8 +90,11 @@
 }
 
 #main-menu-wrapper {
+  padding-bottom: @content-block-margin;
+
   @media (min-width: @screen-sm-min) {
     height: 100%;
+    padding-bottom: 0;
     position: fixed;
     top: 0;
     right: 0;
@@ -114,7 +116,6 @@
 .menu {
   border-style: solid;
   border-width: 1px;
-  border-radius: @border-radius-base;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   .clearfix();

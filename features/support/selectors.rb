@@ -28,10 +28,18 @@ module HtmlSelectorsHelpers
       '.records > tr:first-child'
     when /the first table body row/
       "table tbody tr:first-child"
+    when /the search box/
+      '#search-bar'
     when /the SERP active navigation/
       '#search-nav .active'
     when /the SERP navigation/
       '#search-nav'
+    when /the current time filter/
+      '#time-filter-dropdown .current-filter'
+    when /the current sort by filter/
+      '#sort-filter-dropdown .current-filter'
+    when /the news search options form/
+      '#news-search-options-form'
     when /the med topic govbox/
       '#med-topic'
     when /the news govbox/

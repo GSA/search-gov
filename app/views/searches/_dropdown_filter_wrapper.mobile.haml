@@ -1,6 +1,6 @@
 %li.dropdown.open.collapsible.collapsed{ id: id }
   = link_to "##{id}", class: 'dropdown-toggle show-more' do
-    = content_tag :span, dropdown_label
+    = content_tag :span, dropdown_label, class: 'current-filter'
     = content_tag :span, nil, class: 'caret'
   %ul.dropdown-menu
     #{html.html_safe}

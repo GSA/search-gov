@@ -1,0 +1,32 @@
+- id = 'news-search-options-form'
+= form_tag(request.path, id: id, method: :get) do
+  = hidden_field_tag_if_key_exists :m
+  = hidden_field_tag :affiliate, search.affiliate.name, id: "#{id}-affiliate"
+  = hidden_field_tag :query, search.query, id: "#{id}-query"
+  = hidden_field_tag :channel, search.rss_feed.id, id: "#{id}-channel" if search.rss_feed
+  = hidden_field_tag :sort_by, 'r', id: "#{id}-sort-by" if search.sort_by_relevance?
+
+  - date_picker_data = { date_autoclose: true,
+                         date_end_date: render_date(Date.current),
+                         date_format: I18n.t(:'searches.news_search_options.date_format'),
+                         date_language: I18n.locale,
+                         date_orientation: 'top left',
+                         provide: 'datepicker' }
+
+  %fieldset
+    = label_tag "#{id}-since-date", I18n.t(:from)
+    = text_field_tag :since_date,
+      render_date(search.since),
+      data: date_picker_data,
+      id: "#{id}-since-date",
+      placeholder: I18n.t('searches.news_search_options.date_format')
+
+  %fieldset
+    = label_tag "#{id}-until-date", I18n.t(:to)
+    = text_field_tag :until_date,
+      render_date(search.until),
+      data: date_picker_data,
+      id: "#{id}-until-date",
+      placeholder: I18n.t('searches.news_search_options.date_format')
+
+  = submit_tag t(:search), id: "#{id}-search-button"

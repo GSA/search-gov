@@ -156,7 +156,7 @@ class Affiliate < ActiveRecord::Base
     content_border_color: '#CACACA',
     content_box_shadow_color: '#555555',
     description_text_color: '#000000',
-    footer_background_color: '#EFEFEF',
+    footer_background_color: '#DFDFDF',
     header_background_color: '#FFFFFF',
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',

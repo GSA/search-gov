@@ -8,10 +8,10 @@
   - available_news_items.first(1).each_with_index do |news_item, index|
     = render partial: 'searches/video_news_result',
         locals: { block_id_prefix: 'video-news-item', instance: news_item, position: index + 1 }
-  - if search.affiliate.rss_feeds.managed.navigable_only.present? and available_news_items.count > 1
+  - if available_news_items.count > 1 and search.affiliate.rss_feeds.managed.navigable_only.present?
     .content-block-item.content-block-item-footer
       .see-more
-        = link_to path_for_rss_feed_search(search_params, search.affiliate.rss_feeds.managed.first, search.query) do
+        = link_to path_for_rss_feed_search(search, search_params, search.affiliate.rss_feeds.managed.first) do
           = raw t :'searches.more_news_about_query',
               news_label: 'videos',
               query: content_tag(:span, search.query)

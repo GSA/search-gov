@@ -36,10 +36,11 @@ class Agency < ActiveRecord::Base
   end
 
   def friendly_name
-    if federal_register_agency
-      "#{name} FRA: #{federal_register_agency.to_label}"
-    else
-      name
+    @friendly_name ||= begin
+      friendly_name_str = name
+      friendly_name_str << " FRA: #{federal_register_agency.to_label}" if federal_register_agency
+      friendly_name_str << " JOBS: #{organization_code}" if organization_code.present?
+      friendly_name_str
     end
   end
 

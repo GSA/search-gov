@@ -239,6 +239,7 @@ describe Agency do
 
       it 'returns name with Federal Register Agency name' do
         agency.friendly_name.should match 'Internal Revenue Service FRA: Internal Revenue Service'
+        agency.friendly_name.should match /JOBS: XX00$/
       end
     end
 
@@ -246,7 +247,7 @@ describe Agency do
       let(:agency) { Agency.create!(@valid_attributes) }
 
       it 'returns name with Federal Register Agency name' do
-        agency.friendly_name.should eq 'Internal Revenue Service'
+        agency.friendly_name.should eq 'Internal Revenue Service JOBS: XX00'
       end
     end
   end

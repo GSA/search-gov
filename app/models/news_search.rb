@@ -72,6 +72,10 @@ class NewsSearch < Search
     [@affiliate.id, @query, @channel, date_range, @page, @per_page].join(':')
   end
 
+  def sort_by_relevance?
+    @sort_by_relevance
+  end
+
   protected
 
   def handle_response(response)

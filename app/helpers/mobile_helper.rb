@@ -13,9 +13,9 @@ module MobileHelper
     controller.action_name == 'advanced'
   end
 
-  def dropdown_wrapper(partial, html, id, show_more_label)
+  def dropdown_wrapper(partial, html, dropdown_id, dropdown_label)
     render partial: partial,
-           locals: { html: html, id: id, show_more_label: show_more_label }
+           locals: { html: html, id: dropdown_id, dropdown_label: dropdown_label }
   end
 
   def font_stylesheet_link_tag(affiliate)
