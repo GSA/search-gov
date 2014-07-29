@@ -52,7 +52,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.2.1/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.0/config/elasticsearch.yml
 
 You will need to re-install any plugins:
 
