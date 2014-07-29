@@ -12,11 +12,11 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 2.0. Verify that your path points to the correct version of Ruby:
+You will need Ruby 2.1. Verify that your path points to the correct version of Ruby:
 
     devbox:usasearch
     $ ruby -v
-    ruby 2.0.0p195 (2013-05-14 revision 40734) [x86_64-darwin12.3.0]
+    ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-darwin13.0]
 
 ## Gems
 
@@ -52,7 +52,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.0/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.1/config/elasticsearch.yml
 
 You will need to re-install any plugins:
 
