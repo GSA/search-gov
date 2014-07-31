@@ -16,7 +16,7 @@ describe NewsSearch do
     context 'when the parameter is hour' do
       it 'should find just the last hour' do
         search = NewsSearch.new(:query => '   element   OR', :tbs => "h", :affiliate => affiliate)
-        search.since.to_i.should == 1.hour.ago.to_i
+        (search.since.to_i - 1.hour.ago.to_i).should <= 5
       end
     end
 
