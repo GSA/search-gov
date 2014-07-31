@@ -3,15 +3,6 @@ class WebSearch < Search
 
   attr_reader :matching_site_limits, :tracking_information
 
-  class << self
-    def results_present_for?(query, affiliate)
-      search = new(query: query, affiliate: affiliate)
-      search.run
-      spelling_ok = search.spelling_suggestion.nil? || FuzzyMatcher.new(search.spelling_suggestion, query).matches?
-      search.results.present? && spelling_ok
-    end
-  end
-
   def initialize(options = {})
     super(options)
     @options = options

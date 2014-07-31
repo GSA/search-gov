@@ -437,64 +437,6 @@ describe WebSearch do
 
   end
 
-  describe ".results_present_for?(query, affiliate)" do
-    before do
-      @affiliate = affiliates(:non_existent_affiliate)
-      @search = WebSearch.new(:affiliate => @affiliate, :query => "some term")
-      WebSearch.stub!(:new).and_return(@search)
-      @search.stub!(:run).and_return(nil)
-    end
-
-    context "when search results do not exist for a term/affiliate pair" do
-      before do
-        @search.stub!(:results).and_return([])
-      end
-
-      it "should return false" do
-        WebSearch.results_present_for?("some term", @affiliate).should be_false
-      end
-    end
-
-    context "when search results exist for a term/affiliate pair" do
-      before do
-        @search.stub!(:results).and_return([{'title' => 'First title', 'content' => 'First content'},
-                                            {'title' => 'Second title', 'content' => 'Second content'}])
-      end
-
-      context 'when search engine does not have a spelling suggestion' do
-        before do
-          @search.stub!(:spelling_suggestion).and_return nil
-        end
-
-        it "should return true" do
-          WebSearch.results_present_for?("some term", @affiliate).should be_true
-        end
-      end
-
-      context "when search engine suggests a different spelling" do
-        context "when it's a fuzzy match with the query term (i.e., identical except for highlights and some punctuation)" do
-          before do
-            @search.stub!(:spelling_suggestion).and_return "some-term"
-          end
-
-          it "should return true" do
-            WebSearch.results_present_for?("some term", @affiliate).should be_true
-          end
-        end
-
-        context "when it's not a fuzzy match with the query term" do
-          before do
-            @search.stub!(:spelling_suggestion).and_return "sum term"
-          end
-
-          it "should return false" do
-            WebSearch.results_present_for?("some term", @affiliate).should be_false
-          end
-        end
-      end
-    end
-  end
-
   describe "helper 'has' methods" do
     let(:search) { WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate)) }
 
