@@ -93,6 +93,7 @@ CREATE TABLE `affiliates` (
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
   `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `is_federal_register_document_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `google_cx` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2049,3 +2050,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140714140130');
 INSERT INTO schema_migrations (version) VALUES ('20140715193752');
 
 INSERT INTO schema_migrations (version) VALUES ('20140715201115');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731114015');

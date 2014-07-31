@@ -19,6 +19,7 @@ class GoogleSearch < SearchEngine
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end
     @start = @offset + 1
+    @google_cx = options[:google_cx] || SEARCH_CX
   end
 
   protected
@@ -27,7 +28,7 @@ class GoogleSearch < SearchEngine
     params_hash = {
       alt: :json,
       key: API_KEY,
-      cx: SEARCH_CX,
+      cx: @google_cx,
       safe: filter_level,
       q: query,
       lr: language,

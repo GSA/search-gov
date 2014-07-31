@@ -44,4 +44,15 @@ describe GoogleWebSearch do
       end
     end
   end
+
+  context 'when affiliate-specific google CX is set' do
+    let(:web_search) { GoogleWebSearch.new(query: "customcx", google_cx: '1234567890.abc') }
+
+    it "should use that for the Google API call" do
+      response = web_search.execute_query
+      first = response.results.first
+      first.title.should == "Using custom google CX"
+    end
+  end
+
 end

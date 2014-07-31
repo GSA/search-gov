@@ -167,8 +167,7 @@ RSpec.configure do |config|
       safe: 'medium'
     }.freeze
 
-    common_image_search_params = common_web_search_params.
-        merge(searchType: 'image').freeze
+    common_image_search_params = common_web_search_params.merge(searchType: 'image').freeze
 
     generic_google_image_result = Rails.root.join('spec/fixtures/json/google/image_search/obama.json').read
     image_search_params = common_image_search_params.merge(q: 'obama')
@@ -194,6 +193,10 @@ RSpec.configure do |config|
     google_spelling = Rails.root.join('spec/fixtures/json/google/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(q: 'electro coagulation')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
+
+    google_customcx = Rails.root.join('spec/fixtures/json/google/web_search/custom_cx.json').read
+    web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_customcx] }
 
     test = Faraday.new do |builder|
       builder.adapter :test, stubs
