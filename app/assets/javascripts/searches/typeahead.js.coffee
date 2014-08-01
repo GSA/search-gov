@@ -21,7 +21,7 @@ showOrHideClearButton = ->
 whenFocusOnQuery = (e) ->
   return if e.which? and e.which == 13
   e.stopPropagation()
-  $('#search-nav .dropdown').addClass 'collapsed'
+  window.usasearch.collapseNavAndFilterDropdowns()
   window.usasearch.hideMenu()
   showOrHideClearButton()
 
