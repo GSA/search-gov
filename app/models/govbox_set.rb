@@ -85,7 +85,7 @@ class GovboxSet
 
   def init_federal_register_documents
     if @affiliate.is_federal_register_document_govbox_enabled? &&
-      @affiliate.agency && @affiliate.agency.federal_register_agency
+      @affiliate.agency && @affiliate.agency.federal_register_agency.present?
 
       @federal_register_documents = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [@affiliate.agency.federal_register_agency_id],
                                                                               language: 'en',
