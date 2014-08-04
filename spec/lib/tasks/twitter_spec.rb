@@ -114,12 +114,12 @@ describe "Twitter rake tasks" do
         let(:tweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status.json") }
         let(:tweet_status_with_partial_urls_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status_with_partial_urls.json") }
         let(:retweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/retweet_status.json") }
-        let(:affiliate_twitter_ids) { [123].freeze }
+        let(:active_twitter_ids) { [123].freeze }
 
         before(:each) do
           Time.stub!(:now).and_return(now)
           Twitter.stub!(:user).and_return mock('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
-          TwitterProfile.stub(:affiliate_twitter_ids).and_return(affiliate_twitter_ids)
+          TwitterProfile.stub(:active_twitter_ids).and_return(active_twitter_ids)
 
           EM.stub!(:defer).and_yield
           EM.stub!(:stop_event_loop).and_return true
@@ -152,7 +152,7 @@ describe "Twitter rake tasks" do
         end
 
         it "get a list of all the TwitterProfile ids, setup various callbacks, and call follow" do
-          @client.should_receive(:follow).with(affiliate_twitter_ids)
+          @client.should_receive(:follow).with(active_twitter_ids)
           @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @rake[task_name].invoke
         end
@@ -216,7 +216,7 @@ describe "Twitter rake tasks" do
         end
 
         it "should delete a status if a delete message is received" do
-          Tweet.create!(:twitter_profile_id => affiliate_twitter_ids.first,
+          Tweet.create!(:twitter_profile_id => active_twitter_ids.first,
                         :tweet_id => 1234,
                         :tweet_text => 'DELETE ME.',
                         :published_at => Time.now)
@@ -243,7 +243,8 @@ describe "Twitter rake tasks" do
           @rake[task_name].invoke
         end
 
-        it "should reconnect every hour" do
+        it 'reconnects when there are changes on active twitter ids' do
+          TwitterProfile.stub(:active_twitter_ids).and_return([123], [456])
           @client.stub!(:on_interval_time).and_return 1
           EM.should_receive(:add_periodic_timer).and_yield
           @stream.stub!(:each).and_yield(tweet_status_json)
@@ -254,9 +255,20 @@ describe "Twitter rake tasks" do
           @rake[task_name].invoke
         end
 
+        it 'does not stop stream when active twitter ids are the same' do
+          TwitterProfile.stub(:active_twitter_ids).and_return([123], [123])
+          @client.stub!(:on_interval_time).and_return 1
+          EM.should_receive(:add_periodic_timer).and_yield
+          @stream.stub!(:each).and_yield(tweet_status_json)
+          @logger.should_receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
+          @logger.should_receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          @client.should_not_receive(:stop_stream)
+          @rake[task_name].invoke
+        end
+
         context "when there are no Twitter Profiles" do
           before do
-            TwitterProfile.should_receive(:affiliate_twitter_ids).and_return([])
+            TwitterProfile.should_receive(:active_twitter_ids).and_return([])
           end
 
           it "should not connect to Twitter" do

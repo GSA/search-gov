@@ -13,8 +13,8 @@ class TwitterProfile < ActiveRecord::Base
     "http://twitter.com/#{screen_name}"
   end
 
-  def self.affiliate_twitter_ids
-    active.select(:twitter_id).uniq.map(&:twitter_id)
+  def self.active_twitter_ids
+    active.select(:twitter_id).uniq.map(&:twitter_id).sort
   end
 
   private

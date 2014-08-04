@@ -30,6 +30,8 @@ namespace :usasearch do
         end
       end
 
+      twitter_ids_holder = SynchronizedObjectHolder.new { TwitterProfile.active_twitter_ids }
+
       EM.run do
         twitter_client = TweetStream::Client.new
 
@@ -46,7 +48,7 @@ namespace :usasearch do
         end
 
         do_follow = lambda do |twitter_client|
-          twitter_ids = TwitterProfile.affiliate_twitter_ids
+          twitter_ids = twitter_ids_holder.get_object_and_reset_changed
           if twitter_ids.present?
             logger.info "[#{Time.now}] [TWITTER] [CONNECT] Connecting to Twitter to follow #{twitter_ids.size} Twitter profiles."
 
@@ -63,10 +65,12 @@ namespace :usasearch do
 
         do_follow.call(twitter_client)
 
-        EventMachine.add_periodic_timer(300) do
-          logger.info "[#{Time.now}] [TWITTER] [RESET_STREAM]"
-          twitter_client.stop_stream
-          do_follow.call(twitter_client)
+        EventMachine.add_periodic_timer(60) do
+          if twitter_ids_holder.object_changed?
+            logger.info "[#{Time.now}] [TWITTER] [RESET_STREAM]"
+            twitter_client.stop_stream
+            do_follow.call(twitter_client)
+          end
         end
       end
     end

@@ -52,7 +52,7 @@ describe TwitterProfile do
     end
   end
 
-  describe '.affiliate_twitter_ids' do
+  describe '.active_twitter_ids' do
     let(:affiliate1) { affiliates(:usagov_affiliate) }
     let(:affiliate2) { affiliates(:gobiernousa_affiliate) }
 
@@ -70,7 +70,7 @@ describe TwitterProfile do
     end
 
     it 'should return twitter_ids that for profiles that belongs to an affiliate' do
-      TwitterProfile.affiliate_twitter_ids.should == [100, 101]
+      TwitterProfile.active_twitter_ids.should == [100, 101]
     end
   end
 
