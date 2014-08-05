@@ -17,7 +17,7 @@ module NewsItemsHelper
   def news_item_partial_by_results_class(css_class_name)
     css_class_name ||= ''
     template = css_class_name.present? ? "#{css_class_name.singularize}_" : ''
-    "searches/#{template}news_result"
+    "searches/#{template}news_item"
   end
 
   def news_item_time_ago_in_words(published_at, separator = '')

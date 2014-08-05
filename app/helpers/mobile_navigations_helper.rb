@@ -75,7 +75,7 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    search.instance_of? WebSearch
+    search.instance_of?(WebSearch) or search.instance_of?(BlendedSearch)
   end
 
   def build_navigations_items(search, search_params, non_default_search_navigable, navigations)

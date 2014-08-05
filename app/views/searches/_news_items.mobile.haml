@@ -4,7 +4,7 @@
   .content-block-item.content-block-item-header
     %h3.content-heading= search_results_by_text search.module_tag
   .results-wrapper
-    - unique_news_items(@search.results).each_with_index do |instance, index|
-      = render partial: news_item_partial, locals: { instance: instance, position: search.startrecord + index }
+    - unique_news_items(@search.results).each_with_index do |result, index|
+      = render partial: news_item_partial, locals: { result: result, position: search.startrecord + index }
   .content-block-item.content-block-item-footer
     .content-provider= serp_attribution search.module_tag

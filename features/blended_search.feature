@@ -39,7 +39,8 @@ Feature: Blended Search
     When I am on bar.gov's mobile search page
     And I fill in "Enter your search term" with "items"
     And I press "Search"
-    Then I should see "<i> item </i> First news item for the feed"
+    Then I should see "Everything" within the SERP active navigation
+    And I should see "<i> item </i> First news item for the feed"
     And I should see "item Next news item for the feed"
     And I should see "item first Stale news item"
     And I should see "item More news items for the feed"

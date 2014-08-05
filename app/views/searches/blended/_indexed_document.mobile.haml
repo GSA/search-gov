@@ -1,7 +1,7 @@
 .content-block-item.result{ id: "result-#{position}", onclick: 'void(0)' }
-  %h4
+  %h4.title
     = display_result_extname_prefix(result.url)
     = link_to_indexed_document_title(result, position)
-  %div.url= url_without_protocol result.url
+  %span.url= url_without_protocol result.url
   %span.description
     = news_description(result)

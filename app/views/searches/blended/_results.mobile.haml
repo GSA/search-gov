@@ -1,5 +1,5 @@
 #results
   - search.results.each_with_index do |result, index|
-    = render partial: "searches/blended/#{result.class.name.underscore}", locals: { search: search, result: result, position: search.startrecord + index }
+    = render partial: blended_result_partial(result), locals: { search: search, result: result, position: search.startrecord + index }
   .content-block-item.content-block-item-footer
     .content-provider= serp_attribution search.module_tag

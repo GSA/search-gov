@@ -1,6 +1,6 @@
 #search{ search_data(@search, @search_vertical) }
   - if @search.results.present?
-    = render partial: 'news_results', locals: { search: @search }
+    = render partial: 'news_items', locals: { search: @search }
     = render partial: 'pagination', locals: { search: @search }
 
   - else
