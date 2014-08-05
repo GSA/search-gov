@@ -404,7 +404,7 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "jobs"
     And I press "Search"
     Then I should see "Federal Job Openings"
-    And I should see a link to "See all federal job openings" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
 
   Scenario: When using tablet device
     Given I am using a TabletPC device

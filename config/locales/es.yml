@@ -85,8 +85,6 @@ es:
   job_openings: "Trabajos"
   at_agency: "en %{agency} (en inglés)"
   federal_job_openings: "Trabajos en el Gobierno (en inglés)"
-  see_all_federal_job_openings: 'Vea todos los trabajos en el Gobierno'
-  see_all_agency_job_openings: 'Vea todos los trabajos en %{agency}'
 
   change_text_size: "Cambiar el tamaño del texto"
   change_text_size_url: "http://www.usa.gov/gobiernousa/Tamano_Texto.shtml"
@@ -102,19 +100,21 @@ es:
   searches:
     by: de
     browse_site: Navegar el sitio
+    commercial_results:
+      see_more: "%{link} para ver más resultados (es posible que encuentre resultados que ya ha visto)."
+      search_again: Intente esta búsqueda otra vez
     med_topic:
       homepage_url: http://www.nlm.nih.gov/medlineplus/spanish/
       related_topics: Temas relacionados
     menu: Menú
+    more_agency_job_openings: ​Más trabajos en %{agency} en USAJobs.gov
+    more_federal_job_openings: ​Más trabajos en el gobierno federal en USAJobs.gov
     more_news_about_query: 'Más %{news_label} sobre de %{query}'
     news_about_query: '%{news_label} sobre de %{query}'
     news_search_options:
       date_format: 'd/m/yyyy'
     related_sites: Ver tema
     search_results: Buscar resultados
-    commercial_results:
-      see_more: "%{link} para ver más resultados (es posible que encuentre resultados que ya ha visto)."
-      search_again: Intente esta búsqueda otra vez
     site_limits:
       including_results_for_query_from_matching_sites: Los resultados para %{query} son solo de %{matching_sites}.
       do_you_want_to_see_results_for: ¿Quiere ver resultados para %{query_from_all_sites}?

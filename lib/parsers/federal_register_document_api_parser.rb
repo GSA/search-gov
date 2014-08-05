@@ -17,14 +17,6 @@ class FederalRegisterDocumentApiParser
     @load_all = options[:load_all]
   end
 
-  # def each_document
-  #   @federal_register_agency_ids.each do |agency_id|
-  #     each_agency_document(agency_id) do |document|
-  #       yield document
-  #     end
-  #   end
-  # end
-
   def each_document
     conditions = { agency_ids: [@federal_register_agency_id] }
     conditions[:publication_date] = { gte: Date.current.advance(days: -7) } unless @load_all

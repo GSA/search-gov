@@ -45,9 +45,10 @@ module FederalRegisterDocumentsHelper
   end
 
   def link_to_federal_register_advanced_search(search)
-    federal_register_agency_id = search.affiliate.agency.federal_register_agency.id
-    url_params = { conditions: { agency_ids: [federal_register_agency_id], term: search.query } }
+    agency = search.affiliate.agency
+    url_params = { conditions: { agency_ids: [agency.federal_register_agency_id], term: search.query } }
     url = "https://www.federalregister.gov/articles/search?#{url_params.to_param}"
-    link_to 'See more at FederalRegister.gov', url
+
+    link_to "More #{agency.abbreviation || agency.name} documents on FederalRegister.gov", url
   end
 end

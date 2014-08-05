@@ -46,11 +46,11 @@ module JobsHelper
   end
 
   def agency_jobs_title_and_url(search)
-    title = t(:see_all_federal_job_openings)
+    title = t :'searches.more_federal_job_openings'
     url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
     agency = search.affiliate.agency
     if agency.present?
-      title = "#{t :see_all_agency_job_openings, agency: agency.abbreviation || agency.name}"
+      title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
       url = url_for_agency_jobs(agency, search.jobs.first.id)
     end
     [title, url]

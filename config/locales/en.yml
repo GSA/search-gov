@@ -84,8 +84,6 @@ en:
   job_openings: "Job Openings"
   at_agency: "at %{agency}"
   federal_job_openings: "Federal Job Openings"
-  see_all_federal_job_openings: 'See all federal job openings'
-  see_all_agency_job_openings: 'See all %{agency} job openings'
 
   change_text_size: "Change Text Size"
   change_text_size_url: "http://www.usa.gov/About/Change_Text.shtml"
@@ -101,19 +99,21 @@ en:
   searches:
     by: by
     browse_site: Browse site
+    commercial_results:
+      see_more: "%{link} to see more results. (You may see some results that you've already seen.)"
+      search_again: Try your search again
     med_topic:
       homepage_url: http://www.nlm.nih.gov/medlineplus/
       related_topics: Related topics
     menu: Menu
+    more_agency_job_openings: More %{agency} job openings on USAJobs.gov
+    more_federal_job_openings: More federal job openings on USAJobs.gov
     more_news_about_query: 'More %{news_label} about %{query}'
     news_about_query: '%{news_label} about %{query}'
     news_search_options:
       date_format: 'm/d/yyyy'
     related_sites: View topic
     search_results: Search results
-    commercial_results:
-      see_more: "%{link} to see more results. (You may see some results that you've already seen.)"
-      search_again: Try your search again
     site_limits:
       including_results_for_query_from_matching_sites: We're including results for %{query} from %{matching_sites} only.
       do_you_want_to_see_results_for: Do you want to see results for %{query_from_all_sites}?
