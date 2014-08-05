@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe JobsHelper do
+  fixtures :affiliates
+
   describe '#format_salary' do
     it 'should return nil when minimum is nil' do
       job = mock('job', minimum: nil, maximum: nil, rate_interval_code: 'PA')
@@ -34,33 +36,37 @@ describe JobsHelper do
     end
   end
 
-  describe '#agency_jobs_link' do
+  describe '#legacy_link_to_more_jobs' do
     context 'when rendering federal jobs' do
       it 'should render a link to usajobs.gov' do
-        search = mock('search', affiliate: mock_model(Affiliate), query: 'gov')
+        affiliate = mock_model(Affiliate, has_organization_code?: false)
+        search = mock('search', affiliate: affiliate, query: 'gov')
         search.stub_chain(:affiliate, :agency).and_return(nil)
         helper.should_receive(:job_link_with_click_tracking).with(
-            'See all federal job openings',
+            'More federal job openings on USAJobs.gov',
             'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch',
             search.affiliate, 'gov', -1, nil)
-        helper.agency_jobs_link(search)
+        helper.legacy_link_to_more_jobs(search)
       end
     end
 
     context 'when rendering federal jobs for a given organization' do
-      let(:search) { mock('search', affiliate: mock_model(Affiliate), query: 'gov') }
+      let(:search) do
+        affiliate = affiliates(:usagov_affiliate)
+        affiliate.agency = mock_model(Agency, abbreviation: 'GSA', organization_code: 'GS')
+        mock('search', affiliate: affiliate, query: 'gov')
+      end
+
       before do
-        agency = mock_model(Agency, abbreviation: 'GSA', organization_code: 'GS')
-        search.stub_chain(:affiliate, :agency).and_return(agency)
         search.stub_chain(:jobs).and_return([mock('job', id: 'usajobs:1000')])
       end
 
       it 'should render an organization specific link to usajobs.gov' do
         helper.should_receive(:job_link_with_click_tracking).with(
-            'See all GSA job openings',
+            'More GSA job openings on USAJobs.gov',
             'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
             search.affiliate, 'gov', -1, nil)
-        helper.agency_jobs_link(search)
+        helper.legacy_link_to_more_jobs(search)
       end
 
       context 'when the affiliate locale is es' do
@@ -69,29 +75,31 @@ describe JobsHelper do
 
         it 'should render an organization specific link to usajobs in Spanish' do
           helper.should_receive(:job_link_with_click_tracking).with(
-              'Vea todos los trabajos en GSA',
+              'Más trabajos en GSA en USAJobs.gov',
               'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
               search.affiliate, 'gov', -1, nil)
-          helper.agency_jobs_link(search)
+          helper.legacy_link_to_more_jobs(search)
         end
       end
     end
 
     context 'when rendering neogov jobs for a given organization' do
-      let(:search) { mock('search', affiliate: mock_model(Affiliate), query: 'gov') }
+      let(:search) do
+        affiliate = affiliates(:usagov_affiliate)
+        affiliate.agency = mock_model(Agency, name: 'State of Michigan', organization_code: 'USMI')
+        mock('search', affiliate: affiliate, query: 'gov')
+      end
 
       before do
-        agency = mock_model(Agency, name: 'State of Michigan', organization_code: 'USMI')
-        search.stub_chain(:affiliate, :agency).and_return(agency)
         search.stub_chain(:jobs).and_return([mock('job', id: 'ng:michigan:1000')])
       end
 
       it 'should render an organization specific link to usajobs.gov' do
         helper.should_receive(:job_link_with_click_tracking).with(
-            'See all State of Michigan job openings',
+            'More State of Michigan job openings',
             'http://agency.governmentjobs.com/michigan/default.cfm',
             search.affiliate, 'gov', -1, nil)
-        helper.agency_jobs_link(search)
+        helper.legacy_link_to_more_jobs(search)
       end
 
       context 'when the affiliate locale is es' do
@@ -100,10 +108,10 @@ describe JobsHelper do
 
         it 'should render an organization specific link to usajobs in Spanish' do
           helper.should_receive(:job_link_with_click_tracking).with(
-              'Vea todos los trabajos en State of Michigan',
+              'Más trabajos en State of Michigan',
               'http://agency.governmentjobs.com/michigan/default.cfm',
               search.affiliate, 'gov', -1, nil)
-          helper.agency_jobs_link(search)
+          helper.legacy_link_to_more_jobs(search)
         end
       end
     end

@@ -45,33 +45,39 @@ module JobsHelper
     locations.many? ? "Multiple Locations" : locations.first
   end
 
-  def agency_jobs_title_and_url(search)
-    title = t :'searches.more_federal_job_openings'
-    url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
-    agency = search.affiliate.agency
-    if agency.present?
-      title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
-      url = url_for_agency_jobs(agency, search.jobs.first.id)
-    end
-    [title, url]
+  def link_to_more_jobs(search)
+    title, url = more_jobs_title_and_url search
+    link_to_result_title nil, title, url, 0, 'JOBS'
   end
 
-  def agency_jobs_link(search)
-    title, url = agency_jobs_title_and_url search
+  def legacy_link_to_more_jobs(search)
+    title, url = more_jobs_title_and_url search
     job_link_with_click_tracking title, url, search.affiliate, search.query, agency_jobs_link_index = -1, @search_vertical
   end
 
-  def link_to_agency_jobs_link(search)
-    title, url = agency_jobs_title_and_url search
-    css_classes = nil
-    if url.start_with?('https://www.usajobs.gov')
-      title = h(title) << "\n" << content_tag(:span, 'USAJOBS')
-      css_classes = 'usajobs'
+  def more_jobs_title_and_url(search)
+    if search.affiliate.has_organization_code?
+      more_agency_jobs_title_and_url search.affiliate.agency, search.jobs.first.id
+    else
+      more_federal_jobs_title_and_url
     end
-    link_to_result_title(nil, title, url, 0, 'JOBS', class: css_classes)
   end
 
-  def url_for_agency_jobs(agency, job_id)
+  def more_agency_jobs_title_and_url(agency, first_job_id)
+    title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
+    title << " #{t :'searches.on_usajobs'}" if first_job_id =~ /^usajobs/
+
+    url = url_for_more_agency_jobs agency, first_job_id
+    [title, url]
+  end
+
+  def more_federal_jobs_title_and_url
+    title = t :'searches.more_federal_job_openings'
+    url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
+    [title, url]
+  end
+
+  def url_for_more_agency_jobs(agency, job_id)
     case job_id
     when /^usajobs/
       "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch&ApplicantEligibility=all"

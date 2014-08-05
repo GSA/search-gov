@@ -1,6 +1,27 @@
 #jobs {
   .content-block();
 
+  .content-heading {
+    margin-right: 60px;
+
+    @media (min-width: @screen-sm-min) {
+      margin-right: 90px;
+    }
+  }
+
+  .usajobs {
+    float: right;
+    width: 55px;
+
+    @media (min-width: @screen-sm-min) {
+      width: 85px;
+    }
+
+    img {
+      .img-responsive();
+    }
+  }
+
   #job-1, #job-2, #job-3 {
     display: block;
   }

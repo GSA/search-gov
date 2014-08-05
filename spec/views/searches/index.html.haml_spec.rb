@@ -181,7 +181,7 @@ describe "searches/index.html.haml" do
         rendered.should_not contain('Zero Money Research Job')
 
         rendered.should have_selector(:a,
-                                      content: 'See all federal job openings',
+                                      content: 'More federal job openings on USAJobs.gov',
                                       href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
       end
 
@@ -192,7 +192,7 @@ describe "searches/index.html.haml" do
         it 'should show links with Spanish translations' do
           render
           rendered.should have_selector(:a,
-                                        content: 'Vea todos los trabajos en el Gobierno',
+                                        content: 'Más trabajos en el gobierno federal en USAJobs.gov',
                                         href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
         end
       end
@@ -210,7 +210,7 @@ describe "searches/index.html.haml" do
         it "should show the agency-specific info without agency name" do
           render
           rendered.should contain("Job Openings at SNA")
-          rendered.should contain("See all SNA job openings")
+          rendered.should contain("More SNA job openings")
           rendered.should_not contain("Agricultural Research Service")
           rendered.should_not contain("Some Research Service")
           rendered.should_not contain("BW Research Service")
@@ -247,7 +247,7 @@ describe "searches/index.html.haml" do
         it "should show the agency-specific info" do
           render
           rendered.should contain("Job Openings at DOS")
-          rendered.should contain("See all DOS job openings")
+          rendered.should contain("More DOS job openings")
           rendered.should contain("Agricultural Research Service")
           rendered.should contain("Some Research Service")
           rendered.should contain("BW Research Service")
@@ -293,7 +293,7 @@ describe "searches/index.html.haml" do
                                         content: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)',
                                         href: 'http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200')
           rendered.should have_selector(:a,
-                                        content: 'See all SOM job openings',
+                                        content: 'More SOM job openings',
                                         href: 'http://agency.governmentjobs.com/michigan/default.cfm')
         end
       end
