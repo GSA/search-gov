@@ -45,6 +45,18 @@ module JobsHelper
     locations.many? ? "Multiple Locations" : locations.first
   end
 
+  def usajobs_logo
+    link_to 'https://www.usajobs.gov/', class: 'usajobs-logo' do
+      image_tag 'searches/usajobs.jpg', alt: 'USAJobs.gov'
+    end
+  end
+
+  def jobs_content_heading_css_classes(is_usajobs_listing)
+    css_classes = 'content-heading'
+    css_classes << ' usajobs' if is_usajobs_listing
+    css_classes
+  end
+
   def link_to_more_jobs(search)
     title, url = more_jobs_title_and_url search
     link_to_result_title nil, title, url, 0, 'JOBS'
@@ -63,12 +75,16 @@ module JobsHelper
     end
   end
 
-  def more_agency_jobs_title_and_url(agency, first_job_id)
+  def more_agency_jobs_title_and_url(agency, job_id)
     title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
-    title << " #{t :'searches.on_usajobs'}" if first_job_id =~ /^usajobs/
+    title << " #{t :'searches.on_usajobs'}" if job_listed_on_usajobs?(job_id)
 
-    url = url_for_more_agency_jobs agency, first_job_id
+    url = url_for_more_agency_jobs agency, job_id
     [title, url]
+  end
+
+  def job_listed_on_usajobs?(job_id)
+    job_id =~ /^usajobs/
   end
 
   def more_federal_jobs_title_and_url

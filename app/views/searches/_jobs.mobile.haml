@@ -1,9 +1,11 @@
 #jobs.search.collapsible.collapsed.focus-on-next-sibling{ tabindex: -1 }
   .content-block-item.content-block-item-header
-    = link_to 'https://www.usajobs.gov/', class: 'usajobs' do
-      = image_tag 'searches/usajobs.jpg', alt: 'USAJobs.gov'
-    %h3.content-heading
+    - is_usajobs_listing = job_listed_on_usajobs? search.jobs.first.id
+
+    = usajobs_logo if is_usajobs_listing
+    %h3{ class: jobs_content_heading_css_classes(is_usajobs_listing) }
       = job_openings_header(search.affiliate.agency)
+
   - search.jobs.each_with_index do |job, index|
     = render partial: 'job', locals: { affiliate: search.affiliate, job: job, position: index + 1 }
   - if search.jobs.count > 3
