@@ -10,7 +10,7 @@ class FuzzyMatcher
 
   private
   def normalize(str)
-    ActiveSupport::Inflector.transliterate(str).gsub(/[\W]/, '')
+    ActiveSupport::Inflector.transliterate(str)
   end
 
 end

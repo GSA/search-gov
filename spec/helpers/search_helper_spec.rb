@@ -173,16 +173,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#spelling_suggestion_for(search, affiliate, vertical)" do
-    context 'when the spelling suggestion only differs from the query by diacritics and punctuation and spaces' do
-      let(:search) { mock('search', { :query => 'accion de  gracias.', :spelling_suggestion => 'acción de gracias', :queried_at_seconds => Time.now.to_i }) }
-
-      it 'should not show the suggestion' do
-        helper.legacy_spelling_suggestion(search, affiliates(:basic_affiliate), 'blah').should be_blank
-      end
-    end
-  end
-
   describe "#tracked_click_link" do
     it "should track spelling suggestion as the query if one exists" do
       search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})

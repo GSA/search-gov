@@ -20,7 +20,7 @@ describe SpellingSuggestion do
     end
 
     context "when suggestions for misspelled terms contain a language specification" do
-      let(:spelling_suggestion) { SpellingSuggestion.new('(enfermedades del corazón) language:es (scopeid:usagovall OR site:gov OR site:mil)', "enfermedades del corazon language:es (scopeid:usagovall | site:gov | site:mil)") }
+      let(:spelling_suggestion) { SpellingSuggestion.new('(enfermedades del korazón) language:es (scopeid:usagovall OR site:gov OR site:mil)', "enfermedades del corazon language:es (scopeid:usagovall | site:gov | site:mil)") }
 
       it "should strip them all out" do
         spelling_suggestion.cleaned.should == "enfermedades del corazon"

@@ -1,17 +1,13 @@
 module SpellingSuggestionsHelper
   def spelling_suggestion_links(search, &block)
     if search.spelling_suggestion
-      rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
+      suggested_query = strip_bing_highlights(search.spelling_suggestion)
+      opts = { affiliate: search.affiliate.name, query: suggested_query }
+      suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
 
-      unless FuzzyMatcher.new(rendered_suggestion, search.query).matches?
-        suggested_query = strip_bing_highlights(search.spelling_suggestion)
-        opts = { affiliate: search.affiliate.name, query: suggested_query }
-        suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
-
-        opts.merge!(query: overridden_query(search.query))
-        original_url = image_search? ? image_search_path(opts) : search_path(opts)
-        yield suggested_query, suggested_url, original_url
-      end
+      opts.merge!(query: overridden_query(search.query))
+      original_url = image_search? ? image_search_path(opts) : search_path(opts)
+      yield suggested_query, suggested_url, original_url
     end
   end
 
