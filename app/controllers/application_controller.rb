@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   protected
   def set_affiliate_based_on_locale_param
     unless @affiliate
+      @missing_affiliate = true
       @affiliate = params[:locale] == 'es' ? Affiliate.find_by_name(Affiliate::GOBIERNO_AFFILIATE_NAME) : Affiliate.find_by_name(Affiliate::USAGOV_AFFILIATE_NAME)
     end
   end

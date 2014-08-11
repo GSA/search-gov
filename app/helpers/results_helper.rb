@@ -12,6 +12,7 @@ module ResultsHelper
 
   def link_to_result_title(id, title, url, position, module_name, options = {})
     click_data = { i: id, p: position, s: module_name }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
@@ -19,11 +20,13 @@ module ResultsHelper
     title = translate_bing_highlights(h(result['title'])).html_safe
 
     click_data = { p: position }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
   def link_to_federal_register_document_title(document, position)
     click_data = { p: position, s: 'FRDOC', i: document.id }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to document.title.html_safe, document.html_url, { data: { click: click_data }}
   end
 
@@ -31,12 +34,14 @@ module ResultsHelper
     title = translate_bing_highlights(h(result['title'])).html_safe
 
     click_data = { p: position }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to title, result['Url'], { data: { click: click_data } }.merge(options)
   end
 
   def link_to_image_thumbnail(result, position)
     title = translate_bing_highlights(h(result['title'])).html_safe
     click_data = { p: position }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
 
     link_to result['Url'], data: { click: click_data } do
       image_tag(result['Thumbnail']['Url'], alt: title)
@@ -47,6 +52,7 @@ module ResultsHelper
     title = translate_bing_highlights(h(result.title)).html_safe
 
     click_data = { p: position, s: 'AIDOC', i: result.id }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to title, result.url, data: { click: click_data }
   end
 
@@ -54,6 +60,7 @@ module ResultsHelper
     title = translate_bing_highlights(h(instance.title)).html_safe
 
     click_data = { p: position, s: module_tag, i: instance.id }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to title, instance.link, { data: { click: click_data } }.reverse_merge(options)
   end
 
@@ -65,6 +72,7 @@ module ResultsHelper
       end
 
     click_data = { p: position, s: module_tag, i: instance.id }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to thumbnail_html, instance.link, data: { click: click_data }
   end
 
@@ -83,11 +91,13 @@ module ResultsHelper
   def link_to_tweet_link(tweet, title, url, position, options = {})
     clicked_url = options.delete(:url) { url }
     click_data = { i: tweet.id, p: position, s: 'TWEET', u: clicked_url }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to title, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
   def link_to_related_search(search, related_term, position)
     click_data = { p: position, s: 'SREL' }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
     link_to related_term.downcase.html_safe,
             search_path(affiliate: search.affiliate.name, query: strip_tags(related_term)),
             data: { click: click_data }
