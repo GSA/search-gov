@@ -9,7 +9,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
 
   context "when searches with results exist for an affiliate" do
     before do
-      RtuTopQueries.stub(:new).and_return mock(RtuTopQueries, top_n: [['today term1', 55], ['today term2', 54]])
+      RtuTopQueries.stub(:new).and_return mock(RtuTopQueries, top_n: [['today term1', 55], ['today term2', 54], ['today term3', 4]])
     end
 
     it "should create unprotected suggestions" do
