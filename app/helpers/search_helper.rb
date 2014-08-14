@@ -46,11 +46,9 @@ module SearchHelper
       (max_height && height > max_height) ? (max_height.to_f / height) : 1
     ]
     reduction = reductions.min
-
-    raw image_tag result["Thumbnail"]["Url"],
-              :width  => (width * reduction).to_i,
-              :height => (height * reduction).to_i,
-              :title  => result["title"]
+    opts = { title: result["title"] }
+    opts.merge!(width: (width * reduction).to_i, height: (height * reduction).to_i) unless width.zero? or height.zero?
+    raw image_tag result["Thumbnail"]["Url"], opts
   end
 
   def display_web_result_extname_prefix(web_result)

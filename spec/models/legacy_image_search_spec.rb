@@ -18,15 +18,21 @@ describe LegacyImageSearch do
       end
     end
 
-    context 'when the affiliate has no Bing/Google results, but has Flickr images' do
+    context 'when the affiliate has no Bing/Google results, but has Flickr/Instagram images from Oasis' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
+      let(:search_engine_response) do
+        SearchEngineResponse.new do |search_response|
+          search_response.total = 2
+          search_response.start_record = 1
+          search_response.results = [Hashie::Rash.new(title: 'President Obama walks his unusual image daughters to school', url: "http://url1", thumbnail_url: "http://thumbnailurl1"), Hashie::Rash.new(title: 'POTUS gets in unusual image car.', url: "http://url2", thumbnail_url: "http://thumbnailurl2")]
+          search_response.end_record = 2
+        end
+      end
 
       before do
-        flickr_profile = flickr_profiles(:another_user)
-        FlickrPhoto.create!(:flickr_id => 5, :flickr_profile => flickr_profile, :title => 'President Obama walks his unusual image daughters to school', :description => '', :tags => 'barack obama,sasha,malia')
-        FlickrPhoto.create!(:flickr_id => 6, :flickr_profile => flickr_profile, :title => 'POTUS gets in unusual image car.', :description => 'Barack Obama gets into his super protected car.', :tags => "car,batman", :date_taken => Time.now - 14.days)
-        FlickrPhoto.create!(:flickr_id => 7, :flickr_profile => flickr_profile, :title => 'irrelevant photo', :description => 'irrelevant', :tags => "car,batman", :date_taken => Time.now - 14.days)
-        ElasticFlickrPhoto.commit
+        oasis_search = mock(OasisSearch)
+        OasisSearch.stub(:new).and_return oasis_search
+        oasis_search.stub(:execute_query).and_return search_engine_response
       end
 
       it 'should fill the results with the flickr photos' do
@@ -34,9 +40,9 @@ describe LegacyImageSearch do
         search.run
         search.results.should_not be_empty
         search.total.should == 2
-        search.module_tag.should == 'FLICKR'
-        search.results.first['title'].should == 'POTUS gets in unusual image car.'
-        search.results.last['title'].should == 'President Obama walks his unusual image daughters to school'
+        search.module_tag.should == 'OASIS'
+        search.results.first['title'].should == 'President Obama walks his unusual image daughters to school'
+        search.results.last['title'].should == 'POTUS gets in unusual image car.'
       end
 
     end

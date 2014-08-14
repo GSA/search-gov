@@ -101,15 +101,15 @@ RSpec.configure do |config|
     generic_bing_result_no_highlight = Rails.root.join('spec/fixtures/json/bing/web_search/ira_no_highlight.json').read
     common_no_hl_web_search_params = bing_common_params.merge(sources: 'Spell Web').freeze
     no_hl_web_search_params = common_no_hl_web_search_params.
-        merge(query: 'no highlighting',
-              'web.offset' => 11)
+      merge(query: 'no highlighting',
+            'web.offset' => 11)
 
     stubs.get("#{bing_api_path}#{no_hl_web_search_params.to_param}") { [200, {}, generic_bing_result_no_highlight] }
 
     generic_bing_result = Rails.root.join('spec/fixtures/json/bing/web_search/ira.json').read
     common_web_search_params = bing_common_params.
-        merge(bing_hl_params).
-        merge(sources: 'Spell Web').freeze
+      merge(bing_hl_params).
+      merge(sources: 'Spell Web').freeze
 
     web_search_params = common_web_search_params.merge(query: 'highlight enabled')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
@@ -155,6 +155,11 @@ RSpec.configure do |config|
     bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(query: 'electro coagulation')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
+
+    oasis_api_path = "#{OasisSearch::API_ENDPOINT}?"
+    oasis_image_result = Rails.root.join('spec/fixtures/json/oasis/image_search/shuttle.json').read
+    image_search_params = { from: 0, query: 'shuttle', size: 10 }
+    stubs.get("#{oasis_api_path}#{image_search_params.to_param}") { [200, {}, oasis_image_result] }
 
     google_api_path = '/customsearch/v1?'
 

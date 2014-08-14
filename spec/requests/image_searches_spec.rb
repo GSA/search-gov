@@ -5,20 +5,19 @@ describe '/search/images' do
 
   context 'when site is not bing image search enabled' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
+    let(:search_engine_response) do
+      SearchEngineResponse.new do |search_response|
+        search_response.total = 2
+        search_response.start_record = 1
+        search_response.results = [Hashie::Rash.new(title: 'white house photo 1', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl1"), Hashie::Rash.new(title: 'white house photo 2', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl2")]
+        search_response.end_record = 2
+      end
+    end
 
     before do
-      flickr_url = 'https://www.flickr.com/photos/whitehouse'
-      profile_id = '35591378@N03'
-      flickr_profile = affiliate.flickr_profiles.where(profile_id: profile_id,
-                                                       url: flickr_url).first_or_create!
-      flickr_id = 100
-      5.times do |i|
-        flickr_profile.flickr_photos.create!(flickr_id: flickr_id + i,
-                                             owner: profile_id,
-                                             title: "white house photo #{i}",
-                                             url_q: "http://farm9.staticflickr.com/#{i + 1}/#{i + 1}_q.jpg")
-      end
-      ElasticFlickrPhoto.commit
+      oasis_search = mock(OasisSearch)
+      OasisSearch.stub(:new).and_return oasis_search
+      oasis_search.stub(:execute_query).and_return search_engine_response
     end
 
     context 'when query is present' do
@@ -26,11 +25,11 @@ describe '/search/images' do
         get '/search/images.json', { affiliate: affiliate.name, query: 'white house' }
       end
 
-      it 'responds with search results' do
+      it 'responds with search results from Oasis' do
         json_response = JSON.parse(response.body)
-        json_response['total'].should == 5
+        json_response['total'].should == 2
         json_response['startrecord'].should == 1
-        json_response['endrecord'].should == 5
+        json_response['endrecord'].should == 2
 
         json_response['results'].each do |r|
           r['title'].should start_with('white house photo')

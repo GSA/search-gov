@@ -1,6 +1,6 @@
 module NavigationsHelper
   def configurable_navigations(site)
-    if site.force_mobile_format? && site.flickr_profiles.blank?
+    if site.force_mobile_format? && site.flickr_profiles.blank? && site.instagram_profiles.blank?
       site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
     else
       site.navigations
@@ -22,6 +22,10 @@ module NavigationsHelper
       if navigable.affiliate.flickr_profiles.exists?
         content << raw('/')
         content << link_to('Flickr', site_flickr_urls_path(navigable.affiliate))
+      end
+      if navigable.affiliate.instagram_profiles.exists?
+        content << raw('/')
+        content << link_to('Instagram', site_instagram_usernames_path(navigable.affiliate))
       end
       content
     end

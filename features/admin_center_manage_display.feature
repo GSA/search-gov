@@ -84,6 +84,10 @@ Feature: Manage Display
     And affiliate "agency.gov" has the following RSS feeds:
       | name  | url                          |
       | Press | usasearch.howto.gov/all.atom |
+    And the following Instagram usernames exist for the site "agency.gov":
+      | username   |
+      | whitehouse |
+      | dg_search  |
     And the following flickr URLs exist for the site "agency.gov":
       | url                                      |
       | http://www.flickr.com/photos/whitehouse/ |

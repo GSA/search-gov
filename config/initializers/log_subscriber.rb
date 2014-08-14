@@ -20,6 +20,10 @@ module Instrumentation
       generic_logging("Google Query", event, RED)
     end
 
+    def oasis_search(event)
+      generic_logging("Oasis Query", event, CYAN)
+    end
+
     def elastic_search(event)
       generic_logging("#{event.payload[:index]} Query", event, MAGENTA)
     end

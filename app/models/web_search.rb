@@ -50,7 +50,7 @@ class WebSearch < Search
     @total = response.total rescue 0
     available_search_engine_pages = (@total/@per_page.to_f).ceil
     if backfill_needed?
-      odie_search = odie_search_class.new(@options.merge(:page => [@page - available_search_engine_pages, 1].max))
+      odie_search = odie_search_class.new(@options.merge(:per_page => self.default_per_page, :page => [@page - available_search_engine_pages, 1].max))
       odie_response = odie_search.search
       if odie_response and odie_response.total > 0
         adjusted_total = available_search_engine_pages * @per_page + odie_response.total

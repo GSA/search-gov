@@ -19,7 +19,7 @@ class LegacyImageSearch < WebSearch
   end
 
   def local_index_module_tag
-    'FLICKR'
+    'OASIS'
   end
 
   def module_tag_for_search_engine(search_engine)

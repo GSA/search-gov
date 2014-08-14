@@ -1,47 +1,38 @@
 class OdieImageSearch < OdieSearch
   include DefaultModuleTaggable
 
-  self.default_module_tag = 'FLICKR'.freeze
+  self.default_module_tag = 'OASIS'.freeze
 
   def initialize(options = {})
     super(options)
-    @skip_log_serp_impressions = options[:skip_log_serp_impressions] || false
+    @skip_log_serp_impressions = options[:skip_log_serp_impressions]
+    @oasis_search = OasisSearch.new(query: @query,
+                                    per_page: @per_page,
+                                    offset: (@page - 1) * @per_page,
+                                    flickr_groups: flickr_groups,
+                                    flickr_users: flickr_users,
+                                    instagram_profiles: instagram_profiles)
   end
 
   def search
-    ElasticFlickrPhoto.search_for(q: @query,
-                                  affiliate_id: @affiliate.id,
-                                  language: @affiliate.locale,
-                                  size: @per_page,
-                                  offset: (@page - 1) * @per_page,
-                                  highlighting: false)
+    ActiveSupport::Notifications.instrument("oasis_search.usasearch", :query => { :term => @query }) do
+      @oasis_search.execute_query
+    end
+  rescue SearchEngine::SearchError => error
+    Rails.logger.warn "Error getting search results from Oasis API endpoint: #{error}"
+    false
   end
 
   def cache_key
-    ["odie_image", @query, @affiliate.id, @page, @per_page].join(':')
+    ["oasis_image", @query, @affiliate.id, @page, @per_page].join(':')
   end
 
   def process_results(response)
-    processed = response.results.collect do |result|
-      Hashie::Rash.new({
-        "title" => result.title,
-        "Width" => result.width_o,
-        "Height" => result.height_o,
-        "FileSize" => 0,
-        "ContentType" => "",
-        "Url" => result.flickr_url,
-        "DisplayUrl" => result.flickr_url,
-        "MediaUrl" => result.url_o,
-        "Thumbnail" => {
-          "Url" => result.url_q,
-          "FileSize" => 0,
-          "Width" => result.width_q,
-          "Height" => result.height_q,
-          "ContentType" => ""
-        }
-      })
+    image_results = response.results || []
+    image_results.collect do |result|
+      Hashie::Rash.new(title: result.title, url: result.url, display_url: result.url,
+                       thumbnail: { url: result.thumbnail_url })
     end
-    processed.compact
   end
 
   protected
@@ -50,5 +41,19 @@ class OdieImageSearch < OdieSearch
     return if @skip_log_serp_impressions
 
     @modules << default_module_tag unless @total.zero?
+  end
+
+  private
+
+  def flickr_groups
+    @affiliate.flickr_profiles.groups.collect(&:profile_id)
+  end
+
+  def flickr_users
+    @affiliate.flickr_profiles.users.collect(&:profile_id)
+  end
+
+  def instagram_profiles
+    @affiliate.instagram_profiles.collect(&:username)
   end
 end
