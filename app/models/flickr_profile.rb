@@ -24,6 +24,7 @@ class FlickrProfile < ActiveRecord::Base
                           if: Proc.new { |fp| fp.affiliate_id? && fp.profile_type? && fp.profile_id? }
 
   after_create :queue_for_import
+  after_create :notify_oasis
   before_destroy :destroy_flickr_photos
 
   EXTRA_FIELDS = "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o"
@@ -129,4 +130,9 @@ class FlickrProfile < ActiveRecord::Base
       FlickrPhoto.delete_all(['id IN (?)', flickr_photo_ids])
     end
   end
+
+  def notify_oasis
+    Oasis.subscribe_to_flickr(self.profile_id, self.url.sub(/\/$/,'').split('/').last, self.profile_type)
+  end
+
 end

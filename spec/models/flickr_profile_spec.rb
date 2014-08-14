@@ -83,6 +83,14 @@ describe FlickrProfile do
     FlickrProfile.create(url: url, affiliate: affiliate)
   end
 
+  it 'should notify Oasis after create' do
+    flickr_response = { 'id' => '40927340@N03', 'username' => 'United States Marine Corps Official Page' }
+    url = 'https://www.flickr.com/photos/marine_corps/'.freeze
+    flickr.urls.should_receive(:lookupUser).with(url: url).and_return(flickr_response)
+    Oasis.should_receive(:subscribe_to_flickr).with('40927340@N03', 'marine_corps', 'user')
+    FlickrProfile.create(url: url, affiliate: affiliate)
+  end
+
   describe '#destroy' do
     it 'destroys flickr photos' do
       fp = flickr_profiles(:user)
