@@ -9,7 +9,7 @@ Feature: Dashboard
     When I go to the sites page
     Then I should see "agency1 site"
     When I go to the 3.agency.gov's Manage Content page
-    And I press "Set as my default site"
+    And I follow "Set as my default site"
     Then I should see "You have set agency3 site as your default site"
     And I should see "Manage Content"
     When I go to the sites page
@@ -46,9 +46,9 @@ Feature: Dashboard
   Scenario: Toggling daily snapshot email
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
-    And I press "Send me today's snapshot as a daily email"
+    And I follow "Send me today's snapshot as a daily email"
     Then I should see "You have enabled the daily snapshot setting for usagov."
-    When I press "Stop sending me today's snapshot as a daily email"
+    When I follow "Stop sending me today's snapshot as a daily email"
     Then I should see "You have disabled the daily snapshot setting for usagov."
 
   @javascript

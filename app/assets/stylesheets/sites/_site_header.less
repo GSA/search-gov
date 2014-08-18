@@ -36,8 +36,18 @@
 #envelope-snapshot-toggle, #pin-site {
   display: inline-block;
   .ie7-inline-block();
+  color: #ccc;
   margin: 0;
   padding: 0;
+
+  &:hover, &:focus {
+    color: #999;
+  }
+
+  .disabled {
+    color: #FF9232;
+    .opacity(100);
+  }
 
   .btn {
     .muted();

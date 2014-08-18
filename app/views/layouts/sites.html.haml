@@ -27,7 +27,7 @@
     = render 'sites/shared/site_header'
     .l-main-container
       = render 'sites/shared/site_nav'
-      #main-content.l-content
+      #main-content.l-content{ tabindex: -1 }
         = yield
     #help-doc.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
       .modal-body

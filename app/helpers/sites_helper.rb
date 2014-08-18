@@ -10,62 +10,58 @@ module SitesHelper
     return if membership.nil?
     description_class = 'description label off-screen-text'
     if membership.gets_daily_snapshot_email?
-      button_class = 'btn disabled'
       description_class << ' label-warning'
       verb = 'Stop sending'
     else
-      button_class = 'btn'
       verb = 'Send'
     end
     title = "#{verb} me today's snapshot as a daily email"
-    wrapper_options = {id: 'envelope-snapshot-toggle',
-                       'data-toggle' => 'tooltip',
-                       'data-original-title' => title}
+    wrapper_options = { :id => 'envelope-snapshot-toggle',
+                        :'data-toggle' => 'tooltip',
+                        :'data-original-title' => title,
+                        :method => :put }
 
-    form_for membership, as: :membership, url: site_membership_path(@site, membership), method: :put, html: wrapper_options do
-      button_tag class: button_class, type: :submit do
-        inner_html = stacked_envelope
-        inner_html << content_tag(:span, title, class: description_class)
-        if membership.gets_daily_snapshot_email?
-          content_tag :div, inner_html, class: 'btn disabled'
-        else
-          inner_html
-        end
+    link_to site_membership_path(@site, membership), wrapper_options do
+      inner_html = stacked_envelope
+      inner_html << content_tag(:span, title, class: description_class)
+      if membership.gets_daily_snapshot_email?
+        content_tag :div, inner_html, class: 'disabled'
+      else
+        inner_html
       end
     end
   end
 
   def site_pin(site)
     if current_user.default_affiliate_id != site.id
-      button_to_enabled_pin_site(site)
+      link_to_enabled_pin_site(site)
     else
-      button_to_disabled_pin_site
+      disabled_pin_site
     end
   end
 
-  def button_to_enabled_pin_site(site)
+  def link_to_enabled_pin_site(site)
     title = 'Set as my default site'
-    wrapper_options = {id: 'pin-site',
-                       'data-toggle' => 'tooltip',
-                       'data-original-title' => title}
+    wrapper_options = { :id => 'pin-site',
+                        :'data-toggle' => 'tooltip',
+                        :'data-original-title' => title,
+                        :method => :put }
 
-    form_for site, as: :site, url: pin_site_path(site), html: wrapper_options do
-      button_tag class: 'btn', type: :submit do
-        inner_html = stacked_pushpin
-        inner_html << content_tag(:span, title, class: 'description label off-screen-text')
-      end
+    link_to pin_site_path(site), wrapper_options do
+      inner_html = stacked_pushpin
+      inner_html << content_tag(:span, title, class: 'description label off-screen-text')
     end
   end
 
-  def button_to_disabled_pin_site
+  def disabled_pin_site
     title = 'Your default site'
-    wrapper_options = {id: 'pin-site',
-                       'data-toggle' => 'tooltip',
-                       'data-original-title' => title}
+    wrapper_options = { :id => 'pin-site',
+                        :'data-toggle' => 'tooltip',
+                        :'data-original-title' => title }
     content_tag :div, wrapper_options do
       inner_html = stacked_pushpin
       inner_html << content_tag(:span, title, class: 'description label label-warning off-screen-text')
-      content_tag :div, inner_html, class: 'btn disabled'
+      content_tag :div, inner_html, class: 'disabled'
     end
   end
 

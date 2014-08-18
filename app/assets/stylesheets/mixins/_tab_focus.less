@@ -1,0 +1,22 @@
+.tab-focus() {
+  outline: @outline-color solid 3px;
+}
+
+.outline-on-focus() {
+  &:focus {
+    .tab-focus();
+  }
+}
+
+.input-outline-on-focus() {
+  &:focus {
+    .box-shadow(none);
+    .tab-focus();
+    .transition(none);
+    border-color: transparent;
+
+    &:invalid {
+      outline-color: @outline-error-color;
+    }
+  }
+}

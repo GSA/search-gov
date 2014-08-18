@@ -1,6 +1,30 @@
-a#skiplink {
+#skiplink {
   .sr-only();
-  .sr-only-focusable();
+  text-decoration: none;
+
+  &:focus {
+    .tab-focus();
+    color: white;
+    background-color: #004168;
+    clip: auto;
+    display: block;
+    font-size: 1.8em;
+    height: auto;
+    left: 0;
+    margin: 1px;
+    overflow: hidden;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    z-index: @zindexSkiplink;
+  }
+}
+
+a,
+button {
+  .outline-on-focus();
 }
 
 a.menu:hover, a.menu:focus {
@@ -16,6 +40,8 @@ a.menu:hover, a.menu:focus {
     margin-left: 0;
     padding-top: @contentWithoutSiteTop;
   }
+
+  .outline-on-focus();
 }
 
 .l-inner-content {

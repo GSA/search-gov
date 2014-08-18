@@ -1,9 +1,14 @@
-$(document).on 'keydown',
-  '.form input[type="text"], .form input[type="url"], .form textarea',
-  window.usasearch.enablePrimaryButton
+onKeyUpWithoutShiftOrTab = (e) ->
+  window.usasearch.enablePrimaryButton() unless (e.which == 9 || e.which == 16)
+
+$(document).on 'keyup',
+  '.form textarea, .form input[type="text"], .form input[type="url"]',
+  onKeyUpWithoutShiftOrTab
+
 $(document).on 'paste',
   '.form input[type="text"], .form input[type="url"], .form textarea',
   window.usasearch.enablePrimaryButton
+
 $(document).on 'change',
   ' .form input[type="checkbox"], .form input[type="file"], .form input[type="radio"], .form input[type="text"], .form input[type="url"], .form select',
   window.usasearch.enablePrimaryButton

@@ -1,3 +1,25 @@
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  .input-outline-on-focus();
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
 .form {
   margin: 20px 8px;
 
@@ -83,6 +105,25 @@
 
   .field_with_errors {
     .control-group.error();
+
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"] {
+      &:focus {
+        outline-color: @outline-error-color;
+      }
+    }
   }
 
   .input-append div {
