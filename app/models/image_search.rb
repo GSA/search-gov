@@ -30,7 +30,8 @@ class ImageSearch
                           :endrecord,
                           :results,
                           :startrecord,
-                          :total
+                          :total,
+                          :spelling_suggestion
 
   def run
     if @query.present?
@@ -76,6 +77,7 @@ class ImageSearch
   def assign_module_tag
     @module_tag = @search_instance.default_module_tag
     @modules << @module_tag
+    @modules << @search_instance.default_spelling_module_tag unless @search_instance.spelling_suggestion.nil?
   end
 
 end

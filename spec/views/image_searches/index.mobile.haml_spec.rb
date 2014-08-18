@@ -15,7 +15,8 @@ describe "image_searches/index.mobile.haml" do
       end
       results.stub(:total_pages).and_return(1)
       @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 5, per_page: 20, page: 1)
+                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 5, per_page: 20,
+                       page: 1, spelling_suggestion: nil)
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
     end
@@ -42,7 +43,8 @@ describe "image_searches/index.mobile.haml" do
       end
       results.stub(:total_pages).and_return(1)
       @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20, page: 1)
+                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
+                       page: 1, spelling_suggestion: nil)
       ImageSearch.stub(:===).and_return true
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
@@ -71,7 +73,8 @@ describe "image_searches/index.mobile.haml" do
       affiliate.is_bing_image_search_enabled = false
       assign(:affiliate, affiliate)
       @search = double(ImageSearch, query: "test", affiliate: affiliate, error_message: nil, module_tag: nil,
-                       queried_at_seconds: 1271978870, results: [], startrecord: 0, total: 0, per_page: 20, page: 0)
+                       queried_at_seconds: 1271978870, results: [], startrecord: 0, total: 0, per_page: 20,
+                       page: 0, spelling_suggestion: nil)
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
     end
@@ -92,7 +95,8 @@ describe "image_searches/index.mobile.haml" do
       end
       results.stub(:total_pages).and_return(1)
       @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20, page: 1)
+                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
+                       page: 1, spelling_suggestion: nil)
       @search.stub(:is_a?).with(ImageSearch).and_return true
       ImageSearch.stub(:===).and_return true
       assign(:search, @search)
@@ -110,6 +114,57 @@ describe "image_searches/index.mobile.haml" do
       rendered.should contain("Powered by Bing")
     end
 
+  end
+
+  describe "spelling suggestions" do
+    context 'when it is from Oasis' do
+      before do
+        affiliate.is_bing_image_search_enabled = false
+        assign(:affiliate, affiliate)
+        results = (1..2).map do |i|
+          Hashie::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
+                           thumbnail: { url: "http://flickr/thumbnail/#{i}" })
+        end
+        results.stub(:total_pages).and_return(1)
+        @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
+                         queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
+                         page: 1, spelling_suggestion: "tsetse")
+        assign(:search, @search)
+        assign(:search_params, { affiliate: affiliate.name, query: 'test' })
+        controller.stub(:controller_name).and_return('image_searches')
+      end
+
+      it "should have a link to redo search with Oasis spelling correction" do
+        render
+        rendered.should have_selector(:a, content: "tsetse", href: '/search/images?affiliate=usagov&query=tsetse')
+      end
+    end
+
+    context 'when it is from Bing' do
+      before do
+        affiliate.is_bing_image_search_enabled = true
+        assign(:affiliate, affiliate)
+        results = (1..2).map do |i|
+          Hashie::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
+                           thumbnail: { url: "http://bing/thumbnail/#{i}" })
+        end
+        results.stub(:total_pages).and_return(1)
+        @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
+                         queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
+                         page: 1, spelling_suggestion: "\uE000tsetse\uE001")
+        @search.stub(:is_a?).with(ImageSearch).and_return true
+        ImageSearch.stub(:===).and_return true
+        assign(:search, @search)
+        assign(:search_params, { affiliate: affiliate.name, query: 'test' })
+        controller.stub(:controller_name).and_return('image_searches')
+      end
+
+      it "should have a link to redo search with Bing spelling correction" do
+        render
+        rendered.should have_selector(:a, content: "tsetse", href: '/search/images?affiliate=usagov&query=tsetse')
+      end
+
+    end
   end
 
 end

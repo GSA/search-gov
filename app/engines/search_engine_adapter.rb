@@ -17,7 +17,8 @@ class SearchEngineAdapter
   end
 
   def_instance_delegators :@search_engine_response,
-                          :total
+                          :total,
+                          :spelling_suggestion
 
   def_instance_delegator :@search_engine_response, :start_record, :startrecord
   def_instance_delegator :@search_engine_response, :end_record, :endrecord
@@ -48,6 +49,10 @@ class SearchEngineAdapter
 
   def default_module_tag
     'IMAG' if @search_engine.instance_of?(BingImageSearch)
+  end
+
+  def default_spelling_module_tag
+    'BSPEL' if @search_engine.instance_of?(BingImageSearch)
   end
 
   protected

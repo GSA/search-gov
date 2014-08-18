@@ -63,4 +63,3 @@ Feature: Blended Search
       And I fill in "Enter your search term" with "barack obaama article"
       And I press "Search"
       Then I should see "Showing results for barack obama article"
-      And I should see "Search instead for barack obaama article"

@@ -2,8 +2,8 @@
   %h2= t 'searches.search_results'
   - if @search.results.blank?
     = render partial: 'searches/no_results', locals: { search: @search }
-
-  - if @search.results.present?
+  - else
+    = search_suggestion(@search, 'OSPEL')
     = render partial: 'organic_results', locals: { search: @search }
     = render partial: 'searches/offer_commercial_results', locals: { search:  @search } if eligible_for_commercial_results?(@search)
     = render partial: 'searches/pagination', locals: { search: @search }

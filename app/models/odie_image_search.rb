@@ -2,6 +2,7 @@ class OdieImageSearch < OdieSearch
   include DefaultModuleTaggable
 
   self.default_module_tag = 'OASIS'.freeze
+  self.default_spelling_module_tag = 'OSPEL'.freeze
 
   def initialize(options = {})
     super(options)
@@ -25,6 +26,11 @@ class OdieImageSearch < OdieSearch
 
   def cache_key
     ["oasis_image", @query, @affiliate.id, @page, @per_page].join(':')
+  end
+
+  def handle_response(response)
+    super(response)
+    @spelling_suggestion = response.spelling_suggestion if response
   end
 
   def process_results(response)

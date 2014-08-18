@@ -6,6 +6,7 @@ module DefaultModuleTaggable
   included do
     class_eval do
       class_attribute :default_module_tag, instance_writer: false
+      class_attribute :default_spelling_module_tag, instance_writer: false
     end
   end
 end
