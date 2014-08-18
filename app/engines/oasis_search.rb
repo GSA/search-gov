@@ -1,6 +1,6 @@
 class OasisSearch < SearchEngine
   API_ENDPOINT = '/api/v1/image.json'
-  API_HOST = 'http://192.168.100.171:8080'
+  CACHE_DURATION_IN_SECONDS = 60
 
   def initialize(options = {})
     super(options) do |search_engine|
@@ -35,6 +35,6 @@ class OasisSearch < SearchEngine
   private
 
   def connection_instance
-    @@api_connection ||= SearchApiConnection.new('oasis_api', API_HOST)
+    @@api_connection ||= SearchApiConnection.new('oasis_api', "http://#{Oasis.host}", CACHE_DURATION_IN_SECONDS)
   end
 end
