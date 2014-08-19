@@ -17,10 +17,10 @@
             %i.icon-caret-down
           %ul.dropdown-menu(data-no-turbolink)
             %li
-              = link_to account_path, tabindex: -1 do
+              = link_to account_path do
                 %i.icon-user
                 My account
             %li
-              = link_to url_for_logout, method: :delete, tabindex: -1 do
+              = link_to url_for_logout, method: :delete do
                 %i.icon-signout
                 Sign out
