@@ -20,15 +20,6 @@
         %td.cell-1x= link_to 'YouTube', site_youtube_usernames_path(@site)
         = switch_cell f, :is_video_govbox_enabled
 
-    - if @site.flickr_profiles.exists? or @site.instagram_profiles.exists?
-      %tr
-        %td Photos
-        %td.cell-1x
-          = link_to('Flickr', site_flickr_urls_path(@site)) if @site.flickr_profiles.exists?
-          = raw('/') if @site.flickr_profiles.exists? and @site.instagram_profiles.exists?
-          = link_to('Instagram', site_instagram_usernames_path(@site)) if @site.instagram_profiles.exists?
-        = switch_cell f, :is_photo_govbox_enabled
-
     - if @site.agency.present?
       %tr
         %td Job openings

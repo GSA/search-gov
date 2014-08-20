@@ -103,7 +103,6 @@ Feature: Manage Display
     And the "Rss govbox label" field should contain "News"
     And the "Is rss govbox enabled" should be switched off
     And the "Is video govbox enabled" should be switched on
-    And the "Is photo govbox enabled" should be switched on
     And the "Jobs enabled" should be switched off
     And the "Is federal register document govbox enabled" should be switched off
     And the "Is related searches enabled" should be switched on
@@ -114,7 +113,6 @@ Feature: Manage Display
     When I fill in "Rss govbox label" with "Latest News"
     And I switch on "Is rss govbox enabled"
     And I switch off "Is video govbox enabled"
-    And I switch off "Is photo govbox enabled"
     And I switch on "Jobs enabled"
     And I switch on "Is federal register document govbox enabled"
     And I switch off "Is related searches enabled"
@@ -126,7 +124,6 @@ Feature: Manage Display
     And the "Rss govbox label" field should contain "Latest News"
     And the "Is rss govbox enabled" should be switched on
     And the "Is video govbox enabled" should be switched off
-    And the "Is photo govbox enabled" should be switched off
     And the "Jobs enabled" should be switched on
     And the "Is federal register document govbox enabled" should be switched on
     And the "Is related searches enabled" should be switched off

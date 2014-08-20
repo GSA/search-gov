@@ -67,7 +67,6 @@ class BlendedSearch < Search
     @modules << "MEDL" unless self.med_topic.nil?
     @modules << "JOBS" if self.jobs.present?
     @modules << "TWEET" if self.has_tweets?
-    @modules << "PHOTO" if self.has_photos?
   end
 
   private

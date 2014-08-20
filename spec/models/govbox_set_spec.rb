@@ -241,36 +241,6 @@ describe GovboxSet do
       end
     end
 
-    describe "photos" do
-      before do
-        ElasticFlickrPhoto.stub!(:search_for).
-          with(q: 'foo', affiliate_id: affiliate.id, language: affiliate.locale, size: 5, highlighting: false).
-          and_return "FlickrPhoto results"
-      end
-
-      context "when the affiliate has photo govbox enabled" do
-        before do
-          affiliate.update_attributes(:is_photo_govbox_enabled => true)
-        end
-
-        it "should find relevant photos" do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.photos.should == "FlickrPhoto results"
-        end
-      end
-
-      context "when the affiliate does not have photo govbox enabled" do
-        before do
-          affiliate.update_attributes(:is_photo_govbox_enabled => false)
-        end
-
-        it "should not search for Flickr Photos" do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.photos.should be_nil
-        end
-      end
-    end
-
     it 'should assign related searches' do
       SaytSuggestion.stub!(:related_search).with('foo', affiliate).and_return "related search results"
       govbox_set = GovboxSet.new('foo', affiliate, geoip_info)

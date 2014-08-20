@@ -33,7 +33,6 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :default_search_label,
         :is_federal_register_document_govbox_enabled,
         :is_medline_govbox_enabled,
-        :is_photo_govbox_enabled,
         :is_related_searches_enabled,
         :is_sayt_enabled,
         :is_rss_govbox_enabled,

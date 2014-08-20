@@ -12,7 +12,6 @@ class Sites::FlickrProfilesController < Sites::SetupSiteController
   def create
     @flickr_profile = @site.flickr_profiles.build flickr_profile_params
     if @flickr_profile.save
-      @site.update_attributes!(is_photo_govbox_enabled: true)
       redirect_to site_flickr_urls_path(@site),
                   flash: { success: "You have added #{url_without_protocol(@flickr_profile.url)} to this site." }
     else

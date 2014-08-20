@@ -39,7 +39,6 @@ describe Sites::FlickrProfilesController do
               and_return(flickr_profile)
 
           flickr_profile.should_receive(:save).and_return(true)
-          site.should_receive(:update_attributes!).with(is_photo_govbox_enabled: true)
 
           post :create,
                site_id: site.id,

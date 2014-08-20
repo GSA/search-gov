@@ -6,7 +6,6 @@ class GovboxSet
               :jobs,
               :med_topic,
               :news_items,
-              :photos,
               :related_search,
               :tweets,
               :video_news_items
@@ -21,16 +20,10 @@ class GovboxSet
     init_video_news_items
     init_med_topic
     init_tweets
-    init_photos
     init_related_search
   end
 
   private
-
-  def init_photos
-    options = {q: @query, affiliate_id: @affiliate.id, size: 5, language: @affiliate.locale, highlighting: false}
-    @photos = ElasticFlickrPhoto.search_for(options) if @affiliate.is_photo_govbox_enabled?
-  end
 
   def init_related_search
     @related_search = SaytSuggestion.related_search(@query, @affiliate)

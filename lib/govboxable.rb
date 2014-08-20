@@ -6,7 +6,6 @@ module Govboxable
            :video_news_items,
            :featured_collections,
            :tweets,
-           :photos,
            :jobs,
            :related_search,
            :to => :@govbox_set,

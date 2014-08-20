@@ -701,22 +701,6 @@ Feature: Affiliate Search
     And I should not see "Images"
     And I should not see "Search this site"
 
-  Scenario: When there are relevant Flickr photos for a search
-    Given the following legacy Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | is_photo_govbox_enabled   |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | true                      |
-    And the following FlickrPhotos exist:
-      | title     | description             | url_sq                         | owner | flickr_id | affiliate_name  |
-      | AMERICA   | A picture of our nation | http://www.flickr.com/someurl | 123   | 456       | bar.gov         |
-    When I am on bar.gov's search page
-    And I fill in "query" with "america"
-    And I press "Search" in the search box
-    Then I should see "Photos of 'america' by bar site"
-
-    When I fill in "query" with "obama"
-    And I press "Search" in the search box
-    Then I should not see "Photos of 'america' by bar site"
-
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following legacy Affiliates exist:

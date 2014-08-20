@@ -26,7 +26,7 @@ module SearchHelper
 
   def tracked_click_thumbnail_image_link(result, onmousedown_attr, max_width = nil, max_height = nil)
     raw link_to thumbnail_image_tag(result, max_width, max_height),
-            result["MediaUrl"],
+            result["Url"],
             :onmousedown => onmousedown_attr,
             :alt => result["title"],
             :rel => "no-follow",

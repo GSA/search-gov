@@ -122,7 +122,6 @@ class WebSearch < Search
     @modules << "MEDL" unless self.med_topic.nil?
     @modules << "JOBS" if self.jobs.present?
     @modules << "TWEET" if self.has_tweets?
-    @modules << "PHOTO" if self.has_photos?
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 

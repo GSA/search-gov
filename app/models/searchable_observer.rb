@@ -2,7 +2,6 @@ class SearchableObserver < ActiveRecord::Observer
   observe :boosted_content,
           :featured_collection,
           :federal_register_document,
-          :flickr_photo,
           :indexed_document,
           :news_item,
           :sayt_suggestion,

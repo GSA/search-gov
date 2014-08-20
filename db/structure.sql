@@ -363,67 +363,6 @@ CREATE TABLE `federal_register_documents` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `flickr_photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_public` tinyint(1) DEFAULT NULL,
-  `farm` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flickr_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `server` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_family` tinyint(1) DEFAULT NULL,
-  `secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `owner` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_friend` tinyint(1) DEFAULT NULL,
-  `last_update` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_sq` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_t` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_s` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_q` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_m` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_n` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_z` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_c` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_l` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_o` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `width_sq` int(11) DEFAULT NULL,
-  `width_t` int(11) DEFAULT NULL,
-  `width_s` int(11) DEFAULT NULL,
-  `width_q` int(11) DEFAULT NULL,
-  `width_m` int(11) DEFAULT NULL,
-  `width_n` int(11) DEFAULT NULL,
-  `width_z` int(11) DEFAULT NULL,
-  `width_c` int(11) DEFAULT NULL,
-  `width_l` int(11) DEFAULT NULL,
-  `width_o` int(11) DEFAULT NULL,
-  `height_sq` int(11) DEFAULT NULL,
-  `height_t` int(11) DEFAULT NULL,
-  `height_s` int(11) DEFAULT NULL,
-  `height_q` int(11) DEFAULT NULL,
-  `height_m` int(11) DEFAULT NULL,
-  `height_n` int(11) DEFAULT NULL,
-  `height_z` int(11) DEFAULT NULL,
-  `height_c` int(11) DEFAULT NULL,
-  `height_l` int(11) DEFAULT NULL,
-  `height_o` int(11) DEFAULT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `accuracy` int(11) DEFAULT NULL,
-  `license` mediumint(9) DEFAULT NULL,
-  `tags` text COLLATE utf8_unicode_ci,
-  `machine_tags` text COLLATE utf8_unicode_ci,
-  `date_taken` datetime DEFAULT NULL,
-  `date_upload` datetime DEFAULT NULL,
-  `path_alias` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `owner_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `icon_server` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `icon_farm` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `flickr_profile_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `flickr_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -2056,3 +1995,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140731114015');
 INSERT INTO schema_migrations (version) VALUES ('20140814213222');
 
 INSERT INTO schema_migrations (version) VALUES ('20140818221006');
+
+INSERT INTO schema_migrations (version) VALUES ('20140820193417');

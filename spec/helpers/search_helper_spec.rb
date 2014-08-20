@@ -140,7 +140,7 @@ describe SearchHelper do
 
   describe "#tracked_click_thumbnail_image_link" do
     before do
-      @result = {'MediaUrl' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => {'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30}}
+      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
       @onmousedown_attr = "onmousedown_attribute"
     end
 
@@ -152,10 +152,9 @@ describe SearchHelper do
 
   describe "#tracked_click_thumbnail_link" do
     before do
-      @result = {'Url' => 'http://aHost.gov/aPath',
-                 'title' => 'aTitle',
-                 'Thumbnail' => {'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30},
-                 'MediaUrl' => 'aMediaUrl'}
+      @result = { 'Url' => 'http://aHost.gov/aPath',
+                  'title' => 'aTitle',
+                  'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
       @onmousedown_attr = "onmousedown_attribute"
     end
 
@@ -168,8 +167,8 @@ describe SearchHelper do
   describe "#onmousedown_attribute_for_image_click" do
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
-      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now, :image)
-      content.should == "return clk('NASA\\&#x27;s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
+      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "url", 99, "affiliate name", "SOURCE", now, :image)
+      content.should == "return clk('NASA\\&#x27;s Space Rock', 'url', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
     end
   end
 
