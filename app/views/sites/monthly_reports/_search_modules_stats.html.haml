@@ -12,7 +12,7 @@
       %tr
         %td
           = stat.display_name
-          - if BestBetType.module_tags.include?(stat.module_tag) and (params[:mmyyyy].nil? or params[:mmyyyy] == Date.current.strftime('%m/%Y'))
+          - if BestBetType.module_tags.include?(stat.module_tag) and (params[:mmyyyy].nil? or params[:mmyyyy] == Date.current.strftime('%-m/%Y'))
             = link_to '(drill down)', site_best_bets_drill_down_path(@site, module_tag: stat.module_tag)
         %td= number_with_delimiter(stat.impressions)
         %td= non_zero_number_with_delimiter(stat.clicks)
