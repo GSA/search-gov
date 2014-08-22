@@ -30,13 +30,11 @@ class NewsItemsChecker
   end
 
   def self.get_news_item_ids_for_deletion(rss_feed_url_id, links, is_throttled)
-    news_item_ids_for_deletion = []
+    links_for_deletion = []
     UrlStatusCodeFetcher.fetch links, is_throttled do |link, status_code|
-      if status_code =~ /404/
-        news_item_id = NewsItem.find_by_rss_feed_url_id_and_link(rss_feed_url_id, link).pluck(:id)
-        news_item_ids_for_deletion << news_item_id if news_item_id
-      end
+      links_for_deletion << link if status_code =~ /404/
     end
-    news_item_ids_for_deletion
+    NewsItem.where(rss_feed_url_id: rss_feed_url_id,
+                   link: links_for_deletion).pluck(:id)
   end
 end
