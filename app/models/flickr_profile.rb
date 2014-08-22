@@ -4,7 +4,7 @@ class FlickrProfile < ActiveRecord::Base
 
   before_validation :assign_profile_type_and_profile_id,
                     on: :create,
-                    if: :url?
+                    if: Proc.new { |fp| fp.url? && (fp.profile_id.blank? || fp.profile_type.blank?) }
 
   validates_presence_of :affiliate_id, :url
   validates_presence_of :profile_type, :profile_id,
@@ -30,21 +30,8 @@ class FlickrProfile < ActiveRecord::Base
 
   def assign_profile_type_and_profile_id
     NormalizeUrl.new :url
-    detect_profile_type
-    lookup_and_assign_profile_id if profile_type.present?
-  end
-
-  def detect_profile_type
-    self.profile_type =
-        case url
-          when %r[/photos/] then 'user'
-          when %r[/groups/] then 'group'
-        end
-  end
-
-  def lookup_and_assign_profile_id
-    lookup_method = "lookup#{profile_type.capitalize}"
-    self.profile_id = flickr.urls.send(lookup_method, url: url)['id'] rescue nil
+    self.profile_type = FlickrData.detect_profile_type url
+    self.profile_id = FlickrData.lookup_profile_id(profile_type, url) if profile_type.present? && profile_id.blank?
   end
 
   def notify_oasis

@@ -369,7 +369,7 @@ class Affiliate < ActiveRecord::Base
     transaction do
       rss_feed = rss_feeds.managed.first_or_initialize(name: 'Videos')
       rss_feed.save!
-      update_attributes!(is_video_govbox_enabled: true)
+      update_column(:is_video_govbox_enabled, true)
     end
   end
 
@@ -377,7 +377,7 @@ class Affiliate < ActiveRecord::Base
     transaction do
       rss_feed = rss_feeds.managed.first
       rss_feed.destroy if rss_feed
-      update_attributes!(is_video_govbox_enabled: false)
+      update_column(:is_video_govbox_enabled, false)
     end
   end
 

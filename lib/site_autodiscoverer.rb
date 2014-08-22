@@ -39,7 +39,7 @@ class SiteAutodiscoverer
       favicon_url = extract_favicon_url
       favicon_url ||= detect_default_favicon
       @site.update_attributes!(favicon_url: favicon_url) if favicon_url.present?
-    rescue Exception => e
+    rescue => e
       Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
     end
   end
@@ -48,9 +48,9 @@ class SiteAutodiscoverer
     return unless site_valid_for_autodiscovery?
     begin
       website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
-        create_rss_feed *extract_rss_feed_link(link_element)
+        create_rss_feed *extract_title_and_valid_url_from_rss_feed_link(link_element)
       end
-    rescue Exception => e
+    rescue => e
       Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}: #{e.message}")
     end
   end
@@ -58,13 +58,16 @@ class SiteAutodiscoverer
   def autodiscover_social_media
     return unless site_valid_for_autodiscovery?
     begin
+      known_urls = Set.new
+
       website_doc.xpath('//a/@href').each do |anchor_attr|
         href = anchor_attr.inner_text.squish
         if href =~ %r[https?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+]i
-          send "create_#{$2}_profile", href
+          send("create_#{$2}_profile", href) unless known_urls.include?(href)
+          known_urls << href.downcase
         end
       end
-    rescue Exception => e
+    rescue => e
       Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
     end
   end
@@ -92,7 +95,7 @@ class SiteAutodiscoverer
 
   def generate_url(href)
     return nil if href.blank?
-    href =~ %r[https?://]i ? href : "#{website_host_with_scheme}#{href}"
+    href =~ %r[https?://]i ? href : "#{URI.join(website_host_with_scheme, href)}"
   end
 
   def extract_favicon_url
@@ -109,7 +112,7 @@ class SiteAutodiscoverer
     default_favicon_url unless (timeout(10) { open(default_favicon_url) } rescue nil).nil?
   end
 
-  def extract_rss_feed_link(link_element)
+  def extract_title_and_valid_url_from_rss_feed_link(link_element)
     url = generate_url link_element.attr(:href).to_s.strip
     title = link_element.attr(:title).to_s.squish
     title = url unless title.present?
@@ -125,17 +128,19 @@ class SiteAutodiscoverer
 
   def create_rss_feed(title, url)
     rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize url
+    return unless rss_feed_url.save
+
     rss_feed = @site.rss_feeds.build(name: title)
     if rss_feed_url.new_record?
       rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
     else
       rss_feed.rss_feed_urls = [rss_feed_url]
     end
-    rss_feed.save
+    rss_feed.save!
   end
 
   def create_flickr_profile(url)
-    @site.flickr_profiles.create(url: url)
+    FlickrData.import_profile @site, url
   end
 
   def create_instagram_profile(url)

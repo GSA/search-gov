@@ -45,12 +45,12 @@ describe YoutubeData do
 
     context 'when username is not valid' do
       before do
-        DocumentFetcher.should_receive(:fetch).
-            with('http://gdata.youtube.com/feeds/api/users/whitehouse').
-            and_return({})
+        # DocumentFetcher.should_receive(:fetch).
+        #     with('http://gdata.youtube.com/feeds/api/users/whitehouse').
+        #     and_return({})
       end
 
-      specify { YoutubeData.import_profile('whitehouse').should be_nil }
+      specify { YoutubeData.import_profile('watch?v=1JqR3GVqib4').should be_nil }
     end
   end
 

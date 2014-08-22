@@ -170,17 +170,17 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create new rss feeds' do
-        new_rss_feed_url = mock(RssFeedUrl, new_record?: true, url: 'http://www.usa.gov/rss/updates.xml')
-        existing_rss_feed_url = mock(RssFeedUrl, new_record?: false, url: 'http://www.usa.gov/rss/FAQs.xml')
+        new_rss_feed_url = mock(RssFeedUrl, new_record?: true, save: true, url: 'http://www.usa.gov/rss/updates.xml')
+        existing_rss_feed_url = mock(RssFeedUrl, new_record?: false, save: true, url: 'http://www.usa.gov/rss/FAQs.xml')
         RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :find_existing_or_initialize).
             and_return(new_rss_feed_url, existing_rss_feed_url)
 
         rss_feed_1 = mock_model(RssFeed)
         rss_feed_1.stub_chain(:rss_feed_urls, :build)
-        rss_feed_1.should_receive(:save)
+        rss_feed_1.should_receive(:save!)
         rss_feed_2 = mock_model(RssFeed)
         rss_feed_2.should_receive(:rss_feed_urls=).with([existing_rss_feed_url])
-        rss_feed_2.should_receive(:save)
+        rss_feed_2.should_receive(:save!)
         site.stub_chain(:rss_feeds, :build).and_return(rss_feed_1, rss_feed_2)
 
         autodiscoverer.autodiscover_rss_feeds
@@ -217,23 +217,19 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create flickr profile' do
-        InstagramData.stub(:import_profile) { nil }
-        TwitterData.stub(:import_profile) { nil }
-        YoutubeData.stub(:import_profile) { nil }
+        InstagramData.stub(:import_profile)
+        TwitterData.stub(:import_profile)
+        YoutubeData.stub(:import_profile)
 
-        flickr_profiles = mock('flickr profiles')
-        site.should_receive(:flickr_profiles).and_return(flickr_profiles)
-        flickr_profiles.
-            should_receive(:create).
-            with(url: 'http://flickr.com/photos/whitehouse')
+        FlickrData.should_receive(:import_profile).with(site, 'http://flickr.com/photos/whitehouse')
 
         autodiscoverer.autodiscover_social_media
       end
 
       it 'creates instagram profile' do
-        site.stub_chain(:flickr_profiles, :create)
-        TwitterData.stub(:import_profile) { nil }
-        YoutubeData.stub(:import_profile) { nil }
+        FlickrData.stub(:import_profile)
+        TwitterData.stub(:import_profile)
+        YoutubeData.stub(:import_profile)
 
         instagram_profile = mock_model(InstagramProfile)
         InstagramData.should_receive(:import_profile).with('whitehouse').and_return(instagram_profile)
@@ -248,9 +244,9 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create twitter profile' do
-        site.stub_chain(:flickr_profiles, :create)
-        InstagramData.stub(:import_profile) { nil }
-        YoutubeData.stub(:import_profile) { nil }
+        FlickrData.stub(:import_profile)
+        InstagramData.stub(:import_profile)
+        YoutubeData.stub(:import_profile)
 
         twitter_profile = mock_model(TwitterProfile)
         TwitterData.should_receive(:import_profile).
@@ -266,18 +262,20 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create youtube profile' do
-        site.stub_chain(:flickr_profiles, :create)
-        InstagramData.stub(:import_profile) { nil }
-        TwitterData.stub(:import_profile) { nil }
+        FlickrData.stub(:import_profile)
+        InstagramData.stub(:import_profile)
+        TwitterData.stub(:import_profile)
 
         youtube_profile = mock_model(YoutubeProfile)
-        YoutubeData.stub(:import_profile) { youtube_profile }
+        YoutubeData.stub(:import_profile) do |username|
+          youtube_profile if username == 'whitehouse1'
+        end
 
         youtube_profiles = mock('youtube profiles')
         site.stub(:youtube_profiles).and_return(youtube_profiles)
         youtube_profiles.should_receive(:exists?).with(youtube_profile).and_return(false)
         youtube_profiles.should_receive(:<<).with(youtube_profile)
-        site.should_receive(:enable_video_govbox!)
+        site.should_receive(:enable_video_govbox!).once
 
         autodiscoverer.autodiscover_social_media
       end
