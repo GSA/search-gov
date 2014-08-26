@@ -315,6 +315,18 @@ describe Emailer do
     it { should have_body_text tracking_code }
   end
 
+  describe '#user_sites' do
+    let(:user) { mock_model(User, email: 'admin@agency.gov') }
+    let(:sites) { [affiliates(:basic_affiliate)] }
+
+    subject(:email) { Emailer.user_sites(user, sites) }
+
+    it { should deliver_to(user.email) }
+    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
+    it { should reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
+    it { should have_body_text sites.first.display_name }
+  end
+
   describe '#public_key_upload_notification' do
     let(:affiliate) { mock_model(Affiliate, display_name: 'DigitalGov Search') }
     let(:current_user) { mock_model(User, email: 'admin@agency.gov') }

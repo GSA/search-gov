@@ -128,6 +128,11 @@ class Emailer < ActionMailer::Base
     send_mail(:text)
   end
 
+  def user_sites(user, sites)
+    @sites = sites
+    generic_user_text_email(user, __method__)
+  end
+
   private
 
   def setup_email(params, method_name)
