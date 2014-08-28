@@ -243,10 +243,12 @@ describe Affiliate do
       spanish_affiliate.default_search_label.should == 'Todo'
     end
 
-    it "should strip text columns" do
+    it "should squish string columns" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes!(:ga_web_property_id => '  WEB_PROPERTY_ID  ')
-      affiliate.ga_web_property_id.should == 'WEB_PROPERTY_ID'
+      affiliate.update_attributes!(ga_web_property_id: '  WEB_PROPERTY_ID  ',
+                                   logo_alt_text: '  my  awesome agency  ')
+      affiliate.ga_web_property_id.should eq('WEB_PROPERTY_ID')
+      affiliate.logo_alt_text.should eq('my awesome agency')
     end
 
 

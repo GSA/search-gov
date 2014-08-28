@@ -2,6 +2,7 @@ require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
   include ActiveRecordExtension
+  extend AttributeSquisher
   include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
@@ -80,6 +81,7 @@ class Affiliate < ActiveRecord::Base
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_default_rss_govbox_label
+  before_validation_squish :ga_web_property_id, :logo_alt_text, assign_nil_on_blank: true
   validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
@@ -111,7 +113,7 @@ class Affiliate < ActiveRecord::Base
            :validate_managed_header_links, :validate_managed_footer_links
   validate :external_tracking_code_cannot_be_malformed
   after_validation :update_error_keys
-  before_save :strip_text_columns, :ensure_http_prefix
+  before_save :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_create :set_keen_scoped_key
   before_update :clear_existing_attachments
@@ -201,7 +203,7 @@ class Affiliate < ActiveRecord::Base
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :go_live_date, :logo_alignment]
+                                         :go_live_date, :logo_alt_text]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -638,10 +640,6 @@ class Affiliate < ActiveRecord::Base
 
   def set_keen_scoped_key
     self.keen_scoped_key = KeenScopedKey.generate(self.id)
-  end
-
-  def strip_text_columns
-    self.ga_web_property_id = ga_web_property_id.strip unless ga_web_property_id.nil?
   end
 
   def sanitize_staged_header_footer

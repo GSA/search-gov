@@ -9,6 +9,14 @@ input.btn {
   }
 }
 
+.bootstrap-filestyle {
+  outline: none;
+
+  &:focus .btn-filestyle {
+    .tab-focus();
+  }
+}
+
 .btn-flat[type="submit"] {
   border: none;
   background-color: @dropdownBackground;

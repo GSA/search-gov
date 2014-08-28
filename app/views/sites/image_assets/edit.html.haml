@@ -38,6 +38,10 @@
       = hash.label :logo_alignment, 'Logo Alignment'
       = hash.select :logo_alignment, options_for_select(LogoAlignment::ALL, selected: @site.css_property_hash[:logo_alignment])
 
+  %fieldset
+    = f.label :logo_alt_text, 'Logo Alt Text'
+    = f.text_field :logo_alt_text, maxlength: 100
+
   - unless @site.force_mobile_format?
     %fieldset
       = f.label :page_background_image, 'Page Background Image'

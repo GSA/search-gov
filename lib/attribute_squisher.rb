@@ -6,11 +6,11 @@ module AttributeSquisher
 
     before_validation do |record|
       attr_names.each do |attr_name|
-        value = record[attr_name]
+        value = record.send :"#{attr_name}"
         if value.present?
-          record[attr_name] = value.squish
+          record.send :"#{attr_name}=", value.squish
         elsif assign_nil_on_blank
-          record[attr_name] = nil
+          record.send :"#{attr_name}=", nil
         end
       end
     end

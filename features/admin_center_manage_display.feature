@@ -268,6 +268,7 @@ Feature: Manage Display
     When I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I attach the file "features/support/small.jpg" to "Legacy Logo"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
+    When I fill in "Logo Alt Text" with "  Awesome   Agency  "
     And I select "left" from "Logo Alignment"
     And I attach the file "features/support/bg.png" to "Page Background Image"
     And I select "repeat-y" from "Page Background Image Repeat"
@@ -278,6 +279,7 @@ Feature: Manage Display
     And I should see an image with alt text "Legacy Logo"
     And I should see an image with alt text "Logo"
     And the "Logo Alignment" field should contain "left"
+    And the "Logo Alt Text" field should contain "Awesome Agency"
     And I should see an image with alt text "Page Background Image"
     And the "Page Background Image Repeat" field should contain "repeat-y"
 
@@ -285,7 +287,8 @@ Feature: Manage Display
     Then I should see an image link to "logo" with url for "http://main.agency.gov"
     And the page body should contain "bg.png"
     When I am on agency.gov's mobile search page
-    Then I should see an image link to "agency site" with url for "http://main.agency.gov"
+    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
+    And the page body should contain "logo_mobile_en.png"
     And I should see a left aligned SERP logo
 
     When I go to the agency.gov's Image Assets page
@@ -318,14 +321,19 @@ Feature: Manage Display
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
+    And I select "left" from "Logo Alignment"
+    When I fill in "Logo Alt Text" with "  Awesome   Agency  "
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
     And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
     And I should see an image with alt text "Logo"
+    And the "Logo Alignment" field should contain "left"
+    And the "Logo Alt Text" field should contain "Awesome Agency"
 
     When I am on agency.gov's search page
-    Then I should see an image link to "agency site" with url for "http://main.agency.gov"
+    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
     And the page body should contain "logo_mobile_en.png"
+    And I should see a left aligned SERP logo
 
     When I go to the agency.gov's Image Assets page
     And I check "Mark Logo for Deletion"

@@ -2,16 +2,13 @@
  * bootstrap-filestyle
  * http://dev.tudosobreweb.com.br/bootstrap-filestyle/
  *
- * Copyright (c) 2013 Markus Vinicius da Silva Lima
- * Version 1.0.3
+ * Copyright (c) 2014 Markus Vinicius da Silva Lima
+ * Version 1.0.6
  * Licensed under the MIT license.
  */
-
-/* https://raw.github.com/markusslima/bootstrap-filestyle/e8a182db38fcfb4307d2c89b0242d5419cf760fe/src/bootstrap-filestyle.js */
-
 (function ($) {
     "use strict";
-    
+
     var Filestyle = function (element, options) {
         this.options = options;
         this.$elementFilestyle = [];
@@ -30,6 +27,50 @@
                 .removeData('filestyle')
                 .val('');
             this.$elementFilestyle.remove();
+        },
+        
+        disabled: function (value) {
+        	if (value === true) {
+        		if (!this.options.disabled) {
+	        		this.$element
+		                .attr('disabled', 'true');
+		            this.$elementFilestyle.find('label').attr('disabled', 'true');
+		            this.options.disabled = true;
+		        }
+        	} else if (value === false) {
+        		if (this.options.disabled) {
+		            this.$element
+		                .removeAttr('disabled');
+		            this.$elementFilestyle.find('label').removeAttr('disabled');
+		            this.options.disabled = false;
+		        }
+            } else {
+                return this.options.disabled;
+            }
+        },
+        
+        buttonBefore: function (value) {
+        	if (value === true) {
+        		if (!this.options.buttonBefore) {
+	        		this.options.buttonBefore = true;
+	        		if (this.options.input) {
+	        			this.$elementFilestyle.remove();
+	        			this.constructor();
+	        			this.pushNameFiles();
+	        		}
+	        	}
+        	} else if (value === false) {
+        		if (this.options.buttonBefore) {
+		            this.options.buttonBefore = false;
+		            if (this.options.input) {
+	        			this.$elementFilestyle.remove();
+	        			this.constructor();
+	        			this.pushNameFiles();
+	        		}
+		        }
+            } else {
+                return this.options.buttonBefore;
+            }
         },
 
         icon: function (value) {
@@ -52,7 +93,14 @@
             if (value === true) {
                 if (!this.options.input) {
                     this.options.input = true;
-                    this.$elementFilestyle.prepend(this.htmlInput());
+                    
+                    if (this.options.buttonBefore) {
+                    	this.$elementFilestyle.append(this.htmlInput());
+                    } else {
+                    	this.$elementFilestyle.prepend(this.htmlInput());
+                    }
+                    
+                    this.$elementFilestyle.find('.quant-files-filestyle').remove();
 
                     var content = '',
                         files = [];
@@ -73,6 +121,21 @@
                 if (this.options.input) {
                     this.options.input = false;
                     this.$elementFilestyle.find(':text').remove();
+                    var files = [];
+	                if (this.$element[0].files === undefined) {
+	                    files[0] = {'name': this.$element[0].value};
+	                } else {
+	                    files = this.$element[0].files;
+	                }
+	                if (files.length > 0) {
+	                	var style;
+	                	if (this.options.classButton.search(/btn-inverse|btn-primary|btn-danger|btn-warning|btn-success/i) !== -1) {
+		                    style = 'style="background-color: #fff !important; color: 000;"';
+		                } else {
+		                	style = 'style="background-color: #000 !important; color: fff;"';
+		                }
+	                	this.$elementFilestyle.find('label').append(' <span '+style+' class="quant-files-filestyle badge">'+files.length+'</span>');
+	                }
                 }
             } else {
                 return this.options.input;
@@ -144,6 +207,27 @@
                 return '';
             }
         },
+        
+        // puts the name of the input files
+        pushNameFiles: function () {
+        	var content = '',
+        	    files = [];
+            if (this.$element[0].files === undefined) {
+                files[0] = {'name': this.$element.value};
+            } else {
+                files = this.$element[0].files;
+            }
+            
+            for (var i = 0; i < files.length; i++) {
+                content += files[i].name.split("\\").pop() + ', ';
+            }
+
+            if (content !== '') {
+                this.$elementFilestyle.find(':text').val(content.replace(/\, $/g, ''));
+            } else {
+            	this.$elementFilestyle.find(':text').val('');
+            }
+        },
 
         constructor: function () {
             var _self = this,
@@ -156,18 +240,42 @@
                 this.$element.attr({'id': id});
             }
 
-            html = this.htmlInput()+
-                 '<label for="'+id+'" class="'+this.options.classButton+'">'+
-                    this.htmlIcon()+
-                    '<span>'+this.options.buttonText+'</span>'+
-                 '</label>';
+            if(this.options.buttonBefore) {
+                html = '<label for="'+id+'" style="margin-right: 4px;" class="'+this.options.classButton+'" '+(this.options.disabled?'disabled="true"':'')+'>'+
+                           this.htmlIcon()+
+                           '<span>'+this.options.buttonText+'</span>'+
+                       '</label>'+
+                   	   this.htmlInput();
+            } else {
+                html = this.htmlInput()+
+                       '<label for="'+id+'" class="'+this.options.classButton+'" '+(this.options.disabled?'disabled="true"':'')+'> '+
+                           this.htmlIcon()+
+                    	   '<span>'+this.options.buttonText+'</span>'+
+                	   '</label>';
+            }
 
-            this.$elementFilestyle = $('<div class="bootstrap-filestyle" style="display: inline;">'+html+'</div>');
+            this.$elementFilestyle = $('<div class="bootstrap-filestyle" style="display: inline-block;">'+html+'</div>');
+
+            var $label = this.$elementFilestyle.find('label');
+            var $labelFocusableContainer = $label.parent();
+
+            $labelFocusableContainer
+                .attr('tabindex', "0")
+                .keypress(function(e) {
+                    if (e.keyCode === 13 || e.charCode === 32) {
+                        $label.click();
+                    }
+                });
 
             // hidding input file and add filestyle
             this.$element
-                .css({'position':'fixed','left':'-500px'})
+                .css({'position':'absolute','clip':'rect(0,0,0,0)'})
+                .attr('tabindex', "-1")
                 .after(this.$elementFilestyle);
+                
+            if (this.options.disabled) {
+            	this.$element.attr('disabled', 'true');
+            }
 
             // Getting input file value
             this.$element.change(function () {
@@ -184,6 +292,26 @@
 
                 if (content !== '') {
                     _self.$elementFilestyle.find(':text').val(content.replace(/\, $/g, ''));
+                } else {
+                	_self.$elementFilestyle.find(':text').val('');
+                }
+                
+                if (_self.options.input == false) {
+                	var style;
+                	if (_self.options.classButton.search(/btn-inverse|btn-primary|btn-danger|btn-warning|btn-success/i) !== -1) {
+	                    style = 'style="background-color: #fff !important; color: #000;"';
+	                } else {
+	                	style = 'style="background-color: #000 !important; color: #fff;"';
+	                }
+                	if (_self.$elementFilestyle.find('.quant-files-filestyle').length == 0) {
+                		_self.$elementFilestyle.find('label').append(' <span '+style+' class="quant-files-filestyle badge">'+files.length+'</span>');
+                	} else if (files.length == 0) {
+                		_self.$elementFilestyle.find('.quant-files-filestyle').remove();
+                	} else {
+                		_self.$elementFilestyle.find('.quant-files-filestyle').html(files.length);
+                	}
+                } else {
+                	_self.$elementFilestyle.find('.quant-files-filestyle').remove();
                 }
             });
 
@@ -230,7 +358,10 @@
         'buttonText': 'Choose file',
         'input': true,
         'icon': true,
-        'classButton': 'btn',
+        'buttonBefore': false,
+        'disabled': false,
+
+        'classButton': 'btn btn-default',
         'classInput': 'input-large',
         'classIcon': 'icon-folder-open'
     };
@@ -241,18 +372,23 @@
     };
 
     // Data attributes register
-    $('.filestyle').each(function () {
-        var $this = $(this),
-            options = {
-                'buttonText': $this.attr('data-buttonText'),
-                'input': $this.attr('data-input') === 'false' ? false : true,
-                'icon': $this.attr('data-icon') === 'false' ? false : true,
-                'classButton': $this.attr('data-classButton'),
-                'classInput': $this.attr('data-classInput'),
-                'classIcon': $this.attr('data-classIcon')
-            };
-
-        $this.filestyle(options);
+    $(function() {
+        $('.filestyle').each(function () {
+            var $this = $(this),
+                options = {
+                    
+                    'input': $this.attr('data-input') === 'false' ? false : true,
+                    'icon': $this.attr('data-icon') === 'false' ? false : true,
+                    'buttonBefore': $this.attr('data-buttonBefore') === 'true' ? true : false,
+                    'disabled': $this.attr('data-disabled') === 'true' ? true : false,
+                    
+                    'buttonText': $this.attr('data-buttonText'),
+                    'classButton': $this.attr('data-classButton'),
+                    'classInput': $this.attr('data-classInput'),
+                    'classIcon': $this.attr('data-classIcon')
+                };
+    
+            $this.filestyle(options);
+        });
     });
-
 })(window.jQuery);

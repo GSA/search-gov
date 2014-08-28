@@ -27,11 +27,12 @@ module MobileHelper
     logo_url = affiliate.mobile_logo.url rescue nil if affiliate.mobile_logo_file_name.present?
 
     if logo_url.present?
+      logo_alt = affiliate.logo_alt_text || affiliate.display_name
       logo_class = LogoAlignment::get_logo_alignment_class affiliate
       css_classes << ' ' << logo_class if logo_class
 
       html = link_to_if(affiliate.website.present?,
-                        content_tag(:h1, image_tag(logo_url, alt: affiliate.display_name)),
+                        content_tag(:h1, image_tag(logo_url, alt: logo_alt)),
                         affiliate.website, tabindex: 1)
     else
       html = link_to_if(affiliate.website.present?,
