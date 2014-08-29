@@ -9,13 +9,14 @@
 
   = render_flash_message
 
-  %p How would you like to see your analytics data in the Admin Center?
+  %fieldset
+    %legend How would you like to see your analytics data in the Admin Center?
 
-  = form.label :sees_filtered_totals, value: true, class: 'radio' do
-    = form.radio_button :sees_filtered_totals, true
-    Filtered (processed via rules to include likely humans only)
-  = form.label :sees_filtered_totals, value: false, class: 'radio' do
-    = form.radio_button :sees_filtered_totals, false
-    Unfiltered (includes both bots + humans)
+    = form.label :sees_filtered_totals, value: true, class: 'radio' do
+      = form.radio_button :sees_filtered_totals, true
+      Filtered (processed via rules to include likely humans only)
+    = form.label :sees_filtered_totals, value: false, class: 'radio' do
+      = form.radio_button :sees_filtered_totals, false
+      Unfiltered (includes both bots + humans)
 
   %p Clicking 'Save Settings' changes the selected option.

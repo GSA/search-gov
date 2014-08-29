@@ -19,10 +19,11 @@
     = f.label :name, 'Site Handle', class: 'control-label'
     = f.text_field :name, required: true, class: 'required controls', maxlength: Affiliate::MAX_NAME_LENGTH, pattern: '[a-z0-9._-]+', placeholder: 'Visible to searchers in the URL', title: 'Handles can have lowercase letters, numbers, periods, hyphens, and underscores only.'
   .control-group
-    = f.label :locale, 'Site Language', class: 'control-label'
-    = f.label :locale, value: 'en', class: 'radio' do
-      = f.radio_button :locale, 'en', class: 'required controls'
-      English
-    = f.label :locale, value: 'es', class: 'radio' do
-      = f.radio_button :locale, 'es', class: 'required controls'
-      Spanish
+    %fieldset
+      %legend Site Language
+      = f.label :locale, value: 'en', class: 'radio' do
+        = f.radio_button :locale, 'en', class: 'required controls'
+        English
+      = f.label :locale, value: 'es', class: 'radio' do
+        = f.radio_button :locale, 'es', class: 'required controls'
+        Spanish
