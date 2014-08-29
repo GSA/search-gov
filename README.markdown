@@ -53,12 +53,20 @@ To upgrade via homebrew:
 To change the defaults, like number of shards, edit this file:
 
     $ sudo vi /usr/local/Cellar/elasticsearch/1.3.2/config/elasticsearch.yml
+    
+For the time being, add this to the end of the file to re-enable MVEL scripting:
+    
+    script.disable_dynamic: false
 
 You will need to re-install any plugins:
 
     $ plugin -i elasticsearch/marvel/latest
     $ plugin -i polyfractal/elasticsearch-inquisitor
     $ plugin -i mobz/elasticsearch-head
+    
+If you install Marvel, you probably don't want to monitor your local cluster, so add this to your `elastisearch.yml` file:
+    
+    marvel.agent.enabled: false
 
 and restart it:
 
