@@ -1,5 +1,4 @@
 class Sites::IndexedDocumentsController < Sites::SetupSiteController
-  include TextHelper
   before_filter :setup_site
   before_filter :setup_indexed_document, only: [:destroy]
 
@@ -17,7 +16,7 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
     if @indexed_document.save
       Resque.enqueue_with_priority(:high, IndexedDocumentFetcher, @indexed_document.id)
       redirect_to site_supplemental_urls_path(@site),
-                  flash: { success: "You have added #{url_without_protocol(@indexed_document.url)} to this site." }
+                  flash: { success: "You have added #{UrlParser.strip_http_protocols(@indexed_document.url)} to this site." }
     else
       render action: :new
     end
@@ -26,7 +25,7 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
   def destroy
     @indexed_document.destroy if @indexed_document.source_manual?
     redirect_to site_supplemental_urls_path(@site),
-                flash: { success: "You have removed #{url_without_protocol(@indexed_document.url)} from this site." }
+                flash: { success: "You have removed #{UrlParser.strip_http_protocols(@indexed_document.url)} from this site." }
   end
 
   private

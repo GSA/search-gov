@@ -18,4 +18,4 @@
       %tbody
         - @document_collection.url_prefixes.each do |url_prefix|
           %tr
-            %td= url_without_protocol url_prefix.prefix
+            %td= UrlParser.strip_http_protocols url_prefix.prefix

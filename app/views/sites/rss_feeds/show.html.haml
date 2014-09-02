@@ -24,7 +24,7 @@
         - rss_feed_urls_for(@rss_feed).each do |url|
           %tr{ rss_feed_url_class_hash(url) }
             %td
-              = link_to url_without_protocol(url.url), url.url, target: '_blank'
+              = link_to UrlParser.strip_http_protocols(url.url), url.url, target: '_blank'
               = rss_feed_url_last_crawl_status_error url
             %td= rss_feed_url_last_crawled_on url
             %td= rss_feed_url_last_crawl_status url

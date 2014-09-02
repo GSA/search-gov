@@ -9,6 +9,7 @@ Given /^affiliate "([^"]*)" has the following document collections:$/ do |affili
     collection.save!
     collection.navigation.update_attributes!(is_active: hash[:is_navigable] || true,
                                              position: hash[:position] || 100)
+    collection.build_sitelink_generator_names!
   end
 end
 

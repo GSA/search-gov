@@ -81,7 +81,7 @@ class RssFeedUrl < ActiveRecord::Base
     normalized_url = UrlParser.normalize url
     return new(url: url) unless normalized_url
 
-    url_without_protocol = normalized_url.sub(/^https?:\/\//i, '')
+    url_without_protocol = UrlParser.strip_http_protocols normalized_url
     where('(url = ? OR url = ?)',
           "http://#{url_without_protocol}",
           "https://#{url_without_protocol}").first_or_initialize do |u|

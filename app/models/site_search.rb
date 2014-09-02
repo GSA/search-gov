@@ -9,6 +9,10 @@ class SiteSearch < WebSearch
 
   protected
 
+  def sitelink_generator_names
+    @document_collection.sitelink_generator_names
+  end
+
   def domains_scope_options
     included_domains = @document_collection.present? ?
       @document_collection.url_prefixes.collect { |url_prefix| url_prefix.prefix.gsub(%r[(^https?://|/$)], '') } : @affiliate.site_domains.pluck(:domain)

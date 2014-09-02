@@ -2,6 +2,8 @@ class DocumentCollection < ActiveRecord::Base
   include ActiveRecordExtension
   DEPTH_WHEN_BING_FAILS = 3
 
+  serialize :sitelink_generator_names, Array
+
   belongs_to :affiliate
   has_one :navigation, :as => :navigable, :dependent => :destroy
   has_many :url_prefixes, order: 'prefix', dependent: :destroy
@@ -25,6 +27,11 @@ class DocumentCollection < ActiveRecord::Base
 
   def too_deep_for_bing?
     depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
+  end
+
+  def build_sitelink_generator_names!
+    self.sitelink_generator_names = Sitelinks::Generators.matching_generator_names url_prefixes.pluck(:prefix)
+    save!
   end
 
   private

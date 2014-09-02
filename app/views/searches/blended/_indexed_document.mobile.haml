@@ -2,6 +2,6 @@
   %h4.title
     = display_result_extname_prefix(result.url)
     = link_to_indexed_document_title(result, position)
-  %span.url= url_without_protocol result.url
+  %span.url= UrlParser.strip_http_protocols result.url
   %span.description
     = news_description(result)

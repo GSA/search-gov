@@ -24,6 +24,12 @@ module ResultsHelper
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
+  def link_to_sitelink(title, url, position)
+    click_data = { p: position, s: 'DECOR' }
+    click_data.merge!(ma: @missing_affiliate) if @missing_affiliate
+    link_to title, url, data: { click: click_data }
+  end
+
   def link_to_federal_register_document_title(document, position)
     click_data = { p: position, s: 'FRDOC', i: document.id }
     click_data.merge!(ma: @missing_affiliate) if @missing_affiliate

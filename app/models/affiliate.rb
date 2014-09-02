@@ -203,7 +203,7 @@ class Affiliate < ActiveRecord::Base
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :go_live_date, :logo_alt_text]
+                                         :go_live_date, :logo_alt_text, :sitelink_generator_names]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -403,6 +403,11 @@ class Affiliate < ActiveRecord::Base
 
   def user_emails
     users.map(&:to_label).join(',')
+  end
+
+  def update_sitelink_generator_names!
+    self.sitelink_generator_names = Sitelinks::Generators.matching_generator_names site_domains.pluck(:domain)
+    save!
   end
 
   private

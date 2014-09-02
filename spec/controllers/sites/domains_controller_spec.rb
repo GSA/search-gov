@@ -40,6 +40,7 @@ describe Sites::DomainsController do
 
           domain.should_receive(:save).and_return(true)
           site.should_receive(:normalize_site_domains)
+          site.should_receive(:update_sitelink_generator_names!)
 
           post :create,
                site_id: site.id,

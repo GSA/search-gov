@@ -12,7 +12,7 @@ class Sites::DomainsController < Sites::SetupSiteController
   def create
     @domain = @site.site_domains.build domain_params
     if @domain.save
-      @site.normalize_site_domains
+      update_site_after_save
       redirect_to site_domains_path(@site),
                   flash: { success: "You have added #{@domain.domain} to this site." }
     else
@@ -25,6 +25,7 @@ class Sites::DomainsController < Sites::SetupSiteController
 
   def update
     if @domain.update_attributes domain_params
+      update_site_after_save
       redirect_to site_domains_path(@site),
                   flash: { success: "You have updated #{@domain.domain}." }
     else
@@ -34,6 +35,7 @@ class Sites::DomainsController < Sites::SetupSiteController
 
   def destroy
     @domain.destroy
+    @site.update_sitelink_generator_names!
     redirect_to site_domains_path(@site),
                 flash: { success: "You have removed #{@domain.domain} from this site." }
   end
@@ -47,5 +49,10 @@ class Sites::DomainsController < Sites::SetupSiteController
 
   def domain_params
     params.require(:domain).permit(:domain)
+  end
+
+  def update_site_after_save
+    @site.normalize_site_domains
+    @site.update_sitelink_generator_names!
   end
 end

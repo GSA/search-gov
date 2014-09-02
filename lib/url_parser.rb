@@ -17,6 +17,10 @@ module UrlParser
     end
   end
 
+  def self.strip_http_protocols(url)
+    url.sub(%r[^https?://]i, '') if url.present?
+  end
+
   private
 
   def self.normalize_non_query_parts(uri)

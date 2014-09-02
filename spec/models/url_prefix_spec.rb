@@ -19,7 +19,7 @@ describe UrlPrefix do
     it { should allow_value("https://www.foo.gov/").for(:prefix)}
     it { should allow_value("http://foo.gov/subfolder/").for(:prefix)}
 
-    it "should cap prefix length at 255 characters" do
+    it 'should cap prefix length at 255 characters' do
       too_long = "http://www.foo.gov/#{'waytoolong'*25}/"
       url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix=> too_long))
       url_prefix.should_not be_valid
@@ -32,24 +32,9 @@ describe UrlPrefix do
       url_prefix.errors.full_messages.first.should == "Prefix is not a valid URL"
     end
 
-    context "when submitted URL prefix is missing the protocol" do
-      it "should prepend it before validation" do
-        UrlPrefix.create!(@valid_attributes.merge(:prefix=> "www.foo.gov/")).prefix.should == "http://www.foo.gov/"
-      end
+    it "normalizes the prefix" do
+      UrlPrefix.create!(@valid_attributes.merge(:prefix=> '    www.FOO.gov   ')).prefix.should == 'http://www.foo.gov/'
     end
-
-    context "when submitted URL prefix is missing the trailing slash" do
-      it "should append it before validation" do
-        UrlPrefix.create!(@valid_attributes.merge(:prefix=> "http://www.foo.gov")).prefix.should == "http://www.foo.gov/"
-      end
-    end
-
-    context "when submitted URL prefix has leading/trailing whitespace" do
-      it "should trim it" do
-        UrlPrefix.create!(@valid_attributes.merge(:prefix=> "    www.foo.gov   ")).prefix.should == "http://www.foo.gov/"
-      end
-    end
-
   end
 
   describe "#label" do

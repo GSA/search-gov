@@ -3,10 +3,6 @@ module TextHelper
   DEFAULT_TRUNCATED_HTML_LENGTH = 150.freeze
   DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }
 
-  def url_without_protocol(url)
-    url.gsub(%r[^https?://]i, '') if url.present?
-  end
-
   def truncate_url(url, truncation_length = DEFAULT_TRUNCATED_URL_LENGTH)
     Truncator::UrlParser.shorten_url(url, truncation_length) if url.present?
   rescue Exception => e

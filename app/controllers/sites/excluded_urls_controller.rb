@@ -1,5 +1,4 @@
 class Sites::ExcludedUrlsController < Sites::SetupSiteController
-  include TextHelper
   before_filter :setup_site
   before_filter :setup_excluded_url, only: [:destroy]
 
@@ -16,7 +15,7 @@ class Sites::ExcludedUrlsController < Sites::SetupSiteController
     @excluded_url = @site.excluded_urls.build excluded_url_params
     if @excluded_url.save
       redirect_to site_filter_urls_path(@site),
-                  flash: { success: "You have added #{url_without_protocol(@excluded_url.url)} to this site." }
+                  flash: { success: "You have added #{UrlParser.strip_http_protocols(@excluded_url.url)} to this site." }
     else
       render action: :new
     end
@@ -25,7 +24,7 @@ class Sites::ExcludedUrlsController < Sites::SetupSiteController
   def destroy
     @excluded_url.destroy
     redirect_to site_filter_urls_path(@site),
-                flash: { success: "You have removed #{url_without_protocol(@excluded_url.url)} from this site." }
+                flash: { success: "You have removed #{UrlParser.strip_http_protocols(@excluded_url.url)} from this site." }
   end
 
   private

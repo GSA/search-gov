@@ -1,6 +1,4 @@
 class Sites::FlickrProfilesController < Sites::SetupSiteController
-  include TextHelper
-
   def index
     @flickr_profiles = @site.flickr_profiles
   end
@@ -13,7 +11,7 @@ class Sites::FlickrProfilesController < Sites::SetupSiteController
     @flickr_profile = @site.flickr_profiles.build flickr_profile_params
     if @flickr_profile.save
       redirect_to site_flickr_urls_path(@site),
-                  flash: { success: "You have added #{url_without_protocol(@flickr_profile.url)} to this site." }
+                  flash: { success: "You have added #{UrlParser.strip_http_protocols(@flickr_profile.url)} to this site." }
     else
       render action: :new
     end
@@ -25,7 +23,7 @@ class Sites::FlickrProfilesController < Sites::SetupSiteController
 
     @flickr_profile.destroy
     redirect_to site_flickr_urls_path(@site),
-                flash: { success: "You have removed #{url_without_protocol(@flickr_profile.url)} from this site." }
+                flash: { success: "You have removed #{UrlParser.strip_http_protocols(@flickr_profile.url)} from this site." }
   end
 
   private

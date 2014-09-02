@@ -12,9 +12,9 @@
   %tbody
     - @excluded_urls.each do |excluded_url|
       %tr
-        %td= link_to url_without_protocol(excluded_url.url), excluded_url.url, target: '_blank'
+        %td= link_to UrlParser.strip_http_protocols(excluded_url.url), excluded_url.url, target: '_blank'
         %td.actions.actions-1x
           %ul
             %li
-              = button_to_delete_form 'Remove', site_filter_url_path(@site, excluded_url.id), "Are you sure you wish to remove #{url_without_protocol(excluded_url.url)} from this site?"
+              = button_to_delete_form 'Remove', site_filter_url_path(@site, excluded_url.id), "Are you sure you wish to remove #{UrlParser.strip_http_protocols(excluded_url.url)} from this site?"
 = will_paginate @excluded_urls, renderer: BootstrapPagination::Rails

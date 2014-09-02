@@ -18,6 +18,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
   def create
     @document_collection = @site.document_collections.build(collection_params)
     if @document_collection.save
+      @document_collection.build_sitelink_generator_names!
       notify_if_collection_too_deep
       redirect_to site_collections_path(@site),
                   flash: { success: "You have added #{@document_collection.name} to this site." }
@@ -36,6 +37,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
 
   def update
       if @document_collection.destroy_and_update_attributes(collection_params)
+        @document_collection.build_sitelink_generator_names!
         notify_if_collection_too_deep
         redirect_to site_collections_path(@site),
                     flash: { success: "You have updated #{@document_collection.name}." }

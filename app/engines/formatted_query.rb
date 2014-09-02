@@ -10,11 +10,14 @@ class FormattedQuery
     @matching_site_limits = site_limits.split.select { |site| included_domain_contains?(site) }
   end
 
+  def domains_to_process
+    @matching_site_limits.present? ? @matching_site_limits : @included_domains
+  end
+
   protected
 
   def fill_included_domains_to_remainder(remaining_chars)
     domains, delimiter = [], " OR "
-    domains_to_process = @matching_site_limits.present? ? @matching_site_limits : @included_domains
     domains_to_process.each do |site|
       site_str = "site:#{site}"
       break if (remaining_chars -= "#{site_str} #{delimiter}".length) < 0
