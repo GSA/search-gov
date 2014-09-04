@@ -35,6 +35,6 @@ class OasisSearch < SearchEngine
   private
 
   def connection_instance
-    @@api_connection ||= SearchApiConnection.new('oasis_api', "http://#{Oasis.host}", CACHE_DURATION_IN_SECONDS)
+    @@api_connection ||= SearchApiConnection.new('oasis_api', "http://#{Oasis.host}", 0)
   end
 end
