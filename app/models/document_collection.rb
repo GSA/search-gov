@@ -29,7 +29,7 @@ class DocumentCollection < ActiveRecord::Base
     depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
   end
 
-  def build_sitelink_generator_names!
+  def assign_sitelink_generator_names!
     self.sitelink_generator_names = Sitelinks::Generators.matching_generator_names url_prefixes.pluck(:prefix)
     save!
   end

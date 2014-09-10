@@ -27,6 +27,7 @@ class Sites::SitesController < Sites::BaseController
     @site.users << current_user
     if @site.save
       @site.push_staged_changes
+      @site.assign_sitelink_generator_names!
       Emailer.new_affiliate_site(@site, current_user).deliver
       SiteAutodiscoverer.new(@site).run
       redirect_to site_path(@site), flash: { success: "You have added '#{@site.display_name}' as a site." }

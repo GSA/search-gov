@@ -1003,4 +1003,18 @@ describe Affiliate do
       affiliate.header_image_url.should == header_image_url
     end
   end
+
+  describe '#assign_sitelink_generator_names!' do
+    it 'assigns sitelink generator names' do
+      sitelink_generator_names = %w(Sitelinks::Generators::FakeGenerator).freeze
+      Sitelinks::Generators.should_receive(:matching_generator_names).
+        with(%w(sec.gov)).
+        and_return(sitelink_generator_names)
+
+      affiliate = affiliates(:power_affiliate)
+      affiliate.site_domains.create!(domain: 'sec.gov')
+      affiliate.assign_sitelink_generator_names!
+      affiliate.sitelink_generator_names.should eq(sitelink_generator_names)
+    end
+  end
 end

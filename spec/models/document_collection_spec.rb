@@ -46,15 +46,15 @@ describe DocumentCollection do
     end
   end
 
-  describe '#build_sitelink_generator_names!' do
-    it 'builds sitelink generator names' do
+  describe '#assign_sitelink_generator_names!' do
+    it 'assigns sitelink generator names' do
       sitelink_generator_names = %w(Sitelinks::Generators::FakeGenerator).freeze
       Sitelinks::Generators.should_receive(:matching_generator_names).
         with(%w(http://www.agency.gov/)).
         and_return(sitelink_generator_names)
 
       dc = DocumentCollection.create!(@valid_attributes)
-      dc.build_sitelink_generator_names!
+      dc.assign_sitelink_generator_names!
       dc.sitelink_generator_names.should eq(sitelink_generator_names)
     end
   end

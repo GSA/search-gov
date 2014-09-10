@@ -31,7 +31,7 @@ Given /^the following( legacy)? Affiliates exist:$/ do |is_legacy, table|
     end if hash[:youtube_handles].present?
 
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
-    affiliate.update_sitelink_generator_names!
+    affiliate.assign_sitelink_generator_names!
   end
   ElasticNewsItem.recreate_index
 end

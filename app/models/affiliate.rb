@@ -405,7 +405,7 @@ class Affiliate < ActiveRecord::Base
     users.map(&:to_label).join(',')
   end
 
-  def update_sitelink_generator_names!
+  def assign_sitelink_generator_names!
     self.sitelink_generator_names = Sitelinks::Generators.matching_generator_names site_domains.pluck(:domain)
     save!
   end

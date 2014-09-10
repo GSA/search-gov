@@ -35,7 +35,7 @@ class Sites::DomainsController < Sites::SetupSiteController
 
   def destroy
     @domain.destroy
-    @site.update_sitelink_generator_names!
+    @site.assign_sitelink_generator_names!
     redirect_to site_domains_path(@site),
                 flash: { success: "You have removed #{@domain.domain} from this site." }
   end
@@ -53,6 +53,6 @@ class Sites::DomainsController < Sites::SetupSiteController
 
   def update_site_after_save
     @site.normalize_site_domains
-    @site.update_sitelink_generator_names!
+    @site.assign_sitelink_generator_names!
   end
 end

@@ -39,7 +39,7 @@ describe Sites::DocumentCollectionsController do
                    'url_prefixes_attributes' => { '0' =>{ 'prefix' => 'some.agency.gov/news' } }).
               and_return(document_collection)
           document_collection.should_receive(:save).and_return(true)
-          document_collection.should_receive(:build_sitelink_generator_names!)
+          document_collection.should_receive(:assign_sitelink_generator_names!)
           document_collection.should_receive(:too_deep_for_bing?).and_return(true)
 
           email = double(Mail::Message)

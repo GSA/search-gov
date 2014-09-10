@@ -118,6 +118,7 @@ describe Sites::SitesController do
               'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
           site.should_receive(:save).and_return(true)
           site.should_receive(:push_staged_changes)
+          site.should_receive(:assign_sitelink_generator_names!)
 
           autodiscoverer = mock(SiteAutodiscoverer)
           SiteAutodiscoverer.should_receive(:new).with(site).and_return(autodiscoverer)
