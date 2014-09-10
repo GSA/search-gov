@@ -28,12 +28,16 @@ describe Sitelinks::Generators::SecEdgar do
     end
 
     it 'returns generated urls when the input url matches' do
-      url = 'http://www.sec.gov/Archives/edgar/data/831001/000119312507038505/dex2101.htm'
+      urls = %w(http://sec.gov/Archives/edgar/data/831001/000119312507038505/dex2101.htm
+                http://www.sec.gov/Archives/edgar/data/831001/000119312507038505/dex2101.htm)
       expected_urls = [{ title: 'Most Recent Filings for this Company',
                          url: 'http://www.sec.gov/cgi-bin/browse-edgar?CIK=831001&Find=Search&action=getcompany&owner=exclude' },
                        { title: 'Full Filing',
                          url: 'http://www.sec.gov/Archives/edgar/data/831001/0001193125-07-038505-index.htm' }]
-      described_class.generate(url).should eq(expected_urls)
+
+      urls.each do |url|
+        described_class.generate(url).should eq(expected_urls)
+      end
     end
   end
 end

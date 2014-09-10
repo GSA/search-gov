@@ -35,7 +35,7 @@ module Sitelinks
       include Sitelinks::Generators
 
       self.url_prefix = 'www.sec.gov/Archives/edgar/data/'.freeze
-      MATCHING_URL_REGEX = %r[^(?!.*-index\.htm$)https?://www\.sec\.gov/Archives/edgar/data/\d+/\d+\/.+$]i
+      MATCHING_URL_REGEX = %r[^(?!.*-index\.htm$)https?://(www\.)?sec\.gov/Archives/edgar/data/\d+/\d+\/.+$]i
 
       DEFAULT_BROWSE_EDGAR_PARAMS = { Find: 'Search',
                                       action: 'getcompany',
