@@ -37,8 +37,6 @@ module Sitelinks
         cik_part_2 = path_as_array[5].slice(10, 2)
         cik_part_3 = path_as_array[5].slice(12..-1)
 
-        # url = "http://www.sec.gov/Archives/edgar/data/#{cik}/#{cik_part_1}-#{cik_part_2}-#{cik_part_3}-index.htm"
-
         full_filing_path = "#{cik}/#{cik_part_1}-#{cik_part_2}-#{cik_part_3}-index.htm"
         url = "http://www.sec.gov/Archives/edgar/data/#{full_filing_path}"
 
@@ -47,33 +45,3 @@ module Sitelinks
     end
   end
 end
-
-# original script from SEC
-# <script type="text/javascript">
-# var numResults = document.getElementsByTagName("h4").length;
-# for (i=0; i < numResults; i++) {
-#     var resultNum = "result-" + (i + 1);
-# var searchDiv = document.getElementById(resultNum);
-# var links = searchDiv.getElementsByTagName("a");
-# var docLinks = links[0].getAttribute("href");
-# var linkArray = docLinks.split("/");
-#     if (linkArray[3] === "Archives") {
-# var cikHref = "http://www.sec.gov/cgi-bin/browse-edgar?CIK=" + linkArray[6] + "&Find=Search&owner=exclude&action=getcompany";
-# var cikSlice1 = linkArray[7].slice(0,10);
-# var cikSlice2 = linkArray[7].slice(10,12);
-# var cikSlice3 = linkArray[7].slice(12);
-# var fullFilingHref = "http://www.sec.gov/Archives/edgar/data/" + linkArray[6] + "/" + cikSlice1 + "-" + cikSlice2 + "-" + cikSlice3 + "-index.htm";
-# var edgarLinksText = "[<a href='" + fullFilingHref +"'>Full Filing</a> | <a href='" + cikHref + "'>Most Recent Filings for this Company</a>]";
-# var cikLinks = document.createElement("p");
-# var cikLinksText = document.createTextNode("");
-# cikLinks.appendChild(cikLinksText);
-# cikLinks.innerHTML = edgarLinksText;
-# cikLinks.className = "description";
-# cikLinks.setAttribute("style", "margin-top: 3px;");
-# searchDiv.appendChild(cikLinks);
-#     }
-#     else {
-#         continue;
-#     }
-# }
-# </script>
