@@ -45,6 +45,6 @@
 
     = javascript_include_tag 'searches_mobile'
 
-    = render partial: 'searches/usasearch_serp_analytics'
+    = render partial: 'searches/usasearch_serp_analytics' if @affiliate.dap_enabled?
     = render partial: 'shared/analytics'
     = render partial: '/shared/tracking'
