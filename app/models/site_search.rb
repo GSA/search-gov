@@ -10,7 +10,7 @@ class SiteSearch < WebSearch
   protected
 
   def sitelink_generator_names
-    @document_collection.sitelink_generator_names
+    @document_collection.sitelink_generator_names if @document_collection
   end
 
   def domains_scope_options

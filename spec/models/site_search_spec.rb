@@ -44,15 +44,13 @@ describe SiteSearch do
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
-      end
-
-      it 'should use the affiliate site domains for included domains instead' do
         BingFormattedQuery.should_receive(:new).with('gov',
                                                      {:included_domains => ["usa.gov"],
                                                       :excluded_domains => []}).and_return bing_formatted_query
-        SiteSearch.new(:query => 'gov', :affiliate => affiliate)
       end
-    end
 
+      subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }
+      its(:sitelink_generator_names) { should be_nil }
+    end
   end
 end
