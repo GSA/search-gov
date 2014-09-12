@@ -1,11 +1,14 @@
 require 'timeout'
 
 module UrlStatusCodeFetcher
+  HEADERS = { :'user-agent' => 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))' }.freeze
+
   def self.fetch(urls, is_throttled = false, &block)
+    return {} if urls.blank?
     urls = [urls] if urls.is_a?(String)
 
     options = load_options is_throttled
-    easy_options = { method: :head }.reverse_merge options[:easy_options]
+    easy_options = { method: :head, headers: HEADERS }.reverse_merge options[:easy_options]
     responses = {}
     fetch_timeout = urls.count * options[:easy_options][:timeout]
 
