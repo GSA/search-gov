@@ -40,6 +40,8 @@ updateStatus = ->
   return if currentCount == suggestionCount
 
   $ttStatus.data 'suggestionCount', suggestionCount
+  return if currentCount == 0
+
   message = buildStatusMessage suggestionCount
   $ttStatus.html message
 
