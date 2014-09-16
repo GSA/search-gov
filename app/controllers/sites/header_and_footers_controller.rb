@@ -31,7 +31,7 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
 
     if @site.update_attributes(simple_mode_site_params)
       redirect_to edit_site_header_and_footer_path(@site),
-                  flash: { success: 'You have updated your header and footer links.' }
+                  flash: { success: 'You have updated your header and footer information.' }
     else
       build_header_links
       build_footer_links
@@ -83,9 +83,9 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   end
 
   def simple_mode_site_params
-    params.require(:site).permit(
-        { managed_footer_links_attributes: [:position, :title, :url] },
-        { managed_header_links_attributes: [:position, :title, :url] })
+    params.require(:site).permit(:header_tagline,
+                                 { managed_footer_links_attributes: [:position, :title, :url] },
+                                 { managed_header_links_attributes: [:position, :title, :url] })
   end
 
   def advanced_mode_site_params

@@ -17,6 +17,10 @@ $navigation-border-color: if($navigation-background-lightness > 50%, darken($nav
 #header-wrapper
   background-color: $header-background-color
 
+#header-tagline-wrapper
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :header_tagline_background_color) %>
+  color: <%= render_affiliate_css_property_value(@css_hash, :header_tagline_color) %>
+
 $button-background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 $button-background-lightness: lightness($button-background-color)
 

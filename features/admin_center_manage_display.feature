@@ -360,10 +360,11 @@ Feature: Manage Display
 
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
-      | Header Link Title 0 | News                      |
-      | Header Link URL 0   | news.agency.gov           |
-      | Footer Link Title 0 | Contact                   |
-      | Footer Link URL 0   | mailto:contact@agency.gov |
+      | Header Tagline      | Office website of the Awesome Agency |
+      | Header Link Title 0 | News                                 |
+      | Header Link URL 0   | news.agency.gov                      |
+      | Footer Link Title 0 | Contact                              |
+      | Footer Link URL 0   | mailto:contact@agency.gov            |
     When I follow "Add Another Header Link"
     Then I should be able to access 2 header link rows
     When I fill in the following:
@@ -375,7 +376,8 @@ Feature: Manage Display
       | Footer Link Title 1 | Terms of Service |
       | Footer Link URL 1   | tos.agency.gov   |
     And I submit the form by pressing "Save"
-    Then I should see "You have updated your header and footer links"
+    Then I should see "You have updated your header and footer information"
+    And the "Header Tagline" field should contain "Office website of the Awesome Agency"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
     And the "Header Link Title 1" field should contain "Blog"
@@ -387,12 +389,14 @@ Feature: Manage Display
 
     When I am on agency.gov's search page
     Then I should see a link to "News" with url for "http://news.agency.gov"
-    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
-    Then I should see a link to "Contact" with url for "mailto:contact@agency.gov"
-    Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+    And I should see a link to "Blog" with url for "http://blog.agency.gov"
+    And I should see a link to "Contact" with url for "mailto:contact@agency.gov"
+    And I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's mobile search page
-    And I press "Browse site"
+    Then I should see "Office website of the Awesome Agency"
+
+    When I press "Browse site"
     Then I should find "News" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
     Then I should see a link to "Blog" with url for "http://blog.agency.gov"

@@ -60,6 +60,16 @@
       { 'target-css-properties' => 'color',
         'target-selector' => '#preview-font-colors .serp-nav-item-link' }
 
+    = css.label :header_tagline_background_color, 'Header Tagline Background Color'
+    = color_picker_component css, :header_tagline_background_color, @site.css_property_hash,
+      { 'target-css-properties' => 'background-color',
+        'target-selector' => '#preview-font-colors .serp-header-tagline-wrapper' }
+
+    = css.label :header_tagline_color, 'Header Tagline Color'
+    = color_picker_component css, :header_tagline_color, @site.css_property_hash,
+      { 'target-css-properties' => 'color',
+        'target-selector' => '#preview-font-colors .serp-header-tagline' }
+
     = css.label :title_link_color, 'Link Color'
     = color_picker_component css, :title_link_color, @site.css_property_hash,
       { 'target-css-properties' => 'color',

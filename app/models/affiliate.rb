@@ -160,6 +160,9 @@ class Affiliate < ActiveRecord::Base
     description_text_color: '#000000',
     footer_background_color: '#DFDFDF',
     header_background_color: '#FFFFFF',
+    header_tagline_background_color: '#000000',
+    header_tagline_color: '#FFFFFF',
+    header_tagline_font_family: FontFamily::DEFAULT,
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',
     left_tab_text_color: '#9E3030',
@@ -203,7 +206,8 @@ class Affiliate < ActiveRecord::Base
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :go_live_date, :logo_alt_text, :sitelink_generator_names]
+                                         :go_live_date, :logo_alt_text, :sitelink_generator_names,
+                                         :header_tagline]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]

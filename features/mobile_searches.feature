@@ -343,7 +343,7 @@ Feature: Searches using mobile device
     When I follow "FAQs" within the SERP navigation
     And I press "Search"
     Then I should see "FAQs" within the SERP active navigation
-    And I should see at least "10" web search results
+    And I should see at least "5" web search results
 
     When I follow "Articles" within the SERP navigation
     Then I should see "Articles" within the SERP active navigation
