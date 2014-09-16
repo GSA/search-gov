@@ -23,6 +23,8 @@
     class: typeahead_query_class(search.affiliate),
     spellcheck: false,
     type: 'search'
+  - if search.affiliate.is_sayt_enabled?
+    %span#tt-status{ role: 'status', aria: { live: 'polite'}, data: { suggestion_count: 0 }}
   #clear-button{ tabindex: -1 }
     %span= t(:clear)
   = submit_tag t(:search), id: 'search-button'
