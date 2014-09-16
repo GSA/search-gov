@@ -19,7 +19,7 @@ showOrHideClearButton = ->
     $('#search-bar').removeClass 'has-query-term'
 
 buildStatusMessage = (count) ->
-  if $('html[lang=es]').length > 1
+  if $('html[lang=es]').length > 0
     if count > 1
       message = "Hay #{count} sugerencias disponibles. Use la tecla con la flecha ascendente o descendente para seleccionar la que desee. Presione \"enter\" para hacer la búsqueda de su selección."
     else
