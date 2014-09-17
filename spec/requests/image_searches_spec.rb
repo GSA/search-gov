@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe '/search/images' do
-  fixtures :affiliates
+  fixtures :affiliates, :instagram_profiles
 
   context 'when site is not bing image search enabled' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -15,6 +15,7 @@ describe '/search/images' do
     end
 
     before do
+      affiliate.instagram_profiles << instagram_profiles(:whitehouse)
       oasis_search = mock(OasisSearch)
       OasisSearch.stub(:new).and_return oasis_search
       oasis_search.stub(:execute_query).and_return search_engine_response

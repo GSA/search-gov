@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe ImageSearchesController do
+  fixtures :affiliates, :instagram_profiles
+  let(:affiliate) { affiliates(:usagov_affiliate) }
+
   describe "#index" do
     context "when searching on legacy affiliate and the query is present" do
       let(:affiliate) { mock_model(Affiliate, name: 'agency100', display_name: 'NPS Site', force_mobile_format?: false) }
@@ -130,7 +133,8 @@ describe ImageSearchesController do
 
     context "when searching in mobile mode" do
       before do
-        get :index, :query => 'obama', :m => "true"
+        affiliate.instagram_profiles << instagram_profiles(:whitehouse)
+        get :index, :query => 'obama', :m => "true", :affiliate => 'usagov'
       end
 
       it "should show the mobile version of the page" do
@@ -140,7 +144,8 @@ describe ImageSearchesController do
 
     context "when searching in desktop mode" do
       before do
-        get :index, :query => 'obama'
+        affiliate.instagram_profiles << instagram_profiles(:whitehouse)
+        get :index, :query => 'obama', :affiliate => 'usagov'
       end
 
       it "assigns @page_title" do
