@@ -45,8 +45,8 @@ describe GoogleWebSearch do
     end
   end
 
-  context 'when affiliate-specific google CX is set' do
-    let(:web_search) { GoogleWebSearch.new(query: "customcx", google_cx: '1234567890.abc') }
+  context 'when affiliate-specific google CX and API key are set' do
+    let(:web_search) { GoogleWebSearch.new(query: "customcx", google_cx: '1234567890.abc', google_key: 'some_key') }
 
     it "should use that for the Google API call" do
       response = web_search.execute_query

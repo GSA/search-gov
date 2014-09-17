@@ -10,7 +10,7 @@ class WebSearch < Search
     formatted_query_instance = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
     @matching_site_limits = formatted_query_instance.matching_site_limits
     @formatted_query = formatted_query_instance.query
-    search_engine_parameters = options.merge(query: @formatted_query, offset: offset, per_page: @per_page).merge(google_cx_override)
+    search_engine_parameters = options.merge(query: @formatted_query, offset: offset, per_page: @per_page).merge(google_credentials_override)
     @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)
   end
 
@@ -138,12 +138,12 @@ class WebSearch < Search
     :web
   end
 
-  def google_cx_override
-    google_cx_overridden? ? { google_cx: @affiliate.google_cx } : {}
+  def google_credentials_override
+    google_credentials_overridden? ? { google_cx: @affiliate.google_cx, google_key: @affiliate.google_key } : {}
   end
 
-  def google_cx_overridden?
-    @affiliate.search_engine == 'Google' && @affiliate.google_cx.present?
+  def google_credentials_overridden?
+    @affiliate.search_engine == 'Google' && @affiliate.google_cx.present? && @affiliate.google_key.present?
   end
 
 end

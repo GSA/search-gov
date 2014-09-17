@@ -2,8 +2,8 @@
 class GoogleSearch < SearchEngine
   API_ENDPOINT = '/customsearch/v1'
   API_HOST = 'https://www.googleapis.com'
-  API_KEY = 'AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ'
-  SEARCH_CX = '005675969675701682971:tsue0ko9g0k'
+  API_KEY = '***REMOVED***'
+  SEARCH_CX = '005675969675701682971:usi2bmqvnp8'
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
@@ -20,6 +20,7 @@ class GoogleSearch < SearchEngine
     end
     @start = @offset + 1
     @google_cx = options[:google_cx] || SEARCH_CX
+    @google_key = options[:google_key] || API_KEY
   end
 
   protected
@@ -27,7 +28,7 @@ class GoogleSearch < SearchEngine
   def params
     params_hash = {
       alt: :json,
-      key: API_KEY,
+      key: @google_key,
       cx: @google_cx,
       safe: filter_level,
       q: query,

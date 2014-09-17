@@ -165,8 +165,8 @@ RSpec.configure do |config|
 
     common_web_search_params = {
       alt: 'json',
-      cx: '005675969675701682971:tsue0ko9g0k',
-      key: 'AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ',
+      cx: '005675969675701682971:usi2bmqvnp8',
+      key: '***REMOVED***',
       lr: 'lang_en',
       quotaUser: 'USASearch',
       safe: 'medium'
@@ -200,7 +200,7 @@ RSpec.configure do |config|
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
 
     google_customcx = Rails.root.join('spec/fixtures/json/google/web_search/custom_cx.json').read
-    web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc')
+    web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc', key: 'some_key')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_customcx] }
 
     test = Faraday.new do |builder|

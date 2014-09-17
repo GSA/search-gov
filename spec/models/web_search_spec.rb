@@ -41,14 +41,15 @@ describe WebSearch do
       search.matching_site_limits.should == %w(foo.com/subdir1 foo.com/subdir2)
     end
 
-    context 'when affiliate has custom google CX set and google search enabled' do
+    context 'when affiliate has custom google CX+Key set and google search enabled' do
       before do
         @affiliate.search_engine = "Google"
         @affiliate.google_cx = "1234567890.abc"
+        @affiliate.google_key = "some_key"
       end
 
       it "should use that for the search" do
-        GoogleWebSearch.should_receive(:new).with(hash_including(google_cx: "1234567890.abc"))
+        GoogleWebSearch.should_receive(:new).with(hash_including(google_cx: "1234567890.abc", google_key: 'some_key'))
         WebSearch.new(@valid_options)
       end
     end
