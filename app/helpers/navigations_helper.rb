@@ -1,6 +1,6 @@
 module NavigationsHelper
   def configurable_navigations(site)
-    if site.force_mobile_format? && site.flickr_profiles.blank? && site.instagram_profiles.blank?
+    if site.force_mobile_format? && site.has_no_social_image_feeds?
       site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
     else
       site.navigations

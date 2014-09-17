@@ -11,7 +11,7 @@ module MobileNavigationsHelper
 
   def site_has_navigable_image_vertical?(site)
     if site.force_mobile_format?
-      site.flickr_profiles.present? || site.is_bing_image_search_enabled?
+      site.has_social_image_feeds? || site.is_bing_image_search_enabled?
     else
       true
     end

@@ -362,6 +362,10 @@ class Affiliate < ActiveRecord::Base
     flickr_profiles.empty? && instagram_profiles.empty?
   end
 
+  def has_social_image_feeds?
+    !has_no_social_image_feeds?
+  end
+
   def searchable_twitter_ids
     affiliate_twitter_settings.includes(:twitter_profile).map do |ats|
       twitter_ids = [ats.twitter_profile.twitter_id]
