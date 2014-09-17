@@ -22,7 +22,7 @@ class ImageSearch
     @modules = []
     @queried_at_seconds = Time.now.to_i
     @query = @options[:query]
-    @uses_cr = @options[:cr] if @options[:cr] == 'true'
+    @uses_cr = @options[:cr].eql?('true') || @affiliate.has_no_social_image_feeds?
     @search_instance = initialize_search_instance(@uses_cr)
   end
 

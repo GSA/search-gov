@@ -736,6 +736,18 @@ describe Affiliate do
     end
   end
 
+  describe "#has_no_social_image_feeds?" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    context 'when affiliate has no flickr/instagram profiles' do
+      before do
+        affiliate.flickr_profiles.delete_all
+        affiliate.instagram_profiles.delete_all
+      end
+      specify { affiliate.should have_no_social_image_feeds }
+    end
+  end
+
   describe "#css_property_hash" do
     context "when theme is custom" do
       let(:css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
