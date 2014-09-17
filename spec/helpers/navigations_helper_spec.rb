@@ -41,6 +41,37 @@ describe NavigationsHelper do
     end
   end
 
+  describe '#configurable_navigations' do
+    let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
+
+    let(:image_nav) do
+      mock_model(Navigation,
+                 :navigable => image_search_label,
+                 :navigable_type => image_search_label.class.name)
+    end
+
+    let(:affiliate) { mock_model(Affiliate,
+                                 default_search_label: 'Everything',
+                                 name: 'myaff',
+                                 navigations: [image_nav]) }
+
+    context 'when site has navigable image vertical' do
+      before do
+        helper.should_receive(:site_has_navigable_image_vertical?).with(affiliate).and_return(true)
+      end
+
+      specify { helper.configurable_navigations(affiliate).should eq([image_nav]) }
+    end
+
+    context 'when site does not have navigable image vertical' do
+      before do
+        helper.should_receive(:site_has_navigable_image_vertical?).with(affiliate).and_return(false)
+      end
+
+      specify { helper.configurable_navigations(affiliate).should be_empty }
+    end
+  end
+
   describe '#render_navigations' do
     let(:affiliate) { mock_model(Affiliate, :name => 'myaff', :default_search_label => 'Everything') }
 

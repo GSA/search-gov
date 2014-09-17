@@ -1,9 +1,9 @@
 module NavigationsHelper
   def configurable_navigations(site)
-    if site.force_mobile_format? && site.has_no_social_image_feeds?
-      site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
-    else
+    if site_has_navigable_image_vertical?(site)
       site.navigations
+    else
+      site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
     end
   end
 
