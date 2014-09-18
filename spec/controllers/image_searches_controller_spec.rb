@@ -64,7 +64,7 @@ describe ImageSearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
-        LegacyImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => nil)).and_return(image_search)
+        LegacyImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => '')).and_return(image_search)
         image_search.should_receive(:run)
         get :index, :affiliate => "agency100"
       end
