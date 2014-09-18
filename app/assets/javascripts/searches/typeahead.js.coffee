@@ -40,7 +40,7 @@ updateStatus = ->
   return if currentCount == suggestionCount
 
   $ttStatus.data 'suggestionCount', suggestionCount
-  return if currentCount == 0
+  return if suggestionCount == 0
 
   message = buildStatusMessage suggestionCount
   $ttStatus.html message
@@ -59,7 +59,7 @@ whenOpened = (e) ->
   whenFocusOnQuery e
   updateStatusWithTimeout()
 
-whenClosed = (e) ->
+whenClosed = ->
   $('#tt-status').data 'suggestionCount', 0
 
 $(document).on 'focus keydown', queryFieldSelector, whenFocusOnQuery
