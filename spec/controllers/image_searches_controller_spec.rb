@@ -152,5 +152,15 @@ describe ImageSearchesController do
         assigns[:page_title].should_not be_blank
       end
     end
+
+    context 'when query param is nil/missing' do
+      before do
+        get :index, :affiliate => 'usagov'
+      end
+
+      it 'should treat it as an empty string' do
+        response.should be_success
+      end
+    end
   end
 end

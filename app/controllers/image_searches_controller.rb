@@ -31,7 +31,7 @@ class ImageSearchesController < ApplicationController
         affiliate: @affiliate,
         cr: filtered_params[:cr],
         page: filtered_params[:page],
-        query: sanitize_query(filtered_params[:query])
+        query: sanitize_query(filtered_params[:query]) || ''
     }
   end
 
