@@ -165,8 +165,8 @@ RSpec.configure do |config|
 
     common_web_search_params = {
       alt: 'json',
-      cx: '005675969675701682971:tsue0ko9g0k',
-      key: 'AIzaSyBCGurjhAbQlF1rlJmxCa5Re8rCAlZjtiQ',
+      cx: '005675969675701682971:usi2bmqvnp8',
+      key: '***REMOVED***',
       lr: 'lang_en',
       quotaUser: 'USASearch',
       safe: 'medium'
