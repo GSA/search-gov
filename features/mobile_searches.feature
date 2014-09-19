@@ -379,7 +379,7 @@ Feature: Searches using mobile device
     When I follow "Apps" within the SERP navigation
     Then I should see "Apps" within the SERP active navigation
     And I should see "Everything FAQs Apps More Articles Blog Media RSS News" within the SERP navigation
-    And I should see at least "10" web search results
+    And I should see at least "5" web search results
 
     When I follow "News" within the SERP navigation
     Then I should see "News" within the SERP active navigation

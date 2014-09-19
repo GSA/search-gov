@@ -48,3 +48,7 @@ end
 Then /^I should see a left aligned SERP logo$/ do
   page.should have_selector '.logo.logo-left img'
 end
+
+Then /^I should see a left aligned menu button$/ do
+  page.should have_selector '.menu-button-left'
+end

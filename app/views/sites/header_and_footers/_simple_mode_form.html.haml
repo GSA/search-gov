@@ -2,6 +2,11 @@
   = f.label :header_tagline, 'Header Tagline'
   = f.text_field :header_tagline, maxlength: 60
 
+%fieldset
+  = f.fields_for :css_property_hash do |hash|
+    = hash.label :menu_button_alignment, 'Menu Button Alignment'
+    = hash.select :menu_button_alignment, options_for_select(%w(right left), selected: @site.css_property_hash[:menu_button_alignment])
+
 %h3 Header Links
 %table#header-links.table
   %thead

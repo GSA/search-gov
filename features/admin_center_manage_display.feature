@@ -365,6 +365,7 @@ Feature: Manage Display
       | Header Link URL 0   | news.agency.gov                      |
       | Footer Link Title 0 | Contact                              |
       | Footer Link URL 0   | mailto:contact@agency.gov            |
+    And I select "left" from "Menu Button Alignment"
     When I follow "Add Another Header Link"
     Then I should be able to access 2 header link rows
     When I fill in the following:
@@ -378,6 +379,7 @@ Feature: Manage Display
     And I submit the form by pressing "Save"
     Then I should see "You have updated your header and footer information"
     And the "Header Tagline" field should contain "Office website of the Awesome Agency"
+    And the "Menu Button Alignment" field should contain "left"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
     And the "Header Link Title 1" field should contain "Blog"
@@ -395,6 +397,7 @@ Feature: Manage Display
 
     When I am on agency.gov's mobile search page
     Then I should see "Office website of the Awesome Agency"
+    And I should see a left aligned menu button
 
     When I press "Browse site"
     Then I should find "News" in the main menu

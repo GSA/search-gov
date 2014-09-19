@@ -8,6 +8,12 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 0;
 
+  .menu-button-left & {
+    float: left;
+    margin-right: 0;
+    margin-left: @navbar-padding-horizontal;
+  }
+
   @media (min-width: @screen-sm-min) {
     display: none;
 
@@ -21,6 +27,11 @@
     position: absolute;
     right: 12px;
     top: 0;
+
+    .menu-button-left & {
+      right: auto;
+      left: 12px;
+    }
   }
 
   > span {
@@ -48,6 +59,7 @@
         height: auto;
         line-height: 1;
         margin-left: 28px;
+        min-height: 1.4em;
         position: static;
         vertical-align: top;
         width: auto;
@@ -99,17 +111,23 @@
     top: 0;
     right: 0;
   }
-}
 
-.show-menu #main-menu-wrapper {
-  @media (min-width: @screen-sm-min) {
-    .transition(background 0.35s ease-in-out);
-    background: rgba(0,0,0,0.5);
-    bottom: 0;
-    filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000)";
+  .menu-button-left & {
+    right: auto;
     left: 0;
-    zoom: 1;
-    z-index: (@zindex-main-menu - 10);
+  }
+
+  .show-menu & {
+    @media (min-width: @screen-sm-min) {
+      .transition(background 0.35s ease-in-out);
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000)";
+      left: 0;
+      right: 0;
+      zoom: 1;
+      z-index: @zindex-main-menu;
+    }
   }
 }
 
@@ -140,6 +158,12 @@
 
     &.collapse {
       visibility: hidden;
+    }
+
+    .menu-button-left & {
+      .transition(left 0.35s ease-in-out, visibility 0.35s ease-in-out;);
+      right: auto;
+      left: -200px;
     }
   }
 
@@ -191,9 +215,39 @@
   }
 }
 
-.show-menu .menu {
-  @media (min-width: @screen-sm-min) {
-    right: 0px;
+.show-menu {
+  .menu {
+    @media (min-width: @screen-sm-min) {
+      right: 0px;
+    }
+  }
+
+  &.menu-button-left .menu {
+    @media (min-width: @screen-sm-min) {
+      right: auto;
+      left: 0px;
+    }
+  }
+
+  #main-menu-backdrop {
+    @media (min-width: @screen-sm-min) {
+      .opacity(0);
+      background-color: #000;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin-right: 200px;
+      z-index: @zindex-main-menu;
+    }
+  }
+
+  &.menu-button-left #main-menu-backdrop {
+    @media (min-width: @screen-sm-min) {
+      margin-left: 200px;
+      margin-right: auto;
+    }
   }
 }
 
@@ -219,14 +273,5 @@
         display: block;
       }
     }
-  }
-}
-
-.show-menu #main-menu-backdrop {
-  @media (min-width: @screen-sm-min) {
-    .modal-backdrop();
-    .opacity(0);
-    margin-right: 200px;
-    z-index: (@zindex-main-menu - 20);
   }
 }

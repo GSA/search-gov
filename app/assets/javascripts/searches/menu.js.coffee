@@ -5,7 +5,7 @@ toggleMenu = ->
   if menuShown()
     $(document).on 'click.menuWrapper',
       '.show-menu #main-menu-backdrop',
-      clickOnMenuWrapper
+      clickOnBackdrop
   else
     $(document).off 'click.menuWrapper'
 
@@ -30,6 +30,6 @@ focusMenuButton = ->
 
 $(document).on 'focus.menuButton', '#menu-button', focusMenuButton
 
-clickOnMenuWrapper = (e) ->
+clickOnBackdrop = (e) ->
   e.stopPropagation()
   hideMenu()

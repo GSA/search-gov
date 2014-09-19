@@ -69,9 +69,12 @@ module MobileHelper
     end
   end
 
-  def body_class_hash(affiliate)
-    page_background_color = site_css_color_property(affiliate.css_property_hash, :page_background_color)
-    page_background_color =~ /^#FFF(FFF)?$/i ? { class: 'assign-default-bg' } : {}
+  def body_class_hash(site)
+    css_classes = []
+    page_background_color = site_css_color_property(site.css_property_hash, :page_background_color)
+    css_classes << 'assign-default-bg' if page_background_color =~ /^#FFF(FFF)?$/i
+    css_classes << 'menu-button-left' if site.css_property_hash[:menu_button_alignment].eql?('left')
+    css_classes.present? ? { class: css_classes.join(' ') } : {}
   end
 
   def matching_site_limits(search, search_params)

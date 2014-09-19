@@ -83,9 +83,13 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   end
 
   def simple_mode_site_params
-    params.require(:site).permit(:header_tagline,
-                                 { managed_footer_links_attributes: [:position, :title, :url] },
-                                 { managed_header_links_attributes: [:position, :title, :url] })
+    simple_mode_params = params.require(:site).
+      permit({ css_property_hash: %i(menu_button_alignment) },
+             :header_tagline,
+             { managed_footer_links_attributes: %i(position title url) },
+             { managed_header_links_attributes: %i(position title url) })
+    simple_mode_params[:css_property_hash] &&= @site.css_property_hash.merge(simple_mode_params[:css_property_hash])
+    simple_mode_params
   end
 
   def advanced_mode_site_params
