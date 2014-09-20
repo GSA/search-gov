@@ -21,9 +21,9 @@ showOrHideClearButton = ->
 buildStatusMessage = (count) ->
   if $('html[lang=es]').length > 0
     if count > 1
-      message = "Hay #{count} sugerencias disponibles. Use la tecla con la flecha ascendente o descendente para seleccionar la que desee. Presione \"enter\" para hacer la búsqueda de su selección."
+      message = "#{count} sugerencias disponibles. Use la tecla con la flecha ascendente o descendente para seleccionar una de ellas. Presione \"enter\" para hacer la búsqueda de su selección."
     else
-      message = 'Hay 1 sugerencia disponible. Use la flecha ascendente o descendente para seleccionarla. Presione "enter" para hacer la búsqueda de la selección sugerida.'
+      message = "#{count} sugerencia disponible. Use la tecla con la flecha ascendente o descendente para seleccionarla. Presione \"enter\" para hacer la búsqueda de la selección sugerida."
   else
     if count > 1
       message = "#{count} suggestions are available. Use the up and down arrow keys to select to one. Press enter to search on your selected suggestion."
