@@ -530,8 +530,8 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | DOC                 | true                                        |
+      | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | DOC                 | true                                        | noaa.gov |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |

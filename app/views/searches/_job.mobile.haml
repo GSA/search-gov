@@ -1,4 +1,4 @@
-.content-block-item.result.collapsible-item{ id: "job-#{position}", class: 'job', onclick: 'void(0)' }
+.content-block-item.result.collapsible-item{ id: "job-#{position}", class: 'job' }
   %h4.title= link_to_result_title(job.id, job.position_title, job_url(job), position, 'JOBS')
   - unless affiliate.has_organization_code? && affiliate.agency.organization_code.length==4
     .job-organization= job.organization_name
