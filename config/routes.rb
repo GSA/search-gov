@@ -166,6 +166,7 @@ UsasearchRails3::Application.routes.draw do
     resources :rss_feed_urls do
       member do
         get 'destroy_news_items'
+        get 'news_items'
       end
       as_routes end
   end

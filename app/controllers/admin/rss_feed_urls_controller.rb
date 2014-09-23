@@ -3,10 +3,12 @@ class Admin::RssFeedUrlsController < Admin::AdminController
     config.label = 'Rss Feed Urls'
     config.list.sorting = { 'rss_feed_urls.url' => 'asc' }
     config.actions = %i(list show search export)
-    config.columns = [:id, :url, :language, :last_crawl_status, :news_items, :last_crawled_at, :rss_feeds]
+    config.columns = [:id, :url, :language, :last_crawl_status, :last_crawled_at, :rss_feeds]
     config.columns[:rss_feeds].associated_limit = 0
-    config.export.columns.exclude :news_items
     config.show.columns = [:id, :language, :last_crawl_status, :last_crawled_at, :created_at, :updated_at]
+    config.export.columns.exclude :rss_feeds
+    config.action_links.add 'news_items', label: 'news items',
+                            type: :member, page: true
     config.action_links.add 'destroy_news_items', label: 'Delete news items with 404',
                             type: :member, position: :after
     config.action_links.add 'destroy_news_items', label: 'Delete all news items',
@@ -27,5 +29,9 @@ class Admin::RssFeedUrlsController < Admin::AdminController
       rss_feed_url.enqueue_destroy_news_items_with_404(:high)
       render text: "You have submitted a request to delete #{rss_feed_url.url} news items with status code 404."
     end
+  end
+
+  def news_items
+    redirect_to admin_news_items_path(rss_feed_url_id: params[:id])
   end
 end
