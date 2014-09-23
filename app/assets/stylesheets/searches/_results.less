@@ -22,15 +22,10 @@
     > a, > span {
       display: block;
       padding: 10px 12px 12px;
-      text-decoration: none;
 
       @media (min-width: @screen-desktop) {
         padding: 8px 12px;
       }
-    }
-
-    a, a:focus, a:hover {
-      text-decoration: none;
     }
   }
 
@@ -39,6 +34,10 @@
 
     > a, > span {
       color: @text-color;
+    }
+
+    a, a:focus, a:hover {
+      text-decoration: none;
     }
 
     .digital-gov-search {
