@@ -34,6 +34,10 @@ class DocumentCollection < ActiveRecord::Base
     save!
   end
 
+  def sitelink_generator_names_as_str
+    sitelink_generator_names.join(',')
+  end
+
   private
 
   def url_prefixes_cannot_be_blank
