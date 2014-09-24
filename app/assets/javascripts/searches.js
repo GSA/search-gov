@@ -5,6 +5,4 @@
 //= require jquery_extensions/jquery.tools.overlay.min
 //= require sayt/internal
 //= require legacy/application
-//= require jquery_extensions/jquery.infinitescroll.min
-//= require searches/infinitescroll
 //= require searches/google_analytics
