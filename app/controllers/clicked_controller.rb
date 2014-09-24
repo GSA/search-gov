@@ -1,7 +1,7 @@
 class ClickedController < ActionController::Metal
   def index
-    unless params['u'].blank?
-      url = CGI.unescape(params['u']).gsub(' ', '+')
+    url = CGI.unescape(params['u']).gsub(' ', '+') rescue nil
+    if url.present?
       query = params['q']
       position = params['p']
       queried_at = Time.at(params['t'].to_i)
