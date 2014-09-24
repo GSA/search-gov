@@ -3,6 +3,7 @@ class ImageSearchesController < ApplicationController
 
   layout 'searches'
 
+  before_filter :set_affiliate_options
   before_filter :set_search_options
   before_filter :force_request_format
   ssl_allowed :index
@@ -24,9 +25,6 @@ class ImageSearchesController < ApplicationController
   private
 
   def set_search_options
-    @affiliate = Affiliate.find_by_name(filtered_params[:affiliate].to_s) unless filtered_params[:affiliate].blank?
-    set_affiliate_based_on_locale_param
-    set_locale_based_on_affiliate_locale
     @search_options = {
         affiliate: @affiliate,
         cr: filtered_params[:cr],

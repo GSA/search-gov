@@ -11,7 +11,7 @@ describe SearchesController do
     render_views
     context "when searching in English" do
       before do
-        get :index, :query => "social security", :page => 4
+        get :index, query: 'social security', page: 4, affiliate: 'usagov'
         @search = assigns[:search]
         @page_title = assigns[:page_title]
       end
@@ -50,25 +50,21 @@ describe SearchesController do
                       hash_including(affiliate: @affiliate.name, query: 'social security')) }
     end
 
-    context "when searching in Spanish" do
-      before do
-        get :index, :query => "social security", :page => 4, :locale => 'es'
-      end
-
-      it "should assign the GobiernoUSA affiliate" do
-        assigns[:affiliate].should == affiliates(:gobiernousa_affiliate)
+    context 'when searching on a Spanish site' do
+      it 'assigns locale to :es' do
+        I18n.should_receive(:locale=).with(:es)
+        get :index, query: 'social security', page: 4, affiliate: 'gobiernousa'
       end
     end
   end
 
   context "when searching with parameters" do
-    it "should not blow up if affiliate is not a string" do
-      get :index, query: 'gov', affiliate: { 'foo' => 'bar' }
-      assigns[:affiliate].should == @affiliate
-    end
+    before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
+
+    it { should redirect_to 'http://www.usa.gov/page-not-found' }
 
     it "should not blow up if query is not a string" do
-      get :index, query: { 'foo' => 'bar' }
+      get :index, query: { 'foo' => 'bar' }, affiliate: 'usagov'
       assigns[:search].query.should == %q({"foo"=&gt;"bar"})
     end
   end
@@ -158,7 +154,7 @@ describe SearchesController do
 
     context "when searching normally" do
       before do
-        get :index, :query => 'weather', :format => "json"
+        get :index, :query => 'weather', :format => "json", affiliate: 'usagov'
         @search = assigns[:search]
       end
 
@@ -171,7 +167,7 @@ describe SearchesController do
 
     context "when some error is returned" do
       before do
-        get :index, :query => 'a' * 1001, :format => "json"
+        get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
         @search = assigns[:search]
       end
 
@@ -197,17 +193,9 @@ describe SearchesController do
   context "when handling an invalid affiliate search request" do
     before do
       get :index, :affiliate=>"doesnotexist.gov", :query => "weather"
-      @search = assigns[:search]
     end
 
-    it "should assign the USA.gov affiliate" do
-      assigns[:affiliate].should == affiliates(:usagov_affiliate)
-    end
-
-    it "should render the template" do
-      response.should render_template 'index'
-      response.should render_template 'layouts/searches'
-    end
+    it { should redirect_to 'http://www.usa.gov/page-not-found' }
   end
 
   context "when handling any affiliate search request with a JSON format" do
@@ -247,7 +235,7 @@ describe SearchesController do
   context "highlighting" do
     context "when a client requests results without highlighting" do
       before do
-        get :index, :query => "obama", :hl => "false"
+        get :index, :query => "obama", :hl => "false", affiliate: 'usagov'
       end
 
       it "should set the highlighting option to false" do
@@ -258,7 +246,7 @@ describe SearchesController do
 
     context "when a client requests result with highlighting" do
       before do
-        get :index, :query => "obama", :hl => "true"
+        get :index, :query => "obama", :hl => "true", affiliate: 'usagov'
       end
 
       it "should set the highlighting option to true" do
@@ -269,7 +257,7 @@ describe SearchesController do
 
     context "when a client does not specify highlighting" do
       before do
-        get :index, :query => "obama"
+        get :index, :query => "obama", affiliate: 'usagov'
       end
 
       it "should set the highlighting option to true" do
@@ -304,7 +292,7 @@ describe SearchesController do
   describe "#advanced" do
     context "when viewing advanced search page" do
       before do
-        get :advanced
+        get :advanced, affiliate: 'usagov'
       end
 
       it { should assign_to(:page_title).with_kind_of(String) }
@@ -424,14 +412,7 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       end
 
-      it "should assign the USA.gov affiliate" do
-        assigns[:affiliate].should == affiliates(:usagov_affiliate)
-      end
-
-      it "should render the news template" do
-        response.should render_template 'news'
-        response.should render_template 'layouts/searches'
-      end
+      it { should redirect_to 'http://www.usa.gov/page-not-found' }
     end
 
     context "when the query is blank and total is > 0" do

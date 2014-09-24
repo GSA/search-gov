@@ -6,19 +6,20 @@ describe ImageSearchesController do
 
   describe "#index" do
     context "when searching on legacy affiliate and the query is present" do
-      let(:affiliate) { mock_model(Affiliate, name: 'agency100', display_name: 'NPS Site', force_mobile_format?: false) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:query) { '<script>thunder & lightning</script>' }
       let(:image_search) { mock(LegacyImageSearch, :query => 'thunder & lightning', :modules => []) }
 
       before do
-        Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
+        affiliate.stub(:force_mobile_format?).and_return(false)
+        Affiliate.should_receive(:find_by_name).with('nps.gov').and_return(affiliate)
         LegacyImageSearch.should_receive(:new).with(hash_including(affiliate: affiliate, query: 'thunder & lightning')).and_return(image_search)
         image_search.should_receive(:run)
       end
 
       context "for a live search" do
         before do
-          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>'
+          get :index, :affiliate => 'nps.gov', :query => '<script>thunder & lightning</script>'
         end
 
         it { should assign_to(:search).with(image_search) }
@@ -36,7 +37,7 @@ describe ImageSearchesController do
 
       context "for a staged search" do
         before do
-          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>', :staged => "true"
+          get :index, :affiliate => 'nps.gov', :query => '<script>thunder & lightning</script>', :staged => "true"
         end
 
         it { should assign_to(:page_title).with("thunder & lightning - NPS Site Search Results") }
@@ -46,7 +47,7 @@ describe ImageSearchesController do
         let(:search_results_json) { 'search results json' }
         before do
           image_search.should_receive(:to_json).and_return(search_results_json)
-          get :index, :affiliate => "agency100", :query => '<script>thunder & lightning</script>', :format => :json
+          get :index, :affiliate => 'nps.gov', :query => '<script>thunder & lightning</script>', :format => :json
         end
 
         it { should respond_with_content_type :json }
@@ -73,20 +74,9 @@ describe ImageSearchesController do
     end
 
     context 'when params[:affiliate] is not a string' do
-      let(:usagov_affiliate) { mock_model(Affiliate, name: 'usagov', display_name: 'USA.gov', force_mobile_format?: false) }
-      let(:image_search) { mock(LegacyImageSearch, :query => 'gov', :modules => []) }
+      before { get :index, affiliate: { 'foo' => 'bar' }, query: 'gov' }
 
-      before do
-        Affiliate.should_receive(:find_by_name).with('usagov').and_return(usagov_affiliate)
-        LegacyImageSearch.should_receive(:new).with(
-            hash_including(affiliate: usagov_affiliate,
-                           query: 'gov')).
-            and_return(image_search)
-        image_search.should_receive(:run)
-        get :index, affiliate: { 'foo' => 'bar' }, query: 'gov'
-      end
-
-      it { should respond_with :success }
+      it { should redirect_to 'http://www.usa.gov/page-not-found' }
     end
 
     context "when searching on legacy affiliate via the API" do
@@ -99,7 +89,7 @@ describe ImageSearchesController do
 
       context "when searching normally" do
         before do
-          get :index, :query => '<script>weather</script>', :format => "json"
+          get :index, :query => '<script>weather</script>', :format => "json", affiliate: 'usagov'
           @search = assigns[:search]
         end
 
@@ -120,7 +110,7 @@ describe ImageSearchesController do
 
       context "when some error is returned" do
         before do
-          get :index, :query => 'a' * 1001, :format => "json"
+          get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
           @search = assigns[:search]
         end
 

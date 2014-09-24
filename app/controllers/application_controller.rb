@@ -12,11 +12,23 @@ class ApplicationController < ActionController::Base
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
   protected
-  def set_affiliate_based_on_locale_param
+
+  def set_affiliate_options
+    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
+
     unless @affiliate
-      @missing_affiliate = true
-      @affiliate = params[:locale] == 'es' ? Affiliate.find_by_name(Affiliate::GOBIERNO_AFFILIATE_NAME) : Affiliate.find_by_name(Affiliate::USAGOV_AFFILIATE_NAME)
+      redirect_to('http://www.usa.gov/page-not-found') and return
     end
+
+    set_locale_based_on_affiliate_locale
+    if @affiliate && params['staged']
+      @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
+      @affiliate.header = @affiliate.staged_header
+      @affiliate.footer = @affiliate.staged_footer
+      @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
+    end
+
+    @affiliate.use_strictui if params[:strictui]
   end
 
   def set_locale_based_on_affiliate_locale

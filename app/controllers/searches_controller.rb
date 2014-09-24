@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   include MobileFriendlyController
   has_no_mobile_fu_for :advanced
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token, :set_default_locale
 
   before_filter :handle_old_advanced_form, :only => [:index]
   before_filter :set_affiliate_options
@@ -84,20 +84,6 @@ class SearchesController < ApplicationController
 
   def handle_old_advanced_form
     redirect_to advanced_search_path(params.merge(:controller => "searches", :action => "advanced")) if params["form"] == "advanced-firstgov"
-  end
-
-  def set_affiliate_options
-    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
-    set_affiliate_based_on_locale_param
-    set_locale_based_on_affiliate_locale
-    if @affiliate && params['staged']
-      @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
-      @affiliate.header = @affiliate.staged_header
-      @affiliate.footer = @affiliate.staged_footer
-      @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
-    end
-
-    @affiliate.use_strictui if params[:strictui]
   end
 
   def set_web_search_options
