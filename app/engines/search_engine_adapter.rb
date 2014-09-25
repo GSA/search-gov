@@ -29,6 +29,9 @@ class SearchEngineAdapter
                                             query: { term: @search_engine.query }) do
       @search_engine_response = @search_engine.execute_query
     end
+  rescue SearchEngine::SearchError => error
+    Rails.logger.warn "Error getting image search results from #{@search_engine.class} endpoint: #{error}"
+    false
   end
 
   def results

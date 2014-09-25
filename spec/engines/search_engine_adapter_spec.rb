@@ -23,4 +23,17 @@ describe SearchEngineAdapter do
       end
     end
   end
+
+  describe "#run" do
+    context 'when Bing errors out' do
+      let(:search_engine_adapter) { SearchEngineAdapter.new(BingImageSearch, { affiliate: affiliate, query: "test", page: 1, per_page: 10 }) }
+      before do
+        ActiveSupport::Notifications.stub(:instrument).and_raise SearchEngine::SearchError
+      end
+
+      it 'should return false' do
+        search_engine_adapter.run.should be_false
+      end
+    end
+  end
 end
