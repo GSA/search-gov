@@ -1,3 +1,21 @@
+#menu-button-wrapper {
+  .header-item();
+  float: right;
+
+  .menu-button-left & {
+    float: left;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    float: none;
+
+    .menu-button-left & {
+      float: none;
+    }
+  }
+
+}
+
 #menu-button {
   position: relative;
   float: right;
@@ -12,6 +30,10 @@
     float: left;
     margin-right: 0;
     margin-left: @navbar-padding-horizontal;
+
+    @media (min-width: @screen-md-min) {
+      margin-left: 0;
+    }
   }
 
   @media (min-width: @screen-sm-min) {
@@ -24,11 +46,13 @@
 
   @media (min-width: @screen-md-min) {
     float: none;
+    margin-right: 0;
     position: absolute;
     right: 12px;
     top: 0;
 
     .menu-button-left & {
+      margin-left: 0;
       right: auto;
       left: 12px;
     }
@@ -60,7 +84,9 @@
         line-height: 1;
         margin-left: 28px;
         min-height: 1.4em;
+        min-width: 80px;
         position: static;
+        text-align: left;
         vertical-align: top;
         width: auto;
       }
@@ -102,11 +128,8 @@
 }
 
 #main-menu-wrapper {
-  padding-bottom: @content-block-margin;
-
   @media (min-width: @screen-sm-min) {
     height: 100%;
-    padding-bottom: 0;
     position: fixed;
     top: 0;
     right: 0;
@@ -132,8 +155,6 @@
 }
 
 .menu {
-  border-style: solid;
-  border-width: 1px;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   .clearfix();

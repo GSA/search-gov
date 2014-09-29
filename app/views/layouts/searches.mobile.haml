@@ -26,14 +26,15 @@
     #header-wrapper
       - navigations = renderable_navigations @search
       - has_menu = has_menu_items? @search, navigations
-      #header
-        = render partial: 'searches/nav_button', locals: { search: @search } if has_menu
-        = mobile_header @search.affiliate
-        #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
-        = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
-        #navs-filters-facets.navbar-default
-          = navigations_and_related_sites(@search, @search_params, navigations)
-          = search_filters @search, @search_params
+      #menu-button-wrapper= render partial: 'searches/nav_button', locals: { search: @search } if has_menu
+      #header-logo-wrapper= mobile_header @search.affiliate
+    #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
+
+    #search-bar-nav-wrapper
+      = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
+      #navs-filters-facets.navbar-default
+        = navigations_and_related_sites(@search, @search_params, navigations)
+        = search_filters @search, @search_params
 
     = render partial: 'searches/news_search_options_modal',
       locals: { search: @search, search_params: @search_params } if @search.is_a?(NewsSearch)

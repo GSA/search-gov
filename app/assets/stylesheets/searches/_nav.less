@@ -6,12 +6,12 @@
 
   @media (min-width: @screen-sm) {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: @content-block-margin;
   }
 }
 
+
 #search-nav, #search-filters {
-  border-bottom: 1px solid @block-border-color;
   transition: none;
 
   @media (min-width: @screen-sm) {
@@ -50,6 +50,7 @@
     .dropdown-menu {
       margin-left: -1px;
       @media (min-width: @grid-float-breakpoint) {
+        margin-right: -1px;
         max-width: 250px;
       }
 
@@ -123,7 +124,6 @@
 }
 
 #search-filters > .navbar-nav {
-  border-style: solid;
   border-width: 0 1px 1px;
 
   > li {
@@ -138,7 +138,7 @@
   background-color: transparent;
 }
 
-#header .navbar-default .navbar-nav > .open.collapsed {
+#search-bar-nav-wrapper .navbar-default .navbar-nav > .open.collapsed {
   .dropdown-menu {
     @media (min-width: @grid-float-breakpoint) {
       display: none;

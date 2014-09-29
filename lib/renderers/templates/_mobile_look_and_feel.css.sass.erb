@@ -1,18 +1,22 @@
-body, h1, h2, h3, h4, h5
-  font-family: <%= render_affiliate_css_property_value(@css_hash, :font_family) %>
-
-body
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
-
 $header-background-color: <%= render_affiliate_css_property_value(@css_hash, :header_background_color) %>
 $header-background-lightness: lightness($header-background-color)
-$search-bar-background-color: if($header-background-lightness > 95%, #efefef, #fff)
-$search-bar-border-color: if($header-background-lightness > 50%, darken($header-background-color, 20%), $header-background-color)
-$tt-hint-color: if($header-background-lightness > 95%, #505050, #595959)
+
+$footer-background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
+$footer-background-lightness: lightness($footer-background-color)
+$footer-border-color: if($footer-background-lightness > 50%, darken($footer-background-color, 20%), lighten($footer-background-color, 30%))
+
+$page-background-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
+$page-background-lightness: lightness($page-background-color)
 
 $navigation-background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
 $navigation-background-lightness: lightness($navigation-background-color)
 $navigation-border-color: if($navigation-background-lightness > 50%, darken($navigation-background-color, 20%), lighten($navigation-background-color, 30%))
+
+body, h1, h2, h3, h4, h5
+  font-family: <%= render_affiliate_css_property_value(@css_hash, :font_family) %>
+
+body
+  background-color: $page-background-color
 
 #header-wrapper
   background-color: $header-background-color
@@ -24,26 +28,9 @@ $navigation-border-color: if($navigation-background-lightness > 50%, darken($nav
 $button-background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 $button-background-lightness: lightness($button-background-color)
 
-#search-bar
-  background-color: $search-bar-background-color
-  border-color: $search-bar-border-color
-  .tt-hint
-    color: $tt-hint-color
-
-@if ($header-background-lightness == 100%) and ($navigation-background-lightness == 100%)
-  #search-nav, #search-filters
-    > .navbar-nav
-      border-width: 0 1px
-      border-left-color: transparent
-      border-right-color: transparent
-  #search-filters > .navbar-nav
-    border-top: 1px solid $search-bar-border-color
-@else
+@if ($header-background-lightness == 100%) and ($page-background-lightness == 100%)
   #header-wrapper
-    border-bottom: 1px solid $search-bar-border-color
-  #search-nav, #search-filters
-    > .nav
-      border-color: $search-bar-border-color
+    border-bottom: 1px solid #e0e0e0
 
 #advanced-search-button, #news-search-options-form-search-button
   background-color: $button-background-color
@@ -54,31 +41,19 @@ $button-background-lightness: lightness($button-background-color)
   #advanced-search-button
     color: black
 
-#footer-wrapper
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :footer_background_color) %>
-
 #menu-button
   color: $button-background-color
 
 #menu-button .icon-bar, #search-bar #search-button
   background-color: $button-background-color
 
-#search-nav .navbar-nav > li.active span
-  border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-  color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-
-#main-menu ul > li > span
-  border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-  color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
-
-#navs-filters-facets li > a, #footer-wrapper .navbar-nav > li > a
-  color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
-
-  &:focus, &:hover, &:visited
-    color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
-
 #main-menu
-  border-color: $navigation-border-color
+  background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
+
+  ul > li > span
+    border-left-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+    color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+
   li > a
     color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
 
@@ -88,26 +63,43 @@ $button-background-lightness: lightness($button-background-color)
   li.divider
     background-color: $navigation-border-color
 
+@if ($navigation-background-lightness == 100%) and ($page-background-lightness == 100%)
+  #search-nav, #search-filters
+    > .navbar-nav, .dropdown-menu
+      border-color: #e0e0e0
+@else
+  #search-nav, #search-filters
+    > .navbar-nav, .dropdown-menu
+      border-color: $page-background-color
+
+#search-nav .navbar-nav > li.active span
+  border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+  color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
+
+#navs-filters-facets li > a, #footer-wrapper .navbar-nav > li > a
+  color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
+
+  &:focus, &:hover, &:visited
+    color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
+
 #search-nav, #search-filters
   .dropdown-menu
-    border-color: $search-bar-border-color
+    border-color: $navigation-border-color
 
 #search-nav, #search-filters
   .navbar-nav, .dropdown-menu
     background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
 
-#main-menu
-  background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
-
 #footer-wrapper
+  background-color: $footer-background-color
   li a
-    border-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
+    border-color: $footer-border-color
 
 #search
   color: <%= render_affiliate_css_property_value(@css_hash, :description_text_color) %>
 
   > div, .content-block-item
-    border-color: <%= render_affiliate_css_property_value(@css_hash, :page_background_color) %>
+    border-color: $page-background-color
 
   a, #spelling-suggestion a
     color: <%= render_affiliate_css_property_value(@css_hash, :title_link_color) %>

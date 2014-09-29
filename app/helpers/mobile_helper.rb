@@ -23,7 +23,7 @@ module MobileHelper
   end
 
   def mobile_header(affiliate)
-    css_classes = 'logo'
+    css_classes = 'header-logo'
     logo_url = affiliate.mobile_logo.url rescue nil if affiliate.mobile_logo_file_name.present?
 
     if logo_url.present?

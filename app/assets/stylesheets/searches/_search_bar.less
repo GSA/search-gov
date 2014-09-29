@@ -1,11 +1,19 @@
+#search-bar-nav-wrapper {
+  .clearfix();
+}
+
 #search-bar {
-  background-color: @body-bg;
-  border-color: transparent;
+  background-color: @block-background-color;
+  border-color: @block-border-color;
   border-style: solid;
   border-width: 1px;
   height: 40px;
-  margin: 0 @content-block-margin @content-block-margin;
+  margin: @content-block-margin;
   position: relative;
+
+  &:hover {
+    border-color: darken(@block-border-color, 20%);
+  }
 
   @media (min-width: @screen-sm-min) {
     margin-left: auto;

@@ -46,7 +46,7 @@ Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
 end
 
 Then /^I should see a left aligned SERP logo$/ do
-  page.should have_selector '.logo.logo-left img'
+  page.should have_selector '.header-logo.logo-left img'
 end
 
 Then /^I should see a left aligned menu button$/ do
