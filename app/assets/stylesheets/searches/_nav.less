@@ -1,13 +1,6 @@
 #navs-filters-facets {
   .clearfix();
   .hidden-xs;
-  padding-top: 3px;
-  padding-bottom: 3px;
-
-  @media (min-width: @screen-sm) {
-    padding-top: 0;
-    padding-bottom: @content-block-margin;
-  }
 }
 
 
@@ -21,8 +14,6 @@
   }
 
   .navbar-nav {
-    border-style: solid;
-    border-width: 1px;
     float: none;
     margin-top: 0;
     margin-bottom: 0;
@@ -124,7 +115,8 @@
 }
 
 #search-filters > .navbar-nav {
-  border-width: 0 1px 1px;
+  border-top-style: solid;
+  border-top-width: 1px;
 
   > li {
     color: red;
@@ -138,7 +130,7 @@
   background-color: transparent;
 }
 
-#search-bar-nav-wrapper .navbar-default .navbar-nav > .open.collapsed {
+#navs-filters-facets.navbar-default .navbar-nav > .open.collapsed {
   .dropdown-menu {
     @media (min-width: @grid-float-breakpoint) {
       display: none;

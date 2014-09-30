@@ -63,14 +63,22 @@ $button-background-lightness: lightness($button-background-color)
   li.divider
     background-color: $navigation-border-color
 
+@if ($header-background-lightness == 100%) and ($navigation-background-lightness == 100%)
+  #main-menu, #navs-filters-facets
+    border-top: 1px solid #e0e0e0
+
 @if ($navigation-background-lightness == 100%) and ($page-background-lightness == 100%)
+  #navs-filters-facets
+    border-bottom: 1px solid #e0e0e0
   #search-nav, #search-filters
-    > .navbar-nav, .dropdown-menu
+    .dropdown-menu
       border-color: #e0e0e0
 @else
+  #navs-filters-facets
+    border-color: $page-background-color
   #search-nav, #search-filters
-    > .navbar-nav, .dropdown-menu
-      border-color: $page-background-color
+    .dropdown-menu
+      border-color: $navigation-border-color
 
 #search-nav .navbar-nav > li.active span
   border-top-color: <%= render_affiliate_css_property_value(@css_hash, :left_tab_text_color) %>
@@ -82,13 +90,15 @@ $button-background-lightness: lightness($button-background-color)
   &:focus, &:hover, &:visited
     color: <%= render_affiliate_css_property_value(@css_hash, :navigation_link_color) %>
 
-#search-nav, #search-filters
-  .dropdown-menu
-    border-color: $navigation-border-color
+#navs-filters-facets
+  background-color: $navigation-background-color
 
 #search-nav, #search-filters
   .navbar-nav, .dropdown-menu
-    background-color: <%= render_affiliate_css_property_value(@css_hash, :navigation_background_color) %>
+    background-color: $navigation-background-color
+
+#search-filters > .navbar-nav
+  border-color: $navigation-border-color
 
 #footer-wrapper
   background-color: $footer-background-color

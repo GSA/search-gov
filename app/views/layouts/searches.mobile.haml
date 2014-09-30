@@ -30,11 +30,11 @@
       #header-logo-wrapper= mobile_header @search.affiliate
     #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
 
+    #navs-filters-facets.navbar-default
+      = navigations_and_related_sites(@search, @search_params, navigations)
+      = search_filters @search, @search_params
     #search-bar-nav-wrapper
       = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
-      #navs-filters-facets.navbar-default
-        = navigations_and_related_sites(@search, @search_params, navigations)
-        = search_filters @search, @search_params
 
     = render partial: 'searches/news_search_options_modal',
       locals: { search: @search, search_params: @search_params } if @search.is_a?(NewsSearch)
