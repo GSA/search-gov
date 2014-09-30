@@ -52,7 +52,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.2/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.3/config/elasticsearch.yml
     
 For the time being, add this to the end of the file to re-enable MVEL scripting:
     
