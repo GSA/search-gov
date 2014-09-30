@@ -5,7 +5,7 @@ class Search
   class SearchError < RuntimeError;
   end
 
-  MAX_QUERYTERM_LENGTH = 1000
+  MAX_QUERYTERM_LENGTH = 60
 
   attr_reader :query,
               :affiliate,
