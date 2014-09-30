@@ -105,6 +105,26 @@ describe WebSearch do
 
   describe "#run" do
 
+    context "when searching with a blacklisted query term" do
+      before do
+        @search = WebSearch.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliates(:usagov_affiliate))
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+      it "should have 0 results" do
+        @search.run
+        @search.results.size.should be_zero
+      end
+
+      it "should set error message" do
+        @search.run
+        @search.error_message.should == I18n.translate(:empty_query)
+      end
+    end
+
     context "when searching with really long queries" do
       before do
         @search = WebSearch.new(query: "X" * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliates(:usagov_affiliate))

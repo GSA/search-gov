@@ -1,5 +1,6 @@
 class Search
   include Pageable
+  BLACKLISTED_QUERIES = ["search", "search our site", "*", "1", "what are you looking for?", "¿qué está buscando?"]
 
   class SearchError < RuntimeError;
   end
@@ -36,13 +37,21 @@ class Search
   # This does your search.
   def run
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
-    @error_message = (I18n.translate :empty_query) and return false unless @query.present? or allow_blank_query?
+    @error_message = (I18n.translate :empty_query) and return false unless query_present_or_blank_ok? and !query_blacklisted?
 
     response = search
     handle_response(response)
     populate_additional_results
     log_serp_impressions
     response.nil? or response ? true : response
+  end
+
+  def query_present_or_blank_ok?
+    @query.present? or allow_blank_query?
+  end
+
+  def query_blacklisted?
+    BLACKLISTED_QUERIES.include?(@query.downcase)
   end
 
   def first_page?
