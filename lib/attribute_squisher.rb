@@ -7,10 +7,12 @@ module AttributeSquisher
     before_validation do |record|
       attr_names.each do |attr_name|
         value = record.send :"#{attr_name}"
-        if value.present?
-          record.send :"#{attr_name}=", value.squish
-        elsif assign_nil_on_blank
+        squished_value = value.gsub(/[[:space:]]/, ' ').squish if value
+
+        if squished_value.blank? && assign_nil_on_blank
           record.send :"#{attr_name}=", nil
+        else
+          record.send :"#{attr_name}=", squished_value
         end
       end
     end

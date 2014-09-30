@@ -1,5 +1,5 @@
 class ElasticBlendedQuery < ElasticTextFilteredQuery
-  FRAGMENT_SIZE = 75
+  include ElasticTitleDescriptionBodyHighlightFields
 
   def initialize(options)
     super(options)
@@ -80,14 +80,6 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
           json.child! { json.terms { json.rss_feed_url_id @rss_feed_url_ids } }
         end
       end
-    end
-  end
-
-  def highlight_fields(json)
-    json.fields do
-      json.set! :title, { number_of_fragments: 0 }
-      json.set! :description, { fragment_size: FRAGMENT_SIZE, number_of_fragments: 2 }
-      json.set! :body, { fragment_size: FRAGMENT_SIZE, number_of_fragments: 2 }
     end
   end
 

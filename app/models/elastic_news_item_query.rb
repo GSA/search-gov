@@ -1,4 +1,5 @@
 class ElasticNewsItemQuery < ElasticTextFilteredQuery
+  include ElasticTitleDescriptionBodyHighlightFields
 
   def initialize(options)
     options[:sort] = '_score' if options[:sort_by_relevance]
@@ -9,7 +10,7 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
     @excluded_urls = options[:excluded_urls].try(:collect, &:url)
     @tags = options[:tags]
     @dublin_core_aggs = options.slice(*ElasticNewsItem::DUBLIN_CORE_AGG_NAMES).delete_if { |agg_name, agg_value| agg_value.nil? }
-    self.highlighted_fields = %w(title description)
+    self.highlighted_fields = %w(body description title)
   end
 
   def query(json)
@@ -61,13 +62,6 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
         json.gt @since_ts if @since_ts
         json.lt @until_ts if @until_ts
       end
-    end
-  end
-
-  def highlight_fields(json)
-    json.fields do
-      json.set! :title, { number_of_fragments: 0 }
-      json.set! :description, { fragment_size: 75, number_of_fragments: 2 }
     end
   end
 

@@ -31,22 +31,21 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
+
+    non_attribute_keys = %w(content_url multiplier published_ago published_at thumbnail_url)
+    attributes = hash.except *non_attribute_keys
+
     published_at = hash[:published_at].present? ? hash[:published_at] : nil
     multiplier = (hash[:multiplier] || '1').to_i
-    published_at ||= hash['published_ago'].blank? ? 1.day.ago : multiplier.send(hash['published_ago']).ago
+    published_at ||= hash[:published_ago].blank? ? 1.day.ago : multiplier.send(hash[:published_ago]).ago
+    attributes['published_at'] = published_at
+
     properties = {}
     properties[:media_content] = { url: hash[:content_url] } if hash[:content_url].present?
     properties[:media_thumbnail] = { url: hash[:thumbnail_url] } if hash[:thumbnail_url].present?
+    attributes['properties'] = properties
 
-    rss_feed_url.news_items.create!(link: hash['link'],
-                                    title: hash['title'],
-                                    description: hash['description'],
-                                    guid: hash['guid'],
-                                    published_at: published_at,
-                                    contributor: hash['contributor'],
-                                    publisher: hash['publisher'],
-                                    subject: hash['subject'],
-                                    properties: properties)
+    rss_feed_url.news_items.create! attributes
   end
   ElasticNewsItem.commit
 end
@@ -76,6 +75,7 @@ Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, i
     rss_feed_url.news_items.create!(:link => link,
                                     :title => "#{content_prefix} news item #{index + 1} title for #{feed_name}",
                                     :description => "#{content_prefix} news item #{index + 1} description for #{feed_name}",
+                                    :body => "#{content_prefix} news item #{index + 1} body for #{feed_name}",
                                     :guid => "#{now}_#{index + 1}",
                                     :published_at => published_at - index,
                                     :properties => properties)

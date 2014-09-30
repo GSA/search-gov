@@ -4,6 +4,7 @@ class RssFeedData
   RSS_FEED_OWNER_TYPE = 'Affiliate'.freeze
 
   RSS_ELEMENTS = { item: 'item',
+                   body: 'content:encoded',
                    pubDate: %w(pubDate),
                    link: %w(link),
                    title: 'title',
@@ -26,8 +27,9 @@ class RssFeedData
   FEED_ELEMENTS = { rss: RSS_ELEMENTS, atom: ATOM_ELEMENTS }.freeze
 
   NAMESPACE_URL_HASH = {
-      dc: 'http://purl.org/dc/elements/1.1/',
-      media: 'http://search.yahoo.com/mrss/'
+    content: 'http://purl.org/rss/1.0/modules/content/',
+    dc: 'http://purl.org/dc/elements/1.1/',
+    media: 'http://search.yahoo.com/mrss/'
   }.freeze
 
   def initialize(rss_feed_url, ignore_older_items = true)
@@ -69,6 +71,7 @@ class RssFeedData
   private
 
   def detect_namespaces(doc)
+    @has_content_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:content])
     @has_dc_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:dc])
     @has_media_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:media])
   end
@@ -118,6 +121,7 @@ class RssFeedData
     attributes = extract_elements(item, :guid, :title)
     attributes.merge!(extract_elements(item, :contributor, :publisher, :subject)) if @has_dc_ns
     attributes[:description] = extract_description(item)
+    attributes[:body] = Sanitize.clean extract_element(item, :body)
     attributes[:properties] = extract_properties(item) if @has_media_ns
     attributes
   end
@@ -131,11 +135,11 @@ class RssFeedData
     @feed_elements[:description].each do |description_path|
       break if (raw_description = extract_element_content item, description_path)
     end
-    description = Sanitize.clean(raw_description).squish if raw_description
+    description = Sanitize.clean(raw_description) if raw_description
 
     if description.blank? and @has_media_ns
-      media_description = extract_element_content(item, @feed_elements[:media_description])
-      description = Sanitize.clean(media_description).squish if media_description
+      media_description = extract_element(item, :media_description)
+      description = Sanitize.clean(media_description) if media_description
     end
     description
   end
@@ -153,8 +157,8 @@ class RssFeedData
       media_content_props[:type] = media_content_type if media_content_type
       properties[:media_content] = media_content_props
 
-      media_thumbnail_url = extract_element_content(media_content_node, @feed_elements[:media_thumbnail_url])
-      media_thumbnail_url ||= extract_element_content(item, @feed_elements[:media_thumbnail_url])
+      media_thumbnail_url = extract_element(media_content_node, :media_thumbnail_url)
+      media_thumbnail_url ||= extract_element(item, :media_thumbnail_url)
       properties[:media_thumbnail] = { url: media_thumbnail_url } if media_thumbnail_url
     end
 
@@ -162,18 +166,23 @@ class RssFeedData
   end
 
   def extract_elements(item, *elements)
-    Hash[elements.map { |element| [element, extract_element_content(item, @feed_elements[element])] }]
+    Hash[elements.map { |element| [element, extract_element(item, element)] }]
   end
 
-  def extract_element_content(item, path)
-    node = extract_node(item, path)
+  def extract_element(parent, element)
+    path = @feed_elements[element]
+    extract_element_content parent, path
+  end
+
+  def extract_element_content(parent, path)
+    node = extract_node(parent, path)
     node.present? && (content = node.map(&:inner_text).join(', ').squish).present? ? content : nil
   end
 
-  def extract_node(item, path)
+  def extract_node(parent, path)
     return unless path
     namespace_hash = path_namespace_hash path
-    namespace_hash ? item.xpath(path, namespace_hash) : item.xpath(path)
+    namespace_hash ? parent.xpath(path, namespace_hash) : parent.xpath(path)
   end
 
   def path_namespace_hash(path)

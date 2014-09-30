@@ -82,6 +82,7 @@ class NewsSearch < Search
     if response
       @total = response.total
       @aggregations = response.aggregations
+      ResultsWithBodyAndDescriptionPostProcessor.new(response.results).post_process_results
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1

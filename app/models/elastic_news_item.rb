@@ -13,6 +13,7 @@ class ElasticNewsItem
         rss_feed_url_id: { type: 'integer' },
         title: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
         description: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
+        body: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
         published_at: { type: 'date' },
         popularity: { type: 'integer' },
         link: ElasticSettings::KEYWORD,

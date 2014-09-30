@@ -7,7 +7,7 @@ class ElasticNewsItemData
 
   def to_builder
     Jbuilder.new do |json|
-      json.(@news_item, :id, :rss_feed_url_id, :title, :description, :link, :tags)
+      json.(@news_item, :id, :rss_feed_url_id, :title, :description, :body, :link, :tags)
       ElasticNewsItem::DUBLIN_CORE_AGG_NAMES.each do |dublin_core_field|
         json.set! dublin_core_field, @news_item.send(dublin_core_field).split(',').map(&:squish) if @news_item.send(dublin_core_field).present?
       end

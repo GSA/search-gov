@@ -1,10 +1,12 @@
 class NewsItem < ActiveRecord::Base
   extend AttributeSquisher
 
-  before_validation_squish :title, :description, :contributor, :subject, :publisher, :link, :guid, assign_nil_on_blank: true
+  before_validation_squish :body, :contributor, :description, :guid, :link,
+                           :publisher, :subject, :title,
+                           assign_nil_on_blank: true
   before_validation :downcase_scheme
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
-  validates_presence_of :description, :unless => :is_video?
+  validates_presence_of :description, unless: :description_not_required?
   validates_url :link
   validates_uniqueness_of :guid, scope: :rss_feed_url_id, :case_sensitive => false
   validates_uniqueness_of :link, scope: :rss_feed_url_id, :case_sensitive => false
@@ -64,6 +66,10 @@ class NewsItem < ActiveRecord::Base
   end
 
   private
+
+  def description_not_required?
+    is_video? || body?
+  end
 
   def downcase_scheme
     self.link = link.sub('HTTP','http').sub('httpS','https') if link.present?

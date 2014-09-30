@@ -30,7 +30,7 @@ class BlendedSearch < Search
   def handle_response(response)
     if response
       @total = response.total
-      override_plain_odie_description_with_highlighted_body(response.results)
+      ResultsWithBodyAndDescriptionPostProcessor.new(response.results).post_process_results
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
@@ -41,20 +41,6 @@ class BlendedSearch < Search
   protected
   def populate_additional_results
     @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info]) if first_page?
-  end
-
-  def override_plain_odie_description_with_highlighted_body(results)
-    results.each do |result|
-      result.description = result.body if indexed_document_with_hl_body?(result)
-    end
-  end
-
-  def indexed_document_with_hl_body?(result)
-    result.instance_of?(IndexedDocument) && !(has_highlight?(result.description)) && has_highlight?(result.body)
-  end
-
-  def has_highlight?(field)
-    field =~ /\uE000/
   end
 
   def log_serp_impressions

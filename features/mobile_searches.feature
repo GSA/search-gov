@@ -120,6 +120,13 @@ Feature: Searches using mobile device
     Then the "Enter your search term" field should contain "news item"
     And I should see "no results found"
 
+    When I follow "Clear"
+    And I fill in "Enter your search term" with "body"
+    And I press "Search" within the search box
+    Then I should see at least "10" web search results
+    And I should see "news item 1 body for News-1"
+    And I should see "Powered by DIGITALGOV Search"
+
     When I am on es.agency.gov's "Noticias-1" mobile news search page
     Then I should see "Generado por DIGITALGOV Search"
     And I should see at least "5" web search results

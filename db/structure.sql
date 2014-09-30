@@ -521,6 +521,7 @@ CREATE TABLE `news_items` (
   `subject` text COLLATE utf8_unicode_ci,
   `publisher` text COLLATE utf8_unicode_ci,
   `properties` text COLLATE utf8_unicode_ci,
+  `body` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
   KEY `index_news_items_on_link` (`link`)
@@ -2005,3 +2006,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140826145300');
 INSERT INTO schema_migrations (version) VALUES ('20140829212030');
 
 INSERT INTO schema_migrations (version) VALUES ('20140917173435');
+
+INSERT INTO schema_migrations (version) VALUES ('20140930200457');

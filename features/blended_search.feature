@@ -12,10 +12,10 @@ Feature: Blended Search
       | Press         | http://www.whitehouse.gov/feed/press | true         |
       | Blog          | http://www.whitehouse.gov/feed/blog  | true         |
     And feed "Press" has the following news items:
-      | link                             | title               | guid       | published_ago | multiplier | description                                |
-      | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | day           | 1          | <i> item </i> First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second item         | pressuuid2 | day           | 1          | item Next news item for the feed           |
-      | http://www.whitehouse.gov/news/9 | stale first item    | pressuuid9 | months        | 14         | item first Stale news item                 |
+      | link                             | title               | guid       | published_ago | multiplier | description                                | body                 |
+      | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | day           | 1          | <i> item </i> First news item for the feed | first news item body |
+      | http://www.whitehouse.gov/news/2 | Second item         | pressuuid2 | day           | 1          | item Next news item for the feed           | next news item body  |
+      | http://www.whitehouse.gov/news/9 | stale first item    | pressuuid9 | months        | 14         | item first Stale news item                 | stale news item body |
     And feed "Blog" has the following news items:
       | link                             | title               | guid       | published_ago | description                                |
       | http://www.whitehouse.gov/news/3 | Third item          | uuid3      | week          | item More news items for the feed          |
@@ -34,7 +34,7 @@ Feature: Blended Search
       | screen_name | name          | twitter_id | affiliate  |
       | USASearch   | USASearch.gov | 123456     | bar.gov    |
     And the following Tweets exist:
-      | tweet_text                                                                                    | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
+      | tweet_text                                                                                  | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
       | "We wish you all a blessed and safe holiday item." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
     When I am on bar.gov's mobile search page
     And I fill in "Enter your search term" with "items"
@@ -50,6 +50,12 @@ Feature: Blended Search
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
     And I should see "blessed and safe"
+
+    When I fill in "Enter your search term" with "body"
+    And I press "Search"
+    Then I should see "first news item body"
+    And I should see "next news item body"
+    And I should see "stale news item body"
 
     Scenario: User misspells a query
       Given the following Affiliates exist:

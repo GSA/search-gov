@@ -38,9 +38,14 @@ describe NewsItem do
                                                :description => nil))
     end
 
+    it 'allows blank description when body is present' do
+      NewsItem.create!(@valid_attributes.merge(body: 'content body',
+                                               description: '   '))
+    end
+
     it "should scrub out extra whitespace, tabs, newlines from fields" do
       news_item = NewsItem.create!(
-        @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ Employment Program \n     ",
+        @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ \u00a0 Employment Program \n     ",
                                 description: " \nSome     description \n     ",
                                 link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
                                 guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n",

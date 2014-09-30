@@ -1,2 +1,2 @@
-class ElasticNewsItemResults < ElasticTitleDescriptionResults
+class ElasticNewsItemResults < ElasticTitleDescriptionBodyResults
 end

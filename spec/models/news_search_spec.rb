@@ -337,7 +337,9 @@ describe NewsSearch do
       it 'should assign the correct start and end record' do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
-        response = mock(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: [mock('result1'), mock('result2')])
+        results = [mock_model(NewsItem, title: 'result1', description?: true),
+                   mock_model(NewsItem, title: 'result2', description?: true)]
+        response = mock(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: results)
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,
@@ -350,6 +352,64 @@ describe NewsSearch do
         search.run
         search.startrecord.should == 16
         search.endrecord.should == 17
+      end
+
+      context 'when the NewsItem description is blank and body is present' do
+        it 'overrides description with body' do
+          feed = affiliate.rss_feeds.first
+          search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate)
+
+          result_1 = mock_model(NewsItem, title: 'element result1', description?: false, body: 'result 1 body')
+          result_2 = mock_model(NewsItem, title: 'element result2', description?: true, body: 'result 2 body')
+          results = [result_1, result_2]
+
+          response = mock(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 10,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [], language: 'en').
+            and_return(response)
+
+          result_1.should_receive(:description=).with('result 1 body')
+
+          search.run
+        end
+      end
+
+      context 'when the NewsItem description is not highlighted and body is highlighted' do
+        it 'overrides description with body' do
+          feed = affiliate.rss_feeds.first
+          search = NewsSearch.new(query: 'highlighted', channel: feed.id, affiliate: affiliate)
+
+          result_1 = mock_model(NewsItem,
+                                title: 'result1',
+                                description?: true,
+                                description: "\uE000highlighted\uE001 result 1 description",
+                                body: 'result 1 body')
+          result_2 = mock_model(NewsItem,
+                                title: 'result2',
+                                description?: true,
+                                description: "result 2 description",
+                                body: "\uE000highlighted\uE001 result 2 body")
+          results = [result_1, result_2]
+
+          response = mock(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
+          ElasticNewsItem.should_receive(:search_for).
+            with(q: 'highlighted', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
+                 since: nil, until: nil,
+                 offset: 0, size: 10,
+                 contributor: nil, subject: nil, publisher: nil,
+                 sort_by_relevance: false,
+                 tags: [], language: 'en').
+            and_return(response)
+
+          result_2.should_receive(:description=).with("\uE000highlighted\uE001 result 2 body")
+
+          search.run
+        end
       end
     end
   end
