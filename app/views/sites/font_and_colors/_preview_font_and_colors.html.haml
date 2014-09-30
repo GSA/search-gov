@@ -6,13 +6,15 @@
     .serp-nav-button
       - 3.times do
         %span.hamburger{ style_hash(css_property_hash, search_button_background_color: 'background-color') }
-    .serp-nav{ style_hash(css_property_hash, navigation_background_color: 'background-color') }
-      .serp-nav-item.serp-nav-item-active{ style_hash(css_property_hash, left_tab_text_color: 'color') } Active Nav
-      .serp-nav-item.serp-nav-item-link{ style_hash(css_property_hash, navigation_link_color: 'color') } Nav Link
+  .serp-content
     .serp-search-box
       .btn-search{ preview_search_button_css_hash(css_property_hash) }
       .serp-input-wrapper
         %input{ type: 'text', disabled: true }
+  .serp-content
+    .serp-nav{ style_hash(css_property_hash, navigation_background_color: 'background-color') }
+      .serp-nav-item.serp-nav-item-active{ style_hash(css_property_hash, left_tab_text_color: 'color') } Active Nav
+      .serp-nav-item.serp-nav-item-link{ style_hash(css_property_hash, navigation_link_color: 'color') } Nav Link
   .serp-content
     .serp-results-wrapper
       .serp-results
