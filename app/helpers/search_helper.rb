@@ -303,7 +303,7 @@ module SearchHelper
 
   def youtube_thumbnail_url(news_item)
     video_id = CGI.parse(URI.parse(news_item.link).query)['v'].first
-    "http://i.ytimg.com/vi/#{video_id}/default.jpg"
+    "https://i.ytimg.com/vi/#{video_id}/default.jpg"
   end
 
   def left_nav_label(label_text)
