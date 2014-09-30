@@ -18,3 +18,7 @@ collapseNavAndFilterDropdowns = ->
   $('#search-filters .dropdown, #search-nav .dropdown').addClass 'collapsed'
 
 window.usasearch.collapseNavAndFilterDropdowns ?= collapseNavAndFilterDropdowns
+
+$(document).on 'focus.usasearch.main-content',
+  '#main-content',
+  collapseNavAndFilterDropdowns
