@@ -141,7 +141,7 @@ describe WebSearch do
 
       it "should set error message" do
         @search.run
-        @search.error_message.should == 'That is too long a word. Try using a shorter word.'
+        @search.error_message.should == I18n.translate(:too_long)
       end
     end
 
