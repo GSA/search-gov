@@ -28,7 +28,7 @@ body
 $button-background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
 $button-background-lightness: lightness($button-background-color)
 
-@if ($header-background-lightness == 100%) and ($page-background-lightness == 100%)
+@if ($header-background-lightness == 100%) and ($navigation-background-lightness == 100%)
   #header-wrapper
     border-bottom: 1px solid #e0e0e0
 
@@ -62,10 +62,6 @@ $button-background-lightness: lightness($button-background-color)
 
   li.divider
     background-color: $navigation-border-color
-
-@if ($header-background-lightness == 100%) and ($navigation-background-lightness == 100%)
-  #main-menu, #navs-filters-facets
-    border-top: 1px solid #e0e0e0
 
 @if ($navigation-background-lightness == 100%) and ($page-background-lightness == 100%)
   #navs-filters-facets

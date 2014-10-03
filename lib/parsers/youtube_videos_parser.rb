@@ -52,7 +52,7 @@ module YoutubeVideosParser
     parsed_item[:title] = item.xpath(FEED_ELEMENTS[:title]).inner_text
     raw_description = item.xpath(FEED_ELEMENTS[:description]).inner_text
     parsed_item[:description] = Nokogiri::HTML(raw_description).inner_text.squish
-    parsed_item[:published_at] = extract_published_at FEED_ELEMENTS[:published_at], item
+    parsed_item[:published_at] = extract_published_at item, *FEED_ELEMENTS[:published_at]
 
     parsed_item
   end

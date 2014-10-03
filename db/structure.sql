@@ -411,6 +411,7 @@ CREATE TABLE `indexed_documents` (
   `last_crawl_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `load_time` int(11) DEFAULT NULL,
   `source` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'rss',
+  `published_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_indexed_documents_on_affiliate_id_and_id` (`affiliate_id`,`id`),
   KEY `by_aid_url` (`affiliate_id`,`url`(50))
@@ -2008,3 +2009,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140829212030');
 INSERT INTO schema_migrations (version) VALUES ('20140917173435');
 
 INSERT INTO schema_migrations (version) VALUES ('20140930200457');
+
+INSERT INTO schema_migrations (version) VALUES ('20141003155347');

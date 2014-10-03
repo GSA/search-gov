@@ -1,5 +1,6 @@
 class NewsItem < ActiveRecord::Base
   extend AttributeSquisher
+  include FastDeleteFromDbAndEs
 
   before_validation_squish :body, :contributor, :description, :guid, :link,
                            :publisher, :subject, :title,
@@ -57,12 +58,6 @@ class NewsItem < ActiveRecord::Base
   rescue Exception => e
     Rails.logger.warn "NewsItem #{self.id} is not associated with any RssFeed: #{e}"
     'en'
-  end
-
-  def self.fast_delete(ids)
-    return if ids.blank?
-    ElasticNewsItem.delete(ids)
-    NewsItem.delete_all(['id IN (?)', ids])
   end
 
   private

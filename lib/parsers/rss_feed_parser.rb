@@ -1,5 +1,5 @@
 module RssFeedParser
-  def extract_published_at(pub_date_paths, item)
+  def extract_published_at(item, *pub_date_paths)
     published_at = nil
     pub_date_paths.each do |pub_date_path|
       published_at_str = item.xpath(pub_date_path).inner_text

@@ -11,8 +11,7 @@ describe NewsItemsDestroyer do
 
     it 'destroy all NewsItems' do
       NewsItem.stub_chain(:where, :select, :find_in_batches).and_yield(batch_group)
-      NewsItem.should_receive(:delete_all).with(['id IN (?)', ids])
-      ElasticNewsItem.should_receive(:delete).with(ids)
+      NewsItem.should_receive(:fast_delete).with(ids)
 
       NewsItemsDestroyer.perform 100
     end
