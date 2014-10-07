@@ -12,10 +12,10 @@ module ElasticSettings
         filter: {
           bigram_filter: { type: 'shingle' },
           en_stop_filter: { type: "stop", stopwords: ENGLISH_STOPWORDS },
-          en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")) },
+          en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")).map(&:chomp) },
           en_stem_filter: { type: "stemmer", name: "minimal_english" },
           es_stop_filter: { type: "stop", stopwords: SPANISH_STOPWORDS },
-          es_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "es_synonyms.txt")) },
+          es_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "es_synonyms.txt")).map(&:chomp) },
           es_stem_filter: { type: "stemmer", name: "light_spanish" }
         },
         analyzer: {
