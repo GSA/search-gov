@@ -197,6 +197,10 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > EmailTemplates
 
     When I go to the admin home page
+    And I follow "Outbound Rate Limits"
+    Then I should see the following breadcrumbs: Super Admin > OutboundRateLimits
+
+    When I go to the admin home page
     And I follow "System Alerts"
     Then I should see the following breadcrumbs: Super Admin > System Alerts
 

@@ -8,12 +8,13 @@ class GoogleSearch < SearchEngine
   DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
   DEFAULT_START = 1.freeze
+  NAMESPACE = 'google_api'.freeze
 
   attr_reader :start
 
   def initialize(options = {})
     super(options) do |search_engine|
-      search_engine.api_connection= connection_instance
+      search_engine.api_connection = connection_instance(options[:google_key])
       search_engine.api_endpoint= API_ENDPOINT
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
@@ -58,7 +59,15 @@ class GoogleSearch < SearchEngine
     I18n.locale == :es ? 'lang_es' : DEFAULT_LANGUAGE
   end
 
-  def connection_instance
-    @@api_connection ||= SearchApiConnection.new('google_api', API_HOST, CACHE_DURATION)
+  def connection_instance(google_key)
+    (google_key.blank? || (google_key == GoogleSearch::API_KEY)) ? rate_limited_api_connection : unlimited_api_connection
+  end
+
+  def unlimited_api_connection
+    @@unlimited_api_connection = SearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
+  end
+
+  def rate_limited_api_connection
+    @@rate_limited_api_connection = RateLimitedSearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
   end
 end

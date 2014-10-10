@@ -60,6 +60,7 @@ RSpec.configure do |config|
     end
 
     EmailTemplate.load_default_templates
+    OutboundRateLimit.load_defaults
     TestServices::create_es_indexes
   end
 
@@ -212,6 +213,7 @@ RSpec.configure do |config|
     #FIXME: this is in here just to get rcov coverage on SearchApiConnection
     params = { affiliate: 'wh', index: 'web', query: 'obama' }
     SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
+    RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
 
     Faraday.stub!(:new).and_return test
   end

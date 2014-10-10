@@ -146,6 +146,7 @@ UsasearchRails3::Application.routes.draw do
     resources :logfile_whitelisted_class_cs do as_routes end
     resources :logfile_blocked_regexps do as_routes end
     resources :logfile_blocked_user_agents do as_routes end
+    resources :outbound_rate_limits do as_routes end
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
     resources :affiliate_scopes do as_routes end

@@ -528,6 +528,15 @@ CREATE TABLE `news_items` (
   KEY `index_news_items_on_link` (`link`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `outbound_rate_limits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `limit` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `rss_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rss_feed_owner_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -2011,3 +2020,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140917173435');
 INSERT INTO schema_migrations (version) VALUES ('20140930200457');
 
 INSERT INTO schema_migrations (version) VALUES ('20141003155347');
+
+INSERT INTO schema_migrations (version) VALUES ('20141010040750');
+
+INSERT INTO schema_migrations (version) VALUES ('20141010045603');

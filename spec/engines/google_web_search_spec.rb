@@ -10,6 +10,11 @@ describe GoogleWebSearch do
       GoogleWebSearch.new(query: 'gov', offset: 15).start.should == 16
     end
 
+    it 'uses rate limited api connection by default' do
+      search = GoogleWebSearch.new(query: 'gov')
+      search.api_connection.should be_an_instance_of(RateLimitedSearchApiConnection)
+    end
+
     context 'when only required search params are passed in' do
       let(:minimum_search) { GoogleWebSearch.new(query: "taxes") }
       it 'should set appropriate defaults' do
@@ -52,6 +57,10 @@ describe GoogleWebSearch do
       response = web_search.execute_query
       first = response.results.first
       first.title.should == "Using custom google CX"
+    end
+
+    it 'uses non rate limited api connection' do
+      web_search.api_connection.should be_an_instance_of(SearchApiConnection)
     end
   end
 

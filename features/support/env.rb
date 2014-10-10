@@ -58,6 +58,7 @@ unless ENV['TRAVIS']
 end
 
 EmailTemplate.load_default_templates
+OutboundRateLimit.load_defaults
 TestServices::create_es_indexes
 
 # EventMachine instance for Keen IO
