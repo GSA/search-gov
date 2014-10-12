@@ -17,12 +17,11 @@ class RateLimitedSearchApiConnection
     response = @cache.read api_endpoint, param_hash
     return response if response
 
-    response = nil
     @rate_limiter.within_limit do
       response = @connection.get api_endpoint, param_hash
       cache_response api_endpoint, param_hash, response
     end
-    response || Hashie::Rash.new
+    response
   end
 
   private

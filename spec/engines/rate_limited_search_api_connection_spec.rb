@@ -42,10 +42,10 @@ describe RateLimitedSearchApiConnection do
         rate_limiter.should_receive(:within_limit)
       end
 
-      it 'returns empty response' do
+      it 'returns nil' do
         connection.connection.should_not_receive(:get)
 
-        connection.get(endpoint, params).should be_empty
+        connection.get(endpoint, params).should be_nil
       end
     end
   end

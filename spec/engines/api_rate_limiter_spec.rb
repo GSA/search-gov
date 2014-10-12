@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ApiRateLimiter do
   let(:namespace) { 'my_api' }
   let!(:today) { Date.new(2014, 1, 1) }
-  let(:key) { 'my_api:2014-01-01'.freeze }
+  let(:key) { 'my_api:2014-01-01:used_count'.freeze }
 
   subject(:rate_limiter) { ApiRateLimiter.new(namespace) }
 

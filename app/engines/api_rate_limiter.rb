@@ -13,7 +13,7 @@ class ApiRateLimiter
 
   def within_limit(&block)
     limit = get_limit
-    key = rate_limiter_key
+    key = current_used_count_key
     used_count = get_or_initialize_used_count key
 
     if used_count < limit
@@ -25,7 +25,7 @@ class ApiRateLimiter
   end
 
   def get_or_initialize_used_count(key = nil)
-    key ||= rate_limiter_key
+    key ||= current_used_count_key
     used_count = @@redis.get(key)
     used_count ? used_count.to_i : initialize_used_count(key)
   end
@@ -43,8 +43,8 @@ class ApiRateLimiter
     @@redis.get(key).to_i
   end
 
-  def rate_limiter_key
-    "#{@namespace}:#{Date.current.to_s(:db)}"
+  def current_used_count_key
+    "#{@namespace}:#{Date.current.to_s(:db)}:used_count"
   end
 
   def increment(key)
