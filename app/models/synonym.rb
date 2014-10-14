@@ -18,26 +18,9 @@ class Synonym < ActiveRecord::Base
     "#{self.class.name} #{self.id}"
   end
 
-  def overlaps_with?(other_synonym)
-    (self.entry.split(ENTRY_DELIMITER) & other_synonym.entry.split(ENTRY_DELIMITER)).present?
-  end
-
   def self.format_entry(entry)
     arr = entry.is_a?(Array) ? entry : entry.split(',')
     arr.collect(&:squish).collect(&:downcase).sort.uniq.join(ENTRY_DELIMITER)
-  end
-
-  def self.group_overlapping_synonyms(locale, status)
-    synonyms = where(locale: locale, status: status).order("length(entry) DESC")
-    while synonyms.present?
-      candidate = synonyms.shift
-      overlapping, distinct = synonyms.partition { |synonym_instance| synonym_instance.overlaps_with?(candidate) }
-      overlapping.each do |synonym_instance|
-        candidate.update_attribute(:entry,format_entry([candidate.entry, synonym_instance.entry].join(ENTRY_DELIMITER)))
-        synonym_instance.delete
-      end
-      synonyms = distinct
-    end
   end
 
 end

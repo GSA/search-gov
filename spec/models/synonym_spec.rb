@@ -47,34 +47,4 @@ describe Synonym do
       syn.label.should == "Synonym #{syn.id}"
     end
   end
-
-  describe "#group_overlapping_synonyms(locale, status)" do
-    before do
-      gobierno = affiliates(:gobiernousa_affiliate)
-      Synonym.delete_all
-      Synonym.create!(status: 'Candidate', entry: 'renovate, renovator', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Candidate', entry: 'renovate, renovation', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'adopt, adopted, adopting', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'adopt, adoptive', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'renovation, renovator', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'adopted, adoption', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'retire, retired, retirement, retiring', affiliate: affiliate, locale: 'en')
-      Synonym.create!(status: 'Approved', entry: 'adopt, adoptito', affiliate: gobierno, locale: 'es')
-      Synonym.create!(status: 'Rejected', entry: 'adopt, disown', affiliate: gobierno, locale: 'es')
-    end
-
-    it 'should group overlapping Approved synonyms for a specific locale' do
-      Synonym.group_overlapping_synonyms('en', 'Approved')
-      Synonym.group_overlapping_synonyms('es', 'Approved')
-      Synonym.count.should == 7
-      expected_approved_entries = ['adopt, adopted, adopting, adoption, adoptive', 'renovation, renovator', 'adopt, adoptito']
-      expected_approved_entries.each { |entry| Synonym.find_by_entry(entry).should be_present }
-    end
-
-    it 'should group overlapping Candidate synonyms for a specific locale' do
-      Synonym.group_overlapping_synonyms('en', 'Candidate')
-      Synonym.count.should == 8
-      Synonym.find_by_entry('renovate, renovation, renovator').should be_present
-    end
-  end
 end
