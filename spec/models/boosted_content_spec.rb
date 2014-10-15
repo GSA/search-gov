@@ -56,6 +56,16 @@ describe BoostedContent do
       boosted_content.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
     end
 
+    it 'should not allow duplicate url' do
+      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      BoostedContent.create!(@valid_attributes.merge(url: url))
+      expect { BoostedContent.create!(@valid_attributes.merge(url: url)) }.to raise_error
+    end
+
+    it 'should not allow blank description' do
+      expect { BoostedContent.create!(@valid_attributes.merge(description: '&nbsp;')) }.to raise_error
+    end
+
     it "should save URL with http:// prefix when it does not start with http(s)://" do
       url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https invalidHtTp:// invalidhttps:// invalidHttPsS://)

@@ -10,11 +10,11 @@ class BoostedContent < ActiveRecord::Base
   has_many :boosted_content_keywords, dependent: :destroy, order: 'value'
   accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
+  before_validation :ensure_http_prefix_on_url, :sanitize_html_in_fields
   before_validation_squish :title, :url, :description
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
-  before_save :ensure_http_prefix_on_url, :sanitize_html_in_fields
 
   scope :substring_match, -> substring do
     select('DISTINCT boosted_contents.*').
