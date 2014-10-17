@@ -152,9 +152,15 @@ RSpec.configure do |config|
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
     web_search_params = common_web_search_params.merge(query: '(no_results) (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
+    web_search_params = common_web_search_params.merge(query: '(Scientost) (site:www100.whitehouse.gov)')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
 
     bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(query: 'electro coagulation')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
+
+    bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
+    web_search_params = common_web_search_params.merge(query: '(electro coagulation) (site:www.whitehouse.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
 
     oasis_api_path = "#{OasisSearch::API_ENDPOINT}?"

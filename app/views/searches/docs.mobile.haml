@@ -1,4 +1,9 @@
 #search{ search_data(@search, @search_vertical) }
+  - if @search.commercial_results?
+    = spelling_suggestion(@search)
+  -else
+    = search_suggestion(@search, 'SPEL')
+
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
     = render partial: 'pagination', locals: { search: @search }

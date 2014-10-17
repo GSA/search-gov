@@ -1,6 +1,7 @@
 class Search
   include Pageable
   BLACKLISTED_QUERIES = ["search", "search our site", "*", "1", "what are you looking for?", "¿qué está buscando?"]
+  COMMERCIAL_INDEX_MODULE_TAGS = %w(BWEB IMAG GWEB GIMAG).freeze
 
   class SearchError < RuntimeError;
   end
@@ -77,6 +78,10 @@ class Search
       hash.merge!(related: remove_strong(related_search)) if self.respond_to?(:related_search)
       hash
     end
+  end
+
+  def commercial_results?
+    COMMERCIAL_INDEX_MODULE_TAGS.include? module_tag
   end
 
   protected

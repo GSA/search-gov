@@ -44,7 +44,7 @@ class BlendedSearch < Search
   end
 
   def log_serp_impressions
-    @modules << "LOVER" << "LSPEL" unless self.spelling_suggestion.nil?
+    @modules << "LOVER" << "SPEL" unless self.spelling_suggestion.nil?
     @modules << "SREL" if self.has_related_searches?
     @modules << modules_in_results if @total > 0
     @modules << 'VIDS' if self.has_video_news_items?

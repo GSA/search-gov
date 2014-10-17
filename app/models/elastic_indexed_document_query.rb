@@ -1,11 +1,19 @@
 class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
+  include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
 
   def initialize(options)
     super(options)
     @affiliate_id = options[:affiliate_id]
     @document_collection = options[:document_collection]
+    @include_suggestion = options[:include_suggestion]
     self.highlighted_fields = %w(title description body)
+  end
+
+  def body
+    super do |json|
+      suggest(json) if @include_suggestion
+    end
   end
 
   def filtered_query_filter(json)

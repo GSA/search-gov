@@ -52,5 +52,48 @@ describe SiteSearch do
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }
       its(:sitelink_generator_names) { should be_nil }
     end
+
+    context 'when commercial spelling suggestion is present' do
+      let(:collection) do
+        coll = affiliate.document_collections.build(
+          :name => 'WH only',
+          :url_prefixes_attributes => {'0' => { prefix: 'www.whitehouse.gov' }})
+        coll.save!
+        coll.navigation.update_attributes!(:is_active => true)
+        coll
+      end
+
+      it 'includes BSPEL and OVER in the modules' do
+        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'electro coagulation' })
+        search.run
+        search.modules.should include('BSPEL', 'OVER')
+      end
+    end
+
+    context 'when DG Search spelling suggestion is present' do
+      let(:collection) do
+        coll = affiliate.document_collections.build(
+          :name => 'WH only',
+          :url_prefixes_attributes => {'0' => { prefix: 'www100.whitehouse.gov' }})
+        coll.save!
+        coll.navigation.update_attributes!(:is_active => true)
+        coll
+      end
+
+      before do
+        IndexedDocument.create!(affiliate: affiliate,
+                                title: 'electro coagulation',
+                                description: 'Scientists created a technology to remove contaminants',
+                                url: 'http://www100.whitehouse.gov/electro-coagulation',
+                                last_crawl_status: IndexedDocument::OK_STATUS)
+        ElasticIndexedDocument.commit
+      end
+
+      it 'includes SPEL and LOVER in the modules' do
+        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
+        search.run
+        search.modules.should include('SPEL', 'LOVER')
+      end
+    end
   end
 end

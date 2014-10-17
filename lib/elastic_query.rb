@@ -21,6 +21,7 @@ class ElasticQuery
     Jbuilder.encode do |json|
       query(json)
       highlight(json) if @highlighting
+      yield json if block_given?
     end
   end
 

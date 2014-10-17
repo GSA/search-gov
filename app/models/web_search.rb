@@ -49,26 +49,45 @@ class WebSearch < Search
   def handle_response(response)
     @total = response.total rescue 0
     available_search_engine_pages = (@total/@per_page.to_f).ceil
+
     if backfill_needed?
-      odie_search = odie_search_class.new(@options.merge(:per_page => self.default_per_page, :page => [@page - available_search_engine_pages, 1].max))
-      odie_response = odie_search.search
-      if odie_response and odie_response.total > 0
-        adjusted_total = available_search_engine_pages * @per_page + odie_response.total
-        if @total <= @per_page * (@page - 1) and available_search_engine_pages < @page
-          temp_total = @total
-          @total = adjusted_total
-          @results = paginate(odie_search.process_results(odie_response))
-          @total = temp_total
-          @startrecord = (@page -1) * @per_page + 1
-          @endrecord = @startrecord + odie_response.results.size - 1
-          @indexed_results = odie_response
-        end
-        @total = adjusted_total
+      odie_search = initialize_odie_search(available_search_engine_pages)
+      odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
+      if odie_response && odie_response.total.zero? && odie_response.suggestion
+        suggestion = odie_response.suggestion
+        @spelling_suggestion = suggestion.highlighted
+        odie_search = initialize_odie_search(available_search_engine_pages, suggestion.text)
+        run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
       end
     end
 
     handle_search_engine_response(response) if available_search_engine_pages >= @page
     assign_module_tag
+  end
+
+  def initialize_odie_search(available_search_engine_pages, query = nil)
+    odie_search_params = @options.merge(per_page: self.default_per_page,
+                                        page: [@page - available_search_engine_pages, 1].max)
+    odie_search_params[:query] = query if query
+    odie_search_class.new odie_search_params
+  end
+
+  def run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
+    odie_response = odie_search.search
+    if odie_response and odie_response.total > 0
+      adjusted_total = available_search_engine_pages * @per_page + odie_response.total
+      if @total <= @per_page * (@page - 1) and available_search_engine_pages < @page
+        temp_total = @total
+        @total = adjusted_total
+        @results = paginate(odie_search.process_results(odie_response))
+        @total = temp_total
+        @startrecord = (@page -1) * @per_page + 1
+        @endrecord = @startrecord + odie_response.results.size - 1
+        @indexed_results = odie_response
+      end
+      @total = adjusted_total
+    end
+    odie_response
   end
 
   def handle_search_engine_response(response)
@@ -118,7 +137,7 @@ class WebSearch < Search
 
   def log_serp_impressions
     @modules << module_tag if module_tag
-    @modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
+    @modules |= spelling_suggestion_modules
     @modules << "SREL" if self.has_related_searches?
     @modules << 'NEWS' if self.has_news_items?
     @modules << 'VIDS' if self.has_video_news_items?
@@ -128,6 +147,11 @@ class WebSearch < Search
     @modules << "JOBS" if self.jobs.present?
     @modules << "TWEET" if self.has_tweets?
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
+  end
+
+  def spelling_suggestion_modules
+    return [] unless spelling_suggestion
+    commercial_results? ? %w(OVER BSPEL) : %w(LOVER SPEL)
   end
 
   def odie_search_class

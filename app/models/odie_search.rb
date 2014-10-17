@@ -15,6 +15,7 @@ class OdieSearch < Search
     ElasticIndexedDocument.search_for(q: @query,
                                       affiliate_id: @affiliate.id,
                                       document_collection: @document_collection,
+                                      include_suggestion: true,
                                       language: @affiliate.locale,
                                       size: @per_page,
                                       offset: (@page - 1) * @per_page)
