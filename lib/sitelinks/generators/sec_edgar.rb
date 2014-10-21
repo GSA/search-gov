@@ -27,7 +27,7 @@ module Sitelinks
         cik = path_as_array[4]
         browse_edgar_params = DEFAULT_BROWSE_EDGAR_PARAMS.merge(CIK: cik)
 
-        { title: 'Most Recent Filings for this Company',
+        { title: I18n.t(:'sitelinks.sec_edgar.most_recent_filings'),
           url: "http://www.sec.gov/cgi-bin/browse-edgar?#{browse_edgar_params.to_param}" }
       end
 
@@ -40,7 +40,7 @@ module Sitelinks
         full_filing_path = "#{cik}/#{cik_part_1}-#{cik_part_2}-#{cik_part_3}-index.htm"
         url = "http://www.sec.gov/Archives/edgar/data/#{full_filing_path}"
 
-        { title: 'Full Filing', url: url }
+        { title: I18n.t('sitelinks.sec_edgar.full_filing'), url: url }
       end
     end
   end
