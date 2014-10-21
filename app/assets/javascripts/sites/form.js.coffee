@@ -1,16 +1,24 @@
-onKeyUpWithoutShiftOrTab = (e) ->
-  window.usasearch.enablePrimaryButton() unless (e.which == 9 || e.which == 16)
+onKeyUpWithoutSpecialKeys = (e) ->
+  window.usasearch.enablePrimaryButton() unless (e.which in [9, 16, 17, 18, 91])
+
+textSelector = ['.form textarea',
+                '.form input[type="password"]',
+                '.form input[type="radio"]',
+                '.form input[type="text"]',
+                '.form input[type="url"]'].toString()
 
 $(document).on 'keyup',
-  '.form textarea, .form input[type="text"], .form input[type="url"]',
-  onKeyUpWithoutShiftOrTab
+  textSelector,
+  onKeyUpWithoutSpecialKeys
 
-$(document).on 'paste',
-  '.form input[type="text"], .form input[type="url"], .form textarea',
-  window.usasearch.enablePrimaryButton
+onChangeSelector = [textSelector,
+                    '.form input[type="checkbox"]',
+                    '.form input[type="file"]',
+                    '.form input[type="radio"]',
+                    '.form select'].toString()
 
 $(document).on 'change',
-  ' .form input[type="checkbox"], .form input[type="file"], .form input[type="radio"], .form input[type="text"], .form input[type="url"], .form select',
+  onChangeSelector,
   window.usasearch.enablePrimaryButton
 
 showDatePicker = () ->
