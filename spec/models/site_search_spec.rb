@@ -70,7 +70,7 @@ describe SiteSearch do
       end
     end
 
-    context 'when DG Search spelling suggestion is present' do
+    context 'when matching document and DG Search spelling suggestion are present' do
       let(:collection) do
         coll = affiliate.document_collections.build(
           :name => 'WH only',
@@ -81,6 +81,7 @@ describe SiteSearch do
       end
 
       before do
+        ElasticIndexedDocument.recreate_index
         IndexedDocument.create!(affiliate: affiliate,
                                 title: 'electro coagulation',
                                 description: 'Scientists created a technology to remove contaminants',
@@ -93,6 +94,33 @@ describe SiteSearch do
         search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
         search.run
         search.modules.should include('SPEL', 'LOVER')
+      end
+    end
+
+    context 'when matching document is not present' do
+      let(:collection) do
+        coll = affiliate.document_collections.build(
+          :name => 'WH only',
+          :url_prefixes_attributes => {'0' => { prefix: 'www100.whitehouse.gov' }})
+        coll.save!
+        coll.navigation.update_attributes!(:is_active => true)
+        coll
+      end
+
+      before do
+        ElasticIndexedDocument.recreate_index
+        IndexedDocument.create!(affiliate: affiliates(:usagov_affiliate),
+                                title: 'electro coagulation',
+                                description: 'Scientists created a technology to remove contaminants',
+                                url: 'http://www100.whitehouse.gov/electro-coagulation',
+                                last_crawl_status: IndexedDocument::OK_STATUS)
+        ElasticIndexedDocument.commit
+      end
+
+      it 'excludes SPEL and LOVER from the modules' do
+        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
+        search.run
+        search.modules.should_not include('SPEL', 'LOVER')
       end
     end
   end

@@ -55,9 +55,9 @@ class WebSearch < Search
       odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
       if odie_response && odie_response.total.zero? && odie_response.suggestion
         suggestion = odie_response.suggestion
-        @spelling_suggestion = suggestion.highlighted
         odie_search = initialize_odie_search(available_search_engine_pages, suggestion.text)
         run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
+        @spelling_suggestion = suggestion.highlighted if @indexed_results
       end
     end
 
