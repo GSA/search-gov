@@ -38,8 +38,9 @@ $button-background-lightness: lightness($button-background-color)
 @if $button-background-lightness > 75%
   #search-bar #search-button
     background-image: url(<%= ActionController::Base.helpers.asset_path('bootstrap/glyphicons-halflings.png') %>)
-  #advanced-search-button
+  #advanced-search-button, #news-search-options-form-search-button
     color: black
+    border-color: #e0e0e0
 
 #menu-button
   color: $button-background-color
