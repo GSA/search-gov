@@ -27,6 +27,10 @@ module NavigationsHelper
         content << raw('/')
         content << link_to('Instagram', site_instagram_usernames_path(navigable.affiliate))
       end
+      if navigable.affiliate.rss_feeds.mrss.exists?
+        content << raw('/')
+        content << link_to('RSS', site_rss_feeds_path(navigable.affiliate))
+      end
       content
     end
   end

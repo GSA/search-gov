@@ -66,6 +66,6 @@ class OdieImageSearch < OdieSearch
   end
 
   def mrss_names
-    @affiliate.rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name)
+    @affiliate.rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name).compact
   end
 end

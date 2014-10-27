@@ -739,10 +739,11 @@ describe Affiliate do
   describe "#has_no_social_image_feeds?" do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    context 'when affiliate has no flickr/instagram profiles' do
+    context 'when affiliate has no flickr/instagram/mrss profiles' do
       before do
         affiliate.flickr_profiles.delete_all
         affiliate.instagram_profiles.delete_all
+        affiliate.rss_feeds.mrss.delete_all
       end
       specify { affiliate.should have_no_social_image_feeds }
     end

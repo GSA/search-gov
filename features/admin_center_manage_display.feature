@@ -82,8 +82,9 @@ Feature: Manage Display
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
     And affiliate "agency.gov" has the following RSS feeds:
-      | name  | url                          |
-      | Press | usasearch.howto.gov/all.atom |
+      | name  | url                          | show_only_media_content |
+      | Press | usasearch.howto.gov/all.atom | false                   |
+      | DMA   | media.dma.mil/mrss/portal/144/detailpage/www.af.mil/News/Photos.aspx | true                   |
     And the following Instagram usernames exist for the site "agency.gov":
       | username   |
       | whitehouse |
