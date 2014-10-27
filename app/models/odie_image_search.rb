@@ -12,6 +12,7 @@ class OdieImageSearch < OdieSearch
                                     offset: (@page - 1) * @per_page,
                                     flickr_groups: flickr_groups,
                                     flickr_users: flickr_users,
+                                    mrss_names: mrss_names,
                                     instagram_profiles: instagram_profiles)
   end
 
@@ -62,5 +63,9 @@ class OdieImageSearch < OdieSearch
 
   def instagram_profiles
     @affiliate.instagram_profiles.collect(&:username)
+  end
+
+  def mrss_names
+    @affiliate.rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name)
   end
 end

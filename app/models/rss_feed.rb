@@ -15,6 +15,7 @@ class RssFeed < ActiveRecord::Base
   scope :videos, where(:is_video => true)
   scope :non_managed, where(is_managed: false)
   scope :non_mrss, where(show_only_media_content: false)
+  scope :mrss, where(show_only_media_content: true)
   scope :updated_before, lambda { |time| where('updated_at < ?', time).order('updated_at asc, id asc') }
   scope :owned_by_affiliate, where(owner_type: 'Affiliate')
   scope :owned_by_youtube_profile, where(owner_type: 'YoutubeProfile')

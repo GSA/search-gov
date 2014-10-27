@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OdieImageSearch do
-  fixtures :affiliates, :flickr_profiles
+  fixtures :affiliates, :flickr_profiles, :rss_feeds, :rss_feed_urls
 
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:search_engine_response) do
@@ -33,6 +33,22 @@ describe OdieImageSearch do
     it "should output a key based on the query, affiliate id, and page parameters" do
       OdieImageSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key.should == "oasis_image:element:#{affiliate.id}:4:10"
     end
+  end
+
+  describe "new" do
+    context 'when affiliate has MRSS feeds' do
+      before do
+        affiliate.flickr_profiles.delete_all
+        affiliate.rss_feeds << rss_feeds(:media_feed)
+      end
+
+      it 'should create an OasisSearch with the MRSS feed names' do
+        OasisSearch.should_receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
+                                              flickr_users: [], flickr_groups: [], instagram_profiles: [])
+        OdieImageSearch.new(:query => 'element', :affiliate => affiliate)
+      end
+    end
+
   end
 
 end

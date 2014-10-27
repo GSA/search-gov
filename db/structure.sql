@@ -546,6 +546,7 @@ CREATE TABLE `rss_feed_urls` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `language` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `oasis_mrss_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_rss_feed_urls_on_rss_feed_owner_type_and_url` (`rss_feed_owner_type`,`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2024,3 +2025,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141003155347');
 INSERT INTO schema_migrations (version) VALUES ('20141010040750');
 
 INSERT INTO schema_migrations (version) VALUES ('20141010045603');
+
+INSERT INTO schema_migrations (version) VALUES ('20141027184753');
