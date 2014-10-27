@@ -61,3 +61,67 @@
   page_length: 14
   publication_date: 2014-06-30
   effective_on: 2014-07-01
+
+'2014-25000':
+  federal_register_agencies: fr_noaa
+  document_number: 2014-25000
+  title: Prohibitions and Restrictions on Proprietary Trading and Certain Interests in, and Relationships With, Hedge Funds and Private Equity Funds
+  html_url: https://www.federalregister.gov/articles/2014/01/31/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Rule
+  start_page: 8888
+  end_page: 8889
+  page_length: 1
+  publication_date: 2014-05-31
+  effective_on: 2014-07-01
+  docket_id: Docket ID OCC-2014-0001
+
+'2013-31511':
+  federal_register_agencies: fr_noaa
+  document_number: 2013-31511
+  title: Prohibitions and Restrictions on Proprietary Trading and Certain Interests in, and Relationships With, Hedge Funds and Private Equity Funds
+  html_url: https://www.federalregister.gov/articles/2014/01/31/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Rule
+  start_page: 5535
+  end_page: 5806
+  page_length: 272
+  publication_date: 2014-01-31
+  effective_on: 2014-04-01
+  docket_id: Docket ID OCC-2014-0001
+
+'2013-15000':
+  federal_register_agencies: fr_noaa
+  document_number: 2013-15000
+  title: Hedge Funds and Private Equity Funds
+  html_url: https://www.federalregister.gov/articles/2013/05/31/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Rule
+  start_page: 8888
+  end_page: 8889
+  page_length: 1
+  publication_date: 2013-05-31
+  effective_on: 2013-07-01
+  docket_id: Docket ID OCC-2013-0001
+
+'2013-10000':
+  federal_register_agencies: fr_noaa
+  document_number: 2013-10000
+  title: Hedge Funds and Private Equity Funds
+  html_url: https://www.federalregister.gov/articles/2013/01/31/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Proposed Rule
+  start_page: 8888
+  end_page: 8889
+  page_length: 1
+  publication_date: 2013-01-31
+  comments_close_on: 2013-03-31
+  docket_id: Docket ID OCC-2013-0001
+
+'2013-17000':
+  federal_register_agencies: fr_noaa
+  document_number: 2013-17000
+  title: Hedge Funds
+  html_url: https://www.federalregister.gov/articles/2013/02/01/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Proposed Rule
+  start_page: 8888
+  end_page: 8889
+  page_length: 1
+  publication_date: 2013-02-01
+  comments_close_on: <%= Date.current.advance(days: 2).to_s(:db) %>

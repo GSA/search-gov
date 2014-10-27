@@ -362,6 +362,7 @@ CREATE TABLE `federal_register_documents` (
   `effective_on` date DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `docket_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2025,5 +2026,7 @@ INSERT INTO schema_migrations (version) VALUES ('20141003155347');
 INSERT INTO schema_migrations (version) VALUES ('20141010040750');
 
 INSERT INTO schema_migrations (version) VALUES ('20141010045603');
+
+INSERT INTO schema_migrations (version) VALUES ('20141024151713');
 
 INSERT INTO schema_migrations (version) VALUES ('20141027184753');

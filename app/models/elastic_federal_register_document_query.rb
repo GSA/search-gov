@@ -1,8 +1,52 @@
 class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   def initialize(options)
+    super options
     super(options.merge({ sort: 'comments_close_on:desc' }))
     self.highlighted_fields = %i(abstract title)
     @federal_register_agency_ids = options[:federal_register_agency_ids]
+  end
+
+  def body
+    Jbuilder.encode do |json|
+      query json
+      aggs json
+    end
+  end
+
+  def aggs(json)
+    json.aggs do
+      json.group_ids do
+        json.terms do
+          json.field :group_id
+          json.order { json.top_hit :desc }
+        end
+        json.aggs do
+          top_tag_hits json
+          top_hit json
+        end
+      end
+    end
+  end
+
+  def top_tag_hits(json)
+    json.top_tag_hits do
+      json.top_hits do
+        json.set! :sort do |sort_json|
+          sort_json.child! { sort_json.publication_date { sort_json.order :desc } }
+        end
+        json._source false
+        json.size 1
+        highlight(json) if @highlighting
+      end
+    end
+  end
+
+  def top_hit(json)
+    json.top_hit do
+      json.max do
+        json.field :comments_close_on
+      end
+    end
   end
 
   def filtered_query_query(json)

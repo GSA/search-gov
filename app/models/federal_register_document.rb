@@ -1,6 +1,7 @@
 class FederalRegisterDocument < ActiveRecord::Base
   attr_accessible :abstract,
                   :comments_close_on,
+                  :docket_id,
                   :document_number,
                   :document_type,
                   :effective_on,

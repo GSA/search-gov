@@ -46,6 +46,7 @@ describe FederalRegisterDocumentApiParser do
 
     it 'squishes string fields' do
       abstract = 'arbitrary   abstract with   spaces'.freeze
+      docket_id = '  File No.   500-1  '
       document_number = ' 1111-3333 '.freeze
       html_url = ' http://www.federalregister.gov/doc.html  '
       title = 'arbitrary   title with   spaces'.freeze
@@ -53,6 +54,7 @@ describe FederalRegisterDocumentApiParser do
       unsanitized_document_1 = mock('document',
                                     attributes: { 'abstract' => abstract,
                                                   'agencies' => [{ 'id' => fr_agency.id }],
+                                                  'docket_id' => docket_id,
                                                   'document_number' => document_number,
                                                   'html_url' => html_url,
                                                   'title' => title,
@@ -61,6 +63,7 @@ describe FederalRegisterDocumentApiParser do
 
       parser.each_document do |document|
         document[:abstract].should eq 'arbitrary abstract with spaces'
+        document[:docket_id].should eq 'File No. 500-1'
         document[:document_number].should eq '1111-3333'
         document[:html_url].should eq 'http://www.federalregister.gov/doc.html'
         document[:title].should eq 'arbitrary title with spaces'

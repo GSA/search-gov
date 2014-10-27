@@ -7,7 +7,7 @@ class FederalRegisterDocumentApiParser
 
   NUMBER_FIELDS = %w(end_page page_length start_page).freeze
 
-  STRING_FIELDS = %w(abstract document_number html_url title type).freeze
+  STRING_FIELDS = %w(abstract docket_id document_number html_url title type).freeze
 
   FIELDS = (COLLECTION_FIELDS + DATE_FIELDS + NUMBER_FIELDS + STRING_FIELDS).freeze
 
