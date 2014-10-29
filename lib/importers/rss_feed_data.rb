@@ -97,7 +97,7 @@ class RssFeedData
         validation_errors << "Missing pubDate field"
         next
       end
-      break if most_recently and published_at < most_recently and @ignore_older_items
+      break if found_an_older_item_to_ignore?(most_recently, published_at)
 
       link = extract_link(item)
       if link.blank?
@@ -105,9 +105,7 @@ class RssFeedData
         next
       end
 
-      attributes = { link: link, published_at: published_at }.
-        reverse_merge(extract_other_attributes(item))
-      attributes[:guid] = link if attributes[:guid].blank?
+      attributes = build_attributes(item, link, published_at)
 
       news_item = @rss_feed_url.news_items.
         where('guid = :guid OR link = :link', guid: attributes[:guid], link: link).
@@ -119,7 +117,7 @@ class RssFeedData
         next
       end
 
-      next if !news_item.new_record? && news_item.published_at >= published_at
+      next if unchanged_existing_news_item?(news_item, published_at)
 
       news_item.assign_attributes attributes
       unless news_item.save
@@ -128,6 +126,20 @@ class RssFeedData
       end
     end
     validation_errors
+  end
+
+  def build_attributes(item, link, published_at)
+    attributes = { link: link, published_at: published_at }.reverse_merge(extract_other_attributes(item))
+    attributes[:guid] = link if attributes[:guid].blank?
+    attributes
+  end
+
+  def unchanged_existing_news_item?(news_item, published_at)
+    !news_item.new_record? && news_item.published_at >= published_at
+  end
+
+  def found_an_older_item_to_ignore?(most_recently, published_at)
+    most_recently and published_at < most_recently and @ignore_older_items
   end
 
   def extract_link(item)
