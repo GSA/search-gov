@@ -49,8 +49,9 @@ class RssFeedData
 
     @feed_elements = FEED_ELEMENTS[feed_type]
     detect_namespaces doc
-    extract_news_items(doc)
-    @rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS)
+    validation_errors = extract_news_items(doc)
+    last_crawl_status = generate_last_crawl_status(validation_errors)
+    @rss_feed_url.update_attributes!(last_crawl_status: last_crawl_status)
   rescue Exception => e
     Rails.logger.warn(e)
     @rss_feed_url.update_attributes!(last_crawl_status: e.message)
@@ -58,8 +59,10 @@ class RssFeedData
 
   def detect_feed_type(document)
     case document.root.name
-    when 'feed' then :atom
-    when 'rss' then :rss
+      when 'feed' then
+        :atom
+      when 'rss' then
+        :rss
     end
   end
 
@@ -70,6 +73,14 @@ class RssFeedData
 
   private
 
+  def generate_last_crawl_status(validation_errors)
+    validation_errors.empty? ? RssFeedUrl::OK_STATUS : most_common_validation_error(validation_errors)
+  end
+
+  def most_common_validation_error(validation_errors)
+    validation_errors.group_by { |i| i }.max { |x, y| x[1].length <=> y[1].length }[0]
+  end
+
   def detect_namespaces(doc)
     @has_content_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:content])
     @has_dc_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:dc])
@@ -78,24 +89,32 @@ class RssFeedData
 
   def extract_news_items(doc)
     most_recently = @rss_feed_url.news_items.present? ? @rss_feed_url.news_items.first.published_at : nil
-
+    validation_errors = []
+    validation_errors << "Feed looks empty" unless doc.xpath("//#{@feed_elements[:item]}").present?
     doc.xpath("//#{@feed_elements[:item]}").each do |item|
       published_at = extract_published_at item, *@feed_elements[:pubDate]
-      next unless published_at.present?
+      if published_at.blank?
+        validation_errors << "Missing pubDate field"
+        next
+      end
       break if most_recently and published_at < most_recently and @ignore_older_items
 
       link = extract_link(item)
-      next unless link.present?
+      if link.blank?
+        validation_errors << "Missing link field"
+        next
+      end
 
       attributes = { link: link, published_at: published_at }.
-          reverse_merge(extract_other_attributes(item))
+        reverse_merge(extract_other_attributes(item))
       attributes[:guid] = link if attributes[:guid].blank?
 
       news_item = @rss_feed_url.news_items.
-          where('guid = :guid OR link = :link', guid: attributes[:guid], link: link).
-          first_or_initialize
+        where('guid = :guid OR link = :link', guid: attributes[:guid], link: link).
+        first_or_initialize
 
       if link_status_code_404?(link)
+        validation_errors << "Linked URL does not exist (HTTP 404)"
         news_item.destroy unless news_item.new_record?
         next
       end
@@ -104,9 +123,11 @@ class RssFeedData
 
       news_item.assign_attributes attributes
       unless news_item.save
+        validation_errors << news_item.errors.full_messages.first
         Rails.logger.error "news_item: #{news_item.errors.full_messages}"
       end
     end
+    validation_errors
   end
 
   def extract_link(item)

@@ -7,7 +7,21 @@ describe RssFeedData do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
     before { UrlStatusCodeFetcher.stub(:fetch) { '200 OK' } }
 
-    context 'when the feed has an item that fails validation' do
+    context 'when the feed is empty' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml').read
+        HttpConnection.should_receive(:get).with(rss_feed_url.url).and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
+      end
+
+      it 'reflect that feed looks empty in last_crawl_status' do
+        RssFeedData.new(rss_feed_url).import
+        u = RssFeedUrl.find rss_feed_url.id
+        u.last_crawl_status.should == 'Feed looks empty'
+      end
+    end
+
+    context 'when the feed has an item that fails HTTP HEAD validation' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
         HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
@@ -22,13 +36,66 @@ describe RssFeedData do
           { arg => status_code }
         end
         rss_feed_url.news_items.destroy_all
+        RssFeedData.new(rss_feed_url).import
+        @u = RssFeedUrl.find rss_feed_url.id
       end
 
       it 'should populate and index just the news items that are valid' do
+        @u.news_items.count.should == 1
+      end
+
+      it 'should reflect that 404 in the feed status' do
+        @u.last_crawl_status.should == 'Linked URL does not exist (HTTP 404)'
+      end
+    end
+
+    context 'when the feed has an item that is missing the pubDate field' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
         RssFeedData.new(rss_feed_url).import
-        u = RssFeedUrl.find rss_feed_url.id
-        u.last_crawl_status.should == 'OK'
-        u.news_items.count.should == 1
+        @u = RssFeedUrl.find rss_feed_url.id
+      end
+
+      it 'should populate and index just the news items that are valid' do
+        @u.news_items.count.should == 2
+      end
+
+      it 'should reflect the missing pubDate in the last_crawl_status field' do
+        @u.last_crawl_status.should == 'Missing pubDate field'
+      end
+    end
+
+    context 'when the feed has an item that is missing the link field' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
+        RssFeedData.new(rss_feed_url).import
+        @u = RssFeedUrl.find rss_feed_url.id
+      end
+
+      it 'should populate and index just the news items that are valid' do
+        @u.news_items.count.should == 2
+      end
+
+      it 'should reflect the missing link field in the last_crawl_status field' do
+        @u.last_crawl_status.should == 'Missing link field'
+      end
+    end
+
+    context 'when the feed items have multiple types of problems' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
+        RssFeedData.new(rss_feed_url).import
+        @u = RssFeedUrl.find rss_feed_url.id
+      end
+
+      it 'should reflect the most common problem in the last_crawl_status field' do
+        @u.last_crawl_status.should == "Title can't be blank"
       end
     end
 
