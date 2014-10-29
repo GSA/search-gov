@@ -53,11 +53,10 @@ class WebSearch < Search
     if backfill_needed?
       odie_search = initialize_odie_search(available_search_engine_pages)
       odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
-      if odie_response && odie_response.total.zero? && odie_response.suggestion
-        suggestion = odie_response.suggestion
-        odie_search = initialize_odie_search(available_search_engine_pages, suggestion.text)
+      if odie_response && odie_response.total.zero? && (suggestion = odie_response.spelling_suggestion)
+        odie_search = initialize_odie_search(available_search_engine_pages, suggestion)
         run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
-        @spelling_suggestion = suggestion.highlighted if @indexed_results
+        @spelling_suggestion = suggestion if @indexed_results
       end
     end
 

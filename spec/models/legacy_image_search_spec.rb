@@ -44,7 +44,29 @@ describe LegacyImageSearch do
         search.results.first['title'].should == 'President Obama walks his unusual image daughters to school'
         search.results.last['title'].should == 'POTUS gets in unusual image car.'
       end
+    end
 
+    context 'when the affiliate has no Bing/Google/oasis results' do
+      let(:non_affiliate) { affiliates(:non_existent_affiliate) }
+      let(:search_engine_response) do
+        SearchEngineResponse.new do |search_response|
+          search_response.total = 0
+          search_response.results = []
+        end
+      end
+
+      before do
+        oasis_search = mock(OasisSearch)
+        OasisSearch.stub(:new).and_return oasis_search
+        oasis_search.stub(:execute_query).and_return search_engine_response
+      end
+
+      it 'should fill the results with the flickr photos' do
+        search = LegacyImageSearch.new(query: 'ubama', affiliate: non_affiliate)
+        search.run
+        search.results.should be_empty
+        search.total.should == 0
+      end
     end
 
     context 'when there are Bing/Google results' do
