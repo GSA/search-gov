@@ -64,6 +64,7 @@ gem 'jbuilder'
 gem 'typhoeus'
 gem 'federal_register'
 gem 'instagram'
+gem 'sitelink_generator'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

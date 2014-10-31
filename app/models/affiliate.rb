@@ -418,7 +418,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def assign_sitelink_generator_names!
-    self.sitelink_generator_names = Sitelinks::Generators.matching_generator_names site_domains.pluck(:domain)
+    self.sitelink_generator_names = SitelinkGeneratorUtils.matching_generator_names site_domains.pluck(:domain)
     save!
   end
 

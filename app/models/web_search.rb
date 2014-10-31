@@ -121,7 +121,7 @@ class WebSearch < Search
   end
 
   def post_process_results(results)
-    sitelink_generators = Sitelinks::Generators.classes_by_names sitelink_generator_names
+    sitelink_generators = SitelinkGeneratorUtils.classes_by_names sitelink_generator_names
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results, sitelink_generators)
     post_processor.post_processed_results
   end
