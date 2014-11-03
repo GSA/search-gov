@@ -1,0 +1,38 @@
+- api_news_search_params = params_to_api_news_search(@site)
+
+%h3 News Search (RSS Feeds)
+%ul
+  %li
+    %span Search for "gov" with response in JSON format
+    %br
+    = api_search_url(api_news_search_params)
+  %li
+    %span Search for page 2 of "gov" with query highlighting turned off and response in XML format
+    %br
+    = api_search_url(api_news_search_params.merge(format: 'xml', page: 2, hl: 'false'))
+
+%h3
+  Response Fields
+%ul
+  %li
+    %span total
+  %li
+    %span startrecord
+  %li
+    %span endrecord
+  %li
+    %span results:
+    Array of news results for the query. Each item contains the following data.
+    %ul
+      %li
+        %span title:
+        The title of the result
+      %li
+        %span unescapedUrl:
+        The direct url to the result page
+      %li
+        %span content:
+        A snippet of content from the result page highlighting the query terms
+      %li
+        %span publishedAt:
+        The date the news story was published

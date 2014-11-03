@@ -149,4 +149,15 @@ module SitesHelper
       'data-modal-content-selector' => '#preview',
       'data-modal-title' => content_tag(:h1, 'Preview Search Results') }
   end
+
+  def params_to_api_news_search(site)
+    rss_feed = site.rss_feeds.detect { |r| r.news_items.present? }
+    rss_feed ||= site.rss_feeds.first
+    { affiliate: site.name,
+      channel: rss_feed.id,
+      format: 'json',
+      index: 'news',
+      protocol: 'http',
+      query: 'gov' }
+  end
 end

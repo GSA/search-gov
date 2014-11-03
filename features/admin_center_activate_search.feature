@@ -19,6 +19,9 @@ Feature: Activate Search
     Then I should see the code for Spanish language sites
 
   Scenario: Visiting the Site API Pages
+    Given affiliate "usagov" has the following RSS feeds:
+      | name   | url                              |
+      | News-1 | http://www.usa.gov/feed/news-1 |
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Activate Search page
     And I follow "API Instructions"

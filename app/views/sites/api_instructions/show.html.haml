@@ -74,6 +74,9 @@
       %span dc:
       For document collection requests (i.e., index must be 'docs'), this specifies the document collection id number.
     %li
+      %span channel:
+      For news searches (i.e., index must be 'news'), this specifies the RSS feed id number.
+    %li
       %span sort_by:
       For news searches (i.e., index must be 'news'), this specifies sorting results either by date or by relevancy. Possible values are 'r' and 'd'. Omitting this parameter defaults to date-based sorting.
     %li
@@ -295,42 +298,7 @@
           %span content:
           A snippet of content from the result page highlighting the query terms
 
-  %h3 News Search (RSS Feeds)
-  %ul
-    %li
-      %span Search for "fire" with response in JSON format
-      %br
-      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :query => 'fire', :index => 'news')
-    %li
-      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
-      %br
-      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'news')
-
-  %h3
-    Response Fields
-  %ul
-    %li
-      %span total
-    %li
-      %span startrecord
-    %li
-      %span endrecord
-    %li
-      %span results:
-      Array of news results for the query. Each item contains the following data.
-      %ul
-        %li
-          %span title:
-          The title of the result
-        %li
-          %span unescapedUrl:
-          The direct url to the result page
-        %li
-          %span content:
-          A snippet of content from the result page highlighting the query terms
-        %li
-          %span publishedAt:
-          The date the news story was published
+  = render partial: 'news_search' if @site.rss_feeds.present?
 
   %h3 Image Search
   %ul
