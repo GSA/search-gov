@@ -33,6 +33,13 @@ describe RssFeedUrl do
                              url: 'http://bogus.example.gov/feed/blog').language.should == 'es'
         end
       end
+
+      context 'on create' do
+        it 'should enqueue the possible notification to Oasis' do
+          Resque.should_receive(:enqueue_with_priority).with(:high, OasisMrssNotification, be_a(Integer))
+          RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate', url: 'http://bogus.example.gov/feed/blog')
+        end
+      end
     end
 
     context 'when the URL does not point to an RSS feed' do
@@ -121,13 +128,13 @@ describe RssFeedUrl do
   describe '#freshen' do
     it 'should enqueue RssFeedFetcher' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
-      Resque.should_receive(:enqueue_with_priority).with(:high, RssFeedFetcher, rss_feed_url.id, true)
+      Resque.should_receive(:enqueue).with(RssFeedFetcher, rss_feed_url.id, true)
       rss_feed_url.freshen
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
       rss_feed_url = rss_feed_urls(:youtube_video_url)
-      Resque.should_not_receive :enqueue_with_priority
+      Resque.should_not_receive :enqueue
       rss_feed_url.freshen
     end
   end

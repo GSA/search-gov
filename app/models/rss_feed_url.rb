@@ -25,7 +25,7 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def freshen(ignore_older_items = true)
-    Resque.enqueue_with_priority(:high, RssFeedFetcher, id, ignore_older_items) if rss_feed_owner_type == 'Affiliate'
+    Resque.enqueue(RssFeedFetcher, id, ignore_older_items) if rss_feed_owner_type == 'Affiliate'
   end
 
   def self.enqueue_destroy_all_inactive
