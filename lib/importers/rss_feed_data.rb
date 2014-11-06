@@ -15,6 +15,7 @@ class RssFeedData
                    description: %w(description),
                    media_content: './/media:content[@url]',
                    media_description: './media:description',
+                   media_text: './/media:text',
                    media_thumbnail_url: './/media:thumbnail/@url' }.freeze
 
   ATOM_ELEMENTS = { item: 'xmlns:entry',
@@ -154,13 +155,25 @@ class RssFeedData
     attributes = extract_elements(item, :guid, :title)
     attributes.merge!(extract_elements(item, :contributor, :publisher, :subject)) if @has_dc_ns
     attributes[:description] = extract_description(item)
-    attributes[:body] = Sanitize.clean extract_element(item, :body)
+    attributes[:body] = extract_body(item)
     attributes[:properties] = extract_properties(item) if @has_media_ns
     attributes
   end
 
   def link_status_code_404?(link)
     UrlStatusCodeFetcher.fetch(link)[link] =~ /404/
+  end
+
+  def extract_body(item)
+    body = nil
+    raw_body = extract_element_content item, @feed_elements[:body]
+    body = Sanitize.clean(raw_body) if raw_body
+
+    if body.blank? and @has_media_ns
+      media_body = extract_element(item, :media_text)
+      body = Sanitize.clean(media_body) if media_body
+    end
+    body
   end
 
   def extract_description(item)

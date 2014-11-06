@@ -227,6 +227,26 @@ describe RssFeedData do
       end
     end
 
+    context 'when the feed uses media:text and not content:encoded' do
+      before do
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/video_rss.xml').read
+        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.news_items.destroy_all
+      end
+
+      it 'should use the media:text for the body' do
+        RssFeedData.new(rss_feed_url).import
+        u = RssFeedUrl.find rss_feed_url.id
+        u.last_crawl_status.should == 'OK'
+        u.news_items.count.should == 2
+        u.news_items.first.body.should include('round beginning Thursday. Randolph Oaks golf course')
+
+        body = u.news_items.last.body
+        body.should start_with('MSgt Traci Meduna')
+        body.should end_with('very quickly.”')
+      end
+    end
+
     context 'when the feed does not contain dublin core namespace' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml').read
