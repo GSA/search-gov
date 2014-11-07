@@ -4,7 +4,7 @@ class OasisMrssNotification
 
   def self.perform(rss_feed_url_id)
     rss_feed_url = RssFeedUrl.find rss_feed_url_id
-    return "URL does not look like an image URL" if rss_feed_url.url =~ /video|podcast|youtube|audio|vodcast|flickr/i
+    return "URL does not look like an image URL" if rss_feed_url.url =~ /video|podcast|youtube|audio|vodcast|flickr|mp4/i
     rss_doc = Nokogiri::XML(HttpConnection.get(rss_feed_url.url))
     return "XML root is not RSS" if rss_doc.root.name != 'rss'
     return "Missing MRSS namespace" unless rss_doc.namespaces.values.include? 'http://search.yahoo.com/mrss/'

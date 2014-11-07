@@ -22,6 +22,7 @@ describe OasisMrssNotification, ".perform" do
      "http://grants.nih.gov/podcasts/All_About_Grants/AAG_Feed.xml",
      "http://www.fema.gov/media-library/assets/audio/rss.xml",
      "http://www.fema.gov/media-library/assets/vodcast/rss.xml",
+     "http://cdn-api.ooyala.com/syndication/mp4?id=9bf43e6b-2172-404f-b326-076b1d1c7389",
      "https://api.flickr.com/services/feeds/photos_public.gne?id=47838549@N08&lang=en-us&format=rss_200"].each do |url|
 
       it 'should not subscribe to Oasis' do
