@@ -14,7 +14,7 @@ class GoogleSearch < SearchEngine
 
   def initialize(options = {})
     super(options) do |search_engine|
-      search_engine.api_connection = connection_instance(options[:google_key])
+      search_engine.api_connection = connection_instance(options[:google_key], options[:google_cx])
       search_engine.api_endpoint= API_ENDPOINT
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
@@ -59,8 +59,8 @@ class GoogleSearch < SearchEngine
     I18n.locale == :es ? 'lang_es' : DEFAULT_LANGUAGE
   end
 
-  def connection_instance(google_key)
-    (google_key.blank? || (google_key == GoogleSearch::API_KEY)) ? rate_limited_api_connection : unlimited_api_connection
+  def connection_instance(google_key, google_cx)
+    google_key.blank? && google_cx.blank? ? rate_limited_api_connection : unlimited_api_connection
   end
 
   def unlimited_api_connection

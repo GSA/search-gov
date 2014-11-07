@@ -42,7 +42,7 @@ class WebSearch < Search
       @search_engine.execute_query
     end
   rescue SearchEngine::SearchError => error
-    Rails.logger.warn "Error getting search results from #{@search_engine.class.name} API endpoint: #{error}"
+    Rails.logger.warn "Error getting search results for #{@affiliate.name} from #{@search_engine.class.name} API endpoint: #{error}"
     false
   end
 
