@@ -50,13 +50,16 @@ To upgrade via homebrew:
 
     $ brew update && brew upgrade elasticsearch
 
-To change the defaults, like number of shards, edit this file:
+To change the defaults, like number of shards/replicas, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.3.4/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.4.0/config/elasticsearch.yml
     
-For the time being, add this to the end of the file to re-enable MVEL scripting:
+    index.number_of_shards: 1
+    index.number_of_replicas: 0
     
-    script.disable_dynamic: false
+For the time being, add this to the end of the file to re-enable MVEL scripting for sandboxed languages like Groovy:
+    
+    script.disable_dynamic: sandbox
 
 You will need to re-install any plugins:
 
