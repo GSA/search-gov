@@ -7,19 +7,58 @@ describe GovboxSet do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) { mock('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
-
-    it 'should assign boosted contents' do
-      affiliate.locale = 'en'
-      ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
-      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-      govbox_set.boosted_contents.should == "BoostedContent results"
+    let(:highlight_options) do
+      { highlighting: true,
+        pre_tags: '<b>',
+        post_tags: '</b>' }.freeze
     end
 
-    it 'should assign a single featured collection' do
-      affiliate.locale = 'en'
-      ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
-      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-      govbox_set.featured_collections.should == "FeaturedCollection result"
+    context 'when the affiliate has boosted contents' do
+      it 'should assign boosted contents' do
+        affiliate.locale = 'en'
+        ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.boosted_contents.should == "BoostedContent results"
+      end
+
+      it 'uses highlight options' do
+        expected_search_options = {
+          affiliate_id: affiliate.id,
+          language: 'en',
+          q: 'foo',
+          size: 3
+        }.merge(highlight_options)
+
+        expected_results = mock('BoostedContent results')
+        ElasticBoostedContent.should_receive(:search_for).with(expected_search_options).
+          and_return(expected_results)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.boosted_contents.should == expected_results
+      end
+    end
+
+    context 'when the affiliate has featured collections' do
+      it 'should assign a single featured collection' do
+        affiliate.locale = 'en'
+        ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.featured_collections.should == "FeaturedCollection result"
+      end
+
+      it 'uses highlight options' do
+        expected_search_options = {
+          affiliate_id: affiliate.id,
+          language: 'en',
+          q: 'foo',
+          size: 1
+        }.merge(highlight_options)
+
+        expected_results = mock('FeaturedCollection result')
+        ElasticFeaturedCollection.stub!(:search_for).with(expected_search_options).
+          and_return(expected_results)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.featured_collections.should == expected_results
+      end
     end
 
     context 'when affiliate is agency govbox enabled' do
@@ -77,6 +116,22 @@ describe GovboxSet do
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.federal_register_documents.should == fr_docs_results
       end
+
+      it 'uses highlight options' do
+        fr_docs_results = mock('federal register document results')
+        expected_search_options = {
+          federal_register_agency_ids: [federal_register_agency.id],
+          language: 'en',
+          q: 'foo'
+        }.merge(highlight_options)
+
+        ElasticFederalRegisterDocument.should_receive(:search_for).
+          with(expected_search_options).
+          and_return(fr_docs_results)
+
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.federal_register_documents.should == fr_docs_results
+      end
     end
 
     context "when the affiliate has the jobs govbox enabled" do
@@ -118,44 +173,71 @@ describe GovboxSet do
     end
 
     context 'when an affiliate has news govbox enabled' do
+      let(:blog_feed) { mock_model(RssFeed, name: 'Blog', is_managed?: false) }
+      let(:news_feed) { mock_model(RssFeed, name: 'News', is_managed?: false) }
+      let(:non_video_results) { mock('non video results', :total => 3) }
+
       before do
         affiliate.should_receive(:is_rss_govbox_enabled?).and_return(true)
         affiliate.should_receive(:is_video_govbox_enabled?).and_return(false)
-        news_feed = mock_model(RssFeed, name: 'News', is_managed?: false)
-        blog_feed = mock_model(RssFeed, name: 'Blog', is_managed?: false)
         non_managed_feeds = [news_feed, blog_feed]
         affiliate.stub_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).and_return non_managed_feeds
-        @non_video_results = mock('non video results', :total => 3)
-        ElasticNewsItem.should_receive(:search_for).
-          with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
-               since: 4.months.ago.beginning_of_day, language: 'en').
-          and_return(@non_video_results)
       end
 
       it 'should retrieve non-video news items from the last 13 months' do
+        ElasticNewsItem.should_receive(:search_for).
+          with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
+               since: 4.months.ago.beginning_of_day, language: 'en').
+          and_return(non_video_results)
+
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.news_items.should == @non_video_results
+        govbox_set.news_items.should == non_video_results
+      end
+
+      it 'uses highlight_options' do
+        expected_search_options = {
+          excluded_urls: affiliate.excluded_urls,
+          language: 'en',
+          q: 'foo',
+          rss_feeds: [news_feed, blog_feed],
+          since: 4.months.ago.beginning_of_day
+        }.merge(highlight_options)
+
+        ElasticNewsItem.should_receive(:search_for).
+          with(expected_search_options).
+          and_return(non_video_results)
+
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.news_items.should == non_video_results
       end
     end
 
     context 'when an affiliate has video govbox enabled' do
+      let(:youtube_feed) { mock_model(RssFeed) }
+      let(:video_results) { mock('video results', total: 3) }
       before do
         affiliate.should_receive(:is_rss_govbox_enabled?).and_return(false)
         affiliate.should_receive(:is_video_govbox_enabled?).and_return(true)
 
         youtube_profile_ids = mock 'youtube profile ids'
         affiliate.should_receive(:youtube_profile_ids).and_return youtube_profile_ids
-        youtube_feed = mock_model(RssFeed)
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
-        @video_results = mock('video results', total: 3)
-        ElasticNewsItem.should_receive(:search_for).with(q: 'foo', rss_feeds: [youtube_feed], since: 13.months.ago.beginning_of_day,
-                                                         excluded_urls: affiliate.excluded_urls, language: 'en').
-          and_return(@video_results)
       end
 
       it 'should retrieve video news items' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.video_news_items.should == @video_results
+        expected_search_options = {
+          excluded_urls: affiliate.excluded_urls,
+          language: 'en',
+          q: 'foo',
+          rss_feeds: [youtube_feed],
+          since: 13.months.ago.beginning_of_day
+        }.merge(highlight_options)
+
+        ElasticNewsItem.should_receive(:search_for).with(expected_search_options).
+          and_return(video_results)
+
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.video_news_items.should == video_results
       end
     end
 
@@ -229,6 +311,22 @@ describe GovboxSet do
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             govbox_set.tweets.should == 'Twitter stuff'
           end
+
+          it 'uses highlight_options' do
+            expected_search_options = {
+              language: "en",
+              q: 'foo',
+              since: 3.days.ago.beginning_of_day,
+              size: 1,
+              twitter_profile_ids: [123]
+            }.merge(highlight_options)
+
+            expected_tweets = mock('expected tweets')
+            ElasticTweet.should_receive(:search_for).with(expected_search_options).
+              and_return(expected_tweets)
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+            govbox_set.tweets.should == expected_tweets
+          end
         end
 
         context "when affiliate has no Twitter Profiles" do
@@ -237,14 +335,25 @@ describe GovboxSet do
             govbox_set.tweets.should be_nil
           end
         end
-
       end
     end
 
-    it 'should assign related searches' do
-      SaytSuggestion.stub!(:related_search).with('foo', affiliate).and_return "related search results"
-      govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-      govbox_set.related_search.should == "related search results"
+    context 'when the affiliate has related search terms' do
+      it 'should assign related searches' do
+        SaytSuggestion.stub!(:related_search).with('foo', affiliate, {}).and_return "related search results"
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.related_search.should == "related search results"
+      end
+
+      it 'uses highlight options' do
+        expected_search_terms = mock('search terms')
+        SaytSuggestion.stub!(:related_search).with('foo', affiliate, highlight_options).
+          and_return(expected_search_terms)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set.related_search.should == expected_search_terms
+      end
+
     end
+
   end
 end

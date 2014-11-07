@@ -13,14 +13,15 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_affiliate_options
+  def set_affiliate
     @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
 
     unless @affiliate
       redirect_to('http://www.usa.gov/page-not-found') and return
     end
+  end
 
-    set_locale_based_on_affiliate_locale
+  def set_header_footer_fields
     if @affiliate && params['staged']
       @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
       @affiliate.header = @affiliate.staged_header

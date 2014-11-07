@@ -14,6 +14,8 @@ class NewsItem < ActiveRecord::Base
   belongs_to :rss_feed_url
   serialize :properties, Hash
 
+  alias_attribute :url, :link
+
   TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
   TIME_BASED_SEARCH_OPTIONS["h"] = :hour
   TIME_BASED_SEARCH_OPTIONS["d"] = :day

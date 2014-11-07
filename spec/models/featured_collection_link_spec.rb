@@ -10,6 +10,21 @@ describe FeaturedCollectionLink do
   it { should validate_presence_of :url }
   it { should belong_to :featured_collection }
 
+  it 'squishes title and url' do
+    fc = FeaturedCollection.new(title: 'Search USA Blog',
+                                status: 'active',
+                                publish_start_on: '07/01/2011',
+                                affiliate: @affiliate)
+    fc.featured_collection_links.build(title: ' Blog Post    1 ',
+                                       url: '   http://search.digitalgov.gov/blog-1   ',
+                                       position: 0)
+    fc.save!
+    link = fc.featured_collection_links(true).first
+
+    expect(link.title).to eq('Blog Post 1')
+    expect(link.url).to eq('http://search.digitalgov.gov/blog-1')
+  end
+
   describe "URL should have http(s):// prefix" do
     context "when the URL does not start with http(s):// prefix" do
       url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'

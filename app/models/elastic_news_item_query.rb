@@ -65,11 +65,11 @@ class ElasticNewsItemQuery < ElasticTextFilteredQuery
     end
   end
 
-  def pre_tags
+  def default_pre_tags
     %w()
   end
 
-  def post_tags
+  def default_post_tags
     %w()
   end
 

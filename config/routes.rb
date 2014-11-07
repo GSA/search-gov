@@ -10,6 +10,9 @@ UsasearchRails3::Application.routes.draw do
     namespace :v1 do
       get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
     end
+    namespace :v2 do
+      get '/search' => 'searches#index', defaults: { format: :json }
+    end
   end
 
   get '/sayt' => 'sayt#index'

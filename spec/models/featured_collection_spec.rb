@@ -27,6 +27,18 @@ describe FeaturedCollection do
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
 
+  it 'squishes title, title_url and image_alt_text' do
+    fc = FeaturedCollection.create!({ title: 'Did You   Mean Roes or Rose?',
+                                      title_url: ' ',
+                                      image_alt_text: '  ',
+                                      status: 'active',
+                                      publish_start_on: '07/01/2011',
+                                      affiliate: @affiliate })
+    expect(fc.title).to eq('Did You Mean Roes or Rose?')
+    expect(fc.title_url).to be_nil
+    expect(fc.image_alt_text).to be_nil
+  end
+
   describe "title URL should have http(s):// prefix" do
     context "when the title URL does not start with http(s):// prefix" do
       title_url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
@@ -202,5 +214,39 @@ describe FeaturedCollection do
 
   describe ".human_attribute_name" do
     specify { FeaturedCollection.human_attribute_name("publish_start_on").should == "Publish start date" }
+  end
+
+  describe '#as_json' do
+    after { FeaturedCollection.destroy_all }
+
+    context 'when image is present' do
+      it 'contains image_url' do
+        image = File.new(Rails.root.join('features/support/small.jpg'), 'r')
+        fc_attributes = {
+          image: image,
+          title: 'My awesome featured collection',
+          title_url: 'http://www.dotgov.gov/page.html',
+          status: 'active',
+          publish_start_on: Date.current
+        }
+        fc = @affiliate.featured_collections.build(fc_attributes)
+        fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
+                                           :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                           :position => '0')
+        fc.save!
+
+        as_json_hash = fc.as_json
+
+        expect(as_json_hash[:title]).to eq('My awesome featured collection')
+        expect(as_json_hash[:title_url]).to eq('http://www.dotgov.gov/page.html')
+        expect(as_json_hash[:image_url]).to match(/small\.jpg/)
+
+        expected_link_hash = {
+          title: 'Worldwide Tropical Cyclone Names Part1',
+          url: 'http://www.nhc.noaa.gov/aboutnames.shtml'
+        }
+        expect(as_json_hash[:links]).to eq([expected_link_hash])
+      end
+    end
   end
 end

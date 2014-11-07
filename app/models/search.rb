@@ -59,25 +59,29 @@ class Search
     page == 1
   end
 
-  def as_json(options = {})
-    result_hash
-  end
-
   def to_xml(options = {:indent => 0, :root => :search})
-    result_hash.to_xml(options)
+    to_hash.to_xml(options)
   end
 
-  def result_hash
+  def as_json(options = {})
+    to_hash
+  end
+
+  def to_hash
     if @error_message
       {error: @error_message}
     else
       hash = {total: @total,
               startrecord: @startrecord,
               endrecord: @endrecord,
-              results: @results}
+              results: results_to_hash}
       hash.merge!(related: remove_strong(related_search)) if self.respond_to?(:related_search)
       hash
     end
+  end
+
+  def results_to_hash
+    @results
   end
 
   def commercial_results?

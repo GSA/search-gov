@@ -14,9 +14,13 @@ class SaytSuggestion < ActiveRecord::Base
   MAX_POPULARITY = 2**30
 
   class << self
-    def related_search(query, affiliate)
+    def related_search(query, affiliate, options = {})
       return [] unless affiliate.is_related_searches_enabled?
-      elastic_results = ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale, size: 5)
+      search_options = { affiliate_id: affiliate.id,
+                         language: affiliate.locale,
+                         size: 5,
+                         q: query }.reverse_merge(options)
+      elastic_results = ElasticSaytSuggestion.search_for search_options
       elastic_results.results.collect { |result| result.phrase }
     end
 

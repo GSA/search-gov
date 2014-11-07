@@ -10,8 +10,14 @@ class GovboxSet
               :tweets,
               :video_news_items
 
-  def initialize(query, affiliate, geoip_info)
+  def initialize(query, affiliate, geoip_info, options = {})
     @query, @affiliate, @geoip_info = query, affiliate, geoip_info
+    @highlight_options = options.slice(:highlighting, :pre_tags, :post_tags)
+
+    @base_search_options = @highlight_options.merge(
+      language: @affiliate.locale,
+      q: @query)
+
     init_best_bets
     init_agency
     init_federal_register_documents
@@ -26,16 +32,16 @@ class GovboxSet
   private
 
   def init_related_search
-    @related_search = SaytSuggestion.related_search(@query, @affiliate)
+    @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlight_options)
   end
 
   def init_tweets
     affiliate_twitter_ids = @affiliate.searchable_twitter_ids
-    @tweets = ElasticTweet.search_for(q: @query,
-                                      twitter_profile_ids: affiliate_twitter_ids,
-                                      since: 3.days.ago.beginning_of_day,
-                                      language: @affiliate.locale,
-                                      size: 1) if affiliate_twitter_ids.any?
+    search_options = build_search_options(
+      since: 3.days.ago.beginning_of_day,
+      size: 1,
+      twitter_profile_ids: affiliate_twitter_ids)
+    @tweets = ElasticTweet.search_for(search_options) if affiliate_twitter_ids.any?
   end
 
   def init_med_topic
@@ -46,16 +52,26 @@ class GovboxSet
     if @affiliate.is_video_govbox_enabled?
       youtube_profile_ids = @affiliate.youtube_profile_ids
       video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
-      @video_news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: video_feeds, since: 13.months.ago.beginning_of_day,
-                                                     excluded_urls: @affiliate.excluded_urls, language: @affiliate.locale) if video_feeds.present?
+      return unless video_feeds.present?
+
+      search_options = build_search_options(
+        excluded_urls: @affiliate.excluded_urls,
+        rss_feeds: video_feeds,
+        since: 13.months.ago.beginning_of_day)
+      @video_news_items = ElasticNewsItem.search_for search_options
     end
   end
 
   def init_news_items
     if @affiliate.is_rss_govbox_enabled?
       non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
-      @news_items = ElasticNewsItem.search_for(q: @query, rss_feeds: non_managed_feeds, excluded_urls: @affiliate.excluded_urls,
-                                               since: 4.months.ago.beginning_of_day, language: @affiliate.locale) if non_managed_feeds.present?
+      return unless non_managed_feeds.present?
+
+      search_options = build_search_options(
+        excluded_urls: @affiliate.excluded_urls,
+        rss_feeds: non_managed_feeds,
+        since: 4.months.ago.beginning_of_day)
+      @news_items = ElasticNewsItem.search_for search_options
     end
   end
 
@@ -80,14 +96,20 @@ class GovboxSet
     if @affiliate.is_federal_register_document_govbox_enabled? &&
       @affiliate.agency && @affiliate.agency.federal_register_agency.present?
 
-      @federal_register_documents = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [@affiliate.agency.federal_register_agency_id],
-                                                                              language: 'en',
-                                                                              q: @query)
+      search_options = build_search_options(
+        federal_register_agency_ids: [@affiliate.agency.federal_register_agency_id],
+        language: 'en')
+      @federal_register_documents = ElasticFederalRegisterDocument.search_for search_options
     end
   end
 
   def init_best_bets
-    @featured_collections = ElasticFeaturedCollection.search_for(q: @query, affiliate_id: @affiliate.id, size: 1, language: @affiliate.locale)
-    @boosted_contents = ElasticBoostedContent.search_for(q: @query, affiliate_id: @affiliate.id, size: 3, language: @affiliate.locale)
+    search_options = build_search_options(affiliate_id: @affiliate.id)
+    @featured_collections = ElasticFeaturedCollection.search_for(search_options.merge(size: 1))
+    @boosted_contents = ElasticBoostedContent.search_for(search_options.merge(size: 3))
+  end
+
+  def build_search_options(options)
+    @base_search_options.merge options
   end
 end

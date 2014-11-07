@@ -8,6 +8,9 @@ class BlendedSearch < Search
     @options = options
     @query = (@query || '').squish
     @total = 0
+    @limit = options[:limit]
+    @offset = options[:offset]
+    @highlight_options = options.slice(:highlighting, :pre_tags, :post_tags)
   end
 
   def search
@@ -15,8 +18,8 @@ class BlendedSearch < Search
                        affiliate_id: @affiliate.id,
                        rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
                        language: @affiliate.locale,
-                       size: @per_page,
-                       offset: (@page - 1) * @per_page }
+                       size: detect_size,
+                       offset: detect_offset }.reverse_merge(@highlight_options)
     elastic_blended_results = ElasticBlended.search_for(search_options)
     ensure_no_suggestion_when_results_present(elastic_blended_results)
     if elastic_blended_results && elastic_blended_results.total.zero? && elastic_blended_results.suggestion.present?
@@ -25,6 +28,14 @@ class BlendedSearch < Search
       elastic_blended_results.override_suggestion(suggestion) if elastic_blended_results
     end
     elastic_blended_results
+  end
+
+  def detect_size
+    @limit ? @limit : @per_page
+  end
+
+  def detect_offset
+    @offset ? @offset : ((@page - 1) * @per_page)
   end
 
   def handle_response(response)
@@ -38,9 +49,16 @@ class BlendedSearch < Search
     end
   end
 
+  def first_page?
+    @offset ? @offset == 0 : super
+  end
+
   protected
   def populate_additional_results
-    @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info]) if first_page?
+    @govbox_set = GovboxSet.new(query,
+                                affiliate,
+                                @options[:geoip_info],
+                                @highlight_options) if first_page?
   end
 
   def log_serp_impressions
@@ -66,5 +84,4 @@ class BlendedSearch < Search
       elastic_blended_results.override_suggestion(nil)
     end
   end
-
 end

@@ -5,7 +5,8 @@ class SearchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :set_default_locale
 
   before_filter :handle_old_advanced_form, :only => [:index]
-  before_filter :set_affiliate_options
+  before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
+  before_filter :set_header_footer_fields
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]

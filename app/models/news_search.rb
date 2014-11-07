@@ -76,6 +76,10 @@ class NewsSearch < Search
     @sort_by_relevance
   end
 
+  def results_to_hash
+    @results.map { |r| r.serializable_hash }
+  end
+
   protected
 
   def handle_response(response)

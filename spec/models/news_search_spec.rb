@@ -426,4 +426,17 @@ describe NewsSearch do
       NewsSearch.new(options.merge(since_date: '10/1/2012', until_date: '10/31/2012')).cache_key.should == "#{affiliate.id}:element::2012-10-01..2012-10-31:1:10"
     end
   end
+
+  describe '#as_json' do
+    let(:expected_keys) do
+      %w(body contributor created_at description guid id link properties
+         published_at publisher rss_feed_url_id subject title updated_at)
+    end
+
+    it 'contains all attributes' do
+      search = NewsSearch.new(affiliate: affiliate, channel: rss_feeds(:white_house_blog))
+      search.run
+      expect(search.as_json[:results].first.keys).to match_array(expected_keys)
+    end
+  end
 end

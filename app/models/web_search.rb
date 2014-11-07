@@ -18,16 +18,7 @@ class WebSearch < Search
     [@formatted_query, @options.remove(:affiliate).merge(affiliate_id: @affiliate.id), @affiliate.search_engine].join(':')
   end
 
-  protected
-  def search_engine_klass(search_engine_option)
-    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
-  end
-
-  def domains_scope_options
-    DomainScopeOptionsBuilder.build @affiliate, @options[:site_limits]
-  end
-
-  def result_hash
+  def to_hash
     hash = super
     unless @error_message
       hash.merge!(:spelling_suggestion => @spelling_suggestion) if @spelling_suggestion
@@ -35,6 +26,15 @@ class WebSearch < Search
       hash.merge!(:jobs => jobs) if jobs.present?
     end
     hash
+  end
+
+  protected
+  def search_engine_klass(search_engine_option)
+    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+  end
+
+  def domains_scope_options
+    DomainScopeOptionsBuilder.build @affiliate, @options[:site_limits]
   end
 
   def search

@@ -2,8 +2,8 @@ class ElasticQuery
 
   DEFAULT_SIZE = 10.freeze
   MAX_SIZE = 100.freeze
-  DEFAULT_PRE_TAG = '<strong>'
-  DEFAULT_POST_TAG = '</strong>'
+  DEFAULT_PRE_TAGS = %w(<strong>).freeze
+  DEFAULT_POST_TAGS = %w(</strong>).freeze
   attr_reader :offset, :size, :sort
   attr_accessor :highlighted_fields
 
@@ -15,6 +15,8 @@ class ElasticQuery
     @highlighting = !(options[:highlighting] == false)
     @text_analyzer = "#{options[:language]}_analyzer"
     @sort = options[:sort]
+    @pre_tags = options[:pre_tags]
+    @post_tags = options[:post_tags]
   end
 
   def body
@@ -44,11 +46,19 @@ class ElasticQuery
   end
 
   def pre_tags
-    [DEFAULT_PRE_TAG]
+    @pre_tags || default_pre_tags
+  end
+
+  def default_pre_tags
+    DEFAULT_PRE_TAGS
   end
 
   def post_tags
-    [DEFAULT_POST_TAG]
+    @post_tags || default_post_tags
+  end
+
+  def default_post_tags
+    DEFAULT_POST_TAGS
   end
 
   def highlight_fields(json)

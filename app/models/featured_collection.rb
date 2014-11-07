@@ -1,4 +1,5 @@
 class FeaturedCollection < ActiveRecord::Base
+  extend AttributeSquisher
   include ActiveRecordExtension
   include BestBet
 
@@ -24,8 +25,10 @@ class FeaturedCollection < ActiveRecord::Base
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
 
+  before_validation :sanitize_html_in_title
+  before_validation_squish :title, :title_url, :image_alt_text, assign_nil_on_blank: true
   after_validation :update_errors_keys
-  before_save :ensure_http_prefix, :sanitize_html_in_title
+  before_save :ensure_http_prefix
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :substring_match, -> substring do
@@ -52,6 +55,21 @@ class FeaturedCollection < ActiveRecord::Base
     destroy_on_blank(params[:featured_collection_keywords_attributes], :value)
     destroy_on_blank(params[:featured_collection_links_attributes], :title, :url)
     touch if update_attributes(params)
+  end
+
+  def as_json(options = {})
+    image_url = build_image_url
+    hash = { title: title,
+             title_url: title_url }
+
+    if image_url
+      hash[:image_url] = image_url
+      hash[:image_alt_text] = image_alt_text
+    end
+
+    hash[:links] = featured_collection_links.collect(&:as_json)
+
+    hash
   end
 
   private
@@ -83,6 +101,12 @@ class FeaturedCollection < ActiveRecord::Base
     if self.errors.include?(:"featured_collection_links.url")
       error_value = self.errors.delete(:"featured_collection_links.url")
       self.errors.add(:"best_bets:_graphics_links.url", error_value)
+    end
+  end
+
+  def build_image_url(size = :medium)
+    if image_file_name.present?
+      image.url(size) rescue nil
     end
   end
 end
