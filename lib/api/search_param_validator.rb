@@ -1,6 +1,6 @@
 class Api::SearchParamValidator
   LIMIT_RANGE = (1..50).freeze
-  DEFAULT_LIMIT = 50
+  DEFAULT_LIMIT = 20
   LIMIT_ERROR = "limit must be between #{LIMIT_RANGE.first} and #{LIMIT_RANGE.last}".freeze
 
   OFFSET_RANGE = (0..1000).freeze
