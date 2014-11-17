@@ -99,21 +99,6 @@ describe ApiController do
       end
     end
 
-    describe "jsonp support" do
-      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
-
-      before do
-        ApiSearch.should_receive(:new).and_return(api_search)
-        search_results = { :spelling_suggestions => "house" }.to_json
-        api_search.stub(:run).and_return(search_results)
-      end
-
-      it "should wrap response with predefined callback if callback is not blank" do
-        get :search, :affiliate => affiliate.name, :query => "haus", :callback => 'processData', :format => 'json'
-        response.body.should == %{processData({"spelling_suggestions":"house"})}
-      end
-    end
-
     describe "logging searches and impressions" do
       let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => [], :run => nil) }
 

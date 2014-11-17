@@ -265,6 +265,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
     rack-mobile-detect (0.4.0)
       rack
     rack-protection (1.5.0)
@@ -484,6 +486,7 @@ DEPENDENCIES
   oj
   paperclip-cloudfiles
   poltergeist
+  rack-contrib
   rails (= 3.2.15)
   rake
   rash

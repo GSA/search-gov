@@ -33,11 +33,7 @@ class SaytController < ActionController::Metal
         search = SaytSearch.new(options)
         self.content_type = 'application/json'
 
-        if params[:callback].blank?
-          self.response_body = search.results.to_json
-        else
-          self.response_body = "#{sayt_params[:callback]}(#{search.results.to_json})"
-        end
+        self.response_body = search.results.to_json
       else
         self.response_body = ''
       end
@@ -51,7 +47,7 @@ class SaytController < ActionController::Metal
   def sayt_params
     @sayt_params ||= begin
       parameters = ActionController::Parameters.new(params)
-      parameters.permit(:aid, :callback, :extras, :name, :q)
+      parameters.permit(:aid, :extras, :name, :q)
     end
   end
 end

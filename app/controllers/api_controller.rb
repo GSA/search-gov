@@ -11,7 +11,7 @@ class ApiController < ApplicationController
     SearchImpression.log(@search, get_vertical(params[:index]), params, request)
     respond_to do |format|
       format.xml { render :xml => results }
-      format.json { params[:callback].blank? ? render(:json => results) : render(:json => results, :callback => params[:callback]) }
+      format.json { render(:json => results) }
     end
   end
 

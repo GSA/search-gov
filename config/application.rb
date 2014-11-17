@@ -27,6 +27,7 @@ module UsasearchRails3
     config.middleware.use 'RejectInvalidRequestUri'
     config.middleware.use 'DowncaseRoute'
     config.middleware.use 'AdjustClientIp'
+    config.middleware.use Rack::JSONP
     # config.middleware.use ::Rack::PerftoolsProfiler
 
     # Only load the plugins named here, in the order given (default is alphabetical).

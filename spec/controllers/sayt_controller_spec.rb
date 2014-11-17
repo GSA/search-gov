@@ -27,8 +27,8 @@ describe SaytController do
                                 number_of_results: 5)).
             and_return(search)
 
-        get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :callback => 'jsonp1234'
-        response.body.should == %Q{jsonp1234(some json string)}
+        get :index, :q => 'lorem \\ ipsum', :name => affiliate.name
+        response.body.should == 'some json string'
       end
     end
 
@@ -43,8 +43,8 @@ describe SaytController do
                                 number_of_results: 5)).
             and_return(search)
 
-        get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :callback => 'jsonp1234', :extras => 'true'
-        response.body.should == %Q{jsonp1234(some json string)}
+        get :index, :q => 'lorem \\ ipsum', :name => affiliate.name, :extras => 'true'
+        response.body.should == 'some json string'
       end
     end
 
@@ -67,8 +67,8 @@ describe SaytController do
                                 number_of_results: 5)).
             and_return(search)
 
-        get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234'
-        response.body.should == %Q{jsonp1234(some json string)}
+        get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id
+        response.body.should == 'some json string'
       end
     end
 
@@ -82,8 +82,8 @@ describe SaytController do
                                 number_of_results: 5)).
             and_return(search)
 
-        get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :callback => 'jsonp1234', :extras => 'true'
-        response.body.should == %Q{jsonp1234(some json string)}
+        get :index, :q => 'lorem \\ ipsum', :aid => affiliate.id, :extras => 'true'
+        response.body.should == 'some json string'
       end
     end
 
@@ -94,21 +94,6 @@ describe SaytController do
 
         get :index, :q => 'lorem // ipsum', :aid => 0
         response.body.should == ''
-      end
-    end
-
-    context 'when callback parameter is not specified' do
-      it 'should return json string' do
-        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(affiliate.id.to_s, true).and_return(affiliate)
-        SaytSearch.should_receive(:new).
-            with(hash_including(affiliate_id: affiliate.id,
-                                query: 'lorem ipsum',
-                                extras: false,
-                                number_of_results: 5)).
-            and_return(search)
-
-        get :index, q: 'lorem \\ ipsum', aid: affiliate.id, invalid_param: 'invalid'
-        response.body.should == 'some json string'
       end
     end
   end

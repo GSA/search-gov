@@ -60,11 +60,12 @@ gem 'truncator'
 gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 gem 'elasticsearch'
-gem 'jbuilder'
-gem 'typhoeus'
 gem 'federal_register'
 gem 'instagram'
+gem 'jbuilder'
+gem 'rack-contrib'
 gem 'sitelink_generator'
+gem 'typhoeus'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
