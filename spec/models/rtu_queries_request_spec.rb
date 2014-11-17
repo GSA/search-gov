@@ -20,7 +20,9 @@ describe RtuQueriesRequest do
         let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
 
         before do
-          ES::client_reader.stub(:search).and_return json_response
+          query_body = %q({"query":{"filtered":{"query":{"match":{"query":{"query":"mexico petition marine","analyzer":"snowball","operator":"and"}}},"filter":{"bool":{"must":[{"term":{"affiliate":"nps.gov"}},{"range":{"@timestamp":{"gte":"2014-05-28","lte":"2014-05-28"}}}],"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000},"aggs":{"type":{"terms":{"field":"type"}}}}}})
+          opts = {index: "logstash-*", type: %w(search click), body: query_body, size: 0}
+          ES::client_reader.should_receive(:search).with(opts).and_return json_response
           rtu_queries_request.save
         end
 

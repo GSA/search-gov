@@ -49,7 +49,7 @@ class RtuQueriesRequest
   end
 
   def top_n(query_body)
-    ES::client_reader.search(index: "#{logstash_prefix(filter_bots)}*", body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    ES::client_reader.search(index: "#{logstash_prefix(filter_bots)}*", type: %w(search click), body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
 end
