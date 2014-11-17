@@ -27,6 +27,7 @@ module UsasearchRails3
     config.middleware.use 'RejectInvalidRequestUri'
     config.middleware.use 'DowncaseRoute'
     config.middleware.use 'AdjustClientIp'
+    config.middleware.use 'FilteredCORS'
     config.middleware.use 'FilteredJSONP'
     # config.middleware.use ::Rack::PerftoolsProfiler
 

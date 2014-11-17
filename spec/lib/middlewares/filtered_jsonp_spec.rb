@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-require 'rack/request'
 require 'rack/mock'
 
 describe FilteredJSONP do
@@ -29,7 +28,7 @@ describe FilteredJSONP do
 
       request = Rack::MockRequest.env_for(path, params: "foo=bar&callback=#{callback}")
       body = described_class.new(app).call(request).last
-      expect(body).to  eq([test_body])
+      expect(body).to eq([test_body])
     end
   end
 end

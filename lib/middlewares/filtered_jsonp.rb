@@ -1,7 +1,7 @@
 require 'rack/contrib/jsonp'
 
 class FilteredJSONP < ::Rack::JSONP
-  PATHS_WITH_JSONP_SUPPORT = %r{\A/(api/search|sayt)}i
+  PATHS_WITH_JSONP_SUPPORT = %r{\A/(api/search|sayt)}i.freeze
 
   def call(env)
     request = Rack::Request.new(env)
