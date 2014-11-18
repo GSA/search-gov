@@ -1,8 +1,9 @@
-class Api::V2::SearchesController < SslController
+class Api::V2::SearchesController < ApplicationController
   respond_to :json
 
+  skip_before_filter :ensure_proper_protocol
   skip_before_filter :set_default_locale, :show_searchbox
-  before_filter :validate_params
+  before_filter :require_ssl, :validate_params
   before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
 
   def index
@@ -13,6 +14,18 @@ class Api::V2::SearchesController < SslController
   end
 
   private
+
+  def require_ssl
+    respond_with(*ssl_required_response) unless request_ssl?
+  end
+
+  def request_ssl?
+    Rails.env.production? ? request.ssl? : true
+  end
+
+  def ssl_required_response
+    [{ errors: ['HTTPS is required'] }, { status: 400 }]
+  end
 
   def set_affiliate
     unless search_params[:affiliate].blank?
