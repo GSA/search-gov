@@ -36,7 +36,7 @@ CREATE TABLE `affiliate_twitter_settings` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `aff_id_tp_id` (`affiliate_id`,`twitter_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -97,7 +97,7 @@ CREATE TABLE `affiliates` (
   `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_instagram_profiles` (
   `affiliate_id` int(11) NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `agencies` (
   `organization_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agency_queries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -145,7 +145,7 @@ CREATE TABLE `agency_queries` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agency_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -156,7 +156,7 @@ CREATE TABLE `agency_urls` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_agency_urls_on_agency_id_and_locale_and_url` (`agency_id`,`locale`,`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_content_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -166,7 +166,7 @@ CREATE TABLE `boosted_content_keywords` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_boosted_content_keywords_on_boosted_content_id` (`boosted_content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_contents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -181,7 +181,7 @@ CREATE TABLE `boosted_contents` (
   `publish_end_on` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_boosted_contents_on_affiliate_id_and_title` (`affiliate_id`,`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `catalog_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -215,7 +215,7 @@ CREATE TABLE `daily_search_module_stats` (
   PRIMARY KEY (`id`),
   KEY `index_daily_search_module_stats_on_module_tag_and_day` (`module_tag`,`day`),
   KEY `index_daily_search_module_stats_on_affiliate_name_and_day` (`affiliate_name`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `daily_usage_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -225,7 +225,7 @@ CREATE TABLE `daily_usage_stats` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_daily_usage_stats_on_affiliate_and_day` (`affiliate`,`day`),
   UNIQUE KEY `index_daily_usage_stats_on_day_and_affiliate` (`day`,`affiliate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `document_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -246,7 +246,7 @@ CREATE TABLE `email_templates` (
   `updated_at` datetime DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `excluded_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -256,7 +256,7 @@ CREATE TABLE `excluded_domains` (
   `affiliate_id` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `index_excluded_domains_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `excluded_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -286,7 +286,7 @@ CREATE TABLE `featured_collection_keywords` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collection_keywords_on_featured_collection_id` (`featured_collection_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `featured_collection_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -298,7 +298,7 @@ CREATE TABLE `featured_collection_links` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collection_links_on_featured_collection_id` (`featured_collection_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `featured_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -317,7 +317,7 @@ CREATE TABLE `featured_collections` (
   `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `features` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -376,7 +376,7 @@ CREATE TABLE `flickr_profiles` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_flickr_profiles_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=378 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `help_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -396,7 +396,7 @@ CREATE TABLE `image_search_labels` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_image_search_labels_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `indexed_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -416,7 +416,7 @@ CREATE TABLE `indexed_documents` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_indexed_documents_on_affiliate_id_and_id` (`affiliate_id`,`id`),
   KEY `by_aid_url` (`affiliate_id`,`url`(50))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=309 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `instagram_profiles` (
   `id` bigint(20) NOT NULL,
@@ -483,7 +483,7 @@ CREATE TABLE `memberships` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_memberships_on_affiliate_id_and_user_id` (`affiliate_id`,`user_id`),
   KEY `index_memberships_on_user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `misspellings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -507,7 +507,7 @@ CREATE TABLE `navigations` (
   PRIMARY KEY (`id`),
   KEY `index_navigations_on_affiliate_id` (`affiliate_id`),
   KEY `index_navigations_on_navigable_id_and_navigable_type` (`navigable_id`,`navigable_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `news_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -527,7 +527,7 @@ CREATE TABLE `news_items` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
   KEY `index_news_items_on_link` (`link`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7206 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `outbound_rate_limits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -536,7 +536,7 @@ CREATE TABLE `outbound_rate_limits` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `rss_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -550,7 +550,7 @@ CREATE TABLE `rss_feed_urls` (
   `oasis_mrss_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_rss_feed_urls_on_rss_feed_owner_type_and_url` (`rss_feed_owner_type`,`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `rss_feed_urls_rss_feeds` (
   `rss_feed_url_id` int(11) NOT NULL,
@@ -571,7 +571,7 @@ CREATE TABLE `rss_feeds` (
   PRIMARY KEY (`id`),
   KEY `index_rss_feeds_on_affiliate_id` (`owner_id`),
   KEY `index_rss_feeds_on_owner_type_and_owner_id` (`owner_type`,`owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sayt_filters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -583,7 +583,7 @@ CREATE TABLE `sayt_filters` (
   `accept` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_sayt_filters_on_phrase` (`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sayt_suggestions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -612,7 +612,7 @@ CREATE TABLE `search_modules` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -623,7 +623,7 @@ CREATE TABLE `sessions` (
   PRIMARY KEY (`id`),
   KEY `index_sessions_on_session_id` (`session_id`),
   KEY `index_sessions_on_updated_at` (`updated_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `site_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -634,7 +634,7 @@ CREATE TABLE `site_domains` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_domains_on_affiliate_id_and_domain` (`affiliate_id`,`domain`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `site_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -665,20 +665,7 @@ CREATE TABLE `superfresh_urls` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_superfresh_urls_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `synonyms` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `entry` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `notes` text COLLATE utf8_unicode_ci,
-  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Candidate',
-  `locale` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `affiliate_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_synonyms_on_entry_and_locale` (`entry`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=310 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `system_alerts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -722,7 +709,7 @@ CREATE TABLE `tweets` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_tweets_on_tweet_id` (`tweet_id`),
   KEY `index_tweets_on_twitter_profile_id` (`twitter_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `twitter_lists` (
   `id` bigint(20) unsigned NOT NULL,
@@ -751,7 +738,7 @@ CREATE TABLE `twitter_profiles` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_twitter_profiles_on_twitter_id` (`twitter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `url_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -794,7 +781,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
   KEY `index_users_on_perishable_token` (`perishable_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `youtube_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -803,7 +790,7 @@ CREATE TABLE `youtube_profiles` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_youtube_profiles_on_username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
@@ -2030,3 +2017,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141010045603');
 INSERT INTO schema_migrations (version) VALUES ('20141024151713');
 
 INSERT INTO schema_migrations (version) VALUES ('20141027184753');
+
+INSERT INTO schema_migrations (version) VALUES ('20141118201319');

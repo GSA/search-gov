@@ -157,7 +157,6 @@ UsasearchRails3::Application.routes.draw do
     resources :features do as_routes end
     resources :affiliate_feature_additions do as_routes end
     resources :help_links do as_routes end
-    resources :synonyms do as_routes end
     resources :email_templates do as_routes end
     resources :compare_search_results, :only => :index
     resources :bing_urls do as_routes end
