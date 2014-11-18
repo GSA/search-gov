@@ -1,4 +1,4 @@
-class Api::V2::SearchesController < ApplicationController
+class Api::V2::SearchesController < SslController
   respond_to :json
 
   skip_before_filter :set_default_locale, :show_searchbox

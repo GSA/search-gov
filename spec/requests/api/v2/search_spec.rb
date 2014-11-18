@@ -137,7 +137,6 @@ describe '/api/v2/search' do
 
       it 'returns JSON results without highlighting' do
         get '/api/v2/search', affiliate: 'usagov', query: 'api', limit: '1'
-        puts response.body
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
