@@ -1,4 +1,5 @@
 class WebSearch < Search
+  include CommercialSearch
   include Govboxable
 
   attr_reader :matching_site_limits, :tracking_information
@@ -35,15 +36,6 @@ class WebSearch < Search
 
   def domains_scope_options
     DomainScopeOptionsBuilder.build @affiliate, @options[:site_limits]
-  end
-
-  def search
-    ActiveSupport::Notifications.instrument("#{@search_engine.class.name.tableize.singularize}.usasearch", :query => { :term => @search_engine.query }) do
-      @search_engine.execute_query
-    end
-  rescue SearchEngine::SearchError => error
-    Rails.logger.warn "Error getting search results for #{@affiliate.name} from #{@search_engine.class.name} API endpoint: #{error}"
-    false
   end
 
   def handle_response(response)
@@ -137,14 +129,7 @@ class WebSearch < Search
   def log_serp_impressions
     @modules << module_tag if module_tag
     @modules |= spelling_suggestion_modules
-    @modules << "SREL" if self.has_related_searches?
-    @modules << 'NEWS' if self.has_news_items?
-    @modules << 'VIDS' if self.has_video_news_items?
-    @modules << "BBG" if self.has_featured_collections?
-    @modules << "BOOS" if self.has_boosted_contents?
-    @modules << "MEDL" unless self.med_topic.nil?
-    @modules << "JOBS" if self.jobs.present?
-    @modules << "TWEET" if self.has_tweets?
+    @modules |= @govbox_set.modules if @govbox_set
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 

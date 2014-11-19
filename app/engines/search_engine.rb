@@ -18,7 +18,7 @@ class SearchEngine
     @per_page = options[:per_page] || DEFAULT_PER_PAGE
     @offset = options[:offset] || DEFAULT_OFFSET
     @enable_highlighting = options[:enable_highlighting].nil? || options[:enable_highlighting]
-    yield self
+    yield self if block_given?
   end
 
   def execute_query

@@ -50,7 +50,7 @@ class BlendedSearch < Search
   end
 
   def first_page?
-    @offset ? @offset == 0 : super
+    @offset ? @offset.zero? : super
   end
 
   protected
@@ -63,14 +63,8 @@ class BlendedSearch < Search
 
   def log_serp_impressions
     @modules << "LOVER" << "SPEL" unless self.spelling_suggestion.nil?
-    @modules << "SREL" if self.has_related_searches?
+    @modules |= (@govbox_set.modules - %w(NEWS)) if @govbox_set
     @modules << modules_in_results if @total > 0
-    @modules << 'VIDS' if self.has_video_news_items?
-    @modules << "BBG" if self.has_featured_collections?
-    @modules << "BOOS" if self.has_boosted_contents?
-    @modules << "MEDL" unless self.med_topic.nil?
-    @modules << "JOBS" if self.jobs.present?
-    @modules << "TWEET" if self.has_tweets?
   end
 
   private

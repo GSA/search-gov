@@ -5,6 +5,7 @@ class GovboxSet
               :federal_register_documents,
               :jobs,
               :med_topic,
+              :modules,
               :news_items,
               :related_search,
               :tweets,
@@ -17,6 +18,8 @@ class GovboxSet
     @base_search_options = @highlight_options.merge(
       language: @affiliate.locale,
       q: @query)
+
+    @modules = []
 
     init_best_bets
     init_agency
@@ -33,6 +36,7 @@ class GovboxSet
 
   def init_related_search
     @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlight_options)
+    @modules << 'SREL' if @related_search.present?
   end
 
   def init_tweets
@@ -41,11 +45,17 @@ class GovboxSet
       since: 3.days.ago.beginning_of_day,
       size: 1,
       twitter_profile_ids: affiliate_twitter_ids)
-    @tweets = ElasticTweet.search_for(search_options) if affiliate_twitter_ids.any?
+    if affiliate_twitter_ids.any?
+      @tweets = ElasticTweet.search_for(search_options)
+      @modules << 'TWEET' if elastic_results_exist?(@tweets)
+    end
   end
 
   def init_med_topic
-    @med_topic = MedTopic.search_for(@query, I18n.locale.to_s) if @affiliate.is_medline_govbox_enabled?
+    if @affiliate.is_medline_govbox_enabled?
+      @med_topic = MedTopic.search_for(@query, I18n.locale.to_s)
+      @modules << 'MEDL' if @med_topic
+    end
   end
 
   def init_video_news_items
@@ -59,6 +69,7 @@ class GovboxSet
         rss_feeds: video_feeds,
         since: 13.months.ago.beginning_of_day)
       @video_news_items = ElasticNewsItem.search_for search_options
+      @modules << 'VIDS' if elastic_results_exist?(@video_news_items)
     end
   end
 
@@ -72,6 +83,7 @@ class GovboxSet
         rss_feeds: non_managed_feeds,
         since: 4.months.ago.beginning_of_day)
       @news_items = ElasticNewsItem.search_for search_options
+      @modules << 'NEWS' if elastic_results_exist?(@news_items)
     end
   end
 
@@ -82,6 +94,7 @@ class GovboxSet
       jobs_options.merge!(org_tags_hash)
       jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?
       @jobs = Jobs.search(jobs_options)
+      @modules << 'JOBS' if @jobs.present?
     end
   end
 
@@ -100,16 +113,23 @@ class GovboxSet
         federal_register_agency_ids: [@affiliate.agency.federal_register_agency_id],
         language: 'en')
       @federal_register_documents = ElasticFederalRegisterDocument.search_for search_options
+      @modules << 'FRDOC' if elastic_results_exist?(@federal_register_documents)
     end
   end
 
   def init_best_bets
     search_options = build_search_options(affiliate_id: @affiliate.id)
-    @featured_collections = ElasticFeaturedCollection.search_for(search_options.merge(size: 1))
     @boosted_contents = ElasticBoostedContent.search_for(search_options.merge(size: 3))
+    @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
+    @featured_collections = ElasticFeaturedCollection.search_for(search_options.merge(size: 1))
+    @modules << 'BBG' if elastic_results_exist?(@featured_collections)
   end
 
   def build_search_options(options)
     @base_search_options.merge options
+  end
+
+  def elastic_results_exist?(elastic_results)
+    elastic_results.present? && elastic_results.total > 0
   end
 end

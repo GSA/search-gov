@@ -1,5 +1,5 @@
 class SearchImpression
-  IRRELEVANT_KEYS = %w(utf8 m controller action)
+  IRRELEVANT_KEYS = %w(access_key action api_key controller m utf8)
 
   def self.log(search, vertical, params, request)
     request_pairs = { clientip: request.remote_ip, request: request.url, referrer: request.referer, user_agent: request.user_agent }

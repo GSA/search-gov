@@ -1,37 +1,26 @@
 class ApiBlendedSearch < BlendedSearch
+  include Api::V2::SearchAsJson
+
   HIGHLIGHT_OPTIONS = {
     pre_tags: ["\ue000"],
     post_tags: ["\ue001"]
   }.freeze
 
+  attr_reader :next_offset
+
   def initialize(options = {})
     super(options.merge(HIGHLIGHT_OPTIONS))
+    @next_offset_within_limit = options[:next_offset_within_limit]
   end
 
-  def as_json(options = {})
-    hash = { web: { total: @total, results: results_to_hash } }
-    hash[:text_best_bets] = boosted_contents ? boosted_contents.results : []
-    hash[:graphic_best_bets] = featured_collections ? featured_collections.results : []
-    hash[:related_search_terms] = related_search ? related_search : []
-    hash
-  end
-
-  def results_to_hash
-    @results.collect do |result|
-      { title: result.title,
-        url: result.url,
-        snippet: build_snippet(result.description) }
-    end
+  def handle_response(response)
+    super
+    @next_offset = @offset + @limit if @next_offset_within_limit && more_results_available?
   end
 
   private
 
-  def build_snippet(description)
-    if description =~ /\uE000/
-      description.sub!(/^([^A-Z<])/,'...\1')
-    else
-      description = description.truncate(150, separator: ' ')
-    end
-    description
+  def more_results_available?
+    @total > (@offset + @limit)
   end
 end

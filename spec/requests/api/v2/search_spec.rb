@@ -177,7 +177,7 @@ describe '/api/v2/search' do
     context 'when access_key is invalid' do
       it 'returns errors' do
         get '/api/v2/search', access_key: 'not_usagov_key', affiliate: 'usagov', query: 'api'
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('access_key is invalid')
@@ -187,7 +187,7 @@ describe '/api/v2/search' do
     context 'when affiliate is invalid' do
       it 'returns errors' do
         get '/api/v2/search', access_key: 'usagov_key', affiliate: 'not-usagov', query: 'api'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('affiliate not found')
@@ -210,7 +210,7 @@ describe '/api/v2/search' do
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:errors].first).to eq('offset must be between 0 and 1000')
+        expect(hash_response[:errors]).to include('offset must be between 0 and 1000')
       end
     end
 
@@ -220,7 +220,7 @@ describe '/api/v2/search' do
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:errors].first).to eq('query must be present')
+        expect(hash_response[:errors]).to include('query must be present')
       end
     end
   end

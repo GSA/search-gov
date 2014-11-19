@@ -16,9 +16,11 @@ describe GovboxSet do
     context 'when the affiliate has boosted contents' do
       it 'should assign boosted contents' do
         affiliate.locale = 'en'
-        ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return "BoostedContent results"
+        expected_results = mock(ElasticBoostedContentResults, total: 1)
+        ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.boosted_contents.should == "BoostedContent results"
+        govbox_set.boosted_contents.should == expected_results
+        expect(govbox_set.modules).to include('BOOS')
       end
 
       it 'uses highlight options' do
@@ -29,7 +31,7 @@ describe GovboxSet do
           size: 3
         }.merge(highlight_options)
 
-        expected_results = mock('BoostedContent results')
+        expected_results = mock(ElasticBoostedContentResults, total: 1)
         ElasticBoostedContent.should_receive(:search_for).with(expected_search_options).
           and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
@@ -40,9 +42,11 @@ describe GovboxSet do
     context 'when the affiliate has featured collections' do
       it 'should assign a single featured collection' do
         affiliate.locale = 'en'
-        ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return "FeaturedCollection result"
+        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
+        ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.featured_collections.should == "FeaturedCollection result"
+        govbox_set.featured_collections.should == expected_results
+        expect(govbox_set.modules).to include('BBG')
       end
 
       it 'uses highlight options' do
@@ -53,7 +57,7 @@ describe GovboxSet do
           size: 1
         }.merge(highlight_options)
 
-        expected_results = mock('FeaturedCollection result')
+        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
         ElasticFeaturedCollection.stub!(:search_for).with(expected_search_options).
           and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
@@ -106,19 +110,20 @@ describe GovboxSet do
       end
 
       it 'searches for federal register documents' do
-        fr_docs_results = mock('federal register document results')
+        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
         ElasticFederalRegisterDocument.should_receive(:search_for).
           with(hash_including(federal_register_agency_ids: [federal_register_agency.id],
                               language: 'en',
                               q: 'foo')).
-          and_return(fr_docs_results)
+          and_return(expected_results)
 
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.federal_register_documents.should == fr_docs_results
+        govbox_set.federal_register_documents.should == expected_results
+        expect(govbox_set.modules).to include('FRDOC')
       end
 
       it 'uses highlight options' do
-        fr_docs_results = mock('federal register document results')
+        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
         expected_search_options = {
           federal_register_agency_ids: [federal_register_agency.id],
           language: 'en',
@@ -127,10 +132,10 @@ describe GovboxSet do
 
         ElasticFederalRegisterDocument.should_receive(:search_for).
           with(expected_search_options).
-          and_return(fr_docs_results)
+          and_return(expected_results)
 
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
-        govbox_set.federal_register_documents.should == fr_docs_results
+        govbox_set.federal_register_documents.should == expected_results
       end
     end
 
@@ -150,6 +155,7 @@ describe GovboxSet do
             and_return "jobs info"
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           govbox_set.jobs.should == "jobs info"
+          expect(govbox_set.modules).to include('JOBS')
         end
       end
 
@@ -192,6 +198,7 @@ describe GovboxSet do
 
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.news_items.should == non_video_results
+        expect(govbox_set.modules).to include('NEWS')
       end
 
       it 'uses highlight_options' do
@@ -238,6 +245,7 @@ describe GovboxSet do
 
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
         govbox_set.video_news_items.should == video_results
+        expect(govbox_set.modules).to include('VIDS')
       end
     end
 
@@ -253,6 +261,7 @@ describe GovboxSet do
           it "should retrieve the associated Med Topic record" do
             govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
             govbox_set.med_topic.should == med_topics(:ulcerative_colitis)
+            expect(govbox_set.modules).to include('MEDL')
           end
 
           context "when the locale is not the default" do
@@ -307,9 +316,11 @@ describe GovboxSet do
           end
 
           it "should find the most recent relevant tweet" do
-            ElasticTweet.should_receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: "en", size: 1).and_return 'Twitter stuff'
+            expected_tweets = mock(ElasticTweetResults, total: 1)
+            ElasticTweet.should_receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: "en", size: 1).and_return(expected_tweets)
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-            govbox_set.tweets.should == 'Twitter stuff'
+            govbox_set.tweets.should == expected_tweets
+            expect(govbox_set.modules).to include('TWEET')
           end
 
           it 'uses highlight_options' do
@@ -321,7 +332,7 @@ describe GovboxSet do
               twitter_profile_ids: [123]
             }.merge(highlight_options)
 
-            expected_tweets = mock('expected tweets')
+            expected_tweets = mock(ElasticTweetResults, total: 1)
             ElasticTweet.should_receive(:search_for).with(expected_search_options).
               and_return(expected_tweets)
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
@@ -343,6 +354,7 @@ describe GovboxSet do
         SaytSuggestion.stub!(:related_search).with('foo', affiliate, {}).and_return "related search results"
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.related_search.should == "related search results"
+        expect(govbox_set.modules).to include('SREL')
       end
 
       it 'uses highlight options' do

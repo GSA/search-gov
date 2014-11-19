@@ -3,14 +3,18 @@ class Api::V2::SearchesController < ApplicationController
 
   skip_before_filter :ensure_proper_protocol
   skip_before_filter :set_default_locale, :show_searchbox
-  before_filter :require_ssl, :validate_params
-  before_filter :set_affiliate
-  before_filter :validate_access_key
-  before_filter :set_locale_based_on_affiliate_locale
+  before_filter :require_ssl
+  before_filter :validate_search_options
+  after_filter :log_search_impression
 
-  def index
-    api_params = @param_validator.valid_params.merge(affiliate: @affiliate)
-    @search = ApiBlendedSearch.new api_params
+  def blended
+    @search = ApiBlendedSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
+  def azure
+    @search = ApiAzureSearch.new @search_options.attributes
     @search.run
     respond_with @search
   end
@@ -29,22 +33,10 @@ class Api::V2::SearchesController < ApplicationController
     [{ errors: ['HTTPS is required'] }, { status: 400 }]
   end
 
-  def set_affiliate
-    unless search_params[:affiliate].blank?
-      @affiliate = Affiliate.find_by_name(search_params[:affiliate])
-    end
-    respond_with(*affiliate_not_found_response) unless @affiliate
-  end
-
-  def validate_access_key
-    unless @affiliate.api_access_key == search_params[:access_key]
-      respond_with(*invalid_access_key_response)
-    end
-  end
-
   def search_params
     @search_params ||= params.permit(:access_key,
                                      :affiliate,
+                                     :api_key,
                                      :enable_highlighting,
                                      :format,
                                      :limit,
@@ -52,18 +44,18 @@ class Api::V2::SearchesController < ApplicationController
                                      :query)
   end
 
-  def affiliate_not_found_response
-    [{ errors: ['affiliate not found'] }, { status: 404 }]
-  end
-
-  def invalid_access_key_response
-    [{ errors: ['access_key is invalid'] }, { status: 403 }]
-  end
-
-  def validate_params
-    @param_validator = Api::SearchParamValidator.new search_params
-    unless @param_validator.valid?
-      respond_with({ errors: @param_validator.errors }, { status: 400 })
+  def validate_search_options
+    @search_options = search_options_validator_klass.new search_params
+    unless @search_options.valid? && @search_options.valid?(:affiliate)
+      respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
     end
+  end
+
+  def search_options_validator_klass
+    action_name == 'azure' ? Api::AzureSearchOptions : Api::SearchOptions
+  end
+
+  def log_search_impression
+    SearchImpression.log(@search, action_name, search_params, request)
   end
 end

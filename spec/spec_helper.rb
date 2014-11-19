@@ -210,6 +210,41 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc', key: 'some_key')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_customcx] }
 
+    azure_web_path = '/Bing/SearchWeb/v1/Web'
+    common_azure_params = {
+      :'$format' => 'JSON',
+      :'$skip' => 0,
+      :'$top' => 20,
+      Market: "'en-US'",
+      Query: "'healthy snack (site:usa.gov)'",
+      Options: "'EnableHighlighting'"
+    }
+    azure_highlighting = Rails.root.join('spec/fixtures/json/azure/web_only/highlighting.json').read
+    stubs.get("#{azure_web_path}?#{common_azure_params.to_param}") { [200, {}, azure_highlighting] }
+
+    azure_params = common_azure_params.except(:Options)
+    azure_no_highlighting = Rails.root.join('spec/fixtures/json/azure/web_only/no_highlighting.json').read
+    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_highlighting] }
+
+    azure_params = common_azure_params.
+      merge(Query: "'healthy snack (site:usa.gov) (-site:www.usa.gov AND -site:kids.usa.gov)'")
+    azure_no_next = Rails.root.join('spec/fixtures/json/azure/web_only/no_next.json').read
+    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_next] }
+
+    azure_params = common_azure_params.
+      merge(Market: "'es-US'",
+            Query: "'educación (site:usa.gov)'")
+    azure_es_results = Rails.root.join('spec/fixtures/json/azure/web_only/es_results.json').read
+    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_es_results] }
+
+
+    azure_params = common_azure_params.merge(Query: "'mango smoothie (site:usa.gov)'")
+    azure_no_results = Rails.root.join('spec/fixtures/json/azure/web_only/no_results.json').read
+    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_results] }
+
+    azure_params = common_azure_params.merge(:'$skip' => 888)
+    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_results] }
+
     test = Faraday.new do |builder|
       builder.adapter :test, stubs
       builder.response :rashify
@@ -220,6 +255,7 @@ RSpec.configure do |config|
     params = { affiliate: 'wh', index: 'web', query: 'obama' }
     SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
     RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
+    BasicAuthSearchApiConnection.new('basic_auth_api', 'http://search.usa.gov').get('/api/search.json', params.merge(auth_credentials: { password: 'mypass' }))
 
     Faraday.stub!(:new).and_return test
   end

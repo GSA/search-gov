@@ -1,5 +1,9 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
+    def azure_web_engine(event)
+      generic_logging('Azure Query', event, BLUE)
+    end
+
     def best_bets_drill_down(event)
       generic_logging("Keen Best Bets Query", event, CYAN)
     end

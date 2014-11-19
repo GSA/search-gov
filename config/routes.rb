@@ -6,12 +6,15 @@ UsasearchRails3::Application.routes.draw do
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   get '/search/news/videos' => 'searches#video_news', as: :video_news_search
-  namespace :api do
+
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      get '/agencies/search' => 'agencies#search', :defaults => { :format => 'json' }
+      get '/agencies/search' => 'agencies#search'
     end
+
     namespace :v2 do
-      get '/search' => 'searches#index', defaults: { format: :json }
+      get '/search' => 'searches#blended'
+      get '/search/azure' => 'searches#azure'
     end
   end
 
