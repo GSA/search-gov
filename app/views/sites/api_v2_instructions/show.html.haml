@@ -1,0 +1,126 @@
+= content_for_site_page_title @site, 'API V2 Instructions'
+.sub-nav-heading
+  %h2 API V2 Instructions
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+- api_scheme_and_host = "#{SSL_PROTOCOL}://#{APP_URL}"
+
+.api-instruction
+  :markdown
+    This API (v2) exposes all relevant results “modules” in a single JSON call, including:
+
+
+    * Web results;
+    * Best bets; and
+    * Related searches.
+
+
+    Recent tweets, videos, and news, job openings, *Federal Register* documents, health topics, and spelling suggestions will be added in the coming weeks.
+
+
+    ## Resource URL
+
+
+    The endpoint is `#{api_scheme_and_host}/api/v2/search`.
+
+
+    You must use https.
+
+
+    ## Required Search Parameters
+
+
+    Three parameters are required: `affiliate`, `access_key`, and `query`. See the sample URL below.
+
+
+    `#{api_scheme_and_host}/api/v2/search?access_key={YOUR_ACCESS_KEY}&affiliate={YOUR_SITE_HANDLE}&query={YOUR_SEARCH_TERM}`
+
+
+    * Replace <YOUR_ACCESS_KEY> with your API access key, which you can find at Admin Center > Activate Search >  [API Access Key](#{site_api_access_key_path(@site)}).
+    * Replace <YOUR_SITE_HANDLE> with your site handle, which you can find at Admin Center > Dashboard > Settings.
+    * Replace <YOUR_SEARCH_TERM> with a word or phrase of your choice.
+
+
+    Note that your access key is unique to your site handle so they must be paired properly to return results.
+
+
+    ## Optional Search Parameters
+
+
+    All other parameters are optional: `enable_highlighting`, `limit`, and `offset`.
+
+
+    ### enable_highlighting
+
+
+    Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting.
+
+
+    [#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&enable_highlighting=false](#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&enable_highlighting=false)
+
+
+    ### limit
+
+
+    Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results.
+
+
+    [#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&limit=5](#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&limit=5)
+
+
+    ### offset
+
+
+    Defines the number of results you want to skip from the first result. The default is 0 and the maximum is 1,000.
+
+
+    [#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&offset=20](#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query=gov&offset=20)
+
+
+    ## Response Fields
+
+
+    Each item returns a unique set of fields.
+
+
+    **web**&mdash;Web results from our DigitalGov Search indexes.
+
+
+    | Values  | Description
+    | :--     | :--
+    | title   | Title of the document
+    | url     | URL of the document
+    | snippet | Summary of the document
+
+
+    **text_best_bets**&mdash;Text best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
+
+    | Values      | Description
+    | :--         | :--
+    | title       | Title of the best bet
+    | url         | URL of the best bet
+    | description | Description of the best bet
+
+
+    **graphic_best_bets**&mdash;Graphic best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
+
+    | Values         | Description
+    | :--            | :--
+    | title          | title of the graphic best bet
+    | title_url      | URL of the graphic best bet
+    | image_url      | URL of the graphic image
+    | image_alt_text | Alternative text of the image
+    | links          | Array for links in the graphic best bet. Each array contains a title and a url
+
+
+    **related_search_terms**&mdash;An array of related search terms, which are based on recent, common searches on the your site.
+
+
+    ## Terms of Service
+
+
+    By using this API, you agree to our [Terms of Service](http://search.digitalgov.gov/tos).
+
+

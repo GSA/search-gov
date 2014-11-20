@@ -61,6 +61,7 @@ gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 gem 'elasticsearch'
 gem 'federal_register'
+gem 'github-markdown'
 gem 'instagram'
 gem 'jbuilder'
 gem 'rack-contrib'

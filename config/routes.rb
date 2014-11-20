@@ -34,6 +34,7 @@ UsasearchRails3::Application.routes.draw do
 
       resource :api_access_key, only: [:show]
       resource :api_instructions, only: [:show]
+      resource :api_v2_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :query_downloads, only: [:show]

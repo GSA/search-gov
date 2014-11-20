@@ -27,6 +27,15 @@ Feature: Activate Search
     And I follow "API Access Key"
     Then I should see "MY_AWESOME_KEY"
 
+  Scenario: Visiting the Site V2 API Instructions
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the aff.gov's Activate Search page
+    And I follow "API V2 Instructions"
+    Then I should see "/api/v2/search"
+
   Scenario: Visiting the Site API Pages
     Given affiliate "usagov" has the following RSS feeds:
       | name   | url                              |
