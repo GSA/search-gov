@@ -1,0 +1,375 @@
+= content_for_site_page_title @site, 'API Instructions'
+.sub-nav-heading
+  %h2 Legacy API (v1) Instructions
+  .action-bar
+    %ul
+      %li= link_to 'API (v2) Instructions', site_api_instructions_path(@site)
+      = list_item_with_link_to_current_help_page
+
+%p
+  Returns results for web, images, videos, documents, and news in JSON or XML, along with sections for summary stats,
+  boosted sites (that is, best bets), jobs, and related searches.
+
+%h3 Notice of Upcoming Changes to the API as of December 14, 2014
+
+%p
+  After December 14, 2014, we'll provide results from our indexes only in our API.
+
+%p
+  You’ll no longer be able to access results for Bing web pages in our API.
+  This change puts Bing results in line with our other commercial third-party content providers (Flickr, Google, Instagram, Twitter, and YouTube).
+  If you’d like to display results from these commercial providers, you can either move our hosted results page or access their APIs directly from them.
+
+%p
+  Email us at
+  = mail_to SUPPORT_EMAIL_ADDRESS
+  to discuss options for accessing web, image, and other results after December 14.
+
+.api
+  %h3
+    Base URL:
+  %p
+    http://search.usa.gov/api/search
+  %h3
+    Format:
+  %p
+    JSON or XML.
+  %h3
+    Type:
+  %p
+    HTTP GET
+  %h3
+    Authentication:
+  %p
+    None required.
+  %h3
+    Parameters:
+  %ul
+    %li
+      %span affiliate:
+      The name of your affiliate site. This parameter is required.
+    %li
+      %span index:
+      One of web, images, docs, news, or videonews. The default is 'web'. Bing provides the search results for web, docs, and image searches,
+      backfilled by supplemental documents indexed by USASearch. The indexes for the news and video news results are maintained by USASearch.
+    %li
+      %span format:
+      json or xml. The default is JSON.
+    %li
+      %span query:
+      keywords.  Query terms for the search. This parameter must be URL encoded (e.g., "white+house" or "white%20house")
+    %li
+      %span page:
+      Pagination of search results. Ten results are displayed on each search results page. This defaults to page 1.
+    %li
+      %span hl:
+      Query highlighting on search results. Possible values are "true" or "false". Default is "true".
+      %br
+      When query highlighting is set to "true", matching text in search results title and content are wrapped with unicode characters "U+E000" and "U+E001".
+      %br
+      Examples: \ue000water\ue001 for JSON format and &amp;#57344;water&amp;#57345; for HTML format.
+    %li
+      %span callback:
+      For JSONP requests (format must be 'json'), this specifies the name of the callback function (e.g., 'parseResponse').
+    %li
+      %span dc:
+      For document collection requests (i.e., index must be 'docs'), this specifies the document collection id number.
+    %li
+      %span channel:
+      For news searches (i.e., index must be 'news'), this specifies the RSS feed id number.
+    %li
+      %span sort_by:
+      For news searches (i.e., index must be 'news'), this specifies sorting results either by date or by relevancy. Possible values are 'r' and 'd'. Omitting this parameter defaults to date-based sorting.
+    %li
+      %span lat_lon:
+      A comma-separated lat/lon pair (e.g., '34.56,-122.42'). Some results modules like jobs can show location-based results if this optional parameter is passed in.
+
+  %p
+    For web and image results from Bing, you can also use their respective query parameters:
+    =link_to 'Advanced Search Keywords', 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
+    and
+    =link_to 'Advanced Search Options', 'http://onlinehelp.microsoft.com/en-us/bing/ff808438.aspx'
+
+  %h3 Web Search Examples (Bing Results)
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :query => 'fire', :index => 'web')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'web')
+    %li
+      %span Restrict results to a particular document collection
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :dc => '123', :query => 'water', :index => 'docs')
+    %li
+      %span Find news items most relevant to 'fiscal cliff'
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :sort_by => 'r', :query => 'fiscal cliff', :index => 'news')
+
+  %h3
+    Response Fields
+  %p
+    Note that not all response fields appear in all queries.
+    Results for Flickr photos, Google web pages, tweets, and YouTube videos aren't provided in our API.
+    If you'd like to include them, use their APIs directly.
+  %ul
+    %li
+      %span total:
+      Total number of results for  the query.
+    %li
+      %span startrecord:
+      The index of the first search result with regard to all possible search results
+    %li
+      %span endrecord:
+      The index of the last search result with regard to all possible search results
+    %li
+      %span related:
+      An array of search query terms that are related to the query terms specified
+    %li
+      %span spelling_suggestion:
+      A "did you mean" search suggestion for a potentially mistyped query term
+    %li
+      %span jobs:
+      Array of jobs if any jobs matched the query term.
+      %ul
+        %li
+          %span id:
+          The ID of the job as returned by the
+          = link_to 'Jobs API', 'http://usasearch.howto.gov/developer/jobs.html'
+        %li
+          %span position_title:
+          The job title
+        %li
+          %span organization_name:
+          The organization offering the position
+        %li
+          %span rate_interval_code:
+          The rate interval code, as described by
+          = link_to 'USAJobs Schemas', 'https://schemas.usajobs.gov/Enumerations/CodeLists.xml'
+        %li
+          %span minimum:
+          The lower range of the salary/wage
+        %li
+          %span maximum:
+          The upper range of the salary/wage
+        %li
+          %span start_date:
+          The date the position is available for applications
+        %li
+          %span end_date:
+          The last day applications are accepted for this position
+        %li
+          %span url:
+          The URL hosting the official information on the position
+        %li
+          %span locations:
+          Array of locations (e.g., 'Fairfax, VA') where this position is available
+
+    %li
+      %span boosted_results:
+      Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
+      %ul
+        %li
+          %span title:
+          The title of the boosted content
+        %li
+          %span url:
+          The url for the boosted content
+        %li
+          %span description:
+          The description for the boosted content
+    %li
+      %span results:
+      Array of results for the query. Each array item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span unescapedUrl:
+          The direct url to the result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+
+  %p
+    %h3
+      Response (JSON):
+  %pre
+    :preserve
+      {
+        "related":["water rights","drinking water"],
+        "boosted_results":[
+          {
+            "url": "http://www.boosted_water.com",
+            "description": "This is an example boosted site about water.",
+            "title":" A boosted site about water"
+          }
+        ],
+        "startrecord":21,
+        "endrecord":30,
+        "total":65400,
+        "spelling_suggestion":null,
+        "results":[
+          {
+            "title":"Publication 17 (2010), Your Federal Income Tax",
+            "content":"However, the rust and \ue000water\ue001 damage to rugs and drapes caused by ...",
+            "unescapedUrl":"http://www.irs.gov/publications/p17/ch25.html"
+          },{
+            "title":"Part III - Administrative, Procedural, and Miscellaneous",
+            "content":"(4) Statement for energy efficient heating, cooling, ventilation, and hot ...",
+            "unescapedUrl":"http://www.irs.gov/pub/irs-drop/n-06-52.pdf"
+          },{
+            "title":"Local Standards: Housing and Utilities",
+            "content":"Disclaimer: IRS Collection Financial Standards are intended for use in ...",
+            "unescapedUrl":"http://www.irs.gov/businesses/small/article/0,,id=104696,00.html"
+          }
+          ...
+        ]
+      }
+
+  %p
+    %h3
+      Response (XML):
+  %pre.xml
+    :preserve
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+      &lt;search&gt;
+        &lt;startrecord type=&quot;integer&quot;&gt;21&lt;/startrecord&gt;
+        &lt;endrecord type=&quot;integer&quot;&gt;30&lt;/endrecord&gt;
+        &lt;spelling-suggestion nil=&quot;true&quot;&gt;&lt;/spelling-suggestion&gt;
+        &lt;related type=&quot;array&quot;&gt;&lt;related&gt;space&lt;/related&gt;&lt;/related&gt;
+        &lt;total type=&quot;integer&quot;&gt;1390000000&lt;/total&gt;
+        &lt;boosted-results type=&quot;array&quot;&gt;
+          &lt;boosted-result&gt;
+            &lt;title&gt;Water on, in, and above the Earth - USGS Water Science for Schools&lt;/title&gt;
+            &lt;description&gt;Earth's water: How much water is there? Where is it located? ...&lt;/description&gt;
+            &lt;url&gt;http://ga.water.usgs.gov/edu/mearth.html&lt;/url&gt;
+          &lt;/boosted-result&gt;
+        &lt;/boosted-results&gt;
+        &lt;results type=&quot;array&quot;&gt;
+          &lt;result&gt;
+            &lt;title&gt;Bottled &amp;#57344;Water&amp;#57345; Information ...&lt;/title&gt;
+            &lt;content&gt;Get bottled &amp;#57344;water&amp;#57345; and industry info ...&lt;/content&gt;
+            &lt;unescapedUrl&gt;http://www.myspringwater.com/Default.aspx&lt;/unescapedUrl&gt;
+          &lt;/result&gt;
+          &lt;result&gt;
+            &lt;title&gt;California &amp;#57344;Water&amp;#57345; Service Company: Home&lt;/title&gt;
+            &lt;content&gt;Holding company of two subsidiaries: California &amp;#57344;Water&amp;#57345; ...&lt;/content&gt;
+            &lt;unescapedUrl&gt;http://www.calwater.com/&lt;/unescapedUrl&gt;
+          &lt;/result&gt;
+          &lt;!-- ... --&gt;
+        &lt;/results&gt;
+      &lt;/search&gt;
+
+  %h3 Document Collection Search
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :query => 'fire', :index => 'docs')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'docs')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span results:
+      Array of results for the query. Each array item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span unescapedUrl:
+          The direct url to the result page
+        %li
+          %span content:
+          A snippet of content from the result page highlighting the query terms
+
+  = render partial: 'news_search' if @site.rss_feeds.present?
+
+  %h3 Image Search
+  %ul
+    %li
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'json', :query => 'fire', :index => 'images')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:protocol => 'http', :affiliate => @site.name, :format => 'xml', :query => 'water', :page => 3, :hl => 'false', :index => 'images')
+
+  %h3
+    Response Fields
+  %ul
+    %li
+      %span total
+    %li
+      %span startrecord
+    %li
+      %span endrecord
+    %li
+      %span related
+    %li
+      %span spelling_suggestion
+    %li
+      %span results:
+      Array of image results for the query. Each item contains the following data.
+      %ul
+        %li
+          %span title:
+          The title of the result
+        %li
+          %span MediaUrl:
+          The direct url to the image result
+        %li
+          %span FileSize:
+          Size in bytes of the image
+        %li
+          %span Width:
+          The width of the image in pixels
+        %li
+          %span Height:
+          The height of the image in pixels
+        %li
+          %span ContentType:
+          The content type of the image
+        %li
+          %span Thumbnail:
+          %ul
+            %li
+              %span FileSize:
+              Size in bytes of the thumbnail image
+            %li
+              %span Width:
+              The width of the thumbnail image in pixels
+            %li
+              %span Height:
+              The height of the thumbnail image in pixels
+            %li
+              %span Url:
+              The direct url to the thumbnail image
+            %li
+              %span ContentType:
+              The content type of the thumbnail image
+
+.api.tos
+  %h3 Terms of Service
+  %p
+    By using a USASearch API, you agree to our
+    = link_to 'Terms of Service', TOS_URL
+    \.
+

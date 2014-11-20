@@ -33,7 +33,11 @@ UsasearchRails3::Application.routes.draw do
       member { put :pin }
 
       resource :api_access_key, only: [:show]
-      resource :api_instructions, only: [:show]
+      resource :api_instructions, only: [:show] do
+        collection do
+          get :v1
+        end
+      end
       resource :api_v2_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]

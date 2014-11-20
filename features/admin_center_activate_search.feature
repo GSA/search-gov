@@ -27,21 +27,20 @@ Feature: Activate Search
     And I follow "API Access Key"
     Then I should see "MY_AWESOME_KEY"
 
-  Scenario: Visiting the Site V2 API Instructions
+  Scenario: Visiting the Site API Instructions
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And affiliate "aff.gov" has the following RSS feeds:
+      | name   | url                            |
+      | News-1 | http://www.usa.gov/feed/news-1 |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Activate Search page
-    And I follow "API V2 Instructions"
-    Then I should see "/api/v2/search"
-
-  Scenario: Visiting the Site API Pages
-    Given affiliate "usagov" has the following RSS feeds:
-      | name   | url                              |
-      | News-1 | http://www.usa.gov/feed/news-1 |
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
-    When I go to the usagov's Activate Search page
     And I follow "API Instructions"
-    Then I should see "API Instructions"
-    And I should see a link to "Terms of Service" with url for "http://search.digitalgov.gov/tos" in the API TOS section
+    Then I should see "API (v2) Instructions" within the Admin Center content
+
+    When I follow "instructions" within the Admin Center content
+    Then I should see "Legacy API (v1) Instructions"
+
+    When I follow "API (v2) Instructions"
+    Then I should see "API (v2) Instructions" within the Admin Center content
