@@ -18,6 +18,7 @@ class Search
               :endrecord,
               :results,
               :spelling_suggestion,
+              :spelling_suggestion_eligible,
               :queried_at_seconds,
               :module_tag,
               :modules
@@ -33,6 +34,7 @@ class Search
     @results, @spelling_suggestion = [], nil
     @queried_at_seconds = Time.now.to_i
     @modules = []
+    @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: options[:query])
   end
 
   # This does your search.

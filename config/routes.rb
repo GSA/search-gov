@@ -165,6 +165,7 @@ UsasearchRails3::Application.routes.draw do
     resources :tags do as_routes end
     resources :trending_urls, :only => :index
     resources :news_items do as_routes end
+    resources :suggestion_blocks do as_routes end
     resources :rss_feeds do as_routes end
     resources :rss_feed_urls do
       member do

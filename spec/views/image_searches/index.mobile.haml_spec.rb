@@ -128,7 +128,7 @@ describe "image_searches/index.mobile.haml" do
         results.stub(:total_pages).and_return(1)
         @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
                          queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
-                         page: 1, spelling_suggestion: "tsetse")
+                         page: 1, spelling_suggestion: "tsetse", spelling_suggestion_eligible: true)
         assign(:search, @search)
         assign(:search_params, { affiliate: affiliate.name, query: 'test' })
         controller.stub(:controller_name).and_return('image_searches')
@@ -151,7 +151,7 @@ describe "image_searches/index.mobile.haml" do
         results.stub(:total_pages).and_return(1)
         @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
                          queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
-                         page: 1, spelling_suggestion: "\uE000tsetse\uE001")
+                         page: 1, spelling_suggestion: "\uE000tsetse\uE001", spelling_suggestion_eligible: true)
         @search.stub(:is_a?).with(ImageSearch).and_return true
         ImageSearch.stub(:===).and_return true
         assign(:search, @search)
@@ -162,6 +162,32 @@ describe "image_searches/index.mobile.haml" do
       it "should have a link to redo search with Bing spelling correction" do
         render
         rendered.should have_selector(:a, content: "tsetse", href: '/search/images?affiliate=usagov&query=tsetse')
+      end
+
+    end
+
+    context 'when query term is blocked from generating spelling suggestions' do
+      before do
+        affiliate.is_bing_image_search_enabled = true
+        assign(:affiliate, affiliate)
+        results = (1..2).map do |i|
+          Hashie::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
+                           thumbnail: { url: "http://bing/thumbnail/#{i}" })
+        end
+        results.stub(:total_pages).and_return(1)
+        @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
+                         queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
+                         page: 1, spelling_suggestion: "\uE000tsetse\uE001", spelling_suggestion_eligible: false)
+        @search.stub(:is_a?).with(ImageSearch).and_return true
+        ImageSearch.stub(:===).and_return true
+        assign(:search, @search)
+        assign(:search_params, { affiliate: affiliate.name, query: 'test' })
+        controller.stub(:controller_name).and_return('image_searches')
+      end
+
+      it "should not show a spelling correction" do
+        render
+        rendered.should_not have_selector(:a, content: "tsetse", href: '/search/images?affiliate=usagov&query=tsetse')
       end
 
     end

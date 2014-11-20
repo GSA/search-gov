@@ -1,7 +1,6 @@
 # coding: utf-8
 require 'spec_helper'
 
-
 describe "searches/index.html.haml" do
   fixtures :affiliates, :image_search_labels, :navigations
   before do
@@ -14,7 +13,7 @@ describe "searches/index.html.haml" do
                    has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,
                    page: 1, spelling_suggestion: nil, queried_at_seconds: 1271978870, results: [],
                    error_message: "Ignore me", scope_id: nil, first_page?: true, matching_site_limits: [],
-                   module_tag: 'BWEB', tracking_information: 'Ref A: whatever')
+                   module_tag: 'BWEB', tracking_information: 'Ref A: whatever', spelling_suggestion_eligible: true)
     assign(:search, @search)
     assign(:search_params, {affiliate: @affiliate.name, query: 'test'})
   end
@@ -30,6 +29,17 @@ describe "searches/index.html.haml" do
     it "should show the spelling suggestion" do
       render
       rendered.should contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
+    end
+
+    context 'when the query term is blocked from showing the suggestion' do
+      before do
+        @search.stub!(:spelling_suggestion_eligible).and_return false
+      end
+
+      it 'should not show the spelling suggestion' do
+        render
+        rendered.should_not contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
+      end
     end
   end
 
