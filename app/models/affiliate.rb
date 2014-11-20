@@ -1,4 +1,4 @@
-require 'base64'
+require 'digest'
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
@@ -662,7 +662,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_api_access_key
-    self.api_access_key = Base64.urlsafe_encode64("#{name}:#{Time.current.to_i}:#{rand}")
+    self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
 
   def sanitize_staged_header_footer
