@@ -13,8 +13,10 @@ module ElasticSettings
           bigram_filter: { type: 'shingle' },
           en_stop_filter: { type: "stop", stopwords: ENGLISH_STOPWORDS },
           en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")).map(&:chomp) },
+          en_protected_filter: { type: 'keyword_marker', keywords: File.readlines(Rails.root.join("config", "locales", "analysis", "en_protwords.txt")).map(&:chomp) },
           en_stem_filter: { type: "stemmer", name: "minimal_english" },
           es_stop_filter: { type: "stop", stopwords: SPANISH_STOPWORDS },
+          es_protected_filter: { type: 'keyword_marker', keywords: File.readlines(Rails.root.join("config", "locales", "analysis", "es_protwords.txt")).map(&:chomp) },
           es_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "es_synonyms.txt")).map(&:chomp) },
           es_stem_filter: { type: "stemmer", name: "light_spanish" }
         },
@@ -23,12 +25,12 @@ module ElasticSettings
             type: "custom",
             tokenizer: "standard",
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase en_stop_filter en_stem_filter en_synonym) },
+            filter: %w(standard asciifolding lowercase en_stop_filter en_protected_filter en_stem_filter en_synonym) },
           es_analyzer: {
             type: "custom",
             tokenizer: "standard",
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase es_stop_filter es_stem_filter es_synonym) },
+            filter: %w(standard asciifolding lowercase es_stop_filter es_protected_filter es_stem_filter es_synonym) },
           bigram_analyzer: {
             type: "custom",
             tokenizer: "standard",

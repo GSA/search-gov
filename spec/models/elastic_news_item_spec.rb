@@ -17,7 +17,7 @@ describe ElasticNewsItem do
       published_at: 3.days.ago,
       link: 'http://www.wh.gov/ns1',
       title: 'Obama adopts policies similar to other policies',
-      description: "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and engineers, and a good day for the nation and policies.</p>",
+      description: "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and petrol, and a good day for the nation and policies.</p>",
       contributor: 'President',
       publisher: 'Briefing Room',
       subject: 'Economy')
@@ -220,6 +220,14 @@ describe ElasticNewsItem do
           search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort_by_relevance: false)
           search.results.first.should == @gallery_item
         end
+      end
+    end
+
+    describe "synonyms and protected words" do
+      it "should use both" do
+        search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
+        search.total.should == 1
+        search.results.first.should == @blog_item
       end
     end
 
