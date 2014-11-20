@@ -5,7 +5,7 @@
     %ul
       = list_item_with_link_to_current_help_page
 
-- api_scheme_and_host = "#{SSL_PROTOCOL}://#{APP_URL}"
+- api_scheme_and_host = "#{request.scheme}://#{request.host_with_port}"
 
 .api-instruction
   :markdown
