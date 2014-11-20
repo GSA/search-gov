@@ -32,7 +32,7 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
-      resource :advanced_display, only: [:edit]
+      resource :api_access_key, only: [:show]
       resource :api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]

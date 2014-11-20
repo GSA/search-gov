@@ -95,6 +95,7 @@ CREATE TABLE `affiliates` (
   `is_federal_register_document_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `google_cx` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2019,3 +2020,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141024151713');
 INSERT INTO schema_migrations (version) VALUES ('20141027184753');
 
 INSERT INTO schema_migrations (version) VALUES ('20141118201319');
+
+INSERT INTO schema_migrations (version) VALUES ('20141120015159');

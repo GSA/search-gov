@@ -1,3 +1,4 @@
+require 'digest'
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
@@ -82,8 +83,9 @@ class Affiliate < ActiveRecord::Base
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_default_rss_govbox_label
   before_validation_squish :ga_web_property_id, :logo_alt_text, assign_nil_on_blank: true
+  before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
-  validates_uniqueness_of :name, :case_sensitive => false
+  validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
   validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
   validates_format_of :name, :with => /^[a-z0-9._-]+$/
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
@@ -657,6 +659,10 @@ class Affiliate < ActiveRecord::Base
 
   def set_keen_scoped_key
     self.keen_scoped_key = KeenScopedKey.generate(self.id)
+  end
+
+  def set_api_access_key
+    self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}")
   end
 
   def sanitize_staged_header_footer

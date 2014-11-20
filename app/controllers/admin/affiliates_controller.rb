@@ -57,7 +57,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     update_columns = %i(status go_live_date affiliate_note)
-    update_columns |= attribute_columns.reject { |column| column =~ /\A(created_at|id|updated_at)\z/i }
+    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|id|updated_at)\z/i }
     update_columns << :tags
     config.update.columns = update_columns
 

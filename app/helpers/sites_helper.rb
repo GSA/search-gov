@@ -95,7 +95,7 @@ module SitesHelper
   end
 
   def site_activate_search_controllers
-    %w(embed_codes api_instructions)
+    %w(api_access_keys api_instructions embed_codes)
   end
 
   def site_analytics_controllers

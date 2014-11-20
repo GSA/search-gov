@@ -23,7 +23,8 @@ describe Affiliate do
     end
     it { should_not allow_value("invalid_locale").for(:locale) }
     it { should validate_presence_of :locale }
-    it { should validate_uniqueness_of(:name) }
+    it { should validate_uniqueness_of(:api_access_key).case_insensitive }
+    it { should validate_uniqueness_of(:name).case_insensitive }
     it { should ensure_length_of(:name).is_at_least(2).is_at_most(33) }
     ["<IMG SRC=", "259771935505'", "spacey name"].each do |value|
       it { should_not allow_value(value).for(:name) }
@@ -140,6 +141,10 @@ describe Affiliate do
         affiliate.keen_scoped_key.should == '65e233adc8a9f...'
      end
 
+      it 'assigns api_access_key' do
+        affiliate = Affiliate.create! @valid_attributes
+        expect(affiliate.api_access_key).to be_present
+      end
     end
   end
 

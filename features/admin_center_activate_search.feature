@@ -18,6 +18,15 @@ Feature: Activate Search
     When I go to the aff.gov's Activate Search page
     Then I should see the code for Spanish language sites
 
+  Scenario: Visiting the Site API Access Key
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | api_access_key |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | MY_AWESOME_KEY |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the aff.gov's Activate Search page
+    And I follow "API Access Key"
+    Then I should see "MY_AWESOME_KEY"
+
   Scenario: Visiting the Site API Pages
     Given affiliate "usagov" has the following RSS feeds:
       | name   | url                              |
