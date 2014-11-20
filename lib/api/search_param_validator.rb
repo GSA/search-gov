@@ -1,4 +1,6 @@
 class Api::SearchParamValidator
+  ACCESS_KEY_ERROR = 'access_key must be present'.freeze
+
   LIMIT_RANGE = (1..50).freeze
   DEFAULT_LIMIT = 20
   LIMIT_ERROR = "limit must be between #{LIMIT_RANGE.first} and #{LIMIT_RANGE.last}".freeze
@@ -7,11 +9,13 @@ class Api::SearchParamValidator
   DEFAULT_OFFSET = 0
   OFFSET_ERROR = "offset must be between #{OFFSET_RANGE.first} and #{OFFSET_RANGE.last}".freeze
 
-  QUERY_ERROR = 'query must be present'
+  QUERY_ERROR = 'query must be present'.freeze
   attr_reader :errors
 
   def initialize(search_params)
     @errors = []
+
+    @access_key = search_params[:access_key]
 
     @enable_highlighting = is_highlighting_enabled?(
       search_params[:enable_highlighting])
@@ -27,6 +31,7 @@ class Api::SearchParamValidator
   end
 
   def valid?
+    validate_access_key
     validate_limit
     validate_offset
     validate_query
@@ -44,6 +49,10 @@ class Api::SearchParamValidator
 
   def is_highlighting_enabled?(enable_highlighting_param)
     enable_highlighting_param.nil? || !(enable_highlighting_param == 'false')
+  end
+
+  def validate_access_key
+    @errors << ACCESS_KEY_ERROR unless @access_key.present?
   end
 
   def validate_limit

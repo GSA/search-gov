@@ -4,7 +4,9 @@ class Api::V2::SearchesController < ApplicationController
   skip_before_filter :ensure_proper_protocol
   skip_before_filter :set_default_locale, :show_searchbox
   before_filter :require_ssl, :validate_params
-  before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
+  before_filter :set_affiliate
+  before_filter :validate_access_key
+  before_filter :set_locale_based_on_affiliate_locale
 
   def index
     api_params = @param_validator.valid_params.merge(affiliate: @affiliate)
@@ -34,8 +36,15 @@ class Api::V2::SearchesController < ApplicationController
     respond_with(*affiliate_not_found_response) unless @affiliate
   end
 
+  def validate_access_key
+    unless @affiliate.api_access_key == search_params[:access_key]
+      respond_with(*invalid_access_key_response)
+    end
+  end
+
   def search_params
-    @search_params ||= params.permit(:affiliate,
+    @search_params ||= params.permit(:access_key,
+                                     :affiliate,
                                      :enable_highlighting,
                                      :format,
                                      :limit,
@@ -45,6 +54,10 @@ class Api::V2::SearchesController < ApplicationController
 
   def affiliate_not_found_response
     [{ errors: ['affiliate not found'] }, { status: 404 }]
+  end
+
+  def invalid_access_key_response
+    [{ errors: ['access_key is invalid'] }, { status: 403 }]
   end
 
   def validate_params

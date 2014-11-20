@@ -98,7 +98,7 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results with highlighting' do
-        get '/api/v2/search', affiliate: 'usagov', query: 'api'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api'
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -117,7 +117,7 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', affiliate: 'usagov', query: 'api', enable_highlighting: 'false'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', enable_highlighting: 'false'
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -136,7 +136,7 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', affiliate: 'usagov', query: 'api', limit: '1'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', limit: '1'
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -150,7 +150,7 @@ describe '/api/v2/search' do
 
     context 'when offset = 3' do
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', affiliate: 'usagov', query: 'api', offset: '2'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', offset: '2'
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -164,9 +164,29 @@ describe '/api/v2/search' do
   end
 
   context 'when one of the parameter is invalid' do
-    context 'when affiliate is invalid' do
+    context 'when access_key is not present' do
       it 'returns errors' do
         get '/api/v2/search', affiliate: 'not-usagov', query: 'api'
+        expect(response.status).to eq(400)
+
+        hash_response = JSON.parse response.body, symbolize_names: true
+        expect(hash_response[:errors].first).to eq('access_key must be present')
+      end
+    end
+
+    context 'when access_key is invalid' do
+      it 'returns errors' do
+        get '/api/v2/search', access_key: 'not_usagov_key', affiliate: 'usagov', query: 'api'
+        expect(response.status).to eq(403)
+
+        hash_response = JSON.parse response.body, symbolize_names: true
+        expect(hash_response[:errors].first).to eq('access_key is invalid')
+      end
+    end
+
+    context 'when affiliate is invalid' do
+      it 'returns errors' do
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'not-usagov', query: 'api'
         expect(response.status).to eq(404)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -176,7 +196,7 @@ describe '/api/v2/search' do
 
     context 'when limit is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', affiliate: 'usagov', limit: '5000', query: 'api'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', limit: '5000', query: 'api'
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -186,7 +206,7 @@ describe '/api/v2/search' do
 
     context 'when offset is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', affiliate: 'usagov', offset: '5000', query: 'api'
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', offset: '5000', query: 'api'
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -196,7 +216,7 @@ describe '/api/v2/search' do
 
     context 'when query is blank' do
       it 'returns errors' do
-        get '/api/v2/search', affiliate: 'usagov', query: ''
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: ''
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
