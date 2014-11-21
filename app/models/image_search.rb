@@ -12,6 +12,7 @@ class ImageSearch
               :modules,
               :query,
               :queried_at_seconds,
+              :spelling_suggestion_eligible,
               :uses_cr
 
   def initialize(options = {})
@@ -24,6 +25,7 @@ class ImageSearch
     @query = @options[:query]
     @uses_cr = @options[:cr].eql?('true') || @affiliate.has_no_social_image_feeds?
     @search_instance = initialize_search_instance(@uses_cr)
+    @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: @query)
   end
 
   def_instance_delegators :@search_instance,
