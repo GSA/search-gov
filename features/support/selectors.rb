@@ -28,6 +28,12 @@ module HtmlSelectorsHelpers
       '.records > tr:first-child'
     when /the first table body row/
       "table tbody tr:first-child"
+    when /the first table body error row/
+      "table tbody tr.error"
+    when /the first table body warning row/
+      "table tbody tr.warning"
+    when /the first table body success row/
+      "table tbody tr.success"
     when /the search box/
       '#search-bar'
     when /the SERP active navigation/

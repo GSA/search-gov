@@ -402,6 +402,10 @@ Feature: Manage Content
       | Images (Media RSS) |
       | News               |
       | Videos (YouTube)   |
+    And I should find "Images" in the first table body error row
+    And I should find "News" in the first table body success row
+    And I should find "Videos" in the first table body warning row
+
     When I follow "Images"
     Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the RSS URLs modal
 

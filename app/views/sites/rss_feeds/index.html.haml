@@ -10,7 +10,7 @@
 %table.table.table-no-header
   %tbody
     - @rss_feeds.each do |rss_feed|
-      %tr
+      %tr{ rss_feed_class_hash(rss_feed) }
         %td
           = link_to_view_rss_feed_urls @site, rss_feed
           = rss_feed_properties rss_feed

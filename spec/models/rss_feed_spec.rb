@@ -132,4 +132,50 @@ describe RssFeed do
       specify { rss_feed.should_not be_is_video }
     end
   end
+
+  describe "#has_errors?" do
+    let(:rss_feed) do
+      affiliates(:power_affiliate).rss_feeds.create!(name: 'Got a problem',
+                                                     rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:white_house_press_gallery_url)])
+    end
+
+    context 'when one or more RssFeedUrls is in an error state' do
+      before do
+        rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, 'title is awful')
+      end
+
+      specify { rss_feed.has_errors?.should be_true }
+    end
+
+    context 'when no RssFeedUrl is in an error state' do
+      before do
+        rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, RssFeedUrl::OK_STATUS)
+      end
+
+      specify { rss_feed.has_errors?.should be_false }
+    end
+  end
+
+  describe "#has_pending?" do
+    let(:rss_feed) do
+      affiliates(:power_affiliate).rss_feeds.create!(name: 'Everything is pending',
+                                                     rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:white_house_press_gallery_url)])
+    end
+
+    context 'when one or more RssFeedUrls is in a pending state' do
+      before do
+        rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, RssFeedUrl::PENDING_STATUS)
+      end
+
+      specify { rss_feed.has_pending?.should be_true }
+    end
+
+    context 'when no RssFeedUrl is in a pending state' do
+      before do
+        rss_feed.rss_feed_urls.each { |rfu| rfu.update_attribute(:last_crawl_status, RssFeedUrl::OK_STATUS) }
+      end
+
+      specify { rss_feed.has_pending?.should be_false }
+    end
+  end
 end

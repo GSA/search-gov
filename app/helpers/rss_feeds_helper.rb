@@ -1,4 +1,14 @@
 module RssFeedsHelper
+  def rss_feed_class_hash(rss_feed)
+    if rss_feed.has_errors?
+      { class: 'error' }
+    elsif rss_feed.has_pending?
+      { class: 'warning' }
+    else
+      { class: 'success' }
+    end
+  end
+
   def link_to_view_rss_feed_urls(site, rss_feed)
     title = content_tag(:h1, "#{h(rss_feed.name)} #{rss_feed_properties(rss_feed)}")
     link_to rss_feed.name,

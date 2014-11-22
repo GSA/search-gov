@@ -24,6 +24,14 @@ class RssFeed < ActiveRecord::Base
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation
 
+  def has_errors?
+    rss_feed_urls.where("last_crawl_status NOT IN (?)",RssFeedUrl::STATUSES).any?
+  end
+
+  def has_pending?
+    rss_feed_urls.where(last_crawl_status: RssFeedUrl::PENDING_STATUS).any?
+  end
+
   private
   def rss_feed_urls_cannot_be_blank
     errors.add(:base, 'RSS feed must have 1 or more URLs.') if !is_managed? and rss_feed_urls.blank? || rss_feed_urls.all?(&:marked_for_destruction?)
