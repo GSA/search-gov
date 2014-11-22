@@ -23,7 +23,6 @@ Feature: Image search
     When I am on usagov's image search page
     When I fill in "query" with "ebuy"
     And I press "Search"
-    Then show me the page
     Then I should not see "Showing results for ebay"
 
   Scenario: Spanish image search
