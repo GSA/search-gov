@@ -34,42 +34,33 @@ class SiteAutodiscoverer
   end
 
   def autodiscover_favicon_url
-    return unless site_valid_for_autodiscovery?
-    begin
-      favicon_url = extract_favicon_url
-      favicon_url ||= detect_default_favicon
-      @site.update_attributes!(favicon_url: favicon_url) if favicon_url.present?
-    rescue => e
-      Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
-    end
+    favicon_url = extract_favicon_url
+    favicon_url ||= detect_default_favicon
+    @site.update_attributes!(favicon_url: favicon_url) if favicon_url.present?
+  rescue => e
+    Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
   end
 
   def autodiscover_rss_feeds
-    return unless site_valid_for_autodiscovery?
-    begin
-      website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
-        create_rss_feed *extract_title_and_valid_url_from_rss_feed_link(link_element)
-      end
-    rescue => e
-      Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}: #{e.message}")
+    website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
+      create_rss_feed *extract_title_and_valid_url_from_rss_feed_link(link_element)
     end
+  rescue => e
+    Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}: #{e.message}")
   end
 
   def autodiscover_social_media
-    return unless site_valid_for_autodiscovery?
-    begin
-      known_urls = Set.new
+    known_urls = Set.new
 
-      website_doc.xpath('//a/@href').each do |anchor_attr|
-        href = anchor_attr.inner_text.squish
-        if href =~ %r[https?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+]i
-          send("create_#{$2}_profile", href) unless known_urls.include?(href)
-          known_urls << href.downcase
-        end
+    website_doc.xpath('//a/@href').each do |anchor_attr|
+      href = anchor_attr.inner_text.squish
+      if href =~ %r[\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+]i
+        send("create_#{$2}_profile", href) unless known_urls.include?(href)
+        known_urls << href.downcase
       end
-    rescue => e
-      Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
     end
+  rescue => e
+    Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
   end
 
   def site_valid_for_autodiscovery?
