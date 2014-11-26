@@ -30,14 +30,14 @@
   </thead>
   <tbody>
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
-      <tr style="<%= cycle('', tr_even_style) %>">
-        <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
-        <td style="<%= td_style %>"><%= affiliate_stats[:total_unfiltered_queries] %></td>
-        <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
-        <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
-        <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
-        <td style="<%= td_style %>"><%= affiliate_stats[:total_clicks] %></td>
-      </tr>
+    <tr style="<%= cycle('', tr_even_style) %>">
+      <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
+      <td style="<%= td_style %>"><%= affiliate_stats[:total_unfiltered_queries] %></td>
+      <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
+      <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
+      <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
+      <td style="<%= td_style %>"><%= affiliate_stats[:total_clicks] %></td>
+    </tr>
   <% end %>
   <tr style="<%= cycle('', tr_even_style) %>">
     <td style="<%= td_text_style %>">TOTAL</td>
@@ -54,31 +54,31 @@
 <table style="<%= table_style %>">
   <tbody>
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
-      <tr style="<%= tr_heading_style %>">
-        <th colspan="3" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
-      </tr>
-      <% if affiliate_stats[:popular_queries].is_a?(String) %>
-          <tr>
-            <td colspan="3" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
-          </tr>
-      <% else %>
-          <tr style="<%= tr_sub_heading_style %>">
-            <th style="<%= th_style %>">Search Term</th>
-            <th style="<%= th_style %>">Total Queries</th>
-            <th style="<%= th_style %>">Real Queries</th>
-          </tr>
-          <% affiliate_stats[:popular_queries].each do |popular_query| %>
-              <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-                <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
-                <td style="<%= td_style %>"><%= popular_query[1] %></td>
-                <td style="<%= td_style %>"><%= popular_query[2] %></td>
-              </tr>
-          <% end %>
-          <% reset_cycle('colors') %>
-      <% end %>
+    <tr style="<%= tr_heading_style %>">
+      <th colspan="3" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
+    </tr>
+    <% if affiliate_stats[:popular_queries].is_a?(String) %>
       <tr>
-        <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+        <td colspan="3" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
       </tr>
+    <% else %>
+      <tr style="<%= tr_sub_heading_style %>">
+        <th style="<%= th_style %>">Search Term</th>
+        <th style="<%= th_style %>">Total Queries</th>
+        <th style="<%= th_style %>">Real Queries</th>
+      </tr>
+      <% affiliate_stats[:popular_queries].each do |popular_query| %>
+        <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
+          <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
+          <td style="<%= td_style %>"><%= popular_query[1] %></td>
+          <td style="<%= td_style %>"><%= popular_query[2] %></td>
+        </tr>
+      <% end %>
+      <% reset_cycle('colors') %>
+    <% end %>
+    <tr>
+      <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+    </tr>
   <% end %>
   </tbody>
 </table>
@@ -87,10 +87,10 @@
   <br/> <%= sites_url %>
 </p>
 
-<p style="<%= p_style %>">USASearch Team
+<p style="<%= p_style %>">DigitalGov Search Team
   <br/> General Services Administration
-  <br/> 202-505-5315 | USASearch@gsa.gov
-  <br/> http://usasearch.howto.gov
+  <br/> search@support.digitalgov.gov | 202-505-5315
+  <br/> http://search.digitalgov.gov
 </p>
 </body>
 </html>

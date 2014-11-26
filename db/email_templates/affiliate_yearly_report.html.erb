@@ -23,31 +23,31 @@
 <table style="<%= table_style %>">
   <tbody>
   <% @affiliate_stats.each do |affiliate_display_name, popular_queries| %>
-      <tr style="<%= tr_heading_style %>">
-        <th colspan="3" style="<%= th_style %>"><%= affiliate_display_name %></th>
-      </tr>
-      <% if popular_queries.is_a?(String) %>
-          <tr>
-            <td colspan="3" style="<%= td_style %>"><%= popular_queries %></td>
-          </tr>
-      <% else %>
-          <tr style="<%= tr_sub_heading_style %>">
-            <th style="<%= th_style %>">Search Term</th>
-            <th style="<%= th_style %>">Total Queries</th>
-            <th style="<%= th_style %>">Real Queries</th>
-          </tr>
-          <% popular_queries.each do |popular_query| %>
-              <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-                <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
-                <td style="<%= td_style %>"><%= popular_query[1] %></td>
-                <td style="<%= td_style %>"><%= popular_query[2] %></td>
-              </tr>
-          <% end %>
-          <% reset_cycle('colors') %>
-      <% end %>
+    <tr style="<%= tr_heading_style %>">
+      <th colspan="3" style="<%= th_style %>"><%= affiliate_display_name %></th>
+    </tr>
+    <% if popular_queries.is_a?(String) %>
       <tr>
-        <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+        <td colspan="3" style="<%= td_style %>"><%= popular_queries %></td>
       </tr>
+    <% else %>
+      <tr style="<%= tr_sub_heading_style %>">
+        <th style="<%= th_style %>">Search Term</th>
+        <th style="<%= th_style %>">Total Queries</th>
+        <th style="<%= th_style %>">Real Queries</th>
+      </tr>
+      <% popular_queries.each do |popular_query| %>
+        <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
+          <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
+          <td style="<%= td_style %>"><%= popular_query[1] %></td>
+          <td style="<%= td_style %>"><%= popular_query[2] %></td>
+        </tr>
+      <% end %>
+      <% reset_cycle('colors') %>
+    <% end %>
+    <tr>
+      <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+    </tr>
   <% end %>
   </tbody>
 </table>
@@ -58,10 +58,10 @@
   <br/>Happy holidays and new year!
 </p>
 
-<p style="<%= p_style %>">USASearch Team
+<p style="<%= p_style %>">DigitalGov Search Team
   <br/> General Services Administration
-  <br/> 202-505-5315 | USASearch@gsa.gov
-  <br/> http://usasearch.howto.gov
+  <br/> search@support.digitalgov.gov | 202-505-5315
+  <br/> http://search.digitalgov.gov
 </p>
 </body>
 </html>
