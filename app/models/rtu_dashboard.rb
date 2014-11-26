@@ -12,7 +12,9 @@ class RtuDashboard
   end
 
   def top_queries
-    top_query(TopNQuery, field: 'raw')
+    query_raw_human = RtuQueryRawHumanArray.new(@site.name, @day, @day, 10)
+    top = query_raw_human.top_queries
+    top.instance_of?(Array) ? top : nil
   end
 
   def no_results

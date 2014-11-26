@@ -191,7 +191,7 @@ describe Emailer do
 
     before do
       RtuDashboard.stub(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
-      dashboard.stub!(:top_queries).and_return [QueryCount.new('query3', 102), QueryCount.new('query2', 101), QueryCount.new('query1', 100)]
+      dashboard.stub!(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
       dashboard.stub!(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
       dashboard.stub!(:trending_queries).and_return %w(query3 query2 query1)
       dashboard.stub!(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
@@ -206,10 +206,10 @@ describe Emailer do
     it "should contain the daily shapshot tables for yesterday" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('Top Queries')
-      body.should include('Query # of Queries')
-      body.should include('1. query3 102')
-      body.should include('2. query2 101')
-      body.should include('3. query1 100')
+      body.should include('Search Term Total Queries Real Queries')
+      body.should include('1. query1 100 80')
+      body.should include('2. query2 101 75')
+      body.should include('3. query3 102 0')
 
       body.should include('Top Clicked URLs')
       body.should include('URL # of Clicks')
@@ -243,10 +243,10 @@ describe Emailer do
 
     before do
       UserMonthlyReport.stub(:new).and_return user_monthly_report
-      as1 = { affiliate: affiliates(:basic_affiliate), total_queries: 100, last_month_percent_change: 33.33, last_year_percent_change: -33.33, total_clicks: 100, popular_queries: [QueryCount.new('query6', 55), QueryCount.new('query5', 54), QueryCount.new('query4', 53)] }
-      as2 = { affiliate: affiliates(:power_affiliate), total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [QueryCount.new('query3', 102), QueryCount.new('query2', 101), QueryCount.new('query1', 100)] }
-      as3 = { affiliate: affiliates(:spanish_affiliate), total_queries: 0, last_month_percent_change: 0, last_year_percent_change: 0, total_clicks: 0, popular_queries: RtuQueryStat::INSUFFICIENT_DATA }
-      total = { total_queries: 140, last_month_percent_change: 24, last_year_percent_change: -29, total_clicks: 135 }
+      as1 = { affiliate: affiliates(:basic_affiliate), total_unfiltered_queries: 102, total_queries: 100, last_month_percent_change: 33.33, last_year_percent_change: -33.33, total_clicks: 100, popular_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]] }
+      as2 = { affiliate: affiliates(:power_affiliate), total_unfiltered_queries: 50, total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]] }
+      as3 = { affiliate: affiliates(:spanish_affiliate), total_unfiltered_queries: 0, total_queries: 0, last_month_percent_change: 0, last_year_percent_change: 0, total_clicks: 0, popular_queries: RtuQueryRawHumanArray::INSUFFICIENT_DATA }
+      total = { total_unfiltered_queries: 152, total_queries: 140, last_month_percent_change: 24, last_year_percent_change: -29, total_clicks: 135 }
       user_monthly_report.stub(:report_date).and_return report_date
       affiliate_stats = { affiliates(:basic_affiliate).name => as1, affiliates(:power_affiliate).name => as2, affiliates(:spanish_affiliate).name => as3 }
       user_monthly_report.stub(:affiliate_stats).and_return affiliate_stats
@@ -261,18 +261,18 @@ describe Emailer do
 
     it "should show per-affiliate and total stats for the month" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
-      body.should include('100 33.33% -33.33% 100')
-      body.should include('40 12.00% -9.00% 35')
-      body.should include('0 0.00% 0.00% 0')
-      body.should include('140 24.00% -29.00% 135')
+      body.should include('102 100 33.33% -33.33% 100')
+      body.should include('50 40 12.00% -9.00% 35')
+      body.should include('0 0 0.00% 0.00% 0')
+      body.should include('152 140 24.00% -29.00% 135')
       body.should include('Top 10 Searches for April 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query1 100')
-      body.should include('query2 101')
-      body.should include('query3 102')
-      body.should include('query6 55')
-      body.should include('query5 54')
-      body.should include('query4 53')
+      body.should include('query1 100 80')
+      body.should include('query2 101 75')
+      body.should include('query3 102 0')
+      body.should include('query5 54 53')
+      body.should include('query6 55 43')
+      body.should include('query4 53 42')
     end
   end
 
@@ -283,7 +283,10 @@ describe Emailer do
     before do
       affiliate = affiliates(:basic_affiliate)
       report_date = Date.civil(report_year, 1, 1)
-      RtuQueryStat.stub(:most_popular_human_searches).and_return([QueryCount.new('query6', 55), QueryCount.new('query5', 54), QueryCount.new('query4', 53)], RtuQueryStat::INSUFFICIENT_DATA)
+      nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
+      insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
+      RtuQueryRawHumanArray.stub(:new).and_return mock(RtuQueryRawHumanArray, top_queries: insufficient)
+      RtuQueryRawHumanArray.stub(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return mock(RtuQueryRawHumanArray, top_queries: nps_top_queries)
     end
 
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
@@ -296,9 +299,9 @@ describe Emailer do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('Most Popular Queries for 2012')
       body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query6 55')
-      body.should include('query5 54')
-      body.should include('query4 53')
+      body.should include('query5 54 53')
+      body.should include('query6 55 43')
+      body.should include('query4 53 42')
     end
   end
 

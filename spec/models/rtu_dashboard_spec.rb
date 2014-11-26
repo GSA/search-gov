@@ -8,19 +8,12 @@ describe RtuDashboard do
 
   describe "#top_queries" do
     context 'when top queries are available' do
-      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_queries.json")) }
-
       before do
-        ES::client_reader.stub(:search).and_return json_response
+        RtuQueryRawHumanArray.stub(:new).and_return mock(RtuQueryRawHumanArray, top_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
       end
 
-      it 'should return an array of QueryCount instances' do
-        top_queries = json_response["aggregations"]["agg"]["buckets"].collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) }
-        dashboard.top_queries.size.should == top_queries.size
-        dashboard.top_queries.each_with_index do |tq, idx|
-          tq.query.should == top_queries[idx].query
-          tq.times.should == top_queries[idx].times
-        end
+      it 'should return an array of [query, total, human] sorted by desc human' do
+        dashboard.top_queries.should match_array([['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
       end
     end
 

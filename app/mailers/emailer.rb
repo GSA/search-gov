@@ -75,7 +75,8 @@ class Emailer < ActionMailer::Base
     @report_year = year
     @affiliate_stats = {}
     user.affiliates.select([:display_name, :name]).order(:name).each do |affiliate|
-      @affiliate_stats[affiliate.display_name] = RtuQueryStat.most_popular_human_searches(affiliate.name, jan1, jan1.end_of_year, 100)
+      query_raw_human = RtuQueryRawHumanArray.new(affiliate.name, jan1, jan1.end_of_year, 100)
+      @affiliate_stats[affiliate.display_name] = query_raw_human.top_queries
     end
     setup_email(user.email, __method__)
     send_mail(:html)

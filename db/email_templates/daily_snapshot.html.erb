@@ -23,15 +23,17 @@
     <table style="<%= table_style %>">
       <thead>
       <tr style="<%= tr_heading_style %>">
-        <th style="<%= th_style %>">Query</th>
-        <th style="<%= th_style %>"># of Queries</th>
+        <th style="<%= th_style %>">Search Term</th>
+        <th style="<%= th_style %>">Total Queries</th>
+        <th style="<%= th_style %>">Real Queries</th>
       </tr>
       </thead>
       <tbody>
       <% @dashboard.top_queries.each_with_index do |top_query, idx| %>
           <tr style="<%= cycle('', tr_even_style) %>">
-            <td style="<%= td_text_style %>"><%= idx + 1 %>. <%= top_query.query %></td>
-            <td style="<%= td_style %>"><%= top_query.times %></td>
+            <td style="<%= td_text_style %>"><%= idx + 1 %>. <%= top_query[0] %></td>
+            <td style="<%= td_style %>"><%= top_query[1] %></td>
+            <td style="<%= td_style %>"><%= top_query[2] %></td>
           </tr>
       <% end %>
       </tbody>
