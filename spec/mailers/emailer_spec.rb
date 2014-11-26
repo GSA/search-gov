@@ -206,7 +206,7 @@ describe Emailer do
     it "should contain the daily shapshot tables for yesterday" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
       body.should include('Top Queries')
-      body.should include('Search Term Total Queries Real Queries')
+      body.should include('Search Term Total Queries (Bots + Humans) Real Queries')
       body.should include('1. query1 100 80')
       body.should include('2. query2 101 75')
       body.should include('3. query3 102 0')
