@@ -7,9 +7,9 @@ describe "sites/sites/show.html.haml" do
   before do
     activate_authlogic
     assign :site, site
-    affiliate_user = users(:affiliate_manager)
-    UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    @affiliate_user = users(:affiliate_manager)
+    UserSession.create(@affiliate_user)
+    view.stub!(:current_user).and_return @affiliate_user
   end
 
   context "when affiliate user views the dashboard" do
@@ -102,16 +102,39 @@ describe "sites/sites/show.html.haml" do
 
     context 'when top queries are available for today' do
       before do
-        top_queries = [QueryCount.new('jobs', 20), QueryCount.new('economy', 10)]
+        top_queries = [['jobs', 54, 53], ['economy', 55, 43], ['ebola', 53, 42]]
         assign :dashboard, double('RtuDashboard', top_queries: top_queries).as_null_object
       end
 
-      it 'should show them in an ordered list' do
-        render
-        rendered.should have_selector("h3", content: "Top Queries")
-        rendered.should have_selector("ol#top_queries") do |ol|
-          ol.should contain %{jobs [20]}
-          ol.should contain %{economy [10]}
+      context 'when user has sees_filtered_totals setting enabled' do
+        before do
+          @affiliate_user.sees_filtered_totals = true
+        end
+        
+        it 'should show them in an ordered list' do
+          render
+          rendered.should have_selector("h3", content: "Top Queries")
+          rendered.should have_selector("ol#top_queries") do |ol|
+            ol.should contain %{jobs [53]}
+            ol.should contain %{economy [43]}
+            ol.should contain %{ebola [42]}
+          end
+        end
+      end
+
+      context 'when user has sees_filtered_totals setting disabled' do
+        before do
+          @affiliate_user.sees_filtered_totals = false
+        end
+
+        it 'should show them in an ordered list' do
+          render
+          rendered.should have_selector("h3", content: "Top Queries")
+          rendered.should have_selector("ol#top_queries") do |ol|
+            ol.should contain %{jobs [54]}
+            ol.should contain %{economy [55]}
+            ol.should contain %{ebola [53]}
+          end
         end
       end
     end

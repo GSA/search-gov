@@ -13,7 +13,7 @@
   - if @dashboard.top_queries.present?
     %ol#top_queries
       - @dashboard.top_queries.each do |top_query|
-        %li= "#{top_query.query} [#{top_query.times}]"
+        %li= query_times(top_query, current_user.sees_filtered_totals)
   - else
     %p Not enough query data available
 
