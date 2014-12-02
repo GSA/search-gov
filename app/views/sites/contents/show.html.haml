@@ -40,3 +40,7 @@
     = link_to site_instagram_usernames_path(@site) do
       = image_tag 'sites/instagram_logo.png', alt: 'Instagram logo'
       %div.name Instagram
+
+%p
+  Automatically discover the RSS and social media accounts from your site's homepage:
+= link_to "Discover", site_autodiscovery_path(@site), :class => "btn btn-success", :method => :create

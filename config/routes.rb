@@ -67,6 +67,7 @@ UsasearchRails3::Application.routes.draw do
                controller: 'site_feed_urls',
                only: [:edit, :create, :update, :destroy]
       resource :third_party_tracking_request, only: [:new, :create]
+      resource :autodiscovery, only: [:create]
       resource :analytics_settings, only: [:edit, :update]
 
       resources :best_bets_graphics, controller: 'featured_collections', except: [:show] do
