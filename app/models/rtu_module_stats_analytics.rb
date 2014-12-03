@@ -27,7 +27,7 @@ class RtuModuleStatsAnalytics
       total_clicks += stat.clicks
       total_impressions += stat.impressions
       stat.average_clickthru_ratio = global_ctr_hash[stat.module_tag]
-      stat.historical_ctr = module_sparkline_hash[stat.module_tag]
+      stat.historical_ctr = module_sparkline_hash[stat.module_tag] || []
     end
     affiliate_stats << SearchModuleStat.new(nil, 'Total', total_clicks, total_impressions,
                                             clickthru_ratio(total_clicks, total_impressions), module_sparkline_hash['Total'])
