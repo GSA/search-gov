@@ -17,7 +17,7 @@ describe Sites::AutodiscoveriesController do
         post :create, id: site.id
       end
 
-      it { should redirect_to(site_path(site)) }
+      it { should redirect_to(site_content_path(site)) }
     end
   end
 
