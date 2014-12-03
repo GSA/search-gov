@@ -84,7 +84,7 @@ module SitesHelper
 
   def preview_main_nav_item(site, title)
     if site.force_mobile_format?
-      main_nav_item title, search_url(protocol: 'http', affiliate: site.name, query: 'gov'), 'icon-eye-open', [], target: '_blank'
+      main_nav_item title, search_url(protocol: 'http', affiliate: site.name), 'icon-eye-open', [], target: '_blank'
     else
       main_nav_item title, site_preview_path(site), 'icon-eye-open', [], preview_serp_link_options
     end
@@ -157,8 +157,7 @@ module SitesHelper
       channel: rss_feed.id,
       format: 'json',
       index: 'news',
-      protocol: 'http',
-      query: 'gov' }
+      protocol: 'http' }
   end
 
   def query_times(top_query, sees_filtered_totals)
