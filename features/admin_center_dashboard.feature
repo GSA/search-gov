@@ -164,7 +164,7 @@ Feature: Dashboard
 
     When I go to the www.agency.gov's Dashboard page
     And I follow "Preview"
-    Then I should see a link to "Preview" with url that ends with "/search?affiliate=www.agency.gov&query=gov"
+    Then I should see a link to "Preview" with url that ends with "/search?affiliate=www.agency.gov"
 
   @javascript
   Scenario: Adding a new site
