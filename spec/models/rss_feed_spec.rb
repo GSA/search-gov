@@ -61,6 +61,15 @@ describe RssFeed do
         rss_feed.is_managed = true
         rss_feed.should be_valid
       end
+
+      it 'should set navigation to active' do
+        attributes = { owner: affiliates(:basic_affiliate),
+                       name: "Videos",
+                       is_managed: true }
+        rss_feed = RssFeed.create!(attributes)
+        rss_feed.navigation.should == Navigation.find(rss_feed.navigation.id)
+        rss_feed.navigation.should be_is_active
+      end
     end
 
     context "when the RSS feed is a valid feed" do
