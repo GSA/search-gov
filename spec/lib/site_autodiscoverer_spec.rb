@@ -285,7 +285,6 @@ describe SiteAutodiscoverer do
         FlickrProfile.delete_all
         page_with_bad_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_bad_social_media_urls.html').read
         DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_bad_social_media_urls })
-        # Rails.logger.should_not_receive(:error)
       end
 
       it 'should not create the feed' do

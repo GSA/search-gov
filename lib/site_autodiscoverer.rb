@@ -153,7 +153,7 @@ class SiteAutodiscoverer
   end
 
   def create_youtube_profile(url)
-    username = extract_profile_name url
+    username = YoutubeProfile.extract_profile_name url
     youtube_profile = YoutubeData.import_profile username
     return unless youtube_profile
 
@@ -163,7 +163,4 @@ class SiteAutodiscoverer
     end
   end
 
-  def extract_profile_name(url)
-    url.gsub(/\/$/, '').split('/').last
-  end
 end
