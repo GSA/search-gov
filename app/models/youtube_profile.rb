@@ -19,10 +19,6 @@ class YoutubeProfile < ActiveRecord::Base
     "http://gdata.youtube.com/feeds/api/videos?#{url_params.to_param}".downcase
   end
 
-  def self.extract_profile_name(url)
-    url.gsub(/(\/|\?.*)$/, '').split('/').last
-  end
-
   def self.xml_profile_url(username)
     "http://gdata.youtube.com/feeds/api/users/#{username}"
   end
