@@ -164,6 +164,6 @@ class SiteAutodiscoverer
   end
 
   def extract_profile_name(url)
-    url.gsub(/\/$/, '').split('/').last
+    url.gsub(/(\/|\?.*)$/, '').split('/').last
   end
 end
