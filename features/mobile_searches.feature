@@ -255,8 +255,7 @@ Feature: Searches using mobile device
       | name   | url                              | is_navigable | show_only_media_content |
       | Images | http://en.agency.gov/feed/images | true         | true                    |
     And there are 10 image news items for "Images"
-    When I am on en.agency.gov's search page
-    When I follow "Images" within the SERP navigation
+    When I am on en.agency.gov's "Images" news search page
     And I fill in "Enter your search term" with "image"
     And I press "Search" within the search box
     Then I should see exactly "10" image search results
@@ -366,12 +365,12 @@ Feature: Searches using mobile device
       | Apps                 | http://apps.usa.gov/    | 2        | true         |
       | Inactive site search | http://apps.usa.gov/    | 6        | false        |
     And affiliate "en.agency.gov" has the following RSS feeds:
-      | name                 | url                                | is_navigable | position | show_only_media_content |
-      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |
-      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |
-      | Media RSS            | http://en.agency.gov/feed/images   | true         | 4        | true                    |
-      | Inactive news search | http://en.agency.gov/feed/news1    | false        | 5        | false                   |
-      | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |
+      | name                 | url                                | is_navigable | position | show_only_media_content | oasis_mrss_name |
+      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |                 |
+      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |                 |
+      | Media RSS            | http://en.agency.gov/feed/images   | true         | 4        | true                    | 100             |
+      | Inactive news search | http://en.agency.gov/feed/news1    | false        | 5        | false                   |                 |
+      | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |                 |
     And there are 10 news items for "News"
 
     When I am on en.agency.gov's mobile search page
@@ -380,22 +379,18 @@ Feature: Searches using mobile device
     And I press "Search"
 
     Then I should see "Everything" within the SERP active navigation
-    And I should see "Everything FAQs Articles More Apps Blog Media RSS News" within the SERP navigation
+    And I should see "Everything FAQs Articles More Apps Blog News" within the SERP navigation
     And I should see at least "10" web search results
 
     When I follow "Apps" within the SERP navigation
     Then I should see "Apps" within the SERP active navigation
-    And I should see "Everything FAQs Apps More Articles Blog Media RSS News" within the SERP navigation
+    And I should see "Everything FAQs Apps More Articles Blog News" within the SERP navigation
     And I should see at least "5" web search results
 
     When I follow "News" within the SERP navigation
     Then I should see "News" within the SERP active navigation
-    And I should see "Everything FAQs News More Articles Apps Blog Media RSS" within the SERP navigation
+    And I should see "Everything FAQs News More Articles Apps Blog" within the SERP navigation
     And I should see at least "10" web search results
-
-    When I follow "Media RSS" within the SERP navigation
-    Then I should see "Media RSS" within the SERP active navigation
-    And I should see "Everything FAQs Media RSS More Articles Apps Blog News" within the SERP navigation
 
     When I am on en.agency.gov's "Inactive site search" mobile site search page
     Then I should see "Inactive site search" within the SERP active navigation

@@ -68,11 +68,45 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
     Then I should not see "Image Search Label 0"
 
-    When the following flickr URLs exist for the site "agency.gov":
+    When affiliate "agency.gov" has the following RSS feeds:
+      | name   | url                    | show_only_media_content | position | oasis_mrss_name |
+      | Photos | www.dma.mil/photos.xml | true                    | 101      | 1               |
+    And I go to the agency.gov's Manage Display page
+    Then I should see "Image Search Label 0"
+    And I should not see "Rss Feed 1"
+
+    When affiliate "agency.gov" has the following RSS feeds:
+      | name   | url                    | show_only_media_content | position |
+      | Photos | www.dma.mil/photos.xml | false                   | 101      |
+    And the following flickr URLs exist for the site "agency.gov":
       | url                                      |
       | http://www.flickr.com/photos/whitehouse/ |
     And I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
+    And I should see "Rss Feed 1"
+
+    When the following Affiliates exist:
+      | display_name | name             | contact_email   | contact_name | is_bing_image_search_enabled |
+      | agency site  | bingimageenabled | john@agency.gov | John Bar     | true                         |
+    And affiliate "bingimageenabled" has the following RSS feeds:
+      | name  | url                 | show_only_media_content | position | oasis_mrss_name |
+      | Media | photos.gov/all.atom | true                    | 200      | 100             |
+    And I go to the bingimageenabled's Manage Display page
+    Then I should see "Image Search Label 0"
+    And I should see "Domains/RSS"
+    And I should not see "Rss Feed 1"
+
+    When the following Affiliates exist:
+      | display_name | name                | contact_email   | contact_name | is_bing_image_search_enabled |
+      | agency site  | bing-image-disabled | john@agency.gov | John Bar     | false                        |
+    And affiliate "bing-image-disabled" has the following RSS feeds:
+      | name  | url                 | show_only_media_content | position | oasis_mrss_name |
+      | Media | photos.gov/all.atom | true                    | 200      | 100             |
+    And I go to the bing-image-disabled's Manage Display page
+    Then I should see "Image Search Label 0"
+    And I should not see "Domains/RSS"
+    And I should see a link to "RSS"
+    And I should not see "Rss Feed 1"
 
   @javascript
   Scenario: Editing GovBoxes Settings

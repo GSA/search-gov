@@ -1,20 +1,6 @@
 module MobileNavigationsHelper
   def renderable_navigations(search)
-    is_inactive_search?(search) ? [] : filter_media_navs(search.affiliate)
-  end
-
-  def filter_media_navs(affiliate)
-    affiliate.navigations.active.reject do |n|
-      n.navigable.is_a?(ImageSearchLabel) && !site_has_navigable_image_vertical?(affiliate)
-    end
-  end
-
-  def site_has_navigable_image_vertical?(site)
-    if site.force_mobile_format?
-      site.has_social_image_feeds? || site.is_bing_image_search_enabled?
-    else
-      true
-    end
+    is_inactive_search?(search) ? [] : detect_navigations(search.affiliate, search.affiliate.navigations.active)
   end
 
   def navigation_heading

@@ -4,8 +4,8 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
     rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: 'Affiliate',
                                     url: hash[:url]).first_or_initialize
     rss_feed_url.assign_attributes(last_crawled_at: hash[:last_crawled_at],
-                                    last_crawl_status: hash[:last_crawl_status] ||
-                                        RssFeedUrl::PENDING_STATUS)
+                                   last_crawl_status: hash[:last_crawl_status] || RssFeedUrl::PENDING_STATUS,
+                                   oasis_mrss_name: hash[:oasis_mrss_name])
     rss_feed_url.save!(validate: false)
 
     is_managed = hash[:is_managed].blank? ? false : hash[:is_managed]

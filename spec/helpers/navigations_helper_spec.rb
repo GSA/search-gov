@@ -41,7 +41,7 @@ describe NavigationsHelper do
     end
   end
 
-  describe '#configurable_navigations' do
+  describe '#filter_navigations' do
     let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
 
     let(:image_nav) do
@@ -50,25 +50,47 @@ describe NavigationsHelper do
                  :navigable_type => image_search_label.class.name)
     end
 
-    let(:affiliate) { mock_model(Affiliate,
-                                 default_search_label: 'Everything',
-                                 name: 'myaff',
-                                 navigations: [image_nav]) }
-
-    context 'when site has navigable image vertical' do
-      before do
-        helper.should_receive(:site_has_navigable_image_vertical?).with(affiliate).and_return(true)
-      end
-
-      specify { helper.configurable_navigations(affiliate).should eq([image_nav]) }
+    let(:media_nav) do
+      mock_model(Navigation,
+                 navigable: mock_model(RssFeed,
+                                       is_managed: false,
+                                       name: 'Photos',
+                                       show_only_media_content?: true))
     end
 
-    context 'when site does not have navigable image vertical' do
+    let(:press_nav) do
+      mock_model(Navigation,
+                 navigable: mock_model(RssFeed,
+                                       is_managed: false,
+                                       name: 'Press',
+                                       show_only_media_content?: false))
+    end
+
+    let(:affiliate) { mock_model(Affiliate,
+                                 default_search_label: 'Everything',
+                                 name: 'myaff') }
+
+    context 'when is_bing_image_search_enabled=true' do
       before do
-        helper.should_receive(:site_has_navigable_image_vertical?).with(affiliate).and_return(false)
+        affiliate.should_receive(:has_social_image_feeds?).and_return(true)
+        affiliate.should_receive(:navigations).and_return([image_nav, media_nav, press_nav])
       end
 
-      specify { helper.configurable_navigations(affiliate).should be_empty }
+      it 'returns only the image nav' do
+        helper.filter_navigations(affiliate, affiliate.navigations).should eq([image_nav, press_nav])
+      end
+    end
+
+    context 'when is_bing_image_search_enabled=false' do
+      before do
+        affiliate.should_receive(:has_social_image_feeds?).and_return(false)
+        affiliate.should_receive(:is_bing_image_search_enabled?).and_return(false)
+        affiliate.should_receive(:navigations).and_return([image_nav, media_nav, press_nav])
+      end
+
+      it 'returns only the press nav' do
+        helper.filter_navigations(affiliate, affiliate.navigations).should eq([press_nav])
+      end
     end
   end
 

@@ -1,10 +1,16 @@
 module NavigationsHelper
-  def configurable_navigations(site)
-    if site_has_navigable_image_vertical?(site)
-      site.navigations
-    else
-      site.navigations.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
+  def detect_navigations(site, navigations)
+    site.force_mobile_format? ? filter_navigations(site, navigations) : navigations
+  end
+
+  def filter_navigations(site, navigations)
+    navigations.reject! do |n|
+      n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
     end
+    unless site.has_social_image_feeds? || site.is_bing_image_search_enabled?
+      navigations.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
+    end
+    navigations
   end
 
   def link_to_site_navigable(navigable)
@@ -18,21 +24,36 @@ module NavigationsHelper
         link_to('RSS', edit_site_rss_feed_path(navigable.owner, navigable))
       end
     when 'ImageSearchLabel'
-      content = link_to 'Domains', site_domains_path(navigable.affiliate)
-      if navigable.affiliate.flickr_profiles.exists?
-        content << raw('/')
-        content << link_to('Flickr', site_flickr_urls_path(navigable.affiliate))
-      end
-      if navigable.affiliate.instagram_profiles.exists?
-        content << raw('/')
-        content << link_to('Instagram', site_instagram_usernames_path(navigable.affiliate))
-      end
-      if navigable.affiliate.rss_feeds.mrss.exists?
-        content << raw('/')
-        content << link_to('RSS', site_rss_feeds_path(navigable.affiliate))
-      end
-      content
+      build_image_search_navigable_label navigable
     end
+  end
+
+  def build_image_search_navigable_label(navigable)
+    labels = ''
+    site = navigable.affiliate
+    if !site.force_mobile_format? || site.is_bing_image_search_enabled?
+      append_navigation_label(labels,
+                              link_to('Domains', site_domains_path(site)))
+    end
+    if site.flickr_profiles.exists?
+      append_navigation_label labels,
+                              link_to('Flickr', site_flickr_urls_path(site))
+    end
+    if site.instagram_profiles.exists?
+      append_navigation_label labels,
+                              link_to('Instagram',
+                                      site_instagram_usernames_path(site))
+    end
+    if site.rss_feeds.mrss.exists?
+      append_navigation_label labels,
+                              link_to('RSS', site_rss_feeds_path(site))
+    end
+    labels.html_safe
+  end
+
+  def append_navigation_label(labels, label)
+    labels << raw('/') unless labels.blank?
+    labels << label
   end
 
   def render_navigable_field_name_for(navigation)
