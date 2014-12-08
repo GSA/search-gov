@@ -175,7 +175,6 @@ UsasearchRails3::Application.routes.draw do
     resources :trending_urls, :only => :index
     resources :news_items do as_routes end
     resources :suggestion_blocks do as_routes end
-    resources :cse_annotations do as_routes end
     resources :rss_feeds do as_routes end
     resources :rss_feed_urls do
       member do
@@ -190,8 +189,6 @@ UsasearchRails3::Application.routes.draw do
 
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-
-  get '/cse_annotations/index' => 'cse_annotations#index'
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/program' => redirect(BLOG_URL, :status => 302)
