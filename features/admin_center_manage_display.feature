@@ -33,6 +33,7 @@ Feature: Manage Display
     And the "Rss Feed 2" field should contain "Press"
     And the "Is Rss Feed 2 navigable" should be switched off
     And the "Rss Feed 3" field should contain "Videos"
+    And the "Is Rss Feed 3 navigable" should be switched on
 
     When I fill in the following:
       | Label for Sidebar     |         |
@@ -44,7 +45,7 @@ Feature: Manage Display
     And I switch on "Is Image Search Label 0 navigable"
     And I switch off "Is Document Collection 1 navigable"
     And I switch on "Is Rss Feed 2 navigable"
-    And I switch on "Is Rss Feed 3 navigable"
+    And I switch off "Is Rss Feed 3 navigable"
 
     When I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
@@ -57,7 +58,7 @@ Feature: Manage Display
     And the "Rss Feed 2" field should contain "Latest Press"
     And the "Is Rss Feed 2 navigable" should be switched on
     And the "Rss Feed 3" field should contain "Latest Videos"
-    And the "Is Rss Feed 3 navigable" should be switched on
+    And the "Is Rss Feed 3 navigable" should be switched off
 
   Scenario: Editing Sidebar Settings on a new site
     Given the following Affiliates exist:
