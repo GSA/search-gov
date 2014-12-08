@@ -752,6 +752,19 @@ describe Affiliate do
       end
       specify { affiliate.should have_no_social_image_feeds }
     end
+
+    context 'when affiliate has MRSS feed but the RSS feed URL has no Oasis MRSS name' do
+      before do
+        affiliate.flickr_profiles.delete_all
+        affiliate.instagram_profiles.delete_all
+        affiliate.rss_feeds.mrss.delete_all
+        feed = affiliate.rss_feeds.build(name: "mrss", show_only_media_content: true)
+        feed.rss_feed_urls.build(url: "http://www.defense.gov/news/mrss_leadphotos.xml", last_crawl_status: 'OK',
+                                 oasis_mrss_name: nil, rss_feed_owner_type: "Affiliate")
+        feed.save!
+      end
+      specify { affiliate.should have_no_social_image_feeds }
+    end
   end
 
   describe "#css_property_hash" do

@@ -361,7 +361,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def has_no_social_image_feeds?
-    flickr_profiles.empty? && instagram_profiles.empty? && rss_feeds.mrss.empty?
+    flickr_profiles.empty? && instagram_profiles.empty? &&
+      (rss_feeds.mrss.empty? || rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name).compact.empty?)
   end
 
   def has_social_image_feeds?
