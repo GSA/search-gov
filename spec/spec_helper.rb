@@ -172,8 +172,8 @@ RSpec.configure do |config|
 
     common_web_search_params = {
       alt: 'json',
-      cx: '005675969675701682971:usi2bmqvnp8',
-      key: '***REMOVED***',
+      cx: GoogleSearch::SEARCH_CX,
+      key: GoogleSearch::API_KEY,
       lr: 'lang_en',
       quotaUser: 'USASearch',
       safe: 'medium'
