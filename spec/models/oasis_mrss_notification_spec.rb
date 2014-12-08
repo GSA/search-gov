@@ -61,4 +61,15 @@ describe OasisMrssNotification, ".perform" do
       OasisMrssNotification.perform(rss_feed_urls(:another_url)).should == "Missing media thumbnails"
     end
   end
+
+  context 'when something goes wrong' do
+    before do
+      HttpConnection.stub(:get).and_raise Exception
+    end
+
+    it 'should log warning' do
+      Rails.logger.should_receive(:warn)
+      OasisMrssNotification.perform(rss_feed_urls(:another_url))
+    end
+  end
 end
