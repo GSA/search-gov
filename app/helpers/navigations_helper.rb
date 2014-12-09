@@ -46,7 +46,7 @@ module NavigationsHelper
     end
     if site.rss_feeds.mrss.exists?
       append_navigation_label labels,
-                              link_to('RSS', site_rss_feeds_path(site))
+                              link_to('MRSS', site_rss_feeds_path(site))
     end
     labels.html_safe
   end
