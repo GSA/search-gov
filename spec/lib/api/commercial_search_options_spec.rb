@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::AzureSearchOptions do
+describe Api::CommercialSearchOptions do
   describe '#valid?' do
     context 'when api_key is not present' do
       subject(:options) { described_class.new }

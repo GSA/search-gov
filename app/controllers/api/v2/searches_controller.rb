@@ -19,6 +19,12 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def gss
+    @search = ApiGssSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   private
 
   def require_ssl
@@ -37,6 +43,7 @@ class Api::V2::SearchesController < ApplicationController
     @search_params ||= params.permit(:access_key,
                                      :affiliate,
                                      :api_key,
+                                     :cx,
                                      :enable_highlighting,
                                      :format,
                                      :limit,
@@ -52,7 +59,11 @@ class Api::V2::SearchesController < ApplicationController
   end
 
   def search_options_validator_klass
-    action_name == 'azure' ? Api::AzureSearchOptions : Api::SearchOptions
+    case action_name.to_sym
+    when :azure then Api::CommercialSearchOptions
+    when :blended then Api::BlendedSearchOptions
+    when :gss then Api::GssSearchOptions
+    end
   end
 
   def log_search_impression

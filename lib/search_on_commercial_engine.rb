@@ -1,4 +1,4 @@
-module CommercialSearch
+module SearchOnCommercialEngine
   def search
     notification_name = "#{@search_engine.class.name.tableize.singularize}.usasearch"
     ActiveSupport::Notifications.instrument(notification_name, query: { term: @search_engine.query }) do

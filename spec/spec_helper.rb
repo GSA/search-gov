@@ -179,6 +179,10 @@ RSpec.configure do |config|
       safe: 'medium'
     }.freeze
 
+    common_gss_api_search_params = common_web_search_params.
+      merge(cx: 'my_cx',
+            key: 'my_api_key')
+
     common_image_search_params = common_web_search_params.merge(searchType: 'image').freeze
 
     generic_google_image_result = Rails.root.join('spec/fixtures/json/google/image_search/obama.json').read
@@ -192,8 +196,20 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(q: 'no highlighting')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, generic_google_result] }
 
+    gss_api_search_params = common_gss_api_search_params.merge(q: 'ira site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    gss_api_search_params = common_gss_api_search_params.
+      merge(num: 5,
+            q: 'ira site:usa.gov',
+            start: 888)
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, generic_google_result] }
+
     es_web_search_params = common_web_search_params.merge(lr: 'lang_es', q: 'casa blanca')
     stubs.get("#{google_api_path}#{es_web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    gss_api_search_params = common_gss_api_search_params.merge(lr: 'lang_es', q: 'casa blanca site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, generic_google_result] }
 
     web_search_params = common_web_search_params.merge(q: 'english')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, generic_google_result] }
@@ -201,6 +217,13 @@ RSpec.configure do |config|
     google_no_results = Rails.root.join('spec/fixtures/json/google/web_search/no_results.json').read
     web_search_params = common_web_search_params.merge(q: 'no_results')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_no_results] }
+
+    gss_api_search_params = common_gss_api_search_params.merge(q: 'mango smoothie site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, google_no_results] }
+
+    google_no_next = Rails.root.join('spec/fixtures/json/google/web_search/no_next.json').read
+    gss_api_search_params = common_gss_api_search_params.merge(q: 'healthy snack site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, google_no_next] }
 
     google_spelling = Rails.root.join('spec/fixtures/json/google/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(q: 'electro coagulation')
@@ -236,7 +259,6 @@ RSpec.configure do |config|
             Query: "'educación (site:usa.gov)'")
     azure_es_results = Rails.root.join('spec/fixtures/json/azure/web_only/es_results.json').read
     stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_es_results] }
-
 
     azure_params = common_azure_params.merge(Query: "'mango smoothie (site:usa.gov)'")
     azure_no_results = Rails.root.join('spec/fixtures/json/azure/web_only/no_results.json').read

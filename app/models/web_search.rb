@@ -1,5 +1,5 @@
 class WebSearch < Search
-  include CommercialSearch
+  include SearchOnCommercialEngine
   include Govboxable
 
   attr_reader :matching_site_limits, :tracking_information

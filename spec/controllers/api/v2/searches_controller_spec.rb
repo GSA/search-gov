@@ -89,4 +89,56 @@ describe Api::V2::SearchesController do
       end
     end
   end
+
+  describe '#gss' do
+    before { controller.should_receive(:request_ssl?).and_return(true) }
+
+    context 'when the search options are not valid' do
+      before do
+        get :gss,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        errors = JSON.parse(response.body)['errors']
+        expect(errors).to include('api_key must be present')
+        expect(errors).to include('cx must be present')
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiGssSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'gss',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :gss,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            cx:  'my-cx',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+  end
 end

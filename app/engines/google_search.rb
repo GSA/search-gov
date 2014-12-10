@@ -7,10 +7,14 @@ class GoogleSearch < SearchEngine
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
-  DEFAULT_START = 1.freeze
+  DEFAULT_START = 1
+  PER_PAGE_RANGE = (1..10).freeze
   NAMESPACE = 'google_api'.freeze
 
   attr_reader :start
+
+  class_attribute :search_engine_response_class, instance_writer: false
+  self.search_engine_response_class = SearchEngineResponse
 
   def initialize(options = {})
     super(options) do |search_engine|
@@ -29,35 +33,41 @@ class GoogleSearch < SearchEngine
   def params
     params_hash = {
       alt: :json,
-      key: @google_key,
       cx: @google_cx,
-      safe: filter_level,
-      q: query,
+      key: @google_key,
       lr: language,
-      quotaUser: 'USASearch'
+      quotaUser: 'USASearch',
+      q: query,
+      safe: filter_level
     }
     params_hash.merge!(start: @start) unless @start == DEFAULT_START
+    params_hash.merge!(num: @per_page) if per_page_is_valid_and_not_default_value?
     params_hash
   end
 
   def parse_search_engine_response(response)
     google_response = response.body
-    SearchEngineResponse.new do |search_response|
-      search_response.start_record = google_response.queries.request.first.start_index.to_i
-      search_response.results = process_results(google_response)
-      search_response.end_record = search_response.start_record + search_response.results.size - 1
-      search_response.total = google_response.queries.request.first.total_results.to_i
-      spelling = google_response.spelling.corrected_query rescue nil
-      search_response.spelling_suggestion = spelling_results(spelling)
+    search_engine_response_class.new do |search_response|
+      extract_google_response google_response, search_response
       search_response.tracking_information = response.headers['etag']
+      yield google_response, search_response if block_given?
     end
   end
-
-  private
 
   def language
     I18n.locale == :es ? 'lang_es' : DEFAULT_LANGUAGE
   end
+
+  def extract_google_response(google_response, search_response)
+    search_response.start_record = google_response.queries.request.first.start_index.to_i
+    search_response.results = process_results(google_response)
+    search_response.end_record = search_response.start_record + search_response.results.size - 1
+    search_response.total = google_response.queries.request.first.total_results.to_i
+    spelling = google_response.spelling.corrected_query rescue nil
+    search_response.spelling_suggestion = spelling_results(spelling)
+  end
+
+  private
 
   def connection_instance(google_key, google_cx)
     google_key.blank? && google_cx.blank? ? rate_limited_api_connection : unlimited_api_connection
@@ -69,5 +79,9 @@ class GoogleSearch < SearchEngine
 
   def rate_limited_api_connection
     @@rate_limited_api_connection = RateLimitedSearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
+  end
+
+  def per_page_is_valid_and_not_default_value?
+    PER_PAGE_RANGE.include?(@per_page) && @per_page != DEFAULT_PER_PAGE
   end
 end

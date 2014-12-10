@@ -1,4 +1,4 @@
-class Api::AzureSearchOptions < Api::SearchOptions
+class Api::CommercialSearchOptions < Api::SearchOptions
   attr_accessor :api_key
 
   validates_presence_of :api_key,

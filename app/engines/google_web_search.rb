@@ -8,9 +8,13 @@ class GoogleWebSearch < GoogleSearch
     processed = web_results.collect do |result|
       title = enable_highlighting ? convert_highlighting(coder.decode(result.html_title)) : result.title
       content = enable_highlighting ? convert_highlighting(strip_br_tags(coder.decode(result.html_snippet))) : result.snippet
-      Hashie::Rash.new({title: title, unescaped_url: result.link, content: content})
+      mashify title, result.link, content
     end
     processed.compact
+  end
+
+  def mashify(title, unescaped_url, content)
+    Hashie::Rash.new({title: title, unescaped_url: unescaped_url, content: content})
   end
 
   private

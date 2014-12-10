@@ -22,7 +22,7 @@ class AzureWebEngine < SearchEngine
 
   def parse_search_engine_response(response)
     azure_response = response.body
-    AzureWebEngineResponse.new do |search_response|
+    ApiCommercialEngineResponse.new do |search_response|
       if azure_response.d && azure_response.d.results
         search_response.results = process_results(azure_response.d.results)
         search_response.next_offset = process_next_offset(azure_response)

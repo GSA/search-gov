@@ -12,7 +12,7 @@ class AzureParameters
       :Market => wrap_param_in_quotes("#{options[:language]}-US"),
       :Query => wrap_param_in_quotes(options[:query])
     }
-    enable_highlighting if options[:highlighting]
+    enable_highlighting if options[:enable_highlighting]
   end
 
   def to_hash

@@ -3,9 +3,12 @@ require 'sanitize'
 class Api::SearchOptions
   include ActiveModel::Validations
 
-  LIMIT_RANGE = (1..50).freeze
-  DEFAULT_LIMIT = 20
-  LIMIT_ERROR_MESSAGE = "must be between #{LIMIT_RANGE.first} and #{LIMIT_RANGE.last}".freeze
+  LIMIT_ERROR_MESSAGE_TEMPLATE = 'must be between %s and %s'.freeze
+  class_attribute :default_limit,
+                  :limit_range
+
+  self.default_limit = 20
+  self.limit_range = (1..50).freeze
 
   OFFSET_RANGE = (0..1000).freeze
   DEFAULT_OFFSET = 0
@@ -13,7 +16,7 @@ class Api::SearchOptions
 
   attr_accessor :access_key,
                 :affiliate,
-                :highlighting,
+                :enable_highlighting,
                 :limit,
                 :offset,
                 :query,
@@ -27,13 +30,11 @@ class Api::SearchOptions
   validates_length_of :query,
                       maximum: Search::MAX_QUERYTERM_LENGTH
 
-  validates_inclusion_of :limit,
-                         within: LIMIT_RANGE,
-                         message: LIMIT_ERROR_MESSAGE
-
   validates_inclusion_of :offset,
                          within: OFFSET_RANGE,
                          message: OFFSET_ERROR_MESSAGE
+
+  validate :must_have_valid_limit
 
   validate :must_have_valid_affiliate,
            :must_have_valid_access_key,
@@ -47,11 +48,11 @@ class Api::SearchOptions
     self.access_key = params[:access_key]
     self.affiliate = params[:affiliate]
 
-    self.highlighting = is_highlighting_enabled?(
+    self.enable_highlighting = is_highlighting_enabled?(
       params[:enable_highlighting])
 
     limit = params[:limit]
-    self.limit = limit.present? ? limit.to_i : DEFAULT_LIMIT
+    self.limit = limit.present? ? limit.to_i : default_limit
 
     offset = params[:offset]
     self.offset = offset.present? ? offset.to_i : DEFAULT_OFFSET
@@ -63,7 +64,7 @@ class Api::SearchOptions
   def attributes
     { access_key: access_key,
       affiliate: site,
-      highlighting: highlighting,
+      enable_highlighting: enable_highlighting,
       limit: limit,
       next_offset_within_limit: next_offset_within_limit?,
       offset: offset,
@@ -89,5 +90,12 @@ class Api::SearchOptions
   def must_have_valid_access_key
     return unless site
     errors.add(:base, 'access_key is invalid') unless site.api_access_key == access_key
+  end
+
+  def must_have_valid_limit
+    unless limit_range.include? limit
+      error_message = LIMIT_ERROR_MESSAGE_TEMPLATE % [limit_range.first, limit_range.last]
+      errors.add :limit, error_message
+    end
   end
 end

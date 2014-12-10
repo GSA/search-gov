@@ -1,5 +1,9 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
+    def api_gss_web_engine(event)
+      generic_logging('Google Query', event, RED)
+    end
+
     def azure_web_engine(event)
       generic_logging('Azure Query', event, BLUE)
     end

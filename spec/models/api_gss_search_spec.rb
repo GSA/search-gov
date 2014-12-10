@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApiAzureSearch do
+describe ApiGssSearch do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -13,20 +13,22 @@ describe ApiAzureSearch do
       affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
     end
 
-    it 'initializes AzureWebEngine' do
-      AzureWebEngine.should_receive(:new).
-        with(enable_highlighting: false,
-             language: 'en',
-             limit: 25,
+    it 'initializes ApiGssWebEngine' do
+      ApiGssWebEngine.should_receive(:new).
+        with(google_cx: 'my_cx',
+             google_key: 'my_api_key',
+             enable_highlighting: false,
+             language: 'lang_en',
+             per_page: 8,
              next_offset_within_limit: true,
              offset: 10,
-             password: 'my_api_key',
-             query: 'gov (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
+             query: 'gov -site:kids.usa.gov site:whitehouse.gov OR site:usa.gov')
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
+                          cx: 'my_cx',
                           enable_highlighting: false,
-                          limit: 25,
+                          limit: 8,
                           next_offset_within_limit: true,
                           offset: 10,
                           query: 'gov'
@@ -43,18 +45,19 @@ describe ApiAzureSearch do
         }
 
         GovboxSet.should_receive(:new).with(
-          'healthy snack',
+          'ira',
           affiliate,
           nil,
           highlighting_options)
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
-                            query: 'healthy snack').run
+                            query: 'ira').run
       end
     end
 
@@ -64,50 +67,79 @@ describe ApiAzureSearch do
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 5,
                             next_offset_within_limit: true,
                             offset: 888,
-                            query: 'healthy snack').run
+                            query: 'ira').run
       end
     end
 
-    context 'when enable_highlighting is enabled' do
+    context 'when highlighting is enabled' do
       subject(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
-                            query: 'healthy snack'
+                            query: 'ira'
       end
 
-      before do
-        search.run
-      end
+      before { search.run }
 
       it 'returns results' do
-        expect(search.results.count).to eq(20)
+        expect(search.results.count).to eq(10)
       end
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-        expect(result.description).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-        expect(result.url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+        expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
+        expect(result.description).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
+        expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
       end
 
-      its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
+      its(:next_offset) { should eq(10) }
+      its(:modules) { should include('GWEB') }
     end
 
-    context 'when enable_highlighting is disabled' do
+    context 'when highlighting is disabled' do
       subject(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: false,
-                            limit: 20,
+                            limit: 10,
+                            next_offset_within_limit: true,
+                            offset: 0,
+                            query: 'ira'
+      end
+
+      before { search.run }
+
+      it 'returns results' do
+        expect(search.results.count).to eq(10)
+      end
+
+      it 'return non highlighted title and description' do
+        result = search.results.first
+        expect(result.title).to eq('Publication 590 (2011), Individual Retirement Arrangements (IRAs)')
+        expect(result.description).to eq('Examples — Worksheet for Reduced IRA Deduction for 2011; What if You Inherit an IRA? Treating it as your own. Can You Move Retirement Plan Assets?')
+      end
+
+      its(:next_offset) { should eq(10) }
+      its(:modules) { should include('GWEB') }
+    end
+
+    context 'when response queries.next_page is not present' do
+      subject(:search) do
+        described_class.new affiliate: affiliate,
+                            api_key: 'my_api_key',
+                            cx: 'my_cx',
+                            enable_highlighting: true,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
                             query: 'healthy snack'
@@ -116,34 +148,7 @@ describe ApiAzureSearch do
       before { search.run }
 
       it 'returns results' do
-        expect(search.results.count).to eq(20)
-      end
-
-      it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to eq("Exercise and Eating Healthy for Kids | Grades K - 5 | Kids.gov")
-        expect(result.description).to eq("Exercise and Eating Healthy for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-      end
-
-      its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
-    end
-
-    context 'when response _next is not present' do
-      subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'healthy snack'
-      end
-
-      before do
-        affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
-        affiliate.excluded_domains.create!(domain: 'www.usa.gov')
-        search.run
+        expect(search.results.count).to eq(3)
       end
 
       its(:next_offset) { should be_nil }
@@ -153,11 +158,12 @@ describe ApiAzureSearch do
       let(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
-                            query: 'educación'
+                            query: 'casa blanca'
       end
 
       before do
@@ -166,22 +172,24 @@ describe ApiAzureSearch do
       end
 
       it 'returns results' do
-        expect(search.results.count).to eq(20)
+        expect(search.results.count).to eq(10)
       end
 
       it 'highlights title and description' do
-        result = search.results[1]
-        expect(result.title).to eq("\ue000Educación\ue001 para recién llegados | GobiernoUSA.gov")
-        expect(result.description).to eq("\ue000Educación\ue001 para recién llegados en GobiernoUSA.gov ... Identifique un programa para después del horario escolar para su hijo; Información sobre becas y servicios ...")
+        result = search.results.first
+        expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
+        expect(result.description).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
+        expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
       end
     end
 
-    context 'when Azure response contains empty results' do
+    context 'when Gss response contains empty results' do
       subject(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
+                            cx: 'my_cx',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
                             query: 'mango smoothie'
@@ -190,7 +198,7 @@ describe ApiAzureSearch do
       before { search.run }
 
       its(:results) { should be_empty }
-      its(:modules) { should_not include('AWEB') }
+      its(:modules) { should_not include('GWEB') }
     end
   end
 
@@ -198,11 +206,12 @@ describe ApiAzureSearch do
     subject(:search) do
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
+                          cx: 'my_cx',
                           enable_highlighting: true,
-                          limit: 20,
+                          limit: 10,
                           next_offset_within_limit: true,
                           offset: 0,
-                          query: 'healthy snack'
+                          query: 'ira'
     end
 
     before do
@@ -210,14 +219,14 @@ describe ApiAzureSearch do
     end
 
     it 'returns results' do
-      expect(search.as_json[:web][:results].count).to eq(20)
+      expect(search.as_json[:web][:results].count).to eq(10)
     end
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:web][:results].first)
-      expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-      expect(result.snippet).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-      expect(result.url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+      expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
+      expect(result.snippet).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
+      expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
     end
   end
 end
