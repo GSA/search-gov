@@ -1,0 +1,10 @@
+= content_for_site_page_title @site, 'Tips on How to Buy a Commercial API Key'
+.sub-nav-heading
+  %h2 Tips on How to Buy a Commercial API Key
+  .action-bar
+    %ul
+      %li= link_to 'API (v2) Instructions', site_api_instructions_path(@site)
+      = list_item_with_link_to_current_help_page
+
+.api-instruction
+  = render partial: 'commercial_keys_md'

@@ -1,0 +1,78 @@
+:markdown
+  By default, [our API v2](#{site_api_instructions_path(@site)}) returns web results from our own indexes. If you don’t want to use the web results from our indexes, you can get web results from Bing or Google by buying an API key.
+
+
+  ## Check Your Search Analytics
+
+
+  Before buying a key, check your historical level of monthly transactions.
+
+
+  1. Opt to view **unfiltered analytics** on the [Analytics Settings](#{edit_site_analytics_settings_path(@site)}) page.
+  2. Go to the [Site Overview](#{site_path(@site)}) page and hover over the histogram to see the number of monthly searches over time. You can also view your data over time on the [Monthly Reports](#{site_monthly_reports_path(@site)}) page.
+
+
+  You’ll need to manage your transaction/query levels with the commercial provider. If you run out, our API won’t return any web results.
+
+
+  Detailed tips on how to buy a commercial API key follow.
+
+
+  ## Azure (Bing Search API)
+
+
+  ### Step 1. Bing Search API – Web Results Only
+
+
+  You can buy “[Bing Search API – Web Results Only](https://datamarket.azure.com/dataset/8818F55E-2FE5-4CE3-A617-0B8BA8419F65)" from the Microsoft Azure Marketplace.
+
+
+  The **web results only** offering is less expensive and you only need web results so don’t buy the main “Bing Search API” offering for use with the DigitalGov Search API.
+
+
+  ### Step 2. Create an Account Key
+
+
+  You’ll now need to create an `account key`. Log in to the Azure Marketplace, go to My Account -- Account Keys, and "Add." Pick any name you’d like.
+
+
+  ![Azure Marketplace Account Key](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/manual-azure-account-keys.png "Azure Marketplace Account Key")
+
+
+  ### Step 3. Get Bing Web Results from Our API
+
+
+  You’re now ready to use our API. Refer to our [API v2 Instructions](#{site_api_instructions_path(@site)}) in the Admin Center for detailed implementation instructions.
+
+
+  ## Google (Google Site Search)
+
+
+  ### Step 1. Create a Custom Search Engine & Buy Google Site Search
+
+
+  [Google Site Search](https://www.google.com/work/search/products/gss.html) is the paid version of [Google Custom Search engine](https://www.google.com/cse) (CSE). Site Search exposes the CSE results in JSON format. Create a free custom search engine first with the domains in our Admin Center and then upgrade it to Site Search.
+
+
+  ![Upgrade Your Google Custom Search Engine](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/admin-google-gss.png "Upgrade Your Google Custom Search Engine")
+
+
+  ### Step 2. Set Up Your Domains
+
+
+  Configure and manage your domains in ***both*** your Google CSE account and on the [Domains](#{site_domains_path(@site)}) page in our Admin Center. The domains in the two systems must match to return the expected results in the API.
+
+
+  ### Step 3. Find Your Account Keys
+
+
+  Your paid Site Search is listed under CSE so, once you’ve bought Site Search, log in to your Google CSE account. Click on the search engine you created. Then go to Business -- XML and JSON to find the two values you need, your `key` and `cx`.
+
+
+  ![GSS JSON](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/admin-cse-json.png "GSS JSON")
+
+
+  ### Step 4. Get Google Web Results from Our API
+
+
+  You’re now ready to use our API. Refer to our [API v2 Instructions](#{site_api_instructions_path(@site)}) in the Admin Center for detailed implementation instructions.

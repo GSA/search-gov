@@ -44,3 +44,9 @@ Feature: Activate Search
 
     When I follow "API (v2) Instructions"
     Then I should see "API (v2) Instructions" within the Admin Center content
+
+    When I follow "bought an API key from Bing or Google" within the Admin Center content
+    Then I should see "Tips on How to Buy a Commercial API Key"
+
+    When I follow "API (v2) Instructions"
+    Then I should see "API (v2) Instructions" within the Admin Center content
