@@ -91,7 +91,7 @@ CREATE TABLE `affiliates` (
   `dublin_core_mappings` text COLLATE utf8_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
-  `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '1',
   `is_federal_register_document_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `google_cx` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -2044,3 +2044,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141204163935');
 INSERT INTO schema_migrations (version) VALUES ('20141204171132');
 
 INSERT INTO schema_migrations (version) VALUES ('20141208163305');
+
+INSERT INTO schema_migrations (version) VALUES ('20141216174740');

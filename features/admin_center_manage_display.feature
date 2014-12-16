@@ -66,7 +66,7 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
-    Then I should not see "Image Search Label 0"
+    Then I should see "Image Search Label 0"
 
     When affiliate "agency.gov" has the following RSS feeds:
       | name   | url                    | show_only_media_content | position | oasis_mrss_name |

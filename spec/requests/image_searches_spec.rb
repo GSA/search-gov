@@ -46,7 +46,7 @@ describe '/search/images' do
 
       it 'responds with error message' do
         json_response = JSON.parse(response.body)
-        json_response['error'].should == 'Please enter search term(s)'
+        json_response['error'].should == 'Please enter a search term.'
       end
     end
   end

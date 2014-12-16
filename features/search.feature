@@ -9,7 +9,7 @@ Feature: Affiliate Search
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     When I am on bar.gov's search page
     And I press "Search" in the search box
-    Then I should see "Please enter search term(s)"
+    Then I should see "Please enter a search term."
 
   Scenario: Searching with active RSS feeds
     Given the following legacy Affiliates exist:
@@ -790,7 +790,7 @@ Feature: Affiliate Search
       | Topics | http://aff.gov/topics/ | true         |
     When I go to aff.gov's search page
     And I follow "Topics" in the left column
-    Then I should see "Please enter search term(s)"
+    Then I should see "Please enter a search term."
 
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
@@ -1084,7 +1084,7 @@ Feature: Affiliate Search
     When I am on usagov's advanced search page
     And I press "Search"
     Then I should be on the search page
-    And I should see "Please enter search term(s)"
+    And I should see "Please enter a search term."
 
   Scenario: When using tablet device on advanced search
     Given I am using an tabletPC device
@@ -1094,4 +1094,4 @@ Feature: Affiliate Search
     When I am on bar.gov's advanced search page
     And I press "Search"
     Then I should be on the search page
-    And I should see "Please enter search term(s)"
+    And I should see "Please enter a search term."
