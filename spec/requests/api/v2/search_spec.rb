@@ -7,6 +7,9 @@ describe '/api/v2/search' do
 
   context 'when there are matching results' do
     before do
+      current_time = DateTime.parse 'Wed, 17 Dec 2014 18:33:43 +0000'
+      current_date = current_time.to_date
+
       ElasticBoostedContent.recreate_index
       affiliate.boosted_contents.delete_all
 
@@ -16,7 +19,7 @@ describe '/api/v2/search' do
           description: "api v2 description manual-#{i}",
           url: "http://search.digitalgov.gov/manual-#{i}",
           status: 'active',
-          publish_start_on: Date.current,
+          publish_start_on: current_date
         }
         affiliate.boosted_contents.create! attributes
       end
@@ -29,7 +32,7 @@ describe '/api/v2/search' do
       graphic_best_bet_attributes = {
         title: 'api v2 how-to',
         status: 'active',
-        publish_start_on: Date.current
+        publish_start_on: current_date
       }
       graphic_best_bet = affiliate.featured_collections.build graphic_best_bet_attributes
 
@@ -74,7 +77,7 @@ describe '/api/v2/search' do
           link: "http://search.digitalgov.gov/news-#{i}",
           guid: "blog-#{i}",
           description: "v2 description news-#{i}  #{'extremely long content ' * 8}",
-          published_at: i.days.ago
+          published_at: current_time.advance(days: -i)
         }
         rss_feed_url.news_items.create! attributes
       end
@@ -103,6 +106,7 @@ describe '/api/v2/search' do
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:next_offset]).to be_nil
         expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
         expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
         expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
@@ -141,6 +145,7 @@ describe '/api/v2/search' do
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:next_offset]).to eq(1)
         expect(hash_response[:web][:results].count).to eq(1)
         expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
         expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
@@ -159,6 +164,25 @@ describe '/api/v2/search' do
         expect(hash_response[:text_best_bets]).to be_empty
         expect(hash_response[:graphic_best_bets]).to be_empty
         expect(hash_response[:related_search_terms]).to be_empty
+      end
+    end
+
+    context 'when sort_by=date' do
+      let(:expected_hash_response) do
+        fixture_path = 'spec/fixtures/json/blended/sorted_by_date.json'
+        JSON.parse(Rails.root.join(fixture_path).read, symbolize_names: true)
+      end
+
+      it 'returns JSON results sorted by published_at in descending order' do
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', sort_by: 'date'
+        expect(response.status).to eq(200)
+
+        hash_response = JSON.parse response.body, symbolize_names: true
+        expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:results].first(2)).to match_array(expected_hash_response[:web][:results].first(2))
+        expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
+        expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
+        expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end
   end

@@ -61,7 +61,7 @@
 
 
 
-  All other parameters are optional: `enable_highlighting`, `limit`, and `offset`.
+  All other parameters are optional: `enable_highlighting`, `limit`, `offset`, `sort_by`.
 
 
 
@@ -110,6 +110,18 @@
 
 
 
+  ### sort_by
+
+
+
+
+  Sort the results by date. The default is sort by relevance.
+
+
+
+
+  `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&sort_by=date`
+
 
   ## Response Fields
 
@@ -129,11 +141,12 @@
 
 
 
-  | Values  | Description
-  | :--     | :--
-  | title   | Title of the document
-  | url     | URL of the document
-  | snippet | Summary of the document
+  | Values   | Description
+  | :--      | :--
+  | title    | Title of the document
+  | url      | URL of the document
+  | snippet  | Summary of the document
+  | pub_date | Publication date of the document (not available on commercial results)
 
 
 

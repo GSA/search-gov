@@ -35,7 +35,7 @@ class ElasticBlendedQuery < ElasticTextFilteredQuery
               json.field "popularity"
             end
           end
-        end
+        end unless @sort
       end
     end
   end

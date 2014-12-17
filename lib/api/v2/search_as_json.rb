@@ -6,10 +6,12 @@ module Api::V2::SearchAsJson
     hash
   end
 
+  protected
+
   def append_web_as_json(hash)
     web_hash = {
       next_offset: @next_offset,
-      results: results_to_hash
+      results: results_to_hash_as_json
     }
     web_hash[:total] = @total if @total
     hash[:web] = web_hash
@@ -21,17 +23,17 @@ module Api::V2::SearchAsJson
     hash[:related_search_terms] = related_search ? related_search : []
   end
 
-  def results_to_hash
-    @results.collect do |result|
-      { title: result.title,
-        url: result.url,
-        snippet: build_snippet(result.description) }
-    end
+  def results_to_hash_as_json
+    @results.collect { |result| result_hash_as_json result }
   end
 
-  protected
+  def result_hash_as_json(result)
+    { title: result.title,
+      url: result.url,
+      snippet: build_snippet_as_json(result.description) }
+  end
 
-  def build_snippet(description)
+  def build_snippet_as_json(description)
     if description =~ /\uE000/
       description.sub!(/^([^A-Z<])/, '...\1')
     else

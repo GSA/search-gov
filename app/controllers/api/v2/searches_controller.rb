@@ -48,7 +48,8 @@ class Api::V2::SearchesController < ApplicationController
                                      :format,
                                      :limit,
                                      :offset,
-                                     :query)
+                                     :query,
+                                     :sort_by)
   end
 
   def validate_search_options

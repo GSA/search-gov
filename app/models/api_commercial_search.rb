@@ -40,7 +40,7 @@ class ApiCommercialSearch < Search
     @next_offset = response.next_offset
   end
 
-  def build_snippet(description)
+  def build_snippet_as_json(description)
     description
   end
 

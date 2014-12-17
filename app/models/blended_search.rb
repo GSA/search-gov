@@ -10,16 +10,21 @@ class BlendedSearch < Search
     @total = 0
     @limit = options[:limit]
     @offset = options[:offset]
+    @sort = 'published_at:desc' if options[:sort_by] == 'date'
     @highlight_options = options.slice(:highlighting, :pre_tags, :post_tags)
   end
 
   def search
-    search_options = { q: @query,
-                       affiliate_id: @affiliate.id,
-                       rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
-                       language: @affiliate.locale,
-                       size: detect_size,
-                       offset: detect_offset }.reverse_merge(@highlight_options)
+    search_options = {
+      affiliate_id: @affiliate.id,
+      language: @affiliate.locale,
+      offset: detect_offset,
+      q: @query,
+      rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
+      size: detect_size,
+      sort: @sort,
+    }.reverse_merge(@highlight_options)
+
     elastic_blended_results = ElasticBlended.search_for(search_options)
     ensure_no_suggestion_when_results_present(elastic_blended_results)
     if elastic_blended_results && elastic_blended_results.total.zero? && elastic_blended_results.suggestion.present?
