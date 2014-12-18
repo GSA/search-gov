@@ -40,10 +40,6 @@ class ApiCommercialSearch < Search
     @next_offset = response.next_offset
   end
 
-  def build_snippet_as_json(description)
-    description
-  end
-
   def populate_additional_results
     @govbox_set = GovboxSet.new(@query,
                                 @affiliate,
@@ -53,6 +49,19 @@ class ApiCommercialSearch < Search
 
   def first_page?
     @offset.zero?
+  end
+
+  def as_json_build_snippet(description)
+    description
+  end
+
+  def as_json_append_govbox_set(hash)
+    super
+    hash[:recent_news] = news_items ? as_json_recent_news : []
+  end
+
+  def as_json_recent_news
+    news_items.results.map { |news_item| as_json_recent_news_item news_item }
   end
 
   def log_serp_impressions

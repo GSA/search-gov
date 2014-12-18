@@ -20,7 +20,7 @@ module TwitterData
     profile = TwitterProfile.where(twitter_id: twitter_user.id).first_or_initialize
     profile.screen_name = twitter_user.screen_name
     profile.name = twitter_user.name
-    profile.profile_image_url = twitter_user.profile_image_url.to_s
+    profile.profile_image_url = twitter_user.profile_image_url_https.to_s
     profile.save(validate: false)
     profile
   end

@@ -20,11 +20,11 @@ class ApiBlendedSearch < BlendedSearch
 
   protected
 
-  def result_hash_as_json(result)
+  def as_json_result_hash(result)
     pub_date = result.published_at ? result.published_at.to_date : nil
     { title: result.title,
       url: result.url,
-      snippet: build_snippet_as_json(result.description),
+      snippet: as_json_build_snippet(result.description),
       pub_date: pub_date }
   end
 

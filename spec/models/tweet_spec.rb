@@ -63,7 +63,7 @@ describe Tweet do
     end
   end
 
-  describe "#link_to_tweet" do
+  describe '#url_to_tweet' do
     before do
       TwitterProfile.create!(:twitter_id => 12345,
                              :screen_name => 'USASearch',
@@ -73,7 +73,7 @@ describe Tweet do
     end
 
     it "should output a properly formatted link to the tweet" do
-      @tweet.link_to_tweet.should == "http://twitter.com/USASearch/status/123456"
+      @tweet.url_to_tweet.should == 'https://twitter.com/USASearch/status/123456'
     end
   end
 end

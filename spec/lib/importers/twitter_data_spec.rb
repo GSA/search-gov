@@ -8,7 +8,7 @@ describe TwitterData do
       mock(Twitter::User, id: 100,
            screen_name: 'usasearchdev',
            name: 'USASearch Dev',
-           profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+           profile_image_url_https: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
     end
 
     it 'should create profile' do

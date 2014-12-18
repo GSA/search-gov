@@ -205,9 +205,7 @@ describe ApiAzureSearch do
                           query: 'healthy snack'
     end
 
-    before do
-      search.run
-    end
+    before { search.run }
 
     it 'returns results' do
       expect(search.as_json[:web][:results].count).to eq(20)
@@ -219,5 +217,8 @@ describe ApiAzureSearch do
       expect(result.snippet).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
       expect(result.url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
     end
+
+    it_should_behave_like 'an API search as_json'
+    it_should_behave_like 'a commercial API search as_json'
   end
 end

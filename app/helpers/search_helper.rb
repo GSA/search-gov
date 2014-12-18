@@ -282,9 +282,8 @@ module SearchHelper
   end
 
   def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
-    feed = RssFeed.owned_by_affiliate.joins(:rss_feed_urls).
-        where(owner_id: affiliate.id, 'rss_feed_urls.id' => rss_feed_url_id).first
-    content_tag(:span, feed.name, class: 'feed-name') if feed
+    feed_name = RssFeedUrl.find_parent_rss_feed_name(affiliate, rss_feed_url_id)
+    content_tag(:span, feed_name, class: 'feed-name') if feed_name
   end
 
   private
@@ -302,8 +301,7 @@ module SearchHelper
   end
 
   def youtube_thumbnail_url(news_item)
-    video_id = CGI.parse(URI.parse(news_item.link).query)['v'].first
-    "https://i.ytimg.com/vi/#{video_id}/default.jpg"
+    news_item.youtube_thumbnail_url
   end
 
   def left_nav_label(label_text)

@@ -214,9 +214,7 @@ describe ApiGssSearch do
                           query: 'ira'
     end
 
-    before do
-      search.run
-    end
+    before { search.run }
 
     it 'returns results' do
       expect(search.as_json[:web][:results].count).to eq(10)
@@ -228,5 +226,8 @@ describe ApiGssSearch do
       expect(result.snippet).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
       expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
     end
+
+    it_should_behave_like 'an API search as_json'
+    it_should_behave_like 'a commercial API search as_json'
   end
 end

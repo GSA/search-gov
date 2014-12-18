@@ -12,4 +12,4 @@
       .tweet
         = legacy_render_twitter_profile(tweet.twitter_profile, search, index)
         .tweet-text= legacy_render_tweet_text(tweet, search, index).html_safe
-        .timestamp= link_to time_ago_in_words(tweet.published_at), tweet.link_to_tweet
+        .timestamp= link_to time_ago_in_words(tweet.published_at), tweet.url_to_tweet

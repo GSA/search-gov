@@ -9,8 +9,8 @@ class Tweet < ActiveRecord::Base
     self.tweet_text = Sanitize.clean(tweet_text).squish if tweet_text
   end
 
-  def link_to_tweet
-    "http://twitter.com/#{twitter_profile.screen_name}/status/#{tweet_id}"
+  def url_to_tweet
+    "https://twitter.com/#{twitter_profile.screen_name}/status/#{tweet_id}"
   end
 
   def language
@@ -20,4 +20,12 @@ class Tweet < ActiveRecord::Base
     'en'
   end
 
+  def as_json
+    { text: tweet_text,
+      url: url_to_tweet,
+      name: twitter_profile.name,
+      screen_name: twitter_profile.screen_name,
+      profile_image_url: twitter_profile.profile_image_url,
+      created_at: published_at }
+  end
 end

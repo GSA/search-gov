@@ -62,6 +62,11 @@ class NewsItem < ActiveRecord::Base
     'en'
   end
 
+  def youtube_thumbnail_url
+    video_id = CGI.parse(URI.parse(link).query)['v'].first
+    "https://i.ytimg.com/vi/#{video_id}/default.jpg"
+  end
+
   private
 
   def description_not_required?

@@ -93,6 +93,12 @@ class RssFeedUrl < ActiveRecord::Base
     url
   end
 
+  def self.find_parent_rss_feed_name(affiliate, id)
+    rss_feed = RssFeed.owned_by_affiliate.joins(:rss_feed_urls).
+      where(owner_id: affiliate.id, 'rss_feed_urls.id' => id).first
+    rss_feed.name if rss_feed
+  end
+
   private
 
   def url_must_point_to_a_feed
