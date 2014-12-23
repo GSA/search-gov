@@ -8,10 +8,10 @@ describe GovboxSet do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) { mock('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
-    let(:highlight_options) do
+    let(:highlighting_options) do
       { highlighting: true,
-        pre_tags: '<b>',
-        post_tags: '</b>' }.freeze
+        pre_tags: %w(<strong>),
+        post_tags: %w(</strong>) }.freeze
     end
 
     context 'when the affiliate has boosted contents' do
@@ -30,12 +30,12 @@ describe GovboxSet do
           language: 'en',
           q: 'foo',
           size: 3
-        }.merge(highlight_options)
+        }.merge(highlighting_options)
 
         expected_results = mock(ElasticBoostedContentResults, total: 1)
         ElasticBoostedContent.should_receive(:search_for).with(expected_search_options).
           and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.boosted_contents.should == expected_results
       end
     end
@@ -50,18 +50,18 @@ describe GovboxSet do
         expect(govbox_set.modules).to include('BBG')
       end
 
-      it 'uses highlight options' do
+      it 'uses highlighting options' do
         expected_search_options = {
           affiliate_id: affiliate.id,
           language: 'en',
           q: 'foo',
           size: 1
-        }.merge(highlight_options)
+        }.merge(highlighting_options)
 
         expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
         ElasticFeaturedCollection.stub!(:search_for).with(expected_search_options).
           and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.featured_collections.should == expected_results
       end
     end
@@ -104,43 +104,44 @@ describe GovboxSet do
     context 'when affiliate has an agency and the federal register document govbox enabled' do
       let(:agency) { agencies(:irs) }
       let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
+      let(:expected_results) { mock(ElasticFeaturedCollectionResults, total: 1) }
 
       before do
         affiliate.stub(:agency).and_return(agency)
         affiliate.should_receive(:is_federal_register_document_govbox_enabled?).and_return(true)
-      end
-
-      it 'searches for federal register documents' do
-        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
         ElasticFederalRegisterDocument.should_receive(:search_for).
           with(hash_including(federal_register_agency_ids: [federal_register_agency.id],
                               language: 'en',
                               q: 'foo')).
           and_return(expected_results)
+      end
 
+      it 'searches for federal register documents' do
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.federal_register_documents.should == expected_results
         expect(govbox_set.modules).to include('FRDOC')
       end
 
       it 'uses highlight options' do
-        expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
-        expected_search_options = {
-          federal_register_agency_ids: [federal_register_agency.id],
-          language: 'en',
-          q: 'foo'
-        }.merge(highlight_options)
-
-        ElasticFederalRegisterDocument.should_receive(:search_for).
-          with(expected_search_options).
-          and_return(expected_results)
-
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.federal_register_documents.should == expected_results
       end
     end
 
     context "when the affiliate has the jobs govbox enabled" do
+      let(:job_openings) do
+        [Hashie::Mash.new(id: 'usajobs:359509200',
+                          position_title: '<em>Nurse</em>',
+                          organization_name: 'Indian Health Service',
+                          rate_interval_code: 'PA',
+                          minimum: 42913,
+                          maximum: 61775,
+                          start_date: '2014-01-16',
+                          end_date: '2021-12-31',
+                          locations: ['Gallup, NM'],
+                          url: 'https://www.usajobs.gov/GetJob/ViewDetails/359509200')]
+      end
+
       before do
         affiliate.stub!(:jobs_enabled?).and_return(true)
       end
@@ -153,23 +154,65 @@ describe GovboxSet do
         it "should call Jobs.search with the query, org code, size, hl, and lat_lon params" do
           Jobs.should_receive(:search).
             with(:query => 'foo', :hl => 1, :size => 10, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
-            and_return "jobs info"
+            and_return(job_openings)
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.jobs.should == "jobs info"
+          expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
           expect(govbox_set.modules).to include('JOBS')
         end
       end
 
       context "when the affiliate does not have a related agency with an org code" do
-        it "should call Jobs.search with just the query, size, hl, and lat_lon param" do
-          Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 10, tags: 'federal').and_return nil
+        it 'should call Jobs.search with just the query, size, hl, and tags' do
+          Jobs.should_receive(:search).with(query: 'foo', hl: 1, size: 10, tags: 'federal').and_return nil
           GovboxSet.new('foo', affiliate, nil)
         end
       end
 
-      context 'when highlighting is enabled' do
-        it "translates <em></em> to \ue000 and \ue001" do
+      context 'when highlighting is enabled by default' do
+        it "translates '<em>' and '</em>'" do
+          Jobs.should_receive(:search).
+            with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
+            and_return job_openings
+          govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
+          expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
+        end
 
+        context 'when highlighting options are assigned' do
+          it "translates '<em>' and '</em>'" do
+            Jobs.should_receive(:search).
+              with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
+              and_return job_openings
+            govbox_set = GovboxSet.new('nursing jobs',
+                                       affiliate,
+                                       nil,
+                                       highlighting: true,
+                                       pre_tags: ["\ue000"],
+                                       post_tags: ["\ue001"])
+            expect(govbox_set.jobs.first.position_title).to eq("\ue000Nurse\ue001")
+          end
+        end
+      end
+
+      context 'when highlighting is disabled' do
+        let(:job_openings_no_hl) do
+          [Hashie::Mash.new(id: 'usajobs:359509200',
+                            position_title: 'Nurse',
+                            organization_name: 'Indian Health Service',
+                            rate_interval_code: 'PA',
+                            minimum: 42913,
+                            maximum: 61775,
+                            start_date: '2014-01-16',
+                            end_date: '2021-12-31',
+                            locations: ['Gallup, NM'],
+                            url: 'https://www.usajobs.gov/GetJob/ViewDetails/359509200')]
+        end
+
+        it 'returns position_title without highlighting' do
+          Jobs.should_receive(:search).with(query: 'nursing jobs',
+                                            size: 10,
+                                            tags: 'federal').and_return(job_openings_no_hl)
+          govbox_set = GovboxSet.new('nursing jobs', affiliate, nil, highlighting: false)
+          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
         end
       end
     end
@@ -215,13 +258,13 @@ describe GovboxSet do
           q: 'foo',
           rss_feeds: [news_feed, blog_feed],
           since: 4.months.ago.beginning_of_day
-        }.merge(highlight_options)
+        }.merge(highlighting_options)
 
         ElasticNewsItem.should_receive(:search_for).
           with(expected_search_options).
           and_return(non_video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.news_items.should == non_video_results
       end
     end
@@ -245,12 +288,12 @@ describe GovboxSet do
           q: 'foo',
           rss_feeds: [youtube_feed],
           since: 13.months.ago.beginning_of_day
-        }.merge(highlight_options)
+        }.merge(highlighting_options)
 
         ElasticNewsItem.should_receive(:search_for).with(expected_search_options).
           and_return(video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.video_news_items.should == video_results
         expect(govbox_set.modules).to include('VIDS')
       end
@@ -330,19 +373,19 @@ describe GovboxSet do
             expect(govbox_set.modules).to include('TWEET')
           end
 
-          it 'uses highlight_options' do
+          it 'uses highlighting_options' do
             expected_search_options = {
               language: "en",
               q: 'foo',
               since: 3.days.ago.beginning_of_day,
               size: 1,
               twitter_profile_ids: [123]
-            }.merge(highlight_options)
+            }.merge(highlighting_options)
 
             expected_tweets = mock(ElasticTweetResults, total: 1)
             ElasticTweet.should_receive(:search_for).with(expected_search_options).
               and_return(expected_tweets)
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+            govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
             govbox_set.tweets.should == expected_tweets
           end
         end
@@ -357,18 +400,20 @@ describe GovboxSet do
     end
 
     context 'when the affiliate has related search terms' do
+      let(:expected_search_terms) { mock('search terms') }
+
       it 'should assign related searches' do
-        SaytSuggestion.stub!(:related_search).with('foo', affiliate, {}).and_return "related search results"
+        SaytSuggestion.stub!(:related_search).with('foo', affiliate, {}).
+          and_return(expected_search_terms)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.related_search.should == "related search results"
+        govbox_set.related_search.should == expected_search_terms
         expect(govbox_set.modules).to include('SREL')
       end
 
-      it 'uses highlight options' do
-        expected_search_terms = mock('search terms')
-        SaytSuggestion.stub!(:related_search).with('foo', affiliate, highlight_options).
+      it 'uses highlighting options' do
+        SaytSuggestion.stub!(:related_search).with('foo', affiliate, highlighting_options).
           and_return(expected_search_terms)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlight_options)
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.related_search.should == expected_search_terms
       end
 

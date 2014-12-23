@@ -1,4 +1,9 @@
 class GovboxSet
+  DEFAULT_JOB_HIGHLIGHTING_OPTIONS = {
+    pre_tags: %w(<strong>),
+    post_tags: %w(</strong>)
+  }.freeze
+
   attr_reader :agency,
               :boosted_contents,
               :featured_collections,
@@ -13,9 +18,9 @@ class GovboxSet
 
   def initialize(query, affiliate, geoip_info, options = {})
     @query, @affiliate, @geoip_info = query, affiliate, geoip_info
-    @highlight_options = options.slice(:highlighting, :pre_tags, :post_tags)
+    @highlighting_options = options.slice(:highlighting, :pre_tags, :post_tags)
 
-    @base_search_options = @highlight_options.merge(
+    @base_search_options = @highlighting_options.merge(
       language: @affiliate.locale,
       q: @query)
 
@@ -35,7 +40,7 @@ class GovboxSet
   private
 
   def init_related_search
-    @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlight_options)
+    @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
     @modules << 'SREL' if @related_search.present?
   end
 
@@ -89,12 +94,30 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      jobs_options = { query: @query, size: 10, hl: 1 }
-      org_tags_hash = @affiliate.has_organization_code? ? { organization_id: @affiliate.agency.organization_code } : { tags: 'federal' }
-      jobs_options.merge!(org_tags_hash)
-      jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?
-      @jobs = Jobs.search(jobs_options)
-      @modules << 'JOBS' if @jobs.present?
+      @jobs = Jobs.search build_jobs_search_options
+      if @jobs.present?
+        translate_jobs_highlights unless highlighting_disabled?
+        @modules << 'JOBS'
+      end
+    end
+  end
+
+  def build_jobs_search_options
+    jobs_options = { query: @query, size: 10 }
+    jobs_options[:hl] = 1 unless highlighting_disabled?
+    org_tags_hash = @affiliate.has_organization_code? ? { organization_id: @affiliate.agency.organization_code } : { tags: 'federal' }
+    jobs_options.merge!(org_tags_hash)
+    jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?
+    jobs_options
+  end
+
+  def translate_jobs_highlights
+    pre_tag = (@highlighting_options[:pre_tags] || DEFAULT_JOB_HIGHLIGHTING_OPTIONS[:pre_tags]).first
+    post_tag = (@highlighting_options[:post_tags] || DEFAULT_JOB_HIGHLIGHTING_OPTIONS[:post_tags]).first
+    @jobs.each do |job_opening|
+      job_opening.position_title = job_opening.position_title.
+        gsub(/<em>/, pre_tag).
+        gsub(/<\/em>/, post_tag)
     end
   end
 
@@ -131,5 +154,9 @@ class GovboxSet
 
   def elastic_results_exist?(elastic_results)
     elastic_results.present? && elastic_results.total > 0
+  end
+
+  def highlighting_disabled?
+    @highlighting_options[:highlighting] === false
   end
 end

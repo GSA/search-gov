@@ -11,7 +11,8 @@ class BlendedSearch < Search
     @limit = options[:limit]
     @offset = options[:offset]
     @sort = 'published_at:desc' if options[:sort_by] == 'date'
-    @highlight_options = options.slice(:highlighting, :pre_tags, :post_tags)
+    @highlight_options = options.slice(:pre_tags, :post_tags)
+    @highlight_options[:highlighting] = options[:enable_highlighting]
   end
 
   def search
