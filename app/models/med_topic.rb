@@ -1,11 +1,12 @@
 class MedTopic < ActiveRecord::Base
+  MAX_MED_TOPIC_SUMMARY_LENGTH = 200
   MEDLINE_BASE_URL = 'http://www.nlm.nih.gov/medlineplus/'
   MEDLINE_BASE_VOCAB_URL = "#{MEDLINE_BASE_URL}xml/"
 
   validates_presence_of :medline_tid, :medline_title, :locale
   has_many :synonyms, :class_name => 'MedSynonym', :foreign_key => :topic_id, :dependent => :destroy
-  has_many :med_related_topics, :dependent => :destroy
-  has_many :med_sites, :dependent => :destroy
+  has_many :med_related_topics, dependent: :destroy, order: :title
+  has_many :med_sites, dependent: :destroy, order: :title
 
   def self.download_medline_xml(date)
     xml_file_name = medline_xml_file_name(date)
@@ -133,6 +134,17 @@ class MedTopic < ActiveRecord::Base
       matched_topic = matched_synonym.topic if matched_synonym
     end
     matched_topic
+  end
+
+  def truncated_summary
+    sentences = Sanitize.clean(summary_html).gsub(/[[:space:]]/, ' ').squish.split(/\.\s*/)
+    summary = ''
+
+    sentences.slice(0,3).each do |sentence|
+      break if (summary.length + sentence.length + 1) > MAX_MED_TOPIC_SUMMARY_LENGTH
+      summary << sentence << '. '
+    end
+    summary.squish
   end
 
   private

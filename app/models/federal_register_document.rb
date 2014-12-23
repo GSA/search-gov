@@ -24,4 +24,11 @@ class FederalRegisterDocument < ActiveRecord::Base
                         :title
 
   validates_uniqueness_of :document_number, case_sensitive: false
+
+  def contributing_agency_names
+    parent_ids = federal_register_agencies.collect(&:parent_id).compact.uniq
+    federal_register_agencies.reject do |fr_agency|
+      parent_ids.include? fr_agency.id
+    end.collect(&:name).sort
+  end
 end

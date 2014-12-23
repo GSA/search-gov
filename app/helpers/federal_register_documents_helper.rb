@@ -2,16 +2,11 @@ module FederalRegisterDocumentsHelper
   def federal_register_document_info(document)
     document_type_span = content_tag :span, document.document_type
 
-    fr_agency_names = federal_register_document_contributing_agency_names document.federal_register_agencies
+    fr_agency_names = document.contributing_agency_names
     fr_agencies_html = federal_register_agencies_html fr_agency_names
 
     publication_date_span = content_tag :span, document.publication_date.to_s(:long)
     "A #{document_type_span} #{fr_agencies_html} posted on #{publication_date_span}.".html_safe
-  end
-
-  def federal_register_document_contributing_agency_names(fr_agencies)
-    parent_ids = fr_agencies.collect(&:parent_id).compact.uniq
-    fr_agencies.reject { |fr_agency| parent_ids.include? fr_agency.id }.collect(&:name)
   end
 
   def federal_register_agencies_html(fr_agency_names)

@@ -3,7 +3,7 @@
   .content-block-item.med-topic
     = link_to 'MedlinePlus', t(:'searches.med_topic.homepage_url'), class: "logo-#{I18n.locale}"
     %h4.title= link_to_result_title(med_topic.id, med_topic.medline_title, med_topic.medline_url, 1, 'MEDL')
-    %span.description=med_topic_description med_topic
+    %span.description= med_topic.truncated_summary
 
     - if med_topic.med_related_topics.present?
       .related-topics

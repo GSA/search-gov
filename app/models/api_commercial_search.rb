@@ -56,8 +56,10 @@ class ApiCommercialSearch < Search
   end
 
   def as_json_append_govbox_set(hash)
-    super
-    hash[:recent_news] = news_items ? as_json_recent_news : []
+    super do
+      hash[:recent_video_news] = video_news_items ? as_json_recent_video_news : []
+      hash[:recent_news] = news_items ? as_json_recent_news : []
+    end
   end
 
   def as_json_recent_news

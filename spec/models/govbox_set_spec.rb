@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe GovboxSet do
@@ -163,6 +164,12 @@ describe GovboxSet do
         it "should call Jobs.search with just the query, size, hl, and lat_lon param" do
           Jobs.should_receive(:search).with(:query => 'foo', :hl => 1, :size => 10, tags: 'federal').and_return nil
           GovboxSet.new('foo', affiliate, nil)
+        end
+      end
+
+      context 'when highlighting is enabled' do
+        it "translates <em></em> to \ue000 and \ue001" do
+
         end
       end
     end
