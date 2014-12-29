@@ -48,7 +48,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:website].label = 'Homepage URL'
     config.columns[:mobile_logo_url].label = 'Logo URL'
     config.columns[:header_image_url].label = 'Legacy Logo URL'
-    config.list.sorting = { :display_name => :asc }
+    config.list.sorting = { :created_at => :desc }
 
     [:header_footer_css, :staged_header_footer_css,
      :header, :staged_header, :footer, :staged_footer,
