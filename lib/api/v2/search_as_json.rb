@@ -59,7 +59,7 @@ module Api::V2::SearchAsJson
     { title: news_item.title,
       url: news_item.link,
       snippet: news_item.description,
-      pub_date: news_item.published_at.to_date.to_s(:db),
+      publication_date: news_item.published_at.to_date.to_s(:db),
       source: source }
   end
 
@@ -75,12 +75,16 @@ module Api::V2::SearchAsJson
         start_page: document.start_page,
         end_page: document.end_page,
         publication_date: document.publication_date.to_s(:db),
-        comments_close_on: comments_close_on }
+        comments_close_date: comments_close_on }
     end
   end
 
   def as_json_job_openings
-    jobs.collect { |job| job.to_hash.except('id') }
+    jobs.collect do |job|
+      job_hash = job.to_hash.except('id')
+      job_hash['locations'] &&= job_hash['locations'].sort
+      job_hash
+    end
   end
 
   def as_json_health_topics

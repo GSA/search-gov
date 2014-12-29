@@ -27,7 +27,7 @@ shared_examples 'a commercial API search as_json' do
 
     it 'includes recent_video_news' do
       recent_news_item = search_rash.recent_video_news.first.to_hash.symbolize_keys
-      expect(recent_news_item).to eq(pub_date: '2014-12-16',
+      expect(recent_news_item).to eq(publication_date: '2014-12-16',
                                      snippet: 'video news description 1',
                                      source: 'YouTube',
                                      thumbnail_url: 'https://i.ytimg.com/vi/1/default.jpg',
@@ -35,7 +35,7 @@ shared_examples 'a commercial API search as_json' do
                                      url: 'http://www.youtube.com/watch?v=1&feature=youtube_gdata')
 
       recent_news_item = search_rash.recent_video_news.last.to_hash.symbolize_keys
-      expect(recent_news_item).to eq(pub_date: '2014-12-15',
+      expect(recent_news_item).to eq(publication_date: '2014-12-15',
                                      snippet: 'video news description 2',
                                      source: 'YouTube',
                                      thumbnail_url: 'https://i.ytimg.com/vi/2/default.jpg',
@@ -69,14 +69,14 @@ shared_examples 'a commercial API search as_json' do
 
     it 'includes recent_news' do
       recent_news_item = search_rash.recent_news.first.to_hash.symbolize_keys
-      expect(recent_news_item).to eq(pub_date: '2014-12-16',
+      expect(recent_news_item).to eq(publication_date: '2014-12-16',
                                      snippet: 'v2 news description 1',
                                      source: 'News',
                                      title: 'recent news title-1',
                                      url: 'http://search.digitalgov.gov/news-1')
 
       recent_news_item = search_rash.recent_news.last.to_hash.symbolize_keys
-      expect(recent_news_item).to eq(pub_date: '2014-12-15',
+      expect(recent_news_item).to eq(publication_date: '2014-12-15',
                                      snippet: 'v2 news description 2',
                                      source: 'News',
                                      title: 'recent news title-2',

@@ -58,7 +58,7 @@ shared_examples 'an API search as_json' do
                                start_page: 36730,
                                end_page: 36743,
                                publication_date: '2014-06-30',
-                               comments_close_on: nil)
+                               comments_close_date: nil)
 
       expect(docs.last).to eq(document_number: '2013-10000',
                               document_type: 'Proposed Rule',
@@ -69,7 +69,7 @@ shared_examples 'an API search as_json' do
                               start_page: 8888,
                               end_page: 8889,
                               publication_date: '2013-01-31',
-                              comments_close_on: '2013-03-31')
+                              comments_close_date: '2013-03-31')
     end
   end
 
@@ -97,6 +97,7 @@ shared_examples 'an API search as_json' do
                          start_date: '2014-12-03',
                          end_date: '2014-12-29',
                          locations: [
+                           'Dallas, TX',
                            'Arlington, TX'
                          ],
                          url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
@@ -127,7 +128,8 @@ shared_examples 'an API search as_json' do
                               start_date: '2014-12-03',
                               end_date: '2014-12-29',
                               locations: [
-                                'Arlington, TX'
+                                'Arlington, TX',
+                                'Dallas, TX'
                               ],
                               url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
     end

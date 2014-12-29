@@ -141,12 +141,12 @@
 
 
 
-  | Values   | Description
-  | :--      | :--
-  | title    | Title of the document
-  | url      | URL of the document
-  | snippet  | Summary of the document
-  | pub_date | Publication date of the document (not available on commercial results)
+  | Values           | Description
+  | :--              | :--
+  | title            | Title of the document
+  | url              | URL of the document
+  | snippet          | Summary of the document
+  | publication_date | Publication date of the document (not available on commercial results)
 
 
 
@@ -174,11 +174,42 @@
 
   | Values         | Description
   | :--            | :--
-  | title          | title of the graphic best bet
+  | title          | Title of the graphic best bet
   | title_url      | URL of the graphic best bet
   | image_url      | URL of the graphic image
   | image_alt_text | Alternative text of the image
-  | links          | Array for links in the graphic best bet. Each array contains a title and a url
+  | links          | An array of links in the graphic best bet. Each link contains a title and a URL
+
+
+
+  ### health_topics
+
+
+  | Values         | Description
+  | :--            | :--
+  | title          | Title of the health topic
+  | url            | URL of the health topic
+  | snippet        | Snippet of the health topic
+  | related_topics | An array of topics related to the health topic. Each topic contains a title and a URL
+  | related_sites  | An array of sites related to the the health topic. Each site contains a title and a URL
+
+
+
+
+  ### job_openings
+
+
+  | Values             | Description
+  | :--                | :--
+  | position_title     | Position title of the job opening
+  | organization_name  | Organization name of the job opening
+  | rate_interval_code | Rate interval code of the job opening
+  | minimum            | Minimum salary of the job opening
+  | maximum            | Maximum salary of the job opening
+  | start_date         | Start date of the job opening
+  | end_date           | End date of the job opening
+  | locations          | An array of locations of the job opening
+  | url                | URL of the job opening
 
 
 
@@ -189,12 +220,12 @@
   Recent tweets
 
 
-  | Values | Description
+  | Values            | Description
   | :--               | :--
-  | text              | text of the tweet
+  | text              | Text of the tweet
   | url               | URL of the tweet
-  | name              | name of the tweet author
-  | screen_name       | screen name of the tweet author
+  | name              | Name of the tweet author
+  | screen_name       | Screen name of the tweet author
   | profile_image_url | URL of the tweet author profile image
 
 
@@ -206,12 +237,13 @@
   Recent news from our DigitalGov Search indexes. Only available with commercial results.
 
 
-  | Values   | Description
-  | :--      | :--
-  | title    | title of the recent news
-  | url      | URL of the recent news
-  | pub_date | Publication date of the recent news
-  | source   | source of the recent news
+  | Values           | Description
+  | :--              | :--
+  | title            | Title of the recent news
+  | url              | URL of the recent news
+  | snippet          | Snippet of the recent news
+  | publication_date | Publication date of the recent news
+  | source           | Source of the recent news
 
 
 
@@ -222,13 +254,36 @@
   Recent video news from our DigitalGov Search indexes. Only available with commercial results.
 
 
-  | Values        | Description
-  | :--           | :--
-  | title         | title of the recent video news
-  | url           | URL of the recent video news
-  | pub_date      | Publication date of the recent video news
-  | source        | source of the recent video news
-  | thumbnail_url | thumbnail URL of the recent video news
+  | Values           | Description
+  | :--              | :--
+  | title            | Title of the recent video news
+  | url              | URL of the recent video news
+  | snippet          | Snippet of the recent video news
+  | publication_date | Publication date of the recent video news
+  | source           | Source of the recent video news
+  | thumbnail_url    | Thumbnail URL of the recent video news
+
+
+
+
+  ### federal_register_documents
+
+
+  Federal Register documents
+
+
+  | Values              | Description
+  | :--                 | :--
+  | document_number     | Document number of the federal register document
+  | document_type       | Document type of the federal register document
+  | title               | Title of the federal register document
+  | url                 | URL of the federal register document
+  | agency_names        | An array of agency names of the federal register document
+  | page_length         | Page length of the federal register document
+  | start_page          | Start page of the federal register document
+  | end_page            | End page of the federal register document
+  | publication_date    | Publication date of the federal register document
+  | comments_close_date | Comments close date of the federal register document
 
 
 

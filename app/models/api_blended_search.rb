@@ -25,7 +25,7 @@ class ApiBlendedSearch < BlendedSearch
     { title: result.title,
       url: result.url,
       snippet: as_json_build_snippet(result.description),
-      pub_date: pub_date }
+      publication_date: pub_date }
   end
 
   private

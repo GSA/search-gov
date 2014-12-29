@@ -138,7 +138,7 @@ describe GovboxSet do
                           maximum: 61775,
                           start_date: '2014-01-16',
                           end_date: '2021-12-31',
-                          locations: ['Gallup, NM'],
+                          locations: ['Gallup, NM', 'Dallas, TX'],
                           url: 'https://www.usajobs.gov/GetJob/ViewDetails/359509200')]
       end
 
@@ -175,6 +175,7 @@ describe GovboxSet do
             and_return job_openings
           govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
+          expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
         end
 
         context 'when highlighting options are assigned' do
