@@ -16,7 +16,7 @@ shared_examples 'a commercial API search as_json' do
         NewsItem.create!(rss_feed_url: rss_feed_url,
                          link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
                          title: "video #{i}",
-                         description: 'already exist description',
+                         description: "video news description #{i}",
                          published_at: current_time.advance(days: -i),
                          guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
                          updated_at: Time.current)
@@ -28,6 +28,7 @@ shared_examples 'a commercial API search as_json' do
     it 'includes recent_video_news' do
       recent_news_item = search_rash.recent_video_news.first.to_hash.symbolize_keys
       expect(recent_news_item).to eq(pub_date: '2014-12-16',
+                                     snippet: 'video news description 1',
                                      source: 'YouTube',
                                      thumbnail_url: 'https://i.ytimg.com/vi/1/default.jpg',
                                      title: 'video 1',
@@ -35,6 +36,7 @@ shared_examples 'a commercial API search as_json' do
 
       recent_news_item = search_rash.recent_video_news.last.to_hash.symbolize_keys
       expect(recent_news_item).to eq(pub_date: '2014-12-15',
+                                     snippet: 'video news description 2',
                                      source: 'YouTube',
                                      thumbnail_url: 'https://i.ytimg.com/vi/2/default.jpg',
                                      title: 'video 2',
@@ -68,12 +70,14 @@ shared_examples 'a commercial API search as_json' do
     it 'includes recent_news' do
       recent_news_item = search_rash.recent_news.first.to_hash.symbolize_keys
       expect(recent_news_item).to eq(pub_date: '2014-12-16',
+                                     snippet: 'v2 news description 1',
                                      source: 'News',
                                      title: 'recent news title-1',
                                      url: 'http://search.digitalgov.gov/news-1')
 
       recent_news_item = search_rash.recent_news.last.to_hash.symbolize_keys
       expect(recent_news_item).to eq(pub_date: '2014-12-15',
+                                     snippet: 'v2 news description 2',
                                      source: 'News',
                                      title: 'recent news title-2',
                                      url: 'http://search.digitalgov.gov/news-2')

@@ -5,8 +5,8 @@ Feature: Image search
 
   Scenario: English Image search
     Given the following legacy Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
+      | display_name | name   | contact_email | contact_name | header         | domains        |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | whitehouse.gov |
     When I am on usagov's image search page
     When I fill in "query" with "White House"
     And I press "Search"

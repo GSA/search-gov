@@ -58,6 +58,7 @@ module Api::V2::SearchAsJson
     source ||= RssFeedUrl.find_parent_rss_feed_name(@affiliate, news_item.rss_feed_url_id)
     { title: news_item.title,
       url: news_item.link,
+      snippet: news_item.description,
       pub_date: news_item.published_at.to_date.to_s(:db),
       source: source }
   end
