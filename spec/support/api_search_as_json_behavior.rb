@@ -97,7 +97,6 @@ shared_examples 'an API search as_json' do
                          start_date: '2014-12-03',
                          end_date: '2014-12-29',
                          locations: [
-                           'Dallas, TX',
                            'Arlington, TX'
                          ],
                          url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
@@ -128,8 +127,7 @@ shared_examples 'an API search as_json' do
                               start_date: '2014-12-03',
                               end_date: '2014-12-29',
                               locations: [
-                                'Arlington, TX',
-                                'Dallas, TX'
+                                'Arlington, TX'
                               ],
                               url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
     end

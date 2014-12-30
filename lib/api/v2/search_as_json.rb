@@ -80,11 +80,7 @@ module Api::V2::SearchAsJson
   end
 
   def as_json_job_openings
-    jobs.collect do |job|
-      job_hash = job.to_hash.except('id')
-      job_hash['locations'] &&= job_hash['locations'].sort
-      job_hash
-    end
+    jobs.collect { |job| job.to_hash.except('id') }
   end
 
   def as_json_health_topics
