@@ -183,6 +183,21 @@ describe ApiGssSearch do
       end
     end
 
+    context 'when correctedQuery is present' do
+      subject(:search) do
+        described_class.new(affiliate: affiliate,
+                            api_key: 'my_api_key',
+                            cx: 'my_cx',
+                            enable_highlighting: true,
+                            limit: 10,
+                            next_offset_within_limit: true,
+                            offset: 0,
+                            query: 'electro coagulation')
+      end
+
+      it_should_behave_like 'a search with spelling suggestion'
+    end
+
     context 'when Gss response contains empty results' do
       subject(:search) do
         described_class.new affiliate: affiliate,
@@ -211,7 +226,7 @@ describe ApiGssSearch do
                           limit: 10,
                           next_offset_within_limit: true,
                           offset: 0,
-                          query: 'ira'
+                          query: 'electro coagulation'
     end
 
     before { search.run }
@@ -222,9 +237,13 @@ describe ApiGssSearch do
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:web][:results].first)
-      expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
-      expect(result.snippet).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
-      expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
+      expect(result.title).to eq("KASELCO \ue000Electrocoagulation\ue001 Sales Training - Navair")
+      expect(result.snippet).to eq("Introduction to. \ue000ELECTROCOAGULATION\ue001 Kaselco. Presented by. Bruce J.   Lesikar. V.P. Engineering. Overview. What is electrocoagulation? History of \ue000...\ue001")
+      expect(result.url).to eq('http://www.navair.navy.mil/frce/documention/2012%20Eastern%20Carolina%20Environmental%20Conference/2012%20ECEC%20Presentations/ECEC2012-Day_2/4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt')
+    end
+
+    it 'sets spelling suggestion' do
+      expect(search.as_json[:web][:spelling_correction]).to eq('electrocoagulation')
     end
 
     it_should_behave_like 'an API search as_json'

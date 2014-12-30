@@ -28,19 +28,19 @@ module SpellingSuggestionsHelper
                        :assumed_term => tracked_click_link(suggested_url, h(suggested_query), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
                        :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
       content_tag(:h4, raw(did_you_mean), :class => 'did-you-mean')
-    end if search.spelling_suggestion_eligible
+    end
   end
 
   def spelling_suggestion(search)
     spelling_suggestion_links(search) do |suggested_query, suggested_url, original_url|
       render_suggestion(original_url, search, suggested_query, suggested_url, 'BSPEL', 'OVER')
-    end if search.spelling_suggestion_eligible
+    end
   end
 
   def search_suggestion(search, module_tag)
     search_suggestion_links(search) do |suggested_query, suggested_url|
       render_spelling(suggested_query, suggested_url, module_tag)
-    end if search.spelling_suggestion and search.spelling_suggestion_eligible
+    end if search.spelling_suggestion
   end
 
   def render_spelling(suggested_query, suggested_url, module_tag)

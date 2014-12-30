@@ -44,6 +44,8 @@ class BlendedSearch < Search
     @offset ? @offset : ((@page - 1) * @per_page)
   end
 
+  protected
+
   def handle_response(response)
     if response
       @total = response.total
@@ -51,20 +53,19 @@ class BlendedSearch < Search
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
-      @spelling_suggestion = response.suggestion.highlighted if response.suggestion.present?
+      assign_spelling_suggestion_if_eligible(response.suggestion.text) if response.suggestion.present?
     end
   end
 
-  def first_page?
-    @offset ? @offset.zero? : super
-  end
-
-  protected
   def populate_additional_results
     @govbox_set = GovboxSet.new(query,
                                 affiliate,
                                 @options[:geoip_info],
                                 @highlight_options) if first_page?
+  end
+
+  def first_page?
+    @offset ? @offset.zero? : super
   end
 
   def log_serp_impressions

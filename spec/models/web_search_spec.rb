@@ -145,6 +145,30 @@ describe WebSearch do
       end
     end
 
+    context 'when the search engine response contains spelling suggestion' do
+      subject(:search) do
+        described_class.new(affiliate: affiliates(:usagov_affiliate),
+                            query: 'electro coagulation')
+      end
+
+      before { search.run }
+      its(:spelling_suggestion) { should eq('electrocoagulation') }
+    end
+
+    context 'when the search engine response spelling suggestion exists in SuggestionBlock' do
+      subject(:search) do
+        described_class.new(affiliate: affiliates(:usagov_affiliate),
+                            query: 'electro coagulation')
+      end
+
+      before do
+        SuggestionBlock.create!(query: 'electro coagulation')
+        search.run
+      end
+
+      its(:spelling_suggestion) { should be_nil }
+    end
+
     context "when paginating" do
 
       let(:affiliate) { affiliates(:basic_affiliate) }

@@ -7,8 +7,7 @@ describe SpellingSuggestionsHelper do
          affiliate: affiliate,
          query: '<initialquery>',
          queried_at_seconds: Time.current.to_i,
-         spelling_suggestion: '<suggestion>',
-         spelling_suggestion_eligible: true)
+         spelling_suggestion: '<suggestion>')
   end
 
   describe '#spelling_suggestion(search)' do
@@ -16,17 +15,6 @@ describe SpellingSuggestionsHelper do
       html = helper.spelling_suggestion(search)
       html.should have_content('Showing results for <suggestion>')
       html.should have_content('Search instead for <initialquery>')
-    end
-
-    context 'when query term is blocked from showing suggestion' do
-      before do
-        search.stub!(:spelling_suggestion_eligible).and_return false
-      end
-
-      it 'should not show the suggestion' do
-        html = helper.spelling_suggestion(search)
-        html.should_not have_content('Showing results for <suggestion>')
-      end
     end
   end
 

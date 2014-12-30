@@ -32,8 +32,7 @@ class ImageSearch
                           :endrecord,
                           :results,
                           :startrecord,
-                          :total,
-                          :spelling_suggestion
+                          :total
 
   def run
     if @query.present?
@@ -60,6 +59,10 @@ class ImageSearch
         endrecord: endrecord,
         results: results }
     end
+  end
+
+  def spelling_suggestion
+    @search_instance.spelling_suggestion if @spelling_suggestion_eligible
   end
 
   protected

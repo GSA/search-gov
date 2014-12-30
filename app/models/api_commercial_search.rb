@@ -19,6 +19,7 @@ class ApiCommercialSearch < Search
     @query = options[:query]
     @results = []
     @search_engine = instantiate_engine(options)
+    @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: @query)
   end
 
   protected

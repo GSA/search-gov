@@ -1,5 +1,6 @@
 class ApiBlendedSearch < BlendedSearch
   include Api::V2::SearchAsJson
+  include Api::V2::AsJsonAppendWebSpellingCorrection
 
   HIGHLIGHT_OPTIONS = {
     pre_tags: ["\ue000"],

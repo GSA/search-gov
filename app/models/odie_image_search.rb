@@ -32,7 +32,7 @@ class OdieImageSearch < OdieSearch
 
   def handle_response(response)
     super(response)
-    @spelling_suggestion = response.spelling_suggestion if response
+    assign_spelling_suggestion_if_eligible(response.spelling_suggestion) if response
   end
 
   def process_results(response)

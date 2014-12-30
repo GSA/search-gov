@@ -1,4 +1,5 @@
 class ApiGssSearch < ApiCommercialSearch
+  include Api::V2::AsJsonAppendWebSpellingCorrection
   self.default_module_tag = 'GWEB'.freeze
 
   protected
@@ -16,5 +17,9 @@ class ApiGssSearch < ApiCommercialSearch
                           per_page: options[:limit],
                           query: @formatted_query)
     ApiGssWebEngine.new engine_options
+  end
+
+  def handle_response(response)
+    assign_spelling_suggestion_if_eligible(response.spelling_suggestion) if super
   end
 end

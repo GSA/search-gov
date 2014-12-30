@@ -14,6 +14,7 @@ module Api::V2::SearchAsJson
       results: as_json_results_to_hash
     }
     web_hash[:total] = @total if @total
+    yield web_hash if block_given?
     hash[:web] = web_hash
   end
 

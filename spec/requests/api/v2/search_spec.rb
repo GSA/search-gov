@@ -185,6 +185,28 @@ describe '/api/v2/search' do
         expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end
+
+    context 'when query contains spelling error' do
+      it 'returns JSON results with spelling correction' do
+        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'descripton', sort_by: 'date'
+        expect(response.status).to eq(200)
+
+        hash_response = JSON.parse response.body, symbolize_names: true
+        expect(hash_response[:web][:spelling_correction]).to eq('description')
+      end
+
+      context 'when the query exists in SuggestionBlock' do
+        before { SuggestionBlock.create!(query: 'descripton') }
+
+        it 'returns JSON results with nil spelling correction' do
+          get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'descripton', sort_by: 'date'
+          expect(response.status).to eq(200)
+
+          hash_response = JSON.parse response.body, symbolize_names: true
+          expect(hash_response[:web][:spelling_correction]).to be_nil
+        end
+      end
+    end
   end
 
   context 'when one of the parameter is invalid' do

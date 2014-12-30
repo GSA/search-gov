@@ -5,7 +5,13 @@
 
 
   * Web results;
-  * Best bets; and
+  * Best bets;
+  * Health topics;
+  * Job openings;
+  * Recent tweets;
+  * Recent news;
+  * Recent video news;
+  * Federal Register documents; and
   * Related searches.
 
 
@@ -44,8 +50,8 @@
 
 
 
-  You can find your access key on the  [API Access Key](#{site_api_access_key_path(@site)}) page.
-  You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+  * You can find your access key on the  [API Access Key](#{site_api_access_key_path(@site)}) page.
+  * You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
   * Replace {YOUR_SEARCH_TERM} with a word or phrase of your choice.
 
 
@@ -133,7 +139,7 @@
 
 
 
-  ### web
+  ### web:results
 
 
   Web results from our DigitalGov Search indexes.
@@ -149,9 +155,30 @@
   | publication_date | Publication date of the document (not available on commercial results)
 
 
+  ### web:total
+
+  Total number of results available.
 
 
-  ###text_best_bets
+
+
+  ### web:next_offset
+
+
+  Offset for the subsequent results. `null` when When all of the results are exhausted.
+
+
+
+
+  ### web:spelling_correction
+
+
+  Spelling correction for your search term.
+
+
+
+
+  ### text_best_bets
 
 
   Text best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.

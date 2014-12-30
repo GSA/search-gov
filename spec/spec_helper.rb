@@ -159,6 +159,9 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(query: 'electro coagulation')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
 
+    web_search_params = common_web_search_params.merge(query: '(electro coagulation) (scopeid:usagovall OR site:gov OR site:mil)')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
+
     bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(query: '(electro coagulation) (site:www.whitehouse.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
@@ -228,6 +231,9 @@ RSpec.configure do |config|
     google_spelling = Rails.root.join('spec/fixtures/json/google/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(q: 'electro coagulation')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
+
+    gss_api_search_params = common_gss_api_search_params.merge(q: 'electro coagulation site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, google_spelling] }
 
     google_customcx = Rails.root.join('spec/fixtures/json/google/web_search/custom_cx.json').read
     web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc', key: 'some_key')

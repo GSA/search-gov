@@ -100,6 +100,10 @@ class Search
   def handle_response(response)
   end
 
+  def assign_spelling_suggestion_if_eligible(suggestion)
+    @spelling_suggestion = suggestion if @spelling_suggestion_eligible
+  end
+
   # If you need to query anything else, do that here
   def populate_additional_results
   end

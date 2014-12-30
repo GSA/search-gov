@@ -48,7 +48,7 @@ class WebSearch < Search
       if odie_response && odie_response.total.zero? && (suggestion = odie_response.spelling_suggestion)
         odie_search = initialize_odie_search(available_search_engine_pages, suggestion)
         run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
-        @spelling_suggestion = suggestion if @indexed_results
+        assign_spelling_suggestion_if_eligible(suggestion) if @indexed_results
       end
     end
 
@@ -85,7 +85,7 @@ class WebSearch < Search
     @startrecord = response.start_record
     @results = paginate(post_process_results(response.results))
     @endrecord = response.end_record
-    @spelling_suggestion = response.spelling_suggestion
+    assign_spelling_suggestion_if_eligible response.spelling_suggestion
     @tracking_information = response.tracking_information
   end
 
