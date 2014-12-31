@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize_query(query)
-    Sanitize.clean(query.to_s).gsub('&amp;', '&').squish if query
+    QuerySanitizer.sanitize(query)
   end
 
   def force_request_format
