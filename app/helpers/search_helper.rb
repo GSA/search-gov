@@ -3,9 +3,14 @@ module SearchHelper
 
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
 
-  def link_to_offer_commercial_results(search_url)
+  def link_to_offer_commercial_image_results(search_url)
     link = link_to t('searches.commercial_results.search_again'), search_url
-    t('searches.commercial_results.see_more', link: link).html_safe
+    t('searches.commercial_results.see_more_image_results', link: link).html_safe
+  end
+
+  def link_to_offer_commercial_web_results(search_url)
+    link = link_to t('searches.commercial_results.search_again'), search_url
+    t('searches.commercial_results.see_more_web_results', link: link).html_safe
   end
 
   def result_partial_for(search)
