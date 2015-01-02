@@ -26,6 +26,18 @@ describe Emailer do
     end
   end
 
+  describe '#user_approval_removed' do
+    let(:user) { users(:another_affiliate_manager) }
+
+    subject(:email) { Emailer.user_approval_removed(user) }
+
+    it { should deliver_to("usagov@mail.usasearch.howto.gov") }
+    it { should have_body_text "The following user is no longer associated with any sites" }
+    it { should have_body_text user.contact_name }
+    it { should have_body_text user.email }
+    it { should have_body_text user.organization_name }
+  end
+
   describe "#new_feature_adoption_to_admin" do
     before do
       AffiliateFeatureAddition.delete_all

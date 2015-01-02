@@ -30,7 +30,7 @@ class Sites::UsersController < Sites::SetupSiteController
 
   def destroy
     @user = User.find params[:id]
-    @site.users.delete @user
+    Membership.where(user_id: @user.id, affiliate_id: @site.id).destroy_all
     redirect_to site_users_path(@site), flash: { success: "You have removed #{@user.email} from this site." }
   end
 

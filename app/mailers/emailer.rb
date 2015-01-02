@@ -41,6 +41,12 @@ class Emailer < ActionMailer::Base
     generic_user_text_email(user, __method__)
   end
 
+  def user_approval_removed(user)
+    @user = user
+    setup_email("usagov@mail.usasearch.howto.gov", __method__)
+    send_mail(:text)
+  end
+
   def welcome_to_new_user(user)
     generic_user_text_email(user, __method__)
   end

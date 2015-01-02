@@ -20,7 +20,8 @@ class EmailTemplate < ActiveRecord::Base
       update_external_tracking_code: "[USASearch] 3rd Party Tracking",
       user_sites: '[DigitalGov Search] Searchers now see your Federal Register notices and rules',
       welcome_to_new_user: "[USASearch] Welcome to USASearch",
-      welcome_to_new_user_added_by_affiliate: "[USASearch] Welcome to USASearch"
+      welcome_to_new_user_added_by_affiliate: "[USASearch] Welcome to USASearch",
+      user_approval_removed: "[DigitalGov Search] User account set to 'not_approved'"
   }
 
   class << self
