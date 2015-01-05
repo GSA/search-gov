@@ -7,7 +7,7 @@ Feature: Activate Search
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Activate Search page
     Then I should see "Form Snippet"
-    And I should see "Type-ahead search and USASearch Tag Snippet"
+    And I should see "Type-ahead search and DigitalGov Search Tag Snippet"
     And I should see the code for English language sites
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
