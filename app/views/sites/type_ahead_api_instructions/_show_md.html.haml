@@ -1,0 +1,53 @@
+:markdown
+  This API exposes the type-ahead suggestions that usually appear below your search box as searchers enter their search terms.
+
+
+
+
+  ## Resource URL
+
+
+
+
+  The endpoint is `#{api_scheme_and_host}/sayt`.
+
+
+
+
+  ## Required Parameters
+
+
+
+
+  Two parameters are required: `name` and `q`.
+
+
+  `#{api_scheme_and_host}/sayt?name=#{@site.name}&q={YOUR_SEARCH_TERM}`
+
+
+
+
+  * The value for the name parameter is your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+  * Replace {YOUR_SEARCH_TERM} with a word or phrase of your choice.  A minimum of 2 characters term is required.
+
+
+
+
+  ## Response
+
+
+
+
+  An array of suggestions.
+
+  Suggestions are derived from the searches performed on your website.
+
+  Up to five suggestions related to your visitors' search term are returned and are updated in near real time.
+
+
+
+
+  ## Terms of Service
+
+
+  By using this API, you agree to our [Terms of Service](http://search.digitalgov.gov/tos).

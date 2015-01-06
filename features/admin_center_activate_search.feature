@@ -36,17 +36,15 @@ Feature: Activate Search
       | News-1 | http://www.usa.gov/feed/news-1 |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Activate Search page
-    And I follow "API Instructions"
-    Then I should see "API (v2) Instructions" within the Admin Center content
+    And I follow "Search API Instructions"
+    Then I should see "API Instructions" within the Admin Center content
 
-    When I follow "instructions" within the Admin Center content
-    Then I should see "Legacy API (v1) Instructions"
-
-    When I follow "API (v2) Instructions"
-    Then I should see "API (v2) Instructions" within the Admin Center content
+    When I follow "Search API Instructions"
+    Then I should see "Search API Instructions" within the Admin Center content
 
     When I follow "bought an API key from Bing or Google" within the Admin Center content
     Then I should see "Tips on How to Buy a Commercial API Key"
 
-    When I follow "API (v2) Instructions"
-    Then I should see "API (v2) Instructions" within the Admin Center content
+    When I go to the aff.gov's Activate Search page
+    And I follow "Type-ahead API Instructions"
+    Then I should see "Type-ahead API Instructions" within the Admin Center content
