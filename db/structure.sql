@@ -53,7 +53,6 @@ CREATE TABLE `affiliates` (
   `theme` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `locale` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
   `scope_ids` text COLLATE utf8_unicode_ci,
-  `is_agency_govbox_enabled` tinyint(1) DEFAULT '0',
   `is_medline_govbox_enabled` tinyint(1) DEFAULT '0',
   `previous_fields_json` longtext COLLATE utf8_unicode_ci,
   `live_fields_json` longtext COLLATE utf8_unicode_ci,
@@ -121,18 +120,9 @@ CREATE TABLE `affiliates_youtube_profiles` (
 CREATE TABLE `agencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `domain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `abbreviation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name_variants` text COLLATE utf8_unicode_ci,
-  `toll_free_phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tty_phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `twitter_username` varchar(18) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `youtube_username` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `facebook_username` varchar(75) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flickr_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `organization_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -146,17 +136,6 @@ CREATE TABLE `agency_queries` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `agency_urls` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `agency_id` int(11) DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locale` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_agency_urls_on_agency_id_and_locale_and_url` (`agency_id`,`locale`,`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_content_keywords` (
@@ -2048,3 +2027,9 @@ INSERT INTO schema_migrations (version) VALUES ('20141208163305');
 INSERT INTO schema_migrations (version) VALUES ('20141216174740');
 
 INSERT INTO schema_migrations (version) VALUES ('20150102215927');
+
+INSERT INTO schema_migrations (version) VALUES ('20150107201354');
+
+INSERT INTO schema_migrations (version) VALUES ('20150107202753');
+
+INSERT INTO schema_migrations (version) VALUES ('20150107204858');

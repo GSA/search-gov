@@ -66,41 +66,6 @@ describe GovboxSet do
       end
     end
 
-    context 'when affiliate is agency govbox enabled' do
-      before do
-        affiliate.stub!(:is_agency_govbox_enabled?).and_return true
-      end
-
-      context 'when query matches an agency' do
-        before do
-          AgencyQuery.create!(:phrase => 'foo', :agency => agency)
-        end
-
-        it 'should assign agency' do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.agency.should == agency
-        end
-      end
-
-      context 'when query does not match an agency' do
-        it 'should assign nil agency' do
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          govbox_set.agency.should be_nil
-        end
-      end
-    end
-
-    context 'when affiliate is not agency govbox enabled' do
-      before do
-        affiliate.stub!(:is_agency_govbox_enabled?).and_return false
-      end
-
-      it 'should assign nil agency' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        govbox_set.agency.should be_nil
-      end
-    end
-
     context 'when affiliate has an agency and the federal register document govbox enabled' do
       let(:agency) { agencies(:irs) }
       let(:federal_register_agency) { federal_register_agencies(:fr_irs) }

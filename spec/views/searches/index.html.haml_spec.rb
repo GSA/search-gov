@@ -198,11 +198,7 @@ describe "searches/index.html.haml" do
 
       context 'when there is an agency associated with the affiliate' do
         before do
-          agency = Agency.create!({:name => 'Some New Agency',
-                                   :domain => 'SNA.gov',
-                                   :abbreviation => 'SNA',
-                                   :organization_code => 'XX00',
-                                   :name_variants => 'Some Service'})
+          agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA', :organization_code => 'XX00' })
           @affiliate.stub!(:agency).and_return(agency)
         end
 
@@ -233,27 +229,6 @@ describe "searches/index.html.haml" do
         end
       end
 
-      context 'when there is a department associated with the affiliate' do
-        before do
-          dept = Agency.create!({:name => 'Some New Dept',
-                                 :domain => 'DOS.gov',
-                                 :abbreviation => 'DOS',
-                                 :organization_code => 'DS',
-                                 :name_variants => 'Service Dept'})
-          @affiliate.stub!(:agency).and_return(dept)
-        end
-
-        it "should show the agency-specific info" do
-          render
-          rendered.should contain("Job Openings at DOS")
-          rendered.should contain("More DOS job openings")
-          rendered.should contain("Agricultural Research Service")
-          rendered.should contain("Some Research Service")
-          rendered.should contain("BW Research Service")
-          rendered.should_not contain("Some Poor Research Service")
-        end
-      end
-
     end
 
     context 'when neogov jobs results are available' do
@@ -275,13 +250,11 @@ describe "searches/index.html.haml" do
         @search.stub!(:jobs).and_return mashies
       end
 
-      context 'when there is  agency associated with the affiliate' do
+      context 'when there is an agency associated with the affiliate' do
         before do
           agency = Agency.create!({:name => 'State of Michigan',
-                                   :domain => 'michigan.gov',
                                    :abbreviation => 'SOM',
-                                   :organization_code => 'USMI',
-                                   :name_variants => 'Some Service'})
+                                   :organization_code => 'USMI'})
           @affiliate.stub!(:agency).and_return(agency)
         end
 

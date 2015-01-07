@@ -30,17 +30,6 @@ Then /^I should not see "([^"]*)" after the (\d+)th search result$/ do |value, p
   page.should_not have_selector("#results div:nth-of-type(#{position.to_i + 2})", :text => value)
 end
 
-Given /^the following Agency entries exist:$/ do |table|
-  table.hashes.each { |attributes| Agency.create! attributes }
-end
-
-Given /^the following Agency Urls exist:$/ do |table|
-  table.hashes.each do |hash|
-    agency = Agency.find_by_name(hash[:name])
-    agency.agency_urls.create!(:locale => hash[:locale], :url => hash[:url])
-  end
-end
-
 Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
   page.should have_selector '.content-provider .bing', text: text
 end

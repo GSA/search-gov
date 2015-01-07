@@ -146,7 +146,6 @@ UsasearchRails3::Application.routes.draw do
       end
     end
     resources :agencies do as_routes end
-    resources :agency_urls do as_routes end
     resources :agency_queries do as_routes end
     resources :federal_register_agencies do
       collection { get 'reimport' }

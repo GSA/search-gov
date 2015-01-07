@@ -99,7 +99,6 @@ describe Affiliate do
 
       it "should default the govbox fields to OFF" do
         affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.is_agency_govbox_enabled.should == false
         affiliate.is_medline_govbox_enabled.should == false
       end
 

@@ -4,8 +4,7 @@ class GovboxSet
     post_tags: %w(</strong>)
   }.freeze
 
-  attr_reader :agency,
-              :boosted_contents,
+  attr_reader :boosted_contents,
               :featured_collections,
               :federal_register_documents,
               :jobs,
@@ -27,7 +26,6 @@ class GovboxSet
     @modules = []
 
     init_best_bets
-    init_agency
     init_federal_register_documents
     init_jobs
     init_news_items
@@ -118,13 +116,6 @@ class GovboxSet
       job_opening.position_title = job_opening.position_title.
         gsub(/<em>/, pre_tag).
         gsub(/<\/em>/, post_tag)
-    end
-  end
-
-  def init_agency
-    if @affiliate.is_agency_govbox_enabled?
-      agency_query = AgencyQuery.find_by_phrase(@query)
-      @agency = agency_query.agency if agency_query
     end
   end
 

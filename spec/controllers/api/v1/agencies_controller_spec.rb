@@ -6,14 +6,13 @@ describe Api::V1::AgenciesController do
 
     context "when results are available" do
       before do
-        @agency = Agency.create!(name: "National Park Service", abbreviation: "NPS", organization_code: "NP00", domain: "nps.gov", phone: "800-555-1099",
-                       twitter_username: "twitter", youtube_username: "youtube", facebook_username: "facebook", flickr_url: "flickr")
+        @agency = Agency.create!(name: "National Park Service", abbreviation: "NPS", organization_code: "NP00")
       end
 
       it "should return valid JSON" do
         get :search, :query => 'the nps', :format => 'json'
         response.should be_success
-        response.body.should == @agency.to_json(only: [:name, :domain, :abbreviation, :organization_code, :phone, :twitter_username, :youtube_username, :facebook_username, :flickr_url])
+        response.body.should == @agency.to_json(only: [:name, :abbreviation, :organization_code])
       end
     end
 
