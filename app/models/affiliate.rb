@@ -427,7 +427,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def to_label
-    "#{display_name} ##{id} site handle: #{display_name} status:#{status.name}"
+    "##{id} #{display_name} (#{display_name}) [#{status.name}]"
   end
 
   private
