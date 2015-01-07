@@ -147,6 +147,7 @@ module MobileNavigationsHelper
 
   def related_site_items(related_sites_dropdown_label, connections, query)
     html = connections.map { |conn| related_site_item(conn, query) }
+    related_sites_dropdown_label ||= I18n.t(:'searches.related_sites')
     dropdown_navigation_wrapper(html.join(' '),
                                 'related-sites-dropdown',
                                 related_sites_dropdown_label)

@@ -514,10 +514,10 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with related sites
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | contact_name | locale |
-      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     |
-      | All sites    | all.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov  | admin@agency.gov | John Bar     | es     |
+      | display_name | name           | contact_email    | contact_name | locale | related_sites_dropdown_label |
+      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | Search  On                   |
+      | All sites    | all.agency.gov | admin@agency.gov | John Bar     | en     |                              |
+      | Spanish site | es.agency.gov  | admin@agency.gov | John Bar     | es     |                              |
     And the following Connections exist for the affiliate "en.agency.gov":
       | connected_affiliate | display_name         |
       | es.agency.gov       | Este tema en español |
@@ -525,6 +525,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "gobierno"
     And I press "Search"
+    Then I should see "Search On"
     And I should see a link to "Este tema en español"
     And I should see a link to "All sites"
     When I follow "Este tema en español" within the SERP navigation

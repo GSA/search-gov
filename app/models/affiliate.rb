@@ -82,7 +82,7 @@ class Affiliate < ActiveRecord::Base
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_default_labels
-  before_validation_squish :ga_web_property_id, :logo_alt_text, assign_nil_on_blank: true
+  before_validation_squish :ga_web_property_id, :logo_alt_text, :related_sites_dropdown_label, assign_nil_on_blank: true
   before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
@@ -446,7 +446,6 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_labels
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
-    self.related_sites_dropdown_label = I18n.t(:'searches.related_sites', locale: locale) if related_sites_dropdown_label.blank?
   end
 
   def ensure_http_prefix

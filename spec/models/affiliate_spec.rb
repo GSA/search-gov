@@ -309,12 +309,18 @@ describe Affiliate do
         Affiliate.find(affiliate.id).staged_footer.squish.should == html_without_comments.squish
     end
 
-    it 'should set the default related sites dropdown label' do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(name: 'es-site'))
-      expect(affiliate.related_sites_dropdown_label).to eq('Ver tema')
-
+    it 'should squish related sites dropdown label' do
       affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en', name: 'en-site'))
-      expect(affiliate.related_sites_dropdown_label).to eq('View topic')
+      affiliate.related_sites_dropdown_label = ' Search  Only'
+      affiliate.save!
+      expect(affiliate.related_sites_dropdown_label).to eq('Search Only')
+    end
+
+    it 'should set blank related sites dropdown label to nil' do
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en', name: 'en-site'))
+      affiliate.related_sites_dropdown_label = ' '
+      affiliate.save!
+      expect(affiliate.related_sites_dropdown_label).to be_nil
     end
   end
 

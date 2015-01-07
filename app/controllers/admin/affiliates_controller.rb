@@ -13,10 +13,11 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns = attribute_columns
     all_columns |= %i(mobile_logo_url header_image_url uses_managed_header_footer staged_uses_managed_header_footer)
 
-    virtual_columns = [:dc_contributor, :dc_subject, :dc_publisher,
-                       :go_live_date, :last_month_query_count,
-                       :header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer,
-                       :features, :external_tracking_code, :submitted_external_tracking_code]
+    virtual_columns = %i(dc_contributor dc_subject dc_publisher
+                         go_live_date last_month_query_count
+                         header_footer_css staged_header_footer_css header staged_header footer staged_footer
+                         features external_tracking_code submitted_external_tracking_code
+                         related_sites_dropdown_label)
     all_columns |= virtual_columns
     config.columns = all_columns
 
@@ -26,23 +27,27 @@ class Admin::AffiliatesController < Admin::AdminController
     export_columns = [list_columns, all_columns].flatten.uniq
     actions.add :export
     config.export.columns = export_columns
-    config.export.default_deselected_columns = [:dc_contributor,
-                                                :dc_subject,
-                                                :dc_publisher,
-                                                :external_tracking_code,
-                                                :fetch_concurrency,
-                                                :footer,
-                                                :ga_web_property_id,
-                                                :has_staged_content,
-                                                :header,
-                                                :header_footer_css,
-                                                :last_month_query_count,
-                                                :staged_footer,
-                                                :staged_header,
-                                                :staged_header_footer_css,
-                                                :submitted_external_tracking_code,
-                                                :staged_uses_managed_header_footer,
-                                                :uses_managed_header_footer]
+    config.export.default_deselected_columns = %i(api_access_key
+                                                  dc_contributor
+                                                  dc_subject
+                                                  dc_publisher
+                                                  external_css_url
+                                                  external_tracking_code
+                                                  fetch_concurrency
+                                                  footer
+                                                  ga_web_property_id
+                                                  has_staged_content
+                                                  header
+                                                  header_footer_css
+                                                  last_month_query_count
+                                                  related_sites_dropdown_label
+                                                  staged_footer
+                                                  staged_header
+                                                  staged_header_footer_css
+                                                  submitted_external_tracking_code
+                                                  staged_uses_managed_header_footer
+                                                  theme
+                                                  uses_managed_header_footer)
 
     config.columns[:affiliate_note].label = 'Note'
     config.columns[:website].label = 'Homepage URL'
@@ -70,8 +75,6 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.update.columns.add_subgroup 'Enable/disable Settings' do |name_group|
       name_group.add *update_columns.reject { |column| column !~ enable_disable_column_regex }
-      # name_group.add :display_name, :name, :website,
-      #                :locale, :affiliate_feature_addition, :excluded_domains
       name_group.collapsed = true
     end
 
