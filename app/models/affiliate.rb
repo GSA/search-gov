@@ -81,7 +81,7 @@ class Affiliate < ActiveRecord::Base
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
-  before_validation :set_default_rss_govbox_label
+  before_validation :set_default_labels
   before_validation_squish :ga_web_property_id, :logo_alt_text, assign_nil_on_blank: true
   before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
@@ -209,7 +209,7 @@ class Affiliate < ActiveRecord::Base
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :go_live_date, :logo_alt_text, :sitelink_generator_names,
-                                         :header_tagline]
+                                         :header_tagline, :related_sites_dropdown_label]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -426,6 +426,10 @@ class Affiliate < ActiveRecord::Base
     save!
   end
 
+  def to_label
+    "#{display_name} ##{id} site handle: #{display_name} status:#{status.name}"
+  end
+
   private
 
   def batch_size(scope)
@@ -440,8 +444,9 @@ class Affiliate < ActiveRecord::Base
     self.name = name.downcase if name.present?
   end
 
-  def set_default_rss_govbox_label
+  def set_default_labels
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
+    self.related_sites_dropdown_label = I18n.t(:'searches.related_sites', locale: locale) if related_sites_dropdown_label.blank?
   end
 
   def ensure_http_prefix

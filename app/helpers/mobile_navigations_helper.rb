@@ -142,14 +142,14 @@ module MobileNavigationsHelper
     return if connections.blank?
     return related_site_item(connections.first, search.query) if connections.length == 1
 
-    related_site_items connections, search.query
+    related_site_items search.affiliate.related_sites_dropdown_label, connections, search.query
   end
 
-  def related_site_items(connections, query)
+  def related_site_items(related_sites_dropdown_label, connections, query)
     html = connections.map { |conn| related_site_item(conn, query) }
     dropdown_navigation_wrapper(html.join(' '),
                                 'related-sites-dropdown',
-                                I18n.t(:'searches.related_sites'))
+                                related_sites_dropdown_label)
   end
 
   def dropdown_navigation_wrapper(html, dropdown_id, dropdown_label = I18n.t(:show_more))

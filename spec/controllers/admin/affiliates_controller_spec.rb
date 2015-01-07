@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::AffiliatesController do
-  fixtures :users, :affiliates, :memberships
+  fixtures :users, :affiliates, :memberships, :statuses
 
   context "when logged in as a non-affiliate admin user" do
     before do

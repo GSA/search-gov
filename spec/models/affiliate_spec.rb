@@ -308,7 +308,15 @@ describe Affiliate do
         affiliate.update_attributes!(:staged_header => html_with_comments, :staged_footer => html_with_comments)
         Affiliate.find(affiliate.id).staged_header.squish.should == html_without_comments.squish
         Affiliate.find(affiliate.id).staged_footer.squish.should == html_without_comments.squish
-      end
+    end
+
+    it 'should set the default related sites dropdown label' do
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(name: 'es-site'))
+      expect(affiliate.related_sites_dropdown_label).to eq('Ver tema')
+
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en', name: 'en-site'))
+      expect(affiliate.related_sites_dropdown_label).to eq('View topic')
+    end
   end
 
   describe "on destroy" do

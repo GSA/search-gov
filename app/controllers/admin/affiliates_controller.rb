@@ -57,13 +57,32 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     update_columns = %i(status go_live_date affiliate_note)
-    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|id|updated_at)\z/i }
-    update_columns << :tags
-    config.update.columns = update_columns
+    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|theme|updated_at)\z/i }
+    config.update.columns = []
+
+    enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|jobs_enabled|raw_log_access_enabled)/.freeze
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
-      name_group.add :display_name, :name, :website,
-                     :locale, :affiliate_feature_addition, :excluded_domains
+      name_group.add *update_columns.reject { |column| column =~ enable_disable_column_regex }
+      name_group.add :affiliate_feature_addition, :excluded_domains
+      name_group.collapsed = true
+    end
+
+    config.update.columns.add_subgroup 'Enable/disable Settings' do |name_group|
+      name_group.add *update_columns.reject { |column| column !~ enable_disable_column_regex }
+      # name_group.add :display_name, :name, :website,
+      #                :locale, :affiliate_feature_addition, :excluded_domains
+      name_group.collapsed = true
+    end
+
+    config.update.columns.add_subgroup 'Display Settings' do |name_group|
+      name_group.add :favicon_url, :related_sites_dropdown_label
+      name_group.collapsed = true
+    end
+
+
+    config.update.columns.add_subgroup 'Tags' do |name_group|
+      name_group.add :tags
       name_group.collapsed = true
     end
 
@@ -72,17 +91,17 @@ class Admin::AffiliatesController < Admin::AdminController
       name_group.collapsed = true
     end
 
-    config.update.columns.add_subgroup 'Theme-Header-Footer-URLs' do |name_group|
+    config.update.columns.add_subgroup 'Dublin Core Mappings' do |name_group|
+      name_group.add :dc_contributor, :dc_subject, :dc_publisher
+      name_group.collapsed = true
+    end
+
+    config.update.columns.add_subgroup 'Legacy Display Settings' do |name_group|
       name_group.add :theme, :has_staged_content,
                      :uses_managed_header_footer, :staged_uses_managed_header_footer,
                      :header_footer_css, :staged_header_footer_css,
                      :header, :staged_header, :footer, :staged_footer,
-                     :favicon_url, :external_css_url
-      name_group.collapsed = true
-    end
-
-    config.update.columns.add_subgroup 'Dublin Core Mappings' do |name_group|
-      name_group.add :dc_contributor, :dc_subject, :dc_publisher
+                     :external_css_url
       name_group.collapsed = true
     end
 
@@ -99,6 +118,9 @@ class Admin::AffiliatesController < Admin::AdminController
     theme_options = Affiliate::THEMES.keys
     config.columns[:theme].options = { include_blank: '- select -', options: theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
+
+    config.columns[:locale].form_ui = :select
+    config.columns[:locale].options = { options: %w(en es) }
 
     config.columns[:search_engine].form_ui = :select
     config.columns[:search_engine].options = { :options => %w(Bing Google) }

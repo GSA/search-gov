@@ -150,16 +150,6 @@ module SitesHelper
       'data-modal-title' => content_tag(:h1, 'Preview Search Results') }
   end
 
-  def params_to_api_news_search(site)
-    rss_feed = site.rss_feeds.detect { |r| r.news_items.present? }
-    rss_feed ||= site.rss_feeds.first
-    { affiliate: site.name,
-      channel: rss_feed.id,
-      format: 'json',
-      index: 'news',
-      protocol: 'http' }
-  end
-
   def query_times(top_query, sees_filtered_totals)
     index = sees_filtered_totals ? 2 : 1
     "#{top_query[0]} [#{top_query[index]}]"
