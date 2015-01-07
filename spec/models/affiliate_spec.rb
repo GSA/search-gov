@@ -1048,4 +1048,13 @@ describe Affiliate do
       affiliate.sitelink_generator_names.should eq(sitelink_generator_names)
     end
   end
+
+  describe '#excludes_url?' do
+    it 'excludes encoded URL' do
+      affiliate = affiliates(:power_affiliate)
+      url = 'http://www.example.gov/with%20spaces%20url.doc'.freeze
+      affiliate.excluded_urls.create!(url: url)
+      expect(affiliate.excludes_url?(url)).to be_true
+    end
+  end
 end

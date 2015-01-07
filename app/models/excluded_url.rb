@@ -4,7 +4,7 @@ class ExcludedUrl < ActiveRecord::Base
   validates_uniqueness_of :url, :scope => :affiliate_id, :case_sensitive => false
   validates_url :url, allow_blank: true
   belongs_to :affiliate
-  before_save :unescape_url
+  before_save :decode_url, if: :url?
 
   private
 
@@ -14,7 +14,7 @@ class ExcludedUrl < ActiveRecord::Base
     self.url = "http://#{url}" unless url =~ %r{^https?://}i
   end
 
-  def unescape_url
-    self.url = URI.unescape(self.url) if self.url
+  def decode_url
+    self.url = URI.decode_www_form_component(url) rescue nil
   end
 end

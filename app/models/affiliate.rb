@@ -353,7 +353,8 @@ class Affiliate < ActiveRecord::Base
 
   def excludes_url?(url)
     @excluded_urls_set ||= self.excluded_urls.collect(&:url).to_set
-    @excluded_urls_set.include?(url)
+    decoded_url = URI.decode_www_form_component url rescue nil
+    @excluded_urls_set.include?(decoded_url)
   end
 
   def has_organization_code?
