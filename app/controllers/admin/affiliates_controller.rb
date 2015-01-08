@@ -76,7 +76,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      name_group.add :header_tagline_font_style, :favicon_url, :mobile_logo_url, :related_sites_dropdown_label, :theme
+      name_group.add :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme
       name_group.collapsed = true
     end
 
@@ -96,7 +96,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Legacy Display Settings' do |name_group|
-      name_group.add :header_image_url, :has_staged_content,
+      name_group.add :has_staged_content,
                      :uses_managed_header_footer, :staged_uses_managed_header_footer,
                      :header_footer_css, :staged_header_footer_css,
                      :header, :staged_header, :footer, :staged_footer,
