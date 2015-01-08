@@ -1074,9 +1074,9 @@ describe Affiliate do
   describe '#header_tagline_font_style=' do
     it 'should assign header tagline font style' do
       affiliate = affiliates(:power_affiliate)
-      affiliate.header_tagline_font_style = 'italic'
+      affiliate.header_tagline_font_style = 'normal'
       affiliate.save!
-      expect(affiliate.header_tagline_font_style).to eq('italic')
+      expect(affiliate.header_tagline_font_style).to eq('normal')
     end
   end
 end

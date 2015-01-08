@@ -165,7 +165,6 @@ class Affiliate < ActiveRecord::Base
     header_tagline_background_color: '#000000',
     header_tagline_color: '#FFFFFF',
     header_tagline_font_family: FontFamily::DEFAULT,
-    header_tagline_font_style: 'italic',
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',
     left_tab_text_color: '#9E3030',
@@ -180,6 +179,7 @@ class Affiliate < ActiveRecord::Base
 
   DEFAULT_CSS_PROPERTIES = {
     :font_family => FontFamily::DEFAULT,
+    :header_tagline_font_style => 'italic',
     :logo_alignment => LogoAlignment::DEFAULT,
     :show_content_border => '0',
     :show_content_box_shadow => '0',
