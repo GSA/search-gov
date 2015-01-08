@@ -17,7 +17,7 @@ class Admin::AffiliatesController < Admin::AdminController
                          go_live_date last_month_query_count
                          header_footer_css staged_header_footer_css header staged_header footer staged_footer
                          features external_tracking_code submitted_external_tracking_code
-                         related_sites_dropdown_label)
+                         header_tagline_font_style related_sites_dropdown_label)
     all_columns |= virtual_columns
     config.columns = all_columns
 
@@ -49,10 +49,7 @@ class Admin::AffiliatesController < Admin::AdminController
                                                   theme
                                                   uses_managed_header_footer)
 
-    config.columns[:affiliate_note].label = 'Note'
-    config.columns[:website].label = 'Homepage URL'
-    config.columns[:mobile_logo_url].label = 'Logo URL'
-    config.columns[:header_image_url].label = 'Legacy Logo URL'
+
     config.list.sorting = { :created_at => :desc }
 
     [:header_footer_css, :staged_header_footer_css,
@@ -61,9 +58,9 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    update_columns = %i(status go_live_date affiliate_note)
+    update_columns = %i(status go_live_date)
     update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|theme|updated_at)\z/i }
-    config.update.columns = []
+    config.update.columns = %i(affiliate_note)
 
     enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|jobs_enabled|raw_log_access_enabled)/.freeze
 
@@ -79,10 +76,9 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      name_group.add :favicon_url, :related_sites_dropdown_label
+      name_group.add :header_tagline_font_style, :favicon_url, :mobile_logo_url, :related_sites_dropdown_label, :theme
       name_group.collapsed = true
     end
-
 
     config.update.columns.add_subgroup 'Tags' do |name_group|
       name_group.add :tags
@@ -100,7 +96,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Legacy Display Settings' do |name_group|
-      name_group.add :theme, :has_staged_content,
+      name_group.add :header_image_url, :has_staged_content,
                      :uses_managed_header_footer, :staged_uses_managed_header_footer,
                      :header_footer_css, :staged_header_footer_css,
                      :header, :staged_header, :footer, :staged_footer,
@@ -108,31 +104,46 @@ class Admin::AffiliatesController < Admin::AdminController
       name_group.collapsed = true
     end
 
+    config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
+
     excluded_show_columns = %i(footer header header_footer_css staged_footer staged_header staged_header_footer_css)
     show_columns = list_columns
     show_columns |= all_columns.reject { |column| excluded_show_columns.include? column }
     config.show.columns = show_columns
 
     config.create.columns = [:display_name, :name, :website, :locale]
-    config.columns[:theme].form_ui = :select
-    config.columns[:features].associated_limit = nil
+
+    config.columns[:affiliate_note].collapsed = true
+    config.columns[:affiliate_note].label = 'Note'
+
     config.columns[:agency].form_ui = :select
 
-    theme_options = Affiliate::THEMES.keys
-    config.columns[:theme].options = { include_blank: '- select -', options: theme_options }
-    config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
+    config.columns[:favicon_url].label = 'Favicon URL'
+    config.columns[:features].associated_limit = nil
+    config.columns[:header_image_url].label = 'Legacy Logo URL'
+
+    config.columns[:header_tagline_font_style].form_ui = :select
+    config.columns[:header_tagline_font_style].options = { options: %w(italic normal) }
 
     config.columns[:locale].form_ui = :select
     config.columns[:locale].options = { options: %w(en es) }
 
+    config.columns[:mobile_logo_url].label = 'Logo URL'
+
     config.columns[:search_engine].form_ui = :select
     config.columns[:search_engine].options = { :options => %w(Bing Google) }
+
+    config.columns[:status].form_ui = :select
+    config.columns[:status].set_link 'edit'
 
     config.columns[:tags].form_ui = :select
     config.columns[:tags].set_link 'edit'
 
-    config.columns[:status].form_ui = :select
-    config.columns[:status].set_link 'edit'
+    config.columns[:theme].form_ui = :select
+    config.columns[:theme].options = { include_blank: '- select -',
+                                       options: Affiliate::THEMES.keys }
+
+    config.columns[:website].label = 'Homepage URL'
   end
 
   def analytics

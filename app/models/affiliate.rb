@@ -165,6 +165,7 @@ class Affiliate < ActiveRecord::Base
     header_tagline_background_color: '#000000',
     header_tagline_color: '#FFFFFF',
     header_tagline_font_family: FontFamily::DEFAULT,
+    header_tagline_font_style: 'italic',
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',
     left_tab_text_color: '#9E3030',
@@ -313,6 +314,14 @@ class Affiliate < ActiveRecord::Base
 
   def show_content_box_shadow?
     css_property_hash[:show_content_box_shadow] == '1'
+  end
+
+  def header_tagline_font_style=(font_style)
+    css_property_hash[:header_tagline_font_style] = font_style
+  end
+
+  def header_tagline_font_style
+    css_property_hash[:header_tagline_font_style]
   end
 
   def set_attributes_from_live_to_staged
