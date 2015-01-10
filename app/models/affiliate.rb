@@ -82,7 +82,11 @@ class Affiliate < ActiveRecord::Base
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_default_labels
-  before_validation_squish :ga_web_property_id, :logo_alt_text, :related_sites_dropdown_label, assign_nil_on_blank: true
+  before_validation_squish :ga_web_property_id,
+                           :header_tagline_font_size,
+                           :logo_alt_text,
+                           :related_sites_dropdown_label,
+                           assign_nil_on_blank: true
   before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
@@ -164,7 +168,6 @@ class Affiliate < ActiveRecord::Base
     header_background_color: '#FFFFFF',
     header_tagline_background_color: '#000000',
     header_tagline_color: '#FFFFFF',
-    header_tagline_font_family: FontFamily::DEFAULT,
     search_button_text_color: '#FFFFFF',
     search_button_background_color: '#00396F',
     left_tab_text_color: '#9E3030',
@@ -178,12 +181,14 @@ class Affiliate < ActiveRecord::Base
   THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = {
-    :font_family => FontFamily::DEFAULT,
-    :header_tagline_font_style => 'italic',
-    :logo_alignment => LogoAlignment::DEFAULT,
-    :show_content_border => '0',
-    :show_content_box_shadow => '0',
-    :page_background_image_repeat => BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
+    font_family: FontFamily::DEFAULT,
+    header_tagline_font_family: HeaderTaglineFontFamily::DEFAULT,
+    header_tagline_font_size: '1.3em',
+    header_tagline_font_style: 'italic',
+    logo_alignment: LogoAlignment::DEFAULT,
+    show_content_border: '0',
+    show_content_box_shadow: '0',
+    page_background_image_repeat: BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 
@@ -218,6 +223,9 @@ class Affiliate < ActiveRecord::Base
   serialize :dublin_core_mappings, Hash
   define_hash_columns_accessors column_name_method: :dublin_core_mappings,
                                 fields: [:dc_contributor, :dc_publisher, :dc_subject]
+
+  define_hash_columns_accessors column_name_method: :css_property_hash,
+                                fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
 
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
@@ -314,14 +322,6 @@ class Affiliate < ActiveRecord::Base
 
   def show_content_box_shadow?
     css_property_hash[:show_content_box_shadow] == '1'
-  end
-
-  def header_tagline_font_style=(font_style)
-    css_property_hash[:header_tagline_font_style] = font_style
-  end
-
-  def header_tagline_font_style
-    css_property_hash[:header_tagline_font_style]
   end
 
   def set_attributes_from_live_to_staged

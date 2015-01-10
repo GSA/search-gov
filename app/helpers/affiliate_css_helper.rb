@@ -34,4 +34,8 @@ module AffiliateCssHelper
     value = css_property_hash[property]
     value =~ /^#([0-9A-F]{3}|[0-9A-F]{6})$/i ? value : Affiliate::DEFAULT_CSS_PROPERTIES[property]
   end
+
+  def header_tagline_font_family(css_property_hash)
+    css_property_hash[:header_tagline_font_family] || HeaderTaglineFontFamily::DEFAULT
+  end
 end

@@ -789,7 +789,7 @@ describe Affiliate do
     end
 
     context 'when theme is default' do
-      let(:css_property_hash) { { font_family: FontFamily::ALL.last }.freeze }
+      let(:css_property_hash) { { font_family: FontFamily::ALL.last } }
       let(:affiliate) { Affiliate.create!(
         @valid_create_attributes.merge(theme: 'default',
                                        css_property_hash: css_property_hash)) }
@@ -1068,6 +1068,24 @@ describe Affiliate do
       url = 'http://www.example.gov/with%20spaces%20url.doc'.freeze
       affiliate.excluded_urls.create!(url: url)
       expect(affiliate.excludes_url?(url)).to be_true
+    end
+  end
+
+  describe '#header_tagline_font_family=' do
+    it 'should assign header tagline font family' do
+      affiliate = affiliates(:power_affiliate)
+      affiliate.header_tagline_font_family = 'Verdana, sans-serif'
+      affiliate.save!
+      expect(affiliate.header_tagline_font_family).to eq('Verdana, sans-serif')
+    end
+  end
+
+  describe '#header_tagline_font_size=' do
+    it 'should nullify blank value' do
+      affiliate = affiliates(:power_affiliate)
+      affiliate.header_tagline_font_size = ' '
+      affiliate.save!
+      expect(affiliate.header_tagline_font_size).to be_nil
     end
   end
 

@@ -17,7 +17,8 @@ class Admin::AffiliatesController < Admin::AdminController
                          go_live_date last_month_query_count
                          header_footer_css staged_header_footer_css header staged_header footer staged_footer
                          features external_tracking_code submitted_external_tracking_code
-                         header_tagline_font_style related_sites_dropdown_label)
+                         header_tagline_font_family header_tagline_font_size header_tagline_font_style
+                         related_sites_dropdown_label)
     all_columns |= virtual_columns
     config.columns = all_columns
 
@@ -76,7 +77,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      name_group.add :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme
+      name_group.add :header_tagline_font_family, :header_tagline_font_size, :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme
       name_group.collapsed = true
     end
 
@@ -121,6 +122,11 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:favicon_url].label = 'Favicon URL'
     config.columns[:features].associated_limit = nil
     config.columns[:header_image_url].label = 'Legacy Logo URL'
+
+    config.columns[:header_tagline_font_family].form_ui = :select
+    config.columns[:header_tagline_font_family].options = { options: HeaderTaglineFontFamily::ALL }
+
+    config.columns[:header_tagline_font_size].description = 'Value should be in em. Default value: 1.3em'
 
     config.columns[:header_tagline_font_style].form_ui = :select
     config.columns[:header_tagline_font_style].options = { options: %w(italic normal) }
