@@ -2033,3 +2033,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150107201354');
 INSERT INTO schema_migrations (version) VALUES ('20150107202753');
 
 INSERT INTO schema_migrations (version) VALUES ('20150107204858');
+
+INSERT INTO schema_migrations (version) VALUES ('20150111220256');
+
+INSERT INTO schema_migrations (version) VALUES ('20150111220313');
