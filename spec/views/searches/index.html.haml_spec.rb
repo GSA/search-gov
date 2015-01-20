@@ -198,7 +198,8 @@ describe "searches/index.html.haml" do
 
       context 'when there is an agency associated with the affiliate' do
         before do
-          agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA', :organization_code => 'XX00' })
+          agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
+          AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
           @affiliate.stub!(:agency).and_return(agency)
         end
 
@@ -253,8 +254,8 @@ describe "searches/index.html.haml" do
       context 'when there is an agency associated with the affiliate' do
         before do
           agency = Agency.create!({:name => 'State of Michigan',
-                                   :abbreviation => 'SOM',
-                                   :organization_code => 'USMI'})
+                                   :abbreviation => 'SOM'})
+          AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
           @affiliate.stub!(:agency).and_return(agency)
         end
 

@@ -68,7 +68,7 @@ module JobsHelper
   end
 
   def more_jobs_title_and_url(search)
-    if search.affiliate.has_organization_code?
+    if search.affiliate.has_organization_codes?
       more_agency_jobs_title_and_url search.affiliate.agency, search.jobs.first.id
     else
       more_federal_jobs_title_and_url
@@ -96,7 +96,8 @@ module JobsHelper
   def url_for_more_agency_jobs(agency, job_id)
     case job_id
     when /^usajobs/
-      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{agency.organization_code}&PostingChannelID=USASearch&ApplicantEligibility=all"
+      organization_codes = agency.joined_organization_codes
+      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{organization_codes}&PostingChannelID=USASearch&ApplicantEligibility=all"
     when /^ng:/
       ng_agency = job_id.split(':')[1]
       "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"

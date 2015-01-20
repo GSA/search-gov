@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe Api::V1::AgenciesController do
+describe Api::V2::AgenciesController do
 
   describe "#search" do
 
     context "when results are available" do
       before do
         @agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
-        AgencyOrganizationCode.create!(organization_code: "NP00", agency: @agency)
         AgencyOrganizationCode.create!(organization_code: "NP01", agency: @agency)
+        AgencyOrganizationCode.create!(organization_code: "NP00", agency: @agency)
       end
 
-      it "should return valid JSON with just the first organization code" do
+      it "should return valid JSON with the organization codes in alpha order" do
         get :search, :query => 'the nps', :format => 'json'
         response.should be_success
         response.body.should == {name: @agency.name, abbreviation: @agency.abbreviation,
-                                 organization_code: @agency.agency_organization_codes.first.organization_code }.to_json
+                                 organization_codes: @agency.agency_organization_codes.collect(&:organization_code).sort }.to_json
       end
     end
 

@@ -5,8 +5,7 @@ describe Agency do
     Agency.destroy_all
     @valid_attributes = {
       :name => '  Internal Revenue   Service  ',
-      :abbreviation => 'IRS',
-      :organization_code => ' XX00 '
+      :abbreviation => 'IRS'
     }
   end
 
@@ -23,11 +22,12 @@ describe Agency do
     context "when saving with valid attributes" do
       before do
         @agency = Agency.create!(@valid_attributes)
+        AgencyOrganizationCode.create!(organization_code: " XX00 ", agency: @agency)
       end
 
       it 'squishes name and organization_code' do
         @agency.name.should eq 'Internal Revenue Service'
-        @agency.organization_code.should eq 'XX00'
+        @agency.agency_organization_codes.first.organization_code.should eq 'XX00'
       end
 
       it "should create a bunch of agency queries on save" do
@@ -53,6 +53,9 @@ describe Agency do
     context 'when the agency belongs to a federal register agency' do
       fixtures :federal_register_agencies
       let(:agency) { Agency.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
+      before do
+        AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+      end
 
       it 'returns name with Federal Register Agency name' do
         agency.friendly_name.should match 'Internal Revenue Service FRA: Internal Revenue Service'
@@ -62,6 +65,10 @@ describe Agency do
 
     context 'when the agency does not belong to a federal register agency' do
       let(:agency) { Agency.create!(@valid_attributes) }
+
+      before do
+        AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+      end
 
       it 'returns name with Federal Register Agency name' do
         agency.friendly_name.should eq 'Internal Revenue Service JOBS: XX00'

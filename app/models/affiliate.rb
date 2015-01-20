@@ -366,8 +366,13 @@ class Affiliate < ActiveRecord::Base
     @excluded_urls_set.include?(decoded_url)
   end
 
-  def has_organization_code?
-    agency.present? && agency.organization_code.present?
+  def has_organization_codes?
+    agency.present? && agency.agency_organization_codes.any?
+  end
+
+  def should_show_job_organization_name?
+    agency.blank? || agency.agency_organization_codes.empty? ||
+      agency.agency_organization_codes.all? { |organization_code| organization_code.is_department_level? }
   end
 
   def has_no_social_image_feeds?

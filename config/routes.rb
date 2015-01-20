@@ -16,6 +16,7 @@ UsasearchRails3::Application.routes.draw do
       get '/search' => 'searches#blended'
       get '/search/azure' => 'searches#azure'
       get '/search/gss' => 'searches#gss'
+      get '/agencies/search' => 'agencies#search'
     end
   end
 
@@ -147,6 +148,7 @@ UsasearchRails3::Application.routes.draw do
     end
     resources :agencies do as_routes end
     resources :agency_queries do as_routes end
+    resources :agency_organization_codes do as_routes end
     resources :federal_register_agencies do
       collection { get 'reimport' }
       as_routes

@@ -1097,4 +1097,51 @@ describe Affiliate do
       expect(affiliate.header_tagline_font_style).to eq('normal')
     end
   end
+
+  describe "#should_show_job_organization_name?" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    context 'when agency is blank' do
+      it 'should return true' do
+        affiliate.should_show_job_organization_name?.should be_true
+      end
+    end
+
+    context 'when agency has no org codes' do
+      before do
+        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
+        affiliate.agency = agency
+      end
+
+      it 'should return true' do
+        affiliate.should_show_job_organization_name?.should be_true
+      end
+    end
+
+    context 'when agency org codes are all department level' do
+      before do
+        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
+        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
+        affiliate.agency = agency
+      end
+
+      it 'should return true' do
+        affiliate.should_show_job_organization_name?.should be_true
+      end
+    end
+
+    context 'when only some agency org codes are department level' do
+      before do
+        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
+        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: "AF", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
+        affiliate.agency = agency
+      end
+
+      it 'should return false' do
+        affiliate.should_show_job_organization_name?.should be_false
+      end
+    end
+  end
 end

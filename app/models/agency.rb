@@ -1,11 +1,11 @@
 class Agency < ActiveRecord::Base
   extend AttributeSquisher
 
-  before_validation_squish :name, :organization_code,
-                           assign_nil_on_blank: true
+  before_validation_squish :name, assign_nil_on_blank: true
   validates_presence_of :name
   belongs_to :federal_register_agency
-  has_many :agency_queries, :dependent => :destroy
+  has_many :agency_queries, dependent: :destroy
+  has_many :agency_organization_codes, dependent: :destroy, order: "organization_code ASC"
   has_many :affiliates
   after_save :generate_agency_queries,
              :load_federal_register_documents
@@ -17,9 +17,13 @@ class Agency < ActiveRecord::Base
     @friendly_name ||= begin
       friendly_name_str = name
       friendly_name_str << " FRA: #{federal_register_agency.to_label}" if federal_register_agency
-      friendly_name_str << " JOBS: #{organization_code}" if organization_code.present?
+      friendly_name_str << " JOBS: #{joined_organization_codes}" if agency_organization_codes.any?
       friendly_name_str
     end
+  end
+
+  def joined_organization_codes(separator = ';')
+    agency_organization_codes.collect(&:organization_code).join(separator)
   end
 
   private

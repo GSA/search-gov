@@ -39,7 +39,7 @@ describe JobsHelper do
   describe '#legacy_link_to_more_jobs' do
     context 'when rendering federal jobs' do
       it 'should render a link to usajobs.gov' do
-        affiliate = mock_model(Affiliate, has_organization_code?: false)
+        affiliate = mock_model(Affiliate, has_organization_codes?: false)
         search = mock('search', affiliate: affiliate, query: 'gov')
         search.stub_chain(:affiliate, :agency).and_return(nil)
         helper.should_receive(:job_link_with_click_tracking).with(
@@ -53,7 +53,10 @@ describe JobsHelper do
     context 'when rendering federal jobs for a given organization' do
       let(:search) do
         affiliate = affiliates(:usagov_affiliate)
-        affiliate.agency = mock_model(Agency, abbreviation: 'GSA', organization_code: 'GS')
+        agency = Agency.create!(abbreviation: 'GSA', name: 'blah')
+        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: "HI", agency: agency)
+        affiliate.agency = agency
         mock('search', affiliate: affiliate, query: 'gov')
       end
 
@@ -64,7 +67,7 @@ describe JobsHelper do
       it 'should render an organization specific link to usajobs.gov' do
         helper.should_receive(:job_link_with_click_tracking).with(
             'More GSA job openings on USAJobs.gov',
-            'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
+            'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS;HI&PostingChannelID=USASearch&ApplicantEligibility=all',
             search.affiliate, 'gov', -1, nil)
         helper.legacy_link_to_more_jobs(search)
       end
@@ -76,7 +79,7 @@ describe JobsHelper do
         it 'should render an organization specific link to usajobs in Spanish' do
           helper.should_receive(:job_link_with_click_tracking).with(
               'Más trabajos en GSA en USAJobs.gov',
-              'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS&PostingChannelID=USASearch&ApplicantEligibility=all',
+              'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS;HI&PostingChannelID=USASearch&ApplicantEligibility=all',
               search.affiliate, 'gov', -1, nil)
           helper.legacy_link_to_more_jobs(search)
         end
@@ -86,7 +89,9 @@ describe JobsHelper do
     context 'when rendering neogov jobs for a given organization' do
       let(:search) do
         affiliate = affiliates(:usagov_affiliate)
-        affiliate.agency = mock_model(Agency, name: 'State of Michigan', organization_code: 'USMI')
+        agency = Agency.create!(name: 'State of Michigan')
+        AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
+        affiliate.agency = agency
         mock('search', affiliate: affiliate, query: 'gov')
       end
 

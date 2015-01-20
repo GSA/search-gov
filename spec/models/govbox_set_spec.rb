@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe GovboxSet do
-  fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds
+  fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds, :agency_organization_codes
 
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }

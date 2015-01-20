@@ -103,7 +103,7 @@ class GovboxSet
   def build_jobs_search_options
     jobs_options = { query: @query, size: 10 }
     jobs_options[:hl] = 1 unless highlighting_disabled?
-    org_tags_hash = @affiliate.has_organization_code? ? { organization_id: @affiliate.agency.organization_code } : { tags: 'federal' }
+    org_tags_hash = @affiliate.has_organization_codes? ? { organization_id: @affiliate.agency.agency_organization_codes.first.organization_code } : { tags: 'federal' }
     jobs_options.merge!(org_tags_hash)
     jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?
     jobs_options
