@@ -1,6 +1,11 @@
 #footer-wrapper {
   .navbar-default();
+  bottom: 0;
   width: 100%;
+
+  @media (min-width: @screen-sm-min) {
+    position: absolute;
+  }
 
   .content-heading {
     .sr-only();

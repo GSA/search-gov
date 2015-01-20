@@ -18,6 +18,7 @@
     :css
       #{@search.affiliate.mobile_look_and_feel_css}
     /[if lt IE 9]
+      = stylesheet_link_tag 'searches_mobile_ie_lt9'
       = javascript_include_tag 'searches_ie_lt9'
 
   %body{ body_class_hash(@search.affiliate) }

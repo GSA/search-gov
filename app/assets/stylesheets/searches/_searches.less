@@ -1,7 +1,17 @@
+@media (min-width: @screen-sm-min) {
+  html {
+    height: 100%;
+  }
+}
+
 body {
   min-width: 320px;
 
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-sm-min) {
+    min-height: 100%;
+  }
+
+  @media (min-width: @screen-md-min) {
     font-size: 87.5%;
   }
 }
@@ -63,7 +73,9 @@ body {
 
 #search {
   margin: 0 auto;
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-sm-min) {
+    .clearfix();
+    margin-bottom: 20px;
     width: @screen-sm;
   }
 

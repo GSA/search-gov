@@ -8,4 +8,5 @@
 //= require searches/menu
 //= require searches/news_search_options_modal
 //= require searches/skiplink
+//= require searches/sticky_footer
 //= require searches/typeahead
