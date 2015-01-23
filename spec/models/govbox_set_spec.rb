@@ -116,9 +116,9 @@ describe GovboxSet do
           affiliate.stub!(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the query, org code, size, hl, and lat_lon params" do
+        it "should call Jobs.search with the query, org codes, size, hl, and lat_lon params" do
           Jobs.should_receive(:search).
-            with(:query => 'foo', :hl => 1, :size => 10, :organization_id => 'ABCD', :lat_lon => '12.34,-34.56').
+            with(:query => 'foo', :hl => 1, :size => 10, :organization_ids => 'ABCD,BCDE', :lat_lon => '12.34,-34.56').
             and_return(job_openings)
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')

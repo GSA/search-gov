@@ -11,7 +11,7 @@ describe Api::V2::AgenciesController do
         AgencyOrganizationCode.create!(organization_code: "NP00", agency: @agency)
       end
 
-      it "should return valid JSON with the organization codes in alpha order" do
+      it "should return valid JSON with the organization codes array in alpha order" do
         get :search, :query => 'the nps', :format => 'json'
         response.should be_success
         response.body.should == {name: @agency.name, abbreviation: @agency.abbreviation,

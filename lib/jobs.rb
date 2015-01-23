@@ -35,7 +35,7 @@ module Jobs
       conn.use :instrumentation
       conn.adapter jobs_api_config['adapter'] || Faraday.default_adapter
     end
-    @jobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v2'
+    @jobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v3'
   end
 
   def self.search(options)

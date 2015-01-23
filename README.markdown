@@ -70,13 +70,24 @@ You will need to re-install any plugins:
 If you install Marvel, you probably don't want to monitor your local cluster, so add this to your `elastisearch.yml` file:
     
     marvel.agent.enabled: false
+    
+The default JVM heap is 256m with a max of 1g. You can increase it by editing your `~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist` file like this:
+ 
+    <dict>
+      <key>ES_JAVA_OPTS</key>
+      <string>-Xss200000</string>
+      <key>ES_HEAP_SIZE</key>
+      <string>4g</string>
+      <key>ES_MAX_MEM</key>
+      <string>4g</string>
+    </dict>
 
-and restart it:
+Now restart it:
 
     $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
     $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
     
-Otherwise, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
+If you aren't using Homebrew to install and configure Elasticsearch, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
 ### Indexes
 
