@@ -331,7 +331,7 @@ describe RssFeedData do
           newest = atom_feed_url.news_items.first
           newest.guid.should == 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642'
           newest.link.should == 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642'
-          newest.published_at.should == DateTime.parse('2009-11-30T12:00:00-05:00')
+          newest.published_at.in_time_zone('EST').iso8601.should == '2009-11-30T12:00:01-05:00'
           newest.description[0, 40].should == 'Assessing Consistency and Fairness in Se'
           newest.title.should == 'Assessing Consistency and Fairness in Sentencing in Michigan, Minnesota, and Virginia, 2001-2002, 2004'
         end

@@ -19,7 +19,7 @@ class RssFeedData
                    media_thumbnail_url: './/media:thumbnail/@url' }.freeze
 
   ATOM_ELEMENTS = { item: 'xmlns:entry',
-                    pubDate: %w(xmlns:published xmlns:updated),
+                    pubDate: %w(xmlns:updated xmlns:published),
                     link: %w(xmlns:link[@rel='alternate'][@href]/@href xmlns:link/@href),
                     title: 'xmlns:title',
                     guid: 'xmlns:id',
