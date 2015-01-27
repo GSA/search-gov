@@ -6,6 +6,8 @@ usagov_affiliate:
   search_engine: Bing
   youtube_profiles: whitehouse
   api_access_key: usagov_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 gobiernousa_affiliate:
   display_name: Gobierno.USA.gov
@@ -14,6 +16,8 @@ gobiernousa_affiliate:
   theme: default
   locale: es
   api_access_key: gobiernousa_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 power_affiliate:
   display_name: Noaa Site
@@ -21,6 +25,8 @@ power_affiliate:
   website: http://www.noaa.gov
   theme: default
   api_access_key: power_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 basic_affiliate:
   display_name: NPS Site
@@ -31,18 +37,24 @@ basic_affiliate:
   youtube_profiles: nps
   keen_scoped_key: a09823409823
   api_access_key: basic_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 another_affiliate:
   display_name: Another Gov Site
   name: another.gov
   theme: default
   api_access_key: another_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 admin_affiliate:
   display_name: Affiliate Gov Site
   name: affiliate.gov
   theme: default
   api_access_key: admin_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 non_existent_affiliate:
   display_name: Nonsense Domain
@@ -50,6 +62,8 @@ non_existent_affiliate:
   theme: default
   is_sayt_enabled: false
   api_access_key: non_existent_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 spanish_affiliate:
   display_name: NPEspanol Site
@@ -58,6 +72,8 @@ spanish_affiliate:
   is_sayt_enabled: false
   locale: es
   api_access_key: spanish_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 legacy_affiliate:
   display_name: Legacy
@@ -66,6 +82,8 @@ legacy_affiliate:
   theme: default
   force_mobile_format: false
   api_access_key: legacy_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 bing_image_search_enabled_affiliate:
   display_name: USA.gov with commercial image results
@@ -75,6 +93,8 @@ bing_image_search_enabled_affiliate:
   theme: default
   website: http://www.usa.gov
   api_access_key: bing_image_search_enabled_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
 
 site_with_one_user:
   display_name: site with one user
@@ -84,3 +104,5 @@ site_with_one_user:
   theme: default
   website: http://www.usa.gov
   api_access_key: bing_image_search_enabled_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox

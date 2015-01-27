@@ -547,7 +547,7 @@ Feature: Searches using mobile device
     And I should see "Comment period ends in 7 days"
     And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
 
-    And I fill in "Enter your search term" with "tuna"
+    And I fill in "Enter your search term" with "Tuna"
     And I press "Search"
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."

@@ -3,9 +3,11 @@ basic:
   title: my featured collection
   title_url: http://example.com/featured_collection/1
   status: active
+  publish_start_on: <%= Date.current %>
 
 another:
   affiliate: :another_affiliate
   title: custom featured collection
   title_url: http://example.com/featured_collection/1
   status: active
+  publish_start_on: <%= Date.current %>

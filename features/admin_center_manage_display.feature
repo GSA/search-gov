@@ -4,7 +4,7 @@ Feature: Manage Display
   Scenario: Editing Sidebar Settings on a legacy site
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name | left_nav_label             |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is way too long |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is w            |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -24,7 +24,6 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
 
     Then the "Label for Sidebar" field should contain "This label is w"
-    And the "Label for Sidebar" field should not contain "This label is way too long"
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
     And the "Is Image Search Label 0 navigable" should be switched off
