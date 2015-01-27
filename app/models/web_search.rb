@@ -130,6 +130,7 @@ class WebSearch < Search
     @modules << module_tag if module_tag
     @modules |= spelling_suggestion_modules
     @modules |= @govbox_set.modules if @govbox_set
+    @modules << 'DECOR' if sitelinks_present?
     BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 
@@ -152,6 +153,10 @@ class WebSearch < Search
 
   def google_credentials_overridden?
     @affiliate.search_engine == 'Google' && @affiliate.google_cx.present? && @affiliate.google_key.present?
+  end
+
+  def sitelinks_present?
+    @results.any? { |result| result['sitelinks'].present? }
   end
 
 end
