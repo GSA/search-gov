@@ -97,7 +97,7 @@ CREATE TABLE `affiliates` (
   `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_instagram_profiles` (
   `affiliate_id` int(11) NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE `agencies` (
   `abbreviation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agency_organization_codes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -144,7 +144,7 @@ CREATE TABLE `agency_queries` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_content_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -234,7 +234,7 @@ CREATE TABLE `email_templates` (
   `updated_at` datetime DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `excluded_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -384,7 +384,7 @@ CREATE TABLE `image_search_labels` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_image_search_labels_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `indexed_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -495,7 +495,7 @@ CREATE TABLE `navigations` (
   PRIMARY KEY (`id`),
   KEY `index_navigations_on_affiliate_id` (`affiliate_id`),
   KEY `index_navigations_on_navigable_id_and_navigable_type` (`navigable_id`,`navigable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `news_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
