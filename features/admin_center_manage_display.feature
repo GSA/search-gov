@@ -3,8 +3,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Sidebar Settings on a legacy site
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | left_nav_label             |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is w            |
+      | display_name | name       | contact_email   | contact_name | left_nav_label  |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | This label is w |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -23,7 +23,7 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
 
-    Then the "Label for Sidebar" field should contain "This label is w"
+    Then the "Label for Facets" field should contain "This label is w"
     And the "Default search label" field should contain "Everything"
     And the "Image Search Label 0" field should contain "Images"
     And the "Is Image Search Label 0 navigable" should be switched off
@@ -35,7 +35,7 @@ Feature: Manage Display
     And the "Is Rss Feed 3 navigable" should be switched on
 
     When I fill in the following:
-      | Label for Sidebar     |         |
+      | Label for Facets      |               |
       | Default search label  | Web           |
       | Image Search Label 0  | Latest Images |
       | Document Collection 1 | Latest Blog   |
@@ -48,7 +48,7 @@ Feature: Manage Display
 
     When I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
-    And the "Label for Sidebar" field should be blank
+    And the "Label for Facets" field should be blank
     And the "Default search label" field should contain "Web"
     And the "Image Search Label 0" field should contain "Latest Images"
     And the "Is Image Search Label 0 navigable" should be switched on
