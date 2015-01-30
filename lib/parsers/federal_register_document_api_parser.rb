@@ -7,9 +7,11 @@ class FederalRegisterDocumentApiParser
 
   NUMBER_FIELDS = %w(end_page page_length start_page).freeze
 
+  BOOLEAN_FIELDS = %w(significant).freeze
+
   STRING_FIELDS = %w(abstract docket_id document_number html_url title type).freeze
 
-  FIELDS = (COLLECTION_FIELDS + DATE_FIELDS + NUMBER_FIELDS + STRING_FIELDS).freeze
+  FIELDS = (COLLECTION_FIELDS + DATE_FIELDS + NUMBER_FIELDS + STRING_FIELDS + BOOLEAN_FIELDS).freeze
 
   def initialize(options = {})
     @federal_register_agency_id = options[:federal_register_agency_id]
@@ -36,7 +38,7 @@ class FederalRegisterDocumentApiParser
 
   def sanitize_document(document)
     attributes = document.attributes
-    sanitized_attributes = attributes.slice *NUMBER_FIELDS
+    sanitized_attributes = attributes.slice *(NUMBER_FIELDS + BOOLEAN_FIELDS)
 
     non_date_attributes = sanitize_attribute_values(attributes, DATE_FIELDS) do |value|
       Date.parse(value) rescue nil

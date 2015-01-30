@@ -1,6 +1,5 @@
 class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   def initialize(options)
-    super options
     super(options.merge({ sort: 'comments_close_on:desc' }))
     self.highlighted_fields = %i(abstract title)
     @federal_register_agency_ids = options[:federal_register_agency_ids]
@@ -69,6 +68,24 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
       json.bool do
         json.must do
           json.child! { json.terms { json.federal_register_agency_ids @federal_register_agency_ids } }
+        end
+        json.set! :should do
+          json.child! { json.term { json.document_type 'rule' } }
+          json.child! { json.term { json.significant true } }
+          json.child! do
+            json.range do
+              json.publication_date do
+                json.gte "now-90d/d"
+              end
+            end
+          end
+          json.child! do
+            json.range do
+              json.comments_close_on do
+                json.gte "now/d"
+              end
+            end
+          end
         end
       end
     end

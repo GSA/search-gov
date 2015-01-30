@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ElasticFederalRegisterDocument do
   fixtures :federal_register_agencies, :federal_register_documents
 
-   let!(:fr_noaa) { federal_register_agencies(:fr_noaa) }
+  let!(:fr_noaa) { federal_register_agencies(:fr_noaa) }
 
   describe '.search_for' do
     before do
@@ -11,13 +11,13 @@ describe ElasticFederalRegisterDocument do
       ElasticFederalRegisterDocument.commit
     end
 
-    context 'when there are results' do
+    context 'when there are results that are significant, rules, published recently, or comments still open' do
       it 'returns results in an easy to access structure' do
         search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'fish')
 
-        search.total.should eq 4
+        search.total.should eq 5
         search.results.first.should be_instance_of(FederalRegisterDocument)
       end
 
@@ -26,7 +26,7 @@ describe ElasticFederalRegisterDocument do
                                                            language: 'en',
                                                            q: 'foreign fishing')
 
-        search.total.should eq 4
+        search.total.should eq 5
         search.results[0].document_number.should eq '2014-15173'
         search.results[1].document_number.should eq '2014-15266'
         search.results[2].document_number.should eq '2014-15269'

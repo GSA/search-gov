@@ -1,5 +1,6 @@
 class ElasticFederalRegisterDocument
   extend Indexable
+  OPTIMIZING_INCLUDES = [:federal_register_agencies].freeze
 
   self.settings = ElasticSettings::COMMON.deep_merge(
     index: {
@@ -18,8 +19,10 @@ class ElasticFederalRegisterDocument
         publication_date: { type: 'date', format: 'date' },
         group_id: ElasticSettings::KEYWORD,
         document_number: ElasticSettings::KEYWORD,
+        document_type: ElasticSettings::KEYWORD,
         federal_register_agency_ids: { type: 'integer' },
         title: { type: 'string', term_vector: 'with_positions_offsets' },
+        significant: { type: 'boolean'},
         id: { type: 'integer', index: :not_analyzed, include_in_all: false }
       }
     }

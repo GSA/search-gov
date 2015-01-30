@@ -10,6 +10,19 @@ describe FederalRegisterDocumentApiParser do
 
     before { FederalRegister::Article.should_receive(:search).and_return(results) }
 
+    it 'extracts boolean fields' do
+      significant = true
+
+      unsanitized_document_1 = mock('document',
+                                    attributes: { 'agencies' => [{ 'id' => fr_agency.id }],
+                                                  'significant' => significant })
+      results.should_receive(:each).and_yield(unsanitized_document_1)
+
+      parser.each_document do |document|
+        document[:significant].should be_true
+      end
+    end
+
     it 'extracts number fields' do
       end_page, page_length, start_page = 800, 2, 799
       unsanitized_document_1 = mock('document',

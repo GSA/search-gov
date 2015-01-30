@@ -10,7 +10,8 @@ class FederalRegisterDocument < ActiveRecord::Base
                   :page_length,
                   :publication_date,
                   :start_page,
-                  :title
+                  :title,
+                  :significant
 
   has_and_belongs_to_many :federal_register_agencies
 
