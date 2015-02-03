@@ -11,11 +11,33 @@ module Admin::ExportColumnsHelper
     end
   end
 
+  def created_at_export_column(column)
+    export_time_column column, column.created_at
+  end
+
   def format_export_column_header_name(column)
     column.label
   end
 
+  def last_login_at_export_column(column)
+    export_time_column column, column.last_login_at
+  end
+
+  def last_request_at_export_column(column)
+    export_time_column column, column.last_request_at
+  end
+
+  def updated_at_export_column(column)
+    export_time_column column, column.updated_at
+  end
+
   def user_emails_export_column(record)
     record.user_emails.html_safe if record.is_a? Affiliate
+  end
+
+  def export_time_column(column, column_value)
+    return unless column_value
+    format = column.is_a?(User) ? '%Y-%m-%d' : :default
+    l(column_value, format: format)
   end
 end
