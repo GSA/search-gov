@@ -51,4 +51,21 @@ describe Admin::AffiliatesController do
       it { should respond_with :success }
     end
   end
+
+  describe '#update' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      activate_authlogic
+      UserSession.create(email: users(:affiliate_admin).email, password: 'admin')
+    end
+
+    it 'triggers NutshellAdapter#push_site' do
+      adapter = mock(NutshellAdapter)
+      NutshellAdapter.stub(:new) { adapter }
+      adapter.should_receive(:push_site).with(affiliate)
+
+      put :update, id: affiliate.id, record: {}
+    end
+  end
 end

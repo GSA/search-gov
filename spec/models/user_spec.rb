@@ -3,6 +3,8 @@ require 'spec_helper'
 describe User do
   fixtures :users, :affiliates, :memberships
 
+  let(:adapter) { mock(NutshellAdapter) }
+
   before do
     @valid_attributes = {
         :email => "unique_login@agency.gov",
@@ -18,9 +20,13 @@ describe User do
     }
     @emailer = mock(Emailer)
     @emailer.stub!(:deliver).and_return true
+
+    NutshellAdapter.stub(:new) { adapter }
   end
 
   describe "when validating" do
+    before { adapter.stub(:push_user) }
+
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of :email }
     it { should validate_presence_of :contact_name }
@@ -75,12 +81,14 @@ describe User do
 
   describe "on create" do
     it "should assign approval status" do
+      adapter.should_receive(:push_user)
       user = User.create!(@valid_attributes)
       user.approval_status.should_not be_blank
     end
 
     it "should set approval status to pending_email_verification" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
+        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(email: email))
         user.is_pending_email_verification?.should be_true
       end
@@ -88,6 +96,7 @@ describe User do
 
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
+        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         user.requires_manual_approval?.should be_false
       end
@@ -95,12 +104,14 @@ describe User do
 
     it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
       %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
+        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         user.requires_manual_approval?.should be_true
       end
     end
 
     it "should set email_verification_token if the user is pending_email_verification" do
+      adapter.should_receive(:push_user)
       user = User.create!(@valid_affiliate_attributes)
       user.is_pending_email_verification?.should be_true
       user.email_verification_token.should_not be_blank
@@ -166,6 +177,7 @@ describe User do
   describe "#verify_email" do
     context "has matching email verification token and does not require manual approval" do
       before do
+        adapter.should_receive(:push_user).twice
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
         @user.is_pending_email_verification?.should be_true
         @user.welcome_email_sent?.should be_false
@@ -183,6 +195,7 @@ describe User do
 
     context "has matching email verification token and requires manual approval" do
       before do
+        adapter.should_receive(:push_user).exactly(3).times
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
         @user.update_attributes(@valid_attributes.merge(:email => 'not.gov@agency.com'))
         @user.is_pending_email_verification?.should be_true
@@ -219,6 +232,7 @@ describe User do
 
     context "when welcome_email_sent is false" do
       before do
+        adapter.should_receive(:push_user).with(@user)
         @user.set_approval_status_to_approved
       end
 
@@ -235,6 +249,7 @@ describe User do
 
     context "when welcome_email_sent is true" do
       before do
+        adapter.should_receive(:push_user).with(@user)
         @user.set_approval_status_to_approved
         @user.welcome_email_sent = true
       end
@@ -253,6 +268,7 @@ describe User do
     context "when contact_name and email are provided" do
 
       it "should initialize new user with assign affiliate, contact_name, and email" do
+        adapter.should_receive(:push_user)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         new_user.save!
         new_user.affiliates.first.should == affiliate
@@ -268,6 +284,7 @@ describe User do
       it "should receive welcome new user added by affiliate email verification" do
         Emailer.should_receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         Emailer.should_not_receive(:new_user_email_verification)
+        adapter.should_receive(:push_user)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         new_user.save!
         new_user.email_verification_token.should_not be_blank
@@ -281,20 +298,23 @@ describe User do
 
     before do
       @user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      adapter.should_receive(:push_user).with(@user)
       @user.save!
     end
 
     context "when executed" do
+      let(:user) { user = User.find @user.id }
+
       before do
-        @user.should_receive(:update_attributes)
+        user.should_receive(:update_attributes)
         Emailer.should_not_receive(:welcome_to_new_user)
-        @user.complete_registration({})
+        user.complete_registration({})
       end
 
-      it { @user.should be_require_password }
-      it { @user.should be_is_approved }
+      it { user.should be_require_password }
+      it { user.should be_is_approved }
       it "should set email_verification_token to nil" do
-        @user.email_verification_token.should be_nil
+        user.email_verification_token.should be_nil
       end
     end
 

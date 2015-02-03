@@ -4,6 +4,7 @@ class Status < ActiveRecord::Base
   before_validation_squish :name
 
   BASE_STATUS_IDS = [1, 2].freeze
+  INACTIVE_DELETED_NAME = 'inactive - deleted'.freeze
 
   attr_accessible :name
   has_many :affiliates
@@ -12,5 +13,9 @@ class Status < ActiveRecord::Base
 
   def authorized_for_delete?
     return true unless BASE_STATUS_IDS.include?(id)
+  end
+
+  def inactive_deleted?
+    name == INACTIVE_DELETED_NAME
   end
 end

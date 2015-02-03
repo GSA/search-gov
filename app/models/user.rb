@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
+
+
   validates_presence_of :email
   validates_presence_of :contact_name
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
@@ -8,9 +10,16 @@ class User < ActiveRecord::Base
   belongs_to :default_affiliate, class_name: 'Affiliate'
   before_validation :set_initial_approval_status, :on => :create
   after_validation :set_default_flags, :on => :create
+
+  with_options if: :is_pending_email_verification? do
+    before_create :set_tokens
+    after_create :deliver_email_verification
+  end
+
+  before_update :detect_deliver_welcome_email
   after_create :ping_admin
-  after_create :deliver_email_verification
   after_update :deliver_welcome_email
+  after_save :push_to_nutshell
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password
   attr_protected :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
@@ -108,11 +117,14 @@ class User < ActiveRecord::Base
     Emailer.new_user_to_admin(self).deliver
   end
 
+  def set_tokens
+    current_perishable_token = perishable_token
+    self.email_verification_token = reset_perishable_token.downcase
+    self.perishable_token = current_perishable_token
+  end
+
   def deliver_email_verification
-    if is_pending_email_verification?
-      reset_email_verification_token!
-      invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_new_user_email_verification
-    end
+    invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_new_user_email_verification
   end
 
   def deliver_new_user_email_verification
@@ -123,19 +135,19 @@ class User < ActiveRecord::Base
     Emailer.welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).deliver
   end
 
-  def reset_email_verification_token!
-    current_perishable_token = perishable_token
-    self.email_verification_token = reset_perishable_token.downcase
-    self.perishable_token = current_perishable_token
-    save!
+
+  def detect_deliver_welcome_email
+    if is_approved? && !welcome_email_sent?
+      self.welcome_email_sent = true
+      @deliver_welcome_email_on_update = true
+    else
+      @deliver_welcome_email_on_update = false
+    end
+    true
   end
 
   def deliver_welcome_email
-    if is_approved? and !welcome_email_sent?
-      self.welcome_email_sent = true
-      save!
-      Emailer.welcome_to_new_user(self).deliver
-    end
+    Emailer.welcome_to_new_user(self).deliver if @deliver_welcome_email_on_update
   end
 
   def set_initial_approval_status
@@ -145,5 +157,11 @@ class User < ActiveRecord::Base
   def set_default_flags
     self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email? and !invited
     self.welcome_email_sent = true if (is_developer? and !skip_welcome_email) or invited
+  end
+
+  def push_to_nutshell
+    if contact_name_changed? || email_changed? || approval_status_changed?
+      NutshellAdapter.new.push_user self
+    end
   end
 end

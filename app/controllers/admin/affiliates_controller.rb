@@ -2,7 +2,9 @@ class Admin::AffiliatesController < Admin::AdminController
 
   active_scaffold :affiliate do |config|
     config.label = 'Sites'
-    config.actions.exclude :delete
+    config.actions.exclude :delete, :search
+    config.actions.add :field_search
+    config.field_search.columns = :id, :name, :display_name
 
     attribute_columns = config.columns.reject do |column|
       column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|keen_scoped_key|label|_logo|_mappings|scope_ids|size|status_id|uses_managed_header_footer)\z/
@@ -154,5 +156,9 @@ class Admin::AffiliatesController < Admin::AdminController
 
   def analytics
     redirect_to new_site_queries_path(Affiliate.find params[:id])
+  end
+
+  def after_update_save(record)
+    NutshellAdapter.new.push_site record
   end
 end

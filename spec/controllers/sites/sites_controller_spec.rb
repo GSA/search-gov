@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::SitesController do
-  fixtures :users, :affiliates, :memberships
+  fixtures :users, :affiliates, :memberships, :statuses
   before { activate_authlogic }
 
   describe '#index' do
@@ -124,6 +124,10 @@ describe Sites::SitesController do
           SiteAutodiscoverer.should_receive(:new).with(site).and_return(autodiscoverer)
           autodiscoverer.should_receive(:run)
 
+          adapter = mock(NutshellAdapter)
+          NutshellAdapter.should_receive(:new).and_return(adapter)
+          adapter.should_receive(:push_site).with(site)
+
           Emailer.should_receive(:new_affiliate_site).and_return(emailer)
           post :create,
                site: { display_name: 'New Aff',
@@ -165,8 +169,20 @@ describe Sites::SitesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
+      before do
+        adapter = mock(NutshellAdapter)
+        NutshellAdapter.should_receive(:new).and_return(adapter)
+        adapter.should_receive(:push_site).with(site)
+      end
+
       it 'should enqueue destruction of affiliate' do
         Resque.should_receive(:enqueue_with_priority).with(:low, SiteDestroyer, site.id)
+        delete :destroy, id: site.id
+      end
+
+      it 'updates the status to "inactive - deleted"' do
+        site.should_receive(:update_attributes!).with(status_id: statuses(:'inactive-deleted').id)
+        site.should_receive(:user_ids=).with([])
         delete :destroy, id: site.id
       end
 

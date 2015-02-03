@@ -12,6 +12,7 @@ class Sites::UsersController < Sites::SetupSiteController
     if @user.nil?
       @user = User.new_invited_by_affiliate(current_user, @site, user_params)
       if @user.save
+        NutshellAdapter.new.push_site @site
         message = "We've created a temporary account and notified #{@user.email} on how to login and to access this site."
         redirect_to site_users_path(@site), flash: { success: message }
       else
@@ -20,6 +21,7 @@ class Sites::UsersController < Sites::SetupSiteController
     elsif !@site.users.exists?(@user)
       @site.users << @user
       Emailer.new_affiliate_user(@site, @user, current_user).deliver
+      NutshellAdapter.new.push_site @site
       redirect_to site_users_path(@site), flash: { success: "You have added #{@user.email} to this site." }
     else
       @user = User.new user_params
@@ -31,6 +33,7 @@ class Sites::UsersController < Sites::SetupSiteController
   def destroy
     @user = User.find params[:id]
     Membership.where(user_id: @user.id, affiliate_id: @site.id).destroy_all
+    NutshellAdapter.new.push_site @site
     redirect_to site_users_path(@site), flash: { success: "You have removed #{@user.email} from this site." }
   end
 

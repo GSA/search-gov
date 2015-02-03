@@ -95,6 +95,7 @@ CREATE TABLE `affiliates` (
   `google_cx` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nutshell_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -774,6 +775,7 @@ CREATE TABLE `users` (
   `notes` text COLLATE utf8_unicode_ci,
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
+  `nutshell_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
@@ -2050,5 +2052,11 @@ INSERT INTO schema_migrations (version) VALUES ('20150111220256');
 INSERT INTO schema_migrations (version) VALUES ('20150111220313');
 
 INSERT INTO schema_migrations (version) VALUES ('20150130224716');
+
+INSERT INTO schema_migrations (version) VALUES ('20150203194323');
+
+INSERT INTO schema_migrations (version) VALUES ('20150203194337');
+
+INSERT INTO schema_migrations (version) VALUES ('20150210200137');
 
 INSERT INTO schema_migrations (version) VALUES ('20150305162024');

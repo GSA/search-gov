@@ -273,6 +273,44 @@ RSpec.configure do |config|
     azure_params = common_azure_params.merge(:'$skip' => 888)
     stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_results] }
 
+    nutshell_success_params = {
+      id: 'f6f91f185',
+      jsonrpc: '2.0',
+      method: 'editLead',
+      params: {
+        lead: {
+          createdTime: '2015-02-01T05:00:00+00:00',
+          customFields: { :'Site handle' => 'usasearch', :Status => 'inactive' },
+          description: 'DigitalGov Search (usasearch)'
+        }
+      }
+    }
+
+    success_result = Rails.root.join('spec/fixtures/json/nutshell/edit_lead_response.json').read
+
+    nutshell_error_params = {
+      id: 'f6f91f185',
+      jsonrpc: '2.0',
+      method: 'editLead',
+      params: {
+        lead: {
+          createdTime: '2015-02-01T05:00:00+00:00',
+          customFields: { :'Bad field' => 'usasearch' },
+          description: 'DigitalGov Search (usasearch)'
+        }
+      }
+    }
+
+    error_result = Rails.root.join('spec/fixtures/json/nutshell/edit_lead_response_with_error.json').read
+    stubs.post(NutshellClient::ENDPOINT) do |env|
+      case env[:body]
+      when nutshell_success_params
+        [200, {}, success_result]
+      when nutshell_error_params
+        [400, {}, error_result]
+      end
+    end
+
     test = Faraday.new do |builder|
       builder.adapter :test, stubs
       builder.response :rashify
@@ -284,6 +322,7 @@ RSpec.configure do |config|
     SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
     RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
     BasicAuthSearchApiConnection.new('basic_auth_api', 'http://search.usa.gov').get('/api/search.json', params.merge(auth_credentials: { password: 'mypass' }))
+    NutshellClient::NutshellApiConnection.new
 
     Faraday.stub!(:new).and_return test
   end

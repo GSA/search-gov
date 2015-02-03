@@ -28,6 +28,10 @@ module Instrumentation
       generic_logging("Google Query", event, RED)
     end
 
+    def nutshell_client(event)
+      generic_logging('Nutshell JSON-RPC', event, GREEN)
+    end
+
     def oasis_search(event)
       generic_logging("Oasis Query", event, CYAN)
     end

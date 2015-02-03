@@ -2,6 +2,7 @@ onKeyUpWithoutSpecialKeys = (e) ->
   window.usasearch.enablePrimaryButton() unless (e.which in [9, 16, 17, 18, 91])
 
 textSelector = ['.form textarea',
+                '.form input[type="email"]',
                 '.form input[type="password"]',
                 '.form input[type="radio"]',
                 '.form input[type="text"]',

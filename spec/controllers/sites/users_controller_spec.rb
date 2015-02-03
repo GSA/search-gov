@@ -2,7 +2,13 @@ require 'spec_helper'
 
 describe Sites::UsersController do
   fixtures :users, :affiliates, :memberships
-  before { activate_authlogic }
+
+  let(:adapter) { mock(NutshellAdapter) }
+
+  before do
+    activate_authlogic
+    NutshellAdapter.stub(:new) { adapter }
+  end
 
   describe '#index' do
     it_should_behave_like 'restricted to approved user', :get, :index
@@ -50,6 +56,8 @@ describe Sites::UsersController do
               and_return(new_user)
 
           new_user.should_receive(:save).and_return(true)
+          adapter.should_receive(:push_site).with(site)
+
           post :create,
                site_id: site.id,
                user: { contact_name: 'John Doe',
@@ -98,6 +106,8 @@ describe Sites::UsersController do
               and_return(email)
           email.should_receive(:deliver)
 
+          adapter.should_receive(:push_site).with(site)
+
           post :create,
                site_id: site.id,
                user: { contact_name: 'John Doe',
@@ -137,5 +147,24 @@ describe Sites::UsersController do
 
   describe '#destroy' do
     it_should_behave_like 'restricted to approved user', :put, :destroy
+
+    context 'when logged in as affiliate' do
+      include_context 'approved user logged in to a site'
+
+      it 'pushes to Nutshell' do
+        target_user = mock_model(User, id: 100)
+        User.should_receive(:find).with('100').and_return(target_user)
+        memberships = mock('membership')
+        Membership.should_receive(:where).with(user_id: 100, affiliate_id: site.id).
+          and_return(memberships)
+        memberships.should_receive(:destroy_all)
+
+        adapter.should_receive(:push_site).with(site)
+
+        put :destroy,
+            id: 100,
+            site_id: site.id
+      end
+    end
   end
 end

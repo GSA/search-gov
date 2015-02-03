@@ -26,4 +26,5 @@ task :production_specific_files, :except => { :no_release => true } do
   run "cp #{shared_path}/system/elasticsearch.yml #{release_path}/config/elasticsearch.yml"
   run "cp #{shared_path}/system/oasis.yml #{release_path}/config/oasis.yml"
   run "cp #{shared_path}/system/instagram.yml #{release_path}/config/instagram.yml"
+  run "cp #{shared_path}/system/nutshell.yml #{release_path}/config/nutshell.yml"
 end
