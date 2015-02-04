@@ -23,6 +23,7 @@
           %td
             = "#{idx+1}."
             = query_click_count.query
+            = query_drilldown_link(@site, query_click_count.query, @queries_request.start_date, @queries_request.end_date )
           %td= number_with_delimiter(query_click_count.queries)
           %td= link_to_unless query_click_count.clicks.zero?, number_with_delimiter(query_click_count.clicks), site_query_clicks_path(@site,
             {:query => query_click_count.query, :start_date => @queries_request.start_date, :end_date => @queries_request.end_date})

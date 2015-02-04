@@ -21,6 +21,8 @@
           %td
             = "#{idx+1}."
             = linked_shortened_url_without_protocol(url)
+            = click_drilldown_link(@site, url, @clicks_request.start_date, @clicks_request.end_date )
+
           %td= link_to number_with_delimiter(click_count), site_click_queries_path(@site,
             {:url => url, :start_date => @clicks_request.start_date, :end_date => @clicks_request.end_date})
 

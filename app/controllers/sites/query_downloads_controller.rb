@@ -1,4 +1,5 @@
 class Sites::QueryDownloadsController < Sites::SetupSiteController
+  include CSVResponsive
   MAX_RESULTS = 1000000
 
   def show
@@ -6,9 +7,7 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
     @start_date = request["start_date"].to_date
     filename = [@site.name, @start_date, @end_date].join('_')
     header = ['Query Term', 'Total Count (Bots + Humans)', 'Real Count (Humans only)']
-    respond_to do |format|
-      format.csv { export_csv(filename, header, top_queries) }
-    end
+    csv_response(filename, header, top_queries)
   end
 
   private
@@ -26,12 +25,4 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
     query_raw_human_arr.sort_by { |a| -a.last }
   end
 
-  def export_csv(filename, header, rows)
-    file = CSV.generate do |csv|
-      csv << header if header.present?
-      rows.each { |row| csv << row }
-    end
-
-    send_data file, type: 'text/csv; charset=utf-8; header=present', disposition: "attachment;filename=#{filename}.csv"
-  end
 end

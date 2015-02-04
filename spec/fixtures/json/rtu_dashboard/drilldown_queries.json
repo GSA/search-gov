@@ -1,0 +1,380 @@
+{
+  "took": 202,
+  "timed_out": false,
+  "_shards": {
+    "total": 527,
+    "successful": 527,
+    "failed": 0
+  },
+  "hits": {
+    "total": 10,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "logstash-2015.02.01",
+        "_type": "search",
+        "_id": "AUtDe2N-ZEM2SrF70MKL",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-01T04:52:14.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "referrer": "http://search.usa.gov/search?affiliate=usagov&query=fashion",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+          "vertical": "web",
+          "modules": ["BWEB","BOOS"],
+          "params": {
+            "affiliate": "usagov",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422766334000]
+      },
+      {
+        "_index": "logstash-2015.02.01",
+        "_type": "search",
+        "_id": "AUtDe6d-ZEM2SrF70MLl",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-01T04:52:30.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=%22fashion+psychology%22",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422766350000]
+      },
+      {
+        "_index": "logstash-2015.02.01",
+        "_type": "search",
+        "_id": "AUtDf8BS4stn90N1xVJP",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-01T04:57:00.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422766620000]
+      },
+      {
+        "_index": "logstash-2015.02.01",
+        "_type": "search",
+        "_id": "AUtDgGC24stn90N1xVJ9",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-01T04:57:41.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?affiliate=usagov&page=2&query=fashion+psychology&utf8=%E2%9C%93",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "page": "2",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422766661000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHvW7K4stn90N1xp0M",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T00:42:50.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "referrer": "http://search.usa.gov/search?affiliate=usagov&query=fashion",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422837770000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHvrd64stn90N1xp2H",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T00:44:15.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "referrer": "http://search.usa.gov/search?affiliate=usagov&query=fashion",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422837855000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHxfs5ZEM2SrF71t1m",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T00:52:11.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?affiliate=usagov&page=2&query=fashion+psychology&utf8=%E2%9C%93",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "page": "2",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422838331000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHxpa74stn90N1xqDF",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T00:52:51.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?affiliate=usagov&page=2&query=fashion+psychology&utf8=%E2%9C%93",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=usagov&query=fashion+psychology",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "page": "2",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422838371000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHzyIt4stn90N1xqSG",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T01:02:10.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?affiliate=usagov&page=3&query=fashion+psychology&utf8=%E2%9C%93",
+          "referrer": "http://search.usa.gov/search?affiliate=usagov&page=2&query=fashion+psychology&utf8=%E2%9C%93",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "page": "3",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422838930000]
+      },
+      {
+        "_index": "logstash-2015.02.02",
+        "_type": "search",
+        "_id": "AUtHz6sq4stn90N1xqTN",
+        "_score": null,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-02-02T01:02:46.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "204.184.232.180",
+          "request": "http://search.usa.gov/search?affiliate=usagov&page=3&query=fashion+psychology&utf8=%E2%9C%93",
+          "referrer": "http://search.usa.gov/search?affiliate=usagov&page=2&query=fashion+psychology&utf8=%E2%9C%93",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25",
+          "vertical": "web",
+          "modules": ["BWEB"],
+          "params": {
+            "affiliate": "usagov",
+            "page": "3",
+            "query": "fashion psychology"
+          },
+          "useragent": {
+            "name": "Safari",
+            "os": "Mac OS X 10.10.1",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MO",
+            "location": [
+              -92.402,
+              38.881699999999995
+            ]
+          }
+        },
+        "sort": [1422838966000]
+      }
+    ]
+  }
+}
