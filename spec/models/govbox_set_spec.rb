@@ -17,8 +17,16 @@ describe GovboxSet do
     context 'when the affiliate has boosted contents' do
       it 'should assign boosted contents' do
         affiliate.locale = 'en'
+        expected_search_options = {
+          affiliate_id: affiliate.id,
+          language: 'en',
+          q: 'foo',
+          size: 3,
+          site_limits: nil
+        }
         expected_results = mock(ElasticBoostedContentResults, total: 1)
-        ElasticBoostedContent.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 3).and_return(expected_results)
+        ElasticBoostedContent.stub!(:search_for).with(expected_search_options).
+          and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.boosted_contents.should == expected_results
         expect(govbox_set.modules).to include('BOOS')
@@ -29,7 +37,8 @@ describe GovboxSet do
           affiliate_id: affiliate.id,
           language: 'en',
           q: 'foo',
-          size: 3
+          size: 3,
+          site_limits: nil
         }.merge(highlighting_options)
 
         expected_results = mock(ElasticBoostedContentResults, total: 1)
@@ -44,7 +53,13 @@ describe GovboxSet do
       it 'should assign a single featured collection' do
         affiliate.locale = 'en'
         expected_results = mock(ElasticFeaturedCollectionResults, total: 1)
-        ElasticFeaturedCollection.stub!(:search_for).with(q: 'foo', affiliate_id: affiliate.id, language: 'en', size: 1).and_return(expected_results)
+        ElasticFeaturedCollection.stub!(:search_for).
+          with(q: 'foo',
+               affiliate_id: affiliate.id,
+               language: 'en',
+               size: 1).
+          and_return(expected_results)
+
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
         govbox_set.featured_collections.should == expected_results
         expect(govbox_set.modules).to include('BBG')
@@ -385,5 +400,35 @@ describe GovboxSet do
 
     end
 
+    context 'when site_limits option is present' do
+      before do
+        ElasticFeaturedCollection.should_not_receive(:search_for)
+        affiliate.should_not_receive(:is_federal_register_document_govbox_enabled?)
+        affiliate.should_not_receive(:is_medline_govbox_enabled?)
+        affiliate.should_not_receive(:is_rss_govbox_enabled?)
+        affiliate.should_not_receive(:is_video_govbox_enabled?)
+        affiliate.should_not_receive(:jobs_enabled?)
+        affiliate.should_not_receive(:searchable_twitter_ids)
+        SaytSuggestion.should_not_receive(:related_search)
+      end
+
+      it 'searches only on text best bets' do
+        affiliate.locale = 'en'
+        expected_results = mock(ElasticBoostedContentResults, total: 1)
+        ElasticBoostedContent.stub!(:search_for).
+          with(q: 'foo',
+               affiliate_id: affiliate.id,
+               language: 'en',
+               size: 3,
+               site_limits: %w(blogs.usa.gov news.usa.gov)).
+          and_return(expected_results)
+
+        govbox_set = GovboxSet.new('foo',
+                                   affiliate, geoip_info,
+                                   site_limits: %w(https://blogs.usa.gov http://news.usa.gov))
+        govbox_set.boosted_contents.should == expected_results
+        expect(govbox_set.modules).to include('BOOS')
+      end
+    end
   end
 end

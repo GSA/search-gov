@@ -6,7 +6,11 @@ class ElasticBoostedContent
 
   self.mappings = {
     index_type => ElasticMappings::BEST_BET.deep_merge(
-      properties: { description: { type: 'string', term_vector: 'with_positions_offsets' } })
+      properties: {
+        description: { type: 'string', term_vector: 'with_positions_offsets' },
+        url: ElasticSettings::KEYWORD
+      }
+    )
   }
 
 end

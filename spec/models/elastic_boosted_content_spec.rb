@@ -17,7 +17,7 @@ describe ElasticBoostedContent do
         before do
           affiliate.boosted_contents.create!(title: 'Tropical Hurricane Names',
                                              description: 'This is a bunch of names',
-                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                             url: 'https://secure.nhc.noaa.gov/aboutnames.shtml',
                                              status: 'active',
                                              publish_start_on: Date.current)
           affiliate.boosted_contents.create!(title: 'More Hurricane names involving tropical',
@@ -34,6 +34,19 @@ describe ElasticBoostedContent do
           search.results.size.should == 1
           search.results.first.should be_instance_of(BoostedContent)
           search.offset.should == 1
+        end
+
+        context 'when site_limits option is present' do
+          it 'returns results with matcing URL prefix' do
+            search = ElasticBoostedContent.search_for(q: 'Tropical',
+                                                      affiliate_id: affiliate.id,
+                                                      size: 1,
+                                                      offset: 0,
+                                                      language: affiliate.locale,
+                                                      site_limits: %w(secure.nhc.noaa.gov blog.noaa.gov))
+            search.total.should == 1
+            expect(search.results.first.title).to eq('<strong>Tropical</strong> Hurricane Names')
+          end
         end
 
         context 'when those results get deleted' do

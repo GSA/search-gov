@@ -123,7 +123,7 @@ class WebSearch < Search
   end
 
   def populate_additional_results
-    @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info]) if first_page?
+    @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info], site_limits: @matching_site_limits) if first_page?
   end
 
   def log_serp_impressions

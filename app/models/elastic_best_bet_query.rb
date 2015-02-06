@@ -15,6 +15,7 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
           filter_field_on_current_date(json, :publish_start_on, :lte)
           filter_field_on_current_date(json, :publish_end_on, :gt)
         end
+        yield if block_given?
       end
     end
   end

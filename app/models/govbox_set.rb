@@ -23,19 +23,30 @@ class GovboxSet
       language: @affiliate.locale,
       q: @query)
 
+    @site_limits = extract_site_limits options[:site_limits]
     @modules = []
 
-    init_best_bets
-    init_federal_register_documents
-    init_jobs
-    init_news_items
-    init_video_news_items
-    init_med_topic
-    init_tweets
-    init_related_search
+    init_text_best_bets
+
+    if @site_limits.blank?
+      init_graphic_best_bets
+      init_federal_register_documents
+      init_med_topic
+      init_news_items
+      init_video_news_items
+      init_jobs
+      init_tweets
+      init_related_search
+    end
   end
 
   private
+
+  def extract_site_limits(site_limits)
+    site_limits.map do |site_limit|
+      UrlParser.strip_http_protocols site_limit
+    end if site_limits.present?
+  end
 
   def init_related_search
     @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
@@ -131,11 +142,15 @@ class GovboxSet
     end
   end
 
-  def init_best_bets
-    search_options = build_search_options(affiliate_id: @affiliate.id)
-    @boosted_contents = ElasticBoostedContent.search_for(search_options.merge(size: 3))
+  def init_text_best_bets
+    search_options = build_search_options(affiliate_id: @affiliate.id, size: 3, site_limits: @site_limits)
+    @boosted_contents = ElasticBoostedContent.search_for(search_options)
     @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
-    @featured_collections = ElasticFeaturedCollection.search_for(search_options.merge(size: 1))
+  end
+
+  def init_graphic_best_bets
+    search_options = build_search_options(affiliate_id: @affiliate.id, size: 1)
+    @featured_collections = ElasticFeaturedCollection.search_for(search_options)
     @modules << 'BBG' if elastic_results_exist?(@featured_collections)
   end
 

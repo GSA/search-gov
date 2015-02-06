@@ -237,7 +237,7 @@ describe WebSearch do
       end
 
       it 'should get the info from GovboxSet' do
-        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test').and_return nil
+        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test', site_limits: []).and_return nil
         @search.run
       end
     end
