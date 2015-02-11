@@ -32,15 +32,15 @@
   .header-item();
   padding: 0 60px;
 
-  &.logo-left {
-    padding-left: 0;
+  @media (min-width: @screen-md-min) {
+    padding: 0;
+  }
 
-    @media (min-width: @screen-sm) {
-      padding-left: 0;
-    }
+  &.logo-left {
+    padding-left: 12px;
 
     img {
-      margin-left: @content-block-margin;
+      margin-left: 0;
     }
   }
 
