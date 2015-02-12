@@ -1,4 +1,4 @@
-class Api::BlendedSearchOptions < Api::SearchOptions
+class Api::NonCommercialSearchOptions < Api::SearchOptions
 
   attr_accessor :sort_by
 

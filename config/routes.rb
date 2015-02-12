@@ -16,6 +16,7 @@ UsasearchRails3::Application.routes.draw do
       get '/search' => 'searches#blended'
       get '/search/azure' => 'searches#azure'
       get '/search/gss' => 'searches#gss'
+      get '/search/video' => 'searches#video'
       get '/agencies/search' => 'agencies#search'
     end
   end

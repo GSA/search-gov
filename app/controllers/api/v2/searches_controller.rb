@@ -25,6 +25,12 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def video
+    @search = ApiVideoSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   private
 
   def require_ssl
@@ -62,7 +68,7 @@ class Api::V2::SearchesController < ApplicationController
   def search_options_validator_klass
     case action_name.to_sym
     when :azure then Api::CommercialSearchOptions
-    when :blended then Api::BlendedSearchOptions
+    when :blended, :video then Api::NonCommercialSearchOptions
     when :gss then Api::GssSearchOptions
     end
   end

@@ -38,8 +38,7 @@ class NewsSearch < Search
     end
 
     if @rss_feeds.any?(&:is_managed?) and @affiliate.youtube_profile_ids.present?
-      youtube_profile_ids = affiliate.youtube_profile_ids
-      youtube_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
+      youtube_feeds = RssFeed.youtube_profile_rss_feeds_by_site @affiliate
       @rss_feeds.reject!(&:is_managed?)
       @rss_feeds.push *youtube_feeds
     end

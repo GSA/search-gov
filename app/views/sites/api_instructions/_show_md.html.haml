@@ -67,61 +67,64 @@
 
 
 
-  ### enable_highlighting
+  * ### enable_highlighting
 
 
 
 
-  Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting.
+      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting.
 
 
 
 
-  `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&enable_highlighting=false`
+      `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&enable_highlighting=false`
 
 
 
 
-  ### limit
+  * ### limit
 
 
 
 
-  Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results.
+      Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results.
 
 
 
 
-  `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&limit=5`
+      `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&limit=5`
 
 
 
 
-  ### offset
+  * ### offset
 
 
 
 
-  Defines the number of results you want to skip from the first result. The default is 0 and the maximum is 999.
+      Defines the number of results you want to skip from the first result. The default is 0 and the maximum is 999.
 
 
 
 
-  `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&offset=20`
-
-
-
-  ### sort_by
+      `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&offset=20`
 
 
 
 
-  Sort the results by date. The default is sort by relevance.
+  * ### sort_by
 
 
 
 
-  `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&sort_by=date`
+      Sort the results by date. The default is sort by relevance.
+
+
+
+
+      `#{api_scheme_and_host}/api/v2/search?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&sort_by=date`
+
+
 
 
   ## Response Fields
@@ -134,186 +137,292 @@
 
 
 
-  ### web:results
+  * ### web:results
 
 
-  Web results from our DigitalGov Search indexes.
 
 
+      Web results from our DigitalGov Search indexes.
 
 
-  | Values           | Description
-  | :--              | :--
-  | title            | Title of the document
-  | url              | URL of the document
-  | snippet          | Summary of the document
-  | publication_date | Publication date of the document (not available on commercial results)
 
 
-  ### web:total
+      | Values           | Description
+      | :--              | :--
+      | title            | Title of the document
+      | url              | URL of the document
+      | snippet          | Summary of the document
+      | publication_date | Publication date of the document (not available on commercial results)
 
-  Total number of results available.
 
 
 
+  * ### web:total
 
-  ### web:next_offset
 
 
-  Offset for the subsequent results.
 
+      Total number of results available.
 
 
 
-  ### web:spelling_correction
 
+  * ### web:next_offset
 
-  Spelling correction for your search term. Not available with Azure (Bing) Web Results.
 
 
 
+      Offset for the subsequent results.
 
-  ### text_best_bets
 
 
-  Text best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
 
+  * ### web:spelling_correction
 
-  | Values      | Description
-  | :--         | :--
-  | title       | Title of the best bet
-  | url         | URL of the best bet
-  | description | Description of the best bet
 
 
 
+    Spelling correction for your search term. Not available with Azure (Bing) Web Results.
 
-  ### graphic_best_bets
 
 
-  Graphic best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
 
+  * ### text_best_bets
 
-  | Values         | Description
-  | :--            | :--
-  | title          | Title of the graphic best bet
-  | title_url      | URL of the graphic best bet
-  | image_url      | URL of the graphic image
-  | image_alt_text | Alternative text of the image
-  | links          | An array of links in the graphic best bet. Each link contains a title and a URL
 
 
 
-  ### health_topics
+      Text best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
 
 
-  | Values         | Description
-  | :--            | :--
-  | title          | Title of the health topic
-  | url            | URL of the health topic
-  | snippet        | Snippet of the health topic
-  | related_topics | An array of topics related to the health topic. Each topic contains a title and a URL
-  | related_sites  | An array of sites related to the the health topic. Each site contains a title and a URL
 
 
+      | Values      | Description
+      | :--         | :--
+      | title       | Title of the best bet
+      | url         | URL of the best bet
+      | description | Description of the best bet
 
 
-  ### job_openings
 
 
-  | Values             | Description
-  | :--                | :--
-  | position_title     | Position title of the job opening
-  | organization_name  | Organization name of the job opening
-  | rate_interval_code | Rate interval code of the job opening
-  | minimum            | Minimum salary of the job opening
-  | maximum            | Maximum salary of the job opening
-  | start_date         | Start date of the job opening
-  | end_date           | End date of the job opening
-  | locations          | An array of locations of the job opening
-  | url                | URL of the job opening
+  * ### graphic_best_bets
 
 
 
 
-  ### recent_tweets
+      Graphic best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
 
 
-  Recent tweets
 
 
-  | Values            | Description
-  | :--               | :--
-  | text              | Text of the tweet
-  | url               | URL of the tweet
-  | name              | Name of the tweet author
-  | screen_name       | Screen name of the tweet author
-  | profile_image_url | URL of the tweet author profile image
+      | Values         | Description
+      | :--            | :--
+      | title          | Title of the graphic best bet
+      | title_url      | URL of the graphic best bet
+      | image_url      | URL of the graphic image
+      | image_alt_text | Alternative text of the image
+      | links          | An array of links in the graphic best bet. Each link contains a title and a URL
 
 
 
 
-  ### recent_news
+  * ### health_topics
 
 
-  Recent news from our DigitalGov Search indexes. Only available with commercial results.
 
 
-  | Values           | Description
-  | :--              | :--
-  | title            | Title of the recent news
-  | url              | URL of the recent news
-  | snippet          | Snippet of the recent news
-  | publication_date | Publication date of the recent news
-  | source           | Source of the recent news
+      | Values         | Description
+      | :--            | :--
+      | title          | Title of the health topic
+      | url            | URL of the health topic
+      | snippet        | Snippet of the health topic
+      | related_topics | An array of topics related to the health topic. Each topic contains a title and a URL
+      | related_sites  | An array of sites related to the the health topic. Each site contains a title and a URL
 
 
 
 
-  ### recent_video_news
+  * ### job_openings
 
 
-  Recent video news from our DigitalGov Search indexes. Only available with commercial results.
 
 
-  | Values           | Description
-  | :--              | :--
-  | title            | Title of the recent video news
-  | url              | URL of the recent video news
-  | snippet          | Snippet of the recent video news
-  | publication_date | Publication date of the recent video news
-  | source           | Source of the recent video news
-  | thumbnail_url    | Thumbnail URL of the recent video news
+      | Values             | Description
+      | :--                | :--
+      | position_title     | Position title of the job opening
+      | organization_name  | Organization name of the job opening
+      | rate_interval_code | Rate interval code of the job opening
+      | minimum            | Minimum salary of the job opening
+      | maximum            | Maximum salary of the job opening
+      | start_date         | Start date of the job opening
+      | end_date           | End date of the job opening
+      | locations          | An array of locations of the job opening
+      | url                | URL of the job opening
 
 
 
 
-  ### federal_register_documents
+  * ### recent_tweets
 
 
-  Federal Register documents
 
 
-  | Values              | Description
-  | :--                 | :--
-  | document_number     | Document number of the federal register document
-  | document_type       | Document type of the federal register document
-  | title               | Title of the federal register document
-  | url                 | URL of the federal register document
-  | agency_names        | An array of agency names of the federal register document
-  | page_length         | Page length of the federal register document
-  | start_page          | Start page of the federal register document
-  | end_page            | End page of the federal register document
-  | publication_date    | Publication date of the federal register document
-  | comments_close_date | Comments close date of the federal register document
+      | Values            | Description
+      | :--               | :--
+      | text              | Text of the tweet
+      | url               | URL of the tweet
+      | name              | Name of the tweet author
+      | screen_name       | Screen name of the tweet author
+      | profile_image_url | URL of the tweet author profile image
 
 
 
 
-  ### related_search_terms
+  * ### recent_news
 
 
-    An array of related search terms, which are based on recent, common searches on the your site.
+
+
+      Recent news from our DigitalGov Search indexes. Only available with commercial results.
+
+
+
+
+      | Values           | Description
+      | :--              | :--
+      | title            | Title of the recent news
+      | url              | URL of the recent news
+      | snippet          | Snippet of the recent news
+      | publication_date | Publication date of the recent news
+      | source           | Source of the recent news
+
+
+
+
+  * ### recent_video_news
+
+
+
+
+      Recent video news from our DigitalGov Search indexes. Only available with commercial results.
+
+
+
+
+      | Values           | Description
+      | :--              | :--
+      | title            | Title of the recent video news
+      | url              | URL of the recent video news
+      | snippet          | Snippet of the recent video news
+      | publication_date | Publication date of the recent video news
+      | source           | Source of the recent video news
+      | thumbnail_url    | Thumbnail URL of the recent video news
+
+
+
+
+  * ### federal_register_documents
+
+
+
+
+      Federal Register documents
+
+
+
+
+      | Values              | Description
+      | :--                 | :--
+      | document_number     | Document number of the federal register document
+      | document_type       | Document type of the federal register document
+      | title               | Title of the federal register document
+      | url                 | URL of the federal register document
+      | agency_names        | An array of agency names of the federal register document
+      | page_length         | Page length of the federal register document
+      | start_page          | Start page of the federal register document
+      | end_page            | End page of the federal register document
+      | publication_date    | Publication date of the federal register document
+      | comments_close_date | Comments close date of the federal register document
+
+
+
+
+  * ### related_search_terms
+
+
+
+
+      An array of related search terms, which are based on recent, common searches on the your site.
+
+
+
+
+  ## Video API
+
+
+
+
+    The endpoint is `#{api_scheme_and_host}/api/v2/search/video`.
+
+
+
+
+    It uses the same required and optional parameters above.
+
+
+
+
+    `#{api_scheme_and_host}/api/v2/search/video?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}`
+
+
+
+
+  ### Video Response Fields
+
+
+
+
+  * #### video:results
+
+
+
+
+      Video results from our DigitalGov Search indexes.
+
+
+
+
+      | Values           | Description
+      | :--              | :--
+      | title            | Title of the video
+      | url              | URL of the video
+      | snippet          | Snippet of the video
+      | publication_date | Publication date of the video
+      | source           | Source of the video
+      | thumbnail_url    | Thumbnail URL of the video
+
+
+
+
+  * #### video:total
+
+
+
+
+      Total number of results available.
+
+
+
+
+  * #### video:next_offset
+
+
+
+
+      Offset for the subsequent results.
+
+
 
 
   ## Additional Instructions for Commercial API Keys
@@ -322,10 +431,12 @@
   If you’ve [bought an API key from Bing or Google](#{commercial_keys_site_api_instructions_path(@site)}), follow the additional instructions below to return their respective results.
 
 
+
+
   ### Azure (Bing) Web Results
 
 
-  Append /azure to the endpoint: `#{api_scheme_and_host}/api/v2/search/azure`.
+  The endpoint is: `#{api_scheme_and_host}/api/v2/search/azure`.
 
 
   In addition to the required and optional parameters above, `api_key` is required.
@@ -334,7 +445,7 @@
   `#{api_scheme_and_host}/api/v2/search/azure?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
 
 
-  Include your Azure account key as the value for `api_key`.
+  Include your URL encoded Azure account key as the value for `api_key`.
 
 
   Note that the Bing Search API doesn’t provide the total of number of web results so they’re not included in the response.
@@ -343,7 +454,7 @@
   ### Google (Site Search) Web Results
 
 
-  Append /gss to the endpoint: `#{api_scheme_and_host}/api/v2/search/gss`.
+  The endpoint is: `#{api_scheme_and_host}/api/v2/search/gss`.
 
 
   In addition to the required and optional parameters above, `api_key` and `cx` are required.
@@ -352,7 +463,7 @@
   `#{api_scheme_and_host}/api/v2/search/gss?affiliate=#{@site.name}&access_key=#{@site.api_access_key}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}&cx={YOUR_CX}`
 
 
-  Include your Google account key as the value for `api_key`. Include your Google Custom Search Engine (cx) key as the value for `cx`.
+  Include your URL encoded Google account key as the value for `api_key`. Include your Google Custom Search Engine (cx) key as the value for `cx`.
 
 
   Note that the Google Site Search only returns 10 results so the default `limit` is 10, not 20. You can specify between 1 and 10 results.

@@ -32,6 +32,15 @@ class RssFeed < ActiveRecord::Base
     rss_feed_urls.where(last_crawl_status: RssFeedUrl::PENDING_STATUS).any?
   end
 
+  def self.youtube_profile_rss_feeds_by_site(site)
+    youtube_profile_ids = site.youtube_profile_ids
+    return unless youtube_profile_ids.present?
+
+    RssFeed.includes(:rss_feed_urls).
+      owned_by_youtube_profile.
+      where(owner_id: youtube_profile_ids)
+  end
+
   private
   def rss_feed_urls_cannot_be_blank
     errors.add(:base, 'RSS feed must have 1 or more URLs.') if !is_managed? and rss_feed_urls.blank? || rss_feed_urls.all?(&:marked_for_destruction?)
