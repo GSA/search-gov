@@ -1,0 +1,42 @@
+%h1 Search Module CTRs
+
+%table
+  %thead
+    %tr
+      %th &nbsp
+      %th{colspan: 3, style: "text-align:center"} Trailing 7 Days
+      %th{colspan: 3, style: "text-align:center"} Today
+    %tr
+      %th Module
+      %th{style: "text-align:right"} Impressions
+      %th{style: "text-align:right"} Clicks
+      %th{style: "text-align:right"} CTR
+      %th{style: "text-align:right"} Impressions
+      %th{style: "text-align:right"} Clicks
+      %th{style: "text-align:right"} CTR
+  %tbody
+    - total_historical_impressions, total_historical_clicks, total_recent_impressions, total_recent_clicks = 0,0,0,0
+    - @search_module_ctrs.each do | search_module_ctr_stat |
+      %tr
+        %th= "#{search_module_ctr_stat.name} (#{search_module_ctr_stat.tag})"
+        %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.historical.impressions)
+        %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.historical.clicks)
+        %td{style: "text-align:right"}= number_to_percentage(search_module_ctr_stat.historical.ctr, precision: 1)
+        %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.recent.impressions)
+        %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.recent.clicks)
+        %td{style: "text-align:right"}= number_to_percentage(search_module_ctr_stat.recent.ctr, precision: 1)
+        - total_historical_impressions += search_module_ctr_stat.historical.impressions
+        - total_historical_clicks += search_module_ctr_stat.historical.clicks
+        - total_recent_impressions += search_module_ctr_stat.recent.impressions
+        - total_recent_clicks += search_module_ctr_stat.recent.clicks
+    %tr
+      %th
+        %strong
+          All Modules
+      %td{style: "text-align:right"}= number_with_delimiter(total_historical_impressions)
+      %td{style: "text-align:right"}= number_with_delimiter(total_historical_clicks)
+      %td{style: "text-align:right"}= number_to_percentage(100.0 * total_historical_clicks / total_historical_impressions, precision: 1)
+      %td{style: "text-align:right"}= number_with_delimiter(total_recent_impressions)
+      %td{style: "text-align:right"}= number_with_delimiter(total_recent_clicks)
+      %td{style: "text-align:right"}= number_to_percentage(100.0 * total_recent_clicks / total_recent_impressions, precision: 1)
+      
