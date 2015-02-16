@@ -14,7 +14,7 @@ describe SearchModuleCtr do
         ES::client_reader.should_receive(:search).with(hash_including(type: %w(search click))).and_return(historical_mb_json_response, mb_json_response)
       end
 
-      it "should return collection of SearchModuleCtrStat instances ordered by decr serach+click count" do
+      it "should return collection of SearchModuleCtrStat instances ordered by decr search+click count" do
         stats = search_module_ctr.search_module_ctrs
         stats.first.name.should == search_modules(:bweb).display_name
         stats.first.tag.should == search_modules(:bweb).tag
@@ -34,6 +34,9 @@ describe SearchModuleCtr do
     end
 
     context "when no stats are available for the daterange" do
+      before do
+        ES::client_reader.should_receive(:search).with(hash_including(type: %w(search click))).twice.and_return nil
+      end
 
       it "should return an empty array" do
         stats = search_module_ctr.search_module_ctrs

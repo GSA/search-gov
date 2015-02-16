@@ -18,7 +18,9 @@
     - total_historical_impressions, total_historical_clicks, total_recent_impressions, total_recent_clicks = 0,0,0,0
     - @search_module_ctrs.each do | search_module_ctr_stat |
       %tr
-        %th= "#{search_module_ctr_stat.name} (#{search_module_ctr_stat.tag})"
+        %th
+          = "#{search_module_ctr_stat.name} (#{search_module_ctr_stat.tag})"
+          = link_to "(drill down)", admin_site_ctrs_path(module_tag: search_module_ctr_stat.tag)
         %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.historical.impressions)
         %td{style: "text-align:right"}= number_with_delimiter(search_module_ctr_stat.historical.clicks)
         %td{style: "text-align:right"}= number_to_percentage(search_module_ctr_stat.historical.ctr, precision: 1)

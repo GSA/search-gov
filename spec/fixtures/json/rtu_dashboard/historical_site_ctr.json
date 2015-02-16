@@ -1,0 +1,72 @@
+{
+  "took": 140,
+  "timed_out": false,
+  "_shards": {
+    "total": 4,
+    "successful": 4,
+    "failed": 0
+  },
+  "hits": {
+    "total": 23822,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "agg": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "usagov",
+          "doc_count": 5186,
+          "type": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "search",
+                "doc_count": 15101
+              },
+              {
+                "key": "click",
+                "doc_count": 185
+              }
+            ]
+          }
+        },
+        {
+          "key": "noaa.gov",
+          "doc_count": 1859,
+          "type": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "search",
+                "doc_count": 11811
+              },
+              {
+                "key": "click",
+                "doc_count": 148
+              }
+            ]
+          }
+        },
+        {
+          "key": "nps.gov",
+          "doc_count": 1,
+          "type": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "search",
+                "doc_count": 11
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

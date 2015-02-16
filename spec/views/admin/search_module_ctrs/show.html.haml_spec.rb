@@ -18,9 +18,9 @@ describe "admin/search_module_ctrs/show.html.haml" do
   it 'shows the stats' do
     render
     rendered.should contain "Search Module CTRs"
-    rendered.should contain "Module 2 (MOD2) 1,000 500 50.0% 105 17 16.2%"
-    rendered.should contain "Module 1 (MOD1) 456 123 27.0% 45 12 26.7%"
-    rendered.should contain "Module 3 (MOD3) 123 10 8.1% 0 12"
+    rendered.should contain "Module 2 (MOD2) (drill down) 1,000 500 50.0% 105 17 16.2%"
+    rendered.should contain "Module 1 (MOD1) (drill down) 456 123 27.0% 45 12 26.7%"
+    rendered.should contain "Module 3 (MOD3) (drill down) 123 10 8.1% 0 12"
     rendered.should contain "All Modules 1,579 633 40.1% 150 41 27.3%"
   end
 

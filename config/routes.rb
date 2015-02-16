@@ -188,6 +188,7 @@ UsasearchRails3::Application.routes.draw do
       as_routes
     end
     resource :search_module_ctrs, only: [:show]
+    resource :site_ctrs, only: [:show]
   end
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl

@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe Admin::SearchModuleCtrsController do
   fixtures :users
+  let(:search_module_ctr) { mock(SearchModuleCtr, search_module_ctrs: %w(first second)) }
+
   before do
     activate_authlogic
     SearchModuleCtr.stub(:new).with(instance_of(Fixnum)).and_return search_module_ctr
   end
 
   describe "GET 'show'" do
-    let(:search_module_ctr) { mock(SearchModuleCtr, search_module_ctrs: %w(first second)) }
 
     context "when not logged in" do
       it "should redirect to the home page" do

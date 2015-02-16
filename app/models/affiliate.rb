@@ -705,4 +705,9 @@ class Affiliate < ActiveRecord::Base
     css_hash.merge!(css_property_hash) if css_property_hash(true)
     css_hash
   end
+
+  def self.to_name_site_hash
+    Hash[all.collect { |site| [site.name, site] }]
+  end
+
 end
