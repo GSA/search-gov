@@ -1,8 +1,9 @@
 module SpellingSuggestionsHelper
-  def spelling_suggestion_links(search, &block)
+  def spelling_suggestion_links(search, search_options, &block)
     if search.spelling_suggestion
       suggested_query = strip_bing_highlights(search.spelling_suggestion)
       opts = { affiliate: search.affiliate.name, query: suggested_query }
+      opts.merge!(site_limits: search_options[:site_limits]) if search_options[:site_limits]
       suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
 
       opts.merge!(query: overridden_query(search.query))
@@ -23,7 +24,7 @@ module SpellingSuggestionsHelper
   end
 
   def legacy_spelling_suggestion(search, affiliate, vertical)
-    spelling_suggestion_links(search) do |suggested_query, suggested_url, original_url|
+    spelling_suggestion_links(search, {}) do |suggested_query, suggested_url, original_url|
       did_you_mean = t :did_you_mean,
                        :assumed_term => tracked_click_link(suggested_url, h(suggested_query), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
                        :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
@@ -31,8 +32,8 @@ module SpellingSuggestionsHelper
     end
   end
 
-  def spelling_suggestion(search)
-    spelling_suggestion_links(search) do |suggested_query, suggested_url, original_url|
+  def spelling_suggestion(search, search_options)
+    spelling_suggestion_links(search, search_options) do |suggested_query, suggested_url, original_url|
       render_suggestion(original_url, search, suggested_query, suggested_url, 'BSPEL', 'OVER')
     end
   end

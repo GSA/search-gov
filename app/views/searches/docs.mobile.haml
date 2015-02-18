@@ -1,6 +1,6 @@
 #search{ search_data(@search, @search_vertical) }
   - if @search.commercial_results?
-    = spelling_suggestion(@search)
+    = spelling_suggestion(@search, @search_options)
   -else
     = search_suggestion(@search, 'SPEL')
 
