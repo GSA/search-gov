@@ -16,14 +16,14 @@ describe SiteCtr do
 
       it "should return collection of SiteCtrStat instances ordered by decr search+click count" do
         stats = site_ctr.site_ctrs
-        stats.first.site_id.should == affiliates(:usagov_affiliate).id
+        stats.first.site_name.should == affiliates(:usagov_affiliate).name
         stats.first.display_name.should == affiliates(:usagov_affiliate).display_name
         stats.first.historical.impressions.should == 15101
         stats.first.historical.clicks.should == 185
         stats.first.recent.impressions.should == 5101
         stats.first.recent.clicks.should == 85
 
-        stats.last.site_id.should == affiliates(:basic_affiliate).id
+        stats.last.site_name.should == affiliates(:basic_affiliate).name
         stats.last.display_name.should == affiliates(:basic_affiliate).display_name
         stats.last.historical.impressions.should == 11
         stats.last.historical.clicks.should == 0

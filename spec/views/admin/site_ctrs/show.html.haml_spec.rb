@@ -23,9 +23,9 @@ describe "admin/site_ctrs/show.html.haml" do
   it 'shows the site CTR stats for some search module' do
     render
     rendered.should contain "Site CTRs for Best Bets Text (BOOS)"
-    rendered.should contain "NPS Site 1,000 500 50.0% 105 17 16.2%"
-    rendered.should contain "USA.gov 456 123 27.0% 45 12 26.7%"
-    rendered.should contain "Noaa Site 123 10 8.1% 0 12"
+    rendered.should contain "NPS Site (drill down) 1,000 500 50.0% 105 17 16.2%"
+    rendered.should contain "USA.gov (drill down) 456 123 27.0% 45 12 26.7%"
+    rendered.should contain "Noaa Site (drill down) 123 10 8.1% 0 12"
     rendered.should contain "All Sites 1,579 633 40.1% 150 41 27.3%"
   end
 

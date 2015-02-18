@@ -8,7 +8,7 @@ class ModuleBreakdownQuery
   def body
     Jbuilder.encode do |json|
       filter_booleans(json)
-      modules_type_terms_agg(json)
+      type_terms_agg(json, 'modules', 0)
     end
   end
 
@@ -17,24 +17,6 @@ class ModuleBreakdownQuery
       json.term { json.affiliate @affiliate_name }
     end if @affiliate_name.present?
     must_not_spider(json)
-  end
-
-  def modules_type_terms_agg(json)
-    json.aggs do
-      json.agg do
-        json.terms do
-          json.field 'modules'
-          json.size 0
-        end
-        json.aggs do
-          json.type do
-            json.terms do
-              json.field 'type'
-            end
-          end
-        end
-      end
-    end
   end
 
 end
