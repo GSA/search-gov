@@ -3,7 +3,7 @@ module SpellingSuggestionsHelper
     if search.spelling_suggestion
       suggested_query = strip_bing_highlights(search.spelling_suggestion)
       opts = { affiliate: search.affiliate.name, query: suggested_query }
-      opts.merge!(site_limits: search_options[:site_limits]) if search_options[:site_limits]
+      opts.merge!(sitelimit: search_options[:site_limits]) if search_options[:site_limits]
       suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
 
       opts.merge!(query: overridden_query(search.query))
