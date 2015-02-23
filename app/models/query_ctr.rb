@@ -13,7 +13,7 @@ class QueryCtr
     query_body = query.body
     historical_buckets = ctrs(query_body, @historical_days_back)
     recent_buckets = ctrs(query_body)
-    return [] unless historical_buckets.present? and recent_buckets.present?
+    return [] unless historical_buckets.present?
     historical_hash = convert_to_hash(historical_buckets)
     recent_hash = convert_to_hash(recent_buckets)
     historical_hash.collect do |key, historical_ics|

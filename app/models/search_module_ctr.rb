@@ -11,7 +11,7 @@ class SearchModuleCtr
     query_body = query.body
     historical_buckets = ctrs(query_body, @historical_days_back)
     recent_buckets = ctrs(query_body)
-    return [] unless historical_buckets.present? and recent_buckets.present?
+    return [] unless historical_buckets.present?
     search_module_lookup_hash = SearchModule.to_tag_display_name_hash
     historical_hash = convert_to_hash(historical_buckets)
     recent_hash = convert_to_hash(recent_buckets)
