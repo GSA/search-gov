@@ -13,6 +13,10 @@ module SearchHelper
     t('searches.commercial_results.see_more_web_results', link: link).html_safe
   end
 
+  def link_to_other_web_results(template, query)
+    template.sub('{QUERY}', query).html_safe
+  end
+
   def result_partial_for(search)
     if search.is_a?(LegacyImageSearch)
       "/image_searches/result"

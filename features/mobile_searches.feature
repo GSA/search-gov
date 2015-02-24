@@ -605,3 +605,23 @@ Feature: Searches using mobile device
     Then I should see a link to "Most Recent Filings for this Company"
     And I should see a link to "Full Filing"
 
+  Scenario: Custom page 1 results pointer
+    Given the following Affiliates exist:
+      | display_name | name           | contact_email    | contact_name | locale | page_one_more_results_pointer |
+      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results                   |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "gov"
+    And I press "Search"
+    Then I should see "Wherever. Try your search again to see results"
+
+    When I follow "Next"
+    Then I should not see "Wherever. Try your search again to see results"
+
+  Scenario: Custom no results pointer
+    Given the following Affiliates exist:
+      | display_name | name           | contact_email    | contact_name | locale | no_results_pointer |
+      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results                   |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
+    And I press "Search"
+    Then I should see "NORESULTS. Try your search again to see results"

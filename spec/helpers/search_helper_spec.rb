@@ -344,4 +344,13 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>"
     end
   end
+
+  describe "#link_to_other_web_results(template, query)" do
+    let(:html_template) { 'The above results are from Wherever. <a href="http://www.gov.gov/search?query={QUERY}">Try your search again</a> to see results from Another Place.' }
+    let(:query) { "one two" }
+
+    it 'should render HTML with interpolated and encoded query string' do
+      helper.link_to_other_web_results(html_template, query).should have_link('Try your search again', 'http://www.gov.gov/search?query=one%20two')
+    end
+  end
 end

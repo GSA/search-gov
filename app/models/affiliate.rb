@@ -215,7 +215,8 @@ class Affiliate < ActiveRecord::Base
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :go_live_date, :logo_alt_text, :sitelink_generator_names,
-                                         :header_tagline, :related_sites_dropdown_label]
+                                         :header_tagline, :related_sites_dropdown_label, :page_one_more_results_pointer,
+                                         :no_results_pointer]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]

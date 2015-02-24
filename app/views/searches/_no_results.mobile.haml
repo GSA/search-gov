@@ -2,5 +2,7 @@
   .content-block-item
     - if search.error_message
       #{search.error_message}
+    - elsif search.affiliate.no_results_pointer.present?
+      = link_to_other_web_results(search.affiliate.no_results_pointer, search.query)
     - else
       = t(:no_results_for_and_try, query: search.query)

@@ -77,7 +77,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      name_group.add :header_tagline_font_family, :header_tagline_font_size, :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme
+      name_group.add :header_tagline_font_family, :header_tagline_font_size, :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme, :page_one_more_results_pointer, :no_results_pointer
       name_group.collapsed = true
     end
 
