@@ -8,4 +8,6 @@
 - api_scheme_and_host = "#{request.scheme}://#{request.host_with_port}"
 
 .api-instruction
-  = render partial: 'show_md', locals: { api_scheme_and_host: api_scheme_and_host }
+  = render partial: 'show_web_md', locals: { api_scheme_and_host: api_scheme_and_host }
+  = render partial: 'show_video_md', locals: { api_scheme_and_host: api_scheme_and_host }
+  = render partial: 'show_tos_md'
