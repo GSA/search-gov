@@ -1,5 +1,4 @@
 class Sites::SiteFeedUrlsController < Sites::SetupSiteController
-  DEFAULT_URL_LIMIT = 1000.freeze
   before_filter :setup_site
   before_filter :setup_site_feed_url
 
@@ -35,6 +34,6 @@ class Sites::SiteFeedUrlsController < Sites::SetupSiteController
   def site_feed_url_params
     @site_feed_url_params ||= params.require(:site_feed_url).
         permit(:rss_url).
-        merge(last_checked_at: nil, last_fetch_status: 'Pending', quota: DEFAULT_URL_LIMIT)
+        merge(last_checked_at: nil, last_fetch_status: 'Pending')
   end
 end

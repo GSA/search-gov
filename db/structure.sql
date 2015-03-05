@@ -631,7 +631,7 @@ CREATE TABLE `site_feed_urls` (
   `rss_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_fetch_status` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
   `last_checked_at` datetime DEFAULT NULL,
-  `quota` int(11) NOT NULL DEFAULT '500',
+  `quota` int(11) NOT NULL DEFAULT '1000',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -2050,3 +2050,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150111220256');
 INSERT INTO schema_migrations (version) VALUES ('20150111220313');
 
 INSERT INTO schema_migrations (version) VALUES ('20150130224716');
+
+INSERT INTO schema_migrations (version) VALUES ('20150305162024');

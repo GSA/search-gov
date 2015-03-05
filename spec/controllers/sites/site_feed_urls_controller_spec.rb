@@ -36,8 +36,7 @@ describe Sites::SiteFeedUrlsController do
           site_feed_url.should_receive(:update_attributes).
               with('rss_url' => 'http://usasearch.howto.gov/all.atom',
                    'last_checked_at' => nil,
-                   'last_fetch_status' => 'Pending',
-                   'quota' => 1000).
+                   'last_fetch_status' => 'Pending').
               and_return(true)
 
           Resque.should_receive(:enqueue_with_priority).
@@ -62,8 +61,7 @@ describe Sites::SiteFeedUrlsController do
           site_feed_url.should_receive(:update_attributes).
               with('rss_url' => '',
                    'last_checked_at' => nil,
-                   'last_fetch_status' => 'Pending',
-                   'quota' => 1000).
+                   'last_fetch_status' => 'Pending').
               and_return(false)
 
           put :update,
