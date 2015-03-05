@@ -21,7 +21,7 @@ describe GovboxSet do
           affiliate_id: affiliate.id,
           language: 'en',
           q: 'foo',
-          size: 3,
+          size: 2,
           site_limits: nil
         }
         expected_results = mock(ElasticBoostedContentResults, total: 1)
@@ -37,7 +37,7 @@ describe GovboxSet do
           affiliate_id: affiliate.id,
           language: 'en',
           q: 'foo',
-          size: 3,
+          size: 2,
           site_limits: nil
         }.merge(highlighting_options)
 
@@ -78,6 +78,42 @@ describe GovboxSet do
           and_return(expected_results)
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
         govbox_set.featured_collections.should == expected_results
+      end
+    end
+
+    context 'when the affiliate has 2 boosted contents and 1 featured collection' do
+      let(:fc_expected_results) { mock(ElasticFeaturedCollectionResults, total: 1) }
+      let(:bc_expected_results_2) { mock(ElasticBoostedContentResults, total: 1) }
+
+      before do
+        affiliate.locale = 'en'
+        bc_expected_search_options = {
+          affiliate_id: affiliate.id,
+          language: 'en',
+          q: 'foo',
+          size: 2,
+          site_limits: nil
+        }
+        bc_expected_results_1 = mock(ElasticBoostedContentResults, total: 2)
+        ElasticBoostedContent.stub!(:search_for).with(bc_expected_search_options).
+          and_return(bc_expected_results_1)
+        ElasticBoostedContent.stub!(:search_for).with(bc_expected_search_options.merge(size: 1)).
+          and_return(bc_expected_results_2)
+
+        ElasticFeaturedCollection.stub!(:search_for).
+          with(q: 'foo',
+               affiliate_id: affiliate.id,
+               language: 'en',
+               size: 1).
+          and_return(fc_expected_results)
+      end
+
+      it 'should assign 1 boosted content and 1 featured collection' do
+        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set.featured_collections.should == fc_expected_results
+        expect(govbox_set.modules).to include('BBG')
+        govbox_set.boosted_contents.should == bc_expected_results_2
+        expect(govbox_set.modules).to include('BOOS')
       end
     end
 
@@ -419,7 +455,7 @@ describe GovboxSet do
           with(q: 'foo',
                affiliate_id: affiliate.id,
                language: 'en',
-               size: 3,
+               size: 2,
                site_limits: %w(blogs.usa.gov news.usa.gov)).
           and_return(expected_results)
 

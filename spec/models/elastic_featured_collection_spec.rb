@@ -303,15 +303,6 @@ describe ElasticFeaturedCollection do
         end
       end
     end
-
-    describe "misspellings and fuzzy matches" do
-      it 'should return results for slight misspellings after the first two characters' do
-        oops = %w{yossemite yosemity speling publicaciones}
-        oops.each do |misspeling|
-          ElasticFeaturedCollection.search_for(q: misspeling, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        end
-      end
-    end
   end
 
   it_behaves_like "an indexable"

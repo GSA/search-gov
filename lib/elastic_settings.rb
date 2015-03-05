@@ -5,7 +5,7 @@ module ElasticSettings
     index: {
       analysis: {
         char_filter: {
-          ignore_chars: { type: "mapping", mappings: ["'=>", "’=>", "`=>"] }
+          ignore_chars: { type: "mapping", mappings: ["'=>", "’=>", "`=>", "ʻ=>"] }
         },
         filter: {
           bigram_filter: { type: 'shingle' },

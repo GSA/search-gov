@@ -286,15 +286,6 @@ describe ElasticBoostedContent do
       end
     end
 
-    describe "misspellings and fuzzy matches" do
-      it 'should return results for slight misspellings after the first two characters' do
-        oops = %w{yossemite yosemity speling publicaciones}
-        oops.each do |misspeling|
-          ElasticBoostedContent.search_for(q: misspeling, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        end
-      end
-    end
-
     describe "title and description" do
       it 'should be case insentitive' do
         ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1

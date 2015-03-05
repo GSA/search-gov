@@ -30,6 +30,14 @@ Feature: Searches using mobile device
       | 44. Barack Obama                | http://www.whitehouse.gov/about/presidents/barackobama                 |
       | 43. George W. Bush              | http://www.whitehouse.gov/about/presidents/georgewbush                 |
       | The Presidents Photo Galleries  | http://www.whitehouse.gov/photos-and-video/photogallery/the-presidents |
+      | Gallery Link Number 1           | http://www.whitehouse.gov/photos-and-video/photogallery/1              |
+      | Gallery Link Number 2           | http://www.whitehouse.gov/photos-and-video/photogallery/2              |
+      | Gallery Link Number 3           | http://www.whitehouse.gov/photos-and-video/photogallery/3              |
+      | Gallery Link Number 4           | http://www.whitehouse.gov/photos-and-video/photogallery/4              |
+      | Gallery Link Number 5           | http://www.whitehouse.gov/photos-and-video/photogallery/5              |
+      | Gallery Link Number 6           | http://www.whitehouse.gov/photos-and-video/photogallery/6              |
+      | Gallery Link Number 7           | http://www.whitehouse.gov/photos-and-video/photogallery/7              |
+      | Gallery Link Number 8           | http://www.whitehouse.gov/photos-and-video/photogallery/8              |
     And the following featured collections exist for the affiliate "es.agency.gov":
       | title          | status | publish_start_on |
       | Lo Más Popular | active | 2013-07-01       |
@@ -53,11 +61,9 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see Powered by Bing logo
-    And I should see 3 Best Bets Texts
+    And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see "44. Barack Obama 43. George W. Bush The Presidents Photo Galleries"
-    And I should see "Show more"
-    And I should see "Show less"
     And I should see a link to "http://t.co/l8jbZSbmAX" with text "go.wh.gov/sgCp3q"
     And I should see at least "2" web search results
     And I should see 2 related searches
@@ -66,10 +72,8 @@ Feature: Searches using mobile device
     And I fill in "Ingrese su búsqueda" with "presidente"
     And I press "Buscar"
     Then I should see Generado por Bing logo
-    And I should see 3 Best Bets Texts
+    And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
-    And I should see "Mostrar más"
-    And I should see "Mostrar menos"
     And I should see at least "2" web search results
 
     When I am on hippo's mobile search page

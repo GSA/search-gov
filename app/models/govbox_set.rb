@@ -143,7 +143,7 @@ class GovboxSet
   end
 
   def init_text_best_bets
-    search_options = build_search_options(affiliate_id: @affiliate.id, size: 3, site_limits: @site_limits)
+    search_options = build_search_options(affiliate_id: @affiliate.id, size: 2, site_limits: @site_limits)
     @boosted_contents = ElasticBoostedContent.search_for(search_options)
     @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
   end
@@ -151,7 +151,13 @@ class GovboxSet
   def init_graphic_best_bets
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 1)
     @featured_collections = ElasticFeaturedCollection.search_for(search_options)
-    @modules << 'BBG' if elastic_results_exist?(@featured_collections)
+    if elastic_results_exist?(@featured_collections)
+      if elastic_results_exist?(@boosted_contents) and @boosted_contents.total > 1
+        search_options = build_search_options(affiliate_id: @affiliate.id, size: 1, site_limits: @site_limits)
+        @boosted_contents = ElasticBoostedContent.search_for(search_options)
+      end
+      @modules << 'BBG'
+    end
   end
 
   def build_search_options(options)
