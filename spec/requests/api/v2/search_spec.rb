@@ -13,16 +13,14 @@ describe '/api/v2/search' do
       ElasticBoostedContent.recreate_index
       affiliate.boosted_contents.delete_all
 
-      (1..2).each do |i|
-        attributes = {
-          title: "api v2 title manual-#{i}",
-          description: "api v2 description manual-#{i}",
-          url: "http://search.digitalgov.gov/manual-#{i}",
-          status: 'active',
-          publish_start_on: current_date
-        }
-        affiliate.boosted_contents.create! attributes
-      end
+      attributes = {
+        title: "api v2 title manual-1",
+        description: "api v2 description manual-1",
+        url: "http://search.digitalgov.gov/manual-1",
+        status: 'active',
+        publish_start_on: current_date
+      }
+      affiliate.boosted_contents.create! attributes
 
       ElasticBoostedContent.commit
 
