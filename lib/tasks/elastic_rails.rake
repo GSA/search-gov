@@ -20,6 +20,17 @@ namespace :usasearch do
       ElasticResqueMigration.migrate(args.index_name)
     end
 
+    desc 'Use Resque to migrate and index all indexes in parallel'
+    task :resque_migrate_all, [:index_name] => :environment do
+      Dir[Rails.root.join('app/models/elastic_*.rb').to_s].collect do |filename|
+        File.basename(filename, '.rb').camelize.constantize
+      end.select do |klass|
+        klass.kind_of?(Indexable) and klass != ElasticBlended
+      end.each do |klass|
+        ElasticResqueMigration.migrate(klass.to_s.sub('Elastic', ''))
+      end
+    end
+
     desc 'Recreate an index'
     task :recreate_index, [:index_name] => :environment do |t, args|
       "Elastic#{args.index_name}".constantize.recreate_index
