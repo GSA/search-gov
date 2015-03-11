@@ -125,7 +125,7 @@ UsasearchRails3::Application.routes.draw do
     end
   end
 
-  get '/help_docs' => 'help_docs#show', defaults: { format: :json }
+  get '/help_docs' => 'help_docs#show'
   get '/affiliates', to: redirect('/sites')
   get '/affiliates/:id', to: redirect('/sites/%{id}')
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
@@ -202,5 +202,5 @@ UsasearchRails3::Application.routes.draw do
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/program' => redirect(BLOG_URL, :status => 302)
 
-  get "*path" => redirect('http://www.usa.gov/page-not-found', status: 302)
+  get "*path" => redirect(PAGE_NOT_FOUND_URL, status: 302)
 end

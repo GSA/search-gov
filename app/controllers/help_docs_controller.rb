@@ -1,14 +1,28 @@
 class HelpDocsController < SslController
   respond_to :json
   before_filter :require_usasearch_url_param
+  before_filter :require_user
 
   def show
-    respond_with ({ body: HelpDoc.extract_article(params[:url]) })
+    respond_with ({ body: HelpDoc.extract_article(help_docs_params[:url]) })
   end
 
   private
 
   def require_usasearch_url_param
-    redirect_to page_not_found_path unless params[:url] =~ %r[^http://search\.digitalgov\.gov/.+]i
+    unless help_docs_params[:url] =~ %r[^http://search\.digitalgov\.gov/.+]i
+      redirect_to(PAGE_NOT_FOUND_URL)
+    end
+  end
+
+  def help_docs_params
+    @help_docs_params ||= params.permit(:url)
+  end
+
+  def require_user
+    unless current_user
+      render(json: { error: 'login required' },
+             status: :bad_request)
+    end
   end
 end

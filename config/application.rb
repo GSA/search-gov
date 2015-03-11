@@ -78,6 +78,7 @@ SUPPORTED_VERTICALS = %w{web image blended}
 BLOG_URL = 'http://search.digitalgov.gov'
 TOS_URL = 'http://search.digitalgov.gov/tos'
 USA_GOV_URL = 'http://www.usa.gov'
+PAGE_NOT_FOUND_URL = 'http://www.usa.gov/page-not-found/'.freeze
 SUPPORT_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
 DEFAULT_USER_AGENT = 'usasearch'.freeze
 
