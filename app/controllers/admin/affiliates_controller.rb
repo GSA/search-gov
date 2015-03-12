@@ -62,7 +62,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     update_columns = %i(status go_live_date)
-    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|theme|updated_at)\z/i }
+    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|theme|updated_at)\z/i }
     config.update.columns = %i(affiliate_note)
 
     enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|jobs_enabled|raw_log_access_enabled)/.freeze
