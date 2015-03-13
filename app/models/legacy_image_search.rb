@@ -26,4 +26,8 @@ class LegacyImageSearch < WebSearch
     search_engine == 'Bing' ? 'IMAG' : 'GIMAG'
   end
 
+  def social_image_feeds_checked?
+    @affiliate.has_social_image_feeds?
+  end
+
 end

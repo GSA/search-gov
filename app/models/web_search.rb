@@ -42,7 +42,7 @@ class WebSearch < Search
     @total = response.total rescue 0
     available_search_engine_pages = (@total/@per_page.to_f).ceil
 
-    if backfill_needed?
+    if backfill_needed? and social_image_feeds_checked?
       odie_search = initialize_odie_search(available_search_engine_pages)
       odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
       if odie_response && odie_response.total.zero? && (suggestion = odie_response.spelling_suggestion)
@@ -157,6 +157,10 @@ class WebSearch < Search
 
   def sitelinks_present?
     @results.any? { |result| result['sitelinks'].present? }
+  end
+
+  def social_image_feeds_checked?
+    true
   end
 
 end

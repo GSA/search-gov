@@ -340,10 +340,11 @@ describe WebSearch do
           ElasticIndexedDocument.recreate_index
         end
 
-        context "when there are Odie results" do
+        context "when the affiliate has social image feeds and there are Odie results" do
           before do
             @affiliate.indexed_documents.create!(:title => 'fewer I LOVE AMERICA', :description => 'fewer WE LOVE AMERICA', :url => 'http://nonsense.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
             ElasticIndexedDocument.commit
+            @affiliate.stub(:has_social_image_feeds?).and_return true
           end
 
           it "should indicate that there is another page of results" do
