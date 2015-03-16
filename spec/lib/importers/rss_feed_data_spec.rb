@@ -393,7 +393,7 @@ describe RssFeedData do
 
     context 'when rss_doc does not contain a language element' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
+        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml')
         @rss_doc = Nokogiri::XML(rss_feed_content)
       end
 
@@ -402,5 +402,4 @@ describe RssFeedData do
       end
     end
   end
-
 end

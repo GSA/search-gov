@@ -44,7 +44,7 @@ class Affiliate < ActiveRecord::Base
   has_many :url_prefixes, :through => :document_collections
   has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
   has_and_belongs_to_many :instagram_profiles, order: 'instagram_profiles.username ASC'
-  has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.username ASC'
+  has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.title ASC'
   belongs_to :agency
 
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name

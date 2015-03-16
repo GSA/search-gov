@@ -24,7 +24,7 @@ class NewsItem < ActiveRecord::Base
   TIME_BASED_SEARCH_OPTIONS["y"] = :year
 
   def is_video?
-    link =~ /^#{Regexp.escape('http://www.youtube.com/watch?v=')}.+/i
+    link =~ %r[\Ahttps?://www\.youtube\.com/watch\?v=]
   end
 
   def tags

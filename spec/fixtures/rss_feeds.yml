@@ -15,16 +15,16 @@ managed_video:
   name: Videos
   is_managed: true
   is_video: false
-youtube_feed:
+whitehouse_youtube_feed:
   owner: whitehouse (YoutubeProfile)
   name: whitehouse
   is_video: true
-  rss_feed_urls: youtube_video_url, playlist_video_url
+  rss_feed_urls: whitehouse_youtube_url
 nps_youtube_feed:
   owner: nps (YoutubeProfile)
   name: nps
   is_video: true
-  rss_feed_urls: youtube_video_url, playlist_video_url
+  rss_feed_urls: nps_youtube_url
 another:
   owner: another_affiliate (Affiliate)
   name: Another Agency Feed

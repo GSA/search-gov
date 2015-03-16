@@ -40,7 +40,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/1 | First <b> item </b> | pressuuid1 | week          | <i> item </i> First news item for the feed |
       | http://www.whitehouse.gov/news/3 | Third item          | uuid3      | week          | item More news items for the feed          |
       | http://www.whitehouse.gov/news/4 | Fourth item         | uuid4      | week          | item Last news item for the feed           |
-    And feed "en_agency" has the following news items:
+    And feed "en_agency_channel_id" has the following news items:
       | link                                       | title             | guid       |  multiplier    | published_ago | description                              | contributor | publisher | subject   |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 |        12      | months        | item First video news item for the feed  | firstlady   | westwing  | exercise  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 |        1       | day           | item Second video news item for the feed | president   | memoranda | elections |
@@ -55,7 +55,7 @@ Feature: Affiliate Search
       | http://www.gobiernousa.gov/news/4 | Obama Noticia cuatro | esuuid4 | day           |              | item Next news item for the feed  | foreign policy |
       | http://www.gobiernousa.gov/news/5 | Obama Noticia cinco  | esuuid5 | day           | 2012-10-1    | item Next news item for the feed  | education      |
       | http://www.gobiernousa.gov/news/6 | Obama Noticia seis   | esuuid6 | day           | 2012-10-17   | item Next news item for the feed  | olympics       |
-    And feed "es_agency" has the following news items:
+    And feed "es_agency_channel_id" has the following news items:
       | link                                       | title             | guid     | published_ago | description                        |
       | http://www.youtube.com/watch?v=EqExXXahb0s | Noticia video uno Obama | esvuuid1 | day           | video news item for the feed |
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Noticia video dos Obama | esvuuid2 | day           | video news item for the feed |
@@ -115,7 +115,7 @@ Feature: Affiliate Search
     And I press "Search" in the search box
     Then I should not see "News for 'loren' from bar site"
 
-    When there are 30 video news items for "en_agency"
+    When there are 30 video news items for "en_agency_channel_id"
     And I am on bar.gov's search page
     And I follow "Videos"
     Then I should see "32 results"
@@ -236,7 +236,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
-    And feed "en_agency" has the following news items:
+    And feed "en_agency_channel_id" has the following news items:
       | link                                       | title             | guid       | published_ago | description                              | contributor | publisher | subject   |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item  | videouuid5 | day           | item First video news item for the feed  | firstlady   | westwing  | exercise  |
       | http://www.youtube.com/watch?v=R2RWscJM97U | Second video item | videouuid6 | day           | item Second video news item for the feed | president   | memoranda | elections |
@@ -255,7 +255,7 @@ Feature: Affiliate Search
       | link                             | title       | guid    | published_ago | description                       |
       | http://www.whitehouse.gov/news/3 | Third item  | esuuid7 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | esuuid8 | week          | item Last news item for the feed  |
-    And feed "es_agency" has the following news items:
+    And feed "es_agency_channel_id" has the following news items:
       | link                                       | title                     | guid     | published_ago | description                           |
       | http://www.youtube.com/watch?v=EqExXXahb0s | First Spanish video item  | esvuuid1 | day           | Gobierno video news item for the feed |
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed |
@@ -804,7 +804,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
       | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
-    And feed "en_agency" has the following news items:
+    And feed "en_agency_channel_id" has the following news items:
       | link                                       | title            | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
     When I am on bar.gov's search page
@@ -835,7 +835,7 @@ Feature: Affiliate Search
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | Noticia uno | uuid1 | day           | item First news item for the feed |
       | http://www.whitehouse.gov/news/2 | Noticia dos | uuid2 | day           | item Next news item for the feed  |
-    And feed "es_agency" has the following news items:
+    And feed "es_agency_channel_id" has the following news items:
       | link                                       | title             | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | Noticia video uno | videouuid1 | day           | item First video news item for the feed |
     When I am on es.bar.gov's search page

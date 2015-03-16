@@ -19,7 +19,7 @@ module NavigationsHelper
       link_to('Collection', edit_site_collection_path(navigable.affiliate, navigable))
     when 'RssFeed'
       if navigable.is_managed?
-        link_to('YouTube', site_youtube_usernames_path(navigable.owner))
+        link_to('YouTube', site_youtube_channels_path(navigable.owner))
       else
         link_to('RSS', edit_site_rss_feed_path(navigable.owner, navigable))
       end

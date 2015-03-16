@@ -1,14 +1,14 @@
-= content_for_site_page_title @site, 'Add YouTube Username'
+= content_for_site_page_title @site, 'Add YouTube Channel'
 = form_for @profile, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
-    %h2 Add YouTube Username
+    %h2 Add YouTube Channel
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        %li= link_to 'View All', site_youtube_usernames_path(@site)
+        %li= link_to 'View All', site_youtube_channels_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
   = render_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
-  = f.label :username, 'YouTube Username', class: 'required'
-  = f.text_field :username, class: 'required input-primary'
+  = f.label :url, 'YouTube Channel URL', class: 'required'
+  = f.text_field :url, class: 'required input-primary'
 

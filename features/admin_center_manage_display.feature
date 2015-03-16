@@ -17,9 +17,9 @@ Feature: Manage Display
     And the following Twitter handles exist for the site "agency.gov":
       | screen_name |
       | usasearch   |
-    And the following YouTube usernames exist for the site "agency.gov":
-      | username     |
-      | usgovernment |
+    And the following YouTube channels exist for the site "agency.gov":
+      | channel_id              | title        |
+      | usgovernment_channel_id | USGovernment |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
 
@@ -130,9 +130,9 @@ Feature: Manage Display
     And the following Twitter handles exist for the site "agency.gov":
       | screen_name |
       | usasearch   |
-    And the following YouTube usernames exist for the site "agency.gov":
-      | username     |
-      | usgovernment |
+    And the following YouTube channels exist for the site "agency.gov":
+      | channel_id              | title        |
+      | usgovernment_channel_id | USGovernment |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
 

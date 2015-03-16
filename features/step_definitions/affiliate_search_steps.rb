@@ -52,7 +52,7 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
 end
 
 Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, is_image_or_video, feed_name|
-  rss_feed = RssFeed.find_by_name feed_name
+  rss_feed = RssFeed.find_by_name "#{feed_name}"
   rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
   published_at = 1.week.ago

@@ -34,7 +34,7 @@ describe NewsItem do
     end
 
     it 'should allow blank description for YouTube video' do
-      NewsItem.create!(@valid_attributes.merge(:link => 'HTTP://www.youtube.com/watch?v=q3GjT4zvUkk',
+      NewsItem.create!(@valid_attributes.merge(:link => 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
                                                :description => nil))
     end
 
@@ -85,7 +85,7 @@ describe NewsItem do
 
       context 'when owner is a YoutubeProfile' do
         before do
-          news_item.update_attribute(:rss_feed_url_id, rss_feed_urls(:youtube_video_url).id)
+          news_item.update_attribute(:rss_feed_url_id, rss_feed_urls(:whitehouse_youtube_url).id)
         end
 
         it 'should use locale of first affiliate associated with feed URL youtube profile' do
@@ -124,4 +124,12 @@ describe NewsItem do
     end
   end
 
+  describe '#duration=' do
+    it 'sets duration' do
+      news_item = NewsItem.create!(@valid_attributes)
+      news_item.duration = '1:00'
+      news_item.save!
+      expect(NewsItem.find(news_item.id).duration).to eq('1:00')
+    end
+  end
 end

@@ -17,7 +17,7 @@
     - if @site.youtube_profiles.exists?
       %tr
         %td Videos
-        %td.cell-1x= link_to 'YouTube', site_youtube_usernames_path(@site)
+        %td.cell-1x= link_to 'YouTube', site_youtube_channels_path(@site)
         = switch_cell f, :is_video_govbox_enabled
 
     - if @site.agency.present?

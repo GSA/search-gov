@@ -74,7 +74,8 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def is_video?
-    url =~ /^https?:\/\/gdata\.youtube\.com\/feeds\/.+$/i
+    url =~ %r[\A(https?://gdata\.youtube\.com/feeds/|https?://www\.youtube\.com/channel/)]i &&
+      YoutubeProfile.name == rss_feed_owner_type
   end
 
   def self.find_existing_or_initialize(url)
@@ -102,6 +103,8 @@ class RssFeedUrl < ActiveRecord::Base
   private
 
   def url_must_point_to_a_feed
+    return true if is_video?
+
     if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
         rss_doc = Nokogiri::XML(HttpConnection.get(url))

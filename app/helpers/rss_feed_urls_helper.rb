@@ -2,7 +2,7 @@ module RssFeedUrlsHelper
   def rss_feed_urls_for(rss_feed)
     if rss_feed.is_managed?
       rss_feed.owner.youtube_profiles.map(&:rss_feed).map(&:rss_feed_urls).flatten.select do |rss_feed_url|
-        rss_feed_url.url.start_with?('http://gdata.youtube.com/feeds/api/videos')
+        rss_feed_url.url.start_with?('https://www.youtube.com/')
       end.flatten
     else
       rss_feed.rss_feed_urls

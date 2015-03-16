@@ -118,7 +118,7 @@ UsasearchRails3::Application.routes.draw do
                 controller: 'twitter_profiles',
                 only: [:index, :new, :create, :destroy]
       resources :users, only: [:index, :new, :create, :destroy]
-      resources :youtube_usernames,
+      resources :youtube_channels,
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
       resources :memberships, only: [:update]

@@ -276,9 +276,9 @@ Feature: Searches using mobile device
     And affiliate "es.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
-    And there are 10 video news items for "usgovernment"
-    And there are 10 video news items for "whitehouse"
-    And there are 5 video news items for "gobiernousa"
+    And there are 10 video news items for "usgovernment_channel_id"
+    And there are 10 video news items for "whitehouse_channel_id"
+    And there are 5 video news items for "gobiernousa_channel_id"
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "video"

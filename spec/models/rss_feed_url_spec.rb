@@ -102,14 +102,14 @@ describe RssFeedUrl do
   end
 
   describe '#is_video?' do
-    context 'when url starts with gdata.youtube.com/feeds/' do
-      before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/youtube.xml')
-        HttpConnection.should_receive(:get).with('http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').and_return(rss_feed_content)
-      end
-
-      specify { RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate',
+    context 'when url starts with https://gdata.youtube.com/feeds/' do
+      specify { RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
                                    url: 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').should be_is_video }
+    end
+
+    context 'when url starts with https://www.youtube.com/channel/' do
+      specify { RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
+                                   url: 'https://www.youtube.com/channel/UCYxRlFDqcWM4y7FfpiAN3KQ').should be_is_video }
     end
   end
 
@@ -133,7 +133,7 @@ describe RssFeedUrl do
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
-      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
       Resque.should_not_receive :enqueue
       rss_feed_url.freshen
     end
@@ -232,7 +232,7 @@ describe RssFeedUrl do
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
-      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
       Resque.should_not_receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items_with_404
     end
@@ -246,7 +246,7 @@ describe RssFeedUrl do
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
-      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
       Resque.should_not_receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items
     end
@@ -260,7 +260,7 @@ describe RssFeedUrl do
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
-      rss_feed_url = rss_feed_urls(:youtube_video_url)
+      rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
       Resque.should_not_receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items
     end

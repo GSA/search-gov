@@ -561,33 +561,33 @@ Feature: Manage Content
     And I submit the form by pressing "Add"
     Then I should see "Screen name is not found"
 
-  Scenario: View YouTube Usernames
+  Scenario: View YouTube Channels
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And the following YouTube usernames exist for the site "agency.gov":
-      | username     |
-      | usgovernment |
-      | gobiernousa  |
+    And the following YouTube channels exist for the site "agency.gov":
+      | title        | channel_id              |
+      | USGovernment | usgovernment_channel_id |
+      | GobiernoUSA  | gobiernousa_channel_id  |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
     Then I should see the following table rows:
-      | gobiernousa  |
-      | usgovernment |
+      | GobiernoUSA  |
+      | USGovernment |
 
-  Scenario: Add/remove YouTube Username
+  Scenario: Add/remove YouTube Channel
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
-    And I follow "Add YouTube Username"
-    When I fill in "YouTube Username" with " USGovernment "
+    And I follow "Add YouTube Channel"
+    When I fill in "YouTube Channel URL" with " youtube.com/USGovernment "
     And I submit the form by pressing "Add"
-    Then I should see "You have added usgovernment to this site"
-    And I should see a link to "usgovernment" with url for "http://www.youtube.com/user/usgovernment"
+    Then I should see "You have added usgovernment channel to this site"
+    And I should see a link to "usgovernment" with url for "https://www.youtube.com/channel/UCWjkPmmzCdPZEKtGciLf1mg"
 
     When I follow "Display"
     Then the "Is video govbox enabled" should be switched on
@@ -595,16 +595,16 @@ Feature: Manage Content
     When I follow "Content"
     And I follow "RSS" within the Admin Center content
     And I follow "Videos"
-    Then I should see "gdata.youtube.com/feeds/api/videos?alt=rss&author=usgovernment&orderby=published"
+    Then I should see "www.youtube.com/channel/UCWjkPmmzCdPZEKtGciLf1mg"
 
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
     And I press "Remove"
-    Then I should see "You have removed usgovernment from this site"
-    When I follow "Add YouTube Username"
-    When I fill in "YouTube Username" with "usasearch"
+    Then I should see "You have removed usgovernment channel from this site"
+    When I follow "Add YouTube Channel"
+    When I fill in "YouTube Channel URL" with "http://www.youtube.com/usasearch"
     And I submit the form by pressing "Add"
-    Then I should see "Username is not found"
+    Then I should see "Url is not found"
 
     When I follow "Display"
     Then I should not see "Videos"

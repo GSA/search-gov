@@ -764,13 +764,28 @@ CREATE TABLE `whitelisted_v1_api_handles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `youtube_profiles` (
+CREATE TABLE `youtube_playlists` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `youtube_profile_id` int(11) DEFAULT NULL,
+  `playlist_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `etag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `news_item_ids` longtext COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_youtube_profiles_on_username` (`username`)
+  UNIQUE KEY `index_youtube_playlists_on_youtube_profile_id_and_playlist_id` (`youtube_profile_id`,`playlist_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `youtube_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `channel_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `imported_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_youtube_profiles_on_channel_id` (`channel_id`),
+  KEY `index_youtube_profiles_on_id_and_imported_at` (`id`,`imported_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
@@ -2054,3 +2069,9 @@ INSERT INTO schema_migrations (version) VALUES ('20150409162207');
 INSERT INTO schema_migrations (version) VALUES ('20150410205627');
 
 INSERT INTO schema_migrations (version) VALUES ('20150410213415');
+
+INSERT INTO schema_migrations (version) VALUES ('20150414023218');
+
+INSERT INTO schema_migrations (version) VALUES ('20150414023501');
+
+INSERT INTO schema_migrations (version) VALUES ('20150420131548');

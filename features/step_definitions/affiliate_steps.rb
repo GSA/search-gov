@@ -24,7 +24,8 @@ Given /^the following( legacy)? Affiliates exist:$/ do |is_legacy, table|
     end
 
     hash[:youtube_handles].split(',').each do |youtube_handle|
-      profile = YoutubeProfile.where(username: youtube_handle).first_or_initialize
+      profile = YoutubeProfile.where(channel_id: "#{youtube_handle}_channel_id",
+                                     title: youtube_handle).first_or_initialize
       profile.save!(validate: false)
       affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists? profile
       affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')

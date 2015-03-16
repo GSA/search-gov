@@ -4,10 +4,5 @@ namespace :usasearch do
     task :refresh_affiliate_feeds => :environment do
       RssFeedUrl.refresh_affiliate_feeds
     end
-
-    desc 'Freshen managed feeds'
-    task :refresh_youtube_feeds => :environment do
-      ContinuousWorker.start { YoutubeData.refresh_feeds }
-    end
  end
 end

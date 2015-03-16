@@ -39,16 +39,6 @@ describe RssFeed do
       rss_feed.navigation.should_not be_is_active
     end
 
-    it 'should not create navigation for other owner types' do
-      username = 'thewhitehouse'.freeze
-      uploaded_video_xml = File.read("#{Rails.root}/spec/fixtures/rss/youtube.xml")
-      HttpConnection.should_receive(:get).with(YoutubeProfile.youtube_url(username)).
-          and_return uploaded_video_xml
-
-      owner = YoutubeProfile.create!(username: username)
-      owner.rss_feed.navigation.should be_nil
-    end
-
     context 'when is_managed is false' do
       it 'should require rss_feed_urls' do
         RssFeed.new(@valid_attributes.except(:rss_feed_urls)).save.should be_false
@@ -126,26 +116,18 @@ describe RssFeed do
     context "when each RssFeedUrl is video" do
       let(:rss_feed) do
         affiliate.rss_feeds.create!(name: 'Videos',
-                                    rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:playlist_video_url)])
+                                    rss_feed_urls: [rss_feed_urls(:whitehouse_youtube_url)])
       end
 
       specify { rss_feed.should be_is_video }
-    end
-
-    context "when at least one RssFeedUrl is not video" do
-      let(:rss_feed) do
-        affiliate.rss_feeds.create!(name: 'Not only videos',
-                                    rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:white_house_press_gallery_url)])
-      end
-
-      specify { rss_feed.should_not be_is_video }
     end
   end
 
   describe "#has_errors?" do
     let(:rss_feed) do
       affiliates(:power_affiliate).rss_feeds.create!(name: 'Got a problem',
-                                                     rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:white_house_press_gallery_url)])
+                                                     rss_feed_urls: [rss_feed_urls(:white_house_blog_url),
+                                                                     rss_feed_urls(:white_house_press_gallery_url)])
     end
 
     context 'when one or more RssFeedUrls is in an error state' do
@@ -168,7 +150,7 @@ describe RssFeed do
   describe "#has_pending?" do
     let(:rss_feed) do
       affiliates(:power_affiliate).rss_feeds.create!(name: 'Everything is pending',
-                                                     rss_feed_urls: [rss_feed_urls(:youtube_video_url), rss_feed_urls(:white_house_press_gallery_url)])
+                                                     rss_feed_urls: [rss_feed_urls(:white_house_press_gallery_url)])
     end
 
     context 'when one or more RssFeedUrls is in a pending state' do

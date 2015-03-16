@@ -1,117 +1,141 @@
-class YoutubeData < RssFeedData
-  RSS_FEED_OWNER_TYPE = 'YoutubeProfile'.freeze
-  YT_NAMESPACE_URL = 'http://gdata.youtube.com/schemas/2007'.freeze
+class YoutubeData
+  attr_reader :all_news_item_ids,
+              :profile,
+              :rss_feed_url
+
+  def self.refresh
+    loop do
+      profile = YoutubeProfile.active.stale.first
+      if profile
+        YoutubeData.new(profile).import
+      else
+        sleep 5.minutes
+      end
+    end
+  end
 
   def initialize(youtube_profile)
-    @youtube_profile = youtube_profile
-    @rss_feed = @youtube_profile.rss_feed
-    @rss_feed_url_ids = []
+    @profile = youtube_profile
+    @rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
+      where(url: profile.url).
+      first_or_create!
+    @profile.rss_feed.rss_feed_urls = [rss_feed_url]
     @all_news_item_ids = []
   end
 
-  def self.refresh_feeds
-    YoutubeProfile.active.map(&:id).each do |profile_id|
-      begin
-        profile = YoutubeProfile.find_by_id profile_id
-        next unless profile
-        profile.rss_feed.touch
-        YoutubeData.new(profile).import
-      rescue => e
-        Rails.logger.error "YoutubeData.refresh_feeds: Failed to import #{profile.username}. Message: #{e}"
-      end
-    end
-  end
-
-  def self.import_profile(username)
-    return unless username.present?
-
-    sanitized_username = username.strip.downcase
-    YoutubeProfile.where(username: sanitized_username).first_or_create! if username_valid? sanitized_username
-  end
-
-
   def import
-    import_uploaded_videos(@youtube_profile.username)
-    import_playlist_videos(@youtube_profile.username)
-    @rss_feed.rss_feed_url_ids = @rss_feed_url_ids
-  end
+    profile.touch :imported_at
 
-  private
+    import_playlists
+    import_playlists_items
+    populate_durations
 
-  def self.username_valid?(username)
-    url = YoutubeProfile.xml_profile_url(username)
-    doc = Nokogiri::XML(DocumentFetcher.fetch(url)[:body])
-    doc and has_yt_namespace?(doc) and doc.xpath('//yt:username').present?
-  end
-
-  def self.has_yt_namespace?(doc)
-    doc.namespaces.values.include? YT_NAMESPACE_URL
-  end
-
-  def import_uploaded_videos(username)
-    rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
-        where(url: YoutubeProfile.youtube_url(username)).first_or_initialize
-    rss_feed_url.save(validate: false)
-    return unless rss_feed_url
-    @rss_feed_url_ids << rss_feed_url.id
-
-    parser = YoutubeUploadedVideosParser.new(username)
-    process_parsed_rss_items(rss_feed_url, parser)
-  end
-
-  def import_playlist_videos(username)
-    get_playlist_ids(username).each do |playlist_id|
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.
-          where(url: YoutubeProfile.playlist_url(playlist_id)).first_or_initialize
-      rss_feed_url.save(validate: false)
-      rss_feed_url.rss_feeds << @rss_feed unless rss_feed_url.rss_feeds.exists?(@rss_feed)
-      @rss_feed_url_ids << rss_feed_url.id
-
-      parser = YoutubePlaylistVideosParser.new(playlist_id)
-      process_parsed_rss_items(rss_feed_url, parser)
-    end
-  end
-
-  def process_parsed_rss_items(rss_feed_url, parser)
-    news_item_ids = []
-    parser.each_item do |item|
-      news_item = create_or_update(rss_feed_url, item)
-      if news_item
-        news_item_ids << news_item.id
-        @all_news_item_ids << news_item.id
-      end
-    end
-    NewsItem.transaction do
-      news_item_ids_for_removal = rss_feed_url.news_item_ids - news_item_ids
-      NewsItem.fast_delete news_item_ids_for_removal
-      rss_feed_url.news_item_ids = news_item_ids
-      rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                      last_crawled_at: Time.now.utc)
-    end
+    rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
+                                    last_crawled_at: Time.now.utc)
   rescue => e
-    Rails.logger.error "YoutubeData#process_parsed_rss_items: #{e.message} \n #{e.backtrace.join(%Q{\n})}"
+    Rails.logger.warn e.message
     rss_feed_url.update_attributes!(last_crawl_status: e.message,
                                     last_crawled_at: Time.now.utc)
   end
 
-  def get_playlist_ids(username)
-    parser = YoutubePlaylistsParser.new(username)
-    parser.playlist_ids.sort
+  def import_playlists
+    playlist_ids = YoutubeAdapter.get_playlist_ids profile.channel_id
+
+    playlists = playlist_ids.map do |playlist_id|
+      profile.youtube_playlists.
+        where(playlist_id: playlist_id).
+        first_or_create!
+    end
+
+    profile.youtube_playlists = playlists
   end
 
-  def create_or_update(rss_feed_url, item)
-    news_item = NewsItem.where(rss_feed_url_id: [@rss_feed_url_ids],
-                               link: item[:link]).first
+  def import_playlists_items
+    @all_news_item_ids = []
+    profile.youtube_playlists.each do |playlist|
+      @all_news_item_ids |= import_playlist_items playlist
+    end
 
-    return if news_item && @all_news_item_ids.include?(news_item.id)
+    news_item_ids_for_removal = rss_feed_url.news_item_ids - all_news_item_ids
+    NewsItem.fast_delete news_item_ids_for_removal
+  end
 
-    news_item ||= rss_feed_url.news_items.build(link: item[:link])
-    news_item.rss_feed_url == rss_feed_url
-    news_item.assign_attributes item
-    news_item.save!
-    news_item
-    rescue => e
-      Rails.logger.warn "YoutubeData#create_or_update: #{item.inspect}, error: #{e}"
+  def import_playlist_items(playlist)
+    playlist_news_item_ids = []
+    first_result = YoutubeAdapter.each_playlist_item(playlist) do |playlist_item|
+      news_item = process_playlist_item(playlist_news_item_ids, playlist_item)
+      playlist_news_item_ids << news_item.id if news_item
+    end
+
+    if 304 != first_result.status
+      playlist_news_item_ids.uniq!
+      playlist.news_item_ids = playlist_news_item_ids.sort
+      playlist.etag = first_result.data.etag
+      playlist.save!
+    end
+
+    playlist.news_item_ids
+  end
+
+  def populate_durations
+    video_ids = rss_feed_url.news_items.collect do |news_item|
+      news_item.guid if news_item.duration.blank?
+    end.compact
+
+    loop do
+      batch = video_ids.shift(50)
+      break if batch.blank?
+
+      YoutubeAdapter.each_video(batch) { |item| assign_video_duration item }
+    end
+  end
+
+  private
+
+  def process_playlist_item(playlist_news_item_ids, playlist_item)
+    video_id = playlist_item.snippet.resource_id.video_id
+    link = youtube_video_url video_id
+    news_item = rss_feed_url.news_items.where(link: link).
+      first_or_initialize(guid: video_id)
+
+    return news_item if !news_item.new_record? &&
+      (all_news_item_ids.include?(news_item.id) ||
+        playlist_news_item_ids.include?(news_item.id))
+
+    create_or_update news_item, playlist_item
+  end
+
+  def create_or_update(news_item, playlist_item)
+    attributes = {
+      description: playlist_item.snippet.description,
+      published_at: playlist_item.snippet.published_at,
+      title: playlist_item.snippet.title
+    }
+    news_item.assign_attributes attributes
+
+    if news_item.save
+      news_item
+    else
+      Rails.logger.warn "YoutubeData#create_or_update: #{playlist_item.inspect}"
       nil
+    end
+  end
+
+  def assign_video_duration(item)
+    video_id = item.id
+    duration_str = item.content_details.duration rescue nil
+    return if video_id.blank? || duration_str.blank?
+
+    duration_in_seconds = ISO8601::Duration.new(duration_str).to_i
+    duration = Duration.seconds_to_hoursminssecs duration_in_seconds
+
+    link = youtube_video_url video_id
+    news_item = rss_feed_url.news_items.find_by_link link
+    news_item.duration = duration
+    news_item.save!
+  end
+
+  def youtube_video_url(video_id)
+    "https://www.youtube.com/watch?v=#{video_id}"
   end
 end
