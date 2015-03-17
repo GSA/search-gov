@@ -40,7 +40,7 @@ A few tips when working with asset pipeline:
 
 ## Elasticsearch
 
-We're using [Elasticsearch](http://www.elasticsearch.org/) for fulltext search and query analytics.
+We're using [Elastic](http://www.elasticsearch.org/) for fulltext search and query analytics.
 
 On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
@@ -52,21 +52,22 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards/replicas, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.4.0/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.4.4/config/elasticsearch.yml
     
     index.number_of_shards: 1
     index.number_of_replicas: 0
     
 For the time being, add this to the end of the file to re-enable MVEL scripting for sandboxed languages like Groovy:
     
-    script.disable_dynamic: sandbox
+    script.disable_dynamic: false
 
-You will need to re-install any plugins:
+You may need to re-install any plugins you were using locally:
 
     $ plugin -i elasticsearch/marvel/latest
     $ plugin -i polyfractal/elasticsearch-inquisitor
     $ plugin -i mobz/elasticsearch-head
-    
+    $ plugin -i elasticsearch/elasticsearch-cloud-aws/2.4.1
+
 If you install Marvel, you probably don't want to monitor your local cluster, so add this to your `elastisearch.yml` file:
     
     marvel.agent.enabled: false
