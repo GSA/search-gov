@@ -243,7 +243,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def recent_user_activity
-    users.collect(&:last_request_at).max
+    users.collect(&:last_request_at).compact.max
   end
 
   def update_attributes_for_live(attributes)

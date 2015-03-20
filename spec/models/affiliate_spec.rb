@@ -757,12 +757,15 @@ describe Affiliate do
   describe "#recent_user_activity" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:another_affiliate_manager) { users(:another_affiliate_manager) }
+    let(:affiliate_manager_with_one_site) { users(:affiliate_manager_with_one_site) }
     let(:recent_time) { Time.now }
 
     before do
-      affiliate.users << another_affiliate_manager
       affiliate.users.first.update_attribute(:last_request_at, recent_time)
+      affiliate.users << another_affiliate_manager
       affiliate.users.last.update_attribute(:last_request_at, recent_time - 1.hour)
+      affiliate.users << affiliate_manager_with_one_site
+      affiliate.users.last.update_attribute(:last_request_at, nil)
     end
 
     it 'should show the max last_request_at date for the site users' do
@@ -852,7 +855,7 @@ describe Affiliate do
     context "when input domains have leading http(s) protocols" do
       it "should delete leading http(s) protocols from domains" do
         site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
-        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+        affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
         site_domains.size.should == 2
@@ -863,7 +866,7 @@ describe Affiliate do
     context "when input domains have blank/whitespace" do
       it "should delete blank/whitespace from domains" do
         site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
-        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+        affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
         site_domains.size.should == 3
@@ -888,7 +891,7 @@ describe Affiliate do
     context "when input domains don't look like domains" do
       it "should filter them out" do
         site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.info', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
-        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+        affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
         site_domains.count.should == 3
