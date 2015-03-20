@@ -18,19 +18,20 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
   def document_mapping(doc)
     record = []
     date_time = DateTime.parse(doc['@timestamp'])
+
     record << date_time.strftime("%Y-%m-%d")
     record << date_time.strftime("%H:%M:%S")
-    record << doc['clientip']
-    record << (doc['geoip']['country_code2'] rescue '')
-    record << (doc['geoip']['region_name'] rescue '')
-    record << doc['user_agent']
-    record << (doc['useragent']['device'] rescue '')
-    record << (doc['useragent']['name'] rescue '')
-    record << (doc['useragent']['os'] rescue '')
     record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
     record << (doc['modules'].join(' ') rescue '')
+    record << (doc['useragent']['device'] rescue '')
+    record << (doc['useragent']['name'] rescue '')
+    record << (doc['useragent']['os'] rescue '')
+    record << (doc['geoip']['country_code2'] rescue '')
+    record << (doc['geoip']['region_name'] rescue '')
+    record << doc['clientip']
+    record << doc['user_agent']
     record
   end
 
