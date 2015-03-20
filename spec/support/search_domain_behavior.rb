@@ -8,10 +8,10 @@ shared_examples "a search domain object" do
     it { should validate_presence_of :domain }
     it { should validate_presence_of :affiliate }
 
-    %w(foo..gov weird.tldee some.gov/page.html usda.gov/nal/index.php?info=4&t=1&ts=358 dod.mil/p/mhf?sd=20.0.0 some.mil/?sd=20 bts.gov/x/.).each do |bad|
+    %w(foo..gov weird.tldeer some.gov/page.html usda.gov/nal/index.php?info=4&t=1&ts=358 dod.mil/p/mhf?sd=20.0.0 some.mil/?sd=20 bts.gov/x/.).each do |bad|
       it { should_not allow_value(bad).for(:domain) }
     end
-    %w(foo.gov .mil www.bar.gov www.bar.gov/subdir blat.gov/subdir).each do |good|
+    %w(foo.gov .mil .info .miami www.bar.gov www.bar.gov/subdir blat.gov/subdir).each do |good|
       it { should allow_value(good).for(:domain) }
     end
     specify { affiliate.site_domains.create!(:domain => 'usa.gov').site_name.should == 'usa.gov' }
