@@ -242,6 +242,10 @@ class Affiliate < ActiveRecord::Base
     self.update_attributes(attributes)
   end
 
+  def recent_user_activity
+    users.collect(&:last_request_at).max
+  end
+
   def update_attributes_for_live(attributes)
     set_is_validate_staged_header_footer attributes
     transaction do

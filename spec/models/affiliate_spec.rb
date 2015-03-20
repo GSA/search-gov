@@ -754,6 +754,22 @@ describe Affiliate do
     end
   end
 
+  describe "#recent_user_activity" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate_manager) { users(:another_affiliate_manager) }
+    let(:recent_time) { Time.now }
+
+    before do
+      affiliate.users << another_affiliate_manager
+      affiliate.users.first.update_attribute(:last_request_at, recent_time)
+      affiliate.users.last.update_attribute(:last_request_at, recent_time - 1.hour)
+    end
+
+    it 'should show the max last_request_at date for the site users' do
+      affiliate.recent_user_activity.utc.to_s.should == recent_time.utc.to_s
+    end
+  end
+
   describe "#has_no_social_image_feeds?" do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
