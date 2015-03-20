@@ -871,12 +871,12 @@ describe Affiliate do
 
     context "when input domains don't look like domains" do
       it "should filter them out" do
-        site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.html', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
+        site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.info', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains(true)
-        site_domains.count.should == 2
-        site_domains.collect(&:domain).sort.should == %w{bar.gov/somedir foo.gov}
+        site_domains.count.should == 3
+        site_domains.collect(&:domain).sort.should == %w{bar.gov/somedir foo.gov somepage.info}
       end
     end
 
