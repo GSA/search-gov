@@ -44,34 +44,50 @@ describe NutshellAdapter do
     context 'when NutshellClient is enabled' do
       before { NutshellClient.stub(:enabled?).and_return(true) }
 
+      let(:contact) do
+        get_contact_body_hash = {
+          'result' => { 'id' => 600,
+                       'email' => { '0' => 'mjane@email.gov',
+                                    '1' => 'mary.jane@email.gov',
+                                    '--primary' => 'mjane@email.gov' },
+                       'rev' => '10' }
+        }
+        Hashie::Rash.new(get_contact_body_hash).result
+      end
+
       let(:user) do
         mock_model(User,
                    approval_status: 'approved',
                    contact_name: 'Mary Jane',
-                   id: 1000,
+                   id: 8,
                    email: 'mary.jane@email.gov')
       end
 
       let(:expected_nutshell_params) do
-        {
-          contact: {
+        { contact: {
             email: %w(mary.jane@email.gov),
             name: 'Mary Jane',
             customFields: {
               :'Approval status' => 'approved',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=1000'
+              :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=8'
             }
           }
         }
       end
 
-      context 'when new_contact is successful' do
+      context 'when contact with matching email does not exists' do
         let(:body_rash) do
           body_hash = {
-            result: { id: 8000 }
+            'result' => { 'id' => 600 }
           }
 
           Hashie::Rash.new(body_hash)
+        end
+
+        before do
+          adapter.should_receive(:get_contact_by_email).
+            with('mary.jane@email.gov').
+            and_return(nil)
         end
 
         it 'updates #nutshell_id' do
@@ -81,7 +97,26 @@ describe NutshellAdapter do
 
           user_arel = mock('User arel')
           User.should_receive(:where).with(id: user.id).and_return(user_arel)
-          user_arel.should_receive(:update_all).with(nutshell_id: 8000, updated_at: kind_of(Time))
+          user_arel.should_receive(:update_all).
+            with(nutshell_id: 600, updated_at: kind_of(Time))
+
+          adapter.new_contact user
+        end
+      end
+
+      context 'when contact with matching email exists' do
+        before do
+          user_arel = mock('User arel')
+          User.should_receive(:where).with(id: user.id).and_return(user_arel)
+          user_arel.should_receive(:update_all).
+            with(nutshell_id: 600, updated_at: kind_of(Time))
+        end
+
+        it 'calls NutshellAdapter#edit_contact' do
+          adapter.should_receive(:get_contact_by_email).
+            with('mary.jane@email.gov').
+            and_return(contact)
+          adapter.should_receive(:edit_contact).with(user, contact)
 
           adapter.new_contact user
         end
@@ -90,15 +125,21 @@ describe NutshellAdapter do
       context 'when new_contact returns with error' do
         let(:body_rash) do
           body_hash = {
-            error: {
-              code: -32600,
-              message: 'Missing required parameter',
-              data: nil
+            'error' => {
+              'code' => -32600,
+              'message' => 'Missing required parameter',
+              'data' => nil
             },
-            result: nil,
+            'result' => nil
           }
 
           Hashie::Rash.new(body_hash)
+        end
+
+        before do
+          adapter.should_receive(:get_contact_by_email).
+            with('mary.jane@email.gov').
+            and_return(nil)
         end
 
         it 'skips User#update_attributes' do
@@ -118,36 +159,249 @@ describe NutshellAdapter do
     context 'when NutshellClient is enabled' do
       before { NutshellClient.stub(:enabled?).and_return(true) }
 
+      let(:contact) do
+        get_contact_body_hash = {
+          'result' => { 'id' => 600,
+                       'email' => { '0' => 'mjane@email.gov',
+                                    '1' => 'mary.jane@email.gov',
+                                    '--primary' => 'mjane@email.gov' },
+                       'rev' => '1' }
+        }
+        Hashie::Rash.new(get_contact_body_hash).result
+      end
+
       let(:user) do
         mock_model(User,
                    approval_status: 'pending_email_verification',
                    contact_name: 'Mary Jane',
                    email: 'mary.jane@email.gov',
-                   id: 1000,
-                   nutshell_id: 1000)
+                   id: 8,
+                   nutshell_id: 600)
       end
 
-      it 'sends edit_contact request' do
-        expected_nutshell_params = {
-          contactId: 1000,
-          rev: 'REV_IGNORE',
-          contact: {
-            customFields: {
-              :'Approval status' => 'pending_email_verification',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=1000'
-            },
-            email: %w(mary.jane@email.gov),
-            name: 'Mary Jane'
-          },
-        }
+      context 'when contact parameter is nil' do
+        before do
+          user.should_receive(:nutshell_id).and_return(600)
+          adapter.should_receive(:get_contact).with(600).and_return(contact)
+        end
 
-        body_rash = Hashie::Rash.new(result: { id: 8000 })
+        it 'sends edit_contact request' do
+          expected_nutshell_params = {
+            contactId: 600,
+            rev: '1',
+            contact: {
+              customFields: {
+                :'Approval status' => 'pending_email_verification',
+                :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=8'
+              },
+              email: { '0' => 'mary.jane@email.gov', '1' => 'mjane@email.gov' },
+              name: 'Mary Jane'
+            }
+          }
 
-        client.should_receive(:post).
-          with(:edit_contact, expected_nutshell_params).
-          and_return([true, body_rash])
+          body_rash = Hashie::Rash.new(result: { 'id' => 600 })
 
-        adapter.edit_contact user
+          client.should_receive(:post).
+            with(:edit_contact, expected_nutshell_params).
+            and_return([true, body_rash])
+
+          adapter.edit_contact user
+        end
+      end
+
+      context 'when contact parameter is present' do
+        before { adapter.should_not_receive(:get_contact) }
+
+        it 'sends editContact request' do
+          expected_nutshell_params = {
+            contactId: 600,
+            rev: '1',
+            contact: {
+              customFields: {
+                :'Approval status' => 'pending_email_verification',
+                :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=8'
+              },
+              email: { '0' => 'mary.jane@email.gov', '1' => 'mjane@email.gov' },
+              name: 'Mary Jane'
+            }
+          }
+
+          body_rash = Hashie::Rash.new(result: { 'id' => 600 })
+
+          client.should_receive(:post).
+            with(:edit_contact, expected_nutshell_params).
+            and_return([true, body_rash])
+
+          adapter.edit_contact user, contact
+        end
+      end
+    end
+  end
+
+  describe '#get_contact' do
+    context 'when NutshellClient is enabled' do
+      before { NutshellClient.stub(:enabled?).and_return(true) }
+
+      context 'when result is present' do
+        let(:response_body_rash) do
+          get_contact_body_hash = {
+            'result' => { 'id' => 600,
+                         'email' => { '0' => 'mjane@email.gov',
+                                      '--primary' => 'mjane@email.gov' },
+                         'rev' => '1' }
+          }
+          Hashie::Rash.new(get_contact_body_hash)
+        end
+
+        it 'returns the contact' do
+          client.should_receive(:post).
+            with(:get_contact, contactId: 600).
+            and_return([true, response_body_rash])
+
+          expect(adapter.get_contact(600)).to eq(response_body_rash.result)
+        end
+      end
+
+      context 'when result is not present' do
+        let(:response_rash) do
+          get_contact_body_hash = {
+            'error' => nil,
+            'id' => 'dae8a43ec',
+            'jsonrpc' => '2.0',
+            'result' => nil
+          }
+
+          Hashie::Rash.new(get_contact_body_hash)
+        end
+
+        it 'returns nil' do
+          client.should_receive(:post).
+            with(:get_contact, contactId: 600).
+            and_return([true, response_rash])
+
+          expect(adapter.get_contact(600)).to eq(nil)
+        end
+      end
+    end
+  end
+
+  describe '#get_contact_by_email' do
+    context 'when NutshellClient is enabled' do
+      before { NutshellClient.stub(:enabled?).and_return(true) }
+
+      context 'when result is present and the email matches' do
+        let(:search_contacts_response_rash) do
+          response_hash = {
+            'result' => [
+              {
+                'stub' => true,
+                'id' => 600,
+                'entityType' => 'Contacts',
+                'name' => 'Mary Jane',
+              }
+            ],
+            'id' => 'apeye',
+            'error' => nil,
+            'jsonrpc' => '2.0'
+          }
+
+          Hashie::Rash.new response_hash
+        end
+
+        let(:get_contact_body_rash) do
+          get_contact_body_hash = {
+            'result' => { 'id' => 600,
+                         'email' => { '0' => 'mjane@email.gov',
+                                      '1' => 'mary.jane@email.gov',
+                                      '--primary' => 'mjane@email.gov' },
+                         'rev' => '1' }
+          }
+          Hashie::Rash.new get_contact_body_hash
+        end
+
+        before do
+          client.should_receive(:post).
+            with(:search_contacts, ['mary.jane@email.gov', 1]).
+            and_return([true, search_contacts_response_rash])
+
+          adapter.should_receive(:get_contact).
+            with(600).
+            and_return(get_contact_body_rash.result)
+        end
+
+        it 'returns matching contact' do
+          expect(adapter.get_contact_by_email('mary.jane@email.gov')).
+            to eq(get_contact_body_rash.result)
+        end
+      end
+
+      context 'when result is not present' do
+        let(:search_contacts_response_rash) do
+          response_hash = {
+            'result' => [],
+            'id' => 'apeye',
+            'error' => nil,
+            'jsonrpc' => '2.0'
+          }
+
+          Hashie::Rash.new response_hash
+        end
+
+        before do
+          client.should_receive(:post).
+            with(:search_contacts, ['mary.jane@email.gov', 1]).
+            and_return([true, search_contacts_response_rash])
+
+          adapter.should_not_receive(:get_contact)
+        end
+
+        it 'returns matching contact' do
+          expect(adapter.get_contact_by_email('mary.jane@email.gov')).to be_nil
+        end
+      end
+
+      context 'when result is present and the email matches' do
+        let(:search_contacts_response_rash) do
+          response_hash = {
+            'result' => [
+              {
+                'stub' => true,
+                'id' => 600,
+                'entityType' => 'Contacts',
+                'name' => 'Not Mary Jane',
+              }
+            ],
+            'id' => 'apeye',
+            'error' => nil,
+            'jsonrpc' => '2.0'
+          }
+
+          Hashie::Rash.new response_hash
+        end
+
+        let(:get_contact_body_rash) do
+          get_contact_body_hash = {
+            'result' => { 'id' => 600,
+                          'email' => { '0' => 'mjane@email.gov',
+                                       '--primary' => 'mjane@email.gov' },
+                          'rev' => '1' }
+          }
+          Hashie::Rash.new get_contact_body_hash
+        end
+
+        before do
+          client.should_receive(:post).
+            with(:search_contacts, ['mary.jane@email.gov', 1]).
+            and_return([true, search_contacts_response_rash])
+
+          adapter.should_receive(:get_contact).
+            with(600).
+            and_return(get_contact_body_rash.result)
+        end
+
+        it 'returns matching contact' do
+          expect(adapter.get_contact_by_email('mary.jane@email.gov')).to be_nil
+        end
       end
     end
   end
@@ -179,7 +433,7 @@ describe NutshellAdapter do
       let(:expected_nutshell_params) {
         {
           lead: {
-            contacts: [ { id: 888 }],
+            contacts: [ { id: 600 }],
             createdTime: '2015-02-01T05:00:00+00:00',
             customFields: {
               :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
@@ -199,7 +453,7 @@ describe NutshellAdapter do
         mock_model(User,
                    contact_name: 'Mary Jane',
                    email: 'mary.jane@email.gov',
-                   nutshell_id: 888)
+                   nutshell_id: 600)
       end
 
       let(:site) do
@@ -210,14 +464,14 @@ describe NutshellAdapter do
                    last_month_query_count: 0,
                    name: 'usasearch',
                    status: mock_model(Status, name: 'inactive'),
-                   users: mock('Users', pluck: [888]),
+                   users: mock('Users', pluck: [600]),
                    website: 'http://search.digitalgov.gov')
       end
 
       context 'when NutshellClient#new_lead is successful' do
         let(:body_rash) do
           body_hash = {
-            result: { id: 999 }
+            result: { id: 777 }
           }
 
           Hashie::Rash.new(body_hash)
@@ -228,7 +482,7 @@ describe NutshellAdapter do
             with(:new_lead, expected_nutshell_params).
             and_return([true, body_rash])
 
-          site.should_receive(:update_attributes).with(nutshell_id: 999)
+          site.should_receive(:update_attributes).with(nutshell_id: 777)
 
           adapter.new_lead site
         end
@@ -237,12 +491,12 @@ describe NutshellAdapter do
       context 'when NutshellClient#new_lead returns with error' do
         let(:body_rash) do
           body_hash = {
-            error: {
-              code: -32600,
-              message: 'Missing required parameter',
-              data: nil
+            'error' => {
+              'code' => -32600,
+              'message' => 'Missing required parameter',
+              'data' => nil
             },
-            result: nil,
+            'result' => nil,
           }
 
           Hashie::Rash.new(body_hash)
@@ -275,8 +529,8 @@ describe NutshellAdapter do
                    id: 3000,
                    last_month_query_count: 0,
                    name: 'usasearch',
-                   nutshell_id: 8000,
-                   users: mock('Users', pluck: [888]),
+                   nutshell_id: 777,
+                   users: mock('Users', pluck: [600]),
                    website: 'http://search.digitalgov.gov')
       end
 
@@ -284,10 +538,10 @@ describe NutshellAdapter do
         site.should_receive(:status).and_return(statuses(:'inactive'))
 
         expected_nutshell_params = {
-          leadId: 8000,
+          leadId: 777,
           rev: 'REV_IGNORE',
           lead: {
-            contacts: [ { id: 888 }],
+            contacts: [ { id: 600 }],
             customFields: {
               :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
               :'Homepage URL' => 'http://search.digitalgov.gov',
@@ -300,7 +554,7 @@ describe NutshellAdapter do
           }
         }
 
-        body_rash = Hashie::Rash.new(result: { id: 8000, custom_fields: { status: 'Active  -  cfo' } })
+        body_rash = Hashie::Rash.new(result: { id: 777, custom_fields: { status: 'Active  -  cfo' } })
         status_arel = mock('status arel')
         Status.should_receive(:where).with(name: 'active - cfo').and_return(status_arel)
         status = mock_model(Status, id: 30)
@@ -319,10 +573,10 @@ describe NutshellAdapter do
           site.should_receive(:status).and_return(statuses(:'inactive-deleted'))
 
           expected_nutshell_params = {
-            leadId: 8000,
+            leadId: 777,
             rev: 'REV_IGNORE',
             lead: {
-              contacts: [ { id: 888 }],
+              contacts: [ { id: 600 }],
               customFields: {
                 :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
                 :'Homepage URL' => 'http://search.digitalgov.gov',

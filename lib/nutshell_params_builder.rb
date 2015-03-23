@@ -1,21 +1,34 @@
 module NutshellParamsBuilder
-  def edit_contact_params(user)
-    new_contact_params(user).merge(
-      {
-        contactId: user.nutshell_id,
-        rev: 'REV_IGNORE'
-      }
-    )
+  def get_contact_params(id)
+    { contactId: id }
   end
 
-  def new_contact_params(user)
+  def search_contacts_params(email)
+    [email, 1]
+  end
+
+  def edit_contact_params(user, contact)
+    params = { contactId: contact.id, rev: contact.rev }
+    emails = [user.email]
+    emails |= contact.email.values.compact if contact.email.present?
+    email_hash = build_email_hash emails
+
+    params.merge!(contact_params(user, email_hash))
+  end
+
+  def build_email_hash(emails)
+    Hash[emails.each_with_index.map { |email, i| [i.to_s, email] }]
+  end
+
+  def contact_params(user, emails = nil)
+    emails ||= [user.email]
     {
       contact: {
         customFields: {
           :'Approval status' => user.approval_status,
           :'Super Admin URL' => "http://search.usa.gov/admin/users?search[id]=#{user.id}"
         },
-        email: [user.email],
+        email: emails,
         name: user.contact_name
       }
     }
