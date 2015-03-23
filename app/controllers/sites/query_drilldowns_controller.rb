@@ -1,6 +1,6 @@
 class Sites::QueryDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
-  HEADER_FIELDS = ['Date', 'Time', 'Client IP', 'Country Code', 'Region', 'User Agent', 'Device', 'Browser', 'OS', 'Request', 'Referrer', 'Vertical', 'Modules']
+  HEADER_FIELDS = ['Date', 'Time', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
 
   def show
     query = request["query"]
