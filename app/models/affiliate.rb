@@ -679,7 +679,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_search_labels
-    self.default_search_label = I18n.translate(:everything, :locale => locale) if default_search_label.blank?
+    self.default_search_label = I18n.translate(:everything, locale: locale) if default_search_label.blank?
   end
 
   def set_keen_scoped_key

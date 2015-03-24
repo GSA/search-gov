@@ -196,7 +196,7 @@ Feature: Dashboard
       | Homepage URL | http://search.digitalgov.gov/ |
       | Display Name | Agency Gov                  |
       | Site Handle  | agencygov                   |
-    And I choose "Spanish"
+    And I select "Arabic" from "Site Language"
     And I submit the form by pressing "Add"
     Then I should see "You have added 'Agency Gov' as a site."
     And I should land on the agencygov's Dashboard page
@@ -204,6 +204,7 @@ Feature: Dashboard
 
     When I follow "Settings"
     Then the "Homepage URL" field should contain "http://search.digitalgov.gov"
+    And I should see "Arabic"
 
     When I follow "Display"
     And I follow "Image Assets"

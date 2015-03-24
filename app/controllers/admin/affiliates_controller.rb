@@ -134,7 +134,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:header_tagline_font_style].options = { options: %w(italic normal) }
 
     config.columns[:locale].form_ui = :select
-    config.columns[:locale].options = { options: %w(en es) }
+    config.columns[:locale].options = { options: SUPPORTED_LOCALES }
 
     config.columns[:mobile_logo_url].label = 'Logo URL'
 

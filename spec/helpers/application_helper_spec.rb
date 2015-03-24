@@ -6,19 +6,6 @@ describe ApplicationHelper do
     helper.stub!(:image_search?).and_return false
   end
 
-  describe "#other_locale_str" do
-    it "should toggle between English and Spanish locales (both strings and symbols)" do
-      I18n.locale = :es
-      helper.other_locale_str.should == "en"
-      I18n.locale = :en
-      helper.other_locale_str.should == "es"
-      I18n.locale = "es"
-      helper.other_locale_str.should == "en"
-      I18n.locale = "en"
-      helper.other_locale_str.should == "es"
-    end
-  end
-
   describe "time_ago_in_words" do
     it "should include 'ago'" do
       time_ago_in_words(4.hours.ago).should == "about 4 hours ago"

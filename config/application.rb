@@ -49,6 +49,10 @@ module UsasearchRails3
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
+    # the I18n.default_locale when a translation can not be found)
+    config.i18n.fallbacks = true
+
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
@@ -70,10 +74,59 @@ module UsasearchRails3
   end
 end
 
-# This has to be up here for some reason; otherwise, tests fail.
-SUPPORTED_LOCALES = %w{en es}
-SUPPORTED_LOCALE_WITH_NAMES = {'en' => 'English', 'es' => 'Spanish'}
-SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALES.collect { |locale| [SUPPORTED_LOCALE_WITH_NAMES[locale], locale] }
+SUPPORTED_LOCALE_WITH_NAMES = {
+  en: 'English',
+  es: 'Spanish',
+  divider: '-'*10,
+  sq: 'Albanian',
+  ar: 'Arabic',
+  hy: 'Armenian',
+  bn: 'Bangla',
+  be: 'Belarusian',
+  bg: 'Bulgarian',
+  ca: 'Catalan',
+  zh: 'Chinese',
+  ht: 'Creole',
+  hr: 'Croatian',
+  cs: 'Czech',
+  da: 'Danish',
+  nl: 'Dutch',
+  et: 'Estonian',
+  fi: 'Finnish',
+  fr: 'French',
+  ka: 'Georgian',
+  de: 'German',
+  el: 'Greek',
+  he: 'Hebrew',
+  hi: 'Hindi',
+  hu: 'Hungarian',
+  id: 'Indonesian',
+  it: 'Italian',
+  ja: 'Japanese',
+  km: 'Khmer',
+  ko: 'Korean',
+  lv: 'Latvian',
+  lt: 'Lithuanian',
+  mk: 'Macedonian',
+  ps: 'Pashto',
+  fa: 'Persian',
+  pl: 'Polish',
+  pt: 'Portugese',
+  ro: 'Romanian',
+  ru: 'Russian',
+  sr: 'Serbian',
+  sk: 'Slovak',
+  so: 'Somalian',
+  sw: 'Swahili',
+  th: 'Thai',
+  tr: 'Turkish',
+  uk: 'Ukranian',
+  ur: 'Urdu',
+  uz: 'Uzbek',
+  vi: 'Vietnamese'
+}
+SUPPORTED_LOCALES = SUPPORTED_LOCALE_WITH_NAMES.keys.delete_if { |key| key == :divider }.map(&:to_s)
+SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALE_WITH_NAMES.invert.to_a
 SUPPORTED_VERTICALS = %w{web image blended}
 BLOG_URL = 'http://search.digitalgov.gov'
 TOS_URL = 'http://search.digitalgov.gov/tos'

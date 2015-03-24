@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale_based_on_affiliate_locale
-    I18n.locale = @affiliate.locale == 'es' ? :es : :en
+    I18n.locale = @affiliate.locale.to_sym
   end
 
   private

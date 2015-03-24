@@ -279,8 +279,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to click "Finished"? How will you know when you are done?
 
 1. For user-facing content (e.g., Search Engine Results Pages [SERPs]), you'll want to raise these questions with the story owner:
-    * How should this feature behave for Spanish-locale traffic? Is there any localized text I will need?
-    * How should this feature behave for affiliate traffic?
+    * How should this feature behave for non-English traffic? Is there any localized text I will need?
     * Should this feature have a mobile web implementation?
     * Is there an admin component to this feature?
     * Does the usage of this feature need to be tracked?

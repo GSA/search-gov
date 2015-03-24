@@ -123,7 +123,7 @@ module SitesHelper
   end
 
   def site_locale(site)
-    site.locale == 'es' ? 'Spanish' : 'English'
+    SUPPORTED_LOCALE_WITH_NAMES[site.locale.to_sym]
   end
 
   def list_item_with_link_to_preview_serp(title, site, options = {})

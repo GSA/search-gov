@@ -57,10 +57,6 @@ module ApplicationHelper
     end
   end
 
-  def other_locale_str
-    I18n.locale.to_s == "en" ? "es" : "en"
-  end
-
   def english_locale?
     I18n.locale.to_s == "en"
   end
