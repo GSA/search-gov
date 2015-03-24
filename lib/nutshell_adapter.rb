@@ -10,21 +10,30 @@ class NutshellAdapter
     user.nutshell_id? ? edit_contact(user) : new_contact(user)
   end
 
-  def edit_contact(user, contact = nil)
-    on_client_present do
-      contact ||= get_contact user.nutshell_id
-      client.post __method__, edit_contact_params(user, contact) if contact
+  def edit_contact(user)
+    params = edit_contact_non_email_params(user)
+    is_success, body = client.post __method__, params
+
+    if is_success && body && body.result && body.result.id
+      edit_contact_email(user, body.result)
+    elsif !is_success && body.error && body.error.message =~ /contact has been merged|invalid contact/i
+      update_user_with_nutshell_id(user, nil)
     end
+  end
+
+  def edit_contact_email(user, contact)
+    params = edit_contact_email_params(user, contact)
+    client.post(:edit_contact, params) if params
   end
 
   def new_contact(user)
     contact = get_contact_by_email user.email
     if contact
       update_user_with_nutshell_id(user, contact.id)
-      return edit_contact(user, contact)
+      return edit_contact(user)
     end
 
-    when_post_response_has_result_id __method__, contact_params(user) do |result|
+    when_post_response_has_result_id __method__, new_contact_params(user) do |result|
       update_user_with_nutshell_id(user, result.id)
     end
   end
@@ -102,5 +111,6 @@ class NutshellAdapter
   def update_user_with_nutshell_id(user, nutshell_id)
     User.where(id: user.id).update_all(nutshell_id: nutshell_id,
                                        updated_at: Time.current)
+    user.nutshell_id = nutshell_id
   end
 end

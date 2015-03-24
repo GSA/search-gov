@@ -7,28 +7,51 @@ module NutshellParamsBuilder
     [email, 1]
   end
 
-  def edit_contact_params(user, contact)
-    params = { contactId: contact.id, rev: contact.rev }
-    emails = [user.email]
-    emails |= contact.email.values.compact if contact.email.present?
-    email_hash = build_email_hash emails
+  def edit_contact_non_email_params(user)
+    { contactId: user.nutshell_id,
+      rev: 'REV_IGNORE'
+    }.merge contact_params(user)
+  end
 
-    params.merge!(contact_params(user, email_hash))
+  def edit_contact_email_params(user, contact)
+    contact_emails = extract_contact_emails contact.email
+
+    if contact_emails.blank? || !contact_emails.include?(user.email)
+      contact_emails ||= []
+      emails = [user.email] | contact_emails
+      email_hash = build_email_hash emails
+
+      { contactId: contact.id,
+        contact: { email: email_hash },
+        rev: contact.rev }
+    end
+  end
+
+  def extract_contact_emails(contact_emails)
+    return unless contact_emails.present?
+
+    emails = contact_emails
+    emails &&= contact_emails.values if contact_emails.is_a?(Hash)
+    emails.compact.uniq.reject { |e| e.blank? }
   end
 
   def build_email_hash(emails)
     Hash[emails.each_with_index.map { |email, i| [i.to_s, email] }]
   end
 
-  def contact_params(user, emails = nil)
-    emails ||= [user.email]
+  def new_contact_params(user)
+    params = contact_params(user)
+    params[:contact][:email] = [user.email]
+    params
+  end
+
+  def contact_params(user)
     {
       contact: {
         customFields: {
           :'Approval status' => user.approval_status,
           :'Super Admin URL' => "http://search.usa.gov/admin/users?search[id]=#{user.id}"
         },
-        email: emails,
         name: user.contact_name
       }
     }
@@ -63,7 +86,7 @@ module NutshellParamsBuilder
   end
 
   def lead_contacts(site)
-    site.users.pluck(:nutshell_id).compact.map do |user_nutshell_id|
+    site.users.pluck(:nutshell_id).compact.uniq.map do |user_nutshell_id|
       { id: user_nutshell_id }
     end
   end
@@ -84,6 +107,6 @@ module NutshellParamsBuilder
   end
 
   def lead_description(site)
-    "#{site.display_name} (#{site.name})"
+    "(#{site.name}) #{site.display_name}".squish.truncate(100, separator: ' ')
   end
 end
