@@ -4,6 +4,7 @@ namespace :usasearch do
     task :push_users => :environment do
       adapter = NutshellAdapter.new
       User.all.each { |u| adapter.push_user u }
+      User.where(nutshell_id: nil).each { |u| adapter.push_user u }
     end
 
     desc 'push sites'

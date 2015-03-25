@@ -11,19 +11,23 @@ class NutshellAdapter
   end
 
   def edit_contact(user)
-    params = edit_contact_non_email_params(user)
-    is_success, body = client.post __method__, params
+    on_client_present do
+      params = edit_contact_non_email_params(user)
+      is_success, body = client.post __method__, params
 
-    if is_success && body && body.result && body.result.id
-      edit_contact_email(user, body.result)
-    elsif !is_success && body.error && body.error.message =~ /contact has been merged|invalid contact/i
-      update_user_with_nutshell_id(user, nil)
+      if is_success && body && body.result && body.result.id
+        edit_contact_email(user, body.result)
+      elsif !is_success && body.error && body.error.message =~ /contact has been merged|invalid contact/i
+        update_user_with_nutshell_id(user, nil)
+      end
     end
   end
 
   def edit_contact_email(user, contact)
-    params = edit_contact_email_params(user, contact)
-    client.post(:edit_contact, params) if params
+    on_client_present do
+      params = edit_contact_email_params(user, contact)
+      client.post(:edit_contact, params) if params
+    end
   end
 
   def new_contact(user)

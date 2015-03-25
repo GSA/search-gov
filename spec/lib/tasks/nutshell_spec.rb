@@ -25,6 +25,10 @@ describe 'Nutshell rake tasks' do
       User.should_receive(:all).and_return([user])
       adapter.should_receive(:push_user).with(user)
 
+      user_without_nutshell_id = mock_model(User)
+      User.should_receive(:where).with(nutshell_id: nil).and_return([user_without_nutshell_id])
+      adapter.should_receive(:push_user).with(user_without_nutshell_id)
+
       @rake[task_name].invoke
     end
   end
