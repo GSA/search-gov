@@ -41,4 +41,14 @@ describe MobileHelper do
       end
     end
   end
+
+  describe "#related_sites_dropdown_label" do
+    context 'when label is present' do
+      specify { helper.related_sites_dropdown_label('foo').should == 'foo' }
+    end
+
+    context 'when label is nil' do
+      specify { helper.related_sites_dropdown_label(nil).should == I18n.t(:'searches.related_sites') }
+    end
+  end
 end

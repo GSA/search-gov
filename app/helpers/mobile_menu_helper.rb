@@ -76,7 +76,7 @@ module MobileMenuHelper
     items = connections.map { |conn| related_site_item(conn, search.query) }
     dropdown_menu_wrapper items.join("\n"),
                           'related-sites-menu-dropdown',
-                          I18n.t(:'searches.related_sites')
+                          related_sites_dropdown_label(search.affiliate.related_sites_dropdown_label)
   end
 
   def header_link_menu_list_html(header_links)
