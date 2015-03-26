@@ -69,6 +69,12 @@ module MobileHelper
     end
   end
 
+  def html_class_hash(locale)
+    hash = { lang: locale }
+    hash.merge!(dir: 'rtl') if RTL_LOCALES.include? locale.to_sym
+    hash
+  end
+
   def body_class_hash(site)
     css_classes = []
     page_background_color = site_css_color_property(site.css_property_hash, :page_background_color)

@@ -61,7 +61,23 @@ shared_examples "a web search engine" do
       end
     end
 
-    context "when non-Spanish locale is specified" do
+    context "when Chinese locale is specified" do
+      let(:chinese_search) { described_class.new(query: "中国") }
+
+      before do
+        I18n.locale = :zh
+      end
+
+      it "should pass a Simplified Chinese language filter to Google" do
+        chinese_search.execute_query
+      end
+
+      after do
+        I18n.locale = I18n.default_locale
+      end
+    end
+
+    context "when English locale is specified" do
       let(:english_search) { described_class.new(query: "english") }
 
       it "should pass an English language filter to Google" do

@@ -79,10 +79,8 @@ module ApplicationHelper
     raw content
   end
 
-  def render_date(date, locale = I18n.locale)
-    unless date.nil?
-      locale.to_sym == :es ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
-    end
+  def render_date(datetime, locale = I18n.locale)
+    l(datetime.to_date, locale: locale, format: :slashes) unless datetime.nil?
   end
 
   def attribution

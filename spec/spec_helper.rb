@@ -118,6 +118,9 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(query: 'casa blanca')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
+    web_search_params = common_web_search_params.merge(query: '中国')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
+
     web_search_params = common_web_search_params.merge(query: 'english')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
@@ -210,6 +213,9 @@ RSpec.configure do |config|
 
     es_web_search_params = common_web_search_params.merge(lr: 'lang_es', q: 'casa blanca')
     stubs.get("#{google_api_path}#{es_web_search_params.to_param}") { [200, {}, generic_google_result] }
+
+    cn_web_search_params = common_web_search_params.merge(lr: 'lang_zh-cn', q: '中国')
+    stubs.get("#{google_api_path}#{cn_web_search_params.to_param}") { [200, {}, generic_google_result] }
 
     gss_api_search_params = common_gss_api_search_params.merge(lr: 'lang_es', q: 'casa blanca site:usa.gov')
     stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, generic_google_result] }

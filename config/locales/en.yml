@@ -164,7 +164,7 @@ en:
 
   date:
     formats:
-      medium: "%b. %d, %Y"
+      slashes: "%-m/%-d/%Y"
   # support for this story: https://www.pivotaltracker.com/story/show/8554195
   # based on https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml#L91
   # but altered, so now all the methods do time_ago, and are *broken* for time from now

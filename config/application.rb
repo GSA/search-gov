@@ -127,6 +127,7 @@ SUPPORTED_LOCALE_WITH_NAMES = {
 }
 SUPPORTED_LOCALES = SUPPORTED_LOCALE_WITH_NAMES.keys.delete_if { |key| key == :divider }.map(&:to_s)
 SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALE_WITH_NAMES.invert.to_a
+RTL_LOCALES = [:ar, :he, :fa, :ur]
 SUPPORTED_VERTICALS = %w{web image blended}
 BLOG_URL = 'http://search.digitalgov.gov'
 TOS_URL = 'http://search.digitalgov.gov/tos'

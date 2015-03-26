@@ -5,11 +5,14 @@ class GoogleSearch < SearchEngine
   API_KEY = '***REMOVED***'
   SEARCH_CX = '005675969675701682971:usi2bmqvnp8'
   VALID_ADULT_FILTERS = %w{off medium high}
-  DEFAULT_LANGUAGE = 'lang_en'
   CACHE_DURATION = 5 * 60
   DEFAULT_START = 1
   PER_PAGE_RANGE = (1..10).freeze
   NAMESPACE = 'google_api'.freeze
+  BING_TO_GOOGLE_LOCALE_MAPPING = {
+    he: 'iw',
+    zh: 'zh-cn'
+  }
 
   attr_reader :start
 
@@ -55,7 +58,7 @@ class GoogleSearch < SearchEngine
   end
 
   def language
-    I18n.locale == :es ? 'lang_es' : DEFAULT_LANGUAGE
+    "lang_#{BING_TO_GOOGLE_LOCALE_MAPPING.fetch(I18n.locale, I18n.locale)}"
   end
 
   def extract_google_response(google_response, search_response)

@@ -7,11 +7,13 @@ describe ApplicationHelper do
   end
 
   describe "time_ago_in_words" do
-    it "should include 'ago'" do
-      time_ago_in_words(4.hours.ago).should == "about 4 hours ago"
-      time_ago_in_words(33.days.ago).should == "about 1 month ago"
-      time_ago_in_words(2.days.ago).should == "2 days ago"
-      time_ago_in_words(1.day.ago).should == "1 day ago"
+    context 'English' do
+      it "should include 'ago'" do
+        time_ago_in_words(4.hours.ago).should == "about 4 hours ago"
+        time_ago_in_words(33.days.ago).should == "about 1 month ago"
+        time_ago_in_words(2.days.ago).should == "2 days ago"
+        time_ago_in_words(1.day.ago).should == "1 day ago"
+      end
     end
 
     context "es" do
@@ -26,30 +28,6 @@ describe ApplicationHelper do
         time_ago_in_words(33.days.ago).should == "Hace un mes"
         time_ago_in_words(2.days.ago).should == "Hace 2 días"
         time_ago_in_words(1.day.ago).should == "Ayer"
-      end
-    end
-  end
-
-  describe "localize dates" do
-    context "es" do
-      before :each do
-        I18n.locale = :es
-      end
-      after :each do
-        I18n.locale = :en
-      end
-
-      describe "medium localization" do
-        it "should look like 29 de enero de 2011" do
-          l(Date.parse('2011-01-29'), :format => :medium).should == "29 de enero de 2011"
-        end
-
-        (1..12).each do |month|
-          it "should work for month #{month}" do
-            date = Date.parse("2011-%02i-22" % month)
-            l(date, :format => :medium)
-          end
-        end
       end
     end
   end

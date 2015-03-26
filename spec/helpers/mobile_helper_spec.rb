@@ -51,4 +51,12 @@ describe MobileHelper do
       specify { helper.related_sites_dropdown_label(nil).should == I18n.t(:'searches.related_sites') }
     end
   end
+
+  describe "#html_class_hash" do
+    context 'when locale is written right-to-left' do
+      it 'should set the HTML direction to rtl' do
+        helper.html_class_hash(:ar)[:dir].should == 'rtl'
+      end
+    end
+  end
 end
