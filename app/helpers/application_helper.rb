@@ -5,15 +5,6 @@ module ApplicationHelper
     current_user && current_user.send("is_#{role}?")
   end
 
-  def build_page_title(page_title)
-    if image_search?
-      site_title = (t :images_site_title)
-    else
-      site_title = page_title.blank? ? (t :site_title) : (t :serp_title)
-    end
-    (page_title.blank? ? "" : "#{page_title} - ") + site_title
-  end
-
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
       html = ""

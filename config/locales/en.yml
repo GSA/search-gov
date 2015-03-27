@@ -1,9 +1,5 @@
 en:
   usa_gov: USA.gov
-  government: "GOVERNMENT"
-  search_in: "Busque en español"
-  search_in_mobile: "Español"
-  red_button_alt_value: "Buscador.USA.gov"
   search: "Search"
   search_label: 'Enter your search term'
   everything: "Everything"
@@ -20,11 +16,8 @@ en:
   default_rss_govbox_label: 'News'
   news_results: "%{rss_govbox_label} for '%{query}'"
   video_news_results: "Videos of '%{query}'"
-  photo_results: "Photos of '%{query}'"
   related_searches: "Related Searches"
   related_topics_prefix: "Related Searches for"
-  related_topics_suffix: "by USA.gov"
-  other_documents_for: "Other documents for '%{query}'"
   recent_tweet_for: "Recent tweet for '%{query}'"
   recent_tweets_for: "Recent tweets for '%{query}'"
   recommended: "Recommended"
@@ -43,18 +36,8 @@ en:
   no_results_for_and_try: "Sorry, no results found for '%{query}'. Try entering fewer or broader query terms."
   too_long: "Your search term is too long. Try again using a shorter word or phrase."
   empty_query: "Please enter a search term in the box above."
-  search_results_for: "Search results for"
-  image_search_results_for: "Image search results for"
-  site_title: "Search.USA.gov: The U.S. Government's Official Search Engine"
-  site_tagline: "Search.USA.gov is the U.S. government's official search engine."
-  serp_title: "Search.USA.gov"
   advanced_search: "Advanced Search"
   images: "Images"
-  image: "Image:"
-  images_for: "Images for %{query}"
-  images_site_title: "Search.USA.gov Images"
-  in_english: ""
-  sort_by: Sort by
   by_date: 'Most recent'
   by_relevance: 'Best match'
   advanced_search_instruction: "Use the options on this page to create a very specific search."
@@ -75,26 +58,9 @@ en:
   advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=en'
   advanced_search_operator: 'You can also use %{link} to help limit and focus your searches.'
 
-  usagov_mobile: "USA.gov mobile"
-  next_page: "Next Page"
-  view_site_in: "View site in:"
-  classic: "Classic"
-  mobile: "Mobile"
-  searches_related_to: "Searches related to '%{query}'"
   job_openings: "Job Openings"
   at_agency: "at %{agency}"
   federal_job_openings: "Federal Job Openings"
-
-  change_text_size: "Change Text Size"
-  change_text_size_url: "http://www.usa.gov/About/Change_Text.shtml"
-
-  agency_official_site: Official Site
-  agency_feature_by: Feature by USA.gov
-  agency_phone_label: Contact
-  agency_toll_free_phone_label: Toll-free
-  agency_tty_phone_label: TTY
-  agency_search_within_label: Search within
-  agency_stay_connected_label: "Stay Connected"
 
   searches:
     by: by
@@ -149,7 +115,6 @@ en:
   custom_range: 'Custom range'
   from: 'From'
   to: 'To'
-  cdr_example: 'Ex. mm/dd/yyyy'
   cdr_format: '%m/%d/%Y'
   before: 'Before'
   clear: 'Clear'
@@ -212,19 +177,3 @@ en:
       hour:   "Hour"
       minute: "Minute"
       second: "Seconds"
-
-  will_paginate:
-    boosted_content:
-      page_entries_info:
-        single_page:
-          zero:  "No Best Bets: Text entries"
-          one:   "Displaying 1 Best Bets: Text entry"
-          other: "Displaying all %{count} Best Bets: Text entries"
-        multi_page: "Displaying Best Bets: Text entries %{from} - %{to} of %{count} in total"
-    featured_collection:
-      page_entries_info:
-        single_page:
-          zero:  "No Best Bets: Graphics entries"
-          one:   "Displaying 1 Best Bets: Graphics entry"
-          other: "Displaying all %{count} Best Bets: Graphics entries"
-        multi_page: "Displaying Best Bets: Graphics entries %{from} - %{to} of %{count} in total"
