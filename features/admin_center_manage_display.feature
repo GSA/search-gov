@@ -380,8 +380,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Managed Header & Footer
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
+      | display_name | name       | contact_email   | contact_name | footer_fragment                   |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | <strong>my HTML fragment</strong> |
     And affiliate "agency.gov" has the following document collections:
       | name                 | prefixes             | position | is_navigable |
       | Active site search   | http://apps.usa.gov/ | 3        | true         |
@@ -434,6 +434,8 @@ Feature: Manage Display
     When I am on agency.gov's mobile search page
     Then I should see "Office website of the Awesome Agency"
     And I should see a left aligned menu button
+    And I should see "my HTML fragment" within the mobile footer
+    And I should not see "strong" within the mobile footer
 
     When I press "Browse site"
     Then I should find "News" in the main menu

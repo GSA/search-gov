@@ -54,6 +54,8 @@ module HtmlSelectorsHelpers
       '#search .search-all-sites'
     when /the main menu/
         '#main-menu'
+    when /the mobile footer/
+        '#footer-wrapper'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

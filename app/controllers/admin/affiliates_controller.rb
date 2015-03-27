@@ -20,7 +20,7 @@ class Admin::AffiliatesController < Admin::AdminController
                          header_footer_css staged_header_footer_css header staged_header footer staged_footer
                          features external_tracking_code submitted_external_tracking_code
                          header_tagline_font_family header_tagline_font_size header_tagline_font_style
-                         related_sites_dropdown_label)
+                         related_sites_dropdown_label footer_fragment)
     all_columns |= virtual_columns
     config.columns = all_columns
 
@@ -79,7 +79,15 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      name_group.add :header_tagline_font_family, :header_tagline_font_size, :header_tagline_font_style, :favicon_url, :related_sites_dropdown_label, :theme, :page_one_more_results_pointer, :no_results_pointer
+      display_columns = %i(favicon_url
+                           footer_fragment
+                           header_tagline_font_family
+                           header_tagline_font_size
+                           header_tagline_font_style
+                           no_results_pointer
+                           related_sites_dropdown_label
+                           theme page_one_more_results_pointer)
+      name_group.add *display_columns
       name_group.collapsed = true
     end
 
@@ -123,6 +131,9 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.columns[:favicon_url].label = 'Favicon URL'
     config.columns[:features].associated_limit = nil
+
+    config.columns[:footer_fragment].form_ui = :textarea
+
     config.columns[:header_image_url].label = 'Legacy Logo URL'
 
     config.columns[:header_tagline_font_family].form_ui = :select

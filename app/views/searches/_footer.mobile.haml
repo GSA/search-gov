@@ -1,6 +1,6 @@
-#footer-wrapper
-  %h2.content-heading Footer links
-  .navbar-wrapper
-    %ul.nav.navbar-nav
-      - affiliate.managed_footer_links.each do |link|
-        %li= link_to(link[:title], link[:url])
+- if affiliate.managed_footer_links.present? || affiliate.footer_fragment.present?
+  #footer-wrapper
+    = render partial: 'searches/footer_fragment',
+             locals: { footer_fragment: affiliate.footer_fragment } if affiliate.footer_fragment.present?
+    = render partial: 'searches/managed_footer_links',
+             locals: { managed_footer_links: affiliate.managed_footer_links } if affiliate.managed_footer_links.present?

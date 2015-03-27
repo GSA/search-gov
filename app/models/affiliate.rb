@@ -115,9 +115,13 @@ class Affiliate < ActiveRecord::Base
                             in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
 
-  validate :validate_css_property_hash, :validate_staged_header_footer_css, :validate_staged_header_footer,
-           :validate_managed_header_links, :validate_managed_footer_links
-  validate :external_tracking_code_cannot_be_malformed
+  validate :html_columns_cannot_be_malformed,
+           :validate_css_property_hash,
+           :validate_managed_footer_links,
+           :validate_managed_header_links,
+           :validate_staged_header_footer,
+           :validate_staged_header_footer_css
+
   after_validation :update_error_keys
   before_save :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
@@ -216,7 +220,8 @@ class Affiliate < ActiveRecord::Base
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :go_live_date, :logo_alt_text, :sitelink_generator_names,
                                          :header_tagline, :related_sites_dropdown_label, :page_one_more_results_pointer,
-                                         :no_results_pointer]
+                                         :no_results_pointer,
+                                         :footer_fragment]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -594,10 +599,15 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def external_tracking_code_cannot_be_malformed
-    validation_results = validate_html external_tracking_code
-    if validation_results[:has_malformed_html]
-      errors.add(:base, "External tracking code is invalid: #{validation_results[:error_message]}")
+  def html_columns_cannot_be_malformed
+    %i(external_tracking_code footer_fragment).each do |field_name_symbol|
+      value = self.send field_name_symbol
+      next if value.blank?
+
+      validation_results = validate_html value
+      if validation_results[:has_malformed_html]
+        errors.add(:base, "#{field_name_symbol.to_s.humanize} is invalid: #{validation_results[:error_message]}")
+      end
     end
   end
 

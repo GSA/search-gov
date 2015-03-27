@@ -1,0 +1,5 @@
+%h2.content-heading Footer links
+.navbar-wrapper
+  %ul.nav.navbar-nav
+    - managed_footer_links.each do |link|
+      %li= link_to(link[:title], link[:url])

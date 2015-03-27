@@ -42,7 +42,7 @@
 
     #main-content{ tabindex: -1 }= yield
 
-    = render partial: 'searches/footer', locals: { affiliate: @search.affiliate } if @search.affiliate.managed_footer_links.present?
+    = render partial: 'searches/footer', locals: { affiliate: @search.affiliate }
 
     #main-menu-backdrop{ onclick: 'void(0)' }
 

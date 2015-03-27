@@ -511,8 +511,28 @@ describe Affiliate do
       end
     end
 
+    it 'allows valid external tracking code' do
+      expect { Affiliate.create!({ display_name: 'a site',
+                                   external_tracking_code: '<script>var a;</script>',
+                                   name: 'external-tracking-site'}) }.to_not raise_error
+    end
+
     it 'should not allow malformed external tracking code' do
-      expect { Affiliate.create!(:display_name => 'a site', :external_tracking_code => '<script>malformed code;') }.to raise_error
+      expect { Affiliate.create!({ display_name: 'a site',
+                                   footer_fragment: '<script>var a;',
+                                   name: 'external-tracking-site'}) }.to raise_error
+    end
+
+    it 'allows valid external tracking code' do
+      expect { Affiliate.create!({ display_name: 'a site',
+                                   footer_fragment: '<script>var a;</script>',
+                                   name: 'footer-fragment-site'}) }.to_not raise_error
+    end
+
+    it 'should not allow malformed footer_fragment' do
+      expect { Affiliate.create!({ display_name: 'a site',
+                                   footer_fragment: '<script>var a;',
+                                   name: 'footer-fragment-site'}) }.to raise_error
     end
   end
 
