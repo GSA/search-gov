@@ -361,8 +361,8 @@ Feature: Searches using mobile device
 
   Scenario: Site navigations with dropdown menu
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+      | display_name | name          | contact_email    | contact_name | locale | navigation_dropdown_label |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | My-awesome-label          |
     And affiliate "en.agency.gov" has the following document collections:
       | name                 | prefixes                | position | is_navigable |
       | FAQs                 | http://answers.usa.gov/ | 0        | true         |
@@ -383,17 +383,17 @@ Feature: Searches using mobile device
     And I press "Search"
 
     Then I should see "Everything" within the SERP active navigation
-    And I should see "Everything FAQs Articles More Apps Blog News" within the SERP navigation
+    And I should see "Everything FAQs Articles My-awesome-label Apps Blog News" within the SERP navigation
     And I should see at least "10" web search results
 
     When I follow "Apps" within the SERP navigation
     Then I should see "Apps" within the SERP active navigation
-    And I should see "Everything FAQs Apps More Articles Blog News" within the SERP navigation
+    And I should see "Everything FAQs Apps My-awesome-label Articles Blog News" within the SERP navigation
     And I should see at least "5" web search results
 
     When I follow "News" within the SERP navigation
     Then I should see "News" within the SERP active navigation
-    And I should see "Everything FAQs News More Articles Apps Blog" within the SERP navigation
+    And I should see "Everything FAQs News My-awesome-label Articles Apps Blog" within the SERP navigation
     And I should see at least "10" web search results
 
     When I am on en.agency.gov's "Inactive site search" mobile site search page

@@ -85,6 +85,7 @@ class Affiliate < ActiveRecord::Base
   before_validation_squish :ga_web_property_id,
                            :header_tagline_font_size,
                            :logo_alt_text,
+                           :navigation_dropdown_label,
                            :related_sites_dropdown_label,
                            assign_nil_on_blank: true
   before_validation :set_api_access_key, unless: :api_access_key?
@@ -219,9 +220,10 @@ class Affiliate < ActiveRecord::Base
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :go_live_date, :logo_alt_text, :sitelink_generator_names,
-                                         :header_tagline, :related_sites_dropdown_label, :page_one_more_results_pointer,
-                                         :no_results_pointer,
-                                         :footer_fragment]
+                                         :header_tagline,
+                                         :page_one_more_results_pointer, :no_results_pointer,
+                                         :footer_fragment,
+                                         :navigation_dropdown_label, :related_sites_dropdown_label]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]

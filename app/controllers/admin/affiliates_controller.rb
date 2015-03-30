@@ -38,11 +38,16 @@ class Admin::AffiliatesController < Admin::AdminController
                                                   external_tracking_code
                                                   fetch_concurrency
                                                   footer
+                                                  footer_fragment
                                                   ga_web_property_id
                                                   has_staged_content
                                                   header
                                                   header_footer_css
+                                                  header_tagline_font_family
+                                                  header_tagline_font_size
+                                                  header_tagline_font_style
                                                   last_month_query_count
+                                                  navigation_dropdown_label
                                                   related_sites_dropdown_label
                                                   staged_footer
                                                   staged_header
@@ -79,14 +84,14 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      display_columns = %i(favicon_url
-                           footer_fragment
+      display_columns = %i(footer_fragment
                            header_tagline_font_family
                            header_tagline_font_size
                            header_tagline_font_style
                            no_results_pointer
-                           related_sites_dropdown_label
-                           theme page_one_more_results_pointer)
+                           page_one_more_results_pointer
+                           navigation_dropdown_label
+                           related_sites_dropdown_label)
       name_group.add *display_columns
       name_group.collapsed = true
     end

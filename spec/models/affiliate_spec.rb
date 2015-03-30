@@ -249,10 +249,22 @@ describe Affiliate do
 
     it "should squish string columns" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes!(ga_web_property_id: '  WEB_PROPERTY_ID  ',
-                                   logo_alt_text: '  my  awesome agency  ')
-      affiliate.ga_web_property_id.should eq('WEB_PROPERTY_ID')
-      affiliate.logo_alt_text.should eq('my awesome agency')
+      unsquished_attributes = {
+        ga_web_property_id: ' GA Web Property  ID  ',
+        header_tagline_font_size: ' 12px ',
+        logo_alt_text: ' this  is   my   logo ',
+        navigation_dropdown_label: '  My   Location  ',
+        related_sites_dropdown_label: '  More   related   sites  '
+      }.freeze
+
+      affiliate.update_attributes!(unsquished_attributes)
+
+      affiliate = Affiliate.find affiliate.id
+      expect(affiliate.ga_web_property_id).to eq('GA Web Property ID')
+      expect(affiliate.header_tagline_font_size).to eq('12px')
+      expect(affiliate.logo_alt_text).to eq('this is my logo')
+      expect(affiliate.navigation_dropdown_label).to eq('My Location')
+      expect(affiliate.related_sites_dropdown_label).to eq('More related sites')
     end
 
 
