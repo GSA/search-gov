@@ -143,13 +143,8 @@ es:
       - :month
       - :year
 
-
-  # support for this story: https://www.pivotaltracker.com/story/show/8554195
-  # based on https://github.com/svenfuchs/rails-i18n/blob/2-2/rails/locale/es.yml#L64
-  # but altered, so now all the methods do time_ago, and are *broken* for time from now
-  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
-    distance_in_words:
+    time_ago_in_words:
       half_a_minute: "Medio minuto"
       less_than_x_seconds:
         one:  "Menos de un segundo"
@@ -181,3 +176,6 @@ es:
       over_x_years:
         one:  "Más de un año"
         other: "Más de %{count} años"
+      almost_x_years:
+        one:   "Hace casi un año"
+        other: "Casi %{count} años atrás"

@@ -130,12 +130,9 @@ en:
   date:
     formats:
       slashes: "%-m/%-d/%Y"
-  # support for this story: https://www.pivotaltracker.com/story/show/8554195
-  # based on https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml#L91
-  # but altered, so now all the methods do time_ago, and are *broken* for time from now
-  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+
   datetime:
-    distance_in_words:
+    time_ago_in_words:
       half_a_minute: "half a minute ago"
       less_than_x_seconds:
         one:   "less than 1 second ago"
@@ -170,10 +167,3 @@ en:
       almost_x_years:
         one:   "almost 1 year ago"
         other: "almost %{count} years ago"
-    prompts:
-      year:   "Year"
-      month:  "Month"
-      day:    "Day"
-      hour:   "Hour"
-      minute: "Minute"
-      second: "Seconds"
