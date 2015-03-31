@@ -39,7 +39,7 @@ describe ElasticResqueIndexer do
       start_id = IndexedDocument.minimum(:id)
       end_id = IndexedDocument.maximum(:id)
       ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)
-      search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+      search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
       search.total.should == 2
     end
 

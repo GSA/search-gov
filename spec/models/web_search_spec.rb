@@ -256,7 +256,7 @@ describe WebSearch do
         end
         ElasticIndexedDocument.commit
         @non_affiliate.indexed_documents.size.should == 15
-        ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.locale).total.should == 15
+        ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.indexing_locale).total.should == 15
       end
 
       it "should fill the results with the Odie docs" do

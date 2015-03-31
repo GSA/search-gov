@@ -20,7 +20,7 @@ class GovboxSet
     @highlighting_options = options.slice(:highlighting, :pre_tags, :post_tags)
 
     @base_search_options = @highlighting_options.merge(
-      language: @affiliate.locale,
+      language: @affiliate.indexing_locale,
       q: @query)
 
     @site_limits = extract_site_limits options[:site_limits]

@@ -59,7 +59,7 @@ class NewsSearch < Search
                                size: @per_page, offset: (@page - 1) * @per_page,
                                contributor: @contributor, subject: @subject, publisher: @publisher,
                                sort_by_relevance: @sort_by_relevance,
-                               tags: @tags, language: @affiliate.locale) if @rss_feeds.present?
+                               tags: @tags, language: @affiliate.indexing_locale) if @rss_feeds.present?
   end
 
   def cache_key

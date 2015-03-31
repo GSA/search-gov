@@ -25,7 +25,7 @@ describe ElasticFeaturedCollection do
         end
 
         it 'should return results in an easy to access structure' do
-          search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.locale)
+          search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
           search.total.should == 2
           search.results.size.should == 1
           search.results.first.should be_instance_of(FeaturedCollection)
@@ -39,7 +39,7 @@ describe ElasticFeaturedCollection do
           end
 
           it 'should return zero results' do
-            search = ElasticFeaturedCollection.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.locale)
+            search = ElasticFeaturedCollection.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
             search.total.should be_zero
             search.results.size.should be_zero
           end
@@ -66,7 +66,7 @@ describe ElasticFeaturedCollection do
 
     context 'when no highlight param is sent in' do
       it 'should highlight appropriate fields with <strong> by default' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "<strong>Tropical</strong> Hurricane Names"
         first.featured_collection_links.each do |fcl|
@@ -88,10 +88,10 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should escape the entity but show the highlight' do
-        search = ElasticFeaturedCollection.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "Peas &amp; <strong>Carrots</strong>"
-        search = ElasticFeaturedCollection.search_for(q: 'entity', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'entity', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "Peas &amp; Carrots"
       end
@@ -99,7 +99,7 @@ describe ElasticFeaturedCollection do
 
     context 'when highlight is turned off' do
       it 'should not highlight matches' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale, highlighting: false)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
         first.title.should == "Tropical Hurricane Names"
         first.featured_collection_links.each do |fcl|
@@ -116,7 +116,7 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should show everything in a single fragment' do
-        search = ElasticFeaturedCollection.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>."
       end
@@ -134,7 +134,7 @@ describe ElasticFeaturedCollection do
       end
 
       it "should return only active Featured Collections" do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.is_active?.should be_true
       end
@@ -153,7 +153,7 @@ describe ElasticFeaturedCollection do
       end
 
       it "should return only matches for the given affiliate" do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.affiliate.name.should == affiliate.name
       end
@@ -169,7 +169,7 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should omit those results' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.title.should =~ /^Current/
       end
@@ -185,7 +185,7 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should omit those results' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.title.should =~ /^Current/
       end
@@ -217,37 +217,37 @@ describe ElasticFeaturedCollection do
 
     describe 'keywords' do
       it 'should be case insensitive' do
-        ElasticFeaturedCollection.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should perform ASCII folding' do
-        ElasticFeaturedCollection.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should only match full keyword phrase' do
-        ElasticFeaturedCollection.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticFeaturedCollection.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+        ElasticFeaturedCollection.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
       end
     end
 
     describe "title and link titles" do
       it 'should be case insentitive' do
-        ElasticFeaturedCollection.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticFeaturedCollection.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should perform ASCII folding' do
-        ElasticFeaturedCollection.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticFeaturedCollection.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticFeaturedCollection.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
+          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
-          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1 }
         end
       end
 
@@ -266,11 +266,11 @@ describe ElasticFeaturedCollection do
         it 'should do minimal English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an intern and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           end
           overstemmed_queries = %w{internal internship symbolic ocean organ computing powered engine}
           overstemmed_queries.each do |query|
-            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
           end
         end
       end
@@ -294,11 +294,11 @@ describe ElasticFeaturedCollection do
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+            ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
           end
         end
       end

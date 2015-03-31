@@ -8,7 +8,7 @@ class ElasticBoostedContentData
     Jbuilder.new do |json|
       json.(@boosted_content, :id, :affiliate_id, :title, :description, :status, :publish_start_on, :publish_end_on)
       json.url UrlParser.strip_http_protocols(@boosted_content.url)
-      json.language "#{@boosted_content.affiliate.locale}_analyzer"
+      json.language "#{@boosted_content.affiliate.indexing_locale}_analyzer"
       json.keyword_values @boosted_content.boosted_content_keywords.collect(&:value)
     end
   end

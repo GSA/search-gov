@@ -197,6 +197,14 @@ class Affiliate < ActiveRecord::Base
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 
+  CUSTOM_INDEXING_LANGUAGES = %w(en es)
+
+  COMMON_INDEXING_LANGUAGE = 'babel'
+
+  def indexing_locale
+    CUSTOM_INDEXING_LANGUAGES.include?(self.locale) ? self.locale : COMMON_INDEXING_LANGUAGE
+  end
+
   def self.define_hash_columns_accessors(args)
     column_name_method = args[:column_name_method]
     fields = args[:fields]
@@ -691,7 +699,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_search_labels
-    self.default_search_label = I18n.translate(:everything, locale: locale) if default_search_label.blank?
+    self.default_search_label = I18n.t(:everything, locale: locale) if default_search_label.blank?
   end
 
   def set_keen_scoped_key

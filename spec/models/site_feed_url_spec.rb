@@ -46,7 +46,7 @@ describe SiteFeedUrl do
       ElasticIndexedDocument.commit
       IndexedDocument.count.should == 1
       IndexedDocument.first.title.should == 'Some Title Three'
-      ElasticIndexedDocument.search_for(q: 'some title', affiliate_id: affiliates(:basic_affiliate).id, language: affiliates(:basic_affiliate).locale).total.should == 1
+      ElasticIndexedDocument.search_for(q: 'some title', affiliate_id: affiliates(:basic_affiliate).id, language: affiliates(:basic_affiliate).indexing_locale).total.should == 1
     end
   end
 

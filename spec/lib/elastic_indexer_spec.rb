@@ -30,7 +30,7 @@ describe ElasticIndexer do
     it "should index all valid instances" do
       ElasticIndexer.index_all("IndexedDocument")
       ElasticIndexedDocument.commit
-      search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+      search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
       search.total.should == 2
     end
 

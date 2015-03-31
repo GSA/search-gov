@@ -16,7 +16,7 @@ class OdieSearch < Search
                                       affiliate_id: @affiliate.id,
                                       document_collection: @document_collection,
                                       include_suggestion: true,
-                                      language: @affiliate.locale,
+                                      language: @affiliate.indexing_locale,
                                       size: @per_page,
                                       offset: (@page - 1) * @per_page)
   end

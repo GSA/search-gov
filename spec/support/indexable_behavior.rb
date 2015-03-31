@@ -3,7 +3,7 @@ shared_examples "an indexable" do
   context "when searching raises an exception" do
     it "should return an appropriate result set with zero hits" do
       ES::client_reader.should_receive(:search).and_raise StandardError
-      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.locale }
+      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.indexing_locale }
       described_class.search_for(options).should be_a_kind_of(ElasticResults)
     end
   end

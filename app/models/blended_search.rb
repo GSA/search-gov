@@ -18,7 +18,7 @@ class BlendedSearch < Search
   def search
     search_options = {
       affiliate_id: @affiliate.id,
-      language: @affiliate.locale,
+      language: @affiliate.indexing_locale,
       offset: detect_offset,
       q: @query,
       rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),

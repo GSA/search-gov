@@ -17,7 +17,7 @@ class SaytSuggestion < ActiveRecord::Base
     def related_search(query, affiliate, options = {})
       return [] unless affiliate.is_related_searches_enabled?
       search_options = { affiliate_id: affiliate.id,
-                         language: affiliate.locale,
+                         language: affiliate.indexing_locale,
                          size: 5,
                          q: query }.reverse_merge(options)
       elastic_results = ElasticSaytSuggestion.search_for search_options

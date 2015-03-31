@@ -31,7 +31,7 @@ class ApiVideoSearch < Search
     return unless @video_rss_feeds.present?
 
     search_options = {
-      language: @affiliate.locale,
+      language: @affiliate.indexing_locale,
       offset: @offset,
       q: @query,
       rss_feeds: @video_rss_feeds,

@@ -29,7 +29,7 @@ describe ElasticBoostedContent do
         end
 
         it 'should return results in an easy to access structure' do
-          search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.locale)
+          search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
           search.total.should == 2
           search.results.size.should == 1
           search.results.first.should be_instance_of(BoostedContent)
@@ -42,7 +42,7 @@ describe ElasticBoostedContent do
                                                       affiliate_id: affiliate.id,
                                                       size: 1,
                                                       offset: 0,
-                                                      language: affiliate.locale,
+                                                      language: affiliate.indexing_locale,
                                                       site_limits: %w(secure.nhc.noaa.gov blog.noaa.gov))
             search.total.should == 1
             expect(search.results.first.title).to eq('<strong>Tropical</strong> Hurricane Names')
@@ -56,7 +56,7 @@ describe ElasticBoostedContent do
           end
 
           it 'should return zero results' do
-            search = ElasticBoostedContent.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.locale)
+            search = ElasticBoostedContent.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
             search.total.should be_zero
             search.results.size.should be_zero
           end
@@ -78,7 +78,7 @@ describe ElasticBoostedContent do
 
     context 'when no highlight param is sent in' do
       it 'should highlight appropriate fields with <strong> by default' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "<strong>Tropical</strong> Hurricane Names"
         first.description.should == "Worldwide <strong>Tropical</strong> Cyclone Names"
@@ -96,10 +96,10 @@ describe ElasticBoostedContent do
       end
 
       it 'should escape the entity but show the highlight' do
-        search = ElasticBoostedContent.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "Peas &amp; <strong>Carrots</strong>"
-        search = ElasticBoostedContent.search_for(q: 'entities', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'entities', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "Peas &amp; Carrots"
       end
@@ -107,7 +107,7 @@ describe ElasticBoostedContent do
 
     context 'when highlight is turned off' do
       it 'should not highlight matches' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale, highlighting: false)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
         first.title.should == "Tropical Hurricane Names"
         first.description.should == "Worldwide Tropical Cyclone Names"
@@ -126,7 +126,7 @@ describe ElasticBoostedContent do
       end
 
       it 'should show everything in a single fragment' do
-        search = ElasticBoostedContent.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         first.title.should == "<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>."
       end
@@ -150,7 +150,7 @@ describe ElasticBoostedContent do
       end
 
       it "should return only active boosted contents" do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.is_active?.should be_true
       end
@@ -173,7 +173,7 @@ describe ElasticBoostedContent do
       end
 
       it "should return only matches for the given affiliate" do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.affiliate.name.should == affiliate.name
       end
@@ -195,7 +195,7 @@ describe ElasticBoostedContent do
       end
 
       it 'should omit those results' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.title.should =~ /^Current/
       end
@@ -218,7 +218,7 @@ describe ElasticBoostedContent do
       end
 
       it 'should omit those results' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.locale)
+        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
         search.results.first.title.should =~ /^Current/
       end
@@ -263,47 +263,47 @@ describe ElasticBoostedContent do
       end
 
       it 'should ignore them' do
-        ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 3
-        ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 3
-        ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 3
+        ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 3
+        ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
     end
 
     describe 'keywords' do
       it 'should be case insensitive' do
-        ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should perform ASCII folding' do
-        ElasticBoostedContent.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should only match full keyword phrase' do
-        ElasticBoostedContent.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+        ElasticBoostedContent.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
       end
     end
 
     describe "title and description" do
       it 'should be case insentitive' do
-        ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       it 'should perform ASCII folding' do
-        ElasticBoostedContent.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
       end
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero }
+          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
-          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1 }
+          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1 }
         end
       end
 
@@ -320,11 +320,11 @@ describe ElasticBoostedContent do
         it 'should do minimal English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an intern and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           end
           overstemmed_queries = %w{internal internship symbolic ocean organ computing powered engine}
           overstemmed_queries.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
           end
         end
       end
@@ -343,11 +343,30 @@ describe ElasticBoostedContent do
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should == 1
+            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.locale).total.should be_zero
+            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+          end
+        end
+      end
+
+      context 'when affiliate locale is not one of the custom indexed languages' do
+        before do
+          affiliate.locale = 'de'
+          affiliate.boosted_contents.create!(title: 'Angebote und Superknüller der Woche',
+                                             status: 'active',
+                                             description: 'Angebote der Woche. Die Angebote der Woche sind gültig vom 30.03.2015 bis zum 04.04.2015.',
+                                             url: 'http://el.wikipedia.org/wiki/Είναι',
+                                             publish_start_on: Date.current)
+          ElasticBoostedContent.commit
+        end
+
+        it 'should do downcasing and ASCII folding only' do
+          appropriate_stemming = ['superknuller', 'Gultig']
+          appropriate_stemming.each do |query|
+            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           end
         end
       end
