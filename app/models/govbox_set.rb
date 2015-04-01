@@ -81,7 +81,8 @@ class GovboxSet
       search_options = build_search_options(
         excluded_urls: @affiliate.excluded_urls,
         rss_feeds: video_feeds,
-        since: 13.months.ago.beginning_of_day)
+        since: 13.months.ago.beginning_of_day,
+        title_only: true)
       @video_news_items = ElasticNewsItem.search_for search_options
       @modules << 'VIDS' if elastic_results_exist?(@video_news_items)
     end
@@ -95,7 +96,8 @@ class GovboxSet
       search_options = build_search_options(
         excluded_urls: @affiliate.excluded_urls,
         rss_feeds: non_managed_feeds,
-        since: 4.months.ago.beginning_of_day)
+        since: 4.months.ago.beginning_of_day,
+        title_only: true)
       @news_items = ElasticNewsItem.search_for search_options
       @modules << 'NEWS' if elastic_results_exist?(@news_items)
     end

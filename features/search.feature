@@ -49,16 +49,16 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/hidden/1 | First hidden item | hiddenuuid1 | week          | First hidden news for the feed |
     And feed "Noticias" has the following news items:
       | link                              | title          | guid    | published_ago | published_at | description                             | subject        |
-      | http://www.gobiernousa.gov/news/1 | Noticia uno    | esuuid1 | day           |              | Obama item First news item for the feed | economy        |
-      | http://www.gobiernousa.gov/news/2 | Noticia dos    | esuuid2 | day           |              | Obama item Next news item for the feed  | jobs           |
-      | http://www.gobiernousa.gov/news/3 | Noticia tres   | esuuid3 | day           |              | Obama item Next news item for the feed  | health         |
-      | http://www.gobiernousa.gov/news/4 | Noticia cuatro | esuuid4 | day           |              | Obama item Next news item for the feed  | foreign policy |
-      | http://www.gobiernousa.gov/news/5 | Noticia cinco  | esuuid5 | day           | 2012-10-1    | Obama item Next news item for the feed  | education      |
-      | http://www.gobiernousa.gov/news/6 | Noticia seis   | esuuid6 | day           | 2012-10-17   | Obama item Next news item for the feed  | olympics       |
+      | http://www.gobiernousa.gov/news/1 | Obama Noticia uno    | esuuid1 | day           |              | item First news item for the feed | economy        |
+      | http://www.gobiernousa.gov/news/2 | Obama Noticia dos    | esuuid2 | day           |              | item Next news item for the feed  | jobs           |
+      | http://www.gobiernousa.gov/news/3 | Obama Noticia tres   | esuuid3 | day           |              | item Next news item for the feed  | health         |
+      | http://www.gobiernousa.gov/news/4 | Obama Noticia cuatro | esuuid4 | day           |              | item Next news item for the feed  | foreign policy |
+      | http://www.gobiernousa.gov/news/5 | Obama Noticia cinco  | esuuid5 | day           | 2012-10-1    | item Next news item for the feed  | education      |
+      | http://www.gobiernousa.gov/news/6 | Obama Noticia seis   | esuuid6 | day           | 2012-10-17   | item Next news item for the feed  | olympics       |
     And feed "es_agency" has the following news items:
       | link                                       | title             | guid     | published_ago | description                        |
-      | http://www.youtube.com/watch?v=EqExXXahb0s | Noticia video uno | esvuuid1 | day           | Obama video news item for the feed |
-      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Noticia video dos | esvuuid2 | day           | Obama video news item for the feed |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | Noticia video uno Obama | esvuuid1 | day           | video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Noticia video dos Obama | esvuuid2 | day           | video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
       | phrase           |
       | Some Unique item |
@@ -191,13 +191,13 @@ Feature: Affiliate Search
     Then I should see "Mostrar opciones" in the left column
     And I should see "Ocultar opciones" in the left column
     And I should see "Noticia uno"
-    And I should see "Noticia video uno"
+    And I should see "Noticia video uno Obama"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
     And I press "Buscar" in the search box
     And I follow "Videos de 'obama'"
-    Then I should see "Noticia video uno"
+    Then I should see "Noticia video uno Obama"
     And I should not see "Noticia uno"
 
     When I am on es.bar.gov's search page
@@ -206,7 +206,7 @@ Feature: Affiliate Search
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     Then I should see 2 video news results
-    And I should see an image with alt text "Noticia video uno"
+    And I should see an image with alt text "Noticia video uno Obama"
     And I should see an image with src "https://i.ytimg.com/vi/EqExXXahb0s/default.jpg"
     And I should see yesterday's date in the Spanish search results
 

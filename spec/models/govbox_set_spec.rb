@@ -260,7 +260,7 @@ describe GovboxSet do
       it 'should retrieve non-video news items from the last 13 months' do
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
-               since: 4.months.ago.beginning_of_day, language: 'en').
+               since: 4.months.ago.beginning_of_day, language: 'en', title_only: true).
           and_return(non_video_results)
 
         govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
@@ -274,7 +274,8 @@ describe GovboxSet do
           language: 'en',
           q: 'foo',
           rss_feeds: [news_feed, blog_feed],
-          since: 4.months.ago.beginning_of_day
+          since: 4.months.ago.beginning_of_day,
+          title_only: true
         }.merge(highlighting_options)
 
         ElasticNewsItem.should_receive(:search_for).
@@ -304,7 +305,8 @@ describe GovboxSet do
           language: 'en',
           q: 'foo',
           rss_feeds: [youtube_feed],
-          since: 13.months.ago.beginning_of_day
+          since: 13.months.ago.beginning_of_day,
+          title_only: true
         }.merge(highlighting_options)
 
         ElasticNewsItem.should_receive(:search_for).with(expected_search_options).

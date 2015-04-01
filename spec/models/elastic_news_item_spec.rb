@@ -18,6 +18,7 @@ describe ElasticNewsItem do
       link: 'http://www.wh.gov/ns1',
       title: 'Obama adopts policies similar to other policies',
       description: "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and petrol, and a good day for the nation and policies.</p>",
+      body: 'random text here',
       contributor: 'President',
       publisher: 'Briefing Room',
       subject: 'Economy')
@@ -197,6 +198,13 @@ describe ElasticNewsItem do
             subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space Subject))
           end
 
+        end
+      end
+
+      context 'when searching only on titles' do
+        it 'should not match on text in description or body fields' do
+          ElasticNewsItem.search_for(q: 'petrol', rss_feeds: [blog, gallery], language: 'en', title_only: true).total.should be_zero
+          ElasticNewsItem.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total.should be_zero
         end
       end
     end
