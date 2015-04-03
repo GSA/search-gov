@@ -54,6 +54,8 @@ RSpec.configure do |config|
   #config.order = 'random'
 
   config.before(:suite) do
+    FileUtils.mkdir(File.join(Rails.root.to_s, 'tmp'))
+
     require 'test_services'
     unless ENV['TRAVIS']
       TestServices::start_redis

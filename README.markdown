@@ -25,6 +25,15 @@ For Rails 3, we use bundler; you should be able to get all the rest of the gems 
     gem install bundler
     bundle install
 
+## Database
+
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65), accessible from user 'root' with no password.
+
+Create and setup your development and test databases:
+
+    rake db:setup
+    rake db:setup RAILS_ENV=test
+
 ## Asset pipeline
 
 A few tips when working with asset pipeline:
@@ -53,12 +62,12 @@ To upgrade via homebrew:
 To change the defaults, like number of shards/replicas, edit this file:
 
     $ sudo vi /usr/local/Cellar/elasticsearch/1.4.4/config/elasticsearch.yml
-    
+
     index.number_of_shards: 1
     index.number_of_replicas: 0
-    
+
 For the time being, add this to the end of the file to re-enable MVEL scripting for sandboxed languages like Groovy:
-    
+
     script.disable_dynamic: false
 
 You may need to re-install any plugins you were using locally:
@@ -69,11 +78,11 @@ You may need to re-install any plugins you were using locally:
     $ plugin -i elasticsearch/elasticsearch-cloud-aws/2.4.1
 
 If you install Marvel, you probably don't want to monitor your local cluster, so add this to your `elastisearch.yml` file:
-    
+
     marvel.agent.enabled: false
-    
+
 The default JVM heap is 256m with a max of 1g. You can increase it by editing your `~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist` file like this:
- 
+
     <dict>
       <key>ES_JAVA_OPTS</key>
       <string>-Xss200000</string>
@@ -87,7 +96,7 @@ Now restart it:
 
     $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
     $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
-    
+
 If you aren't using Homebrew to install and configure Elasticsearch, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
 ### Indexes
@@ -136,14 +145,11 @@ Verify that redis-server is in your path
     $ which redis-server
     /opt/redis/bin/redis-server
 
-# Database
+## Imagemagick
 
-The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65), accessible from user 'root' with no password.
+We use Imagemagick to identify some image properties. It can also be installed with Homebrew on a Mac.
 
-Create and setup your development and test databases:
-
-    rake db:setup
-    rake db:setup RAILS_ENV=test
+    $ brew install imagemagick
 
 # Tests
 
