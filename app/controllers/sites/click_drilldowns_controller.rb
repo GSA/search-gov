@@ -1,6 +1,6 @@
 class Sites::ClickDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
-  HEADER_FIELDS = ['Date', 'Time', 'Client IP', 'Country Code', 'Region', 'User Agent', 'Device', 'Browser', 'OS', 'Request', 'Referrer', 'Vertical', 'Modules', 'Position', 'Query']
+  HEADER_FIELDS = ['Date', 'Time', 'Query', 'Position', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
 
   def show
     url = request["url"]
@@ -20,19 +20,19 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     date_time = DateTime.parse(doc['@timestamp'])
     record << date_time.strftime("%Y-%m-%d")
     record << date_time.strftime("%H:%M:%S")
-    record << doc['clientip']
-    record << (doc['geoip']['country_code2'] rescue '')
-    record << (doc['geoip']['region_name'] rescue '')
-    record << doc['user_agent']
-    record << (doc['useragent']['device'] rescue '')
-    record << (doc['useragent']['name'] rescue '')
-    record << (doc['useragent']['os'] rescue '')
+    record << (doc['params']['query'] rescue '')
+    record << (doc['params']['position'] rescue '')
     record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
     record << doc['modules']
-    record << (doc['params']['position'] rescue '')
-    record << (doc['params']['query'] rescue '')
+    record << (doc['useragent']['device'] rescue '')
+    record << (doc['useragent']['name'] rescue '')
+    record << (doc['useragent']['os'] rescue '')
+    record << (doc['geoip']['country_code2'] rescue '')
+    record << (doc['geoip']['region_name'] rescue '')
+    record << doc['clientip']
+    record << doc['user_agent']
     record
   end
 
