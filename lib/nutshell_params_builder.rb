@@ -16,8 +16,7 @@ module NutshellParamsBuilder
   def edit_contact_email_params(user, contact)
     contact_emails = extract_contact_emails contact.email
 
-    if contact_emails.blank? || !contact_emails.include?(user.email)
-      contact_emails ||= []
+    unless user_email_overlap?(user.email, contact_emails)
       emails = [user.email] | contact_emails
       email_hash = build_email_hash emails
 
@@ -28,11 +27,16 @@ module NutshellParamsBuilder
   end
 
   def extract_contact_emails(contact_emails)
-    return unless contact_emails.present?
+    return [] unless contact_emails.present?
 
     emails = contact_emails
     emails &&= contact_emails.values if contact_emails.is_a?(Hash)
-    emails.compact.uniq.reject { |e| e.blank? }
+    emails.compact.uniq.reject(&:blank?)
+  end
+
+  def user_email_overlap?(user_email, contact_emails)
+    contact_emails.present? &&
+      contact_emails.map(&:downcase).include?(user_email.downcase)
   end
 
   def build_email_hash(emails)
@@ -62,7 +66,7 @@ module NutshellParamsBuilder
       lead: {
         contacts: lead_contacts(site),
         createdTime: site.created_at.to_datetime.iso8601,
-        customFields: new_lead_custom_fields(site),
+        customFields: lead_custom_fields(site),
         description: lead_description(site)
       }
     }
@@ -79,9 +83,7 @@ module NutshellParamsBuilder
       }
     }
 
-    if site.status.inactive_deleted?
-      params[:lead][:customFields][:Status] = Status::INACTIVE_DELETED_NAME
-    end
+    params[:lead][:outcome] = { id: 3 } if site.status.inactive_deleted?
     params
   end
 
@@ -89,10 +91,6 @@ module NutshellParamsBuilder
     site.users.pluck(:nutshell_id).compact.uniq.map do |user_nutshell_id|
       { id: user_nutshell_id }
     end
-  end
-
-  def new_lead_custom_fields(site)
-    lead_custom_fields(site).merge(Status: site.status.name)
   end
 
   def lead_custom_fields(site)

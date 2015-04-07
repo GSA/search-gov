@@ -25,6 +25,19 @@ describe 'Nutshell rake tasks' do
       User.should_receive(:all).and_return([user])
       adapter.should_receive(:push_user).with(user)
 
+      @rake[task_name].invoke
+    end
+  end
+
+  describe 'usasearch:nutshell:push_users_without_nutshell_id' do
+    let(:task_name) { 'usasearch:nutshell:push_users_without_nutshell_id' }
+    before { @rake[task_name].reenable }
+
+    it "should have 'environment' as a prereq" do
+      @rake[task_name].prerequisites.should include('environment')
+    end
+
+    it 'should push all users' do
       user_without_nutshell_id = mock_model(User)
       User.should_receive(:where).with(nutshell_id: nil).and_return([user_without_nutshell_id])
       adapter.should_receive(:push_user).with(user_without_nutshell_id)

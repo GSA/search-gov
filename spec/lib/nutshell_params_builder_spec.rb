@@ -13,7 +13,7 @@ describe NutshellParamsBuilder do
                  approval_status: 'approved',
                  contact_name: 'Mary Jane',
                  id: 8,
-                 email: 'mary.jane@email.gov')
+                 email: 'mary.jane@EMAIL.gov')
     end
 
     context 'when contact_email Hash is present and it does not include User#email' do
@@ -32,7 +32,7 @@ describe NutshellParamsBuilder do
           to eq(contactId: 600,
                 contact: {
                   email: {
-                    '0' => 'mary.jane@email.gov',
+                    '0' => 'mary.jane@EMAIL.gov',
                     '1' => 'mjane@email.gov' } },
                 rev: '10')
       end
@@ -43,7 +43,7 @@ describe NutshellParamsBuilder do
         get_contact_body_hash = {
           'result' => { 'id' => 600,
                         'email' => { '0' => 'mjane@email.gov',
-                                     '1' => 'mary.jane@email.gov',
+                                     '1' => 'Mary.Jane@email.gov',
                                      '--primary' => 'mjane@email.gov' },
                         'rev' => '10' }
         }
@@ -70,7 +70,7 @@ describe NutshellParamsBuilder do
           to eq(contactId: 600,
                 contact: {
                   email: {
-                    '0' => 'mary.jane@email.gov',
+                    '0' => 'mary.jane@EMAIL.gov',
                     '1' => 'mjane@email.gov' } },
                 rev: '10')
       end
@@ -80,7 +80,7 @@ describe NutshellParamsBuilder do
       let(:contact) do
         get_contact_body_hash = {
           'result' => { 'id' => 600,
-                        'email' => %w(mjane@email.gov mary.jane@email.gov),
+                        'email' => %w(mjane@email.gov Mary.Jane@email.gov),
                         'rev' => '10' }
         }
         Hashie::Rash.new(get_contact_body_hash).result
@@ -104,7 +104,7 @@ describe NutshellParamsBuilder do
         expect(builder.edit_contact_email_params(user, contact)).
           to eq(contactId: 600,
                 contact: {
-                  email: { '0' => 'mary.jane@email.gov' } },
+                  email: { '0' => 'mary.jane@EMAIL.gov' } },
                 rev: '10')
       end
     end

@@ -5,7 +5,7 @@ class NutshellClient
   ENDPOINT = '/api/v1/json'.freeze
 
   def self.enabled?
-    CONFIG['enabled']
+    CONFIG['username'].present? && CONFIG['password'].present?
   end
 
   def post(method_sym, params)

@@ -58,10 +58,8 @@ class NutshellAdapter
     when_post_is_successful :search_contacts, params do |body|
       if body.result.present?
         candidate = get_contact body.result.first.id
-
-        if candidate.email.present? && candidate.email.values.include?(email)
-          contact = candidate
-        end
+        candidate_emails = extract_contact_emails candidate.email
+        contact = candidate if user_email_overlap?(email, candidate_emails)
       end
     end
 
@@ -79,14 +77,7 @@ class NutshellAdapter
   end
 
   def edit_lead(site)
-    when_post_response_has_result_id __method__, edit_lead_params(site) do |result|
-      if result.custom_fields && (status_name = result.custom_fields.status)
-        status = Status.where(name: status_name.downcase.squish).first_or_create
-        if status && status.id
-          site.update_attributes(status_id: status.id)
-        end
-      end
-    end
+    on_client_present { client.post __method__, edit_lead_params(site) }
   end
 
   private

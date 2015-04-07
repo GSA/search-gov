@@ -4,6 +4,11 @@ namespace :usasearch do
     task :push_users => :environment do
       adapter = NutshellAdapter.new
       User.all.each { |u| adapter.push_user u }
+    end
+
+    desc 'push users without nutshell_id'
+    task :push_users_without_nutshell_id => :environment do
+      adapter = NutshellAdapter.new
       User.where(nutshell_id: nil).each { |u| adapter.push_user u }
     end
 

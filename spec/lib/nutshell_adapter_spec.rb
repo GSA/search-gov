@@ -349,7 +349,7 @@ describe NutshellAdapter do
               { 'id' => 600,
                 'email' => {
                   '0' => 'mjane@email.gov',
-                  '1' => 'mary.jane@email.gov',
+                  '1' => 'Mary.Jane@email.gov',
                   '--primary' => 'mjane@email.gov' },
                 'rev' => '1' }
           }
@@ -358,7 +358,7 @@ describe NutshellAdapter do
 
         before do
           client.should_receive(:post).
-            with(:search_contacts, ['mary.jane@email.gov', 1]).
+            with(:search_contacts, ['mary.jane@EMAIL.gov', 1]).
             and_return([true, search_contacts_response_body])
 
           adapter.should_receive(:get_contact).
@@ -367,7 +367,7 @@ describe NutshellAdapter do
         end
 
         it 'returns matching contact' do
-          expect(adapter.get_contact_by_email('mary.jane@email.gov')).
+          expect(adapter.get_contact_by_email('mary.jane@EMAIL.gov')).
             to eq(get_contact_response_body.result)
         end
       end
@@ -480,7 +480,6 @@ describe NutshellAdapter do
               :'Previous month query count' => 0,
               :'SERP URL' => 'http://search.usa.gov/search?affiliate=usasearch',
               :'Site handle' => 'usasearch',
-              :'Status' => 'inactive',
               :'Super Admin URL' => 'http://search.usa.gov/admin/affiliates?search[id]=3000'
             },
             description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
@@ -502,7 +501,6 @@ describe NutshellAdapter do
                    id: 3000,
                    last_month_query_count: 0,
                    name: 'usasearch',
-                   status: mock_model(Status, name: 'inactive'),
                    users: mock('Users', pluck: [600, 600]),
                    website: 'http://search.digitalgov.gov')
       end
@@ -593,12 +591,7 @@ describe NutshellAdapter do
           }
         }
 
-        response_body = Hashie::Rash.new(result: { id: 777, custom_fields: { status: 'Active  -  cfo' } })
-        status_arel = mock('status arel')
-        Status.should_receive(:where).with(name: 'active - cfo').and_return(status_arel)
-        status = mock_model(Status, id: 30)
-        status_arel.should_receive(:first_or_create).and_return(status)
-        site.should_receive(:update_attributes).with(status_id: 30)
+        response_body = Hashie::Rash.new(result: { id: 777 })
 
         client.should_receive(:post).
           with(:edit_lead, expected_nutshell_params).
@@ -622,10 +615,10 @@ describe NutshellAdapter do
                 :'Previous month query count' => 0,
                 :'SERP URL' => 'http://search.usa.gov/search?affiliate=usasearch',
                 :'Site handle' => 'usasearch',
-                :'Status' => 'inactive - deleted',
                 :'Super Admin URL' => 'http://search.usa.gov/admin/affiliates?search[id]=3000'
               },
-              description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
+              description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...',
+              outcome: { id: 3 }
             }
           }
 
