@@ -34,7 +34,6 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :facebook_profiles
     assoc.has_one :image_search_label
     assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
-    assoc.has_one :affiliate_note
     assoc.has_one :site_feed_url
     assoc.has_many :affiliate_twitter_settings
   end
@@ -49,7 +48,6 @@ class Affiliate < ActiveRecord::Base
   belongs_to :agency
 
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
-  has_and_belongs_to_many :tags
   belongs_to :status
 
   with_options dependent: :delete_all, foreign_key: :affiliate, primary_key: :name do |assoc|
@@ -227,7 +225,7 @@ class Affiliate < ActiveRecord::Base
                                          :managed_header_links, :managed_footer_links,
                                          :external_tracking_code, :submitted_external_tracking_code,
                                          :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :go_live_date, :logo_alt_text, :sitelink_generator_names,
+                                         :logo_alt_text, :sitelink_generator_names,
                                          :header_tagline,
                                          :page_one_more_results_pointer, :no_results_pointer,
                                          :footer_fragment,

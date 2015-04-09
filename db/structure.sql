@@ -7,16 +7,6 @@ CREATE TABLE `affiliate_feature_additions` (
   UNIQUE KEY `index_affiliate_feature_additions_on_affiliate_id_and_feature_id` (`affiliate_id`,`feature_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `affiliate_notes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `affiliate_id` int(11) DEFAULT NULL,
-  `note` text COLLATE utf8_unicode_ci,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_affiliate_notes_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `affiliate_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -104,12 +94,6 @@ CREATE TABLE `affiliates_instagram_profiles` (
   `affiliate_id` int(11) NOT NULL,
   `instagram_profile_id` bigint(20) NOT NULL,
   UNIQUE KEY `index_affiliates_instagram_profiles` (`affiliate_id`,`instagram_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `affiliates_tags` (
-  `affiliate_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
-  UNIQUE KEY `index_affiliates_tags_on_affiliate_id_and_tag_id` (`affiliate_id`,`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_youtube_profiles` (
@@ -673,15 +657,6 @@ CREATE TABLE `system_alerts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_tags_on_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `top_searches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `query` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -772,7 +747,6 @@ CREATE TABLE `users` (
   `email_verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `welcome_email_sent` tinyint(1) NOT NULL DEFAULT '0',
   `requires_manual_approval` tinyint(1) DEFAULT '0',
-  `notes` text COLLATE utf8_unicode_ci,
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   `nutshell_id` int(11) DEFAULT NULL,
@@ -2060,3 +2034,11 @@ INSERT INTO schema_migrations (version) VALUES ('20150203194337');
 INSERT INTO schema_migrations (version) VALUES ('20150210200137');
 
 INSERT INTO schema_migrations (version) VALUES ('20150305162024');
+
+INSERT INTO schema_migrations (version) VALUES ('20150409152145');
+
+INSERT INTO schema_migrations (version) VALUES ('20150409153006');
+
+INSERT INTO schema_migrations (version) VALUES ('20150409154101');
+
+INSERT INTO schema_migrations (version) VALUES ('20150409162207');

@@ -336,8 +336,8 @@ Feature: Searches using mobile device
       | display_name | name          | contact_email    | contact_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
     And affiliate "en.agency.gov" has the following document collections:
-      | name | prefixes                |
-      | FAQs | http://answers.usa.gov/ |
+      | name | prefixes             |
+      | Blog | http://blog.usa.gov/ |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name     | url                                | is_navigable |
       | Articles | http://en.agency.gov/feed/articles | true         |
@@ -350,9 +350,9 @@ Feature: Searches using mobile device
     Then I should see "Everything" within the SERP active navigation
     And I should see at least "10" web search results
 
-    When I follow "FAQs" within the SERP navigation
+    When I follow "Blog" within the SERP navigation
     And I press "Search"
-    Then I should see "FAQs" within the SERP active navigation
+    Then I should see "Blog" within the SERP active navigation
     And I should see at least "5" web search results
 
     When I follow "Articles" within the SERP navigation

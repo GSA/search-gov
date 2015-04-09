@@ -16,7 +16,7 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns |= %i(mobile_logo_url header_image_url uses_managed_header_footer staged_uses_managed_header_footer)
 
     virtual_columns = %i(dc_contributor dc_subject dc_publisher
-                         go_live_date last_month_query_count
+                         last_month_query_count
                          header_footer_css staged_header_footer_css header staged_header footer staged_footer
                          features external_tracking_code submitted_external_tracking_code
                          header_tagline_font_family header_tagline_font_size header_tagline_font_style
@@ -24,7 +24,7 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns |= virtual_columns
     config.columns = all_columns
 
-    list_columns = %i(id display_name name website status tags site_domains affiliate_note created_at updated_at recent_user_activity)
+    list_columns = %i(id display_name name website site_domains created_at updated_at recent_user_activity)
     config.list.columns = list_columns
 
     export_columns = [list_columns, all_columns].flatten.uniq
@@ -66,10 +66,8 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    update_columns = %i(status go_live_date)
-    update_columns |= attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|theme|updated_at)\z/i }
-    config.update.columns = %i(affiliate_note)
-
+    update_columns = attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|status_id|theme|updated_at)\z/i }
+    config.update.columns = []
     enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|jobs_enabled|raw_log_access_enabled)/.freeze
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
@@ -96,10 +94,6 @@ class Admin::AffiliatesController < Admin::AdminController
       name_group.collapsed = true
     end
 
-    config.update.columns.add_subgroup 'Tags' do |name_group|
-      name_group.add :tags
-      name_group.collapsed = true
-    end
 
     config.update.columns.add_subgroup 'Analytics-Tracking Code' do |name_group|
       name_group.add :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code
@@ -129,9 +123,6 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.create.columns = [:display_name, :name, :website, :locale]
 
-    config.columns[:affiliate_note].collapsed = true
-    config.columns[:affiliate_note].label = 'Note'
-
     config.columns[:agency].form_ui = :select
 
     config.columns[:favicon_url].label = 'Favicon URL'
@@ -157,11 +148,6 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:search_engine].form_ui = :select
     config.columns[:search_engine].options = { :options => %w(Bing Google) }
 
-    config.columns[:status].form_ui = :select
-    config.columns[:status].set_link 'edit'
-
-    config.columns[:tags].form_ui = :select
-    config.columns[:tags].set_link 'edit'
 
     config.columns[:theme].form_ui = :select
     config.columns[:theme].options = { include_blank: '- select -',

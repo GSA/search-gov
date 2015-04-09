@@ -175,12 +175,6 @@ Feature:  Administration
     And I should see "inactive"
 
     When I go to the admin home page
-    And I follow "Tags" in the Super Admin page
-    Then I should see the following breadcrumbs: Super Admin > Site Tags
-    And I should see "bad code"
-    And I should see "case study"
-
-    When I go to the admin home page
     And I follow "Customer Scopes"
     Then I should see the following breadcrumbs: Super Admin > Customer Scopes
 
