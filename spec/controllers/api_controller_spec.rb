@@ -1,13 +1,22 @@
 require 'spec_helper'
 
 describe ApiController do
-  fixtures :affiliates, :users, :site_domains, :features
+  fixtures :affiliates, :users, :site_domains, :features, :whitelisted_v1_api_handles
 
   describe "#search" do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context "when the affiliate does not exist" do
       before { get :search, affiliate: 'missingaffiliate' }
+
+      it { should respond_with :not_found }
+    end
+
+    context "when the affiliate is not on the v1 whitelist" do
+      before do
+        WhitelistedV1ApiHandle.delete_all
+        get :search, affiliate: 'usagov'
+      end
 
       it { should respond_with :not_found }
     end

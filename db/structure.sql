@@ -756,6 +756,14 @@ CREATE TABLE `users` (
   KEY `index_users_on_perishable_token` (`perishable_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `whitelisted_v1_api_handles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `youtube_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -2042,3 +2050,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150409153006');
 INSERT INTO schema_migrations (version) VALUES ('20150409154101');
 
 INSERT INTO schema_migrations (version) VALUES ('20150409162207');
+
+INSERT INTO schema_migrations (version) VALUES ('20150410205627');
+
+INSERT INTO schema_migrations (version) VALUES ('20150410213415');

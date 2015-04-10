@@ -157,12 +157,6 @@ UsasearchRails3::Application.routes.draw do
       as_routes
     end
     resources :federal_register_documents do as_routes end
-    resources :logfile_blocked_queries do as_routes end
-    resources :logfile_blocked_ips do as_routes end
-    resources :logfile_blocked_class_cs do as_routes end
-    resources :logfile_whitelisted_class_cs do as_routes end
-    resources :logfile_blocked_regexps do as_routes end
-    resources :logfile_blocked_user_agents do as_routes end
     resources :outbound_rate_limits do as_routes end
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
@@ -191,6 +185,7 @@ UsasearchRails3::Application.routes.draw do
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
+    resources :whitelisted_v1_api_handles do as_routes end
   end
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
