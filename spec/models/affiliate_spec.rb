@@ -673,7 +673,7 @@ describe Affiliate do
   end
 
   describe "#set_attributes_from_staged_to_live" do
-    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
     it "should set live fields with values from staged fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
@@ -686,7 +686,7 @@ describe Affiliate do
   end
 
   describe "#set_attributes_from_live_to_staged" do
-    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
     it "should set staged fields with values from live fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
@@ -881,7 +881,7 @@ describe Affiliate do
   end
 
   describe "#add_site_domains" do
-    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
     context "when input domains have leading http(s) protocols" do
       it "should delete leading http(s) protocols from domains" do
@@ -964,7 +964,7 @@ describe Affiliate do
   end
 
   describe "#update_site_domain" do
-    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) {  Affiliate.create!(@valid_create_attributes) }
     let(:site_domain) { SiteDomain.find_by_affiliate_id_and_domain(affiliate.id, 'www.gsa.gov') }
 
     context "when existing domain is covered by new ones" do
@@ -1192,6 +1192,19 @@ describe Affiliate do
       it 'should return false' do
         affiliate.should_show_job_organization_name?.should be_false
       end
+    end
+  end
+
+  describe "#enable_video_govbox!" do
+    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
+    before do
+      youtube_profile = youtube_profiles(:whitehouse)
+      affiliate.youtube_profiles << youtube_profile
+      affiliate.enable_video_govbox!
+    end
+
+    it 'should localize "Videos" for the name of the RSS feed' do
+      affiliate.rss_feeds.last.name.should == "Vídeos"
     end
   end
 end

@@ -417,7 +417,7 @@ class Affiliate < ActiveRecord::Base
 
   def enable_video_govbox!
     transaction do
-      rss_feed = rss_feeds.managed.first_or_initialize(name: 'Videos')
+      rss_feed = rss_feeds.managed.first_or_initialize(name: I18n.t(:videos, locale: locale))
       rss_feed.save!
       update_column(:is_video_govbox_enabled, true)
     end
