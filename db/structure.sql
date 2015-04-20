@@ -754,7 +754,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
-  KEY `index_users_on_perishable_token` (`perishable_token`)
+  KEY `index_users_on_perishable_token` (`perishable_token`),
+  KEY `index_users_on_nutshell_id` (`nutshell_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `whitelisted_v1_api_handles` (
@@ -2078,3 +2079,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150414023501');
 INSERT INTO schema_migrations (version) VALUES ('20150420131548');
 
 INSERT INTO schema_migrations (version) VALUES ('20150503210938');
+
+INSERT INTO schema_migrations (version) VALUES ('20150428131528');

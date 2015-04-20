@@ -80,6 +80,13 @@ class NutshellAdapter
     on_client_present { client.post __method__, edit_lead_params(site) }
   end
 
+  def new_note(entity, note)
+    on_client_present do
+      return unless entity.nutshell_id
+      client.post __method__, new_note_params(entity, note)
+    end
+  end
+
   private
 
   def when_post_is_successful(method, params)

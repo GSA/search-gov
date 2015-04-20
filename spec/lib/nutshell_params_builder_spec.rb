@@ -10,7 +10,6 @@ describe NutshellParamsBuilder do
   describe '#edit_contact_email_params' do
     let(:user) do
       mock_model(User,
-                 approval_status: 'approved',
                  contact_name: 'Mary Jane',
                  id: 8,
                  email: 'mary.jane@EMAIL.gov')
@@ -122,6 +121,36 @@ describe NutshellParamsBuilder do
 
         expect(builder.extract_contact_emails(contact_emails)).
           to eq(%w(user1@email.gov user2@email.gov))
+      end
+    end
+  end
+
+  describe '#new_note_params' do
+    let(:note) { 'This note.' }
+
+    context 'when given a user entity' do
+      let(:entity) { mock_model(User, nutshell_id: 42) }
+
+      it 'returns params for adding the note to the corresponding contact' do
+        expect(builder.new_note_params(entity, note)).
+          to eq(entity: {
+                  entityType: 'Contacts',
+                  id: 42,
+                },
+                note: 'This note.')
+      end
+    end
+
+    context 'when given a site entity' do
+      let(:entity) { mock_model(Affiliate, nutshell_id: 43) }
+
+      it 'returns params for adding the note to the corresponding lead' do
+        expect(builder.new_note_params(entity, note)).
+          to eq(entity: {
+                  entityType: 'Leads',
+                  id: 43,
+                },
+                note: 'This note.')
       end
     end
   end

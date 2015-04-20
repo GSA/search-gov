@@ -53,7 +53,7 @@ module NutshellParamsBuilder
     {
       contact: {
         customFields: {
-          :'Approval status' => user.approval_status,
+          :'Approval status' => user.nutshell_approval_status,
           :'Super Admin URL' => "http://search.usa.gov/admin/users?search[id]=#{user.id}"
         },
         name: user.contact_name
@@ -106,5 +106,17 @@ module NutshellParamsBuilder
 
   def lead_description(site)
     "(#{site.name}) #{site.display_name}".squish.truncate(100, separator: ' ')
+  end
+
+  def new_note_params(entity, note)
+    entity_type = entity.is_a?(User) ? 'Contacts' : 'Leads'
+
+    {
+      entity: {
+        entityType: entity_type,
+        id: entity.nutshell_id,
+      },
+      note: note,
+    }
   end
 end

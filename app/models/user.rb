@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   attr_protected :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
   scope :not_approved, where(approval_status: 'not_approved')
+  scope :approved_with_same_nutshell_contact, lambda { |user| { conditions: { nutshell_id: user.nutshell_id, approval_status: 'approved' } } }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -105,6 +106,14 @@ class User < ActiveRecord::Base
 
   def affiliate_names
     affiliates.collect(&:name).join(',')
+  end
+
+  def nutshell_approval_status
+    if User.approved_with_same_nutshell_contact(self).count > 0
+      'approved'
+    else
+      approval_status
+    end
   end
 
   private

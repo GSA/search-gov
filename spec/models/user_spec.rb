@@ -339,4 +339,45 @@ describe User do
       @user.affiliate_names.should == ''
     end
   end
+
+  describe '#nutshell_approval_status' do
+    let(:nutshell_id) { 42 }
+
+    before do
+      adapter.stub(:push_user)
+
+      @user = User.create!(@valid_attributes.merge(nutshell_id: nutshell_id))
+
+      approval_statuses.each do |approval_status|
+        user = User.create!(@valid_attributes.merge(email: "user-#{approval_status}@example.com",
+                                                    nutshell_id: nutshell_id))
+        user.approval_status = approval_status
+        user.save!
+      end
+    end
+
+    context 'when an approved user with the same nutshell contact exists' do
+      let(:approval_statuses) { ['approved'] }
+
+      it 'should be approved' do
+        @user.nutshell_approval_status.should == 'approved'
+      end
+    end
+
+    context 'when a non-approved user with the same nutshell contact exists' do
+      let(:approval_statuses) { ['not_approved'] }
+
+      it 'should be the conventional user approval_status' do
+        @user.nutshell_approval_status.should == 'pending_email_verification'
+      end
+    end
+
+    context 'when approved and non-approved users with the same nutshell contact exist' do
+      let(:approval_statuses) { ['approved', 'not_approved'] }
+
+      it 'should be approved' do
+        @user.nutshell_approval_status.should == 'approved'
+      end
+    end
+  end
 end

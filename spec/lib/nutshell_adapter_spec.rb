@@ -31,7 +31,7 @@ describe NutshellAdapter do
     end
 
     context 'when User#nutshell_id is not present' do
-      it 'sends NutshellClient#edit_contact' do
+      it 'sends NutshellClient#new_contact' do
         user = mock_model(User, nutshell_id?: false)
         adapter.should_receive(:new_contact).with(user)
 
@@ -59,7 +59,7 @@ describe NutshellAdapter do
 
       let(:user) do
         mock_model(User,
-                   approval_status: 'approved',
+                   nutshell_approval_status: 'approved',
                    contact_name: 'Mary Jane',
                    id: 8,
                    email: 'mary.jane@email.gov')
@@ -165,7 +165,7 @@ describe NutshellAdapter do
 
       let(:user) do
         mock_model(User,
-                   approval_status: 'pending_email_verification',
+                   nutshell_approval_status: 'pending_email_verification',
                    contact_name: 'Mary Jane',
                    email: 'mary.jane@email.gov',
                    id: 8,
@@ -223,7 +223,7 @@ describe NutshellAdapter do
       context 'when User#email exists in the Contact' do
         let(:user_with_matching_email) do
           mock_model(User,
-                     approval_status: 'pending_email_verification',
+                     nutshell_approval_status: 'pending_email_verification',
                      contact_name: 'Mary Jane',
                      email: 'mjane@email.gov',
                      id: 8,
@@ -626,6 +626,79 @@ describe NutshellAdapter do
             with(:edit_lead, expected_nutshell_params)
 
           adapter.edit_lead site
+        end
+      end
+    end
+  end
+
+  describe '#new_note' do
+    let(:note) { 'This is some note text.' }
+    let(:response_body) { Hashie::Rash.new(result: { id: 777 }) }
+
+    context 'when NutshellClient is enabled' do
+      before { NutshellClient.stub(:enabled?).and_return(true) }
+
+      context 'for a user' do
+        context 'with a nutshell_id' do
+          let(:user) { mock_model(User, nutshell_id: 42) }
+
+          it 'sends new_note request' do
+            expected_nutshell_params = {
+              entity: {
+                entityType: 'Contacts',
+                id: 42,
+              },
+              note: 'This is some note text.',
+            }
+
+            client.should_receive(:post).
+              with(:new_note, expected_nutshell_params).
+              and_return([true, response_body])
+
+            adapter.new_note(user, note)
+          end
+        end
+
+        context 'without a nutshell_id' do
+          let(:user) { mock_model(User) }
+
+          it 'does not send new_note request' do
+            client.should_not_receive(:post)
+
+            adapter.new_note(user, note)
+          end
+        end
+      end
+
+      context 'for a site' do
+        context 'with a nutshell_id' do
+          let(:site) { mock_model(Affiliate, nutshell_id: 43) }
+
+          it 'sends new_note request' do
+            expected_nutshell_params = {
+              entity: {
+                entityType: 'Leads',
+                id: 43,
+              },
+              note: 'This is some note text.',
+            }
+
+            client.should_receive(:post).
+              with(:new_note, expected_nutshell_params).
+              and_return([true, response_body])
+
+            adapter.new_note(site, note)
+          end
+        end
+
+        context 'without a nutshell_id' do
+          let(:site) { mock_model(Affiliate) }
+
+          it 'does not send new_note request' do
+            client.should_not_receive(:post)
+
+            adapter.new_note(site, note)
+          end
         end
       end
     end

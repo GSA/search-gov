@@ -47,7 +47,7 @@ describe Sites::UsersController do
       include_context 'approved user logged in to a site'
 
       context 'when new user does not exist in the system and user params are valid' do
-        let(:new_user) { mock_model(User, email: 'john@email.gov') }
+        let(:new_user) { mock_model(User, email: 'john@email.gov', nutshell_id: 42) }
 
         before do
           User.should_receive(:find_by_email).with('john@email.gov').and_return nil
@@ -57,6 +57,7 @@ describe Sites::UsersController do
 
           new_user.should_receive(:save).and_return(true)
           adapter.should_receive(:push_site).with(site)
+          adapter.should_receive(:new_note).with(new_user, '@[Contacts:1001] added @[Contacts:42], john@email.gov to @[Leads:99] NPS Site [nps.gov].')
 
           post :create,
                site_id: site.id,
@@ -92,7 +93,7 @@ describe Sites::UsersController do
       end
 
       context 'when new user exists in the system but does not have access to the site' do
-        let(:new_user) { mock_model(User, email: 'john@email.gov') }
+        let(:new_user) { mock_model(User, email: 'john@email.gov', nutshell_id: 42) }
         let(:site_users) { mock('site users') }
 
         before do
@@ -107,6 +108,7 @@ describe Sites::UsersController do
           email.should_receive(:deliver)
 
           adapter.should_receive(:push_site).with(site)
+          adapter.should_receive(:new_note).with(new_user, '@[Contacts:1001] added @[Contacts:42], john@email.gov to @[Leads:99] NPS Site [nps.gov].')
 
           post :create,
                site_id: site.id,
@@ -151,19 +153,59 @@ describe Sites::UsersController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      it 'pushes to Nutshell' do
-        target_user = mock_model(User, id: 100)
+      let(:target_user) { mock_model(User, id: 100, nutshell_id: 42, email: 'john@email.gov') }
+      let(:remaining_sites) { [] }
+
+      before do
+        target_user.should_receive(:affiliates).and_return(remaining_sites)
         User.should_receive(:find).with('100').and_return(target_user)
+
         memberships = mock('membership')
         Membership.should_receive(:where).with(user_id: 100, affiliate_id: site.id).
           and_return(memberships)
         memberships.should_receive(:destroy_all)
+      end
 
-        adapter.should_receive(:push_site).with(site)
+      describe 'site pushing' do
+        before { adapter.should_receive(:new_note) }
 
-        put :destroy,
-            id: 100,
-            site_id: site.id
+        it 'pushes to Nutshell' do
+          adapter.should_receive(:push_site).with(site)
+
+          put :destroy,
+              id: 100,
+              site_id: site.id
+        end
+      end
+
+      describe 'nutshell audit trail' do
+        before { adapter.should_receive(:push_site) }
+
+        context 'when user no longer belongs to any sites' do
+          it 'creates a Nutshell note indicating user removal and resulting not_approved status' do
+            expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov]. ' +
+                               'This user is no longer associated with any sites, ' +
+                               "so their approval status has been set to 'not_approved'."
+            adapter.should_receive(:new_note).with(target_user, expected_message)
+
+            put :destroy,
+                id: 100,
+                site_id: site.id
+          end
+        end
+
+        describe 'when the user still belongs to other sites' do
+          let(:remaining_sites) { [affiliates(:power_affiliate), affiliates(:another_affiliate)] }
+
+          it 'creates a Nutshell note indicating user removal' do
+            expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov].'
+            adapter.should_receive(:new_note).with(target_user, expected_message)
+
+            put :destroy,
+                id: 100,
+                site_id: site.id
+          end
+        end
       end
     end
   end
