@@ -17,6 +17,6 @@ class Admin::UsersController < Admin::AdminController
 
     export.columns = %i(email contact_name affiliate_names last_login_at last_login_ip last_request_at
                         created_at updated_at organization_name is_affiliate_admin is_affiliate approval_status
-                        welcome_email_sent notes)
+                        welcome_email_sent)
   end
 end
