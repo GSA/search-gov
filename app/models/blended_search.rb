@@ -44,6 +44,10 @@ class BlendedSearch < Search
     @offset ? @offset : ((@page - 1) * @per_page)
   end
 
+  def first_page?
+    @offset ? @offset.zero? : super
+  end
+
   protected
 
   def handle_response(response)
@@ -64,9 +68,6 @@ class BlendedSearch < Search
                                 @highlight_options) if first_page?
   end
 
-  def first_page?
-    @offset ? @offset.zero? : super
-  end
 
   def log_serp_impressions
     @modules << "LOVER" << "SPEL" unless self.spelling_suggestion.nil?

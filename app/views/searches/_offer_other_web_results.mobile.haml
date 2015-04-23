@@ -1,3 +1,4 @@
-#offer-commercial-results
-  .content-block-item
-    = link_to_other_web_results(search.affiliate.page_one_more_results_pointer, search.query)
+- if search.first_page? and search.affiliate.page_one_more_results_pointer.present?
+  #offer-commercial-results
+    .content-block-item
+      = link_to_other_web_results(search.affiliate.page_one_more_results_pointer, search.query)
