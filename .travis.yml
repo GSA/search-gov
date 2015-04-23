@@ -3,7 +3,7 @@ bundler_args: --without development
 rvm:
   - 2.1.2
 before_install:
-  - curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.deb && sudo dpkg -i elasticsearch-1.4.4.deb && true
+  - curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.1.deb && sudo dpkg -i elasticsearch-1.5.1.deb && true
   - sudo service elasticsearch start
 services:
   - redis-server

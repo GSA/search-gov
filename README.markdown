@@ -61,7 +61,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards/replicas, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.4.4/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.5.1/config/elasticsearch.yml
 
     index.number_of_shards: 1
     index.number_of_replicas: 0
