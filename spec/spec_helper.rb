@@ -91,14 +91,14 @@ RSpec.configure do |config|
 
     image_search_params = common_image_search_params.
         merge('image.count' => 20,
-              query: '(white house) (scopeid:usagovall OR site:gov OR site:mil)')
+              query: '(white house) language:en (scopeid:usagovall OR site:gov OR site:mil)')
     stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 
-    image_search_params = common_image_search_params.merge(query: '(white house) (site:nonsense.gov)')
+    image_search_params = common_image_search_params.merge(query: '(white house) language:en (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, generic_bing_image_result] }
 
     bing_image_no_result = Rails.root.join('spec/fixtures/json/bing/image_search/no_results.json').read
-    image_search_params = common_image_search_params.merge(query: '(unusual image) (site:nonsense.gov)')
+    image_search_params = common_image_search_params.merge(query: '(unusual image) language:en  (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{image_search_params.to_param}") { [200, {}, bing_image_no_result] }
 
     generic_bing_result_no_highlight = Rails.root.join('spec/fixtures/json/bing/web_search/ira_no_highlight.json').read
@@ -126,12 +126,12 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(query: 'english')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
-    web_search_params = common_web_search_params.merge(query: '(english) (site:nonsense.gov)')
+    web_search_params = common_web_search_params.merge(query: '(english) language:en (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
     page2_6results = Rails.root.join('spec/fixtures/json/bing/web_search/page2_6results.json').read
     web_search_params = common_web_search_params.
-        merge(query: '(fewer) (site:nonsense.gov)',
+        merge(query: '(fewer) language:en (site:nonsense.gov)',
               'web.offset' => 10)
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, page2_6results] }
 
@@ -155,20 +155,20 @@ RSpec.configure do |config|
 
     web_search_params = common_web_search_params.merge(query: 'no_results')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
-    web_search_params = common_web_search_params.merge(query: '(no_results) (site:nonsense.gov)')
+    web_search_params = common_web_search_params.merge(query: '(no_results) language:en (site:nonsense.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
-    web_search_params = common_web_search_params.merge(query: '(Scientost) (site:www100.whitehouse.gov)')
+    web_search_params = common_web_search_params.merge(query: '(Scientost) language:en (site:www100.whitehouse.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_no_results] }
 
     bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
     web_search_params = common_web_search_params.merge(query: 'electro coagulation')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
 
-    web_search_params = common_web_search_params.merge(query: '(electro coagulation) (scopeid:usagovall OR site:gov OR site:mil)')
+    web_search_params = common_web_search_params.merge(query: '(electro coagulation) language:en (scopeid:usagovall OR site:gov OR site:mil)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
 
     bing_spelling = Rails.root.join('spec/fixtures/json/bing/web_search/spelling_suggestion.json').read
-    web_search_params = common_web_search_params.merge(query: '(electro coagulation) (site:www.whitehouse.gov)')
+    web_search_params = common_web_search_params.merge(query: '(electro coagulation) language:en (site:www.whitehouse.gov)')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, bing_spelling] }
 
     oasis_api_path = "#{OasisSearch::API_ENDPOINT}?"

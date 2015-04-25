@@ -27,10 +27,6 @@ class BingFormattedQuery < FormattedQuery
   end
 
   def query_plus_locale(user_query)
-    "(#{user_query}) #{non_english_locale}".squish
-  end
-
-  def non_english_locale
-    "language:#{I18n.locale}" if I18n.locale.to_s != 'en'
+    "(#{user_query}) language:#{I18n.locale}".squish
   end
 end

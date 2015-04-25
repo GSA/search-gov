@@ -63,7 +63,7 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "(government) (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
+      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
     end
   end
 
