@@ -68,7 +68,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     update_columns = attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|status_id|theme|updated_at)\z/i }
     config.update.columns = []
-    enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|jobs_enabled|raw_log_access_enabled)/.freeze
+    enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled)/.freeze
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add *update_columns.reject { |column| column =~ enable_disable_column_regex }
