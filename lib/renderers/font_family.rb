@@ -4,6 +4,7 @@ module FontFamily
   PREDEFINED = [
       'Arial, sans-serif',
       'Helvetica, sans-serif',
+      'Tahoma, Verdana, Arial, sans-serif',
       '"Trebuchet MS", sans-serif',
       'Verdana, sans-serif'
   ]
