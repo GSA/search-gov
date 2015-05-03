@@ -86,6 +86,7 @@ CREATE TABLE `affiliates` (
   `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nutshell_id` int(11) DEFAULT NULL,
+  `gets_commercial_results_on_blended_search` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2075,3 +2076,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150414023218');
 INSERT INTO schema_migrations (version) VALUES ('20150414023501');
 
 INSERT INTO schema_migrations (version) VALUES ('20150420131548');
+
+INSERT INTO schema_migrations (version) VALUES ('20150503210938');

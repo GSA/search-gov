@@ -29,7 +29,7 @@ module MobileSearchHelper
       when ImageSearch
         search.affiliate.is_bing_image_search_enabled? && search.module_tag == 'OASIS'
       when BlendedSearch
-        true
+        search.affiliate.gets_commercial_results_on_blended_search?
       else
         false
     end
