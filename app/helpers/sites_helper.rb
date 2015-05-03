@@ -154,4 +154,16 @@ module SitesHelper
     index = sees_filtered_totals ? 2 : 1
     "#{top_query[0]} [#{top_query[index]}]"
   end
+
+  def user_row_css_class_hash(user)
+    row_class = case user.approval_status
+                when 'pending_email_verification', 'pending_approval'
+                  'warning'
+                when 'not_approved'
+                  'error'
+                else
+                  nil
+                end
+    row_class ? { class: row_class } : {}
+  end
 end
