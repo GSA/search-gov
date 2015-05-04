@@ -135,7 +135,16 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliates do as_routes end
     resources :affiliate_notes do as_routes end
     resources :affiliate_templates do as_routes end
-    resources :users do as_routes end
+    resources :users do
+      member do
+        resources :emails, controller: 'user_emails', only: [:index] do
+          get :merge_tags
+          post :send_to_admin
+          post :send_to_user
+        end
+      end
+      as_routes
+    end
     resources :sayt_filters do as_routes end
     resources :sayt_suggestions do as_routes end
     resources :misspellings do as_routes end
@@ -196,6 +205,7 @@ UsasearchRails3::Application.routes.draw do
   end
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
+  match '/admin/users/:id/send_email' => 'admin/users#send_email', :as => :user_send_email_redirect
   match '/admin' => 'admin/home#index', :as => :admin_home_page
 
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed

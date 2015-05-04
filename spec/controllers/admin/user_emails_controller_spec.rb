@@ -1,0 +1,204 @@
+require 'spec_helper'
+
+describe Admin::UserEmailsController do
+  render_views
+  fixtures :users
+
+  before { MandrillAdapter.stub(:new).and_return(adapter) }
+  let(:adapter) { mock(MandrillAdapter) }
+  let(:target_user) { users('affiliate_manager') }
+
+  context 'when not logged in' do
+    describe '#index' do
+      it 'should redirect to the login page' do
+        get :index, id: target_user.id
+        response.should redirect_to(login_path)
+      end
+    end
+
+    describe '#merge_tags' do
+      it 'should redirect to the login page' do
+        get :merge_tags, id: target_user.id
+        response.should redirect_to(login_path)
+      end
+    end
+
+    describe '#send_to_admin' do
+      it 'should redirect to the login page' do
+        post :send_to_admin, id: target_user.id, email_id: 'Template A'
+        response.should redirect_to(login_path)
+      end
+    end
+
+    describe '#send_to_user' do
+      it 'should redirect to the login page' do
+        post :send_to_user, id: target_user.id, email_id: 'Template A'
+        response.should redirect_to(login_path)
+      end
+    end
+  end
+
+  context 'when logged in as a non-affiliate-admin user' do
+    before do
+      activate_authlogic
+      UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
+    end
+
+    describe '#index' do
+      it 'should redirect to the login page' do
+        get :index, id: target_user.id
+        response.should redirect_to(account_path)
+      end
+    end
+
+    describe '#merge_tags' do
+      it 'should redirect to the login page' do
+        get :merge_tags, id: target_user.id
+        response.should redirect_to(account_path)
+      end
+    end
+
+    describe '#send_to_admin' do
+      it 'should redirect to the login page' do
+        post :send_to_admin, id: target_user.id, email_id: 'Template A'
+        response.should redirect_to(account_path)
+      end
+    end
+
+    describe '#send_to_user' do
+      it 'should redirect to the login page' do
+        post :send_to_user, id: target_user.id, email_id: 'Template A'
+        response.should redirect_to(account_path)
+      end
+    end
+  end
+
+  context 'when logged in as an affiliate-admin user' do
+    before do
+      activate_authlogic
+      UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+    end
+
+    describe '#index' do
+      context 'when no client is present' do
+        before { adapter.stub(:template_names).and_raise(MandrillAdapter::NoClient) }
+
+        it 'should show a no-client error' do
+          get :index, id: target_user.id
+          response.body.should contain('No Mandrill client')
+        end
+      end
+
+      context 'when a client is present' do
+        before { adapter.stub(:template_names).and_return(['Template A', 'Template B']) }
+
+        it 'should show a list of template names' do
+          get :index, id: target_user.id
+          response.body.should contain('Template A')
+          response.body.should contain('Template B')
+        end
+      end
+    end
+
+    describe '#merge_tags' do
+      context 'when no client is present' do
+        before { adapter.stub(:preview_info).and_raise(MandrillAdapter::NoClient) }
+
+        it 'should show a no-client error' do
+          get :merge_tags, id: target_user.id, email_id: 'Template A'
+          response.body.should contain('No Mandrill client')
+        end
+      end
+
+      context 'when a client is present' do
+        before do
+          adapter.stub(:preview_info).with(target_user, 'Template A').and_return({
+            to: 'Joe Something <joe@example.com>',
+            subject: 'Welcome, dear user',
+            to_admin: to_admin,
+            merge_tags: {
+              available: {
+                organization_name: 'The Organization',
+              },
+              needed: [
+                :first_name,
+              ],
+            },
+          })
+
+          get :merge_tags, id: target_user.id, email_id: 'Template A'
+        end
+
+        let(:to_admin) { true }
+
+        it 'should show the recipient info' do
+          response.body.should contain(%r{Template:.*?Template A}m)
+          response.body.should contain(%r{Send to:.*?Joe Something <joe@example.com>}m)
+          response.body.should contain(%r{Subject:.*?Welcome, dear user}m)
+        end
+
+        it 'should show default merge field values' do
+          response.should have_selector('input', id: 'organization_name', value: 'The Organization')
+        end
+
+        it 'should have input fields for needed merge field values' do
+          response.body.should have_selector('input', id: 'first_name')
+        end
+
+        context 'when the template is meant to be sent to admins not users' do
+          let(:to_admin) { true }
+
+          it 'should have a send-to-admin form' do
+            response.body.should have_selector('form', {
+              action: URI.unescape(admin_email_send_to_admin_path(id: target_user.id, email_id: 'Template A')),
+              method: 'post',
+            })
+          end
+        end
+
+        context 'when the template is meant to be sent to users not admins' do
+          let(:to_admin) { false }
+
+          it 'should have a send-to-user form' do
+            response.body.should have_selector('form', {
+              action: URI.unescape(admin_email_send_to_user_path(id: target_user.id, email_id: 'Template A')),
+              method: 'post',
+            })
+          end
+        end
+      end
+    end
+
+    describe '#send_to_admin' do
+      it 'sends an email to the admin' do
+        adapter.should_receive(:send_admin_email).with(target_user, 'Template A', {
+          'first' => 'Joe',
+          'last' => 'Something',
+        })
+
+        post :send_to_admin, {
+          id: target_user.id,
+          email_id: 'Template A',
+          first: 'Joe',
+          last: 'Something',
+        }
+      end
+    end
+
+    describe '#send_to_user' do
+      it 'sends and email to the target user' do
+        adapter.should_receive(:send_user_email).with(target_user, 'Template A', {
+          'first' => 'Joe',
+          'last' => 'Something',
+        })
+
+        post :send_to_user, {
+          id: target_user.id,
+          email_id: 'Template A',
+          first: 'Joe',
+          last: 'Something',
+        }
+      end
+    end
+  end
+end

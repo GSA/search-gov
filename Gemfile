@@ -71,6 +71,7 @@ gem 'jbuilder'
 gem 'rack-contrib'
 gem 'sitelink_generator'
 gem 'typhoeus'
+gem 'mandrill-api'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

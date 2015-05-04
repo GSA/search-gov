@@ -11,6 +11,7 @@ after :deploy, "warmup"
 task :staging_yaml_files, roles: :app do
   run "cp #{shared_path}/system/usajobs.yml #{release_path}/config/usajobs.yml"
   run "cp #{shared_path}/system/nutshell.yml #{release_path}/config/nutshell.yml"
+  run "cp #{shared_path}/system/mandrill.yml #{release_path}/config/mandrill.yml"
   run "cp #{shared_path}/system/??.yml #{release_path}/config/locales/"
 end
 

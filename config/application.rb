@@ -72,6 +72,11 @@ module UsasearchRails3
 
     config.active_record.schema_format = :sql
     config.active_record.whitelist_attributes = false
+
+    require 'mandrill_adapter'
+    if smtp_settings = MandrillAdapter.new.smtp_settings
+       config.action_mailer.smtp_settings = smtp_settings
+    end
   end
 end
 
