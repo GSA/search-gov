@@ -15,7 +15,12 @@ class ElasticTextFilteredQuery < ElasticQuery
 
   def filtered_query_query(json)
     json.query do
-      query_string(json, highlighted_fields, @q, query_string_options)
+      json.bool do
+        json.must do
+          json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
+          json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
+        end
+      end
     end if @q.present?
   end
 
@@ -33,4 +38,7 @@ class ElasticTextFilteredQuery < ElasticQuery
     { analyzer: @text_analyzer, default_operator: 'AND' }
   end
 
+  def multi_match_options
+    { analyzer: @text_analyzer }
+  end
 end

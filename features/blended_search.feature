@@ -98,3 +98,19 @@ Feature: Blended Search
     And I fill in "Enter your search term" with "news"
     And I press "Search"
     Then I should not see "Try your search again"
+
+  Scenario: Search with only stopwords
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | contact_name | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 |
+    And affiliate "blended.agency.gov" has the following RSS feeds:
+      | name          | url                                  | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press | true         |
+    And there are 5 news items for "Press"
+    When I am on blended.agency.gov's search page
+    And I fill in "Enter your search term" with "news"
+    And I press "Search"
+    And I should see at least "5" web search results
+    When I fill in "Enter your search term" with "the with and"
+    And I press "Search"
+    Then I should see "Sorry, no results found for 'the with and'."
