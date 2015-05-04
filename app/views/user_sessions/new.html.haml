@@ -2,7 +2,10 @@
 = content_for :navigation do
   %ul.nav.signup
     %li= link_to 'Sign up', signup_path
-.without-site-wrapper
+
+#user-session.without-site-wrapper
+  %h1 Login
+  = render partial: 'javascript_not_loaded'
   = form_for @user_session, url: user_session_path, html: { id: 'user-session-form' } do |f|
     = render_flash_message(false)
     = f.error_messages class: 'alert alert-error', header_tag: 'h3'
