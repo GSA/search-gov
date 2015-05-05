@@ -218,7 +218,7 @@ describe SiteAutodiscoverer do
       it 'should create flickr profile' do
         InstagramData.stub(:import_profile)
         TwitterData.stub(:import_profile)
-        YoutubeData.stub(:import_profile)
+        YoutubeProfileData.stub(:import_profile)
 
         FlickrData.should_receive(:import_profile).with(site, 'http://flickr.com/photos/whitehouse')
 
@@ -228,7 +228,7 @@ describe SiteAutodiscoverer do
       it 'creates instagram profile' do
         FlickrData.stub(:import_profile)
         TwitterData.stub(:import_profile)
-        YoutubeData.stub(:import_profile)
+        YoutubeProfileData.stub(:import_profile)
 
         instagram_profile = mock_model(InstagramProfile)
         InstagramData.should_receive(:import_profile).with('whitehouse').and_return(instagram_profile)
@@ -245,7 +245,7 @@ describe SiteAutodiscoverer do
       it 'should create twitter profile' do
         FlickrData.stub(:import_profile)
         InstagramData.stub(:import_profile)
-        YoutubeData.stub(:import_profile)
+        YoutubeProfileData.stub(:import_profile)
 
         twitter_profile = mock_model(TwitterProfile)
         TwitterData.should_receive(:import_profile).
@@ -266,8 +266,8 @@ describe SiteAutodiscoverer do
         TwitterData.stub(:import_profile)
 
         youtube_profile = mock_model(YoutubeProfile)
-        YoutubeData.stub(:import_profile) do |username|
-          youtube_profile if username == 'whitehouse1'
+        YoutubeProfileData.stub(:import_profile) do |url|
+          youtube_profile if 'http://www.youtube.com/whitehouse1?watch=0' == url
         end
 
         youtube_profiles = mock('youtube profiles')
@@ -285,7 +285,6 @@ describe SiteAutodiscoverer do
         FlickrProfile.delete_all
         page_with_bad_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_bad_social_media_urls.html').read
         DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({ body: page_with_bad_social_media_urls })
-        # Rails.logger.should_not_receive(:error)
       end
 
       it 'should not create the feed' do

@@ -153,8 +153,7 @@ class SiteAutodiscoverer
   end
 
   def create_youtube_profile(url)
-    username = extract_profile_name url
-    youtube_profile = YoutubeData.import_profile username
+    youtube_profile = YoutubeProfileData.import_profile url
     return unless youtube_profile
 
     unless @site.youtube_profiles.exists? youtube_profile

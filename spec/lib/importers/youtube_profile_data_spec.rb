@@ -108,5 +108,15 @@ describe YoutubeProfileData do
         expect(described_class.detect_url(url)).to eq([:user, 'USERNAME'])
       end
     end
+
+    context 'when url path starts with /watch or /playlist' do
+      it 'returns blank' do
+        url = 'https://www.youtube.com/watch?v=video_id'
+        expect(described_class.detect_url(url)).to be_blank
+
+        url = 'https://www.youtube.com/playlist?list=playlist_id'
+        expect(described_class.detect_url(url)).to be_blank
+      end
+    end
   end
 end

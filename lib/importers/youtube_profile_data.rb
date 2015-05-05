@@ -48,12 +48,20 @@ module YoutubeProfileData
   def self.detect_url_type_and_id(path)
     paths = path.to_s.split('/').reject(&:blank?)
 
-    if paths[0] =~ /\A(channel|user)\Z/i && paths[1].present?
-      [paths[0].to_sym, paths[1].squish]
-    elsif paths.length == 1
-      [:user, paths[0].squish]
-    else
-      []
+    type_and_id = []
+    if path_starts_with_channel_or_user? paths
+      type_and_id = [paths[0].to_sym, paths[1].squish]
+    elsif path_starts_with_username? paths
+      type_and_id = [:user, paths[0].squish]
     end
+    type_and_id
+  end
+
+  def self.path_starts_with_channel_or_user?(paths)
+    paths[1] && paths[0] =~ /\A(channel|user)\Z/i
+  end
+
+  def self.path_starts_with_username?(paths)
+    paths.length == 1 && paths[0] !~ /\A(playlist|watch)\Z/i
   end
 end
