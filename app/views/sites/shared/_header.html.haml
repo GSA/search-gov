@@ -10,17 +10,31 @@
           = link_to new_site_path do
             %i.icon-plus
             Add Site
-      %ul.nav.auth
-        %li#nav-auth-menu.dropdown
-          = link_to '#nav-auth-menu', { 'data-toggle' => 'dropdown' } do
-            = current_user.email
-            %i.icon-caret-down
-          %ul.dropdown-menu(data-no-turbolink)
-            %li
-              = link_to account_path do
-                %i.icon-user
-                My account
-            %li
-              = link_to url_for_logout, method: :delete do
-                %i.icon-signout
-                Sign out
+
+      %ul#auth-and-help.nav
+        %li
+          %ul.nav.help
+            %li#nav-help-menu.dropdown
+              = link_to '#nav-help-menu', { 'data-toggle' => 'dropdown' } do
+                Need Help?
+                %i.icon-caret-down
+              %ul.dropdown-menu(data-no-turbolink)
+                %li= mail_to SUPPORT_EMAIL_ADDRESS, 'Contact us by email'
+                %li= link_to 'Call us: 202-505-5315', 'tel:202-505-5315'
+                %li= link_to 'Read the Help Manual', 'http://search.digitalgov.gov/manual'
+                %li= link_to 'Training Sessions', 'http://search.digitalgov.gov/manual/training.html'
+        %li
+          %ul.nav.auth
+            %li#nav-auth-menu.dropdown
+              = link_to '#nav-auth-menu', { 'data-toggle' => 'dropdown' } do
+                = current_user.email
+                %i.icon-caret-down
+              %ul.dropdown-menu(data-no-turbolink)
+                %li
+                  = link_to account_path do
+                    %i.icon-user
+                    My account
+                %li
+                  = link_to url_for_logout, method: :delete do
+                    %i.icon-signout
+                    Sign out
