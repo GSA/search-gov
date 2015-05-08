@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Edit Collection'
-= form_for @document_collection, url: { action: :update }, html: { class: 'form' }  do |form|
+= custom_form_for @document_collection, url: { action: :update }, html: { class: 'form' }  do |form|
   .sub-nav-heading
     %h2 Edit Collection
     .action-bar

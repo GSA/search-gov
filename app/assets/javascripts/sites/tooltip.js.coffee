@@ -1,8 +1,9 @@
 ready = ->
-  $('.l-site-nav.main a[data-toggle=tooltip], #pin-site[data-toggle=tooltip], #envelope-snapshot-toggle[data-toggle=tooltip]').tooltip
-    container: 'body',
-    placement: 'right',
-    trigger: 'hover'
+  $('.l-site-nav.main a[data-toggle=tooltip], #pin-site[data-toggle=tooltip], #envelope-snapshot-toggle[data-toggle=tooltip]')
+    .tooltip('destroy')
+    .tooltip
+      container: 'body',
+      placement: 'right',
+      trigger: 'hover'
 
-$(document).ready(ready)
-$(document).on 'page:load', ready
+$(document).on 'page:change ready', ready

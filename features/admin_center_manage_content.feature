@@ -278,6 +278,7 @@ Feature: Manage Content
     When I go to the agency.gov's Manage Content page
     And I follow "Domains" within the Admin Center content
     And I follow "Add Domain"
+    Then I should find "Leave off www to include all subdomains." in "form tooltip"
     When I fill in "Domain" with "usa.gov"
     And I submit the form by pressing "Add"
     Then I should see "You have added usa.gov to this site"

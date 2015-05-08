@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Add collection'
-= form_for @document_collection, url: { action: :create }, html: { class: 'form' }  do |form|
+= custom_form_for @document_collection, url: { action: :create }, html: { class: 'form' }  do |form|
   .sub-nav-heading
     %h2 Add collection
     .action-bar

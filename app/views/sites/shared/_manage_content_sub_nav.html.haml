@@ -2,7 +2,7 @@
   .title Manage Content
 %ul.nav.nav-list
   %li{ site_nav_css_class_hash('contents') }= link_to 'Content Overview', site_content_path(@site)
-  %li{ site_nav_css_class_hash(*%w(domains excluded_urls indexed_documents site_feed_urls)) }= link_to 'Domains', site_domains_path(@site)
+  %li{ site_nav_css_class_hash(*%w(excluded_urls indexed_documents site_domains site_feed_urls)) }= link_to 'Domains', site_domains_path(@site)
   %li{ site_nav_css_class_hash('document_collections') }= link_to 'Collections', site_collections_path(@site)
   %li{ site_nav_css_class_hash(*%w(boosted_contents boosted_contents_bulk_uploads)) }= link_to 'Best Bets: Text', site_best_bets_texts_path(@site)
   %li{ site_nav_css_class_hash('featured_collections') }= link_to 'Best Bets: Graphics', site_best_bets_graphics_path(@site)

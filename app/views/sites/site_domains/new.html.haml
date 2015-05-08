@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Add Domain'
-= form_for @domain, as: :domain, url: { action: :create }, html: { class: 'form' }  do |f|
+= custom_form_for @site_domain, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2 Add Domain
     .action-bar

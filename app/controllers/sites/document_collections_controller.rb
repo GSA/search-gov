@@ -1,5 +1,8 @@
 class Sites::DocumentCollectionsController < Sites::SetupSiteController
+  include ::Hintable
+
   before_filter :setup_collection, only: [:show, :edit, :update, :destroy]
+  before_filter :load_hints, only: %i(edit new new_url_prefix)
 
   def index
     @document_collections = @site.document_collections
@@ -24,6 +27,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
                   flash: { success: "You have added #{@document_collection.name} to this site." }
     else
       build_url_prefix
+      load_hints
       render action: :new
     end
   end
@@ -43,6 +47,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
                     flash: { success: "You have updated #{@document_collection.name}." }
       else
         build_url_prefix
+        load_hints
         render action: :edit
       end
   end

@@ -96,7 +96,7 @@ UsasearchRails3::Application.routes.draw do
       resources :collections, controller: 'document_collections' do
         collection { get :new_url_prefix }
       end
-      resources :domains, except: [:show] do
+      resources :domains, controller: 'site_domains', except: [:show] do
         member { get :advanced }
       end
       resources :filter_urls,
@@ -186,6 +186,10 @@ UsasearchRails3::Application.routes.draw do
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
     resources :whitelisted_v1_api_handles do as_routes end
+    resources :hints do
+      collection { get 'reload_hints' }
+      as_routes
+    end
   end
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl

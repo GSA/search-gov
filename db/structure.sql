@@ -363,6 +363,16 @@ CREATE TABLE `help_links` (
   KEY `index_help_links_on_request_path` (`request_path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `hints` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_hints_on_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `image_search_labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -2078,6 +2088,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150414023501');
 
 INSERT INTO schema_migrations (version) VALUES ('20150420131548');
 
+INSERT INTO schema_migrations (version) VALUES ('20150428131528');
+
 INSERT INTO schema_migrations (version) VALUES ('20150503210938');
 
-INSERT INTO schema_migrations (version) VALUES ('20150428131528');
+INSERT INTO schema_migrations (version) VALUES ('20150508200845');

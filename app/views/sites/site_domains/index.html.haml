@@ -1,0 +1,23 @@
+= content_for_site_page_title @site, 'Domains'
+.sub-nav-heading
+  %h2 Domains
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      = render 'sites/shared/domains_advanced_options'
+      %li= link_to 'Add Domain', new_site_domain_path(@site)
+
+= render_flash_message
+%table.table.table-no-header
+  %tbody
+    - @site_domains.each do |site_domain|
+      %tr
+        %td= site_domain.domain
+        %td.actions
+          %ul
+            %li= link_to 'Edit', edit_site_domain_path(@site, site_domain.id)
+            %li= button_to 'Remove',
+                site_domain_path(@site, site_domain.id),
+                method: :delete,
+                class: 'btn btn-small',
+                data: { confirm: "Are you sure you wish to remove #{site_domain.domain} from this site?" }

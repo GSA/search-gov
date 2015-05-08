@@ -12,13 +12,16 @@ describe DocumentFetcher do
       easy = mock('easy')
       Curl::Easy.should_receive(:new).and_return(easy)
       easy.should_receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
-      DocumentFetcher.fetch('http://healthcare.gov').should == {}
+      DocumentFetcher.fetch('http://healthcare.gov').should eq(error: 'Curl::Err::TooManyRedirectsError')
     end
 
     it 'returns empty hash when the execution expired' do
-      Timeout.should_receive(:timeout).with(10).and_raise Timeout::Error
-      Rails.logger.should_receive(:warn).with(/execution expired/)
-      DocumentFetcher.fetch('http://healthcare.gov').should == {}
+      easy = mock('easy')
+      Curl::Easy.should_receive(:new).and_return(easy)
+      easy.should_receive(:perform)
+
+      response = DocumentFetcher.fetch('http://healthcare.gov')
+      expect(response[:error]).to match(/Unable to fetch/)
     end
   end
 end

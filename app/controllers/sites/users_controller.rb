@@ -1,4 +1,8 @@
 class Sites::UsersController < Sites::SetupSiteController
+  include ::Hintable
+
+  before_filter :load_hints, only: %i(create new)
+
   def index
     @users = @site.users
   end

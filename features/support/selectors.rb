@@ -56,6 +56,8 @@ module HtmlSelectorsHelpers
         '#main-menu'
     when /the mobile footer/
         '#footer-wrapper'
+    when /form tooltip/
+        '.form .tooltip'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
