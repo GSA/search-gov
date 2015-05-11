@@ -76,4 +76,12 @@ describe Tweet do
       @tweet.url_to_tweet.should == 'https://twitter.com/USASearch/status/123456'
     end
   end
+
+  describe ".expire(days_back)" do
+    it "should destroy tweets that were published more than X days ago" do
+      Tweet.should_receive(:destroy_all).with(["published_at < ?", 3.days.ago.beginning_of_day.to_s(:db)])
+      Tweet.expire(3)
+    end
+  end
+
 end

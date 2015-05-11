@@ -28,4 +28,8 @@ class Tweet < ActiveRecord::Base
       profile_image_url: twitter_profile.profile_image_url,
       created_at: published_at }
   end
+
+  def self.expire(days_back)
+    destroy_all(["published_at < ?", days_back.days.ago.beginning_of_day.to_s(:db)])
+  end
 end

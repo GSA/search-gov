@@ -1,6 +1,12 @@
 namespace :usasearch do
   namespace :twitter do
 
+    desc 'prune tweets older than X days (default 3)'
+    task :expire, [:days_back] => [:environment] do |t, args|
+      args.with_defaults(days_back: 3)
+      Tweet.expire(args.days_back.to_i)
+    end
+
     desc 'refresh twitter lists members'
     task :refresh_lists, [:host] => :environment do |t, args|
       args.with_defaults host: 'default'

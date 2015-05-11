@@ -9,6 +9,31 @@ describe "Twitter rake tasks" do
   end
 
   describe "usasearch:twitter" do
+    describe "usasearch:twitter:expire" do
+      let(:task_name) { 'usasearch:twitter:expire' }
+      before { @rake[task_name].reenable }
+
+      it "should have 'environment' as a prereq" do
+        @rake[task_name].prerequisites.should include("environment")
+      end
+
+      context "when days back is specified" do
+        it "should expire tweets that were published more than X days ago" do
+          days_back = "7"
+          Tweet.should_receive(:expire).with(days_back.to_i)
+          @rake[task_name].invoke(days_back)
+        end
+      end
+
+      context "when days back is not specified" do
+        it "should expire tweets that were published more than 3 days ago" do
+          days_back = "3"
+          Tweet.should_receive(:expire).with(days_back.to_i)
+          @rake[task_name].invoke
+        end
+      end
+    end
+
     describe 'usasearch:twitter:refresh_lists' do
       let(:task_name) { 'usasearch:twitter:refresh_lists' }
 
