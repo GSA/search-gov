@@ -69,6 +69,32 @@ describe SearchesController do
     end
   end
 
+  context 'when affiliate gets i14y results' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:i14y_search) { mock(I14ySearch, :query => 'gov', :modules => %w(I14Y)) }
+
+    before do
+      Affiliate.should_receive(:find_by_name).and_return(affiliate)
+      affiliate.gets_i14y_results = true
+      I14ySearch.should_receive(:new).and_return(i14y_search)
+      i14y_search.should_receive(:run)
+      get :index, :query => 'gov', :affiliate => affiliate.name
+    end
+
+    it { should assign_to(:affiliate).with(affiliate) }
+
+    it 'should assign various variables' do
+      assigns[:page_title].should =~ /gov/
+      assigns[:search_vertical].should == :i14y
+    end
+
+    it { should assign_to(:search_params).with(
+                  hash_including(affiliate: affiliate.name, query: 'gov')) }
+
+    it { should render_template(:i14y) }
+
+  end
+
   context 'when handling a valid affiliate search request on legacy SERP' do
     render_views
     before do

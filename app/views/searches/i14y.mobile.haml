@@ -1,0 +1,17 @@
+#search{ search_data(@search, @search_vertical) }
+  %h2= t 'searches.search_results'
+  - if @search.results.blank?
+    = render partial: 'no_results', locals: { search: @search }
+  = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
+  = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
+  = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
+  = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
+
+  - if @search.results.present?
+    = render partial: 'searches/i14y/results', locals: { search:  @search }
+    = render partial: 'offer_other_web_results', locals: { search:  @search }
+    = render partial: 'federal_register_documents', locals: { search: @search } if @search.has_federal_register_documents?
+    = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
+    = render partial: 'offer_commercial_web_results', locals: { search:  @search } if eligible_for_commercial_results?(@search)
+    = render partial: 'pagination', locals: { search: @search }
+

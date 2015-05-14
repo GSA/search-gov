@@ -87,6 +87,7 @@ CREATE TABLE `affiliates` (
   `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nutshell_id` int(11) DEFAULT NULL,
   `gets_commercial_results_on_blended_search` tinyint(1) NOT NULL DEFAULT '1',
+  `gets_i14y_results` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -371,6 +372,18 @@ CREATE TABLE `hints` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_hints_on_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `i14y_drawers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_i14y_drawers_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `image_search_labels` (
@@ -2093,3 +2106,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150428131528');
 INSERT INTO schema_migrations (version) VALUES ('20150503210938');
 
 INSERT INTO schema_migrations (version) VALUES ('20150508200845');
+
+INSERT INTO schema_migrations (version) VALUES ('20150513004314');
+
+INSERT INTO schema_migrations (version) VALUES ('20150513214316');

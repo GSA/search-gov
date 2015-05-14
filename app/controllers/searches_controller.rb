@@ -16,7 +16,7 @@ class SearchesController < ApplicationController
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
 
   def index
-    search_klass, @search_vertical, template = gets_blended_results? ? [BlendedSearch, :blended, :blended] : [WebSearch, :web, :index]
+    search_klass, @search_vertical, template = pick_klass_vertical_template
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     respond_to do |format|
-      format.any(:html, :mobile) {render template}
+      format.any(:html, :mobile) { render template }
       format.json { render :json => @search }
     end
   end
@@ -74,6 +74,16 @@ class SearchesController < ApplicationController
   end
 
   private
+
+  def pick_klass_vertical_template
+    if gets_i14y_results?
+      [I14ySearch, :i14y, :i14y]
+    elsif gets_blended_results?
+      [BlendedSearch, :blended, :blended]
+    else
+      [WebSearch, :web, :index]
+    end
+  end
 
   def set_news_search_page_title
     if params[:query].present?
@@ -125,6 +135,10 @@ class SearchesController < ApplicationController
 
   def gets_blended_results?
     @affiliate.gets_blended_results && params[:cr] != 'true'
+  end
+
+  def gets_i14y_results?
+    @affiliate.gets_i14y_results && params[:cr] != 'true'
   end
 
   def log_search_impression

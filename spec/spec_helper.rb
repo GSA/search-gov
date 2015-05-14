@@ -63,6 +63,7 @@ RSpec.configure do |config|
 
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
+    TestServices::delete_es_indexes
     TestServices::create_es_indexes
   end
 
@@ -175,6 +176,11 @@ RSpec.configure do |config|
     oasis_image_result = Rails.root.join('spec/fixtures/json/oasis/image_search/shuttle.json').read
     image_search_params = { from: 0, query: 'shuttle', size: 10 }
     stubs.get("#{oasis_api_path}#{image_search_params.to_param}") { [200, {}, oasis_image_result] }
+
+    i14y_api_path = "#{I14yCollections::API_ENDPOINT}/search?"
+    i14y_web_result = Rails.root.join('spec/fixtures/json/i14y/web_search/marketplace.json').read
+    i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplace', size: 10 }
+    stubs.get("#{i14y_api_path}#{i14y_search_params.to_param}", ) { [200, {}, i14y_web_result] }
 
     google_api_path = '/customsearch/v1?'
 
@@ -333,6 +339,7 @@ RSpec.configure do |config|
     NutshellClient::NutshellApiConnection.new
 
     Faraday.stub!(:new).and_return test
+    I14yCollections.establish_connection!
   end
 
   config.after(:suite) do
