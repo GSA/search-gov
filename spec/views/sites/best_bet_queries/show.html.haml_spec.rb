@@ -29,7 +29,7 @@ describe "sites/best_bet_queries/show.html.haml" do
 
       it "should show help link" do
         render
-        rendered.should have_selector("a.help-link.menu", href: 'http://www.help.gov/', content: "Help?")
+        rendered.should have_selector("a.help-link.menu", href: 'http://www.help.gov/', content: 'Help Manual')
       end
     end
   end

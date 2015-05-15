@@ -116,7 +116,7 @@ module SitesHelper
 
   def list_item_with_link_to_current_help_page
     help_link = HelpLink.lookup(request, controller.action_name)
-    content_tag(:li, link_to('Help?', help_link.help_page_url, class: 'help-link menu')) if help_link
+    content_tag(:li, link_to('Help Manual', help_link.help_page_url, class: 'help-link menu')) if help_link
   end
 
   def site_nav_css_class_hash(*nav_names)
