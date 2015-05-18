@@ -4,11 +4,11 @@ development:
   admin_password: devpwd
 
 test:
-  host: https://i14ydemo.usa.gov
+  host: http://localhost:8081
   admin_user: test
   admin_password: testpwd
 
 production:
-  host: https://i14y.usa.gov
+  host: https://i14ydemo.usa.gov
   admin_user: usasearch
-  admin_password: i14yadmin
+  admin_password: ***REMOVED***

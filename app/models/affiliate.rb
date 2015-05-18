@@ -36,7 +36,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
     assoc.has_one :site_feed_url
     assoc.has_many :affiliate_twitter_settings
-    assoc.has_many :i14y_drawers
+    assoc.has_many :i14y_memberships
   end
 
   has_many :users, order: 'contact_name', through: :memberships
@@ -46,6 +46,7 @@ class Affiliate < ActiveRecord::Base
   has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
   has_and_belongs_to_many :instagram_profiles, order: 'instagram_profiles.username ASC'
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.title ASC'
+  has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   belongs_to :agency
 
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name

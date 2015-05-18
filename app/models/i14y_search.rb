@@ -1,5 +1,6 @@
 class I14ySearch < Search
   include Govboxable
+  I14Y_SUCCESS = 200
 
   def initialize(options = {})
     super(options)
@@ -41,7 +42,7 @@ class I14ySearch < Search
   protected
 
   def handle_response(response)
-    if response
+    if response && response.status == I14Y_SUCCESS
       @total = response.metadata.total
       I14yPostProcessor.new(response.results).post_process_results
       @results = paginate(response.results)

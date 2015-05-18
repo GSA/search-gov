@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe I14yDrawer do
-  fixtures :i14y_drawers, :affiliates
-  it { should validate_presence_of :affiliate_id }
+  fixtures :i14y_drawers, :affiliates, :i14y_memberships
   it { should validate_presence_of :handle }
   it { should validate_uniqueness_of :handle }
   it { should ensure_length_of(:handle).is_at_least(3).is_at_most(33) }
-  it { should belong_to :affiliate }
+  it { should have_many(:i14y_memberships).dependent(:destroy) }
+  it { should have_many(:affiliates).through :i14y_memberships }
   ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y"].each do |value|
     it { should_not allow_value(value).for(:handle) }
   end

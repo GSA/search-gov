@@ -376,14 +376,23 @@ CREATE TABLE `hints` (
 
 CREATE TABLE `i14y_drawers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `affiliate_id` int(11) NOT NULL,
   `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `i14y_memberships` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) NOT NULL,
+  `i14y_drawer_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `index_i14y_drawers_on_affiliate_id` (`affiliate_id`)
+  UNIQUE KEY `index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id` (`affiliate_id`,`i14y_drawer_id`),
+  KEY `index_i14y_memberships_on_i14y_drawer_id` (`i14y_drawer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `image_search_labels` (
@@ -2110,3 +2119,11 @@ INSERT INTO schema_migrations (version) VALUES ('20150508200845');
 INSERT INTO schema_migrations (version) VALUES ('20150513004314');
 
 INSERT INTO schema_migrations (version) VALUES ('20150513214316');
+
+INSERT INTO schema_migrations (version) VALUES ('20150518183228');
+
+INSERT INTO schema_migrations (version) VALUES ('20150518183547');
+
+INSERT INTO schema_migrations (version) VALUES ('20150518185411');
+
+INSERT INTO schema_migrations (version) VALUES ('20150518185832');

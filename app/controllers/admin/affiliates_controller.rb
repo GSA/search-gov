@@ -72,7 +72,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add *update_columns.reject { |column| column =~ enable_disable_column_regex }
-      name_group.add :affiliate_feature_addition, :excluded_domains
+      name_group.add :affiliate_feature_addition, :excluded_domains, :i14y_memberships
       name_group.collapsed = true
     end
 
