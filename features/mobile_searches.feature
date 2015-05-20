@@ -105,6 +105,7 @@ Feature: Searches using mobile device
     Then the "Enter your search term" field should contain "news item"
     And I should see "All time" within the current time filter
     And I should see "Most recent" within the current sort by filter
+    And I should see "10 RESULTS"
     And I should see "Powered by DIGITALGOV Search"
     And I should see at least "10" web search results
 

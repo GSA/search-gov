@@ -3,19 +3,19 @@ onFocusCollapseDropdown = (e) ->
   $("#{e.data.cousinSelector} .dropdown").addClass 'collapsed'
 
 $(document).on 'click.usasearch.filter focus.usasearch.filter',
-  '#search-filters .nav > li',
+  '#search-filters-and-results-count .nav > li',
   cousinSelector: '#search-nav',
   onFocusCollapseDropdown
 
 $(document).on 'click.usasearch.nav focus.usasearch.nav',
   '#search-nav .nav > li',
-  cousinSelector: '#search-filters',
+  cousinSelector: '#search-filters-and-results-count',
   onFocusCollapseDropdown
 
 window.usasearch = {} unless window.usasearch?
 
 collapseNavAndFilterDropdowns = ->
-  $('#search-filters .dropdown, #search-nav .dropdown').addClass 'collapsed'
+  $('#search-filters-and-results-count .dropdown, #search-nav .dropdown').addClass 'collapsed'
 
 window.usasearch.collapseNavAndFilterDropdowns ?= collapseNavAndFilterDropdowns
 

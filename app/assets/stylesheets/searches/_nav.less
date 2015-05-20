@@ -4,7 +4,7 @@
 }
 
 
-#search-nav, #search-filters {
+#search-nav, #search-filters-and-results-count {
   transition: none;
 
   @media (min-width: @screen-sm) {
@@ -104,14 +104,9 @@
   max-width: 24%;
 }
 
-#search-filters > .navbar-nav {
+#search-filters-and-results-count > .navbar-nav {
   border-top-style: solid;
   border-top-width: 1px;
-
-  > li {
-    color: red;
-    max-width: auto;
-  }
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -126,4 +121,8 @@
       display: none;
     }
   }
+}
+
+#results-count {
+  .pull-right();
 }

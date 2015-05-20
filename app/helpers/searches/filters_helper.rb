@@ -1,13 +1,14 @@
 module Searches::FiltersHelper
   TIME_FILTER_KEYS = (['all'] + NewsItem::TIME_BASED_SEARCH_OPTIONS.keys).freeze
 
-  def search_filters(search, search_params)
+  def search_filters_and_results_count(search, search_params)
     return unless search.is_a? NewsSearch
 
     html = [time_filter_html(search, search_params)]
     html << sort_filter_html(search, search_params)
     html << clear_button_html(search, search_params)
-    render partial: 'searches/filters', locals: { html: html.join("\n") }
+    html << results_count_html(search)
+    render partial: 'searches/filters_and_results_count', locals: { html: html.join("\n") }
   end
 
   def time_filter_html(search, search_params)
@@ -116,5 +117,13 @@ module Searches::FiltersHelper
                                     search.rss_feed,
                                     time_params
     content_tag(:li) { link_to(I18n.t(:clear), path) }
+  end
+
+  def results_count_html(search)
+    content_tag :li, id: 'results-count' do
+      result_count_str = I18n.t(:'searches.results_count',
+                                count: number_with_delimiter(search.total))
+      content_tag :span, result_count_str
+    end if search.results.present?
   end
 end

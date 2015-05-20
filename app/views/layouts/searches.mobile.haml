@@ -33,7 +33,7 @@
 
     #navs-filters-facets.navbar-default
       = navigations_and_related_sites(@search, @search_params, navigations)
-      = search_filters @search, @search_params
+      = search_filters_and_results_count @search, @search_params
     #search-bar-nav-wrapper
       = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
 
