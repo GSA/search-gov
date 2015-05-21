@@ -179,7 +179,7 @@ RSpec.configure do |config|
 
     i14y_api_path = "#{I14yCollections::API_ENDPOINT}/search?"
     i14y_web_result = Rails.root.join('spec/fixtures/json/i14y/web_search/marketplace.json').read
-    i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplace', size: 10 }
+    i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplase', size: 10 }
     stubs.get("#{i14y_api_path}#{i14y_search_params.to_param}", ) { [200, {}, i14y_web_result] }
 
     google_api_path = '/customsearch/v1?'

@@ -1,18 +1,19 @@
 require 'spec_helper'
 
 describe I14ySearch do
-  fixtures :affiliates, :i14y_drawers
+  fixtures :affiliates, :i14y_drawers, :i14y_memberships
 
   let(:affiliate) { affiliates(:power_affiliate) }
 
   context 'when results are available' do
-    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplace") }
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase") }
 
     it "should return a response" do
       i14y_search.run
       i14y_search.startrecord.should == 1
       i14y_search.endrecord.should == 20
       i14y_search.total.should == 270
+      i14y_search.spelling_suggestion.should == 'marketplace'
       first = i14y_search.results.first
       first.title.should == "Marketplace"
       first.link.should == 'https://www.healthcare.gov/glossary/marketplace'

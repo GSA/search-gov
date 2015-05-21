@@ -48,11 +48,12 @@ class I14ySearch < Search
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
+      @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
     end
   end
 
   def populate_additional_results
-    @govbox_set = GovboxSet.new(query,
+    @govbox_set = GovboxSet.new(@spelling_suggestion || query,
                                 affiliate,
                                 @options[:geoip_info],
                                 @highlight_options) if first_page?
