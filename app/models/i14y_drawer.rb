@@ -1,7 +1,7 @@
 class I14yDrawer < ActiveRecord::Base
   attr_accessible :description, :handle, :token
   has_many :i14y_memberships, dependent: :destroy
-  has_many :affiliates, order: 'display_name', through: :i14y_memberships
+  has_many :affiliates, through: :i14y_memberships
   validates_presence_of :handle
   validates_uniqueness_of :handle
   validates_length_of :handle, within: (3..33)
