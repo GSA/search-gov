@@ -1,13 +1,13 @@
-#news-search-options-modal.modal.fade{ aria: { hidden: true, labelledby: 'news-search-options-title' }, role: 'dialog', tabindex: -1 }
+#custom-date-search-form-modal.modal.fade{ aria: { hidden: true, labelledby: 'custom-date-search-form-modal-title' }, role: 'dialog', tabindex: -1 }
   .modal-dialog
     .modal-content
       .modal-header
         = button_tag class: 'close', data: { dismiss: 'modal' }, type: 'button' do
           %span{ aria: { hidden: 'true' }} &times;
           %span.sr-only Close
-        %h4#news-search-options-title.modal-title
+        %h4#custom-date-search-form-modal-title.modal-title
           = t(:custom_range)
       .modal-body
 
-        = render partial: 'news_search_options_form',
+        = render partial: 'custom_date_search_form',
           locals: { search: search, search_params: search_params }

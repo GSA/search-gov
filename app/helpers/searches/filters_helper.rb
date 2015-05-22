@@ -2,7 +2,7 @@ module Searches::FiltersHelper
   TIME_FILTER_KEYS = (['all'] + NewsItem::TIME_BASED_SEARCH_OPTIONS.keys).freeze
 
   def search_filters_and_results_count(search, search_params)
-    return unless search.is_a? NewsSearch
+    return unless search.is_a? FilterableSearch
 
     html = [time_filter_html(search, search_params)]
     html << sort_filter_html(search, search_params)
@@ -22,8 +22,8 @@ module Searches::FiltersHelper
     end.compact
 
     html << content_tag(:li) do
-      link_to I18n.t(:custom_range), '#news-search-options-modal',
-              data: { target: '#news-search-options-modal', toggle: 'modal' },
+      link_to I18n.t(:custom_range), '#custom-date-search-form-modal',
+              data: { target: '#custom-date-search-form-modal', toggle: 'modal' },
               id: 'custom-date-range-filter-trigger'
     end
 
@@ -56,10 +56,9 @@ module Searches::FiltersHelper
                       tbs: nil,
                       until_date: nil }
     end
-    path = path_for_rss_feed_search search,
-                                    search_params,
-                                    search.rss_feed,
-                                    time_params
+    path = path_for_filterable_search search,
+                                      search_params,
+                                      time_params
 
     content_tag(:li) { link_to time_filter_description, path }
   end
@@ -74,24 +73,23 @@ module Searches::FiltersHelper
   end
 
   def sort_filter_html(search, search_params)
-    dropdown_options = build_sort_filter_dropdown_options search.sort_by_relevance?
-    path = path_for_rss_feed_search search,
-                                    search_params,
-                                    search.rss_feed,
-                                    dropdown_options[:extra_params]
+    filter_options = build_sort_filter_options search.sort_by_relevance?
+    path = path_for_filterable_search search,
+                                      search_params,
+                                      filter_options[:extra_params]
     html = content_tag :li do
-      link_to dropdown_options[:other_option], path
+      link_to filter_options[:other_option], path
     end
 
     dropdown_filter_wrapper html,
                             'sort-filter-dropdown',
-                            dropdown_options[:current_option]
+                            filter_options[:current_option]
   end
 
-  def build_sort_filter_dropdown_options(is_sort_by_relevance)
+  def build_sort_filter_options(is_sort_by_relevance)
     if is_sort_by_relevance
       { current_option: I18n.t(:by_relevance),
-        extra_params: { sort_by: nil },
+        extra_params: { sort_by: 'date' },
         other_option: I18n.t(:by_date) }
     else
       { current_option: I18n.t(:by_date),
@@ -105,17 +103,16 @@ module Searches::FiltersHelper
   end
 
   def clear_button_html(search, search_params)
-    return unless search.tbs || search.sort_by_relevance? || search.since || search.until
+    return unless search.custom_filter_params?
 
     time_params = { since_date: nil,
                     sort_by: nil,
                     tbs: nil,
                     until_date: nil }
 
-    path = path_for_rss_feed_search search,
-                                    search_params,
-                                    search.rss_feed,
-                                    time_params
+    path = path_for_filterable_search search,
+                                      search_params,
+                                      time_params
     content_tag(:li) { link_to(I18n.t(:clear), path) }
   end
 

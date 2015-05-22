@@ -6,10 +6,6 @@ describe VideoNewsSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   describe "#initialize(options)" do
-    it "should set the class name to 'VideoNewsSearch'" do
-      VideoNewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate).class.name.should == 'VideoNewsSearch'
-    end
-
     it 'should initialize per_page' do
       VideoNewsSearch.new(query: 'gov', tbs: 'w', affiliate: affiliate).per_page.should == 20
     end
@@ -33,7 +29,7 @@ describe VideoNewsSearch do
                since: nil, until: nil,
                offset: 0, size: 20,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
         search.run.should be_true
       end
@@ -51,7 +47,7 @@ describe VideoNewsSearch do
                since: Time.current.advance(weeks: -1).beginning_of_day, until: nil,
                offset: 0, size: 20,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
         search = VideoNewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
         search.run

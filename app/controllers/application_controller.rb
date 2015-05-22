@@ -2,19 +2,42 @@ class ApplicationController < ActionController::Base
   include ::SslRequirement
   skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_default_locale
-  before_filter :show_searchbox
   helper :all
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery
   VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
+
+  ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
+  DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
+  FILTER_PARAM_KEYS = %i(since_date sort_by tbs until_date).freeze
+
+  PERMITTED_PARAM_KEYS = %i(
+    affiliate
+    channel
+    commit
+    cr
+    dc
+    form
+    hl
+    m
+    page
+    query
+    staged
+    strictui
+    siteexclude
+    sitelimit
+    utf8
+  ).concat(ADVANCED_PARAM_KEYS).
+    concat(DUBLIN_CORE_PARAM_KEYS).
+    concat(FILTER_PARAM_KEYS).freeze
 
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
   protected
 
   def set_affiliate
-    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) unless params[:affiliate].blank?
+    @affiliate = Affiliate.find_by_name(permitted_params[:affiliate]) unless permitted_params[:affiliate].blank?
 
     unless @affiliate
       redirect_to('http://www.usa.gov/page-not-found') and return
@@ -22,14 +45,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_header_footer_fields
-    if @affiliate && params['staged']
+    if @affiliate && permitted_params['staged']
       @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
       @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
     end
 
-    @affiliate.use_strictui if params[:strictui]
+    @affiliate.use_strictui if permitted_params[:strictui]
   end
 
   def set_locale_based_on_affiliate_locale
@@ -85,57 +108,60 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  def show_searchbox
-    @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
+  def permitted_params
+    @permitted_params ||= params.permit *PERMITTED_PARAM_KEYS
   end
 
-  def search_options_from_params(affiliate, params)
-    params.reject!{|k,v| params[k].instance_of? Array}
-    {
-      :affiliate => affiliate,
-      :page => params[:page],
-      :per_page => SERP_RESULTS_PER_PAGE,
-      :query => sanitize_query(params["query"]),
-      :query_quote => sanitize_query(params["query-quote"]),
-      :query_or => sanitize_query(params["query-or"]),
-      :query_not => sanitize_query(params["query-not"]),
-      :file_type => params["filetype"],
-      :site_limits => params["sitelimit"],
-      :site_excludes => params["siteexclude"],
-      :filter => params["filter"],
-      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
-      :dc => params["dc"],
-      :channel => params["channel"],
-      :tbs => params["tbs"]
-    }
+  def search_options_from_params(*param_keys)
+    h = permitted_params.slice(*param_keys)
+    h.merge! affiliate: @affiliate,
+             file_type: permitted_params[:filetype],
+             page: permitted_params[:page],
+             per_page: SERP_RESULTS_PER_PAGE,
+             site_limits: permitted_params[:sitelimit],
+             site_excludes: permitted_params[:siteexclude]
+    h.merge! query_search_options
+    h.merge! highlighting_option
+  end
+
+  def query_search_options
+    query_search_params = permitted_params.slice(:query,
+                                                 :'query-not',
+                                                 :'query-or',
+                                                 :'query-quote')
+    query_search_params.inject({}) do |hash, kv|
+      hash[kv.first.underscore] = sanitize_query kv.last
+      hash
+    end
   end
 
   def sanitize_query(query)
     QuerySanitizer.sanitize(query)
   end
 
+  def highlighting_option
+    { enable_highlighting: permitted_params[:hl] == 'false' ? false : true }
+  end
+
   def force_request_format
     return if request.format && request.format.json?
 
-    if @affiliate.force_mobile_format? || params[:m] == 'true'
+    if @affiliate.force_mobile_format? || permitted_params[:m] == 'true'
       request.format = :mobile
-    elsif params[:m] == 'false' or params[:m] == 'override'
+    elsif permitted_params[:m] == 'false' or permitted_params[:m] == 'override'
       request.format = :html
     end
   end
 
   def set_search_params
-    @search_params = { query: @search.query, affiliate: @affiliate.name }
-    @search_params.merge!(sitelimit: params[:sitelimit]) if params[:sitelimit].present?
-    if @search.is_a?(NewsSearch)
-      @search_params.merge!(channel: @search.rss_feed.id) if @search.rss_feed
-      @search_params.merge!(tbs: params[:tbs]) if params[:since_date].blank? and params[:until_date].blank? and params[:tbs]
-      @search_params.merge!(since_date: @search.since.strftime(I18n.t(:cdr_format))) if params[:since_date].present? && @search.since
-      @search_params.merge!(until_date: @search.until.strftime(I18n.t(:cdr_format))) if params[:until_date].present? && @search.until
-      @search_params.merge!(sort_by: params[:sort_by]) if params[:sort_by]
-      @search_params.merge!(contributor: params[:contributor]) if params[:contributor]
-      @search_params.merge!(publisher: params[:publisher]) if params[:publisher]
-      @search_params.merge!(subject: params[:subject]) if params[:subject]
+    @search_params = ActiveSupport::HashWithIndifferentAccess.new(query: @search.query, affiliate: @affiliate.name)
+    @search_params.merge!(sitelimit: permitted_params[:sitelimit]) if permitted_params[:sitelimit].present?
+    if @search.is_a? FilterableSearch
+      @search_params.merge!(channel: @search.rss_feed.id) if @search.is_a?(NewsSearch) && @search.rss_feed
+      @search_params.merge!(tbs: @search.tbs) if @search.tbs
+      @search_params.merge!(since_date: @search.since.strftime(I18n.t(:cdr_format))) if permitted_params[:since_date].present? && @search.since
+      @search_params.merge!(until_date: @search.until.strftime(I18n.t(:cdr_format))) if permitted_params[:until_date].present? && @search.until
+      @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
     end
   end
 

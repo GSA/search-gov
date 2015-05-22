@@ -11,19 +11,13 @@ end
 
 Given /^the following IndexedDocuments exist:$/ do |table|
   table.hashes.each do |hash|
-    IndexedDocument.create! do |id|
-      id.title = hash[:title]
-      id.description = hash[:description]
-      id.url = hash[:url]
-      id.source = hash[:source] || 'rss'
-      id.doctype = hash[:doctype] || 'html'
-      id.affiliate = Affiliate.find_by_name(hash[:affiliate])
-      id.last_crawled_at = hash[:last_crawled_at]
-      id.last_crawl_status = hash[:last_crawl_status]
-      if hash[:created_at].present?
-        id.created_at = eval(hash[:created_at].gsub(/ /, '.'))
-      end
+    attributes = hash.except('published_ago')
+    attributes[:affiliate] &&= Affiliate.find_by_name(attributes[:affiliate])
+    attributes[:doctype] ||= 'html'
+    if hash[:published_ago].present?
+      attributes[:published_at] = eval(hash[:published_ago].gsub(/ /, '.'))
     end
+    IndexedDocument.create! attributes
   end
   ElasticIndexedDocument.commit
 end

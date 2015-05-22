@@ -218,14 +218,14 @@ describe ElasticNewsItem do
 
       context "when sort_by_relevance param is true" do
         it 'should sort results by relevance' do
-          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort_by_relevance: true)
+          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: '_score')
           search.results.first.should == @blog_item
         end
       end
 
       context "when sort_by_relevance param is false" do
         it 'should sort results by date' do
-          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort_by_relevance: false)
+          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: 'published_at:desc')
           search.results.first.should == @gallery_item
         end
       end

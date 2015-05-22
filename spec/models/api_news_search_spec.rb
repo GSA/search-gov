@@ -26,7 +26,7 @@ describe ApiNewsSearch do
                  size: 10,
                  offset: 0,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: [],
                  language: 'en')
         search.run

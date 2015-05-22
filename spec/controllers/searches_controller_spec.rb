@@ -59,14 +59,15 @@ describe SearchesController do
     end
   end
 
-  context "when searching with parameters" do
+  context 'when affiliate is not valid' do
     before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
-
     it { should redirect_to 'http://www.usa.gov/page-not-found' }
+  end
 
+  context 'when searching with non scalar query' do
     it "should not blow up if query is not a string" do
       get :index, query: { 'foo' => 'bar' }, affiliate: 'usagov'
-      assigns[:search].query.should == %q({"foo"=&gt;"bar"})
+      assigns[:search].query.should be_blank
     end
   end
 
@@ -294,14 +295,6 @@ describe SearchesController do
     end
   end
 
-  context "when omitting search textbox" do
-    it "should omit the search textbox if the show_searchbox parameter is set to false and mobile mode is true" do
-      get :index, :query => "obama", :show_searchbox => "false"
-      assigns[:show_searchbox].should be_false
-      response.body.should_not have_selector "search_form"
-    end
-  end
-
   context 'when Affiliate.force_mobile_format = true' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -397,7 +390,7 @@ describe SearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        affiliate.stub_chain(:document_collections, :find_by_id).with(%q({"foo"=&gt;"bar"})).and_return(nil)
+        affiliate.stub_chain(:document_collections, :find_by_id).with(nil).and_return(nil)
         WebSearch.should_receive(:new).with(hash_including(query: 'pdf')).and_return(web_search)
         web_search.should_receive(:run)
         SiteSearch.should_not_receive(:new)
@@ -461,7 +454,12 @@ describe SearchesController do
     context 'when searching with tbs' do
       before do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = mock(NewsSearch, query: 'element', rss_feed: rss_feeds(:white_house_blog), modules: [])
+        news_search = mock(NewsSearch,
+                           query: 'element',
+                           rss_feed: rss_feeds(:white_house_blog),
+                           modules: [],
+                           tbs: 'w')
+        news_search.should_receive(:is_a?).with(FilterableSearch).and_return(true)
         news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
         NewsSearch.should_receive(:new).with(hash_including(tbs: 'w', per_page: 20)).and_return(news_search)
         news_search.should_receive(:run)
@@ -497,8 +495,10 @@ describe SearchesController do
                            query: 'element',
                            rss_feed: rss_feeds(:white_house_blog),
                            modules: [],
+                           tbs: nil,
                            since: Time.parse('2012-10-1'),
                            until: Time.parse('2012-10-15'))
+        news_search.should_receive(:is_a?).with(FilterableSearch).and_return(true)
         news_search.should_receive(:is_a?).with(NewsSearch).and_return(true)
         NewsSearch.should_receive(:new).
             with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')).

@@ -4,7 +4,7 @@ class ApiController < ApplicationController
   before_filter :load_affiliate
 
   def search
-    @search_options = search_options_from_params(@affiliate, params).merge(
+    @search_options = search_options_from_params.merge(
       format: params[:format], index: params[:index], per_page: DEFAULT_API_PER_PAGE, lat_lon: params[:lat_lon])
     @search = ApiSearch.new(@search_options)
     results = @search.run

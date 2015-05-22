@@ -5,13 +5,32 @@ describe BlendedSearch do
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
+  def filterable_search_options
+    { affiliate: affiliate,
+      enable_highlighting: true,
+      limit: 20,
+      offset: 0,
+      query: 'electro coagulation' }
+  end
+
+  describe '#initialize' do
+    it_behaves_like 'an initialized filterable search'
+
+    context 'when options does not include sort_by' do
+      subject(:search) { described_class.new filterable_search_options }
+      its(:sort_by_relevance?) { should be_true }
+      its(:sort) { should be_nil }
+    end
+  end
+
   describe '#run' do
+    it_behaves_like 'a runnable filterable search'
+
     context 'when search engine response contains spelling suggestion' do
       subject(:search) do
         described_class.new affiliate: affiliate,
                             enable_highlighting: true,
                             limit: 20,
-                            next_offset_within_limit: true,
                             offset: 0,
                             query: 'electro coagulation'
       end

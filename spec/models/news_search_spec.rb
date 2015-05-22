@@ -13,30 +13,16 @@ describe NewsSearch do
   describe "#initialize(options)" do
     let(:feed) { affiliate.rss_feeds.first }
 
-    context 'when the parameter is hour' do
-      it 'should find just the last hour' do
-        search = NewsSearch.new(:query => '   element   OR', :tbs => "h", :affiliate => affiliate)
-        (search.since.to_i - 1.hour.ago.to_i).should <= 5
-      end
+    def filterable_search_options
+      { affiliate: affiliate, channel: feed.id }
     end
 
-    context 'when the parameter is not hour' do
-      it "should set the time-based search parameter based on the beginning of the day" do
-        search = NewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate)
-        search.since.to_i.should == Time.current.advance(weeks: -1).beginning_of_day.to_i
-      end
-    end
+    it_behaves_like 'an initialized filterable search'
 
-    context "when the tbs param isn't set" do
-      it "should set 'since' to nil" do
-        NewsSearch.new(:query => 'element', :affiliate => affiliate).since.should be_nil
-      end
-    end
-
-    context "when the tbs param isn't valid" do
-      it "should set 'since' to nil" do
-        NewsSearch.new(:query => 'element', :tbs => "invalid", :affiliate => affiliate).since.should be_nil
-      end
+    context 'when options does not include sort_by' do
+      subject(:search) { described_class.new filterable_search_options }
+      its(:sort_by_relevance?) { should be_false }
+      its(:sort) { should eq('published_at:desc') }
     end
 
     context "when a valid RSS feed is specified" do
@@ -64,77 +50,9 @@ describe NewsSearch do
       end
     end
 
-    context 'when the since_date param is valid' do
-      it 'should set since to a parsed Date' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, since_date: '10/1/2012')
-        news_search.since.to_s.should == '2012-10-01 00:00:00 UTC'
-        news_search.until.should be_nil
-      end
-    end
-
-    context 'when until_date is not present and the since_date param is not valid' do
-      it 'should set since to a year ago' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, since_date: '13/41/2012')
-        news_search.since.should == Time.current.advance(years: -1).beginning_of_day
-        news_search.until.should be_nil
-      end
-    end
-
-    context 'when until_date is present and the since_date param is not valid' do
-      it 'should set since to a year ago before until_date' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, since_date: '13/41/2012', until_date: '10/15/2012')
-        news_search.since.to_s == '2011-10-15 00:00:00 UTC'
-        news_search.until.to_s == '2012-10-15 23:59:59 UTC'
-      end
-    end
-
-    context 'when the until_date param is valid' do
-      it 'should set until to the end of day of that date' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
-        news_search.since.should be_nil
-        news_search.until.to_s.should == '2012-10-31 23:59:59 UTC'
-      end
-    end
-
-    context 'when the until_date param is not valid' do
-      it 'should set until to the end of day' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, until_date: '13/41/2012')
-        news_search.since.should be_nil
-        news_search.until.should == Time.current.end_of_day
-      end
-    end
-
-    context 'when since_date is greater than until_date' do
-      it 'should swap since and until' do
-        news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, since_date: '10/31/2012', until_date: '9/1/2012')
-        news_search.since.to_s.should == '2012-09-01 00:00:00 UTC'
-        news_search.until.to_s.should == '2012-10-31 23:59:59 UTC'
-      end
-    end
-
     it 'should not overwrite per_page option' do
       news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, per_page: '15')
       news_search.per_page.should == 15
-    end
-
-    context 'when locale is set to :es' do
-      before(:all) { I18n.locale = :es }
-
-      context 'when the since_date param is valid' do
-        it 'should use Spanish date format' do
-          news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, since_date: '1/10/2012')
-          news_search.since.to_s.should == '2012-10-01 00:00:00 UTC'
-        end
-      end
-
-      context 'when the end_date param is valid' do
-        it 'should use Spanish date format' do
-          news_search = NewsSearch.new(channel: feed.id, affiliate: affiliate, until_date: '1/10/2012')
-          news_search.until.to_s.should == '2012-10-01 23:59:59 UTC'
-        end
-      end
-
-      after(:all) { I18n.locale = I18n.default_locale }
     end
   end
 
@@ -192,7 +110,7 @@ describe NewsSearch do
                since: nil, until: nil,
                offset: 0, size: 10,
                contributor: 'contributor', subject: 'subject', publisher: 'publisher',
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
         search.run.should be_true
       end
@@ -210,7 +128,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 20,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: [], language: 'en')
           search.run.should be_true
         end
@@ -224,7 +142,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 15,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: [], language: 'en')
           search.run.should be_true
         end
@@ -242,7 +160,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 20,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: %w(image), language: 'en')
           search.run.should be_true
         end
@@ -256,7 +174,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 15,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: %w(image), language: 'en')
           search.run.should be_true
         end
@@ -272,7 +190,7 @@ describe NewsSearch do
                since: one_week_ago, until: nil,
                offset: 0, size: 10,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
         search.run
       end
@@ -289,7 +207,7 @@ describe NewsSearch do
                since: Time.parse('2012-10-01 00:00:00Z'), until: nil,
                offset: 0, size: 10,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
 
         news_search.run
@@ -301,15 +219,15 @@ describe NewsSearch do
         feed = mock_model(RssFeed, is_managed?: false, show_only_media_content?: false)
         affiliate.stub_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
-        until_ts = Time.parse('2012-10-31')
-        Time.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
+        until_ts = DateTime.parse('2012-10-31')
+        DateTime.should_receive(:strptime).with('10/31/2012', '%m/%d/%Y').and_return(until_ts.clone)
         news_search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, until_date: '10/31/2012')
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: until_ts.utc.end_of_day,
                offset: 0, size: 10,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en')
 
         news_search.run
@@ -327,7 +245,7 @@ describe NewsSearch do
                since: nil, until: nil,
                offset: 0, size: 10,
                contributor: 'contributor', subject: 'subject', publisher: 'publisher',
-               sort_by_relevance: true,
+               sort: nil,
                tags: [], language: 'en')
         search.run.should be_true
       end
@@ -345,7 +263,7 @@ describe NewsSearch do
                since: nil, until: nil,
                offset: 15, size: 15,
                contributor: nil, subject: nil, publisher: nil,
-               sort_by_relevance: false,
+               sort: 'published_at:desc',
                tags: [], language: 'en').
           and_return(response)
 
@@ -369,7 +287,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 10,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: [], language: 'en').
             and_return(response)
 
@@ -402,7 +320,7 @@ describe NewsSearch do
                  since: nil, until: nil,
                  offset: 0, size: 10,
                  contributor: nil, subject: nil, publisher: nil,
-                 sort_by_relevance: false,
+                 sort: 'published_at:desc',
                  tags: [], language: 'en').
             and_return(response)
 

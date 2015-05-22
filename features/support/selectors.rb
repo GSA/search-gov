@@ -44,8 +44,8 @@ module HtmlSelectorsHelpers
       '#time-filter-dropdown .current-filter'
     when /the current sort by filter/
       '#sort-filter-dropdown .current-filter'
-    when /the news search options form/
-      '#news-search-options-form'
+    when /the custom date search form/
+      '#custom-date-search-form'
     when /the med topic govbox/
       '#med-topic'
     when /the news govbox/

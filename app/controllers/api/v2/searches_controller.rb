@@ -2,7 +2,7 @@ class Api::V2::SearchesController < ApplicationController
   respond_to :json
 
   skip_before_filter :ensure_proper_protocol
-  skip_before_filter :set_default_locale, :show_searchbox
+  skip_before_filter :set_default_locale
   before_filter :require_ssl
   before_filter :validate_search_options
   after_filter :log_search_impression

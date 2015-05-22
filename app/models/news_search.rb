@@ -1,9 +1,9 @@
-class NewsSearch < Search
+class NewsSearch < FilterableSearch
   DEFAULT_VIDEO_PER_PAGE = 20.freeze
+
+  self.default_sort_by = 'date'.freeze
+
   attr_reader :rss_feed,
-              :tbs,
-              :since,
-              :until,
               :aggregations
 
   def initialize(options = {})
@@ -11,23 +11,6 @@ class NewsSearch < Search
     @query = (@query || '').squish
     @channel = options[:channel].to_i rescue nil if options[:channel].present?
     @enable_highlighting = options[:enable_highlighting]
-
-    if options[:until_date].present? || options[:since_date].present?
-      if options[:until_date].present?
-        @until = Time.strptime(options[:until_date], I18n.t(:cdr_format)).utc.end_of_day rescue Time.current.end_of_day
-      end
-
-      if options[:since_date].present?
-        @since = Time.strptime(options[:since_date], I18n.t(:cdr_format)).utc.beginning_of_day rescue nil
-        @since ||= @until ? @until.advance(years: -1).beginning_of_day : Time.current.advance(years: -1).beginning_of_day
-        @since, @until = @until.beginning_of_day, @since.end_of_day if @since and @until and @since > @until
-      end
-    end
-
-    if NewsItem::TIME_BASED_SEARCH_OPTIONS.keys.include?(options[:tbs]) and @since.nil? and @until.nil?
-      @tbs = options[:tbs]
-      @since = since_when(@tbs) if @tbs
-    end
 
     if @channel
       assign_rss_feed
@@ -47,10 +30,13 @@ class NewsSearch < Search
 
     @total = 0
     @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
-    @sort_by_relevance = options[:sort_by] == 'r'
     if @rss_feed and @rss_feed.is_managed? || @rss_feed.show_only_media_content? and options[:per_page].blank?
       @per_page = DEFAULT_VIDEO_PER_PAGE
     end
+  end
+
+  def sort_by_relevance?
+    'r' == sort_by
   end
 
   def search
@@ -58,7 +44,7 @@ class NewsSearch < Search
                                since: @since, until: @until,
                                size: @per_page, offset: (@page - 1) * @per_page,
                                contributor: @contributor, subject: @subject, publisher: @publisher,
-                               sort_by_relevance: @sort_by_relevance,
+                               sort: @sort,
                                tags: @tags, language: @affiliate.indexing_locale) if @rss_feeds.present?
   end
 
@@ -69,10 +55,6 @@ class NewsSearch < Search
       date_range << "..#{@until.to_date.to_s}" if @until
     end
     [@affiliate.id, @query, @channel, date_range, @page, @per_page].join(':')
-  end
-
-  def sort_by_relevance?
-    @sort_by_relevance
   end
 
   def results_to_hash
@@ -103,14 +85,6 @@ class NewsSearch < Search
 
   def navigable_feeds
     @affiliate.rss_feeds.includes(:rss_feed_urls).navigable_only
-  end
-
-  def since_when(tbs)
-    if tbs && (extent = NewsItem::TIME_BASED_SEARCH_OPTIONS[tbs])
-      time = 1.send(extent).ago
-      time = time.beginning_of_day if extent != :hour
-      time
-    end
   end
 
   def log_serp_impressions

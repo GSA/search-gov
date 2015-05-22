@@ -11,7 +11,6 @@ class SearchesController < ApplicationController
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]
   before_filter :force_request_format, :only => [:advanced, :docs, :index, :news]
-  before_filter :filter_params, only: :advanced
   ssl_allowed :all
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
 
@@ -68,8 +67,8 @@ class SearchesController < ApplicationController
     @search = WebSearch.new(@search_options)
     @affiliate = @search_options[:affiliate]
     set_search_params
-    @filtered_params[:filter] = %w(0 1 2).include?(@filtered_params[:filter]) ? @filtered_params[:filter] : '1'
-    @filtered_params[:filetype] = %w(doc pdf ppt txt xls).include?(@filtered_params[:filetype]) ? @filtered_params[:filetype] : nil
+    permitted_params[:filter] = %w(0 1 2).include?(permitted_params[:filter]) ? permitted_params[:filter] : '1'
+    permitted_params[:filetype] = %w(doc pdf ppt txt xls).include?(permitted_params[:filetype]) ? permitted_params[:filetype] : nil
     respond_to { |format| format.any(:html, :mobile) {} }
   end
 
@@ -86,62 +85,53 @@ class SearchesController < ApplicationController
   end
 
   def set_news_search_page_title
-    if params[:query].present?
-      @page_title = params[:query]
+    if permitted_params[:query].present?
+      @page_title = permitted_params[:query]
     elsif @search.rss_feed and @search.total > 0
       @page_title = @search.rss_feed.name
     end
   end
 
   def handle_old_advanced_form
-    redirect_to advanced_search_path(params.merge(:controller => "searches", :action => "advanced")) if params["form"] == "advanced-firstgov"
+    if permitted_params['form'] == 'advanced-firstgov'
+      redirect_to advanced_search_path permitted_params
+    end
   end
 
   def set_web_search_options
-    %w{tbs channel}.each { |param| params.delete(param) }
-    @search_options = search_options_from_params(@affiliate, params)
+    @search_options = search_options_from_params :filter,
+                                                 :since_date,
+                                                 :sort_by,
+                                                 :tbs,
+                                                 :until_date
   end
 
   def set_docs_search_options
-    @search_options = search_options_from_params(@affiliate, params)
-    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc].to_i) rescue nil
+    @search_options = search_options_from_params :dc
+    document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
     @search_options.merge!(document_collection: document_collection)
   end
 
   def set_news_search_options
-    @search_options = search_options_from_params(@affiliate, params)
-    @search_options.merge!(contributor: params[:contributor],
-                           subject: params[:subject],
-                           publisher: params[:publisher],
-                           sort_by: params[:sort_by],
-                           since_date: params[:since_date],
-                           until_date: params[:until_date])
-  end
-
-  def filter_params
-    @filtered_params = params.permit(:affiliate,
-                                     :'filetype',
-                                     :filter,
-                                     :m,
-                                     :query,
-                                     :'query-not',
-                                     :'query-or',
-                                     :'query-quote',
-                                     :utf8)
-    @filtered_params.keys.each do |field|
-      @filtered_params[field] = sanitize_query @filtered_params[field]
-    end
+    @search_options = search_options_from_params :channel,
+                                                 :contributor,
+                                                 :publisher,
+                                                 :since_date,
+                                                 :sort_by,
+                                                 :subject,
+                                                 :tbs,
+                                                 :until_date
   end
 
   def gets_blended_results?
-    @affiliate.gets_blended_results && params[:cr] != 'true'
+    @affiliate.gets_blended_results && permitted_params[:cr] != 'true'
   end
 
   def gets_i14y_results?
-    @affiliate.gets_i14y_results && params[:cr] != 'true'
+    @affiliate.gets_i14y_results && permitted_params[:cr] != 'true'
   end
 
   def log_search_impression
-    SearchImpression.log(@search, @search_vertical, params, request)
+    SearchImpression.log(@search, @search_vertical, permitted_params, request)
   end
 end

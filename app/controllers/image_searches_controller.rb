@@ -28,14 +28,10 @@ class ImageSearchesController < ApplicationController
   def set_search_options
     @search_options = {
         affiliate: @affiliate,
-        cr: filtered_params[:cr],
-        page: filtered_params[:page],
-        query: sanitize_query(filtered_params[:query]) || ''
+        cr: permitted_params[:cr],
+        page: permitted_params[:page],
+        query: sanitize_query(permitted_params[:query]) || ''
     }
-  end
-
-  def filtered_params
-    params.permit(:affiliate, :cr, :m, :page, :per_page, :query, :utf8)
   end
 
   def search_klass

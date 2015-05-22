@@ -169,7 +169,7 @@ Feature: Searches using mobile device
 
     When I fill in "From" with "9/30/2012"
     And I fill in "To" with "10/15/2012"
-    And I press "Search" within the news search options form
+    And I press "Search" within the custom date search form
 
     Then I should see "Press" within the SERP active navigation
     And the "Enter your search term" field should contain "item"
@@ -198,7 +198,7 @@ Feature: Searches using mobile device
 
     When I fill in "From" with "9/30/2012"
     And I fill in "To" with "10/15/2012"
-    And I press "Search" within the news search options form
+    And I press "Search" within the custom date search form
     And I follow "Best match"
     And I follow "Clear"
 
@@ -214,7 +214,7 @@ Feature: Searches using mobile device
 
     When I fill in "Desde" with "30/9/2012"
     And I fill in "Hasta" with "15/10/2012"
-    And I press "Buscar" within the news search options form
+    And I press "Buscar" within the custom date search form
 
     Then I should see "Noticias" within the SERP active navigation
     And the "Ingrese su búsqueda" field should contain "item"
@@ -243,7 +243,7 @@ Feature: Searches using mobile device
 
     When I fill in "Desde" with "30/9/2012"
     And I fill in "Hasta" with "15/10/2012"
-    And I press "Buscar" within the news search options form
+    And I press "Buscar" within the custom date search form
     And I follow "Más relevantes"
     And I follow "Borrar"
 

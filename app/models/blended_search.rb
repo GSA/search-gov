@@ -1,19 +1,10 @@
-class BlendedSearch < Search
+class BlendedSearch < FilterableSearch
+  include SearchInitializer
   include Govboxable
 
-  KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC', news_item: 'NEWS' }
+  self.default_sort_by = 'r'.freeze
 
-  def initialize(options = {})
-    super(options)
-    @options = options
-    @query = (@query || '').squish
-    @total = 0
-    @limit = options[:limit]
-    @offset = options[:offset]
-    @sort = 'published_at:desc' if options[:sort_by] == 'date'
-    @highlight_options = options.slice(:pre_tags, :post_tags)
-    @highlight_options[:highlighting] = options[:enable_highlighting]
-  end
+  KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC', news_item: 'NEWS' }
 
   def search
     search_options = {
@@ -24,6 +15,8 @@ class BlendedSearch < Search
       rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
       size: detect_size,
       sort: @sort,
+      since: @since,
+      until: @until
     }.reverse_merge(@highlight_options)
 
     elastic_blended_results = ElasticBlended.search_for(search_options)

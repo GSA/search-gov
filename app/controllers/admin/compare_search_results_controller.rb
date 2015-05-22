@@ -6,7 +6,7 @@ class Admin::CompareSearchResultsController < Admin::AdminController
       @affiliate_pick = params[:affiliate_pick]
       @query = params[:query]
       @affiliate = Affiliate.find_by_name(params[:affiliate_pick])
-      @search_options = search_options_from_params(@affiliate, params)
+      @search_options = search_options_from_params
       @web_search = WebSearch.new(@search_options)
       @odie_search = OdieSearch.new(@search_options)
       @web_search.run

@@ -6,7 +6,7 @@
 //= require searches/filter_and_nav
 //= require searches/images
 //= require searches/menu
-//= require searches/news_search_options_modal
+//= require searches/custom_date_search_form_modal
 //= require searches/skiplink
 //= require searches/sticky_footer
 //= require searches/typeahead

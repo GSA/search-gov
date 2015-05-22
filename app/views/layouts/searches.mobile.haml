@@ -37,8 +37,8 @@
     #search-bar-nav-wrapper
       = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
 
-    = render partial: 'searches/news_search_options_modal',
-      locals: { search: @search, search_params: @search_params } if @search.is_a?(NewsSearch)
+    = render partial: 'searches/custom_date_search_form_modal',
+      locals: { search: @search, search_params: @search_params } if @search.is_a?(FilterableSearch)
 
     #main-content{ tabindex: -1 }= yield
 

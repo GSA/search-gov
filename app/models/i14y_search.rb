@@ -1,17 +1,7 @@
 class I14ySearch < Search
+  include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
-
-  def initialize(options = {})
-    super(options)
-    @options = options
-    @query = (@query || '').squish
-    @total = 0
-    @limit = options[:limit]
-    @offset = options[:offset]
-    @highlight_options = options.slice(:pre_tags, :post_tags)
-    @highlight_options[:highlighting] = options[:enable_highlighting]
-  end
 
   def search
     search_options = {
