@@ -1,5 +1,7 @@
 # coding: utf-8
+
 shared_examples "a web search engine" do
+  fixtures :languages
   describe ".new" do
     it 'should set up API connection' do
       search_engine = described_class.new
@@ -70,6 +72,22 @@ shared_examples "a web search engine" do
 
       it "should pass a Simplified Chinese language filter to Google" do
         chinese_search.execute_query
+      end
+
+      after do
+        I18n.locale = I18n.default_locale
+      end
+    end
+
+    context "when Google unsupported locale is specified" do
+      let(:creole_search) { described_class.new(query: "tradiksyon") }
+
+      before do
+        I18n.locale = :ht
+      end
+
+      it "should pass no language filter to Google" do
+        creole_search.execute_query
       end
 
       after do

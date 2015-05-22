@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ImageSearchesController do
-  fixtures :affiliates, :instagram_profiles
+  fixtures :affiliates, :instagram_profiles, :languages
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe "#index" do
@@ -80,7 +80,7 @@ describe ImageSearchesController do
     end
 
     context "when searching on legacy affiliate via the API" do
-      fixtures :affiliates, :image_search_labels
+      fixtures :image_search_labels
       render_views
 
       before do

@@ -630,3 +630,10 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
     And I press "Search"
     Then I should see "NORESULTS. Try your search again to see results"
+
+  Scenario: Web search on Kalaallisut site
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale | domains              |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John Bar     | kl     |                      |
+    When I am on kl.agency.gov's mobile search page
+    Then I should see "Ujarniakkat ataani allaffissamut allaguk"

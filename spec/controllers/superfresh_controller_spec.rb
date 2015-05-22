@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SuperfreshController, "#index" do
-  fixtures :affiliates
+  fixtures :affiliates, :languages
   let(:affiliate) { affiliates(:basic_affiliate) }
   it "should set the request fomat to :rss" do
     get :index

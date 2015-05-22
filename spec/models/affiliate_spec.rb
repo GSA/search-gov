@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
 
   before(:each) do
     @valid_create_attributes = {
@@ -18,10 +18,9 @@ describe Affiliate do
 
   describe "Creating new instance of Affiliate" do
     it { should validate_presence_of :display_name }
-    SUPPORTED_LOCALES.each do |locale|
+    Language.pluck(:code).each do |locale|
       it { should allow_value(locale).for(:locale) }
     end
-    it { should_not allow_value("invalid_locale").for(:locale) }
     it { should validate_presence_of :locale }
     it { should validate_uniqueness_of(:api_access_key).case_insensitive }
     it { should validate_uniqueness_of(:name).case_insensitive }
@@ -51,6 +50,7 @@ describe Affiliate do
     it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { should have_many :twitter_profiles }
     it { should belong_to :agency }
+    it { should belong_to :language }
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:daily_usage_stats).dependent(:delete_all) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
@@ -412,6 +412,12 @@ describe Affiliate do
 
       affiliate = Affiliate.new(@valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
       affiliate.save.should be_true
+    end
+
+    it 'validates locale is valid' do
+      affiliate = Affiliate.new(@valid_create_attributes.merge(locale: 'invalid_locale'))
+      affiliate.save.should be_false
+      affiliate.errors[:base].should include("Locale must be valid")
     end
 
     context "is_validate_staged_header_footer is set to true" do

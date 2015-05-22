@@ -69,9 +69,9 @@ module MobileHelper
     end
   end
 
-  def html_class_hash(locale)
-    hash = { lang: locale }
-    hash.merge!(dir: 'rtl') if RTL_LOCALES.include? locale.to_sym
+  def html_class_hash(language)
+    hash = { lang: language.code }
+    hash.merge!(dir: 'rtl') if language.rtl
     hash
   end
 

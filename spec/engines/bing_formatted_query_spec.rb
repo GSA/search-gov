@@ -137,5 +137,23 @@ describe BingFormattedQuery do
         subject.query.should == '(government -site:exclude3.gov) language:en (scopeid:PatentClass)'
       end
     end
+
+    context 'language is not supported by Bing' do
+      fixtures :languages
+      let(:language) { languages(:kl) }
+      before do
+        I18n.locale = :kl
+      end
+
+      it 'does not send a language param to Bing' do
+        language.is_bing_supported.should be_false
+        BingFormattedQuery.new('government').query.should == '(government) (scopeid:usagovall OR site:gov OR site:mil)'
+      end
+
+      after do
+        I18n.locale = I18n.default_locale
+      end
+
+    end
   end
 end

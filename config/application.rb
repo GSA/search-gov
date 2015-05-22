@@ -75,61 +75,6 @@ module UsasearchRails3
   end
 end
 
-SUPPORTED_LOCALE_WITH_NAMES = {
-  en: 'English',
-  es: 'Spanish',
-  divider: '-'*10,
-  sq: 'Albanian',
-  ar: 'Arabic',
-  hy: 'Armenian',
-  bn: 'Bangla',
-  be: 'Belarusian',
-  bg: 'Bulgarian',
-  ca: 'Catalan',
-  zh: 'Chinese',
-  ht: 'Creole',
-  hr: 'Croatian',
-  cs: 'Czech',
-  da: 'Danish',
-  nl: 'Dutch',
-  et: 'Estonian',
-  fi: 'Finnish',
-  fr: 'French',
-  ka: 'Georgian',
-  de: 'German',
-  el: 'Greek',
-  he: 'Hebrew',
-  hi: 'Hindi',
-  hu: 'Hungarian',
-  id: 'Indonesian',
-  it: 'Italian',
-  ja: 'Japanese',
-  km: 'Khmer',
-  ko: 'Korean',
-  lv: 'Latvian',
-  lt: 'Lithuanian',
-  mk: 'Macedonian',
-  ps: 'Pashto',
-  fa: 'Persian',
-  pl: 'Polish',
-  pt: 'Portugese',
-  ro: 'Romanian',
-  ru: 'Russian',
-  sr: 'Serbian',
-  sk: 'Slovak',
-  so: 'Somalian',
-  sw: 'Swahili',
-  th: 'Thai',
-  tr: 'Turkish',
-  uk: 'Ukranian',
-  ur: 'Urdu',
-  uz: 'Uzbek',
-  vi: 'Vietnamese'
-}
-SUPPORTED_LOCALES = SUPPORTED_LOCALE_WITH_NAMES.keys.delete_if { |key| key == :divider }.map(&:to_s)
-SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALE_WITH_NAMES.invert.to_a
-RTL_LOCALES = [:ar, :he, :fa, :ur]
-SUPPORTED_VERTICALS = %w{web image blended}
 BLOG_URL = 'http://search.digitalgov.gov'
 TOS_URL = 'http://search.digitalgov.gov/tos'
 USA_GOV_URL = 'http://www.usa.gov'

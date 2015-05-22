@@ -225,6 +225,9 @@ RSpec.configure do |config|
     cn_web_search_params = common_web_search_params.merge(lr: 'lang_zh-cn', q: '中国')
     stubs.get("#{google_api_path}#{cn_web_search_params.to_param}") { [200, {}, generic_google_result] }
 
+    ht_web_search_params = common_web_search_params.merge(q: 'tradiksyon').except(:lr)
+    stubs.get("#{google_api_path}#{ht_web_search_params.to_param}") { [200, {}, generic_google_result] }
+
     gss_api_search_params = common_gss_api_search_params.merge(lr: 'lang_es', q: 'casa blanca site:usa.gov')
     stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, generic_google_result] }
 

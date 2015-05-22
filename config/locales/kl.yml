@@ -1,0 +1,130 @@
+kl:
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Ujarlernerup inerneri'
+
+# Labels for the search box
+  search: "Ujarlerit"
+  search_label: 'Ujarniakkat allaguk'
+
+# Labels for the navigation bar
+  everything: "Ujakkat inerneri"
+  images: "Assit"
+  videos: "Videos"
+  show_more: 'Aammalu'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Ujakkat kingulliit'
+  by_relevance: 'Naleqqunnerusut'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  all_time: "Tamaviisa"
+  last_hour: "Orën e Fundit"
+  last_day: "Ulloq kingulleq"
+  last_week: "Sapaatip-akunnera qaangiuttoq"
+  last_month: "Qaammat kingulleq"
+  last_year: "Ukioq kingulleq"
+  custom_range: 'Akuttussuseq nammineq toqqagaq'
+  from: '-miit'
+  to: '-mut'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'.
+  cdr_format: '%m/%d/%Y'
+  before: 'Sioqqullugu'
+  clear: 'Piiakkit'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Inerneri takutinneqartut %{corrected_query}
+  search_instead_for: Taarsiullugu uku ujakkit %{original_query}
+  did_you_mean: "Inerneri uku ilannguppavut %{assumed_term}. Uku kisimik inerneri piumavigit %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Ujarliut ukuninnga nanisaqanngilaq '%{query}'. Ujarlerneq oqaasertalersorneruguk"
+  too_long: "Ujakkat takivallaarput. Naannerusumik misiliigit:"
+  empty_query: "Ujarniakkat ataani allaffissamut allaguk."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Innersuunneqartut"
+  by: "Uannga"
+  default_rss_govbox_label: 'Nutaarsiassat'
+  related_searches: "Ujakkanut ilaasut"
+
+# Labels for paging through results
+  page: 'Qupperneq'
+  prev_label: "Siulia"
+  next_label: "Tullia"
+
+  searches:
+    by: -nnga
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Imai pingaarnerit ornikkit
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Qinigassiivik
+    browse_site: Quppernerit misissukkit
+    related_sites: Pineqartoq takuuk
+    search_results: Ujakkat inerneri
+# Prompts for searchers to view more results from Bing/Google after reaching page n of DigitalGov Search results
+    commercial_results:
+      see_more_web_results: "%{link} Amerlanerit takuniarlugit"
+      see_more_image_results: "Qulaani nanisat inuit attaveqaqatigiiffiannit pisuupput %{link} Uagut quppernitsinnit nanisat takujumallugit (Inernerit takoriikkatit takkuteqqissinnaapput)"
+      search_again: Ujarlernerit misileqqiuk
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Inerneri uku ilannguppavut %{query} Uannga %{matching_sites} Taamaallaat.
+      do_you_want_to_see_results_for: Uku nanisat takorusuppigit %{query_from_all_sites}?
+      query_from_all_sites: '%{query} Quppernernit tamanit'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Aammalu %{news_label} Pillugu %{query}'
+    news_about_query: '%{news_label} Pillugu %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy'.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, DigitalGov Search, or Google
+  powered_by: 'Piviusunngortitsisoq'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Amerlanerit takukkit'
+  show_less_label: 'Ikinnerit takukkit'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "Minutsip affaata matuma siorna"
+      less_than_x_seconds:
+        one:   "Sekundi ataaseq inorlugu"
+        other: "Uannga minnerusoq %{count} Sekundialuit matuma siorna"
+      x_seconds:
+        one:   "Sekundip ataatsip matuma siorna"
+        other: "%{count} Sekundialuit matuma siorna"
+      less_than_x_minutes:
+        one:   "Minutsi ataaseq inorlugu"
+        other: "Uannga minnerusoq %{count} Minutsialuit matuma siorna"
+      x_minutes:
+        one:   "Minutsip ataatsip matuma siorna"
+        other: "%{count} Minutsialuit matuma siorna"
+      about_x_hours:
+        one:   "Akunnerup ataasingajaap matuma siorna"
+        other: "Pillugu %{count}  Akunnerit arlallit matuma siorna"
+      x_days:
+        one:   "Ulloq ataatsip matuma siorna"
+        other: "%{count} Ullut arlallit matuma siorna"
+      about_x_months:
+        one:   "Qaammatip ataasingajaap matuma siorna"
+        other: "Pillugu %{count} Qaammatit arlallit matuma siorna"
+      x_months:
+        one:   "Qaammatip ataatsip matuma siorna"
+        other: "%{count} Qaammatit arlallit matuma siorna"
+      about_x_years:
+        one:   "Ukiup ataasingajaap matuma siorna"
+        other: "Pillugu %{count} Ukiut arlallit matuma siorna"
+      over_x_years:
+        one:   "Ukiup ataaseq qaangerlugu matuma siorna"
+        other: "Ukiup ataaseq  %{count} Ukiut arlallit matuma siorna"
+      almost_x_years:
+        one:   "Ukiup ataasingajaap matuma siorna"
+        other: "Ukiup ataasingajaap %{count} Ukiut arlallit matuma siorna"

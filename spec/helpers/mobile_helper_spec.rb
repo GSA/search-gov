@@ -53,9 +53,12 @@ describe MobileHelper do
   end
 
   describe "#html_class_hash" do
+    fixtures :languages
+
     context 'when locale is written right-to-left' do
+      let(:language) { languages(:ar) }
       it 'should set the HTML direction to rtl' do
-        helper.html_class_hash(:ar)[:dir].should == 'rtl'
+        helper.html_class_hash(language)[:dir].should == 'rtl'
       end
     end
   end

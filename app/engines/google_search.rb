@@ -38,11 +38,11 @@ class GoogleSearch < SearchEngine
       alt: :json,
       cx: @google_cx,
       key: @google_key,
-      lr: language,
       quotaUser: 'USASearch',
       q: query,
       safe: filter_level
     }
+    params_hash.merge!(lr: language) if Language.exists?(code: I18n.locale, is_google_supported: true)
     params_hash.merge!(start: @start) unless @start == DEFAULT_START
     params_hash.merge!(num: @per_page) if per_page_is_valid_and_not_default_value?
     params_hash

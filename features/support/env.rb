@@ -47,7 +47,7 @@ ActionController::Base.allow_rescue = false
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
   DatabaseCleaner.strategy = :transaction
-  Cucumber::Rails::Database.javascript_strategy = :truncation, { except: %w(email_templates) }
+  Cucumber::Rails::Database.javascript_strategy = :truncation, { except: %w(email_templates languages) }
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
@@ -59,6 +59,7 @@ end
 
 EmailTemplate.load_default_templates
 OutboundRateLimit.load_defaults
+
 TestServices::create_es_indexes
 
 # EventMachine instance for Keen IO

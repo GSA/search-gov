@@ -124,7 +124,13 @@ module SitesHelper
   end
 
   def site_locale(site)
-    SUPPORTED_LOCALE_WITH_NAMES[site.locale.to_sym]
+    site.language.name
+  end
+
+  def supported_locale_options
+    special_treatment = [["English", :en], ["Spanish", :es], ["----------", :divider]]
+    others = Language.where("code not in ('en','es')").order(:name).map{|l| [l.name,l.code]}
+    special_treatment + others
   end
 
   def list_item_with_link_to_preview_serp(title, site, options = {})

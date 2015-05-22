@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::SitesController do
-  fixtures :users, :affiliates, :memberships, :statuses
+  fixtures :users, :affiliates, :memberships, :statuses, :languages
   before { activate_authlogic }
 
   describe '#index' do

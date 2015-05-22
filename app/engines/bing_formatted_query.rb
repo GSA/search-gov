@@ -27,6 +27,10 @@ class BingFormattedQuery < FormattedQuery
   end
 
   def query_plus_locale(user_query)
-    "(#{user_query}) language:#{I18n.locale}".squish
+    "(#{user_query}) #{locale_if_supported}".squish
+  end
+
+  def locale_if_supported
+    "language:#{I18n.locale}" if Language.exists?(code: I18n.locale, is_bing_supported: true)
   end
 end

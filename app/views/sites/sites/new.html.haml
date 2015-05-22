@@ -20,4 +20,4 @@
     = f.text_field :name, required: true, class: 'required controls', maxlength: Affiliate::MAX_NAME_LENGTH, pattern: '[a-z0-9._-]+', placeholder: 'Visible to searchers in the URL', title: 'Handles can have lowercase letters, numbers, periods, hyphens, and underscores only.'
   .control-group
     = f.label :locale, 'Site Language', class: 'control-label'
-    = f.select :locale, SUPPORTED_LOCALE_OPTIONS, class: 'required controls', disabled: :divider
+    = f.select :locale, supported_locale_options, class: 'required controls', disabled: :divider

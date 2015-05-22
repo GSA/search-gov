@@ -51,6 +51,7 @@ class Affiliate < ActiveRecord::Base
 
   has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
   belongs_to :status
+  belongs_to :language, foreign_key: :locale, primary_key: :code
 
   with_options dependent: :delete_all, foreign_key: :affiliate, primary_key: :name do |assoc|
     assoc.has_many :daily_usage_stats
@@ -93,7 +94,6 @@ class Affiliate < ActiveRecord::Base
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
   validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
   validates_format_of :name, :with => /^[a-z0-9._-]+$/
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -121,7 +121,8 @@ class Affiliate < ActiveRecord::Base
            :validate_managed_footer_links,
            :validate_managed_header_links,
            :validate_staged_header_footer,
-           :validate_staged_header_footer_css
+           :validate_staged_header_footer_css,
+           :language_valid
 
   after_validation :update_error_keys
   before_save :ensure_http_prefix
@@ -574,6 +575,10 @@ class Affiliate < ActiveRecord::Base
     rescue Sass::SyntaxError => err
       errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
     end
+  end
+
+  def language_valid
+    errors.add(:base, "Locale must be valid") unless Language.exists?(code: self.locale)
   end
 
   def generate_nested_css(css)
