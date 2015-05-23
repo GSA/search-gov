@@ -26,7 +26,7 @@ CREATE TABLE `affiliate_twitter_settings` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `aff_id_tp_id` (`affiliate_id`,`twitter_profile_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -90,7 +90,7 @@ CREATE TABLE `affiliates` (
   `gets_i14y_results` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_instagram_profiles` (
   `affiliate_id` int(11) NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE `agencies` (
   `abbreviation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=498 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agency_organization_codes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -131,7 +131,7 @@ CREATE TABLE `agency_queries` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_content_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -141,7 +141,7 @@ CREATE TABLE `boosted_content_keywords` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_boosted_content_keywords_on_boosted_content_id` (`boosted_content_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13938 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `boosted_contents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -156,7 +156,7 @@ CREATE TABLE `boosted_contents` (
   `publish_end_on` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_boosted_contents_on_affiliate_id_and_title` (`affiliate_id`,`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=3191 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `catalog_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -176,7 +176,7 @@ CREATE TABLE `connections` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_connections_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `daily_search_module_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -221,7 +221,7 @@ CREATE TABLE `email_templates` (
   `updated_at` datetime DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `excluded_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -273,7 +273,7 @@ CREATE TABLE `featured_collection_links` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collection_links_on_featured_collection_id` (`featured_collection_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `featured_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -292,7 +292,7 @@ CREATE TABLE `featured_collections` (
   `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `features` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -340,7 +340,7 @@ CREATE TABLE `federal_register_documents` (
   `docket_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `significant` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=284630 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `flickr_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -352,7 +352,7 @@ CREATE TABLE `flickr_profiles` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_flickr_profiles_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `help_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -382,7 +382,7 @@ CREATE TABLE `i14y_drawers` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `i14y_memberships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -393,7 +393,7 @@ CREATE TABLE `i14y_memberships` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id` (`affiliate_id`,`i14y_drawer_id`),
   KEY `index_i14y_memberships_on_i14y_drawer_id` (`i14y_drawer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `image_search_labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -403,7 +403,7 @@ CREATE TABLE `image_search_labels` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_image_search_labels_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `indexed_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -444,7 +444,7 @@ CREATE TABLE `languages` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_languages_on_code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `med_related_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -503,7 +503,7 @@ CREATE TABLE `memberships` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_memberships_on_affiliate_id_and_user_id` (`affiliate_id`,`user_id`),
   KEY `index_memberships_on_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `misspellings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -527,7 +527,7 @@ CREATE TABLE `navigations` (
   PRIMARY KEY (`id`),
   KEY `index_navigations_on_affiliate_id` (`affiliate_id`),
   KEY `index_navigations_on_navigable_id_and_navigable_type` (`navigable_id`,`navigable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `news_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -570,7 +570,7 @@ CREATE TABLE `rss_feed_urls` (
   `oasis_mrss_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_rss_feed_urls_on_rss_feed_owner_type_and_url` (`rss_feed_owner_type`,`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `rss_feed_urls_rss_feeds` (
   `rss_feed_url_id` int(11) NOT NULL,
@@ -591,7 +591,7 @@ CREATE TABLE `rss_feeds` (
   PRIMARY KEY (`id`),
   KEY `index_rss_feeds_on_affiliate_id` (`owner_id`),
   KEY `index_rss_feeds_on_owner_type_and_owner_id` (`owner_type`,`owner_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sayt_filters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -603,7 +603,7 @@ CREATE TABLE `sayt_filters` (
   `accept` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_sayt_filters_on_phrase` (`phrase`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sayt_suggestions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -632,7 +632,7 @@ CREATE TABLE `search_modules` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -643,7 +643,7 @@ CREATE TABLE `sessions` (
   PRIMARY KEY (`id`),
   KEY `index_sessions_on_session_id` (`session_id`),
   KEY `index_sessions_on_updated_at` (`updated_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `site_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -654,7 +654,7 @@ CREATE TABLE `site_domains` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_domains_on_affiliate_id_and_domain` (`affiliate_id`,`domain`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `site_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -676,7 +676,7 @@ CREATE TABLE `statuses` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_statuses_on_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `suggestion_blocks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -757,7 +757,7 @@ CREATE TABLE `twitter_profiles` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_twitter_profiles_on_twitter_id` (`twitter_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `url_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -801,7 +801,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
   KEY `index_users_on_perishable_token` (`perishable_token`),
   KEY `index_users_on_nutshell_id` (`nutshell_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `whitelisted_v1_api_handles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -809,7 +809,7 @@ CREATE TABLE `whitelisted_v1_api_handles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `youtube_playlists` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -833,7 +833,7 @@ CREATE TABLE `youtube_profiles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_youtube_profiles_on_channel_id` (`channel_id`),
   KEY `index_youtube_profiles_on_id_and_imported_at` (`id`,`imported_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
@@ -2146,3 +2146,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150522155809');
 INSERT INTO schema_migrations (version) VALUES ('20150523151050');
 
 INSERT INTO schema_migrations (version) VALUES ('20150523152338');
+
+INSERT INTO schema_migrations (version) VALUES ('20150523221424');
