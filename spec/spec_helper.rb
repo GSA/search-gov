@@ -124,6 +124,9 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(query: '中国')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
+    web_search_params = common_web_search_params.merge(query: 'tradiksyon')
+    stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
+
     web_search_params = common_web_search_params.merge(query: 'english')
     stubs.get("#{bing_api_path}#{web_search_params.to_param}") { [200, {}, generic_bing_result] }
 
