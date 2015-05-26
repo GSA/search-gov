@@ -17,14 +17,23 @@ describe SiteCloner do
       context 'no prior copy exists' do
         subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
 
-        its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}-copy1") }
+        its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}1") }
+      end
+
+      context 'existing site name is ridiculously long' do
+        before do
+          affiliates(:basic_affiliate).update_attribute(:name, "washingtonstateofficeofattorneyge")
+        end
+        subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
+
+        its(:target_handle) { should eq("washingtonstateofficeofattorneyg1") }
       end
 
       context 'prior copy exists' do
         before do
           Affiliate.create!(
             display_name: 'My Awesome Site',
-            name: "#{affiliates(:basic_affiliate).name}-copy1",
+            name: "#{affiliates(:basic_affiliate).name}1",
             website: 'http://www.someaffiliate.gov',
             header: '<table><tr><td>html layout from 1998</td></tr></table>',
             footer: '<center>gasp</center>',
@@ -34,7 +43,7 @@ describe SiteCloner do
 
         subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
 
-        its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}-copy2") }
+        its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}2") }
       end
     end
   end

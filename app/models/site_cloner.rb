@@ -2,8 +2,8 @@ class SiteCloner
   attr_reader :target_handle, :target_display_name
 
   DO_NOT_COPY = [:id, :api_access_key, :created_at, :updated_at, :has_staged_content, :name, :display_name,
-                 :previous_fields_json, :staged_fields_json, :staged_uses_managed_header_footer,
-                 :keen_scoped_key, :nutshell_id]
+                 :previous_fields_json, :staged_fields_json, :live_fields_json,
+                 :staged_uses_managed_header_footer, :keen_scoped_key, :nutshell_id]
 
   def initialize(origin_site, target_handle = nil)
     @origin_site = origin_site
@@ -119,7 +119,8 @@ class SiteCloner
   end
 
   def available_handle_from(existing_handle)
-    candidate = "#{existing_handle}-copy1"
+    possibly_shortened_handle = existing_handle.first(Affiliate::MAX_NAME_LENGTH - 1)
+    candidate = "#{possibly_shortened_handle}1"
     while Affiliate.exists?(name: candidate)
       candidate.succ!
     end
