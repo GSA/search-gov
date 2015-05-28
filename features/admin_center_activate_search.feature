@@ -39,12 +39,22 @@ Feature: Activate Search
     And I follow "Search API Instructions"
     Then I should see "API Instructions" within the Admin Center content
 
-    When I follow "Search API Instructions"
-    Then I should see "Search API Instructions" within the Admin Center content
-
     When I follow "bought an API key from Bing or Google" within the Admin Center content
     Then I should see "Tips on How to Buy a Commercial API Key"
 
     When I go to the aff.gov's Activate Search page
     And I follow "Type-ahead API Instructions"
     Then I should see "Type-ahead API Instructions" within the Admin Center content
+
+  Scenario: Visiting the Site i14y Beta API Instructions
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    Given the following i14y drawers exist:
+      | handle  | token         |
+      | aff.gov | aff.gov_token |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the aff.gov's Activate Search page
+    And I follow "i14y Beta API Instructions"
+    Then I should see "i14y Beta API Instructions" within the Admin Center content
+    And I should see "aff.gov_token"

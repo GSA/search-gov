@@ -44,6 +44,7 @@ UsasearchRails3::Application.routes.draw do
           get :commercial_keys
         end
       end
+      resource :i14y_api_instructions, only: [:show]
       resource :type_ahead_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
