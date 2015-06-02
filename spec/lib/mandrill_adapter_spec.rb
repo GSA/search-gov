@@ -270,6 +270,7 @@ describe MandrillAdapter do
             expected_preview = {
               to: 'Some User <user@example.com>',
               subject: 'Email Subject',
+              to_admin: false,
               merge_tags: {
                 available: {
                   organization_name: 'The Organization',

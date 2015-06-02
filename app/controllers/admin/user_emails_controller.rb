@@ -20,19 +20,20 @@ class Admin::UserEmailsController < Admin::AdminController
 
   def send_to_admin
     result = MandrillAdapter.new.send_admin_email(@user, @template_name, merge_vars)
-
-    flash[:notice] = "email #{@template_name} sent to admin"
-    redirect_to action: :index, id: @user.id
+    notify_email_sent('admin')
   end
 
   def send_to_user
     result = MandrillAdapter.new.send_user_email(@user, @template_name, merge_vars)
-
-    flash[:notice] = "email #{@template_name} sent to user"
-    redirect_to action: :index, id: @user.id
+    notify_email_sent('user')
   end
 
   private
+
+  def notify_email_sent(admin_or_user)
+    flash[:notice] = "email #{@template_name} sent to #{admin_or_user}"
+    redirect_to action: :index, id: @user.id
+  end
 
   def load_user_and_template
     @user = User.find(params[:id])

@@ -1,0 +1,17 @@
+default: &DEFAULT
+  :from_email: no-reply@support.digitalgov.gov
+  :from_name:  DigitalGov Search Team
+
+development:
+  <<: *DEFAULT
+  :global_merge_vars:
+    :base_url: http://localhost:3000/
+
+test:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT
+  :admin_email: usagov@mail.usasearch.howto.gov
+  :global_merge_vars:
+    :base_url: http://search.usa.gov/

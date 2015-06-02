@@ -62,26 +62,17 @@ class MandrillAdapter
     merge_tag_names = read_merge_tag_names(template)
     recipient = MandrillRecipient.new(user, config)
 
-    if template['labels'].include?('admin')
-      {
-        to: recipient.to_admin.first[:email],
-        subject: template['subject'],
-        to_admin: true,
-        merge_tags: {
-          available: recipient.default_merge_vars.slice(*merge_tag_names),
-          needed: merge_tag_names.select { |n| !recipient.default_merge_vars.include?(n) }.sort,
-        },
-      }
-    else
-      {
-        to: "#{recipient.to_user.first[:name]} <#{recipient.to_user.first[:email]}>",
-        subject: template['subject'],
-        merge_tags: {
-          available: recipient.default_merge_vars.slice(*merge_tag_names),
-          needed: merge_tag_names.select { |n| !recipient.default_merge_vars.include?(n) }.sort,
-        },
-      }
-    end
+    to_admin = template['labels'].include?('admin')
+
+    {
+      to: to_admin ? recipient.to_admin.first[:email] : "#{recipient.to_user.first[:name]} <#{recipient.to_user.first[:email]}>",
+      subject: template['subject'],
+      to_admin: to_admin,
+      merge_tags: {
+        available: recipient.default_merge_vars.slice(*merge_tag_names),
+        needed: merge_tag_names.select { |n| !recipient.default_merge_vars.include?(n) }.sort,
+      },
+    }
   end
 
   private
