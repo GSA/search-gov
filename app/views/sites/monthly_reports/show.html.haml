@@ -26,11 +26,6 @@
 
 %h3 Download Top Queries
 %ul.unstyled#report_links
-  - if @monthly_report.picked_date >= Date.parse(RtuDashboard::RTU_START_DATE)
-    %li= rtu_affiliate_analytics_monthly_report_link(@site, @monthly_report.picked_date )
-    - rtu_affiliate_analytics_weekly_report_links(@site, @monthly_report.picked_date).each do |weekly_report_link|
-      %li= weekly_report_link
-  - else
-    %li= affiliate_analytics_monthly_report_link(@site.name, @monthly_report.picked_date )
-    - affiliate_analytics_weekly_report_links(@site.name, @monthly_report.picked_date).each do |weekly_report_link|
-      %li= weekly_report_link
+  %li= rtu_affiliate_analytics_monthly_report_link(@site, @monthly_report.picked_date )
+  - rtu_affiliate_analytics_weekly_report_links(@site, @monthly_report.picked_date).each do |weekly_report_link|
+    %li= weekly_report_link

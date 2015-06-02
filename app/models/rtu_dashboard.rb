@@ -3,8 +3,6 @@ class RtuDashboard
   attr_reader :trending_queries, :top_queries, :no_results, :low_ctr_queries, :trending_urls, :top_urls,
               :monthly_usage_chart, :monthly_queries_to_date, :monthly_clicks_to_date
 
-  RTU_START_DATE = '2014-06-01'
-
   def initialize(site, day = Date.current, filter_bots)
     @site = site
     @day = day
@@ -70,15 +68,13 @@ class RtuDashboard
   end
 
   def monthly_queries_histogram
-    rows_pre_es = DailyUsageStat.where(affiliate: @site.name).where("day < '#{RTU_START_DATE}'").sum(:total_queries, group: "date_format(day,'%Y-%m')").to_a
-    rows_post_es = queries_by_month || []
-    rows_pre_es + rows_post_es
+    queries_by_month || []
   end
 
   private
 
   def queries_by_month
-    query = MonthlyHistogramQuery.new(@site.name, RTU_START_DATE)
+    query = MonthlyHistogramQuery.new(@site.name)
     yyyymm_buckets = top_n(query.body, 'search', "#{logstash_prefix(@filter_bots)}*")
     yyyymm_buckets.collect { |hash| [hash["key_as_string"], hash["doc_count"]] } if yyyymm_buckets
   end

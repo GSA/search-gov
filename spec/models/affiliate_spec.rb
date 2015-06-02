@@ -52,7 +52,6 @@ describe Affiliate do
     it { should belong_to :agency }
     it { should belong_to :language }
     it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:daily_usage_stats).dependent(:delete_all) }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }

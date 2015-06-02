@@ -7,23 +7,6 @@ describe Sites::MonthlyReportsController do
   describe '#show' do
     it_should_behave_like 'restricted to approved user', :get, :show
 
-    context 'when affiliate is looking at legacy monthly report data' do
-      include_context 'approved user logged in to a site'
-
-      let(:monthly_report) { double('MonthlyReport') }
-
-      context 'when valid target month passed in' do
-        before do
-          AWS::S3::Base.stub!(:establish_connection!).and_return true
-          MonthlyReport.should_receive(:new).with(site, '2012', '09').and_return monthly_report
-          get :show, mmyyyy: '09/2012'
-        end
-
-        it { should assign_to(:monthly_report).with(monthly_report) }
-      end
-
-    end
-    
     context 'when affiliate is looking at monthly report data' do
       include_context 'approved user logged in to a site'
 

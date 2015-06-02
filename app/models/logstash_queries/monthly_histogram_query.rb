@@ -1,7 +1,8 @@
 class MonthlyHistogramQuery
   include AnalyticsDSL
+  RTU_START_DATE = '2014-06-01'
 
-  def initialize(affiliate_name, since)
+  def initialize(affiliate_name, since = RTU_START_DATE)
     @affiliate_name = affiliate_name
     @since = since
   end

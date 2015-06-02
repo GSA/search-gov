@@ -178,30 +178,6 @@ CREATE TABLE `connections` (
   KEY `index_connections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `daily_search_module_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` date NOT NULL,
-  `affiliate_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `module_tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `vertical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `locale` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `impressions` int(11) NOT NULL,
-  `clicks` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_daily_search_module_stats_on_module_tag_and_day` (`module_tag`,`day`),
-  KEY `index_daily_search_module_stats_on_affiliate_name_and_day` (`affiliate_name`,`day`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `daily_usage_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` date DEFAULT NULL,
-  `total_queries` int(11) DEFAULT NULL,
-  `affiliate` varchar(33) COLLATE utf8_unicode_ci DEFAULT 'usagov',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_daily_usage_stats_on_affiliate_and_day` (`affiliate`,`day`),
-  UNIQUE KEY `index_daily_usage_stats_on_day_and_affiliate` (`day`,`affiliate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `document_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -2148,3 +2124,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150523151050');
 INSERT INTO schema_migrations (version) VALUES ('20150523152338');
 
 INSERT INTO schema_migrations (version) VALUES ('20150523221424');
+
+INSERT INTO schema_migrations (version) VALUES ('20150602164703');
+
+INSERT INTO schema_migrations (version) VALUES ('20150602164808');

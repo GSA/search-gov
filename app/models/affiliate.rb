@@ -49,13 +49,8 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   belongs_to :agency
 
-  has_many :daily_search_module_stats, dependent: :delete_all, foreign_key: :affiliate_name, primary_key: :name
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
-
-  with_options dependent: :delete_all, foreign_key: :affiliate, primary_key: :name do |assoc|
-    assoc.has_many :daily_usage_stats
-  end
 
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },

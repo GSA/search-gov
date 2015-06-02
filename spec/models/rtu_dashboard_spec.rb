@@ -93,6 +93,18 @@ describe RtuDashboard do
     end
   end
 
+  describe "#monthly_usage_chart" do
+    let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/month_histogram.json")) }
+
+    before do
+      ES::client_reader.stub(:search).and_return(json_response)
+    end
+
+    it 'creates a Google chart' do
+      dashboard.monthly_usage_chart.should be_an_instance_of(GoogleVisualr::Interactive::AreaChart)
+    end
+  end
+
   describe "counts" do
     describe "#monthly_queries_to_date" do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
@@ -130,37 +142,4 @@ describe RtuDashboard do
     end
 
   end
-
-  describe "#monthly_queries_histogram" do
-    context 'when data exists prior to June 2014' do
-      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/month_histogram.json")) }
-
-      before do
-        ES::client_reader.stub(:search).and_return json_response
-        DailyUsageStat.create!(:day => Date.parse('2014-04-01'), :total_queries => 110000, :affiliate => site.name)
-        DailyUsageStat.create!(:day => Date.parse('2014-05-01'), :total_queries => 320000, :affiliate => site.name)
-      end
-
-      it 'should incorporate that data with the ES data since June 1, 2014' do
-        dashboard.monthly_queries_histogram.should == [["2014-04", 110000], ["2014-05", 320000], ["2014-06", 383828], ["2014-07", 123456]]
-      end
-    end
-  end
-
-  describe "#monthly_usage_chart" do
-    context 'when data exists prior to June 2014' do
-      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/month_histogram.json")) }
-
-      before do
-        ES::client_reader.stub(:search).and_return json_response
-        DailyUsageStat.create!(:day => Date.parse('2014-04-01'), :total_queries => 110000, :affiliate => site.name)
-        DailyUsageStat.create!(:day => Date.parse('2014-05-01'), :total_queries => 320000, :affiliate => site.name)
-      end
-
-      it 'should incorporate that data with the ES data since June 1, 2014 for the chart' do
-        dashboard.monthly_usage_chart.should be_an_instance_of(GoogleVisualr::Interactive::AreaChart)
-      end
-    end
-  end
-
 end
