@@ -45,28 +45,28 @@ describe Admin::UserEmailsController do
     end
 
     describe '#index' do
-      it 'should redirect to the login page' do
+      it 'should redirect to the account page' do
         get :index, id: target_user.id
         response.should redirect_to(account_path)
       end
     end
 
     describe '#merge_tags' do
-      it 'should redirect to the login page' do
+      it 'should redirect to the account page' do
         get :merge_tags, id: target_user.id
         response.should redirect_to(account_path)
       end
     end
 
     describe '#send_to_admin' do
-      it 'should redirect to the login page' do
+      it 'should redirect to the account page' do
         post :send_to_admin, id: target_user.id, email_id: 'Template A'
         response.should redirect_to(account_path)
       end
     end
 
     describe '#send_to_user' do
-      it 'should redirect to the login page' do
+      it 'should redirect to the account page' do
         post :send_to_user, id: target_user.id, email_id: 'Template A'
         response.should redirect_to(account_path)
       end
@@ -107,6 +107,18 @@ describe Admin::UserEmailsController do
         it 'should show a no-client error' do
           get :merge_tags, id: target_user.id, email_id: 'Template A'
           response.body.should contain('No Mandrill client')
+        end
+      end
+
+      context 'when the referenced template does not exist' do
+        before do
+          adapter.stub(:preview_info).with(target_user, 'Template A').and_raise(MandrillAdapter::UnknownTemplate)
+        end
+
+        it 'should show an error message' do
+          get :merge_tags, id: target_user.id, email_id: 'Template A'
+
+          response.body.should contain("Unknown template 'Template A'")
         end
       end
 

@@ -122,8 +122,8 @@ describe MandrillAdapter do
       before { MandrillRecipient.stub(:new).and_return(recipient) }
 
       describe '#send_user_email' do
-        it 'sends email with the user as recipient' do
-          expected_message = {
+        let(:expected_message) do
+          {
             to: [{ email: 'user@example.com', name: 'Some User' }],
             merge_vars: { user: 'vars' },
             from_email: 'from@example.com',
@@ -131,9 +131,20 @@ describe MandrillAdapter do
             track_opens: false,
             global_merge_vars: [],
           }
+        end
+
+        it 'sends email with the user as recipient' do
           messages.should_receive(:send_template).with('template_name', [], expected_message)
 
           adapter.send_user_email(user, 'template_name', merge_vars)
+        end
+
+        context 'when an invalid mandrill api key is used' do
+          it 'absorbs the error' do
+            messages.stub(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
+
+            lambda { adapter.send_user_email(user, 'template_name', merge_vars) }.should_not raise_error
+          end
         end
       end
 
@@ -150,8 +161,8 @@ describe MandrillAdapter do
         end
 
         context 'when there is an admin_email in the config' do
-          it 'sends email with the admin_email as recipient' do
-            expected_message = {
+          let(:expected_message) do
+            {
               to: [{ email: 'admin@example.com' }],
               merge_vars: { admin: 'vars' },
               from_email: 'from@example.com',
@@ -159,9 +170,20 @@ describe MandrillAdapter do
               track_opens: false,
               global_merge_vars: [],
             }
+          end
+
+          it 'sends email with the admin_email as recipient' do
             messages.should_receive(:send_template).with('template_name', [], expected_message)
 
             adapter.send_admin_email(user, 'template_name', merge_vars)
+          end
+
+          context 'when an invalid mandrill api key is used' do
+            it 'absorbs the error' do
+              messages.stub(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
+
+              lambda { adapter.send_admin_email(user, 'template_name', merge_vars) }.should_not raise_error
+            end
           end
         end
       end
