@@ -17,6 +17,10 @@ describe SearchesController do
         @page_title = assigns[:page_title]
       end
 
+      it 'should assign to search_options a Hash with only Symbol keys' do
+        expect(@controller.view_assigns['search_options'].keys.map(&:class).uniq).to eq([Symbol])
+      end
+
       it "should assign the USA.gov affiliate as the default affiliate" do
         assigns[:affiliate].should == affiliates(:usagov_affiliate)
       end

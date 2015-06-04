@@ -122,6 +122,7 @@ class ApplicationController < ActionController::Base
              site_excludes: permitted_params[:siteexclude]
     h.merge! query_search_options
     h.merge! highlighting_option
+    h.symbolize_keys
   end
 
   def query_search_options
@@ -130,7 +131,7 @@ class ApplicationController < ActionController::Base
                                                  :'query-or',
                                                  :'query-quote')
     query_search_params.inject({}) do |hash, kv|
-      hash[kv.first.underscore] = sanitize_query kv.last
+      hash[kv.first.to_s.underscore.to_sym] = sanitize_query kv.last
       hash
     end
   end
