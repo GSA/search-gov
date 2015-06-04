@@ -28,9 +28,17 @@ class UserMonthlyReport
     stats[:last_year_total_queries] = last_year_monthly_report.total_queries
     stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
     stats[:last_year_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_year_total_queries])
+    stats.merge(popular_activities(affiliate))
+  end
+
+  def popular_activities(affiliate)
     query_raw_human = RtuQueryRawHumanArray.new(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month)
-    stats[:popular_queries] = query_raw_human.top_queries
-    stats
+    click_raw_human = RtuClickRawHumanArray.new(affiliate.name, @report_date.beginning_of_month, @report_date.end_of_month)
+
+    {
+      popular_queries: query_raw_human.top_queries,
+      popular_clicks: click_raw_human.top_clicks,
+    }
   end
 
   def calculate_total_stats

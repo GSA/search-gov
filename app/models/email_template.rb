@@ -4,7 +4,7 @@ class EmailTemplate < ActiveRecord::Base
 
   DEFAULT_SUBJECT_HASH = {
       affiliate_header_footer_change: "[USASearch] Your header and footer for <%= @affiliate.display_name %> changed",
-      affiliate_monthly_report: "[USASearch] Monthly Report for <%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %> <%= @user_monthly_report.report_date.year %>",
+      affiliate_monthly_report: "[DigitalGov Search] Monthly Report for <%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %> <%= @user_monthly_report.report_date.year %>",
       affiliate_yearly_report: "[USASearch] <%= @report_year %> Year in Review",
       daily_snapshot: "[USASearch] Today's Snapshot for <%= @site.name %> on <%= Date.yesterday %>",
       deep_collection_notification: "[USASearch] Deep collection created",

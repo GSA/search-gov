@@ -1,0 +1,39 @@
+require 'spec_helper'
+
+describe RtuClickRawHumanArray do
+
+  describe ".top_clicks" do
+    context 'when data is available' do
+      let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', Date.current, Date.current, 5) }
+
+      before do
+        RtuTopClicks.stub(:new).with(anything, false).and_return mock(RtuTopClicks, top_n: [['click6', 55], ['click5', 54], ['click4', 14]])
+        RtuTopClicks.stub(:new).with(anything, true).and_return mock(RtuTopClicks, top_n: [['click6', 53], ['click5', 50]])
+      end
+
+      it 'should return an array of [click, total, human] sorted by desc human' do
+        click_raw_human_array.top_clicks.should match_array([['click6', 55, 53], ['click5', 54, 50], ["click4", 14, 0]])
+      end
+    end
+
+    context 'when start_date or end_date is nil' do
+      let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', nil, nil, 5) }
+
+      it "should return INSUFFICIENT_DATA" do
+        click_raw_human_array.top_clicks.should == RtuClickRawHumanArray::INSUFFICIENT_DATA
+      end
+    end
+
+    context "when there really is insufficient data" do
+      let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', nil, nil, 5) }
+
+      before do
+        RtuTopClicks.stub(:new).and_return mock(RtuTopClicks, top_n: [])
+      end
+
+      it "should return INSUFFICIENT_DATA" do
+        click_raw_human_array.top_clicks.should == RtuClickRawHumanArray::INSUFFICIENT_DATA
+      end
+    end
+  end
+end
