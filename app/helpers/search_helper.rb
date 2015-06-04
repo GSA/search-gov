@@ -179,7 +179,7 @@ module SearchHelper
 
   def no_news_results_for(search)
     reset_filters_link = link_to(t(:remove_all_filters), search_path(:affiliate => search.affiliate.name, :query => search.query))
-    time_filter = NewsItem::TIME_BASED_SEARCH_OPTIONS[params[:tbs]]
+    time_filter = FilterableSearch::TIME_BASED_SEARCH_OPTIONS[params[:tbs]]
     time_filter_message = time_filter.blank? ? '' : " #{t("the_last_#{time_filter.to_s}".to_sym)}"
     no_results_message = "#{t(:no_results_for_query, :query => h(search.query))}#{time_filter_message}. "
     no_results_message << reset_filters_link.html_safe

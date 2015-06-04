@@ -16,13 +16,6 @@ class NewsItem < ActiveRecord::Base
 
   alias_attribute :url, :link
 
-  TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
-  TIME_BASED_SEARCH_OPTIONS["h"] = :hour
-  TIME_BASED_SEARCH_OPTIONS["d"] = :day
-  TIME_BASED_SEARCH_OPTIONS["w"] = :week
-  TIME_BASED_SEARCH_OPTIONS["m"] = :month
-  TIME_BASED_SEARCH_OPTIONS["y"] = :year
-
   def is_video?
     link =~ %r[\Ahttps?://www\.youtube\.com/watch\?v=]
   end

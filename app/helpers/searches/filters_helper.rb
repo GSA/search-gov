@@ -1,5 +1,5 @@
 module Searches::FiltersHelper
-  TIME_FILTER_KEYS = (['all'] + NewsItem::TIME_BASED_SEARCH_OPTIONS.keys).freeze
+  TIME_FILTER_KEYS = (['all'] + FilterableSearch::TIME_BASED_SEARCH_OPTIONS.keys).freeze
 
   def search_filters_and_results_count(search, search_params)
     return unless search.is_a? FilterableSearch
@@ -47,7 +47,7 @@ module Searches::FiltersHelper
 
     time_filter_description = time_filter_description_by_key time_filter_key
 
-    if NewsItem::TIME_BASED_SEARCH_OPTIONS[time_filter_key]
+    if FilterableSearch::TIME_BASED_SEARCH_OPTIONS[time_filter_key]
       time_params = { since_date: nil,
                       tbs: time_filter_key,
                       until_date: nil }
@@ -68,7 +68,7 @@ module Searches::FiltersHelper
     when 'all'
       I18n.t :all_time
     else
-      I18n.t "last_#{NewsItem::TIME_BASED_SEARCH_OPTIONS[time_filter_key]}"
+      I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[time_filter_key]}"
     end
   end
 

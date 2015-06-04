@@ -26,7 +26,7 @@
           = link_to_if(@search.since || @search.until, t(:all_time), @search.rss_feed ? send(search_path_method, @search_params.remove(:tbs, :since_date, :until_date)) : search_path(@search_params.remove(:tbs, :since_date, :until_date)), :class => 'updatable') do |all_time|
             = content_tag :div, all_time, class: 'selected'
         - search_uses_predefined_time_filter = params[:tbs].present? && params[:since_date].blank? && params[:until_date].blank?
-        - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
+        - FilterableSearch::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
           %li
             = link_to_unless((search_uses_predefined_time_filter && (params[:tbs] == tbs)), t("last_#{extent}".to_sym), send(search_path_method, @search_params.merge(:tbs => tbs).remove(:since_date, :until_date)), :class => 'updatable') do |last_time|
               = content_tag :div, last_time, class: 'selected'

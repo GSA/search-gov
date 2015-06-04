@@ -11,7 +11,7 @@ module NewsSearchHelper
 
     case
     when search.tbs
-      I18n.t "last_#{NewsItem::TIME_BASED_SEARCH_OPTIONS[search.tbs]}"
+      I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[search.tbs]}"
     when search.since
       desc = localized_time_filter_date search.since
       desc << " - #{localized_time_filter_date until_date}" unless search.since.to_date == until_date
