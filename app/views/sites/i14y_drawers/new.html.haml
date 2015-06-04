@@ -1,0 +1,10 @@
+= content_for_site_page_title @site, 'Add i14y drawer'
+= custom_form_for @i14y_drawer, url: { action: :create }, html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Add i14y Drawer
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'View All', site_i14y_drawers_path(@site)
+        %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
+  = render f

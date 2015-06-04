@@ -14,6 +14,10 @@
   %li.content-item
     = link_to site_collections_path(@site) do
       %span.no-icon Collections
+  - if @site.gets_i14y_results
+    %li.content-item
+      = link_to site_i14y_drawers_path(@site) do
+        %span.no-icon i14y Drawers
   %li.content-item
     = link_to site_best_bets_texts_path(@site) do
       %span.no-icon Best Bets: Text

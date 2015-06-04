@@ -1,0 +1,24 @@
+= content_for_site_page_title @site, 'i14y Drawers'
+.sub-nav-heading
+  %h2 i14y Drawers
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Add i14y Drawer', new_site_i14y_drawer_path(@site)
+
+= render_flash_message
+%table.table.table-no-header
+  %tbody
+    - @i14y_drawers.each do |i14y_drawer|
+      %tr
+        %td= i14y_drawer.handle
+        %td= i14y_drawer.description
+        %td.actions.actions-3x
+          %ul
+            %li= link_to 'Show', site_i14y_drawer_path(@site, i14y_drawer.id)
+            %li= link_to 'Edit', edit_site_i14y_drawer_path(@site, i14y_drawer.id)
+            %li= button_to 'Remove',
+                site_i14y_drawer_path(@site, i14y_drawer.id),
+                method: :delete,
+                class: 'btn btn-small',
+                data: { confirm: "Are you sure you wish to delete the #{i14y_drawer.handle} i14y drawer and all its documents?" }

@@ -1,0 +1,19 @@
+= content_for_site_page_title @site, 'i14y Drawer'
+.sub-nav-heading
+  %h2 i14y Drawer
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'View All', site_i14y_drawers_path(@site)
+      %li= link_to 'Edit', edit_site_i14y_drawer_path(@site, @i14y_drawer)
+.primary-content
+  %dl
+    %dt Handle
+    %dd #{@i14y_drawer.handle}
+  %dl
+    %dt Description
+    %dd #{@i14y_drawer.description}
+  %dl
+    %dt Secret Token
+    %dd
+      %code #{@i14y_drawer.token}

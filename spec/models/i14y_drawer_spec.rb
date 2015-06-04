@@ -7,23 +7,23 @@ describe I14yDrawer do
   it { should ensure_length_of(:handle).is_at_least(3).is_at_most(33) }
   it { should have_many(:i14y_memberships).dependent(:destroy) }
   it { should have_many(:affiliates).through :i14y_memberships }
-  ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y"].each do |value|
+  ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y", "periods.are.bad"].each do |value|
     it { should_not allow_value(value).for(:handle) }
   end
-  %w{data.gov some_aff 123}.each do |value|
+  %w{datagov123 some_aff 123}.each do |value|
     it { should allow_value(value).for(:handle) }
   end
 
   context 'creating a drawer' do
     before do
-      Digest::SHA256.stub(:base64digest).and_return "mytoken"
+      SecureRandom.stub!(:hex).with(16).and_return "0123456789abcdef"
     end
 
     it 'creates collection in i14y and assigns token' do
       response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "user_message" => "blah blah")
-      I14yCollections.should_receive(:create).with("settoken", "mytoken").and_return response
+      I14yCollections.should_receive(:create).with("settoken", "0123456789abcdef").and_return response
       i14y_drawer = Affiliate.first.i14y_drawers.create!(handle: "settoken")
-      i14y_drawer.token.should eq("mytoken")
+      i14y_drawer.token.should eq("0123456789abcdef")
     end
 
     context 'create call to i14y Collection API fails' do

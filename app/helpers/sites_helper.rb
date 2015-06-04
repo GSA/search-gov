@@ -106,7 +106,7 @@ module SitesHelper
     %w(boosted_contents boosted_contents_bulk_uploads
        contents document_collections excluded_urls
        flickr_profiles indexed_documents instagram_profiles rss_feeds
-       site_domains site_feed_urls
+       site_domains site_feed_urls i14y_drawers
        twitter_profiles youtube_profiles featured_collections)
   end
 

@@ -1,0 +1,10 @@
+= content_for_site_page_title @site, 'Edit i14y Drawer'
+= form_for @i14y_drawer, url: { action: :update }, html: { class: 'form' }  do |f|
+  .sub-nav-heading
+    %h2 Edit i14y Drawer
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= link_to 'View All', site_i14y_drawers_path(@site)
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render f

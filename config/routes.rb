@@ -123,6 +123,7 @@ UsasearchRails3::Application.routes.draw do
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
       resources :memberships, only: [:update]
+      resources :i14y_drawers
     end
   end
 

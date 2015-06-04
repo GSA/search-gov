@@ -289,6 +289,55 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed gobiernousa.gov from this site"
 
+  Scenario: View i14y drawers
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | gets_i14y_results |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
+    And we don't want observers to run during these cucumber scenarios
+    And the following i14y drawers exist for agency.gov:
+      | handle      | token         | description           |
+      | blog_posts  | token 1       | All our blog posts    |
+      | more_posts  | token 2       | More of our stuff     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "i14y Drawers" within the Admin Center content
+    Then I should see the following table rows:
+      | blog_posts  | All our blog posts    |
+      | more_posts  | More of our stuff     |
+    And we want observers to run during the rest of these cucumber scenarios
+
+  Scenario: Add/edit/remove i14y drawers
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | gets_i14y_results |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
+    And we don't want observers to run during these cucumber scenarios
+    And the following i14y drawers exist for agency.gov:
+      | handle      | token         | description           |
+      | blog_posts  | token 1       | All our blog posts    |
+      | more_posts  | token 2       | More of our stuff     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "i14y Drawers" within the Admin Center content
+    And I follow "Add i14y Drawer"
+    And I fill in "Handle" with "another.one"
+    And I submit the form by pressing "Add"
+    Then I should see "must only contain lowercase letters, numbers, and underscore characters"
+    When I fill in "Handle" with "another_one"
+    And I fill in "Description" with "This is optional but nice to have"
+    And I submit the form by pressing "Add"
+    Then I should see the following table rows:
+      | another_one | This is optional but nice to have     |
+      | blog_posts  | All our blog posts                    |
+      | more_posts  | More of our stuff                     |
+    And I should see "You have created the another_one i14y drawer."
+    When I follow "Edit" within the first table body row
+    And I fill in "Description" with "This describes it"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated the another_one i14y drawer."
+    When I press "Remove" within the first table body row
+    Then I should see "You have deleted the another_one i14y drawer and all of its contents."
+    And we want observers to run during the rest of these cucumber scenarios
+
   Scenario: View Filter URLs
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

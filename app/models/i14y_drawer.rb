@@ -5,7 +5,7 @@ class I14yDrawer < ActiveRecord::Base
   validates_presence_of :handle
   validates_uniqueness_of :handle
   validates_length_of :handle, within: (3..33)
-  validates_format_of :handle, with: %r(^[a-z0-9._]+$)
+  validates_format_of :handle, with: %r(^[a-z0-9_]+$), message: "must only contain lowercase letters, numbers, and underscore characters"
   before_validation :set_token, unless: :token?
 
   def label
@@ -15,7 +15,7 @@ class I14yDrawer < ActiveRecord::Base
   private
 
   def set_token
-    self.token = Digest::SHA256.base64digest("#{handle}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
+    self.token = SecureRandom.hex(16)
   end
 
 end

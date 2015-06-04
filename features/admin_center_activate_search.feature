@@ -50,11 +50,13 @@ Feature: Activate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    Given the following i14y drawers exist:
-      | handle  | token         |
-      | aff.gov | aff.gov_token |
+    And we don't want observers to run during these cucumber scenarios
+    And the following i14y drawers exist for aff.gov:
+      | handle      | token         |
+      | blogs_posts | aff.gov_token |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Activate Search page
     And I follow "i14y Beta API Instructions"
     Then I should see "i14y Beta API Instructions" within the Admin Center content
-    And I should see "aff.gov_token"
+    And I should see "manage your i14y drawers"
+    And we want observers to run during the rest of these cucumber scenarios

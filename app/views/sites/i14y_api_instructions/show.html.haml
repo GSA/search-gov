@@ -5,7 +5,10 @@
     %ul
       = list_item_with_link_to_current_help_page
 
-- drawer_token = @site.i14y_drawers.first.token
-
 .api-instruction
-  = render partial: 'show_md', locals: { drawer_token: drawer_token }
+  = render partial: 'show_md'
+
+%p
+  You can manage your i14y drawers
+  = link_to "here", site_i14y_drawers_path(@site)
+  and see the secret tokens you'll use for API calls.
