@@ -4,8 +4,7 @@
   = hidden_field_tag :affiliate, search.affiliate.name, id: "#{id}-affiliate"
   = hidden_field_tag :query, search.query, id: "#{id}-query"
   = hidden_field_tag :channel, search.rss_feed.id, id: "#{id}-channel" if search.is_a?(NewsSearch) && search.rss_feed
-  - sort_by = search.sort_by_relevance? ? 'r' : 'date'
-  = hidden_field_tag :sort_by, sort_by, id: "#{id}-sort-by"
+  = hidden_field_tag :sort_by, search.sort_by, id: "#{id}-sort-by"
 
   - date_picker_data = { date_autoclose: true,
                          date_end_date: render_date(Date.current),

@@ -4,10 +4,10 @@
   = hidden_field_tag_if_key_exists :sitelimit
   = hidden_field_tag_if_key_exists :staged
 
-  - if search.is_a? NewsSearch
+  - if search.is_a? FilterableSearch
     = hidden_field_tag_if_key_exists :tbs
-    = hidden_field_tag :channel, search.rss_feed.id if search.rss_feed
-    = hidden_field_tag :sort_by, 'r' if search.sort_by_relevance?
+    = hidden_field_tag :channel, search.rss_feed.id if search.is_a?(NewsSearch) && search.rss_feed
+    = hidden_field_tag :sort_by, search.sort_by
 
     - if search.tbs
       = hidden_field_tag :tbs, search.tbs

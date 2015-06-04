@@ -82,11 +82,17 @@ Feature: Blended Search
     And I should see "Best match" within the current sort by filter
     And I should see "9 RESULTS"
 
+    And I fill in "Enter your search term" with "last"
+    And I press "Search" within the search box
+    And I should see "Last year" within the current time filter
+    And I should see "Best match" within the current sort by filter
+    And I should see "6 RESULTS"
+
     When I follow "Clear"
-    Then the "Enter your search term" field should contain "items"
+    Then the "Enter your search term" field should contain "last"
     And I should see "All time" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "11 RESULTS"
+    And I should see "7 RESULTS"
 
     When I fill in "Enter your search term" with "body"
     And I press "Search" within the search box
