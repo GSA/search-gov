@@ -372,6 +372,16 @@ Feature: Manage Display
     And I should see a left aligned SERP logo
 
     When I go to the agency.gov's Image Assets page
+    And I select "right" from "Logo Alignment"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your image assets"
+
+    When I am on agency.gov's search page
+    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
+    And the page body should contain "logo_mobile_en.png"
+    And I should see a right aligned SERP logo
+
+    When I go to the agency.gov's Image Assets page
     And I check "Mark Logo for Deletion"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
