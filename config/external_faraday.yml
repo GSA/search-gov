@@ -1,0 +1,13 @@
+default: &DEFAULT
+  open_timeout: 1
+  timeout: 3
+
+development:
+  <<: *DEFAULT
+
+test:
+  <<: *DEFAULT
+
+production:
+  open_timeout: 0.1
+  timeout: 1.9

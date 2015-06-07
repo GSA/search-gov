@@ -14,10 +14,7 @@ class SearchApiConnection
       conn.headers[:user_agent] = 'USASearch'
       #conn.use :instrumentation
       conn.adapter :net_http_persistent
-      if Rails.env.production?
-        conn.options.timeout = 1.9
-        conn.options.open_timeout = 0.1
-      end
+      ExternalFaradayConfig.set_connection_options conn
     end
   end
 end
