@@ -12,6 +12,7 @@ set :use_sudo,    false
 set :deploy_via, :remote_cache
 
 before "deploy:restart", "deploy:maybe_migrate"
+after 'deploy:finalize_update', 'deploy:copy_system_yml_to_config'
 before 'deploy:create_symlink', 'deploy:web:disable'
 before 'deploy:create_symlink', 'deploy:symlink_cache'
 before 'deploy:create_symlink', 'deploy:create_js_symlink'
@@ -29,6 +30,13 @@ namespace :deploy do
   desc "Only migrate if 'migrate' param is passed in via '-S migrate=true'"
   task :maybe_migrate, :roles => :db, :only => {:primary => true} do
     find_and_execute_task("deploy:migrate") if exists?(:migrate)
+  end
+
+  desc "Copy yaml files from shared_path/system to release_path/config"
+  task :copy_system_yml_to_config, roles: :app do
+    fetch(:system_yml_filenames).each do |name_without_ext|
+      run "cp #{shared_path}/system/#{name_without_ext}.yml #{release_path}/config/#{name_without_ext}.yml"
+    end
   end
 
   desc "Create symlink for tmp/cache"

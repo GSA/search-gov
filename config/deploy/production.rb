@@ -1,13 +1,16 @@
 set :user,        "search"
 set :deploy_to,   "/home/search/#{application}"
 set :branch,      "production"
+
+set :system_yml_filenames, %w(database elasticsearch external_faraday i14y instagram mandrill nutshell oasis redis youtube)
+
 role :app, "192.168.100.170", "192.168.100.171", "192.168.100.173", "192.168.110.8", "192.168.100.174"
 role :web, "192.168.100.170", "192.168.100.171", "192.168.100.173", "192.168.110.8", "192.168.100.174"
 role :db,  "192.168.100.173", :primary => true
 role :resque_workers,  "192.168.100.170", "192.168.100.173", "192.168.100.174"
 role :daemon, "192.168.100.170"
 
-before 'deploy:assets:precompile', 'production_specific_files'
+after 'deploy:finalize_update', 'production_specific_files'
 before "deploy:cleanup", "restart_resque_workers"
 
 task :restart_resque_workers, :roles => :resque_workers do
@@ -17,18 +20,9 @@ task :restart_resque_workers, :roles => :resque_workers do
   run "/home/search/scripts/start_resque_workers"
 end
 
-task :production_specific_files, :except => { :no_release => true } do
-  run "cp #{shared_path}/system/database.yml #{release_path}/config/database.yml"
-  run "cp #{shared_path}/system/redis.yml #{release_path}/config/redis.yml"
+task :production_specific_files, roles: :app do
   run "cp #{shared_path}/system/geoip.dat #{release_path}/db/geoip/geoip.dat"
   run "cp -r #{shared_path}/system/analysis #{release_path}/config/locales/"
   run "cp #{shared_path}/system/??.yml #{release_path}/config/locales/"
   run "cp #{shared_path}/system/keen.rb #{release_path}/config/initializers/keen.rb"
-  run "cp #{shared_path}/system/elasticsearch.yml #{release_path}/config/elasticsearch.yml"
-  run "cp #{shared_path}/system/oasis.yml #{release_path}/config/oasis.yml"
-  run "cp #{shared_path}/system/instagram.yml #{release_path}/config/instagram.yml"
-  run "cp #{shared_path}/system/nutshell.yml #{release_path}/config/nutshell.yml"
-  run "cp #{shared_path}/system/youtube.yml #{release_path}/config/youtube.yml"
-  run "cp #{shared_path}/system/i14y.yml #{release_path}/config/i14y.yml"
-  run "cp #{shared_path}/system/mandrill.yml #{release_path}/config/mandrill.yml"
 end

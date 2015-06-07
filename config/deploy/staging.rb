@@ -4,14 +4,13 @@ set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
 role :daemon, "192.168.100.169"
 
-before "deploy:create_symlink", "staging_yaml_files"
+set :system_yml_filenames, %w(external_faraday mandrill nutshell)
+
+after 'deploy:finalize_update', 'staging_specific_files'
 before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
-task :staging_yaml_files, roles: :app do
-  run "cp #{shared_path}/system/usajobs.yml #{release_path}/config/usajobs.yml"
-  run "cp #{shared_path}/system/nutshell.yml #{release_path}/config/nutshell.yml"
-  run "cp #{shared_path}/system/mandrill.yml #{release_path}/config/mandrill.yml"
+task :staging_specific_files, roles: :app do
   run "cp #{shared_path}/system/??.yml #{release_path}/config/locales/"
 end
 
