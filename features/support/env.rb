@@ -52,6 +52,14 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+module ScenarioStatusTracker
+  class << self
+    attr_accessor :success
+  end
+
+  self.success = true
+end
+
 require 'test_services'
 unless ENV['TRAVIS']
   TestServices::start_redis
@@ -69,5 +77,5 @@ at_exit do
   TestServices::delete_es_indexes
   TestServices::stop_redis unless ENV['TRAVIS']
   EventMachine.stop
-
+  exit ScenarioStatusTracker.success
 end
