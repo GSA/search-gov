@@ -1,4 +1,14 @@
 module SitesHelper
+  def site_data
+    {
+      user: {
+        contact_name: current_user.contact_name,
+        email: current_user.email,
+        id: current_user.id
+      }
+    }
+  end
+
   def site_select
     sites = current_user.affiliates.map { |p| ["#{p.display_name} (#{p.name})", p.id] }
     select_options = {include_blank: true, selected: nil}

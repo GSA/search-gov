@@ -14,6 +14,9 @@
       = stylesheet_link_tag 'sites_ie7'
     /[if IE]
       = stylesheet_link_tag 'sites_ie'
+    /[if lt IE 9]
+      = stylesheet_link_tag 'sites_ie_lt9'
+
     = javascript_include_tag 'sites'
     /[if lt IE 9]
       = javascript_include_tag 'sites_ie_lt9'
@@ -21,7 +24,7 @@
       = javascript_include_tag 'sites_ie'
     = javascript_include_tag 'https://www.google.com/jsapi'
     = yield :head
-  %body
+  %body{ data: site_data }
     %a#skiplink{ href: '#main-content' } Skip to Main Content
     = render 'sites/shared/header'
     = render 'sites/shared/site_header'

@@ -223,3 +223,11 @@ Feature: Dashboard
     And I press "Delete"
     Then I should land on the new site page
     And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."
+
+  @javascript
+  Scenario: Sending an idea
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    And I follow "Settings"
+    And I follow "Send an Idea"
+    Then I should find UserVoice widget
