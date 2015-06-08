@@ -5,6 +5,6 @@ class Sites::I14yApiInstructionsController < Sites::SetupSiteController
   end
 
   def require_i14y_drawers
-    redirect_to site_path(@site) unless @site.i14y_drawers.present?
+    redirect_to site_path(@site) unless @site.gets_i14y_results?
   end
 end

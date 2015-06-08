@@ -3,5 +3,14 @@
 - if %(new create).include? action_name
   = form.label :handle, 'Handle', class: 'required'
   = form.text_field :handle, class: 'required input-primary'
+- else
+  %dl
+    %dt Handle
+    %dd= @i14y_drawer.handle
+    %dt Secret Token
+    %dd
+      %code
+        = @i14y_drawer.token
+
 = form.label :description, 'Description'
 = form.text_field :description
