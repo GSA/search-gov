@@ -23,6 +23,6 @@ end
 task :production_specific_files, roles: :app do
   run "cp #{shared_path}/system/geoip.dat #{release_path}/db/geoip/geoip.dat"
   run "cp -r #{shared_path}/system/analysis #{release_path}/config/locales/"
-  run "cp #{shared_path}/system/??.yml #{release_path}/config/locales/"
+  run "cp #{shared_path}/system/??.yml #{shared_path}/system/???.yml #{release_path}/config/locales/"
   run "cp #{shared_path}/system/keen.rb #{release_path}/config/initializers/keen.rb"
 end

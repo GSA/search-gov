@@ -11,7 +11,7 @@ before "deploy:cleanup", "restart_resque_workers"
 after :deploy, "warmup"
 
 task :staging_specific_files, roles: :app do
-  run "cp #{shared_path}/system/??.yml #{release_path}/config/locales/"
+  run "cp #{shared_path}/system/??.yml #{shared_path}/system/???.yml #{release_path}/config/locales/"
 end
 
 task :restart_resque_workers, :roles => :web do
