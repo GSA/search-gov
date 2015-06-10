@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
   before_filter :force_request_format, :only => [:advanced, :docs, :index, :news]
   ssl_allowed :all
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
+  include QueryRoutableController
 
   def index
     search_klass, @search_vertical, template = pick_klass_vertical_template

@@ -37,6 +37,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :site_feed_url
     assoc.has_many :affiliate_twitter_settings
     assoc.has_many :i14y_memberships
+    assoc.has_many :routed_queries
   end
 
   has_many :users, order: 'contact_name', through: :memberships

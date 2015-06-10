@@ -75,6 +75,30 @@ describe SearchesController do
     end
   end
 
+  context 'searching on a routed keyword' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    context 'referrer does not match redirect url' do
+      before do
+        routed_queries = affiliate.routed_queries.create!(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
+        get :index, query: "foo bar", affiliate: affiliate.name
+      end
+
+      it { should redirect_to 'http://www.gov.gov/foo.html' }
+    end
+
+    context 'referrer matches redirect url' do
+      before do
+        routed_queries = affiliate.routed_queries.create!(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
+        request.env['HTTP_REFERER'] = "http://www.gov.gov/foo.html"
+        get :index, query: "foo bar", affiliate: affiliate.name
+      end
+
+      it { should render_template(:index) }
+    end
+  end
+
   context 'when affiliate gets i14y results' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:i14y_search) { mock(I14ySearch, :query => 'gov', :modules => %w(I14Y)) }

@@ -534,6 +534,27 @@ CREATE TABLE `outbound_rate_limits` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `routed_queries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_routed_queries_on_affiliate_id` (`affiliate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `routed_query_keywords` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `routed_query_id` int(11) DEFAULT NULL,
+  `keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_routed_query_keywords_on_routed_query_id_and_keyword` (`routed_query_id`,`keyword`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `rss_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rss_feed_owner_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -2128,3 +2149,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150523221424');
 INSERT INTO schema_migrations (version) VALUES ('20150602164703');
 
 INSERT INTO schema_migrations (version) VALUES ('20150602164808');
+
+INSERT INTO schema_migrations (version) VALUES ('20150609181413');
+
+INSERT INTO schema_migrations (version) VALUES ('20150609220156');
