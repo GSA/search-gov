@@ -12,7 +12,7 @@ describe 'shared/_analytics.haml' do
 
     it 'should render federated Google Analytics code' do
       render
-      rendered.should contain('//www.usa.gov/resources/js/federated-analytics.js')
+      expect(rendered).to have_selector(:script)
     end
   end
 
@@ -24,7 +24,7 @@ describe 'shared/_analytics.haml' do
 
     it 'should not render federated Google Analytics code' do
       render
-      rendered.should_not contain('//www.usa.gov/resources/js/federated-analytics.js')
+      expect(rendered).to be_blank
     end
   end
 end
