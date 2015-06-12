@@ -12,6 +12,10 @@ class I14yDrawer < ActiveRecord::Base
     handle
   end
 
+  def stats
+    I14yCollections.get(self.handle).collection rescue nil
+  end
+
   private
 
   def set_token

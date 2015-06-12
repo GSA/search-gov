@@ -63,4 +63,17 @@ describe I14yDrawer do
     end
   end
 
+  describe "stats" do
+    let(:collection)  { Hashie::Mash.new('created_at' => '2015-06-12T16:59:50.687+00:00', 'updated_at' => '2015-06-12T16:59:50.687+00:00', 'token' => '6bffe2fe778ba131f28c93377e0630a8', 'id' => 'one', 'document_total' => 1, 'last_document_sent' => "2015-06-12T16:59:50+00:00")}
+
+    before do
+      response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "collection" => collection)
+      I14yCollections.should_receive(:get).with("one").and_return response
+    end
+
+    it 'gets the collection from I14y endpoint and returns the collection info' do
+      i14y_drawers(:one).stats.should == collection
+    end
+  end
+
 end

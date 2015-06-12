@@ -302,8 +302,9 @@ Feature: Manage Content
     When I go to the agency.gov's Manage Content page
     And I follow "i14y Drawers" within the Admin Center content
     Then I should see the following table rows:
-      | blog_posts  | All our blog posts    |
-      | more_posts  | More of our stuff     |
+      | Handle  | Description    | Document Total | Last Document Sent |
+      | blog_posts  | All our blog posts    |    |                    |
+      | more_posts  | More of our stuff     |    |                    |
     And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: Add/edit/remove i14y drawers
@@ -326,9 +327,10 @@ Feature: Manage Content
     And I fill in "Description" with "This is optional but nice to have"
     And I submit the form by pressing "Add"
     Then I should see the following table rows:
-      | another_one | This is optional but nice to have     |
-      | blog_posts  | All our blog posts                    |
-      | more_posts  | More of our stuff                     |
+      | Handle  | Description    | Document Total | Last Document Sent |
+      | another_one | This is optional but nice to have     | |        |
+      | blog_posts  | All our blog posts                    | |        |
+      | more_posts  | More of our stuff                     | |        |
     And I should see "You have created the another_one i14y drawer."
     When I follow "Edit" within the first table body row
     And I fill in "Description" with "This describes it"

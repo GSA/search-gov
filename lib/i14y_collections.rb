@@ -23,6 +23,11 @@ module I14yCollections
     response.body
   end
 
+  def self.get(handle)
+    response = @i14y_api_connection.get "#{API_ENDPOINT}/#{handle}"
+    response.body
+  end
+
   def self.search(params)
     response = @i14y_api_connection.get "#{API_ENDPOINT}/search", params
     response.body

@@ -7,12 +7,18 @@
       %li= link_to 'Add i14y Drawer', new_site_i14y_drawer_path(@site)
 
 = render_flash_message
-%table.table.table-no-header
+%table.table.table-striped
+  %thead
+    %tr
+      %th Handle
+      %th Description
+      %th Document Total
+      %th Last Document Sent
+      %th &nbsp
   %tbody
     - @i14y_drawers.each do |i14y_drawer|
       %tr
-        %td= i14y_drawer.handle
-        %td= i14y_drawer.description
+        = i14y_drawer_data_row(i14y_drawer)
         %td.actions.actions-3x
           %ul
             %li= link_to 'Show', site_i14y_drawer_path(@site, i14y_drawer.id)
