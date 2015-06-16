@@ -103,6 +103,7 @@ group :development, :test do
   gem 'thin'
   gem 'i18n-tasks', '~> 0.7.13'
   gem 'pry-byebug'
+  gem 'rubocop'
 end
 
 group :test do
