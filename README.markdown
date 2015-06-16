@@ -33,6 +33,12 @@ Create and setup your development and test databases:
 
     rake db:setup
     rake db:setup RAILS_ENV=test
+    
+To run migration:
+
+    rake usasearch:db:migrate
+    
+See [db.rake](lib/tasks/db.rake) for more usasearch:db tasks.
 
 ## Asset pipeline
 
@@ -318,7 +324,13 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
     The entire test suite should always be 100% green. If anything fails at any time, it's the new top priority to fix it, and no developer should check in code on top of broken tests.
 
-1. Now that you are green, have a look through all your changes to make sure everything that is in there needs to be there. Can you delete any lines of code? Can you refactor anything?
+1. Now that you are green, have a look through all your changes to make sure everything that is in there needs to be there.
+
+    For using-facing story, does it work across browsers? (IE7 and up on Admin Center, IE8 and up on SERPs)
+    
+    Can you delete any lines of code? Can you refactor anything?
+    
+    Check for issues in your changes using [Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed).
 
 1. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/). We have a third party scan our site monthly for XSS vulnerabilities (among other things), and if they discover XSS vulnerabilities before we do, it could risk our [C&A](http://en.wikipedia.org/wiki/Certification_and_Accreditation) standing.
 
