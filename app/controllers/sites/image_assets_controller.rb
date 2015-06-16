@@ -1,4 +1,8 @@
 class Sites::ImageAssetsController < Sites::SetupSiteController
+  include ::Hintable
+
+  before_filter :load_hints, only: %i(edit)
+
   def edit
   end
 
@@ -7,12 +11,13 @@ class Sites::ImageAssetsController < Sites::SetupSiteController
       redirect_to edit_site_image_assets_path(@site),
                   flash: { success: 'You have updated your image assets.' }
     else
+      load_hints
       render :edit
     end
   end
 
   def site_params
-    @site_params = params.require(:site).permit(
+    @site_params = params.require(:image_asset).permit(
         { css_property_hash: [:logo_alignment, :page_background_image_repeat] },
         :favicon_url,
         :header_image,

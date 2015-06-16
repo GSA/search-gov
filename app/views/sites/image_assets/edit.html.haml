@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Image Assets'
-= form_for @site, as: :site, url: site_image_assets_path(@site), html: { class: 'form', id: 'edit-image-assets' } do |f|
+= custom_form_for @site, as: :image_asset, url: site_image_assets_path(@site), html: { class: 'form', id: 'edit-image-assets' } do |f|
   .sub-nav-heading
     %h2 Image Assets
     .action-bar

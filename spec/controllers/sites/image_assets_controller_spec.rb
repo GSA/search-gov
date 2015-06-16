@@ -21,7 +21,7 @@ describe Sites::ImageAssetsController do
           put :update,
               site_id: site.id,
               id: 100,
-              site: { css_property_hash: { page_background_image_repeat: 'repeat-x' } }
+              image_asset: { css_property_hash: { page_background_image_repeat: 'repeat-x' } }
         end
 
         it { should render_template(:edit) }
