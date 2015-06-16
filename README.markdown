@@ -55,7 +55,7 @@ A few tips when working with asset pipeline:
 
 ## Elasticsearch
 
-We're using [Elastic](http://www.elasticsearch.org/) for fulltext search and query analytics.
+We're using [Elastic](http://www.elasticsearch.org/) v1.5.2 for fulltext search and query analytics.
 
 On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
@@ -67,7 +67,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards/replicas, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.5.1/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.5.2/config/elasticsearch.yml
 
     index.number_of_shards: 1
     index.number_of_replicas: 0
@@ -174,6 +174,16 @@ We use poltergeist gem to test Javascript. This gem depends on PhantomJS.
 Download and install PhantomJS:
 
 <http://phantomjs.org/download.html>
+
+It can also be installed with Homebrew on a Mac.
+
+    $ brew install homebrew/versions/phantomjs198
+
+If you see ```Error: The `brew link` step did not complete successfully``` when installing phantomjs, 
+
+you may need to overwrite the symbolic link.
+    
+    $ brew link --overwrite phantomjs198
 
 Make sure the unit tests and functional tests run:
 
