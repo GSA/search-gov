@@ -185,21 +185,17 @@ you may need to overwrite the symbolic link.
     
     $ brew link --overwrite phantomjs198
 
-Make sure the unit tests and functional tests run:
+Make sure the unit tests, functional and integration tests run:
 
-    rspec
-
-Make sure the integration tests run.
-
-    cucumber
+    rake
 
 # Code Coverage
 
 We track test coverage of the codebase over time, to help identify areas where we could write better tests and to see when poorly tested code got introduced.
 
-To show the coverage on the existing codebase, do this:
+To show the coverage on the existing codebase, do this if you have not:
 
-    rspec && cucumber
+    rake
 
 Then to view the report, open `coverage/index.html` in your favorite browser.
 
