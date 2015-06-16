@@ -1,0 +1,1 @@
+EmailTemplate.load_default_templates
