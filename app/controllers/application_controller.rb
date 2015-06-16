@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   PERMITTED_PARAM_KEYS = %i(
     affiliate
+    autodiscovery_url
     channel
     commit
     cr

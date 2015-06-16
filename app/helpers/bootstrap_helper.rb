@@ -1,4 +1,6 @@
 module BootstrapHelper
+  FLASH_TYPE_WHITELIST = %w[success block notice info error danger]
+
   def stacked_pushpin
     stacked_icon 'pushpin'
   end
@@ -46,10 +48,12 @@ module BootstrapHelper
 
   def render_flash_message(with_close_button = true)
     if flash.present?
-      html = flash.map do |key, msg|
+      displayable_flash = flash.select { |key, msg| FLASH_TYPE_WHITELIST.include?(key.to_s) }
+
+      html = displayable_flash.map do |key, msg|
         content = ''
         content << button_tag('×', class: 'close', 'data-dismiss' => 'alert') if with_close_button
-        content << msg
+        content << h(msg)
         content_tag(:div, content.html_safe, class: "alert alert-#{key}")
       end
       html.join('\n').html_safe

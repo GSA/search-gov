@@ -135,3 +135,9 @@ Then /^I should see the following:$/ do |fields|
     step %{the "#{name}" field should contain "#{value}"}
   end
 end
+
+And /^the "([^\"]*)" input should( not)? be required$/ do |id, negate|
+  sel = "input##{id}"
+  page.should have_selector(sel)
+  page.find(sel)[:required].should eq(negate ? nil : 'required')
+end

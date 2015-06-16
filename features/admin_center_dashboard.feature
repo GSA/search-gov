@@ -206,6 +206,9 @@ Feature: Dashboard
     Then the "Homepage URL" field should contain "http://search.digitalgov.gov"
     And I should see "Arabic"
 
+    When I follow "Content"
+    Then the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://search.digitalgov.gov"
+
     When I follow "Display"
     And I follow "Image Assets"
     Then the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
@@ -215,6 +218,27 @@ Feature: Dashboard
     And I should see "Affiliate Manager" in the email body
     And I should see "Name: Agency Gov" in the email body
     And I should see "Handle: agencygov" in the email body
+
+  Scenario: Performing site autodiscovery
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | false               |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    Then the "Automatically discover the RSS and social media accounts from your site:" field should be empty
+    And the "autodiscovery_url" input should be required
+
+    When I fill in the following:
+      | Automatically discover the RSS and social media accounts from your site: | http://_ |
+    And I press "Discover"
+    Then I should see "Invalid site URL"
+    And the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://_"
+
+    When I fill in the following:
+      | Automatically discover the RSS and social media accounts from your site: | http://search.usa.gov |
+    And I press "Discover"
+    Then I should see "Discovery complete for http://search.usa.gov"
+    And the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://search.usa.gov"
 
   Scenario: Deleting a site
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"

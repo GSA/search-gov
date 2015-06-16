@@ -270,6 +270,9 @@ Feature: Manage Content
       | usa.gov         |
       | whitehouse.gov  |
 
+    When I go to the agency.gov's Manage Content page
+    Then the "Automatically discover the RSS and social media accounts from your site:" field should be empty
+
   Scenario: Add/edit/remove domains
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -282,7 +285,11 @@ Feature: Manage Content
     When I fill in "Domain" with "usa.gov"
     And I submit the form by pressing "Add"
     Then I should see "You have added usa.gov to this site"
-    When I follow "Edit"
+    When I go to the agency.gov's Manage Content page
+    Then the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://usa.gov"
+
+    When I follow "Domains" within the Admin Center content
+    And I follow "Edit"
     And I fill in "Domain" with "gobiernousa.gov"
     And I submit the form by pressing "Save"
     Then I should see "You have updated gobiernousa.gov"

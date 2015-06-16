@@ -4,26 +4,27 @@ class SiteAutodiscoverer
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
   RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
 
-  def initialize(site)
+  def initialize(site, url = nil)
     @site = site
-    @domain = @site.site_domains.pluck(:domain).first
+    @autodiscovery_url = url && URI.parse(url).to_s
   end
 
   def run
-    autodiscover_website_contents if site_valid_for_autodiscovery?
+    autodiscover_website_contents if autodiscovery_url
   end
 
-  def autodiscover_website
-    return true if @site.website.present?
-    %W(http://#{@domain} http://www.#{@domain}).any? do |url|
-      response = fetch_and_initialize_website_doc url
-      if response[:last_effective_url].present?
-        website = response[:status] =~ /301/ ? response[:last_effective_url] : url
-        @site.update_attributes!(website: website)
-        true
-      else
-        false
+  def autodiscover_website(base_url)
+    begin
+      candidate_autodiscovery_urls(base_url).any? do |url|
+        response = fetch_and_initialize_website_doc url
+        if response[:last_effective_url].present?
+          website = response[:status] =~ /301/ ? response[:last_effective_url] : url
+          @site.update_attributes!(website: website)
+          website
+        end
       end
+    rescue URI::InvalidURIError
+      nil
     end
   end
 
@@ -54,8 +55,8 @@ class SiteAutodiscoverer
 
     website_doc.xpath('//a/@href').each do |anchor_attr|
       href = anchor_attr.inner_text.squish
-      if href =~ %r[\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+]i
-        send("create_#{$2}_profile", href) unless known_urls.include?(href)
+      if href =~ %r{\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+}i
+        send("create_#{Regexp.last_match(2)}_profile", href) unless known_urls.include?(href)
         known_urls << href.downcase
       end
     end
@@ -63,9 +64,9 @@ class SiteAutodiscoverer
     Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
   end
 
-  def site_valid_for_autodiscovery?
-    @site_valid_for_autodiscovery ||= begin
-      @site.website.present? || (@site.site_domains.size == 1 && autodiscover_website)
+  def autodiscovery_url
+    @autodiscovery_url ||= begin
+      (dau = @site.default_autodiscovery_url) && autodiscover_website(dau)
     end
   end
 
@@ -73,7 +74,7 @@ class SiteAutodiscoverer
 
   def website_doc
     @website_doc ||= begin
-      fetch_and_initialize_website_doc @site.website
+      fetch_and_initialize_website_doc autodiscovery_url
       @website_doc
     end
   end
@@ -86,7 +87,7 @@ class SiteAutodiscoverer
 
   def generate_url(href)
     return nil if href.blank?
-    href =~ %r[https?://]i ? href : "#{URI.join(website_host_with_scheme, href)}"
+    href =~ %r{https?://}i ? href : "#{URI.join(website_host_with_scheme, href)}"
   end
 
   def extract_favicon_url
@@ -112,7 +113,7 @@ class SiteAutodiscoverer
 
   def website_host_with_scheme
     @website_domain ||= begin
-      uri = URI.parse(@site.website)
+      uri = URI.parse(autodiscovery_url)
       "#{uri.scheme}://#{uri.host}"
     end
   end
@@ -164,5 +165,15 @@ class SiteAutodiscoverer
 
   def extract_profile_name(url)
     url.gsub(/(\/|\?.*)$/, '').split('/').last
+  end
+
+  def candidate_autodiscovery_urls(base_url)
+    urls = [base_url]
+    u = URI.parse(base_url)
+    unless u.hostname =~ /^www\./
+      u.hostname = "www.#{u.hostname}"
+      urls << u.to_s
+    end
+    urls
   end
 end

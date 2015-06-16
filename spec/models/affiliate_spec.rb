@@ -1201,6 +1201,50 @@ describe Affiliate do
     end
   end
 
+  describe "#default_autodiscovery_url" do
+    let(:site_domains_attributes) { nil }
+    let(:single_domain) { { '0' => { domain: 'usa.gov' } } }
+    let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
+
+    subject do
+      attrs = @valid_create_attributes.dup.merge({
+        website: website,
+        site_domains_attributes: site_domains_attributes,
+      }).reject { |k,v| v.nil? }
+      Affiliate.create!(attrs)
+    end
+
+    context "when the website is empty" do
+      let(:website) { nil }
+      its(:default_autodiscovery_url) { should be_nil }
+
+      context "when a single site_domain is provided" do
+        let(:site_domains_attributes) { single_domain }
+        its(:default_autodiscovery_url) { should eq('http://usa.gov') }
+      end
+
+      context "when mutiple site_domains are provided" do
+        let(:site_domains_attributes) { multiple_domains }
+        its(:default_autodiscovery_url) { should be_nil }
+      end
+    end
+
+    context "when the website is present" do
+      let(:website) { @valid_create_attributes[:website] }
+      its(:default_autodiscovery_url) { should eq(website) }
+
+      context "when a single site_domain is provided" do
+        let(:site_domains_attributes) { single_domain }
+        its(:default_autodiscovery_url) { should eq(website) }
+      end
+
+      context "when mutiple site_domains are provided" do
+        let(:site_domains_attributes) { multiple_domains }
+        its(:default_autodiscovery_url) { should eq(website) }
+      end
+    end
+  end
+
   describe "#enable_video_govbox!" do
     let(:affiliate) { affiliates(:gobiernousa_affiliate) }
     before do

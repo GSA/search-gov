@@ -45,6 +45,7 @@
       = image_tag 'sites/instagram_logo.png', alt: 'Instagram logo'
       %div.name Instagram
 
-%p
-  Automatically discover the RSS and social media accounts from your site's homepage:
-= link_to "Discover", site_autodiscovery_path(@site), :class => "btn btn-success", :method => :create
+= form_tag site_autodiscovery_path(@site), id: 'autodiscovery'
+= label_tag :autodiscovery_url, 'Automatically discover the RSS and social media accounts from your site:'
+= url_field_tag :autodiscovery_url, h(@autodiscovery_url), maxlength: 255, placeholder: 'http://yoursite.gov', type: 'url', required: true
+= button_tag "Discover", id: 'discover', class: "btn btn-success"
