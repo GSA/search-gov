@@ -102,10 +102,7 @@ group :development, :test do
   gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'
   gem 'thin'
   gem 'i18n-tasks', '~> 0.7.13'
-end
-
-group :development do
-  gem 'byebug'
+  gem 'pry-byebug'
 end
 
 group :test do
