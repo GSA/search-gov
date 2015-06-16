@@ -330,7 +330,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
 1. Run regression tests to make sure all prior functionality still passes tests
 
-        rspec && cucumber
+        rake
 
     The entire test suite should always be 100% green. If anything fails at any time, it's the new top priority to fix it, and no developer should check in code on top of broken tests.
 
@@ -367,8 +367,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 1. Problems doing the push? Someone else may have checked in code since your last pull, so
 
         git pull
-        rake spec
-        rake cucumber
+        rake
         git push
 
 1. Mark story as "Finished" on Tracker. This means you are done testing/coding.
