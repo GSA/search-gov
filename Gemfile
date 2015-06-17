@@ -104,6 +104,10 @@ group :development, :test do
   gem 'i18n-tasks', '~> 0.7.13'
 end
 
+group :development do
+  gem 'byebug'
+end
+
 group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'simplecov', :require => false
