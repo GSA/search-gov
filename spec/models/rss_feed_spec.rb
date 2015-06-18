@@ -169,4 +169,61 @@ describe RssFeed do
       specify { rss_feed.has_pending?.should be_false }
     end
   end
+
+  describe ".find_existing_or_initialize" do
+    let(:name) { 'name' }
+    let(:url) { rss_feed_urls(:white_house_press_gallery_url).url }
+    let(:rfu) { [ ] }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
+
+    context "when there are no rss_feeds records" do
+      it { should be_kind_of(RssFeed) }
+      it { should be_new_record }
+      its(:name) { should eq(name) }
+    end
+
+    context "when some rss_feeds records exist" do
+      let(:created_name) { name }
+      let(:rss_feed) do
+        affiliate.rss_feeds.create!(name: created_name, rss_feed_urls: rfu)
+      end
+
+      before { rss_feed }
+
+      context "when the RSS feed has the same name but no matching URLs" do
+        let(:rfu) { [rss_feed_urls(:white_house_blog_url)] }
+        it { should be_kind_of(RssFeed) }
+        it { should be_new_record }
+        its(:name) { should eq(name) }
+      end
+
+      context "when the RSS feed has a different name but matching URLs" do
+        let(:created_name) { 'other name' }
+        let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+        it { should be_kind_of(RssFeed) }
+        it { should be_new_record }
+        its(:name) { should eq(name) }
+      end
+
+      context "when the RSS feed has the same name and exactly one matching URL" do
+        let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+        it { should eq(rss_feed) }
+        it { should_not be_new_record }
+      end
+
+      context "when the RSS feed has the same name and multiple matching name/URL pairs" do
+        let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+
+        before do
+          affiliate.rss_feeds.create!(name: created_name, rss_feed_urls: rfu) # again
+          affiliate.rss_feeds.create!(name: created_name, rss_feed_urls: rfu) # and again
+        end
+
+        it { should eq(rss_feed) }
+        it { should_not be_new_record }
+      end
+    end
+  end
 end

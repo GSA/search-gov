@@ -122,7 +122,9 @@ class SiteAutodiscoverer
     rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize url
     return unless rss_feed_url.save
 
-    rss_feed = @site.rss_feeds.build(name: title)
+    rss_feed = @site.rss_feeds.find_existing_or_initialize(title, url)
+    @site.rss_feeds << rss_feed if rss_feed.new_record?
+
     if rss_feed_url.new_record?
       rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
     else

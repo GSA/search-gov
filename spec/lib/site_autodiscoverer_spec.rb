@@ -242,17 +242,21 @@ describe SiteAutodiscoverer do
 
       it 'should create new rss feeds' do
         new_rss_feed_url = mock(RssFeedUrl, new_record?: true, save: true, url: 'http://www.usa.gov/rss/updates.xml')
-        existing_rss_feed_url = mock(RssFeedUrl, new_record?: false, save: true, url: 'http://www.usa.gov/rss/FAQs.xml')
+        new_rss_feed = mock(RssFeed, new_record?: true, save!: true, name: 'USA.gov Updates: News and Features')
+        existing_rss_feed_url = mock(RssFeedUrl, new_record?: false, save: true, url: 'http://usa.gov/rss/FAQs.xml')
+        existing_rss_feed = mock(RssFeed, new_record?: false, save!: true, name: 'Popular Government Questions from USA.gov')
         RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :find_existing_or_initialize)
           .and_return(new_rss_feed_url, existing_rss_feed_url)
 
-        rss_feed_1 = mock_model(RssFeed)
-        rss_feed_1.stub_chain(:rss_feed_urls, :build)
-        rss_feed_1.should_receive(:save!)
-        rss_feed_2 = mock_model(RssFeed)
-        rss_feed_2.should_receive(:rss_feed_urls=).with([existing_rss_feed_url])
-        rss_feed_2.should_receive(:save!)
-        site.stub_chain(:rss_feeds, :build).and_return(rss_feed_1, rss_feed_2)
+        site.stub_chain(:rss_feeds, :<<).with(new_rss_feed)
+        new_rss_feed.stub_chain(:rss_feed_urls, :build)
+        existing_rss_feed.should_receive(:rss_feed_urls=).with([existing_rss_feed_url])
+        site.stub_chain(:rss_feeds, :find_existing_or_initialize)
+            .with(new_rss_feed.name, new_rss_feed_url.url)
+            .and_return(new_rss_feed)
+        site.stub_chain(:rss_feeds, :find_existing_or_initialize)
+            .with(existing_rss_feed.name, existing_rss_feed_url.url)
+            .and_return(existing_rss_feed)
 
         autodiscoverer.autodiscover_rss_feeds
       end
