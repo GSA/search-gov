@@ -249,4 +249,24 @@ describe FeaturedCollection do
       end
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) do
+      FeaturedCollection.create!(affiliate: @affiliate,
+                                 publish_start_on: '07/01/2011',
+                                 status: 'active',
+                                 title: 'BBG title',
+                                 image_content_type: 'image/jpeg',
+                                 image_file_name: 'test.jpg',
+                                 image_file_size: 100,
+                                 image_updated_at: DateTime.current)
+    end
+
+    include_examples 'dupable',
+                     %w(affiliate_id
+                        image_content_type
+                        image_file_name
+                        image_file_size
+                        image_updated_at)
+  end
 end

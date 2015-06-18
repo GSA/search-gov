@@ -1,5 +1,6 @@
 class DocumentCollection < ActiveRecord::Base
   include ActiveRecordExtension
+  include Dupable
   DEPTH_WHEN_BING_FAILS = 3
 
   serialize :sitelink_generator_names, Array

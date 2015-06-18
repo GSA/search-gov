@@ -98,4 +98,12 @@ describe SiteDomain do
     end
   end
 
+  describe '#dup' do
+    let(:original_instance) do
+      affiliate.site_domains.create!(domain: 'usa.gov',
+                                     site_name: 'The Official Search Engine')
+    end
+
+    include_examples 'site dupable'
+  end
 end

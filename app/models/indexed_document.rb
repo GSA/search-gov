@@ -1,5 +1,6 @@
 # coding: utf-8
 class IndexedDocument < ActiveRecord::Base
+  include Dupable
   include FastDeleteFromDbAndEs
 
   class IndexedDocumentError < RuntimeError;

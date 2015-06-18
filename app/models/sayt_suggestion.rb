@@ -1,5 +1,7 @@
 # coding: utf-8
 class SaytSuggestion < ActiveRecord::Base
+  include Dupable
+
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
 
   before_validation :squish_whitespace_and_downcase

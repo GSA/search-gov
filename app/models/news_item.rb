@@ -1,10 +1,19 @@
 class NewsItem < ActiveRecord::Base
-  extend AttributeSquisher
   include FastDeleteFromDbAndEs
 
-  before_validation_squish :body, :contributor, :description, :guid, :link,
-                           :publisher, :subject, :title,
-                           assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :body,
+                                         :contributor,
+                                         :description,
+                                         :guid,
+                                         :link,
+                                         :publisher,
+                                         :subject,
+                                         :title,
+                                         assign_nil_on_blank: true
+  end
+
   before_validation :downcase_scheme
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
   validates_presence_of :description, unless: :description_not_required?

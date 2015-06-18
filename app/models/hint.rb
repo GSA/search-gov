@@ -1,10 +1,11 @@
 class Hint < ActiveRecord::Base
-  extend AttributeSquisher
-
   attr_accessible :name, :value
-  before_validation_squish :name,
-                           :value,
-                           assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :name,
+                                         :value,
+                                         assign_nil_on_blank: true
+  end
 
   validates_presence_of :name
 

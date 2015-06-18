@@ -1,4 +1,6 @@
 class ExcludedUrl < ActiveRecord::Base
+  include Dupable
+
   before_validation :ensure_http_prefix
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :scope => :affiliate_id, :case_sensitive => false

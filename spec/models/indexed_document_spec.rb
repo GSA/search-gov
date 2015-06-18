@@ -399,4 +399,9 @@ describe IndexedDocument do
       end
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { IndexedDocument.create!(@min_valid_attributes) }
+    include_examples 'site dupable'
+  end
 end

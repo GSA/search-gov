@@ -58,4 +58,9 @@ describe DocumentCollection do
       dc.sitelink_generator_names.should eq(sitelink_generator_names)
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { document_collections(:sample).dup }
+    include_examples 'site dupable'
+  end
 end

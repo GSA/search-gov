@@ -1,4 +1,5 @@
 class SiteDomain < ActiveRecord::Base
+  include Dupable
   acts_as_search_domain
 
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w(text/csv text/comma-separated-values application/vnd.ms-excel)

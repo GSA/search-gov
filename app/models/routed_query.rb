@@ -1,5 +1,6 @@
 class RoutedQuery < ActiveRecord::Base
   include ActiveRecordExtension
+  include Dupable
 
   attr_accessible :url, :description, :routed_query_keywords_attributes
   belongs_to :affiliate

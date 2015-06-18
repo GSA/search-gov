@@ -1,5 +1,7 @@
 class RssFeed < ActiveRecord::Base
   include ActiveRecordExtension
+  include Dupable
+
   validates_presence_of :name, :owner_id, :owner_type
   validate :rss_feed_urls_cannot_be_blank
   after_validation :update_error_keys
@@ -48,6 +50,10 @@ class RssFeed < ActiveRecord::Base
         .reorder("rss_feeds.id")
         .readonly(false)
         .first || new(name: name)
+  end
+
+  def self.do_not_dup_attributes
+    @@do_not_dup_attributes ||= %w(owner_id).freeze
   end
 
   private

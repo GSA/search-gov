@@ -704,9 +704,9 @@ describe Affiliate do
     end
   end
 
-  describe "#human_attribute_name" do
-    Affiliate.human_attribute_name("display_name").should == "Display name"
-    Affiliate.human_attribute_name("name").should == "Site Handle (visible to searchers in the URL)"
+  describe '.human_attribute_name' do
+    specify { Affiliate.human_attribute_name('display_name').should == 'Display name' }
+    specify { Affiliate.human_attribute_name('name').should == 'Site Handle (visible to searchers in the URL)' }
   end
 
   describe "#push_staged_changes" do
@@ -1255,6 +1255,55 @@ describe Affiliate do
 
     it 'should localize "Videos" for the name of the RSS feed' do
       affiliate.rss_feeds.last.name.should == "Vídeos"
+    end
+  end
+
+  describe '#dup' do
+    let(:original_instance) do
+      css_property_hash = {
+        'title_link_color' => '#33ff33',
+        'visited_title_link_color' => '#0000ff'
+      }
+      site = Affiliate.create!(css_property_hash: css_property_hash,
+                               display_name: 'original site',
+                               header_tagline_logo_content_type: 'image/jpeg',
+                               header_tagline_logo_file_name: 'test.jpg',
+                               header_tagline_logo_file_size: 100,
+                               header_tagline_logo_updated_at: DateTime.current,
+                               mobile_logo_content_type: 'image/jpeg',
+                               mobile_logo_file_name: 'test.jpg',
+                               mobile_logo_file_size: 100,
+                               mobile_logo_updated_at: DateTime.current,
+                               name: 'original-site',
+                               nutshell_id: 888,
+                               page_background_image_content_type: 'image/jpeg',
+                               page_background_image_file_name: 'test.jpg',
+                               page_background_image_file_size: 100,
+                               page_background_image_updated_at: DateTime.current,
+                               theme: 'custom')
+      Affiliate.find site.id
+    end
+
+    include_examples 'dupable',
+                     %w(api_access_key
+                        header_tagline_logo_content_type
+                        header_tagline_logo_file_name
+                        header_tagline_logo_file_size
+                        header_tagline_logo_updated_at
+                        keen_scoped_key
+                        mobile_logo_content_type
+                        mobile_logo_file_name
+                        mobile_logo_file_size
+                        mobile_logo_updated_at
+                        name
+                        nutshell_id
+                        page_background_image_content_type
+                        page_background_image_file_name
+                        page_background_image_file_size
+                        page_background_image_updated_at)
+
+    it 'sets @css_property_hash instance variable' do
+      expect(subject.instance_variable_get(:@css_property_hash)).to include(:title_link_color, :visited_title_link_color)
     end
   end
 end

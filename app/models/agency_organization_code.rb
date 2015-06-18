@@ -1,8 +1,11 @@
 class AgencyOrganizationCode < ActiveRecord::Base
   DEPARTMENT_LEVEL_LENGTH = 2
-  extend AttributeSquisher
 
-  before_validation_squish :organization_code, assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :organization_code,
+                                         assign_nil_on_blank: true
+  end
 
   validates_presence_of :organization_code, :agency
   validates_uniqueness_of :organization_code, case_sensitive: false, scope: :agency_id

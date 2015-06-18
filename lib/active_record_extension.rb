@@ -3,13 +3,6 @@ module ActiveRecordExtension
     errors.add(to, errors.delete(from)) if errors.include?(from)
   end
 
-  def set_http_prefix(*fields)
-    fields.each do |field|
-      value = self.send(field.to_sym)
-      self.send(:"#{field.to_s}=", "http://#{value.strip}") unless value.blank? or value =~ %r{^http(s?)://}i
-    end
-  end
-
   def destroy_on_blank(attributes, *keys)
     attributes.each do |attribute|
       item = attribute[1]

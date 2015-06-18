@@ -1,4 +1,6 @@
 class UrlPrefix < ActiveRecord::Base
+  include Dupable
+
   before_validation :ensure_protocol_and_trailing_slash_on_prefix
   validates_presence_of :prefix
   validates_uniqueness_of :prefix, :scope => :document_collection_id, :case_sensitive => false
@@ -6,6 +8,10 @@ class UrlPrefix < ActiveRecord::Base
   validates_url :prefix
   validates_length_of :prefix, maximum: 255
   belongs_to :document_collection
+
+  def self.do_not_dup_attributes
+    @@do_not_dup_attributes ||= %w(document_collection_id).freeze
+  end
 
   def label
     prefix

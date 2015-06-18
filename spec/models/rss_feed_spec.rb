@@ -226,4 +226,9 @@ describe RssFeed do
       end
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { rss_feeds(:white_house_blog) }
+    include_examples 'dupable', %w(owner_id)
+  end
 end

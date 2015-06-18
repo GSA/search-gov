@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe Connection do
   fixtures :users, :affiliates, :memberships
+  let(:affiliate) { affiliates(:gobiernousa_affiliate) }
+  let(:connection) { affiliate.connections.create!(:affiliate_name => '   usagov   ', :label => 'Search in English') }
 
   it { should validate_presence_of :connected_affiliate_id }
   it { should validate_presence_of :label }
 
   describe '#affiliate_name' do
-    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
-    let(:connection) { affiliate.connections.create!(:affiliate_name => '   usagov   ', :label => 'Search in English') }
 
     it 'should return the connected affiliate name' do
       Connection.find(connection.id).affiliate_name.should == 'usagov'
@@ -16,9 +16,7 @@ describe Connection do
   end
 
   describe '#affiliate_name=' do
-    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
     let(:basic_affiliate) { affiliates(:basic_affiliate) }
-    let(:connection) { affiliate.connections.create!(:affiliate_name => 'usagov', :label => 'Search in English') }
 
     it 'should set connected site' do
       connection.affiliate_name = nil
@@ -40,4 +38,9 @@ describe Connection do
     end
   end
 
+  describe '#dup' do
+    subject(:original_instance) { connection }
+
+    include_examples 'site dupable'
+  end
 end

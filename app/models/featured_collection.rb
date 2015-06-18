@@ -1,9 +1,8 @@
 class FeaturedCollection < ActiveRecord::Base
-  extend AttributeSquisher
+  extend HumanAttributeName
   include ActiveRecordExtension
   include BestBet
 
-  CLOUD_FILES_CONTAINER = 'Featured Collections'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
 
   cattr_reader :per_page
@@ -21,14 +20,21 @@ class FeaturedCollection < ActiveRecord::Base
                     :styles => { :medium => "125x125", :small => "100x100" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
+                    :container => 'Featured Collections',
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
 
-  before_validation :sanitize_html_in_title
-  before_validation_squish :title, :title_url, :image_alt_text, assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.sanitize_attributes record, :title
+    AttributeProcessor.squish_attributes record,
+                                         :image_alt_text,
+                                         :title,
+                                         :title_url,
+                                         assign_nil_on_blank: true
+    AttributeProcessor.prepend_attributes_with_http record, :title_url
+  end
+
   after_validation :update_errors_keys
-  before_save :ensure_http_prefix
   before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :substring_match, -> substring do
@@ -43,12 +49,16 @@ class FeaturedCollection < ActiveRecord::Base
 
   attr_accessor :mark_image_for_deletion
 
-  HUMAN_ATTRIBUTE_NAME_HASH = {
-      :publish_start_on => "Publish start date",
-  }
+  def self.do_not_dup_attributes
+    @@do_not_dup_attributes ||= begin
+      column_names.select { |c| c =~ /\Aimage\_/ }.push('affiliate_id').freeze
+    end
+  end
 
-  def self.human_attribute_name(attribute_key_name, options = {})
-    HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
+  def self.human_attribute_name_hash
+    @@human_attribute_name_hash ||= {
+      publish_start_on: 'Publish start date'
+    }.freeze
   end
 
   def destroy_and_update_attributes(params)
@@ -74,14 +84,6 @@ class FeaturedCollection < ActiveRecord::Base
 
   private
 
-  def ensure_http_prefix
-    set_http_prefix :title_url
-  end
-
-  def sanitize_html_in_title
-    self.title = Sanitize.clean(self.title)
-  end
-
   def check_image_validation
     valid?
     errors[:image_file_size].blank? and errors[:image_content_type].blank?
@@ -94,14 +96,10 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   def update_errors_keys
-    if self.errors.include?(:"featured_collection_links.title")
-      error_value = self.errors.delete(:"featured_collection_links.title")
-      self.errors.add(:"best_bets:_graphics_links.title", error_value)
-    end
-    if self.errors.include?(:"featured_collection_links.url")
-      error_value = self.errors.delete(:"featured_collection_links.url")
-      self.errors.add(:"best_bets:_graphics_links.url", error_value)
-    end
+    swap_error_key :'featured_collection_links.title',
+                   :'best_bets:_graphics_links.title'
+    swap_error_key :'featured_collection_links.url',
+                   :'best_bets:_graphics_links.url'
   end
 
   def build_image_url(size = :medium)

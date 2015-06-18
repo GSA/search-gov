@@ -2,8 +2,9 @@ require 'digest'
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
+  extend HumanAttributeName
   include ActiveRecordExtension
-  extend AttributeSquisher
+  include Dupable
   include XmlProcessor
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
@@ -17,29 +18,29 @@ class Affiliate < ActiveRecord::Base
   MAX_NAME_LENGTH = 33.freeze
 
   with_options dependent: :destroy do |assoc|
-    assoc.has_many :memberships
-    assoc.has_many :features, :through => :affiliate_feature_addition
-    assoc.has_many :boosted_contents
-    assoc.has_many :sayt_suggestions
-    assoc.has_many :superfresh_urls
-    assoc.has_many :featured_collections
-    assoc.has_many :indexed_documents
-    assoc.has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC'
-    assoc.has_many :excluded_urls
-    assoc.has_many :site_domains, :order => 'domain ASC'
-    assoc.has_many :excluded_domains, :order => 'domain ASC'
     assoc.has_many :affiliate_feature_addition
+    assoc.has_many :affiliate_twitter_settings
+    assoc.has_many :boosted_contents
     assoc.has_many :connections, :order => 'connections.position ASC'
     assoc.has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection'
     assoc.has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC'
-    assoc.has_many :flickr_profiles, order: 'flickr_profiles.url ASC'
+    assoc.has_many :excluded_domains, :order => 'domain ASC'
+    assoc.has_many :excluded_urls
     assoc.has_many :facebook_profiles
-    assoc.has_one :image_search_label
-    assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
-    assoc.has_one :site_feed_url
-    assoc.has_many :affiliate_twitter_settings
+    assoc.has_many :featured_collections
+    assoc.has_many :features, :through => :affiliate_feature_addition
+    assoc.has_many :flickr_profiles, order: 'flickr_profiles.url ASC'
     assoc.has_many :i14y_memberships
+    assoc.has_one :image_search_label
+    assoc.has_many :indexed_documents
+    assoc.has_many :memberships
+    assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
     assoc.has_many :routed_queries
+    assoc.has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC'
+    assoc.has_many :sayt_suggestions
+    assoc.has_many :site_domains, :order => 'domain ASC'
+    assoc.has_one :site_feed_url
+    assoc.has_many :superfresh_urls
   end
 
   has_many :users, order: 'contact_name', through: :memberships
@@ -55,7 +56,6 @@ class Affiliate < ActiveRecord::Base
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
 
-  
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -90,12 +90,21 @@ class Affiliate < ActiveRecord::Base
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_default_labels
-  before_validation_squish :ga_web_property_id,
-                           :header_tagline_font_size,
-                           :logo_alt_text,
-                           :navigation_dropdown_label,
-                           :related_sites_dropdown_label,
-                           assign_nil_on_blank: true
+
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :ga_web_property_id,
+                                         :header_tagline_font_size,
+                                         :logo_alt_text,
+                                         :navigation_dropdown_label,
+                                         :related_sites_dropdown_label,
+                                         assign_nil_on_blank: true
+    AttributeProcessor.prepend_attributes_with_http record,
+                                                    :favicon_url,
+                                                    :external_css_url,
+                                                    :website
+  end
+
   before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
@@ -139,7 +148,6 @@ class Affiliate < ActiveRecord::Base
            :language_valid
 
   after_validation :update_error_keys
-  before_save :ensure_http_prefix
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_create :set_keen_scoped_key
   before_update :clear_existing_attachments
@@ -167,15 +175,6 @@ class Affiliate < ActiveRecord::Base
 
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
-
-  HUMAN_ATTRIBUTE_NAME_HASH = {
-    :display_name => "Display name",
-    :name => "Site Handle (visible to searchers in the URL)",
-    :header_image_file_size => 'Legacy Logo file size',
-    :mobile_logo_file_size => 'Logo file size',
-    :mobile_header_tagline_logo_file_size => 'Header Tagline Logo file size',
-    :page_background_image_file_size => 'Page Background Image file size'
-  }
 
   BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
@@ -260,6 +259,29 @@ class Affiliate < ActiveRecord::Base
   define_hash_columns_accessors column_name_method: :css_property_hash,
                                 fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
 
+  def self.do_not_dup_attributes
+    @@do_not_dup_attributes ||= begin
+      logo_attrs = column_names.select do |column_name|
+        column_name =~ /\A(header_tagline_logo|page_background_image|mobile_logo)/
+      end
+      %w(api_access_key
+         keen_scoped_key
+         name
+         nutshell_id).push(*logo_attrs).freeze
+    end
+  end
+
+  def self.human_attribute_name_hash
+    @@human_attribute_name_hash ||= {
+      display_name: 'Display name',
+      name: 'Site Handle (visible to searchers in the URL)',
+      header_image_file_size: 'Legacy Logo file size',
+      mobile_logo_file_size: 'Logo file size',
+      mobile_header_tagline_logo_file_size: 'Header Tagline Logo file size',
+      page_background_image_file_size: 'Page Background Image file size'
+    }
+  end
+
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
   end
@@ -314,12 +336,6 @@ class Affiliate < ActiveRecord::Base
 
   def has_changed_header_or_footer
     self.header != self.previous_header or self.footer != self.previous_footer
-  end
-
-  class << self
-    def human_attribute_name(attribute_key_name, options = {})
-      HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
-    end
   end
 
   def css_property_hash(reload = false)
@@ -489,6 +505,12 @@ class Affiliate < ActiveRecord::Base
     "##{id} #{display_name} (#{display_name}) [#{status.name}]"
   end
 
+  def dup
+    dup_instance = super
+    dup_instance.css_property_hash = self.css_property_hash
+    dup_instance
+  end
+
   private
 
   def batch_size(scope)
@@ -505,10 +527,6 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_labels
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
-  end
-
-  def ensure_http_prefix
-    set_http_prefix :favicon_url, :external_css_url, :website
   end
 
   def validate_css_property_hash

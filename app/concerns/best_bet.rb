@@ -1,5 +1,6 @@
 module BestBet
   extend ActiveSupport::Concern
+  include Dupable
 
   STATUSES = %w( active inactive ).freeze
   STATUS_OPTIONS = STATUSES.map { |status| [status.humanize, status] }.freeze

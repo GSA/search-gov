@@ -102,4 +102,11 @@ describe FlickrProfile do
     FlickrProfile.create(url: url, affiliate: affiliate)
   end
 
+  describe '#dup' do
+    let(:original_instance) { flickr_profiles(:group) }
+
+    include_examples 'site dupable'
+
+    its(:skip_notify_oasis) { should be_true }
+  end
 end

@@ -26,9 +26,14 @@ describe RoutedQuery do
     end
   end
 
-  describe 'label' do
+  describe '#label' do
     it 'returns a label containing the url and description' do
       routed_queries(:unclaimed_money).label.should == 'http://www.usa.gov/unclaimed_money: Everybody wants it'
     end
+  end
+
+  describe '#dup' do
+    subject(:original_instance) { routed_queries(:unclaimed_money) }
+    include_examples 'site dupable'
   end
 end

@@ -8,11 +8,18 @@ describe FeaturedCollectionKeyword do
   it { should_not allow_value("piped|keywords").for(:value) }
   it { should_not allow_value("comma,separated,keywords").for(:value) }
 
-  describe "validates uniqueness of keyword scoped to featured collection" do
-    before do
-      featured_collections(:basic).featured_collection_keywords.create!(:value => 'hurricane')
-    end
+  let!(:keyword) do
+    featured_collections(:basic).featured_collection_keywords.create!(value: 'hurricane')
+  end
 
+  describe "validates uniqueness of keyword scoped to featured collection" do
     it { should validate_uniqueness_of(:value).scoped_to(:featured_collection_id).case_insensitive }
+  end
+
+  describe '#dup' do
+    subject(:original_instance) { keyword }
+
+    include_examples 'dupable',
+                     %w(featured_collection_id)
   end
 end

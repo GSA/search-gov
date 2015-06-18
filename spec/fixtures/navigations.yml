@@ -99,3 +99,9 @@ sixteen:
   is_active: true
   position: 0
 
+media_feed:
+  affiliate: :basic_affiliate
+  navigable: media_feed(RssFeed)
+  is_active: false
+  position: 100
+

@@ -1,7 +1,7 @@
 class Status < ActiveRecord::Base
-  extend AttributeSquisher
-
-  before_validation_squish :name
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record, :name
+  end
 
   BASE_STATUS_IDS = [1, 2].freeze
   INACTIVE_DELETED_NAME = 'inactive - deleted'.freeze

@@ -24,4 +24,9 @@ describe ExcludedUrl do
       excluded_url.url.should == "http://www.usa.gov/exclude me.html"
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { ExcludedUrl.create!(@valid_attributes) }
+    include_examples 'site dupable'
+  end
 end

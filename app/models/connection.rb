@@ -1,4 +1,6 @@
 class Connection < ActiveRecord::Base
+  include Dupable
+
   belongs_to :affiliate
   belongs_to :connected_affiliate, :class_name => "Affiliate"
   validates_presence_of :label

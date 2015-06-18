@@ -51,4 +51,11 @@ describe UrlPrefix do
       UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/two/three/').depth.should == 3
     end
   end
+
+  describe '#dup' do
+    let(:original_instance) { url_prefixes(:one) }
+
+    include_examples 'dupable',
+                     %w(document_collection_id)
+  end
 end

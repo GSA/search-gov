@@ -1,7 +1,9 @@
 class Agency < ActiveRecord::Base
-  extend AttributeSquisher
-
-  before_validation_squish :name, assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :name,
+                                         assign_nil_on_blank: true
+  end
   validates_presence_of :name
   belongs_to :federal_register_agency
   has_many :agency_queries, dependent: :destroy

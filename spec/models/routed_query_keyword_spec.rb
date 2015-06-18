@@ -34,4 +34,9 @@ describe RoutedQueryKeyword do
       routed_query_keywords(:one).label.should == 'unclaimed money owed to me'
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { routed_query_keywords(:one) }
+    include_examples 'dupable', %w(routed_query_id)
+  end
 end

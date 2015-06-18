@@ -62,4 +62,21 @@ describe FeaturedCollectionLink do
       end
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) do
+      fc = FeaturedCollection.new(affiliate: @affiliate,
+                                  publish_start_on: '07/01/2011',
+                                  status: 'active',
+                                  title: 'Search USA Blog')
+      fc.featured_collection_links.build(position: 0,
+                                         title: 'Did You Mean Roes or Rose?',
+                                         url: 'http://search.digital.gov/blog/1')
+      fc.save!
+      fc.featured_collection_links.first
+    end
+
+    include_examples 'dupable',
+                     %w(featured_collection_id)
+  end
 end

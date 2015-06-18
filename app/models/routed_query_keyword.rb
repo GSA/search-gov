@@ -1,7 +1,11 @@
 class RoutedQueryKeyword < ActiveRecord::Base
-  extend AttributeSquisher
+  include Dupable
 
-  before_validation_squish :keyword, assign_nil_on_blank: true
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :keyword,
+                                         assign_nil_on_blank: true
+  end
 
   attr_accessible :keyword
 
@@ -12,6 +16,10 @@ class RoutedQueryKeyword < ActiveRecord::Base
   before_validation { |record| record.keyword.downcase! if record.keyword.present? }
 
   validate :keyword_unique_to_affiliate
+
+  def self.do_not_dup_attributes
+    @@do_not_dup_attributes ||= %w(routed_query_id).freeze
+  end
 
   def label
     keyword

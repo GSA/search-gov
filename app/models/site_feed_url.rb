@@ -1,4 +1,6 @@
 class SiteFeedUrl < ActiveRecord::Base
+  include Dupable
+
   HUMAN_ATTRIBUTE_NAME_HASH = { rss_url: 'URL' }
   belongs_to :affiliate
   before_validation NormalizeUrl.new(:rss_url)

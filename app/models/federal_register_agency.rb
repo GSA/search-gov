@@ -1,11 +1,16 @@
 class FederalRegisterAgency < ActiveRecord::Base
-  extend AttributeSquisher
-
   attr_accessible :id, :name, :parent_id, :short_name
   belongs_to :parent, class_name: 'FederalRegisterAgency'
   has_many :agencies
   has_and_belongs_to_many :federal_register_documents
-  before_validation_squish :name, :short_name, assign_nil_on_blank: true
+
+  before_validation do |record|
+    AttributeProcessor.squish_attributes record,
+                                         :name,
+                                         :short_name,
+                                         assign_nil_on_blank: true
+  end
+
   validates_presence_of :id, :name
 
   scope :active, joins(:agencies).uniq

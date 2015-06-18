@@ -60,4 +60,9 @@ describe SiteFeedUrl do
       SiteFeedUrl.refresh_all
     end
   end
+
+  describe '#dup' do
+    subject(:original_instance) { site_feed_url }
+    include_examples 'site dupable'
+  end
 end
