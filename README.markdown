@@ -340,6 +340,10 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
 1. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/). We have a third party scan our site monthly for XSS vulnerabilities (among other things), and if they discover XSS vulnerabilities before we do, it could risk our [C&A](http://en.wikipedia.org/wiki/Certification_and_Accreditation) standing.
 
+1. Create a Pull Request
+
+<!---
+
 1. Check in code to your local git repo (use `git status` and `git add` until everything is staged):
 
         git commit
@@ -372,6 +376,8 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
         cap deploy
 
-1. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done, including ways to highlight various scenarios and corner cases (e.g., "By searching on 'beef recalls', you can see how the UI looks when there are many recalls listed...", or "Go to this URL on staging to see how it behaves in Spanish for affiliates").
+-->
+
+1. Once code is reviewed and pushed to staging, you may then mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done, including ways to highlight various scenarios and corner cases (e.g., "By searching on 'beef recalls', you can see how the UI looks when there are many recalls listed...", or "Go to this URL on staging to see how it behaves in Spanish for affiliates").
 
 1. Goto Step 1
