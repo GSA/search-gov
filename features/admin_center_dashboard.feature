@@ -207,7 +207,7 @@ Feature: Dashboard
     And I should see "Arabic"
 
     When I follow "Content"
-    Then the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://search.digitalgov.gov"
+    Then the "Automatically discover the RSS and social media accounts on your site:" field should contain "http://search.digitalgov.gov"
 
     When I follow "Display"
     And I follow "Image Assets"
@@ -225,20 +225,20 @@ Feature: Dashboard
       | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | false               |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Content page
-    Then the "Automatically discover the RSS and social media accounts from your site:" field should be empty
+    Then the "Automatically discover the RSS and social media accounts on your site:" field should be empty
     And the "autodiscovery_url" input should be required
 
     When I fill in the following:
-      | Automatically discover the RSS and social media accounts from your site: | http://_ |
+      | Automatically discover the RSS and social media accounts on your site: | http://_ |
     And I press "Discover"
     Then I should see "Invalid site URL"
-    And the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://_"
+    And the "Automatically discover the RSS and social media accounts on your site:" field should contain "http://_"
 
     When I fill in the following:
-      | Automatically discover the RSS and social media accounts from your site: | http://search.usa.gov |
+      | Automatically discover the RSS and social media accounts on your site: | http://search.usa.gov |
     And I press "Discover"
     Then I should see "Discovery complete for http://search.usa.gov"
-    And the "Automatically discover the RSS and social media accounts from your site:" field should contain "http://search.usa.gov"
+    And the "Automatically discover the RSS and social media accounts on your site:" field should contain "http://search.usa.gov"
 
   Scenario: Deleting a site
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
