@@ -42,7 +42,7 @@ locale_with_name = {
   ps: 'Pashto',
   fa: 'Persian',
   pl: 'Polish',
-  pt: 'Portugese',
+  pt: 'Portuguese',
   ro: 'Romanian',
   ru: 'Russian',
   sr: 'Serbian',
