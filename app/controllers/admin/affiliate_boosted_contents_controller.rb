@@ -12,6 +12,7 @@ class Admin::AffiliateBoostedContentsController < Admin::AdminController
     config.field_search.columns = :affiliate_id, :title
 
     config.columns[:affiliate].label = 'Site'
+    config.columns[:affiliate_id].label = 'Site ID'
   end
 
   def conditions_for_collection
