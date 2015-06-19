@@ -64,13 +64,15 @@ Feature:  Administration
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
-      | title              | url                    | description                        |
-      | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results |
+      | title              | url                    | description                        | keywords |
+      | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results | safety   |
     When I go to the admin home page
     And I follow "Best Bets: Text"
     Then I should see the following breadcrumbs: Super Admin > Best Bets: Text
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
+    When I follow "Show"
+    Then I should see "safety"
 
   Scenario: Comparing Search Results
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

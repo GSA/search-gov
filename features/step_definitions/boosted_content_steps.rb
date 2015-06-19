@@ -24,7 +24,12 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
     publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z_]*$/
     hash[:publish_end_on] = publish_end_on
 
-    BoostedContent.create! hash
+    bc = BoostedContent.new hash.except('keywords')
+    keywords = hash[:keywords] || ''
+    keywords.split(',').map(&:squish).each do |keyword|
+      bc.boosted_content_keywords.build(value: keyword)
+    end
+    bc.save!
   end
   ElasticBoostedContent.commit
 end
