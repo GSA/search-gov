@@ -79,8 +79,9 @@ describe SearchesController do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do
       before do
-        routed_queries = affiliate.routed_queries.create!(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
         get :index, query: "foo bar", affiliate: affiliate.name
       end
 
@@ -93,8 +94,9 @@ describe SearchesController do
 
       shared_examples_for 'a routed query that matches the referrer' do
         before do
-          routed_queries = affiliate.routed_queries.create!(url: rq_url, description: "testing")
-          routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
+          routed_query = affiliate.routed_queries.build(url: rq_url, description: "testing")
+          routed_query.routed_query_keywords.build(keyword: 'foo bar')
+          routed_query.save!
           request.env['HTTP_REFERER'] = ref_url
           get :index, query: "foo bar", affiliate: affiliate.name
         end

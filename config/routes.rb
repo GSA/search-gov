@@ -100,6 +100,9 @@ UsasearchRails3::Application.routes.draw do
       resources :domains, controller: 'site_domains', except: [:show] do
         member { get :advanced }
       end
+      resources :routed_queries do
+        collection { get :new_routed_query_keyword }
+      end
       resources :filter_urls,
                 controller: 'excluded_urls',
                 only: [:index, :new, :create, :destroy]

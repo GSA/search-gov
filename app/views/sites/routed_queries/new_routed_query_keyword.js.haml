@@ -1,0 +1,6 @@
+= custom_fields_for "routed_query[routed_query_keywords_attributes][#{@index}]" do |f|
+  :plain
+    jQuery('.form .routed-query-keywords').append("#{escape_javascript(render('routed_query_keyword', f: f, keyword: RoutedQueryKeyword.new, index: @index))}");
+    jQuery('#new-routed-query-keyword-trigger').data({ params: { index: "#{@index + 1}" } });
+    jQuery('.form .routed-query-keywords input[data-toggle=tooltip]').last().tooltip({ container: '.form', placement: 'right', trigger: 'focus' });
+    jQuery('.form .routed-query-keywords input').last().focus();

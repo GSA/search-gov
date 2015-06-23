@@ -24,6 +24,9 @@
   %li.content-item
     = link_to site_best_bets_graphics_path(@site) do
       %span.no-icon Best Bets: Graphics
+  %li.content-item.routed-queries
+    = link_to site_routed_queries_path(@site) do
+      %span.no-icon Routed Queries
   %li.content-item.rss
     = link_to site_rss_feeds_path(@site) do
       = image_tag 'sites/rss_logo.png', alt: 'YouTube logo', style: 'text-align: center'

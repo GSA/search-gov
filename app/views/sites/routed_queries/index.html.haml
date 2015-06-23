@@ -1,0 +1,31 @@
+= content_for_site_page_title @site, 'Routed Queries'
+.sub-nav-heading
+  %h2 Routed Queries
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      %li= link_to 'Add Routed Query', new_site_routed_query_path(@site)
+
+= render_flash_message
+-if @routed_queries.any?
+  %table.table
+    %thead#routed-queries-header
+      %tr
+        %td Description
+        %td URL
+        %td Keywords
+    %tbody
+      - @routed_queries.each do |routed_query|
+        %tr
+          %td
+            &= routed_query.description
+          %td
+            = link_to_url_without_protocol(routed_query.url)
+          %td
+            - routed_query.routed_query_keywords.each do |keyword|
+              .keywords.label&= keyword.keyword
+              %br
+          %td.actions.actions-3x
+            %ul
+              %li= link_to 'Edit', edit_site_routed_query_path(@site, routed_query.id)
+              = list_item_with_button_to_remove_routed_query @site, routed_query

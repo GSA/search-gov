@@ -20,8 +20,7 @@ module DocumentCollectionsHelper
 
   def list_item_with_button_to_remove_collection(site, collection)
     path = site_collection_path site, collection.id
-    data = { confirm: "Are you sure you wish to remove #{collection.name} from this site?" }
-    button = button_to 'Remove', path, method: :delete, data: data, class: 'btn btn-small'
-    content_tag :li, button
+    message = "Are you sure you wish to remove #{collection.name} from this site?"
+    list_item_with_button_to_remove(path, message)
   end
 end

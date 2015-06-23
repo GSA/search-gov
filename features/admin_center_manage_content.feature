@@ -253,6 +253,49 @@ Feature: Manage Content
     And I press "Remove"
     Then I should see "You have removed News and Blog from this site"
 
+  Scenario: View Routed Queries
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following routed queries:
+      | description                     | url                                                                            | keywords                        |
+      | Free Money                      | http://www.usa.gov/unclaimed-money                                             | free money, unclaimed money     | 
+      | Disable Rails Asset Compression | http://www.rrsoft.co/2014/01/13/selectively-disabling-rails-asset-compression/ | disable rails asset compression |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Routed Queries" within the Admin Center content
+    Then I should see the following table rows:
+      | Free Money |
+      | Disable Rails Asset Compression |
+
+  Scenario: Add/Edit/Remove Routed Query
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Content page
+    And I follow "Routed Queries" within the Admin Center content
+    And I follow "Add Routed Query"
+    When I fill in the following:
+      | Routed Query Description | Unclaimed Money                    |
+      | Routed Query URL         | http://www.usa.gov/unclaimed-money |
+    And I add the following Routed Query Keywords:
+      | keyword         |
+      | Free Money      |
+      | unclaimed money |
+    And I submit the form by pressing "Add"
+    Then I should see "You have added query routing for the following search terms: 'free money', 'unclaimed money'"
+    When I follow "Edit"
+    Then the "Keyword or phrase 1" field should contain "free money"
+    When I replace the Routed Query Keywords with:
+      | keyword         |
+      | moar money      |
+      |                 |
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated query routing for the following search term: 'moar money'"
+    And I press "Remove"
+    Then I should see "You have removed query routing for the following search term: 'moar money'"
+
   Scenario: View domains
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

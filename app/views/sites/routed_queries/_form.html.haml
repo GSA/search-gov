@@ -1,0 +1,16 @@
+= render_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :url, 'Routed Query URL', class: 'required', type: 'url'
+= form.text_field :url, class: 'required input-primary', required: true
+= form.label :description, 'Routed Query Description', class: 'required'
+= form.text_field :description, class: 'required', required: true
+
+%fieldset.routed-query-keywords.multivalued
+  .optional
+    %legend
+      Keywords
+      %span (Requires 1 or more)
+  - @routed_query.routed_query_keywords.each_with_index do |keyword, index|
+    = form.fields_for :routed_query_keywords, keyword do |routed_query_keywords|
+      = render 'routed_query_keyword', f: routed_query_keywords, index: index
+!= link_to_add_new_routed_query_keyword 'Add Another Keyword', @site, @routed_query
