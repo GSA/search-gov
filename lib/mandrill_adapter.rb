@@ -94,6 +94,7 @@ class MandrillAdapter
     {
       from_email: config[:from_email],
       from_name: config[:from_name],
+      inline_css: true,
       track_opens: false,
       global_merge_vars: [],
     }

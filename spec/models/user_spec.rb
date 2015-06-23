@@ -65,6 +65,35 @@ describe User do
     end
   end
 
+  describe '#deliver_password_reset_instructions!' do
+    subject(:user) { User.create!(@valid_attributes.merge(perishable_token: original_token)) }
+
+    before do
+      Authlogic::Random.stub(:friendly_token).and_return(random_new_token)
+      MandrillAdapter.stub(:new).and_return(mandrill_adapter)
+      adapter.stub(:push_user)
+      mandrill_adapter.stub(:send_user_email)
+    end
+
+    let(:original_token) { 'original_perishable_token_that_should_change' }
+    let(:random_new_token) { 'something_random_the_token_should_change_to' }
+    let(:mandrill_adapter) { mock(MandrillAdapter) }
+    let(:host_with_port) { 'http://example.com:8080' }
+
+    it "resets the user's perishable token" do
+      user.deliver_password_reset_instructions!(host_with_port)
+      user.perishable_token.should eq(random_new_token)
+    end
+
+    it 'sends the password_reset_instructions template via mandrill' do
+      expected_merge_fields = {
+        password_reset_url: Rails.application.routes.url_helpers.edit_password_reset_url(random_new_token, protocol: 'https', host: host_with_port)
+      }
+      mandrill_adapter.should_receive(:send_user_email).with(user, 'password_reset_instructions', expected_merge_fields)
+      user.deliver_password_reset_instructions!(host_with_port)
+    end
+  end
+
   describe '#has_government_affiliated_email' do
     context 'when the affiliate user is government affiliated' do
       it 'should report a government affiliated email' do

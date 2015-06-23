@@ -11,11 +11,8 @@ Feature: Password Reset
     And I press "Email me a link to reset my password"
     Then I should be on the password reset page
     And I should see "Instructions to reset your password have been emailed to you"
-    And "affiliate_admin@fixtures.org" should receive an email
-    When I open the email
-    Then I should see "Reset your password" in the email subject
-    And I should see "https://www.example.com/password_resets" in the email body
-    When I click the first link in the email
+    And "affiliate_admin@fixtures.org" should receive the "password_reset_instructions" mandrill email
+    When I visit the password reset page using the perishable token for "affiliate_admin@fixtures.org"
     When I fill in "Password" with "changed"
     And I press "Reset my password and log me in"
     Then I should see "Password successfully updated"
@@ -26,9 +23,8 @@ Feature: Password Reset
     And I follow "Forgot your password?"
     When I fill in "email" with "affiliate_admin@fixtures.org"
     And I press "Email me a link to reset my password"
-    Then "affiliate_admin@fixtures.org" should receive an email
-    When I open the email
-    And I click the first link in the email
+    Then "affiliate_admin@fixtures.org" should receive the "password_reset_instructions" mandrill email
+    When I visit the password reset page using the perishable token for "affiliate_admin@fixtures.org"
     And I fill in "Password" with ""
     And I press "Reset my password and log me in"
     Then I should see "Password is too short"

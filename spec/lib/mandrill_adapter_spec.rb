@@ -128,6 +128,7 @@ describe MandrillAdapter do
             merge_vars: { user: 'vars' },
             from_email: 'from@example.com',
             from_name: 'The Team',
+            inline_css: true,
             track_opens: false,
             global_merge_vars: [],
           }
@@ -167,6 +168,7 @@ describe MandrillAdapter do
               merge_vars: { admin: 'vars' },
               from_email: 'from@example.com',
               from_name: 'The Team',
+              inline_css: true,
               track_opens: false,
               global_merge_vars: [],
             }

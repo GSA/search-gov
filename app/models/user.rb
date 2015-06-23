@@ -45,7 +45,11 @@ class User < ActiveRecord::Base
 
   def deliver_password_reset_instructions!(host_with_port)
     reset_perishable_token!
-    Emailer.password_reset_instructions(self, host_with_port).deliver
+
+    merge_fields = {
+      password_reset_url: Rails.application.routes.url_helpers.edit_password_reset_url(perishable_token, protocol: 'https', host: host_with_port)
+    }
+    MandrillAdapter.new.send_user_email(self, 'password_reset_instructions', merge_fields)
   end
 
   def to_label
