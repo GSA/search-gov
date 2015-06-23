@@ -26,6 +26,22 @@ describe MobileHelper do
     end
   end
 
+  describe '#header_tagline_logo' do 
+    context 'when unable to retrieve header tagline logo URL' do
+      it 'renders the a non-clickable header tagline logo' do
+        header_tagline_logo = mock('header tagline logo')
+        header_tagline_logo.should_receive(:url).and_raise
+        affiliate = mock_model(Affiliate,
+                               display_name: 'USASearch',
+                               header_tagline: "NISH",
+                               header_tagline_logo: header_tagline_logo,
+                               header_tagline_logo_file_name: 'header_tagline_logo.png',
+                               header_tagline_url: nil)        
+        helper.header_tagline_logo(affiliate).should be_nil
+      end
+    end
+  end
+
   describe '#search_results_by_text' do
     context 'when module_tag is GWEB' do
       it 'returns Powered by Google' do

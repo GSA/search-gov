@@ -2,6 +2,19 @@
   = f.label :header_tagline, 'Header Tagline'
   = f.text_field :header_tagline, maxlength: 60
 
+  = f.label :header_tagline_url, 'Header Tagline URL'
+  = f.text_field :header_tagline_url
+
+%fieldset
+  = f.label :header_tagline_logo, 'Header Tagline Logo'
+  = f.file_field :header_tagline_logo, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
+  %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB
+  - if @site.header_tagline_logo.present? && !@site.header_tagline_logo.dirty?
+    .image= image_tag(@site.header_tagline_logo.url(:large), alt: 'Header Tagline Logo')
+    = f.label :mark_header_tagline_logo_for_deletion, class: 'checkbox' do
+      = f.check_box :mark_header_tagline_logo_for_deletion
+      Mark Header Tagline Logo for Deletion
+
 %fieldset
   = f.fields_for :css_property_hash do |hash|
     = hash.label :menu_button_alignment, 'Menu Button Alignment'

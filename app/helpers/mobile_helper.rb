@@ -43,6 +43,18 @@ module MobileHelper
     content_tag(:div, html, class: css_classes)
   end
 
+  def header_tagline_logo(affiliate)    
+    logo_url = affiliate.header_tagline_logo.url rescue nil if affiliate.header_tagline_logo_file_name.present?
+    logo_alt = "header tagline logo - " + affiliate.header_tagline    
+
+    if logo_url.present?      
+       html = link_to_if(affiliate.header_tagline_url.present?, 
+                      image_tag(logo_url, alt: logo_alt, id: 'header-tagline-logo'),
+                      affiliate.header_tagline_url, tabindex: 1)
+       # content_tag(:div, html, class: )    
+    end    
+  end
+
   def typeahead_query_class(affiliate)
     affiliate.is_sayt_enabled? ? 'form-control typeahead-enabled' : 'form-control'
   end

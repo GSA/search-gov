@@ -8,10 +8,12 @@ class Affiliate < ActiveRecord::Base
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
+  MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16.freeze
   VALID_IMAGE_CONTENT_TYPES = %w(image/gif image/jpeg image/pjpeg image/png image/x-png).freeze
   INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
   INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
   INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
   MAX_NAME_LENGTH = 33.freeze
 
   with_options dependent: :destroy do |assoc|
@@ -53,6 +55,7 @@ class Affiliate < ActiveRecord::Base
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
 
+  
   has_attached_file :page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -73,6 +76,14 @@ class Affiliate < ActiveRecord::Base
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
+                    :ssl => true  
+  
+  has_attached_file :header_tagline_logo,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/header_tagline_logo/:updated_at/:style/:basename.:extension",
                     :ssl => true
 
   before_validation :set_default_fields, on: :create
@@ -112,6 +123,13 @@ class Affiliate < ActiveRecord::Base
                             in: (1..MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE
 
+  validates_attachment_content_type :header_tagline_logo,
+                                    content_type: VALID_IMAGE_CONTENT_TYPES,
+                                    message: INVALID_CONTENT_TYPE_MESSAGE
+  validates_attachment_size :header_tagline_logo,
+                            in: (1..MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB.kilobytes),
+                            message: INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE
+
   validate :html_columns_cannot_be_malformed,
            :validate_css_property_hash,
            :validate_managed_footer_links,
@@ -131,7 +149,7 @@ class Affiliate < ActiveRecord::Base
   scope :ordered, { :order => 'display_name ASC' }
   attr_writer :css_property_hash
   attr_protected :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
-  attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion
+  attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
   attr_accessor :is_validate_staged_header_footer
   attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
 
@@ -155,6 +173,7 @@ class Affiliate < ActiveRecord::Base
     :name => "Site Handle (visible to searchers in the URL)",
     :header_image_file_size => 'Legacy Logo file size',
     :mobile_logo_file_size => 'Logo file size',
+    :mobile_header_tagline_logo_file_size => 'Header Tagline Logo file size',
     :page_background_image_file_size => 'Page Background Image file size'
   }
 
@@ -226,6 +245,7 @@ class Affiliate < ActiveRecord::Base
                                          :look_and_feel_css, :mobile_look_and_feel_css,
                                          :logo_alt_text, :sitelink_generator_names,
                                          :header_tagline,
+                                         :header_tagline_url,
                                          :page_one_more_results_pointer, :no_results_pointer,
                                          :footer_fragment,
                                          :navigation_dropdown_label, :related_sites_dropdown_label]
@@ -704,6 +724,10 @@ class Affiliate < ActiveRecord::Base
 
     if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
       mobile_logo.clear
+    end
+
+    if header_tagline_logo? and !header_tagline_logo.dirty? and mark_header_tagline_logo_for_deletion == '1'
+      header_tagline_logo.clear
     end
   end
 

@@ -407,11 +407,15 @@ Feature: Manage Display
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
       | Header Tagline      | Office website of the Awesome Agency |
+      | Header Tagline URL  | http://awesomeagency.gov             |           
       | Header Link Title 0 | News                                 |
       | Header Link URL 0   | news.agency.gov                      |
       | Footer Link Title 0 | Contact                              |
       | Footer Link URL 0   | mailto:contact@agency.gov            |
-    And I select "left" from "Menu Button Alignment"
+    
+    And I attach the file "features/support/mini_logo.png" to "Header Tagline Logo"
+    
+    And I select "left" from "Menu Button Alignment"    
     When I follow "Add Another Header Link"
     Then I should be able to access 2 header link rows
     When I fill in the following:
@@ -423,8 +427,12 @@ Feature: Manage Display
       | Footer Link Title 1 | Terms of Service |
       | Footer Link URL 1   | tos.agency.gov   |
     And I submit the form by pressing "Save"
+
     Then I should see "You have updated your header and footer information"
     And the "Header Tagline" field should contain "Office website of the Awesome Agency"
+
+    And the "Header Tagline URL" field should contain "http://awesomeagency.gov"    
+    And I should see an image with alt text "Header Tagline Logo"    
     And the "Menu Button Alignment" field should contain "left"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
@@ -442,6 +450,7 @@ Feature: Manage Display
     And I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's mobile search page
+    And the page body should contain "mini_logo.png"
     Then I should see "Office website of the Awesome Agency"
     And I should see a left aligned menu button
     And I should see "my HTML fragment" within the mobile footer
@@ -469,6 +478,17 @@ Feature: Manage Display
     When I go to the agency.gov's Header & Footer page
     And I follow "Switch to Advanced Mode"
     Then I should see "CSS to customize the top and bottom of your search results page"
+
+    When I go to the agency.gov's Header & Footer page
+    And I check "Mark Header Tagline Logo for Deletion"    
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your header and footer information" 
+    And I should not see an image with alt text "Header Tagline Logo"    
+
+    When I attach the file "features/support/bg.png" to "Header Tagline Logo"    
+    And I submit the form by pressing "Save"    
+    Then I should see "Header tagline logo file size must be under 16 KB"    
+    And I should not see an image with alt text "Header Tagline Logo"    
 
   @javascript
   Scenario: Error when Editing Managed Header & Footer

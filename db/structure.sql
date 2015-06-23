@@ -88,6 +88,10 @@ CREATE TABLE `affiliates` (
   `nutshell_id` int(11) DEFAULT NULL,
   `gets_commercial_results_on_blended_search` tinyint(1) NOT NULL DEFAULT '1',
   `gets_i14y_results` tinyint(1) NOT NULL DEFAULT '0',
+  `header_tagline_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_tagline_logo_file_size` int(11) DEFAULT NULL,
+  `header_tagline_logo_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2153,3 +2157,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150602164808');
 INSERT INTO schema_migrations (version) VALUES ('20150609181413');
 
 INSERT INTO schema_migrations (version) VALUES ('20150609220156');
+
+INSERT INTO schema_migrations (version) VALUES ('20150622150226');

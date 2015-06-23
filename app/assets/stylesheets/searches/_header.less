@@ -2,11 +2,26 @@
   padding: (@content-block-margin / 2) 0;
   position: relative;
   width: 100%;
+
+  a:link{color:inherit}
+  a:active{color:inherit}
+  a:visited{color:inherit}
+  a:hover{color:inherit}
 }
 
 #header-tagline {
   margin: 0 10px;
   padding: 0 @navbar-padding-horizontal;
+  
+  #header-tagline-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  span {
+    vertical-align: middle;
+  }
 
   @media (min-width: @screen-sm) {
     margin: 0 auto;
