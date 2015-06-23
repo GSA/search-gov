@@ -88,14 +88,31 @@ describe SearchesController do
     end
 
     context 'referrer matches redirect url' do
-      before do
-        routed_queries = affiliate.routed_queries.create!(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
-        request.env['HTTP_REFERER'] = "http://www.gov.gov/foo.html"
-        get :index, query: "foo bar", affiliate: affiliate.name
+      let(:ref_url) { 'http://www.gov.gov/foo.html' }
+      let(:rq_url) { 'http://www.gov.gov/foo.html' }
+
+      shared_examples_for 'a routed query that matches the referrer' do
+        before do
+          routed_queries = affiliate.routed_queries.create!(url: rq_url, description: "testing")
+          routed_queries.routed_query_keywords.create!(keyword: 'foo bar')
+          request.env['HTTP_REFERER'] = ref_url
+          get :index, query: "foo bar", affiliate: affiliate.name
+        end
+
+        it { should render_template(:index) }
       end
 
-      it { should render_template(:index) }
+      it_should_behave_like 'a routed query that matches the referrer'
+
+      context 'when the match is exact except that the referring URL is http and the routed query URL is https' do
+        let(:rq_url) { 'https://www.gov.gov/foo.html' }
+        it_should_behave_like 'a routed query that matches the referrer'
+      end
+
+      context 'when the match is exact except that the referring URL is https and the routed query URL is http' do
+        let(:ref_url) { 'https://www.gov.gov/foo.html' }
+        it_should_behave_like 'a routed query that matches the referrer'
+      end
     end
   end
 

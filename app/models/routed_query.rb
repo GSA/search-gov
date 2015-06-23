@@ -4,7 +4,7 @@ class RoutedQuery < ActiveRecord::Base
   has_many :routed_query_keywords, dependent: :destroy
 
   validates :affiliate, presence: true
-  validates_presence_of :url
+  validates_format_of :url, with: URI.regexp
 
   def label
     [url, description].join(': ')

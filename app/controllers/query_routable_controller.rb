@@ -15,7 +15,13 @@ module QueryRoutableController
                      .joins(:routed_query_keywords)
                      .where(routed_query_keywords:{keyword: @search_options[:query]})
                      .first
-    redirect_to routed_query.url if routed_query.present? and routed_query.url != request.referrer
+    redirect_to routed_query.url if routed_query.present? and !matching_urls_for(routed_query.url).include?(request.referrer)
+  end
+
+  def matching_urls_for(url)
+    u = URI.parse(url)
+    u.scheme = u.scheme == 'http' ? 'https' : 'http'
+    [ url, u.to_s ]
   end
 
 end

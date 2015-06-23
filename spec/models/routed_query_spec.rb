@@ -10,6 +10,7 @@ describe RoutedQuery do
     it { should belong_to :affiliate }
     it { should have_many(:routed_query_keywords).dependent(:destroy) }
     it { should validate_presence_of :affiliate }
+    it { should validate_format_of(:url).with(URI.regexp) }
 
     it "should create a new instance given valid attributes" do
       affiliate.routed_queries.create!(valid_attributes)
