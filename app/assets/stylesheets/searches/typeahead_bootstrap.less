@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.tt-dropdown-menu {
+.tt-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -25,7 +25,7 @@
     margin-top: 8px;
   }
 
-  .tt-suggestion > p {
+  .tt-suggestion {
     display: block;
     margin: 0;
     padding: 3px 12px;
@@ -33,17 +33,16 @@
     font-weight: normal;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
-  }
-}
 
-.tt-suggestions > .tt-is-under-cursor > p {
-  &,
-  &:hover,
-  &:focus {
-    color: @dropdown-link-active-color;
-    text-decoration: none;
-    outline: 0;
-    background-color: @typeahead-background-color;
+    &:hover,
+    &:focus,
+    &.tt-cursor {
+      background-color: @typeahead-background-color;
+      color: @dropdown-link-hover-color;
+      cursor: pointer;
+      outline: 0;
+      text-decoration: none;
+    }
   }
 }
 
@@ -52,10 +51,3 @@
   color: @typeahead-hint-color;
 }
 
-.tt-suggestion {
-  display: block;
-}
-
-.tt-suggestion.tt-is-under-cursor {
-    color: @dropdown-link-hover-color;
-}
