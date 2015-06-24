@@ -32,13 +32,7 @@ The database.yml file assumes you have a local database server up and running (p
 Create and setup your development and test databases:
 
     rake db:setup
-    rake db:setup RAILS_ENV=test
-    
-To run migration:
-
-    rake usasearch:db:migrate
-    
-See [db.rake](lib/tasks/db.rake) for more usasearch:db tasks.
+    RAILS_ENV=test rake db:setup
 
 ## Asset pipeline
 
