@@ -67,6 +67,11 @@ UsasearchRails3::Application.routes.draw do
         end
       end
       resource :image_assets, only: [:edit, :update]
+      resource :no_results_pages, only: [:edit, :update] do
+        collection do
+          get :new_no_results_pages_alt_link
+        end
+      end
       resource :monthly_reports, only: [:show]
       resource :best_bets_drill_down, only: [:show]
       resource :best_bet_queries, only: [:show]

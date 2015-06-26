@@ -1,0 +1,5 @@
+:plain
+  jQuery('#no-results-pages-alt-links tbody').append("#{escape_javascript(render('managed_no_results_pages_alt_link_fields', no_results_pages_alt_link: {}, index: @index))}");
+  jQuery('#new-site-no-results-pages-alt-link-trigger').data({ params: { index: "#{@index + 1}" } });
+  jQuery('#no-results-pages-alt-links tbody .title').last().focus();
+  window.usasearch.setupNoResultsPagesLinksDnD();

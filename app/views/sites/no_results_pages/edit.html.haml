@@ -1,0 +1,33 @@
+= content_for_site_page_title @site, 'No Results Page'
+= custom_form_for @site, as: :no_results_pages, url: site_no_results_pages_path(@site), html: { class: 'form', id: 'edit-no-results-pages' } do |f|
+  .sub-nav-heading
+    %h2 No Results Page
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+
+  = render_flash_message
+  = f.error_messages class: 'alert alert-error', alternative_tag: 'h3'
+
+  %h3 Search Result Not Found Error
+  %fieldset
+    %p When there are no results for a visitor's search, we display the following default message on the no results page:        
+    %p
+      %em Sorry, no results found for 'abcxyz'. Try entering fewer or broader query terms.
+    %p Fill out the fields below to customize this message by adding guidance text, alternative links, or both.
+
+    %hr
+    = f.label :additional_guidance_text, 'Additional Guidance Text'
+    = f.text_area :additional_guidance_text, rows: 3
+
+  %h5 Alternative Links
+  %table#no-results-pages-alt-links.table
+    %thead
+      %tr.nodrag.nodrop
+        %th Title
+        %th URL
+    %tbody
+      - @site.managed_no_results_pages_alt_links.each_with_index do |no_results_pages_alt_link, index|
+        = render partial: 'managed_no_results_pages_alt_link_fields', locals: { no_results_pages_alt_link: no_results_pages_alt_link, index: index }
+  .trigger-wrapper= link_to_add_new_site_no_results_pages_alt_link('Add Another Alternative Link', @site)

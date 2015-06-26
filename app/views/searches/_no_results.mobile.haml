@@ -6,3 +6,16 @@
       = link_to_other_web_results(search.affiliate.no_results_pointer, search.query)
     - else
       = t(:no_results_for_and_try, query: search.query)
+
+    
+    - if search.query.present?
+      - if search.affiliate.additional_guidance_text.present?
+        %p= search.affiliate.additional_guidance_text
+
+      - if search.affiliate.managed_no_results_pages_alt_links.present?
+        - if !search.affiliate.additional_guidance_text.present?
+          %p You can try these other options as well:
+        .content-block-item
+          %ul
+          - search.affiliate.managed_no_results_pages_alt_links.each do |link|
+            %li= link_to link[:title], link[:url]

@@ -76,8 +76,8 @@ class Affiliate < ActiveRecord::Base
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
-                    :ssl => true  
-  
+                    :ssl => true
+
   has_attached_file :header_tagline_logo,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
@@ -89,6 +89,7 @@ class Affiliate < ActiveRecord::Base
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
+  before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
 
   before_validation do |record|
@@ -143,6 +144,7 @@ class Affiliate < ActiveRecord::Base
            :validate_css_property_hash,
            :validate_managed_footer_links,
            :validate_managed_header_links,
+           :validate_managed_no_results_pages_alt_links,
            :validate_staged_header_footer,
            :validate_staged_header_footer_css,
            :language_valid
@@ -160,6 +162,7 @@ class Affiliate < ActiveRecord::Base
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
   attr_accessor :is_validate_staged_header_footer
   attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
+  attr_accessor :managed_no_results_pages_alt_links_attributes
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
@@ -247,7 +250,9 @@ class Affiliate < ActiveRecord::Base
                                          :header_tagline_url,
                                          :page_one_more_results_pointer, :no_results_pointer,
                                          :footer_fragment,
-                                         :navigation_dropdown_label, :related_sites_dropdown_label]
+                                         :navigation_dropdown_label, :related_sites_dropdown_label,
+                                         :additional_guidance_text,
+                                         :managed_no_results_pages_alt_links]
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -570,6 +575,12 @@ class Affiliate < ActiveRecord::Base
     set_managed_links(@managed_footer_links_attributes, managed_footer_links)
   end
 
+  def set_managed_no_results_pages_alt_links
+    return if @managed_no_results_pages_alt_links_attributes.nil?
+    self.managed_no_results_pages_alt_links = []
+    set_managed_links(@managed_no_results_pages_alt_links_attributes, managed_no_results_pages_alt_links)
+  end
+
   def set_managed_links(managed_links_attributes, managed_links)
     managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
       next if link[:title].blank? and link[:url].blank?
@@ -585,6 +596,10 @@ class Affiliate < ActiveRecord::Base
 
   def validate_managed_footer_links
     validate_managed_links(managed_footer_links, :footer)
+  end
+
+  def validate_managed_no_results_pages_alt_links
+    validate_managed_links(managed_no_results_pages_alt_links, :alternative)
   end
 
   def validate_managed_links(links, link_type)

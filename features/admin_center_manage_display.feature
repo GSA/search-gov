@@ -407,15 +407,15 @@ Feature: Manage Display
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
       | Header Tagline      | Office website of the Awesome Agency |
-      | Header Tagline URL  | http://awesomeagency.gov             |           
+      | Header Tagline URL  | http://awesomeagency.gov             |
       | Header Link Title 0 | News                                 |
       | Header Link URL 0   | news.agency.gov                      |
       | Footer Link Title 0 | Contact                              |
       | Footer Link URL 0   | mailto:contact@agency.gov            |
-    
+
     And I attach the file "features/support/mini_logo.png" to "Header Tagline Logo"
-    
-    And I select "left" from "Menu Button Alignment"    
+
+    And I select "left" from "Menu Button Alignment"
     When I follow "Add Another Header Link"
     Then I should be able to access 2 header link rows
     When I fill in the following:
@@ -431,8 +431,8 @@ Feature: Manage Display
     Then I should see "You have updated your header and footer information"
     And the "Header Tagline" field should contain "Office website of the Awesome Agency"
 
-    And the "Header Tagline URL" field should contain "http://awesomeagency.gov"    
-    And I should see an image with alt text "Header Tagline Logo"    
+    And the "Header Tagline URL" field should contain "http://awesomeagency.gov"
+    And I should see an image with alt text "Header Tagline Logo"
     And the "Menu Button Alignment" field should contain "left"
     And the "Header Link Title 0" field should contain "News"
     And the "Header Link URL 0" field should contain "http://news.agency.gov"
@@ -480,15 +480,15 @@ Feature: Manage Display
     Then I should see "CSS to customize the top and bottom of your search results page"
 
     When I go to the agency.gov's Header & Footer page
-    And I check "Mark Header Tagline Logo for Deletion"    
+    And I check "Mark Header Tagline Logo for Deletion"
     And I submit the form by pressing "Save"
-    Then I should see "You have updated your header and footer information" 
-    And I should not see an image with alt text "Header Tagline Logo"    
+    Then I should see "You have updated your header and footer information"
+    And I should not see an image with alt text "Header Tagline Logo"
 
-    When I attach the file "features/support/bg.png" to "Header Tagline Logo"    
-    And I submit the form by pressing "Save"    
-    Then I should see "Header tagline logo file size must be under 16 KB"    
-    And I should not see an image with alt text "Header Tagline Logo"    
+    When I attach the file "features/support/bg.png" to "Header Tagline Logo"
+    And I submit the form by pressing "Save"
+    Then I should see "Header tagline logo file size must be under 16 KB"
+    And I should not see an image with alt text "Header Tagline Logo"
 
   @javascript
   Scenario: Error when Editing Managed Header & Footer
@@ -549,8 +549,8 @@ Feature: Manage Display
   @javascript
   Scenario: Error when Editing Custom Header & Footer
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
+      | display_name   | name       | contact_email   | contact_name  |
+      | agency site    | agency.gov | john@agency.gov | John Bar      |
     And I am logged in with email "john@agency.gov" and password "random_string"
     And no emails have been sent
     When I go to the agency.gov's Header & Footer page
@@ -563,3 +563,88 @@ Feature: Manage Display
     When I access the dropdown button group within the "Header & Footer form"
     And I press "Make Live"
     Then I should see "Invalid CSS"
+
+    @javascript
+    Scenario: Editing No Results Page on non legacy Affiliate
+      Given the following Affiliates exist:
+        | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
+        | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
+      And I am logged in with email "john@agency.gov" and password "random_string"
+      And no emails have been sent
+      When I go to the agency.gov's No Results Page page
+
+      And I fill in "Additional Guidance Text" with "The GSA apologizes for not having any relevant results."
+      And I submit the form by pressing "Save"
+
+      Then I should see "You have updated your No Results Page"
+      And the "Additional Guidance Text" field should contain "The GSA apologizes for not having any relevant results."
+
+      When I follow "Add Another Alternative Link"
+      Then I should be able to access 2 no results pages alternative link rows
+
+      And I fill in the following:
+        | Alternative Link Title 0 | News                    |
+        | Alternative Link URL 0   | http://news.agency.gov  |
+        | Alternative Link Title 1 | Blog                    |
+        | Alternative Link URL 1   | http://blog.agency.gov  |
+
+      And I submit the form by pressing "Save"
+      Then I should see "You have updated your No Results Page."
+
+      And the "Alternative Link Title 0" field should contain "News"
+      And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
+      And the "Alternative Link Title 1" field should contain "Blog"
+      And the "Alternative Link URL 1" field should contain "http://blog.agency.gov"
+
+    When I am on agency.gov's mobile search page
+    Then I should not see "News"
+    Then I should not see a link to "http://news.agency.gov"
+    Then I should not see "Blog"
+    Then I should not see a link to "http://blog.agency.gov"
+
+    And I fill in "Enter your search term" with "hdakfjd;kljowaurei;ak"
+    And I submit the form by pressing "Search"
+
+    Then I should see "The GSA apologizes for not having any relevant results."
+    And I should see a link to "News" with url for "http://news.agency.gov"
+    And I should see a link to "Blog" with url for "http://blog.agency.gov"
+
+    When I go to the agency.gov's No Results Page page
+    And I fill in the following:
+      | Alternative Link Title 0 |                         |
+      | Alternative Link URL 0   |                         |
+      | Alternative Link Title 1 | Blog                    |
+      | Alternative Link URL 1   | http://blog.agency.gov  |
+    And I submit the form by pressing "Save"
+    Then I should be able to access 1 no results pages alternative link rows
+
+    When I am on agency.gov's mobile search page
+    And I fill in "Enter your search term" with "hdakfjd;kljowaurei;ak"
+    And I submit the form by pressing "Search"
+    Then I should not see "News"
+    Then I should not see a link to "http://news.agency.gov"
+
+  @javascript
+  Scenario: Errors when Editing No Results Page on non legacy Affiliate
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the agency.gov's No Results Page page
+
+    When I fill in the following:
+      | Alternative Link Title 0  |                        |
+      | Alternative Link URL 0    | http://news.agency.gov |
+
+    And I submit the form by pressing "Save"
+    Then I should not see "You have updated your No Results Page."
+    Then I should see "Alternative link title can't be blank"
+
+    When I fill in the following:
+      | Alternative Link Title 0  | News            |
+      | Alternative Link URL 0    | news.agency.gov |
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your No Results Page."
+
+    And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
