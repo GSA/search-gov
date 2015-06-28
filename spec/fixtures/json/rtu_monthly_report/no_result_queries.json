@@ -1,0 +1,34 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
+  },
+  "hits": {
+    "total": 35,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "agg": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "tsunade",
+          "doc_count": 24
+        },
+        {
+          "key": "jiraiya",
+          "doc_count": 22
+        },
+        {
+          "key": "orochimaru",
+          "doc_count": 32
+        }
+      ]
+    }
+  }
+}

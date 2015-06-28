@@ -40,19 +40,23 @@
       - @dashboard.trending_queries.each do |trending_query|
         %li= trending_query
 
-- if @dashboard.no_results.present?
-  .analytics_panel
-    %h3 Queries with No Results
+.analytics_panel
+  %h3 Queries with No Results
+  - if @dashboard.no_results.present?
     %ol#no_results
       - @dashboard.no_results.each do |query_count|
         %li= "#{query_count.query} [#{query_count.times}]"
+  - else
+    %p Not enough query data available
 
-- if @dashboard.low_ctr_queries.present?
-  .analytics_panel
-    %h3 Top Queries with Low Click Thrus
+.analytics_panel
+  %h3 Top Queries with Low Click Thrus
+  - if @dashboard.low_ctr_queries.present?
     %ol#low_ctr_queries
       - @dashboard.low_ctr_queries.each do |query, ctr|
         %li= "#{query} [#{ctr}%]"
+  - else
+    %p Not enough query data available
 
 #monthly_info
   - if @dashboard.monthly_usage_chart.present?

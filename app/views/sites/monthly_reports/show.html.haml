@@ -22,6 +22,26 @@
   %dt Total Clicks
   %dd= non_zero_number_with_delimiter @monthly_report.total_clicks
 
+%dl.dl-horizontal#no_result_queries
+  .analytics_panel
+    %h3 Queries with No Results
+    - if @monthly_report.no_result_queries.present?
+      %ol#no_result_queries
+        - @monthly_report.no_result_queries.each do |query, count|
+          %li= "#{query} [#{count}]"
+    - else
+      %p Not enough query data available
+
+%dl.dl-horizontal#low_ctr_queries
+  .analytics_panel
+    %h3 Queries with Low Click Thrus
+    - if @monthly_report.low_ctr_queries.present?
+      %ol#low_ctr_queries
+        - @monthly_report.low_ctr_queries.each do |query, ctr|
+          %li= "#{query} [#{ctr}%]"
+    - else
+      %p Not enough query data available
+
 = render partial: 'search_modules_stats', locals: { search_module_stats: @monthly_report.search_module_stats }
 
 %h3 Download Top Queries

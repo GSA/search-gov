@@ -40,6 +40,13 @@ describe "sites/monthly_reports/show.html.haml" do
         monthly_report = RtuMonthlyReport.new(site, 2014, 6, true)
         monthly_report.stub(:total_queries).and_return 12345
         monthly_report.stub(:total_clicks).and_return 5678
+
+        no_result_queries = [['peanut butter', 4], ['chocolate', 8]]
+        monthly_report.stub(:no_result_queries).and_return no_result_queries
+
+        low_ctr_queries = [['apples', 15], ['bananas', 18]]
+        monthly_report.stub(:low_ctr_queries).and_return low_ctr_queries
+
         stats = []
         stats << OpenStruct.new(display_name: 'Bing', clicks: 80, impressions: 100,
                                 clickthru_ratio: 80, historical_ctr: [25, 26],
@@ -49,6 +56,24 @@ describe "sites/monthly_reports/show.html.haml" do
 
         monthly_report.stub(:search_module_stats).and_return stats
         assign :monthly_report, monthly_report
+      end
+
+      it 'should show no-result queries' do
+        render
+        rendered.should have_selector("h3", content: "Queries with No Results")
+        rendered.should have_selector("ol#no_result_queries") do |ol|
+          ol.should contain %{peanut butter [4]}
+          ol.should contain %{chocolate [8]}
+        end
+      end
+
+      it 'should show low-ctr queries' do
+        render
+        rendered.should have_selector("h3", content: "Queries with Low Click Thrus")
+        rendered.should have_selector("ol#low_ctr_queries") do |ol|
+          ol.should contain %{apples [15%]}
+          ol.should contain %{bananas [18%]}
+        end
       end
 
       it 'should show the monthly usage totals' do
@@ -81,8 +106,26 @@ describe "sites/monthly_reports/show.html.haml" do
         monthly_report = RtuMonthlyReport.new(site, 2014, 6, true)
         monthly_report.stub(:total_queries).and_return 0
         monthly_report.stub(:total_clicks).and_return 0
+        monthly_report.stub(:no_result_queries).and_return nil
+        monthly_report.stub(:low_ctr_queries).and_return nil
         monthly_report.stub(:search_module_stats).and_return []
         assign :monthly_report, monthly_report
+      end
+
+      it 'should display a message indicating not enough data for no-result queries' do
+        render
+        rendered.should have_selector('h3', content: 'Queries with No Results')
+        rendered.should have_selector('p') do |p|
+          p.should contain 'Not enough query data available'
+        end
+      end
+
+      it 'should display a message indicating not enough data for low-ctr queries' do
+        render
+        rendered.should have_selector('h3', content: 'Queries with Low Click Thrus')
+        rendered.should have_selector('p') do |p|
+          p.should contain 'Not enough query data available'
+        end
       end
 
       it 'should show the totals' do

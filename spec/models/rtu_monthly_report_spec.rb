@@ -44,6 +44,56 @@ describe RtuMonthlyReport do
 
   end
 
+  describe "#no_result_queries" do
+    context 'when top no results queries are available' do
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/no_result_queries.json")) }
+      let(:no_result_queries) { [['tsunade', 24], ['jiraiya', 22], ['orochimaru', 32]] }
+
+      before do
+        ES::client_reader.stub(:search).and_return json_response
+      end
+
+      it 'should return an array of query/count pairs' do
+        no_results = json_response["aggregations"]["agg"]["buckets"].collect { |hash| [hash["key"], hash["doc_count"]] }
+        rtu_monthly_report.no_result_queries.should == no_results
+      end
+    end
+  end
+
+  describe '#low_ctr_queries' do
+    context 'when low CTR queries are available' do
+      let(:available_dates_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/available_dates.json")) }
+      let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/low_ctr_queries.json")) }
+      let(:click_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/low_ctr_clicks.json")) }
+      let(:low_ctr_queries) { [['bacon', 10], ['lettuce', 15], ['tomato', 16]] }
+
+      before do
+        ES::client_reader.stub(:search).and_return(available_dates_response, query_json_response, click_json_response)
+      end
+
+      it 'should return an array of query/CTR pairs with at least 20 searches and CTR below 20% for today' do
+        rtu_monthly_report.low_ctr_queries.should == low_ctr_queries
+      end
+    end
+  end
+
+  describe "#low_ctr_queries" do
+    context 'when low CTR queries are available' do
+      let(:available_dates_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/available_dates.json")) }
+      let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/low_ctr_queries.json")) }
+      let(:click_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/low_ctr_clicks.json")) }
+      let(:low_ctr_queries) { [["bacon", 10], ["lettuce", 15], ["tomato", 16]] }
+
+      before do
+        ES::client_reader.stub(:search).and_return(available_dates_response, query_json_response, click_json_response)
+      end
+
+      it 'should return an array of query/CTR pairs with at least 20 searches and CTR below 20% for today' do
+        rtu_monthly_report.low_ctr_queries.should == low_ctr_queries
+      end
+    end
+  end
+
   describe "#search_module_stats" do
     let(:rtu_module_stats_analytics) { mock(RtuModuleStatsAnalytics, module_stats: "bunch of stats")}
 

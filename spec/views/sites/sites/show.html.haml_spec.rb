@@ -69,6 +69,20 @@ describe "sites/sites/show.html.haml" do
       end
     end
 
+    context 'when no no-result queries are available for today' do
+      before do
+        assign :dashboard, double('RtuDashboard', no_results: nil).as_null_object
+      end
+
+      it 'should display a message explaining there are none' do
+        render
+        rendered.should have_selector('h3', content: 'Queries with No Results')
+        rendered.should have_selector('p') do |p|
+          p.should contain 'Not enough query data available'
+        end
+      end
+    end
+
     context 'when top clicked URLs are available for today' do
       before do
         top_urls = {'http://www.gov.gov/clicked_url4.html' => 20, 'http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html' => 10}
@@ -110,7 +124,7 @@ describe "sites/sites/show.html.haml" do
         before do
           @affiliate_user.sees_filtered_totals = true
         end
-        
+
         it 'should show them in an ordered list' do
           render
           rendered.should have_selector("h3", content: "Top Queries")
@@ -156,6 +170,20 @@ describe "sites/sites/show.html.haml" do
           ol.should contain %{seldom [5%]}
           ol.should contain %{rare [2%]}
           ol.should contain %{never [0%]}
+        end
+      end
+    end
+
+    context 'when no low CTR queries are available for today' do
+      before do
+        assign :dashboard, double('RtuDashboard', low_ctr_queries: nil).as_null_object
+      end
+
+      it 'should display a message indicating there isn\'t enough data' do
+        render
+        rendered.should have_selector('h3', content: 'Top Queries with Low Click Thrus')
+        rendered.should have_selector('p') do |p|
+          p.should contain 'Not enough query data available'
         end
       end
     end

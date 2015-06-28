@@ -1,5 +1,6 @@
 class RtuMonthlyReport
   include LogstashPrefix
+  include QueryCtrCollector
 
   def initialize(site, year, month, filter_bots)
     @site, @year, @month = site, year.to_i, month.to_i
@@ -17,6 +18,27 @@ class RtuMonthlyReport
 
   def total_clicks
     month_count('click')
+  end
+
+  def no_result_queries
+    @no_result_queries ||= begin
+      query = DateRangeTopNMissingQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', min_doc_count: 20)
+      rtu_top_queries = RtuTopQueries.new(query.body, @filter_bots)
+      rtu_top_queries.top_n
+    end
+  end
+
+  def low_ctr_queries
+    @low_ctr_queries ||= begin
+      search_query = DateRangeTopNExistsQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', min_doc_count: 2, size: 100000)
+      rtu_top_queries = RtuTopQueries.new(search_query.body, @filter_bots)
+      search_buckets = rtu_top_queries.top_n
+
+      if search_buckets.present?
+        searches_hash = Hash[search_buckets]
+        low_ctr_queries_from_hashes(clicks_hash, searches_hash, 20, 10)
+      end
+    end
   end
 
   def search_module_stats
@@ -51,4 +73,10 @@ class RtuMonthlyReport
     (date || Date.current).strftime('%m/%Y')
   end
 
+  def clicks_hash
+    clicked_query = DateRangeTopNQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', size: 1000000)
+    rtu_top_clicks = RtuTopClicks.new(clicked_query.body, @filter_bots)
+    click_buckets = rtu_top_clicks.top_n
+    Hash[click_buckets]
+  end
 end
