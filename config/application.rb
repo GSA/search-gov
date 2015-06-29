@@ -77,6 +77,8 @@ module UsasearchRails3
     if smtp_settings = MandrillAdapter.new.smtp_settings
        config.action_mailer.smtp_settings = smtp_settings
     end
+
+    config.i18n.enforce_available_locales = false
   end
 end
 

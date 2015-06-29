@@ -115,6 +115,7 @@ group :development, :test do
   gem 'i18n-tasks', '~> 0.7.13'
   gem 'pry-byebug'
   gem 'rubocop'
+  gem 'faker'
 end
 
 group :test do

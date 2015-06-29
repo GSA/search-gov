@@ -192,6 +192,8 @@ GEM
     excon (0.45.3)
     execjs (2.0.2)
     extlib (0.9.16)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -563,6 +565,7 @@ DEPENDENCIES
   elasticsearch
   em-http-request (~> 1.0)
   email_spec
+  faker
   faraday_middleware
   federal_register
   flickraw
