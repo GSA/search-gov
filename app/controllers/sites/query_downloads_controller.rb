@@ -6,23 +6,80 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
     @end_date = request["end_date"].to_date
     @start_date = request["start_date"].to_date
     filename = [@site.name, @start_date, @end_date].join('_')
-    header = ['Query Term', 'Total Count (Bots + Humans)', 'Real Count (Humans only)']
+    header = [
+      'Search Term',
+      'Real (Humans only) Queries',
+      'Real Clicks',
+      'Real CTR',
+      'Total (Bots + Humans) Queries',
+      'Total Clicks',
+      'Total CTR',
+    ]
     csv_response(filename, header, top_queries)
   end
 
   private
 
   def top_queries
-    date_range_top_n_query = DateRangeTopNQuery.new(@site.name, @start_date, @end_date, { field: 'raw', size: MAX_RESULTS })
-    rtu_top_queries = RtuTopQueries.new(date_range_top_n_query.body, false)
-    query_raw_cnt_arr = rtu_top_queries.top_n
-    rtu_top_human_queries = RtuTopQueries.new(date_range_top_n_query.body, true)
-    query_human_cnt_hash = Hash[rtu_top_human_queries.top_n]
-    query_raw_human_arr = query_raw_cnt_arr.map do |query_term, raw_count|
-      human_count = query_human_cnt_hash[query_term] || 0
-      [query_term, raw_count, human_count]
+    report_array = query_raw_count_array.map do |query_term, query_raw_count|
+      query_human_count = query_human_count_hash[query_term] || 0
+      click_raw_count = click_raw_count_hash[query_term] || 0
+      click_human_count = click_human_count_hash[query_term] || 0
+
+      ctr_raw = ctr(click_raw_count, query_raw_count)
+      ctr_human = ctr(click_human_count, query_human_count)
+
+      [
+        query_term,
+        query_human_count,
+        click_human_count,
+        ctr_human,
+        query_raw_count,
+        click_raw_count,
+        ctr_raw,
+      ]
     end
-    query_raw_human_arr.sort_by { |a| -a.last }
+
+    report_array.sort_by { |a| -a[2] }
   end
 
+  private
+
+  def ctr(click_count, query_count)
+    return '--' if click_count == 0 || query_count == 0
+
+    sprintf("%.1f%", click_count.to_f * 100 / query_count)
+  end
+
+  def date_range_top_n_query
+    @date_range_top_n_query ||= DateRangeTopNQuery.new(@site.name, @start_date, @end_date, { field: 'raw', size: MAX_RESULTS })
+  end
+
+  def query_raw_count_array
+    @query_raw_count_array ||= begin
+      rtu_top_queries = RtuTopQueries.new(date_range_top_n_query.body, false)
+      rtu_top_queries.top_n
+    end
+  end
+
+  def query_human_count_hash
+    @query_human_count_hash ||= begin
+      rtu_top_human_queries = RtuTopQueries.new(date_range_top_n_query.body, true)
+      Hash[rtu_top_human_queries.top_n]
+    end
+  end
+
+  def click_raw_count_hash
+    @click_raw_count_hash ||= begin
+      rtu_top_clicks = RtuTopClicks.new(date_range_top_n_query.body, false)
+      Hash[rtu_top_clicks.top_n]
+    end
+  end
+
+  def click_human_count_hash
+    @click_human_count_hash ||= begin
+      rtu_top_human_clicks = RtuTopClicks.new(date_range_top_n_query.body, true)
+      Hash[rtu_top_human_clicks.top_n]
+    end
+  end
 end
