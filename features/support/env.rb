@@ -1,5 +1,6 @@
 require 'simplecov'
 SimpleCov.command_name 'Cucumber'
+SimpleCov.minimum_coverage 100
 
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
