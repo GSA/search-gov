@@ -9,24 +9,24 @@
   a:hover{color:inherit}
 }
 
-#header-tagline {
+#header-tagline-inner {  
   margin: 0 10px;
   padding: 0 @navbar-padding-horizontal;
   
   #header-tagline-logo {
-    width: 25px;
-    height: 25px;
     margin-right: 10px;
   }
 
-  span {
-    vertical-align: middle;
-  }
 
   @media (min-width: @screen-sm) {
     margin: 0 auto;
     width: (@screen-sm - (2 * @content-block-margin));
   }
+}
+
+#header-tagline {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #header-wrapper {

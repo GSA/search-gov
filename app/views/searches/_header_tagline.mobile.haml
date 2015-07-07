@@ -1,9 +1,10 @@
 #header-tagline-wrapper
-  #header-tagline    
+  #header-tagline-inner
     = header_tagline_logo(affiliate)
-    
+
     - if !affiliate.header_tagline_url.blank?
-      %span
+      #header-tagline
         =link_to affiliate.header_tagline, affiliate.header_tagline_url
-    - else 
-      %span= affiliate.header_tagline
+    - else
+      #header-tagline
+        = affiliate.header_tagline
