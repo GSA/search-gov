@@ -69,18 +69,18 @@ google_only = %w(sv no)
 neither = %w(az bs ha is kt ky me mn ms tg tk)
 both.each do |code|
   puts "Creating Bing+Google #{code}: #{locale_with_name[code.to_sym]}"
-  Language.create!(code: code, is_google_supported: true, is_bing_supported: true, name: locale_with_name[code.to_sym])
+  Language.create(code: code, is_google_supported: true, is_bing_supported: true, name: locale_with_name[code.to_sym])
 end
 bing_only.each do |code|
   puts "Creating Bing-only #{code}: #{locale_with_name[code.to_sym]}"
-  Language.create!(code: code, is_google_supported: false, is_bing_supported: true, name: locale_with_name[code.to_sym])
+  Language.create(code: code, is_google_supported: false, is_bing_supported: true, name: locale_with_name[code.to_sym])
 end
 google_only.each do |code|
   puts "Creating Google-only #{code}: #{locale_with_name[code.to_sym]}"
-  Language.create!(code: code, is_google_supported: true, is_bing_supported: false, name: locale_with_name[code.to_sym])
+  Language.create(code: code, is_google_supported: true, is_bing_supported: false, name: locale_with_name[code.to_sym])
 end
 neither.each do |code|
   puts "Creating Google/Bing unsupported language #{code}: #{locale_with_name[code.to_sym]}"
-  Language.create!(code: code, is_google_supported: false, is_bing_supported: false, name: locale_with_name[code.to_sym])
+  Language.create(code: code, is_google_supported: false, is_bing_supported: false, name: locale_with_name[code.to_sym])
 end
 [:ar, :he, :fa, :ur].each { |rtl_locale| Language.find_by_code(rtl_locale).toggle!(:rtl) }
