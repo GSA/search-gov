@@ -22,10 +22,11 @@ class AzureWebEngine < SearchEngine
 
   def parse_search_engine_response(response)
     azure_response = response.body
-    ApiCommercialEngineResponse.new do |search_response|
+    CommercialSearchEngineResponse.new do |search_response|
       if azure_response.d && azure_response.d.results
         search_response.results = process_results(azure_response.d.results)
         search_response.next_offset = process_next_offset(azure_response)
+        yield search_response if block_given?
       end
     end
   end
@@ -42,10 +43,14 @@ class AzureWebEngine < SearchEngine
     if result.title.present? &&
       result.description.present? &&
       result.url.present?
+      mashify result
+    end
+  end
+
+  def mashify(result)
       Hashie::Mash.new(description: result.description,
                        title: result.title,
                        url: result.url)
-    end
   end
 
   def process_next_offset(azure_response)

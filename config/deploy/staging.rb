@@ -4,7 +4,7 @@ set :domain,      "192.168.100.169"
 server domain, :app, :web, :db, :primary => true
 role :daemon, "192.168.100.169"
 
-set :system_yml_filenames, %w(external_faraday mandrill nutshell)
+set :system_yml_filenames, %w(external_faraday hosted_azure mandrill nutshell)
 
 after 'deploy:finalize_update', 'staging_specific_files'
 before "deploy:cleanup", "restart_resque_workers"

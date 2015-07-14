@@ -146,8 +146,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:mobile_logo_url].label = 'Logo URL'
 
     config.columns[:search_engine].form_ui = :select
-    config.columns[:search_engine].options = { :options => %w(Bing Google) }
-
+    config.columns[:search_engine].options = { :options => %w(Azure Bing Google) }
 
     config.columns[:theme].form_ui = :select
     config.columns[:theme].options = { include_blank: '- select -',

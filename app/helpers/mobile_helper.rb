@@ -61,7 +61,7 @@ module MobileHelper
 
   def search_results_by_text(module_tag)
     provider = case module_tag
-      when 'BWEB', 'IMAG' then ' Bing'
+      when 'AWEB', 'BWEB', 'IMAG' then ' Bing'
       when 'GWEB', 'GIMAG' then ' Google'
       else ' DIGITALGOV Search'
       end
@@ -70,7 +70,7 @@ module MobileHelper
 
   def serp_attribution(search_module_tag)
     powered_by = I18n.t :powered_by
-    if %w(BWEB IMAG).include? search_module_tag
+    if %w(AWEB BWEB IMAG).include? search_module_tag
       content_tag(:div, class: 'bing') do
         (powered_by << content_tag(:span, ' Bing')).html_safe
       end

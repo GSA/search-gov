@@ -1,6 +1,6 @@
 class ApiGssWebEngine < GoogleWebSearch
   attr_reader :language
-  self.search_engine_response_class = ApiCommercialEngineResponse
+  self.search_engine_response_class = CommercialSearchEngineResponse
 
   def initialize(options = {})
     super

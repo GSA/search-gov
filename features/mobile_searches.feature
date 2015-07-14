@@ -637,3 +637,21 @@ Feature: Searches using mobile device
       | Kalaallisut site | kl.agency.gov | admin@agency.gov | John Bar     | kl     |                      |
     When I am on kl.agency.gov's mobile search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
+
+  Scenario: Web search using Azure engine
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Azure         | .gov    |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            |
+      | USA.gov | https://www.usa.gov |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "agency"
+    And I press "Search"
+    Then I should see at least "10" web search results
+    And I should see Powered by Bing logo
+
+    When I follow "USA.gov" within the SERP navigation
+    Then I should see "USA.gov" within the SERP active navigation
+    And I should see at least "10" web search results
+    And I should see Powered by Bing logo

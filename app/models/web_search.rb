@@ -31,7 +31,12 @@ class WebSearch < Search
 
   protected
   def search_engine_klass(search_engine_option)
-    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+    case search_engine_option
+    when /\Aazure\Z/i
+      HostedAzureWebEngine
+    else
+      "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+    end
   end
 
   def domains_scope_options
@@ -109,7 +114,11 @@ class WebSearch < Search
   end
 
   def module_tag_for_search_engine(search_engine)
-    search_engine == 'Bing' ? 'BWEB' : 'GWEB'
+    case search_engine
+    when 'Azure' then 'AWEB'
+    when 'Google' then 'GWEB'
+    else 'BWEB'
+    end
   end
 
   def post_process_results(results)

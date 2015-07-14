@@ -43,6 +43,12 @@ describe MobileHelper do
   end
 
   describe '#search_results_by_text' do
+    context 'when module_tag is AWEB' do
+      it 'returns Powered by Bing' do
+        helper.search_results_by_text('AWEB').should have_content('Powered by Bing')
+      end
+    end
+
     context 'when module_tag is GWEB' do
       it 'returns Powered by Google' do
         helper.search_results_by_text('GWEB').should have_content('Powered by Google')
@@ -51,6 +57,12 @@ describe MobileHelper do
   end
 
   describe '#serp_attribution' do
+    context 'when module_tag is AWEB' do
+      it 'returns Powered by Bing' do
+        helper.serp_attribution('AWEB').should have_content('Powered by Bing')
+      end
+    end
+
     context 'when module_tag is GWEB' do
       it 'returns Powered by Google' do
         helper.serp_attribution('GWEB').should have_content('Powered by Google')

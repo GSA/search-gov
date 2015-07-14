@@ -54,6 +54,20 @@ describe WebSearch do
       end
     end
 
+    context 'when the search engine is Azure' do
+      before { @affiliate.search_engine = 'Azure' }
+
+      it 'searches using Azure web engine' do
+        HostedAzureWebEngine.should_receive(:new).
+          with(hash_including(affiliate: @affiliate,
+                              offset: 0,
+                              per_page: 10,
+                              query: 'government'))
+
+        WebSearch.new @valid_options
+      end
+    end
+
   end
 
   describe "#cache_key" do
@@ -199,6 +213,38 @@ describe WebSearch do
       it "should assign module_tag to BWEB" do
         @search.run
         @search.module_tag.should == 'BWEB'
+      end
+
+      context 'when search_engine is Azure' do
+        subject(:search) do
+          affiliate = affiliates(:usagov_affiliate)
+          affiliate.site_domains.create!(domain: 'usa.gov')
+          affiliate.search_engine = 'Azure'
+
+          described_class.new(affiliate: affiliate,
+                              page: 1,
+                              per_page: 20,
+                              query: 'healthy snack')
+        end
+
+        before { search.run }
+
+        its(:module_tag) { should eq('AWEB') }
+      end
+
+      context 'when the search_engine is Google' do
+        subject(:search) do
+          affiliate = affiliates(:usagov_affiliate)
+          affiliate.search_engine = 'Google'
+
+          described_class.new(affiliate: affiliate,
+                              page: 1,
+                              query: 'highlight enabled')
+        end
+
+        before { search.run }
+
+        its(:module_tag) { should eq('GWEB') }
       end
 
       context 'when some sort of boosted contents are available' do
