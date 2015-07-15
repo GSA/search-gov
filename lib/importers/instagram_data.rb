@@ -9,8 +9,15 @@ module InstagramData
   def self.find_user(username)
     return unless username.present?
 
-    normalized_username = username.squish.downcase
+    normalized_username = normalize_username(username)
     users = InstagramClient.instance.user_search(normalized_username)
     users.find { |user| user.username == normalized_username }
+  end
+
+  private
+
+  def self.normalize_username(username)
+    u = username.squish.downcase
+    u.match(%r{\Ahttps?://(www.)?instagram\.com/([^/]+)}) ? Regexp.last_match(2) : u
   end
 end

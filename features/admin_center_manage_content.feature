@@ -486,6 +486,17 @@ Feature: Manage Content
     And I press "Remove"
     Then I should see "You have removed dg_search from this site"
 
+    When I follow "Add Instagram Username"
+    When I fill in "Instagram Username" with "https://www.instagram.com/whitehouse/"
+    And I submit the form by pressing "Add"
+    Then I should see "You have added whitehouse to this site"
+    And I should see a link to "whitehouse" with url for "http://instagram.com/whitehouse"
+
+    When I follow "Add Instagram Username"
+    When I fill in "Instagram Username" with "http://instagram.com/thisisaninstagramprofilethatshouldnotexist31415/"
+    And I submit the form by pressing "Add"
+    Then I should see "Username is not found"
+
   Scenario: View RSS
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
