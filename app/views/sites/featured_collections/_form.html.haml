@@ -5,7 +5,7 @@
 = form.optional_label :title_url, 'Title URL', class: 'required'
 = form.text_field :title_url
 = form.label :status, nil, class: 'required'
-= form.select :status, FeaturedCollection::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
+= form.select :status, FeaturedCollection::STATUS_OPTIONS, { default: 'Active' }, class: 'required'
 
 .required= form.label :publish_start_on, 'Publish Start Date'
 .input-append.calendar

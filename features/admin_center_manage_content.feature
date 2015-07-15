@@ -65,7 +65,6 @@ Feature: Manage Content
       | Publish End Date      | 07/01/2020                              |
       | Image Alt Text        | hurricane logo                          |
     And I attach the file "features/support/small.jpg" to "Image"
-    And I select "Active" from "Status"
     And I add the following best bets keywords:
       | keyword |
       | storm   |
@@ -164,7 +163,6 @@ Feature: Manage Content
       | Title              | Notes for Week Ending June 21, 2013                 |
       | Description        | spring cleaning                                     |
       | Keyword 1          | releases                                            |
-    And I select "Active" from "Status"
     And I add the following best bets keywords:
       | keyword |
       | rails   |

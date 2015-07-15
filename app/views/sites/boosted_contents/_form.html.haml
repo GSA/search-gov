@@ -7,7 +7,7 @@
 = form.label :description, 'Description', class: 'required'
 = form.text_area :description, class: 'required', rows: 5, maxlength: 255
 = form.label :status, 'Status', class: 'required'
-= form.select :status, BoostedContent::STATUS_OPTIONS, { include_blank: 'Select a status' }, class: 'required'
+= form.select :status, BoostedContent::STATUS_OPTIONS, { default: 'Active' }, class: 'required'
 
 .required= form.label :publish_start_on, 'Publish Start Date'
 .input-append.calendar
