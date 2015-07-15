@@ -4,7 +4,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.label = 'Sites'
     config.actions.exclude :delete, :search
     config.actions.add :field_search
-    config.field_search.columns = :id, :name, :display_name
+    config.field_search.columns = :id, :name, :display_name, :website
 
     attribute_columns = config.columns.reject do |column|
       column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|keen_scoped_key|label|_logo|_mappings|scope_ids|size|status_id|uses_managed_header_footer)\z/
