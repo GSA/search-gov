@@ -5,6 +5,7 @@ class RoutedQueryKeyword < ActiveRecord::Base
     AttributeProcessor.squish_attributes record,
                                          :keyword,
                                          assign_nil_on_blank: true
+    record.keyword.downcase! if record.keyword.present?
   end
 
   attr_accessible :keyword
@@ -12,8 +13,8 @@ class RoutedQueryKeyword < ActiveRecord::Base
   belongs_to :routed_query
   validates :routed_query, presence: true
 
-  validates :keyword, uniqueness: { scope: :routed_query_id, case_insensitive: true }, presence: true
-  before_validation { |record| record.keyword.downcase! if record.keyword.present? }
+  validates_presence_of :keyword
+  validates_uniqueness_of :keyword, scope: :routed_query_id, case_sensitive: false
 
   validate :keyword_unique_to_affiliate
 

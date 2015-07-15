@@ -24,6 +24,42 @@ describe RoutedQuery do
     it 'should create a new instance given valid attributes' do
       affiliate.routed_queries.create!(valid_attributes)
     end
+
+    context 'when a keyword is duplicated' do
+      let(:dup_attributes) do
+        valid_attributes.merge({
+          routed_query_keywords_attributes: {
+            '0' => { 'keyword' => 'some keyword phrase' },
+            '1' => { 'keyword' => 'Some Keyword Phrase' },
+          }
+        })
+      end
+
+      it 'should reject the save of the keywords' do
+        rq = affiliate.routed_queries.build(dup_attributes)
+        expect(rq.valid?).to be_false
+        expect(rq.errors[:routed_query_keywords]).to include("The following keyword has been duplicated: 'some keyword phrase'. Each keyword is case-insensitive and should be added only once.")
+      end
+    end
+
+    context 'when multiple keywords are duplicated' do
+      let(:dup_attributes) do
+        valid_attributes.merge({
+          routed_query_keywords_attributes: {
+            '0' => { 'keyword' => 'some keyword phrase' },
+            '1' => { 'keyword' => 'Some Keyword Phrase' },
+            '2' => { 'keyword' => 'some other keyword phrase' },
+            '3' => { 'keyword' => 'Some Other Keyword Phrase' },
+          }
+        })
+      end
+
+      it 'should reject the save of the keywords' do
+        rq = affiliate.routed_queries.build(dup_attributes)
+        expect(rq.valid?).to be_false
+        expect(rq.errors[:routed_query_keywords]).to include("The following keywords have been duplicated: 'some keyword phrase', 'some other keyword phrase'. Each keyword is case-insensitive and should be added only once.")
+      end
+    end
   end
 
   describe '#label' do
