@@ -49,7 +49,7 @@
       %div.name Instagram
 
 = form_tag site_autodiscovery_path(@site), id: 'autodiscovery'
-= label_tag :autodiscovery_url, 'Automatically discover the RSS and social media accounts on your site:'
+= label_tag :autodiscovery_url, 'Discover and add the RSS feeds and social media accounts listed on the following page:'
 = url_field_tag :autodiscovery_url, h(@autodiscovery_url), maxlength: 255, placeholder: 'http://yoursite.gov', type: 'url', required: true
 = button_tag "Discover", id: 'discover', class: "btn btn-success"
-%br You can run this scan on as many pages as you like.
+%br (You can run this scan on as many pages as you'd like if your feeds and accounts are listed on multiple pages.)
