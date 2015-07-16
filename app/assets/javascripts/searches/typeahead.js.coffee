@@ -36,7 +36,7 @@ buildStatusMessage = (count) ->
 updateStatus = ->
   $ttStatus = $('#tt-status')
   currentCount = $ttStatus.data('suggestionCount')
-  suggestionCount = $('.tt-dataset .tt-suggestion').length
+  suggestionCount = $('.tt-suggestions .tt-suggestion').length
   return if currentCount == suggestionCount
 
   $ttStatus.data 'suggestionCount', suggestionCount
@@ -63,8 +63,8 @@ whenClosed = ->
   $('#tt-status').data 'suggestionCount', 0
 
 $(document).on 'focus keydown', queryFieldSelector, whenFocusOnQuery
-$(document).on 'typeahead:open', queryFieldSelectorWithTypeahead, whenOpened
-$(document).on 'typeahead:close', queryFieldSelectorWithTypeahead, whenClosed
+$(document).on 'typeahead:opened', queryFieldSelectorWithTypeahead, whenOpened
+$(document).on 'typeahead:closed', queryFieldSelectorWithTypeahead, whenClosed
 $(document).on 'keyup', queryFieldSelectorWithTypeahead, updateStatusWithTimeout
 
 
@@ -96,25 +96,11 @@ whenSelected = () ->
 
 $(document).on 'typeahead:selected', queryFieldSelectorWithTypeahead, whenSelected
 
-
 ready = () ->
-  siteHandle = encodeURIComponent $('#search-bar #affiliate').val()
-  bloodhound = new Bloodhound
-    datumTokenizer: Bloodhound.tokenizers.whitespace
-    queryTokenizer: Bloodhound.tokenizers.whitespace
-    remote:
-      url: "/sayt?name=#{siteHandle}&q=%QUERY"
-      wildcard: "%QUERY"
-
+  siteHandle = encodeURIComponent $('#search-bar #affiliate').val();
   $(queryFieldSelectorWithTypeahead).typeahead
+    remote: "/sayt?name=#{siteHandle}&q=%QUERY",
     minLength: 2
-  ,
-    source: bloodhound
-    templates:
-      suggestion: (data) ->
-        typedQuery = $(queryFieldSelectorWithTypeahead).val()
-        suggestionSuffix = data.substr(typedQuery.length)
-        "<div>#{typedQuery}<strong>#{suggestionSuffix}</strong></div>"
 
 $(document).ready ready
 $(document).on 'page:load', ready

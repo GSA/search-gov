@@ -84,7 +84,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'therubyracer'
   gem 'yui-compressor'
-  gem 'twitter-typeahead-rails', '~> 0.11.1'
+  gem 'twitter-typeahead-rails', '~> 0.9.3'
 end
 
 # Bundle gems for the local environment. Make sure to
