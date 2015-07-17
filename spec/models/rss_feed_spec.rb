@@ -225,6 +225,47 @@ describe RssFeed do
         it { should_not be_new_record }
       end
     end
+
+    context 'when RSS feed URLs are duplicated' do
+      let(:urls) { ['http://RSS.NYTIMES.COM/services/xml/rss/nyt/HomePage.xml'] }
+      let(:normalized_urls) { urls.map { |u| UrlParser.normalize(u) } }
+      let(:dup_attributes) do
+        i = 0
+        a = affiliates(:basic_affiliate)
+        {
+          owner_id: a.id,
+          owner_type: a.class.name.to_s,
+          name: 'Blog',
+          rss_feed_urls_attributes: urls.inject({}) do |memo, u|
+            memo[i.to_s] = {'url' => u, 'rss_feed_owner_type' => a.class.name.to_s}
+            # same-same, but different.
+            memo[(i+1).to_s] = {'url' => UrlParser.normalize(u), 'rss_feed_owner_type' => a.class.name.to_s}
+            i += 2
+            memo
+          end
+        }
+      end
+
+      before do
+        RssFeedUrl.any_instance.stub(:url_must_point_to_a_feed) { true }
+      end
+
+      it 'should reject the save of the RSS feed URLs' do
+        rss = affiliate.rss_feeds.build(dup_attributes)
+        expect(rss.valid?).to be_false
+        expect(rss.errors[:rss_feed_urls]).to include("The following RSS feed URL has been duplicated: #{normalized_urls[0]}. Each RSS feed URL should be added only once.")
+      end
+
+      context 'when more than one RSS feed URL is duplicated' do
+        let(:urls) { [rss_feed_urls(:white_house_press_gallery_url), rss_feed_urls(:whitehouse_youtube_url)].map(&:url) }
+
+        it 'should reject the save of the RSS feed URLs' do
+          rss = affiliate.rss_feeds.build(dup_attributes)
+          expect(rss.valid?).to be_false
+          expect(rss.errors[:rss_feed_urls]).to include("The following RSS feed URLs have been duplicated: #{normalized_urls[0]}, #{normalized_urls[1]}. Each RSS feed URL should be added only once.")
+        end
+      end
+    end
   end
 
   describe '#dup' do

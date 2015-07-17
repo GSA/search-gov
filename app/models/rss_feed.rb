@@ -1,6 +1,9 @@
+#require 'active_record/validate_unique_child_attribute'
+
 class RssFeed < ActiveRecord::Base
   include ActiveRecordExtension
   include Dupable
+  include ActiveRecord::ValidateUniqueChildAttribute
 
   validates_presence_of :name, :owner_id, :owner_type
   validate :rss_feed_urls_cannot_be_blank
@@ -25,6 +28,9 @@ class RssFeed < ActiveRecord::Base
   attr_protected :is_video
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation
+
+  validates_uniqueness_of_child_attribute :rss_feed_urls, :url,
+    validate: true, error_formatter: :duplicate_rss_feed_url_error_formatter
 
   def has_errors?
     rss_feed_urls.where("last_crawl_status NOT IN (?)",RssFeedUrl::STATUSES).any?
@@ -68,5 +74,9 @@ class RssFeed < ActiveRecord::Base
   def set_is_video_flag
     self.is_video = rss_feed_urls.present? && rss_feed_urls.all?(&:is_video?)
     true
+  end
+
+  def duplicate_rss_feed_url_error_formatter(_, dups)
+    "The following RSS feed #{dups.count == 1 ? 'URL has' : 'URLs have'} been duplicated: #{dups.join(', ')}. Each RSS feed URL should be added only once."
   end
 end

@@ -1,6 +1,9 @@
+#require 'active_record/validate_unique_child_attribute'
+
 class RoutedQuery < ActiveRecord::Base
   include ActiveRecordExtension
   include Dupable
+  include ActiveRecord::ValidateUniqueChildAttribute
 
   attr_accessible :url, :description, :routed_query_keywords_attributes
   belongs_to :affiliate
@@ -14,8 +17,8 @@ class RoutedQuery < ActiveRecord::Base
 
   validate :keywords_cannot_be_blank
 
-  # https://github.com/rails/rails/issues/4568
-  validate :keywords_cannot_be_duplicated
+  validates_uniqueness_of_child_attribute :routed_query_keywords, :keyword,
+    validate: true, error_formatter: :duplicate_routed_query_keyword_error_formatter
 
   accepts_nested_attributes_for :routed_query_keywords, allow_destroy: true, reject_if: ->(k) { k['keyword'].blank? }
 
@@ -28,18 +31,11 @@ class RoutedQuery < ActiveRecord::Base
     errors.add(:base, 'Routed query must have 1 or more search terms') if routed_query_keywords.blank? || routed_query_keywords.all?(&:marked_for_destruction?)
   end
 
-  def keywords_cannot_be_duplicated
-    return if (dk = duplicated_keywords).empty?
-    errors.add(:routed_query_keywords, "The following #{dk.count == 1 ? 'keyword has' : 'keywords have'} been duplicated: #{dk.map { |k| "'#{k}'" }.join(', ')}. Each keyword is case-insensitive and should be added only once.")
-  end
-
-  def duplicated_keywords
-    routed_query_keywords.each(&:valid?) # Normalize keywords via validation
-    kw = routed_query_keywords.map(&:keyword).compact.sort
-    kw.select { |k| kw.count(k) > 1 }.uniq
-  end
-
   def label
     [url, description].join(': ')
+  end
+
+  def duplicate_routed_query_keyword_error_formatter(_, dk)
+    "The following #{dk.count == 1 ? 'keyword has' : 'keywords have'} been duplicated: #{dk.map { |k| "'#{k}'" }.join(', ')}. Each keyword is case-insensitive and should be added only once."
   end
 end

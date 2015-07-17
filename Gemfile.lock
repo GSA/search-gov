@@ -54,6 +54,10 @@ GEM
       activesupport (= 3.2.15)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-validate_unique_child_attribute (0.0.2)
+      activemodel (>= 3.2.0, <= 4.2.3)
+      activerecord (>= 3.2.0, <= 4.2.3)
+      activesupport (>= 3.2.0, <= 4.2.3)
     activeresource (3.2.15)
       activemodel (= 3.2.15)
       activesupport (= 3.2.15)
@@ -527,6 +531,7 @@ PLATFORMS
 DEPENDENCIES
   active_scaffold
   active_scaffold_export
+  activerecord-validate_unique_child_attribute
   addressable
   airbrake
   american_date
