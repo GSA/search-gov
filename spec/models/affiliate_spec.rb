@@ -43,7 +43,6 @@ describe Affiliate do
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:excluded_domains).dependent(:destroy) }
     it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:facebook_profiles).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
     it { should have_and_belong_to_many :instagram_profiles }
     it { should have_and_belong_to_many :youtube_profiles }

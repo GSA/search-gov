@@ -13,7 +13,6 @@ class Agency < ActiveRecord::Base
              :load_federal_register_documents
 
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
-  SOCIAL_MEDIA_SERVICES = %w{Facebook Twitter YouTube Flickr}
 
   def friendly_name
     @friendly_name ||= begin

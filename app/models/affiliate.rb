@@ -26,7 +26,6 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC'
     assoc.has_many :excluded_domains, :order => 'domain ASC'
     assoc.has_many :excluded_urls
-    assoc.has_many :facebook_profiles
     assoc.has_many :featured_collections
     assoc.has_many :features, :through => :affiliate_feature_addition
     assoc.has_many :flickr_profiles, order: 'flickr_profiles.url ASC'
@@ -170,7 +169,6 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
   accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
-  accepts_nested_attributes_for :facebook_profiles, :allow_destroy => true
   accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
 
   USAGOV_AFFILIATE_NAME = 'usagov'

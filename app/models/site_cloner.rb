@@ -16,11 +16,12 @@ class SiteCloner
     clone_boosted_contents cloned_site
     clone_document_collections cloned_site
     clone_featured_collections cloned_site
-    clone_flick_profiles cloned_site
+    clone_flickr_profiles cloned_site
     clone_image_search_label cloned_site
     clone_routed_queries cloned_site
     clone_rss_feeds cloned_site
     clone_site_feed_url cloned_site
+    clone_images cloned_site
 
     cloned_site.instagram_profile_ids = @origin_site.instagram_profile_ids
     cloned_site.youtube_profile_ids = @origin_site.youtube_profile_ids
@@ -60,10 +61,10 @@ class SiteCloner
   end
 
   def clone_boosted_contents(cloned_site)
-    clone_association_with_childrens @origin_site,
-                                     cloned_site,
-                                     :boosted_contents,
-                                     :boosted_content_keywords
+    clone_association_with_children @origin_site,
+                                    cloned_site,
+                                    :boosted_contents,
+                                    :boosted_content_keywords
   end
 
   def clone_document_collections(cloned_site)
@@ -77,14 +78,14 @@ class SiteCloner
   end
 
   def clone_featured_collections(cloned_site)
-    clone_association_with_childrens @origin_site,
-                                     cloned_site,
-                                     :featured_collections,
-                                     :featured_collection_keywords,
-                                     :featured_collection_links
+    clone_association_with_children @origin_site,
+                                    cloned_site,
+                                    :featured_collections,
+                                    :featured_collection_keywords,
+                                    :featured_collection_links
   end
 
-  def clone_flick_profiles(cloned_site)
+  def clone_flickr_profiles(cloned_site)
     @origin_site.flickr_profiles.map(&:dup).each do |cloned_fp|
       cloned_fp.affiliate = cloned_site
       cloned_fp.save(validate: false)
@@ -96,10 +97,10 @@ class SiteCloner
   end
 
   def clone_routed_queries(cloned_site)
-    clone_association_with_childrens @origin_site,
-                                     cloned_site,
-                                     :routed_queries,
-                                     :routed_query_keywords
+    clone_association_with_children @origin_site,
+                                    cloned_site,
+                                    :routed_queries,
+                                    :routed_query_keywords
   end
 
   def clone_rss_feeds(cloned_site)
@@ -114,6 +115,14 @@ class SiteCloner
 
   def clone_site_feed_url(cloned_site)
     cloned_site.site_feed_url = @origin_site.site_feed_url.dup if @origin_site.site_feed_url
+  end
+
+  def clone_images(cloned_site)
+    cloned_site.page_background_image = @origin_site.page_background_image if @origin_site.page_background_image.file?
+    cloned_site.header_image = @origin_site.header_image if @origin_site.header_image.file?
+    cloned_site.mobile_logo = @origin_site.mobile_logo if @origin_site.mobile_logo.file?
+    cloned_site.header_tagline_logo = @origin_site.header_tagline_logo if @origin_site.header_tagline_logo.file?
+    cloned_site.save
   end
 
   private
@@ -137,7 +146,7 @@ class SiteCloner
     candidate
   end
 
-  def clone_association_with_childrens(origin_model, cloned_model, association, *child_associations)
+  def clone_association_with_children(origin_model, cloned_model, association, *child_associations)
     origin_model.send(association).each do |parent_model|
       cloned_parent_model = parent_model.dup
       child_associations.each do |child_association|

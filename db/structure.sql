@@ -223,16 +223,6 @@ CREATE TABLE `excluded_urls` (
   KEY `index_excluded_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `facebook_profiles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `affiliate_id` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_facebook_profiles_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `featured_collection_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `featured_collection_id` int(11) NOT NULL,
@@ -2161,3 +2151,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150609220156');
 INSERT INTO schema_migrations (version) VALUES ('20150619032522');
 
 INSERT INTO schema_migrations (version) VALUES ('20150622150226');
+
+INSERT INTO schema_migrations (version) VALUES ('20150717184324');
