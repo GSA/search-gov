@@ -829,6 +829,7 @@ describe Affiliate do
         feed = affiliate.rss_feeds.build(name: "mrss", show_only_media_content: true)
         feed.rss_feed_urls.build(url: "http://www.defense.gov/news/mrss_leadphotos.xml", last_crawl_status: 'OK',
                                  oasis_mrss_name: nil, rss_feed_owner_type: "Affiliate")
+        feed.rss_feed_urls.first.stub(:url_must_point_to_a_feed) { true }
         feed.save!
       end
       specify { affiliate.should have_no_social_image_feeds }
