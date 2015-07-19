@@ -100,10 +100,6 @@ module SitesHelper
     end
   end
 
-  def site_dashboard_controllers
-    %w(settings sites users)
-  end
-
   def site_activate_search_controllers
     %w(api_access_keys api_instructions embed_codes i14y_api_instructions type_ahead_api_instructions)
   end
@@ -127,6 +123,10 @@ module SitesHelper
   def list_item_with_link_to_current_help_page
     help_link = HelpLink.lookup(request, controller.action_name)
     content_tag(:li, link_to('Help Manual', help_link.help_page_url, class: 'help-link menu')) if help_link
+  end
+
+  def site_dashboard_controllers
+    %w(settings sites users clones)
   end
 
   def site_nav_css_class_hash(*nav_names)

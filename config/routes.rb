@@ -77,6 +77,7 @@ UsasearchRails3::Application.routes.draw do
       resource :best_bet_queries, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]
+      resource :clone, only: [:new, :create]
       resource :supplemental_feed,
                controller: 'site_feed_urls',
                only: [:edit, :create, :update, :destroy]
