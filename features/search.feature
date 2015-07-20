@@ -120,6 +120,22 @@ Feature: Affiliate Search
     And I follow "Videos"
     Then I should see "32 results"
     And I should see 20 video news results
+    And I should see "Previous"
+    And I should see a link to "2"
+    And I should see a link to "Next"
+    When I follow "Next"
+    Then I should see "32 results"
+    And I should see 12 video news results
+    And I should see a link to "Previous"
+    And I should see a link to "1"
+    And I should see "Next"
+    When I follow "Previous"
+    And I follow "2"
+    Then I should see "32 results"
+    And I should see 12 video news results
+    When I follow "1"
+    Then I should see "32 results"
+    And I should see 20 video news results
 
     When I am on es.bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "noticia uno"

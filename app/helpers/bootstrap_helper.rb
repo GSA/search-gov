@@ -38,14 +38,6 @@ module BootstrapHelper
     content_tag(:td, class: 'cell-1x', id: cell_id) { content }
   end
 
-  def pagination_label(direction)
-    if direction == :next
-      (I18n.t(:next_label) << '&nbsp;&raquo;').html_safe
-    else
-      ('&laquo;&nbsp;' << I18n.t(:prev_label)).html_safe
-    end
-  end
-
   def render_flash_message(with_close_button = true)
     if flash.present?
       displayable_flash = flash.select { |key, msg| FLASH_TYPE_WHITELIST.include?(key.to_s) }
