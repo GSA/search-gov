@@ -18,6 +18,7 @@ Feature: User sessions
 
   Scenario: Affiliate admin should be on the site home page upon successful login
     Given I am on the login page
+    Then I should see the browser page titled "DigitalGov Search Login"
     And I fill in the following:
       | Email    | affiliate_admin@fixtures.org |
       | Password | admin                        |
