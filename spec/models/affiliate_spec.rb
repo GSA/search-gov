@@ -52,6 +52,7 @@ describe Affiliate do
     it { should belong_to :language }
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:routed_queries).dependent(:destroy) }
+    it { should have_many(:routed_query_keywords).through :routed_queries }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }

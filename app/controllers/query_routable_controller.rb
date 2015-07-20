@@ -1,6 +1,7 @@
 require 'active_support/concern'
 
 module QueryRoutableController
+  QueryRoutedSearch = Struct.new(:modules)
   extend ActiveSupport::Concern
 
   included do
@@ -15,7 +16,16 @@ module QueryRoutableController
                      .joins(:routed_query_keywords)
                      .where(routed_query_keywords:{keyword: @search_options[:query]})
                      .first
-    redirect_to routed_query.url if routed_query.present? and !matching_urls_for(routed_query.url).include?(request.referrer)
+    if routed_query.present? and !matching_urls_for(routed_query.url).include?(request.referrer)
+      log_routed_query_impression
+      redirect_to routed_query.url
+    end
+  end
+
+  def log_routed_query_impression
+    mock_search = QueryRoutedSearch.new(%w(QRTD))
+    relevant_params = { affiliate: @search_options[:affiliate].name, query: @search_options[:query] }
+    SearchImpression.log(mock_search, :web, relevant_params, request)
   end
 
   def matching_urls_for(url)

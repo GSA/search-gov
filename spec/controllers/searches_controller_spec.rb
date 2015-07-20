@@ -82,10 +82,17 @@ describe SearchesController do
         routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
-        get :index, query: "foo bar", affiliate: affiliate.name
       end
 
-      it { should redirect_to 'http://www.gov.gov/foo.html' }
+      it 'redirects to the proper url' do
+        get :index, query: "foo bar", affiliate: affiliate.name
+        response.should redirect_to 'http://www.gov.gov/foo.html'
+      end
+
+      it 'logs the impression' do
+        SearchImpression.should_receive(:log)
+        get :index, query: "foo bar", affiliate: affiliate.name
+      end
     end
 
     context 'referrer matches redirect url' do

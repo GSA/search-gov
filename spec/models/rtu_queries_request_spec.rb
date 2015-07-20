@@ -21,17 +21,34 @@ describe RtuQueriesRequest do
 
         before do
           query_body = %q({"query":{"filtered":{"query":{"match":{"query":{"query":"mexico petition marine","analyzer":"snowball","operator":"and"}}},"filter":{"bool":{"must":[{"term":{"affiliate":"nps.gov"}},{"range":{"@timestamp":{"gte":"2014-05-28","lte":"2014-05-28"}}}],"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000},"aggs":{"type":{"terms":{"field":"type"}}}}}})
-          opts = {index: "logstash-*", type: %w(search click), body: query_body, size: 0}
+          opts = { index: "logstash-*", type: %w(search click), body: query_body, size: 0 }
           ES::client_reader.should_receive(:search).with(opts).and_return json_response
-          rtu_queries_request.save
         end
 
         it 'should return an array of QueryClickCount objects sorted by desc query count' do
-          arr = rtu_queries_request.top_queries.map { |qcc| [qcc.query, qcc.queries, qcc.clicks, qcc.ctr] }
-          arr.should == [["petition for marine held in mexico", 7, 2, 28.0],
-                         ["petition for us marine jailed in mexico", 4, 0, 0.0],
-                         ["marine in mexico petition", 2, 3, 150.0],
-                         ["petition for marine jailed in mexico", 1, 1, 100.0]]
+          rtu_queries_request.save
+          arr = rtu_queries_request.top_queries.map { |qcc| [qcc.query, qcc.queries, qcc.clicks, qcc.ctr, qcc.is_routed_query] }
+          arr.should == [["petition for marine held in mexico", 7, 2, 28.0, false],
+                         ["petition for us marine jailed in mexico", 4, 0, 0.0, false],
+                         ["marine in mexico petition", 2, 3, 150.0, false],
+                         ["petition for marine jailed in mexico", 1, 1, 100.0, false]]
+        end
+
+        context 'matching routed queries exist' do
+          before do
+            site.routed_queries.create!(description: 'Some desc',
+                                        url: 'http://www.gov.gov/url.html',
+                                        routed_query_keywords_attributes: { '0' => { 'keyword' => 'marine in mexico petition' } })
+          end
+
+          it 'should return an array of QueryClickCount objects with is_routed_query set to true, sorted by desc query count' do
+            rtu_queries_request.save
+            arr = rtu_queries_request.top_queries.map { |qcc| [qcc.query, qcc.queries, qcc.clicks, qcc.ctr, qcc.is_routed_query] }
+            arr.should == [["petition for marine held in mexico", 7, 2, 28.0, false],
+                           ["petition for us marine jailed in mexico", 4, 0, 0.0, false],
+                           ["marine in mexico petition", 2, 3, 150.0, true],
+                           ["petition for marine jailed in mexico", 1, 1, 100.0, false]]
+          end
         end
 
       end

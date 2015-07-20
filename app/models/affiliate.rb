@@ -50,6 +50,7 @@ class Affiliate < ActiveRecord::Base
   has_and_belongs_to_many :instagram_profiles, order: 'instagram_profiles.username ASC'
   has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.title ASC'
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
+  has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
   belongs_to :agency
 
   belongs_to :status

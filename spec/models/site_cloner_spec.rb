@@ -329,12 +329,11 @@ describe SiteCloner do
 
     context 'when the origin site has sayt suggestions' do
       before do
-        origin_site.sayt_suggestions.create!(phrase: 'gov',
-                                             popularity: 200)
+        origin_site.sayt_suggestions.create!(phrase: 'gov', popularity: 200)
       end
 
       it 'copies SAYT suggestions' do
-        expect(cloned_site.sayt_suggestions.count).to eq(1)
+        expect(cloned_site.sayt_suggestions.count).to eq(5)
 
         expected_suggestion = cloned_site.sayt_suggestions.first
         expect(expected_suggestion.phrase).to eq('gov')

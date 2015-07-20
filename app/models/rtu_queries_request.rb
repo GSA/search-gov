@@ -45,11 +45,19 @@ class RtuQueriesRequest
     qcount = search_click_bucket['search'] || 1
     ccount = search_click_bucket['click'] || 0
     ctr = 100 * ccount / qcount
-    QueryClickCount.new(term, qcount, ccount, ctr)
+    QueryClickCount.new(term, qcount, ccount, ctr, is_routed_query?(term))
   end
 
   def top_n(query_body)
     ES::client_reader.search(index: "#{logstash_prefix(filter_bots)}*", type: %w(search click), body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+  end
+
+  def is_routed_query?(term)
+    routed_query_keywords.include? term
+  end
+
+  def routed_query_keywords
+    @routed_query_keywords ||= Set.new(site.routed_query_keywords.collect(&:keyword))
   end
 
 end
