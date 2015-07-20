@@ -1,4 +1,10 @@
-%nav
+.pagination
+  .content-block-item.content-block-item-header
+    %h3.content-heading Pagination
   = will_paginate search.results,
-      bootstrap: 3,
-      renderer: BootstrapPagination::Rails
+      class: 'content-block-item',
+      link_separator: pagination_link_separator(search.page),
+      next_label: pagination_label(:next),
+      page_links: false,
+      params: extra_pagination_params(search),
+      previous_label: pagination_label(:prev)

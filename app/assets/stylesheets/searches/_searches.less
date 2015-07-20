@@ -86,10 +86,18 @@ body {
   ul {
     font-size: @font-size-default;
     margin-bottom: 0;
-  }
 
-  nav {
-    text-align: center;
+    > li {
+      padding-right: 15px;
+      vertical-align: top;
+    }
+
+    > li > a {
+      .text-overflow();
+      display: block;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+    }
   }
 }
 

@@ -114,6 +114,10 @@ module MobileHelper
            }
   end
 
+  def pagination_link_separator(page_str)
+    content_tag(:span, "#{I18n.t :page} #{page_str}", class: 'current_page')
+  end
+
   def related_sites_dropdown_label(label)
     label || I18n.t(:'searches.related_sites')
   end
