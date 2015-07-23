@@ -146,18 +146,6 @@ Feature: Dashboard
     Then I should see "You have removed admin@email.gov from this site"
 
   @javascript
-  Scenario: Removing last site from a user
-    Given I am logged in with email "affiliate_manager_with_one_site@fixtures.org" and password "admin"
-    When I go to the site_with_one_user's Dashboard page
-    And I follow "Manage Users"
-    And I press "Remove" within the first table body row
-    Then user "affiliate_manager_with_one_site@fixtures.org" should not be approved
-    And I should be on the login page
-    And "usagov@mail.usasearch.howto.gov" should receive an email
-    When I open the email
-    Then I should see "User account set to 'not_approved'" in the email subject
-
-  @javascript
   Scenario: Complete sign up process
     Given no emails have been sent
     And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"

@@ -6,10 +6,6 @@ Given /^I am logged in with email "([^\"]*)" and password "([^\"]*)"$/ do |email
   click_button('Login')
 end
 
-Then /^user "([^\"]*)" should not be approved$/ do |email|
-  User.find_by_email(email).approval_status.should == 'not_approved'
-end
-
 When /^I sign out$/ do
   email = find '#nav-auth-menu a[data-toggle=dropdown]'
   click_link email.text
