@@ -5,27 +5,6 @@ describe Emailer do
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
 
-  describe "#feature_admonishment(user, affiliates_with_unused_features)" do
-    let(:user) { users(:another_affiliate_manager) }
-
-    before do
-      AffiliateFeatureAddition.delete_all
-      user.affiliates.first.features << Feature.first
-    end
-
-    subject(:email) { Emailer.feature_admonishment(user, user.affiliates).deliver }
-
-    it { should deliver_to(user.email) }
-    it { should bcc_to(Emailer::BCC_TO_EMAIL_ADDRESS) }
-    it { should deliver_from(Emailer::DELIVER_FROM_EMAIL_ADDRESS) }
-    it { should reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
-    it { should have_subject(/Getting started with USASearch/) }
-
-    it 'should contain lists of unadopted features for each affiliate that has any' do
-      email.should have_body_text(/Now that you've had a few days to dig into USASearch/)
-    end
-  end
-
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 

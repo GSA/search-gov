@@ -8,7 +8,6 @@ class EmailTemplate < ActiveRecord::Base
       affiliate_yearly_report: "[USASearch] <%= @report_year %> Year in Review",
       daily_snapshot: "[USASearch] Today's Snapshot for <%= @site.name %> on <%= Date.yesterday %>",
       deep_collection_notification: "[USASearch] Deep collection created",
-      feature_admonishment: "[USASearch] Getting started with USASearch",
       filtered_popular_terms_report: "[USASearch] Filtered Popular Terms for Last Week",
       new_affiliate_site: "[USASearch] Your new site: <%= @affiliate.display_name %>",
       new_affiliate_user: "[USASearch] You've been added to <%= @affiliate.display_name %>",

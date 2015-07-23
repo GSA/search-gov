@@ -25,12 +25,6 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def feature_admonishment(user, affiliates_with_unused_features)
-    @affiliates_with_unused_features = affiliates_with_unused_features
-    setup_email(user.email, __method__)
-    send_mail(:text)
-  end
-
   def new_user_email_verification(user)
     generic_user_text_email(user, __method__)
   end

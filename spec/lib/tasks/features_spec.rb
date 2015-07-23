@@ -82,52 +82,5 @@ describe "Features-related rake tasks" do
       end
     end
 
-    describe "usasearch:features:user_feature_reminder" do
-      let(:task_name) { 'usasearch:features:user_feature_reminder' }
-      before { @rake[task_name].reenable }
-
-      it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
-      end
-
-      context "created_days_back param" do
-        before { @rake[task_name].reenable }
-
-        context "when a created_days_back param is not specified" do
-          it "should default to 3 days" do
-            target_day = 3.days.ago
-            User.should_receive(:where).with(["created_at between ? and ?", target_day.beginning_of_day, target_day.end_of_day]).and_return []
-            @rake[task_name].invoke
-          end
-        end
-
-        context "when a created_days_back param is specified" do
-          it "should use the param" do
-            target_day = 10.days.ago
-            User.should_receive(:where).with(["created_at between ? and ?", target_day.beginning_of_day, target_day.end_of_day]).and_return []
-            @rake[task_name].invoke(10)
-          end
-        end
-      end
-
-      context "when there are newish users" do
-        let(:lazy_user) { users(:affiliate_manager) }
-        let(:ambitious_user) { users(:another_affiliate_manager) }
-
-        before do
-          @rake[task_name].reenable
-          AffiliateFeatureAddition.delete_all
-          ambitious_user.affiliates.each { |a| a.features << Feature.all }
-          User.stub!(:where).and_return [lazy_user, ambitious_user]
-          @emailer = mock(Emailer)
-          @emailer.stub!(:deliver).and_return true
-        end
-
-        it "should email the ones with affiliates with unimplemented features" do
-          Emailer.should_receive(:feature_admonishment).once.with(lazy_user, lazy_user.affiliates).and_return @emailer
-          @rake[task_name].invoke
-        end
-      end
-    end
   end
 end
