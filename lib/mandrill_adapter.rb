@@ -29,6 +29,10 @@ class MandrillAdapter
     config[:bcc_email]
   end
 
+  def base_url_params
+    config[:base_url_params] || { protocol: 'https', host: 'search.usa.gov' }
+  end
+
   def client
     if !config[:api_key].blank?
       Mandrill::API.new(config[:api_key])

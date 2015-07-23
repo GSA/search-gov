@@ -4,6 +4,9 @@ describe User do
   fixtures :users, :affiliates, :memberships
 
   let(:adapter) { mock(NutshellAdapter) }
+  let(:mandrill_adapter) { mock(MandrillAdapter) }
+  let(:base_url_params) { { protocol: 'https', host: 'search.hostname' } }
+  let(:bcc_setting) { 'bcc@example.com' }
 
   before do
     @valid_attributes = {
@@ -22,10 +25,19 @@ describe User do
     @emailer.stub!(:deliver).and_return true
 
     NutshellAdapter.stub(:new) { adapter }
+    MandrillAdapter.stub(:new) { mandrill_adapter }
+    mandrill_adapter.stub(:send_user_email)
+    mandrill_adapter.stub(:base_url_params) { base_url_params }
+    mandrill_adapter.stub(:bcc_setting) { bcc_setting }
   end
 
   describe "when validating" do
-    before { adapter.stub(:push_user) }
+    before do
+      adapter.stub(:push_user)
+      User.any_instance.stub(:email_verification_token) { 'e_v_token' }
+      User.any_instance.stub(:inviter) { users(:affiliate_manager) }
+      User.any_instance.stub(:affiliates) { [affiliates(:basic_affiliate)] }
+    end
 
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of :email }
@@ -49,12 +61,15 @@ describe User do
     end
 
     it "should send email verification to user" do
-      Emailer.should_receive(:new_user_email_verification).with(an_instance_of(User)).and_return @emailer
+      expected_merge_fields = {
+        email_verification_url: "https://search.hostname/email_verification/e_v_token",
+      }
+      mandrill_adapter.should_receive(:send_user_email).with(an_instance_of(User), 'new_user_email_verification', expected_merge_fields)
       User.create!(@valid_attributes)
     end
 
     it "should not receive welcome to new user add by affiliate" do
-      Emailer.should_not_receive(:welcome_to_new_user_added_by_affiliate)
+      mandrill_adapter.should_not_receive(:send_user_email).with(an_instance_of(User), 'welcome_to_new_user_added_by_affiliate', an_instance_of(Hash))
       User.create!(@valid_attributes)
     end
 
@@ -70,14 +85,11 @@ describe User do
 
     before do
       Authlogic::Random.stub(:friendly_token).and_return(random_new_token)
-      MandrillAdapter.stub(:new).and_return(mandrill_adapter)
       adapter.stub(:push_user)
-      mandrill_adapter.stub(:send_user_email)
     end
 
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
-    let(:mandrill_adapter) { mock(MandrillAdapter, bcc_setting: nil) }
     let(:host_with_port) { 'http://example.com:8080' }
 
     it "resets the user's perishable token" do
@@ -87,7 +99,7 @@ describe User do
 
     it 'sends the password_reset_instructions template via mandrill' do
       expected_merge_fields = {
-        password_reset_url: Rails.application.routes.url_helpers.edit_password_reset_url(random_new_token, protocol: 'https', host: host_with_port)
+        password_reset_url: 'https://search.host/password_reset_fixme',
       }
       mandrill_adapter.should_receive(:send_user_email).with(user, 'password_reset_instructions', expected_merge_fields)
       user.deliver_password_reset_instructions!(host_with_port)
@@ -279,6 +291,29 @@ describe User do
     end
   end
 
+  describe "#send_new_affiliate_user_email" do
+    let(:inviter) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      @user = users(:marilyn)
+    end
+
+    it "sends the 'new_affiliate_user' email via Mandrill with the right merge fields" do
+      expected_merge_fields = {
+        adder_contact_name: "Affiliate Manager",
+        site_name: "NPS Site",
+        site_handle: "nps.gov",
+        site_homepage_url: "http://www.nps.gov",
+        edit_site_url: "https://search.hostname/sites/#{affiliate.id}",
+
+      }
+      mandrill_adapter.should_receive(:send_user_email).with(@user, 'new_affiliate_user', expected_merge_fields)
+
+      @user.send_new_affiliate_user_email(affiliate, inviter)
+    end
+  end
+
   describe "on update from pending_approval to approved" do
     before do
       @user = users(:affiliate_manager_with_pending_approval_status)
@@ -291,7 +326,10 @@ describe User do
       end
 
       it "should deliver welcome email" do
-        Emailer.should_receive(:welcome_to_new_user).with(an_instance_of(User)).and_return @emailer
+        expected_merge_fields = {
+          new_site_url: "https://search.hostname/sites/new",
+        }
+        mandrill_adapter.should_receive(:send_user_email).with(@user, 'welcome_to_new_user', expected_merge_fields)
         @user.save!
       end
 
@@ -309,7 +347,7 @@ describe User do
       end
 
       it "should not deliver welcome email" do
-        Emailer.should_not_receive(:welcome_to_new_user).with(an_instance_of(User))
+        mandrill_adapter.should_not_receive(:send_user_email).with(an_instance_of(User), 'welcome_to_new_user')
         @user.save!
       end
     end
@@ -336,10 +374,10 @@ describe User do
       end
 
       it "should receive welcome new user added by affiliate email verification" do
-        Emailer.should_receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
-        Emailer.should_not_receive(:new_user_email_verification)
-        adapter.should_receive(:push_user)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        mandrill_adapter.should_receive(:send_user_email).with(new_user, 'welcome_to_new_user_added_by_affiliate', an_instance_of(Hash))
+        mandrill_adapter.should_not_receive(:send_user_email).with(new_user, 'new_user_email_verification', an_instance_of(Hash))
+        adapter.should_receive(:push_user)
         new_user.save!
         new_user.email_verification_token.should_not be_blank
       end
@@ -361,7 +399,7 @@ describe User do
 
       before do
         user.should_receive(:update_attributes)
-        Emailer.should_not_receive(:welcome_to_new_user)
+        mandrill_adapter.should_not_receive(:send_user_email).with(user, 'welcome_to_new_user')
         user.complete_registration({})
       end
 

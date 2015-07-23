@@ -25,7 +25,7 @@ class Sites::UsersController < Sites::SetupSiteController
       end
     elsif !@site.users.exists?(@user)
       @site.users << @user
-      Emailer.new_affiliate_user(@site, @user, current_user).deliver
+      @user.send_new_affiliate_user_email(@site, current_user)
       NutshellAdapter.new.push_site @site
       audit_trail_user_added
       redirect_to site_users_path(@site), flash: { success: "You have added #{@user.email} to this site." }

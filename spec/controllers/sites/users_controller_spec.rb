@@ -103,9 +103,7 @@ describe Sites::UsersController do
           site_users.should_receive(:<<).with(new_user)
 
           email = mock('email')
-          Emailer.should_receive(:new_affiliate_user).with(site, new_user, current_user).
-              and_return(email)
-          email.should_receive(:deliver)
+          new_user.should_receive(:send_new_affiliate_user_email).with(site, current_user)
 
           adapter.should_receive(:push_site).with(site)
           adapter.should_receive(:new_note).with(new_user, '@[Contacts:1001] added @[Contacts:42], john@email.gov to @[Leads:99] NPS Site [nps.gov].')

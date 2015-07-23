@@ -21,20 +21,15 @@ Feature: Users
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@agency.gov" should receive an email
-    When I open the email
-    Then I should see "Verify your email" in the email subject
-    When I click the first link in the email
-    Then I should be on the login page
-    Given a clear email queue
+    And "lorem.ipsum@agency.gov" should receive the "new_user_email_verification" mandrill email
+    Given a clear mandrill email history
+    When I visit the email verification page using the email verification token for "lorem.ipsum@agency.gov"
     When I fill in the following:
       | Password | huge_secret            |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
     And I should be on the user account page
-    And "lorem.ipsum@agency.gov" should receive an email
-    When I open the email
-    Then I should see "Welcome to USASearch" in the email subject
+    And "lorem.ipsum@agency.gov" should receive the "welcome_to_new_user" mandrill email
 
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the sign up page
@@ -60,18 +55,15 @@ Feature: Users
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@corporate.com" should receive an email
-    When I open the email
-    Then I should see "Verify your email" in the email subject
-    When I click the first link in the email
-    Then I should be on the login page
-    Given a clear email queue
+    And "lorem.ipsum@corporate.com" should receive the "new_user_email_verification" mandrill email
+    Given a clear mandrill email history
+    When I visit the email verification page using the email verification token for "lorem.ipsum@corporate.com"
     When I fill in the following:
       | Password | huge_secret               |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
     And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
-    And "lorem.ipsum@corporate.com" should receive no emails
+    And "lorem.ipsum@corporate.com" should not have received a mandrill email
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the sign up page

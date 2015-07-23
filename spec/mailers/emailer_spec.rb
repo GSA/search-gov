@@ -79,17 +79,6 @@ describe Emailer do
     end
   end
 
-  describe "#new_user_email_verification" do
-    let(:user) { mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token') }
-
-    subject { Emailer.new_user_email_verification(user).deliver }
-
-    it { should deliver_to('admin@agency.gov') }
-    it { should bcc_to(bcc_setting) }
-    it { should have_subject(/Verify your email/) }
-    it { should have_body_text(/http:\/\/localhost:3000\/email_verification\/some_special_token/) }
-  end
-
   describe "#new_user_to_admin" do
     context "affiliate user has .com email address" do
       let(:user) do
@@ -162,25 +151,6 @@ describe Emailer do
       it { should bcc_to(bcc_setting) }
       it { should_not have_body_text /This user was added to affiliate/ }
     end
-  end
-
-  describe "#welcome_to_new_user_added_by_affiliate" do
-    let(:user) do
-      mock(User,
-           :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe',
-           :email_verification_token => 'some_special_token')
-    end
-
-    let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
-
-    it { should deliver_to("invitee@agency.com") }
-    it { should bcc_to(bcc_setting) }
-    it { should have_subject(/Welcome to USASearch/) }
-    it { should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
 
   describe '#daily_snapshot' do
@@ -329,17 +299,16 @@ describe Emailer do
   end
 
   context "when a template is missing" do
-    let(:user) { mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token') }
-    let(:current_user) { mock(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
-    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:user) { mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
+    let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }
 
-    subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
+    subject { Emailer.affiliate_monthly_report(user, report_date) }
 
     it { should deliver_to(bcc_setting) }
     it { should have_subject('[USASearch] Missing Email template') }
-    it { should have_body_text(/Someone tried to send an email via the welcome_to_new_user_added_by_affiliate method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
+    it { should have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 
     after { EmailTemplate.load_default_templates }
   end

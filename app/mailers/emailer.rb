@@ -23,34 +23,14 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def new_user_email_verification(user)
-    generic_user_text_email(user, __method__)
-  end
-
   def user_approval_removed(user)
     @user = user
     setup_email("usagov@mail.usasearch.howto.gov", __method__)
     send_mail(:text)
   end
 
-  def welcome_to_new_user(user)
-    generic_user_text_email(user, __method__)
-  end
-
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
-    generic_user_text_email(user, __method__)
-  end
-
-  def new_affiliate_user(affiliate, user, current_user)
-    @affiliate = affiliate
-    @current_user = current_user
-    generic_user_text_email(user, __method__)
-  end
-
-  def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
-    @affiliate = affiliate
-    @current_user = current_user
     generic_user_text_email(user, __method__)
   end
 
