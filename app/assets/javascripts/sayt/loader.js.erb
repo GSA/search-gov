@@ -22,14 +22,7 @@ if (getElementsByClassName('usagov-search-autocomplete').length > 0) {
 
   var script = document.createElement("script");
   script.type = "text/javascript";
-  var assetPath;
-  if (usasearch.config.use_my_jquery) {
-    assetPath = '<%= asset_path('sayt_loader_without_jquery_libs.js') %>';
-  } else {
-    assetPath = '<%= asset_path('sayt_loader_libs.js') %>';
-  }
-
-  script.src = usasearch.config.host + assetPath;
+  script.src = usasearch.config.host + '<%= asset_path('sayt_loader_libs.js') %>';
   document.getElementsByTagName("head")[0].appendChild(script);
 }
 
