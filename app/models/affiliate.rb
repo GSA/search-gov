@@ -147,7 +147,8 @@ class Affiliate < ActiveRecord::Base
            :validate_managed_no_results_pages_alt_links,
            :validate_staged_header_footer,
            :validate_staged_header_footer_css,
-           :language_valid
+           :language_valid,
+           :validate_managed_no_results_pages_guidance_text
 
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
@@ -800,4 +801,9 @@ class Affiliate < ActiveRecord::Base
     Hash[all.collect { |site| [site.name, site] }]
   end
 
+  def validate_managed_no_results_pages_guidance_text
+    if managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
+      errors.add(:base, "Additional guidance text is required when links are present.")
+    end
+  end
 end

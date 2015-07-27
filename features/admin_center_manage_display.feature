@@ -634,6 +634,15 @@ Feature: Manage Display
     When I go to the agency.gov's No Results Page page
 
     When I fill in the following:
+      | Alternative Link Title 0  | News                   |
+      | Alternative Link URL 0    | http://news.agency.gov |
+
+    And I submit the form by pressing "Save"
+    Then I should not see "You have updated your No Results Page."
+    Then I should see "Additional guidance text is required when links are present."
+
+    When I fill in "Additional Guidance Text" with "The GSA apologizes for not having any relevant results."
+    And I fill in the following:
       | Alternative Link Title 0  |                        |
       | Alternative Link URL 0    | http://news.agency.gov |
 
