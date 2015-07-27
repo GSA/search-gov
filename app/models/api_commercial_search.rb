@@ -4,11 +4,6 @@ class ApiCommercialSearch < Search
   include Govboxable
   include Api::V2::SearchAsJson
 
-  HIGHLIGHT_OPTIONS = {
-    pre_tags: ["\ue000"],
-    post_tags: ["\ue001"]
-  }.freeze
-
   attr_reader :next_offset
 
   def initialize(options)
@@ -25,7 +20,8 @@ class ApiCommercialSearch < Search
   protected
 
   def build_highlighting_options(options)
-    { highlighting: options[:enable_highlighting] }.merge(HIGHLIGHT_OPTIONS)
+    { highlighting: options[:enable_highlighting] }.
+      merge(Api::V2::HighlightOptions::DEFAULT)
   end
 
   def instantiate_engine(_options)

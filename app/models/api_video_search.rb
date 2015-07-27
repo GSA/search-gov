@@ -2,11 +2,6 @@ class ApiVideoSearch < Search
   include DefaultModuleTaggable
   include Api::V2::SearchAsJson
 
-  HIGHLIGHT_OPTIONS = {
-    pre_tags: ["\ue000"],
-    post_tags: ["\ue001"]
-  }.freeze
-
   self.default_module_tag = 'VIDS'.freeze
 
   attr_reader :next_offset, :video_rss_feeds
@@ -54,7 +49,8 @@ class ApiVideoSearch < Search
   protected
 
   def build_highlighting_options(options)
-    { highlighting: options[:enable_highlighting] }.merge(HIGHLIGHT_OPTIONS)
+    { highlighting: options[:enable_highlighting] }.
+      merge(Api::V2::HighlightOptions::DEFAULT)
   end
 
   def handle_response(response)

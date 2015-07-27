@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Api::V2::SearchesController do
   describe '#blended' do
     context 'when request is SSL' do
+      include_context 'SSL request'
+
       before do
-        controller.should_receive(:request_ssl?).and_return(true)
         affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
         search = mock('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
@@ -40,9 +41,7 @@ describe Api::V2::SearchesController do
   end
 
   describe '#azure' do
-    before do
-      controller.should_receive(:request_ssl?).and_return(true)
-    end
+    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before do
@@ -91,7 +90,7 @@ describe Api::V2::SearchesController do
   end
 
   describe '#gss' do
-    before { controller.should_receive(:request_ssl?).and_return(true) }
+    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before do
@@ -142,8 +141,52 @@ describe Api::V2::SearchesController do
     end
   end
 
+  describe '#i14y' do
+    include_context 'SSL request'
+
+    context 'when the search options are not valid' do
+      before do
+        get :i14y,
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        errors = JSON.parse(response.body)['errors']
+        expect(errors).to include('access_key must be present')
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiI14ySearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'i14y',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :i14y,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+    end
+  end
+
   describe '#video' do
-    before { controller.should_receive(:request_ssl?).and_return(true) }
+    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before do

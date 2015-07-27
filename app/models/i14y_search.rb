@@ -3,6 +3,11 @@ class I14ySearch < Search
   include Govboxable
   I14Y_SUCCESS = 200
 
+  def initialize(options = {})
+    super
+    @enable_highlighting = !(false === options[:enable_highlighting])
+  end
+
   def search
     search_options = {
       handles: @affiliate.i14y_drawers.pluck(:handle).sort.join(','),
@@ -34,7 +39,7 @@ class I14ySearch < Search
   def handle_response(response)
     if response && response.status == I14Y_SUCCESS
       @total = response.metadata.total
-      I14yPostProcessor.new(response.results).post_process_results
+      I14yPostProcessor.new(@enable_highlighting, response.results).post_process_results
       @results = paginate(response.results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1

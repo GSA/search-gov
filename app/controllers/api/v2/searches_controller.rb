@@ -25,6 +25,12 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def i14y
+    @search = ApiI14ySearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   def video
     @search = ApiVideoSearch.new @search_options.attributes
     @search.run
@@ -70,6 +76,7 @@ class Api::V2::SearchesController < ApplicationController
     when :azure then Api::CommercialSearchOptions
     when :blended, :video then Api::NonCommercialSearchOptions
     when :gss then Api::GssSearchOptions
+    when :i14y then Api::SearchOptions
     end
   end
 

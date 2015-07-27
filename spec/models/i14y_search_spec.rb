@@ -6,7 +6,7 @@ describe I14ySearch do
   let(:affiliate) { affiliates(:power_affiliate) }
 
   context 'when results are available' do
-    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase") }
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase", per_page: 20) }
 
     it "should return a response" do
       i14y_search.run
@@ -19,6 +19,23 @@ describe I14ySearch do
       first.link.should == 'https://www.healthcare.gov/glossary/marketplace'
       first.description.should == 'See Health Insurance Marketplace'
       first.body.should == 'More info on Health Insurance Marketplace'
+    end
+  end
+
+  context 'when enable_highlighting is false' do
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
+                                       enable_highlighting: false,
+                                       per_page: 20,
+                                       query: 'marketplase') }
+
+    it 'returns non highlighted results' do
+      i14y_search.run
+
+      first = i14y_search.results.first
+      expect(first.title).to eq('Marketplace')
+      expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
+      expect(first.description).to eq('See Health Insurance Marketplace')
+      expect(first.body).to eq('More info on Health Insurance Marketplace')
     end
   end
 
