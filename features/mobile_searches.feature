@@ -67,6 +67,15 @@ Feature: Searches using mobile device
     And I should see a link to "http://t.co/l8jbZSbmAX" with text "go.wh.gov/sgCp3q"
     And I should see at least "2" web search results
     And I should see 2 related searches
+    And I should see a link to "Next"
+    And I should not see a link to "2" with class "pagination-numbered-link"
+    When I follow "Next"
+    Then I should see a link to "Previous"
+    And I should see a link to "Next"
+    And I should not see a link to "1" with class "pagination-numbered-link"
+    And I should not see a link to "3" with class "pagination-numbered-link"
+    When I follow "Previous"
+    Then I should see a link to "Next"
 
     When I am on es.agency.gov's mobile search page
     And I fill in "Ingrese su búsqueda" with "presidente"
@@ -95,7 +104,7 @@ Feature: Searches using mobile device
       | name       | url                                  |
       | Noticias-1 | http://es.agency.gov/feed/noticias-1 |
 
-    And there are 10 news items for "News-1"
+    And there are 150 news items for "News-1"
     And there are 5 news items for "Noticias-1"
 
     When I am on en.agency.gov's "News-1" mobile news search page
@@ -105,9 +114,23 @@ Feature: Searches using mobile device
     Then the "Enter your search term" field should contain "news item"
     And I should see "All time" within the current time filter
     And I should see "Most recent" within the current sort by filter
-    And I should see "10 RESULTS"
+    And I should see "150 RESULTS"
     And I should see "Powered by DIGITALGOV Search"
-    And I should see at least "10" web search results
+    And I should see exactly "20" web search results
+    And I should see "Previous"
+    And I should see a link to "2" with class "pagination-numbered-link"
+    And I should see a link to "Next"
+    When I follow "Next"
+    Then I should see "150 RESULTS"
+    And I should see exactly "20" web search results
+    And I should see a link to "Previous"
+    And I should see a link to "1" with class "pagination-numbered-link"
+    And I should see "Next"
+    When I follow "5"
+    And I follow "7"
+    And I follow "8"
+    Then I should see "150 RESULTS"
+    And I should see exactly "10" web search results
 
     When I follow "Last month"
     Then the "Enter your search term" field should contain "news item"
@@ -277,8 +300,8 @@ Feature: Searches using mobile device
     And affiliate "es.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
-    And there are 10 video news items for "usgovernment_channel_id"
-    And there are 10 video news items for "whitehouse_channel_id"
+    And there are 20 video news items for "usgovernment_channel_id"
+    And there are 20 video news items for "whitehouse_channel_id"
     And there are 5 video news items for "gobiernousa_channel_id"
 
     When I am on en.agency.gov's search page
@@ -289,7 +312,20 @@ Feature: Searches using mobile device
     And I follow "Videos" within the SERP navigation
     And I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0"
     Then I should see "Powered by DIGITALGOV Search"
-    And I should see at least "10" video search results
+    And I should see exactly "10" video search results
+    And I should see "Previous"
+    And I should see a link to "2" with class "pagination-numbered-link"
+    And I should see a link to "Next"
+    When I follow "Next"
+    And I should see exactly "10" video search results
+    And I should see a link to "Previous"
+    And I should see a link to "1" with class "pagination-numbered-link"
+    And I should see "Next"
+    When I follow "Previous"
+    And I follow "2"
+    And I should see exactly "10" video search results
+    When I follow "1"
+    And I should see exactly "10" video search results
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "video 5"

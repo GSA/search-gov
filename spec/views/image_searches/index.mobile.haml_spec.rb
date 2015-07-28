@@ -97,7 +97,6 @@ describe "image_searches/index.mobile.haml" do
       @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
                        queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
                        page: 1, spelling_suggestion: nil)
-      @search.stub(:is_a?).with(ImageSearch).and_return true
       ImageSearch.stub(:===).and_return true
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
@@ -152,7 +151,6 @@ describe "image_searches/index.mobile.haml" do
         @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
                          queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
                          page: 1, spelling_suggestion: "\uE000tsetse\uE001")
-        @search.stub(:is_a?).with(ImageSearch).and_return true
         ImageSearch.stub(:===).and_return true
         assign(:search, @search)
         assign(:search_params, { affiliate: affiliate.name, query: 'test' })

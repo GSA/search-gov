@@ -1,5 +1,11 @@
-Then /^I should see at least "([^"]*)" web search results?$/ do |count|
-  page.should have_selector("#results #result-#{count}")
+Then /^I should see (exactly|at least) "([^"]*)" web search results?$/ do |is_exact, count|
+  if is_exact == 'exactly'
+    selector = '#results .result'
+    page.should have_selector selector, count: count
+  else
+    selector = "#results #result-#{count}"
+    page.should have_selector selector
+  end
 end
 
 Then /^I should see (exactly|at least) "([^"]*)" image search results?$/ do |is_exact, count|

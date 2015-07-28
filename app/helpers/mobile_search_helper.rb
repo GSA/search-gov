@@ -34,4 +34,8 @@ module MobileSearchHelper
         false
     end
   end
+
+  def render_result_pages_links?(search)
+    search.is_a?(FilterableSearch) || search.is_a?(I14ySearch)
+  end
 end

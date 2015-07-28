@@ -1,7 +1,17 @@
 .pagination
   .content-block-item.content-block-item-header
     %h3.content-heading Pagination
-  = will_paginate search.results,
+  - if render_result_pages_links?(search)
+    = will_paginate search.results,
+      class: 'content-block-item',
+      next_label: pagination_label(:next),
+      page_links: true,
+      previous_label: pagination_label(:prev),
+      renderer: Searches::CustomLinkRenderer,
+      inner_window: 2,
+      outer_window: 0
+  - else
+    = will_paginate search.results,
       class: 'content-block-item',
       link_separator: pagination_link_separator(search.page),
       next_label: pagination_label(:next),

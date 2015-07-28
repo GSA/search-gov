@@ -28,20 +28,23 @@
     text-align: center;
   }
 
-  .previous_page, .current_page, .next_page {
+  a, em {
     display: inline-block;
     text-align: center;
     padding: 0.5em;
-    width: (100% / 3);
+  }
+
+  .pagination-numbered-link, .link-separator, .gap{
+    @media (max-width: @screen-xs-max) {
+      display: none;
+    }
+  }
+
+  .pagination-numbered-link, em {
+    width: 38px;
   }
 
   .previous_page {
-    float: left;
-
-    @media (min-width: @screen-sm-min) {
-      width: 41%;
-    }
-
     @media (min-width: @screen-md-min) {
       text-align: right;
     }
@@ -55,14 +58,9 @@
   }
 
   .next_page {
-    float: right;
-
-    @media (min-width: @screen-sm-min) {
-      width: 41%;
-    }
-
     @media (min-width: @screen-md-min) {
       text-align: left;
     }
   }
+
 }
