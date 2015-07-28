@@ -1,52 +1,8 @@
 @import 'sites/modules/_mixins.less';
 
-.l-site-nav, .l-site-header {
-  [class^="icon-"] {
-    display: none;
-  }
-}
-
-.l-site-nav.main .description {
-  .on-screen-text();
-}
-
-.calendar .add-on-icon {
-  background: image-url('calendar_date_select/calendar.gif') no-repeat center center;
-}
-
-i.icon-calendar, i.icon-globe, i.icon-lightbulb, i.icon-search, i.icon-user, i.icon-signout {
-  display: none;
-}
-
-.content .content-item.domains .name {
+.fa {
   display: inline-block;
-  *display: inline;
-  margin-top: 10px;
-  zoom: 1;
-}
-
-.icon-caret-down:before {
-  content: "\25bc";
-}
-
-.icon-caret-down {
-  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x25bc;')";
-}
-
-.icon-plus:before {
-  content: "\2b";
-}
-
-.icon-plus {
-  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2b;')";
-}
-
-.icon-reorder:before {
-  content: "\2195";
-}
-.icon-reorder {
-  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2195;')";
-}
+};
 
 #pin-site, #envelope-snapshot-toggle {
   .btn {

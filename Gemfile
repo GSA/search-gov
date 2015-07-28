@@ -79,7 +79,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails-bootstrap'
-  gem 'font-awesome-rails', '~> 3.2.1.3'
+  # Wondering why all of the Font Awesome fonts aren't present? See
+  # https://github.com/gsa/rails-font-awesome-grunticon for instructions
+  # on how to add more icons to this gem
+  gem 'rails-font-awesome-grunticon', git: 'git://github.com/gsa/rails-font-awesome-grunticon', ref: '2f43ad9cee4e4004e9cae4c015622006a92c2f5a'
   gem 'compass-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-rails'

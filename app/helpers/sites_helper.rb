@@ -82,7 +82,7 @@ module SitesHelper
   def main_nav_item(title, path, icon, nav_controllers, link_options = {})
     link_options.reverse_merge! 'data-toggle' => 'tooltip', 'data-original-title' => title
     item_content = link_to path, link_options do
-      inner_html = content_tag :i, nil, class: "#{icon} icon-2x"
+      inner_html = content_tag :i, nil, 'class' => "fa #{icon}-inactive fa-2x", 'data-grunticon-embed' => 'toggle-me'
       inner_html << content_tag(:span, title, class: 'description')
     end
     content_tag :li, item_content, main_nav_css_class_hash(nav_controllers)
@@ -94,9 +94,9 @@ module SitesHelper
 
   def preview_main_nav_item(site, title)
     if site.force_mobile_format?
-      main_nav_item title, search_url(protocol: 'http', affiliate: site.name), 'icon-eye-open', [], target: '_blank'
+      main_nav_item title, search_url(protocol: 'http', affiliate: site.name), 'fa-eye', [], target: '_blank'
     else
-      main_nav_item title, site_preview_path(site), 'icon-eye-open', [], preview_serp_link_options
+      main_nav_item title, site_preview_path(site), 'fa-eye', [], preview_serp_link_options
     end
   end
 
