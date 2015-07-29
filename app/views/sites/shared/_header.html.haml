@@ -8,20 +8,19 @@
           = site_select
         %li
           = link_to new_site_path do
-            %i.icon-plus
+            %i.fa.fa-plus-inactive{'data-grunticon-embed' => 'toggle_me'}
             Add Site
         %li#send-an-idea-trigger
           = link_to '#send-an-idea-trigger' do
-            %i.icon-lightbulb
+            %i.fa.fa-lightbulb-o-inactive{'data-grunticon-embed' => 'toggle_me'}
             Send an Idea
-
       %ul#auth-and-help.nav
         %li
           %ul.nav.help
             %li#nav-help-menu.dropdown
               = link_to '#nav-help-menu', { 'data-toggle' => 'dropdown' } do
                 Need Help?
-                %i.icon-caret-down
+                %i.fa.fa-caret-down-inactive{'data-grunticon-embed' => 'toggle_me'}
               %ul.dropdown-menu(data-no-turbolink)
                 %li= mail_to SUPPORT_EMAIL_ADDRESS, 'Contact us by email'
                 %li= link_to 'Call us: 202-505-5315', 'tel:202-505-5315'
@@ -32,13 +31,13 @@
             %li#nav-auth-menu.dropdown
               = link_to '#nav-auth-menu', { 'data-toggle' => 'dropdown' } do
                 = current_user.email
-                %i.icon-caret-down
+                %i.fa.fa-caret-down-inactive{'data-grunticon-embed' => 'toggle_me'}
               %ul.dropdown-menu(data-no-turbolink)
                 %li
                   = link_to account_path do
-                    %i.icon-user
+                    %i.fa.fa-user-black{'data-grunticon-embed' => 'toggle_me'}
                     My account
                 %li
                   = link_to url_for_logout, method: :delete do
-                    %i.icon-signout
+                    %i.fa.fa-sign-out-black{'data-grunticon-embed' => 'toggle_me'}
                     Sign out

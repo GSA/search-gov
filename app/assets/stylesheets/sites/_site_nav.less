@@ -16,6 +16,7 @@
       color: #999999;
       text-align: center;
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      height: 60px;
 
       &:hover {
         background-color: @siteMainNavBackground;
@@ -25,10 +26,13 @@
   }
 
   .nav > .active > a,
-  .nav > .active > a:hover {
+  .nav a:hover {
     background-color: @siteMainNavBackground;
     background-image: none;
     color: @white;
+    & path {
+      fill: @white;
+    }
   }
 
   .description {

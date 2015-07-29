@@ -1,6 +1,6 @@
 %tr{ id: "no-results-pages-alt-link-#{index}"}
   %td.title
-    %i.draggable.icon.icon-reorder
+    %i.draggable.fa.fa-reorder
     = label_tag "no_results_pages[managed_no_results_pages_alt_links_attributes][#{index}][title]", "Alternative Link Title #{index}", { class: 'hide' }
     = text_field_tag "no_results_pages[managed_no_results_pages_alt_links_attributes][#{index}][title]", no_results_pages_alt_link[:title], { class: 'title', maxlength: 32, size: nil }
     = hidden_field_tag "no_results_pages[managed_no_results_pages_alt_links_attributes][#{index}][position]", index, { class: 'position' }

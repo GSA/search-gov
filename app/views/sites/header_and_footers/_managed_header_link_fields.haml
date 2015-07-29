@@ -1,6 +1,6 @@
 %tr{ id: "header-link-#{index}"}
   %td.title
-    %i.draggable.icon.icon-reorder
+    %i.draggable.fa.fa-reorder
     = label_tag "site[managed_header_links_attributes][#{index}][title]", "Header Link Title #{index}", { class: 'hide' }
     = text_field_tag "site[managed_header_links_attributes][#{index}][title]", header_link[:title], { class: 'title', maxlength: 32, size: nil }
     = hidden_field_tag "site[managed_header_links_attributes][#{index}][position]", index, { class: 'position' }

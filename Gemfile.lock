@@ -5,6 +5,14 @@ GIT
     resque-priority (0.1)
 
 GIT
+  remote: git://github.com/gsa/rails-font-awesome-grunticon
+  revision: 2f43ad9cee4e4004e9cae4c015622006a92c2f5a
+  ref: 2f43ad9cee4e4004e9cae4c015622006a92c2f5a
+  specs:
+    rails-font-awesome-grunticon (0.1.2)
+      railties (~> 3.2)
+
+GIT
   remote: git://github.com/jeremydurham/us-state-select-plugin.git
   revision: aa69cc1f23eea7cadd5acdcda74a0333d41852c1
   specs:
@@ -192,8 +200,6 @@ GEM
       httparty (>= 0.7.0)
     ffi (1.9.6)
     flickraw (0.9.8)
-    font-awesome-rails (3.2.1.3)
-      railties (>= 3.2, < 5.0)
     fssm (0.2.10)
     geoip (1.5.0)
     gherkin (2.12.2)
@@ -558,7 +564,6 @@ DEPENDENCIES
   faraday_middleware
   federal_register
   flickraw
-  font-awesome-rails (~> 3.2.1.3)
   geoip
   github-markdown
   google-api-client
@@ -590,6 +595,7 @@ DEPENDENCIES
   pry-byebug
   rack-contrib
   rails (= 3.2.15)
+  rails-font-awesome-grunticon!
   rake
   rash
   recaptcha
