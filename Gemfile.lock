@@ -5,11 +5,11 @@ GIT
     resque-priority (0.1)
 
 GIT
-  remote: git://github.com/gsa/rails-font-awesome-grunticon
-  revision: 2f43ad9cee4e4004e9cae4c015622006a92c2f5a
-  ref: 2f43ad9cee4e4004e9cae4c015622006a92c2f5a
+  remote: git://github.com/gsa/font-awesome-grunticon-rails
+  revision: cebde5b856a6190ca43ce4b561a537825c0b6f2c
+  ref: cebde5b856a6190ca43ce4b561a537825c0b6f2c
   specs:
-    rails-font-awesome-grunticon (0.1.2)
+    font-awesome-grunticon-rails (0.1.3)
       railties (~> 3.2)
 
 GIT
@@ -566,6 +566,7 @@ DEPENDENCIES
   faraday_middleware
   federal_register
   flickraw
+  font-awesome-grunticon-rails!
   font-awesome-rails (~> 3.2.1.3)
   geoip
   github-markdown
@@ -598,7 +599,6 @@ DEPENDENCIES
   pry-byebug
   rack-contrib
   rails (= 3.2.15)
-  rails-font-awesome-grunticon!
   rake
   rash
   recaptcha
