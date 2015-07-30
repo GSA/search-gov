@@ -93,9 +93,9 @@ group :assets do
   # may be blocked due to government security policy. For
   # this area we use a restricted subset of Font Awesome 4.3.x
   # icons compiled into SVG/CSS+PNG using Grunticon. See
-  # https://github.com/gsa/rails-font-awesome-grunticon
+  # https://github.com/gsa/font-awesome-grunticon-rails
   # for instructions on how to add more icons to this set
-  gem 'rails-font-awesome-grunticon', git: 'git://github.com/gsa/rails-font-awesome-grunticon', ref: '2f43ad9cee4e4004e9cae4c015622006a92c2f5a'
+  gem 'font-awesome-grunticon-rails', git: 'git://github.com/gsa/font-awesome-grunticon-rails', ref: 'cebde5b856a6190ca43ce4b561a537825c0b6f2c'
 end
 
 # Bundle gems for the local environment. Make sure to
