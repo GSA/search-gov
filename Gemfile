@@ -79,16 +79,23 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails-bootstrap'
-  # Wondering why all of the Font Awesome fonts aren't present? See
-  # https://github.com/gsa/rails-font-awesome-grunticon for instructions
-  # on how to add more icons to this gem
-  gem 'rails-font-awesome-grunticon', git: 'git://github.com/gsa/rails-font-awesome-grunticon', ref: '2f43ad9cee4e4004e9cae4c015622006a92c2f5a'
   gem 'compass-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-rails'
   gem 'therubyracer'
   gem 'yui-compressor'
   gem 'twitter-typeahead-rails', '~> 0.11.1'
+  # Why do we have two versions of Font Awesome?
+  # One is for general use around the app, in places where
+  # web fonts are expected to work...
+  gem 'font-awesome-rails', '~> 3.2.1.3'
+  # ... and one is for the admin area only, where web fonts
+  # may be blocked due to government security policy. For
+  # this area we use a restricted subset of Font Awesome 4.3.x
+  # icons compiled into SVG/CSS+PNG using Grunticon. See
+  # https://github.com/gsa/rails-font-awesome-grunticon
+  # for instructions on how to add more icons to this set
+  gem 'rails-font-awesome-grunticon', git: 'git://github.com/gsa/rails-font-awesome-grunticon', ref: '2f43ad9cee4e4004e9cae4c015622006a92c2f5a'
 end
 
 # Bundle gems for the local environment. Make sure to
