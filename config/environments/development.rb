@@ -29,11 +29,27 @@ UsasearchRails3::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Do not compress assets
-  config.assets.compress = false
+  # Switch for testing static assets in development
+  test_static_assets = false
 
-  # Expands the lines which load the assets
-  config.assets.debug = true
+  if test_static_assets
+    # Behave much like production (requiring assets to be
+    # precompiled), but using the Rails static asset server
+    # rather than an Apache/nginx reverse proxy.
+    config.serve_static_assets = true
+    config.assets.compress = true
+    config.assets.css_compressor = :yui
+    config.assets.js_compressor = :uglifier
+    config.assets.compile = false
+    config.assets.digest = true
+    config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application\.js).+\.js$/ }
+    config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application\.css).+\.css$/ }
+  else
+    # Do not compress assets
+    config.assets.compress = false
+    # Expands the lines which load the assets
+    config.assets.debug = true
+  end
 end
 
 # Sent in emails to users
