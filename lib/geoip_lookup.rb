@@ -5,6 +5,9 @@ module GeoipLookup
 
   def self.lookup(ip)
     @geoip_db.city(ip)
+  rescue SocketError => e
+    Rails.logger.warn("GeoipLookup failed lookup on #{ip}: #{e.message}")
+    nil
   end
 end
 
