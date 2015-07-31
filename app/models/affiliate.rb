@@ -40,6 +40,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :site_domains, :order => 'domain ASC'
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
+    assoc.has_one :alert
   end
 
   has_many :users, order: 'contact_name', through: :memberships

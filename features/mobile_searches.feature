@@ -655,3 +655,19 @@ Feature: Searches using mobile device
     Then I should see "USA.gov" within the SERP active navigation
     And I should see at least "10" web search results
     And I should see Powered by Bing logo
+
+  Scenario: Display an Alert on search page
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale | domains              |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |                      |
+    Given the following Alert exists:
+      | affiliate    | text                       | status   | title     |
+      | en.agency.gov| New alert for the test aff | Active |  Test Title |
+    When I am on en.agency.gov's search page
+    Then I should see "New alert for the test aff"
+    Given the following Alert exists:
+      | affiliate    | text                       | status   | title     |
+      | en.agency.gov| New alert for the test aff | Inactive | Test Title |
+    When I am on en.agency.gov's search page
+    Then I should not see "New alert for the test aff"
+

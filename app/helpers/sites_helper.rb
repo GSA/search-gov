@@ -117,7 +117,7 @@ module SitesHelper
   end
 
   def site_manage_display_controllers
-    %w(header_and_footers displays font_and_colors image_assets no_results_pages)
+    %w(header_and_footers displays font_and_colors image_assets no_results_pages alerts)
   end
 
   def list_item_with_link_to_current_help_page

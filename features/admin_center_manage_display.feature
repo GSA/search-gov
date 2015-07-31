@@ -657,3 +657,40 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
 
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
+
+  Scenario: Add/edit/remove search page alert
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Manage Display page
+    And I follow "Search Page Alert"
+    When I fill in the following:
+      | Text               | New text alert for the search page. |
+    And I select "Active" from "Status"
+    And I submit the form by pressing "Save"
+    Then I should see "Title can't be blank"
+    
+    When I fill in the following:
+      | Title               | Alert Title |
+    And I submit the form by pressing "Save"
+    And the "Title" field should contain "Alert Title"
+    Then the "Text" field should contain "New text alert for the search page."
+    And I should see "Active"
+    And I should see "The alert for this site has been updated."
+
+    When I fill in the following:
+      | Title               | New Alert Title |
+    And I fill in "Text" with ""
+    And I select "Inactive" from "Status"
+    And I submit the form by pressing "Save"
+    Then I should see "Text can't be blank"
+    When I fill in the following:
+      | Text              | Updated text for search page alert. |
+    And I submit the form by pressing "Save"
+    And the "Title" field should contain "New Alert Title"
+    Then the "Text" field should contain "Updated text for search page alert."
+    And I should see "Inactive"
+    And I should see "The alert for this site has been updated."
+
+    

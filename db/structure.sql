@@ -137,6 +137,18 @@ CREATE TABLE `agency_queries` (
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `alerts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `text` text COLLATE utf8_unicode_ci,
+  `title` text COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_alerts_on_affiliate_id` (`affiliate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `boosted_content_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `boosted_content_id` int(11) NOT NULL,
@@ -2157,6 +2169,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150717184324');
 INSERT INTO schema_migrations (version) VALUES ('20150720200541');
 
 INSERT INTO schema_migrations (version) VALUES ('20150723172220');
+
+INSERT INTO schema_migrations (version) VALUES ('20150730154029');
 
 INSERT INTO schema_migrations (version) VALUES ('20150731223735');
 

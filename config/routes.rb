@@ -39,6 +39,8 @@ UsasearchRails3::Application.routes.draw do
     resources :sites do
       member { put :pin }
 
+      resource :alert, only: [:edit, :create, :update]
+
       resource :api_access_key, only: [:show]
       resource :api_instructions, only: [:show] do
         collection do
