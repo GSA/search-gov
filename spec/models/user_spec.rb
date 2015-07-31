@@ -109,15 +109,20 @@ describe User do
   end
 
   describe "on create" do
+    before { adapter.stub(:push_user) }
+
     it "should assign approval status" do
-      adapter.should_receive(:push_user)
       user = User.create!(@valid_attributes)
       user.approval_status.should_not be_blank
     end
 
+    it 'downcases the email address' do
+      user = User.create!(@valid_attributes.merge(email: 'Aff@agency.GOV'))
+      user.email.should == 'aff@agency.gov'
+    end
+
     it "should set approval status to pending_email_verification" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(email: email))
         user.is_pending_email_verification?.should be_true
       end
@@ -125,7 +130,6 @@ describe User do
 
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
-        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         user.requires_manual_approval?.should be_false
       end
@@ -133,14 +137,12 @@ describe User do
 
     it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
       %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        adapter.should_receive(:push_user)
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         user.requires_manual_approval?.should be_true
       end
     end
 
     it "should set email_verification_token if the user is pending_email_verification" do
-      adapter.should_receive(:push_user)
       user = User.create!(@valid_affiliate_attributes)
       user.is_pending_email_verification?.should be_true
       user.email_verification_token.should_not be_blank

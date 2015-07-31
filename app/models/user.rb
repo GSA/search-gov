@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
   belongs_to :default_affiliate, class_name: 'Affiliate'
+  before_validation :downcase_email
   before_validation :set_initial_approval_status, :on => :create
   after_validation :set_default_flags, :on => :create
 
@@ -165,6 +166,10 @@ class User < ActiveRecord::Base
 
   def set_initial_approval_status
     set_approval_status_to_pending_email_verification if self.approval_status.blank? or invited
+  end
+
+  def downcase_email
+    self.email = self.email.downcase if self.email.present?
   end
 
   def set_default_flags
