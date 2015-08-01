@@ -62,7 +62,7 @@ describe WebSearch do
           with(hash_including(affiliate: @affiliate,
                               offset: 0,
                               per_page: 10,
-                              query: 'government'))
+                              query: 'government (site:gov OR site:mil)'))
 
         WebSearch.new @valid_options
       end
