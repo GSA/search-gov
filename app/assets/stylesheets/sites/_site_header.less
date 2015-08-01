@@ -36,17 +36,33 @@
 #envelope-snapshot-toggle, #pin-site {
   display: inline-block;
   .ie7-inline-block();
-  color: #ccc;
   margin: 0;
   padding: 0;
 
+  & path {
+    fill: #ccc;
+  }
+
   &:hover, &:focus {
-    color: #999;
+    & path {
+      fill: #999;
+    }
+  }
+
+  & .fa-stack-1x {
+    & path {
+      fill: #fff;
+    }
   }
 
   .disabled {
     color: #FF9232;
     .opacity(100);
+    & .fa-stack-2x {
+      & path {
+        fill: #FF9232;
+      }
+    }
   }
 
   .btn {
@@ -71,4 +87,3 @@
 #envelope-snapshot-toggle .btn.disabled {
   cursor: pointer;
 }
-

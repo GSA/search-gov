@@ -2,7 +2,7 @@ module BootstrapHelper
   FLASH_TYPE_WHITELIST = %w[success block notice info error danger]
 
   def stacked_pushpin
-    stacked_icon 'pushpin'
+    stacked_icon 'thumb-tack'
   end
 
   def stacked_envelope
@@ -10,9 +10,15 @@ module BootstrapHelper
   end
 
   def stacked_icon(icon_name)
-    content_tag :span, class: 'icon-stack' do
-      content = content_tag(:i, nil, class: 'icon icon-circle icon-stack-base')
-      content << content_tag(:i, nil, class: "icon icon-#{icon_name} icon-light")
+    content_tag :span, class: 'fa-stack' do
+      content = content_tag(:i, nil, {
+        'class' => 'fa fa-circle fa-stack-2x',
+        'data-grunticon-embed' => 'toggle_me'
+      })
+      content << content_tag(:i, nil, {
+        'class' => "fa fa-#{icon_name} fa-stack-1x",
+        'data-grunticon-embed' => 'toggle_me'
+      })
     end
   end
 
