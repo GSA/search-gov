@@ -14,12 +14,14 @@ describe "Report generation rake tasks" do
 
     describe 'usasearch:reports:daily_snapshot' do
       let(:task_name) { 'usasearch:reports:daily_snapshot' }
+      let(:membership1) { mock_model(Membership, user_id: 42) }
+      let(:membership2) { mock_model(Membership, user_id: 43) }
 
       before do
         @rake[task_name].reenable
         @emailer = mock(Emailer)
         @emailer.stub!(:deliver).and_return true
-        Membership.stub(:daily_snapshot_receivers).and_return %w(foo bar)
+        Membership.stub(:daily_snapshot_receivers).and_return [membership1, membership2]
       end
 
       it "should have 'environment' as a prereq" do
@@ -27,11 +29,18 @@ describe "Report generation rake tasks" do
       end
 
       it "should deliver an email to each daily_snapshot_receiver" do
-        Emailer.should_receive(:daily_snapshot).with('foo').and_return @emailer
-        Emailer.should_receive(:daily_snapshot).with('bar').and_return @emailer
+        Emailer.should_receive(:daily_snapshot).with(membership1).and_return @emailer
+        Emailer.should_receive(:daily_snapshot).with(membership2).and_return @emailer
         @rake[task_name].invoke
       end
 
+      context "when Emailer raises an exception" do
+        it "should log it and proceed to the next user" do
+          Emailer.should_receive(:daily_snapshot).with(anything()).exactly(2).times.and_raise Net::SMTPFatalError
+          Rails.logger.should_receive(:warn).exactly(2).times
+          @rake[task_name].invoke
+        end
+      end
     end
 
     describe "usasearch:reports:email_monthly_reports" do
@@ -55,6 +64,14 @@ describe "Report generation rake tasks" do
       context "when a year/month is passed as a parameter" do
         it "should deliver the affiliate monthly report to each user with the specified date" do
           Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_return @emailer
+          @rake[task_name].invoke("2012-04")
+        end
+      end
+
+      context "when Emailer raises an exception" do
+        it "should log it and proceed to the next user" do
+          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_raise Net::SMTPFatalError
+          Rails.logger.should_receive(:warn).exactly(3).times
           @rake[task_name].invoke("2012-04")
         end
       end

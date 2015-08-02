@@ -5,7 +5,11 @@ namespace :usasearch do
     task :email_monthly_reports, [:report_year_month] => [:environment] do |t, args|
       report_date = args.report_year_month.blank? ? Date.yesterday : Date.parse(args.report_year_month + "-01")
       User.approved_affiliate.each do |user|
-        Emailer.affiliate_monthly_report(user, report_date).deliver if user.affiliates.present?
+        begin
+          Emailer.affiliate_monthly_report(user, report_date).deliver if user.affiliates.present?
+        rescue Exception => e
+          Rails.logger.warn "Trouble emailing monthly report to user #{user.id}: #{e}"
+        end
       end
     end
 
@@ -24,7 +28,11 @@ namespace :usasearch do
     desc "Email opted-in site users with site snapshot"
     task :daily_snapshot => :environment do
       Membership.daily_snapshot_receivers.each do |membership|
-        Emailer.daily_snapshot(membership).deliver
+        begin
+          Emailer.daily_snapshot(membership).deliver
+        rescue Exception => e
+          Rails.logger.warn "Trouble emailing daily snapshot report to user #{membership.user_id}: #{e}"
+        end
       end
     end
   end
