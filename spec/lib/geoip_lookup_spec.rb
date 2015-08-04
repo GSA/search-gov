@@ -14,7 +14,7 @@ describe GeoipLookup do
       end
 
       it "returns nil" do
-        GeoipLookup.lookup('198.105.254.104').should be_nil
+        GeoipLookup.lookup('localhost').should be_nil
       end
     end
   end
