@@ -9,8 +9,12 @@ describe GeoipLookup do
     end
 
     context 'failure' do
+      before do
+        IPSocket.stub(:getaddress).and_raise(SocketError)
+      end
+
       it "returns nil" do
-        GeoipLookup.lookup('garbage').should be_nil
+        GeoipLookup.lookup('198.105.254.104').should be_nil
       end
     end
   end
