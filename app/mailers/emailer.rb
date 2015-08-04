@@ -106,16 +106,6 @@ class Emailer < ActionMailer::Base
     send_mail(:html)
   end
 
-  def public_key_upload_notification(public_key_txt, current_user, affiliate)
-    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-                  to: ['sysadmin@mail.usasearch.howto.gov', SUPPORT_EMAIL_ADDRESS] },
-                __method__)
-    @affiliate = affiliate
-    @current_user = current_user
-    @public_key_txt = public_key_txt
-    send_mail(:text)
-  end
-
   def deep_collection_notification(current_user, document_collection)
     setup_email('usagov@mail.usasearch.howto.gov', __method__)
     @document_collection = document_collection

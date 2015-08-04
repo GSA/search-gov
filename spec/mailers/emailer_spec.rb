@@ -321,19 +321,6 @@ describe Emailer do
     it { should have_body_text sites.first.display_name }
   end
 
-  describe '#public_key_upload_notification' do
-    let(:affiliate) { mock_model(Affiliate, display_name: 'DigitalGov Search') }
-    let(:current_user) { mock_model(User, email: 'admin@agency.gov') }
-    let(:public_key_text) { 'my_key'.freeze }
-
-    subject(:email) { Emailer.public_key_upload_notification(public_key_text, current_user, affiliate) }
-
-    it { should deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { should deliver_to('sysadmin@mail.usasearch.howto.gov', SUPPORT_EMAIL_ADDRESS) }
-    it { should_not reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
-    it { should have_body_text public_key_text }
-  end
-
   context "when a template is missing" do
     let(:user) { mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token') }
     let(:current_user) { mock(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }

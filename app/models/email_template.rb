@@ -15,7 +15,6 @@ class EmailTemplate < ActiveRecord::Base
       new_user_email_verification: "[USASearch] Verify your email",
       new_user_to_admin: "[USASearch] New user sign up",
       password_reset_instructions: "[USASearch] Reset your password",
-      public_key_upload_notification: "[USASearch] Request for log file access",
       update_external_tracking_code: "[USASearch] 3rd Party Tracking",
       user_sites: '[DigitalGov Search] Searchers now see your Federal Register notices and rules',
       welcome_to_new_user: "[USASearch] Welcome to USASearch",
