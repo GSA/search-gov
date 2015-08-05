@@ -13,7 +13,7 @@ describe Sites::BestBetsDrillDownsController do
       let(:best_bets_drill_down) { mock('boosted contents') }
 
       before do
-        BestBetsDrillDown.stub(:new).with(site, 'BOOS').and_return best_bets_drill_down
+        SearchModuleDrillDown.stub(:new).with(site, 'BOOS').and_return best_bets_drill_down
         get :show, id: site.id, module_tag: 'BOOS'
       end
 

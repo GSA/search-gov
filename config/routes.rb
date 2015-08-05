@@ -78,6 +78,8 @@ UsasearchRails3::Application.routes.draw do
       resource :monthly_reports, only: [:show]
       resource :best_bets_drill_down, only: [:show]
       resource :best_bet_queries, only: [:show]
+      resource :routed_queries_drill_down, only: [:show]
+      resource :routed_query_queries, only: [:show]
       resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]
       resource :clone, only: [:new, :create]

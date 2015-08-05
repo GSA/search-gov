@@ -10,4 +10,4 @@
     = "Title: #{@best_bet.title}"
     = best_bet_edit_link(@site, @best_bet)
 
-  #keen-best-bets-queries{ data: { module: params[:module_tag], key: @site.keen_scoped_key, model_id: @best_bet.id }}
+  #keen-queries-pie{ data: { module: params[:module_tag], key: @site.keen_scoped_key, model_id: @best_bet.id }}

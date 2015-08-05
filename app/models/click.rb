@@ -21,7 +21,7 @@ class Click
     id = Affiliate.where(name: affiliate_name).pluck(:id).first
     if id.present?
       keen_hash = { :affiliate_id => id, :module => results_source, :url => url, :query => query, :model_id => model_id }
-      KeenBestBetLogger.log(:clicks, keen_hash)
+      KeenLogger.log(:clicks, keen_hash)
     end
   end
 end

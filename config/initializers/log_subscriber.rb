@@ -8,12 +8,12 @@ module Instrumentation
       generic_logging('Azure Query', event, BLUE)
     end
 
-    def best_bets_drill_down(event)
-      generic_logging("Keen Best Bets Query", event, CYAN)
+    def keen_drill_down(event)
+      generic_logging("Keen Query", event, CYAN)
     end
 
-    def best_bets_publish(event)
-      generic_logging("Keen Best Bets Publish", event, CYAN)
+    def keen_publish(event)
+      generic_logging("Keen Publish", event, CYAN)
     end
 
     def bing_image_search(event)

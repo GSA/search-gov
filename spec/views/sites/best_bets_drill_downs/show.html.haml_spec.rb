@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "sites/best_bets_drill_downs/show.html.haml" do
   fixtures :affiliates, :users, :search_modules, :boosted_contents
   let(:site) { affiliates(:basic_affiliate) }
-  let(:bbdd) { BestBetsDrillDown.new(site, 'BOOS') }
+  let(:bbdd) { SearchModuleDrillDown.new(site, 'BOOS') }
 
   before do
     activate_authlogic

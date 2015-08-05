@@ -10,9 +10,9 @@ describe BestBetImpressionsLogger do
 
     it 'should log to Keen' do
       query_hash1 = { :affiliate_id => affiliate.id, :module => 'BBG', :query => 'foo', :model_id => featured_collections(:basic).id }
-      KeenBestBetLogger.should_receive(:log).with(:impressions, query_hash1)
+      KeenLogger.should_receive(:log).with(:impressions, query_hash1)
       query_hash2 = { :affiliate_id => affiliate.id, :module => 'BBG', :query => 'foo', :model_id => featured_collections(:another).id }
-      KeenBestBetLogger.should_receive(:log).with(:impressions, query_hash2)
+      KeenLogger.should_receive(:log).with(:impressions, query_hash2)
       BestBetImpressionsLogger.log(affiliate.id, 'Foo', bbgs, nil)
     end
   end

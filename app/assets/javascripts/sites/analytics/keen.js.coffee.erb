@@ -10,12 +10,12 @@ configureKeen = (canvas) ->
     projectId: "<%= Keen.project_id %>",
     readKey: key
 
-bestBetsQueriesReady = (canvas) ->
+queriesPieReady = (canvas) ->
   $canvas = $(canvas)
   module = $canvas.data 'module'
   modelId = $canvas.data 'modelId'
 
-  bbQueriesMetric = new Keen.Metric "impressions",
+  queriesMetric = new Keen.Metric "impressions",
     analysisType: "count",
     groupBy: "query",
     timeframe: "this_month",
@@ -23,17 +23,17 @@ bestBetsQueriesReady = (canvas) ->
       {"property_name":"module","operator":"eq","property_value":module},
       {"property_name":"model_id","operator":"eq","property_value":modelId}
     ]
-  bbQueriesPie = new Keen.PieChart bbQueriesMetric,
-    title: "Queries leading to this best bet"
-  bbQueriesPie.draw canvas
+  queriesPie = new Keen.PieChart queriesMetric,
+    title: "Top queries leading here"
+  queriesPie.draw canvas
 
 ready = () ->
-  $('#keen-best-bets-queries').each () ->
+  $('#keen-queries-pie').each () ->
     initializeKeen() if !window.Keen?
     configureKeen @
 
     canvas = @
-    Keen.onChartsReady (obj) -> bestBetsQueriesReady canvas
+    Keen.onChartsReady (obj) -> queriesPieReady canvas
 
 $(document).ready ready
 $(document).on 'page:load', ready

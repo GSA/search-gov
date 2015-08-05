@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe KeenBestBetLogger do
+describe KeenLogger do
   describe '#log(collection, keen_hash)' do
     it 'should log to Keen' do
       Keen.should_receive(:publish_async).with(:impressions, { :some => 'hash' })
-      KeenBestBetLogger.log(:impressions, { :some => 'hash' })
+      KeenLogger.log(:impressions, { :some => 'hash' })
     end
 
     context 'when there is a problem with EventMachine that raises a Keen::Error' do
@@ -14,7 +14,7 @@ describe KeenBestBetLogger do
 
       it 'should catch the exception and log the error' do
         Rails.logger.should_receive(:error)
-        KeenBestBetLogger.log(:clicks, { :some => 'hash' })
+        KeenLogger.log(:clicks, { :some => 'hash' })
       end
     end
 
@@ -26,7 +26,7 @@ describe KeenBestBetLogger do
 
       it 'should catch the exception and log the error' do
         Rails.logger.should_receive(:error)
-        KeenBestBetLogger.log(:clicks, { :some => 'hash' })
+        KeenLogger.log(:clicks, { :some => 'hash' })
       end
     end
   end

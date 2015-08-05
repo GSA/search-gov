@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe BestBetsDrillDown do
+describe SearchModuleDrillDown do
   fixtures :affiliates, :search_modules
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   describe '#module_name' do
-    let(:best_bets_drill_down) { BestBetsDrillDown.new(affiliate, 'BOOS') }
+    let(:best_bets_drill_down) { SearchModuleDrillDown.new(affiliate, 'BOOS') }
 
     it 'should return the search module name' do
       best_bets_drill_down.module_name.should == 'Best Bets Text'
@@ -27,7 +27,7 @@ describe BestBetsDrillDown do
                                                             status: 'active',
                                                             publish_start_on: Date.yesterday) }
       context 'when there are impressions and clicks' do
-        let(:best_bets_drill_down) { BestBetsDrillDown.new(affiliate, 'BOOS') }
+        let(:best_bets_drill_down) { SearchModuleDrillDown.new(affiliate, 'BOOS') }
         before do
           filters = [{ :property_name => 'affiliate_id', :operator => 'eq', :property_value => affiliate.id },
                      { :property_name => 'module', :operator => 'eq', :property_value => 'BOOS' }]
@@ -59,7 +59,7 @@ describe BestBetsDrillDown do
                                                                    :affiliate => affiliate) }
 
       context 'when there are impressions and clicks' do
-        let(:best_bets_drill_down) { BestBetsDrillDown.new(affiliate, 'BBG') }
+        let(:best_bets_drill_down) { SearchModuleDrillDown.new(affiliate, 'BBG') }
         before do
           filters = [{ :property_name => 'affiliate_id', :operator => 'eq', :property_value => affiliate.id },
                      { :property_name => 'module', :operator => 'eq', :property_value => 'BBG' }]
