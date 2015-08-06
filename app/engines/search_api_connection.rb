@@ -13,8 +13,7 @@ class SearchApiConnection
       end unless cache_duration.zero?
       conn.headers[:user_agent] = 'USASearch'
       #conn.use :instrumentation
-      conn.adapter :net_http_persistent
-      ExternalFaraday.set_connection_options conn
+      ExternalFaraday.configure_connection name, conn
     end
   end
 end

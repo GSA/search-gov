@@ -7,8 +7,7 @@ class CachedSearchApiConnection
       conn.response :rashify
       conn.response :json
       conn.headers[:user_agent] = 'USASearch'
-      conn.adapter :net_http_persistent
-      ExternalFaraday.set_connection_options conn
+      ExternalFaraday.configure_connection namespace, conn
     end
     @cache = ApiCache.new namespace, cache_duration
   end

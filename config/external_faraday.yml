@@ -1,13 +1,28 @@
 default: &DEFAULT
-  open_timeout: 1
-  timeout: 3
+  options:
+    open_timeout: 1
+    timeout: 3
 
-development:
+development: &DEVELOPMENT
   <<: *DEFAULT
+  adapter: :net_http_persistent
+
+  azure_api:
+    <<: *DEFAULT
+    adapter: :typhoeus
 
 test:
-  <<: *DEFAULT
+  <<: *DEVELOPMENT
 
-production:
-  open_timeout: 0.1
-  timeout: 1.9
+production_default: &PRODUCTION_DEFAULT
+  options:
+    open_timeout: 0.1
+    timeout: 1.9
+
+production: &PRODUCTION
+  <<: *PRODUCTION_DEFAULT
+  adapter: :net_http_persistent
+
+  azure_api:
+    <<: *PRODUCTION_DEFAULT
+    adapter: :typhoeus
