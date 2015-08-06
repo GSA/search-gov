@@ -35,6 +35,10 @@ class ApiRateLimiter
     outbound_limit ? outbound_limit.limit : DEFAULT_LIMIT
   end
 
+  def current_used_count_key
+    "#{@namespace}:#{Date.current.to_s(:db)}:used_count"
+  end
+
   private
 
   def initialize_used_count(key)
@@ -43,9 +47,6 @@ class ApiRateLimiter
     @@redis.get(key).to_i
   end
 
-  def current_used_count_key
-    "#{@namespace}:#{Date.current.to_s(:db)}:used_count"
-  end
 
   def increment(key)
     @@redis.incr key
