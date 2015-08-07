@@ -14,7 +14,7 @@ describe "image_searches/index.mobile.haml" do
                          thumbnail: { url: "http://flickr/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
-      @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
+      @search = double(ImageSearch, commercial_results?: false, query: "test", affiliate: affiliate, module_tag: 'OASIS',
                        queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 5, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       assign(:search, @search)
@@ -42,7 +42,7 @@ describe "image_searches/index.mobile.haml" do
                          thumbnail: { url: "http://flickr/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
-      @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
+      @search = double(ImageSearch, commercial_results?: false, query: "test", affiliate: affiliate, module_tag: 'OASIS',
                        queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       ImageSearch.stub(:===).and_return true
@@ -94,7 +94,7 @@ describe "image_searches/index.mobile.haml" do
                          thumbnail: { url: "http://bing/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
-      @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
+      @search = double(ImageSearch, commercial_results?: true, query: "test", affiliate: affiliate, module_tag: 'IMAG',
                        queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       ImageSearch.stub(:===).and_return true
@@ -125,7 +125,7 @@ describe "image_searches/index.mobile.haml" do
                            thumbnail: { url: "http://flickr/thumbnail/#{i}" })
         end
         results.stub(:total_pages).and_return(1)
-        @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'OASIS',
+        @search = double(ImageSearch, commercial_results?: false, query: "test", affiliate: affiliate, module_tag: 'OASIS',
                          queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
                          page: 1, spelling_suggestion: "tsetse")
         assign(:search, @search)
@@ -148,12 +148,13 @@ describe "image_searches/index.mobile.haml" do
                            thumbnail: { url: "http://bing/thumbnail/#{i}" })
         end
         results.stub(:total_pages).and_return(1)
-        @search = double(ImageSearch, query: "test", affiliate: affiliate, module_tag: 'IMAG',
+        @search = double(ImageSearch, commercial_results?: true, query: "test", affiliate: affiliate, module_tag: 'IMAG',
                          queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
                          page: 1, spelling_suggestion: "\uE000tsetse\uE001")
         ImageSearch.stub(:===).and_return true
         assign(:search, @search)
         assign(:search_params, { affiliate: affiliate.name, query: 'test' })
+        assign(:search_options, {})
         controller.stub(:controller_name).and_return('image_searches')
       end
 

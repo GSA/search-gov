@@ -11,5 +11,5 @@ namespace :usasearch do
 end
 
 Rake::Task['db:structure:dump'].enhance do
-  Rake::Task['usasearch:db:structure:strip_auto_increment'].invoke
+  Rake::Task['usasearch:db:structure:strip_auto_increment'].execute
 end

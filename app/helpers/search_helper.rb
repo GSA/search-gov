@@ -147,8 +147,9 @@ module SearchHelper
   end
 
   def results_summary(search)
+    return if search.fake_total?
     p_sum = make_summary_p(search)
-    content_tag(:div, raw(p_sum), :id => "summary")
+    content_tag(:div, raw(p_sum), :id => "summary") << raw('&nbsp;&nbsp;&bull;&nbsp;&nbsp;')
   end
 
   def make_summary_p(search)
@@ -218,7 +219,7 @@ module SearchHelper
   end
 
   def search_results_by_logo(module_tag)
-    if %w(BWEB IMAG).include? module_tag
+    if %w(AWEB AIMAG BWEB IMAG).include? module_tag
       alt = I18n.t(:results_by_bing)
       image_source = "searches/binglogo_#{I18n.locale.to_s}.gif"
       image_tag(image_source, :alt => alt, :class => 'results-by-logo bing')

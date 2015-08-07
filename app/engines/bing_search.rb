@@ -6,10 +6,11 @@ class BingSearch < SearchEngine
 
   attr_reader :sources
 
+  self.api_endpoint = API_ENDPOINT
+
   def initialize(options = {})
     super(options) do |search_engine|
       search_engine.api_connection= connection_instance
-      search_engine.api_endpoint= API_ENDPOINT
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end

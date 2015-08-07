@@ -276,8 +276,8 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       before(:all) { I18n.locale = :en }
       after(:all) { I18n.locale = I18n.default_locale }
 
-      context 'when results by Bing' do
-        %w(BWEB IMAG).each do |module_tag|
+      context 'when results by Azure/Bing' do
+        %w(AWEB AIMAG BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
             html.should have_selector("img[alt='Results by Bing'][src^='/assets/searches/binglogo_en.gif']")

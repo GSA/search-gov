@@ -259,7 +259,6 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(q: 'customcx', cx: '1234567890.abc', key: 'some_key')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_customcx] }
 
-    azure_web_path = '/Bing/SearchWeb/v1/Web'
     common_azure_params = {
       :'$format' => 'JSON',
       :'$skip' => 0,
@@ -268,30 +267,50 @@ RSpec.configure do |config|
       Query: "'healthy snack (site:usa.gov)'",
       Options: "'EnableHighlighting'"
     }
-    azure_highlighting = Rails.root.join('spec/fixtures/json/azure/web_only/highlighting.json').read
-    stubs.get("#{azure_web_path}?#{common_azure_params.to_param}") { [200, {}, azure_highlighting] }
+
+    azure_web_url = "#{AzureWebEngine::API_HOST}#{AzureWebEngine::API_ENDPOINT}"
+    azure_web = RequestStub.new(azure_web_url, 'spec/fixtures/json/azure/web_only/', stubs)
+
+    azure_web.stub_get_request(common_azure_params) { [200, {}, azure_web.raw_response('highlighting.json')] }
 
     azure_params = common_azure_params.except(:Options)
-    azure_no_highlighting = Rails.root.join('spec/fixtures/json/azure/web_only/no_highlighting.json').read
-    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_highlighting] }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_highlighting.json')] }
 
     azure_params = common_azure_params.
       merge(Query: "'healthy snack (site:usa.gov) (-site:www.usa.gov AND -site:kids.usa.gov)'")
-    azure_no_next = Rails.root.join('spec/fixtures/json/azure/web_only/no_next.json').read
-    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_next] }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_next.json')] }
 
     azure_params = common_azure_params.
       merge(Market: "'es-US'",
             Query: "'educación (site:usa.gov)'")
-    azure_es_results = Rails.root.join('spec/fixtures/json/azure/web_only/es_results.json').read
-    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_es_results] }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('es_results.json')] }
 
     azure_params = common_azure_params.merge(Query: "'mango smoothie (site:usa.gov)'")
-    azure_no_results = Rails.root.join('spec/fixtures/json/azure/web_only/no_results.json').read
-    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_results] }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_results.json')] }
 
     azure_params = common_azure_params.merge(:'$skip' => 888)
-    stubs.get("#{azure_web_path}?#{azure_params.to_param}") { [200, {}, azure_no_results] }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_results.json')] }
+
+    azure_image_url = "#{HostedAzureImageEngine::API_HOST}#{HostedAzureImageEngine::API_ENDPOINT}"
+    azure_image = RequestStub.new(azure_image_url, 'spec/fixtures/json/azure/image_spell/', stubs)
+
+    common_azure_image_params = {
+      :'$format' => 'JSON',
+      :'$skip' => 0,
+      :'$top' => 5,
+      ImageFilters: "'Aspect:Square'",
+      Market: "'en-US'",
+      Query: "'agncy (site:nasa.gov)'",
+      Sources: "'image+spell'"
+    }
+
+    azure_image.stub_get_request(common_azure_image_params) { [200, {}, azure_image.raw_response('results.json')] }
+
+    azure_image_params = common_azure_image_params.merge(:'$skip' => 998, Query: "'agncy (site:nasa.gov)'")
+    azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('no_next.json')] }
+
+    azure_image_params = common_azure_image_params.merge(Query: "'agency (site:noresults.nasa.gov)'")
+    azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('no_results.json')] }
 
     nutshell_success_params = {
       id: 'f6f91f185',

@@ -11,7 +11,10 @@ class WebSearch < Search
     formatted_query_instance = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
     @matching_site_limits = formatted_query_instance.matching_site_limits
     @formatted_query = formatted_query_instance.query
-    search_engine_parameters = options.merge(query: @formatted_query, offset: offset, per_page: @per_page).merge(google_credentials_override)
+    search_engine_parameters = options.merge(language: @affiliate.locale,
+                                             offset: offset,
+                                             per_page: @per_page,
+                                             query: @formatted_query).merge(google_credentials_override)
     @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)
   end
 
@@ -29,11 +32,15 @@ class WebSearch < Search
     hash
   end
 
+  def fake_total?
+    'AWEB' == module_tag
+  end
+
   protected
   def search_engine_klass(search_engine_option)
     case search_engine_option
-    when /\Aazure\Z/i
-      HostedAzureWebEngine
+    when 'Azure'
+      "HostedAzure#{get_vertical.to_s.classify}Engine".constantize
     else
       "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
     end

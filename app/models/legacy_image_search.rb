@@ -23,7 +23,7 @@ class LegacyImageSearch < WebSearch
   end
 
   def module_tag_for_search_engine(search_engine)
-    search_engine == 'Bing' ? 'IMAG' : 'GIMAG'
+    search_engine == 'Bing' ? 'IMAG' : 'AIMAG'
   end
 
   def social_image_feeds_checked?

@@ -17,12 +17,13 @@ class GoogleSearch < SearchEngine
   attr_reader :start
 
   class_attribute :search_engine_response_class, instance_writer: false
+
+  self.api_endpoint = API_ENDPOINT
   self.search_engine_response_class = SearchEngineResponse
 
   def initialize(options = {})
     super(options) do |search_engine|
       search_engine.api_connection = connection_instance(options[:google_key], options[:google_cx])
-      search_engine.api_endpoint= API_ENDPOINT
       filter_index = get_filter_index(options[:filter])
       search_engine.filter_level= VALID_ADULT_FILTERS[filter_index]
     end

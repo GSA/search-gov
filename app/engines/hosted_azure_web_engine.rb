@@ -2,19 +2,15 @@ class HostedAzureWebEngine < AzureWebEngine
   AZURE_HOSTED_PASSWORD = YAML.load_file("#{Rails.root}/config/hosted_azure.yml")[Rails.env]['account_key'].freeze
 
   def initialize(options)
-    super options.merge(enable_highlighting: true,
-                        language: options[:affiliate].locale,
-                        limit: options[:per_page],
-                        next_offset_within_limit: true,
-                        password: AZURE_HOSTED_PASSWORD)
+    super options.merge! limit: options[:per_page],
+                         next_offset_within_limit: true,
+                         password: AZURE_HOSTED_PASSWORD
   end
 
   def parse_search_engine_response(response)
-    super do |search_response|
-      search_response.start_record = offset + 1
-      search_response.end_record = search_response.start_record + search_response.results.size - 1
-      assign_fake_total search_response
-    end
+    search_response = super
+    assign_fake_total search_response
+    search_response
   end
 
   protected
@@ -25,13 +21,11 @@ class HostedAzureWebEngine < AzureWebEngine
                      unescaped_url: result.url)
   end
 
-  def assign_fake_total(response)
-    return unless response && response.results
-
-    if response.next_offset
-      response.total = response.next_offset + 1
+  def assign_fake_total(search_response)
+    if search_response.next_offset
+      search_response.total = search_response.next_offset + 1
     else
-      response.total = @params.offset + response.results.count
+      search_response.total = @azure_params.offset + search_response.results.count
     end
   end
 end

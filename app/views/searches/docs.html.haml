@@ -5,7 +5,6 @@
     - if @search.results.present?
       = results_summary(@search)
       .advancedsearch
-        &nbsp;&nbsp;&bull;&nbsp;&nbsp;
         = advanced_search_link(@search_options, @affiliate)
     - else
       = render 'shared/blank_search_results', :search => @search

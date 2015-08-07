@@ -2,10 +2,11 @@ class OasisSearch < SearchEngine
   API_ENDPOINT = '/api/v1/image.json'
   CACHE_DURATION_IN_SECONDS = 0
 
+  self.api_endpoint = API_ENDPOINT
+
   def initialize(options = {})
     super(options) do |search_engine|
       search_engine.api_connection = connection_instance
-      search_engine.api_endpoint = API_ENDPOINT
     end
     @options = options
   end

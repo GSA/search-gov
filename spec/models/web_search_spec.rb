@@ -59,7 +59,7 @@ describe WebSearch do
 
       it 'searches using Azure web engine' do
         HostedAzureWebEngine.should_receive(:new).
-          with(hash_including(affiliate: @affiliate,
+          with(hash_including(language: 'en',
                               offset: 0,
                               per_page: 10,
                               query: 'government (site:gov OR site:mil)'))

@@ -2,15 +2,16 @@ class SearchEngine
   class SearchError < RuntimeError;
   end
 
-  DEFAULT_OFFSET = 0.freeze
-  DEFAULT_PER_PAGE = 10.freeze
+  DEFAULT_OFFSET = 0
+  DEFAULT_PER_PAGE = 10
+
+  class_attribute :api_endpoint, instance_writer: false
 
   attr_accessor :query,
                 :offset,
                 :per_page,
                 :filter_level,
                 :api_connection,
-                :api_endpoint,
                 :enable_highlighting
 
   def initialize(options = {})

@@ -65,11 +65,15 @@ class ImageSearch
     @search_instance.spelling_suggestion if @spelling_suggestion_eligible
   end
 
+  def commercial_results?
+    %W(AIMAG IMAG).include? module_tag
+  end
+
   protected
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
-    uses_cr ? SearchEngineAdapter.new(BingImageSearch, params) : OdieImageSearch.new(params)
+    uses_cr ? search_engine_adapter(params) : OdieImageSearch.new(params)
   end
 
   def search_params(uses_cr)
@@ -77,6 +81,11 @@ class ImageSearch
                                                       per_page: @per_page)
     params[:skip_log_serp_impressions] = true unless uses_cr
     params
+  end
+
+  def search_engine_adapter(options)
+    engine_klass = 'Bing' == @affiliate.search_engine ? BingImageSearch : HostedAzureImageEngine
+    SearchEngineAdapter.new engine_klass, options
   end
 
   def assign_module_tag

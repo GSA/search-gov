@@ -51,17 +51,18 @@ class SearchEngineAdapter
   end
 
   def default_module_tag
-    'IMAG' if @search_engine.instance_of?(BingImageSearch)
+    @search_engine.instance_of?(BingImageSearch) ? 'IMAG' : 'AIMAG'
   end
 
   def default_spelling_module_tag
-    'BSPEL' if @search_engine.instance_of?(BingImageSearch)
+    'BSPEL'
   end
 
   protected
 
   def search_params
-    { offset: @offset,
+    { language: @affiliate.locale,
+      offset: @offset,
       per_page: @per_page,
       query: build_formatted_query }
   end

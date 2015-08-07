@@ -1,16 +1,11 @@
 require 'spec_helper'
 
 describe HostedAzureWebEngine do
-  fixtures :affiliates, :languages
-
-  let(:affiliate) { affiliates(:usagov_affiliate) }
-
-  before { affiliate.site_domains.create!(domain: 'usa.gov') }
-
   describe '#execute_query' do
     context 'when response _next is present' do
       let(:engine) do
-        HostedAzureWebEngine.new affiliate: affiliate,
+        HostedAzureWebEngine.new enable_highlighting: true,
+                                 language: 'en',
                                  offset: 0,
                                  per_page: 20,
                                  query: 'healthy snack (site:usa.gov)'
@@ -18,11 +13,11 @@ describe HostedAzureWebEngine do
 
       subject(:response) { engine.execute_query }
 
-      it 'returns limited results' do
+      it 'sets results' do
         expect(response.results.count).to eq(20)
       end
 
-      it 'returns fake total' do
+      it 'sets fake total' do
         expect(response.total).to eq(21)
       end
 
@@ -36,21 +31,33 @@ describe HostedAzureWebEngine do
 
     context 'when response _next is not present' do
       let(:engine) do
-        HostedAzureWebEngine.new affiliate: affiliate,
+        HostedAzureWebEngine.new enable_highlighting: true,
+                                 language: 'en',
                                  offset: 0,
                                  per_page: 20,
                                  query: 'healthy snack (site:usa.gov) (-site:www.usa.gov AND -site:kids.usa.gov)'
       end
 
-      before do
-        affiliate.excluded_domains.create!(domain: 'www.usa.gov')
-        affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
+      subject(:response) { engine.execute_query }
+
+      it 'sets total' do
+        expect(response.total).to eq(12)
+      end
+    end
+
+    context 'when there are no results' do
+      let(:engine) do
+        HostedAzureWebEngine.new enable_highlighting: true,
+                                 language: 'en',
+                                 offset: 0,
+                                 per_page: 20,
+                                 query: 'mango smoothie (site:usa.gov)'
       end
 
       subject(:response) { engine.execute_query }
 
-      it 'returns total' do
-        expect(response.total).to eq(12)
+      it 'sets total' do
+        expect(response.total).to eq(0)
       end
     end
   end

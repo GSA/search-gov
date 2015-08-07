@@ -43,9 +43,11 @@ describe MobileHelper do
   end
 
   describe '#search_results_by_text' do
-    context 'when module_tag is AWEB' do
-      it 'returns Powered by Bing' do
-        helper.search_results_by_text('AWEB').should have_content('Powered by Bing')
+    context 'when module_tag is AWEB or AIMAG' do
+      %w(AWEB AIMAG).each do |module_tag|
+        it 'returns Powered by Bing' do
+          expect(helper.search_results_by_text(module_tag)).to have_content('Powered by Bing')
+        end
       end
     end
 
