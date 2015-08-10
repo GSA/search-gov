@@ -12,17 +12,19 @@ describe Sites::AutodiscoveriesController do
       include_context 'approved user logged in to a site'
 
       context "when a valid autodiscovery_url is provided" do
+        render_views
         let(:autodiscovery_url) { "http://usa.gov" }
 
         before do
           SiteAutodiscoverer.should_receive(:new).with(site, autodiscovery_url).and_return site_autodiscoverer
           site_autodiscoverer.should_receive(:run)
+          site_autodiscoverer.stub(:discovered_resources).and_return {}
           post :create, id: site.id, autodiscovery_url: autodiscovery_url
         end
 
         it { should redirect_to(site_content_path(site)) }
         it "should set the flash to reflect success and preserve the autodiscovery_url" do
-          expect(flash[:success]).to eq("Discovery complete for #{autodiscovery_url}")
+          expect(flash[:success]).to match("Discovery complete for #{autodiscovery_url}")
           expect(flash[:autodiscovery_url]).to eq(autodiscovery_url)
         end
       end

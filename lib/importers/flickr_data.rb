@@ -1,26 +1,24 @@
-module FlickrData
-  def self.import_profile(site, url)
-    profile_type = detect_profile_type url
+class FlickrData
+  include FlickrDsl
+  attr_reader :new_profile_created
+  alias_method :new_profile_created?, :new_profile_created
 
-    profile_id = lookup_profile_id(profile_type, url) if profile_type
+  def initialize(site, url)
+    @site, @url = site, url
+    @new_profile_created = false
+  end
+
+  def import_profile
+    profile_type = detect_flickr_profile_type @url
+
+    profile_id = lookup_flickr_profile_id(profile_type, @url) if profile_type
     return unless profile_id
 
-    site.flickr_profiles.
+    @site.flickr_profiles.
       where(profile_id: profile_id, profile_type: profile_type).
-      first_or_create!(url: url)
-  end
-
-  def self.lookup_profile_id(profile_type, url)
-    lookup_method = "lookup#{profile_type.capitalize}"
-    flickr.urls.send(lookup_method, url: url)['id'] rescue nil
-  end
-
-  def self.detect_profile_type(url)
-    case url
-    when %r[/photos/] then
-      'user'
-    when %r[/groups/] then
-      'group'
+      first_or_create!(url: @url) do |new_flickr_profile|
+      @new_profile_created = true
     end
   end
+
 end

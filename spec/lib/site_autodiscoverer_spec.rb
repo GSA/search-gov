@@ -278,12 +278,14 @@ describe SiteAutodiscoverer do
     let(:domain) { 'usa.gov' }
     let(:url) { "http://#{domain}" }
     let(:autodiscovery_url) { url }
+    let(:flickr_data) { mock(FlickrData, import_profile: nil, new_profile_created?: true) }
 
     context 'when the page has social media links' do
       before do
         page_with_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_social_media_urls.html').read
         DocumentFetcher.should_receive(:fetch).with(url).and_return(body: page_with_social_media_urls)
         Rails.logger.should_not_receive(:error)
+        FlickrData.stub(:new).with(site, 'http://flickr.com/photos/whitehouse').and_return(flickr_data)
       end
 
       it 'should create flickr profile' do
@@ -291,13 +293,13 @@ describe SiteAutodiscoverer do
         TwitterData.stub(:import_profile)
         YoutubeProfileData.stub(:import_profile)
 
-        FlickrData.should_receive(:import_profile).with(site, 'http://flickr.com/photos/whitehouse')
+        flickr_data.should_receive(:import_profile)
+        flickr_data.should_receive(:new_profile_created?).and_return true
 
         autodiscoverer.autodiscover_social_media
       end
 
       it 'creates instagram profile' do
-        FlickrData.stub(:import_profile)
         TwitterData.stub(:import_profile)
         YoutubeProfileData.stub(:import_profile)
 
@@ -314,7 +316,6 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create twitter profile' do
-        FlickrData.stub(:import_profile)
         InstagramData.stub(:import_profile)
         YoutubeProfileData.stub(:import_profile)
 
@@ -332,7 +333,6 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create youtube profile' do
-        FlickrData.stub(:import_profile)
         InstagramData.stub(:import_profile)
         TwitterData.stub(:import_profile)
 

@@ -7,12 +7,18 @@ class Sites::AutodiscoveriesController < Sites::BaseController
     }
 
     begin
-      SiteAutodiscoverer.new(@site, @autodiscovery_url).run
-      flash[:success] = "Discovery complete for #{@autodiscovery_url}"
+      site_autodiscoverer = SiteAutodiscoverer.new(@site, @autodiscovery_url)
+      site_autodiscoverer.run
+      flash[:success] = render_to_string(:partial => '/shared/autodiscovery',
+                                         :locals => {
+                                           autodiscovery_url: @autodiscovery_url,
+                                           discovered_resources: site_autodiscoverer.discovered_resources
+                                         }).html_safe
     rescue URI::InvalidURIError
       flash[:error] = "Invalid site URL #{@autodiscovery_url}"
     end
 
     redirect_to site_content_path(@site), flash: flash
   end
+
 end

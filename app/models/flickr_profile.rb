@@ -1,5 +1,6 @@
 class FlickrProfile < ActiveRecord::Base
   include Dupable
+  include FlickrDsl
 
   attr_accessor :skip_notify_oasis
   attr_readonly :url, :profile_type, :profile_id
@@ -40,8 +41,8 @@ class FlickrProfile < ActiveRecord::Base
 
   def assign_profile_type_and_profile_id
     NormalizeUrl.new :url
-    self.profile_type = FlickrData.detect_profile_type url
-    self.profile_id = FlickrData.lookup_profile_id(profile_type, url) if profile_type.present? && profile_id.blank?
+    self.profile_type = detect_flickr_profile_type url
+    self.profile_id = lookup_flickr_profile_id(profile_type, url) if profile_type.present? && profile_id.blank?
   end
 
   def notify_oasis

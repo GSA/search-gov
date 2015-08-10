@@ -1,0 +1,9 @@
+= "Discovery complete for #{autodiscovery_url}."
+- if discovered_resources.present?
+  We found the following resources and have added them to your site:
+  %dl
+    - discovered_resources.each do |title, resources_array|
+      %dt= title
+      %dd= resources_array.join(', ')
+- else
+  No new resources were found.

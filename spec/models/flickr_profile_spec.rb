@@ -12,14 +12,9 @@ describe FlickrProfile do
   context 'when URL is present and valid' do
     let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
 
-    before do
-      FlickrData.should_receive(:lookup_profile_id).
-        with('user', url).
-        and_return('40927340@N03')
-    end
-
     it 'detects profile_type and profile_id' do
       fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.stub(:lookup_flickr_profile_id).with('user', url).and_return('40927340@N03')
       fp.should be_valid
       fp.profile_type.should == 'user'
       fp.profile_id.should be_present
@@ -28,11 +23,6 @@ describe FlickrProfile do
 
   context 'when profile_id, profile_type and URL are present' do
     let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
-
-    before do
-      FlickrData.should_not_receive(:detect_profile_type)
-      FlickrData.should_not_receive(:lookup_profile_id)
-    end
 
     it 'skips profile_id and profile_type lookup' do
       fp = FlickrProfile.new affiliate: affiliate, url: url, profile_id: '40927340@N03', profile_type: 'user'
@@ -44,8 +34,6 @@ describe FlickrProfile do
     let(:url) { 'https://www.flickr.com/invalid/marine_corps/'.freeze }
 
     it 'should not lookupUser or lookupGroup' do
-      FlickrData.should_not_receive(:lookup_profile_id)
-
       fp = FlickrProfile.new affiliate: affiliate, url: url
       fp.should_not be_valid
       fp.profile_type.should be_blank
@@ -56,10 +44,8 @@ describe FlickrProfile do
     let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
 
     it 'should not be valid' do
-      FlickrData.should_receive(:lookup_profile_id).
-        with('user', url).
-        and_return(nil)
       fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_receive(:lookup_flickr_profile_id).with('user', url).and_return(nil)
       fp.should_not be_valid
     end
   end
@@ -68,10 +54,8 @@ describe FlickrProfile do
     let(:url) { 'https://www.flickr.com/groups/usagov/'.freeze }
 
     it 'should not be valid' do
-      FlickrData.should_receive(:lookup_profile_id).
-        with('group', url).
-        and_return(nil)
       fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.should_receive(:lookup_flickr_profile_id).with('group', url).and_return(nil)
       fp.should_not be_valid
     end
   end
@@ -80,26 +64,27 @@ describe FlickrProfile do
     let(:url) { 'https://www.flickr.com/photos/marine_corps/'.freeze }
 
     before do
-      FlickrData.stub(:lookup_profile_id).
+      FlickrData.stub(:lookup_flickr_profile_id).
         with('user', url).
         and_return('40927340@N03')
     end
 
     it 'should not be valid' do
-      FlickrProfile.create! affiliate: affiliate, url: url
+      first = FlickrProfile.new affiliate: affiliate, url: url
+      first.stub(:lookup_flickr_profile_id).with('user', url).and_return('40927340@N03')
+      first.save!
       fp = FlickrProfile.new affiliate: affiliate, url: url
+      fp.stub(:lookup_flickr_profile_id).with('user', url).and_return('40927340@N03')
       fp.should_not be_valid
     end
   end
 
   it 'should notify Oasis after create' do
     url = 'https://www.flickr.com/photos/marine_corps/'.freeze
-    FlickrData.stub(:lookup_profile_id).
-      with('user', url).
-      and_return('40927340@N03')
-
     Oasis.should_receive(:subscribe_to_flickr).with('40927340@N03', 'marine_corps', 'user')
-    FlickrProfile.create(url: url, affiliate: affiliate)
+    fp = FlickrProfile.new(url: url, affiliate: affiliate)
+    fp.stub(:lookup_flickr_profile_id).with('user', url).and_return('40927340@N03')
+    fp.save!
   end
 
   describe '#dup' do

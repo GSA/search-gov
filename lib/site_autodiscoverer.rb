@@ -1,12 +1,15 @@
 require 'open-uri'
 
 class SiteAutodiscoverer
+  attr_reader :discovered_resources
+
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
   RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
 
   def initialize(site, url = nil)
     @site = site
     @autodiscovery_url = url && URI.parse(url).to_s
+    @discovered_resources = {'Favicon URL' => [], 'RSS Feeds' => [], 'Social Media' => [] }
   end
 
   def run
@@ -37,7 +40,10 @@ class SiteAutodiscoverer
   def autodiscover_favicon_url
     favicon_url = extract_favicon_url
     favicon_url ||= detect_default_favicon
-    @site.update_attributes!(favicon_url: favicon_url) if favicon_url.present?
+    if favicon_url.present? && @site.favicon_url != favicon_url
+      @site.update_attributes!(favicon_url: favicon_url)
+      @discovered_resources['Favicon URL'] << favicon_url
+    end
   rescue => e
     Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
   end
@@ -68,6 +74,10 @@ class SiteAutodiscoverer
     @autodiscovery_url ||= begin
       (dau = @site.default_autodiscovery_url) && autodiscover_website(dau)
     end
+  end
+
+  def discovered_resources
+    @discovered_resources.select { |title, resources_array| resources_array.present? }
   end
 
   private
@@ -123,7 +133,10 @@ class SiteAutodiscoverer
     return unless rss_feed_url.save
 
     rss_feed = @site.rss_feeds.find_existing_or_initialize(title, url)
-    @site.rss_feeds << rss_feed if rss_feed.new_record?
+    if rss_feed.new_record?
+      @site.rss_feeds << rss_feed
+      @discovered_resources['RSS Feeds'] << url
+    end
 
     if rss_feed_url.new_record?
       rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
@@ -134,7 +147,9 @@ class SiteAutodiscoverer
   end
 
   def create_flickr_profile(url)
-    FlickrData.import_profile @site, url
+    flickr_data = FlickrData.new @site, url
+    flickr_data.import_profile
+    @discovered_resources['Social Media'] << url if flickr_data.new_profile_created?
   end
 
   def create_instagram_profile(url)
@@ -142,7 +157,10 @@ class SiteAutodiscoverer
     instagram_profile = InstagramData.import_profile username
     return unless instagram_profile
 
-    @site.instagram_profiles << instagram_profile unless @site.instagram_profiles.exists? instagram_profile
+    unless @site.instagram_profiles.exists? instagram_profile
+      @site.instagram_profiles << instagram_profile
+      @discovered_resources['Social Media'] << url
+    end
   end
 
   def create_twitter_profile(url)
@@ -152,6 +170,7 @@ class SiteAutodiscoverer
 
     unless @site.twitter_profiles.exists? twitter_profile
       @site.affiliate_twitter_settings.create(twitter_profile_id: twitter_profile.id)
+      @discovered_resources['Social Media'] << url
     end
   end
 
@@ -161,6 +180,7 @@ class SiteAutodiscoverer
 
     unless @site.youtube_profiles.exists? youtube_profile
       @site.youtube_profiles << youtube_profile
+      @discovered_resources['Social Media'] << url
       @site.enable_video_govbox!
     end
   end
