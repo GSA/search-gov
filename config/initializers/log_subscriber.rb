@@ -8,6 +8,10 @@ module Instrumentation
       generic_logging('Azure Query', event, BLUE)
     end
 
+    def hosted_azure_web_engine(event)
+      generic_logging('Hosted Azure Query', event, BLUE)
+    end
+
     def keen_drill_down(event)
       generic_logging("Keen Query", event, CYAN)
     end

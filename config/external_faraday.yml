@@ -24,5 +24,7 @@ production: &PRODUCTION
   adapter: :net_http_persistent
 
   azure_api:
-    <<: *PRODUCTION_DEFAULT
+    options:
+      open_timeout: 1
+      timeout: 1
     adapter: :typhoeus
