@@ -5,11 +5,12 @@ class SiteAutodiscoverer
 
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
   RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
+  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+}i
 
   def initialize(site, url = nil)
     @site = site
     @autodiscovery_url = url && URI.parse(url).to_s
-    @discovered_resources = {'Favicon URL' => [], 'RSS Feeds' => [], 'Social Media' => [] }
+    @discovered_resources = { 'Favicon URL' => [], 'RSS Feeds' => [], 'Social Media' => [] }
   end
 
   def run
@@ -17,18 +18,18 @@ class SiteAutodiscoverer
   end
 
   def autodiscover_website(base_url)
-    begin
-      candidate_autodiscovery_urls(base_url).any? do |url|
-        response = fetch_and_initialize_website_doc url
-        if response[:last_effective_url].present?
-          website = response[:status] =~ /301/ ? response[:last_effective_url] : url
-          @site.update_attributes!(website: website)
-          website
-        end
-      end
-    rescue URI::InvalidURIError
-      nil
+    candidate_autodiscovery_urls(base_url).any? do |url|
+      response = fetch_and_initialize_website_doc url
+      update_site_website(response, url) if response[:last_effective_url].present?
     end
+  rescue URI::InvalidURIError
+    nil
+  end
+
+  def update_site_website(response, url)
+    website = response[:status] =~ /301/ ? response[:last_effective_url] : url
+    @site.update_attributes!(website: website) if @site.website != website
+    true
   end
 
   def autodiscover_website_contents
@@ -57,17 +58,16 @@ class SiteAutodiscoverer
   end
 
   def autodiscover_social_media
-    known_urls = Set.new
-
-    website_doc.xpath('//a/@href').each do |anchor_attr|
-      href = anchor_attr.inner_text.squish
-      if href =~ %r{\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+}i
-        send("create_#{Regexp.last_match(2)}_profile", href) unless known_urls.include?(href)
-        known_urls << href.downcase
-      end
-    end
+    website_doc.xpath('//a/@href').
+      map { |anchor_attr| anchor_attr.inner_text.squish.downcase }.
+      uniq.
+      each { |href| create_social_media_profile(href) }
   rescue => e
     Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
+  end
+
+  def create_social_media_profile(href)
+    SOCIAL_MEDIA_REGEXP.match(href) { |match_data| send("create_#{match_data[2]}_profile", href) }
   end
 
   def autodiscovery_url
@@ -101,12 +101,9 @@ class SiteAutodiscoverer
   end
 
   def extract_favicon_url
-    favicon_url = nil
-    website_doc.xpath(FAVICON_LINK_XPATH).each do |link_element|
-      favicon_url = generate_url link_element.attr(:href).to_s.strip
-      break if favicon_url.present?
-    end
-    favicon_url
+    website_doc.xpath(FAVICON_LINK_XPATH).
+      map { |link_element| generate_url link_element.attr(:href).to_s.strip }.
+      detect { |favicon_url| favicon_url.present? }
   end
 
   def detect_default_favicon
