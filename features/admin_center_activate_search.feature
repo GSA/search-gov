@@ -36,7 +36,7 @@ Feature: Activate Search
       | News-1 | http://www.usa.gov/feed/news-1 |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the aff.gov's Activate Search page
-    And I follow "Search API Instructions"
+    And I follow "Search Results API Instructions"
     Then I should see "API Instructions" within the Admin Center content
 
     When I follow "bought an API key from Bing or Google" within the Admin Center content
