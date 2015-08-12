@@ -40,7 +40,7 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
       ]
     end
 
-    report_array.sort_by { |a| -a[2] }
+    report_array.sort_by { |a| -a[1] }
   end
 
   private
