@@ -28,8 +28,12 @@ module Admin::ColumnsHelper
   end
 
   def nutshell_column(record, column)
-    if record.is_a?(User) && record.nutshell_id
-      link_to(record.nutshell_id, "https://app.nutshell.com/contact/#{record.nutshell_id}", target: '_blank')
+    if record.nutshell_id
+      if record.is_a?(User)
+        link_to(record.nutshell_id, "https://app.nutshell.com/contact/#{record.nutshell_id}", target: '_blank')
+      elsif record.is_a?(Affiliate)
+        link_to(record.nutshell_id, "https://app.nutshell.com/lead/id/#{record.nutshell_id}", target: '_blank')
+      end
     end
   end
 end
