@@ -116,3 +116,17 @@ site_with_one_user:
   default_search_label: search
   rss_govbox_label: RSSGovbox
   locale: en
+
+search_consumer_affiliate:
+  display_name: site that uses search consumer app
+  force_mobile_format: true
+  is_bing_image_search_enabled: true
+  name: search_consumer_affiliate
+  theme: default
+  website: http://www.usa.gov
+  api_access_key: bing_image_search_enabled_key
+  default_search_label: search
+  rss_govbox_label: RSSGovbox
+  locale: en
+  search_consumer_admin_enabled: true
+  search_consumer_search_enabled: true

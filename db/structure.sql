@@ -92,6 +92,8 @@ CREATE TABLE `affiliates` (
   `header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `header_tagline_logo_file_size` int(11) DEFAULT NULL,
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
+  `search_consumer_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `search_consumer_admin_enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2176,6 +2178,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150730154029');
 INSERT INTO schema_migrations (version) VALUES ('20150731223735');
 
 INSERT INTO schema_migrations (version) VALUES ('20150804163342');
+
+INSERT INTO schema_migrations (version) VALUES ('20150814195019');
 
 INSERT INTO schema_migrations (version) VALUES ('20150818202759');
 

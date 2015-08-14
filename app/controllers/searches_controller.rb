@@ -16,6 +16,16 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
+    # TODO: make this a before_filter and handle the docs/news/video_news/etc. cases
+    if @affiliate.search_consumer_search_enabled?
+      redirect_to search_consumer_search_url(params.merge({
+        affiliate: @affiliate.name
+      }).reject { |k,_|
+        k.to_s == 'controller'
+      })
+      return
+    end
+
     search_klass, @search_vertical, template = pick_klass_vertical_template
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
@@ -133,6 +143,8 @@ class SearchesController < ApplicationController
   end
 
   def log_search_impression
-    SearchImpression.log(@search, @search_vertical, permitted_params, request)
+    if !@affiliate.search_consumer_search_enabled?
+      SearchImpression.log(@search, @search_vertical, permitted_params, request)
+    end
   end
 end

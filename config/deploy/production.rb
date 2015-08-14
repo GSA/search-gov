@@ -2,7 +2,7 @@ set :user,        "search"
 set :deploy_to,   "/home/search/#{application}"
 set :branch,      "production"
 
-set :system_yml_filenames, %w(database elasticsearch external_faraday hosted_azure i14y instagram mandrill nutshell oasis redis youtube)
+set :system_yml_filenames, %w(database elasticsearch external_faraday hosted_azure i14y instagram jwt mandrill nutshell oasis redis youtube)
 
 role :app, "192.168.100.170", "192.168.100.171", "192.168.100.173", "192.168.110.8", "192.168.100.174"
 role :web, "192.168.100.170", "192.168.100.171", "192.168.100.173", "192.168.110.8", "192.168.100.174"

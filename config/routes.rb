@@ -233,4 +233,8 @@ UsasearchRails3::Application.routes.draw do
   get '/program' => redirect(BLOG_URL, :status => 302)
 
   get "*path" => redirect(PAGE_NOT_FOUND_URL, status: 302)
+
+  get "/c/search" => 'dev#null', :as => :search_consumer_search
+  get "/c/admin" => 'dev#null', :as => :search_consumer_admin
+
 end

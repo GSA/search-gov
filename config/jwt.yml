@@ -1,0 +1,11 @@
+default: &DEFAULT
+  secret: "my$ecretK3y"
+
+development:
+  <<: *DEFAULT
+
+test:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT

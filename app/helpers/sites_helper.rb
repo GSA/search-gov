@@ -93,7 +93,9 @@ module SitesHelper
   end
 
   def preview_main_nav_item(site, title)
-    if site.force_mobile_format?
+    if site.search_consumer_search_enabled
+      main_nav_item title, search_consumer_search_url(affiliate: site.name), 'fa-eye', [], target: '_blank'
+    elsif site.force_mobile_format?
       main_nav_item title, search_url(protocol: 'http', affiliate: site.name), 'fa-eye', [], target: '_blank'
     else
       main_nav_item title, site_preview_path(site), 'fa-eye', [], preview_serp_link_options
@@ -117,7 +119,7 @@ module SitesHelper
   end
 
   def site_manage_display_controllers
-    %w(header_and_footers displays font_and_colors image_assets no_results_pages alerts)
+    %w(header_and_footers displays font_and_colors image_assets no_results_pages alerts search_consumer_search)
   end
 
   def list_item_with_link_to_current_help_page
@@ -182,5 +184,11 @@ module SitesHelper
                   nil
                 end
     row_class ? { class: row_class } : {}
+  end
+
+  def generate_jwt(site)
+    exp = Time.now.to_i  + 4 * 3600
+    payload = {:affiliateName => site.name, :affiliateDisplayName => site.display_name, :accessKey => site.api_access_key, :exp => exp }
+    JWT.encode payload, JWT_SECRET, 'HS256'
   end
 end

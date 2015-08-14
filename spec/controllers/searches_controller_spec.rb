@@ -75,6 +75,17 @@ describe SearchesController do
     end
   end
 
+  context 'when search_consumer_search_enabled is true' do
+    before do
+      @affiliate = affiliates(:search_consumer_affiliate)
+    end
+
+    it 'should redirect to the search-consumer display page' do
+      get :index, query: 'matzo balls', affiliate: @affiliate.name
+      response.should redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: @affiliate.name})
+    end
+  end
+
   context 'searching on a routed keyword' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do

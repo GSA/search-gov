@@ -73,6 +73,7 @@ gem 'sitelink_generator'
 gem 'typhoeus'
 gem 'mandrill-api'
 gem 'activerecord-validate_unique_child_attribute', require: 'active_record/validate_unique_child_attribute'
+gem 'jwt'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
