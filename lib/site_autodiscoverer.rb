@@ -70,6 +70,12 @@ class SiteAutodiscoverer
     SOCIAL_MEDIA_REGEXP.match(href) { |match_data| send("create_#{match_data[2]}_profile", href) }
   end
 
+  def autodiscovery_url
+    @autodiscovery_url ||= begin
+      (dau = @site.default_autodiscovery_url) && autodiscover_website(dau)
+    end
+  end
+
   def discovered_resources
     @discovered_resources.select { |title, resources_array| resources_array.present? }
   end
@@ -116,12 +122,6 @@ class SiteAutodiscoverer
     @website_domain ||= begin
       uri = URI.parse(autodiscovery_url)
       "#{uri.scheme}://#{uri.host}"
-    end
-  end
-
-  def autodiscovery_url
-    @autodiscovery_url ||= begin
-      (dau = @site.default_autodiscovery_url) && autodiscover_website(dau)
     end
   end
 
