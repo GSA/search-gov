@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   after_validation :set_default_flags, :on => :create
 
   with_options if: :is_pending_email_verification? do
-    before_create :set_tokens
     after_create :deliver_email_verification
   end
 
@@ -131,14 +130,19 @@ class User < ActiveRecord::Base
     Emailer.new_user_to_admin(self).deliver
   end
 
-  def set_tokens
-    current_perishable_token = perishable_token
-    self.email_verification_token = reset_perishable_token.downcase
-    self.perishable_token = current_perishable_token
+  def deliver_email_verification
+    assign_email_verification_token!
+    invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_new_user_email_verification
   end
 
-  def deliver_email_verification
-    invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_new_user_email_verification
+  def assign_email_verification_token!
+    loop do
+      begin
+        update_attribute(:email_verification_token, Authlogic::Random.friendly_token.downcase)
+        break
+      rescue ActiveRecord::RecordNotUnique
+      end
+    end
   end
 
   def deliver_new_user_email_verification
@@ -148,7 +152,6 @@ class User < ActiveRecord::Base
   def deliver_welcome_to_new_user_added_by_affiliate
     Emailer.welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).deliver
   end
-
 
   def detect_deliver_welcome_email
     if is_approved? && !welcome_email_sent?

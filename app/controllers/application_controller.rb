@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     commit
     cr
     dc
+    email_to_verify
     form
     hl
     m

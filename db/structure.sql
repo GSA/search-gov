@@ -802,6 +802,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
+  UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
   KEY `index_users_on_perishable_token` (`perishable_token`),
   KEY `index_users_on_nutshell_id` (`nutshell_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2177,3 +2178,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150731223735');
 INSERT INTO schema_migrations (version) VALUES ('20150804163342');
 
 INSERT INTO schema_migrations (version) VALUES ('20150818202759');
+
+INSERT INTO schema_migrations (version) VALUES ('20150821144231');

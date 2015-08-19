@@ -147,6 +147,29 @@ describe User do
       user.is_pending_email_verification?.should be_true
       user.email_verification_token.should_not be_blank
     end
+
+    context "when the same email_verification_token as another user is generated" do
+      let(:user) { User.new(@valid_attributes).tap { |u| puts u.inspect } }
+      let(:token) { 'unique token' }
+
+      before do
+        existing_user = users(:affiliate_manager_with_pending_contact_information_status)
+        Authlogic::Random.stub(:friendly_token).and_return(
+          'salt_for_user_password',                # for the initial User.new
+          existing_user.email_verification_token,  # induces uniqueness error
+          token                                    # final value works because it's unique
+        )
+      end
+
+      it "doesn't raise the uniqueness constraint violation error" do
+        expect { user.save(@valid_attributes)}.to_not raise_error
+      end
+
+      it "assigns a new email_verification_token" do
+        user.save
+        user.email_verification_token.should == token
+      end
+    end
   end
 
   context "when saving/updating" do

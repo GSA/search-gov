@@ -28,7 +28,6 @@ Feature: Users
     Then I should be on the login page
     Given a clear email queue
     When I fill in the following:
-      | Email    | lorem.ipsum@agency.gov |
       | Password | huge_secret            |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
@@ -68,7 +67,6 @@ Feature: Users
     Then I should be on the login page
     Given a clear email queue
     When I fill in the following:
-      | Email    | lorem.ipsum@corporate.com |
       | Password | huge_secret               |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
