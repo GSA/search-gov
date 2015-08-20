@@ -658,6 +658,7 @@ Feature: Manage Display
 
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
+  @javascript
   Scenario: Add/edit/remove search page alert
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -665,6 +666,8 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
     And I follow "Search Page Alert"
+    Then I should see "Update Alert"
+
     When I fill in the following:
       | Text               | New text alert for the search page. |
     And I select "Active" from "Status"
@@ -674,9 +677,9 @@ Feature: Manage Display
     When I fill in the following:
       | Title               | Alert Title |
     And I submit the form by pressing "Save"
-    And the "Title" field should contain "Alert Title"
-    Then the "Text" field should contain "New text alert for the search page."
-    And I should see "Active"
+    Then the "Title" field should contain "Alert Title"
+    And the "Text" field should contain "New text alert for the search page."
+    And the "Status" field should contain "Active"
     And I should see "The alert for this site has been updated."
 
     When I fill in the following:
@@ -685,12 +688,13 @@ Feature: Manage Display
     And I select "Inactive" from "Status"
     And I submit the form by pressing "Save"
     Then I should see "Text can't be blank"
+
     When I fill in the following:
       | Text              | Updated text for search page alert. |
     And I submit the form by pressing "Save"
-    And the "Title" field should contain "New Alert Title"
-    Then the "Text" field should contain "Updated text for search page alert."
-    And I should see "Inactive"
+    Then the "Title" field should contain "New Alert Title"
+    And the "Text" field should contain "Updated text for search page alert."
+    And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
 
     
