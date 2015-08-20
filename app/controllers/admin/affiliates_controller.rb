@@ -28,6 +28,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.list.columns = list_columns
 
     export_columns = [list_columns, all_columns].flatten.uniq
+    export_columns.reject! { |c| c == :nutshell }
     actions.add :export
     config.export.columns = export_columns
     config.export.default_deselected_columns = %i(api_access_key
