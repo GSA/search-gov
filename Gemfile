@@ -95,7 +95,7 @@ group :assets do
   # icons compiled into SVG/CSS+PNG using Grunticon. See
   # https://github.com/gsa/font-awesome-grunticon-rails
   # for instructions on how to add more icons to this set
-  gem 'font-awesome-grunticon-rails', git: 'git://github.com/gsa/font-awesome-grunticon-rails', ref: '345c2e12445a318d433032008b51e1b5d4bbc530'
+  gem 'font-awesome-grunticon-rails', git: 'git://github.com/gsa/font-awesome-grunticon-rails', ref: 'c27bd3f950dabd504fcb651e3d185f6579d6dcc0'
 end
 
 # Bundle gems for the local environment. Make sure to

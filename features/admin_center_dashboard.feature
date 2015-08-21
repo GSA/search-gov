@@ -27,8 +27,7 @@ Feature: Dashboard
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Dashboard page
-    Then I should see "Admin Center"
-    And I should see "USA.gov" in the site header
+    Then I should see "USA.gov" in the site header
     And I should see a link to "Dashboard" in the active site main navigation
     And I should see a link to "Site Overview" in the active site sub navigation
 
@@ -50,6 +49,15 @@ Feature: Dashboard
     Then I should see "You have enabled the daily snapshot setting for usagov."
     When I follow "Stop sending me today's snapshot as a daily email"
     Then I should see "You have disabled the daily snapshot setting for usagov."
+
+  @javascript
+  Scenario: Toggling filtered analytics
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the usagov's Dashboard page
+    And I follow "Stop filtering bot traffic"
+    Then I should see "You're no longer filtering bot traffic. Analytics include both humans and bots."
+    When I follow "Filter bot traffic"
+    Then I should see "You're now filtering bot traffic. Analytics include likely humans only."
 
   @javascript
   Scenario: Updating Settings

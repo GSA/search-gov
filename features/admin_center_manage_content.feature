@@ -4,7 +4,6 @@ Feature: Manage Content
   Scenario: Viewing Manage Content page after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the usagov's Manage Content page
-    Then I should see "Admin Center"
     Then I should see a link to "Content" in the active site main navigation
     And I should see a link to "Content Overview" in the active site sub navigation
 

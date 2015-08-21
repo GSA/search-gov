@@ -9,6 +9,10 @@ module BootstrapHelper
     stacked_icon 'envelope'
   end
 
+  def stacked_filter
+    stacked_icon 'filter'
+  end
+
   def stacked_icon(icon_name)
     content_tag :span, class: 'fa-stack' do
       content = content_tag(:i, nil, {

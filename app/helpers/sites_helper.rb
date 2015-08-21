@@ -105,7 +105,7 @@ module SitesHelper
   end
 
   def site_analytics_controllers
-    %w(queries clicks monthly_reports third_party_tracking_requests click_queries query_clicks analytics_settings)
+    %w(queries clicks monthly_reports third_party_tracking_requests click_queries query_clicks)
   end
 
   def site_manage_content_controllers

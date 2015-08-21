@@ -88,7 +88,6 @@ UsasearchRails3::Application.routes.draw do
                only: [:edit, :create, :update, :destroy]
       resource :third_party_tracking_request, only: [:new, :create]
       resource :autodiscovery, only: [:create]
-      resource :analytics_settings, only: [:edit, :update]
 
       resources :best_bets_graphics, controller: 'featured_collections', except: [:show] do
         collection do
@@ -138,6 +137,7 @@ UsasearchRails3::Application.routes.draw do
                 only: [:index, :new, :create, :destroy]
       resources :memberships, only: [:update]
       resources :i14y_drawers
+      resource :filtered_analytics_toggle, only: :create
     end
   end
 
