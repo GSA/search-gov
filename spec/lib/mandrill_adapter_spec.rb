@@ -77,6 +77,19 @@ describe MandrillAdapter do
     end
   end
 
+  describe "#force_to" do
+    context 'with no force_to configured (default)' do
+      let(:config) { { } }
+      its(:force_to) { should be_nil }
+    end
+
+    context 'with force_to configured' do
+      let(:email_trap) { 'emailtrap@somewhere.gov' }
+      let(:config) { { force_to: email_trap } }
+      its(:force_to) { should eq email_trap }
+    end
+  end
+
   describe 'sending email' do
     let(:config) do
       {

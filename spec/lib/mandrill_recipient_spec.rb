@@ -17,6 +17,7 @@ describe MandrillRecipient do
                requires_manual_approval?: true,
                affiliates: affiliates)
   end
+  let(:email_trap) { 'emailtrap@somewhere.gov' }
 
   describe '.new' do
     let(:merge_vars) { { verify_url: 'http://example.com' } }
@@ -28,11 +29,16 @@ describe MandrillRecipient do
 
   describe '#to_user' do
     let(:merge_vars) { { } }
-    let(:config) { { bcc_email: bcc_email } }
+    let(:bcc_email) { nil }
+    let(:force_to) { nil }
+    let(:config) do
+      {
+        bcc_email: bcc_email,
+        force_to: force_to,
+      }
+    end
 
     context 'when there is no bcc_email configured' do
-      let(:bcc_email) { nil }
-
       it 'includes just the user as a recipient' do
         expect(subject.to_user).to eq [
           { email: 'user@example.com', name: 'Some User' }
@@ -50,19 +56,31 @@ describe MandrillRecipient do
         ]
       end
     end
+
+    context 'when there is a force_to email address configured' do
+      let(:force_to) { email_trap }
+
+      it 'includes just the force_to address as recipient' do
+        expect(subject.to_user).to eq [
+          { email: email_trap, name: 'Some User' },
+        ]
+      end
+    end
   end
 
   describe '#to_admin' do
     let(:merge_vars) { { } }
+    let(:bcc_email) { nil }
+    let(:force_to) { nil }
     let(:config) do
       {
         admin_email: 'admin@example.com',
         bcc_email: bcc_email,
+        force_to: force_to,
       }
     end
 
     context 'when there is no bcc_email configured' do
-      let(:bcc_email) { nil }
 
       it 'includes just the admin as recipient' do
         expect(subject.to_admin).to eq [
@@ -78,6 +96,16 @@ describe MandrillRecipient do
         expect(subject.to_admin).to eq [
           { email: 'admin@example.com' },
           { email: 'bcc@example.com', type: 'bcc' },
+        ]
+      end
+    end
+
+    context 'when there is a force_to email address configured' do
+      let(:force_to) { email_trap }
+
+      it 'includes just the force_to address as recipient' do
+        expect(subject.to_admin).to eq [
+          { email: email_trap },
         ]
       end
     end

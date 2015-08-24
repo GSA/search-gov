@@ -8,13 +8,13 @@ class MandrillRecipient
   end
 
   def to_user
-    to = [{ email: user.email, name: user.contact_name }]
+    to = [{ email: recipient_email, name: user.contact_name }]
     to << { email: bcc_email, type: 'bcc' } if bcc_email
     to
   end
 
   def to_admin
-    to = [{ email: config[:admin_email] }]
+    to = [{ email: config[:force_to] || config[:admin_email] }]
     to << { email: bcc_email, type: 'bcc' } if bcc_email
     to
   end
@@ -48,6 +48,10 @@ class MandrillRecipient
 
   def bcc_email
     config[:bcc_email]
+  end
+
+  def recipient_email
+    config[:force_to] || user.email
   end
 
   def global_merge_vars
