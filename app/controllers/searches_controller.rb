@@ -23,10 +23,7 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     set_search_page_title
     set_search_params
-    respond_to do |format|
-      format.any(:html, :mobile) { render template }
-      format.json { render :json => @search }
-    end
+    respond_to { |format| format.any(:html, :mobile) { render template } }
   end
 
   def docs

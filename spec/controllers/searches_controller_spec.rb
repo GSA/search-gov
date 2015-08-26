@@ -231,35 +231,6 @@ describe SearchesController do
     it { should render_template 'searches/index' }
   end
 
-  context "when searching via the API" do
-    render_views
-
-    context "when searching normally" do
-      before do
-        get :index, :query => 'weather', :format => "json", affiliate: 'usagov'
-        @search = assigns[:search]
-      end
-
-      it "should serialize the results into JSON" do
-        response.body.should =~ /total/
-        response.body.should =~ /startrecord/
-        response.body.should =~ /endrecord/
-      end
-    end
-
-    context "when some error is returned" do
-      before do
-        get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
-        @search = assigns[:search]
-      end
-
-      it "should serialize an error into JSON" do
-        response.body.should =~ /error/
-        response.body.should =~ /#{I18n.translate :too_long}/
-      end
-    end
-  end
-
   context "when handling any affiliate search request (mobile or otherwise)" do
     render_views
     before do
@@ -278,19 +249,6 @@ describe SearchesController do
     end
 
     it { should redirect_to 'http://www.usa.gov/page-not-found' }
-  end
-
-  context "when handling any affiliate search request with a JSON format" do
-    render_views
-    before do
-      get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
-    end
-
-    it "should serialize the results into JSON" do
-      response.body.should =~ /total/
-      response.body.should =~ /startrecord/
-      response.body.should =~ /endrecord/
-    end
   end
 
   context "when a user is attempting to visit an old-style advanced search page" do

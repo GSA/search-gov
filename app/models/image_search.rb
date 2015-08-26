@@ -50,17 +50,6 @@ class ImageSearch
 
   end
 
-  def as_json(options = {})
-    if @error_message
-      { error: @error_message }
-    else
-      { total: total,
-        startrecord: startrecord,
-        endrecord: endrecord,
-        results: results }
-    end
-  end
-
   def spelling_suggestion
     @search_instance.spelling_suggestion if @spelling_suggestion_eligible
   end

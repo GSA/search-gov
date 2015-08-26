@@ -65,10 +65,6 @@ class Search
     to_hash.to_xml(options)
   end
 
-  def as_json(options = {})
-    to_hash
-  end
-
   def to_hash
     if @error_message
       {error: @error_message}

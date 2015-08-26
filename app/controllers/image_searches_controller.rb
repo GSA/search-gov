@@ -17,10 +17,7 @@ class ImageSearchesController < ApplicationController
     @search_vertical = :image
     set_search_params
     SearchImpression.log(@search, @search_vertical, params, request)
-    respond_to do |format|
-      format.any(:html, :mobile) {}
-      format.json { render :json => @search }
-    end
+    respond_to { |format| format.any(:html, :mobile) {} }
   end
 
   private
