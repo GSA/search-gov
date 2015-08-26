@@ -53,6 +53,10 @@ class MandrillAdapter
     templates.map { |t| t['name'] }
   end
 
+  def force_to
+    @config[:force_to]
+  end
+
   def preview_info(user, template_name)
     raise NoClient unless client
 
