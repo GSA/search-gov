@@ -1,0 +1,395 @@
+{
+  "_scroll_id": "c2NhbjsxOzE3NDcwMjc0OmVRMFNETWNtUnltN0xjd3dWNEFpVUE7MTt0b3RhbF9oaXRzOjE1MzIzMjc7",
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1532327,
+    "max_score": 0.0,
+    "hits": [
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoP",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "12.41.151.154",
+          "request": "https://search.usa.gov/search?utf8=%E2%9C%93&sc=0&query=1926+housekeeping&m=&affiliate=usdoloshapublicwebsite&commit=Search",
+          "referrer": "https://search.usa.gov/search?utf8=%E2%9C%93&sc=0&query=1926+housekeeping&m=&affiliate=usdoloshapublicwebsite&commit=Search",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "usdoloshapublicwebsite",
+            "commit": "Search",
+            "query": "1926 housekeeping"
+          },
+          "useragent": {
+            "name": "Firefox",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CT",
+            "location": [
+              -72.924,
+              41.30940000000001
+            ]
+          },
+          "tags": [
+            "ssl"
+          ]
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "abcde",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "12.41.151.154",
+          "request": "https://search.usa.gov/search?utf8=%E2%9C%93&sc=0&query=1926+housekeeping&m=&affiliate=usdoloshapublicwebsite&commit=Search",
+          "referrer": "https://search.usa.gov/search?utf8=%E2%9C%93&sc=0&query=1926+housekeeping&m=&affiliate=usdoloshapublicwebsite&commit=Search",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "usdoloshapublicwebsite",
+            "commit": "Search",
+            "query": "1926 housekeeping"
+          },
+          "useragent": {
+            "name": "Firefox",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CT",
+            "location": [
+              -72.924,
+              41.30940000000001
+            ]
+          },
+          "tags": [
+            "ssl"
+          ]
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoR",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "156.72.30.1",
+          "request": "http://search.socialsecurity.gov/search?utf8=%E2%9C%93&affiliate=ssa&query=Is+payment+made+a+month+behind",
+          "referrer": "http://search.socialsecurity.gov/search?affiliate=ssa&query=Retirement+date+vs+payament+date",
+          "user_agent": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ssa",
+            "query": "is payment made a month behind"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CA",
+            "location": [
+              -117.8531,
+              33.787800000000004
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoS",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "23.31.32.25",
+          "request": "http://search.usa.gov/search?v%3Aproject=firstgov&query=danny&affiliate=nws.noaa.gov",
+          "referrer": "http://www.nhc.noaa.gov/",
+          "user_agent": "Mozilla/5.0 (iPad; CPU OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H321 Safari/600.1.4",
+          "vertical": "web",
+          "modules": [
+            "BWEB",
+            "TWEET",
+            "SREL"
+          ],
+          "params": {
+            "affiliate": "nws.noaa.gov",
+            "query": "danny"
+          },
+          "useragent": {
+            "name": "Mobile Safari",
+            "os": "iOS 8.4.1",
+            "device": "iPad"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "FL",
+            "location": [
+              -80.1826,
+              25.780599999999993
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoT",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "2602:306:b869:8f50:408a:acd5:8167:d9d3",
+          "request": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=u.s.departmentoflabor&query=occupational+salary+levels+and+2012",
+          "referrer": "http://search.usa.gov/search?utf8=%E2%9C%93&affiliate=u.s.departmentoflabor&query=salary++and+pay+pdf&commit=Search",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "u.s.departmentoflabor",
+            "query": "occupational salary levels and 2012"
+          },
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 7",
+            "device": "Other"
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoU",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "64.47.124.73",
+          "request": "http://search.usa.gov/search?affiliate=ri.gov&query=tire&sitelimit=www.tax.ri.gov",
+          "referrer": "http://www.tax.ri.gov/regulations/salestax/",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ri.gov",
+            "query": "tire",
+            "sitelimit": "www.tax.ri.gov"
+          },
+          "useragent": {
+            "name": "Firefox",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MA",
+            "location": [
+              -71.1595,
+              42.4897
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoV",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "66.244.41.92",
+          "request": "http://search.usa.gov/search?affiliate=netc&query=S+100&op=Search",
+          "referrer": "http://www.training.fema.gov/is/courseoverview.aspx?code=IS-100.b",
+          "user_agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
+          "vertical": "web",
+          "modules": [
+            "BWEB",
+            "OVER",
+            "BSPEL",
+            "SREL"
+          ],
+          "params": {
+            "affiliate": "netc",
+            "query": "s 100"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CA",
+            "location": [
+              -122.32159999999999,
+              40.528999999999996
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoW",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "152.160.36.74",
+          "request": "http://search.michigan.gov/search?affiliate=mi-mdch&m=true&query=who%20can%20service%20medicare%20patients?",
+          "referrer": null,
+          "user_agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET4.0C; .NET4.0E)",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "mi-mdch",
+            "query": "who can service medicare patients?"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "MI",
+            "location": [
+              -83.263,
+              42.518100000000004
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoX",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "132.83.254.2",
+          "request": "https://search.usa.gov/search/images?affiliate=www.army.mil&cr=true&page=6&query=parking+lot",
+          "referrer": "https://search.usa.gov/search/images?affiliate=www.army.mil&cr=true&page=5&query=parking+lot",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36",
+          "vertical": "image",
+          "modules": [
+            "IMAG"
+          ],
+          "params": {
+            "affiliate": "www.army.mil",
+            "cr": "true",
+            "page": "6",
+            "query": "parking lot"
+          },
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "AR",
+            "location": [
+              -92.4127,
+              34.78880000000001
+            ]
+          },
+          "tags": [
+            "ssl"
+          ]
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-fo5bL4xdSPUJoY",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "187.131.254.92",
+          "request": "http://search.usa.gov/search?v%3Aproject=firstgov&query=&affiliate=noaa.gov",
+          "referrer": "http://www.nhc.noaa.gov/text/refresh/MIATWOAT+shtml/201154_MIATWOAT.shtml",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
+          "vertical": "web",
+          "modules": [],
+          "params": {
+            "affiliate": "noaa.gov",
+            "query": ""
+          },
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "MX",
+            "region_name": "03",
+            "location": [
+              -110.3,
+              24.16669999999999
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

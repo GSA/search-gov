@@ -1,0 +1,350 @@
+{
+  "_scroll_id": "c2NhbjsxOzE3NDcwMjc0OmVRMFNETWNtUnltN0xjd3dWNEFpVUE7MTt0b3RhbF9oaXRzOjE1MzIzMjc7",
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1532327,
+    "max_score": 0.0,
+    "hits": [
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-hW1XGmYXwOWZs-",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "136.234.105.211",
+          "request": "http://search.socialsecurity.gov/search?affiliate=ssa&query=trisomy+18",
+          "referrer": "http://www.ssa.gov/disability/professionals/bluebook/11.00-Neurological-Adult.htm",
+          "user_agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ssa",
+            "query": "trisomy 18"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-hW1XGmYXwOWZs_",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "148.129.129.18",
+          "request": "http://search.usa.gov/api/search.xml?affiliate=census.test&query=Population+by+State+2014&api_key=6e6de40e52d8a706b503d95878c7efbb&index=web&page=1&operationName=Request-Response",
+          "referrer": null,
+          "user_agent": "Oracle HTTPClient Version 10h",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "census.test",
+            "query": "population by state 2014",
+            "index": "web",
+            "page": "1",
+            "operationName": "Request-Response",
+            "format": "xml"
+          },
+          "useragent": {
+            "name": "Other",
+            "os": "Other",
+            "device": "Other"
+          },
+          "tags": [
+            "api"
+          ]
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-hW1XGmYXwOWZtA",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "72.167.190.172",
+          "request": "http://search.usa.gov/search?affiliate=usagov&amp",
+          "referrer": null,
+          "user_agent": "WordPress/4.3; http://indiatripping.in",
+          "vertical": "web",
+          "modules": [],
+          "params": {
+            "affiliate": "usagov"
+          },
+          "useragent": {
+            "name": "Other",
+            "os": "Other",
+            "device": "Other"
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-iG1XGmYXwOWZtB",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "66.214.205.28",
+          "request": "http://search.socialsecurity.gov/search?affiliate=ssa&query=appointment+at+local+office",
+          "referrer": "http://www.ssa.gov/onlineservices/",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ssa",
+            "query": "appointment at local office"
+          },
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CA",
+            "location": [
+              -120.61930000000001,
+              35.12119999999999
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "AU9Lu-iG1XGmYXwOWZtC",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "74.108.155.158",
+          "request": "http://search.gsa.gov/search?affiliate=gsa.gov&commit=Search&page=2&query=abbreviations&utf8=%E2%9C%93",
+          "referrer": "http://search.gsa.gov/search?utf8=%E2%9C%93&affiliate=gsa.gov&query=abbreviations&commit=Search",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; rv:39.0) Gecko/20100101 Firefox/39.0",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "gsa.gov",
+            "commit": "Search",
+            "page": "2",
+            "query": "abbreviations"
+          },
+          "useragent": {
+            "name": "Firefox",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "NY",
+            "location": [
+              -73.9981,
+              40.726699999999994
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "copy1",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "136.234.105.211",
+          "request": "http://search.socialsecurity.gov/search?affiliate=ssa&query=trisomy+18",
+          "referrer": "http://www.ssa.gov/disability/professionals/bluebook/11.00-Neurological-Adult.htm",
+          "user_agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ssa",
+            "query": "trisomy 18"
+          },
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 7",
+            "device": "Other"
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "copy2",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "148.129.129.18",
+          "request": "http://search.usa.gov/api/search.xml?affiliate=census.test&query=Population+by+State+2014&api_key=6e6de40e52d8a706b503d95878c7efbb&index=web&page=1&operationName=Request-Response",
+          "referrer": null,
+          "user_agent": "Oracle HTTPClient Version 10h",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "census.test",
+            "query": "population by state 2014",
+            "index": "web",
+            "page": "1",
+            "operationName": "Request-Response",
+            "format": "xml"
+          },
+          "useragent": {
+            "name": "Other",
+            "os": "Other",
+            "device": "Other"
+          },
+          "tags": [
+            "api"
+          ]
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "copy3",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:49.000Z",
+          "type": "search",
+          "host": "443366-web.gsa.gov",
+          "clientip": "72.167.190.172",
+          "request": "http://search.usa.gov/search?affiliate=usagov&amp",
+          "referrer": null,
+          "user_agent": "WordPress/4.3; http://indiatripping.in",
+          "vertical": "web",
+          "modules": [],
+          "params": {
+            "affiliate": "usagov"
+          },
+          "useragent": {
+            "name": "Other",
+            "os": "Other",
+            "device": "Other"
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "copy4",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "66.214.205.28",
+          "request": "http://search.socialsecurity.gov/search?affiliate=ssa&query=appointment+at+local+office",
+          "referrer": "http://www.ssa.gov/onlineservices/",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "ssa",
+            "query": "appointment at local office"
+          },
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "CA",
+            "location": [
+              -120.61930000000001,
+              35.12119999999999
+            ]
+          }
+        }
+      },
+      {
+        "_index": "logstash-2015.08.20",
+        "_type": "search",
+        "_id": "copy5",
+        "_score": 0.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2015-08-20T15:30:48.000Z",
+          "type": "search",
+          "host": "443378-iad-web.gsa.gov",
+          "clientip": "74.108.155.158",
+          "request": "http://search.gsa.gov/search?affiliate=gsa.gov&commit=Search&page=2&query=abbreviations&utf8=%E2%9C%93",
+          "referrer": "http://search.gsa.gov/search?utf8=%E2%9C%93&affiliate=gsa.gov&query=abbreviations&commit=Search",
+          "user_agent": "Mozilla/5.0 (Windows NT 6.1; rv:39.0) Gecko/20100101 Firefox/39.0",
+          "vertical": "web",
+          "modules": [
+            "BWEB"
+          ],
+          "params": {
+            "affiliate": "gsa.gov",
+            "commit": "Search",
+            "page": "2",
+            "query": "abbreviations"
+          },
+          "useragent": {
+            "name": "Firefox",
+            "os": "Windows 7",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code2": "US",
+            "region_name": "NY",
+            "location": [
+              -73.9981,
+              40.726699999999994
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
