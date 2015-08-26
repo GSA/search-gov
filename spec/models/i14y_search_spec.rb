@@ -22,6 +22,49 @@ describe I14ySearch do
     end
   end
 
+  context 'when sort_by=date' do
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
+                                       sort_by: 'date',
+                                       per_page: 20,
+                                       query: 'marketplase') }
+
+    it 'searchs I14y with the appropriate params' do 
+      I14yCollections.should_receive(:search).with(hash_including(sort_by_date: 1))
+      i14y_search.run
+    end
+  end
+
+  context 'when sort_by=date and tbs is specified' do
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
+                                       sort_by: 'date',
+                                       tbs: 'm',
+                                       per_page: 20,
+                                       query: 'marketplase') }
+
+    it 'searchs I14y with the appropriate params' do 
+      I14yCollections.should_receive(:search).
+        with(hash_including(sort_by_date: 1, min_timestamp: 1.send('month').ago.beginning_of_day))
+      i14y_search.run
+    end
+  end
+
+  context 'when sort_by=date and since_date and until_date are specified' do
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
+                                       sort_by: 'date',
+                                       since_date: '07/28/2015',
+                                       until_date: '09/28/2015',
+                                       per_page: 20,
+                                       query: 'marketplase') }
+
+    it 'searchs I14y with the appropriate params' do 
+      I14yCollections.should_receive(:search).
+        with(hash_including(sort_by_date: 1, 
+                            min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,
+                            max_timestamp: DateTime.parse('09/28/2015').end_of_day))
+      i14y_search.run
+    end
+  end
+
   context 'when enable_highlighting is false' do
     let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
                                        enable_highlighting: false,

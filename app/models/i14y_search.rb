@@ -1,4 +1,4 @@
-class I14ySearch < Search
+class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
@@ -14,12 +14,20 @@ class I14ySearch < Search
       language: @affiliate.locale,
       query: @query,
       size: detect_size,
-      offset: detect_offset
-    }
+      offset: detect_offset,
+    }.merge!(filter_options)
     I14yCollections.search(search_options)
   rescue Faraday::ClientError => e
     Rails.logger.error "I14y search problem: #{e.message}"
     false
+  end
+
+  def filter_options
+    filter_options = { }
+    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
+    filter_options[:min_timestamp] = @since if @since
+    filter_options[:max_timestamp] = @until if @until
+    filter_options
   end
 
   def detect_size
