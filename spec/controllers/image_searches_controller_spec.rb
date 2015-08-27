@@ -43,6 +43,20 @@ describe ImageSearchesController do
         it { should assign_to(:page_title).with("thunder & lightning - NPS Site Search Results") }
       end
 
+      context "via the JSON API" do
+        let(:search_results_json) { 'search results json' }
+        before do
+          image_search.should_receive(:to_json).and_return(search_results_json)
+          get :index, :affiliate => 'nps.gov', :query => '<script>thunder & lightning</script>', :format => :json
+        end
+
+        it { should respond_with_content_type :json }
+        it { should respond_with :success }
+
+        it "should render the results in json" do
+          response.body.should == search_results_json
+        end
+      end
     end
 
     context "when searching on legacy affiliate and the query is blank" do
@@ -63,6 +77,48 @@ describe ImageSearchesController do
       before { get :index, affiliate: { 'foo' => 'bar' }, query: 'gov' }
 
       it { should redirect_to 'http://www.usa.gov/page-not-found' }
+    end
+
+    context "when searching on legacy affiliate via the API" do
+      fixtures :image_search_labels
+      render_views
+
+      before do
+        affiliates(:usagov_affiliate).update_attributes!(force_mobile_format: false)
+      end
+
+      context "when searching normally" do
+        before do
+          get :index, :query => '<script>weather</script>', :format => "json", affiliate: 'usagov'
+          @search = assigns[:search]
+        end
+
+        it "should set the format to json" do
+          response.content_type.should == "application/json"
+        end
+
+        it "should sanitize the query term" do
+          @search.query.should == "weather"
+        end
+
+        it "should serialize the results into JSON" do
+          response.body.should =~ /total/
+          response.body.should =~ /startrecord/
+          response.body.should =~ /endrecord/
+        end
+      end
+
+      context "when some error is returned" do
+        before do
+          get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
+          @search = assigns[:search]
+        end
+
+        it "should serialize an error into JSON" do
+          response.body.should =~ /error/
+          response.body.should =~ /#{I18n.translate :too_long}/
+        end
+      end
     end
 
     context "when searching in mobile mode" do
