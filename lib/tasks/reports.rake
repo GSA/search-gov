@@ -31,7 +31,7 @@ namespace :usasearch do
         begin
           Emailer.daily_snapshot(membership).deliver
         rescue Exception => e
-          Rails.logger.warn "Trouble emailing daily snapshot report to user #{membership.user_id}: #{e}"
+          Rails.logger.warn "Trouble emailing daily snapshot report for membership #{membership.id}: #{e}"
         end
       end
     end
