@@ -114,8 +114,11 @@ ready = () ->
     templates:
       suggestion: (data) ->
         typedQuery = $(queryFieldSelectorWithTypeahead).val()
-        suggestionSuffix = data.substr(typedQuery.length)
-        "<div>#{typedQuery}<strong>#{suggestionSuffix}</strong></div>"
+        if data.indexOf(typedQuery) == -1 # if the typedQuery is not in the suggestion (i.e. it's misspelled)
+          "<div><strong>#{data}</strong></div>"
+        else
+          suggestionSuffix = data.substr(typedQuery.length)
+          "<div>#{typedQuery}<strong>#{suggestionSuffix}</strong></div>"
 
 $(document).ready ready
 $(document).on 'page:load', ready
