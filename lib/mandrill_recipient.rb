@@ -14,21 +14,17 @@ class MandrillRecipient
   end
 
   def to_admin
-    to = [{ email: config[:force_to] || config[:admin_email] }]
+    to = [{ email: admin_recipient_email }]
     to << { email: bcc_email, type: 'bcc' } if bcc_email
     to
   end
 
   def user_merge_vars_array
-    array = [{ rcpt: user.email, vars: merge_var_array }]
-    array << { rcpt: bcc_email, vars: merge_var_array } if bcc_email
-    array
+    merge_vars_array(recipient_email)
   end
 
   def admin_merge_vars_array
-    array = [{ rcpt: config[:admin_email], vars: merge_var_array }]
-    array << { rcpt: bcc_email, vars: merge_var_array } if bcc_email
-    array
+    merge_vars_array(admin_recipient_email)
   end
 
   def default_merge_vars
@@ -46,12 +42,22 @@ class MandrillRecipient
 
   private
 
+  def merge_vars_array(email)
+    array = [{ rcpt: email, vars: merge_var_array }]
+    array << { rcpt: bcc_email, vars: merge_var_array } if bcc_email
+    array
+  end
+
   def bcc_email
     config[:bcc_email]
   end
 
   def recipient_email
     config[:force_to] || user.email
+  end
+
+  def admin_recipient_email
+    config[:force_to] || config[:admin_email]
   end
 
   def global_merge_vars

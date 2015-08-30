@@ -112,26 +112,30 @@ describe MandrillRecipient do
   end
 
   describe '#user_merge_vars_array' do
-    let(:config) { { bcc_email: bcc_email } }
+    let(:bcc_email) { nil }
+    let(:merge_vars) { { } }
+    let(:force_to) { nil }
+    let(:config) do
+      {
+        bcc_email: bcc_email,
+        force_to: force_to,
+      }
+    end
+    let(:expected_merge_vars) do
+      [
+        { name: 'contact_name', content: 'Some User' },
+        { name: 'email', content: 'user@example.com' },
+        { name: 'email_verification_token', content: 'verification-token' },
+        { name: 'has_sites', content: true },
+        { name: 'id', content: 21 },
+        { name: 'latest_site', content: 'Site Beyond Site' },
+        { name: 'organization_name', content: 'The Organization' },
+        { name: 'requires_manual_approval', content: true },
+      ]
+    end
 
     context 'when no merge_vars are provided' do
-      let(:merge_vars) { { } }
-      let(:expected_merge_vars) do
-        [
-          { name: 'contact_name', content: 'Some User' },
-          { name: 'email', content: 'user@example.com' },
-          { name: 'email_verification_token', content: 'verification-token' },
-          { name: 'has_sites', content: true },
-          { name: 'id', content: 21 },
-          { name: 'latest_site', content: 'Site Beyond Site' },
-          { name: 'organization_name', content: 'The Organization' },
-          { name: 'requires_manual_approval', content: true },
-        ]
-      end
-
       context 'and there is no bcc_email configured' do
-        let(:bcc_email) { nil }
-
         it 'includes standard user merge vars sorted by name for just the user' do
           expect(subject.user_merge_vars_array).to eq [
             {
@@ -182,8 +186,6 @@ describe MandrillRecipient do
       end
 
       context 'and there is no bcc_email configured' do
-        let(:bcc_email) { nil }
-
         it 'includes the given merge vars and standard user merge vars sorted by name for just the user' do
           expect(subject.user_merge_vars_array).to eq [
             {
@@ -212,34 +214,47 @@ describe MandrillRecipient do
         end
       end
     end
+
+    context 'when there is a force_to configured' do
+      let(:force_to) { email_trap }
+
+      it 'keys the result by the force_to address' do
+        expect(subject.user_merge_vars_array).to eq [
+          {
+            rcpt: email_trap,
+            vars: expected_merge_vars,
+          },
+        ]
+      end
+    end
   end
 
   describe '#admin_merge_vars_array' do
+    let(:bcc_email) { nil }
+    let(:merge_vars) { { } }
+    let(:force_to) { nil }
     let(:config) do
       {
         admin_email: 'admin@example.com',
         bcc_email: bcc_email,
+        force_to: force_to,
       }
+    end
+    let(:expected_merge_vars) do
+      [
+        { name: 'contact_name', content: 'Some User' },
+        { name: 'email', content: 'user@example.com' },
+        { name: 'email_verification_token', content: 'verification-token' },
+        { name: 'has_sites', content: true },
+        { name: 'id', content: 21 },
+        { name: 'latest_site', content: 'Site Beyond Site' },
+        { name: 'organization_name', content: 'The Organization' },
+        { name: 'requires_manual_approval', content: true },
+      ]
     end
 
     context 'when no merge_vars are provided' do
-      let(:merge_vars) { { } }
-      let(:expected_merge_vars) do
-        [
-          { name: 'contact_name', content: 'Some User' },
-          { name: 'email', content: 'user@example.com' },
-          { name: 'email_verification_token', content: 'verification-token' },
-          { name: 'has_sites', content: true },
-          { name: 'id', content: 21 },
-          { name: 'latest_site', content: 'Site Beyond Site' },
-          { name: 'organization_name', content: 'The Organization' },
-          { name: 'requires_manual_approval', content: true },
-        ]
-      end
-
       context 'and there is no bcc_email configured' do
-        let(:bcc_email) { nil }
-
         it 'includes standard admin-facing user merge vars sorted by name for just the admin' do
           expect(subject.admin_merge_vars_array).to eq [
             {
@@ -248,7 +263,6 @@ describe MandrillRecipient do
             },
           ]
         end
-
       end
 
       context 'and there is a bcc_email configured' do
@@ -291,8 +305,6 @@ describe MandrillRecipient do
       end
 
       context 'and there is no bcc_email configured' do
-        let(:bcc_email) { nil }
-
         it 'includes the given merge vars and standard user merge vars sorted by name for just the admin' do
           expect(subject.admin_merge_vars_array).to eq [
             {
@@ -318,6 +330,19 @@ describe MandrillRecipient do
             },
           ]
         end
+      end
+    end
+
+    context 'when there is a force_to configured' do
+      let(:force_to) { email_trap }
+
+      it 'keys the result by the force_to address' do
+        expect(subject.admin_merge_vars_array).to eq [
+          {
+            rcpt: email_trap,
+            vars: expected_merge_vars,
+          },
+        ]
       end
     end
   end
