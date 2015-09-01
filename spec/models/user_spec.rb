@@ -331,7 +331,7 @@ describe User do
         new_user.is_affiliate?.should be_true
         new_user.requires_manual_approval.should be_false
         new_user.is_pending_email_verification?.should be_true
-        new_user.welcome_email_sent.should be_true
+        new_user.welcome_email_sent.should be_false
         affiliate.users.should include(new_user)
       end
 

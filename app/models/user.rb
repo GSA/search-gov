@@ -177,7 +177,7 @@ class User < ActiveRecord::Base
 
   def set_default_flags
     self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email? and !invited
-    self.welcome_email_sent = true if (is_developer? and !skip_welcome_email) or invited
+    self.welcome_email_sent = true if (is_developer? and !skip_welcome_email)
   end
 
   def push_to_nutshell
