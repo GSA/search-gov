@@ -10,4 +10,13 @@ setMargin = ->
   else
     $('#main-content').css 'paddingBottom', 0
 
-$(document).ready setupStickyFooter
+windowLoadEvent = (func) ->
+  oldOnLoad = window.onload
+  unless typeof window.onload is "function"
+    window.onload = func
+  else
+    window.onload = ->
+      oldOnLoad()
+      func()
+
+windowLoadEvent setupStickyFooter

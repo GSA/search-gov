@@ -593,7 +593,7 @@ Feature: Affiliate Search
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
       | link                                                                                                | title      | guid  | published_ago | description         |
-      | http://www.whitehouse.gov/blog/2014/03/11/watch-president-obama-between-two-ferns-zach-galifianakis | First item | uuid1 | day           | two ferns news item |
+      | https://www.whitehouse.gov/blog/2014/03/11/watch-president-obama-between-two-ferns-zach-galifianakis | First item | uuid1 | day           | two ferns news item |
     When I am on bar.gov's search page
     And I fill in "query" with "two ferns"
     And I press "Search" in the search box

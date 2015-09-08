@@ -366,7 +366,7 @@ Feature: Searches using mobile device
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
     Then I should see Generado por Bing logo
-    And I should see at least "10" web search results
+    And I should see at least "7" web search results
 
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
