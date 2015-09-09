@@ -157,7 +157,6 @@ describe Sites::UsersController do
       let(:remaining_sites) { [] }
 
       before do
-        target_user.should_receive(:affiliates).and_return(remaining_sites)
         User.should_receive(:find).with('100').and_return(target_user)
 
         memberships = mock('membership')
@@ -181,30 +180,13 @@ describe Sites::UsersController do
       describe 'nutshell audit trail' do
         before { adapter.should_receive(:push_site) }
 
-        context 'when user no longer belongs to any sites' do
-          it 'creates a Nutshell note indicating user removal and resulting not_approved status' do
-            expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov]. ' +
-                               'This user is no longer associated with any sites, ' +
-                               "so their approval status has been set to 'not_approved'."
-            adapter.should_receive(:new_note).with(target_user, expected_message)
+        it 'creates a Nutshell note indicating user removal' do
+          expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov].'
+          adapter.should_receive(:new_note).with(target_user, expected_message)
 
-            put :destroy,
-                id: 100,
-                site_id: site.id
-          end
-        end
-
-        describe 'when the user still belongs to other sites' do
-          let(:remaining_sites) { [affiliates(:power_affiliate), affiliates(:another_affiliate)] }
-
-          it 'creates a Nutshell note indicating user removal' do
-            expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov].'
-            adapter.should_receive(:new_note).with(target_user, expected_message)
-
-            put :destroy,
-                id: 100,
-                site_id: site.id
-          end
+          put :destroy,
+              id: 100,
+              site_id: site.id
         end
       end
     end

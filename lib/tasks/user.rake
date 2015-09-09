@@ -6,6 +6,7 @@ namespace :usasearch do
         user.set_approval_status_to_not_approved
         user.save!
         Emailer.user_approval_removed(user).deliver
+        NutshellAdapter.new.new_note(user, 'This user is no longer associated with any sites, so their approval status has been set to "not_approved".')
       end
     end
   end

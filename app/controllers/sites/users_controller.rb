@@ -51,15 +51,15 @@ class Sites::UsersController < Sites::SetupSiteController
   end
 
   def audit_trail_user_added
-    NutshellAdapter.new.new_note(@user, "@[Contacts:#{current_user.nutshell_id}] added @[Contacts:#{@user.nutshell_id}], #{@user.email} to @[Leads:#{@site.nutshell_id}] #{@site.display_name} [#{@site.name}].")
+    add_nutshell_note_for_user('added', 'to')
   end
 
   def audit_trail_user_removed
-    note = "@[Contacts:#{current_user.nutshell_id}] removed @[Contacts:#{@user.nutshell_id}], #{@user.email} from @[Leads:#{@site.nutshell_id}] #{@site.display_name} [#{@site.name}]."
-    if @user.affiliates.empty?
-      note += " This user is no longer associated with any sites, so their approval status has been set to 'not_approved'."
-    end
+    add_nutshell_note_for_user('removed', 'from')
+  end
 
+  def add_nutshell_note_for_user(added_or_removed, to_or_from)
+    note = "@[Contacts:#{current_user.nutshell_id}] #{added_or_removed} @[Contacts:#{@user.nutshell_id}], #{@user.email} #{to_or_from} @[Leads:#{@site.nutshell_id}] #{@site.display_name} [#{@site.name}]."
     NutshellAdapter.new.new_note(@user, note)
   end
 end
