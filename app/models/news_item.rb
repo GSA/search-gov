@@ -58,7 +58,7 @@ class NewsItem < ActiveRecord::Base
 
   def owner_language_guess
     first_feed = rss_feed_url.rss_feeds.first
-    first_feed.owner_type == 'Affiliate' ? first_feed.owner.locale : first_feed.owner.affiliates.first.locale
+    first_feed.owner_type == 'Affiliate' ? first_feed.owner.indexing_locale : first_feed.owner.affiliates.first.indexing_locale
   rescue Exception => e
     Rails.logger.warn "NewsItem #{self.id} is not associated with any RssFeed: #{e}"
     'en'

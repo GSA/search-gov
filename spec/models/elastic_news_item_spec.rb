@@ -207,6 +207,33 @@ describe ElasticNewsItem do
           ElasticNewsItem.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total.should be_zero
         end
       end
+
+      context 'when affiliate locale is not one of the custom indexed languages' do
+        before do
+          affiliate.locale = 'kl'
+          affiliate.save!
+          NewsItem.create!(
+            rss_feed_url_id: white_house_blog_url.id,
+            guid: 'greenland',
+            published_at: 3.days.ago,
+            link: 'http://www.wh.gov/greenland',
+            title: 'Angebote und Superknüller der Woche',
+            description: "desc",
+            body: 'random text here',
+            contributor: 'President',
+            publisher: 'Briefing Room',
+            subject: 'Economy')
+          ElasticNewsItem.commit
+        end
+
+        it 'should do downcasing and ASCII folding only' do
+          appropriate_stemming = ['superknuller', 'woche']
+          appropriate_stemming.each do |query|
+            ElasticNewsItem.search_for(q: query, rss_feeds: [blog], language: affiliate.indexing_locale, title_only: true).total.should == 1
+          end
+        end
+      end
+
     end
 
     describe "sorting" do

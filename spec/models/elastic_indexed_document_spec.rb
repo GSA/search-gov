@@ -278,6 +278,25 @@ describe ElasticIndexedDocument do
         end
 
       end
+
+      context 'when affiliate locale is not one of the custom indexed languages' do
+        before do
+          affiliate.locale = 'de'
+          affiliate.indexed_documents.create!(title: 'Angebote und Superknüller der Woche',
+                                              description: 'Angebote der Woche. Die Angebote der Woche sind gültig vom 30.03.2015 bis zum 04.04.2015.',
+                                              url: 'http://el.wikipedia.org/wiki/valid_now',
+                                              last_crawl_status: IndexedDocument::OK_STATUS)
+          ElasticIndexedDocument.commit
+        end
+
+        it 'should do downcasing and ASCII folding only' do
+          appropriate_stemming = ['superknuller', 'Gultig']
+          appropriate_stemming.each do |query|
+            ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+          end
+        end
+      end
+
     end
 
   end

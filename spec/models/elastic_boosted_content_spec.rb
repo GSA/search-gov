@@ -37,7 +37,7 @@ describe ElasticBoostedContent do
         end
 
         context 'when site_limits option is present' do
-          it 'returns results with matcing URL prefix' do
+          it 'returns results with matching URL prefix' do
             search = ElasticBoostedContent.search_for(q: 'Tropical',
                                                       affiliate_id: affiliate.id,
                                                       size: 1,

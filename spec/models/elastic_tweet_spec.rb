@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ElasticTweet do
+  fixtures :affiliates, :twitter_profiles, :languages
+  let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:twitter_profile) { twitter_profiles(:usagov) }
+
   before do
     ElasticTweet.recreate_index
     Tweet.delete_all
@@ -53,6 +57,24 @@ describe ElasticTweet do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345], language: 'en', since: 3.months.ago)
           search.total.should == 1
           search.results.first.tweet_id.should == 1234567
+        end
+      end
+
+      context 'when affiliate locale is not one of the custom indexed languages' do
+        before do
+          affiliate.locale = 'kl'
+          affiliate.save!
+          twitter_profile.affiliates << affiliate
+          Tweet.create!(tweet_id: 90210, tweet_text: "Angebote und Superknüller der Woche",
+                        published_at: Time.now, twitter_profile_id: twitter_profile.twitter_id)
+          ElasticTweet.commit
+        end
+
+        it 'should do downcasing and ASCII folding only' do
+          appropriate_stemming = ['superknuller', 'woche']
+          appropriate_stemming.each do |query|
+            ElasticTweet.search_for(q: query, twitter_profile_ids: [twitter_profile.twitter_id], language: affiliate.indexing_locale).total.should == 1
+          end
         end
       end
 

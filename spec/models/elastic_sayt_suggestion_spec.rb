@@ -180,6 +180,23 @@ describe ElasticSaytSuggestion do
         end
 
       end
+
+      context 'when affiliate locale is not one of the custom indexed languages' do
+        before do
+          affiliate.locale = 'de'
+          affiliate.sayt_suggestions.create!(phrase: 'Angebote und Superknüller der Woche', popularity: 45)
+          affiliate.sayt_suggestions.create!(phrase: 'Angebote der Woche. Die Angebote der Woche sind gültig', popularity: 44)
+          ElasticSaytSuggestion.commit
+        end
+
+        it 'should do downcasing and ASCII folding only' do
+          appropriate_stemming = ['superknuller', 'Gultig']
+          appropriate_stemming.each do |query|
+            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+          end
+        end
+      end
+
     end
 
   end
