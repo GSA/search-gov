@@ -1,4 +1,6 @@
 .header
+  - if $git_info.show_header
+    #git-info-header= render partial: 'shared/git_info_header'
   #top_logo
     = render partial: 'shared/brand'
   #top_nav

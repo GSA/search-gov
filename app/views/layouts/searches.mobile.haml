@@ -28,6 +28,8 @@
       - navigations = renderable_navigations @search
       - has_menu = has_menu_items? @search, navigations
       #menu-button-wrapper= render partial: 'searches/nav_button', locals: { search: @search } if has_menu
+      - if $git_info.show_header
+        #git-info-header= render partial: 'shared/git_info_header'
       #header-logo-wrapper= mobile_header @search.affiliate
     #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
 

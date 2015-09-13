@@ -235,6 +235,5 @@ describe "sites/sites/show.html.haml" do
         rendered.should have_selector("p", content: "Total Clicks: 5,678")
       end
     end
-
   end
 end

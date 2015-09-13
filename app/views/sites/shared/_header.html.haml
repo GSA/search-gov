@@ -1,4 +1,7 @@
 #navbar.navbar
+  - if $git_info.show_header
+    #admin-system-warning-wrapper
+      #git-info-header= render partial: 'shared/git_info_header'
   .navbar-inner
     .container
       = render partial: 'shared/brand'
