@@ -4,10 +4,9 @@ queryFieldSelectorWithTypeahead = '#search-bar #query.typeahead-enabled'
 clearQuery = ->
   $queryFieldSelector = $(queryFieldSelector)
 
+  $queryFieldSelector.val('')
   if $queryFieldSelector.hasClass 'typeahead-enabled'
     $queryFieldSelector.typeahead('setQuery', '')
-  else
-    $queryFieldSelector.val('')
 
   $queryFieldSelector.focus()
   $('#search-bar').removeClass 'has-query-term'
