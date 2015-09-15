@@ -67,7 +67,7 @@ Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, i
         properties[:media_thumbnail] = { url: "#{link}_q.jpg" }
         content_prefix = 'image'
       when /video/
-        link_param = { v: "#{index}" }
+        link_param = { v: "#{index}_#{feed_name}" }
         link = "http://www.youtube.com/watch?#{link_param.to_query}"
         content_prefix = 'video'
       else
@@ -77,7 +77,7 @@ Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, i
                                     :title => "#{content_prefix} news item #{index + 1} title for #{feed_name}",
                                     :description => "#{content_prefix} news item #{index + 1} description for #{feed_name}",
                                     :body => "#{content_prefix} news item #{index + 1} body for #{feed_name}",
-                                    :guid => "#{now}_#{index + 1}",
+                                    :guid => "#{now}_#{index + 1}_#{feed_name}",
                                     :published_at => published_at - index,
                                     :properties => properties)
   end
