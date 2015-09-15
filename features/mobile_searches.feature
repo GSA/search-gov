@@ -354,7 +354,7 @@ Feature: Searches using mobile device
 
     And affiliate "es.agency.gov" has the following document collections:
       | name            | prefixes                       |
-      | GobiernoUSA.gov | http://www.usa.gov/gobiernousa |
+      | GobiernoUSA.gov | https://gobierno.usa.gov |
 
     When I am on en.agency.gov's "USA.gov" mobile site search page
     And I fill in "Enter your search term" with "gov"

@@ -913,8 +913,8 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes            | is_navigable |
-      | Blog | http://blog.usa.gov | false        |
-      | Web  | http://www.usa.gov  | true         |
+      | Blog | http://www.sba.gov/blogs | false        |
+      | Web  | https://www.usa.gov  | true         |
     When I am on agency.gov's "Blog" docs search page
     Then I should see "Blog" in the left column
     And I should not see a link to "Everything" in the left column
