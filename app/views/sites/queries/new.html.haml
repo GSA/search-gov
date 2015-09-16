@@ -10,7 +10,7 @@
 
 - if @queries_request.top_queries.present?
   %p
-    Tip: Select the hyperlinked number in the # of Clicks column to view the top clicked URLs for each query.
+    Tips: Select the hyperlinked number in the # of Queries column to view the top referring URLs for each query. Select the hyperlinked number in the # of Clicks column to view the top clicked URLs for each query.
   %p
     *
     = link_to "Routed queries", site_routed_queries_path(@site)
@@ -31,7 +31,8 @@
             - if query_click_count.is_routed_query
               *
             = query_drilldown_link(@site, query_click_count.query, @queries_request.start_date, @queries_request.end_date )
-          %td= number_with_delimiter(query_click_count.queries)
+          %td= link_to_unless query_click_count.queries.zero?, number_with_delimiter(query_click_count.queries), site_query_referrers_path(@site,
+            {:query => query_click_count.query, :start_date => @queries_request.start_date, :end_date => @queries_request.end_date})
           %td= link_to_unless query_click_count.clicks.zero?, number_with_delimiter(query_click_count.clicks), site_query_clicks_path(@site,
             {:query => query_click_count.query, :start_date => @queries_request.start_date, :end_date => @queries_request.end_date})
           %td= number_to_percentage(query_click_count.ctr, precision: 1)
