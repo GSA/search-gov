@@ -8,15 +8,11 @@ class MandrillRecipient
   end
 
   def to_user
-    to = [{ email: recipient_email, name: user.contact_name }]
-    to << { email: bcc_email, type: 'bcc' } if bcc_email
-    to
+    [{ email: recipient_email, name: user.contact_name }] + bcc_recipients
   end
 
   def to_admin
-    to = [{ email: admin_recipient_email }]
-    to << { email: bcc_email, type: 'bcc' } if bcc_email
-    to
+    [{ email: admin_recipient_email }] + bcc_recipients
   end
 
   def user_merge_vars_array
@@ -43,13 +39,19 @@ class MandrillRecipient
   private
 
   def merge_vars_array(email)
-    array = [{ rcpt: email, vars: merge_var_array }]
-    array << { rcpt: bcc_email, vars: merge_var_array } if bcc_email
-    array
+    [{ rcpt: email, vars: merge_var_array }] + bcc_merge_vars
   end
 
-  def bcc_email
-    config[:bcc_email]
+  def bcc_emails
+    [config[:bcc_email]].flatten.compact
+  end
+
+  def bcc_recipients
+    bcc_emails.map { |email| { email: email, type: 'bcc' } }
+  end
+
+  def bcc_merge_vars
+    bcc_emails.map { |email| { rcpt: email, vars: merge_var_array } }
   end
 
   def recipient_email

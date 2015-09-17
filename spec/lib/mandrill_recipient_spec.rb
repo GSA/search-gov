@@ -46,13 +46,25 @@ describe MandrillRecipient do
       end
     end
 
-    context 'when there is a bcc_email configured' do
+    context 'when there is a single bcc_email configured' do
       let(:bcc_email) { 'bcc@example.com' }
 
       it 'includes the user and bcc as recipients' do
         expect(subject.to_user).to eq [
           { email: 'user@example.com', name: 'Some User' },
           { email: 'bcc@example.com', type: 'bcc' },
+        ]
+      end
+    end
+
+    context 'when there is a bcc_email list configured' do
+      let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+      it 'includes the user and all bccs as recipients' do
+        expect(subject.to_user).to eq [
+          { email: 'user@example.com', name: 'Some User' },
+          { email: 'bcc1@example.com', type: 'bcc' },
+          { email: 'bcc2@example.com', type: 'bcc' },
         ]
       end
     end
@@ -89,13 +101,25 @@ describe MandrillRecipient do
       end
     end
 
-    context 'when there is a bcc_email configured' do
+    context 'when there is a single bcc_email configured' do
       let(:bcc_email) { 'bcc@example.com' }
 
       it 'includes the admin and bcc as recipients' do
         expect(subject.to_admin).to eq [
           { email: 'admin@example.com' },
           { email: 'bcc@example.com', type: 'bcc' },
+        ]
+      end
+    end
+
+    context 'when there is a bcc_email list configured' do
+      let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+      it 'includes the admin and all bccs as recipients' do
+        expect(subject.to_admin).to eq [
+          { email: 'admin@example.com' },
+          { email: 'bcc1@example.com', type: 'bcc' },
+          { email: 'bcc2@example.com', type: 'bcc' },
         ]
       end
     end
@@ -146,7 +170,7 @@ describe MandrillRecipient do
         end
       end
 
-      context 'and there is a bcc_email configured' do
+      context 'and there is a single bcc_email configured' do
         let(:bcc_email) { 'bcc@example.com' }
 
         it 'includes the standard user merge vars sorted by name for both user and bcc' do
@@ -157,6 +181,27 @@ describe MandrillRecipient do
             },
             {
               rcpt: 'bcc@example.com',
+              vars: expected_merge_vars,
+            },
+          ]
+        end
+      end
+
+      context 'when there is a bcc_email list configured' do
+        let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+        it 'includes the standard user merge vars sorted by name for user and all bccs' do
+          expect(subject.user_merge_vars_array).to eq [
+            {
+              rcpt: 'user@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc1@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc2@example.com',
               vars: expected_merge_vars,
             },
           ]
@@ -197,7 +242,7 @@ describe MandrillRecipient do
 
       end
 
-      context 'and there is a bcc_email configured' do
+      context 'and there is a single bcc_email configured' do
         let(:bcc_email) { 'bcc@example.com' }
 
         it 'includes the given merge vars and standard user merge vars sorted by name for both user and bcc' do
@@ -208,6 +253,27 @@ describe MandrillRecipient do
             },
             {
               rcpt: 'bcc@example.com',
+              vars: expected_merge_vars,
+            },
+          ]
+        end
+      end
+
+      context 'when there is a bcc_email list configured' do
+        let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+        it 'includes the standard user merge vars sorted by name for user and all bccs' do
+          expect(subject.user_merge_vars_array).to eq [
+            {
+              rcpt: 'user@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc1@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc2@example.com',
               vars: expected_merge_vars,
             },
           ]
@@ -265,7 +331,7 @@ describe MandrillRecipient do
         end
       end
 
-      context 'and there is a bcc_email configured' do
+      context 'and there is a single bcc_email configured' do
         let(:bcc_email) { 'bcc@example.com' }
 
         it 'includes standard admin-facing user merge vars sorted by name for both the admin and bcc' do
@@ -276,6 +342,27 @@ describe MandrillRecipient do
             },
             {
               rcpt: 'bcc@example.com',
+              vars: expected_merge_vars,
+            },
+          ]
+        end
+      end
+
+      context 'when there is a bcc_email list configured' do
+        let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+        it 'includes the standard admin-facing user merge vars sorted by name for admin and all bccs' do
+          expect(subject.admin_merge_vars_array).to eq [
+            {
+              rcpt: 'admin@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc1@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc2@example.com',
               vars: expected_merge_vars,
             },
           ]
@@ -305,7 +392,7 @@ describe MandrillRecipient do
       end
 
       context 'and there is no bcc_email configured' do
-        it 'includes the given merge vars and standard user merge vars sorted by name for just the admin' do
+        it 'includes the given merge vars and standard admin-facing user merge vars sorted by name for just the admin' do
           expect(subject.admin_merge_vars_array).to eq [
             {
               rcpt: 'admin@example.com',
@@ -315,10 +402,10 @@ describe MandrillRecipient do
         end
       end
 
-      context 'and there is a bcc_email configured' do
+      context 'and there is a single bcc_email configured' do
         let(:bcc_email) { 'bcc@example.com' }
 
-        it 'includes the given merge vars and standard user merge vars sorted by name for both admin and bcc' do
+        it 'includes the given merge vars and standard admin-facing user merge vars sorted by name for both admin and bcc' do
           expect(subject.admin_merge_vars_array).to eq [
             {
               rcpt: 'admin@example.com',
@@ -326,6 +413,27 @@ describe MandrillRecipient do
             },
             {
               rcpt: 'bcc@example.com',
+              vars: expected_merge_vars,
+            },
+          ]
+        end
+      end
+
+      context 'when there is a bcc_email list configured' do
+        let(:bcc_email) { ['bcc1@example.com', 'bcc2@example.com'] }
+
+        it 'includes the given merge vars and standard admin-facing user merge vars sorted by name for admin and all bccs' do
+          expect(subject.admin_merge_vars_array).to eq [
+            {
+              rcpt: 'admin@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc1@example.com',
+              vars: expected_merge_vars,
+            },
+            {
+              rcpt: 'bcc2@example.com',
               vars: expected_merge_vars,
             },
           ]
