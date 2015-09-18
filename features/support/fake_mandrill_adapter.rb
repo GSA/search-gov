@@ -1,5 +1,5 @@
 class FakeMandrillAdapter
-  attr_reader :last_user, :last_template_name, :last_merge_vars
+  attr_reader :last_user, :last_template_name, :last_merge_vars, :bcc_setting
 
   def send_user_email(user, template_name, merge_vars={})
     @last_user = user

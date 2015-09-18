@@ -25,6 +25,10 @@ class MandrillAdapter
     end
   end
 
+  def bcc_setting
+    config[:bcc_email]
+  end
+
   def client
     if !config[:api_key].blank?
       Mandrill::API.new(config[:api_key])

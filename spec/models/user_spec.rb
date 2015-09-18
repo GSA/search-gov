@@ -77,7 +77,7 @@ describe User do
 
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
-    let(:mandrill_adapter) { mock(MandrillAdapter) }
+    let(:mandrill_adapter) { mock(MandrillAdapter, bcc_setting: nil) }
     let(:host_with_port) { 'http://example.com:8080' }
 
     it "resets the user's perishable token" do

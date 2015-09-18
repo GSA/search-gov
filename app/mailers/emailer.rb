@@ -1,13 +1,11 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = APP_URL
-  BCC_TO_EMAIL_ADDRESS = "usasearchoutbound@mail.usasearch.howto.gov"
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
   REPLY_TO_EMAIL_ADDRESS = SUPPORT_EMAIL_ADDRESS
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
 
-  self.default bcc: BCC_TO_EMAIL_ADDRESS,
-               from: DELIVER_FROM_EMAIL_ADDRESS,
+  self.default from: DELIVER_FROM_EMAIL_ADDRESS,
                reply_to: REPLY_TO_EMAIL_ADDRESS
 
   def new_user_to_admin(user)
@@ -129,7 +127,7 @@ class Emailer < ActionMailer::Base
       @email_template_subject = email_template.subject
       @email_template_body = email_template.body
     else
-      @recipients = BCC_TO_EMAIL_ADDRESS
+      @recipients = MandrillAdapter.new.bcc_setting
       @email_template_subject = '[USASearch] Missing Email template'
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
@@ -146,7 +144,7 @@ class Emailer < ActionMailer::Base
   end
 
   def send_mail(format_method)
-    email_headers = { to: @recipients, subject: @subject, date: @sent_on }
+    email_headers = { to: @recipients, subject: @subject, date: @sent_on, bcc: MandrillAdapter.new.bcc_setting }
     if @sender.present?
       email_headers[:from] = @sender
       email_headers[:reply_to] = nil

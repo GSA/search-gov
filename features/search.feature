@@ -597,7 +597,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "two ferns"
     And I press "Search" in the search box
-    Then I should see "1 day ago"
+    Then I should see "Between Two Ferns with Zach Galifianakis"
 
   Scenario: No results when searching with active RSS feeds
     Given the following legacy Affiliates exist:
