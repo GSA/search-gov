@@ -21,12 +21,12 @@ module Analytics::HomeHelper
 
   def query_drilldown_link(site, query, start_date, end_date)
     params = { query: query, start_date: start_date, end_date: end_date, format: 'csv' }
-    link_to('(download details)', site_query_drilldowns_path(site, params)).html_safe
+    link_to('Download Details', site_query_drilldowns_path(site, params)).html_safe
   end
 
   def click_drilldown_link(site, url, start_date, end_date)
     params = { url: url, start_date: start_date, end_date: end_date, format: 'csv' }
-    link_to('(download details)', site_click_drilldowns_path(site, params)).html_safe
+    link_to('Download Details', site_click_drilldowns_path(site, params)).html_safe
   end
 
   def linked_shortened_url_without_protocol(url)

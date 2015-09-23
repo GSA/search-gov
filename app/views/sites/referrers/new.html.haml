@@ -1,0 +1,29 @@
+= content_for_site_page_title @site, 'Referrers'
+= form_for @referrers_request, url: { action: :create }, html: { class: 'form' }  do |form|
+  .sub-nav-heading
+    %h2 Referrers
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= form.submit 'Generate Report', class: 'btn submit btn-primary'
+  = render form
+
+- if @referrers_request.top_referrers.present?
+  %table.table.table-striped.table-bordered.table-kv-pairs
+    %thead
+      %tr
+        %th Top Referrers
+        %th # of Queries
+        %th View All Queries from this Referring URL
+    %tbody
+      - @referrers_request.top_referrers.each_with_index do |(url, query_count), idx|
+        %tr
+          %td
+            = "#{idx+1}."
+            = linked_shortened_url_without_protocol(url)
+          %td= number_with_delimiter(query_count)
+          %td= link_to 'View All Queries from this Referrer', site_referrer_queries_path(@site,
+            {:url => url, :start_date => @referrers_request.start_date, :end_date => @referrers_request.end_date})
+
+- else
+  %p Your site has not received any queries with referrers yet.

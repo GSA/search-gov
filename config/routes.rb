@@ -52,11 +52,14 @@ UsasearchRails3::Application.routes.draw do
       resource :type_ahead_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
+      resource :query_referrers, only: [:show]
       resource :query_downloads, only: [:show]
       resource :query_drilldowns, only: [:show]
       resource :click_drilldowns, only: [:show]
       resource :click_queries, only: [:show]
+      resource :referrer_queries, only: [:show]
       resource :queries, only: [:new, :create]
+      resource :referrers, only: [:new, :create]
 
       resource :content, only: [:show]
       resource :display, only: [:edit, :update] do
