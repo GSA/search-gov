@@ -1,7 +1,5 @@
-class Sites::QueryClicksController < Sites::SetupSiteController
+class Sites::QueryClicksController < Sites::SetupDateRangeController
   def show
-    @end_date = request["end_date"].to_date
-    @start_date = request["start_date"].to_date
     @query = request["query"]
     @top_urls = top_urls
   end

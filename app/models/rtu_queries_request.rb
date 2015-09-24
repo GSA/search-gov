@@ -5,30 +5,24 @@ class RtuQueriesRequest
   extend ActiveModel::Naming
   include ActiveModel::Conversion
   include LogstashPrefix
+  include RtuAnalyticsRequestable
 
-  attr_reader :start_date, :end_date, :top_queries, :available_dates, :query, :filter_bots
-
+  attr_reader :start_date, :end_date, :available_dates, :filter_bots
   attribute :site, Affiliate
   attribute :start_date, String
   attribute :end_date, String
-  attribute :query, String
   attribute :filter_bots, Boolean
 
-  def persisted?
-    false
-  end
+  attr_reader :query
+  attribute :query, String
 
-  def save
-    rtu_date_range = RtuDateRange.new(site.name, 'search')
-    @available_dates = rtu_date_range.available_dates_range
-    @end_date = end_date.nil? ? @available_dates.end : end_date.to_date
-    @start_date = start_date.nil? ? (@end_date and @end_date.beginning_of_month) : start_date.to_date
-    @top_queries = compute_top_query_stats
+  def top_queries
+    @top_stats
   end
 
   private
 
-  def compute_top_query_stats
+  def compute_top_stats
     search_query = TopQueryMatchQuery.new(site.name, query, start_date, end_date, { field: 'raw', size: MAX_RESULTS })
     search_click_buckets = top_n(search_query.body)
     stats_from_buckets(search_click_buckets) if search_click_buckets.present?

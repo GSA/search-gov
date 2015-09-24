@@ -17,14 +17,14 @@ describe Analytics::HomeHelper do
     subject { helper.query_drilldown_link(affiliate, 'foo', Date.parse('2015-02-01'), Date.parse('2015-02-05')) }
 
     it { should be_html_safe }
-    it { should have_link('(download details)', href: "/sites/#{affiliate.id}/query_drilldowns.csv?end_date=2015-02-05&query=foo&start_date=2015-02-01") }
+    it { should have_link('Download Details', href: "/sites/#{affiliate.id}/query_drilldowns.csv?end_date=2015-02-05&query=foo&start_date=2015-02-01") }
   end
 
   describe "#click_drilldown_link(site, url, start_date, end_date)" do
     subject { helper.click_drilldown_link(affiliate, 'http://www.gov.gov/url.html', Date.parse('2015-02-01'), Date.parse('2015-02-05')) }
 
     it { should be_html_safe }
-    it { should have_link('(download details)', href: "/sites/#{affiliate.id}/click_drilldowns.csv?end_date=2015-02-05&start_date=2015-02-01&url=http%3A%2F%2Fwww.gov.gov%2Furl.html") }
+    it { should have_link('Download Details', href: "/sites/#{affiliate.id}/click_drilldowns.csv?end_date=2015-02-05&start_date=2015-02-01&url=http%3A%2F%2Fwww.gov.gov%2Furl.html") }
   end
 
   describe "#rtu_affiliate_analytics_weekly_report_links" do

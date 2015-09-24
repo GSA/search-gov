@@ -1,4 +1,4 @@
-class RtuClicksRequest
+class RtuReferrersRequest
   MAX_RESULTS = 1000
   include Virtus
 
@@ -13,16 +13,16 @@ class RtuClicksRequest
   attribute :end_date, String
   attribute :filter_bots, Boolean
 
-  def top_urls
+  def top_referrers
     @top_stats
   end
 
   private
 
   def compute_top_stats
-    query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'params.url', size: MAX_RESULTS })
-    rtu_top_clicks = RtuTopClicks.new(query.body, filter_bots)
-    rtu_top_clicks.top_n
+    query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'referrer', size: MAX_RESULTS })
+    rtu_top_stats = RtuTopQueries.new(query.body, filter_bots)
+    rtu_top_stats.top_n
   end
 
 end
