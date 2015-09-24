@@ -1,7 +1,5 @@
-class Sites::ReferrerQueriesController < Sites::SetupSiteController
+class Sites::ReferrerQueriesController < Sites::SetupDateRangeController
   def show
-    @end_date = request["end_date"].to_date
-    @start_date = request["start_date"].to_date
     @url = request["url"]
     @top_queries = top_queries
   end

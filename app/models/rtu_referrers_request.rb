@@ -4,32 +4,25 @@ class RtuReferrersRequest
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion
+  include RtuAnalyticsRequestable
 
-  attr_reader :start_date, :end_date, :top_referrers, :available_dates, :filter_bots
+  attr_reader :start_date, :end_date, :available_dates, :filter_bots
 
   attribute :site, Affiliate
   attribute :start_date, String
   attribute :end_date, String
   attribute :filter_bots, Boolean
 
-  def persisted?
-    false
-  end
-
-  def save
-    rtu_date_range = RtuDateRange.new(site.name, 'search')
-    @available_dates = rtu_date_range.available_dates_range
-    @end_date = end_date.nil? ? @available_dates.end : end_date.to_date
-    @start_date = start_date.nil? ? (@end_date and @end_date.beginning_of_month) : start_date.to_date
-    @top_referrers = compute_top_referrer_stats
+  def top_referrers
+    @top_stats
   end
 
   private
 
-  def compute_top_referrer_stats
+  def compute_top_stats
     query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'referrer', size: MAX_RESULTS })
-    rtu_top_referrers = RtuTopQueries.new(query.body, filter_bots)
-    rtu_top_referrers.top_n
+    rtu_top_stats = RtuTopQueries.new(query.body, filter_bots)
+    rtu_top_stats.top_n
   end
 
 end
