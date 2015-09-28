@@ -53,7 +53,7 @@ describe SitesHelper do
   end
 
   describe "#generate_jwt" do
-    let(:affiliate) { mock_model(Affiliate, name: 'somename', display_name: 'Somename Displayed', api_access_key: 'somekey') }
+    let(:affiliate) { mock_model(Affiliate, id: 491, name: 'somename', display_name: 'Somename Displayed', api_access_key: 'somekey') }
     let(:subject) { helper.generate_jwt(affiliate) }
     it 'should be decryptable using the JWT secret' do
       expect(subject).to be_kind_of(String)
@@ -62,6 +62,7 @@ describe SitesHelper do
       payload = decoded[0]
       expect(payload['affiliateName']).to eq('somename')
       expect(payload['affiliateDisplayName']).to eq('Somename Displayed')
+      expect(payload['affiliateUsasearchId']).to eq(491)
       expect(payload['accessKey']).to eq('somekey')
       expect(payload['exp']).to be
     end
