@@ -16,6 +16,7 @@ showOrHideClearButton = ->
     $('#search-bar').addClass 'has-query-term'
   else
     $('#search-bar').removeClass 'has-query-term'
+    $('#search-button').prop 'disabled', true
 
 buildStatusMessage = (count) ->
   if $('html[lang=es]').length > 0
@@ -73,7 +74,33 @@ submitForm = (e) ->
     e.preventDefault()
     $('#search-bar').submit()
 
-$(document).on 'keypress', queryFieldSelector, submitForm
+
+$('#search-bar #query').each ->
+  if $(this).val().length == 0
+    $('#search-button').prop 'disabled', true
+  else
+    $('#search-button').prop 'disabled', false
+    $(document).on 'keypress', queryFieldSelector, submitForm
+
+$.urlParam = (name) ->
+  results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+  if results == null
+    return null
+  else
+    return results[1] || 0
+
+# Enable-Disable Input on Key Presses
+$('#search-bar #query').keyup ->
+  query = $.urlParam('query') || ''
+  empty = $(this).val().length != 0 || query.length > 0
+  # console.log('input length: ' +  $(this).val().length);
+  # console.log('query length: ' +  query.length);
+  if empty
+    # console.log("not empty")
+    $('#search-button').prop 'disabled', false
+  else
+    # console.log("empty")
+    $('#search-button').prop 'disabled', true
 
 clearQueryEvent = (e) ->
   e.preventDefault()
