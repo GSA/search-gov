@@ -83,7 +83,7 @@ group :assets do
   gem 'compass-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-rails'
-  gem 'therubyracer'
+  gem 'therubyracer', '~> 0.12.2'
   gem 'yui-compressor'
   gem 'twitter-typeahead-rails', '~> 0.11.1'
   # Why do we have two versions of Font Awesome?
