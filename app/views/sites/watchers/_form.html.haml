@@ -1,0 +1,8 @@
+= render_flash_message
+= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= form.label :name, 'Name', class: 'required'
+= form.text_field :name, class: 'required input-primary'
+= form.label :throttle_period, 'Throttle Period', class: 'required'
+= form.text_field :throttle_period, class: 'required input-primary'
+= form.label :check_interval, 'Check Interval', class: 'required'
+= form.text_field :check_interval, class: 'required input-primary'

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
+  has_many :watchers, dependent: :destroy
   belongs_to :default_affiliate, class_name: 'Affiliate'
   before_validation :downcase_email
   before_validation :set_initial_approval_status, :on => :create
