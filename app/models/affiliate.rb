@@ -41,6 +41,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
+    assoc.has_many :watchers, order: 'name ASC'
   end
 
   has_many :users, order: 'contact_name', through: :memberships

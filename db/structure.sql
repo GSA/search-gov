@@ -809,6 +809,18 @@ CREATE TABLE `users` (
   KEY `index_users_on_nutshell_id` (`nutshell_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `watchers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `check_interval` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `throttle_period` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `whitelisted_v1_api_handles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -2184,3 +2196,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150814195019');
 INSERT INTO schema_migrations (version) VALUES ('20150818202759');
 
 INSERT INTO schema_migrations (version) VALUES ('20150821144231');
+
+INSERT INTO schema_migrations (version) VALUES ('20151008193453');
