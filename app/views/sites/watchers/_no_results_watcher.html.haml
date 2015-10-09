@@ -1,0 +1,6 @@
+= label "no_results_watcher[conditions][distinct_user_total]", 'Search Count', class: 'required'
+= text_field "no_results_watcher[conditions]", :distinct_user_total, value: watcher.distinct_user_total, class: 'required input-primary'
+= label "no_results_watcher[conditions][query_blocklist]", 'Ingored Query Terms', class: 'required'
+= text_field "no_results_watcher[conditions]", :query_blocklist, value: watcher.query_blocklist, class: 'required input-primary'
+= label "no_results_watcher[conditions][time_window]", 'Time Window', class: 'required'
+= text_field "no_results_watcher[conditions]", :time_window, value: watcher.time_window, class: 'required input-primary'

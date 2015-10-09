@@ -143,6 +143,7 @@ UsasearchRails3::Application.routes.draw do
       resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
       resources :watchers
+      resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
     end
   end
 
