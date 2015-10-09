@@ -6,3 +6,5 @@
 = form.text_field :throttle_period, class: 'required input-primary'
 = form.label :check_interval, 'Check Interval', class: 'required'
 = form.text_field :check_interval, class: 'required input-primary'
+
+= render partial: watcher_partial_for(@watcher), locals: {form: form, watcher: @watcher}

@@ -811,11 +811,13 @@ CREATE TABLE `users` (
 
 CREATE TABLE `watchers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `affiliate_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `check_interval` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `throttle_period` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conditions` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)

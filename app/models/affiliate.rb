@@ -266,6 +266,15 @@ class Affiliate < ActiveRecord::Base
   define_hash_columns_accessors column_name_method: :css_property_hash,
                                 fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
 
+  model_name.class_eval do
+    def route_key
+      "sites"
+    end
+    def singular_route_key
+      "site"
+    end
+  end
+
   def self.do_not_dup_attributes
     @@do_not_dup_attributes ||= begin
       logo_attrs = column_names.select do |column_name|
