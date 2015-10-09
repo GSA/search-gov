@@ -99,27 +99,27 @@ describe MedTopic do
 
         en_med_topic.medline_tid.should == 3061
         en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'http://www.nlm.nih.gov/medlineplus/abdominalpain.html'
+        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
         en_med_topic.locale.should == 'en'
         en_med_topic.summary_html.should =~ /abdomen/
         en_med_topic.synonyms.count.should == 1
         en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
         en_med_topic.med_related_topics.count.should == 2
         en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
         en_sites.should == en_clinical_trial_sites
 
         es_med_topic.medline_tid.should == 3062
         es_med_topic.medline_title.should == 'Dolor abdominal'
-        es_med_topic.medline_url.should == 'http://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
+        es_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
         es_med_topic.locale.should == 'es'
         es_med_topic.summary_html.should =~ /abdomen/
         es_med_topic.synonyms.count.should == 3
         es_med_topic.synonyms.collect(&:medline_title).should include('Dolor de barriga', 'Dolor de estómago', 'Dolor de panza')
         es_med_topic.med_related_topics.count.should == 1
         es_med_topic.med_related_topics.collect(&:related_medline_tid).should == [2072]
-        es_med_topic.med_related_topics.where(:title => 'Dolor').first.url.should == 'http://www.nlm.nih.gov/medlineplus/spanish/pain.html'
+        es_med_topic.med_related_topics.where(:title => 'Dolor').first.url.should == 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html'
       end
     end
 
@@ -134,7 +134,7 @@ describe MedTopic do
           t.summary_html = 'nemodba'
           t.med_related_topics.build(:related_medline_tid => 100,
                                      :title => 'related title',
-                                     :url => 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+                                     :url => 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
           t.synonyms.build(:medline_title => 'just a title')
         end
       end
@@ -147,7 +147,7 @@ describe MedTopic do
         en_med_topic.id.should == existing_med_topic.id
         en_med_topic.medline_tid.should == 3061
         en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'http://www.nlm.nih.gov/medlineplus/abdominalpain.html'
+        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
         en_med_topic.locale.should == 'en'
         en_med_topic.summary_html.should =~ /abdomen/
         en_med_topic.summary_html.should_not =~ /nemodba/
@@ -155,8 +155,8 @@ describe MedTopic do
         en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
         en_med_topic.med_related_topics.count.should == 2
         en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
       end
     end
 
@@ -171,7 +171,7 @@ describe MedTopic do
           t.summary_html = 'nemodba'
           t.med_related_topics.build(:related_medline_tid => 100,
                                      :title => 'related title',
-                                     :url => 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+                                     :url => 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
           t.synonyms.build(:medline_title => 'just a title')
         end
       end
@@ -184,7 +184,7 @@ describe MedTopic do
         en_med_topic.id.should_not == existing_med_topic.id
         en_med_topic.medline_tid.should == 3061
         en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'http://www.nlm.nih.gov/medlineplus/abdominalpain.html'
+        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
         en_med_topic.locale.should == 'en'
         en_med_topic.summary_html.should =~ /abdomen/
         en_med_topic.summary_html.should_not =~ /nemodba/
@@ -192,8 +192,8 @@ describe MedTopic do
         en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
         en_med_topic.med_related_topics.count.should == 2
         en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
+        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
       end
     end
 
@@ -231,7 +231,7 @@ describe MedTopic do
           t.summary_html = 'nemodba'
           t.med_related_topics.build(:related_medline_tid => 351,
                                      :title => 'related title',
-                                     :url => 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+                                     :url => 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
         end
       end
 
@@ -251,7 +251,7 @@ describe MedTopic do
       let(:xml_file_name) { 'mplus_topics_2012-07-21.xml' }
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
       let(:staging_xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml-staging' }
-      let(:medline_uri) { URI.parse("http://www.nlm.nih.gov/medlineplus/xml/#{xml_file_name}") }
+      let(:medline_uri) { URI.parse("https://www.nlm.nih.gov/medlineplus/xml/#{xml_file_name}") }
       let(:staging_file) { mock('staging file') }
       let(:response) { mock('http response') }
 
@@ -295,24 +295,24 @@ describe MedTopic do
       MedTopic.create! do |t|
         t.medline_tid = 3061
         t.medline_title = 'txf'
-        t.medline_url = 'http://www.nlm.nih.gov/medlineplus/abdominalpain.html'
+        t.medline_url = 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
         t.locale = :en
         t.summary_html = 'Your abdomen extends from below your chest to your groin.'
         t.synonyms.build(:medline_title => 'Bellyache')
         t.med_related_topics.build(:related_medline_tid => 351,
                                    :title => 'Pain',
-                                   :url => 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+                                   :url => 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
       end
 
       MedTopic.create!(:medline_tid => 351,
                        :medline_title => 'Pain',
                        :locale => 'en',
-                       :medline_url => 'http://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+                       :medline_url => 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
 
       MedTopic.create! do |t|
         t.medline_tid = 3062
         t.medline_title = 'txf'
-        t.medline_url = 'http://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
+        t.medline_url = 'https://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
         t.locale = :es
         t.summary_html = 'El abdomen se extiende desde abajo del pecho hasta la ingle.'
         t.synonyms.build(:medline_title => 'Dolor de barriga')
@@ -320,13 +320,13 @@ describe MedTopic do
         t.synonyms.build(:medline_title => 'Dolor de panza')
         t.med_related_topics.build(:related_medline_tid => 2072,
                                    :title => 'Dolor',
-                                   :url => 'http://www.nlm.nih.gov/medlineplus/spanish/pain.html')
+                                   :url => 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html')
       end
 
       MedTopic.create!(:medline_tid => 2072,
                        :medline_title => 'Dolor',
                        :locale => 'es',
-                       :medline_url => 'http://www.nlm.nih.gov/medlineplus/spanish/pain.html')
+                       :medline_url => 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html')
     end
 
     it 'should return nil when there is no match' do

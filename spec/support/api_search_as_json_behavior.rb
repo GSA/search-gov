@@ -141,12 +141,12 @@ shared_examples 'an API search as_json' do
     it 'includes health_topics' do
       health_topics = search_rash.health_topics.collect(&:deep_symbolize_keys)
       expect(health_topics.first).to eq(title: 'Cancer',
-                                        url: 'http://www.nlm.nih.gov/medlineplus/cancer.html',
+                                        url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
                                         snippet: "Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.",
                                         related_topics: [{ 'title' => 'Cancer Alternative Therapies',
-                                                           'url' => 'http://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
+                                                           'url' => 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
                                                          { 'title' => 'Cancer and Pregnancy',
-                                                           'url' => 'http://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }],
+                                                           'url' => 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }],
                                         related_sites: [{ 'title' => 'Carcinoma',
                                                           'url' => 'http://clinicaltrials.gov/search/open/condition=%22Carcinoma%22' },
                                                         { 'title' => 'Neoplasms',

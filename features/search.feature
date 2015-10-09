@@ -719,12 +719,12 @@ Feature: Affiliate Search
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     And the following Related Medline Topics for "Hippopotomonstrosesquippedaliophobia" in English exist:
       | medline_title | medline_tid | url                                                                          |
-      | Hippo1        | 24680       | http://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
+      | Hippo1        | 24680       | https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search" in the search box
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
-    And I should see a link to "Hippo1" with url for "http://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
+    And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the english-nih's Manage Display page
