@@ -1,19 +1,24 @@
+sudo: false
 language: ruby
+cache: bundler
 bundler_args: --without development
 rvm:
   - 2.1.2
-before_install:
-  - curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.2.deb && sudo dpkg -i elasticsearch-1.7.2.deb && true
-  - sudo service elasticsearch start
+addons:
+  apt:
+    sources:
+      - elasticsearch-1.7
+    packages:
+      - elasticsearch
+  code_climate:
+    repo_token: 8fdbc26f64a4535d461b9a5bf1c4044fb7780c684edcd07c017d4b4616957a93
 services:
   - redis-server
 before_script:
   - mysql -e 'create database usasearch_test;'
   - mysql -u travis -D usasearch_test < db/structure.sql
-  - cp -p config/database.travis.yml config/database.yml
+  - cp -p config/travis/database.yml config/database.yml
+  - bash -x config/travis/setup-elasticsearch.sh && curl localhost:9200
   - RAILS_ENV=test bundle exec rake usasearch:elasticsearch:create_indexes
-addons:
-  code_climate:
-    repo_token: 8fdbc26f64a4535d461b9a5bf1c4044fb7780c684edcd07c017d4b4616957a93
 notifications:
   slack: blue-beacon:hjGCVYxzrNPDo0KrHzMyVwNS
