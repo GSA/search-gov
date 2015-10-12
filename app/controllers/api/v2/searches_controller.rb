@@ -19,6 +19,18 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def azure_web
+    @search = ApiAzureCompositeWebSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
+  def azure_image
+    @search = ApiAzureCompositeImageSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   def gss
     @search = ApiGssSearch.new @search_options.attributes
     @search.run
@@ -74,6 +86,8 @@ class Api::V2::SearchesController < ApplicationController
   def search_options_validator_klass
     case action_name.to_sym
     when :azure then Api::CommercialSearchOptions
+    when :azure_web then Api::AzureCompositeWebSearchOptions
+    when :azure_image then Api::AzureCompositeImageSearchOptions
     when :blended, :video then Api::NonCommercialSearchOptions
     when :gss then Api::GssSearchOptions
     when :i14y then Api::SearchOptions

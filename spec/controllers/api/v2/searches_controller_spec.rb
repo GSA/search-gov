@@ -89,6 +89,104 @@ describe Api::V2::SearchesController do
     end
   end
 
+  describe '#azure_web' do
+    include_context 'SSL request'
+
+    context 'when the search options are not valid' do
+      before do
+        get :azure_web,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        expect(JSON.parse(response.body)['errors']).to eq(['api_key must be present'])
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiAzureCompositeWebSearch, as_json: { foo: 'bar'}, modules: %w(AZCW)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiAzureCompositeWebSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'azure_web',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :azure_web,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+  end
+
+  describe '#azure_image' do
+    include_context 'SSL request'
+
+    context 'when the search options are not valid' do
+      before do
+        get :azure_image,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        expect(JSON.parse(response.body)['errors']).to eq(['api_key must be present'])
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiAzureCompositeImageSearch, as_json: { foo: 'bar'}, modules: %w(AZCI)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiAzureCompositeImageSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'azure_image',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :azure_image,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+  end
+
   describe '#gss' do
     include_context 'SSL request'
 

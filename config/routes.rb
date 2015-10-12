@@ -15,6 +15,8 @@ UsasearchRails3::Application.routes.draw do
     namespace :v2 do
       get '/search' => 'searches#blended'
       get '/search/azure' => 'searches#azure'
+      get '/search/azure/web' => 'searches#azure_web'
+      get '/search/azure/image' => 'searches#azure_image'
       get '/search/gss' => 'searches#gss'
       get '/search/i14y' => 'searches#i14y'
       get '/search/video' => 'searches#video'

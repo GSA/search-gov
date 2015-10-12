@@ -312,6 +312,35 @@ RSpec.configure do |config|
     azure_image_params = common_azure_image_params.merge(Query: "'agency (site:noresults.nasa.gov)'")
     azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('no_results.json')] }
 
+    azure_composite_url = AzureCompositeEngine::API_ENDPOINT
+    azure_composite = RequestStub.new(azure_composite_url, 'spec/fixtures/json/azure_composite/', stubs)
+
+    common_azure_composite_params = {
+      :'$format' => 'JSON',
+      :'$skip' => 0,
+      :'$top' => 5,
+      ImageFilters: "''",
+      Market: "'en-US'",
+      Sources: "'web+spell'",
+      Query: "'survy (site:www.census.gov)'",
+    }
+
+    azure_composite_params = common_azure_composite_params.merge({ Query: "'unpossible (site:www.census.gov)'" })
+    azure_composite.stub_get_request(azure_composite_params) { [200, {}, azure_composite.raw_response('no_results.json')] }
+
+    azure_composite_params = common_azure_composite_params
+    azure_composite.stub_get_request(azure_composite_params) { [200, {}, azure_composite.raw_response('web_results.json')] }
+
+    azure_composite_params = common_azure_composite_params.merge({ :'$skip' => 1000 })
+    azure_composite.stub_get_request(azure_composite_params) { [200, {}, azure_composite.raw_response('no_next_page.json')] }
+
+    azure_composite_params = common_azure_composite_params.merge({
+      Query: "'survy (site:www.census.gov)'",
+      ImageFilters: "'Aspect:Square'",
+      Sources: "'image+spell'",
+    })
+    azure_composite.stub_get_request(azure_composite_params) { [200, {}, azure_composite.raw_response('image_results.json')] }
+
     nutshell_success_params = {
       id: 'f6f91f185',
       jsonrpc: '2.0',
