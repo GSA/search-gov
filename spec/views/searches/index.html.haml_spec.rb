@@ -278,7 +278,7 @@ describe "searches/index.html.haml" do
         @med_topic = med_topics(:ulcerative_colitis)
         @search.stub!(:query).and_return "ulcerative colitis"
         @search_result = {'title' => "Ulcerative Colitis",
-                          'unescapedUrl' => "http://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
+                          'unescapedUrl' => "https://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
                           'content' => "I have ulcerative colitis.",
                           'cacheUrl' => "http://www.cached.com/url"}
         another_search_result = {'title' => "Ulcerative Colitis",
@@ -319,7 +319,7 @@ describe "searches/index.html.haml" do
         it "should include the related topics in the result, with links to search results pages" do
           render
           rendered.should contain(/Related MedlinePlus Topics/)
-          rendered.should have_selector "a", :href => "http://www.nlm.nih.gov/medlineplus/crohnsdisease.html", :content => 'Crohn\'s Disease'
+          rendered.should have_selector "a", :href => "https://www.nlm.nih.gov/medlineplus/crohnsdisease.html", :content => 'Crohn\'s Disease'
         end
       end
 
