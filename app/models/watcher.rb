@@ -1,5 +1,6 @@
 class Watcher < ActiveRecord::Base
-  INTERVAL_REGEXP = /\d+[smhdw]/
+  include LogstashPrefix
+  INTERVAL_REGEXP = /\A\d+[mhdw]\z/
 
   belongs_to :user
   belongs_to :affiliate
@@ -25,4 +26,22 @@ class Watcher < ActiveRecord::Base
       end
     end
   end
+
+  def body
+    Jbuilder.encode do |json|
+      trigger(json)
+      input(json)
+      condition(json)
+      actions(json)
+    end
+  end
+
+  def trigger(json)
+    json.trigger do
+      json.schedule do
+        json.interval self.check_interval
+      end
+    end
+  end
+
 end
