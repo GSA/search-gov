@@ -4,7 +4,7 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
-      %li= link_to 'Add Watcher', new_site_watcher_path(@site)
+      %li= link_to 'Add Watcher', new_site_no_results_watcher_path(@site)
 
 = render_flash_message
 - if @watchers.present?
@@ -12,6 +12,7 @@
     %thead
       %tr
         %th Name
+        %th Type
         %th Check Interval
         %th Throttle Period
         %th &nbsp
@@ -19,9 +20,10 @@
       - @watchers.each do |watcher|
         %tr
           %td= watcher.name
+          %td= watcher.type.titleize
           %td= watcher.check_interval
           %td= watcher.throttle_period
-          %td.actions.actions-2x
+          %td.actions
             %ul
               %li= link_to 'Edit', edit_polymorphic_path([@site, watcher])
               %li= button_to 'Remove',

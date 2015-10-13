@@ -39,7 +39,7 @@ module UsasearchRails3
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
         :affiliate_observer, :navigable_observer, :searchable_observer, :rss_feed_url_observer,
-        :i14y_drawer_observer, :routed_query_keyword_observer
+        :i14y_drawer_observer, :routed_query_keyword_observer, :watcher_observer
     end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
