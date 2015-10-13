@@ -32,6 +32,7 @@ class Watcher < ActiveRecord::Base
       trigger(json)
       input(json)
       condition(json)
+      transform(json)
       actions(json)
     end
   end
