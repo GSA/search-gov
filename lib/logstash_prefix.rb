@@ -15,7 +15,7 @@ module LogstashPrefix
 
   def watcher_indexes_from_window_size(time_window)
     window_start = es_time_offset_to_time(time_window)
-    days_back = yyyymmdd_int(Time.now.utc) - yyyymmdd_int(window_start) + 1
+    days_back = ((Time.now.utc - window_start)/86400).round + 1
     current_index = "<#{logstash_prefix(true)}{now/d}>"
     days_back.times.map { |i| "<#{logstash_prefix(true)}{now/d-#{i+1}d}>" }.prepend(current_index)
   end
@@ -23,10 +23,6 @@ module LogstashPrefix
   def es_time_offset_to_time(time_window)
     scalar, unit = time_window[0...-1], time_window.last.to_sym
     Integer(scalar).send(ES_DATE_UNIT_TO_RUBY[unit]).ago.utc
-  end
-
-  def yyyymmdd_int(time)
-    time.strftime("%Y%m%d").to_i
   end
 
 end
