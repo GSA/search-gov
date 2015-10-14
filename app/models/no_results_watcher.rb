@@ -9,7 +9,7 @@ class NoResultsWatcher < Watcher
   validates_format_of :time_window, with: INTERVAL_REGEXP
 
   def input(json)
-    no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i).body
+    no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i, size: 10).body
     json.input do
       json.search do
         json.request do
