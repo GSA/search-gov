@@ -9,13 +9,14 @@ class NoResultsWatcher < Watcher
   validates_format_of :time_window, with: INTERVAL_REGEXP
 
   def input(json)
-    no_results_query = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total)
+    no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i).body
     json.input do
       json.search do
         json.request do
           json.search_type :count
           json.indices watcher_indexes_from_window_size(time_window)
-          json.body JSON.parse(no_results_query.body)
+          json.types %w(search)
+          json.body JSON.parse(no_results_query_body)
         end
       end
     end
@@ -23,10 +24,8 @@ class NoResultsWatcher < Watcher
 
   def condition(json)
     json.condition do
-      json.compare do
-        json.set! "ctx.payload.aggregations.agg.buckets.0.doc_count" do
-          json.gt 0
-        end
+      json.script do
+        json.inline "ctx.payload.aggregations.agg.buckets.size() > 0"
       end
     end
   end
@@ -40,7 +39,6 @@ class NoResultsWatcher < Watcher
   def actions(json)
     json.actions do
       json.email_user do
-        json.throttle_period throttle_period
         json.email do
           json.to "'#{user.contact_name} <#{user.email}>'"
           json.subject "No results detected for certain queries"
@@ -50,9 +48,10 @@ class NoResultsWatcher < Watcher
       end
       json.debug_it do
         json.logging do
-          json.text "No Results Watcher {{ctx.watch_id}} detected these queries getting no results: {{ctx.payload}}"
+          json.text "No Results Watcher {{ctx.watch_id}} detected these queries getting no results: {{ctx.payload._value}}"
         end
       end
     end
   end
+
 end
