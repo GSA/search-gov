@@ -32,6 +32,7 @@ class Watcher < ActiveRecord::Base
       trigger(json)
       input(json)
       condition(json)
+      throttle(json)
       transform(json)
       actions(json)
     end
@@ -43,6 +44,10 @@ class Watcher < ActiveRecord::Base
         json.interval self.check_interval
       end
     end
+  end
+
+  def throttle(json)
+    json.throttle_period throttle_period
   end
 
 end

@@ -62,6 +62,7 @@ gem 'truncator'
 gem 'em-http-request', '~> 1.0'
 gem "validate_url"
 gem 'elasticsearch'
+gem 'elasticsearch-watcher'
 gem 'federal_register'
 gem 'github-markdown'
 gem 'google-api-client'
