@@ -40,17 +40,18 @@ class NoResultsWatcher < Watcher
     json.actions do
       json.email_user do
         json.email do
+          json.account :mandrill
           json.to "'#{user.contact_name} <#{user.email}>'"
           json.subject "No results detected for certain queries"
-          json.body "No Results Watcher {{ctx.watch_id}} detected these queries getting no results: {{ctx.payload}}"
-          json.attach_data true
+          json.body "No Results Watcher '#{name}' detected these queries getting no results: {{ctx.payload._value}}"
+          json.attach_data false
         end
       end
-      json.debug_it do
-        json.logging do
-          json.text "No Results Watcher {{ctx.watch_id}} detected these queries getting no results: {{ctx.payload._value}}"
-        end
-      end
+      # json.debug_it do
+      #   json.logging do
+      #     json.text "No Results Watcher '#{name}' detected these queries getting no results: {{ctx.payload._value}}"
+      #   end
+      # end
     end
   end
 
