@@ -6,7 +6,7 @@ class NoResultsWatcher < Watcher
 
   validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1
   validates_length_of :query_blocklist, maximum: 150, allow_nil: true
-  validates_format_of :time_window, with: INTERVAL_REGEXP
+  validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   def input(json)
     no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i, size: 10).body
