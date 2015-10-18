@@ -14,10 +14,14 @@ module LogstashPrefix
   end
 
   def watcher_indexes_from_window_size(time_window)
-    window_start = es_time_offset_to_time(time_window)
-    days_back = ((Time.now.utc - window_start)/86400).round + 1
+    days_back = time_window_as_days_back(time_window)
     current_index = "<#{logstash_prefix(true)}{now/d}>"
     days_back.times.map { |i| "<#{logstash_prefix(true)}{now/d-#{i+1}d}>" }.prepend(current_index)
+  end
+
+  def time_window_as_days_back(time_window)
+    window_start = es_time_offset_to_time(time_window)
+    ((Time.now.utc - window_start)/86400).round + 1
   end
 
   def es_time_offset_to_time(time_window)
