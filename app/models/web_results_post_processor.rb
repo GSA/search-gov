@@ -47,8 +47,12 @@ class WebResultsPostProcessor
   end
 
   def build_news_item_hash_from_search(query)
-    news_search = ElasticNewsItem.search_for(q: query, rss_feeds: @affiliate.rss_feeds,
-                                             excluded_urls: @affiliate.excluded_urls, language: @affiliate.indexing_locale)
+    news_search = ElasticNewsItem.search_for(q: query,
+                                             rss_feeds: @affiliate.rss_feeds,
+                                             excluded_urls: @affiliate.excluded_urls,
+                                             language: @affiliate.indexing_locale,
+                                             sort: "",
+                                             size: NewsSearch::DEFAULT_VIDEO_PER_PAGE)
     Hash[news_search.results.collect { |news_item| [news_item.link, news_item] }]
   end
 
