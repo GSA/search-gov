@@ -4,7 +4,7 @@ class NoResultsWatcher < Watcher
                                          :query_blocklist,
                                          :time_window]
 
-  validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1
+  validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1, only_integer: true
   validates_length_of :query_blocklist, maximum: 150, allow_nil: true
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
