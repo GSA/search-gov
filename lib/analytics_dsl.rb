@@ -25,6 +25,7 @@ module AnalyticsDSL
             json.set! option, value
           end
         end
+        yield json
       end
     end
   end

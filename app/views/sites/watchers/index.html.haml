@@ -4,7 +4,6 @@
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
-      %li= link_to 'Add Analytics Alert', new_site_no_results_watcher_path(@site)
 
 = render_flash_message
 - if @watchers.present?
@@ -33,5 +32,6 @@
                   data: { confirm: "Are you sure you wish to delete this watcher?" }
 - else
   %p
-    Analytics Alerts let you get alerted when certain conditions are met. You don't have any watchers defined yet.
-  %p= link_to "Create a No Results watcher", new_site_no_results_watcher_path(@site)
+    Analytics Alerts let you get alerted when certain conditions are met. You don't have any Analytics Alerts defined yet.
+  %p= link_to "Create a No Results alert", new_site_no_results_watcher_path(@site)
+  %p= link_to "Create a Low Query CTR alert", new_site_low_query_ctr_watcher_path(@site)
