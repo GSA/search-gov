@@ -14,7 +14,7 @@ class LowCtrQuery < DateRangeTopNExistsQuery
             json.scripted_metric do
               json.init_script "_agg['click'] = _agg['search'] = 0"
               json.map_script "_agg[doc['type'].value] += 1"
-              json.reduce_script "clicks = searches = 0; for (agg in _aggs) {  clicks += agg.click ; searches += agg.search ;}; return searches == 0 ? 0 : 100 * clicks / searches"
+              json.reduce_script "clicks = searches = 0; for (agg in _aggs) {  clicks += agg.click ; searches += agg.search ;}; float ctr = searches == 0 ? 0 : 100 * clicks / searches; ctr"
             end
           end
         end

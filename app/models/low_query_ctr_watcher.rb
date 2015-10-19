@@ -5,7 +5,7 @@ class LowQueryCtrWatcher < Watcher
                                          :low_ctr_threshold,
                                          :time_window]
 
-  validates_numericality_of :search_click_total, greater_than_or_equal_to: 50, only_integer: true
+  validates_numericality_of :search_click_total, greater_than_or_equal_to: 20, only_integer: true
   validates_numericality_of :low_ctr_threshold, greater_than: 0.0, less_than: 100.0
   validates_length_of :query_blocklist, maximum: 150, allow_nil: true
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
@@ -39,20 +39,20 @@ class LowQueryCtrWatcher < Watcher
 
   def actions(json)
     json.actions do
-      # json.email_user do
-      #   json.email do
-      #     json.account :mandrill
-      #     json.to "'#{user.contact_name} <#{user.email}>'"
-      #     json.subject "No results detected for certain queries"
-      #     json.body "No Results Watcher '#{name}' detected these queries getting no results: {{ctx.payload._value}}"
-      #     json.attach_data false
-      #   end
-      # end
-      json.debug_it do
-        json.logging do
-          json.text "Low Query CTR Watcher '#{name}' detected these queries with low click-thru rates: {{ctx.payload._value}}"
+      json.email_user do
+        json.email do
+          json.account :mandrill
+          json.to "'#{user.contact_name} <#{user.email}>'"
+          json.subject "No results detected for certain queries"
+          json.body "No Results Watcher '#{name}' detected these queries getting no results: {{ctx.payload._value}}"
+          json.attach_data false
         end
       end
+      # json.debug_it do
+      #   json.logging do
+      #     json.text "Low Query CTR Watcher '#{name}' detected these queries with low click-thru rates: {{ctx.payload._value}}"
+      #   end
+      # end
     end
   end
 
