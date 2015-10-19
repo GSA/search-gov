@@ -1,5 +1,5 @@
 class Sites::WatchersController < Sites::SetupSiteController
-  WATCHER_TYPES = [NoResultsWatcher]
+  WATCHER_TYPES = [NoResultsWatcher, LowQueryCtrWatcher]
   before_filter :setup_watcher, only: [:edit, :update, :destroy]
 
   def index
