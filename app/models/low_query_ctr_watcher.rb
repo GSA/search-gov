@@ -1,18 +1,13 @@
 class LowQueryCtrWatcher < Watcher
   define_hash_columns_accessors column_name_method: :conditions,
-                                fields: [:search_click_total,
-                                         :query_blocklist,
-                                         :low_ctr_threshold,
-                                         :time_window]
+                                fields: [:search_click_total, :low_ctr_threshold]
 
   validates_numericality_of :search_click_total, greater_than_or_equal_to: 20, only_integer: true
   validates_numericality_of :low_ctr_threshold, greater_than: 0.0, less_than: 100.0
-  validates_length_of :query_blocklist, maximum: 150, allow_nil: true
-  validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   def input(json)
     options = { affiliate_name: affiliate.name, time_window: time_window, min_doc_count: search_click_total.to_i, query_blocklist: query_blocklist }
-    low_query_ctr_query_body = LowCtrQuery.new(options).body
+    low_query_ctr_query_body = WatcherLowCtrQuery.new(options).body
     json.input do
       json.search do
         json.request do
@@ -27,7 +22,7 @@ class LowQueryCtrWatcher < Watcher
 
   def condition(json)
     json.condition do
-      json.script "ctx.payload.aggregations.agg.buckets.any({ it.ctr.value < #{low_ctr_threshold}})"
+      json.script "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.any({ it.ctr.value < #{low_ctr_threshold}})"
     end
   end
 
@@ -48,11 +43,6 @@ class LowQueryCtrWatcher < Watcher
           json.attach_data false
         end
       end
-      # json.debug_it do
-      #   json.logging do
-      #     json.text "Low Query CTR Watcher '#{name}' detected these queries with low click-thru rates: {{ctx.payload._value}}"
-      #   end
-      # end
     end
   end
 

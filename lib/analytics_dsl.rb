@@ -25,7 +25,7 @@ module AnalyticsDSL
             json.set! option, value
           end
         end
-        yield json
+        yield json if block_given?
       end
     end
   end
@@ -60,17 +60,11 @@ module AnalyticsDSL
   end
 
   def type_terms_agg(json, field_name, size)
-    json.aggs do
-      json.agg do
-        json.terms do
-          json.field field_name
-          json.size size
-        end
-        json.aggs do
-          json.type do
-            json.terms do
-              json.field 'type'
-            end
+    terms_agg(json, field: field_name, size: size) do
+      json.aggs do
+        json.type do
+          json.terms do
+            json.field 'type'
           end
         end
       end

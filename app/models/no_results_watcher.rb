@@ -1,12 +1,8 @@
 class NoResultsWatcher < Watcher
   define_hash_columns_accessors column_name_method: :conditions,
-                                fields: [:distinct_user_total,
-                                         :query_blocklist,
-                                         :time_window]
+                                fields: [:distinct_user_total]
 
   validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1, only_integer: true
-  validates_length_of :query_blocklist, maximum: 150, allow_nil: true
-  validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   def input(json)
     no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i, size: 10).body
@@ -25,7 +21,7 @@ class NoResultsWatcher < Watcher
   def condition(json)
     json.condition do
       json.script do
-        json.inline "ctx.payload.aggregations.agg.buckets.size() > 0"
+        json.inline "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.size() > 0"
       end
     end
   end
@@ -47,11 +43,6 @@ class NoResultsWatcher < Watcher
           json.attach_data false
         end
       end
-      # json.debug_it do
-      #   json.logging do
-      #     json.text "No Results Watcher '#{name}' detected these queries getting no results: {{ctx.payload._value}}"
-      #   end
-      # end
     end
   end
 

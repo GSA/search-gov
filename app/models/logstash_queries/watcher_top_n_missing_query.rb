@@ -1,4 +1,6 @@
 class WatcherTopNMissingQuery < TopNMissingQuery
+  include WatcherDSL
+
   def initialize(no_results_watcher, agg_options = {})
     super(no_results_watcher.affiliate.name, agg_options)
     @no_results_watcher = no_results_watcher
@@ -9,17 +11,7 @@ class WatcherTopNMissingQuery < TopNMissingQuery
   end
 
   def additional_must_nots(json)
-    json.child! do
-      json.terms do
-        json.raw query_blocklist
-      end
-    end if @no_results_watcher.query_blocklist.present?
-  end
-
-  private
-
-  def query_blocklist
-    @no_results_watcher.query_blocklist.split(',').map { |term| term.strip.downcase }
+    query_blocklist_filter @no_results_watcher.query_blocklist
   end
 
 end

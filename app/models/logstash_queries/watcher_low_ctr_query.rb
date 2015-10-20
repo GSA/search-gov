@@ -1,4 +1,6 @@
-class LowCtrQuery < DateRangeTopNExistsQuery
+class WatcherLowCtrQuery < DateRangeTopNExistsQuery
+  include WatcherDSL
+
   def initialize(options)
     start_date, end_date = "{{ctx.trigger.scheduled_time}}||-#{options[:time_window]}", "{{ctx.trigger.scheduled_time}}"
     @query_blocklist = options[:query_blocklist]
@@ -24,17 +26,8 @@ class LowCtrQuery < DateRangeTopNExistsQuery
 
   def additional_must_nots(json)
     super(json)
-    json.child! do
-      json.terms do
-        json.raw query_blocklist_array
-      end
-    end if @query_blocklist.present?
+    query_blocklist_filter @query_blocklist
   end
 
-  private
-
-  def query_blocklist_array
-    @query_blocklist.split(',').map { |term| term.strip.downcase }
-  end
 
 end

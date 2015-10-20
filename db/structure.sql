@@ -820,6 +820,8 @@ CREATE TABLE `watchers` (
   `conditions` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `time_window` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `query_blocklist` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2200,3 +2202,7 @@ INSERT INTO schema_migrations (version) VALUES ('20150818202759');
 INSERT INTO schema_migrations (version) VALUES ('20150821144231');
 
 INSERT INTO schema_migrations (version) VALUES ('20151008193453');
+
+INSERT INTO schema_migrations (version) VALUES ('20151020184726');
+
+INSERT INTO schema_migrations (version) VALUES ('20151020185018');

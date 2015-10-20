@@ -9,6 +9,8 @@ class Watcher < ActiveRecord::Base
   validates_uniqueness_of :name, case_sensitive: false
   validates_format_of :check_interval, with: INTERVAL_REGEXP
   validates_format_of :throttle_period, with: INTERVAL_REGEXP
+  validates_length_of :query_blocklist, maximum: 150, allow_nil: true
+  validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   serialize :conditions, Hash
 
