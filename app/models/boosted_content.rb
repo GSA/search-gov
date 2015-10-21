@@ -20,6 +20,8 @@ class BoostedContent < ActiveRecord::Base
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
 
+  validate { |record| record.match_keyword_values_only_requires_keywords(boosted_content_keywords) }
+
   scope :substring_match, -> substring do
     select('DISTINCT boosted_contents.*').
         includes(:boosted_content_keywords).

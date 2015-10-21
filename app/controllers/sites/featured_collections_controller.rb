@@ -46,6 +46,7 @@ class Sites::FeaturedCollectionsController < Sites::BestBetsController
                :mark_image_for_deletion,
                :publish_start_on, :publish_end_on,
                :status, :title, :title_url,
+               :match_keyword_values_only,
                featured_collection_keywords_attributes: [:id, :value],
                featured_collection_links_attributes: [:id, :title, :url, :position])
   end

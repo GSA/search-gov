@@ -85,6 +85,23 @@ describe BoostedContent do
     end
   end
 
+  describe 'match_keyword_values_only validation' do
+    context 'when no boosted_content_keywords are provided' do
+      it 'should not allow match_keyword_values_only to be set to true' do
+        boosted_content = BoostedContent.create(@valid_attributes.merge({ :match_keyword_values_only => true }))
+        boosted_content.errors.full_messages.join.should =~ /requires at least one keyword/
+      end
+    end
+
+    context 'when some boosted_content_keywords are provided' do
+      it 'should not allow match_keyword_values_only to be set to true' do
+        boosted_content = @affiliate.boosted_contents.build(@valid_attributes.merge({ match_keyword_values_only: true }))
+        boosted_content.boosted_content_keywords.build({ value: 'foo bar' })
+        boosted_content.should be_valid
+      end
+    end
+  end
+
   describe '.substring_match(query)' do
     context 'when only the parent record has substring match in selected text fields' do
       before do

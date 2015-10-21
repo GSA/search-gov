@@ -28,13 +28,15 @@ class BoostedContentBulkUploader
       publish_start_on = extract_date(row[3])
       publish_end_on = extract_date(row[4], nil)
       keywords = extract_keywords(row[5])
+      match_keyword_values_only = extract_bool(row[6]) && keywords.present?
 
       @records_hash << { title: row[0],
                          url: row[1],
                          description: row[2],
                          publish_start_on: publish_start_on,
                          publish_end_on: publish_end_on,
-                         keywords: keywords }
+                         keywords: keywords,
+                         match_keyword_values_only: match_keyword_values_only }
     end
   end
 
@@ -45,6 +47,10 @@ class BoostedContentBulkUploader
   def extract_keywords(keywords_string)
     return [] if keywords_string.blank?
     keywords_string.split(',').reject { |k| k.blank? }.map { |k| k.squish }
+  end
+
+  def extract_bool(bool)
+    bool.present? && bool =~ /^(1|true|yes|y|on)$/i
   end
 
   def import_boosted_contents

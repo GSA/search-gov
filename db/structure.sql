@@ -172,6 +172,7 @@ CREATE TABLE `boosted_contents` (
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `publish_start_on` date NOT NULL,
   `publish_end_on` date DEFAULT NULL,
+  `match_keyword_values_only` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_boosted_contents_on_affiliate_id_and_title` (`affiliate_id`,`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -274,6 +275,7 @@ CREATE TABLE `featured_collections` (
   `image_file_size` int(11) DEFAULT NULL,
   `image_updated_at` datetime DEFAULT NULL,
   `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `match_keyword_values_only` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2184,3 +2186,5 @@ INSERT INTO schema_migrations (version) VALUES ('20150814195019');
 INSERT INTO schema_migrations (version) VALUES ('20150818202759');
 
 INSERT INTO schema_migrations (version) VALUES ('20150821144231');
+
+INSERT INTO schema_migrations (version) VALUES ('20151021144605');

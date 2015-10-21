@@ -38,6 +38,7 @@ class Sites::BoostedContentsController < Sites::BestBetsController
     params.require(:boosted_content).
         permit(:url, :title, :description, :status,
                :publish_start_on, :publish_end_on,
+               :match_keyword_values_only,
                boosted_content_keywords_attributes: [:id, :value])
   end
 

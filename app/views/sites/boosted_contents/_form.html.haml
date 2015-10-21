@@ -21,6 +21,10 @@
   %span.add-on.add-on-icon
     %i.fa.fa-calendar-black.fa-2x
 
+= form.label :match_keyword_values_only, class: 'checkbox' do
+  = form.check_box :match_keyword_values_only
+  Match Keywords Only?
+
 %fieldset.keywords
   .optional
     %legend
