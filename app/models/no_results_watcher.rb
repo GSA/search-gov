@@ -6,6 +6,7 @@ class NoResultsWatcher < Watcher
 
   def input(json)
     no_results_query_body = WatcherTopNMissingQuery.new(self, field: 'raw', min_doc_count: distinct_user_total.to_i, size: 10).body
+    # TODO: refactor this too
     json.input do
       json.search do
         json.request do
@@ -20,9 +21,7 @@ class NoResultsWatcher < Watcher
 
   def condition(json)
     json.condition do
-      json.script do
-        json.inline "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.size() > 0"
-      end
+      json.script "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.size() > 0"
     end
   end
 
@@ -33,6 +32,7 @@ class NoResultsWatcher < Watcher
   end
 
   def actions(json)
+    # TODO and this, too
     json.actions do
       json.email_user do
         json.email do
