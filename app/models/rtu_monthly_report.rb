@@ -31,7 +31,8 @@ class RtuMonthlyReport
   def low_ctr_queries
     @low_ctr_queries ||= begin
       low_ctr_query = LowCtrQuery.new(@site.name, @month_range.begin, @month_range.end)
-      buckets = top_n(low_ctr_query.body, %w(search click))
+      indexes = indexes_to_date((Date.current - @month_range.begin).to_int, @filter_bots)
+      buckets = ES::client_reader.search(index: indexes, type: %w(search click), body: low_ctr_query.body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
       low_ctr_queries_from_buckets(buckets, 20, 10)
     end
   end
