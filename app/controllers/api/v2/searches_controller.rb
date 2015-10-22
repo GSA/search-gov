@@ -49,6 +49,12 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def docs
+    @search = ApiDocsSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   private
 
   def require_ssl
@@ -66,6 +72,7 @@ class Api::V2::SearchesController < ApplicationController
   def search_params
     @search_params ||= params.permit(:access_key,
                                      :affiliate,
+                                     :dc,
                                      :api_key,
                                      :cx,
                                      :enable_highlighting,
@@ -91,6 +98,7 @@ class Api::V2::SearchesController < ApplicationController
     when :blended, :video then Api::NonCommercialSearchOptions
     when :gss then Api::GssSearchOptions
     when :i14y then Api::SearchOptions
+    when :docs then Api::DocsSearchOptions
     end
   end
 
