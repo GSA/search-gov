@@ -12,4 +12,8 @@ module LogstashPrefix
     range.collect { |date| "#{logstash_prefix(filter_bots)}#{date.strftime("%Y.%m.%d")}" }
   end
 
+  def monthly_index_wildcard_spanning_date(day, filter_bots)
+    "#{logstash_prefix(filter_bots)}#{day.strftime("%Y.%m.")}*"
+  end
+
 end

@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Add Analytics Alert'
-= form_for @watcher, url: { action: :create }, html: { class: 'form' }  do |f|
+= custom_form_for @watcher, url: { action: :create }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2= "Add #{@watcher.class.to_s.titleize}"
     .action-bar

@@ -1,5 +1,6 @@
 class Watcher < ActiveRecord::Base
   include LogstashPrefix
+  include WatcherDSL
   INTERVAL_REGEXP = /\A\d+[mhdw]\z/
 
   belongs_to :user
@@ -29,6 +30,10 @@ class Watcher < ActiveRecord::Base
     end
   end
 
+  def humanized_alert_threshold
+    conditions.to_s
+  end
+
   def body
     Jbuilder.encode do |json|
       trigger(json)
@@ -50,6 +55,109 @@ class Watcher < ActiveRecord::Base
 
   def throttle(json)
     json.throttle_period throttle_period
+  end
+
+  def input_search_request(json, options)
+    json.input do
+      json.search do
+        json.request do
+          options.each do |option, value|
+            json.set! option, value
+          end
+        end
+      end
+    end
+  end
+
+  def condition(json)
+    json.condition do
+      json.script condition_script
+    end
+  end
+
+  def transform(json)
+    json.transform do
+      json.script transform_script
+    end
+  end
+
+  def actions(json)
+    json.actions do
+      json.analytics_alert do
+        json.webhook do
+          json.method :POST
+          json.scheme :https
+          json.host "mandrillapp.com"
+          json.port 443
+          json.path "/api/1.0/messages/send-template.json"
+          json.headers do
+            json.set! "Content-type", "application/json"
+          end
+          json.body mandrill_body
+        end
+      end
+    end
+  end
+
+  def mandrill_template_name
+    self.class.name.underscore
+  end
+
+  def mandrill_body
+    config = MandrillAdapter.new.config
+    Jbuilder.encode do |json|
+      json.key config[:api_key]
+      json.template_name mandrill_template_name
+      json.template_content []
+      json.message do
+        message_details(json, config)
+        to_user(json)
+        global_merge_vars(json)
+      end
+    end
+  end
+
+  def global_merge_vars(json)
+    json.global_merge_vars do
+      global_merge_hash.each_pair do |name, content|
+        global_merge_var_entry(json, name, content)
+      end
+    end
+  end
+
+  def message_details(json, config)
+    json.from_email config[:from_email]
+    json.from_name config[:from_name]
+    json.merge_language :handlebars
+    json.track_opens false
+    json.inline_css true
+  end
+
+  def to_user(json)
+    json.to do
+      json.child! do
+        json.email user.email
+        json.name user.contact_name
+      end
+    end
+  end
+
+  def global_merge_var_entry(json, name, content)
+    json.child! do
+      json.name name
+      json.content content
+    end
+  end
+
+  def global_merge_hash
+    {
+      alert_name: name,
+      site_name: affiliate.name,
+      site_homepage_url: affiliate.website,
+      contact_name: user.contact_name,
+      #FIXME: this gets sent to mandrill as a string even if it's an array
+      query_terms: "{{ctx.payload.terms}}"
+    }
   end
 
 end

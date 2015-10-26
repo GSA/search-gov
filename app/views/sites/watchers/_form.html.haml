@@ -1,10 +1,15 @@
 = render_flash_message
+= render partial: intro_watcher_partial_for(@watcher)
 = form.error_messages class: 'alert alert-error', header_tag: 'h3'
 = form.label :name, 'Name', class: 'required'
 = form.text_field :name, class: 'required input-primary'
 = form.label :throttle_period, 'Throttle Period', class: 'required'
-= form.text_field :throttle_period, class: 'required input-primary'
+= form.text_field :throttle_period, class: 'required'
 = form.label :check_interval, 'Check Interval', class: 'required'
-= form.text_field :check_interval, class: 'required input-primary'
+= form.text_field :check_interval, class: 'required'
+= form.label :name, 'Time Window', class: 'required'
+= form.text_field :time_window, class: 'required'
+= form.label :name, 'Ignored Query Terms'
+= form.text_field :query_blocklist
 
 = render partial: watcher_partial_for(@watcher), locals: {form: form, watcher: @watcher}

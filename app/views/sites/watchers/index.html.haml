@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Analytics Alerts'
 .sub-nav-heading
-  %h2 Analytics Alerts
+  %h2 Analytics Alerts Beta
   .action-bar
     %ul
       = list_item_with_link_to_current_help_page
@@ -12,14 +12,18 @@
       %tr
         %th Name
         %th Type
-        %th Check Interval
-        %th Throttle Period
+        %th Alert Threshold
+        %th Time Window
+        %th Check Every...
+        %th Time Between Alerts
         %th &nbsp
     %tbody
       - @watchers.each do |watcher|
         %tr
           %td= watcher.name
           %td= watcher.type.titleize
+          %td= watcher.humanized_alert_threshold
+          %td= watcher.time_window
           %td= watcher.check_interval
           %td= watcher.throttle_period
           %td.actions

@@ -1,7 +1,7 @@
 module WatcherDSL
   ES_DATE_UNIT_TO_RUBY = { m: :minutes, h: :hours, d: :days, w: :weeks }
 
-  def query_blocklist_filter(query_blocklist)
+  def query_blocklist_filter(json, query_blocklist)
     json.child! do
       json.terms do
         json.raw query_blocklist.split(',').map { |term| term.strip.downcase }

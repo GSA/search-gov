@@ -77,7 +77,7 @@ class RtuDashboard
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name)
-    RtuCount.count("#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.")}*", type, count_query.body)
+    RtuCount.count(monthly_index_wildcard_spanning_date(@day, @filter_bots), type, count_query.body)
   end
 
   def top_query(klass, options = {})

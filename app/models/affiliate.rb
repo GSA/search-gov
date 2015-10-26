@@ -6,6 +6,8 @@ class Affiliate < ActiveRecord::Base
   include ActiveRecordExtension
   include Dupable
   include XmlProcessor
+  include LogstashPrefix
+
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
@@ -505,7 +507,7 @@ class Affiliate < ActiveRecord::Base
   def last_month_query_count
     prev_month = Date.current.prev_month
     count_query = CountQuery.new(name)
-    RtuCount.count("human-logstash-#{prev_month.strftime("%Y.%m.")}*", 'search', count_query.body)
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true), 'search', count_query.body)
   end
 
   def user_emails

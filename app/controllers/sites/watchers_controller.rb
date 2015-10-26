@@ -1,13 +1,16 @@
 class Sites::WatchersController < Sites::SetupSiteController
+  include ::Hintable
   WATCHER_TYPES = [NoResultsWatcher, LowQueryCtrWatcher]
+  COMMON_DEFAULTS = { throttle_period: '1d', check_interval: '30m', time_window: '12h', query_blocklist: 'brandon colker, china' }
   before_filter :setup_watcher, only: [:edit, :update, :destroy]
+  before_filter :load_hints, only: %i(new edit)
 
   def index
     @watchers = @site.watchers
   end
 
   def new
-    @watcher = watcher_type.new
+    @watcher = watcher_type.new(COMMON_DEFAULTS.merge(watcher_type::WATCHER_DEFAULTS))
   end
 
   def create
@@ -49,6 +52,10 @@ class Sites::WatchersController < Sites::SetupSiteController
   def watcher_type
     watcher_klass = params[:type].constantize
     watcher_klass if watcher_klass.in? WATCHER_TYPES
+  end
+
+  def hint_name_key(hint_name)
+    "#{params[:type].underscore.sub('watcher','')}#{hint_name}"
   end
 
 end

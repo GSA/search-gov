@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, "Edit #{@watcher.class.to_s.titleize}"
-= form_for @watcher, url: { action: :update }, html: { class: 'form' }  do |f|
+= custom_form_for @watcher, url: { action: :update }, html: { class: 'form' }  do |f|
   .sub-nav-heading
     %h2= "Edit #{@watcher.class.to_s.titleize}"
     .action-bar

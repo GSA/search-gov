@@ -31,8 +31,8 @@ class RtuMonthlyReport
   def low_ctr_queries
     @low_ctr_queries ||= begin
       low_ctr_query = LowCtrQuery.new(@site.name, @month_range.begin, @month_range.end)
-      indexes = indexes_to_date((Date.current - @month_range.begin).to_int, @filter_bots)
-      buckets = ES::client_reader.search(index: indexes, type: %w(search click), body: low_ctr_query.body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+      indexes = monthly_index_wildcard_spanning_date(@month_range.begin, @filter_bots)
+      buckets = top_n(low_ctr_query.body, %w(search click), indexes)
       low_ctr_queries_from_buckets(buckets, 20, 10)
     end
   end
@@ -75,4 +75,9 @@ class RtuMonthlyReport
     click_buckets = rtu_top_clicks.top_n
     Hash[click_buckets]
   end
+
+  def top_n(query_body, type, indexes)
+    ES::client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+  end
+
 end
