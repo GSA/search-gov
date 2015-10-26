@@ -20,8 +20,8 @@ describe ElasticBoostedContent do
                                              url: 'https://secure.nhc.noaa.gov/aboutnames.shtml',
                                              status: 'active',
                                              publish_start_on: Date.current)
-          affiliate.boosted_contents.create!(title: 'More Hurricane names involving tropical',
-                                             description: 'This is a bunch of other names',
+          affiliate.boosted_contents.create!(title: 'More Hurricane names',
+                                             description: 'This is a bunch of other names including the word tropical',
                                              url: 'http://www.nhc.noaa.gov/aboutnames1.shtml',
                                              status: 'active',
                                              publish_start_on: Date.current)
@@ -226,16 +226,40 @@ describe ElasticBoostedContent do
   end
 
   describe "recall" do
+    let(:valid_bc_params) do
+      {
+        title: 'Obamå and Bideñ',
+        status: 'active',
+        description: 'Yosemite publications spelling',
+        url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+        publish_start_on: Date.current
+      }
+    end
+    let(:bc_params) { valid_bc_params }
+
     before do
-      boosted_content = affiliate.boosted_contents.build(title: 'Obamå and Bideñ',
-                                                         status: 'active',
-                                                         description: 'Yosemite publications spelling',
-                                                         url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
-                                                         publish_start_on: Date.current)
+      boosted_content = affiliate.boosted_contents.build(bc_params)
       boosted_content.boosted_content_keywords.build(value: 'Corazón')
       boosted_content.boosted_content_keywords.build(value: 'fair pay act')
       boosted_content.save!
       ElasticBoostedContent.commit
+    end
+
+    context 'when I search on terms that are only present in the title or description' do
+      let(:search) { ElasticBoostedContent.search_for(q: 'yosemite publication', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
+
+      it 'should return the matches from the title or description' do
+        search.total.should == 1
+        search.results.size.should == 1
+      end
+
+      context 'when match_keyword_values_only is true' do
+        let(:bc_params) { valid_bc_params.merge({ match_keyword_values_only: true }) }
+        it 'should not return the matches from the title or description' do
+          search.total.should == 0
+          search.results.size.should == 0
+        end
+      end
     end
 
     context 'when various apostrophes are present in title/desc/keywords' do

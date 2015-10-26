@@ -68,6 +68,7 @@ Feature: Manage Content
       | keyword |
       | storm   |
       | weather |
+    And I check "Match Keywords Only?"
     And I add the following best bets graphics links:
       | title              | url                                                   |
       | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
@@ -76,6 +77,7 @@ Feature: Manage Content
     Then I should see "You have added 2010 Atlantic Hurricane Season to this site"
     And I should see a link to "2010 Atlantic Hurricane Season" with url for "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Status: Active"
+    And I should see "Match Keywords Only"
     And I should see the following best bets keywords:
       | keyword |
       | storm   |
@@ -92,8 +94,10 @@ Feature: Manage Content
       | Link URL 2            | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
     When I fill in "Title" with "2011 Atlantic Hurricane Season"
     And I check "Mark Image for Deletion"
+    And I uncheck "Match Keywords Only?"
     And I submit the form by pressing "Save"
     Then I should see "You have updated 2011 Atlantic Hurricane Season"
+    And I should not see "Match Keywords Only"
     When I follow "Edit"
     Then I should not see "Mark Image for Deletion"
 
@@ -158,17 +162,19 @@ Feature: Manage Content
     And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Add Best Bets: Text"
     When I fill in the following:
-      | URL                | http://usasearch.howto.gov/releases/2013-06-21.html |
-      | Title              | Notes for Week Ending June 21, 2013                 |
-      | Description        | spring cleaning                                     |
-      | Keyword 1          | releases                                            |
+      | URL                  | http://usasearch.howto.gov/releases/2013-06-21.html |
+      | Title                | Notes for Week Ending June 21, 2013                 |
+      | Description          | spring cleaning                                     |
+      | Keyword 1            | releases                                            |
     And I add the following best bets keywords:
       | keyword |
       | rails   |
       | recalls |
+    And I check "Match Keywords Only?"
     And I submit the form by pressing "Add"
     Then I should see "You have added Notes for Week Ending June 21, 2013 to this site"
     And I should see "Status: Active"
+    And I should see "Match Keywords Only"
     And I should see the following best bets keywords:
       | keyword  |
       | rails    |
@@ -176,10 +182,12 @@ Feature: Manage Content
       | releases |
     When I follow "Edit"
     And I fill in the following:
-      | Title     | Release for Week Ending June 21, 2013 |
-      | Keyword 1 |                                       |
+      | Title                | Release for Week Ending June 21, 2013 |
+      | Keyword 1            |                                       |
+    And I uncheck "Match Keywords Only?"
     And I submit the form by pressing "Save"
     Then I should see "You have updated Release for Week Ending June 21, 2013"
+    And I should not see "Match Keywords Only"
     And I should not see "rails"
     When I press "Remove"
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"

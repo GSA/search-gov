@@ -32,6 +32,10 @@
 = form.optional_label :image_alt_text, 'Image Alt Text'
 = form.text_field :image_alt_text
 
+= form.label :match_keyword_values_only, class: 'checkbox' do
+  = form.check_box :match_keyword_values_only
+  Match Keywords Only?
+
 %fieldset
   .optional
     %legend

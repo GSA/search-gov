@@ -7,6 +7,10 @@ module BestBetsHelper
     status_class = bb.is_active? ? 'label-info' : 'label-important'
     content = content_tag(:span, 'Status: ', class: 'description')
     content << content_tag(:span, "#{bb.display_status}", class: "label #{status_class}")
+    if bb.match_keyword_values_only?
+      content << " / "
+      content << content_tag(:span, "Match Keywords Only", class: "label label-warning")
+    end
     formatted_publish_start_date = bb.publish_start_on.strftime('%m/%d/%Y')
     if bb.publish_end_on
       formatted_publish_end_date = bb.publish_end_on.strftime('%m/%d/%Y')

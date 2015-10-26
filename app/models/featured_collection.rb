@@ -47,6 +47,8 @@ class FeaturedCollection < ActiveRecord::Base
   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
 
+  validate { |record| record.match_keyword_values_only_requires_keywords(featured_collection_keywords) }
+
   attr_accessor :mark_image_for_deletion
 
   def self.do_not_dup_attributes

@@ -74,6 +74,35 @@ describe FeaturedCollection do
     featured_collection.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
   end
 
+  describe 'match_keyword_values_only validation' do
+    let(:fc_attributes) do
+      {
+        title: 'test title',
+        status: 'active',
+        publish_start_on: '01/01/2015',
+        publish_start_on: '02/01/2015',
+        match_keyword_values_only: true,
+      }
+    end
+    let(:featured_collection) { @affiliate.featured_collections.build(fc_attributes) }
+
+    context 'when no featured_collection_keywords are provided' do
+      it 'should not allow match_keyword_values_only to be set to true' do
+        featured_collection.save.should be_false
+        featured_collection.errors.full_messages.join.should =~ /requires at least one keyword/
+      end
+    end
+
+    context 'when some featured_collection_keywords are provided' do
+      it 'should not allow match_keyword_values_only to be set to true' do
+        featured_collection = @affiliate.featured_collections.build(fc_attributes)
+        featured_collection.featured_collection_keywords.build({ value: 'foo bar' })
+        featured_collection.save.should be_true
+        featured_collection.errors.should be_empty
+      end
+    end
+  end
+
   describe "#display_status" do
     context "when status is set to active" do
       subject { FeaturedCollection.new(:status => 'active') }

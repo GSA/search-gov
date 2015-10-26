@@ -193,10 +193,17 @@ describe ElasticFeaturedCollection do
   end
 
   describe "recall" do
+    let(:valid_fc_params) do
+      {
+        title: 'Obamå',
+        status: 'active',
+        publish_start_on: Date.current,
+      }
+    end
+    let(:fc_params) { valid_fc_params }
+
     before do
-      featured_collection = affiliate.featured_collections.build(title: 'Obamå',
-                                                                 status: 'active',
-                                                                 publish_start_on: Date.current)
+      featured_collection = affiliate.featured_collections.build(fc_params)
       featured_collection.featured_collection_links.build(title: 'Bideñ',
                                                           url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                           position: 0)
@@ -213,6 +220,23 @@ describe ElasticFeaturedCollection do
       featured_collection.featured_collection_keywords.build(value: 'fair pay act')
       featured_collection.save!
       ElasticFeaturedCollection.commit
+    end
+
+    context 'when I search on terms that are only present in the title or description' do
+      let(:search) { ElasticFeaturedCollection.search_for(q: 'Obama', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
+
+      it 'should return the matches from the title or description' do
+        search.total.should == 1
+        search.results.size.should == 1
+      end
+
+      context 'when match_keyword_values_only is true' do
+        let(:fc_params) { valid_fc_params.merge({ match_keyword_values_only: true }) }
+        it 'should not return the matches from the title or description' do
+          search.total.should == 0
+          search.results.size.should == 0
+        end
+      end
     end
 
     describe 'keywords' do

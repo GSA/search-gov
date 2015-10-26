@@ -28,6 +28,12 @@ module BestBet
     status.humanize
   end
 
+  def match_keyword_values_only_requires_keywords(keywords_collection)
+    if keywords_collection.reject(&:marked_for_destruction?).blank? && match_keyword_values_only?
+      self.errors.add(:match_keyword_values_only, 'requires at least one keyword')
+    end
+  end
+
   private
 
   def publish_start_and_end_dates
