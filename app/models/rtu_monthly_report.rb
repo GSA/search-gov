@@ -69,15 +69,8 @@ class RtuMonthlyReport
     (date || Date.current).strftime('%m/%Y')
   end
 
-  def clicks_hash
-    clicked_query = DateRangeTopNQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', size: 1000000)
-    rtu_top_clicks = RtuTopClicks.new(clicked_query.body, @filter_bots)
-    click_buckets = rtu_top_clicks.top_n
-    Hash[click_buckets]
-  end
-
   def top_n(query_body, type, indexes)
-    ES::client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    ES::client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
   end
 
 end
