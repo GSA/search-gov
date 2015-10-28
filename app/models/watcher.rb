@@ -1,4 +1,5 @@
 class Watcher < ActiveRecord::Base
+  extend HashColumnsAccessible
   include LogstashPrefix
   include WatcherDSL
   INTERVAL_REGEXP = /\A\d+[mhdw]\z/
@@ -14,21 +15,6 @@ class Watcher < ActiveRecord::Base
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   serialize :conditions, Hash
-
-  def self.define_hash_columns_accessors(args)
-    column_name_method = args[:column_name_method]
-    fields = args[:fields]
-
-    fields.each do |field|
-      define_method field do
-        self.send(column_name_method).send("[]", field)
-      end
-
-      define_method :"#{field}=" do |arg|
-        self.send(column_name_method).send("[]=", field, arg)
-      end
-    end
-  end
 
   def humanized_alert_threshold
     conditions.to_s
@@ -48,12 +34,9 @@ class Watcher < ActiveRecord::Base
 
   def metadata(json)
     json.metadata do
-      json.affiliate affiliate.name
-      json.affiliate_id affiliate.id
-      json.user_email user.email
-      json.user_id user.id
-      json.user_contact_name user.contact_name
-      json.watcher_type self.class.name
+      metadata_hash.each_pair do |key, value|
+        json.set! key, value
+      end
     end
   end
 
@@ -169,6 +152,17 @@ class Watcher < ActiveRecord::Base
       contact_name: user.contact_name,
       #FIXME: this gets sent to mandrill as a string even if it's an array
       query_terms: "{{ctx.payload.terms}}"
+    }
+  end
+
+  def metadata_hash
+    {
+      affiliate: affiliate.name,
+      affiliate_id: affiliate.id,
+      user_email: user.email,
+      user_id: user.id,
+      user_contact_name: user.contact_name,
+      watcher_type: self.class.name
     }
   end
 

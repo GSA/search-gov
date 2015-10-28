@@ -3,6 +3,7 @@ require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
   extend HumanAttributeName
+  extend HashColumnsAccessible
   include ActiveRecordExtension
   include Dupable
   include XmlProcessor
@@ -225,21 +226,6 @@ class Affiliate < ActiveRecord::Base
 
   def indexing_locale
     CUSTOM_INDEXING_LANGUAGES.include?(self.locale) ? self.locale : COMMON_INDEXING_LANGUAGE
-  end
-
-  def self.define_hash_columns_accessors(args)
-    column_name_method = args[:column_name_method]
-    fields = args[:fields]
-
-    fields.each do |field|
-      define_method field do
-        self.send(column_name_method).send("[]", field)
-      end
-
-      define_method :"#{field}=" do |arg|
-        self.send(column_name_method).send("[]=", field, arg)
-      end
-    end
   end
 
   define_hash_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
