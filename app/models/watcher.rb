@@ -42,6 +42,18 @@ class Watcher < ActiveRecord::Base
       throttle(json)
       transform(json)
       actions(json)
+      metadata(json)
+    end
+  end
+
+  def metadata(json)
+    json.metadata do
+      json.affiliate affiliate.name
+      json.affiliate_id affiliate.id
+      json.user_email user.email
+      json.user_id user.id
+      json.user_contact_name user.contact_name
+      json.watcher_type self.class.name
     end
   end
 
@@ -100,7 +112,7 @@ class Watcher < ActiveRecord::Base
   end
 
   def mandrill_template_name
-    self.class.name.underscore
+    self.class.name.underscore.dasherize
   end
 
   def mandrill_body
