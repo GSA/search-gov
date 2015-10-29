@@ -49,7 +49,7 @@ A few tips when working with asset pipeline:
 
 ## Elasticsearch
 
-We're using [Elastic](http://www.elasticsearch.org/) v1.7.2 for fulltext search and query analytics.
+We're using [Elastic](http://www.elasticsearch.org/) v1.7.3 for fulltext search and query analytics.
 
 On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
@@ -61,7 +61,7 @@ To upgrade via homebrew:
 
 To change the defaults, like number of shards/replicas, edit this file:
 
-    $ sudo vi /usr/local/Cellar/elasticsearch/1.7.2/config/elasticsearch.yml
+    $ sudo vi /usr/local/Cellar/elasticsearch/1.7.3/config/elasticsearch.yml
 
     index.number_of_shards: 1
     index.number_of_replicas: 0
