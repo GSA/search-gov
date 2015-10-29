@@ -16,10 +16,6 @@ class Watcher < ActiveRecord::Base
 
   serialize :conditions, Hash
 
-  def humanized_alert_threshold
-    conditions.to_s
-  end
-
   def body
     Jbuilder.encode do |json|
       trigger(json)
@@ -164,6 +160,10 @@ class Watcher < ActiveRecord::Base
       user_contact_name: user.contact_name,
       watcher_type: self.class.name
     }
+  end
+
+  def humanized_alert_threshold
+    conditions.to_s
   end
 
 end
