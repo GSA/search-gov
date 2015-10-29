@@ -18,6 +18,7 @@ class Sites::WatchersController < Sites::SetupSiteController
     if @watcher.save
       redirect_to site_watchers_path(@site), flash: { success: "You have created a watcher" }
     else
+      load_hints
       render action: :new
     end
   end
@@ -29,6 +30,7 @@ class Sites::WatchersController < Sites::SetupSiteController
     if @watcher.update_attributes(watcher_params)
       redirect_to site_watchers_path(@site), flash: { success: 'This watcher has been updated.' }
     else
+      load_hints
       render action: :edit
     end
   end

@@ -40,6 +40,16 @@ Feature: Watchers (aka Analytics Alerts)
 
     When I follow "Create a No Results alert"
     And I fill in the following:
+      | Name                  |                 |
+      | Throttle Period       | 1w              |
+      | Check Interval        | 1h              |
+      | Time Window           | 1d              |
+      | Ignored Query Terms   | brandon, jobs   |
+      | Search Count          | 50              |
+    And I submit the form by pressing "Add"
+    Then I should see "There were problems with the following fields"
+
+    When I fill in the following:
       | Name                  | First One       |
       | Throttle Period       | 1w              |
       | Check Interval        | 1h              |
@@ -50,10 +60,14 @@ Feature: Watchers (aka Analytics Alerts)
     Then I should see the following table rows:
       | Name             | Type                   | Alert Threshold | Time Window | Check Every... | Time Between Alerts |
       | First One        | No Results Watcher     | 50 Queries      | 1d          | 1h             | 1w                  |
-    And I should see "You have created a watcher."
+    And I should see "You have created a watcher"
 
     When I follow "Edit" within the first table body row
-    And I fill in "Name" with "Changed name"
+    And I fill in "Name" with ""
+    And I submit the form by pressing "Save"
+    Then I should see "There were problems with the following fields"
+
+    When I fill in "Name" with "Changed name"
     And I submit the form by pressing "Save"
     Then I should see "This watcher has been updated."
 

@@ -7,9 +7,9 @@
 = form.text_field :throttle_period, class: 'required'
 = form.label :check_interval, 'Check Interval', class: 'required'
 = form.text_field :check_interval, class: 'required'
-= form.label :name, 'Time Window', class: 'required'
+= form.label :time_window, 'Time Window', class: 'required'
 = form.text_field :time_window, class: 'required'
-= form.label :name, 'Ignored Query Terms'
+= form.label :query_blocklist, 'Ignored Query Terms'
 = form.text_field :query_blocklist
 
 = render partial: watcher_partial_for(@watcher), locals: {form: form, watcher: @watcher}

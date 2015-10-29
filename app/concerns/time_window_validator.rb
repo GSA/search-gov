@@ -1,5 +1,5 @@
 class TimeWindowValidator < ActiveModel::EachValidator
-  include LogstashPrefix
+  include WatcherDSL
   MAX_DAYS_BACK = 29
 
   def validate_each(record, attribute, value)
