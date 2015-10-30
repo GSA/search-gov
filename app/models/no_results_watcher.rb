@@ -22,7 +22,7 @@ class NoResultsWatcher < Watcher
   end
 
   def transform_script
-    "def terms = ctx.payload.aggregations.agg.buckets.collect({ it.key }); def json = new groovy.json.JsonBuilder(terms); return json.toString()"
+    "ctx.payload.aggregations.agg.buckets.collect({ it.key }).join('\",\"')"
   end
 
 end

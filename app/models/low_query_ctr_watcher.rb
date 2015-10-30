@@ -23,7 +23,7 @@ class LowQueryCtrWatcher < Watcher
   end
 
   def transform_script
-    "return ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < #{low_ctr_threshold}}).collect({ it.key })"
+    "ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < #{low_ctr_threshold}}).collect({ it.key }).join('\",\"')"
   end
 
 end

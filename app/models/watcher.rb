@@ -146,8 +146,7 @@ class Watcher < ActiveRecord::Base
       site_name: affiliate.name,
       site_homepage_url: affiliate.website,
       contact_name: user.contact_name,
-      #FIXME: this gets sent to mandrill as a string even if it's an array
-      query_terms: "{{ctx.payload.terms}}"
+      query_terms: ["{{ctx.payload._value}}"]
     }
   end
 
