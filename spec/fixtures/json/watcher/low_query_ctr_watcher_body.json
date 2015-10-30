@@ -1,0 +1,133 @@
+{
+  "trigger": {
+    "schedule": {
+      "interval": "1m"
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "search_type": "count",
+        "types": [
+          "search",
+          "click"
+        ],
+        "indices": [
+          "<human-logstash-{now/d}>",
+          "<human-logstash-{now/d-1d}>",
+          "<human-logstash-{now/d-2d}>",
+          "<human-logstash-{now/d-3d}>",
+          "<human-logstash-{now/d-4d}>",
+          "<human-logstash-{now/d-5d}>",
+          "<human-logstash-{now/d-6d}>",
+          "<human-logstash-{now/d-7d}>",
+          "<human-logstash-{now/d-8d}>"
+        ],
+        "body": {
+          "query": {
+            "filtered": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "affiliate": "nps.gov"
+                      }
+                    },
+                    {
+                      "exists": {
+                        "field": "modules"
+                      }
+                    },
+                    {
+                      "range": {
+                        "@timestamp": {
+                          "gte": "{{ctx.trigger.scheduled_time}}||-1w",
+                          "lte": "{{ctx.trigger.scheduled_time}}"
+                        }
+                      }
+                    }
+                  ],
+                  "must_not": [
+                    {
+                      "term": {
+                        "useragent.device": "Spider"
+                      }
+                    },
+                    {
+                      "term": {
+                        "raw": ""
+                      }
+                    },
+                    {
+                      "term": {
+                        "modules": "QRTD"
+                      }
+                    },
+                    {
+                      "terms": {
+                        "raw": [
+                          "foo",
+                          "bar",
+                          "another one"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "aggs": {
+            "agg": {
+              "terms": {
+                "min_doc_count": 101,
+                "size": 100000,
+                "field": "raw"
+              },
+              "aggs": {
+                "ctr": {
+                  "scripted_metric": {
+                    "init_script": "_agg['click'] = _agg['search'] = 0",
+                    "map_script": "_agg[doc['type'].value] += 1",
+                    "reduce_script": "clicks = searches = 0; for (agg in _aggs) {  clicks += agg.click ; searches += agg.search ;}; float ctr = searches == 0 ? 0 : 100 * clicks / searches; ctr"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "condition": {
+    "script": "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.any({ it.ctr.value < 15.5})"
+  },
+  "throttle_period": "24h",
+  "transform": {
+    "script": "ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < 15.5}).collect({ it.key }).join('\",\"')"
+  },
+  "actions": {
+    "analytics_alert": {
+      "webhook": {
+        "method": "POST",
+        "scheme": "https",
+        "host": "mandrillapp.com",
+        "port": 443,
+        "path": "/api/1.0/messages/send-template.json",
+        "headers": {
+          "Content-type": "application/json"
+        },
+        "body": "{\"key\":null,\"template_name\":\"low-query-ctr-watcher\",\"template_content\":[],\"message\":{\"from_email\":\"no-reply@support.digitalgov.gov\",\"from_name\":\"DigitalGov Search Team\",\"merge_language\":\"handlebars\",\"track_opens\":false,\"inline_css\":true,\"to\":[{\"email\":\"affiliate_manager@fixtures.org\",\"name\":\"Affiliate Manager\"}],\"global_merge_vars\":[{\"name\":\"alert_name\",\"content\":\"low CTR\"},{\"name\":\"site_name\",\"content\":\"nps.gov\"},{\"name\":\"site_homepage_url\",\"content\":\"http://www.nps.gov\"},{\"name\":\"contact_name\",\"content\":\"Affiliate Manager\"},{\"name\":\"query_terms\",\"content\":[\"{{ctx.payload._value}}\"]}]}}"
+      }
+    }
+  },
+  "metadata": {
+    "affiliate": "nps.gov",
+    "affiliate_id": 539378566,
+    "user_email": "affiliate_manager@fixtures.org",
+    "user_id": 667152013,
+    "user_contact_name": "Affiliate Manager",
+    "watcher_type": "LowQueryCtrWatcher"
+  }
+}

@@ -255,9 +255,6 @@ class Affiliate < ActiveRecord::Base
                                 fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
 
   model_name.class_eval do
-    def route_key
-      "sites"
-    end
     def singular_route_key
       "site"
     end

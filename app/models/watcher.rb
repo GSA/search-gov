@@ -161,8 +161,4 @@ class Watcher < ActiveRecord::Base
     }
   end
 
-  def humanized_alert_threshold
-    conditions.to_s
-  end
-
 end
