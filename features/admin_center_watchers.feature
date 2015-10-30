@@ -32,6 +32,9 @@ Feature: Watchers (aka Analytics Alerts)
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following Hints exist:
+      | name                         | value                               |
+      | watcher.name                 | Enter a short, meaningful name.     |
     And we don't want observers to run during these cucumber scenarios
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Analytics page
