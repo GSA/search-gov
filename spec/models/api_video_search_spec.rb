@@ -110,6 +110,7 @@ describe ApiVideoSearch do
                          description: "video news description #{i}",
                          published_at: current_time.advance(days: -i),
                          guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
+                         duration: "#{i}:0#{i}",
                          updated_at: Time.current)
       end
 
@@ -132,6 +133,7 @@ describe ApiVideoSearch do
                               snippet: 'video news description 1',
                               source: 'YouTube',
                               thumbnail_url: 'https://i.ytimg.com/vi/1/default.jpg',
+                              duration: '1:01',
                               title: 'video 1',
                               url: 'http://www.youtube.com/watch?v=1&feature=youtube_gdata')
 
@@ -140,6 +142,7 @@ describe ApiVideoSearch do
                               snippet: 'video news description 2',
                               source: 'YouTube',
                               thumbnail_url: 'https://i.ytimg.com/vi/2/default.jpg',
+                              duration: '2:02',
                               title: 'video 2',
                               url: 'http://www.youtube.com/watch?v=2&feature=youtube_gdata')
     end

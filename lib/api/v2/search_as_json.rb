@@ -55,6 +55,7 @@ module Api::V2::SearchAsJson
 
   def as_json_video_news_item(news_item)
     news_item_hash = as_json_news_item news_item, 'YouTube'
+    news_item_hash.merge!(duration: news_item.duration) if news_item.duration
     news_item_hash.merge(thumbnail_url: news_item.youtube_thumbnail_url)
   end
 
