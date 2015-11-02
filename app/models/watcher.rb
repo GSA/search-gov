@@ -144,8 +144,10 @@ class Watcher < ActiveRecord::Base
     {
       alert_name: name,
       site_name: affiliate.name,
+      site_id: affiliate.id,
       site_homepage_url: affiliate.website,
       contact_name: user.contact_name,
+      user_id: user.id,
       query_terms: ["{{ctx.payload._value}}"]
     }
   end
