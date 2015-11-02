@@ -19,8 +19,12 @@ module Hintable
 
   def load_hints
     hints = Hint.name_starts_with(hints_name_prefix).collect do |hint|
-      [hint.name, hint.value]
+      [hint_name_key(hint.name), hint.value]
     end
     @hints = Hash[hints]
+  end
+
+  def hint_name_key(hint_name)
+    hint_name
   end
 end

@@ -79,12 +79,11 @@ describe RtuDashboard do
 
   describe "#low_ctr_queries" do
     context 'when low CTR queries are available' do
-      let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/low_ctr_queries.json")) }
-      let(:click_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/low_ctr_clicks.json")) }
-      let(:low_ctr_queries) { [["search", 0], ["china", 11], ["981", 12]] }
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/low_ctr.json")) }
+      let(:low_ctr_queries) { [["brandon colker", 0], ["address", 2], ["981", 12]] }
 
       before do
-        ES::client_reader.stub(:search).and_return(query_json_response, click_json_response)
+        ES::client_reader.stub(:search).and_return(json_response)
       end
 
       it 'should return an array of query/CTR pairs with at least 20 searches and CTR below 20% for today' do

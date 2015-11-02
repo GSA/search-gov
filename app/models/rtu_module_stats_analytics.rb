@@ -68,8 +68,7 @@ class RtuModuleStatsAnalytics
   end
 
   def top_n(query_body)
-    index = "#{logstash_prefix(@filter_bots)}#{@daterange.first.strftime("%Y.%m.")}*"
-    es_search(index, query_body, 'agg')
+    es_search(monthly_index_wildcard_spanning_date(@daterange.first, @filter_bots), query_body, 'agg')
   end
 
   def es_search(index, query_body, agg_name)

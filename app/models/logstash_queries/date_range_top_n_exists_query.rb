@@ -1,5 +1,4 @@
 class DateRangeTopNExistsQuery < TopNExistsQuery
-  include DateRangeFilter
 
   def initialize(affiliate_name, start_date, end_date, agg_options = {})
     super(affiliate_name, agg_options)

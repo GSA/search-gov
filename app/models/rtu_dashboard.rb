@@ -39,14 +39,9 @@ class RtuDashboard
   end
 
   def low_ctr_queries
-    search_query = TopNExistsQuery.new(@site.name, field: 'raw', min_doc_count: 20, size: 100000)
-    search_buckets = top_n(search_query.body, 'search')
-    return nil unless search_buckets.present?
-    searches_hash = Hash[search_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }]
-    clicked_query = TopNQuery.new(@site.name, field: 'raw', size: 1000000)
-    click_buckets = top_n(clicked_query.body, 'click')
-    clicks_hash = Hash[click_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }]
-    low_ctr_queries_from_hashes(clicks_hash, searches_hash, 20, 10)
+    low_ctr_query = LowCtrQuery.new(@site.name, @day.beginning_of_day, @day.end_of_day)
+    buckets = top_n(low_ctr_query.body, %w(search click))
+    low_ctr_queries_from_buckets(buckets, 20, 10)
   end
 
   def monthly_queries_to_date
@@ -64,7 +59,7 @@ class RtuDashboard
     data_table.new_column('string', 'Date')
     data_table.new_column('number', 'Query Total')
     data_table.add_rows(rows)
-    options = {width: 500, height: 250, title: 'Total Search Queries Over Time'}
+    options = { width: 500, height: 250, title: 'Total Search Queries Over Time' }
     GoogleVisualr::Interactive::AreaChart.new(data_table, options)
   end
 
@@ -82,7 +77,7 @@ class RtuDashboard
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name)
-    RtuCount.count("#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.")}*", type, count_query.body)
+    RtuCount.count(monthly_index_wildcard_spanning_date(@day, @filter_bots), type, count_query.body)
   end
 
   def top_query(klass, options = {})

@@ -30,14 +30,10 @@ class RtuMonthlyReport
 
   def low_ctr_queries
     @low_ctr_queries ||= begin
-      search_query = DateRangeTopNExistsQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', min_doc_count: 2, size: 100000)
-      rtu_top_queries = RtuTopQueries.new(search_query.body, @filter_bots)
-      search_buckets = rtu_top_queries.top_n
-
-      if search_buckets.present?
-        searches_hash = Hash[search_buckets]
-        low_ctr_queries_from_hashes(clicks_hash, searches_hash, 20, 10)
-      end
+      low_ctr_query = LowCtrQuery.new(@site.name, @month_range.begin, @month_range.end)
+      indexes = monthly_index_wildcard_spanning_date(@month_range.begin, @filter_bots)
+      buckets = top_n(low_ctr_query.body, %w(search click), indexes)
+      low_ctr_queries_from_buckets(buckets, 20, 10)
     end
   end
 
@@ -73,10 +69,8 @@ class RtuMonthlyReport
     (date || Date.current).strftime('%m/%Y')
   end
 
-  def clicks_hash
-    clicked_query = DateRangeTopNQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', size: 1000000)
-    rtu_top_clicks = RtuTopClicks.new(clicked_query.body, @filter_bots)
-    click_buckets = rtu_top_clicks.top_n
-    Hash[click_buckets]
+  def top_n(query_body, type, indexes)
+    ES::client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
   end
+
 end

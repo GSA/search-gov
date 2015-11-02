@@ -1,0 +1,42 @@
+= content_for_site_page_title @site, 'Analytics Alerts'
+.sub-nav-heading
+  %h2 Analytics Alerts Beta
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+= render_flash_message
+- if @watchers.present?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Name
+        %th Type
+        %th Alert Threshold
+        %th Time Window
+        %th Check Every...
+        %th Time Between Alerts
+        %th &nbsp
+    %tbody
+      - @watchers.each do |watcher|
+        %tr
+          %td= watcher.name
+          %td= watcher.label
+          %td= watcher.humanized_alert_threshold
+          %td= watcher.time_window
+          %td= watcher.check_interval
+          %td= watcher.throttle_period
+          %td.actions
+            %ul
+              %li= link_to 'Edit', edit_polymorphic_path([@site, watcher])
+              %li= button_to 'Remove',
+                  polymorphic_path([@site, watcher]),
+                  method: :delete,
+                  class: 'btn btn-small',
+                  data: { confirm: "Are you sure you wish to delete this watcher?" }
+- else
+  %p
+    Analytics Alerts let you get alerted when certain conditions are met. You don't have any Analytics Alerts defined yet.
+
+%p= link_to "Create a No Results alert", new_site_no_results_watcher_path(@site)
+%p= link_to "Create a Low Query CTR alert", new_site_low_query_ctr_watcher_path(@site)

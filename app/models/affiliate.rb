@@ -3,9 +3,12 @@ require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
   extend HumanAttributeName
+  extend HashColumnsAccessible
   include ActiveRecordExtension
   include Dupable
   include XmlProcessor
+  include LogstashPrefix
+
   CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
@@ -41,6 +44,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
+    assoc.has_many :watchers, order: 'name ASC'
   end
 
   has_many :users, order: 'contact_name', through: :memberships
@@ -224,21 +228,6 @@ class Affiliate < ActiveRecord::Base
     CUSTOM_INDEXING_LANGUAGES.include?(self.locale) ? self.locale : COMMON_INDEXING_LANGUAGE
   end
 
-  def self.define_hash_columns_accessors(args)
-    column_name_method = args[:column_name_method]
-    fields = args[:fields]
-
-    fields.each do |field|
-      define_method field do
-        self.send(column_name_method).send("[]", field)
-      end
-
-      define_method :"#{field}=" do |arg|
-        self.send(column_name_method).send("[]=", field, arg)
-      end
-    end
-  end
-
   define_hash_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
   define_hash_columns_accessors column_name_method: :live_fields,
                                 fields: [:header, :footer,
@@ -264,6 +253,12 @@ class Affiliate < ActiveRecord::Base
 
   define_hash_columns_accessors column_name_method: :css_property_hash,
                                 fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
+
+  model_name.class_eval do
+    def singular_route_key
+      "site"
+    end
+  end
 
   def self.do_not_dup_attributes
     @@do_not_dup_attributes ||= begin
@@ -495,7 +490,7 @@ class Affiliate < ActiveRecord::Base
   def last_month_query_count
     prev_month = Date.current.prev_month
     count_query = CountQuery.new(name)
-    RtuCount.count("human-logstash-#{prev_month.strftime("%Y.%m.")}*", 'search', count_query.body)
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true), 'search', count_query.body)
   end
 
   def user_emails

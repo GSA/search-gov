@@ -144,6 +144,9 @@ UsasearchRails3::Application.routes.draw do
       resources :memberships, only: [:update]
       resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
+      resources :watchers
+      resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
+      resources :low_query_ctr_watchers, controller: "watchers", type: "LowQueryCtrWatcher"
     end
   end
 
