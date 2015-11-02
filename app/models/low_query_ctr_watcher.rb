@@ -26,4 +26,8 @@ class LowQueryCtrWatcher < Watcher
     "ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < #{low_ctr_threshold}}).collect({ it.key }).join('\",\"')"
   end
 
+  def label
+    "Low Query Click-Through Rate (CTR)"
+  end
+
 end

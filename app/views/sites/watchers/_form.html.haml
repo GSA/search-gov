@@ -3,13 +3,15 @@
 = form.error_messages class: 'alert alert-error', header_tag: 'h3'
 = form.label :name, 'Name', class: 'required'
 = form.text_field :name, class: 'required input-primary'
-= form.label :throttle_period, 'Throttle Period', class: 'required'
-= form.text_field :throttle_period, class: 'required'
-= form.label :check_interval, 'Check Interval', class: 'required'
+= form.label :check_interval, 'Check interval', class: 'required'
 = form.text_field :check_interval, class: 'required'
-= form.label :time_window, 'Time Window', class: 'required'
-= form.text_field :time_window, class: 'required'
-= form.label :query_blocklist, 'Ignored Query Terms'
-= form.text_field :query_blocklist
 
 = render partial: watcher_partial_for(@watcher), locals: {form: form, watcher: @watcher}
+
+= form.label :time_window, 'Time window for each check', class: 'required'
+= form.text_field :time_window, class: 'required'
+= form.label :throttle_period, 'Time between alerts', class: 'required'
+= form.text_field :throttle_period, class: 'required'
+= form.label :query_blocklist, 'Ignored query terms'
+= form.text_field :query_blocklist
+

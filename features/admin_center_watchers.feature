@@ -20,11 +20,11 @@ Feature: Watchers (aka Analytics Alerts)
     When I go to the agency.gov's Analytics page
     And I follow "Analytics Alerts"
     Then I should see the following table rows:
-      | Name             | Type                   | Alert Threshold                    | Time Window | Check Every... | Time Between Alerts |
-      | First One        | No Results Watcher     | 50 Queries                         | 1d          | 1h             | 1w                  |
-      | Fourth One       | Low Query Ctr Watcher  | 25% CTR on 50 Queries & Clicks     | 1d          | 1h             | 1w                  |
-      | Second One       | No Results Watcher     | 100 Queries                        | 2w          | 10m            | 12h                 |
-      | Third One        | Low Query Ctr Watcher  | 15.5% CTR on 1000 Queries & Clicks | 2w          | 10m            | 12h                 |
+      | Name             | Type                                | Alert Threshold                    | Time Window | Check Every... | Time Between Alerts |
+      | First One        | No Results                          | 50 Queries                         | 1d          | 1h             | 1w                  |
+      | Fourth One       | Low Query Click-Through Rate (CTR)  | 25% CTR on 50 Queries & Clicks     | 1d          | 1h             | 1w                  |
+      | Second One       | No Results                          | 100 Queries                        | 2w          | 10m            | 12h                 |
+      | Third One        | Low Query Click-Through Rate (CTR)  | 15.5% CTR on 1000 Queries & Clicks | 2w          | 10m            | 12h                 |
     And we want observers to run during the rest of these cucumber scenarios
 
   @javascript
@@ -44,25 +44,25 @@ Feature: Watchers (aka Analytics Alerts)
     When I follow "Create a No Results alert"
     And I fill in the following:
       | Name                  |                 |
-      | Throttle Period       | 1w              |
-      | Check Interval        | 1h              |
-      | Time Window           | 1d              |
-      | Ignored Query Terms   | brandon, jobs   |
-      | Search Count          | 50              |
+      | Time between alerts       | 1w              |
+      | Check interval        | 1h              |
+      | Time window for each check           | 1d              |
+      | Ignored query terms   | brandon, jobs   |
+      | Minimum number of queries          | 50              |
     And I submit the form by pressing "Add"
     Then I should see "There were problems with the following fields"
 
     When I fill in the following:
       | Name                  | First One       |
-      | Throttle Period       | 1w              |
-      | Check Interval        | 1h              |
-      | Time Window           | 1d              |
-      | Ignored Query Terms   | brandon, jobs   |
-      | Search Count          | 50              |
+      | Time between alerts       | 1w              |
+      | Check interval        | 1h              |
+      | Time window for each check           | 1d              |
+      | Ignored query terms   | brandon, jobs   |
+      | Minimum number of queries          | 50              |
     And I submit the form by pressing "Add"
     Then I should see the following table rows:
       | Name             | Type                   | Alert Threshold | Time Window | Check Every... | Time Between Alerts |
-      | First One        | No Results Watcher     | 50 Queries      | 1d          | 1h             | 1w                  |
+      | First One        | No Results             | 50 Queries      | 1d          | 1h             | 1w                  |
     And I should see "You have created a watcher"
 
     When I follow "Edit" within the first table body row

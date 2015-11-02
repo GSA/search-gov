@@ -21,7 +21,7 @@
       - @watchers.each do |watcher|
         %tr
           %td= watcher.name
-          %td= watcher.type.titleize
+          %td= watcher.label
           %td= watcher.humanized_alert_threshold
           %td= watcher.time_window
           %td= watcher.check_interval

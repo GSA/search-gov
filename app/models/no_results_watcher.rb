@@ -25,4 +25,8 @@ class NoResultsWatcher < Watcher
     "ctx.payload.aggregations.agg.buckets.collect({ it.key }).join('\",\"')"
   end
 
+  def label
+    "No Results"
+  end
+
 end
