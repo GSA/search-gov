@@ -2203,12 +2203,12 @@ INSERT INTO schema_migrations (version) VALUES ('20150818202759');
 
 INSERT INTO schema_migrations (version) VALUES ('20150821144231');
 
-INSERT INTO schema_migrations (version) VALUES ('20151021144605');
-
-INSERT INTO schema_migrations (version) VALUES ('20151023145023');
-
 INSERT INTO schema_migrations (version) VALUES ('20151008193453');
 
 INSERT INTO schema_migrations (version) VALUES ('20151020184726');
 
 INSERT INTO schema_migrations (version) VALUES ('20151020185018');
+
+INSERT INTO schema_migrations (version) VALUES ('20151021144605');
+
+INSERT INTO schema_migrations (version) VALUES ('20151023145023');
