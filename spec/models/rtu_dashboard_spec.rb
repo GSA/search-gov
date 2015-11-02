@@ -90,6 +90,16 @@ describe RtuDashboard do
         dashboard.low_ctr_queries.should == low_ctr_queries
       end
     end
+
+    context 'low CTR queries are not available' do
+      before do
+        ES::client_reader.stub(:search).and_raise
+      end
+
+      it 'should return an empty array' do
+        dashboard.low_ctr_queries.should == []
+      end
+    end
   end
 
   describe "#monthly_usage_chart" do

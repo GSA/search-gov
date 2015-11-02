@@ -54,7 +54,7 @@
   - if @dashboard.low_ctr_queries.present?
     %ol#low_ctr_queries
       - @dashboard.low_ctr_queries.each do |query, ctr|
-        %li= "#{query} [#{ctr}%]"
+        %li= "#{query} [#{number_with_precision(ctr, precision: 1, strip_insignificant_zeros: true)}%]"
   - else
     %p Not enough query data available
 

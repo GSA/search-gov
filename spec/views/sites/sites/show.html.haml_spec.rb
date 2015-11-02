@@ -156,8 +156,8 @@ describe "sites/sites/show.html.haml" do
     context 'when low CTR queries are available for today' do
       before do
         low_ctr_queries = [
-          ['seldom', 5],
-          ['rare', 2],
+          ['seldom', 5.1234],
+          ['rare', 2.000],
           ['never', 0]
         ]
         assign :dashboard, double('RtuDashboard', low_ctr_queries: low_ctr_queries).as_null_object
@@ -167,7 +167,7 @@ describe "sites/sites/show.html.haml" do
         render
         rendered.should have_selector("h3", content: "Top Queries with Low Click Thrus")
         rendered.should have_selector("ol#low_ctr_queries") do |ol|
-          ol.should contain %{seldom [5%]}
+          ol.should contain %{seldom [5.1%]}
           ol.should contain %{rare [2%]}
           ol.should contain %{never [0%]}
         end
