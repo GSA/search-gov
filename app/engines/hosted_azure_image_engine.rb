@@ -1,10 +1,12 @@
 class HostedAzureImageEngine < AzureEngine
   API_ENDPOINT = '/Bing/Search/v1/Composite'.freeze
+  API_NAME = 'azure_composite_api'.freeze
   AZURE_HOSTED_PASSWORD = YAML.load_file("#{Rails.root}/config/hosted_azure.yml")[Rails.env]['account_key'].freeze
   IMAGE_FILTERS = 'Aspect:Square'.freeze
   SOURCES = 'image+spell'.freeze
 
   self.api_endpoint = API_ENDPOINT
+  self.api_name = API_NAME
   self.azure_parameters_class = AzureCompositeParameters
 
   def initialize(options)
@@ -23,10 +25,6 @@ class HostedAzureImageEngine < AzureEngine
   end
 
   protected
-
-  def connection_instance
-    @@api_connection ||= BasicAuthSearchApiConnection.new('azure_composite_api', API_HOST)
-  end
 
   def process_composite_result(composite_result, search_response)
     search_response.total = composite_result.image_total.to_i

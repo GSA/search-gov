@@ -1,7 +1,9 @@
 class AzureWebEngine < AzureEngine
   API_ENDPOINT = '/Bing/SearchWeb/v1/Web'.freeze
+  API_NAME = 'azure_api'.freeze
 
   self.api_endpoint = API_ENDPOINT
+  self.api_name = API_NAME
 
   def initialize(options)
     super
@@ -17,10 +19,6 @@ class AzureWebEngine < AzureEngine
   end
 
   protected
-
-  def connection_instance
-    @@api_connection ||= BasicAuthSearchApiConnection.new('azure_api', API_HOST)
-  end
 
   def process_results(azure_results)
     azure_results.collect { |result| process_result result }.compact
