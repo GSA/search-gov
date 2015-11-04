@@ -7,6 +7,12 @@ Feature: Watchers (aka Analytics Alerts)
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And the following Users exist:
+      | contact_name | email               |
+      | John Admin   | admin1@fixtures.gov |
+    And the Affiliate "agency.gov" has the following users:
+      | email               |
+      | admin1@fixtures.gov |
     And we don't want observers to run during these cucumber scenarios
     And user john@agency.gov has created the following No Results watchers for agency.gov:
       | name             | throttle_period   | check_interval     | time_window | distinct_user_total |
@@ -16,6 +22,9 @@ Feature: Watchers (aka Analytics Alerts)
       | name             | throttle_period   | check_interval     | time_window | search_click_total  | low_ctr_threshold |
       | Third One        | 12h               | 10m                | 2w          | 1000                | 15.5              |
       | Fourth One       | 1w                | 1h                 | 1d          | 50                  | 25                |
+    And user admin1@fixtures.gov has created the following No Results watchers for agency.gov:
+      | name             | throttle_period   | check_interval     | time_window | distinct_user_total |
+      | Someone Elses    | 12h               | 10m                | 2w          | 100                 |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Analytics page
     And I follow "Analytics Alerts"
@@ -25,6 +34,7 @@ Feature: Watchers (aka Analytics Alerts)
       | Fourth One       | Low Query Click-Through Rate (CTR)  | 25% CTR on 50 Queries & Clicks     | 1d          | 1h             | 1w                  |
       | Second One       | No Results                          | 100 Queries                        | 2w          | 10m            | 12h                 |
       | Third One        | Low Query Click-Through Rate (CTR)  | 15.5% CTR on 1000 Queries & Clicks | 2w          | 10m            | 12h                 |
+    And I should not see "Someone Elses"
     And we want observers to run during the rest of these cucumber scenarios
 
   @javascript

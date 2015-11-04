@@ -6,7 +6,7 @@ class Sites::WatchersController < Sites::SetupSiteController
   before_filter :load_hints, only: %i(new edit)
 
   def index
-    @watchers = @site.watchers
+    @watchers = @site.watchers.where(user_id: current_user.id)
   end
 
   def new
@@ -43,7 +43,7 @@ class Sites::WatchersController < Sites::SetupSiteController
   private
 
   def setup_watcher
-    @watcher = watcher_type.where(id: params[:id], affiliate_id: @site.id).first
+    @watcher = watcher_type.where(id: params[:id], affiliate_id: @site.id, user_id: current_user.id).first
     redirect_to site_watchers_path(@site) unless @watcher
   end
 
