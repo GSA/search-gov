@@ -36,8 +36,8 @@ Then /^I should not see "([^"]*)" after the (\d+)th search result$/ do |value, p
   page.should_not have_selector("#results div:nth-of-type(#{position.to_i + 2})", :text => value)
 end
 
-Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
-  page.should have_selector '.content-provider .bing', text: text
+Then(/^I should see (Powered by|Generado por) (Azure|Bing) logo$/) do |text, engine|
+  page.should have_selector ".content-provider .#{engine.downcase}", text: text
 end
 
 Then /^I should see a (left|right) aligned SERP logo$/ do |alignment|

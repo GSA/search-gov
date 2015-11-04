@@ -690,12 +690,12 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "agency"
     And I press "Search"
     Then I should see at least "10" web search results
-    And I should see Powered by Bing logo
+    And I should see Powered by Azure logo
 
     When I follow "USA.gov" within the SERP navigation
     Then I should see "USA.gov" within the SERP active navigation
     And I should see at least "10" web search results
-    And I should see Powered by Bing logo
+    And I should see Powered by Azure logo
 
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:

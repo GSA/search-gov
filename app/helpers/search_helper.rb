@@ -233,7 +233,8 @@ module SearchHelper
     if %w(AWEB AIMAG BWEB IMAG).include? module_tag
       alt = I18n.t(:results_by_bing)
       image_source = "searches/binglogo_#{I18n.locale.to_s}.gif"
-      image_tag(image_source, :alt => alt, :class => 'results-by-logo bing')
+      bing_class = %w(AWEB AIMAG).include?(module_tag) ? 'azure' : 'bing'
+      image_tag(image_source, :alt => alt, :class => "results-by-logo #{bing_class}")
     elsif %w(GWEB GIMAG).include? module_tag
       alt = I18n.t(:results_by_google)
       image_source = "searches/googlelogo_#{I18n.locale.to_s}.gif"

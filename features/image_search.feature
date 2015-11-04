@@ -43,4 +43,4 @@ Feature: Image search
     And I fill in "query" with "agency"
     And I press "Search"
     Then I should see 20 image results
-    And I should see the Results by Bing logo
+    And I should see the Results by Azure logo
