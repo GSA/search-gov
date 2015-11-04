@@ -25,8 +25,6 @@ class IndexedDocument < ActiveRecord::Base
   scope :html, where(:doctype => 'html')
   scope :by_matching_url, -> substring { where("url like ?","%#{substring}%") if substring.present? }
 
-  LARGE_DOCUMENT_SAMPLE_SIZE = 7500
-  LARGE_DOCUMENT_THRESHOLD = 3 * LARGE_DOCUMENT_SAMPLE_SIZE
   MAX_DOC_SIZE = 50.megabytes
   DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
