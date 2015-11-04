@@ -1,7 +1,9 @@
 class AzureCompositeEngine < AzureEngine
   API_ENDPOINT = '/Bing/Search/v1/Composite'.freeze
+  API_NAME = 'azure_composite_api'.freeze
 
   self.api_endpoint = API_ENDPOINT
+  self.api_name = API_NAME
   self.azure_parameters_class = AzureCompositeParameters
 
   def parse_search_engine_response(response)
@@ -13,10 +15,6 @@ class AzureCompositeEngine < AzureEngine
   end
 
   protected
-
-  def connection_instance
-    @@api_connection ||= BasicAuthSearchApiConnection.new('azure_composite_api', API_HOST)
-  end
 
   def process_composite_result(composite_result, search_response)
     search_response.total = composite_result.image_total.to_i + composite_result.web_total.to_i
