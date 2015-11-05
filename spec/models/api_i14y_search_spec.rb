@@ -8,6 +8,10 @@ describe ApiI14ySearch do
   describe '#as_json' do
     context 'when highlighting is enabled' do
       subject(:search) do
+        agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
+        AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+        affiliate.stub!(:agency).and_return(agency)
+
         described_class.new affiliate: affiliate,
                             enable_highlighting: true,
                             limit: 20,
