@@ -71,7 +71,8 @@ module MobileHelper
   def serp_attribution(search_module_tag)
     powered_by = I18n.t :powered_by
     if %w(AIMAG AWEB BWEB IMAG).include? search_module_tag
-      content_tag(:div, class: 'bing') do
+      bing_class = %w(AIMAG AWEB).include?(search_module_tag) ? 'azure' : 'bing'
+      content_tag(:div, class: bing_class) do
         (powered_by << content_tag(:span, ' Bing')).html_safe
       end
     elsif %w(GWEB GIMAG).include? search_module_tag

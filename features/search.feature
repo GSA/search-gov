@@ -1108,4 +1108,4 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see legacy results count
     And I should see 20 search results
-    And I should see the Results by Bing logo
+    And I should see the Results by Azure logo
