@@ -86,7 +86,9 @@ module Api::V2::SearchAsJson
 
   def as_json_job_openings
     jobs.collect do |job|
-      job.to_hash.except('id').merge(org_codes: @affiliate.agency.joined_organization_codes)
+      job_hash = job.to_hash.except('id')
+      org_codes = @affiliate.agency ? @affiliate.agency.joined_organization_codes : ""
+      job_hash.merge(org_codes: org_codes)
     end
   end
 
