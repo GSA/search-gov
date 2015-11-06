@@ -1,7 +1,7 @@
 class Sites::WatchersController < Sites::SetupSiteController
   include ::Hintable
   WATCHER_TYPES = [NoResultsWatcher, LowQueryCtrWatcher]
-  COMMON_DEFAULTS = { throttle_period: '1d', check_interval: '30m', time_window: '12h', query_blocklist: 'brandon colker, china' }
+  COMMON_DEFAULTS = { throttle_period: '1d', check_interval: '30m', time_window: '12h' }
   before_filter :setup_watcher, only: [:edit, :update, :destroy]
   before_filter :load_hints, only: %i(new edit)
 
