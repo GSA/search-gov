@@ -1,17 +1,12 @@
 class RateLimitedSearchApiConnection < CachedSearchApiConnection
-  def initialize(namespace, site, cache_duration = 60 * 60 * 6)
-    super
-    @rate_limiter = ApiRateLimiter.new namespace
+  def initialize(namespace, site, cache_duration = 60 * 60 * 6, soft_limit = false)
+    super(namespace, site, cache_duration)
+    @rate_limiter = ApiRateLimiter.new namespace, soft_limit
   end
 
-  def get(api_endpoint, param_hash)
-    response = @cache.read api_endpoint, param_hash
-    return response if response
+  private
 
-    @rate_limiter.within_limit do
-      response = @connection.get api_endpoint, param_hash
-      cache_response api_endpoint, param_hash, response
-    end
-    response
+  def get_from_api(api_endpoint, param_hash)
+    @rate_limiter.within_limit { super }
   end
 end

@@ -541,6 +541,7 @@ CREATE TABLE `outbound_rate_limits` (
   `limit` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `interval` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'day',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2212,3 +2213,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151020185018');
 INSERT INTO schema_migrations (version) VALUES ('20151021144605');
 
 INSERT INTO schema_migrations (version) VALUES ('20151023145023');
+
+INSERT INTO schema_migrations (version) VALUES ('20151106225413');
