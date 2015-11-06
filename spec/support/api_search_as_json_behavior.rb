@@ -87,7 +87,8 @@ shared_examples 'an API search as_json' do
                          locations: [
                            'Mesa Verde National Park, CO'
                          ],
-                         url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600'),
+                         url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600',
+                         org_codes: "XX00"),
         Hashie::Mash.new(id: 'ng:tabc:1018446',
                          position_title: 'Clerk II-License and Permit Specialist Intern',
                          organization_name: 'Texas Alcoholic Beverage Commission',
@@ -99,7 +100,8 @@ shared_examples 'an API search as_json' do
                          locations: [
                            'Arlington, TX'
                          ],
-                         url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
+                         url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446',
+                         org_codes: "XX00")
       ]
 
       search.stub(:jobs) { job_openings }
@@ -117,7 +119,8 @@ shared_examples 'an API search as_json' do
                                locations: [
                                  'Mesa Verde National Park, CO'
                                ],
-                               url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600')
+                               url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600',
+                               org_codes: "XX00")
 
       expect(jobs.last).to eq(position_title: 'Clerk II-License and Permit Specialist Intern',
                               organization_name: 'Texas Alcoholic Beverage Commission',
@@ -129,7 +132,8 @@ shared_examples 'an API search as_json' do
                               locations: [
                                 'Arlington, TX'
                               ],
-                              url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446')
+                              url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446',
+                              org_codes: "XX00")
     end
   end
 
