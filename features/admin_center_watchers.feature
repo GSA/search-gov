@@ -29,11 +29,11 @@ Feature: Watchers (aka Analytics Alerts)
     When I go to the agency.gov's Analytics page
     And I follow "Analytics Alerts"
     Then I should see the following table rows:
-      | Name             | Type                                | Alert Threshold                    | Time Window | Check Every... | Time Between Alerts |
-      | First One        | No Results                          | 50 Queries                         | 1d          | 1h             | 1w                  |
-      | Fourth One       | Low Query Click-Through Rate (CTR)  | 25% CTR on 50 Queries & Clicks     | 1d          | 1h             | 1w                  |
-      | Second One       | No Results                          | 100 Queries                        | 2w          | 10m            | 12h                 |
-      | Third One        | Low Query Click-Through Rate (CTR)  | 15.5% CTR on 1000 Queries & Clicks | 2w          | 10m            | 12h                 |
+      | Name             | Type                                | Alert Threshold                     | Time Window | Check Every... | Time Between Alerts |
+      | First One        | No Results                          | 50 Queries                          | 1d          | 1h             | 1w                  |
+      | Fourth One       | Low Query Click-Through Rate (CTR)  | 25% CTR on 50 Queries & Clicks      | 1d          | 1h             | 1w                  |
+      | Second One       | No Results                          | 100 Queries                         | 2w          | 10m            | 12h                 |
+      | Third One        | Low Query Click-Through Rate (CTR)  | 15.5% CTR on 1,000 Queries & Clicks | 2w          | 10m            | 12h                 |
     And I should not see "Someone Elses"
     And we want observers to run during the rest of these cucumber scenarios
 

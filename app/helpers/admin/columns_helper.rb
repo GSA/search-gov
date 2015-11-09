@@ -1,4 +1,12 @@
 module Admin::ColumnsHelper
+  def conditions_column(record, column)
+    if record.is_a?(Watcher)
+      record.humanized_alert_threshold
+    else
+      record[column.name]
+    end
+  end
+
   def id_column(record, column)
     if record.is_a?(Affiliate)
       link_to record.id, site_path(record.id), target: '_blank'

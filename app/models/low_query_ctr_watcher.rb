@@ -7,7 +7,7 @@ class LowQueryCtrWatcher < Watcher
   validates_numericality_of :low_ctr_threshold, greater_than: 0.0, less_than: 100.0
 
   def humanized_alert_threshold
-    "#{low_ctr_threshold}% CTR on #{search_click_total} Queries & Clicks"
+    "#{low_ctr_threshold}% CTR on #{number_with_delimiter search_click_total} Queries & Clicks"
   end
 
   def input(json)

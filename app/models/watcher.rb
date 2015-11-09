@@ -1,5 +1,6 @@
 class Watcher < ActiveRecord::Base
   extend HashColumnsAccessible
+  include ActionView::Helpers::NumberHelper
   include LogstashPrefix
   include WatcherDSL
   INTERVAL_REGEXP = /\A\d+[mhdw]\z/

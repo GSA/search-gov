@@ -228,6 +228,7 @@ UsasearchRails3::Application.routes.draw do
     resources :languages
     resources :routed_queries do as_routes end
     resources :routed_query_keywords do as_routes end
+    resources :watchers do as_routes end
   end
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
   match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
