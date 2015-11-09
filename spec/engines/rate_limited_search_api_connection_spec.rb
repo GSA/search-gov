@@ -10,7 +10,7 @@ describe RateLimitedSearchApiConnection do
 
   before do
     ApiCache.should_receive(:new).with('my_api', 1000).and_return(cache)
-    ApiRateLimiter.should_receive(:new).with('my_api').and_return(rate_limiter)
+    ApiRateLimiter.should_receive(:new).with('my_api', false).and_return(rate_limiter)
   end
 
   describe '#get' do

@@ -389,7 +389,6 @@ RSpec.configure do |config|
     params = { affiliate: 'wh', index: 'web', query: 'obama' }
     SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
     RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
-    BasicAuthSearchApiConnection.new('basic_auth_api', 'http://search.usa.gov').get('/api/search.json', params.merge(auth_credentials: { password: 'mypass' }))
     NutshellClient::NutshellApiConnection.new
 
     Faraday.stub!(:new).and_return test

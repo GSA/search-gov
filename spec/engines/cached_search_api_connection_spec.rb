@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BasicAuthSearchApiConnection do
+describe CachedSearchApiConnection do
   let(:cache) { mock(ApiCache) }
   let(:connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }

@@ -1,4 +1,6 @@
 class CachedSearchApiConnection
+  extend Forwardable
+  def_delegator :@connection, :basic_auth # optional
   attr_reader :connection
 
   def initialize(namespace, site, cache_duration = 60 * 60 * 6)
@@ -12,7 +14,17 @@ class CachedSearchApiConnection
     @cache = ApiCache.new namespace, cache_duration
   end
 
+  def get(api_endpoint, param_hash)
+    @cache.read(api_endpoint, param_hash) || get_from_api(api_endpoint, param_hash)
+  end
+
   protected
+
+  def get_from_api(api_endpoint, param_hash)
+    response = @connection.get api_endpoint, param_hash
+    cache_response api_endpoint, param_hash, response
+    response
+  end
 
   def cache_response(api_endpoint, param_hash, response)
     if response.status == 200

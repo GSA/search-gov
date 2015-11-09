@@ -1,10 +1,7 @@
 class HostedAzureWebEngine < AzureWebEngine
-  AZURE_HOSTED_PASSWORD = YAML.load_file("#{Rails.root}/config/hosted_azure.yml")[Rails.env]['account_key'].freeze
-
   def initialize(options)
     super options.merge! limit: options[:per_page],
-                         next_offset_within_limit: true,
-                         password: AZURE_HOSTED_PASSWORD
+                         next_offset_within_limit: true
   end
 
   def parse_search_engine_response(response)
