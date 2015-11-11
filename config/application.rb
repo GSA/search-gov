@@ -31,6 +31,16 @@ module UsasearchRails3
     config.middleware.use 'FilteredJSONP'
     # config.middleware.use ::Rack::PerftoolsProfiler
 
+    config.paths.add File.join('app', 'api', 'search_consumer'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', 'search_consumer' '*')]
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '/api/c/', :headers => :any, :methods => [:get, :put, :post, :options]
+      end
+    end
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

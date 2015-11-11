@@ -1,4 +1,5 @@
 UsasearchRails3::Application.routes.draw do
+
   get '/search' => 'searches#index', as: :search
   get '/api/search' => 'api#search', as: :api_search
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
@@ -24,6 +25,8 @@ UsasearchRails3::Application.routes.draw do
       get '/agencies/search' => 'agencies#search'
     end
   end
+
+  mount SearchConsumer::API => '/api/c'
 
   get '/sayt' => 'sayt#index'
   get '/clicked' => 'clicked#index'
@@ -248,6 +251,5 @@ UsasearchRails3::Application.routes.draw do
   get "*path" => redirect(PAGE_NOT_FOUND_URL, status: 302)
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
-  get "/c/admin" => 'dev#null', :as => :search_consumer_admin
-
+  get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin
 end

@@ -1,6 +1,6 @@
 class RtuQueriesRequest
   MAX_RESULTS = 1000
-  include Virtus
+  include Virtus.model
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion
