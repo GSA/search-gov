@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe HostedAzureWebEngine do
+  describe 'api namespacing' do
+    it 'uses the AzureEngine namespace' do
+      described_class.api_namespace.should eq(AzureEngine::NAMESPACE)
+    end
+  end
+
   describe '#execute_query' do
     context 'when response _next is present' do
       let(:engine) do

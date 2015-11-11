@@ -13,6 +13,9 @@ class OutboundRateLimit < ActiveRecord::Base
     create!(name: AzureEngine::NAMESPACE,
             interval: 'month',
             limit: 5000) unless find_by_name(AzureEngine::NAMESPACE)
+    create!(name: AzureCompositeEngine::NAMESPACE,
+            interval: 'month',
+            limit: 1000) unless find_by_name(AzureCompositeEngine::NAMESPACE)
   end
 
   def current_interval

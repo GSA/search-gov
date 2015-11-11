@@ -1,9 +1,11 @@
+# TODO: inherit from AzureCompositeEngine
 class HostedAzureImageEngine < AzureEngine
   API_ENDPOINT = '/Bing/Search/v1/Composite'.freeze
   IMAGE_FILTERS = 'Aspect:Square'.freeze
   SOURCES = 'image+spell'.freeze
 
   self.api_endpoint = API_ENDPOINT
+  self.api_namespace = AzureCompositeEngine::NAMESPACE
   self.azure_parameters_class = AzureCompositeParameters
 
   def initialize(options)

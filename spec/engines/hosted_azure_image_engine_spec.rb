@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe HostedAzureImageEngine do
+  describe 'api namespacing' do
+    it 'uses the AzureCompositeEngine namespace' do
+      described_class.api_namespace.should eq(AzureCompositeEngine::NAMESPACE)
+    end
+  end
+
   describe '#execute_query' do
     context 'when image results are present' do
       let(:engine) do
