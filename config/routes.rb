@@ -29,6 +29,7 @@ UsasearchRails3::Application.routes.draw do
   get '/login' => 'user_sessions#new', as: :login
   get '/signup' => 'users#new', as: :signup
   get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
+  get '/dcv/:affiliate' => 'statuses#domain_control_validation', defaults: { format: :text }
   root to: redirect('/login')
 
   resource :account, :controller => "users"

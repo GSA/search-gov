@@ -97,7 +97,8 @@ class Admin::AffiliatesController < Admin::AdminController
 
 
     config.update.columns.add_subgroup 'Analytics-Tracking Code' do |name_group|
-      name_group.add :ga_web_property_id, :external_tracking_code, :submitted_external_tracking_code
+      name_group.add :ga_web_property_id, :domain_control_validation_code,
+                     :external_tracking_code, :submitted_external_tracking_code
       name_group.collapsed = true
     end
 
