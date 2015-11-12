@@ -1,6 +1,58 @@
 require 'spec_helper'
 
 describe AzureCompositeEngine do
+  describe 'connection caching' do
+    let(:azure_engine_unlimited_connection) { AzureEngine.unlimited_api_connection }
+    let(:azure_engine_rate_limited_connection) { AzureEngine.rate_limited_api_connection }
+
+    context 'when using unlimited API connections' do
+      let(:connection_a) { described_class.unlimited_api_connection }
+      let(:connection_b) { described_class.unlimited_api_connection }
+
+      it 'should reuse the same connection' do
+        expect(connection_a).to eq(connection_b)
+      end
+
+      it 'should not reuse the connection created by AzureEngine' do
+        expect(connection_a.class).to eq(azure_engine_unlimited_connection.class)
+        expect(connection_a).not_to eq(azure_engine_unlimited_connection)
+      end
+    end
+
+    context 'when using rate-limited API connections' do
+      let(:connection_a) { described_class.rate_limited_api_connection }
+      let(:connection_b) { described_class.rate_limited_api_connection }
+
+      it 'should be the same connection' do
+        expect(connection_a).to eq(connection_b)
+      end
+
+      it 'should not reuse the connection created by AzureEngine' do
+        expect(connection_a.class).to eq(azure_engine_rate_limited_connection.class)
+        expect(connection_a).not_to eq(azure_engine_rate_limited_connection)
+      end
+    end
+
+    context 'when using a mix of unlimited and rate-limited API connections' do
+      let(:connection_a) { described_class.unlimited_api_connection }
+      let(:connection_b) { described_class.rate_limited_api_connection }
+
+      it 'should be different connections' do
+        expect(connection_a).not_to eq(connection_b)
+      end
+    end
+  end
+
+  describe 'api namespacing' do
+    it 'uses the AzureCompositeEngine namespace' do
+      described_class.api_namespace.should eq(AzureCompositeEngine::NAMESPACE)
+    end
+
+    it 'has a different namespace than AzureEngine' do
+      described_class.api_namespace.should_not eq(AzureEngine::NAMESPACE)
+    end
+  end
+
   describe '#execute_query' do
     let(:engine) do
       described_class.new api_key: '***REMOVED***',
