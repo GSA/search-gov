@@ -330,4 +330,55 @@ describe Api::V2::SearchesController do
       end
     end
   end
+
+  describe '#docs' do
+    include_context 'SSL request'
+
+    context 'when the search options are not valid' do
+      before do
+        get :docs,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        expect(JSON.parse(response.body)['errors']).to eq(['dc must be present'])
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiDocsSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiDocsSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'docs',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :docs,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            dc: 1,
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+  end
 end

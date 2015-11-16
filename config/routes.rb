@@ -20,6 +20,7 @@ UsasearchRails3::Application.routes.draw do
       get '/search/gss' => 'searches#gss'
       get '/search/i14y' => 'searches#i14y'
       get '/search/video' => 'searches#video'
+      get '/search/docs' => 'searches#docs'
       get '/agencies/search' => 'agencies#search'
     end
   end
