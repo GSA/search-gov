@@ -22,14 +22,14 @@
       = javascript_include_tag 'searches_ie_lt9'
 
   %body{ body_class_hash(@search.affiliate) }
+    - if $git_info.show_header
+      #git-info-header= render partial: 'shared/git_info_header'
     %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
     = render partial: 'searches/header_tagline', locals: { affiliate: @search.affiliate } if @search.affiliate.header_tagline.present?
     #header-wrapper
       - navigations = renderable_navigations @search
       - has_menu = has_menu_items? @search, navigations
       #menu-button-wrapper= render partial: 'searches/nav_button', locals: { search: @search } if has_menu
-      - if $git_info.show_header
-        #git-info-header= render partial: 'shared/git_info_header'
       #header-logo-wrapper= mobile_header @search.affiliate
     #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
 
