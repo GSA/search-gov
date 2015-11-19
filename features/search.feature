@@ -584,7 +584,7 @@ Feature: Affiliate Search
     And I should not see "Fourth Spanish item"
     And I should not see "Sixth Spanish item"
 
-  Scenario: Searching a domain with Bing results that match a specific news item
+  Scenario: Searching a domain with Azure results that match a specific news item
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
@@ -775,11 +775,11 @@ Feature: Affiliate Search
     And I fill in "query" with "++health it"
     And I press "Search" in the search box
     Then I should see the browser page titled "++health it - agency site Search Results"
-    And I should see some Bing search results
+    And I should see some Azure search results
     When I fill in "query" with "OR US97 central"
     And I press "Search" in the search box
     Then I should see the browser page titled "OR US97 central - agency site Search Results"
-    And I should see some Bing search results
+    And I should see some Azure search results
 
   Scenario: When a searcher clicks on a collection on sidebar and the query is blank
     Given the following legacy Affiliates exist:
@@ -922,7 +922,7 @@ Feature: Affiliate Search
     And I should not see a link to "Search Notes" in the left column
     When I fill in "query" with "Noaa"
     And I press "Search" in the search box
-    Then I should see some Bing search results
+    Then I should see some Azure search results
     And I should not see a link to "Everything" in the left column
     And I should not see a link to "Blog" in the left column
     And I should not see a link to "Search Notes" in the left column
@@ -1096,16 +1096,16 @@ Feature: Affiliate Search
     Then I should be on the search page
     And I should see "Please enter a search term"
 
-  Scenario: Web search using Azure engine
+  Scenario: Web search using Bing engine
     Given the following legacy Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Azure         | .gov    |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Bing | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
     When I am on en.agency.gov's search page
     And I fill in "query" with "agency"
     And I press "Search"
-    Then I should not see legacy results count
+    Then I should see legacy results count
     And I should see 20 search results
-    And I should see the Results by Azure logo
+    And I should see the Results by Bing logo

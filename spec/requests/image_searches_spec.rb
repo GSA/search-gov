@@ -61,9 +61,9 @@ describe '/search/images' do
 
     it 'renders JSON response' do
       json_response = JSON.parse(response.body)
-      json_response['total'].should == 4340000
+      json_response['total'].should == 1580
       json_response['startrecord'].should == 1
-      json_response['endrecord'].should == 10
+      json_response['endrecord'].should == 18
 
       expected_json_response = JSON.parse(expected_response_body)
       json_response['results'][0].should == expected_json_response['results'][0]

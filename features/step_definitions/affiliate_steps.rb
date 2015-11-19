@@ -126,8 +126,9 @@ Then /^I should see the affiliate custom css$/ do
   page.should have_selector("head style")
 end
 
-Then /^I should see some Bing search results$/ do
+Then /^I should see some (Bing|Azure) search results$/ do |engine|
   page.should have_selector("#results > .searchresult")
+  step "I should see the Results by #{engine} logo"
 end
 
 Then /^the "([^"]*)" theme should be selected$/ do |theme|

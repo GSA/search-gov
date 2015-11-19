@@ -252,7 +252,13 @@ RSpec.configure do |config|
     web_search_params = common_web_search_params.merge(q: 'electro coagulation')
     stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
 
+    web_search_params = common_web_search_params.merge(q: 'electro coagulation site:nps.gov')
+    stubs.get("#{google_api_path}#{web_search_params.to_param}") { [200, {}, google_spelling] }
+
     gss_api_search_params = common_gss_api_search_params.merge(q: 'electro coagulation site:usa.gov')
+    stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, google_spelling] }
+
+    gss_api_search_params = common_gss_api_search_params.merge(q: 'electro coagulation site:www.whitehouse.gov', cx: '005675969675701682971:usi2bmqvnp8', key: '***REMOVED***')
     stubs.get("#{google_api_path}#{gss_api_search_params.to_param}") { [200, {}, google_spelling] }
 
     google_customcx = Rails.root.join('spec/fixtures/json/google/web_search/custom_cx.json').read
@@ -291,6 +297,15 @@ RSpec.configure do |config|
     azure_params = common_azure_params.merge(:'$skip' => 888)
     azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_results.json')] }
 
+    azure_params = common_azure_params.merge(:'$skip' => 10, :'$top' => 10, Query: "'fewer (site:nonsense.gov)'").reject { |k| k == :Options }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('page2_results.json')] }
+
+    azure_params = common_azure_params.merge(Query: "'no_results (site:nonsense.gov)'", :'$top' => 10).reject { |k| k == :Options }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_results.json')] }
+
+    azure_params = common_azure_params.merge(Query: "'english (site:nonsense.gov)'", :'$top' => 10).reject { |k| k == :Options }
+    azure_web.stub_get_request(azure_params) { [200, {}, azure_web.raw_response('no_next.json')] }
+
     azure_image_url = "#{HostedAzureImageEngine::API_HOST}#{HostedAzureImageEngine::API_ENDPOINT}"
     azure_image = RequestStub.new(azure_image_url, 'spec/fixtures/json/azure/image_spell/', stubs)
 
@@ -306,11 +321,17 @@ RSpec.configure do |config|
 
     azure_image.stub_get_request(common_azure_image_params) { [200, {}, azure_image.raw_response('results.json')] }
 
+    azure_image_params = common_azure_image_params.merge(Query: "'white house (site:nonsense.gov)'", :'$top' => 20)
+    azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('white_house.json')] }
+
     azure_image_params = common_azure_image_params.merge(:'$skip' => 998, Query: "'agncy (site:nasa.gov)'")
     azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('no_next.json')] }
 
     azure_image_params = common_azure_image_params.merge(Query: "'agency (site:noresults.nasa.gov)'")
     azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('no_results.json')] }
+
+    azure_image_params = common_azure_image_params.merge(Query: "'white house (site:gov OR site:mil)'", :'$top' => 20)
+    azure_image.stub_get_request(azure_image_params) { [200, {}, azure_image.raw_response('white_house.json')] }
 
     azure_composite_url = AzureCompositeEngine::API_ENDPOINT
     azure_composite = RequestStub.new(azure_composite_url, 'spec/fixtures/json/azure_composite/', stubs)

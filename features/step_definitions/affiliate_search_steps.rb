@@ -192,6 +192,6 @@ Then /^a Tweet click should be logged/ do
   Rails.logger.should_receive(:info).with("[Click] ")
 end
 
-Then /^I should not see legacy results count$/ do
-  page.should_not have_selector('#summary')
+Then /^I should see legacy results count$/ do
+  page.should have_selector('#summary')
 end

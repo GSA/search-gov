@@ -26,5 +26,20 @@ describe AffiliateHelper do
         helper.render_affiliate_body_style(affiliate).should == 'background-color: #DDDDDD'
       end
     end
+
+    context "when the affiliate has a background image configured" do
+      let(:affiliate) do
+        mock_model(Affiliate, {
+          page_background_image_file_name: 'background.png',
+          page_background_image: mock('background_image', url: 'some_background_url'),
+          css_property_hash: { page_background_image_repeat: 'some_background_repeat' },
+        })
+      end
+
+      it "includes the background image as background image style" do
+        expected_style = 'background: #DFDFDF url(some_background_url) some_background_repeat center top'
+        helper.render_affiliate_body_style(affiliate).should eq(expected_style)
+      end
+    end
   end
 end

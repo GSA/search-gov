@@ -94,13 +94,13 @@ Feature:  Administration
       | America IN SPACE        | description for space suit item | http://aff.gov//space-suit1  | aff2.gov  | 11/02/2011      | OK                |
     When I go to the admin home page
     And I follow "Compare Search Results"
-    Then I should not see "Bing Results"
+    Then I should not see "Azure Results"
     And I should not see "ODIE Results"
 
     When I fill in "query" with "america"
     When I select "aff.gov" from "Affiliate"
     And I press "Search"
-    Then I should see "Bing Results"
+    Then I should see "Azure Results"
     And I should see "ODIE Results"
     And I should see "Space Suit America"
     And I should not see "America IN SPACE"
