@@ -91,9 +91,9 @@ describe ApiController do
           affiliates(:basic_affiliate).search_engine = 'Google'
         end
 
-        it "should set the affiliate search engine to Bing" do
+        it "should set the affiliate search engine to Azure" do
           get :search, @auth_params
-          assigns[:search_options][:affiliate].search_engine.should == 'Bing'
+          assigns[:search_options][:affiliate].search_engine.should == 'Azure'
         end
       end
 
