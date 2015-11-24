@@ -44,9 +44,23 @@ class HostedAzureImageEngine < AzureEngine
   end
 
   def mashify(result)
-    Hashie::Rash.new thumbnail: { url: result.thumbnail.media_url },
-                     title: result.title,
-                     url: result.source_url
+    Hashie::Rash.new({
+      title: result.title,
+      url: result.source_url,
+      media_url: result.media_url,
+      display_url: result.display_url,
+      content_type: result.content_type,
+      file_size: result.file_size.to_i,
+      width: result.width.to_i,
+      height: result.height.to_i,
+      thumbnail: {
+        url: result.thumbnail.media_url,
+        content_type: result.thumbnail.content_type,
+        file_size: result.thumbnail.file_size.to_i,
+        width: result.thumbnail.width.to_i,
+        height: result.thumbnail.height.to_i,
+      },
+    })
   end
 
   def process_spelling_suggestion(spelling_suggestions)

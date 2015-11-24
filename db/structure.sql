@@ -70,7 +70,7 @@ CREATE TABLE `affiliates` (
   `jobs_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `agency_id` int(11) DEFAULT NULL,
   `raw_log_access_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_engine` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bing',
+  `search_engine` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Azure',
   `is_rss_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `rss_govbox_label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
@@ -2220,3 +2220,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151106225413');
 INSERT INTO schema_migrations (version) VALUES ('20151111004226');
 
 INSERT INTO schema_migrations (version) VALUES ('20151112192400');
+
+INSERT INTO schema_migrations (version) VALUES ('20151119181923');

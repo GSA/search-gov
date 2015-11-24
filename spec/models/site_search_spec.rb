@@ -22,7 +22,7 @@ describe SiteSearch do
     context 'when document collection max depth is >= 3' do
       before do
         dc.url_prefixes.create!(prefix: 'http://www.whitehouse.gov/seo/is/hard/')
-        affiliate.search_engine.should == 'Bing'
+        affiliate.search_engine.should == 'Azure'
       end
 
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id) }
@@ -34,19 +34,19 @@ describe SiteSearch do
   end
 
   describe '#run' do
-    let(:bing_formatted_query) { mock("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
+    let(:azure_formatted_query) { mock("AzureFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return bing_formatted_query
+      AzureFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return azure_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
-        BingFormattedQuery.should_receive(:new).with('gov',
+        AzureFormattedQuery.should_receive(:new).with('gov',
                                                      {:included_domains => ["usa.gov"],
-                                                      :excluded_domains => []}).and_return bing_formatted_query
+                                                      :excluded_domains => []}).and_return azure_formatted_query
       end
 
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }
@@ -54,6 +54,7 @@ describe SiteSearch do
     end
 
     context 'when commercial spelling suggestion is present' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:collection) do
         coll = affiliate.document_collections.build(
           :name => 'WH only',
@@ -63,10 +64,10 @@ describe SiteSearch do
         coll
       end
 
-      it 'includes BSPEL and OVER in the modules' do
+      it 'includes GWEB and OVER in the modules' do
         search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'electro coagulation' })
         search.run
-        search.modules.should include('BSPEL', 'OVER')
+        search.modules.should include('GWEB', 'OVER')
       end
     end
 

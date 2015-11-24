@@ -77,7 +77,7 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
+      WebSearch.new(@valid_options).cache_key.should == "government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Azure"
     end
   end
 
@@ -92,9 +92,9 @@ describe WebSearch do
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        @affiliate.search_engine.should == 'Bing'
+        @affiliate.search_engine.should == 'Azure'
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("bing_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
+          with("hosted_azure_web_engine.usasearch", hash_including(query: hash_including(term: 'government (site:gov OR site:mil)')))
         WebSearch.new(@valid_options).send(:search)
       end
     end
@@ -161,7 +161,7 @@ describe WebSearch do
 
     context 'when the search engine response contains spelling suggestion' do
       subject(:search) do
-        described_class.new(affiliate: affiliates(:usagov_affiliate),
+        described_class.new(affiliate: affiliates(:basic_affiliate),
                             query: 'electro coagulation')
       end
 
@@ -230,6 +230,7 @@ describe WebSearch do
         before { search.run }
 
         its(:module_tag) { should eq('AWEB') }
+        its(:fake_total?) { should be_true }
       end
 
       context 'when the search_engine is Google' do
@@ -285,6 +286,21 @@ describe WebSearch do
       it 'should get the info from GovboxSet' do
         GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test', site_limits: []).and_return nil
         @search.run
+      end
+    end
+
+    # TODO: remove this along with the rest of the Bing stuff being deprecated
+    #       this temporary spec is only here for code coverage
+    context "when the affiliate has Bing results" do
+      subject(:search) do
+        affiliate = affiliates(:non_existent_affiliate)
+        affiliate.search_engine = 'Bing'
+        WebSearch.new(:query => 'english', :affiliate => affiliate)
+      end
+
+      it "assigns BWEB as the module_tag" do
+        search.run
+        search.module_tag.should == 'BWEB'
       end
     end
 
@@ -372,10 +388,10 @@ describe WebSearch do
         end
 
         it "should return the X Bing/Google results" do
-          @search.total.should == 1940000
-          @search.results.size.should == 10
+          @search.total.should == 12
+          @search.results.size.should == 12
           @search.startrecord.should == 1
-          @search.endrecord.should == 10
+          @search.endrecord.should == 12
         end
       end
 
@@ -396,9 +412,9 @@ describe WebSearch do
           it "should indicate that there is another page of results" do
             @search.run
             @search.total.should == 21
-            @search.results.size.should == 6
+            @search.results.size.should == 10
             @search.startrecord.should == 11
-            @search.endrecord.should == 16
+            @search.endrecord.should == 20
           end
 
         end
@@ -407,10 +423,10 @@ describe WebSearch do
 
           it "should return the X Bing/Google results" do
             @search.run
-            @search.total.should == 16
-            @search.results.size.should == 6
+            @search.total.should == 21
+            @search.results.size.should == 10
             @search.startrecord.should == 11
-            @search.endrecord.should == 16
+            @search.endrecord.should == 20
           end
         end
       end
