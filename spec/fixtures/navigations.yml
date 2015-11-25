@@ -105,3 +105,14 @@ media_feed:
   is_active: false
   position: 100
 
+seventeen:
+  affiliate: :usagov_affiliate
+  navigable: usagov_blog(RssFeed)
+  is_active: true
+  position: 1
+
+eighteen:
+  affiliate: :usagov_affiliate
+  navigable: usagov_docs(DocumentCollection)
+  is_active: true
+  position: 2

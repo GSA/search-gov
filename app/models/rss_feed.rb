@@ -32,6 +32,14 @@ class RssFeed < ActiveRecord::Base
   validates_uniqueness_of_child_attribute :rss_feed_urls, :url,
     validate: true, error_formatter: :duplicate_rss_feed_url_error_formatter
 
+  def navigable_facet_type
+    if self.is_managed?
+      'YouTube'
+    else
+      'RSS'
+    end
+  end
+
   def has_errors?
     rss_feed_urls.where("last_crawl_status NOT IN (?)",RssFeedUrl::STATUSES).any?
   end

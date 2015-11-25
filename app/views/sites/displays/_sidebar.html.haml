@@ -25,5 +25,5 @@
               = navigation_form.hidden_field :position, { value: index, class: 'position' }
               = navigable_form.label :name, "#{nav.navigable_type.titleize} #{index}", class: 'hide'
               = navigable_form.text_field :name, maxlength: 15
-            %td.cell-1x= link_to_site_navigable(nav.navigable)
+            %td.cell-1x= link_to_navigable_facet_type(nav)
             = navigation_switch_cell navigation_form, nav, index
