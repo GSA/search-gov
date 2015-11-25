@@ -44,6 +44,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
+    assoc.has_one :scoped_key
     assoc.has_many :watchers, order: 'name ASC'
   end
 
@@ -157,7 +158,6 @@ class Affiliate < ActiveRecord::Base
 
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
-  before_create :set_keen_scoped_key
   before_update :clear_existing_attachments
   after_create :normalize_site_domains
   after_destroy :remove_boosted_contents_from_index
@@ -266,7 +266,6 @@ class Affiliate < ActiveRecord::Base
         column_name =~ /\A(header_tagline_logo|page_background_image|mobile_logo)/
       end
       %w(api_access_key
-         keen_scoped_key
          name
          nutshell_id).push(*logo_attrs).freeze
     end
@@ -762,10 +761,6 @@ class Affiliate < ActiveRecord::Base
 
   def set_search_labels
     self.default_search_label = I18n.t(:everything, locale: locale) if default_search_label.blank?
-  end
-
-  def set_keen_scoped_key
-    self.keen_scoped_key = KeenScopedKey.generate(self.id)
   end
 
   def set_api_access_key

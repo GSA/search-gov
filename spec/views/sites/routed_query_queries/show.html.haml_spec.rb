@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "sites/routed_query_queries/show.html.haml" do
-  fixtures :affiliates, :users, :routed_queries
+  fixtures :affiliates, :users, :routed_queries, :scoped_keys
   let(:site) { affiliates(:basic_affiliate) }
   let(:routed_query) { routed_queries(:unclaimed_money) }
 
@@ -40,7 +40,7 @@ describe "sites/routed_query_queries/show.html.haml" do
     end
 
     it 'should show a Keen pie chart for the current month' do
-      rendered.should have_selector("#keen-queries-pie", { "data-module" => "QRTD", "data-model-id" => "#{routed_query.id}", 'data-key' => "#{site.keen_scoped_key}" })
+      rendered.should have_selector("#keen-queries-pie", { "data-module" => "QRTD", "data-model-id" => "#{routed_query.id}", 'data-key' => "#{site.scoped_key.key}" })
     end
   end
 

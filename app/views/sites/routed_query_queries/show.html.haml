@@ -10,4 +10,4 @@
     = "Description: #{@routed_query.description}"
     = link_to '(edit)', edit_site_routed_query_path(@site, @routed_query)
 
-  #keen-queries-pie{ data: { module: 'QRTD', key: @site.keen_scoped_key, model_id: @routed_query.id }}
+  #keen-queries-pie{ data: { module: 'QRTD', key: @site.scoped_key.key, model_id: @routed_query.id }}

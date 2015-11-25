@@ -75,7 +75,6 @@ CREATE TABLE `affiliates` (
   `rss_govbox_label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
   `dap_enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `keen_scoped_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status_id` int(11) NOT NULL DEFAULT '2',
   `dublin_core_mappings` text COLLATE utf8_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
@@ -633,6 +632,16 @@ CREATE TABLE `sayt_suggestions` (
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `scoped_keys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `key` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_scoped_keys_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `search_modules` (
@@ -2225,4 +2234,10 @@ INSERT INTO schema_migrations (version) VALUES ('20151112192400');
 
 INSERT INTO schema_migrations (version) VALUES ('20151119181923');
 
+INSERT INTO schema_migrations (version) VALUES ('20151125170439');
+
+INSERT INTO schema_migrations (version) VALUES ('20151125170657');
+
 INSERT INTO schema_migrations (version) VALUES ('20151125171138');
+
+INSERT INTO schema_migrations (version) VALUES ('20151125173402');
