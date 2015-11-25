@@ -161,7 +161,8 @@ describe ApiAzureSearch do
       end
 
       before do
-        affiliate.locale = :es
+        Language.stub(:find_by_code).with('es').and_return(mock_model(Language, is_azure_supported: true, inferred_country_code: 'US'))
+        affiliate.locale = 'es'
         search.run
       end
 

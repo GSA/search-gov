@@ -429,6 +429,8 @@ CREATE TABLE `languages` (
   `rtl` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `inferred_country_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_azure_supported` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_languages_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2222,3 +2224,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151111004226');
 INSERT INTO schema_migrations (version) VALUES ('20151112192400');
 
 INSERT INTO schema_migrations (version) VALUES ('20151119181923');
+
+INSERT INTO schema_migrations (version) VALUES ('20151125171138');
