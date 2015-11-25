@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "sites/best_bet_queries/show.html.haml" do
-  fixtures :affiliates, :users, :boosted_contents
+  fixtures :affiliates, :users, :boosted_contents, :scoped_keys
   let(:site) { affiliates(:basic_affiliate) }
   let(:best_bet) { boosted_contents(:basic) }
 
@@ -40,7 +40,7 @@ describe "sites/best_bet_queries/show.html.haml" do
     end
 
     it 'should show a Keen pie chart for the current month' do
-      rendered.should have_selector("#keen-queries-pie", { "data-module" => "BOOS", "data-model-id" => "#{best_bet.id}", 'data-key' => "#{site.keen_scoped_key}" })
+      rendered.should have_selector("#keen-queries-pie", { "data-module" => "BOOS", "data-model-id" => "#{best_bet.id}", 'data-key' => "#{site.scoped_key.key}" })
     end
   end
 

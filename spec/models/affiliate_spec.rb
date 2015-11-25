@@ -79,6 +79,12 @@ describe Affiliate do
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
+      it "sets the Keen scoped key" do
+        KeenScopedKey.stub(:generate).and_return 'some key'
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.scoped_key.key.should eq('some key')
+      end
+
       it "should normalize site domains" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
@@ -132,12 +138,6 @@ describe Affiliate do
         expect(affiliate.look_and_feel_css).to include('#usasearch_footer.managed a:visited{color:#00396f}')
         expect(affiliate.mobile_look_and_feel_css).to include('a:visited{color:purple}')
       end
-
-      it 'should set Keen scoped key' do
-        KeenScopedKey.stub(:generate).and_return '65e233adc8a9f...'
-        affiliate = Affiliate.create! @valid_attributes
-        affiliate.keen_scoped_key.should == '65e233adc8a9f...'
-     end
 
       it 'assigns api_access_key' do
         affiliate = Affiliate.create! @valid_attributes
@@ -1291,7 +1291,6 @@ describe Affiliate do
                         header_tagline_logo_file_name
                         header_tagline_logo_file_size
                         header_tagline_logo_updated_at
-                        keen_scoped_key
                         mobile_logo_content_type
                         mobile_logo_file_name
                         mobile_logo_file_size
