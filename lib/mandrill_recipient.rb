@@ -24,16 +24,11 @@ class MandrillRecipient
   end
 
   def default_merge_vars
-    global_merge_vars.merge({
+    {
       id: user.id,
       email: user.email,
-      email_verification_token: user.email_verification_token,
       contact_name: user.contact_name,
-      organization_name: user.organization_name,
-      requires_manual_approval: user.requires_manual_approval?,
-      has_sites: user.affiliates.any?,
-      latest_site: user.affiliates.last.try(:name),
-    })
+    }
   end
 
   private
@@ -62,13 +57,8 @@ class MandrillRecipient
     config[:force_to] || config[:admin_email]
   end
 
-  def global_merge_vars
-    config[:global_merge_vars] || { }
-  end
-
   def merge_var_array
     combined = default_merge_vars.merge(merge_vars)
-    combined.merge!(global_merge_vars)
 
     result = combined.to_a.map do |kv_pair|
       { name: kv_pair[0].to_s, content: kv_pair[1] }

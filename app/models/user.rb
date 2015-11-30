@@ -44,13 +44,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def deliver_password_reset_instructions!(host_with_port)
+  def deliver_password_reset_instructions!
     reset_perishable_token!
-
-    merge_fields = {
-      password_reset_url: Rails.application.routes.url_helpers.edit_password_reset_url(perishable_token, email_url_params)
-    }
-    MandrillAdapter.new.send_user_email(self, 'password_reset_instructions', merge_fields)
+    MandrillUserEmailer.new(self).send_password_reset_instructions
   end
 
   def to_label
@@ -122,15 +118,7 @@ class User < ActiveRecord::Base
   end
 
   def send_new_affiliate_user_email(affiliate, inviter_user)
-    merge_fields = {
-      adder_contact_name: inviter_user.contact_name,
-      site_name: affiliate.display_name,
-      site_handle: affiliate.name,
-      site_homepage_url: affiliate.website,
-      edit_site_url: Rails.application.routes.url_helpers.site_url(affiliate, email_url_params),
-    }
-
-    MandrillAdapter.new.send_user_email(self, 'new_affiliate_user', merge_fields)
+    MandrillUserEmailer.new(self).send_new_affiliate_user(affiliate, inviter_user)
   end
 
   private
@@ -159,25 +147,11 @@ class User < ActiveRecord::Base
   end
 
   def deliver_new_user_email_verification
-    merge_fields = {
-      email_verification_url: Rails.application.routes.url_helpers.email_verification_url(email_verification_token, email_url_params)
-    }
-    MandrillAdapter.new.send_user_email(self, 'new_user_email_verification', merge_fields)
+    MandrillUserEmailer.new(self).send_new_user_email_verification
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
-     affiliate = affiliates.first
-
-     merge_fields = {
-      adder_contact_name: inviter.contact_name,
-      site_name: affiliate.display_name,
-      edit_site_url: Rails.application.routes.url_helpers.site_url(affiliate, email_url_params),
-      account_url: Rails.application.routes.url_helpers.account_url(email_url_params),
-      site_homepage_url: affiliate.website,
-      complete_registration_url: Rails.application.routes.url_helpers.edit_complete_registration_url(email_verification_token, email_url_params),
-    }
-
-    MandrillAdapter.new.send_user_email(self, 'welcome_to_new_user_added_by_affiliate', merge_fields)
+    MandrillUserEmailer.new(self).send_welcome_to_new_user_added_by_affiliate
   end
 
   def detect_deliver_welcome_email
@@ -214,13 +188,6 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_to_new_user_email
-    merge_fields = {
-      new_site_url: Rails.application.routes.url_helpers.new_site_url(email_url_params)
-    }
-    MandrillAdapter.new.send_user_email(self, 'welcome_to_new_user', merge_fields)
-  end
-
-  def email_url_params
-    MandrillAdapter.new.base_url_params
+    MandrillUserEmailer.new(self).send_welcome_to_new_user
   end
 end

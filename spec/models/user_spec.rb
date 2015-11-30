@@ -4,9 +4,7 @@ describe User do
   fixtures :users, :affiliates, :memberships
 
   let(:adapter) { mock(NutshellAdapter) }
-  let(:mandrill_adapter) { mock(MandrillAdapter) }
-  let(:base_url_params) { { protocol: 'https', host: 'search.hostname' } }
-  let(:bcc_setting) { 'bcc@example.com' }
+  let(:mandrill_user_emailer) { mock(MandrillUserEmailer) }
 
   before do
     @valid_attributes = {
@@ -25,10 +23,13 @@ describe User do
     @emailer.stub!(:deliver).and_return true
 
     NutshellAdapter.stub(:new) { adapter }
-    MandrillAdapter.stub(:new) { mandrill_adapter }
-    mandrill_adapter.stub(:send_user_email)
-    mandrill_adapter.stub(:base_url_params) { base_url_params }
-    mandrill_adapter.stub(:bcc_setting) { bcc_setting }
+
+    MandrillUserEmailer.stub(:new).with(an_instance_of(User)).and_return(mandrill_user_emailer)
+    mandrill_user_emailer.stub(:send_new_affiliate_user)
+    mandrill_user_emailer.stub(:send_new_user_email_verification)
+    mandrill_user_emailer.stub(:send_password_reset_instructions)
+    mandrill_user_emailer.stub(:send_welcome_to_new_user)
+    mandrill_user_emailer.stub(:send_welcome_to_new_user_added_by_affiliate)
   end
 
   describe "when validating" do
@@ -61,15 +62,12 @@ describe User do
     end
 
     it "should send email verification to user" do
-      expected_merge_fields = {
-        email_verification_url: "https://search.hostname/email_verification/e_v_token",
-      }
-      mandrill_adapter.should_receive(:send_user_email).with(an_instance_of(User), 'new_user_email_verification', expected_merge_fields)
+      mandrill_user_emailer.should_receive(:send_new_user_email_verification)
       User.create!(@valid_attributes)
     end
 
-    it "should not receive welcome to new user add by affiliate" do
-      mandrill_adapter.should_not_receive(:send_user_email).with(an_instance_of(User), 'welcome_to_new_user_added_by_affiliate', an_instance_of(Hash))
+    it "should not receive welcome to new user added by affiliate" do
+      mandrill_user_emailer.should_not_receive(:send_welcome_to_new_user_added_by_affiliate)
       User.create!(@valid_attributes)
     end
 
@@ -90,19 +88,15 @@ describe User do
 
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
-    let(:host_with_port) { 'http://example.com:8080' }
 
     it "resets the user's perishable token" do
-      user.deliver_password_reset_instructions!(host_with_port)
+      user.deliver_password_reset_instructions!
       user.perishable_token.should eq(random_new_token)
     end
 
     it 'sends the password_reset_instructions template via mandrill' do
-      expected_merge_fields = {
-        password_reset_url: 'https://search.host/password_reset_fixme',
-      }
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'password_reset_instructions', expected_merge_fields)
-      user.deliver_password_reset_instructions!(host_with_port)
+      mandrill_user_emailer.should_receive(:send_password_reset_instructions)
+      user.deliver_password_reset_instructions!
     end
   end
 
@@ -300,15 +294,7 @@ describe User do
     end
 
     it "sends the 'new_affiliate_user' email via Mandrill with the right merge fields" do
-      expected_merge_fields = {
-        adder_contact_name: "Affiliate Manager",
-        site_name: "NPS Site",
-        site_handle: "nps.gov",
-        site_homepage_url: "http://www.nps.gov",
-        edit_site_url: "https://search.hostname/sites/#{affiliate.id}",
-
-      }
-      mandrill_adapter.should_receive(:send_user_email).with(@user, 'new_affiliate_user', expected_merge_fields)
+      mandrill_user_emailer.should_receive(:send_new_affiliate_user).with(affiliate, inviter)
 
       @user.send_new_affiliate_user_email(affiliate, inviter)
     end
@@ -326,10 +312,7 @@ describe User do
       end
 
       it "should deliver welcome email" do
-        expected_merge_fields = {
-          new_site_url: "https://search.hostname/sites/new",
-        }
-        mandrill_adapter.should_receive(:send_user_email).with(@user, 'welcome_to_new_user', expected_merge_fields)
+        mandrill_user_emailer.should_receive(:send_welcome_to_new_user)
         @user.save!
       end
 
@@ -347,7 +330,7 @@ describe User do
       end
 
       it "should not deliver welcome email" do
-        mandrill_adapter.should_not_receive(:send_user_email).with(an_instance_of(User), 'welcome_to_new_user')
+        mandrill_user_emailer.should_not_receive(:send_welcome_to_new_user)
         @user.save!
       end
     end
@@ -375,8 +358,8 @@ describe User do
 
       it "should receive welcome new user added by affiliate email verification" do
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
-        mandrill_adapter.should_receive(:send_user_email).with(new_user, 'welcome_to_new_user_added_by_affiliate', an_instance_of(Hash))
-        mandrill_adapter.should_not_receive(:send_user_email).with(new_user, 'new_user_email_verification', an_instance_of(Hash))
+        mandrill_user_emailer.should_receive(:send_welcome_to_new_user_added_by_affiliate)
+        mandrill_user_emailer.should_not_receive(:send_new_user_email_verification)
         adapter.should_receive(:push_user)
         new_user.save!
         new_user.email_verification_token.should_not be_blank
@@ -399,7 +382,7 @@ describe User do
 
       before do
         user.should_receive(:update_attributes)
-        mandrill_adapter.should_not_receive(:send_user_email).with(user, 'welcome_to_new_user')
+        mandrill_user_emailer.should_not_receive(:send_welcome_to_new_user)
         user.complete_registration({})
       end
 
