@@ -534,7 +534,8 @@ CREATE TABLE `news_items` (
   `body` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
-  KEY `index_news_items_on_link` (`link`)
+  KEY `index_news_items_on_link` (`link`),
+  KEY `index_news_items_on_rss_feed_url_id_and_guid` (`rss_feed_url_id`,`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `outbound_rate_limits` (
@@ -2241,3 +2242,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151125170657');
 INSERT INTO schema_migrations (version) VALUES ('20151125171138');
 
 INSERT INTO schema_migrations (version) VALUES ('20151125173402');
+
+INSERT INTO schema_migrations (version) VALUES ('20151125230751');

@@ -108,9 +108,8 @@ class RssFeedData
 
       attributes = build_attributes(item, link, published_at)
 
-      news_item = @rss_feed_url.news_items.
-        where('guid = :guid OR link = :link', guid: attributes[:guid], link: link).
-        first_or_initialize
+      news_item = @rss_feed_url.news_items.where(guid: attributes[:guid]).first ||
+        @rss_feed_url.news_items.where(link: link).first_or_initialize
 
       if link_status_code_404?(link)
         validation_errors << "Linked URL does not exist (HTTP 404)"
