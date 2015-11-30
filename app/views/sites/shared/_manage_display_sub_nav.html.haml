@@ -12,4 +12,4 @@
   %li{ site_nav_css_class_hash('alerts') }= link_to 'Search Page Alert', edit_site_alert_path(@site)
 
   - if @site.search_consumer_admin_enabled
-    %li{ site_nav_css_class_hash('search_consumer_search') }= link_to 'Display Editor', search_consumer_admin_url(token: generate_jwt(@site)), :target => "_blank", data: { 'no-turbolink' => true }
+    %li{ site_nav_css_class_hash('search_consumer_search') }= link_to 'Display Editor', search_consumer_admin_url(site_name: @site.name, token: generate_jwt(@site)), :target => "_blank", data: { 'no-turbolink' => true }

@@ -57,14 +57,11 @@ describe SitesHelper do
     let(:subject) { helper.generate_jwt(affiliate) }
     it 'should be decryptable using the JWT secret' do
       expect(subject).to be_kind_of(String)
-      decoded = JWT.decode subject, JWT_SECRET, 'HS256'
+      decoded = JWT.decode subject, SC_ACCESS_KEY, 'HS256'
       expect(decoded).to be_kind_of(Array)
       payload = decoded[0]
       expect(payload['affiliateName']).to eq('somename')
-      expect(payload['affiliateDisplayName']).to eq('Somename Displayed')
-      expect(payload['affiliateUsasearchId']).to eq(491)
-      expect(payload['accessKey']).to eq('somekey')
-      expect(payload['exp']).to be
+      expect(payload['expiration']).to be
     end
   end
 end

@@ -187,8 +187,8 @@ module SitesHelper
   end
 
   def generate_jwt(site)
-    exp = Time.now.to_i  + 4 * 3600
-    payload = {:affiliateName => site.name, :affiliateDisplayName => site.display_name, :affiliateUsasearchId => site.id, :accessKey => site.api_access_key, :exp => exp }
-    JWT.encode payload, JWT_SECRET, 'HS256'
+    expiration = Time.now.to_i  + 4 * 3600
+    payload = {affiliateName: site.name, :expiration => expiration }
+    JWT.encode payload, SC_ACCESS_KEY, 'HS256'
   end
 end

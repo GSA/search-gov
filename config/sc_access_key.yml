@@ -1,5 +1,5 @@
 default: &DEFAULT
-  secret: "my$ecretK3y"
+  secret: "secureKey"
 
 development:
   <<: *DEFAULT
