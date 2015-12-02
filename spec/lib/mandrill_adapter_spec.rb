@@ -255,7 +255,6 @@ describe MandrillAdapter do
                      email: 'user@example.com',
                      email_verification_token: 'verification-token',
                      contact_name: 'Some User',
-                     organization_name: 'The Organization',
                      requires_manual_approval?: true,
                      affiliates: affiliates)
         end
@@ -270,7 +269,7 @@ describe MandrillAdapter do
               'name' => 'Template A',
               'subject' => 'Email Subject',
               'labels' => ['admin'],
-              'code' => 'Dear *|FIRST|* *|LAST|*, welcome to *|ORGANIZATION_NAME|*.',
+              'code' => 'Dear *|FIRST|* *|LAST|*, welcome to *|CONTACT_NAME|*.',
             }
           end
 
@@ -281,7 +280,7 @@ describe MandrillAdapter do
               to_admin: true,
               merge_tags: {
                 available: {
-                  organization_name: 'The Organization',
+                  contact_name: 'Some User',
                 },
                 needed: [
                   :first,
@@ -299,7 +298,7 @@ describe MandrillAdapter do
               'name' => 'Template A',
               'subject' => 'Email Subject',
               'labels' => [],
-              'code' => 'Dear *|FIRST|* *|LAST|*, welcome to *|ORGANIZATION_NAME|*.',
+              'code' => 'Dear *|FIRST|* *|LAST|*, welcome to *|CONTACT_NAME|*.',
             }
           end
 
@@ -310,7 +309,7 @@ describe MandrillAdapter do
               to_admin: false,
               merge_tags: {
                 available: {
-                  organization_name: 'The Organization',
+                  contact_name: 'Some User',
                 },
                 needed: [
                   :first,

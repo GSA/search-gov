@@ -5,17 +5,10 @@ describe MandrillRecipient do
 
   let(:config) { { some: 'config' } }
   let(:user) do
-    affiliates = [
-      mock_model(Affiliate, name: 'Site Beyond Site'),
-    ]
     mock_model(User,
                id: 21,
                email: 'user@example.com',
-               email_verification_token: 'verification-token',
-               contact_name: 'Some User',
-               organization_name: 'The Organization',
-               requires_manual_approval?: true,
-               affiliates: affiliates)
+               contact_name: 'Some User')
   end
   let(:email_trap) { 'emailtrap@somewhere.gov' }
 
@@ -149,12 +142,7 @@ describe MandrillRecipient do
       [
         { name: 'contact_name', content: 'Some User' },
         { name: 'email', content: 'user@example.com' },
-        { name: 'email_verification_token', content: 'verification-token' },
-        { name: 'has_sites', content: true },
         { name: 'id', content: 21 },
-        { name: 'latest_site', content: 'Site Beyond Site' },
-        { name: 'organization_name', content: 'The Organization' },
-        { name: 'requires_manual_approval', content: true },
       ]
     end
 
@@ -213,19 +201,13 @@ describe MandrillRecipient do
       let(:merge_vars) do
         {
           token: 'token-value',
-          organization_name: 'Some Other Organization',
         }
       end
       let(:expected_merge_vars) do
         [
           { name: 'contact_name', content: 'Some User' },
           { name: 'email', content: 'user@example.com' },
-          { name: 'email_verification_token', content: 'verification-token' },
-          { name: 'has_sites', content: true },
           { name: 'id', content: 21 },
-          { name: 'latest_site', content: 'Site Beyond Site' },
-          { name: 'organization_name', content: 'Some Other Organization' },
-          { name: 'requires_manual_approval', content: true },
           { name: 'token', content: 'token-value' },
         ]
       end
@@ -310,12 +292,7 @@ describe MandrillRecipient do
       [
         { name: 'contact_name', content: 'Some User' },
         { name: 'email', content: 'user@example.com' },
-        { name: 'email_verification_token', content: 'verification-token' },
-        { name: 'has_sites', content: true },
         { name: 'id', content: 21 },
-        { name: 'latest_site', content: 'Site Beyond Site' },
-        { name: 'organization_name', content: 'The Organization' },
-        { name: 'requires_manual_approval', content: true },
       ]
     end
 
@@ -374,19 +351,13 @@ describe MandrillRecipient do
       let(:merge_vars) do
         {
           token: 'token-value',
-          organization_name: 'Some Other Organization',
         }
       end
       let(:expected_merge_vars) do
         [
           { name: 'contact_name', content: 'Some User' },
           { name: 'email', content: 'user@example.com' },
-          { name: 'email_verification_token', content: 'verification-token' },
-          { name: 'has_sites', content: true },
           { name: 'id', content: 21 },
-          { name: 'latest_site', content: 'Site Beyond Site' },
-          { name: 'organization_name', content: 'Some Other Organization' },
-          { name: 'requires_manual_approval', content: true },
           { name: 'token', content: 'token-value' },
         ]
       end
