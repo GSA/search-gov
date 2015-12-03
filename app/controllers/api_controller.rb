@@ -19,9 +19,7 @@ class ApiController < ApplicationController
 
   def load_affiliate
     @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) if params[:affiliate].present?
-    if @affiliate and WhitelistedV1ApiHandle.exists?(handle: @affiliate.name)
-      @affiliate.search_engine = 'Azure'
-    else
+    unless @affiliate and WhitelistedV1ApiHandle.exists?(handle: @affiliate.name)
       render :text => 'Not Found', :status => 404
       false
     end

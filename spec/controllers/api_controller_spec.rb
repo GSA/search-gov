@@ -86,17 +86,6 @@ describe ApiController do
         assigns[:search_options][:affiliate].should == affiliates(:basic_affiliate)
       end
 
-      context 'when affiliate search engine is Google' do
-        before do
-          affiliates(:basic_affiliate).search_engine = 'Google'
-        end
-
-        it "should set the affiliate search engine to Azure" do
-          get :search, @auth_params
-          assigns[:search_options][:affiliate].search_engine.should == 'Azure'
-        end
-      end
-
       it "should set the query" do
         get :search, @auth_params.merge(:query => "fish")
         assigns[:search_options][:query].should == "fish"
