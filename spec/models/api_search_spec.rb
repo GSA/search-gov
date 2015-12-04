@@ -9,13 +9,14 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
       let(:params) { {:query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
-      let(:search) { mock(WebSearch) }
-      let(:search_result_in_json) { mock('search_result_in_json') }
+      let(:search) { mock(WebSearch, diagnostics: { 'AWEB' => :underlying_search_diagnostics }) }
+      let(:search_result_in_json) { '{"results":["foo","bar","baz"]}' }
 
       before :each do
         WebSearch.should_receive(:new).with(params).and_return(search)
         search.should_receive(:cache_key).and_return("search_cache_key")
         @api_cache_key = ['API', 'WebSearch', 'search_cache_key', format.to_s].join(':')
+        Time.stub(:now).and_return(42, 44)
       end
 
       context "when api search cache miss" do
@@ -26,6 +27,14 @@ describe ApiSearch do
           api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json)
           api_search = ApiSearch.new(params)
           api_search.run.should == search_result_in_json
+          api_search.diagnostics.should == {
+            'APIV1' => {
+              result_count: 3,
+              from_cache: 'none',
+              elapsed_time_ms: 2000,
+            },
+            'AWEB' => :underlying_search_diagnostics,
+          }
         end
       end
 
@@ -36,6 +45,13 @@ describe ApiSearch do
           search.should_not_receive(:run)
           api_search = ApiSearch.new(params)
           api_search.run.should == search_result_in_json
+          api_search.diagnostics.should == {
+            'APIV1' => {
+              result_count: 3,
+              from_cache: 'api_v1_redis',
+              elapsed_time_ms: 2000,
+            },
+          }
         end
       end
 
@@ -67,7 +83,7 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'xml' }
       let(:params) { {:query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
-      let(:search) { mock(WebSearch) }
+      let(:search) { mock(WebSearch, diagnostics: {}) }
       let(:search_result_in_xml) { mock('search_result_in_xml') }
 
       before :each do

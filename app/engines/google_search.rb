@@ -78,7 +78,7 @@ class GoogleSearch < SearchEngine
   end
 
   def unlimited_api_connection
-    @@unlimited_api_connection = SearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
+    @@unlimited_api_connection = CachedSearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
   end
 
   def rate_limited_api_connection

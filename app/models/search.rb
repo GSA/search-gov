@@ -1,4 +1,5 @@
 class Search
+  include SearchEngineResponseDiagnostics
   include Pageable
   BLACKLISTED_QUERIES = ["search", "search our site", "*", "1", "what are you looking for?", "¿qué está buscando?"]
   COMMERCIAL_INDEX_MODULE_TAGS = %w(BWEB IMAG GWEB GIMAG).freeze

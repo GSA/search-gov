@@ -79,6 +79,7 @@ gem 'grape', '~> 0.13.0'
 gem 'grape-entity'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'hashie', '~> 2.1.0'
+gem 'retry_block'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

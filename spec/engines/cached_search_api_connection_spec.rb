@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CachedSearchApiConnection do
-  let(:cache) { mock(ApiCache) }
+  let(:cache) { mock(ApiCache, namespace: 'some_cache') }
   let(:connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
@@ -24,7 +24,7 @@ describe CachedSearchApiConnection do
         cache.should_receive(:read).with(endpoint, params).and_return(response)
       end
 
-      specify { connection.get(endpoint, params).should eq(response) }
+      specify { connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'some_cache')) }
     end
 
     context 'on cache miss' do
@@ -36,7 +36,7 @@ describe CachedSearchApiConnection do
         connection.connection.should_receive(:get).with(endpoint, params).and_return(response)
         cache.should_receive(:write).with(endpoint, params, response)
 
-        connection.get(endpoint, params).should eq(response)
+        connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'none'))
       end
     end
   end

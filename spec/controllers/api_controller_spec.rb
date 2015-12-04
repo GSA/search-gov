@@ -28,7 +28,7 @@ describe ApiController do
     end
 
     describe "with format=json" do
-      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
 
       before do
         json = { result_field: 'result' }.to_json
@@ -49,7 +49,7 @@ describe ApiController do
     end
 
     context "with format=xml" do
-      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => []) }
+      let(:api_search) { mock(ApiSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
 
       before do
         xml = { result_field: 'result' }.to_xml
