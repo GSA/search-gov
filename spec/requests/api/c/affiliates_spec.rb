@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchConsumer::API do
-  fixtures :affiliates
+  fixtures :affiliates, :navigations, :document_collections, :rss_feeds, :image_search_labels
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:affiliate_url_path) { "/api/c/affiliates/usagov?sc_access_key=#{SC_ACCESS_KEY}" }
@@ -10,7 +10,13 @@ describe SearchConsumer::API do
     it 'returns a serialized affiliate by name' do
       get affiliate_url_path
       expect(last_response.status).to eq(200)
-      expect(response.body).to eq SearchConsumer::Entities::Affiliate.represent(affiliate).to_json()
+      expect(response.body).to eq({
+        name: "usagov",
+        usasearch_id: 130687165,
+        display_name: "USA.gov",
+        website: "http://www.usa.gov",
+        api_access_key: "usagov_key"
+        }.to_json)
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
@@ -38,4 +44,53 @@ describe SearchConsumer::API do
       expect(last_response.status).to eq(401)
     end
   end
+
+  let(:affiliate_config_url_path) { "/api/c/affiliates/usagov/config?sc_access_key=#{SC_ACCESS_KEY}" }
+
+  context 'GET /api/c/affiliates/:name/config' do
+    it 'returns a serialized affiliate representing the config options (facet and module settings)' do
+      get affiliate_config_url_path
+      expect(last_response.status).to eq(200)
+      expect(response.body).to eq({
+        page_one_label: "search",
+        facets:[
+          {
+            name: "Images",
+            type: "ImageSearchLabel",
+            active: true
+          },
+          {
+            name: "Usa Gov Blog",
+            type: "RSS",
+            channel_id: rss_feeds(:usagov_blog).id,
+            active: true
+          },
+          {
+            name: "USAGov Collection",
+            type: "DocumentCollection",
+            docs_id: document_collections(:usagov_docs).id,
+            active: true
+          },
+        ],
+        modules: {
+          rss_govbox: false,
+          video: true,
+          job_openings: false,
+          federal_register_documents: false,
+          related_searches: true,
+          health_topics: false,
+          typeahead_search: true
+        }
+      }.to_json)
+
+
+    end
+
+    it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
+      get "/api/c/affiliates/usagov?sc_access_key=invalidKey"
+      expect(last_response.status).to eq(401)
+    end
+  end
+
+
 end
