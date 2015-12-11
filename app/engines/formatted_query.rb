@@ -17,23 +17,23 @@ class FormattedQuery
   protected
 
   def fill_included_domains_to_remainder(remaining_chars)
-    domains, delimiter = [], " OR "
-    domains_to_process.each do |site|
-      site_str = "site:#{site}"
-      break if (remaining_chars -= "#{site_str} #{delimiter}".length) < 0
-      domains.unshift site_str
-    end unless @included_domains.blank?
-    domains.join(delimiter)
+    terms = @included_domains.blank? ? [] : domains_to_process.map { |d| "site:#{d}" }
+    fill_included_terms_to_remainder(terms, 'OR', remaining_chars)
   end
 
   def fill_excluded_domains_to_remainder(remaining_chars)
-    domains, delimiter = [], " AND "
-    @excluded_domains.each do |site|
-      site_str = "-site:#{site}"
-      break if (remaining_chars -= "#{site_str} #{delimiter}".length) < 0
-      domains.unshift site_str
-    end unless @excluded_domains.blank?
-    domains.join(delimiter)
+    terms = @excluded_domains.map { |d| "-site:#{d}" }
+    fill_included_terms_to_remainder(terms, 'AND', remaining_chars)
+  end
+
+  def fill_included_terms_to_remainder(terms, delimiter, remaining_chars)
+    included_terms = []
+    padded_delimiter = " #{delimiter} "
+    terms.each do |term|
+      break if (remaining_chars -= "#{term} #{padded_delimiter}".length) < 0
+      included_terms.unshift term
+    end
+    included_terms.join(padded_delimiter)
   end
 
   private
@@ -41,5 +41,4 @@ class FormattedQuery
   def included_domain_contains?(site)
     @included_domains.detect { |included_domain| site =~ /\b#{Regexp.escape(included_domain)}\b/i }
   end
-
 end
