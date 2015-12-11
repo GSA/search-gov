@@ -13,6 +13,13 @@ describe AzureFormattedQuery do
     end
   end
 
+  context 'when scope_ids are provided' do
+    it 'generates query with scopeids as well as domains' do
+      query = AzureFormattedQuery.new('gov', scope_ids: %w(inherit the wind), included_domains: %w(foo.com bar.com))
+      expect(query.query).to eq('gov (scopeid:wind OR scopeid:the OR scopeid:inherit OR site:bar.com OR site:foo.com)')
+    end
+  end
+
   context 'when included domains is not present' do
     it 'generates query with default domains' do
       query = AzureFormattedQuery.new('gov', included_domains: [])
