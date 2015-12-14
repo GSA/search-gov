@@ -46,6 +46,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :alert
     assoc.has_one :scoped_key
     assoc.has_many :watchers, order: 'name ASC'
+    assoc.has_many :tag_filters, order: 'tag ASC'
   end
 
   has_many :users, order: 'contact_name', through: :memberships

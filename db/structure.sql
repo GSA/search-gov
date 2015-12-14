@@ -724,6 +724,17 @@ CREATE TABLE `system_alerts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `tag_filters` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) NOT NULL,
+  `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exclude` tinyint(1) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_tag_filters_on_affiliate_id` (`affiliate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `top_searches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `query` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -2244,3 +2255,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151125171138');
 INSERT INTO schema_migrations (version) VALUES ('20151125173402');
 
 INSERT INTO schema_migrations (version) VALUES ('20151125230751');
+
+INSERT INTO schema_migrations (version) VALUES ('20151214163302');

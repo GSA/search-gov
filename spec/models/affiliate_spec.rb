@@ -42,6 +42,7 @@ describe Affiliate do
     it { should have_many(:rss_feed_urls).through :rss_feeds }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:excluded_domains).dependent(:destroy) }
+    it { should have_many(:tag_filters).dependent(:destroy) }
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:flickr_profiles).dependent(:destroy) }
     it { should have_and_belong_to_many :instagram_profiles }
