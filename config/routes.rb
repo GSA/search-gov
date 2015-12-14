@@ -129,6 +129,7 @@ UsasearchRails3::Application.routes.draw do
       resources :filter_urls,
                 controller: 'excluded_urls',
                 only: [:index, :new, :create, :destroy]
+      resources :tag_filters, only: [:index, :new, :create, :destroy]
       resources :flickr_urls,
                 controller: 'flickr_profiles',
                 only: [:index, :new, :create, :destroy]

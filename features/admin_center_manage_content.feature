@@ -424,6 +424,35 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed agency.gov/exclude-me.html from this site"
 
+  Scenario: Add/remove Filter Tag
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | gets_i14y_results |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
+    And I am logged in with email "john@agency.gov" and password "random_string"
+    When I go to the agency.gov's Filter Tags page
+    And I follow "Add Filter Tag"
+    And I fill in "Tag" with "exclude me"
+    And I submit the form by pressing "Add"
+    Then I should see "You have added the tag exclude me to this site"
+    And I should see the following table rows:
+      | Tag                | Exclude/Require |
+      | exclude me         | Exclude         |
+    When I press "Remove"
+    Then I should see "You have removed the tag exclude me from this site"
+    When I follow "Add Filter Tag"
+    And I fill in "Tag" with "require me"
+    And I choose "Require"
+    And I submit the form by pressing "Add"
+    Then I should see "You have added the tag require me to this site"
+    And I should see the following table rows:
+      | Tag                | Exclude/Require |
+      | require me         | Require         |
+    When I follow "Add Filter Tag"
+    And I fill in "Tag" with "require me"
+    And I choose "Require"
+    And I submit the form by pressing "Add"
+    Then I should see "Tag has already been taken"
+
   Scenario: View Flickr URLs
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

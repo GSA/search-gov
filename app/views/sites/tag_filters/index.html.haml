@@ -1,0 +1,24 @@
+= content_for_site_page_title @site, 'Filter Tags'
+.sub-nav-heading
+  %h2 Filter Tags
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+      = render 'sites/shared/domains_advanced_options'
+      %li= link_to 'Add Filter Tag', new_site_tag_filter_path(@site)
+
+= render_flash_message
+%table.table.table-no-header
+  %thead
+    %tr
+      %th Tag
+      %th Exclude/Require
+  %tbody
+    - @site.tag_filters.each do |tag_filter|
+      %tr
+        %td= tag_filter.tag
+        %td= tag_filter.exclude ? 'Exclude' : 'Require'
+        %td.actions.actions-1x
+          %ul
+            %li
+              = button_to_delete_form 'Remove', site_tag_filter_path(@site, tag_filter.id), "Are you sure you wish to remove the tag #{tag_filter.tag} from this site?"

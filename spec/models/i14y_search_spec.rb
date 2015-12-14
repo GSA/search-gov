@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe I14ySearch do
-  fixtures :affiliates, :i14y_drawers, :i14y_memberships
+  fixtures :affiliates, :i14y_drawers, :i14y_memberships, :tag_filters
 
   let(:affiliate) { affiliates(:power_affiliate) }
 
@@ -30,6 +30,18 @@ describe I14ySearch do
 
     it 'searchs I14y with the appropriate params' do 
       I14yCollections.should_receive(:search).with(hash_including(sort_by_date: 1))
+      i14y_search.run
+    end
+  end
+
+  context 'tag filters are present' do
+    let(:affiliate_with_filter_tags) { affiliates(:basic_affiliate) }
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate_with_filter_tags,
+                                       per_page: 20,
+                                       query: 'testing tag filters') }
+
+    it 'searchs I14y with the appropriate params' do
+      I14yCollections.should_receive(:search).with(hash_including(ignore_tags: 'no way,nope', tags: 'important,must have'))
       i14y_search.run
     end
   end
