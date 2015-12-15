@@ -35,6 +35,7 @@ gem 'active_scaffold_export'
 gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
 gem 'rspec'
+gem 'rspec-json_expectations'
 gem 'rspec-core'
 gem 'cucumber'
 gem "recaptcha", :require => "recaptcha/rails"

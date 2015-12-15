@@ -8,6 +8,7 @@ SimpleCov.command_name 'RSpec'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec'
+require 'rspec/json_expectations'
 require 'rspec/rails'
 require 'remarkable'
 require 'remarkable_activerecord'
