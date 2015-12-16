@@ -406,9 +406,8 @@ RSpec.configure do |config|
       builder.response :json
     end
 
-    #FIXME: this is in here just to get rcov coverage on SearchApiConnection
+    #FIXME: this is in here just to get rcov coverage on connection classes
     params = { affiliate: 'wh', index: 'web', query: 'obama' }
-    SearchApiConnection.new('myapi', 'http://search.usa.gov').get('/api/search.json', params)
     RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
     NutshellClient::NutshellApiConnection.new
 

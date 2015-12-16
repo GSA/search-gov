@@ -426,6 +426,7 @@ GEM
       resque (>= 1.19.0)
       rspec (>= 2.5.0)
     retriable (1.4.1)
+    retry_block (1.2.0)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -647,6 +648,7 @@ DEPENDENCIES
   resque-priority!
   resque-timeout
   resque_spec
+  retry_block
   rspec
   rspec-core
   rspec-rails

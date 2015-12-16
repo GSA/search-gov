@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RateLimitedSearchApiConnection do
-  let(:cache) { mock(ApiCache) }
+  let(:cache) { mock(ApiCache, namespace: 'some_cache') }
   let(:rate_limiter) { mock(ApiRateLimiter) }
   let(:connection) { RateLimitedSearchApiConnection.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
@@ -19,7 +19,7 @@ describe RateLimitedSearchApiConnection do
         cache.should_receive(:read).with(endpoint, params).and_return(response)
       end
 
-      specify { connection.get(endpoint, params).should eq(response) }
+      specify { connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'some_cache')) }
     end
 
     context 'on cache miss and limit has not been reached' do
@@ -32,7 +32,7 @@ describe RateLimitedSearchApiConnection do
         connection.connection.should_receive(:get).with(endpoint, params).and_return(response)
         cache.should_receive(:write).with(endpoint, params, response)
 
-        connection.get(endpoint, params).should eq(response)
+        connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'none'))
       end
     end
 
@@ -45,7 +45,7 @@ describe RateLimitedSearchApiConnection do
       it 'returns nil' do
         connection.connection.should_not_receive(:get)
 
-        connection.get(endpoint, params).should be_nil
+        connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(nil, 'none'))
       end
     end
   end

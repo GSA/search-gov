@@ -46,6 +46,6 @@ class BingSearch < SearchEngine
 
   private
   def connection_instance
-    @@api_connection ||= SearchApiConnection.new('bing_api', API_HOST)
+    @@api_connection ||= CachedSearchApiConnection.new('bing_api', API_HOST)
   end
 end

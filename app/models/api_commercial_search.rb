@@ -17,6 +17,10 @@ class ApiCommercialSearch < Search
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: @query)
   end
 
+  def diagnostics_label
+    default_module_tag
+  end
+
   protected
 
   def build_highlighting_options(options)

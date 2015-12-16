@@ -1,3 +1,5 @@
+CachedSearchApiConnectionResponse = Struct.new(:response, :cache_namespace)
+
 class CachedSearchApiConnection
   extend Forwardable
   def_delegator :@connection, :basic_auth # optional
@@ -15,7 +17,12 @@ class CachedSearchApiConnection
   end
 
   def get(api_endpoint, param_hash)
-    @cache.read(api_endpoint, param_hash) || get_from_api(api_endpoint, param_hash)
+    if response = @cache.read(api_endpoint, param_hash)
+      CachedSearchApiConnectionResponse.new(response, @cache.namespace)
+    else
+      response = get_from_api(api_endpoint, param_hash)
+      CachedSearchApiConnectionResponse.new(response, 'none')
+    end
   end
 
   protected

@@ -4,8 +4,10 @@ class SearchEngineResponse
                 :start_record,
                 :end_record,
                 :total,
-                :tracking_information
+                :tracking_information,
+                :diagnostics
   def initialize
     yield self if block_given?
+    diagnostics = {}
   end
 end

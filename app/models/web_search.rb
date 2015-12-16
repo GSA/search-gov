@@ -36,6 +36,10 @@ class WebSearch < Search
     'AWEB' == module_tag
   end
 
+  def diagnostics_label
+    module_tag_for_search_engine
+  end
+
   protected
   def search_engine_klass(search_engine_option)
     case search_engine_option
@@ -111,7 +115,7 @@ class WebSearch < Search
       if @indexed_results.present?
         @module_tag = local_index_module_tag
       else
-        @module_tag = module_tag_for_search_engine(@affiliate.search_engine)
+        @module_tag = module_tag_for_search_engine
       end
     end
   end
@@ -120,8 +124,8 @@ class WebSearch < Search
     'AIDOC'
   end
 
-  def module_tag_for_search_engine(search_engine)
-    case search_engine
+  def module_tag_for_search_engine
+    case @affiliate.search_engine
     when 'Azure' then 'AWEB'
     when 'Google' then 'GWEB'
     else 'BWEB'

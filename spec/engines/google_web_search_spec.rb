@@ -60,7 +60,7 @@ describe GoogleWebSearch do
     end
 
     it 'uses non rate limited api connection' do
-      web_search.api_connection.should be_an_instance_of(SearchApiConnection)
+      web_search.api_connection.should be_an_instance_of(CachedSearchApiConnection)
     end
   end
 
