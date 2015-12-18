@@ -16,7 +16,7 @@ class ApiCache
   end
 
   def write(api_endpoint, http_params, response)
-    @cache_store.write generate_cache_key(api_endpoint, http_params), response
+    @cache_store.write generate_cache_key(api_endpoint, http_params), response unless @cache_duration.zero?
   end
 
   private
