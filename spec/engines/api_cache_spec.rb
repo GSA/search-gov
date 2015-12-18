@@ -13,7 +13,8 @@ describe ApiCache do
     ActiveSupport::Cache::FileStore.should_receive(:new).and_return(cache_store)
   end
 
-  subject(:cache) { ApiCache.new('my_api', 600) }
+  subject(:cache) { ApiCache.new('my_api', cache_duration) }
+  let(:cache_duration) { 600 }
 
   describe '#read' do
     describe 'on cache store hit' do
@@ -33,6 +34,15 @@ describe ApiCache do
     it 'writes to the cache store' do
       cache_store.should_receive(:write).with('/search.json?query=gov', response)
       cache.write(endpoint, params, response)
+    end
+
+    context 'when the cache duration is 0' do
+      let(:cache_duration) { 0 }
+
+      it 'does not write to the cache store' do
+        cache_store.should_not_receive(:write).with('/search.json?query=gov', response)
+        cache.write(endpoint, params, response)
+      end
     end
   end
 end
