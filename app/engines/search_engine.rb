@@ -26,7 +26,7 @@ class SearchEngine
   def execute_query
     http_params = params
     Rails.logger.debug "#{self.class.name} Url: #{api_endpoint}\nParams: #{http_params}"
-    retry_block(attempts: MAX_ATTEMPT_COUNT) do |attempt|
+    retry_block(attempts: MAX_ATTEMPT_COUNT, catch: [Faraday::TimeoutError, Faraday::ConnectionFailed]) do |attempt|
       start = Time.now.to_f
       cached_response = api_connection.get(api_endpoint, http_params)
       process_cached_response(cached_response, start, attempt)
