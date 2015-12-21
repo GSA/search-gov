@@ -7,6 +7,7 @@ module SearchConsumer
     end
 
     mount SearchConsumer::Resources::Affiliates
+    mount SearchConsumer::Resources::RssChannel
   end
 end
 

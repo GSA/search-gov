@@ -4,9 +4,9 @@ describe SearchConsumer::API do
   fixtures :affiliates, :navigations, :document_collections, :rss_feeds, :image_search_labels
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:affiliate_url_path) { "/api/c/affiliates/usagov?sc_access_key=#{SC_ACCESS_KEY}" }
+  let(:affiliate_url_path) { "/api/c/affiliate?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
 
-  context 'GET /api/c/affiliates/:name' do
+  context 'GET /api/c/affiliate?site_handle=:site_handle' do
     it 'returns a serialized affiliate by name' do
       get affiliate_url_path
       expect(last_response.status).to eq(200)
@@ -20,12 +20,12 @@ describe SearchConsumer::API do
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      get "/api/c/affiliates/usagov?sc_access_key=invalidKey"
+      get "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
       expect(last_response.status).to eq(401)
     end
   end
 
-  context 'PUT /api/c/affiliates/:name' do
+  context 'PUT /api/c/affiliate?site_handle=:site_handle' do
     it 'updates an Affiliate' do
       post_hash = {
         affiliate_params: {
@@ -40,14 +40,14 @@ describe SearchConsumer::API do
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      post "/api/c/affiliates/usagov?sc_access_key=invalidKey"
+      post "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
       expect(last_response.status).to eq(401)
     end
   end
 
-  let(:affiliate_config_url_path) { "/api/c/affiliates/usagov/config?sc_access_key=#{SC_ACCESS_KEY}" }
+  let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
 
-  context 'GET /api/c/affiliates/:name/config' do
+  context 'GET /api/c/affiliate?site_handle=:site_handle/config' do
     it 'returns a serialized affiliate representing the config options (facet and module settings)' do
       get affiliate_config_url_path
       expect(last_response.status).to eq(200)
@@ -87,7 +87,7 @@ describe SearchConsumer::API do
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      get "/api/c/affiliates/usagov?sc_access_key=invalidKey"
+      get "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
       expect(last_response.status).to eq(401)
     end
   end
