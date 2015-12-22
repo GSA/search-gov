@@ -1,10 +1,10 @@
 module SearchConsumer
   module Resources
-    class RssChannel < Grape::API
+    class RssSearch < Grape::API
       resource :search do
         resource :rss do
           desc 'Channel', {
-            params: SearchConsumer::Entities::RssChannel.documentation
+            params: SearchConsumer::Entities::RssSearch.documentation
           }
 
           desc 'Return the Channel\'s search results'
@@ -18,7 +18,7 @@ module SearchConsumer
               affiliate = Affiliate.find_by_name(params[:site_handle])
               search = NewsSearch.new(params.merge(affiliate: affiliate))
               search.run
-              present search, with: SearchConsumer::Entities::RssChannel
+              present search, with: SearchConsumer::Entities::RssSearch
             end
           end
         end
