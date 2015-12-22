@@ -50,12 +50,22 @@ describe SearchEngine do
       end
     end
 
-    context 'when an error occurs once' do
+    context 'when a non-timeout error occurs' do
+      before do
+        api_connection.stub(:get).and_raise('nope')
+      end
+
+      it 'raises a SearchError' do
+        expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'nope')
+      end
+    end
+
+    context 'when a timeout error occurs once' do
       before do
         @error_count = 0
         api_connection.stub(:get) do
           @error_count += 1
-          raise 'nope' if @error_count < 2
+          raise Faraday::TimeoutError.new('nope') if @error_count < 2
           cached_response
         end
       end
@@ -75,9 +85,9 @@ describe SearchEngine do
       end
     end
 
-    context 'when an error occurs repeatedly' do
+    context 'when a timeout error occurs repeatedly' do
       before do
-        api_connection.stub(:get).and_raise('nope')
+        api_connection.stub(:get).and_raise(Faraday::TimeoutError.new('nope'))
       end
 
       it 'raises a SearchError' do
