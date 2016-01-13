@@ -1,6 +1,6 @@
 module SearchConsumer
   module Entities
-    class AffiliateModules < Grape::Entity
+    class SearchModules < Grape::Entity
       expose :is_rss_govbox_enabled, as: :rss_govbox, documentation: { type: 'boolean', desc: 'TRUE if rss govbox results should show.'}
       expose :rss_govbox_label, if: lambda{|instance,opts| instance.is_rss_govbox_enabled }, documentation: { type: 'string', desc: 'The RSS Combined Govbox Label'}
       expose :is_video_govbox_enabled, as: :video, documentation: { type: 'boolean', desc: 'TRUE if video results should show.'}

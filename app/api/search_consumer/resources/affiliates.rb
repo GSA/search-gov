@@ -15,11 +15,10 @@ module SearchConsumer
         params { requires :site_handle, type: String, desc: 'Affiliate Site Handle.' }
         desc 'Return all facets and search modules settings in order of Priority'
         get '/config' do
-
           affiliate = Affiliate.find_by_name(params[:site_handle])
-          present :defaults, affiliate, with: SearchConsumer::Entities::Affiliate
-          present :facets, affiliate.navigations, with: SearchConsumer::Entities::AffiliateFacets
-          present :modules, affiliate, with: SearchConsumer::Entities::AffiliateModules
+          present :page_one_label, affiliate.default_search_label
+          present :facets, affiliate.navigations, with: SearchConsumer::Entities::Facets
+          present :modules, affiliate, with: SearchConsumer::Entities::SearchModules
         end
 
         desc 'Update an Affiliate.'
@@ -31,10 +30,11 @@ module SearchConsumer
           end
         end
         put do
-          Affiliate.find_by_name(params[:site_handle]).update_attributes({ 
+          attributes = {
             display_name: params[:affiliate_params].display_name,
             website: params[:affiliate_params].website
-          })
+          }
+          Affiliate.find_by_name(params[:site_handle]).update_attributes(attributes)
         end
       end
     end

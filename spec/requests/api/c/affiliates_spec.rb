@@ -15,9 +15,7 @@ describe SearchConsumer::API do
         usasearch_id: 130687165,
         display_name: "USA.gov",
         website: "http://www.usa.gov",
-        api_access_key: "usagov_key",
-        page_one_label: "search",
-        search_type: "web"
+        api_access_key: "usagov_key"
         }.to_json)
     end
 
@@ -29,20 +27,20 @@ describe SearchConsumer::API do
 
   context 'PUT /api/c/affiliate?site_handle=:site_handle' do
     it 'updates an Affiliate' do
-      put_hash = {
+      post_hash = {
         affiliate_params: {
           display_name: "New USAGOV",
           website: "www.newusagov"
         }
       }.to_json
-      put affiliate_url_path, put_hash, 'CONTENT_TYPE' => 'application/json'
+      put "#{affiliate_url_path}", post_hash, 'CONTENT_TYPE' => 'application/json'
       expect(last_response.status).to eq 200
       expect(affiliate.display_name).to eq "New USAGOV"
       expect(affiliate.website).to eq "http://www.newusagov"
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      put "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
+      post "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
       expect(last_response.status).to eq(401)
     end
   end
@@ -50,19 +48,11 @@ describe SearchConsumer::API do
   let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
 
   context 'GET /api/c/affiliate?site_handle=:site_handle/config' do
-    it "returns a serialized affiliate with search_type 'web', representing the config options (facet and module settings)" do
+    it 'returns a serialized affiliate representing the config options (facet and module settings)' do
       get affiliate_config_url_path
       expect(last_response.status).to eq(200)
       expect(response.body).to eq({
-        defaults: {
-          name: "usagov",
-          usasearch_id: 130687165,
-          display_name: "USA.gov",
-          website: "http://www.usa.gov",
-          api_access_key: "usagov_key",
-          page_one_label: "search",
-          search_type: "web"
-        },
+        page_one_label: "search",
         facets:[
           {
             name: "Images",
@@ -92,31 +82,9 @@ describe SearchConsumer::API do
           typeahead_search: true
         }
       }.to_json)
+
+
     end
-
-    it "returns a serialized affiliate with search_type 'i14y', representing the config options (facet and module settings)" do
-      affiliate.gets_i14y_results = true
-      affiliate.save
-      get affiliate_config_url_path
-      expect(last_response.status).to eq(200)
-      expect(response.body).to include_json({
-        defaults: {
-          search_type: "i14y"
-        }})
-    end
-
-    it "returns a serialized affiliate with search_type 'blended', representing the config options (facet and module settings)" do
-      affiliate.gets_blended_results = true
-      affiliate.save
-      get affiliate_config_url_path
-      expect(last_response.status).to eq(200)
-      expect(response.body).to include_json({
-        defaults: {
-          search_type: "blended"
-        }})
-    end
-
-
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
       get "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
