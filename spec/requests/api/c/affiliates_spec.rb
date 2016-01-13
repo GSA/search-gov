@@ -17,7 +17,6 @@ describe SearchConsumer::API do
         website: "http://www.usa.gov",
         api_access_key: "usagov_key",
         page_one_label: "search",
-        locale: 'en',
         search_type: "web"
         }.to_json)
     end
@@ -62,7 +61,6 @@ describe SearchConsumer::API do
           website: "http://www.usa.gov",
           api_access_key: "usagov_key",
           page_one_label: "search",
-          locale: 'en',
           search_type: "web"
         },
         facets:[
