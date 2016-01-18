@@ -80,6 +80,35 @@ module UsasearchRails3
     config.assets.enabled = true
     config.assets.version = '1.0'
 
+    # Configure asset pipeline behaviors on a per-server basis. In a canonical
+    # Rails world, we would simply place these settings in environment/*.rb.
+    #
+    # Unfortunately our architecture currently treats staging and prod both as
+    # RAILS_ENV=production, which means that we need some other way to specify
+    # settings that differ between staging and production. (In case you are
+    # wondering, the rationale for this is the seemingly convincing argument
+    # that "staging should be just like production", which it is...except, of
+    # course, when it isn't. Thus this tap-dance. *Sigh*)
+    #
+    # Anyway, YAML files that contain server-specific settings seems to be the
+    # method that we have chosen to work around this self-inflicted wound. Load
+    # one such file here in order to set the asset_host if needed.
+
+    ac_yml = "#{Rails.root}/config/asset_configuration.yml"
+
+    if ::File.exists?(ac_yml)
+      begin
+        ac = YAML.load_file(ac_yml)[Rails.env]
+        ac.each do |k,v|
+          UsasearchRails3::Application.configure do
+            config.action_controller.send(:"#{k}=", v)
+          end
+        end
+      rescue Exception => e
+        STDERR.puts "Unable to load asset configuration for environment #{Rails.env} in #{ac_yml}, skipping: #{e.message}"
+      end
+    end
+
     config.active_record.schema_format = :sql
     config.active_record.whitelist_attributes = false
 
