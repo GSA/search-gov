@@ -1,10 +1,14 @@
 set :user,        "search"
 set :deploy_to,   "/home/search/#{application}"
+set :branch,      fetch(:branch, "master")
 set :domain,      "192.168.100.169"
-server domain, :app, :web, :db, :primary => true
-role :daemon, "192.168.100.169"
+server domain,    :app, :web, :db, :primary => true
+role :daemon,     "192.168.100.169"
 
-set :system_yml_filenames, %w(external_faraday hosted_azure jwt mandrill nutshell sc_access_key)
+set :system_yml_filenames, %w(
+  asset_configuration external_faraday hosted_azure jwt mandrill nutshell
+  sc_access_key
+)
 
 after 'deploy:finalize_update', 'staging_specific_files'
 before "deploy:cleanup", "restart_resque_workers"
