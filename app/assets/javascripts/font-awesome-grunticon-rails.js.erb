@@ -1,0 +1,9 @@
+//= require font-awesome-grunticon-rails-loader
+
+grunticon([
+  "<%= asset_path('font-awesome-grunticon-rails-icons.data.svg.css', type: :stylesheet) %>",
+  "<%= asset_path('font-awesome-grunticon-rails-icons.data.png.css', type: :stylesheet) %>",
+  "<%= asset_path('font-awesome-grunticon-rails-fallback.css', type: :stylesheet) %>"
+  ],
+  grunticon.svgLoadedCORSCallback
+);
