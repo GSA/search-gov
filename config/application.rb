@@ -38,6 +38,7 @@ module UsasearchRails3
       allow do
         origins '*'
         resource '/api/c/', :headers => :any, :methods => [:get, :put, :post, :options]
+        resource '/assets/*', :headers => :any, :methods => [:get, :head, :options]
       end
     end
 
