@@ -59,6 +59,17 @@ Feature: Manage Display
     And the "Rss Feed 3" field should contain "Latest Videos"
     And the "Is Rss Feed 3 navigable" should be switched off
 
+    When I fill in the following:
+      | Label for Facets      | 123456789_123456789_12345 |
+      | Default search label  | 123456789_123456789_12345 |
+      | Image Search Label 0  | 123456789_123456789_12345 |
+
+    When I submit the form by pressing "Save"
+    Then I should see "You have updated your site display settings"
+    And the "Label for Facets" field should contain "123456789_123456789_"
+    And the "Default search label" field should contain "123456789_123456789_"
+    And the "Image Search Label 0" field should contain "123456789_123456789_"
+
   Scenario: Editing Sidebar Settings on a new site
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
