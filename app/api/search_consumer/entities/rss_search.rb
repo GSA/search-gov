@@ -1,6 +1,6 @@
 module SearchConsumer
   module Entities
-    class RssChannel < Grape::Entity
+    class RssSearch < Grape::Entity
       expose :next_offset do |instance|
         if instance.total > 0
           next_offset = instance.startrecord + instance.per_page
