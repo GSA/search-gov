@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'rails', "3.2.15"
+gem 'rails', "3.2.22.1"
 gem 'mysql2', '>0.3'
 gem 'capistrano'
 gem 'curb'
