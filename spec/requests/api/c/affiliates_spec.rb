@@ -18,6 +18,7 @@ describe SearchConsumer::API do
         api_access_key: "usagov_key",
         page_one_label: "search",
         locale: 'en',
+        search_engine: "Azure",
         search_type: "web"
         }.to_json)
     end
@@ -63,6 +64,7 @@ describe SearchConsumer::API do
           api_access_key: "usagov_key",
           page_one_label: "search",
           locale: 'en',
+          search_engine: "Azure",
           search_type: "web"
         },
         facets:[
