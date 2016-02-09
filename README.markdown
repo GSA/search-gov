@@ -27,7 +27,10 @@ For Rails 3, we use bundler; you should be able to get all the rest of the gems 
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65, <= 5.6), accessible from user 'root' with no password.
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65, <= 5.6), accessible from user 'root' with no password. You may need to reinstall the mysql2 gem if you changed your MySQL version:
+
+    gem uninstall mysql2
+    bundle install
 
 Create and setup your development and test databases:
 
