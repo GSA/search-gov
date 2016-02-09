@@ -27,7 +27,7 @@ For Rails 3, we use bundler; you should be able to get all the rest of the gems 
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65), accessible from user 'root' with no password.
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65, <= 5.6), accessible from user 'root' with no password.
 
 Create and setup your development and test databases:
 
@@ -53,11 +53,11 @@ We're using [Elastic](http://www.elasticsearch.org/) v1.7.3 for fulltext search 
 
 On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
 
-    $ brew install elasticsearch
+    $ brew install homebrew/versions/elasticsearch17
 
-To upgrade via homebrew:
+To check settings and directory locations:
 
-    $ brew update && brew upgrade elasticsearch
+    $ curl "localhost:9200/_nodes/settings?pretty=true"
 
 To change the defaults, like number of shards/replicas, edit this file:
 
@@ -94,8 +94,8 @@ The default JVM heap is 256m with a max of 1g. You can increase it by editing yo
 
 Now restart it:
 
-    $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
-    $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
+    $ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch17.plist
+    $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch17.plist
 
 If you aren't using Homebrew to install and configure Elasticsearch, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
