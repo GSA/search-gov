@@ -23,8 +23,8 @@
         %span.triangle.show-options
       %ul.time-filter-options
         %li
-          = link_to_if(@search.since || @search.until, t(:all_time), @search.rss_feed ? send(search_path_method, @search_params.remove(:tbs, :since_date, :until_date)) : search_path(@search_params.remove(:tbs, :since_date, :until_date)), :class => 'updatable') do |all_time|
-            = content_tag :div, all_time, class: 'selected'
+          = link_to_if(@search.since || @search.until, t(:any_time), @search.rss_feed ? send(search_path_method, @search_params.remove(:tbs, :since_date, :until_date)) : search_path(@search_params.remove(:tbs, :since_date, :until_date)), :class => 'updatable') do |any_time|
+            = content_tag :div, any_time, class: 'selected'
         - search_uses_predefined_time_filter = params[:tbs].present? && params[:since_date].blank? && params[:until_date].blank?
         - FilterableSearch::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
           %li

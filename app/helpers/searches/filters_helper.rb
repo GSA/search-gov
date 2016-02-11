@@ -66,7 +66,7 @@ module Searches::FiltersHelper
   def time_filter_description_by_key(time_filter_key)
     case time_filter_key
     when 'all'
-      I18n.t :all_time
+      I18n.t :any_time
     else
       I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[time_filter_key]}"
     end
