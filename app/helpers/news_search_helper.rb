@@ -19,7 +19,7 @@ module NewsSearchHelper
     when search.until
       "#{I18n.t :before} #{localized_time_filter_date search.until}"
     else
-      I18n.t :any_time
+      I18n.t :all_time
     end
   end
 
