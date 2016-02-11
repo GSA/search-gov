@@ -112,7 +112,7 @@ Feature: Searches using mobile device
     And I press "Search" within the search box
 
     Then the "Enter your search term" field should contain "news item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
     And I should see "150 RESULTS"
     And I should see "Powered by DIGITALGOV Search"
@@ -213,10 +213,10 @@ Feature: Searches using mobile device
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
     And I should not see a link to "Fourth item"
 
-    When I follow "All time"
+    When I follow "Any time"
     Then I should see "Press" within the SERP active navigation
     And the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
 
     When I fill in "From" with "9/30/2012"
@@ -227,7 +227,7 @@ Feature: Searches using mobile device
 
     Then I should see "Press" within the SERP active navigation
     And the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
 
     When I am on es.agency.gov's search page

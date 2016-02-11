@@ -44,7 +44,7 @@ Feature: Blended Search
     And I fill in "Enter your search term" with "items"
     And I press "Search" within the search box
     Then I should see "Everything" within the SERP active navigation
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should see "11 RESULTS"
     And I should see "<i> item </i> First news item for the feed"
@@ -90,14 +90,14 @@ Feature: Blended Search
 
     When I follow "Clear"
     Then the "Enter your search term" field should contain "last"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should see "7 RESULTS"
 
     When I fill in "Enter your search term" with "body"
     And I press "Search" within the search box
     Then the "Enter your search term" field should contain "body"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should see "3 RESULTS"
     Then I should see "first news item body"
@@ -156,7 +156,7 @@ Feature: Blended Search
     And I fill in "Enter your search term" with "item"
     And I press "Search" within the search box
     Then the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
     And I should see "6 RESULTS"
@@ -185,16 +185,16 @@ Feature: Blended Search
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
     And I should see a link to "First indexed document" with url for "http://www.whitehouse.gov/first.html"
 
-    When I follow "All time"
+    When I follow "Any time"
     Then the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
     And I should see a link to "Clear"
     And I should see "6 RESULTS"
 
     When I follow "Best match"
     Then the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
     And I should see "6 RESULTS"
@@ -206,7 +206,7 @@ Feature: Blended Search
     And I follow "Clear"
 
     Then the "Enter your search term" field should contain "item"
-    And I should see "All time" within the current time filter
+    And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
     And I should see "6 RESULTS"

@@ -136,7 +136,7 @@ Feature: Affiliate Search
     And I should see "Photo Gallery"
     And I should see "Videos"
     And I should not see "Hide Me" in the left column
-    And I should not see "All time"
+    And I should not see "Any time"
     And I should not see "Last hour"
     And I should not see "Last day"
     And I should not see "Last week"
@@ -162,7 +162,7 @@ Feature: Affiliate Search
     When I follow "Photo Gallery"
     Then I should see "no results found for 'item'"
 
-    When I follow "All time"
+    When I follow "Any time"
     Then I should see "item More news items for the feed"
     And I should see "item Last news item for the feed"
 
@@ -183,7 +183,7 @@ Feature: Affiliate Search
     And I should not see "Mostrar opciones" in the left column
     And I should not see "Ocultar opciones" in the left column
     And I should not see "Cualquier fecha"
-    And I should not see "All time"
+    And I should not see "Any time"
     And I should see "Noticias sobre de 'obama' de Spanish bar site"
     And I should see "Videos de 'obama' de Spanish bar site"
 
@@ -267,15 +267,15 @@ Feature: Affiliate Search
     And I fill in "query" with "item"
     And I press "Search" in the search box
     And I follow "Press"
-    Then I should see "All time" in the results filters
-    And I should not see a link to "All time" in the results filters
+    Then I should see "Any time" in the results filters
+    And I should not see a link to "Any time" in the results filters
     And the "From:" field should be blank
     And the "To:" field should be blank
     And I should see "Most recent" in the selected sort filter
     And I should not see a link to "Most recent" in the results filters
     And I should see a link to "Best match" in the results filters
     When I follow "Last week"
-    Then I should see a link to "All time" in the results filters
+    Then I should see a link to "Any time" in the results filters
     And the "From:" field should be blank
     And the "To:" field should be blank
     And I should see the browser page titled "item - bar site Search Results"
@@ -316,7 +316,7 @@ Feature: Affiliate Search
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
     And I should not see a link to "Fourth item"
 
-    When I follow "All time" in the results filters
+    When I follow "Any time" in the results filters
     Then the "From:" field should be blank
     And the "To:" field should be blank
 
@@ -980,7 +980,7 @@ Feature: Affiliate Search
     When I follow "Press" in the left column
     And I fill in "From:" with "1/30/2012"
     And I press "Search" in the results filters
-    And I follow "All time" in the results filters
+    And I follow "Any time" in the results filters
     And I follow "Everything" in the left column
     Then I should see "jobcenter.usa.gov/"
 
