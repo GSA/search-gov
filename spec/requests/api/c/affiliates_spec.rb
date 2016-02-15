@@ -4,98 +4,127 @@ describe SearchConsumer::API do
   fixtures :affiliates, :navigations, :document_collections, :rss_feeds, :image_search_labels
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:affiliate_url_path) { "/api/c/affiliate?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
-
-  context 'GET /api/c/affiliate?site_handle=:site_handle' do
-    it 'returns a serialized affiliate by name' do
-      get affiliate_url_path
-      expect(last_response.status).to eq(200)
-      expect(response.body).to eq({
-        name: "usagov",
-        usasearch_id: 130687165,
-        display_name: "USA.gov",
-        website: "http://www.usa.gov",
-        api_access_key: "usagov_key",
-        page_one_label: "search",
-        locale: 'en',
-        search_engine: "Azure",
-        search_type: "web"
-        }.to_json)
-    end
-
-    it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      get "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
-      expect(last_response.status).to eq(401)
-    end
-  end
-
-  context 'PUT /api/c/affiliate?site_handle=:site_handle' do
-    it 'updates an Affiliate' do
-      put_hash = {
-        affiliate_params: {
-          display_name: "New USAGOV",
-          website: "www.newusagov"
-        }
-      }.to_json
-      put affiliate_url_path, put_hash, 'CONTENT_TYPE' => 'application/json'
-      expect(last_response.status).to eq 200
-      expect(affiliate.display_name).to eq "New USAGOV"
-      expect(affiliate.website).to eq "http://www.newusagov"
-    end
-
-    it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      put "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
-      expect(last_response.status).to eq(401)
-    end
-  end
-
   let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
 
   context 'GET /api/c/affiliate?site_handle=:site_handle/config' do
     it "returns a serialized affiliate with search_type 'web', representing the config options (facet and module settings)" do
+
       get affiliate_config_url_path
       expect(last_response.status).to eq(200)
-      expect(response.body).to eq({
-        defaults: {
-          name: "usagov",
-          usasearch_id: 130687165,
-          display_name: "USA.gov",
-          website: "http://www.usa.gov",
-          api_access_key: "usagov_key",
-          page_one_label: "search",
-          locale: 'en',
-          search_engine: "Azure",
-          search_type: "web"
+      
+      response_hash =  JSON.parse response.body
+      
+      response_hash["defaults"]["usasearchId"] = 1
+      # facet mocks
+      response_hash["facets"]["pageOneLabel"] = "search"
+      response_hash["facets"]["facetLinks"][1]["channel_id"] = 1 
+      response_hash["facets"]["facetLinks"][2]["docs_id"] = 1
+      # Tagline Mocks
+      response_hash["tagline"]["logoUrl"] = "http://logo_url"
+      response_hash["tagline"]["title"] = "google"
+      response_hash["tagline"]["url"] = "http://logo_url"
+      # Header Mocks
+      response_hash["header"]["logoAlignment"] = "left"
+      response_hash["header"]["logoAltText"] = "Logo"
+      response_hash["header"]["logoImageUrl"] = "http://logo_image_url"
+      
+      # css_property mocks
+      response_hash["template"]["CSS"]["fontFamily"] = "Helvetica"
+
+      expect(response_hash).to eq({
+        "defaults" => {
+          "apiAccessKey" => "usagov_key",
+          "displayName" => "USA.gov",
+          "usasearchId" => 1,
+          "locale" => "en",
+          "name" => "usagov",
+          "searchEngine" => "Azure",
+          "searchType" => "web",
+          "templateType" => "classic",
+          "website" => "http://www.usa.gov",
         },
-        facets:[
-          {
-            name: "Images",
-            type: "ImageSearchLabel",
-            active: true
-          },
-          {
-            name: "Usa Gov Blog",
-            type: "RSS",
-            channel_id: rss_feeds(:usagov_blog).id,
-            active: true
-          },
-          {
-            name: "USAGov Collection",
-            type: "DocumentCollection",
-            docs_id: document_collections(:usagov_docs).id,
-            active: true
-          },
-        ],
-        modules: {
-          rss_govbox: false,
-          video: true,
-          job_openings: false,
-          federal_register_documents: false,
-          related_searches: true,
-          health_topics: false,
-          typeahead_search: true
+        "facets" => {
+          "pageOneLabel"=>"search", 
+          "facetLinks"=>[
+            {"name"=>"Images", "type"=>"ImageSearchLabel", "active"=>true}, 
+            {"name"=>"Usa Gov Blog", "type"=>"RSS", "channel_id"=>1, "active"=>true}, 
+            {"name"=>"USAGov Collection", "type"=>"DocumentCollection", "docs_id"=>1, "active"=>true}
+          ], 
+          "CSS" => {
+            "activeFacetLinkColor"=>"#9E3030", 
+            "facetsBackgroundColor"=>"#F1F1F1", 
+            "facetLinkColor"=>"#505050"
+          }
+        },
+        "footer"=> {
+          "footerLinks"=>nil, 
+          "CSS"=> {
+            "footerBackgroundColor"=>"#DFDFDF", 
+            "footerLinksTextColor"=>"#000000"
+          }
+        },
+        "header"=>{
+          "logoImageUrl"=>"http://logo_image_url", 
+          "logoAlignment"=>"left", 
+          "logoAltText"=>"Logo", 
+          "headerLinksAlignment"=>nil, 
+          "CSS"=> {
+            "headerBackgroundColor"=>"#FFFFFF", 
+            "headerTextColor"=>"#000000"
+          }
+        },
+        "headerLinks"=>{
+          "links"=>nil, 
+          "CSS"=>{
+            "headerLinksBackgroundColor"=>"#0068c4", 
+            "headerLinksTextColor"=>"#fff"
+          }
+        }, 
+        "govBoxes"=>{
+          "rss"=>false, 
+          "video"=>true, 
+          "jobOpenings"=>false, 
+          "federalRegisterDocuments"=>false, 
+          "relatedSearches"=>true, 
+          "healthTopics"=>false, 
+          "typeaheadSearch"=>true
+        },
+        "noResultsPage"=>{
+          "additionalGuidanceText"=>nil, 
+          "altLinks"=>nil
+        }, 
+        "resultsContainer"=>{
+          "CSS"=>{
+            "titleLinkColor"=>"#2200CC", 
+            "visitedTitleLinkColor"=>"#800080", 
+            "urlLinkColor"=>"#006800", 
+            "descriptionTextColor"=>"#000000"
+          }
+        }, 
+        "searchBar"=>{
+          "CSS"=>{
+            "searchButtonBackgroundColor"=>"#00396F"
+          }
+        },
+        "searchPageAlert" => nil,
+        "tagline"=>{
+          "title"=>"google", 
+          "url"=>"http://logo_url", 
+          "logoUrl"=>"http://logo_url", 
+          "CSS"=>{
+            "headerTaglineColor"=>"#FFFFFF", 
+            "headerTaglineBackgroundColor"=>"#000000"
+          }
+        },
+        "template"=>{
+          "templateType"=>"classic", 
+          "faviconUrl"=>"http://favicon_logo.com", 
+          "CSS"=>{
+            "fontFamily"=>"Helvetica", 
+            "pageBackground"=>"#DFDFDF"
+          }
         }
-      }.to_json)
+      })
     end
 
     it "returns a serialized affiliate with search_type 'i14y', representing the config options (facet and module settings)" do
@@ -105,7 +134,7 @@ describe SearchConsumer::API do
       expect(last_response.status).to eq(200)
       expect(response.body).to include_json({
         defaults: {
-          search_type: "i14y"
+          searchType: "i14y"
         }})
     end
 
@@ -116,14 +145,12 @@ describe SearchConsumer::API do
       expect(last_response.status).to eq(200)
       expect(response.body).to include_json({
         defaults: {
-          search_type: "blended"
+          searchType: "blended"
         }})
     end
 
-
-
-    it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      get "/api/c/affiliate?site_handle=usagov&sc_access_key=invalidKey"
+    it 'returns a 401 unauthorized if there is no valid sc_access_key param' do
+      get "/api/c/affiliate/config?site_handle=usagov&sc_access_key=invalidKey"
       expect(last_response.status).to eq(401)
     end
   end

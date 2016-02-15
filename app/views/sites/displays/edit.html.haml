@@ -10,6 +10,9 @@
   = render_flash_message
   = f.error_messages class: 'alert alert-error', header_tag: 'h3'
 
+  - if @site.search_consumer_search_enabled
+    = render partial: 'template_type', locals: { f: f }
   = render partial: 'sidebar', locals: { f: f }
   = render partial: 'govboxes', locals: { f: f }
-  = render partial: 'related_sites', locals: { f: f }
+  - unless @site.search_consumer_search_enabled
+    = render partial: 'related_sites', locals: { f: f }

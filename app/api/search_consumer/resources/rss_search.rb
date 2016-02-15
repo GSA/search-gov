@@ -9,13 +9,13 @@ module SearchConsumer
 
           desc 'Return the Channel\'s search results'
           params do
-            requires :site_handle, type: String, desc: 'Affiliate Site Handle.'
+            requires :affiliate, type: String, desc: 'Affiliate Site Handle.'
             requires :channel, type: String
             requires :query, type: String
           end
           route_param :channel do
             get do
-              affiliate = Affiliate.find_by_name(params[:site_handle])
+              affiliate = Affiliate.find_by_name(params[:affiliate])
               search = NewsSearch.new(params.merge(affiliate: affiliate))
               search.run
               present search, with: SearchConsumer::Entities::RssSearch
