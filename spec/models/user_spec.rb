@@ -455,4 +455,39 @@ describe User do
       end
     end
   end
+
+  describe '#add_to_affiliate' do
+    let(:user) { users('affiliate_manager') }
+    let(:site) { affiliates(:another_affiliate) }
+
+    subject(:add_to_affiliate) { user.add_to_affiliate(site, 'Someone') }
+
+    before do
+      site.update_attribute(:nutshell_id, 100)
+      adapter.should_receive(:push_site).with(site)
+      adapter.should_receive(:new_note).with(user, "Someone added @[Contacts:1001], affiliate_manager@fixtures.org to @[Leads:100] Another Gov Site [another.gov].")
+    end
+
+    it 'adds the user to the site' do
+      add_to_affiliate
+      expect(site.users).to include(user)
+    end
+  end
+
+  describe '#remove_from_affiliate' do
+    let(:user) { users('affiliate_manager') }
+    let(:site) { affiliates(:basic_affiliate) }
+
+    subject(:remove_from_affiliate) { user.remove_from_affiliate(site, 'Someone') }
+
+    before do
+      adapter.should_receive(:push_site).with(site)
+      adapter.should_receive(:new_note).with(user, "Someone removed @[Contacts:1001], affiliate_manager@fixtures.org from @[Leads:99] NPS Site [nps.gov].")
+    end
+
+    it 'removes the user from the site' do
+      remove_from_affiliate
+      expect(site.users).not_to include(user)
+    end
+  end
 end
