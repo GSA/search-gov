@@ -42,6 +42,7 @@ UsasearchRails3::Application.configure do
     config.assets.js_compressor = :uglifier
     config.assets.compile = false
     config.assets.digest = true
+    config.assets.precompile += %w( font-awesome-grunticon-rails.js )
     config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application\.js).+\.js$/ }
     config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application\.css).+\.css$/ }
   else
