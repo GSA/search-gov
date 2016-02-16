@@ -90,14 +90,16 @@ $.urlParam = (name) ->
     return results[1] || 0
 
 # Enable-Disable Input on Key Presses
-$('#search-bar #query').keyup ->
+$('#search-bar #query').keyup (e) ->
   query = $.urlParam('query') || ''
-  empty = $(this).val().length != 0 || query.length > 0
+  not_empty = $(this).val().length != 0 || query.length > 0
+  # console.log('input keycode: ' +  e.which);
   # console.log('input length: ' +  $(this).val().length);
   # console.log('query length: ' +  query.length);
-  if empty
+  if not_empty
     # console.log("not empty")
     $('#search-button').prop 'disabled', false
+    $(this).submit() # if not empty, check to see if enter key was pressed
   else
     # console.log("empty")
     $('#search-button').prop 'disabled', true
