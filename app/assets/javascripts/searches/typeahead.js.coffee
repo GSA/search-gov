@@ -67,20 +67,20 @@ $(document).on 'typeahead:open', queryFieldSelectorWithTypeahead, whenOpened
 $(document).on 'typeahead:close', queryFieldSelectorWithTypeahead, whenClosed
 $(document).on 'keyup', queryFieldSelectorWithTypeahead, updateStatusWithTimeout
 
+handleKeypress = (e) ->
+  submitFormIfEnterPressed e
 
-submitForm = (e) ->
-  #  submit form when pressing enter on IE8
+submitFormIfEnterPressed = (e) ->
   if e.which? and e.which == 13
     e.preventDefault()
     $('#search-bar').submit()
-
 
 $('#search-bar #query').each ->
   if $(this).val().length == 0
     $('#search-button').prop 'disabled', true
   else
     $('#search-button').prop 'disabled', false
-    $(document).on 'keypress', queryFieldSelector, submitForm
+    $(document).on 'keypress', queryFieldSelector, handleKeypress
 
 $.urlParam = (name) ->
   results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
@@ -99,7 +99,7 @@ $('#search-bar #query').keyup (e) ->
   if not_empty
     # console.log("not empty")
     $('#search-button').prop 'disabled', false
-    $(this).submit() # if not empty, check to see if enter key was pressed
+    submitFormIfEnterPressed e
   else
     # console.log("empty")
     $('#search-button').prop 'disabled', true
