@@ -56,8 +56,7 @@ describe Sites::UsersController do
               and_return(new_user)
 
           new_user.should_receive(:save).and_return(true)
-          adapter.should_receive(:push_site).with(site)
-          adapter.should_receive(:new_note).with(new_user, '@[Contacts:1001] added @[Contacts:42], john@email.gov to @[Leads:99] NPS Site [nps.gov].')
+          new_user.should_receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
 
           post :create,
                site_id: site.id,
@@ -98,15 +97,12 @@ describe Sites::UsersController do
 
         before do
           User.should_receive(:find_by_email).with('john@email.gov').and_return new_user
-          site.should_receive(:users).twice.and_return(site_users)
+          site.should_receive(:users).once.and_return(site_users)
           site_users.should_receive(:exists?).and_return(false)
-          site_users.should_receive(:<<).with(new_user)
 
           email = mock('email')
           new_user.should_receive(:send_new_affiliate_user_email).with(site, current_user)
-
-          adapter.should_receive(:push_site).with(site)
-          adapter.should_receive(:new_note).with(new_user, '@[Contacts:1001] added @[Contacts:42], john@email.gov to @[Leads:99] NPS Site [nps.gov].')
+          new_user.should_receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
 
           post :create,
                site_id: site.id,
@@ -152,40 +148,17 @@ describe Sites::UsersController do
       include_context 'approved user logged in to a site'
 
       let(:target_user) { mock_model(User, id: 100, nutshell_id: 42, email: 'john@email.gov') }
-      let(:remaining_sites) { [] }
 
       before do
         User.should_receive(:find).with('100').and_return(target_user)
-
-        memberships = mock('membership')
-        Membership.should_receive(:where).with(user_id: 100, affiliate_id: site.id).
-          and_return(memberships)
-        memberships.should_receive(:destroy_all)
       end
 
-      describe 'site pushing' do
-        before { adapter.should_receive(:new_note) }
+      it 'removes the user from the site' do
+        target_user.should_receive(:remove_from_affiliate).with(site, "@[Contacts:1001]")
 
-        it 'pushes to Nutshell' do
-          adapter.should_receive(:push_site).with(site)
-
-          put :destroy,
-              id: 100,
-              site_id: site.id
-        end
-      end
-
-      describe 'nutshell audit trail' do
-        before { adapter.should_receive(:push_site) }
-
-        it 'creates a Nutshell note indicating user removal' do
-          expected_message = '@[Contacts:1001] removed @[Contacts:42], john@email.gov from @[Leads:99] NPS Site [nps.gov].'
-          adapter.should_receive(:new_note).with(target_user, expected_message)
-
-          put :destroy,
-              id: 100,
-              site_id: site.id
-        end
+        put :destroy,
+            id: 100,
+            site_id: site.id
       end
     end
   end

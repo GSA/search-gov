@@ -43,5 +43,45 @@ describe "Bulk Import rake tasks" do
         end
       end
     end
+
+    describe "usasearch:bulk_import:affiliate_csv" do
+
+      fixtures :affiliates
+      let(:task_name) { 'usasearch:bulk_import:affiliate_csv' }
+      let!(:user) { users(:non_affiliate_admin) }
+      let(:csv_file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "affiliates.csv") }
+      let(:site) { affiliates(:usagov_affiliate) }
+      let(:message) { /A script added/ }
+      subject(:import_affiliates) { @rake[task_name].invoke(csv_file_path, user.email) }
+
+      before do
+        @rake[task_name].reenable
+        $stdout = StringIO.new
+        site.users << user
+      end
+
+      after { $stdout = STDOUT }
+
+      it "has 'environment' as a prerequisite" do
+        @rake[task_name].prerequisites.should include("environment")
+      end
+
+      it 'adds the user to each site' do
+        expect{import_affiliates}.to change{user.affiliates.count}.by(2)
+      end
+
+      it 'reports the addition to Nutshell' do
+        @adapter = mock(NutshellAdapter) 
+        NutshellAdapter.stub(:new) { @adapter }
+        @adapter.should_receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
+        @adapter.should_receive(:new_note).with(user, message).exactly(2).times
+        import_affiliates
+      end
+
+      it 'outputs a list of added sites' do
+        import_affiliates
+        expect($stdout.string).to match "Added user non_affiliate_admin@fixtures.org to the following sites:\nusagov: skipped - user already a member\ngobiernousa\nnoaa.gov\nnonexistent: FAILURE - site not found\n"
+      end
+    end
   end
 end

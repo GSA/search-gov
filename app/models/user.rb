@@ -121,6 +121,18 @@ class User < ActiveRecord::Base
     MandrillUserEmailer.new(self).send_new_affiliate_user(affiliate, inviter_user)
   end
 
+  def add_to_affiliate(affiliate, source)
+    affiliate.users << self unless self.affiliates.include? affiliate
+    NutshellAdapter.new.push_site affiliate
+    audit_trail_user_added(affiliate, source)
+  end
+
+  def remove_from_affiliate(affiliate, source)
+    Membership.where(user_id: self.id, affiliate_id: affiliate.id).destroy_all
+    NutshellAdapter.new.push_site affiliate
+    audit_trail_user_removed(affiliate, source)
+  end
+
   private
 
   def require_password?
@@ -189,5 +201,18 @@ class User < ActiveRecord::Base
 
   def send_welcome_to_new_user_email
     MandrillUserEmailer.new(self).send_welcome_to_new_user
+  end
+
+  def audit_trail_user_added(site, source)
+    add_nutshell_note_for_user('added', 'to', site, source)
+  end
+
+  def audit_trail_user_removed(site, source)
+    add_nutshell_note_for_user('removed', 'from', site, source)
+  end
+
+  def add_nutshell_note_for_user(added_or_removed, to_or_from, site, source)
+    note = "#{source} #{added_or_removed} @[Contacts:#{self.nutshell_id}], #{self.email} #{to_or_from} @[Leads:#{site.nutshell_id}] #{site.display_name} [#{site.name}]."
+    NutshellAdapter.new.new_note(self, note)
   end
 end
