@@ -4,6 +4,7 @@ class BingFormattedQuery < FormattedQuery
   def initialize(user_query, options = {})
     super(options)
     @scope_ids= options.delete(:scope_ids) || []
+    user_query = downcase_except_operators(user_query)
     @query = [query_plus_locale(user_query), generate_scope_and_sites(user_query)].join(' ').squish
   end
 

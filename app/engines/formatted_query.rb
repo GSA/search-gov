@@ -1,5 +1,6 @@
 class FormattedQuery
   QUERY_STRING_ALLOCATION = 1500
+  SEARCH_OPERATORS = %w{ AND OR NOT NEAR }
   attr_reader :query,
               :matching_site_limits
 
@@ -40,5 +41,11 @@ class FormattedQuery
 
   def included_domain_contains?(site)
     @included_domains.detect { |included_domain| site =~ /\b#{Regexp.escape(included_domain)}\b/i }
+  end
+
+  def downcase_except_operators(query)
+    query.split(' ').map { |word|
+      SEARCH_OPERATORS.include?(word) ? word : word.downcase
+    }.join(' ')
   end
 end

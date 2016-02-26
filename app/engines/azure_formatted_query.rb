@@ -13,6 +13,7 @@ class AzureFormattedQuery < FormattedQuery
   private
 
   def strip_site_from_query(user_query)
+    user_query = downcase_except_operators(user_query)
     user_query.gsub(%r{-?((site:)\S+)+}i, '').squish
   end
 
