@@ -21,7 +21,7 @@ namespace :usasearch do
     end
 
     desc 'Use Resque to migrate and index all indexes in parallel'
-    task :resque_migrate_all, [:index_name] => :environment do
+    task :resque_migrate_all => :environment do
       Dir[Rails.root.join('app/models/elastic_*.rb').to_s].collect do |filename|
         File.basename(filename, '.rb').camelize.constantize
       end.select do |klass|
