@@ -1,7 +1,7 @@
 rails_env = new_resource.environment["RAILS_ENV"]
 
 # Make sure the DB exists before doing anything else
-usasearch_rails_database :monolith do
+dgsearch_rails_database :usasearch do
   create_dir release_path
 end
 
