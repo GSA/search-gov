@@ -6,7 +6,8 @@ class Admin::AffiliateBoostedContentsController < Admin::AdminController
     config.list.empty_field_text = ''
 
     config.actions.add :export
-    config.export.columns = %i(title url description publish_start_on publish_end_on boosted_content_keywords status)
+    config.export.columns = %i(title url description publish_start_on publish_end_on
+                               boosted_content_keywords status match_keyword_values_only)
 
     config.actions.add :field_search
     config.field_search.columns = :affiliate_id, :title
