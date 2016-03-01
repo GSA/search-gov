@@ -7,6 +7,7 @@ describe BoostedContentBulkUploader do
 
   before do
     ElasticBoostedContent.recreate_index
+    extend ActionDispatch::TestProcess
   end
 
   describe "#upload" do
@@ -34,22 +35,11 @@ describe BoostedContentBulkUploader do
     end
 
     context "when uploading a CSV file" do
-      let(:site_csv) {
-        <<-CSV
-This is a listing    about Texas,http://some.url,This is the description of the listing,2019-01-01,2022-03-21,"Texan, ,Lone  Star ",true
-This is another listing about Texas,http://www.texas.gov,Take it online Texas,2019-01-01,,,true
-
-Some other listing about hurricanes,http://some.other.url,Another   description for another listing
-
-        CSV
-      }
-
-      let(:csv_file) { StringIO.new(site_csv) }
-
-      before do
-        affiliate.boosted_contents.destroy_all
-        csv_file.stub(:original_filename).and_return "foo.csv"
+      let(:csv_file) do
+        fixture_file_upload("/csv/boosted_content_bulk_upload.csv", 'text/csv')
       end
+
+      before { affiliate.boosted_contents.destroy_all }
 
       it "should create and index boosted Contents from an csv document" do
         results = uploader.upload(csv_file)
@@ -115,6 +105,17 @@ Some other listing about hurricanes,http://some.other.url,Another   description 
         results[:updated].should == 0
       end
 
+      context 'when the file contains funky characters' do
+        let(:csv_file) do
+          fixture_file_upload("/csv/boosted_content_bulk_upload_with_funky_characters.csv", 'text/csv')
+        end
+
+        it 'successfully creates the boosted contents' do
+          results = uploader.upload(csv_file)
+          expect(results[:created]).to eq 1
+          expect(affiliate.boosted_contents.first.description).to match /savers credit/
+        end
+      end
     end
   end
 

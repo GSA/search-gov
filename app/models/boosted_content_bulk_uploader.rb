@@ -14,9 +14,10 @@ class BoostedContentBulkUploader
     import_boosted_contents
   rescue ArgumentError
     @results[:error_message] = "Your filename should have .csv or .txt extension."
+    Rails.logger.error "Problem processing boosted Content document: ArgumentError: #{$!}"
   rescue
     @results[:error_message] = "Your document could not be processed. Please check the format and try again."
-    Rails.logger.warn "Problem processing boosted Content document: #{$!}"
+    Rails.logger.error "Problem processing boosted Content document: #{$!}"
   ensure
     return @results
   end
@@ -24,7 +25,10 @@ class BoostedContentBulkUploader
   private
 
   def parse_csv(csv_file)
-    CSV.parse(csv_file.read, :skip_blanks => true) do |row|
+    contents = csv_file.read.encode('UTF-8', { invalid: :replace,
+                                               undef:   :replace,
+                                               replace: '' })
+    CSV.parse(contents, skip_blanks: true) do |row|
       publish_start_on = extract_date(row[3])
       publish_end_on = extract_date(row[4], nil)
       keywords = extract_keywords(row[5])
