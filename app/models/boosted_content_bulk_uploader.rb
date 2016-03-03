@@ -63,6 +63,7 @@ class BoostedContentBulkUploader
   end
 
   def import_boosted_content(attributes)
+    attributes[:url] = AttributeProcessor.normalize_url(attributes[:url])
     boosted_content_attributes = attributes.except(:keywords).merge(status: 'active')
     boosted_content = @site.boosted_contents.find_or_initialize_by_url(boosted_content_attributes)
 

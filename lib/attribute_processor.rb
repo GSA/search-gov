@@ -2,10 +2,7 @@ module AttributeProcessor
   def self.prepend_attributes_with_http(record, *url_attribute_names)
     url_attribute_names.each do |attr_name|
       value = record.send :"#{attr_name}"
-
-      if value.present? && value !~ %r{^https?://}i
-        record.send :"#{attr_name}=", "http://#{value.strip}"
-      end
+      record.send :"#{attr_name}=", normalize_url(value) if value.present?
     end
   end
 
@@ -31,5 +28,8 @@ module AttributeProcessor
       end
     end
   end
-end
 
+  def self.normalize_url(url)
+    url !~ %r{^https?://}i ? "http://#{url.strip}" : url
+  end
+end

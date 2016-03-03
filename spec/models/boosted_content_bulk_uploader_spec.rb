@@ -4,6 +4,7 @@ describe BoostedContentBulkUploader do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:uploader) { BoostedContentBulkUploader.new(affiliate) }
+  subject(:results) { uploader.upload(file) }
 
   before do
     ElasticBoostedContent.recreate_index
@@ -12,37 +13,28 @@ describe BoostedContentBulkUploader do
 
   describe "#upload" do
     context "when the uploaded file has .png extension" do
-      let(:png_file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
+      let(:file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
 
-      before do
-        @results = uploader.upload(png_file)
-      end
-
-      subject { @results }
-      specify { @results[:success].should be_false }
-      specify { @results[:error_message].should == 'Your filename should have .csv or .txt extension.' }
+      specify { results[:success].should be_false }
+      specify { results[:error_message].should == 'Your filename should have .csv or .txt extension.' }
     end
 
     context "when the bulk upload file parameter is nil" do
+      let(:file) { nil }
 
-      before do
-        @results = uploader.upload(nil)
-      end
-
-      subject { @results }
-      specify { @results[:success].should be_false }
-      specify { @results[:error_message].should == "Your document could not be processed. Please check the format and try again." }
+      specify { results[:success].should be_false }
+      specify { results[:error_message].should == "Your document could not be processed. Please check the format and try again." }
     end
 
     context "when uploading a CSV file" do
-      let(:csv_file) do
+      let(:file) do
         fixture_file_upload("/csv/boosted_content_bulk_upload.csv", 'text/csv')
       end
 
       before { affiliate.boosted_contents.destroy_all }
 
       it "should create and index boosted Contents from an csv document" do
-        results = uploader.upload(csv_file)
+        results
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 3
@@ -76,7 +68,7 @@ describe BoostedContentBulkUploader do
         boosted_content.boosted_content_keywords.build(value: 'Texan')
         boosted_content.save!
 
-        results = uploader.upload(csv_file)
+        results
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 3
@@ -95,7 +87,7 @@ describe BoostedContentBulkUploader do
       it "should merge with preexisting boosted Contents" do
         affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :status => 'active', :publish_start_on => Date.current)
 
-        results = uploader.upload(csv_file)
+        results
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 4
@@ -106,14 +98,24 @@ describe BoostedContentBulkUploader do
       end
 
       context 'when the file contains funky characters' do
-        let(:csv_file) do
+        let(:file) do
           fixture_file_upload("/csv/boosted_content_bulk_upload_with_funky_characters.csv", 'text/csv')
         end
 
         it 'successfully creates the boosted contents' do
-          results = uploader.upload(csv_file)
           expect(results[:created]).to eq 1
           expect(affiliate.boosted_contents.first.description).to match /savers credit/
+        end
+      end
+
+      context 'when a url is missing the http://' do
+        let(:file) do
+          fixture_file_upload("/csv/boosted_content_bulk_upload_without_http.csv", "text/csv")
+        end
+
+        it 'recognizes the url with or without the http' do
+          expect(results[:created]).to eq 1
+          expect(results[:updated]).to eq 1
         end
       end
     end
