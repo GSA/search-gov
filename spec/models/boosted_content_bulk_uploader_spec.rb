@@ -3,8 +3,9 @@ require 'spec_helper'
 describe BoostedContentBulkUploader do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:uploader) { BoostedContentBulkUploader.new(affiliate) }
-  subject(:results) { uploader.upload(file) }
+  let(:file) { fixture_file_upload("/csv/boosted_content_bulk_upload.csv", 'text/csv') }
+  let(:uploader) { BoostedContentBulkUploader.new(affiliate, file) }
+  subject(:results) { uploader.upload }
 
   before do
     ElasticBoostedContent.recreate_index
@@ -27,10 +28,6 @@ describe BoostedContentBulkUploader do
     end
 
     context "when uploading a CSV file" do
-      let(:file) do
-        fixture_file_upload("/csv/boosted_content_bulk_upload.csv", 'text/csv')
-      end
-
       before { affiliate.boosted_contents.destroy_all }
 
       it "should create and index boosted Contents from an csv document" do
@@ -116,6 +113,15 @@ describe BoostedContentBulkUploader do
         it 'recognizes the url with or without the http' do
           expect(results[:created]).to eq 1
           expect(results[:updated]).to eq 1
+        end
+      end
+
+      context 'when the file contains a header row' do 
+        let(:file) { fixture_file_upload('/csv/boosted_content_bulk_upload_with_header.csv', 'text/csv') }
+
+        it 'does not import the header row' do
+          expect(results[:created]).to eq 1
+          expect(affiliate.boosted_contents.first.title).to eq "Can I Take My Fireworks on a Plane?"
         end
       end
     end

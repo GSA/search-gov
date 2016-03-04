@@ -15,7 +15,7 @@ describe Sites::BoostedContentsBulkUploadsController do
           uploader = mock('BoostedContentBulkUploader')
           data_file = mock('best bets text data file', to_s: 'file content')
           BoostedContentBulkUploader.stub(:new).and_return uploader
-          uploader.should_receive(:upload).with('file content').and_return({ error_message: 'some error message' })
+          uploader.should_receive(:upload).and_return({ error_message: 'some error message' })
 
           post :create, best_bets_text_data_file: data_file
         end

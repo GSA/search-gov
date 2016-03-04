@@ -5,8 +5,8 @@ class Sites::BoostedContentsBulkUploadsController < Sites::SetupSiteController
   end
 
   def create
-    uploader = BoostedContentBulkUploader.new(@site)
-    results = uploader.upload(bulk_upload_params)
+    uploader = BoostedContentBulkUploader.new(@site, bulk_upload_file)
+    results = uploader.upload
     if results[:success]
       messages = []
       messages << 'Bulk upload is complete.'
@@ -22,7 +22,7 @@ class Sites::BoostedContentsBulkUploadsController < Sites::SetupSiteController
 
   private
 
-  def bulk_upload_params
+  def bulk_upload_file
     params.permit(:best_bets_text_data_file)[:best_bets_text_data_file]
   end
 end
