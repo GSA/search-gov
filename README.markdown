@@ -298,6 +298,10 @@ With NewRelic, you can launch ‘developer mode’ on your development machine.
 
 You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
 
+# Writing Stories
+1. Titles should include a 'should' or 'should not' statement.
+
+1. Try to follow the 'As a ..., I want to ..., because/so that...' format for the description to make sure we're starting from the same page. Example:  “As a developer, I would like to have story descriptions written in a consistent format, so that I can understand what is being requested.” 
 
 # Working on Stories
 
