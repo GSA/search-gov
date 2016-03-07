@@ -25,7 +25,8 @@ CREATE TABLE `affiliate_twitter_settings` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `aff_id_tp_id` (`affiliate_id`,`twitter_profile_id`)
+  KEY `aff_id_tp_id` (`affiliate_id`,`twitter_profile_id`),
+  KEY `index_affiliate_twitter_settings_on_twitter_profile_id` (`twitter_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates` (
@@ -107,7 +108,8 @@ CREATE TABLE `affiliates_instagram_profiles` (
 CREATE TABLE `affiliates_youtube_profiles` (
   `affiliate_id` int(11) DEFAULT NULL,
   `youtube_profile_id` int(11) DEFAULT NULL,
-  UNIQUE KEY `affiliate_id_youtube_profile_id` (`affiliate_id`,`youtube_profile_id`)
+  UNIQUE KEY `affiliate_id_youtube_profile_id` (`affiliate_id`,`youtube_profile_id`),
+  KEY `index_affiliates_youtube_profiles_on_youtube_profile_id` (`youtube_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agencies` (
@@ -126,7 +128,8 @@ CREATE TABLE `agency_organization_codes` (
   `organization_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_agency_organization_codes_on_agency_id` (`agency_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `agency_queries` (
@@ -305,7 +308,8 @@ CREATE TABLE `federal_register_agencies` (
 CREATE TABLE `federal_register_agencies_federal_register_documents` (
   `federal_register_agency_id` int(11) NOT NULL,
   `federal_register_document_id` int(11) NOT NULL,
-  UNIQUE KEY `index_federal_register_agencies_federal_register_documents` (`federal_register_agency_id`,`federal_register_document_id`)
+  UNIQUE KEY `index_federal_register_agencies_federal_register_documents` (`federal_register_agency_id`,`federal_register_document_id`),
+  KEY `fra_frd_frdocid_idx` (`federal_register_document_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `federal_register_documents` (
@@ -545,7 +549,8 @@ CREATE TABLE `outbound_rate_limits` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `interval` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'day',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_outbound_rate_limits_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `routed_queries` (
@@ -586,7 +591,8 @@ CREATE TABLE `rss_feed_urls` (
 CREATE TABLE `rss_feed_urls_rss_feeds` (
   `rss_feed_url_id` int(11) NOT NULL,
   `rss_feed_id` int(11) NOT NULL,
-  UNIQUE KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id` (`rss_feed_id`,`rss_feed_url_id`)
+  UNIQUE KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id` (`rss_feed_id`,`rss_feed_url_id`),
+  KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_url_id` (`rss_feed_url_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `rss_feeds` (
@@ -704,7 +710,8 @@ CREATE TABLE `suggestion_blocks` (
   `query` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_suggestion_blocks_on_query` (`query`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `superfresh_urls` (
@@ -857,7 +864,8 @@ CREATE TABLE `whitelisted_v1_api_handles` (
   `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_whitelisted_v1_api_handles_on_handle` (`handle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `youtube_playlists` (
@@ -2257,3 +2265,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151125173402');
 INSERT INTO schema_migrations (version) VALUES ('20151125230751');
 
 INSERT INTO schema_migrations (version) VALUES ('20151214163302');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307192607');
