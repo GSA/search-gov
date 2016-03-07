@@ -30,9 +30,9 @@ Feature: Image search
       | display_name    | name        | contact_email | contact_name | header                  | locale |
       | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
     When I am on gobiernousa's image search page
-    When I fill in "query" with "White House"
+    When I fill in "query" with "Barcelona"
     And I press "Buscar"
-    And I should see the browser page titled "White House - GobiernoUSA.gov resultados de la búsqueda"
+    And I should see the browser page titled "Barcelona - GobiernoUSA.gov resultados de la búsqueda"
     And I should see 20 image results
 
   Scenario: Image search using Azure engine

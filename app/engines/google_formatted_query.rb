@@ -1,6 +1,7 @@
 class GoogleFormattedQuery < FormattedQuery
   def initialize(user_query, options = {})
     super(options)
+    user_query = downcase_except_operators(user_query)
     @query = query_with_sites(user_query)
   end
 

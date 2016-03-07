@@ -42,4 +42,18 @@ describe AzureFormattedQuery do
       expect(query.query).to eq('gov (site:bar.com OR site:foo.com) (-site:exbar.com AND -site:exfoo.com)')
     end
   end
+
+  it 'downcases the query' do
+    query =  AzureFormattedQuery.new('Egypt').query
+    expect(query).to match /egypt/
+  end
+
+  context 'when the query includes search operators' do
+    let(:query_with_operators) { 'Egypt OR Morocco' }
+
+    it 'preserves the case of search operators' do
+      query = AzureFormattedQuery.new(query_with_operators).query
+      expect(query).to match /egypt OR morocco/
+    end
+  end
 end

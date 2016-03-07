@@ -156,4 +156,18 @@ describe BingFormattedQuery do
 
     end
   end
+
+  it 'downcases the query' do
+    query =  BingFormattedQuery.new('Egypt').query
+    expect(query).to match /egypt/
+  end
+
+  context 'when the query includes search operators' do
+    let(:query_with_operators) { 'Egypt OR Morocco' }
+
+    it 'preserves the case of search operators' do
+      query = BingFormattedQuery.new(query_with_operators).query
+      expect(query).to match /egypt OR morocco/
+    end
+  end
 end
