@@ -404,8 +404,24 @@ GEM
       json (~> 1.4)
     recaptcha (0.3.6)
     redis (3.2.1)
+    redis-actionpack (3.2.4)
+      actionpack (~> 3.2.0)
+      redis-rack (~> 1.4.4)
+      redis-store (~> 1.1.4)
+    redis-activesupport (3.2.5)
+      activesupport (~> 3.2.0)
+      redis-store (~> 1.1.0)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    redis-rack (1.4.4)
+      rack (~> 1.4.0)
+      redis-store (~> 1.1.4)
+    redis-rails (3.2.4)
+      redis-actionpack (~> 3.2.4)
+      redis-activesupport (~> 3.2.4)
+      redis-store (~> 1.1.4)
+    redis-store (1.1.7)
+      redis (>= 2.2)
     ref (2.0.0)
     remarkable (3.1.13)
       rspec (>= 1.2.0)
@@ -643,6 +659,7 @@ DEPENDENCIES
   recaptcha
   redis
   redis-namespace
+  redis-rails
   remarkable_activerecord
   resque
   resque-lock-timeout
