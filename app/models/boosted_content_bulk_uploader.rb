@@ -1,30 +1,36 @@
 class BoostedContentBulkUploader
   require 'rexml/document'
 
-  def initialize(site)
+  def initialize(site, file)
     @site = site
     @results = { created: 0, updated: 0, success: false }
     @records_hash = []
+    @file = file
   end
 
-  def upload(bulk_upload_file)
-    filename = bulk_upload_file.original_filename.downcase
+  def upload
+    filename = @file.original_filename.downcase
     raise ArgumentError unless filename =~ /\.(csv|txt)$/
-    parse_csv(bulk_upload_file)
+    parse_csv
     import_boosted_contents
   rescue ArgumentError
     @results[:error_message] = "Your filename should have .csv or .txt extension."
+    Rails.logger.error "Problem processing boosted Content document: ArgumentError: #{$!}"
   rescue
     @results[:error_message] = "Your document could not be processed. Please check the format and try again."
-    Rails.logger.warn "Problem processing boosted Content document: #{$!}"
+    Rails.logger.error "Problem processing boosted Content document: #{$!}"
   ensure
     return @results
   end
 
   private
 
-  def parse_csv(csv_file)
-    CSV.parse(csv_file.read, :skip_blanks => true) do |row|
+  def parse_csv
+    contents = @file.read.encode('UTF-8', { invalid: :replace,
+                                           undef:   :replace,
+                                           replace: '' })
+
+    CSV.parse(contents, skip_blanks: true, headers: includes_header?(contents)) do |row|
       publish_start_on = extract_date(row[3])
       publish_end_on = extract_date(row[4], nil)
       keywords = extract_keywords(row[5])
@@ -59,7 +65,7 @@ class BoostedContentBulkUploader
   end
 
   def import_boosted_content(attributes)
-    boosted_content_attributes = attributes.except(:keywords).merge(status: 'active')
+    boosted_content_attributes = prepare_attributes(attributes)
     boosted_content = @site.boosted_contents.find_or_initialize_by_url(boosted_content_attributes)
 
     if boosted_content.new_record?
@@ -80,5 +86,15 @@ class BoostedContentBulkUploader
       @results[:updated] += 1
     end
     boosted_content
+  end
+
+  def includes_header?(file)
+    first_row = CSV.parse(file, skip_blanks: true, headers: false)[0]
+    first_row[0..2].map(&:downcase) == ["title", "url", "description"]
+  end
+
+  def prepare_attributes(attributes)
+    attributes[:url] = AttributeProcessor.normalize_url(attributes[:url])
+    attributes.except(:keywords).merge(status: 'active')
   end
 end
