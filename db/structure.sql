@@ -661,17 +661,6 @@ CREATE TABLE `search_modules` (
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `sessions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `session_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `data` text COLLATE utf8_unicode_ci,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_sessions_on_session_id` (`session_id`),
-  KEY `index_sessions_on_updated_at` (`updated_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `site_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -2267,3 +2256,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151125230751');
 INSERT INTO schema_migrations (version) VALUES ('20151214163302');
 
 INSERT INTO schema_migrations (version) VALUES ('20160307192607');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307232457');
