@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rake'
+# Temporarily limiting rake version:
+# #http://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
+gem 'rake', '~> 10.0'
 gem 'rails', "3.2.22.1"
 gem 'mysql2', '>0.3'
 gem 'capistrano'
