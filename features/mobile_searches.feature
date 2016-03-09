@@ -604,7 +604,7 @@ Feature: Searches using mobile device
       | USA.gov           | usagov   | aff@bar.gov   | John Bar     |
     When I am on usagov's overridden search page
     And I fill in "query" with "jobs"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see at least 10 search results
 
   Scenario: Advanced search

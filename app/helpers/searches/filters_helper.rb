@@ -4,10 +4,12 @@ module Searches::FiltersHelper
   def search_filters_and_results_count(search, search_params)
     return unless search.is_a? FilterableSearch
 
-    html = [time_filter_html(search, search_params)]
+    html = [results_count_html(search)]
+    html << refine_search_html
+    html << time_filter_html(search, search_params)
     html << sort_filter_html(search, search_params)
     html << clear_button_html(search, search_params)
-    html << results_count_html(search)
+
     render partial: 'searches/filters_and_results_count', locals: { html: html.join("\n") }
   end
 
@@ -122,5 +124,11 @@ module Searches::FiltersHelper
                                 count: number_with_delimiter(search.total))
       content_tag :span, result_count_str
     end if search.results.present?
+  end
+
+  def refine_search_html
+    content_tag(:li, id: 'refine-search') do
+      content_tag(:span, "#{I18n.t :refine_your_search}:")
+    end
   end
 end
