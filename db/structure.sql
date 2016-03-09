@@ -94,7 +94,7 @@ CREATE TABLE `affiliates` (
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
   `search_consumer_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `domain_control_validation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `template_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `template_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -729,6 +729,17 @@ CREATE TABLE `tag_filters` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_tag_filters_on_affiliate_id` (`affiliate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `active` tinyint(1) DEFAULT '1',
+  `affiliate_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `schema` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `top_searches` (
@@ -2255,11 +2266,38 @@ INSERT INTO schema_migrations (version) VALUES ('20151125230751');
 
 INSERT INTO schema_migrations (version) VALUES ('20151214163302');
 
-INSERT INTO schema_migrations (version) VALUES ('20160307192607');
-
-INSERT INTO schema_migrations (version) VALUES ('20160307232457');
-
 INSERT INTO schema_migrations (version) VALUES ('20160215212225');
 
 INSERT INTO schema_migrations (version) VALUES ('20160215214615');
 
+INSERT INTO schema_migrations (version) VALUES ('20160226144804');
+
+INSERT INTO schema_migrations (version) VALUES ('20160226145024');
+
+INSERT INTO schema_migrations (version) VALUES ('20160226194648');
+
+INSERT INTO schema_migrations (version) VALUES ('20160227181021');
+
+INSERT INTO schema_migrations (version) VALUES ('20160301130907');
+
+INSERT INTO schema_migrations (version) VALUES ('20160303062809');
+
+INSERT INTO schema_migrations (version) VALUES ('20160303140821');
+
+INSERT INTO schema_migrations (version) VALUES ('20160306180553');
+
+INSERT INTO schema_migrations (version) VALUES ('20160306183419');
+
+INSERT INTO schema_migrations (version) VALUES ('20160306185325');
+
+INSERT INTO schema_migrations (version) VALUES ('20160306185752');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307003211');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307145503');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307192607');
+
+INSERT INTO schema_migrations (version) VALUES ('20160307232457');
+
+INSERT INTO schema_migrations (version) VALUES ('20160310020858');

@@ -1,0 +1,52 @@
+= stylesheet_link_tag "bootstrap.min.css"
+= javascript_include_tag "jquery.min.js"
+= javascript_include_tag "jquery.multi-select.js"
+= stylesheet_link_tag "multi-select.css"
+
+.container
+  %h1{style: "margin-bottom: 20px;"} Search Consumer Templates
+  
+  - flash.each do |key, value|
+    %div{:class => bootstrap_flash_class(key), style: "width: 95%;"}
+      = value
+
+  = form_tag(admin_search_consumer_templates_path, :method => :get, class: "form-inline") do
+    .form-group
+      %label{for: "affiliate_id"}  Find Affiliate By Id
+      %input#affiliate_id.form-control{name: "affiliate_id", :placeholder => "Affiliate ID", :type => "number", value: params[:affiliate_id] }
+    .form-group
+      = submit_tag "Search", class: "btn btn-default"
+
+  %hr{style: "margin: 20px 0;"}
+
+  - if @affiliate && @affiliate.search_consumer_search_enabled
+
+    = form_tag(admin_update_search_consumer_template_path, :method => :post, class: "form") do
+      = hidden_field_tag 'affiliate_id', params[:affiliate_id]
+
+      .col-sm-12
+        .form-group
+          %label.control-label{for: "selected"} 
+            Currently Selected Template
+            = "(Defaults to <strong>#{::Template::DEFAULT_TEMPLATE_TYPE}</strong>):".html_safe
+          
+          
+          =select_tag "selected", selected_template_dropdown_options(@affiliate), class: "form-control", style: "width: 50%"
+
+      .col-sm-12
+        .form-group
+          %select#selected-template-types.form-control{:multiple => "multiple", :name => "selected-template-types[]", style: "width: 50%"}
+            - @affiliate.templates.available.each do |template|
+              %option{:value => template.type, :selected => ''}= template.type.constantize::HUMAN_READABLE_NAME
+            - @affiliate.templates.hidden.each do |template|
+              %option{:value => template.type }= template.type.constantize::HUMAN_READABLE_NAME
+      .col-sm-12
+        .form-group
+          = submit_tag "Update Templates", class: "btn btn-default"
+      
+
+:javascript
+  $('#selected-template-types').multiSelect({
+    selectableHeader: "<div style='margin-bottom: 5px;'><strong>Hidden Templates</strong></div>",
+    selectionHeader: "<div style='margin-bottom: 5px;'><strong>Visible Templates</strong></div>"
+  })

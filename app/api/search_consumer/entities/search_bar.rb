@@ -2,9 +2,7 @@ module SearchConsumer
   module Entities
     class SearchBar < Grape::Entity
       expose :CSS, documentation: { type: 'hash', desc: 'Expose CSS values related to the Search Bar'} do |affiliate|
-        {
-          searchButtonBackgroundColor: affiliate.css_property_hash[:search_button_background_color]
-        }
+        affiliate.template.load_schema.css.colors.search_bar.to_hash
       end
     end
   end

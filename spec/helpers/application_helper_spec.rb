@@ -6,6 +6,23 @@ describe ApplicationHelper do
     helper.stub!(:image_search?).and_return false
   end
 
+  describe "bootstrap_flash_class" do
+   describe 'returning bootstrap eqivalant to rails flash types' do
+      BOOTSTRAP_FLASH_CLASSES = {
+        notice: "alert alert-info",
+        success: "alert alert-success",
+        error: "alert alert-error",
+        alert: "alert alert-error"
+      }
+        
+      BOOTSTRAP_FLASH_CLASSES.each do |key, value|
+        it %(should return "#{value}" when passed :#{key}) do
+          expect(bootstrap_flash_class(key)).to eq(value)
+        end
+      end
+    end
+  end
+
   describe "time_ago_in_words" do
     context 'English' do
       it "should include 'ago'" do

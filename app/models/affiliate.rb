@@ -49,6 +49,44 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :tag_filters, order: 'tag ASC'
   end
 
+
+  has_many :templates do
+    def find_and_activate_or_create_template(type)
+      default_template = where(type: type).first_or_create! do |template|
+        template.affiliate = proxy_association.owner
+        template.type = type
+      end
+      default_template.update_attribute(:active, true) if !default_template.active
+      return default_template
+    end
+
+    def activate(template_types)
+      template_types.each do |template_type|
+        find_and_activate_or_create_template(template_type)
+      end
+      return true
+    end
+
+    def deactivate(template_types)
+      where(type: template_types).each do |template|
+        deactivate_template(template, proxy_association.owner)
+      end
+      return true if proxy_association.owner.errors.count <= 0
+    end
+
+    private
+
+    def deactivate_template(template, affiliate)
+      if template.type == affiliate.template.type
+        affiliate.errors[:base] << "Please set another Template as the Selected Template before attempting to deactivate #{affiliate.template.type}."
+      else
+        template.update_column(:active, false)
+      end
+    end
+  end
+
+
+
   has_many :users, order: 'contact_name', through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
   has_many :rss_feed_urls, through: :rss_feeds, uniq: true
@@ -59,6 +97,7 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
   belongs_to :agency
+  belongs_to :template
 
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
@@ -517,6 +556,18 @@ class Affiliate < ActiveRecord::Base
     dup_instance
   end
 
+  def template
+    return super if super
+    templates.find_and_activate_or_create_template(Template::DEFAULT_TEMPLATE_TYPE)
+  end
+
+  def update_template(template_type)
+    selected_template = templates.find_by_type(template_type)
+    return false if !selected_template || !selected_template.active
+    update_attribute(:template_id, selected_template.id)
+    return true
+  end
+  
   private
 
   def batch_size(scope)

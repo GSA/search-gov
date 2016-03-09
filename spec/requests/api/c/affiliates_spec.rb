@@ -15,6 +15,7 @@ describe SearchConsumer::API do
       response_hash =  JSON.parse response.body
       
       response_hash["defaults"]["usasearchId"] = 1
+      response_hash["defaults"]["templateType"] = 'classic'
       # facet mocks
       response_hash["facets"]["pageOneLabel"] = "search"
       response_hash["facets"]["facetLinks"][1]["channel_id"] = 1 
@@ -29,7 +30,7 @@ describe SearchConsumer::API do
       response_hash["header"]["logoImageUrl"] = "http://logo_image_url"
       
       # css_property mocks
-      response_hash["template"]["CSS"]["fontFamily"] = "Helvetica"
+      response_hash["template"]["CSS"]["font_family"] = "Helvetica"
 
       expect(response_hash).to eq({
         "defaults" => {
@@ -39,6 +40,8 @@ describe SearchConsumer::API do
           "locale" => "en",
           "name" => "usagov",
           "searchEngine" => "Azure",
+          "googleCX" => nil,
+          "googleKey" => nil,
           "searchType" => "web",
           "templateType" => "classic",
           "website" => "http://www.usa.gov",
@@ -51,16 +54,16 @@ describe SearchConsumer::API do
             {"name"=>"USAGov Collection", "type"=>"DocumentCollection", "docs_id"=>1, "active"=>true}
           ], 
           "CSS" => {
-            "activeFacetLinkColor"=>"#9E3030", 
-            "facetsBackgroundColor"=>"#F1F1F1", 
-            "facetLinkColor"=>"#505050"
+            "active_facet_link_color"=>"#C61F0C", 
+            "facets_background_color"=>"#854242", 
+            "facet_link_color"=>"#154285"
           }
         },
         "footer"=> {
-          "footerLinks"=>nil, 
+          "links"=>nil, 
           "CSS"=> {
-            "footerBackgroundColor"=>"#DFDFDF", 
-            "footerLinksTextColor"=>"#000000"
+            "footer_background_color"=>"#EBE6DE", 
+            "footer_links_text_color"=>"#000000"
           }
         },
         "header"=>{
@@ -69,15 +72,13 @@ describe SearchConsumer::API do
           "logoAltText"=>"Logo", 
           "headerLinksAlignment"=>nil, 
           "CSS"=> {
-            "headerBackgroundColor"=>"#FFFFFF", 
-            "headerTextColor"=>"#000000"
+            "header_background_color"=>"#1B50A0", 
+            "header_text_color"=>"#000000"
           }
         },
         "headerLinks"=>{
           "links"=>nil, 
           "CSS"=>{
-            "headerLinksBackgroundColor"=>"#0068c4", 
-            "headerLinksTextColor"=>"#fff"
           }
         }, 
         "govBoxes"=>{
@@ -95,15 +96,15 @@ describe SearchConsumer::API do
         }, 
         "resultsContainer"=>{
           "CSS"=>{
-            "titleLinkColor"=>"#2200CC", 
-            "visitedTitleLinkColor"=>"#800080", 
-            "urlLinkColor"=>"#006800", 
-            "descriptionTextColor"=>"#000000"
+            "title_link_color"=>"#154285", 
+            "visited_title_link_color"=>"#595959", 
+            "url_link_color"=>"#008000", 
+            "description_text_color"=>"#000000"
           }
         }, 
         "searchBar"=>{
           "CSS"=>{
-            "searchButtonBackgroundColor"=>"#00396F"
+            "search_button_background_color"=>"#DE6262"
           }
         },
         "searchPageAlert" => nil,
@@ -112,16 +113,16 @@ describe SearchConsumer::API do
           "url"=>"http://logo_url", 
           "logoUrl"=>"http://logo_url", 
           "CSS"=>{
-            "headerTaglineColor"=>"#FFFFFF", 
-            "headerTaglineBackgroundColor"=>"#000000"
+            "header_tagline_color"=>"#FFFFFF", 
+            "header_tagline_background_color"=>"#000000"
           }
         },
         "template"=>{
-          "templateType"=>"classic", 
+          "templateType"=>"Template::Classic", 
           "faviconUrl"=>"http://favicon_logo.com", 
           "CSS"=>{
-            "fontFamily"=>"Helvetica", 
-            "pageBackground"=>"#DFDFDF"
+            "page_background"=>"#EBE6DE",
+            "font_family"=>"Helvetica"
           }
         }
       })
