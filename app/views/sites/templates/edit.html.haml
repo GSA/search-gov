@@ -1,0 +1,27 @@
+= content_for_site_page_title @site, 'Templates'
+= form_for @site, as: :site, url: site_template_path(@site), html: { class: 'form', id: 'edit-templates' } do |f|
+  .sub-nav-heading
+    %h2 Templates
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  
+  = render_flash_message
+  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  %h2 Your Current Template:
+  %h3= @site.template.class::HUMAN_READABLE_NAME
+
+  %hr
+
+  %h3 Template Options
+  - @site.templates.available.each do |template|
+    - if @site.template.type == template.type
+      = radio_button_tag(:template_type, template.type, true)
+    - else
+      = radio_button_tag(:template_type, template.type, false)
+    %span{style: "vertical-align: middle;font-weight: bolder;font-size: 15px;margin-left: 15px;"}
+      = template.class::HUMAN_READABLE_NAME
+    %span{style: "vertical-align: middle;margin-left: 15px;"}= template.class::TEMPLATE_DESCRIPTION
+    %br
+    %br

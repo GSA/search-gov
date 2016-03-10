@@ -12,4 +12,5 @@
 
   = render partial: 'sidebar', locals: { f: f }
   = render partial: 'govboxes', locals: { f: f }
-  = render partial: 'related_sites', locals: { f: f }
+  - unless @site.search_consumer_search_enabled
+    = render partial: 'related_sites', locals: { f: f }
