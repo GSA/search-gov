@@ -4,15 +4,14 @@ class BoostedContentBulkUploader
   def initialize(site, file)
     @site = site
     @results = { created: 0, updated: 0, success: false }
-    @records_hash = []
     @file = file
   end
 
   def upload
     filename = @file.original_filename.downcase
     raise ArgumentError unless filename =~ /\.(csv|txt)$/
-    parse_csv
     import_boosted_contents
+    @results[:success] = true
   rescue ArgumentError
     @results[:error_message] = "Your filename should have .csv or .txt extension."
     Rails.logger.error "Problem processing boosted Content document: ArgumentError: #{$!}"
@@ -25,25 +24,30 @@ class BoostedContentBulkUploader
 
   private
 
-  def parse_csv
+  def import_boosted_contents
     contents = @file.read.encode('UTF-8', { invalid: :replace,
                                            undef:   :replace,
                                            replace: '' })
 
-    CSV.parse(contents, skip_blanks: true, headers: includes_header?(contents)) do |row|
-      publish_start_on = extract_date(row[3])
-      publish_end_on = extract_date(row[4], nil)
-      keywords = extract_keywords(row[5])
-      match_keyword_values_only = extract_bool(row[6]) && keywords.present?
-
-      @records_hash << { title: row[0],
-                         url: row[1],
-                         description: row[2],
-                         publish_start_on: publish_start_on,
-                         publish_end_on: publish_end_on,
-                         keywords: keywords,
-                         match_keyword_values_only: match_keyword_values_only }
+    CSV.parse(contents, skip_blanks: true,
+                        headers: includes_header?(contents),
+                        skip_lines: /^(?:,\s*)+$/) do |row|
+      attributes = extract_attributes(row)
+      create_or_update_boosted_content(attributes)
     end
+  end
+
+  def extract_attributes(row)
+    keywords = extract_keywords(row[5])
+
+    { title: row[0],
+      url: AttributeProcessor.normalize_url(row[1]),
+      description: row[2],
+      publish_start_on: extract_date(row[3]),
+      publish_end_on: extract_date(row[4], nil),
+      keywords: keywords,
+      match_keyword_values_only: extract_bool(row[6]) && keywords.present?,
+      status: extract_status(row[7]) }
   end
 
   def extract_date(date_string, default_value = Date.current)
@@ -59,13 +63,12 @@ class BoostedContentBulkUploader
     bool.present? && bool =~ /^(1|true|yes|y|on)$/i
   end
 
-  def import_boosted_contents
-    @records_hash.each { |info| import_boosted_content(info) }
-    @results[:success] = true
+  def extract_status(status)
+    (%w{0 inactive}.include? status.to_s.downcase) ? 'inactive' : 'active'
   end
 
-  def import_boosted_content(attributes)
-    boosted_content_attributes = prepare_attributes(attributes)
+  def create_or_update_boosted_content(attributes)
+    boosted_content_attributes = attributes.except(:keywords)
     boosted_content = @site.boosted_contents.find_or_initialize_by_url(boosted_content_attributes)
 
     if boosted_content.new_record?
@@ -91,10 +94,5 @@ class BoostedContentBulkUploader
   def includes_header?(file)
     first_row = CSV.parse(file, skip_blanks: true, headers: false)[0]
     first_row[0..2].map(&:downcase) == ["title", "url", "description"]
-  end
-
-  def prepare_attributes(attributes)
-    attributes[:url] = AttributeProcessor.normalize_url(attributes[:url])
-    attributes.except(:keywords).merge(status: 'active')
   end
 end
