@@ -7,8 +7,6 @@ module SearchConsumer
       expose :locale, documentation: { type: 'string', desc: 'Default locale for the affiliate.'}
       expose :name
       expose :search_engine, as: "searchEngine", documentation: { type: 'string', desc: 'Search engine to be used [Bing, Google, Azure]'}
-      expose :google_cx, as: "googleCX", documentation: { type: 'string', desc: 'Customer ID for Google Custom Search API'}
-      expose :google_key, as: "googleKey", documentation: { type: 'string', desc: 'API Key for Google Custom Search API'}
       expose :search_type, as: "searchType", documentation: { type: 'string', desc: 'Default Search Type, [i14y, Blended, Web].'} do |affiliate|
         if affiliate.gets_i14y_results?
           'i14y'
@@ -18,9 +16,7 @@ module SearchConsumer
           'web'
         end
       end
-      expose :template_type, as: "templateType", documentation: { type: 'string', desc: 'Template type used by Search Consumer'} do |affiliate|
-        affiliate.template.class.name
-      end
+      expose :template_type, as: "templateType", documentation: { type: 'string', desc: 'Template type used by Search Consumer'}
       expose :website, documentation: { type: 'string', desc: 'Website URL.' }
     end
   end

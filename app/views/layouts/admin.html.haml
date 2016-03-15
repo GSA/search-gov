@@ -19,7 +19,7 @@
               = breadcrumbs([link_to("Super Admin", admin_home_page_path), link_to(@parent_page_title, { :action => :index }), @page_title])
             - elsif @page_title || (active_scaffold_config && active_scaffold_config.label)
               = breadcrumbs([link_to("Super Admin", admin_home_page_path), @page_title || active_scaffold_config.label])
-            .span-10.prepend-7.append-7= show_flash_messages unless @page_title == 'Search Consumer Templates'
+            .span-10.prepend-7.append-7= show_flash_messages
             .clear
             = yield
     = javascript_include_tag 'admin'

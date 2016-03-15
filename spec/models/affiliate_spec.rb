@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages, :templates
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
 
   before(:each) do
     @valid_create_attributes = {
@@ -31,40 +31,32 @@ describe Affiliate do
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
       it { should allow_value(value).for(:name) }
     end
-    
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:users).through :memberships }
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
-    it { should have_many :twitter_profiles }
-
-    it { should have_many(:routed_query_keywords).through :routed_queries }
-    it { should have_many(:rss_feed_urls).through :rss_feeds }
-    it { should have_many(:users).through :memberships }
-
-    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
-    it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
-    it { should have_many(:excluded_domains).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
+    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { should have_many(:features).dependent(:destroy) }
-    it { should have_many(:flickr_profiles).dependent(:destroy) }
-    it { should have_many(:memberships).dependent(:destroy) }
-    it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:routed_queries).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
-    it { should have_many(:templates) }
+    it { should have_many(:rss_feed_urls).through :rss_feeds }
     it { should have_many(:site_domains).dependent(:destroy) }
+    it { should have_many(:excluded_domains).dependent(:destroy) }
     it { should have_many(:tag_filters).dependent(:destroy) }
-  
+    it { should have_many(:navigations).dependent(:destroy) }
+    it { should have_many(:flickr_profiles).dependent(:destroy) }
     it { should have_and_belong_to_many :instagram_profiles }
     it { should have_and_belong_to_many :youtube_profiles }
-
+    it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
+    it { should have_many :twitter_profiles }
     it { should belong_to :agency }
     it { should belong_to :language }
-
+    it { should have_many(:navigations).dependent(:destroy) }
+    it { should have_many(:routed_queries).dependent(:destroy) }
+    it { should have_many(:routed_query_keywords).through :routed_queries }
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
-    
     it { should validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
@@ -479,10 +471,9 @@ describe Affiliate do
         footer_error_message = %q(HTML to customize the bottom of your search results page must not contain the onload attribute)
 
         html_with_onload = <<-HTML
-          <div onload="cdn.agency.gov/script.js"></div>
-          <h1>html with onload</h1>
+            <div onload="http://cdn.agency.gov/script.js"></div>
+            <h1>html with onload</h1>
         HTML
-        
         affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be_false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
@@ -1314,103 +1305,6 @@ describe Affiliate do
 
     it 'sets @css_property_hash instance variable' do
       expect(subject.instance_variable_get(:@css_property_hash)).to include(:title_link_color, :visited_title_link_color)
-    end
-  end
-
-  describe '#template' do 
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template) { templates(:usagov_classic)}
-
-    it "returns a template object if one exists on the belongs_to relationship" do
-      expect(affiliate.template_id).to eq template.id
-      expect(affiliate.template).to eq template
-    end
-
-    it "returns a Template::DEFAULT_TYPE object if no object exists on the belongs_to relationship" do
-      affiliate.template_id = nil
-      affiliate.save
-
-      expect(affiliate.template).to eq template
-      expect(affiliate.template.type).to eq Template::DEFAULT_TEMPLATE_TYPE
-    end
-  end
-
-  describe '#update_template' do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template) { templates(:usagov_classic)}
-    let(:template_rounded) { templates(:usagov_rounded_header_link)}
-
-    it "sets the affiliate belongs_to template relationship by 'type'" do
-      affiliate.templates.find_by_type("Template::RoundedHeaderLink").update_attribute(:active, true)
-      expect(affiliate.template.type).to eq "Template::Classic"
-      affiliate.update_template("Template::RoundedHeaderLink")
-      expect(affiliate.template.type).to eq "Template::RoundedHeaderLink"
-    end
-
-    it "errors if it is 'not a active template' for this Affiliate" do 
-      expect(affiliate.update_template("Template::NonExistant")).to be false
-    end
-
-    it "errors if it is 'not a selected template' for this Affiliate" do 
-      template = affiliate.templates.find_by_type("Template::RoundedHeaderLink")
-      template.update_attribute(:active, false)
-
-      expect(affiliate.update_template("Template::RoundedHeaderLink")).to be false
-    end
-
-  end
-
-  describe 'has_many :templates' do 
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template_rounded) { templates(:usagov_rounded_header_link)}
-
-    describe '#find_and_activate_or_create_template(type)' do 
-      it "receives type and creates the template if it does not exist" do 
-        affiliate.templates.destroy_all
-        expect(affiliate.templates.map(&:type)).not_to include "Template::RoundedHeaderLink"
-        affiliate.templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
-        affiliate.reload
-        expect(affiliate.templates.map(&:type)).to include "Template::RoundedHeaderLink"
-      end
-
-      it "receives type and re-activates the template if it exist" do 
-        expect(affiliate.templates.find_by_type("Template::RoundedHeaderLink").active).to eq false
-        affiliate.templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
-        expect(affiliate.templates.find_by_type("Template::RoundedHeaderLink").active).to eq true
-      end
-    end
-
-    describe '#activate(template_types)' do 
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it "calls find_and_activate_or_create_template for all template types" do 
-        template_types = ["Template::Classic", "Template::RoundedHeaderLink"]
-        affiliate.templates.should_receive(:find_and_activate_or_create_template).with("Template::Classic")
-        affiliate.templates.should_receive(:find_and_activate_or_create_template).with("Template::RoundedHeaderLink")
-        affiliate.templates.activate(template_types)
-      end
-    end
-
-    describe 'deactivate(template_types)' do 
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-      let(:template_rounded) { templates(:usagov_rounded_header_link)}
-      let(:template_classic) { templates(:usagov_classic)}
-
-      it "deactivates provided template types by changing the active value to false" do 
-        template_types = ["Template::RoundedHeaderLink"]
-        template_rounded.update_attribute(:active, true)
-        affiliate.templates.deactivate(template_types)
-        template_rounded.reload
-        expect(template_rounded.active).to eq false
-      end
-
-      it "adds a ActiveRecord error to Affiliate and returns false if deactivating the selected Template" do 
-        template_types = ["Template::Classic"]
-        expect(affiliate.template.type).to eq "Template::Classic"
-        affiliate.templates.deactivate(template_types)
-        expect(affiliate.errors.count).to eq 1
-        expect(affiliate.template.type).to eq "Template::Classic"
-      end
     end
   end
 end

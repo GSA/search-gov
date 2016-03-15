@@ -1,15 +1,6 @@
 # coding: utf-8
 module ApplicationHelper
 
-  def bootstrap_flash_class(level)
-    case level
-        when :notice then "alert alert-info"
-        when :success then "alert alert-success"
-        when :error then "alert alert-error"
-        when :alert then "alert alert-error"
-    end
-  end
-
   def current_user_is?(role)
     current_user && current_user.send("is_#{role}?")
   end

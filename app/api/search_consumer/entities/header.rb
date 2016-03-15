@@ -12,7 +12,10 @@ module SearchConsumer
         affiliate.css_property_hash[:menu_button_alignment]
       end
       expose :CSS, documentation: { type: 'hash', desc: 'Expose CSS values related to the Header'} do |affiliate|
-        affiliate.template.load_schema.css.colors.header.to_hash
+        {
+          headerBackgroundColor: affiliate.css_property_hash[:header_background_color],
+          headerTextColor: affiliate.css_property_hash[:header_text_color]
+        }
       end
     end
   end

@@ -11,7 +11,10 @@ module SearchConsumer
         affiliate.header_tagline_logo.url if affiliate.header_tagline_logo_file_name.present?
       end
       expose :CSS, documentation: { type: 'hash', desc: 'Expose CSS values related to the Header'} do |affiliate|
-        affiliate.template.load_schema.css.colors.tagline.to_hash
+        {
+          headerTaglineColor: affiliate.css_property_hash[:header_tagline_color],
+          headerTaglineBackgroundColor: affiliate.css_property_hash[:header_tagline_background_color]
+        }
       end
     end
   end
