@@ -3,7 +3,7 @@ class BoostedContentBulkUploader
 
   def initialize(site, file)
     @site = site
-    @results = { created: 0, updated: 0, success: false }
+    @results = { created: 0, updated: 0, failed: 0, success: false }
     @file = file
   end
 
@@ -32,8 +32,14 @@ class BoostedContentBulkUploader
     CSV.parse(contents, skip_blanks: true,
                         headers: includes_header?(contents),
                         skip_lines: /^(?:,\s*)+$/) do |row|
-      attributes = extract_attributes(row)
-      create_or_update_boosted_content(attributes)
+
+      begin
+        attributes = extract_attributes(row)
+        create_or_update_boosted_content(attributes)
+      rescue StandardError => error
+        Rails.logger.error "Failure to process bulk upload BBT row:\n#{row}\n#{error.message}\n#{error.backtrace.join("\n")}"
+        @results[:failed] += 1
+      end
     end
   end
 
@@ -41,7 +47,7 @@ class BoostedContentBulkUploader
     keywords = extract_keywords(row[5])
 
     { title: row[0],
-      url: AttributeProcessor.normalize_url(row[1]),
+      url: row[1],
       description: row[2],
       publish_start_on: extract_date(row[3]),
       publish_end_on: extract_date(row[4], nil),

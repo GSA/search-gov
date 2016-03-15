@@ -202,7 +202,8 @@ Feature: Manage Content
     And I follow "Bulk Upload"
     And I attach the file "features/support/boosted_content.csv" to "best_bets_text_data_file"
     And I submit the form by pressing "Upload"
-    Then I should see "You have added 2 Best Bets: Texts."
+    Then I should see "You have added 2 Text Best Bets."
+    And I should see "1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   Scenario: View Collections
     Given the following Affiliates exist:

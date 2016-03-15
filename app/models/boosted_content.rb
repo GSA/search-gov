@@ -13,12 +13,13 @@ class BoostedContent < ActiveRecord::Base
   before_validation do |record|
     AttributeProcessor.sanitize_attributes record, :title, :description
     AttributeProcessor.squish_attributes record, :title, :url, :description
-    AttributeProcessor.prepend_attributes_with_http record, :url
   end
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :url, :description, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id", :case_sensitive => false
+  validates_format_of :url, with: URI.regexp,
+    message: " - Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   validate { |record| record.match_keyword_values_only_requires_keywords(boosted_content_keywords) }
 

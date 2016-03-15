@@ -1,17 +1,15 @@
 require 'spec_helper'
 
 describe BoostedContent do
-  fixtures :affiliates
-  before do
-    @affiliate = affiliates(:usagov_affiliate)
-    @valid_attributes = {
-        :affiliate => @affiliate,
-        :url => "http://www.someaffiliate.gov/foobar",
-        :title => "The foobar page",
-        :description => "All about foobar, boosted to the top",
-        :status => 'active',
-        :publish_start_on => Date.yesterday
-    }
+  fixtures :affiliates, :languages
+  let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:valid_attributes) do
+    { :affiliate => affiliate,
+      :url => "http://www.someaffiliate.gov/foobar",
+      :title => "The foobar page",
+      :description => "All about foobar, boosted to the top",
+      :status => 'active',
+      :publish_start_on => Date.yesterday }
   end
 
   describe "Creating new instance of BoostedContent" do
@@ -20,6 +18,12 @@ describe BoostedContent do
     it { should validate_presence_of :description }
     it { should validate_presence_of :affiliate }
     it { should validate_presence_of :publish_start_on }
+
+    it 'validates the url format' do
+      boosted_content = BoostedContent.new(url: 'blah')
+      expect(boosted_content).to_not be_valid
+      expect(boosted_content.errors[:url]).to include(" - Please ensure the URLs are properly formatted, including the http:// or https:// prefix.")
+    end
 
     BoostedContent::STATUSES.each do |status|
       it { should allow_value(status).for(:status) }
@@ -35,51 +39,42 @@ describe BoostedContent do
     it { should have_many(:boosted_content_keywords).dependent(:destroy) }
 
     it "should create a new instance given valid attributes" do
-      BoostedContent.create!(@valid_attributes)
+      BoostedContent.create!(valid_attributes)
     end
 
     it "should validate unique url" do
-      BoostedContent.create!(@valid_attributes)
-      duplicate = BoostedContent.new(@valid_attributes.merge(:url => @valid_attributes[:url].upcase))
+      BoostedContent.create!(valid_attributes)
+      duplicate = BoostedContent.new(valid_attributes.merge(:url => valid_attributes[:url].upcase))
       duplicate.should_not be_valid
       duplicate.errors[:url].first.should =~ /already been boosted/
     end
 
     it "should allow a duplicate url for a different affiliate" do
-      BoostedContent.create!(@valid_attributes)
-      duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
+      BoostedContent.create!(valid_attributes)
+      duplicate = BoostedContent.new(valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       duplicate.should be_valid
     end
 
     it "should not allow publish start date before publish end date" do
-      boosted_content = BoostedContent.create(@valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
+      boosted_content = BoostedContent.create(valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
       boosted_content.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
     end
 
     it 'should not allow duplicate url' do
-      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
-      BoostedContent.create!(@valid_attributes.merge(url: url))
-      expect { BoostedContent.create!(@valid_attributes.merge(url: url)) }.to raise_error
+      url = 'http://usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      BoostedContent.create!(valid_attributes.merge(url: url))
+      expect { BoostedContent.create!(valid_attributes.merge(url: url)) }.to raise_error
     end
 
     it 'should not allow blank description' do
-      expect { BoostedContent.create!(@valid_attributes.merge(description: '&nbsp;')) }.to raise_error
-    end
-
-    it "should save URL with http:// prefix when it does not start with http(s)://" do
-      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
-      prefixes = %w( http https invalidHtTp:// invalidhttps:// invalidHttPsS://)
-      prefixes.each do |prefix|
-        boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
-        boosted_content.url.should == "http://#{prefix}#{url}"
-      end
+      expect { BoostedContent.create!(valid_attributes.merge(description: '&nbsp;')) }.to raise_error
     end
 
     it "should save URL as is when it starts with http(s)://" do
       url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// HTTPS:// )
       prefixes.each do |prefix|
-        boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
+        boosted_content = BoostedContent.create!(valid_attributes.merge(:url => "#{prefix}#{url}"))
         boosted_content.url.should == "#{prefix}#{url}"
       end
     end
@@ -88,14 +83,14 @@ describe BoostedContent do
   describe 'match_keyword_values_only validation' do
     context 'when no boosted_content_keywords are provided' do
       it 'should not allow match_keyword_values_only to be set to true' do
-        boosted_content = BoostedContent.create(@valid_attributes.merge({ :match_keyword_values_only => true }))
+        boosted_content = BoostedContent.create(valid_attributes.merge({ :match_keyword_values_only => true }))
         boosted_content.errors.full_messages.join.should =~ /requires at least one keyword/
       end
     end
 
     context 'when some boosted_content_keywords are provided' do
       it 'should not allow match_keyword_values_only to be set to true' do
-        boosted_content = @affiliate.boosted_contents.build(@valid_attributes.merge({ match_keyword_values_only: true }))
+        boosted_content = affiliate.boosted_contents.build(valid_attributes.merge({ match_keyword_values_only: true }))
         boosted_content.boosted_content_keywords.build({ value: 'foo bar' })
         boosted_content.should be_valid
       end
@@ -106,17 +101,17 @@ describe BoostedContent do
     context 'when only the parent record has substring match in selected text fields' do
       before do
         common = {status: 'active', publish_start_on: Date.yesterday}
-        @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my blah title', description: 'my blah description'))
-        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/1', title: 'my second efgh title', description: 'my second blah description'))
-        @affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/2', title: 'my third blah title', description: 'my third jkl description'))
-        @affiliate.save!
+        affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my blah title', description: 'my blah description'))
+        affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/1', title: 'my second efgh title', description: 'my second blah description'))
+        affiliate.boosted_contents.build(common.merge(url: 'http://www.blah.gov/2', title: 'my third blah title', description: 'my third jkl description'))
+        affiliate.save!
       end
 
       it 'should find the records' do
         %w{bcd efg jk}.each do |substring|
-          @affiliate.boosted_contents.substring_match(substring).size.should == 1
+          affiliate.boosted_contents.substring_match(substring).size.should == 1
         end
-        @affiliate.boosted_contents.substring_match('gov').size.should == 3
+        affiliate.boosted_contents.substring_match('gov').size.should == 3
       end
 
       context 'when the keywords has substring match in selected fields' do
@@ -126,7 +121,7 @@ describe BoostedContent do
         end
 
         it 'should find the record just once' do
-          @affiliate.boosted_contents.substring_match('third').size.should == 1
+          affiliate.boosted_contents.substring_match('third').size.should == 1
         end
       end
     end
@@ -134,26 +129,26 @@ describe BoostedContent do
     context 'when keywords association has substring match in selected fields' do
       before do
         common = {status: 'active', publish_start_on: Date.yesterday}
-        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
+        bc = affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
         bc.boosted_content_keywords.build(:value => 'pollution')
         bc.save!
       end
 
       it 'should find the records' do
-        @affiliate.boosted_contents.substring_match('pollution').size.should == 1
+        affiliate.boosted_contents.substring_match('pollution').size.should == 1
       end
     end
 
     context 'when neither the parent or the child records match' do
       before do
         common = {status: 'active', publish_start_on: Date.yesterday}
-        bc = @affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
+        bc = affiliate.boosted_contents.build(common.merge(url: 'http://www.abcd.gov/', title: 'my efgh title', description: 'my ijkl description'))
         bc.boosted_content_keywords.build(:value => 'pollution')
         bc.save!
       end
 
       it 'should not find any records' do
-        @affiliate.boosted_contents.substring_match('sfgdfgdfgdfg').size.should be_zero
+        affiliate.boosted_contents.substring_match('sfgdfgdfgdfg').size.should be_zero
       end
     end
   end
@@ -166,20 +161,20 @@ describe BoostedContent do
 
   describe "#as_json" do
     it "should include title, url, and description" do
-      hash = BoostedContent.create!(@valid_attributes).as_json
-      hash[:title].should == @valid_attributes[:title]
-      hash[:url].should == @valid_attributes[:url]
-      hash[:description].should == @valid_attributes[:description]
+      hash = BoostedContent.create!(valid_attributes).as_json
+      hash[:title].should == valid_attributes[:title]
+      hash[:url].should == valid_attributes[:url]
+      hash[:description].should == valid_attributes[:description]
       hash.keys.length.should == 3
     end
   end
 
   describe "#to_xml" do
     it "should include title, url, and description" do
-      hash = Hash.from_xml(BoostedContent.create!(@valid_attributes).to_xml)['boosted_result']
-      hash['title'].should == @valid_attributes[:title]
-      hash['url'].should == @valid_attributes[:url]
-      hash['description'].should == @valid_attributes[:description]
+      hash = Hash.from_xml(BoostedContent.create!(valid_attributes).to_xml)['boosted_result']
+      hash['title'].should == valid_attributes[:title]
+      hash['url'].should == valid_attributes[:url]
+      hash['description'].should == valid_attributes[:description]
       hash.keys.length.should == 3
     end
   end
@@ -187,12 +182,12 @@ describe BoostedContent do
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     before do
       affiliate = Affiliate.create!({ :display_name => "Test Affiliate", :name => 'test_affiliate' }, :as => :test)
-      BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
+      BoostedContent.create(valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
 
     it "should also delete the boosted Content" do
-      BoostedContent.find_by_url(@valid_attributes[:url]).should be_nil
+      BoostedContent.find_by_url(valid_attributes[:url]).should be_nil
     end
   end
 

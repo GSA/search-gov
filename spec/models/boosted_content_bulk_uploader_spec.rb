@@ -106,17 +106,6 @@ describe BoostedContentBulkUploader do
         end
       end
 
-      context 'when a url is missing the http://' do
-        let(:file) do
-          fixture_file_upload("/csv/boosted_content/without_http.csv", "text/csv")
-        end
-
-        it 'recognizes the url with or without the http' do
-          expect(results[:created]).to eq 1
-          expect(results[:updated]).to eq 1
-        end
-      end
-
       context 'when the file contains a header row' do 
         let(:file) { fixture_file_upload('/csv/boosted_content/with_header.csv', 'text/csv') }
 
@@ -132,6 +121,18 @@ describe BoostedContentBulkUploader do
         it 'skips the blanks' do
           expect(results[:created]).to eq 2
           expect(affiliate.boosted_contents.map(&:url)).to match_array %w{http://www.foo.com http://www.bar.com}
+        end
+      end
+
+      context 'when the urls are malformed' do
+        let(:file) { fixture_file_upload('/csv/boosted_content/bad_urls.csv', 'text/csv') }
+
+        it 'does not create boosted content with bad urls' do
+          expect(results[:created]).to eq 1
+        end
+
+        it 'counts the failures' do
+          expect(results[:failed]).to eq 3
         end
       end
     end
