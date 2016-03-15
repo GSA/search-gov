@@ -17,9 +17,8 @@
 
 %fieldset
   = f.fields_for :css_property_hash do |hash|
-    - unless @site.search_consumer_search_enabled && @site.template_type == "USDA"
-      = hash.label :menu_button_alignment, 'Menu Button Alignment'
-      = hash.select :menu_button_alignment, options_for_select(%w(right left), selected: @site.css_property_hash[:menu_button_alignment])
+    = hash.label :menu_button_alignment, 'Menu Button Alignment'
+    = hash.select :menu_button_alignment, options_for_select(%w(right left), selected: @site.css_property_hash[:menu_button_alignment])
 
 %h3 Header Links
 %table#header-links.table

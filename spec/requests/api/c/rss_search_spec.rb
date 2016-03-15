@@ -14,17 +14,17 @@ describe SearchConsumer::API do
 
   context 'GET /api/c/affiliate/:name/rss/:channel_id' do
     it 'returns a list of results for an RSS channel with no results' do
-      get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=df"
+      get "/api/c/search/rss/#{rss_feed.id}?site_handle=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=df"
       expect(last_response.status).to eq(200)
       expect(response.body).to eq({
         next_offset: nil,
         count: 0,
         results: []
         }.to_json)
-    end 
+    end
 
     it 'returns a list of results for an RSS channel with results' do
-      get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=element"
+      get "/api/c/search/rss/#{rss_feed.id}?site_handle=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=element"
       expect(last_response.status).to eq(200)
       expect(response.body).to include_json(
         next_offset: nil,
@@ -33,7 +33,7 @@ describe SearchConsumer::API do
     end
 
     it 'returns a an error if a query param is not present' do
-      get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}"
+      get "/api/c/search/rss/#{rss_feed.id}?site_handle=nps.gov&sc_access_key=#{SC_ACCESS_KEY}"
       expect(last_response.status).to eq(400)
       expect(response.body).to eq({
         error: "query is missing"

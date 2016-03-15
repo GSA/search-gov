@@ -2,26 +2,39 @@ module SearchConsumer
   module Resources
     class Affiliates < Grape::API
       resource :affiliate do
+        desc 'Affiliates', {
+          params: SearchConsumer::Entities::Affiliate.documentation
+        }
+
+        params { requires :site_handle, type: String, desc: 'Affiliate Site Handle.' }
+        get do
+          affiliate = Affiliate.find_by_name(params[:site_handle])
+          present affiliate, with: SearchConsumer::Entities::Affiliate
+        end
+
         params { requires :site_handle, type: String, desc: 'Affiliate Site Handle.' }
         desc 'Return all facets and search modules settings in order of Priority'
         get '/config' do
 
           affiliate = Affiliate.find_by_name(params[:site_handle])
-          
-          error! "That Affiliate does not exist in the `usasearch` DB", 400  unless affiliate
-          
-          present :defaults, affiliate, with: SearchConsumer::Entities::Defaults
-          present :facets, affiliate, with: SearchConsumer::Entities::Facets
-          present :footer, affiliate, with: SearchConsumer::Entities::Footer
-          present :header, affiliate, with: SearchConsumer::Entities::Header
-          present :headerLinks, affiliate, with: SearchConsumer::Entities::HeaderLinks
-          present :govBoxes, affiliate, with: SearchConsumer::Entities::GovBoxes
-          present :noResultsPage, affiliate, with: SearchConsumer::Entities::NoResultsPage
-          present :resultsContainer, affiliate, with: SearchConsumer::Entities::ResultsContainer
-          present :searchBar, affiliate, with: SearchConsumer::Entities::SearchBar
-          present :searchPageAlert, affiliate.alert, with: SearchConsumer::Entities::SearchPageAlert
-          present :tagline, affiliate, with: SearchConsumer::Entities::Tagline
-          present :template, affiliate, with: SearchConsumer::Entities::Template
+          present :defaults, affiliate, with: SearchConsumer::Entities::Affiliate
+          present :facets, affiliate.navigations, with: SearchConsumer::Entities::AffiliateFacets
+          present :modules, affiliate, with: SearchConsumer::Entities::AffiliateModules
+        end
+
+        desc 'Update an Affiliate.'
+        params do
+          requires :site_handle, type: String, desc: 'Affiliate Site Handle.'
+          requires :affiliate_params, type: Hash do
+            requires :display_name, type: String
+            requires :website, type: String
+          end
+        end
+        put do
+          Affiliate.find_by_name(params[:site_handle]).update_attributes({ 
+            display_name: params[:affiliate_params].display_name,
+            website: params[:affiliate_params].website
+          })
         end
       end
     end

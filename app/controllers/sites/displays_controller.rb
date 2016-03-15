@@ -40,7 +40,6 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :jobs_enabled,
         :left_nav_label,
         :rss_govbox_label,
-        :template_type,
         connections_attributes: [:id, :affiliate_name, :label, :position],
         document_collections_attributes: navigable_attributes,
         image_search_label_attributes: navigable_attributes,

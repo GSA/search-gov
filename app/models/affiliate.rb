@@ -194,10 +194,6 @@ class Affiliate < ActiveRecord::Base
     content_box_shadow_color: '#555555',
     description_text_color: '#000000',
     footer_background_color: '#DFDFDF',
-    footer_links_text_color: '#000000',
-    header_links_background_color: '#0068c4',
-    header_links_text_color: '#fff',
-    header_text_color: '#000000',
     header_background_color: '#FFFFFF',
     header_tagline_background_color: '#000000',
     header_tagline_color: '#FFFFFF',
@@ -459,8 +455,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def destroy_and_update_attributes(params)
-
-    destroy_on_blank(params[:connections_attributes], :affiliate_name, :label) if params[:connections_attributes]
+    destroy_on_blank(params[:connections_attributes], :affiliate_name, :label)
     update_attributes(params)
   end
 
