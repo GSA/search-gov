@@ -13,8 +13,8 @@ class BingWebSearch < BingSearch
     coder = HTMLEntities.new
     processed = web_results.collect do |result|
       title = coder.decode(result.title) rescue nil
-      content = coder.decode(result.description) || ''
-      title.present? && result.url.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: content}) : nil
+      description = coder.decode(result.description) || ''
+      title.present? && result.url.present? ? Hashie::Rash.new({title: title, unescaped_url: result.url, content: description}) : nil
     end
     processed.compact
   end
@@ -30,5 +30,4 @@ class BingWebSearch < BingSearch
   def index_sources
     'Spell Web'
   end
-
 end
