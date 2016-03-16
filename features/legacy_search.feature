@@ -8,7 +8,7 @@ Feature: Affiliate Search
       | display_name     | name             | contact_email         | contact_name        |
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     When I am on bar.gov's search page
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Please enter a search term"
 
   Scenario: Searching with active RSS feeds
@@ -65,7 +65,7 @@ Feature: Affiliate Search
       | el paso term     |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "first item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "News for 'first item' by bar site"
     And I should not see "stale"
     And I should see "First <b> item </b>" in the rss feed govbox
@@ -93,7 +93,7 @@ Feature: Affiliate Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Videos of 'first item'"
     Then I should have the following query string:
       |affiliate|bar.gov   |
@@ -104,7 +104,7 @@ Feature: Affiliate Search
     And I should not see "First item"
     When I follow "Last year" in the results filters
     And I fill in "query" with "second item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Videos" in the left column
     And I should not see a link to "Videos"
     And I should see "Second video item"
@@ -112,7 +112,7 @@ Feature: Affiliate Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "loren"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should not see "News for 'loren' from bar site"
 
     When there are 30 video news items for "en_agency_channel_id"
@@ -123,13 +123,13 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "noticia uno"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see "Videos de 'noticia uno' de Spanish bar site"
     And I should see "Noticia video uno" in the video rss feed govbox
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Everything"
     And I should see "Images"
     And I should see "Press"
@@ -151,7 +151,7 @@ Feature: Affiliate Search
 
     When I am on bar.gov's news search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Photo Gallery"
     And I follow "Last hour"
     Then I should see "no results found for 'item'"
@@ -172,7 +172,7 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see the browser page titled "obama - Spanish bar site resultados de la búsqueda"
     And I should see "Todo"
     And I should not see "Everything" in the left column
@@ -195,14 +195,14 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Videos de 'obama'"
     Then I should see "Noticia video uno Obama"
     And I should not see "Noticia uno"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     Then I should see 2 video news results
@@ -265,7 +265,7 @@ Feature: Affiliate Search
       | el paso term     |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Press"
     Then I should see "Any time" in the results filters
     And I should not see a link to "Any time" in the results filters
@@ -310,7 +310,7 @@ Feature: Affiliate Search
     And I should not see a link to "Fourth item"
 
     When I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And the "From:" field should contain "9/30/2012"
     And the "To:" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
@@ -322,7 +322,7 @@ Feature: Affiliate Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
@@ -335,7 +335,7 @@ Feature: Affiliate Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
@@ -345,7 +345,7 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Noticias"
     Then I should see "Cualquier fecha" in the selected time filter
     And I should not see a link to "Cualquier fecha" in the results filters
@@ -389,7 +389,7 @@ Feature: Affiliate Search
     And I should not see a link to "Sixth Spanish item"
 
     When I fill in "query" with "item"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then the "Desde:" field should contain "30/9/2012"
     And the "Hasta:" field should contain "15/10/2012"
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
@@ -434,7 +434,7 @@ Feature: Affiliate Search
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed | president   | memoranda | elections |
     When I am on en.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Press"
     Then I should not see the left column options expanded
     And I should see "All contributors" in the selected contributor facet selector
@@ -513,7 +513,7 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Noticias"
     Then I should not see the left column options expanded
     And I should see "Cualquier colaborador" in the left column
@@ -596,7 +596,7 @@ Feature: Affiliate Search
       | https://www.whitehouse.gov/blog/2014/03/11/watch-president-obama-between-two-ferns-zach-galifianakis | First item | uuid1 | day           | two ferns news item |
     When I am on bar.gov's search page
     And I fill in "query" with "two ferns"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Between Two Ferns with Zach Galifianakis"
 
   Scenario: No results when searching with active RSS feeds
@@ -613,7 +613,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see at least 2 search results
 
     When I follow "Press"
@@ -622,7 +622,7 @@ Feature: Affiliate Search
     Then I should see at least 2 search results
 
     When I fill in "query" with "item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Photo Gallery"
     Then I should see "item More news items for the feed"
     When I follow "Last day"
@@ -644,7 +644,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see at least 2 search results
 
     When I follow "Press"
@@ -653,7 +653,7 @@ Feature: Affiliate Search
     Then I should see at least 2 search results
 
     When I fill in "query" with "item"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Photo Gallery"
     And I follow "Último día"
     Then I should see "No hemos encontrado ningún resultado que contenga 'item' en el último día. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
@@ -674,7 +674,7 @@ Feature: Affiliate Search
       | http://www.whitehouse.gov/photo/3 | Photo 3 | no media        | uuid3 | week          |                                        |                                        |
     When I am on bar.gov's "Photos" news search page
     And I fill in "query" with "photo"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see 2 image news results
 
   Scenario: Visiting English affiliate search with multiple domains
@@ -683,7 +683,7 @@ Feature: Affiliate Search
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see at least 2 search results
     And I should not see "Search this site"
 
@@ -693,7 +693,7 @@ Feature: Affiliate Search
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     | true                      |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see at least 2 search results
     And I should see "Todo"
     And I should not see "Everything"
@@ -711,7 +711,7 @@ Feature: Affiliate Search
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
     Given the following Medline Topics exist:
@@ -722,7 +722,7 @@ Feature: Affiliate Search
       | Hippo1        | 24680       | https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
@@ -733,7 +733,7 @@ Feature: Affiliate Search
 
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
   @javascript
@@ -746,7 +746,7 @@ Feature: Affiliate Search
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
     Given the following Medline Topics exist:
@@ -754,7 +754,7 @@ Feature: Affiliate Search
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
 
     Given I am logged in with email "aff@bar.gov" and password "random_string"
@@ -764,7 +764,7 @@ Feature: Affiliate Search
 
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
   Scenario: When a searcher enters a query with invalid Lucene character
@@ -773,11 +773,11 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
     And I am on agency.gov's search page
     And I fill in "query" with "++health it"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see the browser page titled "++health it - agency site Search Results"
     And I should see some Azure search results
     When I fill in "query" with "OR US97 central"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see the browser page titled "OR US97 central - agency site Search Results"
     And I should see some Azure search results
 
@@ -817,10 +817,10 @@ Feature: Affiliate Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Videos of 'first item'"
     And I fill in "query" with ""
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see the browser page titled "Videos - bar site Search Results"
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
@@ -848,10 +848,10 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "noticia uno"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     And I follow "Videos de 'noticia uno'"
     And I fill in "query" with ""
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
@@ -870,7 +870,7 @@ Feature: Affiliate Search
       | Estados Unidos por amigos!     | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
     And I fill in "query" with "season"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Recent tweet for 'season' by bar site"
     And I should see a link to "USAgov" with url for "http://twitter.com/USAgov"
     And I should see "USA.gov @USAgov"
@@ -880,7 +880,7 @@ Feature: Affiliate Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "Estados Unidos amiga"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see "Tweet más reciente para 'Estados Unidos amiga' de spanish site"
     And I should see a link to "GobiernoUSA.gov" with url for "http://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
@@ -903,7 +903,7 @@ Feature: Affiliate Search
     When I am on agency.gov's search page
     And I follow "Petitions" in the left column
     And I fill in "Enter your search term" with "'death star r2d2 xyz3'"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
@@ -921,7 +921,7 @@ Feature: Affiliate Search
     And I should not see a link to "Blog" in the left column
     And I should not see a link to "Search Notes" in the left column
     When I fill in "query" with "Noaa"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see some Azure search results
     And I should not see a link to "Everything" in the left column
     And I should not see a link to "Blog" in the left column
@@ -940,10 +940,10 @@ Feature: Affiliate Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
     When I am on agency.gov's search page
     And I fill in "query" with "jobs site:jobcenter.usa.gov"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "jobcenter.usa.gov/"
     And I fill in "query" with "jazz site:wikipedia.org"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
   Scenario: Searching for site specific results using sitelimit
@@ -959,21 +959,21 @@ Feature: Affiliate Search
       | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     When I am on agency.gov's search page with site limited to "jobcenter.usa.gov"
     And I fill in "query" with "jobs"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "jobcenter.usa.gov/"
 
     When I follow "Images" in the left column
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
     Then I should see "jobcenter.usa.gov/"
 
     When I follow "Blog" in the left column
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
     Then I should see "jobcenter.usa.gov/"
 
     When I follow "Press" in the left column
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
     Then I should see "jobcenter.usa.gov/"
 
@@ -1003,7 +1003,7 @@ Feature: Affiliate Search
     | other.gov             |  Other Site       |
     When I am on agency.gov's search page
     And I fill in "query" with "jobs"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Other Site"
     When I follow "Other Site"
     Then I should see the browser page titled "jobs - other site Search Results"
@@ -1021,12 +1021,12 @@ Feature: Affiliate Search
       | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
     When I am on agency.gov's search page
     And I fill in "query" with "warnings for a tornado"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see "Tornado Warning by agency site" in the featured collections section
     And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" on the left featured collection link list
     And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" on the right featured collection link list
     When I fill in "query" with "Atlantic"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see a featured collection link title with "Atlantic" highlighted
 
   Scenario: Searching on sites with Boosted Contents
@@ -1043,13 +1043,13 @@ Feature: Affiliate Search
       | la página de prueba de Emergencia | http://www.agency.gov/911 | Some terms  |
     When I am on agency.gov's search page
     And I fill in "query" with "notes"
-    And I press "Search" in the search box
+    And I press "Search" in the legacy search box
     Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://usasearch.howto.gov/releases/2013-05-31.html" in the boosted contents section
     And I should not see a link to "Notes for Week Ending June 21, 2013"
 
     When I am on es.agency.gov's search page
     And I fill in "query" with "emergencia"
-    And I press "Buscar" in the search box
+    And I press "Buscar" in the legacy search box
     Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
   Scenario: Searching news items with custom dublin core mappings
