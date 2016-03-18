@@ -3,5 +3,5 @@
     = link_to_news_item_title(result, position, 'I14Y')
   %span.url= truncate_url(result.link)
   %span.description
-    = news_item_time_ago_in_words(result.published_at, ' - ')
+    = news_item_time_ago_in_words(result.published_at, ' - ', @search.affiliate.i14y_date_stamp_enabled)
     = news_description(result)

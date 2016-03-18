@@ -95,6 +95,7 @@ CREATE TABLE `affiliates` (
   `search_consumer_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `search_consumer_admin_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `domain_control_validation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `i14y_date_stamp_enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2260,3 +2261,5 @@ INSERT INTO schema_migrations (version) VALUES ('20160307192607');
 INSERT INTO schema_migrations (version) VALUES ('20160307232457');
 
 INSERT INTO schema_migrations (version) VALUES ('20160406212829');
+
+INSERT INTO schema_migrations (version) VALUES ('20160401203518');
