@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BoostedContentBulkUploader do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:file) { fixture_file_upload("/csv/boosted_content_bulk_upload.csv", 'text/csv') }
+  let(:file) { fixture_file_upload("/csv/boosted_content/bulk_upload.csv", 'text/csv') }
   let(:uploader) { BoostedContentBulkUploader.new(affiliate, file) }
   subject(:results) { uploader.upload }
 
@@ -30,7 +30,7 @@ describe BoostedContentBulkUploader do
     context "when uploading a CSV file" do
       before { affiliate.boosted_contents.destroy_all }
 
-      it "should create and index boosted Contents from an csv document" do
+      it "should create and index boosted Contents from a csv document" do
         results
 
         affiliate.reload
@@ -44,6 +44,7 @@ describe BoostedContentBulkUploader do
         texas_boosted_content.publish_end_on.should == Date.parse('2022-03-21')
         texas_boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
         texas_boosted_content.match_keyword_values_only.should be_true
+        affiliate.boosted_contents.where(status: 'active').pluck(:url).should =~ ["http://some.other.url", "http://some.url"]
 
         texas_boosted_content_keywords_only = affiliate.boosted_contents.find_by_url 'http://www.texas.gov'
         texas_boosted_content_keywords_only.match_keyword_values_only.should be_false # because there we no keywords provided
@@ -88,7 +89,7 @@ describe BoostedContentBulkUploader do
 
         affiliate.reload
         affiliate.boosted_contents.length.should == 4
-        affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://some.other.url http://www.texas.gov http://a.different.url}
+
         results[:success].should be_true
         results[:created].should == 3
         results[:updated].should == 0
@@ -96,7 +97,7 @@ describe BoostedContentBulkUploader do
 
       context 'when the file contains funky characters' do
         let(:file) do
-          fixture_file_upload("/csv/boosted_content_bulk_upload_with_funky_characters.csv", 'text/csv')
+          fixture_file_upload("/csv/boosted_content/with_funky_characters.csv", 'text/csv')
         end
 
         it 'successfully creates the boosted contents' do
@@ -105,23 +106,33 @@ describe BoostedContentBulkUploader do
         end
       end
 
-      context 'when a url is missing the http://' do
-        let(:file) do
-          fixture_file_upload("/csv/boosted_content_bulk_upload_without_http.csv", "text/csv")
-        end
-
-        it 'recognizes the url with or without the http' do
-          expect(results[:created]).to eq 1
-          expect(results[:updated]).to eq 1
-        end
-      end
-
       context 'when the file contains a header row' do 
-        let(:file) { fixture_file_upload('/csv/boosted_content_bulk_upload_with_header.csv', 'text/csv') }
+        let(:file) { fixture_file_upload('/csv/boosted_content/with_header.csv', 'text/csv') }
 
         it 'does not import the header row' do
           expect(results[:created]).to eq 1
           expect(affiliate.boosted_contents.first.title).to eq "Can I Take My Fireworks on a Plane?"
+        end
+      end
+
+      context 'when the file contains blank lines' do 
+        let(:file) { fixture_file_upload('/csv/boosted_content/with_blanks.csv', 'text/csv') }
+
+        it 'skips the blanks' do
+          expect(results[:created]).to eq 2
+          expect(affiliate.boosted_contents.map(&:url)).to match_array %w{http://www.foo.com http://www.bar.com}
+        end
+      end
+
+      context 'when the urls are malformed' do
+        let(:file) { fixture_file_upload('/csv/boosted_content/bad_urls.csv', 'text/csv') }
+
+        it 'does not create boosted content with bad urls' do
+          expect(results[:created]).to eq 1
+        end
+
+        it 'counts the failures' do
+          expect(results[:failed]).to eq 3
         end
       end
     end
@@ -137,7 +148,20 @@ describe BoostedContentBulkUploader do
     ([ nil, '' ] + %w[ false 0 no No fAlse nope whatever ]).each do |v|
        specify { uploader.send(:extract_bool, v).should be_false }
     end
-
   end
 
+  #...which seemed reasonable, so:
+  describe '#extract_status' do
+    it 'extracts the status' do
+    ([ nil, '' ] + %w[ 1 active Active anything ]).each do |status|
+      extracted_status = uploader.send(:extract_status, status)
+      expect(extracted_status).to eq 'active'
+    end
+
+    %w[ 0 inactive Inactive ].each do |status|
+      extracted_status = uploader.send(:extract_status, status)
+      expect(extracted_status).to eq 'inactive'
+    end
+    end
+  end
 end
