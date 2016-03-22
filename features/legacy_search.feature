@@ -939,9 +939,9 @@ Feature: Affiliate Search
       | display_name | name       | contact_email | contact_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
     When I am on agency.gov's search page
-    And I fill in "query" with "jobs site:jobcenter.usa.gov"
+    And I fill in "query" with "jobs site:www.usa.gov"
     And I press "Search" in the legacy search box
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
     And I fill in "query" with "jazz site:wikipedia.org"
     And I press "Search" in the legacy search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
@@ -957,32 +957,32 @@ Feature: Affiliate Search
       | name  | url                                                | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press               | true         |
       | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
-    When I am on agency.gov's search page with site limited to "jobcenter.usa.gov"
+    When I am on agency.gov's search page with site limited to "www.usa.gov"
     And I fill in "query" with "jobs"
     And I press "Search" in the legacy search box
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
 
     When I follow "Images" in the left column
     And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
 
     When I follow "Blog" in the left column
     And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
 
     When I follow "Press" in the left column
     And I press "Search" in the legacy search box
     And I follow "Everything" in the left column
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
 
     When I follow "Press" in the left column
     And I fill in "From:" with "1/30/2012"
     And I press "Search" in the results filters
     And I follow "Any time" in the results filters
     And I follow "Everything" in the left column
-    Then I should see "jobcenter.usa.gov/"
+    Then I should see "www.usa.gov/"
 
   Scenario: Visiting affiliate with strictui parameters
     Given the following legacy Affiliates exist:
