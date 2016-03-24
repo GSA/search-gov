@@ -31,6 +31,12 @@ class Api::V2::SearchesController < ApplicationController
     respond_with @search
   end
 
+  def bing
+    @search = ApiBingSearch.new @search_options.attributes
+    @search.run
+    respond_with @search
+  end
+
   def gss
     @search = ApiGssSearch.new @search_options.attributes
     @search.run
@@ -80,12 +86,14 @@ class Api::V2::SearchesController < ApplicationController
                                      :limit,
                                      :offset,
                                      :query,
-                                     :sort_by)
+                                     :sort_by,
+                                     :sc_access_key)
   end
 
   def validate_search_options
     @search_options = search_options_validator_klass.new search_params
     unless @search_options.valid? && @search_options.valid?(:affiliate)
+      obfuscate_sc_access_key_error if sc_access_key_error.present?
       respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
     end
   end
@@ -95,11 +103,21 @@ class Api::V2::SearchesController < ApplicationController
     when :azure then Api::CommercialSearchOptions
     when :azure_web then Api::AzureCompositeWebSearchOptions
     when :azure_image then Api::AzureCompositeImageSearchOptions
+    when :bing then Api::SecretAPISearchOptions
     when :blended, :video then Api::NonCommercialSearchOptions
     when :gss then Api::GssSearchOptions
     when :i14y then Api::SearchOptions
     when :docs then Api::DocsSearchOptions
     end
+  end
+
+  def sc_access_key_error
+    @search_options.errors[:sc_access_key]
+  end
+
+  def obfuscate_sc_access_key_error
+    @search_options.errors.delete :sc_access_key
+    @search_options.errors[:hidden_key] = 'is required'
   end
 
   def log_search_impression

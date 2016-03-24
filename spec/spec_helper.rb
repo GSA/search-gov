@@ -12,8 +12,8 @@ require 'rspec/json_expectations'
 require 'rspec/rails'
 require 'remarkable'
 require 'remarkable_activerecord'
-require "email_spec"
-require "authlogic/test_case"
+require 'email_spec'
+require 'authlogic/test_case'
 require 'webrat'
 require 'paperclip/matchers'
 require 'rspec/autorun'
@@ -70,11 +70,12 @@ RSpec.configure do |config|
 
   config.before(:each) do
     bing_api_path = '/json.aspx?'
+    # bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
 
     bing_common_params = {
-        Adult: 'moderate',
         AppId: 'A4C32FAE6F3DB386FC32ED1C4F3024742ED30906',
-        fdtrace: 1
+        fdtrace: 1,
+        Adult: 'moderate'
     }.freeze
 
     bing_hl_params = {
@@ -363,6 +364,26 @@ RSpec.configure do |config|
     })
     azure_composite.stub_get_request(azure_composite_params) { [200, {}, azure_composite.raw_response('image_results.json')] }
 
+    bing_web_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
+    bing_web = RequestStub.new(bing_web_url, 'spec/fixtures/json/bing/web_search/', stubs)
+
+    bing_web_params = bing_common_params
+                        .merge(sources: 'Spell Web')
+
+    bing_params = bing_web_params
+                    .merge(bing_hl_params)
+                    .merge(query: '(healthy snack) language:en (site:usa.gov)')
+    bing_web.stub_get_request(bing_params) { [200, {}, bing_web.raw_response('highlighting.json')] }
+
+    bing_params = bing_params.merge(query: '(educación) language:es (site:usa.gov)')
+    bing_web.stub_get_request(bing_params) { [200, {}, bing_web.raw_response('es_highlighting.json')] }
+
+    bing_params = bing_web_params.merge(query: '(healthy snack) language:en (site:usa.gov)')
+    bing_web.stub_get_request(bing_params) { [200, {}, bing_web.raw_response('no_highlighting.json')] }
+
+    bing_params = bing_web_params.merge(query: 'highlight enabled')
+    bing_web.stub_get_request(bing_params) { [200, {}, bing_web.raw_response('ira.json')] }
+
     nutshell_success_params = {
       id: 'f6f91f185',
       jsonrpc: '2.0',
@@ -407,7 +428,7 @@ RSpec.configure do |config|
       builder.response :json
     end
 
-    #FIXME: this is in here just to get rcov coverage on connection classes
+    # FIXME: this is in here just to get rcov coverage on connection classes
     params = { affiliate: 'wh', index: 'web', query: 'obama' }
     RateLimitedSearchApiConnection.new('rate_limited_api', 'http://search.usa.gov').get('/api/search.json', params)
     NutshellClient::NutshellApiConnection.new

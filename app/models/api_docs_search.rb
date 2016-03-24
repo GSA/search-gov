@@ -8,7 +8,6 @@ class ApiDocsSearch < ApiCommercialSearch
     super(options)
   end
 
-
   def as_json(_options = {})
     {
       docs: {

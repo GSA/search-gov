@@ -187,6 +187,55 @@ describe Api::V2::SearchesController do
     end
   end
 
+  describe '#bing' do
+    include_context 'SSL request'
+
+    context 'when the search options are not valid' do
+      before do
+        get :bing,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        expect(JSON.parse(response.body)['errors']).to eq(['hidden_key is required'])
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { mock(ApiBingSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiBingSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'bing',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :bing,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api',
+            sc_access_key: 'secureKey'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+  end
+
   describe '#gss' do
     include_context 'SSL request'
 
