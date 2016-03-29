@@ -68,7 +68,7 @@ class Api::V2::SearchesController < ApplicationController
   end
 
   def request_ssl?
-    Rails.env.production? ? request.ssl? : true
+    UsasearchRails3::Application.config.apiv2.searches_require_ssl? ? request.ssl? : true
   end
 
   def ssl_required_response
