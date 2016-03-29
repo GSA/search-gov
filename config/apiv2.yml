@@ -1,0 +1,11 @@
+default: &default
+  searches_require_ssl: false
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  searches_require_ssl: true
