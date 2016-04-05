@@ -4,6 +4,7 @@
 
  [![Build Status](https://magnum.travis-ci.com/GSA/usasearch.png?token=EKwfm8JUGsTqz6oYyPkg)](https://magnum.travis-ci.com/GSA/usasearch)
  [![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
+[![Test Coverage](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/coverage.svg)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/coverage)
 
 ## Rails
 
