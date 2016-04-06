@@ -60,7 +60,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
-    Then I should see Powered by Azure logo
+    Then I should see Powered by Bing logo
     And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see "44. Barack Obama 43. George W. Bush The Presidents Photo Galleries"
@@ -80,7 +80,7 @@ Feature: Searches using mobile device
     When I am on es.agency.gov's mobile search page
     And I fill in "Ingrese su búsqueda" with "presidente"
     And I press "Buscar"
-    Then I should see Generado por Azure logo
+    Then I should see Generado por Bing logo
     And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see at least "2" web search results
@@ -364,13 +364,13 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "USA.gov" mobile site search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
-    Then I should see Powered by Azure logo
+    Then I should see Powered by Bing logo
     And I should see at least "10" web search results
 
     When I am on es.agency.gov's "GobiernoUSA.gov" mobile site search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see Generado por Azure logo
+    Then I should see Generado por Bing logo
     And I should see at least "7" web search results
 
   Scenario: Site navigations without dropdown menu

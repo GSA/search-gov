@@ -1,5 +1,5 @@
 Feature: Admin Superfresh Interface
-  In order to give affiliates the ability to submit a URL for on-demand indexing by Azure
+  In order to give affiliates the ability to submit a URL for on-demand indexing by Bing
   As an admin
   I want to see and manage my Superfresh Urls
 
