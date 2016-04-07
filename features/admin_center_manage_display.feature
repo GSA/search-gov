@@ -122,8 +122,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing GovBoxes Settings
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | agency_abbreviation |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | DOC                 |
+      | display_name | name       | contact_email   | contact_name | agency_abbreviation | gets_i14y_results |
+      | agency site  | agency.gov | john@agency.gov | John Bar     | DOC                 | true              |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -155,6 +155,7 @@ Feature: Manage Display
     And the "Is related searches enabled" should be switched on
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
+    And the "i14y date stamp enabled" should be switched off
     And I should see "Recent Tweets"
 
     When I fill in "Rss govbox label" with "Latest News"
@@ -165,6 +166,7 @@ Feature: Manage Display
     And I switch off "Is related searches enabled"
     And I switch on "Is medline govbox enabled"
     And I switch off "Is sayt enabled"
+    And I switch on "i14y date stamp enabled"
 
     And I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
@@ -176,6 +178,7 @@ Feature: Manage Display
     And the "Is related searches enabled" should be switched off
     And the "Is medline govbox enabled" should be switched on
     And the "Is sayt enabled" should be switched off
+    And the "i14y date stamp enabled" should be switched on
 
   @javascript
   Scenario: Editing Related Sites

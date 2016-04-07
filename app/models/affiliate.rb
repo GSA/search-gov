@@ -615,6 +615,7 @@ class Affiliate < ActiveRecord::Base
     self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
     self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
     @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
+    true
   end
 
   def set_css_properties

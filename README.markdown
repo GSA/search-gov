@@ -2,7 +2,7 @@
 
 ## Code Status
 
- [![Build Status](https://magnum.travis-ci.com/GSA/usasearch.png?token=EKwfm8JUGsTqz6oYyPkg)](https://magnum.travis-ci.com/GSA/usasearch)
+ [![Build Status](https://travis-ci.com/GSA/usasearch.svg?token=WpvbaFSdW67A7SivswjX&branch=master)](https://travis-ci.com/GSA/usasearch)
  [![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
 
 ## Rails
@@ -297,6 +297,9 @@ With NewRelic, you can launch ‘developer mode’ on your development machine.
 1. The database calls view was the most useful one for me. How many extra database calls did your feature introduce? Yes, they are fast, but at 10-50 searches per second, it adds up.
 
 You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
+
+### Additional developer resources
+* [Local i14y setup](https://github.com/GSA/usasearch/blob/master/README_I14Y.markdown)
 
 # Writing Stories
 1. Titles should include a 'should' or 'should not' statement.

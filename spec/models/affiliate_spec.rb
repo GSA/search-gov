@@ -4,16 +4,19 @@ require 'spec_helper'
 describe Affiliate do
   fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
 
-  before(:each) do
-    @valid_create_attributes = {
-        display_name: 'My Awesome Site',
-        name: 'myawesomesite',
-        website: 'http://www.someaffiliate.gov',
-        header: '<table><tr><td>html layout from 1998</td></tr></table>',
-        footer: '<center>gasp</center>',
-        locale: 'es'
-    }.freeze
-    @valid_attributes = @valid_create_attributes.merge(name: 'someaffiliate.gov').freeze
+  let(:valid_create_attributes) do
+    { display_name: 'My Awesome Site',
+      name: 'myawesomesite',
+      website: 'http://www.someaffiliate.gov',
+      header: '<table><tr><td>html layout from 1998</td></tr></table>',
+      footer: '<center>gasp</center>',
+      locale: 'es' }.freeze
+   end
+   let(:valid_attributes) { valid_create_attributes.merge(name: 'someaffiliate.gov').freeze }
+   let(:affiliate) { Affiliate.new(valid_create_attributes) }
+
+  describe 'schema' do
+    it { should have_db_column(:i14y_date_stamp_enabled).of_type(:boolean).with_options(default: false, null: false) }
   end
 
   describe "Creating new instance of Affiliate" do
@@ -62,11 +65,11 @@ describe Affiliate do
     it { should validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
     it "should create a new instance given valid attributes" do
-      Affiliate.create!(@valid_create_attributes)
+      Affiliate.create!(valid_create_attributes)
     end
 
     it "should downcase the name if it's uppercase" do
-      affiliate = Affiliate.new(@valid_create_attributes)
+      affiliate = Affiliate.new(valid_create_attributes)
       affiliate.name = 'AffiliateSite'
       affiliate.save!
       affiliate.name.should == "affiliatesite"
@@ -75,19 +78,19 @@ describe Affiliate do
     describe "on create" do
       it "should update css_properties with json string from css property hash" do
         css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
+        affiliate = Affiliate.create!(valid_create_attributes.merge(:css_property_hash => css_property_hash))
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:title_link_color].should == '#33ff33'
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
       it "sets the Keen scoped key" do
         KeenScopedKey.stub(:generate).and_return 'some key'
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.scoped_key.key.should eq('some key')
       end
 
       it "should normalize site domains" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(
+        affiliate = Affiliate.create!(valid_create_attributes.merge(
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
                                                                      '1' => { domain: 'www2.usa.gov' },
                                                                      '2' => { domain: 'usa.gov' } }))
@@ -95,7 +98,7 @@ describe Affiliate do
         affiliate.site_domains.first.domain.should == 'usa.gov'
 
         affiliate = Affiliate.create!(
-            @valid_create_attributes.merge(
+            valid_create_attributes.merge(
                 name: 'anothersite',
                 site_domains_attributes: { '0' => { domain: 'sec.gov' },
                                            '1' => { domain: 'www.sec.gov.staging.net' } }))
@@ -104,35 +107,35 @@ describe Affiliate do
       end
 
       it "should default the govbox fields to OFF" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.is_medline_govbox_enabled.should == false
       end
 
       it "should have SAYT enabled by default" do
-        Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_true
+        Affiliate.create!(valid_create_attributes).is_sayt_enabled.should be_true
       end
 
       it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
-        affiliate = Affiliate.new(@valid_attributes, :as => :test)
-        affiliate.name = @valid_attributes[:name]
+        affiliate = Affiliate.new(valid_attributes, :as => :test)
+        affiliate.name = valid_attributes[:name]
         affiliate.save!
-        duplicate_affiliate = Affiliate.new(@valid_attributes, :as => :test)
-        duplicate_affiliate.name = @valid_attributes[:name].upcase
+        duplicate_affiliate = Affiliate.new(valid_attributes, :as => :test)
+        duplicate_affiliate.name = valid_attributes[:name].upcase
         duplicate_affiliate.save.should be_false
       end
 
       it "should populate default search label for English site" do
-        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
         affiliate.default_search_label.should == 'Everything'
       end
 
       it "should populate default search labels for Spanish site" do
-        affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
         affiliate.default_search_label.should == 'Todo'
       end
 
       it 'should set look_and_feel_css' do
-        affiliate = Affiliate.create! @valid_attributes
+        affiliate = Affiliate.create! valid_attributes
 
         expect(affiliate.look_and_feel_css).to include('font-family:"Maven Pro"')
         expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
@@ -141,14 +144,14 @@ describe Affiliate do
       end
 
       it 'assigns api_access_key' do
-        affiliate = Affiliate.create! @valid_attributes
+        affiliate = Affiliate.create! valid_attributes
         expect(affiliate.api_access_key).to be_present
       end
     end
   end
 
   describe "on save" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     it 'should not override default theme attributes' do
       affiliate.theme = 'default'
@@ -234,21 +237,21 @@ describe Affiliate do
     end
 
     it "should populate search labels for English site" do
-      english_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'en'), :as => :test)
+      english_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
       english_affiliate.default_search_label = ''
       english_affiliate.save!
       english_affiliate.default_search_label.should == 'Everything'
     end
 
     it "should populate search labels for Spanish site" do
-      spanish_affiliate = Affiliate.create!(@valid_attributes.merge(:locale => 'es'), :as => :test)
+      spanish_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       spanish_affiliate.default_search_label.should == 'Todo'
     end
 
     it "should squish string columns" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.create!(valid_create_attributes)
       unsquished_attributes = {
         ga_web_property_id: ' GA Web Property  ID  ',
         header_tagline_font_size: ' 12px ',
@@ -269,12 +272,12 @@ describe Affiliate do
 
 
     it 'should set default RSS govbox label if the value is blank' do
-      en_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en'))
+      en_affiliate = Affiliate.create!(valid_create_attributes.merge(locale: 'en'))
       en_affiliate.rss_govbox_label.should == 'News'
       en_affiliate.update_attributes!(rss_govbox_label: '')
       en_affiliate.rss_govbox_label.should == 'News'
 
-      es_affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'es', name: 'es-site'))
+      es_affiliate = Affiliate.create!(valid_create_attributes.merge(locale: 'es', name: 'es-site'))
       es_affiliate.rss_govbox_label.should == 'Noticias'
       es_affiliate.update_attributes!({ rss_govbox_label: '' })
       es_affiliate.rss_govbox_label.should == 'Noticias'
@@ -322,14 +325,14 @@ describe Affiliate do
     end
 
     it 'should squish related sites dropdown label' do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en', name: 'en-site'))
+      affiliate = Affiliate.create!(valid_create_attributes.merge(locale: 'en', name: 'en-site'))
       affiliate.related_sites_dropdown_label = ' Search  Only'
       affiliate.save!
       expect(affiliate.related_sites_dropdown_label).to eq('Search Only')
     end
 
     it 'should set blank related sites dropdown label to nil' do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(locale: 'en', name: 'en-site'))
+      affiliate = Affiliate.create!(valid_create_attributes.merge(locale: 'en', name: 'en-site'))
       affiliate.related_sites_dropdown_label = ' '
       affiliate.save!
       expect(affiliate.related_sites_dropdown_label).to be_nil
@@ -351,12 +354,12 @@ describe Affiliate do
   describe "validations" do
     it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
       FontFamily::ALL.each do |font_family|
-        Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family})).should be_valid
+        Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family})).should be_valid
       end
     end
 
     it "should not be valid when FONT_FAMILIES does not include font_family in css property hash" do
-      Affiliate.new(@valid_create_attributes.merge(:css_property_hash => {'font_family' => 'Comic Sans MS'})).should_not be_valid
+      Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => 'Comic Sans MS'})).should_not be_valid
     end
 
     it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
@@ -366,7 +369,7 @@ describe Affiliate do
                                                                           'visited_title_link_color' => "#{valid_color}",
                                                                           'description_text_color' => "#{valid_color}",
                                                                           'url_link_color' => "#{valid_color}"})
-        Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash)).should be_valid
+        Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash)).should be_valid
       end
     end
 
@@ -377,7 +380,7 @@ describe Affiliate do
                                                                           'visited_title_link_color' => "#{invalid_color}",
                                                                           'description_text_color' => "#{invalid_color}",
                                                                           'url_link_color' => "#{invalid_color}"})
-        affiliate = Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
+        affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
         affiliate.should_not be_valid
         affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -388,35 +391,35 @@ describe Affiliate do
 
     it "should validate color property in staged css property hash" do
       css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
+      affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
       affiliate.save.should be_false
       affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
     end
 
     it 'validates logo alignment' do
-      Affiliate.new(@valid_create_attributes.merge(
+      Affiliate.new(valid_create_attributes.merge(
                         css_property_hash: { 'logo_alignment' => 'invalid' })).should_not be_valid
     end
 
     it "should not validate header_footer_css" do
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
+      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
       affiliate.save.should be_true
 
-      affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }", name: 'anothersite'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }", name: 'anothersite'))
       affiliate.save.should be_true
     end
 
     it "should not validate staged_header_footer_css for invalid css property value" do
-      affiliate = Affiliate.new(@valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
       affiliate.save.should be_true
 
-      affiliate = Affiliate.new(@valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
       affiliate.save.should be_true
     end
 
     it 'validates locale is valid' do
-      affiliate = Affiliate.new(@valid_create_attributes.merge(locale: 'invalid_locale'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(locale: 'invalid_locale'))
       affiliate.save.should be_false
       affiliate.errors[:base].should include("Locale must be valid")
     end
@@ -556,7 +559,7 @@ describe Affiliate do
 
   describe "#update_attributes_for_staging" do
     it "should set has_staged_content to true and receive update_attributes" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.create!(valid_create_attributes)
       attributes = mock('attributes')
       attributes.should_receive(:[]).with(:staged_uses_managed_header_footer).and_return('0')
       attributes.should_receive(:[]=).with(:has_staged_content, true)
@@ -575,7 +578,7 @@ describe Affiliate do
       end
 
       it "should set header_footer_nested_css fields" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
         affiliate.update_attributes_for_staging(
           :staged_uses_managed_header_footer => '0',
@@ -584,7 +587,7 @@ describe Affiliate do
       end
 
       it 'should not validated live header_footer_css field' do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_staging(
           :staged_uses_managed_header_footer => '0',
@@ -603,7 +606,7 @@ describe Affiliate do
   end
 
   describe "#update_attributes_for_live" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:header => 'old header', :footer => 'old footer')) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:header => 'old header', :footer => 'old footer')) }
 
     context "when successfully update_attributes" do
       before do
@@ -652,7 +655,7 @@ describe Affiliate do
       end
 
       it "should set header_footer_nested_css fields" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes_for_live(
           :staged_uses_managed_header_footer => '0',
           :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
@@ -661,7 +664,7 @@ describe Affiliate do
       end
 
       it 'should not validated live header_footer_css field' do
-        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_live(
           :staged_uses_managed_header_footer => '0',
@@ -680,7 +683,7 @@ describe Affiliate do
   end
 
   describe "#set_attributes_from_staged_to_live" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     it "should set live fields with values from staged fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
@@ -693,7 +696,7 @@ describe Affiliate do
   end
 
   describe "#set_attributes_from_live_to_staged" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     it "should set staged fields with values from live fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
@@ -712,7 +715,7 @@ describe Affiliate do
 
   describe "#push_staged_changes" do
     it "should set attributes from staged to live fields, set has_staged_content to false and save!" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.create!(valid_create_attributes)
       affiliate.should_receive(:set_attributes_from_staged_to_live)
       affiliate.should_receive(:has_staged_content=).with(false)
       affiliate.should_receive(:save!)
@@ -722,7 +725,7 @@ describe Affiliate do
 
   describe "#cancel_staged_changes" do
     it "should set attributes from live to staged fields, set has_staged_content to false and save!" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.create!(valid_create_attributes)
       affiliate.should_receive(:set_attributes_from_live_to_staged)
       affiliate.should_receive(:has_staged_content=).with(false)
       affiliate.should_receive(:save!)
@@ -730,7 +733,7 @@ describe Affiliate do
     end
 
     it 'should copy header_footer_css' do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.create!(valid_create_attributes)
       affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }',
                                    :nested_header_footer_css => '.header_footer h1 { invalid-css-syntax }')
       Affiliate.find(affiliate.id).cancel_staged_changes
@@ -770,7 +773,7 @@ describe Affiliate do
   end
 
   describe "#has_multiple_domains?" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     context "when Affiliate has more than 1 domain" do
       before do
@@ -841,7 +844,7 @@ describe Affiliate do
   describe "#css_property_hash" do
     context "when theme is custom" do
       let(:css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
-      let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'custom', :css_property_hash => css_property_hash)) }
+      let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:theme => 'custom', :css_property_hash => css_property_hash)) }
 
       specify { affiliate.css_property_hash(true).should == css_property_hash }
     end
@@ -849,7 +852,7 @@ describe Affiliate do
     context 'when theme is default' do
       let(:css_property_hash) { { font_family: FontFamily::ALL.last } }
       let(:affiliate) { Affiliate.create!(
-        @valid_create_attributes.merge(theme: 'default',
+        valid_create_attributes.merge(theme: 'default',
                                        css_property_hash: css_property_hash)) }
 
       specify { affiliate.css_property_hash(true).should == Affiliate::THEMES[:default].merge(css_property_hash) }
@@ -889,7 +892,7 @@ describe Affiliate do
   end
 
   describe "#add_site_domains" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     context "when input domains have leading http(s) protocols" do
       it "should delete leading http(s) protocols from domains" do
@@ -972,7 +975,7 @@ describe Affiliate do
   end
 
   describe "#update_site_domain" do
-    let(:affiliate) {  Affiliate.create!(@valid_create_attributes) }
+    let(:affiliate) {  Affiliate.create!(valid_create_attributes) }
     let(:site_domain) { SiteDomain.find_by_affiliate_id_and_domain(affiliate.id, 'www.gsa.gov') }
 
     context "when existing domain is covered by new ones" do
@@ -1023,7 +1026,7 @@ describe Affiliate do
         <h1 id="my_header">header</h1>
       HTML
 
-      affiliate = Affiliate.create!(@valid_attributes.merge(:header => tainted_header), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(:header => tainted_header), :as => :test)
       affiliate.sanitized_header.strip.should == %q(<h1 id="my_header">header</h1>)
     end
   end
@@ -1037,7 +1040,7 @@ describe Affiliate do
         <h1 id="my_footer">footer</h1>
       HTML
 
-      affiliate = Affiliate.create!(@valid_attributes.merge(:footer => tainted_footer), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(:footer => tainted_footer), :as => :test)
       affiliate.sanitized_footer.strip.should == %q(<h1 id="my_footer">footer</h1>)
     end
   end
@@ -1209,7 +1212,7 @@ describe Affiliate do
     let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
 
     subject do
-      attrs = @valid_create_attributes.dup.merge({
+      attrs = valid_create_attributes.dup.merge({
         website: website,
         site_domains_attributes: site_domains_attributes,
       }).reject { |k,v| v.nil? }
@@ -1232,7 +1235,7 @@ describe Affiliate do
     end
 
     context "when the website is present" do
-      let(:website) { @valid_create_attributes[:website] }
+      let(:website) { valid_create_attributes[:website] }
       its(:default_autodiscovery_url) { should eq(website) }
 
       context "when a single site_domain is provided" do
