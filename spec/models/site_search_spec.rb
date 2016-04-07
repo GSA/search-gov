@@ -22,7 +22,7 @@ describe SiteSearch do
     context 'when document collection max depth is >= 3' do
       before do
         dc.url_prefixes.create!(prefix: 'http://www.whitehouse.gov/seo/is/hard/')
-        affiliate.search_engine.should == 'Azure'
+        affiliate.search_engine.should == 'Bing'
       end
 
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id) }
@@ -34,19 +34,19 @@ describe SiteSearch do
   end
 
   describe '#run' do
-    let(:azure_formatted_query) { mock("AzureFormattedQuery", matching_site_limits: nil, query: 'ignore') }
+    let(:bing_formatted_query) { mock("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      AzureFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return azure_formatted_query
+      BingFormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
-        AzureFormattedQuery.should_receive(:new).with('gov',
+        BingFormattedQuery.should_receive(:new).with('gov',
                                                      {:included_domains => ["usa.gov"],
-                                                      :excluded_domains => []}).and_return azure_formatted_query
+                                                      :excluded_domains => []}).and_return bing_formatted_query
       end
 
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }
@@ -64,10 +64,10 @@ describe SiteSearch do
         coll
       end
 
-      it 'includes GWEB and OVER in the modules' do
+      it 'includes BSPEL and OVER in the modules' do
         search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'electro coagulation' })
         search.run
-        search.modules.should include('GWEB', 'OVER')
+        search.modules.should include('BSPEL', 'OVER')
       end
     end
 

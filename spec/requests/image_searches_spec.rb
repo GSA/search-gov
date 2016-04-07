@@ -53,7 +53,6 @@ describe '/search/images' do
 
   context 'when site is bing image search enabled' do
     let(:affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
-    let(:expected_response_body) { Rails.root.join('spec/fixtures/json/expected_bing_image_search_results.json').read }
 
     before do
       get '/search/images.json', { affiliate: affiliate.name, query: 'white house' }
@@ -61,14 +60,43 @@ describe '/search/images' do
 
     it 'renders JSON response' do
       json_response = JSON.parse(response.body)
-      json_response['total'].should == 1580
+      json_response['total'].should == 4340000
       json_response['startrecord'].should == 1
-      json_response['endrecord'].should == 18
+      json_response['endrecord'].should == 10
 
-      expected_json_response = JSON.parse(expected_response_body)
-      json_response['results'][0].should == expected_json_response['results'][0]
-      json_response['results'][1].should == expected_json_response['results'][1]
-      json_response['results'][2].should == expected_json_response['results'][2]
+      json_response['results'][0].should == {
+        "title" => "White House, Washington D.C.",
+        "media_url" => "http://biglizards.net/Graphics/ForegroundPix/White_House.JPG",
+        "url" => "http://biglizards.net/blog/archives/2008/08/",
+        "display_url" => "http://biglizards.net/blog/archives/2008/08/",
+        "width" => 391,
+        "height" => 428,
+        "file_size" => 37731,
+        "content_type" => "image/jpeg",
+        "thumbnail" => {"url"=>"http://ts1.mm.bing.net/images/thumbnail.aspx?q=1581721453740&id=869b85a01b58c5a200496285e0144df1", "content_type"=>"image/jpeg", "width"=>146, "height"=>160, "file_size"=>4719}
+      }
+      json_response['results'][1].should == {
+        "title"=>"The White House",
+        "media_url"=>"http://www.fas.org/nuke/guide/usa/c3i/ikonos_white_house_full_010.jpg",
+        "url"=>"http://www.fas.org/nuke/guide/usa/c3i/peoc.htm",
+        "display_url"=>"http://www.fas.org/nuke/guide/usa/c3i/peoc.htm",
+        "width"=>800,
+        "height"=>730,
+        "file_size"=>169355,
+        "content_type"=>"image/jpeg",
+        "thumbnail"=>{"url"=>"http://ts2.mm.bing.net/images/thumbnail.aspx?q=1438163676057&id=ee6f2aba0b757948bf82808fe23efcfd", "content_type"=>"image/jpeg", "width"=>160, "height"=>146, "file_size"=>6991}
+      }
+      json_response['results'][2].should == {
+        "title"=>"White House in Winter",
+        "media_url"=>"http://www.enidromanek.com/Graphics/White_House_in_Winter.jpg",
+        "url"=>"http://www.enidromanek.com/White_House_in_Winter.htm",
+        "display_url"=>"http://www.enidromanek.com/White_House_in_Winter.htm",
+        "width"=>350,
+        "height"=>240,
+        "file_size"=>16631,
+        "content_type"=>"image/jpeg",
+        "thumbnail"=>{"url"=>"http://ts2.mm.bing.net/images/thumbnail.aspx?q=1357037516421&id=1a2730ccb42b11876e9593eeae3db7a2", "content_type"=>"image/jpeg", "width"=>160, "height"=>109, "file_size"=>4235}
+      }
     end
   end
 end

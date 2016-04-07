@@ -71,7 +71,7 @@ CREATE TABLE `affiliates` (
   `jobs_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `agency_id` int(11) DEFAULT NULL,
   `raw_log_access_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_engine` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Azure',
+  `search_engine` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bing',
   `is_rss_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `rss_govbox_label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
@@ -2258,3 +2258,5 @@ INSERT INTO schema_migrations (version) VALUES ('20151214163302');
 INSERT INTO schema_migrations (version) VALUES ('20160307192607');
 
 INSERT INTO schema_migrations (version) VALUES ('20160307232457');
+
+INSERT INTO schema_migrations (version) VALUES ('20160406212829');

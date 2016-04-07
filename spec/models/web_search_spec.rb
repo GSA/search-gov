@@ -77,7 +77,7 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Azure"
+      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
     end
   end
 
@@ -92,9 +92,9 @@ describe WebSearch do
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        @affiliate.search_engine.should == 'Azure'
+        @affiliate.search_engine.should == 'Bing'
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("hosted_azure_web_engine.usasearch", hash_including(query: hash_including(term: 'government (site:gov OR site:mil)')))
+          with("bing_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
     end
@@ -161,7 +161,7 @@ describe WebSearch do
 
     context 'when the search engine response contains spelling suggestion' do
       subject(:search) do
-        described_class.new(affiliate: affiliates(:basic_affiliate),
+        described_class.new(affiliate: affiliates(:usagov_affiliate),
                             query: 'electro coagulation')
       end
 
@@ -388,10 +388,10 @@ describe WebSearch do
         end
 
         it "should return the X Bing/Google results" do
-          @search.total.should == 12
-          @search.results.size.should == 12
+          @search.total.should == 1940000
+          @search.results.size.should == 10
           @search.startrecord.should == 1
-          @search.endrecord.should == 12
+          @search.endrecord.should == 10
         end
       end
 
@@ -412,9 +412,9 @@ describe WebSearch do
           it "should indicate that there is another page of results" do
             @search.run
             @search.total.should == 21
-            @search.results.size.should == 10
+            @search.results.size.should == 6
             @search.startrecord.should == 11
-            @search.endrecord.should == 20
+            @search.endrecord.should == 16
           end
 
         end
@@ -423,10 +423,10 @@ describe WebSearch do
 
           it "should return the X Bing/Google results" do
             @search.run
-            @search.total.should == 21
-            @search.results.size.should == 10
+            @search.total.should == 16
+            @search.results.size.should == 6
             @search.startrecord.should == 11
-            @search.endrecord.should == 20
+            @search.endrecord.should == 16
           end
         end
       end

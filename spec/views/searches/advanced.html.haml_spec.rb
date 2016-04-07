@@ -31,7 +31,7 @@ describe "searches/advanced.html.haml" do
       render
       rendered.should have_selector(:a,
                                     content: 'advanced search operators',
-                                    href: 'https://msdn.microsoft.com/en-us/library/ff795620.aspx')
+                                    href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
     end
 
     context 'when the search engine is Google' do
@@ -87,7 +87,7 @@ describe "searches/advanced.html.haml" do
       render
       rendered.should have_selector(:a,
                                     content: 'opciones de búsqueda avanzada',
-                                    href: 'https://msdn.microsoft.com/en-us/library/ff795620.aspx')
+                                    href: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx')
     end
 
     context 'when the search engine is Google' do

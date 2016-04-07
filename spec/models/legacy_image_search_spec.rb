@@ -92,35 +92,35 @@ describe LegacyImageSearch do
 
       it "should set total" do
         search.run
-        search.total.should == 1580
+        search.total.should == 4340000
       end
 
       it "should ignore results with missing Thumbnail data" do
         search.run
-        search.results.size.should==18
+        search.results.size.should == 9
       end
 
       it "includes original image meta-data" do
         search.run
         result = search.results.first
-        result["title"].should == "better_foundation_homeownership_02_0.jpg"
-        result["Url"].should == "http://www.whitehouse.gov/share/protecting-homeownership"
-        result["DisplayUrl"].should == "www.whitehouse.gov/share/protecting-homeownership"
-        result["Width"].should == 700
-        result["Height"].should == 700
-        result["FileSize"].should == 278745
+        result["title"].should == "White House, Washington D.C."
+        result["Url"].should == "http://biglizards.net/blog/archives/2008/08/"
+        result["DisplayUrl"].should == "http://biglizards.net/blog/archives/2008/08/"
+        result["Width"].should == 391
+        result["Height"].should == 428
+        result["FileSize"].should == 37731
         result["ContentType"].should == "image/jpeg"
-        result["MediaUrl"].should == "http://www.whitehouse.gov/sites/default/files/a_better_foundation_homeownership_02_0.jpg"
+        result["MediaUrl"].should == "http://biglizards.net/Graphics/ForegroundPix/White_House.JPG"
       end
 
       it "includes thumbnail meta-data" do
         search.run
         result = search.results.first
-        result["Thumbnail"]["Url"].should == "http://ts3.mm.bing.net/th?id=OIP.M7662002bdd6e33a6b776add30be08f2bo0&pid=15.1"
-        result["Thumbnail"]["FileSize"].should == 22237
-        result["Thumbnail"]["Width"].should == 300
-        result["Thumbnail"]["Height"].should == 300
-        result["Thumbnail"]["ContentType"].should == "image/jpg"
+        result["Thumbnail"]["Url"].should == "http://ts1.mm.bing.net/images/thumbnail.aspx?q=1581721453740&id=869b85a01b58c5a200496285e0144df1"
+        result["Thumbnail"]["FileSize"].should == 4719
+        result["Thumbnail"]["Width"].should == 146
+        result["Thumbnail"]["Height"].should == 160
+        result["Thumbnail"]["ContentType"].should == "image/jpeg"
       end
 
     end
