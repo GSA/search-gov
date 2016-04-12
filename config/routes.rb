@@ -76,7 +76,9 @@ UsasearchRails3::Application.routes.draw do
         collection { get :new_connection }
       end
       resource :embed_code, only: [:show]
+      resource :template, only: [:edit, :update]
       resource :font_and_colors, only: [:edit, :update]
+      resource :templated_font_and_colors, only: [:edit, :update]
       resource :header_and_footer, only: [:edit, :update] do
         collection do
           get :new_footer_link
@@ -203,6 +205,9 @@ UsasearchRails3::Application.routes.draw do
     resources :outbound_rate_limits do as_routes end
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
+    resources :search_consumer_templates, only: [:index, :update]
+    match '/search_consumer_templates', to: 'search_consumer_templates#update', as: 'update_search_consumer_template', via: :post
+    match '/port_classic_template_to_sc', to: 'search_consumer_templates#port_classic', as: 'port_classic_template_to_sc', via: :post
     resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
     resources :features do as_routes end

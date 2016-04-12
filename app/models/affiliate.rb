@@ -49,6 +49,44 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :tag_filters, order: 'tag ASC'
   end
 
+
+  has_many :affiliate_templates do
+    def find_and_activate_or_create_template(template_klass)
+      t = where(template_class: template_klass).first_or_create! do |template|
+        template.affiliate = proxy_association.owner
+        template.template_class = template_klass.to_s
+      end
+      t.available = true
+      t.save!
+      t
+    end
+
+    def make_available(template_klasses)
+      template_klasses.each do |template_klass|
+        find_and_activate_or_create_template(template_klass)
+      end
+      return true
+    end
+
+    def make_unavailable(template_klasses)
+      where(template_class: template_klasses).each do |template|
+        deactivate_template(template, proxy_association.owner)
+      end
+      return true if proxy_association.owner.errors.count <= 0
+    end
+
+    private
+
+    def deactivate_template(template, affiliate)
+      if template.template_class == affiliate.affiliate_template.template_class
+        affiliate.errors[:base] << "Please set another Template as the Selected Template before attempting to deactivate #{affiliate.affiliate_template.template_class}."
+      else
+        template.available = false
+        template.save!
+      end
+    end
+  end
+
   has_many :users, order: 'contact_name', through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
   has_many :rss_feed_urls, through: :rss_feeds, uniq: true
@@ -59,7 +97,6 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
   belongs_to :agency
-
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
 
@@ -194,6 +231,10 @@ class Affiliate < ActiveRecord::Base
     content_box_shadow_color: '#555555',
     description_text_color: '#000000',
     footer_background_color: '#DFDFDF',
+    footer_links_text_color: '#000000',
+    header_links_background_color: '#0068c4',
+    header_links_text_color: '#fff',
+    header_text_color: '#000000',
     header_background_color: '#FFFFFF',
     header_tagline_background_color: '#000000',
     header_tagline_color: '#FFFFFF',
@@ -455,7 +496,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def destroy_and_update_attributes(params)
-    destroy_on_blank(params[:connections_attributes], :affiliate_name, :label)
+    destroy_on_blank(params[:connections_attributes], :affiliate_name, :label) if params[:connections_attributes]
     update_attributes(params)
   end
 
@@ -510,6 +551,98 @@ class Affiliate < ActiveRecord::Base
     dup_instance = super
     dup_instance.css_property_hash = self.css_property_hash
     dup_instance
+  end
+
+  def affiliate_template
+    AffiliateTemplate.where(id: self.active_template_id, affiliate_id: self.id).first_or_create do |template|
+      template.affiliate = self
+      template.template_class = Template::DEFAULT_TEMPLATE_TYPE.to_s
+      template.available = true
+    end
+  end
+
+  def update_template(template_klass)
+    selected_template = affiliate_templates.available.find_by_template_class(template_klass)
+    if selected_template
+      self.active_template_id = selected_template.id
+      self.save!
+    else
+      false
+    end
+  end
+
+  def load_template_schema
+    return Hashie::Mash.new(affiliate_template.template_class.constantize::DEFAULT_TEMPLATE_SCHEMA) if self.template_schema.blank?
+    Hashie::Mash.new(JSON.parse(template_schema))
+  end
+
+  def save_template_schema(saved_template_schema)
+    merged_hash = if self.template_schema.blank?
+      (Template::DEFAULT_TEMPLATE_SCHEMA).deep_merge(saved_template_schema)
+    else
+      (JSON.parse(template_schema)).deep_merge(saved_template_schema)
+    end
+
+    self.update_attribute(:template_schema, merged_hash.to_json)
+  end
+
+  def reset_template_schema
+    self.update_attribute(:template_schema, Template::DEFAULT_TEMPLATE_SCHEMA.to_json)
+    return Hashie::Mash.new(JSON.parse(template_schema))
+  end
+
+  def port_classic_theme
+    css_property_hash = self.css_property_hash
+
+    new_hash = {}
+
+    if css_property_hash[:font_family] || css_property_hash[:font_family] != "Default"
+      new_hash.merge!({
+        "font" => {
+          "default_font" => css_property_hash[:font_family]
+        }
+      })
+    end
+
+    new_hash.merge!({
+      "colors" => {
+        "template" => {
+          "page_background" => css_property_hash[:page_background_color]
+        },
+        "header" => {
+          "header_background_color" => css_property_hash[:header_background_color],
+          "header_text_color" => css_property_hash[:header_text_color],
+        },
+        "facets" => {
+          "facets_background_color" => css_property_hash[:navigation_background_color],
+          "active_facet_link_color" => css_property_hash[:left_tab_text_color],
+          "facet_link_color" => css_property_hash[:navigation_link_color]
+        },
+        "footer" => {
+          "footer_background_color" => css_property_hash[:footer_background_color],
+          "footer_links_text_color" => css_property_hash[:footer_links_text_color]
+        },
+        "header_links" => {
+          "header_links_background_color" => css_property_hash[:header_links_background_color],
+          "header_links_text_color" => css_property_hash[:header_links_text_color]
+        },
+        "results_container" => {
+          "title_link_color" => css_property_hash[:title_link_color],
+          "visited_title_link_color" => css_property_hash[:visited_title_link_color],
+          "result_url_color" => css_property_hash[:url_link_color],
+          "description_text_color" => css_property_hash[:description_text_color]
+        },
+        "search_bar" => {
+          "search_button_background_color" => css_property_hash[:search_button_background_color]
+        },
+        "tagline" => {
+          "header_tagline_color" => css_property_hash[:header_tagline_color],
+          "header_tagline_background_color" => css_property_hash[:header_tagline_background_color]
+        }
+      }
+    })
+
+    save_template_schema({"css" => new_hash})
   end
 
   private

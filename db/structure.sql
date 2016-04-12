@@ -9,12 +9,13 @@ CREATE TABLE `affiliate_feature_additions` (
 
 CREATE TABLE `affiliate_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `stylesheet` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `affiliate_id` int(11) NOT NULL,
+  `template_class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `available` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_class` (`affiliate_id`,`template_class`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliate_twitter_settings` (
@@ -96,8 +97,11 @@ CREATE TABLE `affiliates` (
   `search_consumer_admin_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `domain_control_validation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `i14y_date_stamp_enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `active_template_id` int(11) DEFAULT NULL,
+  `template_schema` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_affiliates_on_name` (`name`)
+  UNIQUE KEY `index_affiliates_on_name` (`name`),
+  KEY `index_affiliates_on_active_template_id` (`active_template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_instagram_profiles` (
@@ -2260,6 +2264,10 @@ INSERT INTO schema_migrations (version) VALUES ('20160307192607');
 
 INSERT INTO schema_migrations (version) VALUES ('20160307232457');
 
-INSERT INTO schema_migrations (version) VALUES ('20160406212829');
+INSERT INTO schema_migrations (version) VALUES ('20160316131516');
+
+INSERT INTO schema_migrations (version) VALUES ('20160316131535');
 
 INSERT INTO schema_migrations (version) VALUES ('20160401203518');
+
+INSERT INTO schema_migrations (version) VALUES ('20160406212829');

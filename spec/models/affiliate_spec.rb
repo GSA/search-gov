@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages, :affiliate_templates
 
   let(:valid_create_attributes) do
     { display_name: 'My Awesome Site',
@@ -17,6 +17,9 @@ describe Affiliate do
 
   describe 'schema' do
     it { should have_db_column(:i14y_date_stamp_enabled).of_type(:boolean).with_options(default: false, null: false) }
+    it { should have_db_column(:active_template_id).of_type(:integer) }
+
+    it { should have_db_index(:active_template_id) }
   end
 
   describe "Creating new instance of Affiliate" do
@@ -34,32 +37,39 @@ describe Affiliate do
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
       it { should allow_value(value).for(:name) }
     end
-    it { should have_many(:memberships).dependent(:destroy) }
-    it { should have_many(:users).through :memberships }
+
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
-    it { should have_many(:featured_collections).dependent(:destroy) }
-    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
-    it { should have_many(:features).dependent(:destroy) }
-    it { should have_many(:rss_feeds).dependent(:destroy) }
-    it { should have_many(:rss_feed_urls).through :rss_feeds }
-    it { should have_many(:site_domains).dependent(:destroy) }
-    it { should have_many(:excluded_domains).dependent(:destroy) }
-    it { should have_many(:tag_filters).dependent(:destroy) }
-    it { should have_many(:navigations).dependent(:destroy) }
-    it { should have_many(:flickr_profiles).dependent(:destroy) }
-    it { should have_and_belong_to_many :instagram_profiles }
-    it { should have_and_belong_to_many :youtube_profiles }
-    it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { should have_many :twitter_profiles }
-    it { should belong_to :agency }
-    it { should belong_to :language }
+
+    it { should have_many(:routed_query_keywords).through :routed_queries }
+    it { should have_many(:rss_feed_urls).through :rss_feeds }
+    it { should have_many(:users).through :memberships }
+
+    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
+    it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
+    it { should have_many(:excluded_domains).dependent(:destroy) }
+    it { should have_many(:featured_collections).dependent(:destroy) }
+    it { should have_many(:features).dependent(:destroy) }
+    it { should have_many(:flickr_profiles).dependent(:destroy) }
+    it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:routed_queries).dependent(:destroy) }
-    it { should have_many(:routed_query_keywords).through :routed_queries }
+    it { should have_many(:rss_feeds).dependent(:destroy) }
+    it { should have_many(:affiliate_templates) }
+    it { should have_many(:site_domains).dependent(:destroy) }
+    it { should have_many(:tag_filters).dependent(:destroy) }
+
+    it { should have_and_belong_to_many :instagram_profiles }
+    it { should have_and_belong_to_many :youtube_profiles }
+
+    it { should belong_to :agency }
+    it { should belong_to :language }
+
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
+
     it { should validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
@@ -474,9 +484,10 @@ describe Affiliate do
         footer_error_message = %q(HTML to customize the bottom of your search results page must not contain the onload attribute)
 
         html_with_onload = <<-HTML
-            <div onload="http://cdn.agency.gov/script.js"></div>
-            <h1>html with onload</h1>
+          <div onload="cdn.agency.gov/script.js"></div>
+          <h1>html with onload</h1>
         HTML
+
         affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be_false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
@@ -1308,6 +1319,176 @@ describe Affiliate do
 
     it 'sets @css_property_hash instance variable' do
       expect(subject.instance_variable_get(:@css_property_hash)).to include(:title_link_color, :visited_title_link_color)
+    end
+  end
+
+  describe '#update_template' do
+    let(:affiliate) { affiliates(:usagov_affiliate) }
+    let(:template) { affiliate_templates(:usagov_classic)}
+    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
+
+    it "sets the affiliate belongs_to template relationship by 'type'" do
+      affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").update_attribute(:available, true)
+      expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
+      affiliate.update_template("Template::RoundedHeaderLink")
+      expect(affiliate.affiliate_template.template_class).to eq "Template::RoundedHeaderLink"
+    end
+
+    it "errors if it is 'not a available template' for this Affiliate" do
+      expect(affiliate.update_template("Template::NonExistant")).to be false
+    end
+
+    it "errors if it is 'not a selected template' for this Affiliate" do
+      template = affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink")
+      template.update_attribute(:available, false)
+
+      expect(affiliate.update_template("Template::RoundedHeaderLink")).to be false
+    end
+
+  end
+
+  describe 'has_many :affiliate_templates' do
+    let(:affiliate) { affiliates(:usagov_affiliate) }
+    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
+
+    describe '#find_and_activate_or_create_template(type)' do
+      it "receives type and creates the template if it does not exist" do
+        affiliate.affiliate_templates.destroy_all
+        expect(affiliate.affiliate_templates.map(&:template_class)).not_to include "Template::RoundedHeaderLink"
+        affiliate.affiliate_templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
+        affiliate.reload
+        expect(affiliate.affiliate_templates.map(&:template_class)).to include "Template::RoundedHeaderLink"
+      end
+
+      it "receives type and re-activates the template if it exist" do
+        expect(affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").available).to eq false
+        affiliate.affiliate_templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
+        expect(affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").available).to eq true
+      end
+    end
+
+    describe '#activate(template_types)' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      it "calls find_and_activate_or_create_template for all template types" do
+        template_types = ["Template::Classic", "Template::RoundedHeaderLink"]
+        affiliate.affiliate_templates.should_receive(:find_and_activate_or_create_template).with("Template::Classic")
+        affiliate.affiliate_templates.should_receive(:find_and_activate_or_create_template).with("Template::RoundedHeaderLink")
+        affiliate.affiliate_templates.make_available(template_types)
+      end
+    end
+
+    describe 'deactivate(template_types)' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+      let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
+      let(:template_classic) { affiliate_templates(:usagov_classic)}
+
+      it "deactivates provided template types by changing the available value to false" do
+        template_types = ["Template::RoundedHeaderLink"]
+        template_rounded.update_attribute(:available, true)
+        affiliate.affiliate_templates.make_unavailable(template_types)
+        template_rounded.reload
+        expect(template_rounded.available).to eq false
+      end
+
+      it "adds a ActiveRecord error to Affiliate and returns false if deactivating the selected Template" do
+        template_types = ["Template::Classic"]
+        expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
+        affiliate.affiliate_templates.make_unavailable(template_types)
+        expect(affiliate.errors.count).to eq 1
+        expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
+      end
+    end
+
+    describe "#load_template_schema" do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      it "loads the templates Schema if no schema is stored in DB" do
+        p affiliate.affiliate_template
+        expect(affiliate.load_template_schema.to_json).to eq(affiliate.affiliate_template.template_class.constantize::DEFAULT_TEMPLATE_SCHEMA.to_json)
+      end
+
+      it "loads the saved Schema if stored in DB" do
+        changed_to_schema = {"css" => "Test Schema"}.to_json
+        affiliate.update_attribute(:template_schema, changed_to_schema)
+        affiliate.reload
+        expect(affiliate.load_template_schema.to_json).to eq(changed_to_schema)
+      end
+    end
+
+    describe "#save_template_schema" do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      it "merges defaults and saves the schema" do
+        stub_const("Template::DEFAULT_TEMPLATE_SCHEMA", {"schema" => {"default" => "default" }})
+        affiliate.affiliate_template
+        affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
+        expect(affiliate.load_template_schema).to eq(Hashie::Mash.new({"schema"=>{"default"=>"default", "test_schema"=>"test"}}))
+      end
+
+      it "loads the schema if not blank, merges new values and saves the schema" do
+        affiliate.template_schema = {"schema" => {"default" => "default" }}.to_json
+        affiliate.save
+        affiliate.affiliate_template
+        affiliate.reload
+
+        affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
+        expected_schema = {"schema"=>{"default"=>"default", "test_schema"=>"test"}}
+        expect(affiliate.load_template_schema).to eq(expected_schema)
+      end
+
+    end
+
+    describe "#reset_template_schema" do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      it "resets the schema" do
+        affiliate.affiliate_template
+        affiliate.update_attribute(:template_schema, {"test" => "test"}.to_json)
+        stub_const("Template::DEFAULT_TEMPLATE_SCHEMA", {"schema" => {"default" => "default" }})
+        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({"schema"=>{"default"=>"default"}}))
+      end
+    end
+
+     describe "#port_classic_theme" do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      it "merges existing colors into template_schema" do
+        affiliate.affiliate_template
+        affiliate.update_attributes({
+          "css_property_hash"=>{
+          "header_tagline_font_size"=>nil,
+          "content_background_color"=>"#FFFFFF",
+          "content_border_color"=>"#CACACA",
+          "content_box_shadow_color"=>"#555555",
+          "description_text_color"=>"#000000",
+          "footer_background_color"=>"#DFDFDF",
+          "footer_links_text_color"=>"#000000",
+          "header_links_background_color"=>"#0068c4",
+          "header_links_text_color"=>"#fff",
+          "header_text_color"=>"#000000",
+          "header_background_color"=>"#FFFFFF",
+          "header_tagline_background_color"=>"#000000",
+          "header_tagline_color"=>"#FFFFFF",
+          "search_button_text_color"=>"#FFFFFF",
+          "search_button_background_color"=>"#00396F",
+          "left_tab_text_color"=>"#9E3030",
+          "navigation_background_color"=>"#F1F1F1",
+          "navigation_link_color"=>"#505050",
+          "page_background_color"=>"#99999",
+          "title_link_color"=>"#2200CC",
+          "url_link_color"=>"#006800",
+          "visited_title_link_color"=>"#800080",
+          "font_family"=>"Arial, sans-serif",
+          "header_tagline_font_family"=>"Georgia, \"Times New Roman\", serif",
+          "header_tagline_font_style"=>"italic"},
+          "theme"=>"custom"
+        })
+        affiliate.port_classic_theme
+
+        expect(affiliate.load_template_schema.css.colors.header.header_text_color).to eq "#000000"
+
+      end
     end
   end
 end
