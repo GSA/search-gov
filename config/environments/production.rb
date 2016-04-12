@@ -81,3 +81,5 @@ RECAPTCHA_PUBLIC_KEY = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
 TwitterClient.twitter_auth_env = :cron
+
+ADDITIONAL_BING_PARAMS = {}
