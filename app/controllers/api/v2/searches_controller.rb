@@ -5,6 +5,7 @@ class Api::V2::SearchesController < ApplicationController
   skip_before_filter :set_default_locale
   before_filter :require_ssl
   before_filter :validate_search_options
+  before_filter :handle_query_routing
   after_filter :log_search_impression
 
   def blended
@@ -75,6 +76,20 @@ class Api::V2::SearchesController < ApplicationController
     [{ errors: ['HTTPS is required'] }, { status: 400 }]
   end
 
+  def handle_query_routing
+    return unless search_params[:query].present? and query_routing_is_enabled?
+    affiliate = Affiliate.find_by_name(search_params[:affiliate])
+    routed_query = affiliate.routed_queries
+                     .joins(:routed_query_keywords)
+                     .where(routed_query_keywords:{keyword: search_params[:query]})
+                     .first
+    respond_with({ redirect: routed_query[:url] }, { status: 200 }) unless routed_query.nil?
+  end
+
+  def query_routing_is_enabled?
+    search_params[:routed] == 'true'
+  end
+
   def search_params
     @search_params ||= params.permit(:access_key,
                                      :affiliate,
@@ -87,7 +102,8 @@ class Api::V2::SearchesController < ApplicationController
                                      :offset,
                                      :query,
                                      :sort_by,
-                                     :sc_access_key)
+                                     :sc_access_key,
+                                     :routed)
   end
 
   def validate_search_options
