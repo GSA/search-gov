@@ -29,6 +29,7 @@ class BingSearch < SearchEngine
       query: query
     }
     params_hash.merge!('Options' => 'EnableHighlighting') if enable_highlighting
+    params_hash.merge!(ADDITIONAL_BING_PARAMS)
     params_hash
   end
 

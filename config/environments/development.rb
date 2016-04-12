@@ -62,3 +62,5 @@ SSL_PROTOCOL = "http"
 # reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
+
+ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
