@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Api::V2::SearchesController do
+  fixtures :affiliates
+
   describe '#blended' do
     context 'when request is SSL' do
       include_context 'SSL request'
@@ -87,6 +89,30 @@ describe Api::V2::SearchesController do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end
+
+    context 'when the search options are valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :azure,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+      end
+    end
   end
 
   describe '#azure_web' do
@@ -134,6 +160,30 @@ describe Api::V2::SearchesController do
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :azure_web,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -185,6 +235,30 @@ describe Api::V2::SearchesController do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end
+
+    context 'when the search options are valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :azure_image,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+      end
+    end
   end
 
   describe '#bing' do
@@ -232,6 +306,31 @@ describe Api::V2::SearchesController do
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :bing,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'foo bar',
+            sc_access_key: 'secureKey',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        puts JSON.parse(response.body).inspect
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -286,6 +385,31 @@ describe Api::V2::SearchesController do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end
+
+    context 'when the search options are not valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :gss,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            cx:  'my-cx',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+      end
+    end
   end
 
   describe '#i14y' do
@@ -329,6 +453,29 @@ describe Api::V2::SearchesController do
       end
 
       it { should respond_with :success }
+    end
+
+    context 'when the search options are not valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :i14y,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+      end
     end
   end
 
@@ -376,6 +523,29 @@ describe Api::V2::SearchesController do
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are not valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :video,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -427,6 +597,31 @@ describe Api::V2::SearchesController do
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are not valid and the routed flag is enabled' do
+      let(:affiliate) { affiliates(:usagov_affiliate) }
+
+      before do
+        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+        routed_query.routed_query_keywords.build(keyword: 'foo bar')
+        routed_query.save!
+
+        get :docs,
+            access_key: 'usagov_key',
+            affiliate: 'usagov',
+            dc: 1,
+            format: 'json',
+            query: 'foo bar',
+            routed: 'true'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        puts JSON.parse(response.body).inspect
+        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
