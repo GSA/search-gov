@@ -13,6 +13,7 @@ class Template::SquareHeaderLink < Template
           "page_background" => "#DFDFDF"
         },
         "header" => {
+          "header_background_color" => "#FFFFFF",
           "header_text_color" => "#000000"
         },
         "facets" => {
