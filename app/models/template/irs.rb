@@ -12,6 +12,7 @@ class Template::Irs < Template
         "template" => {
         },
         "header" => {
+          "header_background_color" => "#FFFFFF",
           "header_text_color" => "#000000"
         },
         "facets" => {
