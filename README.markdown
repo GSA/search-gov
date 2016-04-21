@@ -186,6 +186,10 @@ Make sure the unit tests, functional and integration tests run:
 
     rake
 
+## Travis CI
+
+We use [Travis](https://travis-ci.com/GSA/usasearch) for continuous integration. Build artifacts, such as logs, coverage reports, and screenshots are uploaded into the 'usasearch-travis-artifacts' bucket on AWS. Check there for information that may help debug a failure that can't be reproduced locally and/or consistently.
+
 # Code Coverage
 
 We track test coverage of the codebase over time, to help identify areas where we could write better tests and to see when poorly tested code got introduced.
