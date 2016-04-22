@@ -5,6 +5,11 @@ describe SearchConsumer::API do
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
 
+  before do
+    affiliate.update_attributes(page_one_more_results_pointer: "Custom Footer Text",
+                                footer_fragment: "Custom Footer Fragment")
+  end
+
   context 'GET /api/c/affiliate?site_handle=:site_handle/config' do
     it "returns a serialized affiliate with search_type 'web', representing the config options (facet and module settings)" do
 
@@ -64,7 +69,9 @@ describe SearchConsumer::API do
           "CSS"=> {
             "footer_background_color"=>"#DFDFDF",
             "footer_links_text_color"=>"#000000"
-          }
+          },
+          "page_one_more_results_pointer"=>"Custom Footer Text",
+          "footer_fragment"=>"Custom Footer Fragment"
         },
         "header"=>{
           "logoImageUrl"=>"http://logo_image_url",
