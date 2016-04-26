@@ -94,7 +94,6 @@ CREATE TABLE `affiliates` (
   `header_tagline_logo_file_size` int(11) DEFAULT NULL,
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
   `search_consumer_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_consumer_admin_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `domain_control_validation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `i14y_date_stamp_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `active_template_id` int(11) DEFAULT NULL,
@@ -2271,3 +2270,5 @@ INSERT INTO schema_migrations (version) VALUES ('20160316131535');
 INSERT INTO schema_migrations (version) VALUES ('20160401203518');
 
 INSERT INTO schema_migrations (version) VALUES ('20160406212829');
+
+INSERT INTO schema_migrations (version) VALUES ('20160425164120');
