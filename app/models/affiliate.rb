@@ -56,8 +56,7 @@ class Affiliate < ActiveRecord::Base
         template.affiliate = proxy_association.owner
         template.template_class = template_klass.to_s
       end
-      t.available = true
-      t.save!
+      t.update_attributes!(available: true)
       t
     end
 
@@ -65,7 +64,7 @@ class Affiliate < ActiveRecord::Base
       template_klasses.each do |template_klass|
         find_and_activate_or_create_template(template_klass)
       end
-      return true
+      true
     end
 
     def make_unavailable(template_klasses)
@@ -81,8 +80,7 @@ class Affiliate < ActiveRecord::Base
       if template.template_class == affiliate.affiliate_template.template_class
         affiliate.errors[:base] << "Please set another Template as the Selected Template before attempting to deactivate #{affiliate.affiliate_template.template_class}."
       else
-        template.available = false
-        template.save!
+        template.update_attributes!(available: false)
       end
     end
   end
@@ -154,7 +152,7 @@ class Affiliate < ActiveRecord::Base
   validates_presence_of :display_name, :name, :locale, :theme
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
   validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
-  validates_format_of :name, :with => /^[a-z0-9._-]+$/
+  validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -592,8 +590,6 @@ class Affiliate < ActiveRecord::Base
   end
 
   def port_classic_theme
-    css_property_hash = self.css_property_hash
-
     new_hash = {}
 
     if css_property_hash[:font_family] || css_property_hash[:font_family] != "Default"
@@ -833,7 +829,7 @@ class Affiliate < ActiveRecord::Base
 
   def malformed_html_error_message(field_name)
     email_link = %Q{<a href="mailto:#{SUPPORT_EMAIL_ADDRESS}">#{SUPPORT_EMAIL_ADDRESS}</a>}
-    "HTML to customize the #{field_name.to_s} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
+    "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end
 
   def sanitize_html(html)

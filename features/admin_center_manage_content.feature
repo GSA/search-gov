@@ -306,7 +306,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    When the following site domains exist for the affiliate agency.gov:
+    When the following 'site domains' exist for the affiliate agency.gov:
       | domain          |
       | whitehouse.gov  |
       | usa.gov         |

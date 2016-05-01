@@ -26,7 +26,7 @@ Feature:  Administration
     And the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | website                |
       | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
-    And the following site domains exist for the affiliate agency.gov:
+    And the following 'site domains' exist for the affiliate agency.gov:
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
@@ -80,10 +80,10 @@ Feature:  Administration
       | display_name  | name     | contact_email | contact_name |
       | agency site   | aff.gov  | one@foo.gov   | One Foo      |
       | agency site 2 | aff2.gov | two@foo.gov   | Two Foo      |
-    And the following site domains exist for the affiliate aff.gov:
+    And the following 'site domains' exist for the affiliate aff.gov:
       | domain               | site_name      |
       | aff.gov              | Agency Website |
-    And the following site domains exist for the affiliate aff2.gov:
+    And the following 'site domains' exist for the affiliate aff2.gov:
       | domain              | site_name      |
       | aff.gov             | Agency2 Website |
     And the following IndexedDocuments exist:
@@ -215,3 +215,20 @@ Feature:  Administration
     Then I should see the following table rows:
       | Help page url                       | Request path              |
       | http://usasearch.howto.gov/edit_rss | /affiliates/rss_feed/edit |
+
+  @javascript
+  Scenario: Editing Search Consumer Templates
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | website                | search_consumer_search_enabled |
+      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov | true                           |
+    And the following 'affiliate templates' exist for the affiliate agency.gov:
+      | template_class                | available |
+      | Template::RoundedHeaderLink   | true      |
+
+    When I go to the admin sites page
+    And I follow "Edit Templates" to the new window
+    Then I should see "Search Consumer Templates"
+    And I select "Rounded Header Links" from "selected"
+    And I press "Update Templates"
+    Then I should see "Search Consumer Templates for agency site have been updated."

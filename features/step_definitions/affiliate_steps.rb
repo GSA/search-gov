@@ -240,3 +240,9 @@ end
 Given(/^"(.*?)" is an affiliate$/) do |email|
   User.find_by_email(email).update_attribute(:is_affiliate, true)
 end
+
+Given /^the following '(.+)' exist for the affiliate (.+):$/ do |association, affiliate_name, table|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  association.gsub!(' ','_')
+  table.hashes.each {|hash|  affiliate.send(association).create!(hash) }
+end

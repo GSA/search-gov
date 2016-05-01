@@ -131,7 +131,7 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter', require: false
-  gem 'simplecov', :require => false
+  gem 'simplecov', '~> 0.10.0', require:  false # limiting version until we determine why bumping to 0.11.* makes our coverage % drop
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
   gem 'poltergeist'

@@ -17,7 +17,9 @@
   %h2 Font
   = label_tag :font_family, 'Font Family'
 
-  = select_tag "schema[css][font][default_font]", generate_template_font_dropdown(@site.load_template_schema.css.font.default_font, @site.load_template_schema.css.font.font_family)
+  = select_tag "schema[css][font][default_font]",
+               options_for_select(@site.load_template_schema.css.font.font_family.split(', '),
+                                  @site.load_template_schema.css.font.default_font)
 
   %h2 Colors
 

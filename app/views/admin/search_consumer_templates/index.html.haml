@@ -9,26 +9,16 @@
 .container
   %h1{style: "margin-bottom: 20px;"} Search Consumer Templates
 
-  = form_tag(admin_search_consumer_templates_path, :method => :get, class: "form-inline") do
-    .form-group
-      %label{for: "affiliate_id"}  Find Affiliate By Id
-      %input#affiliate_id.form-control{name: "affiliate_id", :placeholder => "Affiliate ID", :type => "number", value: params[:affiliate_id] }
-    .form-group
-      = submit_tag "Search", class: "btn btn-default"
-
   %hr{style: "margin: 20px 0;"}
 
   - if @affiliate && @affiliate.search_consumer_search_enabled
-    = form_tag(admin_port_classic_template_to_sc_path, :method => :post, class: "form") do
-      = hidden_field_tag 'affiliate_id', params[:affiliate_id]
+    = form_tag(admin_affiliate_port_classic_template_to_sc_path, :method => :post, class: "form") do
       .col-sm-12
         .form-group
           = submit_tag "Port Classic SERP", class: "btn btn-default"
     %br
 
-    = form_tag(admin_update_search_consumer_template_path, :method => :post, class: "form") do
-      = hidden_field_tag 'affiliate_id', params[:affiliate_id]
-
+    = form_for @affiliate, method: :post, url: admin_affiliate_update_search_consumer_template_path do |f|
       .col-sm-12
         .form-group
           %label.control-label{for: "selected"}
@@ -39,11 +29,11 @@
 
       .col-sm-12
         .form-group
-          %select#selected-template-types.form-control{:multiple => "multiple", :name => "selected-template-types[]", style: "width: 50%"}
+          %select#selected-template-types.form-control{:multiple => "multiple", :name => "selected_template_types[]", style: "width: 50%"}
             - @affiliate.affiliate_templates.available.each do |affiliate_template|
-              %option{:value => affiliate_template.template_class.constantize, :selected => ''}= affiliate_template.template_class.constantize::HUMAN_READABLE_NAME
+              %option{value: affiliate_template.template_class.constantize, selected: ''}= affiliate_template.human_readable_name
             - @affiliate.affiliate_templates.hidden.each do |affiliate_template|
-              %option{:value => affiliate_template.class }= affiliate_template.class::HUMAN_READABLE_NAME
+              %option{value: affiliate_template }= affiliate_template::HUMAN_READABLE_NAME
       .col-sm-12
         .form-group
           = submit_tag "Update Templates", class: "btn btn-default"

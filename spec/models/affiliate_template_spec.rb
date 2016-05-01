@@ -6,7 +6,11 @@ describe AffiliateTemplate do
   before { subject.stub(:valid_template_subclass?).and_return(true) }
 
   it { should belong_to :affiliate }
-  it { should validate_presence_of(:template_class) }
+
+  describe 'validations' do
+    it { should validate_presence_of(:affiliate_id) }
+    it { should ensure_inclusion_of(:template_class).in_array(Template::TEMPLATE_SUBCLASSES.map(&:name)) }
+  end
 
   describe 'schema' do
     it { should have_db_column(:affiliate_id).of_type(:integer).with_options(null: false) }
@@ -19,9 +23,10 @@ describe AffiliateTemplate do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:template_classic) { affiliate_templates(:usagov_classic) }
     let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link) }
+    let(:hidden_templates) { [Template::Irs, Template::SquareHeaderLink, Template::RoundedHeaderLink] }
 
     it "returns an array of the non-active templates as virtual attributes" do
-      expect(affiliate.affiliate_templates.hidden.count).to eq 3
+      expect(affiliate.affiliate_templates.hidden).to match_array(hidden_templates)
     end
   end
 

@@ -4,9 +4,7 @@ class Admin::SearchConsumerTemplatesController < Admin::AdminController
   def index
     @page_title = 'Search Consumer Templates'
 
-    if !params[:affiliate_id]
-      return
-    elsif !@affiliate
+    if !@affiliate
       flash.now[:error] = "The affiliate ID does not exist." and return
     elsif !@affiliate.search_consumer_search_enabled
       flash.now[:error] = "The affiliate exists, but Search Consumer is not activated." and return
@@ -16,17 +14,16 @@ class Admin::SearchConsumerTemplatesController < Admin::AdminController
 
   def update
     if @affiliate.affiliate_templates.make_available(selected_template_types) && @affiliate.affiliate_templates.make_unavailable(unselected_template_types) && @affiliate.update_template(params["selected"])
-      flash[:success] = "Search Consumer Templates for Affiliate: #{@affiliate.id} have been updated."
+      flash[:success] = "Search Consumer Templates for #{@affiliate.display_name} have been updated."
     else
-      flash[:error] = @affiliate.errors.full_messages
-
+      flash[:error] = "Unable to update templates."
     end
-    redirect_to admin_search_consumer_templates_path(affiliate_id: @affiliate.id)
+    redirect_to admin_affiliate_search_consumer_templates_path(affiliate_id: @affiliate.id)
   end
 
   def port_classic
     @affiliate.port_classic_theme
-    redirect_to admin_search_consumer_templates_path(affiliate_id: @affiliate.id)
+    redirect_to admin_affiliate_search_consumer_templates_path(affiliate_id: @affiliate.id)
   end
 
   private
@@ -36,7 +33,7 @@ class Admin::SearchConsumerTemplatesController < Admin::AdminController
   end
 
   def selected_template_types
-    params["selected-template-types"] || []
+    params[:selected_template_types] || []
   end
 
   def unselected_template_types

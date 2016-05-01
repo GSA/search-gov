@@ -1,6 +1,3 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
 SimpleCov.command_name 'RSpec'
 
@@ -52,7 +49,12 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
-  #config.order = 'random'
+
+  # This prevents affiliate-related tests from failing with an empty test db
+  # if the language fixtures haven't been loaded in a prior test. One *should* be
+  # able to do that using an association in the fixture, but fixture associations
+  # do NOT play nicely with our custom, string primary key 'code' in the language table
+  config.global_fixtures = [:languages]
 
   config.before(:suite) do
     FileUtils.mkdir_p(File.join(Rails.root.to_s, 'tmp'))

@@ -344,7 +344,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
     
     Can you delete any lines of code? Can you refactor anything?
     
-    Check for issues in your changes using [Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed).
+    Check for issues in your changes using [Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed). Follow the [instructions from Code Climate](https://github.com/codeclimate/codeclimate/blob/master/README.md) to install the Code Climate CLI to run those tests locally.
 
 1. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/). We have a third party scan our site monthly for XSS vulnerabilities (among other things), and if they discover XSS vulnerabilities before we do, it could risk our [C&A](http://en.wikipedia.org/wiki/Certification_and_Accreditation) standing.
 

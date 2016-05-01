@@ -57,6 +57,11 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^I follow "([^"]*)" to the new window$/ do |link|
+  new_window = window_opened_by { click_link link }
+  switch_to_window new_window
+end
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end

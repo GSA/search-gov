@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::ColumnsHelper do
+  let(:column) { mock(ActiveScaffold::DataStructures::Column) }
 
   describe "#affiliates_export_column(feature)" do
     fixtures :features, :affiliates
@@ -16,8 +17,6 @@ describe Admin::ColumnsHelper do
   end
 
   describe "#nutshell_column" do
-    let(:column) { mock(ActiveScaffold::DataStructures::Column) }
-
     context "when the record is a User" do
       fixtures :users
 
@@ -55,6 +54,30 @@ describe Admin::ColumnsHelper do
         it "should be nil" do
           helper.nutshell_column(record, column).should == nil
         end
+      end
+    end
+  end
+
+  describe "#templates_column" do
+    let(:affiliate) do
+      stub_model(Affiliate) { |affiliate| affiliate.id = 666 }
+    end
+
+    context "for a search consumer enabled affiliate" do
+      before { affiliate.search_consumer_search_enabled = true }
+
+      it "is a link to that affiliate's templates page" do
+        expect(
+          helper.templates_column(affiliate, column)
+        ).to eq '<a href="/admin/affiliates/666/search_consumer_templates" target="_blank">Edit Templates</a>'
+      end
+    end
+
+    context 'for a basic affiliate' do
+      before { affiliate.search_consumer_search_enabled = false }
+
+      it 'is nil' do
+        expect(helper.templates_column(affiliate, column)).to be_nil
       end
     end
   end
