@@ -68,11 +68,11 @@ $(document).on 'typeahead:close', queryFieldSelectorWithTypeahead, whenClosed
 $(document).on 'keyup', queryFieldSelectorWithTypeahead, updateStatusWithTimeout
 
 handleKeypress = (e) ->
-  submitFormIfEnterPressed e
+  if e.which? and e.which == 13
+    e.preventDefault()
 
 submitFormIfEnterPressed = (e) ->
   if e.which? and e.which == 13
-    e.preventDefault()
     $('#search-bar').submit()
 
 $('#search-bar #query').each ->
@@ -118,12 +118,6 @@ clearQueryOnKeypressEvent = (e) ->
     clearQuery e
 
 $(document).on 'keypress.clear-button', '#clear-button', clearQueryOnKeypressEvent
-
-whenSelected = () ->
-  $('#search-bar').submit()
-
-$(document).on 'typeahead:selected', queryFieldSelectorWithTypeahead, whenSelected
-
 
 ready = () ->
   siteHandle = encodeURIComponent $('#search-bar #affiliate').val()
