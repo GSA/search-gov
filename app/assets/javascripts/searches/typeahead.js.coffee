@@ -1,3 +1,16 @@
+class Search
+  constructor: ($form) ->
+    @form = $form
+
+  submit: () ->
+    if @submitted
+      return false
+    else
+      @submitted = true
+      @form.submit()
+
+search = new Search $('#search-bar')
+
 queryFieldSelector = '#search-bar #query'
 queryFieldSelectorWithTypeahead = '#search-bar #query.typeahead-enabled'
 
@@ -31,7 +44,6 @@ buildStatusMessage = (count) ->
       message = '1 suggestion is available. Use the up and down arrow keys to select to it. Press enter to search on your selected suggestion.'
 
   return message
-
 
 updateStatus = ->
   $ttStatus = $('#tt-status')
@@ -73,7 +85,7 @@ handleKeypress = (e) ->
 
 submitFormIfEnterPressed = (e) ->
   if e.which? and e.which == 13
-    $('#search-bar').submit()
+    search.submit()
 
 $('#search-bar #query').each ->
   if $(this).val().length == 0
@@ -91,17 +103,14 @@ $.urlParam = (name) ->
 
 # Enable-Disable Input on Key Presses
 $('#search-bar #query').keyup (e) ->
-  query = $.urlParam('query') || ''
-  not_empty = $(this).val().length != 0 || query.length > 0
+  not_empty = $(this).val().length != 0
   # console.log('input keycode: ' +  e.which);
   # console.log('input length: ' +  $(this).val().length);
   # console.log('query length: ' +  query.length);
   if not_empty
-    # console.log("not empty")
     $('#search-button').prop 'disabled', false
     submitFormIfEnterPressed e
   else
-    # console.log("empty")
     $('#search-button').prop 'disabled', true
 
 clearQueryEvent = (e) ->
@@ -118,6 +127,12 @@ clearQueryOnKeypressEvent = (e) ->
     clearQuery e
 
 $(document).on 'keypress.clear-button', '#clear-button', clearQueryOnKeypressEvent
+
+whenSelected = () ->
+  search.submit()
+
+$(document).on 'typeahead:selected',
+  queryFieldSelectorWithTypeahead, whenSelected
 
 ready = () ->
   siteHandle = encodeURIComponent $('#search-bar #affiliate').val()
