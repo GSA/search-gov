@@ -3,6 +3,7 @@ Feature: Searches using mobile device
   Background:
     Given I am using a TabletPC device
 
+  @vcr
   Scenario: Web search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains              |
@@ -347,6 +348,7 @@ Feature: Searches using mobile device
     Then I should see "Generado por DIGITALGOV Search"
     And I should see at least "5" video search results
 
+  @vcr
   Scenario: Site search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -373,6 +375,7 @@ Feature: Searches using mobile device
     Then I should see Generado por Bing logo
     And I should see at least "7" web search results
 
+  @vcr
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -401,6 +404,7 @@ Feature: Searches using mobile device
     Then I should see "Articles" within the SERP active navigation
     And I should see at least "10" web search results
 
+  @vcr
   Scenario: Site navigations with dropdown menu
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | navigation_dropdown_label |
@@ -444,6 +448,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "Inactive news search" mobile news search page
     Then I should see "Inactive news search" within the SERP active navigation
 
+  @vcr
   Scenario: Job search
     Given the following Affiliates exist:
       | display_name | name   | contact_email    | contact_name | jobs_enabled |
@@ -455,6 +460,7 @@ Feature: Searches using mobile device
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
 
+  @vcr
   Scenario: When using tablet device
     Given I am using a TabletPC device
     And the following Affiliates exist:
@@ -497,6 +503,7 @@ Feature: Searches using mobile device
     Then I should see a link to "Alcohol" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcohol.html" within the med topic govbox
     And I should see a link to "Alcoholismo" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html" within the med topic govbox
 
+  @vcr
   Scenario: Searching with sitelimit
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains |
@@ -577,6 +584,7 @@ Feature: Searches using mobile device
     When I follow "Este tema en español" within the SERP navigation
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
 
+  @vcr
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
@@ -598,6 +606,7 @@ Feature: Searches using mobile device
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
+  @vcr
   Scenario: English search on a legacy site
     Given the following legacy Affiliates exist:
       | display_name      | name     | contact_email | contact_name |
@@ -630,6 +639,7 @@ Feature: Searches using mobile device
     And I press "Advanced Search"
     And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
+  @vcr
   Scenario: SEC Edgar sitelinks
     Given the following Affiliates exist:
       | display_name | name      | contact_email    | contact_name | domains                    |
@@ -651,6 +661,7 @@ Feature: Searches using mobile device
     Then I should see a link to "Most Recent Filings for this Company"
     And I should see a link to "Full Filing"
 
+  @vcr
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | contact_name | locale | page_one_more_results_pointer |
@@ -663,6 +674,7 @@ Feature: Searches using mobile device
     When I follow "Next"
     Then I should not see "Wherever. Try your search again to see results"
 
+  @vcr
   Scenario: Custom no results pointer
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | contact_name | locale | no_results_pointer |
@@ -679,10 +691,11 @@ Feature: Searches using mobile device
     When I am on kl.agency.gov's mobile search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
-  Scenario: Web search using Azure engine
+  @vcr
+  Scenario: Web search using Bing engine
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Azure         | .gov    |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Bing          | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
@@ -690,12 +703,12 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "agency"
     And I press "Search"
     Then I should see at least "10" web search results
-    And I should see Powered by Azure logo
+    And I should see Powered by Bing logo
 
     When I follow "USA.gov" within the SERP navigation
     Then I should see "USA.gov" within the SERP active navigation
     And I should see at least "10" web search results
-    And I should see Powered by Azure logo
+    And I should see Powered by Bing logo
 
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
@@ -711,4 +724,3 @@ Feature: Searches using mobile device
       | en.agency.gov| New alert for the test aff | Inactive | Test Title |
     When I am on en.agency.gov's search page
     Then I should not see "New alert for the test aff"
-

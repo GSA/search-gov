@@ -3,6 +3,7 @@ Feature: Image search
   As a site visitor
   I want to search for images
 
+  @vcr
   Scenario: English Image search
     Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         | domains        |
@@ -25,6 +26,7 @@ Feature: Image search
     And I press "Search"
     Then I should not see "Showing results for ebay"
 
+  @vcr
   Scenario: Spanish image search
     Given the following legacy Affiliates exist:
       | display_name    | name        | contact_email | contact_name | header                  | locale |
@@ -35,12 +37,13 @@ Feature: Image search
     And I should see the browser page titled "Barcelona - GobiernoUSA.gov resultados de la búsqueda"
     And I should see 20 image results
 
-  Scenario: Image search using Azure engine
+  @vcr
+  Scenario: Image search using Bing
     Given the following legacy Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Azure         | .gov    | true                      |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Bing          | .gov    | true                      |
     When I am on en.agency.gov's image search page
     And I fill in "query" with "agency"
     And I press "Search"
     Then I should see 20 image results
-    And I should see the Results by Azure logo
+    And I should see the Results by Bing logo
