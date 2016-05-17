@@ -31,13 +31,46 @@ describe Api::V2::SearchesController do
     context 'when request is not SSL' do
       before do
         controller.should_receive(:request_ssl?).and_return(false)
-        get :blended, affiliate: 'usagov', query: 'api', format: 'json'
       end
 
-      it { should respond_with :bad_request }
+      context 'and the request does not have a search-consumer access key' do
+        before do
+          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json'
+        end
 
-      it 'returns errors JSON' do
-        expect(JSON.parse(response.body)['errors']).to eq(['HTTPS is required'])
+        it { should respond_with :bad_request }
+
+        it 'returns errors JSON' do
+          expect(JSON.parse(response.body)['errors']).to eq(['HTTPS is required'])
+        end
+      end
+
+      context 'and the request has an invalid search-consumer access key' do
+        before do
+          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json', sc_access_key: 'invalidSecureKey'
+        end
+
+        it { should respond_with :bad_request }
+
+        it 'returns errors JSON' do
+          expect(JSON.parse(response.body)['errors']).to eq(['HTTPS is required'])
+        end
+      end
+
+      context 'but the request has a valid search-consumer access key' do
+        before do
+          search = mock('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
+          ApiBlendedSearch.should_receive(:new).and_return(search)
+          search.should_receive(:run)
+          search.should_receive(:diagnostics).and_return({})
+          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json', sc_access_key: 'secureKey'
+        end
+
+        it { should respond_with :success }
+
+        it 'returns search JSON' do
+          expect(JSON.parse(response.body)['foo']).to eq('bar')
+        end
       end
     end
   end

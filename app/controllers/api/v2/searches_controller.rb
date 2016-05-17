@@ -65,11 +65,11 @@ class Api::V2::SearchesController < ApplicationController
   private
 
   def require_ssl
-    respond_with(*ssl_required_response) unless request_ssl?
+    respond_with(*ssl_required_response) unless request_ssl? || valid_search_consumer_access_key?
   end
 
   def request_ssl?
-    UsasearchRails3::Application.config.apiv2.searches_require_ssl? ? request.ssl? : true
+    Rails.env.production? ? request.ssl? : true
   end
 
   def ssl_required_response
@@ -88,6 +88,10 @@ class Api::V2::SearchesController < ApplicationController
 
   def query_routing_is_enabled?
     search_params[:routed] == 'true'
+  end
+
+  def valid_search_consumer_access_key?
+    params[:sc_access_key] == SC_ACCESS_KEY
   end
 
   def search_params
