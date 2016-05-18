@@ -1,6 +1,7 @@
 class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
   include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
+  include ElasticQueryStringQuery
 
   def initialize(options)
     super(options)
@@ -64,11 +65,4 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
     end
   end
 
-  def default_pre_tags
-    %w()
-  end
-
-  def default_post_tags
-    %w()
-  end
 end

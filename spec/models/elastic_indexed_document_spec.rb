@@ -230,8 +230,28 @@ describe ElasticIndexedDocument do
           ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
           ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
-          ElasticIndexedDocument.search_for(q: '"other text" (porpoises | whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+          ElasticIndexedDocument.search_for(q: '"other text" (porpoises OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
           ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        end
+
+        context 'when query contains specific field queries using "field:" followed by query term or grouped phrase or quoted string' do
+          it 'should find documents in the specified field based on term, advanced query or exact string' do
+            ElasticIndexedDocument.search_for(q: 'Miller body:dolphins', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            ElasticIndexedDocument.search_for(q: 'Miller body:porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
+            ElasticIndexedDocument.search_for(q: 'Miller body:(dolphins OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
+            ElasticIndexedDocument.search_for(q: 'Miller body:"text about dolphins"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+          end
+        end
+
+        context 'when query contains a wildcard' do
+          it 'should find documents in the specified field based on truncation' do
+            ElasticIndexedDocument.search_for(q: 'dolphn*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
+            ElasticIndexedDocument.search_for(q: 'tx?', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
+            ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            ElasticIndexedDocument.search_for(q: 'dolph?n', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
+            ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
+          end
         end
       end
 

@@ -6,4 +6,13 @@ module ElasticTitleDescriptionBodyHighlightFields
       json.set! :body, { fragment_size: 75, number_of_fragments: 2 }
     end
   end
+
+  def default_pre_tags
+    %w()
+  end
+
+  def default_post_tags
+    %w()
+  end
+
 end

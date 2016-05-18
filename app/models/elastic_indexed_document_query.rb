@@ -1,6 +1,7 @@
 class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
   include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
+  include ElasticQueryStringQuery
 
   def initialize(options)
     super(options)
@@ -29,14 +30,6 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
         end if @document_collection
       end
     end
-  end
-
-  def default_pre_tags
-    %w()
-  end
-
-  def default_post_tags
-    %w()
   end
 
 end

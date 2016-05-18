@@ -55,14 +55,6 @@ class ElasticNewsItemQuery < ElasticTextFilterByPublishedAtQuery
     end
   end
 
-  def default_pre_tags
-    %w()
-  end
-
-  def default_post_tags
-    %w()
-  end
-
   private
 
   def feed_url_ids(rss_feeds)
