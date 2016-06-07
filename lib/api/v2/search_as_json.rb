@@ -73,7 +73,8 @@ module Api::V2::SearchAsJson
   def as_json_federal_register_documents
     federal_register_documents.results.collect do |document|
       comments_close_on = document.comments_close_on ? document.comments_close_on.to_s(:db) : nil
-      { document_number: document.document_number,
+      { id: document.id,
+        document_number: document.document_number,
         document_type: document.document_type,
         title: document.title,
         url: document.html_url,

@@ -49,7 +49,8 @@ shared_examples 'an API search as_json' do
 
     it 'includes federal register documents' do
       docs = search_rash.federal_register_documents.collect(&:deep_symbolize_keys)
-      expect(docs.first).to eq(document_number: '2014-15238',
+      expect(docs.first).to eq(id: 804670240,
+                               document_number: '2014-15238',
                                document_type: 'Notice',
                                title: 'Takes of Marine Mammals Incidental to Specified Activities; Taking Marine Mammals Incidental to a 3D Seismic Survey in Prudhoe Bay, Beaufort Sea, Alaska',
                                url: 'https://www.federalregister.gov/articles/2014/06/30/2014-15238/takes-of-marine-mammals-incidental-to-specified-activities-taking-marine-mammals-incidental-to-a-3d',
@@ -60,7 +61,8 @@ shared_examples 'an API search as_json' do
                                publication_date: '2014-06-30',
                                comments_close_date: nil)
 
-      expect(docs.last).to eq(document_number: '2013-10000',
+      expect(docs.last).to eq(id: 1006471742,
+                              document_number: '2013-10000',
                               document_type: 'Proposed Rule',
                               title: 'Hedge Funds and Private Equity Funds',
                               url: 'https://www.federalregister.gov/articles/2013/01/31/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with',
