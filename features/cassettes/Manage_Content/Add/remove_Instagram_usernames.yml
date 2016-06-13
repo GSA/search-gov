@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=***REMOVED***&q=dg_search
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search
     body:
       encoding: US-ASCII
       string: ''
@@ -12,14 +12,14 @@ http_interactions:
       User-Agent:
       - Instagram Ruby Gem 1.0.0
       Authorization:
-      - Token token="***REMOVED***"
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
   response:
     status:
       code: 200
       message: 
     headers:
       x-ratelimit-remaining:
-      - '4999'
+      - '499'
       content-language:
       - en
       expires:
@@ -27,44 +27,34 @@ http_interactions:
       vary:
       - Cookie, Accept-Language, Accept-Encoding
       x-ratelimit-limit:
-      - '5000'
+      - '500'
       pragma:
       - no-cache
       cache-control:
       - private, no-cache, no-store, must-revalidate
       date:
-      - Thu, 12 May 2016 20:27:50 GMT
+      - Sat, 11 Jun 2016 18:07:32 GMT
       content-type:
       - application/json; charset=utf-8
       set-cookie:
-      - csrftoken=7dc928b010db77475f7e170418a58d54; expires=Thu, 11-May-2017 20:27:50
-        GMT; Max-Age=31449600; Path=/, s_network=; expires=Thu, 12-May-2016 21:27:50
-        GMT; Max-Age=3600; Path=/, sessionid=IGSC8f4899cbfad25091366ca9cd55f5c47346491a81b57c3561097f3fba0b2c1a42%3ATWGPT9DczkaKOLtgqRkm3GPBJiYp290y%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1463084870%7D%7D;
-        expires=Wed, 10-Aug-2016 20:27:50 GMT; httponly; Max-Age=7776000; Path=/
+      - csrftoken=de79f4b56163598699d02c37183ed3dd; expires=Sat, 10-Jun-2017 18:07:32
+        GMT; Max-Age=31449600; Path=/, s_network=; expires=Sat, 11-Jun-2016 19:07:32
+        GMT; Max-Age=3600; Path=/, sessionid=IGSCfdd103e077a4f89e6ea3776a7807e765c02bf8dd783159cde7bff732f08cfde5%3AslvUyW2ylQxsYzYCz3leHR6AE5cUaU3c%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1465668452%7D%7D;
+        expires=Fri, 09-Sep-2016 18:07:32 GMT; httponly; Max-Age=7776000; Path=/
       connection:
       - close
       content-length:
-      - '340'
+      - '191'
     body:
       encoding: UTF-8
-      string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1317698369", "full_name": ""}, {"username": "dgsearcher", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11378597_862505030511034_205581992_a.jpg",
-        "id": "1913012169", "full_name": ""}, {"username": "dgsearch", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1222880656", "full_name": ""}, {"username": "searchdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11243727_1679843655583714_1185491298_a.jpg",
-        "id": "531559873", "full_name": "Search"}, {"username": "searchqdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11312154_1050143131662725_2024897483_a.jpg",
-        "id": "313306362", "full_name": "Search"}, {"username": "researchersdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1014081576", "full_name": "BBC news"}]}'
+      string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "bio": "",
+        "website": "", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "full_name": "", "id": "1317698369"}]}'
     http_version: 
-  recorded_at: Thu, 12 May 2016 20:27:50 GMT
+  recorded_at: Sat, 11 Jun 2016 18:07:32 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=***REMOVED***&q=dg_search
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search
     body:
       encoding: US-ASCII
       string: ''
@@ -74,14 +64,14 @@ http_interactions:
       User-Agent:
       - Instagram Ruby Gem 1.0.0
       Authorization:
-      - Token token="***REMOVED***"
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
   response:
     status:
       code: 200
       message: 
     headers:
       x-ratelimit-remaining:
-      - '4998'
+      - '498'
       content-language:
       - en
       expires:
@@ -89,44 +79,34 @@ http_interactions:
       vary:
       - Cookie, Accept-Language, Accept-Encoding
       x-ratelimit-limit:
-      - '5000'
+      - '500'
       pragma:
       - no-cache
       cache-control:
       - private, no-cache, no-store, must-revalidate
       date:
-      - Thu, 12 May 2016 20:27:51 GMT
+      - Sat, 11 Jun 2016 18:07:32 GMT
       content-type:
       - application/json; charset=utf-8
       set-cookie:
-      - csrftoken=35c5f1cf534896aa8cd2b2d1edbb60b1; expires=Thu, 11-May-2017 20:27:51
-        GMT; Max-Age=31449600; Path=/, s_network=; expires=Thu, 12-May-2016 21:27:51
-        GMT; Max-Age=3600; Path=/, sessionid=IGSCa53d47b24ad8ca9146a142782eaa74ca7e1f0c77c4812a334d968aa59aa3d325%3AY5t26SSTPiG3TOwj1Jn7leEEPJgocnXY%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1463084871%7D%7D;
-        expires=Wed, 10-Aug-2016 20:27:51 GMT; httponly; Max-Age=7776000; Path=/
+      - csrftoken=ff7adafc6d7e4e78e9fd1a46aa2dc708; expires=Sat, 10-Jun-2017 18:07:32
+        GMT; Max-Age=31449600; Path=/, s_network=; expires=Sat, 11-Jun-2016 19:07:32
+        GMT; Max-Age=3600; Path=/, sessionid=IGSC9d45ca1d329a757e8c09f017933e01e9902daf85bf0b5a796db27ba185c47667%3Afx0RdIQrTTVV8SpI3bgHPO2UfwsbYPqo%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1465668452%7D%7D;
+        expires=Fri, 09-Sep-2016 18:07:32 GMT; httponly; Max-Age=7776000; Path=/
       connection:
       - close
       content-length:
-      - '340'
+      - '191'
     body:
       encoding: UTF-8
-      string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1317698369", "full_name": ""}, {"username": "dgsearcher", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11378597_862505030511034_205581992_a.jpg",
-        "id": "1913012169", "full_name": ""}, {"username": "dgsearch", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1222880656", "full_name": ""}, {"username": "searchdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11243727_1679843655583714_1185491298_a.jpg",
-        "id": "531559873", "full_name": "Search"}, {"username": "searchqdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11312154_1050143131662725_2024897483_a.jpg",
-        "id": "313306362", "full_name": "Search"}, {"username": "researchersdg", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "id": "1014081576", "full_name": "BBC news"}]}'
+      string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "bio": "",
+        "website": "", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "full_name": "", "id": "1317698369"}]}'
     http_version: 
-  recorded_at: Thu, 12 May 2016 20:27:51 GMT
+  recorded_at: Sat, 11 Jun 2016 18:07:32 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=***REMOVED***&q=dg_search101
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search101
     body:
       encoding: US-ASCII
       string: ''
@@ -136,14 +116,14 @@ http_interactions:
       User-Agent:
       - Instagram Ruby Gem 1.0.0
       Authorization:
-      - Token token="***REMOVED***"
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
   response:
     status:
       code: 200
       message: 
     headers:
       x-ratelimit-remaining:
-      - '4997'
+      - '497'
       content-language:
       - en
       expires:
@@ -151,17 +131,17 @@ http_interactions:
       vary:
       - Cookie, Accept-Language
       x-ratelimit-limit:
-      - '5000'
+      - '500'
       pragma:
       - no-cache
       cache-control:
       - private, no-cache, no-store, must-revalidate
       date:
-      - Thu, 12 May 2016 20:27:51 GMT
+      - Sat, 11 Jun 2016 18:07:33 GMT
       content-type:
       - application/json; charset=utf-8
       set-cookie:
-      - csrftoken=54e4a863421a5edda2a0daa89fbcf8a8; expires=Thu, 11-May-2017 20:27:51
+      - csrftoken=f0b7501d0d7f0afe4b170af6ce8baf33; expires=Sat, 10-Jun-2017 18:07:33
         GMT; Max-Age=31449600; Path=/
       connection:
       - close
@@ -171,10 +151,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": []}'
     http_version: 
-  recorded_at: Thu, 12 May 2016 20:27:51 GMT
+  recorded_at: Sat, 11 Jun 2016 18:07:33 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=***REMOVED***&q=whitehouse
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=mctgsa
     body:
       encoding: US-ASCII
       string: ''
@@ -184,14 +164,14 @@ http_interactions:
       User-Agent:
       - Instagram Ruby Gem 1.0.0
       Authorization:
-      - Token token="***REMOVED***"
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
   response:
     status:
       code: 200
       message: 
     headers:
       x-ratelimit-remaining:
-      - '4996'
+      - '496'
       content-language:
       - en
       expires:
@@ -199,136 +179,34 @@ http_interactions:
       vary:
       - Cookie, Accept-Language, Accept-Encoding
       x-ratelimit-limit:
-      - '5000'
+      - '500'
       pragma:
       - no-cache
       cache-control:
       - private, no-cache, no-store, must-revalidate
       date:
-      - Thu, 12 May 2016 20:27:53 GMT
+      - Sat, 11 Jun 2016 18:07:34 GMT
       content-type:
       - application/json; charset=utf-8
       set-cookie:
-      - csrftoken=47eddb436d0ec38443de0b93dd3edd2d; expires=Thu, 11-May-2017 20:27:53
-        GMT; Max-Age=31449600; Path=/, s_network=; expires=Thu, 12-May-2016 21:27:53
-        GMT; Max-Age=3600; Path=/, sessionid=IGSC0f981f77c354059eaa07e1941892b0e3d959bf9b61d2e6952c8c7d7d68c214ec%3AvUCTEMc0OK4Qp7yT7e8pawJpvhKB1E0G%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1463084873%7D%7D;
-        expires=Wed, 10-Aug-2016 20:27:53 GMT; httponly; Max-Age=7776000; Path=/
+      - csrftoken=cd0f920ba8886a5f688822826d3bcd41; expires=Sat, 10-Jun-2017 18:07:34
+        GMT; Max-Age=31449600; Path=/, s_network=; expires=Sat, 11-Jun-2016 19:07:34
+        GMT; Max-Age=3600; Path=/, sessionid=IGSCf0cf2e765901de6a76d715e6e7a654005e176e80513d0bb4ad9178798dd9e5f7%3AlOAxBOxwYSnn0m5uWLHfNnPJxYucqDof%3A%7B%22asns%22%3A%7B%2271.231.92.45%22%3A7922%2C%22time%22%3A1465668454%7D%7D;
+        expires=Fri, 09-Sep-2016 18:07:34 GMT; httponly; Max-Age=7776000; Path=/
       connection:
       - close
       content-length:
-      - '2678'
+      - '188'
     body:
       encoding: UTF-8
-      string: '{"meta": {"code": 200}, "data": [{"username": "whitehousetailor", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12950292_583625531805740_1781023849_a.jpg",
-        "id": "1376797136", "full_name": "Whitehouse Tailor"}, {"username": "lrcwhitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11266385_365630363641838_741573719_a.jpg",
-        "id": "1269300", "full_name": "Lindsey Coyle Whitehouse"}, {"username": "mikey_whitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12965124_1134556446594467_1617807577_a.jpg",
-        "id": "208694899", "full_name": "Mikey Whitehouse"}, {"username": "whitehouse_2014",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12362592_1514209925574066_1693954506_a.jpg",
-        "id": "1581025770", "full_name": "whitehouse(\u062e\u0627\u0646\u0647 \u0633\u0641\u06cc\u062f
-        \u0648\u0646\u06a9 )"}, {"username": "barackobama_whitehouse", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/s150x150/11355153_1639916726248915_890654701_a.jpg",
-        "id": "1474480864", "full_name": "Barack Obama"}, {"username": "whitehousehistory",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11373998_1657786657841217_969247649_a.jpg",
-        "id": "778447720", "full_name": "White House Historical Assoc."}, {"username":
-        "whitehouse", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11426759_1616180581958148_14567905_a.jpg",
-        "id": "292249233", "full_name": "The White House"}, {"username": "whitehouseaapi",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11417480_441183932732289_5660671_a.jpg",
-        "id": "1231865030", "full_name": "White House AAPI"}, {"username": "joshuawhitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13118344_963643197089663_987207168_a.jpg",
-        "id": "236202045", "full_name": "Josh Whitehouse"}, {"username": "warahshitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13108733_1683425511919382_744065833_a.jpg",
-        "id": "226883410", "full_name": "Sarah Whitehouse \ud83d\udca9\ud83c\udfe0"},
-        {"username": "whitehouse.kobe", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12519389_1526018131041493_269554692_a.jpg",
-        "id": "3138015424", "full_name": "\u30db\u30ef\u30a4\u30c8\u30cf\u30a6\u30b9\u795e\u6238"},
-        {"username": "whitehouse_cox_england", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12724615_1690716974520827_1480638264_a.jpg",
-        "id": "1771723689", "full_name": "Whitehouse Cox England"}, {"username": "whitehouse.kg",
-        "profile_picture": "http://scontent.cdninstagram.com/l/t51.2885-19/s150x150/12816884_1054879431235932_1077572976_a.jpg",
-        "id": "2788692775", "full_name": "WHITEHOUSE.KG"}, {"username": "whitehousefarmcentre",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/10932133_1376985702608649_1960015369_a.jpg",
-        "id": "1419415526", "full_name": "Whitehouse Farm Centre"}, {"username": "whitehouse_cloth",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11116797_490781971090754_486670000_a.jpg",
-        "id": "1421062202", "full_name": "whitehouse skateshop and store"}, {"username":
-        "mother_pukka", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13129429_1732557040358675_1646549033_a.jpg",
-        "id": "1642815976", "full_name": "Anna Whitehouse"}, {"username": "louiseamelie",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11311082_676003029170899_325656197_a.jpg",
-        "id": "12126712", "full_name": "Louise Amelie Whitehouse"}, {"username": "whitehouseantiques",
-        "profile_picture": "http://scontent.cdninstagram.com/l/t51.2885-19/11429703_1487013274929486_1621187184_a.jpg",
-        "id": "454299600", "full_name": "White House Antiques"}, {"username": "whitehousepj",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12912685_1582220955423233_375169547_a.jpg",
-        "id": "6252202", "full_name": "Parker Whitehouse"}, {"username": "whitehouse85",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/11380217_921255901264528_1001004969_a.jpg",
-        "id": "353594121", "full_name": "Lizz Whitehouse"}, {"username": "whitehouse_crockery",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13113815_1620415424945694_882496492_a.jpg",
-        "id": "22942956", "full_name": "Whitehouse Event Crockery"}, {"username":
-        "whitehouse.co", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/10661040_164557507236407_1173477368_a.jpg",
-        "id": "2349629317", "full_name": "The White House Co."}, {"username": "whitehouseonline",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12960106_1174205205923587_712640431_a.jpg",
-        "id": "282751727", "full_name": "Princessyahrini AADC2"}, {"username": "sarahwhitehouse_",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12905061_993317747384724_1928689240_a.jpg",
-        "id": "38313325", "full_name": "Sarah Whitehouse"}, {"username": "whitehouse92",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/926784_1990234381202687_1112530977_a.jpg",
-        "id": "28398624", "full_name": "Matt Whitehouse"}, {"username": "whitehousep",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12940829_123409218057068_95127487_a.jpg",
-        "id": "1191195366", "full_name": "Paul Whitehouse"}, {"username": "whitehouse502",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13151095_1202602686418013_1191967721_a.jpg",
-        "id": "249269102", "full_name": "\u2076\ud80c\udd53 Andrew Whitehouse \u2076\ud80c\udd53"},
-        {"username": "thewhitehouseclinic", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12543234_209451762734227_834566907_a.jpg",
-        "id": "270315727", "full_name": "The White House Clinic"}, {"username": "m_j_whitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/11849132_451241818392445_175340043_a.jpg",
-        "id": "1632325276", "full_name": "MATTHEW WHITEHOUSE"}, {"username": "whitwhitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12826009_1668423170075143_809278007_a.jpg",
-        "id": "16210099", "full_name": "Whitney Whitehouse"}, {"username": "kayuwoods",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12976320_1035329139855343_1527327995_a.jpg",
-        "id": "826287740", "full_name": "WHITEHOUSELANE\u24c2\ufe0f"}, {"username":
-        "ebony_whitehouse", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13183290_489645287897902_1028999266_a.jpg",
-        "id": "545488820", "full_name": "Ebony Whitehouse"}, {"username": "wishrentsbykayuwoods",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/10852891_1594960384165063_783654539_a.jpg",
-        "id": "2130529784", "full_name": "WHITEHOUSELANE\ud83c\udfe1"}, {"username":
-        "meliawhitehouse", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11247744_747099392053917_1870413648_a.jpg",
-        "id": "205857082", "full_name": "Meli\u00e1 White House"}, {"username": "whitehouseliquid",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12826235_1545629812401084_645133884_a.jpg",
-        "id": "3028213899", "full_name": "White House Premium Liquid"}, {"username":
-        "laynewhitehouse", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12729622_997487300339050_2019193832_a.jpg",
-        "id": "13647386", "full_name": "layne whitehouse"}, {"username": "jason_whitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11265052_748009975315599_1811306110_a.jpg",
-        "id": "54426939", "full_name": "Jason Whitehouse"}, {"username": "whitw519",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11850193_513270012175689_1869186563_a.jpg",
-        "id": "370505556", "full_name": "Whitney Whitehouse"}, {"username": "whitehousenightclub",
-        "profile_picture": "http://scontent.cdninstagram.com/l/t51.2885-19/s150x150/11260288_1634999976785544_1157306706_a.jpg",
-        "id": "2005783416", "full_name": "Future Of Charlotte NightLife"}, {"username":
-        "whitehousewedding", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/923992_505593132875867_1158313004_a.jpg",
-        "id": "1401982443", "full_name": "White House | Wedding Agency"}, {"username":
-        "white_house_hail", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11084758_1418163081822140_2068484204_a.jpg",
-        "id": "1312629810", "full_name": "\u0627\u0644\u0628\u064a\u062a \u0627\u0644\u0627\u0628\u064a\u0636
-        \u0644\u0644\u0623\u0648\u0627\u0646\u064a \u0627\u0644\u0645\u0646\u0632\u0644\u064a\u0647"},
-        {"username": "whitehousemusicgroup", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12628125_1018785031527127_1789931107_a.jpg",
-        "id": "2945531465", "full_name": "White House Music Group"}, {"username":
-        "net.wearth", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13118098_225160204529839_422163185_a.jpg",
-        "id": "707248720", "full_name": "Adam Whitehouse \u0026 @shaunadell"}, {"username":
-        "billiewhouse", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12331764_1666748403565656_1453224894_a.jpg",
-        "id": "35748737", "full_name": "Billie Whitehouse"}, {"username": "littlewhitehouseco",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12912833_914333018685917_518057552_a.jpg",
-        "id": "288940931", "full_name": "Little White House \u0026 Co."}, {"username":
-        "kalimbah500", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/1171026_706900979447047_1771544110_a.jpg",
-        "id": "390122295", "full_name": "Paul Whitehouse"}, {"username": "nataliewhitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/10755776_974953675855390_930827380_a.jpg",
-        "id": "342272126", "full_name": "Natalie Whitehouse"}, {"username": "dylanwhitehouse",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/12825773_838370102976114_1386006244_a.jpg",
-        "id": "370167028", "full_name": "Dylan Whitehouse"}, {"username": "katewhitehouse88",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13092495_1186438828096114_3917676_a.jpg",
-        "id": "472024168", "full_name": "Kate Whitehouse"}, {"username": "madameswanky",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13183461_1420786957947092_978159406_a.jpg",
-        "id": "16926161", "full_name": "rachel whitehouse"}, {"username": "makeupwithkokonz",
-        "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/s150x150/13151063_1098964020146941_1273528420_a.jpg",
-        "id": "1574329026", "full_name": "Koko Whitehouse \ud83d\udc44\ud83c\udf53"}]}'
+      string: '{"meta": {"code": 200}, "data": [{"username": "mctgsa", "bio": "",
+        "website": "", "profile_picture": "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "full_name": "", "id": "3316230201"}]}'
     http_version: 
-  recorded_at: Thu, 12 May 2016 20:27:53 GMT
+  recorded_at: Sat, 11 Jun 2016 18:07:34 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=***REMOVED***&q=thisisaninstagramprofilethatshouldnotexist31415
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=thisisaninstagramprofilethatshouldnotexist31415
     body:
       encoding: US-ASCII
       string: ''
@@ -338,14 +216,14 @@ http_interactions:
       User-Agent:
       - Instagram Ruby Gem 1.0.0
       Authorization:
-      - Token token="***REMOVED***"
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
   response:
     status:
       code: 200
       message: 
     headers:
       x-ratelimit-remaining:
-      - '4995'
+      - '495'
       content-language:
       - en
       expires:
@@ -353,17 +231,17 @@ http_interactions:
       vary:
       - Cookie, Accept-Language
       x-ratelimit-limit:
-      - '5000'
+      - '500'
       pragma:
       - no-cache
       cache-control:
       - private, no-cache, no-store, must-revalidate
       date:
-      - Thu, 12 May 2016 20:27:54 GMT
+      - Sat, 11 Jun 2016 18:07:35 GMT
       content-type:
       - application/json; charset=utf-8
       set-cookie:
-      - csrftoken=161916e7c7c8652fe573065a73315aa4; expires=Thu, 11-May-2017 20:27:54
+      - csrftoken=c0201b18260b110d2a5194c64c898a01; expires=Sat, 10-Jun-2017 18:07:35
         GMT; Max-Age=31449600; Path=/
       connection:
       - close
@@ -373,5 +251,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": []}'
     http_version: 
-  recorded_at: Thu, 12 May 2016 20:27:54 GMT
+  recorded_at: Sat, 11 Jun 2016 18:07:35 GMT
 recorded_with: VCR 3.0.1

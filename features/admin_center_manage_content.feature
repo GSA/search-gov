@@ -524,11 +524,13 @@ Feature: Manage Content
     And I press "Remove"
     Then I should see "You have removed dg_search from this site"
 
+    #'mctgsa' is a sandbox account. Once https://www.pivotaltracker.com/story/show/121072675
+    #is resolved, we should change that to another standard Instagram username, i.e. 'whitehouse'
     When I follow "Add Instagram Username"
-    When I fill in "Instagram Username" with "https://www.instagram.com/whitehouse/"
+    When I fill in "Instagram Username" with "http://instagram.com/mctgsa"
     And I submit the form by pressing "Add"
-    Then I should see "You have added whitehouse to this site"
-    And I should see a link to "whitehouse" with url for "http://instagram.com/whitehouse"
+    Then I should see "You have added mctgsa to this site"
+    And I should see a link to "mctgsa" with url for "http://instagram.com/mctgsa"
 
     When I follow "Add Instagram Username"
     When I fill in "Instagram Username" with "http://instagram.com/thisisaninstagramprofilethatshouldnotexist31415/"
